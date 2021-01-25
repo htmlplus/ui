@@ -1,0 +1,30 @@
+@import 'all';
+@import 'reset';
+
+:host {
+  flex: 0 0 auto; // ???
+  display: flex;
+  overflow: auto;
+}
+
+:host([reverse]) {
+  flex-direction: row-reverse;
+}
+
+:host([grow]) ::slotted(plus-tabs-tab) {
+  flex-grow: 1;
+}
+
+:host([justify=start]),
+:host([justify=end][reverse]) {
+  justify-content: flex-start;
+}
+
+:host([justify=center]) {
+  justify-content: center;
+}
+
+:host([justify=end]),
+:host([justify=start][reverse]) {
+  justify-content: flex-end;
+}

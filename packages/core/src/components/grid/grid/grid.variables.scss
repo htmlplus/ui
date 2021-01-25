@@ -1,0 +1,39 @@
+$align-contents: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'stretch': stretch,
+  'between': space-between,
+  'around': space-around,
+  'evenly': space-evenly
+);
+
+$align-items: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'stretch': stretch
+);
+
+$gutters: (
+  'xs': 0.25em,
+  'sm': 0.50em,
+  'md': 1.00em,
+  'lg': 1.75em,
+  'xl': 4.00em
+);
+
+$justifies: (
+  'start': flex-start,
+  'center': center,
+  'end': flex-end,
+  'between': space-between,
+  'around': space-around,
+  'evenly': space-evenly
+);
+
+$wraps: (
+  'on': wrap,
+  'off': nowrap,
+  'reverse': wrap-reverse
+);

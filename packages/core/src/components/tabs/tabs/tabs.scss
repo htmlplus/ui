@@ -1,0 +1,20 @@
+@import 'all';
+@import 'reset';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+:host([vertical]) {
+
+  flex-direction: row;
+
+  ::slotted(plus-tabs-bar){
+    flex-direction: column;
+  }
+
+  ::slotted(plus-tabs-bar[reverse]) {
+    flex-direction: column-reverse;
+  }
+}

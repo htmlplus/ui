@@ -1,0 +1,16 @@
+silent: false
+branchName: short
+autoCloseIssue: true
+branches:
+  - label: enhancement
+    prefix: feature/
+  - label: bug
+    prefix: bugfix/
+  - label: question
+    skip: true
+  - label: duplicate
+    skip: true
+  - label: wontfix
+    skip: true
+  - label: invalid
+    skip: true

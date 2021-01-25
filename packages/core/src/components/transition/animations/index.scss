@@ -1,0 +1,210 @@
+@import 'bounce';
+@import 'fade';
+@import 'flip';
+@import 'shake';
+
+// flash
+
+:host([name=flash]) {
+    animation-name: flash;
+}
+
+@keyframes flash {
+
+    from,
+    50%,
+    to {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+// pulse
+
+:host([name=pulse]) {
+    animation-name: pulse;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes pulse {
+
+    from {
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+// rubber-band
+
+:host([name=rubber-band]) {
+    animation-name: rubber-band;
+}
+
+@keyframes rubber-band {
+    
+    from {
+      transform: scale3d(1, 1, 1);
+    }
+  
+    30% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+  
+    40% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+  
+    50% {
+      transform: scale3d(1.15, 0.85, 1);
+    }
+  
+    65% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+  
+    75% {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+  
+    to {
+      transform: scale3d(1, 1, 1);
+    }
+}
+
+// head-shake
+
+:host([name=head-shake]) {
+    animation-name: head-shake;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes head-shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    6.5% {
+        transform: translateX(-6px) rotateY(-9deg);
+    }
+
+    18.5% {
+        transform: translateX(5px) rotateY(7deg);
+    }
+
+    31.5% {
+        transform: translateX(-3px) rotateY(-5deg);
+    }
+
+    43.5% {
+        transform: translateX(2px) rotateY(3deg);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+}
+
+// swing
+
+:host([name=swing]) {
+    animation-name: swing;
+    transform-origin: top center;
+}
+
+@keyframes swing {
+
+    20% {
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+
+    40% {
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+
+    60% {
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+
+    80% {
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+
+    to {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+}
+
+// heart-beat
+
+:host([name=heart-beat]) {
+    animation-name: heart-beat;
+    animation-duration: calc(var(--plus-transition-duration) * 1.3);
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes heart-beat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.3);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.3);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+}
+
+// typing
+
+:host([name=typing]) {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid currentColor;
+    animation-name: typing, typing-cursor;
+    animation-duration: calc(var(--plus-transition-duration) * 4), calc(var(--plus-transition-duration) / 4) !important;
+    animation-timing-function: steps(44), steps(44);
+    animation-delay: calc(var(--plus-transition-delay) + 1), var(--plus-transition-delay) !important;
+    animation-iteration-count: var(--plus-transition-repeat), infinite !important;
+    animation-direction: var(--plus-transition-direction), normal !important;
+    animation-fill-mode: both, none;
+}
+
+@keyframes typing {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes typing-cursor {
+    50% { 
+        border-color: transparent 
+    }
+}

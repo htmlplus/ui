@@ -1,0 +1,10 @@
+@import 'all';
+@import 'reset';
+
+:host {
+    display: none;
+}
+
+:host([active]) {
+    display: block;
+}

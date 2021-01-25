@@ -1,0 +1,43 @@
+@import 'transition.variables';
+@import 'animations/index';
+
+:host {
+    --plus-transition-delay: 0s;
+    --plus-transition-duration: 1s;
+    --plus-transition-repeat: 1;
+}
+
+:host {
+    display: block;
+    animation-fill-mode: both;
+    animation-delay: var(--plus-transition-delay);
+    animation-duration: var(--plus-transition-duration);
+    animation-iteration-count: var(--plus-transition-repeat);
+}
+
+:host([pause=""]),
+:host([pause=true]) {
+    animation-play-state: paused;
+}
+
+:host([pause=hover]),
+:host([start=hover]:hover) {
+    animation-play-state: running;
+}
+
+:host([start=hover]),
+:host([pause=hover]:hover) {
+    animation-play-state: paused;
+}
+
+@each $key, $value in $transition-duration {
+    :host([duration=#{inspect($key)}]) {
+        --plus-transition-duration: #{$value};
+    }
+}
+
+@each $key, $value in $transition-direction {
+    :host([direction=#{inspect($key)}]) {
+        --plus-transition-direction: #{$value};
+    }
+}

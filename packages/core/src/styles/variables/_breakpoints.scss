@@ -1,0 +1,16 @@
+$breakpoints-new: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+$breakpoints: (
+  xs: 0px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1400px,
+);

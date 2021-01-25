@@ -1,0 +1,235 @@
+@import 'all';
+@import 'reset';
+@import 'dialog.variables';
+
+@mixin fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@mixin sticky {
+
+  .cell {
+    padding: 0;
+  }
+
+  ::slotted(*) {
+    border: 0;
+    border-radius:0;
+  }
+}
+
+:host {
+  @include fill;
+  z-index: $dialog-z-index;
+  display: none;
+  outline: 0;
+  overflow: hidden;
+}
+
+.backdrop {
+
+  @include fill;
+  z-index: 1;
+
+  * {
+    width: 100%;
+    height: 100%;
+    background-color: $dialog-backdrop-background-color;
+    opacity: $dialog-backdrop-opacity;
+  }
+}
+
+.dialog {
+  @include fill;
+  @include scroll;
+  z-index: 1;
+}
+
+.table {
+  display: table;
+  margin: auto;
+  height: 100%;
+  position: relative;
+}
+
+.cell {
+  display: table-cell;
+}
+
+// scrollable
+.scrollable ::slotted(*) {
+  @include scroll;
+}
+
+// placement x
+@each $key, $value in $dialog-placement-x {
+  .x-#{$key} .table {
+    @each $key, $property in $value {
+      #{$key}: #{$property};
+    }
+  }
+}
+
+// placement y
+@each $key, $value in $dialog-placement-y {
+  .y-#{$key} .cell {
+    @each $key, $property in $value {
+      #{$key}: #{$property};
+    }
+  }
+}
+
+// breakpoints
+@each $key, $value in $breakpoints-new {
+
+  // TODO
+  @include media-breakpoint-up($key) {
+
+    // margin in current breakpoint
+    $margin: map-get($dialog-margin, $key);
+
+    @if($margin) {
+
+      // TODO
+      .full-height {
+
+        ::slotted(*) {
+          min-height: calc(100vh - #{$margin * 2});
+        }
+
+        &.sticky ::slotted(*) {
+          min-height: 100vh;
+        }
+      }
+
+      // dialog margin
+      .cell {
+        padding: $margin;
+      }
+
+      // scrollable
+      .scrollable ::slotted(*) {
+        max-height: calc(100vh - #{$margin * 2});
+      }
+    }
+
+    // dialog size in current breakpoint
+    $size: map-get($dialog-size, $key);
+
+    // dialog sizes
+    @each $key, $value in $size {
+
+      // generate size's class
+      @include class('size', $key) {
+        .cell {
+          max-width: $value;
+        }
+      }
+    }
+  }
+
+  // TODO
+  @include media-breakpoint-down($key) {
+
+    // current fullscreen's suffix
+    $key: if(breakpoint-min($key) == null, '', '#{$key}-down');
+
+    // generate fullscreen's class
+    @include class('fullscreen', $key) {
+
+      @include sticky;
+
+      .cell {
+        max-width: none;
+      }
+
+      ::slotted(*) {
+        min-height: 100vh;
+      }
+    }
+  }
+}
+
+// TODO
+:host(.open) {
+  display: block;
+}
+
+// TODO
+.cell {
+  width: 100vw;
+}
+
+// TODO
+::slotted(*) {
+  pointer-events: auto;
+}
+
+// TODO
+.full-width {
+  .cell {
+    max-width: none !important;
+  } 
+}
+
+// TODO
+.sticky {
+  @include sticky;
+}
+
+// transition
+
+:host(.fade.dialog-enter-active),
+:host(.fade.dialog-leave-active) {
+
+  transition: all 0.5s ease-out;
+
+  .dialog {
+    overflow: hidden;
+  }
+
+  ::slotted(*) {
+    transition: all 0.5s ease-out;
+  }
+}
+
+:host(.fade.dialog-enter),
+:host(.fade.dialog-leave-active) {
+
+  opacity: 0;
+
+  ::slotted(*) {
+    transform: translate(0, -50px);
+  }
+
+  .y-bottom ::slotted(*) {
+    transform: translate(0, 50px);
+  }
+
+  .x-right ::slotted(*) {
+    transform: translate(50px, 0);
+  }
+
+  .x-left ::slotted(*) {
+    transform: translate(-50px, 0);
+  }
+}
+
+:host(.fade.dialog-leave),
+:host(.fade.dialog-enter-active) {
+
+  opacity: 1;
+  
+  ::slotted(*) {
+    transform: translate(0, 0);
+  }
+}

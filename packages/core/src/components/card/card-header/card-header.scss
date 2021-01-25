@@ -1,0 +1,14 @@
+@import 'all';
+@import 'reset';
+@import 'card-header.variables';
+
+:host {
+    padding: $card-header-padding-y $card-header-padding-x;
+    // margin-bottom: 0; // Removes the default margin-bottom of <hN> 
+    // color: $card-cap-color;
+    background-color: $card-header-background-color;
+    border-bottom: solid $card-header-border-width $card-header-border-color;
+    // &:first-child {
+        // @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    // }
+}

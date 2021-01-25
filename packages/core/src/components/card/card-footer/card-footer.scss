@@ -1,0 +1,13 @@
+@import 'all';
+@import 'reset';
+@import 'card-footer.variables';
+
+:host {
+    padding: $card-footer-padding-y $card-footer-padding-x;
+//     color: $card-cap-color;
+    background-color: $card-footer-background-color;
+    border-top: solid $card-footer-border-width $card-footer-border-color;
+//     &:last-child {
+//         @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius); 
+//     }
+}

@@ -1,0 +1,147 @@
+@import 'all';
+@import 'reset';
+@import 'drawer.variables';
+
+:host {
+
+    /**
+    * @prop --plus-drawer-size     : TODO
+    * @prop --plus-drawer-mini-size: TODO
+    */
+
+    --plus-drawer-size      : 280px;
+    --plus-drawer-mini-size : 0;
+}
+
+:host {
+    display: none;
+    position: relative;
+    z-index: $drawer-z-index;
+}
+
+:host([temporary]) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+:host(.open) {
+    --plus-drawer-margin         : var(--plus-drawer-margin-max);
+    --plus-drawer-margin-min     : calc(-1 * var(--plus-drawer-size));
+    --plus-drawer-margin-max     : 0;
+    display: block;
+}
+
+:host(.mini) {
+    --plus-drawer-margin-min     : calc(-1 * var(--plus-drawer-size));
+    --plus-drawer-margin-max     : calc(-1 * var(--plus-drawer-size) + var(--plus-drawer-mini-size));
+    --plus-drawer-mini-margin-min: 0;
+    --plus-drawer-mini-margin-max: calc(-1 * var(--plus-drawer-size) + var(--plus-drawer-mini-size));
+    overflow: hidden;
+}
+
+.backdrop {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    * {
+        width: 100%;
+        height: 100%;
+        background-color: $drawer-backdrop-background-color;
+        opacity: $drawer-backdrop-opacity;
+    }
+}
+
+.content {
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.backdrop,
+.content {
+    transition: inherit;
+}
+
+.right,
+.left { 
+    width : var(--plus-drawer-size);
+}
+
+.top,
+.bottom { 
+    height: var(--plus-drawer-size);
+}
+
+.right,
+.left.reverse {
+    margin: 0 var(--plus-drawer-margin) 0 0;
+}
+
+.left,
+.right.reverse {
+    margin: 0 0 0 var(--plus-drawer-margin);
+}
+
+.top,
+.bottom.reverse {
+    margin: var(--plus-drawer-margin) 0 0 0;
+}
+
+.bottom,
+.top.reverse {
+    margin: 0 0 var(--plus-drawer-margin) 0;
+}
+
+// open transition
+
+:host(.fade.drawer-enter-active),
+:host(.fade.drawer-leave-active) {
+    overflow: hidden;
+    transition: $drawer-transition; 
+} 
+
+:host(.fade.drawer-enter),
+:host(.fade.drawer-leave-active) {
+
+    --plus-drawer-margin: var(--plus-drawer-margin-min);
+
+    .backdrop {
+        opacity: 0;
+    }
+}
+
+:host(.fade.drawer-leave),
+:host(.fade.drawer-enter-active) {
+
+    --plus-drawer-margin: var(--plus-drawer-margin-max);
+
+    .backdrop {
+        opacity: 1;
+    }
+}
+
+// mini transition
+
+:host(.fade.drawer-mini-enter-active),
+:host(.fade.drawer-mini-leave-active) {
+    overflow: hidden;
+    transition: $drawer-transition; 
+} 
+
+:host(.fade.drawer-mini-enter),
+:host(.fade.drawer-mini-leave-active) {
+    --plus-drawer-margin: var(--plus-drawer-mini-margin-min);
+}
+
+:host(.fade.drawer-mini-leave),
+:host(.fade.drawer-mini-enter-active) {
+    --plus-drawer-margin: var(--plus-drawer-mini-margin-max);
+}

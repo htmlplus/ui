@@ -1,0 +1,15 @@
+@import 'all';
+@import 'reset';
+@import 'card.variables';
+
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    background-color: $card-background-color;
+    border: solid $card-border-width $card-border-color;
+    border-radius: $card-border-radius;
+}

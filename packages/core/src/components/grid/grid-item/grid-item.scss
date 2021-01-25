@@ -1,0 +1,92 @@
+@import 'all';
+@import 'grid-item.variables';
+
+:host {
+  flex-grow: 0;
+  flex-basis: auto;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+@function max($key, $value) {
+  @return nth(nth($breakpoints, index($breakpoints, $key $value) + 1), 2) - 1px;
+}
+
+@each $key, $value in $align-selfs {
+  :host([align-self='#{$key}']) {
+    align-self: $value;
+  }
+}
+
+@each $breakpoint, $value in $breakpoints {
+  @media screen and (min-width: #{$value}) {
+    @each $key, $value in $align-selfs {
+      :host([align-self-#{$breakpoint}='#{$key}']) {
+        align-self: $value;
+      }
+    }
+  }
+}
+
+@each $key, $value in $breakpoints {
+  @media screen and (min-width: #{$value}) {
+    :host([#{$key}='auto']) {
+      flex-basis: auto;
+      max-width: none;
+    }
+    :host([#{$key}='grow']) {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+    }
+    @for $number from 1 through $column {
+      :host([#{$key}='#{$number}']) {
+        flex-basis: $number * $base;
+        max-width: $number * $base;
+      }
+      :host([offset-#{$key}='#{$number}']) {
+        margin-left: $number * $base;
+      }
+      :host([order-#{$key}='#{$number}']) {
+        order: $number;
+      }
+    }
+  }
+}
+
+@each $key, $value in $breakpoints {
+  @if ($key != 'xl') {
+    @media screen and (min-width: #{$value}) {
+      :host([hide-#{$key}-up]) {
+        display: none;
+      }
+    }
+  }
+}
+
+@each $key, $value in $breakpoints {
+  @if ($key != 'xs' and $key != 'xl') {
+    @media screen and (max-width: #{max($key, $value)}) {
+      :host([hide-#{$key}-down]) {
+        display: none;
+      }
+    }
+  }
+}
+
+@each $key, $value in $breakpoints {
+  @if ($key != 'xl') {
+    @media screen and (min-width: $value) and (max-width: max($key, $value)) {
+      :host([hide-#{$key}]) {
+        display: none;
+      }
+    }
+  } 
+  @else {
+    @media screen and (min-width: $value) {
+      :host([hide-#{$key}]) {
+        display: none;
+      }
+    }
+  }
+}

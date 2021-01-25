@@ -1,0 +1,15 @@
+@import 'all';
+@import 'reset';
+@import 'dialog-body.variables';
+
+:host {
+    position: relative; 
+    flex: 1 1 auto;
+    padding: $dialog-body-padding;
+}
+
+// EX
+:host([scrollable]) {
+    overflow: hidden;
+    overflow-y: auto;
+}

@@ -1,0 +1,15 @@
+{
+  "version": "independent",
+  "packages": [
+    "packages/*",
+    "packages/ports/*"
+  ],
+  "command": {
+    "publish": {
+      "allowBranch": "master"
+    },
+    "version": {
+      "allowBranch": "master"
+    }
+  }
+}

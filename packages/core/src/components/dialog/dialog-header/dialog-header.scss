@@ -1,0 +1,18 @@
+@import 'all';
+@import 'reset';
+@import 'dialog-header.variables';
+
+:host {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: $dialog-header-padding;
+  border-bottom: solid $dialog-header-border-width $dialog-header-border-color;
+  border-top-right-radius: $dialog-header-border-radius;
+  border-top-left-radius: $dialog-header-border-radius;
+  // .btn-close {
+  //   padding: ($modal-header-padding-y / 2) ($modal-header-padding-x / 2);
+  //   margin: ($modal-header-padding-y / -2) ($modal-header-padding-x / -2) ($modal-header-padding-y / -2) auto;
+  // }
+}
