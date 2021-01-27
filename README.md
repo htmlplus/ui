@@ -7,11 +7,15 @@
 HTMLPLUS is framework-less and lightweight. It’s totally native and developed purely with javascript. All HTMLPLUS components are customizable and configurable.
 
 ## Table of contents
-- [Quick start](#quick-start)
-- [Status](#status)
-- [What's Included](#what-is-included)
-- [Creator](#creator)
-- [Copyright and license](#copyright-and-license)
+- [HTMLPLUS](#htmlplus)
+    - [The most flexible web component library!](#the-most-flexible-web-component-library)
+  - [Table of contents](#table-of-contents)
+  - [Quick start](#quick-start)
+    - [Clone](#clone)
+  - [Status](#status)
+  - [What's included](#whats-included)
+  - [Creator](#creator)
+  - [Copyright and license](#copyright-and-license)
 
 
 ## Quick start
@@ -43,7 +47,7 @@ packages/
 ```
 
 ## Creator
-**Masoud Abdolian**
+**Masood Abdolian**
 - <https://github.com/abdolian>
 
 ## Copyright and license
