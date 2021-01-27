@@ -14,9 +14,8 @@ HTMLPLUS is framework-less and lightweight. It’s totally native and developed 
     - [Clone](#clone)
   - [Status](#status)
   - [What's included](#whats-included)
-  - [Creator](#creator)
+  - [Creators](#creators)
   - [Copyright and license](#copyright-and-license)
-
 
 ## Quick start
 HTMLPLUS needs [Node.js](https://nodejs.org/) v4+ to run. Then you can install it with [npm](https://www.npmjs.com/).
@@ -46,9 +45,19 @@ packages/
 │   ├── src
 ```
 
-## Creator
+## Creators
 **Masood Abdolian**
 - <https://github.com/abdolian>
+
+**Mohamadreza Abolian**
+- <https://github.com/mrabdolian>
+
+**Amir Tavakoli**
+- <https://github.com/amirtvkli>
+- <https://twitter.com/amirtvkli>
+
+**Hamed Shirzadpour**
+- <https://github.com/ham3dz>
 
 ## Copyright and license
 Code and documentation copyright 2019–2021 the [HTMLPLUS Authors](https://github.com/htmlplus/core/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).
