@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Bind, GlobalConfig, OutsideClick as OutsideClickCore } from '@app/services';
 
 /**
@@ -12,6 +12,18 @@ import { Bind, GlobalConfig, OutsideClick as OutsideClickCore } from '@app/servi
   shadow: true
 })
 export class OutsideClick {
+
+  /**
+   * TODO
+   */
+  @Prop()
+  disabled?: boolean;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  once?: boolean;
 
   /**
   * TODO
@@ -30,7 +42,12 @@ export class OutsideClick {
 
   @Bind
   callback() {
+
+    if (this.disabled) return;
+
     this.plusOutsideClick.emit();
+
+    this.once && this.disconnectedCallback();
   }
 
   connectedCallback() {

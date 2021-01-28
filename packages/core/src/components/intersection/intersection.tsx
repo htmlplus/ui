@@ -90,6 +90,6 @@ export class Intersection {
       <Host intersecting={this.intersecting}>
         {this.intersecting && <slot />}
       </Host>
-    );
+    )
   }
 }

@@ -57,6 +57,6 @@ export class Spinner {
           {this.elements.map((element) => <div key={element} />)}
         </div>
       </Host>
-    );
+    )
   }
 }

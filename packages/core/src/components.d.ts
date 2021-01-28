@@ -469,6 +469,14 @@ export namespace Components {
         "trigger"?: 'click' | 'hover';
     }
     interface PlusOutsideClick {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "once"?: boolean;
     }
     interface PlusSpinner {
         /**
@@ -1276,7 +1284,15 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
         "onPlusOutsideClick"?: (event: CustomEvent<any>) => void;
+        /**
+          * TODO
+         */
+        "once"?: boolean;
     }
     interface PlusSpinner {
         /**
