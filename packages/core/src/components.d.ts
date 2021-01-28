@@ -468,6 +468,8 @@ export namespace Components {
          */
         "trigger"?: 'click' | 'hover';
     }
+    interface PlusOutsideClick {
+    }
     interface PlusSpinner {
         /**
           * Specifies the size of the spinner.
@@ -685,6 +687,12 @@ declare global {
         prototype: HTMLPlusMenuElement;
         new (): HTMLPlusMenuElement;
     };
+    interface HTMLPlusOutsideClickElement extends Components.PlusOutsideClick, HTMLStencilElement {
+    }
+    var HTMLPlusOutsideClickElement: {
+        prototype: HTMLPlusOutsideClickElement;
+        new (): HTMLPlusOutsideClickElement;
+    };
     interface HTMLPlusSpinnerElement extends Components.PlusSpinner, HTMLStencilElement {
     }
     var HTMLPlusSpinnerElement: {
@@ -757,6 +765,7 @@ declare global {
         "plus-grid-item": HTMLPlusGridItemElement;
         "plus-intersection": HTMLPlusIntersectionElement;
         "plus-menu": HTMLPlusMenuElement;
+        "plus-outside-click": HTMLPlusOutsideClickElement;
         "plus-spinner": HTMLPlusSpinnerElement;
         "plus-switch": HTMLPlusSwitchElement;
         "plus-tabs": HTMLPlusTabsElement;
@@ -1263,6 +1272,12 @@ declare namespace LocalJSX {
          */
         "trigger"?: 'click' | 'hover';
     }
+    interface PlusOutsideClick {
+        /**
+          * TODO
+         */
+        "onPlusOutsideClick"?: (event: CustomEvent<any>) => void;
+    }
     interface PlusSpinner {
         /**
           * Specifies the size of the spinner.
@@ -1418,6 +1433,7 @@ declare namespace LocalJSX {
         "plus-grid-item": PlusGridItem;
         "plus-intersection": PlusIntersection;
         "plus-menu": PlusMenu;
+        "plus-outside-click": PlusOutsideClick;
         "plus-spinner": PlusSpinner;
         "plus-switch": PlusSwitch;
         "plus-tabs": PlusTabs;
@@ -1450,6 +1466,7 @@ declare module "@stencil/core" {
             "plus-grid-item": LocalJSX.PlusGridItem & JSXBase.HTMLAttributes<HTMLPlusGridItemElement>;
             "plus-intersection": LocalJSX.PlusIntersection & JSXBase.HTMLAttributes<HTMLPlusIntersectionElement>;
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
+            "plus-outside-click": LocalJSX.PlusOutsideClick & JSXBase.HTMLAttributes<HTMLPlusOutsideClickElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
             "plus-switch": LocalJSX.PlusSwitch & JSXBase.HTMLAttributes<HTMLPlusSwitchElement>;
             "plus-tabs": LocalJSX.PlusTabs & JSXBase.HTMLAttributes<HTMLPlusTabsElement>;
