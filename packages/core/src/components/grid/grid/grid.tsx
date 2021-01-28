@@ -205,7 +205,12 @@ export class Grid {
   @Prop()
   wrapXl?: Wraps;
 
-  @GlobalConfig('grid')
+  @GlobalConfig('grid', {
+    alignContent: 'stretch',
+    alignItems: 'stretch',
+    justify: 'start',
+    wrap: 'on',
+  })
   config?;
 
   get attributes() {

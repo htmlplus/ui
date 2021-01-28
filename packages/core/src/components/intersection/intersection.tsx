@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
-import { Bind } from '@app/services';
+import { Bind, GlobalConfig } from '@app/services';
 
 /**
  * TODO
@@ -43,6 +43,9 @@ export class Intersection {
     cancelable: false,
   })
   plusChange!: EventEmitter<IntersectionObserverEntry>;
+
+  @GlobalConfig('intersection')
+  config?;
 
   @State()
   intersecting?: boolean;

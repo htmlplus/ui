@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { Bind } from '@app/services';
+import { Bind, GlobalConfig } from '@app/services';
 import { TransitionDirection, TransitionDuration, TransitionPause, TransitionRepeat, TransitionStart } from './transition.types';
 
 /**
@@ -90,6 +90,11 @@ export class Transition {
     cancelable: true
   })
   plusStart!: EventEmitter;
+
+  @GlobalConfig('transition', {
+    duration: 'normal'
+  })
+  config?;
 
   @Element()
   $host!: HTMLElement;

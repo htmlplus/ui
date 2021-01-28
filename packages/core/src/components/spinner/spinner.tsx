@@ -1,4 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
+import { GlobalConfig } from '@app/services';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
@@ -24,6 +25,12 @@ export class Spinner {
    */
   @Prop({ reflect: true })
   type?: SpinnerType = 'default';
+
+  @GlobalConfig('spinner', {
+    size: 'md',
+    type: 'default'
+  })
+  config?;
 
   get elements() {
 

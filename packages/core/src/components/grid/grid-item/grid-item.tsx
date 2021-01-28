@@ -239,7 +239,9 @@ export class GridItem {
   @Prop({ reflect: true })
   orderXl?: Orders;
 
-  @GlobalConfig('gridItem')
+  @GlobalConfig('gridItem', {
+    alignSelf: 'auto'
+  })
   config?;
 
   render() {
