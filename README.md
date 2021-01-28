@@ -29,6 +29,7 @@ $ npm start
 Clone the repository: `git clone https://github.com/htmlplus/core.git`
  
 ## Status
+[![Version](https://img.shields.io/npm/v/@htmlplus/core.svg)](https://www.npmjs.com/package/@htmlplus/core)
 [![GitHub forks](https://img.shields.io/github/forks/htmlplus/core)](https://github.com/htmlplus/core/network/members) [![GitHub stars](https://img.shields.io/github/stars/htmlplus/core)](https://github.com/htmlplus/core/stargazers) [![GitHub license](https://img.shields.io/github/license/htmlplus/core)](https://github.com/htmlplus/core/blob/main/LICENSE) [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fhtmlplus%2Fcore)](https://https://twitter.com/htmlplusio) 
 
 ## What's included
