@@ -1,22 +1,25 @@
 ```css [style]
 .box {
   background: #c5cae9;
-  padding: 12px;
+  padding: 20px;
 }
 ```
 
 ```tsx [script]
 class {
 
-  callback() {
+  @State()
+  counter = 0;
 
+  callback() {
+    this.counter++;
   }
 
   render() {
     return (
       <preview>
         <plus-outside-click class="box" onPlusOutsideClick={() => this.callback()}>
-            Click outside
+            {this.counter} times clicked
         </plus-outside-click>
       </preview>
     )
