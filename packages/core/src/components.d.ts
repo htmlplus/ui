@@ -9,6 +9,7 @@ import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dial
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { AlignContents, AlignItems, Gutters, Justifies, Wraps } from "./components/grid/grid/grid.types";
 import { AlignSelfs, Columns, Offsets, Orders } from "./components/grid/grid-item/grid-item.types";
+import { IntersectionAppearance } from "./components/intersection/intersection.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { TransitionDirection, TransitionDuration, TransitionPause, TransitionRepeat, TransitionStart } from "./components/transition/transition.types";
@@ -409,6 +410,10 @@ export namespace Components {
         "xs"?: Columns;
     }
     interface PlusIntersection {
+        /**
+          * TODO
+         */
+        "appearance"?: IntersectionAppearance;
         /**
           * TODO
          */
@@ -1222,6 +1227,10 @@ declare namespace LocalJSX {
         "xs"?: Columns;
     }
     interface PlusIntersection {
+        /**
+          * TODO
+         */
+        "appearance"?: IntersectionAppearance;
         /**
           * TODO
          */

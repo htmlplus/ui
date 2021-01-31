@@ -1,5 +1,6 @@
 import { Component, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/services';
+import { IntersectionAppearance } from './intersection.types';
 
 /**
  * TODO
@@ -10,6 +11,12 @@ import { Bind, GlobalConfig } from '@app/services';
   shadow: true
 })
 export class Intersection {
+
+  /**
+   * TODO
+   */
+  @Prop()
+  appearance?: IntersectionAppearance = 'normal';
 
   /**
    * TODO
@@ -44,11 +51,16 @@ export class Intersection {
   })
   plusChange!: EventEmitter<IntersectionObserverEntry>;
 
-  @GlobalConfig('intersection')
+  @GlobalConfig('intersection', {
+    appearance: 'normal'
+  })
   config?;
 
   @State()
-  intersecting?: boolean;
+  isIntersecting?: boolean;
+
+  @State()
+  isVisible?: boolean;
 
   observer?: IntersectionObserver;
 
@@ -65,11 +77,14 @@ export class Intersection {
 
     const [entry] = entries;
 
-    this.intersecting = entry.isIntersecting;
+    // TODO
+    this.isVisible = entry.isIntersecting;
+
+    this.isIntersecting = entry.isIntersecting;
 
     this.plusChange.emit(entry);
 
-    if (!this.intersecting || !this.once) return;
+    if (!this.isIntersecting || !this.once) return;
 
     this.disconnectedCallback();
   }
@@ -87,8 +102,8 @@ export class Intersection {
 
   render() {
     return (
-      <Host intersecting={this.intersecting}>
-        {this.intersecting && <slot />}
+      <Host intersecting={this.isIntersecting}>
+        {this.isVisible && <slot />}
       </Host>
     )
   }

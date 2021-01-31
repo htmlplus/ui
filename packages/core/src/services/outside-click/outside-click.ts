@@ -4,7 +4,7 @@ export class OutsideClick {
 
     static targets = new Map();
 
-    static add(element, callback) {
+    static add(element, callback, self = true) {
 
         this.remove(element);
 
@@ -14,7 +14,7 @@ export class OutsideClick {
 
             const index = path.findIndex((item) => item === element);
 
-            if (1 < index) return;
+            if ((!self && 1 < index) || (self && index !== -1)) return;
 
             callback(event);
         }

@@ -259,7 +259,7 @@ export class Drawer {
 
     this.temporary && Scrollbar.remove(this);
 
-    OutsideClick.add(this.$content, this.onOutsideClick);
+    OutsideClick.add(this.$content, this.onOutsideClick, false);
 
     this.$host.classList.add('open');
 

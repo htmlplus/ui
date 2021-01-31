@@ -256,7 +256,7 @@ export class Dialog {
 
     this.setAttributes();
     this.setEvents();
-    OutsideClick.add(this.$cell, this.onOutsideClick);
+    OutsideClick.add(this.$cell, this.onOutsideClick, false);
     Scrollbar.remove(this);
     this.setZIndex();
 
