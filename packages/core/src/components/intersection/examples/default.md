@@ -41,23 +41,21 @@ class {
   intersecting = false;
 
   onChange(event) {
-    this.intersecting = event.detail.intersecting;
+    this.intersecting = event.detail.isIntersecting;
   }
 
   render() {
     return (
-      <preview>
-        <div class="wrapper">
-          <div class={`status ${this.intersecting ? 'in' : 'out'}`}>
-            {this.intersecting ? 'In Viewport' : 'Out of Viewport'}
-          </div>
-          <div class="content">
-            <plus-intersection class="box" onPlusChange={(event) => this.onChange(event)}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </plus-intersection>
-          </div>
+      <div class="wrapper">
+        <div class={`status ${this.intersecting ? 'in' : 'out'}`}>
+          {this.intersecting ? 'In Viewport' : 'Out of Viewport'}
         </div>
-      </preview>
+        <div class="content">
+          <plus-intersection class="box" onPlusChange={(event) => this.onChange(event)}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </plus-intersection>
+        </div>
+      </div>
     )
   }
 }
