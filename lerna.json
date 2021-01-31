@@ -6,10 +6,10 @@
   ],
   "command": {
     "publish": {
-      "allowBranch": "master"
+      "allowBranch": "main"
     },
     "version": {
-      "allowBranch": "master"
+      "allowBranch": "main"
     }
   }
 }
