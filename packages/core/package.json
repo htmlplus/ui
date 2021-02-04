@@ -18,7 +18,7 @@
   },
   "scripts": {
     "clean": "rimraf dist www",
-    "build": "npm run clean && stencil build && node ./scripts/extra",
+    "build": "npm run clean && stencil build && node ./scripts/extra && node ./scripts/alias",
     "build:watch": "npm run clean && stencil build --watch",
     "start": "npm run clean && stencil build --dev --watch --serve",
     "test": "stencil test --e2e --no-cache --verbose",
@@ -26,7 +26,7 @@
     "prepare": "npm run clean && npm run build"
   },
   "devDependencies": {
-    "@stencil/core": "^2.3.0",
+    "@stencil/core": "^2.4.0",
     "@stencil/react-output-target": "0.0.9",
     "@stencil/sass": "^1.3.2",
     "@types/jest": "^26.0.15",
