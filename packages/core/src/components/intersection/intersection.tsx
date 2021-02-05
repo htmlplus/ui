@@ -22,6 +22,12 @@ export class Intersection {
    * TODO
    */
   @Prop()
+  disabled?: boolean;
+
+  /**
+   * TODO
+   */
+  @Prop()
   once?: boolean;
 
   /**
@@ -64,6 +70,20 @@ export class Intersection {
 
   observer?: IntersectionObserver;
 
+  get $host() {
+    return getElement(this);
+  }
+
+  get attributes() {
+    return {
+      intersecting: this.isIntersecting
+    }
+  }
+
+  get isDisconnected() {
+    return this.once && this.isIntersecting;
+  }
+
   get option() {
     return {
       root: this.root,
@@ -72,37 +92,135 @@ export class Intersection {
     }
   }
 
+  /**
+   * Internal Methods
+   */
+
+  bind() {
+
+    this.observer = new IntersectionObserver(this.onIntersecting, this.option);
+
+    this.observer.observe(this.$host);
+  }
+
+  unbind() {
+
+    this.observer?.disconnect();
+
+    delete this.observer;
+  }
+
+  rebind() {
+
+    this.unbind();
+
+    this.bind();
+  }
+
+  rerender() {
+
+    switch (this.appearance) {
+
+      case 'appear':
+
+        this.isVisible = this.isIntersecting;
+
+        break;
+
+      case 'blink':
+
+        if (!this.isIntersecting) return;
+
+        this.isVisible = false;
+
+        requestAnimationFrame(() => this.isVisible = true);
+
+        break;
+
+      default:
+
+        this.isVisible = true;
+
+        break;
+    }
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return;
+
+    switch (name) {
+
+      case 'appearance':
+
+        this.isVisible = this.appearance !== 'appear';
+
+        break;
+
+      case 'disabled':
+
+        this.disabled && this.unbind();
+
+        !this.disabled && !this.isDisconnected && this.bind();
+
+        break;
+
+      case 'once':
+
+        break;
+
+      case 'root':
+      case 'rootMargin':
+      case 'threshold':
+
+        !this.disabled && !this.isDisconnected && this.rebind();
+
+        break;
+    }
+  }
+
+  /**
+   * Events handler
+   */
+
   @Bind
-  callback(entries: IntersectionObserverEntry[]) {
+  onIntersecting(entries: IntersectionObserverEntry[]) {
 
     const [entry] = entries;
 
-    // TODO
-    this.isVisible = entry.isIntersecting;
-
     this.isIntersecting = entry.isIntersecting;
+
+    this.rerender();
 
     this.plusChange.emit(entry);
 
     if (!this.isIntersecting || !this.once) return;
 
-    this.disconnectedCallback();
+    this.unbind();
   }
+
+  /**
+   * Lifecycles
+   */
 
   connectedCallback() {
 
-    this.observer = new IntersectionObserver(this.callback, this.option);
+    this.isVisible = (this.appearance !== 'appear');
 
-    this.observer.observe(getElement(this));
+    !this.disabled && this.bind();
   }
 
   disconnectedCallback() {
-    this.observer?.disconnect();
+    this.unbind();
   }
 
   render() {
     return (
-      <Host intersecting={this.isIntersecting}>
+      <Host {...this.attributes}>
         {this.isVisible && <slot />}
       </Host>
     )

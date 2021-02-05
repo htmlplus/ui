@@ -417,6 +417,10 @@ export namespace Components {
         /**
           * TODO
          */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
         "once"?: boolean;
         /**
           * TODO
@@ -1231,6 +1235,10 @@ declare namespace LocalJSX {
           * TODO
          */
         "appearance"?: IntersectionAppearance;
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
         /**
           * TODO
          */
