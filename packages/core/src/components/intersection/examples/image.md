@@ -1,5 +1,11 @@
 ```css [style]
 .wrapper {
+  position: relative;
+  height: 320px;
+  overflow: auto;
+  background-color: #eee;
+}
+.box {
   text-align: center;
   margin: 1000px auto;
 }
@@ -21,11 +27,11 @@ class {
 
   render() {
     return (
-      <preview>
-        <plus-intersection class="wrapper" once onPlusChange={(event) => this.onChange(event)}>
+      <div class="wrapper">
+        <plus-intersection class="box" once onPlusChange={(event) => this.onChange(event)}>
           <img data-src="https://placekitten.com/200/300"/>
         </plus-intersection>
-      </preview>
+      </div>
     )
   }
 }

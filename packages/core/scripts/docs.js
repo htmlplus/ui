@@ -118,7 +118,7 @@ const properties = (component) => {
   return (component.props || []).map((property) => {
 
     return {
-      name: property.attr,
+      name: property.attr || property.name,
       type: property.type,
       description: property.docs,
       default: property.default,

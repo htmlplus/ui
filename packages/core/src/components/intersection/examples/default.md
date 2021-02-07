@@ -30,7 +30,7 @@
     background: #c5cae9;
     width: 250px;
     padding: 20px;
-    margin: 750px auto;
+    margin: 1000px auto;
 }
 ```
 
