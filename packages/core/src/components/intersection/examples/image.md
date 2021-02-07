@@ -23,7 +23,7 @@ class {
     return (
       <preview>
         <plus-intersection class="wrapper" once onPlusChange={(event) => this.onChange(event)}>
-          <img data-src="https://placekitten.com/200/300">
+          <img data-src="https://placekitten.com/200/300"/>
         </plus-intersection>
       </preview>
     )
