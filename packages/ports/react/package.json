@@ -35,5 +35,6 @@
   },
   "dependencies": {
     "@htmlplus/core": "^0.1.4-next.1"
-  }
+  },
+  "gitHead": "17483e4fecc931a9769af01a7a2247c23e03bdfe"
 }
