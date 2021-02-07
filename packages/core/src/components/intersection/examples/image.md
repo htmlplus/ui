@@ -1,3 +1,10 @@
+```css [style]
+.wrapper {
+  text-align: center;
+  margin: 1000px auto;
+}
+```
+
 ```tsx [script]
 class {
 
@@ -15,11 +22,9 @@ class {
   render() {
     return (
       <preview>
-        <Host>
-          <plus-intersection once onPlusChange={(event) => this.onChange(event)}>
-            <img data-src="https://placekitten.com/200/300">
-          </plus-intersection>
-        </Host>
+        <plus-intersection class="wrapper" once onPlusChange={(event) => this.onChange(event)}>
+          <img data-src="https://placekitten.com/200/300">
+        </plus-intersection>
       </preview>
     )
   }

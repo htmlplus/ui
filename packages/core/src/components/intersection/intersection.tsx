@@ -4,6 +4,8 @@ import { IntersectionAppearance } from './intersection.types';
 
 /**
  * TODO
+ * @slot - The default slot
+ * @examples default, image
  */
 @Component({
   tag: 'plus-intersection',
