@@ -8,12 +8,10 @@
 
 ```html [template]
 <preview justify-content="space-evenly">
-    <Host>
-        <plus-spinner class="spinner-1" type="double-bounce"></plus-spinner>
-        <plus-spinner class="spinner-2" type="double-bounce"></plus-spinner>
-        <plus-spinner class="spinner-3" type="double-bounce"></plus-spinner>
-        <plus-spinner class="spinner-4" type="double-bounce"></plus-spinner>
-        <plus-spinner class="spinner-5" type="double-bounce"></plus-spinner>
-    </Host>
+  <plus-spinner class="spinner-1" type="double-bounce"></plus-spinner>
+  <plus-spinner class="spinner-2" type="double-bounce"></plus-spinner>
+  <plus-spinner class="spinner-3" type="double-bounce"></plus-spinner>
+  <plus-spinner class="spinner-4" type="double-bounce"></plus-spinner>
+  <plus-spinner class="spinner-5" type="double-bounce"></plus-spinner>
 </preview>
 ```

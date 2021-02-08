@@ -1,5 +1,5 @@
 ```html [template]
 <preview>
-    <plus-switch checked></plus-switch>
+  <plus-switch checked></plus-switch>
 </preview>
 ```

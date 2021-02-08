@@ -1,37 +1,25 @@
 ```tsx [script]
 class {
 
-  @State()
-  open = false;
+  confirm(type, event) {
+    
+    if(confirm(`Are you sure you want to ${type} it?`)) return;
 
-  @State()
-  size = 'md';
-
-  hide() {
-    this.open = false;
-  }
-
-  show(size) {
-    this.size = size;
-    this.open = true;
+    event.preventDefault();
   }
 
   render() {
     return (
       <preview split="false">
-        <button onClick={() => this.show('sm')}>
-          Small dialog
-        </button>
-        &nbsp;
-        <button onClick={() => this.show('lg')}>
-          Large dialog
-        </button>
-        &nbsp;
-        <button onClick={() => this.show('xl')}>
-          Extra large dialog
-        </button>
-        &nbsp;
-        <plus-dialog class="fade" open={this.open} size={this.size} onPlusClose={() => this.hide()}>
+        <plus-dialog-toggler connector="dialog-prevent">
+          Open
+        </plus-dialog-toggler>
+        <plus-dialog 
+          class="fade" 
+          connector="dialog-prevent" 
+          onPlusOpen={(event) => this.confirm('open', event)}
+          onPlusClose={(event) => this.confirm('close', event)}
+        >
           <plus-dialog-content>
             <plus-dialog-header>
               Dialog Title
@@ -40,9 +28,9 @@ class {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </plus-dialog-body>
             <plus-dialog-footer>
-              <button onClick={() => this.hide()}>
+              <plus-dialog-toggler connector="dialog-prevent">
                 Close
-              </button>
+              </plus-dialog-toggler>
             </plus-dialog-footer>
           </plus-dialog-content>
         </plus-dialog>
