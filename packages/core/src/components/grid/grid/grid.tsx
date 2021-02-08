@@ -1,6 +1,6 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/services';
-import { AlignContents, AlignItems, Gutters, Justifies, Wraps } from './grid.types';
+import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
  * TODO: HTML+ grid is extremely flexible and powerful.
@@ -24,132 +24,151 @@ export class Grid {
    * Aligns contents vertically across all rows (It overrides alignItems).
    */
   @Prop()
-  alignContent?: AlignContents = 'stretch';
+  alignContent?: GridAlignContent = 'stretch';
 
   /**
    * Aligns contents vertically across all rows for extra-small display sizes
    * (It overrides alignItemsXs).
    */
   @Prop()
-  alignContentXs?: AlignContents;
+  alignContentXs?: GridAlignContent;
 
   /**
    * Aligns contents vertically across all rows for small display sizes
    * (It overrides alignItemsSm).
    */
   @Prop()
-  alignContentSm?: AlignContents;
+  alignContentSm?: GridAlignContent;
 
   /**
    * Aligns contents vertically across all rows for medium display sizes
    * (It overrides alignItemsMd).
    */
   @Prop()
-  alignContentMd?: AlignContents;
+  alignContentMd?: GridAlignContent;
 
   /**
    * Aligns contents vertically across all rows for large display sizes
    * (It overrides alignItemsLg).
    */
   @Prop()
-  alignContentLg?: AlignContents;
+  alignContentLg?: GridAlignContent;
 
   /**
    * Aligns contents vertically across all rows for extra-large display sizes
    * (It overrides alignItemsXl).
    */
   @Prop()
-  alignContentXl?: AlignContents;
+  alignContentXl?: GridAlignContent;
+
+  /**
+   * Aligns contents vertically across all rows for extra-extra-large display sizes
+   * (It overrides alignItemsXXl).
+   */
+  @Prop()
+  alignContentXxl?: GridAlignContent;
 
   /**
    * Aligns contents vertically inside their own row.
    */
   @Prop()
-  alignItems?: AlignItems = 'stretch';
+  alignItems?: GridAlignItems = 'stretch';
 
   /**
    * Aligns contents vertically inside their own row for extra-small display sizes.
    */
   @Prop()
-  alignItemsXs?: AlignItems;
+  alignItemsXs?: GridAlignItems;
 
   /**
    * Aligns contents vertically inside their own row for small display sizes.
    */
   @Prop()
-  alignItemsSm?: AlignItems;
+  alignItemsSm?: GridAlignItems;
 
   /**
    * Aligns contents vertically inside their own row for medium display sizes.
    */
   @Prop()
-  alignItemsMd?: AlignItems;
+  alignItemsMd?: GridAlignItems;
 
   /**
    * Aligns contents vertically inside their own row for large display sizes.
    */
   @Prop()
-  alignItemsLg?: AlignItems;
+  alignItemsLg?: GridAlignItems;
 
   /**
    * Aligns contents vertically inside their own row for extra-large display sizes.
    */
   @Prop()
-  alignItemsXl?: AlignItems;
+  alignItemsXl?: GridAlignItems;
+
+  /**
+   * Aligns contents vertically inside their own row for extra-extra-large display sizes.
+   */
+  @Prop()
+  alignItemsXxl?: GridAlignItems;
 
   /**
    * Adds a gap between contents to make space between them vertically and horizontally.
    */
   @Prop()
-  gutter?: Gutters;
+  gutter?: GridGutter;
 
   /**
    * Adds a gap between contents to make space between them horizontally.
    */
   @Prop()
-  gutterX?: Gutters;
+  gutterX?: GridGutter;
 
   /**
    * Adds a gap between contents to make space between them vertically.
    */
   @Prop()
-  gutterY?: Gutters;
+  gutterY?: GridGutter;
 
   /**
    * Justifies contents horizontally.
    */
   @Prop()
-  justify?: Justifies = 'start';
+  justifyContent?: GridJustifyContent = 'start';
 
   /**
    * Justifies contents horizontally for extra-small display sizes.
    */
   @Prop()
-  justifyXs?: Justifies;
+  justifyContentXs?: GridJustifyContent;
 
   /**
    * Justifies contents horizontally for small display sizes.
    */
   @Prop()
-  justifySm?: Justifies;
+  justifyContentSm?: GridJustifyContent;
 
   /**
    * Justifies contents horizontally for medium display sizes.
    */
   @Prop()
-  justifyMd?: Justifies;
+  justifyContentMd?: GridJustifyContent;
 
   /**
    * Justifies contents horizontally for large display sizes.
    */
   @Prop()
-  justifyLg?: Justifies;
+  justifyContentLg?: GridJustifyContent;
 
   /**
    * Justifies contents horizontally for extra-large display sizes.
    */
   @Prop()
-  justifyXl?: Justifies;
+  justifyContentXl?: GridJustifyContent;
+
+  /**
+   * Justifies contents horizontally for extra-extra-large display sizes.
+   */
+  @Prop()
+  justifyContentXxl?: GridJustifyContent;
 
   /**
    * Reverses the flow of contents from left-to-right to right-to-left, or vice-versa.
@@ -168,47 +187,54 @@ export class Grid {
    * size of contents is more than the twelve-column width.
    */
   @Prop()
-  wrap?: Wraps = 'on';
+  wrap?: GridWrap = 'on';
 
   /**
    * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for extra-small screen devices.
    */
   @Prop()
-  wrapXs?: Wraps;
+  wrapXs?: GridWrap;
 
   /**
    * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for small screen devices.
    */
   @Prop()
-  wrapSm?: Wraps;
+  wrapSm?: GridWrap;
 
   /**
    * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for medium screen devices.
    */
   @Prop()
-  wrapMd?: Wraps;
+  wrapMd?: GridWrap;
 
   /**
    * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for large screen devices.
    */
   @Prop()
-  wrapLg?: Wraps;
+  wrapLg?: GridWrap;
 
   /**
    * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for extra-large screen devices.
    */
   @Prop()
-  wrapXl?: Wraps;
+  wrapXl?: GridWrap;
+
+  /**
+   * Controls allowing the container to wrap the content or not if the cumulative width
+   * size of contents is more than the twelve-column width for extra-extra-large screen devices.
+   */
+  @Prop()
+  wrapXxl?: GridWrap;
 
   @GlobalConfig('grid', {
     alignContent: 'stretch',
     alignItems: 'stretch',
-    justify: 'start',
+    justifyContent: 'start',
     wrap: 'on',
   })
   config?;
@@ -229,9 +255,11 @@ export class Grid {
 
   render() {
     return (
-      <div {...this.attributes}>
-        <slot />
-      </div>
-    );
+      <Host>
+        <div {...this.attributes}>
+          <slot />
+        </div>
+      </Host>
+    )
   }
 }

@@ -1,5 +1,5 @@
-export type AlignContents = 'start' | 'center' | 'end' | 'stretch' | 'between' | 'around' | 'evenly';
-export type AlignItems = 'start' | 'center' | 'end' | 'stretch';
-export type Gutters = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string;
-export type Justifies = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
-export type Wraps = 'on' | 'off' | 'reverse';
+export type GridAlignContent = 'start' | 'center' | 'end' | 'stretch' | 'between' | 'around' | 'evenly';
+export type GridAlignItems = 'start' | 'center' | 'end' | 'stretch';
+export type GridGutter = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | string;
+export type GridJustifyContent = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+export type GridWrap = 'on' | 'off' | 'reverse';

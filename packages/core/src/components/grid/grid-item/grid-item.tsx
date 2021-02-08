@@ -1,6 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/services';
-import { AlignSelfs, Columns, Offsets, Orders } from './grid-item.types';
+import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 
 /**
  * Use as many hp-grid-items as you want inside a hp-grid to layout your content.
@@ -19,7 +19,7 @@ export class GridItem {
    * It overrides the align-items property of its parent.
    */
   @Prop({ reflect: true })
-  alignSelf?: AlignSelfs = 'auto';
+  alignSelf?: GridItemAlignSelf = 'auto';
 
   /**
    * Aligns the grid-item vertically in its container (grid) for extra-small display sizes.
@@ -27,7 +27,7 @@ export class GridItem {
    * (It overrides the align-items property of its parent just for extra-small breakpoints).
    */
   @Prop({ reflect: true })
-  alignSelfXs?: AlignSelfs;
+  alignSelfXs?: GridItemAlignSelf;
 
   /**
    * Aligns the grid-item vertically in its container (grid) for small display sizes.
@@ -35,7 +35,7 @@ export class GridItem {
    * (It overrides the align-items property of its parent just for small breakpoints).
    */
   @Prop({ reflect: true })
-  alignSelfSm?: AlignSelfs;
+  alignSelfSm?: GridItemAlignSelf;
 
   /**
    * Aligns the grid-item vertically in its container (grid) for medium display sizes.
@@ -43,7 +43,7 @@ export class GridItem {
    * (It overrides the align-items property of its parent just for medium breakpoints).
    */
   @Prop({ reflect: true })
-  alignSelfMd?: AlignSelfs;
+  alignSelfMd?: GridItemAlignSelf;
 
   /**
    * Aligns the grid-item vertically in its container (grid) for large display sizes.
@@ -51,7 +51,7 @@ export class GridItem {
    * (It overrides the align-items property of its parent just for large breakpoints).
    */
   @Prop({ reflect: true })
-  alignSelfLg?: AlignSelfs;
+  alignSelfLg?: GridItemAlignSelf;
 
   /**
    * Aligns the grid-item vertically in its container (grid) for extra-large display sizes.
@@ -59,54 +59,70 @@ export class GridItem {
    * (It overrides the align-items property of its parent just for extra-large breakpoints).
    */
   @Prop({ reflect: true })
-  alignSelfXl?: AlignSelfs;
+  alignSelfXl?: GridItemAlignSelf;
 
   /**
-   * Specifies the number of columns for extra-small viewports (mobile phones).
-   * It also determines the number of columns for bigger display sizes when
-   * other upper breakpoints (sm, md, lg, and xl) are not specified.
+   * Aligns the grid-item vertically in its container (grid) for extra-extra-large display sizes.
+   * It also applies to larger breakpoints and display sizes while they are not specified.
+   * (It overrides the align-items property of its parent just for extra-extra-large breakpoints).
    */
   @Prop({ reflect: true })
-  xs?: Columns;
+  alignSelfXxl?: GridItemAlignSelf;
 
   /**
-   * Specifies the number of columns for small viewports (smartphones).
+   * Specifies the number of columns for extra-small viewports (portrait phones).
    * It also determines the number of columns for bigger display sizes when
-   * other upper breakpoints (md, lg, and xl) are not specified.
+   * other upper breakpoints (sm, md, lg, xl and xxl) are not specified.
    */
   @Prop({ reflect: true })
-  sm?: Columns;
+  xs?: GridItemColumn;
+
+  /**
+   * Specifies the number of columns for small viewports (landscape phones).
+   * It also determines the number of columns for bigger display sizes when
+   * other upper breakpoints (md, lg, xl and xxl) are not specified.
+   */
+  @Prop({ reflect: true })
+  sm?: GridItemColumn;
 
   /**
    * Specifies the number of columns for medium viewports (tablets).
    * It also determines the number of columns for bigger display sizes when
-   * other upper breakpoints (lg and xl) are not specified.
+   * other upper breakpoints (lg, xl and xxl) are not specified.
    */
   @Prop({ reflect: true })
-  md?: Columns;
+  md?: GridItemColumn;
 
   /**
    * Specifies the number of columns for large viewports (desktop).
    * It also determines the number of columns for bigger display sizes when
-   * the upper breakpoint (xl) is not specified.
+   * the upper breakpoint (xl and xxl) is not specified.
    */
   @Prop({ reflect: true })
-  lg?: Columns;
+  lg?: GridItemColumn;
 
   /**
-   * Specifies the number of columns for extra-large viewports (wide desktop screen).
+   * Specifies the number of columns for large viewports (large desktops).
+   * It also determines the number of columns for bigger display sizes when
+   * the upper breakpoint (xxl) is not specified.
    */
   @Prop({ reflect: true })
-  xl?: Columns;
+  xl?: GridItemColumn;
 
   /**
-   * Hides the grid-item in extra-small display sizes (mobile phones).
+   * Specifies the number of columns for extra-extra-large viewports (larger desktops).
+   */
+  @Prop({ reflect: true })
+  xxl?: GridItemColumn;
+
+  /**
+   * Hides the grid-item in extra-small display sizes (portrait phones).
    */
   @Prop({ reflect: true })
   hideXs?: boolean;
 
   /**
-   * Hides the grid-item in small display sizes (smartphones).
+   * Hides the grid-item in small display sizes (landscape phones).
    */
   @Prop({ reflect: true })
   hideSm?: boolean;
@@ -124,10 +140,16 @@ export class GridItem {
   hideLg?: boolean;
 
   /**
-   * Hides the grid-item in extra-large display sizes (wide desktop screen).
+   * Hides the grid-item in extra-large display sizes (large desktops).
    */
   @Prop({ reflect: true })
   hideXl?: boolean;
+
+  /**
+   * Hides the grid-item in extra-extra-large display sizes (larger desktops).
+   */
+  @Prop({ reflect: true })
+  hideXxl?: boolean;
 
   /**
    * Hides the grid-item in all display sizes.
@@ -154,6 +176,12 @@ export class GridItem {
   hideLgUp?: boolean;
 
   /**
+   * Hides the grid-item in large and larger display sizes.
+   */
+  @Prop({ reflect: true })
+  hideXlUp?: boolean;
+
+  /**
    * Hides the grid-item in small and smaller display sizes.
    */
   @Prop({ reflect: true })
@@ -172,72 +200,96 @@ export class GridItem {
   hideLgDown?: boolean;
 
   /**
+   * Hides the grid-item in large and smaller display sizes.
+   */
+  @Prop({ reflect: true })
+  hideXlDown?: boolean;
+
+  /**
+   * Hides the grid-item in large and smaller display sizes.
+   */
+  @Prop({ reflect: true })
+  hideXxlDown?: boolean;
+
+  /**
    * Adds an offset space before the grid-item for extra-small display sizes.
    * It also applies to larger breakpoints and display sizes while they are not specified.
    */
   @Prop({ reflect: true })
-  offsetXs?: Offsets;
+  offsetXs?: GridItemOffset;
 
   /**
    * Adds an offset space before the grid-item for small display sizes.
    * It also applies to larger breakpoints and display sizes while they are not specified.
    */
   @Prop({ reflect: true })
-  offsetSm?: Offsets;
+  offsetSm?: GridItemOffset;
 
   /**
    * Adds an offset space before the grid-item for medium display sizes.
    * It also applies to larger breakpoints and display sizes while they are not specified.
    */
   @Prop({ reflect: true })
-  offsetMd?: Offsets;
+  offsetMd?: GridItemOffset;
 
   /**
    * Adds an offset space before the grid-item for large display sizes.
    * It also applies to the larger breakpoint (xl) while that is not specified.
    */
   @Prop({ reflect: true })
-  offsetLg?: Offsets;
+  offsetLg?: GridItemOffset;
 
   /**
    * Adds an offset space before the grid-item for extra-large display sizes.
    */
   @Prop({ reflect: true })
-  offsetXl?: Offsets;
+  offsetXl?: GridItemOffset;
+
+  /**
+   * Adds an offset space before the grid-item for extra-extra-large display sizes.
+   */
+  @Prop({ reflect: true })
+  offsetXxl?: GridItemOffset;
 
   /**
    * Overrides the default order of the grid-item for extra-small display sizes.
    * It also applies to larger breakpoints and display sizes while they are not specified.
    */
   @Prop({ reflect: true })
-  orderXs?: Orders;
+  orderXs?: GridItemOrder;
 
   /**
    * Overrides the default order of the grid-item for small display sizes.
    * It also applies to larger breakpoints and display sizes while they are not specified.
    */
   @Prop({ reflect: true })
-  orderSm?: Orders;
+  orderSm?: GridItemOrder;
 
   /**
    * Overrides the default order of the grid-item for medium display sizes.
    * It also applies to larger breakpoints and display sizes while they are not specified.
    */
   @Prop({ reflect: true })
-  orderMd?: Orders;
+  orderMd?: GridItemOrder;
 
   /**
    * Overrides the default order of the grid-item for large display sizes.
    * It also applies to the larger breakpoint (xl) while that is not specified.
    */
   @Prop({ reflect: true })
-  orderLg?: Orders;
+  orderLg?: GridItemOrder;
 
   /**
    * Overrides the default order of the grid-item for extra-large display sizes.
    */
   @Prop({ reflect: true })
-  orderXl?: Orders;
+  orderXl?: GridItemOrder;
+
+  /**
+   * Overrides the default order of the grid-item for extra-extra-large display sizes.
+   */
+  @Prop({ reflect: true })
+  orderXxl?: GridItemOrder;
 
   @GlobalConfig('gridItem', {
     alignSelf: 'auto'

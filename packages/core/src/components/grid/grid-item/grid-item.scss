@@ -8,19 +8,15 @@
   box-sizing: border-box;
 }
 
-@function max($key, $value) {
-  @return nth(nth($breakpoints, index($breakpoints, $key $value) + 1), 2) - 1px;
-}
-
-@each $key, $value in $align-selfs {
+@each $key, $value in $align-self {
   :host([align-self='#{$key}']) {
     align-self: $value;
   }
 }
 
 @each $breakpoint, $value in $breakpoints {
-  @media screen and (min-width: #{$value}) {
-    @each $key, $value in $align-selfs {
+  @include media-breakpoint-up($breakpoint) {
+    @each $key, $value in $align-self {
       :host([align-self-#{$breakpoint}='#{$key}']) {
         align-self: $value;
       }
@@ -28,63 +24,65 @@
   }
 }
 
-@each $key, $value in $breakpoints {
-  @media screen and (min-width: #{$value}) {
-    :host([#{$key}='auto']) {
+@each $breakpoint, $value in $breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+    :host([#{$breakpoint}='auto']) {
       flex-basis: auto;
       max-width: none;
     }
-    :host([#{$key}='grow']) {
+    :host([#{$breakpoint}='grow']) {
       flex-grow: 1;
       flex-basis: 0;
       max-width: 100%;
     }
     @for $number from 1 through $column {
-      :host([#{$key}='#{$number}']) {
+      :host([#{$breakpoint}='#{$number}']) {
         flex-basis: $number * $base;
         max-width: $number * $base;
       }
-      :host([offset-#{$key}='#{$number}']) {
+      :host([offset-#{$breakpoint}='#{$number}']) {
         margin-left: $number * $base;
       }
-      :host([order-#{$key}='#{$number}']) {
+      :host([order-#{$breakpoint}='#{$number}']) {
         order: $number;
       }
     }
   }
 }
 
-@each $key, $value in $breakpoints {
-  @if ($key != 'xl') {
-    @media screen and (min-width: #{$value}) {
-      :host([hide-#{$key}-up]) {
+@each $breakpoint, $value in $breakpoints {
+  @if ($breakpoint != 'xxl') {
+    @include media-breakpoint-up($breakpoint) {
+      :host([hide-#{$breakpoint}-up]) {
         display: none;
       }
     }
   }
 }
 
-@each $key, $value in $breakpoints {
-  @if ($key != 'xs' and $key != 'xl') {
-    @media screen and (max-width: #{max($key, $value)}) {
-      :host([hide-#{$key}-down]) {
+@each $breakpoint, $value in $breakpoints {
+  @if ($breakpoint != 'xs' and $breakpoint != 'xxl') {
+    $next: breakpoint-next($breakpoint);
+    @include media-breakpoint-down($next) {
+      :host([hide-#{$breakpoint}-down]) {
         display: none;
       }
     }
   }
 }
 
-@each $key, $value in $breakpoints {
-  @if ($key != 'xl') {
-    @media screen and (min-width: $value) and (max-width: max($key, $value)) {
-      :host([hide-#{$key}]) {
+@each $breakpoint, $value in $breakpoints {
+  @if ($breakpoint == 'xxl') {
+    @include media-breakpoint-up($breakpoint) {
+      :host([hide-#{$breakpoint}]) {
         display: none;
       }
     }
   } 
   @else {
-    @media screen and (min-width: $value) {
-      :host([hide-#{$key}]) {
+    $next: breakpoint-next($breakpoint);
+    @include media-breakpoint-between($breakpoint, $next) {
+      :host([hide-#{$breakpoint}]) {
         display: none;
       }
     }

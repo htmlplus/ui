@@ -1,39 +1,41 @@
-$align-contents: (
-  'start': flex-start,
-  'center': center,
-  'end': flex-end,
-  'stretch': stretch,
-  'between': space-between,
-  'around': space-around,
-  'evenly': space-evenly
+$align-content: (
+  start: flex-start,
+  center: center,
+  end: flex-end,
+  stretch: stretch,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
 );
 
 $align-items: (
-  'start': flex-start,
-  'center': center,
-  'end': flex-end,
-  'stretch': stretch
+  start: flex-start,
+  center: center,
+  end: flex-end,
+  stretch: stretch,
 );
 
+// TODO
 $gutters: (
-  'xs': 0.25em,
-  'sm': 0.50em,
-  'md': 1.00em,
-  'lg': 1.75em,
-  'xl': 4.00em
+  xs: 0.25em,
+  sm: 0.5em,
+  md: 1em,
+  lg: 1.75em,
+  xl: 4em,
+  xxl: 8em,
 );
 
-$justifies: (
-  'start': flex-start,
-  'center': center,
-  'end': flex-end,
-  'between': space-between,
-  'around': space-around,
-  'evenly': space-evenly
+$justify-content: (
+  start: flex-start,
+  center: center,
+  end: flex-end,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
 );
 
-$wraps: (
-  'on': wrap,
-  'off': nowrap,
-  'reverse': wrap-reverse
+$wrap: (
+  on: wrap,
+  off: nowrap,
+  reverse: wrap-reverse,
 );

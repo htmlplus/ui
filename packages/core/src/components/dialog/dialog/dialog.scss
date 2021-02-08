@@ -16,14 +16,13 @@
 }
 
 @mixin sticky {
-
   .cell {
     padding: 0;
   }
 
   ::slotted(*) {
     border: 0;
-    border-radius:0;
+    border-radius: 0;
   }
 }
 
@@ -36,7 +35,6 @@
 }
 
 .backdrop {
-
   @include fill;
   z-index: 1;
 
@@ -89,19 +87,15 @@
 }
 
 // breakpoints
-@each $key, $value in $breakpoints-new {
-
+@each $key, $value in $breakpoints {
   // TODO
   @include media-breakpoint-up($key) {
-
     // margin in current breakpoint
     $margin: map-get($dialog-margin, $key);
 
-    @if($margin) {
-
+    @if ($margin) {
       // TODO
       .full-height {
-
         ::slotted(*) {
           min-height: calc(100vh - #{$margin * 2});
         }
@@ -127,7 +121,6 @@
 
     // dialog sizes
     @each $key, $value in $size {
-
       // generate size's class
       @include class('size', $key) {
         .cell {
@@ -139,13 +132,11 @@
 
   // TODO
   @include media-breakpoint-down($key) {
-
     // current fullscreen's suffix
     $key: if(breakpoint-min($key) == null, '', '#{$key}-down');
 
     // generate fullscreen's class
     @include class('fullscreen', $key) {
-
       @include sticky;
 
       .cell {
@@ -178,7 +169,7 @@
 .full-width {
   .cell {
     max-width: none !important;
-  } 
+  }
 }
 
 // TODO
@@ -190,7 +181,6 @@
 
 :host(.fade.dialog-enter-active),
 :host(.fade.dialog-leave-active) {
-
   transition: all 0.5s ease-out;
 
   .dialog {
@@ -204,7 +194,6 @@
 
 :host(.fade.dialog-enter),
 :host(.fade.dialog-leave-active) {
-
   opacity: 0;
 
   ::slotted(*) {
@@ -226,9 +215,8 @@
 
 :host(.fade.dialog-leave),
 :host(.fade.dialog-enter-active) {
-
   opacity: 1;
-  
+
   ::slotted(*) {
     transform: translate(0, 0);
   }

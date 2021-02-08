@@ -5,10 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
-import { AlignContents, AlignItems, Gutters, Justifies, Wraps } from "./components/grid/grid/grid.types";
-import { AlignSelfs, Columns, Offsets, Orders } from "./components/grid/grid-item/grid-item.types";
+import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
+import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionAppearance } from "./components/intersection/intersection.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
@@ -19,7 +20,7 @@ export namespace Components {
         /**
           * Specifies the ratio.
          */
-        "value"?: number | string;
+        "value"?: AspectRatioValue;
     }
     interface PlusCard {
         /**
@@ -161,87 +162,99 @@ export namespace Components {
         /**
           * Aligns contents vertically across all rows (It overrides alignItems).
          */
-        "alignContent"?: AlignContents;
+        "alignContent"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for large display sizes (It overrides alignItemsLg).
          */
-        "alignContentLg"?: AlignContents;
+        "alignContentLg"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for medium display sizes (It overrides alignItemsMd).
          */
-        "alignContentMd"?: AlignContents;
+        "alignContentMd"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for small display sizes (It overrides alignItemsSm).
          */
-        "alignContentSm"?: AlignContents;
+        "alignContentSm"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for extra-large display sizes (It overrides alignItemsXl).
          */
-        "alignContentXl"?: AlignContents;
+        "alignContentXl"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for extra-small display sizes (It overrides alignItemsXs).
          */
-        "alignContentXs"?: AlignContents;
+        "alignContentXs"?: GridAlignContent;
+        /**
+          * Aligns contents vertically across all rows for extra-extra-large display sizes (It overrides alignItemsXXl).
+         */
+        "alignContentXxl"?: GridAlignContent;
         /**
           * Aligns contents vertically inside their own row.
          */
-        "alignItems"?: AlignItems;
+        "alignItems"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for large display sizes.
          */
-        "alignItemsLg"?: AlignItems;
+        "alignItemsLg"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for medium display sizes.
          */
-        "alignItemsMd"?: AlignItems;
+        "alignItemsMd"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for small display sizes.
          */
-        "alignItemsSm"?: AlignItems;
+        "alignItemsSm"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for extra-large display sizes.
          */
-        "alignItemsXl"?: AlignItems;
+        "alignItemsXl"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for extra-small display sizes.
          */
-        "alignItemsXs"?: AlignItems;
+        "alignItemsXs"?: GridAlignItems;
+        /**
+          * Aligns contents vertically inside their own row for extra-extra-large display sizes.
+         */
+        "alignItemsXxl"?: GridAlignItems;
         /**
           * Adds a gap between contents to make space between them vertically and horizontally.
          */
-        "gutter"?: Gutters;
+        "gutter"?: GridGutter;
         /**
           * Adds a gap between contents to make space between them horizontally.
          */
-        "gutterX"?: Gutters;
+        "gutterX"?: GridGutter;
         /**
           * Adds a gap between contents to make space between them vertically.
          */
-        "gutterY"?: Gutters;
+        "gutterY"?: GridGutter;
         /**
           * Justifies contents horizontally.
          */
-        "justify"?: Justifies;
+        "justifyContent"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for large display sizes.
          */
-        "justifyLg"?: Justifies;
+        "justifyContentLg"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for medium display sizes.
          */
-        "justifyMd"?: Justifies;
+        "justifyContentMd"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for small display sizes.
          */
-        "justifySm"?: Justifies;
+        "justifyContentSm"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for extra-large display sizes.
          */
-        "justifyXl"?: Justifies;
+        "justifyContentXl"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for extra-small display sizes.
          */
-        "justifyXs"?: Justifies;
+        "justifyContentXs"?: GridJustifyContent;
+        /**
+          * Justifies contents horizontally for extra-extra-large display sizes.
+         */
+        "justifyContentXxl"?: GridJustifyContent;
         /**
           * Reverses the flow of contents from left-to-right to right-to-left, or vice-versa.
          */
@@ -253,53 +266,61 @@ export namespace Components {
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width.
          */
-        "wrap"?: Wraps;
+        "wrap"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for large screen devices.
          */
-        "wrapLg"?: Wraps;
+        "wrapLg"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for medium screen devices.
          */
-        "wrapMd"?: Wraps;
+        "wrapMd"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for small screen devices.
          */
-        "wrapSm"?: Wraps;
+        "wrapSm"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-large screen devices.
          */
-        "wrapXl"?: Wraps;
+        "wrapXl"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-small screen devices.
          */
-        "wrapXs"?: Wraps;
+        "wrapXs"?: GridWrap;
+        /**
+          * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-extra-large screen devices.
+         */
+        "wrapXxl"?: GridWrap;
     }
     interface PlusGridItem {
         /**
           * Aligns the grid-item vertically in its container (grid). It overrides the align-items property of its parent.
          */
-        "alignSelf"?: AlignSelfs;
+        "alignSelf"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for large breakpoints).
          */
-        "alignSelfLg"?: AlignSelfs;
+        "alignSelfLg"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for medium breakpoints).
          */
-        "alignSelfMd"?: AlignSelfs;
+        "alignSelfMd"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for small breakpoints).
          */
-        "alignSelfSm"?: AlignSelfs;
+        "alignSelfSm"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-large breakpoints).
          */
-        "alignSelfXl"?: AlignSelfs;
+        "alignSelfXl"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-small breakpoints).
          */
-        "alignSelfXs"?: AlignSelfs;
+        "alignSelfXs"?: GridItemAlignSelf;
+        /**
+          * Aligns the grid-item vertically in its container (grid) for extra-extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-extra-large breakpoints).
+         */
+        "alignSelfXxl"?: GridItemAlignSelf;
         /**
           * Hides the grid-item in all display sizes.
          */
@@ -329,7 +350,7 @@ export namespace Components {
          */
         "hideMdUp"?: boolean;
         /**
-          * Hides the grid-item in small display sizes (smartphones).
+          * Hides the grid-item in small display sizes (landscape phones).
          */
         "hideSm"?: boolean;
         /**
@@ -341,73 +362,101 @@ export namespace Components {
          */
         "hideSmUp"?: boolean;
         /**
-          * Hides the grid-item in extra-large display sizes (wide desktop screen).
+          * Hides the grid-item in extra-large display sizes (large desktops).
          */
         "hideXl"?: boolean;
         /**
-          * Hides the grid-item in extra-small display sizes (mobile phones).
+          * Hides the grid-item in large and smaller display sizes.
+         */
+        "hideXlDown"?: boolean;
+        /**
+          * Hides the grid-item in large and larger display sizes.
+         */
+        "hideXlUp"?: boolean;
+        /**
+          * Hides the grid-item in extra-small display sizes (portrait phones).
          */
         "hideXs"?: boolean;
         /**
-          * Specifies the number of columns for large viewports (desktop). It also determines the number of columns for bigger display sizes when the upper breakpoint (xl) is not specified.
+          * Hides the grid-item in extra-extra-large display sizes (larger desktops).
          */
-        "lg"?: Columns;
+        "hideXxl"?: boolean;
         /**
-          * Specifies the number of columns for medium viewports (tablets). It also determines the number of columns for bigger display sizes when other upper breakpoints (lg and xl) are not specified.
+          * Hides the grid-item in large and smaller display sizes.
          */
-        "md"?: Columns;
+        "hideXxlDown"?: boolean;
+        /**
+          * Specifies the number of columns for large viewports (desktop). It also determines the number of columns for bigger display sizes when the upper breakpoint (xl and xxl) is not specified.
+         */
+        "lg"?: GridItemColumn;
+        /**
+          * Specifies the number of columns for medium viewports (tablets). It also determines the number of columns for bigger display sizes when other upper breakpoints (lg, xl and xxl) are not specified.
+         */
+        "md"?: GridItemColumn;
         /**
           * Adds an offset space before the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified.
          */
-        "offsetLg"?: Offsets;
+        "offsetLg"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "offsetMd"?: Offsets;
+        "offsetMd"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "offsetSm"?: Offsets;
+        "offsetSm"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for extra-large display sizes.
          */
-        "offsetXl"?: Offsets;
+        "offsetXl"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "offsetXs"?: Offsets;
+        "offsetXs"?: GridItemOffset;
+        /**
+          * Adds an offset space before the grid-item for extra-extra-large display sizes.
+         */
+        "offsetXxl"?: GridItemOffset;
         /**
           * Overrides the default order of the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified.
          */
-        "orderLg"?: Orders;
+        "orderLg"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "orderMd"?: Orders;
+        "orderMd"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "orderSm"?: Orders;
+        "orderSm"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for extra-large display sizes.
          */
-        "orderXl"?: Orders;
+        "orderXl"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "orderXs"?: Orders;
+        "orderXs"?: GridItemOrder;
         /**
-          * Specifies the number of columns for small viewports (smartphones). It also determines the number of columns for bigger display sizes when other upper breakpoints (md, lg, and xl) are not specified.
+          * Overrides the default order of the grid-item for extra-extra-large display sizes.
          */
-        "sm"?: Columns;
+        "orderXxl"?: GridItemOrder;
         /**
-          * Specifies the number of columns for extra-large viewports (wide desktop screen).
+          * Specifies the number of columns for small viewports (landscape phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (md, lg, xl and xxl) are not specified.
          */
-        "xl"?: Columns;
+        "sm"?: GridItemColumn;
         /**
-          * Specifies the number of columns for extra-small viewports (mobile phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (sm, md, lg, and xl) are not specified.
+          * Specifies the number of columns for large viewports (large desktops). It also determines the number of columns for bigger display sizes when the upper breakpoint (xxl) is not specified.
          */
-        "xs"?: Columns;
+        "xl"?: GridItemColumn;
+        /**
+          * Specifies the number of columns for extra-small viewports (portrait phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (sm, md, lg, xl and xxl) are not specified.
+         */
+        "xs"?: GridItemColumn;
+        /**
+          * Specifies the number of columns for extra-extra-large viewports (larger desktops).
+         */
+        "xxl"?: GridItemColumn;
     }
     interface PlusIntersection {
         /**
@@ -808,7 +857,7 @@ declare namespace LocalJSX {
         /**
           * Specifies the ratio.
          */
-        "value"?: number | string;
+        "value"?: AspectRatioValue;
     }
     interface PlusCard {
         /**
@@ -982,87 +1031,99 @@ declare namespace LocalJSX {
         /**
           * Aligns contents vertically across all rows (It overrides alignItems).
          */
-        "alignContent"?: AlignContents;
+        "alignContent"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for large display sizes (It overrides alignItemsLg).
          */
-        "alignContentLg"?: AlignContents;
+        "alignContentLg"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for medium display sizes (It overrides alignItemsMd).
          */
-        "alignContentMd"?: AlignContents;
+        "alignContentMd"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for small display sizes (It overrides alignItemsSm).
          */
-        "alignContentSm"?: AlignContents;
+        "alignContentSm"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for extra-large display sizes (It overrides alignItemsXl).
          */
-        "alignContentXl"?: AlignContents;
+        "alignContentXl"?: GridAlignContent;
         /**
           * Aligns contents vertically across all rows for extra-small display sizes (It overrides alignItemsXs).
          */
-        "alignContentXs"?: AlignContents;
+        "alignContentXs"?: GridAlignContent;
+        /**
+          * Aligns contents vertically across all rows for extra-extra-large display sizes (It overrides alignItemsXXl).
+         */
+        "alignContentXxl"?: GridAlignContent;
         /**
           * Aligns contents vertically inside their own row.
          */
-        "alignItems"?: AlignItems;
+        "alignItems"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for large display sizes.
          */
-        "alignItemsLg"?: AlignItems;
+        "alignItemsLg"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for medium display sizes.
          */
-        "alignItemsMd"?: AlignItems;
+        "alignItemsMd"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for small display sizes.
          */
-        "alignItemsSm"?: AlignItems;
+        "alignItemsSm"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for extra-large display sizes.
          */
-        "alignItemsXl"?: AlignItems;
+        "alignItemsXl"?: GridAlignItems;
         /**
           * Aligns contents vertically inside their own row for extra-small display sizes.
          */
-        "alignItemsXs"?: AlignItems;
+        "alignItemsXs"?: GridAlignItems;
+        /**
+          * Aligns contents vertically inside their own row for extra-extra-large display sizes.
+         */
+        "alignItemsXxl"?: GridAlignItems;
         /**
           * Adds a gap between contents to make space between them vertically and horizontally.
          */
-        "gutter"?: Gutters;
+        "gutter"?: GridGutter;
         /**
           * Adds a gap between contents to make space between them horizontally.
          */
-        "gutterX"?: Gutters;
+        "gutterX"?: GridGutter;
         /**
           * Adds a gap between contents to make space between them vertically.
          */
-        "gutterY"?: Gutters;
+        "gutterY"?: GridGutter;
         /**
           * Justifies contents horizontally.
          */
-        "justify"?: Justifies;
+        "justifyContent"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for large display sizes.
          */
-        "justifyLg"?: Justifies;
+        "justifyContentLg"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for medium display sizes.
          */
-        "justifyMd"?: Justifies;
+        "justifyContentMd"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for small display sizes.
          */
-        "justifySm"?: Justifies;
+        "justifyContentSm"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for extra-large display sizes.
          */
-        "justifyXl"?: Justifies;
+        "justifyContentXl"?: GridJustifyContent;
         /**
           * Justifies contents horizontally for extra-small display sizes.
          */
-        "justifyXs"?: Justifies;
+        "justifyContentXs"?: GridJustifyContent;
+        /**
+          * Justifies contents horizontally for extra-extra-large display sizes.
+         */
+        "justifyContentXxl"?: GridJustifyContent;
         /**
           * Reverses the flow of contents from left-to-right to right-to-left, or vice-versa.
          */
@@ -1074,53 +1135,61 @@ declare namespace LocalJSX {
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width.
          */
-        "wrap"?: Wraps;
+        "wrap"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for large screen devices.
          */
-        "wrapLg"?: Wraps;
+        "wrapLg"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for medium screen devices.
          */
-        "wrapMd"?: Wraps;
+        "wrapMd"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for small screen devices.
          */
-        "wrapSm"?: Wraps;
+        "wrapSm"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-large screen devices.
          */
-        "wrapXl"?: Wraps;
+        "wrapXl"?: GridWrap;
         /**
           * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-small screen devices.
          */
-        "wrapXs"?: Wraps;
+        "wrapXs"?: GridWrap;
+        /**
+          * Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-extra-large screen devices.
+         */
+        "wrapXxl"?: GridWrap;
     }
     interface PlusGridItem {
         /**
           * Aligns the grid-item vertically in its container (grid). It overrides the align-items property of its parent.
          */
-        "alignSelf"?: AlignSelfs;
+        "alignSelf"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for large breakpoints).
          */
-        "alignSelfLg"?: AlignSelfs;
+        "alignSelfLg"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for medium breakpoints).
          */
-        "alignSelfMd"?: AlignSelfs;
+        "alignSelfMd"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for small breakpoints).
          */
-        "alignSelfSm"?: AlignSelfs;
+        "alignSelfSm"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-large breakpoints).
          */
-        "alignSelfXl"?: AlignSelfs;
+        "alignSelfXl"?: GridItemAlignSelf;
         /**
           * Aligns the grid-item vertically in its container (grid) for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-small breakpoints).
          */
-        "alignSelfXs"?: AlignSelfs;
+        "alignSelfXs"?: GridItemAlignSelf;
+        /**
+          * Aligns the grid-item vertically in its container (grid) for extra-extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-extra-large breakpoints).
+         */
+        "alignSelfXxl"?: GridItemAlignSelf;
         /**
           * Hides the grid-item in all display sizes.
          */
@@ -1150,7 +1219,7 @@ declare namespace LocalJSX {
          */
         "hideMdUp"?: boolean;
         /**
-          * Hides the grid-item in small display sizes (smartphones).
+          * Hides the grid-item in small display sizes (landscape phones).
          */
         "hideSm"?: boolean;
         /**
@@ -1162,73 +1231,101 @@ declare namespace LocalJSX {
          */
         "hideSmUp"?: boolean;
         /**
-          * Hides the grid-item in extra-large display sizes (wide desktop screen).
+          * Hides the grid-item in extra-large display sizes (large desktops).
          */
         "hideXl"?: boolean;
         /**
-          * Hides the grid-item in extra-small display sizes (mobile phones).
+          * Hides the grid-item in large and smaller display sizes.
+         */
+        "hideXlDown"?: boolean;
+        /**
+          * Hides the grid-item in large and larger display sizes.
+         */
+        "hideXlUp"?: boolean;
+        /**
+          * Hides the grid-item in extra-small display sizes (portrait phones).
          */
         "hideXs"?: boolean;
         /**
-          * Specifies the number of columns for large viewports (desktop). It also determines the number of columns for bigger display sizes when the upper breakpoint (xl) is not specified.
+          * Hides the grid-item in extra-extra-large display sizes (larger desktops).
          */
-        "lg"?: Columns;
+        "hideXxl"?: boolean;
         /**
-          * Specifies the number of columns for medium viewports (tablets). It also determines the number of columns for bigger display sizes when other upper breakpoints (lg and xl) are not specified.
+          * Hides the grid-item in large and smaller display sizes.
          */
-        "md"?: Columns;
+        "hideXxlDown"?: boolean;
+        /**
+          * Specifies the number of columns for large viewports (desktop). It also determines the number of columns for bigger display sizes when the upper breakpoint (xl and xxl) is not specified.
+         */
+        "lg"?: GridItemColumn;
+        /**
+          * Specifies the number of columns for medium viewports (tablets). It also determines the number of columns for bigger display sizes when other upper breakpoints (lg, xl and xxl) are not specified.
+         */
+        "md"?: GridItemColumn;
         /**
           * Adds an offset space before the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified.
          */
-        "offsetLg"?: Offsets;
+        "offsetLg"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "offsetMd"?: Offsets;
+        "offsetMd"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "offsetSm"?: Offsets;
+        "offsetSm"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for extra-large display sizes.
          */
-        "offsetXl"?: Offsets;
+        "offsetXl"?: GridItemOffset;
         /**
           * Adds an offset space before the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "offsetXs"?: Offsets;
+        "offsetXs"?: GridItemOffset;
+        /**
+          * Adds an offset space before the grid-item for extra-extra-large display sizes.
+         */
+        "offsetXxl"?: GridItemOffset;
         /**
           * Overrides the default order of the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified.
          */
-        "orderLg"?: Orders;
+        "orderLg"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "orderMd"?: Orders;
+        "orderMd"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "orderSm"?: Orders;
+        "orderSm"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for extra-large display sizes.
          */
-        "orderXl"?: Orders;
+        "orderXl"?: GridItemOrder;
         /**
           * Overrides the default order of the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified.
          */
-        "orderXs"?: Orders;
+        "orderXs"?: GridItemOrder;
         /**
-          * Specifies the number of columns for small viewports (smartphones). It also determines the number of columns for bigger display sizes when other upper breakpoints (md, lg, and xl) are not specified.
+          * Overrides the default order of the grid-item for extra-extra-large display sizes.
          */
-        "sm"?: Columns;
+        "orderXxl"?: GridItemOrder;
         /**
-          * Specifies the number of columns for extra-large viewports (wide desktop screen).
+          * Specifies the number of columns for small viewports (landscape phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (md, lg, xl and xxl) are not specified.
          */
-        "xl"?: Columns;
+        "sm"?: GridItemColumn;
         /**
-          * Specifies the number of columns for extra-small viewports (mobile phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (sm, md, lg, and xl) are not specified.
+          * Specifies the number of columns for large viewports (large desktops). It also determines the number of columns for bigger display sizes when the upper breakpoint (xxl) is not specified.
          */
-        "xs"?: Columns;
+        "xl"?: GridItemColumn;
+        /**
+          * Specifies the number of columns for extra-small viewports (portrait phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (sm, md, lg, xl and xxl) are not specified.
+         */
+        "xs"?: GridItemColumn;
+        /**
+          * Specifies the number of columns for extra-extra-large viewports (larger desktops).
+         */
+        "xxl"?: GridItemColumn;
     }
     interface PlusIntersection {
         /**
