@@ -119,7 +119,7 @@ export class Intersection {
     this.bind();
   }
 
-  rerender() {
+  setVisible() {
 
     switch (this.appearance) {
 
@@ -196,7 +196,7 @@ export class Intersection {
 
     this.isIntersecting = entry.isIntersecting;
 
-    this.rerender();
+    this.setVisible();
 
     this.plusChange.emit(entry);
 

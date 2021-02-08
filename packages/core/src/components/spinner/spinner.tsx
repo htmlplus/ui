@@ -34,18 +34,12 @@ export class Spinner {
 
   get elements() {
 
-    let number = 0;
+    const map = {
+      'default': 8,
+      'double-bounce': 2
+    };
 
-    switch (this.type) {
-
-      case 'default':
-        number = 8;
-        break;
-
-      case 'double-bounce':
-        number = 2;
-        break;
-    }
+    const number = map[this.type] ?? 1;
 
     return Array.from(Array(number).keys());
   }

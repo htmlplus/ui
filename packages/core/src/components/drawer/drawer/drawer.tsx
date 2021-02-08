@@ -359,6 +359,6 @@ export class Drawer {
           <slot />
         </div>
       </Host >
-    );
+    )
   }
 }

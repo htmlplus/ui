@@ -1,0 +1,45 @@
+:host([type=ring]) {
+
+    .wrapper:after {
+        content: " ";
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: calc(0.25em * var(--plus-spinner-weight)) solid currentColor;
+        border-color: currentColor currentColor currentColor transparent;
+        animation: ring 1.2s linear infinite;
+    }
+
+    @keyframes ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+:host([type=dual-ring]) {
+
+    .wrapper:after {
+        content: " ";
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: calc(0.25em * var(--plus-spinner-weight)) solid currentColor;
+        border-color: currentColor transparent currentColor transparent;
+        animation: dual-ring 1.2s linear infinite;
+    }
+
+    @keyframes dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

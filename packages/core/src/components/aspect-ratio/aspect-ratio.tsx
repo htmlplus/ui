@@ -1,5 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/services';
+import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
  * This component helps to specify a fixed ratio for the width and height sizes of a visual object (e.g. Image).
@@ -16,7 +17,7 @@ export class AspectRatio {
    * Specifies the ratio.
    */
   @Prop()
-  value?: number | string;
+  value?: AspectRatioValue;
 
   @GlobalConfig('aspectRatio')
   config?;
@@ -27,9 +28,9 @@ export class AspectRatio {
 
     if (typeof this.value === 'string') {
 
-      const sections = this.value.split('/').map((item) => parseFloat(item));
+      const [valueA, valueB] = this.value.split('/').map((item) => parseFloat(item));
 
-      const value = sections[0] / (sections[1] || 1);
+      const value = valueA / (valueB || 1);
 
       return value;
     }
@@ -49,10 +50,7 @@ export class AspectRatio {
   render() {
     return (
       <Host>
-        {this.style && <div
-          class="sizer"
-          style={this.style}
-        />}
+        {this.style && <div class="sizer" style={this.style} />}
         <slot />
       </Host>
     )

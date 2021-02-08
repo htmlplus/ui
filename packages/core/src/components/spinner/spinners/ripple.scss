@@ -1,0 +1,18 @@
+:host([type=ripple]) {
+
+    .wrapper {
+        background-color: currentColor;
+        border-radius: 100%;  
+        animation: ripple 1.0s infinite ease-in-out;
+    }
+        
+    @keyframes ripple {
+        0% { 
+            transform: scale(0);
+        } 
+        100% {
+            transform: scale(1.0);
+            opacity: 0;
+        }
+    }
+}
