@@ -29,7 +29,7 @@ class {
     return (
       <div class="wrapper">
         <plus-intersection class="box" once onPlusChange={(event) => this.onChange(event)}>
-          <img data-src="https://placekitten.com/200/300"/>
+          <img data-src="https://placekitten.com/200/200" alt="Lazy Image"/>
         </plus-intersection>
       </div>
     )

@@ -9,17 +9,30 @@
 class {
 
   @State()
-  counter = 0;
+  inside = 0;
 
-  callback() {
-    this.counter++;
+  @State()
+  outside = 0;
+
+  onClick() {
+    this.inside++;
+  }
+
+  onOutsideClick() {
+    this.outside++;
   }
 
   render() {
     return (
       <preview>
-        <plus-outside-click class="box" onPlusOutsideClick={() => this.callback()}>
-            {this.counter} times clicked
+        <plus-outside-click 
+          class="box" 
+          onClick={() => this.onClick()} 
+          onPlusOutsideClick={() => this.onOutsideClick()}
+        >
+          {this.inside} times inside clicked
+          <br/>
+          {this.outside} times outside clicked
         </plus-outside-click>
       </preview>
     )

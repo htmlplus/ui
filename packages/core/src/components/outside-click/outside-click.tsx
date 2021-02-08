@@ -2,7 +2,10 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil
 import { Bind, GlobalConfig, OutsideClick as OutsideClickCore } from '@app/services';
 
 /**
- * TODO
+ * TODO : 
+ * https://github.com/arkon/ng-click-outside
+ * https://github.com/vue-bulma/click-outside
+ * قابلیت اتصال به پدر در صورت نداشتن فرزند. با این کار از ایجاد یک رپ اضافی جلو گیری میشود
  * @development
  * @examples default
  */
