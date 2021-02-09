@@ -1,11 +1,14 @@
 import { Component, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/services';
-import { IntersectionAppearance } from './intersection.types';
+import { IntersectionBehavior } from './intersection.types';
 
 /**
- * TODO
+ * This component provides a way to asynchronously observe changes in the intersection of a target element with an ancestor
+ * element or with a top-level document's [viewport](https://developer.mozilla.org/en-US/docs/Glossary/Viewport). 
+ * Its basic behavior is totally similar to [standard intersection observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+ * Its callback is executed whenever intersects with the viewport, or when the amount by which the two intersect changes by a requested amount.
  * @slot - The default slot
- * @examples default, image
+ * @examples default, lazy-image
  */
 @Component({
   tag: 'plus-intersection',
@@ -15,43 +18,54 @@ import { IntersectionAppearance } from './intersection.types';
 export class Intersection {
 
   /**
-   * TODO
+   * It specifies how intersection behaves with its children. 
+   * When it's set to 'normal', it doesn't have any effect on its children and the life cycles happen normally.
+   * When it's set to 'blink' the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children.
+   * When it's set to 'appear' the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
    */
   @Prop()
-  appearance?: IntersectionAppearance = 'normal';
+  behavior?: IntersectionBehavior = 'normal';
 
   /**
-   * TODO
+   * Disables the intersection's trigger.
    */
   @Prop()
   disabled?: boolean;
 
   /**
-   * TODO
+   * It causes the callback to be called just once for the first time.
    */
   @Prop()
   once?: boolean;
 
   /**
-   * TODO
+   * The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. 
+   * Defaults to the browser viewport if not specified or if null.
    */
   @Prop()
   root?: Element;
 
   /**
-   * TODO
+   * Margin around the root. Can have values similar to the CSS [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) property, e.g. 
+   * "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages. 
+   * This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. 
+   * Defaults to all zeros.
    */
   @Prop()
   rootMargin?: string;
 
   /**
-   * TODO
+   * Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. 
+   * If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. 
+   * If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. 
+   * The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). 
+   * A value of 1.0 means that the threshold isn't considered passed until every pixel is visible.
    */
   @Prop()
   threshold?: number | number[];
 
   /**
-   * TODO
+   * This event is triggered when its children intersects with the viewport in either coming to the viewport or going out of it.
    */
   @Event({
     bubbles: false,
@@ -60,7 +74,7 @@ export class Intersection {
   plusChange!: EventEmitter<IntersectionObserverEntry>;
 
   @GlobalConfig('intersection', {
-    appearance: 'normal'
+    behavior: 'normal'
   })
   config?;
 
@@ -121,7 +135,7 @@ export class Intersection {
 
   setVisible() {
 
-    switch (this.appearance) {
+    switch (this.behavior) {
 
       case 'appear':
 
@@ -157,9 +171,9 @@ export class Intersection {
 
     switch (name) {
 
-      case 'appearance':
+      case 'behavior':
 
-        this.isVisible = this.appearance !== 'appear';
+        this.isVisible = this.behavior !== 'appear';
 
         break;
 
@@ -211,7 +225,7 @@ export class Intersection {
 
   connectedCallback() {
 
-    this.isVisible = (this.appearance !== 'appear');
+    this.isVisible = (this.behavior !== 'appear');
 
     !this.disabled && this.bind();
   }

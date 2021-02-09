@@ -10,7 +10,7 @@ import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dial
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
-import { IntersectionAppearance } from "./components/intersection/intersection.types";
+import { IntersectionBehavior } from "./components/intersection/intersection.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { TransitionDirection, TransitionDuration, TransitionPause, TransitionRepeat, TransitionStart } from "./components/transition/transition.types";
@@ -460,27 +460,27 @@ export namespace Components {
     }
     interface PlusIntersection {
         /**
-          * TODO
+          * It specifies how intersection behaves with its children.  When it's set to 'normal', it doesn't have any effect on its children and the life cycles happen normally. When it's set to 'blink' the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children. When it's set to 'appear' the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
          */
-        "appearance"?: IntersectionAppearance;
+        "behavior"?: IntersectionBehavior;
         /**
-          * TODO
+          * Disables the intersection's trigger.
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * It causes the callback to be called just once for the first time.
          */
         "once"?: boolean;
         /**
-          * TODO
+          * The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target.  Defaults to the browser viewport if not specified or if null.
          */
         "root"?: Element;
         /**
-          * TODO
+          * Margin around the root. Can have values similar to the CSS [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) property, e.g.  "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages.  This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections.  Defaults to all zeros.
          */
         "rootMargin"?: string;
         /**
-          * TODO
+          * Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed.  If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5.  If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1].  The default is 0 (meaning as soon as even one pixel is visible, the callback will be run).  A value of 1.0 means that the threshold isn't considered passed until every pixel is visible.
          */
         "threshold"?: number | number[];
     }
@@ -1329,31 +1329,31 @@ declare namespace LocalJSX {
     }
     interface PlusIntersection {
         /**
-          * TODO
+          * It specifies how intersection behaves with its children.  When it's set to 'normal', it doesn't have any effect on its children and the life cycles happen normally. When it's set to 'blink' the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children. When it's set to 'appear' the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
          */
-        "appearance"?: IntersectionAppearance;
+        "behavior"?: IntersectionBehavior;
         /**
-          * TODO
+          * Disables the intersection's trigger.
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * This event is triggered when its children intersects with the viewport in either coming to the viewport or going out of it.
          */
         "onPlusChange"?: (event: CustomEvent<IntersectionObserverEntry>) => void;
         /**
-          * TODO
+          * It causes the callback to be called just once for the first time.
          */
         "once"?: boolean;
         /**
-          * TODO
+          * The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target.  Defaults to the browser viewport if not specified or if null.
          */
         "root"?: Element;
         /**
-          * TODO
+          * Margin around the root. Can have values similar to the CSS [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) property, e.g.  "10px 20px 30px 40px" (top, right, bottom, left). The values can be percentages.  This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections.  Defaults to all zeros.
          */
         "rootMargin"?: string;
         /**
-          * TODO
+          * Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed.  If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5.  If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1].  The default is 0 (meaning as soon as even one pixel is visible, the callback will be run).  A value of 1.0 means that the threshold isn't considered passed until every pixel is visible.
          */
         "threshold"?: number | number[];
     }

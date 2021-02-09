@@ -1,1 +1,1 @@
-export type IntersectionAppearance = 'blink' | 'normal' | 'appear';
+export type IntersectionBehavior = 'blink' | 'normal' | 'appear';
