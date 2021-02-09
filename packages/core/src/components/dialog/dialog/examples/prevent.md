@@ -1,7 +1,7 @@
 ```tsx [script]
 class {
 
-  confirm(type, event) {
+  ensure(type, event) {
     
     if(confirm(`Are you sure you want to ${type} it?`)) return;
 
@@ -17,8 +17,8 @@ class {
         <plus-dialog 
           class="fade" 
           connector="dialog-prevent" 
-          onPlusOpen={(event) => this.confirm('open', event)}
-          onPlusClose={(event) => this.confirm('close', event)}
+          onPlusOpen={(event) => this.ensure('open', event)}
+          onPlusClose={(event) => this.ensure('close', event)}
         >
           <plus-dialog-content>
             <plus-dialog-header>
