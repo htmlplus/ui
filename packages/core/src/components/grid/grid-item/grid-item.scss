@@ -50,41 +50,28 @@
   }
 }
 
-@each $breakpoint, $value in $breakpoints {
-  @if ($breakpoint != 'xxl') {
-    @include media-breakpoint-up($breakpoint) {
-      :host([hide-#{$breakpoint}-up]) {
-        display: none;
-      }
+@each $breakpoint, $value in slice($breakpoints, 1, -2) {
+  @include media-breakpoint-up($breakpoint) {
+    :host([hide-#{$breakpoint}-up]) {
+      display: none;
+    }
+  }
+}
+
+@each $breakpoint, $value in slice($breakpoints, 2, -2) {
+  $next: breakpoint-next($breakpoint);
+  @include media-breakpoint-down($next) {
+    :host([hide-#{$breakpoint}-down]) {
+      display: none;
     }
   }
 }
 
 @each $breakpoint, $value in $breakpoints {
-  @if ($breakpoint != 'xs' and $breakpoint != 'xxl') {
-    $next: breakpoint-next($breakpoint);
-    @include media-breakpoint-down($next) {
-      :host([hide-#{$breakpoint}-down]) {
-        display: none;
-      }
-    }
-  }
-}
-
-@each $breakpoint, $value in $breakpoints {
-  @if ($breakpoint == 'xxl') {
-    @include media-breakpoint-up($breakpoint) {
-      :host([hide-#{$breakpoint}]) {
-        display: none;
-      }
-    }
-  } 
-  @else {
-    $next: breakpoint-next($breakpoint);
-    @include media-breakpoint-between($breakpoint, $next) {
-      :host([hide-#{$breakpoint}]) {
-        display: none;
-      }
+  $next: breakpoint-next($breakpoint);
+  @include media-breakpoint-between($breakpoint, $next) {
+    :host([hide-#{$breakpoint}]) {
+      display: none;
     }
   }
 }
