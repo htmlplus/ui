@@ -35,6 +35,5 @@
     "jest-cli": "^26.6.3",
     "puppeteer": "^5.4.1",
     "rimraf": "^3.0.2"
-  },
-  "gitHead": "e9d48b9a99cd7bd6762ebf3e5e86ed51925a4437"
+  }
 }
