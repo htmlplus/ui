@@ -8,7 +8,7 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPlacementMa
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
  * @group dialog
  * @slot - The default slot
- * @examples default, animation, persistent, placement, size, backdrop, scrollable, specific-scrollable, fullscreen, full-width, full-height, sticky, nesting
+ * @examples default, animation, persistent, placement, size, backdrop, scrollable, specific-scrollable, fullscreen, full-width, full-height, sticky, nesting, prevent
  */
 @Component({
   tag: 'plus-dialog',
