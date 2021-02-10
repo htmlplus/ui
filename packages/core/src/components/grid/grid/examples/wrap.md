@@ -1,5 +1,3 @@
-TODO: wrap is enable by default. if more than 12 you can off.
-
 ```css [style]
 .box {
   border: 1px solid #ccc;

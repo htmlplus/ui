@@ -4,6 +4,8 @@ import { DialogLink, Inject, rebind } from '../dialog/dialog.link';
 /**
  * @group dialog
  * @slot - The default slot
+ * @slot open - Specifies the content of toggler when it's opened
+ * @slot close - Specifies the content of toggler when it's closed
  */
 @Component({
   tag: 'plus-dialog-toggler',
@@ -13,7 +15,10 @@ import { DialogLink, Inject, rebind } from '../dialog/dialog.link';
 export class DialogToggler {
 
   /**
-   * TODO
+   * This property helps you to attach which dialog this toggler controls. 
+   * It doesn't matter where the dialog toggler is. 
+   * You can put the dialog's toggler inside or outside of the dialog. 
+   * Read more about connectors [here](https://htmlplus.io/features/connector).
    */
   @Prop()
   connector?: string;

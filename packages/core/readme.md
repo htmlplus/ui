@@ -4,7 +4,7 @@
 ### The most flexible web component library!
 [Explore HTMLPLUS docs](https://htmlplus.io/introduction/what-is-htmlplus)
 
-HTMLPLUS is framework-less and lightweight. It’s totally native and developed purely with javascript. All HTMLPLUS components are customizable and configurable.
+HTMLPLUS is framework-less and lightweight. It's totally native and developed purely with javascript. All HTMLPLUS components are customizable and configurable.
 
 ## Quick start
 To use HTMLPLUS follow [this](https://htmlplus.io/getting-started/installation) instruction.

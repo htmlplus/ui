@@ -18,29 +18,28 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPlacementMa
 export class Dialog {
 
   /**
-   * Activate the dialog’s backdrop to show or not.
+   * Activate the dialog's backdrop to show or not.
    */
   @Prop()
   backdrop?: boolean = true;
 
   /**
-   * Used to connect dialog and dialog-action components.
-   * This property helps you to attach which dialog action controls the dialog.
-   * It doesn't matter where the dialog action is.
-   * You can put the dialog’s action inside or outside of the dialog.
-   * Read more about connectors here.
+   * This property helps you to attach which dialog toggler controls the dialog. 
+   * It doesn't matter where the dialog toggler is. 
+   * You can put the dialog's toggler inside or outside of the dialog. 
+   * Read more about connectors [here](https://htmlplus.io/features/connector).
    */
   @Prop()
   connector?: string;
 
   /**
-   * Set the height of the dialog as much as the screen’s height.
+   * Set the height of the dialog as much as the screen's height.
    */
   @Prop()
   fullHeight?: boolean;
 
   /**
-   * Set the width of the dialog as much as the screen’s width.
+   * Set the width of the dialog as much as the screen's width.
    */
   @Prop()
   fullWidth?: boolean;
@@ -83,13 +82,13 @@ export class Dialog {
   scrollable?: boolean;
 
   /**
-   * TODO
+   * Determine the width of the dialog.
    */
   @Prop()
   size?: DialogSize;
 
   /**
-   * TODO
+   * Removes the margin around the dialog's content.
    */
   @Prop()
   sticky?: boolean;

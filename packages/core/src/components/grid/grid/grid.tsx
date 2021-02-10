@@ -3,12 +3,9 @@ import { GlobalConfig } from '@app/services';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
- * TODO: HTML+ grid is extremely flexible and powerful.
- * All you need is to use one of the best flexbox-based grid systems ever in the world
- * to build simple to complex responsive layouts, just using two main components:
- * hp-grid (as a container) & hp-grid-item.
- * Use these components to align content in any form & shape and for all screen sizes
- * with 12 available column sizes and 5 default breakpoints.
+ * It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, 
+ * using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, 
+ * align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.
  * @group grid
  * @slot - The default slot
  * @examples default, auto-sizing, gutters, gutters-x, gutters-y, align-items, align-content, align-self, justify, reverse, wrap, offset, order, hide, vertical

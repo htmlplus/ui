@@ -1,5 +1,3 @@
-TODO: align-self on grid-item overrides grid align-items
-
 ```css [style]
 plus-grid {
   background-color: #fafafa;

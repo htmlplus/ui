@@ -1,5 +1,3 @@
-TODO: align-content (unlike align-items) affect all rows of items
-
 ```css [style]
 plus-grid {
   background-color: #fafafa;

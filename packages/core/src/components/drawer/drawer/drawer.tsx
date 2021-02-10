@@ -5,7 +5,7 @@ import { DrawerLink, Inject, rebind } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.types';
 
 /**
- * TODO
+ * This component lets you add collapsible side contents like navigation alongside some primary content.
  * @group drawer
  * @slot - The default slot
  */
@@ -17,7 +17,7 @@ import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.type
 export class Drawer {
 
   /**
-   * Activate the drawer’s backdrop to show or not.
+   * Activate the drawer's backdrop to show or not.
    */
   @Prop()
   backdrop?: DrawerBackdrop = 'auto';
@@ -29,7 +29,10 @@ export class Drawer {
   breakpoint?: DrawerBreakpoint = 'md';
 
   /**
-   * TODO
+   * This property helps you to attach which drawer toggler controls the drawer. 
+   * It doesn't matter where the drawer toggler is. 
+   * You can put the drawer's toggler inside or outside of the drawer. 
+   * Read more about connectors [here](https://htmlplus.io/features/connector).
    */
   @Prop()
   connector?: string;
@@ -71,7 +74,7 @@ export class Drawer {
   reverse?: boolean;
 
   /**
-   * TODO
+   * Determine the width of the drawer.
    */
   @Prop()
   size?: string;
