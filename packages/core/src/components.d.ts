@@ -460,7 +460,7 @@ export namespace Components {
     }
     interface PlusIntersection {
         /**
-          * It specifies how intersection behaves with its children.  When it's set to 'normal', it doesn't have any effect on its children and the life cycles happen normally. When it's set to 'blink' the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children. When it's set to 'appear' the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
+          * It specifies how intersection behaves with its children.  When it's set to `normal`, it doesn't have any effect on its children and the life cycles happen normally. When it's set to `blink` the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children. When it's set to `appear` the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
          */
         "behavior"?: IntersectionBehavior;
         /**
@@ -1329,7 +1329,7 @@ declare namespace LocalJSX {
     }
     interface PlusIntersection {
         /**
-          * It specifies how intersection behaves with its children.  When it's set to 'normal', it doesn't have any effect on its children and the life cycles happen normally. When it's set to 'blink' the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children. When it's set to 'appear' the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
+          * It specifies how intersection behaves with its children.  When it's set to `normal`, it doesn't have any effect on its children and the life cycles happen normally. When it's set to `blink` the children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children. When it's set to `appear` the children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
          */
         "behavior"?: IntersectionBehavior;
         /**
