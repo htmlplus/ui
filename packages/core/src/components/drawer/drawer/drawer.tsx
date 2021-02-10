@@ -23,7 +23,7 @@ export class Drawer {
   backdrop?: DrawerBackdrop = 'auto';
 
   /**
-   * TODO
+   * Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met.
    */
   @Prop()
   breakpoint?: DrawerBreakpoint = 'md';
@@ -38,13 +38,13 @@ export class Drawer {
   connector?: string;
 
   /**
-   * TODO
+   * Set the width of drawer to the minimum size you specified for the `mini-size` property.
    */
   @Prop()
   mini?: boolean;
 
   /**
-   * TODO
+   * Sets the minimum width size of the drawer.
    */
   @Prop()
   miniSize?: string;
@@ -56,22 +56,22 @@ export class Drawer {
   open?: boolean;
 
   /**
-   * TODO
+   * If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it.
    */
   @Prop()
   persistent?: boolean;
 
   /**
-   * TODO
+   * Specifies where the drawer will open.
    */
   @Prop()
   placement?: DrawerPlacement;
 
   /**
-   * TODO
+   * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce. 
    */
   @Prop()
-  reverse?: boolean;
+  flexible?: boolean;
 
   /**
    * Determine the width of the drawer.
@@ -80,7 +80,7 @@ export class Drawer {
   size?: string;
 
   /**
-   * TODO
+   * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background. 
    */
   @Prop({ reflect: true })
   temporary?: boolean;
@@ -147,7 +147,7 @@ export class Drawer {
       'content',
       {
         [placement]: true,
-        reverse: this.reverse
+        reverse: this.flexible
       }
     );
   }
