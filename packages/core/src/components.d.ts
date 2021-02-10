@@ -36,19 +36,19 @@ export namespace Components {
     }
     interface PlusDialog {
         /**
-          * Activate the dialog’s backdrop to show or not.
+          * Activate the dialog's backdrop to show or not.
          */
         "backdrop"?: boolean;
         /**
-          * Used to connect dialog and dialog-action components. This property helps you to attach which dialog action controls the dialog. It doesn't matter where the dialog action is. You can put the dialog’s action inside or outside of the dialog. Read more about connectors here.
+          * This property helps you to attach which dialog toggler controls the dialog.  It doesn't matter where the dialog toggler is.  You can put the dialog's toggler inside or outside of the dialog.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
         /**
-          * Set the height of the dialog as much as the screen’s height.
+          * Set the height of the dialog as much as the screen's height.
          */
         "fullHeight"?: boolean;
         /**
-          * Set the width of the dialog as much as the screen’s width.
+          * Set the width of the dialog as much as the screen's width.
          */
         "fullWidth"?: boolean;
         /**
@@ -76,11 +76,11 @@ export namespace Components {
          */
         "scrollable"?: boolean;
         /**
-          * TODO
+          * Determine the width of the dialog.
          */
         "size"?: DialogSize;
         /**
-          * TODO
+          * Removes the margin around the dialog's content.
          */
         "sticky"?: boolean;
     }
@@ -102,13 +102,13 @@ export namespace Components {
     }
     interface PlusDialogToggler {
         /**
-          * TODO
+          * This property helps you to attach which dialog this toggler controls.  It doesn't matter where the dialog toggler is.  You can put the dialog's toggler inside or outside of the dialog.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
     }
     interface PlusDrawer {
         /**
-          * Activate the drawer’s backdrop to show or not.
+          * Activate the drawer's backdrop to show or not.
          */
         "backdrop"?: DrawerBackdrop;
         /**
@@ -116,7 +116,7 @@ export namespace Components {
          */
         "breakpoint"?: DrawerBreakpoint;
         /**
-          * TODO
+          * This property helps you to attach which drawer toggler controls the drawer.  It doesn't matter where the drawer toggler is.  You can put the drawer's toggler inside or outside of the drawer.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
         /**
@@ -144,7 +144,7 @@ export namespace Components {
          */
         "reverse"?: boolean;
         /**
-          * TODO
+          * Determine the width of the drawer.
          */
         "size"?: string;
         /**
@@ -154,7 +154,7 @@ export namespace Components {
     }
     interface PlusDrawerToggler {
         /**
-          * TODO
+          * This property helps you to attach which drawer this toggler controls.  It doesn't matter where the drawer toggler is.  You can put the drawer's toggler inside or outside of the drawer.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
     }
@@ -873,19 +873,19 @@ declare namespace LocalJSX {
     }
     interface PlusDialog {
         /**
-          * Activate the dialog’s backdrop to show or not.
+          * Activate the dialog's backdrop to show or not.
          */
         "backdrop"?: boolean;
         /**
-          * Used to connect dialog and dialog-action components. This property helps you to attach which dialog action controls the dialog. It doesn't matter where the dialog action is. You can put the dialog’s action inside or outside of the dialog. Read more about connectors here.
+          * This property helps you to attach which dialog toggler controls the dialog.  It doesn't matter where the dialog toggler is.  You can put the dialog's toggler inside or outside of the dialog.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
         /**
-          * Set the height of the dialog as much as the screen’s height.
+          * Set the height of the dialog as much as the screen's height.
          */
         "fullHeight"?: boolean;
         /**
-          * Set the width of the dialog as much as the screen’s width.
+          * Set the width of the dialog as much as the screen's width.
          */
         "fullWidth"?: boolean;
         /**
@@ -929,11 +929,11 @@ declare namespace LocalJSX {
          */
         "scrollable"?: boolean;
         /**
-          * TODO
+          * Determine the width of the dialog.
          */
         "size"?: DialogSize;
         /**
-          * TODO
+          * Removes the margin around the dialog's content.
          */
         "sticky"?: boolean;
     }
@@ -955,13 +955,13 @@ declare namespace LocalJSX {
     }
     interface PlusDialogToggler {
         /**
-          * TODO
+          * This property helps you to attach which dialog this toggler controls.  It doesn't matter where the dialog toggler is.  You can put the dialog's toggler inside or outside of the dialog.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
     }
     interface PlusDrawer {
         /**
-          * Activate the drawer’s backdrop to show or not.
+          * Activate the drawer's backdrop to show or not.
          */
         "backdrop"?: DrawerBackdrop;
         /**
@@ -969,7 +969,7 @@ declare namespace LocalJSX {
          */
         "breakpoint"?: DrawerBreakpoint;
         /**
-          * TODO
+          * This property helps you to attach which drawer toggler controls the drawer.  It doesn't matter where the drawer toggler is.  You can put the drawer's toggler inside or outside of the drawer.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
         /**
@@ -1013,7 +1013,7 @@ declare namespace LocalJSX {
          */
         "reverse"?: boolean;
         /**
-          * TODO
+          * Determine the width of the drawer.
          */
         "size"?: string;
         /**
@@ -1023,7 +1023,7 @@ declare namespace LocalJSX {
     }
     interface PlusDrawerToggler {
         /**
-          * TODO
+          * This property helps you to attach which drawer this toggler controls.  It doesn't matter where the drawer toggler is.  You can put the drawer's toggler inside or outside of the drawer.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
     }
