@@ -1,11 +1,12 @@
 ```css [style]
 plus-grid {
-  background-color: #fafafa;
+  background-color: #eee;
   height: 140px;
 }
 .box {
-  border: 1px solid #ccc;
-  background-color: #eee;
+  color: #00bcd4;
+  border: 1px solid #fff;
+  background-color: #e0f7fa;
   padding: 0.5em;
   text-align: center;
 }

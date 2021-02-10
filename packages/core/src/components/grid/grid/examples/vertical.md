@@ -3,8 +3,9 @@ plus-grid {
   height: 200px;
 }
 .box {
-  border: 1px solid #ccc;
-  background-color: #eee;
+  color: #00bcd4;
+  border: 1px solid #fff;
+  background-color: #e0f7fa;
   height: 100%;
   padding: 0.5em;
   text-align: center;
