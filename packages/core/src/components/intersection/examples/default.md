@@ -5,20 +5,14 @@
 }
 
 .status {
+    color: #fafafa;
+    background-color: #212121;
     position: absolute;
     top: 12px;
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 12px;
     border-radius: 20px;
-}
-
-.status.in {
-    background-color: green;
-}
-
-.status.out {
-    background-color: red;
 }
 
 .content {
@@ -47,7 +41,7 @@ class {
   render() {
     return (
       <div class="wrapper">
-        <div class={`status ${this.intersecting ? 'in' : 'out'}`}>
+        <div class="status">
           {this.intersecting ? 'In Viewport' : 'Out of Viewport'}
         </div>
         <div class="content">
