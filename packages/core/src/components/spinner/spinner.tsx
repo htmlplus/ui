@@ -4,7 +4,7 @@ import { SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
  * TODO
- * @internal
+ * @development
  * @examples default, type, size, color
  */
 @Component({

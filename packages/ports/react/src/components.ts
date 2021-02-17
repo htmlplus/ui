@@ -24,6 +24,7 @@ export const PlusGridItem = /*@__PURE__*/createReactComponent<JSX.PlusGridItem, 
 export const PlusIntersection = /*@__PURE__*/createReactComponent<JSX.PlusIntersection, HTMLPlusIntersectionElement>('plus-intersection');
 export const PlusOutsideClick = /*@__PURE__*/createReactComponent<JSX.PlusOutsideClick, HTMLPlusOutsideClickElement>('plus-outside-click');
 export const PlusRipple = /*@__PURE__*/createReactComponent<JSX.PlusRipple, HTMLPlusRippleElement>('plus-ripple');
+export const PlusSpinner = /*@__PURE__*/createReactComponent<JSX.PlusSpinner, HTMLPlusSpinnerElement>('plus-spinner');
 export const PlusTabs = /*@__PURE__*/createReactComponent<JSX.PlusTabs, HTMLPlusTabsElement>('plus-tabs');
 export const PlusTabsBar = /*@__PURE__*/createReactComponent<JSX.PlusTabsBar, HTMLPlusTabsBarElement>('plus-tabs-bar');
 export const PlusTabsPanel = /*@__PURE__*/createReactComponent<JSX.PlusTabsPanel, HTMLPlusTabsPanelElement>('plus-tabs-panel');
