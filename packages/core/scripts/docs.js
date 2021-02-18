@@ -90,6 +90,28 @@ const examples = (component) => {
     .sort((a, b) => keys.indexOf(a.key) - keys.indexOf(b.key));
 }
 
+const externals = (component) => {
+
+  const dir = path.join(component.dirPath, 'externals');
+
+  if (!fs.existsSync(dir)) return [];
+
+  return fs.readdirSync(dir)
+    .map((file) => {
+
+      const filePath = path.join(dir, file);
+
+      const content = fs.readFileSync(filePath, 'utf8');
+
+      const key = path.basename(filePath).replace('.css', '');
+
+      return {
+        key,
+        content
+      };
+    });
+}
+
 const group = (component) => {
 
   return (component.docsTags.find((item) => item.name === 'group') || {}).text || '';
@@ -215,22 +237,22 @@ const convert = (components) => {
 
   return components
     .map((component) => ({
-      key: key(component),
-      tag: tag(component),
-      tags: tags(component),
+      description: description(component),
       deprecated: deprecated(component),
       development: development(component),
-      title: title(component),
-      group: group(component),
-      description: description(component),
       events: events(component),
       examples: examples(component),
+      externals: externals(component),
+      group: group(component),
+      key: key(component),
       methods: methods(component),
       properties: properties(component),
       readme: readme(component),
       slots: slots(component),
       styles: styles(component),
-      original: component, // ???
+      tag: tag(component),
+      tags: tags(component),
+      title: title(component),
     }))
     .map((component, index, components) => {
 

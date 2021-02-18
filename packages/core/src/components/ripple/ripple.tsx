@@ -3,7 +3,7 @@ import { GlobalConfig } from '@app/services';
 
 /**
  * TODO
- * @development
+ * @internal
  * @examples default
  */
 @Component({
