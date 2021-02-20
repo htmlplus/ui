@@ -1,0 +1,20 @@
+plus-transition[name='back-in-right'] {
+  animation-name: back-in-right;
+}
+
+@keyframes back-in-right {
+  0% {
+    transform: translateX(2000px) scale(0.7);
+    opacity: 0.7;
+  }
+
+  80% {
+    transform: translateX(0px) scale(0.7);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

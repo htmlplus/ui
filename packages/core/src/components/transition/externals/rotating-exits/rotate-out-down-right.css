@@ -1,0 +1,15 @@
+plus-transition[name='rotate-out-down-right'] {
+  animation-name: rotate-out-down-right;
+  transform-origin: right bottom;
+}
+
+@keyframes rotate-out-down-right {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, -45deg);
+    opacity: 0;
+  }
+}

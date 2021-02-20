@@ -1,5 +1,6 @@
 const
   fs = require('fs'),
+  glob = require('glob'),
   path = require('path'),
   root = path.resolve(process.cwd());
 
@@ -92,24 +93,41 @@ const examples = (component) => {
 
 const externals = (component) => {
 
+  const values = [];
+
   const dir = path.join(component.dirPath, 'externals');
 
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(dir)) return values;
 
-  return fs.readdirSync(dir)
-    .map((file) => {
+  glob.sync('**/*.*', { cwd: dir })
+    .forEach((file) => {
 
-      const filePath = path.join(dir, file);
+      const keys = file.split('/').filter((section) => !!section);
 
-      const content = fs.readFileSync(filePath, 'utf8');
+      let current = { values };
 
-      const key = path.basename(filePath).replace('.css', '');
+      for (let i = 0; i < keys.length; i++) {
 
-      return {
-        key,
-        content
-      };
+        const key = keys[i];
+
+        let value = (current.values || []).find((value) => value.key === key);
+
+        if (!value) {
+
+          current.values = current.values || [];
+
+          value = { key };
+
+          current.values.push(value);
+        }
+
+        if (i === keys.length - 1) value.value = fs.readFileSync(path.join(dir, file), 'utf8');
+
+        current = value;
+      }
     });
+
+  return values;
 }
 
 const group = (component) => {
