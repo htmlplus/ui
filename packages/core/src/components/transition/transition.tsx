@@ -3,7 +3,7 @@ import { Bind, GlobalConfig } from '@app/services';
 import { TransitionDirection, TransitionDuration, TransitionPause, TransitionRepeat, TransitionStart } from './transition.types';
 
 /**
- * TODO
+ * TODO 
  * @development
  */
 @Component({
