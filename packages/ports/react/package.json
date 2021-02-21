@@ -1,9 +1,9 @@
 {
   "name": "@htmlplus/react",
   "version": "0.1.5-next.1",
-  "main": "./dist/react/index.js",
-  "module": "./dist/react/index.js",
-  "types": "./dist/react/index.d.ts",
+  "main": "dist/react/index.js",
+  "module": "dist/react/index.js",
+  "types": "dist/react/index.d.ts",
   "files": [
     "dist",
     "loader"
@@ -12,7 +12,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile && node ./scripts/copy.js",
+    "build": "npm run clean && npm run compile && node scripts/copy.js",
     "clean": "rimraf dist",
     "compile": "npm run tsc",
     "tsc": "tsc -p ."
