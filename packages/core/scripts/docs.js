@@ -1,6 +1,5 @@
 const
   fs = require('fs'),
-  glob = require('glob'),
   path = require('path'),
   root = path.resolve(process.cwd());
 
@@ -91,48 +90,16 @@ const examples = (component) => {
     .sort((a, b) => keys.indexOf(a.key) - keys.indexOf(b.key));
 }
 
-const externals = (component) => {
-
-  const values = [];
-
-  const dir = path.join(component.dirPath, 'externals');
-
-  if (!fs.existsSync(dir)) return values;
-
-  glob.sync('**/*.*', { cwd: dir })
-    .forEach((file) => {
-
-      const keys = file.split('/').filter((section) => !!section);
-
-      let current = { values };
-
-      for (let i = 0; i < keys.length; i++) {
-
-        const key = keys[i];
-
-        let value = (current.values || []).find((value) => value.key === key);
-
-        if (!value) {
-
-          current.values = current.values || [];
-
-          value = { key };
-
-          current.values.push(value);
-        }
-
-        if (i === keys.length - 1) value.value = fs.readFileSync(path.join(dir, file), 'utf8');
-
-        current = value;
-      }
-    });
-
-  return values;
-}
-
 const group = (component) => {
 
   return (component.docsTags.find((item) => item.name === 'group') || {}).text || '';
+}
+
+const hasExternals = (component) => {
+
+  const dir = path.join(component.dirPath, 'externals');
+
+  return fs.existsSync(dir);
 }
 
 const key = (component) => {
@@ -260,8 +227,8 @@ const convert = (components) => {
       development: development(component),
       events: events(component),
       examples: examples(component),
-      externals: externals(component),
       group: group(component),
+      hasExternals: hasExternals(component),
       key: key(component),
       methods: methods(component),
       properties: properties(component),

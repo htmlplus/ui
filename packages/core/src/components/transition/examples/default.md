@@ -1,6 +1,6 @@
 ```html [template]
 <preview>
-  <plus-transition name="shake-x" repeat="infinite">
+  <plus-transition name="fade-in" repeat="infinite">
     HTMLPLUS
   </plus-transition>
 </preview>
