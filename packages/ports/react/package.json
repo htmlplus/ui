@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/react",
-  "version": "0.1.5-next.1",
+  "version": "0.1.5-next.2",
   "main": "dist/react/index.js",
   "module": "dist/react/index.js",
   "types": "dist/react/index.d.ts",
@@ -31,6 +31,6 @@
     "react-dom": "^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@htmlplus/core": "^0.1.5-next.1"
+    "@htmlplus/core": "^0.1.5-next.2"
   }
 }
