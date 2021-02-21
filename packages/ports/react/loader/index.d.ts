@@ -1,5 +1,5 @@
 
-export * from '@htmlplus/core/dist/types/components';
+export * from '../dist/types/components';
 export interface CustomElementsDefineOptions {
   exclude?: string[];
   resourcesUrl?: string;
