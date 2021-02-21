@@ -22,12 +22,14 @@ export default {
         resolve(),
         commonjs(),
         typescript({ useTsconfigDeclarationDir: true }),
-
-        // TODO
         copy({
             targets: [
                 {
                     src: './node_modules/@htmlplus/core/dist/docs.json',
+                    dest: './dist'
+                },
+                {
+                    src: './node_modules/@htmlplus/core/dist/externals',
                     dest: './dist'
                 }
             ]
