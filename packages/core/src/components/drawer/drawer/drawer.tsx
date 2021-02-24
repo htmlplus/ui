@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { Animation, Bind, GlobalConfig, Media, OutsideClick, Scrollbar } from '@app/services';
+import { Animation, Bind, ClickOutside, GlobalConfig, Media, Scrollbar } from '@app/services';
 import * as Utils from '@app/utils';
 import { DrawerLink, Inject, rebind } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.types';
@@ -249,7 +249,7 @@ export class Drawer {
 
     Scrollbar.reset(this);
 
-    OutsideClick.remove(this.$content);
+    ClickOutside.remove(this.$content);
 
     this.$host.classList.remove('open');
 
@@ -262,7 +262,7 @@ export class Drawer {
 
     this.temporary && Scrollbar.remove(this);
 
-    OutsideClick.add(this.$content, this.onOutsideClick, false);
+    ClickOutside.add(this.$content, this.onOutsideClick, false);
 
     this.$host.classList.add('open');
 

@@ -8,10 +8,10 @@
 
 ```html [template]
 <preview justify-content="space-evenly">
-  <plus-spinner class="spinner-1" type="ripple"></plus-spinner>
-  <plus-spinner class="spinner-2" type="ripple"></plus-spinner>
-  <plus-spinner class="spinner-3" type="ripple"></plus-spinner>
-  <plus-spinner class="spinner-4" type="ripple"></plus-spinner>
-  <plus-spinner class="spinner-5" type="ripple"></plus-spinner>
+  <plus-spinner class="spinner-1"></plus-spinner>
+  <plus-spinner class="spinner-2"></plus-spinner>
+  <plus-spinner class="spinner-3"></plus-spinner>
+  <plus-spinner class="spinner-4"></plus-spinner>
+  <plus-spinner class="spinner-5"></plus-spinner>
 </preview>
 ```

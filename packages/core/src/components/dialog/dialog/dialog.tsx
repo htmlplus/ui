@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { Animation, Bind, GlobalConfig, GlobalState, OutsideClick, Scrollbar } from '@app/services';
+import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, Scrollbar } from '@app/services';
 import * as Utils from '@app/utils';
 import { DialogLink, Inject, rebind } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPlacementMap, DialogSize } from './dialog.types';
@@ -238,7 +238,7 @@ export class Dialog {
 
     this.resetAttributes();
     this.resetEvents();
-    OutsideClick.remove(this.$cell);
+    ClickOutside.remove(this.$cell);
     Scrollbar.reset(this);
     this.resetZIndex();
 
@@ -255,7 +255,7 @@ export class Dialog {
 
     this.setAttributes();
     this.setEvents();
-    OutsideClick.add(this.$cell, this.onOutsideClick, false);
+    ClickOutside.add(this.$cell, this.onOutsideClick, false);
     Scrollbar.remove(this);
     this.setZIndex();
 
@@ -310,7 +310,7 @@ export class Dialog {
     this.animation?.dispose();
 
     this.resetEvents();
-    OutsideClick.remove(this.$cell);
+    ClickOutside.remove(this.$cell);
     Scrollbar.reset(this);
     this.state.instances.delete(this);
   }

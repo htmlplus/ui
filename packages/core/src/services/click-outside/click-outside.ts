@@ -1,8 +1,12 @@
 import * as Utils from '@app/utils';
 
-export class OutsideClick {
+export class ClickOutside {
 
     static targets = new Map();
+
+    static get type() {
+        return 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
+    }
 
     static add(element, callback, self = true) {
 
@@ -19,7 +23,7 @@ export class OutsideClick {
             callback(event);
         }
 
-        document.addEventListener('click', fn, true);
+        document.addEventListener(this.type, fn, true);
 
         this.targets.set(element, fn);
     }
@@ -30,7 +34,7 @@ export class OutsideClick {
 
         if (!callback) return;
 
-        document.removeEventListener('click', callback, true);
+        document.removeEventListener(this.type, callback, true);
 
         this.targets.delete(element);
     }

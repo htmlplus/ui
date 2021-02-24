@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/services';
-import { TransitionDirection, TransitionDuration, TransitionPause, TransitionRepeat, TransitionStart } from './transition.types';
+import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
  * TODO 
@@ -40,14 +40,14 @@ export class Transition {
   /**
    * TODO
    */
-  @Prop({ reflect: true })
-  pause?: TransitionPause;
+  // @Prop({ reflect: true })
+  // pause?: TransitionPause;
 
   /**
    * TODO
    */
-  @Prop({ reflect: true })
-  start?: TransitionStart;
+  // @Prop({ reflect: true })
+  // start?: TransitionStart;
 
   /**
    * TODO

@@ -15,25 +15,25 @@ class {
   outside = 0;
 
   onClick() {
-    this.inside++;
+    this.inside = this.inside + 1;
   }
 
-  onOutsideClick() {
-    this.outside++;
+  onClickOutside() {
+    this.outside = this.outside + 1;
   }
 
   render() {
     return (
       <preview>
-        <plus-outside-click 
+        <plus-click-outside 
           class="box" 
           onClick={() => this.onClick()} 
-          onPlusOutsideClick={() => this.onOutsideClick()}
+          onPlusClickOutside={() => this.onClickOutside()}
         >
           {this.inside} times inside clicked
           <br/>
           {this.outside} times outside clicked
-        </plus-outside-click>
+        </plus-click-outside>
       </preview>
     )
   }

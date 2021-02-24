@@ -13,7 +13,7 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
-import { TransitionDirection, TransitionDuration, TransitionPause, TransitionRepeat, TransitionStart } from "./components/transition/transition.types";
+import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./services/tunnel/tunnel.types";
 export namespace Components {
     interface PlusAspectRatio {
@@ -33,6 +33,16 @@ export namespace Components {
     interface PlusCardFooter {
     }
     interface PlusCardHeader {
+    }
+    interface PlusClickOutside {
+        /**
+          * Disable the component.
+         */
+        "disabled"?: boolean;
+        /**
+          * The callback occurs only once.
+         */
+        "once"?: boolean;
     }
     interface PlusDialog {
         /**
@@ -526,16 +536,6 @@ export namespace Components {
          */
         "trigger"?: 'click' | 'hover';
     }
-    interface PlusOutsideClick {
-        /**
-          * TODO
-         */
-        "disabled"?: boolean;
-        /**
-          * TODO
-         */
-        "once"?: boolean;
-    }
     interface PlusRipple {
     }
     interface PlusSpinner {
@@ -636,15 +636,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "pause"?: TransitionPause;
-        /**
-          * TODO
-         */
         "repeat"?: TransitionRepeat;
-        /**
-          * TODO
-         */
-        "start"?: TransitionStart;
     }
     interface PlusTunnelConsumer {
         "context": { [key: string]: any };
@@ -682,6 +674,12 @@ declare global {
     var HTMLPlusCardHeaderElement: {
         prototype: HTMLPlusCardHeaderElement;
         new (): HTMLPlusCardHeaderElement;
+    };
+    interface HTMLPlusClickOutsideElement extends Components.PlusClickOutside, HTMLStencilElement {
+    }
+    var HTMLPlusClickOutsideElement: {
+        prototype: HTMLPlusClickOutsideElement;
+        new (): HTMLPlusClickOutsideElement;
     };
     interface HTMLPlusDialogElement extends Components.PlusDialog, HTMLStencilElement {
     }
@@ -755,12 +753,6 @@ declare global {
         prototype: HTMLPlusMenuElement;
         new (): HTMLPlusMenuElement;
     };
-    interface HTMLPlusOutsideClickElement extends Components.PlusOutsideClick, HTMLStencilElement {
-    }
-    var HTMLPlusOutsideClickElement: {
-        prototype: HTMLPlusOutsideClickElement;
-        new (): HTMLPlusOutsideClickElement;
-    };
     interface HTMLPlusRippleElement extends Components.PlusRipple, HTMLStencilElement {
     }
     var HTMLPlusRippleElement: {
@@ -827,6 +819,7 @@ declare global {
         "plus-card-body": HTMLPlusCardBodyElement;
         "plus-card-footer": HTMLPlusCardFooterElement;
         "plus-card-header": HTMLPlusCardHeaderElement;
+        "plus-click-outside": HTMLPlusClickOutsideElement;
         "plus-dialog": HTMLPlusDialogElement;
         "plus-dialog-body": HTMLPlusDialogBodyElement;
         "plus-dialog-content": HTMLPlusDialogContentElement;
@@ -839,7 +832,6 @@ declare global {
         "plus-grid-item": HTMLPlusGridItemElement;
         "plus-intersection": HTMLPlusIntersectionElement;
         "plus-menu": HTMLPlusMenuElement;
-        "plus-outside-click": HTMLPlusOutsideClickElement;
         "plus-ripple": HTMLPlusRippleElement;
         "plus-spinner": HTMLPlusSpinnerElement;
         "plus-switch": HTMLPlusSwitchElement;
@@ -870,6 +862,20 @@ declare namespace LocalJSX {
     interface PlusCardFooter {
     }
     interface PlusCardHeader {
+    }
+    interface PlusClickOutside {
+        /**
+          * Disable the component.
+         */
+        "disabled"?: boolean;
+        /**
+          * Emitted when outside of the component is clicked.
+         */
+        "onPlusClickOutside"?: (event: CustomEvent<void>) => void;
+        /**
+          * The callback occurs only once.
+         */
+        "once"?: boolean;
     }
     interface PlusDialog {
         /**
@@ -1403,20 +1409,6 @@ declare namespace LocalJSX {
          */
         "trigger"?: 'click' | 'hover';
     }
-    interface PlusOutsideClick {
-        /**
-          * TODO
-         */
-        "disabled"?: boolean;
-        /**
-          * TODO
-         */
-        "onPlusOutsideClick"?: (event: CustomEvent<any>) => void;
-        /**
-          * TODO
-         */
-        "once"?: boolean;
-    }
     interface PlusRipple {
     }
     interface PlusSpinner {
@@ -1541,15 +1533,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "pause"?: TransitionPause;
-        /**
-          * TODO
-         */
         "repeat"?: TransitionRepeat;
-        /**
-          * TODO
-         */
-        "start"?: TransitionStart;
     }
     interface PlusTunnelConsumer {
         "context"?: { [key: string]: any };
@@ -1562,6 +1546,7 @@ declare namespace LocalJSX {
         "plus-card-body": PlusCardBody;
         "plus-card-footer": PlusCardFooter;
         "plus-card-header": PlusCardHeader;
+        "plus-click-outside": PlusClickOutside;
         "plus-dialog": PlusDialog;
         "plus-dialog-body": PlusDialogBody;
         "plus-dialog-content": PlusDialogContent;
@@ -1574,7 +1559,6 @@ declare namespace LocalJSX {
         "plus-grid-item": PlusGridItem;
         "plus-intersection": PlusIntersection;
         "plus-menu": PlusMenu;
-        "plus-outside-click": PlusOutsideClick;
         "plus-ripple": PlusRipple;
         "plus-spinner": PlusSpinner;
         "plus-switch": PlusSwitch;
@@ -1596,6 +1580,7 @@ declare module "@stencil/core" {
             "plus-card-body": LocalJSX.PlusCardBody & JSXBase.HTMLAttributes<HTMLPlusCardBodyElement>;
             "plus-card-footer": LocalJSX.PlusCardFooter & JSXBase.HTMLAttributes<HTMLPlusCardFooterElement>;
             "plus-card-header": LocalJSX.PlusCardHeader & JSXBase.HTMLAttributes<HTMLPlusCardHeaderElement>;
+            "plus-click-outside": LocalJSX.PlusClickOutside & JSXBase.HTMLAttributes<HTMLPlusClickOutsideElement>;
             "plus-dialog": LocalJSX.PlusDialog & JSXBase.HTMLAttributes<HTMLPlusDialogElement>;
             "plus-dialog-body": LocalJSX.PlusDialogBody & JSXBase.HTMLAttributes<HTMLPlusDialogBodyElement>;
             "plus-dialog-content": LocalJSX.PlusDialogContent & JSXBase.HTMLAttributes<HTMLPlusDialogContentElement>;
@@ -1608,7 +1593,6 @@ declare module "@stencil/core" {
             "plus-grid-item": LocalJSX.PlusGridItem & JSXBase.HTMLAttributes<HTMLPlusGridItemElement>;
             "plus-intersection": LocalJSX.PlusIntersection & JSXBase.HTMLAttributes<HTMLPlusIntersectionElement>;
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
-            "plus-outside-click": LocalJSX.PlusOutsideClick & JSXBase.HTMLAttributes<HTMLPlusOutsideClickElement>;
             "plus-ripple": LocalJSX.PlusRipple & JSXBase.HTMLAttributes<HTMLPlusRippleElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
             "plus-switch": LocalJSX.PlusSwitch & JSXBase.HTMLAttributes<HTMLPlusSwitchElement>;
