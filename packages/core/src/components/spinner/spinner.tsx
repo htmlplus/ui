@@ -4,7 +4,7 @@ import { SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
  * It's a circular indicator of progress and activity in order to show the loading state of a component or page when the user needs to wait on.
- * @examples default, size, color, type
+ * @examples default, size, custom-size, color, type
  */
 @Component({
   tag: 'plus-spinner',

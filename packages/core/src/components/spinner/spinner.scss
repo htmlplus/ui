@@ -4,6 +4,17 @@
 @import 'spinners/index';
 
 :host {
+
+    /**
+    * @prop --plus-spinner-size  : Specifies the size of the spinner.
+    * @prop --plus-spinner-weight: Specifies the weight of the spinner.
+    */
+
+    --plus-spinner-size  : 32px;
+    --plus-spinner-weight: 1;
+}
+
+:host {
     color: currentColor;
     display: inline-block;
     overflow: hidden;
@@ -24,46 +35,4 @@
     position: relative;
     width: 100%;
     height: 100%;
-}
-
-:host([type=default]) {
-
-    .wrapper div {
-
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform-origin: 50% 50%;
-        animation: spinner 0.8s linear infinite;
-    
-        &:after {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 46.25%;
-            width: 7.5%;
-            height: 25%;
-            border-radius: 20%;
-            background: currentColor;
-        }
-
-        @for $i from 1 through 8 {
-            &:nth-child(#{$i}) {
-                transform: rotate(($i - 1) * 45deg);
-                animation-delay: -0.8s + ($i * 0.1);
-            }
-        }
-    }
-    
-    @keyframes spinner {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }      
 }
