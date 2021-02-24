@@ -7,5 +7,7 @@ plus-spinner.special {
 ```
 
 ```html [template]
-<plus-spinner class="special"></plus-spinner>
+<preview>
+  <plus-spinner type="dual-ring" class="special"></plus-spinner>
+</preview>
 ```
