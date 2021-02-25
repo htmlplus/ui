@@ -26,5 +26,5 @@ export enum DialogPlacementMap {
     'end-bottom' = 'end-bottom',
 }
 export interface DialogGlobalState {
-    instances?: Set<any>;
+    instances?: Array<any>;
 }

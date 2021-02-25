@@ -138,7 +138,7 @@ export class Dialog {
 
   @GlobalState()
   state: DialogGlobalState = {
-    instances: new Set<any>()
+    instances: []
   };
 
   @Element()
@@ -176,7 +176,7 @@ export class Dialog {
 
   get isCurrent() {
 
-    const instances = Array.from(this.state.instances);
+    const instances = this.state.instances;
 
     const last = instances.length - 1;
 
@@ -242,7 +242,7 @@ export class Dialog {
     Scrollbar.reset(this);
     this.resetZIndex();
 
-    this.state.instances.delete(this);
+    this.state.instances = this.state.instances.filter((instance) => instance !== this);
 
     this.$host.classList.remove('open');
 
@@ -259,7 +259,7 @@ export class Dialog {
     Scrollbar.remove(this);
     this.setZIndex();
 
-    this.state.instances.add(this);
+    this.state.instances.push(this);
 
     this.$host.classList.add('open');
 
@@ -312,7 +312,7 @@ export class Dialog {
     this.resetEvents();
     ClickOutside.remove(this.$cell);
     Scrollbar.reset(this);
-    this.state.instances.delete(this);
+    this.state.instances = this.state.instances.filter((instance) => instance !== this);
   }
 
   /**
@@ -349,7 +349,7 @@ export class Dialog {
 
   setZIndex() {
 
-    const instance = Array.from(this.state.instances).slice(-1)[0];
+    const [instance] = this.state.instances.slice(-1);
 
     if (!instance) return;
 
@@ -380,6 +380,9 @@ export class Dialog {
 
   @Bind
   onOutsideClick() {
+
+    if (!this.isOpen || !this.isCurrent) return;
+    
     this.tryToHide();
   }
 
