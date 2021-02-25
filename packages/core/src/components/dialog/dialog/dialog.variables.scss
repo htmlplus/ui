@@ -1,6 +1,5 @@
+// host
 $dialog-z-index: 1000;
-$dialog-backdrop-background-color: black;
-$dialog-backdrop-opacity: 0.5;
 $dialog-margin: (
   xs: 0.5rem, 
   sm: 1.75rem
@@ -37,3 +36,7 @@ $dialog-placement-y: (
     vertical-align: bottom
   )
 );
+
+// backdrop
+$dialog-backdrop-background-color: black;
+$dialog-backdrop-opacity: 0.5;

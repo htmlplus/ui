@@ -1,5 +1,5 @@
 plus-transition[name='rubber-band'] {
-  animation-name: rubberBand;
+  animation-name: rubber-band;
 }
 
 @keyframes rubber-band {

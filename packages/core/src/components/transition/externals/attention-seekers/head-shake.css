@@ -1,5 +1,5 @@
 plus-transition[name='head-shake'] {
-  animation-name: headShake;
+  animation-name: head-shake;
   animation-timing-function: ease-in-out;
 }
 
