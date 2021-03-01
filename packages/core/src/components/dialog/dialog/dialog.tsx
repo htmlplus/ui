@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@
 import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, Scrollbar } from '@app/services';
 import * as Utils from '@app/utils';
 import { DialogLink, Inject, rebind } from './dialog.link';
-import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPlacementMap, DialogSize } from './dialog.types';
+import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from './dialog.types';
 
 /**
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
@@ -155,7 +155,15 @@ export class Dialog {
 
   get classes() {
 
-    let [x, y] = (DialogPlacementMap[this.placement] || '').split('-');
+    let placement = (this.placement || '');
+
+    if (placement.match(/^(top|bottom)$/)) placement = `-${placement}`;
+
+    let [x, y] = placement.split('-');
+
+    x = x || 'center';
+
+    y = y || 'center';
 
     x = Utils.toAxis(x, this.isRTL);
 
@@ -382,7 +390,7 @@ export class Dialog {
   onOutsideClick() {
 
     if (!this.isOpen || !this.isCurrent) return;
-    
+
     this.tryToHide();
   }
 
