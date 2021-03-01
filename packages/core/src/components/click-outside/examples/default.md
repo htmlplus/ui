@@ -1,6 +1,5 @@
 ```css [style]
 .box {
-  background: #c5cae9;
   padding: 20px;
 }
 ```
@@ -26,13 +25,14 @@ class {
     return (
       <preview>
         <plus-click-outside 
-          class="box" 
           onClick={() => this.onClick()} 
           onPlusClickOutside={() => this.onClickOutside()}
         >
-          {this.inside} times inside clicked
-          <br/>
-          {this.outside} times outside clicked
+          <plus-card elevation="10" class="box">
+            {this.inside} times inside clicked
+            <br/>
+            {this.outside} times outside clicked
+          </plus-card>
         </plus-click-outside>
       </preview>
     )

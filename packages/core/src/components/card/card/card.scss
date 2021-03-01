@@ -10,6 +10,23 @@
     word-wrap: break-word;
     background-clip: border-box;
     background-color: $card-background-color;
-    border: solid $card-border-width $card-border-color;
     border-radius: $card-border-radius;
+}
+
+:host([flat]) {
+    box-shadow: none;
+}
+
+:host([outlined]) {
+    border: solid $card-border-width $card-border-color;
+}
+
+:host([tile]) {
+    border-radius: 0;
+}
+
+@each $key, $value in $card-elevation {
+    :host([elevation="#{$key}"]) {
+        box-shadow: #{$value}; 
+    }
 }

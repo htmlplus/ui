@@ -8,9 +8,7 @@ import type { JSX } from '@htmlplus/core';
 
 
 export const PlusAspectRatio = /*@__PURE__*/createReactComponent<JSX.PlusAspectRatio, HTMLPlusAspectRatioElement>('plus-aspect-ratio');
-export const PlusCardBody = /*@__PURE__*/createReactComponent<JSX.PlusCardBody, HTMLPlusCardBodyElement>('plus-card-body');
-export const PlusCardFooter = /*@__PURE__*/createReactComponent<JSX.PlusCardFooter, HTMLPlusCardFooterElement>('plus-card-footer');
-export const PlusCardHeader = /*@__PURE__*/createReactComponent<JSX.PlusCardHeader, HTMLPlusCardHeaderElement>('plus-card-header');
+export const PlusCard = /*@__PURE__*/createReactComponent<JSX.PlusCard, HTMLPlusCardElement>('plus-card');
 export const PlusClickOutside = /*@__PURE__*/createReactComponent<JSX.PlusClickOutside, HTMLPlusClickOutsideElement>('plus-click-outside');
 export const PlusDialog = /*@__PURE__*/createReactComponent<JSX.PlusDialog, HTMLPlusDialogElement>('plus-dialog');
 export const PlusDialogBody = /*@__PURE__*/createReactComponent<JSX.PlusDialogBody, HTMLPlusDialogBodyElement>('plus-dialog-body');

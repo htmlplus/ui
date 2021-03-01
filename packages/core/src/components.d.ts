@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
+import { CardElevation } from "./components/card/card/card.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -23,6 +24,18 @@ export namespace Components {
         "value"?: AspectRatioValue;
     }
     interface PlusCard {
+        /**
+          * TODO
+         */
+        "elevation"?: CardElevation;
+        /**
+          * TODO
+         */
+        "flat"?: boolean;
+        /**
+          * TODO
+         */
+        "outlined"?: boolean;
         /**
           * TODO
          */
@@ -852,6 +865,18 @@ declare namespace LocalJSX {
         "value"?: AspectRatioValue;
     }
     interface PlusCard {
+        /**
+          * TODO
+         */
+        "elevation"?: CardElevation;
+        /**
+          * TODO
+         */
+        "flat"?: boolean;
+        /**
+          * TODO
+         */
+        "outlined"?: boolean;
         /**
           * TODO
          */
