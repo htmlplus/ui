@@ -29,9 +29,9 @@ class {
           onPlusClickOutside={() => this.onClickOutside()}
         >
           <plus-card elevation="10" class="box">
-            {this.inside} times inside clicked
+            {this.inside} time(s) inside clicked
             <br/>
-            {this.outside} times outside clicked
+            {this.outside} time(s) outside clicked
           </plus-card>
         </plus-click-outside>
       </preview>

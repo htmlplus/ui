@@ -2,6 +2,7 @@
 
 :host {
     --plus-transition-delay: 0s;
+    --plus-transition-direction: normal;
     --plus-transition-duration: 1s;
     --plus-transition-repeat: 1;
 }
@@ -10,6 +11,7 @@
     display: block;
     animation-fill-mode: both;
     animation-delay: var(--plus-transition-delay);
+    animation-direction: var(--plus-transition-direction);
     animation-duration: var(--plus-transition-duration);
     animation-iteration-count: var(--plus-transition-repeat);
 }
