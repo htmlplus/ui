@@ -631,7 +631,7 @@ export namespace Components {
     }
     interface PlusTransition {
         /**
-          * TODO
+          * Specifies the amount of delay before starting the animation to play. This may be specified in either seconds (s) or milliseconds (ms).
          */
         "delay"?: string;
         /**
@@ -1524,7 +1524,7 @@ declare namespace LocalJSX {
     }
     interface PlusTransition {
         /**
-          * TODO
+          * Specifies the amount of delay before starting the animation to play. This may be specified in either seconds (s) or milliseconds (ms).
          */
         "delay"?: string;
         /**
