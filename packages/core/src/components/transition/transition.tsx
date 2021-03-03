@@ -4,7 +4,7 @@ import { TransitionDirection, TransitionDuration, TransitionRepeat } from './tra
 
 /**
  * This component allows you to apply animation on your components such as fade or other animations. 
- * Click [here](https://htmlplus.io/component/transition/names) to see and choose your favorite animation from a wide range of animations we provide for you. 
+ * Click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see and choose your favorite animation from a wide range of animations we provide for you. 
  * @development
  */
 @Component({
@@ -100,9 +100,30 @@ export class Transition {
   @Element()
   $host!: HTMLElement;
 
+  parser(input) {
+
+    if (!input) return input;
+
+    const regexp = /random\((\d+|(\d+)?\.\d+)(s|ms)(\s+)?(,)(\s+)?(\d+|(\d+)?\.\d+)(s|ms)(\s+)?(,)?(\s+)?(\d+)?\)/g;
+
+    const matches = input.match(regexp);
+
+    if (!matches) return input;
+
+    const [expression] = matches;
+
+    let [from, to, fixed] = expression.replace(/random\(|\)/g, '').split(',').map((value) => value.trim());
+
+    [from, to] = [from, to].map((value) => value.match(/ms/) ? parseFloat(value) / 1000 : parseFloat(value)).sort();
+
+    const value = from + Math.random() * (to - from);
+
+    return typeof fixed !== 'undefined' ? value.toFixed(fixed) : value;
+  }
+
   get styles() {
     return {
-      '--plus-transition-delay': this.delay ?? null,
+      '--plus-transition-delay': this.delay ? this.parser(this.delay) : null,
       '--plus-transition-duration': isNaN(parseFloat(this.duration)) ? null : this.duration,
       '--plus-transition-repeat': this.repeat as any ?? null,
     }
