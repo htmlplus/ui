@@ -3,7 +3,8 @@ import { Bind, GlobalConfig } from '@app/services';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
- * TODO 
+ * This component allows you to apply animation on your components such as fade or other animations. 
+ * Click [here](https://htmlplus.io/component/transition/names) to see and choose your favorite animation from a wide range of animations we provide for you. 
  * @development
  */
 @Component({
@@ -14,7 +15,7 @@ import { TransitionDirection, TransitionDuration, TransitionRepeat } from './tra
 export class Transition {
 
   /**
-   * TODO
+   * Specifies the amount of delay before starting the animation to play. This may be specified in either seconds (s) or milliseconds (ms).
    */
   @Prop()
   delay?: string;
