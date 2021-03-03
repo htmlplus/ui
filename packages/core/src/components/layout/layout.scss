@@ -1,0 +1,29 @@
+@import 'reset';
+
+:host {
+  display: grid;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  grid-area: header;
+}
+
+.aside-start {
+  grid-area: aside-start;
+}
+
+.content {
+  grid-area: content;
+}
+
+.aside-end {
+  grid-area: aside-end;
+}
+
+.footer {
+  grid-area: footer;
+}

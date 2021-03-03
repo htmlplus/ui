@@ -12,6 +12,7 @@ import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
+import { LayoutFooter, LayoutHeader } from "./components/layout/layout.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
@@ -507,6 +508,16 @@ export namespace Components {
          */
         "threshold"?: number | number[];
     }
+    interface PlusLayout {
+        /**
+          * TODO
+         */
+        "footer"?: LayoutFooter;
+        /**
+          * TODO
+         */
+        "header"?: LayoutHeader;
+    }
     interface PlusMenu {
         /**
           * TODO
@@ -760,6 +771,12 @@ declare global {
         prototype: HTMLPlusIntersectionElement;
         new (): HTMLPlusIntersectionElement;
     };
+    interface HTMLPlusLayoutElement extends Components.PlusLayout, HTMLStencilElement {
+    }
+    var HTMLPlusLayoutElement: {
+        prototype: HTMLPlusLayoutElement;
+        new (): HTMLPlusLayoutElement;
+    };
     interface HTMLPlusMenuElement extends Components.PlusMenu, HTMLStencilElement {
     }
     var HTMLPlusMenuElement: {
@@ -844,6 +861,7 @@ declare global {
         "plus-grid": HTMLPlusGridElement;
         "plus-grid-item": HTMLPlusGridItemElement;
         "plus-intersection": HTMLPlusIntersectionElement;
+        "plus-layout": HTMLPlusLayoutElement;
         "plus-menu": HTMLPlusMenuElement;
         "plus-ripple": HTMLPlusRippleElement;
         "plus-spinner": HTMLPlusSpinnerElement;
@@ -1388,6 +1406,16 @@ declare namespace LocalJSX {
          */
         "threshold"?: number | number[];
     }
+    interface PlusLayout {
+        /**
+          * TODO
+         */
+        "footer"?: LayoutFooter;
+        /**
+          * TODO
+         */
+        "header"?: LayoutHeader;
+    }
     interface PlusMenu {
         /**
           * TODO
@@ -1583,6 +1611,7 @@ declare namespace LocalJSX {
         "plus-grid": PlusGrid;
         "plus-grid-item": PlusGridItem;
         "plus-intersection": PlusIntersection;
+        "plus-layout": PlusLayout;
         "plus-menu": PlusMenu;
         "plus-ripple": PlusRipple;
         "plus-spinner": PlusSpinner;
@@ -1617,6 +1646,7 @@ declare module "@stencil/core" {
             "plus-grid": LocalJSX.PlusGrid & JSXBase.HTMLAttributes<HTMLPlusGridElement>;
             "plus-grid-item": LocalJSX.PlusGridItem & JSXBase.HTMLAttributes<HTMLPlusGridItemElement>;
             "plus-intersection": LocalJSX.PlusIntersection & JSXBase.HTMLAttributes<HTMLPlusIntersectionElement>;
+            "plus-layout": LocalJSX.PlusLayout & JSXBase.HTMLAttributes<HTMLPlusLayoutElement>;
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
             "plus-ripple": LocalJSX.PlusRipple & JSXBase.HTMLAttributes<HTMLPlusRippleElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
