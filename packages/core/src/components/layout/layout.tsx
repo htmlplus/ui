@@ -1,7 +1,7 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import * as Utils from '@app/utils';
 import { GlobalConfig } from '@app/services';
-import { LayoutFooter, LayoutHeader } from './layout.types';
+import { LayoutFooter, LayoutHeader, LayoutMain } from './layout.types';
 
 /**
  * TODO
@@ -19,66 +19,101 @@ export class Layout {
    * TODO
    */
   @Prop()
-  header?: LayoutHeader = 'both';
+  header?: LayoutHeader = 'grow';
 
   /**
    * TODO
    */
   @Prop()
-  footer?: LayoutFooter = 'both';
+  footer?: LayoutFooter = 'grow';
+
+  /**
+   * TODO
+   */
+  @Prop()
+  main?: LayoutMain = 'stretch';
 
   @GlobalConfig('layout')
   config?;
 
-  get isRTL() {
-    return Utils.isRTL(this);
+  get areas() {
+    return [
+      "'",
+      this.area('header', 'start'),
+      ' header ',
+      this.area('header', 'end'),
+      "' '",
+      'aside-start',
+      ' main ',
+      'aside-end',
+      "' '",
+      this.area('footer', 'start'),
+      ' footer ',
+      this.area('footer', 'end'),
+      "'",
+    ].join('')
+  }
+
+  get slots() {
+    return Utils.slots(this);
   }
 
   get style() {
-
-    const aside = (key, isStart) => {
-
-      const value = this[key];
-
-      const direction = isStart ? 'start' : 'end';
-
-      const matcher = ['center', isStart ? 'end' : 'start'];
-
-      if (!matcher.includes(value)) return key;
-
-      return `aside-${direction}`;
-    }
-
-    const areas = [
-      `${aside('header', false)} header ${aside('header', true)}`,
-      'aside-start content aside-end',
-      `${aside('footer', false)} footer ${aside('footer', true)}`,
-    ]
-      .map((area) => `'${area}'`)
-      .join(' ');
-
     return {
-      'grid-template-areas': `${areas}`
+      'grid-template-areas': `${this.areas}`
     }
+  }
+
+  area(key, position) {
+
+    const hasSlot = this.slots[`${key}:${position}`];
+
+    if (hasSlot) return `${key}-${position}`;
+
+    const isStart = position === 'start';
+
+    const value = this[key];
+
+    const matcher = ['center', isStart ? 'end' : 'start'];
+
+    if (!matcher.includes(value)) return key;
+
+    const direction = isStart ? 'start' : 'end';
+
+    return `aside-${direction}`;
   }
 
   render() {
     return (
-      <Host style={this.style}>
-        <div class="header">
-          <slot name="header" />
-        </div>
-        <div class="aside-start">
-          <slot name="aside:start" />
-        </div>
-        <div class="content">
-          <slot />
-        </div>
-        <div class="aside-end">
-          <slot name="aside:end" />
-        </div>
-        <div class="footer">
-          <slot name="footer" />
+      <Host>
+        <div class="wrapper" style={this.style}>
+          <div class="header-start">
+            <slot name="header:start" />
+          </div>
+          <div class="header">
+            <slot name="header" />
+          </div>
+          <div class="header-end">
+            <slot name="header:end" />
+          </div>
+          <div class="aside-start">
+            <slot name="aside:start" />
+          </div>
+          <div class={`main ${this.main}`}>
+            <slot />
+          </div>
+          <div class="aside-end">
+            <slot name="aside:end" />
+          </div>
+          <div class="footer-start">
+            <slot name="footer:start" />
+          </div>
+          <div class="footer">
+            <slot name="footer" />
+          </div>
+          <div class="footer-end">
+            <slot name="footer:end" />
+          </div>
         </div>
       </Host>
     )

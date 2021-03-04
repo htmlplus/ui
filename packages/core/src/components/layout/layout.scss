@@ -1,29 +1,53 @@
 @import 'reset';
 
 :host {
-  display: grid;
+  display: block;
   min-height: 100vh;
+}
+
+.wrapper {
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr auto;
+  min-height: inherit;
+}
+
+.header-start {
+  grid-area: header-start;
 }
 
 .header {
   grid-area: header;
 }
 
+.header-end {
+  grid-area: header-end;
+}
+
 .aside-start {
   grid-area: aside-start;
 }
 
-.content {
-  grid-area: content;
+.main {
+  grid-area: main;
+  &.center {
+    align-self: center;
+    justify-self: center;
+  }
 }
 
 .aside-end {
   grid-area: aside-end;
 }
 
+.footer-start {
+  grid-area: footer-start;
+}
+
 .footer {
   grid-area: footer;
+}
+
+.footer-end {
+  grid-area: footer-end;
 }

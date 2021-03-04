@@ -1,3 +1,3 @@
 ```html [template]
-<plus-ripple></plus-ripple>
+<plus-layout></plus-layout>
 ```
