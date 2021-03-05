@@ -17,6 +17,6 @@ export class CardFooter {
       <Host>
         <slot />
       </Host>
-    );
+    )
   }
 }

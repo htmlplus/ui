@@ -17,6 +17,6 @@ export class CardHeader {
       <Host>
         <slot />
       </Host>
-    );
+    )
   }
 }

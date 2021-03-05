@@ -6,21 +6,23 @@
 :host {
 
     /**
+    * @prop --plus-spinner-color : Specifies the color of the spinner.
     * @prop --plus-spinner-size  : Specifies the size of the spinner.
     * @prop --plus-spinner-weight: Specifies the weight of the spinner.
     */
 
+    --plus-spinner-color : currentColor;
     --plus-spinner-size  : 32px;
     --plus-spinner-weight: 1;
 }
 
 :host {
-    color: currentColor;
+    color: var(--plus-spinner-color);
+    width: var(--plus-spinner-size);
+    height: var(--plus-spinner-size);
     display: inline-block;
     overflow: hidden;
     vertical-align: middle;
-    width: var(--plus-spinner-size);
-    height: var(--plus-spinner-size);
 }
 
 @each $key, $value in $spinner-size {

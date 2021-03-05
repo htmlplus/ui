@@ -19,13 +19,13 @@ export class Transition {
    * This may be specified in either seconds `s` or milliseconds `ms`.
    */
   @Prop()
-  delay?: string;
+  delay?: string = '0s';
 
   /**
    * Defines whether an animation should be played forwards, backwards or in alternate cycles.
    */
   @Prop()
-  direction?: TransitionDirection;
+  direction?: TransitionDirection = 'normal';
 
   /**
    * Specifies the length of time it will take to complete one cycle between two defined states.
@@ -57,7 +57,7 @@ export class Transition {
    * Specifies the number of times the animation should be repeated after one complete cycle.
    */
   @Prop()
-  repeat?: TransitionRepeat;
+  repeat?: TransitionRepeat = 1;
 
   /**
    * This event is fired any time the animation has been canceled.
@@ -96,7 +96,10 @@ export class Transition {
   plusStart!: EventEmitter;
 
   @GlobalConfig('transition', {
-    duration: 'normal'
+    delay: '0s',
+    direction: 'normal',
+    duration: 'normal',
+    repeat: 1,
   })
   config?;
 
