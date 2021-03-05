@@ -4,7 +4,7 @@ import { TransitionDirection, TransitionDuration, TransitionRepeat } from './tra
 
 /**
  * This component allows you to apply an animation on your component such as fade or other animations. 
- * click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see and choose your favorite animation from a wide range of animation we provide for you.
+ * click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see and choose your favorite animation from a wide range of animation we provide for you.
  * @examples default, name, duration
  */
 @Component({
@@ -36,7 +36,7 @@ export class Transition {
 
   /**
    * Specifies what kind of animation you want to play. 
-   * click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see the list of available animations.
+   * click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see the list of available animations.
    */
   @Prop({ reflect: true })
   name: string;

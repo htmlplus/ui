@@ -658,7 +658,7 @@ export namespace Components {
          */
         "duration"?: TransitionDuration;
         /**
-          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see the list of available animations.
+          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see the list of available animations.
          */
         "name": string;
         /**
@@ -1572,7 +1572,7 @@ declare namespace LocalJSX {
          */
         "duration"?: TransitionDuration;
         /**
-          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see the list of available animations.
+          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see the list of available animations.
          */
         "name"?: string;
         /**
