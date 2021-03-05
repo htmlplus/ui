@@ -646,23 +646,23 @@ export namespace Components {
     }
     interface PlusTransition {
         /**
-          * Specifies the amount of delay before starting the animation to play. This may be specified in either seconds (s) or milliseconds (ms).
+          * Specifies the amount of delay before starting the animation to play.  This may be specified in either seconds `s` or milliseconds `ms`.
          */
         "delay"?: string;
         /**
-          * TODO
+          * Defines whether an animation should be played forwards, backwards or in alternate cycles.
          */
         "direction"?: TransitionDirection;
         /**
-          * TODO
+          * Specifies the length of time it will take to complete one cycle between two defined states. You can also use the reservation values `slower`, `slow`, `normal`, `fast` and `faster`.
          */
         "duration"?: TransitionDuration;
         /**
-          * TODO
+          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see the list of available animations.
          */
         "name": string;
         /**
-          * TODO
+          * Specifies the number of times the animation should be repeated after one complete cycle.
          */
         "repeat"?: TransitionRepeat;
     }
@@ -1560,39 +1560,39 @@ declare namespace LocalJSX {
     }
     interface PlusTransition {
         /**
-          * Specifies the amount of delay before starting the animation to play. This may be specified in either seconds (s) or milliseconds (ms).
+          * Specifies the amount of delay before starting the animation to play.  This may be specified in either seconds `s` or milliseconds `ms`.
          */
         "delay"?: string;
         /**
-          * TODO
+          * Defines whether an animation should be played forwards, backwards or in alternate cycles.
          */
         "direction"?: TransitionDirection;
         /**
-          * TODO
+          * Specifies the length of time it will take to complete one cycle between two defined states. You can also use the reservation values `slower`, `slow`, `normal`, `fast` and `faster`.
          */
         "duration"?: TransitionDuration;
         /**
-          * TODO
+          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see the list of available animations.
          */
         "name"?: string;
         /**
-          * TODO
+          * This event is fired any time the animation has been canceled.
          */
         "onPlusCancel"?: (event: CustomEvent<any>) => void;
         /**
-          * TODO
+          * This event is fired when animation has been completed.
          */
         "onPlusEnd"?: (event: CustomEvent<any>) => void;
         /**
-          * TODO
+          * This event is fired any time a new cycle has been started.
          */
         "onPlusIteration"?: (event: CustomEvent<any>) => void;
         /**
-          * TODO
+          * This event is fired when animation has been started.
          */
         "onPlusStart"?: (event: CustomEvent<any>) => void;
         /**
-          * TODO
+          * Specifies the number of times the animation should be repeated after one complete cycle.
          */
         "repeat"?: TransitionRepeat;
     }

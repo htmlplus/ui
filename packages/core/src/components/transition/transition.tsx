@@ -3,9 +3,9 @@ import { Bind, GlobalConfig } from '@app/services';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
- * This component allows you to apply animation on your components such as fade or other animations. 
- * Click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see and choose your favorite animation from a wide range of animations we provide for you. 
- * @development
+ * This component allows you to apply an animation on your component such as fade or other animations. 
+ * click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see and choose your favorite animation from a wide range of animation we provide for you.
+ * @examples default, name, duration
  */
 @Component({
   tag: 'plus-transition',
@@ -15,49 +15,52 @@ import { TransitionDirection, TransitionDuration, TransitionRepeat } from './tra
 export class Transition {
 
   /**
-   * Specifies the amount of delay before starting the animation to play. This may be specified in either seconds (s) or milliseconds (ms).
+   * Specifies the amount of delay before starting the animation to play. 
+   * This may be specified in either seconds `s` or milliseconds `ms`.
    */
   @Prop()
   delay?: string;
 
   /**
-   * TODO
+   * Defines whether an animation should be played forwards, backwards or in alternate cycles.
    */
   @Prop()
   direction?: TransitionDirection;
 
   /**
-   * TODO
+   * Specifies the length of time it will take to complete one cycle between two defined states.
+   * You can also use the reservation values `slower`, `slow`, `normal`, `fast` and `faster`.
    */
   @Prop()
   duration?: TransitionDuration = 'normal';
 
   /**
-   * TODO
+   * Specifies what kind of animation you want to play. 
+   * click [here](ROUTE:COMPONENT:TRANSITION:NAME) to see the list of available animations.
    */
   @Prop({ reflect: true })
   name: string;
 
   /**
-   * TODO
+   * Specifies the time that animation should be paused.
    */
   // @Prop({ reflect: true })
   // pause?: TransitionPause;
 
   /**
-   * TODO
+   * Specifies the time that animation will start.
    */
   // @Prop({ reflect: true })
   // start?: TransitionStart;
 
   /**
-   * TODO
+   * Specifies the number of times the animation should be repeated after one complete cycle.
    */
   @Prop()
   repeat?: TransitionRepeat;
 
   /**
-   * TODO
+   * This event is fired any time the animation has been canceled.
    */
   @Event({
     bubbles: false,
@@ -66,7 +69,7 @@ export class Transition {
   plusCancel!: EventEmitter;
 
   /**
-   * TODO
+   * This event is fired when animation has been completed.
    */
   @Event({
     bubbles: false,
@@ -75,7 +78,7 @@ export class Transition {
   plusEnd!: EventEmitter;
 
   /**
-   * TODO
+   * This event is fired any time a new cycle has been started. 
    */
   @Event({
     bubbles: false,
@@ -84,7 +87,7 @@ export class Transition {
   plusIteration!: EventEmitter;
 
   /**
-   * TODO
+   * This event is fired when animation has been started.
    */
   @Event({
     bubbles: false,
