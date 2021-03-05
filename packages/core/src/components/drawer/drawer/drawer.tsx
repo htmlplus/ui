@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import { Component, Host, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { Animation, Bind, ClickOutside, GlobalConfig, Media, Scrollbar } from '@app/services';
 import * as Utils from '@app/utils';
 import { DrawerLink, Inject, rebind } from './drawer.link';
@@ -82,8 +82,8 @@ export class Drawer {
   /**
    * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background. 
    */
-  @Prop({ reflect: true })
-  temporary?: boolean;
+  @Prop()
+  temporary?: boolean | 'on-breakpoint';
 
   /**
    * When the drawer is going to hide
@@ -132,12 +132,22 @@ export class Drawer {
     toggle: () => this.toggle()
   };
 
+  @State()
+  state?: 'desktop' | 'mobile';
+
   @Element()
   $host!: HTMLElement;
 
   $content!: HTMLElement;
 
   animations: { open?: Animation, mini?: Animation } = {};
+
+  get attributes() {
+    return {
+      state: this.state,
+      style: this.styles,
+    }
+  }
 
   get classes() {
 
@@ -154,7 +164,7 @@ export class Drawer {
 
   get hasBackdrop() {
 
-    if (!this.temporary) return false;
+    if (!this.isTemporary) return false;
 
     if (this.backdrop === true || this.backdrop === 'auto') return true;
 
@@ -167,6 +177,15 @@ export class Drawer {
 
   get isRTL() {
     return Utils.isRTL(this);
+  }
+
+  get isTemporary() {
+
+    if (this.temporary === true) return true;
+
+    if (this.temporary === 'on-breakpoint' && this.state === 'mobile') return true;
+
+    return false;
   }
 
   get styles() {
@@ -260,7 +279,7 @@ export class Drawer {
 
   shown() {
 
-    this.temporary && Scrollbar.remove(this);
+    this.isTemporary && Scrollbar.remove(this);
 
     ClickOutside.add(this.$content, this.onOutsideClick, false);
 
@@ -323,15 +342,19 @@ export class Drawer {
    * Events handler
    */
 
+  @Bind
   @Media('[breakpoint]-down')
-  onMedia() {
-    // TODO : console.log('drawer', event)
+  onMedia(event) {
+
+    this.state = event.matches ? 'mobile' : 'desktop';
+
+    if (!event.matches && this.open) this.open = false;
   }
 
   @Bind
   onOutsideClick() {
 
-    if (!this.isOpen || !this.temporary || this.persistent) return;
+    if (!this.isOpen || !this.isTemporary || this.persistent) return;
 
     this.hide();
   }
@@ -353,7 +376,7 @@ export class Drawer {
 
   render() {
     return (
-      <Host style={this.styles}>
+      <Host {...this.attributes}>
         {this.hasBackdrop && (<div class="backdrop"><div /></div>)}
         <div
           class={this.classes}

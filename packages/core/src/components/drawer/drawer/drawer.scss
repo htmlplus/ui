@@ -19,7 +19,9 @@
     z-index: $drawer-z-index;
 }
 
-:host([temporary]) {
+// TODO
+:host([temporary]:not([temporary=on-breakpoint])),
+:host([temporary=on-breakpoint][state=mobile]) {
     position: fixed;
     top: 0;
     right: 0;

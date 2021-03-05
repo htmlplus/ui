@@ -174,7 +174,7 @@ export namespace Components {
         /**
           * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
-        "temporary"?: boolean;
+        "temporary"?: boolean | 'on-breakpoint';
     }
     interface PlusDrawerToggler {
         /**
@@ -1072,7 +1072,7 @@ declare namespace LocalJSX {
         /**
           * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
-        "temporary"?: boolean;
+        "temporary"?: boolean | 'on-breakpoint';
     }
     interface PlusDrawerToggler {
         /**
