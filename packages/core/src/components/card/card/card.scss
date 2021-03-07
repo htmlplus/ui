@@ -3,14 +3,31 @@
 @import 'card.variables';
 
 :host {
+
+    /**
+    * @prop --plus-card-background-color: TODO
+    * @prop --plus-card-border-color    : TODO
+    * @prop --plus-card-border-radius   : TODO
+    * @prop --plus-card-border-width    : TODO
+    * @prop --plus-card-box-shadow      : TODO
+    */
+
+    --plus-card-background-color: #{$card-background-color};
+    --plus-card-border-color    : #{$card-border-color};
+    --plus-card-border-radius   : #{$card-border-radius};
+    --plus-card-border-width    : #{$card-border-width};
+    --plus-card-box-shadow      : none;
+}
+
+:host {
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-    background-color: $card-background-color;
-    border-radius: $card-border-radius;
+    background-color: var(--plus-card-background-color);
+    border-radius: var(--plus-card-border-radius);
 }
 
 :host([flat]) {
@@ -18,7 +35,7 @@
 }
 
 :host([outlined]) {
-    border: solid $card-border-width $card-border-color;
+    border: solid var(--plus-card-border-width) var(--plus-card-border-color);
 }
 
 :host([tile]) {
