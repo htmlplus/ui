@@ -66,7 +66,7 @@ export class Transition {
     bubbles: false,
     cancelable: true
   })
-  plusCancel!: EventEmitter;
+  plusCancel!: EventEmitter<void>;
 
   /**
    * This event is fired when animation has been completed.
@@ -75,7 +75,7 @@ export class Transition {
     bubbles: false,
     cancelable: true
   })
-  plusEnd!: EventEmitter;
+  plusEnd!: EventEmitter<void>;
 
   /**
    * This event is fired any time a new cycle has been started. 
@@ -84,7 +84,7 @@ export class Transition {
     bubbles: false,
     cancelable: true
   })
-  plusIteration!: EventEmitter;
+  plusIteration!: EventEmitter<void>;
 
   /**
    * This event is fired when animation has been started.
@@ -93,7 +93,7 @@ export class Transition {
     bubbles: false,
     cancelable: true
   })
-  plusStart!: EventEmitter;
+  plusStart!: EventEmitter<void>;
 
   @GlobalConfig('transition', {
     delay: '0s',

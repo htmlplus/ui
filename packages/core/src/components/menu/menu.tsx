@@ -81,7 +81,7 @@ export class Menu {
     bubbles: false,
     cancelable: true
   })
-  plusClose!: EventEmitter;
+  plusClose!: EventEmitter<void>;
 
   @State()
   x?: string;
