@@ -33,7 +33,11 @@ export class Layout {
   @Prop()
   main?: LayoutMain = 'stretch';
 
-  @GlobalConfig('layout')
+  @GlobalConfig('layout', {
+    header: 'grow',
+    footer: 'grow',
+    main: 'stretch',
+  })
   config?;
 
   get areas() {
