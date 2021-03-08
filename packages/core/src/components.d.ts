@@ -1456,7 +1456,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "onPlusClose"?: (event: CustomEvent<any>) => void;
+        "onPlusClose"?: (event: CustomEvent<void>) => void;
         /**
           * TODO
          */
@@ -1512,7 +1512,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "onWowChange"?: (event: CustomEvent<any>) => void;
+        "onWowChange"?: (event: CustomEvent<string>) => void;
         /**
           * TODO
          */
@@ -1578,19 +1578,19 @@ declare namespace LocalJSX {
         /**
           * This event is fired any time the animation has been canceled.
          */
-        "onPlusCancel"?: (event: CustomEvent<any>) => void;
+        "onPlusCancel"?: (event: CustomEvent<void>) => void;
         /**
           * This event is fired when animation has been completed.
          */
-        "onPlusEnd"?: (event: CustomEvent<any>) => void;
+        "onPlusEnd"?: (event: CustomEvent<void>) => void;
         /**
           * This event is fired any time a new cycle has been started.
          */
-        "onPlusIteration"?: (event: CustomEvent<any>) => void;
+        "onPlusIteration"?: (event: CustomEvent<void>) => void;
         /**
           * This event is fired when animation has been started.
          */
-        "onPlusStart"?: (event: CustomEvent<any>) => void;
+        "onPlusStart"?: (event: CustomEvent<void>) => void;
         /**
           * Specifies the number of times the animation should be repeated after one complete cycle.
          */
