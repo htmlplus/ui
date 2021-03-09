@@ -1,0 +1,33 @@
+@import 'reset';
+@import 'divider.variables';
+
+:host {
+
+  /**
+  * @prop --plus-divider-background-color: TODO
+  * @prop --plus-divider-size            : TODO
+  */
+
+  --plus-divider-background-color: #{$divider-background-color};
+  --plus-divider-size: #{$divider-size};
+}
+
+:host {
+  background-color: var(--plus-divider-background-color);
+  display: block;
+}
+
+:host {
+  height: var(--plus-divider-size);
+  min-height: auto;
+  width: auto;
+  min-width: 100%;
+}
+
+:host([vertical]) {  
+  width: var(--plus-divider-size);
+  min-width: auto;
+  height: auto;
+  min-height: 100%;
+  align-self: stretch
+}

@@ -5,7 +5,16 @@ import { LayoutFooter, LayoutHeader, LayoutMain } from './layout.types';
 
 /**
  * TODO
- * @development
+ * @development 
+ * @slot              - The default slot
+ * @slot header       - TODO
+ * @slot header:start - TODO
+ * @slot header:end   - TODO
+ * @slot footer       - TODO
+ * @slot footer:start - TODO
+ * @slot footer:end   - TODO
+ * @slot aside:start  - TODO
+ * @slot aside:end    - TODO
  * @examples default
  */
 @Component({
