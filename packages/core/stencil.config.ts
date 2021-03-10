@@ -21,13 +21,14 @@ export const config: Config = {
       type: 'dist-custom-elements-bundle'
     },
     {
-      type: 'docs-custom',
-      generator: docs('./dist/docs.json')
+      type: 'custom',
+      name: 'custom-docs',
+      generator: docs('./dist/docs.json') as any
     },
     reactOutputTarget({
       componentCorePackage: Constants.PACKAGE_NAME,
       proxiesFile: `${Constants.PORT_PATH}/react/src/components.ts`
-    }),
+    })
   ],
   plugins: [
     sass({
@@ -44,12 +45,17 @@ export const config: Config = {
   bundles: [
     { components: ['plus-aspect-ratio'] },
     { components: ['plus-card', 'plus-card-body', 'plus-card-footer', 'plus-card-header'] },
+    { components: ['plus-click-outside'] },
     { components: ['plus-dialog', 'plus-dialog-body', 'plus-dialog-content', 'plus-dialog-footer', 'plus-dialog-header', 'plus-dialog-toggler'] },
+    { components: ['plus-divider'] },
     { components: ['plus-drawer', 'plus-drawer-toggler'] },
     { components: ['plus-grid', 'plus-grid-item'] },
+    { components: ['plus-intersection'] },
+    { components: ['plus-layout'] },
     { components: ['plus-spinner'] },
     { components: ['plus-switch'] },
     { components: ['plus-tabs', 'plus-tabs-bar', 'plus-tabs-panel', 'plus-tabs-panels', 'plus-tabs-tab'] },
+    { components: ['plus-transition'] },
     { components: ['plus-tunnel-consumer'] },
   ]
 }

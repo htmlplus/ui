@@ -4,3 +4,13 @@
 :host {
   display: block;
 }
+
+.wrapper {
+  width: inherit;
+  height: inherit;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+}

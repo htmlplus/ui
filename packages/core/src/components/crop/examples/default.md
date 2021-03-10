@@ -1,7 +1,3 @@
-```css [style]
-
-```
-
 ```html [template]
-
+<plus-crop></plus-crop>
 ```

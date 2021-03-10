@@ -58,6 +58,28 @@ export namespace Components {
          */
         "once"?: boolean;
     }
+    interface PlusCrop {
+        /**
+          * TODO
+         */
+        "aspectRatio"?: string | number;
+        /**
+          * TODO
+         */
+        "background"?: boolean;
+        /**
+          * TODO
+         */
+        "circle"?: boolean;
+        /**
+          * TODO
+         */
+        "src"?: string;
+        /**
+          * TODO
+         */
+        "zoomable"?: boolean | 'touch' | 'wheel';
+    }
     interface PlusDialog {
         /**
           * Activate the dialog's backdrop to show or not.
@@ -129,6 +151,12 @@ export namespace Components {
           * This property helps you to attach which dialog this toggler controls.  It doesn't matter where the dialog toggler is.  You can put the dialog's toggler inside or outside of the dialog.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
+    }
+    interface PlusDivider {
+        /**
+          * TODO
+         */
+        "vertical"?: boolean;
     }
     interface PlusDrawer {
         /**
@@ -709,6 +737,12 @@ declare global {
         prototype: HTMLPlusClickOutsideElement;
         new (): HTMLPlusClickOutsideElement;
     };
+    interface HTMLPlusCropElement extends Components.PlusCrop, HTMLStencilElement {
+    }
+    var HTMLPlusCropElement: {
+        prototype: HTMLPlusCropElement;
+        new (): HTMLPlusCropElement;
+    };
     interface HTMLPlusDialogElement extends Components.PlusDialog, HTMLStencilElement {
     }
     var HTMLPlusDialogElement: {
@@ -744,6 +778,12 @@ declare global {
     var HTMLPlusDialogTogglerElement: {
         prototype: HTMLPlusDialogTogglerElement;
         new (): HTMLPlusDialogTogglerElement;
+    };
+    interface HTMLPlusDividerElement extends Components.PlusDivider, HTMLStencilElement {
+    }
+    var HTMLPlusDividerElement: {
+        prototype: HTMLPlusDividerElement;
+        new (): HTMLPlusDividerElement;
     };
     interface HTMLPlusDrawerElement extends Components.PlusDrawer, HTMLStencilElement {
     }
@@ -854,12 +894,14 @@ declare global {
         "plus-card-footer": HTMLPlusCardFooterElement;
         "plus-card-header": HTMLPlusCardHeaderElement;
         "plus-click-outside": HTMLPlusClickOutsideElement;
+        "plus-crop": HTMLPlusCropElement;
         "plus-dialog": HTMLPlusDialogElement;
         "plus-dialog-body": HTMLPlusDialogBodyElement;
         "plus-dialog-content": HTMLPlusDialogContentElement;
         "plus-dialog-footer": HTMLPlusDialogFooterElement;
         "plus-dialog-header": HTMLPlusDialogHeaderElement;
         "plus-dialog-toggler": HTMLPlusDialogTogglerElement;
+        "plus-divider": HTMLPlusDividerElement;
         "plus-drawer": HTMLPlusDrawerElement;
         "plus-drawer-toggler": HTMLPlusDrawerTogglerElement;
         "plus-grid": HTMLPlusGridElement;
@@ -923,6 +965,28 @@ declare namespace LocalJSX {
           * The callback occurs only once.
          */
         "once"?: boolean;
+    }
+    interface PlusCrop {
+        /**
+          * TODO
+         */
+        "aspectRatio"?: string | number;
+        /**
+          * TODO
+         */
+        "background"?: boolean;
+        /**
+          * TODO
+         */
+        "circle"?: boolean;
+        /**
+          * TODO
+         */
+        "src"?: string;
+        /**
+          * TODO
+         */
+        "zoomable"?: boolean | 'touch' | 'wheel';
     }
     interface PlusDialog {
         /**
@@ -1011,6 +1075,12 @@ declare namespace LocalJSX {
           * This property helps you to attach which dialog this toggler controls.  It doesn't matter where the dialog toggler is.  You can put the dialog's toggler inside or outside of the dialog.  Read more about connectors [here](https://htmlplus.io/features/connector).
          */
         "connector"?: string;
+    }
+    interface PlusDivider {
+        /**
+          * TODO
+         */
+        "vertical"?: boolean;
     }
     interface PlusDrawer {
         /**
@@ -1608,12 +1678,14 @@ declare namespace LocalJSX {
         "plus-card-footer": PlusCardFooter;
         "plus-card-header": PlusCardHeader;
         "plus-click-outside": PlusClickOutside;
+        "plus-crop": PlusCrop;
         "plus-dialog": PlusDialog;
         "plus-dialog-body": PlusDialogBody;
         "plus-dialog-content": PlusDialogContent;
         "plus-dialog-footer": PlusDialogFooter;
         "plus-dialog-header": PlusDialogHeader;
         "plus-dialog-toggler": PlusDialogToggler;
+        "plus-divider": PlusDivider;
         "plus-drawer": PlusDrawer;
         "plus-drawer-toggler": PlusDrawerToggler;
         "plus-grid": PlusGrid;
@@ -1643,12 +1715,14 @@ declare module "@stencil/core" {
             "plus-card-footer": LocalJSX.PlusCardFooter & JSXBase.HTMLAttributes<HTMLPlusCardFooterElement>;
             "plus-card-header": LocalJSX.PlusCardHeader & JSXBase.HTMLAttributes<HTMLPlusCardHeaderElement>;
             "plus-click-outside": LocalJSX.PlusClickOutside & JSXBase.HTMLAttributes<HTMLPlusClickOutsideElement>;
+            "plus-crop": LocalJSX.PlusCrop & JSXBase.HTMLAttributes<HTMLPlusCropElement>;
             "plus-dialog": LocalJSX.PlusDialog & JSXBase.HTMLAttributes<HTMLPlusDialogElement>;
             "plus-dialog-body": LocalJSX.PlusDialogBody & JSXBase.HTMLAttributes<HTMLPlusDialogBodyElement>;
             "plus-dialog-content": LocalJSX.PlusDialogContent & JSXBase.HTMLAttributes<HTMLPlusDialogContentElement>;
             "plus-dialog-footer": LocalJSX.PlusDialogFooter & JSXBase.HTMLAttributes<HTMLPlusDialogFooterElement>;
             "plus-dialog-header": LocalJSX.PlusDialogHeader & JSXBase.HTMLAttributes<HTMLPlusDialogHeaderElement>;
             "plus-dialog-toggler": LocalJSX.PlusDialogToggler & JSXBase.HTMLAttributes<HTMLPlusDialogTogglerElement>;
+            "plus-divider": LocalJSX.PlusDivider & JSXBase.HTMLAttributes<HTMLPlusDividerElement>;
             "plus-drawer": LocalJSX.PlusDrawer & JSXBase.HTMLAttributes<HTMLPlusDrawerElement>;
             "plus-drawer-toggler": LocalJSX.PlusDrawerToggler & JSXBase.HTMLAttributes<HTMLPlusDrawerTogglerElement>;
             "plus-grid": LocalJSX.PlusGrid & JSXBase.HTMLAttributes<HTMLPlusGridElement>;

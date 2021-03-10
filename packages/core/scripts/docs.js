@@ -156,41 +156,25 @@ const slots = (component) => {
 
 const styles = (component) => {
 
-  let styles = [];
+  const styles = [];
 
   try {
 
-    const file = fs.readFileSync(path.join(component.dirPath, component.fileName.replace('tsx', 'scss')), 'utf8');
+    const variables = component.styleUpdated
+      .match(/[^(]--(.*?):(.*?)(?=;|})/g)
+      .map((key) => key.replace(/;|{/g, '').split(':'))
+      .reduce((result, [key, value]) => ({ ...result, [key.trim()]: value.trim() }), {});
 
-    const props = file
-      .match(/(?<=:host {\s+).*?(?=\s+})/gs)
-      .shift()
-      .split('\n')
-      .map((line) => {
+    for (let i = 0; i < component.styles.length; i++) {
 
-        let i = line.indexOf('@prop');
+      const style = component.styles[i];
 
-        if (i < 0) i = line.indexOf('--')
-
-        if (i < 0) return '';
-
-        return line.substr(i, line.length).trim();
+      styles.push({
+        name: style.name,
+        description: style.docs,
+        default: variables[style.name]
       })
-      .filter((line) => !!line)
-      .map((line) => line.split(':').map((section) => section.trim()));
-
-    const defaults = props.filter(prop => prop[0].startsWith('--'))
-
-    styles = props
-      .filter(prop => prop[0].startsWith('@prop'))
-      .map(prop => {
-        const name = prop[0].split('@prop').pop().trim();
-        return {
-          name,
-          description: prop[1],
-          default: ((defaults.find(x => x[0] === name) || []).pop() || '').trim().replace(';', '')
-        }
-      });
+    }
   }
   catch { }
 
@@ -218,38 +202,38 @@ const title = (component) => {
     .replace(/^\w/, (char) => char.toUpperCase());
 }
 
-const convert = (components) => {
+module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
 
-  return components
-    .map((component) => ({
-      description: description(component),
-      deprecated: deprecated(component),
-      development: development(component),
-      events: events(component),
-      examples: examples(component),
-      group: group(component),
-      hasExternals: hasExternals(component),
-      key: key(component),
-      methods: methods(component),
-      properties: properties(component),
-      readme: readme(component),
-      slots: slots(component),
-      styles: styles(component),
-      tag: tag(component),
-      tags: tags(component),
-      title: title(component),
-    }))
+  const components = input.components
+    .map((component) => {
+
+      component.styleUpdated = buildCtx.stylesUpdated.find((style) => style.styleTag === component.tag).styleText;
+
+      return {
+        description: description(component),
+        deprecated: deprecated(component),
+        development: development(component),
+        events: events(component),
+        examples: examples(component),
+        group: group(component),
+        hasExternals: hasExternals(component),
+        key: key(component),
+        methods: methods(component),
+        properties: properties(component),
+        readme: readme(component),
+        slots: slots(component),
+        styles: styles(component),
+        tag: tag(component),
+        tags: tags(component),
+        title: title(component),
+      }
+    })
     .map((component, index, components) => {
 
       component.main = !component.group || !!components.filter((item) => item.group === component.key && item.group !== item.key).length;
 
       return component;
     });
-}
-
-const docs = (dest) => (input) => {
-
-  const components = convert(input.components);
 
   const target = path.join(root, dest);
 
@@ -261,5 +245,3 @@ const docs = (dest) => (input) => {
 
   fs.writeFileSync(target, json);
 }
-
-module.exports.docs = docs;
