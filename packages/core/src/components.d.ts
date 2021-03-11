@@ -154,7 +154,7 @@ export namespace Components {
     }
     interface PlusDivider {
         /**
-          * TODO
+          * You can use vertical property for vertical division.
          */
         "vertical"?: boolean;
     }
@@ -1078,7 +1078,7 @@ declare namespace LocalJSX {
     }
     interface PlusDivider {
         /**
-          * TODO
+          * You can use vertical property for vertical division.
          */
         "vertical"?: boolean;
     }
