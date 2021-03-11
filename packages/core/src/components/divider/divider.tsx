@@ -2,8 +2,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/services';
 
 /**
- * TODO
- * @development
+ * It's a thin line that can divide the content vertically or horizontally.
  * @examples horizontal, vertical, card, customize
  */
 @Component({
@@ -14,7 +13,7 @@ import { GlobalConfig } from '@app/services';
 export class Divider {
 
   /**
-   * TODO
+   * You can use vertical property for vertical division.
    */
   @Prop({ reflect: true })
   vertical?: boolean;
@@ -23,7 +22,13 @@ export class Divider {
    * TODO
    */
   // @Prop()
-  // size?: number | string;
+  // weight?: number | string;
+
+  /**
+   * TODO
+   */
+  // @Prop()
+  // variant?: 'inset' | 'middle' | 'full';
 
   @GlobalConfig('divider')
   config?;
