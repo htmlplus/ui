@@ -8,7 +8,8 @@ import {GlobalConfig} from '@app/services';
 
 @Component({
   tag: 'plus-sticky',
-  styleUrl: 'sticky.scss'
+  styleUrl: 'sticky.scss',
+  shadow: true
 })
 
 export class Sticky {
@@ -22,16 +23,10 @@ export class Sticky {
     disabled: false,
   })
 
-  position() {
-    return this.disabled ? 'position-unset' : 'position-sticky'
-  }
-
   render() {
     return (
       <Host>
-        <div class={`${this.position()}`}>
-          <slot/>
-        </div>
+        <slot/>
       </Host>
     )
   }
