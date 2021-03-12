@@ -2,7 +2,7 @@
 plus-divider {
   margin: 2rem 0;
   --plus-divider-background-color: #5f9ee9;
-  --plus-divider-size: 3px;
+  --plus-divider-weight: 3px;
 }
 ```
 
