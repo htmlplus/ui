@@ -5,6 +5,7 @@ import { StickyTop } from './sticky.types';
 
 /**
  * Component content is positioned based on the user's scroll position.
+ * @slot - The default slot
  * @examples default
  */
 @Component({
