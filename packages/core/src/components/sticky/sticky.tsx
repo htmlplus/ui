@@ -19,13 +19,32 @@ export class Sticky {
   @Prop({reflect: true})
   disabled?: boolean = false;
 
+  /**
+   * Specifies the space from top
+   */
+  @Prop({reflect: true})
+  top?: number = 0;
+
+  /**
+   * Specifies the z-index
+   */
+  @Prop({reflect: true})
+  innerZ?: number = 1;
+
   @GlobalConfig('sticky', {
     disabled: false,
   })
 
+  get styles() {
+    return {
+      '--plus-sticky-top': this.top ? String(this.top) + 'px' : null,
+      '--plus-sticky-inner-z': this.innerZ ? String(this.innerZ) : null
+    }
+  }
+
   render() {
     return (
-      <Host>
+      <Host style={this.styles}>
         <slot/>
       </Host>
     )
