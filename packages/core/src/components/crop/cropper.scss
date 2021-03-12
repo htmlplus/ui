@@ -14,3 +14,8 @@
   display: block;
   max-width: 100%;
 }
+
+.rounded .cropper-face ,
+.rounded .cropper-view-box {
+  border-radius: 50%;
+}

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
+import { CropperAspectRatio, CropperData, CropperZoomable } from "./components/crop/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -58,27 +59,56 @@ export namespace Components {
          */
         "once"?: boolean;
     }
-    interface PlusCrop {
+    interface PlusCropper {
         /**
-          * TODO
+          * Define the fixed aspect ratio of the crop box. By default, the crop box is free ratio.
          */
-        "aspectRatio"?: string | number;
+        "aspectRatio"?: CropperAspectRatio;
         /**
-          * TODO
+          * Show the grid background of the container.
          */
         "background"?: boolean;
         /**
           * TODO
          */
-        "circle"?: boolean;
+        "data"?: CropperData;
         /**
           * TODO
+         */
+        "dim"?: boolean;
+        /**
+          * Show the dashed lines above the crop box.
+         */
+        "guides"?: boolean;
+        /**
+          * Reset the cropped area after resizing the window.
+         */
+        "reset"?: boolean;
+        /**
+          * Re-render the cropper when resizing the window.
+         */
+        "responsive"?: boolean;
+        /**
+          * TODO
+         */
+        "rounded"?: boolean;
+        /**
+          * Image source.
          */
         "src"?: string;
         /**
-          * TODO
+          * TODO: only on wheel
          */
-        "zoomable"?: boolean | 'touch' | 'wheel';
+        "zoomRatio"?: number;
+        /**
+          * TODO
+          * @param false - TODO
+          * @param true - TODO
+          * @param touch - TODO
+          * @param wheel - TODO
+          * @
+         */
+        "zoomable"?: CropperZoomable;
     }
     interface PlusDialog {
         /**
@@ -737,11 +767,11 @@ declare global {
         prototype: HTMLPlusClickOutsideElement;
         new (): HTMLPlusClickOutsideElement;
     };
-    interface HTMLPlusCropElement extends Components.PlusCrop, HTMLStencilElement {
+    interface HTMLPlusCropperElement extends Components.PlusCropper, HTMLStencilElement {
     }
-    var HTMLPlusCropElement: {
-        prototype: HTMLPlusCropElement;
-        new (): HTMLPlusCropElement;
+    var HTMLPlusCropperElement: {
+        prototype: HTMLPlusCropperElement;
+        new (): HTMLPlusCropperElement;
     };
     interface HTMLPlusDialogElement extends Components.PlusDialog, HTMLStencilElement {
     }
@@ -894,7 +924,7 @@ declare global {
         "plus-card-footer": HTMLPlusCardFooterElement;
         "plus-card-header": HTMLPlusCardHeaderElement;
         "plus-click-outside": HTMLPlusClickOutsideElement;
-        "plus-crop": HTMLPlusCropElement;
+        "plus-cropper": HTMLPlusCropperElement;
         "plus-dialog": HTMLPlusDialogElement;
         "plus-dialog-body": HTMLPlusDialogBodyElement;
         "plus-dialog-content": HTMLPlusDialogContentElement;
@@ -966,27 +996,64 @@ declare namespace LocalJSX {
          */
         "once"?: boolean;
     }
-    interface PlusCrop {
+    interface PlusCropper {
         /**
-          * TODO
+          * Define the fixed aspect ratio of the crop box. By default, the crop box is free ratio.
          */
-        "aspectRatio"?: string | number;
+        "aspectRatio"?: CropperAspectRatio;
         /**
-          * TODO
+          * Show the grid background of the container.
          */
         "background"?: boolean;
         /**
           * TODO
          */
-        "circle"?: boolean;
+        "data"?: CropperData;
         /**
           * TODO
+         */
+        "dim"?: boolean;
+        /**
+          * Show the dashed lines above the crop box.
+         */
+        "guides"?: boolean;
+        /**
+          * This event fires when the canvas (image wrapper) or the crop box changed.
+         */
+        "onPlusCrop"?: (event: CustomEvent<CropperData>) => void;
+        /**
+          * This event fires when the target image has been loaded and the cropper instance is ready for operating.
+         */
+        "onPlusReady"?: (event: CustomEvent<void>) => void;
+        /**
+          * Reset the cropped area after resizing the window.
+         */
+        "reset"?: boolean;
+        /**
+          * Re-render the cropper when resizing the window.
+         */
+        "responsive"?: boolean;
+        /**
+          * TODO
+         */
+        "rounded"?: boolean;
+        /**
+          * Image source.
          */
         "src"?: string;
         /**
-          * TODO
+          * TODO: only on wheel
          */
-        "zoomable"?: boolean | 'touch' | 'wheel';
+        "zoomRatio"?: number;
+        /**
+          * TODO
+          * @param false - TODO
+          * @param true - TODO
+          * @param touch - TODO
+          * @param wheel - TODO
+          * @
+         */
+        "zoomable"?: CropperZoomable;
     }
     interface PlusDialog {
         /**
@@ -1678,7 +1745,7 @@ declare namespace LocalJSX {
         "plus-card-footer": PlusCardFooter;
         "plus-card-header": PlusCardHeader;
         "plus-click-outside": PlusClickOutside;
-        "plus-crop": PlusCrop;
+        "plus-cropper": PlusCropper;
         "plus-dialog": PlusDialog;
         "plus-dialog-body": PlusDialogBody;
         "plus-dialog-content": PlusDialogContent;
@@ -1715,7 +1782,7 @@ declare module "@stencil/core" {
             "plus-card-footer": LocalJSX.PlusCardFooter & JSXBase.HTMLAttributes<HTMLPlusCardFooterElement>;
             "plus-card-header": LocalJSX.PlusCardHeader & JSXBase.HTMLAttributes<HTMLPlusCardHeaderElement>;
             "plus-click-outside": LocalJSX.PlusClickOutside & JSXBase.HTMLAttributes<HTMLPlusClickOutsideElement>;
-            "plus-crop": LocalJSX.PlusCrop & JSXBase.HTMLAttributes<HTMLPlusCropElement>;
+            "plus-cropper": LocalJSX.PlusCropper & JSXBase.HTMLAttributes<HTMLPlusCropperElement>;
             "plus-dialog": LocalJSX.PlusDialog & JSXBase.HTMLAttributes<HTMLPlusDialogElement>;
             "plus-dialog-body": LocalJSX.PlusDialogBody & JSXBase.HTMLAttributes<HTMLPlusDialogBodyElement>;
             "plus-dialog-content": LocalJSX.PlusDialogContent & JSXBase.HTMLAttributes<HTMLPlusDialogContentElement>;
