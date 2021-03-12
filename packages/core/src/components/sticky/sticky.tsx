@@ -1,51 +1,57 @@
-import {Component, Host, Prop, h} from "@stencil/core";
-import {GlobalConfig} from '@app/services';
+import { Component, Host, Prop, h } from "@stencil/core";
+import { GlobalConfig } from '@app/services';
+import * as Utils from '@app/utils';
+import { StickyTop } from './sticky.types';
 
 /**
  * Component content is positioned based on the user's scroll position.
- * @examples disabled
+ * @examples default
  */
-
 @Component({
   tag: 'plus-sticky',
   styleUrl: 'sticky.scss',
   shadow: true
 })
-
 export class Sticky {
-  /**
-   * Specifies the disable sticky mode
-   */
-  @Prop({reflect: true})
-  disabled?: boolean = false;
 
   /**
-   * Specifies the space from top
+   * Specifies the disable sticky mode.
    */
-  @Prop({reflect: true})
-  top?: number = 0;
+  @Prop({ reflect: true })
+  disabled?: boolean;
 
   /**
-   * Specifies the z-index
+   * Specifies the space from top.
    */
-  @Prop({reflect: true})
-  innerZ?: number = 1;
+  @Prop()
+  top?: StickyTop;
 
-  @GlobalConfig('sticky', {
-    disabled: false,
-  })
+  /**
+   * Specifies the z-index of the sticky.
+   */
+  @Prop()
+  zIndex?: number;
+
+  @GlobalConfig('sticky')
+  config;
+
+  get attributes() {
+    return {
+      style: this.styles
+    }
+  }
 
   get styles() {
     return {
-      '--plus-sticky-top': this.top ? String(this.top) + 'px' : null,
-      '--plus-sticky-inner-z': this.innerZ ? String(this.innerZ) : null
+      top: Utils.toUnit(this.top),
+      zIndex: this.top ? String(this.zIndex) : null,
     }
   }
 
   render() {
     return (
-      <Host style={this.styles}>
-        <slot/>
+      <Host {...this.attributes}>
+        <slot />
       </Host>
     )
   }

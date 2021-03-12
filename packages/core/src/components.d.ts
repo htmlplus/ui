@@ -16,6 +16,7 @@ import { IntersectionBehavior } from "./components/intersection/intersection.typ
 import { LayoutFooter, LayoutHeader, LayoutMain } from "./components/layout/layout.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
+import { StickyTop } from "./components/sticky/sticky.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./services/tunnel/tunnel.types";
 export namespace Components {
@@ -634,6 +635,20 @@ export namespace Components {
          */
         "type"?: SpinnerType;
     }
+    interface PlusSticky {
+        /**
+          * Specifies the disable sticky mode.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the space from top.
+         */
+        "top"?: StickyTop;
+        /**
+          * Specifies the z-index of the sticky.
+         */
+        "zIndex"?: number;
+    }
     interface PlusSwitch {
         /**
           * Puts the switch in checked state
@@ -869,6 +884,12 @@ declare global {
         prototype: HTMLPlusSpinnerElement;
         new (): HTMLPlusSpinnerElement;
     };
+    interface HTMLPlusStickyElement extends Components.PlusSticky, HTMLStencilElement {
+    }
+    var HTMLPlusStickyElement: {
+        prototype: HTMLPlusStickyElement;
+        new (): HTMLPlusStickyElement;
+    };
     interface HTMLPlusSwitchElement extends Components.PlusSwitch, HTMLStencilElement {
     }
     var HTMLPlusSwitchElement: {
@@ -941,6 +962,7 @@ declare global {
         "plus-menu": HTMLPlusMenuElement;
         "plus-ripple": HTMLPlusRippleElement;
         "plus-spinner": HTMLPlusSpinnerElement;
+        "plus-sticky": HTMLPlusStickyElement;
         "plus-switch": HTMLPlusSwitchElement;
         "plus-tabs": HTMLPlusTabsElement;
         "plus-tabs-bar": HTMLPlusTabsBarElement;
@@ -1619,6 +1641,20 @@ declare namespace LocalJSX {
          */
         "type"?: SpinnerType;
     }
+    interface PlusSticky {
+        /**
+          * Specifies the disable sticky mode.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the space from top.
+         */
+        "top"?: StickyTop;
+        /**
+          * Specifies the z-index of the sticky.
+         */
+        "zIndex"?: number;
+    }
     interface PlusSwitch {
         /**
           * Puts the switch in checked state
@@ -1762,6 +1798,7 @@ declare namespace LocalJSX {
         "plus-menu": PlusMenu;
         "plus-ripple": PlusRipple;
         "plus-spinner": PlusSpinner;
+        "plus-sticky": PlusSticky;
         "plus-switch": PlusSwitch;
         "plus-tabs": PlusTabs;
         "plus-tabs-bar": PlusTabsBar;
@@ -1799,6 +1836,7 @@ declare module "@stencil/core" {
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
             "plus-ripple": LocalJSX.PlusRipple & JSXBase.HTMLAttributes<HTMLPlusRippleElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
+            "plus-sticky": LocalJSX.PlusSticky & JSXBase.HTMLAttributes<HTMLPlusStickyElement>;
             "plus-switch": LocalJSX.PlusSwitch & JSXBase.HTMLAttributes<HTMLPlusSwitchElement>;
             "plus-tabs": LocalJSX.PlusTabs & JSXBase.HTMLAttributes<HTMLPlusTabsElement>;
             "plus-tabs-bar": LocalJSX.PlusTabsBar & JSXBase.HTMLAttributes<HTMLPlusTabsBarElement>;

@@ -1,3 +1,3 @@
 ```html [template]
-<plus-crop></plus-crop>
+<plus-cropper></plus-cropper>
 ```
