@@ -1,0 +1,20 @@
+:host {
+  /**
+  * @prop --plus-sticky-top : Specifies the space from top
+  * @prop --plus-sticky-inner-z : Specifies the z-index of the sticky
+   */
+  --plus-sticky-top: 0;
+  --plus-sticky-inner-z: 1;
+}
+
+:host {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--plus-sticky-top);
+  z-index: var(--plus-sticky-inner-z);
+}
+
+:host([disabled]) {
+  position: unset;
+}
+
