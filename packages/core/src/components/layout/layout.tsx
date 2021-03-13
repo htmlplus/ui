@@ -15,7 +15,7 @@ import { LayoutFooter, LayoutHeader, LayoutMain } from './layout.types';
  * @slot footer:end   - TODO
  * @slot aside:start  - TODO
  * @slot aside:end    - TODO
- * @examples default
+ * @examples default, simple, aside
  */
 @Component({
   tag: 'plus-layout',
@@ -56,15 +56,19 @@ export class Layout {
       ' header ',
       this.area('header', 'end'),
       "' '",
-      'aside-start',
+      this.slots['aside:start'] ? 'aside-start' : 'main',
       ' main ',
-      'aside-end',
+      this.slots['aside:end'] ? 'aside-end' : 'main',
       "' '",
       this.area('footer', 'start'),
       ' footer ',
       this.area('footer', 'end'),
       "'",
     ].join('')
+  }
+
+  get elements() {
+    return ['header:start', 'header', 'header:end', 'aside:start', 'aside:end', 'footer:start', 'footer', 'footer:end'];
   }
 
   get slots() {
@@ -80,6 +84,10 @@ export class Layout {
   area(key, position) {
 
     const hasSlot = this.slots[`${key}:${position}`];
+
+    const hasAsideSlot = this.slots[`aside:${position}`];
+
+    if (!hasSlot && !hasAsideSlot) return key;
 
     if (hasSlot) return `${key}-${position}`;
 
@@ -100,33 +108,16 @@ export class Layout {
     return (
       <Host>
         <div class="wrapper" style={this.style}>
-          <div class="header-start">
-            <slot name="header:start" />
-          </div>
-          <div class="header">
-            <slot name="header" />
-          </div>
-          <div class="header-end">
-            <slot name="header:end" />
-          </div>
-          <div class="aside-start">
-            <slot name="aside:start" />
-          </div>
           <div class={`main ${this.main}`}>
             <slot />
           </div>
-          <div class="aside-end">
-            <slot name="aside:end" />
-          </div>
-          <div class="footer-start">
-            <slot name="footer:start" />
-          </div>
-          <div class="footer">
-            <slot name="footer" />
-          </div>
-          <div class="footer-end">
-            <slot name="footer:end" />
-          </div>
+          {this.elements
+            .filter((key) => !!this.slots[key])
+            .map((key) => (
+              <div class={key.replace(':', '-')}>
+                <slot name={key} />
+              </div>
+            ))}
         </div>
       </Host>
     )
