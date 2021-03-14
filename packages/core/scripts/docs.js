@@ -124,14 +124,59 @@ const properties = (component) => {
 
   return (component.props || []).map((property) => {
 
+    let values = [];
+
+    const tags = (property.docsTags || []);
+
+    property.values.map((value) => {
+
+      if (value.type !== 'boolean') return values.push(value);
+
+      values.push(
+        {
+          value: true,
+          type: 'boolean'
+        },
+        {
+          value: false,
+          type: 'boolean'
+        }
+      )
+    });
+
+    values = values
+      .map((value) => {
+
+        const index = tags.findIndex((tag) => tag.name === 'value' && tag.text.startsWith(`${value.value}`));
+
+        if (index === -1) return value;
+
+        value.index = index;
+
+        const tag = tags[index];
+
+        const description = tag.text.split('-').pop().trim();
+
+        value.description = description;
+
+        return value;
+      })
+      .sort((a, b) => a.index - b.index)
+      .map((value) => {
+
+        delete value.index;
+
+        return value;
+      });
+
     return {
       name: property.attr || property.name,
       type: property.type,
       description: property.docs,
       default: property.default,
-      values: property.values
+      values
     }
-  });
+  })
 }
 
 const readme = (component) => {

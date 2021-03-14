@@ -84,10 +84,10 @@ export class Cropper {
 
   /**
    * TODO
-   * @param false - TODO
-   * @param true  - TODO
-   * @param touch - TODO
-   * @param wheel - TODO
+   * @value false - TODO1
+   * @value true  - TODO2
+   * @value touch - TODO3
+   * @value wheel - TODO4
    * @
    */
   @Prop()
