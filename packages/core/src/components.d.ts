@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperData, CropperZoomable } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperData, CropperZoomable, CrroperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -101,6 +101,10 @@ export namespace Components {
           * TODO
          */
         "dim"?: boolean;
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
         /**
           * Show the dashed lines above the crop box.
          */
@@ -1087,6 +1091,10 @@ declare namespace LocalJSX {
          */
         "dim"?: boolean;
         /**
+          * TODO
+         */
+        "disabled"?: boolean;
+        /**
           * Show the dashed lines above the crop box.
          */
         "guides"?: boolean;
@@ -1099,9 +1107,9 @@ declare namespace LocalJSX {
          */
         "onPlusReady"?: (event: CustomEvent<void>) => void;
         /**
-          * TODO
+          * This event fires when a cropper instance starts to zoom in or zoom out its canvas (image wrapper).
          */
-        "onPlusZoom"?: (event: CustomEvent<any>) => void;
+        "onPlusZoom"?: (event: CustomEvent<CrroperZoomData>) => void;
         /**
           * Reset the cropped area after resizing the window.
          */

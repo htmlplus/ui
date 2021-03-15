@@ -2,7 +2,7 @@ import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
 import { Bind, GlobalConfig } from '@app/services';
-import { CropperAspectRatio, CropperData, CropperZoomable,/*, CropDragMode, CropViewMode*/ } from './cropper.types';
+import { CropperAspectRatio, CropperData, CropperZoomable, CrroperZoomData/*, CropDragMode, CropViewMode*/ } from './cropper.types';
 
 /**
  * TODO
@@ -76,6 +76,12 @@ export class Cropper {
   dim?: boolean = true;
 
   /**
+   * TODO
+   */
+  @Prop()
+  disabled?: boolean;
+
+  /**
    * Show the dashed lines above the crop box.
    */
   @Prop()
@@ -141,16 +147,18 @@ export class Cropper {
   plusCrop!: EventEmitter<CropperData>;
 
   /**
-   * TODO
+   * This event fires when a cropper instance starts to zoom in or zoom out its canvas (image wrapper).
    */
   @Event({
     bubbles: false,
     cancelable: true,
   })
-  plusZoom!: EventEmitter<any>;
+  plusZoom!: EventEmitter<CrroperZoomData>;
 
   @GlobalConfig('crop', {
     background: true,
+    containerMinHeight: 100,
+    containerMinWidth: 200,
     dim: true,
     guides: true,
     responsive: true,
@@ -213,7 +221,7 @@ export class Cropper {
       minContainerHeight: this.containerMinHeight,
       modal: Utils.toBoolean(this.dim),
       movable: true,
-      // preview: '',
+      // preview: HTMLElement | HTMLElement[] | NodeListOf<HTMLElement> | string,
       responsive: Utils.toBoolean(this.responsive),
       restore: Utils.toBoolean(this.reset),
       rotatable: true,
@@ -246,13 +254,15 @@ export class Cropper {
   @Bind
   onZoom(event) {
 
-    const direction = event.detail.ratio > event.detail.oldRatio ? 'in' : 'out';
+    const difference = event.detail.ratio - event.detail.oldRatio;
 
-    const detail = {
-      direction
+    const direction = difference > 0 ? 'IN' : 'OUT';
+
+    const detail: CrroperZoomData = {
+      difference,
+      direction,
+      ratio: event.detail.ratio
     };
-
-    console.log(detail)
 
     const result = this.plusZoom.emit(detail);
 
