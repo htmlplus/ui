@@ -1,4 +1,6 @@
+@import 'all';
 @import 'reset';
+@import 'layout.variables';
 
 :host {
 
@@ -25,22 +27,6 @@
   row-gap: var(--plus-layout-gutter-y);
 }
 
-.header-start {
-  grid-area: header-start;
-}
-
-.header {
-  grid-area: header;
-}
-
-.header-end {
-  grid-area: header-end;
-}
-
-.aside-start {
-  grid-area: aside-start;
-}
-
 .main {
   grid-area: main;
   &.center {
@@ -49,18 +35,8 @@
   }
 }
 
-.aside-end {
-  grid-area: aside-end;
-}
-
-.footer-start {
-  grid-area: footer-start;
-}
-
-.footer {
-  grid-area: footer;
-}
-
-.footer-end {
-  grid-area: footer-end;
+@each $key in $layout-areas {
+  .#{$key} {
+    grid-area: $key;
+  }
 }

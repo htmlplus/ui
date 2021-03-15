@@ -13,7 +13,7 @@ import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
-import { LayoutFooter, LayoutHeader, LayoutMain } from "./components/layout/layout.types";
+import { LayoutBottom, LayoutMain, LayoutTop } from "./components/layout/layout.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyTop } from "./components/sticky/sticky.types";
@@ -72,6 +72,30 @@ export namespace Components {
         /**
           * TODO
          */
+        "canvasMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "canvasMinWidth"?: number;
+        /**
+          * TODO
+         */
+        "containerMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "containerMinWidth"?: number;
+        /**
+          * TODO
+         */
+        "cropBoxMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "cropBoxMinWidth"?: number;
+        /**
+          * TODO
+         */
         "data"?: CropperData;
         /**
           * TODO
@@ -98,15 +122,15 @@ export namespace Components {
          */
         "src"?: string;
         /**
-          * TODO: only on wheel
+          * Define zoom ratio when zooming the image by wheeling mouse.
          */
         "zoomRatio"?: number;
         /**
-          * TODO
-          * @value false - TODO1
-          * @value true  - TODO2
-          * @value touch - TODO3
-          * @value wheel - TODO4
+          * Enable to zoom the image.
+          * @value false - Disable zoom.
+          * @value true  - Enable to zoom the image by dragging touch and wheeling mouse.
+          * @value touch - Enable to zoom the image by dragging touch.
+          * @value wheel - Enable to zoom the image by wheeling mouse.
           * @
          */
         "zoomable"?: CropperZoomable;
@@ -574,15 +598,15 @@ export namespace Components {
         /**
           * TODO
          */
-        "footer"?: LayoutFooter;
-        /**
-          * TODO
-         */
-        "header"?: LayoutHeader;
+        "bottom"?: LayoutBottom;
         /**
           * TODO
          */
         "main"?: LayoutMain;
+        /**
+          * TODO
+         */
+        "top"?: LayoutTop;
     }
     interface PlusMenu {
         /**
@@ -1033,6 +1057,30 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
+        "canvasMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "canvasMinWidth"?: number;
+        /**
+          * TODO
+         */
+        "containerMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "containerMinWidth"?: number;
+        /**
+          * TODO
+         */
+        "cropBoxMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "cropBoxMinWidth"?: number;
+        /**
+          * TODO
+         */
         "data"?: CropperData;
         /**
           * TODO
@@ -1051,6 +1099,10 @@ declare namespace LocalJSX {
          */
         "onPlusReady"?: (event: CustomEvent<void>) => void;
         /**
+          * TODO
+         */
+        "onPlusZoom"?: (event: CustomEvent<any>) => void;
+        /**
           * Reset the cropped area after resizing the window.
          */
         "reset"?: boolean;
@@ -1067,15 +1119,15 @@ declare namespace LocalJSX {
          */
         "src"?: string;
         /**
-          * TODO: only on wheel
+          * Define zoom ratio when zooming the image by wheeling mouse.
          */
         "zoomRatio"?: number;
         /**
-          * TODO
-          * @value false - TODO1
-          * @value true  - TODO2
-          * @value touch - TODO3
-          * @value wheel - TODO4
+          * Enable to zoom the image.
+          * @value false - Disable zoom.
+          * @value true  - Enable to zoom the image by dragging touch and wheeling mouse.
+          * @value touch - Enable to zoom the image by dragging touch.
+          * @value wheel - Enable to zoom the image by wheeling mouse.
           * @
          */
         "zoomable"?: CropperZoomable;
@@ -1579,15 +1631,15 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "footer"?: LayoutFooter;
-        /**
-          * TODO
-         */
-        "header"?: LayoutHeader;
+        "bottom"?: LayoutBottom;
         /**
           * TODO
          */
         "main"?: LayoutMain;
+        /**
+          * TODO
+         */
+        "top"?: LayoutTop;
     }
     interface PlusMenu {
         /**

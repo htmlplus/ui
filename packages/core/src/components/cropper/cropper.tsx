@@ -1,7 +1,7 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
-import { GlobalConfig } from '@app/services';
+import { Bind, GlobalConfig } from '@app/services';
 import { CropperAspectRatio, CropperData, CropperZoomable,/*, CropDragMode, CropViewMode*/ } from './cropper.types';
 
 /**
@@ -32,6 +32,41 @@ export class Cropper {
    * TODO
    */
   @Prop()
+  canvasMinHeight?: number;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  canvasMinWidth?: number;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  containerMinHeight?: number = 100;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  containerMinWidth?: number = 200;
+  /**
+   * TODO
+   */
+  @Prop()
+  cropBoxMinHeight?: number;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  cropBoxMinWidth?: number;
+
+  /**
+   * TODO
+   */
+  @Prop()
   data?: CropperData;
 
   /**
@@ -45,12 +80,6 @@ export class Cropper {
    */
   @Prop()
   guides?: boolean = true;
-
-  /**
-   * TODO
-   */
-  // @Prop()
-  // height?: number;
 
   /**
    * Re-render the cropper when resizing the window.
@@ -77,24 +106,18 @@ export class Cropper {
   src?: string;
 
   /**
-   * TODO
-   */
-  // @Prop()
-  // width?: number;
-
-  /**
-   * TODO
-   * @value false - TODO1
-   * @value true  - TODO2
-   * @value touch - TODO3
-   * @value wheel - TODO4
+   * Enable to zoom the image.
+   * @value false - Disable zoom.
+   * @value true  - Enable to zoom the image by dragging touch and wheeling mouse.
+   * @value touch - Enable to zoom the image by dragging touch.
+   * @value wheel - Enable to zoom the image by wheeling mouse.
    * @
    */
   @Prop()
   zoomable?: CropperZoomable = true;
 
   /**
-   * TODO: only on wheel
+   * Define zoom ratio when zooming the image by wheeling mouse.
    */
   @Prop()
   zoomRatio?: number = 0.1;
@@ -102,7 +125,7 @@ export class Cropper {
   /**
    * This event fires when the target image has been loaded and the cropper instance is ready for operating.
    */
-   @Event({
+  @Event({
     bubbles: false,
     cancelable: false,
   })
@@ -111,19 +134,20 @@ export class Cropper {
   /**
    * This event fires when the canvas (image wrapper) or the crop box changed.
    */
-   @Event({
+  @Event({
     bubbles: false,
     cancelable: false,
   })
   plusCrop!: EventEmitter<CropperData>;
 
-  // Size limitation
-  // minCanvasWidth?: number = 0,
-  // minCanvasHeight?: number = 0,
-  // minCropBoxWidth?: number = 0,
-  // minCropBoxHeight?: number = 0,
-  // minContainerWidth?: number = MIN_CONTAINER_WIDTH,
-  // minContainerHeight?: number = MIN_CONTAINER_HEIGHT,
+  /**
+   * TODO
+   */
+  @Event({
+    bubbles: false,
+    cancelable: true,
+  })
+  plusZoom!: EventEmitter<any>;
 
   @GlobalConfig('crop', {
     background: true,
@@ -167,8 +191,6 @@ export class Cropper {
     })();
 
     return {
-      // preview: document.querySelector('.p'),
-
       aspectRatio: Utils.toBoolean(this.rounded) ? 1 : aspectRatio,
       // autoCrop: true,
       // autoCropArea: this.autoCropArea,
@@ -183,6 +205,12 @@ export class Cropper {
       guides: Utils.toBoolean(this.guides),
       highlight: false,
       initialAspectRatio: NaN,
+      minCanvasWidth: this.canvasMinWidth,
+      minCanvasHeight: this.canvasMinHeight,
+      minCropBoxWidth: this.cropBoxMinWidth,
+      minCropBoxHeight: this.cropBoxMinHeight,
+      minContainerWidth: this.containerMinWidth,
+      minContainerHeight: this.containerMinHeight,
       modal: Utils.toBoolean(this.dim),
       movable: true,
       // preview: '',
@@ -196,13 +224,41 @@ export class Cropper {
       zoomable: !!zoomable,
       zoomOnTouch: zoomable === true || zoomable === 'touch',
       zoomOnWheel: zoomable === true || zoomable === 'wheel',
-      crop: (event) => this.plusCrop.emit(event.detail),
-      ready: () => this.plusReady.emit(),
+      crop: this.onCrop,
+      ready: this.onReady,
       // cropstart: (e) => console.log('cropstart', e),
       // cropmove: (e) => console.log('cropmove', e),
       // cropend: (e) => console.log('cropend', e),
-      // zoom: (e) => console.log('zoom', e),
+      zoom: this.onZoom
     }
+  }
+
+  @Bind
+  onCrop(event) {
+    this.plusCrop.emit(event.detail);
+  }
+
+  @Bind
+  onReady() {
+    this.plusReady.emit();
+  }
+
+  @Bind
+  onZoom(event) {
+
+    const direction = event.detail.ratio > event.detail.oldRatio ? 'in' : 'out';
+
+    const detail = {
+      direction
+    };
+
+    console.log(detail)
+
+    const result = this.plusZoom.emit(detail);
+
+    if (!result.defaultPrevented) return;
+
+    event.preventDefault();
   }
 
   componentDidLoad() {
