@@ -1,6 +1,8 @@
 export type CropperAspectRatio = string | number;
-export type CropperDragMode = 'crop' | 'move' | 'none';
-export type CropperViewMode = 0 | 1 | 2 | 3;
+export type CropperResponsive = boolean | 'reset'; // TODO: maybe
+export type CropperMode = 'crop' | 'move' | 'none'; // TODO
+export type CropperView = 'none' | 1 | 2 | 3; // TODO
+export type CropperViewport = 'static' | 'movable' | 'resizable' | 'both'; // TODO rect | round
 export type CropperZoomable = boolean | 'touch' | 'wheel';
 export interface CropperData {
     x?: number;
@@ -11,8 +13,7 @@ export interface CropperData {
     scaleX?: number;
     scaleY?: number;
 }
-
-export interface CrroperZoomData {
+export interface CropperZoomData {
     difference?: number,
     direction?: 'IN' | 'OUT',
     ratio?: number

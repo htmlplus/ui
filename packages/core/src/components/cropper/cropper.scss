@@ -2,6 +2,19 @@
 @import 'reset';
 
 :host {
+
+  /**
+  * @prop --plus-cropper-backdrop-background-color: TODO
+  * @prop --plus-cropper-backdrop-opacity         : TODO
+  * @prop --plus-cropper-viewport-border-color    : TODO
+  */
+
+  --plus-cropper-backdrop-background-color: black;
+  --plus-cropper-viewport-border-color    : white;
+  --plus-cropper-backdrop-opacity         : 0.5
+}
+
+:host {
   display: block;
 }
 
@@ -18,4 +31,21 @@
 .rounded .cropper-face ,
 .rounded .cropper-view-box {
   border-radius: 50%;
+}
+
+.cropper-point {
+  background-color: var(--plus-cropper-viewport-border-color);
+}
+
+.cropper-line {
+  background-color: var(--plus-cropper-viewport-border-color);
+}
+
+.cropper-view-box {
+  outline-color: var(--plus-cropper-viewport-border-color);
+}
+
+.cropper-modal {
+  background-color: var(--plus-cropper-backdrop-background-color);
+  opacity: var(--plus-cropper-backdrop-opacity);
 }

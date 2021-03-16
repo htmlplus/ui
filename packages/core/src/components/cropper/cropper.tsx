@@ -2,7 +2,7 @@ import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
 import { Bind, GlobalConfig } from '@app/services';
-import { CropperAspectRatio, CropperData, CropperZoomable, CrroperZoomData/*, CropDragMode, CropViewMode*/ } from './cropper.types';
+import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, CropperView, CropperViewport, CropperZoomable, CropperZoomData/*, CropDragMode, CropViewMode*/ } from './cropper.types';
 
 /**
  * TODO
@@ -21,6 +21,12 @@ export class Cropper {
    */
   @Prop()
   aspectRatio?: CropperAspectRatio;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  backdrop?: boolean = true;
 
   /**
    * Show the grid background of the container.
@@ -50,30 +56,13 @@ export class Cropper {
    * TODO
    */
   @Prop()
-  containerMinWidth?: number = 200;
-  /**
-   * TODO
-   */
-  @Prop()
-  cropBoxMinHeight?: number;
-
-  /**
-   * TODO
-   */
-  @Prop()
-  cropBoxMinWidth?: number;
+  containerMinWidth?: number = 100;
 
   /**
    * TODO
    */
   @Prop()
   data?: CropperData;
-
-  /**
-   * TODO
-   */
-  @Prop()
-  dim?: boolean = true;
 
   /**
    * TODO
@@ -88,10 +77,16 @@ export class Cropper {
   guides?: boolean = true;
 
   /**
+   * TODO
+   */
+  @Prop()
+  mode?: CropperMode = 'move';
+
+  /**
    * Re-render the cropper when resizing the window.
    */
   @Prop()
-  responsive?: boolean = true;
+  responsive?: CropperResponsive = 'reset';
 
   /**
    * TODO
@@ -100,16 +95,34 @@ export class Cropper {
   rounded?: boolean;
 
   /**
-   * Reset the cropped area after resizing the window.
-   */
-  @Prop()
-  reset?: boolean;
-
-  /**
    * Image source.
    */
   @Prop()
   src?: string;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  view?: CropperView = 2;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  viewport?: CropperViewport = 'static';
+
+  /**
+   * TODO
+   */
+  @Prop()
+  viewportMinHeight?: number;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  viewportMinWidth?: number;
 
   /**
    * Enable to zoom the image.
@@ -153,15 +166,18 @@ export class Cropper {
     bubbles: false,
     cancelable: true,
   })
-  plusZoom!: EventEmitter<CrroperZoomData>;
+  plusZoom!: EventEmitter<CropperZoomData>;
 
   @GlobalConfig('crop', {
+    backdrop: true,
     background: true,
     containerMinHeight: 100,
-    containerMinWidth: 200,
-    dim: true,
+    containerMinWidth: 100,
     guides: true,
-    responsive: true,
+    mode: 'move',
+    responsive: 'reset',
+    view: 2,
+    viewport: 'static',
     zoomable: true,
     zoomRatio: 0.1,
   })
@@ -189,6 +205,15 @@ export class Cropper {
       return this.aspectRatio;
     })();
 
+    const responsive = (() => {
+
+      if (this.responsive === 'reset') return this.responsive;
+
+      return Utils.toBoolean(this.responsive);
+    })();
+
+    const view = (() => ({ none: 0, 1: 1, 2: 2, 3: 3 })[this.view] as any)();
+
     const zoomable = (() => {
 
       const value = `${this.zoomable}`;
@@ -204,30 +229,30 @@ export class Cropper {
       // autoCropArea: this.autoCropArea,
       background: Utils.toBoolean(this.background),
       // center: true,
-      // checkCrossOrigin: true,
+      // checkCrossOrigin: false, // TODO
       // checkOrientation: true,
-      // cropBoxMovable: true;
-      // cropBoxResizable: true;
+      cropBoxMovable: this.viewport === 'movable' || this.viewport === 'both',// TODO
+      cropBoxResizable: this.viewport === 'resizable' || this.viewport === 'both',// TODO
       data: this.data,
-      // dragMode: 'crop';
+      dragMode: this.mode,
       guides: Utils.toBoolean(this.guides),
       highlight: false,
       initialAspectRatio: NaN,
       minCanvasWidth: this.canvasMinWidth,
       minCanvasHeight: this.canvasMinHeight,
-      minCropBoxWidth: this.cropBoxMinWidth,
-      minCropBoxHeight: this.cropBoxMinHeight,
+      minCropBoxWidth: this.viewportMinWidth,
+      minCropBoxHeight: this.viewportMinHeight,
       minContainerWidth: this.containerMinWidth,
       minContainerHeight: this.containerMinHeight,
-      modal: Utils.toBoolean(this.dim),
-      movable: true,
+      modal: Utils.toBoolean(this.backdrop),
+      movable: true, // TODO: make auto
       // preview: HTMLElement | HTMLElement[] | NodeListOf<HTMLElement> | string,
-      responsive: Utils.toBoolean(this.responsive),
-      restore: Utils.toBoolean(this.reset),
+      responsive: !!responsive,
+      restore: responsive === 'reset',
       rotatable: true,
       scalable: true,
       toggleDragModeOnDblclick: false,
-      // viewMode: 0;
+      viewMode: view,
       wheelZoomRatio: this.zoomRatio,
       zoomable: !!zoomable,
       zoomOnTouch: zoomable === true || zoomable === 'touch',
@@ -239,6 +264,11 @@ export class Cropper {
       // cropend: (e) => console.log('cropend', e),
       zoom: this.onZoom
     }
+  }
+
+  bind() {
+    this.instance?.destroy();
+    this.instance = new CropperCore(this.$image, this.options);
   }
 
   @Bind
@@ -258,7 +288,7 @@ export class Cropper {
 
     const direction = difference > 0 ? 'IN' : 'OUT';
 
-    const detail: CrroperZoomData = {
+    const detail: CropperZoomData = {
       difference,
       direction,
       ratio: event.detail.ratio
@@ -272,14 +302,11 @@ export class Cropper {
   }
 
   componentDidLoad() {
-    this.componentDidUpdate();
+    this.bind();
   }
 
   componentDidUpdate() {
-
-    this.instance?.destroy();
-
-    this.instance = new CropperCore(this.$image, this.options);
+    this.bind();
   }
 
   disconnectedCallback() {

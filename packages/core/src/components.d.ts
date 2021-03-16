@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperData, CropperZoomable, CrroperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperData, CropperMode, CropperView, CropperViewport, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -88,14 +88,6 @@ export namespace Components {
         /**
           * TODO
          */
-        "cropBoxMinHeight"?: number;
-        /**
-          * TODO
-         */
-        "cropBoxMinWidth"?: number;
-        /**
-          * TODO
-         */
         "data"?: CropperData;
         /**
           * TODO
@@ -109,6 +101,10 @@ export namespace Components {
           * Show the dashed lines above the crop box.
          */
         "guides"?: boolean;
+        /**
+          * TODO
+         */
+        "mode"?: CropperMode;
         /**
           * Reset the cropped area after resizing the window.
          */
@@ -125,6 +121,22 @@ export namespace Components {
           * Image source.
          */
         "src"?: string;
+        /**
+          * TODO
+         */
+        "view"?: CropperView;
+        /**
+          * TODO
+         */
+        "viewport"?: CropperViewport;
+        /**
+          * TODO
+         */
+        "viewportMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "viewportMinWidth"?: number;
         /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */
@@ -1077,14 +1089,6 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "cropBoxMinHeight"?: number;
-        /**
-          * TODO
-         */
-        "cropBoxMinWidth"?: number;
-        /**
-          * TODO
-         */
         "data"?: CropperData;
         /**
           * TODO
@@ -1099,6 +1103,10 @@ declare namespace LocalJSX {
          */
         "guides"?: boolean;
         /**
+          * TODO
+         */
+        "mode"?: CropperMode;
+        /**
           * This event fires when the canvas (image wrapper) or the crop box changed.
          */
         "onPlusCrop"?: (event: CustomEvent<CropperData>) => void;
@@ -1109,7 +1117,7 @@ declare namespace LocalJSX {
         /**
           * This event fires when a cropper instance starts to zoom in or zoom out its canvas (image wrapper).
          */
-        "onPlusZoom"?: (event: CustomEvent<CrroperZoomData>) => void;
+        "onPlusZoom"?: (event: CustomEvent<CropperZoomData>) => void;
         /**
           * Reset the cropped area after resizing the window.
          */
@@ -1126,6 +1134,22 @@ declare namespace LocalJSX {
           * Image source.
          */
         "src"?: string;
+        /**
+          * TODO
+         */
+        "view"?: CropperView;
+        /**
+          * TODO
+         */
+        "viewport"?: CropperViewport;
+        /**
+          * TODO
+         */
+        "viewportMinHeight"?: number;
+        /**
+          * TODO
+         */
+        "viewportMinWidth"?: number;
         /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */
