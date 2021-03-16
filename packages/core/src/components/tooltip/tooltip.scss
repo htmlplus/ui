@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  position: relative;
+  --plus-tooltip-background: #000000;
+  --plus-tooltip-color: #ffffff;
+  --plus-tooltip-font-size: 12px;
+  --plus-tooltip-padding: 5px 10px;
+  --plus-tooltip-border-radius: 4px;
+}
+
+:host {
+  .tooltip {
+    visibility: hidden;
+    display: none;
+    background: var(--plus-tooltip-background);
+    color: var(--plus-tooltip-color);
+    padding: var(--plus-tooltip-padding);
+    font-size: var(--plus-tooltip-font-size);
+    font-weight: bold;
+    border-radius: var(--plus-tooltip-border-radius);
+    position: relative;
+    z-index: 1000;
+  }
+}
+
+:host([trigger=mousemove]:hover){
+  .tooltip {
+    visibility: visible;
+    display: inline-block;
+  }
+}
