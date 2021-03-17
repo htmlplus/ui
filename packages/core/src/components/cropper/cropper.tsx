@@ -17,13 +17,13 @@ import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, Croppe
 export class Cropper {
 
   /**
-   * Define the fixed aspect ratio of the crop box. By default, the crop box is free ratio.
+   * Define the fixed aspect ratio of the viewport. By default, the viewport is free ratio.
    */
   @Prop()
   aspectRatio?: CropperAspectRatio;
 
   /**
-   * TODO
+   * Show the black layer above the image and under the viewport.
    */
   @Prop()
   backdrop?: boolean = true;
@@ -32,28 +32,28 @@ export class Cropper {
    * Show the grid background of the container.
    */
   @Prop()
-  background?: boolean = true;
+  background?: boolean;
 
   /**
-   * TODO
+   * The minimum height of the canvas (image wrapper).
    */
   @Prop()
   canvasMinHeight?: number;
 
   /**
-   * TODO
+   * The minimum width of the canvas (image wrapper).
    */
   @Prop()
   canvasMinWidth?: number;
 
   /**
-   * TODO
+   * The minimum height of the container.
    */
   @Prop()
   containerMinHeight?: number = 100;
 
   /**
-   * TODO
+   * The minimum width of the container.
    */
   @Prop()
   containerMinWidth?: number = 100;
@@ -71,13 +71,16 @@ export class Cropper {
   disabled?: boolean;
 
   /**
-   * Show the dashed lines above the crop box.
+   * Show the dashed lines above the viewport.
    */
   @Prop()
   guides?: boolean = true;
 
   /**
-   * TODO
+   * Define the dragging mode of the cropper.
+   * @value crop - create a new viewport.
+   * @value move - move the canvas.
+   * @value none - do nothing.
    */
   @Prop()
   mode?: CropperMode = 'move';
@@ -101,10 +104,22 @@ export class Cropper {
   src?: string;
 
   /**
-   * TODO
+   * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
+   * outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport 
+   * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the 
+   * canvas to the container. Note that if the proportions of the canvas and the container are 
+   * the same, there is no difference between `contain` and `cover`.
+   * @value contain - restrict the minimum canvas size to fit within the container. If the 
+   *                  proportions of the canvas and the container differ, the minimum canvas will be 
+   *                  surrounded by extra space in one of the dimensions.
+   * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions 
+   *                  of the canvas and the container are different, the container will not be able 
+   *                  to fit the whole canvas in one of the dimensions.
+   * @value fit     - restrict the viewport to not exceed the size of the canvas.
+   * @value none    - no restrictions.
    */
   @Prop()
-  view?: CropperView = 2;
+  view?: CropperView = 'cover';
 
   /**
    * TODO
@@ -113,13 +128,13 @@ export class Cropper {
   viewport?: CropperViewport = 'static';
 
   /**
-   * TODO
+   * The minimum height of the viewport. This size is relative to the page, not the image.
    */
   @Prop()
   viewportMinHeight?: number;
 
   /**
-   * TODO
+   * The minimum width of the viewport. This size is relative to the page, not the image.
    */
   @Prop()
   viewportMinWidth?: number;
@@ -151,7 +166,7 @@ export class Cropper {
   plusReady!: EventEmitter<void>;
 
   /**
-   * This event fires when the canvas (image wrapper) or the crop box changed.
+   * This event fires when the canvas (image wrapper) or the viewport changed.
    */
   @Event({
     bubbles: false,
@@ -170,13 +185,12 @@ export class Cropper {
 
   @GlobalConfig('crop', {
     backdrop: true,
-    background: true,
     containerMinHeight: 100,
     containerMinWidth: 100,
     guides: true,
     mode: 'move',
     responsive: 'reset',
-    view: 2,
+    view: 'cover',
     viewport: 'static',
     zoomable: true,
     zoomRatio: 0.1,
@@ -212,7 +226,7 @@ export class Cropper {
       return Utils.toBoolean(this.responsive);
     })();
 
-    const view = (() => ({ none: 0, 1: 1, 2: 2, 3: 3 })[this.view] as any)();
+    const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any)();
 
     const zoomable = (() => {
 
