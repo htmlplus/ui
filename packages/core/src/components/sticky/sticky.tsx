@@ -1,7 +1,7 @@
-import { Component, Host, Prop, h } from "@stencil/core";
-import { GlobalConfig } from '@app/services';
+import {Element, Component, Host, EventEmitter, Prop, Event, h} from "@stencil/core";
+import {GlobalConfig} from '@app/services';
 import * as Utils from '@app/utils';
-import { StickyTop } from './sticky.types';
+import {StickyTop} from './sticky.types';
 
 /**
  * Component content is positioned based on the user's scroll position.
@@ -18,7 +18,7 @@ export class Sticky {
   /**
    * Specifies the disable sticky mode.
    */
-  @Prop({ reflect: true })
+  @Prop({reflect: true})
   disabled?: boolean;
 
   /**
@@ -36,9 +36,19 @@ export class Sticky {
   @GlobalConfig('sticky')
   config;
 
+  @Event({
+    bubbles: false,
+    cancelable: true
+  })
+
+  attribute!: EventEmitter<String>;
+
+  @Element()
+  host: HTMLElement;
+
   get attributes() {
     return {
-      style: this.styles
+      style: this.styles,
     }
   }
 
@@ -49,10 +59,27 @@ export class Sticky {
     }
   }
 
+  connectedCallback() {
+    const observer = new window.IntersectionObserver((entries: any) => {
+      if (!entries[0].isIntersecting)
+        this.attribute.emit('sticky')
+      else
+        this.attribute.emit('normal')
+    });
+
+    // Here observe whether or not that node is in the viewport
+    observer.observe(this.host);
+
+    // unmount
+    return () => observer.unobserve(this.host);
+  }
+
   render() {
     return (
       <Host {...this.attributes}>
-        <slot />
+        <div class="sticky">
+          <slot/>
+        </div>
       </Host>
     )
   }
