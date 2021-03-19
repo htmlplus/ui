@@ -1,3 +1,10 @@
-export type TooltipPlacement = 'top-start' | 'top' | 'top-end' | 'right-start' | 'right' | 'right-end' | 'bottom-start' | 'bottom' | 'bottom-end' | 'left-start' | 'left' | 'left-end' ;
-export type TooltipTrigger = 'mousemove';
-export type TooltipOffset = [number, number];
+// Placement
+type Placement = 'top' | 'right' | 'bottom' | 'left';
+type PlacementPosition = 'start' | 'end';
+export type TooltipPlacement = `${Placement}-${PlacementPosition}` | Placement;
+// Trigger
+export type TooltipTrigger = 'mouseover' | 'click';
+// Offset
+type OffsetX = number;
+type OffsetY = number;
+export type TooltipOffset = [number, number] | `${OffsetX}-${OffsetY}`| OffsetX;

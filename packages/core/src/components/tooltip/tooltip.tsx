@@ -1,7 +1,8 @@
-import {Element, Component, Host, Prop, Listen, h} from '@stencil/core';
+import {Element, Component, Host, Prop, State, h} from '@stencil/core';
 import {TooltipPlacement, TooltipTrigger, TooltipOffset} from './tooltip.types';
 
 import {createPopper} from "@popperjs/core";
+import * as Utils from '@app/utils';
 
 /**
  * It's the often used to specify extra information about something when the user moves the mouse pointer over an element (Hover or Focus)
@@ -25,80 +26,85 @@ export class Tooltip {
   * How tooltip is triggered, include click, hover, focus
    */
   @Prop({reflect: true})
-  trigger?: TooltipTrigger = 'mousemove';
+  trigger?: TooltipTrigger = 'mouseover';
 
   /*
   * Offset of the tooltip relative to its target
    */
   @Prop()
-  offset?: TooltipOffset =  [0, 10];
-
-  /*
-  * Include any thing for show in tooltip
-   */
-  @Prop()
-  content?: string = "null";
-
-  // styles :
-  /**
-   * Specifies the tooltip background color
-   */
-  @Prop({reflect: true})
-  background?: string;
-
-  /**
-   * Specifies the tooltip text color
-   */
-  @Prop({reflect: true})
-  textColor?: string;
-
-  /**
-   * Specifies the tool tip text font size
-   */
-  @Prop({reflect: true})
-  fontSize?: number = 0;
-
-  /**
-   * Specifies the tooltip padding
-   */
-  @Prop({reflect: true})
-  padding?: string;
-
-  /**
-   * Specifies the tooltip border radius
-   */
-  @Prop({reflect: true})
-  borderRadius?: number;
+  offset?: TooltipOffset = [0, 10];
 
   @Element() $host!: HTMLElement;
 
-  $tooltip!: HTMLDivElement;
+  @State() parent?: any = this.$host.parentElement as HTMLElement;
 
-  @Listen('mousemove', {target: undefined})
-  handleEventHover() {
-      createPopper(this.$host, this.$tooltip, {
-        placement: this.placement,
-        modifiers: [
-          {name: 'offset', options: {offset: this.offset}}
-        ]
-      })
+  private handleAddListener(parent: HTMLElement, host: HTMLElement) {
+    createPopper(parent, host, {
+      placement: this.placementMaker,
+      modifiers: [
+        {name: 'offset', options: {offset: this.offsetMaker}}
+      ]
+    })
+    host.classList.add('show')
   }
 
-  get styles() {
-    return {
-    '--plus-tooltip-background': this.background ?? null,
-    '--plus-tooltip-color': this.textColor ?? null,
-    '--plus-tooltip-font-size': this.fontSize ? String(this.fontSize) + 'px' : null,
-    '--plus-tooltip-padding': this.padding ?? null,
-    '--plus-tooltip-border-radius': this.borderRadius ? String(this.borderRadius) + 'px' : null,
+  get offsetMaker() {
+    let [x, y] = [0, 0],offset = this.offset;
+
+    if (Array.isArray(offset)) {
+       x = offset[0] || 0;
+       y = offset[1] || 0;
+       return [x, y];
     }
+
+
+    let [vertical, horizontal] = String(offset).split('-');
+
+    [x, y] = [+vertical || 0, +horizontal || 0]
+
+    return [x, y];
   }
+
+  get placementMaker(): TooltipPlacement {
+    let placement = this.placement;
+    if (this.isRTL)
+      return Tooltip.reverse(placement);
+
+    return placement;
+  }
+
+  private static reverse(placement): TooltipPlacement {
+    let position = placement;
+    if (placement.match(/^(left|right|start|end)$/)) position = `-${placement}`;
+
+    let [x, y] = position.split('-')
+    x = x ? (x === 'right' ? 'left' : x === 'left' ? 'right' : x) : '';
+    y = y ? (y === 'start' ? 'end' : y === 'end' ? 'start' : y) : '';
+
+    return `${x}${y ? '-' + y : ''}` as TooltipPlacement;
+  }
+
+  get isRTL() {
+    return Utils.isRTL(this);
+  }
+
+  private handleRemoveListener(parent: HTMLElement, host: HTMLElement) {
+    this.parent.removeEventListener(this.trigger, () => this.handleAddListener(parent, host))
+    host.classList.remove('show')
+  }
+
+  connectedCallback() {
+    this.parent.addEventListener(this.trigger, () => this.handleAddListener(this.parent, this.$host))
+    this.parent.addEventListener("mouseleave", () => this.handleRemoveListener(this.parent, this.$host))
+  }
+
+  disconnectedCallback() {
+    this.parent.removeEventListener("mouseleave", () => this.handleRemoveListener(this.parent, this.$host))
+  }
+
   render() {
     return (
-      <Host style={this.styles}>
-        <div class="tooltip" ref={element => this.$tooltip = element}>
-          {this.content}
-        </div>
+      <Host>
         <slot/>
       </Host>
     )
