@@ -8,8 +8,11 @@ p {
   height: 320px;
   overflow: auto;
 }
-plus-sticky {
+plus-sticky[state="normal"] {
   background-color: gold;
+}
+plus-sticky[state="sticky"] {
+  background-color: greenyellow;
 }
 ```
 

@@ -1,7 +1,7 @@
-import {Element, Component, Host, EventEmitter, Prop, Event, h} from "@stencil/core";
-import {GlobalConfig} from '@app/services';
+import { Component, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import { Bind, GlobalConfig } from '@app/services';
 import * as Utils from '@app/utils';
-import {StickyTop} from './sticky.types';
+import { StickyState, StickyTop } from './sticky.types';
 
 /**
  * Component content is positioned based on the user's scroll position.
@@ -18,7 +18,7 @@ export class Sticky {
   /**
    * Specifies the disable sticky mode.
    */
-  @Prop({reflect: true})
+  @Prop()
   disabled?: boolean;
 
   /**
@@ -33,23 +33,34 @@ export class Sticky {
   @Prop()
   zIndex?: number;
 
-  @GlobalConfig('sticky')
-  config;
-
+  /**
+   * When the component state is changed this event triggers.
+   */
   @Event({
     bubbles: false,
     cancelable: true
   })
+  plusChange!: EventEmitter<StickyState>;
 
-  attribute!: EventEmitter<String>;
+  @GlobalConfig('sticky')
+  config;
 
-  @Element()
-  host: HTMLElement;
+  $element!: HTMLElement;
+
+  @State()
+  state?: StickyState = 'normal';
+
+  observer?: IntersectionObserver;
 
   get attributes() {
     return {
       style: this.styles,
+      state: this.state
     }
+  }
+
+  get sizer() {
+    return `calc((${Utils.toUnit(this.top)} + 1px) * -1)`;
   }
 
   get styles() {
@@ -59,27 +70,79 @@ export class Sticky {
     }
   }
 
-  connectedCallback() {
-    const observer = new window.IntersectionObserver((entries: any) => {
-      if (!entries[0].isIntersecting)
-        this.attribute.emit('sticky')
-      else
-        this.attribute.emit('normal')
-    });
+  /**
+   * Internal Methods
+   */
 
-    // Here observe whether or not that node is in the viewport
-    observer.observe(this.host);
+  bind() {
 
-    // unmount
-    return () => observer.unobserve(this.host);
+    this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
+
+    this.observer.observe(this.$element);
+  }
+
+  unbind() {
+
+    this.observer?.disconnect();
+
+    delete this.observer;
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return;
+
+    switch (name) {
+
+      case 'disabled':
+
+        this.disabled ? this.unbind() : this.bind();
+
+        break;
+    }
+  }
+
+  /**
+   * Events handler
+   */
+
+  @Bind
+  onIntersecting(entries: IntersectionObserverEntry[]) {
+
+    const [entry] = entries;
+
+    this.state = entry.intersectionRatio < 1 ? 'sticky' : 'normal';
+
+    this.plusChange.emit(this.state);
+  }
+
+  /**
+   * Lifecycles
+   */
+
+  componentDidLoad() {
+    !this.disabled && this.bind();
+  }
+
+  disconnectedCallback() {
+    this.unbind();
   }
 
   render() {
     return (
       <Host {...this.attributes}>
-        <div class="sticky">
-          <slot/>
+        <div class="sizer-wrapper">
+          <div
+            class="sizer"
+            ref={(element) => this.$element = element}
+            style={{ top: this.sizer }}
+          />
         </div>
+        <slot />
       </Host>
     )
   }
