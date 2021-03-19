@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperData, CropperMode, CropperView, CropperViewport, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, CropperView, CropperViewport, CropperViewport1, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -16,7 +16,7 @@ import { IntersectionBehavior } from "./components/intersection/intersection.typ
 import { LayoutBottom, LayoutMain, LayoutTop } from "./components/layout/layout.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
-import { StickyTop } from "./components/sticky/sticky.types";
+import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./services/tunnel/tunnel.types";
 export namespace Components {
@@ -62,29 +62,25 @@ export namespace Components {
     }
     interface PlusCropper {
         /**
-          * Define the fixed aspect ratio of the crop box. By default, the crop box is free ratio.
+          * Define the fixed aspect ratio of the viewport. By default, the viewport is free ratio.
          */
         "aspectRatio"?: CropperAspectRatio;
+        /**
+          * Show the black layer above the image and under the viewport.
+         */
+        "backdrop"?: boolean;
         /**
           * Show the grid background of the container.
          */
         "background"?: boolean;
         /**
-          * TODO
+          * The minimum height of the canvas (image wrapper).
          */
         "canvasMinHeight"?: number;
         /**
-          * TODO
+          * The minimum width of the canvas (image wrapper).
          */
         "canvasMinWidth"?: number;
-        /**
-          * TODO
-         */
-        "containerMinHeight"?: number;
-        /**
-          * TODO
-         */
-        "containerMinWidth"?: number;
         /**
           * TODO
          */
@@ -92,37 +88,32 @@ export namespace Components {
         /**
           * TODO
          */
-        "dim"?: boolean;
-        /**
-          * TODO
-         */
         "disabled"?: boolean;
         /**
-          * Show the dashed lines above the crop box.
+          * Show the dashed lines above the viewport.
          */
         "guides"?: boolean;
         /**
-          * TODO
+          * Define the dragging mode of the cropper.
+          * @value crop - create a new viewport.
+          * @value move - move the canvas.
+          * @value none - do nothing.
          */
         "mode"?: CropperMode;
         /**
-          * Reset the cropped area after resizing the window.
-         */
-        "reset"?: boolean;
-        /**
           * Re-render the cropper when resizing the window.
          */
-        "responsive"?: boolean;
-        /**
-          * TODO
-         */
-        "rounded"?: boolean;
+        "responsive"?: CropperResponsive;
         /**
           * Image source.
          */
         "src"?: string;
         /**
-          * TODO
+          * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
+          * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.
+          * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions            of the canvas and the container are different, the container will not be able            to fit the whole canvas in one of the dimensions.
+          * @value fit     - restrict the viewport to not exceed the size of the canvas.
+          * @value none    - no restrictions.
          */
         "view"?: CropperView;
         /**
@@ -132,9 +123,13 @@ export namespace Components {
         /**
           * TODO
          */
+        "viewport1"?: CropperViewport1;
+        /**
+          * The minimum height of the viewport. This size is relative to the page, not the image.
+         */
         "viewportMinHeight"?: number;
         /**
-          * TODO
+          * The minimum width of the viewport. This size is relative to the page, not the image.
          */
         "viewportMinWidth"?: number;
         /**
@@ -688,6 +683,10 @@ export namespace Components {
          */
         "top"?: StickyTop;
         /**
+          * If you use `state` property or `plusChange` event, you shold set this property to `true`.
+         */
+        "watcher"?: boolean;
+        /**
           * Specifies the z-index of the sticky.
          */
         "zIndex"?: number;
@@ -1063,29 +1062,25 @@ declare namespace LocalJSX {
     }
     interface PlusCropper {
         /**
-          * Define the fixed aspect ratio of the crop box. By default, the crop box is free ratio.
+          * Define the fixed aspect ratio of the viewport. By default, the viewport is free ratio.
          */
         "aspectRatio"?: CropperAspectRatio;
+        /**
+          * Show the black layer above the image and under the viewport.
+         */
+        "backdrop"?: boolean;
         /**
           * Show the grid background of the container.
          */
         "background"?: boolean;
         /**
-          * TODO
+          * The minimum height of the canvas (image wrapper).
          */
         "canvasMinHeight"?: number;
         /**
-          * TODO
+          * The minimum width of the canvas (image wrapper).
          */
         "canvasMinWidth"?: number;
-        /**
-          * TODO
-         */
-        "containerMinHeight"?: number;
-        /**
-          * TODO
-         */
-        "containerMinWidth"?: number;
         /**
           * TODO
          */
@@ -1093,21 +1088,20 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "dim"?: boolean;
-        /**
-          * TODO
-         */
         "disabled"?: boolean;
         /**
-          * Show the dashed lines above the crop box.
+          * Show the dashed lines above the viewport.
          */
         "guides"?: boolean;
         /**
-          * TODO
+          * Define the dragging mode of the cropper.
+          * @value crop - create a new viewport.
+          * @value move - move the canvas.
+          * @value none - do nothing.
          */
         "mode"?: CropperMode;
         /**
-          * This event fires when the canvas (image wrapper) or the crop box changed.
+          * This event fires when the canvas (image wrapper) or the viewport changed.
          */
         "onPlusCrop"?: (event: CustomEvent<CropperData>) => void;
         /**
@@ -1119,23 +1113,19 @@ declare namespace LocalJSX {
          */
         "onPlusZoom"?: (event: CustomEvent<CropperZoomData>) => void;
         /**
-          * Reset the cropped area after resizing the window.
-         */
-        "reset"?: boolean;
-        /**
           * Re-render the cropper when resizing the window.
          */
-        "responsive"?: boolean;
-        /**
-          * TODO
-         */
-        "rounded"?: boolean;
+        "responsive"?: CropperResponsive;
         /**
           * Image source.
          */
         "src"?: string;
         /**
-          * TODO
+          * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
+          * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.
+          * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions            of the canvas and the container are different, the container will not be able            to fit the whole canvas in one of the dimensions.
+          * @value fit     - restrict the viewport to not exceed the size of the canvas.
+          * @value none    - no restrictions.
          */
         "view"?: CropperView;
         /**
@@ -1145,9 +1135,13 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
+        "viewport1"?: CropperViewport1;
+        /**
+          * The minimum height of the viewport. This size is relative to the page, not the image.
+         */
         "viewportMinHeight"?: number;
         /**
-          * TODO
+          * The minimum width of the viewport. This size is relative to the page, not the image.
          */
         "viewportMinWidth"?: number;
         /**
@@ -1737,9 +1731,17 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * When the component state is changed this event triggers.  To enable this event you shold set `watcher` property to `true`.
+         */
+        "onPlusChange"?: (event: CustomEvent<StickyState>) => void;
+        /**
           * Specifies the space from top.
          */
         "top"?: StickyTop;
+        /**
+          * If you use `state` property or `plusChange` event, you shold set this property to `true`.
+         */
+        "watcher"?: boolean;
         /**
           * Specifies the z-index of the sticky.
          */

@@ -6,7 +6,7 @@ import { StickyState, StickyTop } from './sticky.types';
 /**
  * Component content is positioned based on the user's scroll position.
  * @slot - The default slot
- * @examples default
+ * @examples default, top, state-attribute
  */
 @Component({
   tag: 'plus-sticky',
@@ -28,13 +28,20 @@ export class Sticky {
   top?: StickyTop;
 
   /**
+   * If you use `state` property or `plusChange` event, you shold set this property to `true`.
+   */
+  @Prop()
+  watcher?: boolean;
+
+  /**
    * Specifies the z-index of the sticky.
    */
   @Prop()
   zIndex?: number;
 
   /**
-   * When the component state is changed this event triggers.
+   * When the component state is changed this event triggers. 
+   * To enable this event you shold set `watcher` property to `true`.
    */
   @Event({
     bubbles: false,
@@ -76,16 +83,15 @@ export class Sticky {
 
   bind() {
 
+    if (!this.watcher || this.disabled) return;
+
     this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
 
     this.observer.observe(this.$element);
   }
 
   unbind() {
-
     this.observer?.disconnect();
-
-    delete this.observer;
   }
 
   /**
@@ -101,6 +107,12 @@ export class Sticky {
       case 'disabled':
 
         this.disabled ? this.unbind() : this.bind();
+
+        break;
+
+      case 'watcher':
+
+        this.watcher ? this.bind() : this.unbind();
 
         break;
     }
@@ -125,7 +137,7 @@ export class Sticky {
    */
 
   componentDidLoad() {
-    !this.disabled && this.bind();
+    this.bind();
   }
 
   disconnectedCallback() {
