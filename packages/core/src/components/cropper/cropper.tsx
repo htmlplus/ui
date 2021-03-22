@@ -74,7 +74,13 @@ export class Cropper {
    * Show the dashed lines above the viewport.
    */
   @Prop()
-  guides?: boolean = true;
+  guides?: boolean;
+
+  /**
+   * Show the center indicator above the viewport.
+   */
+  @Prop()
+  indicator?: boolean;
 
   /**
    * Define the dragging mode of the cropper.
@@ -259,7 +265,7 @@ export class Cropper {
       // autoCrop: true,
       // autoCropArea: this.autoCropArea,
       background: Utils.toBoolean(this.background),
-      // center: true,
+      center: Utils.toBoolean(this.indicator),
       // checkCrossOrigin: false, // TODO
       // checkOrientation: true,
       cropBoxMovable: this.viewportMode === 'movable' || this.viewportMode === 'both',// TODO

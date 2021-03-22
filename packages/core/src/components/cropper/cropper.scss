@@ -5,38 +5,42 @@
 :host {
 
   /**
-  * @prop --plus-cropper-backdrop-background-color: TODO.
-  * @prop --plus-cropper-backdrop-opacity         : TODO.
+  * @prop --plus-cropper-backdrop-color  : TODO.
+  * @prop --plus-cropper-backdrop-opacity: TODO.
 
-  * @prop --plus-cropper-guides-border-color      : TODO.
-  * @prop --plus-cropper-guides-border-opacity    : TODO.
-  * @prop --plus-cropper-guides-border-style      : TODO.
-  * @prop --plus-cropper-guides-border-width      : TODO.
+  * @prop --plus-cropper-guides-color    : TODO.
+  * @prop --plus-cropper-guides-opacity  : TODO.
+  * @prop --plus-cropper-guides-style    : TODO.
+  * @prop --plus-cropper-guides-width    : TODO.
 
-  * @prop --plus-cropper-viewport-border-color    : TODO.
-  * @prop --plus-cropper-viewport-border-opacity  : TODO.
-  * @prop --plus-cropper-viewport-border-style    : TODO.
-  * @prop --plus-cropper-viewport-border-width    : TODO.
+  * @prop --plus-cropper-viewport-color  : TODO.
+  * @prop --plus-cropper-viewport-opacity: TODO.
+  * @prop --plus-cropper-viewport-style  : TODO.
+  * @prop --plus-cropper-viewport-width  : TODO.
   */
 
-  --plus-cropper-backdrop-background-color: #{$cropper-backdrop-background-color};
-  --plus-cropper-backdrop-opacity         : #{$cropper-backdrop-opacity};
+  --plus-cropper-backdrop-color   : #{$cropper-backdrop-color};
+  --plus-cropper-backdrop-opacity : #{$cropper-backdrop-opacity};
   
-  --plus-cropper-guides-border-color      : #{$cropper-guides-border-color};
-  --plus-cropper-guides-border-opacity    : #{$cropper-guides-border-opacity};
-  --plus-cropper-guides-border-style      : #{$cropper-guides-border-style};
-  --plus-cropper-guides-border-width      : #{$cropper-guides-border-width};
+  --plus-cropper-guides-color     : #{$cropper-guides-color};
+  --plus-cropper-guides-opacity   : #{$cropper-guides-opacity};
+  --plus-cropper-guides-style     : #{$cropper-guides-style};
+  --plus-cropper-guides-width     : #{$cropper-guides-width};
 
-  --plus-cropper-resizer-background-color : #{$cropper-resizer-background-color};
-  --plus-cropper-resizer-height           : #{$cropper-resizer-height};
-  --plus-cropper-resizer-offset           : #{$cropper-resizer-offset};
-  --plus-cropper-resizer-opacity          : #{$cropper-resizer-opacity};
-  --plus-cropper-resizer-width            : #{$cropper-resizer-width};
+  --plus-cropper-indicator-color  : #{$cropper-indicator-color};
+  --plus-cropper-indicator-opacity: #{$cropper-indicator-opacity};
+  --plus-cropper-indicator-size   : #{$cropper-indicator-size};
+  --plus-cropper-indicator-weight : #{$cropper-indicator-weight};
+
+  --plus-cropper-resizer-color    : #{$cropper-resizer-color};
+  --plus-cropper-resizer-offset   : #{$cropper-resizer-offset};
+  --plus-cropper-resizer-opacity  : #{$cropper-resizer-opacity};
+  --plus-cropper-resizer-size     : #{$cropper-resizer-size};
   
-  --plus-cropper-viewport-border-color    : #{$cropper-viewport-border-color};
-  --plus-cropper-viewport-border-opacity  : #{$cropper-viewport-border-opacity};
-  --plus-cropper-viewport-border-style    : #{$cropper-viewport-border-style};
-  --plus-cropper-viewport-border-width    : #{$cropper-viewport-border-width};
+  --plus-cropper-viewport-color   : #{$cropper-viewport-color};
+  --plus-cropper-viewport-opacity : #{$cropper-viewport-opacity};
+  --plus-cropper-viewport-style   : #{$cropper-viewport-style};
+  --plus-cropper-viewport-width   : #{$cropper-viewport-width};
 }
 
 :host {
@@ -54,7 +58,7 @@
 }
 
 .cropper-modal {
-  background-color: var(--plus-cropper-backdrop-background-color);
+  background-color: var(--plus-cropper-backdrop-color);
   opacity: var(--plus-cropper-backdrop-opacity);
 }
 
@@ -88,10 +92,10 @@
   }
   .cropper-dashed {
     &.dashed-h {
-      width: calc(92.5% - var(--plus-cropper-guides-border-width));
+      width: calc(92.5% - var(--plus-cropper-guides-width));
     }
     &.dashed-v {
-      height: calc(92.5% - var(--plus-cropper-guides-border-width));
+      height: calc(92.5% - var(--plus-cropper-guides-width));
     }
   }
   .cropper-point { 
@@ -115,20 +119,20 @@
 }
 
 .cropper-dashed {
-  border-color: var(--plus-cropper-guides-border-color);
-  border-style: var(--plus-cropper-guides-border-style);
-  opacity : var(--plus-cropper-guides-border-opacity);
+  border-color: var(--plus-cropper-guides-color);
+  border-style: var(--plus-cropper-guides-style);
+  opacity : var(--plus-cropper-guides-opacity);
   &.dashed-h {
     left: 50%;
     transform: translateX(-50%);
-    border-top-width: var(--plus-cropper-guides-border-width);
-    border-bottom-width: var(--plus-cropper-guides-border-width);
+    border-top-width: var(--plus-cropper-guides-width);
+    border-bottom-width: var(--plus-cropper-guides-width);
   }
   &.dashed-v {
     top: 50%;
     transform: translateY(-50%);
-    border-left-width: var(--plus-cropper-guides-border-width);
-    border-right-width: var(--plus-cropper-guides-border-width);
+    border-left-width: var(--plus-cropper-guides-width);
+    border-right-width: var(--plus-cropper-guides-width);
   }
 }
 
@@ -144,10 +148,10 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border-style: var(--plus-cropper-viewport-border-style);
-    border-color: var(--plus-cropper-viewport-border-color);
-    border-width: var(--plus-cropper-viewport-border-width);
-    opacity : var(--plus-cropper-viewport-border-opacity);
+    border-style: var(--plus-cropper-viewport-style);
+    border-color: var(--plus-cropper-viewport-color);
+    border-width: var(--plus-cropper-viewport-width);
+    opacity : var(--plus-cropper-viewport-opacity);
   }
 }
 
@@ -156,13 +160,13 @@
     --plus-cropper-resizer-offset-negative: calc((50% + var(--plus-cropper-resizer-offset)) * -1);
     --plus-cropper-resizer-offset-positive: calc((50% + var(--plus-cropper-resizer-offset)) * +1);
     margin: 0;
-    height: var(--plus-cropper-resizer-height);
-    width: var(--plus-cropper-resizer-width);
+    height: var(--plus-cropper-resizer-size);
+    width: var(--plus-cropper-resizer-size);
     opacity: var(--plus-cropper-resizer-opacity);
-    background-color: var(--plus-cropper-resizer-background-color);
-  }
-  &[class*="point-"]:before {
-    content: none;
+    background-color: var(--plus-cropper-resizer-color);
+    &:before {
+      content: none;
+    }
   }
   &.point-e {
     right: 0;
@@ -204,4 +208,22 @@
 
 .resizer-shape-round .cropper-point[class*="point-"] {
   border-radius: 50%;
+}
+
+.cropper-center {
+  opacity: var(--plus-cropper-indicator-opacity);
+  &:before {
+    background-color: var(--plus-cropper-indicator-color);
+    top: calc(var(--plus-cropper-indicator-weight) / 2 * -1);
+    left: calc(var(--plus-cropper-indicator-size) / 2 * -1);
+    height: var(--plus-cropper-indicator-weight);
+    width: var(--plus-cropper-indicator-size);
+  }
+  &:after {
+    background-color: var(--plus-cropper-indicator-color);
+    top: calc(var(--plus-cropper-indicator-size) / 2 * -1);
+    left: calc(var(--plus-cropper-indicator-weight) / 2 * -1);
+    height: var(--plus-cropper-indicator-size);
+    width: var(--plus-cropper-indicator-weight);
+  }
 }

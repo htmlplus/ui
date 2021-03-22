@@ -1,22 +1,27 @@
 // backdrop
-$cropper-backdrop-background-color: black;
+$cropper-backdrop-color: black;
 $cropper-backdrop-opacity: 0.5;
 
 // guides
-$cropper-guides-border-color: white;
-$cropper-guides-border-opacity: 0.5;
-$cropper-guides-border-style: dashed;
-$cropper-guides-border-width: 1px;
+$cropper-guides-color: white;
+$cropper-guides-opacity: 0.5;
+$cropper-guides-style: dashed;
+$cropper-guides-width: 1px;
+
+// indicator
+$cropper-indicator-color: white;
+$cropper-indicator-opacity: 1;
+$cropper-indicator-size: 7px;
+$cropper-indicator-weight: 1px;
 
 // resizer
-$cropper-resizer-background-color: white;
-$cropper-resizer-height: 5px;
+$cropper-resizer-color: white;
 $cropper-resizer-offset: 0px;
 $cropper-resizer-opacity: 1;
-$cropper-resizer-width: 5px;
+$cropper-resizer-size: 5px;
 
 // viewport
-$cropper-viewport-border-color: white;
-$cropper-viewport-border-opacity: 1;
-$cropper-viewport-border-style: solid;
-$cropper-viewport-border-width: 1px;
+$cropper-viewport-color: white;
+$cropper-viewport-opacity: 1;
+$cropper-viewport-style: solid;
+$cropper-viewport-width: 1px;
