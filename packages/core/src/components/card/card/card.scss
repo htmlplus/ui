@@ -5,11 +5,11 @@
 :host {
 
     /**
-    * @prop --plus-card-background-color: TODO
-    * @prop --plus-card-border-color    : TODO
-    * @prop --plus-card-border-radius   : TODO
-    * @prop --plus-card-border-width    : TODO
-    * @prop --plus-card-box-shadow      : TODO
+    * @prop --plus-card-background-color: Used to adjust the background-color.
+    * @prop --plus-card-border-color    : Used to adjust the border-color.
+    * @prop --plus-card-border-radius   : Used to adjust the border-radius.
+    * @prop --plus-card-border-width    : Used to adjust the border-width.
+    * @prop --plus-card-box-shadow      : Used to adjust the box-shodow.
     */
 
     --plus-card-background-color: #{$card-background-color};

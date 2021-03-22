@@ -3,11 +3,10 @@ import { GlobalConfig } from '@app/services';
 import { CardElevation } from './card.types';
 
 /**
- * TODO
- * @development
- * @group card
+ * Cards contain content and actions about a single subject.
+ * @group1 card
  * @slot - The default slot
- * @examples default
+ * @examples default, elevation, outlined, border-color, border-width, tile, background-color
  */
 @Component({
   tag: 'plus-card',
@@ -17,27 +16,28 @@ import { CardElevation } from './card.types';
 export class Card {
 
   /**
-   * TODO
+   * If you want the card to have shadow, use the elevation property, 
+   * And select the property value between `1` and `24`.
    */
-  @Prop()
+  @Prop({ reflect: true })
   elevation?: CardElevation;
 
   /**
-   * TODO
+   * Use the flat property to neutralize elevation.
    */
-  @Prop()
+  @Prop({ reflect: true })
   flat?: boolean;
 
   /**
-   * TODO
+   * If you want the card to have border, use the outlined property.
    */
-  @Prop()
+  @Prop({ reflect: true })
   outlined?: boolean;
 
   /**
-   * TODO
+   * Use tile property to neutralize border-radius.
    */
-  @Prop()
+  @Prop({ reflect: true })
   tile?: boolean;
 
   @GlobalConfig('card')

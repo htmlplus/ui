@@ -28,19 +28,19 @@ export namespace Components {
     }
     interface PlusCard {
         /**
-          * TODO
+          * If you want the card to have shadow, use the elevation property,  And select the property value between `1` and `24`.
          */
         "elevation"?: CardElevation;
         /**
-          * TODO
+          * Use the flat property to neutralize elevation.
          */
         "flat"?: boolean;
         /**
-          * TODO
+          * If you want the card to have border, use the outlined property.
          */
         "outlined"?: boolean;
         /**
-          * TODO
+          * Use tile property to neutralize border-radius.
          */
         "tile"?: boolean;
     }
@@ -93,13 +93,13 @@ export namespace Components {
          */
         "mode"?: CropperMode;
         /**
-          * TODO
+          * Move the canvas (image wrapper) with relative offsets.
           * @param offsetX - Moving size (px) in the `horizontal` direction.
           * @param offsetY - Moving size (px) in the `vertical` direction.
          */
         "move": (offsetX?: number, offsetY?: number) => Promise<void>;
         /**
-          * TODO
+          * Move the canvas (image wrapper) to an absolute point.
           * @param x - The `left` value of the canvas.
           * @param y - The `top` value of the canvas.
          */
@@ -121,11 +121,12 @@ export namespace Components {
          */
         "src"?: string;
         /**
-          * TODO
-          * @param mimeType - A string indicating the image format. The default type is `image/png`.
+          * The method creates a Blob object representing the image contained in the canvas; this file  may be cached on the disk or stored in memory at the discretion of the user agent. If type  is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
+          * @param type - A string indicating the image format. The default type is `image/png`.
           * @param quality - A Number between `0` and `1` indicating image quality if the requested    type is `image/jpeg` or `image/webp`. If this argument is anything else,    the default values `0.92` and `0.80` are used for `image/jpeg` and    `image/webp` respectively. Other arguments are ignored.
+          * @returns A callback function with the resulting Blob object as a single argument.
          */
-        "toBlob": (mimeType?: string, quality?: number) => Promise<Blob>;
+        "toBlob": (type?: string, quality?: number) => Promise<Blob>;
         /**
           * TODO
          */
@@ -1038,19 +1039,19 @@ declare namespace LocalJSX {
     }
     interface PlusCard {
         /**
-          * TODO
+          * If you want the card to have shadow, use the elevation property,  And select the property value between `1` and `24`.
          */
         "elevation"?: CardElevation;
         /**
-          * TODO
+          * Use the flat property to neutralize elevation.
          */
         "flat"?: boolean;
         /**
-          * TODO
+          * If you want the card to have border, use the outlined property.
          */
         "outlined"?: boolean;
         /**
-          * TODO
+          * Use tile property to neutralize border-radius.
          */
         "tile"?: boolean;
     }

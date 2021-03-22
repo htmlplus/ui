@@ -1,0 +1,17 @@
+```css [style]
+div {
+  padding: 40px 0;
+  background-color: #eee;
+}
+plus-card {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}
+```
+
+```html [template]
+<div>
+  <plus-card></plus-card>
+</div>
+```
