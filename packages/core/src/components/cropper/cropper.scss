@@ -11,12 +11,12 @@
   * @prop --plus-cropper-guides-color    : TODO.
   * @prop --plus-cropper-guides-opacity  : TODO.
   * @prop --plus-cropper-guides-style    : TODO.
-  * @prop --plus-cropper-guides-width    : TODO.
+  * @prop --plus-cropper-guides-weight    : TODO.
 
   * @prop --plus-cropper-viewport-color  : TODO.
   * @prop --plus-cropper-viewport-opacity: TODO.
   * @prop --plus-cropper-viewport-style  : TODO.
-  * @prop --plus-cropper-viewport-width  : TODO.
+  * @prop --plus-cropper-viewport-weight  : TODO.
   */
 
   --plus-cropper-backdrop-color   : #{$cropper-backdrop-color};
@@ -25,7 +25,7 @@
   --plus-cropper-guides-color     : #{$cropper-guides-color};
   --plus-cropper-guides-opacity   : #{$cropper-guides-opacity};
   --plus-cropper-guides-style     : #{$cropper-guides-style};
-  --plus-cropper-guides-width     : #{$cropper-guides-width};
+  --plus-cropper-guides-weight     : #{$cropper-guides-weight};
 
   --plus-cropper-indicator-color  : #{$cropper-indicator-color};
   --plus-cropper-indicator-opacity: #{$cropper-indicator-opacity};
@@ -36,11 +36,12 @@
   --plus-cropper-resizer-offset   : #{$cropper-resizer-offset};
   --plus-cropper-resizer-opacity  : #{$cropper-resizer-opacity};
   --plus-cropper-resizer-size     : #{$cropper-resizer-size};
+  --plus-cropper-resizer-weight   : #{$cropper-resizer-weight};
   
   --plus-cropper-viewport-color   : #{$cropper-viewport-color};
   --plus-cropper-viewport-opacity : #{$cropper-viewport-opacity};
   --plus-cropper-viewport-style   : #{$cropper-viewport-style};
-  --plus-cropper-viewport-width   : #{$cropper-viewport-width};
+  --plus-cropper-viewport-weight   : #{$cropper-viewport-weight};
 }
 
 :host {
@@ -92,28 +93,28 @@
   }
   .cropper-dashed {
     &.dashed-h {
-      width: calc(92.5% - var(--plus-cropper-guides-width));
+      width: calc(92.5% - var(--plus-cropper-guides-weight));
     }
     &.dashed-v {
-      height: calc(92.5% - var(--plus-cropper-guides-width));
+      height: calc(92.5% - var(--plus-cropper-guides-weight));
     }
   }
   .cropper-point { 
     &.point-ne {
-      top: 14.64466%;
-      right: 14.64466%;
+      top: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      right: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
     }
     &.point-nw {
-      top: 14.64466%;
-      left: 14.64466%;
+      top: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      left: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
     }
     &.point-sw {
-      bottom: 14.64466%;
-      left: 14.64466%;
+      bottom: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      left: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
     }
     &.point-se {
-      right: 14.64466%;
-      bottom: 14.64466%;
+      right: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      bottom: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
     }
   }
 }
@@ -125,14 +126,14 @@
   &.dashed-h {
     left: 50%;
     transform: translateX(-50%);
-    border-top-width: var(--plus-cropper-guides-width);
-    border-bottom-width: var(--plus-cropper-guides-width);
+    border-top-width: var(--plus-cropper-guides-weight);
+    border-bottom-width: var(--plus-cropper-guides-weight);
   }
   &.dashed-v {
     top: 50%;
     transform: translateY(-50%);
-    border-left-width: var(--plus-cropper-guides-width);
-    border-right-width: var(--plus-cropper-guides-width);
+    border-left-width: var(--plus-cropper-guides-weight);
+    border-right-width: var(--plus-cropper-guides-weight);
   }
 }
 
@@ -150,7 +151,7 @@
     height: 100%;
     border-style: var(--plus-cropper-viewport-style);
     border-color: var(--plus-cropper-viewport-color);
-    border-width: var(--plus-cropper-viewport-width);
+    border-width: var(--plus-cropper-viewport-weight);
     opacity : var(--plus-cropper-viewport-opacity);
   }
 }
@@ -225,5 +226,52 @@
     left: calc(var(--plus-cropper-indicator-weight) / 2 * -1);
     height: var(--plus-cropper-indicator-size);
     width: var(--plus-cropper-indicator-weight);
+  }
+}
+
+
+
+
+
+.resizer-shape-line .cropper-point[class*="point-"] {
+  background-color: transparent;
+  border-style: solid;
+  border-color: var(--plus-cropper-resizer-color);
+  border-width: var(--plus-cropper-resizer-weight);
+  &.point-e {
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+  }
+  &.point-n {
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+  }
+  &.point-w {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  &.point-s {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+  }
+  &.point-ne {
+    border-bottom: none;
+    border-left: none;
+  }
+  &.point-nw {
+    border-right: none;
+    border-bottom: none;
+  }
+  &.point-sw {
+    border-top: none;
+    border-right: none;
+  }
+  &.point-se {
+    border-top: none;
+    border-left: none;
   }
 }

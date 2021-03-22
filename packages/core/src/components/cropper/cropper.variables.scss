@@ -6,7 +6,7 @@ $cropper-backdrop-opacity: 0.5;
 $cropper-guides-color: white;
 $cropper-guides-opacity: 0.5;
 $cropper-guides-style: dashed;
-$cropper-guides-width: 1px;
+$cropper-guides-weight: 1px;
 
 // indicator
 $cropper-indicator-color: white;
@@ -19,9 +19,10 @@ $cropper-resizer-color: white;
 $cropper-resizer-offset: 0px;
 $cropper-resizer-opacity: 1;
 $cropper-resizer-size: 5px;
+$cropper-resizer-weight: 1px;
 
 // viewport
 $cropper-viewport-color: white;
 $cropper-viewport-opacity: 1;
 $cropper-viewport-style: solid;
-$cropper-viewport-width: 1px;
+$cropper-viewport-weight: 1px;
