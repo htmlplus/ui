@@ -2,12 +2,22 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil
 import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
 import { Bind, GlobalConfig } from '@app/services';
-import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, CropperView, CropperViewport, CropperViewport1, CropperZoomable, CropperZoomData/*, CropDragMode, CropViewMode*/ } from './cropper.types';
-
-// TODO https://foliotek.github.io/Croppie/
+import {
+  CropperAspectRatio,
+  CropperData,
+  CropperMode,
+  CropperResizer,
+  CropperResizerShape,
+  CropperResponsive,
+  CropperView,
+  CropperViewport,
+  CropperViewportMode,
+  CropperZoomable,
+  CropperZoomData,
+} from './cropper.types';
 
 /**
- * TODO
+ * TODO https://foliotek.github.io/Croppie/
  * @development
  * @examples default
  */
@@ -49,20 +59,6 @@ export class Cropper {
   canvasMinWidth?: number;
 
   /**
-   * The minimum height of the container.
-   */
-  // TODO: will be remove
-  // @Prop()
-  // containerMinHeight?: number = 100;
-
-  /**
-   * The minimum width of the container.
-   */
-  // TODO: will be remove
-  // @Prop()
-  // containerMinWidth?: number = 100;
-
-  /**
    * TODO
    */
   @Prop()
@@ -90,22 +86,22 @@ export class Cropper {
   mode?: CropperMode = 'move';
 
   /**
+   * TODO
+   */
+  @Prop()
+  resizer?: CropperResizer = 'both';
+
+  /**
+   * TODO
+   */
+  @Prop()
+  resizerShape?: CropperResizerShape = 'rect';
+
+  /**
    * Re-render the cropper when resizing the window.
    */
   @Prop()
   responsive?: CropperResponsive = 'reset';
-
-  /**
-   * TODO
-   */
-  @Prop()
-  resizer?: 'main' | 'corner' | 'both' = 'both';
-
-  /**
-   * TODO
-   */
-  @Prop()
-  resizerShape?: 'round' | 'rect' | 'line' = 'rect';
 
   /**
    * Image source.
@@ -141,7 +137,7 @@ export class Cropper {
    * TODO
    */
   @Prop()
-  viewport1?: CropperViewport1 = 'static';
+  viewportMode?: CropperViewportMode = 'static';
 
   /**
    * The minimum height of the viewport. This size is relative to the page, not the image.
@@ -200,19 +196,7 @@ export class Cropper {
   plusZoom!: EventEmitter<CropperZoomData>;
 
   @GlobalConfig('crop', {
-    backdrop: true,
-    // TODO: will be remove
-    // containerMinHeight: 100,
-    // TODO: will be remove
-    // containerMinWidth: 100,
-    guides: true,
-    mode: 'move',
-    responsive: 'reset',
-    resizer: 'both',
-    view: 'cover',
-    viewport: 'static',
-    zoomable: true,
-    zoomRatio: 0.1,
+
   })
   config?;
 
@@ -222,6 +206,17 @@ export class Cropper {
   $image!: HTMLImageElement;
 
   instance?: CropperCore;
+
+  get classes() {
+    return Utils.classes(
+      'wrapper',
+      {
+        viewport: this.viewport,
+        resizer: this.resizer,
+        resizerShape: this.resizerShape
+      }
+    )
+  }
 
   get options() {
 
@@ -267,8 +262,8 @@ export class Cropper {
       // center: true,
       // checkCrossOrigin: false, // TODO
       // checkOrientation: true,
-      cropBoxMovable: this.viewport1 === 'movable' || this.viewport1 === 'both',// TODO
-      cropBoxResizable: this.viewport1 === 'resizable' || this.viewport1 === 'both',// TODO
+      cropBoxMovable: this.viewportMode === 'movable' || this.viewportMode === 'both',// TODO
+      cropBoxResizable: this.viewportMode === 'resizable' || this.viewportMode === 'both',// TODO
       data: this.data,
       dragMode: this.mode,
       guides: Utils.toBoolean(this.guides),
@@ -302,10 +297,22 @@ export class Cropper {
     }
   }
 
+  /**
+   * Internal Methods
+   */
+
   bind() {
-    this.instance?.destroy();
+    this.unbind();
     this.instance = new CropperCore(this.$image, this.options);
   }
+
+  unbind() {
+    this.instance?.destroy();
+  }
+
+  /**
+   * Events handler
+   */
 
   @Bind
   onCrop(event) {
@@ -337,6 +344,10 @@ export class Cropper {
     event.preventDefault();
   }
 
+  /**
+   * Lifecycles
+   */
+
   componentDidLoad() {
     this.bind();
   }
@@ -346,14 +357,13 @@ export class Cropper {
   }
 
   disconnectedCallback() {
-    this.instance?.destroy();
+    this.unbind();
   }
 
   render() {
-    console.log(this.options, this.viewport1)
     return (
       <Host>
-        <div class={`wrapper ${this.viewport} ${this.resizer}`}>
+        <div class={this.classes}>
           <img class="image" ref={(element) => (this.$image = element)} src={this.src} />
         </div>
       </Host>
