@@ -1,17 +1,42 @@
 @import '../../../node_modules/cropperjs/dist/cropper.min.css';
 @import 'reset';
+@import 'cropper.variables';
 
 :host {
 
   /**
-  * @prop --plus-cropper-backdrop-background-color: TODO
-  * @prop --plus-cropper-backdrop-opacity         : TODO
-  * @prop --plus-cropper-viewport-border-color    : TODO
+  * @prop --plus-cropper-backdrop-background-color: TODO.
+  * @prop --plus-cropper-backdrop-opacity         : TODO.
+
+  * @prop --plus-cropper-guides-border-color      : TODO.
+  * @prop --plus-cropper-guides-border-opacity    : TODO.
+  * @prop --plus-cropper-guides-border-style      : TODO.
+  * @prop --plus-cropper-guides-border-width      : TODO.
+
+  * @prop --plus-cropper-viewport-border-color    : TODO.
+  * @prop --plus-cropper-viewport-border-opacity  : TODO.
+  * @prop --plus-cropper-viewport-border-style    : TODO.
+  * @prop --plus-cropper-viewport-border-width    : TODO.
   */
 
-  --plus-cropper-backdrop-background-color: black;
-  --plus-cropper-viewport-border-color    : white;
-  --plus-cropper-backdrop-opacity         : 0.5
+  --plus-cropper-backdrop-background-color: #{$cropper-backdrop-background-color};
+  --plus-cropper-backdrop-opacity         : #{$cropper-backdrop-opacity};
+  
+  --plus-cropper-guides-border-color      : #{$cropper-guides-border-color};
+  --plus-cropper-guides-border-opacity    : #{$cropper-guides-border-opacity};
+  --plus-cropper-guides-border-style      : #{$cropper-guides-border-style};
+  --plus-cropper-guides-border-width      : #{$cropper-guides-border-width};
+
+  --plus-cropper-resizer-background-color : #{$cropper-resizer-background-color};
+  --plus-cropper-resizer-height           : #{$cropper-resizer-height};
+  --plus-cropper-resizer-offset           : #{$cropper-resizer-offset};
+  --plus-cropper-resizer-opacity          : #{$cropper-resizer-opacity};
+  --plus-cropper-resizer-width            : #{$cropper-resizer-width};
+  
+  --plus-cropper-viewport-border-color    : #{$cropper-viewport-border-color};
+  --plus-cropper-viewport-border-opacity  : #{$cropper-viewport-border-opacity};
+  --plus-cropper-viewport-border-style    : #{$cropper-viewport-border-style};
+  --plus-cropper-viewport-border-width    : #{$cropper-viewport-border-width};
 }
 
 :host {
@@ -28,8 +53,9 @@
   max-width: 100%;
 }
 
-.rounded .cropper-face ,
-.rounded .cropper-view-box {
+.round .cropper-face,
+.round .cropper-view-box,
+.round .cropper-view-box::after {
   border-radius: 50%;
 }
 
@@ -42,10 +68,135 @@
 }
 
 .cropper-view-box {
-  outline-color: var(--plus-cropper-viewport-border-color);
+  outline: none;
 }
 
 .cropper-modal {
   background-color: var(--plus-cropper-backdrop-background-color);
   opacity: var(--plus-cropper-backdrop-opacity);
+}
+
+// TODO
+.cropper-dashed {
+  border: 0 dashed #eee;
+  border-color: var(--plus-cropper-guides-border-color);
+  border-style: var(--plus-cropper-guides-border-style);
+  opacity : var(--plus-cropper-guides-border-opacity);
+}
+.cropper-dashed.dashed-h {
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-width: var(--plus-cropper-guides-border-width);
+  border-bottom-width: var(--plus-cropper-guides-border-width);
+}
+.cropper-dashed.dashed-v {
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-width: var(--plus-cropper-guides-border-width);
+  border-right-width: var(--plus-cropper-guides-border-width);
+}
+
+.round .cropper-dashed.dashed-h {
+  width: calc(92.5% - var(--plus-cropper-guides-border-width));
+}
+.round .cropper-dashed.dashed-v {
+  height: calc(92.5% - var(--plus-cropper-guides-border-width));
+}
+.cropper-view-box {
+  outline: none;
+  position: relative;
+  &::after {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-style: var(--plus-cropper-viewport-border-style);
+    border-color: var(--plus-cropper-viewport-border-color);
+    border-width: var(--plus-cropper-viewport-border-width);
+    opacity : var(--plus-cropper-viewport-border-opacity);
+  }
+}
+.cropper-line {
+  display: none;
+}
+.cropper-point[class*="point-"] {
+  margin: 0;
+  height: var(--plus-cropper-resizer-height);
+  width: var(--plus-cropper-resizer-width);
+  --plus-cropper-resizer-offset-negative: calc((50% + var(--plus-cropper-resizer-offset)) * -1);
+  --plus-cropper-resizer-offset-positive: calc((50% + var(--plus-cropper-resizer-offset)) * +1);
+  opacity: var(--plus-cropper-resizer-opacity);
+  background-color: var(--plus-cropper-resizer-background-color);
+  // border-radius: 50%;
+  &:before {
+    content: none;
+  }
+}
+
+.cropper-point.point-e {
+  right: 0;
+  transform: translate(var(--plus-cropper-resizer-offset-positive), -50%);
+}
+.cropper-point.point-n {
+  top: 0;
+  transform: translate(-50%, var(--plus-cropper-resizer-offset-negative));
+}
+.cropper-point.point-w {
+  left: 0;
+  transform: translate(var(--plus-cropper-resizer-offset-negative), -50%);
+}
+.cropper-point.point-s {
+  bottom: 0;
+  transform: translate(-50%, var(--plus-cropper-resizer-offset-positive));
+}
+.cropper-point.point-ne {
+  top: 0;
+  right: 0;
+  transform: translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-negative));
+}
+.cropper-point.point-nw {
+  top: 0;
+  left: 0;
+  transform: translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-negative));
+}
+.cropper-point.point-sw {
+  bottom: 0;
+  left: 0;
+  transform: translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-positive));
+}
+.cropper-point.point-se {
+  right: 0;
+  bottom: 0;
+  transform: translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-positive));
+}
+.round .cropper-point.point-ne {
+  top: 14.64466%;
+  right: 14.64466%;
+}
+.round .cropper-point.point-nw {
+  top: 14.64466%;
+  left: 14.64466%;
+}
+.round .cropper-point.point-sw {
+  bottom: 14.64466%;
+  left: 14.64466%;
+}
+.round .cropper-point.point-se {
+  right: 14.64466%;
+  bottom: 14.64466%;
+}
+
+.main .cropper-point.point-ne,
+.main .cropper-point.point-nw,
+.main .cropper-point.point-sw,
+.main .cropper-point.point-se,
+.corner .cropper-point.point-e,
+.corner .cropper-point.point-n,
+.corner .cropper-point.point-w,
+.corner .cropper-point.point-s {
+  display: none;
 }

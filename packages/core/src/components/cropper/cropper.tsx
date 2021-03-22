@@ -1,8 +1,10 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
 import { Bind, GlobalConfig } from '@app/services';
-import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, CropperView, CropperViewport, CropperZoomable, CropperZoomData/*, CropDragMode, CropViewMode*/ } from './cropper.types';
+import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, CropperView, CropperViewport, CropperViewport1, CropperZoomable, CropperZoomData/*, CropDragMode, CropViewMode*/ } from './cropper.types';
+
+// TODO https://foliotek.github.io/Croppie/
 
 /**
  * TODO
@@ -37,26 +39,28 @@ export class Cropper {
   /**
    * The minimum height of the canvas (image wrapper).
    */
-  @Prop()
+  // @Prop()
   canvasMinHeight?: number;
 
   /**
    * The minimum width of the canvas (image wrapper).
    */
-  @Prop()
+  // @Prop()
   canvasMinWidth?: number;
 
   /**
    * The minimum height of the container.
    */
-  @Prop()
-  containerMinHeight?: number = 100;
+  // TODO: will be remove
+  // @Prop()
+  // containerMinHeight?: number = 100;
 
   /**
    * The minimum width of the container.
    */
-  @Prop()
-  containerMinWidth?: number = 100;
+  // TODO: will be remove
+  // @Prop()
+  // containerMinWidth?: number = 100;
 
   /**
    * TODO
@@ -95,7 +99,13 @@ export class Cropper {
    * TODO
    */
   @Prop()
-  rounded?: boolean;
+  resizer?: 'main' | 'corner' | 'both' = 'both';
+
+  /**
+   * TODO
+   */
+  @Prop()
+  resizerShape?: 'round' | 'rect' | 'line' = 'rect';
 
   /**
    * Image source.
@@ -125,18 +135,24 @@ export class Cropper {
    * TODO
    */
   @Prop()
-  viewport?: CropperViewport = 'static';
+  viewport?: CropperViewport = 'rect';
+
+  /**
+   * TODO
+   */
+  @Prop()
+  viewport1?: CropperViewport1 = 'static';
 
   /**
    * The minimum height of the viewport. This size is relative to the page, not the image.
    */
-  @Prop()
+  // @Prop()
   viewportMinHeight?: number;
 
   /**
    * The minimum width of the viewport. This size is relative to the page, not the image.
    */
-  @Prop()
+  // @Prop()
   viewportMinWidth?: number;
 
   /**
@@ -185,17 +201,23 @@ export class Cropper {
 
   @GlobalConfig('crop', {
     backdrop: true,
-    containerMinHeight: 100,
-    containerMinWidth: 100,
+    // TODO: will be remove
+    // containerMinHeight: 100,
+    // TODO: will be remove
+    // containerMinWidth: 100,
     guides: true,
     mode: 'move',
     responsive: 'reset',
+    resizer: 'both',
     view: 'cover',
     viewport: 'static',
     zoomable: true,
     zoomRatio: 0.1,
   })
   config?;
+
+  @Element()
+  $host!: HTMLElement;
 
   $image!: HTMLImageElement;
 
@@ -238,15 +260,15 @@ export class Cropper {
     })();
 
     return {
-      aspectRatio: Utils.toBoolean(this.rounded) ? 1 : aspectRatio,
+      aspectRatio: Utils.toBoolean(this.viewport === 'round') ? 1 : aspectRatio,
       // autoCrop: true,
       // autoCropArea: this.autoCropArea,
       background: Utils.toBoolean(this.background),
       // center: true,
       // checkCrossOrigin: false, // TODO
       // checkOrientation: true,
-      cropBoxMovable: this.viewport === 'movable' || this.viewport === 'both',// TODO
-      cropBoxResizable: this.viewport === 'resizable' || this.viewport === 'both',// TODO
+      cropBoxMovable: this.viewport1 === 'movable' || this.viewport1 === 'both',// TODO
+      cropBoxResizable: this.viewport1 === 'resizable' || this.viewport1 === 'both',// TODO
       data: this.data,
       dragMode: this.mode,
       guides: Utils.toBoolean(this.guides),
@@ -256,8 +278,8 @@ export class Cropper {
       minCanvasHeight: this.canvasMinHeight,
       minCropBoxWidth: this.viewportMinWidth,
       minCropBoxHeight: this.viewportMinHeight,
-      minContainerWidth: this.containerMinWidth,
-      minContainerHeight: this.containerMinHeight,
+      minContainerWidth: 0,
+      minContainerHeight: 0,
       modal: Utils.toBoolean(this.backdrop),
       movable: true, // TODO: make auto
       // preview: HTMLElement | HTMLElement[] | NodeListOf<HTMLElement> | string,
@@ -328,9 +350,10 @@ export class Cropper {
   }
 
   render() {
+    console.log(this.options, this.viewport1)
     return (
       <Host>
-        <div class={`wrapper ${this.rounded ? 'rounded' : ''}`}>
+        <div class={`wrapper ${this.viewport} ${this.resizer}`}>
           <img class="image" ref={(element) => (this.$image = element)} src={this.src} />
         </div>
       </Host>
