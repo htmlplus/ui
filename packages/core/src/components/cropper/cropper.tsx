@@ -1,10 +1,10 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
 import { Bind, GlobalConfig } from '@app/services';
 import {
   CropperAspectRatio,
-  CropperData,
+  CropperValue,
   CropperMode,
   CropperResizer,
   CropperResizerShape,
@@ -62,12 +62,6 @@ export class Cropper {
    * TODO
    */
   @Prop()
-  data?: CropperData;
-
-  /**
-   * TODO
-   */
-  @Prop()
   disabled?: boolean;
 
   /**
@@ -114,6 +108,12 @@ export class Cropper {
    */
   @Prop()
   src?: string;
+
+  /**
+   * TODO
+   */
+  @Prop({ mutable: true })
+  value?: CropperValue;
 
   /**
    * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
@@ -190,7 +190,7 @@ export class Cropper {
     bubbles: false,
     cancelable: false,
   })
-  plusCrop!: EventEmitter<CropperData>;
+  plusCrop!: EventEmitter<void>;
 
   /**
    * This event fires when a cropper instance starts to zoom in or zoom out its canvas (image wrapper).
@@ -201,8 +201,83 @@ export class Cropper {
   })
   plusZoom!: EventEmitter<CropperZoomData>;
 
-  @GlobalConfig('crop', {
+  /**
+   * Move the canvas (image wrapper) with relative offsets.
+   * @param offsetX - Moving size (px) in the `horizontal` direction.
+   * @param offsetY - Moving size (px) in the `vertical` direction.
+   */
+  @Method()
+  move(offsetX?: number, offsetY?: number): Promise<void> {
+    this.instance?.move(offsetX ?? null, offsetY ?? null);
+    return Promise.resolve();
+  }
 
+  /**
+   * Move the canvas (image wrapper) to an absolute point.
+   * @param x - The `left` value of the canvas.
+   * @param y - The `top` value of the canvas.
+   */
+  @Method()
+  moveTo(x?: number, y?: number): Promise<void> {
+    this.instance?.moveTo(x ?? null, y ?? null);
+    return Promise.resolve();
+  }
+
+  /**
+   * The method creates a Blob object representing the image contained in the canvas; this file 
+   * may be cached on the disk or stored in memory at the discretion of the user agent. If type 
+   * is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
+   * @param type    - A string indicating the image format. The default type is `image/png`.
+   * @param quality - A Number between `0` and `1` indicating image quality if the requested 
+   *                  type is `image/jpeg` or `image/webp`. If this argument is anything else, 
+   *                  the default values `0.92` and `0.80` are used for `image/jpeg` and 
+   *                  `image/webp` respectively. Other arguments are ignored.
+   * @returns A callback function with the resulting Blob object as a single argument.
+   */
+  @Method()
+  toBlob(type?: string, quality?: number): Promise<Blob> {
+    return new Promise((resolve) => {
+      this.instance
+        .getCroppedCanvas()
+        .toBlob(
+          (blob) => resolve(blob),
+          type,
+          quality
+        )
+    })
+  }
+
+  // no need
+  // getData(rounded?: boolean): Cropper.Data;
+  // setData(data: Cropper.SetDataOptions): Cropper;
+
+  // backlog
+  // clear(): Cropper;
+  // crop(): Cropper;
+  // destroy(): Cropper;
+  // disable(): Cropper;
+  // enable(): Cropper;
+  // getCanvasData(): Cropper.CanvasData;
+  // getContainerData(): Cropper.ContainerData;
+  // getCropBoxData(): Cropper.CropBoxData;
+  // getCroppedCanvas(options?: Cropper.GetCroppedCanvasOptions): HTMLCanvasElement;
+  // getImageData(): Cropper.ImageData;
+  // replace(url: string, onlyColorChanged?: boolean): Cropper;
+  // reset(): Cropper;
+  // rotate(degree: number): Cropper;
+  // rotateTo(degree: number): Cropper;
+  // scale(scaleX: number, scaleY?: number): Cropper;
+  // scaleX(scaleX: number): Cropper;
+  // scaleY(scaleY: number): Cropper;
+  // setAspectRatio(aspectRatio: number): Cropper;
+  // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
+  // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
+  // setDragMode(dragMode: Cropper.DragMode): Cropper;
+  // zoom(ratio: number): Cropper;
+  // zoomTo(ratio: number, pivot?: { x: number; y: number }): Cropper;
+
+  @GlobalConfig('crop', {
+    // TODO
   })
   config?;
 
@@ -212,6 +287,9 @@ export class Cropper {
   $image!: HTMLImageElement;
 
   instance?: CropperCore;
+
+  // TODO
+  lock: boolean = false;
 
   get classes() {
     return Utils.classes(
@@ -270,7 +348,7 @@ export class Cropper {
       // checkOrientation: true,
       cropBoxMovable: this.viewportMode === 'movable' || this.viewportMode === 'both',// TODO
       cropBoxResizable: this.viewportMode === 'resizable' || this.viewportMode === 'both',// TODO
-      data: this.data,
+      data: this.value,
       dragMode: this.mode,
       guides: Utils.toBoolean(this.guides),
       highlight: false,
@@ -317,12 +395,37 @@ export class Cropper {
   }
 
   /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev || this.lock) return;
+
+    const value = this[name];
+
+    switch (name) {
+
+      case 'value':
+        this.instance?.setData(value);
+        break;
+    }
+  }
+
+  /**
    * Events handler
    */
 
   @Bind
   onCrop(event) {
-    this.plusCrop.emit(event.detail);
+
+    this.lock = true;
+
+    this.value = event.detail;
+
+    this.lock = false;
+
+    this.plusCrop.emit();
   }
 
   @Bind
@@ -335,7 +438,7 @@ export class Cropper {
 
     const difference = event.detail.ratio - event.detail.oldRatio;
 
-    const direction = difference > 0 ? 'IN' : 'OUT';
+    const direction = difference > 0 ? 'in' : 'out';
 
     const detail: CropperZoomData = {
       difference,
@@ -358,15 +461,12 @@ export class Cropper {
     this.bind();
   }
 
-  componentDidUpdate() {
-    this.bind();
-  }
-
   disconnectedCallback() {
     this.unbind();
   }
 
   render() {
+    console.log(this.instance)
     return (
       <Host>
         <div class={this.classes}>

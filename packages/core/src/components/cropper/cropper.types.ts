@@ -7,7 +7,7 @@ export type CropperView = 'none' | 'fit' | 'contain' | 'cover';
 export type CropperViewport = 'rect' | 'round';
 export type CropperViewportMode = 'static' | 'movable' | 'resizable' | 'both';
 export type CropperZoomable = boolean | 'touch' | 'wheel';
-export interface CropperData {
+export interface CropperValue {
     x?: number;
     y?: number;
     width?: number;
@@ -18,6 +18,6 @@ export interface CropperData {
 }
 export interface CropperZoomData {
     difference?: number,
-    direction?: 'IN' | 'OUT',
+    direction?: 'in' | 'out',
     ratio?: number
 }

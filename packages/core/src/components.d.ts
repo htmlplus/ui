@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperData, CropperMode, CropperResponsive, CropperView, CropperViewport, CropperViewport1, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperValue, CropperView, CropperViewport, CropperViewportMode, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -74,18 +74,6 @@ export namespace Components {
          */
         "background"?: boolean;
         /**
-          * The minimum height of the canvas (image wrapper).
-         */
-        "canvasMinHeight"?: number;
-        /**
-          * The minimum width of the canvas (image wrapper).
-         */
-        "canvasMinWidth"?: number;
-        /**
-          * TODO
-         */
-        "data"?: CropperData;
-        /**
           * TODO
          */
         "disabled"?: boolean;
@@ -94,12 +82,36 @@ export namespace Components {
          */
         "guides"?: boolean;
         /**
+          * Show the center indicator above the viewport.
+         */
+        "indicator"?: boolean;
+        /**
           * Define the dragging mode of the cropper.
           * @value crop - create a new viewport.
           * @value move - move the canvas.
           * @value none - do nothing.
          */
         "mode"?: CropperMode;
+        /**
+          * TODO
+          * @param offsetX - Moving size (px) in the `horizontal` direction.
+          * @param offsetY - Moving size (px) in the `vertical` direction.
+         */
+        "move": (offsetX?: number, offsetY?: number) => Promise<void>;
+        /**
+          * TODO
+          * @param x - The `left` value of the canvas.
+          * @param y - The `top` value of the canvas.
+         */
+        "moveTo": (x?: number, y?: number) => Promise<void>;
+        /**
+          * TODO
+         */
+        "resizer"?: CropperResizer;
+        /**
+          * TODO
+         */
+        "resizerShape"?: CropperResizerShape;
         /**
           * Re-render the cropper when resizing the window.
          */
@@ -108,6 +120,16 @@ export namespace Components {
           * Image source.
          */
         "src"?: string;
+        /**
+          * TODO
+          * @param mimeType - A string indicating the image format. The default type is `image/png`.
+          * @param quality - A Number between `0` and `1` indicating image quality if the requested    type is `image/jpeg` or `image/webp`. If this argument is anything else,    the default values `0.92` and `0.80` are used for `image/jpeg` and    `image/webp` respectively. Other arguments are ignored.
+         */
+        "toBlob": (mimeType?: string, quality?: number) => Promise<Blob>;
+        /**
+          * TODO
+         */
+        "value"?: CropperValue;
         /**
           * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
           * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.
@@ -123,15 +145,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "viewport1"?: CropperViewport1;
-        /**
-          * The minimum height of the viewport. This size is relative to the page, not the image.
-         */
-        "viewportMinHeight"?: number;
-        /**
-          * The minimum width of the viewport. This size is relative to the page, not the image.
-         */
-        "viewportMinWidth"?: number;
+        "viewportMode"?: CropperViewportMode;
         /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */
@@ -1074,18 +1088,6 @@ declare namespace LocalJSX {
          */
         "background"?: boolean;
         /**
-          * The minimum height of the canvas (image wrapper).
-         */
-        "canvasMinHeight"?: number;
-        /**
-          * The minimum width of the canvas (image wrapper).
-         */
-        "canvasMinWidth"?: number;
-        /**
-          * TODO
-         */
-        "data"?: CropperData;
-        /**
           * TODO
          */
         "disabled"?: boolean;
@@ -1093,6 +1095,10 @@ declare namespace LocalJSX {
           * Show the dashed lines above the viewport.
          */
         "guides"?: boolean;
+        /**
+          * Show the center indicator above the viewport.
+         */
+        "indicator"?: boolean;
         /**
           * Define the dragging mode of the cropper.
           * @value crop - create a new viewport.
@@ -1103,7 +1109,7 @@ declare namespace LocalJSX {
         /**
           * This event fires when the canvas (image wrapper) or the viewport changed.
          */
-        "onPlusCrop"?: (event: CustomEvent<CropperData>) => void;
+        "onPlusCrop"?: (event: CustomEvent<void>) => void;
         /**
           * This event fires when the target image has been loaded and the cropper instance is ready for operating.
          */
@@ -1113,6 +1119,14 @@ declare namespace LocalJSX {
          */
         "onPlusZoom"?: (event: CustomEvent<CropperZoomData>) => void;
         /**
+          * TODO
+         */
+        "resizer"?: CropperResizer;
+        /**
+          * TODO
+         */
+        "resizerShape"?: CropperResizerShape;
+        /**
           * Re-render the cropper when resizing the window.
          */
         "responsive"?: CropperResponsive;
@@ -1120,6 +1134,10 @@ declare namespace LocalJSX {
           * Image source.
          */
         "src"?: string;
+        /**
+          * TODO
+         */
+        "value"?: CropperValue;
         /**
           * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
           * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.
@@ -1135,15 +1153,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "viewport1"?: CropperViewport1;
-        /**
-          * The minimum height of the viewport. This size is relative to the page, not the image.
-         */
-        "viewportMinHeight"?: number;
-        /**
-          * The minimum width of the viewport. This size is relative to the page, not the image.
-         */
-        "viewportMinWidth"?: number;
+        "viewportMode"?: CropperViewportMode;
         /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */

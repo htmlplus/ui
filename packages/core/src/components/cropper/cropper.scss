@@ -101,20 +101,20 @@
   }
   .cropper-point { 
     &.point-ne {
-      top: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
-      right: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      top: 14.64466%;
+      right: 14.64466%;
     }
     &.point-nw {
-      top: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
-      left: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      top: 14.64466%;
+      left: 14.64466%;
     }
     &.point-sw {
-      bottom: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
-      left: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      bottom: 14.64466%;
+      left: 14.64466%;
     }
     &.point-se {
-      right: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
-      bottom: calc(14.64466% + var(--plus-cropper-viewport-weight) / 2);
+      right: 14.64466%;
+      bottom: 14.64466%;
     }
   }
 }

@@ -111,11 +111,26 @@ const methods = (component) => {
 
   return (component.methods || []).map((method) => {
 
+    const parameters = [];
+
+    (method.docsTags || [])
+      .filter((tag) => tag.name === 'param')
+      .map((tag) => {
+
+        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
+
+        parameters.push({
+          name,
+          description
+        })
+      });
+
     return {
       name: method.name,
       type: method.returns.type,
       signature: method.signature,
       description: method.docs,
+      parameters
     }
   });
 }
@@ -270,7 +285,7 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
         styles: styles(component),
         tag: tag(component),
         tags: tags(component),
-        title: title(component),
+        title: title(component)
       }
     })
     .map((component, index, components) => {
