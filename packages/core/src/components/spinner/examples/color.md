@@ -7,11 +7,21 @@
 ```
 
 ```html [template]
-<preview justify-content="space-evenly">
-  <plus-spinner class="spinner-1"></plus-spinner>
-  <plus-spinner class="spinner-2"></plus-spinner>
-  <plus-spinner class="spinner-3"></plus-spinner>
-  <plus-spinner class="spinner-4"></plus-spinner>
-  <plus-spinner class="spinner-5"></plus-spinner>
-</preview>
+<plus-grid justify-content="evenly">
+  <plus-grid-item>
+    <plus-spinner class="spinner-1"></plus-spinner>
+  </plus-grid-item>
+  <plus-grid-item>
+    <plus-spinner class="spinner-2"></plus-spinner>
+  </plus-grid-item>
+  <plus-grid-item>
+    <plus-spinner class="spinner-3"></plus-spinner>
+  </plus-grid-item>
+  <plus-grid-item>
+    <plus-spinner class="spinner-4"></plus-spinner>
+  </plus-grid-item>
+  <plus-grid-item>
+    <plus-spinner class="spinner-5"></plus-spinner>
+  </plus-grid-item>
+</plus-grid>
 ```

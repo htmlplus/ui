@@ -1,5 +1,5 @@
 ```html [template]
-<preview split="false">
+<fragment>
   <plus-dialog-toggler connector="dialog-full-height">
     Open
   </plus-dialog-toggler>
@@ -20,5 +20,5 @@
       </plus-dialog-footer>
     </plus-dialog-content>
   </plus-dialog>
-</preview>
+</fragment>
 ```

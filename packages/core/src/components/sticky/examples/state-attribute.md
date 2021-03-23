@@ -1,11 +1,11 @@
 ```css [style]
 p {
   margin: 0;
-  padding: 15px;
+  padding: 1rem;
   text-align: justify;
 }
-.wrapper {
-  height: 320px;
+div {
+  height: 20rem;
   overflow: auto;
 }
 plus-sticky[state="normal"] {
@@ -17,7 +17,7 @@ plus-sticky[state="sticky"] {
 ```
 
 ```html [template]
-<div class="wrapper">
+<div>
   <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh eros, luctus in lacus eu, eleifend
     ultricies ipsum. Morbi sit amet diam et erat pulvinar ultricies in vel erat. Vestibulum sit amet posuere lacus,

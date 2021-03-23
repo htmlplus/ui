@@ -1,8 +1,16 @@
+```css [style]
+div.center {
+  text-align: center;
+}
+```
+
 ```html [template]
-<preview split="false">
-  <plus-dialog-toggler connector="dialog-animation">
-    Open
-  </plus-dialog-toggler>
+<fragment>
+  <div class="center">
+    <plus-dialog-toggler connector="dialog-animation">
+      Open
+    </plus-dialog-toggler>
+  </div>
   <plus-dialog class="fade" connector="dialog-animation">
     <plus-dialog-content>
       <plus-dialog-header>
@@ -18,5 +26,5 @@
       </plus-dialog-footer>
     </plus-dialog-content>
   </plus-dialog>
-</preview>
+</fragment>
 ```

@@ -1,17 +1,17 @@
 ```css [style]
 plus-card {
-  height: 120px;
-  width: 120px;
+  height: 12rem;
+  width: 12rem;
   margin: auto;
 }
 plus-card.pink {
-  --plus-card-background-color: #ef9a9a;
+  --plus-card-background-color: #EF9A9A;
 }
 plus-card.yellow {
-  --plus-card-background-color: #fff59d;
+  --plus-card-background-color: #FFF59D;
 }
 plus-card.blue {
-  --plus-card-background-color: #80cbc4;
+  --plus-card-background-color: #80CBC4;
 }
 ```
 

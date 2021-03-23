@@ -1,12 +1,12 @@
 ```css [style]
 plus-grid {
-  background-color: #eee;
-  height: 140px;
+  background-color: #EEEEEE;
+  height: 8rem;
 }
-.box {
-  color: #00bcd4;
-  border: 1px solid #fff;
-  background-color: #e0f7fa;
+div {
+  color: #00BCD4;
+  border: 1px solid #FFFFFF;
+  background-color: #E0F7FA;
   padding: 0.5em;
   text-align: center;
 }
@@ -15,32 +15,32 @@ plus-grid {
 ```html [template]
 <plus-grid align-items="center">
   <plus-grid-item xs="6">
-    <div class="box">
+    <div>
       Item
     </div>
   </plus-grid-item>
   <plus-grid-item xs="3">
-    <div class="box">
+    <div>
       Item
     </div>
   </plus-grid-item>
   <plus-grid-item xs="3">
-    <div class="box">
+    <div>
       Item
     </div>
   </plus-grid-item>
   <plus-grid-item xs="3">
-    <div class="box">
+    <div>
       Item
     </div>
   </plus-grid-item>
   <plus-grid-item xs="3">
-    <div class="box">
+    <div>
       Item
     </div>
   </plus-grid-item>
   <plus-grid-item xs="grow">
-    <div class="box">
+    <div>
       Item
     </div>
   </plus-grid-item>

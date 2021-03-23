@@ -2,8 +2,8 @@ By default, the card component has no border. outlined property Adds border.
 
 ```css [style]
 plus-card {
-  height: 120px;
-  width: 120px;
+  height: 8rem;
+  width: 8rem;
   margin: auto;
 }
 plus-card.size-1 {

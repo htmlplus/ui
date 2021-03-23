@@ -1,17 +1,19 @@
 ```css [style]
-div.container {
-  padding: 40px 0;
-  background-color: #eee;
+div {
+  padding: 2rem 0;
+  background-color: #EEEEEE;
 }
 plus-card {
-  height: 200px;
-  width: 200px;
+  height: 12rem;
+  width: 12rem;
   margin: auto;
 }
 ```
 
 ```html [template]
-<div class="container">
-  <plus-card></plus-card>
-</div>
+<fragment dock>
+  <div>
+    <plus-card></plus-card>
+  </div>
+<fragment>
 ```

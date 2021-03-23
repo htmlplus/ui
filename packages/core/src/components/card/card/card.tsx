@@ -6,7 +6,7 @@ import { CardElevation } from './card.types';
  * Cards contain content and actions about a single subject.
  * @group1 card
  * @slot - The default slot
- * @examples default, elevation, outlined, border-color, border-width, tile, background-color
+ * @examples default, elevation, outlined, border-color, border-width, tile, background-color, customize
  */
 @Component({
   tag: 'plus-card',

@@ -1,16 +1,12 @@
 ```css [style]
-.drawer,
-.content {
-  padding: 150px 0;
+plus-card {
+  --plus-card-background-color: #E0E0E0;
+  padding: 10rem 0;
   text-align: center;
-  border-radius: 4px;
 }
-.drawer {
-  margin-right: 10px;
-  background-color: #AACAFF;
-}
-.content {
-  background-color: #E0E0E0;
+plus-drawer plus-card {
+  --plus-card-background-color: #AACAFF;
+  margin-right: 0.5rem;
 }
 ```
 
@@ -18,17 +14,17 @@
 <plus-grid>
   <plus-grid-item xs="auto">
     <plus-drawer class="fade" size="200px" connector="drawer-default">
-      <div class="drawer">
+      <plus-card>
         Drawer Content
-      </div>
+      </plus-card>
     </plus-drawer>
   </plus-grid-item>
   <plus-grid-item xs="grow">
-    <div class="content">
+    <plus-card>
       <plus-drawer-toggler connector="drawer-default">
         Toggle
       </plus-drawer-toggler>
-    </div>
+    </plus-card>
   </plus-grid-item>
 </plus-grid>
 ```
