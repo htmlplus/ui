@@ -1,5 +1,5 @@
 ```css [style]
-div {
+div.container {
   padding: 40px 0;
   background-color: #eee;
 }
@@ -11,7 +11,7 @@ plus-card {
 ```
 
 ```html [template]
-<div>
+<div class="container">
   <plus-card></plus-card>
 </div>
 ```

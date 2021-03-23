@@ -1,7 +1,7 @@
 By default, the card component has border-radius. The tile property neutralizes border-radius.
 
 ```css [style]
-div {
+div.container {
   padding: 40px 0;
   background-color: #eee;
 }
@@ -13,7 +13,7 @@ plus-card {
 ```
 
 ```html [template]
-<div>
+<div class="container">
   <plus-grid justify-content="evenly" gutter="md">
     <plus-grid-item xs="12" sm="auto">
       <plus-card tile></plus-card>

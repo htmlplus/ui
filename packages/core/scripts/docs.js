@@ -51,7 +51,7 @@ const examples = (component) => {
 
       const item = {};
 
-      const regex = /```\w+\s\[\w+\]\s[\S\s]*?```/g;
+      const regex = /```\w+\s\[\w+(:\w+)?\]\s[\S\s]*?```/g;
 
       const filePath = path.join(dir, file);
 
@@ -70,7 +70,7 @@ const examples = (component) => {
 
             const lines = section.split('\n');
 
-            const key = ((lines[0].match(/\[\w+\]/) || []).pop() || '').replace('[', '').replace(']', '');
+            const key = ((lines[0].match(/\[\w+(:\w+)?\]/) || []).shift() || '').replace('[', '').replace(']', '');
 
             const type = ((lines[0].match(/```\w+/) || []).pop() || '').replace('```', '');
 

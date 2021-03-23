@@ -40,3 +40,17 @@ class {
   }
 }
 ```
+
+```html [javascript:template]
+<div>
+  <plus-card id="card" elevation="12"></plus-card>
+  <br />
+  <input id="input" type="range" value="12" min="1" max="24" />
+</div>
+```
+
+```js [javascript:script]
+input.addEventListener('change', (event) => {
+  card.elevation = event.target.value
+})
+```
