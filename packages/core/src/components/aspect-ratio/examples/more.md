@@ -19,7 +19,7 @@
 
 ```html [template]
 <plus-grid>
-  <plus-grid-item xs="6">
+  <plus-grid-item xs="12" sm="6">
     <plus-grid>
       <plus-grid-item xs="12">
         <plus-aspect-ratio value="3/2" class="ratio-one">
@@ -37,7 +37,7 @@
       </plus-grid-item>
     </plus-grid>
   </plus-grid-item>
-  <plus-grid-item xs="6">
+  <plus-grid-item xs="12" sm="6">
     <plus-grid>
       <plus-grid-item xs="6">
         <plus-aspect-ratio value="1">
