@@ -1,17 +1,17 @@
 ```css [style]
-.container {
+div {
   position: relative;
   height: 20rem;
   overflow: auto;
   background-color: #EEEEEE;
 }
 
-.box {
+plus-intersection {
   text-align: center;
   margin: 1000px auto;
 }
 
-[data-hidden] {
+[hidden] {
   display: none;
 }
 
@@ -48,20 +48,20 @@ class {
 
         image.setAttribute('src', src);
 
-        image.removeAttribute('data-hidden');
+        image.removeAttribute('hidden');
 
-        spinner.setAttribute('data-hidden', 'true')
+        spinner.setAttribute('hidden', 'true');
       }, 1000);
   }
 
   render() {
     return (
       <fragment>
-        <div class="container">
-          <plus-intersection class="box" once onPlusChange={(event) => this.onChange(event)}>
+        <div>
+          <plus-intersection once onPlusChange={(event) => this.onChange(event)}>
             <plus-card elevation="10">
               <plus-spinner></plus-spinner>
-              <img data-hidden data-src="https://placekitten.com/200/200" alt="Lazy Image" />
+              <img hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
             </plus-card>
           </plus-intersection>
         </div>
@@ -73,11 +73,11 @@ class {
 
 ```html [javascript:template]
 <fragment>
-  <div class="container">
-    <plus-intersection id="element1" class="box" once>
+  <div>
+    <plus-intersection id="element1" once>
       <plus-card elevation="10">
         <plus-spinner></plus-spinner>
-        <img data-hidden data-src="https://placekitten.com/200/200" alt="Lazy Image" />
+        <img hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
       </plus-card>
     </plus-intersection>
   </div>
@@ -99,9 +99,9 @@ element1.addEventListener('plusChange', (event) => {
 
     image.setAttribute('src', src);
 
-    image.removeAttribute('data-hidden');
+    image.removeAttribute('hidden');
 
-    spinner.setAttribute('data-hidden', 'true')
+    spinner.setAttribute('hidden', 'true');
   }, 1000);
 })
 ```

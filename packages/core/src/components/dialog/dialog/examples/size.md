@@ -25,7 +25,7 @@ class {
   render() {
     return (
       <fragment>
-        <plus-grid justify-content="evenly" gutter="md">
+        <plus-grid justify-content="center" gutter="md">
           <plus-grid-item xs="12" sm="auto">
             <button onClick={() => this.show('sm')}>
               Small dialog

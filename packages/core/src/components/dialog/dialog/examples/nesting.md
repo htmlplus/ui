@@ -6,7 +6,7 @@ plus-grid-item {
 
 ```html [template]
 <fragment>
-  <plus-grid justify-content="evenly" gutter="md">
+  <plus-grid justify-content="center" gutter="md">
     <plus-grid-item xs="12" sm="auto">
       <plus-dialog-toggler connector="dialog-nesting-1">
         Open Dialog 1

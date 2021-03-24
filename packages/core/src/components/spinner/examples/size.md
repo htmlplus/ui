@@ -1,5 +1,5 @@
 ```html [template]
-<plus-grid justify-content="evenly">
+<plus-grid align-items="center" justify-content="evenly">
   <plus-grid-item>
     <plus-spinner size="sm"></plus-spinner>
   </plus-grid-item>

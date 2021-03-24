@@ -34,9 +34,9 @@ class {
       >
         <plus-card elevation="10">
           <div>
-            {this.inside} time(s) inside clicked
+            <b>{this.inside}</b> time(s) inside clicked
             <br />
-            {this.outside} time(s) outside clicked
+            <b>{this.outside}</b> time(s) outside clicked
           </div>
         </plus-card>
       </plus-click-outside>
@@ -49,9 +49,9 @@ class {
 <plus-click-outside id="element1">
   <plus-card elevation="10">
     <div>
-      <span id="element2">0</span> time(s) inside clicked
+      <b id="element2">0</b> time(s) inside clicked
       <br />
-      <span id="element3">0</span> time(s) outside clicked
+      <b id="element3">0</b> time(s) outside clicked
     </div>
   </plus-card>
 </plus-click-outside>
