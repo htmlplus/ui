@@ -1,17 +1,28 @@
+```css [style]
+plus-grid-item {
+  text-align: center;
+}
+```
+
 ```html [template]
-<preview split="false">
-  <plus-dialog-toggler connector="dialog-nesting-1">
-    Open Dialog 1
-  </plus-dialog-toggler>
-  &nbsp;
-  <plus-dialog-toggler connector="dialog-nesting-2">
-    Open Dialog 2
-  </plus-dialog-toggler>
-  &nbsp;
-  <plus-dialog-toggler connector="dialog-nesting-3">
-    Open Dialog 3
-  </plus-dialog-toggler>
-  &nbsp;
+<fragment>
+  <plus-grid justify-content="evenly" gutter="md">
+    <plus-grid-item xs="12" sm="auto">
+      <plus-dialog-toggler connector="dialog-nesting-1">
+        Open Dialog 1
+      </plus-dialog-toggler>
+    </plus-grid-item>
+    <plus-grid-item xs="12" sm="auto">
+      <plus-dialog-toggler connector="dialog-nesting-2">
+        Open Dialog 2
+      </plus-dialog-toggler>
+    </plus-grid-item>
+    <plus-grid-item xs="12" sm="auto">
+      <plus-dialog-toggler connector="dialog-nesting-3">
+        Open Dialog 3
+      </plus-dialog-toggler>
+    </plus-grid-item>
+  </plus-grid>
   <plus-dialog class="fade" connector="dialog-nesting-1" size="xl">
     <plus-dialog-content>
       <plus-dialog-header>
@@ -88,5 +99,5 @@
       </plus-dialog-footer>
     </plus-dialog-content>
   </plus-dialog>
-</preview>
+</fragment>
 ```

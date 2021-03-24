@@ -15,5 +15,5 @@ plus-card {
   <div>
     <plus-card></plus-card>
   </div>
-<fragment>
+</fragment>
 ```

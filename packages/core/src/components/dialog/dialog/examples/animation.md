@@ -1,12 +1,12 @@
 ```css [style]
-div.center {
+div {
   text-align: center;
 }
 ```
 
 ```html [template]
 <fragment>
-  <div class="center">
+  <div>
     <plus-dialog-toggler connector="dialog-animation">
       Open
     </plus-dialog-toggler>

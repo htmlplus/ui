@@ -1,8 +1,16 @@
+```css [style]
+div {
+  text-align: center;
+}
+```
+
 ```html [template]
 <fragment>
-  <plus-dialog-toggler connector="dialog-full-width">
-    Open
-  </plus-dialog-toggler>
+  <div>
+    <plus-dialog-toggler connector="dialog-full-width">
+      Open
+    </plus-dialog-toggler>
+  </div>
   <plus-dialog class="fade" connector="dialog-full-width" full-width>
     <plus-dialog-content>
       <plus-dialog-body>

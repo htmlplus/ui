@@ -1,8 +1,16 @@
+```css [style]
+div {
+  text-align: center;
+}
+```
+
 ```html [template]
-<preview split="false">
-  <plus-dialog-toggler connector="dialog-sticky">
-    Open
-  </plus-dialog-toggler>
+<fragment>
+  <div>
+    <plus-dialog-toggler connector="dialog-sticky">
+      Open
+    </plus-dialog-toggler>
+  </div>
   <plus-dialog class="fade" connector="dialog-sticky" full-width sticky>
     <plus-dialog-content>
       <plus-dialog-body>
@@ -10,5 +18,5 @@
       </plus-dialog-body>
     </plus-dialog-content>
   </plus-dialog>
-</preview>
+</fragment>
 ```
