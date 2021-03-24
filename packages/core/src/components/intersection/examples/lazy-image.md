@@ -56,7 +56,7 @@ class {
 
   render() {
     return (
-      <fragment>
+      <fragment dock>
         <div>
           <plus-intersection once onPlusChange={(event) => this.onChange(event)}>
             <plus-card elevation="10">
@@ -72,16 +72,14 @@ class {
 ```
 
 ```html [javascript:template]
-<fragment>
-  <div>
-    <plus-intersection id="element1" once>
-      <plus-card elevation="10">
-        <plus-spinner></plus-spinner>
-        <img hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
-      </plus-card>
-    </plus-intersection>
-  </div>
-</fragment>
+<div>
+  <plus-intersection id="element1" once>
+    <plus-card elevation="10">
+      <plus-spinner></plus-spinner>
+      <img hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
+    </plus-card>
+  </plus-intersection>
+</div>
 ```
 
 ```js [javascript:script]

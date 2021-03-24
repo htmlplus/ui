@@ -25,7 +25,7 @@
     padding: 500px 0;
 }
 
-.box {
+plus-card {
     width: 15rem;
     padding: 1rem;
     margin: auto;
@@ -44,40 +44,40 @@ class {
 
   render() {
     return (
-      <div class="container">
-        <div class="status">
-          {this.intersecting ? 'In Viewport' : 'Out of Viewport'}
+      <fragment dock>
+        <div class="container">
+          <div class="status">
+            {this.intersecting ? 'In Viewport' : 'Out of Viewport'}
+          </div>
+          <div class="content">
+            <div class="spacer"></div> 
+            <plus-intersection onPlusChange={(event) => this.onChange(event)}>
+              <plus-card elevation="10">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </plus-card>
+            </plus-intersection>
+            <div class="spacer"></div> 
+          </div>
         </div>
-        <div class="content">
-          <div class="spacer"></div> 
-          <plus-intersection onPlusChange={(event) => this.onChange(event)}>
-            <plus-card elevation="10" class="box">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </plus-card>
-          </plus-intersection>
-          <div class="spacer"></div> 
-        </div>
-      </div>
+      </fragment>
     )
   }
 }
 ```
 
 ```html [javascript:template]
-<fragment dock>
-  <div class="wrapper">
-    <div id="element1" class="status"></div>
-    <div class="content">
-      <div class="spacer"></div> 
-      <plus-intersection id="element2">
-        <plus-card elevation="10">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </plus-card>
-      </plus-intersection>
-      <div class="spacer"></div> 
-    </div>
+<div class="container">
+  <div id="element1" class="status"></div>
+  <div class="content">
+    <div class="spacer"></div> 
+    <plus-intersection id="element2">
+      <plus-card elevation="10">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </plus-card>
+    </plus-intersection>
+    <div class="spacer"></div> 
   </div>
-</fragment>
+</div>
 ```
 
 ```js [javascript:script]

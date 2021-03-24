@@ -49,30 +49,28 @@ class {
 ```
 
 ```html [javascript:template]
-<fragment>
-  <div>
-    <plus-dialog-toggler connector="dialog-prevent">
-      Open
-    </plus-dialog-toggler>
-  </div>
-  <plus-dialog id="element1" class="fade" connector="dialog-prevent">
-    <plus-dialog-content>
-      <plus-dialog-header>
-        Dialog Title
-      </plus-dialog-header>
-      <plus-dialog-body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
-      </plus-dialog-body>
-      <plus-dialog-footer>
-        <plus-dialog-toggler connector="dialog-prevent">
-          Close
-        </plus-dialog-toggler>
-      </plus-dialog-footer>
-    </plus-dialog-content>
-  </plus-dialog>
-</fragment>
+<div>
+  <plus-dialog-toggler connector="dialog-prevent">
+    Open
+  </plus-dialog-toggler>
+</div>
+<plus-dialog id="element1" class="fade" connector="dialog-prevent">
+  <plus-dialog-content>
+    <plus-dialog-header>
+      Dialog Title
+    </plus-dialog-header>
+    <plus-dialog-body>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </plus-dialog-body>
+    <plus-dialog-footer>
+      <plus-dialog-toggler connector="dialog-prevent">
+        Close
+      </plus-dialog-toggler>
+    </plus-dialog-footer>
+  </plus-dialog-content>
+</plus-dialog>
 ```
 
 ```js [javascript:script]
