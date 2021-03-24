@@ -60,10 +60,16 @@ export class Sticky {
   observer?: IntersectionObserver;
 
   get attributes() {
-    return {
-      style: this.styles,
-      state: this.state
+
+    const attributes = {
+      style: this.styles
+    };
+
+    if (this.watcher) {
+      attributes['state'] = this.state;
     }
+
+    return attributes;
   }
 
   get sizer() {
