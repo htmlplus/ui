@@ -201,81 +201,6 @@ export class Cropper {
   })
   plusZoom!: EventEmitter<CropperZoomData>;
 
-  /**
-   * Move the canvas (image wrapper) with relative offsets.
-   * @param offsetX - Moving size (px) in the `horizontal` direction.
-   * @param offsetY - Moving size (px) in the `vertical` direction.
-   */
-  @Method()
-  move(offsetX?: number, offsetY?: number): Promise<void> {
-    this.instance?.move(offsetX ?? null, offsetY ?? null);
-    return Promise.resolve();
-  }
-
-  /**
-   * Move the canvas (image wrapper) to an absolute point.
-   * @param x - The `left` value of the canvas.
-   * @param y - The `top` value of the canvas.
-   */
-  @Method()
-  moveTo(x?: number, y?: number): Promise<void> {
-    this.instance?.moveTo(x ?? null, y ?? null);
-    return Promise.resolve();
-  }
-
-  /**
-   * The method creates a Blob object representing the image contained in the canvas; this file 
-   * may be cached on the disk or stored in memory at the discretion of the user agent. If type 
-   * is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
-   * @param type    - A string indicating the image format. The default type is `image/png`.
-   * @param quality - A Number between `0` and `1` indicating image quality if the requested 
-   *                  type is `image/jpeg` or `image/webp`. If this argument is anything else, 
-   *                  the default values `0.92` and `0.80` are used for `image/jpeg` and 
-   *                  `image/webp` respectively. Other arguments are ignored.
-   * @returns A callback function with the resulting Blob object as a single argument.
-   */
-  @Method()
-  toBlob(type?: string, quality?: number): Promise<Blob> {
-    return new Promise((resolve) => {
-      this.instance
-        .getCroppedCanvas()
-        .toBlob(
-          (blob) => resolve(blob),
-          type,
-          quality
-        )
-    })
-  }
-
-  // no need
-  // getData(rounded?: boolean): Cropper.Data;
-  // setData(data: Cropper.SetDataOptions): Cropper;
-
-  // backlog
-  // clear(): Cropper;
-  // crop(): Cropper;
-  // destroy(): Cropper;
-  // disable(): Cropper;
-  // enable(): Cropper;
-  // getCanvasData(): Cropper.CanvasData;
-  // getContainerData(): Cropper.ContainerData;
-  // getCropBoxData(): Cropper.CropBoxData;
-  // getCroppedCanvas(options?: Cropper.GetCroppedCanvasOptions): HTMLCanvasElement;
-  // getImageData(): Cropper.ImageData;
-  // replace(url: string, onlyColorChanged?: boolean): Cropper;
-  // reset(): Cropper;
-  // rotate(degree: number): Cropper;
-  // rotateTo(degree: number): Cropper;
-  // scale(scaleX: number, scaleY?: number): Cropper;
-  // scaleX(scaleX: number): Cropper;
-  // scaleY(scaleY: number): Cropper;
-  // setAspectRatio(aspectRatio: number): Cropper;
-  // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
-  // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
-  // setDragMode(dragMode: Cropper.DragMode): Cropper;
-  // zoom(ratio: number): Cropper;
-  // zoomTo(ratio: number, pivot?: { x: number; y: number }): Cropper;
-
   @GlobalConfig('crop', {
     // TODO
   })
@@ -382,6 +307,85 @@ export class Cropper {
   }
 
   /**
+   * External Methods
+   */
+
+  /**
+   * Move the canvas (image wrapper) with relative offsets.
+   * @param offsetX - Moving size (px) in the `horizontal` direction.
+   * @param offsetY - Moving size (px) in the `vertical` direction.
+   */
+  @Method()
+  move(offsetX?: number, offsetY?: number): Promise<void> {
+    this.instance?.move(offsetX ?? null, offsetY ?? null);
+    return Promise.resolve();
+  }
+
+  /**
+   * Move the canvas (image wrapper) to an absolute point.
+   * @param x - The `left` value of the canvas.
+   * @param y - The `top` value of the canvas.
+   */
+  @Method()
+  moveTo(x?: number, y?: number): Promise<void> {
+    this.instance?.moveTo(x ?? null, y ?? null);
+    return Promise.resolve();
+  }
+
+  /**
+   * The method creates a Blob object representing the image contained in the canvas; this file 
+   * may be cached on the disk or stored in memory at the discretion of the user agent. If type 
+   * is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
+   * @param type    - A string indicating the image format. The default type is `image/png`.
+   * @param quality - A Number between `0` and `1` indicating image quality if the requested 
+   *                  type is `image/jpeg` or `image/webp`. If this argument is anything else, 
+   *                  the default values `0.92` and `0.80` are used for `image/jpeg` and 
+   *                  `image/webp` respectively. Other arguments are ignored.
+   * @returns A callback function with the resulting Blob object as a single argument.
+   */
+  @Method()
+  toBlob(type?: string, quality?: number): Promise<Blob> {
+    return new Promise((resolve) => {
+      this.instance
+        .getCroppedCanvas()
+        .toBlob(
+          (blob) => resolve(blob),
+          type,
+          quality
+        )
+    })
+  }
+
+  // no need
+  // getData(rounded?: boolean): Cropper.Data;
+  // setData(data: Cropper.SetDataOptions): Cropper;
+
+  // backlog
+  // clear(): Cropper;
+  // crop(): Cropper;
+  // destroy(): Cropper;
+  // disable(): Cropper;
+  // enable(): Cropper;
+  // getCanvasData(): Cropper.CanvasData;
+  // getContainerData(): Cropper.ContainerData;
+  // getCropBoxData(): Cropper.CropBoxData;
+  // getCroppedCanvas(options?: Cropper.GetCroppedCanvasOptions): HTMLCanvasElement;
+  // getImageData(): Cropper.ImageData;
+  // replace(url: string, onlyColorChanged?: boolean): Cropper;
+  // reset(): Cropper;
+  // rotate(degree: number): Cropper;
+  // rotateTo(degree: number): Cropper;
+  // scale(scaleX: number, scaleY?: number): Cropper;
+  // scaleX(scaleX: number): Cropper;
+  // scaleY(scaleY: number): Cropper;
+  // setAspectRatio(aspectRatio: number): Cropper;
+  // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
+  // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
+  // setDragMode(dragMode: Cropper.DragMode): Cropper;
+  // zoom(ratio: number): Cropper;
+  // zoomTo(ratio: number, pivot?: { x: number; y: number }): Cropper; 
+
+  /**
    * Internal Methods
    */
 
@@ -466,7 +470,6 @@ export class Cropper {
   }
 
   render() {
-    console.log(this.instance)
     return (
       <Host>
         <div class={this.classes}>
