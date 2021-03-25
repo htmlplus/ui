@@ -311,9 +311,27 @@ export class Cropper {
    */
 
   /**
+   * Flip horizontal.
+   */
+  @Method()
+  flipX(): Promise<void> {
+    this.instance?.scale(-1, 1);
+    return Promise.resolve();
+  }
+
+  /**
+   * Flip vertical.
+   */
+  @Method()
+  flipY(): Promise<void> {
+    this.instance?.scale(1, -1);
+    return Promise.resolve();
+  }
+
+  /**
    * Move the canvas (image wrapper) with relative offsets.
-   * @param offsetX - Moving size (px) in the `horizontal` direction.
-   * @param offsetY - Moving size (px) in the `vertical` direction.
+   * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
+   * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
    */
   @Method()
   move(offsetX?: number, offsetY?: number): Promise<void> {
@@ -323,12 +341,53 @@ export class Cropper {
 
   /**
    * Move the canvas (image wrapper) to an absolute point.
-   * @param x - The `left` value of the canvas.
-   * @param y - The `top` value of the canvas.
+   * @param x - The `left` value of the canvas. Use `null` to ignore this.
+   * @param y - The `top` value of the canvas. Use `null` to ignore this.
    */
   @Method()
   moveTo(x?: number, y?: number): Promise<void> {
     this.instance?.moveTo(x ?? null, y ?? null);
+    return Promise.resolve();
+  }
+
+  /**
+   * Reset the image and viewport to their initial states.
+   */
+  @Method()
+  reset(): Promise<void> {
+    this.instance?.reset();
+    return Promise.resolve();
+  }
+
+  /**
+   * Rotate the image with a relative degree.
+   * @param degree - TODO
+   */
+  @Method()
+  rotate(degree: number): Promise<void> {
+    this.instance?.rotate(degree);
+    return Promise.resolve();
+  }
+
+  /**
+   * Rotate the image to an absolute degree.
+   * @param degree - TODO
+   */
+  @Method()
+  rotateTo(degree: number): Promise<void> {
+    this.instance?.rotateTo(degree);
+    return Promise.resolve();
+  }
+
+  /**
+   * Scale the image.
+   * @param scaleX - The scaling factor to apply to the abscissa of the image. Use `null` to ignore this.
+   * @param scaleY - The scaling factor to apply on the ordinate of the image. Use `null` to ignore this.
+   */
+  @Method()
+  scale(scaleX?: number, scaleY?: number): Promise<void> {
+    typeof scaleX !== 'undefined' && !!scaleX && this.instance?.scaleX(scaleX);
+    typeof scaleY !== 'undefined' && !!scaleY && this.instance?.scaleY(scaleY);
     return Promise.resolve();
   }
 
@@ -356,46 +415,64 @@ export class Cropper {
     })
   }
 
+  /**
+   * Zoom the canvas (image wrapper) with a relative ratio.
+   * @param ratio - TODO
+   */
+  @Method()
+  zoom(ratio: number): Promise<void> {
+    this.instance?.zoom(ratio);
+    return Promise.resolve();
+  }
+
+  /**
+   * Zoom the canvas (image wrapper) to an absolute ratio.
+   * @param ratio - TODO
+   */
+  @Method()
+  zoomTo(ratio: number): Promise<void> {
+    this.instance?.zoomTo(ratio);
+    return Promise.resolve();
+  }
+
   // no need
   // getData(rounded?: boolean): Cropper.Data;
   // setData(data: Cropper.SetDataOptions): Cropper;
-
-  // backlog
-  // clear(): Cropper;
-  // crop(): Cropper;
+  // scaleX(scaleX: number): Cropper;
+  // scaleY(scaleY: number): Cropper;
+  // replace(url: string, onlyColorChanged?: boolean): Cropper;
+  // setAspectRatio(aspectRatio: number): Cropper;
+  // setDragMode(dragMode: Cropper.DragMode): Cropper;
   // destroy(): Cropper;
   // disable(): Cropper;
   // enable(): Cropper;
+
+  // backlog
+  // crop(): Cropper;
+  // clear(): Cropper;
   // getCanvasData(): Cropper.CanvasData;
   // getContainerData(): Cropper.ContainerData;
   // getCropBoxData(): Cropper.CropBoxData;
   // getCroppedCanvas(options?: Cropper.GetCroppedCanvasOptions): HTMLCanvasElement;
   // getImageData(): Cropper.ImageData;
-  // replace(url: string, onlyColorChanged?: boolean): Cropper;
-  // reset(): Cropper;
-  // rotate(degree: number): Cropper;
-  // rotateTo(degree: number): Cropper;
-  // scale(scaleX: number, scaleY?: number): Cropper;
-  // scaleX(scaleX: number): Cropper;
-  // scaleY(scaleY: number): Cropper;
-  // setAspectRatio(aspectRatio: number): Cropper;
   // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
   // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
-  // setDragMode(dragMode: Cropper.DragMode): Cropper;
-  // zoom(ratio: number): Cropper;
-  // zoomTo(ratio: number, pivot?: { x: number; y: number }): Cropper; 
 
   /**
    * Internal Methods
    */
 
   bind() {
-    this.unbind();
     this.instance = new CropperCore(this.$image, this.options);
   }
 
   unbind() {
     this.instance?.destroy();
+  }
+
+  rebind() {
+    this.unbind();
+    this.bind();
   }
 
   /**
@@ -410,8 +487,37 @@ export class Cropper {
 
     switch (name) {
 
+      case 'aspectRatio':
+        this.instance?.setAspectRatio(value);
+        break;
+
+      case 'disabled':
+        value ? this.instance?.disable() : this.instance?.enable();
+        break;
+
+      case 'mode':
+        this.instance?.setDragMode(value);
+        this.instance?.clear();
+        this.instance?.crop();
+        break;
+
+      case 'src':
+        this.instance?.replace(this.src, false);
+        break;
+
       case 'value':
         this.instance?.setData(value);
+        break;
+
+      // TODO
+      case 'viewport':
+      case 'resizer':
+      case 'resizerShape':
+        break;
+
+      // TODO
+      default:
+        this.rebind();
         break;
     }
   }
@@ -470,6 +576,8 @@ export class Cropper {
   }
 
   render() {
+    // TODO
+    window['cc'] = this.instance;
     return (
       <Host>
         <div class={this.classes}>

@@ -78,6 +78,14 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * Flip horizontal.
+         */
+        "flipX": () => Promise<void>;
+        /**
+          * Flip vertical.
+         */
+        "flipY": () => Promise<void>;
+        /**
           * Show the dashed lines above the viewport.
          */
         "guides"?: boolean;
@@ -94,16 +102,20 @@ export namespace Components {
         "mode"?: CropperMode;
         /**
           * Move the canvas (image wrapper) with relative offsets.
-          * @param offsetX - Moving size (px) in the `horizontal` direction.
-          * @param offsetY - Moving size (px) in the `vertical` direction.
+          * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
+          * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
          */
         "move": (offsetX?: number, offsetY?: number) => Promise<void>;
         /**
           * Move the canvas (image wrapper) to an absolute point.
-          * @param x - The `left` value of the canvas.
-          * @param y - The `top` value of the canvas.
+          * @param x - The `left` value of the canvas. Use `null` to ignore this.
+          * @param y - The `top` value of the canvas. Use `null` to ignore this.
          */
         "moveTo": (x?: number, y?: number) => Promise<void>;
+        /**
+          * Reset the image and viewport to their initial states.
+         */
+        "reset": () => Promise<void>;
         /**
           * TODO
          */
@@ -116,6 +128,22 @@ export namespace Components {
           * Re-render the cropper when resizing the window.
          */
         "responsive"?: CropperResponsive;
+        /**
+          * Rotate the image with a relative degree.
+          * @param degree - TODO
+         */
+        "rotate": (degree: number) => Promise<void>;
+        /**
+          * Rotate the image to an absolute degree.
+          * @param degree - TODO
+         */
+        "rotateTo": (degree: number) => Promise<void>;
+        /**
+          * Scale the image.
+          * @param scaleX - The scaling factor to apply to the abscissa of the image. Use `null` to ignore this.
+          * @param scaleY - The scaling factor to apply on the ordinate of the image. Use `null` to ignore this.
+         */
+        "scale": (scaleX?: number, scaleY?: number) => Promise<void>;
         /**
           * Image source.
          */
@@ -148,9 +176,19 @@ export namespace Components {
          */
         "viewportMode"?: CropperViewportMode;
         /**
+          * Zoom the canvas (image wrapper) with a relative ratio.
+          * @param ratio - TODO
+         */
+        "zoom": (ratio: number) => Promise<void>;
+        /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */
         "zoomRatio"?: number;
+        /**
+          * Zoom the canvas (image wrapper) to an absolute ratio.
+          * @param ratio - TODO
+         */
+        "zoomTo": (ratio: number) => Promise<void>;
         /**
           * Enable to zoom the image.
           * @value false - Disable zoom.
