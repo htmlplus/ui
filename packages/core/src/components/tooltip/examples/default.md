@@ -24,24 +24,35 @@
 <preview>
  <div class="row">
   <div class="mx-2">
-    <plus-tooltip content="Mousemove tooltip" placement="right">
-      <button type="button" class="btn-success">Mousemove tooltip right</button>
-    </plus-tooltip>
+    <button type="button" class="btn-success">
+    Mousemove tooltip right
+      <plus-tooltip placement="right">
+        Mousemove tooltip
+      </plus-tooltip>
+    </button>
   </div>
   <div class="mx-2">
-    <plus-tooltip content="Mousemove tooltip" placement="top">
-      <button type="button" class="btn-success">Mousemove tooltip top</button>
-    </plus-tooltip>
+    <button type="button" class="btn-success">Mousemove tooltip top
+      <plus-tooltip placement="right">
+        Mousemove tooltip
+      </plus-tooltip>
+    </button>
   </div>
   <div class="mx-2">
-    <plus-tooltip content="Mousemove tooltip" placement="left">
-      <button type="button" class="btn-success">Mousemove tooltip left</button>
-    </plus-tooltip>
+    <button type="button" class="btn-success">
+    Mousemove tooltip left
+      <plus-tooltip placement="right">
+        Mousemove tooltip
+      </plus-tooltip>
+    </button>
   </div>
   <div class="mx-2">
-    <plus-tooltip content="Mousemove tooltip" placement="bottom">
-      <button type="button" class="btn-success">Mousemove tooltip bottom</button>
-    </plus-tooltip>
+    <button type="button" class="btn-success">
+      Mousemove tooltip bottom
+      <plus-tooltip placement="right">
+        Mousemove tooltip
+      </plus-tooltip>
+    </button>
   </div>
 </div>
 </preview>
