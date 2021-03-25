@@ -11,7 +11,7 @@ plus-intersection {
   margin: 1000px auto;
 }
 
-[hidden] {
+[data-hidden] {
   display: none;
 }
 
@@ -48,9 +48,9 @@ class {
 
         image.setAttribute('src', src);
 
-        image.removeAttribute('hidden');
+        image.removeAttribute('data-hidden');
 
-        spinner.setAttribute('hidden', 'true');
+        spinner.setAttribute('data-hidden', 'true');
       }, 1000);
   }
 
@@ -61,7 +61,7 @@ class {
           <plus-intersection once onPlusChange={(event) => this.onChange(event)}>
             <plus-card elevation="10">
               <plus-spinner></plus-spinner>
-              <img hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
+              <img data-hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
             </plus-card>
           </plus-intersection>
         </div>
@@ -76,7 +76,7 @@ class {
   <plus-intersection id="element1" once>
     <plus-card elevation="10">
       <plus-spinner></plus-spinner>
-      <img hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
+      <img data-hidden="true" data-src="https://placekitten.com/200/200" alt="Lazy Image" />
     </plus-card>
   </plus-intersection>
 </div>
@@ -97,9 +97,9 @@ element1.addEventListener('plusChange', (event) => {
 
     image.setAttribute('src', src);
 
-    image.removeAttribute('hidden');
+    image.removeAttribute('data-hidden');
 
-    spinner.setAttribute('hidden', 'true');
+    spinner.setAttribute('data-hidden', 'true');
   }, 1000);
 })
 ```
