@@ -1,3 +1,5 @@
+Examples of Spinners with different colors.
+
 ```css [style]
 .spinner-1 { --plus-spinner-color: #08dfc8 }
 .spinner-2 { --plus-spinner-color: #ff5449 }

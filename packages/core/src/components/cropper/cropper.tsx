@@ -381,13 +381,11 @@ export class Cropper {
 
   /**
    * Scale the image.
-   * @param scaleX - The scaling factor to apply to the abscissa of the image. Use `null` to ignore this.
-   * @param scaleY - The scaling factor to apply on the ordinate of the image. Use `null` to ignore this.
+   * @param scale - TODO
    */
   @Method()
-  scale(scaleX?: number, scaleY?: number): Promise<void> {
-    typeof scaleX !== 'undefined' && !!scaleX && this.instance?.scaleX(scaleX);
-    typeof scaleY !== 'undefined' && !!scaleY && this.instance?.scaleY(scaleY);
+  scale(scale?: number): Promise<void> {
+    this.instance?.scale(scale, scale);
     return Promise.resolve();
   }
 
@@ -450,13 +448,16 @@ export class Cropper {
   // backlog
   // crop(): Cropper;
   // clear(): Cropper;
+
   // getCanvasData(): Cropper.CanvasData;
-  // getContainerData(): Cropper.ContainerData;
+  // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
+
   // getCropBoxData(): Cropper.CropBoxData;
+  // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
+
+  // getContainerData(): Cropper.ContainerData;
   // getCroppedCanvas(options?: Cropper.GetCroppedCanvasOptions): HTMLCanvasElement;
   // getImageData(): Cropper.ImageData;
-  // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
-  // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
 
   /**
    * Internal Methods

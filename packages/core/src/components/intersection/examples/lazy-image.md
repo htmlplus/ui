@@ -1,3 +1,5 @@
+This is also used for lazy loading.
+
 ```css [style]
 div {
   position: relative;
