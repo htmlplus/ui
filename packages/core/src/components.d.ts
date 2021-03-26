@@ -140,21 +140,32 @@ export namespace Components {
         "rotateTo": (degree: number) => Promise<void>;
         /**
           * Scale the image.
-          * @param scaleX - The scaling factor to apply to the abscissa of the image. Use `null` to ignore this.
-          * @param scaleY - The scaling factor to apply on the ordinate of the image. Use `null` to ignore this.
+          * @param scale - TODO
          */
-        "scale": (scaleX?: number, scaleY?: number) => Promise<void>;
+        "scale": (scale?: number) => Promise<void>;
         /**
           * Image source.
          */
         "src"?: string;
         /**
+          * @param type - A DOMString indicating the image format. The default format type is `image/png`.
+          * @param quality - A Number between `0` and `1` indicating the image quality to use for image formats    that use lossy compression such as `image/jpeg` and `image/webp`. If this argument    is anything else, the default value for image quality is used. The default value    is `0.92`. Other arguments are ignored.
+         */
+        "toBase64": (type?: string, quality?: number) => Promise<string>;
+        /**
           * The method creates a Blob object representing the image contained in the canvas; this file  may be cached on the disk or stored in memory at the discretion of the user agent. If type  is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
           * @param type - A string indicating the image format. The default type is `image/png`.
           * @param quality - A Number between `0` and `1` indicating image quality if the requested    type is `image/jpeg` or `image/webp`. If this argument is anything else,    the default values `0.92` and `0.80` are used for `image/jpeg` and    `image/webp` respectively. Other arguments are ignored.
-          * @returns A callback function with the resulting Blob object as a single argument.
          */
         "toBlob": (type?: string, quality?: number) => Promise<Blob>;
+        /**
+          * TODO
+         */
+        "toCanvas": () => Promise<HTMLCanvasElement>;
+        /**
+          * TODO
+         */
+        "toURL": (type?: string, quality?: number) => Promise<string>;
         /**
           * TODO
          */

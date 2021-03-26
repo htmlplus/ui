@@ -398,7 +398,6 @@ export class Cropper {
    *                  type is `image/jpeg` or `image/webp`. If this argument is anything else, 
    *                  the default values `0.92` and `0.80` are used for `image/jpeg` and 
    *                  `image/webp` respectively. Other arguments are ignored.
-   * @returns A callback function with the resulting Blob object as a single argument.
    */
   @Method()
   toBlob(type?: string, quality?: number): Promise<Blob> {
@@ -407,6 +406,44 @@ export class Cropper {
         .getCroppedCanvas()
         .toBlob(
           (blob) => resolve(blob),
+          type,
+          quality
+        )
+    })
+  }
+
+  /**
+   * TODO
+   */
+  @Method()
+  toCanvas(/*options?: Cropper.GetCroppedCanvasOptions*/): Promise<HTMLCanvasElement> {
+    const canvas = this.instance.getCroppedCanvas();
+    return Promise.resolve(canvas);
+  }
+
+  /**
+   * @param type    - A DOMString indicating the image format. The default format type is `image/png`.
+   * @param quality - A Number between `0` and `1` indicating the image quality to use for image formats 
+   *                  that use lossy compression such as `image/jpeg` and `image/webp`. If this argument 
+   *                  is anything else, the default value for image quality is used. The default value 
+   *                  is `0.92`. Other arguments are ignored.
+   */
+  @Method()
+  toBase64(type?: string, quality?: number): Promise<string> {
+    const base64 = this.instance.getCroppedCanvas().toDataURL(type, quality);
+    return Promise.resolve(base64);
+  }
+
+  /**
+   * TODO
+   */
+  @Method()
+  toURL(type?: string, quality?: number): Promise<string> {
+    return new Promise((resolve) => {
+      this.instance
+        .getCroppedCanvas()
+        .toBlob(
+          (blob) => resolve(URL.createObjectURL(blob)),
           type,
           quality
         )
@@ -449,15 +486,14 @@ export class Cropper {
   // crop(): Cropper;
   // clear(): Cropper;
 
-  // getCanvasData(): Cropper.CanvasData;
+  // getCanvasData(): height, left, naturalHeight, naturalWidth, top, width
   // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
 
-  // getCropBoxData(): Cropper.CropBoxData;
+  // getCropBoxData(): left, top, width, height
   // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
 
-  // getContainerData(): Cropper.ContainerData;
-  // getCroppedCanvas(options?: Cropper.GetCroppedCanvasOptions): HTMLCanvasElement;
-  // getImageData(): Cropper.ImageData;
+  // getContainerData():  width, height
+  // getImageData(): aspectRatio, height, left, naturalHeight, naturalWidth, rotate, scaleX, scaleY, top, width 
 
   /**
    * Internal Methods
@@ -541,6 +577,7 @@ export class Cropper {
 
   @Bind
   onReady() {
+    this.disabled && this.instance?.disable();
     this.plusReady.emit();
   }
 
