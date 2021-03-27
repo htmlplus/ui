@@ -11,19 +11,20 @@
 }
 
 :host {
-  visibility: hidden;
-  display: none;
-  background: var(--plus-tooltip-background);
-  color: var(--plus-tooltip-color);
-  padding: var(--plus-tooltip-padding);
-  font-size: var(--plus-tooltip-font-size);
-  font-weight: bold;
-  border-radius: var(--plus-tooltip-border-radius);
-  position: relative;
-  z-index: 1000;
-}
-
-:host(.show) {
-  visibility: visible !important;
-  display: inline-block !important;
+  .tooltip {
+    visibility: hidden;
+    display: none;
+    background: var(--plus-tooltip-background);
+    color: var(--plus-tooltip-color);
+    padding: var(--plus-tooltip-padding);
+    font-size: var(--plus-tooltip-font-size);
+    font-weight: bold;
+    border-radius: var(--plus-tooltip-border-radius);
+    position: relative;
+    z-index: 1000;
+  }
+  .show {
+    visibility: visible !important;
+    display: inline-block !important;
+  }
 }
