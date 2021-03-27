@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperValue, CropperView, CropperViewport, CropperViewportMode, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperView, CropperViewport, CropperViewportMode, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -139,25 +139,17 @@ export namespace Components {
          */
         "rotateTo": (degree: number) => Promise<void>;
         /**
-          * Scale the image.
-          * @param scale - TODO
-         */
-        "scale": (scale?: number) => Promise<void>;
-        /**
           * Image source.
          */
         "src"?: string;
         /**
-          * @param type - A DOMString indicating the image format. The default format type is `image/png`.
-          * @param quality - A Number between `0` and `1` indicating the image quality to use for image formats    that use lossy compression such as `image/jpeg` and `image/webp`. If this argument    is anything else, the default value for image quality is used. The default value    is `0.92`. Other arguments are ignored.
+          * TODO
          */
-        "toBase64": (type?: string, quality?: number) => Promise<string>;
+        "toBase64": () => Promise<string>;
         /**
-          * The method creates a Blob object representing the image contained in the canvas; this file  may be cached on the disk or stored in memory at the discretion of the user agent. If type  is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
-          * @param type - A string indicating the image format. The default type is `image/png`.
-          * @param quality - A Number between `0` and `1` indicating image quality if the requested    type is `image/jpeg` or `image/webp`. If this argument is anything else,    the default values `0.92` and `0.80` are used for `image/jpeg` and    `image/webp` respectively. Other arguments are ignored.
+          * TODO
          */
-        "toBlob": (type?: string, quality?: number) => Promise<Blob>;
+        "toBlob": () => Promise<Blob>;
         /**
           * TODO
          */
@@ -165,11 +157,11 @@ export namespace Components {
         /**
           * TODO
          */
-        "toURL": (type?: string, quality?: number) => Promise<string>;
+        "toURL": () => Promise<string>;
         /**
           * TODO
          */
-        "value"?: CropperValue;
+        "value"?: any;
         /**
           * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
           * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.
@@ -1187,7 +1179,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "value"?: CropperValue;
+        "value"?: any;
         /**
           * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
           * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.

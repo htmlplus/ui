@@ -47,18 +47,6 @@ export class Cropper {
   background?: boolean;
 
   /**
-   * The minimum height of the canvas (image wrapper).
-   */
-  // @Prop()
-  canvasMinHeight?: number;
-
-  /**
-   * The minimum width of the canvas (image wrapper).
-   */
-  // @Prop()
-  canvasMinWidth?: number;
-
-  /**
    * TODO
    */
   @Prop()
@@ -113,7 +101,7 @@ export class Cropper {
    * TODO
    */
   @Prop({ mutable: true })
-  value?: CropperValue;
+  value?: any;
 
   /**
    * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
@@ -144,18 +132,6 @@ export class Cropper {
    */
   @Prop()
   viewportMode?: CropperViewportMode = 'static';
-
-  /**
-   * The minimum height of the viewport. This size is relative to the page, not the image.
-   */
-  // @Prop()
-  viewportMinHeight?: number;
-
-  /**
-   * The minimum width of the viewport. This size is relative to the page, not the image.
-   */
-  // @Prop()
-  viewportMinWidth?: number;
 
   /**
    * Enable to zoom the image.
@@ -278,10 +254,10 @@ export class Cropper {
       guides: Utils.toBoolean(this.guides),
       highlight: false,
       initialAspectRatio: NaN,
-      minCanvasWidth: this.canvasMinWidth,
-      minCanvasHeight: this.canvasMinHeight,
-      minCropBoxWidth: this.viewportMinWidth,
-      minCropBoxHeight: this.viewportMinHeight,
+      // minCanvasWidth: this.canvasMinWidth,
+      // minCanvasHeight: this.canvasMinHeight,
+      // minCropBoxWidth: this.viewportMinWidth,
+      // minCropBoxHeight: this.viewportMinHeight,
       minContainerWidth: 0,
       minContainerHeight: 0,
       modal: Utils.toBoolean(this.backdrop),
@@ -380,35 +356,14 @@ export class Cropper {
   }
 
   /**
-   * Scale the image.
-   * @param scale - TODO
+   * TODO
    */
   @Method()
-  scale(scale?: number): Promise<void> {
-    this.instance?.scale(scale, scale);
-    return Promise.resolve();
-  }
-
-  /**
-   * The method creates a Blob object representing the image contained in the canvas; this file 
-   * may be cached on the disk or stored in memory at the discretion of the user agent. If type 
-   * is not specified, the image type is image/png. The created image is in a resolution of 96dpi.
-   * @param type    - A string indicating the image format. The default type is `image/png`.
-   * @param quality - A Number between `0` and `1` indicating image quality if the requested 
-   *                  type is `image/jpeg` or `image/webp`. If this argument is anything else, 
-   *                  the default values `0.92` and `0.80` are used for `image/jpeg` and 
-   *                  `image/webp` respectively. Other arguments are ignored.
-   */
-  @Method()
-  toBlob(type?: string, quality?: number): Promise<Blob> {
+  toBlob(): Promise<Blob> {
     return new Promise((resolve) => {
       this.instance
         .getCroppedCanvas()
-        .toBlob(
-          (blob) => resolve(blob),
-          type,
-          quality
-        )
+        .toBlob((blob) => resolve(blob))
     })
   }
 
@@ -416,21 +371,19 @@ export class Cropper {
    * TODO
    */
   @Method()
-  toCanvas(/*options?: Cropper.GetCroppedCanvasOptions*/): Promise<HTMLCanvasElement> {
+  toCanvas(): Promise<HTMLCanvasElement> {
     const canvas = this.instance.getCroppedCanvas();
     return Promise.resolve(canvas);
   }
 
   /**
-   * @param type    - A DOMString indicating the image format. The default format type is `image/png`.
-   * @param quality - A Number between `0` and `1` indicating the image quality to use for image formats 
-   *                  that use lossy compression such as `image/jpeg` and `image/webp`. If this argument 
-   *                  is anything else, the default value for image quality is used. The default value 
-   *                  is `0.92`. Other arguments are ignored.
+   * TODO
    */
   @Method()
-  toBase64(type?: string, quality?: number): Promise<string> {
-    const base64 = this.instance.getCroppedCanvas().toDataURL(type, quality);
+  toBase64(): Promise<string> {
+    const base64 = this.instance
+      .getCroppedCanvas()
+      .toDataURL();
     return Promise.resolve(base64);
   }
 
@@ -438,14 +391,12 @@ export class Cropper {
    * TODO
    */
   @Method()
-  toURL(type?: string, quality?: number): Promise<string> {
+  toURL(): Promise<string> {
     return new Promise((resolve) => {
       this.instance
         .getCroppedCanvas()
         .toBlob(
-          (blob) => resolve(URL.createObjectURL(blob)),
-          type,
-          quality
+          (blob) => resolve(URL.createObjectURL(blob))
         )
     })
   }
@@ -512,6 +463,42 @@ export class Cropper {
     this.bind();
   }
 
+  updateValue(value?) {
+
+    if (value) {
+      this.instance?.setCanvasData({
+        height: value.canvasHeight,
+        left: value.canvasLeft,
+        top: value.canvasTop,
+        width: value.canvasWidth,
+      });
+      this.instance?.setData({
+        height: value.dataHeight,
+        rotate: value.rotate,
+        width: value.dataWidth,
+        x: value.x,
+        y: value.y,
+      });
+    }
+    else {
+      const canvas = this.instance?.getCanvasData();
+      const data = this.instance?.getData();
+      this.value = {
+
+        dataHeight: data.height,
+        rotate: data.rotate,
+        dataWidth: data.width,
+        x: data.x,
+        y: data.y,
+
+        canvasHeight: canvas.height,
+        canvasLeft: canvas.left,
+        canvasTop: canvas.top,
+        canvasWidth: canvas.width,
+      };
+    }
+  }
+
   /**
    * Watchers
    */
@@ -543,7 +530,7 @@ export class Cropper {
         break;
 
       case 'value':
-        this.instance?.setData(value);
+        this.updateValue(value);
         break;
 
       // TODO
@@ -564,11 +551,11 @@ export class Cropper {
    */
 
   @Bind
-  onCrop(event) {
+  onCrop() {
 
     this.lock = true;
 
-    this.value = event.detail;
+    this.updateValue();
 
     this.lock = false;
 
