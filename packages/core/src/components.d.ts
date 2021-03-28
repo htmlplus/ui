@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperValue, CropperView, CropperViewport, CropperViewportMode, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperValue, CropperView, CropperViewport, CropperViewportShape, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -177,7 +177,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "viewportMode"?: CropperViewportMode;
+        "viewportShape"?: CropperViewportShape;
         /**
           * Zoom the canvas (image wrapper) with a relative ratio.
           * @param ratio - TODO
@@ -1195,7 +1195,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "viewportMode"?: CropperViewportMode;
+        "viewportShape"?: CropperViewportShape;
         /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */

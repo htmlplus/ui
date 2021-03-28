@@ -41,7 +41,7 @@
   --plus-cropper-viewport-color   : #{$cropper-viewport-color};
   --plus-cropper-viewport-opacity : #{$cropper-viewport-opacity};
   --plus-cropper-viewport-style   : #{$cropper-viewport-style};
-  --plus-cropper-viewport-weight   : #{$cropper-viewport-weight};
+  --plus-cropper-viewport-weight  : #{$cropper-viewport-weight};
 }
 
 :host {
@@ -85,7 +85,7 @@
   }
 }
 
-.viewport-round {
+.viewport-shape-round {
   .cropper-face,
   .cropper-view-box,
   .cropper-view-box::after {
