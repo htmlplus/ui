@@ -101,7 +101,7 @@ export class Cropper {
    * TODO
    */
   @Prop({ mutable: true })
-  value?: any;
+  value?: CropperValue;
 
   /**
    * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
@@ -178,7 +178,16 @@ export class Cropper {
   plusZoom!: EventEmitter<CropperZoomData>;
 
   @GlobalConfig('crop', {
-    // TODO
+    backdrop: true,
+    mode: 'move',
+    resizer: 'both',
+    resizerShape: 'rect',
+    responsive: 'reset',
+    view: 'cover',
+    viewport: 'rect',
+    viewportMode: 'static',
+    zoomable: true,
+    zoomRatio: 0.1,
   })
   config?;
 
@@ -273,7 +282,7 @@ export class Cropper {
       zoomable: !!zoomable,
       zoomOnTouch: zoomable === true || zoomable === 'touch',
       zoomOnWheel: zoomable === true || zoomable === 'wheel',
-      crop: this.onCrop,
+      cropend: this.onCrop,
       ready: this.onReady,
       // cropstart: (e) => console.log('cropstart', e),
       // cropmove: (e) => console.log('cropmove', e),
@@ -421,31 +430,6 @@ export class Cropper {
     return Promise.resolve();
   }
 
-  // no need
-  // getData(rounded?: boolean): Cropper.Data;
-  // setData(data: Cropper.SetDataOptions): Cropper;
-  // scaleX(scaleX: number): Cropper;
-  // scaleY(scaleY: number): Cropper;
-  // replace(url: string, onlyColorChanged?: boolean): Cropper;
-  // setAspectRatio(aspectRatio: number): Cropper;
-  // setDragMode(dragMode: Cropper.DragMode): Cropper;
-  // destroy(): Cropper;
-  // disable(): Cropper;
-  // enable(): Cropper;
-
-  // backlog
-  // crop(): Cropper;
-  // clear(): Cropper;
-
-  // getCanvasData(): height, left, naturalHeight, naturalWidth, top, width
-  // setCanvasData(data: Cropper.SetCanvasDataOptions): Cropper;
-
-  // getCropBoxData(): left, top, width, height
-  // setCropBoxData(data: Cropper.SetCropBoxDataOptions): Cropper;
-
-  // getContainerData():  width, height
-  // getImageData(): aspectRatio, height, left, naturalHeight, naturalWidth, rotate, scaleX, scaleY, top, width 
-
   /**
    * Internal Methods
    */
@@ -465,37 +449,56 @@ export class Cropper {
 
   updateValue(value?) {
 
+    const { height, width } = this.instance?.getContainerData();
+
     if (value) {
-      this.instance?.setCanvasData({
-        height: value.canvasHeight,
-        left: value.canvasLeft,
-        top: value.canvasTop,
-        width: value.canvasWidth,
-      });
-      this.instance?.setData({
-        height: value.dataHeight,
-        rotate: value.rotate,
-        width: value.dataWidth,
-        x: value.x,
-        y: value.y,
-      });
+
+      const toPixel = (a, b) => a * b / 100;
+
+      if (!this.instance) return;
+
+      // TODO this.instance.rotateTo(value.rotate);
+
+      this.instance
+        .setCropBoxData({
+          top: toPixel(value.top, height),
+          left: toPixel(value.left, width),
+          width: toPixel(100 - value.right - value.left, width),
+          height: toPixel(100 - value.top - value.bottom, height),
+        })
+        .setCanvasData({
+          top: toPixel(value.y, height),
+          left: toPixel(value.x, width),
+          width: toPixel(value.width, width),
+          height: toPixel(value.height, height),
+        })
     }
     else {
-      const canvas = this.instance?.getCanvasData();
-      const data = this.instance?.getData();
+
+      if (!this.instance) return;
+
+      const
+        canvas = this.instance.getCanvasData(),
+        // TODO data = this.instance.getData(),
+        viewport = this.instance.getCropBoxData();
+
+      const toPercent = (a, b) => parseFloat((a / b * 100).toFixed(2));
+
+      this.lock = true;
+
       this.value = {
-
-        dataHeight: data.height,
-        rotate: data.rotate,
-        dataWidth: data.width,
-        x: data.x,
-        y: data.y,
-
-        canvasHeight: canvas.height,
-        canvasLeft: canvas.left,
-        canvasTop: canvas.top,
-        canvasWidth: canvas.width,
+        // TODO rotate: data.rotate,
+        top: toPercent(viewport.top, height),
+        right: toPercent(width - viewport.left - viewport.width, width),
+        bottom: toPercent(height - viewport.top - viewport.height, height),
+        left: toPercent(viewport.left, width),
+        width: toPercent(canvas.width, width),
+        height: toPercent(canvas.height, height),
+        x: toPercent(canvas.left, width),
+        y: toPercent(canvas.top, height),
       };
+
+      this.lock = false;
     }
   }
 
@@ -553,11 +556,7 @@ export class Cropper {
   @Bind
   onCrop() {
 
-    this.lock = true;
-
     this.updateValue();
-
-    this.lock = false;
 
     this.plusCrop.emit();
   }
@@ -583,7 +582,7 @@ export class Cropper {
 
     const result = this.plusZoom.emit(detail);
 
-    if (!result.defaultPrevented) return;
+    if (!result.defaultPrevented) return this.onCrop();
 
     event.preventDefault();
   }
@@ -601,8 +600,6 @@ export class Cropper {
   }
 
   render() {
-    // TODO
-    window['cc'] = this.instance;
     return (
       <Host>
         <div class={this.classes}>

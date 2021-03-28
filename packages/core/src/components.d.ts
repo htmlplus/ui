@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperView, CropperViewport, CropperViewportMode, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperValue, CropperView, CropperViewport, CropperViewportMode, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -161,7 +161,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: any;
+        "value"?: CropperValue;
         /**
           * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
           * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.
@@ -1179,7 +1179,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "value"?: any;
+        "value"?: CropperValue;
         /**
           * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend  outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport  to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the  canvas to the container. Note that if the proportions of the canvas and the container are  the same, there is no difference between `contain` and `cover`.
           * @value contain - restrict the minimum canvas size to fit within the container. If the            proportions of the canvas and the container differ, the minimum canvas will be            surrounded by extra space in one of the dimensions.

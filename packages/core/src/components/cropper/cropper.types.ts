@@ -8,13 +8,14 @@ export type CropperViewport = 'rect' | 'round';
 export type CropperViewportMode = 'static' | 'movable' | 'resizable' | 'both';
 export type CropperZoomable = boolean | 'touch' | 'wheel';
 export interface CropperValue {
-    x?: number;
-    y?: number;
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
     width?: number;
     height?: number;
-    rotate?: number;
-    scaleX?: number;
-    scaleY?: number;
+    x?: number;
+    y?: number;
 }
 export interface CropperZoomData {
     difference?: number,
