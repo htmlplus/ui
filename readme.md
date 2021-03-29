@@ -70,6 +70,11 @@ To use HTMLPLUS follow [this](https://htmlplus.io/getting-started/installation) 
 - [TODO] stepper
 - [TODO] timeline
 - [TODO] treeview
+- [TODO] scrollbar
+- [TODO] layer
+- [TODO] draggable
+- [TODO] sortable
+- [TODO] browse
 
 ## Copyright and license
 Code and documentation copyright 2019–2021 the [HTMLPLUS Authors](https://github.com/htmlplus/core/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).

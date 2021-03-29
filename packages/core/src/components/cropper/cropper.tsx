@@ -19,7 +19,7 @@ import {
 /**
  * TODO https://foliotek.github.io/Croppie/
  * @development
- * @examples default
+ * @examples default, aspect-ratio, backdrop, background, guides, indicator, mode, viewport-shape
  */
 @Component({
   tag: 'plus-cropper',
