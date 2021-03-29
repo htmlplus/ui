@@ -84,12 +84,12 @@ export class Cropper {
 
   /**
    * TODO
-   * @value rect  - TODO
-   * @value round - TODO
-   * @value line  - TODO
+   * @value square - TODO
+   * @value circle - TODO
+   * @value line   - TODO
    */
   @Prop()
-  resizerShape?: CropperResizerShape = 'rect';
+  resizerShape?: CropperResizerShape = 'square';
 
   /**
    * Re-render the cropper when resizing the window.
@@ -141,12 +141,13 @@ export class Cropper {
   viewport?: CropperViewport = 'static';
 
   /**
-   * TODO 'square' 'circle'
-   * @value rect  - TODO
-   * @value round - TODO
+   * TODO
+   * @value rectangle - TODO
+   * @value square    - TODO
+   * @value circle    - TODO
    */
   @Prop()
-  viewportShape?: CropperViewportShape = 'rect';
+  viewportShape?: CropperViewportShape = 'rectangle';
 
   /**
    * Enable to zoom the image.
@@ -196,11 +197,11 @@ export class Cropper {
     backdrop: true,
     mode: 'move',
     resizer: 'both',
-    resizerShape: 'rect',
+    resizerShape: 'square',
     responsive: 'reset',
     view: 'cover',
     viewport: 'static',
-    viewportShape: 'rect',
+    viewportShape: 'rectangle',
     zoomable: true,
     zoomRatio: 0.1,
   })
@@ -277,7 +278,7 @@ export class Cropper {
       // cropstart       : (e) => console.log('cropstart', e),
       // cropmove        : (e) => console.log('cropmove', e),
       // cropend         : (e) => console.log('cropend', e),
-      aspectRatio: Utils.toBoolean(this.viewportShape === 'round') ? 1 : aspectRatio,
+      aspectRatio: this.viewportShape === 'rectangle' ? aspectRatio : 1,
       background: Utils.toBoolean(this.background),
       center: Utils.toBoolean(this.indicator),
       cropBoxMovable: this.viewport === 'movable' || this.viewport === 'both',
@@ -529,7 +530,7 @@ export class Cropper {
     switch (name) {
 
       case 'aspectRatio':
-        if (this.viewportShape === 'round') break;
+        if (this.viewportShape !== 'rectangle') break;
         this.instance?.setAspectRatio(value);
         break;
 
@@ -557,7 +558,7 @@ export class Cropper {
 
       case 'viewportShape':
 
-        const aspectRatio = this.viewportShape === 'rect' ? this.options.aspectRatio : 1;
+        const aspectRatio = this.viewportShape === 'rectangle' ? this.options.aspectRatio : 1;
 
         this.instance?.setAspectRatio(aspectRatio);
 

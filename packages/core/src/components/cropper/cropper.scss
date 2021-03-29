@@ -85,7 +85,7 @@
   }
 }
 
-.viewport-shape-round {
+.viewport-shape-circle {
   .cropper-face,
   .cropper-view-box,
   .cropper-view-box::after {
@@ -207,7 +207,7 @@
   }
 }
 
-.resizer-shape-round .cropper-point[class*="point-"] {
+.resizer-shape-circle .cropper-point[class*="point-"] {
   border-radius: 50%;
 }
 
