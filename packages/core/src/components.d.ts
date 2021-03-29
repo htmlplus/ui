@@ -118,14 +118,23 @@ export namespace Components {
         "reset": () => Promise<void>;
         /**
           * TODO
+          * @value main - TODO
+          * @value edge - TODO
+          * @value both - TODO
          */
         "resizer"?: CropperResizer;
         /**
           * TODO
+          * @value square - TODO
+          * @value circle - TODO
+          * @value line   - TODO
          */
         "resizerShape"?: CropperResizerShape;
         /**
           * Re-render the cropper when resizing the window.
+          * @value false - TODO
+          * @value true  - TODO
+          * @value reset - TODO
          */
         "responsive"?: CropperResponsive;
         /**
@@ -172,10 +181,17 @@ export namespace Components {
         "view"?: CropperView;
         /**
           * TODO
+          * @value static    - TODO
+          * @value movable   - TODO
+          * @value resizable - TODO
+          * @value both      - TODO
          */
         "viewport"?: CropperViewport;
         /**
           * TODO
+          * @value rectangle - TODO
+          * @value square    - TODO
+          * @value circle    - TODO
          */
         "viewportShape"?: CropperViewportShape;
         /**
@@ -1162,14 +1178,23 @@ declare namespace LocalJSX {
         "onPlusZoom"?: (event: CustomEvent<CropperZoomData>) => void;
         /**
           * TODO
+          * @value main - TODO
+          * @value edge - TODO
+          * @value both - TODO
          */
         "resizer"?: CropperResizer;
         /**
           * TODO
+          * @value square - TODO
+          * @value circle - TODO
+          * @value line   - TODO
          */
         "resizerShape"?: CropperResizerShape;
         /**
           * Re-render the cropper when resizing the window.
+          * @value false - TODO
+          * @value true  - TODO
+          * @value reset - TODO
          */
         "responsive"?: CropperResponsive;
         /**
@@ -1190,10 +1215,17 @@ declare namespace LocalJSX {
         "view"?: CropperView;
         /**
           * TODO
+          * @value static    - TODO
+          * @value movable   - TODO
+          * @value resizable - TODO
+          * @value both      - TODO
          */
         "viewport"?: CropperViewport;
         /**
           * TODO
+          * @value rectangle - TODO
+          * @value square    - TODO
+          * @value circle    - TODO
          */
         "viewportShape"?: CropperViewportShape;
         /**

@@ -27,6 +27,7 @@ To use HTMLPLUS follow [this](https://htmlplus.io/getting-started/installation) 
 - [DONE] transition
 - [TODO] tooltip
 - [TODO] menu
+- [TODO] cropper
 - [TODO] toast
 - [TODO] alert
 - [TODO] tabs
@@ -61,7 +62,7 @@ To use HTMLPLUS follow [this](https://htmlplus.io/getting-started/installation) 
 - [TODO] uploader
 - [TODO] slider
 - [TODO] progress-bar
-- [TODO] data-table
+- [TODO] table/data-table
 - [TODO] toolbar
 - [TODO] accordion/expansion-panel
 - [TODO] rating
@@ -69,12 +70,18 @@ To use HTMLPLUS follow [this](https://htmlplus.io/getting-started/installation) 
 - [TODO] skeleton-loader
 - [TODO] stepper
 - [TODO] timeline
-- [TODO] treeview
+- [TODO] tree/treeview
 - [TODO] scrollbar
 - [TODO] layer
 - [TODO] draggable
 - [TODO] sortable
 - [TODO] browse
+- [TODO] autocomplete
+- [TODO] box
+- [TODO] combobox
+- [TODO] splitter
+- [TODO] typography
+- [TODO] sparklines
 
 ## Copyright and license
 Code and documentation copyright 2019–2021 the [HTMLPLUS Authors](https://github.com/htmlplus/core/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).
