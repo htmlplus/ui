@@ -19,7 +19,7 @@ import {
 /**
  * TODO https://foliotek.github.io/Croppie/
  * @development
- * @examples default, aspect-ratio, backdrop, background, guides, indicator, mode, viewport-shape
+ * @examples default, aspect-ratio, backdrop, background, guides, indicator, mode, viewport, viewport-shape
  */
 @Component({
   tag: 'plus-cropper',
@@ -75,18 +75,27 @@ export class Cropper {
 
   /**
    * TODO
+   * @value main - TODO
+   * @value edge - TODO
+   * @value both - TODO
    */
   @Prop()
   resizer?: CropperResizer = 'both';
 
   /**
    * TODO
+   * @value rect  - TODO
+   * @value round - TODO
+   * @value line  - TODO
    */
   @Prop()
   resizerShape?: CropperResizerShape = 'rect';
 
   /**
    * Re-render the cropper when resizing the window.
+   * @value false - TODO
+   * @value true  - TODO
+   * @value reset - TODO
    */
   @Prop()
   responsive?: CropperResponsive = 'reset';
@@ -123,12 +132,18 @@ export class Cropper {
 
   /**
    * TODO
+   * @value static    - TODO
+   * @value movable   - TODO
+   * @value resizable - TODO
+   * @value both      - TODO
    */
   @Prop()
   viewport?: CropperViewport = 'static';
 
   /**
-   * TODO
+   * TODO 'square' 'circle'
+   * @value rect  - TODO
+   * @value round - TODO
    */
   @Prop()
   viewportShape?: CropperViewportShape = 'rect';
