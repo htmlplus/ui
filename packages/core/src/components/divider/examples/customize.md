@@ -1,13 +1,13 @@
 ```css [style]
 plus-divider {
-  margin: 2rem 0;
   --plus-divider-background-color: #5f9ee9;
-  --plus-divider-size: 3px;
+  --plus-divider-weight: 3px;
+  margin: 2rem 0;
 }
 ```
 
 ```html [template]
-<plus-grid justify-content="evenly">
+<plus-grid align-items="center" justify-content="evenly">
   <plus-grid-item xs="5">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh eros, luctus in lacus eu, eleifend
     ultricies ipsum. Morbi sit amet diam et erat pulvinar ultricies in vel erat. Vestibulum sit amet posuere lacus,

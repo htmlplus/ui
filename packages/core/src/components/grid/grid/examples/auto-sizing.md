@@ -1,48 +1,48 @@
 ```css [style]
-.box {
-  color: #00bcd4;
-  border: 1px solid #fff;
-  background-color: #e0f7fa;
+div {
+  color: #00BCD4;
+  border: 1px solid #FFFFFF;
+  background-color: #E0F7FA;
   padding: 0.5em;
   text-align: center;
 }
 ```
 
 ```html [template]
-<Host>
+<fragment>
   <plus-grid>
     <plus-grid-item xs="grow">
-      <div class="box">
+      <div>
         xs=grow
       </div>
     </plus-grid-item>
     <plus-grid-item xs="grow">
-      <div class="box">
+      <div>
         xs=grow
       </div>
     </plus-grid-item>
     <plus-grid-item xs="grow">
-      <div class="box">
+      <div>
         xs=grow
       </div>
     </plus-grid-item>
   </plus-grid>
   <plus-grid>
     <plus-grid-item xs="12" md="2">
-      <div class="box">
+      <div>
         xs=12, md=2
       </div>
     </plus-grid-item>
     <plus-grid-item xs="grow">
-      <div class="box">
+      <div>
         xs=grow
       </div>
     </plus-grid-item>
     <plus-grid-item xs="12" md="2">
-      <div class="box">
+      <div>
         xs=12, md=2
       </div>
     </plus-grid-item>
   </plus-grid>
-</Host>
+</fragment>
 ```

@@ -1,21 +1,37 @@
+@import 'all';
+@import 'reset';
+@import 'sticky.variables';
+
 :host {
+
   /**
-  * @prop --plus-sticky-top : Specifies the space from top
-  * @prop --plus-sticky-inner-z : Specifies the z-index of the sticky
-   */
-  --plus-sticky-top: 0;
-  --plus-sticky-inner-z: 1;
+  * @prop --plus-sticky-top    : Specifies the space from top.
+  * @prop --plus-sticky-z-index: Specifies the z-index of the sticky.
+  */
+
+  --plus-sticky-top    : #{$sticky-top};
+  --plus-sticky-z-index: #{$sticky-z-index};
 }
 
 :host {
-  display: block;
-  position: -webkit-sticky;
   position: sticky;
+  display: block;
+  will-change: auto;
   top: var(--plus-sticky-top);
-  z-index: var(--plus-sticky-inner-z);
+  z-index: var(--plus-sticky-z-index);
 }
 
 :host([disabled]) {
-  position: unset;
+  position: initial;
 }
 
+.sizer-wrapper {
+  position: relative;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.sizer {
+  top: calc((var(--plus-sticky-top) + 1px) * -1);
+  position: absolute;
+}

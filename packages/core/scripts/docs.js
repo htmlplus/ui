@@ -51,7 +51,7 @@ const examples = (component) => {
 
       const item = {};
 
-      const regex = /```\w+\s\[\w+\]\s[\S\s]*?```/g;
+      const regex = /```\w+\s\[\w+(:\w+)?\]\s[\S\s]*?```/g;
 
       const filePath = path.join(dir, file);
 
@@ -70,7 +70,7 @@ const examples = (component) => {
 
             const lines = section.split('\n');
 
-            const key = ((lines[0].match(/\[\w+\]/) || []).pop() || '').replace('[', '').replace(']', '');
+            const key = ((lines[0].match(/\[\w+(:\w+)?\]/) || []).shift() || '').replace('[', '').replace(']', '');
 
             const type = ((lines[0].match(/```\w+/) || []).pop() || '').replace('```', '');
 
@@ -111,11 +111,26 @@ const methods = (component) => {
 
   return (component.methods || []).map((method) => {
 
+    const parameters = [];
+
+    (method.docsTags || [])
+      .filter((tag) => tag.name === 'param')
+      .map((tag) => {
+
+        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
+
+        parameters.push({
+          name,
+          description
+        })
+      });
+
     return {
       name: method.name,
       type: method.returns.type,
       signature: method.signature,
       description: method.docs,
+      parameters
     }
   });
 }
@@ -124,14 +139,59 @@ const properties = (component) => {
 
   return (component.props || []).map((property) => {
 
+    let values = [];
+
+    const tags = (property.docsTags || []);
+
+    property.values.map((value) => {
+
+      if (value.type !== 'boolean') return values.push(value);
+
+      values.push(
+        {
+          value: true,
+          type: 'boolean'
+        },
+        {
+          value: false,
+          type: 'boolean'
+        }
+      )
+    });
+
+    values = values
+      .map((value) => {
+
+        const index = tags.findIndex((tag) => tag.name === 'value' && tag.text.startsWith(`${value.value}`));
+
+        if (index === -1) return value;
+
+        value.index = index;
+
+        const tag = tags[index];
+
+        const description = tag.text.split('-').pop().trim();
+
+        value.description = description;
+
+        return value;
+      })
+      .sort((a, b) => a.index - b.index)
+      .map((value) => {
+
+        delete value.index;
+
+        return value;
+      });
+
     return {
       name: property.attr || property.name,
       type: property.type,
       description: property.docs,
       default: property.default,
-      values: property.values
+      values
     }
-  });
+  })
 }
 
 const readme = (component) => {
@@ -225,7 +285,7 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
         styles: styles(component),
         tag: tag(component),
         tags: tags(component),
-        title: title(component),
+        title: title(component)
       }
     })
     .map((component, index, components) => {
