@@ -31,4 +31,5 @@ export const PlusTabsBar = /*@__PURE__*/createReactComponent<JSX.PlusTabsBar, HT
 export const PlusTabsPanel = /*@__PURE__*/createReactComponent<JSX.PlusTabsPanel, HTMLPlusTabsPanelElement>('plus-tabs-panel');
 export const PlusTabsPanels = /*@__PURE__*/createReactComponent<JSX.PlusTabsPanels, HTMLPlusTabsPanelsElement>('plus-tabs-panels');
 export const PlusTabsTab = /*@__PURE__*/createReactComponent<JSX.PlusTabsTab, HTMLPlusTabsTabElement>('plus-tabs-tab');
+export const PlusToast = /*@__PURE__*/createReactComponent<JSX.PlusToast, HTMLPlusToastElement>('plus-toast');
 export const PlusTransition = /*@__PURE__*/createReactComponent<JSX.PlusTransition, HTMLPlusTransitionElement>('plus-transition');

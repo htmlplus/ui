@@ -17,6 +17,7 @@ import { LayoutBottom, LayoutMain, LayoutTop } from "./components/layout/layout.
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
+import { ToastPlacement, ToastType } from "./components/toast/toast.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./services/tunnel/tunnel.types";
 export namespace Components {
@@ -831,6 +832,24 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface PlusToast {
+        /**
+          * TODO
+         */
+        "duration"?: number;
+        /**
+          * TODO
+         */
+        "open"?: boolean;
+        /**
+          * TODO
+         */
+        "placement"?: ToastPlacement;
+        /**
+          * TODO
+         */
+        "type"?: ToastType;
+    }
     interface PlusTransition {
         /**
           * Specifies the amount of delay before starting the animation to play.  This may be specified in either seconds `s` or milliseconds `ms`.
@@ -1040,6 +1059,12 @@ declare global {
         prototype: HTMLPlusTabsTabElement;
         new (): HTMLPlusTabsTabElement;
     };
+    interface HTMLPlusToastElement extends Components.PlusToast, HTMLStencilElement {
+    }
+    var HTMLPlusToastElement: {
+        prototype: HTMLPlusToastElement;
+        new (): HTMLPlusToastElement;
+    };
     interface HTMLPlusTransitionElement extends Components.PlusTransition, HTMLStencilElement {
     }
     var HTMLPlusTransitionElement: {
@@ -1083,6 +1108,7 @@ declare global {
         "plus-tabs-panel": HTMLPlusTabsPanelElement;
         "plus-tabs-panels": HTMLPlusTabsPanelsElement;
         "plus-tabs-tab": HTMLPlusTabsTabElement;
+        "plus-toast": HTMLPlusToastElement;
         "plus-transition": HTMLPlusTransitionElement;
         "plus-tunnel-consumer": HTMLPlusTunnelConsumerElement;
     }
@@ -1907,6 +1933,24 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PlusToast {
+        /**
+          * TODO
+         */
+        "duration"?: number;
+        /**
+          * TODO
+         */
+        "open"?: boolean;
+        /**
+          * TODO
+         */
+        "placement"?: ToastPlacement;
+        /**
+          * TODO
+         */
+        "type"?: ToastType;
+    }
     interface PlusTransition {
         /**
           * Specifies the amount of delay before starting the animation to play.  This may be specified in either seconds `s` or milliseconds `ms`.
@@ -1981,6 +2025,7 @@ declare namespace LocalJSX {
         "plus-tabs-panel": PlusTabsPanel;
         "plus-tabs-panels": PlusTabsPanels;
         "plus-tabs-tab": PlusTabsTab;
+        "plus-toast": PlusToast;
         "plus-transition": PlusTransition;
         "plus-tunnel-consumer": PlusTunnelConsumer;
     }
@@ -2019,6 +2064,7 @@ declare module "@stencil/core" {
             "plus-tabs-panel": LocalJSX.PlusTabsPanel & JSXBase.HTMLAttributes<HTMLPlusTabsPanelElement>;
             "plus-tabs-panels": LocalJSX.PlusTabsPanels & JSXBase.HTMLAttributes<HTMLPlusTabsPanelsElement>;
             "plus-tabs-tab": LocalJSX.PlusTabsTab & JSXBase.HTMLAttributes<HTMLPlusTabsTabElement>;
+            "plus-toast": LocalJSX.PlusToast & JSXBase.HTMLAttributes<HTMLPlusToastElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
             "plus-tunnel-consumer": LocalJSX.PlusTunnelConsumer & JSXBase.HTMLAttributes<HTMLPlusTunnelConsumerElement>;
         }
