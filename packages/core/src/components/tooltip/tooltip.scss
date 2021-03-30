@@ -20,11 +20,14 @@
     font-size: var(--plus-tooltip-font-size);
     font-weight: bold;
     border-radius: var(--plus-tooltip-border-radius);
-    position: relative;
+    position: absolute;
     z-index: 1000;
   }
   .show {
     visibility: visible !important;
     display: inline-block !important;
+  }
+  [name=activator] {
+    display: inline-block;
   }
 }

@@ -1,5 +1,5 @@
-import {Element, Component, Host, Prop, State, h} from '@stencil/core';
-import {TooltipPlacement, TooltipTrigger, TooltipOffset} from './tooltip.types';
+import {Element, Component, Host, Prop, State, Watch, h} from '@stencil/core';
+import {TooltipPlacement, TooltipReturnPlacement, TooltipTrigger} from './tooltip.types';
 import {createPopper} from "@popperjs/core";
 import * as Utils from '@app/utils';
 import {GlobalConfig} from '@app/services';
@@ -20,7 +20,7 @@ export class Tooltip {
   * How to position the tooltip
    */
   @Prop({reflect: true})
-  placement?: TooltipPlacement = 'right';
+  placement?: TooltipPlacement = 'auto';
 
   /*
   * How tooltip is triggered, include click, hover, focus
@@ -29,10 +29,34 @@ export class Tooltip {
   trigger?: TooltipTrigger = 'mouseover';
 
   /*
-  * Offset of the tooltip relative to its target
+  * Vertical & horizontal offset from the target
    */
   @Prop()
-  offset?: TooltipOffset = [0, 10];
+  offset?: number;
+
+  /*
+  * Horizontal offset from the target
+   */
+  @Prop()
+  offsetX?: number = 0;
+
+  /*
+  * Vertical offset from the target
+   */
+  @Prop()
+  offsetY?: number = 0;
+
+  /*
+  * Add fixed strategy to popper
+  */
+  @Prop()
+  fixed?: boolean;
+
+  /*
+  * Tooltip disable
+  */
+  @Prop()
+  disabled?: boolean = false;
 
   @GlobalConfig('tooltip')
   config;
@@ -43,30 +67,32 @@ export class Tooltip {
   $parent: HTMLElement = this.$host.children[0] as HTMLElement ?? this.$host.parentElement as HTMLElement;
 
   @State()
-  haveChildren = this.$host.children[0] as HTMLElement;
-  innerText;
+  instance;
 
-  get offsetMaker() {
-    let [x, y] = [0, 0], offset = this.offset;
+  get offsetMaker(): [number, number] {
+    let [x, y] = [0, 0];
 
-    if (Array.isArray(offset)) {
-      x = offset[0] || 0;
-      y = offset[1] || 0;
-      return [x, y];
-    }
-    let [vertical, horizontal] = String(offset).split('-');
+    if (this.offset)
+      return [+this.offset, +this.offset];
 
-    [x, y] = [+vertical || 0, +horizontal || 0];
+    [x, y] = [+this.offsetX || 0, +this.offsetY || 0];
 
     return [x, y];
   }
 
-  get placementMaker(): TooltipPlacement {
-    let placement = this.placement;
+  get placementMaker() : TooltipReturnPlacement {
+    let placement: string = this.placement;
+
+    if (placement.includes('-top'))
+      placement = placement.replace('-top', '-start')
+
+    if (placement.includes('-bottom'))
+      placement = placement.replace('-bottom', '-end')
+
     if (this.isRTL)
       return this.reverse(placement);
 
-    return placement;
+    return placement as TooltipReturnPlacement;
   }
 
   get isRTL() {
@@ -77,18 +103,26 @@ export class Tooltip {
    * Internal Methods
    */
 
+  @Watch('fixed')
+  @Watch('disabled')
+  @Watch('placement')
+  @Watch('offset')
   bind() {
+    if (this.disabled) return;
+
     this.$parent.addEventListener(this.trigger, () => this.handleAddListener(this.$parent, this.$tooltip));
     this.$parent.addEventListener("mouseleave", () => this.handleRemoveListener(this.$parent, this.$tooltip));
   }
 
   unbind() {
     this.$parent.removeEventListener("mouseleave", () => this.handleRemoveListener(this.$parent, this.$host));
+    this.instance.destroy();
   }
 
   handleAddListener(parent: HTMLElement, tooltip: HTMLElement) {
-    createPopper(parent, tooltip, {
+    this.instance = createPopper(parent, tooltip, {
       placement: this.placementMaker,
+      strategy: this.fixed ? 'fixed' : null,
       modifiers: [
         {name: 'offset', options: {offset: this.offsetMaker}}
       ]
@@ -96,15 +130,14 @@ export class Tooltip {
     tooltip.classList.add('show')
   }
 
-  reverse(placement): TooltipPlacement {
+  reverse(placement) : TooltipReturnPlacement {
     let position = placement;
     if (placement.match(/^(left|right|start|end)$/)) position = `-${placement}`;
 
     let [x, y] = position.split('-')
     x = x ? (x === 'right' ? 'left' : x === 'left' ? 'right' : x) : '';
-    y = y ? (y === 'start' ? 'end' : y === 'end' ? 'start' : y) : '';
 
-    return `${x}${y ? '-' + y : ''}` as TooltipPlacement;
+    return `${x}${y ? '-' + y : ''}` as TooltipReturnPlacement;
   }
 
   handleRemoveListener(parent: HTMLElement, tooltip: HTMLElement) {
@@ -112,21 +145,11 @@ export class Tooltip {
     tooltip.classList.remove('show')
   }
 
-  handleHaveChildren() {
-    if (this.haveChildren) {
-      console.log(this.$host.children)
-      this.innerText = this.$host.innerText;
-      // this.$host.innerHTML = "";
-      this.$host.appendChild(this.haveChildren);
-    }
-  }
-
   /**
    * Lifecycles
    */
 
   connectedCallback() {
-    this.handleHaveChildren();
     this.bind();
   }
 
@@ -137,10 +160,10 @@ export class Tooltip {
   render() {
     return (
       <Host>
-        <div class={!this.haveChildren && "tooltip"} ref={element => (this.$tooltip = element)}>
-          {this.haveChildren && <div class="tooltip" ref={element => (this.$tooltip = element)}>{this.innerText}</div>}
+        <div class="tooltip" ref={element => (this.$tooltip = element)}>
           <slot/>
         </div>
+        <slot name="activator"/>
       </Host>
     )
   }
