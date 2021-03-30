@@ -8,27 +8,76 @@
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
   <style>
-plus-cropper[mode="none"] {
-  height: 100%;
-}
+    .row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mx-2 {
+      margin: 0 2rem 0 2rem;
+    }
+
+    .btn-success {
+      background-color: #81b541;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      font-size: 14px;
+      min-width: 200px;
+      cursor: pointer;
+      padding: 10px 15px 10px 15px;
+    }
   </style>
 </head>
 
 <body>
-<plus-grid gutter="md">
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="static" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="movable" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="resizable" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="both" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-</plus-grid>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="row">
+    <div class="mx-2">
+      <button type="button" class="btn-success">
+        Mousemove tooltip right
+        <plus-tooltip placement="right">
+          Mousemove tooltip
+        </plus-tooltip>
+      </button>
+    </div>
+    <div class="mx-2">
+      <button type="button" class="btn-success">Mousemove tooltip top
+        <plus-tooltip placement="right">
+          Mousemove tooltip
+        </plus-tooltip>
+      </button>
+    </div>
+    <div class="mx-2">
+      <button type="button" class="btn-success">
+        Mousemove tooltip left
+        <plus-tooltip placement="right">
+          Mousemove tooltip
+        </plus-tooltip>
+      </button>
+    </div>
+    <div class="mx-2">
+      <button type="button" class="btn-success">
+        Mousemove tooltip bottom
+        <plus-tooltip placement="right">
+          Mousemove tooltip
+        </plus-tooltip>
+      </button>
+    </div>
+  </div>
+
+  <!-- <plus-tooltip placement="right">
+    Mousemove tooltip
+    <button slot="activator" type="button" class="btn-success">
+      Mousemove tooltip bottom
+    </button>
+  </plus-tooltip> -->
 </body>
 
 </html>
