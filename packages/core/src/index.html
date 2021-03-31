@@ -7,35 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
-  <style>
-
-  </style>
 </head>
 
 <body>
-<!-- 
-  <select id="viewport">
-    <option value="static" selected>static</option>
-    <option value="movable">movable</option>
-    <option value="resizable">resizable</option>
-    <option value="both">both</option>
-  </select> -->
-
-  <select id="mode">
-    <option value="crop">crop</option>
-    <option value="move" selected>move</option>
-  </select>
-
-  <plus-cropper aspect-ratio1="1/2" view="fit" id="cropper" src="picture.jpg"></plus-cropper>
-
-  <script>
-    // viewport.addEventListener('change', (event) => {
-    //   cropper.viewport = event.target.value
-    // })
-    mode.addEventListener('change', (event) => {
-      cropper.mode = event.target.value
-    })
-  </script>
 </body>
 
 </html>
