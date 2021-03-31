@@ -5,7 +5,7 @@ import * as Utils from '@app/utils';
 import { TooltipPlacement, TooltipReturnPlacement, TooltipTrigger } from './tooltip.types';
 
 /**
- * It's the often used to specify extra information about something when the user moves the mouse pointer over an element (Hover or Focus)
+ * It's the often used to specify extra information about something when the user moves the mouse pointer over an element (Hover or Focus).
  * @examples default
  */
 @Component({
@@ -16,43 +16,43 @@ import { TooltipPlacement, TooltipReturnPlacement, TooltipTrigger } from './tool
 export class Tooltip {
 
   /*
-  * Tooltip disable
+  * Tooltip disable.
   */
   @Prop()
   disabled?: boolean;
 
   /*
-  * Add fixed strategy to popper
+  * Add fixed strategy to popper.
   */
   @Prop()
   fixed?: boolean;
 
   /*
-  * Vertical & horizontal offset from the target
+  * Vertical & horizontal offset from the target.
    */
   @Prop()
   offset?: number = 0;
 
   /*
-  * Horizontal offset from the target
+  * Horizontal offset from the target.
    */
   @Prop()
   offsetX?: number;
 
   /*
-  * Vertical offset from the target
+  * Vertical offset from the target.
    */
   @Prop()
   offsetY?: number;
 
   /*
-  * How to position the tooltip
+  * How to position the tooltip.
    */
   @Prop()
   placement?: TooltipPlacement = 'auto';
 
   /*
-  * How tooltip is triggered, include click, hover, focus
+  * How tooltip is triggered, include click, hover, focus.
    */
   @Prop()
   trigger?: TooltipTrigger = ['focus', 'hover'];
@@ -95,6 +95,7 @@ export class Tooltip {
     const triggers = [this.trigger].flat(1);
 
     const mapper = {
+      'click': ['click', 'blur'],
       'focus': ['focus', 'blur'],
       'hover': ['mouseenter', 'mouseleave'],
     }

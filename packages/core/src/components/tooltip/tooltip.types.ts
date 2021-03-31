@@ -11,6 +11,6 @@ export type TooltipPlacement = `${HorizontalPlacement}-${PlacementHorizontalPosi
 
 export type TooltipReturnPlacement = `${Placement}-${PlacementVerticalPosition}` | Placement;
 // Trigger
-export type TooltipTrigger = 'hover' | 'focus' | Array<TooltipTrigger>;
+export type TooltipTrigger = 'click' | 'focus' | 'hover' | Array<TooltipTrigger>;
 
 // var a: TooltipPlacement = ''
