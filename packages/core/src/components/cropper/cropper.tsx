@@ -16,7 +16,8 @@ import {
 } from './cropper.types';
 
 /**
- * TODO
+ * An image cropper is a web & mobile component which enable the user to resize, move, crop 
+ * an area of images before they're uploaded to the server.
  * @development
  * @examples default, aspect-ratio, backdrop, background, guides, indicator, mode, viewport
  */
@@ -88,9 +89,7 @@ export class Cropper {
 
   /**
    * Re-renders the cropper when resizing the window.
-   * @value false - TODO
-   * @value true  - TODO
-   * @value reset - TODO
+   * @value reset - Restores the cropped area after resizing the window.
    */
   @Prop()
   responsive?: CropperResponsive = 'reset';

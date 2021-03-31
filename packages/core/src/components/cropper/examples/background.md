@@ -1,5 +1,5 @@
 ```html [template]
 <fragment dock>
-<plus-cropper background view="none" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
+<plus-cropper background view="none" src="https://htmlplus.io/assets/images/panda.jpg"></plus-cropper>
 </fragment>
 ```

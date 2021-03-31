@@ -7,15 +7,15 @@ plus-cropper[mode="none"] {
 ```html [template]
 <plus-grid gutter="md">
   <plus-grid-item xs="6">
-    <plus-cropper mode="none" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
+    <plus-cropper mode="none" src="https://htmlplus.io/assets/images/panda.jpg"></plus-cropper>
   </plus-grid-item>
   <plus-grid-item xs="6">
     <plus-grid gutter="md">
       <plus-grid-item xs="12">
-        <plus-cropper mode="crop" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
+        <plus-cropper mode="crop" src="https://htmlplus.io/assets/images/panda.jpg"></plus-cropper>
       </plus-grid-item>
       <plus-grid-item xs="12">
-        <plus-cropper mode="move" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
+        <plus-cropper mode="move" src="https://htmlplus.io/assets/images/panda.jpg"></plus-cropper>
       </plus-grid-item>
     </plus-grid>
   </plus-grid-item>

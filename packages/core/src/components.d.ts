@@ -129,9 +129,7 @@ export namespace Components {
         "resizerShape"?: CropperResizerShape;
         /**
           * Re-renders the cropper when resizing the window.
-          * @value false - TODO
-          * @value true  - TODO
-          * @value reset - TODO
+          * @value reset - Restores the cropped area after resizing the window.
          */
         "responsive"?: CropperResponsive;
         /**
@@ -1195,9 +1193,7 @@ declare namespace LocalJSX {
         "resizerShape"?: CropperResizerShape;
         /**
           * Re-renders the cropper when resizing the window.
-          * @value false - TODO
-          * @value true  - TODO
-          * @value reset - TODO
+          * @value reset - Restores the cropped area after resizing the window.
          */
         "responsive"?: CropperResponsive;
         /**
