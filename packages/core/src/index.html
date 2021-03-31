@@ -8,27 +8,34 @@
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
   <style>
-plus-cropper[mode="none"] {
-  height: 100%;
-}
+
   </style>
 </head>
 
 <body>
-<plus-grid gutter="md">
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="static" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="movable" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="resizable" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-  <plus-grid-item xs="6">
-    <plus-cropper viewport="both" src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"></plus-cropper>
-  </plus-grid-item>
-</plus-grid>
+<!-- 
+  <select id="viewport">
+    <option value="static" selected>static</option>
+    <option value="movable">movable</option>
+    <option value="resizable">resizable</option>
+    <option value="both">both</option>
+  </select> -->
+
+  <select id="mode">
+    <option value="crop">crop</option>
+    <option value="move" selected>move</option>
+  </select>
+
+  <plus-cropper aspect-ratio1="1/2" view="fit" id="cropper" src="picture.jpg"></plus-cropper>
+
+  <script>
+    // viewport.addEventListener('change', (event) => {
+    //   cropper.viewport = event.target.value
+    // })
+    mode.addEventListener('change', (event) => {
+      cropper.mode = event.target.value
+    })
+  </script>
 </body>
 
 </html>

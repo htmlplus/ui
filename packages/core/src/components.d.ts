@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperValue, CropperView, CropperViewport, CropperViewportShape, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -63,19 +63,19 @@ export namespace Components {
     }
     interface PlusCropper {
         /**
-          * Define the fixed aspect ratio of the viewport. By default, the viewport is free ratio.
+          * Defines the initial aspect ratio of the viewport.
          */
         "aspectRatio"?: CropperAspectRatio;
         /**
-          * Show the black layer above the image and under the viewport.
+          * Shows the black modal above the image and under the viewport.
          */
         "backdrop"?: boolean;
         /**
-          * Show the grid background of the container.
+          * Shows the grid background of the container.
          */
         "background"?: boolean;
         /**
-          * TODO
+          * Disables the cropper.
          */
         "disabled"?: boolean;
         /**
@@ -87,28 +87,27 @@ export namespace Components {
          */
         "flipY": () => Promise<void>;
         /**
-          * Show the dashed lines above the viewport.
+          * Shows the dashed lines above the viewport.
          */
         "guides"?: boolean;
         /**
-          * Show the center indicator above the viewport.
+          * Shows the center indicator above the viewport.
          */
         "indicator"?: boolean;
         /**
-          * Define the dragging mode of the cropper.
-          * @value crop - create a new viewport.
-          * @value move - move the canvas.
-          * @value none - do nothing.
+          * Defines the cropping mode of the cropper.
+          * @value crop - Creates a new viewport and allows you to move and resize it.
+          * @value move - moves the canvas and viewport.
          */
         "mode"?: CropperMode;
         /**
-          * Move the canvas (image wrapper) with relative offsets.
+          * Move the canvas with relative offsets.
           * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
           * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
          */
         "move": (offsetX?: number, offsetY?: number) => Promise<void>;
         /**
-          * Move the canvas (image wrapper) to an absolute point.
+          * Move the canvas to an absolute point.
           * @param x - The `left` value of the canvas. Use `null` to ignore this.
           * @param y - The `top` value of the canvas. Use `null` to ignore this.
          */
@@ -118,21 +117,18 @@ export namespace Components {
          */
         "reset": () => Promise<void>;
         /**
-          * TODO
-          * @value main - TODO
-          * @value edge - TODO
-          * @value both - TODO
+          * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
+          * @value main - Enables to resize the viewport by dragging on the Sides.
+          * @value edge - Enables to resize the viewport by dragging on the vertices.
+          * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
          */
         "resizer"?: CropperResizer;
         /**
-          * TODO
-          * @value square - TODO
-          * @value circle - TODO
-          * @value line   - TODO
+          * Specifies the shape of the resizer.
          */
         "resizerShape"?: CropperResizerShape;
         /**
-          * Re-render the cropper when resizing the window.
+          * Re-renders the cropper when resizing the window.
           * @value false - TODO
           * @value true  - TODO
           * @value reset - TODO
@@ -140,36 +136,38 @@ export namespace Components {
         "responsive"?: CropperResponsive;
         /**
           * Rotate the image with a relative degree.
-          * @param degree - TODO
          */
         "rotate": (degree: number) => Promise<void>;
         /**
           * Rotate the image to an absolute degree.
-          * @param degree - TODO
          */
         "rotateTo": (degree: number) => Promise<void>;
         /**
-          * Image source.
+          * Specifies the shape of the viewport.
+         */
+        "shape"?: CropperShape;
+        /**
+          * Replace the image's src and rebuild the cropper.
          */
         "src"?: string;
         /**
-          * TODO
+          * Gets `base64` from the cropped image.
          */
         "toBase64": () => Promise<string>;
         /**
-          * TODO
+          * Gets `blob` value from the cropped image.
          */
         "toBlob": () => Promise<Blob>;
         /**
-          * TODO
+          * Gets `canvas` from the cropped image.
          */
         "toCanvas": () => Promise<HTMLCanvasElement>;
         /**
-          * TODO
+          * Gets `blob url` from the cropped image.
          */
         "toURL": () => Promise<string>;
         /**
-          * TODO
+          * The previous cropped data if you had stored, will be passed to value automatically when initialized.
          */
         "value"?: CropperValue;
         /**
@@ -181,23 +179,7 @@ export namespace Components {
          */
         "view"?: CropperView;
         /**
-          * TODO
-          * @value static    - TODO
-          * @value movable   - TODO
-          * @value resizable - TODO
-          * @value both      - TODO
-         */
-        "viewport"?: CropperViewport;
-        /**
-          * TODO
-          * @value rectangle - TODO
-          * @value square    - TODO
-          * @value circle    - TODO
-         */
-        "viewportShape"?: CropperViewportShape;
-        /**
-          * Zoom the canvas (image wrapper) with a relative ratio.
-          * @param ratio - TODO
+          * Zoom the canvas with a relative ratio.
          */
         "zoom": (ratio: number) => Promise<void>;
         /**
@@ -205,16 +187,15 @@ export namespace Components {
          */
         "zoomRatio"?: number;
         /**
-          * Zoom the canvas (image wrapper) to an absolute ratio.
-          * @param ratio - TODO
+          * Zoom the canvas to an absolute ratio.
          */
         "zoomTo": (ratio: number) => Promise<void>;
         /**
-          * Enable to zoom the image.
-          * @value false - Disable zoom.
-          * @value true  - Enable to zoom the image by dragging touch and wheeling mouse.
-          * @value touch - Enable to zoom the image by dragging touch.
-          * @value wheel - Enable to zoom the image by wheeling mouse.
+          * Enables to zoom the image.
+          * @value false - Unable to zoom the image.
+          * @value true  - Enables to zoom the image by touching and wheeling mouse.
+          * @value touch - Enables to zoom the image by touching.
+          * @value wheel - Enables to zoom the image by wheeling mouse.
           * @
          */
         "zoomable"?: CropperZoomable;
@@ -1160,38 +1141,37 @@ declare namespace LocalJSX {
     }
     interface PlusCropper {
         /**
-          * Define the fixed aspect ratio of the viewport. By default, the viewport is free ratio.
+          * Defines the initial aspect ratio of the viewport.
          */
         "aspectRatio"?: CropperAspectRatio;
         /**
-          * Show the black layer above the image and under the viewport.
+          * Shows the black modal above the image and under the viewport.
          */
         "backdrop"?: boolean;
         /**
-          * Show the grid background of the container.
+          * Shows the grid background of the container.
          */
         "background"?: boolean;
         /**
-          * TODO
+          * Disables the cropper.
          */
         "disabled"?: boolean;
         /**
-          * Show the dashed lines above the viewport.
+          * Shows the dashed lines above the viewport.
          */
         "guides"?: boolean;
         /**
-          * Show the center indicator above the viewport.
+          * Shows the center indicator above the viewport.
          */
         "indicator"?: boolean;
         /**
-          * Define the dragging mode of the cropper.
-          * @value crop - create a new viewport.
-          * @value move - move the canvas.
-          * @value none - do nothing.
+          * Defines the cropping mode of the cropper.
+          * @value crop - Creates a new viewport and allows you to move and resize it.
+          * @value move - moves the canvas and viewport.
          */
         "mode"?: CropperMode;
         /**
-          * This event fires when the canvas (image wrapper) or the viewport changed.
+          * This event fires when the canvas or the viewport changed.
          */
         "onPlusCrop"?: (event: CustomEvent<void>) => void;
         /**
@@ -1199,36 +1179,37 @@ declare namespace LocalJSX {
          */
         "onPlusReady"?: (event: CustomEvent<void>) => void;
         /**
-          * This event fires when a cropper instance starts to zoom in or zoom out its canvas (image wrapper).
+          * This event fires when a cropper instance starts to zoom in or zoom out its canvas.
          */
         "onPlusZoom"?: (event: CustomEvent<CropperZoomData>) => void;
         /**
-          * TODO
-          * @value main - TODO
-          * @value edge - TODO
-          * @value both - TODO
+          * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
+          * @value main - Enables to resize the viewport by dragging on the Sides.
+          * @value edge - Enables to resize the viewport by dragging on the vertices.
+          * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
          */
         "resizer"?: CropperResizer;
         /**
-          * TODO
-          * @value square - TODO
-          * @value circle - TODO
-          * @value line   - TODO
+          * Specifies the shape of the resizer.
          */
         "resizerShape"?: CropperResizerShape;
         /**
-          * Re-render the cropper when resizing the window.
+          * Re-renders the cropper when resizing the window.
           * @value false - TODO
           * @value true  - TODO
           * @value reset - TODO
          */
         "responsive"?: CropperResponsive;
         /**
-          * Image source.
+          * Specifies the shape of the viewport.
+         */
+        "shape"?: CropperShape;
+        /**
+          * Replace the image's src and rebuild the cropper.
          */
         "src"?: string;
         /**
-          * TODO
+          * The previous cropped data if you had stored, will be passed to value automatically when initialized.
          */
         "value"?: CropperValue;
         /**
@@ -1240,30 +1221,15 @@ declare namespace LocalJSX {
          */
         "view"?: CropperView;
         /**
-          * TODO
-          * @value static    - TODO
-          * @value movable   - TODO
-          * @value resizable - TODO
-          * @value both      - TODO
-         */
-        "viewport"?: CropperViewport;
-        /**
-          * TODO
-          * @value rectangle - TODO
-          * @value square    - TODO
-          * @value circle    - TODO
-         */
-        "viewportShape"?: CropperViewportShape;
-        /**
           * Define zoom ratio when zooming the image by wheeling mouse.
          */
         "zoomRatio"?: number;
         /**
-          * Enable to zoom the image.
-          * @value false - Disable zoom.
-          * @value true  - Enable to zoom the image by dragging touch and wheeling mouse.
-          * @value touch - Enable to zoom the image by dragging touch.
-          * @value wheel - Enable to zoom the image by wheeling mouse.
+          * Enables to zoom the image.
+          * @value false - Unable to zoom the image.
+          * @value true  - Enables to zoom the image by touching and wheeling mouse.
+          * @value touch - Enables to zoom the image by touching.
+          * @value wheel - Enables to zoom the image by wheeling mouse.
           * @
          */
         "zoomable"?: CropperZoomable;
@@ -1938,6 +1904,22 @@ declare namespace LocalJSX {
           * TODO
          */
         "duration"?: number;
+        /**
+          * TODO
+         */
+        "onPlusClose"?: (event: CustomEvent<void>) => void;
+        /**
+          * TODO
+         */
+        "onPlusClosed"?: (event: CustomEvent<void>) => void;
+        /**
+          * TODO
+         */
+        "onPlusOpen"?: (event: CustomEvent<void>) => void;
+        /**
+          * TODO
+         */
+        "onPlusOpened"?: (event: CustomEvent<void>) => void;
         /**
           * TODO
          */
