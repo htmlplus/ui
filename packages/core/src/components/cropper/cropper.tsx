@@ -141,7 +141,7 @@ export class Cropper {
   zoomable?: CropperZoomable = true;
 
   /**
-   * Define zoom ratio when zooming the image by wheeling mouse.
+   * Defines zoom ratio when zooming the image by wheeling mouse.
    */
   @Prop()
   zoomRatio?: number = 0.1;

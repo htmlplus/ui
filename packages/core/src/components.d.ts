@@ -181,7 +181,7 @@ export namespace Components {
          */
         "zoom": (ratio: number) => Promise<void>;
         /**
-          * Define zoom ratio when zooming the image by wheeling mouse.
+          * Defines zoom ratio when zooming the image by wheeling mouse.
          */
         "zoomRatio"?: number;
         /**
@@ -1217,7 +1217,7 @@ declare namespace LocalJSX {
          */
         "view"?: CropperView;
         /**
-          * Define zoom ratio when zooming the image by wheeling mouse.
+          * Defines zoom ratio when zooming the image by wheeling mouse.
          */
         "zoomRatio"?: number;
         /**
