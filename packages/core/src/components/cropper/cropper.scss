@@ -5,18 +5,29 @@
 :host {
 
   /**
-  * @prop --plus-cropper-backdrop-color  : TODO.
-  * @prop --plus-cropper-backdrop-opacity: TODO.
+  * @prop --plus-cropper-backdrop-color   : TODO
+  * @prop --plus-cropper-backdrop-opacity : TODO
 
-  * @prop --plus-cropper-guides-color    : TODO.
-  * @prop --plus-cropper-guides-opacity  : TODO.
-  * @prop --plus-cropper-guides-style    : TODO.
-  * @prop --plus-cropper-guides-weight    : TODO.
+  * @prop --plus-cropper-guides-color     : TODO
+  * @prop --plus-cropper-guides-opacity   : TODO
+  * @prop --plus-cropper-guides-style     : TODO
+  * @prop --plus-cropper-guides-weight    : TODO
 
-  * @prop --plus-cropper-viewport-color  : TODO.
-  * @prop --plus-cropper-viewport-opacity: TODO.
-  * @prop --plus-cropper-viewport-style  : TODO.
-  * @prop --plus-cropper-viewport-weight  : TODO.
+  * @prop --plus-cropper-indicator-color  : TODO
+  * @prop --plus-cropper-indicator-opacity: TODO
+  * @prop --plus-cropper-indicator-size   : TODO
+  * @prop --plus-cropper-indicator-weight : TODO
+
+  * @prop --plus-cropper-resizer-color    : TODO
+  * @prop --plus-cropper-resizer-offset   : TODO
+  * @prop --plus-cropper-resizer-opacity  : TODO
+  * @prop --plus-cropper-resizer-size     : TODO
+  * @prop --plus-cropper-resizer-weight   : TODO
+
+  * @prop --plus-cropper-viewport-color   : TODO
+  * @prop --plus-cropper-viewport-opacity : TODO
+  * @prop --plus-cropper-viewport-style   : TODO
+  * @prop --plus-cropper-viewport-weight  : TODO
   */
 
   --plus-cropper-backdrop-color   : #{$cropper-backdrop-color};
@@ -25,7 +36,7 @@
   --plus-cropper-guides-color     : #{$cropper-guides-color};
   --plus-cropper-guides-opacity   : #{$cropper-guides-opacity};
   --plus-cropper-guides-style     : #{$cropper-guides-style};
-  --plus-cropper-guides-weight     : #{$cropper-guides-weight};
+  --plus-cropper-guides-weight    : #{$cropper-guides-weight};
 
   --plus-cropper-indicator-color  : #{$cropper-indicator-color};
   --plus-cropper-indicator-opacity: #{$cropper-indicator-opacity};
