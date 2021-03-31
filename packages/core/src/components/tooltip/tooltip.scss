@@ -10,24 +10,18 @@
   --plus-tooltip-border-radius: #{$tooltip-border-radius};
 }
 
-:host {
-  .tooltip {
-    visibility: hidden;
-    display: none;
-    background: var(--plus-tooltip-background);
-    color: var(--plus-tooltip-color);
-    padding: var(--plus-tooltip-padding);
-    font-size: var(--plus-tooltip-font-size);
-    font-weight: bold;
-    border-radius: var(--plus-tooltip-border-radius);
-    position: absolute;
-    z-index: 1000;
-  }
-  .show {
-    visibility: visible !important;
-    display: inline-block !important;
-  }
-  [name=activator] {
-    display: inline-block;
-  }
+.tooltip {
+  display: none;
+  background: var(--plus-tooltip-background);
+  color: var(--plus-tooltip-color);
+  padding: var(--plus-tooltip-padding);
+  font-size: var(--plus-tooltip-font-size);
+  font-weight: bold;
+  border-radius: var(--plus-tooltip-border-radius);
+  position: absolute;
+  z-index: 1000;
+}
+
+.show {
+  display: inline-block;
 }

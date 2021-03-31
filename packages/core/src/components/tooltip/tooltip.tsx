@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import { createPopper, Instance } from "@popperjs/core";
 import { Bind, GlobalConfig } from '@app/services';
 import * as Utils from '@app/utils';
@@ -64,45 +64,89 @@ export class Tooltip {
   })
   config;
 
+  instance?: Instance;
+
+  @State()
+  state?: 'show' | 'hide' = 'hide';
+
   @Element()
   $host!: HTMLElement;
 
   $tooltip!: HTMLElement;
 
-  instance?: Instance;
+  get $activator() {
+    return this.$host.parentElement as HTMLElement;
+  }
 
-  get $parent() {
-    return this.$host.children[0] as HTMLElement ?? this.$host.parentElement as HTMLElement;
+  get attributes() {
+    return {
+      role: 'tooltip',
+      state: this.state
+    }
+  }
+
+  get eventsName() {
+
+    const events = {
+      hide: [],
+      show: [],
+    }
+
+    const triggers = [this.trigger].flat(1);
+
+    const mapper = {
+      'focus': ['focus', 'blur'],
+      'hover': ['mouseenter', 'mouseleave'],
+    }
+
+    Object.keys(mapper)
+      .filter((key) => triggers.includes(key as any))
+      .map((key) => {
+        const [show, hide] = mapper[key];
+        events.show.push(show);
+        events.hide.push(hide);
+      });
+
+    return events;
   }
 
   get isRTL() {
     return Utils.isRTL(this);
   }
 
-  get offsets(): [number, number] {
-
-    const x = this.offsetX ?? this.offset ?? 0;
-
-    const y = this.offsetY ?? this.offset ?? 0;
-
-    return [x, y];
-  }
-
   get options() {
+
+    const offset = [this.offsetX ?? this.offset ?? 0, this.offsetY ?? this.offset ?? 0];
+
+    const strategy = Utils.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any;
+
     return {
       placement: this.placementMaker,
-      strategy: Utils.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any,
+      strategy,
       modifiers: [
         {
           name: 'offset',
           options: {
-            offset: this.offsets
+            offset
           }
         }
       ]
     }
   }
 
+  // TODO
+  reverse(placement): TooltipReturnPlacement {
+
+    let position = placement;
+
+    if (placement.match(/^(left|right|start|end)$/)) position = `-${placement}`;
+
+    let [x, y] = position.split('-')
+
+    x = x ? (x === 'right' ? 'left' : x === 'left' ? 'right' : x) : '';
+
+    return `${x}${y ? '-' + y : ''}` as TooltipReturnPlacement;
+  }
   get placementMaker(): TooltipReturnPlacement {
     let placement: string = this.placement;
 
@@ -123,69 +167,22 @@ export class Tooltip {
    */
 
   bind() {
-    if (this.disabled) return;
-    this.$parent.addEventListener(/*this.trigger*/'mouseover', () => this.handleAddListener(this.$parent, this.$tooltip));
-    this.$parent.addEventListener("mouseleave", () => this.handleRemoveListener(this.$parent, this.$tooltip));
-  }
-
-  rebind() {
-    this.unbind();
-    this.bind();
+    this.eventsName.show.map((eventName) => this.$activator.addEventListener(eventName, this.onShow));
+    this.eventsName.hide.map((eventName) => this.$activator.addEventListener(eventName, this.onHide));
   }
 
   unbind() {
-    this.$parent.removeEventListener("mouseleave", () => this.handleRemoveListener(this.$parent, this.$host));
-    this.instance?.destroy();
-  }
-
-  handleAddListener(parent: HTMLElement, tooltip: HTMLElement) {
-    this.instance = createPopper(parent, tooltip, this.options)
-    tooltip.classList.add('show')
-  }
-
-  reverse(placement): TooltipReturnPlacement {
-
-    let position = placement;
-
-    if (placement.match(/^(left|right|start|end)$/)) position = `-${placement}`;
-
-    let [x, y] = position.split('-')
-
-    x = x ? (x === 'right' ? 'left' : x === 'left' ? 'right' : x) : '';
-
-    return `${x}${y ? '-' + y : ''}` as TooltipReturnPlacement;
-  }
-
-  handleRemoveListener(parent: HTMLElement, tooltip: HTMLElement) {
-    this.$parent.removeEventListener(/*this.trigger*/'mouseover', () => this.handleAddListener(parent, tooltip))
-    tooltip.classList.remove('show')
+    this.eventsName.show.map((eventName) => this.$activator.removeEventListener(eventName, this.onShow));
+    this.eventsName.hide.map((eventName) => this.$activator.removeEventListener(eventName, this.onHide));
   }
 
   /**
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return;
-
-    const value = this[name];
-
-    switch (name) {
-
-      case 'disabled':
-        value ? this.unbind() : this.bind();
-        break;
-
-      case 'fixed':
-      case 'offset':
-      case 'offsetX':
-      case 'offsetY':
-      case 'placement':
-      case 'trigger':
-        this.rebind();
-        break;
-    }
+  @Watch('disabled')
+  watcher() {
+    this.disabled ? this.unbind() : this.bind();
   }
 
   /**
@@ -194,12 +191,16 @@ export class Tooltip {
 
   @Bind
   onHide() {
-    // tooltip.classList.remove('show')
+    this.instance?.destroy();
+    this.$tooltip.classList.remove('show');
+    this.state = 'hide';
   }
 
   @Bind
   onShow() {
-    // tooltip.classList.add('show')
+    this.instance = createPopper(this.$activator, this.$tooltip, this.options);
+    this.$tooltip.classList.add('show');
+    this.state = 'show';
   }
 
   /**
@@ -207,7 +208,7 @@ export class Tooltip {
    */
 
   connectedCallback() {
-    this.bind();
+    !this.disabled && this.bind();
   }
 
   disconnectedCallback() {
@@ -216,9 +217,8 @@ export class Tooltip {
 
   render() {
     return (
-      <Host>
-        <slot name="activator" />
-        <div class="tooltip" ref={(element) => (this.$tooltip = element)}>
+      <Host {...this.attributes}>
+        <div class="tooltip" ref={(element) => this.$tooltip = element}>
           <slot />
         </div>
       </Host>
