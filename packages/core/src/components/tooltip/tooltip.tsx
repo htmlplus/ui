@@ -1,50 +1,25 @@
-import {Element, Component, Host, Prop, State, Watch, h} from '@stencil/core';
-import {TooltipPlacement, TooltipReturnPlacement, TooltipTrigger} from './tooltip.types';
-import {createPopper} from "@popperjs/core";
+import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { createPopper, Instance } from "@popperjs/core";
+import { Bind, GlobalConfig } from '@app/services';
 import * as Utils from '@app/utils';
-import {GlobalConfig} from '@app/services';
+import { TooltipPlacement, TooltipReturnPlacement, TooltipTrigger } from './tooltip.types';
 
 /**
  * It's the often used to specify extra information about something when the user moves the mouse pointer over an element (Hover or Focus)
  * @examples default
  */
-
 @Component({
   tag: 'plus-tooltip',
   styleUrl: 'tooltip.scss',
   shadow: true,
 })
-
 export class Tooltip {
-  /*
-  * How to position the tooltip
-   */
-  @Prop({reflect: true})
-  placement?: TooltipPlacement = 'auto';
 
   /*
-  * How tooltip is triggered, include click, hover, focus
-   */
-  @Prop({reflect: true})
-  trigger?: TooltipTrigger = 'mouseover';
-
-  /*
-  * Vertical & horizontal offset from the target
-   */
+  * Tooltip disable
+  */
   @Prop()
-  offset?: number;
-
-  /*
-  * Horizontal offset from the target
-   */
-  @Prop()
-  offsetX?: number = 0;
-
-  /*
-  * Vertical offset from the target
-   */
-  @Prop()
-  offsetY?: number = 0;
+  disabled?: boolean;
 
   /*
   * Add fixed strategy to popper
@@ -53,34 +28,82 @@ export class Tooltip {
   fixed?: boolean;
 
   /*
-  * Tooltip disable
-  */
+  * Vertical & horizontal offset from the target
+   */
   @Prop()
-  disabled?: boolean = false;
+  offset?: number = 0;
 
-  @GlobalConfig('tooltip')
+  /*
+  * Horizontal offset from the target
+   */
+  @Prop()
+  offsetX?: number;
+
+  /*
+  * Vertical offset from the target
+   */
+  @Prop()
+  offsetY?: number;
+
+  /*
+  * How to position the tooltip
+   */
+  @Prop()
+  placement?: TooltipPlacement = 'auto';
+
+  /*
+  * How tooltip is triggered, include click, hover, focus
+   */
+  @Prop()
+  trigger?: TooltipTrigger = ['focus', 'hover'];
+
+  @GlobalConfig('tooltip', {
+    offset: 0,
+    placement: 'auto',
+    trigger: ['focus', 'hover'],
+  })
   config;
 
   @Element()
   $host!: HTMLElement;
+
   $tooltip!: HTMLElement;
-  $parent: HTMLElement = this.$host.children[0] as HTMLElement ?? this.$host.parentElement as HTMLElement;
 
-  @State()
-  instance;
+  instance?: Instance;
 
-  get offsetMaker(): [number, number] {
-    let [x, y] = [0, 0];
+  get $parent() {
+    return this.$host.children[0] as HTMLElement ?? this.$host.parentElement as HTMLElement;
+  }
 
-    if (this.offset)
-      return [+this.offset, +this.offset];
+  get isRTL() {
+    return Utils.isRTL(this);
+  }
 
-    [x, y] = [+this.offsetX || 0, +this.offsetY || 0];
+  get offsets(): [number, number] {
+
+    const x = this.offsetX ?? this.offset ?? 0;
+
+    const y = this.offsetY ?? this.offset ?? 0;
 
     return [x, y];
   }
 
-  get placementMaker() : TooltipReturnPlacement {
+  get options() {
+    return {
+      placement: this.placementMaker,
+      strategy: Utils.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any,
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: this.offsets
+          }
+        }
+      ]
+    }
+  }
+
+  get placementMaker(): TooltipReturnPlacement {
     let placement: string = this.placement;
 
     if (placement.includes('-top'))
@@ -95,54 +118,88 @@ export class Tooltip {
     return placement as TooltipReturnPlacement;
   }
 
-  get isRTL() {
-    return Utils.isRTL(this);
-  }
-
   /**
    * Internal Methods
    */
 
-  @Watch('fixed')
-  @Watch('disabled')
-  @Watch('placement')
-  @Watch('offset')
   bind() {
     if (this.disabled) return;
-
-    this.$parent.addEventListener(this.trigger, () => this.handleAddListener(this.$parent, this.$tooltip));
+    this.$parent.addEventListener(/*this.trigger*/'mouseover', () => this.handleAddListener(this.$parent, this.$tooltip));
     this.$parent.addEventListener("mouseleave", () => this.handleRemoveListener(this.$parent, this.$tooltip));
+  }
+
+  rebind() {
+    this.unbind();
+    this.bind();
   }
 
   unbind() {
     this.$parent.removeEventListener("mouseleave", () => this.handleRemoveListener(this.$parent, this.$host));
-    this.instance.destroy();
+    this.instance?.destroy();
   }
 
   handleAddListener(parent: HTMLElement, tooltip: HTMLElement) {
-    this.instance = createPopper(parent, tooltip, {
-      placement: this.placementMaker,
-      strategy: this.fixed ? 'fixed' : null,
-      modifiers: [
-        {name: 'offset', options: {offset: this.offsetMaker}}
-      ]
-    })
+    this.instance = createPopper(parent, tooltip, this.options)
     tooltip.classList.add('show')
   }
 
-  reverse(placement) : TooltipReturnPlacement {
+  reverse(placement): TooltipReturnPlacement {
+
     let position = placement;
+
     if (placement.match(/^(left|right|start|end)$/)) position = `-${placement}`;
 
     let [x, y] = position.split('-')
+
     x = x ? (x === 'right' ? 'left' : x === 'left' ? 'right' : x) : '';
 
     return `${x}${y ? '-' + y : ''}` as TooltipReturnPlacement;
   }
 
   handleRemoveListener(parent: HTMLElement, tooltip: HTMLElement) {
-    this.$parent.removeEventListener(this.trigger, () => this.handleAddListener(parent, tooltip))
+    this.$parent.removeEventListener(/*this.trigger*/'mouseover', () => this.handleAddListener(parent, tooltip))
     tooltip.classList.remove('show')
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return;
+
+    const value = this[name];
+
+    switch (name) {
+
+      case 'disabled':
+        value ? this.unbind() : this.bind();
+        break;
+
+      case 'fixed':
+      case 'offset':
+      case 'offsetX':
+      case 'offsetY':
+      case 'placement':
+      case 'trigger':
+        this.rebind();
+        break;
+    }
+  }
+
+  /**
+   * Events handler
+   */
+
+  @Bind
+  onHide() {
+    // tooltip.classList.remove('show')
+  }
+
+  @Bind
+  onShow() {
+    // tooltip.classList.add('show')
   }
 
   /**
@@ -160,10 +217,10 @@ export class Tooltip {
   render() {
     return (
       <Host>
-        <div class="tooltip" ref={element => (this.$tooltip = element)}>
-          <slot/>
+        <slot name="activator" />
+        <div class="tooltip" ref={(element) => (this.$tooltip = element)}>
+          <slot />
         </div>
-        <slot name="activator"/>
       </Host>
     )
   }

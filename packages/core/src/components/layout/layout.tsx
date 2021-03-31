@@ -1,21 +1,21 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import * as Utils from '@app/utils';
 import { GlobalConfig } from '@app/services';
-import { LayoutFooter, LayoutHeader, LayoutMain } from './layout.types';
+import { LayoutTop, LayoutMain, LayoutBottom } from './layout.types';
 
 /**
  * TODO
  * @development 
  * @slot              - The default slot
  * @slot header       - TODO
- * @slot header:start - TODO
- * @slot header:end   - TODO
- * @slot footer       - TODO
- * @slot footer:start - TODO
- * @slot footer:end   - TODO
+ * @slot top:start    - TODO
+ * @slot top:end      - TODO
  * @slot aside:start  - TODO
  * @slot aside:end    - TODO
- * @examples default
+ * @slot footer       - TODO
+ * @slot bottom:start - TODO
+ * @slot bottom:end   - TODO
+ * @examples default, simple, aside
  */
 @Component({
   tag: 'plus-layout',
@@ -28,13 +28,7 @@ export class Layout {
    * TODO
    */
   @Prop()
-  header?: LayoutHeader = 'grow';
-
-  /**
-   * TODO
-   */
-  @Prop()
-  footer?: LayoutFooter = 'grow';
+  bottom?: LayoutBottom = 'footer';
 
   /**
    * TODO
@@ -42,29 +36,39 @@ export class Layout {
   @Prop()
   main?: LayoutMain = 'stretch';
 
+  /**
+   * TODO
+   */
+  @Prop()
+  top?: LayoutTop = 'header';
+
   @GlobalConfig('layout', {
-    header: 'grow',
-    footer: 'grow',
+    bottom: 'footer',
     main: 'stretch',
+    top: 'header',
   })
   config?;
 
   get areas() {
     return [
       "'",
-      this.area('header', 'start'),
+      this.area('top', 'start'),
       ' header ',
-      this.area('header', 'end'),
+      this.area('top', 'end'),
       "' '",
-      'aside-start',
+      this.area('aside', 'start'),
       ' main ',
-      'aside-end',
+      this.area('aside', 'end'),
       "' '",
-      this.area('footer', 'start'),
+      this.area('bottom', 'start'),
       ' footer ',
-      this.area('footer', 'end'),
+      this.area('bottom', 'end'),
       "'",
     ].join('')
+  }
+
+  get elements() {
+    return ['header', 'top:start', 'top:end', 'aside:start', 'aside:end', 'footer', 'bottom:start', 'bottom:end']
   }
 
   get slots() {
@@ -72,6 +76,7 @@ export class Layout {
   }
 
   get style() {
+    console.log(this.areas)
     return {
       'grid-template-areas': `${this.areas}`
     }
@@ -81,52 +86,69 @@ export class Layout {
 
     const hasSlot = this.slots[`${key}:${position}`];
 
-    if (hasSlot) return `${key}-${position}`;
-
-    const isStart = position === 'start';
+    if (key === 'aside') return hasSlot ? `aside-${position}` : 'main';
 
     const value = this[key];
 
-    const matcher = ['center', isStart ? 'end' : 'start'];
+    if (!value) return (key === 'top') ? 'header' : 'footer';
 
-    if (!matcher.includes(value)) return key;
+    let [start, end] = value.split('-');
 
-    const direction = isStart ? 'start' : 'end';
+    if (!end) end = start;
 
-    return `aside-${direction}`;
+    let area = (position === 'start') ? start : end;
+
+    if (area === 'slot') return `${key}-${position}`;
+
+    if (area === 'aside') return `aside-${position}`;
+
+    return area;
+  }
+
+  isValidSlot(name) {
+
+    // name
+    // 'header', 
+    // 'top:start', 'top:end', 
+    // 'aside:start', 'aside:end', 
+    // 'footer', 
+    // 'bottom:start', 'bottom:end'
+
+    // top
+    // "aside" | "slot" | "header" | 
+    // "header-header" | "header-aside" | "header-slot" | 
+    // "aside-header" | "aside-aside" | "aside-slot" | 
+    // "slot-header" | "slot-aside" | "slot-slot"
+
+    const hasSlot = this.slots[name];
+
+    if (!hasSlot) return false;
+
+    const [key, position] = name.split(':');
+
+    const value = this[key];
+
+    if (!value) return true;
+
+    if (value === 'slot') return true;
+
+    return (position === 'start') ? value.startsWith('slot-') : value.endsWith('-slot');
   }
 
   render() {
     return (
       <Host>
         <div class="wrapper" style={this.style}>
-          <div class="header-start">
-            <slot name="header:start" />
-          </div>
-          <div class="header">
-            <slot name="header" />
-          </div>
-          <div class="header-end">
-            <slot name="header:end" />
-          </div>
-          <div class="aside-start">
-            <slot name="aside:start" />
-          </div>
           <div class={`main ${this.main}`}>
             <slot />
           </div>
-          <div class="aside-end">
-            <slot name="aside:end" />
-          </div>
-          <div class="footer-start">
-            <slot name="footer:start" />
-          </div>
-          <div class="footer">
-            <slot name="footer" />
-          </div>
-          <div class="footer-end">
-            <slot name="footer:end" />
-          </div>
+          {this.elements
+            .filter((key) => this.isValidSlot(key))
+            .map((key) => (
+              <div key={key} class={key.replace(':', '-')}>
+                <slot name={key} />
+              </div>
+            ))}
         </div>
       </Host>
     )

@@ -1,5 +1,8 @@
 ```css [style]
-plus-spinner.special {
+div {
+  text-align: center;
+}
+plus-spinner {
   --plus-spinner-size: 5rem;
   --plus-spinner-weight: 0.5;
   --plus-spinner-color: purple;
@@ -7,7 +10,7 @@ plus-spinner.special {
 ```
 
 ```html [template]
-<preview>
-  <plus-spinner type="dual-ring" class="special"></plus-spinner>
-</preview>
+<div>
+  <plus-spinner type="dual-ring"></plus-spinner>
+</div>
 ```
