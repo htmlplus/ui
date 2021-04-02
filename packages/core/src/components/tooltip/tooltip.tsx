@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
 import { createPopper, Instance } from "@popperjs/core";
 import { Bind, GlobalConfig } from '@app/services';
 import * as Utils from '@app/utils';
@@ -39,19 +39,19 @@ export class Tooltip {
   /**
    * Vertical & horizontal offset from the target.
    */
-  @Prop()
+  // @Prop()
   offset?: number = 0;
 
   /**
    * Horizontal offset from the target.
    */
-  @Prop()
+  // @Prop()
   offsetX?: number;
 
   /**
    * Vertical offset from the target.
    */
-  @Prop()
+  // @Prop()
   offsetY?: number;
 
   /**

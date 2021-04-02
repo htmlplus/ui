@@ -861,18 +861,6 @@ export namespace Components {
          */
         "fixed"?: boolean;
         /**
-          * Vertical & horizontal offset from the target.
-         */
-        "offset"?: number;
-        /**
-          * Horizontal offset from the target.
-         */
-        "offsetX"?: number;
-        /**
-          * Vertical offset from the target.
-         */
-        "offsetY"?: number;
-        /**
           * How to position the tooltip.
          */
         "placement"?: TooltipPlacement;
@@ -1998,18 +1986,6 @@ declare namespace LocalJSX {
           * Add fixed strategy to popper.
          */
         "fixed"?: boolean;
-        /**
-          * Vertical & horizontal offset from the target.
-         */
-        "offset"?: number;
-        /**
-          * Horizontal offset from the target.
-         */
-        "offsetX"?: number;
-        /**
-          * Vertical offset from the target.
-         */
-        "offsetY"?: number;
         /**
           * How to position the tooltip.
          */
