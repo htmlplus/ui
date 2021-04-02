@@ -852,12 +852,33 @@ export namespace Components {
         "type"?: ToastType;
     }
     interface PlusTooltip {
+        /**
+          * Tooltip disable.
+         */
         "disabled"?: boolean;
+        /**
+          * Add fixed strategy to popper.
+         */
         "fixed"?: boolean;
+        /**
+          * Vertical & horizontal offset from the target.
+         */
         "offset"?: number;
+        /**
+          * Horizontal offset from the target.
+         */
         "offsetX"?: number;
+        /**
+          * Vertical offset from the target.
+         */
         "offsetY"?: number;
+        /**
+          * How to position the tooltip.
+         */
         "placement"?: TooltipPlacement;
+        /**
+          * How tooltip is triggered, include click, hover, focus.
+         */
         "trigger"?: TooltipTrigger;
     }
     interface PlusTransition {
@@ -1969,12 +1990,33 @@ declare namespace LocalJSX {
         "type"?: ToastType;
     }
     interface PlusTooltip {
+        /**
+          * Tooltip disable.
+         */
         "disabled"?: boolean;
+        /**
+          * Add fixed strategy to popper.
+         */
         "fixed"?: boolean;
+        /**
+          * Vertical & horizontal offset from the target.
+         */
         "offset"?: number;
+        /**
+          * Horizontal offset from the target.
+         */
         "offsetX"?: number;
+        /**
+          * Vertical offset from the target.
+         */
         "offsetY"?: number;
+        /**
+          * How to position the tooltip.
+         */
         "placement"?: TooltipPlacement;
+        /**
+          * How tooltip is triggered, include click, hover, focus.
+         */
         "trigger"?: TooltipTrigger;
     }
     interface PlusTransition {
