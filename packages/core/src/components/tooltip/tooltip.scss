@@ -3,23 +3,31 @@
 @import 'tooltip.variables';
 
 :host {
-  --plus-tooltip-background: #{$tooltip-background};
-  --plus-tooltip-color: #{$tooltip-color};
-  --plus-tooltip-font-size: #{$tooltip-font-size};
-  --plus-tooltip-padding: #{$tooltip-padding};
-  --plus-tooltip-border-radius: #{$tooltip-border-radius};
+
+  /**
+   * @prop --plus-tooltip-background-color: TODO
+   * @prop --plus-tooltip-border-radius   : TODO
+   * @prop --plus-tooltip-color           : TODO
+   * @prop --plus-tooltip-padding         : TODO
+   * @prop --plus-tooltip-z-index         : TODO
+   */
+
+  --plus-tooltip-background-color: #{$tooltip-background-color};
+  --plus-tooltip-border-radius   : #{$tooltip-border-radius};
+  --plus-tooltip-color           : #{$tooltip-color};
+  --plus-tooltip-padding         : #{$tooltip-padding};
+  --plus-tooltip-z-index         : #{$tooltip-z-index};
 }
 
 .tooltip {
-  display: none;
-  background: var(--plus-tooltip-background);
+  background: var(--plus-tooltip-background-color);
   color: var(--plus-tooltip-color);
   padding: var(--plus-tooltip-padding);
-  font-size: var(--plus-tooltip-font-size);
-  font-weight: bold;
   border-radius: var(--plus-tooltip-border-radius);
+  z-index: var(--plus-tooltip-z-index);
+  display: none;
+  font-weight: bold;
   position: absolute;
-  z-index: 1000;
 }
 
 .show {
