@@ -76,7 +76,7 @@ class {
 ```js [javascript:script]
 const ensure = (type, event) => {
 
-  if (confirm(`Are you sure you want to ${type} it?`)) return;
+  if (window.confirm(`Are you sure you want to ${type} it?`)) return;
 
   event.preventDefault();
 }
