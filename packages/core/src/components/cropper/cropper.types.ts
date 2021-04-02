@@ -1,11 +1,10 @@
 export type CropperAspectRatio = string | number;
-export type CropperMode = 'crop' | 'move' | 'none';
-export type CropperResizer = 'main' | 'edge' | 'both';
+export type CropperMode = 'crop' | 'move';
+export type CropperResizer = 'main' | 'edge' | 'both'; // TODO: full, auto
 export type CropperResizerShape = 'square' | 'circle' | 'line';
 export type CropperResponsive = boolean | 'reset';
+export type CropperShape = 'rectangle' | 'square' | 'circle';
 export type CropperView = 'none' | 'fit' | 'contain' | 'cover';
-export type CropperViewport = 'static' | 'movable' | 'resizable' | 'both';
-export type CropperViewportShape = 'rectangle' | 'square' | 'circle';
 export type CropperZoomable = boolean | 'touch' | 'wheel';
 export interface CropperValue {
     top?: number;
