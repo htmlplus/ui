@@ -35,8 +35,8 @@ export class Divider {
 
   get attributes() {
     return {
-      role: 'separator',
-      'aria-orientation': this.vertical ? 'vertical' : 'horizontal'
+      'role': 'separator',
+      'aria-orientation': this.vertical ? 'vertical' : 'horizontal',
     }
   }
 

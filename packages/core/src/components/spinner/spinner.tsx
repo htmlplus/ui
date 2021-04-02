@@ -31,6 +31,13 @@ export class Spinner {
   })
   config?;
 
+  get attributes() {
+    return {
+      'role': 'status',
+      // TODO 'aria-hidden': true
+    }
+  }
+
   get elements() {
 
     const map = {
@@ -45,7 +52,7 @@ export class Spinner {
 
   render() {
     return (
-      <Host>
+      <Host {...this.attributes}>
         <div class="wrapper">
           {this.elements.map((element) => <div key={element} />)}
         </div>

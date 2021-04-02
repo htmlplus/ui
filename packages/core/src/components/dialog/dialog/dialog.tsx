@@ -153,6 +153,13 @@ export class Dialog {
     toggle: () => this.tryToggle()
   };
 
+  get attributes() {
+    return {
+      'aria-hidden': true,
+      'tabindex': -1
+    }
+  }
+
   get classes() {
 
     let placement = (this.placement || '');
@@ -200,35 +207,8 @@ export class Dialog {
   }
 
   /**
-   * Methods
+   * Internal Methods
    */
-
-  @Watch('connector')
-  connectorWatcher() {
-    rebind(this);
-  }
-
-  @Watch('open')
-  openWatcher() {
-
-    if (this.open) {
-
-      if (this.isOpen) return;
-
-      this.animation.enter({
-        onEnter: () => this.show()
-      })
-    }
-    else {
-
-      if (!this.isOpen) return;
-
-      this.animation.leave({
-        onLeave: () => this.broadcast(false),
-        onLeaved: () => this.hide(),
-      })
-    }
-  }
 
   broadcast(value) {
     this.link.open = value;
@@ -324,7 +304,7 @@ export class Dialog {
   }
 
   /**
-   * Attributes
+   * Internal Methods / Attributes
    */
 
   setAttributes() {
@@ -340,7 +320,7 @@ export class Dialog {
   }
 
   /**
-   * Events
+   * Internal Methods / Events
    */
 
   setEvents() {
@@ -352,7 +332,7 @@ export class Dialog {
   }
 
   /**
-   * z-index
+   * Internal Methods / z-index
    */
 
   setZIndex() {
@@ -368,6 +348,37 @@ export class Dialog {
 
   resetZIndex() {
     this.$host.style.zIndex = null;
+  }
+
+  /**
+  * Watchers
+  */
+
+  @Watch('connector')
+  connectorWatcher() {
+    rebind(this);
+  }
+
+  @Watch('open')
+  openWatcher() {
+
+    if (this.open) {
+
+      if (this.isOpen) return;
+
+      this.animation.enter({
+        onEnter: () => this.show()
+      })
+    }
+    else {
+
+      if (!this.isOpen) return;
+
+      this.animation.leave({
+        onLeave: () => this.broadcast(false),
+        onLeaved: () => this.hide(),
+      })
+    }
   }
 
   /**
@@ -411,7 +422,7 @@ export class Dialog {
 
   render() {
     return (
-      <Host aria-hidden="true" tabindex="-1">
+      <Host {...this.attributes}>
         {this.backdrop && (<div class="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">

@@ -1,23 +1,7 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/services';
-import { ToastPlacement, ToastType } from './toast.types';
-
-// TODO
-// "closeButton": false,
-// "debug": false,
-// "newestOnTop": false,
-// "progressBar": false,
-// "positionClass": "toast-top-full-width",
-// "preventDuplicates": false,
-// "onclick": null,
-// "showDuration": "300",
-// "hideDuration": "1000",
-// "timeOut": "5000",
-// "extendedTimeOut": "1000",
-// "showEasing": "swing",
-// "hideEasing": "linear",
-// "showMethod": "fadeIn",
-// "hideMethod": "fadeOut"
+import * as Utils from '@app/utils';
+import { GlobalConfig, GlobalState } from '@app/services';
+import { ToastGlobalState, ToastPlacement } from './toast.types';
 
 /**
  * TODO
@@ -34,9 +18,39 @@ export class Toast {
 
   /**
    * TODO
+   * closeButton
+   * preventDuplicates
+   * icon
+   * queueable - Wait for previous to dismiss before showing new
+   * dismissable - Dismiss on click
+   * One notification at a time
+   * override/queue
+   * 
+   * offset/gutter
+   * progress
+   * type
+   * 
+   * https://izitoast.marcelodolza.com/
+   * https://vuetifyjs.com/en/components/snackbars/
+   */
+
+  /**
+   * TODO
    */
   @Prop()
   duration?: number = 5000;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  fixed?: boolean = true;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  fullWidth?: boolean;
 
   /**
    * TODO
@@ -48,13 +62,19 @@ export class Toast {
    * TODO
    */
   @Prop()
+  persistent?: boolean;
+
+  /**
+   * TODO
+   */
+  @Prop()
   placement?: ToastPlacement = 'top-end';
 
   /**
    * TODO
    */
   @Prop()
-  type?: ToastType = 'default';
+  reverse?: boolean;
 
   /**
    * TODO
@@ -94,14 +114,51 @@ export class Toast {
 
   @GlobalConfig('toast', {
     duration: 5000,
-    placement: 'top-end',
-    type: 'default',
+    fixed: true,
+    placement: 'top-end'
   })
   config?;
 
+  @GlobalState()
+  state: ToastGlobalState = {
+    instances: []
+  };
+
+  get attributes() {
+    return {
+      'role': 'alert',
+      'aria-live': 'assertive',
+      'aria-atomic': 'true'
+    }
+  }
+
+  get isRTL() {
+    return Utils.isRTL(this);
+  }
+
+  /**
+   * External Methods
+   */
+
+  /**
+   * Internal Methods
+   */
+
+  /**
+   * Watchers
+   */
+
+  /**
+   * Events handler
+   */
+
+  /**
+   * Lifecycles
+   */
+
   render() {
     return (
-      <Host>
+      <Host {...this.attributes}>
         <slot />
       </Host>
     )

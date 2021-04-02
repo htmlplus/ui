@@ -185,6 +185,7 @@ export class Tooltip {
    */
 
   bind() {
+    if (this.disabled) return;
     this.eventsName.show.map((eventName) => this.$activator.addEventListener(eventName, this.onShow));
     this.eventsName.hide.map((eventName) => this.$activator.addEventListener(eventName, this.onHide));
   }
@@ -230,7 +231,7 @@ export class Tooltip {
    */
 
   connectedCallback() {
-    !this.disabled && this.bind();
+    this.bind();
   }
 
   disconnectedCallback() {

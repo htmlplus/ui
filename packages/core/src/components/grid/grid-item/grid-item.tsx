@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/services';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 
@@ -298,7 +298,9 @@ export class GridItem {
 
   render() {
     return (
-      <slot />
-    );
+      <Host>
+        <slot />
+      </Host>
+    )
   }
 }
