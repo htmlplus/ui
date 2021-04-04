@@ -17,7 +17,7 @@ import { LayoutBottom, LayoutMain, LayoutTop } from "./components/layout/layout.
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
-import { ToastPlacement, ToastType } from "./components/toast/toast.types";
+import { ToastPlacement } from "./components/toast/toast.types";
 import { TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./services/tunnel/tunnel.types";
@@ -812,6 +812,12 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface PlusTemplate {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
     interface PlusToast {
         /**
           * TODO
@@ -820,7 +826,15 @@ export namespace Components {
         /**
           * TODO
          */
+        "fullWidth"?: boolean;
+        /**
+          * TODO
+         */
         "open"?: boolean;
+        /**
+          * TODO
+         */
+        "persistent"?: boolean;
         /**
           * TODO
          */
@@ -828,7 +842,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "type"?: ToastType;
+        "reverse"?: boolean;
     }
     interface PlusTooltip {
         /**
@@ -1057,6 +1071,12 @@ declare global {
         prototype: HTMLPlusTabsTabElement;
         new (): HTMLPlusTabsTabElement;
     };
+    interface HTMLPlusTemplateElement extends Components.PlusTemplate, HTMLStencilElement {
+    }
+    var HTMLPlusTemplateElement: {
+        prototype: HTMLPlusTemplateElement;
+        new (): HTMLPlusTemplateElement;
+    };
     interface HTMLPlusToastElement extends Components.PlusToast, HTMLStencilElement {
     }
     var HTMLPlusToastElement: {
@@ -1112,6 +1132,7 @@ declare global {
         "plus-tabs-panel": HTMLPlusTabsPanelElement;
         "plus-tabs-panels": HTMLPlusTabsPanelsElement;
         "plus-tabs-tab": HTMLPlusTabsTabElement;
+        "plus-template": HTMLPlusTemplateElement;
         "plus-toast": HTMLPlusToastElement;
         "plus-tooltip": HTMLPlusTooltipElement;
         "plus-transition": HTMLPlusTransitionElement;
@@ -1921,11 +1942,21 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface PlusTemplate {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
     interface PlusToast {
         /**
           * TODO
          */
         "duration"?: number;
+        /**
+          * TODO
+         */
+        "fullWidth"?: boolean;
         /**
           * TODO
          */
@@ -1949,11 +1980,15 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
+        "persistent"?: boolean;
+        /**
+          * TODO
+         */
         "placement"?: ToastPlacement;
         /**
           * TODO
          */
-        "type"?: ToastType;
+        "reverse"?: boolean;
     }
     interface PlusTooltip {
         /**
@@ -2047,6 +2082,7 @@ declare namespace LocalJSX {
         "plus-tabs-panel": PlusTabsPanel;
         "plus-tabs-panels": PlusTabsPanels;
         "plus-tabs-tab": PlusTabsTab;
+        "plus-template": PlusTemplate;
         "plus-toast": PlusToast;
         "plus-tooltip": PlusTooltip;
         "plus-transition": PlusTransition;
@@ -2087,6 +2123,7 @@ declare module "@stencil/core" {
             "plus-tabs-panel": LocalJSX.PlusTabsPanel & JSXBase.HTMLAttributes<HTMLPlusTabsPanelElement>;
             "plus-tabs-panels": LocalJSX.PlusTabsPanels & JSXBase.HTMLAttributes<HTMLPlusTabsPanelsElement>;
             "plus-tabs-tab": LocalJSX.PlusTabsTab & JSXBase.HTMLAttributes<HTMLPlusTabsTabElement>;
+            "plus-template": LocalJSX.PlusTemplate & JSXBase.HTMLAttributes<HTMLPlusTemplateElement>;
             "plus-toast": LocalJSX.PlusToast & JSXBase.HTMLAttributes<HTMLPlusToastElement>;
             "plus-tooltip": LocalJSX.PlusTooltip & JSXBase.HTMLAttributes<HTMLPlusTooltipElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
