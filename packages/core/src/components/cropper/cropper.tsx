@@ -3,7 +3,6 @@ import CropperCore from 'cropperjs';
 import * as Utils from '@app/utils';
 import { Bind, GlobalConfig } from '@app/services';
 import {
-  CropperAspectRatio,
   CropperValue,
   CropperMode,
   CropperResizer,
@@ -18,7 +17,7 @@ import {
 /**
  * An image cropper is a web & mobile component which enable the user to resize, move, crop 
  * an area of images before they're uploaded to the server.
- * @examples default, aspect-ratio, backdrop, background, guides, indicator, mode, shape
+ * @examples default, area, aspect-ratio, backdrop, background, guides, indicator, mode, shape
  */
 @Component({
   tag: 'plus-cropper',
@@ -28,10 +27,16 @@ import {
 export class Cropper {
 
   /**
+   * A number between 0 and 1. Define the automatic cropping area size.
+   */
+  @Prop()
+  area?: number = 0.75;
+
+  /**
    * Defines the initial aspect ratio of the viewport.
    */
   @Prop()
-  aspectRatio?: CropperAspectRatio;
+  aspectRatio?: number;
 
   /**
    * Shows the black modal above the image and under the viewport.
@@ -174,6 +179,7 @@ export class Cropper {
   plusZoom!: EventEmitter<CropperZoomData>;
 
   @GlobalConfig('crop', {
+    area: 0.75,
     backdrop: true,
     mode: 'move',
     resizer: 'both',
@@ -193,7 +199,6 @@ export class Cropper {
 
   instance?: CropperCore;
 
-  // TODO
   lock: boolean = false;
 
   get classes() {
@@ -215,7 +220,7 @@ export class Cropper {
 
       if (typeof this.aspectRatio === 'string') {
 
-        const [valueA, valueB] = this.aspectRatio.split('/').map((item) => parseFloat(item));
+        const [valueA, valueB] = `${this.aspectRatio}`.split('/').map((item) => parseFloat(item));
 
         const value = valueA / (valueB || 1);
 
@@ -244,19 +249,21 @@ export class Cropper {
     })();
 
     return {
-      // TODO
-      // autoCrop        : true,
-      // autoCropArea    : this.autoCropArea,
-      // checkCrossOrigin: true,
-      // checkOrientation: true,
-      // minCanvasWidth  : this.canvasMinWidth,
-      // minCanvasHeight : this.canvasMinHeight,
-      // minCropBoxWidth : this.viewportMinWidth,
-      // minCropBoxHeight: this.viewportMinHeight,
-      // preview         : HTMLElement | HTMLElement[] | NodeListOf<HTMLElement> | string,
-      // cropstart       : (e) => console.log('cropstart', e),
-      // cropmove        : (e) => console.log('cropmove', e),
-      // cropend         : (e) => console.log('cropend', e),
+      /**
+       * TODO
+       * autoCrop        : true,
+       * checkCrossOrigin: true,
+       * checkOrientation: true,
+       * minCanvasWidth  : this.canvasMinWidth,
+       * minCanvasHeight : this.canvasMinHeight,
+       * minCropBoxWidth : this.viewportMinWidth,
+       * minCropBoxHeight: this.viewportMinHeight,
+       * preview         : HTMLElement | HTMLElement[] | NodeListOf<HTMLElement> | string,
+       * cropstart       : (e) => console.log('cropstart', e),
+       * cropmove        : (e) => console.log('cropmove', e),
+       * cropend         : (e) => console.log('cropend', e),
+       */
+      autoCropArea: parseFloat(`${this.area}`),
       aspectRatio: this.shape === 'rectangle' ? aspectRatio : 1,
       background: Utils.toBoolean(this.background),
       center: Utils.toBoolean(this.indicator),
@@ -270,7 +277,7 @@ export class Cropper {
       minContainerWidth: 0,
       minContainerHeight: 0,
       modal: Utils.toBoolean(this.backdrop),
-      movable: true, // TODO: make auto
+      movable: true,
       responsive: !!responsive,
       restore: responsive === 'reset',
       rotatable: true,
@@ -603,6 +610,7 @@ export class Cropper {
   }
 
   render() {
+    console.log(this.options, this.area)
     return (
       <Host>
         <div class={this.classes}>
