@@ -3,5 +3,99 @@
 @import 'toast.variables';
 
 :host {
-  display: block;
+  display: none;
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+
+:host([open]) {
+  display: inline;
+}
+
+:host([placement*=top]) {
+  top: 0;
+}
+
+:host([placement*=bottom]) {
+  bottom: 0;
+}
+
+.container {
+  position: fixed;
+  background-color: red;
+}
+
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.ltr {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.rtl {
+  right: 50%;
+  transform: translate(50%, 0);
+}
+
+.right,
+.left {
+  transform: translate(0, 0);
+}
+
+.right.ltr,
+.left.rtl {
+  right: 0;
+  left: unset;
+}
+
+.right.rtl,
+.left.ltr {
+  right: unset;
+  left: 0;
+}
+
+:host(.fade.toast-enter-active),
+:host(.fade.toast-leave-active) {
+  .container {
+    transition: 0.3s;
+  }
+}
+
+:host(.fade.toast-enter),
+:host(.fade.toast-leave-active) {
+  .container {
+    &.top {
+      transform: translate(-50%, -100%);
+    }
+    &.bottom {
+      transform: translate(-50%, 100%);
+    }
+    &.right {
+      transform: translate(100%, 0);
+    }
+    &.left {
+      transform: translate(-100%, 0);
+    }
+  }
+}
+
+:host(.fade.toast-leave),
+:host(.fade.toast-enter-active) {
+  .container {
+    &.top,
+    &.bottom {
+      transform: translate(-50%, 0);
+    }
+    &.right,
+    &.left {
+      transform: translate(0, 0);
+    }
+  }
 }

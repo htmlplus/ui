@@ -830,10 +830,6 @@ export namespace Components {
         /**
           * TODO
          */
-        "fixed"?: boolean;
-        /**
-          * TODO
-         */
         "fullWidth"?: boolean;
         /**
           * TODO
@@ -1965,10 +1961,6 @@ declare namespace LocalJSX {
           * TODO
          */
         "duration"?: number;
-        /**
-          * TODO
-         */
-        "fixed"?: boolean;
         /**
           * TODO
          */
