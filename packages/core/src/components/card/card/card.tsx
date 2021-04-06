@@ -41,7 +41,7 @@ export class Card {
   tile?: boolean;
 
   @GlobalConfig('card')
-  config?;
+  config!: any;
 
   render() {
     return (

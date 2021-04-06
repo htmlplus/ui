@@ -209,7 +209,7 @@ export class Toast {
    */
 
   broadcast(value) {
-
+    value;
   }
 
   dispose() {

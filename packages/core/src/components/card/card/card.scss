@@ -20,14 +20,15 @@
 }
 
 :host {
+    background-color: var(--plus-card-background-color);
+    border-radius: var(--plus-card-border-radius);
+    box-shadow: var(--plus-card-box-shadow);
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
     background-clip: border-box;
-    background-color: var(--plus-card-background-color);
-    border-radius: var(--plus-card-border-radius);
 }
 
 :host([flat]) {
