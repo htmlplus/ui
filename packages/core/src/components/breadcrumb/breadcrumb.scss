@@ -1,0 +1,39 @@
+@import 'all';
+@import 'reset';
+@import 'breadcrumb.variables';
+
+:host {
+
+  /**
+    * @prop --plus-breadcrumb-gutter         : TODO
+    * @prop --plus-breadcrumb-separator-color: TODO
+    * @prop --plus-breadcrumb-separator-size : TODO
+    */
+
+  --plus-breadcrumb-gutter         : #{$breadcrumb-gutter};
+  --plus-breadcrumb-separator-color: #{$breadcrumb-separator-color};
+  --plus-breadcrumb-separator-size : #{$breadcrumb-separator-size};
+}
+
+:host {
+  display: block;
+}
+
+.root { 
+  display: flex;
+  column-gap: var(--plus-breadcrumb-gutter);
+  align-items: center;
+}
+
+.separator {
+  width: var(--plus-breadcrumb-separator-size);
+  height: var(--plus-breadcrumb-separator-size);
+}
+
+svg {
+  fill: var(--plus-breadcrumb-separator-color);
+}
+
+.reverse {
+  transform: scaleX(-1);
+}

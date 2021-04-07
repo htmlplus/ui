@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
+import { BreadcrumbSeparator } from "./components/breadcrumb/breadcrumb.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
@@ -27,6 +28,12 @@ export namespace Components {
           * Specifies the ratio.
          */
         "value"?: AspectRatioValue;
+    }
+    interface PlusBreadcrumb {
+        /**
+          * TODO
+         */
+        "separator"?: BreadcrumbSeparator;
     }
     interface PlusCard {
         /**
@@ -897,6 +904,12 @@ declare global {
         prototype: HTMLPlusAspectRatioElement;
         new (): HTMLPlusAspectRatioElement;
     };
+    interface HTMLPlusBreadcrumbElement extends Components.PlusBreadcrumb, HTMLStencilElement {
+    }
+    var HTMLPlusBreadcrumbElement: {
+        prototype: HTMLPlusBreadcrumbElement;
+        new (): HTMLPlusBreadcrumbElement;
+    };
     interface HTMLPlusCardElement extends Components.PlusCard, HTMLStencilElement {
     }
     var HTMLPlusCardElement: {
@@ -1103,6 +1116,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "plus-aspect-ratio": HTMLPlusAspectRatioElement;
+        "plus-breadcrumb": HTMLPlusBreadcrumbElement;
         "plus-card": HTMLPlusCardElement;
         "plus-card-body": HTMLPlusCardBodyElement;
         "plus-card-footer": HTMLPlusCardFooterElement;
@@ -1145,6 +1159,12 @@ declare namespace LocalJSX {
           * Specifies the ratio.
          */
         "value"?: AspectRatioValue;
+    }
+    interface PlusBreadcrumb {
+        /**
+          * TODO
+         */
+        "separator"?: BreadcrumbSeparator;
     }
     interface PlusCard {
         /**
@@ -2053,6 +2073,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "plus-aspect-ratio": PlusAspectRatio;
+        "plus-breadcrumb": PlusBreadcrumb;
         "plus-card": PlusCard;
         "plus-card-body": PlusCardBody;
         "plus-card-footer": PlusCardFooter;
@@ -2094,6 +2115,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plus-aspect-ratio": LocalJSX.PlusAspectRatio & JSXBase.HTMLAttributes<HTMLPlusAspectRatioElement>;
+            "plus-breadcrumb": LocalJSX.PlusBreadcrumb & JSXBase.HTMLAttributes<HTMLPlusBreadcrumbElement>;
             "plus-card": LocalJSX.PlusCard & JSXBase.HTMLAttributes<HTMLPlusCardElement>;
             "plus-card-body": LocalJSX.PlusCardBody & JSXBase.HTMLAttributes<HTMLPlusCardBodyElement>;
             "plus-card-footer": LocalJSX.PlusCardFooter & JSXBase.HTMLAttributes<HTMLPlusCardFooterElement>;

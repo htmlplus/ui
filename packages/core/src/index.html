@@ -7,10 +7,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
+  <!-- <script>
+    window.htmlplus = {
+      components: {
+        alert: {
+          slots: {
+            icon: (element) => {
+              return element.type;
+            }
+          }
+        }
+      }
+    }
+  </script> -->
 </head>
 
-<body>
-
+<body style="color: currentColor; direction: rtl;">
+  <plus-breadcrumb>
+    <a href="/as" slot="a1">a1</a>
+    <a href="/as" slot="a2">a2</a>
+    <a href="/as" slot="a3">a3</a>
+    <h1>
+      text
+    </h1>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator=none>
+    <a href="/as" slot="a1">a1</a>
+    <a href="/as" slot="a2">a2</a>
+    <a href="/as" slot="a3">a3</a>
+    <h1>
+      text
+    </h1>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator=line>
+    <a href="/as" slot="a1">a1</a>
+    <a href="/as" slot="a2">a2</a>
+    <a href="/as" slot="a3">a3</a>
+    <h1>
+      text
+    </h1>
+  </plus-breadcrumb>
+  <plus-breadcrumb>
+    <template slot=separator>
+      <svg viewBox="0 0 50 50">
+        <g>
+          <polygon
+            points="1,26 44.586,26 38.293,32.293 39.707,33.707 48.414,25 39.707,16.293 38.293,17.707 44.586,24 1,24  " />
+        </g>
+      </svg>
+    </template>
+    <a href="/as" slot="a1">a1</a>
+    <a href="/as" slot="a2">a2</a>
+    <a href="/as" slot="a3">a3</a>
+    <h1>
+      text
+    </h1>
+  </plus-breadcrumb>
+  <!-- <plus-toast id="t1" class="fade" placement="bottom-left">
+    toassssssssssssssssssssssssst 1
+  </plus-toast>
+  <button onclick="a1()">
+    open1
+  </button>
+  <plus-toast id="t2" class="fade" placement="bottom">
+    toassssssssssssssssssssssssst 2
+  </plus-toast>
+  <button onclick="a2()">
+    open2
+  </button>
+  <plus-toast id="t3" class="fade" placement="bottom-right">
+    toassssssssssssssssssssssssst 3
+  </plus-toast>
+  <button onclick="a3()">
+    open3
+  </button>
+  <script>
+    function a1() {
+      t1.open = true;
+    }
+    function a2() {
+      t2.open = true;
+    }
+    function a3() {
+      t3.open = true;
+    }
+  </script> -->
 </body>
 
 </html>

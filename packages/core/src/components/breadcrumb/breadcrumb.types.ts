@@ -1,0 +1,1 @@
+export type BreadcrumbSeparator = 'none' | 'space' | 'arrow';
