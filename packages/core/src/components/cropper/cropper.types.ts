@@ -1,4 +1,3 @@
-export type CropperAspectRatio = string | number;
 export type CropperMode = 'crop' | 'move';
 export type CropperResizer = 'main' | 'edge' | 'both'; // TODO: full, auto
 export type CropperResizerShape = 'square' | 'circle' | 'line';

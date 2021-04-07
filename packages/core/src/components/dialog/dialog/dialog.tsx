@@ -154,10 +154,20 @@ export class Dialog {
   };
 
   get attributes() {
-    return {
-      'aria-hidden': true,
+
+    const attributes = {
       'tabindex': -1
     }
+
+    if (this.open) {
+      attributes['role'] = 'dialog';
+      attributes['aria-modal'] = 'true';
+    }
+    else {
+      attributes['aria-hidden'] = 'true';
+    }
+
+    return attributes;
   }
 
   get classes() {
@@ -224,7 +234,6 @@ export class Dialog {
 
   hide() {
 
-    this.resetAttributes();
     this.resetEvents();
     ClickOutside.remove(this.$cell);
     Scrollbar.reset(this);
@@ -241,7 +250,6 @@ export class Dialog {
 
   show() {
 
-    this.setAttributes();
     this.setEvents();
     ClickOutside.add(this.$cell, this.onOutsideClick, false);
     Scrollbar.remove(this);
@@ -301,22 +309,6 @@ export class Dialog {
     ClickOutside.remove(this.$cell);
     Scrollbar.reset(this);
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
-  }
-
-  /**
-   * Internal Methods / Attributes
-   */
-
-  setAttributes() {
-    this.$host.removeAttribute('aria-hidden');
-    this.$host.setAttribute('aria-modal', 'true');
-    this.$host.setAttribute('role', 'dialog');
-  }
-
-  resetAttributes() {
-    this.$host.setAttribute('aria-hidden', 'true');
-    this.$host.removeAttribute('aria-modal');
-    this.$host.removeAttribute('role');
   }
 
   /**

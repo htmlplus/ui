@@ -36,7 +36,7 @@ class {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </plus-dialog-body>
             <plus-dialog-footer>
-              <plus-dialog-toggler connector="dialog-prevent">
+              <plus-dialog-toggler>
                 Close
               </plus-dialog-toggler>
             </plus-dialog-footer>
@@ -65,7 +65,7 @@ class {
       consequat.
     </plus-dialog-body>
     <plus-dialog-footer>
-      <plus-dialog-toggler connector="dialog-prevent">
+      <plus-dialog-toggler>
         Close
       </plus-dialog-toggler>
     </plus-dialog-footer>

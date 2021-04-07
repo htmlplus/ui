@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { BreadcrumbSeparator } from "./components/breadcrumb/breadcrumb.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -71,9 +71,13 @@ export namespace Components {
     }
     interface PlusCropper {
         /**
+          * A number between 0 and 1. Define the automatic cropping area size.
+         */
+        "area"?: number;
+        /**
           * Defines the initial aspect ratio of the viewport.
          */
-        "aspectRatio"?: CropperAspectRatio;
+        "aspectRatio"?: number;
         /**
           * Shows the black modal above the image and under the viewport.
          */
@@ -1206,9 +1210,13 @@ declare namespace LocalJSX {
     }
     interface PlusCropper {
         /**
+          * A number between 0 and 1. Define the automatic cropping area size.
+         */
+        "area"?: number;
+        /**
           * Defines the initial aspect ratio of the viewport.
          */
-        "aspectRatio"?: CropperAspectRatio;
+        "aspectRatio"?: number;
         /**
           * Shows the black modal above the image and under the viewport.
          */
