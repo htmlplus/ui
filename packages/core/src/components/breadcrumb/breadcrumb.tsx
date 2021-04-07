@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h, forceUpdate } from '@stencil/core';
+import { Component, Element, Host, Prop, State, h, forceUpdate } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/services';
 import * as Utils from '@app/utils';
 import * as BREADCRUMB_SHAPES from './breadcrumb.shapes';
@@ -31,11 +31,13 @@ export class Breadcrumb {
   @Element()
   $host!: HTMLElement;
 
-  observer?: MutationObserver;
+  @State()
+  $children?: Array<Element>;
 
-  get $nodes() {
-    return Array.from(this.$host.children);
-  }
+  @State()
+  template?: string;
+
+  observer?: MutationObserver;
 
   get attributes() {
     return {
@@ -47,10 +49,6 @@ export class Breadcrumb {
     return Utils.isRTL(this);
   }
 
-  get template() {
-    return this.$host.querySelector('template[slot=separator]')?.cloneNode(true)['content'];
-  }
-
   /**
    * Internal Methods
    */
@@ -60,12 +58,45 @@ export class Breadcrumb {
     this.observer.observe(this.$host, { childList: true });
   }
 
+  child(key) {
+
+    const result = [
+      <div key={key}>
+        <slot name={key.toString()} />
+      </div>
+    ];
+
+    if (this.separator === 'none') return result;
+
+    if (this.$children.length - 1 === key) return result;
+
+    const Shape = BREADCRUMB_SHAPES[this.separator];
+
+    result.push(
+      <div
+        key={key}
+        class={{ separator: true, rtl: this.isRTL }}
+        innerHTML={this.template ? this.template : undefined}
+      >
+        {!this.template && <Shape />}
+      </div>
+    )
+
+    return result;
+  }
+
   unbind() {
     this.observer?.disconnect();
   }
 
   update(force?: boolean) {
-    this.$nodes.map(($node, index) => $node.slot = `${index}`);
+
+    this.$children = Array.from(this.$host.children).filter(($child) => $child.tagName !== 'TEMPLATE');
+
+    this.$children.map(($child, index) => $child.slot = index.toString());
+
+    this.template = this.$host.querySelector('template[slot=separator]')?.cloneNode(true)['innerHTML'] || this.config?.slots.separator;
+
     force && forceUpdate(this);
   }
 
@@ -82,7 +113,7 @@ export class Breadcrumb {
    * Lifecycles
    */
 
-  componentDidLoad() {
+  connectedCallback() {
     this.bind();
     this.update();
   }
@@ -91,40 +122,11 @@ export class Breadcrumb {
     this.unbind();
   }
 
-  node(key) {
-
-    const result = [
-      <div key={key}>
-        <slot name={key.toString()} />
-      </div>
-    ];
-
-    if(this.template) {
-      console.log(this.template.children[0].outerHTML)
-      // Array.from(this.template.children).map(result)
-      result.push(<div class="separator reverse" innerHTML={this.template.children[0].outerHTML}></div>);
-
-      return result
-    }
-
-    if (this.separator === 'none') return result;
-
-    if (this.$nodes.length - 1 === key) return result;
-
-    const Shape = BREADCRUMB_SHAPES[this.separator];
-
-    if (!Shape) return result;
-
-    result.push(<div key={key} class={`separator ${this.isRTL ? 'reverse' : ''}`}><Shape /></div>);
-
-    return result;
-  }
-
   render() {
     return (
       <Host {...this.attributes}>
         <div class="root">
-          {this.$nodes.map(($node, index) => $node && this.node(index))}
+          {this.$children.map(($child, index) => $child && this.child(index))}
         </div>
       </Host>
     )

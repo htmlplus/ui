@@ -20,20 +20,23 @@
 }
 
 .root { 
-  display: flex;
   column-gap: var(--plus-breadcrumb-gutter);
+  display: flex;
   align-items: center;
 }
 
 .separator {
+  color: var(--plus-breadcrumb-separator-color);
   width: var(--plus-breadcrumb-separator-size);
   height: var(--plus-breadcrumb-separator-size);
 }
 
-svg {
-  fill: var(--plus-breadcrumb-separator-color);
+.rtl {
+  transform: scaleX(-1);
 }
 
-.reverse {
-  transform: scaleX(-1);
+svg {
+  fill: var(--plus-breadcrumb-separator-color);
+  width: 100%;
+  height: 100%;
 }

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
-  <!-- <script>
+  <script>
     window.htmlplus = {
       components: {
         alert: {
@@ -16,13 +16,36 @@
               return element.type;
             }
           }
+        },
+        breadcrumb: {
+          slots: {
+            separator: (element) => {
+              if (element.separator !== 'arrow') return '@@@'
+            }
+          }
         }
       }
     }
-  </script> -->
+  </script>
 </head>
 
-<body style="color: currentColor; direction: rtl;">
+<body>
+  <plus-breadcrumb separator=line>
+    <a href="/as" slot="a1">a1</a>
+    <a href="/as" slot="a2">a2</a>
+    <a href="/as" slot="a3">a3</a>
+    <h1>
+      text
+    </h1>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator=arrow>
+    <a href="/as" slot="a1">a1</a>
+    <a href="/as" slot="a2">a2</a>
+    <a href="/as" slot="a3">a3</a>
+    <h1>
+      text
+    </h1>
+  </plus-breadcrumb>
   <plus-breadcrumb>
     <a href="/as" slot="a1">a1</a>
     <a href="/as" slot="a2">a2</a>
@@ -40,6 +63,9 @@
     </h1>
   </plus-breadcrumb>
   <plus-breadcrumb separator=line>
+    <template slot=separator>
+      $
+    </template>
     <a href="/as" slot="a1">a1</a>
     <a href="/as" slot="a2">a2</a>
     <a href="/as" slot="a3">a3</a>
