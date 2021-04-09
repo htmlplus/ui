@@ -5,4 +5,5 @@ export const angleDouble = () => <svg viewBox="0 0 50 50"><g><polygon points="17
 export const line = () => <svg viewBox="0 0 50 50"><g><rect height="2" width="48" x="1" y="24"/></g><g/></svg>;
 export const none = () => undefined;
 export const space = () => undefined;
-export const arrowdirection = () => <svg viewBox="0 0 50 50"><g><polygon points="1,26 44.586,26 38.293,32.293 39.707,33.707 48.414,25 39.707,16.293 38.293,17.707 44.586,24 1,24  "/></g></svg>;
+export const arrowDirection = () => <svg viewBox="0 0 50 50"><g><polygon points="1,26 44.586,26 38.293,32.293 39.707,33.707 48.414,25 39.707,16.293 38.293,17.707 44.586,24 1,24  "/></g></svg>;
+export const circle = () => <svg viewBox="0 0 50 50"><g><path d="M25,1C11.767,1,1,11.767,1,25s10.767,24,24,24s24-10.767,24-24S38.233,1,25,1z M25,47C12.869,47,3,37.131,3,25   S12.869,3,25,3s22,9.869,22,22S37.131,47,25,47z"/><polygon points="19.293,11.707 32.586,25 19.293,38.293 20.707,39.707 35.414,25 20.707,10.293  "/></g><g/></svg>

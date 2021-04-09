@@ -1,8 +1,7 @@
-import { Component, Element, Host, Prop, State, h, forceUpdate } from '@stencil/core';
+import { Component, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/services';
 import * as Utils from '@app/utils';
 import * as BREADCRUMB_SHAPES from './breadcrumb.shapes';
-import { BreadcrumbSeparator } from './breadcrumb.types';
 
 /**
  * TODO
@@ -21,10 +20,22 @@ export class Breadcrumb {
    * TODO
    */
   @Prop()
-  separator?: BreadcrumbSeparator = 'arrow';
+  offset?: number = 1;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  max?: number = 5;
+
+  /**
+   * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
+   */
+  @Prop()
+  separator?: string = '/';
 
   @GlobalConfig('breadcrumb', {
-    separator: 'arrow'
+    separator: '/'
   })
   config?;
 
@@ -32,16 +43,13 @@ export class Breadcrumb {
   $host!: HTMLElement;
 
   @State()
-  $children?: Array<Element>;
-
-  @State()
-  template?: string;
+  $nodes?: Array<Element>;
 
   observer?: MutationObserver;
 
   get attributes() {
     return {
-      'aria-label': 'Breadcrumb'
+      'aria-label': 'breadcrumb'
     }
   }
 
@@ -54,50 +62,125 @@ export class Breadcrumb {
    */
 
   bind() {
+
     this.observer = new MutationObserver(this.onChange);
+
     this.observer.observe(this.$host, { childList: true });
-  }
-
-  child(key) {
-
-    const result = [
-      <div key={key}>
-        <slot name={key.toString()} />
-      </div>
-    ];
-
-    if (this.separator === 'none') return result;
-
-    if (this.$children.length - 1 === key) return result;
-
-    const Shape = BREADCRUMB_SHAPES[this.separator];
-
-    result.push(
-      <div
-        key={key}
-        class={{ separator: true, rtl: this.isRTL }}
-        innerHTML={this.template ? this.template : undefined}
-      >
-        {!this.template && <Shape />}
-      </div>
-    )
-
-    return result;
   }
 
   unbind() {
     this.observer?.disconnect();
   }
 
-  update(force?: boolean) {
+  update(force?: boolean, expand?: boolean) {
 
-    this.$children = Array.from(this.$host.children).filter(($child) => $child.tagName !== 'TEMPLATE');
+    const $nodes = [];
 
-    this.$children.map(($child, index) => $child.slot = index.toString());
+    const Shape = BREADCRUMB_SHAPES[Utils.toCamelCase(this.separator)];
 
-    this.template = this.$host.querySelector('template[slot=separator]')?.cloneNode(true)['innerHTML'] || this.config?.slots.separator;
+    const template = this.$host.querySelector('template[slot=separator]')?.cloneNode(true)['innerHTML'] || this.config?.slots.separator;
+
+    const $children = Array.from(this.$host.children).filter(($node) => $node.tagName !== 'TEMPLATE');
+
+    const { start, length } = (() => {
+
+      if (expand || $children.length <= this.max) return {};
+
+      let start, length;
+
+      length = $children.length > this.max ? $children.length - this.max : $children.length;
+
+      const mod = $children.length - length;
+
+      start = this.offset;
+
+      if (start >= 0) {
+
+        start = $children.length < length + start ? mod : start;
+      }
+      else {
+
+        start = mod + start + 1;
+
+        start = start < 0 ? 0 : start;
+      }
+
+      return { start, length };
+    })();
+
+    $children.map(($child, index) => {
+
+      $child.removeAttribute('aria-current');
+
+      $child.setAttribute('slot', index.toString());
+
+      if (start <= index && index < start + length) return;
+
+      $nodes.push(
+        <div key={index}>
+          <slot name={index.toString()} />
+        </div>
+      )
+    });
+
+    if (typeof start !== 'undefined') {
+
+      const more = (
+        <div
+          key="more"
+          tabindex="0"
+          role="button"
+          aria-disabled="false"
+          aria-label="Show path"
+          onClick={() => this.update(false, true)}
+        >
+          <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+          </svg>
+        </div>
+      );
+
+      $nodes.splice(start, 0, more);
+    }
+
+    for (let index = $nodes.length - 1; index > 0; index--) {
+
+      const separator = (
+        <div
+          key={'separator' + index}
+          class={{ separator: true, rtl: this.isRTL }}
+          innerHTML={template ? template : undefined}
+        >
+          {!template && <Shape />}
+        </div>
+      );
+
+      $nodes.splice(index, 0, separator);
+    }
+
+    this.$nodes = $nodes;
 
     force && forceUpdate(this);
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return;
+
+    switch (name) {
+
+      case 'offset':
+      case 'max':
+      case 'separator':
+
+        this.update(false, false);
+
+        return false;
+    }
   }
 
   /**
@@ -106,7 +189,7 @@ export class Breadcrumb {
 
   @Bind
   onChange() {
-    this.update(true);
+    this.update(true, false);
   }
 
   /**
@@ -115,7 +198,7 @@ export class Breadcrumb {
 
   connectedCallback() {
     this.bind();
-    this.update();
+    this.update(false, false);
   }
 
   disconnectedCallback() {
@@ -124,9 +207,9 @@ export class Breadcrumb {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <Host {...this.attributes} >
         <div class="root">
-          {this.$children.map(($child, index) => $child && this.child(index))}
+          {this.$nodes}
         </div>
       </Host>
     )

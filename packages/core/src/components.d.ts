@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
-import { BreadcrumbSeparator } from "./components/breadcrumb/breadcrumb.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
@@ -33,7 +32,15 @@ export namespace Components {
         /**
           * TODO
          */
-        "separator"?: BreadcrumbSeparator;
+        "max"?: number;
+        /**
+          * TODO
+         */
+        "offset"?: number;
+        /**
+          * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
+         */
+        "separator"?: string;
     }
     interface PlusCard {
         /**
@@ -1168,7 +1175,15 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "separator"?: BreadcrumbSeparator;
+        "max"?: number;
+        /**
+          * TODO
+         */
+        "offset"?: number;
+        /**
+          * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
+         */
+        "separator"?: string;
     }
     interface PlusCard {
         /**

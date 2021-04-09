@@ -23,6 +23,7 @@
   column-gap: var(--plus-breadcrumb-gutter);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .separator {
