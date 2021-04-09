@@ -128,6 +128,7 @@ export class Breadcrumb {
       const more = (
         <div
           key="more"
+          class="more"
           tabindex="0"
           role="button"
           aria-disabled="false"
