@@ -10,6 +10,11 @@
     */
 
   --plus-breadcrumb-gutter: #{$breadcrumb-gutter};
+  --plus-breadcrumb-more-background-color: #{$breadcrumb-more-background-color};
+  --plus-breadcrumb-more-border-radius: #{$breadcrumb-more-border-radius};
+  --plus-breadcrumb-more-color: #{$breadcrumb-more-color};
+  --plus-breadcrumb-more-height: #{$breadcrumb-more-height};
+  --plus-breadcrumb-more-width: #{$breadcrumb-more-width};
   --plus-breadcrumb-separator-color: #{$breadcrumb-separator-color};
   --plus-breadcrumb-separator-size: #{$breadcrumb-separator-size};
 }
@@ -41,11 +46,20 @@ svg {
   height: 100%;
 }
 
-.more svg {
-  fill: var(--plus-breadcrumb-separator-color);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: block;
-  flex-shrink: 0;
+.more {
+  background-color: var(--plus-breadcrumb-more-background-color);
+  border-radius: var(--plus-breadcrumb-more-border-radius);
+  color: var(--plus-breadcrumb-more-color);
+  height: var(--plus-breadcrumb-more-height);
+  width: var(--plus-breadcrumb-more-width);
   user-select: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  &:focus {
+    outline: none;
+  }
+  svg {
+    fill: currentColor;
+    display: block;
+  }
 }
