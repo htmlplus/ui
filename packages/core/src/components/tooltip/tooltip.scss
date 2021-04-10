@@ -1,6 +1,7 @@
 @import 'all';
 @import 'reset';
 @import 'tooltip.variables';
+@import './animations/index';
 
 :host {
 
@@ -13,23 +14,43 @@
    */
 
   --plus-tooltip-background-color: #{$tooltip-background-color};
-  --plus-tooltip-border-radius   : #{$tooltip-border-radius};
-  --plus-tooltip-color           : #{$tooltip-color};
-  --plus-tooltip-padding         : #{$tooltip-padding};
-  --plus-tooltip-z-index         : #{$tooltip-z-index};
+  --plus-tooltip-border-radius: #{$tooltip-border-radius};
+  --plus-tooltip-color: #{$tooltip-color};
+  --plus-tooltip-padding: #{$tooltip-padding};
+  --plus-tooltip-z-index: #{$tooltip-z-index};
+  --plus-tooltip-animation: #{$tooltip-animation};
 }
 
-.tooltip {
-  background: var(--plus-tooltip-background-color);
-  color: var(--plus-tooltip-color);
-  padding: var(--plus-tooltip-padding);
-  border-radius: var(--plus-tooltip-border-radius);
-  z-index: var(--plus-tooltip-z-index);
-  display: none;
-  font-weight: bold;
-  position: absolute;
+:host {
+  .tooltip {
+    background: var(--plus-tooltip-background-color);
+    color: var(--plus-tooltip-color);
+    padding: var(--plus-tooltip-padding);
+    border-radius: var(--plus-tooltip-border-radius);
+    z-index: var(--plus-tooltip-z-index);
+    display: none;
+    font-weight: bold;
+    position: absolute;
+  }
 }
+//:host {
+//  [state='show'][animation='fade'] {}
+//  [state='show'][animation='shift-toward'] {}
+//  [state='show'][animation='shift-toward-subtle'] {}
+//  [state='show'][animation='shift-toward-extreme'] {}
+//  [state='show'][animation='shift-away'] {}
+//  [state='show'][animation='shift-away-subtle'] {}
+//  [state='show'][animation='shift-away-extreme'] {}
+//  [state='show'][animation='scale'] {}
+//  [state='show'][animation='scale-subtle'] {}
+//  [state='show'][animation='scale-extreme'] {}
+//  [state='show'][animation='perspective'] {}
+//  [state='show'][animation='perspective-subtle'] {}
+//  [state='show'][animation='perspective-extreme'] {}
+//}
+//.show {
+//  display: inline-block;
+//  -webkit-animation: fadeIn 1s;
+//  animation: fadeIn 1s;
+//}
 
-.show {
-  display: inline-block;
-}

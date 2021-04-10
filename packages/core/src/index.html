@@ -3,14 +3,126 @@
 
 <head>
   <title>CORE</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"/>
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
 </head>
+<style>
+  .d-flex {
+    display: flex;
+  }
 
+  .center {
+    justify-content: center;
+  }
+
+  .m-2 {
+    margin: 2rem;
+  }
+
+  .btn {
+    border: none;
+    background: white;
+    color: #5183f5;
+    border: 2px dashed #5183f5;
+    will-change: opacity;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    -webkit-transition: background 0.2s, color 0.1s;
+    transition: background 0.2s, color 0.1s;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .w-100 {
+    width: 15%;
+  }
+  .btn:hover {
+    background: #5183f5;
+    color: white;
+  }
+</style>
 <body>
-
+<div class="d-flex center">
+  <div class="w-100 m-2">
+    <button class="btn">
+      shift-away-subtle
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      shift-toward
+      <plus-tooltip animation="shift-toward" placement="top">Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      scale
+      <plus-tooltip animation="scale">Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      perspective
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+</div>
+<div class="d-flex center">
+  <div class="w-100 m-2">
+    <button class="btn">
+      shift-away-subtle
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      shift-toward-subtle
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      scale-subtle
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      perspective
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+</div>
+<div class="d-flex center">
+  <div class="w-100 m-2">
+    <button class="btn">
+      shift-away-extreme
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      shift-toward-extreme
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      scale-extreme
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      perspective-extreme
+      <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+</div>
 </body>
-
 </html>

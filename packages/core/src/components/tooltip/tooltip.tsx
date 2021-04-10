@@ -1,11 +1,12 @@
 import { Component, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
 import { createPopper, Instance } from "@popperjs/core";
-import { Bind, GlobalConfig } from '@app/services';
+import { Bind, GlobalConfig, Animation } from '@app/services';
 import * as Utils from '@app/utils';
-import { TooltipPlacement, TooltipTrigger } from './tooltip.types';
+import {TooltipAnimation, TooltipPlacement, TooltipTrigger} from './tooltip.types';
 
 /**
- * It's the often used to specify extra information about something when the user moves the mouse pointer over an element (Hover or Focus).
+ * It's the often used to specify extra information about something
+ * when the user moves the mouse pointer over an element (Hover or Focus).
  * @examples default, placement, trigger
  */
 @Component({
@@ -15,7 +16,7 @@ import { TooltipPlacement, TooltipTrigger } from './tooltip.types';
 })
 export class Tooltip {
 
-  // TODO 
+  // TODO
   // https://popper.js.org
   // https://atomiks.github.io/tippyjs
   // appendTo?: HTMLElement | Function | 'parent';
@@ -23,6 +24,12 @@ export class Tooltip {
   // delay?;
   // duration?:
   // and animation, aria, content, followCursor, getReferenceClientRect, hideOnClick, ignoreAttributes, inertia, inlinePositioning, interactive, interactiveBorder, interactiveDebounce, maxWidth, moveTransition, offset, onAfterUpdate, onBeforeUpdate, onClickOutside, onCreate, onDestroy, onHidden, onHide, onMount, onShow, onShown, onTrigger, onUntrigger, placement, plugins, popperOptions, render, role, showOnCreate, sticky, theme, touch, trigger, triggerTarget, zIndex
+
+  /**
+   * Tooltip animation.
+   */
+  @Prop({reflect: true})
+  animation?: TooltipAnimation = 'fade';
 
   /**
    * Tooltip disable.
@@ -57,7 +64,7 @@ export class Tooltip {
   /**
    * How to position the tooltip.
    */
-  @Prop()
+  @Prop({reflect: true})
   placement?: TooltipPlacement = 'auto';
 
   /**
@@ -114,6 +121,8 @@ export class Tooltip {
   @State()
   state?: 'show' | 'hide' = 'hide';
 
+  animationInstance!: Animation;
+
   @Element()
   $host!: HTMLElement;
 
@@ -126,7 +135,8 @@ export class Tooltip {
   get attributes() {
     return {
       role: 'tooltip',
-      state: this.state
+      state: this.state,
+      animation: this.animation
     }
   }
 
@@ -211,8 +221,8 @@ export class Tooltip {
   @Bind
   onHide() {
     this.instance?.destroy();
-    this.$tooltip.classList.remove('show');
     this.state = 'hide';
+    this.$tooltip.classList.remove('show');
     // this.plusClose.emit();
     // this.plusClosed.emit();
   }
@@ -220,8 +230,8 @@ export class Tooltip {
   @Bind
   onShow() {
     this.instance = createPopper(this.$activator, this.$tooltip, this.options);
-    this.$tooltip.classList.add('show');
     this.state = 'show';
+    this.$tooltip.classList.add('show');
     // this.plusOpen.emit();
     // this.plusOpened.emit();
   }
@@ -231,6 +241,7 @@ export class Tooltip {
    */
 
   connectedCallback() {
+    this.init();
     this.bind();
   }
 
