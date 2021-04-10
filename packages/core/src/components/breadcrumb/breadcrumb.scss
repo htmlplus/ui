@@ -3,28 +3,26 @@
 @import 'breadcrumb.variables';
 
 :host {
-  /**
-    * @prop --plus-breadcrumb-gutter         : TODO
-    * @prop --plus-breadcrumb-separator-color: TODO
-    * @prop --plus-breadcrumb-separator-size : TODO
-    */
 
-  --plus-breadcrumb-gutter: #{$breadcrumb-gutter};
+  /**
+   * @prop --plus-breadcrumb-gutter-x: TODO
+   */
+
+  --plus-breadcrumb-gutter-x             : #{$breadcrumb-gutter-x};
+  --plus-breadcrumb-gutter-y             : #{$breadcrumb-gutter-y};
   --plus-breadcrumb-more-background-color: #{$breadcrumb-more-background-color};
-  --plus-breadcrumb-more-border-radius: #{$breadcrumb-more-border-radius};
-  --plus-breadcrumb-more-color: #{$breadcrumb-more-color};
-  --plus-breadcrumb-more-height: #{$breadcrumb-more-height};
-  --plus-breadcrumb-more-width: #{$breadcrumb-more-width};
-  --plus-breadcrumb-separator-color: #{$breadcrumb-separator-color};
-  --plus-breadcrumb-separator-size: #{$breadcrumb-separator-size};
+  --plus-breadcrumb-more-border-radius   : #{$breadcrumb-more-border-radius};
+  --plus-breadcrumb-more-color           : #{$breadcrumb-more-color};
+  --plus-breadcrumb-more-height          : #{$breadcrumb-more-height};
+  --plus-breadcrumb-more-width           : #{$breadcrumb-more-width};
+  --plus-breadcrumb-separator-color      : #{$breadcrumb-separator-color};
+  --plus-breadcrumb-separator-height     : #{$breadcrumb-separator-height};
+  --plus-breadcrumb-separator-width      : #{$breadcrumb-separator-width};
 }
 
 :host {
-  display: block;
-}
-
-.root {
-  column-gap: var(--plus-breadcrumb-gutter);
+  column-gap: var(--plus-breadcrumb-gutter-x);
+  row-gap: var(--plus-breadcrumb-gutter-y);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -32,8 +30,9 @@
 
 .separator {
   color: var(--plus-breadcrumb-separator-color);
-  width: var(--plus-breadcrumb-separator-size);
-  height: var(--plus-breadcrumb-separator-size);
+  height: var(--plus-breadcrumb-separator-height);
+  width: var(--plus-breadcrumb-separator-width);
+  text-align: center;
 }
 
 .rtl {

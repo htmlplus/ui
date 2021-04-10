@@ -7,6 +7,7 @@ import * as Constants from './breadcrumb.constants';
  * TODO
  * @internal 
  * @slot - The default slot
+ * @slot more - The more slot
  * @examples default
  */
 @Component({
@@ -23,7 +24,7 @@ export class Breadcrumb {
   offset?: number = 1;
 
   /**
-   * TODO
+   * TODO 
    */
   @Prop()
   max?: number = 5;
@@ -48,7 +49,14 @@ export class Breadcrumb {
   observer?: MutationObserver;
 
   get $children() {
-    return Array.from(this.$host.children).filter(($node) => !$node.matches('template[slot=separator]') && !$node.matches('[slot=more]'));
+
+    const selectors = [
+      Constants.BREADCRUMB_MORE_SLOT_QUERY,
+      Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY,
+
+    ].join(',');
+
+    return Array.from(this.$host.children).filter(($node) => !$node.matches(selectors));
   }
 
   get attributes() {
@@ -61,16 +69,6 @@ export class Breadcrumb {
     return Utils.isRTL(this);
   }
 
-  get template() {
-
-    const $separator = this.$host.querySelector('template[slot=separator]')?.cloneNode(true)['innerHTML'];
-
-    // TODO: use snake case
-    const internal = Constants['BREADCRUMB_SEPARATOR_TEMPLATE_' + this.separator?.toUpperCase().replace(/-/g, '_')];
-
-    return $separator || internal || this.config.slots.separator;
-  }
-
   /**
    * Internal Methods
    */
@@ -78,7 +76,7 @@ export class Breadcrumb {
   $more() {
     return (
       <div
-        key="more" // TODO: Maybe dynamic
+        key="more"
         class="more"
         tabindex="0"
         role="button"
@@ -92,24 +90,6 @@ export class Breadcrumb {
           </svg>
         </slot>
       </div>
-    )
-  }
-
-  $separator() {
-
-    const separator = this.$host.querySelector('template[slot=separator]')?.cloneNode(true)['innerHTML'];
-
-    // TODO: use snake case
-    const internal = Constants['BREADCRUMB_SEPARATOR_TEMPLATE_' + this.separator?.toUpperCase().replace(/-/g, '_')];
-
-    const template = separator || internal || this.config.slots.separator;
-
-    return (
-      <div
-        key="separator" // TODO: Maybe dynamic
-        class={{ separator: true, rtl: this.isRTL }}
-        innerHTML={template}
-      />
     )
   }
 
@@ -136,7 +116,9 @@ export class Breadcrumb {
 
     const
       $children = this.$children,
-      $nodes = [];
+      $nodes = [],
+      rtl = this.isRTL,
+      template = this.template();
 
     const { start, length } = (() => {
 
@@ -166,8 +148,6 @@ export class Breadcrumb {
 
     $children.map(($child, index) => {
 
-      $child.removeAttribute('aria-current');
-
       $child.setAttribute('slot', index.toString());
 
       if (start <= index && index < start + length) return;
@@ -177,11 +157,35 @@ export class Breadcrumb {
 
     (start !== undefined) && $nodes.splice(start, 0, this.$more());
 
-    for (let i = $nodes.length - 1; i > 0; i--) $nodes.splice(i, 0, this.$separator());
+    for (let i = $nodes.length - 1; i > 0; i--) {
+
+      const $separator = (
+        <div
+          key="separator"
+          class={{ separator: true, rtl }}
+          innerHTML={template}
+        />
+      )
+
+      $nodes.splice(i, 0, $separator);
+    }
 
     this.$nodes = $nodes;
 
     force && forceUpdate(this);
+  }
+
+  template() {
+
+    const template = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY)?.cloneNode(true)['innerHTML'];
+
+    const key = 'BREADCRUMB_SEPARATOR_TEMPLATE_' + Utils.toSnakeCase(this.separator)?.toUpperCase();
+
+    const internal = Constants[key];
+
+    const custom = internal ? undefined : this.separator;
+
+    return template || internal || custom || this.config.slots.separator;
   }
 
   /**
@@ -229,9 +233,7 @@ export class Breadcrumb {
   render() {
     return (
       <Host {...this.attributes}>
-        <div class="root">
-          {this.$nodes}
-        </div>
+        {this.$nodes}
       </Host>
     )
   }

@@ -1,5 +1,6 @@
 // host
-$breadcrumb-gutter: 0.5rem;
+$breadcrumb-gutter-x: 0.5rem;
+$breadcrumb-gutter-y: 0.5rem;
 
 // more
 $breadcrumb-more-background-color: #F5F5F5;
@@ -10,4 +11,5 @@ $breadcrumb-more-width: 1.5rem;
 
 // separator
 $breadcrumb-separator-color: currentColor;
-$breadcrumb-separator-size: 1rem;
+$breadcrumb-separator-height: 1rem;
+$breadcrumb-separator-width: 1rem;

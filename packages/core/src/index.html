@@ -17,10 +17,10 @@
             }
           }
         },
-        breadcrumb1: {
+        breadcrumb: {
           slots: {
             separator: (element) => {
-              if (element.separator !== 'arrow') return '@@@'
+              if (element.separator === 'arrow') return '@@@'
             }
           }
         }
@@ -30,174 +30,91 @@
 </head>
 
 <body>
-  <plus-breadcrumb separator="." offset=0>
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
+  <plus-breadcrumb separator="/">
+    <a href="#">Home</a>
+    <a href="#">Category</a>
+    <a href="#">Item</a>
   </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow offset=5>
-    <div slot=more>
-      111111111
-    </div>
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow offset="-1">
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow offset=1>
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow offset=2>
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow offset=111111>
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow offset=4>
-    <a href="#">a1</a>
-    <a href="#">a2</a>
-    <a href="#">a3</a>
-    <a href="#">a4</a>
-    <a href="#">a5</a>
-    <a href="#">a6</a>
-    <a href="#">a7</a>
-    <a href="#">a8</a>
-    <a href="#">a9</a>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=line>
-    <a href="/as" slot="a1">a1</a>
-    <a href="/as" slot="a2">a2</a>
-    <a href="/as" slot="a3">a3</a>
-    <h1>
-      text
-    </h1>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=arrow>
-    <a href="/as" slot="a1">a1</a>
-    <a href="/as" slot="a2">a2</a>
-    <a href="/as" slot="a3">a3</a>
-    <h1>
-      text
-    </h1>
-  </plus-breadcrumb>
-  <plus-breadcrumb>
-    <a href="/as" slot="a1">a1</a>
-    <a href="/as" slot="a2">a2</a>
-    <a href="/as" slot="a3">a3</a>
-    <h1>
-      text
-    </h1>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=none>
-    <a href="/as" slot="a1">a1</a>
-    <a href="/as" slot="a2">a2</a>
-    <a href="/as" slot="a3">a3</a>
-    <h1>
-      text
-    </h1>
-  </plus-breadcrumb>
-  <plus-breadcrumb separator=line>
-    <template slot=separator>
-      $
+  <plus-breadcrumb separator="angle">
+    <template slot="separator">
+      aaaa
     </template>
-    <a href="/as" slot="a1">a1</a>
-    <a href="/as" slot="a2">a2</a>
-    <a href="/as" slot="a3">a3</a>
-    <h1>
-      text
-    </h1>
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
   </plus-breadcrumb>
-  <plus-breadcrumb>
-    <template slot=separator>
-      <svg viewBox="0 0 50 50">
-        <g>
-          <polygon
-            points="1,26 44.586,26 38.293,32.293 39.707,33.707 48.414,25 39.707,16.293 38.293,17.707 44.586,24 1,24  " />
-        </g>
-      </svg>
-    </template>
-    <a href="/as" slot="a1">a1</a>
-    <a href="/as" slot="a2">a2</a>
-    <a href="/as" slot="a3">a3</a>
-    <h1>
-      text
-    </h1>
-  </plus-breadcrumb> -->
-  <!-- <plus-toast id="t1" class="fade" placement="bottom-left">
-    toassssssssssssssssssssssssst 1
-  </plus-toast>
-  <button onclick="a1()">
-    open1
-  </button>
-  <plus-toast id="t2" class="fade" placement="bottom">
-    toassssssssssssssssssssssssst 2
-  </plus-toast>
-  <button onclick="a2()">
-    open2
-  </button>
-  <plus-toast id="t3" class="fade" placement="bottom-right">
-    toassssssssssssssssssssssssst 3
-  </plus-toast>
-  <button onclick="a3()">
-    open3
-  </button>
-  <script>
-    function a1() {
-      t1.open = true;
-    }
-    function a2() {
-      t2.open = true;
-    }
-    function a3() {
-      t3.open = true;
-    }
-  </script> -->
+  <plus-breadcrumb separator="angle">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator="arrow">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator="backslash">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator="circle">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator="dash">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
+  </plus-breadcrumb>
+  <plus-breadcrumb separator="slash">
+    <a href="#">a1</a>
+    <a href="#">a2</a>
+    <a href="#">a3</a>
+    <a href="#">a4</a>
+    <a href="#">a5</a>
+    <a href="#">a6</a>
+    <a href="#">a7</a>
+    <a href="#">a8</a>
+    <a href="#">a9</a>
+  </plus-breadcrumb>
 </body>
 
 </html>
