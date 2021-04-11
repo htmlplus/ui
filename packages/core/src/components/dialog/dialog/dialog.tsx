@@ -395,7 +395,7 @@ export class Dialog {
   @Bind
   onOutsideClick() {
 
-    if (!this.isOpen || !this.isCurrent) return;
+    if (!this.isOpen || !this.isCurrent || this.persistent) return;
 
     this.tryToHide();
   }
