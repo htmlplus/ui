@@ -8,6 +8,7 @@ import type { JSX } from '@htmlplus/core';
 
 
 export const PlusAspectRatio = /*@__PURE__*/createReactComponent<JSX.PlusAspectRatio, HTMLPlusAspectRatioElement>('plus-aspect-ratio');
+export const PlusBreadcrumb = /*@__PURE__*/createReactComponent<JSX.PlusBreadcrumb, HTMLPlusBreadcrumbElement>('plus-breadcrumb');
 export const PlusCard = /*@__PURE__*/createReactComponent<JSX.PlusCard, HTMLPlusCardElement>('plus-card');
 export const PlusClickOutside = /*@__PURE__*/createReactComponent<JSX.PlusClickOutside, HTMLPlusClickOutsideElement>('plus-click-outside');
 export const PlusCropper = /*@__PURE__*/createReactComponent<JSX.PlusCropper, HTMLPlusCropperElement>('plus-cropper');

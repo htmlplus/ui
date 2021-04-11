@@ -5,7 +5,6 @@ import * as Constants from './breadcrumb.constants';
 
 /**
  * TODO
- * @internal 
  * @slot - The default slot
  * @slot more - The more slot
  * @examples default
@@ -185,7 +184,7 @@ export class Breadcrumb {
 
     const custom = internal ? undefined : this.separator;
 
-    return template || internal || custom || this.config.slots.separator;
+    return template || this.config.slots.separator || internal || custom;
   }
 
   /**
