@@ -8,21 +8,18 @@
    * @prop --plus-breadcrumb-gutter-x: TODO
    */
 
-  --plus-breadcrumb-gutter-x             : #{$breadcrumb-gutter-x};
-  --plus-breadcrumb-gutter-y             : #{$breadcrumb-gutter-y};
-  --plus-breadcrumb-more-background-color: #{$breadcrumb-more-background-color};
-  --plus-breadcrumb-more-border-radius   : #{$breadcrumb-more-border-radius};
-  --plus-breadcrumb-more-color           : #{$breadcrumb-more-color};
-  --plus-breadcrumb-more-height          : #{$breadcrumb-more-height};
-  --plus-breadcrumb-more-width           : #{$breadcrumb-more-width};
-  --plus-breadcrumb-separator-color      : #{$breadcrumb-separator-color};
-  --plus-breadcrumb-separator-height     : #{$breadcrumb-separator-height};
-  --plus-breadcrumb-separator-width      : #{$breadcrumb-separator-width};
+  --plus-breadcrumb-gutter-x                 : #{$breadcrumb-gutter-x};
+  --plus-breadcrumb-expander-background-color: #{$breadcrumb-expander-background-color};
+  --plus-breadcrumb-expander-border-radius   : #{$breadcrumb-expander-border-radius};
+  --plus-breadcrumb-expander-color           : #{$breadcrumb-expander-color};
+  --plus-breadcrumb-expander-height          : #{$breadcrumb-expander-height};
+  --plus-breadcrumb-expander-width           : #{$breadcrumb-expander-width};
+  --plus-breadcrumb-separator-color          : #{$breadcrumb-separator-color};
+  --plus-breadcrumb-separator-height         : #{$breadcrumb-separator-height};
+  --plus-breadcrumb-separator-width          : #{$breadcrumb-separator-width};
 }
 
 :host {
-  column-gap: var(--plus-breadcrumb-gutter-x);
-  row-gap: var(--plus-breadcrumb-gutter-y);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -32,6 +29,7 @@
   color: var(--plus-breadcrumb-separator-color);
   height: var(--plus-breadcrumb-separator-height);
   width: var(--plus-breadcrumb-separator-width);
+  padding: 0 var(--plus-breadcrumb-gutter-x);
   text-align: center;
 }
 
@@ -45,12 +43,12 @@ svg {
   height: 100%;
 }
 
-.more {
-  background-color: var(--plus-breadcrumb-more-background-color);
-  border-radius: var(--plus-breadcrumb-more-border-radius);
-  color: var(--plus-breadcrumb-more-color);
-  height: var(--plus-breadcrumb-more-height);
-  width: var(--plus-breadcrumb-more-width);
+.expander {
+  background-color: var(--plus-breadcrumb-expander-background-color);
+  border-radius: var(--plus-breadcrumb-expander-border-radius);
+  color: var(--plus-breadcrumb-expander-color);
+  height: var(--plus-breadcrumb-expander-height);
+  width: var(--plus-breadcrumb-expander-width);
   user-select: none;
   cursor: pointer;
   flex-shrink: 0;

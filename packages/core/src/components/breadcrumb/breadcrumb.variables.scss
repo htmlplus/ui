@@ -1,15 +1,14 @@
 // host
-$breadcrumb-gutter-x: 0.5rem;
-$breadcrumb-gutter-y: 0.5rem;
+$breadcrumb-gutter-x: 0.5em;
 
-// more
-$breadcrumb-more-background-color: #F5F5F5;
-$breadcrumb-more-border-radius: 2px;
-$breadcrumb-more-color: currentColor;
-$breadcrumb-more-height: 1rem;
-$breadcrumb-more-width: 1.5rem;
+// expander
+$breadcrumb-expander-background-color: #F5F5F5;
+$breadcrumb-expander-border-radius: 2px;
+$breadcrumb-expander-color: currentColor;
+$breadcrumb-expander-height: 1em;
+$breadcrumb-expander-width: 1.5em;
 
 // separator
 $breadcrumb-separator-color: currentColor;
-$breadcrumb-separator-height: 1rem;
-$breadcrumb-separator-width: 1rem;
+$breadcrumb-separator-height: 1em;
+$breadcrumb-separator-width: 1em;

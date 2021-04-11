@@ -6,7 +6,7 @@ import * as Constants from './breadcrumb.constants';
 /**
  * TODO
  * @slot - The default slot
- * @slot more - The more slot
+ * @slot expander - The expander slot
  * @examples default
  */
 @Component({
@@ -15,6 +15,12 @@ import * as Constants from './breadcrumb.constants';
   shadow: true
 })
 export class Breadcrumb {
+
+  /**
+   * TODO
+   */
+  @Prop()
+  expanderText?: string = 'Show path';
 
   /**
    * TODO
@@ -31,7 +37,7 @@ export class Breadcrumb {
   /**
    * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
    */
-  @Prop()
+  @Prop({ reflect: true })
   separator?: string = '/';
 
   @GlobalConfig('breadcrumb', {
@@ -50,7 +56,7 @@ export class Breadcrumb {
   get $children() {
 
     const selectors = [
-      Constants.BREADCRUMB_MORE_SLOT_QUERY,
+      Constants.BREADCRUMB_EXPANDER_SLOT_QUERY,
       Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY,
 
     ].join(',');
@@ -72,18 +78,18 @@ export class Breadcrumb {
    * Internal Methods
    */
 
-  $more() {
+  $expander() {
     return (
       <div
-        key="more"
-        class="more"
+        key="expander"
+        class="expander"
         tabindex="0"
         role="button"
         aria-disabled="false"
-        aria-label="Show path"
+        aria-label={this.expanderText}
         onClick={() => this.update(false, true)}
       >
-        <slot name="more">
+        <slot name="expander">
           <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
           </svg>
@@ -154,12 +160,13 @@ export class Breadcrumb {
       $nodes.push(this.$wrapper(index));
     });
 
-    (start !== undefined) && $nodes.splice(start, 0, this.$more());
+    (start !== undefined) && $nodes.splice(start, 0, this.$expander());
 
     for (let i = $nodes.length - 1; i > 0; i--) {
 
       const $separator = (
         <div
+          aria-hidden="true"
           key="separator"
           class={{ separator: true, rtl }}
           innerHTML={template}

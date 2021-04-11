@@ -32,6 +32,10 @@ export namespace Components {
         /**
           * TODO
          */
+        "expanderText"?: string;
+        /**
+          * TODO
+         */
         "max"?: number;
         /**
           * TODO
@@ -1172,6 +1176,10 @@ declare namespace LocalJSX {
         "value"?: AspectRatioValue;
     }
     interface PlusBreadcrumb {
+        /**
+          * TODO
+         */
+        "expanderText"?: string;
         /**
           * TODO
          */
