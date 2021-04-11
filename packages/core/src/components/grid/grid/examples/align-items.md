@@ -3,7 +3,7 @@ plus-grid {
   background-color: #EEEEEE;
   height: 8rem;
 }
-div {
+plus-grid div {
   color: #00BCD4;
   border: 1px solid #FFFFFF;
   background-color: #E0F7FA;

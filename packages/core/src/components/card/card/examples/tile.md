@@ -1,7 +1,7 @@
 By default, the card component has border-radius. The tile property neutralizes border-radius.
 
 ```css [style]
-div {
+.container {
   padding: 2rem 0;
   background-color: #EEEEEE;
 }
@@ -14,7 +14,7 @@ plus-card {
 
 ```html [template]
 <fragment dock>
-  <div>
+  <div class="container">
     <plus-grid justify-content="evenly" gutter="md">
       <plus-grid-item xs="12" sm="auto">
         <plus-card tile></plus-card>
@@ -31,7 +31,7 @@ plus-card {
 ```
 
 ```html [vue:template]
-<div>
+<div class="container">
   <plus-grid justify-content="evenly" gutter="md">
     <plus-grid-item xs="12" sm="auto">
       <plus-card tile></plus-card>

@@ -1,12 +1,12 @@
 ```css [style]
-p {
+.container {
+  height: 20rem;
+  overflow: auto;
+}
+.container p {
   margin: 0;
   padding: 1rem;
   text-align: justify;
-}
-div {
-  height: 20rem;
-  overflow: auto;
 }
 plus-sticky {
   background-color: gold;
@@ -15,7 +15,7 @@ plus-sticky {
 
 ```html [template]
 <fragment dock>
-  <div>
+  <div class="container">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh eros, luctus in lacus eu, eleifend
       ultricies ipsum. Morbi sit amet diam et erat pulvinar ultricies in vel erat. Vestibulum sit amet posuere lacus,

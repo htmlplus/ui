@@ -1,7 +1,7 @@
 This is also used for lazy loading.
 
 ```css [style]
-div {
+.container {
   position: relative;
   height: 20rem;
   overflow: auto;
@@ -59,7 +59,7 @@ class {
   render() {
     return (
       <fragment dock>
-        <div>
+        <div class="container">
           <plus-intersection once onPlusChange={(event) => this.onChange(event)}>
             <plus-card elevation="10">
               <plus-spinner></plus-spinner>
@@ -74,7 +74,7 @@ class {
 ```
 
 ```html [javascript:template]
-<div>
+<div class="container">
   <plus-intersection id="element1" once>
     <plus-card elevation="10">
       <plus-spinner></plus-spinner>
