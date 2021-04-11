@@ -5,7 +5,7 @@ import { GlobalConfig } from '@app/services';
 /**
  * TODO
  * @internal 
- * @slot - The default slot
+ * @slot - The default slot.
  * @examples default
  */
 @Component({

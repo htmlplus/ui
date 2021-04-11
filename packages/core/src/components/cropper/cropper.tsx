@@ -17,7 +17,7 @@ import {
 /**
  * An image cropper is a web & mobile component which enable the user to resize, move, crop 
  * an area of images before they're uploaded to the server.
- * @examples default, area, aspect-ratio, backdrop, background, guides, indicator, mode, shape
+ * @examples default, area, aspect-ratio, backdrop, background, dialog, guides, indicator, mode, shape, styles
  */
 @Component({
   tag: 'plus-cropper',

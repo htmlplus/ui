@@ -5,8 +5,9 @@ import * as Constants from './breadcrumb.constants';
 
 /**
  * TODO
- * @slot - The default slot
- * @slot expander - The expander slot
+ * @slot - The default slot.
+ * @slot expander - The expander slot.
+ * @slot separator - The separator slot.
  * @examples default
  */
 @Component({
