@@ -53,7 +53,7 @@ svg {
   cursor: pointer;
   flex-shrink: 0;
   &:focus {
-    outline: none;
+    // outline: none;
   }
   svg {
     fill: currentColor;

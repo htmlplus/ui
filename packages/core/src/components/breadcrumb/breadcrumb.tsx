@@ -88,6 +88,7 @@ export class Breadcrumb {
         aria-disabled="false"
         aria-label={this.expanderText}
         onClick={() => this.update(false, true)}
+        onKeyDown={(event) => event.key.match(/Enter| /) && this.update(false, true)}
       >
         <slot name="expander">
           <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">

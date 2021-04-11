@@ -2,6 +2,7 @@ export * from './animation';
 export * from './bind';
 export * from './channel';
 export * from './click-outside';
+export * from './event';
 export * from './global-config';
 export * from './global-state';
 export * from './link';
