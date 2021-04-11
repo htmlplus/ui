@@ -59,7 +59,10 @@ export class Dialog {
   /**
    * Control dialog to show or not.
    */
-  @Prop({ reflect: true })
+  @Prop({ 
+    mutable: true,
+    reflect: true, 
+  })
   open?: boolean;
 
   /**
@@ -401,7 +404,7 @@ export class Dialog {
    * Lifecycles
    */
 
-  connectedCallback() {
+  componentDidLoad() {
 
     this.init();
 
