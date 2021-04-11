@@ -5,30 +5,30 @@
 :host {
 
   /**
-  * @prop --plus-cropper-backdrop-color   : TODO
-  * @prop --plus-cropper-backdrop-opacity : TODO
+   * @prop --plus-cropper-backdrop-color   : Used to adjust the backdrop color.
+   * @prop --plus-cropper-backdrop-opacity : Used to adjust the backdrop opacity.
 
-  * @prop --plus-cropper-guides-color     : TODO
-  * @prop --plus-cropper-guides-opacity   : TODO
-  * @prop --plus-cropper-guides-style     : TODO
-  * @prop --plus-cropper-guides-weight    : TODO
+   * @prop --plus-cropper-guides-color     : Used to adjust the guides color.
+   * @prop --plus-cropper-guides-opacity   : Used to adjust the guides opacity.
+   * @prop --plus-cropper-guides-style     : Used to adjust the guides style.
+   * @prop --plus-cropper-guides-weight    : Used to adjust the guides weight.
 
-  * @prop --plus-cropper-indicator-color  : TODO
-  * @prop --plus-cropper-indicator-opacity: TODO
-  * @prop --plus-cropper-indicator-size   : TODO
-  * @prop --plus-cropper-indicator-weight : TODO
+   * @prop --plus-cropper-indicator-color  : Used to adjust the indicator color.
+   * @prop --plus-cropper-indicator-opacity: Used to adjust the indicator opacity.
+   * @prop --plus-cropper-indicator-size   : Used to adjust the indicator size.
+   * @prop --plus-cropper-indicator-weight : Used to adjust the indicator weight.
 
-  * @prop --plus-cropper-resizer-color    : TODO
-  * @prop --plus-cropper-resizer-offset   : TODO
-  * @prop --plus-cropper-resizer-opacity  : TODO
-  * @prop --plus-cropper-resizer-size     : TODO
-  * @prop --plus-cropper-resizer-weight   : TODO
+   * @prop --plus-cropper-resizer-color    : Used to adjust the resizer color.
+   * @prop --plus-cropper-resizer-offset   : Used to adjust the resizer offset.
+   * @prop --plus-cropper-resizer-opacity  : Used to adjust the resizer opacity.
+   * @prop --plus-cropper-resizer-size     : Used to adjust the resizer size.
+   * @prop --plus-cropper-resizer-weight   : Used to adjust the resizer weight.
 
-  * @prop --plus-cropper-viewport-color   : TODO
-  * @prop --plus-cropper-viewport-opacity : TODO
-  * @prop --plus-cropper-viewport-style   : TODO
-  * @prop --plus-cropper-viewport-weight  : TODO
-  */
+   * @prop --plus-cropper-viewport-color   : Used to adjust the viewport color.
+   * @prop --plus-cropper-viewport-opacity : Used to adjust the viewport opacity.
+   * @prop --plus-cropper-viewport-style   : Used to adjust the viewport style.
+   * @prop --plus-cropper-viewport-weight  : Used to adjust the viewport weight.
+   */
 
   --plus-cropper-backdrop-color   : #{$cropper-backdrop-color};
   --plus-cropper-backdrop-opacity : #{$cropper-backdrop-opacity};
