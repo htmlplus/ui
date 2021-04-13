@@ -30,19 +30,19 @@ export namespace Components {
     }
     interface PlusBreadcrumb {
         /**
-          * TODO
+          * For localization purposes, you can use the provided translations.
          */
         "expanderText"?: string;
         /**
-          * TODO
+          * Specifies Maximum items that is allowed to be displayed.
          */
         "max"?: number;
         /**
-          * TODO
+          * The expander button is displayed when the number of the items reached the maximum limit.  The offset property specifies the position of the expander button.
          */
         "offset"?: number;
         /**
-          * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
+          * You can use HTML elements, Custom separator, or SVG icon.
          */
         "separator"?: string;
     }
@@ -1177,19 +1177,19 @@ declare namespace LocalJSX {
     }
     interface PlusBreadcrumb {
         /**
-          * TODO
+          * For localization purposes, you can use the provided translations.
          */
         "expanderText"?: string;
         /**
-          * TODO
+          * Specifies Maximum items that is allowed to be displayed.
          */
         "max"?: number;
         /**
-          * TODO
+          * The expander button is displayed when the number of the items reached the maximum limit.  The offset property specifies the position of the expander button.
          */
         "offset"?: number;
         /**
-          * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
+          * You can use HTML elements, Custom separator, or SVG icon.
          */
         "separator"?: string;
     }

@@ -4,11 +4,13 @@ import * as Utils from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
 /**
- * TODO
+ * Breadcrumb component is a navigation pattern that shows the actual path of the current page. 
+ * It represents the route using links, which enables the user to easily navigate upwards through 
+ * the hierarchy.
  * @slot - The default slot.
  * @slot expander - The expander slot.
  * @slot separator - The separator slot.
- * @examples default
+ * @examples default, separator, custom-separator, limitation, customized
  */
 @Component({
   tag: 'plus-breadcrumb',
@@ -18,31 +20,32 @@ import * as Constants from './breadcrumb.constants';
 export class Breadcrumb {
 
   /**
-   * TODO
+   * For localization purposes, you can use the provided translations.
    */
   @Prop()
   expanderText?: string = 'Show path';
 
   /**
-   * TODO
+   * The expander button is displayed when the number of the items reached the maximum limit. 
+   * The offset property specifies the position of the expander button.
    */
   @Prop()
   offset?: number = 1;
 
   /**
-   * TODO 
+   * Specifies Maximum items that is allowed to be displayed.
    */
   @Prop()
-  max?: number = 5;
+  max?: number;
 
   /**
-   * TODO: Separator type is one of `none`, `circle`, `space`, `arrow`.
+   * You can use HTML elements, Custom separator, or SVG icon.
    */
   @Prop({ reflect: true })
-  separator?: string = '/';
+  separator?: string;
 
   @GlobalConfig('breadcrumb', {
-    separator: '/'
+    offset: 1
   })
   config?;
 
@@ -129,7 +132,11 @@ export class Breadcrumb {
 
     const { start, length } = (() => {
 
-      if (expand || $children.length <= this.max) return {};
+      if (expand) return {};
+
+      if (typeof this.max !== 'number') return {};
+
+      if ($children.length <= this.max) return {};
 
       let start, length;
 
@@ -185,15 +192,15 @@ export class Breadcrumb {
 
   template() {
 
-    const template = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY)?.cloneNode(true)['innerHTML'];
-
-    const key = 'BREADCRUMB_SEPARATOR_TEMPLATE_' + Utils.toSnakeCase(this.separator)?.toUpperCase();
-
-    const internal = Constants[key];
-
-    const custom = internal ? undefined : this.separator;
-
-    return template || this.config.slots.separator || internal || custom;
+    const template = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY)?.cloneNode(true)['outerHTML'];
+    console.log(
+      this.$host,
+      this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY),
+      this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY)?.cloneNode(true)['outerHTML'],
+      this.config.slots.separator,
+      this.separator
+    )
+    return template || this.config.slots.separator || this.separator;
   }
 
   /**
@@ -241,7 +248,9 @@ export class Breadcrumb {
   render() {
     return (
       <Host {...this.attributes}>
-        {this.$nodes}
+        <div class="container">
+          {this.$nodes}
+        </div>
       </Host>
     )
   }

@@ -7,9 +7,334 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
+  <style>
+ a {
+      text-decoration: none;
+      color: black;
+    } 
+
+    plus-breadcrumb1 {
+      --plus-breadcrumb-separator-color: gray;
+      --plus-breadcrumb-separator-height: 13px;
+      --plus-breadcrumb-separator-width: 13px;
+      --plus-breadcrumb-gutter-x: 23px;
+    }
+
+    svg {
+      fill: gray;
+      height: 14px;
+      width: 14px;
+      vertical-align: middle;
+    }
+
+    .example-3 {
+      --plus-breadcrumb-separator-color: #20B2AA;
+    }
+
+    .example-4 {
+      --plus-breadcrumb-separator-color: #6A5ACD;
+    }
+
+    .example-5 {
+      --plus-breadcrumb-separator-color: #4682B4;
+    }
+
+
+    plus-breadcrumb.example-6 a:nth-of-type(1) {
+      color: #6A5ACD;
+    }
+
+    plus-breadcrumb.example-8 a {
+      color: #3498DB;
+    }
+
+    plus-breadcrumb.example-9 a {
+      color: #3498DB;
+    }
+
+
+    .example-10 {
+      --plus-breadcrumb-separator-color: white;
+      background-color: #2B78AC;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .example-10 a {
+      color: white;
+    }
+
+    .example-11 {
+      background-color: #DcDcDc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    plus-breadcrumb.example-12 a:nth-of-type(1) {
+      color: darkmagenta;
+    }
+
+    plus-breadcrumb.example-12 a:nth-of-type(2) {
+      color: #577B94;
+    }
+
+    plus-breadcrumb.example-12 a:nth-of-type(3) {
+      color: #FF8000;
+    }
+
+    plus-breadcrumb.example-12 a:nth-of-type(4) {
+      color: #194D00;
+    }
+
+    .example-12 {
+      border: 1px solid;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .example-13 {
+      background-color: #6495ED;
+      border: solid;
+      border-color: transparent;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .example-13 a {
+      border-radius: 17px;
+      box-shadow: 26px 3px 17px 0px rgba(58, 95, 205, 0.43);
+      padding: 13px;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
+  <plus-breadcrumb>
+    <template slot="separator">
+      <svg viewBox="0 0 16 16">
+        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+      </svg>
+    </template>
+    <span>First</span>
+    <span>Second</span>
+    <span>Third</span>
+    <span>Fourth</span>
+    <span>Fifth</span>
+  </plus-breadcrumb>
+  <plus-breadcrumb>
+    <template slot="separator">
+      <svg viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
+      </svg>
+    </template>
+    <span>First</span>
+    <span>Second</span>
+    <span>Third</span>
+    <span>Fourth</span>
+    <span>Fifth</span>
+  </plus-breadcrumb>
+  <plus-breadcrumb>
+    <template slot="separator">
+      <svg viewBox="0 0 16 16">
+        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+      </svg>
+    </template>
+    <span>First</span>
+    <span>Second</span>
+    <span>Third</span>
+    <span>Fourth</span>
+    <span>Fifth</span>
+  </plus-breadcrumb>
+
+
+
+
+
+
+
+  <plus-breadcrumb class="example-1">
+    <template slot=separator>
+      <svg viewBox="0 0 16 16">
+        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+      </svg>
+    </template>
+    <a href="#">Hoom</a>
+    <a href="#">Shop</a>
+    <a href="#">Cart</a>
+    <a href="#">Checkout</a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-2">
+    <template slot=separator>
+      <svg viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
+      </svg>
+    </template>
+    <a href="#">Hoom</a>
+    <a href="#">Shop</a>
+    <a href="#">Cart</a>
+    <a href="#">Checkout</a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-3" separator=" ">
+    <template slot="separator">
+      <svg viewBox="0 0 50 50">
+        <g>
+          <polygon points="17.939,47.293 19.354,48.707 43.061,25 19.354,1.293 17.939,2.707 40.232,25" />
+          <polygon points="8.354,48.707 32.061,25 8.354,1.293 6.939,2.707 29.232,25 6.939,47.293" />
+        </g>
+      </svg>
+    </template>
+    <a href="#">Hoom</a>
+    <a href="#">Shop</a>
+    <a href="#">Cart</a>
+    <a href="#">Checkout</a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-4" separator=" ">
+    <template slot="separator">
+      <svg viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+      </svg>
+    </template>
+    <a href="#">Hoom</a>
+    <a href="#">Shop</a>
+    <a href="#">Cart</a>
+    <a href="#">Checkout</a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-5" separator=" ">
+    <template slot="separator">
+      <svg viewBox="0 0 16 16">
+        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+      </svg>
+    </template>
+    <a href="#">Hoom</a>
+    <a href="#">Shop</a>
+    <a href="#">Cart</a>
+    <a href="#">Checkout</a>
+  </plus-breadcrumb>
+  <hr>
+  <plus-breadcrumb class="example-6 " separator="/">
+    <a href="#">
+      HTMLPLUS
+    </a>
+    <a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+        <path
+          d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z" />
+      </svg>
+      core
+    </a>
+    <a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-diamond-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M9.05.435c-.58-.58-1.52-.58-2.1 0L4.047 3.339 8 7.293l3.954-3.954L9.049.435zm3.61 3.611L8.708 8l3.954 3.954 2.904-2.905c.58-.58.58-1.519 0-2.098l-2.904-2.905zm-.706 8.614L8 8.708l-3.954 3.954 2.905 2.904c.58.58 1.519.58 2.098 0l2.905-2.904zm-8.614-.706L7.292 8 3.339 4.046.435 6.951c-.58.58-.58 1.519 0 2.098l2.904 2.905z" />
+      </svg>
+      Components
+    </a>
+    <a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z" />
+        <path fill-rule="evenodd"
+          d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z" />
+      </svg>
+      Breadcrumb
+    </a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-7 " separator="/">
+    <a href="#" class="file1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2"
+        viewBox="0 0 16 16">
+        <path
+          d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 12.5v-9zM2.5 3a.5.5 0 0 0-.5.5V6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5zM14 7H2v5.5a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5V7z" />
+      </svg>
+      Program Files
+    </a>
+    <a href="#" class="file2">
+      Common Files
+    </a>
+    <a href="#" class="file3">
+      Variant
+    </a>
+    <a href="#" class="file4">
+      Breadcrumb
+    </a>
+  </plus-breadcrumb>
+  <hr>
+  <plus-breadcrumb class="example-8" separator="/" max="4" offset="2">
+    <a href="#">Breadcrumb 1</a>
+    <a href="#">Breadcrumb 2</a>
+    <a href="#">Breadcrumb 3</a>
+    <a href="#">Breadcrumb 4</a>
+    <a href="#">Breadcrumb 5</a>
+    <a href="#">Breadcrumb 6</a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-9" separator="/">
+    <a href="#">Breadcrumb 1</a>
+    <a href="#">Breadcrumb 2</a>
+    <a href="#">Breadcrumb 3</a>
+    <a href="#">Breadcrumb 4</a>
+    <a href="#">Breadcrumb 5</a>
+    <a href="#">Breadcrumb 6</a>
+  </plus-breadcrumb>
+  <hr>
+  <plus-breadcrumb class="example-10">
+    <template slot=separator>
+      <svg viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
+      </svg>
+    </template>
+    <a href="#">Desktop</a>
+    <a href="#">Hoom</a>
+    <a href="#">Projects</a>
+    <a href="#">Breadcrumb</a>
+  </plus-breadcrumb>
+
+  <plus-breadcrumb class="example-11">
+    <template slot=separator>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
+      </svg>
+    </template>
+    <a href="#">Desktop</a>
+    <a href="#">Hoom</a>
+    <a href="#">Projects</a>
+    <a href="#">Breadcrumb</a>
+  </plus-breadcrumb>
+  <hr>
+  <plus-breadcrumb class="example-12">
+    <template slot=separator>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-chevron-compact-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z" />
+      </svg>
+    </template>
+    <a href="#">Desktop</a>
+    <a href="#">Hoom</a>
+    <a href="#">Projects</a>
+    <a href="#">Breadcrumb</a>
+  </plus-breadcrumb>
+  <hr>
+  <plus-breadcrumb class="example-13" separator=" ">
+    <a href="#">Desktop</a>
+    <a href="#">Hoom</a>
+    <a href="#">Projects</a>
+    <a href="#">Breadcrumb</a>
+  </plus-breadcrumb>
+
+
 </body>
 
 </html>
