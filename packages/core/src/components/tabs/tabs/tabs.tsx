@@ -6,7 +6,7 @@ import { TabsTunnel, TabsTunnelState } from './tabs.tunnel';
  * TODO
  * @development
  * @group tabs
- * @slot - The default slot
+ * @slot - The default slot.
  */
 @Component({
   tag: 'plus-tabs',

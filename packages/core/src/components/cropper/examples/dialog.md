@@ -1,5 +1,5 @@
 ```css [style]
-div {
+.center {
   text-align: center;
 }
 ```
@@ -17,7 +17,7 @@ class {
   render() {
     return (
       <fragment>
-        <div>
+        <div class="center">
           <plus-dialog-toggler connector="dialog-cropper">
             Open
           </plus-dialog-toggler>
@@ -49,7 +49,7 @@ class {
 ```
 
 ```html [javascript:template]
-<div>
+<div class="center">
   <plus-dialog-toggler connector="dialog-cropper">
     Open
   </plus-dialog-toggler>

@@ -6,15 +6,15 @@ import { LayoutTop, LayoutMain, LayoutBottom } from './layout.types';
 /**
  * TODO
  * @development 
- * @slot              - The default slot
- * @slot header       - TODO
- * @slot top:start    - TODO
- * @slot top:end      - TODO
- * @slot aside:start  - TODO
- * @slot aside:end    - TODO
- * @slot footer       - TODO
- * @slot bottom:start - TODO
- * @slot bottom:end   - TODO
+ * @slot              - The default slot.
+ * @slot header       - TODO.
+ * @slot top:start    - TODO.
+ * @slot top:end      - TODO.
+ * @slot aside:start  - TODO.
+ * @slot aside:end    - TODO.
+ * @slot footer       - TODO.
+ * @slot bottom:start - TODO.
+ * @slot bottom:end   - TODO.
  * @examples default, simple, aside
  */
 @Component({

@@ -5,7 +5,7 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
 /**
  * Use as many hp-grid-items as you want inside a hp-grid to layout your content.
  * @group grid
- * @slot - The default slot
+ * @slot - The default slot.
  */
 @Component({
   tag: 'plus-grid-item',

@@ -1,5 +1,5 @@
 ```css [style]
-div {
+.container {
   padding: 1rem;
 }
 plus-click-outside {
@@ -33,7 +33,7 @@ class {
         onPlusClickOutside={() => this.onClickOutside()}
       >
         <plus-card elevation="10">
-          <div>
+          <div class="container">
             <b>{this.inside}</b> time(s) inside clicked
             <br />
             <b>{this.outside}</b> time(s) outside clicked
@@ -48,7 +48,7 @@ class {
 ```html [javascript:template]
 <plus-click-outside id="element1">
   <plus-card elevation="10">
-    <div>
+    <div class="container">
       <b id="element2">0</b> time(s) inside clicked
       <br />
       <b id="element3">0</b> time(s) outside clicked

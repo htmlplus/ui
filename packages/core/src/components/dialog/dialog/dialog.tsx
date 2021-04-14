@@ -7,7 +7,7 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from
 /**
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
  * @group dialog
- * @slot - The default slot
+ * @slot - The default slot.
  * @examples default, animation, persistent, placement, size, backdrop, scrollable, specific-scrollable, fullscreen, full-width, full-height, sticky, nesting, prevent
  */
 @Component({
@@ -59,7 +59,10 @@ export class Dialog {
   /**
    * Control dialog to show or not.
    */
-  @Prop({ reflect: true })
+  @Prop({ 
+    mutable: true,
+    reflect: true, 
+  })
   open?: boolean;
 
   /**
@@ -392,7 +395,7 @@ export class Dialog {
   @Bind
   onOutsideClick() {
 
-    if (!this.isOpen || !this.isCurrent) return;
+    if (!this.isOpen || !this.isCurrent || this.persistent) return;
 
     this.tryToHide();
   }
@@ -401,7 +404,7 @@ export class Dialog {
    * Lifecycles
    */
 
-  connectedCallback() {
+  componentDidLoad() {
 
     this.init();
 

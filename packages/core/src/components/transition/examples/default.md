@@ -1,11 +1,11 @@
 ```css [style]
-div {
+.center {
   text-align: center;
 }
 ```
 
 ```html [template]
-<div>
+<div class="center">
   <plus-transition name="fade-in" repeat="infinite">
     HTMLPLUS
   </plus-transition>

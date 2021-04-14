@@ -3,9 +3,17 @@
 @import 'breadcrumb.variables';
 
 :host {
-
+  
   /**
-   * @prop --plus-breadcrumb-gutter-x: TODO
+   * @prop --plus-breadcrumb-gutter-x                 : Used to adjust the Horizontal gap.
+   * @prop --plus-breadcrumb-expander-background-color: Used to adjust the expander background color.
+   * @prop --plus-breadcrumb-expander-border-radius   : Used to adjust the expander border radius.
+   * @prop --plus-breadcrumb-expander-color           : Used to adjust the expander color.
+   * @prop --plus-breadcrumb-expander-height          : Used to adjust the expander height.
+   * @prop --plus-breadcrumb-expander-width           : Used to adjust the expander width.
+   * @prop --plus-breadcrumb-separator-color          : Used to adjust the separator color.
+   * @prop --plus-breadcrumb-separator-height         : Used to adjust the separator height.
+   * @prop --plus-breadcrumb-separator-width          : Used to adjust the separator width.
    */
 
   --plus-breadcrumb-gutter-x                 : #{$breadcrumb-gutter-x};
@@ -20,6 +28,10 @@
 }
 
 :host {
+  display: block
+}
+
+.container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -29,7 +41,7 @@
   color: var(--plus-breadcrumb-separator-color);
   height: var(--plus-breadcrumb-separator-height);
   width: var(--plus-breadcrumb-separator-width);
-  padding: 0 var(--plus-breadcrumb-gutter-x);
+  margin: 0 var(--plus-breadcrumb-gutter-x);
   text-align: center;
 }
 
@@ -52,9 +64,6 @@ svg {
   user-select: none;
   cursor: pointer;
   flex-shrink: 0;
-  &:focus {
-    // outline: none;
-  }
   svg {
     fill: currentColor;
     display: block;

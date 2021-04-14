@@ -1,5 +1,5 @@
 ```css [style]
-div {
+.center {
   text-align: center;
 }
 plus-spinner {
@@ -10,7 +10,7 @@ plus-spinner {
 ```
 
 ```html [template]
-<div>
+<div class="center">
   <plus-spinner type="dual-ring"></plus-spinner>
 </div>
 ```

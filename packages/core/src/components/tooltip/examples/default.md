@@ -1,11 +1,11 @@
 ```css [style]
-div {
+.center {
   text-align: center;
 }
 ```
 
 ```html [template]
-<div>
+<div class="center">
   <button>
     Button
     <plus-tooltip>Tooltip</plus-tooltip>
