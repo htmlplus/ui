@@ -10,7 +10,7 @@ import * as Constants from './breadcrumb.constants';
  * @slot - The default slot.
  * @slot expander - The expander slot.
  * @slot separator - The separator slot.
- * @examples default, separator, custom-separator, limitation, customized
+ * @examples default, separator, custom-separator, limitation, custom-expander, customized
  */
 @Component({
   tag: 'plus-breadcrumb',
@@ -192,14 +192,14 @@ export class Breadcrumb {
 
   template() {
 
-    const template = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY)?.cloneNode(true)['outerHTML'];
-    console.log(
-      this.$host,
-      this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY),
-      this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY)?.cloneNode(true)['outerHTML'],
-      this.config.slots.separator,
-      this.separator
-    )
+    const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
+
+    const $clone = $node?.cloneNode(true) as HTMLElement;
+    
+    $clone?.removeAttribute('slot');
+
+    const template = $clone?.outerHTML;
+
     return template || this.config.slots.separator || this.separator;
   }
 

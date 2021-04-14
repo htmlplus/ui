@@ -37,22 +37,13 @@
   flex-wrap: wrap;
 }
 
+.expander,
 .separator {
-  color: var(--plus-breadcrumb-separator-color);
-  height: var(--plus-breadcrumb-separator-height);
-  width: var(--plus-breadcrumb-separator-width);
-  margin: 0 var(--plus-breadcrumb-gutter-x);
-  text-align: center;
-}
-
-.rtl {
-  transform: scaleX(-1);
-}
-
-svg {
-  fill: var(--plus-breadcrumb-separator-color);
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  flex-shrink: 0;
 }
 
 .expander {
@@ -61,11 +52,27 @@ svg {
   color: var(--plus-breadcrumb-expander-color);
   height: var(--plus-breadcrumb-expander-height);
   width: var(--plus-breadcrumb-expander-width);
-  user-select: none;
   cursor: pointer;
-  flex-shrink: 0;
-  svg {
-    fill: currentColor;
-    display: block;
+  &:focus {
+    outline-color: currentColor;
   }
+}
+
+.separator {
+  color: var(--plus-breadcrumb-separator-color);
+  height: var(--plus-breadcrumb-separator-height);
+  width: var(--plus-breadcrumb-separator-width);
+  margin: 0 var(--plus-breadcrumb-gutter-x);
+}
+
+.rtl {
+  transform: scaleX(-1);
+}
+
+svg,
+.expander ::slotted(*) {
+  display: block;
+  fill: currentColor;
+  width: 100%;
+  height: 100%;
 }
