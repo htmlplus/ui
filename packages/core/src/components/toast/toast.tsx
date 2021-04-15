@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
 import * as Utils from '@app/utils';
 import { Animation, GlobalConfig, GlobalState } from '@app/services';
-import { ToastGlobalState, ToastPlacement } from './toast.types';
+import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
 /**
  * TODO
@@ -56,10 +56,7 @@ export class Toast {
   /**
    * TODO
    */
-  @Prop({
-    mutable: true,
-    reflect: true
-  })
+  @Prop({ mutable: true })
   open?: boolean;
 
   /**
@@ -79,6 +76,12 @@ export class Toast {
    */
   @Prop()
   reverse?: boolean;
+
+  /**
+   * TODO
+   */
+  @Prop({ reflect: true })
+  type?: ToastType;
 
   /**
    * TODO
@@ -297,11 +300,13 @@ export class Toast {
    */
 
   // TODO: convert to connectedCallback
-  componentDidLoad() {
 
-    this.init();
-
+  connectedCallback() {
     this.open && this.shown();
+  }
+
+  componentDidLoad() {
+    this.init();
   }
 
   disconnectedCallback() {

@@ -17,7 +17,7 @@ import { LayoutBottom, LayoutMain, LayoutTop } from "./components/layout/layout.
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
-import { ToastPlacement } from "./components/toast/toast.types";
+import { ToastPlacement, ToastType } from "./components/toast/toast.types";
 import { TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./services/tunnel/tunnel.types";
@@ -869,6 +869,10 @@ export namespace Components {
           * TODO
          */
         "reverse"?: boolean;
+        /**
+          * TODO
+         */
+        "type"?: ToastType;
     }
     interface PlusTooltip {
         /**
@@ -2048,6 +2052,10 @@ declare namespace LocalJSX {
           * TODO
          */
         "reverse"?: boolean;
+        /**
+          * TODO
+         */
+        "type"?: ToastType;
     }
     interface PlusTooltip {
         /**
