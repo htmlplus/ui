@@ -3,21 +3,23 @@
 @import 'toast.variables';
 
 :host {
-  display: none;
+  display: inline;
   position: fixed;
   right: 0;
   left: 0;
 }
 
-:host([open]) {
-  display: inline;
+:host([state=closed]) {
+  display: none;
 }
 
 :host([placement*=top]) {
   top: 0;
+  bottom: unset;
 }
 
 :host([placement*=bottom]) {
+  top: unset;
   bottom: 0;
 }
 
@@ -26,21 +28,29 @@
   background-color: red;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .top {
   top: 0;
+  bottom: unset;
 }
 
 .bottom {
+  top: unset;
   bottom: 0;
 }
 
 .ltr {
+  right: unset;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
 .rtl {
   right: 50%;
+  left: unset;
   transform: translate(50%, 0);
 }
 
@@ -61,41 +71,57 @@
   left: 0;
 }
 
-:host(.fade.toast-enter-active),
-:host(.fade.toast-leave-active) {
+// animation
+
+:host([animation][state=opening]),
+:host([animation][state=closing]) {
   .container {
     transition: 0.3s;
   }
 }
 
-:host(.fade.toast-enter),
-:host(.fade.toast-leave-active) {
-  .container {
-    &.top {
-      transform: translate(-50%, -100%);
-    }
-    &.bottom {
-      transform: translate(-50%, 100%);
-    }
-    &.right {
-      transform: translate(100%, 0);
-    }
-    &.left {
-      transform: translate(-100%, 0);
-    }
+// move animation
+
+:host([animation=move][state=open]),
+:host([animation=move][state=closing]) {
+  .top {
+    transform: translate(-50%, -100%);
+  }
+  .bottom {
+    transform: translate(-50%, 100%);
+  }
+  .right {
+    transform: translate(100%, 0);
+  }
+  .left {
+    transform: translate(-100%, 0);
   }
 }
 
-:host(.fade.toast-leave),
-:host(.fade.toast-enter-active) {
+:host([animation=move][state=close]),
+:host([animation=move][state=opening]) {
+  .top,
+  .bottom {
+    transform: translate(-50%, 0);
+  }
+  .right,
+  .left {
+    transform: translate(0, 0);
+  }
+}
+
+// fade animation
+
+:host([animation=fade][state=open]),
+:host([animation=fade][state=closing]) {
   .container {
-    &.top,
-    &.bottom {
-      transform: translate(-50%, 0);
-    }
-    &.right,
-    &.left {
-      transform: translate(0, 0);
-    }
+    opacity: 0;
+  }
+}
+
+:host([animation=fade][state=close]),
+:host([animation=fade][state=opening]) {
+  .container {
+    opacity: 1;
   }
 }

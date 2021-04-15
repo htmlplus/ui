@@ -844,6 +844,10 @@ export namespace Components {
         /**
           * TODO
          */
+        "animation"?: string;
+        /**
+          * TODO
+         */
         "duration"?: number;
         /**
           * TODO
@@ -2000,6 +2004,10 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
     }
     interface PlusToast {
+        /**
+          * TODO
+         */
+        "animation"?: string;
         /**
           * TODO
          */

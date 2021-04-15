@@ -1,5 +1,6 @@
 export interface AnimationConfig {
   name?: string;
+  state?: boolean;
   source?: HTMLElement | Array<HTMLElement>;
   target?: HTMLElement;
   onEnter?: () => void;
@@ -33,9 +34,17 @@ export class Animation {
       },
       config
     );
+
+    // TODO
+    if (typeof this.config.state !== 'undefined') {
+      this.config.target.setAttribute('state', this.config.state ? 'opened' : 'closed')
+    }
   }
 
   private add(...names: string[]) {
+
+    if (!this.config.name) return;
+
     names.map((item) => this.config.target.classList.add(this.name(item)));
   }
 
@@ -73,6 +82,9 @@ export class Animation {
   }
 
   private remove(...names: string[]) {
+
+    if (!this.config.name) return;
+
     names.map((item) => this.config.target.classList.remove(this.name(item)));
   }
 
@@ -81,9 +93,9 @@ export class Animation {
 
     clearTimeout(this.timeout);
 
-    this.remove('enter', 'enter-active', 'enter-to');
+    this.remove('enter', 'enter-active');
 
-    this.remove('leave', 'leave-active', 'leave-to');
+    this.remove('leave', 'leave-active');
   }
 
   public dispose() {
@@ -102,11 +114,15 @@ export class Animation {
 
     this.add('enter');
 
+    this.config.target.setAttribute('state', 'open');
+
     requestAnimationFrame(() => setTimeout(() => {
 
       this.remove('enter');
 
       this.add('enter-active');
+
+      this.config.target.setAttribute('state', 'opening');
 
       config.onEntering();
 
@@ -115,6 +131,8 @@ export class Animation {
       this.timeout = setTimeout(() => {
 
         this.remove('enter', 'enter-active');
+
+        this.config.target.setAttribute('state', 'opend');
 
         config.onEntered();
       }, this.duration());
@@ -133,11 +151,15 @@ export class Animation {
 
     this.add('leave');
 
+    this.config.target.setAttribute('state', 'close');
+
     requestAnimationFrame(() => setTimeout(() => {
 
       this.remove('leave');
 
       this.add('leave-active');
+
+      this.config.target.setAttribute('state', 'closing');
 
       config.onLeaving();
 
@@ -146,6 +168,8 @@ export class Animation {
       this.timeout = setTimeout(() => {
 
         this.remove('leave', 'leave-active');
+
+        this.config.target.setAttribute('state', 'closed');
 
         config.onLeaved();
       }, this.duration());

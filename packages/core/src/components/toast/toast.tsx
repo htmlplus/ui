@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
 import * as Utils from '@app/utils';
 import { Animation, GlobalConfig, GlobalState } from '@app/services';
 import { ToastGlobalState, ToastPlacement } from './toast.types';
@@ -6,7 +6,7 @@ import { ToastGlobalState, ToastPlacement } from './toast.types';
 /**
  * TODO
  * @development
- * @slot - The default slot..
+ * @slot - The default slot.
  * @examples default
  */
 @Component({
@@ -25,6 +25,7 @@ export class Toast {
    * dismissable - Dismiss on click
    * One notification at a time
    * override/queue
+   * fixed
    * 
    * offset/gutter
    * progress
@@ -37,14 +38,14 @@ export class Toast {
   /**
    * TODO
    */
-  @Prop()
-  duration?: number = 5000;
+  @Prop({ reflect: true })
+  animation?: string;
 
   /**
    * TODO
    */
-  // @Prop()
-  // fixed?: boolean = true;
+  @Prop()
+  duration?: number = 5000;
 
   /**
    * TODO
@@ -55,7 +56,10 @@ export class Toast {
   /**
    * TODO
    */
-  @Prop({ reflect: true })
+  @Prop({
+    mutable: true,
+    reflect: true
+  })
   open?: boolean;
 
   /**
@@ -113,9 +117,7 @@ export class Toast {
   plusOpened!: EventEmitter<void>;
 
   @GlobalConfig('toast', {
-    duration: 5000,
-    fixed: true,
-    placement: 'top-end'
+    // TODO
   })
   config?;
 
@@ -129,17 +131,21 @@ export class Toast {
 
   $container!: HTMLElement;
 
-  animation?: Animation;
+  @State()
+  isOpen?: boolean;
+
+  animate?: Animation;
 
   get attributes() {
     return {
+      // TODO
       // 'role': 'alert',
       // 'aria-live': 'assertive',
       // 'aria-atomic': 'true',
     }
   }
 
-  get class() {
+  get classes() {
 
     let [y, x] = this.placement?.split('-');
 
@@ -147,16 +153,15 @@ export class Toast {
 
     x = Utils.toAxis(x, this.isRTL);
 
+    if (this.fullWidth) x = undefined;
+
     return {
       'container': true,
+      'full-width': this.fullWidth,
       [x]: !!x,
       [y]: !!y,
       [this.isRTL ? 'rtl' : 'ltr']: true,
     }
-  }
-
-  get isOpen() {
-    return this.$host.classList.contains('open');
   }
 
   get isRTL() {
@@ -175,7 +180,7 @@ export class Toast {
 
     if (!this.isOpen || event.defaultPrevented) return;
 
-    this.animation.leave({
+    this.animate.leave({
       onLeave: () => this.broadcast(false),
       onLeaved: () => {
 
@@ -183,7 +188,7 @@ export class Toast {
 
         this.plusClosed.emit()
       }
-    });
+    })
   }
 
   show() {
@@ -194,14 +199,14 @@ export class Toast {
 
     if (this.isOpen || event.defaultPrevented) return;
 
-    this.animation.enter({
+    this.animate.enter({
       onEnter: () => this.shown(),
       onEntered: () => this.plusOpened.emit()
     })
   }
 
   toggle() {
-    return this.isOpen ? this.hide() : this.show();
+    this.isOpen ? this.hide() : this.show();
   }
 
   /**
@@ -213,12 +218,13 @@ export class Toast {
   }
 
   dispose() {
-    this.animation?.dispose();
+    this.animate?.dispose();
   }
 
   hidden() {
 
-    this.$host.classList.remove('open');
+    // TODO
+    this.isOpen = false;
 
     this.open = false;
 
@@ -226,8 +232,8 @@ export class Toast {
   }
 
   init() {
-    this.animation = new Animation({
-      name: 'toast',
+    this.animate = new Animation({
+      state: !!this.open,
       source: this.$container,
       target: this.$host
     })
@@ -235,11 +241,15 @@ export class Toast {
 
   shown() {
 
-    this.$host.classList.add('open');
+    // TODO
+    this.isOpen = true;
 
     this.open = true;
 
     this.broadcast(true);
+
+    // TODO
+    // setTimeout(() => !this.persistent && this.hide(), this.duration);
   }
 
   /**
@@ -247,25 +257,35 @@ export class Toast {
    */
 
   @Watch('open')
-  openWatcher() {
+  enter() {
 
-    if (this.open) {
+    if (!this.open) return;
 
-      if (this.isOpen) return;
+    if (this.isOpen) return;
 
-      this.animation.enter({
-        onEnter: () => this.shown()
-      })
-    }
-    else {
+    this.animate.enter({
+      onEnter: () => this.shown()
+    })
+  }
 
-      if (!this.isOpen) return;
+  @Watch('open')
+  leave() {
 
-      this.animation.leave({
-        onLeave: () => this.broadcast(false),
-        onLeaved: () => this.hidden(),
-      })
-    }
+    if (this.open) return;
+
+    if (!this.isOpen) return;
+
+    this.animate.leave({
+      onLeave: () => this.broadcast(false),
+      onLeaved: () => this.hidden(),
+    })
+  }
+
+  @Watch('persistent')
+  persistentWatcher() {
+
+    // TODO
+    // setTimeout(() => !this.persistent && this.hide(), this.duration);
   }
 
   /**
@@ -276,7 +296,7 @@ export class Toast {
    * Lifecycles
    */
 
-  // TODO convert to connectedCallback
+  // TODO: convert to connectedCallback
   componentDidLoad() {
 
     this.init();
@@ -291,7 +311,10 @@ export class Toast {
   render() {
     return (
       <Host {...this.attributes}>
-        <div class={this.class} ref={(element) => this.$container = element}>
+        <div
+          class={this.classes}
+          ref={(element) => this.$container = element}
+        >
           <slot />
         </div>
       </Host>
