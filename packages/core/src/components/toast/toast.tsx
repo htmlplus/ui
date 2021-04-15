@@ -29,7 +29,6 @@ export class Toast {
    * 
    * offset/gutter
    * progress
-   * type
    * 
    * https://izitoast.marcelodolza.com/
    * https://vuetifyjs.com/en/components/snackbars/
@@ -145,6 +144,7 @@ export class Toast {
       // 'role': 'alert',
       // 'aria-live': 'assertive',
       // 'aria-atomic': 'true',
+      style: this.styles
     }
   }
 
@@ -169,6 +169,25 @@ export class Toast {
 
   get isRTL() {
     return Utils.isRTL(this);
+  }
+
+  get styles() {
+    return {
+      'z-index': this.zIndex
+    }
+  }
+
+  get zIndex() {
+
+    if (this.state.instances.length <= 1) return;
+
+    const [instance] = this.state.instances.slice(-2);
+
+    if (!instance) return;
+
+    const zIndex = getComputedStyle(instance.$host).getPropertyValue('z-index');
+
+    return `${parseInt(zIndex) + 1}`;
   }
 
   /**
@@ -226,10 +245,11 @@ export class Toast {
 
   hidden() {
 
-    // TODO
+    this.open = false;
+    
     this.isOpen = false;
 
-    this.open = false;
+    this.unregister();
 
     this.broadcast(false);
   }
@@ -244,15 +264,24 @@ export class Toast {
 
   shown() {
 
-    // TODO
-    this.isOpen = true;
-
     this.open = true;
+    
+    this.isOpen = true;
+    
+    this.register();
 
     this.broadcast(true);
 
     // TODO
     // setTimeout(() => !this.persistent && this.hide(), this.duration);
+  }
+  
+  register() {
+    this.state.instances.push(this);
+  }
+
+  unregister() {
+    this.state.instances = this.state.instances.filter((instance) => instance !== this);
   }
 
   /**
@@ -298,8 +327,6 @@ export class Toast {
   /**
    * Lifecycles
    */
-
-  // TODO: convert to connectedCallback
 
   connectedCallback() {
     this.open && this.shown();
