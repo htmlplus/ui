@@ -1,8 +1,12 @@
-:host([animation='fade']) {
+:host([animation="fade"]) {
   .show {
+    -webkit-animation: fadeIn;
+    animation: fadeIn;
+    animation-duration: 1s;
+    animation-delay: var(--plus-tooltip-animation-delay);
     display: block;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
+    opacity: 0;
+    animation-fill-mode: forwards;
   }
 
   @-webkit-keyframes fadeIn {

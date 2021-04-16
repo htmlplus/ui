@@ -1,0 +1,34 @@
+:host([arrow="wide"]) {
+
+  [data-popper-placement="bottom"] [x-arrow] {
+    top: -10px;
+    //left: calc(50% - 10px);
+    border-bottom: 10px solid black;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+
+  [data-popper-placement="top"] [x-arrow] {
+    bottom: -10px;
+    //left: calc(50% - 10px);
+    border-top: 10px solid black;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+  }
+
+  [data-popper-placement="left"] [x-arrow] {
+    right: -10px;
+    //top: calc(50% - 10px);
+    border-left: 10px solid black;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+
+  [data-popper-placement="right"] [x-arrow] {
+    left: -10px;
+    //top: calc(50% - 10px);
+    border-right: 10px solid black;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+}

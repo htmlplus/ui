@@ -1,8 +1,11 @@
 :host([animation='shift-toward'][state='show']) {
   .show {
-    display: inline-block;
+    animation-delay: var(--plus-tooltip-animation-delay);
+    display: block;
+    opacity: 0;
     -webkit-animation: shift-toward 1s;
     animation: shift-toward 1s;
+    animation-fill-mode: forwards;
   }
 
   @-webkit-keyframes shift-toward {

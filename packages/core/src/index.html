@@ -40,6 +40,7 @@
   .w-100 {
     width: 15%;
   }
+
   .btn:hover {
     background: #5183f5;
     color: white;
@@ -50,7 +51,7 @@
   <div class="w-100 m-2">
     <button class="btn">
       shift-away-subtle
-      <plus-tooltip>Tooltip</plus-tooltip>
+      <plus-tooltip animation="fade"  delay="2000">Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip </plus-tooltip>
     </button>
   </div>
   <div class="w-100 m-2">
@@ -68,7 +69,7 @@
   <div class="w-100 m-2">
     <button class="btn">
       perspective
-      <plus-tooltip>Tooltip</plus-tooltip>
+      <plus-tooltip animation="perspective">Tooltip</plus-tooltip>
     </button>
   </div>
 </div>
@@ -88,13 +89,13 @@
   <div class="w-100 m-2">
     <button class="btn">
       scale-subtle
-      <plus-tooltip>Tooltip</plus-tooltip>
+      <plus-tooltip animation="fade" placement="right">Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip </plus-tooltip>
     </button>
   </div>
   <div class="w-100 m-2">
     <button class="btn">
       perspective
-      <plus-tooltip>Tooltip</plus-tooltip>
+      <plus-tooltip animation="perspective">Tooltip</plus-tooltip>
     </button>
   </div>
 </div>
@@ -114,13 +115,57 @@
   <div class="w-100 m-2">
     <button class="btn">
       scale-extreme
-      <plus-tooltip>Tooltip</plus-tooltip>
+      <plus-tooltip placement="left">Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip Tooltip </plus-tooltip>
     </button>
   </div>
   <div class="w-100 m-2">
     <button class="btn">
       perspective-extreme
+      <plus-tooltip placement="top">Tooltip</plus-tooltip>
+    </button>
+  </div>
+</div>
+<div class="d-flex center">
+  <h2>Arrows</h2>
+</div>
+
+<div class="d-flex center">
+  <div class="w-100 m-2">
+    <button class="btn">
+      Default
       <plus-tooltip>Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      Round
+      <plus-tooltip arrow="round" >Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      Large
+      <plus-tooltip placement="bottom" arrow="large">Tooltip</plus-tooltip>
+    </button>
+  </div>
+</div>
+<div class="d-flex center">
+  <div class="w-100 m-2">
+    <button class="btn">
+      Small
+      <plus-tooltip placement="top" arrow="small">Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      Wide
+      <plus-tooltip placement="top" arrow="wide">Tooltip</plus-tooltip>
+    </button>
+  </div>
+  <div class="w-100 m-2">
+    <button class="btn">
+      Narrow
+      <plus-tooltip placement="top" arrow="narrow">Tooltip</plus-tooltip>
     </button>
   </div>
 </div>

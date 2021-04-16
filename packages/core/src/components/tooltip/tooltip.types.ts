@@ -20,3 +20,5 @@ export type TooltipAnimation =
   | 'perspective-subtle'
   | 'perspective-extreme'
   | 'fade';
+// Arrow
+export type TooltipArrow = 'default' | 'round' | 'large' | 'small' | 'wide' | 'narrow';

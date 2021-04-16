@@ -1,7 +1,10 @@
 :host([animation='scale']) {
   .show {
-    display: inline-block;
     -webkit-animation: scale 0.2s ease-in-out;
+    animation-delay: var(--plus-tooltip-animation-delay);
+    display: block;
+    opacity: 0;
+    animation-fill-mode: forwards;
     animation: scale 0.2s ease-in-out;
     transform: translate(-928px, 48px);
   }

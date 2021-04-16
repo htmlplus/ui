@@ -2,6 +2,7 @@
 @import 'reset';
 @import 'tooltip.variables';
 @import './animations/index';
+@import './arrows/index';
 
 :host {
 
@@ -18,20 +19,33 @@
   --plus-tooltip-color: #{$tooltip-color};
   --plus-tooltip-padding: #{$tooltip-padding};
   --plus-tooltip-z-index: #{$tooltip-z-index};
-  --plus-tooltip-animation: #{$tooltip-animation};
+  --plus-tooltip-animation-delay: #{$tooltip-animation-delay};
 }
 
+:host {
+  position: inherit;
+}
+:host([state='show']) {
+  z-index: var(--plus-tooltip-z-index);
+}
+:host([state='hide']) {
+  z-index: 0;
+}
 :host {
   .tooltip {
     background: var(--plus-tooltip-background-color);
     color: var(--plus-tooltip-color);
     padding: var(--plus-tooltip-padding);
     border-radius: var(--plus-tooltip-border-radius);
-    z-index: var(--plus-tooltip-z-index);
     display: none;
     font-weight: bold;
+    max-width: calc(100vw - 10px);
     position: absolute;
   }
+  [x-arrow] {
+    position: absolute;
+  }
+
 }
 //:host {
 //  [state='show'][animation='fade'] {}
@@ -53,4 +67,30 @@
 //  -webkit-animation: fadeIn 1s;
 //  animation: fadeIn 1s;
 //}
+
+
+:host(.fade.tooltip-enter-active),
+:host(.fade.tooltip-leave-active) {
+  transition: all 10s ease-out;
+
+  .tooltip {
+    overflow: hidden;
+  }
+
+  ::slotted(*) {
+    transition: all 10s ease-out;
+  }
+}
+
+:host(.fade.tooltip-enter),
+:host(.fade.tooltip-leave-active) {
+  display: none;
+  opacity: 0;
+}
+
+:host(.fade.tooltip-leave),
+:host(.fade.tooltip-enter-active) {
+  opacity: 1;
+  display: block;
+}
 

@@ -1,0 +1,28 @@
+:host([animation="perspective"]) {
+  .show {
+    -webkit-animation: perspective;
+    animation: perspective;
+    animation-duration: 1s;
+    //animation-delay: var(--plus-tooltip-animation-delay);
+    display: block;
+    animation-fill-mode: forwards;
+  }
+
+  @-webkit-keyframes perspective {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes perspective {
+    from {
+      transform: rotateX(90deg);
+    }
+    to {
+      transform: rotateX(0);
+    }
+  }
+}
