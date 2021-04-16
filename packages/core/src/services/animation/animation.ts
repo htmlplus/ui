@@ -132,7 +132,7 @@ export class Animation {
 
         this.remove('enter', 'enter-active');
 
-        this.config.target.setAttribute('state', 'opend');
+        this.config.target.setAttribute('state', 'opened');
 
         config.onEntered();
       }, this.duration());

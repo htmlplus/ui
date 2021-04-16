@@ -167,6 +167,16 @@ export class Toast {
     }
   }
 
+  // TODO
+  get isCurrent() {
+
+    const instances = this.state.instances;
+
+    const last = instances.length - 1;
+
+    return instances[last] === this;
+  }
+
   get isRTL() {
     return Utils.isRTL(this);
   }
