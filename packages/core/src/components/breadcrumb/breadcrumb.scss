@@ -3,38 +3,21 @@
 @import 'breadcrumb.variables';
 
 :host {
-  
-  /**
-   * @prop --plus-breadcrumb-gutter-x                 : Used to adjust the Horizontal gap.
-   * @prop --plus-breadcrumb-expander-background-color: Used to adjust the expander background color.
-   * @prop --plus-breadcrumb-expander-border-radius   : Used to adjust the expander border radius.
-   * @prop --plus-breadcrumb-expander-color           : Used to adjust the expander color.
-   * @prop --plus-breadcrumb-expander-height          : Used to adjust the expander height.
-   * @prop --plus-breadcrumb-expander-width           : Used to adjust the expander width.
-   * @prop --plus-breadcrumb-separator-color          : Used to adjust the separator color.
-   * @prop --plus-breadcrumb-separator-height         : Used to adjust the separator height.
-   * @prop --plus-breadcrumb-separator-width          : Used to adjust the separator width.
-   */
 
-  --plus-breadcrumb-gutter-x                 : #{$breadcrumb-gutter-x};
-  --plus-breadcrumb-expander-background-color: #{$breadcrumb-expander-background-color};
-  --plus-breadcrumb-expander-border-radius   : #{$breadcrumb-expander-border-radius};
-  --plus-breadcrumb-expander-color           : #{$breadcrumb-expander-color};
-  --plus-breadcrumb-expander-height          : #{$breadcrumb-expander-height};
-  --plus-breadcrumb-expander-width           : #{$breadcrumb-expander-width};
-  --plus-breadcrumb-separator-color          : #{$breadcrumb-separator-color};
-  --plus-breadcrumb-separator-height         : #{$breadcrumb-separator-height};
-  --plus-breadcrumb-separator-width          : #{$breadcrumb-separator-width};
+  // @prop Used to adjust the Horizontal gap.
+  --plus-breadcrumb-gutter-x: #{$breadcrumb-gutter-x};
 }
 
 :host {
-  display: block
+  display: block;
 }
 
 .container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  // TODO: column-gap: $breadcrumb-gutter-y;
+  // TODO: row-gap: $breadcrumb-gutter-x;
 }
 
 .expander,
@@ -47,11 +30,11 @@
 }
 
 .expander {
-  background-color: var(--plus-breadcrumb-expander-background-color);
-  border-radius: var(--plus-breadcrumb-expander-border-radius);
-  color: var(--plus-breadcrumb-expander-color);
-  height: var(--plus-breadcrumb-expander-height);
-  width: var(--plus-breadcrumb-expander-width);
+  background-color: $breadcrumb-expander-background-color;
+  border-radius: $breadcrumb-expander-border-radius;
+  color: $breadcrumb-expander-color;
+  height: $breadcrumb-expander-height;
+  width: $breadcrumb-expander-width;
   cursor: pointer;
   &:focus {
     outline-color: currentColor;
@@ -59,10 +42,10 @@
 }
 
 .separator {
-  color: var(--plus-breadcrumb-separator-color);
-  height: var(--plus-breadcrumb-separator-height);
-  width: var(--plus-breadcrumb-separator-width);
-  margin: 0 var(--plus-breadcrumb-gutter-x);
+  color: $breadcrumb-separator-color;
+  height: $breadcrumb-separator-height;
+  width: $breadcrumb-separator-width;
+  margin: 0 var(--plus-breadcrumb-gutter-x); // TODO
 }
 
 .rtl {

@@ -3,7 +3,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 /**
  * TODO
  * @group tabs
- * @slot - The default slot.
+ * @slot default - The default slot.
  */
 @Component({
   tag: 'plus-tabs-bar',

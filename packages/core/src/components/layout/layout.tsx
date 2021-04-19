@@ -6,7 +6,7 @@ import { LayoutTop, LayoutMain, LayoutBottom } from './layout.types';
 /**
  * TODO
  * @development 
- * @slot              - The default slot.
+ * @slot default      - The default slot.
  * @slot header       - TODO.
  * @slot top:start    - TODO.
  * @slot top:end      - TODO.

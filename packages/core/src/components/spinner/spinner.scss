@@ -5,14 +5,13 @@
 
 :host {
 
-    /**
-    * @prop --plus-spinner-color : Specifies the color of the spinner.
-    * @prop --plus-spinner-size  : Specifies the size of the spinner.
-    * @prop --plus-spinner-weight: Specifies the weight of the spinner.
-    */
+    // @prop Specifies the color of the spinner.
+    --plus-spinner-color: currentColor;
 
-    --plus-spinner-color : currentColor;
-    --plus-spinner-size  : 32px;
+    // @prop Specifies the size of the spinner.
+    --plus-spinner-size: 32px;
+
+    // @prop Specifies the weight of the spinner.
     --plus-spinner-weight: 1;
 }
 

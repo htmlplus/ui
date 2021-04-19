@@ -4,12 +4,10 @@
 
 :host {
 
-  /**
-  * @prop --plus-sticky-top    : Specifies the space from top.
-  * @prop --plus-sticky-z-index: Specifies the z-index of the sticky.
-  */
+  // @prop Specifies the space from top.
+  --plus-sticky-top: #{$sticky-top};
 
-  --plus-sticky-top    : #{$sticky-top};
+  // @prop Specifies the z-index of the sticky.
   --plus-sticky-z-index: #{$sticky-z-index};
 }
 

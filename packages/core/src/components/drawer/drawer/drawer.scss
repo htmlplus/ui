@@ -4,13 +4,11 @@
 
 :host {
 
-    /**
-    * @prop --plus-drawer-size     : You can use it to set the width size of the drawer using css variables.
-    * @prop --plus-drawer-mini-size: You can use it to set the minimum width size of the drawer using css variables.
-    */
+    // @prop You can use it to set the width size of the drawer using css variables.
+    --plus-drawer-size: 280px;
 
-    --plus-drawer-size      : 280px;
-    --plus-drawer-mini-size : 0;
+    // @prop You can use it to set the minimum width size of the drawer using css variables.
+    --plus-drawer-mini-size: 0;
 }
 
 :host {

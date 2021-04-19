@@ -1,39 +1,50 @@
 ```css [style]
+/* first breadcrumb */
 plus-breadcrumb {
   padding: 0.75em;
   border-radius: 0.25em;
-}
-plus-breadcrumb.first {
-  --plus-breadcrumb-gutter-x: 0.75em;
-  --plus-breadcrumb-expander-background-color: transparent;
-  --plus-breadcrumb-expander-border-radius: 0;
-  --plus-breadcrumb-expander-color: white;
-  --plus-breadcrumb-expander-height: 1em;
-  --plus-breadcrumb-expander-width: 1em;
-  --plus-breadcrumb-separator-color: white;
-  --plus-breadcrumb-separator-height: 0.75em;
-  --plus-breadcrumb-separator-width: 0.75em;
-  background-color: #2B78AC;
 }
 plus-breadcrumb.first a {
   text-decoration: none;
   color: white;
 }
+plus-breadcrumb.first {
+  --plus-breadcrumb-gutter-x: 0.75em;
+  --plus-breadcrumb-gutter-y: 0.75em;
+  background-color: #2B78AC;
+}
+plus-breadcrumb.first::part(expander) {
+  background-color: transparent;
+  color: white;
+  height: 1em;
+  width: 1em;
+}
+plus-breadcrumb.first::part(separator) {
+  color: white;
+  height: 0.75em;
+  width: 0.75em;
+}
+
+/* second breadcrumb */
 plus-breadcrumb.second {
   --plus-breadcrumb-gutter-x: 0.75em;
-  --plus-breadcrumb-expander-background-color: transparent;
-  --plus-breadcrumb-expander-border-radius: 0;
-  --plus-breadcrumb-expander-color: black;
-  --plus-breadcrumb-expander-height: 1em;
-  --plus-breadcrumb-expander-width: 1em;
-  --plus-breadcrumb-separator-color: black;
-  --plus-breadcrumb-separator-height: 0.75em;
-  --plus-breadcrumb-separator-width: 0.75em;
+  --plus-breadcrumb-gutter-y: 0.75em;
   background-color: #DCDCDC;
 }
 plus-breadcrumb.second a {
   text-decoration: none;
   color: black;
+}
+plus-breadcrumb.second::part(expander) {
+  background-color: transparent;
+  color: black;
+  height: 1em;
+  width: 1em;
+}
+plus-breadcrumb.second::part(separator) {
+  color: black;
+  height: 0.75em;
+  width: 0.75em;
 }
 ```
 

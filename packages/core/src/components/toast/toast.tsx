@@ -6,7 +6,7 @@ import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 /**
  * TODO
  * @development
- * @slot - The default slot.
+ * @slot default - The default slot.
  * @examples default
  */
 @Component({

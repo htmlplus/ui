@@ -7,8 +7,11 @@ import * as Constants from './breadcrumb.constants';
  * Breadcrumb component is a navigation pattern that shows the actual path of the current page. 
  * It represents the route using links, which enables the user to easily navigate upwards through 
  * the hierarchy.
- * @slot - The default slot.
- * @slot expander - The expander slot.
+ * @part expander  - TODO.
+ * @part item      - TODO.
+ * @part separator - TODO.
+ * @slot default   - The default slot.
+ * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
  * @examples default, separator, custom-separator, limitation, custom-expander, customized
  */
@@ -45,7 +48,8 @@ export class Breadcrumb {
   separator?: string;
 
   @GlobalConfig('breadcrumb', {
-    offset: 1
+    expanderText: 'Show path',
+    offset: 1,
   })
   config?;
 
@@ -85,12 +89,13 @@ export class Breadcrumb {
   $expander() {
     return (
       <div
-        key="expander"
-        class="expander"
-        tabindex="0"
-        role="button"
         aria-disabled="false"
         aria-label={this.expanderText}
+        class="expander"
+        key="expander"
+        part="expander"
+        role="button"
+        tabindex="0"
         onClick={() => this.update(false, true)}
         onKeyDown={(event) => event.key.match(/Enter| /) && this.update(false, true)}
       >
@@ -105,7 +110,7 @@ export class Breadcrumb {
 
   $wrapper(key) {
     return (
-      <div key={key}>
+      <div key={key} part="item">
         <slot name={key} />
       </div>
     )
@@ -176,9 +181,10 @@ export class Breadcrumb {
       const $separator = (
         <div
           aria-hidden="true"
-          key="separator"
           class={{ separator: true, rtl }}
           innerHTML={template}
+          key="separator"
+          part="separator"
         />
       )
 
@@ -195,7 +201,7 @@ export class Breadcrumb {
     const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
 
     const $clone = $node?.cloneNode(true) as HTMLElement;
-    
+
     $clone?.removeAttribute('slot');
 
     const template = $clone?.outerHTML;
