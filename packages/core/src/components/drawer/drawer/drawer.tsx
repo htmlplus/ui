@@ -1,6 +1,5 @@
 import { Component, Host, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
-import { Animation, Bind, ClickOutside, GlobalConfig, Media, Scrollbar } from '@app/services';
-import * as Utils from '@app/utils';
+import { Animation, Bind, ClickOutside, GlobalConfig, Helper, Media, Scrollbar } from '@app/utils';
 import { DrawerLink, Inject, rebind } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.types';
 
@@ -151,9 +150,9 @@ export class Drawer {
 
   get classes() {
 
-    const placement = Utils.toAxis(this.placement || 'start', this.isRTL);
+    const placement = Helper.toAxis(this.placement || 'start', this.isRTL);
 
-    return Utils.classes(
+    return Helper.classes(
       'content',
       {
         [placement]: true,
@@ -176,7 +175,7 @@ export class Drawer {
   }
 
   get isRTL() {
-    return Utils.isRTL(this);
+    return Helper.isRTL(this);
   }
 
   get isTemporary() {

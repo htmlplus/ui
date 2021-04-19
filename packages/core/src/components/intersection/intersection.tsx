@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/services';
+import { Bind, GlobalConfig } from '@app/utils';
 import { IntersectionBehavior } from './intersection.types';
 
 /**

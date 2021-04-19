@@ -1,7 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
-import * as Utils from '@app/utils';
-import { Bind, GlobalConfig } from '@app/services';
+import { Bind, GlobalConfig, Helper } from '@app/utils';
 import {
   CropperValue,
   CropperMode,
@@ -202,7 +201,7 @@ export class Cropper {
   lock: boolean = false;
 
   get classes() {
-    return Utils.classes(
+    return Helper.classes(
       'wrapper',
       {
         resizer: this.resizer,
@@ -234,7 +233,7 @@ export class Cropper {
 
       if (this.responsive === 'reset') return this.responsive;
 
-      return Utils.toBoolean(this.responsive);
+      return Helper.toBoolean(this.responsive);
     })();
 
     const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any)();
@@ -245,7 +244,7 @@ export class Cropper {
 
       if (['touch', 'wheel'].includes(value)) return value;
 
-      return Utils.toBoolean(this.zoomable);
+      return Helper.toBoolean(this.zoomable);
     })();
 
     return {
@@ -265,18 +264,18 @@ export class Cropper {
        */
       autoCropArea: parseFloat(`${this.area}`),
       aspectRatio: this.shape === 'rectangle' ? aspectRatio : 1,
-      background: Utils.toBoolean(this.background),
-      center: Utils.toBoolean(this.indicator),
+      background: Helper.toBoolean(this.background),
+      center: Helper.toBoolean(this.indicator),
       cropBoxMovable: this.mode === 'crop',
       cropBoxResizable: this.mode === 'crop',
       data: this.value,
       dragMode: this.mode,
-      guides: Utils.toBoolean(this.guides),
+      guides: Helper.toBoolean(this.guides),
       highlight: false,
       initialAspectRatio: NaN,
       minContainerWidth: 0,
       minContainerHeight: 0,
-      modal: Utils.toBoolean(this.backdrop),
+      modal: Helper.toBoolean(this.backdrop),
       movable: true,
       responsive: !!responsive,
       restore: responsive === 'reset',

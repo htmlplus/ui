@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/services';
+import { GlobalConfig } from '@app/utils';
 
 /**
  * TODO

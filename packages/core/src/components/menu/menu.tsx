@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
-import { Bind, RectObserver } from '@app/services';
-import * as Utils from '@app/utils';
+import { Bind, Helper, RectObserver } from '@app/utils';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
@@ -159,7 +158,7 @@ export class Menu {
 
   click(event) {
 
-    const elements = Utils.eventPath(event);
+    const elements = Helper.eventPath(event);
 
     const index = elements.findIndex((element) => element === this.$activator);
 
@@ -213,7 +212,7 @@ export class Menu {
 
     if (this.offsetX && !this.getGrowX.match(/both/)) {
 
-      const offset = Utils.toUnit(this.offsetX);
+      const offset = Helper.toUnit(this.offsetX);
 
       const operator = this.getGrowX.match(/left|start/) ? '-' : '+';
 
@@ -222,7 +221,7 @@ export class Menu {
 
     if (this.offsetY && !this.getGrowY.match(/both/)) {
 
-      const offset = Utils.toUnit(this.offsetY);
+      const offset = Helper.toUnit(this.offsetY);
 
       const operator = this.getGrowY.match(/top/) ? '-' : '+';
 
@@ -257,7 +256,7 @@ export class Menu {
 
     if (!this.open) return;
 
-    const path = Utils.eventPath(event);
+    const path = Helper.eventPath(event);
 
     const activator = this.$host.shadowRoot.querySelector('.activator');
 

@@ -1,6 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
-import * as Utils from '@app/utils';
-import { Animation, GlobalConfig, GlobalState } from '@app/services';
+import { Animation, GlobalConfig, GlobalState, Helper } from '@app/utils';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
 /**
@@ -154,7 +153,7 @@ export class Toast {
 
     if (!y) y = 'top';
 
-    x = Utils.toAxis(x, this.isRTL);
+    x = Helper.toAxis(x, this.isRTL);
 
     if (this.fullWidth) x = undefined;
 
@@ -178,7 +177,7 @@ export class Toast {
   }
 
   get isRTL() {
-    return Utils.isRTL(this);
+    return Helper.isRTL(this);
   }
 
   get styles() {

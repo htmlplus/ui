@@ -1,4 +1,4 @@
-import { createLink } from '@app/services';
+import { createLink } from '@app/utils';
 
 export interface DrawerLink {
     open?: boolean;

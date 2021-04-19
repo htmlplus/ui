@@ -1,4 +1,4 @@
-import * as Utils from '@app/utils';
+import { Helper } from '@app/utils';
 
 export class ClickOutside {
 
@@ -14,7 +14,7 @@ export class ClickOutside {
 
         const fn = (event) => {
 
-            const path = Utils.eventPath(event);
+            const path = Helper.eventPath(event);
 
             const index = path.findIndex((item) => item === element);
 

@@ -1,6 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
-import { Bind, GlobalConfig } from '@app/services';
-import * as Utils from '@app/utils';
+import { Bind, GlobalConfig, Helper } from '@app/utils';
 import { StickyState, StickyTop } from './sticky.types';
 
 /**
@@ -73,12 +72,12 @@ export class Sticky {
   }
 
   get sizer() {
-    return `calc((${Utils.toUnit(this.top)} + 1px) * -1)`;
+    return `calc((${Helper.toUnit(this.top)} + 1px) * -1)`;
   }
 
   get styles() {
     return {
-      top: Utils.toUnit(this.top),
+      top: Helper.toUnit(this.top),
       zIndex: this.top ? String(this.zIndex) : null,
     }
   }

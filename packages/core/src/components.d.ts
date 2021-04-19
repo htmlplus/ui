@@ -19,7 +19,7 @@ import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { ToastPlacement, ToastType } from "./components/toast/toast.types";
 import { TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
-import { SubscribeType } from "./services/tunnel/tunnel.types";
+import { SubscribeType } from "./utils/tunnel/tunnel.types";
 export namespace Components {
     interface PlusAspectRatio {
         /**
