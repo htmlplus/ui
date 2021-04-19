@@ -20,6 +20,7 @@
   --plus-tooltip-padding: #{$tooltip-padding};
   --plus-tooltip-z-index: #{$tooltip-z-index};
   --plus-tooltip-animation-delay: #{$tooltip-animation-delay};
+  --plus-tooltip-max-width: #{$tooltip-max-width};
 }
 
 :host {
@@ -39,13 +40,13 @@
     border-radius: var(--plus-tooltip-border-radius);
     display: none;
     font-weight: bold;
-    max-width: calc(100vw - 10px);
+    max-width: var(--plus-tooltip-max-width);
     position: absolute;
+    contain: layout;
   }
   [x-arrow] {
     position: absolute;
   }
-
 }
 //:host {
 //  [state='show'][animation='fade'] {}
@@ -62,35 +63,3 @@
 //  [state='show'][animation='perspective-subtle'] {}
 //  [state='show'][animation='perspective-extreme'] {}
 //}
-//.show {
-//  display: inline-block;
-//  -webkit-animation: fadeIn 1s;
-//  animation: fadeIn 1s;
-//}
-
-
-:host(.fade.tooltip-enter-active),
-:host(.fade.tooltip-leave-active) {
-  transition: all 10s ease-out;
-
-  .tooltip {
-    overflow: hidden;
-  }
-
-  ::slotted(*) {
-    transition: all 10s ease-out;
-  }
-}
-
-:host(.fade.tooltip-enter),
-:host(.fade.tooltip-leave-active) {
-  display: none;
-  opacity: 0;
-}
-
-:host(.fade.tooltip-leave),
-:host(.fade.tooltip-enter-active) {
-  opacity: 1;
-  display: block;
-}
-

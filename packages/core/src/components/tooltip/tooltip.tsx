@@ -1,6 +1,6 @@
 import {Component, Element, EventEmitter, Host, Prop, State, Watch, h} from '@stencil/core';
 import {createPopper, Instance} from "@popperjs/core";
-import {Bind, GlobalConfig, Animation} from '@app/services';
+import {Bind, GlobalConfig} from '@app/services';
 import * as Utils from '@app/utils';
 import {TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow} from './tooltip.types';
 
@@ -145,8 +145,6 @@ export class Tooltip {
   @State()
   state?: 'show' | 'hide' = 'hide';
 
-  animationInstance!: Animation;
-
   @Element()
   $host!: HTMLElement;
 
@@ -254,21 +252,6 @@ export class Tooltip {
     this.eventsName.hide.map((eventName) => this.$activator.removeEventListener(eventName, this.onHide));
   }
 
-  @Bind
-  init() {
-    this.animationInstance = new Animation({
-      name: 'tooltip',
-      source: this.$host,
-      target: this.$host
-    })
-  }
-
-  show() {
-  }
-
-  hide() {
-  }
-
   /**
    * Watchers
    */
@@ -286,10 +269,7 @@ export class Tooltip {
   onHide() {
     this.instance?.destroy();
     this.state = 'hide';
-    // this.$tooltip.classList.remove('show');
-    this.animationInstance.leave({
-      onLeaved: () => this.$tooltip.classList.remove('show')
-    })
+    this.$tooltip.classList.remove('show');
     // this.plusClose.emit();
     // this.plusClosed.emit();
   }
@@ -298,10 +278,7 @@ export class Tooltip {
   onShow() {
     this.instance = createPopper(this.$activator, this.$tooltip, this.options);
     this.state = 'show';
-    // this.$tooltip.classList.add('show');
-    this.animationInstance.enter({
-      onEnter: () => this.$tooltip.classList.add('show')
-    })
+    this.$tooltip.classList.add('show');
     // this.plusOpen.emit();
     // this.plusOpened.emit();
   }
@@ -312,7 +289,6 @@ export class Tooltip {
 
   connectedCallback() {
     this.bind();
-    this.init();
   }
 
   disconnectedCallback() {
@@ -323,9 +299,7 @@ export class Tooltip {
     return (
       <Host {...this.attributes}>
         <div class="tooltip" ref={(element) => this.$tooltip = element}>
-          <div class="test">
-            <slot/>
-          </div>
+          <slot/>
           <span x-arrow ref={element => this.$arrow = element}/>
         </div>
       </Host>
