@@ -24,7 +24,6 @@ export const PlusDrawerToggler = /*@__PURE__*/createReactComponent<JSX.PlusDrawe
 export const PlusGrid = /*@__PURE__*/createReactComponent<JSX.PlusGrid, HTMLPlusGridElement>('plus-grid');
 export const PlusGridItem = /*@__PURE__*/createReactComponent<JSX.PlusGridItem, HTMLPlusGridItemElement>('plus-grid-item');
 export const PlusIntersection = /*@__PURE__*/createReactComponent<JSX.PlusIntersection, HTMLPlusIntersectionElement>('plus-intersection');
-export const PlusLayout = /*@__PURE__*/createReactComponent<JSX.PlusLayout, HTMLPlusLayoutElement>('plus-layout');
 export const PlusSpinner = /*@__PURE__*/createReactComponent<JSX.PlusSpinner, HTMLPlusSpinnerElement>('plus-spinner');
 export const PlusSticky = /*@__PURE__*/createReactComponent<JSX.PlusSticky, HTMLPlusStickyElement>('plus-sticky');
 export const PlusTabs = /*@__PURE__*/createReactComponent<JSX.PlusTabs, HTMLPlusTabsElement>('plus-tabs');

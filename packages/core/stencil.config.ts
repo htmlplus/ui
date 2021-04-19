@@ -52,7 +52,6 @@ export const config: Config = {
     { components: ['plus-drawer', 'plus-drawer-toggler'] },
     { components: ['plus-grid', 'plus-grid-item'] },
     { components: ['plus-intersection'] },
-    { components: ['plus-layout'] },
     { components: ['plus-spinner'] },
     { components: ['plus-sticky'] },
     { components: ['plus-switch'] },

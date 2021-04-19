@@ -231,7 +231,7 @@ const styles = (component) => {
 
   const dir = path.join(component.dirPath, key + '.scss');
 
-  const docs = [];
+  const styles = [];
 
   try {
 
@@ -246,28 +246,20 @@ const styles = (component) => {
 
         description = description.trim();
 
-        docs.push({ name, description })
+        let [value] = (component.styleUpdated || '').split(name).slice(1, 2);
+
+        if (value) value = value.split(/;|}/)[0].replace(':', '').trim();
+
+        styles.push({
+          name,
+          dafault: value,
+          description
+        })
       })
   }
   catch { }
 
-  const styles = (component.styleUpdated || '').match(/[^(]--(.*?):(.*?)(?=;|})/g) || [];
-
-  return styles.map((key) => {
-
-    let [name, value] = key
-      .replace(/;|{/g, '')
-      .split(':')
-      .map((section) => section.trim());
-
-    const description = (docs.find((doc) => doc.name === name) || {}).description;
-
-    return {
-      name,
-      description,
-      default: value,
-    }
-  })
+  return styles;
 }
 
 const tag = (component) => {
