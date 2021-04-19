@@ -219,7 +219,7 @@ const slots = (component) => {
   return (component.slots || []).map((slot) => {
 
     return {
-      name: slot.name || 'default', // TODO
+      name: slot.name,
       description: slot.docs
     }
   });
