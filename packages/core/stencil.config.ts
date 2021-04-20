@@ -35,10 +35,10 @@ export const config: Config = {
       includePaths: [
         'src/styles/'
       ],
-      // injectGlobalPaths: [
-      //   'src/styles/mixins/index.scss',
-      //   'src/styles/variables/index.scss'
-      // ]
+      injectGlobalPaths: [
+        'src/styles/mixins/index.scss',
+        'src/styles/variables/index.scss'
+      ]
     }),
     style()
   ],
