@@ -1,6 +1,6 @@
 import { Component, Host, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { Animation, Bind, ClickOutside, GlobalConfig, Helper, Media, Scrollbar } from '@app/utils';
-import { DrawerLink, Inject, rebind } from './drawer.link';
+import { DrawerLink, Link, rebind } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.types';
 
 /**
@@ -126,7 +126,7 @@ export class Drawer {
   })
   config?;
 
-  @Inject({ scope: '[connector]' })
+  @Link({ scope: '[connector]' })
   link: DrawerLink = {
     toggle: () => this.toggle()
   };

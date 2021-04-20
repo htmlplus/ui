@@ -1,5 +1,5 @@
 import { Component, Host, Prop, Watch, h } from '@stencil/core';
-import { DialogLink, Inject, rebind } from '../dialog/dialog.link';
+import { DialogLink, Link, rebind } from '../dialog/dialog.link';
 
 /**
  * @group dialog
@@ -23,7 +23,7 @@ export class DialogToggler {
   @Prop()
   connector?: string;
 
-  @Inject({ scope: '[connector]' })
+  @Link({ scope: '[connector]' })
   link!: DialogLink;
 
   @Watch('connector')

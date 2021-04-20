@@ -1,5 +1,5 @@
 import { Component, Host, Prop, Watch, h } from '@stencil/core';
-import { DrawerLink, Inject, rebind } from '../drawer/drawer.link';
+import { DrawerLink, Link, rebind } from '../drawer/drawer.link';
 
 /**
  * @group drawer
@@ -23,7 +23,7 @@ export class DrawerToggler {
   @Prop()
   connector?: string;
 
-  @Inject({ scope: '[connector]' })
+  @Link({ scope: '[connector]' })
   link!: DrawerLink;
 
   @Watch('connector')

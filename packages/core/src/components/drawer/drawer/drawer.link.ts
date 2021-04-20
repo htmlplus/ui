@@ -10,4 +10,4 @@ const initial = {
     toggle: () => undefined
 };
 
-export const { Inject, rebind } = createLink<DrawerLink>(initial);
+export const { Link, rebind } = createLink<DrawerLink>(initial);

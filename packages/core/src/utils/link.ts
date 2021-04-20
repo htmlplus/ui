@@ -193,7 +193,7 @@ export const createLink = <T>(initial: Required<T>) => {
         update(instance, true);
     }
 
-    const Inject = (config: LinkConfig) => (instance: LinkInstance, property: PropertyKey) => {
+    const Link = (config: LinkConfig) => (instance: LinkInstance, property: PropertyKey) => {
 
         // store componentDidLoad function
         const load = instance.componentDidLoad;
@@ -235,7 +235,7 @@ export const createLink = <T>(initial: Required<T>) => {
     }
 
     return {
-        Inject,
+        Link,
         rebind
     }
 }
