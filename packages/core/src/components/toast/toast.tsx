@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
-import { Animation, GlobalConfig, GlobalState, Helper } from '@app/utils';
+import { AnimationV2, GlobalConfig, GlobalState, Helper } from '@app/utils';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
 /**
@@ -135,7 +135,7 @@ export class Toast {
   @State()
   isOpen?: boolean;
 
-  animate?: Animation;
+  animate?: AnimationV2;
 
   get attributes() {
     return {
@@ -255,7 +255,7 @@ export class Toast {
   hidden() {
 
     this.open = false;
-    
+
     this.isOpen = false;
 
     this.unregister();
@@ -264,19 +264,28 @@ export class Toast {
   }
 
   init() {
-    this.animate = new Animation({
-      state: !!this.open,
-      source: this.$container,
-      target: this.$host
+    this.animate = new AnimationV2({
+      key: 'state',
+      source: () => this.$container,
+      target: () => this.$host,
+      state: this.open ? 'entered' : 'leaved',
+      states: {
+        enter: 'open',
+        entering: 'opening',
+        entered: 'opened',
+        leave: 'close',
+        leaving: 'closing',
+        leaved: 'closed',
+      },
     })
   }
 
   shown() {
 
     this.open = true;
-    
+
     this.isOpen = true;
-    
+
     this.register();
 
     this.broadcast(true);
@@ -284,7 +293,7 @@ export class Toast {
     // TODO
     // setTimeout(() => !this.persistent && this.hide(), this.duration);
   }
-  
+
   register() {
     this.state.instances.push(this);
   }
@@ -338,11 +347,12 @@ export class Toast {
    */
 
   connectedCallback() {
-    this.open && this.shown();
-  }
 
-  componentDidLoad() {
     this.init();
+
+    if (!this.open) return;
+
+    this.shown();
   }
 
   disconnectedCallback() {
