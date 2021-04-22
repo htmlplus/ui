@@ -1,12 +1,13 @@
 import { createLink } from '@app/utils';
+import { DialogState } from './dialog.types';
 
 export interface DialogLink {
-    open?: boolean;
+    state?: DialogState;
     toggle?: Function;
 }
 
 const initial = {
-    open: false,
+    state: 'closed' as DialogState,
     toggle: () => undefined
 };
 

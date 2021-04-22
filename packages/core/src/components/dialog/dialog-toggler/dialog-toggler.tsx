@@ -26,6 +26,10 @@ export class DialogToggler {
   @Link({ scope: '[connector]' })
   link!: DialogLink;
 
+  get open() {
+    return this.link.state.match(/^(close|closing|opened)$/);
+  }
+
   @Watch('connector')
   connectorWatcher() {
     rebind(this);
@@ -34,12 +38,12 @@ export class DialogToggler {
   render() {
     return (
       <Host
-        state={this.link.open ? 'open' : 'close'}
+        state={this.link.state}
         role="button"
         onClick={() => this.link.toggle()}
       >
         <slot>
-          {this.link.open ? 'Close' : 'Open'}
+          {this.open ? 'Close' : 'Open'}
         </slot>
         <slot name="close" />
         <slot name="open" />

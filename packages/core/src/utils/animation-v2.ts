@@ -158,12 +158,14 @@ export class AnimationV2 {
 
       config.onEntering();
 
+      const duration = this.duration();
+
       this.timeout = setTimeout(() => {
 
         this.update('entered');
 
         config.onEntered();
-      }, this.duration());
+      }, duration);
     })
   }
 
@@ -185,12 +187,14 @@ export class AnimationV2 {
 
       config.onLeaving();
 
+      const duration = this.duration();
+
       this.timeout = setTimeout(() => {
 
         this.update('leaved');
 
         config.onLeaved();
-      }, this.duration());
+      }, duration);
     })
   }
 }

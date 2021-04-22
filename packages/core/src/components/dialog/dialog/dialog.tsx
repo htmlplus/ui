@@ -1,13 +1,12 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, Scrollbar } from '@app/services';
-import * as Utils from '@app/utils';
-import { DialogLink, Inject, rebind } from './dialog.link';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, Helper, Scrollbar } from '@app/utils';
+import { DialogLink, Link, rebind } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from './dialog.types';
 
 /**
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
  * @group dialog
- * @slot - The default slot.
+ * @slot default - The default slot.
  * @examples default, animation, persistent, placement, size, backdrop, scrollable, specific-scrollable, fullscreen, full-width, full-height, sticky, nesting, prevent
  */
 @Component({
@@ -59,9 +58,9 @@ export class Dialog {
   /**
    * Control dialog to show or not.
    */
-  @Prop({ 
+  @Prop({
     mutable: true,
-    reflect: true, 
+    reflect: true,
   })
   open?: boolean;
 
@@ -142,27 +141,29 @@ export class Dialog {
   @GlobalState()
   state: DialogGlobalState = {
     instances: []
-  };
+  }
 
   @Element()
   $host!: HTMLElement;
 
   $cell!: HTMLElement;
 
-  animation?: Animation;
+  isOpen?: boolean;
 
-  @Inject({ scope: '[connector]' })
+  animate?: AnimationV2;
+
+  @Link({ scope: '[connector]' })
   link: DialogLink = {
-    toggle: () => this.tryToggle()
-  };
+    toggle: () => this.toggle()
+  }
 
   get attributes() {
 
     const attributes = {
-      'tabindex': -1
+      'tabindex': -1,
     }
 
-    if (this.open) {
+    if (this.isOpen) {
       attributes['role'] = 'dialog';
       attributes['aria-modal'] = 'true';
     }
@@ -185,9 +186,9 @@ export class Dialog {
 
     y = y || 'center';
 
-    x = Utils.toAxis(x, this.isRTL);
+    x = Helper.toAxis(x, this.isRTL);
 
-    return Utils.classes(
+    return Helper.classes(
       'dialog',
       {
         x,
@@ -211,174 +212,184 @@ export class Dialog {
     return instances[last] === this;
   }
 
-  get isOpen() {
-    return this.$host.classList.contains('open');
+  get isRTL() {
+    return Helper.isRTL(this);
   }
 
-  get isRTL() {
-    return Utils.isRTL(this);
+  get zIndex() {
+
+    if (this.state.instances.length < 1) return;
+
+    const [instance] = this.state.instances.slice(-2);
+
+    if (!instance) return;
+
+    const zIndex = getComputedStyle(instance.$host).getPropertyValue('z-index');
+
+    return `${parseInt(zIndex) + 1}`;
+  }
+
+  /**
+   * External Methods
+   */
+
+  hide() {
+    this.tryHide(true, false);
+  }
+
+  show() {
+    this.tryShow(true, false);
+  }
+
+  toggle() {
+    this.isOpen ? this.hide() : this.show();
   }
 
   /**
    * Internal Methods
    */
 
-  broadcast(value) {
-    this.link.open = value;
+  dispose() {
+
+    this.animate?.dispose();
+
+    // TODO
+    this.onHide();
+
+    // TODO
+    // this.resetEvents();
+    // ClickOutside.remove(this.$cell);
+    // Scrollbar.reset(this);
+    // this.unregister();
   }
 
   init() {
-    this.animation = new Animation({
-      name: 'dialog',
-      source: this.$host,
-      target: this.$host
+    this.animate = new AnimationV2({
+      key: 'state',
+      source: () => this.$host,
+      target: () => this.$host,
+      state: this.open ? 'entered' : 'leaved',
+      states: {
+        enter: 'open',
+        entering: 'opening',
+        entered: 'opened',
+        leave: 'close',
+        leaving: 'closing',
+        leaved: 'closed',
+      }
     })
   }
-
-  hide() {
-
-    this.resetEvents();
-    ClickOutside.remove(this.$cell);
-    Scrollbar.reset(this);
-    this.resetZIndex();
-
-    this.state.instances = this.state.instances.filter((instance) => instance !== this);
-
-    this.$host.classList.remove('open');
-
-    this.open = false;
-
-    this.broadcast(false);
-  }
-
-  show() {
-
-    this.setEvents();
-    ClickOutside.add(this.$cell, this.onOutsideClick, false);
-    Scrollbar.remove(this);
-    this.setZIndex();
-
-    this.state.instances.push(this);
-
-    this.$host.classList.add('open');
-
-    this.open = true;
-
-    this.broadcast(true);
-  }
-
-  tryToHide() {
+  
+  tryHide(animation, silent) {
 
     if (!this.isOpen) return;
 
-    const event = this.plusClose.emit();
+    if (!silent && this.plusClose.emit().defaultPrevented) return;
 
-    if (!this.isOpen || event.defaultPrevented) return;
+    if (!animation) return this.onHide();
 
-    this.animation.leave({
-      onLeave: () => this.broadcast(false),
+    this.animate.leave({
+      onLeave: () => {
+        this.link.state = 'close';
+      },
+      onLeaving: () => {
+        this.link.state = 'closing';
+      },
       onLeaved: () => {
 
-        this.hide();
+        this.link.state = 'closed';
+
+        this.onHide();
+
+        if (silent) return;
 
         this.plusClosed.emit()
       }
     })
   }
 
-  tryToShow() {
+  tryShow(animation, silent) {
 
     if (this.isOpen) return;
 
-    const event = this.plusOpen.emit();
+    if (!silent && this.plusOpen.emit().defaultPrevented) return;
 
-    if (this.isOpen || event.defaultPrevented) return;
+    if (!animation) return this.onShow();
 
-    this.animation.enter({
-      onEnter: () => this.show(),
-      onEntered: () => this.plusOpened.emit()
+    this.animate.enter({
+      onEnter: () => {
+
+        this.link.state = 'open';
+
+        this.onShow();
+      },
+      onEntering: () => {
+        this.link.state = 'opening';
+      },
+      onEntered: () => {
+
+        this.link.state = 'opened';
+
+        if (silent) return;
+
+        this.plusOpened.emit();
+      }
     })
   }
 
-  tryToggle() {
-    this.isOpen ? this.tryToHide() : this.tryToShow();
-  }
-
-  dispose() {
-
-    this.animation?.dispose();
-
-    this.resetEvents();
-    ClickOutside.remove(this.$cell);
-    Scrollbar.reset(this);
-    this.state.instances = this.state.instances.filter((instance) => instance !== this);
-  }
-
   /**
-   * Internal Methods / Events
+   * Watchers
    */
 
-  setEvents() {
-    document.addEventListener('keydown', this.onEscape, true);
-  }
+  componentShouldUpdate(next, prev, name) {
 
-  resetEvents() {
-    document.removeEventListener('keydown', this.onEscape, true);
-  }
+    console.log('componentShouldUpdate', next, prev, name)
 
-  /**
-   * Internal Methods / z-index
-   */
+    if (next === prev) return false;
 
-  setZIndex() {
+    const value = this[name];
 
-    const [instance] = this.state.instances.slice(-1);
+    switch (name) {
 
-    if (!instance) return;
+      case 'connector':
 
-    const zIndex = getComputedStyle(instance.$host).getPropertyValue('z-index');
+        rebind(this);
 
-    this.$host.style.zIndex = `${parseInt(zIndex) + 1}`;
-  }
+        break;
 
-  resetZIndex() {
-    this.$host.style.zIndex = null;
-  }
+      case 'open':
 
-  /**
-  * Watchers
-  */
+        value && !this.isOpen && this.tryShow(true, true);
+        
+        !value && this.isOpen && this.tryHide(true, true);
 
-  @Watch('connector')
-  connectorWatcher() {
-    rebind(this);
-  }
-
-  @Watch('open')
-  openWatcher() {
-
-    if (this.open) {
-
-      if (this.isOpen) return;
-
-      this.animation.enter({
-        onEnter: () => this.show()
-      })
-    }
-    else {
-
-      if (!this.isOpen) return;
-
-      this.animation.leave({
-        onLeave: () => this.broadcast(false),
-        onLeaved: () => this.hide(),
-      })
+        break;
     }
   }
 
   /**
    * Events handler
    */
+   
+  onHide() {
+    document.removeEventListener('keydown', this.onEscape, true);
+    ClickOutside.remove(this.$cell);
+    Scrollbar.reset(this);
+    this.$host.style.zIndex = null;
+    this.isOpen = false;
+    this.open = false;
+    this.state.instances = this.state.instances.filter((instance) => instance !== this);
+  }
+
+  onShow() {
+    document.addEventListener('keydown', this.onEscape, true);
+    ClickOutside.add(this.$cell, this.onOutsideClick, false);
+    Scrollbar.remove(this);
+    this.$host.style.zIndex = this.zIndex;
+    this.isOpen = true;
+    this.open = true;
+    this.state.instances.push(this);
+  }
 
   @Bind
   onEscape(event) {
@@ -389,7 +400,7 @@ export class Dialog {
 
     event.preventDefault();
 
-    this.tryToHide();
+    this.tryHide(true, false);
   }
 
   @Bind
@@ -397,18 +408,20 @@ export class Dialog {
 
     if (!this.isOpen || !this.isCurrent || this.persistent) return;
 
-    this.tryToHide();
+    this.tryHide(true, false);
   }
 
   /**
    * Lifecycles
    */
 
-  componentDidLoad() {
+  connectedCallback() {
 
     this.init();
 
-    this.open && this.show();
+    if (!this.open) return;
+
+    this.tryShow(false, true);
   }
 
   disconnectedCallback() {
@@ -416,6 +429,7 @@ export class Dialog {
   }
 
   render() {
+    console.log('render')
     return (
       <Host {...this.attributes}>
         {this.backdrop && (<div class="backdrop"><div /></div>)}
@@ -427,6 +441,6 @@ export class Dialog {
           </div>
         </div>
       </Host >
-    );
+    )
   }
 }
