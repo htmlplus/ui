@@ -222,6 +222,10 @@ export namespace Components {
     }
     interface PlusDialog {
         /**
+          * TODO
+         */
+        "animation"?: string;
+        /**
           * Activate the dialog's backdrop to show or not.
          */
         "backdrop"?: boolean;
@@ -1328,6 +1332,10 @@ declare namespace LocalJSX {
         "zoomable"?: CropperZoomable;
     }
     interface PlusDialog {
+        /**
+          * TODO
+         */
+        "animation"?: string;
         /**
           * Activate the dialog's backdrop to show or not.
          */

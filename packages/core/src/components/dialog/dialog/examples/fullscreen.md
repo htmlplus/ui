@@ -11,7 +11,7 @@
       Open
     </plus-dialog-toggler>
   </div>
-  <plus-dialog class="fade" connector="dialog-fullscreen" placement="bottom" fullscreen>
+  <plus-dialog animation="fade" connector="dialog-fullscreen" placement="bottom" fullscreen>
     <plus-dialog-content>
       <plus-dialog-header>
         Dialog Title

@@ -23,7 +23,7 @@ class {
           </plus-dialog-toggler>
         </div>
         <plus-dialog 
-          class="fade" 
+          animation="fade" 
           connector="dialog-cropper" 
           onPlusOpened={() => this.change(false)}
           onPlusClosed={() => this.change(true)}
@@ -54,7 +54,7 @@ class {
     Open
   </plus-dialog-toggler>
 </div>
-<plus-dialog id="element1" class="fade" connector="dialog-cropper">
+<plus-dialog id="element1" animation="fade" connector="dialog-cropper">
   <plus-dialog-content>
     <plus-dialog-header>
       Cropper

@@ -15,6 +15,12 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from
   shadow: true,
 })
 export class Dialog {
+  
+  /**
+   * TODO
+   */
+  @Prop({ reflect: true })
+  animation?: string;
 
   /**
    * Activate the dialog's backdrop to show or not.

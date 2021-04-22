@@ -18,15 +18,11 @@ export class Toast {
 
   /**
    * TODO
-   * closeButton
    * preventDuplicates
    * icon
-   * queueable - Wait for previous to dismiss before showing new
-   * dismissable - Dismiss on click
-   * One notification at a time
-   * override/queue
+   * closeButton/dismissable - Dismiss on click
+   * override/queue/queueable/Wait for previous to dismiss before showing new/One notification at a time
    * fixed
-   * 
    * offset/gutter
    * progress
    * 
@@ -44,7 +40,7 @@ export class Toast {
    * TODO
    */
   @Prop()
-  duration?: number = 5000;
+  duration?: number = 2000;
 
   /**
    * TODO
@@ -55,7 +51,10 @@ export class Toast {
   /**
    * TODO
    */
-  @Prop({ mutable: true })
+  @Prop({
+    mutable: true,
+    reflect: true,
+  })
   open?: boolean;
 
   /**
@@ -335,6 +334,9 @@ export class Toast {
     this.isOpen = true;
     this.open = true;
     this.state.instances.push(this);
+
+    // TODO
+    setTimeout(() => !this.persistent && this.tryHide(true, false), this.duration);
   }
 
   /**
@@ -353,7 +355,6 @@ export class Toast {
   disconnectedCallback() {
     this.dispose();
   }
-
 
   render() {
     return (
