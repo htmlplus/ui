@@ -220,7 +220,7 @@ export class Dialog {
 
     if (this.state.instances.length < 1) return;
 
-    const [instance] = this.state.instances.slice(-2);
+    const [instance] = this.state.instances.slice(-1);
 
     if (!instance) return;
 

@@ -7,135 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
   <script type="module" src="/build/htmlplus.esm.js"></script>
   <script nomodule src="/build/htmlplus.js"></script>
-  <style>
-    .toggler {
-      width: 2em;
-      height: 1.5em;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .toggler span {
-      display: block;
-      position: absolute;
-      height: 15%;
-      width: 100%;
-      background: black;
-      opacity: 1;
-      left: 0;
-      transform: rotate(0deg);
-      transition: 0.25s ease-in-out;
-    }
-
-    .toggler span:nth-child(1) {
-      top: 0;
-    }
-
-    .toggler span:nth-child(2),
-    .toggler span:nth-child(3) {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .toggler span:nth-child(4) {
-      bottom: 0;
-    }
-
-    .toggler[state="open"] span:nth-child(1) {
-      width: 0;
-      top: 40%;
-      left: 50%;
-    }
-
-    .toggler[state="open"] span:nth-child(2) {
-      transform: rotate(45deg);
-    }
-
-    .toggler[state="open"] span:nth-child(3) {
-      transform: rotate(-45deg);
-    }
-
-    .toggler[state="open"] span:nth-child(4) {
-      width: 0;
-      bottom: 40%;
-      left: 50%;
-    }
-  </style>
 </head>
 
 <body>
-  <plus-dialog-toggler class="toggler" connector="dialog-animation">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </plus-dialog-toggler>
-
-  <plus-dialog-toggler connector="dialog-animation">
-
-  </plus-dialog-toggler>
-
-  <plus-dialog-toggler connector="dialog-animation">
-    Text
-  </plus-dialog-toggler>
-
-  <plus-dialog-toggler connector="dialog-animation">
-    <span slot=open>close</span>
-    <span slot=close>open</span>
-  </plus-dialog-toggler>
-
-  <plus-dialog animation="fade" connector="dialog-animation" backdrop="false">
-    <plus-dialog-content>
-      <plus-dialog-header>
-        Dialog Title
-      </plus-dialog-header>
-      <plus-dialog-body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
-      </plus-dialog-body>
-      <plus-dialog-footer>
-        <plus-dialog-toggler>
-          Close
-        </plus-dialog-toggler>
-      </plus-dialog-footer>
-    </plus-dialog-content>
-  </plus-dialog>
-
-  <!-- <plus-dialog-toggler connector="dialog-animation1">
-    <span slot=open>close</span>
-    <span slot=close>open</span>
-  </plus-dialog-toggler>
-  <plus-dialog animation="fade" connector="dialog-animation1">
-    <plus-dialog-content>
-      <plus-dialog-header>
-        Dialog Title
-      </plus-dialog-header>
-      <plus-dialog-body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
-      </plus-dialog-body>
-      <plus-dialog-footer>
-        <plus-dialog-toggler>
-          Close
-        </plus-dialog-toggler>
-      </plus-dialog-footer>
-    </plus-dialog-content>
-  </plus-dialog> -->
-
-  <!-- <button onclick="toggle(1)">open1</button>
+  <button onclick="toggle(1)">open1</button>
   <button onclick="toggle(2)">open2</button>
   <button onclick="toggle(3)">open3</button>
   <button onclick="toggle(4)">open4</button>
   <button onclick="toggle(5)">open5</button>
   <button onclick="toggle(6)">open6</button>
 
-  <plus-toast id="t1" animation="fade" placement="top-left" open1 persistent>
+  <plus-toast open id="t1" animation="fade" placement="top-left" open1 persistent>
     toassssssssssssssssssssssssst 1
   </plus-toast>
   <plus-toast id="t2" animation="move" placement="top">
     toassssssssssssssssssssssssst 2
+    <plus-toast-toggler>X</plus-toast-toggler>
   </plus-toast>
   <plus-toast id="t3" animation="fade" placement="top-right" full-width>
     toassssssssssssssssssssssssst 3
@@ -146,7 +33,7 @@
   <plus-toast id="t5" animation="fade" placement="bottom">
     toassssssssssssssssssssssssst 5
   </plus-toast>
-  <plus-toast id="t6" animation="fade" placement="bottom-right">
+  <plus-toast id="t6" animation="move" placement="bottom-right">
     toassssssssssssssssssssssssst 6
   </plus-toast>
   <script>
@@ -157,7 +44,7 @@
     t6.addEventListener('plusOpened', () => console.log('opened'))
     t6.addEventListener('plusClose', () => console.log('Close'))
     t6.addEventListener('plusClosed', () => console.log('Closed'))
-  </script> -->
+  </script>
 </body>
 
 </html>

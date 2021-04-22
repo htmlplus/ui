@@ -16,7 +16,7 @@ import { IntersectionBehavior } from "./components/intersection/intersection.typ
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
-import { ToastPlacement, ToastType } from "./components/toast/toast.types";
+import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
 import { TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./utils/tunnel/tunnel.types";
@@ -859,6 +859,12 @@ export namespace Components {
          */
         "type"?: ToastType;
     }
+    interface PlusToastToggler {
+        /**
+          * This property helps you to attach which toast this toggler controls.  It doesn't matter where the toast toggler is.  You can put the toast's toggler inside or outside of the toast.  Read more about connectors [here](https://htmlplus.io/features/connector).
+         */
+        "connector"?: string;
+    }
     interface PlusTooltip {
         /**
           * Tooltip disable.
@@ -1098,6 +1104,12 @@ declare global {
         prototype: HTMLPlusToastElement;
         new (): HTMLPlusToastElement;
     };
+    interface HTMLPlusToastTogglerElement extends Components.PlusToastToggler, HTMLStencilElement {
+    }
+    var HTMLPlusToastTogglerElement: {
+        prototype: HTMLPlusToastTogglerElement;
+        new (): HTMLPlusToastTogglerElement;
+    };
     interface HTMLPlusTooltipElement extends Components.PlusTooltip, HTMLStencilElement {
     }
     var HTMLPlusTooltipElement: {
@@ -1149,6 +1161,7 @@ declare global {
         "plus-tabs-tab": HTMLPlusTabsTabElement;
         "plus-template": HTMLPlusTemplateElement;
         "plus-toast": HTMLPlusToastElement;
+        "plus-toast-toggler": HTMLPlusToastTogglerElement;
         "plus-tooltip": HTMLPlusTooltipElement;
         "plus-transition": HTMLPlusTransitionElement;
         "plus-tunnel-consumer": HTMLPlusTunnelConsumerElement;
@@ -2021,6 +2034,12 @@ declare namespace LocalJSX {
          */
         "type"?: ToastType;
     }
+    interface PlusToastToggler {
+        /**
+          * This property helps you to attach which toast this toggler controls.  It doesn't matter where the toast toggler is.  You can put the toast's toggler inside or outside of the toast.  Read more about connectors [here](https://htmlplus.io/features/connector).
+         */
+        "connector"?: string;
+    }
     interface PlusTooltip {
         /**
           * Tooltip disable.
@@ -2115,6 +2134,7 @@ declare namespace LocalJSX {
         "plus-tabs-tab": PlusTabsTab;
         "plus-template": PlusTemplate;
         "plus-toast": PlusToast;
+        "plus-toast-toggler": PlusToastToggler;
         "plus-tooltip": PlusTooltip;
         "plus-transition": PlusTransition;
         "plus-tunnel-consumer": PlusTunnelConsumer;
@@ -2156,6 +2176,7 @@ declare module "@stencil/core" {
             "plus-tabs-tab": LocalJSX.PlusTabsTab & JSXBase.HTMLAttributes<HTMLPlusTabsTabElement>;
             "plus-template": LocalJSX.PlusTemplate & JSXBase.HTMLAttributes<HTMLPlusTemplateElement>;
             "plus-toast": LocalJSX.PlusToast & JSXBase.HTMLAttributes<HTMLPlusToastElement>;
+            "plus-toast-toggler": LocalJSX.PlusToastToggler & JSXBase.HTMLAttributes<HTMLPlusToastTogglerElement>;
             "plus-tooltip": LocalJSX.PlusTooltip & JSXBase.HTMLAttributes<HTMLPlusTooltipElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
             "plus-tunnel-consumer": LocalJSX.PlusTunnelConsumer & JSXBase.HTMLAttributes<HTMLPlusTunnelConsumerElement>;
