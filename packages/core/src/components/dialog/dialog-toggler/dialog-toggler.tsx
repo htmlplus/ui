@@ -26,28 +26,32 @@ export class DialogToggler {
   @Link({ scope: '[connector]' })
   link!: DialogLink;
 
-  get open() {
-    return this.link.state.match(/^(close|closing|opened)$/);
+  get attributes() {
+    return {
+      'role': 'button',
+      'state': this.link.open ? 'open' : 'close',
+      'onClick': () => this.link.toggle()
+    }
   }
 
+  /**
+   * Watchers
+   */
+
   @Watch('connector')
-  connectorWatcher() {
+  watcher() {
     rebind(this);
   }
 
   render() {
     return (
-      <Host
-        state={this.link.state}
-        role="button"
-        onClick={() => this.link.toggle()}
-      >
+      <Host {...this.attributes}>
         <slot>
-          {this.open ? 'Close' : 'Open'}
+          {this.link.open ? 'Close' : 'Open'}
         </slot>
         <slot name="close" />
         <slot name="open" />
       </Host>
-    );
+    )
   }
 }

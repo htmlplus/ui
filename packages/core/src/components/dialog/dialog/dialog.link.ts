@@ -1,14 +1,13 @@
 import { createLink } from '@app/utils';
-import { DialogState } from './dialog.types';
 
 export interface DialogLink {
-    state?: DialogState;
-    toggle?: Function;
+    open?: boolean;
+    toggle?: () => void;
 }
 
 const initial = {
-    state: 'closed' as DialogState,
-    toggle: () => undefined
+    open: false,
+    toggle: () => undefined,
 };
 
 export const { Link, rebind } = createLink<DialogLink>(initial);

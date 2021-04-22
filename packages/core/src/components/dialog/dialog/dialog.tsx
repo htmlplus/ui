@@ -290,14 +290,9 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
-        this.link.state = 'close';
-      },
-      onLeaving: () => {
-        this.link.state = 'closing';
+        this.link.open = false;
       },
       onLeaved: () => {
-
-        this.link.state = 'closed';
 
         this.onHide();
 
@@ -319,17 +314,12 @@ export class Dialog {
     this.animate.enter({
       onEnter: () => {
 
-        this.link.state = 'open';
+        this.link.open = true;
 
         this.onShow();
       },
-      onEntering: () => {
-        this.link.state = 'opening';
-      },
       onEntered: () => {
-
-        this.link.state = 'opened';
-
+        
         if (silent) return;
 
         this.plusOpened.emit();
@@ -342,8 +332,6 @@ export class Dialog {
    */
 
   componentShouldUpdate(next, prev, name) {
-
-    console.log('componentShouldUpdate', next, prev, name)
 
     if (next === prev) return false;
 
@@ -429,7 +417,6 @@ export class Dialog {
   }
 
   render() {
-    console.log('render')
     return (
       <Host {...this.attributes}>
         {this.backdrop && (<div class="backdrop"><div /></div>)}
