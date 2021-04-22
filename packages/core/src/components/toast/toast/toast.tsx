@@ -152,7 +152,7 @@ export class Toast {
 
   get classes() {
 
-    const { x, y } = this.point(this.placement);
+    const { x, y } = this.coordinate(this.placement);
 
     return {
       'container': true,
@@ -213,14 +213,14 @@ export class Toast {
 
     let offset = 0;
 
-    const { x: x1, y: y1 } = this.point(this.placement);
+    const { x: x1, y: y1 } = this.coordinate(this.placement);
 
     this.state.instances
       .filter((instance) => {
 
         const { $container, placement } = instance;
 
-        const { x: x2, y: y2 } = this.point(placement);
+        const { x: x2, y: y2 } = this.coordinate(placement);
 
         if (y1 !== y2) return;
 
@@ -232,6 +232,20 @@ export class Toast {
 
         offset += rect.height;
       })
+  }
+
+  // TODO
+  coordinate(placement) {
+
+    let [y, x] = placement.split('-');
+
+    if (!y) y = 'top';
+
+    x = Helper.toAxis(x, this.isRTL);
+
+    if (this.fullWidth) x = undefined;
+
+    return { x, y }
   }
 
   dispose() {
@@ -260,20 +274,6 @@ export class Toast {
         leaved: 'closed',
       }
     })
-  }
-
-  // TODO
-  point(placement) {
-
-    let [y, x] = placement.split('-');
-
-    if (!y) y = 'top';
-
-    x = Helper.toAxis(x, this.isRTL);
-
-    if (this.fullWidth) x = undefined;
-
-    return { x, y }
   }
 
   tryHide(animation, silent) {
