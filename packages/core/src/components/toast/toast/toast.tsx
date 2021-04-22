@@ -152,13 +152,7 @@ export class Toast {
 
   get classes() {
 
-    let [y, x] = this.placement?.split('-');
-
-    if (!y) y = 'top';
-
-    x = Helper.toAxis(x, this.isRTL);
-
-    if (this.fullWidth) x = undefined;
+    const { x, y } = this.point(this.placement);
 
     return {
       'container': true,
@@ -215,6 +209,31 @@ export class Toast {
    * Internal Methods
    */
 
+  adjust() {
+
+    let offset = 0;
+
+    const { x: x1, y: y1 } = this.point(this.placement);
+
+    this.state.instances
+      .filter((instance) => {
+
+        const { $container, placement } = instance;
+
+        const { x: x2, y: y2 } = this.point(placement);
+
+        if (y1 !== y2) return;
+
+        if (x1 !== x2 && !this.fullWidth && !instance.fullWidth) return;
+
+        $container.style[y2] = offset + 'px';
+
+        const rect = $container.getBoundingClientRect();
+
+        offset += rect.height;
+      })
+  }
+
   dispose() {
 
     this.animate?.dispose();
@@ -241,6 +260,20 @@ export class Toast {
         leaved: 'closed',
       }
     })
+  }
+
+  // TODO
+  point(placement) {
+
+    let [y, x] = placement.split('-');
+
+    if (!y) y = 'top';
+
+    x = Helper.toAxis(x, this.isRTL);
+
+    if (this.fullWidth) x = undefined;
+
+    return { x, y }
   }
 
   tryHide(animation, silent) {
@@ -327,6 +360,9 @@ export class Toast {
     this.isOpen = false;
     this.open = false;
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
+
+    // TODO
+    this.adjust();
   }
 
   onShow() {
@@ -336,7 +372,10 @@ export class Toast {
     this.state.instances.push(this);
 
     // TODO
-    setTimeout(() => !this.persistent && this.tryHide(true, false), this.duration);
+    // setTimeout(() => !this.persistent && this.tryHide(true, false), this.duration);
+
+    // TODO
+    this.adjust();
   }
 
   /**

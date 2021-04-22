@@ -6,6 +6,7 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from
 /**
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
  * @group dialog
+ * @part backdrop - TODO
  * @slot default - The default slot.
  * @examples default, animation, persistent, placement, size, backdrop, scrollable, specific-scrollable, fullscreen, full-width, full-height, sticky, nesting, prevent
  */
@@ -425,7 +426,7 @@ export class Dialog {
   render() {
     return (
       <Host {...this.attributes}>
-        {this.backdrop && (<div class="backdrop"><div /></div>)}
+        {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">
             <div class="cell" ref={(element) => (this.$cell = element)}>
