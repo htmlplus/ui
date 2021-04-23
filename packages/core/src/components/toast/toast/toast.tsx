@@ -18,6 +18,7 @@ export class Toast {
 
   /**
    * TODO
+   * 
    * preventDuplicates
    * icon
    * closeButton/dismissable - Dismiss on click
@@ -40,7 +41,7 @@ export class Toast {
    * TODO
    */
   @Prop()
-  duration?: number = 2000;
+  duration?: number = 3000;
 
   /**
    * TODO
@@ -125,16 +126,16 @@ export class Toast {
   @GlobalState()
   state: ToastGlobalState = {
     instances: []
-  };
+  }
 
   @Element()
   $host!: HTMLElement;
 
   $root!: HTMLElement;
 
-  isOpen?: boolean;
-
   animate?: AnimationV2;
+  
+  isOpen?: boolean;
 
   // TODO
   timeout?;
@@ -218,19 +219,28 @@ export class Toast {
 
     const { x: x1, y: y1 } = this.coordinate(this);
 
-    this.state.instances
-      .map((instance) => {
+    const { instances } = this.state;
 
-        const { x: x2, y: y2 } = this.coordinate(instance);
+    const fn = (index) => {
 
-        if (y1 !== y2 || x1 !== x2) return;
+      const instance = instances[index];
 
-        instance.$root.style[y2] = offset + 'px';
+      const { x: x2, y: y2 } = this.coordinate(instance);
 
-        const rect = instance.$root.getBoundingClientRect();
+      if (y1 !== y2 || x1 !== x2) return;
 
-        offset += 15 + rect.height; // TODO
-      })
+      instance.$root.style[y2] = offset + 'px';
+
+      const rect = instance.$root.getBoundingClientRect();
+
+      // TODO
+      offset += 15 + rect.height;
+    }
+
+    if (this.reverse)
+      for (let i = 0; i < instances.length; i++) fn(i);
+    else
+      for (let i = instances.length - 1; i >= 0; i--) fn(i);
   }
 
   // TODO
@@ -405,7 +415,7 @@ export class Toast {
       <Host {...this.attributes}>
         <div
           class={this.classes}
-          // part="root"
+          // TODO part="root"
           ref={(element) => this.$root = element}
         >
           <slot />
