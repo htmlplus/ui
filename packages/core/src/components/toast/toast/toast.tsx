@@ -130,11 +130,14 @@ export class Toast {
   @Element()
   $host!: HTMLElement;
 
-  $container!: HTMLElement;
+  $root!: HTMLElement;
 
   isOpen?: boolean;
 
   animate?: AnimationV2;
+
+  // TODO
+  timeout?;
 
   @Link({ scope: '[connector]' })
   link: ToastLink = {
@@ -152,10 +155,10 @@ export class Toast {
 
   get classes() {
 
-    const { x, y } = this.coordinate(this.placement);
+    const { x, y } = this.coordinate(this);
 
     return {
-      'container': true,
+      'root': true,
       'full-width': this.fullWidth,
       [x]: !!x,
       [y]: !!y,
@@ -213,37 +216,33 @@ export class Toast {
 
     let offset = 0;
 
-    const { x: x1, y: y1 } = this.coordinate(this.placement);
+    const { x: x1, y: y1 } = this.coordinate(this);
 
     this.state.instances
-      .filter((instance) => {
+      .map((instance) => {
 
-        const { $container, placement } = instance;
+        const { x: x2, y: y2 } = this.coordinate(instance);
 
-        const { x: x2, y: y2 } = this.coordinate(placement);
+        if (y1 !== y2 || x1 !== x2) return;
 
-        if (y1 !== y2) return;
+        instance.$root.style[y2] = offset + 'px';
 
-        if (x1 !== x2 && !this.fullWidth && !instance.fullWidth) return;
+        const rect = instance.$root.getBoundingClientRect();
 
-        $container.style[y2] = offset + 'px';
-
-        const rect = $container.getBoundingClientRect();
-
-        offset += rect.height;
+        offset += 15 + rect.height; // TODO
       })
   }
 
   // TODO
-  coordinate(placement) {
+  coordinate(instance) {
 
-    let [y, x] = placement.split('-');
+    let [y, x] = instance.placement.split('-');
 
     if (!y) y = 'top';
 
-    x = Helper.toAxis(x, this.isRTL);
+    x = Helper.toAxis(x, instance.isRTL);
 
-    if (this.fullWidth) x = undefined;
+    if (instance.fullWidth) x = undefined;
 
     return { x, y }
   }
@@ -262,7 +261,7 @@ export class Toast {
   init() {
     this.animate = new AnimationV2({
       key: 'state',
-      source: () => this.$container,
+      source: () => this.$root,
       target: () => this.$host,
       state: this.open ? 'entered' : 'leaved',
       states: {
@@ -281,6 +280,9 @@ export class Toast {
     if (!this.isOpen) return;
 
     if (!silent && this.plusClose.emit().defaultPrevented) return;
+
+    // TODO
+    clearTimeout(this.timeout);
 
     if (!animation) return this.onHide();
 
@@ -304,6 +306,9 @@ export class Toast {
     if (this.isOpen) return;
 
     if (!silent && this.plusOpen.emit().defaultPrevented) return;
+
+    // TODO
+    clearTimeout(this.timeout);
 
     if (!animation) return this.onShow();
 
@@ -372,10 +377,10 @@ export class Toast {
     this.state.instances.push(this);
 
     // TODO
-    // setTimeout(() => !this.persistent && this.tryHide(true, false), this.duration);
+    this.adjust();
 
     // TODO
-    this.adjust();
+    this.timeout = setTimeout(() => !this.persistent && this.tryHide(true, false), this.duration);
   }
 
   /**
@@ -400,7 +405,8 @@ export class Toast {
       <Host {...this.attributes}>
         <div
           class={this.classes}
-          ref={(element) => this.$container = element}
+          // part="root"
+          ref={(element) => this.$root = element}
         >
           <slot />
         </div>

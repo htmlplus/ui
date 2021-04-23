@@ -6,7 +6,6 @@
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 10; // TODO
 }
 
 :host([state=closed]) {
@@ -23,9 +22,8 @@
   bottom: 0;
 }
 
-.container {
+.root {
   position: fixed;
-  background-color: red;
 }
 
 .full-width {
@@ -75,7 +73,7 @@
 
 :host([animation][state=opening]),
 :host([animation][state=closing]) {
-  .container {
+  .root {
     transition: 0.3s;
   }
 }
@@ -114,14 +112,75 @@
 
 :host([animation=fade][state=open]),
 :host([animation=fade][state=closing]) {
-  .container {
+  .root {
     opacity: 0;
   }
 }
 
 :host([animation=fade][state=close]),
 :host([animation=fade][state=opening]) {
-  .container {
+  .root {
     opacity: 1;
+  }
+}
+
+// TODO
+:host {
+  z-index: 10;
+  pointer-events: none;
+}
+.root {
+  transition: 0.25s ease-out;
+  pointer-events: all;
+  padding: 8px 45px;
+  background: rgba(255,207,165,.9);
+  border-color: rgba(255,207,165,.9);
+  margin: 15px;
+  border-radius: 3px;
+}
+:host([animation=flip-x][state=open]) .root {
+  opacity: 0;
+}
+:host([animation=flip-x][state=opening]) .root {
+  animation: iziT-flipInX 0.85s cubic-bezier(0.35, 0, 0.25, 1) both;
+}
+:host([animation=flip-x][state=closing]) .root {
+  backface-visibility: visible !important;
+  animation: iziT-flipOutX 0.7s cubic-bezier(0.4, 0.45, 0.15, 0.91) both;
+}
+@keyframes iziT-flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+@keyframes iziT-flipOutX {
+  from {
+    transform: perspective(400px);
+  }
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+  to {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
   }
 }
