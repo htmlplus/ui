@@ -1,35 +1,65 @@
+@import 'all';
 @import 'reset';
 @import 'tooltip.variables';
+@import './animations/index';
+@import './arrows/index';
 
 :host {
 
-  // @prop TODO
+  /**
+   * @prop --plus-tooltip-background-color: TODO
+   * @prop --plus-tooltip-border-radius   : TODO
+   * @prop --plus-tooltip-color           : TODO
+   * @prop --plus-tooltip-padding         : TODO
+   * @prop --plus-tooltip-z-index         : TODO
+   */
+
   --plus-tooltip-background-color: #{$tooltip-background-color};
-
-  // @prop TODO
   --plus-tooltip-border-radius: #{$tooltip-border-radius};
-
-  // @prop TODO
   --plus-tooltip-color: #{$tooltip-color};
-
-  // @prop TODO
   --plus-tooltip-padding: #{$tooltip-padding};
-
-  // @prop TODO
   --plus-tooltip-z-index: #{$tooltip-z-index};
+  --plus-tooltip-animation-delay: #{$tooltip-animation-delay};
+  --plus-tooltip-max-width: #{$tooltip-max-width};
 }
 
-.tooltip {
-  background: var(--plus-tooltip-background-color);
-  color: var(--plus-tooltip-color);
-  padding: var(--plus-tooltip-padding);
-  border-radius: var(--plus-tooltip-border-radius);
+:host {
+  position: inherit;
+}
+:host([state='show']) {
   z-index: var(--plus-tooltip-z-index);
-  display: none;
-  font-weight: bold;
-  position: absolute;
 }
-
-.show {
-  display: inline-block;
+:host([state='hide']) {
+  z-index: 0;
 }
+:host {
+  .tooltip {
+    background: var(--plus-tooltip-background-color);
+    color: var(--plus-tooltip-color);
+    padding: var(--plus-tooltip-padding);
+    border-radius: var(--plus-tooltip-border-radius);
+    display: none;
+    font-weight: bold;
+    max-width: var(--plus-tooltip-max-width);
+    position: absolute;
+    contain: layout;
+  }
+  [x-arrow] {
+    position: absolute;
+  }
+}
+//:host {
+//  [state='show'][animation='fade'] {}
+//  [state='show'][animation='shift-toward'] {}
+//  [state='show'][animation='shift-toward-subtle'] {}
+//  [state='show'][animation='shift-toward-extreme'] {}
+//  [state='show'][animation='shift-away'] {}
+//  [state='show'][animation='shift-away-subtle'] {}
+//  [state='show'][animation='shift-away-extreme'] {}
+//  [state='show'][animation='scale'] {}
+//  [state='show'][animation='scale-subtle'] {}
+//  [state='show'][animation='scale-extreme'] {}
+//  [state='show'][animation='perspective'] {}
+//  [state='show'][animation='perspective-subtle'] {}
+//  [state='show'][animation='perspective-extreme'] {}
+//}
