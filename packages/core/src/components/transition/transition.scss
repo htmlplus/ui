@@ -1,9 +1,17 @@
 @import 'transition.variables';
 
 :host {
+    
+    // @prop TODO
     --plus-transition-delay: 0s;
+
+    // @prop TODO
     --plus-transition-direction: normal;
+
+    // @prop TODO
     --plus-transition-duration: 1s;
+
+    // @prop TODO
     --plus-transition-repeat: 1;
 }
 

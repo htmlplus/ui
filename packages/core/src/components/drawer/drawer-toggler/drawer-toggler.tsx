@@ -1,11 +1,11 @@
 import { Component, Host, Prop, Watch, h } from '@stencil/core';
-import { DrawerLink, Inject, rebind } from '../drawer/drawer.link';
+import { DrawerLink, Link, rebind } from '../drawer/drawer.link';
 
 /**
  * @group drawer
- * @slot - The default slot
- * @slot open - Specifies the content of toggler when it's opened
- * @slot close - Specifies the content of toggler when it's closed
+ * @slot default - The default slot.
+ * @slot open    - Specifies the content of toggler when it's opened.
+ * @slot close   - Specifies the content of toggler when it's closed.
  */
 @Component({
   tag: 'plus-drawer-toggler',
@@ -23,7 +23,7 @@ export class DrawerToggler {
   @Prop()
   connector?: string;
 
-  @Inject({ scope: '[connector]' })
+  @Link({ scope: '[connector]' })
   link!: DrawerLink;
 
   @Watch('connector')

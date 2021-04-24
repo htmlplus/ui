@@ -135,6 +135,17 @@ const methods = (component) => {
   });
 }
 
+const parts = (component) => {
+
+  return (component.parts || []).map((part) => {
+
+    return {
+      name: part.name,
+      description: part.docs
+    }
+  });
+}
+
 const properties = (component) => {
 
   return (component.props || []).map((property) => {
@@ -208,7 +219,7 @@ const slots = (component) => {
   return (component.slots || []).map((slot) => {
 
     return {
-      name: slot.name || 'default',
+      name: slot.name,
       description: slot.docs
     }
   });
@@ -216,25 +227,35 @@ const slots = (component) => {
 
 const styles = (component) => {
 
+  const key = component.tag.split('-').slice(1).join('-');
+
+  const dir = path.join(component.dirPath, key + '.scss');
+
   const styles = [];
 
   try {
 
-    const variables = component.styleUpdated
-      .match(/[^(]--(.*?):(.*?)(?=;|})/g)
-      .map((key) => key.replace(/;|{/g, '').split(':'))
-      .reduce((result, [key, value]) => ({ ...result, [key.trim()]: value.trim() }), {});
+    fs.readFileSync(dir, 'utf8')
+      .split('@prop')
+      .slice(1)
+      .map((section) => {
 
-    for (let i = 0; i < component.styles.length; i++) {
+        let [description, name] = section.split(/\n/);
 
-      const style = component.styles[i];
+        name = name.split(':').slice(0, -1).join(':').trim();
 
-      styles.push({
-        name: style.name,
-        description: style.docs,
-        default: variables[style.name]
+        description = description.trim();
+
+        let [value] = (component.styleUpdated || '').split(name).slice(1, 2);
+
+        if (value) value = value.split(/;|}/)[0].replace(':', '').trim();
+
+        styles.push({
+          name,
+          dafault: value,
+          description
+        })
       })
-    }
   }
   catch { }
 
@@ -279,13 +300,14 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
         hasExternals: hasExternals(component),
         key: key(component),
         methods: methods(component),
+        parts: parts(component),
         properties: properties(component),
         readme: readme(component),
         slots: slots(component),
         styles: styles(component),
         tag: tag(component),
         tags: tags(component),
-        title: title(component)
+        title: title(component),
       }
     })
     .map((component, index, components) => {

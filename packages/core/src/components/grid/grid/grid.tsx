@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/services';
+import { GlobalConfig } from '@app/utils';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
@@ -7,7 +7,7 @@ import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridW
  * using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, 
  * align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.
  * @group grid
- * @slot - The default slot
+ * @slot default - The default slot.
  * @examples default, auto-sizing, gutters, gutters-x, gutters-y, align-items, align-content, align-self, justify, reverse, wrap, offset, order, hide, vertical
  */
 @Component({

@@ -54,9 +54,11 @@ input.addEventListener('change', (event) => {
 ```
 
 ```html [vue:template]
-<plus-card :elevation="elevation"></plus-card>    
-<br />    
-<input type="range" v-model="elevation" min="1" max="24" /> 
+<div>
+  <plus-card :elevation="elevation"></plus-card>    
+  <br />    
+  <input type="range" v-model="elevation" min="1" max="24" /> 
+</div>
 ```
 
 ```js [vue:script]

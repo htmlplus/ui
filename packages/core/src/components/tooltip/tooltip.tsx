@@ -1,7 +1,6 @@
 import {Component, Element, EventEmitter, Host, Prop, State, Watch, h} from '@stencil/core';
 import {createPopper, Instance} from "@popperjs/core";
-import {Bind, GlobalConfig} from '@app/services';
-import * as Utils from '@app/utils';
+import {Bind, GlobalConfig, Helper} from '@app/utils';
 import {TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow} from './tooltip.types';
 
 /**
@@ -191,13 +190,13 @@ export class Tooltip {
   }
 
   get isRTL() {
-    return Utils.isRTL(this);
+    return Helper.isRTL(this);
   }
 
   get options() {
     const offset = [this.offsetX ?? this.offset ?? null, this.offsetY ?? this.offset ?? null];
 
-    const strategy = Utils.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any;
+    const strategy = Helper.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any;
 
     return {
       placement: this.placement,

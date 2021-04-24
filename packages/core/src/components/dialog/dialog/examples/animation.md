@@ -1,17 +1,17 @@
 ```css [style]
-div {
+.center {
   text-align: center;
 }
 ```
 
 ```html [template]
 <fragment>
-  <div>
+  <div class="center">
     <plus-dialog-toggler connector="dialog-animation">
       Open
     </plus-dialog-toggler>
   </div>
-  <plus-dialog class="fade" connector="dialog-animation">
+  <plus-dialog animation="fade" connector="dialog-animation">
     <plus-dialog-content>
       <plus-dialog-header>
         Dialog Title

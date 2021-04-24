@@ -1,11 +1,11 @@
 import { Component, Host, Prop, Watch, h } from '@stencil/core';
-import { DialogLink, Inject, rebind } from '../dialog/dialog.link';
+import { DialogLink, Link, rebind } from '../dialog/dialog.link';
 
 /**
  * @group dialog
- * @slot - The default slot
- * @slot open - Specifies the content of toggler when it's opened
- * @slot close - Specifies the content of toggler when it's closed
+ * @slot default - The default slot.
+ * @TODO open    - Specifies the content of toggler when it's opened.
+ * @TODO close   - Specifies the content of toggler when it's closed.
  */
 @Component({
   tag: 'plus-dialog-toggler',
@@ -23,27 +23,36 @@ export class DialogToggler {
   @Prop()
   connector?: string;
 
-  @Inject({ scope: '[connector]' })
+  @Link({ scope: '[connector]' })
   link!: DialogLink;
 
+  get attributes() {
+    return {
+      'role': 'button',
+      'state': this.link.open ? 'open' : 'close',
+      'onClick': () => this.link.toggle()
+    }
+  }
+
+  /**
+   * Watchers
+   */
+
   @Watch('connector')
-  connectorWatcher() {
+  watcher() {
     rebind(this);
   }
 
   render() {
     return (
-      <Host
-        state={this.link.open ? 'open' : 'close'}
-        role="button"
-        onClick={() => this.link.toggle()}
-      >
+      <Host {...this.attributes}>
         <slot>
           {this.link.open ? 'Close' : 'Open'}
         </slot>
-        <slot name="close" />
-        <slot name="open" />
+        {/* TODO */}
+        {/* <slot name="close" /> */}
+        {/* <slot name="open" /> */}
       </Host>
-    );
+    )
   }
 }

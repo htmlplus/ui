@@ -1,13 +1,12 @@
 import { Component, Host, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
-import { Animation, Bind, ClickOutside, GlobalConfig, Media, Scrollbar } from '@app/services';
-import * as Utils from '@app/utils';
-import { DrawerLink, Inject, rebind } from './drawer.link';
+import { Animation, Bind, ClickOutside, GlobalConfig, Helper, Media, Scrollbar } from '@app/utils';
+import { DrawerLink, Link, rebind } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.types';
 
 /**
  * This component lets you add collapsible side contents like navigation alongside some primary content.
  * @group drawer
- * @slot - The default slot
+ * @slot default - The default slot.
  */
 @Component({
   tag: 'plus-drawer',
@@ -127,7 +126,7 @@ export class Drawer {
   })
   config?;
 
-  @Inject({ scope: '[connector]' })
+  @Link({ scope: '[connector]' })
   link: DrawerLink = {
     toggle: () => this.toggle()
   };
@@ -151,9 +150,9 @@ export class Drawer {
 
   get classes() {
 
-    const placement = Utils.toAxis(this.placement || 'start', this.isRTL);
+    const placement = Helper.toAxis(this.placement || 'start', this.isRTL);
 
-    return Utils.classes(
+    return Helper.classes(
       'content',
       {
         [placement]: true,
@@ -176,7 +175,7 @@ export class Drawer {
   }
 
   get isRTL() {
-    return Utils.isRTL(this);
+    return Helper.isRTL(this);
   }
 
   get isTemporary() {

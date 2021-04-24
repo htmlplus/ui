@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 /**
  * @group dialog
- * @slot - The default slot
+ * @slot default - The default slot.
  */
 @Component({
   tag: 'plus-dialog-header',

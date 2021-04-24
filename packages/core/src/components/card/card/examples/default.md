@@ -1,5 +1,5 @@
 ```css [style]
-div {
+.container {
   padding: 2rem 0;
   background-color: #EEEEEE;
 }
@@ -12,8 +12,14 @@ plus-card {
 
 ```html [template]
 <fragment dock>
-  <div>
+  <div class="container">
     <plus-card></plus-card>
   </div>
 </fragment>
+```
+
+```html [vue:template]
+<div class="container">
+  <plus-card></plus-card>
+</div>
 ```

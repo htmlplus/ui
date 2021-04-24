@@ -1,4 +1,3 @@
-@import 'all';
 @import 'reset';
 @import 'dialog.variables';
 
@@ -16,6 +15,7 @@
 }
 
 @mixin sticky {
+
   .cell {
     padding: 0;
   }
@@ -29,12 +29,13 @@
 :host {
   @include fill;
   z-index: $dialog-z-index;
-  display: none;
+  display: block;
   outline: 0;
   overflow: hidden;
 }
 
 .backdrop {
+
   @include fill;
   z-index: 1;
 
@@ -137,6 +138,7 @@
 
     // generate fullscreen's class
     @include class('fullscreen', $key) {
+
       @include sticky;
 
       .cell {
@@ -151,8 +153,8 @@
 }
 
 // TODO
-:host(.open) {
-  display: block;
+:host([state=closed]) {
+  display: none;
 }
 
 // TODO
@@ -166,10 +168,8 @@
 }
 
 // TODO
-.full-width {
-  .cell {
-    max-width: none !important;
-  }
+.full-width .cell {
+  max-width: none !important;
 }
 
 // TODO
@@ -177,10 +177,11 @@
   @include sticky;
 }
 
-// transition
+// animation
 
-:host(.fade.dialog-enter-active),
-:host(.fade.dialog-leave-active) {
+:host([animation][state=opening]),
+:host([animation][state=closing]) {
+
   transition: all 0.5s ease-out;
 
   .dialog {
@@ -192,8 +193,9 @@
   }
 }
 
-:host(.fade.dialog-enter),
-:host(.fade.dialog-leave-active) {
+:host([animation=fade][state=open]),
+:host([animation=fade][state=closing]) {
+
   opacity: 0;
 
   ::slotted(*) {
@@ -213,8 +215,9 @@
   }
 }
 
-:host(.fade.dialog-leave),
-:host(.fade.dialog-enter-active) {
+:host([animation=fade][state=close]),
+:host([animation=fade][state=opening]) {
+
   opacity: 1;
 
   ::slotted(*) {

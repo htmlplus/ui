@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/services';
+import { GlobalConfig } from '@app/utils';
 
 /**
  * It's a thin line that can divide the content vertically or horizontally.

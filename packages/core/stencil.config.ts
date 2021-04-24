@@ -35,10 +35,10 @@ export const config: Config = {
       includePaths: [
         'src/styles/'
       ],
-      // injectGlobalPaths: [
-      //   'src/styles/mixins/index.scss',
-      //   'src/styles/variables/index.scss'
-      // ]
+      injectGlobalPaths: [
+        'src/styles/mixins/index.scss',
+        'src/styles/variables/index.scss'
+      ]
     }),
     style()
   ],
@@ -46,15 +46,17 @@ export const config: Config = {
     { components: ['plus-aspect-ratio'] },
     { components: ['plus-card', 'plus-card-body', 'plus-card-footer', 'plus-card-header'] },
     { components: ['plus-click-outside'] },
+    { components: ['plus-cropper'] },
     { components: ['plus-dialog', 'plus-dialog-body', 'plus-dialog-content', 'plus-dialog-footer', 'plus-dialog-header', 'plus-dialog-toggler'] },
     { components: ['plus-divider'] },
     { components: ['plus-drawer', 'plus-drawer-toggler'] },
     { components: ['plus-grid', 'plus-grid-item'] },
     { components: ['plus-intersection'] },
-    { components: ['plus-layout'] },
     { components: ['plus-spinner'] },
+    { components: ['plus-sticky'] },
     { components: ['plus-switch'] },
     { components: ['plus-tabs', 'plus-tabs-bar', 'plus-tabs-panel', 'plus-tabs-panels', 'plus-tabs-tab'] },
+    { components: ['plus-tooltip'] },
     { components: ['plus-transition'] },
     { components: ['plus-tunnel-consumer'] },
   ]
