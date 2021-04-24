@@ -1,0 +1,45 @@
+:host([animation][state=opening]),
+:host([animation][state=closing]) {
+
+  transition: all 0.5s ease-out;
+
+  .dialog {
+    overflow: hidden;
+  }
+
+  ::slotted(*) {
+    transition: all 0.5s ease-out;
+  }
+}
+
+:host([animation=fade][state=open]),
+:host([animation=fade][state=closing]) {
+
+  opacity: 0;
+
+  ::slotted(*) {
+    transform: translate(0, -50px);
+  }
+
+  .y-bottom ::slotted(*) {
+    transform: translate(0, 50px);
+  }
+
+  .x-right ::slotted(*) {
+    transform: translate(50px, 0);
+  }
+
+  .x-left ::slotted(*) {
+    transform: translate(-50px, 0);
+  }
+}
+
+:host([animation=fade][state=close]),
+:host([animation=fade][state=opening]) {
+
+  opacity: 1;
+
+  ::slotted(*) {
+    transform: translate(0, 0);
+  }
+}
