@@ -1,0 +1,29 @@
+:host([animation="fade"]) {
+  .show {
+    -webkit-animation: fadeIn;
+    animation: fadeIn;
+    animation-duration: 1s;
+    animation-delay: var(--plus-tooltip-animation-delay);
+    display: block;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
