@@ -1,4 +1,3 @@
-@import 'all';
 @import 'reset';
 @import 'tooltip.variables';
 @import './animations/index';
@@ -6,20 +5,25 @@
 
 :host {
 
-  /**
-   * @prop --plus-tooltip-background-color: TODO
-   * @prop --plus-tooltip-border-radius   : TODO
-   * @prop --plus-tooltip-color           : TODO
-   * @prop --plus-tooltip-padding         : TODO
-   * @prop --plus-tooltip-z-index         : TODO
-   */
-
-  --plus-tooltip-background-color: #{$tooltip-background-color};
+   // @prop TODO
+   --plus-tooltip-background-color: #{$tooltip-background-color};
+  
+   // @prop TODO
   --plus-tooltip-border-radius: #{$tooltip-border-radius};
+  
+  // @prop TODO
   --plus-tooltip-color: #{$tooltip-color};
+  
+  // @prop TODO
   --plus-tooltip-padding: #{$tooltip-padding};
+  
+  // @prop TODO
   --plus-tooltip-z-index: #{$tooltip-z-index};
+  
+  // @prop TODO
   --plus-tooltip-animation-delay: #{$tooltip-animation-delay};
+  
+  // @prop TODO
   --plus-tooltip-max-width: #{$tooltip-max-width};
 }
 
