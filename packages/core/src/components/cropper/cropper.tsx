@@ -609,7 +609,6 @@ export class Cropper {
   }
 
   render() {
-    console.log(this.options, this.area)
     return (
       <Host>
         <div class={this.classes}>
