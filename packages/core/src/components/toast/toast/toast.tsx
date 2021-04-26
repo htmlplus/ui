@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, GlobalConfig, GlobalState, Helper } from '@app/utils';
+import { AnimationV2, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
 import { ToastLink, Link, rebind } from './toast.link';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
@@ -41,7 +41,7 @@ export class Toast {
    * TODO
    */
   @Prop()
-  duration?: number = 3000;
+  duration?: number = 3000111;
 
   /**
    * TODO
@@ -128,13 +128,19 @@ export class Toast {
     instances: []
   }
 
+  @Direction()
+  direction?: string;
+
+  @IsRTL()
+  isRTL?: boolean;
+
   @Element()
   $host!: HTMLElement;
 
   $root!: HTMLElement;
 
   animate?: AnimationV2;
-  
+
   isOpen?: boolean;
 
   // TODO
@@ -163,7 +169,7 @@ export class Toast {
       'full-width': this.fullWidth,
       [x]: !!x,
       [y]: !!y,
-      [this.isRTL ? 'rtl' : 'ltr']: true,
+      [this.direction]: true,
     }
   }
 
@@ -174,10 +180,6 @@ export class Toast {
     const last = instances.length - 1;
 
     return instances[last] === this;
-  }
-
-  get isRTL() {
-    return Helper.isRTL(this);
   }
 
   get zIndex() {

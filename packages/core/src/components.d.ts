@@ -17,7 +17,7 @@ import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
-import { TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
+import { TooltipAnimation, TooltipArrow, TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
 import { SubscribeType } from "./utils/tunnel/tunnel.types";
 export namespace Components {
@@ -871,6 +871,22 @@ export namespace Components {
     }
     interface PlusTooltip {
         /**
+          * Tooltip animation.
+         */
+        "animation"?: TooltipAnimation;
+        /**
+          * Tooltip append to a element.
+         */
+        "appendTo"?: any;
+        /**
+          * Tooltip arrow model.
+         */
+        "arrow"?: TooltipArrow;
+        /**
+          * Delay for show tooltip.
+         */
+        "delay"?: number;
+        /**
           * Tooltip disable.
          */
         "disabled"?: boolean;
@@ -878,6 +894,10 @@ export namespace Components {
           * Add fixed strategy to popper.
          */
         "fixed"?: boolean;
+        /**
+          * Add fixed strategy to popper.
+         */
+        "flip"?: boolean;
         /**
           * How to position the tooltip.
          */
@@ -2050,6 +2070,22 @@ declare namespace LocalJSX {
     }
     interface PlusTooltip {
         /**
+          * Tooltip animation.
+         */
+        "animation"?: TooltipAnimation;
+        /**
+          * Tooltip append to a element.
+         */
+        "appendTo"?: any;
+        /**
+          * Tooltip arrow model.
+         */
+        "arrow"?: TooltipArrow;
+        /**
+          * Delay for show tooltip.
+         */
+        "delay"?: number;
+        /**
           * Tooltip disable.
          */
         "disabled"?: boolean;
@@ -2057,6 +2093,10 @@ declare namespace LocalJSX {
           * Add fixed strategy to popper.
          */
         "fixed"?: boolean;
+        /**
+          * Add fixed strategy to popper.
+         */
+        "flip"?: boolean;
         /**
           * How to position the tooltip.
          */

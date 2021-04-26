@@ -30,16 +30,6 @@
   width: 100%;
 }
 
-.top {
-  top: 0;
-  bottom: unset;
-}
-
-.bottom {
-  top: unset;
-  bottom: 0;
-}
-
 .ltr {
   right: unset;
   left: 50%;
@@ -52,21 +42,26 @@
   transform: translate(50%, 0);
 }
 
-.right,
-.left {
+.top {
+  top: 0;
+  bottom: unset;
+}
+
+.right {
+  right: 0;
+  left: unset;
   transform: translate(0, 0);
 }
 
-.right.ltr,
-.left.rtl {
-  right: 0;
-  left: unset;
+.bottom {
+  top: unset;
+  bottom: 0;
 }
 
-.right.rtl,
-.left.ltr {
+.left {
   right: unset;
   left: 0;
+  transform: translate(0, 0);
 }
 
 // animation

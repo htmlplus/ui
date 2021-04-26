@@ -1,5 +1,3 @@
-import { getElement } from '@stencil/core';
+import { Helper } from '@app/utils';
 
-export const isRTL = (instance) => {
-    return getComputedStyle(getElement(instance)).getPropertyValue('direction') === 'rtl';
-}
+export const isRTL = (instance?) => Helper.direction(instance) === 'rtl';

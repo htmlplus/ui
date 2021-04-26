@@ -1,12 +1,10 @@
+import { Helper } from '@app/utils';
+
 export class Scrollbar {
 
     static keys = new Set<any>();
 
     static style = {};
-
-    static get isRTL() {
-        return getComputedStyle(window.document.body).getPropertyValue('direction') === 'rtl';
-    }
 
     static get width() {
 
@@ -39,7 +37,7 @@ export class Scrollbar {
 
         if (!isOverflowing) return;
 
-        const property = this.isRTL ? 'paddingLeft' : 'paddingRight';
+        const property = Helper.isRTL() ? 'paddingLeft' : 'paddingRight';
 
         this.style = {
             overflow: document.body.style.overflow,

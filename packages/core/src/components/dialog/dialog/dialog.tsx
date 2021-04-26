@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, Helper, Scrollbar } from '@app/utils';
+import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Scrollbar } from '@app/utils';
 import { DialogLink, Link, rebind } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from './dialog.types';
 
@@ -150,6 +150,9 @@ export class Dialog {
     instances: []
   }
 
+  @IsRTL()
+  isRTL?: boolean;
+
   @Element()
   $host!: HTMLElement;
 
@@ -217,10 +220,6 @@ export class Dialog {
     const last = instances.length - 1;
 
     return instances[last] === this;
-  }
-
-  get isRTL() {
-    return Helper.isRTL(this);
   }
 
   get zIndex() {

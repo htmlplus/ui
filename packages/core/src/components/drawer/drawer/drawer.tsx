@@ -1,5 +1,5 @@
 import { Component, Host, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
-import { Animation, Bind, ClickOutside, GlobalConfig, Helper, Media, Scrollbar } from '@app/utils';
+import { Animation, Bind, ClickOutside, GlobalConfig, Helper, IsRTL, Media, Scrollbar } from '@app/utils';
 import { DrawerLink, Link, rebind } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from './drawer.types';
 
@@ -126,6 +126,9 @@ export class Drawer {
   })
   config?;
 
+  @IsRTL()
+  isRTL?: boolean;
+
   @Link({ scope: '[connector]' })
   link: DrawerLink = {
     toggle: () => this.toggle()
@@ -172,10 +175,6 @@ export class Drawer {
 
   get isOpen() {
     return this.$host.classList.contains('open');
-  }
-
-  get isRTL() {
-    return Helper.isRTL(this);
   }
 
   get isTemporary() {

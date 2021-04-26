@@ -1,6 +1,6 @@
 import {Component, Element, EventEmitter, Host, Prop, State, Watch, h} from '@stencil/core';
 import {createPopper, Instance} from "@popperjs/core";
-import {Bind, GlobalConfig, Helper} from '@app/utils';
+import {Bind, GlobalConfig, Helper, IsRTL} from '@app/utils';
 import {TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow} from './tooltip.types';
 
 /**
@@ -139,6 +139,9 @@ export class Tooltip {
   })
   config;
 
+  @IsRTL()
+  isRTL?: boolean;
+
   instance?: Instance;
 
   @State()
@@ -187,10 +190,6 @@ export class Tooltip {
       });
 
     return events;
-  }
-
-  get isRTL() {
-    return Helper.isRTL(this);
   }
 
   get options() {

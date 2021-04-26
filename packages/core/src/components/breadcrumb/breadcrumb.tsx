@@ -1,5 +1,5 @@
 import { Component, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
-import { Bind, GlobalConfig, Helper } from '@app/utils';
+import { Bind, GlobalConfig, IsRTL } from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -52,6 +52,9 @@ export class Breadcrumb {
   })
   config?;
 
+  @IsRTL()
+  isRTL?: boolean;
+
   @Element()
   $host!: HTMLElement;
 
@@ -75,10 +78,6 @@ export class Breadcrumb {
     return {
       'aria-label': 'breadcrumb'
     }
-  }
-
-  get isRTL() {
-    return Helper.isRTL(this);
   }
 
   /**
