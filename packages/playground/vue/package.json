@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
+    "serve": "npm run start",
     "start": "vue-cli-service serve --port 5400"
   },
   "dependencies": {
