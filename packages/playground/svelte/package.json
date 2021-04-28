@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "start": "sirv public --no-clear",
-    "dev": "rollup -c -w"
+    "serve": "sirv public --no-clear --port 5300",
+    "start": "rollup -c -w"
   },
   "dependencies": {
     "@htmlplus/core": "0.2.2",
