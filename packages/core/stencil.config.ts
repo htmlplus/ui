@@ -8,6 +8,9 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: Constants.NAMESPACE,
+  devServer: {
+    port: 3000
+  },
   outputTargets: [
     {
       type: 'www',
