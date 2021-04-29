@@ -27,6 +27,18 @@ export namespace Components {
          */
         "value"?: AspectRatioValue;
     }
+    interface PlusBottomNavigation {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
+    interface PlusBottomNavigationItem {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
     interface PlusBreadcrumb {
         /**
           * For localization purposes, you can use the provided translations.
@@ -869,6 +881,18 @@ export namespace Components {
          */
         "connector"?: string;
     }
+    interface PlusToolbar {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
+    interface PlusToolbarSpacer {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
     interface PlusTooltip {
         /**
           * Tooltip animation.
@@ -941,6 +965,18 @@ declare global {
     var HTMLPlusAspectRatioElement: {
         prototype: HTMLPlusAspectRatioElement;
         new (): HTMLPlusAspectRatioElement;
+    };
+    interface HTMLPlusBottomNavigationElement extends Components.PlusBottomNavigation, HTMLStencilElement {
+    }
+    var HTMLPlusBottomNavigationElement: {
+        prototype: HTMLPlusBottomNavigationElement;
+        new (): HTMLPlusBottomNavigationElement;
+    };
+    interface HTMLPlusBottomNavigationItemElement extends Components.PlusBottomNavigationItem, HTMLStencilElement {
+    }
+    var HTMLPlusBottomNavigationItemElement: {
+        prototype: HTMLPlusBottomNavigationItemElement;
+        new (): HTMLPlusBottomNavigationItemElement;
     };
     interface HTMLPlusBreadcrumbElement extends Components.PlusBreadcrumb, HTMLStencilElement {
     }
@@ -1134,6 +1170,18 @@ declare global {
         prototype: HTMLPlusToastTogglerElement;
         new (): HTMLPlusToastTogglerElement;
     };
+    interface HTMLPlusToolbarElement extends Components.PlusToolbar, HTMLStencilElement {
+    }
+    var HTMLPlusToolbarElement: {
+        prototype: HTMLPlusToolbarElement;
+        new (): HTMLPlusToolbarElement;
+    };
+    interface HTMLPlusToolbarSpacerElement extends Components.PlusToolbarSpacer, HTMLStencilElement {
+    }
+    var HTMLPlusToolbarSpacerElement: {
+        prototype: HTMLPlusToolbarSpacerElement;
+        new (): HTMLPlusToolbarSpacerElement;
+    };
     interface HTMLPlusTooltipElement extends Components.PlusTooltip, HTMLStencilElement {
     }
     var HTMLPlusTooltipElement: {
@@ -1154,6 +1202,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "plus-aspect-ratio": HTMLPlusAspectRatioElement;
+        "plus-bottom-navigation": HTMLPlusBottomNavigationElement;
+        "plus-bottom-navigation-item": HTMLPlusBottomNavigationItemElement;
         "plus-breadcrumb": HTMLPlusBreadcrumbElement;
         "plus-card": HTMLPlusCardElement;
         "plus-card-body": HTMLPlusCardBodyElement;
@@ -1186,6 +1236,8 @@ declare global {
         "plus-template": HTMLPlusTemplateElement;
         "plus-toast": HTMLPlusToastElement;
         "plus-toast-toggler": HTMLPlusToastTogglerElement;
+        "plus-toolbar": HTMLPlusToolbarElement;
+        "plus-toolbar-spacer": HTMLPlusToolbarSpacerElement;
         "plus-tooltip": HTMLPlusTooltipElement;
         "plus-transition": HTMLPlusTransitionElement;
         "plus-tunnel-consumer": HTMLPlusTunnelConsumerElement;
@@ -1197,6 +1249,18 @@ declare namespace LocalJSX {
           * Specifies the ratio.
          */
         "value"?: AspectRatioValue;
+    }
+    interface PlusBottomNavigation {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
+    interface PlusBottomNavigationItem {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
     }
     interface PlusBreadcrumb {
         /**
@@ -2068,6 +2132,18 @@ declare namespace LocalJSX {
          */
         "connector"?: string;
     }
+    interface PlusToolbar {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
+    interface PlusToolbarSpacer {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+    }
     interface PlusTooltip {
         /**
           * Tooltip animation.
@@ -2151,6 +2227,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "plus-aspect-ratio": PlusAspectRatio;
+        "plus-bottom-navigation": PlusBottomNavigation;
+        "plus-bottom-navigation-item": PlusBottomNavigationItem;
         "plus-breadcrumb": PlusBreadcrumb;
         "plus-card": PlusCard;
         "plus-card-body": PlusCardBody;
@@ -2183,6 +2261,8 @@ declare namespace LocalJSX {
         "plus-template": PlusTemplate;
         "plus-toast": PlusToast;
         "plus-toast-toggler": PlusToastToggler;
+        "plus-toolbar": PlusToolbar;
+        "plus-toolbar-spacer": PlusToolbarSpacer;
         "plus-tooltip": PlusTooltip;
         "plus-transition": PlusTransition;
         "plus-tunnel-consumer": PlusTunnelConsumer;
@@ -2193,6 +2273,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plus-aspect-ratio": LocalJSX.PlusAspectRatio & JSXBase.HTMLAttributes<HTMLPlusAspectRatioElement>;
+            "plus-bottom-navigation": LocalJSX.PlusBottomNavigation & JSXBase.HTMLAttributes<HTMLPlusBottomNavigationElement>;
+            "plus-bottom-navigation-item": LocalJSX.PlusBottomNavigationItem & JSXBase.HTMLAttributes<HTMLPlusBottomNavigationItemElement>;
             "plus-breadcrumb": LocalJSX.PlusBreadcrumb & JSXBase.HTMLAttributes<HTMLPlusBreadcrumbElement>;
             "plus-card": LocalJSX.PlusCard & JSXBase.HTMLAttributes<HTMLPlusCardElement>;
             "plus-card-body": LocalJSX.PlusCardBody & JSXBase.HTMLAttributes<HTMLPlusCardBodyElement>;
@@ -2225,6 +2307,8 @@ declare module "@stencil/core" {
             "plus-template": LocalJSX.PlusTemplate & JSXBase.HTMLAttributes<HTMLPlusTemplateElement>;
             "plus-toast": LocalJSX.PlusToast & JSXBase.HTMLAttributes<HTMLPlusToastElement>;
             "plus-toast-toggler": LocalJSX.PlusToastToggler & JSXBase.HTMLAttributes<HTMLPlusToastTogglerElement>;
+            "plus-toolbar": LocalJSX.PlusToolbar & JSXBase.HTMLAttributes<HTMLPlusToolbarElement>;
+            "plus-toolbar-spacer": LocalJSX.PlusToolbarSpacer & JSXBase.HTMLAttributes<HTMLPlusToolbarSpacerElement>;
             "plus-tooltip": LocalJSX.PlusTooltip & JSXBase.HTMLAttributes<HTMLPlusTooltipElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
             "plus-tunnel-consumer": LocalJSX.PlusTunnelConsumer & JSXBase.HTMLAttributes<HTMLPlusTunnelConsumerElement>;
