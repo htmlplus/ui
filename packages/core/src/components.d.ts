@@ -127,13 +127,13 @@ export namespace Components {
           * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
           * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
          */
-        "move": (offsetX?: number | undefined, offsetY?: number | undefined) => Promise<void>;
+        "move": (offsetX?: number, offsetY?: number) => Promise<void>;
         /**
           * Move the canvas to an absolute point.
           * @param x - The `left` value of the canvas. Use `null` to ignore this.
           * @param y - The `top` value of the canvas. Use `null` to ignore this.
          */
-        "moveTo": (x?: number | undefined, y?: number | undefined) => Promise<void>;
+        "moveTo": (x?: number, y?: number) => Promise<void>;
         /**
           * Reset the image and viewport to their initial states.
          */
