@@ -1,8 +1,9 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { Bind, GlobalConfig, ClickOutside as ClickOutsideCore } from '@app/services';
+import { Bind, GlobalConfig, ClickOutside as ClickOutsideCore } from '@app/utils';
 
 /**
  * The component calls a function when something outside of the target element is clicked on.
+ * @slot default - The default slot.
  * @examples default
  */
 @Component({

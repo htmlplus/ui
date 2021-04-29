@@ -1,6 +1,6 @@
-@import 'all';
 @import 'reset';
 @import 'dialog.variables';
+@import 'dialog.animations';
 
 @mixin fill {
   position: fixed;
@@ -16,6 +16,7 @@
 }
 
 @mixin sticky {
+
   .cell {
     padding: 0;
   }
@@ -29,12 +30,13 @@
 :host {
   @include fill;
   z-index: $dialog-z-index;
-  display: none;
+  display: block;
   outline: 0;
   overflow: hidden;
 }
 
 .backdrop {
+
   @include fill;
   z-index: 1;
 
@@ -137,6 +139,7 @@
 
     // generate fullscreen's class
     @include class('fullscreen', $key) {
+
       @include sticky;
 
       .cell {
@@ -151,8 +154,8 @@
 }
 
 // TODO
-:host(.open) {
-  display: block;
+:host([state=closed]) {
+  display: none;
 }
 
 // TODO
@@ -166,58 +169,11 @@
 }
 
 // TODO
-.full-width {
-  .cell {
-    max-width: none !important;
-  }
+.full-width .cell {
+  max-width: none !important;
 }
 
 // TODO
 .sticky {
   @include sticky;
-}
-
-// transition
-
-:host(.fade.dialog-enter-active),
-:host(.fade.dialog-leave-active) {
-  transition: all 0.5s ease-out;
-
-  .dialog {
-    overflow: hidden;
-  }
-
-  ::slotted(*) {
-    transition: all 0.5s ease-out;
-  }
-}
-
-:host(.fade.dialog-enter),
-:host(.fade.dialog-leave-active) {
-  opacity: 0;
-
-  ::slotted(*) {
-    transform: translate(0, -50px);
-  }
-
-  .y-bottom ::slotted(*) {
-    transform: translate(0, 50px);
-  }
-
-  .x-right ::slotted(*) {
-    transform: translate(50px, 0);
-  }
-
-  .x-left ::slotted(*) {
-    transform: translate(-50px, 0);
-  }
-}
-
-:host(.fade.dialog-leave),
-:host(.fade.dialog-enter-active) {
-  opacity: 1;
-
-  ::slotted(*) {
-    transform: translate(0, 0);
-  }
 }

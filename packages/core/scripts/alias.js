@@ -30,7 +30,6 @@ const files = (dir) => {
 
 const map = {
     'constants': 'dist/collection/configs/constants',
-    'services': 'dist/collection/services',
     'utils': 'dist/collection/utils',
 }
 

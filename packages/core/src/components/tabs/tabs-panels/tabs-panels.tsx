@@ -1,12 +1,12 @@
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
-import { Bind } from '@app/services';
+import { Bind } from '@app/utils';
 import { channel } from '../tabs/tabs.channel';
 import { TabsTunnel, TabsTunnelState } from '../tabs/tabs.tunnel';
 
 /**
  * TODO
  * @group tabs
- * @slot - The default slot.
+ * @slot default - The default slot.
  */
 @Component({
   tag: 'plus-tabs-panels',

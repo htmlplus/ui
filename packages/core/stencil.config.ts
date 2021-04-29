@@ -8,6 +8,9 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: Constants.NAMESPACE,
+  devServer: {
+    port: 3000
+  },
   outputTargets: [
     {
       type: 'www',
@@ -35,10 +38,10 @@ export const config: Config = {
       includePaths: [
         'src/styles/'
       ],
-      // injectGlobalPaths: [
-      //   'src/styles/mixins/index.scss',
-      //   'src/styles/variables/index.scss'
-      // ]
+      injectGlobalPaths: [
+        'src/styles/mixins/index.scss',
+        'src/styles/variables/index.scss'
+      ]
     }),
     style()
   ],
@@ -52,7 +55,6 @@ export const config: Config = {
     { components: ['plus-drawer', 'plus-drawer-toggler'] },
     { components: ['plus-grid', 'plus-grid-item'] },
     { components: ['plus-intersection'] },
-    { components: ['plus-layout'] },
     { components: ['plus-spinner'] },
     { components: ['plus-sticky'] },
     { components: ['plus-switch'] },

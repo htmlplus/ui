@@ -42,7 +42,7 @@ class {
             </button>
           </plus-grid-item>
         </plus-grid>
-        <plus-dialog class="fade" open={this.open} size={this.size} onPlusClose={() => this.hide()}>
+        <plus-dialog animation="fade" open={this.open} size={this.size} onPlusClose={() => this.hide()}>
           <plus-dialog-content>
             <plus-dialog-header>
               Dialog Title
@@ -81,7 +81,7 @@ class {
     </button>
   </plus-grid-item>
 </plus-grid>
-<plus-dialog id="element4" class="fade">
+<plus-dialog id="element4" animation="fade">
   <plus-dialog-content>
     <plus-dialog-header>
       Dialog Title

@@ -13,14 +13,13 @@ import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
-import { LayoutBottom, LayoutMain, LayoutTop } from "./components/layout/layout.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
-import { ToastPlacement } from "./components/toast/toast.types";
-import { TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
+import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
+import { TooltipAnimation, TooltipArrow, TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
-import { SubscribeType } from "./services/tunnel/tunnel.types";
+import { SubscribeType } from "./utils/tunnel/tunnel.types";
 export namespace Components {
     interface PlusAspectRatio {
         /**
@@ -128,13 +127,13 @@ export namespace Components {
           * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
           * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
          */
-        "move": (offsetX?: number, offsetY?: number) => Promise<void>;
+        "move": (offsetX?: number | undefined, offsetY?: number | undefined) => Promise<void>;
         /**
           * Move the canvas to an absolute point.
           * @param x - The `left` value of the canvas. Use `null` to ignore this.
           * @param y - The `top` value of the canvas. Use `null` to ignore this.
          */
-        "moveTo": (x?: number, y?: number) => Promise<void>;
+        "moveTo": (x?: number | undefined, y?: number | undefined) => Promise<void>;
         /**
           * Reset the image and viewport to their initial states.
          */
@@ -222,6 +221,10 @@ export namespace Components {
         "zoomable"?: CropperZoomable;
     }
     interface PlusDialog {
+        /**
+          * TODO
+         */
+        "animation"?: string;
         /**
           * Activate the dialog's backdrop to show or not.
          */
@@ -680,20 +683,6 @@ export namespace Components {
          */
         "threshold"?: number | number[];
     }
-    interface PlusLayout {
-        /**
-          * TODO
-         */
-        "bottom"?: LayoutBottom;
-        /**
-          * TODO
-         */
-        "main"?: LayoutMain;
-        /**
-          * TODO
-         */
-        "top"?: LayoutTop;
-    }
     interface PlusMenu {
         /**
           * TODO
@@ -844,6 +833,10 @@ export namespace Components {
         /**
           * TODO
          */
+        "animation"?: string;
+        /**
+          * TODO
+         */
         "duration"?: number;
         /**
           * TODO
@@ -865,8 +858,34 @@ export namespace Components {
           * TODO
          */
         "reverse"?: boolean;
+        /**
+          * TODO
+         */
+        "type"?: ToastType;
+    }
+    interface PlusToastToggler {
+        /**
+          * This property helps you to attach which toast this toggler controls.  It doesn't matter where the toast toggler is.  You can put the toast's toggler inside or outside of the toast.  Read more about connectors [here](https://htmlplus.io/features/connector).
+         */
+        "connector"?: string;
     }
     interface PlusTooltip {
+        /**
+          * Tooltip animation.
+         */
+        "animation"?: TooltipAnimation;
+        /**
+          * Tooltip append to a element.
+         */
+        "appendTo"?: any;
+        /**
+          * Tooltip arrow model.
+         */
+        "arrow"?: TooltipArrow;
+        /**
+          * Delay for show tooltip.
+         */
+        "delay"?: number;
         /**
           * Tooltip disable.
          */
@@ -875,6 +894,10 @@ export namespace Components {
           * Add fixed strategy to popper.
          */
         "fixed"?: boolean;
+        /**
+          * Add fixed strategy to popper.
+         */
+        "flip"?: boolean;
         /**
           * How to position the tooltip.
          */
@@ -1033,12 +1056,6 @@ declare global {
         prototype: HTMLPlusIntersectionElement;
         new (): HTMLPlusIntersectionElement;
     };
-    interface HTMLPlusLayoutElement extends Components.PlusLayout, HTMLStencilElement {
-    }
-    var HTMLPlusLayoutElement: {
-        prototype: HTMLPlusLayoutElement;
-        new (): HTMLPlusLayoutElement;
-    };
     interface HTMLPlusMenuElement extends Components.PlusMenu, HTMLStencilElement {
     }
     var HTMLPlusMenuElement: {
@@ -1111,6 +1128,12 @@ declare global {
         prototype: HTMLPlusToastElement;
         new (): HTMLPlusToastElement;
     };
+    interface HTMLPlusToastTogglerElement extends Components.PlusToastToggler, HTMLStencilElement {
+    }
+    var HTMLPlusToastTogglerElement: {
+        prototype: HTMLPlusToastTogglerElement;
+        new (): HTMLPlusToastTogglerElement;
+    };
     interface HTMLPlusTooltipElement extends Components.PlusTooltip, HTMLStencilElement {
     }
     var HTMLPlusTooltipElement: {
@@ -1150,7 +1173,6 @@ declare global {
         "plus-grid": HTMLPlusGridElement;
         "plus-grid-item": HTMLPlusGridItemElement;
         "plus-intersection": HTMLPlusIntersectionElement;
-        "plus-layout": HTMLPlusLayoutElement;
         "plus-menu": HTMLPlusMenuElement;
         "plus-ripple": HTMLPlusRippleElement;
         "plus-spinner": HTMLPlusSpinnerElement;
@@ -1163,6 +1185,7 @@ declare global {
         "plus-tabs-tab": HTMLPlusTabsTabElement;
         "plus-template": HTMLPlusTemplateElement;
         "plus-toast": HTMLPlusToastElement;
+        "plus-toast-toggler": HTMLPlusToastTogglerElement;
         "plus-tooltip": HTMLPlusTooltipElement;
         "plus-transition": HTMLPlusTransitionElement;
         "plus-tunnel-consumer": HTMLPlusTunnelConsumerElement;
@@ -1329,6 +1352,10 @@ declare namespace LocalJSX {
         "zoomable"?: CropperZoomable;
     }
     interface PlusDialog {
+        /**
+          * TODO
+         */
+        "animation"?: string;
         /**
           * Activate the dialog's backdrop to show or not.
          */
@@ -1823,20 +1850,6 @@ declare namespace LocalJSX {
          */
         "threshold"?: number | number[];
     }
-    interface PlusLayout {
-        /**
-          * TODO
-         */
-        "bottom"?: LayoutBottom;
-        /**
-          * TODO
-         */
-        "main"?: LayoutMain;
-        /**
-          * TODO
-         */
-        "top"?: LayoutTop;
-    }
     interface PlusMenu {
         /**
           * TODO
@@ -2003,6 +2016,10 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
+        "animation"?: string;
+        /**
+          * TODO
+         */
         "duration"?: number;
         /**
           * TODO
@@ -2040,8 +2057,34 @@ declare namespace LocalJSX {
           * TODO
          */
         "reverse"?: boolean;
+        /**
+          * TODO
+         */
+        "type"?: ToastType;
+    }
+    interface PlusToastToggler {
+        /**
+          * This property helps you to attach which toast this toggler controls.  It doesn't matter where the toast toggler is.  You can put the toast's toggler inside or outside of the toast.  Read more about connectors [here](https://htmlplus.io/features/connector).
+         */
+        "connector"?: string;
     }
     interface PlusTooltip {
+        /**
+          * Tooltip animation.
+         */
+        "animation"?: TooltipAnimation;
+        /**
+          * Tooltip append to a element.
+         */
+        "appendTo"?: any;
+        /**
+          * Tooltip arrow model.
+         */
+        "arrow"?: TooltipArrow;
+        /**
+          * Delay for show tooltip.
+         */
+        "delay"?: number;
         /**
           * Tooltip disable.
          */
@@ -2050,6 +2093,10 @@ declare namespace LocalJSX {
           * Add fixed strategy to popper.
          */
         "fixed"?: boolean;
+        /**
+          * Add fixed strategy to popper.
+         */
+        "flip"?: boolean;
         /**
           * How to position the tooltip.
          */
@@ -2123,7 +2170,6 @@ declare namespace LocalJSX {
         "plus-grid": PlusGrid;
         "plus-grid-item": PlusGridItem;
         "plus-intersection": PlusIntersection;
-        "plus-layout": PlusLayout;
         "plus-menu": PlusMenu;
         "plus-ripple": PlusRipple;
         "plus-spinner": PlusSpinner;
@@ -2136,6 +2182,7 @@ declare namespace LocalJSX {
         "plus-tabs-tab": PlusTabsTab;
         "plus-template": PlusTemplate;
         "plus-toast": PlusToast;
+        "plus-toast-toggler": PlusToastToggler;
         "plus-tooltip": PlusTooltip;
         "plus-transition": PlusTransition;
         "plus-tunnel-consumer": PlusTunnelConsumer;
@@ -2165,7 +2212,6 @@ declare module "@stencil/core" {
             "plus-grid": LocalJSX.PlusGrid & JSXBase.HTMLAttributes<HTMLPlusGridElement>;
             "plus-grid-item": LocalJSX.PlusGridItem & JSXBase.HTMLAttributes<HTMLPlusGridItemElement>;
             "plus-intersection": LocalJSX.PlusIntersection & JSXBase.HTMLAttributes<HTMLPlusIntersectionElement>;
-            "plus-layout": LocalJSX.PlusLayout & JSXBase.HTMLAttributes<HTMLPlusLayoutElement>;
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
             "plus-ripple": LocalJSX.PlusRipple & JSXBase.HTMLAttributes<HTMLPlusRippleElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
@@ -2178,6 +2224,7 @@ declare module "@stencil/core" {
             "plus-tabs-tab": LocalJSX.PlusTabsTab & JSXBase.HTMLAttributes<HTMLPlusTabsTabElement>;
             "plus-template": LocalJSX.PlusTemplate & JSXBase.HTMLAttributes<HTMLPlusTemplateElement>;
             "plus-toast": LocalJSX.PlusToast & JSXBase.HTMLAttributes<HTMLPlusToastElement>;
+            "plus-toast-toggler": LocalJSX.PlusToastToggler & JSXBase.HTMLAttributes<HTMLPlusToastTogglerElement>;
             "plus-tooltip": LocalJSX.PlusTooltip & JSXBase.HTMLAttributes<HTMLPlusTooltipElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
             "plus-tunnel-consumer": LocalJSX.PlusTunnelConsumer & JSXBase.HTMLAttributes<HTMLPlusTunnelConsumerElement>;

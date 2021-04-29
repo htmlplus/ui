@@ -5,6 +5,14 @@
 }
 plus-breadcrumb {
   display: inline-block;
+  color: #707070;
+}
+plus-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+plus-breadcrumb a:hover {
+  text-decoration: underline;
 }
 ```
 
@@ -12,29 +20,29 @@ plus-breadcrumb {
 <fragment>
   <div class="container">
     <plus-breadcrumb separator="\">
-      <span>First</span>
-      <span>Second</span>
-      <span>Third</span>
-      <span>Fourth</span>
-      <span>Fifth</span>
+      <a href="#">First</a>
+      <a href="#">Second</a>
+      <a href="#">Third</a>
+      <a href="#">Fourth</a>
+      <a href="#">Fifth</a>
     </plus-breadcrumb>
   </div>
   <div class="container">
     <plus-breadcrumb separator="-">
-      <span>First</span>
-      <span>Second</span>
-      <span>Third</span>
-      <span>Fourth</span>
-      <span>Fifth</span>
+      <a href="#">First</a>
+      <a href="#">Second</a>
+      <a href="#">Third</a>
+      <a href="#">Fourth</a>
+      <a href="#">Fifth</a>
     </plus-breadcrumb>
   </div>
   <div class="container">
     <plus-breadcrumb separator="/">
-      <span>First</span>
-      <span>Second</span>
-      <span>Third</span>
-      <span>Fourth</span>
-      <span>Fifth</span>
+      <a href="#">First</a>
+      <a href="#">Second</a>
+      <a href="#">Third</a>
+      <a href="#">Fourth</a>
+      <a href="#">Fifth</a>
     </plus-breadcrumb>
   </div>
 </fragment>

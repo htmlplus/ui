@@ -23,7 +23,7 @@ class {
           </plus-dialog-toggler>
         </div>
         <plus-dialog 
-          class="fade" 
+          animation="fade" 
           connector="dialog-prevent" 
           onPlusOpen={(event) => this.ensure('open', event)}
           onPlusClose={(event) => this.ensure('close', event)}
@@ -54,7 +54,7 @@ class {
     Open
   </plus-dialog-toggler>
 </div>
-<plus-dialog id="element1" class="fade" connector="dialog-prevent">
+<plus-dialog id="element1" animation="fade" connector="dialog-prevent">
   <plus-dialog-content>
     <plus-dialog-header>
       Dialog Title

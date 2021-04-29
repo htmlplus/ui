@@ -1,21 +1,21 @@
-@import 'all';
 @import 'reset';
 @import 'card.variables';
 
 :host {
 
-    /**
-    * @prop --plus-card-background-color: Used to adjust the background-color.
-    * @prop --plus-card-border-color    : Used to adjust the border-color.
-    * @prop --plus-card-border-radius   : Used to adjust the border-radius.
-    * @prop --plus-card-border-width    : Used to adjust the border-width.
-    * @prop --plus-card-box-shadow      : Used to adjust the box-shodow.
-    */
-
+    // @prop Used to adjust the background-color.
     --plus-card-background-color: #{$card-background-color};
+
+    // @prop Used to adjust the border-color.
     --plus-card-border-color    : #{$card-border-color};
+
+    // @prop Used to adjust the border-radius.
     --plus-card-border-radius   : #{$card-border-radius};
+
+    // @prop Used to adjust the border-width.
     --plus-card-border-width    : #{$card-border-width};
+
+    // @prop Used to adjust the box-shodow.
     --plus-card-box-shadow      : none;
 }
 

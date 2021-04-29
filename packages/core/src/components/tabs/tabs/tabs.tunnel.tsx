@@ -1,5 +1,5 @@
 import { h } from '@stencil/core';
-import { createTunnel } from '@app/services/tunnel';
+import { createTunnel } from '@app/utils/tunnel';
 export interface TabsTunnelState {
   active?: string,
   request?: (value: string) => void

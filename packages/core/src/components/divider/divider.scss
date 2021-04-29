@@ -3,13 +3,11 @@
 
 :host {
 
-  /**
-  * @prop --plus-divider-background-color: Used to adjust the background color.
-  * @prop --plus-divider-weight          : Used to adjust the weight.
-  */
-
+  // @prop Used to adjust the background color.
   --plus-divider-background-color: #{$divider-background-color};
-  --plus-divider-weight          : #{$divider-weight};
+  
+  // @prop Used to adjust the weight.
+  --plus-divider-weight: #{$divider-weight};
 }
 
 :host {

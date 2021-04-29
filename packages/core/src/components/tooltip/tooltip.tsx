@@ -1,11 +1,11 @@
-import { Component, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
-import { createPopper, Instance } from "@popperjs/core";
-import { Bind, GlobalConfig } from '@app/services';
-import * as Utils from '@app/utils';
-import { TooltipPlacement, TooltipTrigger } from './tooltip.types';
+import {Component, Element, EventEmitter, Host, Prop, State, Watch, h} from '@stencil/core';
+import {createPopper, Instance} from "@popperjs/core";
+import {Bind, GlobalConfig, Helper, IsRTL} from '@app/utils';
+import {TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow} from './tooltip.types';
 
 /**
- * It's the often used to specify extra information about something when the user moves the mouse pointer over an element (Hover or Focus).
+ * It's the often used to specify extra information about something
+ * when the user moves the mouse pointer over an element (Hover or Focus).
  * @examples default, placement, trigger
  */
 @Component({
@@ -15,14 +15,38 @@ import { TooltipPlacement, TooltipTrigger } from './tooltip.types';
 })
 export class Tooltip {
 
-  // TODO 
+  // TODO
   // https://popper.js.org
   // https://atomiks.github.io/tippyjs
-  // appendTo?: HTMLElement | Function | 'parent';
-  // arrow?: boolean | 'round' | 'large' | 'small' | 'wide' | 'narrow' | SVGAElement | Function;
+  // appendTo?: DONE! HTMLElement | Function | 'parent';
+  // arrow?: DONE!  boolean | 'round' | 'large' | 'small' | 'wide' | 'narrow' | SVGAElement | Function; in progress
   // delay?;
   // duration?:
   // and animation, aria, content, followCursor, getReferenceClientRect, hideOnClick, ignoreAttributes, inertia, inlinePositioning, interactive, interactiveBorder, interactiveDebounce, maxWidth, moveTransition, offset, onAfterUpdate, onBeforeUpdate, onClickOutside, onCreate, onDestroy, onHidden, onHide, onMount, onShow, onShown, onTrigger, onUntrigger, placement, plugins, popperOptions, render, role, showOnCreate, sticky, theme, touch, trigger, triggerTarget, zIndex
+
+  /**
+   * Tooltip animation.
+   */
+  @Prop({reflect: true})
+  animation?: TooltipAnimation = 'fade';
+
+  /**
+   * Tooltip append to a element.
+   */
+  @Prop()
+  appendTo?: any;
+
+  /**
+   * Tooltip arrow model.
+   */
+  @Prop({reflect: true})
+  arrow?: TooltipArrow = 'default';
+
+  /**
+   * Delay for show tooltip.
+   */
+  @Prop()
+  delay?: number;
 
   /**
    * Tooltip disable.
@@ -34,30 +58,36 @@ export class Tooltip {
    * Add fixed strategy to popper.
    */
   @Prop()
+  flip?: boolean;
+
+  /**
+   * Add fixed strategy to popper.
+   */
+  @Prop()
   fixed?: boolean;
 
   /**
    * Vertical & horizontal offset from the target.
    */
-  // @Prop()
-  offset?: number = 0;
+    // @Prop()
+  offset?: number = undefined;
 
   /**
    * Horizontal offset from the target.
    */
-  // @Prop()
+    // @Prop()
   offsetX?: number;
 
   /**
    * Vertical offset from the target.
    */
-  // @Prop()
+    // @Prop()
   offsetY?: number;
 
   /**
    * How to position the tooltip.
    */
-  @Prop()
+  @Prop({reflect: true})
   placement?: TooltipPlacement = 'auto';
 
   /**
@@ -69,37 +99,37 @@ export class Tooltip {
   /**
    * When the tooltip is going to hide
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: true,
-  // })
+    // @Event({
+    //   bubbles: false,
+    //   cancelable: true,
+    // })
   plusClose!: EventEmitter<void>;
 
   /**
    * When the tooltip is completely closed and its animation is completed.
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: false,
-  // })
+    // @Event({
+    //   bubbles: false,
+    //   cancelable: false,
+    // })
   plusClosed!: EventEmitter<void>;
 
   /**
    * When the tooltip is going to show this event triggers.
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: true,
-  // })
+    // @Event({
+    //   bubbles: false,
+    //   cancelable: true,
+    // })
   plusOpen!: EventEmitter<void>;
 
   /**
    * When the tooltip is completely shown and its animation is completed.
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: false,
-  // })
+    // @Event({
+    //   bubbles: false,
+    //   cancelable: false,
+    // })
   plusOpened!: EventEmitter<void>;
 
   @GlobalConfig('tooltip', {
@@ -108,6 +138,9 @@ export class Tooltip {
     trigger: ['focus', 'hover'],
   })
   config;
+
+  @IsRTL()
+  isRTL?: boolean;
 
   instance?: Instance;
 
@@ -119,14 +152,17 @@ export class Tooltip {
 
   $tooltip!: HTMLElement;
 
+  $arrow!: HTMLElement;
+
   get $activator() {
-    return this.$host.parentElement as HTMLElement;
+    return this.appendTo ?? this.$host.parentElement as HTMLElement;
   }
 
   get attributes() {
     return {
       role: 'tooltip',
-      state: this.state
+      state: this.state,
+      animation: this.animation
     }
   }
 
@@ -156,15 +192,10 @@ export class Tooltip {
     return events;
   }
 
-  get isRTL() {
-    return Utils.isRTL(this);
-  }
-
   get options() {
+    const offset = [this.offsetX ?? this.offset ?? null, this.offsetY ?? this.offset ?? null];
 
-    const offset = [this.offsetX ?? this.offset ?? 0, this.offsetY ?? this.offset ?? 0];
-
-    const strategy = Utils.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any;
+    const strategy = Helper.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any;
 
     return {
       placement: this.placement,
@@ -175,6 +206,30 @@ export class Tooltip {
           options: {
             offset
           }
+        },
+        {
+          name: 'preventOverflow',
+          options: {
+            padding: {
+              top: 2,
+              bottom: 2,
+              left: 5,
+              right: 5,
+            }
+          }
+        },
+        {
+          name: 'flip',
+          options: {
+            enable: this.flip
+          },
+        },
+        {
+          name: 'arrow',
+          options: {
+            element: this.$arrow,
+            enable: true
+          },
         }
       ]
     }
@@ -211,8 +266,8 @@ export class Tooltip {
   @Bind
   onHide() {
     this.instance?.destroy();
-    this.$tooltip.classList.remove('show');
     this.state = 'hide';
+    this.$tooltip.classList.remove('show');
     // this.plusClose.emit();
     // this.plusClosed.emit();
   }
@@ -220,8 +275,8 @@ export class Tooltip {
   @Bind
   onShow() {
     this.instance = createPopper(this.$activator, this.$tooltip, this.options);
-    this.$tooltip.classList.add('show');
     this.state = 'show';
+    this.$tooltip.classList.add('show');
     // this.plusOpen.emit();
     // this.plusOpened.emit();
   }
@@ -242,7 +297,8 @@ export class Tooltip {
     return (
       <Host {...this.attributes}>
         <div class="tooltip" ref={(element) => this.$tooltip = element}>
-          <slot />
+          <slot/>
+          <span x-arrow ref={element => this.$arrow = element}/>
         </div>
       </Host>
     )

@@ -11,7 +11,7 @@
       Open
     </plus-dialog-toggler>
   </div>
-  <plus-dialog class="fade" connector="dialog-specific-scrollable" scrollable>
+  <plus-dialog animation="fade" connector="dialog-specific-scrollable" scrollable>
     <plus-dialog-content>
       <plus-dialog-header>
         Dialog Title

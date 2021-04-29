@@ -1,4 +1,4 @@
-import { Channel } from '@app/services/channel';
+import { Channel } from '@app/utils/channel';
 
 export type TabsChannelState = string;
 

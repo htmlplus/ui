@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/services';
+import { Bind, GlobalConfig } from '@app/utils';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**

@@ -1,11 +1,11 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/services';
+import { GlobalConfig } from '@app/utils';
 import { CardElevation } from './card.types';
 
 /**
  * Cards contain content and actions about a single subject.
  * @group1 card
- * @slot - The default slot.
+ * @slot default - The default slot.
  * @examples default, elevation, outlined, border-color, border-width, tile, background-color, customize
  */
 @Component({
