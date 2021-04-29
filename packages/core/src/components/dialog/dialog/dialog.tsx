@@ -16,7 +16,7 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from
   shadow: true,
 })
 export class Dialog {
-  
+
   /**
    * TODO
    */
@@ -285,7 +285,7 @@ export class Dialog {
       }
     })
   }
-  
+
   tryHide(animation, silent) {
 
     if (!this.isOpen) return;
@@ -302,6 +302,10 @@ export class Dialog {
 
         this.onHide();
 
+        // TODO
+        this['place'].parentNode.insertBefore(this.$host, this['place']);
+        this['place'].parentNode.removeChild(this['place'])
+
         if (silent) return;
 
         this.plusClosed.emit()
@@ -315,6 +319,11 @@ export class Dialog {
 
     if (!silent && this.plusOpen.emit().defaultPrevented) return;
 
+    // TODO
+    this['place'] = document.createElement('div');
+    this.$host.parentNode.insertBefore(this['place'], this.$host);
+    document.body.appendChild(this.$host);
+
     if (!animation) return this.onShow();
 
     this.animate.enter({
@@ -325,7 +334,7 @@ export class Dialog {
         this.onShow();
       },
       onEntered: () => {
-        
+
         if (silent) return;
 
         this.plusOpened.emit();
@@ -354,7 +363,7 @@ export class Dialog {
       case 'open':
 
         value && !this.isOpen && this.tryShow(true, true);
-        
+
         !value && this.isOpen && this.tryHide(true, true);
 
         break;
@@ -364,7 +373,7 @@ export class Dialog {
   /**
    * Events handler
    */
-   
+
   onHide() {
     document.removeEventListener('keydown', this.onEscape, true);
     ClickOutside.remove(this.$cell);
