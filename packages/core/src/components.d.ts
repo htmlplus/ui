@@ -31,13 +31,45 @@ export namespace Components {
         /**
           * TODO
          */
-        "disabled"?: boolean;
+        "fixed"?: boolean;
+        /**
+          * TODO
+         */
+        "grow"?: boolean;
+        /**
+          * TODO
+         */
+        "hideOnScroll"?: boolean;
+        /**
+          * TODO
+         */
+        "labelPosition"?: 'bottom' | 'side';
+        /**
+          * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
+         */
+        "scrollTarget": string;
+        /**
+          * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
+         */
+        "scrollThreshold"?: number;
+        /**
+          * TODO https://vuetifyjs.com/en/components/bottom-navigation/#shift https://vuetifyjs.com/en/api/v-bottom-navigation/#props-shift
+         */
+        "shift"?: boolean;
+        /**
+          * TODO
+         */
+        "value"?: any;
     }
     interface PlusBottomNavigationItem {
         /**
           * TODO
          */
         "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "value"?: any;
     }
     interface PlusBreadcrumb {
         /**
@@ -1254,13 +1286,45 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "disabled"?: boolean;
+        "fixed"?: boolean;
+        /**
+          * TODO
+         */
+        "grow"?: boolean;
+        /**
+          * TODO
+         */
+        "hideOnScroll"?: boolean;
+        /**
+          * TODO
+         */
+        "labelPosition"?: 'bottom' | 'side';
+        /**
+          * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
+         */
+        "scrollTarget"?: string;
+        /**
+          * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
+         */
+        "scrollThreshold"?: number;
+        /**
+          * TODO https://vuetifyjs.com/en/components/bottom-navigation/#shift https://vuetifyjs.com/en/api/v-bottom-navigation/#props-shift
+         */
+        "shift"?: boolean;
+        /**
+          * TODO
+         */
+        "value"?: any;
     }
     interface PlusBottomNavigationItem {
         /**
           * TODO
          */
         "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "value"?: any;
     }
     interface PlusBreadcrumb {
         /**

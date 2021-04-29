@@ -1,5 +1,7 @@
 @import 'reset';
 
 :host {
-  display: block;
+  padding: 1em; // TODO
+  flex-grow: 1;
+  display: flex;
 }

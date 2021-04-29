@@ -18,8 +18,14 @@ export class BottomNavigationItem {
   /**
    * TODO
    */
-  @Prop()
+  @Prop({ reflect: true })
   disabled?: boolean;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  value?: any;
 
   @GlobalConfig('bottomNavigationItem')
   config?;

@@ -2,5 +2,16 @@
 @import 'bottom-navigation.variables';
 
 :host {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 4; // TODO
+}
+
+:host([fixed]) {
+  position: fixed;
 }
