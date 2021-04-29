@@ -1,50 +1,28 @@
-export function Bind(target, key, descriptor) {
+export function Bind<T extends Function>(target: object, propertyKey: string, descriptor: TypedPropertyDescriptor<T>): TypedPropertyDescriptor<T> | void {
 
-    let fn = descriptor.value;
+    target;
 
-    if (typeof fn !== 'function') {
-
-        throw new TypeError(`@boundMethod decorator can only be applied to methods not: ${typeof fn}`);
+    if (!descriptor || (typeof descriptor.value !== 'function')) {
+        throw new TypeError(`Only methods can be decorated with @bind. <${propertyKey}> is not a method!`);
     }
-
-    // In IE11 calling Object.defineProperty has a side-effect of evaluating the
-    // getter for the property which is being replaced. This causes infinite
-    // recursion and an "Out of stack space" error.
-    let definingProperty = false;
 
     return {
         configurable: true,
-        get() {
+        get(this: T): T {
 
-            // eslint-disable-next-line no-prototype-builtins
-            if (definingProperty || this === target.prototype || this.hasOwnProperty(key) || typeof fn !== 'function') return fn;
-
-            const boundFn = fn.bind(this);
-
-            definingProperty = true;
+            const bound: T = descriptor.value!.bind(this);
 
             Object.defineProperty(
                 this,
-                key,
+                propertyKey,
                 {
+                    value: bound,
                     configurable: true,
-                    get() {
-                        return boundFn;
-                    },
-                    set(value) {
-                        fn = value;
-                        delete this[key];
-                    }
+                    writable: true
                 }
             );
 
-            definingProperty = false;
-
-            return boundFn;
-        },
-        set(value) {
-
-            fn = value;
+            return bound;
         }
-    };
+    }
 }

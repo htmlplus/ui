@@ -177,7 +177,7 @@ export class Cropper {
   })
   plusZoom!: EventEmitter<CropperZoomData>;
 
-  @GlobalConfig('crop', {
+  @GlobalConfig('cropper', {
     area: 0.75,
     backdrop: true,
     mode: 'move',

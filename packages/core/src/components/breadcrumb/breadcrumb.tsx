@@ -1,5 +1,5 @@
 import { Component, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
-import { Bind, GlobalConfig, IsRTL } from '@app/utils';
+import { Bind, Debug, GlobalConfig, IsRTL } from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -45,6 +45,9 @@ export class Breadcrumb {
    */
   @Prop({ reflect: true })
   separator?: string;
+
+  @Debug('breadcrumb')
+  debug?;
 
   @GlobalConfig('breadcrumb', {
     expanderText: 'Show path',

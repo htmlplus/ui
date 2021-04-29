@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
+import { Debug, GlobalConfig } from '@app/utils';
 import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
@@ -20,38 +20,42 @@ export class AspectRatio {
   @Prop()
   value?: AspectRatioValue;
 
+  @Debug('aspectRatio')
+  debug?;
+
   @GlobalConfig('aspectRatio')
   config?;
 
   get ratio() {
 
-    if (typeof this.value === 'undefined') return;
+    if (typeof this.value === 'number') return this.value;
 
-    if (typeof this.value === 'string') {
+    let [valueA, valueB] = `${this.value}`
+      .split('/')
+      .map((item: any) => isNaN(item) ? NaN : parseFloat(item));
 
-      const [valueA, valueB] = this.value.split('/').map((item) => parseFloat(item));
+    if (valueB === undefined) valueB = 1;
 
-      const value = valueA / (valueB || 1);
+    if (!isNaN(valueA + valueB)) return valueA / valueB;
 
-      return value;
-    }
-
-    return this.value;
+    this.debug('TODO: invalid value \'%s\'', this.value);
   }
 
   get style() {
 
-    if (!this.value) return;
+    const ratio = this.ratio;
+
+    if (!ratio) return;
 
     return {
-      paddingTop: `${100 / this.ratio}%`
+      paddingTop: `${100 / ratio}%`
     }
   }
 
   render() {
     return (
       <Host>
-        {this.style && <div class="sizer" style={this.style} />}
+        <div class="sizer" style={this.style} />
         <slot />
       </Host>
     )

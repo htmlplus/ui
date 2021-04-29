@@ -64,6 +64,19 @@
 </head>
 
 <body>
+  <plus-aspect-ratio>
+    <plus-card tile>
+      This box will always be 16/9 (unless you put more stuff in it)
+    </plus-card>
+  </plus-aspect-ratio>
+  <!-- <div class="center">
+    <plus-breadcrumb separator="/">
+      <a href="#">HTMLPLUS</a>
+      <a href="#">Core</a>
+      <a href="#">UI Components</a>
+      <span>Breadcrumb</span>
+    </plus-breadcrumb>
+  </div>
   <plus-card elevation="10">
     Item 1
     <plus-divider></plus-divider>
@@ -144,7 +157,7 @@
   </plus-toast>
   <plus-toast id="t6" animation="move" placement="bottom-right">
     toassssssssssssssssssssssssst 6
-  </plus-toast> -->
+  </plus-toast> 
   <script>
     function toggle(key) {
       window['t' + key].open = !window['t' + key].open;
@@ -153,7 +166,7 @@
     t6.addEventListener('plusOpened', () => console.log('opened'))
     t6.addEventListener('plusClose', () => console.log('Close'))
     t6.addEventListener('plusClosed', () => console.log('Closed'))
-  </script>
+  </script> -->
 </body>
 
 </html>
