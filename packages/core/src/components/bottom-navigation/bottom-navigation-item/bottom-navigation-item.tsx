@@ -1,5 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
+import { Bind, GlobalConfig } from '@app/utils';
+import { BottomNavigationLink, Link } from '../bottom-navigation/bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
@@ -30,6 +31,34 @@ export class BottomNavigationItem {
   @GlobalConfig('bottomNavigationItem')
   config?;
 
+  @Link({ scope: 'TODO' })
+  link: BottomNavigationLink;
+
+  get attributes() {
+    return {
+      'grow': this.link.grow,
+      'role': 'button',
+      'state': this.state,
+      'onClick': this.onClick
+    }
+  }
+
+  get classes() {
+    return {
+      'root': true,
+      'shift': this.link.shift,
+      [this.link.labelPosition]: true,
+    }
+  }
+
+  get key() {
+    return this.value ?? this;
+  }
+
+  get state() {
+    return this.key === this.link.value ? 'active' : 'deactive';
+  }
+
   /**
    * External Methods
    */
@@ -46,14 +75,22 @@ export class BottomNavigationItem {
    * Events handler
    */
 
+  @Bind
+  onClick() {
+    this.link.change(this.key);
+  }
+
   /**
    * Lifecycles
    */
 
   render() {
     return (
-      <Host>
-        <slot />
+      <Host {...this.attributes}>
+        <div class={this.classes}>
+          <slot />
+          <slot name="label" />
+        </div>
       </Host>
     )
   }

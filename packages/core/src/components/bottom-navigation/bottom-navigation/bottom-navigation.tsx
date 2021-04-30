@@ -1,5 +1,6 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { AnimationV2, GlobalConfig } from '@app/utils';
+import { BottomNavigationLink, Link } from './bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
@@ -76,9 +77,14 @@ export class BottomNavigation {
 
   animate?: AnimationV2;
 
+  @Link({ scope: 'TODO' })
+  link: BottomNavigationLink = {
+    change: (value) => this.change(value)
+  };
+
   get attributes() {
     return {
-      'state': 'open|close'
+      'state': 'open'
     }
   }
 
@@ -107,9 +113,35 @@ export class BottomNavigation {
     })
   }
 
+  change(value: string) {
+    this.link.value = value;
+  }
+
   /**
    * Watchers
    */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return false;
+
+    const value = this[name];
+
+    switch (name) {
+
+      case 'grow':
+        this.link.grow = value;
+        break;
+
+      case 'labelPosition':
+        this.link.labelPosition = value;
+        break;
+
+      case 'shift':
+        this.link.shift = value;
+        break;
+    }
+  }
 
   /**
    * Events handler
@@ -120,6 +152,10 @@ export class BottomNavigation {
    */
 
   connectedCallback() {
+
+    this.link.grow = this.grow;
+    this.link.labelPosition = this.labelPosition;
+    this.link.shift = this.shift;
 
     this.init();
 
@@ -134,7 +170,7 @@ export class BottomNavigation {
 
   render() {
     return (
-      <Host>
+      <Host {...this.attributes}>
         <slot />
       </Host>
     )
