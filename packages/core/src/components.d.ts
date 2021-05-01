@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
-import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
+import { DialogAttach, DialogAttachStrategy, DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
@@ -269,6 +269,14 @@ export namespace Components {
           * TODO
          */
         "animation"?: string;
+        /**
+          * TODO
+         */
+        "attach"?: DialogAttach;
+        /**
+          * TODO
+         */
+        "attachStrategy"?: DialogAttachStrategy;
         /**
           * Activate the dialog's backdrop to show or not.
          */
@@ -1484,6 +1492,14 @@ declare namespace LocalJSX {
           * TODO
          */
         "animation"?: string;
+        /**
+          * TODO
+         */
+        "attach"?: DialogAttach;
+        /**
+          * TODO
+         */
+        "attachStrategy"?: DialogAttachStrategy;
         /**
           * Activate the dialog's backdrop to show or not.
          */

@@ -1,3 +1,7 @@
+import { AttachStrategy, AttachTarget } from '@app/utils';
+
+export type DialogAttach = AttachTarget;
+export type DialogAttachStrategy = AttachStrategy;
 export type DialogFullscreen = boolean | 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';
 export type DialogSize = 'sm' | 'lg' | 'xl';
 export interface DialogGlobalState {

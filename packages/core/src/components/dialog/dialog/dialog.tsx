@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Scrollbar } from '@app/utils';
+import { AnimationV2, Attach, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Scrollbar } from '@app/utils';
 import { DialogLink, Link, rebind } from './dialog.link';
-import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from './dialog.types';
+import { DialogAttach, DialogAttachStrategy, DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from './dialog.types';
 
 /**
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
@@ -22,6 +22,18 @@ export class Dialog {
    */
   @Prop({ reflect: true })
   animation?: string;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  attach?: DialogAttach;
+
+  /**
+   * TODO
+   */
+  @Prop()
+  attachStrategy?: DialogAttachStrategy = 'append';
 
   /**
    * Activate the dialog's backdrop to show or not.
@@ -139,6 +151,7 @@ export class Dialog {
   plusOpened!: EventEmitter<void>;
 
   @GlobalConfig('dialog', {
+    attachStrategy: 'append',
     backdrop: true,
     keyboard: true,
     placement: 'top'
@@ -303,8 +316,7 @@ export class Dialog {
         this.onHide();
 
         // TODO
-        this['place'].parentNode.insertBefore(this.$host, this['place']);
-        this['place'].parentNode.removeChild(this['place'])
+        this.attach && Attach.reset(this.$host);
 
         if (silent) return;
 
@@ -320,9 +332,7 @@ export class Dialog {
     if (!silent && this.plusOpen.emit().defaultPrevented) return;
 
     // TODO
-    this['place'] = document.createElement('div');
-    this.$host.parentNode.insertBefore(this['place'], this.$host);
-    document.body.appendChild(this.$host);
+    this.attach && Attach.to(this.$host, this.attach, this.attachStrategy);
 
     if (!animation) return this.onShow();
 
@@ -386,7 +396,7 @@ export class Dialog {
 
   onShow() {
     document.addEventListener('keydown', this.onEscape, true);
-    ClickOutside.add(this.$cell, this.onOutsideClick, false);
+    ClickOutside.add(this.$cell, this.onClickOutside, false);
     Scrollbar.remove(this);
     this.$host.style.zIndex = this.zIndex;
     this.isOpen = true;
@@ -407,7 +417,7 @@ export class Dialog {
   }
 
   @Bind
-  onOutsideClick() {
+  onClickOutside() {
 
     if (!this.isOpen || !this.isCurrent || this.persistent) return;
 
