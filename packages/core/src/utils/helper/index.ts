@@ -1,6 +1,7 @@
 export * from './classes';
 export * from './direction';
 export * from './event-path';
+export * from './from-axis';
 export * from './is-rtl';
 export * from './platform';
 export * from './to-axis';

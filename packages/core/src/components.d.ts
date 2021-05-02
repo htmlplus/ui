@@ -9,6 +9,7 @@ import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogAttach, DialogAttachStrategy, DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
+import { DividerSize, DividerType } from "./components/divider/divider.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
@@ -349,6 +350,14 @@ export namespace Components {
         "connector"?: string;
     }
     interface PlusDivider {
+        /**
+          * TODO
+         */
+        "size"?: DividerSize;
+        /**
+          * TODO
+         */
+        "type"?: DividerType;
         /**
           * You can use vertical property for vertical division.
          */
@@ -1588,6 +1597,14 @@ declare namespace LocalJSX {
         "connector"?: string;
     }
     interface PlusDivider {
+        /**
+          * TODO
+         */
+        "size"?: DividerSize;
+        /**
+          * TODO
+         */
+        "type"?: DividerType;
         /**
           * You can use vertical property for vertical division.
          */

@@ -1,7 +1,7 @@
 ```css [style]
 plus-divider {
-  --plus-divider-background-color: #5f9ee9;
-  --plus-divider-weight: 3px;
+  --plus-divider-color: #5F9EE9;
+  --plus-divider-size: 3px;
   margin: 2rem 0;
 }
 ```

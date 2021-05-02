@@ -1,2 +1,11 @@
-$divider-background-color: rgba(0, 0, 0, 0.12);
-$divider-weight: 1px;
+$divider-color: rgba(0, 0, 0, 0.12);
+$divider-size: (
+  xs: 1px,
+  md: 2px,
+  lg: 3px,
+);
+$divider-type: (
+  solid: solid,
+  dashed: dashed,
+  dotted: dotted,
+);
