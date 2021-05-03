@@ -1,6 +1,6 @@
 
 import debug from 'debug';
-import * as Constants from '@app/configs/constants';
+import * as Constants from '@app/constants';
 
 // TODO
 debug.enable('*');

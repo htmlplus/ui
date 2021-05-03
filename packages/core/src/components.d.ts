@@ -8,13 +8,14 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
-import { DialogAttach, DialogAttachStrategy, DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
+import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DividerSize, DividerType } from "./components/divider/divider.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
+import { PortalStrategy, PortalTarget } from "@app/utils";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
@@ -271,14 +272,6 @@ export namespace Components {
          */
         "animation"?: string;
         /**
-          * TODO
-         */
-        "attach"?: DialogAttach;
-        /**
-          * TODO
-         */
-        "attachStrategy"?: DialogAttachStrategy;
-        /**
           * Activate the dialog's backdrop to show or not.
          */
         "backdrop"?: boolean;
@@ -351,11 +344,11 @@ export namespace Components {
     }
     interface PlusDivider {
         /**
-          * TODO
+          * Determines the width of the divider.
          */
         "size"?: DividerSize;
         /**
-          * TODO
+          * Specifies different divider styles.
          */
         "type"?: DividerType;
         /**
@@ -786,6 +779,20 @@ export namespace Components {
          */
         "trigger"?: 'click' | 'hover';
     }
+    interface PlusPortal {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "strategy"?: PortalStrategy;
+        /**
+          * TODO
+         */
+        "target"?: PortalTarget;
+    }
     interface PlusRipple {
     }
     interface PlusSpinner {
@@ -1147,6 +1154,12 @@ declare global {
         prototype: HTMLPlusMenuElement;
         new (): HTMLPlusMenuElement;
     };
+    interface HTMLPlusPortalElement extends Components.PlusPortal, HTMLStencilElement {
+    }
+    var HTMLPlusPortalElement: {
+        prototype: HTMLPlusPortalElement;
+        new (): HTMLPlusPortalElement;
+    };
     interface HTMLPlusRippleElement extends Components.PlusRipple, HTMLStencilElement {
     }
     var HTMLPlusRippleElement: {
@@ -1273,6 +1286,7 @@ declare global {
         "plus-grid-item": HTMLPlusGridItemElement;
         "plus-intersection": HTMLPlusIntersectionElement;
         "plus-menu": HTMLPlusMenuElement;
+        "plus-portal": HTMLPlusPortalElement;
         "plus-ripple": HTMLPlusRippleElement;
         "plus-spinner": HTMLPlusSpinnerElement;
         "plus-sticky": HTMLPlusStickyElement;
@@ -1502,14 +1516,6 @@ declare namespace LocalJSX {
          */
         "animation"?: string;
         /**
-          * TODO
-         */
-        "attach"?: DialogAttach;
-        /**
-          * TODO
-         */
-        "attachStrategy"?: DialogAttachStrategy;
-        /**
           * Activate the dialog's backdrop to show or not.
          */
         "backdrop"?: boolean;
@@ -1598,11 +1604,11 @@ declare namespace LocalJSX {
     }
     interface PlusDivider {
         /**
-          * TODO
+          * Determines the width of the divider.
          */
         "size"?: DividerSize;
         /**
-          * TODO
+          * Specifies different divider styles.
          */
         "type"?: DividerType;
         /**
@@ -2057,6 +2063,20 @@ declare namespace LocalJSX {
          */
         "trigger"?: 'click' | 'hover';
     }
+    interface PlusPortal {
+        /**
+          * TODO
+         */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "strategy"?: PortalStrategy;
+        /**
+          * TODO
+         */
+        "target"?: PortalTarget;
+    }
     interface PlusRipple {
     }
     interface PlusSpinner {
@@ -2346,6 +2366,7 @@ declare namespace LocalJSX {
         "plus-grid-item": PlusGridItem;
         "plus-intersection": PlusIntersection;
         "plus-menu": PlusMenu;
+        "plus-portal": PlusPortal;
         "plus-ripple": PlusRipple;
         "plus-spinner": PlusSpinner;
         "plus-sticky": PlusSticky;
@@ -2392,6 +2413,7 @@ declare module "@stencil/core" {
             "plus-grid-item": LocalJSX.PlusGridItem & JSXBase.HTMLAttributes<HTMLPlusGridItemElement>;
             "plus-intersection": LocalJSX.PlusIntersection & JSXBase.HTMLAttributes<HTMLPlusIntersectionElement>;
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
+            "plus-portal": LocalJSX.PlusPortal & JSXBase.HTMLAttributes<HTMLPlusPortalElement>;
             "plus-ripple": LocalJSX.PlusRipple & JSXBase.HTMLAttributes<HTMLPlusRippleElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
             "plus-sticky": LocalJSX.PlusSticky & JSXBase.HTMLAttributes<HTMLPlusStickyElement>;

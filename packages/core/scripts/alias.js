@@ -1,63 +1,60 @@
 const
-    fs = require('fs'),
+    fs = require('fs-extra'),
+    glob = require('glob'),
     path = require('path'),
     root = path.resolve(process.cwd());
 
-const files = (dir) => {
+const mapper = [
+    {
+        key: '@app/constants',
+        base: 'dist/collection',
+        source: 'dist/collection/**/*.js',
+        destination: 'dist/collection/configs/constants'
+    },
+    {
+        key: '@app/utils',
+        base: 'dist/collection',
+        source: 'dist/collection/**/*.js',
+        destination: 'dist/collection/utils'
+    },
+    {
+        key: '@app/utils',
+        base: 'dist/types',
+        source: 'dist/types/**/*.*',
+        destination: 'dist/types/utils'
+    }
+];
 
-    const result = [];
+for (let i = 0; i < mapper.length; i++) {
 
-    fs.readdirSync(dir).map((file) => {
+    const { key, base, source, destination } = mapper[i];
 
-        file = path.join(dir, file);
+    const files = glob.sync(path.join(root, source));
 
-        const state = fs.statSync(file);
+    const common = base.replace(/\\/g, '/');
 
-        if (state.isFile()) {
+    for (let j = 0; j < files.length; j++) {
 
-            const content = fs.readFileSync(file, { encoding: 'utf8' });
+        const file = files[j];
 
-            result.push({ file, content, state });
+        let content = fs.readFileSync(file, { encoding: 'utf8' });
 
-            return;
-        }
+        if (!content.match(key)) continue;
 
-        files(file).map((file) => result.push(file));
-    });
+        const length = file.split(common).pop().split('/').length - 1;
 
-    return result;
+        let level = '';
+
+        for (let i = 1; i < length; i++) level += '../';
+
+        let address = path.join(level, destination.replace(base, ''));
+
+        address = address.replace(/\\/g, '/');
+
+        if (address.startsWith('/')) address = '.' + address;
+
+        content = content.replace(key, address);
+
+        fs.writeFileSync(file, content);
+    }
 }
-
-const map = {
-    'constants': 'dist/collection/configs/constants',
-    'utils': 'dist/collection/utils',
-}
-
-const base = path.join(root, 'dist', 'collection');
-
-files(base)
-    .filter((file) => file.file.endsWith('.js') && file.content.match(/@app\//))
-    .map((file) => {
-
-        let content = file.content;
-
-        Object.keys(map)
-            .map((key) => {
-
-                const value = path.join(root, map[key]);
-
-                const source = value.replace(base, '');
-
-                const length = file.file.replace(base, '').split('\\').length - 1;
-
-                let level = '';
-
-                for (let i = 1; i < length; i++) level += '..\\';
-
-                const regexp = new RegExp(`@app/${key}`);
-
-                content = content.replace(regexp, path.join(`${level}${source}`).replace(/\\/g, '/'));
-            });
-
-        fs.writeFileSync(file.file, content);
-    });

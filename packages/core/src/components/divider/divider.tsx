@@ -4,7 +4,7 @@ import { DividerSize, DividerType } from './divider.types';
 
 /**
  * It's a thin line that can divide the content vertically or horizontally.
- * @examples horizontal, vertical, card, customize
+ * @examples size, type, horizontal, vertical, card, customize
  */
 @Component({
   tag: 'plus-divider',
@@ -20,13 +20,13 @@ export class Divider {
   // placement?: DividerPlacement = 'center';
 
   /**
-   * TODO
+   * Determines the width of the divider.
    */
   @Prop({ reflect: true })
   size?: DividerSize = 'md';
 
   /**
-   * TODO
+   * Specifies different divider styles.
    */
   @Prop({ reflect: true })
   type?: DividerType = 'solid';

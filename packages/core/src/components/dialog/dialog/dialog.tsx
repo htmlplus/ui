@@ -1,7 +1,7 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Attach, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Scrollbar } from '@app/utils';
+import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
 import { DialogLink, Link, rebind } from './dialog.link';
-import { DialogAttach, DialogAttachStrategy, DialogFullscreen, DialogGlobalState, DialogPlacement, DialogSize } from './dialog.types';
+import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 
 /**
  * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
@@ -22,18 +22,6 @@ export class Dialog {
    */
   @Prop({ reflect: true })
   animation?: string;
-
-  /**
-   * TODO
-   */
-  @Prop()
-  attach?: DialogAttach;
-
-  /**
-   * TODO
-   */
-  @Prop()
-  attachStrategy?: DialogAttachStrategy = 'append';
 
   /**
    * Activate the dialog's backdrop to show or not.
@@ -97,6 +85,24 @@ export class Dialog {
   placement?: DialogPlacement = 'top';
 
   /**
+   * TODO
+   */
+  // @Prop()
+  portal?: boolean;
+
+  /**
+   * TODO
+   */
+  // @Prop()
+  portalStrategy?: DialogPortalStrategy = 'append';
+
+  /**
+   * TODO
+   */
+  // @Prop()
+  portalTarget?: DialogPortalTarget = 'body';
+
+  /**
    * It makes the user able to scroll the content by adding a scroll beside it.
    */
   @Prop()
@@ -151,10 +157,11 @@ export class Dialog {
   plusOpened!: EventEmitter<void>;
 
   @GlobalConfig('dialog', {
-    attachStrategy: 'append',
     backdrop: true,
     keyboard: true,
-    placement: 'top'
+    placement: 'top',
+    portalStrategy: 'append',
+    portalTarget: 'body',
   })
   config?;
 
@@ -174,6 +181,8 @@ export class Dialog {
   isOpen?: boolean;
 
   animate?: AnimationV2;
+
+  portalInstance?: Portal;
 
   @Link({ scope: '[connector]' })
   link: DialogLink = {
@@ -316,7 +325,7 @@ export class Dialog {
         this.onHide();
 
         // TODO
-        this.attach && Attach.reset(this.$host);
+        this.portalInstance?.revert();
 
         if (silent) return;
 
@@ -332,7 +341,11 @@ export class Dialog {
     if (!silent && this.plusOpen.emit().defaultPrevented) return;
 
     // TODO
-    this.attach && Attach.to(this.$host, this.attach, this.attachStrategy);
+    this.portalInstance = this.portal && new Portal({
+      source: this.$host,
+      target: this.portalTarget,
+      strategy: this.portalStrategy,
+    })
 
     if (!animation) return this.onShow();
 
