@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
-import { DialogFullscreen, DialogPlacement, DialogSize } from "./components/dialog/dialog/dialog.types";
+import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DividerSize, DividerType } from "./components/divider/divider.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
@@ -307,6 +307,18 @@ export namespace Components {
           * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
          */
         "placement"?: DialogPlacement;
+        /**
+          * TODO
+         */
+        "portal"?: boolean;
+        /**
+          * TODO
+         */
+        "portalStrategy"?: DialogPortalStrategy;
+        /**
+          * TODO
+         */
+        "portalTarget"?: DialogPortalTarget;
         /**
           * It makes the user able to scroll the content by adding a scroll beside it.
          */
@@ -1567,6 +1579,18 @@ declare namespace LocalJSX {
           * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
          */
         "placement"?: DialogPlacement;
+        /**
+          * TODO
+         */
+        "portal"?: boolean;
+        /**
+          * TODO
+         */
+        "portalStrategy"?: DialogPortalStrategy;
+        /**
+          * TODO
+         */
+        "portalTarget"?: DialogPortalTarget;
         /**
           * It makes the user able to scroll the content by adding a scroll beside it.
          */

@@ -1,5 +1,7 @@
+<script>
+  import Portal from './portal.svelte';
+</script>
+
 <main>
-  <h1>
-    Svelte
-  </h1>
+  <Portal />
 </main>

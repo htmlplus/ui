@@ -87,19 +87,19 @@ export class Dialog {
   /**
    * TODO
    */
-  // @Prop()
+  @Prop()
   portal?: boolean;
 
   /**
    * TODO
    */
-  // @Prop()
+  @Prop()
   portalStrategy?: DialogPortalStrategy = 'append';
 
   /**
    * TODO
    */
-  // @Prop()
+  @Prop()
   portalTarget?: DialogPortalTarget = 'body';
 
   /**

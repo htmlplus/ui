@@ -10,6 +10,38 @@
 </head>
 
 <body>
+  <plus-portal target="#root">
+    <h1>h1</h1>
+    <plus-card>card</plus-card>
+  </plus-portal>
+  <div id="root">
+    <div class="center">
+      <plus-dialog-toggler connector="dialog-animation">
+        Open
+      </plus-dialog-toggler>
+    </div>
+    <plus-dialog portal animation="fade" connector="dialog-animation">
+      <plus-dialog-content>
+        <plus-dialog-header>
+          Dialog Title
+        </plus-dialog-header>
+        <plus-dialog-body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </plus-dialog-body>
+        <plus-dialog-footer>
+          <plus-dialog-toggler>
+            Close
+          </plus-dialog-toggler>
+        </plus-dialog-footer>
+      </plus-dialog-content>
+    </plus-dialog>
+    Nam egestas interdum risus et gravida. Suspendisse aliquam leo ac leo fermentum, ac accumsan purus vestibulum.
+    Integer
+    facilisis tincidunt urna vel accumsan. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+    ridiculus mus. Maecenas et elit imperdiet, gravida urna tempus, fringilla nisl.
+  </div>
 </body>
 
 </html>

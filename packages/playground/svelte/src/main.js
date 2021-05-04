@@ -1,4 +1,4 @@
-import App from './App.svelte';
+import App from './app.svelte';
 
 import { defineCustomElements } from '@htmlplus/core/dist/custom-elements/index';
 

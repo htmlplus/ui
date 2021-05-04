@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  c: number = 0;
   title = 'htmlplus-playground-angular';
+  onSave() {
+    this.c++;
+  }
 }
