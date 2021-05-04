@@ -3,7 +3,7 @@ import { GlobalConfig, Portal as PortalCore, PortalStrategy, PortalTarget } from
 
 /**
  * TODO
- * @internal 
+ * @development 
  * @slot default - The default slot.
  * @examples default
  */
@@ -54,8 +54,8 @@ export class Portal implements ComponentInterface {
   create() {
     this.instance = new PortalCore({
       source: this.$nodes,
-      target: this.target,
       strategy: this.strategy,
+      target: this.target,
     })
   }
 
@@ -77,6 +77,12 @@ export class Portal implements ComponentInterface {
 
       case 'disabled':
         value ? this.destroy() : this.create();
+        break;
+
+      case 'strategy':
+      case 'target':
+        this.destroy();
+        this.create();
         break;
     }
   }
