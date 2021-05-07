@@ -1,136 +1,127 @@
- <p align="center">
-
-<h2 align="center">HTML PLUS</h2>
-   </p>
-
-   <details open="open">
-     <summary>Table of Contents</summary>
-     <ol>
-       <li>
-         <a href="#setup-system">Setup system</a>
-         <ul>
-           <li><a href="#install-git">Install Git</a></li>
-           <li><a href="#install-node-js">Install node js</a></li>
-           <li><a href="#install-editor">Install editor</a></li>
-         </ul>
-       </li>
-       <li><a href="#clone-project">Clone project</a></li>
-       <li>
-         <a href="#getting-started">Getting Started</a>
-         <ul>
-           <li><a href="#installation">Installation</a></li>
-           <li><a href="#available-scripts">Available scripts</a></li>
-         </ul>
-       </li>
-       <li><a href="#project-structure">Project structure</a></li>
-     </ol>
-   </details>
-
-## About This Project
+# Contribute to HTMLPLUS
 
 HTMLPLUS is framework-less and lightweight. It’s totally native and developed purely with javascript. All HTMLPLUS containers are customizable and configurable.
 
-### Built With
+### Table of Contents
+  - [Contribute to code](#contribute-to-code)
+    - [Knowledge requirements](#knowledge-requirements)
+    - [Setup system](#setup-system)
+      - [Install NodeJs](#install-nodejs)
+      - [Install Git](#install-git)
+      - [Install Editor](#install-editor)
+    - [Installation](#installation)
+    - [Project structure](#project-structure)
+  - [Contribute to documentation](#contribute-to-documentation)
+  - [Report an issue](#report-an-issue)
+  - [Participate in the community](#participate-in-the-community)
 
-* [TypeScript](https://www.typescriptlang.org/)
-* [Stencil](https://stenciljs.com/)
+How do you wish to contribute?
 
-   <!-- GETTING STARTED -->
-## Setup system
+- [Contribute to code](#contribute-to-code) - If you're interested in contribuing to the code, be sure to read the code contribution guidelines first.
+  
+- [Contribute to documentation](#contribute-to-documentation) - We welcome input and help with documentation. Check out the documentation sources.
+  
+- [Report an issue](#report-an-issue) - A relatively easy way to contribute is by reporting new issues. See our general guidelines for reporting.
 
+- [Participate in the community](#participate-in-the-community) - The HTMLPLUS community carries on lively discussions in several places. Feel free to learn and participate.
+
+## Contribute to code
+This article explains the process and guidelines for contributing code to the HTMLPLUS project.
+
+### Knowledge requirements
+TODO: Ma be shoma pishnahad mikonim ke ghabl az har eghdami shoma bayad be mavarede zir eshraf nesbi dashte bashim.
+- [TypeScript](https://www.typescriptlang.org)
+- [StencilJs](https://stenciljs.com)
+- [SASS](https://sass-lang.com)
+- [GitHub](https://github.com)
+- [NodeJs](https://nodejs.org)
+- [Lerna](https://lerna.js.org)
+
+### Setup system
 This section is only for those who are using a project in GitHub for the first time, and if you have already used GitHub and JavaScript in your computer , you don't need to read this section.
-### Install Git
-To receive(pull) and send(push) your codes in GitHub, you need to install Git on the system,
 
-#### Installing on Linux
-```sudo apt install git-all```
-
-#### Installing on macOS
-```brew install git```
-
-#### Installing on Windows
-You can download and install Git app from [https://git-scm.com/download/win](https://git-scm.com/download/win)
-
----
-**NOTE**
-
-You can visit [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for more information
-
----
-
-### Install Node js
+#### Install NodeJs
 Node JS is a server-side platform based on the Browser JavaScript engine and provides us with everything we need to run a program in JS using the JavaScript programming language instead of running in the browser. The server environment is running.
-
 You can go [https://nodejs.org/en/download/](https://nodejs.org/en/download/) and download the LTS according to your OS and install it.
 
-###Editor
-You can use the [VS code](https://code.visualstudio.com/download) open source editor or any of your favorite editor or IDE to develop the project
+#### Install Git
+To receive(pull) and send(push) your codes in GitHub, you need to [Install Git](https://git-scm.com/download/win) on the system.
 
-## Getting Started
+#### Install Editor
+You can use the [Visual Studio Code](https://code.visualstudio.com/download) open source editor or any of your favorite editor or IDE to develop the project
 
 ### Installation
+Follow the below steps to prepare `HTMLPLUS` project.
 
-1. Sign in [https://github.com](https://github.com)
-2. Clone the repo
-   ```sh
-   git clone git@github.com:htmlplus/core.git
-   ```
-3. Go to directory
-   ```sh
-   cd core
-   ```
-4. Install NPM packages
-   ```sh
-   npm run init
-   ```
-5. Run project
-   ```sh
-   npm run start
-   ```
+1- Clone the repository
+```sh
+git clone git@github.com:htmlplus/core.git
+```
 
-### Available Scripts
+2- Go to directory
+```sh
+cd core
+```
 
-### `npm run clean`
+3- Install root packages
+```sh
+npm install
+```
 
-Remove the `node_modules` directory from all packages using `lerna`.
+4- Install internal packages
+```sh
+npm run init
+```
 
-### `npm run clean:hard`
+5- Run project
+```sh
+npm run start
+```
+Run project in the `https://localhost:3000`
 
-Clean unused `dependenices` in package.json and remove the `node_modules` directory from all packages.
+6- Go to the `packages/core/src` path and change the `index.html` file and see the result in the browser.
 
-### `npm run init`
+### Project structure
+You'll find the following directories and files, ssee something like this.
+     
+    .
+    ├── ...
+    ├── packages                     # Location of all packages
+    │  ├── core                      # As the name implies, it is the location of all the HTMLPLUS components
+    │  │  ├── ...
+    │  │  ├── scripts                # All configures related to alias, style, docs, extera and externals
+    │  │  ├── src                    # All sources related to HTMLPLUS
+    │  │  │  ├── ...
+    │  │  │  ├── components          # All component related to HTMLPLUS
+    │  │  │  ├── configs             # TODO
+    │  │  │  ├── styles              # Project config styles
+    │  │  │  ├── utils               # All helper functions and shared functions such as animation, bind,...
+    │  │  │  ├── index.html          # Here you can run the components in the development mode
+    │  │  │  └── ...
+    │  │  ├── package.json           # TODO
+    │  │  ├── stencil.config.ts      # TODO
+    │  │  ├── tsconfig.json          # TODO
+    │  │  └── ...
+    │  ├── playground                # TODO
+    │  │  ├── angular                # TODO
+    │  │  ├── react                  # TODO
+    │  │  ├── svelte                 # TODO
+    │  │  └── vue                    # TODO
+    │  └── ports                     # All the converters from the web component to components with the desired language
+    │     └── react                  # TODO
+    │        ├── src
+    │        ├── package.json
+    │        ├── rollup.config.ts
+    │        └── tsconfig.json
+    ├── lerna.json                   # TODO
+    ├── package.json                 # managing the project’s dependencies, scripts, version ...
+    └── ...
 
-Bootstrap the packages in the current `Lerna` repo. Installs all of their dependencies and links any cross-dependencies.
+## Contribute to documentation
+We welcome contributions to HTMLPLUS documentation!
+ 
+## Report an issue
+Follow the procedure outlined here when reporting issues with the HTMLPLUS project.
 
-### `npm run publish:latest`
-
-### `npm run publish:next`
-
-### `npm run publish:release`
-
-### `npm run prepublishOnly`
-
-### `npm run preversion`
-Clean unused `dependenices` in package.json and the next step Installs all of their dependencies and links any cross-dependencies and the next , build project.
-### `npm run start`
- Run project in the [https://localhost:3333](https://localhost:3333) .
-
-## Usage
-### Structure
-       .
-       ├── ...
-       ├── package.json            # managing the project’s dependencies, scripts, version ...
-       ├── packages                # Location of all packages
-       │   ├── ports               # All the converters from the web component to components with the desired language
-       │   └── core                # As the name implies, it is the location of all the HTMLPLUS components
-       │      ├── ...
-       │      ├── scripts          # All configures related to alias, style, docs, extera and externals
-       │      └── src              # All sources related to HTMLPLUS
-       │          ├── components   # All component related to HTMLPLUS
-       │          ├── styles       # Project config styles
-       │          ├── utils        # All helper functions and shared functions such as animation, bind,...
-       │          ├── index.html   # Here you can run the components in the development mode
-       │          └── ...
-       └── ...
-
-
+## Participate in the community
+TODO
