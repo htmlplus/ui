@@ -1,13 +1,9 @@
-```css [style]
-plus-divider {
-  margin: 2em 0;
-}
-```
-
 ```html [template]
 <fragment>
   <plus-divider size="sm"></plus-divider>
+  <br/>
   <plus-divider size="md"></plus-divider>
+  <br/>
   <plus-divider size="lg"></plus-divider>
 </fragment>
 ```
