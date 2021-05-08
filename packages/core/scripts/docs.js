@@ -26,10 +26,13 @@ const events = (component) => {
       .split(/(?=[A-Z])/).slice(1).join("")
       .replace(/^\w/, (char) => char.toLowerCase());
 
+    const experimental = !!event.docsTags.find((item) => item.name === 'experimental');
+
     return {
       name,
       cancelable: event.cancelable,
       detail: event.detail,
+      experimental,
       description: event.docs,
     }
   });
@@ -90,16 +93,21 @@ const examples = (component) => {
     .sort((a, b) => keys.indexOf(a.key) - keys.indexOf(b.key));
 }
 
-const group = (component) => {
+const experimental = (component) => {
 
-  return (component.docsTags.find((item) => item.name === 'group') || {}).text || '';
+  return !!component.docsTags.find((item) => item.name === 'experimental');
 }
 
-const hasExternals = (component) => {
+const externals = (component) => {
 
   const dir = path.join(component.dirPath, 'externals');
 
   return fs.existsSync(dir);
+}
+
+const group = (component) => {
+
+  return (component.docsTags.find((item) => item.name === 'group') || {}).text || '';
 }
 
 const key = (component) => {
@@ -113,7 +121,7 @@ const methods = (component) => {
 
     const parameters = [];
 
-    (method.docsTags || [])
+    method.docsTags
       .filter((tag) => tag.name === 'param')
       .map((tag) => {
 
@@ -125,9 +133,13 @@ const methods = (component) => {
         })
       });
 
+
+    const experimental = !!method.docsTags.find((item) => item.name === 'experimental');
+
     return {
       name: method.name,
       type: method.returns.type,
+      experimental,
       signature: method.signature,
       description: method.docs,
       parameters
@@ -153,6 +165,8 @@ const properties = (component) => {
     let values = [];
 
     const tags = (property.docsTags || []);
+
+    const experimental = !!tags.find((item) => item.name === 'experimental');
 
     property.values.map((value) => {
 
@@ -198,6 +212,7 @@ const properties = (component) => {
     return {
       name: property.attr || property.name,
       type: property.type,
+      experimental,
       description: property.docs,
       default: property.default,
       values
@@ -296,8 +311,10 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
         development: development(component),
         events: events(component),
         examples: examples(component),
+        experimental: experimental(component),
+        externals: externals(component),
         group: group(component),
-        hasExternals: hasExternals(component),
+        hasExternals: externals(component),
         key: key(component),
         methods: methods(component),
         parts: parts(component),

@@ -309,14 +309,17 @@ export namespace Components {
         "placement"?: DialogPlacement;
         /**
           * TODO
+          * @experimental
          */
         "portal"?: boolean;
         /**
           * TODO
+          * @experimental
          */
         "portalStrategy"?: DialogPortalStrategy;
         /**
           * TODO
+          * @experimental
          */
         "portalTarget"?: DialogPortalTarget;
         /**
@@ -1581,14 +1584,17 @@ declare namespace LocalJSX {
         "placement"?: DialogPlacement;
         /**
           * TODO
+          * @experimental
          */
         "portal"?: boolean;
         /**
           * TODO
+          * @experimental
          */
         "portalStrategy"?: DialogPortalStrategy;
         /**
           * TODO
+          * @experimental
          */
         "portalTarget"?: DialogPortalTarget;
         /**

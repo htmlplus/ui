@@ -1,11 +1,12 @@
-import {Component, Element, EventEmitter, Host, Prop, State, Watch, h} from '@stencil/core';
-import {createPopper, Instance} from "@popperjs/core";
-import {Bind, GlobalConfig, Helper, IsRTL} from '@app/utils';
-import {TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow} from './tooltip.types';
+import { Component, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { createPopper, Instance } from "@popperjs/core";
+import { Bind, GlobalConfig, Helper, IsRTL } from '@app/utils';
+import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
 
 /**
  * It's the often used to specify extra information about something
  * when the user moves the mouse pointer over an element (Hover or Focus).
+ * @experimental 
  * @examples default, placement, trigger
  */
 @Component({
@@ -27,7 +28,7 @@ export class Tooltip {
   /**
    * Tooltip animation.
    */
-  @Prop({reflect: true})
+  @Prop({ reflect: true })
   animation?: TooltipAnimation = 'fade';
 
   /**
@@ -39,7 +40,7 @@ export class Tooltip {
   /**
    * Tooltip arrow model.
    */
-  @Prop({reflect: true})
+  @Prop({ reflect: true })
   arrow?: TooltipArrow = 'default';
 
   /**
@@ -69,25 +70,25 @@ export class Tooltip {
   /**
    * Vertical & horizontal offset from the target.
    */
-    // @Prop()
+  // @Prop()
   offset?: number = undefined;
 
   /**
    * Horizontal offset from the target.
    */
-    // @Prop()
+  // @Prop()
   offsetX?: number;
 
   /**
    * Vertical offset from the target.
    */
-    // @Prop()
+  // @Prop()
   offsetY?: number;
 
   /**
    * How to position the tooltip.
    */
-  @Prop({reflect: true})
+  @Prop({ reflect: true })
   placement?: TooltipPlacement = 'auto';
 
   /**
@@ -99,37 +100,37 @@ export class Tooltip {
   /**
    * When the tooltip is going to hide
    */
-    // @Event({
-    //   bubbles: false,
-    //   cancelable: true,
-    // })
+  // @Event({
+  //   bubbles: false,
+  //   cancelable: true,
+  // })
   plusClose!: EventEmitter<void>;
 
   /**
    * When the tooltip is completely closed and its animation is completed.
    */
-    // @Event({
-    //   bubbles: false,
-    //   cancelable: false,
-    // })
+  // @Event({
+  //   bubbles: false,
+  //   cancelable: false,
+  // })
   plusClosed!: EventEmitter<void>;
 
   /**
    * When the tooltip is going to show this event triggers.
    */
-    // @Event({
-    //   bubbles: false,
-    //   cancelable: true,
-    // })
+  // @Event({
+  //   bubbles: false,
+  //   cancelable: true,
+  // })
   plusOpen!: EventEmitter<void>;
 
   /**
    * When the tooltip is completely shown and its animation is completed.
    */
-    // @Event({
-    //   bubbles: false,
-    //   cancelable: false,
-    // })
+  // @Event({
+  //   bubbles: false,
+  //   cancelable: false,
+  // })
   plusOpened!: EventEmitter<void>;
 
   @GlobalConfig('tooltip', {
@@ -297,8 +298,8 @@ export class Tooltip {
     return (
       <Host {...this.attributes}>
         <div class="tooltip" ref={(element) => this.$tooltip = element}>
-          <slot/>
-          <span x-arrow ref={element => this.$arrow = element}/>
+          <slot />
+          <span x-arrow ref={element => this.$arrow = element} />
         </div>
       </Host>
     )
