@@ -61,7 +61,7 @@ export class Portal {
 
             const place = this.keys.get(node);
 
-            place.parentNode.replaceChild(node, place);
+            place['replaceWith'](node);
 
             this.keys.delete(node);
         }
