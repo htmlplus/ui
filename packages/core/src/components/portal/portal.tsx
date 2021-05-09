@@ -18,19 +18,19 @@ import { GlobalConfig, Portal as PortalCore, PortalStrategy, PortalTarget } from
 export class Portal implements ComponentInterface {
 
   /**
-   * TODO
+   * Disables the portal.
    */
   @Prop()
   disabled?: boolean;
 
   /**
-   * TODO
+   * Specifies the position of the portal content relative to the target.
    */
   @Prop()
   strategy?: PortalStrategy = 'append';
 
   /**
-   * TODO
+   * Specifies the position of the portal content, It Can include css selectors, node or any html elements.
    */
   @Prop()
   target?: PortalTarget = 'body';

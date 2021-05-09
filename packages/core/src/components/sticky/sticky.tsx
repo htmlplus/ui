@@ -15,7 +15,7 @@ import { StickyState, StickyTop } from './sticky.types';
 export class Sticky {
 
   /**
-   * Specifies the disable sticky mode.
+   * Disables the sticky mode.
    */
   @Prop()
   disabled?: boolean;

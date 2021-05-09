@@ -85,21 +85,21 @@ export class Dialog {
   placement?: DialogPlacement = 'top';
 
   /**
-   * TODO
+   * Enables or disables the portal.
    * @experimental
    */
   @Prop()
   portal?: boolean;
 
   /**
-   * TODO
+   * Specifies the position of the dialog.
    * @experimental
    */
   @Prop()
   portalStrategy?: DialogPortalStrategy = 'append';
 
   /**
-   * TODO
+   * Specifies the position of the dialog relative to the target.
    * @experimental
    */
   @Prop()
