@@ -1,4 +1,4 @@
-[![HTMLPlUS Logo](https://htmlplus.io/assets/logo/logo.svg)](https://htmlplus.io)
+[![HTMLPlUS Logo](https://htmlplus.io/assets/logo/banner.svg)](https://htmlplus.io)
 
 # HTMLPLUS
 ### The most flexible web component library!
