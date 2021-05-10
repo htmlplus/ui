@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { FrameworkJavascript } from 'views';\nexport default function Javascript() {\n  return __jsx(FrameworkJavascript, null);\n}","map":null,"metadata":{},"sourceType":"module"}

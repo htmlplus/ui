@@ -1,0 +1,1 @@
+{"ast":null,"code":"import * as Clipboard from './clipboard';\nimport * as Utils from './utils';\nexport { Clipboard, Utils };","map":null,"metadata":{},"sourceType":"module"}

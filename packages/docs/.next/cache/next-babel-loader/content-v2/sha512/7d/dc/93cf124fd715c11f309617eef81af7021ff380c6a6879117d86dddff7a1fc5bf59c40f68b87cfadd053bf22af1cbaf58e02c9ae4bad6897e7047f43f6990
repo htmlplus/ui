@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface CodeProps {\n    copy?: boolean;\n    language: 'html' | 'css' | 'js' | 'jsx' | 'shell';\n}"]},"metadata":{},"sourceType":"script"}

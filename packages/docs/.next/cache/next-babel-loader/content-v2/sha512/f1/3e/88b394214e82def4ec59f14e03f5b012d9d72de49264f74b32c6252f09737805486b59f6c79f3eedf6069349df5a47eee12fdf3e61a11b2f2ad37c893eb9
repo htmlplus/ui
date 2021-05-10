@@ -1,0 +1,1 @@
+{"ast":null,"code":"export * from './page';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/components/page/index.ts"],"names":[],"mappings":"AAAA,cAAc,QAAd","sourcesContent":["export * from './page';\n"]},"metadata":{},"sourceType":"module"}

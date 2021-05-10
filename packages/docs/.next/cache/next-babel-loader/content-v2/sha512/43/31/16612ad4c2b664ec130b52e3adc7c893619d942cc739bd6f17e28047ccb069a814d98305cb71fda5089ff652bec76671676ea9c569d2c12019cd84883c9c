@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface InputProps {\n  placeholder?: string;\n  type?: 'radio' | 'text';\n}\n"]},"metadata":{},"sourceType":"script"}

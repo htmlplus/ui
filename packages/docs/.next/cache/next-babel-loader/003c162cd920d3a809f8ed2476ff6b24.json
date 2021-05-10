@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { Store, StoreContext } from 'store';\nconst store = new Store();\nexport const StoreProvider = ({\n  children\n}) => {\n  return __jsx(StoreContext.Provider, {\n    value: store\n  }, children);\n};","map":null,"metadata":{},"sourceType":"module"}

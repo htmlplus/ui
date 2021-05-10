@@ -1,0 +1,1 @@
+{"ast":null,"code":"export * from './javascript';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/views/framework/javascript/index.ts"],"names":[],"mappings":"AAAA,cAAc,cAAd","sourcesContent":["export * from './javascript';\n"]},"metadata":{},"sourceType":"module"}

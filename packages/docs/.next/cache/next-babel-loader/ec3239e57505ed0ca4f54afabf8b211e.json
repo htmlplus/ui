@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const copy = text => {\n  const input = document.createElement('textarea');\n  input.value = text;\n  document.body.appendChild(input);\n  input.select();\n  input.setSelectionRange(0, 99999);\n  document.execCommand('copy');\n  input.remove();\n};","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import * as Markup from \"./markup\"; // import * as Router from './router';\n\nexport * from \"./router\";\nexport { Markup };","map":null,"metadata":{},"sourceType":"module"}

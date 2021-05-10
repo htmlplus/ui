@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface SidebarItem {\n  title: string;\n  items?: Array<SidebarItem>;\n  route?: {\n    to: string;\n    params?: any;\n  };\n}\n\nexport interface SidebarProps {\n  items?: Array<SidebarItem>;\n}\n"]},"metadata":{},"sourceType":"script"}

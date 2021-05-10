@@ -1,0 +1,188 @@
+{
+  "./core-js.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/polyfills/core-js.js",
+      "file": "static/chunks/polyfills-core-js.js"
+    }
+  ],
+  "./dev/noop": [
+    {
+      "id": "./node_modules/next/dist/client/dev/noop.js",
+      "file": "static/chunks/12.js"
+    }
+  ],
+  "./dom.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/polyfills/dom.js",
+      "file": "static/chunks/polyfills-dom.js"
+    }
+  ],
+  "./plus-aspect-ratio.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/global-config-5cbf6bc5.js",
+      "file": "static/chunks/6.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-aspect-ratio.entry.js",
+      "file": "static/chunks/6.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/6.js"
+    }
+  ],
+  "./plus-card_4.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/global-config-5cbf6bc5.js",
+      "file": "static/chunks/7.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-card_4.entry.js",
+      "file": "static/chunks/7.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/7.js"
+    }
+  ],
+  "./plus-dialog_6.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/bind-dadc44dd.js",
+      "file": "static/chunks/0.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/global-config-5cbf6bc5.js",
+      "file": "static/chunks/0.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-dialog_6.entry.js",
+      "file": "static/chunks/0.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/0.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/to-kebab-case-b5400a99.js",
+      "file": "static/chunks/0.js"
+    }
+  ],
+  "./plus-drawer_2.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/bind-dadc44dd.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/global-config-5cbf6bc5.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-drawer_2.entry.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/1.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/to-kebab-case-b5400a99.js",
+      "file": "static/chunks/1.js"
+    }
+  ],
+  "./plus-grid_2.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/global-config-5cbf6bc5.js",
+      "file": "static/chunks/8.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-grid_2.entry.js",
+      "file": "static/chunks/8.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/8.js"
+    }
+  ],
+  "./plus-intersection.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/bind-dadc44dd.js",
+      "file": "static/chunks/2.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-intersection.entry.js",
+      "file": "static/chunks/2.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/2.js"
+    }
+  ],
+  "./plus-menu.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/bind-dadc44dd.js",
+      "file": "static/chunks/3.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-menu.entry.js",
+      "file": "static/chunks/3.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/3.js"
+    }
+  ],
+  "./plus-spinner.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-spinner.entry.js",
+      "file": "static/chunks/10.js"
+    }
+  ],
+  "./plus-switch.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/global-config-5cbf6bc5.js",
+      "file": "static/chunks/9.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-switch.entry.js",
+      "file": "static/chunks/9.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/9.js"
+    }
+  ],
+  "./plus-tabs_5.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/bind-dadc44dd.js",
+      "file": "static/chunks/4.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-tabs_5.entry.js",
+      "file": "static/chunks/4.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/4.js"
+    }
+  ],
+  "./plus-transition.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/bind-dadc44dd.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-transition.entry.js",
+      "file": "static/chunks/5.js"
+    },
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/scrollbar-8d18854e.js",
+      "file": "static/chunks/5.js"
+    }
+  ],
+  "./plus-tunnel-consumer.entry.js": [
+    {
+      "id": "./node_modules/@htmlplus/react/node_modules/@htmlplus/core/dist/esm/plus-tunnel-consumer.entry.js",
+      "file": "static/chunks/11.js"
+    }
+  ]
+}

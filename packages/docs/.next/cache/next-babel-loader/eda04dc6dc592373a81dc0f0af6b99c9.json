@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export type Framework = 'react' | 'vue' | 'javascript';\nexport type Layout = 'default';\n"]},"metadata":{},"sourceType":"script"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"import josn from '@htmlplus/core/dist/docs.json';\nconst isDev = false; // @ts-ignore\n\nexport const components = josn.filter(component => !component.development || isDev); // TODO: should be remove\n\nisDev && false && console.log(components);","map":null,"metadata":{},"sourceType":"module"}

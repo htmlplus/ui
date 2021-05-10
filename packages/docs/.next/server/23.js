@@ -1,0 +1,18 @@
+exports.ids = [23];
+exports.modules = {
+
+/***/ "./src/content/en/noname/overview.md":
+/*!*******************************************!*\
+  !*** ./src/content/en/noname/overview.md ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("# Overview\nOur goal in **{Constants.PLATFORM_NAME}** is focusing on componnets that are usable in every frameworks. We used [Standard Web Platform's IPs ]({Constants.WEBCOMPONENT_REFERENCE}) for this that are compatible with all modern explorers. There are some components that doesn't support all features of web components. You can use [here]({Constants.WEBCOMPONENT_COMPATIBILITY}) to find some resource. But don't worry, we prepared seperated packages specially for them that works like native libraries. Like you wrote it from scartch with these components. Pay attention that producing components never stop and in near future, new frameworks will be devised. Our mission is to produce on the edge of technology simultanously with modern libraries. At this time we support below libraries and as well as **{Constants.PLATFORM_NAME}** growths this list will be more completed.\n> [info] This is a brilliant information about how you can use this component\n\n[Javascript]({Router.ROUTE:FRAMEWORK:JAVASCRIPT})\n\n[Angular]({Router.ROUTE:FRAMEWORK:ANGULAR})\n\n[Vue]({Router.ROUTE:FRAMEWORK:VUE})\n\n[React]({Router.ROUTE:FRAMEWORK:REACT})\n");
+
+/***/ })
+
+};;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29udGVudC9lbi9ub25hbWUvb3ZlcnZpZXcubWQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFBQTtBQUFlLDJGQUE0Qix3QkFBd0IsMEdBQTBHLGlDQUFpQyw2SkFBNkoscUNBQXFDLDhhQUE4YSx3QkFBd0IsNklBQTZJLGtDQUFrQyxnQkFBZ0IsK0JBQStCLFlBQVksMkJBQTJCLGNBQWMsNkJBQTZCLElBQUksRSIsImZpbGUiOiIyMy5qcyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IFwiIyBPdmVydmlld1xcbk91ciBnb2FsIGluICoqe0NvbnN0YW50cy5QTEFURk9STV9OQU1FfSoqIGlzIGZvY3VzaW5nIG9uIGNvbXBvbm5ldHMgdGhhdCBhcmUgdXNhYmxlIGluIGV2ZXJ5IGZyYW1ld29ya3MuIFdlIHVzZWQgW1N0YW5kYXJkIFdlYiBQbGF0Zm9ybSdzIElQcyBdKHtDb25zdGFudHMuV0VCQ09NUE9ORU5UX1JFRkVSRU5DRX0pIGZvciB0aGlzIHRoYXQgYXJlIGNvbXBhdGlibGUgd2l0aCBhbGwgbW9kZXJuIGV4cGxvcmVycy4gVGhlcmUgYXJlIHNvbWUgY29tcG9uZW50cyB0aGF0IGRvZXNuJ3Qgc3VwcG9ydCBhbGwgZmVhdHVyZXMgb2Ygd2ViIGNvbXBvbmVudHMuIFlvdSBjYW4gdXNlIFtoZXJlXSh7Q29uc3RhbnRzLldFQkNPTVBPTkVOVF9DT01QQVRJQklMSVRZfSkgdG8gZmluZCBzb21lIHJlc291cmNlLiBCdXQgZG9uJ3Qgd29ycnksIHdlIHByZXBhcmVkIHNlcGVyYXRlZCBwYWNrYWdlcyBzcGVjaWFsbHkgZm9yIHRoZW0gdGhhdCB3b3JrcyBsaWtlIG5hdGl2ZSBsaWJyYXJpZXMuIExpa2UgeW91IHdyb3RlIGl0IGZyb20gc2NhcnRjaCB3aXRoIHRoZXNlIGNvbXBvbmVudHMuIFBheSBhdHRlbnRpb24gdGhhdCBwcm9kdWNpbmcgY29tcG9uZW50cyBuZXZlciBzdG9wIGFuZCBpbiBuZWFyIGZ1dHVyZSwgbmV3IGZyYW1ld29ya3Mgd2lsbCBiZSBkZXZpc2VkLiBPdXIgbWlzc2lvbiBpcyB0byBwcm9kdWNlIG9uIHRoZSBlZGdlIG9mIHRlY2hub2xvZ3kgc2ltdWx0YW5vdXNseSB3aXRoIG1vZGVybiBsaWJyYXJpZXMuIEF0IHRoaXMgdGltZSB3ZSBzdXBwb3J0IGJlbG93IGxpYnJhcmllcyBhbmQgYXMgd2VsbCBhcyAqKntDb25zdGFudHMuUExBVEZPUk1fTkFNRX0qKiBncm93dGhzIHRoaXMgbGlzdCB3aWxsIGJlIG1vcmUgY29tcGxldGVkLlxcbj4gW2luZm9dIFRoaXMgaXMgYSBicmlsbGlhbnQgaW5mb3JtYXRpb24gYWJvdXQgaG93IHlvdSBjYW4gdXNlIHRoaXMgY29tcG9uZW50XFxuXFxuW0phdmFzY3JpcHRdKHtSb3V0ZXIuUk9VVEU6RlJBTUVXT1JLOkpBVkFTQ1JJUFR9KVxcblxcbltBbmd1bGFyXSh7Um91dGVyLlJPVVRFOkZSQU1FV09SSzpBTkdVTEFSfSlcXG5cXG5bVnVlXSh7Um91dGVyLlJPVVRFOkZSQU1FV09SSzpWVUV9KVxcblxcbltSZWFjdF0oe1JvdXRlci5ST1VURTpGUkFNRVdPUks6UkVBQ1R9KVxcblwiOyJdLCJzb3VyY2VSb290IjoiIn0=

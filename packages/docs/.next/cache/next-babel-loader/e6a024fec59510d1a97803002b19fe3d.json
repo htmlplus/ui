@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { Home as HomeView } from 'views';\n\nconst Home = () => __jsx(HomeView, null);\n\nexport default Home;","map":null,"metadata":{},"sourceType":"module"}

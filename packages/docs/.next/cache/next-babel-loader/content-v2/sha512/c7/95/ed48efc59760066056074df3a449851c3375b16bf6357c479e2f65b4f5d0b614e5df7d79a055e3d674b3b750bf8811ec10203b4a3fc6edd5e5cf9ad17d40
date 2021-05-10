@@ -1,0 +1,1 @@
+{"ast":null,"code":"export * from './router';\nexport * from './routes';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/services/router/index.ts"],"names":[],"mappings":"AAAA,cAAc,UAAd;AACA,cAAc,UAAd","sourcesContent":["export * from './router';\nexport * from './routes';\n"]},"metadata":{},"sourceType":"module"}
