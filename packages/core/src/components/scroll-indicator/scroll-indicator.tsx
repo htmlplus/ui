@@ -1,71 +1,164 @@
-import {Component, Event, EventEmitter, Element, Prop, Listen, Host, h} from '@stencil/core';
-import {ScrollIndicatorDirection} from '@app/components/scroll-indicator/scroll-indicator.types';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Bind, GlobalConfig } from '@app/utils';
+import { ScrollIndicatorSource } from './scroll-indicator.types';
 
-/*
-* With this component, you can build a progress bar displaying how far a user has scroll down the page or tag
-*/
-
+/**
+ * With this component, you can build a progress bar displaying how far a user has scroll down the page or tag.
+ * @part indicator - TODO
+ * @examples default
+ */
 @Component({
   tag: 'plus-scroll-indicator',
   styleUrl: 'scroll-indicator.scss',
   shadow: true
 })
-
 export class ScrollIndicator {
+
   /**
    * Disable event
    */
   @Prop()
-  disabled: boolean;
+  disabled?: boolean;
 
   /**
-   * Scroll vertical or horizontal
+   * TODO
    */
   @Prop()
-  scrollDirection: ScrollIndicatorDirection = 'vertical';
+  source?: ScrollIndicatorSource = 'document';
+
+  /**
+   * Scroll vertical.
+   */
+  @Prop({ reflect: true })
+  vertical?: boolean;
 
   /**
    * When the children is scrolled this event trigger,
    */
   @Event({
     bubbles: true,
-    cancelable: true
+    cancelable: false
   })
-  scrolled: EventEmitter<number>;
+  plusScroll: EventEmitter<number>;
+
+  @GlobalConfig('scrollIndicator', {
+    source: 'document'
+  })
+  config?;
 
   @Element()
   $host!: HTMLElement;
 
-  @Listen('scroll', {target: "document"})
-  handleScroll() {
-    if (this.scrollDirection === 'horizontal')
-      this.horizontalScroll();
-    else
-      this.verticalScroll();
+  $indicator!: HTMLElement;
+
+  get $container() {
+    // TODO
+    return document;
+  }
+
+  get $source() {
+    // TODO
+    return document.documentElement;
+  }
+
+  get attributes() {
+    return {
+      // 'role': 'TODO'
+    }
+  }
+
+  get progress() {
+
+    const {
+      scrollTop,
+      scrollLeft,
+      scrollHeight,
+      scrollWidth,
+      clientHeight,
+      clientWidth,
+    } = this.$source;
+
+    const offset = this.vertical ? scrollLeft : scrollTop;
+
+    const overflow = this.vertical ? scrollWidth - clientWidth : scrollHeight - clientHeight;
+
+    return Math.round(offset / overflow * 100);
+  }
+
+  /**
+   * Internal Methods
+   */
+
+  bind() {
+
+    if (this.disabled) return;
+
+    this.$container.addEventListener('scroll', this.onScroll);
+
+    this.onScroll();
+  }
+
+  unbind() {
+    this.$container.removeEventListener('scroll', this.onScroll);
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return false;
+
+    const value = this[name];
+
+    switch (name) {
+
+      case 'disabled':
+      case 'source':
+
+        value ? this.unbind() : this.bind();
+
+        break;
+    }
   }
 
   /**
    * Events handler
    */
 
-  horizontalScroll() {
-    const windowScroll = document.body.scrollLeft || document.documentElement.scrollLeft;
-    const height = document.documentElement.scrollWidth - document.documentElement.clientWidth;
-    const percentage = (windowScroll / height) * 100;
-    this.scrolled.emit(percentage);
+  @Bind
+  onScroll() {
+
+    const progress = this.progress;
+
+    const property = this.vertical ? 'height' : 'width';
+
+    this.$indicator.style[property] = `${progress}%`;
+
+    this.plusScroll.emit(progress);
   }
 
-  verticalScroll() {
-    const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const percentage = (windowScroll / height) * 100;
-    this.scrolled.emit(percentage);
+  /**
+   * Lifecycles
+   */
+
+  componentDidLoad() {
+    this.bind();
+  }
+
+  disconnectedCallback() {
+    this.unbind();
   }
 
   render() {
     return (
-      <Host>
-        <slot/>
+      <Host {...this.attributes}>
+        <div
+          class="indicator"
+          part="indicator"
+          ref={($element) => this.$indicator = $element}
+        />
       </Host>
     )
   }

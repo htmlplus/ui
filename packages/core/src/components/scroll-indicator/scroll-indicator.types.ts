@@ -1,1 +1,1 @@
-export type ScrollIndicatorDirection = 'horizontal' | 'vertical';
+export type ScrollIndicatorSource = string | HTMLElement;

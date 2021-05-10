@@ -16,6 +16,7 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from "./components/menu/menu.types";
 import { PortalStrategy, PortalTarget } from "@app/utils";
+import { ScrollIndicatorSource } from "./components/scroll-indicator/scroll-indicator.types";
 import { SpinnerSize, SpinnerType } from "./components/spinner/spinner.types";
 import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
@@ -308,17 +309,17 @@ export namespace Components {
          */
         "placement"?: DialogPlacement;
         /**
-          * TODO
+          * Enables or disables the portal.
           * @experimental
          */
         "portal"?: boolean;
         /**
-          * TODO
+          * Specifies the position of the dialog.
           * @experimental
          */
         "portalStrategy"?: DialogPortalStrategy;
         /**
-          * TODO
+          * Specifies the position of the dialog relative to the target.
           * @experimental
          */
         "portalTarget"?: DialogPortalTarget;
@@ -796,19 +797,33 @@ export namespace Components {
     }
     interface PlusPortal {
         /**
-          * TODO
+          * Disables the portal.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the position of the portal content relative to the target.
+         */
+        "strategy"?: PortalStrategy;
+        /**
+          * Specifies the position of the portal content, It Can include css selectors, node or any html elements.
+         */
+        "target"?: PortalTarget;
+    }
+    interface PlusRipple {
+    }
+    interface PlusScrollIndicator {
+        /**
+          * Disable event
          */
         "disabled"?: boolean;
         /**
           * TODO
          */
-        "strategy"?: PortalStrategy;
+        "source"?: ScrollIndicatorSource;
         /**
-          * TODO
+          * Scroll vertical.
          */
-        "target"?: PortalTarget;
-    }
-    interface PlusRipple {
+        "vertical"?: boolean;
     }
     interface PlusSpinner {
         /**
@@ -822,7 +837,7 @@ export namespace Components {
     }
     interface PlusSticky {
         /**
-          * Specifies the disable sticky mode.
+          * Disables the sticky mode.
          */
         "disabled"?: boolean;
         /**
@@ -1181,6 +1196,12 @@ declare global {
         prototype: HTMLPlusRippleElement;
         new (): HTMLPlusRippleElement;
     };
+    interface HTMLPlusScrollIndicatorElement extends Components.PlusScrollIndicator, HTMLStencilElement {
+    }
+    var HTMLPlusScrollIndicatorElement: {
+        prototype: HTMLPlusScrollIndicatorElement;
+        new (): HTMLPlusScrollIndicatorElement;
+    };
     interface HTMLPlusSpinnerElement extends Components.PlusSpinner, HTMLStencilElement {
     }
     var HTMLPlusSpinnerElement: {
@@ -1303,6 +1324,7 @@ declare global {
         "plus-menu": HTMLPlusMenuElement;
         "plus-portal": HTMLPlusPortalElement;
         "plus-ripple": HTMLPlusRippleElement;
+        "plus-scroll-indicator": HTMLPlusScrollIndicatorElement;
         "plus-spinner": HTMLPlusSpinnerElement;
         "plus-sticky": HTMLPlusStickyElement;
         "plus-switch": HTMLPlusSwitchElement;
@@ -1583,17 +1605,17 @@ declare namespace LocalJSX {
          */
         "placement"?: DialogPlacement;
         /**
-          * TODO
+          * Enables or disables the portal.
           * @experimental
          */
         "portal"?: boolean;
         /**
-          * TODO
+          * Specifies the position of the dialog.
           * @experimental
          */
         "portalStrategy"?: DialogPortalStrategy;
         /**
-          * TODO
+          * Specifies the position of the dialog relative to the target.
           * @experimental
          */
         "portalTarget"?: DialogPortalTarget;
@@ -2095,19 +2117,37 @@ declare namespace LocalJSX {
     }
     interface PlusPortal {
         /**
-          * TODO
+          * Disables the portal.
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * Specifies the position of the portal content relative to the target.
          */
         "strategy"?: PortalStrategy;
         /**
-          * TODO
+          * Specifies the position of the portal content, It Can include css selectors, node or any html elements.
          */
         "target"?: PortalTarget;
     }
     interface PlusRipple {
+    }
+    interface PlusScrollIndicator {
+        /**
+          * Disable event
+         */
+        "disabled"?: boolean;
+        /**
+          * When the children is scrolled this event trigger,
+         */
+        "onPlusScroll"?: (event: CustomEvent<number>) => void;
+        /**
+          * TODO
+         */
+        "source"?: ScrollIndicatorSource;
+        /**
+          * Scroll vertical.
+         */
+        "vertical"?: boolean;
     }
     interface PlusSpinner {
         /**
@@ -2121,7 +2161,7 @@ declare namespace LocalJSX {
     }
     interface PlusSticky {
         /**
-          * Specifies the disable sticky mode.
+          * Disables the sticky mode.
          */
         "disabled"?: boolean;
         /**
@@ -2398,6 +2438,7 @@ declare namespace LocalJSX {
         "plus-menu": PlusMenu;
         "plus-portal": PlusPortal;
         "plus-ripple": PlusRipple;
+        "plus-scroll-indicator": PlusScrollIndicator;
         "plus-spinner": PlusSpinner;
         "plus-sticky": PlusSticky;
         "plus-switch": PlusSwitch;
@@ -2445,6 +2486,7 @@ declare module "@stencil/core" {
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
             "plus-portal": LocalJSX.PlusPortal & JSXBase.HTMLAttributes<HTMLPlusPortalElement>;
             "plus-ripple": LocalJSX.PlusRipple & JSXBase.HTMLAttributes<HTMLPlusRippleElement>;
+            "plus-scroll-indicator": LocalJSX.PlusScrollIndicator & JSXBase.HTMLAttributes<HTMLPlusScrollIndicatorElement>;
             "plus-spinner": LocalJSX.PlusSpinner & JSXBase.HTMLAttributes<HTMLPlusSpinnerElement>;
             "plus-sticky": LocalJSX.PlusSticky & JSXBase.HTMLAttributes<HTMLPlusStickyElement>;
             "plus-switch": LocalJSX.PlusSwitch & JSXBase.HTMLAttributes<HTMLPlusSwitchElement>;
