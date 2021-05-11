@@ -1,35 +1,26 @@
-# Contribute to HTMLPLUS
+# Developing HTMLPLUS
+This document describes how to develop HTMLPLUS components. see [HTMLPLUS roadmap]() for a list of all components.
 
-HTMLPLUS is framework-less and lightweight. It’s totally native and developed purely with javascript. All HTMLPLUS containers are customizable and configurable.
-
-### Table of Contents
+## Table of Contents
   - [Contribute to code](#contribute-to-code)
     - [Knowledge requirements](#knowledge-requirements)
-    - [Setup system](#setup-system)
+    - [Setup system, up and running](#setup-system)
       - [Install NodeJs](#install-nodejs)
       - [Install Git](#install-git)
       - [Install Editor](#install-editor)
     - [Installation](#installation)
     - [Project structure](#project-structure)
-  - [Contribute to documentation](#contribute-to-documentation)
-  - [Report an issue](#report-an-issue)
-  - [Participate in the community](#participate-in-the-community)
-
-How do you wish to contribute?
-
-- [Contribute to code](#contribute-to-code) - If you're interested in contribuing to the code, be sure to read the code contribution guidelines first.
-  
-- [Contribute to documentation](#contribute-to-documentation) - We welcome input and help with documentation. Check out the documentation sources.
-  
-- [Report an issue](#report-an-issue) - A relatively easy way to contribute is by reporting new issues. See our general guidelines for reporting.
-
-- [Participate in the community](#participate-in-the-community) - The HTMLPLUS community carries on lively discussions in several places. Feel free to learn and participate.
+    - [Pull Request Process](#pull-request-process)
 
 ## Contribute to code
+> If you're interested in contribuing to the code, be sure to read the code contribution guidelines first.
+
+
 This article explains the process and guidelines for contributing code to the HTMLPLUS project.
 
 ### Knowledge requirements
-TODO: Ma be shoma pishnahad mikonim ke ghabl az har eghdami shoma bayad be mavarede zir eshraf nesbi dashte bashim.
+>TODO:
+Before any action make sure that you are acquaintance with these items:
 - [TypeScript](https://www.typescriptlang.org)
 - [StencilJs](https://stenciljs.com)
 - [SASS](https://sass-lang.com)
@@ -83,7 +74,7 @@ Run project in the `https://localhost:3000`
 
 ### Project structure
 You'll find the following directories and files, ssee something like this.
-     
+
     .
     ├── ...
     ├── packages                     # Location of all packages
@@ -116,12 +107,3 @@ You'll find the following directories and files, ssee something like this.
     ├── lerna.json                   # TODO
     ├── package.json                 # managing the project’s dependencies, scripts, version ...
     └── ...
-
-## Contribute to documentation
-We welcome contributions to HTMLPLUS documentation!
- 
-## Report an issue
-Follow the procedure outlined here when reporting issues with the HTMLPLUS project.
-
-## Participate in the community
-TODO

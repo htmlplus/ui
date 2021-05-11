@@ -1,17 +1,26 @@
 [![HTMLPlUS Logo](https://htmlplus.io/assets/logo/banner.svg)](https://htmlplus.io)
 
-# HTMLPLUS
-### The most flexible web component library!
-[Explore HTMLPLUS docs](https://htmlplus.io/introduction/what-is-htmlplus)
+[![Version](https://img.shields.io/npm/v/@htmlplus/core.svg)](https://www.npmjs.com/package/@htmlplus/core)
+[![GitHub forks](https://img.shields.io/github/forks/htmlplus/core)](https://github.com/htmlplus/core/network/members) [![GitHub stars](https://img.shields.io/github/stars/htmlplus/core)](https://github.com/htmlplus/core/stargazers) [![GitHub license](https://img.shields.io/github/license/htmlplus/core)](https://github.com/htmlplus/core/blob/main/LICENSE)  [![Linkedin](https://img.shields.io/badge/Follow%20us-white?logo=linkedIn&color=0077B5&logoColor=white)](https://www.linkedin.com/company/htmlplus)
 
-HTMLPLUS is framework-less and lightweight. It's totally native and developed purely with javascript. All HTMLPLUS components are customizable and configurable.
+HTMLPLUS is native, framework-less and lightweight library which is purely developed with Javascript. All HTMLPLUS components are customizable and configurable.
 
 ## Quick start
-To use HTMLPLUS follow [this](https://htmlplus.io/getting-started/installation) instruction.
- 
-## Status
-[![Version](https://img.shields.io/npm/v/@htmlplus/core.svg)](https://www.npmjs.com/package/@htmlplus/core)
-[![GitHub forks](https://img.shields.io/github/forks/htmlplus/core)](https://github.com/htmlplus/core/network/members) [![GitHub stars](https://img.shields.io/github/stars/htmlplus/core)](https://github.com/htmlplus/core/stargazers) [![GitHub license](https://img.shields.io/github/license/htmlplus/core)](https://github.com/htmlplus/core/blob/main/LICENSE) [![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fhtmlplus%2Fcore)](https://https://twitter.com/htmlplusio) 
+To use HTMLPLUS follow [installation instruction](https://htmlplus.io/getting-started/installation).
+
+## Documentation
+* [Official documentation](https://htmlplus.io/introduction/what-is-htmlplus)
+
+## Contributing
+HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways.  All contributions are welcome! See the following resources to get you started:
+* [Contributing Guidelines](./docfiles/contributing.md)
+* [Developing Components](./docfiles/developing.md)
+* [Good First Issues]()
+* [Report an issue]()
+* [Contribute to design processes](./docfiles/design-process.md)
+* [Contribute to documentation](./docfiles/documentation.md)
+
+You can join our team by posting a comment to [issue #issue-number]().
 
 ## Roadmap
 - [X] aspect ratio
