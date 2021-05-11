@@ -813,17 +813,13 @@ export namespace Components {
     }
     interface PlusScrollIndicator {
         /**
-          * Disable event
+          * Disables the event.
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * Source of scroll.
          */
         "source"?: ScrollIndicatorSource;
-        /**
-          * Scroll vertical.
-         */
-        "vertical"?: boolean;
     }
     interface PlusSpinner {
         /**
@@ -2133,21 +2129,17 @@ declare namespace LocalJSX {
     }
     interface PlusScrollIndicator {
         /**
-          * Disable event
+          * Disables the event.
          */
         "disabled"?: boolean;
         /**
-          * When the children is scrolled this event trigger,
+          * When the children is scrolled this event trigger.
          */
         "onPlusScroll"?: (event: CustomEvent<number>) => void;
         /**
-          * TODO
+          * Source of scroll.
          */
         "source"?: ScrollIndicatorSource;
-        /**
-          * Scroll vertical.
-         */
-        "vertical"?: boolean;
     }
     interface PlusSpinner {
         /**

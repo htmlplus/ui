@@ -15,13 +15,13 @@ import { ScrollIndicatorSource } from './scroll-indicator.types';
 export class ScrollIndicator {
 
   /**
-   * Disable event
+   * Disables the event.
    */
   @Prop()
   disabled?: boolean;
 
   /**
-   * TODO
+   * Source of scroll.
    */
   @Prop()
   source?: ScrollIndicatorSource = 'document';
@@ -29,11 +29,11 @@ export class ScrollIndicator {
   /**
    * Scroll vertical.
    */
-  @Prop({ reflect: true })
+  // @Prop({ reflect: true })
   vertical?: boolean;
 
   /**
-   * When the children is scrolled this event trigger,
+   * When the children is scrolled this event trigger.
    */
   @Event({
     bubbles: true,
@@ -51,14 +51,13 @@ export class ScrollIndicator {
 
   $indicator!: HTMLElement;
 
-  get $container() {
-    // TODO
-    return document;
-  }
-
   get $source() {
-    // TODO
-    return document.documentElement;
+
+    if (typeof this.source !== 'string') return this.source;
+
+    if (this.source === 'document') return document;
+
+    return document.querySelector(this.source);
   }
 
   get attributes() {
@@ -69,14 +68,14 @@ export class ScrollIndicator {
 
   get progress() {
 
-    const {
-      scrollTop,
-      scrollLeft,
-      scrollHeight,
-      scrollWidth,
-      clientHeight,
-      clientWidth,
-    } = this.$source;
+    // TODO: any type not valid
+    let $source = this.$source as any;
+
+    if (!$source) return 0;
+
+    $source = this.$source['documentElement'] ?? $source;
+
+    const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = $source;
 
     const offset = this.vertical ? scrollLeft : scrollTop;
 
@@ -93,13 +92,13 @@ export class ScrollIndicator {
 
     if (this.disabled) return;
 
-    this.$container.addEventListener('scroll', this.onScroll);
+    this.$source?.addEventListener('scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    this.$container.removeEventListener('scroll', this.onScroll);
+    this.$source?.removeEventListener('scroll', this.onScroll);
   }
 
   /**
