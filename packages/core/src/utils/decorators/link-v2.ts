@@ -18,8 +18,8 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
     const properties: Array<LinkV2Property> = [];
 
-    const scope = (source: LinkV2Property) => {
-        return config.scope(source.instance);
+    const add = (source: LinkV2Property) => {
+        properties.push(source);
     }
 
     const get = (source: LinkV2Property) => {
@@ -28,6 +28,29 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
     const set = (source: LinkV2Property, value: any) => {
         source.instance[source.name] = value;
+    }
+
+    const reset = (source: LinkV2Property) => {
+
+        const value = get(source);
+
+        if (source.type === 'action') return;
+
+        if (source.type !== 'observable') return set(source, source.value /* value */);
+
+        Object.defineProperty(
+            source.instance,
+            source.name,
+            {
+                value,
+                enumerable: true,
+                configurable: true,
+            }
+        )
+    }
+
+    const scope = (source: LinkV2Property) => {
+        return config.scope(source.instance);
     }
 
     const map = (source: LinkV2Property, destination: LinkV2Property) => {
@@ -119,13 +142,28 @@ export const createLinkV2 = (config: LinkV2Config) => {
         if (source.type === 'observable') proxy(source);
 
         properties.push(source);
+
+        console.log(1, properties)
     }
 
     const disconnect = (source: LinkV2Property) => {
 
+        if (source.type !== 'action') reset(source);
+
+        filter(source).forEach((destination) => {
+
+            if (source === destination) return;
+
+            if (source.type === 'inject') return;
+
+            if (destination.type !== 'inject') return;
+
+            reset(destination);
+        });
+
         const index = properties.findIndex((property) => property === source);
 
-        properties.splice(index, 1);
+        if (index !== -1) properties.splice(index, 1);
     }
 
     const reconnect = (instance: LinkV2Instance) => {
@@ -156,6 +194,8 @@ export const createLinkV2 = (config: LinkV2Config) => {
                 value: this[name],
             }
 
+            // add(property);
+
             connect(property);
         }
 
@@ -165,12 +205,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             disconnected && disconnected.bind(this)();
 
-            const property: LinkV2Property = {
-                type,
-                name,
-                target,
-                instance: this,
-            }
+            const property: LinkV2Property = properties.find((property) => property.instance === this && property.name === name);
 
             disconnect(property);
         }
