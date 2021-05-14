@@ -1,34 +1,36 @@
-type Instance = any;
-type Target = any;
-type PropertyName = string;
-type PropertyType = 'action' | 'inject' | 'observable';
-interface Property {
-    type?: PropertyType;
-    name?: PropertyName;
-    instance?: Instance;
-    target?: Target;
+type LinkV2Instance = any;
+type LinkV2PropertyName = string;
+type LinkV2PropertyType = 'action' | 'inject' | 'observable';
+type LinkV2Property = {
+    type?: LinkV2PropertyType;
+    name?: LinkV2PropertyName;
+    instance?: LinkV2Instance;
+    target?: LinkV2Target;
     value?: any;
 }
+type LinkV2Target = any;
 
-export interface LinkV2Config {
+export type LinkV2Config = {
     scope?: Function;
 }
 
 export const createLinkV2 = (config: LinkV2Config) => {
 
-    config;
+    const properties: Array<LinkV2Property> = [];
 
-    const properties: Array<Property> = [];
+    const scope = (source: LinkV2Property) => {
+        return config.scope(source.instance);
+    }
 
-    const get = (source: Property) => {
+    const get = (source: LinkV2Property) => {
         return source.instance[source.name];
     }
 
-    const set = (source: Property, value: any) => {
+    const set = (source: LinkV2Property, value: any) => {
         source.instance[source.name] = value;
     }
 
-    const map = (source: Property, destination: Property) => {
+    const map = (source: LinkV2Property, destination: LinkV2Property) => {
 
         let value = get(source);
 
@@ -38,7 +40,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         set(destination, value);
     }
 
-    const proxy = (source: Property) => {
+    const proxy = (source: LinkV2Property) => {
 
         let value = get(source);
 
@@ -65,19 +67,19 @@ export const createLinkV2 = (config: LinkV2Config) => {
         )
     }
 
-    const filter = (source: Property) => {
+    const filter = (source: LinkV2Property) => {
 
         return properties.filter((destination) => {
 
             if (destination.name !== source.name) return false;
 
-            if (destination.instance['connector'] !== source.instance['connector']) return false;
+            if (scope(source) !== scope(destination)) return false;
 
             return true;
         })
     }
 
-    const connect = (source: Property) => {
+    const connect = (source: LinkV2Property) => {
 
         filter(source).forEach((destination) => {
 
@@ -112,19 +114,21 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
                     break;
             }
-        })
+        });
+
+        if (source.type === 'observable') proxy(source);
 
         properties.push(source);
     }
 
-    const disconnect = (source: Property) => {
+    const disconnect = (source: LinkV2Property) => {
 
         const index = properties.findIndex((property) => property === source);
 
         properties.splice(index, 1);
     }
 
-    const reconnect = (instance: Instance) => {
+    const reconnect = (instance: LinkV2Instance) => {
 
         properties.forEach((property) => {
 
@@ -136,7 +140,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         });
     }
 
-    const register = (type: PropertyType) => () => (target: Target, name: PropertyName) => {
+    const register = (type: LinkV2PropertyType) => () => (target: LinkV2Target, name: LinkV2PropertyName) => {
 
         const connected = target.connectedCallback;
 
@@ -144,7 +148,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             connected && connected.bind(this)();
 
-            const property: Property = {
+            const property: LinkV2Property = {
                 type,
                 name,
                 target,
@@ -161,7 +165,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             disconnected && disconnected.bind(this)();
 
-            const property: Property = {
+            const property: LinkV2Property = {
                 type,
                 name,
                 target,
