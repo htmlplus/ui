@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
-import { DialogLink, Link, rebind } from './dialog.link';
+import { Action, Observable, reconnect } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 
 /**
@@ -181,16 +181,14 @@ export class Dialog {
 
   $cell!: HTMLElement;
 
-  isOpen?: boolean;
-
   animate?: AnimationV2;
 
-  portalInstance?: Portal;
+  isOpen?: boolean;
 
-  @Link({ scope: '[connector]' })
-  link: DialogLink = {
-    toggle: () => this.toggle()
-  }
+  @Observable()
+  open1?: boolean;
+
+  portalInstance?: Portal;
 
   get attributes() {
 
@@ -272,6 +270,7 @@ export class Dialog {
     this.tryShow(true, false);
   }
 
+  @Action()
   toggle() {
     this.isOpen ? this.hide() : this.show();
   }
@@ -321,7 +320,7 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
-        this.link.open = false;
+        this.open1 = false;
       },
       onLeaved: () => {
 
@@ -355,7 +354,7 @@ export class Dialog {
     this.animate.enter({
       onEnter: () => {
 
-        this.link.open = true;
+        this.open1 = true;
 
         this.onShow();
       },
@@ -382,7 +381,7 @@ export class Dialog {
 
       case 'connector':
 
-        rebind(this);
+        reconnect(this);
 
         break;
 
@@ -408,6 +407,9 @@ export class Dialog {
     this.isOpen = false;
     this.open = false;
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
+
+    // TODO: new link
+    this.open1 = false;
   }
 
   onShow() {

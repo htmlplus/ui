@@ -1,13 +1,7 @@
-import { createLink } from '@app/utils';
+import { createLinkV2 } from '@app/utils';
 
-export interface DialogLink {
-    open?: boolean;
-    toggle?: () => void;
-}
+const link = createLinkV2({
+    scope: (i) => i.connector
+})
 
-const initial = {
-    open: false,
-    toggle: () => undefined,
-};
-
-export const { Link, rebind } = createLink<DialogLink>(initial);
+export const { Action, Inject, Observable, reconnect } = link;
