@@ -19,7 +19,21 @@ export const createLinkV2 = (config: LinkV2Config) => {
     const properties: Array<LinkV2Property> = [];
 
     const add = (source: LinkV2Property) => {
+
+        const index = properties.findIndex((property) => property === source);
+
+        if (index !== -1) return;
+
         properties.push(source);
+    }
+
+    const remove = (source: LinkV2Property) => {
+
+        const index = properties.findIndex((property) => property === source);
+
+        if (index === -1) return;
+
+        properties.splice(index, 1);
     }
 
     const get = (source: LinkV2Property) => {
@@ -32,17 +46,15 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
     const reset = (source: LinkV2Property) => {
 
-        const value = get(source);
-
         if (source.type === 'action') return;
 
-        if (source.type !== 'observable') return set(source, source.value /* value */);
+        if (source.type !== 'observable') return set(source, source.value /* TODO */);
 
         Object.defineProperty(
             source.instance,
             source.name,
             {
-                value,
+                value: source.value, /* TODO */
                 enumerable: true,
                 configurable: true,
             }
@@ -82,7 +94,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
                     value = input;
 
-                    filter(source)
+                    siblings(source)
                         .filter((destination) => destination.type === 'inject')
                         .map((destination) => set(destination, value))
                 }
@@ -90,11 +102,13 @@ export const createLinkV2 = (config: LinkV2Config) => {
         )
     }
 
-    const filter = (source: LinkV2Property) => {
+    const siblings = (source: LinkV2Property) => {
 
         return properties.filter((destination) => {
 
-            if (destination.name !== source.name) return false;
+            if (source === destination) return false;
+
+            if (source.name !== destination.name) return false;
 
             if (scope(source) !== scope(destination)) return false;
 
@@ -104,44 +118,45 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
     const connect = (source: LinkV2Property) => {
 
-        filter(source).forEach((destination) => {
-
-            switch (source.type) {
-
-                // inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
-                case 'action':
-
-                    if (destination.type !== 'inject') return;
-
-                    map(source, destination);
-
-                    break;
-
-                // update all `inject` or `observable` types from `source` based on `destination`
-                case 'inject':
-
-                    if (destination.type === 'inject') return;
-
-                    map(destination, source);
-
-                    break;
-
-                // update all `inject` types from `destination` based on `source`
-                case 'observable':
-
-                    if (destination.type !== 'inject') return;
-
-                    map(source, destination);
-
-                    proxy(source);
-
-                    break;
-            }
-        });
+        add(source);
 
         if (source.type === 'observable') proxy(source);
 
-        properties.push(source);
+        siblings(source)
+            .forEach((destination) => {
+
+                switch (source.type) {
+
+                    // TODO: inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
+                    case 'action':
+
+                        if (destination.type !== 'inject') return;
+
+                        map(source, destination);
+
+                        break;
+
+                    // update all `inject` or `observable` types from `source` based on `destination`
+                    case 'inject':
+
+                        if (destination.type === 'inject') return;
+
+                        map(destination, source);
+
+                        break;
+
+                    // update all `inject` types from `destination` based on `source`
+                    case 'observable':
+
+                        if (destination.type !== 'inject') return;
+
+                        map(source, destination);
+
+                        proxy(source);
+
+                        break;
+                }
+            })
 
         console.log(1, properties)
     }
@@ -150,32 +165,25 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
         if (source.type !== 'action') reset(source);
 
-        filter(source).forEach((destination) => {
+        remove(source);
 
-            if (source === destination) return;
+        if (source.type === 'inject') return;
 
-            if (source.type === 'inject') return;
-
-            if (destination.type !== 'inject') return;
-
-            reset(destination);
-        });
-
-        const index = properties.findIndex((property) => property === source);
-
-        if (index !== -1) properties.splice(index, 1);
+        siblings(source)
+            .filter((property) => property.type === 'inject')
+            .forEach(reset);
     }
 
     const reconnect = (instance: LinkV2Instance) => {
 
-        properties.forEach((property) => {
+        properties
+            .filter((property) => property.instance === instance)
+            .forEach((property) => {
 
-            if (property.instance !== instance) return;
+                disconnect(property);
 
-            disconnect(property);
-
-            connect(property);
-        });
+                connect(property);
+            })
     }
 
     const register = (type: LinkV2PropertyType) => () => (target: LinkV2Target, name: LinkV2PropertyName) => {
@@ -194,8 +202,6 @@ export const createLinkV2 = (config: LinkV2Config) => {
                 value: this[name],
             }
 
-            // add(property);
-
             connect(property);
         }
 
@@ -205,7 +211,8 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             disconnected && disconnected.bind(this)();
 
-            const property: LinkV2Property = properties.find((property) => property.instance === this && property.name === name);
+            // TODO
+            const property = properties.find((property) => property.instance === this && property.name === name);
 
             disconnect(property);
         }
