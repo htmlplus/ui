@@ -21,11 +21,11 @@ export class TabsPanel {
 
   @State()
   @Inject()
-  value1?: string;
+  active?: string;
 
   get attributes() {
     return {
-      'active': this.value1 && this.value1 === this.value
+      'active': this.active && this.active === this.value
     }
   }
 

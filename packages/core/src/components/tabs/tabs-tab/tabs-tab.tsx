@@ -27,14 +27,14 @@ export class TabsTab {
 
   @State()
   @Inject()
-  value1?: string;
+  active?: string;
 
   @Inject()
   request?: Function = () => console.log('TODO: can not use out of tabs');
 
   get attributes() {
     return {
-      'active': this.value1 && this.value1 === this.value,
+      'active': this.active && this.active === this.value,
       'onClick': () => !this.disabled && this.request(this.value)
     }
   }

@@ -1,4 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
+import { Inject } from '../tabs/tabs.link';
 
 /**
  * TODO
@@ -17,6 +18,10 @@ export class TabsPanels {
    */
   @Prop()
   connector?: string;
+
+  // TODO
+  @Inject()
+  active?: string;
 
   get attributes() {
     return {

@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { Action, Observable } from './tabs.link';
+import { Action, Observable, reconnect } from './tabs.link';
 
 /**
  * TODO
@@ -17,7 +17,7 @@ export class Tabs {
   /**
    * TODO
    */
-  @Prop()
+  @Prop({ mutable: true })
   value?: string;
 
   /**
@@ -42,13 +42,17 @@ export class Tabs {
   wowChange!: EventEmitter<string>;
 
   @Observable()
-  value1?: string;
+  active?: string;
 
   get attributes() {
     return {
 
     }
   }
+
+  /**
+   * Internal Methods
+   */
 
   @Action()
   request(value: string) {
@@ -58,8 +62,40 @@ export class Tabs {
     if (event.defaultPrevented) return;
 
     this.value = value;
+  }
 
-    this.value1 = value;
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return false;
+
+    const value = this[name];
+
+    switch (name) {
+
+      case 'value':
+
+        this.active = value;
+
+        break;
+
+      case 'connector':
+
+        reconnect(this);
+
+        break;
+    }
+  }
+
+  /**
+   * Lifecycles
+   */
+
+  componentDidLoad() {
+    this.active = this.value;
   }
 
   render() {

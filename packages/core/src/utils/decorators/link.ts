@@ -1,241 +1,287 @@
-import { forceUpdate, getElement } from '@stencil/core';
+import { getElement } from '@stencil/core';
 
-type LinkScope = string;
+type LinkV2Instance = any;
+type LinkV2PropertyName = string;
+type LinkV2PropertyType = 'action' | 'inject' | 'observable';
+type LinkV2Property = {
+    type?: LinkV2PropertyType;
+    name?: LinkV2PropertyName;
+    instance?: LinkV2Instance;
+    target?: LinkV2Target;
+    value?: any;
+    element?: HTMLElement;
+}
+type LinkV2Target = any;
 
-type LinkInstance = any;
-interface LinkInstanceConfig extends LinkConfig {
-    element: any;
-    property: PropertyKey;
-    originalState: any;
-    localState: any;
-    group: string;
+export type LinkV2Config = {
+    scope?: Function;
 }
 
-export interface LinkConfig {
-    scope?: LinkScope;
-}
+export const createLinkV2 = (config: LinkV2Config) => {
 
-export const createLink = <T>(initial: Required<T>) => {
+    const children = new Map<LinkV2Instance, Set<LinkV2Property>>();
 
-    const instances = new Map<LinkInstance, LinkInstanceConfig>();
+    const parents = new Map<LinkV2Instance, LinkV2Property>();
 
-    const getGroup = (instance: LinkInstance, scope: LinkScope) => {
+    const properties: Array<LinkV2Property> = [];
 
-        const isProperty = scope.match(/\[*\]/);
+    const add = (source: LinkV2Property) => {
 
-        if (isProperty) {
+        properties.push(source);
 
-            const property = scope.replace('[', '').replace(']', '');
+        if (!children.has(source.instance))
+            children.set(source.instance, new Set<LinkV2Property>());
 
-            return instance[property];
+        const siblings = children.get(source.instance);
+
+        siblings.add(source);
+    }
+
+    const remove = (source: LinkV2Property) => {
+
+        const index = properties.findIndex((property) => property === source);
+
+        if (index === -1) return;
+
+        properties.splice(index, 1);
+
+        const siblings = children.get(source.instance);
+
+        siblings.delete(source);
+
+        if (!siblings.size) {
+
+            children.delete(source.instance);
+
+            parents.delete(source.instance);
         }
-
-        return scope;
     }
 
-    const getSiblings = (instance: LinkInstance, self: boolean) => {
-
-        const { group } = instances.get(instance);
-
-        const result = new Map<LinkInstance, LinkInstanceConfig>();
-
-        instances.forEach((config, item) => {
-
-            if (!self && instance === item) return;
-
-            if (config.group !== group) return;
-
-            result.set(item, config);
-        });
-
-        return result;
+    const get = (source: LinkV2Property) => {
+        return source.instance[source.name];
     }
 
-    const getState = (instances: Map<LinkInstance, LinkInstanceConfig>) => {
-
-        const configs = Array.from(instances.values());
-
-        const original = configs.map((config) => config.originalState);
-
-        const local = configs.map((config) => config.localState);
-
-        return Object.assign({}, initial, ...original, ...local);
+    const set = (source: LinkV2Property, value: any) => {
+        source.instance[source.name] = value;
     }
 
-    const getParent = (instance: LinkInstance) => {
+    const reset = (source: LinkV2Property) => {
 
-        const element = getElement(instance);
+        if (source.type === 'action') return;
 
-        const items = Array.from(instances);
+        if (source.type !== 'observable') return set(source, source.value /* TODO */);
 
-        let parent = element.parentElement;
+        Object.defineProperty(
+            source.instance,
+            source.name,
+            {
+                value: source.value, /* TODO */
+                enumerable: true,
+                configurable: true,
+            }
+        )
+    }
+
+    const map = (source: LinkV2Property, destination: LinkV2Property) => {
+
+        let value = get(source);
+
+        if (typeof value === 'function')
+            value = value.bind(source.instance);
+
+        set(destination, value);
+    }
+
+    const proxy = (source: LinkV2Property) => {
+
+        let value = get(source);
+
+        Object.defineProperty(
+            source.instance,
+            source.name,
+            {
+                enumerable: true,
+                configurable: true,
+                get() {
+                    return value;
+                },
+                set(input) {
+
+                    if (input === value) return;
+
+                    value = input;
+
+                    siblings(source)
+                        .filter((destination) => destination.type === 'inject')
+                        .map((destination) => set(destination, value))
+                }
+            }
+        )
+    }
+
+    const parent = (source: LinkV2Property) => {
+
+        const cache = parents.get(source.instance);
+
+        if (cache) return cache;
+
+        let parent = source.element.parentElement;
 
         while (parent) {
 
             if (parent.shadowRoot) {
 
-                const item = items.find(([, itemConfig]) => itemConfig.element === parent);
+                const item = properties.find((prop) => prop.element === parent && prop.name === source.name);
 
-                if (item) return item[0];
+                if (item) {
+
+                    parents.set(source.instance, item);
+
+                    return item;
+                }
             }
 
             parent = parent.parentElement;
         }
     }
 
-    const update = (instance: LinkInstance, self: boolean) => {
+    const scope = (source: LinkV2Property) => {
 
-        // instance siblings
-        const instances = getSiblings(instance, self);
+        if (!source) return;
 
-        // initial state
-        const state = getState(instances);
+        let input = config.scope(source.instance);
 
-        // for each instance
-        instances.forEach((config, item) => {
+        if (typeof input !== 'undefined') return input;
 
-            // remove old proxy
-            delete item[config.property];
-
-            // set new proxy
-            item[config.property] = new Proxy(
-                state,
-                {
-                    set: (target, property, value) => {
-
-                        target;
-
-                        // TODO
-                        if (config.localState[property] === value) return true;
-
-                        config.localState[property] = value;
-
-                        requestAnimationFrame(() => update(item, true));
-
-                        return true;
-                    }
-                }
-            );
-
-            // rerender current instance
-            requestAnimationFrame(() => forceUpdate(item));
-        });
+        return scope(parent(source)) ?? source.instance['$scope'] ?? (source.instance['$scope'] = Math.random());
     }
 
-    const bind = (instance: LinkInstance, config: Partial<LinkInstanceConfig>) => {
+    const siblings = (source: LinkV2Property) => {
 
-        // create main config
-        const options = {
-            ...config,
-            element: getElement(instance),
-            originalState: instance[config.property],
-            localState: {},
-            group: getGroup(instance, config.scope),
-        } as LinkInstanceConfig;
+        return properties.filter((destination) => {
 
-        // bind instance
-        instances.set(instance, options);
+            if (source === destination) return false;
 
-        // update by instance
-        update(instance, true);
+            if (source.name !== destination.name) return false;
 
-        // TODO
-        ensure(instance);
+            if (scope(source) !== scope(destination)) return false;
+
+            return true;
+        })
     }
 
-    const unbind = (instance: LinkInstance) => {
+    const connect = (source: LinkV2Property) => {
 
-        // load instance
-        const { property, originalState } = instances.get(instance);
+        add(source);
 
-        // remove proxy
-        delete instance[property];
+        // console.log(properties, siblings(source))
 
-        // reset property value
-        instance[property] = originalState;
+        if (source.type === 'observable') proxy(source);
 
-        // update by instance
-        update(instance, false);
+        switch (source.type) {
 
-        // unbind instance
-        instances.delete(instance);
+            // TODO: inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
+            case 'action':
+
+                siblings(source)
+                    .filter((destination) => destination.type === 'inject')
+                    .forEach((destination) => map(source, destination));
+
+                break;
+
+            // update all `inject` or `observable` types from `source` based on `destination`
+            case 'inject':
+
+                siblings(source)
+                    .filter((destination) => destination.type !== 'inject')
+                    .forEach((destination) => map(destination, source));
+
+                break;
+
+            // update all `inject` types from `destination` based on `source`
+            case 'observable':
+
+                siblings(source)
+                    .filter((destination) => destination.type === 'inject')
+                    .forEach((destination) => {
+
+                        map(source, destination);
+
+                        proxy(source);
+                    });
+
+                break;
+        }
     }
 
-    // TODO
-    const rebind = (instance: LinkInstance) => {
+    const disconnect = (source: LinkV2Property) => {
 
-        const siblings = getSiblings(instance, true);
+        if (source.type !== 'action') reset(source);
 
-        siblings
-            .forEach((config, instance) => config.group = getGroup(instance, config.scope));
+        remove(source);
 
-        Array.from(siblings.keys())
-            .forEach((instance) => ensure(instance));
+        if (source.type === 'inject') return;
 
-        Array.from(siblings.keys())
-            .forEach((instance) => update(instance, true));
+        siblings(source)
+            .filter((property) => property.type === 'inject')
+            .forEach(reset);
     }
 
-    const ensure = (instance: LinkInstance) => {
+    const reconnect = (instance: LinkV2Instance) => {
 
-        if (instances.get(instance).group) return;
+        properties
+            .filter((property) => property.instance === instance)
+            .forEach((property) => {
 
-        const parent = getParent(instance);
+                disconnect(property);
 
-        if (!parent) return;
-
-        const config = instances.get(parent)
-
-        config.group = config.group ?? Math.random().toString();
-
-        instances.get(instance).group = config.group;
-
-        update(instance, true);
+                connect(property);
+            })
     }
 
-    const Link = (config: LinkConfig) => (instance: LinkInstance, property: PropertyKey) => {
+    const register = (type: LinkV2PropertyType) => () => (target: LinkV2Target, name: LinkV2PropertyName) => {
 
-        // store componentDidLoad function
-        const load = instance.componentDidLoad;
+        const connected = target.connectedCallback;
 
-        instance.componentDidLoad = function () {
+        target.connectedCallback = function () {
+
+            connected && connected.bind(this)();
+
+            const property: LinkV2Property = {
+                type,
+                name,
+                target,
+                instance: this,
+                value: this[name],
+                element: getElement(this) // TODO
+            }
+
+            connect(property);
+        }
+
+        const disconnected = target.disconnectedCallback;
+
+        target.disconnectedCallback = function () {
+
+            disconnected && disconnected.bind(this)();
 
             // TODO
-            ensure(this);
+            const property = properties.find((property) => property.instance === this && property.name === name);
 
-            // call original componentDidLoad function
-            load && load.bind(this)();
-        }
-
-        // store connectedCallback function
-        const connected = instance.connectedCallback;
-
-        // set new connectedCallback function
-        instance.connectedCallback = function () {
-
-            // bind current instance
-            bind(this, { ...config, property });
-
-            // call original connectedCallback function
-            connected && connected.bind(this)();
-        }
-
-        // store disconnectedCallback function
-        const disconnected = instance.disconnectedCallback;
-
-        // set new disconnectedCallback function
-        instance.disconnectedCallback = function () {
-
-            // unbind current instance
-            unbind(this);
-
-            // call original disconnectedCallback function
-            disconnected && disconnected.bind(this)();
+            disconnect(property);
         }
     }
 
+    const Action = register('action');
+
+    const Inject = register('inject');
+
+    const Observable = register('observable');
+
     return {
-        Link,
-        rebind
+        Action,
+        Inject,
+        Observable,
+        reconnect,
     }
 }
