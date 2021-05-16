@@ -169,44 +169,43 @@ export const createLinkV2 = (config: LinkV2Config) => {
     const connect = (source: LinkV2Property) => {
 
         add(source);
-        console.log(3333333, siblings(source))
+
         if (source.type === 'observable') proxy(source);
 
-        siblings(source)
-            .forEach((destination) => {
+        switch (source.type) {
 
-                switch (source.type) {
+            // TODO: inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
+            case 'action':
 
-                    // TODO: inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
-                    case 'action':
+                siblings(source)
+                    .filter((destination) => destination.type === 'inject')
+                    .forEach((destination) => map(source, destination));
 
-                        if (destination.type !== 'inject') return;
+                break;
 
-                        map(source, destination);
+            // update all `inject` or `observable` types from `source` based on `destination`
+            case 'inject':
 
-                        break;
+                siblings(source)
+                    .filter((destination) => destination.type !== 'inject')
+                    .forEach((destination) => map(destination, source));
 
-                    // update all `inject` or `observable` types from `source` based on `destination`
-                    case 'inject':
+                break;
 
-                        if (destination.type === 'inject') return;
+            // update all `inject` types from `destination` based on `source`
+            case 'observable':
 
-                        map(destination, source);
-
-                        break;
-
-                    // update all `inject` types from `destination` based on `source`
-                    case 'observable':
-
-                        if (destination.type !== 'inject') return;
+                siblings(source)
+                    .filter((destination) => destination.type === 'inject')
+                    .forEach((destination) => {
 
                         map(source, destination);
 
                         proxy(source);
+                    });
 
-                        break;
-                }
-            })
+                break;
+        }
     }
 
     const disconnect = (source: LinkV2Property) => {
