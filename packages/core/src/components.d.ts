@@ -22,7 +22,6 @@ import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
 import { TooltipAnimation, TooltipArrow, TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
-import { SubscribeType } from "./utils/tunnel/tunnel.types";
 export namespace Components {
     interface PlusAspectRatio {
         /**
@@ -1035,11 +1034,6 @@ export namespace Components {
          */
         "repeat"?: TransitionRepeat;
     }
-    interface PlusTunnelConsumer {
-        "context": { [key: string]: any };
-        "renderer": Function;
-        "subscribe"?: SubscribeType;
-    }
 }
 declare global {
     interface HTMLPlusAspectRatioElement extends Components.PlusAspectRatio, HTMLStencilElement {
@@ -1288,12 +1282,6 @@ declare global {
         prototype: HTMLPlusTransitionElement;
         new (): HTMLPlusTransitionElement;
     };
-    interface HTMLPlusTunnelConsumerElement extends Components.PlusTunnelConsumer, HTMLStencilElement {
-    }
-    var HTMLPlusTunnelConsumerElement: {
-        prototype: HTMLPlusTunnelConsumerElement;
-        new (): HTMLPlusTunnelConsumerElement;
-    };
     interface HTMLElementTagNameMap {
         "plus-aspect-ratio": HTMLPlusAspectRatioElement;
         "plus-bottom-navigation": HTMLPlusBottomNavigationElement;
@@ -1336,7 +1324,6 @@ declare global {
         "plus-toolbar-spacer": HTMLPlusToolbarSpacerElement;
         "plus-tooltip": HTMLPlusTooltipElement;
         "plus-transition": HTMLPlusTransitionElement;
-        "plus-tunnel-consumer": HTMLPlusTunnelConsumerElement;
     }
 }
 declare namespace LocalJSX {
@@ -2399,11 +2386,6 @@ declare namespace LocalJSX {
          */
         "repeat"?: TransitionRepeat;
     }
-    interface PlusTunnelConsumer {
-        "context"?: { [key: string]: any };
-        "renderer"?: Function;
-        "subscribe"?: SubscribeType;
-    }
     interface IntrinsicElements {
         "plus-aspect-ratio": PlusAspectRatio;
         "plus-bottom-navigation": PlusBottomNavigation;
@@ -2446,7 +2428,6 @@ declare namespace LocalJSX {
         "plus-toolbar-spacer": PlusToolbarSpacer;
         "plus-tooltip": PlusTooltip;
         "plus-transition": PlusTransition;
-        "plus-tunnel-consumer": PlusTunnelConsumer;
     }
 }
 export { LocalJSX as JSX };
@@ -2494,7 +2475,6 @@ declare module "@stencil/core" {
             "plus-toolbar-spacer": LocalJSX.PlusToolbarSpacer & JSXBase.HTMLAttributes<HTMLPlusToolbarSpacerElement>;
             "plus-tooltip": LocalJSX.PlusTooltip & JSXBase.HTMLAttributes<HTMLPlusTooltipElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
-            "plus-tunnel-consumer": LocalJSX.PlusTunnelConsumer & JSXBase.HTMLAttributes<HTMLPlusTunnelConsumerElement>;
         }
     }
 }

@@ -30,11 +30,17 @@ export class TabsBar {
   @Prop({ reflect: true })
   reverse?: boolean;
 
+  get attributes() {
+    return {
+      'role': 'tablist'
+    }
+  }
+
   render() {
     return (
-      <Host role="tablist">
+      <Host {...this.attributes}>
         <slot />
       </Host>
-    );
+    )
   }
 }

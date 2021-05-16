@@ -61,6 +61,5 @@ export const config: Config = {
     { components: ['plus-tabs', 'plus-tabs-bar', 'plus-tabs-panel', 'plus-tabs-panels', 'plus-tabs-tab'] },
     { components: ['plus-tooltip'] },
     { components: ['plus-transition'] },
-    { components: ['plus-tunnel-consumer'] },
   ]
 }

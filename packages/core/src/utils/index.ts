@@ -1,11 +1,7 @@
 export * from './decorators';
 export * as Helper from './helper';
-export * from './tunnel';
 export * from './animation-v2';
 export * from './animation';
-export * from './channel';
 export * from './click-outside';
-export * from './event';
 export * from './portal';
-export * from './rect-observer';
 export * from './scrollbar';

@@ -1,6 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { channel } from './tabs.channel';
-import { TabsTunnel, TabsTunnelState } from './tabs.tunnel';
+import { Action, Observable } from './tabs.link';
 
 /**
  * TODO
@@ -42,14 +41,17 @@ export class Tabs {
   })
   wowChange!: EventEmitter<string>;
 
-  get state(): TabsTunnelState {
+  @Observable()
+  value1?: string;
+
+  get attributes() {
     return {
-      active: this.value,
-      request: this.request
+
     }
   }
 
-  request = (value: string) => {
+  @Action()
+  request(value: string) {
 
     const event = this.wowChange.emit(value);
 
@@ -57,16 +59,14 @@ export class Tabs {
 
     this.value = value;
 
-    channel.send(this.connector, this.value);
+    this.value1 = value;
   }
 
   render() {
     return (
-      <Host>
-        <TabsTunnel.Provider state={this.state} scope={this}>
-          <slot />
-        </TabsTunnel.Provider>
+      <Host {...this.attributes}>
+        <slot />
       </Host >
-    );
+    )
   }
 }

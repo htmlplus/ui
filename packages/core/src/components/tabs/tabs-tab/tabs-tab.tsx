@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
-import { TabsTunnel } from '../tabs/tabs.tunnel';
+import { Inject } from '../tabs/tabs.link';
 
 /**
  * TODO
@@ -26,22 +26,26 @@ export class TabsTab {
   value?: string;
 
   @State()
-  @TabsTunnel.Inject()
-  active?: string;
+  @Inject()
+  value1?: string;
 
-  @TabsTunnel.Inject()
-  request: (value: string) => void;
+  @Inject()
+  request?: Function = () => console.log('TODO: can not use out of tabs');
+
+  get attributes() {
+    return {
+      'active': this.value1 && this.value1 === this.value,
+      'onClick': () => !this.disabled && this.request(this.value)
+    }
+  }
 
   render() {
     return (
-      <Host
-        active={this.active && this.active === this.value}
-        onClick={() => !this.disabled && this.request(this.value)}
-      >
+      <Host {...this.attributes}>
         <span>
           <slot />
         </span>
       </Host>
-    );
+    )
   }
 }

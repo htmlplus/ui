@@ -19,15 +19,22 @@ export type LinkV2Config = {
 
 export const createLinkV2 = (config: LinkV2Config) => {
 
+    const children = new Map<LinkV2Instance, Set<LinkV2Property>>();
+
+    const parents = new Map<LinkV2Instance, LinkV2Property>();
+
     const properties: Array<LinkV2Property> = [];
 
     const add = (source: LinkV2Property) => {
 
-        const index = properties.findIndex((property) => property === source);
-
-        if (index !== -1) return;
-
         properties.push(source);
+
+        if (!children.has(source.instance))
+            children.set(source.instance, new Set<LinkV2Property>());
+
+        const siblings = children.get(source.instance);
+
+        siblings.add(source);
     }
 
     const remove = (source: LinkV2Property) => {
@@ -37,6 +44,17 @@ export const createLinkV2 = (config: LinkV2Config) => {
         if (index === -1) return;
 
         properties.splice(index, 1);
+
+        const siblings = children.get(source.instance);
+
+        siblings.delete(source);
+
+        if (!siblings.size) {
+
+            children.delete(source.instance);
+
+            parents.delete(source.instance);
+        }
     }
 
     const get = (source: LinkV2Property) => {
@@ -62,10 +80,6 @@ export const createLinkV2 = (config: LinkV2Config) => {
                 configurable: true,
             }
         )
-    }
-
-    const scope = (source: LinkV2Property) => {
-        return config.scope(source.instance);
     }
 
     const map = (source: LinkV2Property, destination: LinkV2Property) => {
@@ -105,12 +119,11 @@ export const createLinkV2 = (config: LinkV2Config) => {
         )
     }
 
-    // TODO
     const parent = (source: LinkV2Property) => {
 
-        if (typeof scope(source) !== 'undefined') return;
+        const cache = parents.get(source.instance);
 
-        if (source['parent']) return source['parent'];
+        if (cache) return cache;
 
         let parent = source.element.parentElement;
 
@@ -118,11 +131,11 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             if (parent.shadowRoot) {
 
-                const item = properties.find((prop) => prop.element === parent);
+                const item = properties.find((prop) => prop.element === parent && prop.name === source.name);
 
                 if (item) {
 
-                    source['parent'] = item;
+                    parents.set(source.instance, item);
 
                     return item;
                 }
@@ -130,6 +143,17 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             parent = parent.parentElement;
         }
+    }
+
+    const scope = (source: LinkV2Property) => {
+
+        if (!source) return;
+
+        let input = config.scope(source.instance);
+
+        if (typeof input !== 'undefined') return input;
+
+        return scope(parent(source)) ?? source['$scope'] ?? (source['$scope'] = Math.random());
     }
 
     const siblings = (source: LinkV2Property) => {
@@ -140,35 +164,17 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             if (source.name !== destination.name) return false;
 
-            if (
-                scope(source) &&
-                scope(source) === scope(destination)
-            ) return true;
+            if (scope(source) !== scope(destination)) return false;
 
-            console.log(1, source)
-
-            if (
-                !scope(source) &&
-                parent(source) === destination
-            ) {
-
-                console.log(2, destination)
-
-                return true;
-            }
-
-            // if (
-            //     !scope(destination) &&
-            //     destination['parent'] === source
-            // ) return true;
-
-            return false;
+            return true;
         })
     }
 
     const connect = (source: LinkV2Property) => {
 
         add(source);
+
+        console.log(properties)
 
         if (source.type === 'observable') proxy(source);
 
