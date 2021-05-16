@@ -1351,6 +1351,10 @@ declare namespace LocalJSX {
          */
         "labelPosition"?: 'bottom' | 'side';
         /**
+          * TODO
+         */
+        "onWowChange"?: (event: CustomEvent<any>) => void;
+        /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
         "scrollTarget"?: string;
