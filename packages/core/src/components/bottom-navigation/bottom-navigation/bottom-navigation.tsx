@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { AnimationV2, GlobalConfig } from '@app/utils';
 import { Action, Observable } from './bottom-navigation.link';
 // import { } from './toast.types';
@@ -69,6 +69,15 @@ export class BottomNavigation {
   @Prop({ mutable: true })
   value?: any;
 
+  /**
+   * TODO
+   */
+  @Event({
+    bubbles: false,
+    cancelable: true
+  })
+  wowChange!: EventEmitter<any>;
+
   @GlobalConfig('bottomNavigation')
   config?;
 
@@ -105,7 +114,14 @@ export class BottomNavigation {
 
   @Action()
   change(value: any) {
-    this.tunnel = value;
+
+    const event = this.wowChange.emit(value);
+
+    if (event.defaultPrevented) return;
+
+    this.value = value;
+
+    this.broadcast();
   }
 
   init() {
