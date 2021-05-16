@@ -874,7 +874,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
         /**
           * TODO
          */
@@ -898,7 +898,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTabsPanels {
         /**
@@ -914,7 +914,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTemplate {
         /**
@@ -2190,11 +2190,11 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "onWowChange"?: (event: CustomEvent<string>) => void;
+        "onWowChange"?: (event: CustomEvent<any>) => void;
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
         /**
           * TODO
          */
@@ -2218,7 +2218,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTabsPanels {
         /**
@@ -2234,7 +2234,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTemplate {
         /**

@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
-import { } from '../bottom-navigation/bottom-navigation.link';
+import { Inject } from '../bottom-navigation/bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
@@ -31,9 +31,15 @@ export class BottomNavigationItem {
   @GlobalConfig('bottomNavigationItem')
   config?;
 
+  @Inject()
+  change?: Function = () => console.log('TODO: can not use out of bottom navigation');
+
+  @Inject()
+  tunnel?: any;
+
   get attributes() {
     return {
-      // 'grow': this.link.grow,
+      'grow': this.tunnel?.grow,
       'role': 'button',
       'state': this.state,
       'onClick': this.onClick
@@ -43,8 +49,8 @@ export class BottomNavigationItem {
   get classes() {
     return {
       'root': true,
-      // 'shift': this.link.shift,
-      // [this.link.labelPosition]: true,
+      'shift': this.tunnel?.shift,
+      [this.tunnel?.labelPosition]: true,
     }
   }
 
@@ -53,8 +59,7 @@ export class BottomNavigationItem {
   }
 
   get state() {
-    return;
-    // return this.key === this.link.value ? 'active' : 'deactive';
+    return this.key === this.tunnel?.value ? 'active' : 'deactive';
   }
 
   /**
@@ -75,7 +80,7 @@ export class BottomNavigationItem {
 
   @Bind
   onClick() {
-    // this.link.change(this.key);
+    this.change(this.key);
   }
 
   /**

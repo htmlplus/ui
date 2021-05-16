@@ -2,6 +2,7 @@ import { Component, Host, Prop, h, State } from '@stencil/core';
 import { Inject, reconnect } from '../drawer/drawer.link';
 
 /**
+ * TODO
  * @group drawer
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
@@ -24,18 +25,22 @@ export class DrawerToggler {
   connector?: string;
 
   @Inject()
-  @State()
-  open1?: boolean;
+  toggle?: Function = () => console.log('TODO: can not use out of drawer');
 
   @Inject()
-  toggle?: Function = () => console.log('TODO: can not use out of drawer');
+  @State()
+  tunnel?: boolean;
 
   get attributes() {
     return {
       'role': 'button',
-      'state': this.open1 ? 'open' : 'close',
-      'onClick': () => this.toggle()
+      'state': this.tunnel ? 'open' : 'close',
+      'onClick': this.toggle
     }
+  }
+
+  get text() {
+    return this.tunnel ? 'Close' : 'Open';
   }
 
   /**
@@ -60,7 +65,7 @@ export class DrawerToggler {
     return (
       <Host {...this.attributes}>
         <slot>
-          {this.open1 ? 'Close' : 'Open'}
+          {this.text}
         </slot>
         {/* TODO */}
         {/* <slot name="close" /> */}

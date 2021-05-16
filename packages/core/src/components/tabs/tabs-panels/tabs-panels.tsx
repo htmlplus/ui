@@ -21,11 +21,11 @@ export class TabsPanels {
 
   // TODO
   @Inject()
-  active?: string;
+  tunnel?: any;
 
   get attributes() {
     return {
-
+      // TODO
     }
   }
 

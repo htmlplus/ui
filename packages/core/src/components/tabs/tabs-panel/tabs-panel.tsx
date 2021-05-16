@@ -17,15 +17,15 @@ export class TabsPanel {
    * TODO
    */
   @Prop()
-  value?: string;
+  value?: any;
 
   @State()
   @Inject()
-  active?: string;
+  tunnel?: any;
 
   get attributes() {
     return {
-      'active': this.active && this.active === this.value
+      'active': this.tunnel && this.tunnel === this.value
     }
   }
 

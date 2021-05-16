@@ -75,10 +75,10 @@ export class BottomNavigation {
   @Element()
   $host!: HTMLElement;
 
-  @Observable()
-  active?: any;
-
   animate?: AnimationV2;
+
+  @Observable()
+  tunnel?: any;
 
   get attributes() {
     return {
@@ -93,6 +93,20 @@ export class BottomNavigation {
   /**
    * Internal Methods
    */
+
+  broadcast() {
+    this.tunnel = {
+      value: this.value,
+      grow: this.grow,
+      labelPosition: this.labelPosition,
+      shift: this.shift,
+    }
+  }
+
+  @Action()
+  change(value: any) {
+    this.tunnel = value;
+  }
 
   init() {
     this.animate = new AnimationV2({
@@ -111,11 +125,6 @@ export class BottomNavigation {
     })
   }
 
-  @Action()
-  change(value: any) {
-    this.active = value;
-  }
-
   /**
    * Watchers
    */
@@ -129,15 +138,9 @@ export class BottomNavigation {
     switch (name) {
 
       case 'grow':
-        // this.link.grow = value;
-        break;
-
       case 'labelPosition':
-        // this.link.labelPosition = value;
-        break;
-
       case 'shift':
-        // this.link.shift = value;
+        this.broadcast();
         break;
     }
   }

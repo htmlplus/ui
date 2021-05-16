@@ -140,7 +140,7 @@ export class Drawer {
   animations: { open?: Animation, mini?: Animation } = {};
 
   @Observable()
-  open1?: boolean;
+  tunnel?: boolean;
 
   get attributes() {
     return {
@@ -238,7 +238,7 @@ export class Drawer {
    */
 
   broadcast(value) {
-    this.open1 = value;
+    this.tunnel = value;
   }
 
   dispose() {

@@ -143,11 +143,11 @@ export class Toast {
 
   isOpen?: boolean;
 
-  @Observable()
-  open1?: boolean;
-
   // TODO
   timeout?;
+
+  @Observable()
+  tunnel?: boolean;
 
   get attributes() {
     return {
@@ -299,7 +299,7 @@ export class Toast {
 
     this.animate.leave({
       onLeave: () => {
-        this.open1 = false;
+        this.tunnel = false;
       },
       onLeaved: () => {
 
@@ -326,7 +326,7 @@ export class Toast {
     this.animate.enter({
       onEnter: () => {
 
-        this.open1 = true;
+        this.tunnel = true;
 
         this.onShow();
       },

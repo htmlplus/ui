@@ -18,7 +18,7 @@ export class Tabs {
    * TODO
    */
   @Prop({ mutable: true })
-  value?: string;
+  value?: any;
 
   /**
    * TODO
@@ -39,14 +39,14 @@ export class Tabs {
     bubbles: false,
     cancelable: true
   })
-  wowChange!: EventEmitter<string>;
+  wowChange!: EventEmitter<any>;
 
   @Observable()
-  active?: string;
+  tunnel?: any;
 
   get attributes() {
     return {
-
+      // TODO
     }
   }
 
@@ -55,7 +55,7 @@ export class Tabs {
    */
 
   @Action()
-  request(value: string) {
+  change(value: any) {
 
     const event = this.wowChange.emit(value);
 
@@ -76,15 +76,15 @@ export class Tabs {
 
     switch (name) {
 
-      case 'value':
-
-        this.active = value;
-
-        break;
-
       case 'connector':
 
         reconnect(this);
+
+        break;
+
+      case 'value':
+
+        this.tunnel = value;
 
         break;
     }
@@ -95,7 +95,7 @@ export class Tabs {
    */
 
   componentDidLoad() {
-    this.active = this.value;
+    this.tunnel = this.value;
   }
 
   render() {

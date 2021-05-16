@@ -185,10 +185,10 @@ export class Dialog {
 
   isOpen?: boolean;
 
-  @Observable()
-  open1?: boolean;
-
   portalInstance?: Portal;
+
+  @Observable()
+  tunnel?: boolean;
 
   get attributes() {
 
@@ -320,7 +320,7 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
-        this.open1 = false;
+        this.tunnel = false;
       },
       onLeaved: () => {
 
@@ -354,7 +354,7 @@ export class Dialog {
     this.animate.enter({
       onEnter: () => {
 
-        this.open1 = true;
+        this.tunnel = true;
 
         this.onShow();
       },
@@ -409,7 +409,7 @@ export class Dialog {
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
 
     // TODO: new link
-    this.open1 = false;
+    this.tunnel = false;
   }
 
   onShow() {
