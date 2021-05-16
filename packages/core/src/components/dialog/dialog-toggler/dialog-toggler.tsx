@@ -28,7 +28,7 @@ export class DialogToggler {
   open1?: boolean;
 
   @Inject()
-  toggle?: Function;
+  toggle?: Function = () => console.log('TODO: can not use out of dialog');
 
   get attributes() {
     return {

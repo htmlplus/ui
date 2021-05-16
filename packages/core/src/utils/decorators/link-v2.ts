@@ -1,3 +1,5 @@
+import { getElement } from '@stencil/core';
+
 type LinkV2Instance = any;
 type LinkV2PropertyName = string;
 type LinkV2PropertyType = 'action' | 'inject' | 'observable';
@@ -7,6 +9,7 @@ type LinkV2Property = {
     instance?: LinkV2Instance;
     target?: LinkV2Target;
     value?: any;
+    element?: HTMLElement;
 }
 type LinkV2Target = any;
 
@@ -102,6 +105,33 @@ export const createLinkV2 = (config: LinkV2Config) => {
         )
     }
 
+    // TODO
+    const parent = (source: LinkV2Property) => {
+
+        if (typeof scope(source) !== 'undefined') return;
+
+        if (source['parent']) return source['parent'];
+
+        let parent = source.element.parentElement;
+
+        while (parent) {
+
+            if (parent.shadowRoot) {
+
+                const item = properties.find((prop) => prop.element === parent);
+
+                if (item) {
+
+                    source['parent'] = item;
+
+                    return item;
+                }
+            }
+
+            parent = parent.parentElement;
+        }
+    }
+
     const siblings = (source: LinkV2Property) => {
 
         return properties.filter((destination) => {
@@ -110,16 +140,36 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             if (source.name !== destination.name) return false;
 
-            if (scope(source) !== scope(destination)) return false;
+            if (
+                scope(source) &&
+                scope(source) === scope(destination)
+            ) return true;
 
-            return true;
+            console.log(1, source)
+
+            if (
+                !scope(source) &&
+                parent(source) === destination
+            ) {
+
+                console.log(2, destination)
+
+                return true;
+            }
+
+            // if (
+            //     !scope(destination) &&
+            //     destination['parent'] === source
+            // ) return true;
+
+            return false;
         })
     }
 
     const connect = (source: LinkV2Property) => {
 
         add(source);
-
+        console.log(3333333, siblings(source))
         if (source.type === 'observable') proxy(source);
 
         siblings(source)
@@ -157,8 +207,6 @@ export const createLinkV2 = (config: LinkV2Config) => {
                         break;
                 }
             })
-
-        console.log(1, properties)
     }
 
     const disconnect = (source: LinkV2Property) => {
@@ -200,6 +248,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
                 target,
                 instance: this,
                 value: this[name],
+                element: getElement(this) // TODO
             }
 
             connect(property);
