@@ -5,6 +5,5 @@ export * from './global-config';
 export * from './global-state';
 export * from './is-rtl';
 export * from './link';
-export * from './link-v2';
 export * from './media';
 export * from './slots';

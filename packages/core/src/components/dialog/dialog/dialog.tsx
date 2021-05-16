@@ -470,7 +470,7 @@ export class Dialog {
             </div>
           </div>
         </div>
-      </Host >
+      </Host>
     )
   }
 }

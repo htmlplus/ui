@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { AnimationV2, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
-import { ToastLink, Link, rebind } from './toast.link';
+import { Action, Observable, reconnect } from './toast.link';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
 /**
@@ -143,13 +143,11 @@ export class Toast {
 
   isOpen?: boolean;
 
+  @Observable()
+  open1?: boolean;
+
   // TODO
   timeout?;
-
-  @Link({ scope: '[connector]' })
-  link: ToastLink = {
-    toggle: () => this.toggle()
-  }
 
   get attributes() {
     return {
@@ -207,6 +205,7 @@ export class Toast {
     this.tryShow(true, false);
   }
 
+  @Action()
   toggle() {
     this.isOpen ? this.hide() : this.show();
   }
@@ -300,7 +299,7 @@ export class Toast {
 
     this.animate.leave({
       onLeave: () => {
-        this.link.open = false;
+        this.open1 = false;
       },
       onLeaved: () => {
 
@@ -327,7 +326,7 @@ export class Toast {
     this.animate.enter({
       onEnter: () => {
 
-        this.link.open = true;
+        this.open1 = true;
 
         this.onShow();
       },
@@ -354,7 +353,7 @@ export class Toast {
 
       case 'connector':
 
-        rebind(this);
+        reconnect(this);
 
         break;
 

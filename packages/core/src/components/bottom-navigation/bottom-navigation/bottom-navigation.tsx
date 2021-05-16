@@ -1,6 +1,6 @@
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { AnimationV2, GlobalConfig } from '@app/utils';
-import { BottomNavigationLink, Link } from './bottom-navigation.link';
+import { Action, Observable } from './bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
@@ -66,7 +66,7 @@ export class BottomNavigation {
   /**
    * TODO
    */
-  @Prop()
+  @Prop({ mutable: true })
   value?: any;
 
   @GlobalConfig('bottomNavigation')
@@ -75,12 +75,10 @@ export class BottomNavigation {
   @Element()
   $host!: HTMLElement;
 
-  animate?: AnimationV2;
+  @Observable()
+  active?: any;
 
-  @Link({ scope: 'TODO' })
-  link: BottomNavigationLink = {
-    change: (value) => this.change(value)
-  };
+  animate?: AnimationV2;
 
   get attributes() {
     return {
@@ -113,8 +111,9 @@ export class BottomNavigation {
     })
   }
 
-  change(value: string) {
-    this.link.value = value;
+  @Action()
+  change(value: any) {
+    this.active = value;
   }
 
   /**
@@ -125,20 +124,20 @@ export class BottomNavigation {
 
     if (next === prev) return false;
 
-    const value = this[name];
+    // const value = this[name];
 
     switch (name) {
 
       case 'grow':
-        this.link.grow = value;
+        // this.link.grow = value;
         break;
 
       case 'labelPosition':
-        this.link.labelPosition = value;
+        // this.link.labelPosition = value;
         break;
 
       case 'shift':
-        this.link.shift = value;
+        // this.link.shift = value;
         break;
     }
   }
@@ -153,9 +152,9 @@ export class BottomNavigation {
 
   connectedCallback() {
 
-    this.link.grow = this.grow;
-    this.link.labelPosition = this.labelPosition;
-    this.link.shift = this.shift;
+    // this.link.grow = this.grow;
+    // this.link.labelPosition = this.labelPosition;
+    // this.link.shift = this.shift;
 
     this.init();
 

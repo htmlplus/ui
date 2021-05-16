@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
-import { BottomNavigationLink, Link } from '../bottom-navigation/bottom-navigation.link';
+import { } from '../bottom-navigation/bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
@@ -31,12 +31,9 @@ export class BottomNavigationItem {
   @GlobalConfig('bottomNavigationItem')
   config?;
 
-  @Link({ scope: 'TODO' })
-  link: BottomNavigationLink;
-
   get attributes() {
     return {
-      'grow': this.link.grow,
+      // 'grow': this.link.grow,
       'role': 'button',
       'state': this.state,
       'onClick': this.onClick
@@ -46,8 +43,8 @@ export class BottomNavigationItem {
   get classes() {
     return {
       'root': true,
-      'shift': this.link.shift,
-      [this.link.labelPosition]: true,
+      // 'shift': this.link.shift,
+      // [this.link.labelPosition]: true,
     }
   }
 
@@ -56,7 +53,8 @@ export class BottomNavigationItem {
   }
 
   get state() {
-    return this.key === this.link.value ? 'active' : 'deactive';
+    return;
+    // return this.key === this.link.value ? 'active' : 'deactive';
   }
 
   /**
@@ -77,7 +75,7 @@ export class BottomNavigationItem {
 
   @Bind
   onClick() {
-    this.link.change(this.key);
+    // this.link.change(this.key);
   }
 
   /**

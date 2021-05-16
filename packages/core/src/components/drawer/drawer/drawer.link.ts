@@ -1,13 +1,7 @@
-import { createLink } from '@app/utils';
+import { createLinkV2 } from '@app/utils';
 
-export interface DrawerLink {
-    open?: boolean;
-    toggle?: Function;
-}
+const link = createLinkV2({
+    scope: (i) => i.connector
+})
 
-const initial = {
-    open: false,
-    toggle: () => undefined
-};
-
-export const { Link, rebind } = createLink<DrawerLink>(initial);
+export const { Action, Inject, Observable, reconnect } = link;
