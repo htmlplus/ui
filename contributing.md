@@ -29,7 +29,7 @@ How do you wish to contribute?
 This article explains the process and guidelines for contributing code to the HTMLPLUS project.
 
 ### Knowledge requirements
-TODO: Ma be shoma pishnahad mikonim ke ghabl az har eghdami shoma bayad be mavarede zir eshraf nesbi dashte bashim.
+TODO: Before taking any action, we suggest that you have relative knowledge of the following.
 - [TypeScript](https://www.typescriptlang.org)
 - [StencilJs](https://stenciljs.com)
 - [SASS](https://sass-lang.com)
