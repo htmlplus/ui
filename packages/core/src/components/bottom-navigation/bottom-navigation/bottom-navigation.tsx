@@ -47,7 +47,7 @@ export class BottomNavigation {
    * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
    */
   @Prop()
-  scrollTarget: string;
+  scrollTarget: string | HTMLElement;
 
   /**
    * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
@@ -124,7 +124,8 @@ export class BottomNavigation {
     this.broadcast();
   }
 
-  init() {
+  initialize() {
+
     this.animate = new AnimationV2({
       key: 'state',
       source: () => this.$host,
@@ -138,7 +139,13 @@ export class BottomNavigation {
         leaving: 'closing',
         leaved: 'closed',
       }
-    })
+    });
+
+    this.broadcast();
+  }
+
+  terminate() {
+    this.animate?.dispose();
   }
 
   /**
@@ -170,20 +177,11 @@ export class BottomNavigation {
    */
 
   connectedCallback() {
-
-    // this.link.grow = this.grow;
-    // this.link.labelPosition = this.labelPosition;
-    // this.link.shift = this.shift;
-
-    this.init();
-
-    // if (!this.open) return;
-
-    // this.tryShow(false, true);
+    this.initialize();
   }
 
   disconnectedCallback() {
-    // this.dispose();
+    this.terminate();
   }
 
   render() {

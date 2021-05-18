@@ -1,7 +1,6 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, State, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
 import { Inject } from '../bottom-navigation/bottom-navigation.link';
-// import { } from './toast.types';
 
 /**
  * TODO
@@ -35,6 +34,7 @@ export class BottomNavigationItem {
   change?: Function = () => console.log('TODO: can not use out of bottom navigation');
 
   @Inject()
+  @State()
   tunnel?: any;
 
   get attributes() {
@@ -63,23 +63,14 @@ export class BottomNavigationItem {
   }
 
   /**
-   * External Methods
-   */
-
-  /**
-   * Internal Methods
-   */
-
-  /**
-   * Watchers
-   */
-
-  /**
    * Events handler
    */
 
   @Bind
   onClick() {
+
+    if (this.disabled) return;
+
     this.change(this.key);
   }
 

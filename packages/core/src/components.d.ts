@@ -49,7 +49,7 @@ export namespace Components {
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
-        "scrollTarget": string;
+        "scrollTarget": string | HTMLElement;
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
@@ -1357,7 +1357,7 @@ declare namespace LocalJSX {
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
-        "scrollTarget"?: string;
+        "scrollTarget"?: string | HTMLElement;
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
