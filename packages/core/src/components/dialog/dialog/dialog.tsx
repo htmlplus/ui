@@ -304,16 +304,9 @@ export class Dialog {
 
   terminate() {
 
-    this.animate?.dispose();
-
-    // TODO
     this.onHide();
 
-    // TODO
-    // this.resetEvents();
-    // ClickOutside.remove(this.$cell);
-    // Scrollbar.reset(this);
-    // this.unregister();
+    this.animate?.dispose();
   }
 
   tryHide(animation, silent) {
@@ -418,7 +411,7 @@ export class Dialog {
     // unregister dialog's instance
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
 
-    // TODO: new link
+    // TODO: experimantal new link
     this.tunnel = false;
   }
 
@@ -474,7 +467,8 @@ export class Dialog {
    * Lifecycles
    */
 
-  connectedCallback() {
+  // it's can not be `connectedCallback`, because ClickOutside incompatible 
+  componentDidLoad() {
     this.initialize();
   }
 
