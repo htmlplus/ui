@@ -234,7 +234,7 @@ export class Dialog {
         fullscreen: this.fullscreen,
         scrollable: this.scrollable
       }
-    );
+    )
   }
 
   get isCurrent() {
@@ -280,6 +280,10 @@ export class Dialog {
    * Internal Methods
    */
 
+  broadcast(value) {
+    this.tunnel = value;
+  }
+
   initialize() {
 
     this.animate = new AnimationV2({
@@ -319,7 +323,7 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
-        this.tunnel = false;
+        this.broadcast(false);
       },
       onLeaved: () => {
 
@@ -346,7 +350,7 @@ export class Dialog {
     this.animate.enter({
       onEnter: () => {
 
-        this.tunnel = true;
+        this.broadcast(true);
 
         this.onShow();
       },
@@ -412,7 +416,7 @@ export class Dialog {
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
 
     // TODO: experimantal new link
-    this.tunnel = false;
+    this.broadcast(false);
   }
 
   onShow() {
@@ -482,7 +486,7 @@ export class Dialog {
         {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">
-            <div class="cell" ref={(element) => (this.$cell = element)}>
+            <div class="cell" ref={($element) => (this.$cell = $element)}>
               <slot />
             </div>
           </div>
