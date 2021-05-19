@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, GlobalConfig } from '@app/utils';
+import { Animation, GlobalConfig } from '@app/utils';
 import { Action, Observable } from './bottom-navigation.link';
 // import { } from './toast.types';
 
@@ -84,7 +84,7 @@ export class BottomNavigation {
   @Element()
   $host!: HTMLElement;
 
-  animate?: AnimationV2;
+  animate?: Animation;
 
   @Observable()
   tunnel?: any;
@@ -126,7 +126,7 @@ export class BottomNavigation {
 
   initialize() {
 
-    this.animate = new AnimationV2({
+    this.animate = new Animation({
       key: 'state',
       source: () => this.$host,
       target: () => this.$host,

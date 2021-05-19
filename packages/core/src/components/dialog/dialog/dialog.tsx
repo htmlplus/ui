@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
+import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
 import { Action, Observable, reconnect } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 
@@ -181,7 +181,7 @@ export class Dialog {
 
   $cell!: HTMLElement;
 
-  animate?: AnimationV2;
+  animate?: Animation;
 
   isOpen?: boolean;
 
@@ -286,7 +286,7 @@ export class Dialog {
 
   initialize() {
 
-    this.animate = new AnimationV2({
+    this.animate = new Animation({
       key: 'state',
       source: () => this.$host,
       target: () => this.$host,

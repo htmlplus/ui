@@ -373,11 +373,15 @@ export namespace Components {
     }
     interface PlusDrawer {
         /**
+          * TODO
+         */
+        "animation"?: string;
+        /**
           * Activate the drawer's backdrop to show or not.
          */
         "backdrop"?: DrawerBackdrop;
         /**
-          * Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met.
+          * Sets the mobile breakpoint to apply alternate styles for mobile devices  when the breakpoint value is met.
          */
         "breakpoint"?: DrawerBreakpoint;
         /**
@@ -385,7 +389,7 @@ export namespace Components {
          */
         "connector"?: string;
         /**
-          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce.
+          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced.  If false doesn't allow the width of the drawer to reduce.
          */
         "flexible"?: boolean;
         /**
@@ -401,7 +405,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it.
+          * If true, don't allow the drawer to be closed by clicking outside of the drawer.  If false, the drawer will be closed by clicking outside of it.
          */
         "persistent"?: boolean;
         /**
@@ -413,7 +417,7 @@ export namespace Components {
          */
         "size"?: string;
         /**
-          * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background.
+          * On default the drawer is considered as a part of the main container.  it pushes the other contents on opening.  If true it will be opened over other contents and doesn't affect other contents.  A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
         "temporary"?: boolean | 'on-breakpoint';
     }
@@ -1657,11 +1661,15 @@ declare namespace LocalJSX {
     }
     interface PlusDrawer {
         /**
+          * TODO
+         */
+        "animation"?: string;
+        /**
           * Activate the drawer's backdrop to show or not.
          */
         "backdrop"?: DrawerBackdrop;
         /**
-          * Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met.
+          * Sets the mobile breakpoint to apply alternate styles for mobile devices  when the breakpoint value is met.
          */
         "breakpoint"?: DrawerBreakpoint;
         /**
@@ -1669,7 +1677,7 @@ declare namespace LocalJSX {
          */
         "connector"?: string;
         /**
-          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce.
+          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced.  If false doesn't allow the width of the drawer to reduce.
          */
         "flexible"?: boolean;
         /**
@@ -1701,7 +1709,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it.
+          * If true, don't allow the drawer to be closed by clicking outside of the drawer.  If false, the drawer will be closed by clicking outside of it.
          */
         "persistent"?: boolean;
         /**
@@ -1713,7 +1721,7 @@ declare namespace LocalJSX {
          */
         "size"?: string;
         /**
-          * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background.
+          * On default the drawer is considered as a part of the main container.  it pushes the other contents on opening.  If true it will be opened over other contents and doesn't affect other contents.  A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
         "temporary"?: boolean | 'on-breakpoint';
     }

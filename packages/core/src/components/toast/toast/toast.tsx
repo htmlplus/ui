@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
+import { Animation, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
 import { Action, Observable, reconnect } from './toast.link';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
@@ -139,7 +139,7 @@ export class Toast {
 
   $root!: HTMLElement;
 
-  animate?: AnimationV2;
+  animate?: Animation;
 
   isOpen?: boolean;
 
@@ -270,7 +270,7 @@ export class Toast {
   }
 
   init() {
-    this.animate = new AnimationV2({
+    this.animate = new Animation({
       key: 'state',
       source: () => this.$root,
       target: () => this.$host,
