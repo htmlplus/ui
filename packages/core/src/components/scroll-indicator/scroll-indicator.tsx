@@ -3,7 +3,7 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
- * With this component, you can build a progress bar displaying how far a user has scroll down the page or tag.
+ * Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.
  * @part indicator - TODO
  * @examples default
  */
@@ -15,19 +15,19 @@ import { ScrollIndicatorSource } from './scroll-indicator.types';
 export class ScrollIndicator {
 
   /**
-   * Disables the event.
+   * Disables the component function.
    */
   @Prop()
   disabled?: boolean;
 
   /**
-   * Source of scroll.
+   * Specifies the source of scroll.
    */
   @Prop()
   source?: ScrollIndicatorSource = 'document';
 
   /**
-   * Scroll vertical.
+   * Indicates which scroll (horizontal or vertical) to be used as its source.
    */
   // @Prop({ reflect: true })
   vertical?: boolean;
