@@ -1,4 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
+import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
@@ -22,6 +23,9 @@ export class TabsPanel {
   @State()
   @Inject()
   tunnel?: any;
+
+  @GlobalConfig('tabsPanel')
+  config?;
 
   get attributes() {
     return {

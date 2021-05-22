@@ -1,4 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core';
+import { GlobalConfig } from '@app/utils';
 
 /**
  * TODO
@@ -29,6 +30,11 @@ export class TabsBar {
    */
   @Prop({ reflect: true })
   reverse?: boolean;
+
+  @GlobalConfig('tabsBar', {
+    justify: 'start'
+  })
+  config?;
 
   get attributes() {
     return {

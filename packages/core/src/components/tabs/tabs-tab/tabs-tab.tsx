@@ -1,4 +1,5 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
+import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
@@ -24,6 +25,9 @@ export class TabsTab {
    */
   @Prop()
   value?: any;
+
+  @GlobalConfig('tabsTab')
+  config?;
 
   @State()
   @Inject()

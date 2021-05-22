@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { GlobalConfig } from '@app/utils';
 import { Action, Observable, reconnect } from './tabs.link';
 
 /**
@@ -44,6 +45,9 @@ export class Tabs {
   @Observable()
   tunnel?: any;
 
+  @GlobalConfig('tabs')
+  config?;
+
   get attributes() {
     return {
       // TODO
@@ -54,6 +58,10 @@ export class Tabs {
    * Internal Methods
    */
 
+  broadcast(value) {
+    this.tunnel = value;
+  }
+
   @Action()
   change(value: any) {
 
@@ -63,6 +71,12 @@ export class Tabs {
 
     this.value = value;
   }
+
+  initialize() {
+    this.broadcast(this.value);
+  }
+
+  terminate() { }
 
   /**
    * Watchers
@@ -95,7 +109,11 @@ export class Tabs {
    */
 
   componentDidLoad() {
-    this.tunnel = this.value;
+    this.initialize();
+  }
+
+  disconnectedCallback() {
+    this.terminate();
   }
 
   render() {

@@ -1,5 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
-import { Inject } from '../tabs/tabs.link';
+import { GlobalConfig } from '@app/utils';
+import { Inject, reconnect } from '../tabs/tabs.link';
 
 /**
  * TODO
@@ -19,13 +20,34 @@ export class TabsPanels {
   @Prop()
   connector?: string;
 
-  // TODO
+  // TODO: it's bridge
   @Inject()
   tunnel?: any;
+
+  @GlobalConfig('tabsPanels')
+  config?;
 
   get attributes() {
     return {
       // TODO
+    }
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return false;
+
+    switch (name) {
+
+      case 'connector':
+
+        // reconnect(this);
+
+        break;
     }
   }
 
