@@ -10,7 +10,7 @@ import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DividerSize, DividerType } from "./components/divider/divider.types";
-import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
+import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerTemporary } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
@@ -419,7 +419,7 @@ export namespace Components {
         /**
           * On default the drawer is considered as a part of the main container.  it pushes the other contents on opening.  If true it will be opened over other contents and doesn't affect other contents.  A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
-        "temporary"?: boolean | 'on-breakpoint';
+        "temporary"?: DrawerTemporary;
     }
     interface PlusDrawerToggler {
         /**
@@ -1723,7 +1723,7 @@ declare namespace LocalJSX {
         /**
           * On default the drawer is considered as a part of the main container.  it pushes the other contents on opening.  If true it will be opened over other contents and doesn't affect other contents.  A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
-        "temporary"?: boolean | 'on-breakpoint';
+        "temporary"?: DrawerTemporary;
     }
     interface PlusDrawerToggler {
         /**

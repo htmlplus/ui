@@ -2,145 +2,111 @@
 @import 'drawer.variables';
 
 :host {
+  // @prop You can use it to set the width size of the drawer using css variables.
+  --plus-drawer-size: 280px;
 
-    // @prop You can use it to set the width size of the drawer using css variables.
-    --plus-drawer-size: 280px;
-
-    // @prop You can use it to set the minimum width size of the drawer using css variables.
-    --plus-drawer-mini-size: 0;
+  // @prop You can use it to set the minimum width size of the drawer using css variables.
+  --plus-drawer-mini-size: 80px;
 }
 
 :host {
-    display: none;
-    position: relative;
-    z-index: $drawer-z-index;
-}
-
-// TODO
-:host([temporary]:not([temporary=on-breakpoint])),
-:host([temporary=on-breakpoint][state=mobile]) {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
-:host(.open) {
-    --plus-drawer-margin         : var(--plus-drawer-margin-max);
-    --plus-drawer-margin-min     : calc(-1 * var(--plus-drawer-size));
-    --plus-drawer-margin-max     : 0;
-    display: block;
-}
-
-:host(.mini) {
-    --plus-drawer-margin-min     : calc(-1 * var(--plus-drawer-size));
-    --plus-drawer-margin-max     : calc(-1 * var(--plus-drawer-size) + var(--plus-drawer-mini-size));
-    --plus-drawer-mini-margin-min: 0;
-    --plus-drawer-mini-margin-max: calc(-1 * var(--plus-drawer-size) + var(--plus-drawer-mini-size));
-    overflow: hidden;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  z-index: $drawer-z-index;
 }
 
 .backdrop {
-
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  * {
     width: 100%;
     height: 100%;
-    z-index: 1;
-
-    * {
-        width: 100%;
-        height: 100%;
-        background-color: $drawer-backdrop-background-color;
-        opacity: $drawer-backdrop-opacity;
-    }
+    background-color: $drawer-backdrop-background-color;
+    opacity: $drawer-backdrop-opacity;
+  }
 }
 
-.content {
-    height: 100%;
-    position: relative;
-    z-index: 1;
+.root {
+  height: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .backdrop,
-.content {
-    transition: inherit;
+.root {
+  transition: inherit;
 }
 
 .right,
-.left { 
-    width : var(--plus-drawer-size);
+.left {
+  width: var(--plus-drawer-size);
 }
 
 .top,
-.bottom { 
-    height: var(--plus-drawer-size);
+.bottom {
+  height: var(--plus-drawer-size);
 }
 
 .right,
 .left.reverse {
-    margin: 0 var(--plus-drawer-margin) 0 0;
+  margin: 0 var(--plus-drawer-offset, 0) 0 0;
 }
 
 .left,
 .right.reverse {
-    margin: 0 0 0 var(--plus-drawer-margin);
+  margin: 0 0 0 var(--plus-drawer-offset, 0);
 }
 
 .top,
 .bottom.reverse {
-    margin: var(--plus-drawer-margin) 0 0 0;
+  margin: var(--plus-drawer-offset, 0) 0 0 0;
 }
 
 .bottom,
 .top.reverse {
-    margin: 0 0 var(--plus-drawer-margin) 0;
+  margin: 0 0 var(--plus-drawer-offset, 0) 0;
 }
 
-// open transition
+// TODO
 
-:host(.fade.drawer-enter-active),
-:host(.fade.drawer-leave-active) {
-    overflow: hidden;
-    transition: $drawer-transition; 
-} 
-
-:host(.fade.drawer-enter),
-:host(.fade.drawer-leave-active) {
-
-    --plus-drawer-margin: var(--plus-drawer-margin-min);
-
-    .backdrop {
-        opacity: 0;
-    }
+:host([temporary]:not([temporary='on-breakpoint'])),
+:host([temporary='on-breakpoint'][state='mobile']) {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
-:host(.fade.drawer-leave),
-:host(.fade.drawer-enter-active) {
-
-    --plus-drawer-margin: var(--plus-drawer-margin-max);
-
-    .backdrop {
-        opacity: 1;
-    }
+:host([animation]) {
+  transition: $drawer-transition;
 }
 
-// mini transition
-
-:host(.fade.drawer-mini-enter-active),
-:host(.fade.drawer-mini-leave-active) {
-    overflow: hidden;
-    transition: $drawer-transition; 
-} 
-
-:host(.fade.drawer-mini-enter),
-:host(.fade.drawer-mini-leave-active) {
-    --plus-drawer-margin: var(--plus-drawer-mini-margin-min);
+:host([state='closed']) {
+  display: none;
 }
 
-:host(.fade.drawer-mini-leave),
-:host(.fade.drawer-mini-enter-active) {
-    --plus-drawer-margin: var(--plus-drawer-mini-margin-max);
+:host([state='opened'][mini-state='closed']) {
+  overflow: visible;
+}
+
+:host([state='open']),
+:host([state='closing']) {
+  --plus-drawer-offset: calc(var(--plus-drawer-size) * -1) !important;
+  .backdrop {
+    opacity: 0;
+  }
+}
+
+:host([mini-state='opening']),
+:host([mini-state='opened']),
+:host([mini-state='close']) {
+  --plus-drawer-offset: calc(
+    var(--plus-drawer-mini-size) - var(--plus-drawer-size)
+  );
 }
