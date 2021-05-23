@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
-import { Inject, reconnect } from '../tabs/tabs.link';
+import { Inject } from '../tabs/tabs.link';
 
 /**
  * TODO

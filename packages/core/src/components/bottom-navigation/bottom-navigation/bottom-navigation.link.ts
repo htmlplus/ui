@@ -1,6 +1,6 @@
-import { createLinkV2 } from '@app/utils';
+import { createLink } from '@app/utils';
 
-const link = createLinkV2({
+const link = createLink({
     scope: (i) => i.connector
 })
 
