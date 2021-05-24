@@ -169,7 +169,7 @@ export const createLink = (config: LinkConfig) => {
 
             if (source.name !== destination.name) return false;
 
-            // if (scope(source) !== scope(destination)) return false;
+            if (scope(source) !== scope(destination)) return false;
 
             return true;
         })
@@ -211,8 +211,6 @@ export const createLink = (config: LinkConfig) => {
         reset(source);
 
         if (source.type === 'inject') return unregister(source);
-
-        console.log(111, siblings(source, ['inject']))
 
         siblings(source, ['inject'])
             .forEach(reset);
