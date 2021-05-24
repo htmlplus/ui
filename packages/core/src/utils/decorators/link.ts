@@ -1,17 +1,16 @@
 import { getElement } from '@stencil/core';
 
 type LinkInstance = any;
+type LinkTarget = any;
 type LinkPropertyName = string;
 type LinkPropertyType = 'action' | 'inject' | 'observable';
 type LinkProperty = {
-    type?: LinkPropertyType;
-    name?: LinkPropertyName;
-    instance?: LinkInstance;
-    target?: LinkTarget;
-    value?: any;
     element?: HTMLElement;
+    instance?: LinkInstance;
+    name?: LinkPropertyName;
+    type?: LinkPropertyType;
+    value?: any;
 }
-type LinkTarget = any;
 
 export type LinkConfig = {
     scope?: Function;
@@ -174,13 +173,11 @@ export const createLink = (config: LinkConfig) => {
 
         add(source);
 
-        // console.log(properties, siblings(source))
-
         if (source.type === 'observable') proxy(source);
 
         switch (source.type) {
 
-            // TODO: inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
+            // inject this `action` into all `inject` types
             case 'action':
 
                 siblings(source)
@@ -248,12 +245,11 @@ export const createLink = (config: LinkConfig) => {
             connected && connected.bind(this)();
 
             const property: LinkProperty = {
-                type,
-                name,
-                target,
+                element: getElement(this),
                 instance: this,
+                name,
+                type,
                 value: this[name],
-                element: getElement(this) // TODO
             }
 
             connect(property);
