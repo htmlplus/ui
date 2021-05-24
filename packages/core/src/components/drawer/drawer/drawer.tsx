@@ -1,4 +1,4 @@
-import { Component, Host, Element, Event, EventEmitter, Prop, State, h, Watch } from '@stencil/core';
+import { Component, Host, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import { Animation, Bind, ClickOutside, GlobalConfig, Helper, IsRTL, Media, Scrollbar } from '@app/utils';
 import { Action, Observable, reconnect } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
@@ -252,12 +252,12 @@ export class Drawer {
       target: () => this.$host,
       state: this.mini ? 'entered' : 'leaved',
       states: {
-        enter: 'open',
-        entering: 'opening',
-        entered: 'opened',
-        leave: 'close',
-        leaving: 'closing',
-        leaved: 'closed',
+        enter: 'enter',
+        entering: 'entering',
+        entered: 'entered',
+        leave: 'leave',
+        leaving: 'leaving',
+        leaved: 'leaved',
       }
     })
 
@@ -279,7 +279,7 @@ export class Drawer {
 
     if (!animation) return this.onHide();
 
-    this.animations.open.leave({
+    this.animations.open?.leave({
       onLeave: () => {
         this.broadcast(false);
       },
@@ -302,7 +302,7 @@ export class Drawer {
 
     if (!animation) return this.onShow();
 
-    this.animations.open.enter({
+    this.animations.open?.enter({
       onEnter: () => {
 
         this.broadcast(true);
@@ -336,6 +336,14 @@ export class Drawer {
 
         break;
 
+      case 'mini':
+
+        value && this.animations.mini?.enter();
+
+        !value && this.animations.mini?.leave();
+
+        break;
+
       case 'open':
 
         value && !this.isOpen && this.tryShow(true, true);
@@ -344,12 +352,6 @@ export class Drawer {
 
         break;
     }
-  }
-
-  @Watch('mini')
-  miniWatcher() {
-    this.mini && this.animations.mini.enter();
-    !this.mini && this.animations.mini.leave();
   }
 
   /**

@@ -91,7 +91,7 @@
   display: none;
 }
 
-:host([state='opened'][mini-state='closed']) {
+:host([state='opened'][mini-state='leaved']) {
   overflow: visible;
 }
 
@@ -103,10 +103,8 @@
   }
 }
 
-:host([mini-state='opening']),
-:host([mini-state='opened']),
-:host([mini-state='close']) {
-  --plus-drawer-offset: calc(
-    var(--plus-drawer-mini-size) - var(--plus-drawer-size)
-  );
+:host([mini-state='entering']),
+:host([mini-state='entered']),
+:host([mini-state='leave']) {
+  --plus-drawer-offset: calc(var(--plus-drawer-size) * -1 + var(--plus-drawer-mini-size));
 }
