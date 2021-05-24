@@ -1,43 +1,42 @@
 import { getElement } from '@stencil/core';
 
-type LinkV2Instance = any;
-type LinkV2PropertyName = string;
-type LinkV2PropertyType = 'action' | 'inject' | 'observable';
-type LinkV2Property = {
-    type?: LinkV2PropertyType;
-    name?: LinkV2PropertyName;
-    instance?: LinkV2Instance;
-    target?: LinkV2Target;
-    value?: any;
+type LinkInstance = any;
+type LinkTarget = any;
+type LinkPropertyName = string;
+type LinkPropertyType = 'action' | 'inject' | 'observable';
+type LinkProperty = {
     element?: HTMLElement;
+    instance?: LinkInstance;
+    name?: LinkPropertyName;
+    type?: LinkPropertyType;
+    value?: any;
 }
-type LinkV2Target = any;
 
-export type LinkV2Config = {
+export type LinkConfig = {
     scope?: Function;
 }
 
-export const createLinkV2 = (config: LinkV2Config) => {
+export const createLink = (config: LinkConfig) => {
 
-    const children = new Map<LinkV2Instance, Set<LinkV2Property>>();
+    const children = new Map<LinkInstance, Set<LinkProperty>>();
 
-    const parents = new Map<LinkV2Instance, LinkV2Property>();
+    const parents = new Map<LinkInstance, LinkProperty>();
 
-    const properties: Array<LinkV2Property> = [];
+    const properties: Array<LinkProperty> = [];
 
-    const add = (source: LinkV2Property) => {
+    const add = (source: LinkProperty) => {
 
         properties.push(source);
 
         if (!children.has(source.instance))
-            children.set(source.instance, new Set<LinkV2Property>());
+            children.set(source.instance, new Set<LinkProperty>());
 
         const siblings = children.get(source.instance);
 
         siblings.add(source);
     }
 
-    const remove = (source: LinkV2Property) => {
+    const remove = (source: LinkProperty) => {
 
         const index = properties.findIndex((property) => property === source);
 
@@ -57,15 +56,15 @@ export const createLinkV2 = (config: LinkV2Config) => {
         }
     }
 
-    const get = (source: LinkV2Property) => {
+    const get = (source: LinkProperty) => {
         return source.instance[source.name];
     }
 
-    const set = (source: LinkV2Property, value: any) => {
+    const set = (source: LinkProperty, value: any) => {
         source.instance[source.name] = value;
     }
 
-    const reset = (source: LinkV2Property) => {
+    const reset = (source: LinkProperty) => {
 
         if (source.type === 'action') return;
 
@@ -82,7 +81,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         )
     }
 
-    const map = (source: LinkV2Property, destination: LinkV2Property) => {
+    const map = (source: LinkProperty, destination: LinkProperty) => {
 
         let value = get(source);
 
@@ -92,7 +91,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         set(destination, value);
     }
 
-    const proxy = (source: LinkV2Property) => {
+    const proxy = (source: LinkProperty) => {
 
         let value = get(source);
 
@@ -119,7 +118,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         )
     }
 
-    const parent = (source: LinkV2Property) => {
+    const parent = (source: LinkProperty) => {
 
         const cache = parents.get(source.instance);
 
@@ -145,7 +144,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         }
     }
 
-    const scope = (source: LinkV2Property) => {
+    const scope = (source: LinkProperty) => {
 
         if (!source) return;
 
@@ -156,7 +155,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         return scope(parent(source)) ?? source.instance['$scope'] ?? (source.instance['$scope'] = Math.random());
     }
 
-    const siblings = (source: LinkV2Property) => {
+    const siblings = (source: LinkProperty) => {
 
         return properties.filter((destination) => {
 
@@ -170,17 +169,15 @@ export const createLinkV2 = (config: LinkV2Config) => {
         })
     }
 
-    const connect = (source: LinkV2Property) => {
+    const connect = (source: LinkProperty) => {
 
         add(source);
-
-        // console.log(properties, siblings(source))
 
         if (source.type === 'observable') proxy(source);
 
         switch (source.type) {
 
-            // TODO: inject haye az ghabl register shode bayad filter shavand va in action dakhele anha inject shavad
+            // inject this `action` into all `inject` types
             case 'action':
 
                 siblings(source)
@@ -214,7 +211,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
         }
     }
 
-    const disconnect = (source: LinkV2Property) => {
+    const disconnect = (source: LinkProperty) => {
 
         if (source.type !== 'action') reset(source);
 
@@ -227,7 +224,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
             .forEach(reset);
     }
 
-    const reconnect = (instance: LinkV2Instance) => {
+    const reconnect = (instance: LinkInstance) => {
 
         properties
             .filter((property) => property.instance === instance)
@@ -239,7 +236,7 @@ export const createLinkV2 = (config: LinkV2Config) => {
             })
     }
 
-    const register = (type: LinkV2PropertyType) => () => (target: LinkV2Target, name: LinkV2PropertyName) => {
+    const register = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {
 
         const connected = target.connectedCallback;
 
@@ -247,13 +244,12 @@ export const createLinkV2 = (config: LinkV2Config) => {
 
             connected && connected.bind(this)();
 
-            const property: LinkV2Property = {
-                type,
-                name,
-                target,
+            const property: LinkProperty = {
+                element: getElement(this),
                 instance: this,
+                name,
+                type,
                 value: this[name],
-                element: getElement(this) // TODO
             }
 
             connect(property);
