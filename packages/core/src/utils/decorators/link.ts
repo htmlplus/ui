@@ -24,7 +24,11 @@ export const createLink = (config: LinkConfig) => {
 
     const properties: Array<LinkProperty> = [];
 
-    const add = (source: LinkProperty) => {
+    const find = (source: LinkProperty) => {
+        return properties.find((destination) => destination.instance === source.instance && destination.name === source.name);
+    }
+
+    const register = (source: LinkProperty) => {
 
         properties.push(source);
 
@@ -36,7 +40,9 @@ export const createLink = (config: LinkConfig) => {
         siblings.add(source);
     }
 
-    const remove = (source: LinkProperty) => {
+    const unregister = (source: LinkProperty) => {
+
+        source = find(source);
 
         const index = properties.findIndex((property) => property === source);
 
@@ -48,12 +54,11 @@ export const createLink = (config: LinkConfig) => {
 
         siblings.delete(source);
 
-        if (!siblings.size) {
+        if (siblings.size) return;
 
-            children.delete(source.instance);
+        children.delete(source.instance);
 
-            parents.delete(source.instance);
-        }
+        parents.delete(source.instance);
     }
 
     const get = (source: LinkProperty) => {
@@ -68,7 +73,7 @@ export const createLink = (config: LinkConfig) => {
 
         if (source.type === 'action') return;
 
-        if (source.type !== 'observable') return set(source, source.value /* TODO */);
+        if (source.type === 'inject') return set(source, source.value /* TODO */);
 
         Object.defineProperty(
             source.instance,
@@ -110,8 +115,7 @@ export const createLink = (config: LinkConfig) => {
 
                     value = input;
 
-                    siblings(source)
-                        .filter((destination) => destination.type === 'inject')
+                    siblings(source, ['inject'])
                         .map((destination) => set(destination, value))
                 }
             }
@@ -130,7 +134,7 @@ export const createLink = (config: LinkConfig) => {
 
             if (parent.shadowRoot) {
 
-                const item = properties.find((prop) => prop.element === parent && prop.name === source.name);
+                const item = properties.find((property) => property.element === parent && property.name === source.name);
 
                 if (item) {
 
@@ -155,15 +159,17 @@ export const createLink = (config: LinkConfig) => {
         return scope(parent(source)) ?? source.instance['$scope'] ?? (source.instance['$scope'] = Math.random());
     }
 
-    const siblings = (source: LinkProperty) => {
+    const siblings = (source: LinkProperty, types: Array<LinkPropertyType>) => {
 
         return properties.filter((destination) => {
+
+            if (!types.includes(destination.type)) return false;
 
             if (source === destination) return false;
 
             if (source.name !== destination.name) return false;
 
-            if (scope(source) !== scope(destination)) return false;
+            // if (scope(source) !== scope(destination)) return false;
 
             return true;
         })
@@ -171,41 +177,30 @@ export const createLink = (config: LinkConfig) => {
 
     const connect = (source: LinkProperty) => {
 
-        add(source);
-
-        if (source.type === 'observable') proxy(source);
+        register(source);
 
         switch (source.type) {
 
-            // inject this `action` into all `inject` types
             case 'action':
 
-                siblings(source)
-                    .filter((destination) => destination.type === 'inject')
+                siblings(source, ['inject'])
                     .forEach((destination) => map(source, destination));
 
                 break;
 
-            // update all `inject` or `observable` types from `source` based on `destination`
-            case 'inject':
+            case 'observable':
 
-                siblings(source)
-                    .filter((destination) => destination.type !== 'inject')
-                    .forEach((destination) => map(destination, source));
+                proxy(source);
+
+                siblings(source, ['inject'])
+                    .forEach((destination) => map(source, destination));
 
                 break;
 
-            // update all `inject` types from `destination` based on `source`
-            case 'observable':
+            case 'inject':
 
-                siblings(source)
-                    .filter((destination) => destination.type === 'inject')
-                    .forEach((destination) => {
-
-                        map(source, destination);
-
-                        proxy(source);
-                    });
+                siblings(source, ['action', 'observable'])
+                    .forEach((destination) => map(destination, source));
 
                 break;
         }
@@ -213,15 +208,16 @@ export const createLink = (config: LinkConfig) => {
 
     const disconnect = (source: LinkProperty) => {
 
-        if (source.type !== 'action') reset(source);
+        reset(source);
 
-        remove(source);
+        if (source.type === 'inject') return unregister(source);
 
-        if (source.type === 'inject') return;
+        console.log(111, siblings(source, ['inject']))
 
-        siblings(source)
-            .filter((property) => property.type === 'inject')
+        siblings(source, ['inject'])
             .forEach(reset);
+
+        unregister(source);
     }
 
     const reconnect = (instance: LinkInstance) => {
@@ -236,7 +232,7 @@ export const createLink = (config: LinkConfig) => {
             })
     }
 
-    const register = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {
+    const link = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {
 
         const connected = target.connectedCallback;
 
@@ -252,6 +248,8 @@ export const createLink = (config: LinkConfig) => {
                 value: this[name],
             }
 
+            if (find(property)) console.error('TODO: Error log');
+
             connect(property);
         }
 
@@ -261,18 +259,19 @@ export const createLink = (config: LinkConfig) => {
 
             disconnected && disconnected.bind(this)();
 
-            // TODO
-            const property = properties.find((property) => property.instance === this && property.name === name);
+            const property = find({ instance: this, name });
+
+            if (!property) console.error('TODO: Error log');
 
             disconnect(property);
         }
     }
 
-    const Action = register('action');
+    const Action = link('action');
 
-    const Inject = register('inject');
+    const Inject = link('inject');
 
-    const Observable = register('observable');
+    const Observable = link('observable');
 
     return {
         Action,
