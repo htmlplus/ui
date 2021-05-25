@@ -323,14 +323,16 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
+
+        // TODO: experimantal new link
         this.broadcast(false);
       },
       onLeaved: () => {
 
-        this.onHide();
-
-        // TODO
+        // TODO: experimantal portal
         this.portalInstance?.revert();
+
+        this.onHide();
 
         if (silent) return;
 
@@ -349,9 +351,6 @@ export class Dialog {
 
     this.animate.enter({
       onEnter: () => {
-
-        this.broadcast(true);
-
         this.onShow();
       },
       onEntered: () => {
@@ -445,6 +444,9 @@ export class Dialog {
 
     // register dialog's instance
     this.state.instances.push(this);
+
+    // TODO: experimantal new link
+    this.broadcast(true);
   }
 
   @Bind
