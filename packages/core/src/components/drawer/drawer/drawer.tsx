@@ -183,14 +183,16 @@ export class Drawer {
 
     if (!this.isTemporary) return false;
 
-    if (this.backdrop as any === 'true' || this.backdrop === 'auto') return true;
+    if (Helper.toBoolean(this.backdrop)) return true;
+
+    if (this.backdrop === 'auto') return true;
 
     return false;
   }
 
   get isTemporary() {
 
-    if (this.temporary as any === 'true') return true;
+    if (Helper.toBoolean(this.temporary)) return true;
 
     if (this.temporary === 'on-breakpoint' && this.platform === 'mobile') return true;
 
