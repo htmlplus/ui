@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
-import { DialogLink, Link, rebind } from './dialog.link';
+import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
+import { Action, Observable, reconnect } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 
 /**
@@ -181,16 +181,15 @@ export class Dialog {
 
   $cell!: HTMLElement;
 
+  animate?: Animation;
+
   isOpen?: boolean;
 
-  animate?: AnimationV2;
-
+  // TODO: replace with FC
   portalInstance?: Portal;
 
-  @Link({ scope: '[connector]' })
-  link: DialogLink = {
-    toggle: () => this.toggle()
-  }
+  @Observable()
+  tunnel?: boolean;
 
   get attributes() {
 
@@ -235,7 +234,7 @@ export class Dialog {
         fullscreen: this.fullscreen,
         scrollable: this.scrollable
       }
-    );
+    )
   }
 
   get isCurrent() {
@@ -272,6 +271,7 @@ export class Dialog {
     this.tryShow(true, false);
   }
 
+  @Action()
   toggle() {
     this.isOpen ? this.hide() : this.show();
   }
@@ -280,22 +280,13 @@ export class Dialog {
    * Internal Methods
    */
 
-  dispose() {
-
-    this.animate?.dispose();
-
-    // TODO
-    this.onHide();
-
-    // TODO
-    // this.resetEvents();
-    // ClickOutside.remove(this.$cell);
-    // Scrollbar.reset(this);
-    // this.unregister();
+  broadcast(value) {
+    this.tunnel = value;
   }
 
-  init() {
-    this.animate = new AnimationV2({
+  initialize() {
+
+    this.animate = new Animation({
       key: 'state',
       source: () => this.$host,
       target: () => this.$host,
@@ -309,6 +300,17 @@ export class Dialog {
         leaved: 'closed',
       }
     })
+
+    if (!this.open) return;
+
+    this.tryShow(false, true);
+  }
+
+  terminate() {
+
+    this.onHide();
+
+    this.animate?.dispose();
   }
 
   tryHide(animation, silent) {
@@ -321,14 +323,16 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
-        this.link.open = false;
+
+        // TODO: experimantal new link
+        this.broadcast(false);
       },
       onLeaved: () => {
 
-        this.onHide();
-
-        // TODO
+        // TODO: experimantal portal
         this.portalInstance?.revert();
+
+        this.onHide();
 
         if (silent) return;
 
@@ -343,20 +347,10 @@ export class Dialog {
 
     if (!silent && this.plusOpen.emit().defaultPrevented) return;
 
-    // TODO
-    this.portalInstance = this.portal && new Portal({
-      source: this.$host,
-      target: this.portalTarget,
-      strategy: this.portalStrategy,
-    })
-
     if (!animation) return this.onShow();
 
     this.animate.enter({
       onEnter: () => {
-
-        this.link.open = true;
-
         this.onShow();
       },
       onEntered: () => {
@@ -382,7 +376,7 @@ export class Dialog {
 
       case 'connector':
 
-        rebind(this);
+        reconnect(this);
 
         break;
 
@@ -401,23 +395,58 @@ export class Dialog {
    */
 
   onHide() {
-    document.removeEventListener('keydown', this.onEscape, true);
-    ClickOutside.remove(this.$cell);
+
+    // reset document's scroll
     Scrollbar.reset(this);
+
+    // remove outside click listener
+    ClickOutside.remove(this.$cell);
+
+    // remove keydown listener
+    document.removeEventListener('keydown', this.onEscape, true);
+
+    // reset z-index
     this.$host.style.zIndex = null;
-    this.isOpen = false;
-    this.open = false;
+
+    // update state
+    this.open = this.isOpen = false;
+
+    // unregister dialog's instance
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
+
+    // TODO: experimantal new link
+    this.broadcast(false);
   }
 
   onShow() {
-    document.addEventListener('keydown', this.onEscape, true);
-    ClickOutside.add(this.$cell, this.onClickOutside, false);
+
+    // TODO: experimantal portal
+    this.portalInstance = this.portal && new Portal({
+      source: this.$host,
+      target: this.portalTarget,
+      strategy: this.portalStrategy,
+    })
+
+    // remove document's scroll
     Scrollbar.remove(this);
+
+    // remove outside click listener
+    ClickOutside.add(this.$cell, this.onClickOutside, false);
+
+    // add keydown listener
+    document.addEventListener('keydown', this.onEscape, true);
+
+    // set z-index
     this.$host.style.zIndex = this.zIndex;
-    this.isOpen = true;
-    this.open = true;
+
+    // update state
+    this.open = this.isOpen = true;
+
+    // register dialog's instance
     this.state.instances.push(this);
+
+    // TODO: experimantal new link
+    this.broadcast(true);
   }
 
   @Bind
@@ -444,17 +473,13 @@ export class Dialog {
    * Lifecycles
    */
 
-  connectedCallback() {
-
-    this.init();
-
-    if (!this.open) return;
-
-    this.tryShow(false, true);
+  // it's can not be `connectedCallback`, because ClickOutside incompatible 
+  componentDidLoad() {
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.dispose();
+    this.terminate();
   }
 
   render() {
@@ -463,12 +488,12 @@ export class Dialog {
         {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">
-            <div class="cell" ref={(element) => (this.$cell = element)}>
+            <div class="cell" ref={($element) => (this.$cell = $element)}>
               <slot />
             </div>
           </div>
         </div>
-      </Host >
+      </Host>
     )
   }
 }

@@ -1,8 +1,17 @@
+export type AnimationReflect = 'attribute' | 'class';
+
+export type AnimationState = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';
+
+export type AnimationElement = HTMLElement | Array<HTMLElement> | any; // TODO
+
 export interface AnimationConfig {
-  name?: string;
-  state?: boolean;
-  source?: HTMLElement | Array<HTMLElement>;
-  target?: HTMLElement;
+  key?: string;
+  source?: AnimationElement;
+  target?: AnimationElement;
+  state?: AnimationState,
+  states?: {
+    [key in AnimationState]?: string
+  },
   onEnter?: () => void;
   onEntering?: () => void;
   onEntered?: () => void;
@@ -17,41 +26,70 @@ export class Animation {
 
   private config: AnimationConfig;
 
-  private timeout: any;
+  private timeout;
 
   constructor(config: AnimationConfig) {
 
-    // TODO: auto detect functions
+    const states = Object.assign(
+      {},
+      {
+        enter: 'enter',
+        entering: 'entering',
+        entered: 'entered',
+        leave: 'leave',
+        leaving: 'leaving',
+        leaved: 'leaved',
+      },
+      config.states
+    );
+
     this.config = Object.assign(
       {},
       {
+        reflect: 'class',
+        states,
         onEnter: () => undefined,
         onEntering: () => undefined,
         onEntered: () => undefined,
+        onEnterCanceled: () => undefined,
         onLeave: () => undefined,
         onLeaving: () => undefined,
         onLeaved: () => undefined,
+        onLeaveCanceled: () => undefined,
       },
       config
     );
 
-    // TODO
-    if (typeof this.config.state !== 'undefined') {
-      this.config.target.setAttribute('state', this.config.state ? 'opened' : 'closed')
-    }
+    this.init();
   }
 
-  private add(...names: string[]) {
+  private get sources() {
 
-    if (!this.config.name) return;
+    let { source } = this.config;
 
-    names.map((item) => this.config.target.classList.add(this.name(item)));
+    try {
+      source = source();
+    }
+    catch { }
+
+    return [source].flat(1);
+  }
+
+  private get targets() {
+
+    let { target } = this.config;
+
+    try {
+      target = target();
+    }
+    catch { }
+
+    return [target].flat(1);
   }
 
   private duration() {
 
-    return [this.config.source]
-      .flat()
+    return this.sources
       .map((item) => {
 
         try {
@@ -69,7 +107,6 @@ export class Animation {
           return Math.max(...duration.slice(0, 2)) + Math.max(...duration.slice(2));
         }
         catch {
-
           return 0;
         }
       })
@@ -77,25 +114,26 @@ export class Animation {
       .pop();
   }
 
-  private name(input) {
-    return this.config.name ? `${this.config.name}-${input}` : input;
+  private init() {
+
+    let { state } = this.config;
+
+    this.update(state);
   }
 
-  private remove(...names: string[]) {
-
-    if (!this.config.name) return;
-
-    names.map((item) => this.config.target.classList.remove(this.name(item)));
+  private next(callback) {
+    requestAnimationFrame(() => setTimeout(() => callback(), 5));
   }
 
-  // TODO
+  private update(state: AnimationState) {
+
+    const { key, states } = this.config;
+
+    this.targets.map((target) => target.setAttribute(key, states[state]));
+  }
+
   public cancel() {
-
     clearTimeout(this.timeout);
-
-    this.remove('enter', 'enter-active');
-
-    this.remove('leave', 'leave-active');
   }
 
   public dispose() {
@@ -108,35 +146,27 @@ export class Animation {
 
     config = Object.assign({}, this.config, config);
 
+    this.update('enter');
+
     config.onEnter();
 
-    this.remove('leave', 'leave-active');
-
-    this.add('enter');
-
-    this.config.target.setAttribute('state', 'open');
-
-    requestAnimationFrame(() => setTimeout(() => {
-
-      this.remove('enter');
-
-      this.add('enter-active');
-
-      this.config.target.setAttribute('state', 'opening');
-
-      config.onEntering();
+    this.next(() => {
 
       clearTimeout(this.timeout);
 
+      this.update('entering');
+
+      config.onEntering();
+
+      const duration = this.duration();
+
       this.timeout = setTimeout(() => {
 
-        this.remove('enter', 'enter-active');
-
-        this.config.target.setAttribute('state', 'opened');
+        this.update('entered');
 
         config.onEntered();
-      }, this.duration());
-    }, 5));
+      }, duration);
+    })
   }
 
   public leave(config?: AnimationConfig) {
@@ -145,34 +175,26 @@ export class Animation {
 
     config = Object.assign({}, this.config, config);
 
+    this.update('leave');
+
     config.onLeave();
 
-    this.remove('enter', 'enter-active');
-
-    this.add('leave');
-
-    this.config.target.setAttribute('state', 'close');
-
-    requestAnimationFrame(() => setTimeout(() => {
-
-      this.remove('leave');
-
-      this.add('leave-active');
-
-      this.config.target.setAttribute('state', 'closing');
-
-      config.onLeaving();
+    this.next(() => {
 
       clearTimeout(this.timeout);
 
+      this.update('leaving');
+
+      config.onLeaving();
+
+      const duration = this.duration();
+
       this.timeout = setTimeout(() => {
 
-        this.remove('leave', 'leave-active');
-
-        this.config.target.setAttribute('state', 'closed');
+        this.update('leaved');
 
         config.onLeaved();
-      }, this.duration());
-    }, 5));
+      }, duration);
+    })
   }
 }

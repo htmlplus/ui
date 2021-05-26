@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
-import { Bind, Helper, RectObserver } from '@app/utils';
+import { Bind, Helper } from '@app/utils';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
@@ -95,7 +95,7 @@ export class Menu {
 
   $content!: HTMLElement;
 
-  observer?: RectObserver;
+  observer?: any;
 
   get getGrowX() {
 
@@ -142,7 +142,7 @@ export class Menu {
 
     if (!this.fixed || !this.open) return;
 
-    this.observer = new RectObserver(this.update);
+    // this.observer = new RectObserver(this.update);
 
     requestAnimationFrame(() => this.observer.observe(this.$host));
   }

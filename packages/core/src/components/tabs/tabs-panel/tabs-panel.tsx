@@ -1,5 +1,6 @@
 import { Component, Host, Prop, State, h } from '@stencil/core';
-import { TabsTunnel } from '../tabs/tabs.tunnel';
+import { GlobalConfig } from '@app/utils';
+import { Inject } from '../tabs/tabs.link';
 
 /**
  * TODO
@@ -17,17 +18,26 @@ export class TabsPanel {
    * TODO
    */
   @Prop()
-  value?: string;
+  value?: any;
 
   @State()
-  @TabsTunnel.Inject()
-  active?: string;
+  @Inject()
+  tunnel?: any;
+
+  @GlobalConfig('tabsPanel')
+  config?;
+
+  get attributes() {
+    return {
+      'active': this.tunnel && this.tunnel === this.value
+    }
+  }
 
   render() {
     return (
-      <Host active={this.active && this.active === this.value}>
+      <Host {...this.attributes}>
         <slot />
       </Host>
-    );
+    )
   }
 }

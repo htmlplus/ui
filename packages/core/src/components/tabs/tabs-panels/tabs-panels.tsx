@@ -1,7 +1,6 @@
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
-import { Bind } from '@app/utils';
-import { channel } from '../tabs/tabs.channel';
-import { TabsTunnel, TabsTunnelState } from '../tabs/tabs.tunnel';
+import { Component, Host, Prop, h } from '@stencil/core';
+import { GlobalConfig } from '@app/utils';
+import { Inject } from '../tabs/tabs.link';
 
 /**
  * TODO
@@ -21,50 +20,42 @@ export class TabsPanels {
   @Prop()
   connector?: string;
 
-  @State()
-  active?: string;
+  // TODO: it's bridge
+  @Inject()
+  tunnel?: any;
 
-  get state(): TabsTunnelState {
+  @GlobalConfig('tabsPanels')
+  config?;
+
+  get attributes() {
     return {
-      active: this.active
+      // TODO
     }
   }
 
-  @Bind
-  update(active) {
+  /**
+   * Watchers
+   */
 
-    this.active = active;
-  }
+  componentShouldUpdate(next, prev, name) {
 
-  @Watch('connector')
-  watcher(newValue, oldValue) {
+    if (next === prev) return false;
 
-    channel.off(oldValue, this.update);
+    switch (name) {
 
-    channel.on(newValue, this.update);
-  }
+      case 'connector':
 
-  componentDidLoad() {
+        // reconnect(this);
 
-    channel.on(this.connector, this.update);
-  }
-
-  disconnectedCallback() {
-
-    channel.off(this.connector, this.update);
+        break;
+    }
   }
 
   render() {
     return (
-      <Host>
-        <TabsTunnel.Provider
-          disabled={!this.connector}
-          scope={this}
-          state={this.state}
-        >
-          <slot />
-        </TabsTunnel.Provider>
+      <Host {...this.attributes}>
+        <slot />
       </Host>
-    );
+    )
   }
 }

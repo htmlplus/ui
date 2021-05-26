@@ -10,7 +10,7 @@ import { CardElevation } from "./components/card/card/card.types";
 import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DividerSize, DividerType } from "./components/divider/divider.types";
-import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement } from "./components/drawer/drawer/drawer.types";
+import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerTemporary } from "./components/drawer/drawer/drawer.types";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from "./components/grid/grid/grid.types";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from "./components/grid/grid-item/grid-item.types";
 import { IntersectionBehavior } from "./components/intersection/intersection.types";
@@ -22,7 +22,6 @@ import { StickyState, StickyTop } from "./components/sticky/sticky.types";
 import { ToastPlacement, ToastType } from "./components/toast/toast/toast.types";
 import { TooltipAnimation, TooltipArrow, TooltipPlacement, TooltipTrigger } from "./components/tooltip/tooltip.types";
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from "./components/transition/transition.types";
-import { SubscribeType } from "./utils/tunnel/tunnel.types";
 export namespace Components {
     interface PlusAspectRatio {
         /**
@@ -50,7 +49,7 @@ export namespace Components {
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
-        "scrollTarget": string;
+        "scrollTarget": string | HTMLElement;
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
@@ -374,11 +373,15 @@ export namespace Components {
     }
     interface PlusDrawer {
         /**
+          * TODO
+         */
+        "animation"?: string;
+        /**
           * Activate the drawer's backdrop to show or not.
          */
         "backdrop"?: DrawerBackdrop;
         /**
-          * Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met.
+          * Sets the mobile breakpoint to apply alternate styles for mobile devices  when the breakpoint value is met.
          */
         "breakpoint"?: DrawerBreakpoint;
         /**
@@ -386,7 +389,7 @@ export namespace Components {
          */
         "connector"?: string;
         /**
-          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce.
+          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced.  If false doesn't allow the width of the drawer to reduce.
          */
         "flexible"?: boolean;
         /**
@@ -402,7 +405,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it.
+          * If true, don't allow the drawer to be closed by clicking outside of the drawer.  If false, the drawer will be closed by clicking outside of it.
          */
         "persistent"?: boolean;
         /**
@@ -414,9 +417,9 @@ export namespace Components {
          */
         "size"?: string;
         /**
-          * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background.
+          * On default the drawer is considered as a part of the main container.  it pushes the other contents on opening.  If true it will be opened over other contents and doesn't affect other contents.  A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
-        "temporary"?: boolean | 'on-breakpoint';
+        "temporary"?: DrawerTemporary;
     }
     interface PlusDrawerToggler {
         /**
@@ -875,7 +878,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
         /**
           * TODO
          */
@@ -899,7 +902,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTabsPanels {
         /**
@@ -915,7 +918,7 @@ export namespace Components {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTemplate {
         /**
@@ -928,6 +931,10 @@ export namespace Components {
           * TODO
          */
         "animation"?: string;
+        /**
+          * This property helps you to attach which toast toggler controls the toast.  It doesn't matter where the toast toggler is.  You can put the toast's toggler inside or outside of the toast.  Read more about connectors [here](https://htmlplus.io/features/connector).
+         */
+        "connector"?: string;
         /**
           * TODO
          */
@@ -1034,11 +1041,6 @@ export namespace Components {
           * Specifies the number of times the animation should be repeated after one complete cycle.
          */
         "repeat"?: TransitionRepeat;
-    }
-    interface PlusTunnelConsumer {
-        "context": { [key: string]: any };
-        "renderer": Function;
-        "subscribe"?: SubscribeType;
     }
 }
 declare global {
@@ -1288,12 +1290,6 @@ declare global {
         prototype: HTMLPlusTransitionElement;
         new (): HTMLPlusTransitionElement;
     };
-    interface HTMLPlusTunnelConsumerElement extends Components.PlusTunnelConsumer, HTMLStencilElement {
-    }
-    var HTMLPlusTunnelConsumerElement: {
-        prototype: HTMLPlusTunnelConsumerElement;
-        new (): HTMLPlusTunnelConsumerElement;
-    };
     interface HTMLElementTagNameMap {
         "plus-aspect-ratio": HTMLPlusAspectRatioElement;
         "plus-bottom-navigation": HTMLPlusBottomNavigationElement;
@@ -1336,7 +1332,6 @@ declare global {
         "plus-toolbar-spacer": HTMLPlusToolbarSpacerElement;
         "plus-tooltip": HTMLPlusTooltipElement;
         "plus-transition": HTMLPlusTransitionElement;
-        "plus-tunnel-consumer": HTMLPlusTunnelConsumerElement;
     }
 }
 declare namespace LocalJSX {
@@ -1364,9 +1359,13 @@ declare namespace LocalJSX {
          */
         "labelPosition"?: 'bottom' | 'side';
         /**
+          * TODO
+         */
+        "onWowChange"?: (event: CustomEvent<any>) => void;
+        /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
-        "scrollTarget"?: string;
+        "scrollTarget"?: string | HTMLElement;
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
@@ -1666,11 +1665,15 @@ declare namespace LocalJSX {
     }
     interface PlusDrawer {
         /**
+          * TODO
+         */
+        "animation"?: string;
+        /**
           * Activate the drawer's backdrop to show or not.
          */
         "backdrop"?: DrawerBackdrop;
         /**
-          * Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met.
+          * Sets the mobile breakpoint to apply alternate styles for mobile devices  when the breakpoint value is met.
          */
         "breakpoint"?: DrawerBreakpoint;
         /**
@@ -1678,7 +1681,7 @@ declare namespace LocalJSX {
          */
         "connector"?: string;
         /**
-          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce.
+          * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced.  If false doesn't allow the width of the drawer to reduce.
          */
         "flexible"?: boolean;
         /**
@@ -1710,7 +1713,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it.
+          * If true, don't allow the drawer to be closed by clicking outside of the drawer.  If false, the drawer will be closed by clicking outside of it.
          */
         "persistent"?: boolean;
         /**
@@ -1722,9 +1725,9 @@ declare namespace LocalJSX {
          */
         "size"?: string;
         /**
-          * On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background.
+          * On default the drawer is considered as a part of the main container.  it pushes the other contents on opening.  If true it will be opened over other contents and doesn't affect other contents.  A temporary drawer sits above its application and uses a backdrop to darken the background.
          */
-        "temporary"?: boolean | 'on-breakpoint';
+        "temporary"?: DrawerTemporary;
     }
     interface PlusDrawerToggler {
         /**
@@ -2203,11 +2206,11 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "onWowChange"?: (event: CustomEvent<string>) => void;
+        "onWowChange"?: (event: CustomEvent<any>) => void;
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
         /**
           * TODO
          */
@@ -2231,7 +2234,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTabsPanels {
         /**
@@ -2247,7 +2250,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "value"?: string;
+        "value"?: any;
     }
     interface PlusTemplate {
         /**
@@ -2260,6 +2263,10 @@ declare namespace LocalJSX {
           * TODO
          */
         "animation"?: string;
+        /**
+          * This property helps you to attach which toast toggler controls the toast.  It doesn't matter where the toast toggler is.  You can put the toast's toggler inside or outside of the toast.  Read more about connectors [here](https://htmlplus.io/features/connector).
+         */
+        "connector"?: string;
         /**
           * TODO
          */
@@ -2399,11 +2406,6 @@ declare namespace LocalJSX {
          */
         "repeat"?: TransitionRepeat;
     }
-    interface PlusTunnelConsumer {
-        "context"?: { [key: string]: any };
-        "renderer"?: Function;
-        "subscribe"?: SubscribeType;
-    }
     interface IntrinsicElements {
         "plus-aspect-ratio": PlusAspectRatio;
         "plus-bottom-navigation": PlusBottomNavigation;
@@ -2446,7 +2448,6 @@ declare namespace LocalJSX {
         "plus-toolbar-spacer": PlusToolbarSpacer;
         "plus-tooltip": PlusTooltip;
         "plus-transition": PlusTransition;
-        "plus-tunnel-consumer": PlusTunnelConsumer;
     }
 }
 export { LocalJSX as JSX };
@@ -2494,7 +2495,6 @@ declare module "@stencil/core" {
             "plus-toolbar-spacer": LocalJSX.PlusToolbarSpacer & JSXBase.HTMLAttributes<HTMLPlusToolbarSpacerElement>;
             "plus-tooltip": LocalJSX.PlusTooltip & JSXBase.HTMLAttributes<HTMLPlusTooltipElement>;
             "plus-transition": LocalJSX.PlusTransition & JSXBase.HTMLAttributes<HTMLPlusTransitionElement>;
-            "plus-tunnel-consumer": LocalJSX.PlusTunnelConsumer & JSXBase.HTMLAttributes<HTMLPlusTunnelConsumerElement>;
         }
     }
 }

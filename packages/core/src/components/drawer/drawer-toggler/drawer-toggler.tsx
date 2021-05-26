@@ -1,11 +1,12 @@
-import { Component, Host, Prop, Watch, h } from '@stencil/core';
-import { DrawerLink, Link, rebind } from '../drawer/drawer.link';
+import { Component, Host, Prop, h, State } from '@stencil/core';
+import { Inject, reconnect } from '../drawer/drawer.link';
 
 /**
+ * TODO
  * @group drawer
  * @slot default - The default slot.
- * @slot open    - Specifies the content of toggler when it's opened.
- * @slot close   - Specifies the content of toggler when it's closed.
+ * @TODO open    - Specifies the content of toggler when it's opened.
+ * @TODO close   - Specifies the content of toggler when it's closed.
  */
 @Component({
   tag: 'plus-drawer-toggler',
@@ -23,27 +24,53 @@ export class DrawerToggler {
   @Prop()
   connector?: string;
 
-  @Link({ scope: '[connector]' })
-  link!: DrawerLink;
+  @Inject()
+  toggle?: Function = () => console.log('TODO: can not use out of drawer');
 
-  @Watch('connector')
-  connectorWatcher() {
-    rebind(this);
+  @Inject()
+  @State()
+  tunnel?: boolean;
+
+  get attributes() {
+    return {
+      'role': 'button',
+      'state': this.tunnel ? 'open' : 'close',
+      'onClick': this.toggle
+    }
+  }
+
+  get text() {
+    return this.tunnel ? 'Close' : 'Open';
+  }
+
+  /**
+   * Watchers
+   */
+
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return false;
+
+    switch (name) {
+
+      case 'connector':
+
+        reconnect(this);
+
+        break;
+    }
   }
 
   render() {
     return (
-      <Host
-        state={this.link.open ? 'open' : 'close'}
-        role="button"
-        onClick={() => this.link.toggle()}
-      >
+      <Host {...this.attributes}>
         <slot>
-          {this.link.open ? 'Close' : 'Open'}
+          {this.text}
         </slot>
-        <slot name="close" />
-        <slot name="open" />
+        {/* TODO */}
+        {/* <slot name="close" /> */}
+        {/* <slot name="open" /> */}
       </Host>
-    );
+    )
   }
 }
