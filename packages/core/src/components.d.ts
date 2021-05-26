@@ -816,11 +816,11 @@ export namespace Components {
     }
     interface PlusScrollIndicator {
         /**
-          * Disables the event.
+          * Disables the component function.
          */
         "disabled"?: boolean;
         /**
-          * Source of scroll.
+          * Specifies the source of scroll.
          */
         "source"?: ScrollIndicatorSource;
     }
@@ -2132,7 +2132,7 @@ declare namespace LocalJSX {
     }
     interface PlusScrollIndicator {
         /**
-          * Disables the event.
+          * Disables the component function.
          */
         "disabled"?: boolean;
         /**
@@ -2140,7 +2140,7 @@ declare namespace LocalJSX {
          */
         "onPlusScroll"?: (event: CustomEvent<number>) => void;
         /**
-          * Source of scroll.
+          * Specifies the source of scroll.
          */
         "source"?: ScrollIndicatorSource;
     }
