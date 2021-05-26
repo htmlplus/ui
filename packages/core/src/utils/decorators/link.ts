@@ -18,6 +18,8 @@ export type LinkConfig = {
 
 export const createLink = (config: LinkConfig) => {
 
+    let disconnecting = false;
+
     const children = new Map<LinkInstance, Set<LinkProperty>>();
 
     const parents = new Map<LinkInstance, LinkProperty>();
@@ -79,7 +81,7 @@ export const createLink = (config: LinkConfig) => {
             source.instance,
             source.name,
             {
-                value: source.value, /* TODO */
+                value: get(source), /* TODO */
                 enumerable: true,
                 configurable: true,
             }
@@ -152,11 +154,14 @@ export const createLink = (config: LinkConfig) => {
 
         if (!source) return;
 
+        // TODO
+        if (disconnecting) return source['$scope-prev'];
+
         let input = config.scope(source.instance);
 
         if (typeof input !== 'undefined') return input;
 
-        return scope(parent(source)) ?? source.instance['$scope'] ?? (source.instance['$scope'] = Math.random());
+        return scope(parent(source)) ?? source['$scope-auto'] ?? (source['$scope-auto'] = Math.random());
     }
 
     const siblings = (source: LinkProperty, types: Array<LinkPropertyType>) => {
@@ -176,6 +181,9 @@ export const createLink = (config: LinkConfig) => {
     }
 
     const connect = (source: LinkProperty) => {
+
+        // TODO
+        source['$scope-prev'] = scope(source);
 
         register(source);
 
@@ -212,22 +220,22 @@ export const createLink = (config: LinkConfig) => {
 
         if (source.type === 'inject') return unregister(source);
 
-        siblings(source, ['inject'])
-            .forEach(reset);
+        siblings(source, ['inject']).forEach(reset);
 
         unregister(source);
     }
 
     const reconnect = (instance: LinkInstance) => {
 
-        properties
-            .filter((property) => property.instance === instance)
-            .forEach((property) => {
+        const p = properties.filter((property) => property.instance === instance);
 
-                disconnect(property);
+        disconnecting = true;
 
-                connect(property);
-            })
+        p.forEach(disconnect);
+
+        disconnecting = false;
+
+        p.forEach(connect);
     }
 
     const link = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {

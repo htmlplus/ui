@@ -42,7 +42,7 @@ export class BottomNavigationItem {
       'grow': this.tunnel?.grow,
       'role': 'button',
       'state': this.state,
-      'onClick': this.onClick
+      'onClick': () => this.onClick()
     }
   }
 

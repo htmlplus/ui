@@ -283,6 +283,8 @@ export class Drawer {
 
     this.animations.open?.leave({
       onLeave: () => {
+
+        // TODO: experimantal new link
         this.broadcast(false);
       },
       onLeaved: () => {
@@ -306,9 +308,6 @@ export class Drawer {
 
     this.animations.open?.enter({
       onEnter: () => {
-
-        this.broadcast(true);
-
         this.onShow();
       },
       onEntered: () => {
@@ -386,7 +385,7 @@ export class Drawer {
     // update state
     this.open = this.isOpen = true;
 
-    // TODO
+    // TODO: experimantal new link
     this.broadcast(true);
   }
 

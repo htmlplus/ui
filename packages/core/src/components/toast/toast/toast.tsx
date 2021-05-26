@@ -316,6 +316,8 @@ export class Toast {
 
     this.animate.leave({
       onLeave: () => {
+
+        // TODO: experimantal new link
         this.broadcast(false);
       },
       onLeaved: () => {
@@ -342,9 +344,6 @@ export class Toast {
 
     this.animate.enter({
       onEnter: () => {
-
-        this.broadcast(true);
-
         this.onShow();
       },
       onEntered: () => {
@@ -400,7 +399,7 @@ export class Toast {
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
 
     // TODO: experimantal new link
-    // this.broadcast(false);
+    this.broadcast(false);
 
     // TODO
     this.adjust();
@@ -416,6 +415,9 @@ export class Toast {
 
     // register dialog's instance
     this.state.instances.push(this);
+
+    // TODO: experimantal new link
+    this.broadcast(true);
 
     // TODO
     this.adjust();

@@ -35,7 +35,7 @@ export class DialogToggler {
     return {
       'role': 'button',
       'state': this.tunnel ? 'open' : 'close',
-      'onClick': this.toggle
+      'onClick': () => this.toggle()
     }
   }
 

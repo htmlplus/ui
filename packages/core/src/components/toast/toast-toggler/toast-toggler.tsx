@@ -35,7 +35,7 @@ export class ToastToggler {
     return {
       'role': 'button',
       'state': this.tunnel ? 'open' : 'close',
-      'onClick': this.toggle
+      'onClick': () => this.toggle()
     }
   }
 
