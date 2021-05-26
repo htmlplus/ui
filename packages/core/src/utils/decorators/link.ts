@@ -155,13 +155,13 @@ export const createLink = (config: LinkConfig) => {
         if (!source) return;
 
         // TODO
-        if (disconnecting) return source['$scope-prev'];
+        if (disconnecting) return source.instance['$scope-prev'];
 
         let input = config.scope(source.instance);
 
         if (typeof input !== 'undefined') return input;
 
-        return scope(parent(source)) ?? source['$scope-auto'] ?? (source['$scope-auto'] = Math.random());
+        return scope(parent(source)) ?? source.instance['$scope-auto'] ?? (source.instance['$scope-auto'] = Math.random());
     }
 
     const siblings = (source: LinkProperty, types: Array<LinkPropertyType>) => {
@@ -183,7 +183,7 @@ export const createLink = (config: LinkConfig) => {
     const connect = (source: LinkProperty) => {
 
         // TODO
-        source['$scope-prev'] = scope(source);
+        source.instance['$scope-prev'] = scope(source);
 
         register(source);
 
@@ -238,7 +238,7 @@ export const createLink = (config: LinkConfig) => {
         p.forEach(connect);
     }
 
-    const link = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {
+    const decorator = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {
 
         const connected = target.connectedCallback;
 
@@ -273,11 +273,11 @@ export const createLink = (config: LinkConfig) => {
         }
     }
 
-    const Action = link('action');
+    const Action = decorator('action');
 
-    const Inject = link('inject');
+    const Inject = decorator('inject');
 
-    const Observable = link('observable');
+    const Observable = decorator('observable');
 
     return {
         Action,
