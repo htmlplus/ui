@@ -7,6 +7,7 @@ import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, Draw
  * This component lets you add collapsible side contents like navigation alongside some primary content.
  * @group drawer
  * @slot default - The default slot.
+ * @examples default
  */
 @Component({
   tag: 'plus-drawer',

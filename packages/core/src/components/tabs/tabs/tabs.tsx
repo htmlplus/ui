@@ -7,6 +7,7 @@ import { Action, Observable, reconnect } from './tabs.link';
  * @development
  * @group tabs
  * @slot default - The default slot.
+ * @examples default, grow, justify, reverse, separate, below, vertical
  */
 @Component({
   tag: 'plus-tabs',

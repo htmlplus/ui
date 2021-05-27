@@ -1,10 +1,11 @@
 ```css [style]
-#source { color: red  }
 #target { color: blue }
+#source { color: red  }
 ```
 
 ```html [template]
 <fragment>
+  <div id="target"></div>
   <div id="source">
     <plus-portal target="#target">
       <p>
@@ -14,6 +15,5 @@
       </p>
     </plus-portal>
   </div>
-  <div id="target"></div>
 </fragment>
 ```
