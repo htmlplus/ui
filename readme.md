@@ -17,8 +17,8 @@ HTMLPLUS has an active and growing open-source community. You can contribute to 
 * [Contribute to design](./docfiles/contributing.md#contribute-to-design)
 * [Contribute to documentation](./docfiles/contributing.md#contribute-to-documentation)
 
-
-You can [join our team](https://htmlplus.io/join) by submitting your request.
+## Join our team
+You can simply [join HTMLPLUS](https://htmlplus.io/join) team by submitting your request.
 
 ## Roadmap
 - [X] aspect ratio
