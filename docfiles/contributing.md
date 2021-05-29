@@ -18,8 +18,15 @@ How do you wish to contribute?
 
 
 ## Contribute to documentation
+It's realy hard to write and maintain documentation contents. Every endeavour is welcome to contribute in completing them. If you have English language writing skills and you are eager to contribute to our library feel free to reach out and do that.
 We welcome input and help with documentation. you can start with [documentation issues](https://github.com/htmlplus/core/labels/documentation) to find items to begin.
 
 ## Contribute to design processes
+There are lots of spaces that we need design process to be proceed in our product. If you are quilifed in any of these feilds feel free to reach out to join our team.
+
+* User Interface
+* User Experience
+* Graphic design
+
 If you want to join our design team feel free to reach out. Just sent an email to design@htmlplus.io.
 

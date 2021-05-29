@@ -12,13 +12,10 @@ To use HTMLPLUS see "[installation instruction](https://htmlplus.io/getting-star
 * [Official documentation](https://htmlplus.io/introduction/what-is-htmlplus)
 
 ## Contributing
-HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways.  All contributions are welcome! See the following resources to get you started:
-* [Contributing Guidelines](./docfiles/contributing.md)
-* [Developing Components](./docfiles/developing.md)
-* [Good First Issues]()
-* [Report an issue]()
-* [Contribute to design processes](./docfiles/design-process.md)
-* [Contribute to documentation](./docfiles/documentation.md)
+HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./docfiles/contributing.md) about them. All contributions are welcome! See the following resources to get started:
+* [Contributing to develop components](./docfiles/developing.md)
+* [Contribute to design processes](./docfiles/contributing.md#contribute-to-design)
+* [Contribute to documentation](./docfiles/documentation.md#contribute-to-documentation)
 
 You can join our team by posting a comment to [issue #issue-number]().
 
