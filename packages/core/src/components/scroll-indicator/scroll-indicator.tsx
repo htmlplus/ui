@@ -3,7 +3,7 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
- * With this component, you can build a progress bar displaying how far a user has scroll down the page or tag.
+ * Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.
  * @part indicator - TODO
  * @examples default
  */
@@ -15,25 +15,25 @@ import { ScrollIndicatorSource } from './scroll-indicator.types';
 export class ScrollIndicator {
 
   /**
-   * Disable event
+   * Disables the component function.
    */
   @Prop()
   disabled?: boolean;
 
   /**
-   * TODO
+   * Specifies the source of scroll.
    */
   @Prop()
   source?: ScrollIndicatorSource = 'document';
 
   /**
-   * Scroll vertical.
+   * Indicates which scroll (horizontal or vertical) to be used as its source.
    */
-  @Prop({ reflect: true })
+  // @Prop({ reflect: true })
   vertical?: boolean;
 
   /**
-   * When the children is scrolled this event trigger,
+   * When the children is scrolled this event trigger.
    */
   @Event({
     bubbles: true,
@@ -51,14 +51,13 @@ export class ScrollIndicator {
 
   $indicator!: HTMLElement;
 
-  get $container() {
-    // TODO
-    return document;
-  }
-
   get $source() {
-    // TODO
-    return document.documentElement;
+
+    if (typeof this.source !== 'string') return this.source;
+
+    if (this.source === 'document') return document;
+
+    return document.querySelector(this.source);
   }
 
   get attributes() {
@@ -69,14 +68,14 @@ export class ScrollIndicator {
 
   get progress() {
 
-    const {
-      scrollTop,
-      scrollLeft,
-      scrollHeight,
-      scrollWidth,
-      clientHeight,
-      clientWidth,
-    } = this.$source;
+    // TODO: any type not valid
+    let $source = this.$source as any;
+
+    if (!$source) return 0;
+
+    $source = this.$source['documentElement'] ?? $source;
+
+    const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = $source;
 
     const offset = this.vertical ? scrollLeft : scrollTop;
 
@@ -93,13 +92,13 @@ export class ScrollIndicator {
 
     if (this.disabled) return;
 
-    this.$container.addEventListener('scroll', this.onScroll);
+    this.$source?.addEventListener('scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    this.$container.removeEventListener('scroll', this.onScroll);
+    this.$source?.removeEventListener('scroll', this.onScroll);
   }
 
   /**

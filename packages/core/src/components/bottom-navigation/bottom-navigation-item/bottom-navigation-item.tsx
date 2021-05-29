@@ -1,7 +1,6 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, State, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
-import { BottomNavigationLink, Link } from '../bottom-navigation/bottom-navigation.link';
-// import { } from './toast.types';
+import { Inject } from '../bottom-navigation/bottom-navigation.link';
 
 /**
  * TODO
@@ -31,23 +30,27 @@ export class BottomNavigationItem {
   @GlobalConfig('bottomNavigationItem')
   config?;
 
-  @Link({ scope: 'TODO' })
-  link: BottomNavigationLink;
+  @Inject()
+  change?: Function = () => console.log('TODO: can not use out of bottom navigation');
+
+  @Inject()
+  @State()
+  tunnel?: any;
 
   get attributes() {
     return {
-      'grow': this.link.grow,
+      'grow': this.tunnel?.grow,
       'role': 'button',
       'state': this.state,
-      'onClick': this.onClick
+      'onClick': () => this.onClick()
     }
   }
 
   get classes() {
     return {
       'root': true,
-      'shift': this.link.shift,
-      [this.link.labelPosition]: true,
+      'shift': this.tunnel?.shift,
+      [this.tunnel?.labelPosition]: true,
     }
   }
 
@@ -56,20 +59,8 @@ export class BottomNavigationItem {
   }
 
   get state() {
-    return this.key === this.link.value ? 'active' : 'deactive';
+    return this.key === this.tunnel?.value ? 'active' : 'deactive';
   }
-
-  /**
-   * External Methods
-   */
-
-  /**
-   * Internal Methods
-   */
-
-  /**
-   * Watchers
-   */
 
   /**
    * Events handler
@@ -77,7 +68,10 @@ export class BottomNavigationItem {
 
   @Bind
   onClick() {
-    this.link.change(this.key);
+
+    if (this.disabled) return;
+
+    this.change(this.key);
   }
 
   /**

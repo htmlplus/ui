@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
-import { ToastLink, Link, rebind } from './toast.link';
+import { Animation, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
+import { Action, Observable, reconnect } from './toast.link';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
 /**
@@ -38,10 +38,19 @@ export class Toast {
   animation?: string;
 
   /**
+   * This property helps you to attach which toast toggler controls the toast. 
+   * It doesn't matter where the toast toggler is. 
+   * You can put the toast's toggler inside or outside of the toast. 
+   * Read more about connectors [here](https://htmlplus.io/features/connector).
+   */
+  @Prop()
+  connector?: string;
+
+  /**
    * TODO
    */
   @Prop()
-  duration?: number = 3000111;
+  duration?: number = 3000;
 
   /**
    * TODO
@@ -139,17 +148,15 @@ export class Toast {
 
   $root!: HTMLElement;
 
-  animate?: AnimationV2;
+  animate?: Animation;
 
   isOpen?: boolean;
 
   // TODO
   timeout?;
 
-  @Link({ scope: '[connector]' })
-  link: ToastLink = {
-    toggle: () => this.toggle()
-  }
+  @Observable()
+  tunnel?: boolean;
 
   get attributes() {
     return {
@@ -207,6 +214,7 @@ export class Toast {
     this.tryShow(true, false);
   }
 
+  @Action()
   toggle() {
     this.isOpen ? this.hide() : this.show();
   }
@@ -245,6 +253,10 @@ export class Toast {
       for (let i = instances.length - 1; i >= 0; i--) fn(i);
   }
 
+  broadcast(value) {
+    this.tunnel = value;
+  }
+
   // TODO
   coordinate(instance) {
 
@@ -259,21 +271,11 @@ export class Toast {
     return { x, y }
   }
 
-  dispose() {
+  initialize() {
 
-    this.animate?.dispose();
-
-    // TODO
-    this.onHide();
-
-    // TODO
-    // this.unregister();
-  }
-
-  init() {
-    this.animate = new AnimationV2({
+    this.animate = new Animation({
       key: 'state',
-      source: () => this.$root,
+      source: () => this.$host,
       target: () => this.$host,
       state: this.open ? 'entered' : 'leaved',
       states: {
@@ -285,6 +287,20 @@ export class Toast {
         leaved: 'closed',
       }
     })
+
+    if (!this.open) return;
+
+    this.tryShow(false, true);
+  }
+
+  terminate() {
+
+    this.onHide();
+
+    this.animate?.dispose();
+
+    // TODO
+    // this.unregister();
   }
 
   tryHide(animation, silent) {
@@ -300,7 +316,9 @@ export class Toast {
 
     this.animate.leave({
       onLeave: () => {
-        this.link.open = false;
+
+        // TODO: experimantal new link
+        this.broadcast(false);
       },
       onLeaved: () => {
 
@@ -326,9 +344,6 @@ export class Toast {
 
     this.animate.enter({
       onEnter: () => {
-
-        this.link.open = true;
-
         this.onShow();
       },
       onEntered: () => {
@@ -354,7 +369,7 @@ export class Toast {
 
       case 'connector':
 
-        rebind(this);
+        reconnect(this);
 
         break;
 
@@ -373,20 +388,36 @@ export class Toast {
    */
 
   onHide() {
+
+    // reset z-index
     this.$host.style.zIndex = null;
-    this.isOpen = false;
-    this.open = false;
+
+    // update state
+    this.open = this.isOpen = false;
+
+    // unregister dialog's instance
     this.state.instances = this.state.instances.filter((instance) => instance !== this);
+
+    // TODO: experimantal new link
+    this.broadcast(false);
 
     // TODO
     this.adjust();
   }
 
   onShow() {
+
+    // set z-index
     this.$host.style.zIndex = this.zIndex;
-    this.isOpen = true;
-    this.open = true;
+
+    // update state
+    this.open = this.isOpen = true;
+
+    // register dialog's instance
     this.state.instances.push(this);
+
+    // TODO: experimantal new link
+    this.broadcast(true);
 
     // TODO
     this.adjust();
@@ -400,16 +431,11 @@ export class Toast {
    */
 
   connectedCallback() {
-
-    this.init();
-
-    if (!this.open) return;
-
-    this.tryShow(false, true);
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.dispose();
+    this.terminate();
   }
 
   render() {

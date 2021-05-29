@@ -2,28 +2,36 @@
 @import 'scroll-indicator.variables';
 
 :host {
+  // @prop Used to adjust the color.
+  --plus-scroll-indicator-color: #{$scroll-indicator-color};
+
+  // @prop Used to adjust the background-color.
+  --plus-scroll-indicator-background-color: #{$scroll-indicator-background-color};
+
   // @prop Used to adjust the size.
   --plus-scroll-indicator-size: #{$scroll-indicator-size};
 }
 
 :host {
-  background-color: #e9e9e9;
+  background-color: var(--plus-scroll-indicator-background-color);
+  height: var(--plus-scroll-indicator-size);
   display: block;
   width: 100%;
-  height: var(--plus-scroll-indicator-size);
 }
 
 .indicator {
-  background-color: #a6a6a6;
+  background-color: var(--plus-scroll-indicator-color);
   height: 100%;
   width: 0;
 }
 
+// TODO
 // :host([vertical]) {
 //   width: var(--plus-scroll-indicator-size);
 //   height: 100%;
 // }
 
+// TODO
 // :host([vertical]) .indicator {
 //   height: 0;
 //   width: 100%;

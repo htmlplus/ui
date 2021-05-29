@@ -1,7 +1,8 @@
-import { Component, Host, Prop, Watch, h } from '@stencil/core';
-import { DialogLink, Link, rebind } from '../dialog/dialog.link';
+import { Component, Host, Prop, h, State } from '@stencil/core';
+import { Inject, reconnect } from '../dialog/dialog.link';
 
 /**
+ * TODO
  * @group dialog
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
@@ -23,31 +24,48 @@ export class DialogToggler {
   @Prop()
   connector?: string;
 
-  @Link({ scope: '[connector]' })
-  link!: DialogLink;
+  @Inject()
+  toggle?: Function = () => console.log('TODO: can not use out of dialog');
+
+  @Inject()
+  @State()
+  tunnel?: boolean;
 
   get attributes() {
     return {
       'role': 'button',
-      'state': this.link.open ? 'open' : 'close',
-      'onClick': () => this.link.toggle()
+      'state': this.tunnel ? 'open' : 'close',
+      'onClick': () => this.toggle()
     }
+  }
+
+  get text() {
+    return this.tunnel ? 'Close' : 'Open';
   }
 
   /**
    * Watchers
    */
 
-  @Watch('connector')
-  watcher() {
-    rebind(this);
+  componentShouldUpdate(next, prev, name) {
+
+    if (next === prev) return false;
+
+    switch (name) {
+
+      case 'connector':
+
+        reconnect(this);
+
+        break;
+    }
   }
 
   render() {
     return (
       <Host {...this.attributes}>
         <slot>
-          {this.link.open ? 'Close' : 'Open'}
+          {this.text}
         </slot>
         {/* TODO */}
         {/* <slot name="close" /> */}

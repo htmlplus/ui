@@ -19,8 +19,7 @@ This document describes how to develop HTMLPLUS components. see [HTMLPLUS roadma
 This article explains the process and guidelines for contributing code to the HTMLPLUS project.
 
 ### Knowledge requirements
->TODO:
-Before any action make sure that you are acquaintance with these items:
+TODO: Before taking any action, we suggest that you have relative knowledge of the following.
 - [TypeScript](https://www.typescriptlang.org)
 - [StencilJs](https://stenciljs.com)
 - [SASS](https://sass-lang.com)

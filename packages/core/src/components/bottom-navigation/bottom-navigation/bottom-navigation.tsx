@@ -1,6 +1,6 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { AnimationV2, GlobalConfig } from '@app/utils';
-import { BottomNavigationLink, Link } from './bottom-navigation.link';
+import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Animation, GlobalConfig } from '@app/utils';
+import { Action, Observable } from './bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
@@ -47,7 +47,7 @@ export class BottomNavigation {
    * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
    */
   @Prop()
-  scrollTarget: string;
+  scrollTarget: string | HTMLElement;
 
   /**
    * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
@@ -66,8 +66,17 @@ export class BottomNavigation {
   /**
    * TODO
    */
-  @Prop()
+  @Prop({ mutable: true })
   value?: any;
+
+  /**
+   * TODO
+   */
+  @Event({
+    bubbles: false,
+    cancelable: true
+  })
+  wowChange!: EventEmitter<any>;
 
   @GlobalConfig('bottomNavigation')
   config?;
@@ -75,12 +84,10 @@ export class BottomNavigation {
   @Element()
   $host!: HTMLElement;
 
-  animate?: AnimationV2;
+  animate?: Animation;
 
-  @Link({ scope: 'TODO' })
-  link: BottomNavigationLink = {
-    change: (value) => this.change(value)
-  };
+  @Observable()
+  tunnel?: any;
 
   get attributes() {
     return {
@@ -96,8 +103,30 @@ export class BottomNavigation {
    * Internal Methods
    */
 
-  init() {
-    this.animate = new AnimationV2({
+  broadcast() {
+    this.tunnel = {
+      value: this.value,
+      grow: this.grow,
+      labelPosition: this.labelPosition,
+      shift: this.shift,
+    }
+  }
+
+  @Action()
+  change(value: any) {
+
+    const event = this.wowChange.emit(value);
+
+    if (event.defaultPrevented) return;
+
+    this.value = value;
+
+    this.broadcast();
+  }
+
+  initialize() {
+
+    this.animate = new Animation({
       key: 'state',
       source: () => this.$host,
       target: () => this.$host,
@@ -110,11 +139,13 @@ export class BottomNavigation {
         leaving: 'closing',
         leaved: 'closed',
       }
-    })
+    });
+
+    this.broadcast();
   }
 
-  change(value: string) {
-    this.link.value = value;
+  terminate() {
+    this.animate?.dispose();
   }
 
   /**
@@ -125,20 +156,14 @@ export class BottomNavigation {
 
     if (next === prev) return false;
 
-    const value = this[name];
+    // const value = this[name];
 
     switch (name) {
 
       case 'grow':
-        this.link.grow = value;
-        break;
-
       case 'labelPosition':
-        this.link.labelPosition = value;
-        break;
-
       case 'shift':
-        this.link.shift = value;
+        this.broadcast();
         break;
     }
   }
@@ -152,20 +177,11 @@ export class BottomNavigation {
    */
 
   connectedCallback() {
-
-    this.link.grow = this.grow;
-    this.link.labelPosition = this.labelPosition;
-    this.link.shift = this.shift;
-
-    this.init();
-
-    // if (!this.open) return;
-
-    // this.tryShow(false, true);
+    this.initialize();
   }
 
   disconnectedCallback() {
-    // this.dispose();
+    this.terminate();
   }
 
   render() {

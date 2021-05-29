@@ -54,7 +54,10 @@ export class Portal implements ComponentInterface {
    * Internal Methods
    */
 
-  create() {
+  initialize() {
+
+    if (this.disabled) return;
+
     this.instance = new PortalCore({
       source: this.$nodes,
       strategy: this.strategy,
@@ -62,7 +65,7 @@ export class Portal implements ComponentInterface {
     })
   }
 
-  destroy() {
+  terminate() {
     this.instance?.revert();
   }
 
@@ -79,13 +82,13 @@ export class Portal implements ComponentInterface {
     switch (name) {
 
       case 'disabled':
-        value ? this.destroy() : this.create();
+        value ? this.terminate() : this.initialize();
         break;
 
       case 'strategy':
       case 'target':
-        this.destroy();
-        this.create();
+        this.terminate();
+        this.initialize();
         break;
     }
   }
@@ -95,14 +98,11 @@ export class Portal implements ComponentInterface {
    */
 
   connectedCallback() {
-
-    if (this.disabled) return;
-
-    this.create();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.destroy();
+    this.terminate();
   }
 
   render() {

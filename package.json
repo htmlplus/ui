@@ -9,7 +9,7 @@
     "publish:next": "lerna publish from-package --dist-tag next",
     "publish:release": "lerna version --no-private --preid next",
     "prepublishOnly": "npm run preversion",
-    "preversion": "lerna run bootstrap && lerna run clean && lerna run build",
+    "preversion": "lerna run clean && lerna run bootstrap && lerna run build --scope @htmlplus/react --stream",
     "start": "lerna run start --scope @htmlplus/core --stream"
   },
   "devDependencies": {
