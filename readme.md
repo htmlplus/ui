@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/npm/v/@htmlplus/core.svg)](https://www.npmjs.com/package/@htmlplus/core)
 [![GitHub forks](https://img.shields.io/github/forks/htmlplus/core)](https://github.com/htmlplus/core/network/members) [![GitHub stars](https://img.shields.io/github/stars/htmlplus/core)](https://github.com/htmlplus/core/stargazers) [![GitHub license](https://img.shields.io/github/license/htmlplus/core)](https://github.com/htmlplus/core/blob/main/LICENSE)  [![Linkedin](https://img.shields.io/badge/Follow%20us-white?logo=linkedIn&color=0077B5&logoColor=white)](https://www.linkedin.com/company/htmlplus)
 
-HTMLPLUS is native, framework-less and lightweight library which is purely developed with Javascript. All HTMLPLUS components are customizable and configurable.
+HTMLPLUS is a native, framework-less, and lightweight library that is purely developed with Javascript. All HTMLPLUS components are customizable and configurable.
 
 ## Quick start
 To use HTMLPLUS see "[installation instruction](https://htmlplus.io/getting-started/installation)".

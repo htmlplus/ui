@@ -1,29 +1,25 @@
 # Contribute to HTMLPLUS
 
-Contributions to HTMLPLUS include code, documentation, answering user questions, and advocating for all types of HTMLPLUS users. See our official documentation on htmlplus.io for more information.
+Contributions to HTMLPLUS include code, documentation, design, answering user questions, and advocating for all types of HTMLPLUS users. See our official documentation on htmlplus.io for more information.
 
 ### Table of Contents
-  - [Contribute to code](#contribute-to-code)
-
-  - [Contribute to documentation](#contribute-to-documentation)
   - [Report an issue](#report-an-issue)
-  - [Participate in the community](#participate-in-the-community)
+  - [Contribute to code](#contribute-to-code)
+  - [Contribute to documentation](#contribute-to-documentation)
+  - [Contribute to design](#contribute-to-design)
 
+## [Report an issue](./reporting_issues.md)
+Issues in [htmlplus/core](https://github.com/htmlplus/core/issues) are the primary means by which bug reports and general discussion are made.
 How do you wish to contribute?
 
-## [Contributing to code]()
-...
-See the [good first issues]() to find items to begin.
+
+## Contributing to code
+[Developing document](./developing.md) is a good entry point if you want to contribute to code. If you are a new member you can start with [good first issues](https://github.com/htmlplus/core/labels/good%20first%20issue) to find items to begin.
+
 
 ## Contribute to documentation
-We welcome input and help with documentation. Check out the documentation sources.
+We welcome input and help with documentation. you can start with [documentation issues](https://github.com/htmlplus/core/labels/documentation) to find items to begin.
 
 ## Contribute to design processes
-
-## Report an issue
-A relatively easy way to contribute is by reporting new issues. See our general guidelines for reporting.
-Follow the procedure outlined here when reporting issues with the HTMLPLUS project.
-
-## Participate in the community
-The HTMLPLUS community carries on lively discussions in several places. Feel free to learn and participate.
+If you want to join our design team feel free to reach out. Just sent an email to design@htmlplus.io.
 
