@@ -2,7 +2,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * TODO
+ * Symbols for common actions and items.This component gives you access to the icon libraries (font awesome,icon material,...).
  * @development 
  * @slot default - The default slot.
  * @examples default, color, custom-color, size, flip, rotate
@@ -23,43 +23,31 @@ export class Icon {
    */
 
   /**
-   * TODO
+   * Adjusts the color of the icons.(All main web color formats are accepted)
    */
   @Prop({ reflect: true })
   color?: string;
 
   /**
-   * TODO
+   * Flips the icon.
    */
   @Prop({ reflect: true })
   flip?: 'both' | 'horizontal' | 'vertical';
 
   /**
-   * TODO
-   */
-  // @Prop()
-  hidden?: boolean = true;
-
-  /**
-   * TODO
-   */
-  // @Prop()
-  label?: string;
-
-  /**
-   * TODO
+   * Specifies the name of the icon.
    */
   @Prop({ reflect: true })
   name?: string;
 
   /**
-   * TODO
+   * Rotates the icon.
    */
   @Prop({ reflect: true })
-  rotate?: 0 | 90 | 180 | 270;
+  rotate?: 90 | 180 | 270;
 
   /**
-   * TODO
+   * Specifies the size of the icon.
    * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Prop({ reflect: true })
@@ -70,8 +58,6 @@ export class Icon {
 
   get attributes() {
     return {
-      'aria-hidden': this.hidden ? 'true' : 'false',
-      'aria-label': this.label ?? null,
       'style': this.styles,
     }
   }
