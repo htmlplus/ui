@@ -56,6 +56,8 @@ export class Portal implements ComponentInterface {
 
   initialize() {
 
+    if (typeof window === 'undefined') return;
+
     if (this.disabled) return;
 
     this.instance = new PortalCore({
