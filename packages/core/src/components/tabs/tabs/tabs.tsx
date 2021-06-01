@@ -3,7 +3,7 @@ import { GlobalConfig } from '@app/utils';
 import { Action, Observable, reconnect } from './tabs.link';
 
 /**
- * TODO
+ * Organizes content across different screens.
  * @development
  * @group tabs
  * @slot default - The default slot.
@@ -17,25 +17,25 @@ import { Action, Observable, reconnect } from './tabs.link';
 export class Tabs {
 
   /**
-   * TODO
+   * Provides your own value.
    */
   @Prop({ mutable: true })
   value?: any;
 
   /**
-   * TODO
+   * You can use vertical property for vertical mode.
    */
   @Prop({ reflect: true })
   vertical?: boolean;
 
   /**
-   * TODO
+   * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
    */
   @Prop()
   connector?: string;
 
   /**
-   * TODO
+   * Fired when the value changes.
    */
   @Event({
     bubbles: false,
