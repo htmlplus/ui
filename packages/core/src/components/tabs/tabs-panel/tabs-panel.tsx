@@ -3,8 +3,7 @@ import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * 
-This component contains the contents of each tab and when the tab is activated the panel is displayed.
+ * This component contains the contents of each tab and when the tab is activated the panel is displayed.
  * @group tabs
  * @slot default - The default slot.
  */
