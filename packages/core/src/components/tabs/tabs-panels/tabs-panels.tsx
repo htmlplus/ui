@@ -3,7 +3,7 @@ import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * TODO
+ * This component contains panels.
  * @group tabs
  * @slot default - The default slot.
  */
@@ -15,7 +15,7 @@ import { Inject } from '../tabs/tabs.link';
 export class TabsPanels {
 
   /**
-   * TODO
+   * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
    */
   @Prop()
   connector?: string;

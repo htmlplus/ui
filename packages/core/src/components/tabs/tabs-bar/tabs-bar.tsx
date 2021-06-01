@@ -2,7 +2,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * TODO
+ * Arranges tabs within a bar.
  * @group tabs
  * @slot default - The default slot.
  */
@@ -14,19 +14,19 @@ import { GlobalConfig } from '@app/utils';
 export class TabsBar {
 
   /**
-   * TODO
+   * Grows tabs as much as all available space (occupies all horizontal space).
    */
   @Prop({ reflect: true })
   grow?: boolean;
 
   /**
-   * TODO
+   * Specifies how the tabs are aligned.
    */
   @Prop({ reflect: true })
   justify?: 'start' | 'center' | 'end' = 'start';
 
   /**
-   * TODO
+   * Reverses the arrangement of the tabs.
    */
   @Prop({ reflect: true })
   reverse?: boolean;
