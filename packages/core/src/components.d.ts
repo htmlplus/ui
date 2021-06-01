@@ -727,6 +727,28 @@ export namespace Components {
          */
         "xxl"?: GridItemColumn;
     }
+    interface PlusIcon {
+        /**
+          * TODO
+         */
+        "color"?: string;
+        /**
+          * TODO
+         */
+        "flip"?: 'both' | 'horizontal' | 'vertical';
+        /**
+          * TODO
+         */
+        "name"?: string;
+        /**
+          * TODO
+         */
+        "rotate"?: 0 | 90 | 180 | 270;
+        /**
+          * TODO `xs`, `sm`, `lg` and `1x` to `10x`.
+         */
+        "size"?: string;
+    }
     interface PlusIntersection {
         /**
           * It specifies how intersection behaves with its children.
@@ -1170,6 +1192,12 @@ declare global {
         prototype: HTMLPlusGridItemElement;
         new (): HTMLPlusGridItemElement;
     };
+    interface HTMLPlusIconElement extends Components.PlusIcon, HTMLStencilElement {
+    }
+    var HTMLPlusIconElement: {
+        prototype: HTMLPlusIconElement;
+        new (): HTMLPlusIconElement;
+    };
     interface HTMLPlusIntersectionElement extends Components.PlusIntersection, HTMLStencilElement {
     }
     var HTMLPlusIntersectionElement: {
@@ -1312,6 +1340,7 @@ declare global {
         "plus-drawer-toggler": HTMLPlusDrawerTogglerElement;
         "plus-grid": HTMLPlusGridElement;
         "plus-grid-item": HTMLPlusGridItemElement;
+        "plus-icon": HTMLPlusIconElement;
         "plus-intersection": HTMLPlusIntersectionElement;
         "plus-menu": HTMLPlusMenuElement;
         "plus-portal": HTMLPlusPortalElement;
@@ -2035,6 +2064,28 @@ declare namespace LocalJSX {
          */
         "xxl"?: GridItemColumn;
     }
+    interface PlusIcon {
+        /**
+          * TODO
+         */
+        "color"?: string;
+        /**
+          * TODO
+         */
+        "flip"?: 'both' | 'horizontal' | 'vertical';
+        /**
+          * TODO
+         */
+        "name"?: string;
+        /**
+          * TODO
+         */
+        "rotate"?: 0 | 90 | 180 | 270;
+        /**
+          * TODO `xs`, `sm`, `lg` and `1x` to `10x`.
+         */
+        "size"?: string;
+    }
     interface PlusIntersection {
         /**
           * It specifies how intersection behaves with its children.
@@ -2428,6 +2479,7 @@ declare namespace LocalJSX {
         "plus-drawer-toggler": PlusDrawerToggler;
         "plus-grid": PlusGrid;
         "plus-grid-item": PlusGridItem;
+        "plus-icon": PlusIcon;
         "plus-intersection": PlusIntersection;
         "plus-menu": PlusMenu;
         "plus-portal": PlusPortal;
@@ -2475,6 +2527,7 @@ declare module "@stencil/core" {
             "plus-drawer-toggler": LocalJSX.PlusDrawerToggler & JSXBase.HTMLAttributes<HTMLPlusDrawerTogglerElement>;
             "plus-grid": LocalJSX.PlusGrid & JSXBase.HTMLAttributes<HTMLPlusGridElement>;
             "plus-grid-item": LocalJSX.PlusGridItem & JSXBase.HTMLAttributes<HTMLPlusGridItemElement>;
+            "plus-icon": LocalJSX.PlusIcon & JSXBase.HTMLAttributes<HTMLPlusIconElement>;
             "plus-intersection": LocalJSX.PlusIntersection & JSXBase.HTMLAttributes<HTMLPlusIntersectionElement>;
             "plus-menu": LocalJSX.PlusMenu & JSXBase.HTMLAttributes<HTMLPlusMenuElement>;
             "plus-portal": LocalJSX.PlusPortal & JSXBase.HTMLAttributes<HTMLPlusPortalElement>;

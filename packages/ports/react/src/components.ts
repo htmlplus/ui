@@ -23,6 +23,7 @@ export const PlusDrawer = /*@__PURE__*/createReactComponent<JSX.PlusDrawer, HTML
 export const PlusDrawerToggler = /*@__PURE__*/createReactComponent<JSX.PlusDrawerToggler, HTMLPlusDrawerTogglerElement>('plus-drawer-toggler');
 export const PlusGrid = /*@__PURE__*/createReactComponent<JSX.PlusGrid, HTMLPlusGridElement>('plus-grid');
 export const PlusGridItem = /*@__PURE__*/createReactComponent<JSX.PlusGridItem, HTMLPlusGridItemElement>('plus-grid-item');
+export const PlusIcon = /*@__PURE__*/createReactComponent<JSX.PlusIcon, HTMLPlusIconElement>('plus-icon');
 export const PlusIntersection = /*@__PURE__*/createReactComponent<JSX.PlusIntersection, HTMLPlusIntersectionElement>('plus-intersection');
 export const PlusPortal = /*@__PURE__*/createReactComponent<JSX.PlusPortal, HTMLPlusPortalElement>('plus-portal');
 export const PlusScrollIndicator = /*@__PURE__*/createReactComponent<JSX.PlusScrollIndicator, HTMLPlusScrollIndicatorElement>('plus-scroll-indicator');
