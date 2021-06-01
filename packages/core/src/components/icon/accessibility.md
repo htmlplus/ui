@@ -32,4 +32,4 @@ In the case of focusable interactive elements, there are various options to incl
 </a>
 ```
 ## Reference
-[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](hhtp://sdfgh)
+[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)

@@ -3,7 +3,7 @@
   text-align: center;
 }
 plus-icon {
-  margin: 0 1em;
+  margin: 0 1rem;
   vertical-align: middle;
 }
 ```
