@@ -2,7 +2,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * arranges tabs within a bar.
+ * Arranges tabs within a bar.
  * @group tabs
  * @slot default - The default slot.
  */
