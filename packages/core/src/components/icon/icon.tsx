@@ -9,7 +9,7 @@ import { GlobalConfig } from '@app/utils';
 
 /**
  * TODO
- * @internal 
+ * @development 
  * @slot default - The default slot.
  * @examples default
  */
