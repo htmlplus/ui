@@ -3,7 +3,7 @@ import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * Tabs make it easy to switch between different views.
+ * TODO: Tabs make it easy to switch between different views.
  * @group tabs
  * @slot default - The default slot.
  */

@@ -3,9 +3,7 @@ import { Debug, GlobalConfig } from '@app/utils';
 import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
- * This component helps to specify a fixed ratio for the width and height sizes of a visual object (e.g. Image).
  * @slot default - The default slot.
- * @examples default, video, more
  */
 @Component({
   tag: 'plus-aspect-ratio',

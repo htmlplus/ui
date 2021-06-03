@@ -3,12 +3,8 @@ import { GlobalConfig } from '@app/utils';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
- * It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, 
- * using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, 
- * align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.
  * @group grid
  * @slot default - The default slot.
- * @examples default, auto-sizing, gutters, gutters-x, gutters-y, align-items, align-content, align-self, justify, reverse, wrap, offset, order, hide, vertical
  */
 @Component({
   tag: 'plus-grid',

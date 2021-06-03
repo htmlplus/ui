@@ -3,7 +3,6 @@ import { GlobalConfig } from '@app/utils';
 // import { } from './toast.types';
 
 /**
- * TODO
  * @internal 
  * @group toolbar
  */

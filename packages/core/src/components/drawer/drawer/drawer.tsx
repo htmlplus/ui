@@ -4,10 +4,8 @@ import { Action, Observable, reconnect } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 
 /**
- * This component lets you add collapsible side contents like navigation alongside some primary content.
  * @group drawer
  * @slot default - The default slot.
- * @examples default
  */
 @Component({
   tag: 'plus-drawer',

@@ -3,7 +3,6 @@ import { GlobalConfig } from '@app/utils';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 
 /**
- * Use as many hp-grid-items as you want inside a hp-grid to layout your content.
  * @group grid
  * @slot default - The default slot.
  */

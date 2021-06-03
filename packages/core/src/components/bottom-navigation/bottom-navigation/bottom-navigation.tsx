@@ -4,13 +4,9 @@ import { Action, Observable } from './bottom-navigation.link';
 // import { } from './toast.types';
 
 /**
- * TODO
- * https://vuetifyjs.com/en/api/v-bottom-navigation/#props-input-value
- * https://vuetifyjs.com/en/api/v-bottom-navigation/#props-mandatory
  * @internal 
  * @group bottom-navigation
  * @slot default - The default slot.
- * @examples default
  */
 @Component({
   tag: 'plus-bottom-navigation',

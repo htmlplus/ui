@@ -2,9 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil
 import { GlobalConfig } from '@app/utils';
 
 /**
- * TODO
  * @internal
- * @examples default, checked, labels, disabled, reverse, inset
  */
 @Component({
   tag: 'plus-switch',

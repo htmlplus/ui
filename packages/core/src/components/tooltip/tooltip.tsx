@@ -4,10 +4,7 @@ import { Bind, GlobalConfig, Helper, IsRTL } from '@app/utils';
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
 
 /**
- * It's the often used to specify extra information about something
- * when the user moves the mouse pointer over an element (Hover or Focus).
  * @experimental 
- * @examples default, placement, trigger
  */
 @Component({
   tag: 'plus-tooltip',

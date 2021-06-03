@@ -2,7 +2,6 @@ import { Component, Host, Prop, h, State } from '@stencil/core';
 import { Inject, reconnect } from '../dialog/dialog.link';
 
 /**
- * TODO
  * @group dialog
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.

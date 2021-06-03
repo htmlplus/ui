@@ -3,7 +3,6 @@ import { Bind, Helper } from '@app/utils';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
- * TODO
  * @internal
  */
 @Component({

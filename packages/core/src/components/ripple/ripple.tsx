@@ -2,9 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * TODO
  * @internal
- * @examples default
  */
 @Component({
   tag: 'plus-ripple',

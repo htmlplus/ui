@@ -3,11 +3,9 @@ import { GlobalConfig } from '@app/utils';
 // import { } from './toast.types';
 
 /**
- * TODO
  * @internal 
  * @group toolbar
  * @slot default - The default slot.
- * @examples default
  */
 @Component({
   tag: 'plus-toolbar',

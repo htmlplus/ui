@@ -3,8 +3,6 @@ import { Direction, GlobalConfig, IsRTL } from '@app/utils';
 import { DividerSize, DividerType } from './divider.types';
 
 /**
- * It's a thin line that can divide the content vertically or horizontally.
- * @examples size, type, horizontal, vertical, card, customize
  */
 @Component({
   tag: 'plus-divider',

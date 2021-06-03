@@ -4,10 +4,8 @@ import { Action, Observable, reconnect } from './toast.link';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
 /**
- * TODO
  * @development
  * @slot default - The default slot.
- * @examples default
  */
 @Component({
   tag: 'plus-toast',

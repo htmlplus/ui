@@ -3,7 +3,7 @@ import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * This component contains panels.
+ * TODO: This component contains panels.
  * @group tabs
  * @slot default - The default slot.
  */

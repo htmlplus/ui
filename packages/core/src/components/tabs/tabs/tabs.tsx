@@ -3,11 +3,9 @@ import { GlobalConfig } from '@app/utils';
 import { Action, Observable, reconnect } from './tabs.link';
 
 /**
- * Organizes content across different screens.
  * @development
  * @group tabs
  * @slot default - The default slot.
- * @examples default, grow, justify, reverse, separate, below, vertical
  */
 @Component({
   tag: 'plus-tabs',

@@ -3,9 +3,6 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
- * This component allows you to apply an animation on your component such as fade or other animations. 
- * click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see and choose your favorite animation from a wide range of animation we provide for you.
- * @examples default, name, duration
  */
 @Component({
   tag: 'plus-transition',

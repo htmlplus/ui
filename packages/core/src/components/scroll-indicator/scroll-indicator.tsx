@@ -3,9 +3,7 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
- * Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.
  * @part indicator - TODO
- * @examples default
  */
 @Component({
   tag: 'plus-scroll-indicator',

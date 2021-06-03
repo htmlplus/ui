@@ -2,10 +2,8 @@ import { Component, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * Symbols for common actions and items.This component gives you access to the icon libraries (font awesome,icon material,...).
  * @development 
  * @slot default - The default slot.
- * @examples default, color, custom-color, size, flip, rotate
  */
 @Component({
   tag: 'plus-icon',

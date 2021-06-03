@@ -3,7 +3,6 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { Inject } from '../bottom-navigation/bottom-navigation.link';
 
 /**
- * TODO
  * @internal 
  * @group bottom-navigation
  * @slot default - The default slot.
