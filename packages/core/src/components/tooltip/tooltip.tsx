@@ -1,4 +1,4 @@
-import { Component, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
 import { createPopper, Instance } from "@popperjs/core";
 import { Bind, GlobalConfig, Helper, IsRTL } from '@app/utils';
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
@@ -11,7 +11,7 @@ import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from
   styleUrl: 'tooltip.scss',
   shadow: true,
 })
-export class Tooltip {
+export class Tooltip implements ComponentInterface {
 
   // TODO
   // https://popper.js.org

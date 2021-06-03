@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import { Bind, GlobalConfig, Helper } from '@app/utils';
 import {
@@ -20,7 +20,7 @@ import {
   styleUrl: 'cropper.scss',
   shadow: true
 })
-export class Cropper {
+export class Cropper implements ComponentInterface {
 
   /**
    * A number between 0 and 1. Define the automatic cropping area size.

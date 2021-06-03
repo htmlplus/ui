@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
 import { Action, Observable, reconnect } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
@@ -13,7 +13,7 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrat
   styleUrl: 'dialog.scss',
   shadow: true,
 })
-export class Dialog {
+export class Dialog implements ComponentInterface {
 
   /**
    * TODO

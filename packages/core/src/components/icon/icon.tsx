@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
@@ -10,7 +10,7 @@ import { GlobalConfig } from '@app/utils';
   styleUrl: 'icon.scss',
   shadow: true
 })
-export class Icon {
+export class Icon implements ComponentInterface {
 
   /**
    * TODO

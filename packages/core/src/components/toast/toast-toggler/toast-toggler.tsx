@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h, State } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h, State } from '@stencil/core';
 import { Inject, reconnect } from '../toast/toast.link';
 
 /**
@@ -12,7 +12,7 @@ import { Inject, reconnect } from '../toast/toast.link';
   styleUrl: 'toast-toggler.scss',
   shadow: true,
 })
-export class ToastToggler {
+export class ToastToggler implements ComponentInterface {
 
   /**
    * This property helps you to attach which toast this toggler controls. 

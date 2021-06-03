@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { Bind, GlobalConfig, Helper } from '@app/utils';
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -10,7 +10,7 @@ import { StickyState, StickyTop } from './sticky.types';
   styleUrl: 'sticky.scss',
   shadow: true
 })
-export class Sticky {
+export class Sticky implements ComponentInterface {
 
   /**
    * Disables the sticky mode.

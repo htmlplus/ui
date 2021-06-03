@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
@@ -9,7 +9,7 @@ import { TransitionDirection, TransitionDuration, TransitionRepeat } from './tra
   styleUrl: 'transition.scss',
   shadow: true
 })
-export class Transition {
+export class Transition implements ComponentInterface {
 
   /**
    * Specifies the amount of delay before starting the animation to play. 

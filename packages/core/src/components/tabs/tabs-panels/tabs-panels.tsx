@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
@@ -12,7 +12,7 @@ import { Inject } from '../tabs/tabs.link';
   styleUrl: 'tabs-panels.scss',
   shadow: true,
 })
-export class TabsPanels {
+export class TabsPanels implements ComponentInterface {
 
   /**
    * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.

@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 // import { } from './toast.types';
 
@@ -12,7 +12,7 @@ import { GlobalConfig } from '@app/utils';
   styleUrl: 'toolbar.scss',
   shadow: true
 })
-export class Toolbar {
+export class Toolbar implements ComponentInterface {
 
   /**
    * TODO

@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, State, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
@@ -12,7 +12,7 @@ import { Inject } from '../tabs/tabs.link';
   styleUrl: 'tabs-panel.scss',
   shadow: true,
 })
-export class TabsPanel {
+export class TabsPanel implements ComponentInterface {
 
   /**
    * Provides your own value.

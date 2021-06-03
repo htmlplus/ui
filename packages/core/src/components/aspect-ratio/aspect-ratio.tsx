@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { Debug, GlobalConfig } from '@app/utils';
 import { AspectRatioValue } from './aspect-ratio.types';
 
@@ -10,7 +10,7 @@ import { AspectRatioValue } from './aspect-ratio.types';
   styleUrl: 'aspect-ratio.scss',
   shadow: true
 })
-export class AspectRatio {
+export class AspectRatio implements ComponentInterface {
 
   /**
    * Specifies the ratio.

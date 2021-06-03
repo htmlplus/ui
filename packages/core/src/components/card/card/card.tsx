@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { CardElevation } from './card.types';
 
@@ -11,7 +11,7 @@ import { CardElevation } from './card.types';
   styleUrl: 'card.scss',
   shadow: true,
 })
-export class Card {
+export class Card implements ComponentInterface {
 
   /**
    * If you want the card to have shadow, use the elevation property, 

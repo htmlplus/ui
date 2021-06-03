@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
@@ -9,7 +9,7 @@ import { GlobalConfig } from '@app/utils';
   styleUrl: 'switch.scss',
   shadow: true
 })
-export class Switch {
+export class Switch implements ComponentInterface {
 
   /**
    * Puts the switch in checked state

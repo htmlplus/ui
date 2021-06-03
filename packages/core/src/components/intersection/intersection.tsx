@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
 import { IntersectionBehavior } from './intersection.types';
 
@@ -10,7 +10,7 @@ import { IntersectionBehavior } from './intersection.types';
   styleUrl: 'intersection.scss',
   shadow: true
 })
-export class Intersection {
+export class Intersection implements ComponentInterface {
 
   /**
    * It specifies how intersection behaves with its children. 

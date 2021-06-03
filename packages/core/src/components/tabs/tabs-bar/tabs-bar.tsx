@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
@@ -11,7 +11,7 @@ import { GlobalConfig } from '@app/utils';
   styleUrl: 'tabs-bar.scss',
   shadow: true,
 })
-export class TabsBar {
+export class TabsBar implements ComponentInterface {
 
   /**
    * Grows tabs as much as all available space (occupies all horizontal space).

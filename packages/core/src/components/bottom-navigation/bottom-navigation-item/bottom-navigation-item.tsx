@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, State, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
 import { Inject } from '../bottom-navigation/bottom-navigation.link';
 
@@ -12,7 +12,7 @@ import { Inject } from '../bottom-navigation/bottom-navigation.link';
   styleUrl: 'bottom-navigation-item.scss',
   shadow: true
 })
-export class BottomNavigationItem {
+export class BottomNavigationItem implements ComponentInterface {
 
   /**
    * TODO

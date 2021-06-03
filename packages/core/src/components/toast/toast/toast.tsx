@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Animation, Direction, GlobalConfig, GlobalState, Helper, IsRTL } from '@app/utils';
 import { Action, Observable, reconnect } from './toast.link';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
@@ -12,7 +12,7 @@ import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
   styleUrl: 'toast.scss',
   shadow: true
 })
-export class Toast {
+export class Toast implements ComponentInterface {
 
   /**
    * TODO

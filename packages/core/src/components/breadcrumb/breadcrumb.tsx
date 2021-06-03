@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
 import { Bind, Debug, GlobalConfig, IsRTL } from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
@@ -15,7 +15,7 @@ import * as Constants from './breadcrumb.constants';
   styleUrl: 'breadcrumb.scss',
   shadow: true
 })
-export class Breadcrumb {
+export class Breadcrumb implements ComponentInterface {
 
   /**
    * For localization purposes, you can use the provided translations.

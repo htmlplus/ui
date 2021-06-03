@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { Action, Observable, reconnect } from './tabs.link';
 
@@ -12,7 +12,7 @@ import { Action, Observable, reconnect } from './tabs.link';
   styleUrl: 'tabs.scss',
   shadow: true,
 })
-export class Tabs {
+export class Tabs implements ComponentInterface {
 
   /**
    * Provides your own value.

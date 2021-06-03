@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
@@ -9,7 +9,7 @@ import { SpinnerSize, SpinnerType } from './spinner.types';
   styleUrl: 'spinner.scss',
   shadow: true,
 })
-export class Spinner {
+export class Spinner implements ComponentInterface {
 
   /**
    * Specifies the size of the spinner.

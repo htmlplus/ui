@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
@@ -11,7 +11,7 @@ import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridW
   styleUrl: 'grid.scss',
   shadow: true,
 })
-export class Grid {
+export class Grid implements ComponentInterface {
 
   /**
    * Aligns contents vertically across all rows (It overrides alignItems).

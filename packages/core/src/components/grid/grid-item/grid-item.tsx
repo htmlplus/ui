@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 
@@ -11,7 +11,7 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
   styleUrl: 'grid-item.scss',
   shadow: true,
 })
-export class GridItem {
+export class GridItem implements ComponentInterface {
 
   /**
    * Aligns the grid-item vertically in its container (grid).

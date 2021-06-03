@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Animation, GlobalConfig } from '@app/utils';
 import { Action, Observable } from './bottom-navigation.link';
 // import { } from './toast.types';
@@ -13,7 +13,7 @@ import { Action, Observable } from './bottom-navigation.link';
   styleUrl: 'bottom-navigation.scss',
   shadow: true
 })
-export class BottomNavigation {
+export class BottomNavigation implements ComponentInterface {
 
   /**
    * TODO

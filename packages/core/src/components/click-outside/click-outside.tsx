@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
 import { Bind, GlobalConfig, ClickOutside as ClickOutsideCore } from '@app/utils';
 
 /**
@@ -9,7 +9,7 @@ import { Bind, GlobalConfig, ClickOutside as ClickOutsideCore } from '@app/utils
   styleUrl: 'click-outside.scss',
   shadow: true
 })
-export class ClickOutside {
+export class ClickOutside implements ComponentInterface {
 
   /**
    * Disable the component.

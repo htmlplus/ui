@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { Direction, GlobalConfig, IsRTL } from '@app/utils';
 import { DividerSize, DividerType } from './divider.types';
 
@@ -9,7 +9,7 @@ import { DividerSize, DividerType } from './divider.types';
   styleUrl: 'divider.scss',
   shadow: true
 })
-export class Divider {
+export class Divider implements ComponentInterface {
 
   /**
    * TODO
