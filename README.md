@@ -21,7 +21,7 @@ HTMLPLUS has an active and growing open-source community. You can contribute to 
 * [Contribute to documentation](./CONTRIBUTING.md#contribute-to-documentation)
 
 ## Code of Conduct
-We expect project participants to adhere to. Please read [the full text](./code_of_conduct.md) so that you can understand what actions will and will not be tolerated.
+We expect project participants to adhere to. Please read [the full text](./CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
 ## Good first issues
 To get you familiar with our contribution process, we have a list of [good first issues](https://github.com/htmlplus/core/labels/good%20first%20issue)  that contain bugs which have a relatively limited scope. This is a great place to get started.
