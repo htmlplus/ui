@@ -1,7 +1,6 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, h } from '@stencil/core';
 
 /**
- * TODO
  * @internal
  * @group card
  * @slot default - The default slot.
@@ -11,7 +10,7 @@ import { Component, Host, h } from '@stencil/core';
   styleUrl: 'card-header.scss',
   shadow: true,
 })
-export class CardHeader {
+export class CardHeader implements ComponentInterface {
   render() {
     return (
       <Host>

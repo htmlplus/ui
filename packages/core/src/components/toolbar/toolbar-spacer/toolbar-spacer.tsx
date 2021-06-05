@@ -1,9 +1,8 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 // import { } from './toast.types';
 
 /**
- * TODO
  * @internal 
  * @group toolbar
  */
@@ -12,7 +11,7 @@ import { GlobalConfig } from '@app/utils';
   styleUrl: 'toolbar-spacer.scss',
   shadow: true
 })
-export class ToolbarSpacer {
+export class ToolbarSpacer implements ComponentInterface {
 
   /**
    * TODO

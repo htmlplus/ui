@@ -1,20 +1,18 @@
-import { Component, Host, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import { Animation, Bind, ClickOutside, GlobalConfig, Helper, IsRTL, Media, Scrollbar } from '@app/utils';
 import { Action, Observable, reconnect } from './drawer.link';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 
 /**
- * This component lets you add collapsible side contents like navigation alongside some primary content.
  * @group drawer
  * @slot default - The default slot.
- * @examples default
  */
 @Component({
   tag: 'plus-drawer',
   styleUrl: 'drawer.scss',
   shadow: true,
 })
-export class Drawer {
+export class Drawer implements ComponentInterface {
 
   /**
    * TODO

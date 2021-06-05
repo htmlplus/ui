@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
 import CropperCore from 'cropperjs';
 import { Bind, GlobalConfig, Helper } from '@app/utils';
 import {
@@ -14,16 +14,13 @@ import {
 } from './cropper.types';
 
 /**
- * An image cropper is a web & mobile component which enable the user to resize, move, crop 
- * an area of images before they're uploaded to the server.
- * @examples default, area, aspect-ratio, backdrop, background, guides, indicator, mode, shape, styles
  */
 @Component({
   tag: 'plus-cropper',
   styleUrl: 'cropper.scss',
   shadow: true
 })
-export class Cropper {
+export class Cropper implements ComponentInterface {
 
   /**
    * A number between 0 and 1. Define the automatic cropping area size.

@@ -1,25 +1,21 @@
-import { Component, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
 import { Bind, Debug, GlobalConfig, IsRTL } from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
 /**
- * Breadcrumb component is a navigation pattern that shows the actual path of the current page. 
- * It represents the route using links, which enables the user to easily navigate upwards through 
- * the hierarchy.
  * @part expander  - TODO.
  * @part item      - TODO.
  * @part separator - TODO.
  * @slot default   - The default slot.
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
- * @examples default, separator, custom-separator, limitation, custom-expander, customized
  */
 @Component({
   tag: 'plus-breadcrumb',
   styleUrl: 'breadcrumb.scss',
   shadow: true
 })
-export class Breadcrumb {
+export class Breadcrumb implements ComponentInterface {
 
   /**
    * For localization purposes, you can use the provided translations.

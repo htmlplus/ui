@@ -1,18 +1,16 @@
-import { Component, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
+import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
 import { Bind, GlobalConfig, Helper } from '@app/utils';
 import { StickyState, StickyTop } from './sticky.types';
 
 /**
- * Component content is positioned based on the user's scroll position.
  * @slot default - The default slot.
- * @examples default, top, state-attribute
  */
 @Component({
   tag: 'plus-sticky',
   styleUrl: 'sticky.scss',
   shadow: true
 })
-export class Sticky {
+export class Sticky implements ComponentInterface {
 
   /**
    * Disables the sticky mode.

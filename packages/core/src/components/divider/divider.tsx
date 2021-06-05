@@ -1,17 +1,15 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { Direction, GlobalConfig, IsRTL } from '@app/utils';
 import { DividerSize, DividerType } from './divider.types';
 
 /**
- * It's a thin line that can divide the content vertically or horizontally.
- * @examples size, type, horizontal, vertical, card, customize
  */
 @Component({
   tag: 'plus-divider',
   styleUrl: 'divider.scss',
   shadow: true
 })
-export class Divider {
+export class Divider implements ComponentInterface {
 
   /**
    * TODO

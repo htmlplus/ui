@@ -1,9 +1,8 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 
 /**
- * Use as many hp-grid-items as you want inside a hp-grid to layout your content.
  * @group grid
  * @slot default - The default slot.
  */
@@ -12,7 +11,7 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
   styleUrl: 'grid-item.scss',
   shadow: true,
 })
-export class GridItem {
+export class GridItem implements ComponentInterface {
 
   /**
    * Aligns the grid-item vertically in its container (grid).

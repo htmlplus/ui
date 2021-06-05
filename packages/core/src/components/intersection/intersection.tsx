@@ -1,21 +1,16 @@
-import { Component, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
+import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
 import { Bind, GlobalConfig } from '@app/utils';
 import { IntersectionBehavior } from './intersection.types';
 
 /**
- * This component provides a way to asynchronously observe changes in the intersection of a target element with an ancestor
- * element or with a top-level document's [viewport](https://developer.mozilla.org/en-US/docs/Glossary/Viewport). 
- * Its basic behavior is totally similar to [standard intersection observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
- * Its callback is executed whenever intersects with the viewport, or when the amount by which the two intersect changes by a requested amount.
  * @slot default - The default slot.
- * @examples default, lazy-image
  */
 @Component({
   tag: 'plus-intersection',
   styleUrl: 'intersection.scss',
   shadow: true
 })
-export class Intersection {
+export class Intersection implements ComponentInterface {
 
   /**
    * It specifies how intersection behaves with its children. 

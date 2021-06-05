@@ -1,18 +1,16 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { Debug, GlobalConfig } from '@app/utils';
 import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
- * This component helps to specify a fixed ratio for the width and height sizes of a visual object (e.g. Image).
  * @slot default - The default slot.
- * @examples default, video, more
  */
 @Component({
   tag: 'plus-aspect-ratio',
   styleUrl: 'aspect-ratio.scss',
   shadow: true
 })
-export class AspectRatio {
+export class AspectRatio implements ComponentInterface {
 
   /**
    * Specifies the ratio.

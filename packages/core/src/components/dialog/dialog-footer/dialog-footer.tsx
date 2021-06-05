@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, h } from '@stencil/core';
 
 /**
  * @group dialog
@@ -9,7 +9,7 @@ import { Component, Host, h } from '@stencil/core';
   styleUrl: 'dialog-footer.scss',
   shadow: true,
 })
-export class DialogFooter {
+export class DialogFooter implements ComponentInterface {
   render() {
     return (
       <Host>

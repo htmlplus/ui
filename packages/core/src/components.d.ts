@@ -729,27 +729,23 @@ export namespace Components {
     }
     interface PlusIcon {
         /**
-          * TODO
+          * Adjusts the color of the icons.(All main web color formats are accepted)
          */
         "color"?: string;
         /**
-          * TODO
+          * Flips the icon.
          */
         "flip"?: 'both' | 'horizontal' | 'vertical';
         /**
-          * TODO
-         */
-        "label"?: string;
-        /**
-          * TODO
+          * Specifies the name of the icon.
          */
         "name"?: string;
         /**
-          * TODO
+          * Rotates the icon.
          */
-        "rotate"?: 0 | 90 | 180 | 270;
+        "rotate"?: 90 | 180 | 270;
         /**
-          * TODO
+          * Specifies the size of the icon. `xs`, `sm`, `lg` and `1x` to `10x`.
          */
         "size"?: string;
     }
@@ -898,51 +894,51 @@ export namespace Components {
     }
     interface PlusTabs {
         /**
-          * TODO
+          * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
          */
         "connector"?: string;
         /**
-          * TODO
+          * Provides your own value.
          */
         "value"?: any;
         /**
-          * TODO
+          * You can use vertical property for vertical mode.
          */
         "vertical"?: boolean;
     }
     interface PlusTabsBar {
         /**
-          * TODO
+          * Grows tabs as much as all available space (occupies all horizontal space).
          */
         "grow"?: boolean;
         /**
-          * TODO
+          * Specifies how the tabs are aligned.
          */
         "justify"?: 'start' | 'center' | 'end';
         /**
-          * TODO
+          * Reverses the arrangement of the tabs.
          */
         "reverse"?: boolean;
     }
     interface PlusTabsPanel {
         /**
-          * TODO
+          * Provides your own value.
          */
         "value"?: any;
     }
     interface PlusTabsPanels {
         /**
-          * TODO
+          * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
          */
         "connector"?: string;
     }
     interface PlusTabsTab {
         /**
-          * TODO
+          * A Tab can be disabled by setting disabled property.
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * Provides your own value.
          */
         "value"?: any;
     }
@@ -2070,27 +2066,23 @@ declare namespace LocalJSX {
     }
     interface PlusIcon {
         /**
-          * TODO
+          * Adjusts the color of the icons.(All main web color formats are accepted)
          */
         "color"?: string;
         /**
-          * TODO
+          * Flips the icon.
          */
         "flip"?: 'both' | 'horizontal' | 'vertical';
         /**
-          * TODO
-         */
-        "label"?: string;
-        /**
-          * TODO
+          * Specifies the name of the icon.
          */
         "name"?: string;
         /**
-          * TODO
+          * Rotates the icon.
          */
-        "rotate"?: 0 | 90 | 180 | 270;
+        "rotate"?: 90 | 180 | 270;
         /**
-          * TODO
+          * Specifies the size of the icon. `xs`, `sm`, `lg` and `1x` to `10x`.
          */
         "size"?: string;
     }
@@ -2259,55 +2251,55 @@ declare namespace LocalJSX {
     }
     interface PlusTabs {
         /**
-          * TODO
+          * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
          */
         "connector"?: string;
         /**
-          * TODO
+          * Fired when the value changes.
          */
         "onWowChange"?: (event: CustomEvent<any>) => void;
         /**
-          * TODO
+          * Provides your own value.
          */
         "value"?: any;
         /**
-          * TODO
+          * You can use vertical property for vertical mode.
          */
         "vertical"?: boolean;
     }
     interface PlusTabsBar {
         /**
-          * TODO
+          * Grows tabs as much as all available space (occupies all horizontal space).
          */
         "grow"?: boolean;
         /**
-          * TODO
+          * Specifies how the tabs are aligned.
          */
         "justify"?: 'start' | 'center' | 'end';
         /**
-          * TODO
+          * Reverses the arrangement of the tabs.
          */
         "reverse"?: boolean;
     }
     interface PlusTabsPanel {
         /**
-          * TODO
+          * Provides your own value.
          */
         "value"?: any;
     }
     interface PlusTabsPanels {
         /**
-          * TODO
+          * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
          */
         "connector"?: string;
     }
     interface PlusTabsTab {
         /**
-          * TODO
+          * A Tab can be disabled by setting disabled property.
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * Provides your own value.
          */
         "value"?: any;
     }

@@ -1,9 +1,9 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * TODO
+ * TODO: This component contains panels.
  * @group tabs
  * @slot default - The default slot.
  */
@@ -12,10 +12,10 @@ import { Inject } from '../tabs/tabs.link';
   styleUrl: 'tabs-panels.scss',
   shadow: true,
 })
-export class TabsPanels {
+export class TabsPanels implements ComponentInterface {
 
   /**
-   * TODO
+   * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
    */
   @Prop()
   connector?: string;
