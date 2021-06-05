@@ -10,10 +10,10 @@ Component content is positioned based on the user's scroll position.
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Top
-<Example value="examples/top" />
+<Example value="top" />
 
 ### State Attribute
-<Example value="examples/state-attribute" />
+<Example value="state-attribute" />

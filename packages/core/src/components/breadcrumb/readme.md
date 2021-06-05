@@ -12,19 +12,19 @@ the hierarchy.
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Separator
-<Example value="examples/separator" />
+<Example value="separator" />
 
 ### Custom Separator
-<Example value="examples/custom-separator" />
+<Example value="custom-separator" />
 
 ### Limitation
-<Example value="examples/limitation" />
+<Example value="limitation" />
 
 ### Custom Expander
-<Example value="examples/custom-expander" />
+<Example value="custom-expander" />
 
 ### Customized
-<Example value="examples/customized" />
+<Example value="customized" />

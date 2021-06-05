@@ -10,19 +10,19 @@ TODO
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Checked
-<Example value="examples/checked" />
+<Example value="checked" />
 
 ### Labels
-<Example value="examples/labels" />
+<Example value="labels" />
 
 ### Disabled
-<Example value="examples/disabled" />
+<Example value="disabled" />
 
 ### Reverse
-<Example value="examples/reverse" />
+<Example value="reverse" />
 
 ### Inset
-<Example value="examples/inset" />
+<Example value="inset" />

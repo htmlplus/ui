@@ -10,19 +10,19 @@ It's an indicator of progress and activity in order to show the loading state of
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### size
-<Example value="examples/size" />
+<Example value="size" />
 
 ### Custom Size
-<Example value="examples/custom-size" />
+<Example value="custom-size" />
 
 ### Color
-<Example value="examples/color" />
+<Example value="color" />
 
 ### Type
-<Example value="examples/type" />
+<Example value="type" />
 
 ### Customize
-<Example value="examples/customize" />
+<Example value="customize" />

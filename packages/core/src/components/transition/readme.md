@@ -10,10 +10,10 @@ This component allows you to apply an animation on your component such as fade o
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Name
-<Example value="examples/name" />
+<Example value="name" />
 
 ### Duration
-<Example value="examples/duration" />
+<Example value="duration" />

@@ -13,5 +13,5 @@ they’re placed in the DOM tree.
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 

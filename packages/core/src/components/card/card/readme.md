@@ -10,25 +10,25 @@ Cards contain content and actions about a single subject.
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Elevation
-<Example value="examples/elevation" />
+<Example value="elevation" />
 
 ### Outlined
-<Example value="examples/outlined" />
+<Example value="outlined" />
 
 ### Border Color
-<Example value="examples/border-color" />
+<Example value="border-color" />
 
 ### Border Width
-<Example value="examples/border-width" />
+<Example value="border-width" />
 
 ### Tile
-<Example value="examples/tile" />
+<Example value="tile" />
 
 ### Background Color
-<Example value="examples/background-color" />
+<Example value="background-color" />
 
 ### Customize
-<Example value="examples/customize" />
+<Example value="customize" />

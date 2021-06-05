@@ -10,8 +10,8 @@ This component provides a way to asynchronously observe changes in the intersect
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Lazy Image
-<Example value="examples/lazy-image" />
+<Example value="lazy-image" />
 

@@ -10,4 +10,4 @@ The component calls a function when something outside of the target element is c
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />

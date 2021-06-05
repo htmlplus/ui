@@ -10,47 +10,47 @@ It's the most flexible and powerful grid system which you need to build simple t
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Auto Sizing
-<Example value="examples/auto-sizing" />
+<Example value="auto-sizing" />
 
 ### Gutter
-<Example value="examples/gutter" />
+<Example value="gutter" />
 
 ### Gutter x
-<Example value="examples/gutter-x" />
+<Example value="gutter-x" />
 
 ### Gutter y
-<Example value="examples/gutter-y" />
+<Example value="gutter-y" />
 
 ### Align Items
-<Example value="examples/align-items" />
+<Example value="align-items" />
 
 ### Align Content
-<Example value="examples/align-content" />
+<Example value="align-content" />
 
 ### Align Self
-<Example value="examples/align-self" />
+<Example value="align-self" />
 
 ### Justify
-<Example value="examples/justify" />
+<Example value="justify" />
 
 ### Reverse
-<Example value="examples/reverse" />
+<Example value="reverse" />
 
 ### Wrap
-<Example value="examples/wrap" />
+<Example value="wrap" />
 
 ### Offset
-<Example value="examples/offset" />
+<Example value="offset" />
 
 ### Order
-<Example value="examples/order" />
+<Example value="order" />
 
 ### Hide
-<Example value="examples/hide" />
+<Example value="hide" />
 
 ### Vertical
-<Example value="examples/vertical" />
+<Example value="vertical" />
 

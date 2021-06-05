@@ -10,5 +10,5 @@ Template
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 

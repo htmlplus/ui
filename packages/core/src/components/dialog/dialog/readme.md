@@ -10,43 +10,43 @@ A dialog is a `conversation` between the system and the user. It is prompted whe
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Animation
-<Example value="examples/animation" />
+<Example value="animation" />
 
 ### Persistent
-<Example value="examples/persistent" />
+<Example value="persistent" />
 
 ### Placement
-<Example value="examples/placement" />
+<Example value="placement" />
 
 ### Size
-<Example value="examples/size" />
+<Example value="size" />
 
 ### Backdrop
-<Example value="examples/backdrop" />
+<Example value="backdrop" />
 
 ### Scrollable
-<Example value="examples/scrollable" />
+<Example value="scrollable" />
 
 ### Specific Scrollable
-<Example value="examples/specific" />
+<Example value="specific-scrollable" />
 
 ### Fullscreen
-<Example value="examples/fullscreen" />
+<Example value="fullscreen" />
 
 ### Full Width
-<Example value="examples/full" />
+<Example value="full-width" />
 
 ### Full Height
-<Example value="examples/full" />
+<Example value="full-height" />
 
 ### Sticky
-<Example value="examples/sticky" />
+<Example value="sticky" />
 
 ### Nesting
-<Example value="examples/nesting" />
+<Example value="nesting" />
 
 ### Prevent
-<Example value="examples/prevent" />
+<Example value="prevent" />

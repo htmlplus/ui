@@ -64,22 +64,22 @@ To use an icon simply wrap the icon name (font ligature) with the `plus-icon` co
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Color
-<Example value="examples/color" />
+<Example value="color" />
 
 ### Custom Color
-<Example value="examples/custom-color" />
+<Example value="custom-color" />
 
 ### Size
-<Example value="examples/size" />
+<Example value="size" />
 
 ### Flip
-<Example value="examples/flip" />
+<Example value="flip" />
 
 ### Rotate
-<Example value="examples/rotate" />
+<Example value="rotate" />
 
 # Accessibility
 

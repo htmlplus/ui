@@ -12,4 +12,4 @@ https://vuetifyjs.com/en/api/v-bottom-navigation/#props-mandatory
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />

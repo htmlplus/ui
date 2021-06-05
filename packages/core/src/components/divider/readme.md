@@ -10,19 +10,19 @@ It's a thin line that can divide the content vertically or horizontally.
 <Examples />
 
 ### Size
-<Example value="examples/size" />
+<Example value="size" />
 
 ### Type
-<Example value="examples/type" />
+<Example value="type" />
 
 ### Horizontal
-<Example value="examples/horizontal" />
+<Example value="horizontal" />
 
 ### Vertical
-<Example value="examples/vertical" />
+<Example value="vertical" />
 
 ### Card
-<Example value="examples/card" />
+<Example value="card" />
 
 ### Customize
-<Example value="examples/customize" />
+<Example value="customize" />

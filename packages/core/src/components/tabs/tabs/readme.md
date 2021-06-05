@@ -10,22 +10,22 @@ Organizes content across different screens.
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Grow
-<Example value="examples/grow" />
+<Example value="grow" />
 
 ### Justify
-<Example value="examples/justify" />
+<Example value="justify" />
 
 ### Reverse
-<Example value="examples/reverse" />
+<Example value="reverse" />
 
 ### Separate
-<Example value="examples/separate" />
+<Example value="separate" />
 
 ### Below
-<Example value="examples/below" />
+<Example value="below" />
 
 ### Vertical
-<Example value="examples/vertical" />
+<Example value="vertical" />

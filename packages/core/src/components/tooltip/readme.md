@@ -10,10 +10,10 @@ It's the often used to specify extra information about something when the user m
 <Examples />
 
 ### Default
-<Example value="examples/default" />
+<Example value="default" />
 
 ### Placement
-<Example value="examples/placement" />
+<Example value="placement" />
 
 ### Trigger
-<Example value="examples/trigger" />
+<Example value="trigger" />
