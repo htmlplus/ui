@@ -12,7 +12,6 @@ This document describes how to develop HTMLPLUS components. see [HTMLPLUS roadma
     - [Project structure](#project-structure)
     - [Pull Request Process](#pull-request-process)
 
-## Agreement
 ## Contribute to code
 > If you're interested in contribuing to the code, be sure to read the code contribution guidelines first.
 
