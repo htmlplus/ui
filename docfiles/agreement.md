@@ -1,11 +1,7 @@
-## Project collaboration guide
-We have written this guide for you in order to save time and have written guide.
-### I hope you find it useful.
-#### HTMLPLUS team
+# Collaboration agreement guide
+We have written this guide for you in order to save time and have written guide. We hope you find it useful. Here we explain the ```tools``` needed to develop a project as well as the ```production``` process of a component.
 
-Here we explain the ```tools``` needed to develop a project as well as the ```production``` process of a component.
-
-#### Note:
+## Note
 
 For information about the project structure and Up & Running it, you can refer to the ```contributing.md``` section.
 
@@ -13,7 +9,7 @@ For information about the project structure and Up & Running it, you can refer t
 
 For ease of the development of a series of tools have already been written, which we will explain in this section.
 
-### Decorators
+### @Decorators
 
 A Decorator is a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter. Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
 
@@ -27,7 +23,7 @@ function sealed(target) {
 }
 ```
 
-####@Bind
+### @Bind
 While working on React, you must have come across controlled components and event handlers. We need to bind these methods to the component instance using .bind() in our custom component’s constructor.
 
 ```javascript
@@ -49,13 +45,13 @@ get sealed(target) {
 }
 ```
 
-#### @Debug
+### @Debug
 
 
-#### @Direction
+### @Direction
 
 
-#### @GlobalConfig
+### @GlobalConfig
 
 All component props that you want to configure globally are located here.
 
@@ -66,7 +62,7 @@ All component props that you want to configure globally are located here.
   })
 ```
 
-#### @GlobalState
+### @GlobalState
 
 Everything that needs to be shared between the components of the same name is included in this section.
 
@@ -78,7 +74,7 @@ Everything that needs to be shared between the components of the same name is in
 ```
 For example, for the ```z-index``` prioritization property, we put the number of open components here so that all components have the same name.
 
-#### @IsRtl
+### @IsRtl
 We use this component to be aware of the cases of being multilingual to apply the appropriate style.
 
 ```typescript
@@ -86,7 +82,7 @@ We use this component to be aware of the cases of being multilingual to apply th
   isRTL?: boolean;
 ```
 
-#### @Link
+### @Link
 One of the most powerful decorator is Link
 Linking functions between components called connector
 ```typescript
@@ -234,8 +230,6 @@ After completing the component and testing it, you must create an example for ea
     <plus-tooltip>Tooltip</plus-tooltip>
   </button>
 ```
-```
-
 ### Writing components description
 Each component needs to explain its nature and how it works.
 You should write a description of the component after the imports file section.
