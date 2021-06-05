@@ -1,20 +1,19 @@
-##Project collaboration guide
-
-### Hello, we have written this guide for you in order to save time and have written guide,
+## Project collaboration guide
+We have written this guide for you in order to save time and have written guide.
 ### I hope you find it useful.
 #### HTMLPLUS team
 
 Here we explain the ```tools``` needed to develop a project as well as the ```production``` process of a component.
 
-####Note :
+#### Note:
 
 For information about the project structure and Up & Running it, you can refer to the ```contributing.md``` section.
 
-##Project Tools
+## Project Tools
 
 For ease of the development of a series of tools have already been written, which we will explain in this section.
 
-###Decorators
+### Decorators
 
 A Decorator is a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter. Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
 
@@ -50,13 +49,13 @@ get sealed(target) {
 }
 ```
 
-####@Debug
+#### @Debug
 
 
-####@Direction
+#### @Direction
 
 
-####@GlobalConfig
+#### @GlobalConfig
 
 All component props that you want to configure globally are located here.
 
@@ -67,7 +66,7 @@ All component props that you want to configure globally are located here.
   })
 ```
 
-####@GlobalState
+#### @GlobalState
 
 Everything that needs to be shared between the components of the same name is included in this section.
 
@@ -79,7 +78,7 @@ Everything that needs to be shared between the components of the same name is in
 ```
 For example, for the ```z-index``` prioritization property, we put the number of open components here so that all components have the same name.
 
-####@IsRtl
+#### @IsRtl
 We use this component to be aware of the cases of being multilingual to apply the appropriate style.
 
 ```typescript
@@ -87,7 +86,7 @@ We use this component to be aware of the cases of being multilingual to apply th
   isRTL?: boolean;
 ```
 
-####@Link
+#### @Link
 One of the most powerful decorator is Link
 Linking functions between components called connector
 ```typescript
@@ -141,7 +140,7 @@ const initial = {
 export const { Link, rebind } = createLink<ComponentNameLink>(initial);
 ```
 
-####@Media
+#### @Media
 
 Determine the appropriate size for use on different pages
 
@@ -152,9 +151,9 @@ get sealed(target) {
 }
 ```
 
-###Functions
+### Functions
 
-####Animation
+#### Animation
 
 This function automatically changes component classes based on the attributes specified when events occur so that styles can be easily applied without the occurrence of side effect.
 
@@ -199,13 +198,13 @@ This function gives us a callback function for each case with which we can perfo
     })
 ```
 
-####ClickOutside
+#### ClickOutside
 As the name implies, it is one of the simplest functions
 In relation to the element that is given to it, every time it is clicked out of it, it is executed to the given function.
 
 ClickOutsideCore.add(target, func);
 
-####Portal
+#### Portal
 To prevent side-effects, this function moves the element to the location we specify.
 ```javascript
     this.portalInstance = new Portal({
@@ -214,20 +213,19 @@ To prevent side-effects, this function moves the element to the location we spec
       strategy: '',
     })
 ```
-###Well, by now you are familiar with the tools we have written so far
-###Now how do we build a component?
+Well, by now you are familiar with the tools we have written so far. Now how do we build a component?
 
-###Data collection :
+### Data collection
 Most of the required components are available on the Internet and there is a great variety of them
 Each has its own unique features, so it is better to research this before creating to make a more desirable product.
 
-###Implementations
+### Implementations
 After completing the first step, you are now ready to build your component
 Read the `contributing.md` section agreements to create the component.
 
-###Testing APIs
+### Testing APIs
 
-###Designing Examples
+### Designing Examples
 After completing the component and testing it, you must create an example for each component mode in the form of a `.md file` file next to the component directory.
 ```html
 ```html [template]
@@ -238,7 +236,7 @@ After completing the component and testing it, you must create an example for ea
 ```
 ```
 
-###Writing components description
+### Writing components description
 Each component needs to explain its nature and how it works.
 You should write a description of the component after the imports file section.
 
@@ -250,7 +248,7 @@ import {somthing} from './somthing';
 */
 ```
 
-###Writing props, slost, events and  methods description
+### Writing props, slost, events and  methods description
 
 You should write about the properties and function of each of these before creating it.
 
@@ -272,9 +270,9 @@ disabled?: boolean = true;
 
 
 
-###Publishing
+### Publishing
 Finally, after the final test of your changes, publish it and wait for the final test of the project owner.
 
 
-###Thanks for taking the time to read this text
-###Good luck
+Thanks for taking the time to read this text
+Good luck
