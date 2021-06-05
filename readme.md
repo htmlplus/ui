@@ -13,7 +13,7 @@ To use HTMLPLUS see "[installation instruction](https://htmlplus.io/getting-star
 * [HTMLPLUS roadmap](../roadmap.md)
 
 ## Contributing
-HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./docfiles/contributing.md) about them. Read our [agreement](./agreement.md) before contribute to code. You can also see [examples](./docfiles/examples.md) to full undrestant how to develop a web component in html plus.
+HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./docfiles/contributing.md) about them. Read our [agreement](./docfiles/agreement.md) before contribute to code. You can also see [examples](./docfiles/examples.md) to full undrestant how to develop a web component in html plus.
 
  All contributions are welcome! See the following resources to get started:
 * [Contributing to develop components](./docfiles/developing.md)
