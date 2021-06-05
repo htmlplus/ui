@@ -1,0 +1,71 @@
+
+## Roadmap
+- [X] aspect ratio
+- [X] breadcrumb
+- [X] card
+- [X] cropper
+- [X] click outside
+- [X] dialog
+- [X] divider
+- [X] drawer
+- [X] grid
+- [X] intersection
+- [X] spinner
+- [X] sticky
+- [X] transition
+- [ ] toast
+- [ ] alert
+- [ ] bottom navigation
+- [ ] toolbar
+- [ ] tooltip
+- [ ] menu
+- [ ] badge
+- [ ] tabs
+- [ ] carosel
+- [ ] browse/file
+- [ ] key-value
+- [ ] floating button
+- [ ] switch
+- [ ] scroll-spy
+- [ ] avatar
+- [ ] overlay
+- [ ] truncate
+- [ ] icon
+- [ ] button
+- [ ] input
+- [ ] select
+- [ ] textarea
+- [ ] radio-group
+- [ ] checkbox
+- [ ] label
+- [ ] list/list-item
+- [ ] pagination
+- [ ] date-picker
+- [ ] time-picker
+- [ ] chips
+- [ ] image
+- [ ] calendar
+- [ ] color-picker
+- [ ] uploader
+- [ ] slider
+- [ ] progress-bar
+- [ ] table/data-table
+- [ ] accordion/expansion-panel
+- [ ] rating
+- [ ] parallax
+- [ ] skeleton-loader
+- [ ] stepper
+- [ ] timeline
+- [ ] tree/treeview
+- [ ] scrollbar
+- [ ] layer
+- [ ] draggable
+- [ ] sortable
+- [ ] autocomplete
+- [ ] box
+- [ ] combobox
+- [ ] splitter
+- [ ] typography
+- [ ] sparklines
+- [ ] portal
+- [ ] ruler

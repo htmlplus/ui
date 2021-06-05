@@ -10,9 +10,12 @@ To use HTMLPLUS see "[installation instruction](https://htmlplus.io/getting-star
 
 ## Documentation
 * [Official documentation](https://htmlplus.io/introduction/what-is-htmlplus)
+* [HTMLPLUS roadmap](../roadmap.md)
 
 ## Contributing
-HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./contributing.md) about them. All contributions are welcome! See the following resources to get started:
+HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./docfiles/contributing.md) about them. Read our [agreement](./agreement.md) before contribute to code. You can also see [examples](./docfiles/examples.md) to full undrestant how to develop a web component in html plus.
+
+ All contributions are welcome! See the following resources to get started:
 * [Contributing to develop components](./docfiles/developing.md)
 * [Contribute to design](./contributing.md#contribute-to-design)
 * [Contribute to documentation](./contributing.md#contribute-to-documentation)
@@ -20,76 +23,6 @@ HTMLPLUS has an active and growing open-source community. You can contribute to 
 ## Join our team
 You can simply [join HTMLPLUS](https://htmlplus.io/join) team by submitting your request.
 
-## Roadmap
-- [X] aspect ratio
-- [X] breadcrumb
-- [X] card
-- [X] cropper
-- [X] click outside
-- [X] dialog
-- [X] divider
-- [X] drawer
-- [X] grid
-- [X] intersection
-- [X] spinner
-- [X] sticky
-- [X] transition
-- [ ] toast
-- [ ] alert
-- [ ] bottom navigation
-- [ ] toolbar
-- [ ] tooltip
-- [ ] menu
-- [ ] badge
-- [ ] tabs
-- [ ] carosel
-- [ ] browse/file
-- [ ] key-value
-- [ ] floating button
-- [ ] switch
-- [ ] scroll-spy
-- [ ] avatar
-- [ ] overlay
-- [ ] truncate
-- [ ] icon
-- [ ] button
-- [ ] input
-- [ ] select
-- [ ] textarea
-- [ ] radio-group
-- [ ] checkbox
-- [ ] label
-- [ ] list/list-item
-- [ ] pagination
-- [ ] date-picker
-- [ ] time-picker
-- [ ] chips
-- [ ] image
-- [ ] calendar
-- [ ] color-picker
-- [ ] uploader
-- [ ] slider
-- [ ] progress-bar
-- [ ] table/data-table
-- [ ] accordion/expansion-panel
-- [ ] rating
-- [ ] parallax
-- [ ] skeleton-loader
-- [ ] stepper
-- [ ] timeline
-- [ ] tree/treeview
-- [ ] scrollbar
-- [ ] layer
-- [ ] draggable
-- [ ] sortable
-- [ ] autocomplete
-- [ ] box
-- [ ] combobox
-- [ ] splitter
-- [ ] typography
-- [ ] sparklines
-- [ ] portal
-- [ ] ruler
 
 ## Copyright and license
 Code and documentation copyright 2019–2021 the [HTMLPLUS Authors](https://github.com/htmlplus/core/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).
