@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './footer';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/components/footer/index.ts"],"names":[],"mappings":"AAAA,cAAc,UAAd","sourcesContent":["export * from './footer';\n"]},"metadata":{},"sourceType":"module"}

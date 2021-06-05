@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { FrameworkVue } from 'views';\n\nconst PageFrameworkVue = () => __jsx(FrameworkVue, null);\n\nexport default PageFrameworkVue;","map":null,"metadata":{},"sourceType":"module"}

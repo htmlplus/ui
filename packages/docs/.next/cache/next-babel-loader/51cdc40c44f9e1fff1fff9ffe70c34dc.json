@@ -1,1 +1,0 @@
-{"ast":null,"code":"import * as marked from 'marked';\nexport const parse = marked['default'];","map":null,"metadata":{},"sourceType":"module"}

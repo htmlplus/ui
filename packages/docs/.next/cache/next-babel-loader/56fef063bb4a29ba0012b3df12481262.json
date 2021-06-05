@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './use-router';\nexport * from './use-store';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/hooks/index.ts"],"names":[],"mappings":"AAAA,cAAc,cAAd;AACA,cAAc,aAAd","sourcesContent":["export * from './use-router';\nexport * from './use-store';\n"]},"metadata":{},"sourceType":"module"}

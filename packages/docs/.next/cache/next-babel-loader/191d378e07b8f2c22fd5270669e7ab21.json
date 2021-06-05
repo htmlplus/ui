@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './markup';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/services/markup/index.ts"],"names":[],"mappings":"AAAA,cAAc,UAAd","sourcesContent":["export * from './markup';"]},"metadata":{},"sourceType":"module"}

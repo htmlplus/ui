@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './link';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/components/link/index.ts"],"names":[],"mappings":"AAAA,cAAc,QAAd","sourcesContent":["export * from './link';\n"]},"metadata":{},"sourceType":"module"}
