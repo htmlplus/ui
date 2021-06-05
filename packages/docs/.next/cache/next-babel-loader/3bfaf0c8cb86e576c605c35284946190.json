@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface AlertProps {\n    type?: 'error' | 'info' | 'success' | 'warning';\n}"]},"metadata":{},"sourceType":"script"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface TextProps {\n    inline?: boolean;\n    size?: 'super' | 'header' | 'title' | 'subtitle' | 'body' | 'label' | 'caption';\n}"]},"metadata":{},"sourceType":"script"}

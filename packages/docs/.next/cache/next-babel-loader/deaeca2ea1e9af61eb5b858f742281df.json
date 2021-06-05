@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface ButtonProps {\n  icon?: boolean,\n  onClick?: any,\n  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',\n}\n"]},"metadata":{},"sourceType":"script"}

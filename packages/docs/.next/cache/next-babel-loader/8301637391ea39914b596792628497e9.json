@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var ExampleLanguage;\n\n(function (ExampleLanguage) {\n  ExampleLanguage[\"style\"] = \"css\";\n  ExampleLanguage[\"template\"] = \"html\";\n  ExampleLanguage[\"script\"] = \"js\";\n})(ExampleLanguage || (ExampleLanguage = {}));","map":null,"metadata":{},"sourceType":"module"}

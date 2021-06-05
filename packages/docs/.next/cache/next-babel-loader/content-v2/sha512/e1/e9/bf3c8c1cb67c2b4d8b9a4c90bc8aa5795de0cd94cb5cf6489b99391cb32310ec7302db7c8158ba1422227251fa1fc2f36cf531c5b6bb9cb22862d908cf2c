@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["export interface TocItemProps {\n    level?: number;\n}"]},"metadata":{},"sourceType":"script"}

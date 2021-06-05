@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './vue';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/views/framework/vue/index.ts"],"names":[],"mappings":"AAAA,cAAc,OAAd","sourcesContent":["export * from './vue';\n"]},"metadata":{},"sourceType":"module"}

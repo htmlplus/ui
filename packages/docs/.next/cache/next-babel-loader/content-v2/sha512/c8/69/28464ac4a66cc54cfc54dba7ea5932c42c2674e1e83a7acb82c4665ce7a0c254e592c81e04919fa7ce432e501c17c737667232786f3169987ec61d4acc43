@@ -1,1 +1,0 @@
-{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["import { Colors } from \"@app/types\";\nexport interface ButtonProps {\n  color?: Colors;\n  disabled?: boolean;\n  icon?: boolean;\n  outlined?: boolean;\n  size?: 'sm' | 'md' | 'lg';\n  text?: boolean;\n  onClick?: any;\n}\n"]},"metadata":{},"sourceType":"module"}

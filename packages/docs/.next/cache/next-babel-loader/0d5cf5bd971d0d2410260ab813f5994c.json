@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { FrameworkVue } from 'views';\nexport default function Vue() {\n  return __jsx(FrameworkVue, null);\n}","map":null,"metadata":{},"sourceType":"module"}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { FrameworkAngular } from 'views';\n\nvar PageFrameworkAngular = function PageFrameworkAngular() {\n  return __jsx(FrameworkAngular, null);\n};\n\nexport default PageFrameworkAngular;","map":null,"metadata":{},"sourceType":"module"}

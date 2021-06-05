@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { ComponentDetails as ComponentDetailsView } from 'views';\nexport var __N_SSG = true;\nexport default function ComponentDetails(_ref) {\n  var item = _ref.item;\n  return __jsx(ComponentDetailsView, {\n    item: item\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

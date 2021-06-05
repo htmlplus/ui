@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { Store, StoreContext } from 'store';\nvar store = new Store();\nexport var StoreProvider = function StoreProvider(_ref) {\n  var children = _ref.children;\n  return __jsx(StoreContext.Provider, {\n    value: store\n  }, children);\n};","map":null,"metadata":{},"sourceType":"module"}

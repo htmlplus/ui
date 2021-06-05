@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './example';\nexport * from './example.types';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/components/example/index.ts"],"names":[],"mappings":"AAAA,cAAc,WAAd;AACA,cAAc,iBAAd","sourcesContent":["export * from './example';\nexport * from './example.types';"]},"metadata":{},"sourceType":"module"}

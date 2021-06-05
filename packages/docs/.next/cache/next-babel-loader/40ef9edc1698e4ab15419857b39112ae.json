@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './default';","map":{"version":3,"sources":["C:/projects/mine/htmlplus/core/packages/docs/src/layouts/index.ts"],"names":[],"mappings":"AAAA,cAAc,WAAd","sourcesContent":["export * from './default';"]},"metadata":{},"sourceType":"module"}

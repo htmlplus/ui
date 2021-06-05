@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport { FrameworkOverview } from 'views';\n\nconst PageFrameworkOverview = () => __jsx(FrameworkOverview, null);\n\nexport default PageFrameworkOverview;","map":null,"metadata":{},"sourceType":"module"}
