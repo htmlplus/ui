@@ -8,13 +8,13 @@ Contributions to HTMLPLUS include code, documentation, design, answering user qu
   - [Contribute to documentation](#contribute-to-documentation)
   - [Contribute to design](#contribute-to-design)
 
-## [Report an issue](./reporting_issues.md)
+## [Report an issue](./docfiles/reporting_issues.md)
 Issues in [htmlplus/core](https://github.com/htmlplus/core/issues) are the primary means by which bug reports and general discussion are made.
 How do you wish to contribute?
 
 
 ## Contribute to code
-[Developing document](./developing.md) is a good entry point if you want to contribute to code. If you are a new member you can start with [good first issues](https://github.com/htmlplus/core/labels/good%20first%20issue) to find items to begin.
+[Developing document](./docfiles/developing.md) is a good entry point if you want to contribute to code. If you are a new member you can start with [good first issues](https://github.com/htmlplus/core/labels/good%20first%20issue) to find items to begin.
 
 
 ## Contribute to documentation
