@@ -10,15 +10,15 @@ To use HTMLPLUS see "[installation instruction](https://htmlplus.io/getting-star
 
 ## Documentation
 * [Official documentation](https://htmlplus.io/introduction/what-is-htmlplus)
-* [HTMLPLUS roadmap](../roadmap.md)
+* [HTMLPLUS roadmap](./ROADMAP.md)
 
 ## Contributing
-HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./contributing.md) about them. Read our [agreement](./docfiles/agreement.md) before contribute to code. You can also see [examples](./docfiles/examples.md) to fully undrestant how to develop a web component in HTMLPLUS.
+HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./CONTRIBUTING.md) about them. Read our [agreement](./docfiles/agreement.md) before contribute to code. You can also see [examples](./docfiles/examples.md) to fully undrestant how to develop a web component in HTMLPLUS.
 
  All contributions are welcome! See the following resources to get started:
 * [Contributing to develop components](./docfiles/developing.md)
-* [Contribute to design](./contributing.md#contribute-to-design)
-* [Contribute to documentation](./contributing.md#contribute-to-documentation)
+* [Contribute to design](./CONTRIBUTING.md#contribute-to-design)
+* [Contribute to documentation](./CONTRIBUTING.md#contribute-to-documentation)
 
 ## Code of Conduct
 We expect project participants to adhere to. Please read [the full text](./code_of_-_conduct.md) so that you can understand what actions will and will not be tolerated.

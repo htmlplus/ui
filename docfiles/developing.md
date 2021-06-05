@@ -1,5 +1,5 @@
 # Developing HTMLPLUS
-This document describes how to develop HTMLPLUS components. see [HTMLPLUS roadmap](../roadmap.md) for a list of all components. Read our [agreement](./agreement.md) before contribute to code. You can also see [examples](./examples.md) to full undrestant how to develop a web component in html plus.
+This document describes how to develop HTMLPLUS components. see [HTMLPLUS roadmap](../ROADMAP.md) for a list of all components. Read our [agreement](./agreement.md) before contribute to code. You can also see [examples](./examples.md) to full undrestant how to develop a web component in html plus.
 
 ## Table of Contents
   - [Contribute to code](#contribute-to-code)
