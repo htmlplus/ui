@@ -1,21 +1,19 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 import { Animation, Bind, ClickOutside, GlobalConfig, GlobalState, IsRTL, Helper, Portal, Scrollbar } from '@app/utils';
 import { Action, Observable, reconnect } from './dialog.link';
 import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 
 /**
- * A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.
  * @group dialog
  * @part backdrop - TODO
  * @slot default - The default slot.
- * @examples default, animation, persistent, placement, size, backdrop, scrollable, specific-scrollable, fullscreen, full-width, full-height, sticky, nesting, prevent
  */
 @Component({
   tag: 'plus-dialog',
   styleUrl: 'dialog.scss',
   shadow: true,
 })
-export class Dialog {
+export class Dialog implements ComponentInterface {
 
   /**
    * TODO

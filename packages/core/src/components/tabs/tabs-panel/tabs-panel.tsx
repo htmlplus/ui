@@ -1,9 +1,9 @@
-import { Component, Host, Prop, State, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, State, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * TODO
+ * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
  * @group tabs
  * @slot default - The default slot.
  */
@@ -12,10 +12,10 @@ import { Inject } from '../tabs/tabs.link';
   styleUrl: 'tabs-panel.scss',
   shadow: true,
 })
-export class TabsPanel {
+export class TabsPanel implements ComponentInterface {
 
   /**
-   * TODO
+   * Provides your own value.
    */
   @Prop()
   value?: any;

@@ -1,63 +1,52 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * font-size: cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%
- * inverse
- * spin
- */
-
-/**
- * TODO
- * @development 
+ * @development
  * @slot default - The default slot.
- * @examples default
  */
 @Component({
   tag: 'plus-icon',
   styleUrl: 'icon.scss',
   shadow: true
 })
-export class Icon {
+export class Icon implements ComponentInterface {
 
   /**
    * TODO
+   * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
+   * inverse
+   * spin
+   * inactive/disabled
+   */
+
+  /**
+   * Adjusts the color of the icons.(All main web color formats are accepted)
    */
   @Prop({ reflect: true })
   color?: string;
 
   /**
-   * TODO
+   * Flips the icon.
    */
   @Prop({ reflect: true })
   flip?: 'both' | 'horizontal' | 'vertical';
 
   /**
-   * TODO
+   * Specifies the name of the icon.
    */
-  // @Prop()
-  hidden?: boolean = true;
-
-  /**
-   * TODO
-   */
-  @Prop()
-  label?: string;
-
-  /**
-   * TODO
-   */
-  @Prop()
+  @Prop({ reflect: true })
   name?: string;
 
   /**
-   * TODO
+   * Rotates the icon.
    */
   @Prop({ reflect: true })
-  rotate?: 0 | 90 | 180 | 270;
+  rotate?: 90 | 180 | 270;
 
   /**
-   * TODO
+   * Specifies the size of the icon.
+   * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Prop({ reflect: true })
   size?: string;
@@ -67,8 +56,6 @@ export class Icon {
 
   get attributes() {
     return {
-      'aria-hidden': this.hidden ? 'true' : 'false',
-      'aria-label': this.label ?? null,
       'style': this.styles,
     }
   }

@@ -13,10 +13,12 @@
   text-align: center;
   text-decoration: inherit;
   text-rendering: auto;
+  text-rendering: optimizeLegibility;
   text-transform: none;
   white-space: nowrap;
   word-wrap: normal;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }

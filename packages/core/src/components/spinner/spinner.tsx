@@ -1,17 +1,15 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
- * It's an indicator of progress and activity in order to show the loading state of a component or page when the user needs to wait on.
- * @examples default, size, custom-size, color, type, customize
  */
 @Component({
   tag: 'plus-spinner',
   styleUrl: 'spinner.scss',
   shadow: true,
 })
-export class Spinner {
+export class Spinner implements ComponentInterface {
 
   /**
    * Specifies the size of the spinner.

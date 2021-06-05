@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 
 /**
  * @group dialog
@@ -9,7 +9,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
   styleUrl: 'dialog-body.scss',
   shadow: true,
 })
-export class DialogBody {
+export class DialogBody implements ComponentInterface {
 
   /**
    * It makes the user able to scroll the content by adding a scroll beside it.

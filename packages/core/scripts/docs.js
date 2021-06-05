@@ -8,11 +8,6 @@ const deprecated = (component) => {
   return !!component.docsTags.find((item) => item.name === 'deprecated');
 }
 
-const description = (component) => {
-
-  return component.docs;
-}
-
 const development = (component) => {
 
   return !!component.docsTags.find((item) => item.name === 'development');
@@ -306,7 +301,6 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
       component.styleUpdated = buildCtx.stylesUpdated.find((style) => style.styleTag === component.tag).styleText;
 
       return {
-        description: description(component),
         deprecated: deprecated(component),
         development: development(component),
         events: events(component),

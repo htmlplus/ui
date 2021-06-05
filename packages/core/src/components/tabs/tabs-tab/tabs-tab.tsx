@@ -1,9 +1,9 @@
-import { Component, Host, Prop, State, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, Prop, State, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 import { Inject } from '../tabs/tabs.link';
 
 /**
- * TODO
+ * TODO: Tabs make it easy to switch between different views.
  * @group tabs
  * @slot default - The default slot.
  */
@@ -12,16 +12,16 @@ import { Inject } from '../tabs/tabs.link';
   styleUrl: 'tabs-tab.scss',
   shadow: true,
 })
-export class TabsTab {
+export class TabsTab implements ComponentInterface {
 
   /**
-   * TODO
+   * A Tab can be disabled by setting disabled property.
    */
   @Prop({ reflect: true })
   disabled?: boolean;
 
   /**
-   * TODO
+   * Provides your own value.
    */
   @Prop()
   value?: any;
