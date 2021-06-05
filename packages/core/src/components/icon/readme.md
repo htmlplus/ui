@@ -23,11 +23,7 @@ plus-icon {
 
 To use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.
 ```html
-<!-- First way -->
 <plus-icon>home</plus-icon>
-
-<!-- Second way -->
-<plus-icon name="home"></plus-icon>
 ```
 
 ### Font Awesome
@@ -60,11 +56,7 @@ plus-icon {
 
 To use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.
 ```html
-<!-- First way -->
 <plus-icon>home</plus-icon>
-
-<!-- Second way -->
-<plus-icon name="home"></plus-icon>
 ```
 
 <Api />
