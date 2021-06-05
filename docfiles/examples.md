@@ -1,10 +1,5 @@
-## Examples
-
-In this section, we try to introduce you to the code with simple examples
-
-### This example shows a simple example of a web component in [HTMLPLUS.io]()
-
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+# Examples
+In this section, we try to introduce you to the code with simple examples. This example shows a simple example of a web component in [HTMLPLUS](https://htmlplus.io). In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
 
 ```typescript
 import { Component, Host, Prop, h } from '@stencil/core';
