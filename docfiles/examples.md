@@ -1,8 +1,8 @@
-## Examples
-In this section, we try to introduce you to the code with simple examples
+# Examples
+In this section, we try to introduce you to the code with three simple examples of web components in [HTMLPLUS](https://htmlplus.io).
 
-### This example shows a simple example of a web component in [HTMLPLUS.io]()
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+## 1. Create a simple component
+In order to gain the TypeScript typings (for intellisense/autocomplete) while using CommonJS imports with `require()` use the following approach:
 
 ```typescript
 import { Component, Host, Prop, h } from '@stencil/core';
@@ -49,11 +49,11 @@ This is just a simple example to understand how to build a web component 🙂 .<
 
 Now we will give more examples to get acquainted with more cases.
 
-### Events
+## 2. Create a component with using Events
 We want to go one step further.<br/>
 In this example we explain how to use `events` and `styles` in web components.
 
-#### Why we use event ?
+### Why we use event?
 Sometimes we need to find out about an event on the tag, such as clicking, scrolling, etc., or move data out of the tag.
 In these cases, we use the **events**.
 
@@ -147,7 +147,7 @@ render() {
 
 You may not believe it, but it's so simple!😁
 
-Now you can use it :
+### Now you can use it:
 
 ```html
 <!--index.html-->
@@ -168,7 +168,7 @@ We learned these in this example:
 - Add style to component
 - Add disable flag to and use it
 
-### Link
+## 3. Using Link within a component
 
 So far we have learned some principles.<br/>
 You may be wondering how we make connections between tags (maybe not 😅)<br/>
@@ -179,7 +179,7 @@ The same should be true of web components.<br/>
 To implement some concepts, we need to create several web components and connect them.<br/>
 I talked a lot, let's go and see in practice.<br/>
 
-#### Generalities of using the link decorator:
+### Generalities of using the link decorator:
 
 ```typescript
 // Config file
@@ -193,7 +193,7 @@ const link = createLin({
 
 export const { Action, Inject, Observable, reconnect } = link;
 ```
-#### Action:
+### Action:
 All the functions we define here are used inside the web components using this decorator.
 
 ```typescript jsx
@@ -203,7 +203,7 @@ func(e) {  // A function that is linked to and called in another component
 }
 ```
 
-#### Inject:
+### Inject:
 Dedicated to all defined states and functions
 ```typescript jsx
 @Inject()
@@ -215,7 +215,7 @@ func?: Function;
 ```
 > All states defined in this section must be Observable in other components
 
-#### Observable:
+### Observable:
 Visible states between linked components
 
 ```typescript jsx
@@ -223,7 +223,7 @@ Visible states between linked components
 stateOne?: boolean;
 ```
 
-#### reconnect:
+### reconnect:
 With this function, we can re-render the component whenever we want
 
 ```typescript jsx
@@ -245,7 +245,7 @@ Well, now let's give an example to better understand 😉:
 
 
 
-#### Create select component :
+### Create select component
 
 Look at these tags<br/>
 How they are connected while separated from each other<br/>
@@ -466,9 +466,8 @@ Let's not forget that both web components need styling:
   }
 }
 ```
-Well well<br/>
+### Well well!<br/>
 You faced a more difficult project here and learned the link decorator.
-
 We learned these in this example:
 - How to use Link
 - use lifecycles
