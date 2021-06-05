@@ -2,7 +2,7 @@ import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
 import { GlobalConfig } from '@app/utils';
 
 /**
- * @development 
+ * @development
  * @slot default - The default slot.
  */
 @Component({
