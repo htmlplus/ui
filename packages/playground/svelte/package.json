@@ -8,7 +8,7 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "@htmlplus/core": "latest",
+    "@htmlplus/core": "^0.2.5",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "rollup": "^2.3.4",

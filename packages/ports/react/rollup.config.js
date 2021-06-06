@@ -14,7 +14,7 @@ import pkg from './package.json';
         '/* eslint-disable */',
         '/* tslint:disable */',
         '/* auto-generated react proxies */',
-        'import { createReactComponent } from \'./react-component-lib\';',
+        'import { proxy } from \'./proxy\';',
         '',
         'import type { JSX } from \'@htmlplus/core\';',
         '',
@@ -30,7 +30,7 @@ import pkg from './package.json';
             })
             .join('');
 
-        lines.push(`export const ${name.replace('Plus', '')} = /*@__PURE__*/createReactComponent<JSX.${name}, HTML${name}Element>('${tag}');`);
+        lines.push(`export const ${name.replace('Plus', '')} = /*@__PURE__*/proxy<JSX.${name}, HTML${name}Element>('${tag}');`);
     }
 
     const content = lines.join('\n');

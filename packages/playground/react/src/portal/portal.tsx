@@ -1,6 +1,13 @@
-import './portal.css';
-import { PlusDialogToggler, PlusDialog, PlusDialogContent, PlusDialogHeader, PlusDialogBody, PlusDialogFooter } from "@htmlplus/react";
 import { useState } from 'react';
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogToggler,
+} from '@htmlplus/react';
+import './portal.css';
 
 const Portal = () => {
 
@@ -10,28 +17,28 @@ const Portal = () => {
 
   return <>
     <div className="center">
-      <PlusDialogToggler connector="dialog-animation">
+      <DialogToggler connector="dialog-animation">
         Open
-      </PlusDialogToggler>
+      </DialogToggler>
     </div>
-    <PlusDialog portal portalTarget="#root" animation="fade" connector="dialog-animation">
-      <PlusDialogContent>
-        <PlusDialogHeader>
+    <Dialog portal portalTarget="#root" animation="fade" connector="dialog-animation">
+      <DialogContent>
+        <DialogHeader>
           Dialog Title
-        </PlusDialogHeader>
-        <PlusDialogBody>
+        </DialogHeader>
+        <DialogBody>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </PlusDialogBody>
-        <PlusDialogFooter>
+        </DialogBody>
+        <DialogFooter>
           <button onClick={increase}>
             Clicked {count} {count === 1 ? 'time' : 'times'}
           </button>
-          <PlusDialogToggler>
+          <DialogToggler>
             Close
-          </PlusDialogToggler>
-        </PlusDialogFooter>
-      </PlusDialogContent>
-    </PlusDialog>
+          </DialogToggler>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   </>
 }
 
