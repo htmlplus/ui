@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "@htmlplus/core": "^0.2.5",
     "@htmlplus/react": "^0.2.5",
     "@types/node": "^12.20.10",
     "@types/react": "^17.0.4",
