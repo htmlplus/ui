@@ -1,9 +1,9 @@
 {
   "name": "@htmlplus/react",
   "version": "0.2.5",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/react/index.js",
+  "module": "dist/react/index.es.js",
+  "types": "dist/react/index.d.ts",
   "files": [
     "dist",
     "loader"
@@ -12,7 +12,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && rollup -c",
+    "build": "npm run clean && node scripts/pre && rollup -c && node scripts/post",
     "clean": "rimraf dist"
   },
   "devDependencies": {

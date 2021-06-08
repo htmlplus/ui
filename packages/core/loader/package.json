@@ -1,5 +1,5 @@
 {
-  "name": "htmlplus-loader",
+  "name": "@htmlplus/loader",
   "typings": "./index.d.ts",
   "module": "./index.js",
   "main": "./index.cjs.js",

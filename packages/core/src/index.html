@@ -12,6 +12,38 @@
 </head>
 
 <body>
+  <div class="center">
+    <plus-dialog-toggler connector="dialog-prevent">
+      Open
+    </plus-dialog-toggler>
+  </div>
+  <plus-dialog id=d animation="fade" connector="dialog-prevent">
+    <plus-dialog-content>
+      <plus-dialog-header>
+        Dialog Title
+      </plus-dialog-header>
+      <plus-dialog-body>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </plus-dialog-body>
+      <plus-dialog-footer>
+        <plus-dialog-toggler>
+          Close
+        </plus-dialog-toggler>
+      </plus-dialog-footer>
+    </plus-dialog-content>
+  </plus-dialog>
+  <script>
+    function ensure(type, event) {
+
+      if (window.confirm(`Are you sure you want to ${type} it?`)) return;
+
+      event.preventDefault();
+    }
+    d.addEventListener('plusOpen', () => console.log(1))
+    d.addEventListener('plusClose', () => console.log(2))
+  </script>
 </body>
 
 </html>
