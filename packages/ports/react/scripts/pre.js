@@ -13,7 +13,7 @@ const lines = [
 
 for (let i = 0; i < docs.length; i++) {
 
-  const { tag } = docs[i];
+  const { tag, events } = docs[i];
 
   const name = tag.match(/[a-z]+/gi)
     .map((word) => {
@@ -21,7 +21,7 @@ for (let i = 0; i < docs.length; i++) {
     })
     .join('');
 
-  lines.push(`export const ${name.replace('Plus', '')} = /*@__PURE__*/proxy<JSX.${name}, HTML${name}Element>('${tag}');`);
+  lines.push(`export const ${name.replace('Plus', '')} = /*@__PURE__*/proxy<JSX.${name}, HTML${name}Element>('${tag}', [${events.map((event) => '\'' + event.name + '\'').join(', ')}]);`);
 }
 
 const content = lines.join('\n');

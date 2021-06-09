@@ -217,7 +217,7 @@ interface StencilReactInternalProps<ElementType> extends React.HTMLAttributes<El
   ref?: React.Ref<any>;
 }
 
-export const proxy = <PropType, ElementType extends HTMLStencilElement>(tagName: string) => {
+export const proxy = <PropType, ElementType extends HTMLStencilElement>(tagName: string, a: any) => {
 
   const displayName = dashToPascalCase(tagName);
 
@@ -234,14 +234,18 @@ export const proxy = <PropType, ElementType extends HTMLStencilElement>(tagName:
     }
 
     componentDidMount() {
+      console.log('componentDidMount', this.componentEl)
       this.componentDidUpdate(this.props);
     }
 
     componentDidUpdate(prevProps: StencilReactInternalProps<ElementType>) {
+      console.log('componentDidUpdate', this.componentEl)
       attachProps(this.componentEl, this.props, prevProps);
     }
 
     render() {
+
+      console.log('render1', this.componentEl)
 
       const { children, forwardedRef, style, className, ref, ...cProps } = this.props;
 
@@ -262,6 +266,8 @@ export const proxy = <PropType, ElementType extends HTMLStencilElement>(tagName:
         ref: mergeRefs(forwardedRef, this.setComponentElRef),
         style,
       };
+
+      console.log('render2', this.componentEl)
 
       return React.createElement(tagName, newProps, children);
     }

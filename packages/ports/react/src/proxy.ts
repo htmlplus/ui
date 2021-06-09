@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 
-export interface StyleReactProps {
+interface StyleReactProps {
   class?: string;
   className?: string;
   style?: {
@@ -73,7 +73,6 @@ const syncEvent = (
 
   const oldEventHandler = eventStore[eventName];
 
-  // Remove old listener so they don't double up.
   if (oldEventHandler)
     node.removeEventListener(eventName, oldEventHandler);
 
@@ -84,11 +83,45 @@ const syncEvent = (
     newEventHandler.call(this, event);
   }
 
-  // Bind new listener.
   node.addEventListener(eventName, eventStore[eventName])
 }
 
-export const createProxy = <PropType, ElementType>(tagName: string, events: Array<string> = []) => {
+const attachProps = (exclude, node: HTMLElement, newProps: any, oldProps: any = {}) => {
+
+  if (!(node instanceof Element)) return;
+
+  // add any classes in className to the class list
+  // const className = getClassName(node.classList, newProps, oldProps);
+
+  // if (className !== '') node.className = className;
+
+  Object.keys(newProps).forEach((name) => {
+
+    if (
+      name === 'children' ||
+      name === 'class' ||
+      name === 'className' ||
+      name === 'forwardedRef' ||
+      name === 'ref' ||
+      name === 'style'
+    ) return;
+
+    if (exclude.includes(name)) {
+
+      const eventName = name.substring(2);
+
+      const eventNameLc = eventName[0].toLowerCase() + eventName.substring(1);
+
+      syncEvent(node, eventNameLc, newProps[name]);
+    }
+    else {
+
+      (node as any)[name] = newProps[name];
+    }
+  })
+}
+
+export const proxy = <PropType, ElementType>(tagName: string, events: Array<string> = []) => {
 
   const exclude = [
     'children',
@@ -125,38 +158,7 @@ export const createProxy = <PropType, ElementType>(tagName: string, events: Arra
       // TODO
       const newProps = props;
       const node: any = ref.current;
-
-      if (!(node instanceof Element)) return;
-
-      // add any classes in className to the class list
-      // const className = getClassName(node.classList, newProps, oldProps);
-
-      // if (className !== '') node.className = className;
-
-      Object.keys(newProps).forEach((name) => {
-
-        if (
-          name === 'children' ||
-          name === 'class' ||
-          name === 'className' ||
-          name === 'forwardedRef' ||
-          name === 'ref' ||
-          name === 'style'
-        ) return;
-
-        if (exclude.includes(name)) {
-
-          const eventName = name.substring(2);
-
-          const eventNameLc = eventName[0].toLowerCase() + eventName.substring(1);
-
-          syncEvent(node, eventNameLc, newProps[name]);
-        }
-        else {
-
-          (node as any)[name] = newProps[name];
-        }
-      })
+      attachProps(exclude, node, newProps);
     })
 
     return React.createElement(tagName, newProps, children);
