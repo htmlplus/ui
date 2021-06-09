@@ -12,7 +12,7 @@ const Port = () => {
     <button onClick={() => setOpen(false)}>
       close
     </button>
-    <Dialog open={open} onClosed={() => setOpen(false)}>
+    <Dialog open={open} onClosed={() => setOpen(false)} >
       <div>
         1
       </div>

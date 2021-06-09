@@ -1,10 +1,5 @@
-import React from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
-/**
- * Interface
- */
-
-// General types important to applications using stencil built components
 export interface StyleReactProps {
   class?: string;
   className?: string;
@@ -13,51 +8,113 @@ export interface StyleReactProps {
   };
 }
 
-/**
- * CASE
- */
+type Mutable<T> = { -readonly [P in keyof T]-?: T[P] };
 
-const dashToPascalCase = (str: string) => {
-  return str
+type EventsType = Array<string>;
+
+type EventHandlerType = (event: Event) => any;
+
+type ExternalPropsType<ElementType, PropType> = PropType & Omit<React.HTMLAttributes<ElementType>, 'style'> & StyleReactProps;
+
+type FinalPropsType<ElementType> = Omit<InternalPropsType<ElementType>, 'forwardedRef'>;
+
+interface InternalPropsType<ElementType> extends React.HTMLAttributes<ElementType> {
+  forwardedRef: React.RefObject<ElementType>;
+  ref?: React.Ref<any>;
+}
+
+const attachEvent = (element: Element, name: string, handler: EventHandlerType) => {
+
+  const events = element['$events'] || (element['$events'] = {});
+
+  const previous = events[name];
+
+  previous && element.removeEventListener(name, previous);
+
+  function callback(event: Event) {
+    handler && handler.call(this, event);
+  }
+
+  element.addEventListener(name, events[name] = callback);
+}
+
+const dashToPascalCase = (string: string) => {
+  return string
     .toLowerCase()
     .split('-')
     .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
     .join('');
 }
 
-const camelToDashCase = (str: string) => {
-  return str.replace(/([A-Z])/g, (m: string) => `-${m[0].toLowerCase()}`);
+const getCustomEvent = (name: string, events: EventsType) => {
+
+  if (!name.match(/on[A-Z]\w+/)) return;
+
+  const eventName = name.substring(3).toLowerCase();
+
+  return events.find((event) => event.toLowerCase().endsWith(eventName));
 }
 
-/**
- * Urils/index
- */
+const getProps = <ElementType>(ref: React.Ref<ElementType>, props: InternalPropsType<ElementType>, events: EventsType) => {
 
-// Remove readonly and ?
-type Mutable<T> = { -readonly [P in keyof T]-?: T[P] };
+  const { forwardedRef } = props;
 
-type StencilReactExternalProps<PropType, ElementType> = PropType & Omit<React.HTMLAttributes<ElementType>, 'style'> & StyleReactProps;
+  const result: FinalPropsType<ElementType> = {
+    ref: mergeRefs(forwardedRef, ref)
+  }
 
-// The comma in the type is to trick typescript because it things a single generic in a tsx file is jsx
-const mergeRefs = <ElementType,>(...refs: React.Ref<ElementType>[]) => (value: ElementType,) => {
+  Object.keys(props).forEach((name) => {
 
-  return refs.forEach((ref) => {
+    if (
+      name === 'children' ||
+      name === 'className' ||
+      name === 'forwardedRef' ||
+      name === 'ref'
+    ) return;
 
-    if (typeof ref === 'function') return ref(value);
+    if (getCustomEvent(name, events)) return;
 
-    if (ref == null) return;
+    result[name] = props[name];
+  })
 
-    // This is typed as readonly so we need to allow for override
-    (ref as Mutable<React.RefObject<ElementType>>).current = value;
+  return result;
+}
+
+const setProps = <ElementType>(element: ElementType, props: InternalPropsType<ElementType>, events: EventsType) => {
+
+  if (!(element instanceof Element)) return;
+
+  // TODO
+  // add any classes in className to the class list
+  // const className = getClassName(node.classList, newProps, oldProps);
+  // if (className !== '') node.className = className;
+
+  Object.keys(props).forEach((name) => {
+
+    if (
+      name === 'children' ||
+      name === 'class' ||
+      name === 'className' ||
+      name === 'forwardedRef' ||
+      name === 'ref' ||
+      name === 'style'
+    ) return;
+
+    const event = getCustomEvent(name, events);
+
+    if (!event) return element[name] = props[name];
+
+    attachEvent(element, event, props[name]);
   })
 }
 
-const createForwardRef = <PropType, ElementType>(ReactComponent: any, displayName: string,) => {
+const forwardRef = <ElementType, PropType>(ReactComponent: any) => {
 
   const forwardRef = (
-    props: StencilReactExternalProps<PropType, ElementType>,
+    props: ExternalPropsType<ElementType, PropType>,
     ref: React.Ref<ElementType>,
   ) => {
+
     const { children, ...remainedProps } = props;
 
     const newProps = {
@@ -68,221 +125,69 @@ const createForwardRef = <PropType, ElementType>(ReactComponent: any, displayNam
     return React.createElement(ReactComponent, newProps, children);
   };
 
-  forwardRef.displayName = displayName;
+  forwardRef.displayName = ReactComponent.displayName;
 
   return React.forwardRef(forwardRef);
 }
 
-/**
- * ATTACH PROPS
- */
+const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: ElementType) => {
 
-const attachProps = (node: HTMLElement, newProps: any, oldProps: any = {}) => {
+  return refs.forEach((ref) => {
 
-  // some test frameworks don't render DOM elements, so we test here to make sure we are dealing with DOM first
-  if (!(node instanceof Element)) return;
+    if (typeof ref === 'function') return ref(value);
 
-  // add any classes in className to the class list
-  const className = getClassName(node.classList, newProps, oldProps);
+    if (ref == null) return;
 
-  if (className !== '') node.className = className;
-
-  Object.keys(newProps).forEach((name) => {
-
-    if (
-      name === 'children' ||
-      name === 'style' ||
-      name === 'ref' ||
-      name === 'class' ||
-      name === 'className' ||
-      name === 'forwardedRef'
-    ) return;
-
-    if (name.indexOf('on') === 0 && name[2] === name[2].toUpperCase()) {
-
-      const eventName = name.substring(2);
-
-      const eventNameLc = eventName[0].toLowerCase() + eventName.substring(1);
-
-      if (typeof document !== 'undefined' && !isCoveredByReact(eventNameLc, document)) {
-
-        syncEvent(node, eventNameLc, newProps[name]);
-      }
-    }
-    else {
-
-      (node as any)[name] = newProps[name];
-
-      const propType = typeof newProps[name];
-
-      if (propType === 'string') {
-
-        node.setAttribute(camelToDashCase(name), newProps[name]);
-      }
-      else {
-
-        (node as any)[name] = newProps[name];
-      }
-    }
+    (ref as Mutable<React.RefObject<ElementType>>).current = value;
   })
 }
 
-const getClassName = (classList: DOMTokenList, newProps: any, oldProps: any) => {
+export const proxy = <ElementType, PropType>(tagName: string, events: EventsType = []) => {
 
-  const newClassProp: string = newProps.className || newProps.class;
-  const oldClassProp: string = oldProps.className || oldProps.class;
+  const ReactComponent = class extends React.Component<InternalPropsType<ElementType>> {
 
-  // map the classes to Maps for performance
-  const currentClasses = arrayToMap(classList);
-  const incomingPropClasses = arrayToMap(newClassProp ? newClassProp.split(' ') : []);
-  const oldPropClasses = arrayToMap(oldClassProp ? oldClassProp.split(' ') : []);
-  const finalClassNames: string[] = [];
+    element!: ElementType;
 
-  // loop through each of the current classes on the component
-  // to see if it should be a part of the classNames added
-  currentClasses.forEach((currentClass) => {
-    if (incomingPropClasses.has(currentClass)) {
-      // add it as its already included in classnames coming in from newProps
-      finalClassNames.push(currentClass);
-      incomingPropClasses.delete(currentClass);
-    }
-    else if (!oldPropClasses.has(currentClass)) {
-      // add it as it has NOT been removed by user
-      finalClassNames.push(currentClass);
-    }
-  });
-  incomingPropClasses.forEach((s) => finalClassNames.push(s));
-  return finalClassNames.join(' ');
-}
-
-/**
- * Checks if an event is supported in the current execution environment.
- * @license Modernizr 3.0.0pre (Custom Build) | MIT
- */
-const isCoveredByReact = (eventNameSuffix: string, doc: Document) => {
-
-  const eventName = 'on' + eventNameSuffix;
-
-  let isSupported = eventName in doc;
-
-  if (!isSupported) {
-
-    const element = doc.createElement('div');
-
-    element.setAttribute(eventName, 'return;');
-
-    isSupported = typeof (element as any)[eventName] === 'function';
-  }
-
-  return isSupported;
-}
-
-const syncEvent = (
-  node: Element & { __events?: { [key: string]: ((e: Event) => any) | undefined } },
-  eventName: string,
-  newEventHandler?: (event: Event) => any,
-) => {
-
-  const eventStore = node.__events || (node.__events = {});
-
-  const oldEventHandler = eventStore[eventName];
-
-  // Remove old listener so they don't double up.
-  if (oldEventHandler)
-    node.removeEventListener(eventName, oldEventHandler);
-
-  eventStore[eventName] = function handler(event: Event) {
-
-    if (!newEventHandler) return;
-
-    newEventHandler.call(this, event);
-  }
-
-  // Bind new listener.
-  node.addEventListener(eventName, eventStore[eventName])
-}
-
-const arrayToMap = (array: string[] | DOMTokenList) => {
-
-  const map = new Map<string, string>();
-
-  (array as string[]).forEach((s: string) => map.set(s, s));
-
-  return map;
-}
-
-/**
- * CREATE COMPONENT
- */
-
-interface HTMLStencilElement extends HTMLElement {
-  componentOnReady(): Promise<this>;
-}
-
-interface StencilReactInternalProps<ElementType> extends React.HTMLAttributes<ElementType> {
-  forwardedRef: React.RefObject<ElementType>;
-  ref?: React.Ref<any>;
-}
-
-export const proxy = <PropType, ElementType extends HTMLStencilElement>(tagName: string, a: any) => {
-
-  const displayName = dashToPascalCase(tagName);
-
-  const ReactComponent = class extends React.Component<StencilReactInternalProps<ElementType>> {
-
-    componentEl!: ElementType;
-
-    setComponentElRef = (element: ElementType) => {
-      this.componentEl = element;
+    setElement = (element: ElementType) => {
+      this.element = element;
     }
 
-    constructor(props: StencilReactInternalProps<ElementType>) {
+    constructor(props: InternalPropsType<ElementType>) {
       super(props);
     }
 
     componentDidMount() {
-      console.log('componentDidMount', this.componentEl)
-      this.componentDidUpdate(this.props);
+      this.componentDidUpdate(/*this.props*/);
     }
 
-    componentDidUpdate(prevProps: StencilReactInternalProps<ElementType>) {
-      console.log('componentDidUpdate', this.componentEl)
-      attachProps(this.componentEl, this.props, prevProps);
+    componentDidUpdate(/*prevProps: InternalProps<ElementType>*/) {
+      setProps<ElementType>(this.element as any, this.props, events);
     }
 
     render() {
 
-      console.log('render1', this.componentEl)
+      const { children } = this.props;
 
-      const { children, forwardedRef, style, className, ref, ...cProps } = this.props;
-
-      let propsToPass = Object.keys(cProps).reduce((acc, name) => {
-        if (name.indexOf('on') === 0 && name[2] === name[2].toUpperCase()) {
-          const eventName = name.substring(2).toLowerCase();
-          if (typeof document !== 'undefined' && isCoveredByReact(eventName, document)) {
-            (acc as any)[name] = (cProps as any)[name];
-          }
-        } else {
-          (acc as any)[name] = (cProps as any)[name];
-        }
-        return acc;
-      }, {});
-
-      let newProps: Omit<StencilReactInternalProps<ElementType>, 'forwardedRef'> = {
-        ...propsToPass,
-        ref: mergeRefs(forwardedRef, this.setComponentElRef),
-        style,
-      };
-
-      console.log('render2', this.componentEl)
+      const newProps = getProps<ElementType>(this.setElement, this.props, events);
 
       return React.createElement(tagName, newProps, children);
     }
-
-    static get displayName() {
-      return displayName;
-    }
   }
 
-  return createForwardRef<PropType, ElementType>(ReactComponent, displayName);
+  // const ReactComponentNew = (props: InternalPropsType<ElementType>) => {
+
+  //   const { children } = props;
+
+  //   const ref = useRef(null);
+
+  //   const newProps: FinalPropsType<ElementType> = getProps(ref, props, events);
+
+  //   useEffect(() => setProps(ref.current, props, events));
+
+  //   return React.createElement(tagName, newProps, children);
+  // }
+
+  ReactComponent['displayName'] = dashToPascalCase(tagName);
+
+  return forwardRef<ElementType, PropType>(ReactComponent);
 }

@@ -5,7 +5,7 @@ const lines = [
   '/* eslint-disable */',
   '/* tslint:disable */',
   '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy.new\';',
+  'import { proxy } from \'./proxy\';',
   '',
   'import type { JSX } from \'@htmlplus/core\';',
   '',
@@ -21,7 +21,7 @@ for (let i = 0; i < docs.length; i++) {
     })
     .join('');
 
-  lines.push(`export const ${name.replace('Plus', '')} = /*@__PURE__*/proxy<JSX.${name}, HTML${name}Element>('${tag}', [${events.map((event) => '\'' + event.name + '\'').join(', ')}]);`);
+  lines.push(`export const ${name.replace('Plus', '')} = /*@__PURE__*/proxy<HTML${name}Element, JSX.${name}>('${tag}', [${events.map((event) => '\'plus' + event.name[0].toUpperCase() + event.name.slice(1) + '\'').join(', ')}]);`);
 }
 
 const content = lines.join('\n');
