@@ -1,4 +1,17 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React from 'react';
+
+type EventsType = Array<string>;
+
+type EventHandlerType = (event: Event) => any;
+
+type FinalPropsType<ElementType> = Omit<PropsType<ElementType>, 'forwardedRef'>;
+
+type Mutable<T> = { -readonly [P in keyof T]-?: T[P] };
+
+interface PropsType<ElementType> extends React.HTMLAttributes<ElementType> {
+  forwardedRef: React.RefObject<ElementType>;
+  ref?: React.Ref<any>;
+}
 
 export interface StyleReactProps {
   class?: string;
@@ -6,21 +19,6 @@ export interface StyleReactProps {
   style?: {
     [key: string]: any
   };
-}
-
-type Mutable<T> = { -readonly [P in keyof T]-?: T[P] };
-
-type EventsType = Array<string>;
-
-type EventHandlerType = (event: Event) => any;
-
-type ExternalPropsType<ElementType, PropType> = PropType & Omit<React.HTMLAttributes<ElementType>, 'style'> & StyleReactProps;
-
-type FinalPropsType<ElementType> = Omit<InternalPropsType<ElementType>, 'forwardedRef'>;
-
-interface InternalPropsType<ElementType> extends React.HTMLAttributes<ElementType> {
-  forwardedRef: React.RefObject<ElementType>;
-  ref?: React.Ref<any>;
 }
 
 const attachEvent = (element: Element, name: string, handler: EventHandlerType) => {
@@ -55,7 +53,7 @@ const getCustomEvent = (name: string, events: EventsType) => {
   return events.find((event) => event.toLowerCase().endsWith(eventName));
 }
 
-const getProps = <ElementType>(ref: React.Ref<ElementType>, props: InternalPropsType<ElementType>, events: EventsType) => {
+const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<ElementType>, events: EventsType) => {
 
   const { forwardedRef } = props;
 
@@ -80,7 +78,7 @@ const getProps = <ElementType>(ref: React.Ref<ElementType>, props: InternalProps
   return result;
 }
 
-const setProps = <ElementType>(element: ElementType, props: InternalPropsType<ElementType>, events: EventsType) => {
+const setProps = <ElementType>(element: ElementType, props: PropsType<ElementType>, events: EventsType) => {
 
   if (!(element instanceof Element)) return;
 
@@ -111,7 +109,7 @@ const setProps = <ElementType>(element: ElementType, props: InternalPropsType<El
 const forwardRef = <ElementType, PropType>(ReactComponent: any) => {
 
   const forwardRef = (
-    props: ExternalPropsType<ElementType, PropType>,
+    props: PropType & Omit<React.HTMLAttributes<ElementType>, 'style'> & StyleReactProps,
     ref: React.Ref<ElementType>,
   ) => {
 
@@ -144,7 +142,7 @@ const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: El
 
 export const proxy = <ElementType, PropType>(tagName: string, events: EventsType = []) => {
 
-  const ReactComponent = class extends React.Component<InternalPropsType<ElementType>> {
+  const ReactComponent = class extends React.Component<PropsType<ElementType>> {
 
     element!: ElementType;
 
@@ -152,7 +150,7 @@ export const proxy = <ElementType, PropType>(tagName: string, events: EventsType
       this.element = element;
     }
 
-    constructor(props: InternalPropsType<ElementType>) {
+    constructor(props: PropsType<ElementType>) {
       super(props);
     }
 
