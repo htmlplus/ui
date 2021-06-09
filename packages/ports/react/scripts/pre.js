@@ -5,7 +5,7 @@ const lines = [
   '/* eslint-disable */',
   '/* tslint:disable */',
   '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy\';',
+  'import { proxy } from \'./proxy.new\';',
   '',
   'import type { JSX } from \'@htmlplus/core\';',
   '',

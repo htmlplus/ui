@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import { Dialog as PlusDialog } from '@htmlplus/react';
-import type { JSX } from '@htmlplus/core';
-import { createProxy } from './proxy';
-
-const Dialog = createProxy<JSX.PlusDialog, HTMLPlusDialogElement>('plus-dialog', ['plusClose', 'plusClosed', 'plusOpen', 'plusOpened']);
+import { Dialog } from '@htmlplus/react';
 
 const Port = () => {
 
@@ -16,7 +12,7 @@ const Port = () => {
     <button onClick={() => setOpen(false)}>
       close
     </button>
-    <Dialog open={open} onPlusClosed={() => setOpen(false)}>
+    <Dialog open={open} onClosed={() => setOpen(false)}>
       <div>
         1
       </div>
