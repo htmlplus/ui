@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogToggler,
-} from '@htmlplus/react';
+// import {
+//   Dialog,
+//   DialogBody,
+//   DialogContent,
+//   DialogFooter,
+//   DialogHeader,
+//   DialogToggler,
+// } from '@htmlplus/react';
 import './portal.css';
 
 const Portal = () => {
@@ -16,7 +16,7 @@ const Portal = () => {
   const increase = () => setCount(count + 1);
 
   return <>
-    <div className="center">
+    {/* <div className="center">
       <DialogToggler connector="dialog-animation">
         Open
       </DialogToggler>
@@ -38,7 +38,7 @@ const Portal = () => {
           </DialogToggler>
         </DialogFooter>
       </DialogContent>
-    </Dialog>
+    </Dialog> */}
   </>
 }
 

@@ -12,10 +12,15 @@ const Port = () => {
     <button onClick={() => setOpen(false)}>
       close
     </button>
-    <Dialog open={open} onClosed={() => setOpen(false)} >
-      <div>
-        1
-      </div>
+    <Dialog.Toggler connector="a">
+
+    </Dialog.Toggler>
+    <Dialog connector="a" open={open} onClosed={() => setOpen(false)} >
+      <Dialog.Content scrollable>
+        <Dialog.Body scrollable>
+          asdfsdf
+        </Dialog.Body>
+      </Dialog.Content>
     </Dialog>
     {/* <PlusDialog open={open} onClosed={() => setOpen(false)}>
       <div>
