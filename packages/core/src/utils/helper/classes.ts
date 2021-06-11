@@ -1,4 +1,4 @@
-import { toKebabCase } from './to-kebab-case';
+import * as Case from 'case';
 
 export const classes = (...input): string => {
 
@@ -26,7 +26,7 @@ export const classes = (...input): string => {
 
                     const value = element[key];
 
-                    const name = toKebabCase(key);
+                    const name = Case.kebab(key);
 
                     const type = Object.prototype.toString.call(value);
 

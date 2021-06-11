@@ -1,3 +1,4 @@
+import * as Case from 'case';
 import React from 'react';
 
 type EventsType = Array<string>;
@@ -34,14 +35,6 @@ const attachEvent = (element: Element, name: string, handler: EventHandlerType) 
   }
 
   element.addEventListener(name, events[name] = callback);
-}
-
-const dashToPascalCase = (string: string) => {
-  return string
-    .toLowerCase()
-    .split('-')
-    .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
-    .join('');
 }
 
 const getCustomEvent = (name: string, events: EventsType) => {
@@ -185,7 +178,7 @@ export const proxy = <ElementType, PropType>(tagName: string, events: EventsType
   //   return React.createElement(tagName, newProps, children);
   // }
 
-  ReactComponent['displayName'] = dashToPascalCase(tagName);
+  ReactComponent['displayName'] = Case.pascal(tagName);
 
   return forwardRef<ElementType, PropType>(ReactComponent);
 }

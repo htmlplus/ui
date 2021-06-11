@@ -1,9 +1,7 @@
 const
+  Case = require('case'),
   docs = require('@htmlplus/core/dist/docs.json'),
   fs = require('fs');
-
-// TODO
-const toPascal = (string) => string.match(/[a-z]+/gi).map((word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()).join('');
 
 const groupBy = (array, key) => array.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {});
 
@@ -33,15 +31,16 @@ for (let i = 0; i < docs.length; i++) {
   lines.push(` * ${component.title}`);
   lines.push(' */');
 
-  [component, ...children].forEach((child) => {
+  [component, ...children].forEach((child, index) => {
 
     let content = '';
 
     content += hasChildren ? '' : 'export ';
     content += 'const';
     content += ' ';
-    content += hasChildren ? '_' : '';
-    content += toPascal(child.key);
+    content += Case.pascal(child.key);
+    if (index === 0)
+      content += hasChildren ? 'Base' : '';
     content += ' ';
     content += '=';
     content += ' ';
@@ -49,10 +48,10 @@ for (let i = 0; i < docs.length; i++) {
     content += ' ';
     content += 'proxy';
     content += '<';
-    content += `HTML${toPascal(child.tag)}Element`;
+    content += `HTML${Case.pascal(child.tag)}Element`;
     content += ',';
     content += ' ';
-    content += `JSX.${toPascal(child.tag)}`;
+    content += `JSX.${Case.pascal(child.tag)}`;
     content += '>';
     content += '(';
     content += '\'';
@@ -64,7 +63,7 @@ for (let i = 0; i < docs.length; i++) {
     child.events.map((event, index, events) => {
       content += '\'';
       content += 'plus';
-      content += toPascal(event.name);
+      content += Case.pascal(event.name);
       content += '\'';
       if (events.length - 1 === index) return;
       content += ',';
@@ -85,15 +84,15 @@ for (let i = 0; i < docs.length; i++) {
 
     content += 'type';
     content += ' ';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
     content += 'Type';
     content += ' ';
     content += '=';
     content += ' ';
     content += 'typeof';
     content += ' ';
-    content += '_';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
+    content += 'Base';
     content += ' ';
     content += '&';
     content += ' ';
@@ -102,13 +101,12 @@ for (let i = 0; i < docs.length; i++) {
     children.forEach((child) => {
       content += ' ';
       content += ' ';
-      content += toPascal(child.key.replace(component.key, ''));
+      content += Case.pascal(child.key.replace(component.key, ''));
       content += ':';
       content += ' ';
       content += 'typeof';
       content += ' ';
-      content += '_';
-      content += toPascal(child.key);
+      content += Case.pascal(child.key);
       content += ';';
       content += '\n';
     });
@@ -122,21 +120,20 @@ for (let i = 0; i < docs.length; i++) {
     let content = '';
 
     content += '(';
-    content += '_';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
+    content += 'Base';
     content += ' ';
     content += 'as';
     content += ' ';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
     content += 'Type';
     content += ')';
     content += '.';
-    content += toPascal(child.key.replace(component.key, ''));
+    content += Case.pascal(child.key.replace(component.key, ''));
     content += ' ';
     content += '=';
     content += ' ';
-    content += '_';
-    content += toPascal(child.key);
+    content += Case.pascal(child.key);
     content += ';';
 
     lines.push(content);
@@ -150,19 +147,20 @@ for (let i = 0; i < docs.length; i++) {
     content += ' ';
     content += 'const';
     content += ' ';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
     content += ' ';
     content += '=';
     content += ' ';
     content += '/*@__PURE__*/';
     content += ' ';
-    content += '_';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
+    content += 'Base';
     content += ' ';
     content += 'as';
     content += ' ';
-    content += toPascal(component.key);
+    content += Case.pascal(component.key);
     content += 'Type';
+    content += ';';
 
     lines.push(content);
   })();

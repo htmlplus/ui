@@ -1,4 +1,5 @@
 const
+  Case = require('case'),
   fs = require('fs'),
   path = require('path'),
   root = path.resolve(process.cwd());
@@ -57,7 +58,7 @@ const examples = (component) => {
 
       item.key = path.basename(filePath).replace('.md', '');
 
-      item.title = item.key.split('-').join(' ').replace(/^\w/, (char) => char.toUpperCase());
+      item.title = Case.capital(item.key);
 
       item.readme = content.replace(regex, '').trim();
 
@@ -106,7 +107,6 @@ const group = (component) => {
 }
 
 const key = (component) => {
-
   return component.tag.split('-').slice(1).join('-');
 }
 
@@ -286,12 +286,7 @@ const tags = (component) => {
     .filter((tag) => !!tag);
 }
 
-const title = (component) => {
-
-  return key(component)
-    .replace('-', ' ')
-    .replace(/^\w/, (char) => char.toUpperCase());
-}
+const title = (component) => Case.capital(key(component));
 
 module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
 

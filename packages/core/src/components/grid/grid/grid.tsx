@@ -238,6 +238,7 @@ export class Grid implements ComponentInterface {
 
     for (var property in this) {
 
+      // TODO
       const key = property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
       result[key] = this[property];
