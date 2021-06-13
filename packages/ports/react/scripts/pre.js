@@ -60,12 +60,24 @@ for (let i = 0; i < docs.length; i++) {
     content += ',';
     content += ' ';
     content += '[';
-    child.events.map((event, index, events) => {
+    child.properties.map((property, index, properties) => {
+      if (!property.name.match(/-/)) return;
+      content += '\'';
+      content += Case.camel(property.name);
+      content += '\'';
+      if (properties.length - 1 === index) return;
+      content += ',';
+      content += ' ';
+    });
+    content += `]`;
+    content += ',';
+    content += ' ';
+    content += '[';
+    child.events.map((event) => {
       content += '\'';
       content += 'plus';
       content += Case.pascal(event.name);
       content += '\'';
-      if (events.length - 1 === index) return;
       content += ',';
       content += ' ';
     });

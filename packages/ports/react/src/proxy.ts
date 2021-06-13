@@ -1,8 +1,6 @@
 import * as Case from 'case';
 import React from 'react';
 
-type EventsType = Array<string>;
-
 type EventHandlerType = (event: Event) => any;
 
 type FinalPropsType<ElementType> = Omit<PropsType<ElementType>, 'forwardedRef'>;
@@ -37,16 +35,18 @@ const attachEvent = (element: Element, name: string, handler: EventHandlerType) 
   element.addEventListener(name, events[name] = callback);
 }
 
-const getCustomEvent = (name: string, events: EventsType) => {
+const getCustomEvent = (name: string, events: Set<string>) => {
 
   if (!name.match(/on[A-Z]\w+/)) return;
 
-  const eventName = name.substring(3).toLowerCase();
+  name = Case.camel(name.slice(2));
 
-  return events.find((event) => event.toLowerCase().endsWith(eventName));
+  if (!events.has(name)) return;
+
+  return name;
 }
 
-const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<ElementType>, events: EventsType) => {
+const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<ElementType>, extra) => {
 
   const { forwardedRef } = props;
 
@@ -63,15 +63,28 @@ const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<Ele
       name === 'ref'
     ) return;
 
-    if (getCustomEvent(name, events)) return;
+    if (getCustomEvent(name, extra.events)) return;
 
-    result[name] = props[name];
+    const value = props[name];
+
+    if (extra.props.has(name)) {
+
+      const type = typeof value;
+
+      if (!type.match(/boolean|string|number/)) return;
+
+      result[Case.kebab(name)] = value;
+
+      return;
+    }
+
+    result[name] = value;
   })
 
   return result;
 }
 
-const setProps = <ElementType>(element: ElementType, props: PropsType<ElementType>, events: EventsType) => {
+const setProps = <ElementType>(element: ElementType, props: PropsType<ElementType>, extra) => {
 
   if (!(element instanceof Element)) return;
 
@@ -91,11 +104,24 @@ const setProps = <ElementType>(element: ElementType, props: PropsType<ElementTyp
       name === 'style'
     ) return;
 
-    const event = getCustomEvent(name, events);
+    const value = props[name];
 
-    if (!event) return element[name] = props[name];
+    const event = getCustomEvent(name, extra.events);
 
-    attachEvent(element, event, props[name]);
+    if (event)
+      return attachEvent(element, event, value);
+
+    if (
+      extra.props.has(name) &&
+      (typeof value).match(/boolean|string|number/)
+    ) {
+
+      element.setAttribute(Case.kebab(name), value);
+
+      return;
+    }
+
+    element[name] = value;
   })
 }
 
@@ -133,7 +159,12 @@ const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: El
   })
 }
 
-export const proxy = <ElementType, PropType>(tagName: string, events: EventsType = []) => {
+export const proxy = <ElementType, PropType>(tagName: string, props: Array<string> = [], events: Array<string> = []) => {
+
+  const extra = {
+    props: new Set(props),
+    events: new Set(events),
+  };
 
   const ReactComponent = class extends React.Component<PropsType<ElementType>> {
 
@@ -152,19 +183,20 @@ export const proxy = <ElementType, PropType>(tagName: string, events: EventsType
     }
 
     componentDidUpdate(/*prevProps: InternalProps<ElementType>*/) {
-      setProps<ElementType>(this.element as any, this.props, events);
+      setProps<ElementType>(this.element as any, this.props, extra);
     }
 
     render() {
 
       const { children } = this.props;
 
-      const newProps = getProps<ElementType>(this.setElement, this.props, events);
+      const props = getProps<ElementType>(this.setElement, this.props, extra);
 
-      return React.createElement(tagName, newProps, children);
+      return React.createElement(tagName, props, children);
     }
   }
 
+  // TODO
   // const ReactComponentNew = (props: InternalPropsType<ElementType>) => {
 
   //   const { children } = props;
