@@ -8,8 +8,8 @@ type FinalPropsType<ElementType> = Omit<PropsType<ElementType>, 'forwardedRef'>;
 type Mutable<T> = { -readonly [P in keyof T]-?: T[P] };
 
 interface ExtraType {
-  props?: Set<string>,
-  events?: Set<string>,
+  props?: Array<string>,
+  events?: Array<string>,
 };
 
 interface PropsType<ElementType> extends React.HTMLAttributes<ElementType> {
@@ -25,33 +25,41 @@ export interface StyleReactProps {
   };
 }
 
-const attachEvent = (element: Element, name: string, handler: EventHandlerType) => {
+const getCustomEvent = (name: string, events: Array<string>) => {
 
-  const events = element['$events'] || (element['$events'] = {});
+  // TODO
+  name = Case.camel(name.slice(3));
 
-  const previous = events[name];
+  const event = events.find((event) => event.endsWith(name));
 
-  previous && element.removeEventListener(name, previous);
+  if (!event) return;
 
-  function callback(event: Event) {
-    handler && handler.call(this, event);
-  }
-
-  element.addEventListener(name, events[name] = callback);
+  return event;
 }
 
-const getCustomEvent = (name: string, events: Set<string>) => {
+const forwardRef = <ElementType, PropType>(ReactComponent: any) => {
 
-  if (!name.match(/on[A-Z]\w+/)) return;
+  const forwardRef = (
+    props: PropType & Omit<React.HTMLAttributes<ElementType>, 'style'> & StyleReactProps,
+    ref: React.Ref<ElementType>,
+  ) => {
 
-  name = Case.camel(name.slice(2));
+    const { children, ...remainedProps } = props;
 
-  if (!events.has(name)) return;
+    const newProps = {
+      ...remainedProps,
+      forwardedRef: ref
+    }
 
-  return name;
+    return React.createElement(ReactComponent, newProps, children);
+  };
+
+  forwardRef.displayName = ReactComponent.displayName;
+
+  return React.forwardRef(forwardRef);
 }
 
-const isEvent = (name: string) => name.match(/on[A-Z]\w+/);
+const isEvent = (name: string) => name.indexOf('on') === 0 && name[2] === name[2].toUpperCase();
 
 const isPrimitive = (value: any) => {
 
@@ -85,16 +93,19 @@ const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<Ele
 
       if (typeof document === 'undefined') return;
 
-      if (getCustomEvent(name, extra.events)) return;
+      const event = getCustomEvent(name, extra.events);
+
+      if (event) return;
 
       result[name] = value;
     }
-    else {
+    else if (extra.props.includes(name)) {
 
       if (!isPrimitive(value)) return;
 
-      if (extra.props.has(name))
-        name = Case.kebab(name);
+      result[Case.kebab(name)] = value;
+    }
+    else {
 
       result[name] = value;
     }
@@ -103,14 +114,68 @@ const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<Ele
   return result;
 }
 
+const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: ElementType) => {
+
+  return refs.forEach((ref) => {
+
+    if (typeof ref === 'function') return ref(value);
+
+    if (ref == null) return;
+
+    (ref as Mutable<React.RefObject<ElementType>>).current = value;
+  })
+}
+
+const setClass = <ElementType>(element: ElementType, props: PropsType<ElementType>) => {
+
+  // const newClassProp: string = newProps.className || newProps.class;
+  // const oldClassProp: string = oldProps.className || oldProps.class;
+
+  // // map the classes to Maps for performance
+  // const currentClasses = arrayToMap(classList);
+  // const incomingPropClasses = arrayToMap(newClassProp ? newClassProp.split(' ') : []);
+  // const oldPropClasses = arrayToMap(oldClassProp ? oldClassProp.split(' ') : []);
+  // const finalClassNames: string[] = [];
+
+  // // loop through each of the current classes on the component
+  // // to see if it should be a part of the classNames added
+  // currentClasses.forEach((currentClass) => {
+  //   if (incomingPropClasses.has(currentClass)) {
+  //     // add it as its already included in classnames coming in from newProps
+  //     finalClassNames.push(currentClass);
+  //     incomingPropClasses.delete(currentClass);
+  //   }
+  //   else if (!oldPropClasses.has(currentClass)) {
+  //     // add it as it has NOT been removed by user
+  //     finalClassNames.push(currentClass);
+  //   }
+  // });
+  // incomingPropClasses.forEach((s) => finalClassNames.push(s));
+  // return finalClassNames.join(' ');
+
+  return '';
+}
+
+const setEvent = (element: Element, name: string, handler: EventHandlerType) => {
+
+  const events = element['$events'] || (element['$events'] = {});
+
+  const previous = events[name];
+
+  previous && element.removeEventListener(name, previous);
+
+  function callback(event: Event) {
+    handler && handler.call(this, event);
+  }
+
+  element.addEventListener(name, events[name] = callback);
+}
+
 const setProps = <ElementType>(element: ElementType, props: PropsType<ElementType>, extra: ExtraType) => {
 
   if (!(element instanceof Element)) return;
 
-  // TODO
-  // add any classes in className to the class list
-  // const className = getClassName(node.classList, newProps, oldProps);
-  // if (className !== '') node.className = className;
+  setClass<ElementType>(element, props);
 
   Object.keys(props).forEach((name) => {
 
@@ -133,64 +198,31 @@ const setProps = <ElementType>(element: ElementType, props: PropsType<ElementTyp
 
       if (!event) return;
 
-      attachEvent(element, event, value);
+      setEvent(element, event, value);
     }
-    else {
+    else if (extra.props.includes(name)) {
 
       if (isPrimitive(value)) {
 
-        if (extra.props.has(name))
-          name = Case.kebab(name);
-
-        element.setAttribute(name, value);
+        element.setAttribute(Case.kebab(name), value);
       }
       else {
 
         element[name] = value;
       }
     }
-  })
-}
+    else {
 
-const forwardRef = <ElementType, PropType>(ReactComponent: any) => {
-
-  const forwardRef = (
-    props: PropType & Omit<React.HTMLAttributes<ElementType>, 'style'> & StyleReactProps,
-    ref: React.Ref<ElementType>,
-  ) => {
-
-    const { children, ...remainedProps } = props;
-
-    const newProps = {
-      ...remainedProps,
-      forwardedRef: ref
+      element[name] = value;
     }
-
-    return React.createElement(ReactComponent, newProps, children);
-  };
-
-  forwardRef.displayName = ReactComponent.displayName;
-
-  return React.forwardRef(forwardRef);
-}
-
-const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: ElementType) => {
-
-  return refs.forEach((ref) => {
-
-    if (typeof ref === 'function') return ref(value);
-
-    if (ref == null) return;
-
-    (ref as Mutable<React.RefObject<ElementType>>).current = value;
   })
 }
 
 export const proxy = <ElementType, PropType>(tagName: string, props: Array<string> = [], events: Array<string> = []) => {
 
   const extra: ExtraType = {
-    props: new Set(props),
-    events: new Set(events),
+    props,
+    events,
   };
 
   const ReactComponent = class extends React.Component<PropsType<ElementType>> {
@@ -211,6 +243,22 @@ export const proxy = <ElementType, PropType>(tagName: string, props: Array<strin
 
     componentDidUpdate(/*prevProps: InternalProps<ElementType>*/) {
       setProps<ElementType>(this.element as any, this.props, extra);
+    }
+
+    componentWillUnmount() {
+
+      if (!this.element) return;
+
+      const events = this.element['$events'] || {};
+
+      Object.keys(events).forEach((name) => {
+
+        const handler = events[name];
+
+        (this.element as any).removeEventListener(name, handler);
+      })
+
+      delete this.element['$events'];
     }
 
     render() {

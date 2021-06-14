@@ -61,7 +61,6 @@ for (let i = 0; i < docs.length; i++) {
     content += ' ';
     content += '[';
     child.properties.map((property, index, properties) => {
-      if (!property.name.match(/-/)) return;
       content += '\'';
       content += Case.camel(property.name);
       content += '\'';
@@ -73,11 +72,12 @@ for (let i = 0; i < docs.length; i++) {
     content += ',';
     content += ' ';
     content += '[';
-    child.events.map((event) => {
+    child.events.map((event, index, events) => {
       content += '\'';
       content += 'plus';
       content += Case.pascal(event.name);
       content += '\'';
+      if (events.length - 1 === index) return;
       content += ',';
       content += ' ';
     });
