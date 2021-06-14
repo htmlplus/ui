@@ -25,6 +25,15 @@ export interface StyleReactProps {
   };
 }
 
+const arrayToMap = (array: string[] | DOMTokenList) => {
+
+  const map = new Map<string, string>();
+
+  (array as string[]).forEach((s: string) => map.set(s, s));
+
+  return map;
+}
+
 const getCustomEvent = (name: string, events: Array<string>) => {
 
   // TODO
@@ -59,7 +68,9 @@ const forwardRef = <ElementType, PropType>(ReactComponent: any) => {
   return React.forwardRef(forwardRef);
 }
 
-const isEvent = (name: string) => name.indexOf('on') === 0 && name[2] === name[2].toUpperCase();
+const isEvent = (name: string) => {
+  return name.indexOf('on') === 0 && name[2] === name[2].toUpperCase();
+}
 
 const isPrimitive = (value: any) => {
 
@@ -128,32 +139,37 @@ const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: El
 
 const setClass = <ElementType>(element: ElementType, props: PropsType<ElementType>) => {
 
-  // const newClassProp: string = newProps.className || newProps.class;
-  // const oldClassProp: string = oldProps.className || oldProps.class;
+  const classes: string[] = [];
 
-  // // map the classes to Maps for performance
-  // const currentClasses = arrayToMap(classList);
-  // const incomingPropClasses = arrayToMap(newClassProp ? newClassProp.split(' ') : []);
-  // const oldPropClasses = arrayToMap(oldClassProp ? oldClassProp.split(' ') : []);
-  // const finalClassNames: string[] = [];
+  const current = arrayToMap((element as any).classList);
 
-  // // loop through each of the current classes on the component
-  // // to see if it should be a part of the classNames added
-  // currentClasses.forEach((currentClass) => {
-  //   if (incomingPropClasses.has(currentClass)) {
-  //     // add it as its already included in classnames coming in from newProps
-  //     finalClassNames.push(currentClass);
-  //     incomingPropClasses.delete(currentClass);
-  //   }
-  //   else if (!oldPropClasses.has(currentClass)) {
-  //     // add it as it has NOT been removed by user
-  //     finalClassNames.push(currentClass);
-  //   }
-  // });
-  // incomingPropClasses.forEach((s) => finalClassNames.push(s));
-  // return finalClassNames.join(' ');
+  const prev: string = element['$class'];
+  const next: string = props.className || (props as any).class;
 
-  return '';
+  const prevClass = arrayToMap(prev ? prev.split(' ') : []);
+  const nextClass = arrayToMap(next ? next.split(' ') : []);
+
+  current.forEach((key) => {
+
+    if (nextClass.has(key)) {
+
+      classes.push(key);
+
+      nextClass.delete(key);
+    }
+    else if (!prevClass.has(key)) {
+
+      classes.push(key);
+    }
+  })
+
+  nextClass.forEach((key) => classes.push(key));
+
+  const className = classes.join(' ');
+
+  (element as any).className = className;
+
+  element['$class'] = className;
 }
 
 const setEvent = (element: Element, name: string, handler: EventHandlerType) => {
