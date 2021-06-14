@@ -7,6 +7,11 @@ type FinalPropsType<ElementType> = Omit<PropsType<ElementType>, 'forwardedRef'>;
 
 type Mutable<T> = { -readonly [P in keyof T]-?: T[P] };
 
+interface ExtraType {
+  props?: Set<string>,
+  events?: Set<string>,
+};
+
 interface PropsType<ElementType> extends React.HTMLAttributes<ElementType> {
   forwardedRef: React.RefObject<ElementType>;
   ref?: React.Ref<any>;
@@ -46,7 +51,18 @@ const getCustomEvent = (name: string, events: Set<string>) => {
   return name;
 }
 
-const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<ElementType>, extra) => {
+const isEvent = (name: string) => name.match(/on[A-Z]\w+/);
+
+const isPrimitive = (value: any) => {
+
+  const type = typeof value;
+
+  const match = type.match(/boolean|string|number/);
+
+  return match;
+}
+
+const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<ElementType>, extra: ExtraType) => {
 
   const { forwardedRef } = props;
 
@@ -63,28 +79,31 @@ const getProps = <ElementType>(ref: React.Ref<ElementType>, props: PropsType<Ele
       name === 'ref'
     ) return;
 
-    if (getCustomEvent(name, extra.events)) return;
-
     const value = props[name];
 
-    if (extra.props.has(name)) {
+    if (isEvent(name)) {
 
-      const type = typeof value;
+      if (typeof document === 'undefined') return;
 
-      if (!type.match(/boolean|string|number/)) return;
+      if (getCustomEvent(name, extra.events)) return;
 
-      result[Case.kebab(name)] = value;
-
-      return;
+      result[name] = value;
     }
+    else {
 
-    result[name] = value;
+      if (!isPrimitive(value)) return;
+
+      if (extra.props.has(name))
+        name = Case.kebab(name);
+
+      result[name] = value;
+    }
   })
 
   return result;
 }
 
-const setProps = <ElementType>(element: ElementType, props: PropsType<ElementType>, extra) => {
+const setProps = <ElementType>(element: ElementType, props: PropsType<ElementType>, extra: ExtraType) => {
 
   if (!(element instanceof Element)) return;
 
@@ -106,22 +125,30 @@ const setProps = <ElementType>(element: ElementType, props: PropsType<ElementTyp
 
     const value = props[name];
 
-    const event = getCustomEvent(name, extra.events);
+    if (isEvent(name)) {
 
-    if (event)
-      return attachEvent(element, event, value);
+      if (typeof document === 'undefined') return;
 
-    if (
-      extra.props.has(name) &&
-      (typeof value).match(/boolean|string|number/)
-    ) {
+      const event = getCustomEvent(name, extra.events);
 
-      element.setAttribute(Case.kebab(name), value);
+      if (!event) return;
 
-      return;
+      attachEvent(element, event, value);
     }
+    else {
 
-    element[name] = value;
+      if (isPrimitive(value)) {
+
+        if (extra.props.has(name))
+          name = Case.kebab(name);
+
+        element.setAttribute(name, value);
+      }
+      else {
+
+        element[name] = value;
+      }
+    }
   })
 }
 
@@ -161,7 +188,7 @@ const mergeRefs = <ElementType>(...refs: React.Ref<ElementType>[]) => (value: El
 
 export const proxy = <ElementType, PropType>(tagName: string, props: Array<string> = [], events: Array<string> = []) => {
 
-  const extra = {
+  const extra: ExtraType = {
     props: new Set(props),
     events: new Set(events),
   };
