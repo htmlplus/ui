@@ -303,7 +303,6 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
         experimental: experimental(component),
         externals: externals(component),
         group: group(component),
-        hasExternals: externals(component),
         key: key(component),
         methods: methods(component),
         parts: parts(component),
