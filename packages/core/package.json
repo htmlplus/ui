@@ -39,5 +39,8 @@
     "jest-cli": "^26.6.3",
     "puppeteer": "^5.4.1",
     "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "@stencil/vue-output-target": "^0.5.0"
   }
 }

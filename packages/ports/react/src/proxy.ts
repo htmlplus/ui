@@ -1,3 +1,7 @@
+/**
+ * version 0.0.9
+ */
+
 import * as Case from 'case';
 import React from 'react';
 

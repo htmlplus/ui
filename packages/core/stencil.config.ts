@@ -4,12 +4,22 @@ import * as Constants from './src/configs/constants';
 import { docs } from './scripts/docs';
 import { style } from './scripts/style';
 
+// TODO
+import { vueOutputTarget } from '@stencil/vue-output-target';
+
 export const config: Config = {
   namespace: Constants.NAMESPACE,
   devServer: {
     port: 3000
   },
   outputTargets: [
+
+    // TODO
+    vueOutputTarget({
+      componentCorePackage: '@htmlplus/core',
+      proxiesFile: '../ports/vue-original/src/components.ts',
+      componentModels: [],
+    }),
     {
       type: 'www',
       serviceWorker: null
