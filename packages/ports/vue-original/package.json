@@ -7,7 +7,7 @@
   "types": "dist/vue/index.d.ts",
   "files": [
     "dist",
-    "vue-component-lib"
+    "loader"
   ],
   "publishConfig": {
     "access": "public"

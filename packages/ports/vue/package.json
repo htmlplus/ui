@@ -1,24 +1,37 @@
 {
   "name": "@htmlplus/vue",
-  "version": "0.0.0",
+  "version": "0.2.6",
   "description": "Vue output target for @htmlplus/core components.",
-  "main": "dist/react/index.js",
-  "module": "dist/react/index.es.js",
-  "types": "dist/react/index.d.ts",
+  "main": "dist/vue/index.js",
+  "module": "dist/vue/index.es.js",
+  "types": "dist/vue/index.d.ts",
   "files": [
     "dist",
-    "vue-component-lib"
+    "loader"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && rollup -c",
+    "build": "npm run clean && node scripts/pre && rollup -c && node scripts/post",
     "clean": "rimraf dist"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "case": "^1.6.3",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.27.1",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "typescript": "^4.0.2",
+    "vue": "^3.1.1"
+  },
   "dependencies": {
     "@htmlplus/core": "^0.2.6"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "vue": "^3.1.1"
+  }
 }
