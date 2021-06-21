@@ -53,16 +53,17 @@ export const defineContainer = <Props>(
   * They refer to whatever properties are set on an instance of a component.
   */
   const Container = defineComponent<Props & InputProps>((props, { attrs, slots, emit }) => {
-    let modelPropValue = (props as any)[modelProp];
+    let modelPropValue = (props as any)[modelProp as any]; // TODO
     const containerRef = ref<HTMLElement>();
     const classes = new Set(getComponentClasses(attrs.class));
     const onVnodeBeforeMount = (vnode: VNode) => {
       // Add a listener to tell Vue to update the v-model
       if (vnode.el) {
         const eventsNames = Array.isArray(modelUpdateEvent) ? modelUpdateEvent : [modelUpdateEvent];
-        eventsNames.forEach((eventName: string) => {
-          vnode.el.addEventListener(eventName.toLowerCase(), (e: Event) => {
-            modelPropValue = (e?.target as any)[modelProp];
+        eventsNames.forEach((eventName: any) => { // TODO
+          // TODO
+          (vnode as any).el.addEventListener(eventName.toLowerCase(), (e: Event) => {
+            modelPropValue = (e?.target as any)[modelProp as any]; // TODO
             emit(UPDATE_VALUE_EVENT, modelPropValue);
 
             /**
@@ -76,7 +77,8 @@ export const defineContainer = <Props>(
 
             // TODO
             // if (externalModelUpdateEvent)	
-            emit(externalModelUpdateEvent, e);
+            // TODO
+            emit(externalModelUpdateEvent as any, e);
           });
         });
       }
@@ -103,7 +105,7 @@ export const defineContainer = <Props>(
     }
 
     return () => {
-      modelPropValue = (props as any)[modelProp];
+      modelPropValue = (props as any)[modelProp as any]; // TODO
 
       getComponentClasses(attrs.class).forEach(value => {
         classes.add(value);

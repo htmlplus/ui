@@ -24,14 +24,16 @@ for (let i = 0; i < docs.length; i++) {
 
   const children = component.group ? (groups[component.group] || []).slice(1) : [];
 
-  const hasChildren = component.group && children && children.length;
-
   lines.push('');
   lines.push('/*');
   lines.push(` * ${component.title}`);
   lines.push(' */');
 
-  [component, ...children].forEach((child, index) => {
+  [component, ...children].forEach((child) => {
+
+    const hasEvents = !!child.events.length;
+    const hasProperties = !!child.properties.length;
+    const hasOptions = hasEvents || hasProperties;
 
     let content = '';
 
@@ -53,31 +55,60 @@ for (let i = 0; i < docs.length; i++) {
     content += '\'';
     content += child.tag;
     content += '\'';
-    content += ',';
-    content += ' ';
-    content += '[';
-    child.properties.map((property, index, properties) => {
-      content += '\'';
-      content += Case.camel(property.name);
-      content += '\'';
-      if (properties.length - 1 === index) return;
+
+    if (hasOptions) {
+
       content += ',';
       content += ' ';
-    });
-    content += `]`;
-    // content += ',';
-    // content += ' ';
-    // content += '[';
-    // child.events.map((event, index, events) => {
-    //   content += '\'';
-    //   content += 'plus';
-    //   content += Case.pascal(event.name);
-    //   content += '\'';
-    //   if (events.length - 1 === index) return;
-    //   content += ',';
-    //   content += ' ';
-    // });
-    // content += `]`;
+      content += '{';
+
+      // props
+      if (hasProperties) {
+        content += '\n';
+        content += ' ';
+        content += ' ';
+        content += 'props';
+        content += ':';
+        content += ' ';
+        content += '[';
+        child.properties.map((property, index, properties) => {
+          content += '\'';
+          content += Case.camel(property.name);
+          content += '\'';
+          if (properties.length - 1 === index) return;
+          content += ',';
+          content += ' ';
+        });
+        content += `]`;
+        content += `,`;
+      }
+
+      // events
+      if (hasEvents) {
+        content += '\n';
+        content += ' ';
+        content += ' ';
+        content += 'events';
+        content += ':';
+        content += ' ';
+        content += '[';
+        child.events.map((event, index, events) => {
+          content += '\'';
+          content += 'plus';
+          content += Case.pascal(event.name);
+          content += '\'';
+          if (events.length - 1 === index) return;
+          content += ',';
+          content += ' ';
+        });
+        content += `]`;
+        content += `,`;
+      }
+
+      content += '\n';
+      content += '}';
+    }
+
     content += `)`;
     content += `;`;
 
