@@ -19,7 +19,7 @@ const getComponentClasses = (classes: unknown) => {
 };
 
 const getElementClasses = (ref: Ref<HTMLElement | undefined>, componentClasses: Set<string>, defaultClasses: string[] = []) => {
-  return [ ...Array.from(ref.value?.classList || []), ...defaultClasses ]
+  return [...Array.from(ref.value?.classList || []), ...defaultClasses]
     .filter((c: string, i, self) => !componentClasses.has(c) && self.indexOf(c) === i);
 };
 
@@ -60,7 +60,7 @@ export const defineContainer = <Props>(
   }
 
   const Container = defineComponent<Props & InputProps>((props, { attrs, slots, emit }) => {
-    let modelPropValue = (props as any)[modelProp];
+    let modelPropValue = (props as any)[modelProp as any];
     const containerRef = ref<HTMLElement>();
     const classes = new Set(getComponentClasses(attrs.class));
     const onVnodeBeforeMount = (vnode: VNode) => {
@@ -68,8 +68,8 @@ export const defineContainer = <Props>(
       if (vnode.el) {
         const eventsNames = Array.isArray(modelUpdateEvent) ? modelUpdateEvent : [modelUpdateEvent];
         eventsNames.forEach((eventName: string) => {
-          vnode.el.addEventListener(eventName.toLowerCase(), (e: Event) => {
-            modelPropValue = (e?.target as any)[modelProp];
+          (vnode as any).el.addEventListener(eventName.toLowerCase(), (e: Event) => {
+            modelPropValue = (e?.target as any)[modelProp as any];
             emit(UPDATE_VALUE_EVENT, modelPropValue);
 
             /**
@@ -109,7 +109,7 @@ export const defineContainer = <Props>(
     }
 
     return () => {
-      modelPropValue = (props as any)[modelProp];
+      modelPropValue = (props as any)[modelProp as any];
 
       getComponentClasses(attrs.class).forEach(value => {
         classes.add(value);

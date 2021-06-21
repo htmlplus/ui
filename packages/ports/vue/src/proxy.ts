@@ -1,1 +1,1 @@
-export * from './proxy.old';
+export { defineContainer as proxy } from './proxy.old';

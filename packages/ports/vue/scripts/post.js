@@ -2,7 +2,7 @@ const fs = require('fs');
 
 (() => {
 
-  const source = './dist/react/components.d.ts';
+  const source = './dist/vue/components.d.ts';
 
   let content = fs.readFileSync(source, { encoding: 'utf8' });
 
