@@ -40,7 +40,7 @@ const getElementClasses = (ref: Ref<HTMLElement | undefined>, componentClasses: 
 * options for the component such as router or v-model
 * integrations.
 */
-export const defineContainer = <Props>(
+const defineContainer = <Props>(
   name: string,
   componentProps: string[] = [],
   componentOptions: ComponentOptions = {}
@@ -160,3 +160,10 @@ export const defineContainer = <Props>(
 
   return Container;
 };
+
+export const proxy = <PropType>(tagName: string, options?: any) => {
+
+  const { events = [], props = [] } = options || {};
+
+  return defineContainer<PropType>(tagName, [...events, ...props]);
+}

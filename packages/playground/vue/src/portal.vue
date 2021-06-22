@@ -3,7 +3,7 @@
     <div class="center">
       <DialogToggler connector="dialog-animation"> Open </DialogToggler>
     </div>
-    <Dialog portal animation="fade" connector="dialog-animation">
+    <Dialog animation="fade" connector="dialog-animation">
       <DialogContent>
         <DialogHeader> Dialog Title </DialogHeader>
         <DialogBody>
@@ -42,6 +42,17 @@ export default {
     DialogHeader,
     DialogToggler,
   },
+  // props: {
+  //   propA: {
+  //     type: Number,
+  //   },
+  //   propB: {
+  //     default: "default value",
+  //   },
+  //   propC: {
+  //     type: [String, Boolean],
+  //   },
+  // },
   data() {
     return {
       count: 0,

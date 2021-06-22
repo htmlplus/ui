@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated react proxies */
-import { proxy } from './proxy';
+import { proxy } from './proxy.old';
 
 import type { JSX } from '@htmlplus/core';
 

@@ -8,6 +8,8 @@ const fs = require('fs');
 
   content = content.replace('import type { JSX } from \'@htmlplus/core\';', 'import type { JSX } from \'../types\';');
 
+  content = content.replace(/@htmlplus\/core\/dist\//g, '../');
+
   fs.writeFileSync(source, content);
 })();
 
