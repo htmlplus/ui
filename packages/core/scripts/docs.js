@@ -63,9 +63,6 @@ const lastModified = (component) => {
     { cwd: root }
   );
 
-  console.log(1, key(component), files.length)
-
-
   return files.reduce((result, file) => {
 
     const state = fs.statSync(file);
