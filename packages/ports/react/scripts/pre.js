@@ -5,7 +5,7 @@ const
 
 const groupBy = (array, key) => array.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {});
 
-const groups = groupBy(docs, 'group');
+const groups = groupBy(docs.components, 'group');
 
 const lines = [
   '/* eslint-disable */',
@@ -16,9 +16,9 @@ const lines = [
   'import type { JSX } from \'@htmlplus/core\';',
 ];
 
-for (let i = 0; i < docs.length; i++) {
+for (let i = 0; i < docs.components.length; i++) {
 
-  const component = docs[i];
+  const component = docs.components[i];
 
   if (!component.main) continue;
 
@@ -74,8 +74,7 @@ for (let i = 0; i < docs.length; i++) {
     content += '[';
     child.events.map((event, index, events) => {
       content += '\'';
-      content += 'plus';
-      content += Case.pascal(event.name);
+      content += event.name;
       content += '\'';
       if (events.length - 1 === index) return;
       content += ',';

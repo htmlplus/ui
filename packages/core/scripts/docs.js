@@ -1,35 +1,252 @@
 const
   Case = require('case'),
-  fs = require('fs'),
+  fs = require('fs-extra'),
+  glob = require('glob'),
   path = require('path'),
+  Constants = require('../src/configs/constants'),
   root = path.resolve(process.cwd());
 
-const deprecated = (component) => {
+const getTag = (input, key) => {
 
-  return !!component.docsTags.find((item) => item.name === 'deprecated');
+  const tag = input.docsTags.find((item) => item.name === key);
+
+  if (!tag) return false;
+
+  return tag.text || true;
+}
+
+const key = (component) => {
+  return component.tag.replace(/\w+-/, '');
+}
+
+const title = (component) => {
+  return Case.capital(key(component));
+}
+
+const main = (component) => {
+  return !group(component) || group(component) === key(component);
+}
+
+const group = (component) => {
+  return getTag(component, 'group');
 }
 
 const development = (component) => {
+  return getTag(component, 'development');
+}
 
-  return !!component.docsTags.find((item) => item.name === 'development');
+const experimental = (component) => {
+  return getTag(component, 'experimental');
+}
+
+const deprecated = (component) => {
+  return getTag(component, 'deprecated');
+}
+
+const externals = (component) => {
+
+  const dir = path.join(component.dirPath, 'externals');
+
+  return fs.existsSync(dir);
+}
+
+const lastModified = (component) => {
+
+  if (!main(component)) return;
+
+  const sections = component.dirPath.split('/');
+
+  const indented = sections.pop() === sections.pop();
+
+  const files = glob.sync(
+    path.join(component.dirPath, indented ? '..' : '', '/**/*.*'),
+    { cwd: root }
+  );
+
+  return files.reduce((result, file) => {
+
+    const state = fs.statSync(file);
+
+    return result > state.mtime ? result : state.mtime
+  }, 0)
+}
+
+const tags = (component) => {
+
+  return (getTag(component, 'tags') || '')
+    .split(',')
+    .map((tag) => tag.trim())
+    .filter((tag) => !!tag);
+}
+
+const properties = (component) => {
+
+  return component.props.map((property) => {
+
+    let values = [];
+
+    const tags = property.docsTags;
+
+    property.values.forEach((value) => {
+
+      if (value.type !== 'boolean') return values.push(value);
+
+      values.push(
+        {
+          value: true,
+          type: 'boolean'
+        },
+        {
+          value: false,
+          type: 'boolean'
+        }
+      )
+    });
+
+    values = values
+      .map((value) => {
+
+        const index = tags.findIndex((tag) => tag.name === 'value' && tag.text.startsWith(`${value.value}`));
+
+        if (index === -1) return value;
+
+        value.index = index;
+
+        const tag = tags[index];
+
+        const description = tag.text.split('-').pop().trim();
+
+        value.description = description;
+
+        return value;
+      })
+      .sort((a, b) => a.index - b.index)
+      .map((value) => {
+
+        delete value.index;
+
+        return value;
+      });
+
+    return {
+      name: property.attr || property.name, // TODO
+      attribute: property.attr,
+      reflect: property.reflectToAttr,
+      required: property.required,
+      type: property.type,
+      experimental: getTag(property, 'experimental'),
+      description: property.docs,
+      default: property.default,
+      values
+    }
+  })
+}
+
+const slots = (component) => {
+
+  return component.slots.map((slot) => {
+
+    return {
+      name: slot.name,
+      description: slot.docs
+    }
+  });
 }
 
 const events = (component) => {
 
-  return (component.events || []).map((event) => {
+  return component.events.map((event) => {
 
-    const name = event.event
-      .split(/(?=[A-Z])/).slice(1).join("")
-      .replace(/^\w/, (char) => char.toLowerCase());
-
-    const experimental = !!event.docsTags.find((item) => item.name === 'experimental');
+    const experimental = getTag(component, 'experimental');
 
     return {
-      name,
+      name: event.event,
       cancelable: event.cancelable,
       detail: event.detail,
       experimental,
       description: event.docs,
+    }
+  })
+}
+
+const styles = (component, buildCtx) => {
+
+  const key = component.tag.replace(/\w+-/, '');
+
+  const dir = path.join(component.dirPath, key + '.scss');
+
+  const styleUpdated = buildCtx
+    .stylesUpdated
+    .find((style) => style.styleTag === component.tag)
+    .styleText || '';
+
+  const styles = [];
+
+  try {
+
+    fs.readFileSync(dir, 'utf8')
+      .split('@prop')
+      .slice(1)
+      .map((section) => {
+
+        let [description, name] = section.split(/\n/);
+
+        name = name.split(':').slice(0, -1).join(':').trim();
+
+        description = description.trim();
+
+        let [value] = styleUpdated.split(name).slice(1, 2);
+
+        if (value) value = value.split(/;|}/)[0].replace(':', '').trim();
+
+        styles.push({
+          name,
+          dafault: value,
+          description
+        })
+      })
+  }
+  catch { }
+
+  return styles;
+}
+
+const parts = (component) => {
+
+  return component.parts.map((part) => {
+
+    return {
+      name: part.name,
+      description: part.docs
+    }
+  })
+}
+
+const methods = (component) => {
+
+  return component.methods.map((method) => {
+
+    const parameters = [];
+
+    method.docsTags
+      .filter((tag) => tag.name === 'param')
+      .map((tag) => {
+
+        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
+
+        parameters.push({
+          name,
+          description
+        })
+      })
+
+    return {
+      name: method.name,
+      experimental: getTag(method, 'experimental'),
+      type: method.returns.type,
+      signature: method.signature,
+      description: method.docs,
+      parameters
     }
   });
 }
@@ -41,8 +258,6 @@ const examples = (component) => {
   const dir = path.join(component.dirPath, 'examples');
 
   if (!fs.existsSync(dir)) return items;
-
-  const keys = ((component.docsTags.find((tag) => tag.name === 'examples') || {}).text || '').split(',').map((key) => key.trim());
 
   return fs.readdirSync(dir)
     .filter((file) => file.endsWith('.md'))
@@ -86,133 +301,6 @@ const examples = (component) => {
 
       return item;
     })
-    .sort((a, b) => keys.indexOf(a.key) - keys.indexOf(b.key));
-}
-
-const experimental = (component) => {
-
-  return !!component.docsTags.find((item) => item.name === 'experimental');
-}
-
-const externals = (component) => {
-
-  const dir = path.join(component.dirPath, 'externals');
-
-  return fs.existsSync(dir);
-}
-
-const group = (component) => {
-
-  return (component.docsTags.find((item) => item.name === 'group') || {}).text || '';
-}
-
-const key = (component) => {
-  return component.tag.split('-').slice(1).join('-');
-}
-
-const methods = (component) => {
-
-  return (component.methods || []).map((method) => {
-
-    const parameters = [];
-
-    method.docsTags
-      .filter((tag) => tag.name === 'param')
-      .map((tag) => {
-
-        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
-
-        parameters.push({
-          name,
-          description
-        })
-      });
-
-
-    const experimental = !!method.docsTags.find((item) => item.name === 'experimental');
-
-    return {
-      name: method.name,
-      type: method.returns.type,
-      experimental,
-      signature: method.signature,
-      description: method.docs,
-      parameters
-    }
-  });
-}
-
-const parts = (component) => {
-
-  return (component.parts || []).map((part) => {
-
-    return {
-      name: part.name,
-      description: part.docs
-    }
-  });
-}
-
-const properties = (component) => {
-
-  return (component.props || []).map((property) => {
-
-    let values = [];
-
-    const tags = (property.docsTags || []);
-
-    const experimental = !!tags.find((item) => item.name === 'experimental');
-
-    property.values.map((value) => {
-
-      if (value.type !== 'boolean') return values.push(value);
-
-      values.push(
-        {
-          value: true,
-          type: 'boolean'
-        },
-        {
-          value: false,
-          type: 'boolean'
-        }
-      )
-    });
-
-    values = values
-      .map((value) => {
-
-        const index = tags.findIndex((tag) => tag.name === 'value' && tag.text.startsWith(`${value.value}`));
-
-        if (index === -1) return value;
-
-        value.index = index;
-
-        const tag = tags[index];
-
-        const description = tag.text.split('-').pop().trim();
-
-        value.description = description;
-
-        return value;
-      })
-      .sort((a, b) => a.index - b.index)
-      .map((value) => {
-
-        delete value.index;
-
-        return value;
-      });
-
-    return {
-      name: property.attr || property.name,
-      type: property.type,
-      experimental,
-      description: property.docs,
-      default: property.default,
-      values
-    }
-  })
 }
 
 const readme = (component) => {
@@ -224,103 +312,36 @@ const readme = (component) => {
   catch { }
 }
 
-const slots = (component) => {
-
-  return (component.slots || []).map((slot) => {
-
-    return {
-      name: slot.name,
-      description: slot.docs
-    }
-  });
-}
-
-const styles = (component) => {
-
-  const key = component.tag.split('-').slice(1).join('-');
-
-  const dir = path.join(component.dirPath, key + '.scss');
-
-  const styles = [];
-
-  try {
-
-    fs.readFileSync(dir, 'utf8')
-      .split('@prop')
-      .slice(1)
-      .map((section) => {
-
-        let [description, name] = section.split(/\n/);
-
-        name = name.split(':').slice(0, -1).join(':').trim();
-
-        description = description.trim();
-
-        let [value] = (component.styleUpdated || '').split(name).slice(1, 2);
-
-        if (value) value = value.split(/;|}/)[0].replace(':', '').trim();
-
-        styles.push({
-          name,
-          dafault: value,
-          description
-        })
-      })
-  }
-  catch { }
-
-  return styles;
-}
-
-const tag = (component) => {
-
-  return component.tag;
-}
-
-const tags = (component) => {
-
-  return ((component.docsTags.find((item) => item.name === 'tags') || {}).text || '')
-    .replace('-', '')
-    .split(',')
-    .map((tag) => tag.trim())
-    .filter((tag) => !!tag);
-}
-
-const title = (component) => Case.capital(key(component));
-
 module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
 
-  const components = input.components
-    .map((component) => {
+  const components = [];
 
-      component.styleUpdated = buildCtx.stylesUpdated.find((style) => style.styleTag === component.tag).styleText;
+  for (let i = 0; i < input.components.length; i++) {
 
-      return {
-        deprecated: deprecated(component),
-        development: development(component),
-        events: events(component),
-        examples: examples(component),
-        experimental: experimental(component),
-        externals: externals(component),
-        group: group(component),
-        key: key(component),
-        methods: methods(component),
-        parts: parts(component),
-        properties: properties(component),
-        readme: readme(component),
-        slots: slots(component),
-        styles: styles(component),
-        tag: tag(component),
-        tags: tags(component),
-        title: title(component),
-      }
+    const component = input.components[i];
+
+    components.push({
+      key: key(component),
+      tag: component.tag,
+      title: title(component),
+      main: main(component),
+      group: group(component),
+      development: development(component),
+      experimental: experimental(component),
+      deprecated: deprecated(component),
+      externals: externals(component),
+      lastModified: lastModified(component),
+      tags: tags(component),
+      properties: properties(component),
+      slots: slots(component),
+      events: events(component),
+      styles: styles(component, buildCtx),
+      parts: parts(component),
+      methods: methods(component),
+      examples: examples(component),
+      readme: readme(component),
     })
-    .map((component, index, components) => {
-
-      component.main = !component.group || !!components.filter((item) => item.group === component.key && item.group !== item.key).length;
-
-      return component;
-    });
+  }
 
   const target = path.join(root, dest);
 
@@ -328,7 +349,13 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
 
   !fs.existsSync(dirname) && fs.mkdirSync(dirname, { recursive: true });
 
-  const json = JSON.stringify(components, null, 2);
+  const json = {
+    namespace: Constants.NAMESPACE,
+    prefix: Constants.PREFIX,
+    components
+  }
 
-  fs.writeFileSync(target, json);
+  const content = JSON.stringify(json, null, 2);
+
+  fs.writeFileSync(target, content);
 }

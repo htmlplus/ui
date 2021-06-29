@@ -2257,7 +2257,7 @@ declare namespace LocalJSX {
         /**
           * Fired when the value changes.
          */
-        "onWowChange"?: (event: CustomEvent<any>) => void;
+        "onPlusChange"?: (event: CustomEvent<any>) => void;
         /**
           * Provides your own value.
          */
