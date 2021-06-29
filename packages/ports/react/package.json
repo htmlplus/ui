@@ -13,7 +13,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "npm run clean && node scripts/pre && rollup -c && node scripts/post",
+    "build": "npm run clean && node scripts/build.pre && rollup -c && node scripts/build.post",
     "clean": "rimraf dist"
   },
   "devDependencies": {

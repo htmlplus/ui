@@ -1,11 +1,14 @@
 const
   Case = require('case'),
   docs = require('@htmlplus/core/dist/docs.json'),
-  fs = require('fs');
+  fs = require('fs'),
+  path = require('path'),
+  root = path.resolve(process.cwd());
 
+// Replace JSX source
 (() => {
 
-  const source = './dist/vue/components.d.ts';
+  const source = path.join(root, 'dist/vue/components.d.ts');
 
   let content = fs.readFileSync(source, { encoding: 'utf8' });
 
@@ -16,9 +19,10 @@ const
   fs.writeFileSync(source, content);
 })();
 
+// Remove prefix from events
 (() => {
 
-  const source = './dist/types/components.d.ts';
+  const source = path.join(root, 'dist/types/components.d.ts');
 
   let content = fs.readFileSync(source, { encoding: 'utf8' });
 
@@ -27,11 +31,16 @@ const
   fs.writeFileSync(source, content);
 })();
 
+// Vetur tags
 (() => {
+
+  const source = path.join(root, 'dist/vetur/tags.json');
+
+  const dir = path.dirname(source);
 
   const tags = {}
 
-  docs.forEach((component) => {
+  docs.components.forEach((component) => {
 
     tags[component.tag] = {
       description: component.readme,
@@ -41,30 +50,35 @@ const
 
   const content = JSON.stringify(tags, null, 2);
 
-  if (!fs.existsSync('./dist/vetur')) fs.mkdirSync('./dist/vetur');
+  !fs.existsSync(dir) && fs.mkdirSync(dir, { recursive: true });
 
-  fs.writeFileSync('./dist/vetur/tags.json', content);
+  fs.writeFileSync(source, content);
 })();
 
+// Vetur attributes
 (() => {
+
+  const source = path.join(root, 'dist/vetur/attributes.json');
+
+  const dir = path.dirname(source);
 
   const attributes = {}
 
-  docs.forEach((component) => {
+  docs.components.forEach((component) => {
 
     component.properties.forEach((property) => {
 
       attributes[`${component.tag}/${Case.kebab(property.name)}`] = {
         type: property.type,
         description: property.description,
-        // options: property.values.filter(option => option.value !== undefined).map(option => option.value)
+        // TODO: options: property.values.filter(option => option.value !== undefined).map(option => option.value)
       }
     })
   })
 
   const content = JSON.stringify(attributes, null, 2);
 
-  if (!fs.existsSync('./dist/vetur')) fs.mkdirSync('./dist/vetur');
+  !fs.existsSync(dir) && fs.mkdirSync(dir, { recursive: true });
 
-  fs.writeFileSync('./dist/vetur/attributes.json', content);
+  fs.writeFileSync(source, content);
 })();
