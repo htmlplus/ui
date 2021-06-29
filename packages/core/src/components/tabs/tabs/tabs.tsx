@@ -39,7 +39,7 @@ export class Tabs implements ComponentInterface {
     bubbles: false,
     cancelable: true
   })
-  wowChange!: EventEmitter<any>;
+  plusChange!: EventEmitter<any>;
 
   @Observable()
   tunnel?: any;
@@ -64,7 +64,7 @@ export class Tabs implements ComponentInterface {
   @Action()
   change(value: any) {
 
-    const event = this.wowChange.emit(value);
+    const event = this.plusChange.emit(value);
 
     if (event.defaultPrevented) return;
 
