@@ -1,6 +1,7 @@
 const
   Case = require('case'),
-  fs = require('fs'),
+  fs = require('fs-extra'),
+  glob = require('glob'),
   path = require('path'),
   Constants = require('../src/configs/constants'),
   root = path.resolve(process.cwd());
@@ -14,72 +15,32 @@ const getTag = (input, key) => {
   return tag.text || true;
 }
 
-const events = (component) => {
-
-  return component.events.map((event) => {
-
-    const experimental = getTag(component, 'experimental');
-
-    return {
-      name: event.event,
-      cancelable: event.cancelable,
-      detail: event.detail,
-      experimental,
-      description: event.docs,
-    }
-  })
+const key = (component) => {
+  return component.tag.replace(/\w+-/, '');
 }
 
-const examples = (component) => {
+const title = (component) => {
+  return Case.capital(key(component));
+}
 
-  const items = [];
+const main = (component) => {
+  return !group(component) || group(component) === key(component);
+}
 
-  const dir = path.join(component.dirPath, 'examples');
+const group = (component) => {
+  return getTag(component, 'group');
+}
 
-  if (!fs.existsSync(dir)) return items;
+const development = (component) => {
+  return getTag(component, 'development');
+}
 
-  return fs.readdirSync(dir)
-    .filter((file) => file.endsWith('.md'))
-    .map((file) => {
+const experimental = (component) => {
+  return getTag(component, 'experimental');
+}
 
-      const item = {};
-
-      const regex = /```\w+\s\[\w+(:\w+)?\]\s[\S\s]*?```/g;
-
-      const filePath = path.join(dir, file);
-
-      const content = fs.readFileSync(filePath, 'utf8');
-
-      item.key = path.basename(filePath).replace('.md', '');
-
-      item.title = Case.capital(item.key);
-
-      item.readme = content.replace(regex, '').trim();
-
-      item.codes = (content.match(regex) || [])
-        .map((section) => {
-
-          try {
-
-            const lines = section.split('\n');
-
-            const key = ((lines[0].match(/\[\w+(:\w+)?\]/) || []).shift() || '').replace('[', '').replace(']', '');
-
-            const type = ((lines[0].match(/```\w+/) || []).pop() || '').replace('```', '');
-
-            const value = lines.slice(1, -1).join('\n');
-
-            return {
-              key,
-              type,
-              value
-            }
-          }
-          catch { }
-        });
-
-      return item;
-    })
+const deprecated = (component) => {
+  return getTag(component, 'deprecated');
 }
 
 const externals = (component) => {
@@ -89,44 +50,36 @@ const externals = (component) => {
   return fs.existsSync(dir);
 }
 
-const methods = (component) => {
+const lastModified = (component) => {
 
-  return component.methods.map((method) => {
+  if (!main(component)) return;
 
-    const parameters = [];
+  const sections = component.dirPath.split('/');
 
-    method.docsTags
-      .filter((tag) => tag.name === 'param')
-      .map((tag) => {
+  const indented = sections.pop() === sections.pop();
 
-        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
+  const files = glob.sync(
+    path.join(component.dirPath, indented ? '..' : '', '/**/*.*'),
+    { cwd: root }
+  );
 
-        parameters.push({
-          name,
-          description
-        })
-      })
+  console.log(1, key(component), files.length)
 
-    return {
-      name: method.name,
-      experimental: getTag(method, 'experimental'),
-      type: method.returns.type,
-      signature: method.signature,
-      description: method.docs,
-      parameters
-    }
-  });
+
+  return files.reduce((result, file) => {
+
+    const state = fs.statSync(file);
+
+    return result > state.mtime ? result : state.mtime
+  }, 0)
 }
 
-const parts = (component) => {
+const tags = (component) => {
 
-  return component.parts.map((part) => {
-
-    return {
-      name: part.name,
-      description: part.docs
-    }
-  })
+  return (getTag(component, 'tags') || '')
+    .split(',')
+    .map((tag) => tag.trim())
+    .filter((tag) => !!tag);
 }
 
 const properties = (component) => {
@@ -192,15 +145,6 @@ const properties = (component) => {
   })
 }
 
-const readme = (component) => {
-
-  try {
-
-    return fs.readFileSync(component.readmePath, 'utf8');
-  }
-  catch { }
-}
-
 const slots = (component) => {
 
   return component.slots.map((slot) => {
@@ -210,6 +154,22 @@ const slots = (component) => {
       description: slot.docs
     }
   });
+}
+
+const events = (component) => {
+
+  return component.events.map((event) => {
+
+    const experimental = getTag(component, 'experimental');
+
+    return {
+      name: event.event,
+      cancelable: event.cancelable,
+      detail: event.detail,
+      experimental,
+      description: event.docs,
+    }
+  })
 }
 
 const styles = (component, buildCtx) => {
@@ -254,12 +214,105 @@ const styles = (component, buildCtx) => {
   return styles;
 }
 
-const tags = (component) => {
+const parts = (component) => {
 
-  return (getTag(component, 'tags') || '')
-    .split(',')
-    .map((tag) => tag.trim())
-    .filter((tag) => !!tag);
+  return component.parts.map((part) => {
+
+    return {
+      name: part.name,
+      description: part.docs
+    }
+  })
+}
+
+const methods = (component) => {
+
+  return component.methods.map((method) => {
+
+    const parameters = [];
+
+    method.docsTags
+      .filter((tag) => tag.name === 'param')
+      .map((tag) => {
+
+        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
+
+        parameters.push({
+          name,
+          description
+        })
+      })
+
+    return {
+      name: method.name,
+      experimental: getTag(method, 'experimental'),
+      type: method.returns.type,
+      signature: method.signature,
+      description: method.docs,
+      parameters
+    }
+  });
+}
+
+const examples = (component) => {
+
+  const items = [];
+
+  const dir = path.join(component.dirPath, 'examples');
+
+  if (!fs.existsSync(dir)) return items;
+
+  return fs.readdirSync(dir)
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => {
+
+      const item = {};
+
+      const regex = /```\w+\s\[\w+(:\w+)?\]\s[\S\s]*?```/g;
+
+      const filePath = path.join(dir, file);
+
+      const content = fs.readFileSync(filePath, 'utf8');
+
+      item.key = path.basename(filePath).replace('.md', '');
+
+      item.title = Case.capital(item.key);
+
+      item.readme = content.replace(regex, '').trim();
+
+      item.codes = (content.match(regex) || [])
+        .map((section) => {
+
+          try {
+
+            const lines = section.split('\n');
+
+            const key = ((lines[0].match(/\[\w+(:\w+)?\]/) || []).shift() || '').replace('[', '').replace(']', '');
+
+            const type = ((lines[0].match(/```\w+/) || []).pop() || '').replace('```', '');
+
+            const value = lines.slice(1, -1).join('\n');
+
+            return {
+              key,
+              type,
+              value
+            }
+          }
+          catch { }
+        });
+
+      return item;
+    })
+}
+
+const readme = (component) => {
+
+  try {
+
+    return fs.readFileSync(component.readmePath, 'utf8');
+  }
+  catch { }
 }
 
 module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
@@ -270,29 +323,26 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
 
     const component = input.components[i];
 
-    const key = component.tag.replace(/\w+-/, '');
-
-    const group = getTag(component, 'group');
-
     components.push({
-      key,
-      title: Case.capital(key),
+      key: key(component),
       tag: component.tag,
+      title: title(component),
+      main: main(component),
+      group: group(component),
+      development: development(component),
+      experimental: experimental(component),
+      deprecated: deprecated(component),
       externals: externals(component),
-      deprecated: getTag(component, 'deprecated'),
-      development: getTag(component, 'development'),
-      experimental: getTag(component, 'experimental'),
-      group,
-      main: !group || group === key,
-      events: events(component),
-      examples: examples(component),
-      methods: methods(component),
-      parts: parts(component),
+      lastModified: lastModified(component),
+      tags: tags(component),
       properties: properties(component),
-      readme: readme(component),
       slots: slots(component),
+      events: events(component),
       styles: styles(component, buildCtx),
-      tags: tags(component)
+      parts: parts(component),
+      methods: methods(component),
+      examples: examples(component),
+      readme: readme(component),
     })
   }
 

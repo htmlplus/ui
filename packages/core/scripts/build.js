@@ -2,7 +2,6 @@ const
   fs = require('fs-extra'),
   glob = require('glob'),
   path = require('path'),
-  docs = require('../dist/docs.json'),
   root = path.resolve(process.cwd());
 
 // Alias
@@ -81,32 +80,4 @@ const
         path.join(root, destination, componentName)
       );
     })
-})();
-
-// Extra
-(() => {
-  
-  for (let i = 0; i < docs.components.length; i++) {
-
-    const component = docs.components[i];
-
-    if (!component.main) continue;
-
-    const files = glob.sync(
-      path.join(root, `src/components/${component.key}/**/*.*`),
-      { cwd: root }
-    );
-
-    component.lastModified = files.reduce((result, file) => {
-
-      const state = fs.statSync(file);
-
-      return result > state.mtime ? result : state.mtime
-    }, 0)
-  }
-
-  fs.writeFileSync(
-    path.join(root, 'dist/docs.json'),
-    JSON.stringify(docs, null, 2)
-  )
 })();
