@@ -1,8 +1,8 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import * as Constants from './src/configs/constants';
-import { docs } from './scripts/docs';
+import { docs } from './scripts/build.docs';
 import { style } from './scripts/style';
+import * as Constants from './src/configs/constants';
 
 export const config: Config = {
   namespace: Constants.NAMESPACE,
