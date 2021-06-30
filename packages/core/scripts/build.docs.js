@@ -79,6 +79,33 @@ const tags = (component) => {
     .filter((tag) => !!tag);
 }
 
+const description = (component) => {
+
+  const content = readme(component) || '';
+
+  if (!content.startsWith('# ')) return '';
+
+  const sections = content.split('\n');
+
+  for (let i = 1; i < sections.length; i++) {
+
+    const section = sections[i].trim();
+
+    if (!section) continue;
+
+    return section;
+  }
+
+  return '';
+}
+
+const readme = (component) => {
+  try {
+    return fs.readFileSync(component.readmePath, 'utf8');
+  }
+  catch { }
+}
+
 const properties = (component) => {
 
   return component.props.map((property) => {
@@ -303,15 +330,6 @@ const examples = (component) => {
     })
 }
 
-const readme = (component) => {
-
-  try {
-
-    return fs.readFileSync(component.readmePath, 'utf8');
-  }
-  catch { }
-}
-
 module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
 
   const components = [];
@@ -332,6 +350,8 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
       externals: externals(component),
       lastModified: lastModified(component),
       tags: tags(component),
+      description: description(component),
+      readme: readme(component),
       properties: properties(component),
       slots: slots(component),
       events: events(component),
@@ -339,7 +359,6 @@ module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
       parts: parts(component),
       methods: methods(component),
       examples: examples(component),
-      readme: readme(component),
     })
   }
 

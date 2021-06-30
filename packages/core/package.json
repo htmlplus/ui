@@ -18,7 +18,7 @@
   },
   "scripts": {
     "clean": "rimraf dist www",
-    "build": "npm run clean && stencil build && node scripts/build",
+    "build": "npm run clean && stencil build && node scripts/build.post",
     "start": "npm run clean && stencil build --dev --watch --serve",
     "test": "stencil test --e2e --no-cache --verbose",
     "test:watch": "stencil test --e2e --no-cache --max-workers=2 --watch",
