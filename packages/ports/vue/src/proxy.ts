@@ -1,4 +1,4 @@
-import { VNode, defineComponent, h, ref, Ref } from 'vue';
+import { Ref, VNode, defineComponent, h, ref } from 'vue';
 
 const UPDATE_VALUE_EVENT = 'update:modelValue';
 const MODEL_VALUE = 'modelValue';
@@ -29,8 +29,8 @@ const getElementClasses = (
 export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
 
   const {
-    props = [],
-    events = [],
+    props,
+    events,
     modelProp,
     modelUpdateEvent,
     externalModelUpdateEvent
@@ -40,30 +40,43 @@ export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
 
     const { attrs, slots, emit } = context;
 
-    let modelPropValue = (props as any)[modelProp as any]; // TODO
     const containerRef = ref<HTMLElement>();
-    const classes = new Set(getComponentClasses(attrs.class as any)); // TODO
+
+    // TODO
+    let modelPropValue = (props as any)[modelProp as any];
+
+    // TODO
+    const classes = new Set(getComponentClasses(attrs.class as any));
+
     const onVnodeBeforeMount = (vnode: VNode) => {
+
       // Add a listener to tell Vue to update the v-model
-      if (vnode.el) {
-        const eventsNames = Array.isArray(modelUpdateEvent) ? modelUpdateEvent : [modelUpdateEvent];
-        eventsNames.forEach((eventName: any) => { // TODO
-          // TODO
-          (vnode as any).el.addEventListener(eventName.toLowerCase(), (e: Event) => {
-            modelPropValue = (e?.target as any)[modelProp as any]; // TODO
+      if (!vnode.el) return;
+
+      [modelUpdateEvent]
+        .flat(1)
+        .forEach((eventName) => {
+
+          if (!eventName) return;
+
+          vnode.el?.addEventListener(eventName.toLowerCase(), (event: Event) => {
+
+            // TODO
+            modelPropValue = (event?.target as any)[modelProp as any];
+
             emit(UPDATE_VALUE_EVENT, modelPropValue);
 
             // TODO
             // if (externalModelUpdateEvent)
-            emit(externalModelUpdateEvent as any, e);
+            emit(externalModelUpdateEvent as any, event);
           });
         });
-      }
     };
 
     return () => {
 
-      modelPropValue = (props as any)[modelProp as any]; // TODO
+      // TODO
+      modelPropValue = (props as any)[modelProp as any];
 
       // TODO
       getComponentClasses(attrs.class as any).forEach((value) => classes.add(value));
@@ -122,3 +135,36 @@ export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
 //   ],
 //   "externalModelUpdateEvent": "ionChange"
 // });
+
+// v-model with custom components
+// <custom-text-input v-model="value" />
+// <!-- IS THE SAME AS -->
+// <custom-text-input 
+//    :modelValue="value"
+//    @update:modelValue="value = $event"
+// />
+
+// <input 
+//   type='text'
+//   placeholder='Input'
+//   :value='modelValue'
+//   @input='$emit("update:modelValue", $event.target.value)'
+// />
+
+// <input v-model="email" />
+// v-model translates to this:
+// <input :value="email" @input="e => email = e.target.value" />
+
+
+// export default {
+//   prop: ['hidden'],
+//   model: {
+//       prop: 'hidden',
+//       event: 'blur'
+//   }
+//   methods: {
+//       handleInput (value) {
+//           this.$emit('blur', value)
+//       }
+//   }
+// }

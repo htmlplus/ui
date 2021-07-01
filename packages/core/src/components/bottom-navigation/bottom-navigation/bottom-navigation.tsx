@@ -72,7 +72,7 @@ export class BottomNavigation implements ComponentInterface {
     bubbles: false,
     cancelable: true
   })
-  wowChange!: EventEmitter<any>;
+  plusChange!: EventEmitter<any>;
 
   @GlobalConfig('bottomNavigation')
   config?;
@@ -109,9 +109,9 @@ export class BottomNavigation implements ComponentInterface {
   }
 
   @Action()
-  change(value: any) {
+  request(value: any) {
 
-    const event = this.wowChange.emit(value);
+    const event = this.plusChange.emit(value);
 
     if (event.defaultPrevented) return;
 

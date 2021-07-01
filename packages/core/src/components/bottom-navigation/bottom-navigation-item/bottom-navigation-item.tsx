@@ -30,7 +30,7 @@ export class BottomNavigationItem implements ComponentInterface {
   config?;
 
   @Inject()
-  change?: Function = () => console.log('TODO: can not use out of bottom navigation');
+  request?: Function = () => console.log('TODO: can not use out of bottom navigation');
 
   @Inject()
   @State()
@@ -70,7 +70,7 @@ export class BottomNavigationItem implements ComponentInterface {
 
     if (this.disabled) return;
 
-    this.change(this.key);
+    this.request(this.key);
   }
 
   /**

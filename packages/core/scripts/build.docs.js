@@ -6,13 +6,30 @@ const
   Constants = require('../src/configs/constants'),
   root = path.resolve(process.cwd());
 
-const getTag = (input, key) => {
+const parseTag = (input, key, array) => {
 
-  const tag = input.docsTags.find((item) => item.name === key);
+  const tags = input.docsTags.filter((tag) => tag.name === key);
 
-  if (!tag) return false;
+  if (array) {
 
-  return tag.text || true;
+    return tags.map((tag) => {
+
+      const [value, description] = tag.text.split('-').map((section) => section.trim());
+
+      return {
+        value,
+        description
+      }
+    })
+  }
+  else {
+
+    const [tag] = tags;
+
+    if (!tag) return false;
+
+    return tag.text || true;
+  }
 }
 
 const key = (component) => {
@@ -28,19 +45,19 @@ const main = (component) => {
 }
 
 const group = (component) => {
-  return getTag(component, 'group');
+  return parseTag(component, 'group');
 }
 
 const development = (component) => {
-  return getTag(component, 'development');
+  return parseTag(component, 'development');
 }
 
 const experimental = (component) => {
-  return getTag(component, 'experimental');
+  return parseTag(component, 'experimental');
 }
 
 const deprecated = (component) => {
-  return getTag(component, 'deprecated');
+  return parseTag(component, 'deprecated');
 }
 
 const externals = (component) => {
@@ -73,7 +90,7 @@ const lastModified = (component) => {
 
 const tags = (component) => {
 
-  return (getTag(component, 'tags') || '')
+  return (parseTag(component, 'tags') || '')
     .split(',')
     .map((tag) => tag.trim())
     .filter((tag) => !!tag);
@@ -110,40 +127,37 @@ const properties = (component) => {
 
   return component.props.map((property) => {
 
-    let values = [];
+    const tags = parseTag(property, 'value', true);
 
-    const tags = property.docsTags;
-
-    property.values.forEach((value) => {
-
-      if (value.type !== 'boolean') return values.push(value);
-
-      values.push(
-        {
-          value: true,
-          type: 'boolean'
-        },
-        {
-          value: false,
-          type: 'boolean'
-        }
-      )
-    });
-
-    values = values
+    // TODO
+    const values = property.values
       .map((value) => {
 
-        const index = tags.findIndex((tag) => tag.name === 'value' && tag.text.startsWith(`${value.value}`));
+        if (value.type === 'boolean') {
 
-        if (index === -1) return value;
+          const index = tags.findIndex((tag) => tag.value === 'false' || tag.value === 'true');
 
-        value.index = index;
+          if (index === -1) return value;
 
-        const tag = tags[index];
+          value.index = index;
 
-        const description = tag.text.split('-').pop().trim();
+          value.description = {
+            false: (tags.find((tag) => tag.value === 'false') || {}).description || '',
+            true: (tags.find((tag) => tag.value === 'true') || {}).description || '',
+          };
+        }
+        else {
 
-        value.description = description;
+          const index = tags.findIndex((tag) => tag.value === value.value);
+
+          if (index === -1) return value;
+
+          value.index = index;
+
+          const tag = tags[index];
+
+          value.description = tag.description;
+        }
 
         return value;
       })
@@ -156,12 +170,13 @@ const properties = (component) => {
       });
 
     return {
-      name: property.attr || property.name, // TODO
+      name: property.name,
       attribute: property.attr,
+      default: property.default,
       reflect: property.reflectToAttr,
       required: property.required,
       type: property.type,
-      experimental: getTag(property, 'experimental'),
+      experimental: parseTag(property, 'experimental'),
       description: property.docs,
       default: property.default,
       values
@@ -184,7 +199,7 @@ const events = (component) => {
 
   return component.events.map((event) => {
 
-    const experimental = getTag(component, 'experimental');
+    const experimental = parseTag(component, 'experimental');
 
     return {
       name: event.event,
@@ -253,23 +268,15 @@ const methods = (component) => {
 
   return component.methods.map((method) => {
 
-    const parameters = [];
-
-    method.docsTags
-      .filter((tag) => tag.name === 'param')
-      .map((tag) => {
-
-        const [name, description] = (tag.text || '').split('-').map((section) => section.trim());
-
-        parameters.push({
-          name,
-          description
-        })
-      })
+    const parameters = parseTag(method, 'param', true)
+      .map((tag) => ({
+        name: tag.value,
+        description: tag.description,
+      }))
 
     return {
       name: method.name,
-      experimental: getTag(method, 'experimental'),
+      experimental: parseTag(method, 'experimental'),
       type: method.returns.type,
       signature: method.signature,
       description: method.docs,

@@ -1390,7 +1390,7 @@ declare namespace LocalJSX {
         /**
           * TODO
          */
-        "onWowChange"?: (event: CustomEvent<any>) => void;
+        "onPlusChange"?: (event: CustomEvent<any>) => void;
         /**
           * TODO: https://vuetifyjs.com/en/components/bottom-navigation/#scroll-threshold
          */
