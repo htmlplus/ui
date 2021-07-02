@@ -3,7 +3,7 @@ import debug from 'debug';
 import * as Constants from '@app/constants';
 
 // TODO
-debug.enable('*');
+// debug.enable('*');
 
 export function Debug(namespace: string) {
 

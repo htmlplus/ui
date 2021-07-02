@@ -37,7 +37,7 @@ export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
   } = options || {};
 
   const VueComponent = defineComponent<PropType & InputPropsType>((props, context) => {
-
+console.log(1);
     const { attrs, slots, emit } = context;
 
     const containerRef = ref<HTMLElement>();
@@ -74,7 +74,7 @@ export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
     };
 
     return () => {
-
+      console.log(2112222);
       // TODO
       modelPropValue = (props as any)[modelProp as any];
 

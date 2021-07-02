@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 
-import { applyPolyfills, defineCustomElements } from '@htmlplus/vue/loader';
+import { applyPolyfills, defineCustomElements } from '@htmlplus/core/loader';
 
 applyPolyfills().then(() => defineCustomElements());
 
