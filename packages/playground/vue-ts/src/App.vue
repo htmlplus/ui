@@ -3,7 +3,7 @@
     <div class="center">
       <DialogToggler connector="dialog-animation"> Open </DialogToggler>
     </div>
-    <plus-dialog animation="fade" connector="dialog-animation">
+    <plus-dialog animation="fade" connector="dialog-animation" @plus-open="op">
       <plus-dialog-content>
         <plus-dialog-header> Dialog Title </plus-dialog-header>
         <plus-dialog-body>
@@ -38,7 +38,6 @@
 </template>
 
 <script lang="ts">
-
 import { defineComponent } from "vue";
 import {
   Dialog,
@@ -66,6 +65,9 @@ export default defineComponent({
   methods: {
     increase() {
       this.count++;
+    },
+    op() {
+      alert(123);
     },
   },
 });
