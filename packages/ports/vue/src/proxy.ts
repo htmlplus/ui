@@ -26,7 +26,7 @@ const getElementClasses = (
     .filter((c: string, i, self) => !componentClasses.has(c) && self.indexOf(c) === i);
 };
 
-export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
+export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsType) => {
 
   const {
     props = [],

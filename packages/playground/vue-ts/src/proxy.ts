@@ -15,99 +15,103 @@ export interface InputPropsType extends Object {
   modelValue: string | boolean;
 }
 
-const getComponentClasses = (classes: string) => classes?.split(' ') || [];
+const getClasses = (classes: string | unknown) => {
 
-const getElementClasses = (
+  if (typeof classes !== 'string') return [];
+
+  return classes.split(' ') || [];
+};
+
+const mergeClasses = (
   ref: Ref<HTMLElement | undefined>,
   componentClasses: Set<string>,
   defaultClasses: string[] = []
 ) => {
   return [...Array.from(ref.value?.classList || []), ...defaultClasses]
-    .filter((c: string, i, self) => !componentClasses.has(c) && self.indexOf(c) === i);
+    .filter((item, index, items) => !componentClasses.has(item) && items.indexOf(item) === index);
 };
 
-export const proxy = <PropType>(tagName: string, options?: OptionsType) => {
+export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsType) => {
 
   const {
     props = [],
     events = [],
-    modelProp,
-    modelUpdateEvent,
-    externalModelUpdateEvent
+    // modelProp,
+    // modelUpdateEvent,
+    // externalModelUpdateEvent
   } = options || {};
 
   const VueComponent = defineComponent<PropType & InputPropsType>((props, context) => {
-console.log(1);
-    const { attrs, slots, emit } = context;
 
-    const containerRef = ref<HTMLElement>();
+    console.log(1);
 
-    // TODO
-    let modelPropValue = (props as any)[modelProp as any];
+    const { attrs, emit, slots } = context;
 
-    // TODO
-    const classes = new Set(getComponentClasses(attrs.class as any));
+    const element = ref<HTMLElement>();
 
-    const onVnodeBeforeMount = (vnode: VNode) => {
+    const classes = new Set(getClasses(attrs.class));
 
-      // Add a listener to tell Vue to update the v-model
-      if (!vnode.el) return;
+    // // TODO
+    // let modelPropValue = (props as any)[modelProp as any];
 
-      [modelUpdateEvent]
-        .flat(1)
-        .forEach((eventName) => {
+    // const onVnodeBeforeMount = (vnode: VNode) => {
 
-          if (!eventName) return;
+    //   if (!vnode.el) return;
 
-          vnode.el?.addEventListener(eventName.toLowerCase(), (event: Event) => {
+    //   [modelUpdateEvent]
+    //     .flat(1)
+    //     .forEach((eventName) => {
 
-            // TODO
-            modelPropValue = (event?.target as any)[modelProp as any];
+    //       if (!eventName) return;
 
-            emit(UPDATE_VALUE_EVENT, modelPropValue);
+    //       vnode.el?.addEventListener(eventName.toLowerCase(), (event: Event) => {
 
-            // TODO
-            // if (externalModelUpdateEvent)
-            emit(externalModelUpdateEvent as any, event);
-          });
-        });
-    };
+    //         // TODO
+    //         modelPropValue = (event?.target as any)[modelProp as any];
+
+    //         emit(UPDATE_VALUE_EVENT, modelPropValue);
+
+    //         // TODO
+    //         // if (externalModelUpdateEvent)
+    //         emit(externalModelUpdateEvent as any, event);
+    //       });
+    //     });
+    // };
 
     return () => {
+
       console.log(2112222);
-      // TODO
-      modelPropValue = (props as any)[modelProp as any];
 
       // TODO
-      getComponentClasses(attrs.class as any).forEach((value) => classes.add(value));
+      // modelPropValue = (props as any)[modelProp as any];
 
-      let propsToAdd = {
+      // TODO
+      getClasses(attrs.class).forEach(classes.add);
+
+      const newProps = {
         ...props,
-        ref: containerRef,
-        class: getElementClasses(containerRef, classes),
+        class: mergeClasses(element, classes),
+        ref: element,
 
         // TODO
-        onVnodeBeforeMount: (modelUpdateEvent && externalModelUpdateEvent) ? onVnodeBeforeMount : undefined
+        // onVnodeBeforeMount: (modelUpdateEvent && externalModelUpdateEvent) ? onVnodeBeforeMount : undefined
         // onVnodeBeforeMount: (modelUpdateEvent) ? onVnodeBeforeMount : undefined
       };
 
-      if (modelProp) {
-        propsToAdd = {
-          ...propsToAdd,
-          [modelProp]: props.hasOwnProperty(MODEL_VALUE) && props[MODEL_VALUE] !== undefined ? props.modelValue : modelPropValue
-        }
-      }
+      // if (modelProp) {
+      //   newProps[modelProp] = props.hasOwnProperty(MODEL_VALUE) && props[MODEL_VALUE] !== undefined ? props.modelValue : modelPropValue;
+      // }
 
-      return h(tagName, propsToAdd, slots.default && slots.default());
+      return h(tagName, newProps, slots.default && slots.default());
     }
-  });
+  })
 
   VueComponent.props = [...props, ...events];
 
-  if (modelProp) {
-    VueComponent.props.push(MODEL_VALUE);
-    VueComponent.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent];
-  }
+  // if (modelProp) {
+  //   VueComponent.props.push(MODEL_VALUE);
+  //   VueComponent.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent];
+  // }
 
   VueComponent['displayName'] = tagName;
 
@@ -117,15 +121,7 @@ console.log(1);
 // TODO
 // export const IonCheckbox = /*@__PURE__*/ defineContainer<JSX.IonCheckbox>('ion-checkbox', [
 //   'color',
-//   'name',
-//   'checked',
-//   'indeterminate',
-//   'disabled',
-//   'value',
-//   'ionChange',
-//   'ionFocus',
-//   'ionBlur',
-//   'ionStyle'
+//   ...
 // ],
 // {
 //   "modelProp": "checked",
@@ -152,9 +148,7 @@ console.log(1);
 // />
 
 // <input v-model="email" />
-// v-model translates to this:
 // <input :value="email" @input="e => email = e.target.value" />
-
 
 // export default {
 //   prop: ['hidden'],
