@@ -1,6 +1,6 @@
 const
   Case = require('case'),
-  docs = require('@htmlplus/core/dist/docs.json'),
+  docs = require('@htmlplus/core/dist/json/docs.json'),
   fs = require('fs');
 
 const groupBy = (array, key) => array.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {});
@@ -11,7 +11,7 @@ const lines = [
   '/* eslint-disable */',
   '/* tslint:disable */',
   '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy.old\';',
+  'import { proxy } from \'./proxy\';',
   '',
   'import type { JSX } from \'@htmlplus/core\';',
   '',

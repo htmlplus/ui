@@ -1,6 +1,6 @@
 const
   Case = require('case'),
-  docs = require('@htmlplus/core/dist/docs.json'),
+  docs = require('@htmlplus/core/dist/json/docs.json'),
   fs = require('fs');
 
 const groupBy = (array, key) => array.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {});
@@ -27,9 +27,6 @@ for (let i = 0; i < docs.components.length; i++) {
   const hasChildren = component.group && children && children.length;
 
   lines.push('');
-  lines.push('/*');
-  lines.push(` * ${component.title}`);
-  lines.push(' */');
 
   [component, ...children].forEach((child, index) => {
 

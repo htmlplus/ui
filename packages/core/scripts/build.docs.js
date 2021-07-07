@@ -337,51 +337,105 @@ const examples = (component) => {
     })
 }
 
-module.exports.docs = (dest) => (config, compilerCtx, buildCtx, input) => {
+module.exports.docs = (options) => ({
+  type: 'custom',
+  name: 'custom-docs',
+  generator: (config, compilerCtx, buildCtx, input) => {
 
-  const components = [];
+    const components = [];
 
-  for (let i = 0; i < input.components.length; i++) {
+    for (let i = 0; i < input.components.length; i++) {
 
-    const component = input.components[i];
+      const component = input.components[i];
 
-    components.push({
-      key: key(component),
-      tag: component.tag,
-      title: title(component),
-      main: main(component),
-      group: group(component),
-      development: development(component),
-      experimental: experimental(component),
-      deprecated: deprecated(component),
-      externals: externals(component),
-      lastModified: lastModified(component),
-      tags: tags(component),
-      description: description(component),
-      readme: readme(component),
-      properties: properties(component),
-      slots: slots(component),
-      events: events(component),
-      styles: styles(component, buildCtx),
-      parts: parts(component),
-      methods: methods(component),
-      examples: examples(component),
-    })
+      components.push({
+        key: key(component),
+        tag: component.tag,
+        title: title(component),
+        main: main(component),
+        group: group(component),
+        development: development(component),
+        experimental: experimental(component),
+        deprecated: deprecated(component),
+        externals: externals(component),
+        lastModified: lastModified(component),
+        tags: tags(component),
+        description: description(component),
+        readme: readme(component),
+        properties: properties(component),
+        slots: slots(component),
+        events: events(component),
+        styles: styles(component, buildCtx),
+        parts: parts(component),
+        methods: methods(component),
+        examples: examples(component),
+      })
+    }
+
+    (() => {
+
+      const target = path.join(root, options.docs);
+
+      const dirname = path.dirname(target);
+
+      !fs.existsSync(dirname) && fs.mkdirSync(dirname, { recursive: true });
+
+      const json = {
+        namespace: Constants.NAMESPACE,
+        prefix: Constants.PREFIX,
+        components
+      }
+
+      const content = JSON.stringify(json, null, 2);
+
+      fs.writeFileSync(target, content);
+    })();
+
+    (() => {
+
+      const target = path.join(root, options.vscode);
+
+      const dirname = path.dirname(target);
+
+      !fs.existsSync(dirname) && fs.mkdirSync(dirname, { recursive: true });
+
+      const json = {
+        'version': 1.1, // TODO
+        'tags': components.map((component) => ({
+          'name': component.key,
+          'description': {
+            'kind': 'markdown',
+            'value': component.description
+          },
+          'attributes': component.properties.map((property) => {
+
+            const result = {
+              'name': property.attribute,
+              'description': property.description,
+            };
+
+            const values = property
+              .values
+              .filter((value) => value.value)
+              .map((value) => ({ 'name': value.value }));
+
+            if (values.length) result.values = values;
+
+            return result;
+          }),
+          'references': [
+            {
+              'name': 'Source code',
+              // TODO
+              'url': `https://github.com/htmlplus/core/tree/main/packages/core/src/components/${component.key}.tsx`
+            }
+          ],
+        }))
+      }
+
+      const content = JSON.stringify(json, null, 2);
+
+      fs.writeFileSync(target, content);
+    })();
   }
-
-  const target = path.join(root, dest);
-
-  const dirname = path.dirname(target);
-
-  !fs.existsSync(dirname) && fs.mkdirSync(dirname, { recursive: true });
-
-  const json = {
-    namespace: Constants.NAMESPACE,
-    prefix: Constants.PREFIX,
-    components
-  }
-
-  const content = JSON.stringify(json, null, 2);
-
-  fs.writeFileSync(target, content);
-}
+})

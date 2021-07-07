@@ -10,6 +10,10 @@ export const config: Config = {
     port: 3000
   },
   outputTargets: [
+    docs({
+      docs: 'dist/json/docs.json',
+      vscode: 'dist/json/html.html-data.json',
+    }) as any,
     {
       type: 'www',
       serviceWorker: null
@@ -20,11 +24,6 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements-bundle'
-    },
-    {
-      type: 'custom',
-      name: 'custom-docs',
-      generator: docs('./dist/docs.json') as any
     },
   ],
   plugins: [
