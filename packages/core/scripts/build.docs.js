@@ -67,17 +67,19 @@ const externals = (component) => {
   return fs.existsSync(dir);
 }
 
+const indented = (component) => {
+  return component.dirPath.endsWith(`/${group(component)}/${key(component)}`);
+}
+
 const lastModified = (component) => {
 
   if (!main(component)) return;
 
-  const sections = component.dirPath.split('/');
-
-  const indented = sections.pop() === sections.pop();
-
   const files = glob.sync(
-    path.join(component.dirPath, indented ? '..' : '', '/**/*.*'),
-    { cwd: root }
+    path.join(component.dirPath, indented(component) ? '..' : '', '/**/*.*'),
+    {
+      cwd: root
+    }
   );
 
   return files.reduce((result, file) => {
@@ -94,6 +96,10 @@ const tags = (component) => {
     .split(',')
     .map((tag) => tag.trim())
     .filter((tag) => !!tag);
+}
+
+const source = (component) => {
+  return `${indented(component) ? `${group(component)}/` : ''}${key(component)}`;
 }
 
 const description = (component) => {
@@ -360,6 +366,7 @@ module.exports.docs = (options) => ({
         externals: externals(component),
         lastModified: lastModified(component),
         tags: tags(component),
+        source: source(component),
         description: description(component),
         readme: readme(component),
         properties: properties(component),
@@ -426,8 +433,7 @@ module.exports.docs = (options) => ({
           'references': [
             {
               'name': 'Source code',
-              // TODO
-              'url': `https://github.com/htmlplus/core/tree/main/packages/core/src/components/${component.key}.tsx`
+              'url': `https://github.com/htmlplus/core/tree/main/packages/core/src/components/${component.source}/${component.key}.tsx`
             }
           ],
         }))

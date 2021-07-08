@@ -1,6 +1,6 @@
 const
   Case = require('case'),
-  docs = require('@htmlplus/core/dist/docs.json'),
+  docs = require('@htmlplus/core/dist/json/docs.json'),
   fs = require('fs'),
   path = require('path'),
   pkg = require('../package.json');
@@ -82,6 +82,7 @@ const
   fs.writeFileSync(source, content);
 })();
 
+// web-types
 (() => {
 
   const components = [];
@@ -132,14 +133,12 @@ const
       })
     }
 
-    const indented = component.main && component.group && component.group === component.key;
-
     components.push({
       'name': Case.pascal(component.tag),
       'doc-url': `https://htmlplus.io/component/${component.key}`,
       'description': component.description,
       'source': {
-        'module': `@htmlplus/vue/dist/types/components${indented ? `/${component.key}` : ''}/${component.key}/${component.key}.d.ts`,
+        'module': `@htmlplus/vue/dist/types/components/${component.source}/${component.key}.d.ts`, // TODO
         'symbol': Case.pascal(component.key),
       },
       'attributes': attributes,
@@ -164,5 +163,5 @@ const
 
   const content = JSON.stringify(webTypes, null, 2);
 
-  fs.writeFileSync('dist/web-types.json', content);
+  fs.writeFileSync('dist/json/web-types.json', content);
 })();
