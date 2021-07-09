@@ -9,7 +9,7 @@ plus-grid div {
 ```
 
 ```html [template]
-<plus-grid justify="center">
+<plus-grid justify-content="center">
   <plus-grid-item xs="2">
     <div>
       Item

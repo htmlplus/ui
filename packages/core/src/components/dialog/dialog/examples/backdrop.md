@@ -11,7 +11,7 @@
       Open
     </plus-dialog-toggler>
   </div>
-  <plus-dialog animation="fade" connector="dialog-backdrop" backdrop="false">
+  <plus-dialog animation="fade" connector="dialog-backdrop" backdrop={false}>
     <plus-dialog-content>
       <plus-dialog-header>
         Dialog Title

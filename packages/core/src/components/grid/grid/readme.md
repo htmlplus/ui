@@ -33,8 +33,8 @@ It's the most flexible and powerful grid system which you need to build simple t
 ### Align Self
 <Example value="align-self" />
 
-### Justify
-<Example value="justify" />
+### Justify Content
+<Example value="justify-content" />
 
 ### Reverse
 <Example value="reverse" />

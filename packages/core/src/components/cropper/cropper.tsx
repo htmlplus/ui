@@ -2,6 +2,7 @@ import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Meth
 import CropperCore from 'cropperjs';
 import { Bind, GlobalConfig, Helper } from '@app/utils';
 import {
+  CropperAspectRatio,
   CropperValue,
   CropperMode,
   CropperResizer,
@@ -32,7 +33,7 @@ export class Cropper implements ComponentInterface {
    * Defines the initial aspect ratio of the viewport.
    */
   @Prop()
-  aspectRatio?: number;
+  aspectRatio?: CropperAspectRatio;
 
   /**
    * Shows the black modal above the image and under the viewport.
@@ -212,18 +213,17 @@ export class Cropper implements ComponentInterface {
 
     const aspectRatio = (() => {
 
-      if (typeof this.aspectRatio === 'undefined') return NaN;
+      if (typeof this.aspectRatio === 'number') return this.aspectRatio;
 
-      if (typeof this.aspectRatio === 'string') {
+      let [valueA, valueB] = `${this.aspectRatio}`
+        .split('/')
+        .map((item: any) => isNaN(item) ? NaN : parseFloat(item));
 
-        const [valueA, valueB] = `${this.aspectRatio}`.split('/').map((item) => parseFloat(item));
+      if (valueB === undefined) valueB = 1;
 
-        const value = valueA / (valueB || 1);
+      if (!isNaN(valueA + valueB)) return valueA / valueB;
 
-        return value;
-      }
-
-      return this.aspectRatio ?? NaN;
+      return NaN;
     })();
 
     const responsive = (() => {

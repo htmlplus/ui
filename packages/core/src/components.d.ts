@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
 import { CardElevation } from "./components/card/card/card.types";
-import { CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
+import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from "./components/dialog/dialog/dialog.types";
 import { DividerSize, DividerType } from "./components/divider/divider.types";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerTemporary } from "./components/drawer/drawer/drawer.types";
@@ -133,7 +133,7 @@ export namespace Components {
         /**
           * Defines the initial aspect ratio of the viewport.
          */
-        "aspectRatio"?: number;
+        "aspectRatio"?: CropperAspectRatio;
         /**
           * Shows the black modal above the image and under the viewport.
          */
@@ -1482,7 +1482,7 @@ declare namespace LocalJSX {
         /**
           * Defines the initial aspect ratio of the viewport.
          */
-        "aspectRatio"?: number;
+        "aspectRatio"?: CropperAspectRatio;
         /**
           * Shows the black modal above the image and under the viewport.
          */

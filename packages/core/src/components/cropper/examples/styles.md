@@ -70,8 +70,8 @@ plus-cropper.style-6 {
   <plus-grid-item xs="12" sm="6">
     <plus-cropper
       class="style-3"
-      guides="true"
-      indicator="true"
+      guides
+      indicator
       mode="crop"
       resizer="main"
       resizer-shape="circle"
@@ -82,7 +82,7 @@ plus-cropper.style-6 {
   <plus-grid-item xs="12" sm="6">
     <plus-cropper
       class="style-4"
-      guides="true"
+      guides
       mode="crop"
       resizer="edge"
       resizer-shape="line"
@@ -92,8 +92,8 @@ plus-cropper.style-6 {
   <plus-grid-item xs="12" sm="7">
     <plus-cropper
       class="style-5"
-      backdrop="true"
-      background="true"
+      backdrop
+      background
       mode="crop"
       resizer="edge"
       resizer-shape="line"

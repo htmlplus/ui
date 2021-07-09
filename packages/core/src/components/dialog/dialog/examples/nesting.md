@@ -77,7 +77,7 @@ plus-grid-item {
       </plus-dialog-footer>
     </plus-dialog-content>
   </plus-dialog>
-  <plus-dialog animation="fade" connector="dialog-nesting-3" xs="sm">
+  <plus-dialog animation="fade" connector="dialog-nesting-3" size="sm">
     <plus-dialog-content>
       <plus-dialog-header>
         Dialog 3
