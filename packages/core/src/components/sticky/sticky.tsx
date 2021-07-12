@@ -4,6 +4,8 @@ import { StickyState, StickyTop } from './sticky.types';
 
 /**
  * @slot default - The default slot.
+ * @slot normal  - The normal slot.
+ * @slot sticky  - The sticky slot.
  */
 @Component({
   tag: 'plus-sticky',
@@ -158,6 +160,12 @@ export class Sticky implements ComponentInterface {
           />
         </div>
         <slot />
+        <div style={{ display: this.state === 'normal' ? 'block' : 'none' }}>
+          <slot name="normal" />
+        </div>
+        <div style={{ display: this.state === 'sticky' ? 'block' : 'none' }}>
+          <slot name="sticky" />
+        </div>
       </Host>
     )
   }

@@ -5,11 +5,11 @@
     "clean": "lerna run clean",
     "clean:hard": "npm run clean && lerna clean",
     "init": "lerna bootstrap",
-    "publish:latest": "lerna publish from-package",
-    "publish:next": "lerna publish from-package --dist-tag next",
-    "publish:release": "lerna version --no-private --preid next",
     "prepublishOnly": "npm run preversion",
     "preversion": "lerna run clean && lerna bootstrap && lerna run build --scope @htmlplus/react --stream",
+    "publish:latest": "npm run publish:version && lerna publish from-package",
+    "publish:next": "npm run publish:version && lerna publish from-package --dist-tag next",
+    "publish:version": "lerna version --no-private --preid next",
     "start": "lerna run start --scope @htmlplus/core --stream"
   },
   "devDependencies": {
