@@ -13,7 +13,7 @@ plus-drawer plus-card {
 ```html [template]
 <plus-grid>
   <plus-grid-item xs="auto">
-    <plus-drawer class="fade" size="200px" connector="drawer-default">
+    <plus-drawer animation="fade" size="200px" connector="drawer-default">
       <plus-card>
         Drawer Content
       </plus-card>

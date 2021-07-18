@@ -25,7 +25,8 @@ export class Portal implements ComponentInterface {
   strategy?: PortalStrategy = 'append';
 
   /**
-   * Specifies the position of the portal content, It Can include css selectors, node or any html elements.
+   * Specifies the position of the portal content, It Can include css selectors, 
+   * node or any html elements.
    */
   @Prop()
   target?: PortalTarget = 'body';

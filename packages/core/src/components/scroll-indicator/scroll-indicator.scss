@@ -2,6 +2,7 @@
 @import 'scroll-indicator.variables';
 
 :host {
+  
   // @prop Used to adjust the color.
   --plus-scroll-indicator-color: #{$scroll-indicator-color};
 

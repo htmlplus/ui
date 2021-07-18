@@ -1,9 +1,9 @@
 @import 'reset';
 
 :host {
-    display: none;
+  display: none;
 }
 
 :host([active]) {
-    display: block;
+  display: block;
 }

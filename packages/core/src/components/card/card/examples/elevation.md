@@ -1,4 +1,4 @@
-The card component accepts a custom elevation between `1` and `24`.The elevation property specifies the value of the box-shodow property.
+The card component accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.
 
 ```css [style]
 plus-card {

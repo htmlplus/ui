@@ -7,17 +7,17 @@ export type CropperShape = 'rectangle' | 'square' | 'circle';
 export type CropperView = 'none' | 'fit' | 'contain' | 'cover';
 export type CropperZoomable = boolean | 'touch' | 'wheel';
 export interface CropperValue {
-    top?: number;
-    right?: number;
-    bottom?: number;
-    left?: number;
-    width?: number;
-    height?: number;
-    x?: number;
-    y?: number;
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
 }
 export interface CropperZoomData {
-    difference?: number,
-    direction?: 'in' | 'out',
-    ratio?: number
+  difference?: number,
+  direction?: 'in' | 'out',
+  ratio?: number
 }

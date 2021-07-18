@@ -27,7 +27,8 @@ export class Tabs implements ComponentInterface {
   vertical?: boolean;
 
   /**
-   * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
+   * Panels are not always used inside tabs.They may be used outside, in which you can use 
+   * this property to connect them to their corresponding tabs.
    */
   @Prop()
   connector?: string;

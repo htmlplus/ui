@@ -2,80 +2,78 @@
 
 :host {
     
-    // @prop TODO
-    --plus-transition-delay: 0s;
+  // @prop TODO
+  --plus-transition-delay: 0s;
 
-    // @prop TODO
-    --plus-transition-direction: normal;
+  // @prop TODO
+  --plus-transition-direction: normal;
 
-    // @prop TODO
-    --plus-transition-duration: 1s;
+  // @prop TODO
+  --plus-transition-duration: 1s;
 
-    // @prop TODO
-    --plus-transition-repeat: 1;
+  // @prop TODO
+  --plus-transition-repeat: 1;
 }
 
 :host {
-    display: block;
-    animation-fill-mode: both;
-    animation-delay: var(--plus-transition-delay);
-    animation-direction: var(--plus-transition-direction);
-    animation-duration: var(--plus-transition-duration);
-    animation-iteration-count: var(--plus-transition-repeat);
+  display: block;
+  animation-fill-mode: both;
+  animation-delay: var(--plus-transition-delay);
+  animation-direction: var(--plus-transition-direction);
+  animation-duration: var(--plus-transition-duration);
+  animation-iteration-count: var(--plus-transition-repeat);
 }
 
 :host([pause=""]),
 :host([pause=true]) {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 :host([pause=hover]),
 :host([start=hover]:hover) {
-    animation-play-state: running;
+  animation-play-state: running;
 }
 
 :host([start=hover]),
 :host([pause=hover]:hover) {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 @each $key, $value in $transition-duration {
-    :host([duration=#{inspect($key)}]) {
-        --plus-transition-duration: #{$value};
-    }
+  :host([duration=#{inspect($key)}]) {
+    --plus-transition-duration: #{$value};
+  }
 }
 
 @each $key, $value in $transition-direction {
     :host([direction=#{inspect($key)}]) {
-        --plus-transition-direction: #{$value};
-    }
+    --plus-transition-direction: #{$value};
+  }
 }
 
 :host([name='fade-in']) {
-    animation-name: fade-in;
+  animation-name: fade-in;
 }
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 :host([name='fade-out']) {
-    animation-name: fade-out;
+  animation-name: fade-out;
 }
 
 @keyframes fade-out {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
   

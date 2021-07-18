@@ -2,40 +2,40 @@ import { Helper } from '@app/utils';
 
 export class ClickOutside {
 
-    static targets = new Map();
+  static targets = new Map();
 
-    static get type() {
-        return 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
+  static get type() {
+    return 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
+  }
+
+  static add(element, callback, self = true) {
+
+    this.remove(element);
+
+    const fn = (event) => {
+
+      const path = Helper.eventPath(event);
+
+      const index = path.findIndex((item) => item === element);
+
+      if ((!self && 1 < index) || (self && index !== -1)) return;
+
+      callback(event);
     }
 
-    static add(element, callback, self = true) {
+    document.addEventListener(this.type, fn, true);
 
-        this.remove(element);
+    this.targets.set(element, fn);
+  }
 
-        const fn = (event) => {
+  static remove(element) {
 
-            const path = Helper.eventPath(event);
+    const callback = this.targets.get(element);
 
-            const index = path.findIndex((item) => item === element);
+    if (!callback) return;
 
-            if ((!self && 1 < index) || (self && index !== -1)) return;
+    document.removeEventListener(this.type, callback, true);
 
-            callback(event);
-        }
-
-        document.addEventListener(this.type, fn, true);
-
-        this.targets.set(element, fn);
-    }
-
-    static remove(element) {
-
-        const callback = this.targets.get(element);
-
-        if (!callback) return;
-
-        document.removeEventListener(this.type, callback, true);
-
-        this.targets.delete(element);
-    }
+    this.targets.delete(element);
+  }
 }

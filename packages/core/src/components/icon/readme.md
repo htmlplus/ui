@@ -1,5 +1,5 @@
 # Icon
-Symbols for common actions and items.This component gives you access to the icon libraries (font awesome,icon material,...).
+Symbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).
 
 <Playground />
 
@@ -83,13 +83,13 @@ To use an icon simply wrap the icon name (font ligature) with the `plus-icon` co
 
 # Accessibility
 
-Icons can convey all sorts of meaningful information, so it’s important that they reach the largest amount of people possible. There are two use cases you’ll want to consider:
+Icons can convey all sorts of meaningful information, so it's important that they reach the largest amount of people possible. There are two use cases you'll want to consider:
 
 - **Decorative Icons** are only being used for visual or branding reinforcement. If they were removed from the page, users would still understand and be able to use your page.
-- **Semantic Icons** are ones that you’re using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.
+- **Semantic Icons** are ones that you're using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.
 
 ### Decorative Icons
-If your icons are purely decorative, you’ll need to manually add an aria-hidden attribute to each of your icons so they’re accessible.
+If your icons are purely decorative, you'll need to manually add an aria-hidden attribute to each of your icons so they're accessible.
 
 ```html
 <plus-icon class="fa fa-home" aria-hidden="true"></plus-icon>
@@ -99,7 +99,7 @@ If your icons are purely decorative, you’ll need to manually add an aria-hidde
 You might be tempted to use <i aria-hidden></i> and leave the ="true" part out. Don't, it's important for screen readers to have a value that follows the spec.
 
 ### Semantic Icons
-If your icons have semantic meaning, you’ll need to manually add a few things so that your icon is appropriately accessible:
+If your icons have semantic meaning, you'll need to manually add a few things so that your icon is appropriately accessible:
 - `aria-hidden="true"` attribute
 - Provide a text alternative inside a `<span>` (or similar) element. Also include appropriate CSS to visually hide the element while keeping it accessible to assisitive technologies.
 - title attribute on the icon to provide a tooltip for sighted mouse users.

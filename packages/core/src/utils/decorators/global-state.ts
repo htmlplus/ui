@@ -1,24 +1,24 @@
 export const GlobalState = () => {
 
-    return (instance: {} | any, name: PropertyKey): any => {
+  return (instance: {} | any, name: PropertyKey): any => {
 
-        let state;
+    let state;
 
-        const descriptor = {
-            set(value) {
+    const descriptor = {
+      set(value) {
 
-                if (state) return;
+        if (state) return;
 
-                state = value;
-            },
-            get(this: any) {
+        state = value;
+      },
+      get(this: any) {
 
-                return state;
-            },
-            enumerable: true,
-            configurable: true,
-        };
-
-        Object.defineProperty(instance, name, descriptor);
+        return state;
+      },
+      enumerable: true,
+      configurable: true,
     };
+
+    Object.defineProperty(instance, name, descriptor);
+  }
 }

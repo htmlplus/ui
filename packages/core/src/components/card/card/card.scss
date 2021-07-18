@@ -3,48 +3,48 @@
 
 :host {
 
-    // @prop Used to adjust the background-color.
-    --plus-card-background-color: #{$card-background-color};
+  // @prop Used to adjust the background-color.
+  --plus-card-background-color: #{$card-background-color};
 
-    // @prop Used to adjust the border-color.
-    --plus-card-border-color    : #{$card-border-color};
+  // @prop Used to adjust the border-color.
+  --plus-card-border-color    : #{$card-border-color};
 
-    // @prop Used to adjust the border-radius.
-    --plus-card-border-radius   : #{$card-border-radius};
+  // @prop Used to adjust the border-radius.
+  --plus-card-border-radius   : #{$card-border-radius};
 
-    // @prop Used to adjust the border-width.
-    --plus-card-border-width    : #{$card-border-width};
+  // @prop Used to adjust the border-width.
+  --plus-card-border-width    : #{$card-border-width};
 
-    // @prop Used to adjust the box-shodow.
-    --plus-card-box-shadow      : none;
+  // @prop Used to adjust the box-shodow.
+  --plus-card-box-shadow      : none;
 }
 
 :host {
-    background-color: var(--plus-card-background-color);
-    border-radius: var(--plus-card-border-radius);
-    box-shadow: var(--plus-card-box-shadow);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
+  background-color: var(--plus-card-background-color);
+  border-radius: var(--plus-card-border-radius);
+  box-shadow: var(--plus-card-box-shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
 }
 
 :host([flat]) {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 :host([outlined]) {
-    border: solid var(--plus-card-border-width) var(--plus-card-border-color);
+  border: solid var(--plus-card-border-width) var(--plus-card-border-color);
 }
 
 :host([tile]) {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 @each $key, $value in $card-elevation {
-    :host([elevation="#{$key}"]) {
-        box-shadow: #{$value}; 
-    }
+  :host([elevation="#{$key}"]) {
+    box-shadow: #{$value}; 
+  }
 }

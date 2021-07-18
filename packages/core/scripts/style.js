@@ -1,26 +1,26 @@
 const style = () => {
 
-    return {
-        name: 'sass',
-        pluginType: 'css',
-        transform(content, fileName, context) {
+  return {
+    name: 'sass',
+    pluginType: 'css',
+    transform(content, fileName, context) {
 
-            if (content.trim() === '') {
+      if (content.trim() === '') {
 
-                return Promise.resolve({
-                    id: fileName,
-                    code: ''
-                });
-            }
+        return Promise.resolve({
+          id: fileName,
+          code: ''
+        });
+      }
 
-            const code = content.replace(/\[\w+\]/g, (match) => `${match}:not(${match.replace(']', '=false]')})`);
+      const code = content.replace(/\[\w+\]/g, (match) => `${match}:not(${match.replace(']', '=false]')})`);
 
-            return Promise.resolve({
-                id: fileName,
-                code
-            });
-        }
+      return Promise.resolve({
+        id: fileName,
+        code
+      });
     }
+  }
 }
 
 module.exports.style = style;

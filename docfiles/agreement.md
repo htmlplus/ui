@@ -24,7 +24,7 @@ function sealed(target) {
 ```
 
 ### @Bind
-While working on React, you must have come across controlled components and event handlers. We need to bind these methods to the component instance using .bind() in our custom component’s constructor.
+While working on React, you must have come across controlled components and event handlers. We need to bind these methods to the component instance using .bind() in our custom component's constructor.
 
 ```javascript
   constructor( props ){

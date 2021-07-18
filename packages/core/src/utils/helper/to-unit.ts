@@ -1,8 +1,8 @@
 export const toUnit = (input: string | number) => {
 
-    if (input == null || input === '') return undefined;
+  if (input == null || input === '') return undefined;
 
-    if (isNaN(+input!)) return String(input);
+  if (isNaN(+input!)) return String(input);
 
-    return `${Number(input)}px`;
+  return `${Number(input)}px`;
 }

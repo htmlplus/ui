@@ -33,7 +33,7 @@ export class Transition implements ComponentInterface {
 
   /**
    * Specifies what kind of animation you want to play. 
-   * click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see the list of available animations.
+   * click [here](https://htmlplus.io/component/transition/names) to see the list of available animations.
    */
   @Prop({ reflect: true })
   name: string;

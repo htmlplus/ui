@@ -4,12 +4,10 @@
   padding: 0.75rem;
   margin: 0.25rem;
 }
-
 .ratio-one {
   width: 40.625%;
   float: right;
 }
-
 .one   { background: #08DFC8 }
 .two   { background: #FF5449 }
 .three { background: #5F9EE9 }

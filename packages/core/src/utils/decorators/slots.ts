@@ -2,34 +2,34 @@ import { getElement } from '@stencil/core';
 
 export function Slots() {
 
-    return function (instance: {} | any, key: PropertyKey) {
+  return function (instance: {} | any, key: PropertyKey) {
 
-        const descriptor = {
-            get(this: any) {
+    const descriptor = {
+      get(this: any) {
 
-                const result = {};
-                
-                const element = getElement(this);
+        const result = {};
 
-                const nodes = Array.from(element.childNodes);
+        const element = getElement(this);
 
-                for (let i = 0; i < nodes.length; i++) {
+        const nodes = Array.from(element.childNodes);
 
-                    const item = nodes[i];
+        for (let i = 0; i < nodes.length; i++) {
 
-                    const slot = item['slot'] || 'default';
+          const item = nodes[i];
 
-                    result[slot] = result[slot] || [];
+          const slot = item['slot'] || 'default';
 
-                    result[slot].push(item);
-                }
+          result[slot] = result[slot] || [];
 
-                return result;
-            },
-            enumerable: true,
-            configurable: true,
+          result[slot].push(item);
         }
 
-        Object.defineProperty(instance, key, descriptor);
+        return result;
+      },
+      enumerable: true,
+      configurable: true,
     }
+
+    Object.defineProperty(instance, key, descriptor);
+  }
 }
