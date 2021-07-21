@@ -877,6 +877,7 @@ export namespace Components {
     interface PlusSwitch {
         /**
           * Puts the switch in checked state
+          * @model
          */
         "checked"?: boolean;
         /**
@@ -2230,6 +2231,7 @@ declare namespace LocalJSX {
     interface PlusSwitch {
         /**
           * Puts the switch in checked state
+          * @model
          */
         "checked"?: boolean;
         /**
@@ -2242,6 +2244,7 @@ declare namespace LocalJSX {
         "inset"?: boolean;
         /**
           * When the switch state is changed this event triggers.
+          * @model
          */
         "onPlusChange"?: (event: CustomEvent<void>) => void;
         /**

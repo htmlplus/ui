@@ -2,7 +2,7 @@ import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop
 import { GlobalConfig } from '@app/utils';
 
 /**
- * @internal
+ * @development
  */
 @Component({
   tag: 'plus-switch',
@@ -13,6 +13,7 @@ export class Switch implements ComponentInterface {
 
   /**
    * Puts the switch in checked state
+   * @model
    */
   @Prop({ reflect: true })
   checked?: boolean;
@@ -37,6 +38,7 @@ export class Switch implements ComponentInterface {
 
   /**
    * When the switch state is changed this event triggers.
+   * @model
    */
   @Event()
   plusChange!: EventEmitter<void>;
@@ -80,7 +82,7 @@ export class Switch implements ComponentInterface {
 
     if (this.disabled) return;
 
-    this.checked = !this.checked;
+    // this.checked = !this.checked;
 
     this.plusChange.emit();
   }

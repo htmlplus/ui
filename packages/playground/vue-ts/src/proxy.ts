@@ -36,14 +36,14 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
   const {
     props = [],
     events = [],
-    // modelProp,
-    // modelUpdateEvent,
-    // externalModelUpdateEvent
+    modelProp,
+    modelUpdateEvent,
+    externalModelUpdateEvent
   } = options || {};
 
   const VueComponent = defineComponent<PropType & InputPropsType>((props, context) => {
 
-    console.log(1);
+    console.log('defineComponent');
 
     const { attrs, emit, slots } = context;
 
@@ -51,56 +51,64 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
     const classes = new Set(getClasses(attrs.class));
 
-    // // TODO
-    // let modelPropValue = (props as any)[modelProp as any];
+    // TODO: modelProp as any
+    let modelPropValue = (props as any)[modelProp as any];
 
-    // const onVnodeBeforeMount = (vnode: VNode) => {
+    const onVnodeBeforeMount = (vnode: VNode) => {
 
-    //   if (!vnode.el) return;
+      console.log('onVnodeBeforeMount');
 
-    //   [modelUpdateEvent]
-    //     .flat(1)
-    //     .forEach((eventName) => {
+      if (!vnode.el) return;
 
-    //       if (!eventName) return;
+      [modelUpdateEvent]
+        .flat(1)
+        .forEach((eventName) => {
 
-    //       vnode.el?.addEventListener(eventName.toLowerCase(), (event: Event) => {
+          if (!eventName) return;
 
-    //         // TODO
-    //         modelPropValue = (event?.target as any)[modelProp as any];
+          if (!vnode.el) return;
 
-    //         emit(UPDATE_VALUE_EVENT, modelPropValue);
+          vnode.el.addEventListener(eventName.toLowerCase(), (event: Event) => {
 
-    //         // TODO
-    //         // if (externalModelUpdateEvent)
-    //         emit(externalModelUpdateEvent as any, event);
-    //       });
-    //     });
-    // };
+            // TODO: modelProp as any
+            modelPropValue = (event?.target as any)[modelProp as any];
+
+            emit(UPDATE_VALUE_EVENT, modelPropValue);
+
+            // TODO: ionic-framework
+            // emit(externalModelUpdateEvent as any, event);
+            // TODO: stencil-ds-output-targets
+            if (externalModelUpdateEvent)
+              emit(externalModelUpdateEvent as any, event); // TODO: any
+          });
+        });
+    };
 
     return () => {
 
-      console.log(2112222);
+      console.log('render');
 
-      // TODO
-      // modelPropValue = (props as any)[modelProp as any];
+      // TODO: modelProp as any
+      modelPropValue = (props as any)[modelProp as any];
 
-      // TODO
       getClasses(attrs.class).forEach(classes.add);
 
-      const newProps = {
+      // TODO: any
+      const newProps: any = {
         ...props,
         class: mergeClasses(element, classes),
         ref: element,
 
-        // TODO
+        // TODO: ionic-framework
         // onVnodeBeforeMount: (modelUpdateEvent && externalModelUpdateEvent) ? onVnodeBeforeMount : undefined
-        // onVnodeBeforeMount: (modelUpdateEvent) ? onVnodeBeforeMount : undefined
+
+        // TODO: stencil-ds-output-targets
+        onVnodeBeforeMount: (modelUpdateEvent) ? onVnodeBeforeMount : undefined
       };
 
-      // if (modelProp) {
-      //   newProps[modelProp] = props.hasOwnProperty(MODEL_VALUE) && props[MODEL_VALUE] !== undefined ? props.modelValue : modelPropValue;
-      // }
+      if (modelProp) {
+        newProps[modelProp] = props.hasOwnProperty(MODEL_VALUE) && props[MODEL_VALUE] !== undefined ? props.modelValue : modelPropValue;
+      }
 
       return h(tagName, newProps, slots.default && slots.default());
     }
@@ -108,10 +116,10 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
   VueComponent.props = [...props, ...events];
 
-  // if (modelProp) {
-  //   VueComponent.props.push(MODEL_VALUE);
-  //   VueComponent.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent];
-  // }
+  if (modelProp) {
+    VueComponent.props.push(MODEL_VALUE);
+    VueComponent.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent];
+  }
 
   VueComponent['displayName'] = tagName;
 

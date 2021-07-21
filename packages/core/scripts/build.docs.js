@@ -185,7 +185,8 @@ const properties = (component) => {
       experimental: parseTag(property, 'experimental'),
       description: property.docs,
       default: property.default,
-      values
+      values,
+      model: parseTag(property, 'model'), // TODO
     }
   })
 }
@@ -213,6 +214,7 @@ const events = (component) => {
       detail: event.detail,
       experimental,
       description: event.docs,
+      model: parseTag(event, 'model'), // TODO
     }
   })
 }

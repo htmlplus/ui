@@ -93,6 +93,17 @@ export const Sticky = /*@__PURE__*/ proxy<HTMLPlusStickyElement, JSX.PlusSticky>
   props: ['disabled', 'top', 'watcher', 'zIndex'],
   events: ['plusChange'],
 });
+export const Switch = /*@__PURE__*/ proxy<HTMLPlusSwitchElement, JSX.PlusSwitch>('plus-switch', {
+  props: ['checked', 'disabled', 'inset', 'reverse'],
+  events: ['plusChange'],
+  modelProp: 'checked',
+  modelUpdateEvent: [
+    'plusChange', // TODO
+    'v-plusChange',
+    'v-plus-change'
+  ],
+  externalModelUpdateEvent: 'plusChange'
+});
 export const Tabs = /*@__PURE__*/ proxy<HTMLPlusTabsElement, JSX.PlusTabs>('plus-tabs', {
   props: ['connector', 'value', 'vertical'],
   events: ['plusChange'],

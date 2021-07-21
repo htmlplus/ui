@@ -7,7 +7,8 @@ import { applyPolyfills, defineCustomElements } from '@htmlplus/core/loader';
 applyPolyfills().then(() => {
 
   const options: any = {
-    ce: (eventName: string, options: any) => new CustomEvent(eventName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase().split('-').slice(1).join('-'), options)
+    // ce: (eventName: string, options: any) => new CustomEvent(eventName.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase().split('-').slice(1).join('-'), options)
+    ce: (eventName: string, options: any) => new CustomEvent(eventName.toLowerCase(), options)
   }
 
   defineCustomElements(window, options);
