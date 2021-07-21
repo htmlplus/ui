@@ -3,9 +3,9 @@ import { Bind, Debug, GlobalConfig, IsRTL } from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
 /**
- * @part expander  - TODO.
- * @part item      - TODO.
- * @part separator - TODO.
+ * @part expander  - Expander element.
+ * @part item      - Item element.
+ * @part separator - Separator element.
  * @slot default   - The default slot.
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.

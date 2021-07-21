@@ -830,7 +830,7 @@ export namespace Components {
          */
         "strategy"?: PortalStrategy;
         /**
-          * Specifies the position of the portal content, It Can include css selectors, node or any html elements.
+          * Specifies the position of the portal content, It Can include css selectors,  node or any html elements.
          */
         "target"?: PortalTarget;
     }
@@ -894,7 +894,7 @@ export namespace Components {
     }
     interface PlusTabs {
         /**
-          * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
+          * Panels are not always used inside tabs.They may be used outside, in which you can use  this property to connect them to their corresponding tabs.
          */
         "connector"?: string;
         /**
@@ -1056,7 +1056,7 @@ export namespace Components {
          */
         "duration"?: TransitionDuration;
         /**
-          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see the list of available animations.
+          * Specifies what kind of animation you want to play.  click [here](https://htmlplus.io/component/transition/names) to see the list of available animations.
          */
         "name": string;
         /**
@@ -2175,7 +2175,7 @@ declare namespace LocalJSX {
          */
         "strategy"?: PortalStrategy;
         /**
-          * Specifies the position of the portal content, It Can include css selectors, node or any html elements.
+          * Specifies the position of the portal content, It Can include css selectors,  node or any html elements.
          */
         "target"?: PortalTarget;
     }
@@ -2251,7 +2251,7 @@ declare namespace LocalJSX {
     }
     interface PlusTabs {
         /**
-          * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
+          * Panels are not always used inside tabs.They may be used outside, in which you can use  this property to connect them to their corresponding tabs.
          */
         "connector"?: string;
         /**
@@ -2433,7 +2433,7 @@ declare namespace LocalJSX {
          */
         "duration"?: TransitionDuration;
         /**
-          * Specifies what kind of animation you want to play.  click [here](ROUTE:COMPONENT:TRANSITION:PROPERTY:NAME) to see the list of available animations.
+          * Specifies what kind of animation you want to play.  click [here](https://htmlplus.io/component/transition/names) to see the list of available animations.
          */
         "name"?: string;
         /**

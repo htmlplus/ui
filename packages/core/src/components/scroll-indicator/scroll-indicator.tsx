@@ -3,7 +3,7 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
- * @part indicator - TODO
+ * @part indicator - Indicator element.
  */
 @Component({
   tag: 'plus-scroll-indicator',

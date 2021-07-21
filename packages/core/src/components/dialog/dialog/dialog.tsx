@@ -5,7 +5,7 @@ import { DialogFullscreen, DialogGlobalState, DialogPlacement, DialogPortalStrat
 
 /**
  * @group dialog
- * @part backdrop - TODO
+ * @part backdrop - Backdrop element.
  * @slot default - The default slot.
  */
 @Component({
