@@ -75,11 +75,8 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
             emit(UPDATE_VALUE_EVENT, modelPropValue);
 
-            // TODO: ionic-framework
-            // emit(externalModelUpdateEvent as any, event);
-            // TODO: stencil-ds-output-targets
-            if (externalModelUpdateEvent)
-              emit(externalModelUpdateEvent as any, event); // TODO: any
+            // TODO: any
+            emit(externalModelUpdateEvent as any, event); 
           });
         });
     };
@@ -98,15 +95,13 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
         ...props,
         class: mergeClasses(element, classes),
         ref: element,
-
-        // TODO: ionic-framework
-        // onVnodeBeforeMount: (modelUpdateEvent && externalModelUpdateEvent) ? onVnodeBeforeMount : undefined
-
-        // TODO: stencil-ds-output-targets
-        onVnodeBeforeMount: (modelUpdateEvent) ? onVnodeBeforeMount : undefined
+        onVnodeBeforeMount // TODO: remove
       };
 
       if (modelProp) {
+
+        newProps.onVnodeBeforeMount = onVnodeBeforeMount;
+
         newProps[modelProp] = props.hasOwnProperty(MODEL_VALUE) && props[MODEL_VALUE] !== undefined ? props.modelValue : modelPropValue;
       }
 
@@ -125,48 +120,3 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
   return VueComponent;
 }
-
-// TODO
-// export const IonCheckbox = /*@__PURE__*/ defineContainer<JSX.IonCheckbox>('ion-checkbox', [
-//   'color',
-//   ...
-// ],
-// {
-//   "modelProp": "checked",
-//   "modelUpdateEvent": [
-//     "v-ionChange",
-//     "v-ion-change"
-//   ],
-//   "externalModelUpdateEvent": "ionChange"
-// });
-
-// v-model with custom components
-// <custom-text-input v-model="value" />
-// <!-- IS THE SAME AS -->
-// <custom-text-input 
-//    :modelValue="value"
-//    @update:modelValue="value = $event"
-// />
-
-// <input 
-//   type='text'
-//   placeholder='Input'
-//   :value='modelValue'
-//   @input='$emit("update:modelValue", $event.target.value)'
-// />
-
-// <input v-model="email" />
-// <input :value="email" @input="e => email = e.target.value" />
-
-// export default {
-//   prop: ['hidden'],
-//   model: {
-//       prop: 'hidden',
-//       event: 'blur'
-//   }
-//   methods: {
-//       handleInput (value) {
-//           this.$emit('blur', value)
-//       }
-//   }
-// }
