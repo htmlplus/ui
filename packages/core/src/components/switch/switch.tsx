@@ -15,7 +15,10 @@ export class Switch implements ComponentInterface {
    * Puts the switch in checked state
    * @model
    */
-  @Prop({ reflect: true })
+  @Prop({
+    reflect: true,
+    mutable: true
+  })
   checked?: boolean;
 
   /**
@@ -82,7 +85,7 @@ export class Switch implements ComponentInterface {
 
     if (this.disabled) return;
 
-    // this.checked = !this.checked;
+    this.checked = !this.checked;
 
     this.plusChange.emit();
   }

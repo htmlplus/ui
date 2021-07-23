@@ -70,6 +70,7 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
       key,
       name: event,
       isCovered: isEventCovered(key),
+      isModel: model && model.event === event,
       prop: Case.camel('on-' + key)
     }
   }) || [];
@@ -82,7 +83,6 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
     const classes = new Set(getClasses(attrs.class));
 
-    // TODO: model?.prop as any
     let modelValue = (props as any)[model?.prop as any];
 
     const onVnodeBeforeMount = (vnode: VNode) => {
@@ -91,15 +91,17 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
       for (const event of events) {
 
-        if (event.isCovered) continue;
+        // TODO
+        // if (event.isCovered) continue;
 
-        if (!(props as any)[event.prop]) continue;
+        // TODO
+        // if (!(props as any)[event.prop] && !event.isModel) continue;
 
         vnode.el.addEventListener(event.name, (ev: Event) => {
 
-          if (model && model.event === event.name) {
+          if (event.isModel) {
 
-            modelValue = (ev.target as any)[model.prop];
+            modelValue = (ev.target as any)[model?.prop as any];
 
             emit(MODEL_EVENT, modelValue);
           }
@@ -113,7 +115,6 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
       getClasses(attrs.class).forEach(classes.add);
 
-      // TODO: any
       const newProps: any = {
         ...props,
         class: mergeClasses(element, classes),
@@ -125,7 +126,10 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
         if (!event.isCovered) continue;
 
-        newProps[event.prop] = () => emit(event.key);
+        // TODO
+        // if (!newProps[event.prop]) continue;
+
+        newProps[event.prop] = () => undefined;
       }
 
       if (model) {
