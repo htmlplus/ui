@@ -1,5 +1,5 @@
 export * from './bind';
-export * from './debug';
+// export * from './debug';
 export * from './direction';
 export * from './global-config';
 export * from './global-state';

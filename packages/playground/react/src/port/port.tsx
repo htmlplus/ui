@@ -25,7 +25,7 @@ const Port = () => {
     <Dialog.Toggler connector="a">
 
     </Dialog.Toggler>
-    <Dialog connector="a" open={open} onClosed={() => setOpen(false)} >
+    <Dialog animation="fade" connector="a" open={open} onClosed={() => setOpen(false)} >
       <Dialog.Content scrollable>
         <Dialog.Body scrollable>
           asdfsdf

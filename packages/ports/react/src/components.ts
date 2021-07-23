@@ -55,6 +55,8 @@ export const Spinner = /*@__PURE__*/ proxy<HTMLPlusSpinnerElement, JSX.PlusSpinn
 
 export const Sticky = /*@__PURE__*/ proxy<HTMLPlusStickyElement, JSX.PlusSticky>('plus-sticky', ['disabled', 'top', 'watcher', 'zIndex'], ['plusChange']);
 
+export const Switch = /*@__PURE__*/ proxy<HTMLPlusSwitchElement, JSX.PlusSwitch>('plus-switch', ['checked', 'disabled', 'inset', 'reverse'], ['plusChange']);
+
 const TabsBase = /*@__PURE__*/ proxy<HTMLPlusTabsElement, JSX.PlusTabs>('plus-tabs', ['connector', 'value', 'vertical'], ['plusChange']);
 const TabsBar = /*@__PURE__*/ proxy<HTMLPlusTabsBarElement, JSX.PlusTabsBar>('plus-tabs-bar', ['grow', 'justify', 'reverse'], []);
 const TabsPanel = /*@__PURE__*/ proxy<HTMLPlusTabsPanelElement, JSX.PlusTabsPanel>('plus-tabs-panel', ['value'], []);

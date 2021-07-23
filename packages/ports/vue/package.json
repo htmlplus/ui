@@ -1,7 +1,6 @@
 {
   "name": "@htmlplus/vue",
-  "version": "0.2.6",
-  "private": true,
+  "version": "0.2.7-next.0",
   "description": "Vue output target for @htmlplus/core components.",
   "main": "dist/vue/index.js",
   "module": "dist/vue/index.es.js",
@@ -18,6 +17,7 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
+    "@htmlplus/core": "^0.2.7-next.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "case": "^1.6.3",
@@ -28,9 +28,6 @@
     "rollup-plugin-typescript2": "^0.27.2",
     "typescript": "^4.0.2",
     "vue": "^3.1.1"
-  },
-  "dependencies": {
-    "@htmlplus/core": "^0.2.7-next.0"
   },
   "peerDependencies": {
     "vue": "^3.1.1"

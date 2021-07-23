@@ -17,6 +17,7 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
+    "@htmlplus/core": "^0.2.7-next.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/react": "^16.9.49",
@@ -29,9 +30,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-typescript2": "^0.27.2",
     "typescript": "^4.0.2"
-  },
-  "dependencies": {
-    "@htmlplus/core": "^0.2.7-next.0"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0",

@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
-import { Debug, GlobalConfig } from '@app/utils';
+import { GlobalConfig } from '@app/utils';
 import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
@@ -18,8 +18,9 @@ export class AspectRatio implements ComponentInterface {
   @Prop()
   value?: AspectRatioValue;
 
-  @Debug('aspectRatio')
-  debug?;
+  // TODO
+  // @Debug('aspectRatio')
+  // debug?;
 
   @GlobalConfig('aspectRatio')
   config?;
@@ -36,7 +37,8 @@ export class AspectRatio implements ComponentInterface {
 
     if (!isNaN(valueA + valueB)) return valueA / valueB;
 
-    this.debug('TODO: invalid value \'%s\'', this.value);
+    // TODO
+    // this.debug('TODO: invalid value \'%s\'', this.value);
   }
 
   get style() {

@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
-import { Bind, Debug, GlobalConfig, IsRTL } from '@app/utils';
+import { Bind, GlobalConfig, IsRTL } from '@app/utils';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -42,8 +42,9 @@ export class Breadcrumb implements ComponentInterface {
   @Prop({ reflect: true })
   separator?: string;
 
-  @Debug('breadcrumb')
-  debug?;
+  // TODO
+  // @Debug('breadcrumb')
+  // debug?;
 
   @GlobalConfig('breadcrumb', {
     expanderText: 'Show path',
