@@ -1,23 +1,29 @@
 <template>
   <div>
-    <Switch v-model="checked" /> {{checked}}
+    <Switch v-model="checked" @click="ch" @opened1="ch"/>
+    <!-- <Switch v-model="checked" @pluschange="ch" />
+    <Switch v-model="checked" @plus-change="ch" /> -->
+     {{ checked }}
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import {
-  Switch
-} from "./components";
+import { Switch } from "@htmlplus/vue";
 
 export default defineComponent({
   components: {
-    Switch
+    Switch,
   },
   data() {
     return {
-      checked: true
-    }
-  }
-})
+      checked: true,
+    };
+  },
+  methods: {
+    ch() {
+      alert('ch');
+    },
+  },
+});
 </script>

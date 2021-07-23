@@ -3,15 +3,11 @@ const
   docs = require('@htmlplus/core/dist/json/docs.json'),
   fs = require('fs');
 
-const groupBy = (array, key) => array.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {});
-
-const groups = groupBy(docs.components, 'group');
-
 const lines = [
   '/* eslint-disable */',
   '/* tslint:disable */',
   '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy\';',
+  'import { proxy } from \'./proxy.v6\';',
   '',
   'import type { JSX } from \'@htmlplus/core\';',
   '',
@@ -20,6 +16,20 @@ const lines = [
 for (let i = 0; i < docs.components.length; i++) {
 
   const component = docs.components[i];
+
+  const model = (() => {
+
+    const event = component.events.find((event) => event.model);
+
+    const property = component.properties.find((property) => property.model);
+
+    if (!event || !property) return;
+
+    return {
+      event: event.name,
+      property: property.name,
+    }
+  })();
 
   let content = '';
 
@@ -82,6 +92,39 @@ for (let i = 0; i < docs.components.length; i++) {
   content += `]`;
   content += `,`;
   content += '\n';
+  if (model) {
+    content += ' ';
+    content += ' ';
+    content += 'model';
+    content += ':';
+    content += ' ';
+    content += '{';
+    content += '\n';
+    content += ' ';
+    content += ' ';
+    content += ' ';
+    content += ' ';
+    content += 'prop';
+    content += ':';
+    content += ' ';
+    content += `'${model.property}'`;
+    content += ',';
+    content += '\n';
+    content += ' ';
+    content += ' ';
+    content += ' ';
+    content += ' ';
+    content += 'event';
+    content += ':';
+    content += ' ';
+    content += `'${model.event}'`;
+    content += '\n';
+    content += ' ';
+    content += ' ';
+    content += '}';
+    content += ',';
+    content += '\n';
+  }
   content += '}';
   content += `)`;
   content += `;`;

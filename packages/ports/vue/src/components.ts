@@ -1,7 +1,7 @@
 /* eslint-disable */
 /* tslint:disable */
 /* auto-generated react proxies */
-import { proxy } from './proxy';
+import { proxy } from './proxy.v6';
 
 import type { JSX } from '@htmlplus/core';
 
@@ -92,6 +92,14 @@ export const Spinner = /*@__PURE__*/ proxy<HTMLPlusSpinnerElement, JSX.PlusSpinn
 export const Sticky = /*@__PURE__*/ proxy<HTMLPlusStickyElement, JSX.PlusSticky>('plus-sticky', {
   props: ['disabled', 'top', 'watcher', 'zIndex'],
   events: ['plusChange'],
+});
+export const Switch = /*@__PURE__*/ proxy<HTMLPlusSwitchElement, JSX.PlusSwitch>('plus-switch', {
+  props: ['checked', 'disabled', 'inset', 'reverse'],
+  events: ['plusChange'],
+  model: {
+    prop: 'checked',
+    event: 'plusChange'
+  },
 });
 export const Tabs = /*@__PURE__*/ proxy<HTMLPlusTabsElement, JSX.PlusTabs>('plus-tabs', {
   props: ['connector', 'value', 'vertical'],
