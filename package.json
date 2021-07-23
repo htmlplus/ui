@@ -7,7 +7,7 @@
     "clean:hard": "npm run clean && lerna clean",
     "init": "lerna bootstrap",
     "prepublishOnly": "npm run preversion",
-    "preversion": "lerna run clean && lerna bootstrap && lerna run build --scope @htmlplus/react --stream",
+    "preversion": "lerna run clean && lerna bootstrap && lerna run build --scope @htmlplus/react --stream && lerna run build --scope @htmlplus/vue --stream",
     "publish:latest": "npm run publish:version && lerna publish from-package",
     "publish:next": "npm run publish:version && lerna publish from-package --dist-tag next",
     "publish:version": "lerna version --no-private --preid next",
