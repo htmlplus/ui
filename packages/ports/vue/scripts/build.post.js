@@ -31,6 +31,18 @@ const
   fs.writeFileSync(source, content);
 })();
 
+// Remove prefix from events
+(() => {
+
+  const source = 'dist/vue/components.d.ts';
+
+  let content = fs.readFileSync(source, { encoding: 'utf8' });
+
+  content = content.replace(/(on)Plus([A-Z]\w+)/g, '$1$2');
+
+  fs.writeFileSync(source, content);
+})();
+
 // Vetur tags
 (() => {
 

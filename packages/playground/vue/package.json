@@ -8,7 +8,7 @@
     "start": "vue-cli-service serve --port 5400"
   },
   "dependencies": {
-    "@htmlplus/vue": "^0.2.7-next.0",
+    "@htmlplus/vue": "^0.2.7-next.1",
     "@vue/cli-service": "^4.5.12",
     "@vue/compiler-sfc": "^3.0.11",
     "vue": "^3.0.11"

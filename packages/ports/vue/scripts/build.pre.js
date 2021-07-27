@@ -7,7 +7,7 @@ const lines = [
   '/* eslint-disable */',
   '/* tslint:disable */',
   '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy.v6\';',
+  'import { proxy } from \'./proxy\';',
   '',
   'import type { JSX } from \'@htmlplus/core\';',
   '',
@@ -37,7 +37,7 @@ for (let i = 0; i < docs.components.length; i++) {
   content += ' ';
   content += 'const';
   content += ' ';
-  content += Case.pascal(component.key);
+  content += Case.pascal(component.tag);
   content += ' ';
   content += '=';
   content += ' ';
