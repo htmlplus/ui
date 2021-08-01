@@ -89,6 +89,9 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
       if (!vnode.el) return;
 
+      // TODO
+      element.value = vnode.el as any;
+
       for (const event of events) {
 
         // TODO
@@ -113,12 +116,13 @@ export const proxy = <ElementType, PropType>(tagName: string, options?: OptionsT
 
     return () => {
 
-      getClasses(attrs.class).forEach(classes.add);
+      getClasses(attrs.class).forEach((item) => classes.add(item));
 
       const newProps: any = {
         ...props,
         class: mergeClasses(element, classes),
-        ref: element,
+        // TODO 
+        // ref: element,
         onVnodeBeforeMount,
       };
 
