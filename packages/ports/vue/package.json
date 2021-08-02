@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/vue",
-  "version": "0.2.7-next.2",
+  "version": "0.2.7",
   "description": "Vue output target for @htmlplus/core components.",
   "main": "dist/vue/index.js",
   "module": "dist/vue/index.es.js",
@@ -17,7 +17,7 @@
     "clean": "rimraf dist"
   },
   "devDependencies": {
-    "@htmlplus/core": "^0.2.7-next.1",
+    "@htmlplus/core": "^0.2.7",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "case": "^1.6.3",
