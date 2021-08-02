@@ -32,8 +32,8 @@ export class AspectRatio implements ComponentInterface {
     let [valueA, valueB] = `${this.value}`
       .split('/')
       .map((item: any) => isNaN(item) ? NaN : parseFloat(item));
-
-    if (valueB === undefined) valueB = 1;
+      
+      valueB = valueB ?? 1;
 
     if (!isNaN(valueA + valueB)) return valueA / valueB;
 
