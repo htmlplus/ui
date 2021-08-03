@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PlusSwitch :class="(checked ? 'a' : 'b') + ' ' + (t ? 'c' : 'd')" v-model="checked" />
+    <PlusSwitch :class="(checked ? 'a' : 'b') + ' ' + (t ? 'c' : 'd')" v-model="checked" @change="ch" />
     {{ checked }}
     <button @click="t = !t">
       toggle
