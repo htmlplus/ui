@@ -9,6 +9,8 @@ export const AspectRatio = /*@__PURE__*/ proxy<HTMLPlusAspectRatioElement, JSX.P
 
 export const Breadcrumb = /*@__PURE__*/ proxy<HTMLPlusBreadcrumbElement, JSX.PlusBreadcrumb>('plus-breadcrumb', ['expanderText', 'max', 'offset', 'separator'], []);
 
+export const Browse = /*@__PURE__*/ proxy<HTMLPlusBrowseElement, JSX.PlusBrowse>('plus-browse', ['accept', 'disabled', 'droppable', 'max', 'maxSize', 'min', 'minSize', 'multiple'], ['plusChange', 'plusError', 'plusSuccess']);
+
 export const Card = /*@__PURE__*/ proxy<HTMLPlusCardElement, JSX.PlusCard>('plus-card', ['elevation', 'flat', 'outlined', 'tile'], []);
 
 export const ClickOutside = /*@__PURE__*/ proxy<HTMLPlusClickOutsideElement, JSX.PlusClickOutside>('plus-click-outside', ['disabled', 'once'], ['plusClickOutside']);

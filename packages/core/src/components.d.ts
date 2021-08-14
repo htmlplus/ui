@@ -94,11 +94,11 @@ export namespace Components {
     }
     interface PlusBrowse {
         /**
-          * One or more [unique file type specifiers](https://developer.mozilla.org /en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)  describing file types to allow.
+          * One or more  [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.
          */
         "accept"?: string;
         /**
-          * TODO
+          * Open the browse dialog.
          */
         "browse": () => Promise<void>;
         /**
@@ -106,7 +106,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * Add droppable ability.
          */
         "droppable"?: boolean;
         /**
@@ -1485,7 +1485,7 @@ declare namespace LocalJSX {
     }
     interface PlusBrowse {
         /**
-          * One or more [unique file type specifiers](https://developer.mozilla.org /en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)  describing file types to allow.
+          * One or more  [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.
          */
         "accept"?: string;
         /**
@@ -1493,7 +1493,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * TODO
+          * Add droppable ability.
          */
         "droppable"?: boolean;
         /**

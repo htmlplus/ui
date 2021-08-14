@@ -3,7 +3,6 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
- * Allows you to select file or files by using click or drag & drop functionality.
  * @slot default - The default slot.
  * @examples default
  */
@@ -15,8 +14,8 @@ import { BrowseEvent, BrowseEventFile } from './browse.types';
 export class Browse implements ComponentInterface {
 
   /**
-   * One or more [unique file type specifiers](https://developer.mozilla.org
-   * /en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) 
+   * One or more 
+   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
    * describing file types to allow.
    */
   @Prop()
@@ -29,7 +28,7 @@ export class Browse implements ComponentInterface {
   disabled?: boolean;
 
   /**
-   * TODO
+   * Add droppable ability.
    */
   @Prop()
   droppable?: boolean;
@@ -119,7 +118,7 @@ export class Browse implements ComponentInterface {
    */
 
   /**
-   * TODO
+   * Open the browse dialog.
    */
   @Method()
   async browse() {
