@@ -8,9 +8,7 @@
 class {
 
   ensure(type, event) {
-    
     if(window.confirm(`Are you sure you want to ${type} it?`)) return;
-
     event.preventDefault();
   }
 
@@ -75,13 +73,9 @@ class {
 
 ```js [javascript:script]
 const ensure = (type, event) => {
-
   if (window.confirm(`Are you sure you want to ${type} it?`)) return;
-
   event.preventDefault();
 }
-
 element1.addEventListener('plusOpen', (event) => ensure('open', event));
-
 element1.addEventListener('plusClose', (event) => ensure('close', event));
 ```

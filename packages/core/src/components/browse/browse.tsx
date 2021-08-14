@@ -3,8 +3,7 @@ import { Bind, GlobalConfig } from '@app/utils';
 import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
- * TODO
- * @development 
+ * Allows you to select file or files by using click or drag & drop functionality.
  * @slot default - The default slot.
  * @examples default
  */
@@ -66,19 +65,19 @@ export class Browse implements ComponentInterface {
   multiple?: boolean;
 
   /**
-   * TODO
+   * Emitted when file(s) are selected.
    */
   @Event({ bubbles: false })
   plusChange!: EventEmitter<BrowseEvent>;
 
   /**
-   * TODO
+   * Emitted when selected invalid file(s).
    */
   @Event({ bubbles: false })
   plusError!: EventEmitter<BrowseEvent>;
 
   /**
-   * TODO
+   * Emitted when file(s) are added successfully.
    */
   @Event({ bubbles: false })
   plusSuccess!: EventEmitter<BrowseEvent>;

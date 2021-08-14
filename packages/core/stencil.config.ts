@@ -42,6 +42,7 @@ export const config: Config = {
     { components: ['plus-aspect-ratio'] },
     // { components: ['plus-bottom-navigation', 'plus-bottom-navigation-item'] },
     { components: ['plus-breadcrumb'] },
+    { components: ['plus-browse'] },
     { components: ['plus-card', 'plus-card-body', 'plus-card-footer', 'plus-card-header'] },
     { components: ['plus-click-outside'] },
     { components: ['plus-cropper'] },

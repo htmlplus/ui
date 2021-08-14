@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { AspectRatioValue } from "./components/aspect-ratio/aspect-ratio.types";
+import { BrowseEvent } from "./components/browse/browse.types";
 import { CardElevation } from "./components/card/card/card.types";
 import { CropperAspectRatio, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperValue, CropperView, CropperZoomable, CropperZoomData } from "./components/cropper/cropper.types";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from "./components/dialog/dialog/dialog.types";
@@ -90,6 +91,44 @@ export namespace Components {
           * You can use HTML elements, Custom separator, or SVG icon.
          */
         "separator"?: string;
+    }
+    interface PlusBrowse {
+        /**
+          * One or more [unique file type specifiers](https://developer.mozilla.org /en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)  describing file types to allow.
+         */
+        "accept"?: string;
+        /**
+          * TODO
+         */
+        "browse": () => Promise<void>;
+        /**
+          * Disable the component.
+         */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "droppable"?: boolean;
+        /**
+          * Maximum number of files.
+         */
+        "max"?: number;
+        /**
+          * The maximum size of the file(s) in bytes.
+         */
+        "maxSize"?: number;
+        /**
+          * Minimum number of files.
+         */
+        "min"?: number;
+        /**
+          * The minimum size of the file(s) in bytes.
+         */
+        "minSize"?: number;
+        /**
+          * A Boolean which, if present, indicates that the user may choose more than one file.
+         */
+        "multiple"?: boolean;
     }
     interface PlusCard {
         /**
@@ -1091,6 +1130,12 @@ declare global {
         prototype: HTMLPlusBreadcrumbElement;
         new (): HTMLPlusBreadcrumbElement;
     };
+    interface HTMLPlusBrowseElement extends Components.PlusBrowse, HTMLStencilElement {
+    }
+    var HTMLPlusBrowseElement: {
+        prototype: HTMLPlusBrowseElement;
+        new (): HTMLPlusBrowseElement;
+    };
     interface HTMLPlusCardElement extends Components.PlusCard, HTMLStencilElement {
     }
     var HTMLPlusCardElement: {
@@ -1324,6 +1369,7 @@ declare global {
         "plus-bottom-navigation": HTMLPlusBottomNavigationElement;
         "plus-bottom-navigation-item": HTMLPlusBottomNavigationItemElement;
         "plus-breadcrumb": HTMLPlusBreadcrumbElement;
+        "plus-browse": HTMLPlusBrowseElement;
         "plus-card": HTMLPlusCardElement;
         "plus-card-body": HTMLPlusCardBodyElement;
         "plus-card-footer": HTMLPlusCardFooterElement;
@@ -1436,6 +1482,52 @@ declare namespace LocalJSX {
           * You can use HTML elements, Custom separator, or SVG icon.
          */
         "separator"?: string;
+    }
+    interface PlusBrowse {
+        /**
+          * One or more [unique file type specifiers](https://developer.mozilla.org /en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)  describing file types to allow.
+         */
+        "accept"?: string;
+        /**
+          * Disable the component.
+         */
+        "disabled"?: boolean;
+        /**
+          * TODO
+         */
+        "droppable"?: boolean;
+        /**
+          * Maximum number of files.
+         */
+        "max"?: number;
+        /**
+          * The maximum size of the file(s) in bytes.
+         */
+        "maxSize"?: number;
+        /**
+          * Minimum number of files.
+         */
+        "min"?: number;
+        /**
+          * The minimum size of the file(s) in bytes.
+         */
+        "minSize"?: number;
+        /**
+          * A Boolean which, if present, indicates that the user may choose more than one file.
+         */
+        "multiple"?: boolean;
+        /**
+          * Emitted when file(s) are selected.
+         */
+        "onPlusChange"?: (event: CustomEvent<BrowseEvent>) => void;
+        /**
+          * Emitted when selected invalid file(s).
+         */
+        "onPlusError"?: (event: CustomEvent<BrowseEvent>) => void;
+        /**
+          * Emitted when file(s) are added successfully.
+         */
+        "onPlusSuccess"?: (event: CustomEvent<BrowseEvent>) => void;
     }
     interface PlusCard {
         /**
@@ -2465,6 +2557,7 @@ declare namespace LocalJSX {
         "plus-bottom-navigation": PlusBottomNavigation;
         "plus-bottom-navigation-item": PlusBottomNavigationItem;
         "plus-breadcrumb": PlusBreadcrumb;
+        "plus-browse": PlusBrowse;
         "plus-card": PlusCard;
         "plus-card-body": PlusCardBody;
         "plus-card-footer": PlusCardFooter;
@@ -2513,6 +2606,7 @@ declare module "@stencil/core" {
             "plus-bottom-navigation": LocalJSX.PlusBottomNavigation & JSXBase.HTMLAttributes<HTMLPlusBottomNavigationElement>;
             "plus-bottom-navigation-item": LocalJSX.PlusBottomNavigationItem & JSXBase.HTMLAttributes<HTMLPlusBottomNavigationItemElement>;
             "plus-breadcrumb": LocalJSX.PlusBreadcrumb & JSXBase.HTMLAttributes<HTMLPlusBreadcrumbElement>;
+            "plus-browse": LocalJSX.PlusBrowse & JSXBase.HTMLAttributes<HTMLPlusBrowseElement>;
             "plus-card": LocalJSX.PlusCard & JSXBase.HTMLAttributes<HTMLPlusCardElement>;
             "plus-card-body": LocalJSX.PlusCardBody & JSXBase.HTMLAttributes<HTMLPlusCardBodyElement>;
             "plus-card-footer": LocalJSX.PlusCardFooter & JSXBase.HTMLAttributes<HTMLPlusCardFooterElement>;
