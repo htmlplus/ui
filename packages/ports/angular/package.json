@@ -7,8 +7,7 @@
   "module": "dist/angular/index.es.js",
   "types": "dist/angular/index.d.ts",
   "files": [
-    "dist",
-    "loader"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
