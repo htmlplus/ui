@@ -4,6 +4,6 @@
   display: none;
 }
 
-:host([active]) {
+:host(#{boolean(active)}) {
   display: block;
 }

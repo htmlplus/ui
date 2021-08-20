@@ -11,7 +11,7 @@
   min-width: 80px;
 }
 
-:host([grow]) {
+:host(#{boolean(grow)}) {
   flex-grow: 1;
 }
 

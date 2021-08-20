@@ -26,15 +26,18 @@ div {
   padding-bottom: var(--plus-grid--gutter-y);
 }
 
-[vertical] {
+// TODO
+#{boolean(vertical)} {
   flex-direction: column;
 }
 
-[reverse] {
+// TODO
+#{boolean(reverse)} {
   flex-direction: row-reverse;
 }
 
-[vertical][reverse] {
+// TODO
+#{boolean(vertical)}#{boolean(reverse)} {
   flex-direction: column-reverse;
 }
 

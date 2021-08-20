@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-:host([vertical]) {
+:host(#{boolean(vertical)}) {
 
   flex-direction: row;
 
@@ -13,7 +13,7 @@
     flex-direction: column;
   }
 
-  ::slotted(plus-tabs-bar[reverse]) {
+  ::slotted(plus-tabs-bar#{boolean(reverse)}) {
     flex-direction: column-reverse;
   }
 }

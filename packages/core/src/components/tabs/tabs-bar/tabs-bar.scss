@@ -6,16 +6,16 @@
   overflow: auto;
 }
 
-:host([reverse]) {
+:host(#{boolean(reverse)}) {
   flex-direction: row-reverse;
 }
 
-:host([grow]) ::slotted(plus-tabs-tab) {
+:host(#{boolean(grow)}) ::slotted(plus-tabs-tab) {
   flex-grow: 1;
 }
 
 :host([justify=start]),
-:host([justify=end][reverse]) {
+:host([justify=end]#{boolean(reverse)}) {
   justify-content: flex-start;
 }
 
@@ -24,6 +24,6 @@
 }
 
 :host([justify=end]),
-:host([justify=start][reverse]) {
+:host([justify=start]#{boolean(reverse)}) {
   justify-content: flex-end;
 }

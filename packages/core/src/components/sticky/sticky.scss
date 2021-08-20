@@ -18,7 +18,7 @@
   z-index: var(--plus-sticky-z-index);
 }
 
-:host([disabled]) {
+:host(#{boolean(disabled)}) {
   position: initial;
 }
 

@@ -8,7 +8,7 @@
 }
 
 // EX
-:host([scrollable]) {
+:host(#{boolean(scrollable)}) {
   overflow: hidden;
   overflow-y: auto;
 }

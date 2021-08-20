@@ -24,12 +24,12 @@
 }
 
 // TODO
-// :host([hidden]) {
+// :host(#{boolean(hidden)}) {
 //   display: inline-block;
 // }
 
-:host([flip]),
-:host([rotate]) {
+:host(#{boolean(flip)}),
+:host(#{boolean(rotate)}) {
   filter: none;
 }
 

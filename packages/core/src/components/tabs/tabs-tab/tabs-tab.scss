@@ -8,12 +8,12 @@
   padding: 0.5rem 1rem;
 }
 
-:host([disabled]) {
+:host(#{boolean(disabled)}) {
   span {
     opacity: 0.5;
   }
 }
 
-:host([active]) {
+:host(#{boolean(active)}) {
   background-color: rgba(210, 210, 210, 1);
 }

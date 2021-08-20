@@ -17,7 +17,7 @@
 }
 
 // TODO: EX
-// :host([scrollable]) {
+// :host(#{boolean(scrollable)}) {
 //   max-height: 100vh; 
 //   overflow: hidden;
 //   overflow-y: auto;

@@ -31,15 +31,15 @@
   background-clip: border-box;
 }
 
-:host([flat]) {
+:host(#{boolean(flat)}) {
   box-shadow: none;
 }
 
-:host([outlined]) {
+:host(#{boolean(outlined)}) {
   border: solid var(--plus-card-border-width) var(--plus-card-border-color);
 }
 
-:host([tile]) {
+:host(#{boolean(tile)}) {
   border-radius: 0;
 }
 

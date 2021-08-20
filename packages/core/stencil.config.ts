@@ -1,7 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { docs } from './scripts/build.docs';
-import { style } from './scripts/style';
 import * as Constants from './src/configs/constants';
 
 export const config: Config = {
@@ -35,8 +34,7 @@ export const config: Config = {
         'src/styles/mixins/index.scss',
         'src/styles/variables/index.scss'
       ]
-    }),
-    style()
+    })
   ],
   bundles: [
     { components: ['plus-aspect-ratio'] },

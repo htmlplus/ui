@@ -27,7 +27,7 @@
   min-width: 100%;
 }
 
-:host([vertical]) {
+:host(#{boolean(vertical)}) {
   border: none;
   border-right-color: var(--plus-divider-color);
   border-right-style: var(--plus-divider-type);
@@ -58,7 +58,7 @@
 // :host([variant='inset']) {
 //   margin-right: 100px;
 // }
-// :host([vertical]) .root {
+// :host(#{boolean(vertical)}) .root {
 //   flex-direction: column;
 // }
 // .root {

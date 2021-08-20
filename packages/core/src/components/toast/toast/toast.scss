@@ -66,8 +66,8 @@
 
 // animation
 
-:host([animation][state=opening]),
-:host([animation][state=closing]) {
+:host(#{boolean(animation)}[state=opening]),
+:host(#{boolean(animation)}[state=closing]) {
   .root {
     transition: 0.3s;
   }

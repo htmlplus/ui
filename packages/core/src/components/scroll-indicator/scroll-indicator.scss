@@ -27,13 +27,13 @@
 }
 
 // TODO
-// :host([vertical]) {
+// :host(#{boolean(vertical)}) {
 //   width: var(--plus-scroll-indicator-size);
 //   height: 100%;
 // }
 
 // TODO
-// :host([vertical]) .indicator {
+// :host(#{boolean(vertical)}) .indicator {
 //   height: 0;
 //   width: 100%;
 // }
