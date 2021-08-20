@@ -6,8 +6,7 @@
   "module": "dist/react/index.es.js",
   "types": "dist/react/index.d.ts",
   "files": [
-    "dist",
-    "loader"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"

@@ -6,8 +6,7 @@
   "module": "dist/vue/index.es.js",
   "types": "dist/vue/index.d.ts",
   "files": [
-    "dist",
-    "loader"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
