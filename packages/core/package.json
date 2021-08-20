@@ -8,10 +8,9 @@
   "types": "dist/custom-elements/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/htmlplus/htmlplus.js",
+  "unpkg": "dist/htmlplus/htmlplus.esm.js",
   "files": [
-    "dist",
-    "loader"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
