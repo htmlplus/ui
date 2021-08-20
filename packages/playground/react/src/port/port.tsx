@@ -1,21 +1,24 @@
 import { useState } from 'react';
-import { Dialog, Drawer, Grid } from '@htmlplus/react';
+import { Dialog } from '@htmlplus/react/dist/components/dialog';
+// import { Drawer } from '@htmlplus/react/dist/components/drawer';
+import { Spinner } from '@htmlplus/react/dist/components/spinner';
 
 const Port = () => {
 
   const [open, setOpen] = useState(false);
 
   return <>
-    <Grid alignItemsLg="center" justifyContentLg={open ? 'end' : 'start'}>
+    <Spinner type="ring" />
+    {/* <Grid alignItemsLg="center" justifyContentLg={open ? 'end' : 'start'}>
       <Grid.Item>
 
       </Grid.Item>
-    </Grid>
-    <Drawer temporary="on-breakpoint">
+    </Grid> */}
+    {/*<Drawer temporary="on-breakpoint">
       <Drawer.Toggler>
 
       </Drawer.Toggler>
-    </Drawer>
+    </Drawer> */}
     <button onClick={() => setOpen(true)}>
       open
     </button>
@@ -25,18 +28,18 @@ const Port = () => {
     <Dialog.Toggler connector="a">
 
     </Dialog.Toggler>
-    <Dialog animation="fade" connector="a" open={open} onClosed={() => setOpen(false)} >
+    <Dialog animation="fade" connector="a" >
       <Dialog.Content scrollable>
         <Dialog.Body scrollable>
           asdfsdf
         </Dialog.Body>
       </Dialog.Content>
     </Dialog>
-    {/* <PlusDialog open={open} onClosed={() => setOpen(false)}>
+    <Dialog open={open} onClosed={() => setOpen(false)}>
       <div>
         2
       </div>
-    </PlusDialog> */}
+    </Dialog> 
   </>
 }
 

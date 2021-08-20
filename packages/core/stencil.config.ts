@@ -22,8 +22,12 @@ export const config: Config = {
       esmLoaderPath: './loader'
     },
     {
+      type: 'dist-custom-elements',
+      dir: 'dist/custom-elements',
+    },
+    {
       type: 'dist-custom-elements-bundle',
-      externalRuntime: false,
+      dir: 'dist/components',
     },
   ],
   plugins: [

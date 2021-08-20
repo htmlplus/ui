@@ -1,21 +1,8 @@
 const
   fs = require('fs'),
+  glob = require('glob'),
   path = require('path'),
   root = path.resolve(process.cwd());
-
-// Replace JSX source
-(() => {
-
-  const source = path.join(root, 'dist/react/components.d.ts');
-
-  let content = fs.readFileSync(source, { encoding: 'utf8' });
-
-  content = content.replace('import type { JSX } from \'@htmlplus/core\';', 'import type { JSX } from \'../types\';');
-
-  // TODO: content = content.replace(/@htmlplus\/core\/dist\//g, '../');
-
-  fs.writeFileSync(source, content);
-})();
 
 // Remove prefix from events
 (() => {
@@ -27,4 +14,21 @@ const
   content = content.replace(/"(on)Plus([A-Z]\w+)"/g, '"$1$2"');
 
   fs.writeFileSync(source, content);
+})();
+
+// Replace JSX source
+(() => {
+
+  const pattern = path.join(root, 'dist/components/*.d.ts');
+
+  const files = glob.sync(pattern);
+
+  for (const file of files) {
+
+    let content = fs.readFileSync(file, { encoding: 'utf8' });
+
+    content = content.replace('import type { JSX } from \'@htmlplus/core\';', 'import type { JSX } from \'../types\';');
+
+    fs.writeFileSync(file, content);
+  }
 })();

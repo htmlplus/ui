@@ -1,14 +1,12 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.2.7-next.8",
+  "version": "0.2.7",
   "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/custom-elements/index.d.ts",
+  "module": "dist/components/index.js",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/htmlplus/htmlplus.esm.js",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
@@ -23,9 +21,11 @@
     "test:watch": "stencil test --e2e --no-cache --max-workers=2 --watch",
     "prepare": "npm run clean && npm run build"
   },
+  "dependencies": {
+    "@stencil/core": "^2.5.2"
+  },
   "devDependencies": {
     "@popperjs/core": "^2.9.1",
-    "@stencil/core": "^2.5.2",
     "@stencil/sass": "^1.4.1",
     "@types/jest": "^26.0.15",
     "@types/puppeteer": "^5.4.0",

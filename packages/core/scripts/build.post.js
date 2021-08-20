@@ -81,3 +81,15 @@ const
       );
     })
 })();
+
+// Create components/index.js & components/index.d.ts
+(() => {
+  fs.removeSync('dist/custom-elements/index.js');
+  fs.removeSync('dist/custom-elements/index.d.ts');
+  glob.sync(path.join(root, 'dist/custom-elements/*'))
+    .map((file) => fs.copySync(
+      file,
+      file.replace('custom-elements', 'components'),
+    ))
+  fs.removeSync('dist/custom-elements');
+})();

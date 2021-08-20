@@ -7,14 +7,7 @@ const groupBy = (array, key) => array.reduce((result, item) => { (result[item[ke
 
 const groups = groupBy(docs.components, 'group');
 
-const lines = [
-  '/* eslint-disable */',
-  '/* tslint:disable */',
-  '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy\';',
-  '',
-  'import type { JSX } from \'@htmlplus/core\';',
-];
+const index = [];
 
 for (let i = 0; i < docs.components.length; i++) {
 
@@ -26,9 +19,31 @@ for (let i = 0; i < docs.components.length; i++) {
 
   const hasChildren = component.group && children && children.length;
 
+  const all = [component, ...children];
+
+  const lines = [
+    '/* eslint-disable */',
+    '/* tslint:disable */',
+    '/* auto-generated react proxies */',
+    'import { proxy } from \'./proxy\';',
+    'import type { JSX } from \'@htmlplus/core\';',
+  ];
+
   lines.push('');
 
-  [component, ...children].forEach((child, index) => {
+  all.map((component) => {
+    lines.push(`import { ${Case.pascal(component.tag)} } from '@htmlplus/core/dist/components/${component.tag}';`);
+  });
+
+  lines.push('');
+
+  all.map((component) => {
+    lines.push(`if (typeof window !== 'undefined' && typeof customElements !== 'undefined' && !customElements.get('${component.tag}'))`);
+    lines.push(`  customElements.define('${component.tag}', ${Case.pascal(component.tag)});`);
+    lines.push('');
+  });
+
+  all.forEach((child, index) => {
 
     let content = '';
 
@@ -84,9 +99,7 @@ for (let i = 0; i < docs.components.length; i++) {
     lines.push(content);
   });
 
-  if (!hasChildren) continue;
-
-  (() => {
+  hasChildren && (() => {
 
     let content = '';
 
@@ -123,8 +136,14 @@ for (let i = 0; i < docs.components.length; i++) {
 
     lines.push(content);
   })();
+
+  const content = lines.join('\n');
+
+  fs.writeFileSync(`./src/${component.key}.ts`, content);
+
+  index.push(`export * from './${component.key}';`);
 }
 
-const content = lines.join('\n');
+const content = index.join('\n');
 
-fs.writeFileSync('./src/components.ts', content);
+// fs.writeFileSync(`./src/index.ts`, content);
