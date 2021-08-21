@@ -1,19 +1,15 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import glob from 'glob';
 import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
-import pkg from './package.json';
 
 export default {
-  input: 'src/index.ts',
+  input: glob.sync('src/*.ts'),
   output: [
     {
-      file: pkg.main,
-      format: 'cjs'
-    },
-    {
-      file: pkg.module,
+      dir: 'dist/components',
       format: 'esm'
     }
   ],
@@ -25,7 +21,15 @@ export default {
     copy({
       targets: [
         {
-          src: './node_modules/@htmlplus/core/dist/*',
+          src: './node_modules/@htmlplus/core/dist/externals',
+          dest: './dist'
+        },
+        {
+          src: './node_modules/@htmlplus/core/dist/json',
+          dest: './dist'
+        },
+        {
+          src: './node_modules/@htmlplus/core/dist/types',
           dest: './dist'
         }
       ]

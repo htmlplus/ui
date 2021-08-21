@@ -1,11 +1,9 @@
 const
-  Case = require('case'),
   docs = require('@htmlplus/core/dist/json/docs.json'),
-  fs = require('fs');
-
-const groupBy = (array, key) => array.reduce((result, item) => { (result[item[key]] = result[item[key]] || []).push(item); return result; }, {});
-
-const groups = groupBy(docs.components, 'group');
+  Case = require('case'),
+  fs = require('fs'),
+  path = require('path'),
+  root = path.resolve(process.cwd());
 
 const index = [];
 
@@ -15,35 +13,36 @@ for (let i = 0; i < docs.components.length; i++) {
 
   if (!component.main) continue;
 
-  const children = component.group ? (groups[component.group] || []).slice(1) : [];
+  const lines = [];
 
-  const hasChildren = component.group && children && children.length;
+  index.push(`export * from './${component.key}';`);
 
-  const all = [component, ...children];
+  const group = !component.group ? [component] : docs.components.filter(x => x.group === component.group);
 
-  const lines = [
-    '/* eslint-disable */',
-    '/* tslint:disable */',
-    '/* auto-generated react proxies */',
-    'import { proxy } from \'./proxy\';',
-    'import type { JSX } from \'@htmlplus/core\';',
-  ];
+  const children = group.slice(1);
 
+  const hasChildren = !!children.length;
+
+  lines.push('/* eslint-disable */');
+  lines.push('/* tslint:disable */');
+  lines.push('/* auto-generated react proxies */');
+  lines.push('import { proxy } from \'./proxy\';');
+  lines.push('import type { JSX } from \'@htmlplus/core\';');
   lines.push('');
 
-  all.map((component) => {
+  for (const component of group) {
     lines.push(`import { ${Case.pascal(component.tag)} } from '@htmlplus/core/dist/components/${component.tag}';`);
-  });
+  }
 
   lines.push('');
 
-  all.map((component) => {
+  for (const component of group) {
     lines.push(`if (typeof window !== 'undefined' && typeof customElements !== 'undefined' && !customElements.get('${component.tag}'))`);
     lines.push(`  customElements.define('${component.tag}', ${Case.pascal(component.tag)});`);
     lines.push('');
-  });
+  }
 
-  all.forEach((child, index) => {
+  group.forEach((child, index) => {
 
     let content = '';
 
@@ -101,6 +100,8 @@ for (let i = 0; i < docs.components.length; i++) {
 
   hasChildren && (() => {
 
+    lines.push('');
+
     let content = '';
 
     content += 'export';
@@ -139,11 +140,13 @@ for (let i = 0; i < docs.components.length; i++) {
 
   const content = lines.join('\n');
 
-  fs.writeFileSync(`./src/${component.key}.ts`, content);
+  const target = path.join(root, `src/${component.key}.ts`);
 
-  index.push(`export * from './${component.key}';`);
+  fs.writeFileSync(target, content);
 }
 
 const content = index.join('\n');
 
-// fs.writeFileSync(`./src/index.ts`, content);
+const target = path.join(root, 'src/index.ts');
+
+fs.writeFileSync(target, content);

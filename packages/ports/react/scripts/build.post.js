@@ -21,14 +21,14 @@ const
 
   const pattern = path.join(root, 'dist/components/*.d.ts');
 
-  const files = glob.sync(pattern);
+  const sources = glob.sync(pattern);
 
-  for (const file of files) {
+  for (const source of sources) {
 
-    let content = fs.readFileSync(file, { encoding: 'utf8' });
+    let content = fs.readFileSync(source, { encoding: 'utf8' });
 
     content = content.replace('import type { JSX } from \'@htmlplus/core\';', 'import type { JSX } from \'../types\';');
 
-    fs.writeFileSync(file, content);
+    fs.writeFileSync(source, content);
   }
 })();

@@ -1,21 +1,19 @@
 const
-  Case = require('case'),
   docs = require('@htmlplus/core/dist/json/docs.json'),
-  fs = require('fs');
+  Case = require('case'),
+  fs = require('fs'),
+  path = require('path'),
+  root = path.resolve(process.cwd());
 
-const lines = [
-  '/* eslint-disable */',
-  '/* tslint:disable */',
-  '/* auto-generated react proxies */',
-  'import { proxy } from \'./proxy\';',
-  '',
-  'import type { JSX } from \'@htmlplus/core\';',
-  '',
-];
+const index = [];
 
 for (let i = 0; i < docs.components.length; i++) {
 
   const component = docs.components[i];
+
+  const lines = [];
+
+  index.push(`export * from './${component.key}';`);
 
   const model = (() => {
 
@@ -31,115 +29,138 @@ for (let i = 0; i < docs.components.length; i++) {
     }
   })();
 
-  let content = '';
+  lines.push('/* eslint-disable */');
+  lines.push('/* tslint:disable */');
+  lines.push('/* auto-generated vue proxies */');
+  lines.push('import { proxy } from \'./proxy\';');
+  lines.push('import type { JSX } from \'@htmlplus/core\';');
+  lines.push('');
+  lines.push(`import { ${Case.pascal(component.tag)} as ${Case.pascal(component.tag)}Core } from '@htmlplus/core/dist/components/${component.tag}';`);
+  lines.push('');
+  lines.push(`if (typeof window !== 'undefined' && typeof customElements !== 'undefined' && !customElements.get('${component.tag}'))`);
+  lines.push(`  customElements.define('${component.tag}', ${Case.pascal(component.tag)}Core);`);
+  lines.push('');
 
-  content += 'export';
-  content += ' ';
-  content += 'const';
-  content += ' ';
-  content += Case.pascal(component.tag);
-  content += ' ';
-  content += '=';
-  content += ' ';
-  content += '/*@__PURE__*/';
-  content += ' ';
-  content += 'proxy';
-  content += '<';
-  content += `HTML${Case.pascal(component.tag)}Element`;
-  content += ',';
-  content += ' ';
-  content += `JSX.${Case.pascal(component.tag)}`;
-  content += '>';
-  content += '(';
-  content += '\'';
-  content += component.tag;
-  content += '\'';
-  content += ',';
-  content += ' ';
-  content += '{';
-  content += '\n';
-  content += ' ';
-  content += ' ';
-  content += 'prefix';
-  content += ':';
-  content += ' ';
-  content += `'${docs.prefix}'`;
-  content += ',';
-  content += '\n';
-  content += ' ';
-  content += ' ';
-  content += 'props';
-  content += ':';
-  content += ' ';
-  content += '[';
-  component.properties.map((property, index, properties) => {
-    content += '\'';
-    content += Case.camel(property.name);
-    content += '\'';
-    if (properties.length - 1 === index) return;
+  (() => {
+
+    let content = '';
+
+    content += 'export';
+    content += ' ';
+    content += 'const';
+    content += ' ';
+    content += Case.pascal(component.tag);
+    content += ' ';
+    content += '=';
+    content += ' ';
+    content += '/*@__PURE__*/';
+    content += ' ';
+    content += 'proxy';
+    content += '<';
+    content += `HTML${Case.pascal(component.tag)}Element`;
     content += ',';
     content += ' ';
-  });
-  content += `]`;
-  content += `,`;
-  content += '\n';
-  content += ' ';
-  content += ' ';
-  content += 'events';
-  content += ':';
-  content += ' ';
-  content += '[';
-  component.events.map((event, index, events) => {
+    content += `JSX.${Case.pascal(component.tag)}`;
+    content += '>';
+    content += '(';
     content += '\'';
-    content += event.name;
+    content += component.tag;
     content += '\'';
-    if (events.length - 1 === index) return;
     content += ',';
-    content += ' ';
-  });
-  content += `]`;
-  content += `,`;
-  content += '\n';
-  if (model) {
-    content += ' ';
-    content += ' ';
-    content += 'model';
-    content += ':';
     content += ' ';
     content += '{';
     content += '\n';
     content += ' ';
     content += ' ';
-    content += ' ';
-    content += ' ';
-    content += 'prop';
+    content += 'prefix';
     content += ':';
     content += ' ';
-    content += `'${model.property}'`;
+    content += `'${docs.prefix}'`;
     content += ',';
     content += '\n';
     content += ' ';
     content += ' ';
-    content += ' ';
-    content += ' ';
-    content += 'event';
+    content += 'props';
     content += ':';
     content += ' ';
-    content += `'${model.event}'`;
+    content += '[';
+    component.properties.map((property, index, properties) => {
+      content += '\'';
+      content += Case.camel(property.name);
+      content += '\'';
+      if (properties.length - 1 === index) return;
+      content += ',';
+      content += ' ';
+    });
+    content += `]`;
+    content += `,`;
     content += '\n';
     content += ' ';
     content += ' ';
+    content += 'events';
+    content += ':';
+    content += ' ';
+    content += '[';
+    component.events.map((event, index, events) => {
+      content += '\'';
+      content += event.name;
+      content += '\'';
+      if (events.length - 1 === index) return;
+      content += ',';
+      content += ' ';
+    });
+    content += `]`;
+    content += `,`;
+    content += '\n';
+    if (model) {
+      content += ' ';
+      content += ' ';
+      content += 'model';
+      content += ':';
+      content += ' ';
+      content += '{';
+      content += '\n';
+      content += ' ';
+      content += ' ';
+      content += ' ';
+      content += ' ';
+      content += 'prop';
+      content += ':';
+      content += ' ';
+      content += `'${model.property}'`;
+      content += ',';
+      content += '\n';
+      content += ' ';
+      content += ' ';
+      content += ' ';
+      content += ' ';
+      content += 'event';
+      content += ':';
+      content += ' ';
+      content += `'${model.event}'`;
+      content += '\n';
+      content += ' ';
+      content += ' ';
+      content += '}';
+      content += ',';
+      content += '\n';
+    }
     content += '}';
-    content += ',';
-    content += '\n';
-  }
-  content += '}';
-  content += `)`;
-  content += `;`;
+    content += `)`;
+    content += `;`;
 
-  lines.push(content);
+    lines.push(content);
+  })();
+
+  const content = lines.join('\n');
+
+  const target = path.join(root, `src/${component.key}.ts`);
+
+  fs.writeFileSync(target, content);
 }
 
-const content = lines.join('\n');
+const content = index.join('\n');
 
-fs.writeFileSync('./src/components.ts', content);
+const target = path.join(root, 'src/index.ts');
+
+fs.writeFileSync(target, content);

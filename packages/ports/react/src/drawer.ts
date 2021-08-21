@@ -15,6 +15,7 @@ if (typeof window !== 'undefined' && typeof customElements !== 'undefined' && !c
 
 const DrawerBase = /*@__PURE__*/ proxy<HTMLPlusDrawerElement, JSX.PlusDrawer>('plus-drawer', ['animation', 'backdrop', 'breakpoint', 'connector', 'flexible', 'mini', 'miniSize', 'open', 'persistent', 'placement', 'size', 'temporary'], ['plusClose', 'plusClosed', 'plusOpen', 'plusOpened']);
 const DrawerToggler = /*@__PURE__*/ proxy<HTMLPlusDrawerTogglerElement, JSX.PlusDrawerToggler>('plus-drawer-toggler', ['connector'], []);
+
 export const Drawer = /*@__PURE__*/ Object.assign(DrawerBase, {
   Toggler: DrawerToggler,
 });

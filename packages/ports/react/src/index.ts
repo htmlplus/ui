@@ -1,5 +1,6 @@
 export * from './aspect-ratio';
 export * from './breadcrumb';
+export * from './browse';
 export * from './card';
 export * from './click-outside';
 export * from './cropper';

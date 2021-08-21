@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PlusSwitch :class="(checked ? 'a' : 'b') + ' ' + (t ? 'c' : 'd')" v-model="checked" @change="ch" />
+    <!-- <PlusSwitch :class="(checked ? 'a' : 'b') + ' ' + (t ? 'c' : 'd')" v-model="checked" @change="ch" /> -->
     {{ checked }}
     <button @click="t = !t">
       toggle
@@ -12,8 +12,8 @@
 import { defineComponent } from "vue";
 import {
   PlusSwitch,
-// } from "./components";
-} from "@htmlplus/vue";
+// } from "@htmlplus/vue";
+} from "@htmlplus/vue/dist/components/switch";
 
 
 export default defineComponent({

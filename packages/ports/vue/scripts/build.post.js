@@ -1,28 +1,16 @@
 const
-  Case = require('case'),
   docs = require('@htmlplus/core/dist/json/docs.json'),
+  Case = require('case'),
   fs = require('fs'),
+  glob = require('glob'),
   path = require('path'),
-  pkg = require('../package.json');
-
-// Replace JSX source
-(() => {
-
-  const source = 'dist/vue/components.d.ts';
-
-  let content = fs.readFileSync(source, { encoding: 'utf8' });
-
-  content = content.replace('import type { JSX } from \'@htmlplus/core\';', 'import type { JSX } from \'../types\';');
-
-  content = content.replace(/@htmlplus\/core\/dist\//g, '../');
-
-  fs.writeFileSync(source, content);
-})();
+  pkg = require('../package.json'),
+  root = path.resolve(process.cwd());
 
 // Remove prefix from events
 (() => {
 
-  const source = 'dist/types/components.d.ts';
+  const source = path.join(root, 'dist/types/components.d.ts');
 
   let content = fs.readFileSync(source, { encoding: 'utf8' });
 
@@ -31,22 +19,29 @@ const
   fs.writeFileSync(source, content);
 })();
 
-// Remove prefix from events
+// Replace JSX source
 (() => {
 
-  const source = 'dist/vue/components.d.ts';
+  const pattern = path.join(root, 'dist/components/*.d.ts');
 
-  let content = fs.readFileSync(source, { encoding: 'utf8' });
+  const sources = glob.sync(pattern);
 
-  content = content.replace(/(on)Plus([A-Z]\w+)/g, '$1$2');
+  for (const source of sources) {
 
-  fs.writeFileSync(source, content);
+    let content = fs.readFileSync(source, { encoding: 'utf8' });
+
+    content = content.replace('import type { JSX } from \'@htmlplus/core\';', 'import type { JSX } from \'../types\';');
+
+    content = content.replace(/@htmlplus\/core\/dist\//g, '../');
+
+    fs.writeFileSync(source, content);
+  }
 })();
 
 // Vetur tags
 (() => {
 
-  const source = 'dist/vetur/tags.json';
+  const source = path.join(root, 'dist/vetur/tags.json');
 
   const dir = path.dirname(source);
 
@@ -69,7 +64,7 @@ const
 // Vetur attributes
 (() => {
 
-  const source = 'dist/vetur/attributes.json';
+  const source = path.join(root, 'dist/vetur/attributes.json');
 
   const dir = path.dirname(source);
 
@@ -104,7 +99,7 @@ const
     const
       attributes = [],
       events = []
-      slots = [];
+    slots = [];
 
     for (const property of component.properties) {
       attributes.push({
@@ -175,5 +170,7 @@ const
 
   const content = JSON.stringify(webTypes, null, 2);
 
-  fs.writeFileSync('dist/json/web-types.json', content);
+  const target = path.join(root, 'dist/json/web-types.json');
+
+  fs.writeFileSync(target, content);
 })();

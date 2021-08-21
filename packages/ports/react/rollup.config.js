@@ -1,9 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import glob from 'glob';
 import copy from 'rollup-plugin-copy';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
-import glob from 'glob';
 
 export default {
   input: glob.sync('src/*.ts'),

@@ -35,6 +35,7 @@ const DialogContent = /*@__PURE__*/ proxy<HTMLPlusDialogContentElement, JSX.Plus
 const DialogFooter = /*@__PURE__*/ proxy<HTMLPlusDialogFooterElement, JSX.PlusDialogFooter>('plus-dialog-footer', [], []);
 const DialogHeader = /*@__PURE__*/ proxy<HTMLPlusDialogHeaderElement, JSX.PlusDialogHeader>('plus-dialog-header', [], []);
 const DialogToggler = /*@__PURE__*/ proxy<HTMLPlusDialogTogglerElement, JSX.PlusDialogToggler>('plus-dialog-toggler', ['connector'], []);
+
 export const Dialog = /*@__PURE__*/ Object.assign(DialogBase, {
   Body: DialogBody,
   Content: DialogContent,

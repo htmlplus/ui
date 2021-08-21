@@ -30,6 +30,7 @@ const TabsBar = /*@__PURE__*/ proxy<HTMLPlusTabsBarElement, JSX.PlusTabsBar>('pl
 const TabsPanel = /*@__PURE__*/ proxy<HTMLPlusTabsPanelElement, JSX.PlusTabsPanel>('plus-tabs-panel', ['value'], []);
 const TabsPanels = /*@__PURE__*/ proxy<HTMLPlusTabsPanelsElement, JSX.PlusTabsPanels>('plus-tabs-panels', ['connector'], []);
 const TabsTab = /*@__PURE__*/ proxy<HTMLPlusTabsTabElement, JSX.PlusTabsTab>('plus-tabs-tab', ['disabled', 'value'], []);
+
 export const Tabs = /*@__PURE__*/ Object.assign(TabsBase, {
   Bar: TabsBar,
   Panel: TabsPanel,
