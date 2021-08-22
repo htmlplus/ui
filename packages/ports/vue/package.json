@@ -1,7 +1,6 @@
 {
   "name": "@htmlplus/vue",
   "version": "0.2.7",
-  "private": false,
   "description": "Vue output target for @htmlplus/core components.",
   "main": "dist/components/index.js",
   "module": "dist/components/index.js",
