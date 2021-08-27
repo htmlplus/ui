@@ -1,0 +1,8 @@
+@import 'reset';
+
+:host {
+  display: block;
+  --plus-full-screen-background: unset;
+
+  background-color: var(--plus-full-screen-background);
+}
