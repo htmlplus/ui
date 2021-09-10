@@ -1,0 +1,15 @@
+@mixin class($selector, $key) {
+  @if($key == null) {
+    @content;
+  }
+  @else if($key == '') {
+    .#{$selector}  {
+      @content;
+    }
+  }
+  @else {
+    .#{$selector}-#{$key}  {
+      @content;
+    }
+  }
+}

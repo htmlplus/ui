@@ -1,0 +1,1 @@
+export type IntersectionBehavior = 'blink' | 'normal' | 'appear';

@@ -1,0 +1,77 @@
+@import 'reset';
+@import 'divider.variables';
+
+:host {
+  
+  // @prop Used to adjust the color.
+  --plus-divider-color: #{$divider-color};
+
+  // @prop Used to adjust the size.
+  --plus-divider-size: #{map-get($divider-size, 'md')};
+
+  // @prop Used to adjust the type.
+  --plus-divider-type: #{map-get($divider-type, 'solid')};
+}
+
+:host {
+  display: block;
+}
+
+:host {
+  border: none;
+  border-top-color: var(--plus-divider-color);
+  border-top-style: var(--plus-divider-type);
+  border-top-width: var(--plus-divider-size);
+  min-height: auto;
+  width: auto;
+  min-width: 100%;
+}
+
+:host(#{boolean(vertical)}) {
+  border: none;
+  border-right-color: var(--plus-divider-color);
+  border-right-style: var(--plus-divider-type);
+  border-right-width: var(--plus-divider-size);
+  min-width: auto;
+  height: auto;
+  min-height: 100%;
+  align-self: stretch;
+}
+
+@each $key, $value in $divider-size {
+  :host([size='#{$key}']) {
+    --plus-divider-size: #{$value};
+  }
+}
+
+@each $key, $value in $divider-type {
+  :host([type='#{$key}']) {
+    --plus-divider-type: #{$value};
+  }
+}
+
+// TODO
+// :host([variant='middle']) {
+//   margin-right: 50px;
+//   margin-left: 50px;
+// }
+// :host([variant='inset']) {
+//   margin-right: 100px;
+// }
+// :host(#{boolean(vertical)}) .root {
+//   flex-direction: column;
+// }
+// .root {
+//   display: flex;
+//   align-items: center;
+// }
+// .content {
+//   flex-basis: auto;
+// }
+// .before,
+// .after {
+//   border-color: var(--plus-divider-color);
+//   border-top-style: var(--plus-divider-type);
+//   border-top-width: var(--plus-divider-size);
+//   flex-grow: 1;
+// }

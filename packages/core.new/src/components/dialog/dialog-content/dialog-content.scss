@@ -1,0 +1,24 @@
+@import 'reset';
+@import 'dialog-content.variables';
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  // color: $modal-content-color;
+  // pointer-events: auto;
+  background-color: $dialog-content-background-color;
+  background-clip: padding-box;
+  border: solid $dialog-content-border-width $dialog-content-border-color;
+  border-radius: $dialog-content-border-radius;
+  box-shadow: $dialog-content-box-shadow;
+  outline: 0;
+}
+
+// TODO: EX
+// :host(#{boolean(scrollable)}) {
+//   max-height: 100vh; 
+//   overflow: hidden;
+//   overflow-y: auto;
+// }

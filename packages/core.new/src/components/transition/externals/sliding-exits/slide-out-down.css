@@ -1,0 +1,14 @@
+plus-transition[name='slide-out-down'] {
+  animation-name: slide-out-down;
+}
+
+@keyframes slide-out-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}

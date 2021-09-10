@@ -1,0 +1,36 @@
+@import 'reset';
+
+:host {
+  display: flex;
+  // TODO
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding: 1em;
+  max-width: 168px;
+  min-width: 80px;
+}
+
+:host(#{boolean(grow)}) {
+  flex-grow: 1;
+}
+
+:host([state='active']) {
+  background-color: green;
+}
+
+:host([state='deactive']) .shift slot[name='label'] {
+  display: none;
+}
+
+.root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.side {
+  flex-direction: row;
+}

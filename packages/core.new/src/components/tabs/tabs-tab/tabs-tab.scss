@@ -1,0 +1,19 @@
+@import 'reset';
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  padding: 0.5rem 1rem;
+}
+
+:host(#{boolean(disabled)}) {
+  span {
+    opacity: 0.5;
+  }
+}
+
+:host(#{boolean(active)}) {
+  background-color: rgba(210, 210, 210, 1);
+}

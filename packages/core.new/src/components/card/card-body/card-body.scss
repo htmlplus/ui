@@ -1,0 +1,7 @@
+@import 'reset';
+@import 'card-body.variables';
+
+:host {
+  flex: 1 1 auto;
+  padding: $card-body-padding-y $card-body-padding-x;
+}

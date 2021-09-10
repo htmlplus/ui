@@ -1,0 +1,9 @@
+@import 'reset';
+
+:host {
+  display: none;
+}
+
+:host(#{boolean(active)}) {
+  display: block;
+}

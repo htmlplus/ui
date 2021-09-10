@@ -1,0 +1,18 @@
+@import 'reset';
+@import 'dialog-footer.variables';
+  
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $dialog-footer-padding - $dialog-footer-margin-between / 2;
+  border-top: solid $dialog-footer-border-width $dialog-footer-border-color;
+  border-bottom-right-radius: $dialog-footer-border-radius;
+  border-bottom-left-radius: $dialog-footer-border-radius;
+}
+
+:host ::slotted(*) {
+  margin: $dialog-footer-margin-between / 2;
+}

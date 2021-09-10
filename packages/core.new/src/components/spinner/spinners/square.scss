@@ -1,0 +1,22 @@
+:host([type=square]) {
+
+  .wrapper {
+    width: 85%;
+    height: 85%;
+    margin: 7.5%;
+    background-color: currentColor;
+    animation: square 1.2s infinite ease-in-out;
+  }
+
+  @keyframes square {
+    0% { 
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    } 
+    50% { 
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    } 
+    100% { 
+      transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+  }
+}

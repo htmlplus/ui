@@ -1,0 +1,14 @@
+plus-transition[name='fade-out-up-big'] {
+  animation-name: fade-out-up-big;
+}
+
+@keyframes fade-out-up-big {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+}

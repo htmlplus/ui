@@ -1,0 +1,28 @@
+plus-transition[name='typing'] {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid currentColor;
+  animation-name: typing, typing-cursor;
+  animation-duration: calc(var(--plus-transition-duration) * 4), calc(var(--plus-transition-duration) / 4) !important;
+  animation-timing-function: steps(44), steps(44);
+  animation-delay: calc(var(--plus-transition-delay) + 1), var(--plus-transition-delay) !important;
+  animation-iteration-count: var(--plus-transition-repeat), infinite !important;
+  animation-direction: var(--plus-transition-direction), normal !important;
+  animation-fill-mode: both, none;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing-cursor {
+  50% {
+    border-color: transparent;
+  }
+}

@@ -1,0 +1,15 @@
+plus-transition[name='rotat-out'] {
+  animation-name: rotat-out;
+  transform-origin: center;
+}
+
+@keyframes rotat-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 200deg);
+    opacity: 0;
+  }
+}

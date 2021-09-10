@@ -1,0 +1,40 @@
+{
+  "name": "@htmlplus/core.new",
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "dev": "run-p start:dev build:watch",
+    "start": "sirv public",
+    "start:dev": "sirv public --dev"
+  },
+  "dependencies": {
+    "@babel/traverse": "^7.14.8",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@tsconfig/svelte": "^2.0.1",
+    "acorn-jsx": "^5.3.2",
+    "case": "^1.6.3",
+    "glob": "^7.1.7",
+    "node-sass": "^6.0.1",
+    "npm-run-all": "^4.1.5",
+    "rollup": "2.38",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.2.4",
+    "rollup-plugin-svelte": "^6.1.1",
+    "rollup-plugin-terser": "^4.0.4",
+    "sirv-cli": "^0.3.2",
+    "svelte": "^3.42.4",
+    "svelte-check": "^2.2.3",
+    "svelte-preprocess": "^4.9.4",
+    "ts-morph": "^12.0.0",
+    "ts-transformer-properties-rename": "^0.11.0",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.5"
+  }
+}

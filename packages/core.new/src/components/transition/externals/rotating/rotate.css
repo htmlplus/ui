@@ -1,0 +1,14 @@
+plus-transition[name='rotate'] {
+  animation-name: rotate;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate3d(0, 0, 1, -200deg);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
