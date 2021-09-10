@@ -1,16 +1,11 @@
-import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, State, getElement, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/utils';
+import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, State } from '@app/decorators';
 import { IntersectionBehavior } from './intersection.types';
 
 /**
  * @slot default - The default slot.
  */
-@Component({
-  tag: 'plus-intersection',
-  styleUrl: 'intersection.scss',
-  shadow: true
-})
-export class Intersection implements ComponentInterface {
+@Component()
+export class Intersection {
 
   /**
    * It specifies how intersection behaves with its children. 
@@ -18,26 +13,26 @@ export class Intersection implements ComponentInterface {
    * @value appear - The children are removed from the first moment, and then they're brought back in when the element intersects with the viewport. In other words, the children are added to the DOM when the element intersects with the viewport and they are removed when the element leaves the viewport.
    * @value blink  - The children are removed from the DOM when the element intersects with the viewport and are brought back in the DOM immediately. With that said, it affects the life cycles of its children.
    */
-  @Prop()
+  @Property()
   behavior?: IntersectionBehavior = 'normal';
 
   /**
    * Disables the intersection's trigger.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * It causes the callback to be called just once for the first time.
    */
-  @Prop()
+  @Property()
   once?: boolean;
 
   /**
    * The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. 
    * Defaults to the browser viewport if not specified or if null.
    */
-  @Prop()
+  @Property()
   root?: Element;
 
   /**
@@ -46,7 +41,7 @@ export class Intersection implements ComponentInterface {
    * This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. 
    * Defaults to all zeros.
    */
-  @Prop()
+  @Property()
   rootMargin?: string;
 
   /**
@@ -56,16 +51,13 @@ export class Intersection implements ComponentInterface {
    * The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). 
    * A value of 1.0 means that the threshold isn't considered passed until every pixel is visible.
    */
-  @Prop()
+  @Property()
   threshold?: number | number[];
 
   /**
    * This event is triggered when its children intersects with the viewport in either coming to the viewport or going out of it.
    */
-  @Event({
-    bubbles: false,
-    cancelable: false,
-  })
+  @Event()
   plusChange!: EventEmitter<IntersectionObserverEntry>;
 
   @GlobalConfig('intersection', {
@@ -79,11 +71,10 @@ export class Intersection implements ComponentInterface {
   @State()
   isVisible?: boolean;
 
-  observer?: IntersectionObserver;
+  @Element()
+  $host!: HTMLElement;
 
-  get $host() {
-    return getElement(this);
-  }
+  observer?: IntersectionObserver;
 
   get attributes() {
     return {
@@ -198,7 +189,7 @@ export class Intersection implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onIntersecting(entries: IntersectionObserverEntry[]) {
 
     const [entry] = entries;

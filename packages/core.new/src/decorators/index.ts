@@ -6,11 +6,14 @@ export * from './element';
 export * from './event';
 export * from './global-config';
 export * from './global-state';
-export * from './is-ltr';
-export * from './link';
+export * from './is-rtl';
 export * from './listen';
+export * from './media';
 export * from './method';
 export * from './property';
 export * from './slots';
 export * from './state';
 export * from './watch';
+
+// TODO
+export const Host: any = {};

@@ -1,95 +1,78 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/utils';
+import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
  */
-@Component({
-  tag: 'plus-transition',
-  styleUrl: 'transition.scss',
-  shadow: true
-})
-export class Transition implements ComponentInterface {
+@Component()
+export class Transition {
 
   /**
    * Specifies the amount of delay before starting the animation to play. 
    * This may be specified in either seconds `s` or milliseconds `ms`.
    */
-  @Prop()
+  @Property()
   delay?: string = '0s';
 
   /**
    * Defines whether an animation should be played forwards, backwards or in alternate cycles.
    */
-  @Prop()
+  @Property()
   direction?: TransitionDirection = 'normal';
 
   /**
    * Specifies the length of time it will take to complete one cycle between two defined states.
    * You can also use the reservation values `slower`, `slow`, `normal`, `fast` and `faster`.
    */
-  @Prop()
+  @Property()
   duration?: TransitionDuration = 'normal';
 
   /**
    * Specifies what kind of animation you want to play. 
    * click [here](https://htmlplus.io/component/transition/names) to see the list of available animations.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   name: string;
 
   /**
    * Specifies the time that animation should be paused.
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // pause?: TransitionPause;
 
   /**
    * Specifies the time that animation will start.
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // start?: TransitionStart;
 
   /**
    * Specifies the number of times the animation should be repeated after one complete cycle.
    */
-  @Prop()
+  @Property()
   repeat?: TransitionRepeat = 1;
 
   /**
    * This event is fired any time the animation has been canceled.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusCancel!: EventEmitter<void>;
 
   /**
    * This event is fired when animation has been completed.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusEnd!: EventEmitter<void>;
 
   /**
    * This event is fired any time a new cycle has been started. 
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusIteration!: EventEmitter<void>;
 
   /**
    * This event is fired when animation has been started.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusStart!: EventEmitter<void>;
 
   @GlobalConfig('transition', {
@@ -153,22 +136,22 @@ export class Transition implements ComponentInterface {
     ]
   }
 
-  @Bind
+  @Bind()
   onCancel() {
     this.plusCancel.emit();
   }
 
-  @Bind
+  @Bind()
   onEnd() {
     this.plusEnd.emit();
   }
 
-  @Bind
+  @Bind()
   onIteration() {
     this.plusIteration.emit();
   }
 
-  @Bind
+  @Bind()
   onStart() {
     this.plusStart.emit();
   }

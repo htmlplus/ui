@@ -1,0 +1,37 @@
+import { Component, GlobalConfig, Host, Property, State } from '@app/decorators';
+import { Inject } from '../tabs/tabs.link';
+
+/**
+ * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
+ * @slot default - The default slot.
+ */
+@Component()
+export class TabsPanel {
+
+  /**
+   * Provides your own value.
+   */
+  @Property()
+  value?: any;
+
+  @State()
+  @Inject()
+  tunnel?: any;
+
+  @GlobalConfig('tabsPanel')
+  config?;
+
+  get attributes() {
+    return {
+      'active': this.tunnel && this.tunnel === this.value
+    }
+  }
+
+  render() {
+    return (
+      <Host {...this.attributes}>
+        <slot />
+      </Host>
+    )
+  }
+}

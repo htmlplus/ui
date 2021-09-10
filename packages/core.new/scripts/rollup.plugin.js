@@ -54,7 +54,7 @@ export const HTMLPLUS = (config = {}) => {
 
             const name = component.getName();
 
-            const key = Case.camel(name);
+            const key = Case.kebab(name);
 
             const tag = `${config.prefix}-${key}`;
 
@@ -255,7 +255,17 @@ export const HTMLPLUS = (config = {}) => {
             // convert ts to js and scss to css
             const processed = await preprocess(
                 source,
-                sveltePreprocess(),
+                sveltePreprocess({
+                    scss: {
+                        includePaths: [
+                            'src/styles/'
+                        ],
+                        injectGlobalPaths: [
+                            'src/styles/mixins/index.scss',
+                            'src/styles/variables/index.scss'
+                        ]
+                    }
+                }),
                 {
                     filename: id
                 }

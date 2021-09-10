@@ -1,15 +1,10 @@
-import { Component, ComponentInterface, Host, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
+import { Component, GlobalConfig, Host } from '@app/decorators';
 
 /**
- * @internal
+ * @development
  */
-@Component({
-  tag: 'plus-ripple',
-  styleUrl: 'ripple.scss',
-  shadow: true
-})
-export class Ripple implements ComponentInterface {
+@Component()
+export class Ripple {
 
   @GlobalConfig('ripple')
   config?;

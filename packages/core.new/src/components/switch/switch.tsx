@@ -1,21 +1,16 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
+import { Component, Element, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
 
 /**
  * @development
  */
-@Component({
-  tag: 'plus-switch',
-  styleUrl: 'switch.scss',
-  shadow: true
-})
-export class Switch implements ComponentInterface {
+@Component()
+export class Switch {
 
   /**
    * Puts the switch in checked state
    * @model
    */
-  @Prop({
+  @Property({
     reflect: true,
     mutable: true
   })
@@ -24,19 +19,19 @@ export class Switch implements ComponentInterface {
   /**
    * Disables the switch
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
    * Change the appearance of the switch to put the text inside the switch
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   inset?: boolean;
 
   /**
    * Switches the location of yes and no options
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   reverse?: boolean;
 
   /**

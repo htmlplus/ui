@@ -1,24 +1,19 @@
-import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
-// import { } from './toast.types';
+import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+// import { } from './template.types';
 
 /**
  * TODO
- * @internal 
+ * @development 
  * @slot default - The default slot.
  * @examples default
  */
-@Component({
-  tag: 'plus-template',
-  styleUrl: 'template.scss',
-  shadow: true
-})
-export class Template implements ComponentInterface {
+@Component()
+export class Template {
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   @GlobalConfig('template')

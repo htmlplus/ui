@@ -1,8 +1,6 @@
-import { Bind, Component, Event, EventEmitter, GlobalConfig, /*Host,*/ Property, State, Watch } from "@app/decorators";
+import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Watch } from "@app/decorators";
 import { toUnit } from '@app/helper';
 import { StickyState, StickyTop } from './sticky.types';
-
-const Host: any = {};
 
 /**
  * @slot default - The default slot.
@@ -40,10 +38,7 @@ export class Sticky {
    * When the component state is changed this event triggers. 
    * To enable this event you shold set `watcher` property to `true`.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusChange!: EventEmitter<StickyState>;
 
   @GlobalConfig('sticky')

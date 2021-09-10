@@ -1,34 +1,30 @@
-import { Component, ComponentInterface, Element, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig, Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/utils';
+import { Component, Element, GlobalConfig, Host, Property } from '@app/decorators';
+import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
  * @experimental 
  * @slot default - The default slot.
  */
-@Component({
-  tag: 'plus-portal',
-  styleUrl: 'portal.scss',
-  shadow: true
-})
-export class Portal implements ComponentInterface {
+@Component()
+export class Portal {
 
   /**
    * Disables the portal.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Specifies the position of the portal content relative to the target.
    */
-  @Prop()
+  @Property()
   strategy?: PortalStrategy = 'append';
 
   /**
    * Specifies the position of the portal content, It Can include css selectors, 
    * node or any html elements.
    */
-  @Prop()
+  @Property()
   target?: PortalTarget = 'body';
 
   @GlobalConfig('portal', {

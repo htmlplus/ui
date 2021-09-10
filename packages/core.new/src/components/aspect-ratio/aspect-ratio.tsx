@@ -1,7 +1,5 @@
-import { Component, GlobalConfig, Property } from '@app/decorators';
+import { Component, GlobalConfig, Host, Property } from '@app/decorators';
 import { AspectRatioValue } from './aspect-ratio.types';
-
-const Host: any = {};
 
 /**
  * @slot default - The default slot.

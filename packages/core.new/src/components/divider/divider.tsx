@@ -1,44 +1,39 @@
-import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
-import { Direction, GlobalConfig, IsRTL } from '@app/utils';
+import { Component, Direction, GlobalConfig, Host, IsRTL, Property } from '@app/decorators';
 import { DividerSize, DividerType } from './divider.types';
 
 /**
  */
-@Component({
-  tag: 'plus-divider',
-  styleUrl: 'divider.scss',
-  shadow: true
-})
-export class Divider implements ComponentInterface {
+@Component()
+export class Divider {
 
   /**
    * TODO
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // placement?: DividerPlacement = 'center';
 
   /**
    * Determines the width of the divider.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   size?: DividerSize = 'md';
 
   /**
    * Specifies different divider styles.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   type?: DividerType = 'solid';
 
   /**
    * TODO
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // variant?: DividerVariant = 'full';
 
   /**
    * You can use vertical property for vertical division.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   vertical?: boolean;
 
   @GlobalConfig('divider', {

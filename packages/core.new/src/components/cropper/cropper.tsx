@@ -1,6 +1,6 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
+import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Method, Property } from '@app/decorators';
+import * as Helper from '@app/helper';
 import CropperCore from 'cropperjs';
-import { Bind, GlobalConfig, Helper } from '@app/utils';
 import {
   CropperAspectRatio,
   CropperValue,
@@ -16,53 +16,49 @@ import {
 
 /**
  */
-@Component({
-  tag: 'plus-cropper',
-  styleUrl: 'cropper.scss',
-  shadow: true
-})
-export class Cropper implements ComponentInterface {
+@Component()
+export class Cropper {
 
   /**
    * A number between 0 and 1. Define the automatic cropping area size.
    */
-  @Prop()
+  @Property()
   area?: number = 0.75;
 
   /**
    * Defines the initial aspect ratio of the viewport.
    */
-  @Prop()
+  @Property()
   aspectRatio?: CropperAspectRatio;
 
   /**
    * Shows the black modal above the image and under the viewport.
    */
-  @Prop()
+  @Property()
   backdrop?: boolean = true;
 
   /**
    * Shows the grid background of the container.
    */
-  @Prop()
+  @Property()
   background?: boolean;
 
   /**
    * Disables the cropper.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Shows the dashed lines above the viewport.
    */
-  @Prop()
+  @Property()
   guides?: boolean;
 
   /**
    * Shows the center indicator above the viewport.
    */
-  @Prop()
+  @Property()
   indicator?: boolean;
 
   /**
@@ -70,7 +66,7 @@ export class Cropper implements ComponentInterface {
    * @value crop - Creates a new viewport and allows you to move and resize it.
    * @value move - moves the canvas and viewport.
    */
-  @Prop()
+  @Property()
   mode?: CropperMode = 'move';
 
   /**
@@ -79,38 +75,38 @@ export class Cropper implements ComponentInterface {
    * @value edge - Enables to resize the viewport by dragging on the vertices.
    * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
    */
-  @Prop()
+  @Property()
   resizer?: CropperResizer = 'both';
 
   /**
    * Specifies the shape of the resizer.
    */
-  @Prop()
+  @Property()
   resizerShape?: CropperResizerShape = 'square';
 
   /**
    * Re-renders the cropper when resizing the window.
    * @value reset - Restores the cropped area after resizing the window.
    */
-  @Prop()
+  @Property()
   responsive?: CropperResponsive = 'reset';
 
   /**
    * Specifies the shape of the viewport.
    */
-  @Prop()
+  @Property()
   shape?: CropperShape = 'rectangle';
 
   /**
    * Replace the image's src and rebuild the cropper.
    */
-  @Prop()
+  @Property()
   src?: string;
 
   /**
    * The previous cropped data if you had stored, will be passed to value automatically when initialized. 
    */
-  @Prop({ mutable: true })
+  @Property({ mutable: true })
   value?: CropperValue;
 
   /**
@@ -128,7 +124,7 @@ export class Cropper implements ComponentInterface {
    * @value fit     - restrict the viewport to not exceed the size of the canvas.
    * @value none    - no restrictions.
    */
-  @Prop()
+  @Property()
   view?: CropperView = 'cover';
 
   /**
@@ -139,40 +135,31 @@ export class Cropper implements ComponentInterface {
    * @value wheel - Enables to zoom the image by wheeling mouse.
    * @
    */
-  @Prop()
+  @Property()
   zoomable?: CropperZoomable = true;
 
   /**
    * Defines zoom ratio when zooming the image by wheeling mouse.
    */
-  @Prop()
+  @Property()
   zoomRatio?: number = 0.1;
 
   /**
    * This event fires when the target image has been loaded and the cropper instance is ready for operating.
    */
-  @Event({
-    bubbles: false,
-    cancelable: false,
-  })
+  @Event()
   plusReady!: EventEmitter<void>;
 
   /**
    * This event fires when the canvas or the viewport changed.
    */
-  @Event({
-    bubbles: false,
-    cancelable: false,
-  })
+  @Event()
   plusCrop!: EventEmitter<void>;
 
   /**
    * This event fires when a cropper instance starts to zoom in or zoom out its canvas.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true,
-  })
+  @Event({ cancelable: true })
   plusZoom!: EventEmitter<CropperZoomData>;
 
   @GlobalConfig('cropper', {
@@ -230,7 +217,7 @@ export class Cropper implements ComponentInterface {
 
       if (this.responsive === 'reset') return this.responsive;
 
-      return Helper.toBoolean(this.responsive);
+      return this.responsive;
     })();
 
     const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any)();
@@ -241,7 +228,7 @@ export class Cropper implements ComponentInterface {
 
       if (['touch', 'wheel'].includes(value)) return value;
 
-      return Helper.toBoolean(this.zoomable);
+      return this.zoomable;
     })();
 
     return {
@@ -261,18 +248,18 @@ export class Cropper implements ComponentInterface {
        */
       autoCropArea: parseFloat(`${this.area}`),
       aspectRatio: this.shape === 'rectangle' ? aspectRatio : 1,
-      background: Helper.toBoolean(this.background),
-      center: Helper.toBoolean(this.indicator),
+      background: this.background,
+      center: this.indicator,
       cropBoxMovable: this.mode === 'crop',
       cropBoxResizable: this.mode === 'crop',
       data: this.value,
       dragMode: this.mode,
-      guides: Helper.toBoolean(this.guides),
+      guides: this.guides,
       highlight: false,
       initialAspectRatio: NaN,
       minContainerWidth: 0,
       minContainerHeight: 0,
-      modal: Helper.toBoolean(this.backdrop),
+      modal: this.backdrop,
       movable: true,
       responsive: !!responsive,
       restore: responsive === 'reset',
@@ -554,7 +541,7 @@ export class Cropper implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onCrop() {
 
     this.updateValue();
@@ -562,7 +549,7 @@ export class Cropper implements ComponentInterface {
     this.plusCrop.emit();
   }
 
-  @Bind
+  @Bind()
   onReady() {
 
     // TODO
@@ -573,7 +560,7 @@ export class Cropper implements ComponentInterface {
     this.plusReady.emit();
   }
 
-  @Bind
+  @Bind()
   onZoom(event) {
 
     const difference = event.detail.ratio - event.detail.oldRatio;

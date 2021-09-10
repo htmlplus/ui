@@ -1,35 +1,28 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { Bind, GlobalConfig, ClickOutside as ClickOutsideCore } from '@app/utils';
+import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { ClickOutside as ClickOutsideCore } from '@app/services';
 
 /**
  * @slot default - The default slot.
  */
-@Component({
-  tag: 'plus-click-outside',
-  styleUrl: 'click-outside.scss',
-  shadow: true
-})
-export class ClickOutside implements ComponentInterface {
+@Component()
+export class ClickOutside {
 
   /**
    * Disable the component.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * The callback occurs only once.
    */
-  @Prop()
+  @Property()
   once?: boolean;
 
   /**
   * Emitted when outside of the component is clicked.
   */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true  })
   plusClickOutside!: EventEmitter<void>;
 
   @GlobalConfig('clickOutside')
@@ -63,7 +56,7 @@ export class ClickOutside implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onClickOutside() {
     this.once && this.unbind();
     this.plusClickOutside.emit();

@@ -1,5 +1,4 @@
-import { Component, ComponentInterface, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
-import { Bind, GlobalConfig, IsRTL } from '@app/utils';
+import { Bind, Component, Element, GlobalConfig, Host, IsRTL, Property, State, forceUpdate } from '@app/decorators';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -10,41 +9,33 @@ import * as Constants from './breadcrumb.constants';
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
  */
-@Component({
-  tag: 'plus-breadcrumb',
-  styleUrl: 'breadcrumb.scss',
-  shadow: true
-})
-export class Breadcrumb implements ComponentInterface {
+@Component()
+export class Breadcrumb {
 
   /**
    * For localization purposes, you can use the provided translations.
    */
-  @Prop()
+  @Property()
   expanderText?: string = 'Show path';
 
   /**
    * The expander button is displayed when the number of the items reached the maximum limit. 
    * The offset property specifies the position of the expander button.
    */
-  @Prop()
+  @Property()
   offset?: number = 1;
 
   /**
    * Specifies Maximum items that is allowed to be displayed.
    */
-  @Prop()
+  @Property()
   max?: number;
 
   /**
    * You can use HTML elements, Custom separator, or SVG icon.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   separator?: string;
-
-  // TODO
-  // @Debug('breadcrumb')
-  // debug?;
 
   @GlobalConfig('breadcrumb', {
     expanderText: 'Show path',
@@ -231,7 +222,7 @@ export class Breadcrumb implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onChange() {
     this.update(true, false);
   }

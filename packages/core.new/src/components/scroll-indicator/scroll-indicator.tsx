@@ -1,7 +1,5 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, /*Host,*/ Property, Watch } from '@app/decorators';
+import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
-
-const Host: any = {};
 
 /**
  * @part indicator - Indicator element.
@@ -24,16 +22,13 @@ export class ScrollIndicator {
   /**
    * Indicates which scroll (horizontal or vertical) to be used as its source.
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   vertical?: boolean;
 
   /**
    * When the children is scrolled this event trigger.
    */
-  @Event({
-    bubbles: true,
-    cancelable: false
-  })
+  @Event()
   plusScroll: EventEmitter<number>;
 
   @GlobalConfig('scrollIndicator', {

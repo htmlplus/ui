@@ -1,84 +1,77 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
-import { Bind, Helper } from '@app/utils';
+import { Bind, Component, Element, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
+import * as Helper from '@app/helper';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
- * @internal
+ * @development
  */
-@Component({
-  tag: 'plus-menu',
-  styleUrl: 'menu.scss',
-  shadow: true
-})
-export class Menu implements ComponentInterface {
+@Component()
+export class Menu {
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   alignX?: MenuAlignX = 'start';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   alignY?: MenuAlignY = 'bottom';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   fixed?: boolean;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   growX?: MenuGrowX = 'auto';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   growY?: MenuGrowY = 'auto';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   offsetX?: string | number;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   offsetY?: string | number;
 
   /**
    * TODO
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   open?: boolean;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   persistent?: boolean;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   trigger?: 'click' | 'hover' = 'click';
 
   /**
    * TODO
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusClose!: EventEmitter<void>;
 
   @State()
@@ -236,7 +229,7 @@ export class Menu implements ComponentInterface {
     };
   }
 
-  @Bind
+  @Bind()
   update(entries) {
 
     const content: any = this.$host.shadowRoot.querySelector('.content');
@@ -250,7 +243,7 @@ export class Menu implements ComponentInterface {
     Object.keys(style).map((key) => this.$content.style[key] = style[key]);
   }
 
-  @Listen('click', { target: 'document', capture: true })
+  // TODO @Listen('click', { target: 'document', capture: true })
   onOutsideClick(event) {
 
     if (!this.open) return;
@@ -299,6 +292,6 @@ export class Menu implements ComponentInterface {
           </div>
         )}
       </Host>
-    );
+    )
   }
 }

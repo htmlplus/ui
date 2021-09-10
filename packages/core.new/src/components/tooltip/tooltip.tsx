@@ -1,17 +1,12 @@
-import { Component, ComponentInterface, Element, EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
-import { createPopper, Instance } from "@popperjs/core";
-import { Bind, GlobalConfig, Helper, IsRTL } from '@app/utils';
+import { Bind, Component, Element, EventEmitter, GlobalConfig, Host, IsRTL, Property, State, Watch } from '@app/decorators';
+import { createPopper, Instance } from '@popperjs/core';
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
 
 /**
  * @experimental 
  */
-@Component({
-  tag: 'plus-tooltip',
-  styleUrl: 'tooltip.scss',
-  shadow: true,
-})
-export class Tooltip implements ComponentInterface {
+@Component()
+export class Tooltip {
 
   // TODO
   // https://popper.js.org
@@ -25,109 +20,97 @@ export class Tooltip implements ComponentInterface {
   /**
    * Tooltip animation.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   animation?: TooltipAnimation = 'fade';
 
   /**
    * Tooltip append to a element.
    */
-  @Prop()
+  @Property()
   appendTo?: any;
 
   /**
    * Tooltip arrow model.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   arrow?: TooltipArrow = 'default';
 
   /**
    * Delay for show tooltip.
    */
-  @Prop()
+  @Property()
   delay?: number;
 
   /**
    * Tooltip disable.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Add fixed strategy to popper.
    */
-  @Prop()
+  @Property()
   flip?: boolean;
 
   /**
    * Add fixed strategy to popper.
    */
-  @Prop()
+  @Property()
   fixed?: boolean;
 
   /**
    * Vertical & horizontal offset from the target.
    */
-  // @Prop()
+  // @Property()
   offset?: number = undefined;
 
   /**
    * Horizontal offset from the target.
    */
-  // @Prop()
+  // @Property()
   offsetX?: number;
 
   /**
    * Vertical offset from the target.
    */
-  // @Prop()
+  // @Property()
   offsetY?: number;
 
   /**
    * How to position the tooltip.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   placement?: TooltipPlacement = 'auto';
 
   /**
    * How tooltip is triggered, include click, hover, focus.
    */
-  @Prop()
+  @Property()
   trigger?: TooltipTrigger = ['focus', 'hover'];
 
   /**
    * When the tooltip is going to hide
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: true,
-  // })
+  // @Event({ cancelable: true })
   plusClose!: EventEmitter<void>;
 
   /**
    * When the tooltip is completely closed and its animation is completed.
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: false,
-  // })
+  // @Event()
   plusClosed!: EventEmitter<void>;
 
   /**
    * When the tooltip is going to show this event triggers.
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: true,
-  // })
+  // @Event({ cancelable: true })
   plusOpen!: EventEmitter<void>;
 
   /**
    * When the tooltip is completely shown and its animation is completed.
    */
-  // @Event({
-  //   bubbles: false,
-  //   cancelable: false,
-  // })
+  // @Event()
   plusOpened!: EventEmitter<void>;
 
   @GlobalConfig('tooltip', {
@@ -191,9 +174,10 @@ export class Tooltip implements ComponentInterface {
   }
 
   get options() {
+
     const offset = [this.offsetX ?? this.offset ?? null, this.offsetY ?? this.offset ?? null];
 
-    const strategy = Helper.toBoolean(this.fixed) ? 'fixed' : 'absolute' as any;
+    const strategy = this.fixed ? 'fixed' : 'absolute' as any;
 
     return {
       placement: this.placement,
@@ -261,7 +245,7 @@ export class Tooltip implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onHide() {
     this.instance?.destroy();
     this.state = 'hide';
@@ -270,7 +254,7 @@ export class Tooltip implements ComponentInterface {
     // this.plusClosed.emit();
   }
 
-  @Bind
+  @Bind()
   onShow() {
     this.instance = createPopper(this.$activator, this.$tooltip, this.options);
     this.state = 'show';

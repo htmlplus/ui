@@ -1,7 +1,5 @@
-import { Component, Bind, Event, EventEmitter, GlobalConfig, Method, Property, State } from '@app/decorators';
+import { Component, Bind, Event, EventEmitter, GlobalConfig, Host, Method, Property, State } from '@app/decorators';
 import { BrowseEvent, BrowseEventFile } from './browse.types';
-
-const Host: any = {};
 
 /**
  * @slot default - The default slot.

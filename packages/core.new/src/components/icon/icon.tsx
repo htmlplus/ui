@@ -1,16 +1,11 @@
-import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
+import { Component, GlobalConfig, Host, Property } from '@app/decorators';
 
 /**
  * @development
  * @slot default - The default slot.
  */
-@Component({
-  tag: 'plus-icon',
-  styleUrl: 'icon.scss',
-  shadow: true
-})
-export class Icon implements ComponentInterface {
+@Component()
+export class Icon {
 
   /**
    * TODO
@@ -23,32 +18,32 @@ export class Icon implements ComponentInterface {
   /**
    * Adjusts the color of the icons.(All main web color formats are accepted)
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   color?: string;
 
   /**
    * Flips the icon.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   flip?: 'both' | 'horizontal' | 'vertical';
 
   /**
    * Specifies the name of the icon.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   name?: string;
 
   /**
    * Rotates the icon.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   rotate?: 90 | 180 | 270;
 
   /**
    * Specifies the size of the icon.
    * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   size?: string;
 
   @GlobalConfig('icon')
