@@ -1,0 +1,1 @@
+export const toBoolean = (input) => input + '' === 'true' || input + '' === '';

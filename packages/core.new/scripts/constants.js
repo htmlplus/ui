@@ -1,0 +1,12 @@
+export const TOKEN_THIS = 'instance';
+export const TOKEN_API = `${TOKEN_THIS}.$api`;
+export const TOKEN_DECORATOR_COMPONENT = 'Component';
+export const TOKEN_DECORATOR_EVENT = 'Event';
+export const TOKEN_DECORATOR_PROPERTY = 'Property';
+export const TOKEN_DECORATOR_STATE = 'State';
+export const TOKEN_DECORATOR_METHOD = 'Method';
+export const TOKEN_DECORATOR_HOST = 'Element';
+export const TOKEN_DECORATOR_SLOTS = 'Slots';
+export const TOKEN_METHOD_RENDER = 'render';
+export const TOKEN_LIFECYCLE_MOUNT = 'connectedCallback';
+export const TOKEN_LIFECYCLE_UNMOUNT = 'disconnectedCallback';

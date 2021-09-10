@@ -4,20 +4,8 @@ import sveltePreprocess from 'svelte-preprocess';
 import { Project } from 'ts-morph';
 import fs from 'fs';
 import path from 'path';
-import * as transformers from './transformers/index';
-
-const TOKEN_THIS = 'instance';
-const TOKEN_API = `${TOKEN_THIS}.$api`;
-const TOKEN_DECORATOR_COMPONENT = 'Component';
-const TOKEN_DECORATOR_EVENT = 'Event';
-const TOKEN_DECORATOR_PROPERTY = 'Property';
-const TOKEN_DECORATOR_STATE = 'State';
-const TOKEN_DECORATOR_METHOD = 'Method';
-const TOKEN_DECORATOR_HOST = 'Element';
-const TOKEN_DECORATOR_SLOTS = 'Slots';
-const TOKEN_METHOD_RENDER = 'render';
-const TOKEN_LIFECYCLE_MOUNT = 'connectedCallback';
-const TOKEN_LIFECYCLE_UNMOUNT = 'disconnectedCallback';
+import * as visitors from './visitors/index';
+import * as CONSTANTS from './constants';
 
 // TODO
 const utils = fs.readFileSync(path.resolve(__dirname, 'scripts/utils.js'), { encoding: 'utf8' });
@@ -43,13 +31,13 @@ export const HTMLPLUS = (config = {}) => {
 
             const component = ast
                 .getClasses()
-                .find((item) => item.getDecorator(TOKEN_DECORATOR_COMPONENT));
+                .find((item) => item.getDecorator(CONSTANTS.TOKEN_DECORATOR_COMPONENT));
 
             // TODO
             if (!component) return null;
 
             component
-                .getDecorator(TOKEN_DECORATOR_COMPONENT)
+                .getDecorator(CONSTANTS.TOKEN_DECORATOR_COMPONENT)
                 .remove();
 
             const name = component.getName();
@@ -60,7 +48,7 @@ export const HTMLPLUS = (config = {}) => {
 
             const properties = component
                 .getProperties()
-                .filter((property) => property.getDecorator(TOKEN_DECORATOR_PROPERTY));
+                .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_PROPERTY));
 
             // TODO
             const reflects = properties
@@ -68,37 +56,37 @@ export const HTMLPLUS = (config = {}) => {
 
             const events = component
                 .getProperties()
-                .filter((property) => property.getDecorator(TOKEN_DECORATOR_EVENT));
+                .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_EVENT));
 
             const states = component
                 .getProperties()
-                .filter((property) => property.getDecorator(TOKEN_DECORATOR_STATE));
+                .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_STATE));
 
             const slots = component
                 .getProperties()
-                .filter((method) => method.getDecorator(TOKEN_DECORATOR_SLOTS));
+                .filter((method) => method.getDecorator(CONSTANTS.TOKEN_DECORATOR_SLOTS));
 
             const mount = component
                 .getMethods()
-                .find((method) => method.getName() === TOKEN_LIFECYCLE_MOUNT);
+                .find((method) => method.getName() === CONSTANTS.TOKEN_LIFECYCLE_MOUNT);
 
             const unmount = component
                 .getMethods()
-                .find((method) => method.getName() === TOKEN_LIFECYCLE_UNMOUNT);
+                .find((method) => method.getName() === CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT);
 
             const methods = component
                 .getMethods()
-                .filter((method) => method.getDecorator(TOKEN_DECORATOR_METHOD))
+                .filter((method) => method.getDecorator(CONSTANTS.TOKEN_DECORATOR_METHOD))
                 .map((method) => {
 
-                    method.getDecorator(TOKEN_DECORATOR_METHOD).remove();
+                    method.getDecorator(CONSTANTS.TOKEN_DECORATOR_METHOD).remove();
 
                     return method;
                 });
 
             const render = component
                 .getMethods()
-                .find((method) => method.getName() === TOKEN_METHOD_RENDER);
+                .find((method) => method.getName() === CONSTANTS.TOKEN_METHOD_RENDER);
 
             // TODO
             const template = render
@@ -108,10 +96,10 @@ export const HTMLPLUS = (config = {}) => {
                 .getExpression();
 
             // TODO
-            Object.keys(transformers)
+            Object.keys(visitors)
                 .forEach((key) => {
 
-                    const transformer = transformers[key];
+                    const transformer = visitors[key];
 
                     template.transform((traversal) => {
 
@@ -148,18 +136,18 @@ export const HTMLPLUS = (config = {}) => {
 
             lines.push('const host = get_current_component();');
 
-            lines.push(`const ${TOKEN_THIS} = new ${name}();`);
+            lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${name}();`);
 
-            lines.push(`${TOKEN_API} = {};`);
+            lines.push(`${CONSTANTS.TOKEN_API} = {};`);
 
-            lines.push(`${TOKEN_API}.host = () => host;`);
+            lines.push(`${CONSTANTS.TOKEN_API}.host = () => host;`);
 
             if (slots.length)
-                lines.push(`${TOKEN_API}.slots = () => $$slots;`);
+                lines.push(`${CONSTANTS.TOKEN_API}.slots = () => $$slots;`);
 
             if (properties.length)
                 lines.push(`
-                    ${TOKEN_API}.property = (arg1, arg2) => {
+                    ${CONSTANTS.TOKEN_API}.property = (arg1, arg2) => {
                         switch (arg1) {
                             ${properties.map((property) => `case '${property.getName()}': {${property.getName()} = arg2;break;}`).join('\n')}
                         }
@@ -168,7 +156,7 @@ export const HTMLPLUS = (config = {}) => {
 
             if (states.length)
                 lines.push(`
-                    ${TOKEN_API}.state = (arg1, arg2) => {
+                    ${CONSTANTS.TOKEN_API}.state = (arg1, arg2) => {
                         switch (arg1) {
                             ${states.map((state) => `case '${state.getName()}': {${state.getName()} = arg2;break;}`).join('\n')}
                         }
@@ -196,7 +184,7 @@ export const HTMLPLUS = (config = {}) => {
 
                 const value = isBoolean ? `toBoolean(${name})` : name;
 
-                lines.push(`$: ${TOKEN_THIS}.${name} = ${value};`);
+                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${value};`);
             });
 
             states.forEach((state) => {
@@ -220,20 +208,20 @@ export const HTMLPLUS = (config = {}) => {
 
                 const name = method.getName();
 
-                lines.push(`export const ${name} = (...params) => ${TOKEN_THIS}.${name}(...params);`);
+                lines.push(`export const ${name} = (...params) => ${CONSTANTS.TOKEN_THIS}.${name}(...params);`);
             });
 
             if (mount)
-                lines.push(`onMount(() => ${TOKEN_THIS}.${TOKEN_LIFECYCLE_MOUNT}());`);
+                lines.push(`onMount(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_MOUNT}());`);
 
             if (unmount)
-                lines.push(`onDestroy(() => ${TOKEN_THIS}.${TOKEN_LIFECYCLE_UNMOUNT}());`);
+                lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
 
             // TODO
             // lines.push(`onMount(() => host && host.attribute('state', state));`);
             // lines.push(`$: host && host.attribute('state', state)`);
-            // lines.push(`$: host && toAttributes(host, ${TOKEN_THIS}.attributes);`);
-            // lines.push(`onMount(() => toAttributes(host, ${TOKEN_THIS}.attributes));`);
+            // lines.push(`$: host && toAttributes(host, ${CONSTANTS.TOKEN_THIS}.attributes);`);
+            // lines.push(`onMount(() => toAttributes(host, ${CONSTANTS.TOKEN_THIS}.attributes));`);
 
             lines.push('</script>');
 
