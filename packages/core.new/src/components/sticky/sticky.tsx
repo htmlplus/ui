@@ -1,5 +1,5 @@
 import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Watch } from "@app/decorators";
-import { toUnit } from '@app/helper';
+import { toUnit } from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
 /**

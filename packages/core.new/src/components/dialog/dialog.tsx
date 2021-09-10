@@ -1,5 +1,5 @@
 import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
-import * as Helper from '@app/helper';
+import { classes, toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar } from '@app/services';
 import { Action, Observable, reconnect } from './dialog.link';
 import {
@@ -209,9 +209,9 @@ export class Dialog {
 
     y = y || 'center';
 
-    x = Helper.toAxis(x, this.isRTL);
+    x = toAxis(x, this.isRTL);
 
-    return Helper.classes(
+    return classes(
       'dialog',
       {
         x,

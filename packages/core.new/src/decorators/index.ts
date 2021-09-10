@@ -13,6 +13,7 @@ export * from './method';
 export * from './property';
 export * from './slots';
 export * from './state';
+export * from './unit';
 export * from './watch';
 
 // TODO

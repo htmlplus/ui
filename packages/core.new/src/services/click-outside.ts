@@ -1,4 +1,4 @@
-import { eventPath } from '@app/helper';
+import { eventPath } from '@app/helpers';
 
 export class ClickOutside {
 

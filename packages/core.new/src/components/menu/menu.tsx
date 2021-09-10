@@ -1,5 +1,5 @@
 import { Bind, Component, Element, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
-import * as Helper from '@app/helper';
+import { eventPath, toUnit } from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
@@ -150,7 +150,7 @@ export class Menu {
 
   click(event) {
 
-    const elements = Helper.eventPath(event);
+    const elements = eventPath(event);
 
     const index = elements.findIndex((element) => element === this.$activator);
 
@@ -204,7 +204,7 @@ export class Menu {
 
     if (this.offsetX && !this.getGrowX.match(/both/)) {
 
-      const offset = Helper.toUnit(this.offsetX);
+      const offset = toUnit(this.offsetX);
 
       const operator = this.getGrowX.match(/left|start/) ? '-' : '+';
 
@@ -213,7 +213,7 @@ export class Menu {
 
     if (this.offsetY && !this.getGrowY.match(/both/)) {
 
-      const offset = Helper.toUnit(this.offsetY);
+      const offset = toUnit(this.offsetY);
 
       const operator = this.getGrowY.match(/top/) ? '-' : '+';
 
@@ -248,7 +248,7 @@ export class Menu {
 
     if (!this.open) return;
 
-    const path = Helper.eventPath(event);
+    const path = eventPath(event);
 
     const activator = this.$host.shadowRoot.querySelector('.activator');
 
