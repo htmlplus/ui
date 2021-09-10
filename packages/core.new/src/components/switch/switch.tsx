@@ -82,7 +82,7 @@ export class Switch {
 
     this.checked = !this.checked;
 
-    this.plusChange.emit();
+    this.plusChange();
   }
 
   render() {

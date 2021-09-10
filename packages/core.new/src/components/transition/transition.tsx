@@ -138,22 +138,22 @@ export class Transition {
 
   @Bind()
   onCancel() {
-    this.plusCancel.emit();
+    this.plusCancel();
   }
 
   @Bind()
   onEnd() {
-    this.plusEnd.emit();
+    this.plusEnd();
   }
 
   @Bind()
   onIteration() {
-    this.plusIteration.emit();
+    this.plusIteration();
   }
 
   @Bind()
   onStart() {
-    this.plusStart.emit();
+    this.plusStart();
   }
 
   connectedCallback() {

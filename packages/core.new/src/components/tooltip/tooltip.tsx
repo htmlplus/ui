@@ -250,8 +250,8 @@ export class Tooltip {
     this.instance?.destroy();
     this.state = 'hide';
     this.$tooltip.classList.remove('show');
-    // this.plusClose.emit();
-    // this.plusClosed.emit();
+    // this.plusClose();
+    // this.plusClosed();
   }
 
   @Bind()
@@ -259,8 +259,8 @@ export class Tooltip {
     this.instance = createPopper(this.$activator, this.$tooltip, this.options);
     this.state = 'show';
     this.$tooltip.classList.add('show');
-    // this.plusOpen.emit();
-    // this.plusOpened.emit();
+    // this.plusOpen();
+    // this.plusOpened();
   }
 
   /**

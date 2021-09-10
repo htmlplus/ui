@@ -56,7 +56,7 @@ export class Tabs {
   @Action()
   change(value: any) {
 
-    const event = this.plusChange.emit(value);
+    const event = this.plusChange(value);
 
     if (event.defaultPrevented) return;
 

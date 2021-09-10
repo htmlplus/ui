@@ -162,7 +162,7 @@ export class Menu {
 
     this.open = !this.open;
 
-    if (!this.open) this.plusClose.emit();
+    if (!this.open) this.plusClose();
   }
 
   s(basex?: string, basey?: string) {
@@ -256,7 +256,7 @@ export class Menu {
 
     if (this.persistent && path.find((element) => element === this.$host)) return;
 
-    const result = this.plusClose.emit();
+    const result = this.plusClose();
 
     if (!result.preventDefault) return;
 

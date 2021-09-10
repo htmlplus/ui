@@ -59,7 +59,7 @@ export class ClickOutside {
   @Bind()
   onClickOutside() {
     this.once && this.unbind();
-    this.plusClickOutside.emit();
+    this.plusClickOutside();
   }
 
   /**

@@ -260,7 +260,7 @@ export class Drawer {
 
     if (!this.isOpen) return;
 
-    if (!silent && this.plusClose.emit().defaultPrevented) return;
+    if (!silent && this.plusClose().defaultPrevented) return;
 
     if (!animation) return this.onHide();
 
@@ -276,7 +276,7 @@ export class Drawer {
 
         if (silent) return;
 
-        this.plusClosed.emit()
+        this.plusClosed()
       }
     })
   }
@@ -285,7 +285,7 @@ export class Drawer {
 
     if (this.isOpen) return;
 
-    if (!silent && this.plusOpen.emit().defaultPrevented) return;
+    if (!silent && this.plusOpen().defaultPrevented) return;
 
     if (!animation) return this.onShow();
 
@@ -297,7 +297,7 @@ export class Drawer {
 
         if (silent) return;
 
-        this.plusOpened.emit();
+        this.plusOpened();
       }
     })
   }

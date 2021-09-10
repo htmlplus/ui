@@ -176,7 +176,7 @@ export class Browse {
 
       const data = Object.assign({}, detail, { files });
 
-      this.plusSuccess.emit(data);
+      this.plusSuccess(data);
     }
     else {
 
@@ -184,10 +184,10 @@ export class Browse {
 
       const data = Object.assign({}, detail, { files });
 
-      this.plusError.emit(data);
+      this.plusError(data);
     }
 
-    this.plusChange.emit(detail);
+    this.plusChange(detail);
   }
 
   /**

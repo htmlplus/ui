@@ -290,7 +290,7 @@ export class Toast {
 
     if (!this.isOpen) return;
 
-    if (!silent && this.plusClose.emit().defaultPrevented) return;
+    if (!silent && this.plusClose().defaultPrevented) return;
 
     // TODO
     clearTimeout(this.timeout);
@@ -309,7 +309,7 @@ export class Toast {
 
         if (silent) return;
 
-        this.plusClosed.emit()
+        this.plusClosed()
       }
     })
   }
@@ -318,7 +318,7 @@ export class Toast {
 
     if (this.isOpen) return;
 
-    if (!silent && this.plusOpen.emit().defaultPrevented) return;
+    if (!silent && this.plusOpen().defaultPrevented) return;
 
     // TODO
     clearTimeout(this.timeout);
@@ -333,7 +333,7 @@ export class Toast {
 
         if (silent) return;
 
-        this.plusOpened.emit();
+        this.plusOpened();
       }
     })
   }

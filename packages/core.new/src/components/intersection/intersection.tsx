@@ -198,7 +198,7 @@ export class Intersection {
 
     this.setVisible();
 
-    this.plusChange.emit(entry);
+    this.plusChange(entry);
 
     if (!this.isIntersecting || !this.once) return;
 

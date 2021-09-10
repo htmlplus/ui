@@ -102,7 +102,7 @@ export class BottomNavigation {
   @Action()
   request(value: any) {
 
-    const event = this.plusChange.emit(value);
+    const event = this.plusChange(value);
 
     if (event.defaultPrevented) return;
 

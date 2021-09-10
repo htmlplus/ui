@@ -113,7 +113,7 @@ export class ScrollIndicator {
 
     this.$indicator.style[property] = `${progress}%`;
 
-    this.plusScroll.emit(progress);
+    this.plusScroll(progress);
   }
 
   /**

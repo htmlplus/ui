@@ -1,6 +1,4 @@
-export interface EventEmitter<T = any> {
-    emit: (data?: T) => CustomEvent<T>;
-}
+export type EventEmitter<T = any> = (data?: T) => CustomEvent<T>;
 
 export interface EventOptions {
     /**
@@ -27,27 +25,25 @@ export function Event<T = any>(options: EventOptions = {}) {
 
         const descriptor = {
             get() {
-                return {
-                    emit: (data: T): CustomEvent<T> => {
+                return (data: T): CustomEvent<T> => {
 
-                        const eventName = options.eventName || propertyKey;
+                    const eventName = options.eventName || propertyKey;
 
-                        delete options.eventName;
+                    delete options.eventName;
 
-                        const event = new CustomEvent(
-                            eventName,
-                            {
-                                ...options,
-                                detail: data
-                            }
-                        );
+                    const event = new CustomEvent(
+                        eventName,
+                        {
+                            ...options,
+                            detail: data
+                        }
+                    );
 
-                        const element = this.$api?.host();
+                    const element = this.$api?.host();
 
-                        element.dispatchEvent(event);
+                    element.dispatchEvent(event);
 
-                        return event;
-                    }
+                    return event;
                 }
             },
             enumerable: true,

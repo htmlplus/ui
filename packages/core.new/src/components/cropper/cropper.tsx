@@ -546,7 +546,7 @@ export class Cropper {
 
     this.updateValue();
 
-    this.plusCrop.emit();
+    this.plusCrop();
   }
 
   @Bind()
@@ -557,7 +557,7 @@ export class Cropper {
 
     this.disabled && this.instance?.disable();
 
-    this.plusReady.emit();
+    this.plusReady();
   }
 
   @Bind()
@@ -573,7 +573,7 @@ export class Cropper {
       ratio: event.detail.ratio
     };
 
-    const result = this.plusZoom.emit(detail);
+    const result = this.plusZoom(detail);
 
     if (!result.defaultPrevented) return this.onCrop();
 

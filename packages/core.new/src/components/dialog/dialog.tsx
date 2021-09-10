@@ -306,7 +306,7 @@ export class Dialog {
 
     if (!this.isOpen) return;
 
-    if (!silent && this.plusClose.emit().defaultPrevented) return;
+    if (!silent && this.plusClose().defaultPrevented) return;
 
     if (!animation) return this.onHide();
 
@@ -325,7 +325,7 @@ export class Dialog {
 
         if (silent) return;
 
-        this.plusClosed.emit()
+        this.plusClosed()
       }
     })
   }
@@ -334,7 +334,7 @@ export class Dialog {
 
     if (this.isOpen) return;
 
-    if (!silent && this.plusOpen.emit().defaultPrevented) return;
+    if (!silent && this.plusOpen().defaultPrevented) return;
 
     if (!animation) return this.onShow();
 
@@ -346,7 +346,7 @@ export class Dialog {
 
         if (silent) return;
 
-        this.plusOpened.emit();
+        this.plusOpened();
       }
     })
   }

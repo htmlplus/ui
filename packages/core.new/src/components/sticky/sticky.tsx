@@ -117,7 +117,7 @@ export class Sticky {
 
     this.state = entry.intersectionRatio < 1 ? 'sticky' : 'normal';
 
-    this.plusChange.emit(this.state);
+    this.plusChange(this.state);
   }
 
   /**
