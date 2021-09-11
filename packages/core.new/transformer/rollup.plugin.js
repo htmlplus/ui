@@ -11,8 +11,9 @@ export const HTMLPLUS = (config = {}) => {
         name: 'HTMLPLUS',
         resolveId(id) {
 
+            // TODO
             if (id == '@virtual/utils')
-                return path.resolve(__dirname, 'transformer/utils.js');
+                return path.resolve(__dirname, 'transformer/utils/index.js');
 
             return null;
         },
@@ -129,20 +130,21 @@ export const HTMLPLUS = (config = {}) => {
 
             lines.push(ast.print());
 
-            lines.push('const host = get_current_component();');
+            lines.push(`const ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST} = get_current_component();`);
 
             lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${name}();`);
 
-            lines.push(`${CONSTANTS.TOKEN_API} = {};`);
+            lines.push(`${CONSTANT.TOKEN_API_FULL} = {};`);
 
-            lines.push(`${CONSTANTS.TOKEN_API}.host = () => host;`);
+            // TODO
+            lines.push(`${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
 
             if (slots.length)
-                lines.push(`${CONSTANTS.TOKEN_API}.slots = () => $$slots;`);
+                lines.push(`${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_SLOTS} = () => $$slots;`);
 
             if (properties.length)
                 lines.push(`
-                    ${CONSTANTS.TOKEN_API}.property = (arg1, arg2) => {
+                    ${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_PROPERTY} = (arg1, arg2) => {
                         switch (arg1) {
                             ${properties.map((property) => `case '${property.getName()}': {${property.getName()} = arg2;break;}`).join('\n')}
                         }
@@ -151,7 +153,7 @@ export const HTMLPLUS = (config = {}) => {
 
             if (states.length)
                 lines.push(`
-                    ${CONSTANTS.TOKEN_API}.state = (arg1, arg2) => {
+                    ${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_STATE} = (arg1, arg2) => {
                         switch (arg1) {
                             ${states.map((state) => `case '${state.getName()}': {${state.getName()} = arg2;break;}`).join('\n')}
                         }
@@ -216,7 +218,7 @@ export const HTMLPLUS = (config = {}) => {
             // lines.push(`onMount(() => host && host.attribute('state', state));`);
             // lines.push(`$: host && host.attribute('state', state)`);
             // lines.push(`$: host && toAttributes(host, ${CONSTANTS.TOKEN_THIS}.attributes);`);
-            // lines.push(`onMount(() => toAttributes(host, ${CONSTANTS.TOKEN_THIS}.attributes));`);
+            lines.push(`onMount(() => toAttributes(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, ${CONSTANTS.TOKEN_THIS}.attributes));`);
 
             lines.push('</script>');
 
@@ -233,7 +235,7 @@ export const HTMLPLUS = (config = {}) => {
             const source = lines.join('\n');
 
             // TODO
-            // console.log(id, source);
+            console.log(id, source);
 
             // convert ts to js and scss to css
             const processed = await preprocess(
