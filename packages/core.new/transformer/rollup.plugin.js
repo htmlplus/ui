@@ -20,10 +20,12 @@ export const HTMLPLUS = (config) => {
 
     // TODO
     const host = compile(
-        fs.readFileSync(path.resolve(__dirname, 'transformer/components/host.svelte'), { encoding: 'utf8' }),
-        {
-            dev: false,
-        }
+        fs.readFileSync(
+            path.resolve(__dirname, 'transformer/components/host.svelte'),
+            {
+                encoding: 'utf8'
+            }
+        )
     )
         .js
         .code;
@@ -250,7 +252,7 @@ export const HTMLPLUS = (config) => {
             const source = lines.join('\n');
 
             // TODO
-            console.log(id, source);
+            // console.log(id, source);
 
             // convert ts to js and scss to css
             const processed = await preprocess(
