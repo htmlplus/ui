@@ -1,4 +1,5 @@
 import * as Case from 'case';
+import * as fs from 'fs';
 import { compile, preprocess } from 'svelte/compiler';
 import sveltePreprocess from 'svelte-preprocess';
 import { Project } from 'ts-morph';
@@ -6,10 +7,33 @@ import path from 'path';
 import * as visitors from './visitors/index';
 import * as CONSTANTS from './constants';
 
-export const HTMLPLUS = (config = {}) => {
+export const HTMLPLUS = (config) => {
+
+    // TODO
+    Object.assign(
+        {
+            prefix: 'app',
+            scss: {}
+        },
+        config,
+    );
+
+    // TODO
+    const host = compile(
+        fs.readFileSync(path.resolve(__dirname, 'transformer/components/host.svelte'), { encoding: 'utf8' }),
+        {
+            dev: false,
+        }
+    )
+        .js
+        .code;
+
     return {
         name: 'HTMLPLUS',
         resolveId(id) {
+
+            // TODO
+            if (id == '@virtual/host') return id;
 
             // TODO
             if (id == '@virtual/utils')
@@ -18,6 +42,9 @@ export const HTMLPLUS = (config = {}) => {
             return null;
         },
         async load(id) {
+
+            // TODO
+            if (id == '@virtual/host') return host;
 
             if (!id.endsWith('.tsx')) return null;
 
@@ -106,11 +133,7 @@ export const HTMLPLUS = (config = {}) => {
                 })
 
             // TODO
-            const content = template
-                .getText();
-            // .split('\n')
-            // .slice(1, -1)
-            // .join('\n');
+            const content = template.getText();
 
             render.remove();
 
@@ -119,6 +142,8 @@ export const HTMLPLUS = (config = {}) => {
             lines.push(`<svelte:options tag="${tag}" />`);
 
             lines.push('<script lang="ts">');
+
+            lines.push('import Host from "@virtual/host";');
 
             lines.push('import { toAttributes, toBoolean, toClass, toStyle } from "@virtual/utils";');
 
@@ -142,7 +167,7 @@ export const HTMLPLUS = (config = {}) => {
                 lines.push(`
                     ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_PROPERTY} = (arg1, arg2) => {
                         switch (arg1) {
-                            ${properties.map((property) => `case '${property.getName()}': {${property.getName()} = arg2;break;}`).join('\n')}
+                            ${properties.map((property) => `case '${property.getName()}': ${property.getName()} = arg2; break;`).join('\n')}
                         }
                     }
                 `);
@@ -151,7 +176,7 @@ export const HTMLPLUS = (config = {}) => {
                 lines.push(`
                     ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_STATE} = (arg1, arg2) => {
                         switch (arg1) {
-                            ${states.map((state) => `case '${state.getName()}': {${state.getName()} = arg2;break;}`).join('\n')}
+                            ${states.map((state) => `case '${state.getName()}': ${state.getName()} = arg2; break;`).join('\n')}
                         }
                     }
                 `);
@@ -210,12 +235,6 @@ export const HTMLPLUS = (config = {}) => {
             if (unmount)
                 lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
 
-            // TODO
-            // lines.push(`onMount(() => host && host.attribute('state', state));`);
-            // lines.push(`$: host && host.attribute('state', state)`);
-            // lines.push(`$: host && toAttributes(host, ${CONSTANTS.TOKEN_THIS}.attributes);`);
-            // lines.push(`onMount(() => toAttributes(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, this.attributes));`);
-
             lines.push('</script>');
 
             lines.push(content);
@@ -237,15 +256,7 @@ export const HTMLPLUS = (config = {}) => {
             const processed = await preprocess(
                 source,
                 sveltePreprocess({
-                    scss: {
-                        includePaths: [
-                            'src/styles/'
-                        ],
-                        injectGlobalPaths: [
-                            'src/styles/mixins/index.scss',
-                            'src/styles/variables/index.scss'
-                        ]
-                    }
+                    scss: config.scss
                 }),
                 {
                     filename: id

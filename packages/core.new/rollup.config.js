@@ -6,11 +6,6 @@ import { HTMLPLUS } from './transformer/rollup.plugin';
 
 export default {
   input: './src/components/index.ts',
-  // input: [
-  //   './src/components/aspect-ratio/aspect-ratio.tsx',
-  //   './src/components/scroll-indicator/scroll-indicator.tsx',
-  //   './src/components/sticky/sticky.tsx',
-  // ],
   output: {
     format: 'esm',
     name: 'app',
@@ -20,6 +15,15 @@ export default {
   plugins: [
     HTMLPLUS({
       prefix: 'plus', // TODO
+      scss: {
+        includePaths: [
+          'src/styles'
+        ],
+        injectGlobalPaths: [
+          'src/styles/mixins/index.scss',
+          'src/styles/variables/index.scss'
+        ]
+      }
     }),
     typescript(),
     resolve(),
