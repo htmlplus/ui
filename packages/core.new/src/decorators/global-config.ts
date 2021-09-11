@@ -1,4 +1,4 @@
-import * as Constants from '@app/constants';
+import * as CONSTANTS from '@app/constants';
 
 export function GlobalConfig(namespace: string, initial = {}) {
 
@@ -12,7 +12,7 @@ export function GlobalConfig(namespace: string, initial = {}) {
 
       const element = this.$api?.host();
 
-      const config = window[Constants.GLOBAL_CONFIG_NAME] || {};
+      const config = window[CONSTANTS.GLOBAL_CONFIG_NAME] || {};
 
       const components = config.components || {};
 

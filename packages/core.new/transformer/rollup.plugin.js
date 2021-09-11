@@ -46,10 +46,6 @@ export const HTMLPLUS = (config = {}) => {
                 .getProperties()
                 .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_PROPERTY));
 
-            // TODO
-            const reflects = properties
-                .filter((property) => true);
-
             const events = component
                 .getProperties()
                 .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_EVENT));
@@ -111,10 +107,10 @@ export const HTMLPLUS = (config = {}) => {
 
             // TODO
             const content = template
-                .getText()
-                .split('\n')
-                .slice(1, -1)
-                .join('\n');
+                .getText();
+            // .split('\n')
+            // .slice(1, -1)
+            // .join('\n');
 
             render.remove();
 
@@ -134,17 +130,17 @@ export const HTMLPLUS = (config = {}) => {
 
             lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${name}();`);
 
-            lines.push(`${CONSTANT.TOKEN_API_FULL} = {};`);
+            lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
 
             // TODO
-            lines.push(`${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
+            lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
 
             if (slots.length)
-                lines.push(`${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_SLOTS} = () => $$slots;`);
+                lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_SLOTS} = () => $$slots;`);
 
             if (properties.length)
                 lines.push(`
-                    ${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_PROPERTY} = (arg1, arg2) => {
+                    ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_PROPERTY} = (arg1, arg2) => {
                         switch (arg1) {
                             ${properties.map((property) => `case '${property.getName()}': {${property.getName()} = arg2;break;}`).join('\n')}
                         }
@@ -153,7 +149,7 @@ export const HTMLPLUS = (config = {}) => {
 
             if (states.length)
                 lines.push(`
-                    ${CONSTANT.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_STATE} = (arg1, arg2) => {
+                    ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_STATE} = (arg1, arg2) => {
                         switch (arg1) {
                             ${states.map((state) => `case '${state.getName()}': {${state.getName()} = arg2;break;}`).join('\n')}
                         }
@@ -218,7 +214,7 @@ export const HTMLPLUS = (config = {}) => {
             // lines.push(`onMount(() => host && host.attribute('state', state));`);
             // lines.push(`$: host && host.attribute('state', state)`);
             // lines.push(`$: host && toAttributes(host, ${CONSTANTS.TOKEN_THIS}.attributes);`);
-            lines.push(`onMount(() => toAttributes(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, ${CONSTANTS.TOKEN_THIS}.attributes));`);
+            // lines.push(`onMount(() => toAttributes(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, this.attributes));`);
 
             lines.push('</script>');
 

@@ -20,7 +20,7 @@
                 "./*"
             ],
             "@app/constants": [
-                "./configs/constants"
+                "./constants"
             ]
         }
     },
