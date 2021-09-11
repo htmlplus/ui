@@ -2,26 +2,21 @@ import * as Case from 'case';
 import { compile, preprocess } from 'svelte/compiler';
 import sveltePreprocess from 'svelte-preprocess';
 import { Project } from 'ts-morph';
-import fs from 'fs';
 import path from 'path';
 import * as visitors from './visitors/index';
 import * as CONSTANTS from './constants';
-
-// TODO
-const utils = fs.readFileSync(path.resolve(__dirname, 'scripts/utils.js'), { encoding: 'utf8' });
 
 export const HTMLPLUS = (config = {}) => {
     return {
         name: 'HTMLPLUS',
         resolveId(id) {
 
-            if (id == '@virtual/utils') return id;
+            if (id == '@virtual/utils')
+                return path.resolve(__dirname, 'transformer/utils.js');
 
             return null;
         },
         async load(id) {
-
-            if (id == '@virtual/utils') return utils;
 
             if (!id.endsWith('.tsx')) return null;
 

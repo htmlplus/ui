@@ -2,7 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import commonjs from 'rollup-plugin-commonjs';
 // import { terser } from 'rollup-plugin-terser';
-import { HTMLPLUS } from './scripts/rollup.plugin';
+import { HTMLPLUS } from './transformer/rollup.plugin';
 
 export default {
   input: './src/components/index.ts',

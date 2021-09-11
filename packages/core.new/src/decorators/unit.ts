@@ -4,7 +4,7 @@ export function Unit() {
 
         const descriptor = {
             set(input) {
-
+                input;
             },
             get() {
 
