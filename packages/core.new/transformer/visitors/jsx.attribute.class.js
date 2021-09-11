@@ -1,8 +1,7 @@
 import { ts } from 'ts-morph';
 
 /**
- * Convert class attribute
- * <element class="any" /> => <element class="any" />
+ * Convert class attribute that contains expression
  * <element class={any} /> => <element class={toClass(any)} />
  */
 export const JsxAttributeClass = (node) => {

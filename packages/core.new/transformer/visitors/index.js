@@ -1,4 +1,5 @@
 export * from './jsx.attribute.class';
+export * from './jsx.attribute.event';
 export * from './jsx.attribute.ref';
 export * from './jsx.attribute.spread';
 export * from './jsx.attribute.style';

@@ -1,7 +1,7 @@
 import { ts } from 'ts-morph';
 
 /**
- * map
+ * TODO
  */
 export const JsxLoop = (node) => {
 

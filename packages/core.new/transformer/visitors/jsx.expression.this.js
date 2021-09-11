@@ -1,4 +1,5 @@
 import { ts } from 'ts-morph';
+import * as CONSTANTS from '../constants';
 
 /**
  * Rename this expression
@@ -12,7 +13,7 @@ export const JsxExpressionThis = (node) => {
     if (expression.getText() != 'this') return;
 
     return ts.factory.createPropertyAccessExpression(
-        ts.factory.createIdentifier('instance'),
+        ts.factory.createIdentifier(CONSTANTS.TOKEN_THIS),
         name
     )
 }

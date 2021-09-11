@@ -2,7 +2,7 @@ import { ts } from 'ts-morph';
 
 /**
  * Convert ref attribute
- * <element ref={this.$element} /> => <element bind:this={this.$element} />
+ * <element ref={any} /> => <element bind:this={any} />
  */
 export const JsxAttributeRef = (node) => {
 

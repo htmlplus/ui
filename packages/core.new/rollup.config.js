@@ -12,7 +12,7 @@ export default {
   //   './src/components/sticky/sticky.tsx',
   // ],
   output: {
-    format: 'umd',
+    format: 'esm',
     name: 'app',
     file: 'public/dist/bundle.js',
     // dir: 'public/dist',

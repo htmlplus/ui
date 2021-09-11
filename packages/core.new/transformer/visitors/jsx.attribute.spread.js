@@ -1,7 +1,8 @@
 import { ts } from 'ts-morph';
 
 /**
- * 
+ * Convert spread attribute
+ * <element {...any} /> => <element use:toAttributes={any} />
  */
 export const JsxAttributeSpread = (node) => {
 

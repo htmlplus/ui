@@ -1,9 +1,8 @@
 import { ts } from 'ts-morph';
 
 /**
- * Convert style attribute
- * <element class="any" /> => <element class="any" />
- * <element class={any} /> => <element class={toClass(any)} />
+ * Convert style attribute that contains expression
+ * <element style={any} /> => <element style={toStyle(any)} />
  */
 export const JsxAttributeStyle = (node) => {
 

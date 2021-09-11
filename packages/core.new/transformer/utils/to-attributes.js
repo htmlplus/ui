@@ -1,6 +1,6 @@
-export const toAttributes = (node, attributes) => {
+export const toAttributes = (node, attributes = {}) => {
 
-    const keys = Object.keys(attributes = {});
+    const keys = Object.keys(attributes);
 
     // TODO
     const isEvent = (key) => {
@@ -15,8 +15,14 @@ export const toAttributes = (node, attributes) => {
     // TODO 
     // const apply = (key) => node[key] = attributes[key];
     const apply = (key) => {
+
         console.log(123, key)
-        return node.setAttribute(key, attributes[key]);
+
+        const value = attributes[key];
+
+        if (typeof value === 'undefined') return;
+
+        return node.setAttribute(key, value);
     }
 
     const setup = (key) => {
