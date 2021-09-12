@@ -34,6 +34,14 @@ export default {
       },
       outputs: [
         {
+          type: 'www',
+          dist: 'www',
+        },
+        {
+          type: 'cdn',
+          dist: 'htmlplus',
+        },
+        {
           type: 'type',
           dist: 'types',
         },
