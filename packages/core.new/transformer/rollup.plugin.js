@@ -26,7 +26,7 @@ const get = (input, key) => {
 
     if (!tag) return;
 
-    return tag.getComment();
+    return tag.getCommentText();
 }
 
 const has = (input, key) => {
@@ -362,7 +362,7 @@ export const htmlplus = (config) => {
                     methods,
                     examples,
                 })
-            })();
+            });
 
             // TODO
             (() => {
@@ -428,7 +428,7 @@ export const htmlplus = (config) => {
                         }
                     ]
                 })
-            })();
+            });
 
             const properties = component
                 .getProperties()
@@ -643,18 +643,18 @@ export const htmlplus = (config) => {
         generateBundle() {
 
             // TODO
-            this.emitFile({
-                type: 'asset',
-                fileName: config.docs.docs,
-                source: JSON.stringify(docs, null, 2)
-            });
+            // this.emitFile({
+            //     type: 'asset',
+            //     fileName: config.docs.docs,
+            //     source: JSON.stringify(docs, null, 2)
+            // });
 
             // TODO
-            this.emitFile({
-                type: 'asset',
-                fileName: config.docs.vscode,
-                source: JSON.stringify(vscode, null, 2)
-            });
+            // this.emitFile({
+            //     type: 'asset',
+            //     fileName: config.docs.vscode,
+            //     source: JSON.stringify(vscode, null, 2)
+            // });
         }
     }
 }
