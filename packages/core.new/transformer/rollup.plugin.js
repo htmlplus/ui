@@ -607,33 +607,9 @@ export const htmlplus = (config) => {
 
             lines.push('</style>');
 
-            // generate svelte source
             const source = lines.join('\n');
 
-            // TODO
-            // console.log(id, source);
-
-            // convert ts to js and scss to css
-            const processed = await preprocess(
-                source,
-                sveltePreprocess({
-                    scss: config.scss
-                }),
-                {
-                    filename: id
-                }
-            );
-
-            // compile svelte code
-            const result = compile(
-                processed.toString(),
-                {
-                    customElement: true,
-                    dev: false,
-                }
-            );
-
-            return result.js.code;
+            return source;
         },
         buildEnd() {
             // main 
