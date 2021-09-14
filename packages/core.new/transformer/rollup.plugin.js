@@ -1,7 +1,6 @@
 import * as Case from 'case';
 import * as fs from 'fs';
-import { compile, preprocess } from 'svelte/compiler';
-import sveltePreprocess from 'svelte-preprocess';
+import { compile } from 'svelte/compiler';
 import { Project } from 'ts-morph';
 import path from 'path';
 import * as visitors from './visitors/index';
@@ -612,9 +611,7 @@ export const htmlplus = (config) => {
             return source;
         },
         buildEnd() {
-            // main 
-            // group
-            console.log(333333)
+            
         },
         generateBundle() {
 
