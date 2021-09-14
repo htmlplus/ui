@@ -61,10 +61,11 @@ export class DrawerToggler {
         <slot>
           {this.text}
         </slot>
-        {/* TODO */}
-        {/* <slot name="close" /> */}
-        {/* <slot name="open" /> */}
       </Host>
     )
   }
 }
+
+// TODO
+// <slot name="close" />
+// <slot name="open" />

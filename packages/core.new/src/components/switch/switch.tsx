@@ -47,32 +47,32 @@ export class Switch {
   @GlobalConfig('switch')
   config?;
 
-  get inactiveElement() {
+  // get inactiveElement() {
 
-    return (
-      <div class="slot off">
-        <slot name="off" />
-      </div>
-    );
-  }
+  //   return (
+  //     <div class="slot off">
+  //       <slot name="off" />
+  //     </div>
+  //   );
+  // }
 
-  get activeElement() {
+  // get activeElement() {
 
-    return (
-      <div class="slot on">
-        <slot name="on" />
-      </div>
-    );
-  }
+  //   return (
+  //     <div class="slot on">
+  //       <slot name="on" />
+  //     </div>
+  //   );
+  // }
 
-  get handleElement() {
+  // get handleElement() {
 
-    return (
-      <div class="thumb-underlay" >
-        <div class="thumb" />
-      </div>
-    );
-  }
+  //   return (
+  //     <div class="thumb-underlay" >
+  //       <div class="thumb" />
+  //     </div>
+  //   );
+  // }
 
   handler(event) {
 
@@ -95,16 +95,19 @@ export class Switch {
         onClick={(event) => this.handler(event)}
         onKeyPress={(event) => this.handler(event)}
       >
-        <div>
-          {!this.inset && this.inactiveElement}
-          <div class="track">
-            {this.inset && this.inactiveElement}
-            {this.handleElement}
-            {this.inset && this.activeElement}
-          </div>
-          {!this.inset && this.activeElement}
-        </div>
+
       </Host>
-    );
+    )
   }
 }
+
+// TODO
+// <div>
+// {!this.inset && this.inactiveElement}
+// <div class="track">
+//   {this.inset && this.inactiveElement}
+//   {this.handleElement}
+//   {this.inset && this.activeElement}
+// </div>
+// {!this.inset && this.activeElement}
+// </div>

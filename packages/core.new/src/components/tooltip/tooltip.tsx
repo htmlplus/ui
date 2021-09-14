@@ -278,7 +278,7 @@ export class Tooltip {
   render() {
     return (
       <Host {...this.attributes}>
-        <div class="tooltip" ref={(element) => this.$tooltip = element}>
+        <div class="tooltip" ref={this.$tooltip}>
           <slot />
           <span x-arrow ref={element => this.$arrow = element} />
         </div>
