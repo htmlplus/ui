@@ -608,6 +608,8 @@ export const htmlplus = (config) => {
 
             const source = lines.join('\n');
 
+            // return 'console.log(123)'
+
             return source;
         },
         buildEnd() {
