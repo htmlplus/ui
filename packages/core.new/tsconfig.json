@@ -25,7 +25,8 @@
         }
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*.ts",
+        "./src/**/aspect-ratio.tsx"
     ],
     "exclude": [
         "node_modules"
