@@ -1,6 +1,5 @@
 import * as Case from 'case';
 import * as fs from 'fs';
-import { compile } from 'svelte/compiler';
 import { Project } from 'ts-morph';
 import path from 'path';
 import * as visitors from './visitors/index';
@@ -51,18 +50,6 @@ export const htmlplus = (config) => {
     );
 
     // TODO
-    const host = compile(
-        fs.readFileSync(
-            path.resolve(__dirname, 'transformer/components/host.svelte'),
-            {
-                encoding: 'utf8'
-            }
-        )
-    )
-        .js
-        .code;
-
-    // TODO
     const docs = {
         prefix: config.prefix,
         components: []
@@ -79,18 +66,12 @@ export const htmlplus = (config) => {
         resolveId(id) {
 
             // TODO
-            if (id == '@virtual/host') return id;
-
-            // TODO
-            if (id == '@virtual/utils')
-                return path.resolve(__dirname, 'transformer/utils/index.js');
+            if (id.startsWith('@virtual/'))
+                return path.resolve(__dirname, 'transformer', id.replace('@virtual/', ''), 'index.js');
 
             return null;
         },
         async load(id) {
-
-            // TODO
-            if (id == '@virtual/host') return host;
 
             if (!id.endsWith('.tsx')) return null;
 
@@ -503,7 +484,7 @@ export const htmlplus = (config) => {
 
             lines.push('<script lang="ts">');
 
-            lines.push('import Host from "@virtual/host";');
+            lines.push('import { Host } from "@virtual/components";');
 
             lines.push('import { toAttributes, toBoolean, toClass, toStyle } from "@virtual/utils";');
 
@@ -613,7 +594,7 @@ export const htmlplus = (config) => {
             return source;
         },
         buildEnd() {
-            
+
         },
         generateBundle() {
 

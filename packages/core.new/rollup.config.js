@@ -12,12 +12,28 @@ import { htmlplus } from './transformer/rollup.plugin';
 const dev = !!process.env.ROLLUP_WATCH;
 
 export default {
-  input: glob.sync('./src/components/*/*.tsx').slice(0,1),
-  output: {
-    format: 'esm',
-    sourcemap: dev,
-    dir: dev ? 'public/build' : 'dist',
-  },
+  input: glob.sync('./src/components/*/*.tsx').slice(0, 1),
+  output: [
+    dev && {
+      format: 'esm',
+      dir: 'public/build',
+      sourcemap: true,
+    },
+    !dev && {
+      format: 'esm',
+      dir: 'dist/esm',
+    },
+    // !dev && {
+    //   format: 'cjs',
+    //   dir: 'dist/cjs',
+    //   exports: 'default'
+    // },
+    // !dev && {
+    //   format: 'umd',
+    //   dir: 'dist/umd',
+    //   name: 'htmlplus',
+    // }
+  ],
   plugins: [
 
     // Merge all files as one
@@ -39,7 +55,7 @@ export default {
     svelte({
       dev: dev,
       customElement: true,
-      extensions: ['.tsx'],
+      extensions: ['.svelte', '.tsx'],
       preprocess: sveltePreprocess({
         sourceMap: dev,
         scss: {
@@ -59,6 +75,8 @@ export default {
     typescript({
       sourceMap: dev,
       inlineSources: dev,
+      // declaration: !dev,
+      // declarationDir: 'dist/types',
     }),
 
     // Serve in development mode
@@ -68,6 +86,6 @@ export default {
     }),
 
     // Minify all files in production
-    !dev && terser()
+    // !dev && terser()
   ]
 }
