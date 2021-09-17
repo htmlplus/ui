@@ -6,7 +6,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "npm run clean && rollup -c",
+    "build:watch": "npm run clean && rollup -c -w",
+    "clean": "rimraf dist public/build",
+    "serve": "sirv public --dev",
+    "start": "run-p serve build:watch"
   },
   "dependencies": {
     "@babel/traverse": "^7.14.8",
@@ -23,8 +27,11 @@
     "case": "^1.6.3",
     "cropperjs": "^1.5.12",
     "glob": "^7.1.7",
+    "html-webpack-plugin": "^5.3.2",
+    "loader-utils": "^2.0.0",
     "node-sass": "^6.0.1",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "rollup": "2.38",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-copy": "^3.4.0",
@@ -32,13 +39,22 @@
     "rollup-plugin-serve": "^1.1.0",
     "rollup-plugin-svelte": "^6.1.1",
     "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-pluginutils": "^2.8.2",
+    "schema-utils": "^3.1.1",
     "sirv-cli": "^0.3.2",
     "svelte": "^3.42.4",
     "svelte-check": "^2.2.3",
     "svelte-preprocess": "^4.9.4",
+    "ts-loader": "^9.2.5",
     "ts-morph": "^12.0.0",
     "ts-transformer-properties-rename": "^0.11.0",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "webpack": "^5.53.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
   }
 }
