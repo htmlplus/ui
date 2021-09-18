@@ -11,6 +11,37 @@ switch          -> getter
 switch          -> render
 tooltip         -> render
 
+prop => default: initializer
+
+const comment = (input) => {
+    return input.getJsDocs()[0];
+}
+
+const all = (input, key) => {
+    return comment(input)
+        .getTags()
+        .filter((tag) => tag.getTagName() === key)
+        .map((tag) => tag.getCommentText());
+}
+
+const get = (input, key) => {
+
+    const tags = comment(input).getTags();
+
+    const tag = tags.find((tag) => tag.getTagName() === key);
+
+    if (!tag) return;
+
+    return tag.getCommentText();
+}
+
+const has = (input, key) => {
+
+    const tags = comment(input).getTags();
+
+    return tags.some((tag) => tag.getTagName() === key);
+}
+
 transformers: {
     before: [
         (context) => {
