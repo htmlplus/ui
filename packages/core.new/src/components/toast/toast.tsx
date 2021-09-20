@@ -426,8 +426,8 @@ export class Toast {
       <Host {...this.attributes}>
         <div
           class={this.classes}
-          // TODO part="root"
-          ref={(element) => this.$root = element}
+          part="root"
+          ref={this.$root}
         >
           <slot />
         </div>

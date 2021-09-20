@@ -474,10 +474,9 @@ export class Dialog {
   render() {
     return (
       <Host {...this.attributes}>
-        {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">
-            <div class="cell" ref={($element) => (this.$cell = $element)}>
+            <div class="cell" ref={this.$cell}>
               <slot />
             </div>
           </div>
@@ -486,3 +485,6 @@ export class Dialog {
     )
   }
 }
+
+// TODO: after host
+// {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}

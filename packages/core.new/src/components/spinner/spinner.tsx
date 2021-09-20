@@ -46,10 +46,13 @@ export class Spinner {
   render() {
     return (
       <Host {...this.attributes}>
-        <div class="wrapper">
-          {this.elements.map((element) => <div key={element} />)}
-        </div>
+        
       </Host>
     )
   }
 }
+
+// TODO
+// <div class="wrapper">
+//   {this.elements.map((element) => <div key={element} />)}
+// </div>
