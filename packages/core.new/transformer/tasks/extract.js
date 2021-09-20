@@ -1,4 +1,5 @@
 import Case from 'case';
+import path from 'path';
 import * as CONSTANTS from '../constants';
 
 export const extract = (context) => {
@@ -27,7 +28,7 @@ export const extract = (context) => {
 
     const events = component
         .getProperties()
-        .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_EVENT))
+        .filter((event) => event.getDecorator(CONSTANTS.TOKEN_DECORATOR_EVENT))
         .map((event) => {
 
             const name = event.getName();
@@ -36,7 +37,7 @@ export const extract = (context) => {
 
             const detail = 'void'; // TODO
 
-            const description = property.getJsDocs()[0].getCommentText(); // TODO
+            const description = event.getJsDocs()[0].getCommentText(); // TODO
 
             const tags = [];
 
@@ -62,7 +63,7 @@ export const extract = (context) => {
 
             const signature = 'browse() => Promise<void>'; // TODO
 
-            const description = property.getJsDocs()[0].getCommentText(); // TODO
+            const description = method.getJsDocs()[0].getCommentText(); // TODO
 
             const parameters = []; // TODO
 

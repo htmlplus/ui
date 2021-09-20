@@ -12,7 +12,10 @@ import { htmlplus } from './transformer/rollup.plugin';
 const dev = !!process.env.ROLLUP_WATCH;
 
 export default {
-  input: glob.sync('./src/components/*/*.tsx'),//.slice(0, 1),
+  // input: glob.sync('./src/components/*/*.tsx'),//.slice(0, 1),
+  input: [
+    './src/components/browse/browse.tsx'
+  ],
   output: [
     dev && {
       format: 'esm',

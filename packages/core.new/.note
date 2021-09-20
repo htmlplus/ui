@@ -42,6 +42,35 @@ const has = (input, key) => {
     return tags.some((tag) => tag.getTagName() === key);
 }
 
+buildEnd() {
+
+},
+generateBundle() {
+
+    // TODO
+    // this.emitFile({
+    //     type: 'asset',
+    //     fileName: config.docs.docs,
+    //     source: JSON.stringify(docs, null, 2)
+    // });
+
+    // TODO
+    // this.emitFile({
+    //     type: 'asset',
+    //     fileName: config.docs.vscode,
+    //     source: JSON.stringify(vscode, null, 2)
+    // });
+}
+
+// TODO
+// "styles": [
+//     {
+//         "name": "--plus-breadcrumb-gutter-x",
+//         "dafault": "0.5em",
+//         "description": "Used to adjust the Horizontal gap."
+//     }
+// ],
+
 transformers: {
     before: [
         (context) => {
