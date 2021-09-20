@@ -28,7 +28,12 @@ export const markup = (context) => {
             })
         })
 
-    const markup = template.getText();
+    // TODO
+    const markup = template
+        .getText()
+        .split('\n')
+        .slice(1, -1)
+        .join('\n');
 
     render.remove();
 

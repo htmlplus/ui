@@ -6,11 +6,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script type="module" src="build/bundle.js"></script>
+  <style>
+    div {
+      background-color: #C5CAE9;
+      padding: 1rem;
+    }
+  </style>
 </head>
 
 <body>
-  <plus-aspect-ratio></plus-aspect-ratio>
-
+  <plus-aspect-ratio value="16/9">
+    <div>
+      This box will always be 16/9 (unless you put more stuff in it)
+    </div>
+  </plus-aspect-ratio>
 </body>
 
 </html>
