@@ -1,6 +1,7 @@
 {
   "name": "@htmlplus/core.new",
   "version": "0.0.0",
+  "type": "module",
   "files": [
     "dist"
   ],
