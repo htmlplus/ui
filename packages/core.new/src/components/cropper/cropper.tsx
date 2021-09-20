@@ -596,7 +596,7 @@ export class Cropper {
     return (
       <Host>
         <div class={this.classes}>
-          <img class="image" ref={(element) => (this.$image = element)} src={this.src} />
+          <img class="image" alt="cropper" ref={this.$image} src={this.src} />
         </div>
       </Host>
     )

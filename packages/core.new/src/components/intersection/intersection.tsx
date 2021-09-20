@@ -223,8 +223,11 @@ export class Intersection {
   render() {
     return (
       <Host {...this.attributes}>
-        {this.isVisible && <slot />}
+        
       </Host>
     )
   }
 }
+
+// TODO
+// {this.isVisible && <slot />}

@@ -1,4 +1,4 @@
-import { Bind, Component, Element, GlobalConfig, Host, IsRTL, Property, State, forceUpdate } from '@app/decorators';
+import { Bind, Component, Element, GlobalConfig, Host, IsRTL, Property, State } from '@app/decorators';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -118,6 +118,9 @@ export class Breadcrumb {
 
   update(force?: boolean, expand?: boolean) {
 
+    // TODO
+    force;
+
     const
       $children = this.$children,
       $nodes = [],
@@ -182,7 +185,7 @@ export class Breadcrumb {
 
     this.$nodes = $nodes;
 
-    force && forceUpdate(this);
+    // force && forceUpdate(this); TODO
   }
 
   template() {

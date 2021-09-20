@@ -1,3 +1,6 @@
+@import 'mixins/breakpoints';
+@import 'mixins/slice';
+@import 'variables/breakpoints';
 @import 'grid-item.variables';
 
 :host {
