@@ -14,8 +14,7 @@ export const JsxAttributeClass = (node) => {
 
     if (name.getText() !== 'class') return;
 
-    return ts.factory.updateJsxAttribute(
-        node,
+    return ts.factory.createJsxAttribute(
         name,
         ts.factory.createJsxExpression(
             undefined,

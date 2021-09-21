@@ -11,22 +11,25 @@ export const markup = (context) => {
         .getExpression()
         .getExpression();
 
-    Object.keys(visitors)
-        .forEach((key) => {
+    const keys = Object.keys(visitors);
+
+    template.transform((traversal) => {
+
+        for (const key of keys) {
 
             const transformer = visitors[key];
 
-            template.transform((traversal) => {
+            const node = traversal.visitChildren();
 
-                const node = traversal.visitChildren();
+            const result = transformer(node);
 
-                const result = transformer(node);
+            if (result) return result;
 
-                if (result === null) return null;
+            if (result === null) return null;
 
-                return result || node;
-            })
-        })
+            return node;
+        }
+    })
 
     // TODO
     const markup = template

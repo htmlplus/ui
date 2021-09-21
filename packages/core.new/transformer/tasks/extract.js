@@ -98,7 +98,7 @@ export const extract = (context) => {
 
             const required = !property.getQuestionTokenNode();
 
-            const type = property.getType().getText();
+            const type = property.getTypeNode().getText(); // TODO
 
             const description = property.getJsDocs()[0].getCommentText(); // TODO
 
@@ -140,7 +140,7 @@ export const extract = (context) => {
 
             const initializer = state.hasInitializer() ? state.getInitializer().getLiteralValue() : undefined;
 
-            const type = state.getType().getText();
+            const type = state.getTypeNode().getText(); // TODO
 
             return {
                 name,

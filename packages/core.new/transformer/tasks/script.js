@@ -62,7 +62,7 @@ export const script = (context) => {
 
         const { initializer, name, type } = property;
 
-        const isBoolean = type === 'boolean';
+        const isBoolean = type === 'boolean'; // TODO
 
         if (typeof initializer !== 'undefined') {
 

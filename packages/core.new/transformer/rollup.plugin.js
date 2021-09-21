@@ -29,21 +29,39 @@ export const htmlplus = (config) => {
 
             if (!id.endsWith('.tsx')) return null;
 
+            console.time(id)
+
             const context = { id, config };
 
+            console.time('parse')
             tasks.parse(context);
+            console.timeEnd('parse')
 
+            console.time('validate')
             tasks.validate(context);
+            console.timeEnd('validate')
 
+            console.time('extract')
             tasks.extract(context);
+            console.timeEnd('extract')
 
+            console.time('markup')
             tasks.markup(context);
+            console.timeEnd('markup')
 
+            console.time('script')
             tasks.script(context);
+            console.timeEnd('script')
 
+            console.time('style')
             tasks.style(context);
+            console.timeEnd('style')
 
+            console.time('component')
             tasks.component(context);
+            console.timeEnd('component')
+
+            console.timeEnd(id)
 
             return context.source;
         }
