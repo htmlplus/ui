@@ -90,16 +90,18 @@ export class Switch {
     return (
       <Host
         role="switch"
-        aria-checked={`${!!this.checked}`}
-        aria-disabled={`${!!this.disabled}`}
-        onClick={(event) => this.handler(event)}
-        onKeyPress={(event) => this.handler(event)}
       >
 
       </Host>
     )
   }
 }
+
+// TODO
+// aria-checked={`${!!this.checked}`}
+// aria-disabled={`${!!this.disabled}`}
+// onClick={(event) => this.handler(event)}
+// onKeyPress={(event) => this.handler(event)}
 
 // TODO
 // <div>
