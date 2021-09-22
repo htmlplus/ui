@@ -14,8 +14,7 @@ export const JsxAttributeStyle = (node) => {
 
     if (name.getText() !== 'style') return;
 
-    return ts.factory.updateJsxAttribute(
-        node,
+    return ts.factory.createJsxAttribute(
         name,
         ts.factory.createJsxExpression(
             undefined,

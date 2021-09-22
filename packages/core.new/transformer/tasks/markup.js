@@ -15,20 +15,21 @@ export const markup = (context) => {
 
     template.transform((traversal) => {
 
+        const node = traversal.visitChildren();
+
         for (const key of keys) {
 
             const transformer = visitors[key];
 
-            const node = traversal.visitChildren();
+            // TODO
+            if (!node.parent) continue;
 
             const result = transformer(node);
 
             if (result) return result;
-
-            if (result === null) return null;
-
-            return node;
         }
+
+        return node;
     })
 
     // TODO
@@ -37,6 +38,8 @@ export const markup = (context) => {
         .split('\n')
         .slice(1, -1)
         .join('\n');
+
+    console.log(1, markup)
 
     render.remove();
 

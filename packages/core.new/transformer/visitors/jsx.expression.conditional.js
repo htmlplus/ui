@@ -30,5 +30,5 @@ export const JsxExpressionConditional = (node) => {
     lines += '{​/if}​';
     lines += '\n';
 
-    return ts.factory.createIdentifier(lines);
+    return node.replaceWithText(lines);
 }

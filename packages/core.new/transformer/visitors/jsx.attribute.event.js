@@ -22,8 +22,7 @@ export const JsxAttributeEvent = (node) => {
 
     const after = `on:${Case.camel(before.slice(2))}`;
 
-    return ts.factory.updateJsxAttribute(
-        node,
+    return ts.factory.createJsxAttribute(
         ts.factory.createIdentifier(after),
         initializer
     )

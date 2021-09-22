@@ -41,5 +41,5 @@ export const JsxExpressionBinary = (node) => {
     lines += '{​/if}​';
     lines += '\n';
 
-    return ts.factory.createIdentifier(lines);
+    return node.replaceWithText(lines);
 }

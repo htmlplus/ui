@@ -33,33 +33,33 @@ export const htmlplus = (config) => {
 
             const context = { id, config };
 
-            console.time('parse')
+            // console.time('parse')
             tasks.parse(context);
-            console.timeEnd('parse')
+            // console.timeEnd('parse')
 
-            console.time('validate')
+            // console.time('validate')
             tasks.validate(context);
-            console.timeEnd('validate')
+            // console.timeEnd('validate')
 
-            console.time('extract')
+            // console.time('extract')
             tasks.extract(context);
-            console.timeEnd('extract')
+            // console.timeEnd('extract')
 
-            console.time('markup')
+            // console.time('markup')
             tasks.markup(context);
-            console.timeEnd('markup')
+            // console.timeEnd('markup')
 
-            console.time('script')
+            // console.time('script')
             tasks.script(context);
-            console.timeEnd('script')
+            // console.timeEnd('script')
 
-            console.time('style')
+            // console.time('style')
             tasks.style(context);
-            console.timeEnd('style')
+            // console.timeEnd('style')
 
-            console.time('component')
+            // console.time('component')
             tasks.component(context);
-            console.timeEnd('component')
+            // console.timeEnd('component')
 
             console.timeEnd(id)
 
