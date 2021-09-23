@@ -1,22 +1,91 @@
+import generator from '@babel/generator';
+import traverse from '@babel/traverse';
 import Case from 'case';
 import path from 'path';
 import * as CONSTANTS from '../constants';
+
+const hasDecorator = (node, name) => {
+
+    if (!node.decorators) return;
+
+    return node.decorators.some((decorator) => decorator.expression.callee.name == name);
+}
+
+const getDescription = (node) => {
+    try {
+        return node.leadingComments[0].value.trim();
+    }
+    catch { }
+}
+
+const getInitializer = (node) => {
+
+    const value = node.value;
+
+    if (!value) return;
+
+    const extra = value.extra || {};
+
+    return extra.raw || value.value;
+}
+
+const getType = (node) => {
+
+    const value = node.value;
+
+    if (!value) return;
+
+    return value.type;
+}
 
 export const extract = (context) => {
 
     const { config, id, ast } = context;
 
+    let
+        component,
+        children,
+        render,
+        additions = [];
+
+    traverse(ast, {
+        ClassDeclaration: {
+            exit(path) {
+
+                const { node } = path;
+
+                component = node;
+
+                children = node.body.body;
+
+                path.skip();
+            }
+        },
+        ClassMethod(path) {
+
+            const { node } = path;
+
+            if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return
+
+            render = path;
+
+            path.remove();
+        },
+        Decorator(path) {
+
+            const { node } = path;
+
+            const { name } = node.expression.callee;
+
+            if (name != CONSTANTS.TOKEN_DECORATOR_COMPONENT && name != CONSTANTS.TOKEN_DECORATOR_METHOD) return;
+
+            additions.push(path);
+        }
+    });
+
     const directory = path.dirname(id);
 
-    const component = ast
-        .getClasses()
-        .find((item) => item.getDecorator(CONSTANTS.TOKEN_DECORATOR_COMPONENT));
-
-    component
-        .getDecorator(CONSTANTS.TOKEN_DECORATOR_COMPONENT)
-        .remove();
-
-    const name = component.getName();
+    const name = component.id.name;
 
     const key = Case.kebab(name);
 
@@ -26,24 +95,23 @@ export const extract = (context) => {
 
     const tags = [];
 
-    const properties = component
-        .getProperties()
-        .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_PROPERTY))
+    const properties = children
+        .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
         .map((property) => {
 
-            const name = property.getName();
+            const name = property.key.name;
 
             const attribute = Case.kebab(name);
 
-            const initializer = property.hasInitializer() ? property.getInitializer().getText() : undefined;
+            const initializer = getInitializer(property);
 
             const reflect = false; // TODO
 
-            const required = !property.getQuestionTokenNode();
+            const required = !property.optional;
 
-            const type = property.getTypeNode().getText(); // TODO
+            const type = getType(property);
 
-            const description = property.getJsDocs()[0].getCommentText(); // TODO
+            const description = getDescription(property);
 
             const values = []; // TODO
 
@@ -60,20 +128,19 @@ export const extract = (context) => {
                 values,
                 tags,
             }
-        })
+        });
 
-    const events = component
-        .getProperties()
-        .filter((event) => event.getDecorator(CONSTANTS.TOKEN_DECORATOR_EVENT))
+    const events = children
+        .filter((event) => hasDecorator(event, CONSTANTS.TOKEN_DECORATOR_EVENT))
         .map((event) => {
 
-            const name = event.getName();
+            const name = event.key.name;
 
             const cancelable = false; // TODO
 
             const detail = 'void'; // TODO
 
-            const description = event.getJsDocs()[0].getCommentText(); // TODO
+            const description = getDescription(event);
 
             const tags = [];
 
@@ -84,65 +151,49 @@ export const extract = (context) => {
                 description,
                 tags,
             }
-        })
+        });
 
-    const host = component
-        .getProperties()
-        .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_HOST))
-        .map((property) => {
-
-            const name = property.getName();
-
-            return {
-                name
-            }
-        })
+    const host = children
+        .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_HOST))
+        .map((property) => ({
+            name: property.key.name
+        }))
         .pop();
 
-    const slots = component
-        .getProperties()
-        .filter((slot) => slot.getDecorator(CONSTANTS.TOKEN_DECORATOR_SLOTS))
-        .map((slot) => {
+    const slots = children
+        .filter((slot) => hasDecorator(slot, CONSTANTS.TOKEN_DECORATOR_SLOTS))
+        .map((slot) => ({
+            name: slot.key.name
+        }));
 
-            const name = slot.getName();
-
-            return {
-                name
-            }
-        })
-
-    const states = component
-        .getProperties()
-        .filter((state) => state.getDecorator(CONSTANTS.TOKEN_DECORATOR_STATE))
+    const states = children
+        .filter((state) => hasDecorator(state, CONSTANTS.TOKEN_DECORATOR_STATE))
         .map((state) => {
 
-            const name = state.getName();
+            const name = state.key.name;
 
-            const initializer = state.hasInitializer() ? state.getInitializer().getText() : undefined;
+            const initializer = getInitializer(state);
 
-            const type = state.getTypeNode().getText(); // TODO
+            const type = getType(state);
 
             return {
                 name,
                 initializer,
                 type,
             }
-        })
+        });
 
-    const methods = component
-        .getMethods()
-        .filter((method) => method.getDecorator(CONSTANTS.TOKEN_DECORATOR_METHOD))
+    const methods = children
+        .filter((method) => hasDecorator(method, CONSTANTS.TOKEN_DECORATOR_METHOD))
         .map((method) => {
 
-            method.getDecorator(CONSTANTS.TOKEN_DECORATOR_METHOD).remove();
-
-            const name = method.getName();
+            const name = method.key.name;
 
             const type = 'Promise<void>'; // TODO
 
             const signature = 'browse() => Promise<void>'; // TODO
 
-            const description = method.getJsDocs()[0].getCommentText(); // TODO
+            const description = getDescription(method);
 
             const parameters = []; // TODO
 
@@ -156,19 +207,20 @@ export const extract = (context) => {
                 parameters,
                 tags,
             }
-        })
+        });
 
-    const render = component
-        .getMethods()
-        .find((method) => method.getName() === CONSTANTS.TOKEN_METHOD_RENDER);
+    const hasMount = children
+        .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_MOUNT);
 
-    const hasMount = component
-        .getMethods()
-        .some((method) => method.getName() === CONSTANTS.TOKEN_LIFECYCLE_MOUNT);
+    const hasUnmount = children
+        .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT);
 
-    const hasUnmount = component
-        .getMethods()
-        .some((method) => method.getName() === CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT);
+    additions.forEach((path) => path.remove());
+
+    const script = generator(ast, {
+        comments: false,
+        decoratorsBeforeExport: true,
+    }).code;
 
     context.tags = tags;
     context.directory = directory;
@@ -186,4 +238,5 @@ export const extract = (context) => {
     context.hasMount = hasMount;
     context.hasUnmount = hasUnmount;
     context.host = host;
+    context.script = script;
 }

@@ -3,7 +3,6 @@ import * as CONSTANTS from '../constants';
 export const script = (context) => {
 
     const {
-        ast,
         name,
         tag,
         methods,
@@ -12,10 +11,11 @@ export const script = (context) => {
         states,
         hasMount,
         hasUnmount,
+        script,
     } = context;
 
     const lines = [];
-
+    
     lines.push(`<svelte:options tag="${tag}" />`);
 
     lines.push('<script lang="ts">');
@@ -26,7 +26,7 @@ export const script = (context) => {
 
     lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
 
-    lines.push(ast.print()); // TODO
+    lines.push(script);
 
     lines.push(`const ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST} = get_current_component();`);
 
@@ -107,7 +107,5 @@ export const script = (context) => {
 
     lines.push('</script>');
 
-    const script = lines.join('\n');
-
-    context.script = script;
+    context.script = lines.join('\n');
 }
