@@ -1,5 +1,7 @@
 import generator from '@babel/generator';
+import template from "@babel/template";
 import traverse from '@babel/traverse';
+import * as t from '@babel/types';
 import Case from 'case';
 import path from 'path';
 import * as CONSTANTS from '../constants';
@@ -43,10 +45,10 @@ export const extract = (context) => {
     const { config, id, ast } = context;
 
     let
-        component,
+        additions = [],
         children,
-        render,
-        additions = [];
+        component,
+        render;
 
     traverse(ast, {
         ClassDeclaration: {
@@ -65,9 +67,19 @@ export const extract = (context) => {
 
             const { node } = path;
 
-            if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return
+            if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return;
 
-            render = path;
+            render = t.file(
+                t.program([
+                    t.classDeclaration(
+                        t.identifier('Test'),
+                        undefined,
+                        t.classBody([
+                            node
+                        ])
+                    )
+                ])
+            );
 
             path.remove();
         },
@@ -93,6 +105,7 @@ export const extract = (context) => {
 
     const title = Case.capital(key);
 
+    // TODO
     const tags = [];
 
     const properties = children
@@ -231,12 +244,14 @@ export const extract = (context) => {
     context.title = title;
     context.events = events;
     context.methods = methods;
-    context.render = render;
     context.properties = properties;
     context.slots = slots;
     context.states = states;
     context.hasMount = hasMount;
     context.hasUnmount = hasUnmount;
     context.host = host;
+
+    // TODO
     context.script = script;
+    context.render = render;
 }

@@ -14,8 +14,9 @@ const dev = !!process.env.ROLLUP_WATCH;
 export default {
   // input: glob.sync('./src/components/*/*.tsx').slice(0, 1),
   input: [
-    // './src/components/aspect-ratio/aspect-ratio.tsx',
+    './src/components/aspect-ratio/aspect-ratio.tsx',
     './src/components/browse/browse.tsx',
+    './src/components/dialog/dialog.tsx',
   ],
   output: [
     dev && {

@@ -63,6 +63,8 @@ export const htmlplus = (config) => {
 
             console.timeEnd(id)
 
+            // console.log(context.source)
+
             return context.source;
         }
     }
