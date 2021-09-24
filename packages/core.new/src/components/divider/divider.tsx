@@ -79,21 +79,19 @@ export class Divider {
   render() {
     return (
       <Host {...this.attributes}>
-
+        {/* TODO */}
+        {/* <div class={this.classes}>
+          {this.hasBefore && (
+            <div class="before" />
+          )}
+          <div class="content">
+            <slot />
+          </div>
+          {this.hasAfter && (
+            <div class="after" />
+          )}
+        </div> */}
       </Host>
     )
   }
 }
-
-// TODO
-// <div class={this.classes}>
-//   {this.hasBefore && (
-//     <div class="before" />
-//   )}
-//   <div class="content">
-//     <slot />
-//   </div>
-//   {this.hasAfter && (
-//     <div class="after" />
-//   )}
-// </div>

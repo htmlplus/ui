@@ -276,25 +276,23 @@ export class Menu {
   render() {
     return (
       <Host>
-
+        {/* TODO */}
+        {/* <div
+          class="activator"
+          ref={this.$activator}
+          onClick={(event) => this.click(event)}
+        >
+          <slot name="activator" />
+        </div>
+        {this.open && (
+          <div
+            class="content"
+            ref={this.$content}
+            style={this.fixed ? {} : this.style}>
+            <slot />
+          </div>
+        )} */}
       </Host>
     )
   }
 }
-
-// TODO
-// <div
-// class="activator"
-// ref={this.$activator}
-// onClick={(event) => this.click(event)}
-// >
-// <slot name="activator" />
-// </div>
-// {this.open && (
-// <div
-//   class="content"
-//   ref={this.$content}
-//   style={this.fixed ? {} : this.style}>
-//   <slot />
-// </div>
-// )}

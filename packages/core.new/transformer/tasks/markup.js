@@ -105,6 +105,17 @@ export const markup = (context) => {
                 if (t.isJSXAttribute(parent)) return;
 
                 /**
+                 * Remove JSXEmptyExpression
+                 * { any }
+                 */
+                if (t.isJSXEmptyExpression(expression)) {
+
+                    path.remove();
+
+                    return;
+                }
+
+                /**
                  * <element>{​condition ?  any  :  any }​</element>
                  * <element>{​condition ? (any) : (any)}​</element>
                  */
@@ -215,7 +226,7 @@ export const markup = (context) => {
         .replace(/\{\/\*REMOVE/g, '')
         .replace(/REMOVE\*\/\}/g, '');
 
-    console.log(markup)
+    // console.log(markup)
 
     context.markup = markup;
 }

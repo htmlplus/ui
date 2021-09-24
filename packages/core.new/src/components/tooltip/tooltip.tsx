@@ -278,14 +278,11 @@ export class Tooltip {
   render() {
     return (
       <Host {...this.attributes}>
-
+        <div class="tooltip" ref={this.$tooltip}>
+          <slot />
+          <span x-arrow ref={this.$arrow} />
+        </div>
       </Host>
     )
   }
 }
-
-// TODO
-// <div class="tooltip" ref={this.$tooltip}>
-//   <slot />
-//   <span x-arrow ref={this.$arrow} />
-// </div>

@@ -90,26 +90,22 @@ export class Switch {
     return (
       <Host
         role="switch"
+        aria-checked={`${!!this.checked}`}
+        aria-disabled={`${!!this.disabled}`}
+        onClick={(event) => this.handler(event)}
+        onKeyPress={(event) => this.handler(event)}
       >
-
+        {/* TODO */}
+        {/* <div>
+          {!this.inset && this.inactiveElement}
+          <div class="track">
+            {this.inset && this.inactiveElement}
+            {this.handleElement}
+            {this.inset && this.activeElement}
+          </div>
+          {!this.inset && this.activeElement}
+        </div> */}
       </Host>
     )
   }
 }
-
-// TODO
-// aria-checked={`${!!this.checked}`}
-// aria-disabled={`${!!this.disabled}`}
-// onClick={(event) => this.handler(event)}
-// onKeyPress={(event) => this.handler(event)}
-
-// TODO
-// <div>
-// {!this.inset && this.inactiveElement}
-// <div class="track">
-//   {this.inset && this.inactiveElement}
-//   {this.handleElement}
-//   {this.inset && this.activeElement}
-// </div>
-// {!this.inset && this.activeElement}
-// </div>

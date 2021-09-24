@@ -404,6 +404,7 @@ export class Drawer {
   render() {
     return (
       <Host {...this.attributes}>
+        {this.hasBackdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div
           class={this.classes}
           ref={this.$root}
@@ -414,6 +415,3 @@ export class Drawer {
     )
   }
 }
-
-// TODO
-// {this.hasBackdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
