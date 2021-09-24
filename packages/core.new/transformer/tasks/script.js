@@ -20,8 +20,6 @@ export const script = (context) => {
 
     lines.push('<script lang="ts">');
 
-    lines.push('import { Host } from "@virtual/components";');
-
     lines.push('import { toAttributes, toBoolean, toClass, toStyle } from "@virtual/utils";');
 
     lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');

@@ -100,7 +100,7 @@ export const markup = (context) => {
 
                 const { node, parent } = path;
 
-                const { alternate, consequent, left, right, test } = node.expression;
+                const { expression } = node;
 
                 if (t.isJSXAttribute(parent)) return;
 
@@ -108,7 +108,9 @@ export const markup = (context) => {
                  * <element>{​condition ?  any  :  any }​</element>
                  * <element>{​condition ? (any) : (any)}​</element>
                  */
-                if (t.isConditionalExpression(node.expression)) {
+                if (t.isConditionalExpression(expression)) {
+
+                    const { alternate, consequent, test } = expression;
 
                     path.replaceWith(
                         t.jsxText(`{/*REMOVE{#if ${generator(test).code}}
@@ -130,12 +132,42 @@ export const markup = (context) => {
                  *   {​condition && (body)}​                 => body
                  * </element>
                  */
-                if (t.isLogicalExpression(node.expression, { operator: '&&' })) {
+                if (t.isLogicalExpression(expression, { operator: '&&' })) {
+
+                    const { left, right } = expression;
 
                     path.replaceWith(
                         t.jsxText(`{/*REMOVE{#if ${generator(left).code}}
                             ${generator(right).code}
                         {/if}REMOVE*/}`)
+                    )
+                }
+
+                if (t.isCallExpression(expression)) {
+
+                    const { object, property } = expression.callee;
+
+                    if (!t.isMemberExpression(expression.callee)) return;
+
+                    if (property.name != 'map') return;
+
+                    // TODO
+                    // const variable = expression.expression.expression.getText();
+                    const variable = generator(object).code;
+
+                    const [arrowFunction] = expression.arguments;
+
+                    const parameters = arrowFunction
+                        .params
+                        .map((parameter) => parameter.name)
+                        .join(', ');
+
+                    const body = generator(arrowFunction.body).code;
+
+                    path.replaceWith(
+                        t.jsxText(`{/*REMOVE{#each ${variable} as ${parameters}}
+                            ${body}
+                        {/each}REMOVE*/}`)
                     )
                 }
             }
@@ -183,7 +215,7 @@ export const markup = (context) => {
         .replace(/\{\/\*REMOVE/g, '')
         .replace(/REMOVE\*\/\}/g, '');
 
-    // console.log(markup)
+    console.log(markup)
 
     context.markup = markup;
 }
