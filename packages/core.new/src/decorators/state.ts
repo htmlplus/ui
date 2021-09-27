@@ -7,8 +7,10 @@ export function State() {
         const descriptor = {
             set(input) {
 
-                value = input;
+                if (value === input) return;
 
+                value = input;
+                
                 this.$api?.state(propertyKey, input);
             },
             get() {

@@ -32,12 +32,11 @@ const getInitializer = (node) => {
 }
 
 const getType = (node) => {
-
-    const value = node.value;
-
-    if (!value) return;
-
-    return value.type;
+    try {
+        // TODO
+        return node.typeAnnotation.typeAnnotation.type
+    }
+    catch { }
 }
 
 export const extract = (context) => {

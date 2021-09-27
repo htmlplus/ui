@@ -6,8 +6,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w",
+    "build": "npm run clean && rollup -c",
+    "clean": "rimraf dist public/build",
+    "start": "npm run clean && rollup -c -w",
     "test": "jest"
   },
   "dependencies": {
@@ -49,7 +50,7 @@
     "rollup-pluginutils": "^2.8.2",
     "schema-utils": "^3.1.1",
     "sirv-cli": "^0.3.2",
-    "svelte": "^3.42.4",
+    "svelte": "^3.43.0",
     "svelte-check": "^2.2.3",
     "svelte-preprocess": "^4.9.4",
     "ts-loader": "^9.2.5",

@@ -2,6 +2,7 @@ export const TOKEN_THIS                 = 'instance';
 export const TOKEN_API                  = '$api';
 export const TOKEN_API_FULL             = `${TOKEN_THIS}.$api`;
 export const TOKEN_API_HOST             = 'host';
+export const TOKEN_API_ATTRIBUTE        = 'attribute';
 export const TOKEN_API_PROPERTY         = 'property';
 export const TOKEN_API_SLOTS            = 'slots';
 export const TOKEN_API_STATE            = 'state';
