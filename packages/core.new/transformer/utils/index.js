@@ -1,3 +1,4 @@
+export * from './sync';
 export * from './to-attributes';
 export * from './to-boolean';
 export * from './to-class';
