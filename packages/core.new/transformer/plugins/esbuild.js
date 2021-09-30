@@ -4,8 +4,11 @@ import { transformer } from '../transformer.js';
 export const htmlplus = (config) => ({
   name: 'htmlplus',
   setup(build) {
+
     const cache = new Map();
+
     build.onLoad({ filter: /\.tsx$/ }, async (args) => {
+
       const id = args.path;
 
       const stats = fs.statSync(id);
@@ -27,6 +30,6 @@ export const htmlplus = (config) => ({
       cache.set(id, value);
 
       return value.output;
-    });
-  },
-});
+    })
+  }
+})

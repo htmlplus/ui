@@ -28,6 +28,7 @@
     "acorn-jsx": "^5.3.2",
     "case": "^1.6.3",
     "cropperjs": "^1.5.12",
+    "esm": "^3.2.25",
     "glob": "^7.1.7",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.0",

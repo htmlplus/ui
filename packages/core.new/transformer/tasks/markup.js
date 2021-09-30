@@ -1,9 +1,12 @@
-import generator from '@babel/generator';
-import template from "@babel/template";
-import traverse from '@babel/traverse';
-import * as t from '@babel/types';
+import babelGenerator from '@babel/generator';
+import babelTraverse from '@babel/traverse';
+import t from '@babel/types';
 import Case from 'case';
 import * as CONSTANTS from '../constants.js';
+
+// TODO
+const generator = babelGenerator.default || babelGenerator;
+const traverse = babelTraverse.default || babelTraverse;
 
 // TODO
 export const markup = (context) => {
@@ -12,7 +15,7 @@ export const markup = (context) => {
 
     let markup;
 
-    traverse.default(render, {
+    traverse(render, {
         JSXAttribute: {
             exit(path) {
 
@@ -124,10 +127,10 @@ export const markup = (context) => {
                     const { alternate, consequent, test } = expression;
 
                     path.replaceWith(
-                        t.jsxText(`{/*REMOVE{#if ${generator.default(test).code}}
-                            ${generator.default(consequent).code}
+                        t.jsxText(`{/*REMOVE{#if ${generator(test).code}}
+                            ${generator(consequent).code}
                             {:else}
-                            ${generator.default(alternate).code}
+                            ${generator(alternate).code}
                         {/if}REMOVE*/}`)
                     )
                 }
@@ -148,8 +151,8 @@ export const markup = (context) => {
                     const { left, right } = expression;
 
                     path.replaceWith(
-                        t.jsxText(`{/*REMOVE{#if ${generator.default(left).code}}
-                            ${generator.default(right).code}
+                        t.jsxText(`{/*REMOVE{#if ${generator(left).code}}
+                            ${generator(right).code}
                         {/if}REMOVE*/}`)
                     )
                 }
@@ -164,7 +167,7 @@ export const markup = (context) => {
 
                     // TODO
                     // const variable = expression.expression.expression.getText();
-                    const variable = generator.default(object).code;
+                    const variable = generator(object).code;
 
                     const [arrowFunction] = expression.arguments;
 
@@ -173,7 +176,7 @@ export const markup = (context) => {
                         .map((parameter) => parameter.name)
                         .join(', ');
 
-                    const body = generator.default(arrowFunction.body).code;
+                    const body = generator(arrowFunction.body).code;
 
                     path.replaceWith(
                         t.jsxText(`{/*REMOVE{#each ${variable} as ${parameters}}
@@ -219,14 +222,12 @@ export const markup = (context) => {
         },
     });
 
-    markup = generator.default(markup)
+    markup = generator(markup)
         .code
         .replace('<>', '')
         .replace('</>', '')
         .replace(/\{\/\*REMOVE/g, '')
         .replace(/REMOVE\*\/\}/g, '');
-
-    // console.log(markup)
 
     context.markup = markup;
 }

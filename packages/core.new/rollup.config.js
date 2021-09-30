@@ -3,7 +3,7 @@ import { glob } from 'glob';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import { htmlplus } from './transformer/plugin/rollup';
+import { htmlplus } from './transformer/plugins/rollup';
 
 export default {
   input: glob.sync('./src/components/*/*.tsx'),
@@ -12,16 +12,16 @@ export default {
       format: 'esm',
       dir: 'dist/esm',
     },
-    {
-      format: 'cjs',
-      dir: 'dist/cjs',
-      exports: 'default',
-    },
-    {
-      format: 'umd',
-      dir: 'dist/umd',
-      name: 'htmlplus',
-    },
+    // {
+    //   format: 'cjs',
+    //   dir: 'dist/cjs',
+    //   exports: 'default',
+    // },
+    // {
+    //   format: 'umd',
+    //   dir: 'dist/umd',
+    //   name: 'htmlplus',
+    // },
   ],
   plugins: [
     htmlplus({

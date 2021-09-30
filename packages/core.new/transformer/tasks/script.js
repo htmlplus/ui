@@ -20,7 +20,7 @@ export const script = (context) => {
 
     lines.push('<script lang="ts">');
 
-    lines.push('import { sync, toAttributes, toBoolean, toClass, toStyle } from "../../../transformer/utils/index.js";');
+    lines.push('import { sync, toAttributes, toBoolean, toClass, toStyle } from "../../../transformer/utils/index";');
 
     lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
 

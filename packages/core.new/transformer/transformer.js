@@ -3,6 +3,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import * as tasks from './tasks/index.js';
 
 export const transformer = async (id, config) => {
+  
   const context = {
     id,
     config,

@@ -1,10 +1,13 @@
-import generator from '@babel/generator';
-import template from "@babel/template";
-import traverse from '@babel/traverse';
-import * as t from '@babel/types';
+import babelGenerator from '@babel/generator';
+import babelTraverse from '@babel/traverse';
+import t from '@babel/types';
 import Case from 'case';
 import path from 'path';
 import * as CONSTANTS from '../constants.js';
+
+// TODO
+const generator = babelGenerator.default || babelGenerator;
+const traverse = babelTraverse.default || babelTraverse;
 
 const hasDecorator = (node, name) => {
 
@@ -49,7 +52,7 @@ export const extract = (context) => {
         component,
         render;
 
-    traverse.default(ast, {
+    traverse(ast, {
         ClassDeclaration: {
             exit(path) {
 
@@ -229,7 +232,7 @@ export const extract = (context) => {
 
     additions.forEach((path) => path.remove());
 
-    const script = generator.default(ast, {
+    const script = generator(ast, {
         comments: false,
         decoratorsBeforeExport: true,
     }).code;
