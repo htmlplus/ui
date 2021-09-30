@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npm run clean && rollup -c",
     "clean": "rimraf dist public/build",
-    "start": "npm run clean && rollup -c -w",
+    "start": "node scripts/start.js",
     "test": "jest"
   },
   "dependencies": {
