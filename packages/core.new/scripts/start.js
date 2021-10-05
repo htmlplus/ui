@@ -1,34 +1,106 @@
+import { spawn } from 'child_process';
 import esbuild from 'esbuild';
+import http from 'http';
 import { htmlplus } from '../transformer/plugins/esbuild.js';
 
-const time = Date.now();
+const
+    clients = [],
+    port = 3000,
+    time = Date.now();
 
 esbuild
-    .serve(
-        {
-            servedir: 'public',
-            port: 8000,
+    .build({
+        bundle: true,
+        sourcemap: true,
+        incremental: true,
+        format: 'esm',
+        entryPoints: ['./src/components/index.ts'],
+        outfile: 'public/build/bundle.js',
+        banner: {
+            js: ' (() => new EventSource("/~dev").onmessage = () => location.reload())();'
         },
-        {
-            bundle: true,
-            format: 'esm',
-            entryPoints: ['./src/components/index.ts'],
-            outfile: 'public/build/bundle.js',
-            plugins: [
-                htmlplus({
-                    prefix: 'plus',
-                    preprocess: {
-                        scss: {
-                            includePaths: ['./src/styles'],
-                        }
+        plugins: [
+            htmlplus({
+                prefix: 'plus',
+                cache: '.cache',
+                preprocess: {
+                    scss: {
+                        includePaths: ['./src/styles'],
                     }
-                })
-            ]
-        }
-    )
-    .then((server) => {
+                }
+            })
+        ],
+        watch: {
+            onRebuild(error) {
 
-        const duration = Date.now() - time;
-        
-        console.log(`Start on http://localhost:${server.port} in ${duration}ms`);
-    });
+                clients.forEach((client) => client.write('data: update\n\n'));
+
+                clients.length = 0;
+
+                console.log(error ? error : `[${new Date().toLocaleTimeString()}] Rebuild.`);
+            },
+        },
+    })
+    .then(() => serve())
+    .catch(() => process.exit(1))
+
+const serve = () => {
+
+    esbuild
+        .serve({ servedir: 'public' }, {})
+        .then((server) => {
+
+            http.
+                createServer((req, res) => {
+
+                    const { url, method, headers } = req;
+
+                    if (url === '/~dev')
+                        return clients.push(
+                            res.writeHead(200, {
+                                'Content-Type': 'text/event-stream',
+                                'Cache-Control': 'no-cache',
+                                'Connection': 'keep-alive',
+                            })
+                        )
+
+                    const path = ~url.split('/').pop().indexOf('.') ? url : `/index.html`;
+
+                    const proxy = http.request(
+                        {
+                            hostname: '0.0.0.0',
+                            port: server.port,
+                            path,
+                            method,
+                            headers
+                        },
+                        (response) => {
+
+                            res.writeHead(response.statusCode, response.headers);
+
+                            response.pipe(res, { end: true });
+                        }
+                    );
+
+                    req.pipe(proxy, { end: true });
+                })
+                .listen(port);
+
+            if (clients.length === 0) {
+
+                const platforms = {
+                    darwin: ['open'],
+                    linux: ['xdg-open'],
+                    win32: ['cmd', '/c', 'start'],
+                }
+
+                const command = platforms[process.platform][0];
+
+                const args = [...[platforms[process.platform].slice(1)], `http://localhost:${port}`];
+
+                spawn(command, args);
+            }
+
+            console.log(`[${new Date().toLocaleTimeString()}] Start on http://localhost:${port} in ${Date.now() - time}ms`);
+        })
+}
