@@ -14,7 +14,15 @@ export type LinkConfig = {
   scope?: Function;
 }
 
-export const createLink = (config: LinkConfig) => {
+const links = new Map<string, any>();
+
+export const createLink = (namespace: string) => {
+
+  if (links.has(namespace)) return links.get(namespace);
+
+  const config: LinkConfig = {
+    scope: (i) => i.connector
+  }
 
   let disconnecting = false;
 
@@ -277,10 +285,14 @@ export const createLink = (config: LinkConfig) => {
 
   const Observable = decorator('observable');
 
-  return {
+  const result = {
     Action,
     Inject,
     Observable,
     reconnect,
   }
+
+  links.set(namespace, result);
+
+  return result;
 }

@@ -5,7 +5,9 @@ const getName = (key) => key.substr(2).toLowerCase();
 
 const isEvent = (key) => key.match(/on[A-Z]\w+/g);
 
-export const sync = (node, prev) => (next) => {
+// TODO: next
+export const sync = (node, prev) => (next = {}) => {
+
 
     /**
      * class

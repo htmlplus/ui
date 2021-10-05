@@ -1,5 +1,7 @@
 import { Component, Host, Property, State } from '@app/decorators';
-import { Inject, reconnect } from '../drawer/drawer.link';
+import { createLink } from '@app/services';
+
+const { Inject, reconnect } = createLink('Drawer');
 
 /**
  * @slot default - The default slot.

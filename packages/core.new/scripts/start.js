@@ -27,6 +27,8 @@ esbuild
         }
     )
     .then((server) => {
+
         const duration = Date.now() - time;
-        console.log(`Start on http://localhost:8000 in ${duration}ms`);
+        
+        console.log(`Start on http://localhost:${server.port} in ${duration}ms`);
     });

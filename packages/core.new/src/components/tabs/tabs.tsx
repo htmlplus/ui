@@ -1,5 +1,7 @@
 import { Component,  Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
-import { Action, Observable, reconnect } from './tabs.link';
+import { createLink } from '@app/services';
+
+const { Action, Observable, reconnect } = createLink('Tabs');
 
 /**
  * @development

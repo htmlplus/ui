@@ -1,5 +1,7 @@
 import { Component, GlobalConfig, Host, Property, State } from '@app/decorators';
-import { Inject } from '../tabs/tabs.link';
+import { createLink } from '@app/services';
+
+const { Inject } = createLink('Tabs');
 
 /**
  * TODO: Tabs make it easy to switch between different views.

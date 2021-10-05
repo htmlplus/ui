@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
-import { Animation } from '@app/services';
-import { Action, Observable } from './bottom-navigation.link';
+import { Animation, createLink } from '@app/services';
+
+const { Action, Observable } = createLink('BottomNavigation');
 
 /**
  * @development 

@@ -1,5 +1,7 @@
 import { Component, Host, Property, State } from '@app/decorators';
-import { Inject, reconnect } from '../dialog/dialog.link';
+import { createLink } from '@app/services';
+
+const { Inject, reconnect } = createLink('Dialog');
 
 /**
  * @slot default - The default slot.

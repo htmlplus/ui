@@ -1,5 +1,7 @@
 import { Component, GlobalConfig, Host, Property, State } from '@app/decorators';
-import { Inject } from '../tabs/tabs.link';
+import { createLink } from '@app/services';
+
+const { Inject } = createLink('Tabs');
 
 /**
  * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.

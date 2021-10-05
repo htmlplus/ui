@@ -1,8 +1,9 @@
 import { Component, Direction, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
 import { toAxis } from '@app/helpers';
-import { Animation } from '@app/services';
-import { Action, Observable, reconnect } from './toast.link';
+import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
+
+const { Action, Observable, reconnect } = createLink('Toast');
 
 /**
  * @development

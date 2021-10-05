@@ -1,5 +1,7 @@
 import { Bind, Component, GlobalConfig, Host, Property, State } from '@app/decorators';
-import { Inject } from '../bottom-navigation/bottom-navigation.link';
+import { createLink } from '@app/services';
+
+const { Inject } = createLink('BottomNavigation');
 
 /**
  * @development 

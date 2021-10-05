@@ -1,8 +1,9 @@
 import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
 import { classes, toAxis } from '@app/helpers';
-import { Animation, ClickOutside, Scrollbar } from '@app/services';
-import { Action, Observable, reconnect } from './drawer.link';
+import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
+
+const { Action, Observable, reconnect } = createLink('Drawer');
 
 /**
  * @slot default - The default slot.

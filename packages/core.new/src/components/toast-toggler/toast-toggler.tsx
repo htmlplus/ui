@@ -1,5 +1,7 @@
 import { Component, Host, Property, State } from '@app/decorators';
-import { Inject, reconnect } from '../toast/toast.link';
+import { createLink } from '@app/services';
+
+const { Inject, reconnect } = createLink('Toast');
 
 /**
  * @slot default - The default slot.

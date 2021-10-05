@@ -1,7 +1,6 @@
 import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
 import { classes, toAxis } from '@app/helpers';
-import { Animation, ClickOutside, Portal, Scrollbar } from '@app/services';
-import { Action, Observable, reconnect } from './dialog.link';
+import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
   DialogFullscreen,
   DialogGlobalState,
@@ -10,6 +9,8 @@ import {
   DialogPortalTarget,
   DialogSize
 } from './dialog.types';
+
+const { Action, Observable, reconnect } = createLink('Dialog');
 
 /**
  * @part backdrop - Backdrop element.
@@ -463,7 +464,7 @@ export class Dialog {
    */
 
   // it's can not be `connectedCallback`, because ClickOutside incompatible 
-  componentDidLoad() {
+  connectedCallback() {
     this.initialize();
   }
 

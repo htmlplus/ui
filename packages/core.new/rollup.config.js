@@ -1,16 +1,29 @@
+import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import { glob } from 'glob';
-import commonjs from 'rollup-plugin-commonjs';
+import path from 'path';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import { htmlplus } from './transformer/plugins/rollup';
 
-export default {
+/**
+ * @type {import('rollup').RollupOptions}
+ */
+const config = {
   input: glob.sync('./src/components/*/*.tsx'),
   output: [
     {
-      format: 'esm',
+      format: 'es',
       dir: 'dist/esm',
+      chunkFileNames: '[name].js',
+      manualChunks(id) {
+
+        const matcher = path.join('src/components/');
+
+        if (id.includes(matcher) && id.endsWith('.tsx')) return path.basename(id);
+
+        return 'core';
+      },
     },
     // {
     //   format: 'cjs',
@@ -48,3 +61,5 @@ export default {
     terser(),
   ],
 };
+
+export default config;
