@@ -3,7 +3,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import * as tasks from './tasks/index.js';
 
 export const transformer = async (id, config) => {
-  
+
   const context = {
     id,
     config,
@@ -25,8 +25,12 @@ export const transformer = async (id, config) => {
     }
   );
 
-  return svelte.compile(source.code, {
+  const result = svelte.compile(source.code, {
     filename: id,
     customElement: true,
   });
+
+  result.dependencies = source.dependencies;
+
+  return result;
 };
