@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { customElement } from '../modules/custom-element/index.js';
+import { customElement } from '../modules/index.js';
 
 export const esbuild = (config) => ({
     name: 'htmlplus',

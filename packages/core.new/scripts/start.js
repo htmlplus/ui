@@ -1,7 +1,8 @@
 import { spawn } from 'child_process';
 import esbuild from 'esbuild';
+import glob from 'glob';
 import http from 'http';
-import { esbuild as htmlplus } from '../transformer/bundlers/index.js';
+import { esbuild as htmlplus } from '../transformer/bundlers/esbuild.js';
 
 const
 	clients = [],
@@ -14,10 +15,16 @@ esbuild
 		sourcemap: true,
 		incremental: true,
 		format: 'esm',
-		entryPoints: ['./src/components/index.ts'],
 		outfile: 'public/build/bundle.js',
+		stdin: {
+			resolveDir: '.',
+			contents: glob
+				.sync('./src/components/*/*.tsx') // TODO: from tsconfig
+				.map((file) => `import '${file}';`)
+				.join('\n')
+		},
 		banner: {
-			js: ' (() => new EventSource("/~dev").onmessage = () => location.reload())();'
+			js: '(() => new EventSource("/~dev").onmessage = () => location.reload())();'
 		},
 		plugins: [
 			htmlplus({

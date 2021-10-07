@@ -1,4 +1,3 @@
-import path from 'path';
 import { customElement } from '../modules/index';
 
 export const rollup = (config) => ({
