@@ -4,7 +4,7 @@ import { glob } from 'glob';
 import path from 'path';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import { htmlplus } from './transformer/plugins/rollup';
+import { rollup as htmlplus } from './transformer/bundlers/rollup';
 
 /**
  * @type {import('rollup').RollupOptions}

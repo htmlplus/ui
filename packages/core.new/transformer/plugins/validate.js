@@ -1,4 +1,4 @@
-import * as CONSTANTS from '../constants.js';
+import * as CONSTANTS from '../configs/constants.js';
 
 export const validate = (context) => {
 

@@ -3,7 +3,7 @@ import babelTraverse from '@babel/traverse';
 import t from '@babel/types';
 import Case from 'case';
 import path from 'path';
-import * as CONSTANTS from '../constants.js';
+import * as CONSTANTS from '../configs/constants.js';
 
 // TODO
 const generator = babelGenerator.default || babelGenerator;
