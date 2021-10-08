@@ -1,12 +1,14 @@
-export function Style() {
+export function Styles() {
 
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
 
-        const fn = descriptor.get;
+        const fn = descriptor.get.bind(target);
 
         descriptor.get = function () {
 
             const input: any = fn();
+
+            if (typeof input == 'undefined') return input;
 
             const type = Object.prototype.toString.call(input);
 

@@ -1,4 +1,4 @@
-import { Bind, Class, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { Bind, Classes, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
@@ -198,7 +198,7 @@ export class Dialog {
     return attributes;
   }
 
-  @Class(true)
+  @Classes(true)
   get classes() {
 
     let placement = (this.placement || '');

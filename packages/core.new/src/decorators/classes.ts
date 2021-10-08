@@ -2,6 +2,8 @@ import * as Case from 'case';
 
 const parse = (input, smart?: boolean) => {
 
+    if (typeof input == 'undefined') return input;
+
     const classes = [];
 
     const type = Object.prototype.toString.call(input);
@@ -90,11 +92,11 @@ const parse = (input, smart?: boolean) => {
     return classes.join(' ');
 }
 
-export function Class(smart?: boolean) {
+export function Classes(smart?: boolean) {
 
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
 
-        const fn = descriptor.get;
+        const fn = descriptor.get.bind(target);
 
         descriptor.get = () => parse(fn(), smart);
 

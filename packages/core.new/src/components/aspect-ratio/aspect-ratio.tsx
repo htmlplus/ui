@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property, Style } from '@app/decorators';
+import { Component, GlobalConfig, Host, Property, Styles } from '@app/decorators';
 import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
@@ -31,7 +31,7 @@ export class AspectRatio {
     if (!isNaN(valueA + valueB)) return valueA / valueB;
   }
 
-  @Style()
+  @Styles()
   get style() {
 
     const ratio = this.ratio;

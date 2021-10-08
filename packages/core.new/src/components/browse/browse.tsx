@@ -1,4 +1,4 @@
-import { Component, Bind, Event, EventEmitter, GlobalConfig, Host, Method, Property, State } from '@app/decorators';
+import { Attributes, Component, Bind, Event, EventEmitter, GlobalConfig, Method, Property, State } from '@app/decorators';
 import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
@@ -86,6 +86,7 @@ export class Browse {
 
   timeout?;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {};
@@ -204,7 +205,7 @@ export class Browse {
 
     const files = event.target.files;
 
-    if(!files.length)return;
+    if (!files.length) return;
 
     this.do(files);
   }
@@ -241,7 +242,7 @@ export class Browse {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <slot />
         <input
           accept={this.accept}
@@ -251,7 +252,7 @@ export class Browse {
           onChange={this.onChange}
           onClick={(event) => event.stopPropagation()}
         />
-      </Host>
+      </>
     )
   }
 }

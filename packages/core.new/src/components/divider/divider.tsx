@@ -1,4 +1,4 @@
-import { Class, Component, Direction, GlobalConfig, Host, IsRTL, Property } from '@app/decorators';
+import { Classes, Component, Direction, GlobalConfig, Host, IsRTL, Property } from '@app/decorators';
 import { DividerSize, DividerType } from './divider.types';
 
 /**

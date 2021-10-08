@@ -1,4 +1,4 @@
-import { Bind, Class, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
+import { Bind, Classes, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
@@ -150,7 +150,7 @@ export class Drawer {
     }
   }
 
-  @Class(true)
+  @Classes(true)
   get classes() {
 
     const placement = toAxis(this.placement || 'start', this.isRTL);

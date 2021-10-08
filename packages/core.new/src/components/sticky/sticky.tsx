@@ -1,4 +1,4 @@
-import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Style, Watch } from "@app/decorators";
+import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Styles, Watch } from "@app/decorators";
 import { toUnit } from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -68,7 +68,7 @@ export class Sticky {
     return `calc((${toUnit(this.top)} + 1px) * -1)`;
   }
 
-  @Style()
+  @Styles()
   get style() {
     return {
       top: toUnit(this.top),
@@ -140,7 +140,7 @@ export class Sticky {
           <div
             class="sizer"
             ref={this.$element}
-            style={`top: ${this.sizer}`} // TODO
+            style={`top: ${this.sizer}`}
           />
         </div>
         <slot />
