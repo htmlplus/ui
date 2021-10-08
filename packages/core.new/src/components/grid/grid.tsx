@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Property } from '@app/decorators';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
@@ -243,11 +243,9 @@ export class Grid {
 
   render() {
     return (
-      <Host>
-        <div {...this.attributes}>
-          <slot />
-        </div>
-      </Host>
+      <div {...this.attributes}>
+        <slot />
+      </div>
     )
   }
 }

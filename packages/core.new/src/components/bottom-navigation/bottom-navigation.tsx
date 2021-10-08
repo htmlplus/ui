@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
 import { Animation, createLink } from '@app/services';
 
 const { Action, Observable } = createLink('BottomNavigation');
@@ -69,7 +69,7 @@ export class BottomNavigation {
   @GlobalConfig('bottomNavigation')
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   animate?: Animation;
@@ -77,6 +77,7 @@ export class BottomNavigation {
   @Observable()
   tunnel?: any;
 
+  @Attributes()
   get attributes() {
     return {
       'state': 'open'
@@ -175,9 +176,7 @@ export class BottomNavigation {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

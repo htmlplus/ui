@@ -1,4 +1,4 @@
-import { Component,  Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Property } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Action, Observable, reconnect } = createLink('Tabs');
@@ -41,6 +41,7 @@ export class Tabs {
   @GlobalConfig('tabs')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       // TODO
@@ -111,9 +112,7 @@ export class Tabs {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host >
+      <slot />
     )
   }
 }

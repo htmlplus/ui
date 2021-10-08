@@ -1,4 +1,4 @@
-import { Bind, Component, Element, GlobalConfig, Host, IsRTL, Property, State } from '@app/decorators';
+import { Bind, Component, GlobalConfig, Host, IsRTL, Property, State } from '@app/decorators';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -46,7 +46,7 @@ export class Breadcrumb {
   @IsRTL()
   isRTL?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   @State()

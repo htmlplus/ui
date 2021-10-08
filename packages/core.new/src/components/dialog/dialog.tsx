@@ -1,4 +1,4 @@
-import { Bind, Classes, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
@@ -166,7 +166,7 @@ export class Dialog {
   @IsRTL()
   isRTL?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $cell!: HTMLElement;
@@ -181,6 +181,7 @@ export class Dialog {
   @Observable()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {
@@ -475,7 +476,7 @@ export class Dialog {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">
@@ -484,7 +485,7 @@ export class Dialog {
             </div>
           </div>
         </div>
-      </Host>
+      </>
     )
   }
 }

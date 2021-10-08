@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property, State } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property, State } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink('Tabs');
@@ -32,6 +32,7 @@ export class TabsTab {
   @Inject()
   change?: Function = () => console.log('TODO: can not use out of tabs');
 
+  @Attributes()
   get attributes() {
     return {
       'active': this.tunnel && this.tunnel === this.value,
@@ -41,11 +42,9 @@ export class TabsTab {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <span>
-          <slot />
-        </span>
-      </Host>
+      <span>
+        <slot />
+      </span>
     )
   }
 }

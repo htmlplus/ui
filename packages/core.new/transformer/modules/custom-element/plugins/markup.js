@@ -58,23 +58,6 @@ export const markup = (context) => {
                 }
             }
         },
-        JSXElement: {
-            exit(path) {
-
-                const { node } = path;
-
-                if (node.openingElement.name.name != 'Host') return;
-
-                // TODO
-                // const attributes = node.openingElement.attributes || [];
-                
-                markup = t.jsxFragment(
-                    t.jsxOpeningFragment(),
-                    t.jsxClosingFragment(),
-                    node.children,
-                )
-            }
-        },
         JSXExpressionContainer: {
             exit(path) {
 
@@ -197,6 +180,14 @@ export const markup = (context) => {
                 path.skip();
             }
         },
+        ReturnStatement: {
+            enter(path) {
+
+                const { node } = path;
+
+                markup = node.argument;
+            }
+        }
     });
 
     markup = generator(markup)

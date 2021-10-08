@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, State } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State } from '@app/decorators';
 import { IntersectionBehavior } from './intersection.types';
 
 /**
@@ -71,11 +71,12 @@ export class Intersection {
   @State()
   isVisible?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   observer?: IntersectionObserver;
 
+  @Attributes()
   get attributes() {
     return {
       intersecting: this.isIntersecting
@@ -222,9 +223,9 @@ export class Intersection {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         {this.isVisible && <slot />}
-      </Host>
+      </>
     )
   }
 }

@@ -1,4 +1,4 @@
-import { Bind, Classes, Component, Element, Event, EventEmitter, GlobalConfig, Host, Method, Property } from '@app/decorators';
+import { Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property } from '@app/decorators';
 import CropperCore from 'cropperjs';
 import {
   CropperAspectRatio,
@@ -175,7 +175,7 @@ export class Cropper {
   })
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $image!: HTMLImageElement;
@@ -594,11 +594,9 @@ export class Cropper {
 
   render() {
     return (
-      <Host>
-        <div class={this.classes}>
-          <img class="image" alt="cropper" ref={this.$image} src={this.src} />
-        </div>
-      </Host>
+      <div class={this.classes}>
+        <img class="image" alt="cropper" ref={this.$image} src={this.src} />
+      </div>
     )
   }
 }

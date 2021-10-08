@@ -1,4 +1,4 @@
-import { Component, Host, Property } from '@app/decorators';
+import { Component, Property } from '@app/decorators';
 
 /**
  * @slot default - The default slot.
@@ -14,9 +14,7 @@ export class DialogBody {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
-    );
+      <slot />
+    )
   }
 }

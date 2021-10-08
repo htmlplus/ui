@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
 import { eventPath, toUnit } from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
@@ -80,7 +80,7 @@ export class Menu {
   @State()
   y?: string;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $activator!: HTMLElement;
@@ -275,7 +275,7 @@ export class Menu {
 
   render() {
     return (
-      <Host>
+      <>
         {/* TODO */}
         {/* <div
           class="activator"
@@ -292,7 +292,7 @@ export class Menu {
             <slot />
           </div>
         )} */}
-      </Host>
+      </>
     )
   }
 }

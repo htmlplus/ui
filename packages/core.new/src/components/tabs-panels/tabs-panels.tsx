@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink('Tabs');
@@ -23,6 +23,7 @@ export class TabsPanels {
   @GlobalConfig('tabsPanels')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       // TODO
@@ -49,9 +50,7 @@ export class TabsPanels {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

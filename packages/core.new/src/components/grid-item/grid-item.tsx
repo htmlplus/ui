@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Property } from '@app/decorators';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 
 /**
@@ -291,9 +291,7 @@ export class GridItem {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

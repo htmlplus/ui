@@ -1,4 +1,4 @@
-import { Bind, Classes, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
+import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
@@ -131,7 +131,7 @@ export class Drawer {
   @State()
   platform?: DrawerPlatform;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $root!: HTMLElement;
@@ -143,6 +143,7 @@ export class Drawer {
   @Observable()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       platform: this.platform,
@@ -405,7 +406,7 @@ export class Drawer {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         {this.hasBackdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div
           class={this.classes}
@@ -413,7 +414,7 @@ export class Drawer {
         >
           <slot />
         </div>
-      </Host>
+      </>
     )
   }
 }

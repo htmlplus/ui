@@ -1,4 +1,4 @@
-import { Bind, Component, Element, EventEmitter, GlobalConfig, Host, IsRTL, Property, State, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, EventEmitter, GlobalConfig, Host, IsRTL, Property, State, Watch } from '@app/decorators';
 import { createPopper, Instance } from '@popperjs/core';
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
 
@@ -128,7 +128,7 @@ export class Tooltip {
   @State()
   state?: 'show' | 'hide' = 'hide';
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $tooltip!: HTMLElement;
@@ -139,6 +139,7 @@ export class Tooltip {
     return this.appendTo ?? this.$host.parentElement as HTMLElement;
   }
 
+  @Attributes()
   get attributes() {
     return {
       role: 'tooltip',
@@ -277,12 +278,10 @@ export class Tooltip {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <div class="tooltip" ref={this.$tooltip}>
-          <slot />
-          <span x-arrow ref={this.$arrow} />
-        </div>
-      </Host>
+      <div class="tooltip" ref={this.$tooltip}>
+        <slot />
+        <span x-arrow ref={this.$arrow} />
+      </div>
     )
   }
 }

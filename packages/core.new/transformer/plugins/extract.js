@@ -107,9 +107,6 @@ export const extract = (context) => {
 
     const title = Case.capital(key);
 
-    // TODO
-    const tags = [];
-
     const properties = children
         .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
         .map((property) => {
@@ -167,13 +164,6 @@ export const extract = (context) => {
                 tags,
             }
         });
-
-    const host = children
-        .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_HOST))
-        .map((property) => ({
-            name: property.key.name
-        }))
-        .pop();
 
     const slots = children
         .filter((slot) => hasDecorator(slot, CONSTANTS.TOKEN_DECORATOR_SLOTS))
@@ -237,7 +227,6 @@ export const extract = (context) => {
         decoratorsBeforeExport: true,
     }).code;
 
-    context.tags = tags;
     context.directory = directory;
     context.component = component;
     context.name = name;
@@ -251,9 +240,9 @@ export const extract = (context) => {
     context.states = states;
     context.hasMount = hasMount;
     context.hasUnmount = hasUnmount;
-    context.host = host;
 
     // TODO
+    context.tags = [];
     context.script = script;
     context.render = render;
 }

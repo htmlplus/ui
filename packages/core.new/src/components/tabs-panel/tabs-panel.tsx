@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property, State } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property, State } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink('Tabs');
@@ -23,6 +23,7 @@ export class TabsPanel {
   @GlobalConfig('tabsPanel')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       'active': this.tunnel && this.tunnel === this.value
@@ -31,9 +32,7 @@ export class TabsPanel {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

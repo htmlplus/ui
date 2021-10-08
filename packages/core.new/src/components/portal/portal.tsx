@@ -1,4 +1,4 @@
-import { Component, Element, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Host, Property } from '@app/decorators';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
@@ -33,7 +33,7 @@ export class Portal {
   })
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   instance?: PortalCore;
@@ -101,7 +101,8 @@ export class Portal {
 
   render() {
     return (
-      <Host />
+      <>
+      </>
     )
   }
 }

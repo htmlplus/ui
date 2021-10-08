@@ -1,4 +1,4 @@
-import { Component, Host, Property, State } from '@app/decorators';
+import { Attributes, Component, Property, State } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink('Toast');
@@ -27,6 +27,7 @@ export class ToastToggler {
   @State()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'button',
@@ -59,11 +60,9 @@ export class ToastToggler {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot>
-          {this.text}
-        </slot>
-      </Host>
+      <slot>
+        {this.text}
+      </slot>
     )
   }
 }

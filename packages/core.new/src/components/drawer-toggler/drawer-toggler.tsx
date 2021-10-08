@@ -1,4 +1,4 @@
-import { Component, Host, Property, State } from '@app/decorators';
+import { Attributes, Component, Property, State } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink('Drawer');
@@ -27,6 +27,7 @@ export class DrawerToggler {
   @State()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'button',
@@ -59,14 +60,14 @@ export class DrawerToggler {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <slot>
           {this.text}
         </slot>
         {/* TODO */}
         {/* <slot name="close" />
         <slot name="open" /> */}
-      </Host>
+      </>
     )
   }
 }

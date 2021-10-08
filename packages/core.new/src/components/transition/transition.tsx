@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, Styles } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Styles } from '@app/decorators';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
@@ -83,7 +83,7 @@ export class Transition {
   })
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   parser(input) {
@@ -105,6 +105,13 @@ export class Transition {
     const value = from + Math.random() * (to - from);
 
     return typeof fixed !== 'undefined' ? value.toFixed(fixed) : value;
+  }
+
+  @Attributes()
+  get attributes() {
+    return {
+      style: this.style
+    }
   }
 
   @Styles()
@@ -167,9 +174,7 @@ export class Transition {
 
   render() {
     return (
-      <Host style={this.style}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

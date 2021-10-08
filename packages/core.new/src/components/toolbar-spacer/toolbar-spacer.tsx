@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Property } from '@app/decorators';
 // import { } from './toolbar-spacer.types';
 
 /**
@@ -38,9 +38,7 @@ export class ToolbarSpacer {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

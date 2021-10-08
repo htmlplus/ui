@@ -1,4 +1,4 @@
-import { Component, Host, Property, State } from '@app/decorators';
+import { Attributes, Component, Property, State } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink('Dialog');
@@ -27,6 +27,7 @@ export class DialogToggler {
   @State()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'button',
@@ -59,14 +60,14 @@ export class DialogToggler {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <slot>
           {this.text}
         </slot>
         {/* TODO */}
         {/* <slot name="close" /> */}
         {/* <slot name="open" /> */}
-      </Host>
+      </>
     )
   }
 }

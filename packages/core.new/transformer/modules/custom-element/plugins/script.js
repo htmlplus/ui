@@ -109,16 +109,16 @@ export const script = (context) => {
         lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
 
     // TODO
-    lines.push(`
+    // lines.push(`
 
-        let ready;
+    //     let ready;
 
-        const update = sync(host, {});
+    //     const update = sync(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, {});
 
-        $: ready && update(${CONSTANTS.TOKEN_THIS}.attributes);
+    //     $: ready && update(${CONSTANTS.TOKEN_THIS}.attributes);
 
-        onMount(() => (ready = true));
-    `);
+    //     onMount(() => (ready = true));
+    // `);
 
     lines.push('</script>');
 

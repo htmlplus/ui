@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host } from '@app/decorators';
+import { Component, GlobalConfig } from '@app/decorators';
 
 /**
  * @development
@@ -11,9 +11,7 @@ export class Ripple {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

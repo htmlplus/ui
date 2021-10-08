@@ -1,4 +1,4 @@
-import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Styles, Watch } from "@app/decorators";
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, State, Styles, Watch } from "@app/decorators";
 import { toUnit } from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -51,6 +51,7 @@ export class Sticky {
 
   observer?: IntersectionObserver;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {
@@ -135,7 +136,7 @@ export class Sticky {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <div class="sizer-wrapper">
           <div
             class="sizer"
@@ -150,7 +151,7 @@ export class Sticky {
         <div class="sticky">
           <slot name="sticky" />
         </div>
-      </Host>
+      </>
     )
   }
 }

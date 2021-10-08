@@ -1,4 +1,4 @@
-import { Classes, Component, Direction, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { Attributes, Classes, Component, Direction, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
@@ -127,7 +127,7 @@ export class Toast {
   @IsRTL()
   isRTL?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $root!: HTMLElement;
@@ -142,6 +142,7 @@ export class Toast {
   @Observable()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       // TODO
@@ -425,7 +426,7 @@ export class Toast {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <div
           class={this.classes}
           part="root"
@@ -433,7 +434,7 @@ export class Toast {
         >
           <slot />
         </div>
-      </Host>
+      </>
     )
   }
 }
