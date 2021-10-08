@@ -21,7 +21,7 @@ export const script = (context) => {
     lines.push('<script lang="ts">');
 
     // TODO
-    lines.push('import { sync, toAttributes, toBoolean, toClass, toStyle } from "../../../transformer/modules/custom-element/utils/index";');
+    lines.push('import { sync, toAttributes, toBoolean } from "../../../transformer/modules/custom-element/utils/index";');
 
     lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
 
@@ -123,4 +123,7 @@ export const script = (context) => {
     lines.push('</script>');
 
     context.script = lines.join('\n');
+
+    // TODO
+    // console.log(123, context.script)
 }

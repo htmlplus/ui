@@ -1,5 +1,5 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
-import { classes, toAxis } from '@app/helpers';
+import { Bind, Class, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
   DialogFullscreen,
@@ -198,6 +198,7 @@ export class Dialog {
     return attributes;
   }
 
+  @Class(true)
   get classes() {
 
     let placement = (this.placement || '');
@@ -212,7 +213,7 @@ export class Dialog {
 
     x = toAxis(x, this.isRTL);
 
-    return classes(
+    return [
       'dialog',
       {
         x,
@@ -224,7 +225,7 @@ export class Dialog {
         fullscreen: this.fullscreen,
         scrollable: this.scrollable
       }
-    )
+    ]
   }
 
   get isCurrent() {

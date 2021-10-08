@@ -1,4 +1,4 @@
-import { Component, Direction, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { Class, Component, Direction, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
@@ -151,6 +151,7 @@ export class Toast {
     }
   }
 
+  @Class()
   get classes() {
 
     const { x, y } = this.coordinate(this);

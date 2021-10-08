@@ -1,4 +1,5 @@
 export * from './bind';
+export * from './class';
 export * from './component';
 export * from './debounce';
 export * from './direction';
@@ -13,6 +14,7 @@ export * from './method';
 export * from './property';
 export * from './slots';
 export * from './state';
+export * from './style';
 export * from './unit';
 export * from './watch';
 

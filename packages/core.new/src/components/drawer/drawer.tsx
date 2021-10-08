@@ -1,5 +1,5 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
-import { classes, toAxis } from '@app/helpers';
+import { Bind, Class, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
+import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 
@@ -150,17 +150,18 @@ export class Drawer {
     }
   }
 
+  @Class(true)
   get classes() {
 
     const placement = toAxis(this.placement || 'start', this.isRTL);
 
-    return classes(
+    return [
       'root',
       {
         [placement]: true,
         reverse: this.flexible
       }
-    )
+    ]
   }
 
   get hasBackdrop() {

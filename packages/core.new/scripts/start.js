@@ -19,7 +19,8 @@ esbuild
 		stdin: {
 			resolveDir: '.',
 			contents: glob
-				.sync('./src/components/*/*.tsx') // TODO: from tsconfig
+				// TODO: from tsconfig
+				.sync('./src/components/*/*.tsx')
 				.map((file) => `import '${file}';`)
 				.join('\n')
 		},

@@ -24,32 +24,6 @@ export const markup = (context) => {
                 if (!t.isJSXExpressionContainer(node.value)) return;
 
                 /**
-                 * Convert 'class' or 'style' attribute that contains expression
-                 * <element class={any} /> => <element class={toClass(any)} />
-                 * <element style={any} /> => <element style={toStyle(any)} />
-                 */
-                if (['class', 'style'].includes(node.name.name)) {
-
-                    const handler = 'to' + Case.pascal(node.name.name);
-
-                    path.replaceWith(
-                        t.jsxAttribute(
-                            node.name,
-                            t.jsxExpressionContainer(
-                                t.callExpression(
-                                    t.identifier(handler),
-                                    [
-                                        node.value.expression
-                                    ]
-                                )
-                            )
-                        )
-                    );
-
-                    path.skip();
-                }
-
-                /**
                  * Convert event attribute
                  * <element onEventName={any} /> => <element on:eventName={any} />
                  */
@@ -91,6 +65,9 @@ export const markup = (context) => {
 
                 if (node.openingElement.name.name != 'Host') return;
 
+                // TODO
+                // const attributes = node.openingElement.attributes || [];
+                
                 markup = t.jsxFragment(
                     t.jsxOpeningFragment(),
                     t.jsxClosingFragment(),

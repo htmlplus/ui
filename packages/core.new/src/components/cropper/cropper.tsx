@@ -1,5 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Method, Property } from '@app/decorators';
-import { classes } from '@app/helpers';
+import { Bind, Class, Component, Element, Event, EventEmitter, GlobalConfig, Host, Method, Property } from '@app/decorators';
 import CropperCore from 'cropperjs';
 import {
   CropperAspectRatio,
@@ -185,15 +184,16 @@ export class Cropper {
 
   lock: boolean = false;
 
+  @Class(true)
   get classes() {
-    return classes(
+    return [
       'wrapper',
       {
         resizer: this.resizer,
         resizerShape: this.resizerShape,
         shape: this.shape,
       }
-    )
+    ]
   }
 
   get options() {

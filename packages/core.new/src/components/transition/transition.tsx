@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
+import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, Style } from '@app/decorators';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
@@ -107,7 +107,8 @@ export class Transition {
     return typeof fixed !== 'undefined' ? value.toFixed(fixed) : value;
   }
 
-  get styles() {
+  @Style()
+  get style() {
     return {
       '--plus-transition-delay': this.delay ? this.parser(this.delay) : null,
       '--plus-transition-duration': isNaN(parseFloat(this.duration)) ? null : this.duration,
@@ -166,7 +167,7 @@ export class Transition {
 
   render() {
     return (
-      <Host style={this.styles}>
+      <Host style={this.style}>
         <slot />
       </Host>
     )

@@ -1,4 +1,4 @@
-import { Bind, Component, GlobalConfig, Host, Property, State } from '@app/decorators';
+import { Bind, Class, Component, GlobalConfig, Host, Property, State } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink('BottomNavigation');
@@ -41,6 +41,7 @@ export class BottomNavigationItem {
     }
   }
 
+  @Class()
   get classes() {
     return {
       'root': true,
