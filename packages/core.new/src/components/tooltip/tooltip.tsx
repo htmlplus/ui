@@ -238,8 +238,8 @@ export class Tooltip {
    */
 
   @Watch('disabled')
-  watcher() {
-    this.disabled ? this.unbind() : this.bind();
+  watcher(next) {
+    next ? this.unbind() : this.bind();
   }
 
   /**

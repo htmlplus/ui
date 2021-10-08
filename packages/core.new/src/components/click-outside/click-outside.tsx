@@ -48,8 +48,8 @@ export class ClickOutside {
    */
 
   @Watch('disabled')
-  disabledWatcher() {
-    this.disabled ? this.unbind() : this.bind();
+  watcher(next) {
+    next ? this.unbind() : this.bind();
   }
 
   /**

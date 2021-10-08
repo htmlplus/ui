@@ -22,19 +22,19 @@ export function Property(options?: Options) {
 
                 if (options?.reflect) {
 
-                    const host = this.$api?.host();
+                    const $host = this.$api?.host();
 
                     if (value === undefined) {
-                        host.removeAttribute(propertyKey);
+                        $host.removeAttribute(propertyKey);
                     }
                     else if (value === false) {
-                        host.removeAttribute(propertyKey);
+                        $host.removeAttribute(propertyKey);
                     }
                     else if (value === true) {
-                        host.setAttribute(propertyKey, '');
+                        $host.setAttribute(propertyKey, '');
                     }
                     else {
-                        host.setAttribute(propertyKey, value);
+                        $host.setAttribute(propertyKey, value);
                     }
                 }
 

@@ -98,14 +98,23 @@ export class Sticky {
    * Watchers
    */
 
-  @Watch('disabled')
-  watcherDisabled(value) {
-    value ? this.unbind() : this.bind();
-  }
+  @Watch('disabled', 'source')
+  watchers(next, prev, key) {
 
-  @Watch('source')
-  watcherSource(value) {
-    value ? this.bind() : this.unbind();
+    switch (key) {
+
+      case 'disabled':
+
+        next ? this.unbind() : this.bind();
+
+        break;
+
+      case 'watcher':
+
+        next ? this.bind() : this.unbind();
+
+        break;
+    }
   }
 
   /**

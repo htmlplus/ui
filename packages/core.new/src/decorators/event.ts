@@ -39,9 +39,9 @@ export function Event<T = any>(options: EventOptions = {}) {
                         }
                     );
 
-                    const element = this.$api?.host();
-
-                    element.dispatchEvent(event);
+                    const $host = this.$api?.host();
+                    
+                    $host.dispatchEvent(event);
 
                     return event;
                 }

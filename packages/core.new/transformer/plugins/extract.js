@@ -107,6 +107,17 @@ export const extract = (context) => {
 
     const title = Case.capital(key);
 
+    const attributes = children
+        .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_ATTRIBUTES))
+        .map((property) => {
+
+            const name = property.key.name;
+
+            return {
+                name,
+            }
+        });
+
     const properties = children
         .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
         .map((property) => {
@@ -227,6 +238,7 @@ export const extract = (context) => {
         decoratorsBeforeExport: true,
     }).code;
 
+    context.attributes = attributes;
     context.directory = directory;
     context.component = component;
     context.name = name;

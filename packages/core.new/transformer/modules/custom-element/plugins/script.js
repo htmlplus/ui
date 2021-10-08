@@ -109,21 +109,20 @@ export const script = (context) => {
         lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
 
     // TODO
-    // lines.push(`
+    if (context.attributes.length) {
 
-    //     let ready;
+        const attributes = context
+            .attributes
+            .map((attribute) => `...${CONSTANTS.TOKEN_THIS}.${attribute.name}`)
+            .join(', ');
 
-    //     const update = sync(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, {});
-
-    //     $: ready && update(${CONSTANTS.TOKEN_THIS}.attributes);
-
-    //     onMount(() => (ready = true));
-    // `);
+        lines.push(`let ready;`);
+        lines.push(`const update = sync(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, {});`);
+        lines.push(`$: ready && update({${attributes}});`);
+        lines.push(`onMount(() => (ready = true));`);
+    }
 
     lines.push('</script>');
 
     context.script = lines.join('\n');
-
-    // TODO
-    // console.log(123, context.script)
 }

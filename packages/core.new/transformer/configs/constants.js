@@ -6,6 +6,7 @@ export const TOKEN_API_ATTRIBUTE        = 'attribute';
 export const TOKEN_API_PROPERTY         = 'property';
 export const TOKEN_API_SLOTS            = 'slots';
 export const TOKEN_API_STATE            = 'state';
+export const TOKEN_DECORATOR_ATTRIBUTES = 'Attributes';
 export const TOKEN_DECORATOR_COMPONENT  = 'Component';
 export const TOKEN_DECORATOR_EVENT      = 'Event';
 export const TOKEN_DECORATOR_PROPERTY   = 'Property';

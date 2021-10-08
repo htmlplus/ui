@@ -1,3 +1,9 @@
+## Test
+- [X] aspect ratio
+- [X] browse
+- [X] card
+- [ ] click outside
+
 prop => default: initializer
 
 generateBundle() {

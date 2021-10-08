@@ -97,8 +97,8 @@ export class ScrollIndicator {
    */
 
   @Watch('disabled', 'source')
-  watcher(value) {
-    value ? this.unbind() : this.bind();
+  watcher(next) {
+    next ? this.unbind() : this.bind();
   }
 
   /**
