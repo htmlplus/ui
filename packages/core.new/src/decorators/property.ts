@@ -50,7 +50,10 @@ export function Property(options?: Options) {
 
                     if (key != propertyKey && key != '*') continue;
 
-                    handler.bind(this)(input, prev, key);
+                    handler.bind(this)(input, prev, propertyKey);
+
+                    // TODO
+                    console.log('watcher', input, prev, propertyKey)
                 }
             },
             get() {

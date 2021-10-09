@@ -34,9 +34,6 @@ export const script = (context) => {
     lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
 
     // TODO
-    lines.push(`${CONSTANTS.TOKEN_API_FULL}.ready = true;`);
-
-    // TODO
     lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
 
     // TODO
@@ -66,7 +63,8 @@ export const script = (context) => {
 
         const { initializer, name, type } = property;
 
-        const isBoolean = type === 'TSBooleanKeyword'; // TODO
+        // TODO
+        const isBoolean = type === 'TSBooleanKeyword'; 
 
         if (typeof initializer !== 'undefined') {
 
@@ -74,7 +72,8 @@ export const script = (context) => {
         }
         else {
 
-            lines.push(`export let ${name} = undefined;`); // TODO
+            // TODO
+            lines.push(`export let ${name} = undefined;`); 
         }
 
         const value = isBoolean ? `toBoolean(${name})` : name;
@@ -124,6 +123,9 @@ export const script = (context) => {
         lines.push(`$: ready && update({${attributes}});`);
         lines.push(`onMount(() => (ready = true));`);
     }
+
+    // TODO
+    lines.push(`onMount(() => (${CONSTANTS.TOKEN_API_FULL}.ready = true));`);
 
     lines.push('</script>');
 

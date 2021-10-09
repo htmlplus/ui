@@ -404,6 +404,9 @@ export class Cropper {
    */
 
   bind() {
+    
+    if(!this.$image) return;
+
     this.instance = new CropperCore(this.$image, this.options);
   }
 
@@ -473,24 +476,7 @@ export class Cropper {
    * Watchers
    */
 
-  @Watch(
-    'aspectRatio',
-    'disabled',
-    'src',
-    'value',
-    'resizer',
-    'resizerShape',
-    'shape',
-    'backdrop',
-    'background',
-    'guides',
-    'indicator',
-    'mode',
-    'responsive',
-    'view',
-    'zoomable',
-    'zoomRatio',
-  )
+  @Watch('*')
   watcher(next, prev, name) {
 
     if (this.lock) return;
