@@ -1,4 +1,4 @@
-import { Attributes, Component, Event, EventEmitter, GlobalConfig, Property } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Action, Observable, reconnect } = createLink('Tabs');
@@ -76,11 +76,8 @@ export class Tabs {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'value')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -92,7 +89,7 @@ export class Tabs {
 
       case 'value':
 
-        this.tunnel = value;
+        this.tunnel = next;
 
         break;
     }

@@ -1,4 +1,4 @@
-import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
+import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State, Watch } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
@@ -309,11 +309,8 @@ export class Drawer {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'mini', 'open')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -325,17 +322,17 @@ export class Drawer {
 
       case 'mini':
 
-        value && this.animations.mini?.enter();
+        next && this.animations.mini?.enter();
 
-        !value && this.animations.mini?.leave();
+        !next && this.animations.mini?.leave();
 
         break;
 
       case 'open':
 
-        value && !this.isOpen && this.tryShow(true, true);
+        next && !this.isOpen && this.tryShow(true, true);
 
-        !value && this.isOpen && this.tryHide(true, true);
+        !next && this.isOpen && this.tryHide(true, true);
 
         break;
     }

@@ -117,7 +117,7 @@ export class Browse {
    * Open the browse dialog.
    */
   @Method()
-  browse() {
+  browse(): void {
     this.$input.click();
   }
 

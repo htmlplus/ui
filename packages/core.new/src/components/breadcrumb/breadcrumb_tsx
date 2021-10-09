@@ -1,4 +1,4 @@
-import { Bind, Component, GlobalConfig, Host, IsRTL, Property, State } from '@app/decorators';
+import { Bind, Component, GlobalConfig, Host, IsRTL, Property, State, Watch } from '@app/decorators';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -205,9 +205,9 @@ export class Breadcrumb {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return;
+  // TODO
+   @Watch('offset', 'max', 'separator')
+   watcher(next, prev, name) {
 
     switch (name) {
 
@@ -217,6 +217,7 @@ export class Breadcrumb {
 
         this.update(false, false);
 
+        // TODO: componentShouldUpdate
         return false;
     }
   }

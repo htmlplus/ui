@@ -1,4 +1,4 @@
-import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
@@ -358,11 +358,8 @@ export class Dialog {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'open')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -374,9 +371,9 @@ export class Dialog {
 
       case 'open':
 
-        value && !this.isOpen && this.tryShow(true, true);
+        next && !this.isOpen && this.tryShow(true, true);
 
-        !value && this.isOpen && this.tryHide(true, true);
+        !next && this.isOpen && this.tryHide(true, true);
 
         break;
     }

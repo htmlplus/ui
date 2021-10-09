@@ -1,7 +1,7 @@
-import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property, Watch } from '@app/decorators';
 import { createLink } from '@app/services';
 
-const { Inject } = createLink('Tabs');
+const { Inject, reconnect } = createLink('Tabs');
 
 /**
  * TODO: This component contains panels.
@@ -34,18 +34,9 @@ export class TabsPanels {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    switch (name) {
-
-      case 'connector':
-
-        // reconnect(this);
-
-        break;
-    }
+  @Watch('connector')
+  watcher() {
+    reconnect(this);
   }
 
   render() {

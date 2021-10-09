@@ -1,4 +1,4 @@
-import { Attributes, Component, Property, State } from '@app/decorators';
+import { Attributes, Component, Property, State, Watch } from '@app/decorators';
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink('Toast');
@@ -44,18 +44,9 @@ export class ToastToggler {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    switch (name) {
-
-      case 'connector':
-
-        reconnect(this);
-
-        break;
-    }
+  @Watch('connector')
+  watcher(next, prev, name) {
+    reconnect(this);
   }
 
   render() {

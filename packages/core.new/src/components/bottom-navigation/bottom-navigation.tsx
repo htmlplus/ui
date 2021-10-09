@@ -1,4 +1,4 @@
-import { Attributes, Component, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
 import { Animation, createLink } from '@app/services';
 
 const { Action, Observable } = createLink('BottomNavigation');
@@ -142,20 +142,9 @@ export class BottomNavigation {
    */
 
   // TODO
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    // const value = this[name];
-
-    switch (name) {
-
-      case 'grow':
-      case 'labelPosition':
-      case 'shift':
-        this.broadcast();
-        break;
-    }
+  @Watch('grow', 'labelPosition', 'shift')
+  watcher() {
+    this.broadcast();
   }
 
   /**

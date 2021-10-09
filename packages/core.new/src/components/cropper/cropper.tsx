@@ -1,4 +1,4 @@
-import { Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property } from '@app/decorators';
+import { Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property, Watch } from '@app/decorators';
 import CropperCore from 'cropperjs';
 import {
   CropperAspectRatio,
@@ -285,18 +285,16 @@ export class Cropper {
    * Flip horizontal.
    */
   @Method()
-  flipX(): Promise<void> {
+  flipX(): void {
     this.instance?.scale(-1, 1);
-    return Promise.resolve();
   }
 
   /**
    * Flip vertical.
    */
   @Method()
-  flipY(): Promise<void> {
+  flipY(): void {
     this.instance?.scale(1, -1);
-    return Promise.resolve();
   }
 
   /**
@@ -305,9 +303,8 @@ export class Cropper {
    * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
    */
   @Method()
-  move(offsetX?: number, offsetY?: number): Promise<void> {
+  move(offsetX?: number, offsetY?: number): void {
     this.instance?.move(offsetX ?? null, offsetY ?? null);
-    return Promise.resolve();
   }
 
   /**
@@ -316,36 +313,32 @@ export class Cropper {
    * @param y - The `top` value of the canvas. Use `null` to ignore this.
    */
   @Method()
-  moveTo(x?: number, y?: number): Promise<void> {
+  moveTo(x?: number, y?: number): void {
     this.instance?.moveTo(x ?? null, y ?? null);
-    return Promise.resolve();
   }
 
   /**
    * Reset the image and viewport to their initial states.
    */
   @Method()
-  reset(): Promise<void> {
+  reset(): void {
     this.instance?.reset();
-    return Promise.resolve();
   }
 
   /**
    * Rotate the image with a relative degree.
    */
   @Method()
-  rotate(degree: number): Promise<void> {
+  rotate(degree: number): void {
     this.instance?.rotate(degree);
-    return Promise.resolve();
   }
 
   /**
    * Rotate the image to an absolute degree.
    */
   @Method()
-  rotateTo(degree: number): Promise<void> {
+  rotateTo(degree: number): void {
     this.instance?.rotateTo(degree);
-    return Promise.resolve();
   }
 
   /**
@@ -364,20 +357,16 @@ export class Cropper {
    * Gets `canvas` from the cropped image.
    */
   @Method()
-  toCanvas(): Promise<HTMLCanvasElement> {
-    const canvas = this.instance.getCroppedCanvas();
-    return Promise.resolve(canvas);
+  toCanvas(): HTMLCanvasElement {
+    return this.instance.getCroppedCanvas();
   }
 
   /**
    * Gets `base64` from the cropped image.
    */
   @Method()
-  toBase64(): Promise<string> {
-    const base64 = this.instance
-      .getCroppedCanvas()
-      .toDataURL();
-    return Promise.resolve(base64);
+  toBase64(): string {
+    return this.instance.getCroppedCanvas().toDataURL();
   }
 
   /**
@@ -398,18 +387,16 @@ export class Cropper {
    * Zoom the canvas with a relative ratio.
    */
   @Method()
-  zoom(ratio: number): Promise<void> {
+  zoom(ratio: number): void {
     this.instance?.zoom(ratio);
-    return Promise.resolve();
   }
 
   /**
    * Zoom the canvas to an absolute ratio.
    */
   @Method()
-  zoomTo(ratio: number): Promise<void> {
+  zoomTo(ratio: number): void {
     this.instance?.zoomTo(ratio);
-    return Promise.resolve();
   }
 
   /**
@@ -486,21 +473,37 @@ export class Cropper {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
+  @Watch(
+    'aspectRatio',
+    'disabled',
+    'src',
+    'value',
+    'resizer',
+    'resizerShape',
+    'shape',
+    'backdrop',
+    'background',
+    'guides',
+    'indicator',
+    'mode',
+    'responsive',
+    'view',
+    'zoomable',
+    'zoomRatio',
+  )
+  watcher(next, prev, name) {
 
-    if (next === prev || this.lock) return;
-
-    const value = this[name];
+    if (this.lock) return;
 
     switch (name) {
 
       case 'aspectRatio':
         if (this.shape !== 'rectangle') break;
-        this.instance?.setAspectRatio(value);
+        this.instance?.setAspectRatio(next);
         break;
 
       case 'disabled':
-        value ? this.instance?.disable() : this.instance?.enable();
+        next ? this.instance?.disable() : this.instance?.enable();
         break;
 
       case 'src':
@@ -508,7 +511,7 @@ export class Cropper {
         break;
 
       case 'value':
-        this.updateValue(value);
+        this.updateValue(next);
         break;
 
       case 'resizer':
@@ -584,7 +587,8 @@ export class Cropper {
    * Lifecycles
    */
 
-  componentDidLoad() {
+  // TODO: convert 'componentDidLoad' to 'connectedCallback'
+  connectedCallback() {
     this.bind();
   }
 
