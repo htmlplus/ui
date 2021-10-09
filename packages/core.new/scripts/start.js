@@ -21,7 +21,7 @@ esbuild
 			contents: glob
 				// TODO: from tsconfig
 				.sync('./src/components/*/*.tsx')
-				// .slice(0, 5)
+				// .slice(0, 1)
 				.map((file) => `import '${file}';`)
 				.join('\n')
 		},

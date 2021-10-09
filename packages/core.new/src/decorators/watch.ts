@@ -1,24 +1,18 @@
+// TODO
 export function Watch(...keys: Array<string>) {
 
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    return function (target: any, propertyKey: string) {
+
+        target.$watchers = target.$watchers || [];
 
         for (const key of keys) {
 
-            Object.defineProperty(
-                target,
+            const watcher = {
                 key,
-                {
-                    set(input) {
+                handler: target[propertyKey],
+            }
 
-                        // TODO
-                        console.log('Watch', key, this[key], input);
-
-                        this[propertyKey](input, 'TODO', key);
-                    },
-                    enumerable: true,
-                    configurable: true,
-                }
-            )
+            target.$watchers.push(watcher);
         }
     }
 }

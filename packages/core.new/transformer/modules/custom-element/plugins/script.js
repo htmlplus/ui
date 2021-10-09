@@ -34,6 +34,9 @@ export const script = (context) => {
     lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
 
     // TODO
+    lines.push(`${CONSTANTS.TOKEN_API_FULL}.ready = true;`);
+
+    // TODO
     lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
 
     // TODO

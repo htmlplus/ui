@@ -1,6 +1,3 @@
-import { toClass } from './to-class';
-import { toStyle } from './to-style';
-
 const getName = (key) => key.substr(2).toLowerCase();
 
 const isEvent = (key) => key.match(/on[A-Z]\w+/g);
@@ -13,8 +10,8 @@ export const sync = (node, prev) => (next = {}) => {
      * class
      */
 
-    const prevClass = toClass(prev.class || '').split(' ');
-    const nextClass = toClass(next.class || '').split(' ');
+    const prevClass = (prev.class || '').split(' ');
+    const nextClass = (next.class || '').split(' ');
 
     const newClass = (node.className || '')
         .split(' ')
@@ -32,7 +29,7 @@ export const sync = (node, prev) => (next = {}) => {
      * style
      */
     if (prev.style || next.style)
-        node.setAttribute('style', toStyle(next.style || ''));
+        node.setAttribute('style', next.style || '');
 
     /**
      * remove prev events

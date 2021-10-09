@@ -15,7 +15,11 @@ export function Property(options?: Options) {
 
                 if (value === input) return;
 
+                const prev = value;
+
                 value = input;
+
+                if (!this.$api?.ready) return;
 
                 // TODO: propertyKey convert to camel case
                 propertyKey;
@@ -39,6 +43,15 @@ export function Property(options?: Options) {
                 }
 
                 this.$api?.property(propertyKey, input);
+
+                for (const watcher of this.$watchers || []) {
+
+                    const { key, handler } = watcher;
+
+                    if (key != propertyKey && key != '*') continue;
+
+                    handler.bind(this)(input, prev, key);
+                }
             },
             get() {
                 return value;
