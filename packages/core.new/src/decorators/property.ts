@@ -1,3 +1,5 @@
+import * as Case from 'case';
+
 interface Options {
     // TODO: will be remove
     mutable?: boolean;
@@ -21,24 +23,24 @@ export function Property(options?: Options) {
 
                 if (!this.$api?.ready) return;
 
-                // TODO: propertyKey convert to camel case
-                propertyKey;
-
                 if (options?.reflect) {
 
                     const $host = this.$api?.host();
 
+                    // TODO
+                    const attribute = Case.kebab(propertyKey);
+
                     if (value === undefined) {
-                        $host.removeAttribute(propertyKey);
+                        $host.removeAttribute(attribute);
                     }
                     else if (value === false) {
-                        $host.removeAttribute(propertyKey);
+                        $host.removeAttribute(attribute);
                     }
                     else if (value === true) {
-                        $host.setAttribute(propertyKey, '');
+                        $host.setAttribute(attribute, '');
                     }
                     else {
-                        $host.setAttribute(propertyKey, value);
+                        $host.setAttribute(attribute, value);
                     }
                 }
 

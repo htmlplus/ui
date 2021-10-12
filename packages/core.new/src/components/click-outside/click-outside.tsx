@@ -10,7 +10,7 @@ export class ClickOutside {
   /**
    * Disable the component.
    */
-  @Property()
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
@@ -43,13 +43,28 @@ export class ClickOutside {
     ClickOutsideCore.remove(this.$host);
   }
 
+  rebind() {
+    this.unbind();
+    this.bind();
+  }
+
   /**
    * Watchers
    */
 
-  @Watch('disabled')
-  watcher(next) {
-    next ? this.unbind() : this.bind();
+  @Watch('disabled', 'once')
+  watcher(next, prev, name) {
+
+    switch (name) {
+
+      case 'disabled':
+        next ? this.unbind() : this.bind();
+        break;
+
+      case 'once':
+        this.rebind();
+        break;
+    }
   }
 
   /**

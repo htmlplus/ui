@@ -21,7 +21,7 @@ export const script = (context) => {
     lines.push('<script lang="ts">');
 
     // TODO
-    lines.push('import { sync, toAttributes, toBoolean } from "../../../transformer/modules/custom-element/utils/index";');
+    lines.push('import { sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');
 
     lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
 
@@ -63,9 +63,6 @@ export const script = (context) => {
 
         const { initializer, name, type } = property;
 
-        // TODO
-        const isBoolean = type === 'TSBooleanKeyword'; 
-
         if (typeof initializer !== 'undefined') {
 
             lines.push(`export let ${name} = ${initializer};`);
@@ -73,10 +70,25 @@ export const script = (context) => {
         else {
 
             // TODO
-            lines.push(`export let ${name} = undefined;`); 
+            lines.push(`export let ${name} = undefined;`);
         }
 
-        const value = isBoolean ? `toBoolean(${name})` : name;
+        let value;
+
+        // TODO
+        switch (type) {
+
+            case 'TSBooleanKeyword':
+                value = `toBoolean(${name})`;
+                break;
+
+            case 'TSNumberKeyword':
+                value = `toNumber(${name})`;
+                break;
+
+            default:
+                value = name;
+        }
 
         lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${value};`);
     });

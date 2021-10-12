@@ -404,9 +404,6 @@ export class Cropper {
    */
 
   bind() {
-    
-    if(!this.$image) return;
-
     this.instance = new CropperCore(this.$image, this.options);
   }
 
@@ -512,6 +509,7 @@ export class Cropper {
 
         break;
 
+      case 'area':
       case 'backdrop':
       case 'background':
       case 'guides':
@@ -584,7 +582,7 @@ export class Cropper {
 
   render() {
     return (
-      <div class={this.classes}>
+      <div class={this.classes}> 
         <img class="image" alt="cropper" ref={this.$image} src={this.src} />
       </div>
     )
