@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Property } from '@app/decorators';
 // import { } from './template.types';
 
 /**
@@ -41,9 +41,7 @@ export class Template {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

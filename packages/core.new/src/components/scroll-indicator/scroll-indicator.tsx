@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
@@ -36,7 +36,7 @@ export class ScrollIndicator {
   })
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $indicator!: HTMLElement;
@@ -50,6 +50,7 @@ export class ScrollIndicator {
     return document.querySelector(this.source);
   }
 
+  @Attributes()
   get attributes() {
     return {
       // 'role': 'TODO'
@@ -96,8 +97,8 @@ export class ScrollIndicator {
    */
 
   @Watch('disabled', 'source')
-  watcher(value) {
-    value ? this.unbind() : this.bind();
+  watcher(next) {
+    next ? this.unbind() : this.bind();
   }
 
   /**
@@ -130,13 +131,11 @@ export class ScrollIndicator {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <div
-          class="indicator"
-          part="indicator"
-          ref={this.$indicator}
-        />
-      </Host>
+      <div
+        class="indicator"
+        part="indicator"
+        ref={this.$indicator}
+      />
     )
   }
 }

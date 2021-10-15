@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Property } from '@app/decorators';
 import { CardElevation } from './card.types';
 
 /**
@@ -37,9 +37,7 @@ export class Card {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Bind, Event, EventEmitter, GlobalConfig, Host, Method, Property, State } from '@app/decorators';
+import { Attributes, Component, Bind, Event, EventEmitter, GlobalConfig, Method, Property, State } from '@app/decorators';
 import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
@@ -86,6 +86,7 @@ export class Browse {
 
   timeout?;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {};
@@ -116,7 +117,7 @@ export class Browse {
    * Open the browse dialog.
    */
   @Method()
-  async browse() {
+  browse(): void {
     this.$input.click();
   }
 
@@ -201,7 +202,12 @@ export class Browse {
 
   @Bind()
   onChange(event) {
-    this.do(event.target.files);
+
+    const files = event.target.files;
+
+    if (!files.length) return;
+
+    this.do(files);
   }
 
   @Bind()
@@ -236,7 +242,7 @@ export class Browse {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <slot />
         <input
           accept={this.accept}
@@ -244,8 +250,9 @@ export class Browse {
           ref={this.$input}
           type="file"
           onChange={this.onChange}
+          onClick={(event) => event.stopPropagation()}
         />
-      </Host>
+      </>
     )
   }
 }

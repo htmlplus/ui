@@ -1,180 +1,30 @@
-breadcrumb
-dialog          -> render
-dialog-toggeler -> render
-divider         -> render
-drawer          -> render
-dialog-toggeler -> render
-intersection    -> render
-menu            -> render
-spinner         -> render
-switch          -> getter
-switch          -> render
-tooltip         -> render
+## Test
+- [X] aspect ratio
+- [X] browse
+- [X] card
+- [ ] click outside
 
 prop => default: initializer
 
-const comment = (input) => {
-    return input.getJsDocs()[0];
-}
-
-const all = (input, key) => {
-    return comment(input)
-        .getTags()
-        .filter((tag) => tag.getTagName() === key)
-        .map((tag) => tag.getCommentText());
-}
-
-const get = (input, key) => {
-
-    const tags = comment(input).getTags();
-
-    const tag = tags.find((tag) => tag.getTagName() === key);
-
-    if (!tag) return;
-
-    return tag.getCommentText();
-}
-
-const has = (input, key) => {
-
-    const tags = comment(input).getTags();
-
-    return tags.some((tag) => tag.getTagName() === key);
-}
-
-buildEnd() {
-
-},
 generateBundle() {
 
-    // TODO
-    // this.emitFile({
-    //     type: 'asset',
-    //     fileName: config.docs.docs,
-    //     source: JSON.stringify(docs, null, 2)
-    // });
+    this.emitFile({
+        type: 'asset',
+        fileName: config.docs.docs,
+        source: JSON.stringify(docs, null, 2)
+    });
 
-    // TODO
-    // this.emitFile({
-    //     type: 'asset',
-    //     fileName: config.docs.vscode,
-    //     source: JSON.stringify(vscode, null, 2)
-    // });
+    this.emitFile({
+        type: 'asset',
+        fileName: config.docs.vscode,
+        source: JSON.stringify(vscode, null, 2)
+    });
 }
 
-// TODO
-// "styles": [
-//     {
-//         "name": "--plus-breadcrumb-gutter-x",
-//         "dafault": "0.5em",
-//         "description": "Used to adjust the Horizontal gap."
-//     }
-// ],
-
-transformers: {
-    before: [
-        (context) => {
-        return (source) => {
-
-            if (!source.fileName.endsWith('.tsx')) return source;
-
-            let name;
-
-            const properties = [];
-
-            const visitor = (node) => {
-
-            // remove render method
-            if (ts.isMethodDeclaration(node) && node.name.getText() === CONSTANTS.TOKEN_METHOD_RENDER) return;
-
-            // component
-            if (
-                ts.isClassDeclaration(node) &&
-                node.decorators.find((decorator) => decorator.expression.expression.getText() === CONSTANTS.TOKEN_DECORATOR_COMPONENT)
-            ) {
-
-                name = node.name.getText();
-
-                const a = ts.visitEachChild(node, visitor, context);
-
-                /////////////////////////////
-                const lines = [];
-                const key = Case.kebab(name);
-                const tag = `plus-${key}`;
-                lines.push(`<svelte:options tag="${tag}" />`);
-                lines.push('<script>');
-                // lines.push('import Host from "@virtual/host";');
-                // lines.push('import { toAttributes, toBoolean, toClass, toStyle } from "@virtual/utils";');
-                // lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
-                // lines.push(`const ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST} = get_current_component();`);
-                // lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${name}();`);
-                // lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
-                // lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`); // TODO
-                properties.forEach((property) => {
-
-                let name = property.name.getText();
-
-                const hasInitializer = property.initializer;
-
-                const isBoolean = property.type.getText() === 'boolean';
-
-                if (hasInitializer) {
-
-                    const initializer = property.initializer.getText();
-
-                    lines.push(`export let ${name} = ${initializer};`);
-                }
-                else {
-
-                    lines.push(`export let ${name};`);
-                }
-
-                const value = isBoolean ? `toBoolean(${name})` : name;
-
-                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${value};`);
-                });
-                lines.push('</script>');
-                lines.push('html');
-                const content = lines.join('\n');
-                const result = compile(
-                content,
-                {
-                    customElement: true,
-                    dev: false,
-                }
-                );
-                // console.log(content, result.js.code)
-                /////////////////////////////////////////////////
-                return [
-                // a,
-                ts.factory.createStringLiteral(result.js.code)
-                ]
-            }
-
-            // remove component decorator
-            if (
-                ts.isDecorator(node) &&
-                ts.isClassDeclaration(node.parent) &&
-                node.expression.expression.getText() === CONSTANTS.TOKEN_DECORATOR_COMPONENT
-            ) return;
-
-            // Property
-            if (
-                ts.isDecorator(node) &&
-                ts.isPropertyDeclaration(node.parent) &&
-                node.expression.expression.getText() === CONSTANTS.TOKEN_DECORATOR_PROPERTY
-            ) {
-                properties.push(node.parent);
-            }
-
-            // if (isDecorator && expression.expression.getText() === CONSTANTS.TOKEN_DECORATOR_COMPONENT) return;
-            // if (isDecorator && expression.expression.getText() === CONSTANTS.TOKEN_DECORATOR_METHOD) return;
-
-            return ts.visitEachChild(node, visitor, context);
-            }
-
-            return ts.visitNode(source, visitor);
-        }
-        }
-    ]
-}
+"styles": [
+    {
+        "name": "--plus-breadcrumb-gutter-x",
+        "dafault": "0.5em",
+        "description": "Used to adjust the Horizontal gap."
+    }
+],

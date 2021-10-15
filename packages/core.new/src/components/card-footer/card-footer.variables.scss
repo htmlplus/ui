@@ -1,7 +1,8 @@
+@use 'sass:math';
 @import 'variables/global';
 
 $card-footer-background-color: rgba(#000, 0.03)  !default;
 $card-footer-border-color    : rgba(#000, 0.125) !default;
 $card-footer-border-width    : $border-width       !default;
 $card-footer-padding-x       : $spacer             !default;
-$card-footer-padding-y       : $spacer / 2         !default;
+$card-footer-padding-y       : math.div($spacer, 2)!default;

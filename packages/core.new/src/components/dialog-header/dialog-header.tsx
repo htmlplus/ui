@@ -1,4 +1,4 @@
-import { Component, Host } from '@app/decorators';
+import { Component } from '@app/decorators';
 
 /**
  * @slot default - The default slot.
@@ -7,9 +7,7 @@ import { Component, Host } from '@app/decorators';
 export class DialogHeader {
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
-    );
+      <slot />
+    )
   }
 }

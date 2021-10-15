@@ -1,5 +1,7 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
-import { Inject } from '../tabs/tabs.link';
+import { Attributes, Component, GlobalConfig, Property, Watch } from '@app/decorators';
+import { createLink } from '@app/services';
+
+const { Inject, reconnect } = createLink('Tabs');
 
 /**
  * TODO: This component contains panels.
@@ -21,6 +23,7 @@ export class TabsPanels {
   @GlobalConfig('tabsPanels')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       // TODO
@@ -31,25 +34,14 @@ export class TabsPanels {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    switch (name) {
-
-      case 'connector':
-
-        // reconnect(this);
-
-        break;
-    }
+  @Watch('connector')
+  watcher() {
+    reconnect(this);
   }
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

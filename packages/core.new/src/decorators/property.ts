@@ -1,3 +1,5 @@
+import * as Case from 'case';
+
 interface Options {
     // TODO: will be remove
     mutable?: boolean;
@@ -13,16 +15,48 @@ export function Property(options?: Options) {
         const descriptor = {
             set(input) {
 
+                if (value === input) return;
+
+                const prev = value;
+
                 value = input;
+
+                if (!this.$api?.ready) return;
+
+                if (options?.reflect) {
+
+                    const $host = this.$api?.host();
+
+                    // TODO
+                    const attribute = Case.kebab(propertyKey);
+
+                    if (value === undefined) {
+                        $host.removeAttribute(attribute);
+                    }
+                    else if (value === false) {
+                        $host.removeAttribute(attribute);
+                    }
+                    else if (value === true) {
+                        $host.setAttribute(attribute, '');
+                    }
+                    else {
+                        $host.setAttribute(attribute, value);
+                    }
+                }
 
                 this.$api?.property(propertyKey, input);
 
-                if (!options?.reflect) return;
+                for (const watcher of this.$watchers || []) {
 
-                const element = this.$api?.host();
-                
-                // TODO: propertyKey convert to camel case
-                element.setAttribute(propertyKey, input);
+                    const { key, handler } = watcher;
+
+                    if (key != propertyKey && key != '*') continue;
+
+                    handler.bind(this)(input, prev, propertyKey);
+
+                    // TODO
+                    console.log('watcher', input, prev, propertyKey)
+                }
             },
             get() {
                 return value;

@@ -1,4 +1,4 @@
-import { Component, Host } from '@app/decorators';
+import { Component } from '@app/decorators';
 
 /**
  * @development
@@ -8,9 +8,7 @@ import { Component, Host } from '@app/decorators';
 export class CardBody {
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

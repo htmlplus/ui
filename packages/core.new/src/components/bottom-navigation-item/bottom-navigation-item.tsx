@@ -1,5 +1,7 @@
-import { Bind, Component, GlobalConfig, Host, Property, State } from '@app/decorators';
-import { Inject } from '../bottom-navigation/bottom-navigation.link';
+import { Attributes, Bind, Classes, Component, GlobalConfig, Property, State } from '@app/decorators';
+import { createLink } from '@app/services';
+
+const { Inject } = createLink('BottomNavigation');
 
 /**
  * @development 
@@ -30,6 +32,7 @@ export class BottomNavigationItem {
   @State()
   tunnel?: any;
 
+  @Attributes()
   get attributes() {
     return {
       'grow': this.tunnel?.grow,
@@ -39,6 +42,7 @@ export class BottomNavigationItem {
     }
   }
 
+  @Classes()
   get classes() {
     return {
       'root': true,
@@ -73,12 +77,10 @@ export class BottomNavigationItem {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <div class={this.classes}>
-          <slot />
-          <slot name="label" />
-        </div>
-      </Host>
+      <div class={this.classes}>
+        <slot />
+        <slot name="label" />
+      </div>
     )
   }
 }

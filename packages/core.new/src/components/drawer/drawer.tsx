@@ -1,8 +1,9 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State } from '@app/decorators';
-import { classes, toAxis } from '@app/helpers';
-import { Animation, ClickOutside, Scrollbar } from '@app/services';
-import { Action, Observable, reconnect } from './drawer.link';
+import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State, Watch } from '@app/decorators';
+import { toAxis } from '@app/helpers';
+import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
+
+const { Action, Observable, reconnect } = createLink('Drawer');
 
 /**
  * @slot default - The default slot.
@@ -130,7 +131,7 @@ export class Drawer {
   @State()
   platform?: DrawerPlatform;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $root!: HTMLElement;
@@ -142,6 +143,7 @@ export class Drawer {
   @Observable()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       platform: this.platform,
@@ -149,17 +151,18 @@ export class Drawer {
     }
   }
 
+  @Classes(true)
   get classes() {
 
     const placement = toAxis(this.placement || 'start', this.isRTL);
 
-    return classes(
+    return [
       'root',
       {
         [placement]: true,
         reverse: this.flexible
       }
-    )
+    ]
   }
 
   get hasBackdrop() {
@@ -306,11 +309,8 @@ export class Drawer {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'mini', 'open')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -322,17 +322,17 @@ export class Drawer {
 
       case 'mini':
 
-        value && this.animations.mini?.enter();
+        next && this.animations.mini?.enter();
 
-        !value && this.animations.mini?.leave();
+        !next && this.animations.mini?.leave();
 
         break;
 
       case 'open':
 
-        value && !this.isOpen && this.tryShow(true, true);
+        next && !this.isOpen && this.tryShow(true, true);
 
-        !value && this.isOpen && this.tryHide(true, true);
+        !next && this.isOpen && this.tryHide(true, true);
 
         break;
     }
@@ -403,17 +403,15 @@ export class Drawer {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
+        {this.hasBackdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div
           class={this.classes}
           ref={this.$root}
         >
           <slot />
         </div>
-      </Host>
+      </>
     )
   }
 }
-
-// TODO
-// {this.hasBackdrop && (<div class="backdrop" part="backdrop"><div /></div>)}

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import * as CONSTANTS from '../constants';
+import * as CONSTANTS from '../configs/constants.js';
 
 export const vscode = (context) => {
 

@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
 
 /**
  * TODO: Arranges tabs within a bar.
@@ -30,6 +30,7 @@ export class TabsBar {
   })
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'tablist'
@@ -38,9 +39,7 @@ export class TabsBar {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
 import { ClickOutside as ClickOutsideCore } from '@app/services';
 
 /**
@@ -10,7 +10,7 @@ export class ClickOutside {
   /**
    * Disable the component.
    */
-  @Property()
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
@@ -22,13 +22,13 @@ export class ClickOutside {
   /**
   * Emitted when outside of the component is clicked.
   */
-  @Event({ cancelable: true  })
+  @Event({ cancelable: true })
   plusClickOutside!: EventEmitter<void>;
 
   @GlobalConfig('clickOutside')
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   /**
@@ -43,13 +43,28 @@ export class ClickOutside {
     ClickOutsideCore.remove(this.$host);
   }
 
+  rebind() {
+    this.unbind();
+    this.bind();
+  }
+
   /**
    * Watchers
    */
 
-  @Watch('disabled')
-  disabledWatcher() {
-    this.disabled ? this.unbind() : this.bind();
+  @Watch('disabled', 'once')
+  watcher(next, prev, name) {
+
+    switch (name) {
+
+      case 'disabled':
+        next ? this.unbind() : this.bind();
+        break;
+
+      case 'once':
+        this.rebind();
+        break;
+    }
   }
 
   /**
@@ -76,9 +91,7 @@ export class ClickOutside {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

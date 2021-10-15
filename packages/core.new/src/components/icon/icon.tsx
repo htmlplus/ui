@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property, Styles } from '@app/decorators';
 
 /**
  * @development
@@ -49,12 +49,14 @@ export class Icon {
   @GlobalConfig('icon')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       'style': this.styles,
     }
   }
 
+  @Styles()
   get styles() {
     return {
       'color': this.color || null
@@ -63,11 +65,9 @@ export class Icon {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot>
-          {this.name}
-        </slot>
-      </Host>
+      <slot>
+        {this.name}
+      </slot>
     )
   }
 }

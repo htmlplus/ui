@@ -1,4 +1,4 @@
-import { Component, Element, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, GlobalConfig, Host, Property, Watch } from '@app/decorators';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
@@ -33,7 +33,7 @@ export class Portal {
   })
   config?;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   instance?: PortalCore;
@@ -67,16 +67,13 @@ export class Portal {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('disabled', 'strategy', 'target')
+  watcher(next, prev, name) {
 
     switch (name) {
 
       case 'disabled':
-        value ? this.terminate() : this.initialize();
+        next ? this.terminate() : this.initialize();
         break;
 
       case 'strategy':
@@ -101,7 +98,8 @@ export class Portal {
 
   render() {
     return (
-      <Host />
+      <>
+      </>
     )
   }
 }

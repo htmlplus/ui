@@ -1,4 +1,4 @@
-import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Watch } from "@app/decorators";
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, State, Styles, Watch } from "@app/decorators";
 import { toUnit } from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -51,10 +51,11 @@ export class Sticky {
 
   observer?: IntersectionObserver;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {
-      style: this.styles
+      style: this.style
     };
 
     if (this.watcher) {
@@ -68,7 +69,8 @@ export class Sticky {
     return `calc((${toUnit(this.top)} + 1px) * -1)`;
   }
 
-  get styles() {
+  @Styles()
+  get style() {
     return {
       top: toUnit(this.top),
       zIndex: this.top ? String(this.zIndex) : null,
@@ -96,14 +98,23 @@ export class Sticky {
    * Watchers
    */
 
-  @Watch('disabled')
-  watcherDisabled(value) {
-    value ? this.unbind() : this.bind();
-  }
+  @Watch('disabled', 'source')
+  watchers(next, prev, key) {
 
-  @Watch('source')
-  watcherSource(value) {
-    value ? this.bind() : this.unbind();
+    switch (key) {
+
+      case 'disabled':
+
+        next ? this.unbind() : this.bind();
+
+        break;
+
+      case 'watcher':
+
+        next ? this.bind() : this.unbind();
+
+        break;
+    }
   }
 
   /**
@@ -134,22 +145,22 @@ export class Sticky {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <div class="sizer-wrapper">
           <div
             class="sizer"
             ref={this.$element}
-            style={{ top: this.sizer }}
+            style={`top: ${this.sizer}`}
           />
         </div>
         <slot />
-        <div style={{ display: this.state === 'normal' ? 'block' : 'none' }}>
+        <div class="normal">
           <slot name="normal" />
         </div>
-        <div style={{ display: this.state === 'sticky' ? 'block' : 'none' }}>
+        <div class="sticky">
           <slot name="sticky" />
         </div>
-      </Host>
+      </>
     )
   }
 }

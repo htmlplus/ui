@@ -1,4 +1,4 @@
-import { Component, Direction, GlobalConfig, Host, IsRTL, Property } from '@app/decorators';
+import { Attributes, Classes, Component, Direction, GlobalConfig, IsRTL, Property } from '@app/decorators';
 import { DividerSize, DividerType } from './divider.types';
 
 /**
@@ -50,6 +50,7 @@ export class Divider {
   @IsRTL()
   isRTL: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'separator',
@@ -57,7 +58,8 @@ export class Divider {
     }
   }
 
-  // get classes() {
+  // @Class()
+  // get Classes() {
   //   return {
   //     'root': true,
   //     [this.direction]: true,
@@ -78,22 +80,20 @@ export class Divider {
 
   render() {
     return (
-      <Host {...this.attributes}>
-
-      </Host>
+      <>
+        {/* TODO */}
+        {/* <div class={this.classes}>
+          {this.hasBefore && (
+            <div class="before" />
+          )}
+          <div class="content">
+            <slot />
+          </div>
+          {this.hasAfter && (
+            <div class="after" />
+          )}
+        </div> */}
+      </>
     )
   }
 }
-
-// TODO
-// <div class={this.classes}>
-//   {this.hasBefore && (
-//     <div class="before" />
-//   )}
-//   <div class="content">
-//     <slot />
-//   </div>
-//   {this.hasAfter && (
-//     <div class="after" />
-//   )}
-// </div>

@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, Host, Property, State } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, State, Watch } from '@app/decorators';
 import { IntersectionBehavior } from './intersection.types';
 
 /**
@@ -71,11 +71,12 @@ export class Intersection {
   @State()
   isVisible?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   observer?: IntersectionObserver;
 
+  @Attributes()
   get attributes() {
     return {
       intersecting: this.isIntersecting
@@ -151,23 +152,22 @@ export class Intersection {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return;
+  @Watch('behavior', 'disabled', 'once', 'root', 'rootMargin', 'threshold')
+  watcher(next, prev, name) {
 
     switch (name) {
 
       case 'behavior':
 
-        this.isVisible = this.behavior !== 'appear';
+        this.isVisible = next !== 'appear';
 
         break;
 
       case 'disabled':
 
-        this.disabled && this.unbind();
+        next && this.unbind();
 
-        !this.disabled && !this.isDisconnected && this.bind();
+        !next && !this.isDisconnected && this.bind();
 
         break;
 
@@ -222,12 +222,9 @@ export class Intersection {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        
-      </Host>
+      <>
+        {this.isVisible && <slot />}
+      </>
     )
   }
 }
-
-// TODO
-// {this.isVisible && <slot />}

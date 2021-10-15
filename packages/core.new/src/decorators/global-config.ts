@@ -10,7 +10,7 @@ export function GlobalConfig(namespace: string, initial = {}) {
 
     instance.connectedCallback = function () {
 
-      const element = this.$api?.host();
+      const $host = this.$api?.host();
 
       const config = window[CONSTANTS.GLOBAL_CONFIG_NAME] || {};
 
@@ -34,7 +34,7 @@ export function GlobalConfig(namespace: string, initial = {}) {
 
             let value = component.slots[property];
 
-            if (typeof value === 'function') value = value(element);
+            if (typeof value === 'function') value = value($host);
 
             return value;
           }

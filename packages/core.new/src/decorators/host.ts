@@ -1,4 +1,4 @@
-export function Element() {
+export function Host() {
 
     return function (target: Object, propertyKey: string) {
 

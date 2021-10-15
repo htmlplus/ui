@@ -1,5 +1,7 @@
-import { Component,  Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
-import { Action, Observable, reconnect } from './tabs.link';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
+import { createLink } from '@app/services';
+
+const { Action, Observable, reconnect } = createLink('Tabs');
 
 /**
  * @development
@@ -39,6 +41,7 @@ export class Tabs {
   @GlobalConfig('tabs')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       // TODO
@@ -73,11 +76,8 @@ export class Tabs {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'value')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -89,7 +89,7 @@ export class Tabs {
 
       case 'value':
 
-        this.tunnel = value;
+        this.tunnel = next;
 
         break;
     }
@@ -109,9 +109,7 @@ export class Tabs {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host >
+      <slot />
     )
   }
 }

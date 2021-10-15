@@ -1,5 +1,7 @@
-import { Component, Host, Property, State } from '@app/decorators';
-import { Inject, reconnect } from '../drawer/drawer.link';
+import { Attributes, Component, Property, State, Watch } from '@app/decorators';
+import { createLink } from '@app/services';
+
+const { Inject, reconnect } = createLink('Drawer');
 
 /**
  * @slot default - The default slot.
@@ -25,6 +27,7 @@ export class DrawerToggler {
   @State()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'button',
@@ -41,31 +44,23 @@ export class DrawerToggler {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    switch (name) {
-
-      case 'connector':
-
-        reconnect(this);
-
-        break;
-    }
+  @Watch('connector')
+  watcher() {
+    reconnect(this);
   }
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <slot>
           {this.text}
         </slot>
-      </Host>
+        {/* TODO */}
+        {/* <slot name="close" />
+        <slot name="open" /> */}
+      </>
     )
   }
 }
 
-// TODO
-// <slot name="close" />
-// <slot name="open" />
+

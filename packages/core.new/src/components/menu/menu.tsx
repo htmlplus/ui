@@ -1,4 +1,4 @@
-import { Bind, Component, Element, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
 import { eventPath, toUnit } from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
@@ -80,7 +80,7 @@ export class Menu {
   @State()
   y?: string;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $activator!: HTMLElement;
@@ -275,26 +275,24 @@ export class Menu {
 
   render() {
     return (
-      <Host>
-
-      </Host>
+      <>
+        {/* TODO */}
+        {/* <div
+          class="activator"
+          ref={this.$activator}
+          onClick={(event) => this.click(event)}
+        >
+          <slot name="activator" />
+        </div>
+        {this.open && (
+          <div
+            class="content"
+            ref={this.$content}
+            style={this.fixed ? {} : this.style}>
+            <slot />
+          </div>
+        )} */}
+      </>
     )
   }
 }
-
-// TODO
-// <div
-// class="activator"
-// ref={this.$activator}
-// onClick={(event) => this.click(event)}
-// >
-// <slot name="activator" />
-// </div>
-// {this.open && (
-// <div
-//   class="content"
-//   ref={this.$content}
-//   style={this.fixed ? {} : this.style}>
-//   <slot />
-// </div>
-// )}

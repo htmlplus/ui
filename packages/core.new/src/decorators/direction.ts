@@ -5,9 +5,9 @@ export function Direction() {
         const descriptor = {
             get() {
 
-                const element = this.$api?.host();
+                const $host = this.$api?.host();
 
-                const direction = getComputedStyle(element).getPropertyValue('direction');
+                const direction = getComputedStyle($host).getPropertyValue('direction');
 
                 return direction.toLowerCase();
             },

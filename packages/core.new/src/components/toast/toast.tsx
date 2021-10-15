@@ -1,8 +1,9 @@
-import { Component, Direction, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
+import { Attributes, Classes, Component, Direction, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
 import { toAxis } from '@app/helpers';
-import { Animation } from '@app/services';
-import { Action, Observable, reconnect } from './toast.link';
+import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
+
+const { Action, Observable, reconnect } = createLink('Toast');
 
 /**
  * @development
@@ -126,7 +127,7 @@ export class Toast {
   @IsRTL()
   isRTL?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $root!: HTMLElement;
@@ -141,6 +142,7 @@ export class Toast {
   @Observable()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
     return {
       // TODO
@@ -150,6 +152,7 @@ export class Toast {
     }
   }
 
+  @Classes()
   get classes() {
 
     const { x, y } = this.coordinate(this);
@@ -342,11 +345,8 @@ export class Toast {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'open')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -358,9 +358,9 @@ export class Toast {
 
       case 'open':
 
-        value && !this.isOpen && this.tryShow(true, true);
+        next && !this.isOpen && this.tryShow(true, true);
 
-        !value && this.isOpen && this.tryHide(true, true);
+        !next && this.isOpen && this.tryHide(true, true);
 
         break;
     }
@@ -423,7 +423,7 @@ export class Toast {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <div
           class={this.classes}
           part="root"
@@ -431,7 +431,7 @@ export class Toast {
         >
           <slot />
         </div>
-      </Host>
+      </>
     )
   }
 }

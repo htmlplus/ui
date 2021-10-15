@@ -1,7 +1,6 @@
-import { Bind, Component, Element, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property } from '@app/decorators';
-import { classes, toAxis } from '@app/helpers';
-import { Animation, ClickOutside, Portal, Scrollbar } from '@app/services';
-import { Action, Observable, reconnect } from './dialog.link';
+import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
+import { toAxis } from '@app/helpers';
+import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
   DialogFullscreen,
   DialogGlobalState,
@@ -10,6 +9,8 @@ import {
   DialogPortalTarget,
   DialogSize
 } from './dialog.types';
+
+const { Action, Observable, reconnect } = createLink('Dialog');
 
 /**
  * @part backdrop - Backdrop element.
@@ -165,7 +166,7 @@ export class Dialog {
   @IsRTL()
   isRTL?: boolean;
 
-  @Element()
+  @Host()
   $host!: HTMLElement;
 
   $cell!: HTMLElement;
@@ -180,6 +181,7 @@ export class Dialog {
   @Observable()
   tunnel?: boolean;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {
@@ -197,6 +199,7 @@ export class Dialog {
     return attributes;
   }
 
+  @Classes(true)
   get classes() {
 
     let placement = (this.placement || '');
@@ -211,7 +214,7 @@ export class Dialog {
 
     x = toAxis(x, this.isRTL);
 
-    return classes(
+    return [
       'dialog',
       {
         x,
@@ -223,7 +226,7 @@ export class Dialog {
         fullscreen: this.fullscreen,
         scrollable: this.scrollable
       }
-    )
+    ]
   }
 
   get isCurrent() {
@@ -355,11 +358,8 @@ export class Dialog {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('connector', 'open')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -371,9 +371,9 @@ export class Dialog {
 
       case 'open':
 
-        value && !this.isOpen && this.tryShow(true, true);
+        next && !this.isOpen && this.tryShow(true, true);
 
-        !value && this.isOpen && this.tryHide(true, true);
+        !next && this.isOpen && this.tryHide(true, true);
 
         break;
     }
@@ -463,7 +463,7 @@ export class Dialog {
    */
 
   // it's can not be `connectedCallback`, because ClickOutside incompatible 
-  componentDidLoad() {
+  connectedCallback() {
     this.initialize();
   }
 
@@ -473,7 +473,8 @@ export class Dialog {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
+        {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
         <div class={this.classes}>
           <div class="table">
             <div class="cell" ref={this.$cell}>
@@ -481,10 +482,7 @@ export class Dialog {
             </div>
           </div>
         </div>
-      </Host>
+      </>
     )
   }
 }
-
-// TODO: after host
-// {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}

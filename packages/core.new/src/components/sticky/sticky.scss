@@ -33,3 +33,9 @@
   top: calc((var(--plus-sticky-top) + 1px) * -1);
   position: absolute;
 }
+
+// TODO
+:host([state=normal]) .sticky,
+:host([state=sticky]) .normal {
+  display: none;
+}

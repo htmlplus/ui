@@ -1,5 +1,7 @@
-import { Component, GlobalConfig, Host, Property, State } from '@app/decorators';
-import { Inject } from '../tabs/tabs.link';
+import { Attributes, Component, GlobalConfig, Property, State } from '@app/decorators';
+import { createLink } from '@app/services';
+
+const { Inject } = createLink('Tabs');
 
 /**
  * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
@@ -21,6 +23,7 @@ export class TabsPanel {
   @GlobalConfig('tabsPanel')
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       'active': this.tunnel && this.tunnel === this.value
@@ -29,9 +32,7 @@ export class TabsPanel {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Host, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
@@ -24,6 +24,7 @@ export class Spinner {
   })
   config?;
 
+  @Attributes()
   get attributes() {
     return {
       'role': 'status',
@@ -45,14 +46,9 @@ export class Spinner {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        
-      </Host>
+      <div class="wrapper">
+        {this.elements.map((element) => <div key={element} />)}
+      </div>
     )
   }
 }
-
-// TODO
-// <div class="wrapper">
-//   {this.elements.map((element) => <div key={element} />)}
-// </div>
