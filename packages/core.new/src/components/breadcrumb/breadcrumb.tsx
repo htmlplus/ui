@@ -50,7 +50,7 @@ export class Breadcrumb {
   $host!: HTMLElement;
 
   @State()
-  $nodes?: Array<Element>;
+  items?: Array<any>;
 
   observer?: MutationObserver;
 
@@ -71,39 +71,22 @@ export class Breadcrumb {
     }
   }
 
+  get template() {
+
+    const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
+
+    const $clone = $node?.cloneNode(true) as HTMLElement;
+
+    $clone?.removeAttribute('slot');
+
+    const template = $clone?.outerHTML;
+
+    return template || this.config.slots.separator || this.separator;
+  }
+
   /**
    * Internal Methods
    */
-
-  $expander() {
-    return (
-      <div
-        aria-disabled="false"
-        aria-label={this.expanderText}
-        class="expander"
-        key="expander"
-        part="expander"
-        role="button"
-        tabindex="0"
-        onClick={() => this.update(false, true)}
-        onKeyDown={(event) => event.key.match(/Enter| /) && this.update(false, true)}
-      >
-        <slot name="expander">
-          <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-          </svg>
-        </slot>
-      </div>
-    )
-  }
-
-  $wrapper(key) {
-    return (
-      <div key={key} part="item">
-        <slot name={key} />
-      </div>
-    )
-  }
 
   bind() {
 
@@ -116,16 +99,11 @@ export class Breadcrumb {
     this.observer?.disconnect();
   }
 
-  update(force?: boolean, expand?: boolean) {
-
-    // TODO
-    force;
+  update(expand?: boolean) {
 
     const
       $children = this.$children,
-      $nodes = [],
-      rtl = this.isRTL,
-      template = this.template();
+      items = [];
 
     const { start, length } = (() => {
 
@@ -157,48 +135,40 @@ export class Breadcrumb {
       return { start, length };
     })();
 
-    $children.map(($child, index) => {
+    $children.forEach(($child, index) => {
 
       $child.setAttribute('slot', index.toString());
 
       if (start <= index && index < start + length) return;
 
-      $nodes.push(this.$wrapper(index));
+      items.push({
+        type: 'item',
+        key: `${index}`,
+        slot: `${index}`,
+      })
     });
 
-    (start !== undefined) && $nodes.splice(start, 0, this.$expander());
+    if (start !== undefined)
+      items.splice(
+        start,
+        0,
+        {
+          type: 'expander',
+          key: 'expander'
+        }
+      );
 
-    for (let i = $nodes.length - 1; i > 0; i--) {
+    for (let i = items.length - 1; i > 0; i--)
+      items.splice(
+        i,
+        0,
+        {
+          type: 'separator',
+          key: `expander-${i}`
+        }
+      );
 
-      const $separator = (
-        <div
-          aria-hidden="true"
-          class={{ separator: true, rtl }}
-          innerHTML={template}
-          key="separator"
-          part="separator"
-        />
-      )
-
-      $nodes.splice(i, 0, $separator);
-    }
-
-    this.$nodes = $nodes;
-
-    // force && forceUpdate(this); TODO
-  }
-
-  template() {
-
-    const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
-
-    const $clone = $node?.cloneNode(true) as HTMLElement;
-
-    $clone?.removeAttribute('slot');
-
-    const template = $clone?.outerHTML;
-
-    return template || this.config.slots.separator || this.separator;
+    this.items = items;
   }
 
   /**
@@ -206,8 +176,8 @@ export class Breadcrumb {
    */
 
   // TODO
-   @Watch('offset', 'max', 'separator')
-   watcher(next, prev, name) {
+  @Watch('offset', 'max', 'separator')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -215,7 +185,7 @@ export class Breadcrumb {
       case 'max':
       case 'separator':
 
-        this.update(false, false);
+        this.update(false);
 
         // TODO: componentShouldUpdate
         return false;
@@ -228,7 +198,11 @@ export class Breadcrumb {
 
   @Bind()
   onChange() {
-    this.update(true, false);
+
+    this.update(false);
+
+    // TODO
+    // forceUpdate(this);
   }
 
   /**
@@ -236,8 +210,10 @@ export class Breadcrumb {
    */
 
   connectedCallback() {
+
     this.bind();
-    this.update(false, false);
+
+    this.update(false);
   }
 
   disconnectedCallback() {
@@ -246,11 +222,61 @@ export class Breadcrumb {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <div class="container">
-          {this.$nodes}
-        </div>
-      </Host>
+      <div class="container">
+        {(this.items || []).map((item) => {
+          switch (item.type) {
+            case 'item': {
+              return (
+                <div
+                  key={item.key}
+                  part="item"
+                >
+                  <slot name={item.slot} />
+                </div>
+              )
+            }
+            case 'expander': {
+              return (
+                <div
+                  aria-disabled="false"
+                  aria-label={this.expanderText}
+                  class="expander"
+                  key={item.key}
+                  part="expander"
+                  role="button"
+                  tabindex="0"
+                  onClick={() => this.update(true)}
+                  onKeyDown={(event) =>
+                    event.key.match(/Enter| /) && this.update(true)
+                  }
+                >
+                  <slot name="expander">
+                    <svg
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                    </svg>
+                  </slot>
+                </div>
+              )
+            }
+            case 'separator': {
+              return (
+                <div
+                  key={item.key}
+                  aria-hidden="true"
+                  class="separator"
+                  part="separator"
+                >
+                  {this.template}
+                </div>
+              )
+            }
+          }
+        })}
+      </div>
     )
   }
 }
