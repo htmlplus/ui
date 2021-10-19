@@ -57,11 +57,11 @@ export function GlobalConfig(namespace: string, initial = {}) {
 
         if (typeof value === 'undefined') continue;
 
-        if (element[key] !== initial[key]) continue;
+        if ($host[key] !== initial[key]) continue;
 
-        if (typeof value === 'function') value = value(element);
+        if (typeof value === 'function') value = value($host);
 
-        element[key] = value;
+        $host[key] = value;
       }
 
       connected && connected.bind(this)();

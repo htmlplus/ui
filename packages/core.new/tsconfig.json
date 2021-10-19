@@ -12,7 +12,7 @@
         "module": "ESNext",
         "target": "ES6",
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "jsx": "preserve",
         "baseUrl": "src",
         "paths": {
