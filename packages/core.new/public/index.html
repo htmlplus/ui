@@ -7,66 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script type="module" src="build/bundle.js"></script>
   <style>
-    plus-aspect-ratio div {
-      background-color: #C5CAE9;
-      padding: 1rem;
-    }
 
-    plus-browse {
-      background: white;
-      border: 2px dashed #E0E0E0;
-      border-radius: 4px;
-      display: block;
-      padding: 3rem;
-      text-align: center;
-    }
-
-    plus-browse[dragging] {
-      border-color: #0087F7;
-    }
   </style>
 </head>
 
 <body>
 
-  <plus-aspect-ratio value="16/9">
-    <div>
-      This box will always be 16/9 (unless you put more stuff in it)
-    </div>
-  </plus-aspect-ratio>
-
-  <plus-browse id="browse" droppable>
-    Click or Drag & Drop a file here
-  </plus-browse>
-  <script>
-    browse.addEventListener('plusChange', (event) => {
-      const name = event.detail.files[0].file.name;
-      alert(`File '${name}' selected.`);
-    })
-  </script>
-<!-- 
-  <div class="center">
-    <plus-dialog-toggler connector="dialog-animation">
-      Open
-    </plus-dialog-toggler>
-  </div>
-  <plus-dialog animation="fade" connector="dialog-animation">
-    <plus-dialog-content>
-      <plus-dialog-header>
-        Dialog Title
-      </plus-dialog-header>
-      <plus-dialog-body>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
-      </plus-dialog-body>
-      <plus-dialog-footer>
-        <plus-dialog-toggler>
-          Close
-        </plus-dialog-toggler>
-      </plus-dialog-footer>
-    </plus-dialog-content>
-  </plus-dialog> -->
 </body>
 
 </html>
