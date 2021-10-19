@@ -17,6 +17,10 @@ export const customElement = async (id, config) => {
     plugins.style(context);
     plugins.component(context);
 
+    // TODO
+    if (context.config.docs)
+        plugins.docs(context);
+
     const source = await svelte.preprocess(
         context.source,
         sveltePreprocess(context.config.preprocess),

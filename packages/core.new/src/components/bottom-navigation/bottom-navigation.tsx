@@ -4,7 +4,8 @@ import { Animation, createLink } from '@app/services';
 const { Action, Observable } = createLink('BottomNavigation');
 
 /**
- * @development 
+ * @development
+ * @group bottom-navigation
  * @slot default - The default slot.
  */
 @Component()

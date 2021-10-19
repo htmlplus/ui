@@ -1,22 +1,23 @@
 import Case from 'case';
-import fs from 'fs';
+import fs from 'fs-extra';
+import glob from 'glob';
 import path from 'path';
 
 export const docs = (context) => {
 
-    const { directory, tags } = context;
+    const { key, tag, tags, title } = context;
 
-    const development = tags.some((tag) => tag.name === 'development');
+    const development = tags.some((tag) => tag.key == 'development');
 
-    const experimental = tags.some((tag) => tag.name === 'experimental');
+    const experimental = tags.some((tag) => tag.key == 'experimental');
 
-    const externals = fs.existsSync(path.resolve(directory, 'externals'));
+    const externals = fs.existsSync(path.resolve(context.directory, 'externals'));
 
     const readme = (() => {
 
         try {
 
-            const source = path.resolve(directory, 'readme.md');
+            const source = path.resolve(context.directory, 'readme.md');
 
             return fs.readFileSync(source, 'utf8');
         }
@@ -42,9 +43,9 @@ export const docs = (context) => {
 
         return '';
     })();
-
+    
     const parts = tags
-        .filter((tag) => tag.name === 'part')
+        .filter((tag) => tag.key == 'part')
         .map((tag) => {
 
             const sections = tag.text.split('-');
@@ -60,10 +61,10 @@ export const docs = (context) => {
         });
 
     const slots = tags
-        .filter((tag) => tag.name === 'slot')
+        .filter((tag) => tag.key == 'slot')
         .map((tag) => {
 
-            const sections = tag.text.split('-');
+            const sections = tag.value.split('-');
 
             const name = sections[0].trim();
 
@@ -75,42 +76,39 @@ export const docs = (context) => {
             }
         });
 
-    const properties = component
-        .getProperties()
-        .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_PROPERTY))
+    const properties = context
+        .properties
         .map((property) => {
 
             const { tags } = property;
 
-            property.experimental = tags.some((tag) => tag.name === 'experimental');
+            property.experimental = tags.some((tag) => tag.key == 'experimental');
 
-            property.model = tags.some((tag) => tag.name === 'model');
+            property.model = tags.some((tag) => tag.key == 'model');
 
             return property;
         });
 
-    const events = component
-        .getProperties()
-        .filter((property) => property.getDecorator(CONSTANTS.TOKEN_DECORATOR_EVENT))
+    const events = context
+        .events
         .map((event) => {
 
             const { tags } = event;
 
-            event.experimental = tags.some((tag) => tag.name === 'experimental');
+            event.experimental = tags.some((tag) => tag.key == 'experimental');
 
-            event.model = tags.some((tag) => tag.name === 'model');
+            event.model = tags.some((tag) => tag.key == 'model');
 
             return event;
         });
 
-    const methods = component
-        .getMethods()
-        .filter((method) => method.getDecorator(CONSTANTS.TOKEN_DECORATOR_METHOD))
+    const methods = context
+        .methods
         .map((method) => {
 
             const { tags } = method;
 
-            method.experimental = tags.some((tag) => tag.name === 'experimental');
+            method.experimental = tags.some((tag) => tag.key == 'experimental');
 
             return method;
         });
@@ -119,7 +117,7 @@ export const docs = (context) => {
 
         const items = [];
 
-        const source = path.join(directory, 'examples');
+        const source = path.join(context.directory, 'examples');
 
         if (!fs.existsSync(source)) return items;
 
@@ -167,32 +165,57 @@ export const docs = (context) => {
             })
     })();
 
+    const lastModified = (() => {
+
+        // TODO
+        const files = glob.sync(path.join(context.directory, '**/*.*'));
+
+        debugger
+
+        return files.reduce((result, file) => {
+
+            const state = fs.statSync(file);
+
+            return result > state.mtime ? result : state.mtime
+        }, 0)
+    })();
+
+    const group = (tags.find((tag) => tag.key == 'group') || {}).value;
+
+    const main = key == group;
+
     const json = {
-        prefix: config.prefix,
+        prefix: context.config.prefix,
         components: [],
     };
 
     json.components.push({
+        // TODO
+        // deprecated,
+        // source,
+        // styles,
+        // tags,
+        
         key,
         tag,
         title,
-        // main,
-        // group,
+        main,
+        group,
         development,
         experimental,
-        // deprecated,
         externals,
-        // lastModified,
-        // tags,
-        // source,
+        lastModified,
         description,
         readme,
         properties,
         slots,
         events,
-        // styles,
         parts,
         methods,
         examples,
     })
+
+    // TODO
+    fs.ensureDirSync(path.dirname(context.config.docs.docs));
+    fs.writeJSONSync(context.config.docs.docs, json);
 }

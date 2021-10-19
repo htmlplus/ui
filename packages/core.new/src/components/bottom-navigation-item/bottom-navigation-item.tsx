@@ -5,6 +5,7 @@ const { Inject } = createLink('BottomNavigation');
 
 /**
  * @development 
+ * @group bottom-navigation
  * @slot default - The default slot.
  */
 @Component()
