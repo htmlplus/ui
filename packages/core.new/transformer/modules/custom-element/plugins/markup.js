@@ -24,6 +24,17 @@ export const markup = (context) => {
                 if (!t.isJSXExpressionContainer(node.value)) return;
 
                 /**
+                 * TODO
+                 * Convert html attribute
+                 * <element html={any} /> => <element>{@html any}</element>
+                 */
+                // if (node.name.name == 'html') {
+                //     debugger
+                //     path.parentPath.node.children = [node.value];
+                //     // path.remove();
+                // }
+
+                /**
                  * Convert event attribute
                  * <element onEventName={any} /> => <element on:eventName={any} />
                  */
@@ -117,6 +128,7 @@ export const markup = (context) => {
                     )
                 }
 
+                // TODO
                 if (t.isCallExpression(expression)) {
 
                     const { object, property } = expression.callee;
@@ -136,13 +148,44 @@ export const markup = (context) => {
                         .map((parameter) => parameter.name)
                         .join(', ');
 
-                    const body = generator(arrowFunction.body).code;
+                    const body = (() => {
+
+                        const type = arrowFunction.body.type;
+
+                        switch (type) {
+
+                            // TODO
+                            case 'BlockStatement':
+                                // TODO: arrowFunction.body.body[0].argument
+                                return generator(arrowFunction.body.body[0]).code;
+
+                            case 'JSXElement':
+                                return generator(arrowFunction.body).code;
+
+                        }
+                    })();
 
                     path.replaceWith(
                         t.jsxText(`{/*REMOVE{#each ${variable} as ${parameters}}
                             ${body}
                         {/each}REMOVE*/}`)
                     )
+                }
+
+                // TODO
+                if (t.isJSXElement(parent) && expression.type == 'MemberExpression') {
+
+                    const cloned = expression.__clone();
+
+                    cloned.object.name = `@html ${cloned.object.name}`;
+
+                    path.replaceWith(
+                        t.jsxExpressionContainer(
+                            cloned
+                        )
+                    );
+
+                    path.skip();
                 }
             }
         },
@@ -185,9 +228,55 @@ export const markup = (context) => {
 
                 const { node } = path;
 
-                markup = node.argument;
+                try {
+                    if (path.parentPath.parentPath.node.key.name == 'render')
+                        markup = node.argument;
+                }
+                catch { }
             }
-        }
+        },
+        SwitchStatement: {
+            exit(path) {
+
+                const { node } = path;
+
+                const lines = [];
+
+                const left = generator(node.discriminant).code;
+
+                for (let i = 0; i < node.cases.length; i++) {
+
+                    const { consequent, test } = node.cases[i];
+
+                    const right = generator(test).code;
+
+                    // TODO
+                    const body = (() => {
+
+                        const body = consequent[0].type == 'BlockStatement' ? consequent[0].body[0].argument : consequent[0].argument;
+
+                        return generator(body).code;
+                    })();
+
+                    if (i == 0)
+                        lines.push(`{/*REMOVE{#if ${left} == ${right}}`);
+                    else if (test)
+                        lines.push(`{:else if ${left} == ${right}}`);
+                    else
+                        lines.push(`{:else}`);
+
+                    lines.push(body);
+                }
+
+                lines.push('{/if}REMOVE*/}');
+
+                const content = lines.join('\n');
+
+                const template = t.jsxText(content);
+
+                path.replaceWith(template);
+            },
+        },
     });
 
     markup = generator(markup)
@@ -198,4 +287,7 @@ export const markup = (context) => {
         .replace(/REMOVE\*\/\}/g, '');
 
     context.markup = markup;
+
+    // TODO
+    // console.log(1, markup);
 }
