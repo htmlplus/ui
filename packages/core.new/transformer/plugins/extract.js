@@ -96,7 +96,7 @@ const getTags = (node) => {
 
 export const extract = (context) => {
 
-    const { ast, config, filename } = context;
+    if (context.skip) return;
 
     let
         additions = [],
@@ -104,7 +104,7 @@ export const extract = (context) => {
         component,
         render;
 
-    traverse(ast, {
+    traverse(context.ast, {
         ClassDeclaration: {
             exit(path) {
 
@@ -149,13 +149,13 @@ export const extract = (context) => {
         }
     });
 
-    const directory = path.dirname(filename);
+    const directory = path.dirname(context.filename);
 
     const name = component.id.name;
 
     const key = Case.kebab(name);
 
-    const tag = `${config.prefix}-${key}`;
+    const tag = `${context.config.prefix}-${key}`;
 
     const tags = getTags(component);
 
@@ -287,7 +287,7 @@ export const extract = (context) => {
 
     additions.forEach((path) => path.remove());
 
-    const script = generator(ast, {
+    const script = generator(context.ast, {
         comments: false,
         decoratorsBeforeExport: true,
     }).code;

@@ -2,7 +2,7 @@ import fs from 'fs';
 
 export const load = (context) => {
 
-    const { filename } = context;
+    if (context.skip) return;
 
-    context.content = fs.readFileSync(filename, 'utf8');
+    context.content = fs.readFileSync(context.filename, 'utf8');
 }

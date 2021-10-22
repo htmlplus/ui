@@ -19,7 +19,6 @@ esbuild
 		stdin: {
 			resolveDir: '.',
 			contents: glob
-				// TODO: from tsconfig
 				.sync('./src/**/*.tsx')
 				.map((file) => `import '${file}';`)
 				.join('\n')
@@ -29,7 +28,6 @@ esbuild
 		},
 		plugins: [
 			htmlplus({
-				// TODO
 				dev: true, 
 				prefix: 'plus',
 				// cache: '.cache',

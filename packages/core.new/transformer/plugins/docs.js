@@ -5,13 +5,19 @@ import path from 'path';
 
 export const docs = (context) => {
 
-    const { config, key, tag, tags, title } = context;
+    if (context.skip) return;
 
-    if (!config.docs) return;
+    if (!context.config.docs) return;
 
-    const development = tags.some((tag) => tag.key == 'development');
+    const key = context.key;
 
-    const experimental = tags.some((tag) => tag.key == 'experimental');
+    const tag = context.tag;
+
+    const title = context.title;
+
+    const development = context.tags.some((tag) => tag.key == 'development');
+
+    const experimental = context.tags.some((tag) => tag.key == 'experimental');
 
     const externals = fs.existsSync(path.resolve(context.directory, 'externals'));
 
@@ -46,7 +52,8 @@ export const docs = (context) => {
         return '';
     })();
 
-    const parts = tags
+    const parts = context
+        .tags
         .filter((tag) => tag.key == 'part')
         .map((tag) => {
 
@@ -62,7 +69,8 @@ export const docs = (context) => {
             }
         });
 
-    const slots = tags
+    const slots = context
+        .tags
         .filter((tag) => tag.key == 'slot')
         .map((tag) => {
 
@@ -182,9 +190,9 @@ export const docs = (context) => {
         }, 0)
     })();
 
-    const group = (tags.find((tag) => tag.key == 'group') || {}).value;
+    const group = (context.tags.find((tag) => tag.key == 'group') || {}).value;
 
-    const main = key == group;
+    const main = context.key == group;
 
     const json = {
         prefix: context.config.prefix,
@@ -192,6 +200,7 @@ export const docs = (context) => {
     };
 
     json.components.push({
+
         // TODO
         // deprecated,
         // source,

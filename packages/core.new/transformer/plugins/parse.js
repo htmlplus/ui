@@ -2,10 +2,10 @@ import { parse as parser } from '@babel/parser';
 
 export const parse = (context) => {
 
-    const { content } = context;
+    if (context.skip) return;
 
     context.ast = parser(
-        content,
+        context.content,
         {
             allowImportExportEverywhere: true,
             plugins: [

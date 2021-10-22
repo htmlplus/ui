@@ -4,6 +4,10 @@ import * as CONSTANTS from '../configs/constants.js';
 
 export const vscode = (context) => {
 
+    if (context.skip) return;
+
+    return;
+
     const { component } = context;
 
     const readme = (() => {

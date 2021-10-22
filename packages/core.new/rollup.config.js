@@ -38,7 +38,7 @@ const config = {
   ],
   plugins: [
     htmlplus({
-      dev: false, // TODO
+      dev: false, 
       prefix: 'plus',
       docs: {
         docs: './dist/json/docs.json',

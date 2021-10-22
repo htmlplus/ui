@@ -2,13 +2,13 @@ import sass from 'sass';
 
 export const style = (context) => {
 
-    const { config, stylePath } = context;
+    if (context.skip) return;
 
-    if (!stylePath) return;
+    if (!context.stylePath) return;
 
     const options = (() => {
         try {
-            return config.preprocess.scss || {};
+            return context.config.preprocess.scss || {};
         }
         catch {
             return {};
@@ -16,7 +16,7 @@ export const style = (context) => {
     })();
 
     const { css, stats } = sass.renderSync({
-        file: stylePath,
+        file: context.stylePath,
         ...options,
     });
 
