@@ -287,7 +287,4 @@ export const markup = (context) => {
         .replace(/REMOVE\*\/\}/g, '');
 
     context.markup = markup;
-
-    // TODO
-    // console.log(1, markup);
 }

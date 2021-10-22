@@ -1,6 +1,9 @@
-export const component = (context) => {
+import * as svelte from 'svelte/compiler';
+import preprocess from 'svelte-preprocess';
 
-    const { script, markup, style } = context;
+export const component = async (context) => {
+
+    const { config, filename, markup, script, style } = context;
 
     const lines = [
         script,
@@ -8,7 +11,23 @@ export const component = (context) => {
         style,
     ];
 
-    const source = lines.join('\n');
+    let source = lines.join('\n');
 
-    context.source = source;
+    // TODO
+    if (!config.dev) {
+        source = (await svelte.preprocess(
+            source,
+            preprocess(config.preprocess),
+            {
+                filename,
+            }
+        )).code
+    }
+
+    const { js } = svelte.compile(source, {
+        filename,
+        customElement: true,
+    });
+
+    context.code = js.code;
 }

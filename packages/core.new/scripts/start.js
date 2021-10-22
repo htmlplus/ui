@@ -20,7 +20,7 @@ esbuild
 			resolveDir: '.',
 			contents: glob
 				// TODO: from tsconfig
-				.sync('./src/components/*/*.tsx')
+				.sync('./src/**/*.tsx')
 				.map((file) => `import '${file}';`)
 				.join('\n')
 		},
@@ -29,8 +29,10 @@ esbuild
 		},
 		plugins: [
 			htmlplus({
+				// TODO
+				dev: true, 
 				prefix: 'plus',
-				cache: '.cache',
+				// cache: '.cache',
 				preprocess: {
 					scss: {
 						includePaths: ['./src/styles'],

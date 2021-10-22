@@ -6,8 +6,8 @@ export const rollup = (config) => ({
 
         if (!id.endsWith('.tsx')) return null;
 
-        const { js } = await customElement(id, config);
+        const { code } = await customElement(id, config);
 
-        return js.code;
+        return code;
     }
 })

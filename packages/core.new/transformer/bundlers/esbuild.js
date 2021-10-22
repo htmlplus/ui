@@ -77,18 +77,18 @@ export const esbuild = (config) => ({
 
             if (dependencies.length && !changed) return value.output;
 
-            const source = await customElement(id, config);
+            const result = await customElement(id, config);
 
             value.dependencies = [id]
-                .concat(source.dependencies)
+                .concat(result.dependencies)
                 .map((id) => ({
                     id,
                     snapshot: snapshot(id)
                 }));
 
             value.output = {
-                contents: source.js.code,
-                watchFiles: source.dependencies,
+                contents: result.code,
+                watchFiles: result.dependencies,
             };
 
             cache.set(id, value);

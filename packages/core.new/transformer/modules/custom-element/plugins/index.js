@@ -1,4 +1,3 @@
-export * from '../../../plugins/index.js';
 export * from './component.js';
 export * from './markup.js';
 export * from './script.js';

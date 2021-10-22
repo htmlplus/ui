@@ -1,40 +1,24 @@
-import * as svelte from 'svelte/compiler';
-import sveltePreprocess from 'svelte-preprocess';
-import * as plugins from './plugins/index.js';
+import * as common from '../../plugins/index.js';
+import * as plugin from './plugins/index.js';
 
-export const customElement = async (id, config) => {
+export const customElement = async (filename, config) => {
 
     const context = {
-        id,
+        filename,
         config,
     };
+    
+    await common.load(context);
+    await common.parse(context);
+    await common.validate(context);
+    await common.extract(context);
+    await common.script(context);
+    await common.style(context);
+    await plugin.markup(context);
+    await plugin.script(context);
+    await plugin.style(context);
+    await plugin.component(context);
+    await common.docs(context);
 
-    plugins.parse(context);
-    plugins.validate(context);
-    plugins.extract(context);
-    plugins.markup(context);
-    plugins.script(context);
-    plugins.style(context);
-    plugins.component(context);
-
-    // TODO
-    if (context.config.docs)
-        plugins.docs(context);
-
-    const source = await svelte.preprocess(
-        context.source,
-        sveltePreprocess(context.config.preprocess),
-        {
-            filename: context.id,
-        }
-    );
-
-    const result = svelte.compile(source.code, {
-        filename: context.id,
-        customElement: true,
-    });
-
-    result.dependencies = source.dependencies;
-
-    return result;
+    return context
 }

@@ -3,6 +3,7 @@ import * as CONSTANTS from '../../../configs/constants.js';
 export const script = (context) => {
 
     const {
+        config,
         name,
         tag,
         methods,
@@ -18,7 +19,10 @@ export const script = (context) => {
 
     lines.push(`<svelte:options tag="${tag}" />`);
 
-    lines.push('<script lang="ts">');
+    if (config.dev)
+        lines.push('<script>');
+    else
+        lines.push('<script lang="ts">');
 
     // TODO
     lines.push('import { sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');

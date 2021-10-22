@@ -5,7 +5,9 @@ import path from 'path';
 
 export const docs = (context) => {
 
-    const { key, tag, tags, title } = context;
+    const { config, key, tag, tags, title } = context;
+
+    if (!config.docs) return;
 
     const development = tags.some((tag) => tag.key == 'development');
 
@@ -43,12 +45,12 @@ export const docs = (context) => {
 
         return '';
     })();
-    
+
     const parts = tags
         .filter((tag) => tag.key == 'part')
         .map((tag) => {
 
-            const sections = tag.text.split('-');
+            const sections = tag.value.split('-');
 
             const name = sections[0].trim();
 
@@ -195,7 +197,7 @@ export const docs = (context) => {
         // source,
         // styles,
         // tags,
-        
+
         key,
         tag,
         title,

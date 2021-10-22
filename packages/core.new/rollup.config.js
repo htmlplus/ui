@@ -10,7 +10,7 @@ import { rollup as htmlplus } from './transformer/bundlers/rollup';
  * @type {import('rollup').RollupOptions}
  */
 const config = {
-  input: glob.sync('./src/components/*/*.tsx'),
+  input: glob.sync('./src/**/*.tsx'),
   output: [
     {
       format: 'es',
@@ -38,10 +38,11 @@ const config = {
   ],
   plugins: [
     htmlplus({
+      dev: false, // TODO
       prefix: 'plus',
       docs: {
-        docs: 'json/docs.json',
-        vscode: 'json/html.html-data.json',
+        docs: './dist/json/docs.json',
+        vscode: './dist/json/html.html-data.json',
       },
       preprocess: {
         scss: {

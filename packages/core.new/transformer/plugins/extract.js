@@ -47,7 +47,7 @@ const getTags = (node) => {
     const tags = [];
 
     const lines = [];
-    
+
     const comments = node
         .leadingComments
         .map((comment) => comment.value)
@@ -90,13 +90,13 @@ const getTags = (node) => {
 
         tags.push({ key, value });
     }
-    
+
     return tags;
 }
 
 export const extract = (context) => {
 
-    const { config, id, ast } = context;
+    const { ast, config, filename } = context;
 
     let
         additions = [],
@@ -149,13 +149,15 @@ export const extract = (context) => {
         }
     });
 
-    const directory = path.dirname(id);
+    const directory = path.dirname(filename);
 
     const name = component.id.name;
 
     const key = Case.kebab(name);
 
     const tag = `${config.prefix}-${key}`;
+
+    const tags = getTags(component);
 
     const title = Case.capital(key);
 
@@ -292,7 +294,6 @@ export const extract = (context) => {
 
     context.attributes = attributes;
     context.directory = directory;
-    context.component = component;
     context.name = name;
     context.key = key;
     context.tag = tag;
@@ -304,9 +305,10 @@ export const extract = (context) => {
     context.states = states;
     context.hasMount = hasMount;
     context.hasUnmount = hasUnmount;
+    context.tags = tags;
+    context.script = script;
 
     // TODO
-    context.tags = getTags(component);
-    context.script = script;
     context.render = render;
+    context.stylePath = path.join(directory, `${key}.scss`);
 }
