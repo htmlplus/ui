@@ -9,8 +9,8 @@
     "build": "npm run clean && rollup -c",
     "clean": "rimraf .cache dist public/build",
     "start": "node scripts/start.js",
-    "test:open" : "cypress open",
-    "test:run" : "cypress run"
+    "test:open": "cypress open",
+    "test:run": "cypress run"
   },
   "devDependencies": {
     "@babel/generator": "^7.15.4",

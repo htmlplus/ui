@@ -11,11 +11,11 @@ const traverse = babelTraverse.default || babelTraverse;
 // TODO
 export const markup = (context) => {
 
-    const { render } = context;
+    if (context.skip) return;
 
     let markup;
 
-    traverse(render, {
+    traverse(context.render, {
         JSXAttribute: {
             exit(path) {
 

@@ -8,7 +8,7 @@ export const customElement = async (filename, config) => {
         config,
     };
     
-    await common.cache(context);
+    await common.cache.load(context);
     await common.load(context);
     await common.parse(context);
     await common.validate(context);
@@ -21,6 +21,7 @@ export const customElement = async (filename, config) => {
     await plugin.component(context);
     await common.docs(context);
     await common.vscode(context);
+    await common.cache.save(context);
 
     return context;
 }

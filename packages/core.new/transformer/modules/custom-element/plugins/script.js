@@ -2,24 +2,13 @@ import * as CONSTANTS from '../../../configs/constants.js';
 
 export const script = (context) => {
 
-    const {
-        config,
-        name,
-        tag,
-        methods,
-        properties,
-        slots,
-        states,
-        hasMount,
-        hasUnmount,
-        script,
-    } = context;
+    if (context.skip) return;
 
     const lines = [];
 
-    lines.push(`<svelte:options tag="${tag}" />`);
+    lines.push(`<svelte:options tag="${context.tag}" />`);
 
-    if (config.dev)
+    if (context.config.dev)
         lines.push('<script>');
     else
         lines.push('<script lang="ts">');
@@ -29,11 +18,11 @@ export const script = (context) => {
 
     lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
 
-    lines.push(script);
+    lines.push(context.script);
 
     lines.push(`const ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST} = get_current_component();`);
 
-    lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${name}();`);
+    lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${context.name}();`);
 
     lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
 
@@ -44,26 +33,26 @@ export const script = (context) => {
     // switch (arg1) {
     //     ${properties.map((property) => `case '${property.name}': ${property.name} = arg2; break;`).join('\n')}
     // }
-    if (properties.length)
+    if (context.properties.length)
         lines.push(`
             ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_PROPERTY} = (key, value) => {
                 ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}[key] = value;
             }
         `);
 
-    if (slots.length)
+    if (context.slots.length)
         lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_SLOTS} = () => $$slots;`);
 
-    if (states.length)
+    if (context.states.length)
         lines.push(`
             ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_STATE} = (arg1, arg2) => {
                 switch (arg1) {
-                    ${states.map((state) => `case '${state.name}': ${state.name} = arg2; break;`).join('\n')}
+                    ${context.states.map((state) => `case '${state.name}': ${state.name} = arg2; break;`).join('\n')}
                 }
             }
         `);
 
-    properties.forEach((property) => {
+    context.properties.forEach((property) => {
 
         const { initializer, name, type } = property;
 
@@ -97,7 +86,7 @@ export const script = (context) => {
         lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${value};`);
     });
 
-    states.forEach((state) => {
+    context.states.forEach((state) => {
 
         const { initializer, name } = state;
 
@@ -113,17 +102,17 @@ export const script = (context) => {
         lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${name};`);
     });
 
-    methods.forEach((method) => {
+    context.methods.forEach((method) => {
 
         const { name } = method;
 
         lines.push(`export const ${name} = ${CONSTANTS.TOKEN_THIS}.${name}.bind(${CONSTANTS.TOKEN_THIS});`);
     });
 
-    if (hasMount)
+    if (context.hasMount)
         lines.push(`onMount(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_MOUNT}());`);
 
-    if (hasUnmount)
+    if (context.hasUnmount)
         lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
 
     // TODO

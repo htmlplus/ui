@@ -2,24 +2,24 @@ import { spawn } from 'child_process';
 import esbuild from 'esbuild';
 import glob from 'glob';
 import http from 'http';
-import { esbuild as htmlplus } from '../transformer/bundlers/esbuild.js';
+import { customElement } from '../transformer/modules/index.js';
+import config from './start.config.js';
 
 const
 	clients = [],
-	port = 3000,
 	time = Date.now();
 
 esbuild
 	.build({
 		bundle: true,
 		sourcemap: true,
-		incremental: true,
 		format: 'esm',
+		// TODO
 		outfile: 'public/build/bundle.js',
 		stdin: {
 			resolveDir: '.',
 			contents: glob
-				.sync('./src/**/*.tsx')
+				.sync(config.include)
 				.map((file) => `import '${file}';`)
 				.join('\n')
 		},
@@ -27,16 +27,21 @@ esbuild
 			js: '(() => new EventSource("/~dev").onmessage = () => location.reload())();'
 		},
 		plugins: [
-			htmlplus({
-				dev: true, 
-				prefix: 'plus',
-				// cache: '.cache',
-				preprocess: {
-					scss: {
-						includePaths: ['./src/styles'],
-					}
+			{
+				name: 'htmlplus',
+				setup(build) {
+
+					build.onLoad({ filter: /\.tsx$/ }, async (args) => {
+
+						const { code, dependencies } = await customElement(args.path, config);
+
+						return {
+							contents: code,
+							watchFiles: dependencies,
+						}
+					})
 				}
-			})
+			}
 		],
 		watch: {
 			onRebuild(error) {
@@ -55,6 +60,7 @@ esbuild
 const serve = () => {
 
 	esbuild
+		// TODO
 		.serve({ servedir: 'public' }, {})
 		.then((server) => {
 
@@ -72,6 +78,7 @@ const serve = () => {
 							})
 						)
 
+					// TODO
 					const path = ~url.split('/').pop().indexOf('.') ? url : `/index.html`;
 
 					const proxy = http.request(
@@ -92,7 +99,7 @@ const serve = () => {
 
 					req.pipe(proxy, { end: true });
 				})
-				.listen(port);
+				.listen(config.port);
 
 			if (clients.length === 0) {
 
@@ -104,11 +111,11 @@ const serve = () => {
 
 				const command = platforms[process.platform][0];
 
-				const args = [...[platforms[process.platform].slice(1)], `http://localhost:${port}`];
+				const args = [...[platforms[process.platform].slice(1)], `http://localhost:${config.port}`];
 
 				spawn(command, args);
 			}
 
-			console.log(`[${new Date().toLocaleTimeString()}] Start on http://localhost:${port} in ${Date.now() - time}ms`);
+			console.log(`[${new Date().toLocaleTimeString()}] Start on http://localhost:${config.port} in ${Date.now() - time}ms`);
 		})
 }

@@ -3,30 +3,30 @@ import preprocess from 'svelte-preprocess';
 
 export const component = async (context) => {
 
-    const { config, filename, markup, script, style } = context;
+    if (context.skip) return;
 
     const lines = [
-        script,
-        markup,
-        style,
+        context.script,
+        context.markup,
+        context.style,
     ];
 
     let source = lines.join('\n');
 
     // TODO
-    if (!config.dev) {
+    if (!context.config.dev) {
         source = (await svelte.preprocess(
             source,
-            preprocess(config.preprocess),
+            preprocess(context.config.preprocess),
             {
-                filename,
+                filename: context.filename,
             }
         )).code
     }
 
     const { js } = svelte.compile(source, {
-        filename,
         customElement: true,
+        filename: context.filename,
     });
 
     context.code = js.code;

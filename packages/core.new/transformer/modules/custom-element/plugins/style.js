@@ -1,8 +1,8 @@
 export const style = (context) => {
 
-    const { style } = context;
+    if (context.skip) return;
 
-    if (!style) return;
+    if (!context.style) return;
 
-    context.style = `<style>${style}</style>`;
+    context.style = `<style>${context.style}</style>`;
 };
