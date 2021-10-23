@@ -6,7 +6,7 @@ export default {
 	include: './src/**/*.tsx',
     preprocess: {
         scss: {
-            includePaths: ['./src/styles'],
-        },
-    },
+            includePaths: ['./src/styles']
+        }
+    }
 }

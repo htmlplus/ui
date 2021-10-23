@@ -1,25 +1,4 @@
-## Test
-- [X] aspect ratio
-- [X] browse
-- [X] card
-- [ ] click outside
-
 prop => default: initializer
-
-generateBundle() {
-
-    this.emitFile({
-        type: 'asset',
-        fileName: config.docs.docs,
-        source: JSON.stringify(docs, null, 2)
-    });
-
-    this.emitFile({
-        type: 'asset',
-        fileName: config.docs.vscode,
-        source: JSON.stringify(vscode, null, 2)
-    });
-}
 
 "styles": [
     {
@@ -28,3 +7,14 @@ generateBundle() {
         "description": "Used to adjust the Horizontal gap."
     }
 ],
+
+// vetur.config.js
+module.exports = {
+  settings: {
+    "vetur.useWorkspaceDependencies": true,
+    "vetur.experimental.templateInterpolationService": true
+  },
+  projects: [
+    './packages/playground/vue-ts'
+  ]
+}

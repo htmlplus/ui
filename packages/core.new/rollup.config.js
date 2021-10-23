@@ -4,7 +4,7 @@ import { glob } from 'glob';
 import path from 'path';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import { rollup as htmlplus } from './transformer/bundlers/rollup';
+import { customElement } from './transformer/modules/index';
 
 /**
  * @type {import('rollup').RollupOptions}
@@ -37,19 +37,29 @@ const config = {
     // },
   ],
   plugins: [
-    htmlplus({
-      dev: false, 
-      prefix: 'plus',
-      docs: {
-        docs: './dist/json/docs.json',
-        vscode: './dist/json/html.html-data.json',
-      },
-      preprocess: {
-        scss: {
-          includePaths: ['./src/styles'],
-        },
-      },
-    }),
+    {
+      name: 'htmlplus',
+      async load(id) {
+
+        if (!id.endsWith('.tsx')) return null;
+
+        const { code } = await customElement(id, {
+          dev: false,
+          prefix: 'plus',
+          docs: {
+            docs: './dist/json/docs.json',
+            vscode: './dist/json/html.html-data.json',
+          },
+          preprocess: {
+            scss: {
+              includePaths: ['./src/styles'],
+            },
+          },
+        });
+
+        return code;
+      }
+    },
 
     resolve({
       browser: true,
