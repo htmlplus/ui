@@ -176,23 +176,45 @@ export const extract = (context) => {
         .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
         .map((property) => {
 
+            const tags = getTags(property);
+
             const name = property.key.name;
 
             const attribute = Case.kebab(name);
 
             const initializer = getInitializer(property);
 
-            const reflect = false; // TODO
+            const reflect = (() => {
+
+                try {
+                    for (const decorator of property.decorators) {
+                        for (const argument of decorator.expression.arguments) {
+                            for (const property of argument.properties) {
+                                if (property.key.name != 'reflect') continue;
+                                if (property.value.type != 'BooleanLiteral') continue;
+                                if (!property.value.value) continue;
+                                return true;
+                            }
+                        }
+                    }
+                }
+                catch { }
+
+                return false;
+            })();
 
             const required = !property.optional;
 
             const type = getType(property);
 
-            const description = getDescription(property);
+            const experimental = tags.some((tag) => tag.key == 'experimental');
 
-            const values = []; // TODO
+            const description = (tags.find((tag) => !tag.key) || {}).value;
 
-            const tags = [];
+            // TODO
+            const values = [];
+
+            const model = tags.some((tag) => tag.key == 'model');
 
             return {
                 name,
@@ -201,9 +223,10 @@ export const extract = (context) => {
                 reflect,
                 required,
                 type,
+                experimental,
                 description,
                 values,
-                tags,
+                model,
             }
         });
 
@@ -211,22 +234,45 @@ export const extract = (context) => {
         .filter((event) => hasDecorator(event, CONSTANTS.TOKEN_DECORATOR_EVENT))
         .map((event) => {
 
+            const tags = getTags(event);
+
             const name = event.key.name;
 
-            const cancelable = false; // TODO
+            const cancelable = (() => {
 
-            const detail = 'void'; // TODO
+                try {
+                    for (const decorator of event.decorators) {
+                        for (const argument of decorator.expression.arguments) {
+                            for (const property of argument.properties) {
+                                if (property.key.name != 'cancelable') continue;
+                                if (property.value.type != 'BooleanLiteral') continue;
+                                if (!property.value.value) continue;
+                                return true;
+                            }
+                        }
+                    }
+                }
+                catch { }
 
-            const description = getDescription(event);
+                return false;
+            })();
 
-            const tags = [];
+            // TODO
+            const detail = 'void';
+
+            const experimental = tags.some((tag) => tag.key == 'experimental');
+
+            const description = (tags.find((tag) => !tag.key) || {}).value;
+
+            const model = tags.some((tag) => tag.key == 'model');
 
             return {
                 name,
                 cancelable,
                 detail,
+                experimental,
                 description,
-                tags,
+                model,
             }
         });
 
@@ -257,25 +303,39 @@ export const extract = (context) => {
         .filter((method) => hasDecorator(method, CONSTANTS.TOKEN_DECORATOR_METHOD))
         .map((method) => {
 
+            const tags = getTags(method);
+
             const name = method.key.name;
 
-            const type = 'Promise<void>'; // TODO
+            const experimental = tags.some((tag) => tag.key == 'experimental');
 
-            const signature = 'browse() => Promise<void>'; // TODO
+            // TODO
+            const type = 'Promise<void>';
 
-            const description = getDescription(method);
+            // TODO
+            const signature = 'move(offsetX?: number, offsetY?: number) => Promise<void>';
 
-            const parameters = []; // TODO
+            const description = (tags.find((tag) => !tag.key) || {}).value;
 
-            const tags = [];
+            // TODO
+            const parameters = [
+                // {
+                //     "name": "offsetX",
+                //     "description": "Moving size (px) in the `horizontal` direction. Use `null` to ignore this."
+                // },
+                // {
+                //     "name": "offsetY",
+                //     "description": "Moving size (px) in the `vertical` direction. Use `null` to ignore this."
+                // }
+            ];
 
             return {
                 name,
+                experimental,
                 type,
                 signature,
                 description,
                 parameters,
-                tags,
             }
         });
 

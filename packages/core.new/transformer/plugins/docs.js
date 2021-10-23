@@ -86,43 +86,6 @@ export const docs = (context) => {
             }
         });
 
-    const properties = context
-        .properties
-        .map((property) => {
-
-            const { tags } = property;
-
-            property.experimental = tags.some((tag) => tag.key == 'experimental');
-
-            property.model = tags.some((tag) => tag.key == 'model');
-
-            return property;
-        });
-
-    const events = context
-        .events
-        .map((event) => {
-
-            const { tags } = event;
-
-            event.experimental = tags.some((tag) => tag.key == 'experimental');
-
-            event.model = tags.some((tag) => tag.key == 'model');
-
-            return event;
-        });
-
-    const methods = context
-        .methods
-        .map((method) => {
-
-            const { tags } = method;
-
-            method.experimental = tags.some((tag) => tag.key == 'experimental');
-
-            return method;
-        });
-
     const examples = (() => {
 
         const items = [];
@@ -180,8 +143,6 @@ export const docs = (context) => {
         // TODO
         const files = glob.sync(path.join(context.directory, '**/*.*'));
 
-        debugger
-
         return files.reduce((result, file) => {
 
             const state = fs.statSync(file);
@@ -190,9 +151,9 @@ export const docs = (context) => {
         }, 0)
     })();
 
-    const group = (context.tags.find((tag) => tag.key == 'group') || {}).value;
+    const group = (context.tags.find((tag) => tag.key == 'group') || {}).value || null;
 
-    const main = context.key == group;
+    const main = (group && context.key == group) || !group;
 
     const json = {
         prefix: context.config.prefix,
@@ -200,13 +161,6 @@ export const docs = (context) => {
     };
 
     json.components.push({
-
-        // TODO
-        // deprecated,
-        // source,
-        // styles,
-        // tags,
-
         key,
         tag,
         title,
@@ -214,19 +168,34 @@ export const docs = (context) => {
         group,
         development,
         experimental,
+
+        // TODO
+        deprecated: false,
+
         externals,
         lastModified,
+
+        // TODO
+        tags: [],
+
+        // TODO
+        source: key,
+
         description,
         readme,
-        properties,
+        properties: context.properties,
         slots,
-        events,
+        events: context.events,
+
+        // TODO
+        styles: [],
+
         parts,
-        methods,
+        methods: context.methods,
         examples,
     })
 
     // TODO
     fs.ensureDirSync(path.dirname(context.config.docs.docs));
-    fs.writeJSONSync(context.config.docs.docs, json);
+    fs.writeJSONSync(context.config.docs.docs, json, { replacer: null, spaces: 2 });
 }

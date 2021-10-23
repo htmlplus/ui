@@ -61,19 +61,19 @@ export class Browse {
   /**
    * Emitted when file(s) are selected.
    */
-  @Event({ bubbles: false })
+  @Event()
   plusChange!: EventEmitter<BrowseEvent>;
 
   /**
    * Emitted when selected invalid file(s).
    */
-  @Event({ bubbles: false })
+  @Event()
   plusError!: EventEmitter<BrowseEvent>;
 
   /**
    * Emitted when file(s) are added successfully.
    */
-  @Event({ bubbles: false })
+  @Event()
   plusSuccess!: EventEmitter<BrowseEvent>;
 
   @GlobalConfig('browse')
