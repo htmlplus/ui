@@ -1,12 +1,7 @@
-prop => default: initializer
+.\node_modules\.bin\cypress.cmd install
 
-"styles": [
-    {
-        "name": "--plus-breadcrumb-gutter-x",
-        "dafault": "0.5em",
-        "description": "Used to adjust the Horizontal gap."
-    }
-],
+prop => default: initializer
+style => default: initializer
 
 // vetur.config.js
 module.exports = {

@@ -43,19 +43,24 @@ const config = {
 
         if (!id.endsWith('.tsx')) return null;
 
-        const { code } = await customElement(id, {
-          dev: false,
-          prefix: 'plus',
-          docs: {
-            docs: './dist/json/docs.json',
-            vscode: './dist/json/html.html-data.json',
-          },
-          preprocess: {
-            scss: {
-              includePaths: ['./src/styles'],
+        const { code } = await customElement(
+          id,
+          {
+            dev: false,
+            prefix: 'plus',
+            docs: {
+              docs: './dist/json/docs.json',
+              vscode: './dist/json/html.html-data.json',
+              // TODO
+              length: glob.sync('./src/**/*.tsx').length
             },
-          },
-        });
+            preprocess: {
+              scss: {
+                includePaths: ['./src/styles'],
+              },
+            },
+          }
+        );
 
         return code;
       }

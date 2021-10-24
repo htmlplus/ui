@@ -3,17 +3,17 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import path from 'path';
 
+// TODO
+const json = {
+    prefix: undefined,
+    components: []
+};
+
 export const docs = (context) => {
 
     if (context.skip) return;
 
     if (!context.config.docs) return;
-
-    const key = context.key;
-
-    const tag = context.tag;
-
-    const title = context.title;
 
     const development = context.tags.some((tag) => tag.key == 'development');
 
@@ -50,6 +50,39 @@ export const docs = (context) => {
         }
 
         return '';
+    })();
+
+    const styles = (() => {
+
+        const styles = [];
+
+        try {
+
+            fs.readFileSync(context.stylePath, 'utf8')
+                .split('@prop')
+                .slice(1)
+                .map((section) => {
+
+                    let [description, name] = section.split(/\n/);
+
+                    name = name.split(':').slice(0, -1).join(':').trim();
+
+                    description = description.trim();
+
+                    let [initializer] = context.style.split(name).slice(1, 2);
+
+                    if (initializer) initializer = initializer.split(/;|}/)[0].replace(':', '').trim();
+
+                    styles.push({
+                        name,
+                        initializer,
+                        description
+                    })
+                })
+        }
+        catch { }
+
+        return styles;
     })();
 
     const parts = context
@@ -138,32 +171,26 @@ export const docs = (context) => {
             })
     })();
 
-    const lastModified = (() => {
-
-        // TODO
-        const files = glob.sync(path.join(context.directory, '**/*.*'));
-
-        return files.reduce((result, file) => {
+    const lastModified = glob
+        .sync(path.join(context.directory, '**/*.*'))
+        .reduce((result, file) => {
 
             const state = fs.statSync(file);
 
             return result > state.mtime ? result : state.mtime
         }, 0)
-    })();
 
     const group = (context.tags.find((tag) => tag.key == 'group') || {}).value || null;
 
     const main = (group && context.key == group) || !group;
 
-    const json = {
-        prefix: context.config.prefix,
-        components: [],
-    };
+    // TODO
+    json.prefix = context.config.prefix;
 
     json.components.push({
-        key,
-        tag,
-        title,
+        key: context.key,
+        tag: context.tag,
+        title: context.title,
         main,
         group,
         development,
@@ -179,23 +206,22 @@ export const docs = (context) => {
         tags: [],
 
         // TODO
-        source: key,
+        source: context.key,
 
         description,
         readme,
         properties: context.properties,
         slots,
         events: context.events,
-
-        // TODO
-        styles: [],
-
+        styles,
         parts,
         methods: context.methods,
         examples,
     })
 
     // TODO
+    if (json.components.length != context.config.docs.length) return;
+    json.components = json.components.sort((a, b) => a.key > b.key ? 1 : -1);
     fs.ensureDirSync(path.dirname(context.config.docs.docs));
     fs.writeJSONSync(context.config.docs.docs, json, { replacer: null, spaces: 2 });
 }

@@ -212,7 +212,23 @@ export const extract = (context) => {
             const description = (tags.find((tag) => !tag.key) || {}).value;
 
             // TODO
-            const values = [];
+            const values = [
+                // { type: 'number' },
+                // { type: 'number[]' },
+                // { type: 'boolean' },
+                // { type: 'string' },
+                // { type: 'string', value: '1' },
+                // { type: 'string', value: 'crop', description: 'Creates a new viewpor' },
+                // { type: 'CropperValue' },
+                // { type: 'HTMLElement' },
+                // {
+                //     type: "boolean",
+                //     description: {
+                //         false: 'Unable to zoom the image.',
+                //         true: 'Enables to zoom the image by touching and wheeling mouse.'
+                //     }
+                // }
+            ];
 
             const model = tags.some((tag) => tag.key == 'model');
 
