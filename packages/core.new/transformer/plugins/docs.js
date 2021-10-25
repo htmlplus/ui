@@ -15,111 +15,13 @@ export const docs = (context) => {
 
     if (!context.config.docs) return;
 
-    const development = context.tags.some((tag) => tag.key == 'development');
+    context.development = context.tags.some((tag) => tag.key == 'development');
 
-    const experimental = context.tags.some((tag) => tag.key == 'experimental');
+    context.experimental = context.tags.some((tag) => tag.key == 'experimental');
 
-    const externals = fs.existsSync(path.resolve(context.directory, 'externals'));
+    context.externals = fs.existsSync(path.resolve(context.directory, 'externals'));
 
-    const readme = (() => {
-
-        try {
-
-            const source = path.resolve(context.directory, 'readme.md');
-
-            return fs.readFileSync(source, 'utf8');
-        }
-        catch { }
-    })();
-
-    const description = (() => {
-
-        const content = readme || '';
-
-        if (!content.startsWith('# ')) return '';
-
-        const sections = content.split('\n');
-
-        for (let i = 1; i < sections.length; i++) {
-
-            const section = sections[i].trim();
-
-            if (!section) continue;
-
-            return section;
-        }
-
-        return '';
-    })();
-
-    const styles = (() => {
-
-        const styles = [];
-
-        try {
-
-            fs.readFileSync(context.stylePath, 'utf8')
-                .split('@prop')
-                .slice(1)
-                .map((section) => {
-
-                    let [description, name] = section.split(/\n/);
-
-                    name = name.split(':').slice(0, -1).join(':').trim();
-
-                    description = description.trim();
-
-                    let [initializer] = context.style.split(name).slice(1, 2);
-
-                    if (initializer) initializer = initializer.split(/;|}/)[0].replace(':', '').trim();
-
-                    styles.push({
-                        name,
-                        initializer,
-                        description
-                    })
-                })
-        }
-        catch { }
-
-        return styles;
-    })();
-
-    const parts = context
-        .tags
-        .filter((tag) => tag.key == 'part')
-        .map((tag) => {
-
-            const sections = tag.value.split('-');
-
-            const name = sections[0].trim();
-
-            const description = sections.slice(1).join('-').trim();
-
-            return {
-                name,
-                description,
-            }
-        });
-
-    const slots = context
-        .tags
-        .filter((tag) => tag.key == 'slot')
-        .map((tag) => {
-
-            const sections = tag.value.split('-');
-
-            const name = sections[0].trim();
-
-            const description = sections.slice(1).join('-').trim();
-
-            return {
-                name,
-                description,
-            }
-        });
-
-    const examples = (() => {
+    context.examples = (() => {
 
         const items = [];
 
@@ -171,7 +73,105 @@ export const docs = (context) => {
             })
     })();
 
-    const lastModified = glob
+    context.readme = (() => {
+
+        try {
+
+            const source = path.resolve(context.directory, 'readme.md');
+
+            return fs.readFileSync(source, 'utf8');
+        }
+        catch { }
+    })();
+
+    context.description = (() => {
+
+        const content = context.readme || '';
+
+        if (!content.startsWith('# ')) return '';
+
+        const sections = content.split('\n');
+
+        for (let i = 1; i < sections.length; i++) {
+
+            const section = sections[i].trim();
+
+            if (!section) continue;
+
+            return section;
+        }
+
+        return '';
+    })();
+
+    context.parts = context
+        .tags
+        .filter((tag) => tag.key == 'part')
+        .map((tag) => {
+
+            const sections = tag.value.split('-');
+
+            const name = sections[0].trim();
+
+            const description = sections.slice(1).join('-').trim();
+
+            return {
+                name,
+                description,
+            }
+        });
+
+    context.slots = context
+        .tags
+        .filter((tag) => tag.key == 'slot')
+        .map((tag) => {
+
+            const sections = tag.value.split('-');
+
+            const name = sections[0].trim();
+
+            const description = sections.slice(1).join('-').trim();
+
+            return {
+                name,
+                description,
+            }
+        });
+
+    context.styles = (() => {
+
+        const styles = [];
+
+        try {
+
+            fs.readFileSync(context.stylePath, 'utf8')
+                .split('@prop')
+                .slice(1)
+                .map((section) => {
+
+                    let [description, name] = section.split(/\n/);
+
+                    name = name.split(':').slice(0, -1).join(':').trim();
+
+                    description = description.trim();
+
+                    let [initializer] = context.style.split(name).slice(1, 2);
+
+                    if (initializer) initializer = initializer.split(/;|}/)[0].replace(':', '').trim();
+
+                    styles.push({
+                        name,
+                        initializer,
+                        description
+                    })
+                })
+        }
+        catch { }
+
+        return styles;
+    })();
+
+    context.lastModified = glob
         .sync(path.join(context.directory, '**/*.*'))
         .reduce((result, file) => {
 
@@ -180,9 +180,9 @@ export const docs = (context) => {
             return result > state.mtime ? result : state.mtime
         }, 0)
 
-    const group = (context.tags.find((tag) => tag.key == 'group') || {}).value || null;
+    context.group = (context.tags.find((tag) => tag.key == 'group') || {}).value || null;
 
-    const main = (group && context.key == group) || !group;
+    context.main = (context.group && context.key == context.group) || !context.group;
 
     // TODO
     json.prefix = context.config.prefix;
@@ -191,16 +191,16 @@ export const docs = (context) => {
         key: context.key,
         tag: context.tag,
         title: context.title,
-        main,
-        group,
-        development,
-        experimental,
+        main: context.main,
+        group: context.group,
+        development: context.development,
+        experimental: context.experimental,
 
         // TODO
         deprecated: false,
 
-        externals,
-        lastModified,
+        externals: context.externals,
+        lastModified: context.lastModified,
 
         // TODO
         tags: [],
@@ -208,15 +208,15 @@ export const docs = (context) => {
         // TODO
         source: context.key,
 
-        description,
-        readme,
+        description: context.description,
+        readme: context.readme,
         properties: context.properties,
-        slots,
+        slots: context.slots,
         events: context.events,
-        styles,
-        parts,
+        styles: context.styles,
+        parts: context.parts,
         methods: context.methods,
-        examples,
+        examples: context.examples,
     })
 
     // TODO

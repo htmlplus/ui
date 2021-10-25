@@ -6,11 +6,13 @@ import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import { customElement } from './transformer/modules/index';
 
+const files = glob.sync('./src/**/*.tsx');
+
 /**
  * @type {import('rollup').RollupOptions}
  */
 const config = {
-  input: glob.sync('./src/**/*.tsx'),
+  input: files,
   output: [
     {
       format: 'es',
@@ -52,7 +54,7 @@ const config = {
               docs: './dist/json/docs.json',
               vscode: './dist/json/html.html-data.json',
               // TODO
-              length: glob.sync('./src/**/*.tsx').length
+              length: files.length
             },
             preprocess: {
               scss: {

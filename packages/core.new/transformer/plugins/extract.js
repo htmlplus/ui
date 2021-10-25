@@ -4,95 +4,11 @@ import t from '@babel/types';
 import Case from 'case';
 import path from 'path';
 import * as CONSTANTS from '../configs/constants.js';
+import { getInitializer, getTags, getType, hasDecorator } from '../utils/index.js';
 
 // TODO
 const generator = babelGenerator.default || babelGenerator;
 const traverse = babelTraverse.default || babelTraverse;
-
-const hasDecorator = (node, name) => {
-
-    if (!node.decorators) return;
-
-    return node.decorators.some((decorator) => decorator.expression.callee.name == name);
-}
-
-const getDescription = (node) => {
-    try {
-        return node.leadingComments[0].value.trim();
-    }
-    catch { }
-}
-
-const getInitializer = (node) => {
-
-    const value = node.value;
-
-    if (!value) return;
-
-    const extra = value.extra || {};
-
-    return extra.raw || value.value;
-}
-
-const getType = (node) => {
-    try {
-        // TODO
-        return node.typeAnnotation.typeAnnotation.type
-    }
-    catch { }
-}
-
-const getTags = (node) => {
-
-    const tags = [];
-
-    const lines = [];
-
-    const comments = node
-        .leadingComments
-        .map((comment) => comment.value)
-        .join('\r\n')
-        .split('\r\n');
-
-    for (const comment of comments) {
-
-        let line = comment.trimLeft();
-
-        if (line.startsWith('*'))
-            line = line.slice(1);
-
-        if (!line) continue;
-
-        const isTag = line.trim().startsWith('@');
-
-        if (isTag || !lines.length)
-            lines.push(line);
-        else
-            lines[lines.length - 1] += line;
-    }
-
-    for (const line of lines) {
-
-        let value = line.trim();
-
-        if (!value.startsWith('@')) {
-
-            tags.push({ value });
-
-            continue;
-        }
-
-        const sections = value.split(' ');
-
-        const key = sections[0].slice(1);
-
-        value = sections.slice(1).join(' ').trim();
-
-        tags.push({ key, value });
-    }
-
-    return tags;
-}
 
 export const extract = (context) => {
 

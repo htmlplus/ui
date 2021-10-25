@@ -1,27 +1,32 @@
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
-import * as CONSTANTS from '../configs/constants.js';
+
+// TODO
+const json = {
+    version: 1.1,
+    tags: [],
+};
 
 export const vscode = (context) => {
 
     if (context.skip) return;
 
-    return;
-
-    const { component } = context;
-
     const readme = (() => {
+
+        if (context.readme) return context.readme;
 
         try {
 
-            const source = path.resolve(dir, 'readme.md');
+            const source = path.resolve(context.directory, 'readme.md');
 
             return fs.readFileSync(source, 'utf8');
         }
         catch { }
     })();
 
-    const description = ((component) => {
+    const description = (() => {
+
+        if (context.description) return context.description;
 
         const content = readme || '';
 
@@ -41,25 +46,26 @@ export const vscode = (context) => {
         return '';
     })();
 
-    const properties = component
+    const properties = context
         .properties
         .map((property) => {
 
-            const { name, description } = property;
+            const attribute = {
+                name: property.attribute,
+                description: property.description,
+            };
 
-            return {
-                name,
-                description,
-            }
+            if (property.values && property.values.length)
+                attribute.values = property
+                    .values
+                    .filter((value) => value.value)
+                    .map((value) => ({ name: value.value }));
+
+            return attribute;
         });
 
-    const json = {
-        version: 1.1,
-        tags: [],
-    }
-
     json.tags.push({
-        name: key,
+        name: context.key,
         description: {
             kind: 'markdown',
             value: description
@@ -68,8 +74,14 @@ export const vscode = (context) => {
         references: [
             {
                 name: 'Source code',
-                url: `https://github.com/htmlplus/core/tree/main/packages/core/src/components/${key}/${key}.tsx`
+                url: `https://github.com/htmlplus/core/tree/main/packages/core/src/components/${context.key}/${context.key}.tsx`
             }
         ]
-    })
+    });
+
+    // TODO
+    if (json.tags.length != context.config.docs.length) return;
+    json.tags = json.tags.sort((a, b) => a.name > b.name ? 1 : -1);
+    fs.ensureDirSync(path.dirname(context.config.docs.vscode));
+    fs.writeJSONSync(context.config.docs.vscode, json, { replacer: null, spaces: 2 });
 }
