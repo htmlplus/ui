@@ -11,30 +11,28 @@ export class Toolbar {
    * TODO
    */
   @Property()
-  disabled?: boolean;
+  gutter?: number;
+
+  /**
+   * TODO
+   */
+  @Property()
+  gutterX?: number;
+
+  /**
+   * TODO
+   */
+  @Property()
+  gutterY?: number;
+
+  /**
+   * TODO
+   */
+  @Property({ reflect: true })
+  wrap?: boolean = true;
 
   @GlobalConfig('toolbar')
   config?;
-
-  /**
-   * External Methods
-   */
-
-  /**
-   * Internal Methods
-   */
-
-  /**
-   * Watchers
-   */
-
-  /**
-   * Events handler
-   */
-
-  /**
-   * Lifecycles
-   */
 
   render() {
     return (

@@ -11,6 +11,8 @@ export const vscode = (context) => {
 
     if (context.skip) return;
 
+    if (!context.config.docs) return;
+
     const readme = (() => {
 
         if (context.readme) return context.readme;

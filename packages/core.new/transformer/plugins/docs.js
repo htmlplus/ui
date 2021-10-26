@@ -185,6 +185,9 @@ export const docs = (context) => {
     context.main = (context.group && context.key == context.group) || !context.group;
 
     // TODO
+    // context.types = 
+
+    // TODO
     json.prefix = context.config.prefix;
 
     json.components.push({
@@ -217,7 +220,7 @@ export const docs = (context) => {
         parts: context.parts,
         methods: context.methods,
         examples: context.examples,
-    })
+    });
 
     // TODO
     if (json.components.length != context.config.docs.length) return;

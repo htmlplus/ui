@@ -1,6 +1,12 @@
+@import 'mixins/boolean';
 @import 'reset';
 @import 'toolbar.variables';
 
 :host {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+:host(#{boolean(wrap)}) {
+  flex-wrap: wrap;
 }

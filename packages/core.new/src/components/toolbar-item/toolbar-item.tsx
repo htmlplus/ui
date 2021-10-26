@@ -4,7 +4,7 @@ import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
  * @development 
  */
 @Component()
-export class ToolbarSpacer {
+export class ToolbarItem {
 
   /**
    * TODO
@@ -12,7 +12,7 @@ export class ToolbarSpacer {
   @Property()
   grow?: number = 1;
 
-  @GlobalConfig('toolbarSpacer')
+  @GlobalConfig('toolbarItem')
   config?;
 
   @Attributes()
@@ -20,5 +20,11 @@ export class ToolbarSpacer {
     return {
       style: `flex-grow: ${this.grow};`
     }
+  }
+
+  render() {
+    return (
+      <slot />
+    )
   }
 }
