@@ -12,7 +12,7 @@
   column-gap: 10px;
   padding: 10px;
   border: solid 1px red;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
 }
 
 :host(#{boolean(wrap)}) {

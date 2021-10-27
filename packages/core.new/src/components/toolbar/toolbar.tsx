@@ -10,19 +10,19 @@ export class Toolbar {
   /**
    * TODO
    */
-  @Property()
+  // @Property()
   gutter?: number;
 
   /**
    * TODO
    */
-  @Property()
+  // @Property()
   gutterX?: number;
 
   /**
    * TODO
    */
-  @Property()
+  // @Property()
   gutterY?: number;
 
   /**

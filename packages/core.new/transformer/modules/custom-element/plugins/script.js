@@ -1,3 +1,4 @@
+import Case from 'case';
 import * as CONSTANTS from '../../../configs/constants.js';
 
 export const script = (context) => {
@@ -14,9 +15,9 @@ export const script = (context) => {
         lines.push('<script lang="ts">');
 
     // TODO
-    lines.push('import { sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');
+    lines.push('import { setAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');
 
-    lines.push('import { attr, get_current_component, onMount, onDestroy } from "svelte/internal";');
+    lines.push('import { get_current_component, onMount, onDestroy } from "svelte/internal";');
 
     lines.push(context.script);
 
@@ -57,33 +58,31 @@ export const script = (context) => {
         const { initializer, name, type } = property;
 
         if (typeof initializer !== 'undefined') {
-
             lines.push(`export let ${name} = ${initializer};`);
         }
         else {
-
             // TODO
             lines.push(`export let ${name} = undefined;`);
         }
 
-        let value;
+        // TODO
+        if (property.reflect)
+            lines.push(`$: setAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${Case.kebab(name)}', ${name});`);
 
         // TODO
         switch (type) {
 
             case 'TSBooleanKeyword':
-                value = `toBoolean(${name})`;
+                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toBoolean(${name});`);
                 break;
 
             case 'TSNumberKeyword':
-                value = `toNumber(${name})`;
+                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toNumber(${name});`);
                 break;
 
             default:
-                value = name;
+                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${name};`);
         }
-
-        lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${value};`);
     });
 
     context.states.forEach((state) => {
@@ -91,11 +90,9 @@ export const script = (context) => {
         const { initializer, name } = state;
 
         if (typeof initializer !== 'undefined') {
-
             lines.push(`let ${name} = ${initializer};`);
         }
         else {
-
             lines.push(`let ${name};`);
         }
 
@@ -103,9 +100,7 @@ export const script = (context) => {
     });
 
     context.methods.forEach((method) => {
-
         const { name } = method;
-
         lines.push(`export const ${name} = ${CONSTANTS.TOKEN_THIS}.${name}.bind(${CONSTANTS.TOKEN_THIS});`);
     });
 
