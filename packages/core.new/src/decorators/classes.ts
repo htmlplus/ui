@@ -94,11 +94,11 @@ const parse = (input, smart?: boolean) => {
 
 export function Classes(smart?: boolean) {
 
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    return function (target: Object, propertyKey: PropertyKey, descriptor: PropertyDescriptor) {
 
-        const fn = descriptor.get.bind(target);
+        const get = descriptor.get.bind(target);
 
-        descriptor.get = () => parse(fn(), smart);
+        descriptor.get = () => parse(get(), smart);
 
         return descriptor;
     }

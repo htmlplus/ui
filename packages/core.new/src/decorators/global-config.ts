@@ -2,13 +2,11 @@ import * as CONSTANTS from '@app/constants';
 
 export function GlobalConfig(namespace: string, initial = {}) {
 
-  return function (instance: {} | any, name: PropertyKey) {
+  return function (target: any, propertyKey: PropertyKey) {
 
-    name;
+    const connected = target.connectedCallback;
 
-    const connected = instance.connectedCallback;
-
-    instance.connectedCallback = function () {
+    target.connectedCallback = function () {
 
       const $host = this.$api?.host();
 
@@ -28,9 +26,7 @@ export function GlobalConfig(namespace: string, initial = {}) {
       if (Object.keys(component.slots || {}).length) {
 
         const handler = {
-          get: (target, property) => {
-
-            target;
+          get: (arg0, property) => {
 
             let value = component.slots[property];
 

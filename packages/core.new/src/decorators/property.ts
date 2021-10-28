@@ -6,38 +6,32 @@ interface Options {
 
 export function Property(options?: Options) {
 
-    return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
         let value;
 
-        const descriptor = {
-            set(input) {
+        const descriptor = Object.getOwnPropertyDescriptor(target, propertyKey) || {};
 
-                if (value === input) return;
+        const set = descriptor.set;
 
-                const prev = value;
+        descriptor.configurable = true;
 
-                value = input;
+        descriptor.get = function () {
+            return value;
+        }
 
-                if (!this.$api?.ready) return;
+        descriptor.set = function (input) {
 
-                this.$api?.property(propertyKey, input);
+            set && set.bind(this)(input);
 
-                for (const watcher of this.$watchers || []) {
+            if (input === value) return;
 
-                    const { key, handler } = watcher;
+            value = input;
 
-                    if (key != propertyKey && key != '*') continue;
+            if (!this.$api?.ready) return;
 
-                    handler.bind(this)(input, prev, propertyKey);
-                }
-            },
-            get() {
-                return value;
-            },
-            enumerable: true,
-            configurable: true,
-        };
+            this.$api?.property(propertyKey, input);
+        }
 
         Object.defineProperty(target, propertyKey, descriptor);
     }

@@ -1,24 +1,31 @@
 export function State() {
 
-    return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
         let value;
 
-        const descriptor = {
-            set(input) {
+        const descriptor = Object.getOwnPropertyDescriptor(target, propertyKey) || {};
 
-                if (value === input) return;
+        const set = descriptor.set;
 
-                value = input;
-                
-                this.$api?.state(propertyKey, input);
-            },
-            get() {
-                return value;
-            },
-            enumerable: true,
-            configurable: true,
-        };
+        descriptor.configurable = true;
+
+        descriptor.get = function () {
+            return value;
+        }
+
+        descriptor.set = function (input) {
+
+            set && set.bind(this)(input);
+
+            if (input === value) return;
+
+            value = input;
+
+            if (!this.$api?.ready) return;
+
+            this.$api?.state(propertyKey, input);
+        }
 
         Object.defineProperty(target, propertyKey, descriptor);
     }

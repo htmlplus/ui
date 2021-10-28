@@ -1,24 +1,21 @@
 export function GlobalState() {
 
-  return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
-      let state;
+        let state;
 
-      const descriptor = {
-          set(input) {
+        const descriptor = {
+            get() {
+                return state;
+            },
+            set(input) {
 
-              if (state) return;
+                if (state) return;
 
-              state = input;
-          },
-          get(this: any) {
+                state = input;
+            },
+        };
 
-              return state;
-          },
-          enumerable: true,
-          configurable: true,
-      };
-
-      Object.defineProperty(target, propertyKey, descriptor);
-  }
+        Object.defineProperty(target, propertyKey, descriptor);
+    }
 }

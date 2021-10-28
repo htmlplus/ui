@@ -1,5 +1,3 @@
 export function Component() {
-    return function (constructor: Function) {
-        constructor;
-    }
+    return function (constructor: Function) { }
 }

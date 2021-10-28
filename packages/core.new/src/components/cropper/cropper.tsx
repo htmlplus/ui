@@ -473,7 +473,12 @@ export class Cropper {
    * Watchers
    */
 
-  @Watch('*')
+  @Watch(
+    'area', 'aspectRatio', 'backdrop', 'background',
+    'disabled', 'guides', 'indicator', 'mode',
+    'resizer', 'resizerShape', 'responsive', 'shape',
+    'src', 'value', 'view', 'zoomable', 'zoomRatio',
+  )
   watcher(next, prev, name) {
 
     if (this.lock) return;
@@ -582,7 +587,7 @@ export class Cropper {
 
   render() {
     return (
-      <div class={this.classes}> 
+      <div class={this.classes}>
         <img class="image" alt="cropper" ref={this.$image} src={this.src} />
       </div>
     )

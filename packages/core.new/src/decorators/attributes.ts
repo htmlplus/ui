@@ -1,7 +1,3 @@
 export function Attributes() {
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-        target;
-        propertyKey;
-        descriptor;
-    }
+    return function (target: Object, propertyKey: PropertyKey, descriptor: PropertyDescriptor) { }
 }

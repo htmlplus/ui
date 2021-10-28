@@ -1,6 +1,6 @@
 export function Slots() {
 
-    return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
         const descriptor = {
             get() {

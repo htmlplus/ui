@@ -21,13 +21,13 @@ export interface EventOptions {
 
 export function Event<T = any>(options: EventOptions = {}) {
 
-    return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
         const descriptor = {
             get() {
                 return (data: T): CustomEvent<T> => {
 
-                    const eventName = options.eventName || propertyKey;
+                    const eventName = options.eventName || String(propertyKey);
 
                     delete options.eventName;
 
@@ -46,8 +46,6 @@ export function Event<T = any>(options: EventOptions = {}) {
                     return event;
                 }
             },
-            enumerable: true,
-            configurable: true,
         };
 
         Object.defineProperty(target, propertyKey, descriptor);

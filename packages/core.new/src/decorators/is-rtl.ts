@@ -1,8 +1,9 @@
 export function IsRTL() {
 
-    return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
         const descriptor = {
+            configurable: true,
             get() {
 
                 const $host = this.$api?.host();
@@ -13,8 +14,6 @@ export function IsRTL() {
 
                 return isLTR;
             },
-            enumerable: true,
-            configurable: true,
         };
 
         Object.defineProperty(target, propertyKey, descriptor);

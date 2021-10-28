@@ -1,12 +1,12 @@
 export function Styles() {
 
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    return function (target: Object, propertyKey: PropertyKey, descriptor: PropertyDescriptor) {
 
-        const fn = descriptor.get.bind(target);
+        const get = descriptor.get.bind(target);
 
         descriptor.get = function () {
 
-            const input: any = fn();
+            const input: any = get();
 
             if (typeof input == 'undefined') return input;
 

@@ -65,7 +65,7 @@ export function Media(query: string) {
             .sort((a, b) => a.value - b.value);
     }
 
-    return function (target: any, propertyKey: string) {
+    return function (target: any, propertyKey: PropertyKey) {
 
         let media;
 

@@ -1,6 +1,6 @@
 export function Direction() {
 
-    return function (target: Object, propertyKey: string) {
+    return function (target: Object, propertyKey: PropertyKey) {
 
         const descriptor = {
             get() {
@@ -11,8 +11,6 @@ export function Direction() {
 
                 return direction.toLowerCase();
             },
-            enumerable: true,
-            configurable: true,
         };
 
         Object.defineProperty(target, propertyKey, descriptor);

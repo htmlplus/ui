@@ -1,31 +1,28 @@
 export function Bind() {
 
-  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    return function (target: any, propertyKey: PropertyKey, descriptor: PropertyDescriptor) {
 
-    target;
+        if (!descriptor || (typeof descriptor.value !== 'function'))
+            throw new TypeError(`Only methods can be decorated with @bind. <${String(propertyKey)}> is not a method!`);
 
-    if (!descriptor || (typeof descriptor.value !== 'function')) {
-      throw new TypeError(`Only methods can be decorated with @bind. <${propertyKey}> is not a method!`);
-    }
-
-    return {
-      configurable: true,
-      get(this) {
-
-        const bound = descriptor.value!.bind(this);
-
-        Object.defineProperty(
-          this,
-          propertyKey,
-          {
-            value: bound,
+        return {
             configurable: true,
-            writable: true
-          }
-        )
+            get() {
 
-        return bound;
-      }
+                const bound = descriptor.value!.bind(this);
+
+                Object.defineProperty(
+                    this,
+                    propertyKey,
+                    {
+                        value: bound,
+                        configurable: true,
+                        writable: true
+                    }
+                )
+
+                return bound;
+            }
+        }
     }
-  }
 }
