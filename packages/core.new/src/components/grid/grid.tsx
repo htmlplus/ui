@@ -226,22 +226,33 @@ export class Grid {
   })
   config?;
 
+  // TODO: auto keys detect
   get attributes() {
 
-    const result: any = {};
+    const result = {};
 
-    for (var property in this) {
+    const keys = [
+      'alignContent', 'alignContentXs', 'alignContentSm', 'alignContentMd',
+      'alignContentLg', 'alignContentXl', 'alignContentXxl', 'alignItems',
+      'alignItemsXs', 'alignItemsSm', 'alignItemsMd', 'alignItemsLg',
+      'alignItemsXl', 'alignItemsXxl', 'gutter', 'gutterX', 'gutterY',
+      'justifyContent', 'justifyContentXs', 'justifyContentSm',
+      'justifyContentMd', 'justifyContentLg', 'justifyContentXl',
+      'justifyContentXxl', 'reverse', 'vertical', 'wrap', 'wrapXs', 'wrapSm',
+      'wrapMd', 'wrapLg', 'wrapXl', 'wrapXxl',
+    ];
 
-      // TODO
-      const key = property.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    for (const key of keys) {
 
-      result[key] = this[property];
+      const name = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+
+      result[name] = this[key];
     }
 
     return result;
   }
 
-  render() {
+  render() { 
     return (
       <div {...this.attributes}>
         <slot />

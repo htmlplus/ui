@@ -60,4 +60,7 @@ export const component = async (context) => {
     })(js.code);
 
     context.code = js.code;
+
+    // TODO: disabled unused css selector in svelte
+    context.code = context.code.replace(/<style>.*<\/style>/, context.style);
 }

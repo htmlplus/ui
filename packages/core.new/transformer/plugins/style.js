@@ -17,6 +17,7 @@ export const style = (context) => {
 
     const { css, stats } = sass.renderSync({
         file: context.stylePath,
+        outputStyle:'compressed',
         ...options,
     });
 
