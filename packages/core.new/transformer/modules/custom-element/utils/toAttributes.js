@@ -1,65 +1,83 @@
+const getName = (key) => key.substr(2).toLowerCase();
+
+const isEvent = (key) => key.match(/on[A-Z]\w+/g);
+
 export const toAttributes = (node, attributes = {}) => {
 
-    const keys = Object.keys(attributes);
+    const events = {};
 
-    // TODO
-    const isEvent = (key) => {
-        return key.indexOf('on') === 0 && key[2] === key[2].toUpperCase();
-    }
-
-    const getName = (key) => key.substr(2).toLowerCase();
-
-    const events = (key) => isEvent(key);
-    const others = (key) => !isEvent(key);
-
-    // TODO 
-    // const apply = (key) => node[key] = attributes[key];
-    const apply = (key) => {
-
-        console.log(123, key)
-
-        const value = attributes[key];
-
-        if (typeof value === 'undefined') return;
-
-        return node.setAttribute(key, value);
-    }
-
-    const setup = (key) => {
+    const bind = (key, handler) => {
 
         const name = getName(key);
 
-        const handler = attributes[key];
+        node.addEventListener(name, handler);
 
-        return node.addEventListener(name, handler);
-    }
-
-    const teardown = (key) => {
-
-        const name = getName(key);
-
-        const handler = attributes[key];
-
-        return node.removeEventListener(name, handler);
-    }
-
-    const update = (attrs) => {
-
-        const keys = Object.keys(attrs);
-
-        keys.filter(events).map(teardown);
-
-        keys.filter(events).map(setup);
-
-        keys.filter(others).map(apply);
+        events[key] = handler;
     }
 
     const destroy = () => {
-        keys.filter(events).map(teardown)
+        Object.keys(events).forEach((key) => unbind(key));
     }
 
-    keys.filter(events).map(setup);
-    keys.filter(others).map(apply);
+    const unbind = (key) => {
+
+        const name = getName(key);
+
+        const handler = events[key];
+
+        node.removeEventListener(name, handler);
+
+        delete events[key];
+    }
+
+    const update = (attributes) => {
+
+        Object.keys(events).forEach((key) => unbind(key));
+
+        const keys = Object.keys(attributes);
+
+        node.getAttributeNames()
+            .filter((key) => !keys.includes(key))
+            .forEach((key) => node.removeAttribute(key));
+
+        keys.forEach((key) => {
+
+            const value = attributes[key];
+
+            const isUndefined = (typeof value === 'undefined');
+
+            if (isEvent(key))
+                return bind(key, value);
+
+            if (node.hasAttribute(key)) {
+
+                if (node.getAttribute(key) === value) return;
+
+                if (isUndefined)
+                    node.removeAttribute(key);
+                else
+                    node.setAttribute(key, value);
+
+                return;
+            }
+
+            if (!isUndefined)
+                node.setAttribute(key, value);
+        })
+    }
+
+    Object.keys(attributes)
+        .forEach((key) => {
+
+            const value = attributes[key];
+
+            if (isEvent(key))
+                return bind(key, value);
+
+            if (typeof value === 'undefined') return;
+
+            node.setAttribute(key, value);
+        });
 
     return {
         update,
