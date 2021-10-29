@@ -5,11 +5,6 @@ const isEvent = (key) => key.match(/on[A-Z]\w+/g);
 // TODO: next
 export const sync = (node, prev) => (next = {}) => {
 
-
-    /**
-     * class
-     */
-
     const prevClass = (prev.class || '').split(' ');
     const nextClass = (next.class || '').split(' ');
 
@@ -25,15 +20,9 @@ export const sync = (node, prev) => (next = {}) => {
     else
         node.removeAttribute('class');
 
-    /**
-     * style
-     */
     if (prev.style || next.style)
         node.setAttribute('style', next.style || '');
 
-    /**
-     * remove prev events
-     */
     for (const key in prev) {
 
         const value = prev[key];
@@ -45,9 +34,6 @@ export const sync = (node, prev) => (next = {}) => {
         node.removeEventListener(name, value);
     }
 
-    /**
-     * attributes and events
-     */
     for (const key in next) {
 
         const value = next[key];
