@@ -29,7 +29,8 @@ export const docs = (context) => {
 
         if (!fs.existsSync(source)) return items;
 
-        return fs.readdirSync(source)
+        return fs
+            .readdirSync(source)
             .filter((file) => file.endsWith('.md'))
             .map((file) => {
 
@@ -77,7 +78,7 @@ export const docs = (context) => {
 
         try {
 
-            const source = path.resolve(context.directory, 'readme.md');
+            const source = path.resolve(context.directory, `${context.key}.md`);
 
             return fs.readFileSync(source, 'utf8');
         }
@@ -144,7 +145,8 @@ export const docs = (context) => {
 
         try {
 
-            fs.readFileSync(context.stylePath, 'utf8')
+            fs
+                .readFileSync(context.stylePath, 'utf8')
                 .split('@prop')
                 .slice(1)
                 .map((section) => {
@@ -185,7 +187,9 @@ export const docs = (context) => {
     context.main = (context.group && context.key == context.group) || !context.group;
 
     // TODO
-    // context.types = 
+    context.types = (() => {
+        return [];
+    })();
 
     // TODO
     json.prefix = context.config.prefix;

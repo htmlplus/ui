@@ -65,30 +65,25 @@ export const extract = (context) => {
         }
     });
 
-    const directory = path.dirname(context.filename);
+    context.directory = path.dirname(context.filename);
 
-    const name = component.id.name;
+    context.name = component.id.name;
 
-    const key = Case.kebab(name);
+    context.key = Case.kebab(context.name);
 
-    const tag = `${context.config.prefix}-${key}`;
+    context.tag = `${context.config.prefix}-${context.key}`;
 
-    const tags = getTags(component);
+    context.tags = getTags(component);
 
-    const title = Case.capital(key);
+    context.title = Case.capital(context.key);
 
-    const attributes = children
+    context.attributes = children
         .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_ATTRIBUTES))
-        .map((property) => {
+        .map((property) => ({
+            name: property.key.name
+        }));
 
-            const name = property.key.name;
-
-            return {
-                name,
-            }
-        });
-
-    const properties = children
+    context.properties = children
         .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
         .map((property) => {
 
@@ -162,7 +157,7 @@ export const extract = (context) => {
             }
         });
 
-    const events = children
+    context.events = children
         .filter((event) => hasDecorator(event, CONSTANTS.TOKEN_DECORATOR_EVENT))
         .map((event) => {
 
@@ -208,13 +203,13 @@ export const extract = (context) => {
             }
         });
 
-    const slots = children
+    context.slots = children
         .filter((slot) => hasDecorator(slot, CONSTANTS.TOKEN_DECORATOR_SLOTS))
         .map((slot) => ({
             name: slot.key.name
         }));
 
-    const states = children
+    context.states = children
         .filter((state) => hasDecorator(state, CONSTANTS.TOKEN_DECORATOR_STATE))
         .map((state) => {
 
@@ -231,7 +226,7 @@ export const extract = (context) => {
             }
         });
 
-    const methods = children
+    context.methods = children
         .filter((method) => hasDecorator(method, CONSTANTS.TOKEN_DECORATOR_METHOD))
         .map((method) => {
 
@@ -271,36 +266,20 @@ export const extract = (context) => {
             }
         });
 
-    const hasMount = children
+    context.hasMount = children
         .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_MOUNT);
 
-    const hasUnmount = children
+    context.hasUnmount = children
         .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT);
 
     additions.forEach((path) => path.remove());
 
-    const script = generator(context.ast, {
+    context.script = generator(context.ast, {
         comments: false,
         decoratorsBeforeExport: true,
     }).code;
 
-    context.attributes = attributes;
-    context.directory = directory;
-    context.name = name;
-    context.key = key;
-    context.tag = tag;
-    context.title = title;
-    context.events = events;
-    context.methods = methods;
-    context.properties = properties;
-    context.slots = slots;
-    context.states = states;
-    context.hasMount = hasMount;
-    context.hasUnmount = hasUnmount;
-    context.tags = tags;
-    context.script = script;
-
     // TODO
     context.render = render;
-    context.stylePath = path.join(directory, `${key}.scss`);
+    context.stylePath = path.join(context.directory, `${context.key}.scss`);
 }

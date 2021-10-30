@@ -19,7 +19,7 @@ export const vscode = (context) => {
 
         try {
 
-            const source = path.resolve(context.directory, 'readme.md');
+            const source = path.resolve(context.directory, `${context.key}.md`);
 
             return fs.readFileSync(source, 'utf8');
         }
