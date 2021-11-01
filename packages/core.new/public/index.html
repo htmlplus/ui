@@ -7,12 +7,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script type="module" src="build/bundle.js"></script>
   <style>
+    plus-grid {
+      background-color: #EEEEEE;
+      height: 8rem;
+    }
 
+    plus-grid div {
+      color: #00BCD4;
+      border: 1px solid #FFFFFF;
+      background-color: #E0F7FA;
+      padding: 0.5em;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
-
+  <plus-grid align-items="center">
+    <plus-grid-item xs="6">
+      <div>
+        Item
+      </div>
+    </plus-grid-item>
+    <plus-grid-item xs="3">
+      <div>
+        Item
+      </div>
+    </plus-grid-item>
+    <plus-grid-item xs="3">
+      <div>
+        Item
+      </div>
+    </plus-grid-item>
+    <plus-grid-item xs="3">
+      <div>
+        Item
+      </div>
+    </plus-grid-item>
+    <plus-grid-item xs="3">
+      <div>
+        Item
+      </div>
+    </plus-grid-item>
+    <plus-grid-item xs="grow">
+      <div>
+        Item
+      </div>
+    </plus-grid-item>
+  </plus-grid>
+  <!-- <plus-toolbar id="toolbar">
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+    <button>Button 4</button>
+    <button>Button 5</button>
+    <button>Button 6</button>
+  </plus-toolbar>
+  <script>
+    var element = document.querySelector('#toolbar');
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        console.log("changed", mutation)
+      });
+    });
+    observer.observe(element, {
+      attributes: true
+    });
+  </script> -->
 </body>
 
 </html>

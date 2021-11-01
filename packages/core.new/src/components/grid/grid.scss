@@ -1,6 +1,5 @@
-@import 'mixins/boolean';
-@import 'mixins/breakpoints';
-@import 'variables/breakpoints';
+@import 'mixins';
+@import 'variables';
 @import 'grid.variables';
 
 :host {
