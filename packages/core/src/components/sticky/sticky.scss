@@ -18,9 +18,10 @@
   z-index: var(--plus-sticky-z-index);
 }
 
-:host(#{boolean(disabled)}) {
-  position: initial;
-}
+// TODO
+// :host(#{boolean(disabled)}) {
+//   position: initial;
+// }
 
 .sizer-wrapper {
   position: relative;
@@ -31,4 +32,10 @@
 .sizer {
   top: calc((var(--plus-sticky-top) + 1px) * -1);
   position: absolute;
+}
+
+// TODO
+:host([state=normal]) .sticky,
+:host([state=sticky]) .normal {
+  display: none;
 }

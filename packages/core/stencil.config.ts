@@ -34,10 +34,6 @@ export const config: Config = {
     sass({
       includePaths: [
         'src/styles'
-      ],
-      injectGlobalPaths: [
-        'src/styles/mixins/index.scss',
-        'src/styles/variables/index.scss'
       ]
     })
   ],

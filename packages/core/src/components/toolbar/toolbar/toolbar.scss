@@ -1,6 +1,20 @@
+@import 'mixins';
 @import 'reset';
 @import 'toolbar.variables';
 
 :host {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  // TODO
+  row-gap: 10px;
+  column-gap: 10px;
+  padding: 10px;
+  border: solid 1px red;
+  // flex-wrap: wrap;
+}
+
+:host(#{boolean(wrap)}) {
+  flex-wrap: wrap;
 }

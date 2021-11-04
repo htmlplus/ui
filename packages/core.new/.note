@@ -1,5 +1,7 @@
 .\node_modules\.bin\cypress.cmd install
 
+'./src/**/+(grid|grid-item).tsx',
+
 "declaration": true,
 "declarationDir": "dist/esm/types",
 "rootDir": "src",

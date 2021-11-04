@@ -2,4 +2,9 @@
 
 :host {
   display: block;
+  flex-wrap: nowrap;
+}
+
+::slotted(*) {
+  width: 100%;
 }
