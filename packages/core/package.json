@@ -22,7 +22,7 @@
     "prepare": "npm run clean && npm run build"
   },
   "dependencies": {
-    "@stencil/core": "^2.5.2"
+    "@stencil/core": "^2.10.0"
   },
   "devDependencies": {
     "@popperjs/core": "^2.9.1",

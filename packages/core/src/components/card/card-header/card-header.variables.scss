@@ -1,5 +1,7 @@
+@use 'sass:math';
+
 $card-header-background-color: rgba(#000, 0.03)  !default;
 $card-header-border-color    : rgba(#000, 0.125) !default;
 $card-header-border-width    : $border-width       !default;
 $card-header-padding-x       : $spacer             !default;
-$card-header-padding-y       : $spacer / 2         !default;
+$card-header-padding-y       : math.div($spacer, 2)!default;
