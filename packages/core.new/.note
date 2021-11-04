@@ -1,5 +1,9 @@
 .\node_modules\.bin\cypress.cmd install
 
+"declaration": true,
+"declarationDir": "dist/esm/types",
+"rootDir": "src",
+
 prop => default: initializer
 style => default: initializer
 

@@ -1,14 +1,108 @@
 import babelGenerator from '@babel/generator';
+import { parse } from '@babel/parser';
 import babelTraverse from '@babel/traverse';
 import t from '@babel/types';
 import Case from 'case';
-import path from 'path';
+import fs from 'fs-extra';
+import path, { dirname, resolve } from 'path';
 import * as CONSTANTS from '../configs/constants.js';
-import { getInitializer, getTags, getType, hasDecorator } from '../utils/index.js';
+import { getInitializer, getTags, hasDecorator } from '../utils/index.js';
 
 // TODO
 const generator = babelGenerator.default || babelGenerator;
 const traverse = babelTraverse.default || babelTraverse;
+
+// TODO
+const getType = (file, node, { directory }) => {
+
+    if (node.type != 'TSTypeReference') return node;
+
+    let result;
+
+    traverse(file, {
+        ClassDeclaration(path) {
+
+            if (path.node.id.name != node.typeName.name) return;
+
+            result = path.node;
+
+            path.stop();
+        },
+        ImportDeclaration(path) {
+
+            for (const specifier of path.node.specifiers) {
+
+                const alias = specifier.local.name;
+
+                if (alias != node.typeName.name) continue;
+
+                let key;
+
+                switch (specifier.type) {
+
+                    case 'ImportNamespaceSpecifier':
+                        key = '*';
+                        break;
+
+                    case 'ImportDefaultSpecifier':
+                        key = 'default';
+                        break;
+
+                    case 'ImportSpecifier':
+                        key = specifier.imported.name;
+                        break;
+                }
+
+                try {
+
+                    const filename = resolve(directory, path.node.source.value + '.ts');
+
+                    path.$ast = path.$ast || parse(
+                        fs.readFileSync(filename, 'utf8'),
+                        {
+                            allowImportExportEverywhere: true,
+                            plugins: [
+                                'typescript'
+                            ],
+                            ranges: false,
+                        }
+                    );
+
+                    result = getType(
+                        path.$ast,
+                        node,
+                        {
+                            directory: dirname(filename),
+                        }
+                    );
+                }
+                catch { }
+
+                path.stop();
+
+                break;
+            }
+        },
+        TSInterfaceDeclaration(path) {
+
+            if (path.node.id.name != node.typeName.name) return;
+
+            result = path.node;
+
+            path.stop();
+        },
+        TSTypeAliasDeclaration(path) {
+
+            if (path.node.id.name != node.typeName.name) return;
+
+            result = path.node;
+
+            path.stop();
+        },
+    });
+
+    return result || node;
+};
 
 export const extract = (context) => {
 
@@ -116,7 +210,14 @@ export const extract = (context) => {
 
             const required = !property.optional;
 
-            const type = getType(property);
+            // TODO
+            const type = getType(
+                context.ast,
+                property.typeAnnotation.typeAnnotation,
+                {
+                    directory: context.directory,
+                }
+            ).type;
 
             const experimental = tags.some((tag) => tag.key == 'experimental');
 
@@ -217,7 +318,14 @@ export const extract = (context) => {
 
             const initializer = getInitializer(state);
 
-            const type = getType(state);
+            // TODO
+            const type = getType(
+                context.ast,
+                state.typeAnnotation.typeAnnotation,
+                {
+                    directory: context.directory,
+                }
+            ).type;
 
             return {
                 name,
