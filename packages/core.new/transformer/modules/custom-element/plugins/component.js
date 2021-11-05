@@ -19,7 +19,7 @@ export const component = (config) => {
         if (!config.dev) {
             source = (await svelte.preprocess(
                 source,
-                preprocess({ sass: config.sass }),
+                preprocess({ scss: config.scss }),
                 {
                     filename: context.filename,
                 }
@@ -47,14 +47,14 @@ export const component = (config) => {
             result += ' class extends '
             result += textMiddle;
             result += ` {
-            static get observedAttributes() {
-                return (super.observedAttributes || []).map(attr => attr.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase());
-            }
-            attributeChangedCallback(attrName, oldValue, newValue) {
-                attrName = attrName.replace(/-([a-z])/g, (_, up) => up.toUpperCase());
-                super.attributeChangedCallback(attrName, oldValue, newValue);
-            }
-        } `;
+                static get observedAttributes() {
+                    return (super.observedAttributes || []).map(attr => attr.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase());
+                }
+                attributeChangedCallback(attrName, oldValue, newValue) {
+                    attrName = attrName.replace(/-([a-z])/g, (_, up) => up.toUpperCase());
+                    super.attributeChangedCallback(attrName, oldValue, newValue);
+                }
+            } `;
             result += textEnd;
 
             return result;

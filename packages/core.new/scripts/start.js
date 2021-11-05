@@ -29,11 +29,13 @@ esbuild
 		plugins: [
 			{
 				name: 'htmlplus',
-				setup(build) {
+				async setup(build) {
+
+					const compiler = await customElement(config);
 
 					build.onLoad({ filter: /\.tsx$/ }, async (args) => {
 
-						const { code, dependencies } = await customElement(args.path, config);
+						const { code, dependencies } = await compiler.next(args.path);
 
 						return {
 							contents: code,

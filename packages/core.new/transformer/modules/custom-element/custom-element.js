@@ -22,11 +22,10 @@ export const customElement = async (config) => {
 
     const instances = await Promise.all(tasks.map((task) => task(config)));
 
-    const build = async (filename) => {
+    const next = async (filename) => {
 
         const context = {
-            filename,
-            config,
+            filename
         };
 
         await Promise.all(instances.map((instance) => instance.next(context)));
@@ -39,7 +38,7 @@ export const customElement = async (config) => {
     }
 
     return {
-        build,
+        next,
         finish,
     }
 }

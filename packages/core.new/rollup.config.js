@@ -56,7 +56,7 @@ const config = {
 
         if (!id.endsWith('.tsx')) return null;
 
-        const { code } = await compiler.build(id);
+        const { code } = await compiler.next(id);
 
         return code;
       },
