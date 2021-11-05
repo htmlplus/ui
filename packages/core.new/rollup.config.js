@@ -6,13 +6,13 @@ import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import { customElement } from './transformer/modules/index';
 
-const files = glob.sync('./src/**/*.tsx');
+let compiler;
 
 /**
  * @type {import('rollup').RollupOptions}
  */
 const config = {
-  input: files,
+  input: glob.sync('./src/**/*.tsx'),
   output: [
     {
       format: 'es',
@@ -41,30 +41,27 @@ const config = {
   plugins: [
     {
       name: 'htmlplus',
+      async buildStart() {
+        compiler = await customElement({
+          dev: false,
+          prefix: 'plus',
+          docs: './dist/json/docs.json',
+          vscode: './dist/json/html.html-data.json',
+          scss: {
+            includePaths: ['./src/styles'],
+          },
+        });
+      },
       async load(id) {
 
         if (!id.endsWith('.tsx')) return null;
 
-        const { code } = await customElement(
-          id,
-          {
-            dev: false,
-            prefix: 'plus',
-            docs: {
-              docs: './dist/json/docs.json',
-              vscode: './dist/json/html.html-data.json',
-              // TODO
-              length: files.length
-            },
-            preprocess: {
-              scss: {
-                includePaths: ['./src/styles'],
-              },
-            },
-          }
-        );
+        const { code } = await compiler.build(id);
 
         return code;
+      },
+      async buildEnd() {
+        await compiler.finish();
       }
     },
 

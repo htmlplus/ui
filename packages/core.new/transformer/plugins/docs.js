@@ -3,232 +3,239 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import path from 'path';
 
-// TODO
-const json = {
-    prefix: undefined,
-    components: []
-};
+export const docs = (config) => {
 
-export const docs = (context) => {
+    const json = {
+        prefix: config.prefix,
+        components: []
+    };
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    if (!context.config.docs) return;
+        if (context.skip) return;
 
-    context.development = context.tags.some((tag) => tag.key == 'development');
+        if (!config.docs) return;
 
-    context.experimental = context.tags.some((tag) => tag.key == 'experimental');
+        context.development = context.tags.some((tag) => tag.key == 'development');
 
-    context.externals = fs.existsSync(path.resolve(context.directory, 'externals'));
+        context.experimental = context.tags.some((tag) => tag.key == 'experimental');
 
-    context.examples = (() => {
+        context.externals = fs.existsSync(path.resolve(context.directory, 'externals'));
 
-        const items = [];
+        context.examples = (() => {
 
-        const source = path.join(context.directory, 'examples');
+            const items = [];
 
-        if (!fs.existsSync(source)) return items;
+            const source = path.join(context.directory, 'examples');
 
-        return fs
-            .readdirSync(source)
-            .filter((file) => file.endsWith('.md'))
-            .map((file) => {
+            if (!fs.existsSync(source)) return items;
 
-                const item = {};
+            return fs
+                .readdirSync(source)
+                .filter((file) => file.endsWith('.md'))
+                .map((file) => {
 
-                const regex = /```\w+\s\[\w+(:\w+)?\]\s[\S\s]*?```/g;
+                    const item = {};
 
-                const filePath = path.join(source, file);
+                    const regex = /```\w+\s\[\w+(:\w+)?\]\s[\S\s]*?```/g;
 
-                const content = fs.readFileSync(filePath, 'utf8');
+                    const filePath = path.join(source, file);
 
-                item.key = path.basename(filePath).replace('.md', '');
+                    const content = fs.readFileSync(filePath, 'utf8');
 
-                item.title = Case.capital(item.key);
+                    item.key = path.basename(filePath).replace('.md', '');
 
-                item.readme = content.replace(regex, '').trim();
+                    item.title = Case.capital(item.key);
 
-                item.codes = (content.match(regex) || [])
+                    item.readme = content.replace(regex, '').trim();
+
+                    item.codes = (content.match(regex) || [])
+                        .map((section) => {
+
+                            try {
+
+                                const lines = section.split('\n');
+
+                                const key = ((lines[0].match(/\[\w+(:\w+)?\]/) || []).shift() || '').replace('[', '').replace(']', '');
+
+                                const type = ((lines[0].match(/```\w+/) || []).pop() || '').replace('```', '');
+
+                                const value = lines.slice(1, -1).join('\n');
+
+                                return {
+                                    key,
+                                    type,
+                                    value
+                                }
+                            }
+                            catch { }
+                        });
+
+                    return item;
+                })
+        })();
+
+        context.readme = (() => {
+
+            try {
+
+                const source = path.resolve(context.directory, `${context.key}.md`);
+
+                return fs.readFileSync(source, 'utf8');
+            }
+            catch { }
+        })();
+
+        context.description = (() => {
+
+            const content = context.readme || '';
+
+            if (!content.startsWith('# ')) return '';
+
+            const sections = content.split('\n');
+
+            for (let i = 1; i < sections.length; i++) {
+
+                const section = sections[i].trim();
+
+                if (!section) continue;
+
+                return section;
+            }
+
+            return '';
+        })();
+
+        context.parts = context
+            .tags
+            .filter((tag) => tag.key == 'part')
+            .map((tag) => {
+
+                const sections = tag.value.split('-');
+
+                const name = sections[0].trim();
+
+                const description = sections.slice(1).join('-').trim();
+
+                return {
+                    name,
+                    description,
+                }
+            });
+
+        context.slots = context
+            .tags
+            .filter((tag) => tag.key == 'slot')
+            .map((tag) => {
+
+                const sections = tag.value.split('-');
+
+                const name = sections[0].trim();
+
+                const description = sections.slice(1).join('-').trim();
+
+                return {
+                    name,
+                    description,
+                }
+            });
+
+        context.styles = (() => {
+
+            const styles = [];
+
+            try {
+
+                fs
+                    .readFileSync(context.stylePath, 'utf8')
+                    .split('@prop')
+                    .slice(1)
                     .map((section) => {
 
-                        try {
+                        let [description, name] = section.split(/\n/);
 
-                            const lines = section.split('\n');
+                        name = name.split(':').slice(0, -1).join(':').trim();
 
-                            const key = ((lines[0].match(/\[\w+(:\w+)?\]/) || []).shift() || '').replace('[', '').replace(']', '');
+                        description = description.trim();
 
-                            const type = ((lines[0].match(/```\w+/) || []).pop() || '').replace('```', '');
+                        let [initializer] = context.style.split(name).slice(1, 2);
 
-                            const value = lines.slice(1, -1).join('\n');
+                        if (initializer) initializer = initializer.split(/;|}/)[0].replace(':', '').trim();
 
-                            return {
-                                key,
-                                type,
-                                value
-                            }
-                        }
-                        catch { }
-                    });
-
-                return item;
-            })
-    })();
-
-    context.readme = (() => {
-
-        try {
-
-            const source = path.resolve(context.directory, `${context.key}.md`);
-
-            return fs.readFileSync(source, 'utf8');
-        }
-        catch { }
-    })();
-
-    context.description = (() => {
-
-        const content = context.readme || '';
-
-        if (!content.startsWith('# ')) return '';
-
-        const sections = content.split('\n');
-
-        for (let i = 1; i < sections.length; i++) {
-
-            const section = sections[i].trim();
-
-            if (!section) continue;
-
-            return section;
-        }
-
-        return '';
-    })();
-
-    context.parts = context
-        .tags
-        .filter((tag) => tag.key == 'part')
-        .map((tag) => {
-
-            const sections = tag.value.split('-');
-
-            const name = sections[0].trim();
-
-            const description = sections.slice(1).join('-').trim();
-
-            return {
-                name,
-                description,
-            }
-        });
-
-    context.slots = context
-        .tags
-        .filter((tag) => tag.key == 'slot')
-        .map((tag) => {
-
-            const sections = tag.value.split('-');
-
-            const name = sections[0].trim();
-
-            const description = sections.slice(1).join('-').trim();
-
-            return {
-                name,
-                description,
-            }
-        });
-
-    context.styles = (() => {
-
-        const styles = [];
-
-        try {
-
-            fs
-                .readFileSync(context.stylePath, 'utf8')
-                .split('@prop')
-                .slice(1)
-                .map((section) => {
-
-                    let [description, name] = section.split(/\n/);
-
-                    name = name.split(':').slice(0, -1).join(':').trim();
-
-                    description = description.trim();
-
-                    let [initializer] = context.style.split(name).slice(1, 2);
-
-                    if (initializer) initializer = initializer.split(/;|}/)[0].replace(':', '').trim();
-
-                    styles.push({
-                        name,
-                        initializer,
-                        description
+                        styles.push({
+                            name,
+                            initializer,
+                            description
+                        })
                     })
-                })
-        }
-        catch { }
+            }
+            catch { }
 
-        return styles;
-    })();
+            return styles;
+        })();
 
-    context.lastModified = glob
-        .sync(path.join(context.directory, '**/*.*'))
-        .reduce((result, file) => {
+        context.lastModified = glob
+            .sync(path.join(context.directory, '**/*.*'))
+            .reduce((result, file) => {
 
-            const state = fs.statSync(file);
+                const state = fs.statSync(file);
 
-            return result > state.mtime ? result : state.mtime
-        }, 0)
+                return result > state.mtime ? result : state.mtime
+            }, 0)
 
-    context.group = (context.tags.find((tag) => tag.key == 'group') || {}).value || null;
+        context.group = (context.tags.find((tag) => tag.key == 'group') || {}).value || null;
 
-    context.main = (context.group && context.key == context.group) || !context.group;
-
-    // TODO
-    context.types = (() => {
-        return [];
-    })();
-
-    // TODO
-    json.prefix = context.config.prefix;
-
-    json.components.push({
-        key: context.key,
-        tag: context.tag,
-        title: context.title,
-        main: context.main,
-        group: context.group,
-        development: context.development,
-        experimental: context.experimental,
+        context.main = (context.group && context.key == context.group) || !context.group;
 
         // TODO
-        deprecated: false,
+        context.types = (() => {
+            return [];
+        })();
 
-        externals: context.externals,
-        lastModified: context.lastModified,
+        json.components.push({
+            key: context.key,
+            tag: context.tag,
+            title: context.title,
+            main: context.main,
+            group: context.group,
+            development: context.development,
+            experimental: context.experimental,
 
-        // TODO
-        tags: [],
+            // TODO
+            deprecated: false,
 
-        // TODO
-        source: context.key,
+            externals: context.externals,
+            lastModified: context.lastModified,
 
-        description: context.description,
-        readme: context.readme,
-        properties: context.properties,
-        slots: context.slots,
-        events: context.events,
-        styles: context.styles,
-        parts: context.parts,
-        methods: context.methods,
-        examples: context.examples,
-    });
+            // TODO
+            tags: [],
 
-    // TODO
-    if (json.components.length != context.config.docs.length) return;
-    json.components = json.components.sort((a, b) => a.key > b.key ? 1 : -1);
-    fs.ensureDirSync(path.dirname(context.config.docs.docs));
-    fs.writeJSONSync(context.config.docs.docs, json, { replacer: null, spaces: 2 });
+            // TODO
+            source: context.key,
+
+            description: context.description,
+            readme: context.readme,
+            properties: context.properties,
+            slots: context.slots,
+            events: context.events,
+            styles: context.styles,
+            parts: context.parts,
+            methods: context.methods,
+            examples: context.examples,
+        });
+    }
+
+    const finish = () => {
+
+        json.components = json.components.sort((a, b) => a.key > b.key ? 1 : -1);
+
+        fs.ensureDirSync(path.dirname(config.docs));
+
+        fs.writeJSONSync(config.docs, json, { replacer: null, spaces: 2 });
+    }
+
+    return {
+        next,
+        finish,
+    }
 }

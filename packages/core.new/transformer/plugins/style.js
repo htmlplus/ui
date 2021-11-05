@@ -1,27 +1,32 @@
 import sass from 'sass';
 
-export const style = (context) => {
+export const style = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    if (!context.stylePath) return;
+        if (context.skip) return;
 
-    const options = (() => {
-        try {
-            return context.config.preprocess.scss || {};
-        }
-        catch {
-            return {};
-        }
-    })();
+        if (!context.stylePath) return;
 
-    const { css, stats } = sass.renderSync({
-        file: context.stylePath,
-        outputStyle: 'compressed',
-        ...options,
-    });
+        const options = config.scss || {};
 
-    context.style = css.toString();
+        const { css, stats } = sass.renderSync({
+            file: context.stylePath,
+            outputStyle: 'compressed',
+            ...options,
+        });
 
-    context.dependencies = stats.includedFiles;
-};
+        context.style = css.toString();
+
+        context.dependencies = stats.includedFiles;
+    }
+
+    const finish = () => {
+
+    }
+
+    return {
+        next,
+        finish,
+    }
+}

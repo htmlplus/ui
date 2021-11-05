@@ -1,18 +1,28 @@
 import { parse as parser } from '@babel/parser';
 
-export const parse = (context) => {
+export const parse = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    context.ast = parser(
-        context.content,
-        {
-            allowImportExportEverywhere: true,
-            plugins: [
-                'jsx',
-                'typescript',
-                'decorators-legacy'
-            ]
-        }
-    )
+        if (context.skip) return;
+
+        context.ast = parser(
+            context.content,
+            {
+                allowImportExportEverywhere: true,
+                plugins: [
+                    'jsx',
+                    'typescript',
+                    'decorators-legacy'
+                ]
+            }
+        )
+    }
+
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
 }

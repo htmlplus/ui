@@ -1,27 +1,45 @@
 import * as common from '../../plugins/index.js';
 import * as plugin from './plugins/index.js';
 
-export const customElement = async (filename, config) => {
+export const customElement = async (config) => {
 
-    const context = {
-        filename,
-        config,
-    };
-    
-    await common.cache.load(context);
-    await common.load(context);
-    await common.parse(context);
-    await common.validate(context);
-    await common.extract(context);
-    await common.script(context);
-    await common.style(context);
-    await plugin.markup(context);
-    await plugin.script(context);
-    await plugin.style(context);
-    await plugin.component(context);
-    await common.docs(context);
-    await common.vscode(context);
-    await common.cache.save(context);
+    const tasks = [
+        // common.cache.load,
+        common.load,
+        common.parse,
+        common.validate,
+        common.extract,
+        common.script,
+        common.style,
+        plugin.markup,
+        plugin.script,
+        plugin.style,
+        plugin.component,
+        common.docs,
+        common.vscode,
+        // common.cache.save,
+    ];
 
-    return context;
+    const instances = await Promise.all(tasks.map((task) => task(config)));
+
+    const build = async (filename) => {
+
+        const context = {
+            filename,
+            config,
+        };
+
+        await Promise.all(instances.map((instance) => instance.next(context)));
+
+        return context;
+    }
+
+    const finish = async () => {
+        await Promise.all(instances.map((instance) => instance.finish()));
+    }
+
+    return {
+        build,
+        finish,
+    }
 }

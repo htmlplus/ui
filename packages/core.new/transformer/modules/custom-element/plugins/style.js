@@ -1,8 +1,18 @@
-export const style = (context) => {
+export const style = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    if (!context.style) return;
+        if (context.skip) return;
 
-    context.style = `<style>${context.style}</style>`;
-};
+        if (!context.style) return;
+
+        context.style = `<style>${context.style}</style>`;
+    }
+
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
+}

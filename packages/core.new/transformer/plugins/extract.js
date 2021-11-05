@@ -104,290 +104,300 @@ const getType = (file, node, { directory }) => {
     return result || node;
 };
 
-export const extract = (context) => {
+export const extract = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    let
-        additions = [],
-        children,
-        component,
-        render;
+        if (context.skip) return;
 
-    traverse(context.ast, {
-        ClassDeclaration: {
-            exit(path) {
+        let
+            additions = [],
+            children,
+            component,
+            render;
+
+        traverse(context.ast, {
+            ClassDeclaration: {
+                exit(path) {
+
+                    const { node } = path;
+
+                    component = node;
+
+                    children = node.body.body;
+
+                    path.skip();
+                }
+            },
+            ClassMethod(path) {
 
                 const { node } = path;
 
-                component = node;
+                if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return;
 
-                children = node.body.body;
+                render = t.file(
+                    t.program([
+                        t.classDeclaration(
+                            t.identifier('Test'),
+                            undefined,
+                            t.classBody([
+                                node
+                            ])
+                        )
+                    ])
+                );
 
-                path.skip();
+                path.remove();
+            },
+            Decorator(path) {
+
+                const { node } = path;
+
+                const { name } = node.expression.callee;
+
+                if (name != CONSTANTS.TOKEN_DECORATOR_COMPONENT && name != CONSTANTS.TOKEN_DECORATOR_METHOD) return;
+
+                additions.push(path);
             }
-        },
-        ClassMethod(path) {
+        });
 
-            const { node } = path;
+        context.directory = path.dirname(context.filename);
 
-            if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return;
+        context.name = component.id.name;
 
-            render = t.file(
-                t.program([
-                    t.classDeclaration(
-                        t.identifier('Test'),
-                        undefined,
-                        t.classBody([
-                            node
-                        ])
-                    )
-                ])
-            );
+        context.key = Case.kebab(context.name);
 
-            path.remove();
-        },
-        Decorator(path) {
+        context.tag = `${config.prefix}-${context.key}`;
 
-            const { node } = path;
+        context.tags = getTags(component);
 
-            const { name } = node.expression.callee;
+        context.title = Case.capital(context.key);
 
-            if (name != CONSTANTS.TOKEN_DECORATOR_COMPONENT && name != CONSTANTS.TOKEN_DECORATOR_METHOD) return;
+        context.attributes = children
+            .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_ATTRIBUTES))
+            .map((property) => ({
+                name: property.key.name
+            }));
 
-            additions.push(path);
-        }
-    });
+        context.properties = children
+            .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
+            .map((property) => {
 
-    context.directory = path.dirname(context.filename);
+                const tags = getTags(property);
 
-    context.name = component.id.name;
+                const name = property.key.name;
 
-    context.key = Case.kebab(context.name);
+                const attribute = Case.kebab(name);
 
-    context.tag = `${context.config.prefix}-${context.key}`;
+                const initializer = getInitializer(property);
 
-    context.tags = getTags(component);
+                const reflect = (() => {
 
-    context.title = Case.capital(context.key);
-
-    context.attributes = children
-        .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_ATTRIBUTES))
-        .map((property) => ({
-            name: property.key.name
-        }));
-
-    context.properties = children
-        .filter((property) => hasDecorator(property, CONSTANTS.TOKEN_DECORATOR_PROPERTY))
-        .map((property) => {
-
-            const tags = getTags(property);
-
-            const name = property.key.name;
-
-            const attribute = Case.kebab(name);
-
-            const initializer = getInitializer(property);
-
-            const reflect = (() => {
-
-                try {
-                    for (const decorator of property.decorators) {
-                        for (const argument of decorator.expression.arguments) {
-                            for (const property of argument.properties) {
-                                if (property.key.name != 'reflect') continue;
-                                if (property.value.type != 'BooleanLiteral') continue;
-                                if (!property.value.value) continue;
-                                return true;
+                    try {
+                        for (const decorator of property.decorators) {
+                            for (const argument of decorator.expression.arguments) {
+                                for (const property of argument.properties) {
+                                    if (property.key.name != 'reflect') continue;
+                                    if (property.value.type != 'BooleanLiteral') continue;
+                                    if (!property.value.value) continue;
+                                    return true;
+                                }
                             }
                         }
                     }
+                    catch { }
+
+                    return false;
+                })();
+
+                const required = !property.optional;
+
+                // TODO
+                const type = getType(
+                    context.ast,
+                    property.typeAnnotation.typeAnnotation,
+                    {
+                        directory: context.directory,
+                    }
+                ).type;
+
+                const experimental = tags.some((tag) => tag.key == 'experimental');
+
+                const description = (tags.find((tag) => !tag.key) || {}).value;
+
+                // TODO
+                const values = [
+                    // { type: 'number' },
+                    // { type: 'number[]' },
+                    // { type: 'boolean' },
+                    // { type: 'string' },
+                    // { type: 'string', value: '1' },
+                    // { type: 'string', value: 'crop', description: 'Creates a new viewpor' },
+                    // { type: 'CropperValue' },
+                    // { type: 'HTMLElement' },
+                    // {
+                    //     type: "boolean",
+                    //     description: {
+                    //         false: 'Unable to zoom the image.',
+                    //         true: 'Enables to zoom the image by touching and wheeling mouse.'
+                    //     }
+                    // }
+                ];
+
+                const model = tags.some((tag) => tag.key == 'model');
+
+                return {
+                    name,
+                    attribute,
+                    initializer,
+                    reflect,
+                    required,
+                    type,
+                    experimental,
+                    description,
+                    values,
+                    model,
                 }
-                catch { }
+            });
 
-                return false;
-            })();
+        context.events = children
+            .filter((event) => hasDecorator(event, CONSTANTS.TOKEN_DECORATOR_EVENT))
+            .map((event) => {
 
-            const required = !property.optional;
+                const tags = getTags(event);
 
-            // TODO
-            const type = getType(
-                context.ast,
-                property.typeAnnotation.typeAnnotation,
-                {
-                    directory: context.directory,
-                }
-            ).type;
+                const name = event.key.name;
 
-            const experimental = tags.some((tag) => tag.key == 'experimental');
+                const cancelable = (() => {
 
-            const description = (tags.find((tag) => !tag.key) || {}).value;
-
-            // TODO
-            const values = [
-                // { type: 'number' },
-                // { type: 'number[]' },
-                // { type: 'boolean' },
-                // { type: 'string' },
-                // { type: 'string', value: '1' },
-                // { type: 'string', value: 'crop', description: 'Creates a new viewpor' },
-                // { type: 'CropperValue' },
-                // { type: 'HTMLElement' },
-                // {
-                //     type: "boolean",
-                //     description: {
-                //         false: 'Unable to zoom the image.',
-                //         true: 'Enables to zoom the image by touching and wheeling mouse.'
-                //     }
-                // }
-            ];
-
-            const model = tags.some((tag) => tag.key == 'model');
-
-            return {
-                name,
-                attribute,
-                initializer,
-                reflect,
-                required,
-                type,
-                experimental,
-                description,
-                values,
-                model,
-            }
-        });
-
-    context.events = children
-        .filter((event) => hasDecorator(event, CONSTANTS.TOKEN_DECORATOR_EVENT))
-        .map((event) => {
-
-            const tags = getTags(event);
-
-            const name = event.key.name;
-
-            const cancelable = (() => {
-
-                try {
-                    for (const decorator of event.decorators) {
-                        for (const argument of decorator.expression.arguments) {
-                            for (const property of argument.properties) {
-                                if (property.key.name != 'cancelable') continue;
-                                if (property.value.type != 'BooleanLiteral') continue;
-                                if (!property.value.value) continue;
-                                return true;
+                    try {
+                        for (const decorator of event.decorators) {
+                            for (const argument of decorator.expression.arguments) {
+                                for (const property of argument.properties) {
+                                    if (property.key.name != 'cancelable') continue;
+                                    if (property.value.type != 'BooleanLiteral') continue;
+                                    if (!property.value.value) continue;
+                                    return true;
+                                }
                             }
                         }
                     }
+                    catch { }
+
+                    return false;
+                })();
+
+                // TODO
+                const detail = 'void';
+
+                const experimental = tags.some((tag) => tag.key == 'experimental');
+
+                const description = (tags.find((tag) => !tag.key) || {}).value;
+
+                const model = tags.some((tag) => tag.key == 'model');
+
+                return {
+                    name,
+                    cancelable,
+                    detail,
+                    experimental,
+                    description,
+                    model,
                 }
-                catch { }
+            });
 
-                return false;
-            })();
+        context.slots = children
+            .filter((slot) => hasDecorator(slot, CONSTANTS.TOKEN_DECORATOR_SLOTS))
+            .map((slot) => ({
+                name: slot.key.name
+            }));
 
-            // TODO
-            const detail = 'void';
+        context.states = children
+            .filter((state) => hasDecorator(state, CONSTANTS.TOKEN_DECORATOR_STATE))
+            .map((state) => {
 
-            const experimental = tags.some((tag) => tag.key == 'experimental');
+                const name = state.key.name;
 
-            const description = (tags.find((tag) => !tag.key) || {}).value;
+                const initializer = getInitializer(state);
 
-            const model = tags.some((tag) => tag.key == 'model');
+                // TODO
+                const type = getType(
+                    context.ast,
+                    state.typeAnnotation.typeAnnotation,
+                    {
+                        directory: context.directory,
+                    }
+                ).type;
 
-            return {
-                name,
-                cancelable,
-                detail,
-                experimental,
-                description,
-                model,
-            }
-        });
-
-    context.slots = children
-        .filter((slot) => hasDecorator(slot, CONSTANTS.TOKEN_DECORATOR_SLOTS))
-        .map((slot) => ({
-            name: slot.key.name
-        }));
-
-    context.states = children
-        .filter((state) => hasDecorator(state, CONSTANTS.TOKEN_DECORATOR_STATE))
-        .map((state) => {
-
-            const name = state.key.name;
-
-            const initializer = getInitializer(state);
-
-            // TODO
-            const type = getType(
-                context.ast,
-                state.typeAnnotation.typeAnnotation,
-                {
-                    directory: context.directory,
+                return {
+                    name,
+                    initializer,
+                    type,
                 }
-            ).type;
+            });
 
-            return {
-                name,
-                initializer,
-                type,
-            }
-        });
+        context.methods = children
+            .filter((method) => hasDecorator(method, CONSTANTS.TOKEN_DECORATOR_METHOD))
+            .map((method) => {
 
-    context.methods = children
-        .filter((method) => hasDecorator(method, CONSTANTS.TOKEN_DECORATOR_METHOD))
-        .map((method) => {
+                const tags = getTags(method);
 
-            const tags = getTags(method);
+                const name = method.key.name;
 
-            const name = method.key.name;
+                const experimental = tags.some((tag) => tag.key == 'experimental');
 
-            const experimental = tags.some((tag) => tag.key == 'experimental');
+                // TODO
+                const type = 'Promise<void>';
 
-            // TODO
-            const type = 'Promise<void>';
+                // TODO
+                const signature = 'move(offsetX?: number, offsetY?: number) => Promise<void>';
 
-            // TODO
-            const signature = 'move(offsetX?: number, offsetY?: number) => Promise<void>';
+                const description = (tags.find((tag) => !tag.key) || {}).value;
 
-            const description = (tags.find((tag) => !tag.key) || {}).value;
+                // TODO
+                const parameters = [
+                    // {
+                    //     "name": "offsetX",
+                    //     "description": "Moving size (px) in the `horizontal` direction. Use `null` to ignore this."
+                    // },
+                    // {
+                    //     "name": "offsetY",
+                    //     "description": "Moving size (px) in the `vertical` direction. Use `null` to ignore this."
+                    // }
+                ];
 
-            // TODO
-            const parameters = [
-                // {
-                //     "name": "offsetX",
-                //     "description": "Moving size (px) in the `horizontal` direction. Use `null` to ignore this."
-                // },
-                // {
-                //     "name": "offsetY",
-                //     "description": "Moving size (px) in the `vertical` direction. Use `null` to ignore this."
-                // }
-            ];
+                return {
+                    name,
+                    experimental,
+                    type,
+                    signature,
+                    description,
+                    parameters,
+                }
+            });
 
-            return {
-                name,
-                experimental,
-                type,
-                signature,
-                description,
-                parameters,
-            }
-        });
+        context.hasMount = children
+            .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_MOUNT);
 
-    context.hasMount = children
-        .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_MOUNT);
+        context.hasUnmount = children
+            .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT);
 
-    context.hasUnmount = children
-        .some((method) => method.key.name === CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT);
+        additions.forEach((path) => path.remove());
 
-    additions.forEach((path) => path.remove());
+        context.script = generator(context.ast, {
+            comments: false,
+            decoratorsBeforeExport: true,
+        }).code;
 
-    context.script = generator(context.ast, {
-        comments: false,
-        decoratorsBeforeExport: true,
-    }).code;
+        // TODO
+        context.render = render;
+        context.stylePath = path.join(context.directory, `${context.key}.scss`);
+    }
 
-    // TODO
-    context.render = render;
-    context.stylePath = path.join(context.directory, `${context.key}.scss`);
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
 }

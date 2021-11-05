@@ -1,15 +1,25 @@
 import esbuild from 'esbuild';
 
-export const script = (context) => {
+export const script = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    const { code, map, warnings } = esbuild.transformSync(
-        context.script,
-        {
-            loader: 'ts'
-        }
-    );
+        if (context.skip) return;
 
-    context.script = code;
+        const { code, map, warnings } = esbuild.transformSync(
+            context.script,
+            {
+                loader: 'ts'
+            }
+        );
+
+        context.script = code;
+    }
+
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
 }

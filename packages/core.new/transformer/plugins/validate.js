@@ -1,5 +1,11 @@
-export const validate = (context) => {
+export const validate = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => { }
 
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
 }

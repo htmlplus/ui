@@ -1,51 +1,53 @@
 import Case from 'case';
 import * as CONSTANTS from '../../../configs/constants.js';
 
-export const script = (context) => {
+export const script = (config) => {
 
-    if (context.skip) return;
+    const next = (context) => {
 
-    const lines = [];
+        if (context.skip) return;
 
-    lines.push(`<svelte:options tag="${context.tag}" />`);
+        const lines = [];
 
-    if (context.config.dev)
-        lines.push('<script>');
-    else
-        lines.push('<script lang="ts">');
+        lines.push(`<svelte:options tag="${context.tag}" />`);
 
-    // TODO
-    lines.push('import { setAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');
+        if (config.dev)
+            lines.push('<script>');
+        else
+            lines.push('<script lang="ts">');
 
-    lines.push('import { get_current_component, onMount, onDestroy } from "svelte/internal";');
+        // TODO
+        lines.push('import { setAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');
 
-    lines.push(context.script);
+        lines.push('import { get_current_component, onMount, onDestroy } from "svelte/internal";');
 
-    lines.push(`const ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST} = get_current_component();`);
+        lines.push(context.script);
 
-    lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${context.name}();`);
+        lines.push(`const ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST} = get_current_component();`);
 
-    lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
+        lines.push(`const ${CONSTANTS.TOKEN_THIS} = new ${context.name}();`);
 
-    // TODO
-    lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
+        lines.push(`${CONSTANTS.TOKEN_API_FULL} = {};`);
 
-    // TODO
-    // switch (arg1) {
-    //     ${properties.map((property) => `case '${property.name}': ${property.name} = arg2; break;`).join('\n')}
-    // }
-    if (context.properties.length)
-        lines.push(`
+        // TODO
+        lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_HOST} = () => ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST};`);
+
+        // TODO
+        // switch (arg1) {
+        //     ${properties.map((property) => `case '${property.name}': ${property.name} = arg2; break;`).join('\n')}
+        // }
+        if (context.properties.length)
+            lines.push(`
             ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_PROPERTY} = (key, value) => {
                 ${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}[key] = value;
             }
         `);
 
-    if (context.slots.length)
-        lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_SLOTS} = () => $$slots;`);
+        if (context.slots.length)
+            lines.push(`${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_SLOTS} = () => $$slots;`);
 
-    if (context.states.length)
-        lines.push(`
+        if (context.states.length)
+            lines.push(`
             ${CONSTANTS.TOKEN_API_FULL}.${CONSTANTS.TOKEN_API_STATE} = (arg1, arg2) => {
                 switch (arg1) {
                     ${context.states.map((state) => `case '${state.name}': ${state.name} = arg2; break;`).join('\n')}
@@ -53,81 +55,89 @@ export const script = (context) => {
             }
         `);
 
-    context.properties.forEach((property) => {
+        context.properties.forEach((property) => {
 
-        const { initializer, name, type } = property;
+            const { initializer, name, type } = property;
 
-        if (typeof initializer !== 'undefined') {
-            lines.push(`export let ${name} = ${initializer};`);
-        }
-        else {
+            if (typeof initializer !== 'undefined') {
+                lines.push(`export let ${name} = ${initializer};`);
+            }
+            else {
+                // TODO
+                lines.push(`export let ${name} = undefined;`);
+            }
+
             // TODO
-            lines.push(`export let ${name} = undefined;`);
+            if (property.reflect)
+                lines.push(`$: setAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${Case.kebab(name)}', ${name});`);
+
+            // TODO
+            switch (type) {
+
+                case 'TSBooleanKeyword':
+                    lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toBoolean(${name});`);
+                    break;
+
+                case 'TSNumberKeyword':
+                    lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toNumber(${name});`);
+                    break;
+
+                default:
+                    lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${name};`);
+            }
+        });
+
+        context.states.forEach((state) => {
+
+            const { initializer, name } = state;
+
+            if (typeof initializer !== 'undefined') {
+                lines.push(`let ${name} = ${initializer};`);
+            }
+            else {
+                lines.push(`let ${name};`);
+            }
+
+            lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${name};`);
+        });
+
+        context.methods.forEach((method) => {
+            const { name } = method;
+            lines.push(`export const ${name} = ${CONSTANTS.TOKEN_THIS}.${name}.bind(${CONSTANTS.TOKEN_THIS});`);
+        });
+
+        if (context.hasMount)
+            lines.push(`onMount(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_MOUNT}());`);
+
+        if (context.hasUnmount)
+            lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
+
+        // TODO
+        if (context.attributes.length) {
+
+            const attributes = context
+                .attributes
+                .map((attribute) => `...${CONSTANTS.TOKEN_THIS}.${attribute.name}`)
+                .join(', ');
+
+            lines.push(`let ready;`);
+            lines.push(`const update = sync(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, {});`);
+            lines.push(`$: ready && update({${attributes}});`);
+            lines.push(`onMount(() => (ready = true));`);
         }
 
         // TODO
-        if (property.reflect)
-            lines.push(`$: setAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${Case.kebab(name)}', ${name});`);
+        lines.push(`onMount(() => (${CONSTANTS.TOKEN_API_FULL}.ready = true));`);
 
-        // TODO
-        switch (type) {
+        lines.push('</script>');
 
-            case 'TSBooleanKeyword':
-                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toBoolean(${name});`);
-                break;
-
-            case 'TSNumberKeyword':
-                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toNumber(${name});`);
-                break;
-
-            default:
-                lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${name};`);
-        }
-    });
-
-    context.states.forEach((state) => {
-
-        const { initializer, name } = state;
-
-        if (typeof initializer !== 'undefined') {
-            lines.push(`let ${name} = ${initializer};`);
-        }
-        else {
-            lines.push(`let ${name};`);
-        }
-
-        lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = ${name};`);
-    });
-
-    context.methods.forEach((method) => {
-        const { name } = method;
-        lines.push(`export const ${name} = ${CONSTANTS.TOKEN_THIS}.${name}.bind(${CONSTANTS.TOKEN_THIS});`);
-    });
-
-    if (context.hasMount)
-        lines.push(`onMount(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_MOUNT}());`);
-
-    if (context.hasUnmount)
-        lines.push(`onDestroy(() => ${CONSTANTS.TOKEN_THIS}.${CONSTANTS.TOKEN_LIFECYCLE_UNMOUNT}());`);
-
-    // TODO
-    if (context.attributes.length) {
-
-        const attributes = context
-            .attributes
-            .map((attribute) => `...${CONSTANTS.TOKEN_THIS}.${attribute.name}`)
-            .join(', ');
-
-        lines.push(`let ready;`);
-        lines.push(`const update = sync(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, {});`);
-        lines.push(`$: ready && update({${attributes}});`);
-        lines.push(`onMount(() => (ready = true));`);
+        context.script = lines.join('\n');
     }
 
-    // TODO
-    lines.push(`onMount(() => (${CONSTANTS.TOKEN_API_FULL}.ready = true));`);
+    const finish = () => { }
 
-    lines.push('</script>');
-
-    context.script = lines.join('\n');
+    return {
+        next,
+        finish,
+    }
 }

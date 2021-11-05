@@ -1,50 +1,52 @@
 import * as svelte from 'svelte/compiler';
 import preprocess from 'svelte-preprocess';
 
-export const component = async (context) => {
+export const component = (config) => {
 
-    if (context.skip) return;
+    const next = async (context) => {
 
-    const lines = [
-        context.script,
-        context.markup,
-        context.style,
-    ];
+        if (context.skip) return;
 
-    let source = lines.join('\n');
+        const lines = [
+            context.script,
+            context.markup,
+            context.style,
+        ];
 
-    // TODO
-    if (!context.config.dev) {
-        source = (await svelte.preprocess(
-            source,
-            preprocess(context.config.preprocess),
-            {
-                filename: context.filename,
-            }
-        )).code
-    }
+        let source = lines.join('\n');
 
-    const { js } = svelte.compile(source, {
-        customElement: true,
-        filename: context.filename,
-    });
+        // TODO
+        if (!config.dev) {
+            source = (await svelte.preprocess(
+                source,
+                preprocess({ sass: config.sass }),
+                {
+                    filename: context.filename,
+                }
+            )).code
+        }
 
-    // TODO: https://github.com/sveltejs/svelte/issues/3852
-    js.code = ((code) => {
+        const { js } = svelte.compile(source, {
+            customElement: true,
+            filename: context.filename,
+        });
 
-        const indexToken = code.indexOf('customElements.define(');
-        const indexStart = code.indexOf(',', indexToken);
-        const indexEnd = code.indexOf(')', indexToken);
+        // TODO: https://github.com/sveltejs/svelte/issues/3852
+        js.code = ((code) => {
 
-        const textStart = code.slice(0, indexStart + 1);
-        const textMiddle = code.slice(indexStart + 1, indexEnd);
-        const textEnd = code.slice(indexEnd);
+            const indexToken = code.indexOf('customElements.define(');
+            const indexStart = code.indexOf(',', indexToken);
+            const indexEnd = code.indexOf(')', indexToken);
 
-        let result = '';
-        result += textStart;
-        result += ' class extends '
-        result += textMiddle;
-        result += ` {
+            const textStart = code.slice(0, indexStart + 1);
+            const textMiddle = code.slice(indexStart + 1, indexEnd);
+            const textEnd = code.slice(indexEnd);
+
+            let result = '';
+            result += textStart;
+            result += ' class extends '
+            result += textMiddle;
+            result += ` {
             static get observedAttributes() {
                 return (super.observedAttributes || []).map(attr => attr.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase());
             }
@@ -53,14 +55,22 @@ export const component = async (context) => {
                 super.attributeChangedCallback(attrName, oldValue, newValue);
             }
         } `;
-        result += textEnd;
+            result += textEnd;
 
-        return result;
+            return result;
 
-    })(js.code);
+        })(js.code);
 
-    context.code = js.code;
+        context.code = js.code;
 
-    // TODO: disabled unused css selector in svelte
-    context.code = context.code.replace(/<style>.*<\/style>/, context.style);
+        // TODO: disabled unused css selector in svelte
+        context.code = context.code.replace(/<style>.*<\/style>/, context.style);
+    }
+
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
 }
