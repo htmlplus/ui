@@ -31,11 +31,11 @@ esbuild
 				name: 'htmlplus',
 				async setup(build) {
 
-					const compiler = await customElement(config);
+					const transformer = await customElement(config);
 
 					build.onLoad({ filter: /\.tsx$/ }, async (args) => {
 
-						const { code, dependencies } = await compiler.next(args.path);
+						const { code, dependencies } = await transformer.next(args.path);
 
 						return {
 							contents: code,

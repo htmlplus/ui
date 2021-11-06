@@ -6,7 +6,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run clean && rollup -c",
+    "build": "npm run clean && node scripts/build.js",
     "clean": "rimraf .cache dist public/build",
     "start": "node scripts/start.js",
     "test:open": "cypress open",
