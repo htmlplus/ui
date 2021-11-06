@@ -1,23 +1,25 @@
 import * as common from '../../plugins/index.js';
-import * as plugin from './plugins/index.js';
+import * as local from './plugins/index.js';
+import { docs } from '../docs.js';
+import { vscode } from '../vscode.js';
 
 export const customElement = async (config) => {
 
     const tasks = [
-        // common.cache.load,
+        common.cache.load,
         common.load,
         common.parse,
         common.validate,
         common.extract,
         common.script,
-        common.style,
-        plugin.markup,
-        plugin.script,
-        plugin.style,
-        plugin.component,
-        common.docs,
-        common.vscode,
-        // common.cache.save,
+        common.scss,
+        local.markup,
+        local.script,
+        local.style,
+        local.component,
+        docs,
+        vscode,
+        common.cache.save,
     ];
 
     const instances = await Promise.all(tasks.map((task) => task(config)));

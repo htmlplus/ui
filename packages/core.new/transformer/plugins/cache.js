@@ -50,55 +50,75 @@ const getTarget = (cache, key) => {
     return target;
 }
 
-const load = (context) => {
+const load = (config) => {
 
-    if (!context.config.cache) return;
+    const next = (context) => {
 
-    const value = get(context.config.cache, context.filename) || {};
+        if (!config.cache) return;
 
-    const files = value.files || [];
+        const value = get(config.cache, context.filename) || {};
 
-    let changed = false;
+        const files = value.files || [];
 
-    for (const file of files) {
+        let changed = false;
 
-        if (file.snapshot == snapshot(file.filename)) continue;
+        for (const file of files) {
 
-        changed = true;
+            if (file.snapshot == snapshot(file.filename)) continue;
 
-        break;
+            changed = true;
+
+            break;
+        }
+
+        context.skip = !!files.length && !changed;
+
+        if (!context.skip) return;
+
+        // TODO
+        context.code = value.context.code;
+        context.dependencies = value.context.dependencies;
     }
 
-    context.skip = !!files.length && !changed;
+    const finish = () => { }
 
-    if (!context.skip) return;
-
-    // TODO
-    context.code = value.context.code;
-    context.dependencies = value.context.dependencies;
+    return {
+        next,
+        finish,
+    }
 }
 
-const save = (context) => {
+const save = (config) => {
 
-    if (!context.config.cache) return;
+    const next = (context) => {
 
-    set(
-        context.config.cache,
-        context.filename,
-        {
-            // TODO
-            context: {
-                code: context.code,
-                dependencies: context.dependencies,
-            },
-            files: [context.filename]
-                .concat(context.dependencies)
-                .map((filename) => ({
-                    filename,
-                    snapshot: snapshot(filename)
-                }))
-        }
-    )
+        if (!config.cache) return;
+
+        set(
+            config.cache,
+            context.filename,
+            {
+                // TODO
+                context: {
+                    code: context.code,
+                    dependencies: context.dependencies,
+                },
+                files: [context.filename]
+                    .concat(context.dependencies)
+                    .map((filename) => ({
+                        filename,
+                        snapshot: snapshot(filename)
+                    }))
+            }
+        )
+    }
+
+    const finish = () => { }
+
+    return {
+        next,
+        finish,
+    }
 }
 
 export const cache = {

@@ -1,6 +1,6 @@
-import sass from 'sass';
+import core from 'sass';
 
-export const style = (config) => {
+export const scss = (config) => {
 
     const next = (context) => {
 
@@ -10,7 +10,7 @@ export const style = (config) => {
 
         const options = config.scss || {};
 
-        const { css, stats } = sass.renderSync({
+        const { css, stats } = core.renderSync({
             file: context.stylePath,
             outputStyle: 'compressed',
             ...options,
@@ -21,9 +21,7 @@ export const style = (config) => {
         context.dependencies = stats.includedFiles;
     }
 
-    const finish = () => {
-
-    }
+    const finish = () => { }
 
     return {
         next,
