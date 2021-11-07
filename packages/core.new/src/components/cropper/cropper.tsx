@@ -1,17 +1,6 @@
 import { Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property, Watch } from '@app/decorators';
 import CropperCore from 'cropperjs';
-import {
-  CropperAspectRatio,
-  CropperValue,
-  CropperMode,
-  CropperResizer,
-  CropperResizerShape,
-  CropperResponsive,
-  CropperShape,
-  CropperView,
-  CropperZoomable,
-  CropperZoomData,
-} from './cropper.types';
+import { CropperAspectRatio, CropperValue, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomData } from './cropper.types';
 
 /**
  */
@@ -62,17 +51,12 @@ export class Cropper {
 
   /**
    * Defines the cropping mode of the cropper.
-   * @value crop - Creates a new viewport and allows you to move and resize it.
-   * @value move - moves the canvas and viewport.
    */
   @Property()
   mode?: CropperMode = 'move';
 
   /**
    * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
-   * @value main - Enables to resize the viewport by dragging on the Sides.
-   * @value edge - Enables to resize the viewport by dragging on the vertices.
-   * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
    */
   @Property()
   resizer?: CropperResizer = 'both';
@@ -85,7 +69,6 @@ export class Cropper {
 
   /**
    * Re-renders the cropper when resizing the window.
-   * @value reset - Restores the cropped area after resizing the window.
    */
   @Property()
   responsive?: CropperResponsive = 'reset';
@@ -114,25 +97,12 @@ export class Cropper {
    * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the 
    * canvas to the container. Note that if the proportions of the canvas and the container are 
    * the same, there is no difference between `contain` and `cover`.
-   * @value contain - restrict the minimum canvas size to fit within the container. If the 
-   *                  proportions of the canvas and the container differ, the minimum canvas will be 
-   *                  surrounded by extra space in one of the dimensions.
-   * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions 
-   *                  of the canvas and the container are different, the container will not be able 
-   *                  to fit the whole canvas in one of the dimensions.
-   * @value fit     - restrict the viewport to not exceed the size of the canvas.
-   * @value none    - no restrictions.
    */
   @Property()
   view?: CropperView = 'cover';
 
   /**
    * Enables to zoom the image.
-   * @value false - Unable to zoom the image.
-   * @value true  - Enables to zoom the image by touching and wheeling mouse.
-   * @value touch - Enables to zoom the image by touching.
-   * @value wheel - Enables to zoom the image by wheeling mouse.
-   * @
    */
   @Property()
   zoomable?: CropperZoomable = true;

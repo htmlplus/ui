@@ -74,11 +74,11 @@ export const script = (config) => {
             // TODO
             switch (type) {
 
-                case 'TSBooleanKeyword':
+                case 'boolean':
                     lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toBoolean(${name});`);
                     break;
 
-                case 'TSNumberKeyword':
+                case 'number':
                     lines.push(`$: ${CONSTANTS.TOKEN_THIS}.${name} = toNumber(${name});`);
                     break;
 

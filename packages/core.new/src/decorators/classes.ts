@@ -1,4 +1,4 @@
-import * as Case from 'case';
+import { toKebabCase } from '@app/helpers';
 
 const parse = (input, smart?: boolean) => {
 
@@ -25,7 +25,7 @@ const parse = (input, smart?: boolean) => {
 
                 const value = input[key];
 
-                const name = Case.kebab(key);
+                const name = toKebabCase(key);
 
                 const type = Object.prototype.toString.call(value);
 

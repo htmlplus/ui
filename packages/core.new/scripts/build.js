@@ -14,17 +14,19 @@ let transformer;
  * @type {import('rollup').RollupOptions}
  */
 const options = {
-    input: glob.sync('./src/**/*.tsx'),
+    input: glob.sync(config.include),
     output: [
         {
             format: 'es',
             dir: 'dist/esm',
             chunkFileNames: '[name].js',
-            manualChunks(id) {
+            manualChunks(id, p) {
 
-                const matcher = path.join('src/components/');
+                if (id.includes('cropperjs')) return 'cropperjs';
 
-                if (id.includes(matcher) && id.endsWith('.tsx')) return path.basename(id);
+                if (id.includes('popperjs')) return 'popperjs';
+
+                if (id.endsWith('.tsx')) return path.basename(id);
 
                 return 'core';
             },

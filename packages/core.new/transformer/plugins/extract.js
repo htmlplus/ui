@@ -104,6 +104,28 @@ const getType = (file, node, { directory }) => {
     return result || node;
 };
 
+// TODO
+const printType = (ast) => {
+
+    switch (ast.type) {
+
+        case 'TSTypeAliasDeclaration':
+            ast = ast.typeAnnotation;
+            break;
+
+        case 'TSInterfaceDeclaration':
+            ast = ast.id;
+            break;
+    }
+
+    return generator(ast).code;
+}
+
+// TODO
+const printTypeValues = () => {
+
+}
+
 export const extract = (config) => {
 
     const next = (context) => {
@@ -213,13 +235,17 @@ export const extract = (config) => {
                 const required = !property.optional;
 
                 // TODO
-                const type = getType(
-                    context.ast,
-                    property.typeAnnotation.typeAnnotation,
-                    {
-                        directory: context.directory,
-                    }
-                ).type;
+                const type = (() => {
+                    try {
+                        return printType(getType(
+                            context.ast,
+                            property.typeAnnotation.typeAnnotation,
+                            {
+                                directory: context.directory,
+                            }
+                        ))
+                    } catch { }
+                })();
 
                 const experimental = tags.some((tag) => tag.key == 'experimental');
 
@@ -288,7 +314,17 @@ export const extract = (config) => {
                 })();
 
                 // TODO
-                const detail = 'void';
+                const detail = (() => {
+                    try {
+                        return printType(getType(
+                            context.ast,
+                            event.typeAnnotation.typeAnnotation.typeParameters.params[0],
+                            {
+                                directory: context.directory,
+                            }
+                        ))
+                    } catch { }
+                })()
 
                 const experimental = tags.some((tag) => tag.key == 'experimental');
 
@@ -320,19 +356,9 @@ export const extract = (config) => {
 
                 const initializer = getInitializer(state);
 
-                // TODO
-                const type = getType(
-                    context.ast,
-                    state.typeAnnotation.typeAnnotation,
-                    {
-                        directory: context.directory,
-                    }
-                ).type;
-
                 return {
                     name,
                     initializer,
-                    type,
                 }
             });
 
@@ -347,10 +373,31 @@ export const extract = (config) => {
                 const experimental = tags.some((tag) => tag.key == 'experimental');
 
                 // TODO
-                const type = 'Promise<void>';
+                // const params = printType(getType(
+                //     context.ast,
+                //     method.params,
+                //     {
+                //         directory: context.directory,
+                //     }
+                // ));
+
+                // console.log(111, params)
+
+                // TODO: returnType
+                const type = (() => {
+                    try {
+                        return printType(getType(
+                            context.ast,
+                            method.returnType.typeAnnotation,
+                            {
+                                directory: context.directory,
+                            }
+                        ));
+                    } catch { }
+                })();
 
                 // TODO
-                const signature = 'move(offsetX?: number, offsetY?: number) => Promise<void>';
+                const signature = `${method.key.name}(${''}) => ${type}`;
 
                 const description = (tags.find((tag) => !tag.key) || {}).value;
 
