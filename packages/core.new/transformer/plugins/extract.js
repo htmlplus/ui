@@ -105,25 +105,120 @@ const getType = (file, node, { directory }) => {
 };
 
 // TODO
+// components\grid-item\grid-item.types.ts
+// components\portal\portal.tsx
 const printType = (ast) => {
+
+    if (!ast) return ast;
+
+    let result = {};
 
     switch (ast.type) {
 
-        case 'TSTypeAliasDeclaration':
-            ast = ast.typeAnnotation;
-            break;
+        case 'BooleanLiteral':
+        case 'NumericLiteral':
+        case 'StringLiteral': {
 
-        case 'TSInterfaceDeclaration':
-            ast = ast.id;
+            result.key = ast.value;
+
+            result.type = ast.type.replace('Literal', '').toLowerCase();
+
             break;
+        }
+
+        case 'TSBooleanKeyword':
+        case 'TSNumberKeyword':
+        case 'TSStringKeyword': {
+
+            const type = ast
+                .type
+                .replace('TS', '')
+                .replace('Keyword', '')
+                .toLowerCase();
+
+            result.key = type;
+
+            result.type = type;
+
+            break;
+        }
+
+        case 'TSAnyKeyword': {
+
+            result.type = 'any';
+
+            break;
+        }
+
+        case 'TSArrayType': {
+
+            const type = generator(ast.elementType).code + '[]';
+
+            result.key = type;
+
+            result.type = type;
+
+            break;
+        }
+
+        case 'TSInterfaceDeclaration': {
+
+            result.type = ast.id.name;
+
+            result.members = ast
+                .body
+                .body
+                .map((body) => printType(body));
+
+            break;
+        }
+
+        case 'TSLiteralType': {
+
+            result = printType(ast.literal)
+
+            break;
+        }
+
+        case 'TSPropertySignature': {
+
+            const { typeAnnotation } = ast;
+
+            result.key = ast.key.name;
+
+            if (typeAnnotation && typeAnnotation.typeAnnotation)
+                result.type = printType(ast.typeAnnotation.typeAnnotation).type;
+
+            break;
+        }
+
+        case 'TSTypeAliasDeclaration': {
+
+            result = printType(ast.typeAnnotation);
+
+            break;
+        }
+
+        case 'TSTypeReference': {
+
+            result.key = ast.typeName.name;
+
+            result.type = ast.typeName.name;
+
+            break;
+        }
+
+        case 'TSUnionType': {
+
+            result.type = generator(ast).code;
+
+            result.members = ast.types.map((type) => printType(type));
+
+            break;
+        }
     }
 
-    return generator(ast).code;
-}
-
-// TODO
-const printTypeValues = () => {
-
+    return result;
 }
 
 export const extract = (config) => {
@@ -235,40 +330,22 @@ export const extract = (config) => {
                 const required = !property.optional;
 
                 // TODO
-                const type = (() => {
-                    try {
-                        return printType(getType(
-                            context.ast,
-                            property.typeAnnotation.typeAnnotation,
-                            {
-                                directory: context.directory,
-                            }
-                        ))
-                    } catch { }
+                const { type, members } = (() => {
+
+                    const ast = getType(
+                        context.ast,
+                        property.typeAnnotation.typeAnnotation,
+                        {
+                            directory: context.directory,
+                        }
+                    )
+
+                    return printType(ast);
                 })();
 
                 const experimental = tags.some((tag) => tag.key == 'experimental');
 
                 const description = (tags.find((tag) => !tag.key) || {}).value;
-
-                // TODO
-                const values = [
-                    // { type: 'number' },
-                    // { type: 'number[]' },
-                    // { type: 'boolean' },
-                    // { type: 'string' },
-                    // { type: 'string', value: '1' },
-                    // { type: 'string', value: 'crop', description: 'Creates a new viewpor' },
-                    // { type: 'CropperValue' },
-                    // { type: 'HTMLElement' },
-                    // {
-                    //     type: "boolean",
-                    //     description: {
-                    //         false: 'Unable to zoom the image.',
-                    //         true: 'Enables to zoom the image by touching and wheeling mouse.'
-                    //     }
-                    // }
-                ];
 
                 const model = tags.some((tag) => tag.key == 'model');
 
@@ -281,7 +358,7 @@ export const extract = (config) => {
                     type,
                     experimental,
                     description,
-                    values,
+                    members,
                     model,
                 }
             });
