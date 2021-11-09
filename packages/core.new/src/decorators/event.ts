@@ -45,8 +45,8 @@ export function Event<T = any>(options: EventOptions = {}) {
 
                     return event;
                 }
-            },
-        };
+            }
+        }
 
         Object.defineProperty(target, propertyKey, descriptor);
     }

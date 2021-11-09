@@ -13,8 +13,8 @@ export function GlobalState() {
                 if (state) return;
 
                 state = input;
-            },
-        };
+            }
+        }
 
         Object.defineProperty(target, propertyKey, descriptor);
     }

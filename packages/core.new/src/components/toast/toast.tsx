@@ -1,5 +1,5 @@
 import { Attributes, Classes, Component, Direction, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
-import { toAxis } from '@app/helpers';
+import { getComputedStyle, toAxis } from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
@@ -183,7 +183,7 @@ export class Toast {
 
     if (!instance) return;
 
-    const zIndex = getComputedStyle(instance.$host).getPropertyValue('z-index');
+    const zIndex = getComputedStyle(instance.$host, 'z-index');
 
     return `${parseInt(zIndex) + 1}`;
   }

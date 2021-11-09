@@ -1,5 +1,6 @@
 import { Attributes, Bind, Component, EventEmitter, GlobalConfig, Host, IsRTL, Property, State, Watch } from '@app/decorators';
 import { createPopper, Instance } from '@popperjs/core';
+import { addEventListener, removeEventListener } from '@app/helpers';
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
 
 /**
@@ -224,13 +225,13 @@ export class Tooltip {
 
   bind() {
     if (this.disabled) return;
-    this.eventsName.show.map((eventName) => this.$activator.addEventListener(eventName, this.onShow));
-    this.eventsName.hide.map((eventName) => this.$activator.addEventListener(eventName, this.onHide));
+    this.eventsName.show.map((eventName) => addEventListener(this.$activator, eventName, this.onShow));
+    this.eventsName.hide.map((eventName) => addEventListener(this.$activator, eventName, this.onHide));
   }
 
   unbind() {
-    this.eventsName.show.map((eventName) => this.$activator.removeEventListener(eventName, this.onShow));
-    this.eventsName.hide.map((eventName) => this.$activator.removeEventListener(eventName, this.onHide));
+    this.eventsName.show.map((eventName) => removeEventListener(this.$activator, eventName, this.onShow));
+    this.eventsName.hide.map((eventName) => removeEventListener(this.$activator, eventName, this.onHide));
   }
 
   /**

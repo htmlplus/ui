@@ -1,4 +1,5 @@
 import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Styles } from '@app/decorators';
+import { addEventListener, removeEventListener } from '@app/helpers';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
@@ -165,11 +166,11 @@ export class Transition {
   }
 
   connectedCallback() {
-    this.events.map(({ event, handler }) => this.$host.addEventListener(event, handler));
+    this.events.map(({ event, handler }) => addEventListener(this.$host, event, handler));
   }
 
   disconnectedCallback() {
-    this.events.map(({ event, handler }) => this.$host.removeEventListener(event, handler));
+    this.events.map(({ event, handler }) => removeEventListener(this.$host, event, handler));
   }
 
   render() {

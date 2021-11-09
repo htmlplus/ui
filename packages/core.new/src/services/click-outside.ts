@@ -1,4 +1,4 @@
-import { eventPath } from '@app/helpers';
+import { addEventListener, removeEventListener, eventPath } from '@app/helpers';
 
 export class ClickOutside {
 
@@ -23,7 +23,7 @@ export class ClickOutside {
             callback(event);
         }
 
-        document.addEventListener(this.type, fn, true);
+        addEventListener(document, this.type, fn, true);
 
         this.targets.set(element, fn);
     }
@@ -34,7 +34,7 @@ export class ClickOutside {
 
         if (!callback) return;
 
-        document.removeEventListener(this.type, callback, true);
+        removeEventListener(document, this.type, callback, true);
 
         this.targets.delete(element);
     }

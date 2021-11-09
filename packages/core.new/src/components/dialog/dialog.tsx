@@ -1,5 +1,5 @@
 import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
-import { toAxis } from '@app/helpers';
+import { addEventListener, getComputedStyle, removeEventListener, toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
   DialogFullscreen,
@@ -246,7 +246,7 @@ export class Dialog {
 
     if (!instance) return;
 
-    const zIndex = getComputedStyle(instance.$host).getPropertyValue('z-index');
+    const zIndex = getComputedStyle(instance.$host, 'z-index');
 
     return `${parseInt(zIndex) + 1}`;
   }
@@ -392,7 +392,7 @@ export class Dialog {
     ClickOutside.remove(this.$cell);
 
     // remove keydown listener
-    document.removeEventListener('keydown', this.onEscape, true);
+    removeEventListener(document, 'keydown', this.onEscape, true);
 
     // reset z-index
     this.$host.style.zIndex = null;
@@ -423,7 +423,7 @@ export class Dialog {
     ClickOutside.add(this.$cell, this.onClickOutside, false);
 
     // add keydown listener
-    document.addEventListener('keydown', this.onEscape, true);
+    addEventListener(document, 'keydown', this.onEscape, true);
 
     // set z-index
     this.$host.style.zIndex = this.zIndex;

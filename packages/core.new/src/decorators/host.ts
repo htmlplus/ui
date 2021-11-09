@@ -5,8 +5,8 @@ export function Host() {
         const descriptor = {
             get() {
                 return this.$api?.host();
-            },
-        };
+            }
+        }
 
         Object.defineProperty(target, propertyKey, descriptor);
     }

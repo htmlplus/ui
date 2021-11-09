@@ -1,5 +1,5 @@
 import { Bind, Component, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
-import { eventPath, toUnit } from '@app/helpers';
+import { eventPath, getComputedStyle, toUnit } from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
@@ -119,7 +119,7 @@ export class Menu {
   }
 
   get reverse() {
-    return getComputedStyle(this.$host).getPropertyValue('direction') === 'rtl';
+    return getComputedStyle(this.$host, 'direction') === 'rtl';
   }
 
   get style() {

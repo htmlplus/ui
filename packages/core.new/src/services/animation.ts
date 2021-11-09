@@ -1,3 +1,5 @@
+import { getComputedStyle } from '@app/helpers';
+
 export type AnimationReflect = 'attribute' | 'class';
 
 export type AnimationState = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';

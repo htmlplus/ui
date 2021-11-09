@@ -1,4 +1,5 @@
 import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { addEventListener, removeEventListener } from '@app/helpers';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
@@ -82,14 +83,14 @@ export class ScrollIndicator {
   bind() {
 
     if (this.disabled) return;
-
-    this.$source?.addEventListener('scroll', this.onScroll);
+    
+    addEventListener(this.$source, 'scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    this.$source?.removeEventListener('scroll', this.onScroll);
+    removeEventListener(this.$source, 'scroll', this.onScroll);
   }
 
   /**
