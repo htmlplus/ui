@@ -22,9 +22,13 @@ const options = {
             chunkFileNames: '[name].js',
             manualChunks(id, p) {
 
-                if (id.includes('cropperjs')) return 'cropperjs';
-
-                if (id.includes('popperjs')) return 'popperjs';
+                if (id.includes('cropperjs')) return 'core.cropperjs';
+                
+                if (id.includes('helpers')) return 'core.helpers';
+                
+                if (id.includes('popperjs')) return 'core.popperjs';
+                
+                if (id.includes('services')) return 'core.' + path.basename(id);
 
                 if (id.endsWith('.tsx')) return path.basename(id);
 

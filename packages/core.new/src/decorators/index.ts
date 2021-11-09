@@ -9,7 +9,6 @@ export * from './global-config';
 export * from './global-state';
 export * from './host';
 export * from './is-rtl';
-export * from './listen';
 export * from './media';
 export * from './method';
 export * from './property';
