@@ -1,1 +1,1 @@
-export * from './custom-element.js';
+export * from './svelte.js';
