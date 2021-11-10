@@ -1,10 +1,10 @@
-import * as Helpers from '@app/helpers';
+import { typeOf } from './type-of';
 
 export const styles = (input) => {
 
-    const type = Helpers.typeOf(input);
+    const type = typeOf(input);
 
-    if (type == 'undefined') 
+    if (type == 'undefined')
         return input;
 
     if (type === 'array')

@@ -1,3 +1,3 @@
-import * as Helpers from '@app/helpers';
+import { api } from './api';
 
-export const host = (target): HTMLElement => Helpers.api(target).host();
+export const host = (target): HTMLElement => api(target).host();

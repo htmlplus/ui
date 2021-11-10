@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, GlobalConfig, Host, Property } from '@app/decorators';
+import { Component, Event, EventEmitter, GlobalConfig, Property } from '@app/decorators';
 
 /**
  * @development
@@ -40,9 +40,6 @@ export class Switch {
    */
   @Event()
   plusChange!: EventEmitter<void>;
-
-  @Host()
-  $host!: HTMLElement;
 
   @GlobalConfig('switch')
   config?;
