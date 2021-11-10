@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, Styles } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
@@ -116,13 +116,12 @@ export class Transition {
     }
   }
 
-  @Styles()
   get style() {
-    return {
+    return Helpers.styles({
       '--plus-transition-delay': this.delay ? this.parser(this.delay) : null,
       '--plus-transition-duration': isNaN(parseFloat(this.duration)) ? null : this.duration,
       '--plus-transition-repeat': this.repeat as any ?? null,
-    }
+    })
   }
 
   get events() {

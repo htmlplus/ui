@@ -1,7 +1,7 @@
-import { Attributes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Property, Watch } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, createLink } from '@app/services';
-import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
+import { ToastPlacement, ToastType } from './toast.types';
 
 const { Action, Observable, reconnect } = createLink('Toast');
 
@@ -116,10 +116,7 @@ export class Toast {
   })
   config?;
 
-  @GlobalState()
-  state: ToastGlobalState = {
-    instances: []
-  }
+  static instances = [];
 
   $root!: HTMLElement;
 
@@ -162,7 +159,7 @@ export class Toast {
 
   get isCurrent() {
 
-    const instances = this.state.instances;
+    const instances = Toast.instances;
 
     const last = instances.length - 1;
 
@@ -175,9 +172,9 @@ export class Toast {
 
   get zIndex() {
 
-    if (this.state.instances.length < 1) return;
+    if (Toast.instances.length < 1) return;
 
-    const [instance] = this.state.instances.slice(-1);
+    const [instance] = Toast.instances.slice(-1);
 
     if (!instance) return;
 
@@ -213,11 +210,9 @@ export class Toast {
 
     const { x: x1, y: y1 } = this.coordinate(this);
 
-    const { instances } = this.state;
-
     const fn = (index) => {
 
-      const instance = instances[index];
+      const instance = Toast.instances[index];
 
       const { x: x2, y: y2 } = this.coordinate(instance);
 
@@ -232,9 +227,9 @@ export class Toast {
     }
 
     if (this.reverse)
-      for (let i = 0; i < instances.length; i++) fn(i);
+      for (let i = 0; i < Toast.instances.length; i++) fn(i);
     else
-      for (let i = instances.length - 1; i >= 0; i--) fn(i);
+      for (let i = Toast.instances.length - 1; i >= 0; i--) fn(i);
   }
 
   broadcast(value) {
@@ -377,7 +372,7 @@ export class Toast {
     this.open = this.isOpen = false;
 
     // unregister dialog's instance
-    this.state.instances = this.state.instances.filter((instance) => instance !== this);
+    Toast.instances = Toast.instances.filter((instance) => instance !== this);
 
     // TODO: experimantal new link
     this.broadcast(false);
@@ -395,7 +390,7 @@ export class Toast {
     this.open = this.isOpen = true;
 
     // register dialog's instance
-    this.state.instances.push(this);
+    Toast.instances.push(this);
 
     // TODO: experimantal new link
     this.broadcast(true);

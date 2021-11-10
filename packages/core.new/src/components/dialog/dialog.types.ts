@@ -4,9 +4,6 @@ export type DialogPortalTarget = PortalTarget;
 export type DialogPortalStrategy = PortalStrategy;
 export type DialogFullscreen = boolean | 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';
 export type DialogSize = 'sm' | 'lg' | 'xl';
-export interface DialogGlobalState {
-  instances?: Array<any>;
-}
 
 // TODO: Problem in angular
 // type PlacementX = 'start' | 'left' | 'center' | 'right' | 'end';

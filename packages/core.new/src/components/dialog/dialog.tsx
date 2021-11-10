@@ -1,9 +1,8 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, GlobalState, Property, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
   DialogFullscreen,
-  DialogGlobalState,
   DialogPlacement,
   DialogPortalStrategy,
   DialogPortalTarget,
@@ -158,10 +157,7 @@ export class Dialog {
   })
   config?;
 
-  @GlobalState()
-  state: DialogGlobalState = {
-    instances: []
-  }
+  static instances = [];
 
   $cell!: HTMLElement;
 
@@ -228,7 +224,7 @@ export class Dialog {
 
   get isCurrent() {
 
-    const instances = this.state.instances;
+    const instances = Dialog.instances;
 
     const last = instances.length - 1;
 
@@ -237,9 +233,9 @@ export class Dialog {
 
   get zIndex() {
 
-    if (this.state.instances.length < 1) return;
+    if (Dialog.instances.length < 1) return;
 
-    const [instance] = this.state.instances.slice(-1);
+    const [instance] = Dialog.instances.slice(-1);
 
     if (!instance) return;
 
@@ -398,7 +394,7 @@ export class Dialog {
     this.open = this.isOpen = false;
 
     // unregister dialog's instance
-    this.state.instances = this.state.instances.filter((instance) => instance !== this);
+    Dialog.instances = Dialog.instances.filter((instance) => instance !== this);
 
     // TODO: experimantal new link
     this.broadcast(false);
@@ -429,7 +425,7 @@ export class Dialog {
     this.open = this.isOpen = true;
 
     // register dialog's instance
-    this.state.instances.push(this);
+    Dialog.instances.push(this);
 
     // TODO: experimantal new link
     this.broadcast(true);

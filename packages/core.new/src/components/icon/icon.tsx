@@ -1,4 +1,4 @@
-import { Attributes, Component, GlobalConfig, Property, Styles } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
 
 /**
  * @development
@@ -51,15 +51,11 @@ export class Icon {
 
   @Attributes()
   get attributes() {
-    return {
-      'style': this.styles,
-    }
-  }
 
-  @Styles()
-  get styles() {
+    if (!this.color) return;
+
     return {
-      'color': this.color || null
+      'style': `color: ${this.color}`
     }
   }
 

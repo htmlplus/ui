@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, State, Styles, Watch } from "@app/decorators";
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, State, Watch } from "@app/decorators";
 import * as Helpers from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -69,12 +69,11 @@ export class Sticky {
     return `calc((${Helpers.toUnit(this.top)} + 1px) * -1)`;
   }
 
-  @Styles()
   get style() {
-    return {
+    return Helpers.styles({
       top: Helpers.toUnit(this.top),
       zIndex: this.top ? String(this.zIndex) : null,
-    }
+    })
   }
 
   /**

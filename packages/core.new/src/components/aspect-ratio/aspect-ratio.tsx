@@ -1,4 +1,4 @@
-import { Component, GlobalConfig, Property, Styles } from '@app/decorators';
+import { Component, GlobalConfig, Property } from '@app/decorators';
 import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
@@ -22,25 +22,22 @@ export class AspectRatio {
 
     if (typeof this.value === 'number') return this.value;
 
-    let [valueA, valueB] = `${this.value}` 
+    let [valueA, valueB] = `${this.value}`
       .split('/')
       .map((item: any) => isNaN(item) ? NaN : parseFloat(item));
-      
-      valueB = valueB ?? 1;
+
+    valueB = valueB ?? 1;
 
     if (!isNaN(valueA + valueB)) return valueA / valueB;
   }
 
-  @Styles()
   get style() {
 
     const ratio = this.ratio;
 
     if (!ratio) return;
 
-    return {
-      paddingTop: `${100 / ratio}%`
-    }
+    return `padding-top: ${100 / ratio}%`;
   }
 
   render() {

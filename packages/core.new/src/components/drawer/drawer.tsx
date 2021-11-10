@@ -183,10 +183,10 @@ export class Drawer {
   }
 
   get styles() {
-    return {
+    return Helpers.styles({
       '--plus-drawer-size': this.size ?? null,
       '--plus-drawer-mini-size': this.miniSize ?? null,
-    }
+    })
   }
 
   /**
