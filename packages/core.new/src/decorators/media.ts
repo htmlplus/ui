@@ -1,5 +1,5 @@
 import * as CONSTANTS from '@app/constants';
-import { addEventListener, removeEventListener } from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export function Media(query: string) {
 
@@ -78,7 +78,7 @@ export function Media(query: string) {
 
             const callback = this[propertyKey];
 
-            addEventListener(media, 'change', callback);
+            Helpers.addEventListener(media, 'change', callback);
 
             connected && connected.bind(this)();
 
@@ -99,7 +99,7 @@ export function Media(query: string) {
 
             const callback = this[propertyKey];
 
-            removeEventListener(media, 'change', callback);
+            Helpers.removeEventListener(media, 'change', callback);
 
             disconnected && disconnected.bind(this)();
         }

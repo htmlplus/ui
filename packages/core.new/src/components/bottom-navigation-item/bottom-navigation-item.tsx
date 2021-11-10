@@ -1,4 +1,5 @@
-import { Attributes, Bind, Classes, Component, GlobalConfig, Property, State } from '@app/decorators';
+import { Attributes, Bind, Component, GlobalConfig, Property, State } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink('BottomNavigation');
@@ -43,13 +44,12 @@ export class BottomNavigationItem {
     }
   }
 
-  @Classes()
   get classes() {
-    return {
+    return Helpers.classes({
       'root': true,
       'shift': this.tunnel?.shift,
       [this.tunnel?.labelPosition]: true,
-    }
+    })
   }
 
   get key() {

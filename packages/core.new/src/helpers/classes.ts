@@ -1,4 +1,4 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export const classes = (input, smart?: boolean) => {
 
@@ -6,7 +6,7 @@ export const classes = (input, smart?: boolean) => {
 
     const result = [];
 
-    const type = Helper.typeOf(input);
+    const type = Helpers.typeOf(input);
 
     switch (type) {
 
@@ -25,9 +25,9 @@ export const classes = (input, smart?: boolean) => {
 
                 const value = input[key];
 
-                const name = Helper.toKebabCase(key);
+                const name = Helpers.toKebabCase(key);
 
-                const type = Helper.typeOf(value);
+                const type = Helpers.typeOf(value);
 
                 if (!smart) {
 

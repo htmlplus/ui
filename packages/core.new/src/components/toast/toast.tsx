@@ -1,5 +1,5 @@
-import { Attributes, Classes, Component, Direction, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
-import { getComputedStyle, toAxis } from '@app/helpers';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
 
@@ -121,9 +121,6 @@ export class Toast {
     instances: []
   }
 
-  @Direction()
-  direction?: string;
-
   @IsRTL()
   isRTL?: boolean;
 
@@ -152,18 +149,17 @@ export class Toast {
     }
   }
 
-  @Classes()
   get classes() {
 
     const { x, y } = this.coordinate(this);
 
-    return {
+    return Helpers.classes({
       'root': true,
       'full-width': this.fullWidth,
       [x]: !!x,
       [y]: !!y,
-      [this.direction]: true,
-    }
+      [Helpers.direction(this)]: true,
+    })
   }
 
   get isCurrent() {
@@ -183,7 +179,7 @@ export class Toast {
 
     if (!instance) return;
 
-    const zIndex = getComputedStyle(instance.$host, 'z-index');
+    const zIndex = Helpers.getComputedStyle(instance.$host, 'z-index');
 
     return `${parseInt(zIndex) + 1}`;
   }
@@ -250,7 +246,7 @@ export class Toast {
 
     if (!y) y = 'top';
 
-    x = toAxis(x, instance.isRTL);
+    x = Helpers.toAxis(x, instance.isRTL);
 
     if (instance.fullWidth) x = undefined;
 

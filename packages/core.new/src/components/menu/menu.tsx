@@ -1,5 +1,5 @@
 import { Bind, Component, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
-import { eventPath, getComputedStyle, toUnit } from '@app/helpers';
+import * as Helpers from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
@@ -119,7 +119,7 @@ export class Menu {
   }
 
   get reverse() {
-    return getComputedStyle(this.$host, 'direction') === 'rtl';
+    return Helpers.getComputedStyle(this.$host, 'direction') === 'rtl';
   }
 
   get style() {
@@ -150,7 +150,7 @@ export class Menu {
 
   click(event) {
 
-    const elements = eventPath(event);
+    const elements = Helpers.eventPath(event);
 
     const index = elements.findIndex((element) => element === this.$activator);
 
@@ -204,7 +204,7 @@ export class Menu {
 
     if (this.offsetX && !this.getGrowX.match(/both/)) {
 
-      const offset = toUnit(this.offsetX);
+      const offset = Helpers.toUnit(this.offsetX);
 
       const operator = this.getGrowX.match(/left|start/) ? '-' : '+';
 
@@ -213,7 +213,7 @@ export class Menu {
 
     if (this.offsetY && !this.getGrowY.match(/both/)) {
 
-      const offset = toUnit(this.offsetY);
+      const offset = Helpers.toUnit(this.offsetY);
 
       const operator = this.getGrowY.match(/top/) ? '-' : '+';
 
@@ -248,7 +248,7 @@ export class Menu {
 
     if (!this.open) return;
 
-    const path = eventPath(event);
+    const path = Helpers.eventPath(event);
 
     const activator = this.$host.shadowRoot.querySelector('.activator');
 

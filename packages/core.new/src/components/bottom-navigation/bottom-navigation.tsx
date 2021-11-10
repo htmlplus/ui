@@ -1,4 +1,5 @@
-import { Attributes, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 
 const { Action, Observable } = createLink('BottomNavigation');
@@ -70,9 +71,6 @@ export class BottomNavigation {
   @GlobalConfig('bottomNavigation')
   config?;
 
-  @Host()
-  $host!: HTMLElement;
-
   animate?: Animation;
 
   @Observable()
@@ -118,8 +116,8 @@ export class BottomNavigation {
 
     this.animate = new Animation({
       key: 'state',
-      source: () => this.$host,
-      target: () => this.$host,
+      source: () => Helpers.host(this),
+      target: () => Helpers.host(this),
       // state: this.open ? 'entered' : 'leaved',
       states: {
         enter: 'open',

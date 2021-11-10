@@ -1,3 +1,3 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
-export const slots = (target) => Helper.api(target).slots();
+export const slots = (target) => Helpers.api(target).slots();

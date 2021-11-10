@@ -1,4 +1,4 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export type EventEmitter<T = any> = (data?: T) => CustomEvent<T>;
 
@@ -41,7 +41,7 @@ export function Event<T = any>(options: EventOptions = {}) {
                         }
                     )
                     
-                    Helper.host(this)?.dispatchEvent(event);
+                    Helpers.host(this)?.dispatchEvent(event);
 
                     return event;
                 }

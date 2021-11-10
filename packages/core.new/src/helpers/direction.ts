@@ -1,3 +1,3 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
-export const direction = (target) => Helper.getComputedStyle(Helper.host(target), 'direction').toLowerCase();
+export const direction = (target) => Helpers.getComputedStyle(Helpers.host(target), 'direction').toLowerCase();

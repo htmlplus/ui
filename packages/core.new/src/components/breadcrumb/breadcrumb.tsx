@@ -1,4 +1,5 @@
-import { Bind, Component, GlobalConfig, Host, IsRTL, Property, State, Watch } from '@app/decorators';
+import { Bind, Component, GlobalConfig, IsRTL, Property, State, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -46,9 +47,6 @@ export class Breadcrumb {
   @IsRTL()
   isRTL?: boolean;
 
-  @Host()
-  $host!: HTMLElement;
-
   @State()
   items?: Array<any>;
 
@@ -62,7 +60,7 @@ export class Breadcrumb {
 
     ].join(',');
 
-    return Array.from(this.$host.children).filter(($node) => !$node.matches(selectors));
+    return Array.from(Helpers.host(this).children).filter(($node) => !$node.matches(selectors));
   }
 
   get attributes() {
@@ -73,7 +71,7 @@ export class Breadcrumb {
 
   get template() {
 
-    const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
+    const $node = Helpers.host(this).querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
 
     const $clone = $node?.cloneNode(true) as HTMLElement;
 
@@ -92,7 +90,7 @@ export class Breadcrumb {
 
     this.observer = new MutationObserver(this.onChange);
 
-    this.observer.observe(this.$host, { childList: true });
+    this.observer.observe(Helpers.host(this), { childList: true });
   }
 
   unbind() {

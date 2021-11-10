@@ -1,4 +1,4 @@
-import { getComputedStyle } from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export class Scrollbar {
 
@@ -37,7 +37,7 @@ export class Scrollbar {
 
         if (!isOverflowing) return;
 
-        const direction = getComputedStyle(window.document.body, 'direction');
+        const direction = Helpers.getComputedStyle(window.document.body, 'direction');
 
         const property = direction === 'rtl' ? 'paddingLeft' : 'paddingRight';
 

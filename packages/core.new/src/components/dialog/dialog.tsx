@@ -1,5 +1,5 @@
-import { Attributes, Bind, Classes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
-import { addEventListener, getComputedStyle, removeEventListener, toAxis } from '@app/helpers';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
   DialogFullscreen,
@@ -199,7 +199,6 @@ export class Dialog {
     return attributes;
   }
 
-  @Classes(true)
   get classes() {
 
     let placement = (this.placement || '');
@@ -212,9 +211,9 @@ export class Dialog {
 
     y = y || 'center';
 
-    x = toAxis(x, this.isRTL);
+    x = Helpers.toAxis(x, this.isRTL);
 
-    return [
+    return Helpers.classes([
       'dialog',
       {
         x,
@@ -226,7 +225,7 @@ export class Dialog {
         fullscreen: this.fullscreen,
         scrollable: this.scrollable
       }
-    ]
+    ], true)
   }
 
   get isCurrent() {
@@ -246,7 +245,7 @@ export class Dialog {
 
     if (!instance) return;
 
-    const zIndex = getComputedStyle(instance.$host, 'z-index');
+    const zIndex = Helpers.getComputedStyle(instance.$host, 'z-index');
 
     return `${parseInt(zIndex) + 1}`;
   }
@@ -392,7 +391,7 @@ export class Dialog {
     ClickOutside.remove(this.$cell);
 
     // remove keydown listener
-    removeEventListener(document, 'keydown', this.onEscape, true);
+    Helpers.removeEventListener(document, 'keydown', this.onEscape, true);
 
     // reset z-index
     this.$host.style.zIndex = null;
@@ -423,7 +422,7 @@ export class Dialog {
     ClickOutside.add(this.$cell, this.onClickOutside, false);
 
     // add keydown listener
-    addEventListener(document, 'keydown', this.onEscape, true);
+    Helpers.addEventListener(document, 'keydown', this.onEscape, true);
 
     // set z-index
     this.$host.style.zIndex = this.zIndex;

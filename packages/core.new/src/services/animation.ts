@@ -1,4 +1,4 @@
-import { getComputedStyle } from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export type AnimationReflect = 'attribute' | 'class';
 
@@ -96,7 +96,7 @@ export class Animation {
 
                 try {
 
-                    const style = getComputedStyle(item);
+                    const style = Helpers.getComputedStyle(item);
 
                     const duration = [
                         style.animationDelay,

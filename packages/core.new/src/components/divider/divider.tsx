@@ -1,4 +1,5 @@
-import { Attributes, Component, Direction, GlobalConfig, IsRTL, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, IsRTL, Property } from '@app/decorators';
+// import * as Helpers from '@app/helpers';
 import { DividerSize, DividerType } from './divider.types';
 
 /**
@@ -44,9 +45,6 @@ export class Divider {
   })
   config?;
 
-  @Direction()
-  direction;
-
   @IsRTL()
   isRTL: boolean;
 
@@ -58,11 +56,10 @@ export class Divider {
     }
   }
 
-  // @Class()
   // get Classes() {
   //   return {
   //     'root': true,
-  //     [this.direction]: true,
+  //     [Helpers.direction(this)]: true,
   //   }
   // }
 

@@ -1,4 +1,4 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export function State() {
 
@@ -24,7 +24,7 @@ export function State() {
 
             value = input;
 
-            const api = Helper.api(this);
+            const api = Helpers.api(this);
 
             if (!api?.ready) return;
 

@@ -1,8 +1,8 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export const styles = (input) => {
 
-    const type = Helper.typeOf(input);
+    const type = Helpers.typeOf(input);
 
     if (type == 'undefined') 
         return input;

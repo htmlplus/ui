@@ -1,3 +1,3 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
-export const isRTL = (target) => Helper.direction(target) == 'rtl';
+export const isRTL = (target) => Helpers.direction(target) == 'rtl';

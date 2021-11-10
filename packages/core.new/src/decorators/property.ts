@@ -1,4 +1,4 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 interface Options {
     // TODO: will be remove
@@ -30,7 +30,7 @@ export function Property(options?: Options) {
 
             value = input;
 
-            const api = Helper.api(this);
+            const api = Helpers.api(this);
 
             if (!api?.ready) return;
 

@@ -1,4 +1,4 @@
-import * as Helper from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export function Watch(...keys: Array<string>) {
 
@@ -20,7 +20,7 @@ export function Watch(...keys: Array<string>) {
 
                 if (input === value) return;
 
-                const api = Helper.api(this);
+                const api = Helpers.api(this);
     
                 if (!api?.ready) return;
 

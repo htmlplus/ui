@@ -1,4 +1,5 @@
-import { Bind, Classes, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import CropperCore from 'cropperjs';
 import { CropperAspectRatio, CropperValue, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomData } from './cropper.types';
 
@@ -154,16 +155,15 @@ export class Cropper {
 
   lock: boolean = false;
 
-  @Classes(true)
   get classes() {
-    return [
+    return Helpers.classes([
       'wrapper',
       {
         resizer: this.resizer,
         resizerShape: this.resizerShape,
         shape: this.shape,
       }
-    ]
+    ], true)
   }
 
   get options() {
