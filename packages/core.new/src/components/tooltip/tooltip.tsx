@@ -219,13 +219,13 @@ export class Tooltip {
 
   bind() {
     if (this.disabled) return;
-    this.eventsName.show.map((eventName) => Helpers.addEventListener(this.$activator, eventName, this.onShow));
-    this.eventsName.hide.map((eventName) => Helpers.addEventListener(this.$activator, eventName, this.onHide));
+    this.eventsName.show.map((eventName) => Helpers.on(this.$activator, eventName, this.onShow));
+    this.eventsName.hide.map((eventName) => Helpers.on(this.$activator, eventName, this.onHide));
   }
 
   unbind() {
-    this.eventsName.show.map((eventName) => Helpers.removeEventListener(this.$activator, eventName, this.onShow));
-    this.eventsName.hide.map((eventName) => Helpers.removeEventListener(this.$activator, eventName, this.onHide));
+    this.eventsName.show.map((eventName) => Helpers.off(this.$activator, eventName, this.onShow));
+    this.eventsName.hide.map((eventName) => Helpers.off(this.$activator, eventName, this.onHide));
   }
 
   /**

@@ -78,7 +78,7 @@ export function Media(query: string) {
 
             const callback = this[propertyKey];
 
-            Helpers.addEventListener(media, 'change', callback);
+            Helpers.on(media, 'change', callback);
 
             connected && connected.bind(this)();
 
@@ -99,7 +99,7 @@ export function Media(query: string) {
 
             const callback = this[propertyKey];
 
-            Helpers.removeEventListener(media, 'change', callback);
+            Helpers.off(media, 'change', callback);
 
             disconnected && disconnected.bind(this)();
         }

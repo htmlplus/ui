@@ -166,11 +166,11 @@ export class Transition {
   }
 
   mount() {
-    this.events.map(({ event, handler }) => Helpers.addEventListener(this.$host, event, handler));
+    this.events.map(({ event, handler }) => Helpers.on(this.$host, event, handler));
   }
 
   unmount() {
-    this.events.map(({ event, handler }) => Helpers.removeEventListener(this.$host, event, handler));
+    this.events.map(({ event, handler }) => Helpers.off(this.$host, event, handler));
   }
 
   render() {

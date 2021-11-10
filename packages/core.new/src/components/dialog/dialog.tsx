@@ -385,7 +385,7 @@ export class Dialog {
     ClickOutside.remove(this.$cell);
 
     // remove keydown listener
-    Helpers.removeEventListener(document, 'keydown', this.onEscape, true);
+    Helpers.off(document, 'keydown', this.onEscape, true);
 
     // reset z-index
     this.$host.style.zIndex = null;
@@ -416,7 +416,7 @@ export class Dialog {
     ClickOutside.add(this.$cell, this.onClickOutside, false);
 
     // add keydown listener
-    Helpers.addEventListener(document, 'keydown', this.onEscape, true);
+    Helpers.on(document, 'keydown', this.onEscape, true);
 
     // set z-index
     this.$host.style.zIndex = this.zIndex;

@@ -23,7 +23,7 @@ export class ClickOutside {
             callback(event);
         }
 
-        Helpers.addEventListener(document, this.type, fn, true);
+        Helpers.on(document, this.type, fn, true);
 
         this.targets.set(element, fn);
     }
@@ -34,7 +34,7 @@ export class ClickOutside {
 
         if (!callback) return;
 
-        Helpers.removeEventListener(document, this.type, callback, true);
+        Helpers.off(document, this.type, callback, true);
 
         this.targets.delete(element);
     }

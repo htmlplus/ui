@@ -81,13 +81,13 @@ export class ScrollIndicator {
 
     if (this.disabled) return;
     
-    Helpers.addEventListener(this.$source, 'scroll', this.onScroll);
+    Helpers.on(this.$source, 'scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    Helpers.removeEventListener(this.$source, 'scroll', this.onScroll);
+    Helpers.off(this.$source, 'scroll', this.onScroll);
   }
 
   /**
