@@ -1,4 +1,5 @@
 export * from './api';
+export * from './children';
 export * from './classes';
 export * from './direction';
 export * from './event-path';

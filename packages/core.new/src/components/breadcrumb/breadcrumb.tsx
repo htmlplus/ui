@@ -57,7 +57,7 @@ export class Breadcrumb {
 
     ].join(',');
 
-    return Array.from(this.$host.children).filter(($node) => !$node.matches(selectors));
+    return Helpers.children(this).filter(($node) => !$node.matches(selectors));
   }
 
   get $host() {
