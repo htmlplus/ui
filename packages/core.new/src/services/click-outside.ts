@@ -1,4 +1,4 @@
-import { addEventListener, removeEventListener, eventPath } from '@app/helpers';
+import * as Helpers from '@app/helpers';
 
 export class ClickOutside {
 
@@ -14,7 +14,7 @@ export class ClickOutside {
 
         const fn = (event) => {
 
-            const path = eventPath(event);
+            const path = Helpers.eventPath(event);
 
             const index = path.findIndex((item) => item === element);
 
@@ -23,7 +23,7 @@ export class ClickOutside {
             callback(event);
         }
 
-        addEventListener(document, this.type, fn, true);
+        Helpers.addEventListener(document, this.type, fn, true);
 
         this.targets.set(element, fn);
     }
@@ -34,7 +34,7 @@ export class ClickOutside {
 
         if (!callback) return;
 
-        removeEventListener(document, this.type, callback, true);
+        Helpers.removeEventListener(document, this.type, callback, true);
 
         this.targets.delete(element);
     }

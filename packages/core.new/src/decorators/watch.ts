@@ -1,3 +1,5 @@
+import * as Helper from '@app/helpers';
+
 export function Watch(...keys: Array<string>) {
 
     return function (target: any, propertyKey: PropertyKey) {
@@ -18,7 +20,9 @@ export function Watch(...keys: Array<string>) {
 
                 if (input === value) return;
 
-                if (!this.$api?.ready) return;
+                const api = Helper.api(this);
+    
+                if (!api?.ready) return;
 
                 this[propertyKey](input, value, key);
             }

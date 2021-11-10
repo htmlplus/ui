@@ -1,4 +1,5 @@
 import * as CONSTANTS from '@app/constants';
+import * as Helper from '@app/helpers';
 
 export function GlobalConfig(namespace: string, initial = {}) {
 
@@ -8,7 +9,7 @@ export function GlobalConfig(namespace: string, initial = {}) {
 
     target.connectedCallback = function () {
 
-      const $host = this.$api?.host();
+      const $host = Helper.host(this);
 
       const config = window[CONSTANTS.GLOBAL_CONFIG_NAME] || {};
 

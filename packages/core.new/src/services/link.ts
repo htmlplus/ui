@@ -1,3 +1,5 @@
+import * as Helper from '@app/helpers';
+
 type LinkInstance = any;
 type LinkTarget = any;
 type LinkPropertyName = string;
@@ -253,7 +255,7 @@ export const createLink = (namespace: string) => {
       connected && connected.bind(this)();
 
       const property: LinkProperty = {
-        element: this.$api?.host(),
+        element: Helper.host(this),
         instance: this,
         name,
         type,

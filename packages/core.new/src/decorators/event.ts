@@ -1,3 +1,5 @@
+import * as Helper from '@app/helpers';
+
 export type EventEmitter<T = any> = (data?: T) => CustomEvent<T>;
 
 export interface EventOptions {
@@ -37,11 +39,9 @@ export function Event<T = any>(options: EventOptions = {}) {
                             ...options,
                             detail: data
                         }
-                    );
-
-                    const $host = this.$api?.host();
+                    )
                     
-                    $host.dispatchEvent(event);
+                    Helper.host(this)?.dispatchEvent(event);
 
                     return event;
                 }

@@ -1,3 +1,5 @@
+import * as Helper from '@app/helpers';
+
 interface Options {
     // TODO: will be remove
     mutable?: boolean;
@@ -28,9 +30,11 @@ export function Property(options?: Options) {
 
             value = input;
 
-            if (!this.$api?.ready) return;
+            const api = Helper.api(this);
 
-            this.$api?.property(propertyKey, input);
+            if (!api?.ready) return;
+
+            api?.property(propertyKey, input);
         }
 
         Object.defineProperty(target, propertyKey, descriptor);

@@ -1,3 +1,5 @@
+import * as Helper from '@app/helpers';
+
 export function State() {
 
     return function (target: Object, propertyKey: PropertyKey) {
@@ -22,9 +24,11 @@ export function State() {
 
             value = input;
 
-            if (!this.$api?.ready) return;
+            const api = Helper.api(this);
 
-            this.$api?.state(propertyKey, input);
+            if (!api?.ready) return;
+
+            api?.state(propertyKey, input);
         }
 
         Object.defineProperty(target, propertyKey, descriptor);
