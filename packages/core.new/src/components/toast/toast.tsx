@@ -1,4 +1,4 @@
-import { Attributes, Component, Event, EventEmitter, GlobalConfig, GlobalState, IsRTL, Property, Watch } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
@@ -121,9 +121,6 @@ export class Toast {
     instances: []
   }
 
-  @IsRTL()
-  isRTL?: boolean;
-
   $root!: HTMLElement;
 
   animate?: Animation;
@@ -170,6 +167,10 @@ export class Toast {
     const last = instances.length - 1;
 
     return instances[last] === this;
+  }
+
+  get isRTL() {
+    return Helpers.isRTL(this);
   }
 
   get zIndex() {

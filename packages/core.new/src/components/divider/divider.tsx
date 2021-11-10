@@ -1,4 +1,4 @@
-import { Attributes, Component, GlobalConfig, IsRTL, Property } from '@app/decorators';
+import { Attributes, Component, GlobalConfig, Property } from '@app/decorators';
 // import * as Helpers from '@app/helpers';
 import { DividerSize, DividerType } from './divider.types';
 
@@ -45,9 +45,6 @@ export class Divider {
   })
   config?;
 
-  @IsRTL()
-  isRTL: boolean;
-
   @Attributes()
   get attributes() {
     return {
@@ -64,11 +61,11 @@ export class Divider {
   // }
 
   // get hasBefore() {
-  //   return Helper.fromAxis(this.placement, this.isRTL) !== 'start';
+  //   return Helper.fromAxis(this.placement, Helpers.host(this)) !== 'start';
   // }
 
   // get hasAfter() {
-  //   return Helper.fromAxis(this.placement, this.isRTL) !== 'end';
+  //   return Helper.fromAxis(this.placement, Helpers.host(this)) !== 'end';
   // }
 
   get orientation() {

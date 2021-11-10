@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, EventEmitter, GlobalConfig, IsRTL, Property, State, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, EventEmitter, GlobalConfig, Property, State, Watch } from '@app/decorators';
 import { createPopper, Instance } from '@popperjs/core';
 import * as Helpers from '@app/helpers';
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
@@ -120,9 +120,6 @@ export class Tooltip {
     trigger: ['focus', 'hover'],
   })
   config;
-
-  @IsRTL()
-  isRTL?: boolean;
 
   instance?: Instance;
 

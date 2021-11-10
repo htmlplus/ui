@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, GlobalState, IsRTL, Property, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, GlobalState, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
@@ -163,9 +163,6 @@ export class Dialog {
     instances: []
   }
 
-  @IsRTL()
-  isRTL?: boolean;
-
   $cell!: HTMLElement;
 
   animate?: Animation;
@@ -212,7 +209,7 @@ export class Dialog {
 
     y = y || 'center';
 
-    x = Helpers.toAxis(x, this.isRTL);
+    x = Helpers.toAxis(x, Helpers.isRTL(this));
 
     return Helpers.classes([
       'dialog',

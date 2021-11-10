@@ -1,4 +1,4 @@
-import { Bind, Component, GlobalConfig, IsRTL, Property, State, Watch } from '@app/decorators';
+import { Bind, Component, GlobalConfig, Property, State, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import * as Constants from './breadcrumb.constants';
 
@@ -43,9 +43,6 @@ export class Breadcrumb {
     offset: 1,
   })
   config?;
-
-  @IsRTL()
-  isRTL?: boolean;
 
   @State()
   items?: Array<any>;
