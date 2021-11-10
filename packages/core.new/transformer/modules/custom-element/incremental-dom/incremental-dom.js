@@ -1,9 +1,8 @@
-import * as common from '../../plugins/index.js';
-import * as local from './plugins/index.js';
-import { docs } from '../docs.js';
-import { vscode } from '../vscode.js';
+import * as common from '../../../plugins/index.js';
+import { docs } from '../../docs.js';
+import { vscode } from '../../vscode.js';
 
-export const customElement = async (config) => {
+export const incrementalDom = async (config) => {
 
     const tasks = [
         common.cache.load,
@@ -13,10 +12,10 @@ export const customElement = async (config) => {
         common.extract,
         common.script,
         common.scss,
-        local.markup,
-        local.script,
-        local.style,
-        local.component,
+        // local.markup,
+        // local.script,
+        // local.style,
+        // local.component,
         docs,
         vscode,
         common.cache.save,

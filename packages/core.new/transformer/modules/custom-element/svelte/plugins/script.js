@@ -1,5 +1,5 @@
 import Case from 'case';
-import * as CONSTANTS from '../../../configs/constants.js';
+import * as CONSTANTS from '../../../../configs/constants.js';
 
 export const script = (config) => {
 
@@ -17,7 +17,7 @@ export const script = (config) => {
             lines.push('<script lang="ts">');
 
         // TODO
-        lines.push('import { setAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/utils/index";');
+        lines.push('import { setAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/svelte/utils/index";');
 
         lines.push('import { get_current_component, onMount, onDestroy } from "svelte/internal";');
 
