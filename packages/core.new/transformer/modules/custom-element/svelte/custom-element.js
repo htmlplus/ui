@@ -1,7 +1,7 @@
 import * as common from '../../../plugins/index.js';
-import * as local from './plugins/index.js';
 import { docs } from '../../docs.js';
 import { vscode } from '../../vscode.js';
+import * as local from './plugins/index.js';
 
 export const customElement = async (config) => {
 

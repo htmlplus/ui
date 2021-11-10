@@ -1,6 +1,7 @@
 import * as common from '../../../plugins/index.js';
 import { docs } from '../../docs.js';
 import { vscode } from '../../vscode.js';
+import * as local from './plugins/index.js';
 
 export const incrementalDom = async (config) => {
 
@@ -12,10 +13,10 @@ export const incrementalDom = async (config) => {
         common.extract,
         common.script,
         common.scss,
-        // local.markup,
-        // local.script,
-        // local.style,
-        // local.component,
+        local.markup,
+        local.script,
+        local.style,
+        local.component,
         docs,
         vscode,
         common.cache.save,
