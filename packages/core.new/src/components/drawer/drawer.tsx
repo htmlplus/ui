@@ -390,11 +390,11 @@ export class Drawer {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
     this.initialize();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.terminate();
   }
 

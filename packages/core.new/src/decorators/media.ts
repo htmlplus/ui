@@ -70,9 +70,9 @@ export function Media(query: string) {
 
         let media;
 
-        const connected = target.connectedCallback;
+        const connected = target.mount;
 
-        target.connectedCallback = function () {
+        target.mount = function () {
 
             media = getMedia(this, query);
 
@@ -93,9 +93,9 @@ export function Media(query: string) {
             media.dispatchEvent(event);
         }
 
-        const disconnected = target.disconnectedCallback;
+        const disconnected = target.unmount;
 
-        target.disconnectedCallback = function () {
+        target.unmount = function () {
 
             const callback = this[propertyKey];
 

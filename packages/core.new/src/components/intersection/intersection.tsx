@@ -204,14 +204,14 @@ export class Intersection {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
 
     this.isVisible = (this.behavior !== 'appear');
 
     !this.disabled && this.bind();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.unbind();
   }
 

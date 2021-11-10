@@ -83,11 +83,11 @@ export class ClickOutside {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
     !this.disabled && this.bind();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.unbind();
   }
 

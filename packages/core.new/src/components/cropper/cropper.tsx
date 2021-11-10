@@ -543,12 +543,12 @@ export class Cropper {
    * Lifecycles
    */
 
-  // TODO: convert 'componentDidLoad' to 'connectedCallback'
-  connectedCallback() {
+  // TODO: convert 'componentDidLoad' to 'mount'
+  mount() {
     this.bind();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.unbind();
   }
 

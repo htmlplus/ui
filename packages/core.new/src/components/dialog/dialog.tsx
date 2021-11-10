@@ -455,12 +455,12 @@ export class Dialog {
    * Lifecycles
    */
 
-  // it's can not be `connectedCallback`, because ClickOutside incompatible 
-  connectedCallback() {
+  // it's can not be `mount`, because ClickOutside incompatible 
+  mount() {
     this.initialize();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.terminate();
   }
 

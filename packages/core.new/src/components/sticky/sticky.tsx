@@ -134,11 +134,11 @@ export class Sticky {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
     this.bind();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.unbind();
   }
 

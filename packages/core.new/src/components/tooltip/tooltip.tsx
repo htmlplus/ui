@@ -263,11 +263,11 @@ export class Tooltip {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
     this.bind();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.unbind();
   }
 

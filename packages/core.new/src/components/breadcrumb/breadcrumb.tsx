@@ -208,14 +208,14 @@ export class Breadcrumb {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
 
     this.bind();
 
     this.update(false);
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.unbind();
   }
 

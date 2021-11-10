@@ -248,9 +248,9 @@ export const createLink = (namespace: string) => {
 
   const decorator = (type: LinkPropertyType) => () => (target: LinkTarget, name: LinkPropertyName) => {
 
-    const connected = target.connectedCallback;
+    const connected = target.mount;
 
-    target.connectedCallback = function () {
+    target.mount = function () {
 
       connected && connected.bind(this)();
 
@@ -267,9 +267,9 @@ export const createLink = (namespace: string) => {
       connect(property);
     }
 
-    const disconnected = target.disconnectedCallback;
+    const disconnected = target.unmount;
 
-    target.disconnectedCallback = function () {
+    target.unmount = function () {
 
       disconnected && disconnected.bind(this)();
 

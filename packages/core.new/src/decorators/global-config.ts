@@ -5,9 +5,9 @@ export function GlobalConfig(namespace: string, initial = {}) {
 
   return function (target: any, propertyKey: PropertyKey) {
 
-    const connected = target.connectedCallback;
+    const connected = target.mount;
 
-    target.connectedCallback = function () {
+    target.mount = function () {
 
       const $host = Helpers.host(this);
 

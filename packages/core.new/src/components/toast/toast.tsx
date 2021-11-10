@@ -406,11 +406,11 @@ export class Toast {
    * Lifecycles
    */
 
-  connectedCallback() {
+  mount() {
     this.initialize();
   }
 
-  disconnectedCallback() {
+  unmount() {
     this.terminate();
   }
 
