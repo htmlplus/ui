@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
@@ -36,9 +36,6 @@ export class ScrollIndicator {
     source: 'document'
   })
   config?;
-
-  @Host()
-  $host!: HTMLElement;
 
   $indicator!: HTMLElement;
 

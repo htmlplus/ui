@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, GlobalState, IsRTL, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import {
@@ -166,9 +166,6 @@ export class Dialog {
   @IsRTL()
   isRTL?: boolean;
 
-  @Host()
-  $host!: HTMLElement;
-
   $cell!: HTMLElement;
 
   animate?: Animation;
@@ -180,6 +177,10 @@ export class Dialog {
 
   @Observable()
   tunnel?: boolean;
+
+  get $host() {
+    return Helpers.host(this);
+  }
 
   @Attributes()
   get attributes() {

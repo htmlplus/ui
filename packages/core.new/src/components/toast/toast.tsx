@@ -1,4 +1,4 @@
-import { Attributes, Component, Event, EventEmitter, GlobalConfig, GlobalState, Host, IsRTL, Property, Watch } from '@app/decorators';
+import { Attributes, Component, Event, EventEmitter, GlobalConfig, GlobalState, IsRTL, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, createLink } from '@app/services';
 import { ToastGlobalState, ToastPlacement, ToastType } from './toast.types';
@@ -124,9 +124,6 @@ export class Toast {
   @IsRTL()
   isRTL?: boolean;
 
-  @Host()
-  $host!: HTMLElement;
-
   $root!: HTMLElement;
 
   animate?: Animation;
@@ -138,6 +135,10 @@ export class Toast {
 
   @Observable()
   tunnel?: boolean;
+
+  get $host() {
+    return Helpers.host(this);
+  }
 
   @Attributes()
   get attributes() {

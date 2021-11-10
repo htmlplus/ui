@@ -1,4 +1,4 @@
-import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, Host, IsRTL, Media, Property, State, Watch } from '@app/decorators';
+import { Attributes, Bind, Component, Event, EventEmitter, GlobalConfig, IsRTL, Media, Property, State, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
@@ -131,9 +131,6 @@ export class Drawer {
   @State()
   platform?: DrawerPlatform;
 
-  @Host()
-  $host!: HTMLElement;
-
   $root!: HTMLElement;
 
   animations: { open?: Animation, mini?: Animation } = {};
@@ -142,6 +139,10 @@ export class Drawer {
 
   @Observable()
   tunnel?: boolean;
+
+  get $host() {
+    return Helpers.host(this);
+  }
 
   @Attributes()
   get attributes() {

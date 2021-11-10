@@ -1,4 +1,4 @@
-import { Bind, Component, Event, EventEmitter, Host, Property, State, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, Property, State, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
@@ -80,14 +80,15 @@ export class Menu {
   @State()
   y?: string;
 
-  @Host()
-  $host!: HTMLElement;
-
   $activator!: HTMLElement;
 
   $content!: HTMLElement;
 
   observer?: any;
+
+  get $host() {
+    return Helpers.host(this);
+  }
 
   get getGrowX() {
 

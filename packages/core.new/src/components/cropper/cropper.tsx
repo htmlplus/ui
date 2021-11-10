@@ -1,4 +1,4 @@
-import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Method, Property, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, GlobalConfig, Method, Property, Watch } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import CropperCore from 'cropperjs';
 import { CropperAspectRatio, CropperValue, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomData } from './cropper.types';
@@ -145,9 +145,6 @@ export class Cropper {
     zoomRatio: 0.1,
   })
   config?;
-
-  @Host()
-  $host!: HTMLElement;
 
   $image!: HTMLImageElement;
 

@@ -60,7 +60,11 @@ export class Breadcrumb {
 
     ].join(',');
 
-    return Array.from(Helpers.host(this).children).filter(($node) => !$node.matches(selectors));
+    return Array.from(this.$host.children).filter(($node) => !$node.matches(selectors));
+  }
+
+  get $host() {
+    return Helpers.host(this);
   }
 
   get attributes() {
@@ -71,7 +75,7 @@ export class Breadcrumb {
 
   get template() {
 
-    const $node = Helpers.host(this).querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
+    const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
 
     const $clone = $node?.cloneNode(true) as HTMLElement;
 
@@ -90,7 +94,7 @@ export class Breadcrumb {
 
     this.observer = new MutationObserver(this.onChange);
 
-    this.observer.observe(Helpers.host(this), { childList: true });
+    this.observer.observe(this.$host, { childList: true });
   }
 
   unbind() {

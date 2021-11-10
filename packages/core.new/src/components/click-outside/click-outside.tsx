@@ -1,4 +1,5 @@
-import { Bind, Component, Event, EventEmitter, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { Bind, Component, Event, EventEmitter, GlobalConfig, Property, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import { ClickOutside as ClickOutsideCore } from '@app/services';
 
 /**
@@ -28,8 +29,9 @@ export class ClickOutside {
   @GlobalConfig('clickOutside')
   config?;
 
-  @Host()
-  $host!: HTMLElement;
+  get $host() {
+    return Helpers.host(this);
+  }
 
   /**
    * Internal Methods

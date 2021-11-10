@@ -1,4 +1,5 @@
-import { Component, GlobalConfig, Host, Property, Watch } from '@app/decorators';
+import { Component, GlobalConfig, Property, Watch } from '@app/decorators';
+import * as Helpers from '@app/helpers';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
@@ -33,13 +34,10 @@ export class Portal {
   })
   config?;
 
-  @Host()
-  $host!: HTMLElement;
-
   instance?: PortalCore;
 
   get $nodes() {
-    return Array.from(this.$host.children);
+    return Array.from(Helpers.host(this).children);
   }
 
   /**
