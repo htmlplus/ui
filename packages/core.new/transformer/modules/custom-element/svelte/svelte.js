@@ -3,7 +3,7 @@ import { docs } from '../../docs.js';
 import { vscode } from '../../vscode.js';
 import * as local from './plugins/index.js';
 
-export const customElement = async (config) => {
+export const customElementSvelte = async (config) => {
 
     const tasks = [
         common.cache.load,

@@ -38,11 +38,11 @@ export class ClickOutside {
    */
 
   bind() {
-    ClickOutsideCore.add(this.$host, this.onClickOutside);
+    ClickOutsideCore.on(this.$host, this.onClickOutside);
   }
 
   unbind() {
-    ClickOutsideCore.remove(this.$host);
+    ClickOutsideCore.off(this.$host);
   }
 
   rebind() {

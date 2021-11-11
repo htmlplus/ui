@@ -382,7 +382,7 @@ export class Dialog {
     Scrollbar.reset(this);
 
     // remove outside click listener
-    ClickOutside.remove(this.$cell);
+    ClickOutside.off(this.$cell);
 
     // remove keydown listener
     Helpers.off(document, 'keydown', this.onEscape, true);
@@ -413,7 +413,7 @@ export class Dialog {
     Scrollbar.remove(this);
 
     // remove outside click listener
-    ClickOutside.add(this.$cell, this.onClickOutside, false);
+    ClickOutside.on(this.$cell, this.onClickOutside, false);
 
     // add keydown listener
     Helpers.on(document, 'keydown', this.onEscape, true);

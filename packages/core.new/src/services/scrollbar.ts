@@ -37,7 +37,7 @@ export class Scrollbar {
 
         if (!isOverflowing) return;
 
-        const direction = Helpers.getComputedStyle(window.document.body, 'direction');
+        const direction = Helpers.direction(window.document.body);
 
         const property = direction === 'rtl' ? 'paddingLeft' : 'paddingRight';
 

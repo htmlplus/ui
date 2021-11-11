@@ -3,7 +3,7 @@ import { docs } from '../../docs.js';
 import { vscode } from '../../vscode.js';
 import * as local from './plugins/index.js';
 
-export const incrementalDom = async (config) => {
+export const customElementIncrementalDom = async (config) => {
 
     const tasks = [
         common.cache.load,

@@ -2,8 +2,18 @@ import { spawn } from 'child_process';
 import esbuild from 'esbuild';
 import glob from 'glob';
 import http from 'http';
-import { incrementalDom } from '../transformer/modules/index.js';
-import config from './start.config.js';
+import { customElementIncrementalDom } from '../transformer/index.js';
+
+const config = {
+	dev: true,
+	port: 3000,
+	prefix: 'plus',
+	// cache: '.cache',
+	include: './src/**/click-outside.tsx',
+	scss: {
+		includePaths: ['./src/styles']
+	}
+}
 
 const
 	clients = [],
@@ -31,7 +41,7 @@ esbuild
 				name: 'htmlplus',
 				async setup(build) {
 
-					const transformer = await incrementalDom(config);
+					const transformer = await customElementIncrementalDom(config);
 
 					build.onLoad({ filter: /\.tsx$/ }, async (args) => {
 

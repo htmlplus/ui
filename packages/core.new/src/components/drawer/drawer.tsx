@@ -345,7 +345,7 @@ export class Drawer {
     Scrollbar.reset(this);
 
     // remove outside click listener
-    ClickOutside.remove(this.$root);
+    ClickOutside.off(this.$root);
 
     // update state
     this.open = this.isOpen = false;
@@ -360,7 +360,7 @@ export class Drawer {
     this.isTemporary && Scrollbar.remove(this);
 
     // remove outside click listener
-    ClickOutside.add(this.$root, this.onClickOutside, false);
+    ClickOutside.on(this.$root, this.onClickOutside, false);
 
     // update state
     this.open = this.isOpen = true;

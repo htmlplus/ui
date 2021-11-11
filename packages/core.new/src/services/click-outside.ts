@@ -8,9 +8,9 @@ export class ClickOutside {
         return 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
     }
 
-    static add(element, callback, self = true) {
+    static on(element, callback, self = true) {
 
-        this.remove(element);
+        this.off(element);
 
         const fn = (event) => {
 
@@ -28,7 +28,7 @@ export class ClickOutside {
         this.targets.set(element, fn);
     }
 
-    static remove(element) {
+    static off(element) {
 
         const callback = this.targets.get(element);
 

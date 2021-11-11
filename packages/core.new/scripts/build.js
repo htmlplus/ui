@@ -5,8 +5,20 @@ import path from 'path';
 import { rollup } from 'rollup';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import { incrementalDom } from '../transformer/modules/index.js';
-import config from './build.config.js';
+import { customElementIncrementalDom } from '../transformer/index.js';
+
+const config = {
+    dev: false,
+    prefix: 'plus',
+    include: './src/**/click-outside.tsx',
+    // docs: './dist/json/docs.json',
+    // vscode: './dist/json/html.html-data.json',
+    scss: {
+        includePaths: ['./src/styles'],
+    },
+    // TODO
+    chunks: []
+}
 
 let transformer;
 
@@ -22,35 +34,27 @@ const options = {
             chunkFileNames: '[name].js',
             manualChunks(id) {
 
-                if (id.includes('cropperjs')) return 'core.cropperjs';
-                
-                if (id.includes('helpers')) return 'core.helpers';
-                
-                if (id.includes('popperjs')) return 'core.popperjs';
-                
-                if (id.includes('services')) return 'core.' + path.basename(id);
+                const name = path.basename(id, path.extname(id));
 
-                if (id.endsWith('.tsx')) return path.basename(id);
+                if (id.includes('cropperjs')) return 'core.cropperjs';
+
+                if (id.includes('helpers')) return 'core.helpers';
+
+                if (id.includes('popperjs')) return 'core.popperjs';
+
+                if (id.includes('services')) return 'core.' + name;
+
+                if (id.endsWith('.tsx')) return name;
 
                 return 'core';
             },
         }
-        // {
-        //   format: 'cjs',
-        //   dir: 'dist/cjs',
-        //   exports: 'default',
-        // },
-        // {
-        //   format: 'umd',
-        //   dir: 'dist/umd',
-        //   name: 'htmlplus',
-        // },
     ],
     plugins: [
         {
             name: 'htmlplus',
             async buildStart() {
-                transformer = await incrementalDom(config);
+                transformer = await customElementIncrementalDom(config);
             },
             async load(id) {
 

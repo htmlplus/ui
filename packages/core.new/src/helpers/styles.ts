@@ -1,3 +1,4 @@
+import { toKebabCase } from './to-kebab-case';
 import { typeOf } from './type-of';
 
 export const styles = (input) => {
@@ -7,26 +8,14 @@ export const styles = (input) => {
     if (type == 'undefined')
         return input;
 
-    if (type === 'array')
+    if (type == 'array')
         return input.join('; ');
 
-    if (type !== 'object')
+    if (type != 'object')
         return input;
 
-    let styles = [];
-
-    const keys = Object.keys(input);
-
-    for (const key of keys) {
-
-        // TODO
-        const name = key
-            .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-            .map(x => x.toLowerCase())
-            .join('-');
-
-        styles.push(`${name}: ${input[key]}`);
-    }
-
-    return styles.join(';');
+    return Object
+        .keys(input)
+        .map((key) => `${toKebabCase(key)}: ${input[key]}`)
+        .join('; ');
 }
