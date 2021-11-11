@@ -74,6 +74,78 @@
       attributes: true
     });
   </script> -->
+  <style>
+    plus-browse {
+      background: white;
+      border: 2px dashed #E0E0E0;
+      border-radius: 4px;
+      display: block;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    plus-browse[dragging] {
+      border-color: #0087F7;
+    }
+  </style>
+
+  <plus-browse id="element" droppable>
+    Click or Drag & Drop a file here
+  </plus-browse>
+
+  <script>
+    const onChange = (event) => {
+      const name = event.detail.files[0].file.name;
+      alert(`File '${name}' selected.`);
+    }
+    element.addEventListener('plusChange', onChange);
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+  <style>
+    .container {
+      padding: 1rem;
+    }
+
+    plus-click-outside {
+      margin: auto;
+      display: block;
+      max-width: 20rem;
+    }
+  </style>
+
+  <plus-click-outside id="element1">
+    <plus-card elevation="10">
+      <div class="container">
+        <b id="element2">0</b> time(s) inside clicked
+        <br />
+        <b id="element3">0</b> time(s) outside clicked
+      </div>
+    </plus-card>
+  </plus-click-outside>
+
+  <script>
+    let inside = 0;
+    let outside = 0;
+    element1.addEventListener('click', (event) => {
+      inside = inside + 1;
+      element2.innerHTML = inside;
+    })
+    element1.addEventListener('plusClickOutside', (event) => {
+      outside = outside + 1;
+      element3.innerHTML = outside;
+    })
+  </script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ import path from 'path';
 import { rollup } from 'rollup';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import { customElement } from '../transformer/modules/index.js';
+import { incrementalDom } from '../transformer/modules/index.js';
 import config from './build.config.js';
 
 let transformer;
@@ -20,7 +20,7 @@ const options = {
             format: 'es',
             dir: 'dist/esm',
             chunkFileNames: '[name].js',
-            manualChunks(id, p) {
+            manualChunks(id) {
 
                 if (id.includes('cropperjs')) return 'core.cropperjs';
                 
@@ -50,7 +50,7 @@ const options = {
         {
             name: 'htmlplus',
             async buildStart() {
-                transformer = await customElement(config);
+                transformer = await incrementalDom(config);
             },
             async load(id) {
 

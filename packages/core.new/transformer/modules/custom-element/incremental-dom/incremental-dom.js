@@ -12,10 +12,9 @@ export const incrementalDom = async (config) => {
         common.validate,
         common.extract,
         common.scss,
-        local.markup,
         local.style,
+        local.markup,
         local.script,
-        local.component,
         common.script,
         docs,
         vscode,
@@ -36,7 +35,8 @@ export const incrementalDom = async (config) => {
     }
 
     const finish = async () => {
-        await Promise.all(instances.map((instance) => instance.finish()));
+        // TODO
+        // await Promise.all(instances.map((instance) => instance.finish()));
     }
 
     return {

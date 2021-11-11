@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 import esbuild from 'esbuild';
 import glob from 'glob';
 import http from 'http';
-import { customElement } from '../transformer/modules/index.js';
+import { incrementalDom } from '../transformer/modules/index.js';
 import config from './start.config.js';
 
 const
@@ -31,7 +31,7 @@ esbuild
 				name: 'htmlplus',
 				async setup(build) {
 
-					const transformer = await customElement(config);
+					const transformer = await incrementalDom(config);
 
 					build.onLoad({ filter: /\.tsx$/ }, async (args) => {
 

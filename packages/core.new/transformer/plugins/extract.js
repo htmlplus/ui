@@ -264,7 +264,7 @@ export const extract = (config) => {
                     ])
                 );
 
-                path.remove();
+                // TODO path.remove();
             },
             Decorator(path) {
 

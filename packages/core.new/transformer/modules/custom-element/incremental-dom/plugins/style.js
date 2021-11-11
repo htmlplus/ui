@@ -14,7 +14,7 @@ export const style = (config) => {
 
         traverse(context.ast, {
             ClassBody(path) {
-                path.node.body.push(
+                path.node.body.unshift(
                     t.classMethod(
                         'get',
                         t.identifier('style'),
