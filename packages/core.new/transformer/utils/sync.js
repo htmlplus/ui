@@ -1,6 +1,6 @@
 import { getEventName } from './get-event-name.js';
 import { isEvent } from './is-event.js';
-import { setAttribute } from './set-attribute.js';
+import { updateAttribute } from './update-attribute.js';
 
 export const sync = (node, prev) => (next = {}) => {
 
@@ -14,7 +14,7 @@ export const sync = (node, prev) => (next = {}) => {
         .filter((key) => key)
         .join(' ');
 
-    setAttribute(node, 'class', newClass);
+    updateAttribute(node, 'class', newClass || undefined);
 
     if (prev.style || next.style)
         node.setAttribute('style', next.style || '');
@@ -45,7 +45,7 @@ export const sync = (node, prev) => (next = {}) => {
             continue;
         }
 
-        setAttribute(node, key, value);
+        updateAttribute(node, key, value);
     }
 
     prev = { ...next };

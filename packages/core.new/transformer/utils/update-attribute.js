@@ -1,4 +1,4 @@
-export const setAttribute = (node, key, value) => {
+export const updateAttribute = (node, key, value) => {
     if (value === undefined) {
         node.removeAttribute(key);
     }

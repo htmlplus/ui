@@ -17,7 +17,7 @@ export const script = (config) => {
             lines.push('<script lang="ts">');
 
         // TODO
-        lines.push('import { setAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/svelte/utils/index";');
+        lines.push('import { updateAttribute, sync, toAttributes, toBoolean, toNumber } from "../../../transformer/modules/custom-element/svelte/utils/index";');
 
         lines.push('import { get_current_component, onMount, onDestroy } from "svelte/internal";');
 
@@ -69,7 +69,7 @@ export const script = (config) => {
 
             // TODO
             if (property.reflect)
-                lines.push(`$: setAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${Case.kebab(name)}', ${name});`);
+                lines.push(`$: updateAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${Case.kebab(name)}', ${name});`);
 
             // TODO
             switch (type) {
