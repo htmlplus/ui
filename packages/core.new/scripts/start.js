@@ -9,7 +9,7 @@ const config = {
 	port: 3000,
 	prefix: 'plus',
 	// cache: '.cache',
-	include: './src/**/browse.tsx',
+	include: './src/**/aspect-ratio.tsx',
 	scss: {
 		includePaths: ['./src/styles']
 	}

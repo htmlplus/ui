@@ -53,7 +53,7 @@ export const proxy = (Class, properties, style) => {
             instance = new Class();
 
             instance.$api = {
-                ready: true,
+                ready: false,
                 host: () => this,
                 property: (name, value, options = {}) => {
 
@@ -77,12 +77,8 @@ export const proxy = (Class, properties, style) => {
                     this,
                     key,
                     {
-                        get: () => {
-                            return instance[key];
-                        },
-                        set: (value) => {
-                            instance[key] = value;
-                        }
+                        get: () => instance[key],
+                        set: (value) => { instance[key] = value }
                     }
                 )
             }
@@ -97,7 +93,12 @@ export const proxy = (Class, properties, style) => {
         }
 
         attributeChangedCallback(name, prev, next) {
+
             instance[name] = getValue(name, next);
+
+            if (!instance.$api.ready) return;
+
+            flush();
         }
 
         connectedCallback() {
@@ -107,6 +108,8 @@ export const proxy = (Class, properties, style) => {
             instance.mount && instance.mount();
 
             flush();
+
+            instance.$api.ready = true;
         }
 
         disconnectedCallback() {

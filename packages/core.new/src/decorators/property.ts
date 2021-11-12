@@ -32,7 +32,7 @@ export function Property(options?: Options) {
 
             const api = Helpers.api(this);
 
-            if (!api.ready) return;
+            if (!api?.ready) return;
 
             api.property(propertyKey, input, options);
         }
