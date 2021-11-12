@@ -12,6 +12,7 @@ export const script = (config) => {
 
         const lines = [];
 
+        // TODO
         context.script = generator(context.ast).code;
 
         lines.push('import { elementOpen, elementClose, elementVoid, patch, text } from "incremental-dom";');
@@ -26,15 +27,15 @@ export const script = (config) => {
                 proxy(
                     ${context.name}, 
                     [
-                        ${context.properties.map((property) => (`['${property.name}', '${property.type}']`)).join(', ')}
+                        ${context.properties.map((property) => (`['${property.name}', ${JSON.stringify(property.type)}]`)).join(', ')}
                     ],
-                    '${context.style}'
+                    ${JSON.stringify(context.style || '')}
                 )
             )
         `);
 
         context.script = lines.join('\n');
-
+        
         // TODO: console.log(123, context.script)
 
         const { code, map, warnings } = esbuild.transformSync(
