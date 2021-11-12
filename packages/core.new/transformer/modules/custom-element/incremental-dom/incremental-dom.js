@@ -12,7 +12,6 @@ export const customElementIncrementalDom = async (config) => {
         common.validate,
         common.extract,
         common.scss,
-        local.style,
         local.markup,
         local.script,
         common.script,

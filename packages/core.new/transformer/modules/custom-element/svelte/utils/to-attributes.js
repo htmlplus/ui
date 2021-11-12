@@ -1,6 +1,4 @@
-const getName = (key) => key.substr(2).toLowerCase();
-
-const isEvent = (key) => key.match(/on[A-Z]\w+/g);
+import { isEvent, getEventName } from '../../../../utils/index.js';
 
 export const toAttributes = (node, attributes = {}) => {
 
@@ -8,7 +6,7 @@ export const toAttributes = (node, attributes = {}) => {
 
     const bind = (key, handler) => {
 
-        const name = getName(key);
+        const name = getEventName(key);
 
         node.addEventListener(name, handler);
 
@@ -21,7 +19,7 @@ export const toAttributes = (node, attributes = {}) => {
 
     const unbind = (key) => {
 
-        const name = getName(key);
+        const name = getEventName(key);
 
         const handler = events[key];
 

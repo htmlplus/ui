@@ -23,13 +23,19 @@ export const script = (config) => {
         lines.push(`
             customElements.define(
                 '${context.tag}',
-                proxy(${context.name}, [${context.properties.map((property) => (`['${property.name}', '${property.type}']`)).join(', ')}]),
-            );
+                proxy(
+                    ${context.name}, 
+                    [
+                        ${context.properties.map((property) => (`['${property.name}', '${property.type}']`)).join(', ')}
+                    ],
+                    '${context.style}'
+                )
+            )
         `);
 
         context.script = lines.join('\n');
 
-        // console.log(123,context.script)
+        console.log(123, context.script);
 
         const { code, map, warnings } = esbuild.transformSync(
             context.script,

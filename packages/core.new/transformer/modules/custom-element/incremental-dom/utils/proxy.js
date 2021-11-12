@@ -1,19 +1,5 @@
 import { elementOpen, elementClose, patch, text } from 'incremental-dom';
-
-const toBoolean = (input) => {
-
-    if (input === '') return true;
-
-    if (input === 'true') return true;
-
-    if (input === true) return true;
-
-    if (input === 'false') return false;
-
-    if (input === false) return false;
-
-    return input;
-};
+import { toBoolean } from '../../../../utils/index.js';
 
 const parse = (value, type) => {
 
@@ -30,9 +16,10 @@ const parse = (value, type) => {
     }
 }
 
-export const proxy = (Class, properties) => {
+export const proxy = (Class, properties, style) => {
 
     let instance;
+
     return class extends HTMLElement {
 
         constructor() {
@@ -95,7 +82,7 @@ export const proxy = (Class, properties) => {
                 this.shadowRoot,
                 () => {
                     elementOpen('style');
-                    text(Class.style);
+                    text(style);
                     elementClose('style');
                     instance.render && instance.render();
                 }

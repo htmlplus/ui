@@ -1,6 +1,4 @@
-const getName = (key) => key.substr(2).toLowerCase();
-
-const isEvent = (key) => key.match(/on[A-Z]\w+/g);
+import { isEvent, getEventName } from '../../../../utils/index.js';
 
 // TODO: next
 export const sync = (node, prev) => (next = {}) => {
@@ -29,7 +27,7 @@ export const sync = (node, prev) => (next = {}) => {
 
         if (!isEvent(key)) continue;
 
-        const name = getName(key);
+        const name = getEventName(key);
 
         node.removeEventListener(name, value);
     }
@@ -42,7 +40,7 @@ export const sync = (node, prev) => (next = {}) => {
 
         if (isEvent(key)) {
 
-            const name = getName(key);
+            const name = getEventName(key);
 
             node.addEventListener(name, value);
 
