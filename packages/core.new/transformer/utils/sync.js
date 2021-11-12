@@ -1,5 +1,6 @@
 import { getEventName } from './get-event-name.js';
 import { isEvent } from './is-event.js';
+import { setAttribute } from './set-attribute.js';
 
 export const sync = (node, prev) => (next = {}) => {
 
@@ -13,10 +14,7 @@ export const sync = (node, prev) => (next = {}) => {
         .filter((key) => key)
         .join(' ');
 
-    if (newClass)
-        node.className = newClass;
-    else
-        node.removeAttribute('class');
+    setAttribute(node, 'class', newClass);
 
     if (prev.style || next.style)
         node.setAttribute('style', next.style || '');
@@ -36,7 +34,7 @@ export const sync = (node, prev) => (next = {}) => {
 
         const value = next[key];
 
-        if (key == 'class' || key == 'style') continue;
+        if (['class', 'style'].includes(key)) continue;
 
         if (isEvent(key)) {
 
@@ -47,18 +45,7 @@ export const sync = (node, prev) => (next = {}) => {
             continue;
         }
 
-        if (value === undefined) {
-            node.removeAttribute(key);
-        }
-        else if (value === false) {
-            node.removeAttribute(key);
-        }
-        else if (value === true) {
-            node.setAttribute(key, '');
-        }
-        else {
-            node.setAttribute(key, value);
-        }
+        setAttribute(node, key, value);
     }
 
     prev = { ...next };

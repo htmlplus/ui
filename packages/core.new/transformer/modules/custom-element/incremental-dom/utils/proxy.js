@@ -5,7 +5,7 @@ export const proxy = (Class, properties, style) => {
 
     let instance, update;
 
-    const render = () => {
+    const flush = () => {
 
         update && update(instance.attributes || {});
 
@@ -35,11 +35,11 @@ export const proxy = (Class, properties, style) => {
                     console.log('api.property', name, value);
                     // if (host[name] === value) return;
                     // this.setAttribute(name, value);
-                    render();
+                    flush();
                 },
                 state: (name, value) => {
                     console.log('api.state', name, value);
-                    render();
+                    flush();
                 },
             };
 
@@ -85,7 +85,7 @@ export const proxy = (Class, properties, style) => {
         connectedCallback() {
             update = sync(this, {});
             instance.mount && instance.mount();
-            render();
+            flush();
         }
 
         disconnectedCallback() {
