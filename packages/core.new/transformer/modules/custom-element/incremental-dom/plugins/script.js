@@ -40,7 +40,7 @@ export const script = (config) => {
         const { code, map, warnings } = esbuild.transformSync(
             context.script,
             {
-                loader: 'tsx'
+                loader: 'ts'
             }
         )
 

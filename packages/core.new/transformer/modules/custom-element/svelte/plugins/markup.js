@@ -14,9 +14,32 @@ export const markup = (config) => {
         
         if (context.skip) return;
 
-        let markup;
+        let markup, render;
 
-        traverse(context.render, {
+        traverse(context.ast, {
+            ClassMethod(path) {
+
+                const { node } = path;
+    
+                if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return;
+    
+                render = t.file(
+                    t.program([
+                        t.classDeclaration(
+                            t.identifier('Test'),
+                            undefined,
+                            t.classBody([
+                                node
+                            ])
+                        )
+                    ])
+                );
+    
+                path.remove();
+            }
+        });
+
+        traverse(render, {
             JSXAttribute: {
                 exit(path) {
 

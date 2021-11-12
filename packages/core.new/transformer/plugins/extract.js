@@ -1,7 +1,6 @@
 import babelGenerator from '@babel/generator';
 import { parse } from '@babel/parser';
 import babelTraverse from '@babel/traverse';
-import t from '@babel/types';
 import Case from 'case';
 import fs from 'fs-extra';
 import path, { dirname, resolve } from 'path';
@@ -230,8 +229,7 @@ export const extract = (config) => {
         let
             additions = [],
             children,
-            component,
-            render;
+            component;
 
         traverse(context.ast, {
             ClassDeclaration: {
@@ -245,26 +243,6 @@ export const extract = (config) => {
 
                     path.skip();
                 }
-            },
-            ClassMethod(path) {
-
-                const { node } = path;
-
-                if (node.key.name != CONSTANTS.TOKEN_METHOD_RENDER) return;
-
-                render = t.file(
-                    t.program([
-                        t.classDeclaration(
-                            t.identifier('Test'),
-                            undefined,
-                            t.classBody([
-                                node
-                            ])
-                        )
-                    ])
-                );
-
-                // TODO path.remove();
             },
             Decorator(path) {
 
@@ -508,13 +486,7 @@ export const extract = (config) => {
 
         additions.forEach((path) => path.remove());
 
-        context.script = generator(context.ast, {
-            comments: false,
-            decoratorsBeforeExport: true,
-        }).code;
-
         // TODO
-        context.render = render;
         context.stylePath = path.join(context.directory, `${context.key}.scss`);
     }
 
