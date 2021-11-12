@@ -26,9 +26,9 @@ export function State() {
 
             const api = Helpers.api(this);
 
-            if (!api?.ready) return;
+            if (!api.ready) return;
 
-            api?.state(propertyKey, input);
+            api.state(propertyKey, input);
         }
 
         Object.defineProperty(target, propertyKey, descriptor);

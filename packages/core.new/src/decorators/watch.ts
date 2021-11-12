@@ -22,7 +22,7 @@ export function Watch(...keys: Array<string>) {
 
                 const api = Helpers.api(this);
     
-                if (!api?.ready) return;
+                if (!api.ready) return;
 
                 this[propertyKey](input, value, key);
             }

@@ -1,4 +1,3 @@
-import Case from 'case';
 import * as CONSTANTS from '../../../../configs/constants.js';
 
 export const script = (config) => {
@@ -69,7 +68,7 @@ export const script = (config) => {
 
             // TODO
             if (property.reflect)
-                lines.push(`$: updateAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${Case.kebab(name)}', ${name});`);
+                lines.push(`$: updateAttribute(${CONSTANTS.TOKEN_SVELTE_VARIABLE_HOST}, '${name}', ${name});`);
 
             // TODO
             switch (type) {

@@ -1,4 +1,9 @@
+import Case from 'case';
+
 export const updateAttribute = (node, key, value) => {
+
+    key = Case.kebab(key);
+
     if (value === undefined) {
         node.removeAttribute(key);
     }

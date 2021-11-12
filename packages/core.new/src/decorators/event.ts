@@ -41,7 +41,7 @@ export function Event<T = any>(options: EventOptions = {}) {
                         }
                     )
                     
-                    Helpers.host(this)?.dispatchEvent(event);
+                    Helpers.host(this).dispatchEvent(event);
 
                     return event;
                 }
