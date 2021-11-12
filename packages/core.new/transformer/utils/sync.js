@@ -1,6 +1,6 @@
-import { isEvent, getEventName } from '../../../../utils/index.js';
+import { getEventName } from './get-event-name.js';
+import { isEvent } from './is-event.js';
 
-// TODO: next
 export const sync = (node, prev) => (next = {}) => {
 
     const prevClass = (prev.class || '').split(' ');

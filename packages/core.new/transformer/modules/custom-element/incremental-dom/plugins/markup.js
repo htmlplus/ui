@@ -1,12 +1,9 @@
-import babelGenerator from '@babel/generator';
 import babelTraverse from '@babel/traverse';
 import t from '@babel/types';
-import Case from 'case';
 import * as CONSTANTS from '../../../../configs/constants.js';
 import { isEvent } from '../utils/index.js';
 
 // TODO
-const generator = babelGenerator.default || babelGenerator;
 const traverse = babelTraverse.default || babelTraverse;
 
 export const markup = (config) => {
@@ -57,13 +54,14 @@ export const markup = (config) => {
 
                 if (!name) return;
 
-                const tag = t.stringLiteral(name.name);
+                let
+                    ref,
+                    key = t.nullLiteral();
 
-                let key = t.nullLiteral();
-
-                const statics = [];
-
-                const dynamics = [];
+                const
+                    statics = [],
+                    dynamics = [],
+                    tag = t.stringLiteral(name.name);
 
                 for (const attribute of attributes) {
 
@@ -76,6 +74,13 @@ export const markup = (config) => {
                         continue;
                     }
 
+                    if (name.name == 'ref') {
+
+                        ref = value.expression;
+
+                        continue;
+                    }
+
                     const id = isEvent(name.name) ? t.stringLiteral(name.name.toLowerCase()) : t.stringLiteral(name.name);
 
                     if (value.type == 'JSXExpressionContainer')
@@ -84,20 +89,29 @@ export const markup = (config) => {
                         statics.push([id, t.stringLiteral(value.value)]);
                 }
 
-                state.push(
-                    t.callExpression(
-                        t.identifier(selfClosing ? 'elementVoid' : 'elementOpen'),
-                        [
-                            tag,
-                            key,
-                            t.arrayExpression(
-                                statics.flat()
-                            ),
-                            ...dynamics.flat()
-                        ]
+                const element = t.callExpression(
+                    t.identifier(selfClosing ? 'elementVoid' : 'elementOpen'),
+                    [
+                        tag,
+                        key,
+                        t.arrayExpression(
+                            statics.flat()
+                        ),
+                        ...dynamics.flat()
+                    ]
+                );
+
+                if (ref) {
+                    state.push(
+                        t.expressionStatement(
+                            t.assignmentExpression('=', ref, element)
+                        )
                     )
-                )
-            },
+                }
+                else {
+                    state.push(element)
+                }
+            }
         })
     }
 

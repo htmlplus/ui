@@ -1,24 +1,24 @@
 import { elementOpen, elementClose, patch, text } from 'incremental-dom';
-import { toBoolean } from '../../../../utils/index.js';
-
-const parse = (value, type) => {
-
-    switch (type) {
-
-        case 'boolean':
-            return toBoolean(value);
-
-        case 'number':
-            return parseFloat(value);
-
-        default:
-            return value;
-    }
-}
+import { toBoolean, sync } from '../../../../utils/index.js';
 
 export const proxy = (Class, properties, style) => {
 
-    let instance;
+    let instance, update;
+
+    const render = () => {
+
+        update && update(instance.attributes || {});
+
+        patch(
+            instance.$api.host().shadowRoot,
+            () => {
+                elementOpen('style');
+                text(style);
+                elementClose('style');
+                instance.render && instance.render();
+            }
+        )
+    }
 
     return class extends HTMLElement {
 
@@ -34,8 +34,12 @@ export const proxy = (Class, properties, style) => {
                 property: (name, value) => {
                     console.log('api.property', name, value);
                     // if (host[name] === value) return;
-                    this.setAttribute(name, value);
-                    this.render();
+                    // this.setAttribute(name, value);
+                    render();
+                },
+                state: (name, value) => {
+                    console.log('api.state', name, value);
+                    render();
                 },
             };
 
@@ -65,28 +69,27 @@ export const proxy = (Class, properties, style) => {
 
             const [, type] = properties.find(([key]) => key == name);
 
-            instance[name] = parse(next, type);
+            switch (type) {
+
+                case 'boolean':
+                    instance[name] = toBoolean(next);
+
+                case 'number':
+                    instance[name] = parseFloat(next);
+
+                default:
+                    instance[name] = next;
+            }
         }
 
         connectedCallback() {
+            update = sync(this, {});
             instance.mount && instance.mount();
-            this.render();
+            render();
         }
 
         disconnectedCallback() {
             instance.unmount && instance.unmount();
-        }
-
-        render() {
-            patch(
-                this.shadowRoot,
-                () => {
-                    elementOpen('style');
-                    text(style);
-                    elementClose('style');
-                    instance.render && instance.render();
-                }
-            )
         }
     }
 }
