@@ -25,21 +25,6 @@ export const markup = (config) => {
                     body.body = state;
                 }
             },
-            JSXClosingFragment(path) {
-
-                const { node: { name } } = path;
-
-                if (!name) return;
-
-                state.push(
-                    t.callExpression(
-                        t.identifier('elementClose'),
-                        [
-                            t.stringLiteral(name.name)
-                        ]
-                    )
-                )
-            },
             JSXExpressionContainer(path) {
 
                 const { node: { expression }, parent: { type } } = path;
@@ -56,7 +41,7 @@ export const markup = (config) => {
 
                 let
                     ref,
-                    key = t.nullLiteral();
+                    key;
 
                 const
                     statics = [],
@@ -93,7 +78,7 @@ export const markup = (config) => {
                     t.identifier(selfClosing ? 'elementVoid' : 'elementOpen'),
                     [
                         tag,
-                        key,
+                        key || t.numericLiteral(Math.random()),
                         t.arrayExpression(
                             statics.flat()
                         ),
@@ -111,7 +96,22 @@ export const markup = (config) => {
                 else {
                     state.push(element)
                 }
-            }
+            },
+            JSXClosingElement(path) {
+
+                const { node: { name } } = path;
+
+                if (!name) return;
+
+                state.push(
+                    t.callExpression(
+                        t.identifier('elementClose'),
+                        [
+                            t.stringLiteral(name.name)
+                        ]
+                    )
+                )
+            },
         })
     }
 

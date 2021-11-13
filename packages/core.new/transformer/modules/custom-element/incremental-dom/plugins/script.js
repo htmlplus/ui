@@ -36,7 +36,8 @@ export const script = (config) => {
 
         context.script = lines.join('\n');
         
-        // TODO: console.log(123, context.script)
+        // TODO
+        // console.log('render', context.script)
 
         const { code, map, warnings } = esbuild.transformSync(
             context.script,

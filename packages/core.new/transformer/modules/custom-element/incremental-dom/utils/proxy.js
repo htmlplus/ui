@@ -105,9 +105,9 @@ export const proxy = (Class, properties, style) => {
 
             update = sync(this, {});
 
-            instance.mount && instance.mount();
-
             flush();
+            
+            instance.mount && instance.mount();
 
             instance.$api.ready = true;
         }
