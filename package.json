@@ -1,19 +1,37 @@
 {
-  "name": "htmlplus",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@htmlplus/core",
+  "version": "0.2.8",
+  "main": "dist/index.cjs.js",
+  "module": "dist/components/index.js",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/htmlplus/htmlplus.esm.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "clean": "lerna run clean",
-    "clean:hard": "npm run clean && lerna clean",
-    "init": "lerna bootstrap",
-    "prepublishOnly": "npm run preversion",
-    "preversion": "lerna run clean && lerna bootstrap && lerna run build --scope @htmlplus/react --stream && lerna run build --scope @htmlplus/vue --stream",
-    "publish:latest": "npm run publish:version && lerna publish from-package",
-    "publish:next": "npm run publish:version && lerna publish from-package --dist-tag next",
-    "publish:version": "lerna version --no-private --preid next",
-    "start": "lerna run start --scope @htmlplus/core --stream"
+    "clean": "rimraf dist www",
+    "build": "npm run clean && stencil build && node scripts/build.post",
+    "start": "npm run clean && stencil build --dev --watch --serve",
+    "test": "stencil test --e2e --no-cache --verbose",
+    "test:watch": "stencil test --e2e --no-cache --max-workers=2 --watch",
+    "prepare": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "@stencil/core": "^2.10.0"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@popperjs/core": "^2.9.1",
+    "@stencil/sass": "^1.5.2",
+    "case": "^1.6.3",
+    "cropperjs": "^1.5.11",
+    "debug": "^4.3.1",
+    "fs-extra": "^9.1.0",
+    "glob": "^7.1.6",
+    "rimraf": "^3.0.2"
   }
 }
