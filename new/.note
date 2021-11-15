@@ -1,3 +1,5 @@
+test
+
 .\node_modules\.bin\cypress.cmd install
 
 './src/**/+(grid|grid-item).tsx',
