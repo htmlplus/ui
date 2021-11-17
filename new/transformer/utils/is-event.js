@@ -1,1 +1,0 @@
-export const isEvent = (key) => key.match(/on[A-Z]\w+/g);

@@ -1,3 +1,0 @@
-@function boolean($name) {
-  @return '[#{$name}]:not([#{$name}=false])';
-}
