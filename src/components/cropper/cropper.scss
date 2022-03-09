@@ -1,15 +1,14 @@
-@import '../../../node_modules/cropperjs/dist/cropper.min';
+@import '../cropperjs/dist/cropper.min';
 @import 'reset';
-@import 'cropper.variables'; 
+@import 'cropper.variables';
 
 :host {
-  
   // @prop Used to adjust the backdrop color.
-  --plus-cropper-backdrop-color : #{$cropper-backdrop-color};
+  --plus-cropper-backdrop-color: #{$cropper-backdrop-color};
 
   // @prop Used to adjust the backdrop opacity.
   --plus-cropper-backdrop-opacity: #{$cropper-backdrop-opacity};
-  
+
   // @prop Used to adjust the guides color.
   --plus-cropper-guides-color: #{$cropper-guides-color};
 
@@ -33,7 +32,7 @@
 
   // @prop Used to adjust the indicator weight.
   --plus-cropper-indicator-weight: #{$cropper-indicator-weight};
-  
+
   // @prop Used to adjust the resizer color.
   --plus-cropper-resizer-color: #{$cropper-resizer-color};
 
@@ -48,7 +47,7 @@
 
   // @prop Used to adjust the resizer weight.
   --plus-cropper-resizer-weight: #{$cropper-resizer-weight};
-  
+
   // @prop Used to adjust the viewport color.
   --plus-cropper-viewport-color: #{$cropper-viewport-color};
 
@@ -57,7 +56,7 @@
 
   // @prop Used to adjust the viewport style.
   --plus-cropper-viewport-style: #{$cropper-viewport-style};
-  
+
   // @prop Used to adjust the viewport weight.
   --plus-cropper-viewport-weight: #{$cropper-viewport-weight};
 }
@@ -117,7 +116,7 @@
       height: calc(92.5% - var(--plus-cropper-guides-weight));
     }
   }
-  .cropper-point { 
+  .cropper-point {
     &.point-ne {
       top: 14.64466%;
       right: 14.64466%;
@@ -140,7 +139,7 @@
 .cropper-dashed {
   border-color: var(--plus-cropper-guides-color);
   border-style: var(--plus-cropper-guides-style);
-  opacity : var(--plus-cropper-guides-opacity);
+  opacity: var(--plus-cropper-guides-opacity);
   &.dashed-h {
     left: 50%;
     transform: translateX(-50%);
@@ -170,14 +169,18 @@
     border-style: var(--plus-cropper-viewport-style);
     border-color: var(--plus-cropper-viewport-color);
     border-width: var(--plus-cropper-viewport-weight);
-    opacity : var(--plus-cropper-viewport-opacity);
+    opacity: var(--plus-cropper-viewport-opacity);
   }
 }
 
 .cropper-point {
-  &[class*="point-"] {
-    --plus-cropper-resizer-offset-negative: calc((50% + var(--plus-cropper-resizer-offset)) * -1);
-    --plus-cropper-resizer-offset-positive: calc((50% + var(--plus-cropper-resizer-offset)) * +1);
+  &[class*='point-'] {
+    --plus-cropper-resizer-offset-negative: calc(
+      (50% + var(--plus-cropper-resizer-offset)) * -1
+    );
+    --plus-cropper-resizer-offset-positive: calc(
+      (50% + var(--plus-cropper-resizer-offset)) * +1
+    );
     margin: 0;
     height: var(--plus-cropper-resizer-size);
     width: var(--plus-cropper-resizer-size);
@@ -206,26 +209,38 @@
   &.point-ne {
     top: 0;
     right: 0;
-    transform: translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-negative));
+    transform: translate(
+      var(--plus-cropper-resizer-offset-positive),
+      var(--plus-cropper-resizer-offset-negative)
+    );
   }
   &.point-nw {
     top: 0;
     left: 0;
-    transform: translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-negative));
+    transform: translate(
+      var(--plus-cropper-resizer-offset-negative),
+      var(--plus-cropper-resizer-offset-negative)
+    );
   }
   &.point-sw {
     bottom: 0;
     left: 0;
-    transform: translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-positive));
+    transform: translate(
+      var(--plus-cropper-resizer-offset-negative),
+      var(--plus-cropper-resizer-offset-positive)
+    );
   }
   &.point-se {
     right: 0;
     bottom: 0;
-    transform: translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-positive));
+    transform: translate(
+      var(--plus-cropper-resizer-offset-positive),
+      var(--plus-cropper-resizer-offset-positive)
+    );
   }
 }
 
-.resizer-shape-circle .cropper-point[class*="point-"] {
+.resizer-shape-circle .cropper-point[class*='point-'] {
   border-radius: 50%;
 }
 
@@ -247,11 +262,7 @@
   }
 }
 
-
-
-
-
-.resizer-shape-line .cropper-point[class*="point-"] {
+.resizer-shape-line .cropper-point[class*='point-'] {
   background-color: transparent;
   border-style: solid;
   border-color: var(--plus-cropper-resizer-color);
@@ -293,14 +304,6 @@
     border-left: none;
   }
 }
-
-
-
-
-
-
-
-
 
 // .cropper-disabled .cropper-drag-box, .cropper-disabled .cropper-face, .cropper-disabled .cropper-line, .cropper-disabled .cropper-point {
 //   cursor: not-allowed;
