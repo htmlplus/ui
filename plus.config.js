@@ -25,7 +25,7 @@ export default [
   print(),
   reactProxy({
     compact: true,
-    dist: "../ports/react.new",
+    dist: "../ports/react",
     eventName(eventName) {
       return eventName.replace(
         /plus(\S*)/g,
