@@ -1,8 +1,11 @@
+@import 'reset';
+@import './browse.theme';
+
 :host {
   cursor: pointer;
   display: inline-block;
 }
 
-input[type="file"] {
+input[type='file'] {
   display: none;
 }

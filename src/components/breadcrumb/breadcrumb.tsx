@@ -1,5 +1,5 @@
-import { Component, ComponentInterface, Element, Host, Prop, State, forceUpdate, h } from '@stencil/core';
-import { Bind, GlobalConfig, IsRTL } from '@app/utils';
+import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
 import * as Constants from './breadcrumb.constants';
 
 /**
@@ -10,56 +10,39 @@ import * as Constants from './breadcrumb.constants';
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
  */
-@Component({
-  tag: 'plus-breadcrumb',
-  styleUrl: 'breadcrumb.scss',
-  shadow: true
-})
-export class Breadcrumb implements ComponentInterface {
+@Element()
+export class Breadcrumb {
 
   /**
    * For localization purposes, you can use the provided translations.
    */
-  @Prop()
+  @Property()
   expanderText?: string = 'Show path';
 
   /**
    * The expander button is displayed when the number of the items reached the maximum limit. 
    * The offset property specifies the position of the expander button.
    */
-  @Prop()
+  @Property()
   offset?: number = 1;
 
   /**
    * Specifies Maximum items that is allowed to be displayed.
    */
-  @Prop()
+  @Property()
   max?: number;
 
   /**
    * You can use HTML elements, Custom separator, or SVG icon.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   separator?: string;
 
-  // TODO
-  // @Debug('breadcrumb')
-  // debug?;
-
-  @GlobalConfig('breadcrumb', {
-    expanderText: 'Show path',
-    offset: 1,
-  })
-  config?;
-
-  @IsRTL()
-  isRTL?: boolean;
-
-  @Element()
-  $host!: HTMLElement;
-
   @State()
-  $nodes?: Array<Element>;
+  items?: Array<any>;
+
+  // TODO
+  config: any = {}
 
   observer?: MutationObserver;
 
@@ -71,67 +54,51 @@ export class Breadcrumb implements ComponentInterface {
 
     ].join(',');
 
-    return Array.from(this.$host.children).filter(($node) => !$node.matches(selectors));
+    const children = Array.from(Helpers.host(this).children);
+
+    return children.filter(($node) => !$node.matches(selectors));
   }
 
+  @Attributes()
   get attributes() {
     return {
       'aria-label': 'breadcrumb'
     }
   }
 
+  get template() {
+
+    const $node = Helpers.host(this).querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
+
+    const $clone = $node?.cloneNode(true) as HTMLElement;
+
+    $clone?.removeAttribute('slot');
+
+    const template = $clone?.outerHTML;
+
+    return template || this.config.slots.separator || this.separator;
+  }
+
   /**
    * Internal Methods
    */
-
-  $expander() {
-    return (
-      <div
-        aria-disabled="false"
-        aria-label={this.expanderText}
-        class="expander"
-        key="expander"
-        part="expander"
-        role="button"
-        tabindex="0"
-        onClick={() => this.update(false, true)}
-        onKeyDown={(event) => event.key.match(/Enter| /) && this.update(false, true)}
-      >
-        <slot name="expander">
-          <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-          </svg>
-        </slot>
-      </div>
-    )
-  }
-
-  $wrapper(key) {
-    return (
-      <div key={key} part="item">
-        <slot name={key} />
-      </div>
-    )
-  }
 
   bind() {
 
     this.observer = new MutationObserver(this.onChange);
 
-    this.observer.observe(this.$host, { childList: true });
+    this.observer.observe(Helpers.host(this), { childList: true });
   }
 
   unbind() {
     this.observer?.disconnect();
   }
 
-  update(force?: boolean, expand?: boolean) {
+  update(expand?: boolean) {
 
     const
       $children = this.$children,
-      $nodes = [],
-      rtl = this.isRTL,
-      template = this.template();
+      items = [];
 
     const { start, length } = (() => {
 
@@ -161,59 +128,51 @@ export class Breadcrumb implements ComponentInterface {
       }
 
       return { start, length };
-    })();
+    })() as any; // TODO
 
-    $children.map(($child, index) => {
+    $children.forEach(($child, index) => {
 
       $child.setAttribute('slot', index.toString());
 
       if (start <= index && index < start + length) return;
 
-      $nodes.push(this.$wrapper(index));
+      items.push({
+        type: 'item',
+        key: `${index}`,
+        slot: `${index}`,
+      })
     });
 
-    (start !== undefined) && $nodes.splice(start, 0, this.$expander());
+    if (start !== undefined)
+      items.splice(
+        start,
+        0,
+        {
+          type: 'expander',
+          key: 'expander'
+        }
+      );
 
-    for (let i = $nodes.length - 1; i > 0; i--) {
+    for (let i = items.length - 1; i > 0; i--)
+      items.splice(
+        i,
+        0,
+        {
+          type: 'separator',
+          key: `expander-${i}`
+        }
+      );
 
-      const $separator = (
-        <div
-          aria-hidden="true"
-          class={{ separator: true, rtl }}
-          innerHTML={template}
-          key="separator"
-          part="separator"
-        />
-      )
-
-      $nodes.splice(i, 0, $separator);
-    }
-
-    this.$nodes = $nodes;
-
-    force && forceUpdate(this);
-  }
-
-  template() {
-
-    const $node = this.$host.querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
-
-    const $clone = $node?.cloneNode(true) as HTMLElement;
-
-    $clone?.removeAttribute('slot');
-
-    const template = $clone?.outerHTML;
-
-    return template || this.config.slots.separator || this.separator;
+    this.items = items;
   }
 
   /**
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return;
+  // TODO
+  @Watch('offset', 'max', 'separator')
+  watcher(next, prev, name) {
 
     switch (name) {
 
@@ -221,8 +180,9 @@ export class Breadcrumb implements ComponentInterface {
       case 'max':
       case 'separator':
 
-        this.update(false, false);
+        this.update(false);
 
+        // TODO: componentShouldUpdate
         return false;
     }
   }
@@ -231,9 +191,13 @@ export class Breadcrumb implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onChange() {
-    this.update(true, false);
+
+    this.update(false);
+
+    // TODO
+    // forceUpdate(this);
   }
 
   /**
@@ -241,8 +205,10 @@ export class Breadcrumb implements ComponentInterface {
    */
 
   connectedCallback() {
+
     this.bind();
-    this.update(false, false);
+
+    this.update(false);
   }
 
   disconnectedCallback() {
@@ -251,11 +217,61 @@ export class Breadcrumb implements ComponentInterface {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <div class="container">
-          {this.$nodes}
-        </div>
-      </Host>
+      <div class="container">
+        {this.items?.map((item) => {
+          switch (item.type) {
+            case 'item': {
+              return (
+                <div
+                  key={item.key}
+                  part="item"
+                >
+                  <slot name={item.slot} />
+                </div>
+              )
+            }
+            case 'expander': {
+              return (
+                <div
+                  aria-disabled="false"
+                  aria-label={this.expanderText}
+                  class="expander"
+                  key={item.key}
+                  part="expander"
+                  role="button"
+                  tabindex="0"
+                  onClick={() => this.update(true)}
+                  onKeyDown={(event) =>
+                    event.key.match(/Enter| /) && this.update(true)
+                  }
+                >
+                  <slot name="expander">
+                    <svg
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                    </svg>
+                  </slot>
+                </div>
+              )
+            }
+            case 'separator': {
+              return (
+                <div
+                  key={item.key}
+                  aria-hidden="true"
+                  class="separator"
+                  part="separator"
+                >
+                  {this.template}
+                </div>
+              )
+            }
+          }
+        })}
+      </div>
     )
   }
 }

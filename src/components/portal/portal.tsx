@@ -1,49 +1,37 @@
-import { Component, ComponentInterface, Element, Host, Prop, h } from '@stencil/core';
-import { GlobalConfig, Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/utils';
+import { Element, Property, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
+import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
  * @experimental 
  * @slot default - The default slot.
  */
-@Component({
-  tag: 'plus-portal',
-  styleUrl: 'portal.scss',
-  shadow: true
-})
-export class Portal implements ComponentInterface {
+@Element()
+export class Portal {
 
   /**
    * Disables the portal.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Specifies the position of the portal content relative to the target.
    */
-  @Prop()
+  @Property()
   strategy?: PortalStrategy = 'append';
 
   /**
    * Specifies the position of the portal content, It Can include css selectors, 
    * node or any html elements.
    */
-  @Prop()
+  @Property()
   target?: PortalTarget = 'body';
-
-  @GlobalConfig('portal', {
-    strategy: 'append',
-    target: 'body',
-  })
-  config?;
-
-  @Element()
-  $host!: HTMLElement;
 
   instance?: PortalCore;
 
   get $nodes() {
-    return Array.from(this.$host.children);
+    return Array.from(Helpers.host(this).children);
   }
 
   /**
@@ -71,16 +59,13 @@ export class Portal implements ComponentInterface {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
+  @Watch('disabled', 'strategy', 'target')
+  watcher(next, prev, name) {
 
     switch (name) {
 
       case 'disabled':
-        value ? this.terminate() : this.initialize();
+        next ? this.terminate() : this.initialize();
         break;
 
       case 'strategy':
@@ -101,11 +86,5 @@ export class Portal implements ComponentInterface {
 
   disconnectedCallback() {
     this.terminate();
-  }
-
-  render() {
-    return (
-      <Host />
-    )
   }
 }

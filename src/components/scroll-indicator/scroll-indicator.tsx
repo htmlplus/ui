@@ -1,51 +1,36 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/utils';
+import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
  * @part indicator - Indicator element.
  */
-@Component({
-  tag: 'plus-scroll-indicator',
-  styleUrl: 'scroll-indicator.scss',
-  shadow: true
-})
-export class ScrollIndicator implements ComponentInterface {
+@Element()
+export class ScrollIndicator {
 
   /**
    * Disables the component function.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Specifies the source of scroll.
    */
-  @Prop()
+  @Property()
   source?: ScrollIndicatorSource = 'document';
 
   /**
    * Indicates which scroll (horizontal or vertical) to be used as its source.
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   vertical?: boolean;
 
   /**
    * When the children is scrolled this event trigger.
    */
-  @Event({
-    bubbles: true,
-    cancelable: false
-  })
+  @Event()
   plusScroll: EventEmitter<number>;
-
-  @GlobalConfig('scrollIndicator', {
-    source: 'document'
-  })
-  config?;
-
-  @Element()
-  $host!: HTMLElement;
 
   $indicator!: HTMLElement;
 
@@ -58,6 +43,7 @@ export class ScrollIndicator implements ComponentInterface {
     return document.querySelector(this.source);
   }
 
+  @Attributes()
   get attributes() {
     return {
       // 'role': 'TODO'
@@ -90,41 +76,29 @@ export class ScrollIndicator implements ComponentInterface {
 
     if (this.disabled) return;
 
-    this.$source?.addEventListener('scroll', this.onScroll);
+    Helpers.on(this.$source, 'scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    this.$source?.removeEventListener('scroll', this.onScroll);
+    Helpers.off(this.$source, 'scroll', this.onScroll);
   }
 
   /**
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
-
-    if (next === prev) return false;
-
-    const value = this[name];
-
-    switch (name) {
-
-      case 'disabled':
-      case 'source':
-
-        value ? this.unbind() : this.bind();
-
-        break;
-    }
+  @Watch('disabled', 'source')
+  watcher(next) {
+    next ? this.unbind() : this.bind();
   }
 
   /**
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onScroll() {
 
     const progress = this.progress;
@@ -133,14 +107,14 @@ export class ScrollIndicator implements ComponentInterface {
 
     this.$indicator.style[property] = `${progress}%`;
 
-    this.plusScroll.emit(progress);
+    this.plusScroll(progress);
   }
 
   /**
    * Lifecycles
    */
 
-  componentDidLoad() {
+  loadedCallback() {
     this.bind();
   }
 
@@ -150,13 +124,11 @@ export class ScrollIndicator implements ComponentInterface {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <div
-          class="indicator"
-          part="indicator"
-          ref={($element) => this.$indicator = $element}
-        />
-      </Host>
+      <div
+        class="indicator"
+        part="indicator"
+        ref={this.$indicator}
+      />
     )
   }
 }

@@ -1,34 +1,30 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
-    "declaration": false,
-    "experimentalDecorators": true,
-    "lib": [
+    "target": "ES2016",
+    "lib": [  
       "dom",
       "es2019"
     ],
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "module": "ESNext",
     "moduleResolution": "node",
-    "module": "esnext",
-    "target": "es2017",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "jsx": "react",
-    "jsxFactory": "h",
     "baseUrl": "src",
     "paths": {
-      "@app/*": [
-        "./*"
-      ],
-      "@app/constants": [
-        "./configs/constants"
-      ]
-    }
+      "@app/*": ["./*"]
+    },
+    "declaration": true,
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": false,
   },
   "include": [
     "src"
   ],
   "exclude": [
+    "dist",
     "node_modules"
   ]
 }

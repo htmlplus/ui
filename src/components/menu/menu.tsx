@@ -1,84 +1,77 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
-import { Bind, Helper } from '@app/utils';
+import { Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
- * @internal
+ * @development
  */
-@Component({
-  tag: 'plus-menu',
-  styleUrl: 'menu.scss',
-  shadow: true
-})
-export class Menu implements ComponentInterface {
+@Element()
+export class Menu {
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   alignX?: MenuAlignX = 'start';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   alignY?: MenuAlignY = 'bottom';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   fixed?: boolean;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   growX?: MenuGrowX = 'auto';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   growY?: MenuGrowY = 'auto';
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   offsetX?: string | number;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   offsetY?: string | number;
 
   /**
    * TODO
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   open?: boolean;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   persistent?: boolean;
 
   /**
    * TODO
    */
-  @Prop()
+  @Property()
   trigger?: 'click' | 'hover' = 'click';
 
   /**
    * TODO
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusClose!: EventEmitter<void>;
 
   @State()
@@ -87,14 +80,15 @@ export class Menu implements ComponentInterface {
   @State()
   y?: string;
 
-  @Element()
-  $host!: HTMLElement;
-
   $activator!: HTMLElement;
 
   $content!: HTMLElement;
 
   observer?: any;
+
+  get $host() {
+    return Helpers.host(this);
+  }
 
   get getGrowX() {
 
@@ -126,7 +120,7 @@ export class Menu implements ComponentInterface {
   }
 
   get reverse() {
-    return getComputedStyle(this.$host).getPropertyValue('direction') === 'rtl';
+    return Helpers.getComputedStyle(this.$host, 'direction') === 'rtl';
   }
 
   get style() {
@@ -157,7 +151,7 @@ export class Menu implements ComponentInterface {
 
   click(event) {
 
-    const elements = Helper.eventPath(event);
+    const elements = Helpers.eventPath(event);
 
     const index = elements.findIndex((element) => element === this.$activator);
 
@@ -169,7 +163,7 @@ export class Menu implements ComponentInterface {
 
     this.open = !this.open;
 
-    if (!this.open) this.plusClose.emit();
+    if (!this.open) this.plusClose();
   }
 
   s(basex?: string, basey?: string) {
@@ -211,7 +205,7 @@ export class Menu implements ComponentInterface {
 
     if (this.offsetX && !this.getGrowX.match(/both/)) {
 
-      const offset = Helper.toUnit(this.offsetX);
+      const offset = Helpers.toUnit(this.offsetX);
 
       const operator = this.getGrowX.match(/left|start/) ? '-' : '+';
 
@@ -220,7 +214,7 @@ export class Menu implements ComponentInterface {
 
     if (this.offsetY && !this.getGrowY.match(/both/)) {
 
-      const offset = Helper.toUnit(this.offsetY);
+      const offset = Helpers.toUnit(this.offsetY);
 
       const operator = this.getGrowY.match(/top/) ? '-' : '+';
 
@@ -236,7 +230,7 @@ export class Menu implements ComponentInterface {
     };
   }
 
-  @Bind
+  @Bind()
   update(entries) {
 
     const content: any = this.$host.shadowRoot.querySelector('.content');
@@ -250,12 +244,12 @@ export class Menu implements ComponentInterface {
     Object.keys(style).map((key) => this.$content.style[key] = style[key]);
   }
 
-  @Listen('click', { target: 'document', capture: true })
+  // TODO @Listen('click', { target: 'document', capture: true })
   onOutsideClick(event) {
 
     if (!this.open) return;
 
-    const path = Helper.eventPath(event);
+    const path = Helpers.eventPath(event);
 
     const activator = this.$host.shadowRoot.querySelector('.activator');
 
@@ -263,7 +257,7 @@ export class Menu implements ComponentInterface {
 
     if (this.persistent && path.find((element) => element === this.$host)) return;
 
-    const result = this.plusClose.emit();
+    const result = this.plusClose();
 
     if (!result.preventDefault) return;
 
@@ -272,7 +266,7 @@ export class Menu implements ComponentInterface {
     this.clean();
   }
 
-  componentDidLoad() {
+  loadedCallback() {
     this.bind();
   }
 
@@ -282,10 +276,10 @@ export class Menu implements ComponentInterface {
 
   render() {
     return (
-      <Host>
+      <>
         <div
           class="activator"
-          ref={(element) => this.$activator = element}
+          ref={this.$activator}
           onClick={(event) => this.click(event)}
         >
           <slot name="activator" />
@@ -293,12 +287,12 @@ export class Menu implements ComponentInterface {
         {this.open && (
           <div
             class="content"
-            ref={(element) => this.$content = element}
+            ref={this.$content}
             style={this.fixed ? {} : this.style}>
             <slot />
           </div>
         )}
-      </Host>
-    );
+      </>
+    )
   }
 }

@@ -1,72 +1,79 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { Bind, GlobalConfig, ClickOutside as ClickOutsideCore } from '@app/utils';
+import { Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
+import { ClickOutside as ClickOutsideCore } from '@app/services';
 
 /**
  * @slot default - The default slot.
  */
-@Component({
-  tag: 'plus-click-outside',
-  styleUrl: 'click-outside.scss',
-  shadow: true
-})
-export class ClickOutside implements ComponentInterface {
+@Element()
+export class ClickOutside {
 
   /**
    * Disable the component.
    */
-  @Prop()
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
    * The callback occurs only once.
    */
-  @Prop()
+  @Property()
   once?: boolean;
 
   /**
   * Emitted when outside of the component is clicked.
   */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusClickOutside!: EventEmitter<void>;
 
-  @GlobalConfig('clickOutside')
-  config?;
-
-  @Element()
-  $host!: HTMLElement;
+  get $host() {
+    return Helpers.host(this);
+  }
 
   /**
    * Internal Methods
    */
 
   bind() {
-    ClickOutsideCore.add(this.$host, this.onClickOutside);
+    ClickOutsideCore.on(this.$host, this.onClickOutside);
   }
 
   unbind() {
-    ClickOutsideCore.remove(this.$host);
+    ClickOutsideCore.off(this.$host);
+  }
+
+  rebind() {
+    this.unbind();
+    this.bind();
   }
 
   /**
    * Watchers
    */
 
-  @Watch('disabled')
-  disabledWatcher() {
-    this.disabled ? this.unbind() : this.bind();
+  @Watch('disabled', 'once')
+  watcher(next, prev, name) {
+
+    switch (name) {
+
+      case 'disabled':
+        next ? this.unbind() : this.bind();
+        break;
+
+      case 'once':
+        this.rebind();
+        break;
+    }
   }
 
   /**
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onClickOutside() {
     this.once && this.unbind();
-    this.plusClickOutside.emit();
+    this.plusClickOutside();
   }
 
   /**
@@ -83,9 +90,7 @@ export class ClickOutside implements ComponentInterface {
 
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

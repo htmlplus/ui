@@ -1,116 +1,95 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Method, Prop, h } from '@stencil/core';
+import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
 import CropperCore from 'cropperjs';
-import { Bind, GlobalConfig, Helper } from '@app/utils';
-import {
-  CropperAspectRatio,
-  CropperValue,
-  CropperMode,
-  CropperResizer,
-  CropperResizerShape,
-  CropperResponsive,
-  CropperShape,
-  CropperView,
-  CropperZoomable,
-  CropperZoomData,
-} from './cropper.types';
+import { CropperAspectRatio, CropperValue, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomData } from './cropper.types';
 
 /**
  */
-@Component({
-  tag: 'plus-cropper',
-  styleUrl: 'cropper.scss',
-  shadow: true
-})
-export class Cropper implements ComponentInterface {
+@Element()
+export class Cropper {
 
   /**
    * A number between 0 and 1. Define the automatic cropping area size.
    */
-  @Prop()
+  @Property()
   area?: number = 0.75;
 
   /**
    * Defines the initial aspect ratio of the viewport.
    */
-  @Prop()
+  @Property()
   aspectRatio?: CropperAspectRatio;
 
   /**
    * Shows the black modal above the image and under the viewport.
    */
-  @Prop()
+  @Property()
   backdrop?: boolean = true;
 
   /**
    * Shows the grid background of the container.
    */
-  @Prop()
+  @Property()
   background?: boolean;
 
   /**
    * Disables the cropper.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Shows the dashed lines above the viewport.
    */
-  @Prop()
+  @Property()
   guides?: boolean;
 
   /**
    * Shows the center indicator above the viewport.
    */
-  @Prop()
+  @Property()
   indicator?: boolean;
 
   /**
    * Defines the cropping mode of the cropper.
-   * @value crop - Creates a new viewport and allows you to move and resize it.
-   * @value move - moves the canvas and viewport.
    */
-  @Prop()
+  @Property()
   mode?: CropperMode = 'move';
 
   /**
    * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
-   * @value main - Enables to resize the viewport by dragging on the Sides.
-   * @value edge - Enables to resize the viewport by dragging on the vertices.
-   * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
    */
-  @Prop()
+  @Property()
   resizer?: CropperResizer = 'both';
 
   /**
    * Specifies the shape of the resizer.
    */
-  @Prop()
+  @Property()
   resizerShape?: CropperResizerShape = 'square';
 
   /**
    * Re-renders the cropper when resizing the window.
-   * @value reset - Restores the cropped area after resizing the window.
    */
-  @Prop()
+  @Property()
   responsive?: CropperResponsive = 'reset';
 
   /**
    * Specifies the shape of the viewport.
    */
-  @Prop()
+  @Property()
   shape?: CropperShape = 'rectangle';
 
   /**
    * Replace the image's src and rebuild the cropper.
    */
-  @Prop()
+  @Property()
   src?: string;
 
   /**
    * The previous cropped data if you had stored, will be passed to value automatically when initialized. 
    */
-  @Prop({ mutable: true })
+  @Property()
   value?: CropperValue;
 
   /**
@@ -119,78 +98,39 @@ export class Cropper implements ComponentInterface {
    * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the 
    * canvas to the container. Note that if the proportions of the canvas and the container are 
    * the same, there is no difference between `contain` and `cover`.
-   * @value contain - restrict the minimum canvas size to fit within the container. If the 
-   *                  proportions of the canvas and the container differ, the minimum canvas will be 
-   *                  surrounded by extra space in one of the dimensions.
-   * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions 
-   *                  of the canvas and the container are different, the container will not be able 
-   *                  to fit the whole canvas in one of the dimensions.
-   * @value fit     - restrict the viewport to not exceed the size of the canvas.
-   * @value none    - no restrictions.
    */
-  @Prop()
+  @Property()
   view?: CropperView = 'cover';
 
   /**
    * Enables to zoom the image.
-   * @value false - Unable to zoom the image.
-   * @value true  - Enables to zoom the image by touching and wheeling mouse.
-   * @value touch - Enables to zoom the image by touching.
-   * @value wheel - Enables to zoom the image by wheeling mouse.
-   * @
    */
-  @Prop()
+  @Property()
   zoomable?: CropperZoomable = true;
 
   /**
    * Defines zoom ratio when zooming the image by wheeling mouse.
    */
-  @Prop()
+  @Property()
   zoomRatio?: number = 0.1;
 
   /**
    * This event fires when the target image has been loaded and the cropper instance is ready for operating.
    */
-  @Event({
-    bubbles: false,
-    cancelable: false,
-  })
+  @Event()
   plusReady!: EventEmitter<void>;
 
   /**
    * This event fires when the canvas or the viewport changed.
    */
-  @Event({
-    bubbles: false,
-    cancelable: false,
-  })
+  @Event()
   plusCrop!: EventEmitter<void>;
 
   /**
    * This event fires when a cropper instance starts to zoom in or zoom out its canvas.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true,
-  })
+  @Event({ cancelable: true })
   plusZoom!: EventEmitter<CropperZoomData>;
-
-  @GlobalConfig('cropper', {
-    area: 0.75,
-    backdrop: true,
-    mode: 'move',
-    resizer: 'both',
-    resizerShape: 'square',
-    responsive: 'reset',
-    shape: 'rectangle',
-    view: 'cover',
-    zoomable: true,
-    zoomRatio: 0.1,
-  })
-  config?;
-
-  @Element()
-  $host!: HTMLElement;
 
   $image!: HTMLImageElement;
 
@@ -199,14 +139,14 @@ export class Cropper implements ComponentInterface {
   lock: boolean = false;
 
   get classes() {
-    return Helper.classes(
+    return Helpers.classes([
       'wrapper',
       {
         resizer: this.resizer,
         resizerShape: this.resizerShape,
         shape: this.shape,
       }
-    )
+    ], true)
   }
 
   get options() {
@@ -230,7 +170,7 @@ export class Cropper implements ComponentInterface {
 
       if (this.responsive === 'reset') return this.responsive;
 
-      return Helper.toBoolean(this.responsive);
+      return this.responsive;
     })();
 
     const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any)();
@@ -241,7 +181,7 @@ export class Cropper implements ComponentInterface {
 
       if (['touch', 'wheel'].includes(value)) return value;
 
-      return Helper.toBoolean(this.zoomable);
+      return this.zoomable;
     })();
 
     return {
@@ -259,20 +199,20 @@ export class Cropper implements ComponentInterface {
        * cropmove        : (e) => console.log('cropmove', e),
        * cropend         : (e) => console.log('cropend', e),
        */
-      autoCropArea: parseFloat(`${this.area}`),
+      autoCropArea: this.area,
       aspectRatio: this.shape === 'rectangle' ? aspectRatio : 1,
-      background: Helper.toBoolean(this.background),
-      center: Helper.toBoolean(this.indicator),
+      background: this.background,
+      center: this.indicator,
       cropBoxMovable: this.mode === 'crop',
       cropBoxResizable: this.mode === 'crop',
       data: this.value,
       dragMode: this.mode,
-      guides: Helper.toBoolean(this.guides),
+      guides: this.guides,
       highlight: false,
       initialAspectRatio: NaN,
       minContainerWidth: 0,
       minContainerHeight: 0,
-      modal: Helper.toBoolean(this.backdrop),
+      modal: this.backdrop,
       movable: true,
       responsive: !!responsive,
       restore: responsive === 'reset',
@@ -298,18 +238,16 @@ export class Cropper implements ComponentInterface {
    * Flip horizontal.
    */
   @Method()
-  flipX(): Promise<void> {
+  flipX(): void {
     this.instance?.scale(-1, 1);
-    return Promise.resolve();
   }
 
   /**
    * Flip vertical.
    */
   @Method()
-  flipY(): Promise<void> {
+  flipY(): void {
     this.instance?.scale(1, -1);
-    return Promise.resolve();
   }
 
   /**
@@ -318,9 +256,8 @@ export class Cropper implements ComponentInterface {
    * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
    */
   @Method()
-  move(offsetX?: number, offsetY?: number): Promise<void> {
+  move(offsetX?: number, offsetY?: number): void {
     this.instance?.move(offsetX ?? null, offsetY ?? null);
-    return Promise.resolve();
   }
 
   /**
@@ -329,36 +266,32 @@ export class Cropper implements ComponentInterface {
    * @param y - The `top` value of the canvas. Use `null` to ignore this.
    */
   @Method()
-  moveTo(x?: number, y?: number): Promise<void> {
+  moveTo(x?: number, y?: number): void {
     this.instance?.moveTo(x ?? null, y ?? null);
-    return Promise.resolve();
   }
 
   /**
    * Reset the image and viewport to their initial states.
    */
   @Method()
-  reset(): Promise<void> {
+  reset(): void {
     this.instance?.reset();
-    return Promise.resolve();
   }
 
   /**
    * Rotate the image with a relative degree.
    */
   @Method()
-  rotate(degree: number): Promise<void> {
+  rotate(degree: number): void {
     this.instance?.rotate(degree);
-    return Promise.resolve();
   }
 
   /**
    * Rotate the image to an absolute degree.
    */
   @Method()
-  rotateTo(degree: number): Promise<void> {
+  rotateTo(degree: number): void {
     this.instance?.rotateTo(degree);
-    return Promise.resolve();
   }
 
   /**
@@ -377,20 +310,16 @@ export class Cropper implements ComponentInterface {
    * Gets `canvas` from the cropped image.
    */
   @Method()
-  toCanvas(): Promise<HTMLCanvasElement> {
-    const canvas = this.instance.getCroppedCanvas();
-    return Promise.resolve(canvas);
+  toCanvas(): HTMLCanvasElement {
+    return this.instance.getCroppedCanvas();
   }
 
   /**
    * Gets `base64` from the cropped image.
    */
   @Method()
-  toBase64(): Promise<string> {
-    const base64 = this.instance
-      .getCroppedCanvas()
-      .toDataURL();
-    return Promise.resolve(base64);
+  toBase64(): string {
+    return this.instance.getCroppedCanvas().toDataURL();
   }
 
   /**
@@ -411,18 +340,16 @@ export class Cropper implements ComponentInterface {
    * Zoom the canvas with a relative ratio.
    */
   @Method()
-  zoom(ratio: number): Promise<void> {
+  zoom(ratio: number): void {
     this.instance?.zoom(ratio);
-    return Promise.resolve();
   }
 
   /**
    * Zoom the canvas to an absolute ratio.
    */
   @Method()
-  zoomTo(ratio: number): Promise<void> {
+  zoomTo(ratio: number): void {
     this.instance?.zoomTo(ratio);
-    return Promise.resolve();
   }
 
   /**
@@ -499,21 +426,25 @@ export class Cropper implements ComponentInterface {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
+  @Watch(
+    'area', 'aspectRatio', 'backdrop', 'background',
+    'disabled', 'guides', 'indicator', 'mode',
+    'resizer', 'resizerShape', 'responsive', 'shape',
+    'src', 'value', 'view', 'zoomable', 'zoomRatio',
+  )
+  watcher(next, prev, name) {
 
-    if (next === prev || this.lock) return;
-
-    const value = this[name];
+    if (this.lock) return;
 
     switch (name) {
 
       case 'aspectRatio':
         if (this.shape !== 'rectangle') break;
-        this.instance?.setAspectRatio(value);
+        this.instance?.setAspectRatio(next);
         break;
 
       case 'disabled':
-        value ? this.instance?.disable() : this.instance?.enable();
+        next ? this.instance?.disable() : this.instance?.enable();
         break;
 
       case 'src':
@@ -521,7 +452,7 @@ export class Cropper implements ComponentInterface {
         break;
 
       case 'value':
-        this.updateValue(value);
+        this.updateValue(next);
         break;
 
       case 'resizer':
@@ -536,6 +467,7 @@ export class Cropper implements ComponentInterface {
 
         break;
 
+      case 'area':
       case 'backdrop':
       case 'background':
       case 'guides':
@@ -554,15 +486,15 @@ export class Cropper implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onCrop() {
 
     this.updateValue();
 
-    this.plusCrop.emit();
+    this.plusCrop();
   }
 
-  @Bind
+  @Bind()
   onReady() {
 
     // TODO
@@ -570,10 +502,10 @@ export class Cropper implements ComponentInterface {
 
     this.disabled && this.instance?.disable();
 
-    this.plusReady.emit();
+    this.plusReady();
   }
 
-  @Bind
+  @Bind()
   onZoom(event) {
 
     const difference = event.detail.ratio - event.detail.oldRatio;
@@ -586,7 +518,7 @@ export class Cropper implements ComponentInterface {
       ratio: event.detail.ratio
     };
 
-    const result = this.plusZoom.emit(detail);
+    const result = this.plusZoom(detail);
 
     if (!result.defaultPrevented) return this.onCrop();
 
@@ -597,7 +529,7 @@ export class Cropper implements ComponentInterface {
    * Lifecycles
    */
 
-  componentDidLoad() {
+  loadedCallback() {
     this.bind();
   }
 
@@ -607,11 +539,9 @@ export class Cropper implements ComponentInterface {
 
   render() {
     return (
-      <Host>
-        <div class={this.classes}>
-          <img class="image" ref={(element) => (this.$image = element)} src={this.src} />
-        </div>
-      </Host>
+      <div class={this.classes}>
+        <img class="image" alt="cropper" ref={this.$image} src={this.src} />
+      </div>
     )
   }
 }

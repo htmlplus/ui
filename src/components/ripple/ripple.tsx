@@ -1,24 +1,13 @@
-import { Component, ComponentInterface, Host, h } from '@stencil/core';
-import { GlobalConfig } from '@app/utils';
+import { Element } from '@htmlplus/element';
 
 /**
- * @internal
+ * @development
  */
-@Component({
-  tag: 'plus-ripple',
-  styleUrl: 'ripple.scss',
-  shadow: true
-})
-export class Ripple implements ComponentInterface {
-
-  @GlobalConfig('ripple')
-  config?;
-
+@Element()
+export class Ripple {
   render() {
     return (
-      <Host>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

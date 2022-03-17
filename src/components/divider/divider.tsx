@@ -1,101 +1,78 @@
-import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core';
-import { Direction, GlobalConfig, IsRTL } from '@app/utils';
+import { Attributes, Element, Property } from '@htmlplus/element';
 import { DividerSize, DividerType } from './divider.types';
 
 /**
  */
-@Component({
-  tag: 'plus-divider',
-  styleUrl: 'divider.scss',
-  shadow: true
-})
-export class Divider implements ComponentInterface {
+@Element()
+export class Divider {
 
   /**
    * TODO
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // placement?: DividerPlacement = 'center';
 
   /**
    * Determines the width of the divider.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   size?: DividerSize = 'md';
 
   /**
    * Specifies different divider styles.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   type?: DividerType = 'solid';
 
   /**
    * TODO
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // variant?: DividerVariant = 'full';
 
   /**
    * You can use vertical property for vertical division.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   vertical?: boolean;
 
-  @GlobalConfig('divider', {
-    // placement: 'center',
-    size: 'md',
-    type: 'solid',
-    variant: 'full',
-  })
-  config?;
-
-  @Direction()
-  direction;
-
-  @IsRTL()
-  isRTL: boolean;
-
+  @Attributes()
   get attributes() {
     return {
       'role': 'separator',
-      'aria-orientation': this.orientation,
+      'aria-orientation': this.vertical ? 'vertical' : 'horizontal',
     }
   }
 
-  // get classes() {
+  // get Classes() {
   //   return {
   //     'root': true,
-  //     [this.direction]: true,
+  //     [direction(this)]: true,
   //   }
   // }
 
   // get hasBefore() {
-  //   return Helper.fromAxis(this.placement, this.isRTL) !== 'start';
+  //   return Helper.fromAxis(this.placement, host(this)) !== 'start';
   // }
 
   // get hasAfter() {
-  //   return Helper.fromAxis(this.placement, this.isRTL) !== 'end';
+  //   return Helper.fromAxis(this.placement, host(this)) !== 'end';
   // }
 
-  get orientation() {
-    return this.vertical ? 'vertical' : 'horizontal';
-  }
-
-  render() {
-    return (
-      <Host {...this.attributes}>
-        {/* <div class={this.classes}>
-          {this.hasBefore && (
-            <div class="before" />
-          )}
-          <div class="content">
-            <slot />
-          </div>
-          {this.hasAfter && (
-            <div class="after" />
-          )}
-        </div> */}
-      </Host>
-    )
-  }
+  // render() {
+  //   return (
+  //       {/* TODO */}
+  //       {/* <div class={this.classes}>
+  //         {this.hasBefore && (
+  //           <div class="before" />
+  //         )}
+  //         <div class="content">
+  //           <slot />
+  //         </div>
+  //         {this.hasAfter && (
+  //           <div class="after" />
+  //         )}
+  //       </div> */}
+  //   )
+  // }
 }

@@ -1,5 +1,5 @@
-import { Component, ComponentInterface, Event, EventEmitter, Host, Prop, State, h } from "@stencil/core";
-import { Bind, GlobalConfig, Helper } from '@app/utils';
+import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
 /**
@@ -7,49 +7,39 @@ import { StickyState, StickyTop } from './sticky.types';
  * @slot normal  - The normal slot.
  * @slot sticky  - The sticky slot.
  */
-@Component({
-  tag: 'plus-sticky',
-  styleUrl: 'sticky.scss',
-  shadow: true
-})
-export class Sticky implements ComponentInterface {
+@Element()
+export class Sticky {
 
   /**
    * Disables the sticky mode.
    */
-  @Prop()
+  @Property()
   disabled?: boolean;
 
   /**
    * Specifies the space from top.
    */
-  @Prop()
-  top?: StickyTop;
+  @Property()
+  top?: StickyTop = 1;
 
   /**
    * If you use `state` property or `plusChange` event, you shold set this property to `true`.
    */
-  @Prop()
+  @Property()
   watcher?: boolean;
 
   /**
    * Specifies the z-index of the sticky.
    */
-  @Prop()
+  @Property()
   zIndex?: number;
 
   /**
    * When the component state is changed this event triggers. 
    * To enable this event you shold set `watcher` property to `true`.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusChange!: EventEmitter<StickyState>;
-
-  @GlobalConfig('sticky')
-  config;
 
   $element!: HTMLElement;
 
@@ -58,10 +48,11 @@ export class Sticky implements ComponentInterface {
 
   observer?: IntersectionObserver;
 
+  @Attributes()
   get attributes() {
 
     const attributes = {
-      style: this.styles
+      style: this.style
     };
 
     if (this.watcher) {
@@ -72,14 +63,14 @@ export class Sticky implements ComponentInterface {
   }
 
   get sizer() {
-    return `calc((${Helper.toUnit(this.top)} + 1px) * -1)`;
+    return `calc((${Helpers.toUnit(this.top)} + 1px) * -1)`;
   }
 
-  get styles() {
-    return {
-      top: Helper.toUnit(this.top),
+  get style() {
+    return Helpers.styles({
+      top: Helpers.toUnit(this.top),
       zIndex: this.top ? String(this.zIndex) : null,
-    }
+    })
   }
 
   /**
@@ -103,21 +94,20 @@ export class Sticky implements ComponentInterface {
    * Watchers
    */
 
-  componentShouldUpdate(next, prev, name) {
+  @Watch('disabled', 'source')
+  watchers(next, prev, key) {
 
-    if (next === prev) return;
-
-    switch (name) {
+    switch (key) {
 
       case 'disabled':
 
-        this.disabled ? this.unbind() : this.bind();
+        next ? this.unbind() : this.bind();
 
         break;
 
       case 'watcher':
 
-        this.watcher ? this.bind() : this.unbind();
+        next ? this.bind() : this.unbind();
 
         break;
     }
@@ -127,21 +117,21 @@ export class Sticky implements ComponentInterface {
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onIntersecting(entries: IntersectionObserverEntry[]) {
 
     const [entry] = entries;
 
     this.state = entry.intersectionRatio < 1 ? 'sticky' : 'normal';
 
-    this.plusChange.emit(this.state);
+    this.plusChange(this.state);
   }
 
   /**
    * Lifecycles
    */
 
-  componentDidLoad() {
+  connectedCallback() {
     this.bind();
   }
 
@@ -151,22 +141,22 @@ export class Sticky implements ComponentInterface {
 
   render() {
     return (
-      <Host {...this.attributes}>
+      <>
         <div class="sizer-wrapper">
           <div
             class="sizer"
-            ref={(element) => this.$element = element}
-            style={{ top: this.sizer }}
+            ref={this.$element}
+            style={`top: ${this.sizer}`}
           />
         </div>
         <slot />
-        <div style={{ display: this.state === 'normal' ? 'block' : 'none' }}>
+        <div class="normal">
           <slot name="normal" />
         </div>
-        <div style={{ display: this.state === 'sticky' ? 'block' : 'none' }}>
+        <div class="sticky">
           <slot name="sticky" />
         </div>
-      </Host>
+      </>
     )
   }
 }

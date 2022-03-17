@@ -1,107 +1,80 @@
-import { Component, ComponentInterface, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/utils';
+import { Attributes, Bind, Element, Event, EventEmitter, Property } from '@htmlplus/element';
+import * as Helpers from '@app/helpers';
 import { TransitionDirection, TransitionDuration, TransitionRepeat } from './transition.types';
 
 /**
  */
-@Component({
-  tag: 'plus-transition',
-  styleUrl: 'transition.scss',
-  shadow: true
-})
-export class Transition implements ComponentInterface {
+@Element()
+export class Transition {
 
   /**
-   * Specifies the amount of delay before starting the animation to play. 
+   * Specifies the aconnectedCallback of delay before starting the animation to play. 
    * This may be specified in either seconds `s` or milliseconds `ms`.
    */
-  @Prop()
+  @Property()
   delay?: string = '0s';
 
   /**
    * Defines whether an animation should be played forwards, backwards or in alternate cycles.
    */
-  @Prop()
+  @Property()
   direction?: TransitionDirection = 'normal';
 
   /**
    * Specifies the length of time it will take to complete one cycle between two defined states.
    * You can also use the reservation values `slower`, `slow`, `normal`, `fast` and `faster`.
    */
-  @Prop()
+  @Property()
   duration?: TransitionDuration = 'normal';
 
   /**
    * Specifies what kind of animation you want to play. 
    * click [here](https://htmlplus.io/component/transition/names) to see the list of available animations.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   name: string;
 
   /**
    * Specifies the time that animation should be paused.
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // pause?: TransitionPause;
 
   /**
    * Specifies the time that animation will start.
    */
-  // @Prop({ reflect: true })
+  // @Property({ reflect: true })
   // start?: TransitionStart;
 
   /**
    * Specifies the number of times the animation should be repeated after one complete cycle.
    */
-  @Prop()
+  @Property()
   repeat?: TransitionRepeat = 1;
 
   /**
    * This event is fired any time the animation has been canceled.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusCancel!: EventEmitter<void>;
 
   /**
    * This event is fired when animation has been completed.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusEnd!: EventEmitter<void>;
 
   /**
    * This event is fired any time a new cycle has been started. 
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusIteration!: EventEmitter<void>;
 
   /**
    * This event is fired when animation has been started.
    */
-  @Event({
-    bubbles: false,
-    cancelable: true
-  })
+  @Event({ cancelable: true })
   plusStart!: EventEmitter<void>;
-
-  @GlobalConfig('transition', {
-    delay: '0s',
-    direction: 'normal',
-    duration: 'normal',
-    repeat: 1,
-  })
-  config?;
-
-  @Element()
-  $host!: HTMLElement;
 
   parser(input) {
 
@@ -124,12 +97,23 @@ export class Transition implements ComponentInterface {
     return typeof fixed !== 'undefined' ? value.toFixed(fixed) : value;
   }
 
-  get styles() {
+  get $host() {
+    return Helpers.host(this);
+  }
+
+  @Attributes()
+  get attributes() {
     return {
+      style: this.style
+    }
+  }
+
+  get style() {
+    return Helpers.styles({
       '--plus-transition-delay': this.delay ? this.parser(this.delay) : null,
       '--plus-transition-duration': isNaN(parseFloat(this.duration)) ? null : this.duration,
       '--plus-transition-repeat': this.repeat as any ?? null,
-    }
+    })
   }
 
   get events() {
@@ -153,39 +137,37 @@ export class Transition implements ComponentInterface {
     ]
   }
 
-  @Bind
+  @Bind()
   onCancel() {
-    this.plusCancel.emit();
+    this.plusCancel();
   }
 
-  @Bind
+  @Bind()
   onEnd() {
-    this.plusEnd.emit();
+    this.plusEnd();
   }
 
-  @Bind
+  @Bind()
   onIteration() {
-    this.plusIteration.emit();
+    this.plusIteration();
   }
 
-  @Bind
+  @Bind()
   onStart() {
-    this.plusStart.emit();
+    this.plusStart();
   }
 
   connectedCallback() {
-    this.events.map(({ event, handler }) => this.$host.addEventListener(event, handler));
+    this.events.map(({ event, handler }) => Helpers.on(this.$host, event, handler));
   }
 
   disconnectedCallback() {
-    this.events.map(({ event, handler }) => this.$host.removeEventListener(event, handler));
+    this.events.map(({ event, handler }) => Helpers.off(this.$host, event, handler));
   }
 
   render() {
     return (
-      <Host style={this.styles}>
-        <slot />
-      </Host>
+      <slot />
     )
   }
 }

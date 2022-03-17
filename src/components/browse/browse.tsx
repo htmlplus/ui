@@ -1,88 +1,88 @@
-import { Component, ComponentInterface, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
-import { Bind, GlobalConfig } from '@app/utils';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  State,
+} from '@htmlplus/element';
 import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
  * @slot default - The default slot.
  * @examples default
  */
-@Component({
-  tag: 'plus-browse',
-  styleUrl: 'browse.scss',
-  shadow: true
-})
-export class Browse implements ComponentInterface {
-
+@Element()
+export class Browse {
   /**
-   * One or more 
+   * One or more
    * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
    * describing file types to allow.
    */
-  @Prop()
+  @Property()
   accept?: string;
 
   /**
    * Disable the component.
    */
-  @Prop({ reflect: true })
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
    * Add droppable ability.
    */
-  @Prop()
+  @Property()
   droppable?: boolean;
 
   /**
    * Minimum number of files.
    */
-  @Prop()
+  @Property()
   min?: number;
 
   /**
    * Maximum number of files.
    */
-  @Prop()
+  @Property()
   max?: number;
 
   /**
    * The minimum size of the file(s) in bytes.
    */
-  @Prop()
+  @Property()
   minSize?: number;
 
   /**
    * The maximum size of the file(s) in bytes.
    */
-  @Prop()
+  @Property()
   maxSize?: number;
 
   /**
    * A Boolean which, if present, indicates that the user may choose more than one file.
    */
-  @Prop()
+  @Property()
   multiple?: boolean;
 
   /**
    * Emitted when file(s) are selected.
    */
-  @Event({ bubbles: false })
+  @Event()
   plusChange!: EventEmitter<BrowseEvent>;
 
   /**
    * Emitted when selected invalid file(s).
    */
-  @Event({ bubbles: false })
+  @Event()
   plusError!: EventEmitter<BrowseEvent>;
 
   /**
    * Emitted when file(s) are added successfully.
    */
-  @Event({ bubbles: false })
+  @Event()
   plusSuccess!: EventEmitter<BrowseEvent>;
-
-  @GlobalConfig('browse')
-  config?;
 
   $input!: HTMLElement;
 
@@ -91,20 +91,20 @@ export class Browse implements ComponentInterface {
 
   timeout?;
 
+  @Attributes()
   get attributes() {
-
     const attributes = {};
 
-    if (!this.disabled) {
-      attributes['onClick'] = this.onClick;
-    }
+    if (this.disabled) return attributes;
 
-    if (this.droppable) {
-      attributes['dragging'] = this.dragging;
-      attributes['onDragLeave'] = this.onDragLeave;
-      attributes['onDragOver'] = this.onDragOver;
-      attributes['onDrop'] = this.onDrop;
-    }
+    attributes['onClick'] = this.onClick;
+
+    if (!this.droppable) return attributes;
+
+    attributes['dragging'] = this.dragging;
+    attributes['onDragLeave'] = this.onDragLeave;
+    attributes['onDragOver'] = this.onDragOver;
+    attributes['onDrop'] = this.onDrop;
 
     return attributes;
   }
@@ -121,7 +121,7 @@ export class Browse implements ComponentInterface {
    * Open the browse dialog.
    */
   @Method()
-  async browse() {
+  browse(): void {
     this.$input.click();
   }
 
@@ -130,27 +130,22 @@ export class Browse implements ComponentInterface {
    */
 
   do(files: FileList) {
-
     const detail: BrowseEvent = {
       errors: [],
       files: [],
-    }
+    };
 
-    if (files.length < this.min)
-      detail.errors.push('MIN');
+    if (files.length < this.min) detail.errors.push('MIN');
 
-    if (files.length > this.max)
-      detail.errors.push('MAX');
+    if (files.length > this.max) detail.errors.push('MAX');
 
     for (let i = 0; i < files.length; i++) {
-
       const value: BrowseEventFile = {
         errors: [],
         file: files[i],
-      }
+      };
 
       for (const type of this.types) {
-
         const isMime = /\//.exec(type);
 
         const isPattern = /\/*/.exec(type);
@@ -159,7 +154,12 @@ export class Browse implements ComponentInterface {
 
         if (isMime && !isPattern && value.file.type === type) break;
 
-        if (isMime && isPattern && value.file.type.startsWith(type.slice(0, -1))) break;
+        if (
+          isMime &&
+          isPattern &&
+          value.file.type.startsWith(type.slice(0, -1))
+        )
+          break;
 
         value.errors.push('ACCEPT');
       }
@@ -173,53 +173,54 @@ export class Browse implements ComponentInterface {
       detail.files.push(value);
     }
 
-    const isSuccess = !detail.errors.length && !detail.files.some((file) => !!file.errors.length);
+    const isSuccess =
+      !detail.errors.length &&
+      !detail.files.some((file) => !!file.errors.length);
 
     if (isSuccess) {
-
       const files = detail.files.filter((file) => !file.errors.length);
 
       const data = Object.assign({}, detail, { files });
 
-      this.plusSuccess.emit(data);
-    }
-    else {
-
+      this.plusSuccess(data);
+    } else {
       const files = detail.files.filter((file) => file.errors.length);
 
       const data = Object.assign({}, detail, { files });
 
-      this.plusError.emit(data);
+      this.plusError(data);
     }
 
-    this.plusChange.emit(detail);
+    this.plusChange(detail);
   }
 
   /**
    * Events handler
    */
 
-  @Bind
+  @Bind()
   onClick() {
     this.$input.click();
   }
 
-  @Bind
+  @Bind()
   onChange(event) {
-    this.do(event.target.files);
+    const files = event.target.files;
+
+    if (!files.length) return;
+
+    this.do(files);
   }
 
-  @Bind
+  @Bind()
   onDragLeave() {
-
     clearTimeout(this.timeout);
 
-    this.timeout = setTimeout(() => this.dragging = false, 50);
+    this.timeout = setTimeout(() => (this.dragging = false), 50);
   }
 
-  @Bind
+  @Bind()
   onDragOver(event) {
-
     clearTimeout(this.timeout);
 
     event.preventDefault();
@@ -227,9 +228,8 @@ export class Browse implements ComponentInterface {
     this.dragging = true;
   }
 
-  @Bind
+  @Bind()
   onDrop(event) {
-
     event.preventDefault();
 
     event.stopPropagation();
@@ -241,16 +241,17 @@ export class Browse implements ComponentInterface {
 
   render() {
     return (
-      <Host {...this.attributes}>
-        <slot />
+      <>
+        <slot>Click or Drag & Drop a file(s) here</slot>
         <input
           accept={this.accept}
           multiple={this.multiple}
-          ref={($element) => this.$input = $element}
+          ref={this.$input}
           type="file"
           onChange={this.onChange}
+          onClick={(event) => event.stopPropagation()}
         />
-      </Host>
-    )
+      </>
+    );
   }
 }
