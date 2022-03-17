@@ -1,9 +1,19 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.3.0-next.1",
+  "version": "0.3.0-next.2",
+  "license": "",
+  "author": "Masood Abdolian <m.abdolian@gmail.com>",
+  "description": "HTMLPlus UI Components",
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
+  "scripts": {
+    "build": "npm run clean && node scripts/build.js",
+    "clean": "rimraf .cache dist public/build",
+    "start": "node scripts/start.js",
+    "test:open": "cypress open",
+    "test:run": "cypress run"
+  },
   "exports": {
     "./aspect-ratio": {
       "default": "./dist/aspect-ratio.js"
@@ -267,13 +277,18 @@
     "package.json",
     "README.md"
   ],
-  "scripts": {
-    "build": "npm run clean && node scripts/build.js",
-    "clean": "rimraf .cache dist public/build",
-    "start": "node scripts/start.js",
-    "test:open": "cypress open",
-    "test:run": "cypress run"
+  "engines": {
+    "node": ">= 12.7.0"
   },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htmlplus/core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/htmlplus/core/issues"
+  },
+  "homepage": "https://github.com/htmlplus/core#readme",
   "devDependencies": {
     "@htmlplus/element": "0.1.6",
     "@popperjs/core": "^2.10.1",
