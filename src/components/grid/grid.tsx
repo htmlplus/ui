@@ -1,4 +1,4 @@
-import { Element, Property } from '@htmlplus/element';
+import { Element, Property, query } from '@htmlplus/element';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
@@ -6,7 +6,6 @@ import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridW
  */
 @Element()
 export class Grid {
-
   /**
    * Aligns contents vertically across all rows (It overrides alignItems).
    */
@@ -218,37 +217,59 @@ export class Grid {
   @Property()
   wrapXxl?: GridWrap;
 
-  // TODO: auto keys detect
-  get attributes() {
-
-    const result = {};
-
+  // TODO: auto keys detect, support spread attribute <div {...attributes} />
+  updatedCallback() {
     const keys = [
-      'alignContent', 'alignContentXs', 'alignContentSm', 'alignContentMd',
-      'alignContentLg', 'alignContentXl', 'alignContentXxl', 'alignItems',
-      'alignItemsXs', 'alignItemsSm', 'alignItemsMd', 'alignItemsLg',
-      'alignItemsXl', 'alignItemsXxl', 'gutter', 'gutterX', 'gutterY',
-      'justifyContent', 'justifyContentXs', 'justifyContentSm',
-      'justifyContentMd', 'justifyContentLg', 'justifyContentXl',
-      'justifyContentXxl', 'reverse', 'vertical', 'wrap', 'wrapXs', 'wrapSm',
-      'wrapMd', 'wrapLg', 'wrapXl', 'wrapXxl',
+      'alignContent',
+      'alignContentXs',
+      'alignContentSm',
+      'alignContentMd',
+      'alignContentLg',
+      'alignContentXl',
+      'alignContentXxl',
+      'alignItems',
+      'alignItemsXs',
+      'alignItemsSm',
+      'alignItemsMd',
+      'alignItemsLg',
+      'alignItemsXl',
+      'alignItemsXxl',
+      'gutter',
+      'gutterX',
+      'gutterY',
+      'justifyContent',
+      'justifyContentXs',
+      'justifyContentSm',
+      'justifyContentMd',
+      'justifyContentLg',
+      'justifyContentXl',
+      'justifyContentXxl',
+      'reverse',
+      'vertical',
+      'wrap',
+      'wrapXs',
+      'wrapSm',
+      'wrapMd',
+      'wrapLg',
+      'wrapXl',
+      'wrapXxl'
     ];
 
+    const div = query(this, 'div');
+
     for (const key of keys) {
-
       const name = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-
-      result[name] = this[key];
+      const value = this[key];
+      if (value) div.setAttribute(name, value);
+      else div.removeAttribute(name);
     }
-
-    return result;
   }
 
-  render() { 
+  render() {
     return (
-      <div {...this.attributes}>
+      <div>
         <slot />
       </div>
-    )
+    );
   }
 }
