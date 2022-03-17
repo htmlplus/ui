@@ -1,0 +1,11 @@
+{
+  "embeddedLanguageFormatting": "off",
+  "printWidth": 120,
+  "quoteProps": "consistent",
+  "singleQuote": true,
+  "trailingComma": "none",
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^[.](.*)"],
+  "importOrderCaseInsensitive": true,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": false
+}
