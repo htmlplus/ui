@@ -1,13 +1,23 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
 import * as Helpers from '@app/helpers';
 import CropperCore from 'cropperjs';
-import { CropperAspectRatio, CropperValue, CropperMode, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomData } from './cropper.types';
+import {
+  CropperAspectRatio,
+  CropperValue,
+  CropperMode,
+  CropperResizer,
+  CropperResizerShape,
+  CropperResponsive,
+  CropperShape,
+  CropperView,
+  CropperZoomable,
+  CropperZoomData
+} from './cropper.types';
 
 /**
  */
 @Element()
 export class Cropper {
-
   /**
    * A number between 0 and 1. Define the automatic cropping area size.
    */
@@ -87,16 +97,16 @@ export class Cropper {
   src?: string;
 
   /**
-   * The previous cropped data if you had stored, will be passed to value automatically when initialized. 
+   * The previous cropped data if you had stored, will be passed to value automatically when initialized.
    */
   @Property()
   value?: CropperValue;
 
   /**
-   * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
-   * outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport 
-   * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the 
-   * canvas to the container. Note that if the proportions of the canvas and the container are 
+   * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend
+   * outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport
+   * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the
+   * canvas to the container. Note that if the proportions of the canvas and the container are
    * the same, there is no difference between `contain` and `cover`.
    */
   @Property()
@@ -139,25 +149,26 @@ export class Cropper {
   lock: boolean = false;
 
   get classes() {
-    return Helpers.classes([
-      'wrapper',
-      {
-        resizer: this.resizer,
-        resizerShape: this.resizerShape,
-        shape: this.shape,
-      }
-    ], true)
+    return Helpers.classes(
+      [
+        'wrapper',
+        {
+          resizer: this.resizer,
+          resizerShape: this.resizerShape,
+          shape: this.shape
+        }
+      ],
+      true
+    );
   }
 
   get options() {
-
     const aspectRatio = (() => {
-
       if (typeof this.aspectRatio === 'number') return this.aspectRatio;
 
       let [valueA, valueB] = `${this.aspectRatio}`
         .split('/')
-        .map((item: any) => isNaN(item) ? NaN : parseFloat(item));
+        .map((item: any) => (isNaN(item) ? NaN : parseFloat(item)));
 
       if (valueB === undefined) valueB = 1;
 
@@ -167,20 +178,15 @@ export class Cropper {
     })();
 
     const responsive = (() => {
-
       if (this.responsive === 'reset') return this.responsive;
-
       return this.responsive;
     })();
 
-    const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any)();
+    const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 }[this.view] as any))();
 
     const zoomable = (() => {
-
       const value = `${this.zoomable}`;
-
       if (['touch', 'wheel'].includes(value)) return value;
-
       return this.zoomable;
     })();
 
@@ -227,7 +233,7 @@ export class Cropper {
       cropend: this.onCrop,
       ready: this.onReady,
       zoom: this.onZoom
-    }
+    };
   }
 
   /**
@@ -300,10 +306,8 @@ export class Cropper {
   @Method()
   toBlob(): Promise<Blob> {
     return new Promise((resolve) => {
-      this.instance
-        .getCroppedCanvas()
-        .toBlob((blob) => resolve(blob))
-    })
+      this.instance.getCroppedCanvas().toBlob((blob) => resolve(blob));
+    });
   }
 
   /**
@@ -328,12 +332,8 @@ export class Cropper {
   @Method()
   toURL(): Promise<string> {
     return new Promise((resolve) => {
-      this.instance
-        .getCroppedCanvas()
-        .toBlob(
-          (blob) => resolve(URL.createObjectURL(blob))
-        )
-    })
+      this.instance.getCroppedCanvas().toBlob((blob) => resolve(URL.createObjectURL(blob)));
+    });
   }
 
   /**
@@ -370,14 +370,12 @@ export class Cropper {
   }
 
   updateValue(value?) {
-
     if (!this.instance) return;
 
     const { height, width } = this.instance?.getContainerData();
 
     if (value) {
-
-      const toPixel = (a, b) => a * b / 100;
+      const toPixel = (a, b) => (a * b) / 100;
 
       // TODO this.instance.rotateTo(value.rotate);
 
@@ -386,24 +384,26 @@ export class Cropper {
           top: toPixel(value.top, height),
           left: toPixel(value.left, width),
           width: toPixel(100 - value.right - value.left, width),
-          height: toPixel(100 - value.top - value.bottom, height),
+          height: toPixel(100 - value.top - value.bottom, height)
         })
         .setCanvasData({
           top: toPixel(value.y, height),
           left: toPixel(value.x, width),
           width: toPixel(value.width, width),
-          height: toPixel(value.height, height),
+          height: toPixel(value.height, height)
         });
 
       return;
     }
 
-    const
-      canvas = this.instance.getCanvasData(),
-      // TODO data = this.instance.getData(),
-      viewport = this.instance.getCropBoxData();
+    const canvas = this.instance.getCanvasData();
 
-    const toPercent = (a, b) => parseFloat((a / b * 100).toFixed(2));
+    // TODO
+    // const data = this.instance.getData();
+
+    const viewport = this.instance.getCropBoxData();
+
+    const toPercent = (a, b) => parseFloat(((a / b) * 100).toFixed(2));
 
     this.lock = true;
 
@@ -416,7 +416,7 @@ export class Cropper {
       width: toPercent(canvas.width, width),
       height: toPercent(canvas.height, height),
       x: toPercent(canvas.left, width),
-      y: toPercent(canvas.top, height),
+      y: toPercent(canvas.top, height)
     };
 
     this.lock = false;
@@ -427,17 +427,28 @@ export class Cropper {
    */
 
   @Watch(
-    'area', 'aspectRatio', 'backdrop', 'background',
-    'disabled', 'guides', 'indicator', 'mode',
-    'resizer', 'resizerShape', 'responsive', 'shape',
-    'src', 'value', 'view', 'zoomable', 'zoomRatio',
+    'area',
+    'aspectRatio',
+    'backdrop',
+    'background',
+    'disabled',
+    'guides',
+    'indicator',
+    'mode',
+    'resizer',
+    'resizerShape',
+    'responsive',
+    'shape',
+    'src',
+    'value',
+    'view',
+    'zoomable',
+    'zoomRatio'
   )
   watcher(next, prev, name) {
-
     if (this.lock) return;
 
     switch (name) {
-
       case 'aspectRatio':
         if (this.shape !== 'rectangle') break;
         this.instance?.setAspectRatio(next);
@@ -460,11 +471,8 @@ export class Cropper {
         break;
 
       case 'shape':
-
         const aspectRatio = this.shape === 'rectangle' ? this.options.aspectRatio : 1;
-
         this.instance?.setAspectRatio(aspectRatio);
-
         break;
 
       case 'area':
@@ -488,26 +496,21 @@ export class Cropper {
 
   @Bind()
   onCrop() {
-
     this.updateValue();
-
     this.plusCrop();
   }
 
   @Bind()
   onReady() {
-
     // TODO
     this.value && this.updateValue(this.value);
 
     this.disabled && this.instance?.disable();
-
     this.plusReady();
   }
 
   @Bind()
   onZoom(event) {
-
     const difference = event.detail.ratio - event.detail.oldRatio;
 
     const direction = difference > 0 ? 'in' : 'out';
@@ -542,6 +545,6 @@ export class Cropper {
       <div class={this.classes}>
         <img class="image" alt="cropper" ref={this.$image} src={this.src} />
       </div>
-    )
+    );
   }
 }
