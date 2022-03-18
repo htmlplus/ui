@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
+import { Attributes, Bind, Element, Property, State, Watch, queryAll } from '@htmlplus/element';
 import * as Helpers from '@app/helpers';
 import * as Constants from './breadcrumb.constants';
 
@@ -12,7 +12,6 @@ import * as Constants from './breadcrumb.constants';
  */
 @Element()
 export class Breadcrumb {
-
   /**
    * For localization purposes, you can use the provided translations.
    */
@@ -20,7 +19,7 @@ export class Breadcrumb {
   expanderText?: string = 'Show path';
 
   /**
-   * The expander button is displayed when the number of the items reached the maximum limit. 
+   * The expander button is displayed when the number of the items reached the maximum limit.
    * The offset property specifies the position of the expander button.
    */
   @Property()
@@ -42,17 +41,12 @@ export class Breadcrumb {
   items?: Array<any>;
 
   // TODO
-  config: any = {}
+  config: any = { slots: {} };
 
   observer?: MutationObserver;
 
   get $children() {
-
-    const selectors = [
-      Constants.BREADCRUMB_EXPANDER_SLOT_QUERY,
-      Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY,
-
-    ].join(',');
+    const selectors = [Constants.BREADCRUMB_EXPANDER_SLOT_QUERY, Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY].join(',');
 
     const children = Array.from(Helpers.host(this).children);
 
@@ -63,20 +57,19 @@ export class Breadcrumb {
   get attributes() {
     return {
       'aria-label': 'breadcrumb'
-    }
+    };
   }
 
   get template() {
-
     const $node = Helpers.host(this).querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
 
     const $clone = $node?.cloneNode(true) as HTMLElement;
 
     $clone?.removeAttribute('slot');
 
-    const template = $clone?.outerHTML;
+    const template = $clone?.outerHTML || this.config.slots.separator || this.separator;
 
-    return template || this.config.slots.separator || this.separator;
+    return template;
   }
 
   /**
@@ -84,9 +77,7 @@ export class Breadcrumb {
    */
 
   bind() {
-
     this.observer = new MutationObserver(this.onChange);
-
     this.observer.observe(Helpers.host(this), { childList: true });
   }
 
@@ -95,13 +86,11 @@ export class Breadcrumb {
   }
 
   update(expand?: boolean) {
+    const $children = this.$children;
 
-    const
-      $children = this.$children,
-      items = [];
+    const items = [];
 
     const { start, length } = (() => {
-
       if (expand) return {};
 
       if (typeof this.max !== 'number') return {};
@@ -117,13 +106,9 @@ export class Breadcrumb {
       start = this.offset;
 
       if (start >= 0) {
-
         start = $children.length < length + start ? mod : start;
-      }
-      else {
-
+      } else {
         start = mod + start + 1;
-
         start = start < 0 ? 0 : start;
       }
 
@@ -131,7 +116,6 @@ export class Breadcrumb {
     })() as any; // TODO
 
     $children.forEach(($child, index) => {
-
       $child.setAttribute('slot', index.toString());
 
       if (start <= index && index < start + length) return;
@@ -139,29 +123,21 @@ export class Breadcrumb {
       items.push({
         type: 'item',
         key: `${index}`,
-        slot: `${index}`,
-      })
+        slot: `${index}`
+      });
     });
 
     if (start !== undefined)
-      items.splice(
-        start,
-        0,
-        {
-          type: 'expander',
-          key: 'expander'
-        }
-      );
+      items.splice(start, 0, {
+        type: 'expander',
+        key: 'expander'
+      });
 
     for (let i = items.length - 1; i > 0; i--)
-      items.splice(
-        i,
-        0,
-        {
-          type: 'separator',
-          key: `expander-${i}`
-        }
-      );
+      items.splice(i, 0, {
+        type: 'separator',
+        key: `expander-${i}`
+      });
 
     this.items = items;
   }
@@ -173,15 +149,11 @@ export class Breadcrumb {
   // TODO
   @Watch('offset', 'max', 'separator')
   watcher(next, prev, name) {
-
     switch (name) {
-
       case 'offset':
       case 'max':
       case 'separator':
-
         this.update(false);
-
         // TODO: componentShouldUpdate
         return false;
     }
@@ -193,7 +165,6 @@ export class Breadcrumb {
 
   @Bind()
   onChange() {
-
     this.update(false);
 
     // TODO
@@ -205,14 +176,18 @@ export class Breadcrumb {
    */
 
   connectedCallback() {
-
     this.bind();
-
     this.update(false);
   }
 
   disconnectedCallback() {
     this.unbind();
+  }
+
+  // TODO: it's valid until 'dangerouslySetInnerHTML' doesn't support
+  updatedCallback() {
+    const template = this.template;
+    queryAll(this, '.separator').forEach((element) => (element.innerHTML = template));
   }
 
   render() {
@@ -222,13 +197,10 @@ export class Breadcrumb {
           switch (item.type) {
             case 'item': {
               return (
-                <div
-                  key={item.key}
-                  part="item"
-                >
+                <div key={item.key} part="item">
                   <slot name={item.slot} />
                 </div>
-              )
+              );
             }
             case 'expander': {
               return (
@@ -241,37 +213,22 @@ export class Breadcrumb {
                   role="button"
                   tabindex="0"
                   onClick={() => this.update(true)}
-                  onKeyDown={(event) =>
-                    event.key.match(/Enter| /) && this.update(true)
-                  }
+                  onKeyDown={(event) => event.key.match(/Enter| /) && this.update(true)}
                 >
                   <slot name="expander">
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
+                    <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
                     </svg>
                   </slot>
                 </div>
-              )
+              );
             }
             case 'separator': {
-              return (
-                <div
-                  key={item.key}
-                  aria-hidden="true"
-                  class="separator"
-                  part="separator"
-                >
-                  {this.template}
-                </div>
-              )
+              return <div key={item.key} aria-hidden="true" class="separator" part="separator" />;
             }
           }
         })}
       </div>
-    )
+    );
   }
 }
