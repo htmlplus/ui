@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.3.0-next.1",
+  "version": "0.3.0-next.2",
   "license": "",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "HTMLPlus UI Components",
@@ -18,12 +18,6 @@
     "./aspect-ratio": {
       "default": "./dist/aspect-ratio.js"
     },
-    "./bottom-navigation": {
-      "default": "./dist/bottom-navigation.js"
-    },
-    "./bottom-navigation-item": {
-      "default": "./dist/bottom-navigation-item.js"
-    },
     "./breadcrumb": {
       "default": "./dist/breadcrumb.js"
     },
@@ -32,15 +26,6 @@
     },
     "./card": {
       "default": "./dist/card.js"
-    },
-    "./card-body": {
-      "default": "./dist/card-body.js"
-    },
-    "./card-footer": {
-      "default": "./dist/card-footer.js"
-    },
-    "./card-header": {
-      "default": "./dist/card-header.js"
     },
     "./click-outside": {
       "default": "./dist/click-outside.js"
@@ -87,14 +72,8 @@
     "./intersection": {
       "default": "./dist/intersection.js"
     },
-    "./menu": {
-      "default": "./dist/menu.js"
-    },
     "./portal": {
       "default": "./dist/portal.js"
-    },
-    "./ripple": {
-      "default": "./dist/ripple.js"
     },
     "./scroll-indicator": {
       "default": "./dist/scroll-indicator.js"
@@ -123,18 +102,6 @@
     "./tabs-tab": {
       "default": "./dist/tabs-tab.js"
     },
-    "./toast": {
-      "default": "./dist/toast.js"
-    },
-    "./toast-toggler": {
-      "default": "./dist/toast-toggler.js"
-    },
-    "./toolbar": {
-      "default": "./dist/toolbar.js"
-    },
-    "./toolbar-spacer": {
-      "default": "./dist/toolbar-spacer.js"
-    },
     "./tooltip": {
       "default": "./dist/tooltip.js"
     },
@@ -147,12 +114,6 @@
       "aspect-ratio": [
         "./dist/components/aspect-ratio/aspect-ratio.d.ts"
       ],
-      "bottom-navigation": [
-        "./dist/components/bottom-navigation/bottom-navigation.d.ts"
-      ],
-      "bottom-navigation-item": [
-        "./dist/components/bottom-navigation-item/bottom-navigation-item.d.ts"
-      ],
       "breadcrumb": [
         "./dist/components/breadcrumb/breadcrumb.d.ts"
       ],
@@ -161,15 +122,6 @@
       ],
       "card": [
         "./dist/components/card/card.d.ts"
-      ],
-      "card-body": [
-        "./dist/components/card-body/card-body.d.ts"
-      ],
-      "card-footer": [
-        "./dist/components/card-footer/card-footer.d.ts"
-      ],
-      "card-header": [
-        "./dist/components/card-header/card-header.d.ts"
       ],
       "click-outside": [
         "./dist/components/click-outside/click-outside.d.ts"
@@ -216,14 +168,8 @@
       "intersection": [
         "./dist/components/intersection/intersection.d.ts"
       ],
-      "menu": [
-        "./dist/components/menu/menu.d.ts"
-      ],
       "portal": [
         "./dist/components/portal/portal.d.ts"
-      ],
-      "ripple": [
-        "./dist/components/ripple/ripple.d.ts"
       ],
       "scroll-indicator": [
         "./dist/components/scroll-indicator/scroll-indicator.d.ts"
@@ -252,18 +198,6 @@
       "tabs-tab": [
         "./dist/components/tabs-tab/tabs-tab.d.ts"
       ],
-      "toast": [
-        "./dist/components/toast/toast.d.ts"
-      ],
-      "toast-toggler": [
-        "./dist/components/toast-toggler/toast-toggler.d.ts"
-      ],
-      "toolbar": [
-        "./dist/components/toolbar/toolbar.d.ts"
-      ],
-      "toolbar-spacer": [
-        "./dist/components/toolbar-spacer/toolbar-spacer.d.ts"
-      ],
       "tooltip": [
         "./dist/components/tooltip/tooltip.d.ts"
       ],
@@ -290,7 +224,7 @@
   },
   "homepage": "https://github.com/htmlplus/core#readme",
   "devDependencies": {
-    "@htmlplus/element": "0.1.6",
+    "@htmlplus/element": "0.1.8",
     "@popperjs/core": "^2.10.1",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.1",
