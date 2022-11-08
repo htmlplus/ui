@@ -145,7 +145,7 @@ export class Sticky {
         <div className="sizer-wrapper">
           <div
             className="sizer"
-            ref={this.$element}
+            ref={($element) => this.$element = $element}
             style={{ top: this.sizer }}
           />
         </div>

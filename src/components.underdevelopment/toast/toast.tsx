@@ -408,7 +408,7 @@ export class Toast {
         <div
           className={this.classes}
           part="root"
-          ref={this.$root}
+          ref={($element) => this.$root = $element}
         >
           <slot />
         </div>

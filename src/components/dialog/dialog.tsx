@@ -455,7 +455,7 @@ export class Dialog {
         {this.backdrop && (<div className="backdrop" part="backdrop"><div /></div>)}
         <div className={this.classes}>
           <div className="table">
-            <div className="cell" ref={this.$cell}>
+            <div className="cell" ref={($element) => this.$cell = $element}>
               <slot />
             </div>
           </div>

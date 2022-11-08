@@ -278,7 +278,7 @@ export class Menu {
       <>
         <div
           className="activator"
-          ref={this.$activator}
+          ref={($element) => this.$activator = $element}
           onClick={(event) => this.click(event)}
         >
           <slot name="activator" />
@@ -286,7 +286,7 @@ export class Menu {
         {this.open && (
           <div
             className="content"
-            ref={this.$content}
+            ref={($element) => this.$content = $element}
             style={this.fixed ? {} : this.style}>
             <slot />
           </div>

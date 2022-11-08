@@ -245,7 +245,7 @@ export class Browse {
         <input
           accept={this.accept}
           multiple={this.multiple}
-          ref={this.$input}
+          ref={($element) => this.$input = $element}
           type="file"
           onChange={this.onChange}
           onClick={(event) => event.stopPropagation()}

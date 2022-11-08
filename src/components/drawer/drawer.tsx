@@ -399,7 +399,7 @@ export class Drawer {
         {this.hasBackdrop ? <div className="backdrop" part="backdrop"><div /></div> : ''}
         <div
           className={this.classes}
-          ref={this.$root}
+          ref={($element) => this.$root = $element}
         >
           <slot />
         </div>
