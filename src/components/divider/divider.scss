@@ -1,78 +1,134 @@
-@import 'mixins';
-@import 'reset';
 @import 'divider.variables';
 
 :host {
-  
+  // TODO
+  --plus-divider-gutter: 0.5rem;
+  --plus-divider-opacity: 0.25;
+  --plus-divider-type: solid;
+
   // @prop Used to adjust the color.
   --plus-divider-color: #{$divider-color};
 
   // @prop Used to adjust the size.
-  --plus-divider-size: #{map-get($divider-size, 'md')};
+  // --plus-divider-size: #{map-get($divider-size, 'md')};
 
   // @prop Used to adjust the type.
-  --plus-divider-type: #{map-get($divider-type, 'solid')};
+  // --plus-divider-type: #{map-get($divider-type, 'solid')};
 }
 
 :host {
-  display: block;
+  align-items: center;
+  color: var(--plus-divider-color);
+  display: flex;
+  font-size: 0.75rem;
 }
 
-:host {
-  border: none;
-  border-top-color: var(--plus-divider-color);
-  border-top-style: var(--plus-divider-type);
-  border-top-width: var(--plus-divider-size);
-  min-height: auto;
-  width: auto;
-  min-width: 100%;
+:host:before,
+:host:after {
+  content: '';
+  flex: 1 1 auto;
+  opacity: var(--plus-divider-opacity);
 }
 
-:host(#{boolean(vertical)}) {
-  border: none;
-  border-right-color: var(--plus-divider-color);
-  border-right-style: var(--plus-divider-type);
-  border-right-width: var(--plus-divider-size);
-  min-width: auto;
+:host([placement='start']):before,
+:host([placement='end']):after {
+  content: none;
+}
+
+@each $key in $divider-types {
+  :host([type='#{$key}']) {
+    --plus-divider-type: #{$key};
+  }
+}
+
+@each $key, $value in $divider-widths {
+  :host([width='#{$key}']) {
+    --plus-divider-width: #{$value};
+  }
+}
+
+:host([aria-orientation='horizontal']) {
+  flex-direction: row;
+
+  // TODO
+  // min-height: auto;
+  // width: auto;
+  // min-width: 100%;
+
+  &:before,
+  &:after {
+    border-top-color: var(--plus-divider-color);
+    border-top-style: var(--plus-divider-type);
+    border-top-width: var(--plus-divider-width);
+  }
+
+  &:before {
+    margin-inline-end: var(--plus-divider-gutter);
+  }
+
+  &:after {
+    margin-inline-start: var(--plus-divider-gutter);
+  }
+}
+
+:host([aria-orientation='horizontal']#{boolean(empty)}):before {
+  margin-inline-end: 0;
+}
+
+:host([aria-orientation='horizontal']#{boolean(empty)}):after {
+  margin-inline-start: 0;
+}
+
+:host([aria-orientation='horizontal'][variant='inset']):before {
+  margin-inline-start: 5rem;
+}
+
+:host([aria-orientation='horizontal'][variant='middle']):before {
+  margin-inline-start: 1rem;
+}
+
+:host([aria-orientation='horizontal'][variant='middle']):after {
+  margin-inline-end: 1rem;
+}
+
+:host([aria-orientation='vertical']) {
+  flex-direction: column;
+
+  // TODO
+  // min-width: auto;
   height: auto;
   min-height: 100%;
   align-self: stretch;
-}
 
-@each $key, $value in $divider-size {
-  :host([size='#{$key}']) {
-    --plus-divider-size: #{$value};
+  &:before,
+  &:after {
+    border-left-color: var(--plus-divider-color);
+    border-left-style: var(--plus-divider-type);
+    border-left-width: var(--plus-divider-width);
+  }
+
+  &:before {
+    margin-block-end: var(--plus-divider-gutter);
+  }
+
+  &:after {
+    margin-block-start: var(--plus-divider-gutter);
   }
 }
 
-@each $key, $value in $divider-type {
-  :host([type='#{$key}']) {
-    --plus-divider-type: #{$value};
-  }
+:host([aria-orientation='vertical']#{boolean(empty)}):before,
+:host([aria-orientation='vertical']#{boolean(empty)}):after {
+  margin-block: 0;
 }
 
-// TODO
-// :host([variant='middle']) {
-//   margin-right: 50px;
-//   margin-left: 50px;
-// }
-// :host([variant='inset']) {
-//   margin-right: 100px;
-// }
-// :host(#{boolean(vertical)}) .root {
-//   flex-direction: column;
-// }
-// .root {
-//   display: flex;
-//   align-items: center;
-// }
-// .content {
-//   flex-basis: auto;
-// }
-// .before,
-// .after {
-//   border-color: var(--plus-divider-color);
-//   border-top-style: var(--plus-divider-type);
-//   border-top-width: var(--plus-divider-size);
-//   flex-grow: 1;
-// }
+:host([aria-orientation='vertical'][variant='inset']):before {
+  margin-block-start: 5rem;
+}
+
+:host([aria-orientation='vertical'][variant='middle']):before {
+  margin-block-start: 1rem;
+}
+
+:host([aria-orientation='vertical'][variant='middle']):after {
+  margin-block-end: 1rem;
+}

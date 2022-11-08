@@ -1,6 +1,9 @@
-import { Attributes, Bind, Element, Property, State, Watch, queryAll } from '@htmlplus/element';
+import { Attributes, Bind, Element, Property, State, queryAll } from '@htmlplus/element';
+import { request } from '@htmlplus/element/client/utils/request';
+
 import * as Helpers from '@app/helpers';
-import * as Constants from './breadcrumb.constants';
+
+import * as CONSTANTS from './breadcrumb.constants';
 
 /**
  * @part expander  - Expander element.
@@ -19,7 +22,7 @@ export class Breadcrumb {
   expanderText?: string = 'Show path';
 
   /**
-   * The expander button is displayed when the number of the items reached the maximum limit.
+   * The expander button is displayed when the number of the items reached the maximum limit. 
    * The offset property specifies the position of the expander button.
    */
   @Property()
@@ -34,24 +37,8 @@ export class Breadcrumb {
   /**
    * You can use HTML elements, Custom separator, or SVG icon.
    */
-  @Property({ reflect: true })
-  separator?: string;
-
-  @State()
-  items?: Array<any>;
-
-  // TODO
-  config: any = { slots: {} };
-
-  observer?: MutationObserver;
-
-  get $children() {
-    const selectors = [Constants.BREADCRUMB_EXPANDER_SLOT_QUERY, Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY].join(',');
-
-    const children = Array.from(Helpers.host(this).children);
-
-    return children.filter(($node) => !$node.matches(selectors));
-  }
+  @Property()
+  separator?: string; 
 
   @Attributes()
   get attributes() {
@@ -60,38 +47,34 @@ export class Breadcrumb {
     };
   }
 
-  get template() {
-    const $node = Helpers.host(this).querySelector(Constants.BREADCRUMB_SEPARATOR_SLOT_QUERY);
+  @State()
+  expand: boolean = false;
 
-    const $clone = $node?.cloneNode(true) as HTMLElement;
+  observer?: MutationObserver;
 
-    $clone?.removeAttribute('slot');
-
-    const template = $clone?.outerHTML || this.config.slots.separator || this.separator;
-
-    return template;
+  get $children() {
+    return Array
+      .from(this.host.children)
+      .filter(($node) => !$node.matches(
+        [
+          CONSTANTS.BREADCRUMB_EXPANDER_QUERY,
+          CONSTANTS.BREADCRUMB_SEPARATOR_QUERY
+        ]
+        .join(',')
+      ));
   }
 
-  /**
-   * Internal Methods
-   */
-
-  bind() {
-    this.observer = new MutationObserver(this.onChange);
-    this.observer.observe(Helpers.host(this), { childList: true });
+  get host() {
+    return Helpers.host(this);
   }
 
-  unbind() {
-    this.observer?.disconnect();
-  }
-
-  update(expand?: boolean) {
+  get items() {
     const $children = this.$children;
 
     const items = [];
 
     const { start, length } = (() => {
-      if (expand) return {};
+      if (this.expand) return {};
 
       if (typeof this.max !== 'number') return {};
 
@@ -133,31 +116,38 @@ export class Breadcrumb {
         key: 'expander'
       });
 
-    for (let i = items.length - 1; i > 0; i--)
-      items.splice(i, 0, {
-        type: 'separator',
-        key: `expander-${i}`
-      });
+    if(this.template)
+      for (let i = items.length - 1; i > 0; i--)
+        items.splice(i, 0, {
+          type: 'separator',
+          key: `expander-${i}`
+        });
 
-    this.items = items;
+    return items
+  } 
+
+  get template() {
+    const $node = this.host.querySelector(CONSTANTS.BREADCRUMB_SEPARATOR_QUERY) as HTMLTemplateElement;
+ 
+    const $clone = $node?.cloneNode(true) as HTMLElement;
+
+    $clone?.removeAttribute('slot');
+ 
+    return $clone?.outerHTML || this.separator;
   }
 
   /**
-   * Watchers
+   * Internal Methods
    */
 
-  // TODO
-  @Watch('offset', 'max', 'separator')
-  watcher(next, prev, name) {
-    switch (name) {
-      case 'offset':
-      case 'max':
-      case 'separator':
-        this.update(false);
-        // TODO: componentShouldUpdate
-        return false;
-    }
+  bind() {
+    this.observer = new MutationObserver(this.onChange);
+    this.observer.observe(this.host, { childList: true });
   }
+
+  unbind() {
+    this.observer?.disconnect();
+  }  
 
   /**
    * Events handler
@@ -165,10 +155,7 @@ export class Breadcrumb {
 
   @Bind()
   onChange() {
-    this.update(false);
-
-    // TODO
-    // forceUpdate(this);
+    request(this);
   }
 
   /**
@@ -177,22 +164,22 @@ export class Breadcrumb {
 
   connectedCallback() {
     this.bind();
-    this.update(false);
   }
 
   disconnectedCallback() {
     this.unbind();
   }
 
-  // TODO: it's valid until 'dangerouslySetInnerHTML' doesn't support
+  // TODO: use 'dangerouslySetInnerHTML' instead
   updatedCallback() {
     const template = this.template;
+    if(!template) return;
     queryAll(this, '.separator').forEach((element) => (element.innerHTML = template));
   }
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         {this.items?.map((item) => {
           switch (item.type) {
             case 'item': {
@@ -207,13 +194,13 @@ export class Breadcrumb {
                 <div
                   aria-disabled="false"
                   aria-label={this.expanderText}
-                  class="expander"
+                  className="expander"
                   key={item.key}
                   part="expander"
                   role="button"
                   tabindex="0"
-                  onClick={() => this.update(true)}
-                  onKeyDown={(event) => event.key.match(/Enter| /) && this.update(true)}
+                  onClick={() => this.expand = true}
+                  onKeyDown={(event) => event.key.match(/Enter| /) && (this.expand = true)}
                 >
                   <slot name="expander">
                     <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
@@ -224,7 +211,7 @@ export class Breadcrumb {
               );
             }
             case 'separator': {
-              return <div key={item.key} aria-hidden="true" class="separator" part="separator" />;
+              return <div key={item.key} aria-hidden="true" className="separator" part="separator" />;
             }
           }
         })}

@@ -1,0 +1,13 @@
+import './fade-in-bottom-left.js';
+import './fade-in-bottom-right.js';
+import './fade-in-down-big.js';
+import './fade-in-down.js';
+import './fade-in-left-big.js';
+import './fade-in-left.js';
+import './fade-in-right-big.js';
+import './fade-in-right.js';
+import './fade-in-top-left.js';
+import './fade-in-top-right.js';
+import './fade-in-up-big.js';
+import './fade-in-up.js';
+import './fade-in.js';

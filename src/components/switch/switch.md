@@ -1,5 +1,6 @@
 # Switch
-TODO
+
+Toggles the state of a single item on or off.
 
 <Playground />
 
@@ -9,20 +10,30 @@ TODO
 
 <Examples />
 
-### Default
 <Example value="default" />
 
-### Checked
 <Example value="checked" />
 
-### Labels
-<Example value="labels" />
-
-### Disabled
 <Example value="disabled" />
 
-### Reverse
-<Example value="reverse" />
+<Example value="event" />
 
-### Inset
-<Example value="inset" />
+<Example value="customized" />
+
+<Example value="3D" />
+
+<Checklist 
+    accessibility={false}
+    bidirectionality={false}
+    cssParts={true}
+    cssVariables={false}
+    documentation={true}
+    examples={false}
+    events={true}
+    keyboard={true}
+    methods="N/A"
+    playground={false}
+    properties={false}
+    skeleton={false}
+    slots={true}
+/>

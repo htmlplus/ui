@@ -1,0 +1,13 @@
+import './fade-out-bottom-left.js';
+import './fade-out-bottom-right.js';
+import './fade-out-down-big.js';
+import './fade-out-down.js';
+import './fade-out-left-big.js';
+import './fade-out-left.js';
+import './fade-out-right-big.js';
+import './fade-out-right.js';
+import './fade-out-top-left.js';
+import './fade-out-top-right.js';
+import './fade-out-up-big.js';
+import './fade-out-up.js';
+import './fade-out.js';

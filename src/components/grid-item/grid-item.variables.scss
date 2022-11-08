@@ -1,8 +1,6 @@
-@use 'sass:math';
-
 $column: 12;
 
-$base: math.div(100%, $column);
+$base: calc(100% / $column);
 
 $align-self: (
   'auto': auto,

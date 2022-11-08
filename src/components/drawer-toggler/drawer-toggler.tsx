@@ -1,6 +1,10 @@
-import { Attributes, Element, Property, State, Watch, createLink } from '@htmlplus/element';
+import { Attributes, Bind, Element, Property, Watch } from '@htmlplus/element';
+import { createLink } from '@app/services';
 
-const { Inject, reconnect } = createLink('Drawer');
+const { Inject, reconnect } = createLink({
+  crawl: true,
+  namespace: ({ connector }) => connector ? `Drawer:${connector}` : undefined
+});
 
 /**
  * @slot default - The default slot.
@@ -14,7 +18,7 @@ export class DrawerToggler {
    * This property helps you to attach which drawer this toggler controls. 
    * It doesn't matter where the drawer toggler is. 
    * You can put the drawer's toggler inside or outside of the drawer. 
-   * Read more about connectors [here](https://htmlplus.io/features/connector).
+   * Read more about connectors [here](/connector).
    */
   @Property()
   connector?: string;
@@ -22,8 +26,7 @@ export class DrawerToggler {
   @Inject()
   toggle?: Function = () => console.log('TODO: can not use out of drawer');
 
-  @Inject()
-  @State()
+  @Inject(true)
   tunnel?: boolean;
 
   @Attributes()
@@ -31,7 +34,7 @@ export class DrawerToggler {
     return {
       'role': 'button',
       'state': this.tunnel ? 'open' : 'close',
-      'onClick': this.toggle
+      'onClick': this.onClick
     }
   }
 
@@ -43,9 +46,17 @@ export class DrawerToggler {
    * Watchers
    */
 
-  @Watch('connector')
+  @Watch(['connector'])
   watcher() {
     reconnect(this);
+  }
+  
+  /**
+   * Events handler
+   */
+  @Bind()
+  onClick() {
+    this.toggle();
   }
 
   render() {

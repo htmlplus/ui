@@ -1,0 +1,19 @@
+@import 'bottom-navigation.variables';
+
+:host {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  // TODO
+  z-index: 4;
+  background-color: red;
+  height: 56px;
+}
+
+:host(#{boolean(fixed)}) {
+  position: fixed;
+}

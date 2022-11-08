@@ -40,7 +40,7 @@ export class Icon {
   rotate?: 90 | 180 | 270;
 
   /**
-   * Specifies the size of the icon.
+   * Specifies the size of the icon. 
    * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Property({ reflect: true })

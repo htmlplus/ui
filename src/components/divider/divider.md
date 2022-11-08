@@ -1,4 +1,5 @@
 # Divider
+
 It's a thin line that can divide the content vertically or horizontally.
 
 <Playground />
@@ -9,20 +10,34 @@ It's a thin line that can divide the content vertically or horizontally.
 
 <Examples />
 
-### Size
-<Example value="size" />
+<Example value="width" />
 
-### Type
 <Example value="type" />
 
-### Horizontal
+<Example value="variant" />
+
+<Example value="placement" />
+
 <Example value="horizontal" />
 
-### Vertical
 <Example value="vertical" />
 
-### Card
 <Example value="card" />
 
-### Customize
 <Example value="customize" />
+
+<Checklist 
+    accessibility={false}
+    bidirectionality={false}
+    cssParts={false}
+    cssVariables={false}
+    documentation={false}
+    examples={false}
+    events={false}
+    keyboard={false}
+    methods={false}
+    playground={false}
+    properties={false}
+    skeleton={false}
+    slots={false}
+/>

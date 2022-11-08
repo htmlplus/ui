@@ -1,6 +1,10 @@
-import { Attributes, Element, Property, State, Watch, createLink } from '@htmlplus/element';
+import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
+import { createLink } from '@app/services';
 
-const { Inject, reconnect } = createLink('Dialog');
+const { Inject, reconnect } = createLink({
+  crawl: true,
+  namespace: ({ connector }) => connector ? `Dialog:${connector}` : undefined
+});
 
 /**
  * @slot default - The default slot.
@@ -14,7 +18,7 @@ export class DialogToggler {
    * This property helps you to attach which dialog this toggler controls. 
    * It doesn't matter where the dialog toggler is. 
    * You can put the dialog's toggler inside or outside of the dialog. 
-   * Read more about connectors [here](https://htmlplus.io/features/connector).
+   * Read more about connectors [here](/connector).
    */
   @Property()
   connector?: string;
@@ -22,8 +26,7 @@ export class DialogToggler {
   @Inject()
   toggle?: Function = () => console.log('TODO: can not use out of dialog');
 
-  @Inject()
-  @State()
+  @Inject(true)
   tunnel?: boolean;
 
   @Attributes()
@@ -31,7 +34,7 @@ export class DialogToggler {
     return {
       'role': 'button',
       'state': this.tunnel ? 'open' : 'close',
-      'onClick': () => this.toggle()
+      'onClick': this.onClick
     }
   }
 
@@ -43,9 +46,17 @@ export class DialogToggler {
    * Watchers
    */
 
-  @Watch('connector')
+  @Watch(['connector'])
   watcher() {
     reconnect(this);
+  }
+  
+  /**
+   * Events handler
+   */
+  @Bind()
+  onClick() {
+    this.toggle();
   }
 
   render() {

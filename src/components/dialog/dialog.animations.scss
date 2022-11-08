@@ -1,5 +1,3 @@
-@import 'mixins';
-
 :host(#{boolean(animation)}[state=opening]),
 :host(#{boolean(animation)}[state=closing]) {
 

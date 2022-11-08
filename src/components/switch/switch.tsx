@@ -1,35 +1,19 @@
-import { Element, Event, EventEmitter, Property } from '@htmlplus/element';
+import { Attributes, Bind, Element, Event, EventEmitter, Property } from '@htmlplus/element';
 
-/**
- * @development
- */
 @Element()
 export class Switch {
-
   /**
-   * Puts the switch in checked state
+   * Puts the switch in checked state.
    * @model
    */
   @Property({ reflect: true })
   checked?: boolean;
 
   /**
-   * Disables the switch
+   * Disables the switch.
    */
   @Property({ reflect: true })
   disabled?: boolean;
-
-  /**
-   * Change the appearance of the switch to put the text inside the switch
-   */
-  @Property({ reflect: true })
-  inset?: boolean;
-
-  /**
-   * Switches the location of yes and no options
-   */
-  @Property({ reflect: true })
-  reverse?: boolean;
 
   /**
    * When the switch state is changed this event triggers.
@@ -38,59 +22,50 @@ export class Switch {
   @Event()
   plusChange!: EventEmitter<void>;
 
-  // get inactiveElement() {
+  @Attributes()
+  get attributes() {
+    return {
+      'aria-checked': `${!!this.checked}`,
+      'aria-disabled': `${!!this.disabled}`,
+      'role': 'switch',
+      'tabindex': '0',
+      'onClick': this.onClick,
+      'onKeyDown': this.onKeyDown
+    }
+  }
 
-  //   return (
-  //     <div class="slot off">
-  //       <slot name="off" />
-  //     </div>
-  //   );
-  // }
-
-  // get activeElement() {
-
-  //   return (
-  //     <div class="slot on">
-  //       <slot name="on" />
-  //     </div>
-  //   );
-  // }
-
-  // get handleElement() {
-
-  //   return (
-  //     <div class="thumb-underlay" >
-  //       <div class="thumb" />
-  //     </div>
-  //   );
-  // }
-
-  handler(event) {
-
-    event.preventDefault();
-
+  toggle() {
     if (this.disabled) return;
-
     this.checked = !this.checked;
-
     this.plusChange();
   }
-}
 
-// <
-//   role="switch"
-//   aria-checked={`${!!this.checked}`}
-//   aria-disabled={`${!!this.disabled}`}
-//   onClick={(event) => this.handler(event)}
-//   onKeyPress={(event) => this.handler(event)}
-// >
-//   <div>
-//     {!this.inset && this.inactiveElement}
-//     <div class="track">
-//       {this.inset && this.inactiveElement}
-//       {this.handleElement}
-//       {this.inset && this.activeElement}
-//     </div>
-//     {!this.inset && this.activeElement}
-//   </div>
-// </>
+  @Bind()
+  onClick(event) {
+    event.preventDefault();
+    this.toggle();
+  }
+
+  @Bind()
+  onKeyDown (event) {
+    if (event.key != ' ' && event.key != 'Enter') return;
+    event.preventDefault();
+    this.toggle();
+  }
+
+  render() {
+    return (
+      <div className="root" part="root">
+        <div className="slot on" part="slot on">
+          <slot name="on" />
+        </div>
+        <div className="handle" part="handle">
+          <slot name="handle" />
+        </div>
+        <div className="slot off" part="slot off">
+          <slot name="off" />
+        </div>
+      </div>
+    )
+  }
+}

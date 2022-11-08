@@ -1,5 +1,4 @@
 import { Element, Property } from '@htmlplus/element';
-import { AspectRatioValue } from './aspect-ratio.types';
 
 /**
  * @slot default - The default slot.
@@ -10,7 +9,7 @@ export class AspectRatio {
    * Specifies the ratio.
    */
   @Property()
-  value?: AspectRatioValue = 1;
+  value?: number | string = 1;
 
   get ratio() {
     if (typeof this.value === 'number') return this.value;
@@ -29,13 +28,15 @@ export class AspectRatio {
 
     if (!ratio) return;
 
-    return `padding-top: ${100 / ratio}%`;
+    return {
+      paddingTop: (100 / ratio) + '%'
+    };
   }
 
   render() {
     return (
       <>
-        <div class="sizer" style={this.style} />
+        <div className="sizer" style={this.style} />
         <slot />
       </>
     );

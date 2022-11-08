@@ -42,26 +42,19 @@ export class ClickOutside {
     ClickOutsideCore.off(this.$host);
   }
 
-  rebind() {
-    this.unbind();
-    this.bind();
-  }
-
   /**
    * Watchers
    */
 
-  @Watch('disabled', 'once')
+  @Watch(['disabled', 'once'])
   watcher(next, prev, name) {
-
     switch (name) {
-
       case 'disabled':
         next ? this.unbind() : this.bind();
         break;
-
       case 'once':
-        this.rebind();
+        this.unbind();
+        this.bind();
         break;
     }
   }
@@ -72,7 +65,7 @@ export class ClickOutside {
 
   @Bind()
   onClickOutside() {
-    this.once && this.unbind();
+    if (this.once) this.unbind();
     this.plusClickOutside();
   }
 
@@ -81,7 +74,7 @@ export class ClickOutside {
    */
 
   connectedCallback() {
-    !this.disabled && this.bind();
+    if (!this.disabled) this.bind();
   }
 
   disconnectedCallback() {

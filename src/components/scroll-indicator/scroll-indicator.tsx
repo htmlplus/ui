@@ -89,7 +89,7 @@ export class ScrollIndicator {
    * Watchers
    */
 
-  @Watch('disabled', 'source')
+  @Watch(['disabled', 'source'])
   watcher(next) {
     next ? this.unbind() : this.bind();
   }
@@ -125,7 +125,7 @@ export class ScrollIndicator {
   render() {
     return (
       <div
-        class="indicator"
+        className="indicator"
         part="indicator"
         ref={this.$indicator}
       />

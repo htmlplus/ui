@@ -1,4 +1,5 @@
 # Sticky
+
 Component content is positioned based on the user's scroll position.
 
 <Playground />
@@ -9,11 +10,26 @@ Component content is positioned based on the user's scroll position.
 
 <Examples />
 
-### Default
 <Example value="default" />
 
-### Top
 <Example value="top" />
 
-### State Attribute
+<Example value="contacts" />
+
 <Example value="state-attribute" />
+
+<Checklist 
+    accessibility={false}
+    bidirectionality={false}
+    cssParts={false}
+    cssVariables={false}
+    documentation={false}
+    examples={false}
+    events={false}
+    keyboard={false}
+    methods={false}
+    playground={false}
+    properties={false}
+    skeleton={false}
+    slots={false}
+/>

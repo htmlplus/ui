@@ -1,9 +1,12 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch, createLink } from '@htmlplus/element';
+import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
 import * as Helpers from '@app/helpers';
-import { Animation, ClickOutside, Portal, Scrollbar } from '@app/services';
+import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 
-const { Action, Observable, reconnect } = createLink('Dialog');
+const { Action, Observable, reconnect } = createLink({
+  crawl: false,
+  namespace: ({ connector }) => connector ? `Dialog:${connector}` : undefined
+});
 
 /**
  * @part backdrop - Backdrop element.
@@ -28,7 +31,7 @@ export class Dialog {
    * This property helps you to attach which dialog toggler controls the dialog. 
    * It doesn't matter where the dialog toggler is. 
    * You can put the dialog's toggler inside or outside of the dialog. 
-   * Read more about connectors [here](https://htmlplus.io/features/connector).
+   * Read more about connectors [here](/connector).
    */
   @Property()
   connector?: string;
@@ -70,7 +73,7 @@ export class Dialog {
   persistent?: boolean;
 
   /**
-   * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
+   * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. 
    * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
    */
   @Property()
@@ -333,7 +336,7 @@ export class Dialog {
    * Watchers
    */
 
-  @Watch('connector', 'open')
+  @Watch(['connector', 'open'])
   watcher(next, prev, name) {
 
     switch (name) {
@@ -449,10 +452,10 @@ export class Dialog {
   render() {
     return (
       <>
-        {this.backdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
-        <div class={this.classes}>
-          <div class="table">
-            <div class="cell" ref={this.$cell}>
+        {this.backdrop && (<div className="backdrop" part="backdrop"><div /></div>)}
+        <div className={this.classes}>
+          <div className="table">
+            <div className="cell" ref={this.$cell}>
               <slot />
             </div>
           </div>

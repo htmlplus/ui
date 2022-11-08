@@ -1,10 +1,13 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch, createLink } from '@htmlplus/element';
+import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
 import { Media } from '@app/decorators';
 import * as Helpers from '@app/helpers';
-import { Animation, ClickOutside, Scrollbar } from '@app/services';
+import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 
-const { Action, Observable, reconnect } = createLink('Drawer');
+const { Action, Observable, reconnect } = createLink({
+  crawl: false,
+  namespace: ({ connector }) => connector ? `Drawer:${connector}` : undefined
+});
 
 /**
  * @slot default - The default slot.
@@ -35,7 +38,7 @@ export class Drawer {
    * This property helps you to attach which drawer toggler controls the drawer. 
    * It doesn't matter where the drawer toggler is. 
    * You can put the drawer's toggler inside or outside of the drawer. 
-   * Read more about connectors [here](https://htmlplus.io/features/connector).
+   * Read more about connectors [here](/connector).
    */
   @Property()
   connector?: string;
@@ -298,7 +301,7 @@ export class Drawer {
    * Watchers
    */
 
-  @Watch('connector', 'mini', 'open')
+  @Watch(['connector', 'mini', 'open'])
   watcher(next, prev, name) {
 
     switch (name) {
@@ -393,9 +396,9 @@ export class Drawer {
   render() {
     return (
       <>
-        {this.hasBackdrop && (<div class="backdrop" part="backdrop"><div /></div>)}
+        {this.hasBackdrop ? <div className="backdrop" part="backdrop"><div /></div> : ''}
         <div
-          class={this.classes}
+          className={this.classes}
           ref={this.$root}
         >
           <slot />

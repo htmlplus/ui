@@ -103,10 +103,10 @@ export class Cropper {
   value?: CropperValue;
 
   /**
-   * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend
-   * outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport
-   * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the
-   * canvas to the container. Note that if the proportions of the canvas and the container are
+   * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
+   * outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport 
+   * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the 
+   * canvas to the container. Note that if the proportions of the canvas and the container are 
    * the same, there is no difference between `contain` and `cover`.
    */
   @Property()
@@ -426,7 +426,7 @@ export class Cropper {
    * Watchers
    */
 
-  @Watch(
+  @Watch([
     'area',
     'aspectRatio',
     'backdrop',
@@ -444,7 +444,7 @@ export class Cropper {
     'view',
     'zoomable',
     'zoomRatio'
-  )
+  ])
   watcher(next, prev, name) {
     if (this.lock) return;
 
@@ -542,8 +542,8 @@ export class Cropper {
 
   render() {
     return (
-      <div class={this.classes}>
-        <img class="image" alt="cropper" ref={this.$image} src={this.src} />
+      <div className={this.classes}>
+        <img className="image" alt="cropper" ref={this.$image} src={this.src} />
       </div>
     );
   }

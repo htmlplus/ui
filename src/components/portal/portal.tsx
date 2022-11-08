@@ -59,7 +59,7 @@ export class Portal {
    * Watchers
    */
 
-  @Watch('disabled', 'strategy', 'target')
+  @Watch(['disabled', 'strategy', 'target'])
   watcher(next, prev, name) {
 
     switch (name) {

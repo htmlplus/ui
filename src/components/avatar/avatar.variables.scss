@@ -1,0 +1,15 @@
+$avatar-background-color: #f2f3f4 !default;
+$avatar-border-radius: 4px !default;
+$avatar-color: #626976 !default;
+$avatar-font-weight: 300 !default;
+$avatar-font-size-ratio: 0.35 !default;
+$avatar-size: auto !default;
+$avatar-sizes: (
+  'xs': 1.25rem,
+  'sm': 2rem,
+  'md': 3.75rem,
+  'lg': 5rem,
+  'xl': 7rem,
+  'xxl': 11rem
+) !default;
+$avatar-svg-ratio: 0.75 !default;

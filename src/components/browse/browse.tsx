@@ -12,13 +12,12 @@ import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
  * @slot default - The default slot.
- * @examples default
  */
 @Element()
 export class Browse {
   /**
-   * One or more
-   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
+   * One or more 
+   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) 
    * describing file types to allow.
    */
   @Property()

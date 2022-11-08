@@ -1,5 +1,3 @@
-@use 'sass:math';
-@import 'reset';
 @import 'dialog-footer.variables';
   
 :host {
@@ -8,12 +6,12 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
-  padding: $dialog-footer-padding - math.div($dialog-footer-margin-between, 2);
+  padding: $dialog-footer-padding - calc($dialog-footer-margin-between / 2);
   border-top: solid $dialog-footer-border-width $dialog-footer-border-color;
   border-bottom-right-radius: $dialog-footer-border-radius;
   border-bottom-left-radius: $dialog-footer-border-radius;
 }
 
 :host ::slotted(*) {
-  margin: math.div($dialog-footer-margin-between, 2);
+  margin: calc($dialog-footer-margin-between / 2);
 }

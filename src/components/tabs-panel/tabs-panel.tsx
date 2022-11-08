@@ -1,6 +1,9 @@
-import { Attributes, Element, Property, State, createLink } from '@htmlplus/element';
+import { Attributes, Element, Property } from '@htmlplus/element';
+import { createLink } from '@app/services';
 
-const { Inject } = createLink('Tabs');
+const { Inject } = createLink({
+  crawl: true, 
+});
 
 /**
  * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
@@ -15,8 +18,7 @@ export class TabsPanel {
   @Property()
   value?: any;
 
-  @State()
-  @Inject()
+  @Inject(true)
   tunnel?: any;
 
   @Attributes()

@@ -94,7 +94,7 @@ export class Sticky {
    * Watchers
    */
 
-  @Watch('disabled', 'source')
+  @Watch(['disabled', 'watcher'])
   watchers(next, prev, key) {
 
     switch (key) {
@@ -142,18 +142,18 @@ export class Sticky {
   render() {
     return (
       <>
-        <div class="sizer-wrapper">
+        <div className="sizer-wrapper">
           <div
-            class="sizer"
+            className="sizer"
             ref={this.$element}
-            style={`top: ${this.sizer}`}
+            style={{ top: this.sizer }}
           />
         </div>
         <slot />
-        <div class="normal">
+        <div className="normal">
           <slot name="normal" />
         </div>
-        <div class="sticky">
+        <div className="sticky">
           <slot name="sticky" />
         </div>
       </>

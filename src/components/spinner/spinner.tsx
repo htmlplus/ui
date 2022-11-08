@@ -40,7 +40,7 @@ export class Spinner {
 
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper">
         {this.elements.map((element) => <div key={element} />)}
       </div>
     )

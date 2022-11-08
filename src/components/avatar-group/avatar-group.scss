@@ -1,0 +1,35 @@
+@import 'avatar-group.variables';
+
+:host {
+  // @prop TODO.
+  --plus-avatar-group-box-shadow: #{$avatar-group-box-shadow};
+
+  // @prop TODO.
+  --plus-avatar-group-gutter: #{$avatar-group-gutter};
+
+  // @prop TODO.
+  --plus-avatar-group-overlap: #{$avatar-group-overlap};
+}
+
+:host {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--plus-avatar-group-gutter);
+}
+
+:host(#{boolean(hoverable)}) ::slotted(*:hover) {
+  z-index: 1;
+}
+
+:host(#{boolean(stacked)}) {
+  gap: 0;
+}
+
+:host(#{boolean(stacked)}) ::slotted(*) {
+  box-shadow: var(--plus-avatar-group-box-shadow);
+}
+
+:host(#{boolean(stacked)}) ::slotted(*:not(:last-child)) {
+  margin-inline-end: var(--plus-avatar-group-overlap);
+}

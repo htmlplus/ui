@@ -1,49 +1,35 @@
-import compiler from '@htmlplus/element/compiler';
-import glob from 'glob';
+import { vite as htmlplus } from '@htmlplus/element/bundlers/index.js';
 import path from 'path';
 import { createServer } from 'vite';
+
 import plugins from '../plus.config.js';
 
-const { start, next, finish } = compiler(...plugins);
-
 createServer({
-  root: 'public',
+  root: 'src',
   cacheDir: '../.cache',
   server: {
-    open: true,
+    open: true
   },
   resolve: {
     alias: [
       {
         find: '@app',
-        replacement: path.resolve('src'),
-      },
-    ],
+        replacement: path.resolve('src')
+      }
+    ]
   },
-  plugins: [
-    {
-      name: 'htmlplus',
-      async buildStart() {
-        await start();
-      },
-      async load(id) {
-        if (id.endsWith('bundle.ts'))
-          return glob
-            .sync(path.resolve('./src/**/*.tsx'))
-            .map((file) => `import '${file}';`)
-            .join('\n');
-
-        if (!id.endsWith('.tsx')) return null;
-
-        const { script } = await next(id);
-
-        return script;
-      },
-      async buildEnd() {
-        await finish();
-      },
-    },
-  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import "./src/styles/mixins/index.scss";
+          @import "./src/styles/variables/index.scss";
+          @import "./src/styles/reset.scss";
+        `
+      }
+    }
+  },
+  plugins: [htmlplus(...plugins)]
 })
   .then((server) => server.listen())
   .catch((error) => console.log(error));

@@ -1,5 +1,0 @@
-{
-  "baseUrl": "http://localhost:3000",
-  "integrationFolder": "src/components",
-  "testFiles": "**/*.e2e.ts"
-}

@@ -1,0 +1,73 @@
+@import 'avatar.variables';
+
+:host {
+  // @prop TODO.
+  --plus-avatar-background-color: #{$avatar-background-color};
+
+  // @prop TODO.
+  --plus-avatar-border-radius: #{$avatar-border-radius};
+
+  // @prop TODO.
+  --plus-avatar-color: #{$avatar-color};
+
+  // @prop TODO.
+  --plus-avatar-font-size-ratio: #{$avatar-font-size-ratio};
+
+  // @prop TODO.
+  --plus-avatar-font-weight: #{$avatar-font-weight};
+
+  // @prop TODO.
+  --plus-avatar-size: #{$avatar-size};
+
+  // @prop TODO.
+  --plus-avatar-svg-ratio: #{$avatar-svg-ratio};
+}
+
+:host {
+  align-items: center;
+  background-color: var(--plus-avatar-background-color);
+  border-radius: var(--plus-avatar-border-radius);
+  color: var(--plus-avatar-color);
+  display: inline-flex;
+  font-size: calc(var(--plus-avatar-size) * var(--plus-avatar-font-size-ratio));
+  font-weight: var(--plus-avatar-font-weight);
+  height: var(--plus-avatar-size);
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  user-select: none;
+  vertical-align: middle;
+  width: var(--plus-avatar-size);
+}
+
+:host([shape='circle']) {
+  --plus-avatar-border-radius: 50%;
+}
+
+:host([shape='tile']) {
+  --plus-avatar-border-radius: 0;
+}
+
+@each $key, $value in $avatar-sizes {
+  :host([size='#{$key}']) {
+    --plus-avatar-size: #{$value};
+  }
+}
+
+::slotted(a) {
+  border-radius: var(--plus-avatar-border-radius);
+  inset: 0;
+  position: absolute;
+}
+
+::slotted(img) {
+  border-radius: var(--plus-avatar-border-radius);
+  height: 100%;
+  width: 100%;
+}
+
+::slotted(svg) {
+  height: calc(var(--plus-avatar-size) * var(--plus-avatar-svg-ratio));
+  width: calc(var(--plus-avatar-size) * var(--plus-avatar-svg-ratio));
+}

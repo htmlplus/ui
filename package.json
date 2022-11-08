@@ -1,247 +1,64 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.3.0-next.4",
-  "license": "",
+  "version": "0.5.1",
+  "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
-  "description": "HTMLPlus UI Components",
+  "description": "The Most Flexible Open Source Web Component Library.",
   "type": "module",
-  "types": "./dist/index.d.ts",
-  "main": "./dist/index.js",
+  "main": "index.js",
+  "types": "types/components/index.d.ts",
+  "web-types": "json/web-types.json",
   "scripts": {
     "build": "npm run clean && node scripts/build.js",
     "clean": "rimraf .cache dist public/build",
+    "format": "prettier --write .",
     "start": "node scripts/start.js",
     "test:open": "cypress open",
     "test:run": "cypress run"
   },
-  "exports": {
-    "./aspect-ratio": {
-      "default": "./dist/aspect-ratio.js"
-    },
-    "./breadcrumb": {
-      "default": "./dist/breadcrumb.js"
-    },
-    "./browse": {
-      "default": "./dist/browse.js"
-    },
-    "./card": {
-      "default": "./dist/card.js"
-    },
-    "./click-outside": {
-      "default": "./dist/click-outside.js"
-    },
-    "./cropper": {
-      "default": "./dist/cropper.js"
-    },
-    "./dialog": {
-      "default": "./dist/dialog.js"
-    },
-    "./dialog-body": {
-      "default": "./dist/dialog-body.js"
-    },
-    "./dialog-content": {
-      "default": "./dist/dialog-content.js"
-    },
-    "./dialog-footer": {
-      "default": "./dist/dialog-footer.js"
-    },
-    "./dialog-header": {
-      "default": "./dist/dialog-header.js"
-    },
-    "./dialog-toggler": {
-      "default": "./dist/dialog-toggler.js"
-    },
-    "./divider": {
-      "default": "./dist/divider.js"
-    },
-    "./drawer": {
-      "default": "./dist/drawer.js"
-    },
-    "./drawer-toggler": {
-      "default": "./dist/drawer-toggler.js"
-    },
-    "./grid": {
-      "default": "./dist/grid.js"
-    },
-    "./grid-item": {
-      "default": "./dist/grid-item.js"
-    },
-    "./icon": {
-      "default": "./dist/icon.js"
-    },
-    "./intersection": {
-      "default": "./dist/intersection.js"
-    },
-    "./portal": {
-      "default": "./dist/portal.js"
-    },
-    "./scroll-indicator": {
-      "default": "./dist/scroll-indicator.js"
-    },
-    "./spinner": {
-      "default": "./dist/spinner.js"
-    },
-    "./sticky": {
-      "default": "./dist/sticky.js"
-    },
-    "./switch": {
-      "default": "./dist/switch.js"
-    },
-    "./tabs": {
-      "default": "./dist/tabs.js"
-    },
-    "./tabs-bar": {
-      "default": "./dist/tabs-bar.js"
-    },
-    "./tabs-panel": {
-      "default": "./dist/tabs-panel.js"
-    },
-    "./tabs-panels": {
-      "default": "./dist/tabs-panels.js"
-    },
-    "./tabs-tab": {
-      "default": "./dist/tabs-tab.js"
-    },
-    "./tooltip": {
-      "default": "./dist/tooltip.js"
-    },
-    "./transition": {
-      "default": "./dist/transition.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "aspect-ratio": [
-        "./dist/components/aspect-ratio/aspect-ratio.d.ts"
-      ],
-      "breadcrumb": [
-        "./dist/components/breadcrumb/breadcrumb.d.ts"
-      ],
-      "browse": [
-        "./dist/components/browse/browse.d.ts"
-      ],
-      "card": [
-        "./dist/components/card/card.d.ts"
-      ],
-      "click-outside": [
-        "./dist/components/click-outside/click-outside.d.ts"
-      ],
-      "cropper": [
-        "./dist/components/cropper/cropper.d.ts"
-      ],
-      "dialog": [
-        "./dist/components/dialog/dialog.d.ts"
-      ],
-      "dialog-body": [
-        "./dist/components/dialog-body/dialog-body.d.ts"
-      ],
-      "dialog-content": [
-        "./dist/components/dialog-content/dialog-content.d.ts"
-      ],
-      "dialog-footer": [
-        "./dist/components/dialog-footer/dialog-footer.d.ts"
-      ],
-      "dialog-header": [
-        "./dist/components/dialog-header/dialog-header.d.ts"
-      ],
-      "dialog-toggler": [
-        "./dist/components/dialog-toggler/dialog-toggler.d.ts"
-      ],
-      "divider": [
-        "./dist/components/divider/divider.d.ts"
-      ],
-      "drawer": [
-        "./dist/components/drawer/drawer.d.ts"
-      ],
-      "drawer-toggler": [
-        "./dist/components/drawer-toggler/drawer-toggler.d.ts"
-      ],
-      "grid": [
-        "./dist/components/grid/grid.d.ts"
-      ],
-      "grid-item": [
-        "./dist/components/grid-item/grid-item.d.ts"
-      ],
-      "icon": [
-        "./dist/components/icon/icon.d.ts"
-      ],
-      "intersection": [
-        "./dist/components/intersection/intersection.d.ts"
-      ],
-      "portal": [
-        "./dist/components/portal/portal.d.ts"
-      ],
-      "scroll-indicator": [
-        "./dist/components/scroll-indicator/scroll-indicator.d.ts"
-      ],
-      "spinner": [
-        "./dist/components/spinner/spinner.d.ts"
-      ],
-      "sticky": [
-        "./dist/components/sticky/sticky.d.ts"
-      ],
-      "switch": [
-        "./dist/components/switch/switch.d.ts"
-      ],
-      "tabs": [
-        "./dist/components/tabs/tabs.d.ts"
-      ],
-      "tabs-bar": [
-        "./dist/components/tabs-bar/tabs-bar.d.ts"
-      ],
-      "tabs-panel": [
-        "./dist/components/tabs-panel/tabs-panel.d.ts"
-      ],
-      "tabs-panels": [
-        "./dist/components/tabs-panels/tabs-panels.d.ts"
-      ],
-      "tabs-tab": [
-        "./dist/components/tabs-tab/tabs-tab.d.ts"
-      ],
-      "tooltip": [
-        "./dist/components/tooltip/tooltip.d.ts"
-      ],
-      "transition": [
-        "./dist/components/transition/transition.d.ts"
-      ]
-    }
-  },
   "files": [
-    "dist",
-    "package.json",
-    "README.md"
+    "**/*.*"
   ],
+  "publishConfig": {
+    "directory": "dist"
+  },
   "engines": {
     "node": ">= 12.7.0"
   },
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/htmlplus/core.git"
+    "url": "git+https://github.com/htmlplus/htmlplus.git"
   },
   "bugs": {
-    "url": "https://github.com/htmlplus/core/issues"
+    "url": "https://github.com/htmlplus/htmlplus/issues"
   },
-  "homepage": "https://github.com/htmlplus/core#readme",
+  "homepage": "https://github.com/htmlplus/htmlplus#readme",
+  "dependencies": {
+    "@htmlplus/element": "^0.5.2"
+  },
   "devDependencies": {
-    "@htmlplus/element": "latest",
-    "@popperjs/core": "^2.10.1",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.1",
-    "@types/react": "^17.0.38",
+    "@popperjs/core": "^2.11.6",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
+    "@types/react": "^18.0.25",
     "change-case": "^4.1.2",
     "cropperjs": "^1.5.12",
-    "cypress": "^8.6.0",
+    "cypress": "^10.11.0",
     "cypress-file-upload": "^5.0.8",
-    "glob": "^7.1.7",
+    "fast-glob": "^3.2.12",
+    "postcss": "^8.4.18",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.61.1",
-    "rollup-plugin-summary": "^1.3.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-summary": "^1.4.3",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.1",
-    "sass": "^1.42.1",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.3",
-    "vite": "^2.7.1"
+    "rollup-plugin-typescript2": "^0.34.1",
+    "sass": "^1.56.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.3"
   }
 }

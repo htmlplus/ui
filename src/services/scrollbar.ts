@@ -1,73 +1,63 @@
-import * as Helpers from '@app/helpers';
-
+// TODO: add dynamic target like html, body, ...
 export class Scrollbar {
+  static keys = new Set<any>();
 
-    static keys = new Set<any>();
+  static style = {};
 
-    static style = {};
+  static get width() {
+    const div = document.createElement('div');
 
-    static get width() {
+    div.style.position = 'absolute';
+    div.style.top = '-9999px';
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflow = 'scroll';
 
-        const div = document.createElement('div');
+    document.body.appendChild(div);
 
-        div.style.position = 'absolute';
-        div.style.top = '-9999px';
-        div.style.width = '50px';
-        div.style.height = '50px';
-        div.style.overflow = 'scroll';
+    const width = div.getBoundingClientRect().width - div.clientWidth;
 
-        document.body.appendChild(div);
+    document.body.removeChild(div);
 
-        const width = div.getBoundingClientRect().width - div.clientWidth;
+    return width;
+  }
 
-        document.body.removeChild(div);
+  static remove(key: any) {
+    this.keys.add(key);
 
-        return width;
-    }
+    if (this.keys.size > 1) return;
 
-    static remove(key: any) {
+    const rect = document.body.getBoundingClientRect();
 
-        this.keys.add(key);
+    const isOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
 
-        if (this.keys.size > 1) return;
+    if (!isOverflowing) return;
 
-        const rect = document.body.getBoundingClientRect();
+    const dir = window.getComputedStyle(window.document.body).getPropertyValue('direction').toLowerCase();
 
-        const isOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
+    const property = dir == 'rtl' ? 'paddingLeft' : 'paddingRight';
 
-        if (!isOverflowing) return;
+    this.style = {
+      overflow: document.body.style.overflow,
+      [property]: document.body.style[property]
+    };
 
-        const dir = Helpers.direction(window.document.body);
+    document.body.style.overflow = 'hidden';
 
-        const property = dir == 'rtl' ? 'paddingLeft' : 'paddingRight';
+    const scrollbarWidth = this.width;
 
-        this.style = {
-            overflow: document.body.style.overflow,
-            [property]: document.body.style[property],
-        };
+    document.body.style[property] = `${scrollbarWidth}px`;
+  }
 
-        document.body.style.overflow = 'hidden';
+  static reset(key: any) {
+    this.keys.delete(key);
 
-        const scrollbarWidth = this.width;
+    if (this.keys.size) return;
 
-        document.body.style[property] = `${scrollbarWidth}px`;
-    }
+    const keys = Object.keys(this.style);
 
-    static reset(key: any) {
+    for (const key of keys) document.body.style[key] = this.style[key];
 
-        this.keys.delete(key);
-
-        if (this.keys.size) return;
-
-        const keys = Object.keys(this.style);
-
-        for (let i = 0; i < keys.length; i++) {
-
-            const key = keys[i];
-
-            document.body.style[key] = this.style[key];
-        }
-
-        this.style = {};
-    }
+    this.style = {};
+  }
 }

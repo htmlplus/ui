@@ -1,80 +1,88 @@
-import compiler from '@htmlplus/element/compiler';
+import { rollup as htmlplus } from '@htmlplus/element/bundlers/index.js';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import glob from 'glob';
+import glob from 'fast-glob';
 import path from 'path';
 import { rollup } from 'rollup';
-import summary from 'rollup-plugin-summary';
-import { terser } from 'rollup-plugin-terser';
+import postcss from 'rollup-plugin-postcss';
+import { summary } from 'rollup-plugin-summary';
+// import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-import plugins from '../plus.config.js';
 
-const { start, next, finish } = compiler(...plugins);
+import plugins from '../plus.config.js';
 
 /**
  * @type {import('rollup').RollupOptions}
  */
 const options = {
-  input: './src/index.ts',
+  input: Object.fromEntries(
+    glob
+      .sync(['src/components/*/*.tsx'])
+      .map((file) => {
+        const filename = path.basename(file, path.extname(file));
+        return [
+          // [`components/${filename}/${filename}`, file],
+          // [`components/${filename}/index`, file],
+          [`${filename}`, file]
+        ];
+      })
+      .flat(1)
+      .concat([['config', 'src/config/index.ts']])
+      .concat([['index', 'src/components/index.ts']])
+  ),
   output: [
     {
       format: 'esm',
       dir: 'dist',
       chunkFileNames: '[name].js',
       manualChunks(id) {
-        if (id.includes('src'))
-          return path
-            .normalize(id)
-            .split(path.sep)
-            .join('/')
-            .split('/src/')
-            .pop()
-            .split('.')
-            .slice(0, -1)
-            .join('/');
+        const normalized = path.normalize(id).split(path.sep).join('/');
 
-        if (id.includes('cropperjs')) return 'vendors/cropperjs';
+        if (normalized.includes('/src/components/')) return;
 
-        if (id.includes('@popperjs')) return 'vendors/popperjs';
+        if (normalized.includes('/src/config/')) return;
+
+        if (normalized.includes('cropperjs')) return 'vendors/cropperjs';
+
+        if (normalized.includes('@popperjs')) return 'vendors/popperjs';
 
         return 'core/index';
-      },
-    },
+      }
+    }
   ],
   plugins: [
-    {
-      name: 'htmlplus',
-      async buildStart() {
-        await start();
-      },
-      async load(id) {
-        if (!id.endsWith('.tsx')) return null;
+    postcss({
+      inject: false,
+      minimize: true,
+      use: {
+        sass: {
+          data: `
+            @import "./src/styles/mixins/index.scss";
+            @import "./src/styles/variables/index.scss";
+            @import "./src/styles/reset.scss";
+          `
+        }
+      }
+    }),
 
-        const { script } = await next(id);
-
-        return script;
-      },
-      async buildEnd() {
-        await finish();
-      },
-    },
+    htmlplus(...plugins),
 
     resolve({
-      browser: true,
+      browser: true
     }),
 
     commonjs(),
 
-    typescript(),
+    typescript({ useTsconfigDeclarationDir: true }),
 
     // terser({
     //   format: {
-    //     comments: false,
-    //   },
+    //     comments: false
+    //   }
     // }),
 
-    summary(),
-  ],
+    summary()
+  ]
 };
 
 (async () => {

@@ -1,6 +1,9 @@
-import { Attributes, Element, Property, State, createLink } from '@htmlplus/element';
+import { Attributes, Bind, Element, Property } from '@htmlplus/element';
+import { createLink } from '@app/services';
 
-const { Inject } = createLink('Tabs');
+const { Inject } = createLink({
+  crawl: true,
+});
 
 /**
  * TODO: Tabs make it easy to switch between different views.
@@ -21,8 +24,7 @@ export class TabsTab {
   @Property()
   value?: any;
 
-  @State()
-  @Inject()
+  @Inject(true)
   tunnel?: any;
 
   @Inject()
@@ -32,8 +34,17 @@ export class TabsTab {
   get attributes() {
     return {
       'active': this.tunnel && this.tunnel === this.value,
-      'onClick': () => !this.disabled && this.change(this.value)
+      'onClick': this.onClick
     }
+  }
+  
+  /**
+   * Events handler
+   */
+  @Bind()
+  onClick() {
+    if (this.disabled) return;
+    this.change(this.value)
   }
 
   render() {
