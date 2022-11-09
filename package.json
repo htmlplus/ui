@@ -1,7 +1,7 @@
 {
   "name": "@htmlplus/core",
   "version": "0.5.5",
-  "license": "",
+  "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Most Flexible Open Source Web Component Library.",
   "type": "module",
@@ -19,27 +19,24 @@
   "files": [
     "**/*.*"
   ],
-  "publishConfig": {
-    "directory": "dist"
-  },
   "engines": {
     "node": ">= 12.7.0"
   },
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/htmlplus/htmlplus.git"
+    "url": "git+https://github.com/htmlplus/core.git"
   },
   "bugs": {
-    "url": "https://github.com/htmlplus/htmlplus/issues"
+    "url": "https://github.com/htmlplus/core/issues"
   },
-  "homepage": "https://github.com/htmlplus/htmlplus#readme",
+  "homepage": "https://github.com/htmlplus/core#readme",
   "dependencies": {
-    "@htmlplus/element": "^0.5.2"
+    "@htmlplus/element": "^0.5.3"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
-    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/react": "^18.0.25",
