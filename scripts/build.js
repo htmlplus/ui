@@ -17,11 +17,10 @@ const root = path.join(fileURLToPath(import.meta.url), '../..');
 const options = defineConfig({
   input: Object.fromEntries(
     glob
-      .sync(['src/components/*/*.tsx'], { cwd: root })
+      .sync(['src/components/*/*.tsx'], { absolute: true })
       .map((file) => {
         const filename = path.basename(file, path.extname(file));
-        const source = path.join(root, file);
-        return [[`${filename}`, source]];
+        return [[`${filename}`, file]];
       })
       .flat(1)
       .concat([
