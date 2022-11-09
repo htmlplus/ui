@@ -198,7 +198,7 @@ export class Breadcrumb {
                   key={item.key}
                   part="expander"
                   role="button"
-                  tabindex="0"
+                  tabIndex={0}
                   onClick={() => this.expand = true}
                   onKeyDown={(event) => event.key.match(/Enter| /) && (this.expand = true)}
                 >
