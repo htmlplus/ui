@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/htmlplus/htmlplus#readme",
   "dependencies": {
-    "@htmlplus/element": "^0.5.1"
+    "@htmlplus/element": "^0.5.2"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
