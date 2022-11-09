@@ -3,32 +3,31 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import glob from 'fast-glob';
 import path from 'path';
-import { rollup } from 'rollup';
+import { defineConfig, rollup } from 'rollup';
 import postcss from 'rollup-plugin-postcss';
 import { summary } from 'rollup-plugin-summary';
 // import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import { fileURLToPath } from 'url';
 
 import plugins from '../plus.config.js';
 
-/**
- * @type {import('rollup').RollupOptions}
- */
-const options = {
+const root = path.join(fileURLToPath(import.meta.url), '../..');
+
+const options = defineConfig({
   input: Object.fromEntries(
     glob
-      .sync(['src/components/*/*.tsx'])
+      .sync(['src/components/*/*.tsx'], { cwd: root })
       .map((file) => {
         const filename = path.basename(file, path.extname(file));
-        return [
-          // [`components/${filename}/${filename}`, file],
-          // [`components/${filename}/index`, file],
-          [`${filename}`, file]
-        ];
+        const source = path.join(root, file);
+        return [[`${filename}`, source]];
       })
       .flat(1)
-      .concat([['config', 'src/config/index.ts']])
-      .concat([['index', 'src/components/index.ts']])
+      .concat([
+        ['config', path.join(root, 'src/config/index.ts')],
+        ['index', path.join(root, 'src/components/index.ts')]
+      ])
   ),
   output: [
     {
@@ -83,7 +82,7 @@ const options = {
 
     summary()
   ]
-};
+});
 
 (async () => {
   try {
