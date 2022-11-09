@@ -19,21 +19,18 @@
   "files": [
     "**/*.*"
   ],
-  "publishConfig": {
-    "directory": "dist"
-  },
   "engines": {
     "node": ">= 12.7.0"
   },
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/htmlplus/htmlplus.git"
+    "url": "git+https://github.com/htmlplus/core.git"
   },
   "bugs": {
-    "url": "https://github.com/htmlplus/htmlplus/issues"
+    "url": "https://github.com/htmlplus/core/issues"
   },
-  "homepage": "https://github.com/htmlplus/htmlplus#readme",
+  "homepage": "https://github.com/htmlplus/core#readme",
   "dependencies": {
     "@htmlplus/element": "^0.5.2"
   },
