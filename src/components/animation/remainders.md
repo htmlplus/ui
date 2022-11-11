@@ -1,0 +1,2 @@
+- reflect `playState` to attribute.
+- update `options` in runtime.

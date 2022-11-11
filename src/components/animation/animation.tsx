@@ -12,7 +12,6 @@ import './assets/fading-exits/fade-out.js';
  */
 @Element()
 export class Animation {
-
   /**
    * Determines how values are combined between this animation and other, 
    * separate animations that do not specify their own specific composite operation.
@@ -64,6 +63,14 @@ export class Animation {
   fill?: AnimationFill = 'none';
 
   /**
+   * Gets the native instance of `Animation`.
+   */
+  @Property()
+  get instance() {
+    return this.animation;
+  }
+
+  /**
    * Determines how values build from iteration to iteration in this animation. 
    * Can be set to accumulate or replace.
    */
@@ -101,17 +108,17 @@ export class Animation {
   name?: string;
 
   /**
-   * Specifies the time that animation will start.
-   */
-  @Property({ reflect: true })
-  play?: boolean;
-
-  /**
    * Sets the animation's playback rate.
    */
   @Property()
   playbackRate?: number = 1;
 
+  /**
+   * Specifies the time that animation will start.
+   */
+  @Property({ reflect: true })
+  run?: boolean;
+  
   /**
    * Fires when the [Animation.cancel()](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel) 
    * method is called or when the animation enters the "idle" play state from another state.
@@ -126,16 +133,10 @@ export class Animation {
   plusFinish!: EventEmitter<void>;
 
   /**
-   * TODO.
+   * Fires when the animation is removed (i.e., put into an active replace state).
    */
   @Event()
-  plusRemove!: EventEmitter<void>;
-
-  /**
-   * Fires when the animation starts playing.
-   */
-  @Event()
-  plusStart!: EventEmitter<void>;
+  plusRemove!: EventEmitter<void>;   
 
   animation?: globalThis.Animation;
 
@@ -155,15 +156,10 @@ export class Animation {
       iterationComposite: this.iterationComposite,
       iterations: this.iterations,
       iterationStart: this.iterationStart,
-      keyframes: this.keyframes ?? window['PLUS_ANIMATION_KEYFRAME']?.[this.name],
       playbackRate: this.playbackRate,
     }
   } 
-
-  /**
-   * External Methods
-   */
-
+ 
   /** 
    * Clears all [keyframeEffects](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect) 
    * caused by this animation and aborts its playback.
@@ -171,6 +167,14 @@ export class Animation {
   @Method()
   cancel() {
     this.animation?.cancel();
+  }
+
+  /**
+   * TODO
+   */
+  @Method()
+  commitStyles() { 
+    this.animation?.commitStyles();
   }
 
   /** 
@@ -182,86 +186,88 @@ export class Animation {
   }
 
   /**
-   * Internal Methods
+   * TODO
    */
-
-  bind() {
-    const { keyframes, ...options } = this.options; 
-
-    if (!keyframes) return;
-
-    this.unbind();
-
-    this.animation = this.$host.animate(keyframes, options);
-
-    if (!this.play) return this.animation.cancel();
-
-    this.animation.addEventListener('cancel', this.onCancel);
-    this.animation.addEventListener('finish', this.onFinish);
-    this.animation.addEventListener('remove', this.onRemove);
-
-    this.plusStart();
-  }
-
-  unbind() {
-    this.animation?.cancel();
-    this.animation?.removeEventListener('cancel', this.onCancel);
-    this.animation?.removeEventListener('finish', this.onFinish);
-    this.animation?.removeEventListener('remove', this.onFinish);
+  @Method()
+  pause() { 
+    this.animation?.pause();
   }
 
   /**
-   * Watchers
+   * TODO
    */
-
-  @Watch()
-  watcher(next, prev, name) {
-    if (!this.animation) return;
-
-    if (name != 'play') return this.bind();
-
-    if (this.play && this.animation.playState != 'running') {
-      this.plusStart();
-    }
-
-    if (this.play) {
-      this.animation.play();
-    } else {
-      this.animation.pause();
-    }
+  @Method()
+  persist() { 
+    this.animation?.persist();
   }
 
   /**
-   * Events handler
+   * TODO
    */
+  @Method()
+  play() {
+    this.animation?.play();
+  }
+ 
+  /**
+   * TODO
+   */
+  @Method()
+  reverse() { 
+    this.animation?.reverse();
+  }
+ 
+  /**
+   * TODO
+   */
+  @Method()
+  updatePlaybackRate(playbackRate: number) { 
+    this.animation?.updatePlaybackRate(playbackRate);
+  }
+
+  @Watch('run', true)
+  watcher() {
+    this.run ?  this.play() : this.pause();
+  }
 
   @Bind()
   onCancel() {
-    this.play = false;
+    this.run = false;
     this.plusCancel();
   }
 
   @Bind()
   onFinish() {
-    this.play = false;
+    this.run = false;
     this.plusFinish();
   }
 
   @Bind()
   onRemove() {
+    this.run = false;
     this.plusRemove();
   }
 
-  /**
-   * Lifecycles
-   */
+  updatedCallback() {
+    this.disconnectedCallback();
 
-  connectedCallback() {
-    this.bind();
+    const keyframes = this.keyframes ?? window['PLUS_ANIMATION_KEYFRAME']?.[this.name] ?? [];
+
+    this.animation = this.$host.animate(keyframes, this.options);
+
+    this.animation.addEventListener('cancel', this.onCancel);
+    this.animation.addEventListener('finish', this.onFinish);
+    this.animation.addEventListener('remove', this.onRemove);
+
+    if (this.run) return;
+
+    this.pause();
   }
 
-  disconnectedCallback() {
-    this.unbind();
+  disconnectedCallback() { 
+    this.animation?.removeEventListener('cancel', this.onCancel);
+    this.animation?.removeEventListener('finish', this.onFinish);
+    this.animation?.removeEventListener('remove', this.onFinish);
   }
 
   render() {
