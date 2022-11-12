@@ -3,7 +3,7 @@ import * as Helpers from '@app/helpers';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 import { ANIMATION_EASINGS } from './animation.constants';
 
-// TODO
+// Imports built-in animations.
 import './assets/fading-entrance/fade-in.js';
 import './assets/fading-exits/fade-out.js';
 
@@ -26,23 +26,24 @@ export class Animation {
   delay?: number = 0;
 
   /**
-   * Whether the animation runs forwards (normal), backwards (reverse), 
-   * switches direction after each iteration (alternate), or runs 
-   * backwards and switches direction after each iteration (alternate-reverse).
+   * Whether the animation runs forwards (`normal`), backwards (`reverse`), 
+   * switches direction after each iteration (`alternate`), or runs 
+   * backwards and switches direction after each iteration (`alternate-reverse`).
    */
   @Property()
   direction?: AnimationDirection = 'normal';
 
   /**
    * The number of milliseconds each iteration of the animation takes to complete.
+   * Keep in mind that your animation will not run if this value is 0.
    */
   @Property()
   duration?: number = 1000;
 
   /**
    * The rate of the animation's change over time. 
-   * Accepts the pre-defined values "linear", "ease", "ease-in", "ease-out", and "ease-in-out", 
-   * or a custom "cubic-bezier" value like "cubic-bezier(0.42, 0, 0.58, 1)".
+   * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`", 
+   * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
    */
   @Property()
   easing?: string = 'linear';
@@ -56,14 +57,14 @@ export class Animation {
 
   /**
    * Dictates whether the animation's effects should be reflected by the element(s) 
-   * prior to playing ("backwards"), retained after the animation has completed 
-   * playing ("forwards"), or both.
+   * prior to playing ("`backwards`"), retained after the animation has completed 
+   * playing ("`forwards`"), or `both`.
    */
   @Property()
   fill?: AnimationFill = 'none';
 
   /**
-   * Gets the native instance of `Animation`.
+   * The [Animation](https://developer.mozilla.org/en-US/docs/Web/API/Animation) object instance.
    */
   @Property()
   get instance() {
@@ -72,14 +73,15 @@ export class Animation {
 
   /**
    * Determines how values build from iteration to iteration in this animation. 
-   * Can be set to accumulate or replace.
+   * Can be set to `accumulate` or `replace`.
    */
   @Property()
   iterationComposite?: AnimationIterationComposite = 'replace';
 
   /**
-   * The number of times the animation should repeat. 
-   * And can also take a value of Infinity to make it repeat for as long as the element exists.
+   * The number of times the animation should repeat. And can also take a value of 
+   * [Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity) 
+   * to make it repeat for as long as the element exists.
    */
   @Property()
   iterations?: number = 1;
@@ -95,14 +97,14 @@ export class Animation {
 
   /**
    * A [keyframes](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats) 
-   * object or null.
+   * object or `null`.
    */
   @Property()
   keyframes?: Keyframe[];
 
   /**
-   * Specifies what kind of animation you want to play. 
-   * click [here](/component/animation/names) to see the list of available animations.
+   * Specifies what kind of animation will play. 
+   * The list of available animations is [here](/component/animation/names).
    */
   @Property()
   name?: string;
@@ -114,14 +116,14 @@ export class Animation {
   playbackRate?: number = 1;
 
   /**
-   * Specifies the time that animation will start.
+   * Starts the animation.
    */
   @Property({ reflect: true })
   run?: boolean;
   
   /**
    * Fires when the [Animation.cancel()](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel) 
-   * method is called or when the animation enters the "idle" play state from another state.
+   * method is called or when the animation enters the "`idle`" play state from another state.
    */
   @Event()
   plusCancel!: EventEmitter<void>;
@@ -133,7 +135,7 @@ export class Animation {
   plusFinish!: EventEmitter<void>;
 
   /**
-   * Fires when the animation is removed (i.e., put into an active replace state).
+   * Fires when the animation is removed (i.e., put into an `active` replace state).
    */
   @Event()
   plusRemove!: EventEmitter<void>;   
@@ -170,7 +172,9 @@ export class Animation {
   }
 
   /**
-   * TODO
+   * Commits the end styling state of an animation to the element being animated, even after that 
+   * animation has been removed. It will cause the end styling state to be written to the element 
+   * being animated, in the form of properties inside a `style` attribute.
    */
   @Method()
   commitStyles() { 
@@ -186,7 +190,7 @@ export class Animation {
   }
 
   /**
-   * TODO
+   * Suspends playing of an animation.
    */
   @Method()
   pause() { 
@@ -194,7 +198,9 @@ export class Animation {
   }
 
   /**
-   * TODO
+   * Explicitly persists an animation, when it would otherwise be removed due to the browser's 
+   * [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations) 
+   * behavior.
    */
   @Method()
   persist() { 
@@ -202,7 +208,7 @@ export class Animation {
   }
 
   /**
-   * TODO
+   * Starts or resumes playing of an animation, or begins the animation again if it previously finished.
    */
   @Method()
   play() {
@@ -210,7 +216,8 @@ export class Animation {
   }
  
   /**
-   * TODO
+   * Reverses playback direction, stopping at the start of the animation. 
+   * If the animation is finished or unplayed, it will play from end to beginning.
    */
   @Method()
   reverse() { 
@@ -218,7 +225,7 @@ export class Animation {
   }
  
   /**
-   * TODO
+   * Sets the speed of an animation after first synchronizing its playback position.
    */
   @Method()
   updatePlaybackRate(playbackRate: number) { 

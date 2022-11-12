@@ -1,6 +1,6 @@
 # Animation
 
-This component allows you to apply an animation on your component such as fade or other animations. click [here](/component/animation/names) to see and choose your favorite animation from a wide range of animation we provide for you. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
+Creates an animation and applies it to the content. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API). A wide range of animations is available [here](/component/animation/names).
 
 <Playground />
 
