@@ -1,9 +1,9 @@
 /// <reference types="vite/client" />
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      div: { part?: string } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-    }
+import '@types/react';
+
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    part?: string;
   }
 }
 
