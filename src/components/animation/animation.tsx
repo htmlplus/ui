@@ -67,9 +67,7 @@ export class Animation {
    * The [Animation](https://developer.mozilla.org/en-US/docs/Web/API/Animation) object instance.
    */
   @Property()
-  get instance() {
-    return this.animation;
-  }
+  instance?: globalThis.Animation;
 
   /**
    * Determines how values build from iteration to iteration in this animation. 
@@ -138,9 +136,7 @@ export class Animation {
    * Fires when the animation is removed (i.e., put into an `active` replace state).
    */
   @Event()
-  plusRemove!: EventEmitter<void>;   
-
-  animation?: globalThis.Animation;
+  plusRemove!: EventEmitter<void>;  
 
   get $host() {
     return Helpers.host(this);
@@ -168,7 +164,7 @@ export class Animation {
    */
   @Method()
   cancel() {
-    this.animation?.cancel();
+    this.instance?.cancel();
   }
 
   /**
@@ -178,7 +174,7 @@ export class Animation {
    */
   @Method()
   commitStyles() { 
-    this.animation?.commitStyles();
+    this.instance?.commitStyles();
   }
 
   /** 
@@ -186,7 +182,7 @@ export class Animation {
    */
   @Method()
   finish() {
-    this.animation?.finish();
+    this.instance?.finish();
   }
 
   /**
@@ -194,7 +190,7 @@ export class Animation {
    */
   @Method()
   pause() { 
-    this.animation?.pause();
+    this.instance?.pause();
   }
 
   /**
@@ -204,7 +200,7 @@ export class Animation {
    */
   @Method()
   persist() { 
-    this.animation?.persist();
+    this.instance?.persist();
   }
 
   /**
@@ -212,7 +208,7 @@ export class Animation {
    */
   @Method()
   play() {
-    this.animation?.play();
+    this.instance?.play();
   }
  
   /**
@@ -221,7 +217,7 @@ export class Animation {
    */
   @Method()
   reverse() { 
-    this.animation?.reverse();
+    this.instance?.reverse();
   }
  
   /**
@@ -229,7 +225,7 @@ export class Animation {
    */
   @Method()
   updatePlaybackRate(playbackRate: number) { 
-    this.animation?.updatePlaybackRate(playbackRate);
+    this.instance?.updatePlaybackRate(playbackRate);
   }
 
   @Watch('run', true)
@@ -260,11 +256,11 @@ export class Animation {
 
     const keyframes = this.keyframes ?? window['PLUS_ANIMATION_KEYFRAME']?.[this.name] ?? [];
 
-    this.animation = this.$host.animate(keyframes, this.options);
+    this.instance = this.$host.animate(keyframes, this.options);
 
-    this.animation.addEventListener('cancel', this.onCancel);
-    this.animation.addEventListener('finish', this.onFinish);
-    this.animation.addEventListener('remove', this.onRemove);
+    this.instance.addEventListener('cancel', this.onCancel);
+    this.instance.addEventListener('finish', this.onFinish);
+    this.instance.addEventListener('remove', this.onRemove);
 
     if (this.run) return;
 
@@ -272,9 +268,9 @@ export class Animation {
   }
 
   disconnectedCallback() { 
-    this.animation?.removeEventListener('cancel', this.onCancel);
-    this.animation?.removeEventListener('finish', this.onFinish);
-    this.animation?.removeEventListener('remove', this.onFinish);
+    this.instance?.removeEventListener('cancel', this.onCancel);
+    this.instance?.removeEventListener('finish', this.onFinish);
+    this.instance?.removeEventListener('remove', this.onFinish);
   }
 
   render() {
