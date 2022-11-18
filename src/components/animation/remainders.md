@@ -1,3 +1,4 @@
 - reflect `playState` to attribute.
 - update `options` in runtime.
 - `instance` property should be readonly
+- test for events

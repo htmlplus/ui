@@ -12,6 +12,16 @@
 //   });
 // }
 
+export const method = (selector, key) => {
+  context(`"${key}" method`, () => {
+    it('should be exist', () => {
+      cy.get(selector)
+        .then(($elements) => key in $elements[0])
+        .should('eq', true);
+    });
+  });
+};
+
 export const property = (selector, key, type, init, reflect) => {
   const hasReflection = reflect && typeof init != 'undefined';
 

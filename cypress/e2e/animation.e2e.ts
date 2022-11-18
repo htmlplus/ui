@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { property } from '../support/utils';
+import { method, property } from '../support/utils';
 
 describe('plus-animation', () => {
   beforeEach(() => {
@@ -58,4 +58,13 @@ describe('plus-animation', () => {
   property('@element', 'name', String, undefined, false);
   property('@element', 'playbackRate', Number, 1, false);
   property('@element', 'run', Boolean, undefined, true);
+
+  method('@element', 'cancel');
+  method('@element', 'commitStyles');
+  method('@element', 'finish');
+  method('@element', 'pause');
+  method('@element', 'persist');
+  method('@element', 'play');
+  method('@element', 'reverse');
+  method('@element', 'updatePlaybackRate');
 });
