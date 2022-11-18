@@ -23,7 +23,30 @@ export const property = (selector, key, type, init, reflect) => {
     });
 
     it('should has getter and setter', () => {
-      const values = [undefined, 'undefined', null, 'null', false, 'false', true, 'true', -1, '-1', 0, '0', 1, '1'];
+      let values;
+
+      switch (type) {
+        case Array:
+          values = [];
+          break;
+
+        case Boolean:
+          values = [undefined, false, true];
+          break;
+
+        case Number:
+          values = [0, 10, 100, 1000, 10000];
+          break;
+
+        case String:
+          values = ['', 'string', 'undefined', 'null', 'false', 'true', '-1', '0', '1'];
+          break;
+
+        default:
+          values = Array.isArray(type) ? type : [type];
+          break;
+      }
+
       cy.wrap(values).each((value) => {
         cy.get(selector)
           .then(($elements) => {
@@ -66,8 +89,8 @@ export const property = (selector, key, type, init, reflect) => {
           switch (type) {
             case Boolean:
               return [
-                [true, true, null],
-                [false, false, false]
+                [true, true, ''],
+                [false, false, null]
               ];
             // TODO
             // case Number:

@@ -208,6 +208,7 @@ export class Animation {
    */
   @Method()
   play() {
+    this.run = true;
     this.instance?.play();
   }
  
