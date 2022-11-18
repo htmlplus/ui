@@ -16,18 +16,26 @@ Creates an animation and applies it to the content. Powered by the [Web Animatio
 
 <Example value="duration" />
 
+<Example value="easing" />
+
+<Example value="methods" />
+
+<Example value="keyframes" />
+
+<Example value="button" />
+
 <Checklist 
     accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
+    bidirectionality="N/A"
+    cssParts="N/A"
+    cssVariables="N/A"
     documentation={false}
     examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
+    events={true}
+    keyboard="N/A"
+    methods={true}
     playground={false}
-    properties={false}
+    properties={true}
     skeleton={false}
-    slots={false}
+    slots={true}
 />

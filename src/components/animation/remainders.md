@@ -2,3 +2,4 @@
 - update `options` in runtime.
 - `instance` property should be readonly
 - test for events
+- add a example section named `Names & Easings`
