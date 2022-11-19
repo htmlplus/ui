@@ -27,12 +27,12 @@ Creates an animation and applies it to the content. Powered by the [Web Animatio
 <Example value="intersection" />
 
 <Checklist 
-    accessibility={false}
+    accessibility="N/A"
     bidirectionality="N/A"
     cssParts="N/A"
     cssVariables="N/A"
-    documentation={false}
-    examples={false}
+    documentation={true}
+    examples={true}
     events={true}
     keyboard="N/A"
     methods={true}
