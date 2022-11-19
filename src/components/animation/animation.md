@@ -24,6 +24,8 @@ Creates an animation and applies it to the content. Powered by the [Web Animatio
 
 <Example value="button" />
 
+<Example value="intersection" />
+
 <Checklist 
     accessibility={false}
     bidirectionality="N/A"
