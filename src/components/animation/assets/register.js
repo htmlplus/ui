@@ -1,5 +1,15 @@
+import { setConfig } from '@htmlplus/element';
+
 export const register = (name, keyframe) => {
-  if (typeof window == 'undefined') return;
-  window['PLUS_ANIMATION_KEYFRAME'] = window['PLUS_ANIMATION_KEYFRAME'] || {};
-  window['PLUS_ANIMATION_KEYFRAME'][name] = keyframe;
+  setConfig({
+    component: {
+      'plus-animation': {
+        asset: {
+          name: {
+            [name]: keyframe
+          }
+        }
+      }
+    }
+  });
 };

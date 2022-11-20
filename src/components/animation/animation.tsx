@@ -1,4 +1,4 @@
-import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
+import { Bind, Element, Event, EventEmitter, Method, Property, Watch, getConfig } from '@htmlplus/element';
 import * as Helpers from '@app/helpers';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 import { ANIMATION_EASINGS } from './animation.constants';
@@ -148,7 +148,7 @@ export class Animation {
       delay: this.delay,
       direction: this.direction,
       duration: this.duration,
-      easing: ANIMATION_EASINGS[this.easing] ?? this.easing,
+      easing: ANIMATION_EASINGS[this.easing] ?? getConfig('component', 'plus-animation', 'asset', 'easing', this.easing) ?? this.easing,
       endDelay: this.endDelay,
       fill: this.fill,
       iterationComposite: this.iterationComposite,
@@ -255,7 +255,7 @@ export class Animation {
   updatedCallback() {
     this.disconnectedCallback();
 
-    const keyframes = this.keyframes ?? window['PLUS_ANIMATION_KEYFRAME']?.[this.name] ?? [];
+    const keyframes = this.keyframes ?? getConfig('component', 'plus-animation', 'asset', 'name', this.name) ?? [];
 
     this.instance = this.$host.animate(keyframes, this.options);
 

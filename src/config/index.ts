@@ -1,1 +1,1 @@
-export { setConfig } from '@htmlplus/element/client/utils';
+export { getConfig, setConfig } from '@htmlplus/element';
