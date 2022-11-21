@@ -22,6 +22,8 @@ Creates an animation and applies it to the content. Powered by the [Web Animatio
 
 <Example value="keyframes" />
 
+<Example value="register-a-custom-name" />
+
 <Example value="button" />
 
 <Example value="intersection" />
