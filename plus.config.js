@@ -7,7 +7,6 @@ import {
   extract,
   parse,
   read,
-  readme,
   style,
   validate,
   webTypes
@@ -71,7 +70,6 @@ export default [
       );
     }
   }),
-  readme(),
   document({
     destination: 'dist/json/document.json'
   }),
