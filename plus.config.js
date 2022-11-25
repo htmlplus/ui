@@ -75,7 +75,7 @@ export default [
     source: 'src/components/animation/assets/register.js',
     destination: 'dist/animation/names/register.js',
     transformer(content) {
-      return content.replace('@htmlplus/element', '../../core/index.js');
+      return content.replace('@htmlplus/element', './core/index.js');
     }
   }),
   document({
