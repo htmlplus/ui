@@ -70,6 +70,14 @@ export default [
       );
     }
   }),
+  copy({
+    at: 'finish',
+    source: 'src/components/animation/assets/register.js',
+    destination: 'dist/animation/names/register.js',
+    transformer(content) {
+      return content.replace('@htmlplus/element', '../../core/index.js');
+    }
+  }),
   document({
     destination: 'dist/json/document.json'
   }),
