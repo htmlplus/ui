@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 
 import plugins from '../plus.config.js';
 
-const root = path.join(fileURLToPath(import.meta.url), '../..');
+const join = (file) => path.join(fileURLToPath(import.meta.url), '../..', file);
 
 const options = defineConfig({
   input: Object.fromEntries(
@@ -24,8 +24,9 @@ const options = defineConfig({
       })
       .flat(1)
       .concat([
-        ['config', path.join(root, 'src/config/index.ts')],
-        ['index', path.join(root, 'src/components/index.ts')]
+        ['animation/names/register', join('src/components/animation/assets/register.js')],
+        ['config', join('src/config/index.ts')],
+        ['index', join('src/components/index.ts')]
       ])
   ),
   output: [
