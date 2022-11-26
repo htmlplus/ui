@@ -9,7 +9,8 @@ import { ClickOutside as ClickOutsideCore } from '@app/services';
 export class ClickOutside {
 
   /**
-   * TODO
+   * A boolean value indicating that events of this type will be dispatched to the registered 
+   * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
    */
   @Property()
   capture?: boolean;
