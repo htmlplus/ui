@@ -1,0 +1,4 @@
+- add whitelist and blacklist
+- signal and passive
+- custom events
+- detect Iframe

@@ -9,19 +9,25 @@ import { ClickOutside as ClickOutsideCore } from '@app/services';
 export class ClickOutside {
 
   /**
-   * Disable the component.
+   * TODO
+   */
+  @Property()
+  capture?: boolean;
+
+  /**
+   * Disables the component's functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;
 
   /**
-   * The callback occurs only once.
+   * The event fires only once.
    */
   @Property()
   once?: boolean;
 
   /**
-  * Emitted when outside of the component is clicked.
+  * Fires when outside of the component is clicked.
   */
   @Event({ cancelable: true })
   plusClickOutside!: EventEmitter<void>;
@@ -30,28 +36,27 @@ export class ClickOutside {
     return Helpers.host(this);
   }
 
-  /**
-   * Internal Methods
-   */
+  get options() {
+    return {
+      capture: this.capture
+    }
+  }
 
   bind() {
-    ClickOutsideCore.on(this.$host, this.onClickOutside);
+    ClickOutsideCore.on(this.$host, this.onClickOutside, true, this.options);
   }
 
   unbind() {
-    ClickOutsideCore.off(this.$host);
+    ClickOutsideCore.off(this.$host, this.options);
   }
 
-  /**
-   * Watchers
-   */
-
-  @Watch(['disabled', 'once'])
+  @Watch(['capture', 'disabled', 'once'])
   watcher(next, prev, name) {
     switch (name) {
       case 'disabled':
         next ? this.unbind() : this.bind();
         break;
+      case 'capture':
       case 'once':
         this.unbind();
         this.bind();
@@ -59,22 +64,15 @@ export class ClickOutside {
     }
   }
 
-  /**
-   * Events handler
-   */
-
   @Bind()
   onClickOutside() {
     if (this.once) this.unbind();
     this.plusClickOutside();
   }
 
-  /**
-   * Lifecycles
-   */
-
   connectedCallback() {
-    if (!this.disabled) this.bind();
+    if (this.disabled) return;
+    this.bind();
   }
 
   disconnectedCallback() {

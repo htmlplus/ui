@@ -25,12 +25,12 @@ export class ClickOutside {
     this.targets.set(element, fn);
   }
 
-  static off(element) {
+  static off(element, options?) {
     const callback = this.targets.get(element);
 
     if (!callback) return;
 
-    Helpers.off(document, this.type, callback, true);
+    Helpers.off(document, this.type, callback, options ?? true);
 
     this.targets.delete(element);
   }
