@@ -1,6 +1,7 @@
 import { Element, Property } from '@htmlplus/element';
 
 /**
+ * @stable
  * @slot default - The default slot.
  */
 @Element()

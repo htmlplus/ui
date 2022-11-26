@@ -8,6 +8,7 @@ import './assets/fading-entrance/fade-in.js';
 import './assets/fading-exits/fade-out.js';
 
 /**
+ * @stable
  * @slot default - The default slot.
  */
 @Element()

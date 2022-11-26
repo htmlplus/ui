@@ -3,3 +3,4 @@
 - `instance` property should be readonly
 - test for events
 - add a example section named `Names & Easings`
+- register a custom easing

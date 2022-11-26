@@ -7,7 +7,7 @@ export class ClickOutside {
     return 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
   }
 
-  static on(element, callback, self = true) {
+  static on(element, callback, self = true, options?) {
     this.off(element);
 
     const fn = (event) => {
@@ -20,7 +20,7 @@ export class ClickOutside {
       callback(event);
     };
 
-    Helpers.on(document, this.type, fn, true);
+    Helpers.on(document, this.type, fn, options ?? true);
 
     this.targets.set(element, fn);
   }
