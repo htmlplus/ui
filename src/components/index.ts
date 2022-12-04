@@ -6,6 +6,7 @@ export * from './breadcrumb/breadcrumb';
 export * from './browse/browse';
 export * from './card/card';
 export * from './card-body/card-body';
+export * from './center/center';
 export * from './click-outside/click-outside';
 export * from './counter/counter';
 export * from './cropper/cropper';
