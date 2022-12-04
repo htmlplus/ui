@@ -7,7 +7,7 @@ import { Element, Property } from '@htmlplus/element';
 @Element()
 export class Center {
   /**
-   * Converts the `display` css property from `flex` to `inline-flex`.
+   * Converts the `display` CSS property from `flex` to `inline-flex`.
    */
   @Property({ reflect: true })
   inline?: boolean; 
