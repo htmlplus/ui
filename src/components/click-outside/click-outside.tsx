@@ -3,6 +3,7 @@ import * as Helpers from '@app/helpers';
 import { ClickOutside as ClickOutsideCore } from '@app/services';
 
 /**
+ * @stable
  * @slot default - The default slot.
  */
 @Element()
@@ -81,8 +82,6 @@ export class ClickOutside {
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />
   }
 }
