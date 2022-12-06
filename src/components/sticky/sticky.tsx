@@ -3,18 +3,13 @@ import * as Helpers from '@app/helpers';
 import { StickyState, StickyTop } from './sticky.types';
 
 /**
+ * @stable
  * @slot default - The default slot.
- * @slot normal  - The normal slot.
- * @slot stick   - The stick slot.
+ * @slot normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`.
+ * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
  */
 @Element()
 export class Sticky {
-  /**
-   * Disables the sticky mode.
-   */
-  @Property()
-  disabled?: boolean;
-
   /**
    * Specifies the space from top.
    */
@@ -22,20 +17,19 @@ export class Sticky {
   top?: StickyTop = 0;
 
   /**
-   * If you use `state` property or `plusChange` event, you shold set this property to `true`.
+   * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
    */
   @Property()
   watcher?: boolean;
 
   /**
-   * Specifies the z-index of the sticky.
+   * Specifies the z-index.
    */
   @Property()
   zIndex?: number;
 
   /**
-   * When the component state is changed this event triggers. 
-   * To enable this event you shold set `watcher` property to `true`.
+   * Fires when the state is changed. To enable, set the `watcher` property to `true`.
    */
   @Event()
   plusChange!: EventEmitter<StickyState>;
@@ -75,7 +69,8 @@ export class Sticky {
   bind() {
     if (!this.watcher) return;
 
-    if (this.disabled) return;
+    // TODO
+    // if (this.disabled) return;
 
     this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
 
