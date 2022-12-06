@@ -5,11 +5,10 @@ import { StickyState, StickyTop } from './sticky.types';
 /**
  * @slot default - The default slot.
  * @slot normal  - The normal slot.
- * @slot sticky  - The sticky slot.
+ * @slot stick   - The stick slot.
  */
 @Element()
 export class Sticky {
-
   /**
    * Disables the sticky mode.
    */
@@ -20,7 +19,7 @@ export class Sticky {
    * Specifies the space from top.
    */
   @Property()
-  top?: StickyTop = 1;
+  top?: StickyTop = 0;
 
   /**
    * If you use `state` property or `plusChange` event, you shold set this property to `true`.
@@ -38,48 +37,45 @@ export class Sticky {
    * When the component state is changed this event triggers. 
    * To enable this event you shold set `watcher` property to `true`.
    */
-  @Event({ cancelable: true })
+  @Event()
   plusChange!: EventEmitter<StickyState>;
 
   $element!: HTMLElement;
 
   @State()
-  state?: StickyState = 'normal';
+  state?: StickyState;
 
   observer?: IntersectionObserver;
 
   @Attributes()
   get attributes() {
-
-    const attributes = {
+    return {
+      state: this.watcher ? this.state : null,
       style: this.style
-    };
-
-    if (this.watcher) {
-      attributes['state'] = this.state;
     }
-
-    return attributes;
   }
 
   get sizer() {
-    return `calc((${Helpers.toUnit(this.top)} + 1px) * -1)`;
+    const top = Helpers.toUnit(this.top);
+
+    if (!top) return;
+
+    return {
+      top: `calc((${top} + 1px) * -1)`
+    }
   }
 
   get style() {
     return Helpers.styles({
       top: Helpers.toUnit(this.top),
-      zIndex: this.top ? String(this.zIndex) : null,
+      zIndex: this.zIndex ?? null,
     })
   }
 
-  /**
-   * Internal Methods
-   */
-
   bind() {
+    if (!this.watcher) return;
 
-    if (!this.watcher || this.disabled) return;
+    if (this.disabled) return;
 
     this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
 
@@ -87,51 +83,35 @@ export class Sticky {
   }
 
   unbind() {
-    this.observer?.disconnect();
+    // TODO: immediately rerenders after remove `watcher` attribute 
+    requestAnimationFrame(() => {
+      this.state = undefined;
+      this.observer?.disconnect();
+    })
   }
-
-  /**
-   * Watchers
-   */
 
   @Watch(['disabled', 'watcher'])
   watchers(next, prev, key) {
-
     switch (key) {
-
       case 'disabled':
-
         next ? this.unbind() : this.bind();
-
         break;
-
       case 'watcher':
-
         next ? this.bind() : this.unbind();
-
         break;
     }
   }
 
-  /**
-   * Events handler
-   */
-
   @Bind()
   onIntersecting(entries: IntersectionObserverEntry[]) {
-
     const [entry] = entries;
 
-    this.state = entry.intersectionRatio < 1 ? 'sticky' : 'normal';
+    this.state = entry.intersectionRatio < 1 ? 'stick' : 'normal';
 
     this.plusChange(this.state);
   }
 
-  /**
-   * Lifecycles
-   */
-
-  connectedCallback() {
+  loadedCallback() {
     this.bind();
   }
 
@@ -146,16 +126,15 @@ export class Sticky {
           <div
             className="sizer"
             ref={($element) => this.$element = $element}
-            style={{ top: this.sizer }}
-          />
+            style={this.sizer}
+          ></div>
         </div>
         <slot />
-        <div className="normal">
-          <slot name="normal" />
-        </div>
-        <div className="sticky">
-          <slot name="sticky" />
-        </div>
+        {this.state && (
+          <div className={this.state}>
+            <slot name={this.state} />
+          </div>
+        )}
       </>
     )
   }
