@@ -1,11 +1,8 @@
 import { Attributes, Element, Property } from '@htmlplus/element';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
-/**
- */
 @Element()
 export class Spinner {
-
   /**
    * Specifies the size of the spinner.
    */
@@ -22,12 +19,10 @@ export class Spinner {
   get attributes() {
     return {
       'role': 'status',
-      // TODO 'aria-hidden': true
     }
   }
 
   get elements() {
-
     const map = {
       'default': 8,
       'double-bounce': 2

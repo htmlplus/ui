@@ -1,0 +1,1 @@
+- add 'aria-hidden'

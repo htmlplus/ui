@@ -1,4 +1,4 @@
-$spinner-size: (
+$spinner-sizes: (
   sm: (
     size: 16px,
     weight: 0.8
@@ -9,6 +9,6 @@ $spinner-size: (
   ),
   lg: (
     size: 48px,
-    weight: 1.2 
-  ),
-)
+    weight: 1.2
+  )
+);

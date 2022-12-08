@@ -1,7 +1,5 @@
-:host([type=default]) {
-
+:host([type='default']) {
   .wrapper div {
-
     width: 100%;
     height: 100%;
     position: absolute;
@@ -11,7 +9,7 @@
     animation: spinner 0.8s linear infinite;
 
     &:after {
-      content: " ";
+      content: ' ';
       display: block;
       position: absolute;
       top: 0;
@@ -29,7 +27,7 @@
       }
     }
   }
-  
+
   @keyframes spinner {
     0% {
       opacity: 1;
@@ -37,5 +35,5 @@
     100% {
       opacity: 0;
     }
-  }      
+  }
 }
