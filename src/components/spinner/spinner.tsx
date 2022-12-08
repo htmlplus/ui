@@ -1,6 +1,9 @@
 import { Attributes, Element, Property } from '@htmlplus/element';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
+/**
+ * @stable
+ */
 @Element()
 export class Spinner {
   /**
