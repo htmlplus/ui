@@ -2,18 +2,7 @@
 @import 'spinners';
 
 :host {
-  // @prop Specifies the color of the spinner.
-  --plus-spinner-color: currentColor;
-
-  // @prop Specifies the size of the spinner.
-  --plus-spinner-size: unset;
-
-  // @prop Specifies the weight of the spinner.
-  --plus-spinner-weight: 1;
-}
-
-:host {
-  color: var(--plus-spinner-color);
+  color: currentColor;
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
@@ -21,8 +10,8 @@
 
 @each $key, $value in $spinner-sizes {
   :host([size='#{$key}']) {
-    --plus-spinner-size: #{map-get($value, size)};
-    --plus-spinner-weight: #{map-get($value, weight)};
+    height: #{$value};
+    width: #{$value};
   }
 }
 
