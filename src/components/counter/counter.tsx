@@ -2,6 +2,9 @@ import { Attributes, Bind, Element, Event, EventEmitter, Method, Property, State
 import { COUNTER_EASINGS } from './counter.constants';
 import { CounterEasing } from './counter.types';
 
+/**
+ * @stable
+ */
 @Element()
 export class Counter {
   /**
@@ -123,10 +126,6 @@ export class Counter {
   }
 
   /**
-   * External Methods
-   */
-
-  /**
    * Completes the transition.
    */
   @Method()
@@ -184,10 +183,6 @@ export class Counter {
     this.play = false;
   }
 
-  /**
-   * Internal Methods
-   */
-
   @Bind()
   count(timestamp: number) {
     if (!this.startTime) this.startTime = timestamp;
@@ -225,10 +220,6 @@ export class Counter {
     this.startTime = undefined;
   }
 
-  /**
-   * Watchers
-   */
-
   @Watch(['play'], true)
   watcher() {
     // TODO: remove requestAnimationFrame
@@ -238,10 +229,6 @@ export class Counter {
       if (this.play != true && this.state == 'running') this.stop();
     });
   }
-
-  /**
-   * Lifecycles
-   */
 
   disconnectedCallback() {
     this.stop();

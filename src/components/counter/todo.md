@@ -1,0 +1,3 @@
+- examples
+- easing
+- add `function` type for easing
