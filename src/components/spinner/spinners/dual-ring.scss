@@ -1,4 +1,4 @@
-:host([type='ring']) {
+:host([type='dual-ring']) {
   .wrapper:after {
     content: ' ';
     display: block;
@@ -6,11 +6,11 @@
     height: 100%;
     border-radius: 50%;
     border: 0.2em solid currentColor;
-    border-color: currentColor currentColor currentColor transparent;
-    animation: ring 1.2s linear infinite;
+    border-color: currentColor transparent currentColor transparent;
+    animation: dual-ring 1.2s linear infinite;
   }
 
-  @keyframes ring {
+  @keyframes dual-ring {
     0% {
       transform: rotate(0deg);
     }
