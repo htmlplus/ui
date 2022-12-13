@@ -3,11 +3,11 @@ name: Node.js Package
 on:
   push:
     branches:
-      - 'main'
-    tags:
-      - release@next
+      - main
+
 jobs:
   release:
+    if: "contains(github.event.head_commit.message, '-next-')"
     name: publish
     runs-on: ubuntu-latest
     steps:
