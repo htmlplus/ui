@@ -1,3 +1,5 @@
 - add 'aria-hidden'
 - add part
 - lazy load
+- example for buttons
+- example for button's sizes
