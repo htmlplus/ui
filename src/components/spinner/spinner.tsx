@@ -10,7 +10,7 @@ export class Spinner {
    * Specifies the size of the spinner.
    */
   @Property({ reflect: true })
-  size?: SpinnerSize = 'md';
+  size?: SpinnerSize = 'inherit';
 
   /**
    * Specifies which variant of the spinner to use.
@@ -38,7 +38,7 @@ export class Spinner {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="root">
         {this.elements.map((element) => <div key={element} />)}
       </div>
     )

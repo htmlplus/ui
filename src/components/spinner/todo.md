@@ -1,1 +1,3 @@
 - add 'aria-hidden'
+- add part
+- lazy load

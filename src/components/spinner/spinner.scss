@@ -4,7 +4,6 @@
 :host {
   color: currentColor;
   display: inline-block;
-  font-size: 1rem;
   overflow: hidden;
   vertical-align: middle;
 }
@@ -16,7 +15,7 @@
   }
 }
 
-.wrapper {
+.root {
   display: block;
   position: relative;
   width: 100%;
