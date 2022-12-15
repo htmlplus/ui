@@ -1,0 +1,1 @@
+- add examples for all properties
