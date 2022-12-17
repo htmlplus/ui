@@ -14,6 +14,36 @@ export class Signature {
   backgroundColor?: string = 'rgba(0, 0, 0, 0)';
 
   /**
+   * TODO
+   */ 
+  @Property()
+  get canvas(): HTMLCanvasElement {
+    return this.$canvas;
+  }
+
+  /**
+   * TODO
+   */ 
+  @Property()
+  get canRedo(): boolean {
+    return this.index != this.history.length - 1;
+  }
+
+  /**
+   * TODO
+   */ 
+  @Property()
+  get canUndo(): boolean {
+    return this.index != -1;
+  } 
+
+  /**
+   * Specifies the color of the lines.
+   */
+  @Property()
+  color?: string = 'black';
+
+  /**
    * Disables the component's functionality.
    */
   @Property({ reflect: true })
@@ -59,7 +89,7 @@ export class Signature {
    * Specifies the velocity based on the previous velocity.
    */
   @Property()
-  velocityFilterWeight?: number = 0.7;
+  velocity?: number = 0.7;
 
   /**
   * Fires after updating the stroke.
@@ -89,11 +119,17 @@ export class Signature {
 
   instance?: SignaturePad;
 
+  history: SignaturePointGroup[][] = [];
+
+  index: number = -1;
+
   /**
    * Clears the canvas.
    */  
   @Method()
   clear() {
+    this.index = -1;
+    this.history = [];
     this.instance.clear();
   }
 
@@ -104,7 +140,7 @@ export class Signature {
    */
   @Method()
   fromData(data: SignaturePointGroup[], clear?: boolean) {
-    this.instance.fromData(data, { clear });
+    this.instance.fromData(data, { clear: !!clear });
   }
 
   /**
@@ -121,7 +157,7 @@ export class Signature {
    * Returns `true` if canvas is empty.
    */  
   @Method()
-  isEmpty() {
+  isEmpty(): boolean {
     return this.instance.isEmpty();
   }
 
@@ -143,16 +179,44 @@ export class Signature {
   }
 
   /**
-   * TODO
+   * Reverts the last undo action.
    */  
   @Method()
-  undo() { }
+  redo() {
+    if (!this.canRedo) return;
+
+    this.index++;
+
+    const data = this.history[this.index] || [];
+
+    this.fromData(data, true);
+  }
+
+  /**
+   * Reverts the last action.
+   */  
+  @Method()
+  undo() {
+    if (!this.canUndo) return;
+
+    this.index--;
+
+    const data = this.history[this.index] || [];
+    
+    this.fromData(data, true);
+  }
 
   @Watch([], true)
   watcher(next, prev, name) {
     switch (name) {
+      case 'color':
+        this.instance.penColor = next;
+        break;
       case 'disabled':
         next ? this.instance.off() : this.instance.on();
+        break;
+      case 'velocity':
+        this.instance.velocityFilterWeight = next;
         break;
       default:
         this.instance[name] = next;
@@ -176,6 +240,16 @@ export class Signature {
         events[key](event['detail']);
       })
     } 
+
+    this.instance.addEventListener('endStroke', () => {
+      const data = JSON.parse(JSON.stringify(this.toData()));
+
+      this.index++;
+
+      this.history[this.index] = data;
+      
+      this.history.length = this.index + 1;
+    })
   }
 
   disconnectedCallback() {

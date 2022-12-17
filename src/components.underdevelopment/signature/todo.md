@@ -1,3 +1,5 @@
 - https://www.npmjs.com/package/react-signature-canvas-react17-compatible
 - https://www.npmjs.com/package/@eve-sama/ngx-signature-pad
 - update document
+- toDataURL(type: 'image/svg+xml', encoderOptions?: ToSVGOptions): string;
+- toDataURL(type?: string, encoderOptions?: number): string;
