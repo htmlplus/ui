@@ -56,6 +56,14 @@ export class Signature {
   dotSize?: number;
 
   /**
+   * Returns `true` if canvas is empty.
+   */  
+  @Property()
+  get isEmpty(): boolean {
+    return this.instance.isEmpty();
+  }
+
+  /**
    * Specifies the maximum width of the lines.
    */
   @Property()
@@ -72,12 +80,6 @@ export class Signature {
    */
   @Property()
   minWidth?: number = 0.5;
-
-  /**
-   * Specifies the color of the lines.
-   */
-  @Property()
-  penColor?: string = 'black';
 
   /**
    * Specifies the time distance between the previous point and the next one.
@@ -152,14 +154,6 @@ export class Signature {
   async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
     await this.instance.fromDataURL(dataUrl, options);
   } 
-
-  /**
-   * Returns `true` if canvas is empty.
-   */  
-  @Method()
-  isEmpty(): boolean {
-    return this.instance.isEmpty();
-  }
 
   /**
    * Returns data of the canvas.

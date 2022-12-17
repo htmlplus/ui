@@ -3,3 +3,8 @@
 - update document
 - toDataURL(type: 'image/svg+xml', encoderOptions?: ToSVGOptions): string;
 - toDataURL(type?: string, encoderOptions?: number): string;
+- background image
+- readonly
+- value
+- onReady
+- onChange
