@@ -1,5 +1,6 @@
-import { Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
+import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
 import SignaturePad from 'signature_pad';
+import * as Helpers from '@app/helpers';
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
 /**
@@ -60,7 +61,7 @@ export class Signature {
    */  
   @Property()
   get isEmpty(): boolean {
-    return this.instance.isEmpty();
+    return this.instance?.isEmpty();
   }
 
   /**
@@ -187,6 +188,20 @@ export class Signature {
   }
 
   /**
+   * TODO
+   */  
+  @Method()
+  resize() {
+    const element = Helpers.host(this);
+
+    const { width, height } = getComputedStyle(element);
+
+    this.canvas.width = parseFloat(width);
+
+    this.canvas.height = parseFloat(height);
+  }
+
+  /**
    * Reverts the last action.
    */  
   @Method()
@@ -219,6 +234,8 @@ export class Signature {
   }
 
   loadedCallback() {
+    this.resize();
+
     this.instance = new SignaturePad(this.$canvas);
 
     const events = {
@@ -235,15 +252,18 @@ export class Signature {
       })
     } 
 
-    this.instance.addEventListener('endStroke', () => {
-      const data = JSON.parse(JSON.stringify(this.toData()));
+    this.instance.addEventListener('endStroke', this.onEndStroke);
+  }
 
-      this.index++;
+  @Bind()
+  onEndStroke() {
+    const data = JSON.parse(JSON.stringify(this.toData()));
 
-      this.history[this.index] = data;
-      
-      this.history.length = this.index + 1;
-    })
+    this.index++;
+
+    this.history[this.index] = data;
+    
+    this.history.length = this.index + 1;
   }
 
   disconnectedCallback() {

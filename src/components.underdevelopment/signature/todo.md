@@ -1,5 +1,3 @@
-- https://www.npmjs.com/package/react-signature-canvas-react17-compatible
-- https://www.npmjs.com/package/@eve-sama/ngx-signature-pad
 - update document
 - toDataURL(type: 'image/svg+xml', encoderOptions?: ToSVGOptions): string;
 - toDataURL(type?: string, encoderOptions?: number): string;
@@ -8,3 +6,19 @@
 - value
 - onReady
 - onChange
+- clearOnResize
+- getTrimmedCanvas
+
+// setInterval(() => {
+// const ratio = Math.max(window.devicePixelRatio || 1, 1);
+// canvas.width = canvas.offsetWidth _ ratio;
+// canvas.height = canvas.offsetHeight _ ratio;
+this
+.$canvas
+    .getContext("2d")
+    .scale(
+        this.$canvas.width / this.$canvas.offsetWidth, 
+        this.$canvas.height / this.$canvas.offsetHeight
+);
+// signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+// }, 2000);
