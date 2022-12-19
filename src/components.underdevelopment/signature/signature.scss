@@ -1,5 +1,7 @@
 :host {
   display: block;
+  width: 300px;
+  height: 150px;
 }
 
 :host(#{boolean(disabled)}) {

@@ -51,6 +51,12 @@ export class Signature {
   disabled?: boolean;
 
   /**
+   * Specifies the distance between the previous point and the next one.
+   */
+  @Property()
+  distance?: number;
+
+  /**
    * Specifies the radius of a single dot.
    */
   @Property()
@@ -69,12 +75,6 @@ export class Signature {
    */
   @Property()
   maxWidth?: number = 2.5;
-
-  /**
-   * Specifies the distance between the previous point and the next one.
-   */
-  @Property()
-  minDistance?: number;
 
   /**
    * Specifies the minimum width of the lines
@@ -224,6 +224,9 @@ export class Signature {
       case 'disabled':
         next ? this.instance.off() : this.instance.on();
         break;
+      case 'distance':
+        this.instance.minDistance = next;
+        break;
       case 'velocity':
         this.instance.velocityFilterWeight = next;
         break;
@@ -231,12 +234,17 @@ export class Signature {
         this.instance[name] = next;
         break;
     }
+
+    // TODO
+    this.fromData(this.toData(), true);
   }
 
   loadedCallback() {
     this.resize();
 
     this.instance = new SignaturePad(this.$canvas);
+
+    this.instance.addEventListener('endStroke', this.onEndStroke);
 
     const events = {
       afterUpdateStroke: this.plusAfter,
@@ -251,8 +259,6 @@ export class Signature {
         events[key](event['detail']);
       })
     } 
-
-    this.instance.addEventListener('endStroke', this.onEndStroke);
   }
 
   @Bind()
