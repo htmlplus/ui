@@ -8,6 +8,8 @@
 - onChange
 - clearOnResize
 - getTrimmedCanvas
+- resize
+- keyboards
 
 // setInterval(() => {
 // const ratio = Math.max(window.devicePixelRatio || 1, 1);

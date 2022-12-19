@@ -15,28 +15,34 @@ export class Signature {
   backgroundColor?: string = 'rgba(0, 0, 0, 0)';
 
   /**
-   * TODO
-   */ 
+   * TODO.
+   */
   @Property()
   get canvas(): HTMLCanvasElement {
     return this.$canvas;
   }
 
   /**
-   * TODO
-   */ 
+   * TODO.
+   */
   @Property()
   get canRedo(): boolean {
     return this.index != this.history.length - 1;
   }
 
   /**
-   * TODO
-   */ 
+   * TODO.
+   */
   @Property()
   get canUndo(): boolean {
     return this.index != -1;
-  } 
+  }
+
+  /**
+   * TODO.
+   */
+  @Property()
+  clearOnResize?: boolean;
 
   /**
    * Specifies the color of the lines.
@@ -64,7 +70,7 @@ export class Signature {
 
   /**
    * Returns `true` if canvas is empty.
-   */  
+   */
   @Property()
   get isEmpty(): boolean {
     return this.instance?.isEmpty();
@@ -77,17 +83,23 @@ export class Signature {
   maxWidth?: number = 2.5;
 
   /**
-   * Specifies the minimum width of the lines
+   * Specifies the minimum width of the lines.
    */
   @Property()
   minWidth?: number = 0.5;
+
+  /**
+   * TODO.
+   */
+  @Property()
+  resizable?: boolean;
 
   /**
    * Specifies the time distance between the previous point and the next one.
    */
   @Property()
   throttle?: number = 16;
-  
+
   /**
    * Specifies the velocity based on the previous velocity.
    */
@@ -95,30 +107,34 @@ export class Signature {
   velocity?: number = 0.7;
 
   /**
-  * Fires after updating the stroke.
-  */
+   * Fires after updating the stroke.
+   */
   @Event()
   plusAfter!: EventEmitter<PointerEvent>;
 
   /**
-  * Fires before updating the stroke.
-  */
+   * Fires before updating the stroke.
+   */
   @Event()
   plusBefore!: EventEmitter<PointerEvent>;
 
   /**
-  * Fires after a stroke ends.
-  */
+   * Fires after a stroke ends.
+   */
   @Event()
   plusEnd!: EventEmitter<PointerEvent>;
 
   /**
-  * Fires before a stroke starts.
-  */
+   * Fires before a stroke starts.
+   */
   @Event()
   plusStart!: EventEmitter<PointerEvent>;
 
   $canvas!: HTMLCanvasElement;
+
+  get $host() {
+    return Helpers.host(this);
+  }
 
   instance?: SignaturePad;
 
@@ -126,9 +142,11 @@ export class Signature {
 
   index: number = -1;
 
+  observer: ResizeObserver = new ResizeObserver(this.onResize);
+
   /**
    * Clears the canvas.
-   */  
+   */
   @Method()
   clear() {
     this.index = -1;
@@ -150,15 +168,15 @@ export class Signature {
    * Draws from the data URL. [More](https://mdn.io/drawImage).
    * @param dataUrl TODO
    * @param options TODO
-   */  
+   */
   @Method()
   async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
     await this.instance.fromDataURL(dataUrl, options);
-  } 
+  }
 
   /**
    * Returns data of the canvas.
-   */  
+   */
   @Method()
   toData(): SignaturePointGroup[] {
     return this.instance.toData();
@@ -175,7 +193,7 @@ export class Signature {
 
   /**
    * Reverts the last undo action.
-   */  
+   */
   @Method()
   redo() {
     if (!this.canRedo) return;
@@ -189,12 +207,10 @@ export class Signature {
 
   /**
    * TODO
-   */  
+   */
   @Method()
   resize() {
-    const element = Helpers.host(this);
-
-    const { width, height } = getComputedStyle(element);
+    const { width, height } = getComputedStyle(this.$host);
 
     this.canvas.width = parseFloat(width);
 
@@ -203,7 +219,7 @@ export class Signature {
 
   /**
    * Reverts the last action.
-   */  
+   */
   @Method()
   undo() {
     if (!this.canUndo) return;
@@ -211,7 +227,7 @@ export class Signature {
     this.index--;
 
     const data = this.history[this.index] || [];
-    
+
     this.fromData(data, true);
   }
 
@@ -222,7 +238,11 @@ export class Signature {
         this.instance.penColor = next;
         break;
       case 'disabled':
-        next ? this.instance.off() : this.instance.on();
+        if (next) {
+          this.instance.off();
+        } else {
+          this.instance.on();
+        }
         break;
       case 'distance':
         this.instance.minDistance = next;
@@ -230,8 +250,19 @@ export class Signature {
       case 'velocity':
         this.instance.velocityFilterWeight = next;
         break;
-      default:
+      case 'backgroundColor':
+      case 'dotSize':
+      case 'maxWidth':
+      case 'minWidth':
+      case 'throttle':
         this.instance[name] = next;
+        break;
+      case 'resizable':
+        if (next) {
+          this.observer.observe(this.$host);
+        } else {
+          this.observer.unobserve(this.$host);
+        }
         break;
     }
 
@@ -244,36 +275,44 @@ export class Signature {
 
     this.instance = new SignaturePad(this.$canvas);
 
-    this.instance.addEventListener('endStroke', this.onEndStroke);
+    this.instance.addEventListener('endStroke', this.onEnd);
 
     const events = {
       afterUpdateStroke: this.plusAfter,
       beforeUpdateStroke: this.plusBefore,
       beginStroke: this.plusStart,
       endStroke: this.plusEnd,
-    }
+    };
 
     for (const key in events) {
       if (!events.hasOwnProperty(key)) continue;
       this.instance.addEventListener(key, (event) => {
         events[key](event['detail']);
-      })
-    } 
+      });
+    }
   }
 
   @Bind()
-  onEndStroke() {
+  onEnd() {
     const data = JSON.parse(JSON.stringify(this.toData()));
 
     this.index++;
 
     this.history[this.index] = data;
-    
+
     this.history.length = this.index + 1;
+  }
+
+  @Bind()
+  onResize() {
+    const data = this.toData();
+    this.resize();
+    this.fromData(data, true);
   }
 
   disconnectedCallback() {
     this.instance.off();
+    this.observer.disconnect();
   }
 
   render() {
