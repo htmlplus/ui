@@ -161,7 +161,8 @@ export class Signature {
    */
   @Method()
   fromData(data: SignaturePointGroup[], clear?: boolean) {
-    this.instance.fromData(data, { clear: !!clear });
+    if (clear) this.clear();
+    this.instance.fromData(data);
   }
 
   /**
@@ -179,7 +180,7 @@ export class Signature {
    */
   @Method()
   toData(): SignaturePointGroup[] {
-    return this.instance.toData();
+    return JSON.parse(JSON.stringify(this.instance.toData()));
   }
 
   /**
@@ -202,7 +203,7 @@ export class Signature {
 
     const data = this.history[this.index] || [];
 
-    this.fromData(data, true);
+    this.instance.fromData(data);
   }
 
   /**
@@ -210,11 +211,28 @@ export class Signature {
    */
   @Method()
   resize() {
-    const { width, height } = getComputedStyle(this.$host);
+    const style = getComputedStyle(this.$host);
 
-    this.canvas.width = parseFloat(width);
+    const width = parseFloat(style.width);
 
-    this.canvas.height = parseFloat(height);
+    const height = parseFloat(style.height);
+
+    const rw = width / this.$canvas.width;
+    const rh = height / this.$canvas.height;
+
+    this.$canvas.width = width;
+
+    this.$canvas.height = height;
+
+    if (!this.instance) return;
+
+    if (this.clearOnResize) return this.clear();
+
+    // this.$canvas.getContext("2d").scale(1.2, 1.2);
+
+    const a = this.toData()
+
+    this.fromData(a);
   }
 
   /**
@@ -228,7 +246,7 @@ export class Signature {
 
     const data = this.history[this.index] || [];
 
-    this.fromData(data, true);
+    this.instance.fromData(data);
   }
 
   @Watch([], true)
@@ -267,7 +285,7 @@ export class Signature {
     }
 
     // TODO
-    this.fromData(this.toData(), true);
+    this.fromData(this.toData());
   }
 
   loadedCallback() {
@@ -294,20 +312,16 @@ export class Signature {
 
   @Bind()
   onEnd() {
-    const data = JSON.parse(JSON.stringify(this.toData()));
-
     this.index++;
 
-    this.history[this.index] = data;
+    this.history[this.index] = this.toData();
 
     this.history.length = this.index + 1;
   }
 
   @Bind()
   onResize() {
-    const data = this.toData();
-    this.resize();
-    this.fromData(data, true);
+    // this.resize();
   }
 
   disconnectedCallback() {
