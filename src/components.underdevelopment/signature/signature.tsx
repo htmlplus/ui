@@ -5,6 +5,7 @@ import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.ty
 
 /**
  * TODO
+ * @part canvas - The canvas element.
  */
 @Element()
 export class Signature {
@@ -211,28 +212,15 @@ export class Signature {
    */
   @Method()
   resize() {
-    const style = getComputedStyle(this.$host);
+    this.$canvas.width = this.$canvas.offsetWidth;
 
-    const width = parseFloat(style.width);
-
-    const height = parseFloat(style.height);
-
-    const rw = width / this.$canvas.width;
-    const rh = height / this.$canvas.height;
-
-    this.$canvas.width = width;
-
-    this.$canvas.height = height;
+    this.$canvas.height = this.$canvas.offsetHeight;
 
     if (!this.instance) return;
 
     if (this.clearOnResize) return this.clear();
 
-    // this.$canvas.getContext("2d").scale(1.2, 1.2);
-
-    const a = this.toData()
-
-    this.fromData(a);
+    this.fromData(this.toData());
   }
 
   /**
@@ -321,7 +309,7 @@ export class Signature {
 
   @Bind()
   onResize() {
-    // this.resize();
+    this.resize();
   }
 
   disconnectedCallback() {
@@ -331,7 +319,7 @@ export class Signature {
 
   render() {
     return (
-      <canvas ref={($element) => this.$canvas = $element}></canvas>
+      <canvas part="canvas" ref={($element) => this.$canvas = $element}></canvas>
     )
   }
 }
