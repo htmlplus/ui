@@ -4,7 +4,6 @@ import * as Helpers from '@app/helpers';
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
 /**
- * TODO
  * @part canvas - The canvas element.
  */
 @Element()
@@ -16,7 +15,7 @@ export class Signature {
   backgroundColor?: string = 'rgba(0, 0, 0, 0)';
 
   /**
-   * TODO.
+   * The canvas element.
    */
   @Property()
   get canvas(): HTMLCanvasElement {
@@ -24,7 +23,7 @@ export class Signature {
   }
 
   /**
-   * TODO.
+   * Specifies whether redo can be performed or not.
    */
   @Property()
   get canRedo(): boolean {
@@ -32,7 +31,7 @@ export class Signature {
   }
 
   /**
-   * TODO.
+   * Specifies whether undo can be performed or not.
    */
   @Property()
   get canUndo(): boolean {
@@ -40,13 +39,13 @@ export class Signature {
   }
 
   /**
-   * TODO.
+   * Clears the canvas after resizing.
    */
   @Property()
   clearOnResize?: boolean;
 
   /**
-   * Specifies the color of the lines.
+   * Specifies the color of the strokes.
    */
   @Property()
   color?: string = 'black';
@@ -78,19 +77,19 @@ export class Signature {
   }
 
   /**
-   * Specifies the maximum width of the lines.
+   * Specifies the maximum width of the strokes.
    */
   @Property()
   maxWidth?: number = 2.5;
 
   /**
-   * Specifies the minimum width of the lines.
+   * Specifies the minimum width of the strokes.
    */
   @Property()
   minWidth?: number = 0.5;
 
   /**
-   * TODO.
+   * Observes the component dimensions to apply new changes on the canvas.
    */
   @Property()
   resizable?: boolean;
@@ -157,8 +156,8 @@ export class Signature {
 
   /**
    * Draws from the data.
-   * @param data TODO
-   * @param clear TODO
+   * @param data Collections of points.
+   * @param clear Clears the canvas before drawing new points.
    */
   @Method()
   fromData(data: SignaturePointGroup[], clear?: boolean) {
@@ -175,9 +174,10 @@ export class Signature {
   async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
     await this.instance.fromDataURL(dataUrl, options);
   }
-
+  
   /**
    * Returns data of the canvas.
+   * @returns Collections of points.
    */
   @Method()
   toData(): SignaturePointGroup[] {
@@ -208,17 +208,22 @@ export class Signature {
   }
 
   /**
-   * TODO
+   * Syncs the canvas dimensions with the component dimensions.
+   * @param clear Clears the canvas after resizing.
    */
   @Method()
-  resize() {
-    this.$canvas.width = this.$canvas.offsetWidth;
+  resize(clear?: boolean) {
+    const { width, height, offsetWidth, offsetHeight } = this.$canvas;
 
-    this.$canvas.height = this.$canvas.offsetHeight;
+    if (width == offsetWidth && height == offsetHeight) return
+
+    this.$canvas.width = offsetWidth;
+
+    this.$canvas.height = offsetHeight;
 
     if (!this.instance) return;
 
-    if (this.clearOnResize) return this.clear();
+    if (clear ?? this.clearOnResize) return this.clear();
 
     this.fromData(this.toData());
   }
