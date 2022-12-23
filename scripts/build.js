@@ -41,9 +41,11 @@ const options = defineConfig({
 
         if (normalized.includes('/src/config/')) return;
 
+        if (normalized.includes('@popperjs')) return 'vendors/popperjs';
+
         if (normalized.includes('cropperjs')) return 'vendors/cropperjs';
 
-        if (normalized.includes('@popperjs')) return 'vendors/popperjs';
+        if (normalized.includes('signature_pad')) return 'vendors/signature_pad';
 
         return 'core/index';
       }

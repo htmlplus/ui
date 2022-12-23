@@ -25,6 +25,7 @@ export * from './icon/icon';
 export * from './intersection/intersection';
 export * from './portal/portal';
 export * from './scroll-indicator/scroll-indicator';
+export * from './signature/signature';
 export * from './spinner/spinner';
 export * from './sticky/sticky';
 export * from './switch/switch';
