@@ -167,12 +167,23 @@ export class Signature {
 
   /**
    * Draws from the data URL. [More](https://mdn.io/drawImage).
-   * @param dataUrl TODO
+   * This method does not populate the internal data structure that represents the drawn signature. 
+   * Thus, after using `fromDataURL`, `toData won't` work properly.
+   * @param dataUrl A string containing the [data URL](https://mdn.io/dataURL).
    * @param options TODO
    */
   @Method()
   async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
-    await this.instance.fromDataURL(dataUrl, options);
+    await this.instance.fromDataURL(
+      dataUrl,
+      {
+        ratio: options.ratio,
+        width: options.width,
+        height: options.height,
+        xOffset: options.offsetX,
+        yOffset: options.offsetY,
+      }
+    )
   }
   
   /**
@@ -183,9 +194,22 @@ export class Signature {
   toData(): SignaturePointGroup[] {
     return JSON.parse(JSON.stringify(this.instance.toData()));
   }
+  
+  /**
+   * Returns [data URL](https://mdn.io/dataURL). [More](https://mdn.io/toDataURL).
+   */
+  toDataURL(type?: string, encoderOptions?: number): string;
+  toDataURL(type: 'image/svg+xml', includeBackgroundColor?: boolean): string;
+  @Method()
+  toDataURL(type?: string, options?: any): string {
+    if (type == 'image/svg+xml') {
+      options = { includeBackgroundColor: options };
+    }
+    return this.instance.toDataURL(type, options);
+  }
 
   /**
-   * Returns an SVG as a string.
+   * Returns SVG string.
    * @param includeBackgroundColor Adds the background color to the SVG output.
    */
   @Method()

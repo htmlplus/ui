@@ -4,7 +4,7 @@ export type SignatureFromDataURLOptions = {
   ratio?: number;
   width?: number;
   height?: number;
-  xOffset?: number;
-  yOffset?: number;
+  offsetX?: number;
+  offsetY?: number;
 };
 export type SignaturePointGroup = PointGroup;
