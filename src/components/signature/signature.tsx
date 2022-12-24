@@ -123,7 +123,7 @@ export class Signature {
   /**
    * Specifies whether undo can be performed or not.
    */
-  @Property()
+  @Method()
   canUndo(): boolean {
     return this.index != -1;
   }
