@@ -15,30 +15,6 @@ export class Signature {
   backgroundColor?: string = 'rgba(0, 0, 0, 0)';
 
   /**
-   * The canvas element.
-   */
-  @Property()
-  get canvas(): HTMLCanvasElement {
-    return this.$canvas;
-  }
-
-  /**
-   * Specifies whether redo can be performed or not.
-   */
-  @Property()
-  get canRedo(): boolean {
-    return this.index != this.history.length - 1;
-  }
-
-  /**
-   * Specifies whether undo can be performed or not.
-   */
-  @Property()
-  get canUndo(): boolean {
-    return this.index != -1;
-  }
-
-  /**
    * Clears the canvas after resizing.
    */
   @Property()
@@ -67,14 +43,6 @@ export class Signature {
    */
   @Property()
   dotSize?: number;
-
-  /**
-   * Returns `true` if canvas is empty.
-   */
-  @Property()
-  get isEmpty(): boolean {
-    return this.instance?.isEmpty();
-  }
 
   /**
    * Specifies the maximum width of the strokes.
@@ -145,6 +113,30 @@ export class Signature {
   observer: ResizeObserver = new ResizeObserver(this.onResize);
 
   /**
+   * Specifies whether redo can be performed or not.
+   */
+  @Method()
+  canRedo(): boolean {
+    return this.index != this.history.length - 1;
+  }
+
+  /**
+   * Specifies whether undo can be performed or not.
+   */
+  @Property()
+  canUndo(): boolean {
+    return this.index != -1;
+  }
+
+  /**
+   * The canvas element.
+   */
+  @Method()
+  canvas(): HTMLCanvasElement {
+    return this.$canvas;
+  }
+
+  /**
    * Clears the canvas.
    */
   @Method()
@@ -185,6 +177,14 @@ export class Signature {
       }
     )
   }
+
+  /**
+   * Returns `true` if canvas is empty.
+   */
+  @Method()
+  isEmpty(): boolean {
+    return this.instance?.isEmpty();
+  }
   
   /**
    * Returns data of the canvas.
@@ -222,7 +222,7 @@ export class Signature {
    */
   @Method()
   redo() {
-    if (!this.canRedo) return;
+    if (!this.canRedo()) return;
 
     this.index++;
 
@@ -257,7 +257,7 @@ export class Signature {
    */
   @Method()
   undo() {
-    if (!this.canUndo) return;
+    if (!this.canUndo()) return;
 
     this.index--;
 
