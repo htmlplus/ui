@@ -306,8 +306,6 @@ export class Signature {
   }
 
   loadedCallback() {
-    this.resize();
-
     this.instance = new SignaturePad(this.$canvas);
 
     this.instance.addEventListener('endStroke', this.onEnd);
@@ -325,6 +323,9 @@ export class Signature {
         events[key](event['detail']);
       });
     }
+
+    // TODO
+    requestAnimationFrame(() => this.resize());
   }
 
   @Bind()
