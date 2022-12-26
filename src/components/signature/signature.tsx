@@ -343,8 +343,9 @@ export class Signature {
   }
 
   disconnectedCallback() {
-    this.instance.off();
     this.observer.disconnect();
+    if (!this.instance) return;
+    this.instance.off();
   }
 
   render() {
