@@ -7,7 +7,7 @@ HTMLPLUS is a native, framework-less, and lightweight library that is purely dev
 
 ## Quick start
 
-To use HTMLPLUS see "[installation instruction](https://htmlplus.io/getting-started/installation)"
+To use HTMLPLUS see "[installation instruction](https://htmlplus.io/installation)"
 
 ## Documentation
 
@@ -34,7 +34,7 @@ To get you familiar with our contribution process, we have a list of [good first
 
 ## Join our team
 
-You can simply [join HTMLPLUS](https://htmlplus.io/join) team by submitting your request.
+You can simply [join HTMLPLUS](https://htmlplus.io) team by submitting your request.
 
 ## Copyright and license
 
