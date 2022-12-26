@@ -5,6 +5,7 @@ import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.ty
 
 /**
  * @part canvas - The canvas element.
+ * @stable
  */
 @Element()
 export class Signature {

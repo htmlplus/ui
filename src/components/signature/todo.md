@@ -2,13 +2,12 @@
 - readonly
 - value
 - keyboards
+- does clearOnResize need to observer?
 - change event
 - rescale based on window.devicePixelRatio
 - getTrimmedCanvas
 - examples for:
-  - clearOnResize
   - dotSize
-  - resizable
   - throttle
   - velocity
   - plusAfter
@@ -20,7 +19,6 @@
   - fromDataURL
   - isEmpty
   - toData
-  - toDataURL
   - toDataURL
   - toSVG
   - resize
