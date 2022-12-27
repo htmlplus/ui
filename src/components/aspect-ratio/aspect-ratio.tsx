@@ -7,6 +7,18 @@ import { Element, Property } from '@htmlplus/element';
 @Element()
 export class AspectRatio {
   /**
+   * Specifies the minimum height.
+   */
+  @Property()
+  minHeight?: number | string = undefined;
+
+  /**
+   * Specifies the maximum height.
+   */
+  @Property()
+  maxHeight?: number | string = undefined;
+
+  /**
    * Specifies the ratio.
    */
   @Property()
@@ -29,17 +41,20 @@ export class AspectRatio {
 
     if (!ratio) return;
 
-    return {
-      paddingTop: (100 / ratio) + '%'
-    };
+    // TODO: parse number in @Property()
+    const minHeight = isNaN(this.minHeight as any) ? this.minHeight : `${this.minHeight}px`;
+    const maxHeight = isNaN(this.maxHeight as any) ? this.maxHeight : `${this.maxHeight}px` ;
+
+    const paddingTop = minHeight || maxHeight ? `clamp(${minHeight || 0}, ${100 / ratio}%, ${maxHeight || '9999px'})` : `${100 / ratio}%`;
+
+    return { paddingTop }
   }
 
   render() {
     return (
-      <>
-        <div className="sizer" style={this.style} />
+      <div className="root" style={this.style}>
         <slot />
-      </>
-    );
+      </div>  
+    )
   }
 }
