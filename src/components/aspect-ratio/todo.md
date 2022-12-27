@@ -1,1 +1,3 @@
 - rename `value` to `ratio`
+- add more example like `mui`
+- add a resizeable example for min/max width/height
