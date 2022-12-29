@@ -9,3 +9,8 @@
 :host::after {
   box-sizing: border-box;
 }
+
+// TODO
+:host(#{boolean(hidden)}) {
+  display: none;
+}
