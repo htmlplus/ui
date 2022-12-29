@@ -14,18 +14,16 @@ import {
   CropperZoomData
 } from './cropper.types';
 
-/**
- */
 @Element()
 export class Cropper {
   /**
-   * A number between 0 and 1. Define the automatic cropping area size.
+   * A number between 0 and 1. Specifies the automatic cropping area size.
    */
   @Property()
   area?: number = 0.75;
 
   /**
-   * Defines the initial aspect ratio of the viewport.
+   * Specifies the initial aspect ratio of the viewport.
    */
   @Property()
   aspectRatio?: CropperAspectRatio;
@@ -43,9 +41,9 @@ export class Cropper {
   background?: boolean;
 
   /**
-   * Disables the cropper.
+   * Disables the component's functionality.
    */
-  @Property()
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
@@ -61,7 +59,7 @@ export class Cropper {
   indicator?: boolean;
 
   /**
-   * Defines the cropping mode of the cropper.
+   * Specifies the cropping mode of the cropper.
    */
   @Property()
   mode?: CropperMode = 'move';
@@ -91,13 +89,13 @@ export class Cropper {
   shape?: CropperShape = 'rectangle';
 
   /**
-   * Replace the image's src and rebuild the cropper.
+   * Specifies the image's src.
    */
   @Property()
   src?: string;
 
   /**
-   * The previous cropped data if you had stored, will be passed to value automatically when initialized.
+   * Gets/Sets the cropper data.
    */
   @Property()
   value?: CropperValue;
@@ -119,25 +117,25 @@ export class Cropper {
   zoomable?: CropperZoomable = true;
 
   /**
-   * Defines zoom ratio when zooming the image by wheeling mouse.
+   * Specifies zoom ratio when zooming the image by wheeling the mouse.
    */
   @Property()
   zoomRatio?: number = 0.1;
 
   /**
-   * This event fires when the target image has been loaded and the cropper instance is ready for operating.
+   * Fires when the target image has been loaded and the cropper is ready for operating.
    */
   @Event()
   plusReady!: EventEmitter<void>;
 
   /**
-   * This event fires when the canvas or the viewport changed.
+   * Fires when the canvas or the viewport is changed.
    */
   @Event()
   plusCrop!: EventEmitter<void>;
 
   /**
-   * This event fires when a cropper instance starts to zoom in or zoom out its canvas.
+   * Fires when the cropper starts to `zoom in` or `zoom out` its canvas.
    */
   @Event({ cancelable: true })
   plusZoom!: EventEmitter<CropperZoomData>;
@@ -175,11 +173,6 @@ export class Cropper {
       if (!isNaN(valueA + valueB)) return valueA / valueB;
 
       return NaN;
-    })();
-
-    const responsive = (() => {
-      if (this.responsive === 'reset') return this.responsive;
-      return this.responsive;
     })();
 
     const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 }[this.view] as any))();
@@ -220,8 +213,8 @@ export class Cropper {
       minContainerHeight: 0,
       modal: this.backdrop,
       movable: true,
-      responsive: !!responsive,
-      restore: responsive === 'reset',
+      responsive: !!this.responsive,
+      restore: this.responsive === 'reset',
       rotatable: true,
       scalable: true,
       toggleDragModeOnDblclick: false,
@@ -237,11 +230,7 @@ export class Cropper {
   }
 
   /**
-   * External Methods
-   */
-
-  /**
-   * Flip horizontal.
+   * Flips horizontally.
    */
   @Method()
   flipX(): void {
@@ -249,7 +238,7 @@ export class Cropper {
   }
 
   /**
-   * Flip vertical.
+   * Flips vertically.
    */
   @Method()
   flipY(): void {
@@ -257,7 +246,7 @@ export class Cropper {
   }
 
   /**
-   * Move the canvas with relative offsets.
+   * Moves the canvas with relative offsets.
    * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
    * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
    */
@@ -267,7 +256,7 @@ export class Cropper {
   }
 
   /**
-   * Move the canvas to an absolute point.
+   * Moves the canvas to an absolute point.
    * @param x - The `left` value of the canvas. Use `null` to ignore this.
    * @param y - The `top` value of the canvas. Use `null` to ignore this.
    */
@@ -277,7 +266,7 @@ export class Cropper {
   }
 
   /**
-   * Reset the image and viewport to their initial states.
+   * Resets the image and viewport to their initial states.
    */
   @Method()
   reset(): void {
@@ -285,7 +274,7 @@ export class Cropper {
   }
 
   /**
-   * Rotate the image with a relative degree.
+   * Rotates the image with a relative degree.
    */
   @Method()
   rotate(degree: number): void {
@@ -293,7 +282,7 @@ export class Cropper {
   }
 
   /**
-   * Rotate the image to an absolute degree.
+   * Rotates the image to an absolute degree.
    */
   @Method()
   rotateTo(degree: number): void {
@@ -337,7 +326,7 @@ export class Cropper {
   }
 
   /**
-   * Zoom the canvas with a relative ratio.
+   * Zooms the canvas with a relative ratio.
    */
   @Method()
   zoom(ratio: number): void {
@@ -345,16 +334,12 @@ export class Cropper {
   }
 
   /**
-   * Zoom the canvas to an absolute ratio.
+   * Zooms the canvas to an absolute ratio.
    */
   @Method()
   zoomTo(ratio: number): void {
     this.instance?.zoomTo(ratio);
   }
-
-  /**
-   * Internal Methods
-   */
 
   bind() {
     this.instance = new CropperCore(this.$image, this.options);
@@ -422,10 +407,6 @@ export class Cropper {
     this.lock = false;
   }
 
-  /**
-   * Watchers
-   */
-
   @Watch([
     'area',
     'aspectRatio',
@@ -490,10 +471,6 @@ export class Cropper {
     }
   }
 
-  /**
-   * Events handler
-   */
-
   @Bind()
   onCrop() {
     this.updateValue();
@@ -521,16 +498,12 @@ export class Cropper {
       ratio: event.detail.ratio
     };
 
-    const result = this.plusZoom(detail);
+    const { defaultPrevented } = this.plusZoom(detail);
 
-    if (!result.defaultPrevented) return this.onCrop();
+    if (!defaultPrevented) return this.onCrop();
 
     event.preventDefault();
   }
-
-  /**
-   * Lifecycles
-   */
 
   loadedCallback() {
     this.bind();
@@ -543,8 +516,13 @@ export class Cropper {
   render() {
     return (
       <div className={this.classes}>
-        <img className="image" alt="cropper" ref={($element) => this.$image = $element} src={this.src} />
+        <img 
+          className="image" 
+          alt="cropper" 
+          ref={($element) => this.$image = $element} 
+          src={this.src} 
+        />
       </div>
-    );
+    )
   }
 }
