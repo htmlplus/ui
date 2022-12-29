@@ -59,7 +59,7 @@ export class Cropper {
   indicator?: boolean;
 
   /**
-   * Specifies the cropping mode of the cropper.
+   * Specifies the mode.
    */
   @Property()
   mode?: CropperMode = 'move';
@@ -77,7 +77,7 @@ export class Cropper {
   resizerShape?: CropperResizerShape = 'square';
 
   /**
-   * Re-renders the cropper when resizing the window.
+   * Re-renders when resizing the window.
    */
   @Property()
   responsive?: CropperResponsive = 'reset';
@@ -95,13 +95,13 @@ export class Cropper {
   src?: string;
 
   /**
-   * Gets/Sets the cropper data.
+   * Gets/Sets data.
    */
   @Property()
   value?: CropperValue;
 
   /**
-   * Defines the view mode of the cropper.
+   * Specifies the view.
    */
   @Property()
   view?: CropperView = 'cover';
@@ -119,19 +119,37 @@ export class Cropper {
   zoomRatio?: number = 0.1;
 
   /**
-   * Fires when the target image has been loaded and the cropper is ready for operating.
+   * Fires when the image has been loaded and the component is ready for operation.
    */
   @Event()
   plusReady!: EventEmitter<void>;
 
   /**
-   * Fires when the canvas or the viewport is changed.
+   * Fires when the `image` or the `viewport` is changed.
    */
   @Event()
   plusCrop!: EventEmitter<void>;
 
   /**
-   * Fires when the cropper starts to `zoom in` or `zoom out` its canvas.
+   * Fires when the `image` or the `viewport` changes are finished.
+   */
+  @Event()
+  plusCropEnd!: EventEmitter<void>;
+
+  /**
+   * Fires when the `image` or the `viewport` is changing.
+   */
+  @Event()
+  plusCropMove!: EventEmitter<void>;
+
+  /**
+   * Fires when the `image` or the `viewport` starts to change.
+   */
+  @Event()
+  plusCropStart!: EventEmitter<void>;
+
+  /**
+   * Fires when the component starts to `zoom in` or `zoom out`.
    */
   @Event({ cancelable: true })
   plusZoom!: EventEmitter<CropperZoomData>;
@@ -361,22 +379,39 @@ export class Cropper {
 
   @Bind()
   onCrop(e) {
-    console.log('onCrop', e);
+    const container = this.instance.getContainerData();
+    const canvas = this.instance.getCanvasData();
+    const data = this.instance.getData();
+    const viewport = this.instance.getCropBoxData();
+    const toPercent = (a, b) => parseFloat(((a / b) * 100).toFixed(2));
+    const value = {
+      // TODO rotate: data.rotate,
+      top: toPercent(viewport.top, container.height),
+      right: toPercent(container.width - viewport.left - viewport.width, container.width),
+      bottom: toPercent(container.height - viewport.top - viewport.height, container.height),
+      left: toPercent(viewport.left, container.width),
+      width: toPercent(canvas.width, container.width),
+      height: toPercent(canvas.height, container.height),
+      x: toPercent(canvas.left, container.width),
+      y: toPercent(canvas.top, container.height)
+    };
+
+    console.log('onCrop', e.detail, { container, canvas, data, viewport, value });
   }
 
   @Bind()
-  onCropEnd(e) {
-    console.log('onCropEnd', e);
+  onCropEnd() {
+    this.plusCropEnd();
   }
 
   @Bind()
-  onCropMove(e) {
-    console.log('onCropMove', e);
+  onCropMove() {
+    this.plusCropMove();
   }
 
   @Bind()
-  onCropStart(e) {
-    console.log('onCropStart', e);
+  onCropStart() {
+    this.plusCropStart();
   }
 
   @Bind()
