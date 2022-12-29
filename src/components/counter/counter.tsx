@@ -44,6 +44,12 @@ export class Counter {
   from?: number = 0;
 
   /**
+   * Specifies numeral glyph substitution.
+   */
+  @Property()
+  numerals?: string[] = [];
+
+  /**
    * Starts/Stops the transition.
    */
   @Property({ reflect: true })
@@ -72,8 +78,6 @@ export class Counter {
 
   @State()
   state?: 'idle' | 'completed' | 'paused' | 'running' | 'stopped' = 'idle';
-
-  numerals?: string[];
 
   remaining?: number;
 
