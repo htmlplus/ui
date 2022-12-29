@@ -3,3 +3,5 @@
 - custom events like https://mui.com/material-ui/react-click-away-listener/
 - detect Iframe
 - link the mdn url for properties documentation
+- https://github.com/arkon/ng-click-outside
+- https://github.com/vue-bulma/click-outside

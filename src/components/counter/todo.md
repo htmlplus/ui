@@ -1,3 +1,4 @@
 - examples
 - easing
 - add `function` type for easing
+- https://inorganik.github.io/countUp.js
