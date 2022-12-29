@@ -140,8 +140,6 @@ export class Cropper {
 
   instance?: CropperCore;
 
-  lock: boolean = false;
-
   get classes() {
     return Helpers.classes(
       [
@@ -158,6 +156,8 @@ export class Cropper {
 
   get options() {
     const aspectRatio = (() => {
+      if (this.shape != 'rectangle') return 1;
+
       if (typeof this.aspectRatio == 'number') return this.aspectRatio;
 
       let [valueA, valueB] = `${this.aspectRatio}`
@@ -182,7 +182,7 @@ export class Cropper {
     })();
 
     return {
-      aspectRatio: this.shape == 'rectangle' ? aspectRatio : 1,
+      aspectRatio,
       autoCrop: true,
       autoCropArea: this.area,
       background: this.background,
@@ -215,10 +215,10 @@ export class Cropper {
       zoomable: !!zoomable,
       zoomOnTouch: zoomable == true || zoomable == 'touch',
       zoomOnWheel: zoomable == true || zoomable == 'wheel',
-      crop: null,
-      cropend: this.onCrop,
-      cropmove: null,
-      cropstart: null,
+      crop: this.onCrop,
+      cropend: this.onCropEnd,
+      cropmove: this.onCropMove,
+      cropstart: this.onCropStart,
       ready: this.onReady,
       zoom: this.onZoom,
     };
@@ -316,68 +316,8 @@ export class Cropper {
     this.instance.destroy();
   }
 
-  rebind() {
-    this.unbind();
-    this.bind();
-  }
-
-  updateValue(value?) {
-    if (!this.instance) return;
-
-    const { height, width } = this.instance.getContainerData();
-
-    if (value) {
-      const toPixel = (a, b) => (a * b) / 100;
-
-      // TODO this.instance.rotateTo(value.rotate);
-
-      this.instance
-        .setCropBoxData({
-          top: toPixel(value.top, height),
-          left: toPixel(value.left, width),
-          width: toPixel(100 - value.right - value.left, width),
-          height: toPixel(100 - value.top - value.bottom, height)
-        })
-        .setCanvasData({
-          top: toPixel(value.y, height),
-          left: toPixel(value.x, width),
-          width: toPixel(value.width, width),
-          height: toPixel(value.height, height)
-        });
-
-      return;
-    }
-
-    const canvas = this.instance.getCanvasData();
-
-    // TODO
-    // const data = this.instance.getData();
-
-    const viewport = this.instance.getCropBoxData();
-
-    const toPercent = (a, b) => parseFloat(((a / b) * 100).toFixed(2));
-
-    this.lock = true;
-
-    this.value = {
-      // TODO rotate: data.rotate,
-      top: toPercent(viewport.top, height),
-      right: toPercent(width - viewport.left - viewport.width, width),
-      bottom: toPercent(height - viewport.top - viewport.height, height),
-      left: toPercent(viewport.left, width),
-      width: toPercent(canvas.width, width),
-      height: toPercent(canvas.height, height),
-      x: toPercent(canvas.left, width),
-      y: toPercent(canvas.top, height)
-    };
-
-    this.lock = false;
-  }
-
   @Watch()
   watcher(next, prev, name) {
-    if (this.lock) return;
-
     switch (name) {
       case 'aspectRatio':
       case 'shape':
@@ -388,40 +328,59 @@ export class Cropper {
         next ? this.instance.disable() : this.instance.enable();
         break;
 
+      case 'mode':
+        // TODO: Doesn't work.
+        // this.instance.setDragMode(next);
+        // TODO: Remove this after fixing the above issue.
+        this.unbind();
+        this.bind();
+        break;
+
       case 'src':
         this.instance.replace(this.src, false /* TODO */);
         break;
 
       case 'value':
-        this.updateValue(next);
+        // TODO
         break;
-
+        
       case 'area':
       case 'backdrop':
       case 'background':
       case 'guides':
       case 'indicator':
-      case 'mode':
       case 'responsive':
       case 'view':
       case 'zoomable':
       case 'zoomRatio':
-        this.rebind();
+        this.unbind();
+        this.bind();
         break;
     }
   }
 
   @Bind()
-  onCrop() {
-    // this.updateValue();
-    this.plusCrop();
+  onCrop(e) {
+    console.log('onCrop', e);
+  }
+
+  @Bind()
+  onCropEnd(e) {
+    console.log('onCropEnd', e);
+  }
+
+  @Bind()
+  onCropMove(e) {
+    console.log('onCropMove', e);
+  }
+
+  @Bind()
+  onCropStart(e) {
+    console.log('onCropStart', e);
   }
 
   @Bind()
   onReady() {
-    // TODO
-    this.value && this.updateValue(this.value);
-
     if (this.disabled) {
       this.instance.disable();
     }
@@ -442,7 +401,7 @@ export class Cropper {
 
     const { defaultPrevented } = this.plusZoom(detail);
 
-    if (!defaultPrevented) return this.onCrop();
+    if (!defaultPrevented) return;
 
     event.preventDefault();
   }

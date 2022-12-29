@@ -1,24 +1,25 @@
 export type CropperAspectRatio = number | string;
 
 /**
- * @value crop - Creates a new viewport and allows you to move and resize it.
- * @value move - moves the canvas and viewport.
+ * @value crop - Creates a new viewport and allows to move and resize it.
+ * @value move - Moves the canvas and viewport.
+ * @value none - Do nothing.
  */
-export type CropperMode = 'crop' | 'move';
+export type CropperMode = 'crop' | 'move' | 'none';
 
 /**
- * @value main - Enables to resize the viewport by dragging on the Sides.
- * @value edge - Enables to resize the viewport by dragging on the vertices.
  * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
+ * @value edge - Enables to resize the viewport by dragging on the vertices.
+ * @value main - Enables to resize the viewport by dragging on the Sides.
  */
-export type CropperResizer = 'main' | 'edge' | 'both'; // TODO: full, auto
+export type CropperResizer = 'both' | 'edge' | 'main'; // TODO: full, auto
 
 /**
- * @value square - TODO.
  * @value circle - TODO.
  * @value line   - TODO.
+ * @value square - TODO.
  */
-export type CropperResizerShape = 'square' | 'circle' | 'line';
+export type CropperResizerShape = 'circle' | 'line' | 'square';
 
 /**
  * @value false - TODO.
@@ -28,11 +29,11 @@ export type CropperResizerShape = 'square' | 'circle' | 'line';
 export type CropperResponsive = boolean | 'reset';
 
 /**
+ * @value circle    - TODO.
  * @value rectangle - TODO.
  * @value square    - TODO.
- * @value circle    - TODO.
  */
-export type CropperShape = 'rectangle' | 'square' | 'circle';
+export type CropperShape = 'circle' | 'rectangle' | 'square';
 
 /**
  * @value contain - restrict the minimum canvas size to fit within the container. If the
@@ -44,7 +45,7 @@ export type CropperShape = 'rectangle' | 'square' | 'circle';
  * @value fit     - restrict the viewport to not exceed the size of the canvas.
  * @value none    - no restrictions.
  */
-export type CropperView = 'none' | 'fit' | 'contain' | 'cover';
+export type CropperView = 'contain' | 'cover' | 'fit' | 'none';
 
 /**
  * @value false - Unable to zoom the image.
