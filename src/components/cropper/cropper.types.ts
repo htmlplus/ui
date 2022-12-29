@@ -67,6 +67,6 @@ export interface CropperValue {
 
 export interface CropperZoomData {
   difference?: number;
-  direction?: 'in' | 'out';
+  direction?: 'IN' | 'OUT';
   ratio?: number;
 }

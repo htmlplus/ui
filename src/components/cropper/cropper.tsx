@@ -101,11 +101,7 @@ export class Cropper {
   value?: CropperValue;
 
   /**
-   * Define the view mode of the cropper. If you set viewMode to `none`, the viewport can extend 
-   * outside the canvas, while a value of `fit`, `contain` or `cover` will restrict the viewport 
-   * to the size of the canvas. A viewMode of `contain` or `cover` will additionally restrict the 
-   * canvas to the container. Note that if the proportions of the canvas and the container are 
-   * the same, there is no difference between `contain` and `cover`.
+   * Defines the view mode of the cropper.
    */
   @Property()
   view?: CropperView = 'cover';
@@ -162,7 +158,7 @@ export class Cropper {
 
   get options() {
     const aspectRatio = (() => {
-      if (typeof this.aspectRatio === 'number') return this.aspectRatio;
+      if (typeof this.aspectRatio == 'number') return this.aspectRatio;
 
       let [valueA, valueB] = `${this.aspectRatio}`
         .split('/')
@@ -175,7 +171,9 @@ export class Cropper {
       return NaN;
     })();
 
-    const view = (() => ({ none: 0, fit: 1, contain: 2, cover: 3 }[this.view] as any))();
+    const view = (() => {
+      return ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any
+    })();
 
     const zoomable = (() => {
       const value = `${this.zoomable}`;
@@ -184,48 +182,45 @@ export class Cropper {
     })();
 
     return {
-      /**
-       * TODO
-       * autoCrop        : true,
-       * checkCrossOrigin: true,
-       * checkOrientation: true,
-       * minCanvasWidth  : this.canvasMinWidth,
-       * minCanvasHeight : this.canvasMinHeight,
-       * minCropBoxWidth : this.viewportMinWidth,
-       * minCropBoxHeight: this.viewportMinHeight,
-       * preview         : HTMLElement | HTMLElement[] | NodeListOf<HTMLElement> | string,
-       * cropstart       : (e) => console.log('cropstart', e),
-       * cropmove        : (e) => console.log('cropmove', e),
-       * cropend         : (e) => console.log('cropend', e),
-       */
+      aspectRatio: this.shape == 'rectangle' ? aspectRatio : 1,
+      autoCrop: true,
       autoCropArea: this.area,
-      aspectRatio: this.shape === 'rectangle' ? aspectRatio : 1,
       background: this.background,
       center: this.indicator,
-      cropBoxMovable: this.mode === 'crop',
-      cropBoxResizable: this.mode === 'crop',
+      checkCrossOrigin: true,
+      checkOrientation: true,
+      cropBoxMovable: this.mode == 'crop',
+      cropBoxResizable: this.mode == 'crop',
       data: this.value,
       dragMode: this.mode,
       guides: this.guides,
       highlight: false,
       initialAspectRatio: NaN,
-      minContainerWidth: 0,
+      minCanvasHeight: 0,
+      minCanvasWidth: 0,
       minContainerHeight: 0,
+      minContainerWidth: 0,
+      minCropBoxHeight: 0,
+      minCropBoxWidth: 0,
       modal: this.backdrop,
       movable: true,
+      preview: '',
       responsive: !!this.responsive,
-      restore: this.responsive === 'reset',
+      restore: this.responsive == 'reset',
       rotatable: true,
       scalable: true,
       toggleDragModeOnDblclick: false,
       viewMode: view,
       wheelZoomRatio: this.zoomRatio,
       zoomable: !!zoomable,
-      zoomOnTouch: zoomable === true || zoomable === 'touch',
-      zoomOnWheel: zoomable === true || zoomable === 'wheel',
+      zoomOnTouch: zoomable == true || zoomable == 'touch',
+      zoomOnWheel: zoomable == true || zoomable == 'wheel',
+      crop: null,
       cropend: this.onCrop,
+      cropmove: null,
+      cropstart: null,
       ready: this.onReady,
-      zoom: this.onZoom
+      zoom: this.onZoom,
     };
   }
 
@@ -234,7 +229,7 @@ export class Cropper {
    */
   @Method()
   flipX(): void {
-    this.instance?.scale(-1, 1);
+    this.instance.scale(-1, 1);
   }
 
   /**
@@ -242,7 +237,7 @@ export class Cropper {
    */
   @Method()
   flipY(): void {
-    this.instance?.scale(1, -1);
+    this.instance.scale(1, -1);
   }
 
   /**
@@ -252,7 +247,7 @@ export class Cropper {
    */
   @Method()
   move(offsetX?: number, offsetY?: number): void {
-    this.instance?.move(offsetX ?? null, offsetY ?? null);
+    this.instance.move(offsetX ?? null, offsetY ?? null);
   }
 
   /**
@@ -262,7 +257,7 @@ export class Cropper {
    */
   @Method()
   moveTo(x?: number, y?: number): void {
-    this.instance?.moveTo(x ?? null, y ?? null);
+    this.instance.moveTo(x ?? null, y ?? null);
   }
 
   /**
@@ -270,7 +265,7 @@ export class Cropper {
    */
   @Method()
   reset(): void {
-    this.instance?.reset();
+    this.instance.reset();
   }
 
   /**
@@ -278,7 +273,7 @@ export class Cropper {
    */
   @Method()
   rotate(degree: number): void {
-    this.instance?.rotate(degree);
+    this.instance.rotate(degree);
   }
 
   /**
@@ -286,17 +281,7 @@ export class Cropper {
    */
   @Method()
   rotateTo(degree: number): void {
-    this.instance?.rotateTo(degree);
-  }
-
-  /**
-   * Gets `blob` value from the cropped image.
-   */
-  @Method()
-  toBlob(): Promise<Blob> {
-    return new Promise((resolve) => {
-      this.instance.getCroppedCanvas().toBlob((blob) => resolve(blob));
-    });
+    this.instance.rotateTo(degree);
   }
 
   /**
@@ -304,25 +289,7 @@ export class Cropper {
    */
   @Method()
   toCanvas(): HTMLCanvasElement {
-    return this.instance.getCroppedCanvas();
-  }
-
-  /**
-   * Gets `base64` from the cropped image.
-   */
-  @Method()
-  toBase64(): string {
-    return this.instance.getCroppedCanvas().toDataURL();
-  }
-
-  /**
-   * Gets `blob url` from the cropped image.
-   */
-  @Method()
-  toURL(): Promise<string> {
-    return new Promise((resolve) => {
-      this.instance.getCroppedCanvas().toBlob((blob) => resolve(URL.createObjectURL(blob)));
-    });
+    return this.instance.getCroppedCanvas(/* TODO */);
   }
 
   /**
@@ -330,7 +297,7 @@ export class Cropper {
    */
   @Method()
   zoom(ratio: number): void {
-    this.instance?.zoom(ratio);
+    this.instance.zoom(ratio);
   }
 
   /**
@@ -338,7 +305,7 @@ export class Cropper {
    */
   @Method()
   zoomTo(ratio: number): void {
-    this.instance?.zoomTo(ratio);
+    this.instance.zoomTo(ratio/*, TODO */);
   }
 
   bind() {
@@ -346,7 +313,7 @@ export class Cropper {
   }
 
   unbind() {
-    this.instance?.destroy();
+    this.instance.destroy();
   }
 
   rebind() {
@@ -357,7 +324,7 @@ export class Cropper {
   updateValue(value?) {
     if (!this.instance) return;
 
-    const { height, width } = this.instance?.getContainerData();
+    const { height, width } = this.instance.getContainerData();
 
     if (value) {
       const toPixel = (a, b) => (a * b) / 100;
@@ -407,53 +374,26 @@ export class Cropper {
     this.lock = false;
   }
 
-  @Watch([
-    'area',
-    'aspectRatio',
-    'backdrop',
-    'background',
-    'disabled',
-    'guides',
-    'indicator',
-    'mode',
-    'resizer',
-    'resizerShape',
-    'responsive',
-    'shape',
-    'src',
-    'value',
-    'view',
-    'zoomable',
-    'zoomRatio'
-  ])
+  @Watch()
   watcher(next, prev, name) {
     if (this.lock) return;
 
     switch (name) {
       case 'aspectRatio':
-        if (this.shape !== 'rectangle') break;
-        this.instance?.setAspectRatio(next);
+      case 'shape':
+        this.instance.setAspectRatio(this.options.aspectRatio);
         break;
 
       case 'disabled':
-        next ? this.instance?.disable() : this.instance?.enable();
+        next ? this.instance.disable() : this.instance.enable();
         break;
 
       case 'src':
-        this.instance?.replace(this.src, false);
+        this.instance.replace(this.src, false /* TODO */);
         break;
 
       case 'value':
         this.updateValue(next);
-        break;
-
-      case 'resizer':
-      case 'resizerShape':
-        break;
-
-      case 'shape':
-        const aspectRatio = this.shape === 'rectangle' ? this.options.aspectRatio : 1;
-        this.instance?.setAspectRatio(aspectRatio);
         break;
 
       case 'area':
@@ -473,7 +413,7 @@ export class Cropper {
 
   @Bind()
   onCrop() {
-    this.updateValue();
+    // this.updateValue();
     this.plusCrop();
   }
 
@@ -482,7 +422,9 @@ export class Cropper {
     // TODO
     this.value && this.updateValue(this.value);
 
-    this.disabled && this.instance?.disable();
+    if (this.disabled) {
+      this.instance.disable();
+    }
     this.plusReady();
   }
 
@@ -490,7 +432,7 @@ export class Cropper {
   onZoom(event) {
     const difference = event.detail.ratio - event.detail.oldRatio;
 
-    const direction = difference > 0 ? 'in' : 'out';
+    const direction = difference > 0 ? 'IN' : 'OUT';
 
     const detail: CropperZoomData = {
       difference,

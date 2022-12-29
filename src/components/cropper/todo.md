@@ -1,0 +1,18 @@
+- update docs for the `view` property.
+- add the rest properties in options
+- add the rest methods
+  - clear
+  - crop
+  - getCanvasData
+  - getContainerData
+  - getCropBoxData
+  - getCroppedCanvas
+  - getData
+  - getImageData
+  - scale
+  - scaleX
+  - scaleY
+  - setCanvasData
+  - setCropBoxData
+  - setData
+  - setDragMode
