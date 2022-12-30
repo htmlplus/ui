@@ -341,24 +341,20 @@ export class Cropper {
 
     const from = (a, b) => a * b / 100;
 
-    const to = (a, b) => parseFloat((a / b * 100).toFixed(2));
+    const to = (a, b) => a / b * 100;
   
     const image = this.instance.getCanvasData();
   
     const viewport = this.instance.getCropBoxData();
   
     if (value) {
-      const height = viewport.height * 100 / value.height;
-      const width = viewport.width * 100 / value.width;
+      this.instance.rotateTo(value.rotate);
 
-      const valueTopCenter = height * (value.top + value.height / 2) / 100;
-      const valueLeftCenter = width * (value.left + value.width / 2) / 100;
+      const height = to(viewport.height, value.height);
+      const width  = to(viewport.width , value.width );
 
-      const viewportTopCenter = viewport.top + viewport.height / 2;
-      const viewportLeftCenter = viewport.left + viewport.width / 2;
-
-      const top = viewportTopCenter - valueTopCenter;
-      const left = viewportLeftCenter - valueLeftCenter;
+      const top  = (viewport.top  + viewport.height / 2) - from(height, value.top  + value.height / 2);
+      const left = (viewport.left + viewport.width  / 2) - from(width , value.left + value.width  / 2);
 
       this.instance.setCanvasData({ top, left, width, height });
 
@@ -368,12 +364,14 @@ export class Cropper {
     this.locked = true;
     
     this.value = {
+      rotate: this.instance.getData().rotate,
       top: to(viewport.top - image.top, image.height),
       left: to(viewport.left - image.left, image.width),
-      width: to(viewport.width, image.width),
       height: to(viewport.height, image.height),
+      width: to(viewport.width, image.width),
     };
   
+    // TODO
     requestAnimationFrame(() => {
       this.locked = false;
     });

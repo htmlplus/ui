@@ -56,14 +56,11 @@ export type CropperView = 'contain' | 'cover' | 'fit' | 'none';
 export type CropperZoomable = boolean | 'touch' | 'wheel';
 
 export interface CropperValue {
+  rotate?: number;
   top?: number;
-  right?: number;
-  bottom?: number;
   left?: number;
-  width?: number;
   height?: number;
-  x?: number;
-  y?: number;
+  width?: number;
 }
 
 export interface CropperZoomData {

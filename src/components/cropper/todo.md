@@ -3,19 +3,15 @@
 - add the rest methods
   - clear
   - crop
-  - getCanvasData
+  - get/set Data
+  - get/set CanvasData
+  - get/set CropBoxData
   - getContainerData
-  - getCropBoxData
-  - getCroppedCanvas
-  - getData
   - getImageData
+  - getCroppedCanvas
   - scale
   - scaleX
   - scaleY
-  - setCanvasData
-  - setCropBoxData
-  - setData
-  - setDragMode
 
 ```js
 /**
@@ -107,3 +103,18 @@ updateValue(value?) {
   this.lock = false;
 }
 ```
+
+    this.locked = true;
+    const container = this.instance.getContainerData();
+    const canvasData = this.instance.getCanvasData();
+    const data = this.instance.getData();
+    const cropBoxData = this.instance.getCropBoxData();
+    const imageData = this.instance.getImageData();
+    this.value = {
+      canvasData,
+      data,
+      cropBoxData,
+    } as any;
+    this.locked = false;
+
+    console.log('onCrop', e.detail, { container, canvasData, data, cropBoxData, imageData });
