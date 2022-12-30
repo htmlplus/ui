@@ -158,6 +158,8 @@ export class Cropper {
 
   instance?: CropperCore;
 
+  locked?: boolean;
+
   get classes() {
     return Helpers.classes(
       [
@@ -333,9 +335,54 @@ export class Cropper {
   unbind() {
     this.instance.destroy();
   }
+  
+  sync(value?) {
+    if (!this.instance) return;
+
+    const from = (a, b) => a * b / 100;
+
+    const to = (a, b) => parseFloat((a / b * 100).toFixed(2));
+  
+    const image = this.instance.getCanvasData();
+  
+    const viewport = this.instance.getCropBoxData();
+  
+    if (value) {
+      const height = viewport.height * 100 / value.height;
+      const width = viewport.width * 100 / value.width;
+
+      const valueTopCenter = height * (value.top + value.height / 2) / 100;
+      const valueLeftCenter = width * (value.left + value.width / 2) / 100;
+
+      const viewportTopCenter = viewport.top + viewport.height / 2;
+      const viewportLeftCenter = viewport.left + viewport.width / 2;
+
+      const top = viewportTopCenter - valueTopCenter;
+      const left = viewportLeftCenter - valueLeftCenter;
+
+      this.instance.setCanvasData({ top, left, width, height });
+
+      return;
+    }
+  
+    this.locked = true;
+    
+    this.value = {
+      top: to(viewport.top - image.top, image.height),
+      left: to(viewport.left - image.left, image.width),
+      width: to(viewport.width, image.width),
+      height: to(viewport.height, image.height),
+    };
+  
+    requestAnimationFrame(() => {
+      this.locked = false;
+    });
+  }
 
   @Watch()
   watcher(next, prev, name) {
+    if (this.locked) return;
+
     switch (name) {
       case 'aspectRatio':
       case 'shape':
@@ -359,7 +406,7 @@ export class Cropper {
         break;
 
       case 'value':
-        // TODO
+        this.sync(next);
         break;
         
       case 'area':
@@ -378,25 +425,8 @@ export class Cropper {
   }
 
   @Bind()
-  onCrop(e) {
-    const container = this.instance.getContainerData();
-    const canvas = this.instance.getCanvasData();
-    const data = this.instance.getData();
-    const viewport = this.instance.getCropBoxData();
-    const toPercent = (a, b) => parseFloat(((a / b) * 100).toFixed(2));
-    const value = {
-      // TODO rotate: data.rotate,
-      top: toPercent(viewport.top, container.height),
-      right: toPercent(container.width - viewport.left - viewport.width, container.width),
-      bottom: toPercent(container.height - viewport.top - viewport.height, container.height),
-      left: toPercent(viewport.left, container.width),
-      width: toPercent(canvas.width, container.width),
-      height: toPercent(canvas.height, container.height),
-      x: toPercent(canvas.left, container.width),
-      y: toPercent(canvas.top, container.height)
-    };
-
-    console.log('onCrop', e.detail, { container, canvas, data, viewport, value });
+  onCrop() { 
+    this.sync();
   }
 
   @Bind()
