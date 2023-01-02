@@ -1,5 +1,6 @@
 - update docs for the `view` property.
 - add the rest properties in options
+- add ready state
 - add the rest methods
   - clear
   - crop

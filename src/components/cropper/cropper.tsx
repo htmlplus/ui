@@ -333,7 +333,8 @@ export class Cropper {
   }
 
   unbind() {
-    this.instance.destroy();
+    // TODO: has a problem in documentation
+    this.instance?.destroy();
   }
   
   sync(value?) {
