@@ -1,7 +1,13 @@
 $divider-color: grey;
-$divider-types: (dashed, solid, dotted);
+$divider-gutter: 0.5rem;
+$divider-opacity: 0.25;
+$divider-type: unset;
+$divider-types: (dashed, dotted, double, groove, inset, outset, ridge, solid);
+$divider-width: unset;
 $divider-widths: (
-  thin: 1px,
-  medium: 2px,
-  thick: 3px
+  xs: 1px,
+  sm: 2px,
+  md: 3px,
+  lg: 4px,
+  xl: 5px
 );

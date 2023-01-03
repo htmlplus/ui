@@ -1,45 +1,42 @@
 import { Attributes, Element, Property } from '@htmlplus/element';
-import * as Helpers from '@app/helpers';
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
 @Element()
 export class Divider {
-
 	/**
-	 * TODO
+	 * Specifies the location of the default slot.
 	 */
 	@Property({ reflect: true })
 	placement?: DividerPlacement = 'center';
 
 	/**
-	 * Specifies different divider styles.
+	 * Specifies the width of the border.
+	 */
+	@Property({ reflect: true })
+	width?: DividerWidth = 'md'; 
+
+	/**
+	 * Specifies the style of the border.
 	 */
 	@Property({ reflect: true })
 	type?: DividerType = 'solid';
 
 	/**
-	 * TODO
+	 * TODO 
 	 */
 	@Property({ reflect: true })
 	variant?: DividerVariant = 'full';
 
 	/**
-	 * You can use vertical property for vertical division.
+	 *  Draws the divider in a vertical orientation.
 	 */
 	@Property({ reflect: true })
 	vertical?: boolean;
-
-	/**
-	 * Determines the width of the divider.
-	 */
-	@Property({ reflect: true })
-	width?: DividerWidth = 'thin'; 
 
 	@Attributes()
 	get attributes() {
 		return {
 			'aria-orientation': this.vertical ? 'vertical' : 'horizontal',
-			'empty': !Helpers.host(this).innerHTML?.trim(), // TODO
 			'role': 'separator',
 		}
 	} 

@@ -1,4 +1,4 @@
 export type DividerPlacement = 'start' | 'center' | 'end';
-export type DividerType = 'solid' | 'dashed' | 'dotted';
+export type DividerType = 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid';
 export type DividerVariant = 'middle' | 'inset' | 'full';
-export type DividerWidth = 'medium' | 'thick' | 'thin';
+export type DividerWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
