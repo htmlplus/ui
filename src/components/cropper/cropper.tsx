@@ -2,18 +2,23 @@ import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@ht
 import * as Helpers from '@app/helpers';
 import CropperCore from 'cropperjs';
 import {
+  CropperCropEvent,
   CropperAspectRatio,
   CropperValue,
   CropperMode,
+  CropperPointerEvent,
   CropperResizer,
   CropperResizerShape,
   CropperResponsive,
   CropperShape,
   CropperView,
   CropperZoomable,
-  CropperZoomData
+  CropperZoomEvent,
 } from './cropper.types';
 
+/**
+ * @stable
+ */
 @Element()
 export class Cropper {
   /**
@@ -119,40 +124,40 @@ export class Cropper {
   zoomRatio?: number = 0.1;
 
   /**
+   * Fires when the `image` or the `viewport` is changed.
+   */
+  @Event()
+  plusCrop!: EventEmitter<CropperCropEvent>;
+
+  /**
+   * Fires when the `image` or the `viewport` changes are finished.
+   */
+  @Event()
+  plusCropEnd!: EventEmitter<CropperPointerEvent>;
+
+  /**
+   * Fires when the `image` or the `viewport` is changing.
+   */
+  @Event()
+  plusCropMove!: EventEmitter<CropperPointerEvent>;
+
+  /**
+   * Fires when the `image` or the `viewport` starts to change.
+   */
+  @Event()
+  plusCropStart!: EventEmitter<CropperPointerEvent>;
+
+  /**
    * Fires when the image has been loaded and the component is ready for operation.
    */
   @Event()
   plusReady!: EventEmitter<void>;
 
   /**
-   * Fires when the `image` or the `viewport` is changed.
-   */
-  @Event()
-  plusCrop!: EventEmitter<void>;
-
-  /**
-   * Fires when the `image` or the `viewport` changes are finished.
-   */
-  @Event()
-  plusCropEnd!: EventEmitter<void>;
-
-  /**
-   * Fires when the `image` or the `viewport` is changing.
-   */
-  @Event()
-  plusCropMove!: EventEmitter<void>;
-
-  /**
-   * Fires when the `image` or the `viewport` starts to change.
-   */
-  @Event()
-  plusCropStart!: EventEmitter<void>;
-
-  /**
    * Fires when the component starts to `zoom in` or `zoom out`.
    */
   @Event({ cancelable: true })
-  plusZoom!: EventEmitter<CropperZoomData>;
+  plusZoom!: EventEmitter<CropperZoomEvent>;
 
   $image!: HTMLImageElement;
 
@@ -426,21 +431,31 @@ export class Cropper {
   @Bind()
   onCrop() { 
     this.sync();
+    this.plusCrop(this.value as any);
   }
 
   @Bind()
-  onCropEnd() {
-    this.plusCropEnd();
+  onCropEnd(event) {
+    this.plusCropEnd({
+      action: event.detail.action,
+      event: event.detail.originalEvent,
+    });
   }
 
   @Bind()
-  onCropMove() {
-    this.plusCropMove();
+  onCropMove(event) {
+    this.plusCropMove({
+      action: event.detail.action,
+      event: event.detail.originalEvent,
+    });
   }
 
   @Bind()
-  onCropStart() {
-    this.plusCropStart();
+  onCropStart(event) {
+    this.plusCropStart({
+      action: event.detail.action,
+      event: event.detail.originalEvent,
+    });
   }
 
   @Bind()
@@ -457,10 +472,11 @@ export class Cropper {
 
     const direction = difference > 0 ? 'IN' : 'OUT';
 
-    const detail: CropperZoomData = {
+    const detail: CropperZoomEvent = {
       difference,
       direction,
-      ratio: event.detail.ratio
+      event: event.detail.originalEvent,
+      ratio: event.detail.ratio,
     };
 
     const { defaultPrevented } = this.plusZoom(detail);

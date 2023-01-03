@@ -1,6 +1,7 @@
 - update docs for the `view` property.
 - add the rest properties in options
 - add ready state
+- captalize event.detail.action
 - add the rest methods
   - clear
   - crop
@@ -19,12 +20,3 @@
   - responsive
   - value
   - view
-
-```js
-onReady() {
-  this.value && this.updateValue(this.value);
-}
-onZoom(event) {
-  if (!defaultPrevented) return this.onCrop();
-}
-```
