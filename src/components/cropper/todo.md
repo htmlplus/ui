@@ -2,6 +2,8 @@
 - add the rest properties in options
 - add ready state
 - captalize event.detail.action
+- review/rename css variables
+- add css variable (height/width) for indicator
 - add the rest methods
   - clear
   - crop
