@@ -1,71 +1,79 @@
-
 ## Roadmap
-- [X] aspect ratio
-- [X] breadcrumb
-- [X] card
-- [X] cropper
-- [X] click outside
-- [X] dialog
-- [X] divider
-- [X] drawer
-- [X] grid
-- [X] intersection
-- [X] spinner
-- [X] sticky
-- [X] transition
-- [ ] toast
+
+- [ ] accordion
 - [ ] alert
-- [ ] bottom navigation
+- [x] animation
+- [x] aspect-ratio
+- [ ] autocomplete
+- [ ] avatar
+- [ ] badge
+- [ ] bottom-navigation
+- [ ] box
+- [ ] breadcrumb
+- [ ] browse
+- [ ] calendar
+- [ ] card
+- [ ] carosel
+- [x] center
+- [ ] checkbox
+- [ ] chips
+- [x] click-outside
+- [ ] color-picker
+- [ ] combobox
+- [x] counter
+- [x] cropper
+- [ ] data-table
+- [ ] date-picker
+- [ ] dialog
+- [x] divider
+- [ ] draggable
+- [ ] drawer
+- [ ] floating button
+- [ ] format-bytes
+- [ ] grid
+- [ ] icon
+- [ ] image
+- [ ] input
+- [x] intersection
+- [ ] key-value
+- [ ] label
+- [ ] layer
+- [ ] list/list-item
+- [ ] menu
+- [ ] overlay
+- [ ] pagination
+- [ ] parallax
+- [ ] portal
+- [ ] progress-bar
+- [ ] radio-group
+- [ ] rating
+- [ ] ribbon
+- [ ] ruler
+- [x] scroll-detector
+- [ ] scroll-indicator
+- [ ] scroll-spy
+- [ ] scrollbar
+- [ ] select
+- [x] signature
+- [ ] skeleton-loader
+- [ ] slider
+- [ ] sortable
+- [ ] sparklines
+- [x] spinner
+- [ ] splitter
+- [ ] stamp
+- [ ] stepper
+- [x] sticky
+- [ ] switch
+- [ ] table
+- [ ] tabs
+- [ ] textarea
+- [ ] time-picker
+- [ ] timeline
+- [ ] toast
 - [ ] toolbar
 - [ ] tooltip
-- [ ] menu
-- [ ] badge
-- [ ] tabs
-- [ ] carosel
-- [ ] browse/file
-- [ ] key-value
-- [ ] floating button
-- [ ] switch
-- [ ] scroll-spy
-- [ ] avatar
-- [ ] overlay
+- [ ] treeview
 - [ ] truncate
-- [ ] icon
-- [ ] button
-- [ ] input
-- [ ] select
-- [ ] textarea
-- [ ] radio-group
-- [ ] checkbox
-- [ ] label
-- [ ] list/list-item
-- [ ] pagination
-- [ ] date-picker
-- [ ] time-picker
-- [ ] chips
-- [ ] image
-- [ ] calendar
-- [ ] color-picker
-- [ ] uploader
-- [ ] slider
-- [ ] progress-bar
-- [ ] table/data-table
-- [ ] accordion/expansion-panel
-- [ ] rating
-- [ ] parallax
-- [ ] skeleton-loader
-- [ ] stepper
-- [ ] timeline
-- [ ] tree/treeview
-- [ ] scrollbar
-- [ ] layer
-- [ ] draggable
-- [ ] sortable
-- [ ] autocomplete
-- [ ] box
-- [ ] combobox
-- [ ] splitter
 - [ ] typography
-- [ ] sparklines
-- [ ] portal
-- [ ] ruler
+- [ ] uploader
