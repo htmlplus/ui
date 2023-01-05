@@ -8,7 +8,7 @@ import * as Helpers from '@app/helpers';
 @Element()
 export class Intersection {
   /**
-   * Disables the component's functionality.
+   * Disables the component functionality.
    */
   @Property()
   disabled?: boolean;

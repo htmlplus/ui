@@ -46,7 +46,7 @@ export class Cropper {
   background?: boolean;
 
   /**
-   * Disables the component's functionality.
+   * Disables the component functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;

@@ -15,7 +15,7 @@ export class ScrollIndicator {
   disabled?: boolean;
 
   /**
-   * Specifies the source of scroll.
+   * Specifies the source of the scroll.
    */
   @Property()
   source?: ScrollIndicatorSource = 'document';

@@ -1,6 +1,9 @@
 import { Attributes, Element, Property } from '@htmlplus/element';
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
+/**
+ * @stable
+ */
 @Element()
 export class Divider {
 	/**
@@ -22,7 +25,7 @@ export class Divider {
 	type?: DividerType = 'solid';
 
 	/**
-	 * TODO 
+	 * Specifies the amount of indentation. 
 	 */
 	@Property({ reflect: true })
 	variant?: DividerVariant = 'full';

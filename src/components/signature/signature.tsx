@@ -28,7 +28,7 @@ export class Signature {
   color?: string = 'black';
 
   /**
-   * Disables the component's functionality.
+   * Disables the component functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;

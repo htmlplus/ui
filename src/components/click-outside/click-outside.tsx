@@ -17,7 +17,7 @@ export class ClickOutside {
   capture?: boolean;
 
   /**
-   * Disables the component's functionality.
+   * Disables the component functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;
