@@ -12,6 +12,8 @@ import {
   webTypes
 } from '@htmlplus/element/compiler/index.js';
 
+import pack from './package.json' assert { type: 'json' };
+
 export default [
   read(),
   parse(),
@@ -74,19 +76,11 @@ export default [
     destination: 'dist/json/document.json'
   }),
   webTypes({
-    destination: 'dist/json/web-types.json',
-    packageName: '@htmlplus/core',
-    packageVersion: '0.5.1',
+    destination: `${pack.publishConfig.directory}/${pack['web-types']}`,
+    packageName: pack.name,
+    packageVersion: pack.version,
     reference(context) {
       return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
-    },
-    transformer(context, element) {
-      element.description ||= context?.readmeContent
-        ?.split('#')[1]
-        ?.split('\n')
-        ?.slice(1)
-        ?.filter((line) => !!line.trim())[0]
-        ?.trim();
     }
   })
 ];
