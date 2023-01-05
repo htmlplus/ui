@@ -12,7 +12,7 @@ import {
   webTypes
 } from '@htmlplus/element/compiler/index.js';
 
-import pack from './package.json' assert { type: 'json' };
+import PACKAGE from './package.json' assert { type: 'json' };
 
 export default [
   read(),
@@ -76,9 +76,9 @@ export default [
     destination: 'dist/json/document.json'
   }),
   webTypes({
-    destination: `${pack.publishConfig.directory}/${pack['web-types']}`,
-    packageName: pack.name,
-    packageVersion: pack.version,
+    destination: `${PACKAGE.publishConfig.directory}/${PACKAGE['web-types']}`,
+    packageName: PACKAGE.name,
+    packageVersion: PACKAGE.version,
     reference(context) {
       return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
     }
