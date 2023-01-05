@@ -24,6 +24,7 @@ export * from './grid-item/grid-item';
 export * from './icon/icon';
 export * from './intersection/intersection';
 export * from './portal/portal';
+export * from './scroll-detector/scroll-detector';
 export * from './scroll-indicator/scroll-indicator';
 export * from './signature/signature';
 export * from './spinner/spinner';
