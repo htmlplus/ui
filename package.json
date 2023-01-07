@@ -3,7 +3,7 @@
   "version": "0.7.8-next-01072326",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
-  "description": "The Most Flexible Open Source Web Component Library.",
+  "description": "The Next generation of frameworkless UI components for modern browsers.",
   "type": "module",
   "main": "index.js",
   "types": "types/components/index.d.ts",
@@ -25,7 +25,17 @@
   "engines": {
     "node": ">= 12.7.0"
   },
-  "keywords": [],
+  "keywords": [
+    "component",
+    "component library",
+    "ui",
+    "components",
+    "ui components",
+    "design system",
+    "custom elements",
+    "web components",
+    "frontend"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/htmlplus/core.git"
