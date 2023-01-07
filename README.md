@@ -1,41 +1,47 @@
-[![HTMLPlUS Logo](https://htmlplus.io/assets/logo/banner.svg)](https://htmlplus.io)
+The Next generation of frameworkless UI components for modern browsers based on [Custom Elements](https://mdn.io/custom-elements) API. All UI components are Flexible, Standard, Lightweight, Simple, Efficient, Independent , Full Featured, Customizable, and Configurable.
 
-[![Version](https://img.shields.io/npm/v/@htmlplus/core.svg)](https://www.npmjs.com/package/@htmlplus/core)
-[![GitHub forks](https://img.shields.io/github/forks/htmlplus/core)](https://github.com/htmlplus/core/network/members) [![GitHub stars](https://img.shields.io/github/stars/htmlplus/core)](https://github.com/htmlplus/core/stargazers) [![GitHub license](https://img.shields.io/github/license/htmlplus/core)](https://github.com/htmlplus/core/blob/main/LICENSE) [![Linkedin](https://img.shields.io/badge/Follow%20us-white?logo=linkedIn&color=0077B5&logoColor=white)](https://www.linkedin.com/company/htmlplus)
+## Installation
 
-HTMLPLUS is a native, framework-less, and lightweight library that is purely developed with Javascript. All HTMLPLUS components are customizable and configurable.
+UI Components is available as an [npm package](https://npmjs.com/package/@htmlplus/core).
 
-## Quick start
+npm
 
-To use HTMLPLUS see "[installation instruction](https://htmlplus.io/installation)"
+```
+npm install @htmlplus/core
+```
+
+yarn
+
+```
+yarn add @htmlplus/core
+```
+
+pnpm
+
+```
+pnpm install @htmlplus/core
+```
+
+## Usage
+
+An example of basic usage of UI components in React, Angular, Vue, Svelte and etc.
+
+Import dependency into your application.
+
+```js
+import '@htmlplus/core';
+```
+
+UI components same as native HTML tags are available.
+
+```html
+<plus-switch></plus-switch>
+```
 
 ## Documentation
 
-- [Official documentation](https://htmlplus.io/introduction/what-is-htmlplus)
-- [HTMLPLUS roadmap](./ROADMAP.md)
+Full documentation is available [here](https://htmlplus.io).
 
-## Contributing
+## License
 
-HTMLPLUS has an active and growing open-source community. You can contribute to HTMLPLUS in several ways. Read [Contributing Guidelines](./CONTRIBUTING.md) about them. Read our [agreement](./docs/agreement.md) before contribute to code. You can also see [examples](./docs/examples.md) to fully undrestant how to develop a web component in HTMLPLUS.
-
-All contributions are welcome! See the following resources to get started:
-
-- [Contributing to develop components](./docs/developing.md)
-- [Contribute to design](./CONTRIBUTING.md#contribute-to-design)
-- [Contribute to documentation](./CONTRIBUTING.md#contribute-to-documentation)
-
-## Code of Conduct
-
-We expect project participants to adhere to. Please read [the full text](./CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
-
-## Good first issues
-
-To get you familiar with our contribution process, we have a list of [good first issues](https://github.com/htmlplus/core/labels/good%20first%20issue) that contain bugs which have a relatively limited scope. This is a great place to get started.
-
-## Join our team
-
-You can simply [join HTMLPLUS](https://htmlplus.io) team by submitting your request.
-
-## Copyright and license
-
-Code and documentation copyright 2019–2021 the [HTMLPLUS Authors](https://github.com/htmlplus/core/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).
+Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).
