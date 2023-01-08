@@ -3,7 +3,7 @@
   "version": "0.7.9",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
-  "description": "The Next generation of frameworkless UI components for modern browsers.",
+  "description": "The Next generation of UI components.",
   "type": "module",
   "main": "index.js",
   "types": "types/components/index.d.ts",
