@@ -9,7 +9,8 @@ import {
   read,
   style,
   validate,
-  webTypes
+  visualStudioCode,
+  webTypes,
 } from '@htmlplus/element/compiler/index.js';
 
 import PACKAGE from './package.json' assert { type: 'json' };
@@ -74,6 +75,12 @@ export default [
   }),
   document({
     destination: 'dist/json/document.json'
+  }),
+  visualStudioCode({
+    destination: `${PACKAGE.publishConfig.directory}/json/vscode.json`,
+    reference(context) {
+      return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
+    }
   }),
   webTypes({
     destination: `${PACKAGE.publishConfig.directory}/${PACKAGE['web-types']}`,
