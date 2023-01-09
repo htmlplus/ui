@@ -7,6 +7,7 @@ import {
   extract,
   parse,
   read,
+  readme,
   style,
   validate,
   visualStudioCode,
@@ -73,6 +74,7 @@ export default [
       );
     }
   }),
+  readme(),
   document({
     destination: 'dist/json/document.json'
   }),
@@ -80,6 +82,14 @@ export default [
     destination: `${PACKAGE.publishConfig.directory}/json/vscode.json`,
     reference(context) {
       return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
+    },
+    transformer(context, element) {
+      element.description ||= context?.readmeContent
+        ?.split('#')[1]
+        ?.split('\n')
+        ?.slice(1)
+        ?.filter((line) => !!line.trim())[0]
+        ?.trim();
     }
   }),
   webTypes({
@@ -88,6 +98,14 @@ export default [
     packageVersion: PACKAGE.version,
     reference(context) {
       return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
+    },
+    transformer(context, element) {
+      element.description ||= context?.readmeContent
+        ?.split('#')[1]
+        ?.split('\n')
+        ?.slice(1)
+        ?.filter((line) => !!line.trim())[0]
+        ?.trim();
     }
   })
 ];
