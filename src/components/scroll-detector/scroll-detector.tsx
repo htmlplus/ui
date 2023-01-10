@@ -45,6 +45,8 @@ export class ScrollDetector {
   bind() {
     if (this.disabled) return;
 
+    if (!this.$source) return;
+
     Helpers.on(this.$source, 'scroll', this.onScroll);
 
     this.onScroll();
