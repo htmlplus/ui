@@ -19,6 +19,16 @@
   "files": [
     "**/*.*"
   ],
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/htmlplus"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/htmlplus"
+    }
+  ],
   "publishConfig": {
     "directory": "dist"
   },
@@ -43,7 +53,7 @@
   "bugs": {
     "url": "https://github.com/htmlplus/core/issues"
   },
-  "homepage": "https://github.com/htmlplus/core#readme",
+  "homepage": "https://htmlplus.io",
   "dependencies": {
     "@htmlplus/element": "^0.6.1"
   },
