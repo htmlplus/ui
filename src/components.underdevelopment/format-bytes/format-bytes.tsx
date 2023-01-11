@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { FormatBytesDisplay, FormatBytesUnit } from './format-bytes.types';
+import { FORMAT_BYTES_TABLES } from './format-bytes.constants';
 
 /**
  * TODO
@@ -8,56 +8,92 @@ import { FormatBytesDisplay, FormatBytesUnit } from './format-bytes.types';
 @Element()
 export class FormatBytes {
   /**
-   * Determines how to display the result, e.g. "100 bytes", "100 b", or "100b".
+   * TODO.
    */
   @Property()
-  display?: FormatBytesDisplay = 'short';
+  display?: 'long' | 'short' = 'short';
 
   /**
-   * The unit to display.
+   * TODO.
    */
   @Property()
-  unit?: FormatBytesUnit = 'byte';
+  locale?: string | string[];
 
   /**
-   * The number to format in bytes.
+   * TODO.
+   */
+  @Property()
+  precision?: number = 1;
+
+  /**
+   * TODO.
+   */
+  @Property()
+  spacer?: string;
+
+  /**
+   * TODO.
+   */
+  @Property()
+  unit?: 'iec' | 'iec-octet' | 'metric' | 'metric-octet' = 'metric';
+
+  /**
+   * TODO.
    */
   @Property()
   value?: number;
 
-  get format() {
-    if (isNaN(this.value)) return ''; 
+  get formated() {
+    if (isNaN(this.value)) return this.value;
 
-    const prefixes = ['', 'Kilo', 'Mega', 'Giga', 'Tera', 'Peta'];
+    const prefix = this.value < 0 ? '-' : '';
 
-    const index = Math.max(0, Math.min(Math.floor(Math.log10(this.value) / 3), prefixes.length - 1));
+    const bytes = Math.abs(this.value);
 
-    const prefix = prefixes[index];
+    const TABLE = FORMAT_BYTES_TABLES[this.unit];
 
-    const value = parseFloat((this.value / Math.pow(1000, index)).toPrecision(3));
+    if (!TABLE) return this.value;
 
-    const space = this.display == 'narrow' ? '' : ' ';
+    const { base, unit, units } = TABLE;
 
-    const aaa = (this.display == 'long' ? prefix : prefix[0]) || '';
+    let found;
 
-    // const unit = this.unit == 'bit' ? 'bit' : 'byte'
+    for (let index = 0; index < units.length; index++) {
+      const [short, long] = units[index];
+      
+      const from = index ? Math.pow(base, index) : 0;
 
+      const to = Math.pow(base, index + 1);
 
-    return value + space + aaa;
-    //+ unit[0].toUpperCase();
+      found = { from, long, short, to };
+
+      if (index == units.length - 1) break;
+
+      if (bytes >= from && bytes < to) break;
+    }
+
+    const formatter = new Intl.NumberFormat(this.locale, {
+      style: 'decimal',
+      minimumFractionDigits: this.precision,
+      maximumFractionDigits: this.precision,
+    });
+
+    let result = '';
+
+    result += prefix;
+
+    result +=  found?.from ? formatter.format(bytes / found.from) : bytes;
+
+    result += this.spacer || '';
+
+    result += found?.[this.display] || '';
+
+    result += this.display == 'long' ? unit : '';
+
+    return result;
   }
 
-  // long
-  // 12 (bytes|bits)
-  // 1.2 kilo(bytes|bits)
-  // short
-  // 12 (byte|bit)
-  // 1.2 k(B|b)
-  // narrow
-  // 12(B|bit)
-  // 1.2k(B|b)
-
   render() {
-    return this.format;
+    return this.formated;
   }
 }
