@@ -1,5 +1,5 @@
-export const FORMAT_BYTES_TABLES = {
-  'metric': {
+export const FORMAT_BYTES_STANDARD = {
+  METRIC: {
     base: 1000,
     unit: 'bytes',
     units: [
@@ -14,7 +14,7 @@ export const FORMAT_BYTES_TABLES = {
       ['YB', 'yotta']
     ]
   },
-  'metric-octet': {
+  METRIC_OCTET: {
     base: 1000,
     unit: 'octets',
     units: [
@@ -29,7 +29,7 @@ export const FORMAT_BYTES_TABLES = {
       ['Yo', 'yotta']
     ]
   },
-  'iec': {
+  IEC: {
     base: 1024,
     unit: 'bytes',
     units: [
@@ -44,7 +44,7 @@ export const FORMAT_BYTES_TABLES = {
       ['YiB', 'yobi']
     ]
   },
-  'iec-octet': {
+  IEC_OCTET: {
     base: 1024,
     unit: 'octets',
     units: [

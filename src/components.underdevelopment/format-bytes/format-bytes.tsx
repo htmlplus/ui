@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { FORMAT_BYTES_TABLES } from './format-bytes.constants';
+import { FORMAT_BYTES_STANDARD } from './format-bytes.constants';
 
 /**
  * TODO
@@ -23,19 +23,31 @@ export class FormatBytes {
    * TODO.
    */
   @Property()
-  precision?: number = 1;
+  precision?: number | number[] = 1;
 
   /**
    * TODO.
    */
   @Property()
-  spacer?: string;
+  separator?: string;
 
   /**
    * TODO.
    */
   @Property()
-  unit?: 'iec' | 'iec-octet' | 'metric' | 'metric-octet' = 'metric';
+  signed?: boolean;
+
+  /**
+   * TODO.
+   */
+  @Property()
+  standard?: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET' = 'METRIC';
+
+  /**
+   * TODO.
+   */
+  @Property()
+  unit?: 'auto' = 'auto';
 
   /**
    * TODO.
@@ -44,17 +56,15 @@ export class FormatBytes {
   value?: number;
 
   get formated() {
-    if (isNaN(this.value)) return this.value;
-
-    const prefix = this.value < 0 ? '-' : '';
+    if (isNaN(this.value)) return null;
 
     const bytes = Math.abs(this.value);
 
-    const TABLE = FORMAT_BYTES_TABLES[this.unit];
+    const standard = FORMAT_BYTES_STANDARD[this.standard];
 
-    if (!TABLE) return this.value;
+    if (!standard) return null;
 
-    const { base, unit, units } = TABLE;
+    const { base, unit, units } = standard;
 
     let found;
 
@@ -72,19 +82,21 @@ export class FormatBytes {
       if (bytes >= from && bytes < to) break;
     }
 
+    const precision = [this.precision].flat();
+
     const formatter = new Intl.NumberFormat(this.locale, {
       style: 'decimal',
-      minimumFractionDigits: this.precision,
-      maximumFractionDigits: this.precision,
+      minimumFractionDigits: precision[0],
+      maximumFractionDigits: precision[1] || precision[0],
     });
 
     let result = '';
 
-    result += prefix;
+    result += this.value < 0 ? '-' : this.signed ? '+' : '';
 
     result +=  found?.from ? formatter.format(bytes / found.from) : bytes;
 
-    result += this.spacer || '';
+    result += this.separator || '';
 
     result += found?.[this.display] || '';
 
