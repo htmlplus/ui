@@ -3,54 +3,57 @@ import { Element, Property } from '@htmlplus/element';
 import { FORMAT_BYTES_STANDARD } from './format-bytes.constants';
 
 /**
- * TODO
+ * @stable
  */
 @Element()
 export class FormatBytes {
   /**
-   * TODO.
+   * Specifies the unit will be shown as an abbreviation or not.
    */
   @Property()
   display?: 'long' | 'short' = 'short';
 
   /**
-   * TODO.
+   * Localizes the result. [More](https://mdn.io/number-format/constructor).
    */
   @Property()
   locale?: string | string[];
 
   /**
-   * TODO.
+   * Specifies the number of decimal places.
+   * Use an array to specify the minimum and maximum.
    */
   @Property()
   decimals?: number | [number, number] = 1;
 
   /**
-   * TODO.
+   * Specifies the separator between number and unit.
    */
   @Property()
   separator?: string;
 
   /**
-   * TODO.
+   * Shows plus sign for positive numbers. 
+   * If the difference is exactly zero a space character will be prepended instead for better alignment.
    */
   @Property()
   signed?: boolean;
 
   /**
-   * TODO.
+   * Specifies the standard of units. 
+   * [Metric and IEC](https://en.wikipedia.org/wiki/Gigabyte) are supported.
    */
   @Property()
   standard?: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET' = 'METRIC';
 
   /**
-   * TODO.
+   * Specifies the unit in which the result will be returned.
    */
   @Property()
   unit?: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta' = 'auto';
 
   /**
-   * TODO.
+   * The bytes value to convert.
    */
   @Property()
   value?: number;
@@ -97,7 +100,7 @@ export class FormatBytes {
 
     let result = '';
 
-    result += this.value < 0 ? '-' : this.signed ? '+' : '';
+    result += this.value < 0 ? '-' : this.signed ? this.value == 0 ? ' ' : '+' : '';
 
     result +=  found?.from ? formatter.format(bytes / found.from) : bytes;
 

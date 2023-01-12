@@ -1,2 +1,4 @@
 - add formater property
 - locale, locales or lang ?
+- standard or unit ?
+- review unit

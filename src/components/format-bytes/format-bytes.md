@@ -1,6 +1,6 @@
 # Format Bytes
 
-TODO
+Converts bytes to a human-readable string. [Metric and IEC](https://en.wikipedia.org/wiki/Gigabyte) standard are supported.
 
 <Playground />
 
