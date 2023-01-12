@@ -30,7 +30,7 @@ export class FormatBytes {
    * Specifies the separator between number and unit.
    */
   @Property()
-  separator?: string;
+  separator?: string = ' ';
 
   /**
    * Shows plus sign for positive numbers. 
