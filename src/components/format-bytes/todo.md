@@ -1,0 +1,2 @@
+- add formater property
+- locale, locales or lang ?

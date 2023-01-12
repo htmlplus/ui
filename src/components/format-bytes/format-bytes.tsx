@@ -23,7 +23,7 @@ export class FormatBytes {
    * TODO.
    */
   @Property()
-  precision?: number | number[] = 1;
+  decimals?: number | [number, number] = 1;
 
   /**
    * TODO.
@@ -47,7 +47,7 @@ export class FormatBytes {
    * TODO.
    */
   @Property()
-  unit?: 'auto' = 'auto';
+  unit?: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta' = 'auto';
 
   /**
    * TODO.
@@ -77,17 +77,22 @@ export class FormatBytes {
 
       found = { from, long, short, to };
 
-      if (index == units.length - 1) break;
+      if (this.unit == 'base') break;
+
+      if (this.unit != 'auto') {
+        if (this.unit == long) break;
+        if (units.some(([, long]) => this.unit == long)) continue;
+      }
 
       if (bytes >= from && bytes < to) break;
     }
 
-    const precision = [this.precision].flat();
+    const decimals = [this.decimals].flat();
 
     const formatter = new Intl.NumberFormat(this.locale, {
       style: 'decimal',
-      minimumFractionDigits: precision[0],
-      maximumFractionDigits: precision[1] || precision[0],
+      minimumFractionDigits: decimals[0],
+      maximumFractionDigits: decimals[1] || decimals[0],
     });
 
     let result = '';

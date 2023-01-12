@@ -19,6 +19,7 @@ export * from './dialog-toggler/dialog-toggler';
 export * from './divider/divider';
 export * from './drawer/drawer';
 export * from './drawer-toggler/drawer-toggler';
+export * from './format-bytes/format-bytes';
 export * from './grid/grid';
 export * from './grid-item/grid-item';
 export * from './icon/icon';
