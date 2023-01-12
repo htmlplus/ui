@@ -55,7 +55,7 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^0.6.1"
+    "@htmlplus/element": "^0.6.2"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
