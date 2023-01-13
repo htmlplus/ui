@@ -16,20 +16,52 @@ Converts bytes to a human-readable string. [Metric and IEC](https://en.wikipedia
 
 <Example value="default" />
 
+### Standard
+
+<Example value="standard" />
+
+### Formatting
+
+<Example value="formatting" />
+
+### Decimals
+
+<Example value="decimals" />
+
+### Unit
+
+<Example value="unit" />
+
+### Display
+
+<Example value="display" />
+
+### Separator
+
+<Example value="separator" />
+
+### Signed
+
+<Example value="signed" />
+
+### Locale
+
+<Example value="locale" />
+
 <Checklist 
     accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
-    examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
+    bidirectionality="N/A"
+    cssParts="N/A"
+    cssVariables="N/A"
+    documentation={true}
+    examples={true}
+    events="N/A"
+    keyboard="N/A"
+    methods="N/A"
     playground={false}
-    properties={false}
+    properties={true}
     skeleton={false}
-    slots={false}
+    slots="N/A"
 />
 
 <LastModified />

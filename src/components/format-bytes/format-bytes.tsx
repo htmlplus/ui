@@ -24,7 +24,7 @@ export class FormatBytes {
    * Use an array to specify the minimum and maximum.
    */
   @Property()
-  decimals?: number | [number, number] = 1;
+  decimals?: number | [number, number] = [0, 1];
 
   /**
    * Specifies the separator between number and unit.
@@ -102,7 +102,7 @@ export class FormatBytes {
 
     result += this.value < 0 ? '-' : this.signed ? this.value == 0 ? ' ' : '+' : '';
 
-    result +=  found?.from ? formatter.format(bytes / found.from) : bytes;
+    result += formatter.format(bytes / (found?.from || 1));
 
     result += this.separator || '';
 
