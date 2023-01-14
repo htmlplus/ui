@@ -7,8 +7,6 @@ import { Element } from '@htmlplus/element';
 @Element()
 export class CardBody {
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

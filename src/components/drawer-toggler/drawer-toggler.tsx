@@ -1,9 +1,10 @@
 import { Attributes, Bind, Element, Property, Watch } from '@htmlplus/element';
+
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink({
   crawl: true,
-  namespace: ({ connector }) => connector ? `Drawer:${connector}` : undefined
+  namespace: ({ connector }) => (connector ? `Drawer:${connector}` : undefined)
 });
 
 /**
@@ -13,11 +14,10 @@ const { Inject, reconnect } = createLink({
  */
 @Element()
 export class DrawerToggler {
-
   /**
-   * This property helps you to attach which drawer this toggler controls. 
-   * It doesn't matter where the drawer toggler is. 
-   * You can put the drawer's toggler inside or outside of the drawer. 
+   * This property helps you to attach which drawer this toggler controls.
+   * It doesn't matter where the drawer toggler is.
+   * You can put the drawer's toggler inside or outside of the drawer.
    * Read more about connectors [here](/connector).
    */
   @Property()
@@ -32,10 +32,10 @@ export class DrawerToggler {
   @Attributes()
   get attributes() {
     return {
-      'role': 'button',
-      'state': this.tunnel ? 'open' : 'close',
-      'onClick': this.onClick
-    }
+      role: 'button',
+      state: this.tunnel ? 'open' : 'close',
+      onClick: this.onClick
+    };
   }
 
   get text() {
@@ -50,7 +50,7 @@ export class DrawerToggler {
   watcher() {
     reconnect(this);
   }
-  
+
   /**
    * Events handler
    */
@@ -60,15 +60,10 @@ export class DrawerToggler {
   }
 
   render() {
-    return (
-      <slot>
-        {this.text}
-      </slot>
-    )
+    return <slot>{this.text}</slot>;
   }
 }
 
 // TODO
 // <slot name="close" />
 // <slot name="open" />
-

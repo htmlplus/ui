@@ -34,14 +34,14 @@ export class FormatBytes {
   separator?: string = ' ';
 
   /**
-   * Shows plus sign for positive numbers. 
+   * Shows plus sign for positive numbers.
    * If the difference is exactly zero a space character will be prepended instead for better alignment.
    */
   @Property()
   signed?: boolean;
 
   /**
-   * Specifies the standard of units. 
+   * Specifies the standard of units.
    * [Metric and IEC](https://en.wikipedia.org/wiki/Gigabyte) are supported.
    */
   @Property()
@@ -74,7 +74,7 @@ export class FormatBytes {
 
     for (let index = 0; index < units.length; index++) {
       const [short, long] = units[index];
-      
+
       const from = index ? Math.pow(base, index) : 0;
 
       const to = Math.pow(base, index + 1);
@@ -96,12 +96,12 @@ export class FormatBytes {
     const formatter = new Intl.NumberFormat(this.locale, {
       style: 'decimal',
       minimumFractionDigits: decimals[0],
-      maximumFractionDigits: decimals[1] || decimals[0],
+      maximumFractionDigits: decimals[1] || decimals[0]
     });
 
     let result = '';
 
-    result += this.value < 0 ? '-' : this.signed ? this.value == 0 ? ' ' : '+' : '';
+    result += this.value < 0 ? '-' : this.signed ? (this.value == 0 ? ' ' : '+') : '';
 
     result += formatter.format(bytes / (found?.from || 1));
 

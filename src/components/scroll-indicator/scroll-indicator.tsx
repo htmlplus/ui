@@ -1,5 +1,7 @@
 import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
+
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
 /**
@@ -7,7 +9,6 @@ import { ScrollIndicatorSource } from './scroll-indicator.types';
  */
 @Element()
 export class ScrollIndicator {
-
   /**
    * Disables the component function.
    */
@@ -35,7 +36,6 @@ export class ScrollIndicator {
   $indicator!: HTMLElement;
 
   get $source() {
-
     if (typeof this.source !== 'string') return this.source;
 
     if (this.source === 'document') return document;
@@ -47,11 +47,10 @@ export class ScrollIndicator {
   get attributes() {
     return {
       // 'role': 'TODO'
-    }
+    };
   }
 
   get progress() {
-
     // TODO: any type not valid
     let $source = this.$source as any;
 
@@ -65,7 +64,7 @@ export class ScrollIndicator {
 
     const overflow = this.vertical ? scrollWidth - clientWidth : scrollHeight - clientHeight;
 
-    return Math.round(offset / overflow * 100);
+    return Math.round((offset / overflow) * 100);
   }
 
   /**
@@ -73,7 +72,6 @@ export class ScrollIndicator {
    */
 
   bind() {
-
     if (this.disabled) return;
 
     Helpers.on(this.$source, 'scroll', this.onScroll);
@@ -100,7 +98,6 @@ export class ScrollIndicator {
 
   @Bind()
   onScroll() {
-
     const progress = this.progress;
 
     const property = this.vertical ? 'height' : 'width';
@@ -123,12 +120,6 @@ export class ScrollIndicator {
   }
 
   render() {
-    return (
-      <div
-        className="indicator"
-        part="indicator"
-        ref={($element) => this.$indicator = $element}
-      />
-    )
+    return <div className="indicator" part="indicator" ref={($element) => (this.$indicator = $element)} />;
   }
 }

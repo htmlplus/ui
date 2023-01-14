@@ -1,14 +1,16 @@
 import { Attributes, Bind, Element, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+
 import { createPopper, Instance } from '@popperjs/core';
+
 import * as Helpers from '@app/helpers';
+
 import { TooltipAnimation, TooltipPlacement, TooltipTrigger, TooltipArrow } from './tooltip.types';
 
 /**
- * @experimental 
+ * @experimental
  */
 @Element()
 export class Tooltip {
-
   // TODO
   // https://popper.js.org
   // https://atomiks.github.io/tippyjs
@@ -124,7 +126,7 @@ export class Tooltip {
   $arrow!: HTMLElement;
 
   get $activator() {
-    return this.appendTo ?? Helpers.host(this).parentElement as HTMLElement;
+    return this.appendTo ?? (Helpers.host(this).parentElement as HTMLElement);
   }
 
   @Attributes()
@@ -133,23 +135,22 @@ export class Tooltip {
       role: 'tooltip',
       state: this.state,
       animation: this.animation
-    }
+    };
   }
 
   get eventsName() {
-
     const events = {
       hide: [],
-      show: [],
-    }
+      show: []
+    };
 
     const triggers = [this.trigger].flat(1);
 
     const mapper = {
-      'click': ['click', 'blur'],
-      'focus': ['focus', 'blur'],
-      'hover': ['mouseenter', 'mouseleave'],
-    }
+      click: ['click', 'blur'],
+      focus: ['focus', 'blur'],
+      hover: ['mouseenter', 'mouseleave']
+    };
 
     Object.keys(mapper)
       .filter((key) => triggers.includes(key as any))
@@ -163,10 +164,9 @@ export class Tooltip {
   }
 
   get options() {
-
     const offset = [this.offsetX ?? this.offset ?? null, this.offsetY ?? this.offset ?? null];
 
-    const strategy = this.fixed ? 'fixed' : 'absolute' as any;
+    const strategy = this.fixed ? 'fixed' : ('absolute' as any);
 
     return {
       placement: this.placement,
@@ -185,7 +185,7 @@ export class Tooltip {
               top: 2,
               bottom: 2,
               left: 5,
-              right: 5,
+              right: 5
             }
           }
         },
@@ -193,17 +193,17 @@ export class Tooltip {
           name: 'flip',
           options: {
             enable: this.flip
-          },
+          }
         },
         {
           name: 'arrow',
           options: {
             element: this.$arrow,
             enable: true
-          },
+          }
         }
       ]
-    }
+    };
   }
 
   /**
@@ -266,10 +266,10 @@ export class Tooltip {
 
   render() {
     return (
-      <div className="tooltip" ref={($element) => this.$tooltip = $element}>
+      <div className="tooltip" ref={($element) => (this.$tooltip = $element)}>
         <slot />
-        <span x-arrow ref={($element) => this.$arrow = $element} />
+        <span x-arrow ref={($element) => (this.$arrow = $element)} />
       </div>
-    )
+    );
   }
 }

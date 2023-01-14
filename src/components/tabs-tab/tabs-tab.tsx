@@ -1,8 +1,9 @@
 import { Attributes, Bind, Element, Property } from '@htmlplus/element';
+
 import { createLink } from '@app/services';
 
 const { Inject } = createLink({
-  crawl: true,
+  crawl: true
 });
 
 /**
@@ -11,7 +12,6 @@ const { Inject } = createLink({
  */
 @Element()
 export class TabsTab {
-
   /**
    * A Tab can be disabled by setting disabled property.
    */
@@ -33,18 +33,18 @@ export class TabsTab {
   @Attributes()
   get attributes() {
     return {
-      'active': this.tunnel && this.tunnel === this.value,
-      'onClick': this.onClick
-    }
+      active: this.tunnel && this.tunnel === this.value,
+      onClick: this.onClick
+    };
   }
-  
+
   /**
    * Events handler
    */
   @Bind()
   onClick() {
     if (this.disabled) return;
-    this.change(this.value)
+    this.change(this.value);
   }
 
   render() {
@@ -52,6 +52,6 @@ export class TabsTab {
       <span>
         <slot />
       </span>
-    )
+    );
   }
 }

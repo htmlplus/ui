@@ -1,8 +1,9 @@
 import { Attributes, Element, Property } from '@htmlplus/element';
+
 import { createLink } from '@app/services';
 
 const { Inject } = createLink({
-  crawl: true, 
+  crawl: true
 });
 
 /**
@@ -11,7 +12,6 @@ const { Inject } = createLink({
  */
 @Element()
 export class TabsPanel {
-
   /**
    * Provides your own value.
    */
@@ -24,13 +24,11 @@ export class TabsPanel {
   @Attributes()
   get attributes() {
     return {
-      'active': this.tunnel && this.tunnel === this.value
-    }
+      active: this.tunnel && this.tunnel === this.value
+    };
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

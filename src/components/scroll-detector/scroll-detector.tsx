@@ -1,4 +1,5 @@
 import { Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 
 import { ScrollDetectorChangeEvent, ScrollDetectorSource } from './scroll-detector.types';
@@ -41,7 +42,7 @@ export class ScrollDetector {
   }
 
   offset?: number;
-  
+
   bind() {
     if (this.disabled) return;
 
@@ -60,19 +61,12 @@ export class ScrollDetector {
   watcher(next) {
     next ? this.unbind() : this.bind();
   }
-  
+
   @Bind()
   onScroll() {
-    const {
-      scrollTop,
-      scrollLeft,
-      scrollHeight,
-      scrollWidth,
-      clientHeight,
-      clientWidth,
-     } = this.$source;
+    const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = this.$source;
 
-    const offset = this.vertical ?  scrollTop : scrollLeft;
+    const offset = this.vertical ? scrollTop : scrollLeft;
 
     const total = this.vertical ? scrollHeight : scrollWidth;
 
@@ -80,7 +74,7 @@ export class ScrollDetector {
 
     const overflow = total - viewport;
 
-    const progress = Math.round(offset / overflow * 100);
+    const progress = Math.round((offset / overflow) * 100);
 
     if (this.offset == progress) return;
 
@@ -91,7 +85,7 @@ export class ScrollDetector {
       overflow,
       progress,
       total,
-      viewport,
+      viewport
     };
 
     this.plusChange(detail);
@@ -106,6 +100,6 @@ export class ScrollDetector {
   }
 
   render() {
-    return <slot />
+    return <slot />;
   }
 }

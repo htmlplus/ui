@@ -18,6 +18,6 @@ export class AvatarGroup {
   stacked?: boolean;
 
   render() {
-    return <slot />
+    return <slot />;
   }
 }

@@ -10,9 +10,9 @@ export class Center {
    * Converts the `display` CSS property from `flex` to `inline-flex`.
    */
   @Property({ reflect: true })
-  inline?: boolean; 
+  inline?: boolean;
 
   render() {
-    return <slot />
+    return <slot />;
   }
 }

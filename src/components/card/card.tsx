@@ -1,4 +1,5 @@
 import { Element, Property } from '@htmlplus/element';
+
 import { CardElevation } from './card.types';
 
 /**
@@ -6,9 +7,8 @@ import { CardElevation } from './card.types';
  */
 @Element()
 export class Card {
-
   /**
-   * If you want the card to have shadow, use the elevation property, 
+   * If you want the card to have shadow, use the elevation property,
    * And select the property value between `1` and `24`.
    */
   @Property({ reflect: true })
@@ -33,8 +33,6 @@ export class Card {
   tile?: boolean;
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

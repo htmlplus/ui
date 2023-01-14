@@ -31,7 +31,7 @@ export class Switch {
       'tabindex': '0',
       'onClick': this.onClick,
       'onKeyDown': this.onKeyDown
-    }
+    };
   }
 
   toggle() {
@@ -47,7 +47,7 @@ export class Switch {
   }
 
   @Bind()
-  onKeyDown (event) {
+  onKeyDown(event) {
     if (event.key != ' ' && event.key != 'Enter') return;
     event.preventDefault();
     this.toggle();
@@ -66,6 +66,6 @@ export class Switch {
           <slot name="off" />
         </div>
       </div>
-    )
+    );
   }
 }

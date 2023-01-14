@@ -1,5 +1,7 @@
 import { Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
+
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 
 /**
@@ -7,7 +9,6 @@ import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
  */
 @Element()
 export class Menu {
-
   /**
    * TODO
    */
@@ -91,13 +92,11 @@ export class Menu {
   }
 
   get getGrowX() {
-
     if (this.growX && this.growX !== 'auto') return this.growX;
 
     const aligns = ['start', 'right', 'left', 'end'];
 
     for (let i = 0; i < aligns.length; i++) {
-
       const align = aligns[i];
 
       if (this.alignX !== align) continue;
@@ -111,7 +110,6 @@ export class Menu {
   }
 
   get getGrowY() {
-
     if (this.growY && this.growY !== 'auto') return this.growY;
 
     if (this.alignY !== 'center') return this.alignY;
@@ -129,7 +127,6 @@ export class Menu {
 
   @Watch(['fixed', 'open'])
   bind() {
-
     this.clean();
 
     if (!this.fixed || !this.open) return;
@@ -140,7 +137,6 @@ export class Menu {
   }
 
   clean() {
-
     if (!this.observer) return;
 
     this.observer.disconnect();
@@ -149,7 +145,6 @@ export class Menu {
   }
 
   click(event) {
-
     const elements = event.composedPath();
 
     const index = elements.findIndex((element) => element === this.$activator);
@@ -166,31 +161,30 @@ export class Menu {
   }
 
   s(basex?: string, basey?: string) {
-
     const constants = {
       alignX: {
-        'start': !this.reverse ? '0%' : '100%',
-        'left': '0%',
-        'center': '50%',
-        'right': '100%',
-        'end': !this.reverse ? '100%' : '0%',
+        start: !this.reverse ? '0%' : '100%',
+        left: '0%',
+        center: '50%',
+        right: '100%',
+        end: !this.reverse ? '100%' : '0%'
       },
       alignY: {
-        'top': '0%',
-        'center': '50%',
-        'bottom': '100%',
+        top: '0%',
+        center: '50%',
+        bottom: '100%'
       },
       growX: {
-        'start': !this.reverse ? '-100%' : '0%',
-        'left': '-100%',
-        'both': '-50%',
-        'right': '0%',
-        'end': !this.reverse ? '0%' : '-100%',
+        start: !this.reverse ? '-100%' : '0%',
+        left: '-100%',
+        both: '-50%',
+        right: '0%',
+        end: !this.reverse ? '0%' : '-100%'
       },
       growY: {
-        'top': '-100%',
-        'both': '-50%',
-        'bottom': '0%',
+        top: '-100%',
+        both: '-50%',
+        bottom: '0%'
       }
     };
 
@@ -203,7 +197,6 @@ export class Menu {
     let left = basex || (this.alignX === 'pointer' ? this.x : constants.alignX[this.alignX]);
 
     if (this.offsetX && !this.getGrowX.match(/both/)) {
-
       const offset = Helpers.toUnit(this.offsetX);
 
       const operator = this.getGrowX.match(/left|start/) ? '-' : '+';
@@ -212,7 +205,6 @@ export class Menu {
     }
 
     if (this.offsetY && !this.getGrowY.match(/both/)) {
-
       const offset = Helpers.toUnit(this.offsetY);
 
       const operator = this.getGrowY.match(/top/) ? '-' : '+';
@@ -225,13 +217,12 @@ export class Menu {
       left,
       transform: `translate(${x}, ${y})`,
       position: (this.fixed ? 'fixed' : 'absolute') as any,
-      zIndex: '1',
+      zIndex: '1'
     };
   }
 
   @Bind()
   update(entries) {
-
     const content: any = this.$host.shadowRoot.querySelector('.content');
 
     if (!content) return;
@@ -240,12 +231,11 @@ export class Menu {
 
     const style = this.s(rect.x.toString() + 'px', rect.y.toString() + 'px');
 
-    Object.keys(style).map((key) => this.$content.style[key] = style[key]);
+    Object.keys(style).map((key) => (this.$content.style[key] = style[key]));
   }
 
   // TODO @Listen('click', { target: 'document', capture: true })
   onOutsideClick(event) {
-
     if (!this.open) return;
 
     const path = event.composedPath();
@@ -270,7 +260,7 @@ export class Menu {
   }
 
   disconnectedCallback() {
-    this.clean()
+    this.clean();
   }
 
   render() {
@@ -278,20 +268,17 @@ export class Menu {
       <>
         <div
           className="activator"
-          ref={($element) => this.$activator = $element}
+          ref={($element) => (this.$activator = $element)}
           onClick={(event) => this.click(event)}
         >
           <slot name="activator" />
         </div>
         {this.open && (
-          <div
-            className="content"
-            ref={($element) => this.$content = $element}
-            style={this.fixed ? {} : this.style}>
+          <div className="content" ref={($element) => (this.$content = $element)} style={this.fixed ? {} : this.style}>
             <slot />
           </div>
         )}
       </>
-    )
+    );
   }
 }

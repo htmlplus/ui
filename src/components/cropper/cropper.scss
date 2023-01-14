@@ -174,12 +174,8 @@
 
 .cropper-point {
   &[class*='point-'] {
-    --plus-cropper-resizer-offset-negative: calc(
-      (50% + var(--plus-cropper-resizer-offset)) * -1
-    );
-    --plus-cropper-resizer-offset-positive: calc(
-      (50% + var(--plus-cropper-resizer-offset)) * +1
-    );
+    --plus-cropper-resizer-offset-negative: calc((50% + var(--plus-cropper-resizer-offset)) * -1);
+    --plus-cropper-resizer-offset-positive: calc((50% + var(--plus-cropper-resizer-offset)) * +1);
     margin: 0;
     height: var(--plus-cropper-resizer-size);
     width: var(--plus-cropper-resizer-size);
@@ -208,34 +204,22 @@
   &.point-ne {
     top: 0;
     right: 0;
-    transform: translate(
-      var(--plus-cropper-resizer-offset-positive),
-      var(--plus-cropper-resizer-offset-negative)
-    );
+    transform: translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-negative));
   }
   &.point-nw {
     top: 0;
     left: 0;
-    transform: translate(
-      var(--plus-cropper-resizer-offset-negative),
-      var(--plus-cropper-resizer-offset-negative)
-    );
+    transform: translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-negative));
   }
   &.point-sw {
     bottom: 0;
     left: 0;
-    transform: translate(
-      var(--plus-cropper-resizer-offset-negative),
-      var(--plus-cropper-resizer-offset-positive)
-    );
+    transform: translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-positive));
   }
   &.point-se {
     right: 0;
     bottom: 0;
-    transform: translate(
-      var(--plus-cropper-resizer-offset-positive),
-      var(--plus-cropper-resizer-offset-positive)
-    );
+    transform: translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-positive));
   }
 }
 

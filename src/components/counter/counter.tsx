@@ -1,4 +1,5 @@
 import { Attributes, Bind, Element, Event, EventEmitter, Method, Property, State, Watch } from '@htmlplus/element';
+
 import { COUNTER_EASINGS } from './counter.constants';
 import { CounterEasing } from './counter.types';
 
@@ -111,7 +112,7 @@ export class Counter {
     if (this.separator) {
       x3 = '';
       for (let i = 0, length = x1.length; i < length; ++i) {
-        if (i !== 0 && (i % 3) === 0) {
+        if (i !== 0 && i % 3 === 0) {
           x3 = this.separator + x3;
         }
         x3 = x1[length - i - 1] + x3;

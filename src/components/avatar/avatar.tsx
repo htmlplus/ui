@@ -15,6 +15,6 @@ export class Avatar {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' = 'md';
 
   render() {
-    return <slot/>
+    return <slot />;
   }
 }

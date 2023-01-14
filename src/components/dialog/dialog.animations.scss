@@ -1,6 +1,5 @@
-:host(#{boolean(animation)}[state=opening]),
-:host(#{boolean(animation)}[state=closing]) {
-
+:host(#{boolean(animation)}[state='opening']),
+:host(#{boolean(animation)}[state='closing']) {
   transition: all 0.5s ease-out;
 
   .dialog {
@@ -12,9 +11,8 @@
   }
 }
 
-:host([animation=fade][state=open]),
-:host([animation=fade][state=closing]) {
-
+:host([animation='fade'][state='open']),
+:host([animation='fade'][state='closing']) {
   opacity: 0;
 
   ::slotted(*) {
@@ -34,9 +32,8 @@
   }
 }
 
-:host([animation=fade][state=close]),
-:host([animation=fade][state=opening]) {
-
+:host([animation='fade'][state='close']),
+:host([animation='fade'][state='opening']) {
   opacity: 1;
 
   ::slotted(*) {

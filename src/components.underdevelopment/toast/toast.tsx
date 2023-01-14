@@ -1,6 +1,8 @@
 import { Attributes, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 import { Animation } from '@app/services';
+
 import { ToastPlacement, ToastType } from './toast.types';
 
 // const { Action, Observable, reconnect } = createLink('Toast');
@@ -11,10 +13,9 @@ import { ToastPlacement, ToastType } from './toast.types';
  */
 @Element()
 export class Toast {
-
   /**
    * TODO
-   * 
+   *
    * preventDuplicates
    * icon
    * closeButton/dismissable - Dismiss on click
@@ -22,7 +23,7 @@ export class Toast {
    * fixed
    * offset/gutter
    * progress
-   * 
+   *
    * https://izitoast.marcelodolza.com/
    * https://vuetifyjs.com/en/components/snackbars/
    */
@@ -34,9 +35,9 @@ export class Toast {
   animation?: string;
 
   /**
-   * This property helps you to attach which toast toggler controls the toast. 
-   * It doesn't matter where the toast toggler is. 
-   * You can put the toast's toggler inside or outside of the toast. 
+   * This property helps you to attach which toast toggler controls the toast.
+   * It doesn't matter where the toast toggler is.
+   * You can put the toast's toggler inside or outside of the toast.
    * Read more about connectors [here](/connector).
    */
   @Property()
@@ -133,11 +134,10 @@ export class Toast {
       // 'role': 'alert',
       // 'aria-live': 'assertive',
       // 'aria-atomic': 'true',
-    }
+    };
   }
 
   get classes() {
-
     const { x, y } = this.coordinate(this);
 
     return Helpers.classes({
@@ -145,12 +145,11 @@ export class Toast {
       'full-width': this.fullWidth,
       [x]: !!x,
       [y]: !!y,
-      [Helpers.direction(this)]: true,
-    })
+      [Helpers.direction(this)]: true
+    });
   }
 
   get isCurrent() {
-
     const instances = Toast.instances;
 
     const last = instances.length - 1;
@@ -159,7 +158,6 @@ export class Toast {
   }
 
   get zIndex() {
-
     if (Toast.instances.length < 1) return;
 
     const [instance] = Toast.instances.slice(-1);
@@ -193,13 +191,11 @@ export class Toast {
    */
 
   adjust() {
-
     let offset = 0;
 
     const { x: x1, y: y1 } = this.coordinate(this);
 
     const fn = (index) => {
-
       const instance = Toast.instances[index];
 
       const { x: x2, y: y2 } = this.coordinate(instance);
@@ -212,12 +208,10 @@ export class Toast {
 
       // TODO
       offset += 15 + rect.height;
-    }
+    };
 
-    if (this.reverse)
-      for (let i = 0; i < Toast.instances.length; i++) fn(i);
-    else
-      for (let i = Toast.instances.length - 1; i >= 0; i--) fn(i);
+    if (this.reverse) for (let i = 0; i < Toast.instances.length; i++) fn(i);
+    else for (let i = Toast.instances.length - 1; i >= 0; i--) fn(i);
   }
 
   broadcast(value) {
@@ -226,7 +220,6 @@ export class Toast {
 
   // TODO
   coordinate(instance) {
-
     let [y, x] = instance.placement.split('-');
 
     if (!y) y = 'top';
@@ -235,11 +228,10 @@ export class Toast {
 
     if (instance.fullWidth) x = undefined;
 
-    return { x, y }
+    return { x, y };
   }
 
   initialize() {
-
     this.animate = new Animation({
       key: 'state',
       source: () => this.$host,
@@ -251,9 +243,9 @@ export class Toast {
         entered: 'opened',
         leave: 'close',
         leaving: 'closing',
-        leaved: 'closed',
+        leaved: 'closed'
       }
-    })
+    });
 
     if (!this.open) return;
 
@@ -261,7 +253,6 @@ export class Toast {
   }
 
   terminate() {
-
     this.onHide();
 
     this.animate?.dispose();
@@ -271,7 +262,6 @@ export class Toast {
   }
 
   tryHide(animation, silent) {
-
     if (!this.isOpen) return;
 
     if (!silent && this.plusClose().defaultPrevented) return;
@@ -283,23 +273,20 @@ export class Toast {
 
     this.animate.leave({
       onLeave: () => {
-
         // TODO: experimantal new link
         this.broadcast(false);
       },
       onLeaved: () => {
-
         this.onHide();
 
         if (silent) return;
 
-        this.plusClosed()
+        this.plusClosed();
       }
-    })
+    });
   }
 
   tryShow(animation, silent) {
-
     if (this.isOpen) return;
 
     if (!silent && this.plusOpen().defaultPrevented) return;
@@ -314,12 +301,11 @@ export class Toast {
         this.onShow();
       },
       onEntered: () => {
-
         if (silent) return;
 
         this.plusOpened();
       }
-    })
+    });
   }
 
   /**
@@ -328,17 +314,13 @@ export class Toast {
 
   @Watch(['connector', 'open'])
   watcher(next, prev, name) {
-
     switch (name) {
-
       case 'connector':
-
         // reconnect(this);
 
         break;
 
       case 'open':
-
         next && !this.isOpen && this.tryShow(true, true);
 
         !next && this.isOpen && this.tryHide(true, true);
@@ -352,7 +334,6 @@ export class Toast {
    */
 
   onHide() {
-
     // reset z-index
     this.$host.style.zIndex = null;
 
@@ -370,7 +351,6 @@ export class Toast {
   }
 
   onShow() {
-
     // set z-index
     this.$host.style.zIndex = this.zIndex;
 
@@ -405,14 +385,10 @@ export class Toast {
   render() {
     return (
       <>
-        <div
-          className={this.classes}
-          part="root"
-          ref={($element) => this.$root = $element}
-        >
+        <div className={this.classes} part="root" ref={($element) => (this.$root = $element)}>
           <slot />
         </div>
       </>
-    )
+    );
   }
 }

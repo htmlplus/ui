@@ -1,14 +1,14 @@
 import { Element, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
- * @experimental 
+ * @experimental
  * @slot default - The default slot.
  */
 @Element()
 export class Portal {
-
   /**
    * Disables the portal.
    */
@@ -22,7 +22,7 @@ export class Portal {
   strategy?: PortalStrategy = 'append';
 
   /**
-   * Specifies the position of the portal content, It Can include css selectors, 
+   * Specifies the position of the portal content, It Can include css selectors,
    * node or any html elements.
    */
   @Property()
@@ -39,7 +39,6 @@ export class Portal {
    */
 
   initialize() {
-
     if (typeof window === 'undefined') return;
 
     if (this.disabled) return;
@@ -47,8 +46,8 @@ export class Portal {
     this.instance = new PortalCore({
       source: this.$nodes,
       strategy: this.strategy,
-      target: this.target,
-    })
+      target: this.target
+    });
   }
 
   terminate() {
@@ -61,9 +60,7 @@ export class Portal {
 
   @Watch(['disabled', 'strategy', 'target'])
   watcher(next, prev, name) {
-
     switch (name) {
-
       case 'disabled':
         next ? this.terminate() : this.initialize();
         break;

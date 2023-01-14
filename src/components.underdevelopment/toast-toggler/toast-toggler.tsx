@@ -9,11 +9,10 @@ const { Inject, reconnect } = createLink('Toast');
  */
 @Element()
 export class ToastToggler {
-
   /**
-   * This property helps you to attach which toast this toggler controls. 
-   * It doesn't matter where the toast toggler is. 
-   * You can put the toast's toggler inside or outside of the toast. 
+   * This property helps you to attach which toast this toggler controls.
+   * It doesn't matter where the toast toggler is.
+   * You can put the toast's toggler inside or outside of the toast.
    * Read more about connectors [here](/connector).
    */
   @Property()
@@ -29,10 +28,10 @@ export class ToastToggler {
   @Attributes()
   get attributes() {
     return {
-      'role': 'button',
-      'state': this.tunnel ? 'open' : 'close',
-      'onClick': () => this.toggle()
-    }
+      role: 'button',
+      state: this.tunnel ? 'open' : 'close',
+      onClick: () => this.toggle()
+    };
   }
 
   get text() {
@@ -49,11 +48,7 @@ export class ToastToggler {
   }
 
   render() {
-    return (
-      <slot>
-        {this.text}
-      </slot>
-    )
+    return <slot>{this.text}</slot>;
   }
 }
 

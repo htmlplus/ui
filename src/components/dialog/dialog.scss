@@ -15,7 +15,6 @@
 }
 
 @mixin sticky {
-
   .cell {
     padding: 0;
   }
@@ -35,7 +34,6 @@
 }
 
 .backdrop {
-
   @include fill;
   z-index: 1;
 
@@ -138,7 +136,6 @@
 
     // generate fullscreen's class
     @include class('fullscreen', $key) {
-
       @include sticky;
 
       .cell {
@@ -153,7 +150,7 @@
 }
 
 // TODO
-:host([state=closed]) {
+:host([state='closed']) {
   display: none;
 }
 

@@ -1,9 +1,10 @@
 import { Element, Property, Watch } from '@htmlplus/element';
+
 import { createLink } from '@app/services';
 
 const { reconnect } = createLink({
   crawl: true,
-  namespace: ({ connector }) => connector ? `Tabs:${connector}` : undefined
+  namespace: ({ connector }) => (connector ? `Tabs:${connector}` : undefined)
 });
 
 /**
@@ -12,7 +13,6 @@ const { reconnect } = createLink({
  */
 @Element()
 export class TabsPanels {
-
   /**
    * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
    */
@@ -29,8 +29,6 @@ export class TabsPanels {
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

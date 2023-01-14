@@ -1,12 +1,11 @@
 import { Element, Property } from '@htmlplus/element';
 
 /**
- * @development 
+ * @development
  * @slot default - The default slot.
  */
 @Element()
 export class Toolbar {
-
   /**
    * TODO
    */
@@ -30,13 +29,13 @@ export class Toolbar {
    */
   @Property({ reflect: true })
   wrap?: boolean = true;
-  
+
   render() {
     return (
       <div>
         {this.gutterX}
         <slot />
       </div>
-    )
+    );
   }
 }

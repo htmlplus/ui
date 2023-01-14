@@ -1,6 +1,9 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
+
 import SignaturePad from 'signature_pad';
+
 import * as Helpers from '@app/helpers';
+
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
 /**
@@ -160,23 +163,20 @@ export class Signature {
 
   /**
    * Draws from the data URL. [More](https://mdn.io/drawImage).
-   * This method does not populate the internal data structure that represents the drawn signature. 
+   * This method does not populate the internal data structure that represents the drawn signature.
    * Thus, after using `fromDataURL`, `toData` won't work properly.
    * @param dataUrl A string containing the [data URL](https://mdn.io/dataURL).
    * @param options TODO
    */
   @Method()
   async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
-    await this.instance.fromDataURL(
-      dataUrl,
-      {
-        ratio: options.ratio,
-        width: options.width,
-        height: options.height,
-        xOffset: options.offsetX,
-        yOffset: options.offsetY,
-      }
-    )
+    await this.instance.fromDataURL(dataUrl, {
+      ratio: options.ratio,
+      width: options.width,
+      height: options.height,
+      xOffset: options.offsetX,
+      yOffset: options.offsetY
+    });
   }
 
   /**
@@ -186,7 +186,7 @@ export class Signature {
   isEmpty(): boolean {
     return this.instance?.isEmpty();
   }
-  
+
   /**
    * Returns data of the canvas.
    * @returns Collections of points.
@@ -195,7 +195,7 @@ export class Signature {
   toData(): SignaturePointGroup[] {
     return JSON.parse(JSON.stringify(this.instance.toData()));
   }
-  
+
   /**
    * Returns [data URL](https://mdn.io/dataURL). [More](https://mdn.io/toDataURL).
    */
@@ -240,7 +240,7 @@ export class Signature {
   resize(clear?: boolean) {
     const { width, height, offsetWidth, offsetHeight } = this.$canvas;
 
-    if (width == offsetWidth && height == offsetHeight) return
+    if (width == offsetWidth && height == offsetHeight) return;
 
     this.$canvas.width = offsetWidth;
 
@@ -315,7 +315,7 @@ export class Signature {
       afterUpdateStroke: this.plusAfter,
       beforeUpdateStroke: this.plusBefore,
       beginStroke: this.plusStart,
-      endStroke: this.plusEnd,
+      endStroke: this.plusEnd
     };
 
     for (const key in events) {
@@ -350,8 +350,6 @@ export class Signature {
   }
 
   render() {
-    return (
-      <canvas part="canvas" ref={($element) => this.$canvas = $element}></canvas>
-    )
+    return <canvas part="canvas" ref={($element) => (this.$canvas = $element)}></canvas>;
   }
 }

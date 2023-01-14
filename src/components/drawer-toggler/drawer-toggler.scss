@@ -4,7 +4,7 @@
   user-select: none;
 }
 
-:host([state=open]) [name=close],
-:host([state=close]) [name=open] {
+:host([state='open']) [name='close'],
+:host([state='close']) [name='open'] {
   display: none;
 }

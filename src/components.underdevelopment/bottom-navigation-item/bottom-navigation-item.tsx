@@ -1,16 +1,16 @@
 import { Attributes, Bind, Element, Property, State } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 
 // const { Inject } = createLink('BottomNavigation');
 
 /**
- * @development 
+ * @development
  * @group bottom-navigation
  * @slot default - The default slot.
  */
 @Element()
 export class BottomNavigationItem {
-
   /**
    * TODO
    */
@@ -33,19 +33,19 @@ export class BottomNavigationItem {
   @Attributes()
   get attributes() {
     return {
-      'grow': this.tunnel?.grow,
-      'role': 'button',
-      'state': this.state,
-      'onClick': () => this.onClick()
-    }
+      grow: this.tunnel?.grow,
+      role: 'button',
+      state: this.state,
+      onClick: () => this.onClick()
+    };
   }
 
   get classes() {
     return Helpers.classes({
-      'root': true,
-      'shift': this.tunnel?.shift,
-      [this.tunnel?.labelPosition]: true,
-    })
+      root: true,
+      shift: this.tunnel?.shift,
+      [this.tunnel?.labelPosition]: true
+    });
   }
 
   get key() {
@@ -62,7 +62,6 @@ export class BottomNavigationItem {
 
   @Bind()
   onClick() {
-
     if (this.disabled) return;
 
     this.request(this.key);
@@ -78,6 +77,6 @@ export class BottomNavigationItem {
         <slot />
         <slot name="label" />
       </div>
-    )
+    );
   }
 }

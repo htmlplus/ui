@@ -1,11 +1,19 @@
 import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
-import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
+
+import {
+  DialogFullscreen,
+  DialogPlacement,
+  DialogPortalStrategy,
+  DialogPortalTarget,
+  DialogSize
+} from './dialog.types';
 
 const { Action, Observable, reconnect } = createLink({
   crawl: false,
-  namespace: ({ connector }) => connector ? `Dialog:${connector}` : undefined
+  namespace: ({ connector }) => (connector ? `Dialog:${connector}` : undefined)
 });
 
 /**
@@ -14,7 +22,6 @@ const { Action, Observable, reconnect } = createLink({
  */
 @Element()
 export class Dialog {
-
   /**
    * TODO
    */
@@ -28,9 +35,9 @@ export class Dialog {
   backdrop?: boolean = true;
 
   /**
-   * This property helps you to attach which dialog toggler controls the dialog. 
-   * It doesn't matter where the dialog toggler is. 
-   * You can put the dialog's toggler inside or outside of the dialog. 
+   * This property helps you to attach which dialog toggler controls the dialog.
+   * It doesn't matter where the dialog toggler is.
+   * You can put the dialog's toggler inside or outside of the dialog.
    * Read more about connectors [here](/connector).
    */
   @Property()
@@ -73,7 +80,7 @@ export class Dialog {
   persistent?: boolean;
 
   /**
-   * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. 
+   * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
    * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
    */
   @Property()
@@ -162,16 +169,14 @@ export class Dialog {
 
   @Attributes()
   get attributes() {
-
     const attributes = {
-      'tabindex': -1,
-    }
+      tabindex: -1
+    };
 
     if (this.isOpen) {
       attributes['role'] = 'dialog';
       attributes['aria-modal'] = 'true';
-    }
-    else {
+    } else {
       attributes['aria-hidden'] = 'true';
     }
 
@@ -179,8 +184,7 @@ export class Dialog {
   }
 
   get classes() {
-
-    let placement = (this.placement || '');
+    let placement = this.placement || '';
 
     if (placement.match(/^(top|bottom)$/)) placement = `-${placement}`;
 
@@ -192,23 +196,25 @@ export class Dialog {
 
     x = Helpers.toAxis(x, Helpers.isRTL(this));
 
-    return Helpers.classes([
-      'dialog',
-      {
-        x,
-        y,
-        size: this.size,
-        sticky: this.sticky,
-        fullWidth: this.fullWidth,
-        fullHeight: this.fullHeight,
-        fullscreen: this.fullscreen,
-        scrollable: this.scrollable
-      }
-    ], true)
+    return Helpers.classes(
+      [
+        'dialog',
+        {
+          x,
+          y,
+          size: this.size,
+          sticky: this.sticky,
+          fullWidth: this.fullWidth,
+          fullHeight: this.fullHeight,
+          fullscreen: this.fullscreen,
+          scrollable: this.scrollable
+        }
+      ],
+      true
+    );
   }
 
   get isCurrent() {
-
     const instances = Dialog.instances;
 
     const last = instances.length - 1;
@@ -217,7 +223,6 @@ export class Dialog {
   }
 
   get zIndex() {
-
     if (Dialog.instances.length < 1) return;
 
     const [instance] = Dialog.instances.slice(-1);
@@ -255,7 +260,6 @@ export class Dialog {
   }
 
   initialize() {
-
     this.animate = new Animation({
       key: 'state',
       source: () => this.$host,
@@ -267,9 +271,9 @@ export class Dialog {
         entered: 'opened',
         leave: 'close',
         leaving: 'closing',
-        leaved: 'closed',
+        leaved: 'closed'
       }
-    })
+    });
 
     if (!this.open) return;
 
@@ -277,14 +281,12 @@ export class Dialog {
   }
 
   terminate() {
-
     this.onHide();
 
     this.animate?.dispose();
   }
 
   tryHide(animation, silent) {
-
     if (!this.isOpen) return;
 
     if (!silent && this.plusClose().defaultPrevented) return;
@@ -293,12 +295,10 @@ export class Dialog {
 
     this.animate.leave({
       onLeave: () => {
-
         // TODO: experimantal new link
         this.broadcast(false);
       },
       onLeaved: () => {
-
         // TODO: experimantal portal
         this.portalInstance?.revert();
 
@@ -306,13 +306,12 @@ export class Dialog {
 
         if (silent) return;
 
-        this.plusClosed()
+        this.plusClosed();
       }
-    })
+    });
   }
 
   tryShow(animation, silent) {
-
     if (this.isOpen) return;
 
     if (!silent && this.plusOpen().defaultPrevented) return;
@@ -324,12 +323,11 @@ export class Dialog {
         this.onShow();
       },
       onEntered: () => {
-
         if (silent) return;
 
         this.plusOpened();
       }
-    })
+    });
   }
 
   /**
@@ -338,17 +336,13 @@ export class Dialog {
 
   @Watch(['connector', 'open'])
   watcher(next, prev, name) {
-
     switch (name) {
-
       case 'connector':
-
         reconnect(this);
 
         break;
 
       case 'open':
-
         next && !this.isOpen && this.tryShow(true, true);
 
         !next && this.isOpen && this.tryHide(true, true);
@@ -362,7 +356,6 @@ export class Dialog {
    */
 
   onHide() {
-
     // reset document's scroll
     Scrollbar.reset(this);
 
@@ -386,13 +379,14 @@ export class Dialog {
   }
 
   onShow() {
-
     // TODO: experimantal portal
-    this.portalInstance = this.portal && new Portal({
-      source: this.$host,
-      target: this.portalTarget,
-      strategy: this.portalStrategy,
-    })
+    this.portalInstance =
+      this.portal &&
+      new Portal({
+        source: this.$host,
+        target: this.portalTarget,
+        strategy: this.portalStrategy
+      });
 
     // remove document's scroll
     Scrollbar.remove(this);
@@ -418,7 +412,6 @@ export class Dialog {
 
   @Bind()
   onEscape(event) {
-
     if (!this.isOpen || !this.isCurrent) return;
 
     if (!this.keyboard || event.key !== 'Escape') return;
@@ -430,7 +423,6 @@ export class Dialog {
 
   @Bind()
   onClickOutside() {
-
     if (!this.isOpen || !this.isCurrent || this.persistent) return;
 
     this.tryHide(true, false);
@@ -440,7 +432,7 @@ export class Dialog {
    * Lifecycles
    */
 
-  // TODO: it's can not be `connectedCallback`, because ClickOutside incompatible 
+  // TODO: it's can not be `connectedCallback`, because ClickOutside incompatible
   connectedCallback() {
     this.initialize();
   }
@@ -452,15 +444,19 @@ export class Dialog {
   render() {
     return (
       <>
-        {this.backdrop && (<div className="backdrop" part="backdrop"><div /></div>)}
+        {this.backdrop && (
+          <div className="backdrop" part="backdrop">
+            <div />
+          </div>
+        )}
         <div className={this.classes}>
           <div className="table">
-            <div className="cell" ref={($element) => this.$cell = $element}>
+            <div className="cell" ref={($element) => (this.$cell = $element)}>
               <slot />
             </div>
           </div>
         </div>
       </>
-    )
+    );
   }
 }

@@ -6,7 +6,6 @@ import { Attributes, Element, Property } from '@htmlplus/element';
  */
 @Element()
 export class TabsBar {
-
   /**
    * Grows tabs as much as all available space (occupies all horizontal space).
    */
@@ -28,13 +27,11 @@ export class TabsBar {
   @Attributes()
   get attributes() {
     return {
-      'role': 'tablist'
-    }
+      role: 'tablist'
+    };
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

@@ -1,4 +1,5 @@
 import { Element, Property, query } from '@htmlplus/element';
+
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 
 /**
@@ -13,42 +14,42 @@ export class Grid {
   alignContent?: GridAlignContent = 'stretch';
 
   /**
-   * Aligns contents vertically across all rows for extra-small display sizes 
+   * Aligns contents vertically across all rows for extra-small display sizes
    * (It overrides alignItemsXs).
    */
   @Property()
   alignContentXs?: GridAlignContent;
 
   /**
-   * Aligns contents vertically across all rows for small display sizes 
+   * Aligns contents vertically across all rows for small display sizes
    * (It overrides alignItemsSm).
    */
   @Property()
   alignContentSm?: GridAlignContent;
 
   /**
-   * Aligns contents vertically across all rows for medium display sizes 
+   * Aligns contents vertically across all rows for medium display sizes
    * (It overrides alignItemsMd).
    */
   @Property()
   alignContentMd?: GridAlignContent;
 
   /**
-   * Aligns contents vertically across all rows for large display sizes 
+   * Aligns contents vertically across all rows for large display sizes
    * (It overrides alignItemsLg).
    */
   @Property()
   alignContentLg?: GridAlignContent;
 
   /**
-   * Aligns contents vertically across all rows for extra-large display sizes 
+   * Aligns contents vertically across all rows for extra-large display sizes
    * (It overrides alignItemsXl).
    */
   @Property()
   alignContentXl?: GridAlignContent;
 
   /**
-   * Aligns contents vertically across all rows for extra-extra-large display sizes 
+   * Aligns contents vertically across all rows for extra-extra-large display sizes
    * (It overrides alignItemsXXl).
    */
   @Property()
@@ -169,49 +170,49 @@ export class Grid {
   vertical?: boolean;
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width.
    */
   @Property()
   wrap?: GridWrap = 'on';
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for extra-small screen devices.
    */
   @Property()
   wrapXs?: GridWrap;
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for small screen devices.
    */
   @Property()
   wrapSm?: GridWrap;
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for medium screen devices.
    */
   @Property()
   wrapMd?: GridWrap;
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for large screen devices.
    */
   @Property()
   wrapLg?: GridWrap;
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for extra-large screen devices.
    */
   @Property()
   wrapXl?: GridWrap;
 
   /**
-   * Controls allowing the container to wrap the content or not if the cumulative width 
+   * Controls allowing the container to wrap the content or not if the cumulative width
    * size of contents is more than the twelve-column width for extra-extra-large screen devices.
    */
   @Property()

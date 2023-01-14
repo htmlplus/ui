@@ -1,8 +1,9 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch, getConfig } from '@htmlplus/element';
-import * as Helpers from '@app/helpers';
-import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
-import { ANIMATION_EASINGS } from './animation.constants';
 
+import * as Helpers from '@app/helpers';
+
+import { ANIMATION_EASINGS } from './animation.constants';
+import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 // Imports built-in animations.
 import './assets/fading-entrance/fade-in.js';
 import './assets/fading-exits/fade-out.js';
@@ -14,7 +15,7 @@ import './assets/fading-exits/fade-out.js';
 @Element()
 export class Animation {
   /**
-   * Determines how values are combined between this animation and other, 
+   * Determines how values are combined between this animation and other,
    * separate animations that do not specify their own specific composite operation.
    */
   @Property()
@@ -27,8 +28,8 @@ export class Animation {
   delay?: number = 0;
 
   /**
-   * Whether the animation runs forwards (`normal`), backwards (`reverse`), 
-   * switches direction after each iteration (`alternate`), or runs 
+   * Whether the animation runs forwards (`normal`), backwards (`reverse`),
+   * switches direction after each iteration (`alternate`), or runs
    * backwards and switches direction after each iteration (`alternate-reverse`).
    */
   @Property()
@@ -42,23 +43,23 @@ export class Animation {
   duration?: number = 1000;
 
   /**
-   * The rate of the animation's change over time. 
-   * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`", 
+   * The rate of the animation's change over time.
+   * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
    * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
    */
   @Property()
   easing?: string = 'linear';
 
   /**
-   * The number of milliseconds to delay after the end of an animation. 
+   * The number of milliseconds to delay after the end of an animation.
    * This is primarily of use when sequencing animations based on the end time of another animation.
    */
   @Property()
   endDelay?: number = 0;
 
   /**
-   * Dictates whether the animation's effects should be reflected by the element(s) 
-   * prior to playing ("`backwards`"), retained after the animation has completed 
+   * Dictates whether the animation's effects should be reflected by the element(s)
+   * prior to playing ("`backwards`"), retained after the animation has completed
    * playing ("`forwards`"), or `both`.
    */
   @Property()
@@ -71,38 +72,38 @@ export class Animation {
   instance?: globalThis.Animation;
 
   /**
-   * Determines how values build from iteration to iteration in this animation. 
+   * Determines how values build from iteration to iteration in this animation.
    * Can be set to `accumulate` or `replace`.
    */
   @Property()
   iterationComposite?: AnimationIterationComposite = 'replace';
 
   /**
-   * The number of times the animation should repeat. And can also take a value of 
-   * [Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity) 
+   * The number of times the animation should repeat. And can also take a value of
+   * [Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity)
    * to make it repeat for as long as the element exists.
    */
   @Property()
   iterations?: number = 1;
 
   /**
-   * Describes at what point in the iteration the animation should start. 
-   * 0.5 would indicate starting halfway through the first iteration for example, 
-   * and with this value set, an animation with 2 iterations would end halfway through 
+   * Describes at what point in the iteration the animation should start.
+   * 0.5 would indicate starting halfway through the first iteration for example,
+   * and with this value set, an animation with 2 iterations would end halfway through
    * a third iteration.
    */
   @Property()
   iterationStart?: number = 0;
 
   /**
-   * A [keyframes](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats) 
+   * A [keyframes](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats)
    * object or `null`.
    */
   @Property()
   keyframes?: Keyframe[];
 
   /**
-   * Specifies what kind of animation will play. 
+   * Specifies what kind of animation will play.
    * The list of available animations is [here](/component/animation/names).
    */
   @Property()
@@ -119,9 +120,9 @@ export class Animation {
    */
   @Property({ reflect: true })
   run?: boolean;
-  
+
   /**
-   * Fires when the [Animation.cancel()](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel) 
+   * Fires when the [Animation.cancel()](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel)
    * method is called or when the animation enters the "`idle`" play state from another state.
    */
   @Event()
@@ -137,7 +138,7 @@ export class Animation {
    * Fires when the animation is removed (i.e., put into an `active` replace state).
    */
   @Event()
-  plusRemove!: EventEmitter<void>;  
+  plusRemove!: EventEmitter<void>;
 
   get $host() {
     return Helpers.host(this);
@@ -149,18 +150,21 @@ export class Animation {
       delay: this.delay,
       direction: this.direction,
       duration: this.duration,
-      easing: ANIMATION_EASINGS[this.easing] ?? getConfig('component', 'plus-animation', 'asset', 'easing', this.easing) ?? this.easing,
+      easing:
+        ANIMATION_EASINGS[this.easing] ??
+        getConfig('component', 'plus-animation', 'asset', 'easing', this.easing) ??
+        this.easing,
       endDelay: this.endDelay,
       fill: this.fill,
       iterationComposite: this.iterationComposite,
       iterations: this.iterations,
       iterationStart: this.iterationStart,
-      playbackRate: this.playbackRate,
-    }
-  } 
- 
-  /** 
-   * Clears all [keyframeEffects](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect) 
+      playbackRate: this.playbackRate
+    };
+  }
+
+  /**
+   * Clears all [keyframeEffects](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect)
    * caused by this animation and aborts its playback.
    */
   @Method()
@@ -169,16 +173,16 @@ export class Animation {
   }
 
   /**
-   * Commits the end styling state of an animation to the element being animated, even after that 
-   * animation has been removed. It will cause the end styling state to be written to the element 
+   * Commits the end styling state of an animation to the element being animated, even after that
+   * animation has been removed. It will cause the end styling state to be written to the element
    * being animated, in the form of properties inside a `style` attribute.
    */
   @Method()
-  commitStyles() { 
+  commitStyles() {
     this.instance?.commitStyles();
   }
 
-  /** 
+  /**
    * Seeks either end of an animation, depending on whether the animation is playing or reversing.
    */
   @Method()
@@ -190,17 +194,17 @@ export class Animation {
    * Suspends playing of an animation.
    */
   @Method()
-  pause() { 
+  pause() {
     this.instance?.pause();
   }
 
   /**
-   * Explicitly persists an animation, when it would otherwise be removed due to the browser's 
-   * [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations) 
+   * Explicitly persists an animation, when it would otherwise be removed due to the browser's
+   * [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations)
    * behavior.
    */
   @Method()
-  persist() { 
+  persist() {
     this.instance?.persist();
   }
 
@@ -212,27 +216,27 @@ export class Animation {
     this.run = true;
     this.instance?.play();
   }
- 
+
   /**
-   * Reverses playback direction, stopping at the start of the animation. 
+   * Reverses playback direction, stopping at the start of the animation.
    * If the animation is finished or unplayed, it will play from end to beginning.
    */
   @Method()
-  reverse() { 
+  reverse() {
     this.instance?.reverse();
   }
- 
+
   /**
    * Sets the speed of an animation after first synchronizing its playback position.
    */
   @Method()
-  updatePlaybackRate(playbackRate: number) { 
+  updatePlaybackRate(playbackRate: number) {
     this.instance?.updatePlaybackRate(playbackRate);
   }
 
   @Watch('run', true)
   watcher() {
-    this.run ?  this.play() : this.pause();
+    this.run ? this.play() : this.pause();
   }
 
   @Bind()
@@ -269,15 +273,13 @@ export class Animation {
     this.pause();
   }
 
-  disconnectedCallback() { 
+  disconnectedCallback() {
     this.instance?.removeEventListener('cancel', this.onCancel);
     this.instance?.removeEventListener('finish', this.onFinish);
     this.instance?.removeEventListener('remove', this.onFinish);
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

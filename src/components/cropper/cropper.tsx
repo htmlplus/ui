@@ -1,6 +1,9 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
-import * as Helpers from '@app/helpers';
+
 import CropperCore from 'cropperjs';
+
+import * as Helpers from '@app/helpers';
+
 import {
   CropperCropEvent,
   CropperAspectRatio,
@@ -13,7 +16,7 @@ import {
   CropperShape,
   CropperView,
   CropperZoomable,
-  CropperZoomEvent,
+  CropperZoomEvent
 } from './cropper.types';
 
 /**
@@ -197,7 +200,7 @@ export class Cropper {
     })();
 
     const view = (() => {
-      return ({ none: 0, fit: 1, contain: 2, cover: 3 })[this.view] as any
+      return { none: 0, fit: 1, contain: 2, cover: 3 }[this.view] as any;
     })();
 
     const zoomable = (() => {
@@ -245,7 +248,7 @@ export class Cropper {
       cropmove: this.onCropMove,
       cropstart: this.onCropStart,
       ready: this.onReady,
-      zoom: this.onZoom,
+      zoom: this.onZoom
     };
   }
 
@@ -330,7 +333,7 @@ export class Cropper {
    */
   @Method()
   zoomTo(ratio: number): void {
-    this.instance.zoomTo(ratio/*, TODO */);
+    this.instance.zoomTo(ratio /*, TODO */);
   }
 
   bind() {
@@ -341,42 +344,42 @@ export class Cropper {
     // TODO: has a problem in documentation
     this.instance?.destroy();
   }
-  
+
   sync(value?) {
     if (!this.instance) return;
 
-    const from = (a, b) => a * b / 100;
+    const from = (a, b) => (a * b) / 100;
 
-    const to = (a, b) => a / b * 100;
-  
+    const to = (a, b) => (a / b) * 100;
+
     const image = this.instance.getCanvasData();
-  
+
     const viewport = this.instance.getCropBoxData();
-  
+
     if (value) {
       this.instance.rotateTo(value.rotate);
 
       const height = to(viewport.height, value.height);
-      const width  = to(viewport.width , value.width );
+      const width = to(viewport.width, value.width);
 
-      const top  = (viewport.top  + viewport.height / 2) - from(height, value.top  + value.height / 2);
-      const left = (viewport.left + viewport.width  / 2) - from(width , value.left + value.width  / 2);
+      const top = viewport.top + viewport.height / 2 - from(height, value.top + value.height / 2);
+      const left = viewport.left + viewport.width / 2 - from(width, value.left + value.width / 2);
 
       this.instance.setCanvasData({ top, left, width, height });
 
       return;
     }
-  
+
     this.locked = true;
-    
+
     this.value = {
       rotate: this.instance.getData().rotate,
       top: to(viewport.top - image.top, image.height),
       left: to(viewport.left - image.left, image.width),
       height: to(viewport.height, image.height),
-      width: to(viewport.width, image.width),
+      width: to(viewport.width, image.width)
     };
-  
+
     // TODO
     requestAnimationFrame(() => {
       this.locked = false;
@@ -412,7 +415,7 @@ export class Cropper {
       case 'value':
         this.sync(next);
         break;
-        
+
       case 'area':
       case 'backdrop':
       case 'background':
@@ -429,7 +432,7 @@ export class Cropper {
   }
 
   @Bind()
-  onCrop() { 
+  onCrop() {
     this.sync();
     this.plusCrop(this.value as any);
   }
@@ -438,7 +441,7 @@ export class Cropper {
   onCropEnd(event) {
     this.plusCropEnd({
       action: event.detail.action,
-      event: event.detail.originalEvent,
+      event: event.detail.originalEvent
     });
   }
 
@@ -446,7 +449,7 @@ export class Cropper {
   onCropMove(event) {
     this.plusCropMove({
       action: event.detail.action,
-      event: event.detail.originalEvent,
+      event: event.detail.originalEvent
     });
   }
 
@@ -454,7 +457,7 @@ export class Cropper {
   onCropStart(event) {
     this.plusCropStart({
       action: event.detail.action,
-      event: event.detail.originalEvent,
+      event: event.detail.originalEvent
     });
   }
 
@@ -476,7 +479,7 @@ export class Cropper {
       difference,
       direction,
       event: event.detail.originalEvent,
-      ratio: event.detail.ratio,
+      ratio: event.detail.ratio
     };
 
     const { defaultPrevented } = this.plusZoom(detail);
@@ -497,13 +500,8 @@ export class Cropper {
   render() {
     return (
       <div className={this.classes}>
-        <img 
-          className="image" 
-          alt="cropper" 
-          ref={($element) => this.$image = $element} 
-          src={this.src} 
-        />
+        <img className="image" alt="cropper" ref={($element) => (this.$image = $element)} src={this.src} />
       </div>
-    )
+    );
   }
 }

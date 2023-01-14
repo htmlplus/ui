@@ -1,5 +1,7 @@
 import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
+
 import { StickyState, StickyTop } from './sticky.types';
 
 /**
@@ -46,7 +48,7 @@ export class Sticky {
     return {
       state: this.watcher ? this.state : null,
       style: this.style
-    }
+    };
   }
 
   get sizer() {
@@ -56,14 +58,14 @@ export class Sticky {
 
     return {
       top: `calc((${top} + 1px) * -1)`
-    }
+    };
   }
 
   get style() {
     return Helpers.styles({
       top: Helpers.toUnit(this.top),
-      zIndex: this.zIndex ?? null,
-    })
+      zIndex: this.zIndex ?? null
+    });
   }
 
   bind() {
@@ -78,11 +80,11 @@ export class Sticky {
   }
 
   unbind() {
-    // TODO: immediately rerenders after remove `watcher` attribute 
+    // TODO: immediately rerenders after remove `watcher` attribute
     requestAnimationFrame(() => {
       this.state = undefined;
       this.observer?.disconnect();
-    })
+    });
   }
 
   @Watch(['disabled', 'watcher'])
@@ -118,11 +120,7 @@ export class Sticky {
     return (
       <>
         <div className="sizer-wrapper">
-          <div
-            className="sizer"
-            ref={($element) => this.$element = $element}
-            style={this.sizer}
-          ></div>
+          <div className="sizer" ref={($element) => (this.$element = $element)} style={this.sizer}></div>
         </div>
         <slot />
         {this.state && (
@@ -131,6 +129,6 @@ export class Sticky {
           </div>
         )}
       </>
-    )
+    );
   }
 }

@@ -1,4 +1,5 @@
 import { Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 import { ClickOutside as ClickOutsideCore } from '@app/services';
 
@@ -8,9 +9,8 @@ import { ClickOutside as ClickOutsideCore } from '@app/services';
  */
 @Element()
 export class ClickOutside {
-
   /**
-   * A boolean value indicating that events of this type will be dispatched to the registered 
+   * A boolean value indicating that events of this type will be dispatched to the registered
    * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
    */
   @Property()
@@ -29,8 +29,8 @@ export class ClickOutside {
   once?: boolean;
 
   /**
-  * Fires when outside of the component is clicked.
-  */
+   * Fires when outside of the component is clicked.
+   */
   @Event({ cancelable: true })
   plusClickOutside!: EventEmitter<void>;
 
@@ -41,7 +41,7 @@ export class ClickOutside {
   get options() {
     return {
       capture: this.capture
-    }
+    };
   }
 
   bind() {
@@ -82,6 +82,6 @@ export class ClickOutside {
   }
 
   render() {
-    return <slot />
+    return <slot />;
   }
 }

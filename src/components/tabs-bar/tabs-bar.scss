@@ -12,16 +12,16 @@
   flex-grow: 1;
 }
 
-:host([justify=start]),
-:host([justify=end]#{boolean(reverse)}) {
+:host([justify='start']),
+:host([justify='end']#{boolean(reverse)}) {
   justify-content: flex-start;
 }
 
-:host([justify=center]) {
+:host([justify='center']) {
   justify-content: center;
 }
 
-:host([justify=end]),
-:host([justify=start]#{boolean(reverse)}) {
+:host([justify='end']),
+:host([justify='start']#{boolean(reverse)}) {
   justify-content: flex-end;
 }

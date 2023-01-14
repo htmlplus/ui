@@ -6,9 +6,9 @@ import * as Helpers from '@app/helpers';
 import * as CONSTANTS from './breadcrumb.constants';
 
 /**
- * @part expander  - Expander element.
- * @part item      - Item element.
- * @part separator - Separator element.
+ * @part expander  - The expander element.
+ * @part item      - The breadcrumb elements.
+ * @part separator - The separator elements.
  * @slot default   - The default slot.
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
@@ -16,29 +16,29 @@ import * as CONSTANTS from './breadcrumb.constants';
 @Element()
 export class Breadcrumb {
   /**
-   * For localization purposes, you can use the provided translations.
+   * Specifies the label for the expander button.
    */
   @Property()
   expanderText?: string = 'Show path';
 
   /**
-   * The expander button is displayed when the number of the items reached the maximum limit. 
-   * The offset property specifies the position of the expander button.
+   * Specifies the position of the expander button.
+   * The expander button is displayed when the number of items reached the maximum limit.
    */
   @Property()
   offset?: number = 1;
 
   /**
-   * Specifies Maximum items that is allowed to be displayed.
+   * Specifies the Maximum number of items that are allowed to be displayed.
    */
   @Property()
   max?: number;
 
   /**
-   * You can use HTML elements, Custom separator, or SVG icon.
+   * Specifies the separator between items.
    */
   @Property()
-  separator?: string; 
+  separator?: string;
 
   @Attributes()
   get attributes() {
@@ -50,18 +50,12 @@ export class Breadcrumb {
   @State()
   expand: boolean = false;
 
-  observer?: MutationObserver;
+  observer: MutationObserver = new MutationObserver(this.onChange);
 
   get $children() {
-    return Array
-      .from(this.host.children)
-      .filter(($node) => !$node.matches(
-        [
-          CONSTANTS.BREADCRUMB_EXPANDER_QUERY,
-          CONSTANTS.BREADCRUMB_SEPARATOR_QUERY
-        ]
-        .join(',')
-      ));
+    return Array.from(this.host.children).filter(($node) => {
+      return !$node.matches([CONSTANTS.BREADCRUMB_EXPANDER_QUERY, CONSTANTS.BREADCRUMB_SEPARATOR_QUERY].join(','));
+    });
   }
 
   get host() {
@@ -110,57 +104,47 @@ export class Breadcrumb {
       });
     });
 
-    if (start !== undefined)
+    if (start !== undefined) {
       items.splice(start, 0, {
         type: 'expander',
         key: 'expander'
       });
+    }
 
-    if(this.template)
-      for (let i = items.length - 1; i > 0; i--)
+    if (this.template) {
+      for (let i = items.length - 1; i > 0; i--) {
         items.splice(i, 0, {
           type: 'separator',
           key: `expander-${i}`
         });
+      }
+    }
 
-    return items
-  } 
+    return items;
+  }
 
   get template() {
     const $node = this.host.querySelector(CONSTANTS.BREADCRUMB_SEPARATOR_QUERY) as HTMLTemplateElement;
- 
+
     const $clone = $node?.cloneNode(true) as HTMLElement;
 
     $clone?.removeAttribute('slot');
- 
+
     return $clone?.outerHTML || this.separator;
   }
 
-  /**
-   * Internal Methods
-   */
-
   bind() {
-    this.observer = new MutationObserver(this.onChange);
     this.observer.observe(this.host, { childList: true });
   }
 
   unbind() {
-    this.observer?.disconnect();
-  }  
-
-  /**
-   * Events handler
-   */
+    this.observer.disconnect();
+  }
 
   @Bind()
   onChange() {
     request(this);
   }
-
-  /**
-   * Lifecycles
-   */
 
   connectedCallback() {
     this.bind();
@@ -173,14 +157,18 @@ export class Breadcrumb {
   // TODO: use 'dangerouslySetInnerHTML' instead
   updatedCallback() {
     const template = this.template;
-    if(!template) return;
-    queryAll(this, '.separator').forEach((element) => (element.innerHTML = template));
+
+    if (!template) return;
+
+    queryAll(this, '.separator').forEach((element) => {
+      element.innerHTML = template;
+    });
   }
 
   render() {
     return (
       <div className="container">
-        {this.items?.map((item) => {
+        {this.items.map((item) => {
           switch (item.type) {
             case 'item': {
               return (
@@ -199,7 +187,7 @@ export class Breadcrumb {
                   part="expander"
                   role="button"
                   tabIndex={0}
-                  onClick={() => this.expand = true}
+                  onClick={() => (this.expand = true)}
                   onKeyDown={(event) => event.key.match(/Enter| /) && (this.expand = true)}
                 >
                   <slot name="expander">

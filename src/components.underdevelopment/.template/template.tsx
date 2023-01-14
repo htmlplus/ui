@@ -1,4 +1,5 @@
 import { Element, Property } from '@htmlplus/element';
+
 // import { } from './template.types';
 
 /**
@@ -7,7 +8,6 @@ import { Element, Property } from '@htmlplus/element';
  */
 @Element()
 export class Template {
-
   /**
    * TODO
    */
@@ -35,8 +35,6 @@ export class Template {
    */
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

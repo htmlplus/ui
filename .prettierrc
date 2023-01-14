@@ -4,8 +4,14 @@
   "quoteProps": "consistent",
   "singleQuote": true,
   "trailingComma": "none",
-  "importOrder": ["<THIRD_PARTY_MODULES>", "^[.](.*)"],
+  "importOrder": [
+    "^@htmlplus/(.*)$",
+    "<THIRD_PARTY_MODULES>", 
+    "^@app/(.*)$",
+    "^[.](.*)"
+  ],
   "importOrderCaseInsensitive": true,
+  "importOrderParserPlugins" : ["typescript", "jsx", "classProperties", "[\"decorators\", { \"decoratorsBeforeExport\": true }]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": false
 }

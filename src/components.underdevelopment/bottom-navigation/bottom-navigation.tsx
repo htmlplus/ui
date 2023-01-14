@@ -1,4 +1,5 @@
 import { Attributes, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import * as Helpers from '@app/helpers';
 import { Animation } from '@app/services';
 
@@ -11,7 +12,6 @@ import { Animation } from '@app/services';
  */
 @Element()
 export class BottomNavigation {
-
   /**
    * TODO
    */
@@ -76,8 +76,8 @@ export class BottomNavigation {
   @Attributes()
   get attributes() {
     return {
-      'state': 'open'
-    }
+      state: 'open'
+    };
   }
 
   /**
@@ -93,13 +93,12 @@ export class BottomNavigation {
       value: this.value,
       grow: this.grow,
       labelPosition: this.labelPosition,
-      shift: this.shift,
-    }
+      shift: this.shift
+    };
   }
 
   // @Action()
   request(value: any) {
-
     const event = this.plusChange(value);
 
     if (event.defaultPrevented) return;
@@ -110,7 +109,6 @@ export class BottomNavigation {
   }
 
   initialize() {
-
     this.animate = new Animation({
       key: 'state',
       source: () => Helpers.host(this),
@@ -122,7 +120,7 @@ export class BottomNavigation {
         entered: 'opened',
         leave: 'close',
         leaving: 'closing',
-        leaved: 'closed',
+        leaved: 'closed'
       }
     });
 
@@ -160,8 +158,6 @@ export class BottomNavigation {
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

@@ -1,9 +1,10 @@
 import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
+
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink({
   crawl: true,
-  namespace: ({ connector }) => connector ? `Dialog:${connector}` : undefined
+  namespace: ({ connector }) => (connector ? `Dialog:${connector}` : undefined)
 });
 
 /**
@@ -13,11 +14,10 @@ const { Inject, reconnect } = createLink({
  */
 @Element()
 export class DialogToggler {
-
   /**
-   * This property helps you to attach which dialog this toggler controls. 
-   * It doesn't matter where the dialog toggler is. 
-   * You can put the dialog's toggler inside or outside of the dialog. 
+   * This property helps you to attach which dialog this toggler controls.
+   * It doesn't matter where the dialog toggler is.
+   * You can put the dialog's toggler inside or outside of the dialog.
    * Read more about connectors [here](/connector).
    */
   @Property()
@@ -32,10 +32,10 @@ export class DialogToggler {
   @Attributes()
   get attributes() {
     return {
-      'role': 'button',
-      'state': this.tunnel ? 'open' : 'close',
-      'onClick': this.onClick
-    }
+      role: 'button',
+      state: this.tunnel ? 'open' : 'close',
+      onClick: this.onClick
+    };
   }
 
   get text() {
@@ -50,7 +50,7 @@ export class DialogToggler {
   watcher() {
     reconnect(this);
   }
-  
+
   /**
    * Events handler
    */
@@ -60,11 +60,7 @@ export class DialogToggler {
   }
 
   render() {
-    return (
-      <slot>
-        {this.text}
-      </slot>
-    )
+    return <slot>{this.text}</slot>;
   }
 }
 

@@ -4,10 +4,9 @@
 }
 
 :host(#{boolean(vertical)}) {
-
   flex-direction: row;
 
-  ::slotted(plus-tabs-bar){
+  ::slotted(plus-tabs-bar) {
     flex-direction: column;
   }
 

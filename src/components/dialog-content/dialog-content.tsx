@@ -5,7 +5,6 @@ import { Element, Property } from '@htmlplus/element';
  */
 @Element()
 export class DialogContent {
-
   /**
    * It makes the user able to scroll the content by adding a scroll beside it.
    */
@@ -13,8 +12,6 @@ export class DialogContent {
   scrollable?: boolean;
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

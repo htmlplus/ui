@@ -1,9 +1,10 @@
 import { Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+
 import { createLink } from '@app/services';
 
 const { Action, Observable, reconnect } = createLink({
   crawl: false,
-  namespace: ({ connector }) => connector ? `Tabs:${connector}` : undefined
+  namespace: ({ connector }) => (connector ? `Tabs:${connector}` : undefined)
 });
 
 /**
@@ -12,7 +13,6 @@ const { Action, Observable, reconnect } = createLink({
  */
 @Element()
 export class Tabs {
-
   /**
    * Provides your own value.
    */
@@ -26,7 +26,7 @@ export class Tabs {
   vertical?: boolean;
 
   /**
-   * Panels are not always used inside tabs.They may be used outside, in which you can use 
+   * Panels are not always used inside tabs.They may be used outside, in which you can use
    * this property to connect them to their corresponding tabs.
    */
   @Property()
@@ -39,7 +39,7 @@ export class Tabs {
   plusChange!: EventEmitter<any>;
 
   @Observable()
-  tunnel?: any; 
+  tunnel?: any;
 
   /**
    * Internal Methods
@@ -86,8 +86,6 @@ export class Tabs {
   }
 
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

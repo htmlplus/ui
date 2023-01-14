@@ -7,196 +7,177 @@ export type AnimationState = 'enter' | 'entering' | 'entered' | 'leave' | 'leavi
 export type AnimationElement = HTMLElement | Array<HTMLElement> | any; // TODO
 
 export interface AnimationConfig {
-    key?: string;
-    source?: AnimationElement;
-    target?: AnimationElement;
-    state?: AnimationState,
-    states?: {
-        [key in AnimationState]?: string
-    },
-    onEnter?: () => void;
-    onEntering?: () => void;
-    onEntered?: () => void;
-    onEnterCanceled?: () => void;
-    onLeave?: () => void;
-    onLeaving?: () => void;
-    onLeaved?: () => void;
-    onLeaveCanceled?: () => void;
+  key?: string;
+  source?: AnimationElement;
+  target?: AnimationElement;
+  state?: AnimationState;
+  states?: {
+    [key in AnimationState]?: string;
+  };
+  onEnter?: () => void;
+  onEntering?: () => void;
+  onEntered?: () => void;
+  onEnterCanceled?: () => void;
+  onLeave?: () => void;
+  onLeaving?: () => void;
+  onLeaved?: () => void;
+  onLeaveCanceled?: () => void;
 }
 
 export class Animation {
+  private config: AnimationConfig;
 
-    private config: AnimationConfig;
+  private timeout;
 
-    private timeout;
+  constructor(config: AnimationConfig) {
+    const states = Object.assign(
+      {},
+      {
+        enter: 'enter',
+        entering: 'entering',
+        entered: 'entered',
+        leave: 'leave',
+        leaving: 'leaving',
+        leaved: 'leaved'
+      },
+      config.states
+    );
 
-    constructor(config: AnimationConfig) {
+    this.config = Object.assign(
+      {},
+      {
+        reflect: 'class',
+        states,
+        onEnter: () => undefined,
+        onEntering: () => undefined,
+        onEntered: () => undefined,
+        onEnterCanceled: () => undefined,
+        onLeave: () => undefined,
+        onLeaving: () => undefined,
+        onLeaved: () => undefined,
+        onLeaveCanceled: () => undefined
+      },
+      config
+    );
 
-        const states = Object.assign(
-            {},
-            {
-                enter: 'enter',
-                entering: 'entering',
-                entered: 'entered',
-                leave: 'leave',
-                leaving: 'leaving',
-                leaved: 'leaved',
-            },
-            config.states
-        );
+    this.init();
+  }
 
-        this.config = Object.assign(
-            {},
-            {
-                reflect: 'class',
-                states,
-                onEnter: () => undefined,
-                onEntering: () => undefined,
-                onEntered: () => undefined,
-                onEnterCanceled: () => undefined,
-                onLeave: () => undefined,
-                onLeaving: () => undefined,
-                onLeaved: () => undefined,
-                onLeaveCanceled: () => undefined,
-            },
-            config
-        );
+  private get sources() {
+    let { source } = this.config;
 
-        this.init();
-    }
+    try {
+      source = source();
+    } catch {}
 
-    private get sources() {
+    return [source].flat(1);
+  }
 
-        let { source } = this.config;
+  private get targets() {
+    let { target } = this.config;
 
+    try {
+      target = target();
+    } catch {}
+
+    return [target].flat(1);
+  }
+
+  private duration() {
+    return this.sources
+      .map((item) => {
         try {
-            source = source();
+          const style = Helpers.getComputedStyle(item);
+
+          const duration = [
+            style.animationDelay,
+            style.transitionDelay,
+            style.animationDuration,
+            style.transitionDuration
+          ].map((item = '0s') => parseFloat(item) * (/ms/g.test(item) ? 1 : 1000));
+
+          return Math.max(...duration.slice(0, 2)) + Math.max(...duration.slice(2));
+        } catch {
+          return 0;
         }
-        catch { }
+      })
+      .sort((a, b) => a - b)
+      .pop();
+  }
 
-        return [source].flat(1);
-    }
+  private init() {
+    let { state } = this.config;
 
-    private get targets() {
+    this.update(state);
+  }
 
-        let { target } = this.config;
+  private next(callback) {
+    requestAnimationFrame(() => setTimeout(() => callback(), 5));
+  }
 
-        try {
-            target = target();
-        }
-        catch { }
+  private update(state: AnimationState) {
+    const { key, states } = this.config;
 
-        return [target].flat(1);
-    }
+    this.targets.map((target) => target.setAttribute(key, states[state]));
+  }
 
-    private duration() {
+  public cancel() {
+    clearTimeout(this.timeout);
+  }
 
-        return this.sources
-            .map((item) => {
+  public dispose() {
+    clearTimeout(this.timeout);
+  }
 
-                try {
+  public enter(config?: AnimationConfig) {
+    this.cancel();
 
-                    const style = Helpers.getComputedStyle(item);
+    config = Object.assign({}, this.config, config);
 
-                    const duration = [
-                        style.animationDelay,
-                        style.transitionDelay,
-                        style.animationDuration,
-                        style.transitionDuration,
-                    ]
-                        .map((item = '0s') => parseFloat(item) * (/ms/g.test(item) ? 1 : 1000));
+    this.update('enter');
 
-                    return Math.max(...duration.slice(0, 2)) + Math.max(...duration.slice(2));
-                }
-                catch {
-                    return 0;
-                }
-            })
-            .sort((a, b) => a - b)
-            .pop();
-    }
+    config.onEnter();
 
-    private init() {
+    this.next(() => {
+      clearTimeout(this.timeout);
 
-        let { state } = this.config;
+      this.update('entering');
 
-        this.update(state);
-    }
+      config.onEntering();
 
-    private next(callback) {
-        requestAnimationFrame(() => setTimeout(() => callback(), 5));
-    }
+      const duration = this.duration();
 
-    private update(state: AnimationState) {
+      this.timeout = setTimeout(() => {
+        this.update('entered');
 
-        const { key, states } = this.config;
+        config.onEntered();
+      }, duration);
+    });
+  }
 
-        this.targets.map((target) => target.setAttribute(key, states[state]));
-    }
+  public leave(config?: AnimationConfig) {
+    this.cancel();
 
-    public cancel() {
-        clearTimeout(this.timeout);
-    }
+    config = Object.assign({}, this.config, config);
 
-    public dispose() {
-        clearTimeout(this.timeout);
-    }
+    this.update('leave');
 
-    public enter(config?: AnimationConfig) {
+    config.onLeave();
 
-        this.cancel();
+    this.next(() => {
+      clearTimeout(this.timeout);
 
-        config = Object.assign({}, this.config, config);
+      this.update('leaving');
 
-        this.update('enter');
+      config.onLeaving();
 
-        config.onEnter();
+      const duration = this.duration();
 
-        this.next(() => {
+      this.timeout = setTimeout(() => {
+        this.update('leaved');
 
-            clearTimeout(this.timeout);
-
-            this.update('entering');
-
-            config.onEntering();
-
-            const duration = this.duration();
-
-            this.timeout = setTimeout(() => {
-
-                this.update('entered');
-
-                config.onEntered();
-            }, duration);
-        })
-    }
-
-    public leave(config?: AnimationConfig) {
-
-        this.cancel();
-
-        config = Object.assign({}, this.config, config);
-
-        this.update('leave');
-
-        config.onLeave();
-
-        this.next(() => {
-
-            clearTimeout(this.timeout);
-
-            this.update('leaving');
-
-            config.onLeaving();
-
-            const duration = this.duration();
-
-            this.timeout = setTimeout(() => {
-
-                this.update('leaved');
-
-                config.onLeaved();
-            }, duration);
-        })
-    }
+        config.onLeaved();
+      }, duration);
+    });
+  }
 }

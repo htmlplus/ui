@@ -27,9 +27,7 @@ export class AspectRatio {
   get ratio() {
     if (typeof this.value === 'number') return this.value;
 
-    let [valueA, valueB] = `${this.value}`
-      .split('/')
-      .map((item: any) => (isNaN(item) ? NaN : parseFloat(item)));
+    let [valueA, valueB] = `${this.value}`.split('/').map((item: any) => (isNaN(item) ? NaN : parseFloat(item)));
 
     valueB = valueB ?? 1;
 
@@ -43,18 +41,21 @@ export class AspectRatio {
 
     // TODO: parse number in @Property()
     const minHeight = isNaN(this.minHeight as any) ? this.minHeight : `${this.minHeight}px`;
-    const maxHeight = isNaN(this.maxHeight as any) ? this.maxHeight : `${this.maxHeight}px` ;
+    const maxHeight = isNaN(this.maxHeight as any) ? this.maxHeight : `${this.maxHeight}px`;
 
-    const paddingTop = minHeight || maxHeight ? `clamp(${minHeight || 0}, ${100 / ratio}%, ${maxHeight || '9999px'})` : `${100 / ratio}%`;
+    const paddingTop =
+      minHeight || maxHeight
+        ? `clamp(${minHeight || 0}, ${100 / ratio}%, ${maxHeight || '9999px'})`
+        : `${100 / ratio}%`;
 
-    return { paddingTop }
+    return { paddingTop };
   }
 
   render() {
     return (
       <div className="root" style={this.style}>
         <slot />
-      </div>  
-    )
+      </div>
+    );
   }
 }

@@ -1,7 +1,6 @@
 @import 'grid.variables';
 
 :host {
-
   // @prop TODO
   --plus-grid--gutter-x: 0;
 
@@ -43,33 +42,33 @@ div {
 
 @each $gutter, $value in $gutters {
   @each $key in (x, y) {
-    [gutter-#{$key}=#{$gutter}],
-    [gutter=#{$gutter}]:not([gutter-#{$key}]) {
+    [gutter-#{$key}='#{$gutter}'],
+    [gutter='#{$gutter}']:not([gutter-#{$key}]) {
       --plus-grid--gutter-#{$key}: #{$value};
     }
   }
 }
 
 @each $key, $value in $align-content {
-  [align-content=#{$key}] {
+  [align-content='#{$key}'] {
     align-content: $value;
   }
 }
 
 @each $key, $value in $align-items {
-  [align-items=#{$key}] {
+  [align-items='#{$key}'] {
     align-items: $value;
   }
 }
 
 @each $key, $value in $justify-content {
-  [justify-content=#{$key}] {
+  [justify-content='#{$key}'] {
     justify-content: $value;
   }
 }
 
 @each $key, $value in $wrap {
-  [wrap=#{$key}] {
+  [wrap='#{$key}'] {
     flex-wrap: $value;
   }
 }
@@ -77,22 +76,22 @@ div {
 @each $breakpoint, $value in $breakpoints {
   @include media-breakpoint-up($breakpoint) {
     @each $key, $value in $align-content {
-      [align-content-#{$breakpoint}=#{$key}] {
+      [align-content-#{$breakpoint}='#{$key}'] {
         align-content: $value;
       }
     }
     @each $key, $value in $align-items {
-      [align-items-#{$breakpoint}=#{$key}] {
+      [align-items-#{$breakpoint}='#{$key}'] {
         align-items: $value;
       }
     }
     @each $key, $value in $justify-content {
-      [justify-content-#{$breakpoint}=#{$key}] {
+      [justify-content-#{$breakpoint}='#{$key}'] {
         justify-content: $value;
       }
     }
     @each $key, $value in $wrap {
-      [wrap-#{$breakpoint}=#{$key}] {
+      [wrap-#{$breakpoint}='#{$key}'] {
         flex-wrap: $value;
       }
     }

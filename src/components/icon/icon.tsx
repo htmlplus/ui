@@ -6,7 +6,6 @@ import { Attributes, Element, Property } from '@htmlplus/element';
  */
 @Element()
 export class Icon {
-
   /**
    * TODO
    * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
@@ -40,7 +39,7 @@ export class Icon {
   rotate?: 90 | 180 | 270;
 
   /**
-   * Specifies the size of the icon. 
+   * Specifies the size of the icon.
    * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Property({ reflect: true })
@@ -48,19 +47,14 @@ export class Icon {
 
   @Attributes()
   get attributes() {
-
     if (!this.color) return;
 
     return {
-      'style': `color: ${this.color}`
-    }
+      style: `color: ${this.color}`
+    };
   }
 
   render() {
-    return (
-      <slot>
-        {this.name}
-      </slot>
-    )
+    return <slot>{this.name}</slot>;
   }
 }

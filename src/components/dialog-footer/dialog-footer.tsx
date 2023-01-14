@@ -6,8 +6,6 @@ import { Element } from '@htmlplus/element';
 @Element()
 export class DialogFooter {
   render() {
-    return (
-      <slot />
-    )
+    return <slot />;
   }
 }

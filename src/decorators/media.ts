@@ -2,106 +2,92 @@ import * as CONSTANTS from '@app/constants';
 import * as Helpers from '@app/helpers';
 
 export function Media(query: string) {
+  const getMedia = (target: any, query: string) => {
+    const breakpoints = sort(CONSTANTS.BREAKPOINTS);
 
-    const getMedia = (target: any, query: string) => {
+    query = normalize(target, query);
 
-        const breakpoints = sort(CONSTANTS.BREAKPOINTS);
+    if (!query) return;
 
-        query = normalize(target, query);
+    const [key, direction] = query.split('-');
 
-        if (!query) return;
+    const isUp = direction === 'up';
 
-        const [key, direction] = query.split('-');
+    const isDown = direction === 'down';
 
-        const isUp = direction === 'up';
+    const index = breakpoints.findIndex((breakpoint) => breakpoint.key === key);
 
-        const isDown = direction === 'down';
+    const min = breakpoints[index].value;
 
-        const index = breakpoints.findIndex((breakpoint) => breakpoint.key === key);
+    const max = (breakpoints[index + 1] || {}).value - 1;
 
-        const min = breakpoints[index].value;
-
-        const max = (breakpoints[index + 1] || {}).value - 1;
-
-        if (isUp || isNaN(max)) {
-
-            query = `(min-width: ${min}px)`;
-        }
-        else if (isDown) {
-
-            query = `(max-width: ${max}px)`;
-        }
-        else {
-
-            query = `(min-width: ${min}px) and (max-width: ${max}px)`;
-        }
-
-        return window.matchMedia(query);
+    if (isUp || isNaN(max)) {
+      query = `(min-width: ${min}px)`;
+    } else if (isDown) {
+      query = `(max-width: ${max}px)`;
+    } else {
+      query = `(min-width: ${min}px) and (max-width: ${max}px)`;
     }
 
-    const normalize = (target: any, query: string) => {
+    return window.matchMedia(query);
+  };
 
-        const isProperty = query.match(/\[(.*)\]/);
+  const normalize = (target: any, query: string) => {
+    const isProperty = query.match(/\[(.*)\]/);
 
-        if (isProperty) {
+    if (isProperty) {
+      const property = isProperty[1];
 
-            const property = isProperty[1];
-
-            query = query.replace(`[${property}]`, target[property]);
-        }
-
-        return query;
+      query = query.replace(`[${property}]`, target[property]);
     }
 
-    const sort = (breakpoints: Object) => {
+    return query;
+  };
 
-        return Object.keys(breakpoints)
-            .map((key) => {
+  const sort = (breakpoints: Object) => {
+    return Object.keys(breakpoints)
+      .map((key) => {
+        return {
+          key,
+          value: breakpoints[key]
+        };
+      })
+      .sort((a, b) => a.value - b.value);
+  };
 
-                return {
-                    key,
-                    value: breakpoints[key]
-                }
-            })
-            .sort((a, b) => a.value - b.value);
-    }
+  return function (target: any, propertyKey: PropertyKey) {
+    let media;
 
-    return function (target: any, propertyKey: PropertyKey) {
+    const connected = target.connectedCallback;
 
-        let media;
+    target.connectedCallback = function () {
+      media = getMedia(this, query);
 
-        const connected = target.connectedCallback;
+      const callback = this[propertyKey];
 
-        target.connectedCallback = function () {
+      Helpers.on(media, 'change', callback);
 
-            media = getMedia(this, query);
+      connected && connected.bind(this)();
 
-            const callback = this[propertyKey];
+      // TODO
 
-            Helpers.on(media, 'change', callback);
+      const event: any = new Event('change');
 
-            connected && connected.bind(this)();
+      event.matches = media.matches;
 
-            // TODO
+      event.media = media.media;
 
-            const event: any = new Event('change');
-
-            event.matches = media.matches;
-
-            event.media = media.media;
-
-            media.dispatchEvent(event);
-        }
-
-        const disconnected = target.disconnectedCallback;
-
-        target.disconnectedCallback = function () {
-
-            const callback = this[propertyKey];
-
-            Helpers.off(media, 'change', callback);
-
-            disconnected && disconnected.bind(this)();
-        }
+      media.dispatchEvent(event);
     };
+
+    const disconnected = target.disconnectedCallback;
+
+    target.disconnectedCallback = function () {
+      const callback = this[propertyKey];
+
+      Helpers.off(media, 'change', callback);
+
+      disconnected && disconnected.bind(this)();
+    };
+  };
 }

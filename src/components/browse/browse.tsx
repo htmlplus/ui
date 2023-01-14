@@ -1,13 +1,5 @@
-import {
-  Attributes,
-  Bind,
-  Element,
-  Event,
-  EventEmitter,
-  Method,
-  Property,
-  State,
-} from '@htmlplus/element';
+import { Attributes, Bind, Element, Event, EventEmitter, Method, Property, State } from '@htmlplus/element';
+
 import { BrowseEvent, BrowseEventFile } from './browse.types';
 
 /**
@@ -16,8 +8,8 @@ import { BrowseEvent, BrowseEventFile } from './browse.types';
 @Element()
 export class Browse {
   /**
-   * One or more 
-   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) 
+   * One or more
+   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
    * describing file types to allow.
    */
   @Property()
@@ -131,7 +123,7 @@ export class Browse {
   do(files: FileList) {
     const detail: BrowseEvent = {
       errors: [],
-      files: [],
+      files: []
     };
 
     if (files.length < this.min) detail.errors.push('MIN');
@@ -141,7 +133,7 @@ export class Browse {
     for (let i = 0; i < files.length; i++) {
       const value: BrowseEventFile = {
         errors: [],
-        file: files[i],
+        file: files[i]
       };
 
       for (const type of this.types) {
@@ -153,28 +145,19 @@ export class Browse {
 
         if (isMime && !isPattern && value.file.type === type) break;
 
-        if (
-          isMime &&
-          isPattern &&
-          value.file.type.startsWith(type.slice(0, -1))
-        )
-          break;
+        if (isMime && isPattern && value.file.type.startsWith(type.slice(0, -1))) break;
 
         value.errors.push('ACCEPT');
       }
 
-      if (this.minSize && this.minSize > value.file.size)
-        value.errors.push('MIN_SIZE');
+      if (this.minSize && this.minSize > value.file.size) value.errors.push('MIN_SIZE');
 
-      if (this.maxSize && this.maxSize < value.file.size)
-        value.errors.push('MAX_SIZE');
+      if (this.maxSize && this.maxSize < value.file.size) value.errors.push('MAX_SIZE');
 
       detail.files.push(value);
     }
 
-    const isSuccess =
-      !detail.errors.length &&
-      !detail.files.some((file) => !!file.errors.length);
+    const isSuccess = !detail.errors.length && !detail.files.some((file) => !!file.errors.length);
 
     if (isSuccess) {
       const files = detail.files.filter((file) => !file.errors.length);
@@ -245,7 +228,7 @@ export class Browse {
         <input
           accept={this.accept}
           multiple={this.multiple}
-          ref={($element) => this.$input = $element}
+          ref={($element) => (this.$input = $element)}
           type="file"
           onChange={this.onChange}
           onClick={(event) => event.stopPropagation()}

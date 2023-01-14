@@ -5,14 +5,14 @@ $align-content: (
   stretch: stretch,
   between: space-between,
   around: space-around,
-  evenly: space-evenly,
+  evenly: space-evenly
 );
 
 $align-items: (
   start: flex-start,
   center: center,
   end: flex-end,
-  stretch: stretch,
+  stretch: stretch
 );
 
 // TODO
@@ -22,7 +22,7 @@ $gutters: (
   md: 1em,
   lg: 1.75em,
   xl: 4em,
-  xxl: 8em,
+  xxl: 8em
 );
 
 $justify-content: (
@@ -31,11 +31,11 @@ $justify-content: (
   end: flex-end,
   between: space-between,
   around: space-around,
-  evenly: space-evenly,
+  evenly: space-evenly
 );
 
 $wrap: (
   on: wrap,
   off: nowrap,
-  reverse: wrap-reverse,
+  reverse: wrap-reverse
 );
