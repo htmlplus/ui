@@ -1,6 +1,7 @@
 import { Element, Property } from '@htmlplus/element';
 
 import { FORMAT_BYTES_STANDARD } from './format-bytes.constants';
+import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
 
 /**
  * @stable
@@ -11,7 +12,7 @@ export class FormatBytes {
    * Specifies the unit will be shown as an abbreviation or not.
    */
   @Property()
-  display?: 'long' | 'short' = 'short';
+  display?: FormatBytesDisplay = 'short';
 
   /**
    * Localizes the result. [More](https://mdn.io/number-format/constructor).
@@ -44,13 +45,13 @@ export class FormatBytes {
    * [Metric and IEC](https://en.wikipedia.org/wiki/Gigabyte) are supported.
    */
   @Property()
-  standard?: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET' = 'METRIC';
+  standard?: FormatBytesStandard = 'METRIC';
 
   /**
    * Specifies the unit in which the result will be returned.
    */
   @Property()
-  unit?: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta' = 'auto';
+  unit?: FormatBytesUnit = 'auto';
 
   /**
    * The bytes value to convert.
