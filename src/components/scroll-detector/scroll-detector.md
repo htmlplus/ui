@@ -14,6 +14,8 @@ TODO.
 
 ### Default
 
+Open the developer console.
+
 <Example value="default" />
 
 <Checklist 
