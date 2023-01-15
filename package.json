@@ -2,6 +2,7 @@
   "name": "@htmlplus/core",
   "version": "0.8.1",
   "license": "MIT",
+  "sideEffects": false,
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI components.",
   "type": "module",
