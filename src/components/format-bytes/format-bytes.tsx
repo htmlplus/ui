@@ -42,7 +42,7 @@ export class FormatBytes {
 
   /**
    * Specifies the standard of units.
-   * [Metric and IEC](https://en.wikipedia.org/wiki/Gigabyte) are supported.
+   * [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported.
    */
   @Property()
   standard?: FormatBytesStandard = 'METRIC';

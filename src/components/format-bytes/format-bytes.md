@@ -1,6 +1,6 @@
 # Format Bytes
 
-Converts bytes to a human-readable string. [Metric and IEC](https://en.wikipedia.org/wiki/Gigabyte) standard are supported.
+Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.
 
 <Playground />
 

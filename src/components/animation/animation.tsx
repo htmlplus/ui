@@ -66,7 +66,7 @@ export class Animation {
   fill?: AnimationFill = 'none';
 
   /**
-   * The [Animation](https://developer.mozilla.org/en-US/docs/Web/API/Animation) object instance.
+   * The [Animation](https://mdn.io/api-animation) object instance.
    */
   @Property()
   instance?: globalThis.Animation;
@@ -80,7 +80,7 @@ export class Animation {
 
   /**
    * The number of times the animation should repeat. And can also take a value of
-   * [Infinity](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity)
+   * [Infinity](https://mdn.io/infinity)
    * to make it repeat for as long as the element exists.
    */
   @Property()
@@ -96,7 +96,7 @@ export class Animation {
   iterationStart?: number = 0;
 
   /**
-   * A [keyframes](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats)
+   * A [keyframes](https://mdn.io/keyframe-formats)
    * object or `null`.
    */
   @Property()
@@ -122,7 +122,7 @@ export class Animation {
   run?: boolean;
 
   /**
-   * Fires when the [Animation.cancel()](https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel)
+   * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
    * method is called or when the animation enters the "`idle`" play state from another state.
    */
   @Event()
@@ -164,7 +164,7 @@ export class Animation {
   }
 
   /**
-   * Clears all [keyframeEffects](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect)
+   * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
    * caused by this animation and aborts its playback.
    */
   @Method()

@@ -29,7 +29,7 @@ export class Intersection {
 
   /**
    * Margin around the root. Can have values similar to the CSS
-   * [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
+   * [margin](https://mdn.io/margin)
    * property, e.g. `"10px 20px 30px 40px"` (top, right, bottom, left). The values can be
    * percentages. This set of values serves to grow or shrink each side of the root element's
    * bounding box before computing intersections. Defaults to all zeros.

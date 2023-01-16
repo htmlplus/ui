@@ -1,6 +1,6 @@
 # Animation
 
-Creates an animation and applies it to the content. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).
+Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).
 
 <Playground />
 
