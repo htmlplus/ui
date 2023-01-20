@@ -1,6 +1,6 @@
 import { Attributes, Bind, Element, Event, EventEmitter, Method, Property, State } from '@htmlplus/element';
 
-import { BrowseEvent, BrowseEventFile } from './browse.types';
+import { BrowseEvent, BrowseFile } from './browse.types';
 
 /**
  * @slot default - The default slot.
@@ -16,61 +16,61 @@ export class Browse {
   accept?: string;
 
   /**
-   * Disable the component.
+   * Disables the component functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;
 
   /**
-   * Add droppable ability.
+   * Adds droppable ability.
    */
   @Property()
   droppable?: boolean;
 
   /**
-   * Minimum number of files.
+   * Specifies the minimum number of files.
    */
   @Property()
   min?: number;
 
   /**
-   * Maximum number of files.
+   * Specifies the maximum number of files.
    */
   @Property()
   max?: number;
 
   /**
-   * The minimum size of the file(s) in bytes.
+   * Specifies the minimum size of the file(s) in bytes.
    */
   @Property()
   minSize?: number;
 
   /**
-   * The maximum size of the file(s) in bytes.
+   * Specifies the maximum size of the file(s) in bytes.
    */
   @Property()
   maxSize?: number;
 
   /**
-   * A Boolean which, if present, indicates that the user may choose more than one file.
+   * Allows to select more than one file.
    */
   @Property()
   multiple?: boolean;
 
   /**
-   * Emitted when file(s) are selected.
+   * Fires when file(s) are selected.
    */
   @Event()
   plusChange!: EventEmitter<BrowseEvent>;
 
   /**
-   * Emitted when selected invalid file(s).
+   * Fires when selected invalid file(s).
    */
   @Event()
   plusError!: EventEmitter<BrowseEvent>;
 
   /**
-   * Emitted when file(s) are added successfully.
+   * Fires when file(s) are added successfully.
    */
   @Event()
   plusSuccess!: EventEmitter<BrowseEvent>;
@@ -105,20 +105,12 @@ export class Browse {
   }
 
   /**
-   * External Methods
-   */
-
-  /**
-   * Open the browse dialog.
+   * Opens the browse dialog.
    */
   @Method()
   browse(): void {
     this.$input.click();
   }
-
-  /**
-   * Internal Methods
-   */
 
   do(files: FileList) {
     const detail: BrowseEvent = {
@@ -126,14 +118,16 @@ export class Browse {
       files: []
     };
 
-    if (files.length < this.min) detail.errors.push('MIN');
+    if (this.min > files.length) detail.errors.push('MIN');
 
-    if (files.length > this.max) detail.errors.push('MAX');
+    if (this.max < files.length) detail.errors.push('MAX');
 
     for (let i = 0; i < files.length; i++) {
-      const value: BrowseEventFile = {
+      const file = files[i];
+
+      const value: BrowseFile = {
         errors: [],
-        file: files[i]
+        file
       };
 
       for (const type of this.types) {
@@ -150,35 +144,23 @@ export class Browse {
         value.errors.push('ACCEPT');
       }
 
-      if (this.minSize && this.minSize > value.file.size) value.errors.push('MIN_SIZE');
+      if (this.minSize > value.file.size) value.errors.push('MIN_SIZE');
 
-      if (this.maxSize && this.maxSize < value.file.size) value.errors.push('MAX_SIZE');
+      if (this.maxSize < value.file.size) value.errors.push('MAX_SIZE');
 
       detail.files.push(value);
     }
 
-    const isSuccess = !detail.errors.length && !detail.files.some((file) => !!file.errors.length);
+    const error = detail.errors.length || detail.files.some((file) => file.errors.length);
 
-    if (isSuccess) {
-      const files = detail.files.filter((file) => !file.errors.length);
+    const filtered = detail.files.filter((file) => !error || file.errors.length);
 
-      const data = Object.assign({}, detail, { files });
+    const data = Object.assign({}, detail, { files: filtered });
 
-      this.plusSuccess(data);
-    } else {
-      const files = detail.files.filter((file) => file.errors.length);
-
-      const data = Object.assign({}, detail, { files });
-
-      this.plusError(data);
-    }
+    error ? this.plusError(data) : this.plusSuccess(data);
 
     this.plusChange(detail);
   }
-
-  /**
-   * Events handler
-   */
 
   @Bind()
   onClick() {
@@ -198,7 +180,9 @@ export class Browse {
   onDragLeave() {
     clearTimeout(this.timeout);
 
-    this.timeout = setTimeout(() => (this.dragging = false), 50);
+    this.timeout = setTimeout(() => {
+      this.dragging = false;
+    }, 50);
   }
 
   @Bind()
@@ -224,7 +208,7 @@ export class Browse {
   render() {
     return (
       <>
-        <slot>Click or Drag & Drop a file(s) here</slot>
+        <slot />
         <input
           accept={this.accept}
           multiple={this.multiple}
