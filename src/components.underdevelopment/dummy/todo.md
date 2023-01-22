@@ -1,0 +1,4 @@
+- https://fatihtelis.github.io/react-lorem-ipsum/
+- https://www.npmjs.com/package/@faker-js/faker
+- text, username, firstname, lastname, email, age, date, time, status, image, avatar, color, city, country
+- add service

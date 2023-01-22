@@ -2,3 +2,4 @@
 - add disabled
 - add readonly state property
 - test
+- examples like https://mdbootstrap.com/docs/standard/methods/sticky/
