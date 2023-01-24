@@ -5,6 +5,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import glob from 'fast-glob';
 import path from 'path';
 import { defineConfig, rollup } from 'rollup';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { summary } from 'rollup-plugin-summary';
 // import { terser } from 'rollup-plugin-terser';
@@ -46,8 +47,6 @@ const options = defineConfig({
 
         if (normalized.includes('cropperjs')) return 'vendors/cropperjs';
 
-        if (normalized.includes('@faker-js/faker')) return 'vendors/faker';
-
         if (normalized.includes('signature_pad')) return 'vendors/signature_pad';
 
         return 'core/index';
@@ -55,6 +54,8 @@ const options = defineConfig({
     }
   ],
   plugins: [
+    peerDepsExternal(),
+
     postcss({
       inject: false,
       minimize: true,
