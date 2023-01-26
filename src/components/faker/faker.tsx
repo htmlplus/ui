@@ -8,37 +8,37 @@ import type { Faker as Core } from '@faker-js/faker';
 @Element()
 export class Faker {
   /**
-   * TODO
+   * Specifies the [API](https://fakerjs.dev/api).
+   */
+  @Property()
+  api?: string = 'lorem.paragraph';
+
+  /**
+   * Specifies the API's arguments as an array.
    */
   @Property()
   arguments?: Array<any> = [];
 
   /**
-   * TODO
+   * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
    */
   @Property()
   instance?: Core;
 
   /**
-   * TODO
+   * Localizes the result. [More](https://fakerjs.dev/guide/localization.html).
    */
   @Property()
   locale?: string;
 
   /**
-   * TODO
+   * Keeps the result constant.
    */
   @Property()
   seed?: number;
 
-  /**
-   * TODO
-   */
-  @Property()
-  type?: string = 'lorem.paragraph';
-
   get content() {
-    const method = this.type?.split('.').reduce((result, key) => result?.[key], this.instance);
+    const method = this.api?.split('.').reduce((result, key) => result?.[key], this.instance);
 
     if (!method) return null;
 
