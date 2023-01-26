@@ -51,6 +51,14 @@ export class Faker {
     return method(...this.arguments) || null;
   }
 
+  connectedCallback() {
+    if (this.instance) return;
+
+    import('@faker-js/faker/locale/en').then((module) => {
+      this.instance = module.faker;
+    });
+  }
+
   render() {
     return this.content;
   }
