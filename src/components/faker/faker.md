@@ -18,6 +18,8 @@ Generates massive amounts of fake (but realistic) data for testing and developme
 
 ### API
 
+To see all APIs click [here](https://fakerjs.dev/api).
+
 <Example value="api" />
 
 ### API's Arguments
