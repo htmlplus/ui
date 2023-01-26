@@ -51,22 +51,6 @@ export class Faker {
     return method(...this.arguments) || null;
   }
 
-  connectedCallback() {
-    if (this.instance) return;
-
-    import('@faker-js/faker/locale/en' as any)
-      .then((module) => {
-        this.instance = module.faker;
-      })
-      .catch(() => {
-        import('https://cdn.jsdelivr.net/npm/@faker-js/faker/locale/en/+esm' as any)
-          .then((module) => {
-            this.instance = module.faker;
-          })
-          .catch(console.log);
-      });
-  }
-
   render() {
     return this.content;
   }
