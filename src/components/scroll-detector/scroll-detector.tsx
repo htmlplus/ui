@@ -100,6 +100,6 @@ export class ScrollDetector {
   }
 
   render() {
-    return <slot />;
+    return null;
   }
 }

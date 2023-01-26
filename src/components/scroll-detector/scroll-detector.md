@@ -20,18 +20,18 @@ Open the developer console.
 
 <Checklist 
     accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
+    bidirectionality="N/A"
+    cssParts="N/A"
+    cssVariables="N/A"
+    documentation={true}
     examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
+    events={true}
+    keyboard="N/A"
+    methods="N/A"
     playground={false}
-    properties={false}
+    properties={true}
     skeleton={false}
-    slots={false}
+    slots="N/A"
 />
 
 <LastModified />
