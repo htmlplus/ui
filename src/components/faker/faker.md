@@ -22,7 +22,7 @@ Generates massive amounts of fake (but realistic) data for testing and developme
 
 ### API's Arguments
 
-<Example value="api's-arguments" />
+<Example value="arguments" />
 
 ### Seed
 
