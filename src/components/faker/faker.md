@@ -30,9 +30,11 @@ To see all APIs click [here](https://fakerjs.dev/api).
 
 <Example value="seed" />
 
-### Locale
+### Localization
 
-<Example value="locale" />
+Localizes the result. [More](https://fakerjs.dev/guide/localization.html).
+
+<Example value="localization" />
 
 ### More
 

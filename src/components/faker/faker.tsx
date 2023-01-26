@@ -3,8 +3,8 @@ import { Element, Property } from '@htmlplus/element';
 import type { Faker as Core } from '@faker-js/faker';
 
 /**
- * TODO
  * @dependencies @faker-js/faker
+ * @stable
  */
 @Element()
 export class Faker {
@@ -27,12 +27,6 @@ export class Faker {
   instance?: Core;
 
   /**
-   * Localizes the result. [More](https://fakerjs.dev/guide/localization.html).
-   */
-  @Property()
-  locale?: string;
-
-  /**
    * Keeps the result constant.
    */
   @Property()
@@ -42,10 +36,6 @@ export class Faker {
     const method = this.api?.split('.').reduce((result, key) => result?.[key], this.instance);
 
     if (!method) return null;
-
-    if (this.locale) {
-      this.instance.setLocale(this.locale);
-    }
 
     this.instance.seed(this.seed);
 
