@@ -1,10 +1,12 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
 
-import SignaturePad from 'signature_pad';
+import type CoreType from 'signature_pad';
 
 import * as Helpers from '@app/helpers';
 
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
+
+let Core;
 
 /**
  * @part canvas - The canvas element.
@@ -108,7 +110,7 @@ export class Signature {
     return Helpers.host(this);
   }
 
-  instance?: SignaturePad;
+  instance?: CoreType;
 
   history: SignaturePointGroup[][] = [];
 
@@ -267,47 +269,17 @@ export class Signature {
     this.instance.fromData(data);
   }
 
-  @Watch([], true)
-  watcher(next, prev, name) {
-    switch (name) {
-      case 'color':
-        this.instance.penColor = next;
-        break;
-      case 'disabled':
-        if (next) {
-          this.instance.off();
-        } else {
-          this.instance.on();
-        }
-        break;
-      case 'distance':
-        this.instance.minDistance = next;
-        break;
-      case 'velocity':
-        this.instance.velocityFilterWeight = next;
-        break;
-      case 'backgroundColor':
-      case 'dotSize':
-      case 'maxWidth':
-      case 'minWidth':
-      case 'throttle':
-        this.instance[name] = next;
-        break;
-      case 'resizable':
-        if (next) {
-          this.observer.observe(this.$host);
-        } else {
-          this.observer.unobserve(this.$host);
-        }
-        break;
-    }
-
-    // TODO
-    this.fromData(this.toData());
-  }
-
-  loadedCallback() {
-    this.instance = new SignaturePad(this.$canvas);
+  bind() {
+    this.instance = new Core(this.$canvas, {
+      backgroundColor: this.backgroundColor,
+      dotSize: this.dotSize,
+      minDistance: this.distance,
+      minWidth: this.minWidth,
+      maxWidth: this.maxWidth,
+      penColor: this.color,
+      throttle: this.throttle,
+      velocityFilterWeight: this.velocity
+    });
 
     this.instance.addEventListener('endStroke', this.onEnd);
 
@@ -325,8 +297,52 @@ export class Signature {
       });
     }
 
+    if (this.disabled) {
+      this.instance.off();
+    }
+
+    if (this.resizable) {
+      this.observer.observe(this.$host);
+    }
+
     // TODO
     requestAnimationFrame(() => this.resize());
+  }
+
+  unbind() {
+    this.observer.disconnect();
+    this.instance?.off();
+  }
+
+  @Watch()
+  watcher(next, prev, name) {
+    switch (name) {
+      case 'color':
+        this.instance.penColor = next;
+        break;
+      case 'disabled':
+        this.instance[next ? 'off' : 'on']();
+        break;
+      case 'distance':
+        this.instance.minDistance = next;
+        break;
+      case 'velocity':
+        this.instance.velocityFilterWeight = next;
+        break;
+      case 'backgroundColor':
+      case 'dotSize':
+      case 'maxWidth':
+      case 'minWidth':
+      case 'throttle':
+        this.instance[name] = next;
+        break;
+      case 'resizable':
+        this.observer[next ? 'observe' : 'unobserve'](this.$host);
+        break;
+    }
+
+    // TODO
+    this.fromData(this.toData());
   }
 
   @Bind()
@@ -343,10 +359,15 @@ export class Signature {
     this.resize();
   }
 
+  loadedCallback() {
+    import('signature_pad').then((moddule) => {
+      Core = moddule.default;
+      this.bind();
+    });
+  }
+
   disconnectedCallback() {
-    this.observer.disconnect();
-    if (!this.instance) return;
-    this.instance.off();
+    this.unbind();
   }
 
   render() {

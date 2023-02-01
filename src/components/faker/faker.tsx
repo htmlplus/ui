@@ -5,6 +5,7 @@ import type { Faker as Core } from '@faker-js/faker';
 /**
  * @dependencies @faker-js/faker
  * @stable
+ * @thirdParty
  */
 @Element()
 export class Faker {

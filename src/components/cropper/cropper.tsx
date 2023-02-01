@@ -1,6 +1,6 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
 
-import CropperCore from 'cropperjs';
+import type CoreType from 'cropperjs';
 
 import * as Helpers from '@app/helpers';
 
@@ -18,6 +18,8 @@ import {
   CropperZoomable,
   CropperZoomEvent
 } from './cropper.types';
+
+let Core;
 
 /**
  * @stable
@@ -164,7 +166,7 @@ export class Cropper {
 
   $image!: HTMLImageElement;
 
-  instance?: CropperCore;
+  instance?: CoreType;
 
   locked?: boolean;
 
@@ -337,7 +339,7 @@ export class Cropper {
   }
 
   bind() {
-    this.instance = new CropperCore(this.$image, this.options);
+    this.instance = new Core(this.$image, this.options);
   }
 
   unbind() {
@@ -490,7 +492,10 @@ export class Cropper {
   }
 
   loadedCallback() {
-    this.bind();
+    import('cropperjs').then((moddule) => {
+      Core = moddule.default;
+      this.bind();
+    });
   }
 
   disconnectedCallback() {
