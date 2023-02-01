@@ -32,7 +32,7 @@ To see all APIs click [here](https://fakerjs.dev/api).
 
 ### Localization
 
-Localizes the result. [More](https://fakerjs.dev/guide/localization.html).
+Makes the result localized. Consider that localization configure globally. [More](https://fakerjs.dev/guide/localization.html).
 
 <Example value="localization" />
 
