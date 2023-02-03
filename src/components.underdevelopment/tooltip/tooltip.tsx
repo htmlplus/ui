@@ -1,13 +1,6 @@
 import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
 
-import {
-  arrow,
-  computePosition,
-  ComputePositionConfig,
-  flip,
-  offset,
-  shift
-} from '@floating-ui/dom';
+import { arrow, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
 
 import * as Helpers from '@app/helpers';
 
