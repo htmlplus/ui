@@ -1,6 +1,13 @@
 import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
 
-import { arrow, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
+import {
+  arrow,
+  computePosition,
+  ComputePositionConfig,
+  flip,
+  offset,
+  shift
+} from '@floating-ui/dom';
 
 import * as Helpers from '@app/helpers';
 
@@ -72,30 +79,6 @@ export class Tooltip {
     return Helpers.host(this);
   }
 
-  get events() {
-    return Object.keys(this.maps)
-      .filter((key) => [this.trigger].flat(1).includes(key as any))
-      .map((key) => this.maps[key])
-      .flat(1);
-  }
-
-  get maps() {
-    return {
-      click: [
-        ['click', this.onShow],
-        ['blur', this.onHide]
-      ],
-      focus: [
-        ['focus', this.onShow],
-        ['blur', this.onHide]
-      ],
-      hover: [
-        ['mouseenter', this.onShow],
-        ['mouseleave', this.onHide]
-      ]
-    };
-  }
-
   get options() {
     const padding = [this.offset].flat();
     return {
@@ -110,10 +93,23 @@ export class Tooltip {
     } as Partial<ComputePositionConfig>;
   }
 
+  events(all: boolean) {
+    return [
+      ['click', 'click', this.onShow],
+      ['click', 'blur', this.onHide],
+      ['focus', 'focus', this.onShow],
+      ['focus', 'blur', this.onHide],
+      ['hover', 'mouseenter', this.onShow],
+      ['hover', 'mouseleave', this.onHide]
+    ]
+      .filter((row: any) => all || [this.trigger].flat().includes(row[0]))
+      .map((row: any) => row.slice(1));
+  }
+
   bind() {
     clearTimeout(this.timeout);
 
-    this.events.forEach((parameters) => {
+    this.events(false).forEach((parameters) => {
       this.$activator.addEventListener.apply(this.$activator, parameters);
     });
   }
@@ -121,7 +117,7 @@ export class Tooltip {
   unbind() {
     clearTimeout(this.timeout);
 
-    this.events.forEach((parameters) => {
+    this.events(true).forEach((parameters) => {
       this.$activator.removeEventListener.apply(this.$activator, parameters);
     });
   }
@@ -161,7 +157,8 @@ export class Tooltip {
         next ? this.unbind() : this.bind();
         break;
       case 'trigger':
-        // TODO
+        this.unbind();
+        this.bind();
         break;
     }
   }
