@@ -15,6 +15,12 @@ export class Tooltip {
    * TODO
    */
   @Property()
+  arrow?: boolean;
+
+  /**
+   * TODO
+   */
+  @Property()
   delay?: TooltipDelay;
 
   /**
@@ -33,7 +39,7 @@ export class Tooltip {
    * TODO
    */
   @Property()
-  offset?: TooltipOffset;
+  offset?: TooltipOffset = [10, 0];
 
   /**
    * TODO
@@ -60,18 +66,6 @@ export class Tooltip {
     };
   }
 
-  get $activator() {
-    return Helpers.host(this).previousElementSibling;
-  }
-
-  get $arrow() {
-    return Helpers.query(this, 'div');
-  }
-
-  get $tooltip() {
-    return Helpers.host(this);
-  }
-
   get options() {
     const padding = [this.offset].flat();
     return {
@@ -79,11 +73,23 @@ export class Tooltip {
         offset(padding[0] || 0),
         flip(),
         shift({ padding: padding[1] || 0 }),
-        arrow({ element: this.$arrow })
+        this.arrow && arrow({ element: this.$arrow })
       ],
       placement: this.placement,
       strategy: this.fixed ? 'fixed' : 'absolute'
     } as Partial<ComputePositionConfig>;
+  }
+
+  get $activator() {
+    return Helpers.host(this).previousElementSibling;
+  }
+
+  get $arrow() {
+    return Helpers.query(this, '[part=arrow]') as HTMLDivElement;
+  }
+
+  get $tooltip() {
+    return Helpers.host(this);
   }
 
   events(all: boolean) {
@@ -124,22 +130,16 @@ export class Tooltip {
         top: `${y}px`
       });
 
+      if (!this.arrow) return;
+
       const { x: arrowX, y: arrowY } = middlewareData.arrow;
 
-      const staticSide = {
-        top: 'bottom',
-        right: 'left',
-        bottom: 'top',
-        left: 'right'
-      }[placement.split('-')[0]];
-
       Object.assign(this.$arrow.style, {
-        left: arrowX != null ? `${arrowX}px` : '',
-        top: arrowY != null ? `${arrowY}px` : '',
-        right: '',
-        bottom: '',
-        [staticSide]: '-4px'
+        left: arrowX == null ? '' : `${arrowX}px`,
+        top: arrowY == null ? '' : `${arrowY}px`
       });
+
+      this.$tooltip.setAttribute('placement-computed', placement.split('-')[0]);
     });
   }
 
@@ -194,7 +194,7 @@ export class Tooltip {
     return (
       <>
         <slot />
-        <div part="arrow"></div>
+        {this.arrow && <div part="arrow"></div>}
       </>
     );
   }

@@ -1,0 +1,1 @@
+- add SVGAElement and Function type for `arrow` property.

@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #222;
+  background-color: black;
   color: white;
   font-weight: bold;
   padding: 5px;
@@ -12,10 +12,40 @@
   font-size: 90%;
 }
 
-div {
+[part='arrow'] {
   position: absolute;
-  background: #222;
-  width: 8px;
-  height: 8px;
-  transform: rotate(45deg);
+  width: 0;
+  height: 0;
+}
+
+:host([placement-computed='top']) [part='arrow'] {
+  bottom: -4px;
+  border-top: solid 4px black;
+  border-right: solid 4px transparent;
+  border-bottom: solid 0px transparent;
+  border-left: solid 4px transparent;
+}
+
+:host([placement-computed='right']) [part='arrow'] {
+  left: -4px;
+  border-top: solid 4px transparent;
+  border-right: solid 4px black;
+  border-bottom: solid 4px transparent;
+  border-left: solid 0px transparent;
+}
+
+:host([placement-computed='bottom']) [part='arrow'] {
+  top: -4px;
+  border-top: solid 0px transparent;
+  border-right: solid 4px transparent;
+  border-bottom: solid 4px black;
+  border-left: solid 4px transparent;
+}
+
+:host([placement-computed='left']) [part='arrow'] {
+  right: -4px;
+  border-top: solid 4px transparent;
+  border-right: solid 0px transparent;
+  border-bottom: solid 4px transparent;
+  border-left: solid 4px black;
 }
