@@ -1,1 +1,34 @@
 - add SVGAElement and Function type for `arrow` property.
+- do we need a readonly `state` with `show` and `hide` value?
+- check tippyjs properties and so on
+  - animateFill
+  - animation
+  - appendTo
+  - aria
+  - duration
+  - followCursor
+  - getReferenceClientRect
+  - hideOnClick
+  - ignoreAttributes
+  - inertia
+  - inlinePositioning
+  - interactive
+  - interactiveBorder
+  - interactiveDebounce
+  - moveTransition
+  - showOnCreate
+  - sticky
+  - touch
+  - triggerTarget
+  - onAfterUpdate
+  - onBeforeUpdate
+  - onClickOutside
+  - onCreate
+  - onDestroy
+  - onHidden
+  - onHide
+  - onMount
+  - onShow
+  - onShown
+  - onTrigger
+  - onUntrigger

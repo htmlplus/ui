@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
+import { Attributes, Bind, Element, Method, Property, Watch } from '@htmlplus/element';
 
 import { arrow, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
 
@@ -53,16 +53,12 @@ export class Tooltip {
   @Property()
   trigger?: TooltipTrigger = ['focus', 'hover'];
 
-  @State()
-  state?: 'show' | 'hide' = 'hide';
-
   timeout?: NodeJS.Timeout;
 
   @Attributes()
   get attributes() {
     return {
-      role: 'tooltip',
-      state: this.state
+      role: 'tooltip'
     };
   }
 
@@ -91,6 +87,18 @@ export class Tooltip {
   get $tooltip() {
     return Helpers.host(this);
   }
+
+  /**
+   * TODO
+   */
+  @Method()
+  hide() {}
+
+  /**
+   * TODO
+   */
+  @Method()
+  show() {}
 
   events(all: boolean) {
     return [
@@ -163,7 +171,6 @@ export class Tooltip {
     const delay = this.delay?.[1] || this.delay || 0;
 
     this.timeout = setTimeout(() => {
-      this.state = 'hide';
       this.$tooltip.style.display = '';
     }, delay);
   }
@@ -175,7 +182,6 @@ export class Tooltip {
     const delay = this.delay?.[0] || this.delay || 0;
 
     this.timeout = setTimeout(() => {
-      this.state = 'show';
       this.$tooltip.style.display = 'block';
       this.update();
     }, delay);
