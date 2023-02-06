@@ -39,7 +39,7 @@ export class Tooltip {
    * TODO
    */
   @Property()
-  offset?: TooltipOffset = [10, 0];
+  offset?: TooltipOffset = [5, 0];
 
   /**
    * TODO
@@ -139,7 +139,7 @@ export class Tooltip {
         top: arrowY == null ? '' : `${arrowY}px`
       });
 
-      this.$tooltip.setAttribute('placement-computed', placement.split('-')[0]);
+      this.$tooltip.setAttribute('placement-computed', placement);
     });
   }
 
