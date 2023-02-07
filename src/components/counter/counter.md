@@ -42,7 +42,7 @@ Can be used to quickly create animations that display numerical data in a more i
 
 ### Separator & Decimal
 
-<Example value="separator-&-decimal" />
+<Example value="separator-decimal" />
 
 ### Numerals
 

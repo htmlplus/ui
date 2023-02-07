@@ -34,7 +34,7 @@ Toggles the state of a single item on or off.
 
 ### 3D
 
-<Example value="3D" />
+<Example value="3d" />
 
 <Checklist 
     accessibility={false}
