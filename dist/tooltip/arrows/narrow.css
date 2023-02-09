@@ -1,0 +1,47 @@
+plus-tooltip[placement-computed^='top'] {
+  transform: translateY(-10px);
+}
+
+plus-tooltip[placement-computed^='top']::part(arrow) {
+  bottom: -10px;
+  border-top: solid 10px black;
+  border-right: solid 5px transparent;
+  border-bottom: solid 0px transparent;
+  border-left: solid 5px transparent;
+}
+
+plus-tooltip[placement-computed^='right'] {
+  transform: translateX(10px);
+}
+
+plus-tooltip[placement-computed^='right']::part(arrow) {
+  left: -10px;
+  border-top: solid 5px transparent;
+  border-right: solid 10px black;
+  border-bottom: solid 5px transparent;
+  border-left: solid 0px transparent;
+}
+
+plus-tooltip[placement-computed^='bottom'] {
+  transform: translateY(10px);
+}
+
+plus-tooltip[placement-computed^='bottom']::part(arrow) {
+  top: -10px;
+  border-top: solid 0px transparent;
+  border-right: solid 5px transparent;
+  border-bottom: solid 10px black;
+  border-left: solid 5px transparent;
+}
+
+plus-tooltip[placement-computed^='left'] {
+  transform: translateX(-10px);
+}
+
+plus-tooltip[placement-computed^='left']::part(arrow) {
+  right: -10px;
+  border-top: solid 5px transparent;
+  border-right: solid 0px transparent;
+  border-bottom: solid 5px transparent;
+  border-left: solid 10px black;
+}

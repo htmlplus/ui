@@ -1,0 +1,47 @@
+plus-tooltip[placement-computed^='top'] {
+  transform: translateY(-6px);
+}
+
+plus-tooltip[placement-computed^='top']::part(arrow) {
+  bottom: -6px;
+  border-top: solid 6px black;
+  border-right: solid 10px transparent;
+  border-bottom: solid 0px transparent;
+  border-left: solid 10px transparent;
+}
+
+plus-tooltip[placement-computed^='right'] {
+  transform: translateX(6px);
+}
+
+plus-tooltip[placement-computed^='right']::part(arrow) {
+  left: -6px;
+  border-top: solid 10px transparent;
+  border-right: solid 6px black;
+  border-bottom: solid 10px transparent;
+  border-left: solid 0px transparent;
+}
+
+plus-tooltip[placement-computed^='bottom'] {
+  transform: translateY(6px);
+}
+
+plus-tooltip[placement-computed^='bottom']::part(arrow) {
+  top: -6px;
+  border-top: solid 0px transparent;
+  border-right: solid 10px transparent;
+  border-bottom: solid 6px black;
+  border-left: solid 10px transparent;
+}
+
+plus-tooltip[placement-computed^='left'] {
+  transform: translateX(-6px);
+}
+
+plus-tooltip[placement-computed^='left']::part(arrow) {
+  right: -6px;
+  border-top: solid 10px transparent;
+  border-right: solid 0px transparent;
+  border-bottom: solid 10px transparent;
+  border-left: solid 6px black;
+}

@@ -7,7 +7,8 @@ import * as Helpers from '@app/helpers';
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipSource, TooltipTrigger } from './tooltip.types';
 
 /**
- * TODO
+ * @dependencies @floating-ui/dom
+ * @thirdParty
  */
 @Element()
 export class Tooltip {
