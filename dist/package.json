@@ -47,7 +47,7 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^0.6.5"
+    "@htmlplus/element": "^0.6.6"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

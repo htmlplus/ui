@@ -51,7 +51,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "animation",
-      "lastModified": "2023-02-09T17:00:22.912Z",
       "methods": [
         {
           "async": false,
@@ -486,7 +485,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "aspect-ratio",
-      "lastModified": "2023-02-03T21:26:11.353Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -568,7 +566,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-02-03T21:24:20.320Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -649,7 +646,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
-      "lastModified": "2023-02-03T21:24:20.232Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -721,7 +717,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2023-02-03T21:26:11.356Z",
       "methods": [],
       "parts": [
         {
@@ -916,7 +911,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "browse",
-      "lastModified": "2023-02-03T21:26:11.358Z",
       "methods": [
         {
           "async": false,
@@ -1095,7 +1089,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "card",
-      "lastModified": "2023-02-03T21:26:11.362Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1211,7 +1204,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "card-body",
-      "lastModified": "2023-02-03T21:24:20.656Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -1239,7 +1231,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "center",
-      "lastModified": "2023-02-03T21:24:20.801Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1302,7 +1293,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "click-outside",
-      "lastModified": "2023-02-03T21:24:20.901Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1399,7 +1389,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "counter",
-      "lastModified": "2023-02-07T17:54:39.181Z",
       "methods": [
         {
           "async": false,
@@ -1758,7 +1747,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "cropper",
-      "lastModified": "2023-02-03T21:26:11.374Z",
       "methods": [
         {
           "async": false,
@@ -2452,7 +2440,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog",
-      "lastModified": "2023-02-03T21:24:21.872Z",
       "methods": [],
       "parts": [
         {
@@ -2781,7 +2768,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
-      "lastModified": "2023-02-03T21:24:21.404Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -2823,7 +2809,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
-      "lastModified": "2023-02-03T21:24:21.452Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -2865,7 +2850,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-footer",
-      "lastModified": "2023-02-03T21:24:21.491Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -2889,7 +2873,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-header",
-      "lastModified": "2023-02-03T21:24:21.541Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -2913,7 +2896,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-toggler",
-      "lastModified": "2023-02-03T21:24:21.578Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -2963,7 +2945,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "divider",
-      "lastModified": "2023-02-03T21:26:11.379Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3159,7 +3140,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2023-02-03T21:26:11.381Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3404,7 +3384,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
-      "lastModified": "2023-02-03T21:24:22.144Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3454,7 +3433,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "faker",
-      "lastModified": "2023-02-03T21:24:22.418Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3553,7 +3531,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "format-bytes",
-      "lastModified": "2023-02-03T21:26:11.388Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3717,7 +3694,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid",
-      "lastModified": "2023-02-03T21:26:11.396Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4348,7 +4324,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid-item",
-      "lastModified": "2023-02-03T21:26:11.392Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5096,7 +5071,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-02-03T21:24:22.965Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5227,7 +5201,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "intersection",
-      "lastModified": "2023-02-03T21:26:11.397Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5343,7 +5316,6 @@
       "deprecated": false,
       "experimental": true,
       "key": "portal",
-      "lastModified": "2023-02-03T21:24:23.124Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5445,7 +5417,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "scroll-detector",
-      "lastModified": "2023-02-03T21:26:11.400Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5535,7 +5506,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "scroll-indicator",
-      "lastModified": "2023-02-03T21:26:11.402Z",
       "methods": [],
       "parts": [
         {
@@ -5671,7 +5641,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "signature",
-      "lastModified": "2023-02-03T21:24:23.520Z",
       "methods": [
         {
           "async": false,
@@ -6177,7 +6146,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2023-02-03T21:24:23.742Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6253,7 +6221,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "sticky",
-      "lastModified": "2023-02-03T21:26:11.405Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6372,7 +6339,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "switch",
-      "lastModified": "2023-02-07T17:55:11.692Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6442,7 +6408,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "tabs",
-      "lastModified": "2023-02-03T21:24:24.120Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6524,7 +6489,6 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
-      "lastModified": "2023-02-03T21:24:23.965Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6606,7 +6570,6 @@
       "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
-      "lastModified": "2023-02-03T21:24:23.998Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6653,7 +6616,6 @@
       "description": "TODO: This component contains panels.",
       "experimental": false,
       "key": "tabs-panels",
-      "lastModified": "2023-02-03T21:24:24.033Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6700,7 +6662,6 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
-      "lastModified": "2023-02-03T21:24:24.069Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6763,7 +6724,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "tooltip",
-      "lastModified": "2023-02-09T21:09:11.659Z",
       "methods": [
         {
           "async": false,
