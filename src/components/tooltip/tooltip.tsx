@@ -4,7 +4,7 @@ import { arrow, computePosition, ComputePositionConfig, flip, offset, shift } fr
 
 import * as Helpers from '@app/helpers';
 
-import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipTrigger } from './tooltip.types';
+import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipSource, TooltipTrigger } from './tooltip.types';
 
 /**
  * TODO
@@ -51,7 +51,15 @@ export class Tooltip {
    * TODO
    */
   @Property()
+  source?: TooltipSource = 'previous';
+
+  /**
+   * TODO
+   */
+  @Property()
   trigger?: TooltipTrigger = ['focus', 'hover'];
+
+  $activator?: Element;
 
   timeout?: NodeJS.Timeout;
 
@@ -76,12 +84,20 @@ export class Tooltip {
     } as Partial<ComputePositionConfig>;
   }
 
-  get $activator() {
-    return Helpers.host(this).previousElementSibling;
-  }
-
   get $arrow() {
     return Helpers.query(this, '[part=arrow]') as HTMLDivElement;
+  }
+
+  get $source() {
+    switch (this.source) {
+      case 'next':
+        return Helpers.host(this).nextElementSibling;
+      case 'parent':
+        return Helpers.host(this).parentElement;
+      case 'previous':
+        return Helpers.host(this).previousElementSibling;
+    }
+    return typeof this.source == 'string' ? document.querySelector(this.source) : this.source;
   }
 
   get $tooltip() {
@@ -116,6 +132,8 @@ export class Tooltip {
   bind() {
     clearTimeout(this.timeout);
 
+    if (!this.$activator) return;
+
     this.events(false).forEach((parameters) => {
       this.$activator.addEventListener.apply(this.$activator, parameters);
     });
@@ -123,6 +141,8 @@ export class Tooltip {
 
   unbind() {
     clearTimeout(this.timeout);
+
+    if (!this.$activator) return;
 
     this.events(true).forEach((parameters) => {
       this.$activator.removeEventListener.apply(this.$activator, parameters);
@@ -151,11 +171,16 @@ export class Tooltip {
     });
   }
 
-  @Watch(['disabled', 'trigger'])
+  @Watch(['disabled', 'source', 'trigger'])
   watcher(next, prev, key) {
     switch (key) {
       case 'disabled':
         next ? this.unbind() : this.bind();
+        break;
+      case 'source':
+        this.unbind();
+        this.$activator = this.$source;
+        this.bind();
         break;
       case 'trigger':
         this.unbind();
@@ -189,6 +214,10 @@ export class Tooltip {
 
   connectedCallback() {
     if (this.disabled) return;
+
+    // TODO
+    this.$activator = this.$source;
+
     this.bind();
   }
 

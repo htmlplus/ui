@@ -16,4 +16,6 @@ export type TooltipPlacement =
   | 'left-start'
   | 'left-end';
 
+export type TooltipSource = 'next' | 'parent' | 'previous' | Element | string;
+
 export type TooltipTrigger = 'click' | 'focus' | 'hover' | 'manual' | Array<TooltipTrigger>;
