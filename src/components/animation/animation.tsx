@@ -5,8 +5,8 @@ import * as Helpers from '@app/helpers';
 import { ANIMATION_EASINGS } from './animation.constants';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 // Imports built-in animations.
-import './assets/fading-entrance/fade-in.js';
-import './assets/fading-exits/fade-out.js';
+import './assets/names/fading-entrance/fade-in.js';
+import './assets/names/fading-exits/fade-out.js';
 
 /**
  * @stable
