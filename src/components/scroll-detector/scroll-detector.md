@@ -1,6 +1,6 @@
 # Scroll Detector
 
-TODO.
+Detects scroll event from an element.
 
 <Playground />
 
