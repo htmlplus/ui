@@ -1,1 +1,2 @@
 - add examples for all properties
+- need `in` and `out` slot
