@@ -49,11 +49,6 @@
 }
 
 :host([aria-orientation='horizontal']) {
-  // TODO
-  // min-height: auto;
-  // width: auto;
-  // min-width: 100%;
-
   flex-direction: row;
 
   &:before,
@@ -93,9 +88,6 @@
 }
 
 :host([aria-orientation='vertical']) {
-  // TODO
-  // min-width: auto;
-
   flex-direction: column;
   height: auto;
   min-height: 100%;

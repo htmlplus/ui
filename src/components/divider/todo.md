@@ -1,1 +1,7 @@
 - add margin and its css varibale
+- do we need these properties for `aria-orientation=horizontal`
+  - min-height: auto
+  - width: auto
+  - min-width: 100%
+- do we need these properties for `aria-orientation=vertical`
+  - min-width: auto
