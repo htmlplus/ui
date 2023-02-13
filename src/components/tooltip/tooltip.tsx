@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Method, Property, Watch } from '@htmlplus/element';
+import { Attributes, Element, Method, Property, Watch } from '@htmlplus/element';
 
 import { arrow, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
 
@@ -13,19 +13,21 @@ import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipSource, TooltipTr
 @Element()
 export class Tooltip {
   /**
-   * TODO
+   * Specifies whether to display the arrow or not.
    */
   @Property()
   arrow?: boolean;
 
   /**
-   * TODO
+   * Specifies a delay in milliseconds for show or hide.
+   * Use a number for both show and hide or
+   * create an array of two separate numbers for show and hide.
    */
   @Property()
   delay?: TooltipDelay;
 
   /**
-   * TODO
+   * Disables the component functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;
@@ -109,22 +111,39 @@ export class Tooltip {
    * TODO
    */
   @Method()
-  hide() {}
+  hide() {
+    clearTimeout(this.timeout);
+
+    const delay = this.delay?.[1] || this.delay || 0;
+
+    this.timeout = setTimeout(() => {
+      this.$tooltip.style.display = '';
+    }, delay);
+  }
 
   /**
    * TODO
    */
   @Method()
-  show() {}
+  show() {
+    clearTimeout(this.timeout);
+
+    const delay = this.delay?.[0] || this.delay || 0;
+
+    this.timeout = setTimeout(() => {
+      this.$tooltip.style.display = 'block';
+      this.update();
+    }, delay);
+  }
 
   events(all: boolean) {
     return [
-      ['click', 'click', this.onShow],
-      ['click', 'blur', this.onHide],
-      ['focus', 'focus', this.onShow],
-      ['focus', 'blur', this.onHide],
-      ['hover', 'mouseenter', this.onShow],
-      ['hover', 'mouseleave', this.onHide]
+      ['click', 'click', this.show],
+      ['click', 'blur', this.hide],
+      ['focus', 'focus', this.show],
+      ['focus', 'blur', this.hide],
+      ['hover', 'mouseenter', this.show],
+      ['hover', 'mouseleave', this.hide]
     ]
       .filter((row: any) => all || [this.trigger].flat().includes(row[0]))
       .map((row: any) => row.slice(1));
@@ -188,29 +207,6 @@ export class Tooltip {
         this.bind();
         break;
     }
-  }
-
-  @Bind()
-  onHide() {
-    clearTimeout(this.timeout);
-
-    const delay = this.delay?.[1] || this.delay || 0;
-
-    this.timeout = setTimeout(() => {
-      this.$tooltip.style.display = '';
-    }, delay);
-  }
-
-  @Bind()
-  onShow() {
-    clearTimeout(this.timeout);
-
-    const delay = this.delay?.[0] || this.delay || 0;
-
-    this.timeout = setTimeout(() => {
-      this.$tooltip.style.display = 'block';
-      this.update();
-    }, delay);
   }
 
   connectedCallback() {

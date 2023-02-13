@@ -1,5 +1,6 @@
 - add SVGAElement and Function type for `arrow` property.
 - do we need a readonly `state` with `show` and `hide` value?
+- add more placement like `end` and `start`
 - animation `shift-toward`, `shift-toward-subtle`, `shift-toward-extreme`, `shift-away`, `shift-away-subtle`, `shift-away-extremescale`, `scale-subtle`, `scale-extreme`, `perspective`, `perspective-subtle`, `perspective-extreme`, `fade`
 - check tippyjs properties and so on
   - animateFill
