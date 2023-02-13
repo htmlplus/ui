@@ -1,6 +1,6 @@
-import { Attributes, Element, Method, Property, Watch } from '@htmlplus/element';
+import { Attributes, Bind, Element, Method, Property, Watch, styles } from '@htmlplus/element';
 
-import { arrow, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
+import { arrow, autoUpdate, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
 
 import * as Helpers from '@app/helpers';
 
@@ -64,12 +64,17 @@ export class Tooltip {
 
   $activator?: Element;
 
+  cleanup?: () => void;
+
   timeout?: NodeJS.Timeout;
 
   @Attributes()
   get attributes() {
     return {
-      role: 'tooltip'
+      role: 'tooltip',
+      style: styles({
+        position: this.strategy
+      })
     };
   }
 
@@ -83,8 +88,12 @@ export class Tooltip {
         this.arrow && arrow({ element: this.$arrow })
       ],
       placement: this.placement,
-      strategy: this.fixed ? 'fixed' : 'absolute'
+      strategy: this.strategy
     } as Partial<ComputePositionConfig>;
+  }
+
+  get strategy() {
+    return this.fixed ? 'fixed' : 'absolute';
   }
 
   get $arrow() {
@@ -112,13 +121,7 @@ export class Tooltip {
    */
   @Method()
   hide() {
-    clearTimeout(this.timeout);
-
-    const delay = this.delay?.[1] || this.delay || 0;
-
-    this.timeout = setTimeout(() => {
-      this.$tooltip.style.display = '';
-    }, delay);
+    this.onHide();
   }
 
   /**
@@ -126,24 +129,17 @@ export class Tooltip {
    */
   @Method()
   show() {
-    clearTimeout(this.timeout);
-
-    const delay = this.delay?.[0] || this.delay || 0;
-
-    this.timeout = setTimeout(() => {
-      this.$tooltip.style.display = 'block';
-      this.update();
-    }, delay);
+    this.onShow();
   }
 
   events(all: boolean) {
     return [
-      ['click', 'click', this.show],
-      ['click', 'blur', this.hide],
-      ['focus', 'focus', this.show],
-      ['focus', 'blur', this.hide],
-      ['hover', 'mouseenter', this.show],
-      ['hover', 'mouseleave', this.hide]
+      ['click', 'click', this.onShow],
+      ['click', 'blur', this.onHide],
+      ['focus', 'focus', this.onShow],
+      ['focus', 'blur', this.onHide],
+      ['hover', 'mouseenter', this.onShow],
+      ['hover', 'mouseleave', this.onHide]
     ]
       .filter((row: any) => all || [this.trigger].flat().includes(row[0]))
       .map((row: any) => row.slice(1));
@@ -157,6 +153,13 @@ export class Tooltip {
     this.events(false).forEach((parameters) => {
       this.$activator.addEventListener.apply(this.$activator, parameters);
     });
+
+    this.cleanup = autoUpdate(this.$activator, this.$tooltip, this.update, {
+      ancestorScroll: true,
+      ancestorResize: true,
+      elementResize: true,
+      animationFrame: false
+    });
   }
 
   unbind() {
@@ -167,8 +170,11 @@ export class Tooltip {
     this.events(true).forEach((parameters) => {
       this.$activator.removeEventListener.apply(this.$activator, parameters);
     });
+
+    this.cleanup();
   }
 
+  @Bind()
   update() {
     computePosition(this.$activator, this.$tooltip, this.options).then((data) => {
       const { x, y, placement, middlewareData } = data;
@@ -207,6 +213,29 @@ export class Tooltip {
         this.bind();
         break;
     }
+  }
+
+  @Bind()
+  onHide() {
+    clearTimeout(this.timeout);
+
+    const delay = this.delay?.[1] || this.delay || 0;
+
+    this.timeout = setTimeout(() => {
+      this.$tooltip.style.display = '';
+    }, delay);
+  }
+
+  @Bind()
+  onShow() {
+    clearTimeout(this.timeout);
+
+    const delay = this.delay?.[0] || this.delay || 0;
+
+    this.timeout = setTimeout(() => {
+      this.$tooltip.style.display = 'block';
+      this.update();
+    }, delay);
   }
 
   connectedCallback() {
