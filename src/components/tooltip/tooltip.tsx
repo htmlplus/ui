@@ -1,10 +1,10 @@
-import { Attributes, Bind, Element, Method, Property, Watch, styles } from '@htmlplus/element';
+import { Attributes, Bind, Element, Method, Property, Watch, State } from '@htmlplus/element';
 
 import { arrow, autoUpdate, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
 
 import * as Helpers from '@app/helpers';
 
-import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipSource, TooltipTrigger } from './tooltip.types';
+import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 
 /**
  * @dependencies @floating-ui/dom
@@ -15,8 +15,14 @@ export class Tooltip {
   /**
    * Specifies whether to display the arrow or not.
    */
-  @Property()
+  @Property({ reflect: true })
   arrow?: boolean;
+
+  /**
+   * TODO
+   */
+  @Property()
+  auto?: boolean = true;
 
   /**
    * Specifies a delay in milliseconds for show or hide.
@@ -35,7 +41,7 @@ export class Tooltip {
   /**
    * TODO
    */
-  @Property()
+  @Property({ reflect: true })
   fixed?: boolean;
 
   /**
@@ -45,26 +51,34 @@ export class Tooltip {
   offset?: TooltipOffset = [5, 0];
 
   /**
-   * TODO
+   * Specifies the display location of the component relative to the reference.
    */
   @Property()
   placement?: TooltipPlacement;
 
   /**
-   * TODO
+   * Specifies the element to which the tooltip will be attached.
+   * Use `next` to attach to the next sibling.
+   * Use `parent` to attach to the parent.
+   * Use `previous` to attach to the previous sibling.
+   * Use a string to find an element to attach to that.
+   * Use an element to attach to that.
    */
   @Property()
-  source?: TooltipSource = 'previous';
+  reference?: TooltipReference = 'previous';
 
   /**
-   * TODO
+   * Specifies the activation method.
    */
   @Property()
   trigger?: TooltipTrigger = ['focus', 'hover'];
 
+  @State()
+  state?: 'hide' | 'show' = 'hide';
+
   $activator?: Element;
 
-  cleanup?: () => void;
+  cleanup?: Function;
 
   timeout?: NodeJS.Timeout;
 
@@ -72,9 +86,7 @@ export class Tooltip {
   get attributes() {
     return {
       role: 'tooltip',
-      style: styles({
-        position: this.strategy
-      })
+      state: this.state
     };
   }
 
@@ -88,77 +100,115 @@ export class Tooltip {
         this.arrow && arrow({ element: this.$arrow })
       ],
       placement: this.placement,
-      strategy: this.strategy
+      strategy: this.fixed ? 'fixed' : 'absolute'
     } as Partial<ComputePositionConfig>;
-  }
-
-  get strategy() {
-    return this.fixed ? 'fixed' : 'absolute';
   }
 
   get $arrow() {
     return Helpers.query(this, '[part=arrow]') as HTMLDivElement;
   }
 
-  get $source() {
-    switch (this.source) {
-      case 'next':
-        return Helpers.host(this).nextElementSibling;
-      case 'parent':
-        return Helpers.host(this).parentElement;
-      case 'previous':
-        return Helpers.host(this).previousElementSibling;
-    }
-    return typeof this.source == 'string' ? document.querySelector(this.source) : this.source;
-  }
-
-  get $tooltip() {
+  get $host() {
     return Helpers.host(this);
   }
 
-  /**
-   * TODO
-   */
-  @Method()
-  hide() {
-    this.onHide();
+  get $reference() {
+    switch (this.reference) {
+      case 'next':
+        return this.$host.nextElementSibling;
+      case 'parent':
+        return this.$host.parentElement;
+      case 'previous':
+        return this.$host.previousElementSibling;
+    }
+    return typeof this.reference == 'string' ? document.querySelector(this.reference) : this.reference;
   }
 
   /**
-   * TODO
+   * Hides the component.
    */
+  @Bind()
+  @Method()
+  hide() {
+    clearTimeout(this.timeout);
+
+    const delay = this.delay?.[1] || this.delay || 0;
+
+    this.timeout = setTimeout(() => {
+      this.state = 'hide';
+      this.watch(false);
+    }, delay);
+  }
+
+  /**
+   * Shows the component.
+   */
+  @Bind()
   @Method()
   show() {
-    this.onShow();
+    clearTimeout(this.timeout);
+
+    const delay = this.delay?.[0] || this.delay || 0;
+
+    this.timeout = setTimeout(() => {
+      this.state = 'show';
+      this.watch(true);
+    }, delay);
+  }
+
+  /**
+   * Updates the component's position.
+   */
+  @Bind()
+  @Method()
+  update() {
+    computePosition(this.$activator, this.$host, this.options).then((data) => {
+      const { x, y, placement, middlewareData } = data;
+
+      Object.assign(this.$host.style, {
+        left: `${x}px`,
+        top: `${y}px`
+      });
+
+      this.$host.setAttribute('placement-computed', placement);
+
+      if (!this.arrow) return;
+
+      const { x: arrowX, y: arrowY } = middlewareData.arrow;
+
+      Object.assign(this.$arrow.style, {
+        left: arrowX == null ? '' : `${arrowX}px`,
+        top: arrowY == null ? '' : `${arrowY}px`
+      });
+    });
   }
 
   events(all: boolean) {
     return [
-      ['click', 'click', this.onShow],
-      ['click', 'blur', this.onHide],
-      ['focus', 'focus', this.onShow],
-      ['focus', 'blur', this.onHide],
-      ['hover', 'mouseenter', this.onShow],
-      ['hover', 'mouseleave', this.onHide]
+      ['click', 'click', this.show],
+      ['click', 'blur', this.hide],
+      ['focus', 'focus', this.show],
+      ['focus', 'blur', this.hide],
+      ['hover', 'mouseenter', this.show],
+      ['hover', 'mouseleave', this.hide]
     ]
       .filter((row: any) => all || [this.trigger].flat().includes(row[0]))
       .map((row: any) => row.slice(1));
   }
 
   bind() {
+    // TODO
+    if (this.disabled) return;
+
+    // TODO
+    this.$activator = this.$reference;
+
     clearTimeout(this.timeout);
 
     if (!this.$activator) return;
 
     this.events(false).forEach((parameters) => {
       this.$activator.addEventListener.apply(this.$activator, parameters);
-    });
-
-    this.cleanup = autoUpdate(this.$activator, this.$tooltip, this.update, {
-      ancestorScroll: true,
-      ancestorResize: true,
-      elementResize: true,
-      animationFrame: false
     });
   }
 
@@ -170,44 +220,35 @@ export class Tooltip {
     this.events(true).forEach((parameters) => {
       this.$activator.removeEventListener.apply(this.$activator, parameters);
     });
-
-    this.cleanup();
   }
 
-  @Bind()
-  update() {
-    computePosition(this.$activator, this.$tooltip, this.options).then((data) => {
-      const { x, y, placement, middlewareData } = data;
+  watch(active: boolean) {
+    this.cleanup?.();
 
-      Object.assign(this.$tooltip.style, {
-        left: `${x}px`,
-        top: `${y}px`
-      });
+    if (!this.auto || !active) return;
 
-      if (!this.arrow) return;
-
-      const { x: arrowX, y: arrowY } = middlewareData.arrow;
-
-      Object.assign(this.$arrow.style, {
-        left: arrowX == null ? '' : `${arrowX}px`,
-        top: arrowY == null ? '' : `${arrowY}px`
-      });
-
-      this.$tooltip.setAttribute('placement-computed', placement);
-    });
+    this.cleanup = autoUpdate(this.$activator, this.$host, this.update);
   }
 
-  @Watch(['disabled', 'source', 'trigger'])
+  @Watch()
   watcher(next, prev, key) {
     switch (key) {
+      case 'auto':
+        this.watch(next);
+        break;
+
       case 'disabled':
         next ? this.unbind() : this.bind();
         break;
-      case 'source':
-        this.unbind();
-        this.$activator = this.$source;
-        this.bind();
+
+      case 'fixed':
+      case 'offset':
+      case 'placement':
+        if (this.state == 'hide') break;
+        this.update();
         break;
+
+      case 'reference':
       case 'trigger':
         this.unbind();
         this.bind();
@@ -215,35 +256,7 @@ export class Tooltip {
     }
   }
 
-  @Bind()
-  onHide() {
-    clearTimeout(this.timeout);
-
-    const delay = this.delay?.[1] || this.delay || 0;
-
-    this.timeout = setTimeout(() => {
-      this.$tooltip.style.display = '';
-    }, delay);
-  }
-
-  @Bind()
-  onShow() {
-    clearTimeout(this.timeout);
-
-    const delay = this.delay?.[0] || this.delay || 0;
-
-    this.timeout = setTimeout(() => {
-      this.$tooltip.style.display = 'block';
-      this.update();
-    }, delay);
-  }
-
   connectedCallback() {
-    if (this.disabled) return;
-
-    // TODO
-    this.$activator = this.$source;
-
     this.bind();
   }
 
@@ -255,7 +268,7 @@ export class Tooltip {
     return (
       <>
         <slot />
-        {this.arrow && <div part="arrow"></div>}
+        <div part="arrow"></div>
       </>
     );
   }

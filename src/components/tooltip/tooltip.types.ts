@@ -16,6 +16,6 @@ export type TooltipPlacement =
   | 'top-start'
   | 'top-end';
 
-export type TooltipSource = 'next' | 'parent' | 'previous' | Element | (string & {});
+export type TooltipReference = 'next' | 'parent' | 'previous' | Element | (string & {});
 
 export type TooltipTrigger = 'click' | 'focus' | 'hover' | 'manual' | Array<TooltipTrigger>;
