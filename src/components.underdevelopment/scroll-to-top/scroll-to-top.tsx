@@ -1,4 +1,6 @@
-import { Element, host, Listen, Property } from '@htmlplus/element';
+import { Attributes, Bind, Element, Method, Property, host, off, on } from '@htmlplus/element';
+
+import { ScrollToTopReference } from './scroll-to-top.types';
 
 /**
  * TODO
@@ -9,49 +11,113 @@ export class ScrollToTop {
   /**
    * Disables the component functionality.
    */
-  @Property()
+  @Property({ reflect: true })
   disabled?: boolean;
 
   /**
-   * Specifies the source of the scroll.
+   * TODO
    */
   @Property()
-  source?: HTMLElement | 'auto' | 'document' | string = 'auto';
+  offset?: number = 0;
 
-  get $source() {
-    if (this.source == 'auto') {
-      let element = host(this);
+  /**
+   * Specifies the reference of the scroll.
+   */
+  @Property()
+  reference?: ScrollToTopReference = 'auto';
 
-      while (element) {
-        element = element.parentElement;
+  /**
+   * TODO
+   */
+  @Property()
+  smooth?: boolean = true;
 
-        try {
-          const overflow = window.getComputedStyle(element).getPropertyValue('overflow-y');
+  @Attributes()
+  get attributes() {
+    return {
+      role: 'button'
+    };
+  }
 
-          const has = ['auto', 'scroll'].includes(overflow);
+  get $host() {
+    return host(this);
+  }
 
-          if (has) break;
-        } catch {}
+  get $reference() {
+    if (this.reference == 'auto') {
+      let parent = this.$host;
+
+      while (parent) {
+        parent = parent.parentElement;
+
+        if (!parent) break;
+
+        if (this.scrollable(parent)) break;
       }
 
-      return element || document.documentElement;
+      return parent || document.documentElement;
     }
 
-    if (this.source == 'document') {
+    if (this.reference == 'parent') {
+      return document.parentElement;
+    }
+
+    if (this.reference == 'document') {
       return document.documentElement;
     }
 
-    if (typeof this.source == 'string') {
-      return document.querySelector(this.source);
+    if (this.reference == 'window') {
+      return window;
     }
 
-    return this.source;
+    if (typeof this.reference == 'string') {
+      return document.querySelector(this.reference);
+    }
+
+    return this.reference;
   }
 
-  @Listen('click')
-  onClick() {
-    if (this.disabled) return;
-    this.$source?.scrollTo({ top: 0, behavior: 'smooth' });
+  /**
+   * TODO
+   */
+  @Bind()
+  @Method()
+  scroll() {
+    this.$reference?.scrollTo({
+      top: this.offset,
+      behavior: this.smooth ? 'smooth' : 'auto'
+    });
+  }
+
+  bind() {
+    on(this.$host, 'click', this.scroll);
+    on(this.$reference, 'scroll', this.onScroll);
+  }
+
+  unbind() {
+    off(this.$host, 'click', this.scroll);
+    off(this.$reference, 'scroll', this.onScroll);
+  }
+
+  scrollable(element: Element) {
+    const overflow = window.getComputedStyle(element).getPropertyValue('overflow-y');
+
+    const has = ['auto', 'scroll'].includes(overflow);
+
+    return has;
+  }
+
+  @Bind()
+  onScroll(e) {
+    console.log(123, e);
+  }
+
+  connectedCallback() {
+    this.bind();
+  }
+
+  disconnectedCallback() {
+    this.unbind();
   }
 
   render() {
