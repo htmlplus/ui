@@ -1,6 +1,18 @@
-import { Attributes, Bind, Element, Method, Property, host, off, on } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  host,
+  off,
+  on,
+  State
+} from '@htmlplus/element';
 
-import { ScrollToTopReference } from './scroll-to-top.types';
+import { ScrollToTopChangeEvent, ScrollToTopReference } from './scroll-to-top.types';
 
 /**
  * TODO
@@ -32,10 +44,26 @@ export class ScrollToTop {
   @Property()
   smooth?: boolean = true;
 
+  /**
+   * TODO
+   */
+  @Property()
+  TODO?: number = 100;
+
+  /**
+   * TODO
+   */
+  @Event()
+  plusChange!: EventEmitter<ScrollToTopChangeEvent>;
+
+  @State()
+  state: ScrollToTopChangeEvent = 'hide';
+
   @Attributes()
   get attributes() {
     return {
-      role: 'button'
+      role: 'button',
+      state: this.state
     };
   }
 
@@ -90,12 +118,14 @@ export class ScrollToTop {
   }
 
   bind() {
-    on(this.$host, 'click', this.scroll);
+    on(this.$host, 'click', this.onClick);
+    on(this.$host, 'keydown', this.onKeyDown);
     on(this.$reference, 'scroll', this.onScroll);
   }
 
   unbind() {
-    off(this.$host, 'click', this.scroll);
+    off(this.$host, 'click', this.onClick);
+    off(this.$host, 'keydown', this.onKeyDown);
     off(this.$reference, 'scroll', this.onScroll);
   }
 
@@ -108,8 +138,23 @@ export class ScrollToTop {
   }
 
   @Bind()
-  onScroll(e) {
-    console.log(123, e);
+  onClick() {
+    this.scroll();
+  }
+
+  @Bind()
+  onScroll(event) {
+    const exceeded = event.target.scrollTop >= this.TODO;
+
+    this.state = exceeded ? 'show' : 'hide';
+
+    this.plusChange(this.state);
+  }
+
+  @Bind()
+  onKeyDown(event) {
+    if (event.key != ' ' && event.key != 'Enter') return;
+    this.scroll();
   }
 
   connectedCallback() {
