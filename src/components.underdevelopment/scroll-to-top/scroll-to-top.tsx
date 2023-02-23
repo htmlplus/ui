@@ -30,7 +30,7 @@ export class ScrollToTop {
    * TODO
    */
   @Property()
-  offset?: number = 0;
+  offset?: number = 100;
 
   /**
    * Specifies the reference of the scroll.
@@ -43,12 +43,6 @@ export class ScrollToTop {
    */
   @Property()
   smooth?: boolean = true;
-
-  /**
-   * TODO
-   */
-  @Property()
-  TODO?: number = 100;
 
   /**
    * TODO
@@ -112,7 +106,7 @@ export class ScrollToTop {
   @Method()
   scroll() {
     this.$reference?.scrollTo({
-      top: this.offset,
+      top: 0,
       behavior: this.smooth ? 'smooth' : 'auto'
     });
   }
@@ -143,18 +137,18 @@ export class ScrollToTop {
   }
 
   @Bind()
+  onKeyDown(event) {
+    if (event.key != ' ' && event.key != 'Enter') return;
+    this.scroll();
+  }
+
+  @Bind()
   onScroll(event) {
-    const exceeded = event.target.scrollTop >= this.TODO;
+    const exceeded = event.target.scrollTop >= this.offset;
 
     this.state = exceeded ? 'show' : 'hide';
 
     this.plusChange(this.state);
-  }
-
-  @Bind()
-  onKeyDown(event) {
-    if (event.key != ' ' && event.key != 'Enter') return;
-    this.scroll();
   }
 
   connectedCallback() {
