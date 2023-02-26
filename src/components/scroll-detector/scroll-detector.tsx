@@ -64,7 +64,8 @@ export class ScrollDetector {
 
   @Bind()
   onScroll() {
-    const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = this.$source;
+    const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } =
+      this.$source;
 
     const offset = this.vertical ? scrollTop : scrollLeft;
 

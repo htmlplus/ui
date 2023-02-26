@@ -1,6 +1,11 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
+import {
+  GridItemAlignSelf,
+  GridItemColumn,
+  GridItemOffset,
+  GridItemOrder
+} from './grid-item.types';
 
 /**
  * @slot default - The default slot.

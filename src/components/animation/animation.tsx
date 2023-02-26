@@ -1,9 +1,23 @@
-import { Bind, Element, Event, EventEmitter, Method, Property, Watch, getConfig } from '@htmlplus/element';
+import {
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  Watch,
+  getConfig
+} from '@htmlplus/element';
 
 import * as Helpers from '@app/helpers';
 
 import { ANIMATION_EASINGS } from './animation.constants';
-import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
+import {
+  AnimationComposite,
+  AnimationDirection,
+  AnimationFill,
+  AnimationIterationComposite
+} from './animation.types';
 // Imports built-in animations.
 import './assets/names/fading-entrance/fade-in.js';
 import './assets/names/fading-exits/fade-out.js';
@@ -260,7 +274,8 @@ export class Animation {
   updatedCallback() {
     this.disconnectedCallback();
 
-    const keyframes = this.keyframes ?? getConfig('component', 'plus-animation', 'asset', 'name', this.name) ?? [];
+    const keyframes =
+      this.keyframes ?? getConfig('component', 'plus-animation', 'asset', 'name', this.name) ?? [];
 
     this.instance = this.$host.animate(keyframes, this.options);
 

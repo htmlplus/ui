@@ -1,10 +1,25 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  State,
+  Watch
+} from '@htmlplus/element';
 
 import { Media } from '@app/decorators';
 import * as Helpers from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 
-import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
+import {
+  DrawerBackdrop,
+  DrawerBreakpoint,
+  DrawerPlacement,
+  DrawerPlatform,
+  DrawerTemporary
+} from './drawer.types';
 
 const { Action, Observable, reconnect } = createLink({
   crawl: false,

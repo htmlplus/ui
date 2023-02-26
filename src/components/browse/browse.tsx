@@ -1,4 +1,13 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Method, Property, State } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  State
+} from '@htmlplus/element';
 
 import { BrowseEvent, BrowseFile } from './browse.types';
 

@@ -8,7 +8,13 @@ describe('plus-animation', () => {
 
   property('@element', 'composite', ['add', 'accumulate', 'replace'], 'replace', false);
   property('@element', 'delay', Number, 0, false);
-  property('@element', 'direction', ['alternate-reverse', 'alternate', 'normal', 'reverse'], 'normal', false);
+  property(
+    '@element',
+    'direction',
+    ['alternate-reverse', 'alternate', 'normal', 'reverse'],
+    'normal',
+    false
+  );
   property('@element', 'duration', Number, 1000, false);
   property(
     '@element',

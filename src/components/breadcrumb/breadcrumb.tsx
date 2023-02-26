@@ -54,7 +54,9 @@ export class Breadcrumb {
 
   get $children() {
     return Array.from(this.host.children).filter(($node) => {
-      return !$node.matches([CONSTANTS.BREADCRUMB_EXPANDER_QUERY, CONSTANTS.BREADCRUMB_SEPARATOR_QUERY].join(','));
+      return !$node.matches(
+        [CONSTANTS.BREADCRUMB_EXPANDER_QUERY, CONSTANTS.BREADCRUMB_SEPARATOR_QUERY].join(',')
+      );
     });
   }
 
@@ -124,7 +126,9 @@ export class Breadcrumb {
   }
 
   get template() {
-    const $node = this.host.querySelector(CONSTANTS.BREADCRUMB_SEPARATOR_QUERY) as HTMLTemplateElement;
+    const $node = this.host.querySelector(
+      CONSTANTS.BREADCRUMB_SEPARATOR_QUERY
+    ) as HTMLTemplateElement;
 
     const $clone = $node?.cloneNode(true) as HTMLElement;
 
@@ -199,7 +203,9 @@ export class Breadcrumb {
               );
             }
             case 'separator': {
-              return <div key={item.key} aria-hidden="true" className="separator" part="separator" />;
+              return (
+                <div key={item.key} aria-hidden="true" className="separator" part="separator" />
+              );
             }
           }
         })}

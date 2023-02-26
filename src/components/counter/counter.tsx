@@ -1,4 +1,14 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Method, Property, State, Watch } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  State,
+  Watch
+} from '@htmlplus/element';
 
 import { COUNTER_EASINGS } from './counter.constants';
 import { CounterEasing } from './counter.types';
@@ -199,7 +209,8 @@ export class Counter {
     if (!this.easingFunction) {
       this.counter = this.from + (this.to - this.from) * (progress / this.duration);
     } else if (this.reverse) {
-      this.counter = this.from - this.easingFunction(progress, 0, this.from - this.to, this.duration);
+      this.counter =
+        this.from - this.easingFunction(progress, 0, this.from - this.to, this.duration);
     } else {
       this.counter = this.easingFunction(progress, this.from, this.to - this.from, this.duration);
     }

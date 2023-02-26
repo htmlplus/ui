@@ -274,7 +274,11 @@ export class Menu {
           <slot name="activator" />
         </div>
         {this.open && (
-          <div className="content" ref={($element) => (this.$content = $element)} style={this.fixed ? {} : this.style}>
+          <div
+            className="content"
+            ref={($element) => (this.$content = $element)}
+            style={this.fixed ? {} : this.style}
+          >
             <slot />
           </div>
         )}

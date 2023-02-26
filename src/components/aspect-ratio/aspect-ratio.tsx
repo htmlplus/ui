@@ -27,7 +27,9 @@ export class AspectRatio {
   get ratio() {
     if (typeof this.value === 'number') return this.value;
 
-    let [valueA, valueB] = `${this.value}`.split('/').map((item: any) => (isNaN(item) ? NaN : parseFloat(item)));
+    let [valueA, valueB] = `${this.value}`
+      .split('/')
+      .map((item: any) => (isNaN(item) ? NaN : parseFloat(item)));
 
     valueB = valueB ?? 1;
 

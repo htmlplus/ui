@@ -120,6 +120,12 @@ export class ScrollIndicator {
   }
 
   render() {
-    return <div className="indicator" part="indicator" ref={($element) => (this.$indicator = $element)} />;
+    return (
+      <div
+        className="indicator"
+        part="indicator"
+        ref={($element) => (this.$indicator = $element)}
+      />
+    );
   }
 }

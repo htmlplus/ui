@@ -1,13 +1,28 @@
 import { Attributes, Bind, Element, Method, Property, Watch, State } from '@htmlplus/element';
 
-import { arrow, autoUpdate, computePosition, ComputePositionConfig, flip, offset, shift } from '@floating-ui/dom';
+import {
+  arrow,
+  autoUpdate,
+  computePosition,
+  ComputePositionConfig,
+  flip,
+  offset,
+  shift
+} from '@floating-ui/dom';
 
 import * as Helpers from '@app/helpers';
 
-import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
+import {
+  TooltipDelay,
+  TooltipOffset,
+  TooltipPlacement,
+  TooltipReference,
+  TooltipTrigger
+} from './tooltip.types';
 
 /**
  * @dependencies @floating-ui/dom
+ * @stable
  * @thirdParty
  */
 @Element()
@@ -43,6 +58,11 @@ export class Tooltip {
    */
   @Property({ reflect: true })
   fixed?: boolean;
+
+  /**
+   * TODO
+   */
+  flip?: boolean = true;
 
   /**
    * TODO
@@ -95,7 +115,7 @@ export class Tooltip {
     return {
       middleware: [
         offset(padding[0] || 0),
-        flip(),
+        this.flip && flip(),
         shift({ padding: padding[1] || 0 }),
         this.arrow && arrow({ element: this.$arrow })
       ],
@@ -113,6 +133,8 @@ export class Tooltip {
   }
 
   get $reference() {
+    if (typeof this.reference != 'string') return this.reference;
+
     switch (this.reference) {
       case 'next':
         return this.$host.nextElementSibling;
@@ -121,13 +143,13 @@ export class Tooltip {
       case 'previous':
         return this.$host.previousElementSibling;
     }
-    return typeof this.reference == 'string' ? document.querySelector(this.reference) : this.reference;
+
+    return document.querySelector(this.reference);
   }
 
   /**
    * Hides the component.
    */
-  @Bind()
   @Method()
   hide() {
     clearTimeout(this.timeout);
@@ -143,7 +165,6 @@ export class Tooltip {
   /**
    * Shows the component.
    */
-  @Bind()
   @Method()
   show() {
     clearTimeout(this.timeout);
@@ -159,7 +180,6 @@ export class Tooltip {
   /**
    * Updates the component's position.
    */
-  @Bind()
   @Method()
   update() {
     computePosition(this.$activator, this.$host, this.options).then((data) => {
@@ -185,12 +205,12 @@ export class Tooltip {
 
   events(all: boolean) {
     return [
-      ['click', 'click', this.show],
-      ['click', 'blur', this.hide],
-      ['focus', 'focus', this.show],
-      ['focus', 'blur', this.hide],
-      ['hover', 'mouseenter', this.show],
-      ['hover', 'mouseleave', this.hide]
+      ['click', 'click', this.onShow],
+      ['click', 'blur', this.onHide],
+      ['focus', 'focus', this.onShow],
+      ['focus', 'blur', this.onHide],
+      ['hover', 'mouseenter', this.onShow],
+      ['hover', 'mouseleave', this.onHide]
     ]
       .filter((row: any) => all || [this.trigger].flat().includes(row[0]))
       .map((row: any) => row.slice(1));
@@ -227,7 +247,7 @@ export class Tooltip {
 
     if (!this.auto || !active) return;
 
-    this.cleanup = autoUpdate(this.$activator, this.$host, this.update);
+    this.cleanup = autoUpdate(this.$activator, this.$host, this.update.bind(this));
   }
 
   @Watch()
@@ -254,6 +274,16 @@ export class Tooltip {
         this.bind();
         break;
     }
+  }
+
+  @Bind()
+  onHide() {
+    this.hide();
+  }
+
+  @Bind()
+  onShow() {
+    this.show();
   }
 
   connectedCallback() {

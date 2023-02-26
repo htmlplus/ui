@@ -1,6 +1,12 @@
 import { Element, Property, query } from '@htmlplus/element';
 
-import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
+import {
+  GridAlignContent,
+  GridAlignItems,
+  GridGutter,
+  GridJustifyContent,
+  GridWrap
+} from './grid.types';
 
 /**
  * @slot default - The default slot.

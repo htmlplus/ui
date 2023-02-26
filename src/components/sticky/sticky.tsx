@@ -1,4 +1,13 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  State,
+  Watch
+} from '@htmlplus/element';
 
 import * as Helpers from '@app/helpers';
 
@@ -120,7 +129,11 @@ export class Sticky {
     return (
       <>
         <div className="sizer-wrapper">
-          <div className="sizer" ref={($element) => (this.$element = $element)} style={this.sizer}></div>
+          <div
+            className="sizer"
+            ref={($element) => (this.$element = $element)}
+            style={this.sizer}
+          ></div>
         </div>
         <slot />
         {this.state && (

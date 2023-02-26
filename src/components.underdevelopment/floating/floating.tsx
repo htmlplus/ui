@@ -59,7 +59,9 @@ export class Floating {
     style[Y] = centeredY ? `calc(50% + ${offsetY})` : `calc(0px + ${offsetY})`;
 
     if (centeredX || centeredY) {
-      style['transform'] = `translate(${centeredX ? `${rtl ? '' : '-'}50%` : '0'}, ${centeredY ? '-50%' : '0'})`;
+      style['transform'] = `translate(${centeredX ? `${rtl ? '' : '-'}50%` : '0'}, ${
+        centeredY ? '-50%' : '0'
+      })`;
     }
 
     return styles(style);

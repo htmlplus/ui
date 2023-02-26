@@ -33,7 +33,10 @@ export class Scrollbar {
 
     if (!isOverflowing) return;
 
-    const dir = window.getComputedStyle(window.document.body).getPropertyValue('direction').toLowerCase();
+    const dir = window
+      .getComputedStyle(window.document.body)
+      .getPropertyValue('direction')
+      .toLowerCase();
 
     const property = dir == 'rtl' ? 'paddingLeft' : 'paddingRight';
 

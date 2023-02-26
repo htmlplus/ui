@@ -1,4 +1,13 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  State,
+  Watch
+} from '@htmlplus/element';
 
 import * as Helpers from '@app/helpers';
 
