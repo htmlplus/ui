@@ -37,6 +37,7 @@
     transform: translateY(-6px);
     [part='arrow'] {
       bottom: -6px;
+      transform: translateX(-50%);
       border-top: solid 6px black;
       border-right: solid 6px transparent;
       border-bottom: solid 0px transparent;
@@ -48,6 +49,7 @@
     transform: translateX(6px);
     [part='arrow'] {
       left: -6px;
+      transform: translateY(-50%);
       border-top: solid 6px transparent;
       border-right: solid 6px black;
       border-bottom: solid 6px transparent;
@@ -59,6 +61,7 @@
     transform: translateY(6px);
     [part='arrow'] {
       top: -6px;
+      transform: translateX(-50%);
       border-top: solid 0px transparent;
       border-right: solid 6px transparent;
       border-bottom: solid 6px black;
@@ -70,6 +73,7 @@
     transform: translateX(-6px);
     [part='arrow'] {
       right: -6px;
+      transform: translateY(-50%);
       border-top: solid 6px transparent;
       border-right: solid 0px transparent;
       border-bottom: solid 6px transparent;

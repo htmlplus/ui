@@ -1,4 +1,15 @@
-import { Attributes, Bind, Element, Method, Property, Watch, State } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Method,
+  Property,
+  Watch,
+  State,
+  isRTL,
+  off,
+  on
+} from '@htmlplus/element';
 
 import {
   arrow,
@@ -62,11 +73,6 @@ export class Tooltip {
   /**
    * TODO
    */
-  flip?: boolean = true;
-
-  /**
-   * TODO
-   */
   @Property()
   offset?: TooltipOffset = [5, 0];
 
@@ -111,15 +117,41 @@ export class Tooltip {
   }
 
   get options() {
+    const PLACEMENT = {
+      'top': 'top',
+      'top-left': isRTL(this) ? 'top-end' : 'top-start',
+      'top-right': isRTL(this) ? 'top-start' : 'top-end',
+      'top-start': 'top-start',
+      'top-end': 'top-end',
+      'right': 'right',
+      'right-top': 'right-start',
+      'right-bottom': 'right-end',
+      'bottom': 'bottom',
+      'bottom-left': isRTL(this) ? 'bottom-end' : 'bottom-start',
+      'bottom-right': isRTL(this) ? 'bottom-start' : 'bottom-end',
+      'bottom-start': 'bottom-start',
+      'bottom-end': 'bottom-end',
+      'left': 'left',
+      'left-top': 'left-start',
+      'left-bottom': 'left-end',
+      'start': isRTL(this) ? 'right' : 'left',
+      'start-top': isRTL(this) ? 'right-start' : 'left-start',
+      'start-bottom': isRTL(this) ? 'right-end' : 'left-end',
+      'end': isRTL(this) ? 'left' : 'right',
+      'end-top': isRTL(this) ? 'left-start' : 'right-start',
+      'end-bottom': isRTL(this) ? 'left-end' : 'right-end'
+    };
+
     const padding = [this.offset].flat();
+
     return {
       middleware: [
         offset(padding[0] || 0),
-        this.flip && flip(),
+        flip(),
         shift({ padding: padding[1] || 0 }),
         this.arrow && arrow({ element: this.$arrow })
       ],
-      placement: this.placement,
+      placement: PLACEMENT[this.placement],
       strategy: this.fixed ? 'fixed' : 'absolute'
     } as Partial<ComputePositionConfig>;
   }
@@ -152,13 +184,15 @@ export class Tooltip {
    */
   @Method()
   hide() {
+    if (this.state == 'hide') return;
+
     clearTimeout(this.timeout);
 
     const delay = this.delay?.[1] || this.delay || 0;
 
     this.timeout = setTimeout(() => {
       this.state = 'hide';
-      this.watch(false);
+      this.observe(false);
     }, delay);
   }
 
@@ -167,13 +201,15 @@ export class Tooltip {
    */
   @Method()
   show() {
+    if (this.state == 'show') return;
+
     clearTimeout(this.timeout);
 
     const delay = this.delay?.[0] || this.delay || 0;
 
     this.timeout = setTimeout(() => {
       this.state = 'show';
-      this.watch(true);
+      this.observe(true);
     }, delay);
   }
 
@@ -182,15 +218,17 @@ export class Tooltip {
    */
   @Method()
   update() {
+    this.$host.removeAttribute('placement-computed');
+
     computePosition(this.$activator, this.$host, this.options).then((data) => {
       const { x, y, placement, middlewareData } = data;
+
+      this.$host.setAttribute('placement-computed', placement);
 
       Object.assign(this.$host.style, {
         left: `${x}px`,
         top: `${y}px`
       });
-
-      this.$host.setAttribute('placement-computed', placement);
 
       if (!this.arrow) return;
 
@@ -200,6 +238,32 @@ export class Tooltip {
         left: arrowX == null ? '' : `${arrowX}px`,
         top: arrowY == null ? '' : `${arrowY}px`
       });
+    });
+  }
+
+  bind() {
+    // TODO
+    if (this.disabled) return;
+
+    // TODO
+    this.$activator = this.$reference;
+
+    clearTimeout(this.timeout);
+
+    if (!this.$activator) return;
+
+    this.events(false).forEach(([type, handler]) => {
+      on(this.$activator, type, handler);
+    });
+  }
+
+  unbind() {
+    clearTimeout(this.timeout);
+
+    if (!this.$activator) return;
+
+    this.events(true).forEach(([type, handler]) => {
+      off(this.$activator, type, handler);
     });
   }
 
@@ -216,33 +280,7 @@ export class Tooltip {
       .map((row: any) => row.slice(1));
   }
 
-  bind() {
-    // TODO
-    if (this.disabled) return;
-
-    // TODO
-    this.$activator = this.$reference;
-
-    clearTimeout(this.timeout);
-
-    if (!this.$activator) return;
-
-    this.events(false).forEach((parameters) => {
-      this.$activator.addEventListener.apply(this.$activator, parameters);
-    });
-  }
-
-  unbind() {
-    clearTimeout(this.timeout);
-
-    if (!this.$activator) return;
-
-    this.events(true).forEach((parameters) => {
-      this.$activator.removeEventListener.apply(this.$activator, parameters);
-    });
-  }
-
-  watch(active: boolean) {
+  observe(active: boolean) {
     this.cleanup?.();
 
     if (!this.auto || !active) return;
@@ -254,7 +292,7 @@ export class Tooltip {
   watcher(next, prev, key) {
     switch (key) {
       case 'auto':
-        this.watch(next);
+        this.observe(next);
         break;
 
       case 'disabled':

@@ -3,6 +3,7 @@
 - add more placement like `end` and `start`
 - add auto update property
 - add multiple reference
+- `centerOffset` for arrow
 - animation `shift-toward`, `shift-toward-subtle`, `shift-toward-extreme`, `shift-away`, `shift-away-subtle`, `shift-away-extremescale`, `scale-subtle`, `scale-extreme`, `perspective`, `perspective-subtle`, `perspective-extreme`, `fade`
 - check tippyjs properties and so on
   - animateFill
