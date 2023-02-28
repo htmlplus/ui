@@ -210,7 +210,7 @@ let Tooltip = class Tooltip {
         import('@floating-ui/dom').then(module => {
             this.instance = module;
         }).catch(() => {
-            console.error('TODO');
+            console.error("It seems that '@floating-ui/dom' is not installed!");
         });
     }
     render() {

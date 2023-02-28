@@ -50,7 +50,7 @@ export class Faker {
         this.instance = module.faker;
       })
       .catch(() => {
-        console.error('TODO');
+        console.error("It seems that '@faker-js/faker' is not installed!");
       });
   }
 
