@@ -6,9 +6,11 @@ import {
   Property,
   Watch,
   State,
+  host,
   isRTL,
   off,
-  on
+  on,
+  query
 } from '@htmlplus/element';
 
 import {
@@ -21,8 +23,6 @@ import {
   shift
 } from '@floating-ui/dom';
 
-import * as Helpers from '@app/helpers';
-
 import {
   TooltipDelay,
   TooltipOffset,
@@ -33,7 +33,6 @@ import {
 
 /**
  * @dependencies @floating-ui/dom
- * @stable
  * @thirdParty
  */
 @Element()
@@ -157,11 +156,11 @@ export class Tooltip {
   }
 
   get $arrow() {
-    return Helpers.query(this, '[part=arrow]') as HTMLDivElement;
+    return query(this, '[part=arrow]') as HTMLDivElement;
   }
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   get $reference() {

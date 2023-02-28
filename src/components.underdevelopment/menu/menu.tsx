@@ -1,4 +1,14 @@
-import { Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+import {
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  State,
+  Watch,
+  host,
+  toUnit
+} from '@htmlplus/element';
 
 import * as Helpers from '@app/helpers';
 
@@ -88,7 +98,7 @@ export class Menu {
   observer?: any;
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   get getGrowX() {
@@ -118,7 +128,7 @@ export class Menu {
   }
 
   get reverse() {
-    return Helpers.getComputedStyle(this.$host, 'direction') === 'rtl';
+    return window.getComputedStyle(this.$host).getPropertyValue('direction') === 'rtl';
   }
 
   get style() {
@@ -197,7 +207,7 @@ export class Menu {
     let left = basex || (this.alignX === 'pointer' ? this.x : constants.alignX[this.alignX]);
 
     if (this.offsetX && !this.getGrowX.match(/both/)) {
-      const offset = Helpers.toUnit(this.offsetX);
+      const offset = toUnit(this.offsetX);
 
       const operator = this.getGrowX.match(/left|start/) ? '-' : '+';
 
@@ -205,7 +215,7 @@ export class Menu {
     }
 
     if (this.offsetY && !this.getGrowY.match(/both/)) {
-      const offset = Helpers.toUnit(this.offsetY);
+      const offset = toUnit(this.offsetY);
 
       const operator = this.getGrowY.match(/top/) ? '-' : '+';
 

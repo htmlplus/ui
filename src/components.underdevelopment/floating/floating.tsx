@@ -1,6 +1,6 @@
-import { Attributes, Element, Property, styles } from '@htmlplus/element';
+import { Attributes, Element, Property, isRTL, styles, toUnit } from '@htmlplus/element';
 
-import * as Helpers from '@app/helpers';
+import { toAxis } from '@app/helpers';
 
 import { FloatingOffset, FloatingPlacement } from './floating.types';
 
@@ -29,7 +29,7 @@ export class Floating {
   placement?: FloatingPlacement = 'end-bottom';
 
   get style() {
-    const rtl = Helpers.isRTL(this);
+    const rtl = isRTL(this);
 
     let placement = this.placement || '';
 
@@ -40,7 +40,7 @@ export class Floating {
     x ||= 'center';
     y ||= 'center';
 
-    x = Helpers.toAxis(x, rtl);
+    x = toAxis(x, rtl);
 
     const centeredX = x == 'center';
     const centeredY = y == 'center';
@@ -48,7 +48,7 @@ export class Floating {
     const X = !centeredX ? x : rtl ? 'right' : 'left';
     const Y = !centeredY ? y : 'top';
 
-    const offset = [this.offset].flat().map((offset) => Helpers.toUnit(offset));
+    const offset = [this.offset].flat().map((offset) => toUnit(offset));
 
     const offsetX = offset[0];
     const offsetY = offset[1] ?? offset[0];

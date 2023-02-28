@@ -1,6 +1,4 @@
-import { Element, Property } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
+import { Element, Property, host } from '@htmlplus/element';
 
 import { PlaygroundReferences } from './playground.types';
 
@@ -31,7 +29,7 @@ export class Playground {
   references?: PlaygroundReferences = 'child';
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   get $references() {

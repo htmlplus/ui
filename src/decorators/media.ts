@@ -1,5 +1,6 @@
+import { off, on } from '@htmlplus/element';
+
 import * as CONSTANTS from '@app/constants';
-import * as Helpers from '@app/helpers';
 
 export function Media(query: string) {
   const getMedia = (target: any, query: string) => {
@@ -65,7 +66,7 @@ export function Media(query: string) {
 
       const callback = this[propertyKey];
 
-      Helpers.on(media, 'change', callback);
+      on(media, 'change', callback);
 
       connected && connected.bind(this)();
 
@@ -85,7 +86,7 @@ export function Media(query: string) {
     target.disconnectedCallback = function () {
       const callback = this[propertyKey];
 
-      Helpers.off(media, 'change', callback);
+      off(media, 'change', callback);
 
       disconnected && disconnected.bind(this)();
     };

@@ -6,10 +6,10 @@ import {
   EventEmitter,
   Method,
   Property,
+  State,
   host,
   off,
-  on,
-  State
+  on
 } from '@htmlplus/element';
 
 import { ScrollToTopChangeEvent, ScrollToTopReference } from './scroll-to-top.types';

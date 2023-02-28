@@ -33,11 +33,11 @@ let Breadcrumb = class Breadcrumb {
         };
     }
     get $children() {
-        return Array.from(this.host.children).filter($node => {
+        return Array.from(this.$host.children).filter($node => {
             return !$node.matches([BREADCRUMB_EXPANDER_QUERY, BREADCRUMB_SEPARATOR_QUERY].join(','));
         });
     }
-    get host() {
+    get $host() {
         return host(this);
     }
     get items() {
@@ -93,13 +93,13 @@ let Breadcrumb = class Breadcrumb {
         return items;
     }
     get template() {
-        const $node = this.host.querySelector(BREADCRUMB_SEPARATOR_QUERY);
+        const $node = this.$host.querySelector(BREADCRUMB_SEPARATOR_QUERY);
         const $clone = $node === null || $node === void 0 ? void 0 : $node.cloneNode(true);
         $clone === null || $clone === void 0 ? void 0 : $clone.removeAttribute('slot');
         return ($clone === null || $clone === void 0 ? void 0 : $clone.outerHTML) || this.separator;
     }
     bind() {
-        this.observer.observe(this.host, {
+        this.observer.observe(this.$host, {
             childList: true
         });
     }

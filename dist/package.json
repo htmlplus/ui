@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.8.3-next-02100109",
+  "version": "0.8.3",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI components.",

@@ -6,11 +6,15 @@ import {
   EventEmitter,
   Property,
   State,
-  Watch
+  Watch,
+  classes,
+  host,
+  isRTL,
+  styles
 } from '@htmlplus/element';
 
 import { Media } from '@app/decorators';
-import * as Helpers from '@app/helpers';
+import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
 
 import {
@@ -149,7 +153,7 @@ export class Drawer {
   tunnel?: boolean;
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   @Attributes()
@@ -161,9 +165,9 @@ export class Drawer {
   }
 
   get classes() {
-    const placement = Helpers.toAxis(this.placement || 'start', Helpers.isRTL(this));
+    const placement = toAxis(this.placement || 'start', isRTL(this));
 
-    return Helpers.classes(
+    return classes(
       [
         'root',
         {
@@ -194,7 +198,7 @@ export class Drawer {
   }
 
   get styles() {
-    return Helpers.styles({
+    return styles({
       '--plus-drawer-size': this.size ?? null,
       '--plus-drawer-mini-size': this.miniSize ?? null
     });

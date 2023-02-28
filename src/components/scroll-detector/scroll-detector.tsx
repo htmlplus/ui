@@ -1,6 +1,4 @@
-import { Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
+import { Bind, Element, Event, EventEmitter, Property, Watch, off, on } from '@htmlplus/element';
 
 import { ScrollDetectorChangeEvent, ScrollDetectorSource } from './scroll-detector.types';
 
@@ -48,13 +46,13 @@ export class ScrollDetector {
 
     if (!this.$source) return;
 
-    Helpers.on(this.$source, 'scroll', this.onScroll);
+    on(this.$source, 'scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    Helpers.off(this.$source, 'scroll', this.onScroll);
+    off(this.$source, 'scroll', this.onScroll);
   }
 
   @Watch(['disabled', 'source'])

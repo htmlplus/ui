@@ -1,6 +1,5 @@
-import { Element, Property, Watch } from '@htmlplus/element';
+import { Element, Property, Watch, host } from '@htmlplus/element';
 
-import * as Helpers from '@app/helpers';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
@@ -31,7 +30,7 @@ export class Portal {
   instance?: PortalCore;
 
   get $nodes() {
-    return Array.from(Helpers.host(this).children);
+    return Array.from(host(this).children);
   }
 
   /**

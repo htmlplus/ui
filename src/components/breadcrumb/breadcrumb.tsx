@@ -1,7 +1,5 @@
-import { Attributes, Bind, Element, Property, State, queryAll } from '@htmlplus/element';
+import { Attributes, Bind, Element, Property, State, host, queryAll } from '@htmlplus/element';
 import { request } from '@htmlplus/element/client/utils/request';
-
-import * as Helpers from '@app/helpers';
 
 import * as CONSTANTS from './breadcrumb.constants';
 
@@ -53,15 +51,15 @@ export class Breadcrumb {
   observer: MutationObserver = new MutationObserver(this.onChange);
 
   get $children() {
-    return Array.from(this.host.children).filter(($node) => {
+    return Array.from(this.$host.children).filter(($node) => {
       return !$node.matches(
         [CONSTANTS.BREADCRUMB_EXPANDER_QUERY, CONSTANTS.BREADCRUMB_SEPARATOR_QUERY].join(',')
       );
     });
   }
 
-  get host() {
-    return Helpers.host(this);
+  get $host() {
+    return host(this);
   }
 
   get items() {
@@ -126,7 +124,7 @@ export class Breadcrumb {
   }
 
   get template() {
-    const $node = this.host.querySelector(
+    const $node = this.$host.querySelector(
       CONSTANTS.BREADCRUMB_SEPARATOR_QUERY
     ) as HTMLTemplateElement;
 
@@ -138,7 +136,7 @@ export class Breadcrumb {
   }
 
   bind() {
-    this.observer.observe(this.host, { childList: true });
+    this.observer.observe(this.$host, { childList: true });
   }
 
   unbind() {

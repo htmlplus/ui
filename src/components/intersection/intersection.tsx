@@ -6,10 +6,9 @@ import {
   EventEmitter,
   Property,
   State,
-  Watch
+  Watch,
+  host
 } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
 
 /**
  * @stable
@@ -90,7 +89,7 @@ export class Intersection {
 
   bind() {
     this.observer = new IntersectionObserver(this.onIntersecting, this.options);
-    this.observer.observe(Helpers.host(this));
+    this.observer.observe(host(this));
   }
 
   unbind() {

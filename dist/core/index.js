@@ -1476,23 +1476,6 @@ const toUnit = (input, unit = 'px') => {
     return `${Number(input)}${unit}`;
 };
 
-const getComputedStyle$1 = (element, property) => {
-    const fn = window.getComputedStyle;
-    if (!property)
-        return fn(element);
-    return fn(element).getPropertyValue(property);
-};
-
-const toAxis = (input, rtl) => {
-    if (!input)
-        return input;
-    if (input.match(/start/))
-        input = rtl ? 'right' : 'left';
-    if (input.match(/end/))
-        input = rtl ? 'left' : 'right';
-    return input;
-};
-
 class Animation {
     constructor(config) {
         const states = Object.assign({}, {
@@ -1537,7 +1520,7 @@ class Animation {
         return this.sources
             .map((item) => {
             try {
-                const style = getComputedStyle$1(item);
+                const style = window.getComputedStyle(item);
                 const duration = [
                     style.animationDelay,
                     style.transitionDelay,
@@ -1880,7 +1863,10 @@ class Scrollbar {
         const isOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
         if (!isOverflowing)
             return;
-        const dir = window.getComputedStyle(window.document.body).getPropertyValue('direction').toLowerCase();
+        const dir = window
+            .getComputedStyle(window.document.body)
+            .getPropertyValue('direction')
+            .toLowerCase();
         const property = dir == 'rtl' ? 'paddingLeft' : 'paddingRight';
         this.style = {
             overflow: document.body.style.overflow,
@@ -1902,6 +1888,16 @@ class Scrollbar {
 }
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
+
+const toAxis = (input, rtl) => {
+    if (!input)
+        return input;
+    if (input.match(/start/))
+        input = rtl ? 'right' : 'left';
+    if (input.match(/end/))
+        input = rtl ? 'left' : 'right';
+    return input;
+};
 
 const BREAKPOINTS = {
     xs: 0,
@@ -1978,4 +1974,4 @@ function Media(query) {
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, commonjsGlobal as c, classes as d, createLink as e, getComputedStyle$1 as f, getConfig as g, host as h, isRTL as i, Animation as j, Scrollbar as k, Portal as l, on as m, Media as n, off as o, query as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u, __awaiter as v, toUnit as w };
+export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, commonjsGlobal as c, classes as d, createLink as e, Animation as f, getConfig as g, host as h, isRTL as i, Scrollbar as j, Portal as k, on as l, Media as m, query as n, off as o, __awaiter as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u, toUnit as v };

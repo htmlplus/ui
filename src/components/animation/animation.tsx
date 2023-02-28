@@ -6,10 +6,9 @@ import {
   Method,
   Property,
   Watch,
-  getConfig
+  getConfig,
+  host
 } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
 
 import { ANIMATION_EASINGS } from './animation.constants';
 import {
@@ -154,10 +153,6 @@ export class Animation {
   @Event()
   plusRemove!: EventEmitter<void>;
 
-  get $host() {
-    return Helpers.host(this);
-  }
-
   get options() {
     return {
       composite: this.composite,
@@ -277,7 +272,7 @@ export class Animation {
     const keyframes =
       this.keyframes ?? getConfig('component', 'plus-animation', 'asset', 'name', this.name) ?? [];
 
-    this.instance = this.$host.animate(keyframes, this.options);
+    this.instance = host(this).animate(keyframes, this.options);
 
     this.instance.addEventListener('cancel', this.onCancel);
     this.instance.addEventListener('finish', this.onFinish);

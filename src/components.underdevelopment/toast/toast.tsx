@@ -1,6 +1,17 @@
-import { Attributes, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+import {
+  Attributes,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  Watch,
+  classes,
+  direction,
+  host,
+  isRTL
+} from '@htmlplus/element';
 
-import * as Helpers from '@app/helpers';
+import { toAxis } from '@app/helpers';
 import { Animation } from '@app/services';
 
 import { ToastPlacement, ToastType } from './toast.types';
@@ -124,7 +135,7 @@ export class Toast {
   tunnel?: boolean;
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   @Attributes()
@@ -140,12 +151,12 @@ export class Toast {
   get classes() {
     const { x, y } = this.coordinate(this);
 
-    return Helpers.classes({
+    return classes({
       'root': true,
       'full-width': this.fullWidth,
       [x]: !!x,
       [y]: !!y,
-      [Helpers.direction(this)]: true
+      [direction(this)]: true
     });
   }
 
@@ -164,7 +175,7 @@ export class Toast {
 
     if (!instance) return;
 
-    const zIndex = Helpers.getComputedStyle(instance.$host, 'z-index');
+    const zIndex = window.getComputedStyle(instance.$host).getPropertyValue('z-index');
 
     return `${parseInt(zIndex) + 1}`;
   }
@@ -224,7 +235,7 @@ export class Toast {
 
     if (!y) y = 'top';
 
-    x = Helpers.toAxis(x, Helpers.isRTL(instance));
+    x = toAxis(x, isRTL(instance));
 
     if (instance.fullWidth) x = undefined;
 

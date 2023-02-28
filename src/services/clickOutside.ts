@@ -1,4 +1,4 @@
-import * as Helpers from '@app/helpers';
+import { off, on } from '@htmlplus/element';
 
 export class ClickOutside {
   static targets = new Map();
@@ -20,7 +20,7 @@ export class ClickOutside {
       callback(event);
     };
 
-    Helpers.on(document, this.type, fn, options ?? true);
+    on(document, this.type, fn, options ?? true);
 
     this.targets.set(element, fn);
   }
@@ -30,7 +30,7 @@ export class ClickOutside {
 
     if (!callback) return;
 
-    Helpers.off(document, this.type, callback, options ?? true);
+    off(document, this.type, callback, options ?? true);
 
     this.targets.delete(element);
   }

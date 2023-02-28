@@ -2,7 +2,8 @@ import { _ as __decorate, P as Property, E as Event, S as State, A as Attributes
 
 const COUNTER_EASINGS = {
     'ease-out-expo': (currentTime, beginningValue, changeInValue, duration) => {
-        return (changeInValue * (-Math.pow(2, (-10 * currentTime) / duration) + 1) * 1024) / 1023 + beginningValue;
+        return ((changeInValue * (-Math.pow(2, (-10 * currentTime) / duration) + 1) * 1024) / 1023 +
+            beginningValue);
     }
 };
 

@@ -1,4 +1,4 @@
-import { s as setConfig, _ as __decorate, h as host, g as getConfig, u as uhtml, P as Property, E as Event, M as Method, W as Watch, B as Bind, a as Element } from './core/index.js';
+import { s as setConfig, _ as __decorate, g as getConfig, h as host, u as uhtml, P as Property, E as Event, M as Method, W as Watch, B as Bind, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{display:block}";
 
@@ -124,9 +124,6 @@ let Animation = class Animation {
          */
         this.playbackRate = 1;
     }
-    get $host() {
-        return host(this);
-    }
     get options() {
         var _a, _b;
         return {
@@ -225,7 +222,7 @@ let Animation = class Animation {
         var _a, _b;
         this.disconnectedCallback();
         const keyframes = (_b = (_a = this.keyframes) !== null && _a !== void 0 ? _a : getConfig('component', 'plus-animation', 'asset', 'name', this.name)) !== null && _b !== void 0 ? _b : [];
-        this.instance = this.$host.animate(keyframes, this.options);
+        this.instance = host(this).animate(keyframes, this.options);
         this.instance.addEventListener('cancel', this.onCancel);
         this.instance.addEventListener('finish', this.onFinish);
         this.instance.addEventListener('remove', this.onRemove);

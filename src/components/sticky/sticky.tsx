@@ -6,10 +6,10 @@ import {
   EventEmitter,
   Property,
   State,
-  Watch
+  Watch,
+  styles,
+  toUnit
 } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
 
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -61,7 +61,7 @@ export class Sticky {
   }
 
   get sizer() {
-    const top = Helpers.toUnit(this.top);
+    const top = toUnit(this.top);
 
     if (!top) return;
 
@@ -71,8 +71,8 @@ export class Sticky {
   }
 
   get style() {
-    return Helpers.styles({
-      top: Helpers.toUnit(this.top),
+    return styles({
+      top: toUnit(this.top),
       zIndex: this.zIndex ?? null
     });
   }

@@ -33,7 +33,7 @@ export declare class Breadcrumb {
     expand: boolean;
     observer: MutationObserver;
     get $children(): Element[];
-    get host(): HTMLElement;
+    get $host(): HTMLElement;
     get items(): any[];
     get template(): string;
     bind(): void;

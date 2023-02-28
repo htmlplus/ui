@@ -5474,7 +5474,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Scroll Detector\n\nTODO.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={false}\n    events={true}\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Scroll Detector\n\nDetects scroll event from an element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={false}\n    events={true}\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -6727,7 +6727,7 @@
       "methods": [
         {
           "async": false,
-          "description": "TODO",
+          "description": "Hides the component.",
           "deprecated": false,
           "experimental": false,
           "name": "hide",
@@ -6736,14 +6736,14 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Hides the component."
             }
           ],
           "signature": "hide() => void"
         },
         {
           "async": false,
-          "description": "TODO",
+          "description": "Shows the component.",
           "deprecated": false,
           "experimental": false,
           "name": "show",
@@ -6752,10 +6752,26 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Shows the component."
             }
           ],
           "signature": "show() => void"
+        },
+        {
+          "async": false,
+          "description": "Updates the component's position.",
+          "deprecated": false,
+          "experimental": false,
+          "name": "update",
+          "parameters": [],
+          "returns": "void",
+          "tags": [
+            {
+              "key": "",
+              "value": "Updates the component's position."
+            }
+          ],
+          "signature": "update() => void"
         }
       ],
       "parts": [],
@@ -6763,10 +6779,28 @@
         {
           "attribute": "arrow",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies whether to display the arrow or not.",
           "experimental": false,
           "model": false,
           "name": "arrow",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies whether to display the arrow or not."
+            }
+          ],
+          "type": "boolean"
+        },
+        {
+          "attribute": "auto",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "initializer": true,
+          "model": false,
+          "name": "auto",
           "reflects": false,
           "required": false,
           "tags": [
@@ -6780,7 +6814,7 @@
         {
           "attribute": "delay",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
           "experimental": false,
           "model": false,
           "name": "delay",
@@ -6789,7 +6823,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide."
             }
           ],
           "type": "TooltipDelay",
@@ -6798,7 +6832,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Disables the component functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -6807,7 +6841,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Disables the component functionality."
             }
           ],
           "type": "boolean"
@@ -6819,7 +6853,7 @@
           "experimental": false,
           "model": false,
           "name": "fixed",
-          "reflects": false,
+          "reflects": true,
           "required": false,
           "tags": [
             {
@@ -6850,7 +6884,7 @@
         {
           "attribute": "placement",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies the display location of the component relative to the reference.",
           "experimental": false,
           "model": false,
           "name": "placement",
@@ -6859,35 +6893,35 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Specifies the display location of the component relative to the reference."
             }
           ],
           "type": "TooltipPlacement",
           "typeReference": "./tooltip.types"
         },
         {
-          "attribute": "source",
+          "attribute": "reference",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies the element to which the tooltip will be attached.Use `next` to attach to the next sibling.Use `parent` to attach to the parent.Use `previous` to attach to the previous sibling.Use a string to find an element to attach to that.Use an element to attach to that.",
           "experimental": false,
           "initializer": "'previous'",
           "model": false,
-          "name": "source",
+          "name": "reference",
           "reflects": false,
           "required": false,
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Specifies the element to which the tooltip will be attached.Use `next` to attach to the next sibling.Use `parent` to attach to the parent.Use `previous` to attach to the previous sibling.Use a string to find an element to attach to that.Use an element to attach to that."
             }
           ],
-          "type": "TooltipSource",
+          "type": "TooltipReference",
           "typeReference": "./tooltip.types"
         },
         {
           "attribute": "trigger",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies the activation method.",
           "experimental": false,
           "model": false,
           "name": "trigger",
@@ -6896,7 +6930,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Specifies the activation method."
             }
           ],
           "type": "TooltipTrigger",
@@ -6909,6 +6943,10 @@
         {
           "key": "dependencies",
           "value": "@floating-ui/dom"
+        },
+        {
+          "key": "stable",
+          "value": ""
         },
         {
           "key": "thirdParty",

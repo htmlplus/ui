@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.3-next-02100109",
+  "version": "0.8.3",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -4007,7 +4007,7 @@
         },
         {
           "name": "plus-scroll-detector",
-          "description": "TODO.",
+          "description": "Detects scroll event from an element.",
           "doc-url": "https://www.htmlplus.io/javascript/component/scroll-detector",
           "deprecated": false,
           "experimental": false,
@@ -4874,19 +4874,26 @@
             "properties": [
               {
                 "name": "arrow",
-                "description": "TODO",
+                "description": "Specifies whether to display the arrow or not.",
                 "deprecated": false,
                 "experimental": false
               },
               {
-                "name": "delay",
+                "name": "auto",
                 "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": true
+              },
+              {
+                "name": "delay",
+                "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "disabled",
-                "description": "TODO",
+                "description": "Disables the component functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -4904,32 +4911,38 @@
               },
               {
                 "name": "placement",
-                "description": "TODO",
+                "description": "Specifies the display location of the component relative to the reference.",
                 "deprecated": false,
                 "experimental": false
               },
               {
-                "name": "source",
-                "description": "TODO",
+                "name": "reference",
+                "description": "Specifies the element to which the tooltip will be attached.Use `next` to attach to the next sibling.Use `parent` to attach to the parent.Use `previous` to attach to the previous sibling.Use a string to find an element to attach to that.Use an element to attach to that.",
                 "deprecated": false,
                 "experimental": false,
                 "default": "'previous'"
               },
               {
                 "name": "trigger",
-                "description": "TODO",
+                "description": "Specifies the activation method.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "hide",
-                "description": "TODO",
+                "description": "Hides the component.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "show",
-                "description": "TODO",
+                "description": "Shows the component.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "update",
+                "description": "Updates the component's position.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -4938,7 +4951,7 @@
           "attributes": [
             {
               "name": "arrow",
-              "description": "TODO",
+              "description": "Specifies whether to display the arrow or not.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4946,8 +4959,18 @@
               }
             },
             {
-              "name": "delay",
+              "name": "auto",
               "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              },
+              "default": true
+            },
+            {
+              "name": "delay",
+              "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4956,7 +4979,7 @@
             },
             {
               "name": "disabled",
-              "description": "TODO",
+              "description": "Disables the component functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4983,26 +5006,26 @@
             },
             {
               "name": "placement",
-              "description": "TODO",
+              "description": "Specifies the display location of the component relative to the reference.",
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'"
+                "type": "'top' | 'top-left' | 'top-right' | 'top-start' | 'top-end' | 'right' | 'right-top' | 'right-bottom' | 'bottom' | 'bottom-left' | 'bottom-right' | 'bottom-start' | 'bottom-end' | 'left' | 'left-top' | 'left-bottom' | 'start' | 'start-top' | 'start-bottom' | 'end' | 'end-top' | 'end-bottom'"
               }
             },
             {
-              "name": "source",
-              "description": "TODO",
+              "name": "reference",
+              "description": "Specifies the element to which the tooltip will be attached.Use `next` to attach to the next sibling.Use `parent` to attach to the parent.Use `previous` to attach to the previous sibling.Use a string to find an element to attach to that.Use an element to attach to that.",
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "'next' | 'parent' | 'previous' | Element | string"
+                "type": "'next' | 'parent' | 'previous' | Element | (string & {})"
               },
               "default": "'previous'"
             },
             {
               "name": "trigger",
-              "description": "TODO",
+              "description": "Specifies the activation method.",
               "deprecated": false,
               "experimental": false,
               "value": {

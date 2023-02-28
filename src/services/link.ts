@@ -1,6 +1,5 @@
+import { host } from '@htmlplus/element';
 import { request } from '@htmlplus/element/client/utils';
-
-import { host } from '@app/helpers';
 
 /**
  * Connect Flow

@@ -1,6 +1,14 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  Watch,
+  off,
+  on
+} from '@htmlplus/element';
 
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
@@ -74,13 +82,13 @@ export class ScrollIndicator {
   bind() {
     if (this.disabled) return;
 
-    Helpers.on(this.$source, 'scroll', this.onScroll);
+    on(this.$source, 'scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    Helpers.off(this.$source, 'scroll', this.onScroll);
+    off(this.$source, 'scroll', this.onScroll);
   }
 
   /**

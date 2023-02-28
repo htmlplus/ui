@@ -1,8 +1,15 @@
-import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
+import {
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  Watch,
+  host
+} from '@htmlplus/element';
 
 import type CoreType from 'signature_pad';
-
-import * as Helpers from '@app/helpers';
 
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
@@ -107,7 +114,7 @@ export class Signature {
   $canvas!: HTMLCanvasElement;
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   instance?: CoreType;

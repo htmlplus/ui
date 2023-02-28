@@ -3579,7 +3579,7 @@
     },
     {
       "name": "plus-scroll-detector",
-      "description": "TODO.",
+      "description": "Detects scroll event from an element.",
       "attributes": [
         {
           "name": "disabled",
@@ -4012,6 +4012,18 @@
       "attributes": [
         {
           "name": "arrow",
+          "description": "Specifies whether to display the arrow or not.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "auto",
           "description": "TODO",
           "values": [
             {
@@ -4024,12 +4036,12 @@
         },
         {
           "name": "delay",
-          "description": "TODO",
+          "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
           "values": []
         },
         {
           "name": "disabled",
-          "description": "TODO",
+          "description": "Disables the component functionality.",
           "values": [
             {
               "name": "false"
@@ -4058,10 +4070,16 @@
         },
         {
           "name": "placement",
-          "description": "TODO",
+          "description": "Specifies the display location of the component relative to the reference.",
           "values": [
             {
               "name": "top"
+            },
+            {
+              "name": "top-left"
+            },
+            {
+              "name": "top-right"
             },
             {
               "name": "top-start"
@@ -4073,13 +4091,19 @@
               "name": "right"
             },
             {
-              "name": "right-start"
+              "name": "right-top"
             },
             {
-              "name": "right-end"
+              "name": "right-bottom"
             },
             {
               "name": "bottom"
+            },
+            {
+              "name": "bottom-left"
+            },
+            {
+              "name": "bottom-right"
             },
             {
               "name": "bottom-start"
@@ -4091,16 +4115,34 @@
               "name": "left"
             },
             {
-              "name": "left-start"
+              "name": "left-top"
             },
             {
-              "name": "left-end"
+              "name": "left-bottom"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "start-top"
+            },
+            {
+              "name": "start-bottom"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "end-top"
+            },
+            {
+              "name": "end-bottom"
             }
           ]
         },
         {
-          "name": "source",
-          "description": "TODO",
+          "name": "reference",
+          "description": "Specifies the element to which the tooltip will be attached.Use `next` to attach to the next sibling.Use `parent` to attach to the parent.Use `previous` to attach to the previous sibling.Use a string to find an element to attach to that.Use an element to attach to that.",
           "values": [
             {
               "name": "next"
@@ -4115,7 +4157,7 @@
         },
         {
           "name": "trigger",
-          "description": "TODO",
+          "description": "Specifies the activation method.",
           "values": [
             {
               "name": "click"

@@ -1,6 +1,4 @@
-import { Attributes, Bind, Element, Property, State } from '@htmlplus/element';
-
-import * as Helpers from '@app/helpers';
+import { Attributes, Bind, Element, Property, State, classes } from '@htmlplus/element';
 
 // const { Inject } = createLink('BottomNavigation');
 
@@ -41,7 +39,7 @@ export class BottomNavigationItem {
   }
 
   get classes() {
-    return Helpers.classes({
+    return classes({
       root: true,
       shift: this.tunnel?.shift,
       [this.tunnel?.labelPosition]: true

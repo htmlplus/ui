@@ -1,8 +1,15 @@
-import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
+import {
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  Watch,
+  classes
+} from '@htmlplus/element';
 
 import type CoreType from 'cropperjs';
-
-import * as Helpers from '@app/helpers';
 
 import {
   CropperCropEvent,
@@ -171,7 +178,7 @@ export class Cropper {
   locked?: boolean;
 
   get classes() {
-    return Helpers.classes(
+    return classes(
       [
         'wrapper',
         {

@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, l as Portal$1, P as Property, W as Watch, a as Element } from './core/index.js';
+import { _ as __decorate, h as host, k as Portal$1, P as Property, W as Watch, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{display:contents}";
 

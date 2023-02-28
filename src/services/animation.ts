@@ -1,5 +1,3 @@
-import * as Helpers from '@app/helpers';
-
 export type AnimationReflect = 'attribute' | 'class';
 
 export type AnimationState = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';
@@ -87,7 +85,7 @@ export class Animation {
     return this.sources
       .map((item) => {
         try {
-          const style = Helpers.getComputedStyle(item);
+          const style = window.getComputedStyle(item);
 
           const duration = [
             style.animationDelay,

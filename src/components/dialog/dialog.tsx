@@ -1,6 +1,19 @@
-import { Attributes, Bind, Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+import {
+  Attributes,
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  Watch,
+  classes,
+  host,
+  isRTL,
+  off,
+  on
+} from '@htmlplus/element';
 
-import * as Helpers from '@app/helpers';
+import { toAxis } from '@app/helpers';
 import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
 
 import {
@@ -164,7 +177,7 @@ export class Dialog {
   tunnel?: boolean;
 
   get $host() {
-    return Helpers.host(this);
+    return host(this);
   }
 
   @Attributes()
@@ -194,9 +207,9 @@ export class Dialog {
 
     y = y || 'center';
 
-    x = Helpers.toAxis(x, Helpers.isRTL(this));
+    x = toAxis(x, isRTL(this));
 
-    return Helpers.classes(
+    return classes(
       [
         'dialog',
         {
@@ -229,7 +242,7 @@ export class Dialog {
 
     if (!instance) return;
 
-    const zIndex = Helpers.getComputedStyle(instance.$host, 'z-index');
+    const zIndex = window.getComputedStyle(instance.$host).getPropertyValue('z-index');
 
     return `${parseInt(zIndex) + 1}`;
   }
@@ -363,7 +376,7 @@ export class Dialog {
     ClickOutside.off(this.$cell);
 
     // remove keydown listener
-    Helpers.off(document, 'keydown', this.onEscape, true);
+    off(document, 'keydown', this.onEscape, true);
 
     // reset z-index
     this.$host.style.zIndex = null;
@@ -395,7 +408,7 @@ export class Dialog {
     ClickOutside.on(this.$cell, this.onClickOutside, false);
 
     // add keydown listener
-    Helpers.on(document, 'keydown', this.onEscape, true);
+    on(document, 'keydown', this.onEscape, true);
 
     // set z-index
     this.$host.style.zIndex = this.zIndex;

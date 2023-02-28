@@ -100,7 +100,6 @@ export declare class Animation {
      * Fires when the animation is removed (i.e., put into an `active` replace state).
      */
     plusRemove: EventEmitter<void>;
-    get $host(): HTMLElement;
     get options(): {
         composite: AnimationComposite;
         delay: number;
