@@ -1,4 +1,4 @@
-import { _ as __decorate, l as on, o as off, u as uhtml, P as Property, E as Event, A as Attributes, W as Watch, B as Bind, a as Element } from './core/index.js';
+import { _ as __decorate, k as on, o as off, u as uhtml, P as Property, E as Event, A as Attributes, W as Watch, B as Bind, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{--plus-scroll-indicator-color:#a6a6a6;--plus-scroll-indicator-background-color:#e9e9e9;--plus-scroll-indicator-size:0.5em}:host{background-color:var(--plus-scroll-indicator-background-color);display:block;height:var(--plus-scroll-indicator-size);width:100%}.indicator{background-color:var(--plus-scroll-indicator-color);height:100%;width:0}";
 

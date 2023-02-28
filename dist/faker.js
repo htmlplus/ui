@@ -32,7 +32,7 @@ let Faker = class Faker {
         import('@faker-js/faker/locale/en').then(module => {
             this.instance = module.faker;
         }).catch(() => {
-            console.error("It seems that '@faker-js/faker' is not installed!");
+            throw new Error("It seems that '@floating-ui/dom' is not installed!");
         });
     }
     render() {

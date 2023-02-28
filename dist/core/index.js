@@ -1972,6 +1972,4 @@ function Media(query) {
     };
 }
 
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, commonjsGlobal as c, classes as d, createLink as e, Animation as f, getConfig as g, host as h, isRTL as i, Scrollbar as j, Portal as k, on as l, Media as m, query as n, off as o, __awaiter as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u, toUnit as v };
+export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, classes as c, createLink as d, Animation as e, Scrollbar as f, getConfig as g, host as h, isRTL as i, Portal as j, on as k, Media as l, query as m, __awaiter as n, off as o, toUnit as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u };

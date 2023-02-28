@@ -79,6 +79,7 @@
   },
   "peerDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@floating-ui/dom": "^1.2.0"
+    "@floating-ui/dom": "^1.2.0",
+    "cropperjs": "^1.5.13"
   }
 }

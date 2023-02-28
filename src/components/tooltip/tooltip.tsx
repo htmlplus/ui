@@ -331,7 +331,7 @@ export class Tooltip {
         this.instance = module;
       })
       .catch(() => {
-        console.error("It seems that '@floating-ui/dom' is not installed!");
+        throw new Error("It seems that '@floating-ui/dom' is not installed!");
       });
   }
 
