@@ -6945,10 +6945,6 @@
           "value": "@floating-ui/dom"
         },
         {
-          "key": "stable",
-          "value": ""
-        },
-        {
           "key": "thirdParty",
           "value": ""
         }

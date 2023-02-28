@@ -8,20 +8,12 @@ import {
   State,
   host,
   isRTL,
+  query,
   off,
-  on,
-  query
+  on
 } from '@htmlplus/element';
 
-import {
-  arrow,
-  autoUpdate,
-  computePosition,
-  ComputePositionConfig,
-  flip,
-  offset,
-  shift
-} from '@floating-ui/dom';
+import type * as Core from '@floating-ui/dom';
 
 import {
   TooltipDelay,
@@ -105,6 +97,8 @@ export class Tooltip {
 
   cleanup?: Function;
 
+  instance?: typeof Core;
+
   timeout?: NodeJS.Timeout;
 
   @Attributes()
@@ -145,14 +139,14 @@ export class Tooltip {
 
     return {
       middleware: [
-        offset(padding[0] || 0),
-        flip(),
-        shift({ padding: padding[1] || 0 }),
-        this.arrow && arrow({ element: this.$arrow })
+        this.instance.offset(padding[0] || 0),
+        this.instance.flip(),
+        this.instance.shift({ padding: padding[1] || 0 }),
+        this.arrow && this.instance.arrow({ element: this.$arrow })
       ],
       placement: PLACEMENT[this.placement],
       strategy: this.fixed ? 'fixed' : 'absolute'
-    } as Partial<ComputePositionConfig>;
+    } as Partial<Core.ComputePositionConfig>;
   }
 
   get $arrow() {
@@ -219,7 +213,7 @@ export class Tooltip {
   update() {
     this.$host.removeAttribute('placement-computed');
 
-    computePosition(this.$activator, this.$host, this.options).then((data) => {
+    this.instance.computePosition(this.$activator, this.$host, this.options).then((data) => {
       const { x, y, placement, middlewareData } = data;
 
       this.$host.setAttribute('placement-computed', placement);
@@ -284,7 +278,7 @@ export class Tooltip {
 
     if (!this.auto || !active) return;
 
-    this.cleanup = autoUpdate(this.$activator, this.$host, this.update.bind(this));
+    this.cleanup = this.instance.autoUpdate(this.$activator, this.$host, this.update.bind(this));
   }
 
   @Watch()
@@ -329,6 +323,16 @@ export class Tooltip {
 
   disconnectedCallback() {
     this.unbind();
+  }
+
+  loadedCallback() {
+    import('@floating-ui/dom')
+      .then((module) => {
+        this.instance = module;
+      })
+      .catch(() => {
+        console.error('TODO');
+      });
   }
 
   render() {

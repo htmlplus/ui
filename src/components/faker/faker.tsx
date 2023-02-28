@@ -45,9 +45,13 @@ export class Faker {
 
   loadedCallback() {
     if (this.instance) return;
-    import('@faker-js/faker/locale/en').then((module) => {
-      this.instance = module.faker;
-    });
+    import('@faker-js/faker/locale/en')
+      .then((module) => {
+        this.instance = module.faker;
+      })
+      .catch(() => {
+        console.error('TODO');
+      });
   }
 
   render() {

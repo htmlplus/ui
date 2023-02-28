@@ -39,4 +39,3 @@ export { TabsPanels } from './tabs-panels.js';
 export { TabsTab } from './tabs-tab.js';
 export { Tooltip } from './tooltip.js';
 import './core/index.js';
-import '@floating-ui/dom';

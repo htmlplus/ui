@@ -1,11 +1,9 @@
 import { _ as __decorate, i as isRTL, n as query, h as host, l as on, o as off, u as uhtml, P as Property, S as State, A as Attributes, M as Method, W as Watch, B as Bind, a as Element } from './core/index.js';
-import { offset, flip, shift, arrow, computePosition, autoUpdate } from '@floating-ui/dom';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{background-color:#000;border-radius:4px;color:#fff;font-size:90%;font-weight:700;padding:4px 8px;position:absolute;width:max-content}:host([fixed]:not([fixed=false])){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;height:0;position:absolute;width:0}:host([arrow]:not([arrow=false])) [part=arrow]{display:block}:host([arrow]:not([arrow=false])):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=top]) [part=arrow]{border-color:#000 transparent transparent;border-style:solid;border-width:6px 6px 0;bottom:-6px;transform:translateX(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=right]) [part=arrow]{border-color:transparent #000 transparent transparent;border-style:solid;border-width:6px 6px 6px 0;left:-6px;transform:translateY(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=bottom]) [part=arrow]{border-color:transparent transparent #000;border-style:solid;border-width:0 6px 6px;top:-6px;transform:translateX(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=left]) [part=arrow]{border-color:transparent transparent transparent #000;border-style:solid;border-width:6px 0 6px 6px;right:-6px;transform:translateY(-50%)}";
 
 /**
  * @dependencies @floating-ui/dom
- * @stable
  * @thirdParty
  */
 let Tooltip = class Tooltip {
@@ -66,9 +64,9 @@ let Tooltip = class Tooltip {
         };
         const padding = [this.offset].flat();
         return {
-            middleware: [offset(padding[0] || 0), flip(), shift({
+            middleware: [this.instance.offset(padding[0] || 0), this.instance.flip(), this.instance.shift({
                     padding: padding[1] || 0
-                }), this.arrow && arrow({
+                }), this.arrow && this.instance.arrow({
                     element: this.$arrow
                 })],
             placement: PLACEMENT[this.placement],
@@ -127,7 +125,7 @@ let Tooltip = class Tooltip {
      */
     update() {
         this.$host.removeAttribute('placement-computed');
-        computePosition(this.$activator, this.$host, this.options).then(data => {
+        this.instance.computePosition(this.$activator, this.$host, this.options).then(data => {
             const { x, y, placement, middlewareData } = data;
             this.$host.setAttribute('placement-computed', placement);
             Object.assign(this.$host.style, {
@@ -172,7 +170,7 @@ let Tooltip = class Tooltip {
         (_a = this.cleanup) === null || _a === void 0 ? void 0 : _a.call(this);
         if (!this.auto || !active)
             return;
-        this.cleanup = autoUpdate(this.$activator, this.$host, this.update.bind(this));
+        this.cleanup = this.instance.autoUpdate(this.$activator, this.$host, this.update.bind(this));
     }
     watcher(next, prev, key) {
         switch (key) {
@@ -207,6 +205,13 @@ let Tooltip = class Tooltip {
     }
     disconnectedCallback() {
         this.unbind();
+    }
+    loadedCallback() {
+        import('@floating-ui/dom').then(module => {
+            this.instance = module;
+        }).catch(() => {
+            console.error('TODO');
+        });
     }
     render() {
         return uhtml.html `<slot /><div part="arrow"></div>`;
