@@ -9,7 +9,7 @@ import {
   classes
 } from '@htmlplus/element';
 
-import type CoreType from 'cropperjs';
+import type CropperCoreType from 'cropperjs';
 
 import {
   CropperCropEvent,
@@ -26,10 +26,12 @@ import {
   CropperZoomEvent
 } from './cropper.types';
 
-let Core;
+let CropperCore: typeof CropperCoreType;
 
 /**
+ * @dependencies cropperjs
  * @stable
+ * @thirdParty
  */
 @Element()
 export class Cropper {
@@ -173,7 +175,7 @@ export class Cropper {
 
   $image!: HTMLImageElement;
 
-  instance?: CoreType;
+  instance?: CropperCoreType;
 
   locked?: boolean;
 
@@ -346,7 +348,7 @@ export class Cropper {
   }
 
   bind() {
-    this.instance = new Core(this.$image, this.options);
+    this.instance = new CropperCore(this.$image, this.options);
   }
 
   unbind() {
@@ -498,11 +500,16 @@ export class Cropper {
     event.preventDefault();
   }
 
+  async connectCallback() {
+    try {
+      CropperCore = (await import('cropperjs')).default;
+    } catch {
+      throw new Error("It seems that 'cropperjs' is not installed!");
+    }
+  }
+
   loadedCallback() {
-    import('cropperjs').then((moddule) => {
-      Core = moddule.default;
-      this.bind();
-    });
+    this.bind();
   }
 
   disconnectedCallback() {

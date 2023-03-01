@@ -13,7 +13,7 @@ import {
   on
 } from '@htmlplus/element';
 
-import type * as Core from '@floating-ui/dom';
+import type * as FloatingCoreType from '@floating-ui/dom';
 
 import {
   TooltipDelay,
@@ -22,6 +22,8 @@ import {
   TooltipReference,
   TooltipTrigger
 } from './tooltip.types';
+
+let FloatingCore: typeof FloatingCoreType;
 
 /**
  * @dependencies @floating-ui/dom
@@ -97,8 +99,6 @@ export class Tooltip {
 
   cleanup?: Function;
 
-  instance?: typeof Core;
-
   timeout?: NodeJS.Timeout;
 
   @Attributes()
@@ -139,14 +139,14 @@ export class Tooltip {
 
     return {
       middleware: [
-        this.instance.offset(padding[0] || 0),
-        this.instance.flip(),
-        this.instance.shift({ padding: padding[1] || 0 }),
-        this.arrow && this.instance.arrow({ element: this.$arrow })
+        FloatingCore.offset(padding[0] || 0),
+        FloatingCore.flip(),
+        FloatingCore.shift({ padding: padding[1] || 0 }),
+        this.arrow && FloatingCore.arrow({ element: this.$arrow })
       ],
       placement: PLACEMENT[this.placement],
       strategy: this.fixed ? 'fixed' : 'absolute'
-    } as Partial<Core.ComputePositionConfig>;
+    } as Partial<FloatingCoreType.ComputePositionConfig>;
   }
 
   get $arrow() {
@@ -213,7 +213,7 @@ export class Tooltip {
   update() {
     this.$host.removeAttribute('placement-computed');
 
-    this.instance.computePosition(this.$activator, this.$host, this.options).then((data) => {
+    FloatingCore.computePosition(this.$activator, this.$host, this.options).then((data) => {
       const { x, y, placement, middlewareData } = data;
 
       this.$host.setAttribute('placement-computed', placement);
@@ -278,7 +278,7 @@ export class Tooltip {
 
     if (!this.auto || !active) return;
 
-    this.cleanup = this.instance.autoUpdate(this.$activator, this.$host, this.update.bind(this));
+    this.cleanup = FloatingCore.autoUpdate(this.$activator, this.$host, this.update.bind(this));
   }
 
   @Watch()
@@ -317,22 +317,20 @@ export class Tooltip {
     this.show();
   }
 
+  async connectCallback() {
+    try {
+      FloatingCore = await import('@floating-ui/dom');
+    } catch {
+      throw new Error("It seems that '@floating-ui/dom' is not installed!");
+    }
+  }
+
   connectedCallback() {
     this.bind();
   }
 
   disconnectedCallback() {
     this.unbind();
-  }
-
-  loadedCallback() {
-    import('@floating-ui/dom')
-      .then((module) => {
-        this.instance = module;
-      })
-      .catch(() => {
-        throw new Error("It seems that '@floating-ui/dom' is not installed!");
-      });
   }
 
   render() {

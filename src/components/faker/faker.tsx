@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import type { Faker as Core } from '@faker-js/faker';
+import type { Faker as FakerCoreType } from '@faker-js/faker';
 
 /**
  * @dependencies @faker-js/faker
@@ -25,7 +25,7 @@ export class Faker {
    * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
    */
   @Property()
-  instance?: Core;
+  instance?: FakerCoreType;
 
   /**
    * Keeps the result constant.
@@ -43,15 +43,14 @@ export class Faker {
     return method(...this.arguments) || null;
   }
 
-  loadedCallback() {
+  async connectCallback() {
     if (this.instance) return;
-    import('@faker-js/faker/locale/en')
-      .then((module) => {
-        this.instance = module.faker;
-      })
-      .catch(() => {
-        throw new Error("It seems that '@floating-ui/dom' is not installed!");
-      });
+
+    try {
+      this.instance = (await import('@faker-js/faker/locale/en')).faker;
+    } catch {
+      throw new Error("It seems that '@floating-ui/dom' is not installed!");
+    }
   }
 
   render() {
