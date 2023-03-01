@@ -2368,7 +2368,15 @@
       ],
       "tags": [
         {
+          "key": "dependencies",
+          "value": "cropperjs"
+        },
+        {
           "key": "stable",
+          "value": ""
+        },
+        {
+          "key": "thirdParty",
           "value": ""
         }
       ],
@@ -3486,7 +3494,7 @@
               "value": "The [Faker](https://fakerjs.dev/guide/usage.html) object instance."
             }
           ],
-          "type": "Core",
+          "type": "FakerCoreType",
           "typeReference": "@faker-js/faker"
         },
         {

@@ -1,4 +1,4 @@
-import type { Faker as Core } from '@faker-js/faker';
+import type { Faker as FakerCoreType } from '@faker-js/faker';
 /**
  * @dependencies @faker-js/faker
  * @stable
@@ -18,13 +18,13 @@ export declare class Faker {
     /**
      * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
      */
-    instance?: Core;
+    instance?: FakerCoreType;
     /**
      * Keeps the result constant.
      */
     seed?: number;
     get content(): any;
-    loadedCallback(): void;
+    connectCallback(): Promise<void>;
     render(): any;
 }
 export interface FakerJSX {
@@ -39,7 +39,7 @@ export interface FakerJSX {
     /**
      * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
      */
-    instance?: Core;
+    instance?: FakerCoreType;
     /**
      * Keeps the result constant.
      */
@@ -58,7 +58,7 @@ declare global {
         /**
          * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
          */
-        instance?: Core;
+        instance?: FakerCoreType;
         /**
          * Keeps the result constant.
          */

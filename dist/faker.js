@@ -1,4 +1,4 @@
-import { _ as __decorate, P as Property, a as Element } from './core/index.js';
+import { _ as __decorate, d as __awaiter, P as Property, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{white-space:pre-wrap}";
 
@@ -26,13 +26,16 @@ let Faker = class Faker {
         this.instance.seed(this.seed);
         return method(...this.arguments) || null;
     }
-    loadedCallback() {
-        if (this.instance)
-            return;
-        import('@faker-js/faker/locale/en').then(module => {
-            this.instance = module.faker;
-        }).catch(() => {
-            throw new Error("It seems that '@floating-ui/dom' is not installed!");
+    connectCallback() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.instance)
+                return;
+            try {
+                this.instance = (yield import('@faker-js/faker/locale/en')).faker;
+            }
+            catch (_a) {
+                throw new Error("It seems that '@floating-ui/dom' is not installed!");
+            }
         });
     }
     render() {

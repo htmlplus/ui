@@ -1,4 +1,4 @@
-import { _ as __decorate, d as createLink, u as uhtml, P as Property, E as Event, W as Watch, a as Element } from './core/index.js';
+import { _ as __decorate, e as createLink, u as uhtml, P as Property, E as Event, W as Watch, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{display:flex;flex-direction:column}:host([vertical]:not([vertical=false])){flex-direction:row}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar[reverse]:not([reverse=false])){flex-direction:column-reverse}";
 

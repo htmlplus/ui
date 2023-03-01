@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
-import type * as Core from '@floating-ui/dom';
+import type * as FloatingCoreType from '@floating-ui/dom';
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
  * @dependencies @floating-ui/dom
@@ -55,13 +55,31 @@ export declare class Tooltip {
     state?: 'hide' | 'show';
     $activator?: Element;
     cleanup?: Function;
-    instance?: typeof Core;
     timeout?: NodeJS.Timeout;
     get attributes(): {
         role: string;
         state: "hide" | "show";
     };
-    get options(): Partial<Core.ComputePositionConfig>;
+    get options(): Partial<{
+        placement?: FloatingCoreType.Placement;
+        strategy?: FloatingCoreType.Strategy;
+        middleware?: (false | {
+            name: string;
+            options?: any;
+            fn: (state: {
+                placement: FloatingCoreType.Placement;
+                platform: import("@floating-ui/core").Platform;
+                strategy: FloatingCoreType.Strategy;
+                x: number;
+                y: number;
+                initialPlacement: FloatingCoreType.Placement;
+                middlewareData: FloatingCoreType.MiddlewareData;
+                rects: FloatingCoreType.ElementRects;
+                elements: FloatingCoreType.Elements;
+            }) => FloatingCoreType.MiddlewareReturn | Promise<FloatingCoreType.MiddlewareReturn>;
+        })[];
+        platform?: FloatingCoreType.Platform;
+    }>;
     get $arrow(): HTMLDivElement;
     get $host(): HTMLElement;
     get $reference(): Element;
@@ -84,9 +102,9 @@ export declare class Tooltip {
     watcher(next: any, prev: any, key: any): void;
     onHide(): void;
     onShow(): void;
+    connectCallback(): Promise<void>;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    loadedCallback(): void;
     render(): uhtml.Hole;
 }
 export interface TooltipJSX {

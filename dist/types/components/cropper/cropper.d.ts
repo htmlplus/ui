@@ -1,9 +1,11 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
-import type CoreType from 'cropperjs';
+import type CropperCoreType from 'cropperjs';
 import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, CropperPointerEvent, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomEvent } from './cropper.types';
 /**
+ * @dependencies cropperjs
  * @stable
+ * @thirdParty
  */
 export declare class Cropper {
     static TAG: string;
@@ -101,7 +103,7 @@ export declare class Cropper {
      */
     plusZoom: EventEmitter<CropperZoomEvent>;
     $image: HTMLImageElement;
-    instance?: CoreType;
+    instance?: CropperCoreType;
     locked?: boolean;
     get classes(): string;
     get options(): {
@@ -199,6 +201,7 @@ export declare class Cropper {
     onCropStart(event: any): void;
     onReady(): void;
     onZoom(event: any): void;
+    connectCallback(): Promise<void>;
     loadedCallback(): void;
     disconnectedCallback(): void;
     render(): uhtml.Hole;

@@ -752,6 +752,7 @@ const API_RENDER_COMPLETED = Symbol();
 const API_STACKS = Symbol();
 // lifecycle
 const LIFECYCLE_ADOPTED = 'adoptedCallback';
+const LIFECYCLE_CONNECT = 'connectCallback';
 const LIFECYCLE_CONNECTED = 'connectedCallback';
 const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
 const LIFECYCLE_LOADED = 'loadedCallback';
@@ -1230,11 +1231,17 @@ function Element(tag) {
             }
             connectedCallback() {
                 const instance = this[API_INSTANCE];
-                instance[API_CONNECTED] = true;
-                call(instance, LIFECYCLE_CONNECTED);
-                request(instance, undefined, undefined, () => {
-                    call(instance, LIFECYCLE_LOADED);
-                });
+                const connect = () => {
+                    instance[API_CONNECTED] = true;
+                    call(instance, LIFECYCLE_CONNECTED);
+                    request(instance, undefined, undefined, () => {
+                        call(instance, LIFECYCLE_LOADED);
+                    });
+                };
+                const callback = call(instance, LIFECYCLE_CONNECT);
+                if (!(callback === null || callback === void 0 ? void 0 : callback.then))
+                    return connect();
+                callback.then(() => connect());
             }
             disconnectedCallback() {
                 call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
@@ -1972,4 +1979,4 @@ function Media(query) {
     };
 }
 
-export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, classes as c, createLink as d, Animation as e, Scrollbar as f, getConfig as g, host as h, isRTL as i, Portal as j, on as k, Media as l, query as m, __awaiter as n, off as o, toUnit as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u };
+export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, classes as c, __awaiter as d, createLink as e, Animation as f, getConfig as g, host as h, isRTL as i, Scrollbar as j, Portal as k, on as l, Media as m, query as n, off as o, toUnit as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u };

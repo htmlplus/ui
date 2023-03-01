@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI components.",
@@ -47,17 +47,14 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^0.6.6"
+    "@htmlplus/element": "^0.6.7"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
-    "@floating-ui/dom": "^1.2.0",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/react": "^18.0.25",
     "change-case": "^4.1.2",
-    "cropperjs": "^1.5.13",
     "cypress": "^11.2.0",
     "cypress-file-upload": "^5.0.8",
     "fast-glob": "^3.2.12",
@@ -79,7 +76,7 @@
   },
   "peerDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@floating-ui/dom": "^1.2.0",
+    "@floating-ui/dom": "^1.2.1",
     "cropperjs": "^1.5.13"
   }
 }
