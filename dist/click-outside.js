@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, C as ClickOutside$1, u as uhtml, P as Property, E as Event, W as Watch, B as Bind, a as Element } from './core/index.js';
+import { _ as __decorate, h as host, o as on, c as off, u as uhtml, P as Property, E as Event, W as Watch, B as Bind, a as Element } from './core/index.js';
 
 /**
  * @stable
@@ -14,10 +14,10 @@ let ClickOutside = class ClickOutside {
         };
     }
     bind() {
-        ClickOutside$1.on(this.$host, this.onClickOutside, true, this.options);
+        on(this.$host, 'outside', this.onClickOutside, this.options);
     }
     unbind() {
-        ClickOutside$1.off(this.$host, this.options);
+        off(this.$host, 'outside', this.onClickOutside, this.options);
     }
     watcher(next, prev, name) {
         switch (name) {

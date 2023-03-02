@@ -849,6 +849,34 @@ const merge = (target, ...sources) => {
 
 const defineProperty = Object.defineProperty;
 
+const outsides = [];
+const off = (target, type, handler, options) => {
+    if (type != 'outside')
+        return target.removeEventListener(type, handler, options);
+    const index = outsides.findIndex((outside) => outside.target == target && outside.handler == handler && outside.options == options);
+    const outside = outsides[index];
+    if (!outside)
+        return;
+    off(document, outside.type, outside.callback, outside.options);
+    outsides.splice(index, 1);
+};
+const on = (target, type, handler, options) => {
+    if (type != 'outside')
+        return target.addEventListener(type, handler, options);
+    const callback = (event) => {
+        !event.composedPath().some((item) => item == target) && handler(event);
+    };
+    type = 'ontouchstart' in window.document.documentElement ? 'touchstart' : 'click';
+    on(document, type, callback, options);
+    outsides.push({
+        target,
+        type,
+        handler,
+        options,
+        callback
+    });
+};
+
 const fromAttribute = (input, type) => {
     const string = `${input}`;
     if (TYPE_BOOLEAN & type) {
@@ -939,14 +967,6 @@ const isEvent = (input) => {
 
 const isServer = () => {
     return !(typeof window != 'undefined' && window.document);
-};
-
-const off = (target, type, handler, options) => {
-    target.removeEventListener(type, handler, options);
-};
-
-const on = (target, type, handler, options) => {
-    target.addEventListener(type, handler, options);
 };
 
 const task = (options) => {
@@ -1483,6 +1503,16 @@ const toUnit = (input, unit = 'px') => {
     return `${Number(input)}${unit}`;
 };
 
+const toAxis = (input, rtl) => {
+    if (!input)
+        return input;
+    if (input.match(/start/))
+        input = rtl ? 'right' : 'left';
+    if (input.match(/end/))
+        input = rtl ? 'left' : 'right';
+    return input;
+};
+
 class Animation {
     constructor(config) {
         const states = Object.assign({}, {
@@ -1593,32 +1623,6 @@ class Animation {
         });
     }
 }
-
-class ClickOutside {
-    static get type() {
-        return 'ontouchstart' in document.documentElement ? 'touchstart' : 'click';
-    }
-    static on(element, callback, self = true, options) {
-        this.off(element);
-        const fn = (event) => {
-            const path = event.composedPath();
-            const index = path.findIndex((item) => item === element);
-            if ((!self && 1 < index) || (self && index !== -1))
-                return;
-            callback(event);
-        };
-        on(document, this.type, fn, options !== null && options !== void 0 ? options : true);
-        this.targets.set(element, fn);
-    }
-    static off(element, options) {
-        const callback = this.targets.get(element);
-        if (!callback)
-            return;
-        off(document, this.type, callback, options !== null && options !== void 0 ? options : true);
-        this.targets.delete(element);
-    }
-}
-ClickOutside.targets = new Map();
 
 const properties = [];
 const attach = (property) => {
@@ -1896,16 +1900,6 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
-const toAxis = (input, rtl) => {
-    if (!input)
-        return input;
-    if (input.match(/start/))
-        input = rtl ? 'right' : 'left';
-    if (input.match(/end/))
-        input = rtl ? 'left' : 'right';
-    return input;
-};
-
 const BREAKPOINTS = {
     xs: 0,
     sm: 576,
@@ -1979,4 +1973,4 @@ function Media(query) {
     };
 }
 
-export { Attributes as A, Bind as B, ClickOutside as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, classes as c, __awaiter as d, createLink as e, Animation as f, getConfig as g, host as h, isRTL as i, Scrollbar as j, Portal as k, on as l, Media as m, query as n, off as o, toUnit as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u };
+export { Attributes as A, Bind as B, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, off as c, classes as d, __awaiter as e, createLink as f, getConfig as g, host as h, isRTL as i, Animation as j, Scrollbar as k, Portal as l, Media as m, query as n, on as o, toUnit as p, queryAll as q, request as r, setConfig as s, toAxis as t, uhtml as u };

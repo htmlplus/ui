@@ -1,4 +1,4 @@
-import { _ as __decorate, e as createLink, h as host, t as toAxis, i as isRTL, c as classes, b as styles, f as Animation, j as Scrollbar, C as ClickOutside, u as uhtml, P as Property, E as Event, S as State, A as Attributes, W as Watch, B as Bind, m as Media, a as Element } from './core/index.js';
+import { _ as __decorate, f as createLink, h as host, t as toAxis, i as isRTL, d as classes, b as styles, j as Animation, k as Scrollbar, c as off, o as on, u as uhtml, P as Property, E as Event, S as State, A as Attributes, W as Watch, B as Bind, m as Media, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{--plus-drawer-size:280px;--plus-drawer-mini-size:80px}:host{display:block;overflow:hidden;position:relative;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.root{height:100%;position:relative;z-index:1}.backdrop,.root{transition:inherit}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([temporary=on-breakpoint][state=mobile]),:host([temporary]:not([temporary=false]):not([temporary=on-breakpoint])){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]:not([animation=false])){transition:.3s}:host([state=closed]){display:none}:host([state=opened][mini-state=leaved]){overflow:visible}:host([state=closing]),:host([state=open]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1)!important}:host([state=closing]) .backdrop,:host([state=open]) .backdrop{opacity:0}:host([mini-state=entered]),:host([mini-state=entering]),:host([mini-state=leave]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1 + var(--plus-drawer-mini-size))}";
 
@@ -61,9 +61,6 @@ let Drawer = class Drawer {
             '--plus-drawer-mini-size': (_b = this.miniSize) !== null && _b !== void 0 ? _b : null
         });
     }
-    /**
-     * Methods
-     */
     hide() {
         this.tryHide(true, false);
     }
@@ -73,9 +70,6 @@ let Drawer = class Drawer {
     toggle() {
         this.isOpen ? this.hide() : this.show();
     }
-    /**
-     * Internal Methods
-     */
     broadcast(value) {
         this.tunnel = value;
     }
@@ -157,9 +151,6 @@ let Drawer = class Drawer {
             }
         });
     }
-    /**
-     * Watchers
-     */
     watcher(next, prev, name) {
         var _a, _b;
         switch (name) {
@@ -176,14 +167,11 @@ let Drawer = class Drawer {
                 break;
         }
     }
-    /**
-     * Events handler
-     */
     onHide() {
         // reset document's scroll
         Scrollbar.reset(this);
         // remove outside click listener
-        ClickOutside.off(this.$root);
+        off(this.$root, 'outside', this.onClickOutside, true);
         // update state
         this.open = this.isOpen = false;
         // TODO: experimantal new link
@@ -193,7 +181,7 @@ let Drawer = class Drawer {
         // remove document's scroll
         this.isTemporary && Scrollbar.remove(this);
         // remove outside click listener
-        ClickOutside.on(this.$root, this.onClickOutside, false);
+        on(this.$root, 'outside', this.onClickOutside, true);
         // update state
         this.open = this.isOpen = true;
         // TODO: experimantal new link
@@ -209,10 +197,7 @@ let Drawer = class Drawer {
             return;
         this.tryHide(true, false);
     }
-    /**
-     * Lifecycles
-     */
-    connectedCallback() {
+    loadedCallback() {
         this.initialize();
     }
     disconnectedCallback() {

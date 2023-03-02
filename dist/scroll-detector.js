@@ -1,4 +1,4 @@
-import { _ as __decorate, l as on, o as off, P as Property, E as Event, W as Watch, B as Bind, a as Element } from './core/index.js';
+import { _ as __decorate, o as on, c as off, P as Property, E as Event, W as Watch, B as Bind, a as Element } from './core/index.js';
 
 /**
  * @stable

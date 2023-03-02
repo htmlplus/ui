@@ -14,7 +14,7 @@ import {
 } from '@htmlplus/element';
 
 import { toAxis } from '@app/helpers';
-import { Animation, ClickOutside, Portal, Scrollbar, createLink } from '@app/services';
+import { Animation, Portal, Scrollbar, createLink } from '@app/services';
 
 import {
   DialogFullscreen,
@@ -247,10 +247,6 @@ export class Dialog {
     return `${parseInt(zIndex) + 1}`;
   }
 
-  /**
-   * External Methods
-   */
-
   hide() {
     this.tryHide(true, false);
   }
@@ -263,10 +259,6 @@ export class Dialog {
   toggle() {
     this.isOpen ? this.hide() : this.show();
   }
-
-  /**
-   * Internal Methods
-   */
 
   broadcast(value) {
     this.tunnel = value;
@@ -343,10 +335,6 @@ export class Dialog {
     });
   }
 
-  /**
-   * Watchers
-   */
-
   @Watch(['connector', 'open'])
   watcher(next, prev, name) {
     switch (name) {
@@ -364,16 +352,12 @@ export class Dialog {
     }
   }
 
-  /**
-   * Events handler
-   */
-
   onHide() {
     // reset document's scroll
     Scrollbar.reset(this);
 
     // remove outside click listener
-    ClickOutside.off(this.$cell);
+    off(this.$cell, 'outside', this.onClickOutside, true);
 
     // remove keydown listener
     off(document, 'keydown', this.onEscape, true);
@@ -405,7 +389,7 @@ export class Dialog {
     Scrollbar.remove(this);
 
     // remove outside click listener
-    ClickOutside.on(this.$cell, this.onClickOutside, false);
+    on(this.$cell, 'outside', this.onClickOutside, true);
 
     // add keydown listener
     on(document, 'keydown', this.onEscape, true);
@@ -441,12 +425,7 @@ export class Dialog {
     this.tryHide(true, false);
   }
 
-  /**
-   * Lifecycles
-   */
-
-  // TODO: it's can not be `connectedCallback`, because ClickOutside incompatible
-  connectedCallback() {
+  loadedCallback() {
     this.initialize();
   }
 
@@ -464,8 +443,8 @@ export class Dialog {
         )}
         <div className={this.classes}>
           <div className="table">
-            <div className="cell" ref={($element) => (this.$cell = $element)}>
-              <slot />
+            <div className="cell">
+              <slot ref={($element) => (this.$cell = $element)} />
             </div>
           </div>
         </div>

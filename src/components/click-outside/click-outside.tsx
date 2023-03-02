@@ -1,6 +1,14 @@
-import { Bind, Element, Event, EventEmitter, Property, Watch, host } from '@htmlplus/element';
-
-import { ClickOutside as ClickOutsideCore } from '@app/services';
+import {
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Property,
+  Watch,
+  host,
+  off,
+  on
+} from '@htmlplus/element';
 
 /**
  * @stable
@@ -44,11 +52,11 @@ export class ClickOutside {
   }
 
   bind() {
-    ClickOutsideCore.on(this.$host, this.onClickOutside, true, this.options);
+    on(this.$host, 'outside', this.onClickOutside, this.options);
   }
 
   unbind() {
-    ClickOutsideCore.off(this.$host, this.options);
+    off(this.$host, 'outside', this.onClickOutside, this.options);
   }
 
   @Watch(['capture', 'disabled', 'once'])

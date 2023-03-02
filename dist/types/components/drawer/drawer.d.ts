@@ -98,35 +98,20 @@ export declare class Drawer {
     get hasBackdrop(): boolean;
     get isTemporary(): boolean;
     get styles(): string;
-    /**
-     * Methods
-     */
     hide(): void;
     show(): void;
     toggle(): void;
-    /**
-     * Internal Methods
-     */
     broadcast(value: any): void;
     initialize(): void;
     terminate(): void;
     tryHide(animation: any, silent: any): void;
     tryShow(animation: any, silent: any): void;
-    /**
-     * Watchers
-     */
     watcher(next: any, prev: any, name: any): void;
-    /**
-     * Events handler
-     */
     onHide(): void;
     onShow(): void;
     onMedia(event: any): void;
     onClickOutside(): void;
-    /**
-     * Lifecycles
-     */
-    connectedCallback(): void;
+    loadedCallback(): void;
     disconnectedCallback(): void;
     render(): uhtml.Hole;
 }

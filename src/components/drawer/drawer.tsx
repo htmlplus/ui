@@ -10,12 +10,14 @@ import {
   classes,
   host,
   isRTL,
+  off,
+  on,
   styles
 } from '@htmlplus/element';
 
 import { Media } from '@app/decorators';
 import { toAxis } from '@app/helpers';
-import { Animation, ClickOutside, Scrollbar, createLink } from '@app/services';
+import { Animation, Scrollbar, createLink } from '@app/services';
 
 import {
   DrawerBackdrop,
@@ -204,10 +206,6 @@ export class Drawer {
     });
   }
 
-  /**
-   * Methods
-   */
-
   hide() {
     this.tryHide(true, false);
   }
@@ -220,10 +218,6 @@ export class Drawer {
   toggle() {
     this.isOpen ? this.hide() : this.show();
   }
-
-  /**
-   * Internal Methods
-   */
 
   broadcast(value) {
     this.tunnel = value;
@@ -311,10 +305,6 @@ export class Drawer {
     });
   }
 
-  /**
-   * Watchers
-   */
-
   @Watch(['connector', 'mini', 'open'])
   watcher(next, prev, name) {
     switch (name) {
@@ -339,16 +329,12 @@ export class Drawer {
     }
   }
 
-  /**
-   * Events handler
-   */
-
   onHide() {
     // reset document's scroll
     Scrollbar.reset(this);
 
     // remove outside click listener
-    ClickOutside.off(this.$root);
+    off(this.$root, 'outside', this.onClickOutside, true);
 
     // update state
     this.open = this.isOpen = false;
@@ -362,7 +348,7 @@ export class Drawer {
     this.isTemporary && Scrollbar.remove(this);
 
     // remove outside click listener
-    ClickOutside.on(this.$root, this.onClickOutside, false);
+    on(this.$root, 'outside', this.onClickOutside, true);
 
     // update state
     this.open = this.isOpen = true;
@@ -386,11 +372,7 @@ export class Drawer {
     this.tryHide(true, false);
   }
 
-  /**
-   * Lifecycles
-   */
-
-  connectedCallback() {
+  loadedCallback() {
     this.initialize();
   }
 
