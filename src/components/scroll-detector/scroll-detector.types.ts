@@ -20,4 +20,4 @@ export interface ScrollDetectorChangeEvent {
    */
   viewport: number;
 }
-export type ScrollDetectorSource = HTMLElement | string;
+export type ScrollDetectorReference = Element | 'document' | (string & {});

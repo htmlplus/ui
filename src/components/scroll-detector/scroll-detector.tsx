@@ -1,6 +1,6 @@
 import { Bind, Element, Event, EventEmitter, Property, Watch, off, on } from '@htmlplus/element';
 
-import { ScrollDetectorChangeEvent, ScrollDetectorSource } from './scroll-detector.types';
+import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-detector.types';
 
 /**
  * @stable
@@ -14,10 +14,10 @@ export class ScrollDetector {
   disabled?: boolean;
 
   /**
-   * Specifies the source of the scroll.
+   * Specifies the reference of the scroll.
    */
   @Property()
-  source?: ScrollDetectorSource = 'document';
+  reference?: ScrollDetectorReference = 'document';
 
   /**
    * Indicates which scroll (horizontal or vertical) is to be used as the source.
@@ -31,31 +31,31 @@ export class ScrollDetector {
   @Event()
   plusChange: EventEmitter<ScrollDetectorChangeEvent>;
 
-  get $source() {
-    if (typeof this.source != 'string') return this.source;
-
-    if (this.source == 'document') return document.documentElement;
-
-    return document.querySelector(this.source);
-  }
-
   offset?: number;
+
+  get $reference() {
+    if (typeof this.reference != 'string') return this.reference;
+
+    if (this.reference == 'document') return document.documentElement;
+
+    return document.querySelector(this.reference);
+  }
 
   bind() {
     if (this.disabled) return;
 
-    if (!this.$source) return;
+    if (!this.$reference) return;
 
-    on(this.$source, 'scroll', this.onScroll);
+    on(this.$reference, 'scroll', this.onScroll);
 
     this.onScroll();
   }
 
   unbind() {
-    off(this.$source, 'scroll', this.onScroll);
+    off(this.$reference, 'scroll', this.onScroll);
   }
 
-  @Watch(['disabled', 'source'])
+  @Watch(['disabled', 'reference'])
   watcher(next) {
     next ? this.unbind() : this.bind();
   }
@@ -63,7 +63,7 @@ export class ScrollDetector {
   @Bind()
   onScroll() {
     const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } =
-      this.$source;
+      this.$reference;
 
     const offset = this.vertical ? scrollTop : scrollLeft;
 
@@ -73,24 +73,22 @@ export class ScrollDetector {
 
     const overflow = total - viewport;
 
-    const progress = Math.round((offset / overflow) * 100);
+    const progress = overflow ? Math.round((offset / overflow) * 100) : 0;
 
     if (this.offset == progress) return;
 
     this.offset = offset;
 
-    const detail = {
+    this.plusChange({
       offset,
       overflow,
       progress,
       total,
       viewport
-    };
-
-    this.plusChange(detail);
+    });
   }
 
-  loadedCallback() {
+  connectedCallback() {
     this.bind();
   }
 
