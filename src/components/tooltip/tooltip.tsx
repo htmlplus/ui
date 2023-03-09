@@ -38,12 +38,6 @@ export class Tooltip {
   arrow?: boolean;
 
   /**
-   * TODO
-   */
-  @Property()
-  auto?: boolean = true;
-
-  /**
    * Specifies a delay in milliseconds for show or hide.
    * Use a number for both show and hide or
    * create an array of two separate numbers for show and hide.
@@ -67,7 +61,7 @@ export class Tooltip {
    * TODO
    */
   @Property()
-  offset?: TooltipOffset = [5, 0];
+  offset?: TooltipOffset = [0, 10];
 
   /**
    * Specifies the display location of the component relative to the reference.
@@ -91,6 +85,12 @@ export class Tooltip {
    */
   @Property()
   trigger?: TooltipTrigger = ['focus', 'hover'];
+
+  /**
+   * TODO
+   */
+  @Property()
+  z?: 'auto' | 'vertical' | 'horizontal' | 'move' = 'auto';
 
   @State()
   state?: 'hide' | 'show' = 'hide';
@@ -139,10 +139,10 @@ export class Tooltip {
 
     return {
       middleware: [
-        FloatingCore.offset(padding[0] || 0),
+        FloatingCore.offset({ crossAxis: padding[0] || 0, mainAxis: padding[1] || 0 }),
         FloatingCore.flip(),
-        FloatingCore.shift({ padding: padding[1] || 0 }),
         this.arrow && FloatingCore.arrow({ element: this.$arrow })
+        // FloatingCore.hide()
       ],
       placement: PLACEMENT[this.placement],
       strategy: this.fixed ? 'fixed' : 'absolute'
@@ -216,6 +216,8 @@ export class Tooltip {
     FloatingCore.computePosition(this.$activator, this.$host, this.options).then((data) => {
       const { x, y, placement, middlewareData } = data;
 
+      // console.log(1, middlewareData.hide);
+
       this.$host.setAttribute('placement-computed', placement);
 
       Object.assign(this.$host.style, {
@@ -248,6 +250,32 @@ export class Tooltip {
     this.events(false).forEach(([type, handler]) => {
       on(this.$activator, type, handler);
     });
+
+    // TODO
+    // this.state = 'show';
+    // this.observe(true);
+    // this.$activator.addEventListener('mousemove', (event: any) => {
+    //   const virtualEl = {
+    //     getBoundingClientRect() {
+    //       return {
+    //         width: 0,
+    //         height: 0,
+    //         x: event.clientX,
+    //         y: event.clientY,
+    //         left: event.clientX,
+    //         right: event.clientX,
+    //         top: event.clientY,
+    //         bottom: event.clientY
+    //       };
+    //     }
+    //   };
+    //   FloatingCore.computePosition(virtualEl, this.$host, this.options).then(({ x, y }) => {
+    //     Object.assign(this.$host.style, {
+    //       top: `${y}px`,
+    //       left: `${x}px`
+    //     });
+    //   });
+    // });
   }
 
   unbind() {
@@ -264,6 +292,7 @@ export class Tooltip {
     return [
       ['click', 'click', this.onShow],
       ['click', 'blur', this.onHide],
+      ['click', 'outside', this.onHide],
       ['focus', 'focus', this.onShow],
       ['focus', 'blur', this.onHide],
       ['hover', 'mouseenter', this.onShow],
@@ -276,7 +305,7 @@ export class Tooltip {
   observe(active: boolean) {
     this.cleanup?.();
 
-    if (!this.auto || !active) return;
+    if (!active) return;
 
     this.cleanup = FloatingCore.autoUpdate(this.$activator, this.$host, this.update.bind(this));
   }
@@ -284,10 +313,6 @@ export class Tooltip {
   @Watch()
   watcher(next, prev, key) {
     switch (key) {
-      case 'auto':
-        this.observe(next);
-        break;
-
       case 'disabled':
         next ? this.unbind() : this.bind();
         break;
@@ -321,7 +346,9 @@ export class Tooltip {
     try {
       FloatingCore = await import('@floating-ui/dom');
     } catch {
-      throw new Error("It seems that '@floating-ui/dom' is not installed!");
+      throw new Error(
+        "The `tooltip` component depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem."
+      );
     }
   }
 

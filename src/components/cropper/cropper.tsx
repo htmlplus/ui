@@ -504,7 +504,9 @@ export class Cropper {
     try {
       CropperCore = (await import('cropperjs')).default;
     } catch {
-      throw new Error("It seems that 'cropperjs' is not installed!");
+      throw new Error(
+        "The `cropper` component depends on an external package, but it doesn't seem to be installed. Running `npm install cropperjs` will fix this problem."
+      );
     }
   }
 

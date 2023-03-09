@@ -49,7 +49,9 @@ export class Faker {
     try {
       this.instance = (await import('@faker-js/faker/locale/en')).faker;
     } catch {
-      throw new Error("It seems that '@floating-ui/dom' is not installed!");
+      throw new Error(
+        "The `faker` component depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem."
+      );
     }
   }
 
