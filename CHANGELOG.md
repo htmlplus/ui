@@ -7,13 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.0] - 0000-00-00
 
+### Added
+
+- The `floating` component.
+
 ### Updated
 
 - Renamed the `source` property to `reference` in the `Scroll Detector` component.
 - The error message for third-party components has been updated.
-
-### Updated
-
 - Updated the `outside click` dependencies.
 
 ## [0.8.5] - 2023-03-01
