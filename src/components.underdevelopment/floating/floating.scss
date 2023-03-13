@@ -1,7 +1,0 @@
-:host {
-  position: absolute;
-}
-
-:host(#{boolean(fixed)}) {
-  position: fixed;
-}

@@ -5,27 +5,28 @@ import { toAxis } from '@app/helpers';
 import { FloatingOffset, FloatingPlacement } from './floating.types';
 
 /**
- * TODO
+ * @stable
  * @slot default - The default slot.
  */
 @Element()
 export class Floating {
   /**
-   * TODO
+   * Positions the element relative to the viewport and prevents it from moving even when scrolled.
+   * Otherwise, the element is positioned relative to its nearest ancestor.
    */
-  @Property({ reflect: true })
+  @Property()
   fixed?: boolean;
 
   /**
-   * TODO
+   * Specifies the deviation from the center.
    */
   @Property()
   offset?: FloatingOffset = 0;
 
   /**
-   * TODO
+   * Specifies the display location.
    */
-  @Property({ reflect: true })
+  @Property()
   placement?: FloatingPlacement = 'end-bottom';
 
   get style() {
@@ -53,7 +54,9 @@ export class Floating {
     const offsetX = offset[0];
     const offsetY = offset[1] ?? offset[0];
 
-    const style = {};
+    const style = {
+      position: this.fixed ? 'fixed' : 'absolute'
+    };
 
     style[X] = centeredX ? `calc(50% + ${offsetX})` : `calc(0px + ${offsetX})`;
     style[Y] = centeredY ? `calc(50% + ${offsetY})` : `calc(0px + ${offsetY})`;
