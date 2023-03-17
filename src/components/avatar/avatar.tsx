@@ -1,18 +1,20 @@
 import { Element, Property } from '@htmlplus/element';
 
+import { AvatarShape, AvatarSize } from './avatar.types';
+
 @Element()
 export class Avatar {
   /**
    * TODO
    */
   @Property({ reflect: true })
-  shape?: 'circle' | 'round' | 'tile' = 'round';
+  shape?: AvatarShape = 'round';
 
   /**
    * TODO
    */
   @Property({ reflect: true })
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' = 'md';
+  size?: AvatarSize = 'md';
 
   render() {
     return <slot />;

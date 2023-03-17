@@ -2,9 +2,6 @@ import { Attributes, Element, Property } from '@htmlplus/element';
 
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
-/**
- * @stable
- */
 @Element()
 export class Divider {
   /**

@@ -3,3 +3,4 @@
 - lazy load
 - example for buttons
 - example for button's sizes
+- add `Wildcard Size` example

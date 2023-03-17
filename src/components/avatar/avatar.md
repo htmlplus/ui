@@ -1,6 +1,6 @@
 # Avatar
 
-TODO
+An image representing a user's profile picture.
 
 <Playground />
 
@@ -40,21 +40,33 @@ TODO
 
 <Example value="size" />
 
+### Custom Size
+
+<Example value="custom-size" />
+
+### Wildcard Size
+
+<Example value="wildcard-size" />
+
 ### Link
 
 <Example value="link" />
+
+### Status
+
+<Example value="status" />
 
 ### Group
 
 <Example value="group" />
 
-### Stacked
+### Group Stacked
 
-<Example value="stacked" />
+<Example value="group-stacked" />
 
-### Hoverable
+### Group Hoverable
 
-<Example value="hoverable" />
+<Example value="group-hoverable" />
 
 <Checklist 
     accessibility={false}
