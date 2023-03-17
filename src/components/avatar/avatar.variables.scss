@@ -1,15 +1,12 @@
-$avatar-background-color: #f2f3f4 !default;
+$avatar-background-color: lightgray !default;
 $avatar-border-radius: 4px !default;
-$avatar-color: #626976 !default;
-$avatar-font-weight: 300 !default;
-$avatar-font-size-ratio: 0.35 !default;
-$avatar-size: auto !default;
+$avatar-color: gray !default;
 $avatar-sizes: (
-  'xs': 1.25rem,
+  'xxs': 1rem,
+  'xs': 1.5rem,
   'sm': 2rem,
-  'md': 3.75rem,
-  'lg': 5rem,
-  'xl': 7rem,
-  'xxl': 11rem
+  'md': 3rem,
+  'lg': 4rem,
+  'xl': 6rem,
+  'xxl': 8rem
 ) !default;
-$avatar-svg-ratio: 0.75 !default;
