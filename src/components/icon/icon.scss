@@ -2,7 +2,9 @@
 
 :host {
   direction: ltr;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   letter-spacing: normal;
   line-height: 1;
   font-style: normal;
