@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.5",
+  "version": "0.8.6-next-03180115",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -416,7 +416,7 @@
         },
         {
           "name": "plus-avatar",
-          "description": "TODO",
+          "description": "An image representing a user's profile picture.",
           "doc-url": "https://www.htmlplus.io/javascript/component/avatar",
           "deprecated": false,
           "experimental": false,
@@ -456,7 +456,7 @@
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'"
+                "type": "'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'"
               },
               "default": "'md'"
             }
@@ -2438,6 +2438,75 @@
           "slots": []
         },
         {
+          "name": "plus-floating",
+          "description": "A component that appears in front of all screen content.",
+          "doc-url": "https://www.htmlplus.io/javascript/component/floating",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "fixed",
+                "description": "Positions the element relative to the viewport and prevents it from moving even when scrolled.Otherwise, the element is positioned relative to its nearest ancestor.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "offset",
+                "description": "Specifies the deviation from the center.",
+                "deprecated": false,
+                "experimental": false,
+                "default": "0"
+              },
+              {
+                "name": "placement",
+                "description": "Specifies the display location.",
+                "deprecated": false,
+                "experimental": false,
+                "default": "'end-bottom'"
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "fixed",
+              "description": "Positions the element relative to the viewport and prevents it from moving even when scrolled.Otherwise, the element is positioned relative to its nearest ancestor.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "offset",
+              "description": "Specifies the deviation from the center.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "number | string | [number, number] | [number, string] | [string, number] | [string, string]"
+              },
+              "default": "0"
+            },
+            {
+              "name": "placement",
+              "description": "Specifies the display location.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "'bottom' | 'center' | 'center-bottom' | 'center-center' | 'center-top' | 'end' | 'end-bottom' | 'end-center' | 'end-top' | 'left' | 'left-bottom' | 'left-center' | 'left-top' | 'right' | 'right-bottom' | 'right-center' | 'right-top' | 'start' | 'start-bottom' | 'start-center' | 'start-top' | 'top'"
+              },
+              "default": "'end-bottom'"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
           "name": "plus-format-bytes",
           "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
           "doc-url": "https://www.htmlplus.io/javascript/component/format-bytes",
@@ -4028,8 +4097,8 @@
                 "experimental": false
               },
               {
-                "name": "source",
-                "description": "Specifies the source of the scroll.",
+                "name": "reference",
+                "description": "Specifies the reference of the scroll.",
                 "deprecated": false,
                 "experimental": false,
                 "default": "'document'"
@@ -4053,12 +4122,12 @@
               }
             },
             {
-              "name": "source",
-              "description": "Specifies the source of the scroll.",
+              "name": "reference",
+              "description": "Specifies the reference of the scroll.",
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "HTMLElement | string"
+                "type": "Element | 'document' | (string & {})"
               },
               "default": "'document'"
             },
@@ -4879,13 +4948,6 @@
                 "experimental": false
               },
               {
-                "name": "auto",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false,
-                "default": true
-              },
-              {
                 "name": "delay",
                 "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
                 "deprecated": false,
@@ -4929,6 +4991,13 @@
                 "experimental": false
               },
               {
+                "name": "z",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": "'auto'"
+              },
+              {
                 "name": "hide",
                 "description": "Hides the component.",
                 "deprecated": false,
@@ -4957,16 +5026,6 @@
               "value": {
                 "type": "boolean"
               }
-            },
-            {
-              "name": "auto",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "boolean"
-              },
-              "default": true
             },
             {
               "name": "delay",
@@ -5019,7 +5078,7 @@
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "'next' | 'parent' | 'previous' | Element | (string & {})"
+                "type": "Element | 'next' | 'parent' | 'previous' | (string & {})"
               },
               "default": "'previous'"
             },
@@ -5031,6 +5090,16 @@
               "value": {
                 "type": "'click' | 'focus' | 'hover' | 'manual' | Array<TooltipTrigger>"
               }
+            },
+            {
+              "name": "z",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "'auto' | 'vertical' | 'horizontal' | 'move'"
+              },
+              "default": "'auto'"
             }
           ],
           "slots": []

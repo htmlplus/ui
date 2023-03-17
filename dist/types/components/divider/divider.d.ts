@@ -1,8 +1,5 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
-/**
- * @stable
- */
 export declare class Divider {
     static TAG: string;
     static STYLES: string;

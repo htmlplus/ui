@@ -1,5 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
-import { ScrollDetectorChangeEvent, ScrollDetectorSource } from './scroll-detector.types';
+import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-detector.types';
 /**
  * @stable
  */
@@ -10,9 +10,9 @@ export declare class ScrollDetector {
      */
     disabled?: boolean;
     /**
-     * Specifies the source of the scroll.
+     * Specifies the reference of the scroll.
      */
-    source?: ScrollDetectorSource;
+    reference?: ScrollDetectorReference;
     /**
      * Indicates which scroll (horizontal or vertical) is to be used as the source.
      */
@@ -21,13 +21,13 @@ export declare class ScrollDetector {
      * Fires when the scroll starts changing.
      */
     plusChange: EventEmitter<ScrollDetectorChangeEvent>;
-    get $source(): Element;
     offset?: number;
+    get $reference(): Element;
     bind(): void;
     unbind(): void;
     watcher(next: any): void;
     onScroll(): void;
-    loadedCallback(): void;
+    connectedCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }
@@ -37,9 +37,9 @@ export interface ScrollDetectorJSX {
      */
     disabled?: boolean;
     /**
-     * Specifies the source of the scroll.
+     * Specifies the reference of the scroll.
      */
-    source?: ScrollDetectorSource;
+    reference?: ScrollDetectorReference;
     /**
      * Indicates which scroll (horizontal or vertical) is to be used as the source.
      */
@@ -56,9 +56,9 @@ declare global {
          */
         disabled?: boolean;
         /**
-         * Specifies the source of the scroll.
+         * Specifies the reference of the scroll.
          */
-        source?: ScrollDetectorSource;
+        reference?: ScrollDetectorReference;
         /**
          * Indicates which scroll (horizontal or vertical) is to be used as the source.
          */

@@ -1,4 +1,4 @@
-import { _ as __decorate, i as isRTL, n as query, h as host, o as on, c as off, e as __awaiter, u as uhtml, P as Property, S as State, A as Attributes, M as Method, W as Watch, B as Bind, a as Element } from './core/index.js';
+import { _ as __decorate, i as isRTL, p as query, h as host, o as on, c as off, e as __awaiter, u as uhtml, P as Property, S as State, A as Attributes, M as Method, W as Watch, B as Bind, a as Element } from './core/index.js';
 
 var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{background-color:#000;border-radius:4px;color:#fff;font-size:90%;font-weight:700;padding:4px 8px;position:absolute;width:max-content}:host([fixed]:not([fixed=false])){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;height:0;position:absolute;width:0}:host([arrow]:not([arrow=false])) [part=arrow]{display:block}:host([arrow]:not([arrow=false])):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=top]) [part=arrow]{border-color:#000 transparent transparent;border-style:solid;border-width:6px 6px 0;bottom:-6px;transform:translateX(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=right]) [part=arrow]{border-color:transparent #000 transparent transparent;border-style:solid;border-width:6px 6px 6px 0;left:-6px;transform:translateY(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=bottom]) [part=arrow]{border-color:transparent transparent #000;border-style:solid;border-width:0 6px 6px;top:-6px;transform:translateX(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=left]) [part=arrow]{border-color:transparent transparent transparent #000;border-style:solid;border-width:6px 0 6px 6px;right:-6px;transform:translateY(-50%)}";
 
@@ -12,11 +12,7 @@ let Tooltip = class Tooltip {
         /**
          * TODO
          */
-        this.auto = true;
-        /**
-         * TODO
-         */
-        this.offset = [5, 0];
+        this.offset = [0, 10];
         /**
          * Specifies the element to which the tooltip will be attached.
          * Use `next` to attach to the next sibling.
@@ -30,6 +26,10 @@ let Tooltip = class Tooltip {
          * Specifies the activation method.
          */
         this.trigger = ['focus', 'hover'];
+        /**
+         * TODO
+         */
+        this.z = 'auto';
         this.state = 'hide';
     }
     get attributes() {
@@ -65,11 +65,14 @@ let Tooltip = class Tooltip {
         };
         const padding = [this.offset].flat();
         return {
-            middleware: [FloatingCore.offset(padding[0] || 0), FloatingCore.flip(), FloatingCore.shift({
-                    padding: padding[1] || 0
-                }), this.arrow && FloatingCore.arrow({
+            middleware: [FloatingCore.offset({
+                    crossAxis: padding[0] || 0,
+                    mainAxis: padding[1] || 0
+                }), FloatingCore.flip(), this.arrow && FloatingCore.arrow({
                     element: this.$arrow
-                })],
+                })
+                // FloatingCore.hide()
+            ],
             placement: PLACEMENT[this.placement],
             strategy: this.fixed ? 'fixed' : 'absolute'
         };
@@ -128,6 +131,7 @@ let Tooltip = class Tooltip {
         this.$host.removeAttribute('placement-computed');
         FloatingCore.computePosition(this.$activator, this.$host, this.options).then(data => {
             const { x, y, placement, middlewareData } = data;
+            // console.log(1, middlewareData.hide);
             this.$host.setAttribute('placement-computed', placement);
             Object.assign(this.$host.style, {
                 left: `${x}px`,
@@ -154,6 +158,31 @@ let Tooltip = class Tooltip {
         this.events(false).forEach(([type, handler]) => {
             on(this.$activator, type, handler);
         });
+        // TODO
+        // this.state = 'show';
+        // this.observe(true);
+        // this.$activator.addEventListener('mousemove', (event: any) => {
+        //   const virtualEl = {
+        //     getBoundingClientRect() {
+        //       return {
+        //         width: 0,
+        //         height: 0,
+        //         x: event.clientX,
+        //         y: event.clientY,
+        //         left: event.clientX,
+        //         right: event.clientX,
+        //         top: event.clientY,
+        //         bottom: event.clientY
+        //       };
+        //     }
+        //   };
+        //   FloatingCore.computePosition(virtualEl, this.$host, this.options).then(({ x, y }) => {
+        //     Object.assign(this.$host.style, {
+        //       top: `${y}px`,
+        //       left: `${x}px`
+        //     });
+        //   });
+        // });
     }
     unbind() {
         clearTimeout(this.timeout);
@@ -164,20 +193,17 @@ let Tooltip = class Tooltip {
         });
     }
     events(all) {
-        return [['click', 'click', this.onShow], ['click', 'blur', this.onHide], ['focus', 'focus', this.onShow], ['focus', 'blur', this.onHide], ['hover', 'mouseenter', this.onShow], ['hover', 'mouseleave', this.onHide]].filter((row) => all || [this.trigger].flat().includes(row[0])).map((row) => row.slice(1));
+        return [['click', 'click', this.onShow], ['click', 'blur', this.onHide], ['click', 'outside', this.onHide], ['focus', 'focus', this.onShow], ['focus', 'blur', this.onHide], ['hover', 'mouseenter', this.onShow], ['hover', 'mouseleave', this.onHide]].filter((row) => all || [this.trigger].flat().includes(row[0])).map((row) => row.slice(1));
     }
     observe(active) {
         var _a;
         (_a = this.cleanup) === null || _a === void 0 ? void 0 : _a.call(this);
-        if (!this.auto || !active)
+        if (!active)
             return;
         this.cleanup = FloatingCore.autoUpdate(this.$activator, this.$host, this.update.bind(this));
     }
     watcher(next, prev, key) {
         switch (key) {
-            case 'auto':
-                this.observe(next);
-                break;
             case 'disabled':
                 next ? this.unbind() : this.bind();
                 break;
@@ -207,7 +233,7 @@ let Tooltip = class Tooltip {
                 FloatingCore = yield import('@floating-ui/dom');
             }
             catch (_a) {
-                throw new Error("It seems that '@floating-ui/dom' is not installed!");
+                throw new Error("The `tooltip` component depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem.");
             }
         });
     }
@@ -231,11 +257,6 @@ __decorate([
         type: 2
     })
 ], Tooltip.prototype, "arrow", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Tooltip.prototype, "auto", void 0);
 __decorate([
     Property({
         type: 65
@@ -273,6 +294,11 @@ __decorate([
         type: 9
     })
 ], Tooltip.prototype, "trigger", void 0);
+__decorate([
+    Property({
+        type: 8
+    })
+], Tooltip.prototype, "z", void 0);
 __decorate([
     State()
 ], Tooltip.prototype, "state", void 0);

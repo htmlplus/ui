@@ -14,10 +14,6 @@ export declare class Tooltip {
      */
     arrow?: boolean;
     /**
-     * TODO
-     */
-    auto?: boolean;
-    /**
      * Specifies a delay in milliseconds for show or hide.
      * Use a number for both show and hide or
      * create an array of two separate numbers for show and hide.
@@ -52,6 +48,10 @@ export declare class Tooltip {
      * Specifies the activation method.
      */
     trigger?: TooltipTrigger;
+    /**
+     * TODO
+     */
+    z?: 'auto' | 'vertical' | 'horizontal' | 'move';
     state?: 'hide' | 'show';
     $activator?: Element;
     cleanup?: Function;
@@ -113,10 +113,6 @@ export interface TooltipJSX {
      */
     arrow?: boolean;
     /**
-     * TODO
-     */
-    auto?: boolean;
-    /**
      * Specifies a delay in milliseconds for show or hide.
      * Use a number for both show and hide or
      * create an array of two separate numbers for show and hide.
@@ -151,6 +147,10 @@ export interface TooltipJSX {
      * Specifies the activation method.
      */
     trigger?: TooltipTrigger;
+    /**
+     * TODO
+     */
+    z?: 'auto' | 'vertical' | 'horizontal' | 'move';
 }
 declare global {
     interface HTMLPlusTooltipElement extends HTMLElement {
@@ -158,10 +158,6 @@ declare global {
          * Specifies whether to display the arrow or not.
          */
         arrow?: boolean;
-        /**
-         * TODO
-         */
-        auto?: boolean;
         /**
          * Specifies a delay in milliseconds for show or hide.
          * Use a number for both show and hide or
@@ -197,6 +193,10 @@ declare global {
          * Specifies the activation method.
          */
         trigger?: TooltipTrigger;
+        /**
+         * TODO
+         */
+        z?: 'auto' | 'vertical' | 'horizontal' | 'move';
     }
     var HTMLPlusTooltipElement: {
         prototype: HTMLPlusTooltipElement;

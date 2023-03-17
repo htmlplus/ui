@@ -6,51 +6,50 @@ import { _ as __decorate, o as on, c as off, P as Property, E as Event, W as Wat
 let ScrollDetector = class ScrollDetector {
     constructor() {
         /**
-         * Specifies the source of the scroll.
+         * Specifies the reference of the scroll.
          */
-        this.source = 'document';
+        this.reference = 'document';
     }
-    get $source() {
-        if (typeof this.source != 'string')
-            return this.source;
-        if (this.source == 'document')
+    get $reference() {
+        if (typeof this.reference != 'string')
+            return this.reference;
+        if (this.reference == 'document')
             return document.documentElement;
-        return document.querySelector(this.source);
+        return document.querySelector(this.reference);
     }
     bind() {
         if (this.disabled)
             return;
-        if (!this.$source)
+        if (!this.$reference)
             return;
-        on(this.$source, 'scroll', this.onScroll);
+        on(this.$reference, 'scroll', this.onScroll);
         this.onScroll();
     }
     unbind() {
-        off(this.$source, 'scroll', this.onScroll);
+        off(this.$reference, 'scroll', this.onScroll);
     }
     watcher(next) {
         next ? this.unbind() : this.bind();
     }
     onScroll() {
-        const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = this.$source;
+        const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = this.$reference;
         const offset = this.vertical ? scrollTop : scrollLeft;
         const total = this.vertical ? scrollHeight : scrollWidth;
         const viewport = this.vertical ? clientHeight : clientWidth;
         const overflow = total - viewport;
-        const progress = Math.round(offset / overflow * 100);
+        const progress = overflow ? Math.round(offset / overflow * 100) : 0;
         if (this.offset == progress)
             return;
         this.offset = offset;
-        const detail = {
+        this.plusChange({
             offset,
             overflow,
             progress,
             total,
             viewport
-        };
-        this.plusChange(detail);
+        });
     }
-    loadedCallback() {
+    connectedCallback() {
         this.bind();
     }
     disconnectedCallback() {
@@ -69,9 +68,9 @@ __decorate([
 ], ScrollDetector.prototype, "disabled", void 0);
 __decorate([
     Property({
-        type: 256
+        type: 264
     })
-], ScrollDetector.prototype, "source", void 0);
+], ScrollDetector.prototype, "reference", void 0);
 __decorate([
     Property({
         type: 2
@@ -81,7 +80,7 @@ __decorate([
     Event()
 ], ScrollDetector.prototype, "plusChange", void 0);
 __decorate([
-    Watch(['disabled', 'source'])
+    Watch(['disabled', 'reference'])
 ], ScrollDetector.prototype, "watcher", null);
 __decorate([
     Bind()

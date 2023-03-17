@@ -165,7 +165,7 @@
     },
     {
       "name": "plus-avatar",
-      "description": "TODO",
+      "description": "An image representing a user's profile picture.",
       "attributes": [
         {
           "name": "shape",
@@ -186,6 +186,9 @@
           "name": "size",
           "description": "TODO",
           "values": [
+            {
+              "name": "xxs"
+            },
             {
               "name": "xs"
             },
@@ -1484,6 +1487,107 @@
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/component/faker"
+        }
+      ]
+    },
+    {
+      "name": "plus-floating",
+      "description": "A component that appears in front of all screen content.",
+      "attributes": [
+        {
+          "name": "fixed",
+          "description": "Positions the element relative to the viewport and prevents it from moving even when scrolled.Otherwise, the element is positioned relative to its nearest ancestor.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "offset",
+          "description": "Specifies the deviation from the center.",
+          "values": []
+        },
+        {
+          "name": "placement",
+          "description": "Specifies the display location.",
+          "values": [
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "center"
+            },
+            {
+              "name": "center-bottom"
+            },
+            {
+              "name": "center-center"
+            },
+            {
+              "name": "center-top"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "end-bottom"
+            },
+            {
+              "name": "end-center"
+            },
+            {
+              "name": "end-top"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-bottom"
+            },
+            {
+              "name": "left-center"
+            },
+            {
+              "name": "left-top"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-bottom"
+            },
+            {
+              "name": "right-center"
+            },
+            {
+              "name": "right-top"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "start-bottom"
+            },
+            {
+              "name": "start-center"
+            },
+            {
+              "name": "start-top"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/floating"
         }
       ]
     },
@@ -3594,9 +3698,13 @@
           ]
         },
         {
-          "name": "source",
-          "description": "Specifies the source of the scroll.",
-          "values": []
+          "name": "reference",
+          "description": "Specifies the reference of the scroll.",
+          "values": [
+            {
+              "name": "document"
+            }
+          ]
         },
         {
           "name": "vertical",
@@ -4023,18 +4131,6 @@
           ]
         },
         {
-          "name": "auto",
-          "description": "TODO",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ]
-        },
-        {
           "name": "delay",
           "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
           "values": []
@@ -4170,6 +4266,24 @@
             },
             {
               "name": "manual"
+            }
+          ]
+        },
+        {
+          "name": "z",
+          "description": "TODO",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "vertical"
+            },
+            {
+              "name": "horizontal"
+            },
+            {
+              "name": "move"
             }
           ]
         }

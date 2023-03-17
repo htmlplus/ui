@@ -20,6 +20,7 @@ export { Divider } from './divider.js';
 export { Drawer } from './drawer.js';
 export { DrawerToggler } from './drawer-toggler.js';
 export { Faker } from './faker.js';
+export { Floating } from './floating.js';
 export { FormatBytes } from './format-bytes.js';
 export { Grid } from './grid.js';
 export { GridItem } from './grid-item.js';

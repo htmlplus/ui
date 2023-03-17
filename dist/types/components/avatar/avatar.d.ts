@@ -1,37 +1,38 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
+import { AvatarShape, AvatarSize } from './avatar.types';
 export declare class Avatar {
     static TAG: string;
     static STYLES: string;
     /**
      * TODO
      */
-    shape?: 'circle' | 'round' | 'tile';
+    shape?: AvatarShape;
     /**
      * TODO
      */
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+    size?: AvatarSize;
     render(): uhtml.Hole;
 }
 export interface AvatarJSX {
     /**
      * TODO
      */
-    shape?: 'circle' | 'round' | 'tile';
+    shape?: AvatarShape;
     /**
      * TODO
      */
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+    size?: AvatarSize;
 }
 declare global {
     interface HTMLPlusAvatarElement extends HTMLElement {
         /**
          * TODO
          */
-        shape?: 'circle' | 'round' | 'tile';
+        shape?: AvatarShape;
         /**
          * TODO
          */
-        size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+        size?: AvatarSize;
     }
     var HTMLPlusAvatarElement: {
         prototype: HTMLPlusAvatarElement;
