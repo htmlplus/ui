@@ -3,13 +3,22 @@
 :host {
   // @prop TODO.
   --plus-avatar-border-radius: #{$avatar-border-radius};
+
+  // @prop TODO.
+  --plus-avatar-font-size-ratio: #{$avatar-font-size-ratio};
+
+  // @prop TODO.
+  --plus-avatar-size: #{$avatar-size};
 }
 
 :host {
-  align-items: center;
-  background-color: $avatar-background-color;
   border-radius: var(--plus-avatar-border-radius);
+  font-size: calc(var(--plus-avatar-size) * var(--plus-avatar-font-size-ratio));
+  height: var(--plus-avatar-size);
+  width: var(--plus-avatar-size);
+  background-color: $avatar-background-color;
   color: $avatar-color;
+  align-items: center;
   display: inline-flex;
   justify-content: center;
   position: relative;
@@ -33,9 +42,7 @@
 
 @each $key, $value in $avatar-sizes {
   :host([size='#{$key}']) {
-    font-size: $value * 0.35;
-    height: #{$value};
-    width: #{$value};
+    --plus-avatar-size: #{$value};
   }
 }
 
