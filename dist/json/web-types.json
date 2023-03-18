@@ -425,14 +425,14 @@
             "properties": [
               {
                 "name": "shape",
-                "description": "TODO",
+                "description": "Specifies the shape of the component.",
                 "deprecated": false,
                 "experimental": false,
                 "default": "'round'"
               },
               {
                 "name": "size",
-                "description": "TODO",
+                "description": "Specifies the size of the component.",
                 "deprecated": false,
                 "experimental": false,
                 "default": "'md'"
@@ -442,7 +442,7 @@
           "attributes": [
             {
               "name": "shape",
-              "description": "TODO",
+              "description": "Specifies the shape of the component.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -452,16 +452,21 @@
             },
             {
               "name": "size",
-              "description": "TODO",
+              "description": "Specifies the size of the component.",
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'"
+                "type": "typeof AVATAR_SIZES[number] | (number & {}) | (string & {})"
               },
               "default": "'md'"
             }
           ],
-          "slots": []
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
         },
         {
           "name": "plus-avatar-group",

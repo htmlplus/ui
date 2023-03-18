@@ -1,36 +1,42 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { AvatarShape, AvatarSize } from './avatar.types';
+/**
+ * @slot default - The default slot.
+ */
 export declare class Avatar {
     static TAG: string;
     static STYLES: string;
     /**
-     * TODO
+     * Specifies the shape of the component.
      */
     shape?: AvatarShape;
     /**
-     * TODO
+     * Specifies the size of the component.
      */
     size?: AvatarSize;
+    get attributes(): {
+        style: string;
+    };
     render(): uhtml.Hole;
 }
 export interface AvatarJSX {
     /**
-     * TODO
+     * Specifies the shape of the component.
      */
     shape?: AvatarShape;
     /**
-     * TODO
+     * Specifies the size of the component.
      */
     size?: AvatarSize;
 }
 declare global {
     interface HTMLPlusAvatarElement extends HTMLElement {
         /**
-         * TODO
+         * Specifies the shape of the component.
          */
         shape?: AvatarShape;
         /**
-         * TODO
+         * Specifies the size of the component.
          */
         size?: AvatarSize;
     }

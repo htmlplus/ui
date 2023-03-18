@@ -169,7 +169,7 @@
       "attributes": [
         {
           "name": "shape",
-          "description": "TODO",
+          "description": "Specifies the shape of the component.",
           "values": [
             {
               "name": "circle"
@@ -184,30 +184,8 @@
         },
         {
           "name": "size",
-          "description": "TODO",
-          "values": [
-            {
-              "name": "xxs"
-            },
-            {
-              "name": "xs"
-            },
-            {
-              "name": "sm"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "lg"
-            },
-            {
-              "name": "xl"
-            },
-            {
-              "name": "xxl"
-            }
-          ]
+          "description": "Specifies the size of the component.",
+          "values": []
         }
       ],
       "references": [

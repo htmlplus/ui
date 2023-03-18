@@ -1,4 +1,4 @@
-import { _ as __decorate, i as isRTL, t as toAxis, n as toUnit, b as styles, u as uhtml, P as Property, A as Attributes, a as Element } from './core/index.js';
+import { _ as __decorate, j as isRTL, i as toAxis, t as toUnit, b as styles, u as uhtml, P as Property, A as Attributes, a as Element } from './core/index.js';
 
 /**
  * @stable
