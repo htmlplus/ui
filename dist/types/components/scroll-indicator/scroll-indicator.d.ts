@@ -87,3 +87,4 @@ declare global {
         }
     }
 }
+export type ScrollIndicatorElement = globalThis.HTMLPlusScrollIndicatorElement;

@@ -317,7 +317,7 @@ __decorate([
     Bind()
 ], Drawer.prototype, "onClickOutside", null);
 Drawer = __decorate([
-    Element("plus-drawer")
+    Element()
 ], Drawer);
 
 export { Drawer };

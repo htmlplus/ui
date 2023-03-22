@@ -85,7 +85,7 @@ __decorate([
     Watch(['connector', 'value'])
 ], Tabs.prototype, "watcher", null);
 Tabs = __decorate([
-    Element("plus-tabs")
+    Element()
 ], Tabs);
 
 export { Tabs };

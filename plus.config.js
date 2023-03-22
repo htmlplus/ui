@@ -20,11 +20,11 @@ export default [
   read(),
   parse(),
   validate(),
-  extract({
-    prefix: 'plus'
-  }),
+  extract(),
   style(),
-  customElement(),
+  customElement({
+    prefix: 'plus-'
+  }),
   customElementReact({
     compact: true,
     destination: '../distributions/react',
@@ -84,6 +84,7 @@ export default [
       return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
     },
     transformer(context, element) {
+      element.name = 'plus-' + element.name;
       element.description ||= context?.readmeContent
         ?.split('#')[1]
         ?.split('\n')
@@ -100,6 +101,7 @@ export default [
       return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
     },
     transformer(context, element) {
+      element.name = 'plus-' + element.name;
       element.description ||= context?.readmeContent
         ?.split('#')[1]
         ?.split('\n')

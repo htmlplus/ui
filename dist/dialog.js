@@ -365,7 +365,7 @@ __decorate([
     Bind()
 ], Dialog.prototype, "onClickOutside", null);
 Dialog = Dialog_1 = __decorate([
-    Element("plus-dialog")
+    Element()
 ], Dialog);
 
 export { Dialog };

@@ -66,7 +66,7 @@ __decorate([
     Bind()
 ], DrawerToggler.prototype, "onClick", null);
 DrawerToggler = __decorate([
-    Element("plus-drawer-toggler")
+    Element()
 ], DrawerToggler);
 
 export { DrawerToggler };

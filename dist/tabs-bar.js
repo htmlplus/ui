@@ -48,7 +48,7 @@ __decorate([
     Attributes()
 ], TabsBar.prototype, "attributes", null);
 TabsBar = __decorate([
-    Element("plus-tabs-bar")
+    Element()
 ], TabsBar);
 
 export { TabsBar };

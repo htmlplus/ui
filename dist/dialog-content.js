@@ -21,7 +21,7 @@ __decorate([
     })
 ], DialogContent.prototype, "scrollable", void 0);
 DialogContent = __decorate([
-    Element("plus-dialog-content")
+    Element()
 ], DialogContent);
 
 export { DialogContent };

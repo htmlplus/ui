@@ -67,7 +67,7 @@ __decorate([
     })
 ], AspectRatio.prototype, "value", void 0);
 AspectRatio = __decorate([
-    Element("plus-aspect-ratio")
+    Element()
 ], AspectRatio);
 
 export { AspectRatio };

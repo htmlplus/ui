@@ -89,3 +89,4 @@ declare global {
         }
     }
 }
+export type DividerElement = globalThis.HTMLPlusDividerElement;

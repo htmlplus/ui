@@ -69,7 +69,7 @@ __decorate([
     Attributes()
 ], Divider.prototype, "attributes", null);
 Divider = __decorate([
-    Element("plus-divider")
+    Element()
 ], Divider);
 
 export { Divider };

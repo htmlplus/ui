@@ -16,7 +16,7 @@ CardBody.TAG = "plus-card-body";
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
 CardBody.STYLES = css_248z;
 CardBody = __decorate([
-    Element("plus-card-body")
+    Element()
 ], CardBody);
 
 export { CardBody };

@@ -115,3 +115,4 @@ declare global {
         }
     }
 }
+export type IconElement = globalThis.HTMLPlusIconElement;

@@ -497,7 +497,7 @@ __decorate([
     Bind()
 ], Cropper.prototype, "onZoom", null);
 Cropper = __decorate([
-    Element("plus-cropper")
+    Element()
 ], Cropper);
 
 export { Cropper };

@@ -66,3 +66,4 @@ declare global {
         }
     }
 }
+export type DialogTogglerElement = globalThis.HTMLPlusDialogTogglerElement;

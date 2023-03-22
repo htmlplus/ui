@@ -35,7 +35,7 @@ __decorate([
     Attributes()
 ], TabsPanel.prototype, "attributes", null);
 TabsPanel = __decorate([
-    Element("plus-tabs-panel")
+    Element()
 ], TabsPanel);
 
 export { TabsPanel };

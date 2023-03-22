@@ -213,3 +213,4 @@ declare global {
         }
     }
 }
+export type TooltipElement = globalThis.HTMLPlusTooltipElement;

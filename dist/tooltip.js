@@ -324,7 +324,7 @@ __decorate([
     Bind()
 ], Tooltip.prototype, "onShow", null);
 Tooltip = __decorate([
-    Element("plus-tooltip")
+    Element()
 ], Tooltip);
 
 export { Tooltip };

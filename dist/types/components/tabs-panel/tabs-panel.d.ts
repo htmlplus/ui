@@ -44,3 +44,4 @@ declare global {
         }
     }
 }
+export type TabsPanelElement = globalThis.HTMLPlusTabsPanelElement;

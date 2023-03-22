@@ -15,7 +15,7 @@ DialogHeader.TAG = "plus-dialog-header";
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogHeader.STYLES = css_248z;
 DialogHeader = __decorate([
-    Element("plus-dialog-header")
+    Element()
 ], DialogHeader);
 
 export { DialogHeader };

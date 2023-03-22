@@ -15,7 +15,7 @@ DialogFooter.TAG = "plus-dialog-footer";
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogFooter.STYLES = css_248z;
 DialogFooter = __decorate([
-    Element("plus-dialog-footer")
+    Element()
 ], DialogFooter);
 
 export { DialogFooter };

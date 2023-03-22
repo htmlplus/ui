@@ -34,7 +34,7 @@ __decorate([
     Watch(['connector'])
 ], TabsPanels.prototype, "watcher", null);
 TabsPanels = __decorate([
-    Element("plus-tabs-panels")
+    Element()
 ], TabsPanels);
 
 export { TabsPanels };

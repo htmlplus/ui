@@ -71,3 +71,4 @@ declare global {
         }
     }
 }
+export type FloatingElement = globalThis.HTMLPlusFloatingElement;

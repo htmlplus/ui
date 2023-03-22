@@ -346,3 +346,4 @@ declare global {
         }
     }
 }
+export type AnimationElement = globalThis.HTMLPlusAnimationElement;

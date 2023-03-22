@@ -56,7 +56,7 @@ __decorate([
     Attributes()
 ], Spinner.prototype, "attributes", null);
 Spinner = __decorate([
-    Element("plus-spinner")
+    Element()
 ], Spinner);
 
 export { Spinner };

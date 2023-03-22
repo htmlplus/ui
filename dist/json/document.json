@@ -568,7 +568,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-03-18T20:08:34.363Z",
+      "lastModified": "2023-03-19T14:28:06.803Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -611,7 +611,7 @@
           "typeReference": "./avatar.types"
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Status\n\n<Example value=\"status\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Status\n\n<Example value=\"status\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={true}\n    cssParts=\"N/A\"\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -645,7 +645,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
-      "lastModified": "2023-02-03T21:24:20.232Z",
+      "lastModified": "2023-03-19T14:28:27.484Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -693,15 +693,11 @@
       "styles": [
         {
           "description": "TODO.",
-          "name": "--plus-avatar-group-box-shadow"
+          "name": "--plus-avatar-group-gutter-stacked"
         },
         {
           "description": "TODO.",
-          "name": "--plus-avatar-group-gutter"
-        },
-        {
-          "description": "TODO.",
-          "name": "--plus-avatar-group-overlap"
+          "name": "--plus-avatar-group-gutter-unstacked"
         }
       ],
       "tags": [

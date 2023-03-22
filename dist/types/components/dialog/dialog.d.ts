@@ -304,3 +304,4 @@ declare global {
         }
     }
 }
+export type DialogElement = globalThis.HTMLPlusDialogElement;

@@ -85,3 +85,4 @@ declare global {
         }
     }
 }
+export type ClickOutsideElement = globalThis.HTMLPlusClickOutsideElement;

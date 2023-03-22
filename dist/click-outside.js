@@ -78,7 +78,7 @@ __decorate([
     Bind()
 ], ClickOutside.prototype, "onClickOutside", null);
 ClickOutside = __decorate([
-    Element("plus-click-outside")
+    Element()
 ], ClickOutside);
 
 export { ClickOutside };

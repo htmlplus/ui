@@ -79,3 +79,4 @@ declare global {
         }
     }
 }
+export type CardElement = globalThis.HTMLPlusCardElement;

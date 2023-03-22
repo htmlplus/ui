@@ -86,7 +86,7 @@ __decorate([
     Bind()
 ], ScrollDetector.prototype, "onScroll", null);
 ScrollDetector = __decorate([
-    Element("plus-scroll-detector")
+    Element()
 ], ScrollDetector);
 
 export { ScrollDetector };

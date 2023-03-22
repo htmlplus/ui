@@ -103,7 +103,7 @@ __decorate([
     Bind()
 ], ScrollIndicator.prototype, "onScroll", null);
 ScrollIndicator = __decorate([
-    Element("plus-scroll-indicator")
+    Element()
 ], ScrollIndicator);
 
 export { ScrollIndicator };

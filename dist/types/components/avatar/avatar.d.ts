@@ -55,3 +55,4 @@ declare global {
         }
     }
 }
+export type AvatarElement = globalThis.HTMLPlusAvatarElement;

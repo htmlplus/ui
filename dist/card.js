@@ -39,7 +39,7 @@ __decorate([
     })
 ], Card.prototype, "tile", void 0);
 Card = __decorate([
-    Element("plus-card")
+    Element()
 ], Card);
 
 export { Card };

@@ -40,3 +40,4 @@ declare global {
         }
     }
 }
+export type CenterElement = globalThis.HTMLPlusCenterElement;

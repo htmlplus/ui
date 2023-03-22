@@ -366,7 +366,7 @@ __decorate([
     Bind()
 ], Animation.prototype, "onRemove", null);
 Animation = __decorate([
-    Element("plus-animation")
+    Element()
 ], Animation);
 
 export { Animation };

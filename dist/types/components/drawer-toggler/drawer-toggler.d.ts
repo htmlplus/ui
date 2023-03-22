@@ -66,3 +66,4 @@ declare global {
         }
     }
 }
+export type DrawerTogglerElement = globalThis.HTMLPlusDrawerTogglerElement;

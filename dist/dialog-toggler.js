@@ -66,7 +66,7 @@ __decorate([
     Bind()
 ], DialogToggler.prototype, "onClick", null);
 DialogToggler = __decorate([
-    Element("plus-dialog-toggler")
+    Element()
 ], DialogToggler);
 
 export { DialogToggler };

@@ -51,3 +51,4 @@ declare global {
         }
     }
 }
+export type AvatarGroupElement = globalThis.HTMLPlusAvatarGroupElement;

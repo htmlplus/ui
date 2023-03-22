@@ -265,3 +265,4 @@ declare global {
         }
     }
 }
+export type DrawerElement = globalThis.HTMLPlusDrawerElement;

@@ -87,7 +87,7 @@ __decorate([
     Watch(['disabled', 'strategy', 'target'])
 ], Portal.prototype, "watcher", null);
 Portal = __decorate([
-    Element("plus-portal")
+    Element()
 ], Portal);
 
 export { Portal };

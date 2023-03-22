@@ -133,3 +133,4 @@ declare global {
         }
     }
 }
+export type FormatBytesElement = globalThis.HTMLPlusFormatBytesElement;

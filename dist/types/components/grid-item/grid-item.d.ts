@@ -613,3 +613,4 @@ declare global {
         }
     }
 }
+export type GridItemElement = globalThis.HTMLPlusGridItemElement;

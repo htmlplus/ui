@@ -21,7 +21,7 @@ __decorate([
     })
 ], DialogBody.prototype, "scrollable", void 0);
 DialogBody = __decorate([
-    Element("plus-dialog-body")
+    Element()
 ], DialogBody);
 
 export { DialogBody };

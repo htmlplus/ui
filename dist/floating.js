@@ -72,7 +72,7 @@ __decorate([
     Attributes()
 ], Floating.prototype, "attributes", null);
 Floating = __decorate([
-    Element("plus-floating")
+    Element()
 ], Floating);
 
 export { Floating };

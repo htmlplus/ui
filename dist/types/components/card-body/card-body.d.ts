@@ -28,3 +28,4 @@ declare global {
         }
     }
 }
+export type CardBodyElement = globalThis.HTMLPlusCardBodyElement;

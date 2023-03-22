@@ -464,3 +464,4 @@ declare global {
         }
     }
 }
+export type GridElement = globalThis.HTMLPlusGridElement;

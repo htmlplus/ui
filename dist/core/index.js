@@ -1210,10 +1210,11 @@ function Bind() {
     };
 }
 
-function Element(tag) {
+function Element() {
     return function (constructor) {
         if (isServer())
             return;
+        const tag = getTag(constructor);
         if (customElements.get(tag))
             return;
         const members = getMembers(constructor);

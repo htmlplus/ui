@@ -91,3 +91,4 @@ declare global {
         }
     }
 }
+export type TabsElement = globalThis.HTMLPlusTabsElement;

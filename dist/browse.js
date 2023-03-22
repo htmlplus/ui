@@ -177,7 +177,7 @@ __decorate([
     Bind()
 ], Browse.prototype, "onDrop", null);
 Browse = __decorate([
-    Element("plus-browse")
+    Element()
 ], Browse);
 
 export { Browse };

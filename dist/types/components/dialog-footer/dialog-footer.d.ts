@@ -27,3 +27,4 @@ declare global {
         }
     }
 }
+export type DialogFooterElement = globalThis.HTMLPlusDialogFooterElement;

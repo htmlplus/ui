@@ -268,7 +268,7 @@ __decorate([
     })
 ], GridItem.prototype, "orderXxl", void 0);
 GridItem = __decorate([
-    Element("plus-grid-item")
+    Element()
 ], GridItem);
 
 export { GridItem };

@@ -186,7 +186,7 @@ __decorate([
     })
 ], FormatBytes.prototype, "value", void 0);
 FormatBytes = __decorate([
-    Element("plus-format-bytes")
+    Element()
 ], FormatBytes);
 
 export { FormatBytes };

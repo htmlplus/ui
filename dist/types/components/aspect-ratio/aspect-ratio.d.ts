@@ -68,3 +68,4 @@ declare global {
         }
     }
 }
+export type AspectRatioElement = globalThis.HTMLPlusAspectRatioElement;

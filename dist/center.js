@@ -22,7 +22,7 @@ __decorate([
     })
 ], Center.prototype, "inline", void 0);
 Center = __decorate([
-    Element("plus-center")
+    Element()
 ], Center);
 
 export { Center };

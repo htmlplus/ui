@@ -72,7 +72,7 @@ __decorate([
     Bind()
 ], Switch.prototype, "onKeyDown", null);
 Switch = __decorate([
-    Element("plus-switch")
+    Element()
 ], Switch);
 
 export { Switch };

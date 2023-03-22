@@ -61,7 +61,7 @@ __decorate([
     Bind()
 ], TabsTab.prototype, "onClick", null);
 TabsTab = __decorate([
-    Element("plus-tabs-tab")
+    Element()
 ], TabsTab);
 
 export { TabsTab };

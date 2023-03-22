@@ -386,3 +386,4 @@ declare global {
         }
     }
 }
+export type CropperElement = globalThis.HTMLPlusCropperElement;

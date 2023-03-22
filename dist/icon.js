@@ -56,7 +56,7 @@ __decorate([
     Attributes()
 ], Icon.prototype, "attributes", null);
 Icon = __decorate([
-    Element("plus-icon")
+    Element()
 ], Icon);
 
 export { Icon };

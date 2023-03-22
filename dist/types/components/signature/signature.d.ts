@@ -270,3 +270,4 @@ declare global {
         }
     }
 }
+export type SignatureElement = globalThis.HTMLPlusSignatureElement;

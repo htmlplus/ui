@@ -370,7 +370,7 @@ __decorate([
     Bind()
 ], Signature.prototype, "onResize", null);
 Signature = __decorate([
-    Element("plus-signature")
+    Element()
 ], Signature);
 
 export { Signature };

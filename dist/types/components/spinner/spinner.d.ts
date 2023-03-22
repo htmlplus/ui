@@ -56,3 +56,4 @@ declare global {
         }
     }
 }
+export type SpinnerElement = globalThis.HTMLPlusSpinnerElement;

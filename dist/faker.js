@@ -67,7 +67,7 @@ __decorate([
     })
 ], Faker.prototype, "seed", void 0);
 Faker = __decorate([
-    Element("plus-faker")
+    Element()
 ], Faker);
 
 export { Faker };

@@ -263,7 +263,7 @@ __decorate([
     Watch(['play'], true)
 ], Counter.prototype, "watcher", null);
 Counter = __decorate([
-    Element("plus-counter")
+    Element()
 ], Counter);
 
 export { Counter };

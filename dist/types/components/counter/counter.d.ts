@@ -186,3 +186,4 @@ declare global {
         }
     }
 }
+export type CounterElement = globalThis.HTMLPlusCounterElement;

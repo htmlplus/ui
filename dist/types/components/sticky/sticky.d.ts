@@ -93,3 +93,4 @@ declare global {
         }
     }
 }
+export type StickyElement = globalThis.HTMLPlusStickyElement;

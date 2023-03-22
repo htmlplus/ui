@@ -98,3 +98,4 @@ declare global {
         }
     }
 }
+export type BreadcrumbElement = globalThis.HTMLPlusBreadcrumbElement;

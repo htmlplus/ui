@@ -170,3 +170,4 @@ declare global {
         }
     }
 }
+export type BrowseElement = globalThis.HTMLPlusBrowseElement;

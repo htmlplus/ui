@@ -73,3 +73,4 @@ declare global {
         }
     }
 }
+export type SwitchElement = globalThis.HTMLPlusSwitchElement;

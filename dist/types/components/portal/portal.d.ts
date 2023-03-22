@@ -82,3 +82,4 @@ declare global {
         }
     }
 }
+export type PortalElement = globalThis.HTMLPlusPortalElement;

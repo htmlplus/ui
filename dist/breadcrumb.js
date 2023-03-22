@@ -187,7 +187,7 @@ __decorate([
     Bind()
 ], Breadcrumb.prototype, "onChange", null);
 Breadcrumb = __decorate([
-    Element("plus-breadcrumb")
+    Element()
 ], Breadcrumb);
 
 export { Breadcrumb };

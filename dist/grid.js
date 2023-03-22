@@ -214,7 +214,7 @@ __decorate([
     })
 ], Grid.prototype, "wrapXxl", void 0);
 Grid = __decorate([
-    Element("plus-grid")
+    Element()
 ], Grid);
 
 export { Grid };

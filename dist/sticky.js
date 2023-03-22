@@ -118,7 +118,7 @@ __decorate([
     Bind()
 ], Sticky.prototype, "onIntersecting", null);
 Sticky = __decorate([
-    Element("plus-sticky")
+    Element()
 ], Sticky);
 
 export { Sticky };

@@ -49,7 +49,7 @@ __decorate([
     Attributes()
 ], Avatar.prototype, "attributes", null);
 Avatar = __decorate([
-    Element("plus-avatar")
+    Element()
 ], Avatar);
 
 export { Avatar };

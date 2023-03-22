@@ -39,3 +39,4 @@ declare global {
         }
     }
 }
+export type DialogContentElement = globalThis.HTMLPlusDialogContentElement;

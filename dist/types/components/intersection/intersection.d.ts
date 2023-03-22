@@ -146,3 +146,4 @@ declare global {
         }
     }
 }
+export type IntersectionElement = globalThis.HTMLPlusIntersectionElement;

@@ -116,7 +116,7 @@ __decorate([
     Bind()
 ], Intersection.prototype, "onIntersecting", null);
 Intersection = __decorate([
-    Element("plus-intersection")
+    Element()
 ], Intersection);
 
 export { Intersection };

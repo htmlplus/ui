@@ -79,3 +79,4 @@ declare global {
         }
     }
 }
+export type FakerElement = globalThis.HTMLPlusFakerElement;
