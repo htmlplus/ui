@@ -200,7 +200,7 @@
       "attributes": [
         {
           "name": "hoverable",
-          "description": "TODO",
+          "description": "Specifies whether to prominent the avatar when the mouse is entered or not.",
           "values": [
             {
               "name": "false"
@@ -212,7 +212,7 @@
         },
         {
           "name": "stacked",
-          "description": "TODO",
+          "description": "Specifies whether avatars should be displayed compressed or not.",
           "values": [
             {
               "name": "false"

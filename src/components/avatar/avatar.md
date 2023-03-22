@@ -32,6 +32,10 @@ An image representing a user's profile picture.
 
 <Example value="svg" />
 
+### Svg Ratio
+
+<Example value="svg-ratio" />
+
 ### Shape
 
 <Example value="shape" />
@@ -52,9 +56,17 @@ An image representing a user's profile picture.
 
 <Example value="link" />
 
+### Actions
+
+<Example value="actions" />
+
 ### Status
 
 <Example value="status" />
+
+### Tooltip
+
+<Example value="tooltip" />
 
 ### Group
 
@@ -67,6 +79,10 @@ An image representing a user's profile picture.
 ### Group Hoverable
 
 <Example value="group-hoverable" />
+
+### Group Gutter
+
+<Example value="group-gutter" />
 
 <Checklist 
     accessibility={false}

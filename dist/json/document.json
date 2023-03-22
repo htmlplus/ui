@@ -608,7 +608,7 @@
           "typeReference": "./avatar.types"
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Status\n\n<Example value=\"status\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={true}\n    cssParts=\"N/A\"\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Svg Ratio\n\n<Example value=\"svg-ratio\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Actions\n\n<Example value=\"actions\" />\n\n### Status\n\n<Example value=\"status\" />\n\n### Tooltip\n\n<Example value=\"tooltip\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={true}\n    cssParts=\"N/A\"\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -648,7 +648,7 @@
         {
           "attribute": "hoverable",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies whether to prominent the avatar when the mouse is entered or not.",
           "experimental": false,
           "model": false,
           "name": "hoverable",
@@ -657,7 +657,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Specifies whether to prominent the avatar when the mouse is entered or not."
             }
           ],
           "type": "boolean"
@@ -665,7 +665,7 @@
         {
           "attribute": "stacked",
           "deprecated": false,
-          "description": "TODO",
+          "description": "Specifies whether avatars should be displayed compressed or not.",
           "experimental": false,
           "model": false,
           "name": "stacked",
@@ -674,7 +674,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO"
+              "value": "Specifies whether avatars should be displayed compressed or not."
             }
           ],
           "type": "boolean"
@@ -688,11 +688,11 @@
       ],
       "styles": [
         {
-          "description": "TODO.",
+          "description": "Used to adjust the gutter between avatars in stacked mode.",
           "name": "--plus-avatar-group-gutter-stacked"
         },
         {
-          "description": "TODO.",
+          "description": "Used to adjust the gutter between avatars in unstacked mode.",
           "name": "--plus-avatar-group-gutter-unstacked"
         }
       ],

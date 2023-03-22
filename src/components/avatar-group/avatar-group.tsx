@@ -6,13 +6,13 @@ import { Element, Property } from '@htmlplus/element';
 @Element()
 export class AvatarGroup {
   /**
-   * TODO
+   * Specifies whether to prominent the avatar when the mouse is entered or not.
    */
   @Property({ reflect: true })
   hoverable?: boolean;
 
   /**
-   * TODO
+   * Specifies whether avatars should be displayed compressed or not.
    */
   @Property({ reflect: true })
   stacked?: boolean;

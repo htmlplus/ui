@@ -1,2 +1,3 @@
 - add `status` example.
 - add `fallback` example.
+- add `color` property.

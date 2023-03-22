@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.6-next-03230206",
+  "version": "0.8.6-next-03230321",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -478,13 +478,13 @@
             "properties": [
               {
                 "name": "hoverable",
-                "description": "TODO",
+                "description": "Specifies whether to prominent the avatar when the mouse is entered or not.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "stacked",
-                "description": "TODO",
+                "description": "Specifies whether avatars should be displayed compressed or not.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -493,7 +493,7 @@
           "attributes": [
             {
               "name": "hoverable",
-              "description": "TODO",
+              "description": "Specifies whether to prominent the avatar when the mouse is entered or not.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -502,7 +502,7 @@
             },
             {
               "name": "stacked",
-              "description": "TODO",
+              "description": "Specifies whether avatars should be displayed compressed or not.",
               "deprecated": false,
               "experimental": false,
               "value": {
