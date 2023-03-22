@@ -1,0 +1,1 @@
+- inject `shape` and `size` to children.

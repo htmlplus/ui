@@ -1,4 +1,2 @@
-- add `number` and `string` types to the `size` property.
-- add `custom-size`, `wildcard-size` and `status` example.
-- add `size` property and example.
+- add `status` example.
 - add `fallback` example.

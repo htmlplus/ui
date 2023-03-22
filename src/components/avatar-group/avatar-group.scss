@@ -2,34 +2,31 @@
 
 :host {
   // @prop TODO.
-  --plus-avatar-group-box-shadow: #{$avatar-group-box-shadow};
+  --plus-avatar-group-gutter-stacked: #{$avatar-group-gutter-stacked};
 
   // @prop TODO.
-  --plus-avatar-group-gutter: #{$avatar-group-gutter};
-
-  // @prop TODO.
-  --plus-avatar-group-overlap: #{$avatar-group-overlap};
+  --plus-avatar-group-gutter-unstacked: #{$avatar-group-gutter-unstacked};
 }
 
 :host {
   align-items: center;
   display: inline-flex;
   flex-wrap: wrap;
-  gap: var(--plus-avatar-group-gutter);
 }
 
-:host(#{boolean(hoverable)}) ::slotted(*:hover) {
+:host ::slotted(plus-avatar) {
+  margin-inline-end: var(--plus-avatar-group-gutter-unstacked);
+}
+
+:host ::slotted(plus-avatar:last-of-type) {
+  margin-inline-end: 0;
+}
+
+:host(#{boolean(hoverable)}) ::slotted(plus-avatar:hover) {
   z-index: 1;
 }
 
-:host(#{boolean(stacked)}) {
-  gap: 0;
-}
-
-:host(#{boolean(stacked)}) ::slotted(*) {
-  box-shadow: var(--plus-avatar-group-box-shadow);
-}
-
-:host(#{boolean(stacked)}) ::slotted(*:not(:last-child)) {
-  margin-inline-end: var(--plus-avatar-group-overlap);
+:host(#{boolean(stacked)}) ::slotted(plus-avatar) {
+  box-shadow: $avatar-group-box-shadow;
+  margin-inline-end: var(--plus-avatar-group-gutter-stacked);
 }

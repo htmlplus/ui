@@ -70,18 +70,18 @@ An image representing a user's profile picture.
 
 <Checklist 
     accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
-    examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
+    bidirectionality={true}
+    cssParts="N/A"
+    cssVariables={true}
+    documentation={true}
+    examples={true}
+    events="N/A"
+    keyboard="N/A"
+    methods="N/A"
     playground={false}
-    properties={false}
+    properties={true}
     skeleton={false}
-    slots={false}
+    slots={true}
 />
 
 <LastModified />
