@@ -84,6 +84,10 @@ An image representing a user's profile picture.
 
 <Example value="group-gutter" />
 
+### Group Tooltip
+
+<Example value="group-tooltip" />
+
 <Checklist 
     accessibility={false}
     bidirectionality={true}

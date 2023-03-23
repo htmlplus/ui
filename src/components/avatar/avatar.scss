@@ -46,10 +46,14 @@
   }
 }
 
-::slotted(*) {
+::slotted(*:not([slot])) {
   border-radius: var(--plus-avatar-border-radius);
   position: absolute;
   inset: 0;
   height: 100%;
   width: 100%;
+}
+
+div {
+  position: absolute;
 }
