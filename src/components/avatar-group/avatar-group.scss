@@ -19,7 +19,7 @@
 }
 
 :host ::slotted(plus-avatar:last-of-type) {
-  margin-inline-end: 0;
+  margin-inline-end: 0 !important;
 }
 
 :host(#{boolean(hoverable)}) ::slotted(plus-avatar:hover) {

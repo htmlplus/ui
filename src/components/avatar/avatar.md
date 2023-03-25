@@ -56,17 +56,13 @@ An image representing a user's profile picture.
 
 <Example value="link" />
 
-### Actions
-
-<Example value="actions" />
-
-### Status
-
-<Example value="status" />
-
 ### Tooltip
 
 <Example value="tooltip" />
+
+### Slots
+
+<Example value="slots" />
 
 ### Group
 
