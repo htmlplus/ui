@@ -4,6 +4,7 @@ import { AVATAR_SIZES } from './avatar.constants';
 import { AvatarShape, AvatarSize } from './avatar.types';
 
 /**
+ * @stable
  * @slot default - The default slot.
  */
 @Element()

@@ -631,6 +631,10 @@
       ],
       "tags": [
         {
+          "key": "stable",
+          "value": ""
+        },
+        {
           "key": "slot",
           "value": "default - The default slot."
         }

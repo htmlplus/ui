@@ -1,6 +1,7 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { AvatarShape, AvatarSize } from './avatar.types';
 /**
+ * @stable
  * @slot default - The default slot.
  */
 export declare class Avatar {

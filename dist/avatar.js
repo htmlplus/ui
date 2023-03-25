@@ -5,6 +5,7 @@ var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:b
 const AVATAR_SIZES = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 /**
+ * @stable
  * @slot default - The default slot.
  */
 let Avatar = class Avatar {

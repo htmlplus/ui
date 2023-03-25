@@ -1,3 +1,2 @@
-- add `status` example.
-- add `fallback` example.
+- add `status`, `badge`, `actions`, `fallback`, `color` examples.
 - add `color` property.
