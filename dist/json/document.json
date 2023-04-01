@@ -618,15 +618,18 @@
       "styles": [
         {
           "description": "Used to adjust the border-radius.",
-          "name": "--plus-avatar-border-radius"
+          "name": "--plus-avatar-border-radius",
+          "initializer": "4px"
         },
         {
           "description": "Used to adjust the ratio of size to font-size.",
-          "name": "--plus-avatar-font-size-ratio"
+          "name": "--plus-avatar-font-size-ratio",
+          "initializer": "0.35"
         },
         {
           "description": "Used to adjust the size (width & height).",
-          "name": "--plus-avatar-size"
+          "name": "--plus-avatar-size",
+          "initializer": "auto"
         }
       ],
       "tags": [
@@ -693,11 +696,13 @@
       "styles": [
         {
           "description": "Used to adjust the gutter between avatars in stacked mode.",
-          "name": "--plus-avatar-group-gutter-stacked"
+          "name": "--plus-avatar-group-gutter-stacked",
+          "initializer": "-0.5rem"
         },
         {
           "description": "Used to adjust the gutter between avatars in unstacked mode.",
-          "name": "--plus-avatar-group-gutter-unstacked"
+          "name": "--plus-avatar-group-gutter-unstacked",
+          "initializer": "0.5rem"
         }
       ],
       "tags": [
@@ -818,11 +823,13 @@
       "styles": [
         {
           "description": "Used to adjust the Horizontal gap.",
-          "name": "--plus-breadcrumb-gutter-x"
+          "name": "--plus-breadcrumb-gutter-x",
+          "initializer": "0.5em"
         },
         {
           "description": "Used to adjust the Vertical gap.",
-          "name": "--plus-breadcrumb-gutter-y"
+          "name": "--plus-breadcrumb-gutter-y",
+          "initializer": "0.5em"
         }
       ],
       "tags": [
@@ -1168,23 +1175,28 @@
       "styles": [
         {
           "description": "Used to adjust the background-color.",
-          "name": "--plus-card-background-color"
+          "name": "--plus-card-background-color",
+          "initializer": "#fff"
         },
         {
           "description": "Used to adjust the border-color.",
-          "name": "--plus-card-border-color"
+          "name": "--plus-card-border-color",
+          "initializer": "rgba(0,0,0,.125)"
         },
         {
           "description": "Used to adjust the border-radius.",
-          "name": "--plus-card-border-radius"
+          "name": "--plus-card-border-radius",
+          "initializer": "0.25rem"
         },
         {
           "description": "Used to adjust the border-width.",
-          "name": "--plus-card-border-width"
+          "name": "--plus-card-border-width",
+          "initializer": "1px"
         },
         {
           "description": "Used to adjust the box-shodow.",
-          "name": "--plus-card-box-shadow"
+          "name": "--plus-card-box-shadow",
+          "initializer": "none"
         }
       ],
       "tags": [
@@ -2287,79 +2299,98 @@
       "styles": [
         {
           "description": "Used to adjust the backdrop color.",
-          "name": "--plus-cropper-backdrop-color"
+          "name": "--plus-cropper-backdrop-color",
+          "initializer": "#000"
         },
         {
           "description": "Used to adjust the backdrop opacity.",
-          "name": "--plus-cropper-backdrop-opacity"
+          "name": "--plus-cropper-backdrop-opacity",
+          "initializer": "0.5"
         },
         {
           "description": "Used to adjust the guides color.",
-          "name": "--plus-cropper-guides-color"
+          "name": "--plus-cropper-guides-color",
+          "initializer": "#fff"
         },
         {
           "description": "Used to adjust the guides opacity.",
-          "name": "--plus-cropper-guides-opacity"
+          "name": "--plus-cropper-guides-opacity",
+          "initializer": "0.5"
         },
         {
           "description": "Used to adjust the guides style.",
-          "name": "--plus-cropper-guides-style"
+          "name": "--plus-cropper-guides-style",
+          "initializer": "dashed"
         },
         {
           "description": "Used to adjust the guides weight.",
-          "name": "--plus-cropper-guides-weight"
+          "name": "--plus-cropper-guides-weight",
+          "initializer": "1px"
         },
         {
           "description": "Used to adjust the indicator color.",
-          "name": "--plus-cropper-indicator-color"
+          "name": "--plus-cropper-indicator-color",
+          "initializer": "#fff"
         },
         {
           "description": "Used to adjust the indicator opacity.",
-          "name": "--plus-cropper-indicator-opacity"
+          "name": "--plus-cropper-indicator-opacity",
+          "initializer": "1"
         },
         {
           "description": "Used to adjust the indicator size.",
-          "name": "--plus-cropper-indicator-size"
+          "name": "--plus-cropper-indicator-size",
+          "initializer": "10px"
         },
         {
           "description": "Used to adjust the indicator weight.",
-          "name": "--plus-cropper-indicator-weight"
+          "name": "--plus-cropper-indicator-weight",
+          "initializer": "2px"
         },
         {
           "description": "Used to adjust the resizer color.",
-          "name": "--plus-cropper-resizer-color"
+          "name": "--plus-cropper-resizer-color",
+          "initializer": "#fff"
         },
         {
           "description": "Used to adjust the resizer offset.",
-          "name": "--plus-cropper-resizer-offset"
+          "name": "--plus-cropper-resizer-offset",
+          "initializer": "0px"
         },
         {
           "description": "Used to adjust the resizer opacity.",
-          "name": "--plus-cropper-resizer-opacity"
+          "name": "--plus-cropper-resizer-opacity",
+          "initializer": "1"
         },
         {
           "description": "Used to adjust the resizer size.",
-          "name": "--plus-cropper-resizer-size"
+          "name": "--plus-cropper-resizer-size",
+          "initializer": "5px"
         },
         {
           "description": "Used to adjust the resizer weight.",
-          "name": "--plus-cropper-resizer-weight"
+          "name": "--plus-cropper-resizer-weight",
+          "initializer": "1px"
         },
         {
           "description": "Used to adjust the viewport color.",
-          "name": "--plus-cropper-viewport-color"
+          "name": "--plus-cropper-viewport-color",
+          "initializer": "#fff"
         },
         {
           "description": "Used to adjust the viewport opacity.",
-          "name": "--plus-cropper-viewport-opacity"
+          "name": "--plus-cropper-viewport-opacity",
+          "initializer": "1"
         },
         {
           "description": "Used to adjust the viewport style.",
-          "name": "--plus-cropper-viewport-style"
+          "name": "--plus-cropper-viewport-style",
+          "initializer": "solid"
         },
         {
           "description": "Used to adjust the viewport weight.",
-          "name": "--plus-cropper-viewport-weight"
+          "name": "--plus-cropper-viewport-weight",
+          "initializer": "1px"
         }
       ],
       "tags": [
@@ -3051,23 +3082,28 @@
       "styles": [
         {
           "description": "Used to adjust the color.",
-          "name": "--plus-divider-color"
+          "name": "--plus-divider-color",
+          "initializer": "grey"
         },
         {
           "description": "Used to adjust the gutter.",
-          "name": "--plus-divider-gutter"
+          "name": "--plus-divider-gutter",
+          "initializer": "0.5rem"
         },
         {
           "description": "Used to adjust the opacity.",
-          "name": "--plus-divider-opacity"
+          "name": "--plus-divider-opacity",
+          "initializer": "0.25"
         },
         {
           "description": "Used to adjust the type.",
-          "name": "--plus-divider-type"
+          "name": "--plus-divider-type",
+          "initializer": "unset"
         },
         {
           "description": "Used to adjust the width.",
-          "name": "--plus-divider-width"
+          "name": "--plus-divider-width",
+          "initializer": "unset"
         }
       ],
       "tags": [],
@@ -3363,11 +3399,13 @@
       "styles": [
         {
           "description": "You can use it to set the width size of the drawer using css variables.",
-          "name": "--plus-drawer-size"
+          "name": "--plus-drawer-size",
+          "initializer": "280px"
         },
         {
           "description": "You can use it to set the minimum width size of the drawer using css variables.",
-          "name": "--plus-drawer-mini-size"
+          "name": "--plus-drawer-mini-size",
+          "initializer": "80px"
         }
       ],
       "tags": [
@@ -4387,11 +4425,13 @@
       "styles": [
         {
           "description": "TODO",
-          "name": "--plus-grid--gutter-x"
+          "name": "--plus-grid--gutter-x",
+          "initializer": "0"
         },
         {
           "description": "TODO",
-          "name": "--plus-grid--gutter-y"
+          "name": "--plus-grid--gutter-y",
+          "initializer": "0"
         }
       ],
       "tags": [
@@ -5639,15 +5679,18 @@
       "styles": [
         {
           "description": "Used to adjust the color.",
-          "name": "--plus-scroll-indicator-color"
+          "name": "--plus-scroll-indicator-color",
+          "initializer": "#a6a6a6"
         },
         {
           "description": "Used to adjust the background-color.",
-          "name": "--plus-scroll-indicator-background-color"
+          "name": "--plus-scroll-indicator-background-color",
+          "initializer": "#e9e9e9"
         },
         {
           "description": "Used to adjust the size.",
-          "name": "--plus-scroll-indicator-size"
+          "name": "--plus-scroll-indicator-size",
+          "initializer": "0.5em"
         }
       ],
       "tags": [

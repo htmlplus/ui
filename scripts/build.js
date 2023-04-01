@@ -3,6 +3,7 @@ import { rollup as htmlplus } from '@htmlplus/element/bundlers/index.js';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import glob from 'fast-glob';
+import fs from 'fs';
 import path from 'path';
 import { defineConfig, rollup } from 'rollup';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
@@ -73,7 +74,9 @@ const options = defineConfig({
 
     commonjs(),
 
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({
+      useTsconfigDeclarationDir: true
+    }),
 
     // terser({
     //   format: {
@@ -94,6 +97,40 @@ const options = defineConfig({
     for (const output of options.output) await bundle.write(output);
 
     await bundle.close();
+
+    // TODO
+    (() => {
+      const source = join('dist/json/document.json');
+
+      const document = JSON.parse(fs.readFileSync(source, 'utf8'));
+
+      const styles = {};
+
+      for (const module of bundle.cache.modules) {
+        if (!module.id.endsWith('.scss')) continue;
+        Object.assign(
+          styles,
+          Object.fromEntries(
+            module.code
+              .match(/{--plus-(.+):(.+)[}]/g)?.[0]
+              .split(';')
+              .map((section) =>
+                section.split(':').map((string) => string.trim().replace(/{|}/g, ''))
+              ) || []
+          )
+        );
+      }
+
+      for (const component of document.components) {
+        for (const style of component.styles) {
+          const initializer = styles[style.name];
+          if (!initializer) continue;
+          style.initializer = initializer;
+        }
+      }
+
+      fs.writeFileSync(source, JSON.stringify(document, null, 2), 'utf8');
+    })();
 
     console.log(`Build in ${Date.now() - time}ms`);
   } catch (error) {
