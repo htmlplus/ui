@@ -76,7 +76,15 @@ export default [
   }),
   readme(),
   document({
-    destination: 'dist/json/document.json'
+    destination: 'dist/json/document.json',
+    transformer(context, element) {
+      element.description ||= context?.readmeContent
+        ?.split('#')[1]
+        ?.split('\n')
+        ?.slice(1)
+        ?.filter((line) => !!line.trim())[0]
+        ?.trim();
+    }
   }),
   visualStudioCode({
     destination: `${PACKAGE.publishConfig.directory}/json/vscode.json`,

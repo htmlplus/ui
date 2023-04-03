@@ -49,6 +49,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "experimental": false,
       "key": "animation",
       "methods": [
@@ -483,6 +484,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Sets a preferred aspect ratio only for the first child inside the component.",
       "experimental": false,
       "key": "aspect-ratio",
       "methods": [],
@@ -564,6 +566,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
       "methods": [],
@@ -716,6 +719,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
       "methods": [],
@@ -912,6 +916,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
       "methods": [
@@ -1090,6 +1095,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
       "methods": [],
@@ -1237,6 +1243,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
       "methods": [],
@@ -1299,6 +1306,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
       "methods": [],
@@ -1395,6 +1403,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
       "methods": [
@@ -1753,6 +1762,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
       "methods": [
@@ -2473,6 +2483,7 @@
         }
       ],
       "deprecated": false,
+      "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
       "methods": [],
@@ -2978,6 +2989,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
       "methods": [],
@@ -3173,6 +3185,7 @@
         }
       ],
       "deprecated": false,
+      "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
       "methods": [],
@@ -3468,6 +3481,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
       "methods": [],
@@ -3566,6 +3580,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "A component that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
       "methods": [],
@@ -3650,6 +3665,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
       "methods": [],
@@ -3813,6 +3829,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
       "methods": [],
@@ -5192,6 +5209,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "Symbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).",
       "experimental": false,
       "key": "icon",
       "methods": [],
@@ -5322,6 +5340,7 @@
         }
       ],
       "deprecated": false,
+      "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
       "methods": [],
@@ -5437,6 +5456,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "With a portal, you can render a component in a different place in the DOM tree,",
       "experimental": true,
       "key": "portal",
       "methods": [],
@@ -5538,6 +5558,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
       "methods": [],
@@ -5627,6 +5648,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.",
       "experimental": false,
       "key": "scroll-indicator",
       "methods": [],
@@ -5765,6 +5787,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
       "methods": [
@@ -6270,6 +6293,7 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
       "methods": [],
@@ -6345,6 +6369,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Component content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
       "methods": [],
@@ -6463,6 +6488,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
       "methods": [],
@@ -6532,6 +6558,7 @@
         }
       ],
       "deprecated": false,
+      "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
       "methods": [],
