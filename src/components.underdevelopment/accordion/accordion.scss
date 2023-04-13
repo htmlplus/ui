@@ -1,0 +1,88 @@
+:host {
+  display: block;
+  border: solid 1px hsl(240 5.9% 90%);
+  border-radius: 0.25rem;
+  background-color: hsl(0, 0%, 100%);
+  overflow-anchor: none;
+}
+
+:host(#{boolean(disabled)}) {
+  opacity: 0.5;
+  & .header {
+    cursor: not-allowed;
+    &:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  border-radius: inherit;
+  padding: 1rem;
+  user-select: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    // TODO
+    outline: var(--sl-focus-ring);
+    // TODO
+    outline-offset: calc(1px + var(--sl-focus-ring-offset));
+  }
+}
+
+.summary {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  // TODO
+  // transition: var(--sl-transition-medium) rotate ease;
+}
+
+.body {
+  overflow: hidden;
+}
+
+.content {
+  display: block;
+  padding: 1rem;
+}
+
+:host([state='expanding']),
+:host([state='collapsing']) {
+  transition: all 3.5s ease-out;
+}
+
+:host([state='expand']),
+:host([state='collapsing']) {
+  opacity: 0;
+}
+
+:host([state='collapse']),
+:host([state='expanding']) {
+  opacity: 1;
+}
+
+// TODO
+// .details--open .details__summary-icon {
+//   rotate: 90deg;
+// }
+// .details--open.details--rtl .details__summary-icon {
+//   rotate: -90deg;
+// }
+// .details--open slot[name='expand-icon'],
+// .details:not(.details--open) slot[name='collapse-icon'] {
+//   display: none;
+// }

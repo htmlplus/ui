@@ -1,16 +1,16 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 :host,
 :host::before,
 :host::after {
   box-sizing: border-box;
 }
 
+:host *,
+:host *::before,
+:host *::after {
+  box-sizing: border-box;
+}
+
 // TODO
 :host(#{boolean(hidden)}) {
-  display: none;
+  display: none !important;
 }
