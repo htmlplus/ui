@@ -109,6 +109,7 @@ export class Avatar {
       }
     };
   }
+
   render() {
     return (
       <>

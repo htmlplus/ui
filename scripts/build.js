@@ -21,10 +21,7 @@ const options = defineConfig({
   input: Object.fromEntries(
     glob
       .sync(['src/components/*/*.tsx'], { absolute: true })
-      .map((file) => {
-        const filename = path.basename(file, path.extname(file));
-        return [[`${filename}`, file]];
-      })
+      .map((file) => [[path.basename(file, path.extname(file)), file]])
       .flat(1)
       .concat([
         ['config', join('src/config/index.ts')],

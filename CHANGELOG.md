@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.0] - 0000-00-00
 
+### Added
+
+- Added the experimental `override` property to the components.
+
 ### Updated
 
 - Added the `initializer` property for `styles` to the `json/document.json`.
