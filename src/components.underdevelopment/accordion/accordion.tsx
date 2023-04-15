@@ -9,7 +9,7 @@ import {
   host
 } from '@htmlplus/element';
 
-import { Animation } from '@app/services';
+import { Animation2 } from '@app/services';
 
 @Element()
 export class Accordion {
@@ -55,10 +55,6 @@ export class Accordion {
   @Event()
   plusExpanded!: EventEmitter<void>;
 
-  animate?: Animation;
-
-  isOpen?: boolean;
-
   $body!: HTMLElement;
 
   $header!: HTMLElement;
@@ -67,59 +63,125 @@ export class Accordion {
     return host(this);
   }
 
-  @Method()
-  hide() {}
+  animate = new Animation2({
+    key: 'state',
+    source: () => this.$body,
+    target: () => this.$host,
+    states: {
+      enter: 'expand',
+      entering: 'expanding',
+      entered: 'expanded',
+      leave: 'collapse',
+      leaving: 'collapsing',
+      leaved: 'collapsed'
+    },
+    onEnter: () => {
+      this.opened = this.open = true;
+      this.$body.style.height = '0';
+    },
+    onEntering: () => {
+      this.opened = this.open = true;
+      this.$body.style.height = `${this.$body.scrollHeight}px`;
+    },
+    onEntered: (silent) => {
+      this.opened = this.open = true;
+      this.$body.style.height = '';
+      if (silent) return;
+      this.plusExpanded();
+    },
+    onLeave: () => {
+      this.opened = this.open = false;
+      this.$body.style.height = `${this.$body.scrollHeight}px`;
+    },
+    onLeaving: () => {
+      this.opened = this.open = false;
+      this.$body.style.height = '0';
+    },
+    onLeaved: (silent) => {
+      this.opened = this.open = false;
+      this.$body.style.height = '';
+      if (silent) return;
+      this.plusCollapsed();
+    }
+  });
+
+  opened: boolean = false;
 
   @Method()
-  show() {}
+  async hide() {
+    this.try(false, true);
+  }
+
+  @Method()
+  async show() {
+    this.try(true, true);
+  }
+
+  @Method()
+  async toggle() {
+    return this.open ? this.hide() : this.show();
+  }
 
   bind() {
-    this.animate = new Animation({
-      key: 'state',
-      source: () => this.$host,
-      target: () => this.$host,
-      state: this.open ? 'entered' : 'leaved',
-      states: {
-        enter: 'expand',
-        entering: 'expanding',
-        entered: 'expanded',
-        leave: 'collapse',
-        leaving: 'collapsing',
-        leaved: 'collapsed'
-      }
-    });
+    this.animate.initialize((this.opened = this.open) ? 'entered' : 'leaved');
   }
 
   unbind() {
     this.animate?.dispose();
   }
 
+  try(open: boolean, silent?: boolean) {
+    if (this.disabled) return;
+
+    if (this.opened == open) return;
+
+    const event = open ? this.plusExpand : this.plusCollapse;
+
+    if (!silent && event.call(this).defaultPrevented) return;
+
+    this.opened = this.open = open;
+
+    if (this.open) {
+      this.animate.enter(silent);
+    } else {
+      this.animate.leave(silent);
+    }
+  }
+
   @Watch(['open'])
   watcher(next, prev, name) {
     switch (name) {
       case 'open':
+        this.try(next, true);
         break;
     }
   }
 
   @Bind()
-  onClick() {}
+  onClick() {
+    this.try(!this.open);
+  }
 
   @Bind()
   onKeyDown(event: KeyboardEvent) {
-    if (['Enter', ' '].includes(event.key)) {
-      event.preventDefault();
-      // this.open ? this.hide() : this.show();
-    }
+    switch (event.key) {
+      case ' ':
+      case 'Enter':
+        event.preventDefault();
+        this.try(!this.open);
+        break;
 
-    if (['ArrowUp', 'ArrowLeft'].includes(event.key)) {
-      event.preventDefault();
-      // this.hide();
-    }
+      case 'ArrowUp':
+      case 'ArrowLeft':
+        event.preventDefault();
+        this.try(false);
+        break;
 
-    if (['ArrowDown', 'ArrowRight'].includes(event.key)) {
-      event.preventDefault();
-      // this.show();
+      case 'ArrowDown':
+      case 'ArrowRight':
+        event.preventDefault();
+        this.try(true);
+        break;
     }
   }
 
@@ -144,6 +206,7 @@ export class Accordion {
           tabIndex={this.disabled ? -1 : 0}
           ref={($element) => (this.$header = $element)}
           onClick={this.onClick}
+          onKeyDown={this.onKeyDown as any}
         >
           <slot className="summary" name="summary" part="summary">
             {this.summary}

@@ -1,6 +1,6 @@
 :host {
   display: block;
-  border: solid 1px hsl(240 5.9% 90%);
+  border: solid 1px black;
   border-radius: 0.25rem;
   background-color: hsl(0, 0%, 100%);
   overflow-anchor: none;
@@ -30,10 +30,8 @@
   }
 
   &:focus-visible {
-    // TODO
-    outline: var(--sl-focus-ring);
-    // TODO
-    outline-offset: calc(1px + var(--sl-focus-ring-offset));
+    outline: solid 3px red;
+    outline-offset: 2px;
   }
 }
 
@@ -53,6 +51,7 @@
 
 .body {
   overflow: hidden;
+  transition: inherit;
 }
 
 .content {
@@ -60,19 +59,20 @@
   padding: 1rem;
 }
 
-:host([state='expanding']),
-:host([state='collapsing']) {
-  transition: all 3.5s ease-out;
-}
-
-:host([state='expand']),
-:host([state='collapsing']) {
-  opacity: 0;
-}
-
-:host([state='collapse']),
 :host([state='expanding']) {
-  opacity: 1;
+  transition: all 4.5s ease-out;
+}
+
+:host([state='collapsing']) {
+  transition: all 4.5s ease-out;
+}
+
+:host([state='expanded']) .body {
+  overflow: initial;
+}
+
+:host([state='collapsed']) .body {
+  display: none;
 }
 
 // TODO
