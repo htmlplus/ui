@@ -1,20 +1,14 @@
 :host {
   display: block;
-  border: solid 1px black;
+  background-color: white;
+  border: solid 1px lightgray;
   border-radius: 0.25rem;
-  background-color: hsl(0, 0%, 100%);
   overflow-anchor: none;
+  transition: all 0.3s ease-out;
 }
 
 :host(#{boolean(disabled)}) {
   opacity: 0.5;
-  & .header {
-    cursor: not-allowed;
-    &:focus-visible {
-      outline: none;
-      box-shadow: none;
-    }
-  }
 }
 
 .header {
@@ -24,15 +18,6 @@
   padding: 1rem;
   user-select: none;
   cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: solid 3px red;
-    outline-offset: 2px;
-  }
 }
 
 .summary {
@@ -45,8 +30,6 @@
   flex: 0 0 auto;
   display: flex;
   align-items: center;
-  // TODO
-  // transition: var(--sl-transition-medium) rotate ease;
 }
 
 .body {
@@ -59,14 +42,6 @@
   padding: 1rem;
 }
 
-:host([state='expanding']) {
-  transition: all 4.5s ease-out;
-}
-
-:host([state='collapsing']) {
-  transition: all 4.5s ease-out;
-}
-
 :host([state='expanded']) .body {
   overflow: initial;
 }
@@ -76,6 +51,9 @@
 }
 
 // TODO
+// .icon {
+//   transition: var(--sl-transition-medium) rotate ease;
+// }
 // .details--open .details__summary-icon {
 //   rotate: 90deg;
 // }
