@@ -2,9 +2,9 @@
   display: block;
   background-color: white;
   border: solid 1px lightgray;
-  border-radius: 0.25rem;
   overflow-anchor: none;
   transition: all 0.3s ease-out;
+  border-radius: 4px;
 }
 
 :host(#{boolean(disabled)}) {
@@ -48,6 +48,24 @@
 
 :host([state='collapsed']) .body {
   display: none;
+}
+
+:host(:not(:first-of-type)) {
+  border-top: 0;
+}
+
+:host(:not(:first-of-type, :last-of-type)) {
+  border-radius: 0;
+}
+
+:host(:not(:last-of-type):first-of-type) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+:host(:not(:first-of-type):last-of-type) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 // TODO
