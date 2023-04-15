@@ -4,7 +4,7 @@
   border: solid 1px lightgray;
   overflow-anchor: none;
   transition: all 0.3s ease-out;
-  border-radius: 4px;
+  border-radius: 0.25rem;
 }
 
 :host(#{boolean(disabled)}) {
@@ -17,6 +17,9 @@
   border-radius: inherit;
   padding: 1rem;
   user-select: none;
+}
+
+:host(:not(#{boolean(disabled)})) .header {
   cursor: pointer;
 }
 
@@ -28,8 +31,8 @@
 
 .icon {
   flex: 0 0 auto;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
 }
 
 .body {
