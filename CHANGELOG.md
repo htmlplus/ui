@@ -9,10 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added the themeing system.
 - Added the experimental `override` property to the components.
 
 ### Updated
 
+- Moved the animation assets.
 - Added the `initializer` property for `styles` to the `json/document.json`.
 
 ## [0.8.6] - 2023-03-25

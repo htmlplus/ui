@@ -1,6 +1,6 @@
-import { _ as __decorate, f as createLink, u as uhtml, P as Property, A as Attributes, B as Bind, a as Element } from './core/index.js';
+import { _ as __decorate, j as createLink, u as uhtml, P as Property, d as Attributes, B as Bind, b as Element } from './core/index.js';
 
-var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{align-items:center;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]:not([disabled=false])) span{opacity:.5}:host([active]:not([active=false])){background-color:#d2d2d2}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{align-items:center;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]:not([disabled=false])) span{opacity:.5}:host([active]:not([active=false])){background-color:#d2d2d2}";
 
 const { Inject } = createLink({
     crawl: true

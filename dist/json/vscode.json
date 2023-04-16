@@ -3,6 +3,46 @@
   "version": 1.1,
   "tags": [
     {
+      "name": "plus-accordion",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "TODO.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "open",
+          "description": "TODO.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "summary",
+          "description": "TODO.",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/accordion"
+        }
+      ]
+    },
+    {
       "name": "plus-animation",
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "attributes": [

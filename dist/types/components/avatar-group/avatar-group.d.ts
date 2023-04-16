@@ -1,5 +1,6 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
+ * @stable
  * @slot default - The default slot.
  */
 export declare class AvatarGroup {

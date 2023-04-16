@@ -1,6 +1,6 @@
-import { _ as __decorate, t as toUnit, b as styles, u as uhtml, P as Property, E as Event, S as State, A as Attributes, W as Watch, B as Bind, a as Element } from './core/index.js';
+import { _ as __decorate, t as toUnit, c as styles, u as uhtml, P as Property, E as Event, S as State, d as Attributes, W as Watch, B as Bind, b as Element } from './core/index.js';
 
-var css_248z = "*,:after,:before{box-sizing:border-box}:host,:host:after,:host:before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
 
 /**
  * @stable

@@ -3,6 +3,163 @@
     {
       "events": [
         {
+          "cancelable": true,
+          "deprecated": false,
+          "description": "TODO.",
+          "detail": "EventEmitter<void>",
+          "experimental": false,
+          "model": false,
+          "name": "plusCollapse",
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ]
+        },
+        {
+          "cancelable": false,
+          "deprecated": false,
+          "description": "TODO.",
+          "detail": "EventEmitter<void>",
+          "experimental": false,
+          "model": false,
+          "name": "plusCollapsed",
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ]
+        },
+        {
+          "cancelable": true,
+          "deprecated": false,
+          "description": "TODO.",
+          "detail": "EventEmitter<void>",
+          "experimental": false,
+          "model": false,
+          "name": "plusExpand",
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ]
+        },
+        {
+          "cancelable": false,
+          "deprecated": false,
+          "description": "TODO.",
+          "detail": "EventEmitter<void>",
+          "experimental": false,
+          "model": false,
+          "name": "plusExpanded",
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ]
+        }
+      ],
+      "deprecated": false,
+      "experimental": false,
+      "key": "accordion",
+      "methods": [
+        {
+          "async": true,
+          "deprecated": false,
+          "experimental": false,
+          "name": "hide",
+          "parameters": [],
+          "returns": "void",
+          "tags": [],
+          "signature": "hide() => void"
+        },
+        {
+          "async": true,
+          "deprecated": false,
+          "experimental": false,
+          "name": "show",
+          "parameters": [],
+          "returns": "void",
+          "tags": [],
+          "signature": "show() => void"
+        },
+        {
+          "async": true,
+          "deprecated": false,
+          "experimental": false,
+          "name": "toggle",
+          "parameters": [],
+          "returns": "void",
+          "tags": [],
+          "signature": "toggle() => void"
+        }
+      ],
+      "parts": [],
+      "properties": [
+        {
+          "attribute": "disabled",
+          "deprecated": false,
+          "description": "TODO.",
+          "experimental": false,
+          "model": false,
+          "name": "disabled",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ],
+          "type": "boolean"
+        },
+        {
+          "attribute": "open",
+          "deprecated": false,
+          "description": "TODO.",
+          "experimental": false,
+          "model": false,
+          "name": "open",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ],
+          "type": "boolean"
+        },
+        {
+          "attribute": "summary",
+          "deprecated": false,
+          "description": "TODO.",
+          "experimental": false,
+          "model": false,
+          "name": "summary",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ],
+          "type": "string"
+        }
+      ],
+      "slots": [],
+      "styles": [],
+      "tags": [],
+      "title": "Accordion"
+    },
+    {
+      "events": [
+        {
           "cancelable": false,
           "deprecated": false,
           "description": "Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)method is called or when the animation enters the \"`idle`\" play state from another state.",
@@ -709,6 +866,10 @@
         }
       ],
       "tags": [
+        {
+          "key": "stable",
+          "value": ""
+        },
         {
           "key": "slot",
           "value": "default - The default slot."

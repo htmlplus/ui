@@ -1,4 +1,4 @@
-import { _ as __decorate, P as Property, E as Event, S as State, A as Attributes, M as Method, B as Bind, W as Watch, a as Element } from './core/index.js';
+import { _ as __decorate, P as Property, E as Event, S as State, d as Attributes, M as Method, B as Bind, W as Watch, b as Element } from './core/index.js';
 
 const COUNTER_EASINGS = {
     'ease-out-expo': (currentTime, beginningValue, changeInValue, duration) => {

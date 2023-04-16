@@ -160,9 +160,7 @@ export class Animation {
       direction: this.direction,
       duration: this.duration,
       easing:
-        ANIMATION_EASINGS[this.easing] ??
-        getConfig('component', 'plus-animation', 'asset', 'easing', this.easing) ??
-        this.easing,
+        ANIMATION_EASINGS[this.easing] ?? getConfig('asset', 'easing', this.easing) ?? this.easing,
       endDelay: this.endDelay,
       fill: this.fill,
       iterationComposite: this.iterationComposite,
@@ -269,8 +267,7 @@ export class Animation {
   updatedCallback() {
     this.disconnectedCallback();
 
-    const keyframes =
-      this.keyframes ?? getConfig('component', 'plus-animation', 'asset', 'name', this.name) ?? [];
+    const keyframes = this.keyframes ?? getConfig('asset', 'animation', this.name) ?? [];
 
     this.instance = host(this).animate(keyframes, this.options);
 

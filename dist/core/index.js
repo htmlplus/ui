@@ -1324,8 +1324,8 @@ function Property(options) {
             if (next === previous)
                 return;
             this[symbol] = next;
-            request(this, name, previous, (skip) => {
-                if (!(options === null || options === void 0 ? void 0 : options.reflect) || skip)
+            request(this, name, previous, (skipped) => {
+                if (!(options === null || options === void 0 ? void 0 : options.reflect) || skipped)
                     return;
                 target[API_LOCKED] = true;
                 updateAttribute(host(this), name, next);
@@ -1499,15 +1499,113 @@ const toUnit = (input, unit = 'px') => {
     return `${Number(input)}${unit}`;
 };
 
-const toAxis = (input, rtl) => {
-    if (!input)
-        return input;
-    if (input.match(/start/))
-        input = rtl ? 'right' : 'left';
-    if (input.match(/end/))
-        input = rtl ? 'left' : 'right';
-    return input;
-};
+class Animation2 {
+    get animations() {
+        return this.source.getAnimations();
+    }
+    get source() {
+        const element = this.config.source;
+        if (typeof element == 'function')
+            return element();
+        return element;
+    }
+    get target() {
+        const element = this.config.target;
+        if (typeof element == 'function')
+            return element();
+        return element;
+    }
+    constructor(config) {
+        this.state = 'leaved';
+        this.destroy = [];
+        this.config = Object.assign({}, this.config, config, {
+            states: Object.assign({}, {
+                enter: 'enter',
+                entering: 'entering',
+                entered: 'entered',
+                leave: 'leave',
+                leaving: 'leaving',
+                leaved: 'leaved'
+            }, config.states)
+        });
+    }
+    dispose() {
+        this.unbind();
+    }
+    enter(parameters) {
+        var _a, _b;
+        if (this.state == 'leaving')
+            return this.reverse();
+        this.update('enter');
+        (_b = (_a = this.config).onEnter) === null || _b === void 0 ? void 0 : _b.call(_a, parameters);
+        this.next(() => {
+            var _a, _b;
+            this.update('entering');
+            (_b = (_a = this.config).onEntering) === null || _b === void 0 ? void 0 : _b.call(_a, parameters);
+            this.bind(parameters);
+        });
+    }
+    initialize(state) {
+        this.update(state);
+    }
+    leave(parameters) {
+        var _a, _b;
+        if (this.state == 'entering')
+            return this.reverse();
+        this.update('leave');
+        (_b = (_a = this.config).onLeave) === null || _b === void 0 ? void 0 : _b.call(_a, parameters);
+        this.next(() => {
+            var _a, _b;
+            this.update('leaving');
+            (_b = (_a = this.config).onLeaving) === null || _b === void 0 ? void 0 : _b.call(_a, parameters);
+            this.bind(parameters);
+        });
+    }
+    bind(parameters) {
+        this.unbind();
+        const callback = () => {
+            var _a, _b, _c, _d;
+            switch (this.state) {
+                case 'entering':
+                    this.update('entered');
+                    (_b = (_a = this.config).onEntered) === null || _b === void 0 ? void 0 : _b.call(_a, parameters);
+                    break;
+                case 'leaving':
+                    this.update('leaved');
+                    (_d = (_c = this.config).onLeaved) === null || _d === void 0 ? void 0 : _d.call(_c, parameters);
+                    break;
+            }
+        };
+        if (!this.animations.length)
+            return callback();
+        this.animations.forEach((animation) => {
+            const destroy = () => {
+                animation.removeEventListener('finish', callback);
+            };
+            this.destroy.push(destroy);
+            animation.addEventListener('finish', callback, { once: true });
+        });
+    }
+    next(callback) {
+        requestAnimationFrame(() => setTimeout(() => callback(), 5));
+    }
+    reverse() {
+        this.update(this.state == 'entering' ? 'leaving' : 'entering');
+        for (const animation of this.animations) {
+            animation.reverse();
+        }
+    }
+    unbind() {
+        for (const callback of this.destroy) {
+            callback();
+        }
+    }
+    update(state) {
+        this.state = state;
+        const value = this.config.states[this.state];
+        this.target.setAttribute(this.config.key, value);
+    }
+}
 
 class Animation {
     constructor(config) {
@@ -1896,6 +1994,16 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
+const toAxis = (input, rtl) => {
+    if (!input)
+        return input;
+    if (input.match(/start/))
+        input = rtl ? 'right' : 'left';
+    if (input.match(/end/))
+        input = rtl ? 'left' : 'right';
+    return input;
+};
+
 const BREAKPOINTS = {
     xs: 0,
     sm: 576,
@@ -1969,4 +2077,14 @@ function Media(query) {
     };
 }
 
-export { Attributes as A, Bind as B, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, Element as a, styles as b, off as c, classes as d, __awaiter as e, createLink as f, getConfig as g, host as h, isRTL as i, toAxis as j, Animation as k, Scrollbar as l, Portal as m, Media as n, on as o, query as p, queryAll as q, request as r, setConfig as s, toUnit as t, uhtml as u };
+Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
+// TODO
+// /**
+//  * Overrides the properties based on breakpoints. [More](/override).
+//  * @experimental
+//  */
+// @Property()
+// @Override()
+// override?: { [key: string]: any };
+
+export { Animation2 as A, Bind as B, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, Attributes as d, off as e, classes as f, getConfig as g, host as h, isRTL as i, createLink as j, toAxis as k, Animation as l, Scrollbar as m, Portal as n, on as o, Media as p, queryAll as q, request as r, setConfig as s, toUnit as t, uhtml as u, query as v };

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.6",
+  "version": "0.8.7-next-04162300",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -13,6 +13,105 @@
   "contributions": {
     "html": {
       "elements": [
+        {
+          "name": "plus-accordion",
+          "doc-url": "https://www.htmlplus.io/javascript/component/accordion",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [
+              {
+                "name": "plus-collapse",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "plus-collapsed",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "plus-expand",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "plus-expanded",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              }
+            ],
+            "properties": [
+              {
+                "name": "disabled",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "open",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "summary",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "hide",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "show",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "toggle",
+                "deprecated": false,
+                "experimental": false
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "disabled",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "open",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "summary",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            }
+          ],
+          "slots": []
+        },
         {
           "name": "plus-animation",
           "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
