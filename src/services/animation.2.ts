@@ -119,6 +119,8 @@ export class Animation2 {
       }
     };
 
+    if (!this.animations.length) return callback();
+
     this.animations.forEach((animation) => {
       const destroy = () => {
         animation.removeEventListener('finish', callback);

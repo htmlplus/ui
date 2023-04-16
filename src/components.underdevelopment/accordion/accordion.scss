@@ -1,14 +1,37 @@
+@import 'accordion.variables';
+
 :host {
   display: block;
-  background-color: white;
-  border: solid 1px lightgray;
+  background-color: $accordion-background-color;
+  border: $accordion-border;
   overflow-anchor: none;
-  transition: all 0.3s ease-out;
   border-radius: 0.25rem;
 }
 
+:host(:not(:first-of-type)) {
+  border-top: 0;
+}
+
+:host(:not(:first-of-type, :last-of-type)) {
+  border-radius: 0;
+}
+
+:host(:not(:only-of-type):first-of-type) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+:host(:not(:only-of-type):last-of-type) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
 :host(#{boolean(disabled)}) {
-  opacity: 0.5;
+  opacity: $accordion-disabled-opacity;
+}
+
+:host(#{boolean(disabled)}) .header {
+  cursor: initial;
 }
 
 .header {
@@ -17,9 +40,6 @@
   border-radius: inherit;
   padding: 1rem;
   user-select: none;
-}
-
-:host(:not(#{boolean(disabled)})) .header {
   cursor: pointer;
 }
 
@@ -31,57 +51,37 @@
 
 .icon {
   flex: 0 0 auto;
-  // display: flex;
-  // align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .body {
   overflow: hidden;
-  transition: inherit;
+  transition: $accordion-transition;
 }
 
 .content {
   display: block;
-  padding: 1rem;
-}
-
-:host([state='expanded']) .body {
-  overflow: initial;
+  padding: $accordion-padding;
 }
 
 :host([state='collapsed']) .body {
   display: none;
 }
 
-:host(:not(:first-of-type)) {
-  border-top: 0;
-}
-
-:host(:not(:first-of-type, :last-of-type)) {
-  border-radius: 0;
-}
-
-:host(:not(:last-of-type):first-of-type) {
+:host(:not([state='collapsed'])) .header {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-:host(:not(:first-of-type):last-of-type) {
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+svg {
+  transition: $accordion-transition;
 }
 
-// TODO
-// .icon {
-//   transition: var(--sl-transition-medium) rotate ease;
-// }
-// .details--open .details__summary-icon {
-//   rotate: 90deg;
-// }
-// .details--open.details--rtl .details__summary-icon {
-//   rotate: -90deg;
-// }
-// .details--open slot[name='expand-icon'],
-// .details:not(.details--open) slot[name='collapse-icon'] {
-//   display: none;
-// }
+:host([state^='collap']) svg {
+  transform: rotate(-90deg);
+}
+
+:host([state^='expand']) svg {
+  transform: rotate(+90deg);
+}
