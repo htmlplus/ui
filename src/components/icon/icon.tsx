@@ -1,24 +1,13 @@
-import { Attributes, Element, Property, getConfig, host } from '@htmlplus/element';
+import { Attributes, Element, Property, getConfig, host, toUnit } from '@htmlplus/element';
 
 // Imports built-in icons.
 import './assets/names/3d-cube-sphere.js';
 import './assets/names/plus.js';
+import { ICON_SIZES } from './icon.constants.js';
 import { AvatarFlip, AvatarName, AvatarRotate, AvatarSize } from './icon.types.js';
 
-/**
- * @development
- * @slot default - The default slot.
- */
 @Element()
 export class Icon {
-  /**
-   * TODO
-   * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
-   * inverse
-   * spin
-   * inactive/disabled
-   */
-
   /**
    * Adjusts the color of the icons.(All main web color formats are accepted)
    */
@@ -45,7 +34,6 @@ export class Icon {
 
   /**
    * Specifies the size of the icon.
-   * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Property({ reflect: true })
   size?: AvatarSize;
@@ -59,20 +47,20 @@ export class Icon {
     };
   }
 
-  get nodes() {
-    return getConfig('asset', 'icon', this.name);
-  }
-
   updatedCallback() {
-    host(this).shadowRoot.querySelector('svg')?.remove();
+    const shadowRoot = host(this).shadowRoot;
+
+    const size = ICON_SIZES.includes(this.size as any) ? 'inherit' : toUnit(this.size);
+
+    shadowRoot.querySelector('svg')?.remove();
 
     const div = document.createElement('div');
 
     div.innerHTML = `
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="${size}"
+        height="${size}"
         viewBox="0 0 24 24"
         stroke-width="2"
         stroke="currentColor"
@@ -81,15 +69,17 @@ export class Icon {
         stroke-linejoin="round"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        ${this.nodes.map(
-          ([tag, attributes]) =>
-            `<${tag} ${Object.keys(attributes)
-              .map((key) => `${key}="${attributes[key]}"`)
-              .join(' ')}/>`
-        )}
+        ${getConfig('asset', 'icon', this.name)
+          .map(
+            ([tag, attributes]) =>
+              `<${tag} ${Object.keys(attributes)
+                .map((key) => `${key}="${attributes[key]}"`)
+                .join(' ')}/>`
+          )
+          .join('')}
       </svg>
     `;
 
-    host(this).shadowRoot.appendChild(div.firstElementChild);
+    shadowRoot.appendChild(div.firstElementChild);
   }
 }
