@@ -3,6 +3,7 @@ import { Attributes, Element, Property, getConfig, host } from '@htmlplus/elemen
 // Imports built-in icons.
 import './assets/names/3d-cube-sphere.js';
 import './assets/names/plus.js';
+import { AvatarFlip, AvatarName, AvatarRotate, AvatarSize } from './icon.types.js';
 
 /**
  * @development
@@ -28,26 +29,26 @@ export class Icon {
    * Flips the icon.
    */
   @Property({ reflect: true })
-  flip?: 'both' | 'horizontal' | 'vertical';
+  flip?: AvatarFlip;
 
   /**
    * Specifies the name of the icon.
    */
-  @Property({ reflect: true })
-  name?: string;
+  @Property()
+  name?: AvatarName;
 
   /**
    * Rotates the icon.
    */
   @Property({ reflect: true })
-  rotate?: 90 | 180 | 270;
+  rotate?: AvatarRotate;
 
   /**
    * Specifies the size of the icon.
    * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Property({ reflect: true })
-  size?: string;
+  size?: AvatarSize;
 
   @Attributes()
   get attributes() {
@@ -63,7 +64,11 @@ export class Icon {
   }
 
   updatedCallback() {
-    host(this).shadowRoot.innerHTML = `
+    host(this).shadowRoot.querySelector('svg')?.remove();
+
+    const div = document.createElement('div');
+
+    div.innerHTML = `
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -75,7 +80,7 @@ export class Icon {
         stroke-linecap="round"
         stroke-linejoin="round"
       >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" /> 
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         ${this.nodes.map(
           ([tag, attributes]) =>
             `<${tag} ${Object.keys(attributes)
@@ -84,5 +89,7 @@ export class Icon {
         )}
       </svg>
     `;
+
+    host(this).shadowRoot.appendChild(div.firstElementChild);
   }
 }
