@@ -28,20 +28,20 @@ A vertically stacked list of headers that reveal or hide associated sections of 
 
 <Example value="disabled" />
 
-### Keyboard
-
-<Example value="keyboard" />
-
 ### Custom Icon
 
 <Example value="custom-icon" />
+
+### Customized
+
+<Example value="customized" />
 
 ### Advanced
 
 <Example value="advanced" />
 
-### Prevent Of Toggle
+### Prevent From Toggling
 
-<Example value="prevent-of-toggle" />
+<Example value="prevent-from-toggling" />
 
 <LastModified />

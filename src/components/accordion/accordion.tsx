@@ -12,6 +12,7 @@ import {
 import { Animation2 } from '@app/services';
 
 /**
+ * @part body          - The body element.
  * @part content       - The content element.
  * @part summary       - The summary element.
  * @part svg           - The svg element.
@@ -205,7 +206,7 @@ export class Accordion {
             {this.summary}
           </slot>
           <slot className="icon" name="icon">
-            <slot name={`icon-${this.open ? 'expand' : 'collapse'}`}>
+            <slot name={`icon-${this.open ? 'collapse' : 'expand'}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -222,7 +223,7 @@ export class Accordion {
             </slot>
           </slot>
         </div>
-        <div className="body" ref={($element) => (this.$body = $element)}>
+        <div className="body" part="body" ref={($element) => (this.$body = $element)}>
           <slot className="content" part="content"></slot>
         </div>
       </>
