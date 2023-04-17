@@ -3616,43 +3616,6 @@
       ]
     },
     {
-      "name": "plus-icon2",
-      "description": "TODO",
-      "attributes": [
-        {
-          "name": "color",
-          "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
-          "values": []
-        },
-        {
-          "name": "flip",
-          "description": "Flips the icon.",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "Specifies the name of the icon.",
-          "values": []
-        },
-        {
-          "name": "rotate",
-          "description": "Rotates the icon.",
-          "values": []
-        },
-        {
-          "name": "size",
-          "description": "Specifies the size of the icon.",
-          "values": []
-        }
-      ],
-      "references": [
-        {
-          "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/icon2"
-        }
-      ]
-    },
-    {
       "name": "plus-intersection",
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "attributes": [
