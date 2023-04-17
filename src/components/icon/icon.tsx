@@ -1,4 +1,8 @@
-import { Attributes, Element, Property } from '@htmlplus/element';
+import { Attributes, Element, Property, getConfig, host } from '@htmlplus/element';
+
+// Imports built-in icons.
+import './assets/names/3d-cube-sphere.js';
+import './assets/names/plus.js';
 
 /**
  * @development
@@ -54,7 +58,31 @@ export class Icon {
     };
   }
 
-  render() {
-    return <slot>{this.name}</slot>;
+  get nodes() {
+    return getConfig('asset', 'icon', this.name);
+  }
+
+  updatedCallback() {
+    host(this).shadowRoot.innerHTML = `
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" /> 
+        ${this.nodes.map(
+          ([tag, attributes]) =>
+            `<${tag} ${Object.keys(attributes)
+              .map((key) => `${key}="${attributes[key]}"`)
+              .join(' ')}/>`
+        )}
+      </svg>
+    `;
   }
 }
