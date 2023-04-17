@@ -1,13 +1,19 @@
-import { Attributes, Element, Property, getConfig, host, toUnit } from '@htmlplus/element';
+import { Attributes, Element, Property } from '@htmlplus/element';
 
-// Imports built-in icons.
-import './assets/names/3d-cube-sphere.js';
-import './assets/names/plus.js';
-import { ICON_SIZES } from './icon.constants.js';
-import { AvatarFlip, AvatarName, AvatarRotate, AvatarSize } from './icon.types.js';
-
+/**
+ * @development
+ * @slot default - The default slot.
+ */
 @Element()
 export class Icon {
+  /**
+   * TODO
+   * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
+   * inverse
+   * spin
+   * inactive/disabled
+   */
+
   /**
    * Adjusts the color of the icons.(All main web color formats are accepted)
    */
@@ -18,25 +24,26 @@ export class Icon {
    * Flips the icon.
    */
   @Property({ reflect: true })
-  flip?: AvatarFlip;
+  flip?: 'both' | 'horizontal' | 'vertical';
 
   /**
    * Specifies the name of the icon.
    */
-  @Property()
-  name?: AvatarName;
+  @Property({ reflect: true })
+  name?: string;
 
   /**
    * Rotates the icon.
    */
   @Property({ reflect: true })
-  rotate?: AvatarRotate;
+  rotate?: 90 | 180 | 270;
 
   /**
    * Specifies the size of the icon.
+   * `xs`, `sm`, `lg` and `1x` to `10x`.
    */
   @Property({ reflect: true })
-  size?: AvatarSize;
+  size?: string;
 
   @Attributes()
   get attributes() {
@@ -47,39 +54,7 @@ export class Icon {
     };
   }
 
-  updatedCallback() {
-    const shadowRoot = host(this).shadowRoot;
-
-    const size = ICON_SIZES.includes(this.size as any) ? 'inherit' : toUnit(this.size);
-
-    shadowRoot.querySelector('svg')?.remove();
-
-    const div = document.createElement('div');
-
-    div.innerHTML = `
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="${size}"
-        height="${size}"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        ${getConfig('asset', 'icon', this.name)
-          .map(
-            ([tag, attributes]) =>
-              `<${tag} ${Object.keys(attributes)
-                .map((key) => `${key}="${attributes[key]}"`)
-                .join(' ')}/>`
-          )
-          .join('')}
-      </svg>
-    `;
-
-    shadowRoot.appendChild(div.firstElementChild);
+  render() {
+    return <slot>{this.name}</slot>;
   }
 }

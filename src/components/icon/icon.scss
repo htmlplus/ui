@@ -1,11 +1,27 @@
 @import 'icon.variables';
 
 :host {
+  direction: ltr;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 1em;
-  width: 1em;
+  letter-spacing: normal;
+  line-height: 1;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  speak: never;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: auto;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
 
 :host(#{boolean(flip)}),
@@ -27,7 +43,6 @@
 
 @each $key, $value in $icon-size {
   :host([size='#{$key}']) {
-    height: $value;
-    width: $value;
+    font-size: $value;
   }
 }

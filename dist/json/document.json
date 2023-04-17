@@ -5539,7 +5539,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Icon\n\nSymbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).\n\n<Playground />\n\n<Usage />\n\n## Libraries\n\nTODO\n\n### Material Design\n\nThe `plus-icon` component will display an icon from any icon font that supports ligatures. As a prerequisite, you must include one, such as the [Material icon font](https://google.github.io/material-design-icons/#icon-font-for-the-web) in your project, for instance, via Google Web Fonts.\n\n```html\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" />\n```\n\nConnect `Material icon font` to the `plus-icon` component.\n\n```css\nplus-icon {\n  font-family: 'Material Icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n### Font Awesome\n\n[Font Awesome](https://fontawesome.com/icons) can be used with the Icon component as follow:\n\n```html\n<plus-icon class=\"fa fa-home\"></plus-icon>\n```\n\n### IcoMoon\n\nTODO\n\nConnect `Custom icon font` to the `plus-icon` component.\n\n```css\n@font-face {\n  font-family: 'your icons';\n  src: url('path/icons.eot');\n  src: url('path/icons.eot') format('embedded-opentype'),\n       url('path/icons.ttf') format('truetype'),\n       url('path/icons.woff') format('woff'),\n       url('path/icons.svg') format('svg');\n  font-weight: normal;\n  font-style: normal;\n  font-display: block;\n}\n\nplus-icon {\n  font-family: 'your icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n# Accessibility\n\nIcons can convey all sorts of meaningful information, so it's important that they reach the largest amount of people possible. There are two use cases you'll want to consider:\n\n- **Decorative Icons** are only being used for visual or branding reinforcement. If they were removed from the page, users would still understand and be able to use your page.\n- **Semantic Icons** are ones that you're using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.\n\n### Decorative Icons\n\nIf your icons are purely decorative, you'll need to manually add an aria-hidden attribute to each of your icons so they're accessible.\n\n```html\n<plus-icon class=\"fa fa-home\" aria-hidden=\"true\"></plus-icon>\n```\n\n> Using property shorthand You might be tempted to use <i aria-hidden></i> and leave the =\"true\" part out. Don't, it's important for screen readers to have a value that follows the spec.\n\n### Semantic Icons\n\nIf your icons have semantic meaning, you'll need to manually add a few things so that your icon is appropriately accessible:\n\n- `aria-hidden=\"true\"` attribute\n- Provide a text alternative inside a `<span>` (or similar) element. Also include appropriate CSS to visually hide the element while keeping it accessible to assisitive technologies.\n- title attribute on the icon to provide a tooltip for sighted mouse users.\n\n```html\n<plus-icon aria-hidden=\"true\" class=\"fa fa-home\" title=\"Time to destination by car\"></plus-icon>\n<span class=\"sr-only\">Time to destination by car:</span>\n<span>4 minutes</span>\n```\n\nIn the case of focusable interactive elements, there are various options to include an alternative text or label to the element, without the need for any visually hidden `<span>` or similar. For instance, simply adding the aria-label attribute with a text description to the interactive element itself will be sufficient to provide an accessible alternative name for the element. If you need to provide a visual tooltip on mouseover/focus, we recommend additionally using the title attribute or a custom tooltip solution.\n\n```html\n<a href=\"path/to/shopping/cart\" aria-label=\"View 3 items in your shopping cart\">\n  <plus-icon aria-hidden=\"true\" class=\"fa fa-home\"></plus-icon>\n</a>\n```\n\n## Reference\n\n[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)\n\n<LastModified />\n",
+      "readmeContent": "# Icon\n\nSymbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).\n\n<Playground />\n\n<Usage />\n\n## Libraries\n\nTODO\n\n### Material Design\n\nThe `plus-icon` component will display an icon from any icon font that supports ligatures. As a prerequisite, you must include one, such as the [Material icon font](https://google.github.io/material-design-icons/#icon-font-for-the-web) in your project, for instance, via Google Web Fonts.\n\n```html\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" />\n```\n\nConnect `Material icon font` to the `plus-icon` component.\n\n```css\nplus-icon {\n  font-family: 'Material Icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n### Font Awesome\n\n[Font Awesome](https://fontawesome.com/icons) can be used with the Icon component as follow:\n\n```html\n<plus-icon class=\"fa fa-home\"></plus-icon>\n```\n\n### IcoMoon\n\nTODO\n\nConnect `Custom icon font` to the `plus-icon` component.\n\n```css\n@font-face {\n  font-family: 'your icons';\n  src: url('path/icons.eot');\n  src: url('path/icons.eot') format('embedded-opentype'),\n       url('path/icons.ttf') format('truetype'),\n       url('path/icons.woff') format('woff'),\n       url('path/icons.svg') format('svg');\n  font-weight: normal;\n  font-style: normal;\n  font-display: block;\n}\n\nplus-icon {\n  font-family: 'your icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n# Accessibility\n\nIcons can convey all sorts of meaningful information, so it's important that they reach the largest amount of people possible. There are two use cases you'll want to consider:\n\n- **Decorative Icons** are only being used for visual or branding reinforcement. If they were removed from the page, users would still understand and be able to use your page.\n- **Semantic Icons** are ones that you're using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.\n\n### Decorative Icons\n\nIf your icons are purely decorative, you'll need to manually add an aria-hidden attribute to each of your icons so they're accessible.\n\n```html\n<plus-icon class=\"fa fa-home\" aria-hidden=\"true\"></plus-icon>\n```\n\n> Using property shorthand You might be tempted to use <i aria-hidden></i> and leave the =\"true\" part out. Don't, it's important for screen readers to have a value that follows the spec.\n\n### Semantic Icons\n\nIf your icons have semantic meaning, you'll need to manually add a few things so that your icon is appropriately accessible:\n\n- `aria-hidden=\"true\"` attribute\n- Provide a text alternative inside a `<span>` (or similar) element. Also include appropriate CSS to visually hide the element while keeping it accessible to assisitive technologies.\n- title attribute on the icon to provide a tooltip for sighted mouse users.\n\n```html\n<plus-icon aria-hidden=\"true\" class=\"fa fa-home\" title=\"Time to destination by car\"></plus-icon>\n<span class=\"sr-only\">Time to destination by car:</span>\n<span>4 minutes</span>\n```\n\nIn the case of focusable interactive elements, there are various options to include an alternative text or label to the element, without the need for any visually hidden `<span>` or similar. For instance, simply adding the aria-label attribute with a text description to the interactive element itself will be sufficient to provide an accessible alternative name for the element. If you need to provide a visual tooltip on mouseover/focus, we recommend additionally using the title attribute or a custom tooltip solution.\n\n```html\n<a href=\"path/to/shopping/cart\" aria-label=\"View 3 items in your shopping cart\">\n  <plus-icon aria-hidden=\"true\" class=\"fa fa-home\"></plus-icon>\n</a>\n```\n\n## Reference\n\n[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -5558,6 +5558,111 @@
         }
       ],
       "title": "Icon"
+    },
+    {
+      "events": [],
+      "deprecated": false,
+      "description": "TODO",
+      "experimental": false,
+      "key": "icon2",
+      "methods": [],
+      "parts": [],
+      "properties": [
+        {
+          "attribute": "color",
+          "deprecated": false,
+          "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
+          "experimental": false,
+          "model": false,
+          "name": "color",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Adjusts the color of the icons.(All main web color formats are accepted)"
+            }
+          ],
+          "type": "string"
+        },
+        {
+          "attribute": "flip",
+          "deprecated": false,
+          "description": "Flips the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "flip",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Flips the icon."
+            }
+          ],
+          "type": "AvatarFlip",
+          "typeReference": "./icon.types.js"
+        },
+        {
+          "attribute": "name",
+          "deprecated": false,
+          "description": "Specifies the name of the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "name",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies the name of the icon."
+            }
+          ],
+          "type": "AvatarName",
+          "typeReference": "./icon.types.js"
+        },
+        {
+          "attribute": "rotate",
+          "deprecated": false,
+          "description": "Rotates the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "rotate",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Rotates the icon."
+            }
+          ],
+          "type": "AvatarRotate",
+          "typeReference": "./icon.types.js"
+        },
+        {
+          "attribute": "size",
+          "deprecated": false,
+          "description": "Specifies the size of the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "size",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies the size of the icon."
+            }
+          ],
+          "type": "AvatarSize",
+          "typeReference": "./icon.types.js"
+        }
+      ],
+      "readmeContent": "# Icon\n\nTODO\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n<LastModified />\n",
+      "slots": [],
+      "styles": [],
+      "tags": [],
+      "title": "Icon2"
     },
     {
       "events": [
