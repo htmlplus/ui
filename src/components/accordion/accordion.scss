@@ -35,12 +35,14 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   border-radius: inherit;
   padding: 1rem;
   user-select: none;
   cursor: pointer;
+  overflow-anchor: none;
 }
 
 .summary {
@@ -79,9 +81,9 @@ svg {
 }
 
 :host([state^='collap']) svg {
-  transform: rotate(-90deg);
+  transform: rotate(+90deg);
 }
 
 :host([state^='expand']) svg {
-  transform: rotate(+90deg);
+  transform: rotate(-90deg);
 }
