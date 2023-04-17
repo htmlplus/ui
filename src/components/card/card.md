@@ -48,20 +48,4 @@ By default, the card component has border-radius. The tile property neutralizes 
 
 <Example value="customize" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
-    examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
-    playground={false}
-    properties={false}
-    skeleton={false}
-    slots={false}
-/>
-
 <LastModified />

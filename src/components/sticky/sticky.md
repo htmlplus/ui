@@ -36,20 +36,4 @@ Component content is positioned based on the user's scroll position.
 
 <Example value="sidebar" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality="N/A"
-    cssParts="N/A"
-    cssVariables="N/A"
-    documentation={true}
-    examples={true}
-    events={true}
-    keyboard="N/A"
-    methods="N/A"
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

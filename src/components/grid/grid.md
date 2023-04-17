@@ -70,20 +70,4 @@ It's the most flexible and powerful grid system which you need to build simple t
 
 <Example value="vertical" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
-    examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
-    playground={false}
-    properties={false}
-    skeleton={false}
-    slots={false}
-/>
-
 <LastModified />

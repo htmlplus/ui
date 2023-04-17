@@ -48,20 +48,4 @@ Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.or
 
 <Example value="locale" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality="N/A"
-    cssParts="N/A"
-    cssVariables="N/A"
-    documentation={true}
-    examples={true}
-    events="N/A"
-    keyboard="N/A"
-    methods="N/A"
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots="N/A"
-/>
-
 <LastModified />

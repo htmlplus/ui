@@ -56,20 +56,4 @@ Allows user to draw smooth signatures.
 
 <Example value="save" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality="N/A"
-    cssParts={true}
-    cssVariables="N/A"
-    documentation={true}
-    examples={true}
-    events={true}
-    keyboard={false}
-    methods={true}
-    playground={false}
-    properties={false}
-    skeleton={false}
-    slots="N/A"
-/>
-
 <LastModified />

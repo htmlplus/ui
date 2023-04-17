@@ -141,20 +141,4 @@ In the case of focusable interactive elements, there are various options to incl
 
 [https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
-    examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
-    playground={false}
-    properties={false}
-    skeleton={false}
-    slots={false}
-/>
-
 <LastModified />

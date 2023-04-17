@@ -32,20 +32,4 @@ A component that appears in front of all screen content.
 
 <Example value="button" />
 
-<Checklist 
-    accessibility="N/A"
-    bidirectionality={true}
-    cssParts="N/A"
-    cssVariables="N/A"
-    documentation={true}
-    examples={true}
-    events="N/A"
-    keyboard="N/A"
-    methods="N/A"
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

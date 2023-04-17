@@ -78,20 +78,4 @@ Open the developer console.
 
 <Example value="styles" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality="N/A"
-    cssParts="N/A"
-    cssVariables={true}
-    documentation={true}
-    examples={true}
-    events={true}
-    keyboard={false}
-    methods={true}
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots="N/A"
-/>
-
 <LastModified />

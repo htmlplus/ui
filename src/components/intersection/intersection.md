@@ -22,20 +22,4 @@ Observes the user's viewport to detect the visibility of the Card.
 Loads the image after appearing in the user's viewport.
 <Example value="lazy-image" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality="N/A"
-    cssParts="N/A"
-    cssVariables="N/A"
-    documentation={true}
-    examples={true}
-    events={true}
-    keyboard="N/A"
-    methods="N/A"
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

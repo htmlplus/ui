@@ -48,20 +48,4 @@ A thin line that divides the content vertically or horizontally.
 
 <Example value="sticky" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={true}
-    cssParts="N/A"
-    cssVariables={true}
-    documentation={true}
-    examples={true}
-    events="N/A"
-    keyboard="N/A"
-    methods="N/A"
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

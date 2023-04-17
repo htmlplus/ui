@@ -40,20 +40,4 @@ Organizes content across different screens.
 
 <Example value="vertical" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={false}
-    cssParts={false}
-    cssVariables={false}
-    documentation={false}
-    examples={false}
-    events={false}
-    keyboard={false}
-    methods={false}
-    playground={false}
-    properties={false}
-    skeleton={false}
-    slots={false}
-/>
-
 <LastModified />

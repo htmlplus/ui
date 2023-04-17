@@ -50,20 +50,4 @@ To see all easings click [here](https://github.com/htmlplus/core/blob/main/src/c
 
 <Example value="intersection" />
 
-<Checklist 
-    accessibility="N/A"
-    bidirectionality="N/A"
-    cssParts="N/A"
-    cssVariables="N/A"
-    documentation={true}
-    examples={true}
-    events={true}
-    keyboard="N/A"
-    methods={true}
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

@@ -84,20 +84,4 @@ An image representing a user's profile picture.
 
 <Example value="group-tooltip" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={true}
-    cssParts="N/A"
-    cssVariables={true}
-    documentation={true}
-    examples={true}
-    events="N/A"
-    keyboard="N/A"
-    methods="N/A"
-    playground={false}
-    properties={true}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

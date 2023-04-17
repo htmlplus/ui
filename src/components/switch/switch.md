@@ -36,20 +36,4 @@ Toggles the state of a single item on or off.
 
 <Example value="3d" />
 
-<Checklist 
-    accessibility={false}
-    bidirectionality={false}
-    cssParts={true}
-    cssVariables={false}
-    documentation={true}
-    examples={false}
-    events={true}
-    keyboard={true}
-    methods="N/A"
-    playground={false}
-    properties={false}
-    skeleton={false}
-    slots={true}
-/>
-
 <LastModified />

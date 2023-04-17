@@ -11,6 +11,16 @@ import {
 
 import { Animation2 } from '@app/services';
 
+/**
+ * @part content       - The content element.
+ * @part summary       - The summary element.
+ * @part svg           - The svg element.
+ * @slot default       - The default slot.
+ * @slot icon          - The icon slot.
+ * @slot icon-expand   - The expand icon slot.
+ * @slot icon-collapse - The collapse icon slot.
+ * @slot summary       - The summary slot.
+ */
 @Element()
 export class Accordion {
   /**
@@ -166,18 +176,6 @@ export class Accordion {
         event.preventDefault();
         this.try(!this.open);
         break;
-
-      case 'ArrowUp':
-      case 'ArrowLeft':
-        event.preventDefault();
-        this.try(false);
-        break;
-
-      case 'ArrowDown':
-      case 'ArrowRight':
-        event.preventDefault();
-        this.try(true);
-        break;
     }
   }
 
@@ -193,7 +191,6 @@ export class Accordion {
     return (
       <>
         <div
-          aria-controls="content"
           aria-disabled={!!this.disabled}
           aria-expanded={!!this.open}
           className="header"
@@ -225,12 +222,7 @@ export class Accordion {
             </slot>
           </slot>
         </div>
-        <div
-          aria-labelledby="header"
-          className="body"
-          role="region"
-          ref={($element) => (this.$body = $element)}
-        >
+        <div className="body" ref={($element) => (this.$body = $element)}>
           <slot className="content" part="content"></slot>
         </div>
       </>
