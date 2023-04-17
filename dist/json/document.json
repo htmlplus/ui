@@ -64,6 +64,7 @@
         }
       ],
       "deprecated": false,
+      "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
       "methods": [
@@ -98,7 +99,24 @@
           "signature": "toggle() => void"
         }
       ],
-      "parts": [],
+      "parts": [
+        {
+          "name": "body",
+          "description": "The body element."
+        },
+        {
+          "name": "content",
+          "description": "The content element."
+        },
+        {
+          "name": "summary",
+          "description": "The summary element."
+        },
+        {
+          "name": "svg",
+          "description": "The svg element."
+        }
+      ],
       "properties": [
         {
           "attribute": "disabled",
@@ -152,9 +170,68 @@
           "type": "string"
         }
       ],
-      "slots": [],
+      "readmeContent": "# Accordion\n\nA vertically stacked list of headers that reveal or hide associated sections of content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Open\n\n<Example value=\"open\" />\n\n### Persistent\n\n<Example value=\"persistent\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Custom Icon\n\n<Example value=\"custom-icon\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### Advanced\n\n<Example value=\"advanced\" />\n\n### Prevent From Toggling\n\n<Example value=\"prevent-from-toggling\" />\n\n<LastModified />\n",
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        },
+        {
+          "name": "icon",
+          "description": "The icon slot."
+        },
+        {
+          "name": "icon",
+          "description": "expand   - The expand icon slot."
+        },
+        {
+          "name": "icon",
+          "description": "collapse - The collapse icon slot."
+        },
+        {
+          "name": "summary",
+          "description": "The summary slot."
+        }
+      ],
       "styles": [],
-      "tags": [],
+      "tags": [
+        {
+          "key": "part",
+          "value": "body          - The body element."
+        },
+        {
+          "key": "part",
+          "value": "content       - The content element."
+        },
+        {
+          "key": "part",
+          "value": "summary       - The summary element."
+        },
+        {
+          "key": "part",
+          "value": "svg           - The svg element."
+        },
+        {
+          "key": "slot",
+          "value": "default       - The default slot."
+        },
+        {
+          "key": "slot",
+          "value": "icon          - The icon slot."
+        },
+        {
+          "key": "slot",
+          "value": "icon-expand   - The expand icon slot."
+        },
+        {
+          "key": "slot",
+          "value": "icon-collapse - The collapse icon slot."
+        },
+        {
+          "key": "slot",
+          "value": "summary       - The summary slot."
+        }
+      ],
       "title": "Accordion"
     },
     {
@@ -618,7 +695,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Animation\n\nCreates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://www.htmlplus.io/component/animation/names).\n<Example value=\"name\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Easing\n\nTo see all easings click [here](https://github.com/htmlplus/core/blob/main/src/components/animation/animation.constants.ts).\n<Example value=\"easing\" />\n\n### Methods\n\n<Example value=\"methods\" />\n\n### Keyframes\n\n<Example value=\"keyframes\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Button\n\n<Example value=\"button\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<Checklist \n    accessibility=\"N/A\"\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard=\"N/A\"\n    methods={true}\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Animation\n\nCreates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://www.htmlplus.io/component/animation/names).\n<Example value=\"name\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Easing\n\nTo see all easings click [here](https://github.com/htmlplus/core/blob/main/src/components/animation/animation.constants.ts).\n<Example value=\"easing\" />\n\n### Methods\n\n<Example value=\"methods\" />\n\n### Keyframes\n\n<Example value=\"keyframes\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Button\n\n<Example value=\"button\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -700,7 +777,7 @@
           "type": "number | string"
         }
       ],
-      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the component.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Video\n\n<Example value=\"video\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Map\n\n<Example value=\"map\" />\n\n### More\n\n<Example value=\"more\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the component.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Video\n\n<Example value=\"video\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Map\n\n<Example value=\"map\" />\n\n### More\n\n<Example value=\"more\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -768,7 +845,7 @@
           "typeReference": "./avatar.types"
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Svg Ratio\n\n<Example value=\"svg-ratio\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Tooltip\n\n<Example value=\"tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Tooltip\n\n<Example value=\"group-tooltip\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={true}\n    cssParts=\"N/A\"\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Svg Ratio\n\n<Example value=\"svg-ratio\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Tooltip\n\n<Example value=\"tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Tooltip\n\n<Example value=\"group-tooltip\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -970,7 +1047,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Breadcrumb\n\nBreadcrumb component is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Custom Separator\n\n<Example value=\"custom-separator\" />\n\n### Limitation\n\n<Example value=\"limitation\" />\n\n### Custom Expander\n\n<Example value=\"custom-expander\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Breadcrumb\n\nBreadcrumb component is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Custom Separator\n\n<Example value=\"custom-separator\" />\n\n### Limitation\n\n<Example value=\"limitation\" />\n\n### Custom Expander\n\n<Example value=\"custom-expander\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1237,7 +1314,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Browse\n\nAllows you to select file or files by using click or drag & drop functionality.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Browse\n\nAllows you to select file or files by using click or drag & drop functionality.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1332,7 +1409,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Card\n\nCards contain content and actions about a single subject.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Elevation\n\nThe card component accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\n<Example value=\"elevation\" />\n\n### Outlined\n\nBy default, the card component has no border. outlined property Adds border.\n<Example value=\"outlined\" />\n\n### Border Color\n\n<Example value=\"border-color\" />\n\n### Border Width\n\nBy default, the card component has no border. outlined property Adds border.\n<Example value=\"border-width\" />\n\n### Tile\n\nBy default, the card component has border-radius. The tile property neutralizes border-radius.\n<Example value=\"tile\" />\n\n### Background Color\n\n<Example value=\"background-color\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Card\n\nCards contain content and actions about a single subject.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Elevation\n\nThe card component accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\n<Example value=\"elevation\" />\n\n### Outlined\n\nBy default, the card component has no border. outlined property Adds border.\n<Example value=\"outlined\" />\n\n### Border Color\n\n<Example value=\"border-color\" />\n\n### Border Width\n\nBy default, the card component has no border. outlined property Adds border.\n<Example value=\"border-width\" />\n\n### Tile\n\nBy default, the card component has border-radius. The tile property neutralizes border-radius.\n<Example value=\"tile\" />\n\n### Background Color\n\n<Example value=\"background-color\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1428,7 +1505,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Center\n\nCenters content vertically and horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Inline\n\n<Example value=\"inline\" />\n\n<Checklist \n    accessibility=\"N/A\"\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Center\n\nCenters content vertically and horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Inline\n\n<Example value=\"inline\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1525,7 +1602,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Click Outside\n\nDetects when a click event happens outside of itself.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Menu\n\n<Example value=\"menu\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Click Outside\n\nDetects when a click event happens outside of itself.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Menu\n\n<Example value=\"menu\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1813,7 +1890,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Counter\n\nCan be used to quickly create animations that display numerical data in a more interesting way.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Range\n\n<Example value=\"range\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Delay\n\n<Example value=\"delay\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Decimal\n\n<Example value=\"decimal\" />\n\n### Separator & Decimal\n\n<Example value=\"separator-decimal\" />\n\n### Numerals\n\n<Example value=\"numerals\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard=\"N/A\"\n    methods={true}\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Counter\n\nCan be used to quickly create animations that display numerical data in a more interesting way.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Range\n\n<Example value=\"range\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Delay\n\n<Example value=\"delay\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Decimal\n\n<Example value=\"decimal\" />\n\n### Separator & Decimal\n\n<Example value=\"separator-decimal\" />\n\n### Numerals\n\n<Example value=\"numerals\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -2465,7 +2542,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Cropper\n\nUsed for cropping large images to fit a container before uploading them to the server.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Indicator\n\n<Example value=\"indicator\" />\n\n### Guides\n\n<Example value=\"guides\" />\n\n### Backdrop\n\n<Example value=\"backdrop\" />\n\n### Background\n\n<Example value=\"background\" />\n\n### Area\n\n<Example value=\"area\" />\n\n### Aspect Ratio\n\n<Example value=\"aspect-ratio\" />\n\n### Mode\n\n<Example value=\"mode\" />\n\n### Zoomable\n\n<Example value=\"zoomable\" />\n\n### Zoom Ratio\n\n<Example value=\"zoom-ratio\" />\n\n### To Base64\n\n<Example value=\"to-base64\" />\n\n### To Blob\n\nOpen the developer console.\n\n<Example value=\"to-blob\" />\n\n### To Url\n\n<Example value=\"to-url\" />\n\n### Styles\n\n<Example value=\"styles\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard={false}\n    methods={true}\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Cropper\n\nUsed for cropping large images to fit a container before uploading them to the server.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Indicator\n\n<Example value=\"indicator\" />\n\n### Guides\n\n<Example value=\"guides\" />\n\n### Backdrop\n\n<Example value=\"backdrop\" />\n\n### Background\n\n<Example value=\"background\" />\n\n### Area\n\n<Example value=\"area\" />\n\n### Aspect Ratio\n\n<Example value=\"aspect-ratio\" />\n\n### Mode\n\n<Example value=\"mode\" />\n\n### Zoomable\n\n<Example value=\"zoomable\" />\n\n### Zoom Ratio\n\n<Example value=\"zoom-ratio\" />\n\n### To Base64\n\n<Example value=\"to-base64\" />\n\n### To Blob\n\nOpen the developer console.\n\n<Example value=\"to-blob\" />\n\n### To Url\n\n<Example value=\"to-url\" />\n\n### Styles\n\n<Example value=\"styles\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [
         {
@@ -2950,7 +3027,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Dialog\n\nA dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Animation\n\n<Example value=\"animation\" />\n\n### Persistent\n\n<Example value=\"persistent\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Backdrop\n\n<Example value=\"backdrop\" />\n\n### Scrollable\n\n<Example value=\"scrollable\" />\n\n### Specific Scrollable\n\n<Example value=\"specific-scrollable\" />\n\n### Fullscreen\n\n<Example value=\"fullscreen\" />\n\n### Full Width\n\n<Example value=\"full-width\" />\n\n### Full Height\n\n<Example value=\"full-height\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n### Nesting\n\n<Example value=\"nesting\" />\n\n### Prevent\n\n<Example value=\"prevent\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Dialog\n\nA dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Animation\n\n<Example value=\"animation\" />\n\n### Persistent\n\n<Example value=\"persistent\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Backdrop\n\n<Example value=\"backdrop\" />\n\n### Scrollable\n\n<Example value=\"scrollable\" />\n\n### Specific Scrollable\n\n<Example value=\"specific-scrollable\" />\n\n### Fullscreen\n\n<Example value=\"fullscreen\" />\n\n### Full Width\n\n<Example value=\"full-width\" />\n\n### Full Height\n\n<Example value=\"full-height\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n### Nesting\n\n<Example value=\"nesting\" />\n\n### Prevent\n\n<Example value=\"prevent\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -3250,7 +3327,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Divider\n\nA thin line that divides the content vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Width\n\n<Example value=\"width\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Variant\n\n<Example value=\"variant\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Horizontal\n\n<Example value=\"horizontal\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={true}\n    cssParts=\"N/A\"\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Divider\n\nA thin line that divides the content vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Width\n\n<Example value=\"width\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Variant\n\n<Example value=\"variant\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Horizontal\n\n<Example value=\"horizontal\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [
         {
@@ -3563,7 +3640,7 @@
           "typeReference": "./drawer.types"
         }
       ],
-      "readmeContent": "# Drawer\n\nThis component lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Drawer\n\nThis component lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -3719,7 +3796,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Faker\n\nGenerates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### API\n\nTo see all APIs click [here](https://fakerjs.dev/api).\n\n<Example value=\"api\" />\n\n### API's Arguments\n\n<Example value=\"arguments\" />\n\n### Seed\n\n<Example value=\"seed\" />\n\n### Localization\n\nMakes the result localized. Consider that localization configure globally. [More](https://fakerjs.dev/guide/localization.html).\n\n<Example value=\"localization\" />\n\n### More\n\n<Example value=\"more\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Faker\n\nGenerates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### API\n\nTo see all APIs click [here](https://fakerjs.dev/api).\n\n<Example value=\"api\" />\n\n### API's Arguments\n\n<Example value=\"arguments\" />\n\n### Seed\n\n<Example value=\"seed\" />\n\n### Localization\n\nMakes the result localized. Consider that localization configure globally. [More](https://fakerjs.dev/guide/localization.html).\n\n<Example value=\"localization\" />\n\n### More\n\n<Example value=\"more\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -3803,7 +3880,7 @@
           "typeReference": "./floating.types"
         }
       ],
-      "readmeContent": "# Floating\r\n\r\nA component that appears in front of all screen content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Fixed\r\n\r\n<Example value=\"fixed\" />\r\n\r\n### Offset\r\n\r\n<Example value=\"offset\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Button\r\n\r\n<Example value=\"button\" />\r\n\r\n<Checklist \r\n    accessibility=\"N/A\"\r\n    bidirectionality={true}\r\n    cssParts=\"N/A\"\r\n    cssVariables=\"N/A\"\r\n    documentation={true}\r\n    examples={true}\r\n    events=\"N/A\"\r\n    keyboard=\"N/A\"\r\n    methods=\"N/A\"\r\n    playground={false}\r\n    properties={true}\r\n    skeleton={false}\r\n    slots={true}\r\n/>\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Floating\r\n\r\nA component that appears in front of all screen content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Fixed\r\n\r\n<Example value=\"fixed\" />\r\n\r\n### Offset\r\n\r\n<Example value=\"offset\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Button\r\n\r\n<Example value=\"button\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -3976,7 +4053,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Format Bytes\n\nConverts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Standard\n\n<Example value=\"standard\" />\n\n### Formatting\n\n<Example value=\"formatting\" />\n\n### Decimals\n\n<Example value=\"decimals\" />\n\n### Unit\n\n<Example value=\"unit\" />\n\n### Display\n\n<Example value=\"display\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Signed\n\n<Example value=\"signed\" />\n\n### Locale\n\n<Example value=\"locale\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Format Bytes\n\nConverts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Standard\n\n<Example value=\"standard\" />\n\n### Formatting\n\n<Example value=\"formatting\" />\n\n### Decimals\n\n<Example value=\"decimals\" />\n\n### Unit\n\n<Example value=\"unit\" />\n\n### Display\n\n<Example value=\"display\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Signed\n\n<Example value=\"signed\" />\n\n### Locale\n\n<Example value=\"locale\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -4593,7 +4670,7 @@
           "typeReference": "./grid.types"
         }
       ],
-      "readmeContent": "# Grid\n\nIt's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Auto Sizing\n\n<Example value=\"auto-sizing\" />\n\n### Gutter\n\n<Example value=\"gutter\" />\n\n### Gutter X\n\n<Example value=\"gutter-x\" />\n\n### Gutter Y\n\n<Example value=\"gutter-y\" />\n\n### Align Items\n\n<Example value=\"align-items\" />\n\n### Align Content\n\n<Example value=\"align-content\" />\n\n### Align Self\n\n<Example value=\"align-self\" />\n\n### Justify Content\n\n<Example value=\"justify-content\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Wrap\n\n<Example value=\"wrap\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Order\n\n<Example value=\"order\" />\n\n### Hide\n\n<Example value=\"hide\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Grid\n\nIt's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Auto Sizing\n\n<Example value=\"auto-sizing\" />\n\n### Gutter\n\n<Example value=\"gutter\" />\n\n### Gutter X\n\n<Example value=\"gutter-x\" />\n\n### Gutter Y\n\n<Example value=\"gutter-y\" />\n\n### Align Items\n\n<Example value=\"align-items\" />\n\n### Align Content\n\n<Example value=\"align-content\" />\n\n### Align Self\n\n<Example value=\"align-self\" />\n\n### Justify Content\n\n<Example value=\"justify-content\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Wrap\n\n<Example value=\"wrap\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Order\n\n<Example value=\"order\" />\n\n### Hide\n\n<Example value=\"hide\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -5462,7 +5539,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Icon\n\nSymbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).\n\n<Playground />\n\n<Usage />\n\n## Libraries\n\nTODO\n\n### Material Design\n\nThe `plus-icon` component will display an icon from any icon font that supports ligatures. As a prerequisite, you must include one, such as the [Material icon font](https://google.github.io/material-design-icons/#icon-font-for-the-web) in your project, for instance, via Google Web Fonts.\n\n```html\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" />\n```\n\nConnect `Material icon font` to the `plus-icon` component.\n\n```css\nplus-icon {\n  font-family: 'Material Icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n### Font Awesome\n\n[Font Awesome](https://fontawesome.com/icons) can be used with the Icon component as follow:\n\n```html\n<plus-icon class=\"fa fa-home\"></plus-icon>\n```\n\n### IcoMoon\n\nTODO\n\nConnect `Custom icon font` to the `plus-icon` component.\n\n```css\n@font-face {\n  font-family: 'your icons';\n  src: url('path/icons.eot');\n  src: url('path/icons.eot') format('embedded-opentype'),\n       url('path/icons.ttf') format('truetype'),\n       url('path/icons.woff') format('woff'),\n       url('path/icons.svg') format('svg');\n  font-weight: normal;\n  font-style: normal;\n  font-display: block;\n}\n\nplus-icon {\n  font-family: 'your icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n# Accessibility\n\nIcons can convey all sorts of meaningful information, so it's important that they reach the largest amount of people possible. There are two use cases you'll want to consider:\n\n- **Decorative Icons** are only being used for visual or branding reinforcement. If they were removed from the page, users would still understand and be able to use your page.\n- **Semantic Icons** are ones that you're using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.\n\n### Decorative Icons\n\nIf your icons are purely decorative, you'll need to manually add an aria-hidden attribute to each of your icons so they're accessible.\n\n```html\n<plus-icon class=\"fa fa-home\" aria-hidden=\"true\"></plus-icon>\n```\n\n> Using property shorthand You might be tempted to use <i aria-hidden></i> and leave the =\"true\" part out. Don't, it's important for screen readers to have a value that follows the spec.\n\n### Semantic Icons\n\nIf your icons have semantic meaning, you'll need to manually add a few things so that your icon is appropriately accessible:\n\n- `aria-hidden=\"true\"` attribute\n- Provide a text alternative inside a `<span>` (or similar) element. Also include appropriate CSS to visually hide the element while keeping it accessible to assisitive technologies.\n- title attribute on the icon to provide a tooltip for sighted mouse users.\n\n```html\n<plus-icon aria-hidden=\"true\" class=\"fa fa-home\" title=\"Time to destination by car\"></plus-icon>\n<span class=\"sr-only\">Time to destination by car:</span>\n<span>4 minutes</span>\n```\n\nIn the case of focusable interactive elements, there are various options to include an alternative text or label to the element, without the need for any visually hidden `<span>` or similar. For instance, simply adding the aria-label attribute with a text description to the interactive element itself will be sufficient to provide an accessible alternative name for the element. If you need to provide a visual tooltip on mouseover/focus, we recommend additionally using the title attribute or a custom tooltip solution.\n\n```html\n<a href=\"path/to/shopping/cart\" aria-label=\"View 3 items in your shopping cart\">\n  <plus-icon aria-hidden=\"true\" class=\"fa fa-home\"></plus-icon>\n</a>\n```\n\n## Reference\n\n[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Icon\n\nSymbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).\n\n<Playground />\n\n<Usage />\n\n## Libraries\n\nTODO\n\n### Material Design\n\nThe `plus-icon` component will display an icon from any icon font that supports ligatures. As a prerequisite, you must include one, such as the [Material icon font](https://google.github.io/material-design-icons/#icon-font-for-the-web) in your project, for instance, via Google Web Fonts.\n\n```html\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" />\n```\n\nConnect `Material icon font` to the `plus-icon` component.\n\n```css\nplus-icon {\n  font-family: 'Material Icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n### Font Awesome\n\n[Font Awesome](https://fontawesome.com/icons) can be used with the Icon component as follow:\n\n```html\n<plus-icon class=\"fa fa-home\"></plus-icon>\n```\n\n### IcoMoon\n\nTODO\n\nConnect `Custom icon font` to the `plus-icon` component.\n\n```css\n@font-face {\n  font-family: 'your icons';\n  src: url('path/icons.eot');\n  src: url('path/icons.eot') format('embedded-opentype'),\n       url('path/icons.ttf') format('truetype'),\n       url('path/icons.woff') format('woff'),\n       url('path/icons.svg') format('svg');\n  font-weight: normal;\n  font-style: normal;\n  font-display: block;\n}\n\nplus-icon {\n  font-family: 'your icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n# Accessibility\n\nIcons can convey all sorts of meaningful information, so it's important that they reach the largest amount of people possible. There are two use cases you'll want to consider:\n\n- **Decorative Icons** are only being used for visual or branding reinforcement. If they were removed from the page, users would still understand and be able to use your page.\n- **Semantic Icons** are ones that you're using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.\n\n### Decorative Icons\n\nIf your icons are purely decorative, you'll need to manually add an aria-hidden attribute to each of your icons so they're accessible.\n\n```html\n<plus-icon class=\"fa fa-home\" aria-hidden=\"true\"></plus-icon>\n```\n\n> Using property shorthand You might be tempted to use <i aria-hidden></i> and leave the =\"true\" part out. Don't, it's important for screen readers to have a value that follows the spec.\n\n### Semantic Icons\n\nIf your icons have semantic meaning, you'll need to manually add a few things so that your icon is appropriately accessible:\n\n- `aria-hidden=\"true\"` attribute\n- Provide a text alternative inside a `<span>` (or similar) element. Also include appropriate CSS to visually hide the element while keeping it accessible to assisitive technologies.\n- title attribute on the icon to provide a tooltip for sighted mouse users.\n\n```html\n<plus-icon aria-hidden=\"true\" class=\"fa fa-home\" title=\"Time to destination by car\"></plus-icon>\n<span class=\"sr-only\">Time to destination by car:</span>\n<span>4 minutes</span>\n```\n\nIn the case of focusable interactive elements, there are various options to include an alternative text or label to the element, without the need for any visually hidden `<span>` or similar. For instance, simply adding the aria-label attribute with a text description to the interactive element itself will be sufficient to provide an accessible alternative name for the element. If you need to provide a visual tooltip on mouseover/focus, we recommend additionally using the title attribute or a custom tooltip solution.\n\n```html\n<a href=\"path/to/shopping/cart\" aria-label=\"View 3 items in your shopping cart\">\n  <plus-icon aria-hidden=\"true\" class=\"fa fa-home\"></plus-icon>\n</a>\n```\n\n## Reference\n\n[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -5594,7 +5671,7 @@
           "type": "number | number[]"
         }
       ],
-      "readmeContent": "# Intersection\n\nThe [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nObserves the user's viewport to detect the visibility of the Card.\n<Example value=\"default\" />\n\n### Lazy Image\n\nLoads the image after appearing in the user's viewport.\n<Example value=\"lazy-image\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Intersection\n\nThe [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nObserves the user's viewport to detect the visibility of the Card.\n<Example value=\"default\" />\n\n### Lazy Image\n\nLoads the image after appearing in the user's viewport.\n<Example value=\"lazy-image\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -5679,7 +5756,7 @@
           "typeReference": "@app/services"
         }
       ],
-      "readmeContent": "# Portal\n\nWith a portal, you can render a component in a different place in the DOM tree,\neven if this place is not in your app's scope. Portals are very handy when working\nwith modals, notifications, popups or other elements that are sensitive to where\nthey're placed in the DOM tree.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Portal\n\nWith a portal, you can render a component in a different place in the DOM tree,\neven if this place is not in your app's scope. Portals are very handy when working\nwith modals, notifications, popups or other elements that are sensitive to where\nthey're placed in the DOM tree.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -5779,7 +5856,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Scroll Detector\n\nDetects scroll event from an element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={false}\n    events={true}\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Scroll Detector\n\nDetects scroll event from an element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -5857,7 +5934,7 @@
           "typeReference": "./scroll-indicator.types"
         }
       ],
-      "readmeContent": "# Scroll Indicator\n\nScroll Indicator is a responsive reading progress bar that increases with the scroll of the container.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Scroll Indicator\n\nScroll Indicator is a responsive reading progress bar that increases with the scroll of the container.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [
         {
@@ -6436,7 +6513,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Signature\n\nAllows user to draw smooth signatures.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Dimensions\n\n<Example value=\"dimensions\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Width\n\n<Example value=\"width\" />\n\n### Distance\n\n<Example value=\"distance\" />\n\n### Clear\n\n<Example value=\"clear\" />\n\n### History\n\n<Example value=\"history\" />\n\n### Resizable\n\n<Example value=\"resizable\" />\n\n### Clear On Resize\n\n<Example value=\"clear-on-resize\" />\n\n### Save\n\n<Example value=\"save\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts={true}\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard={false}\n    methods={true}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Signature\n\nAllows user to draw smooth signatures.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Dimensions\n\n<Example value=\"dimensions\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Width\n\n<Example value=\"width\" />\n\n### Distance\n\n<Example value=\"distance\" />\n\n### Clear\n\n<Example value=\"clear\" />\n\n### History\n\n<Example value=\"history\" />\n\n### Resizable\n\n<Example value=\"resizable\" />\n\n### Clear On Resize\n\n<Example value=\"clear-on-resize\" />\n\n### Save\n\n<Example value=\"save\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -6499,7 +6576,7 @@
           "typeReference": "./spinner.types"
         }
       ],
-      "readmeContent": "# Spinner\n\nAn indicator of progress and activity.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n<Checklist \n    accessibility={true}\n    bidirectionality=\"N/A\"\n    cssParts={false}\n    cssVariables={true}\n    documentation={true}\n    examples={true}\n    events=\"N/A\"\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots=\"N/A\"\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Spinner\n\nAn indicator of progress and activity.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -6590,7 +6667,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Sticky\n\nComponent content is positioned based on the user's scroll position.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Top\n\n<Example value=\"top\" />\n\n### Contacts\n\n<Example value=\"contacts\" />\n\n### State Attribute\n\n<Example value=\"state-attribute\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Sidebar\n\n<Example value=\"sidebar\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality=\"N/A\"\n    cssParts=\"N/A\"\n    cssVariables=\"N/A\"\n    documentation={true}\n    examples={true}\n    events={true}\n    keyboard=\"N/A\"\n    methods=\"N/A\"\n    playground={false}\n    properties={true}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Sticky\n\nComponent content is positioned based on the user's scroll position.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Top\n\n<Example value=\"top\" />\n\n### Contacts\n\n<Example value=\"contacts\" />\n\n### State Attribute\n\n<Example value=\"state-attribute\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Sidebar\n\n<Example value=\"sidebar\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -6694,7 +6771,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Switch\n\nToggles the state of a single item on or off.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Checked\n\n<Example value=\"checked\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Event\n\n<Example value=\"event\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### 3D\n\n<Example value=\"3d\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={true}\n    cssVariables={false}\n    documentation={true}\n    examples={false}\n    events={true}\n    keyboard={true}\n    methods=\"N/A\"\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={true}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Switch\n\nToggles the state of a single item on or off.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Checked\n\n<Example value=\"checked\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Event\n\n<Example value=\"event\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### 3D\n\n<Example value=\"3d\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [],
@@ -6777,7 +6854,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Tabs\n\nOrganizes content across different screens.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Grow\n\n<Example value=\"grow\" />\n\n### Justify\n\n<Example value=\"justify\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Separate\n\n<Example value=\"separate\" />\n\n### Below\n\n<Example value=\"below\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<Checklist \n    accessibility={false}\n    bidirectionality={false}\n    cssParts={false}\n    cssVariables={false}\n    documentation={false}\n    examples={false}\n    events={false}\n    keyboard={false}\n    methods={false}\n    playground={false}\n    properties={false}\n    skeleton={false}\n    slots={false}\n/>\n\n<LastModified />\n",
+      "readmeContent": "# Tabs\n\nOrganizes content across different screens.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Grow\n\n<Example value=\"grow\" />\n\n### Justify\n\n<Example value=\"justify\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Separate\n\n<Example value=\"separate\" />\n\n### Below\n\n<Example value=\"below\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",

@@ -1,6 +1,17 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { Animation2 } from '@app/services';
+/**
+ * @part body          - The body element.
+ * @part content       - The content element.
+ * @part summary       - The summary element.
+ * @part svg           - The svg element.
+ * @slot default       - The default slot.
+ * @slot icon          - The icon slot.
+ * @slot icon-expand   - The expand icon slot.
+ * @slot icon-collapse - The collapse icon slot.
+ * @slot summary       - The summary slot.
+ */
 export declare class Accordion {
     static TAG: string;
     static STYLES: string;

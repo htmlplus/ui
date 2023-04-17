@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.8-next-04171320",
+  "version": "0.8.8-next-04171745",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -15,6 +15,7 @@
       "elements": [
         {
           "name": "plus-accordion",
+          "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
           "doc-url": "https://www.htmlplus.io/javascript/component/accordion",
           "deprecated": false,
           "experimental": false,
@@ -110,7 +111,28 @@
               }
             }
           ],
-          "slots": []
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            },
+            {
+              "name": "icon",
+              "description": "The icon slot."
+            },
+            {
+              "name": "icon",
+              "description": "expand   - The expand icon slot."
+            },
+            {
+              "name": "icon",
+              "description": "collapse - The collapse icon slot."
+            },
+            {
+              "name": "summary",
+              "description": "The summary slot."
+            }
+          ]
         },
         {
           "name": "plus-animation",
