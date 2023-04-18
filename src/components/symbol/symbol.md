@@ -1,4 +1,4 @@
-# Icon
+# Symbol
 
 TODO
 

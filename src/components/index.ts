@@ -34,6 +34,7 @@ export * from './signature/signature';
 export * from './spinner/spinner';
 export * from './sticky/sticky';
 export * from './switch/switch';
+export * from './symbol/symbol';
 export * from './tabs/tabs';
 export * from './tabs-bar/tabs-bar';
 export * from './tabs-panel/tabs-panel';

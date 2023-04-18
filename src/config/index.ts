@@ -1,11 +1,11 @@
 export { getConfig, setConfig } from '@htmlplus/element';
 
-let p = '';
+let basePath = '';
 
-export const setPath = (path: string) => {
-  p = path;
+export const setBasePath = (path: string) => {
+  basePath = path;
 };
 
-export const getPath = () => {
-  return p;
+export const getBasePath = () => {
+  return basePath;
 };

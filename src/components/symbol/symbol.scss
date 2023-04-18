@@ -1,4 +1,4 @@
-@import 'icon2.variables';
+@import 'symbol.variables';
 
 :host {
   display: inline-flex;
@@ -14,19 +14,19 @@
   filter: none;
 }
 
-@each $key, $value in $icon-flip {
+@each $key, $value in $symbol-flip {
   :host([flip='#{$key}']) {
     transform: $value;
   }
 }
 
-@each $key, $value in $icon-rotate {
+@each $key, $value in $symbol-rotate {
   :host([rotate='#{$key}']) {
     transform: $value;
   }
 }
 
-@each $key, $value in $icon-size {
+@each $key, $value in $symbol-size {
   :host([size='#{$key}']) {
     height: $value;
     width: $value;
