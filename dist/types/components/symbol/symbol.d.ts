@@ -1,8 +1,8 @@
-import { AvatarFlip, AvatarName, AvatarRotate, AvatarSize } from './icon2.types.js';
+import { SymbolFlip, SymbolName, SymbolRotate, SymbolSize } from './symbol.types';
 /**
  * @part svg - The svg element.
  */
-export declare class Icon2 {
+export declare class Symbol {
     static TAG: string;
     static STYLES: string;
     /**
@@ -12,25 +12,27 @@ export declare class Icon2 {
     /**
      * TODO
      */
-    flip?: AvatarFlip;
+    flip?: SymbolFlip;
     /**
      * TODO
      */
-    name?: AvatarName;
+    name?: SymbolName;
     /**
      * TODO
      */
-    rotate?: AvatarRotate;
+    rotate?: SymbolRotate;
     /**
      * TODO
      */
-    size?: AvatarSize;
+    size?: SymbolSize;
     get attributes(): {
         style: string;
     };
+    get nodes(): any;
+    update(): void;
     updatedCallback(): void;
 }
-export interface Icon2JSX {
+export interface SymbolJSX {
     /**
      * TODO
      */
@@ -38,22 +40,22 @@ export interface Icon2JSX {
     /**
      * TODO
      */
-    flip?: AvatarFlip;
+    flip?: SymbolFlip;
     /**
      * TODO
      */
-    name?: AvatarName;
+    name?: SymbolName;
     /**
      * TODO
      */
-    rotate?: AvatarRotate;
+    rotate?: SymbolRotate;
     /**
      * TODO
      */
-    size?: AvatarSize;
+    size?: SymbolSize;
 }
 declare global {
-    interface HTMLPlusIcon2Element extends HTMLElement {
+    interface HTMLPlusSymbolElement extends HTMLElement {
         /**
          * TODO
          */
@@ -61,33 +63,33 @@ declare global {
         /**
          * TODO
          */
-        flip?: AvatarFlip;
+        flip?: SymbolFlip;
         /**
          * TODO
          */
-        name?: AvatarName;
+        name?: SymbolName;
         /**
          * TODO
          */
-        rotate?: AvatarRotate;
+        rotate?: SymbolRotate;
         /**
          * TODO
          */
-        size?: AvatarSize;
+        size?: SymbolSize;
     }
-    var HTMLPlusIcon2Element: {
-        prototype: HTMLPlusIcon2Element;
-        new (): HTMLPlusIcon2Element;
+    var HTMLPlusSymbolElement: {
+        prototype: HTMLPlusSymbolElement;
+        new (): HTMLPlusSymbolElement;
     };
     interface HTMLElementTagNameMap {
-        "plus-icon2": HTMLPlusIcon2Element;
+        "plus-symbol": HTMLPlusSymbolElement;
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-icon2": Icon2JSX & {
+            "plus-symbol": SymbolJSX & {
                 [key: string]: any;
             };
         }
     }
 }
-export type Icon2Element = globalThis.HTMLPlusIcon2Element;
+export type SymbolElement = globalThis.HTMLPlusSymbolElement;

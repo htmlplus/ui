@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.8-next-04182033",
+  "version": "0.8.8-next-04182335",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -4030,96 +4030,6 @@
           ]
         },
         {
-          "name": "plus-icon2",
-          "description": "TODO",
-          "doc-url": "https://www.htmlplus.io/javascript/component/icon2",
-          "deprecated": false,
-          "experimental": false,
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "color",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "flip",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "name",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "rotate",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "size",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              }
-            ]
-          },
-          "attributes": [
-            {
-              "name": "color",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "flip",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "AvatarFlip"
-              }
-            },
-            {
-              "name": "name",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "AvatarName"
-              }
-            },
-            {
-              "name": "rotate",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "AvatarRotate"
-              }
-            },
-            {
-              "name": "size",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "AvatarSize"
-              }
-            }
-          ],
-          "slots": []
-        },
-        {
           "name": "plus-intersection",
           "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
           "doc-url": "https://www.htmlplus.io/javascript/component/intersection",
@@ -4885,6 +4795,96 @@
               "experimental": false,
               "value": {
                 "type": "boolean"
+              }
+            }
+          ],
+          "slots": []
+        },
+        {
+          "name": "plus-symbol",
+          "description": "TODO",
+          "doc-url": "https://www.htmlplus.io/javascript/component/symbol",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "color",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "flip",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "name",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "rotate",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "size",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "color",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "flip",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "'both' | 'horizontal' | 'vertical'"
+              }
+            },
+            {
+              "name": "name",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "rotate",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "90 | 180 | 270"
+              }
+            },
+            {
+              "name": "size",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "typeof SYMBOL_SIZES[number] | (string & {})"
               }
             }
           ],

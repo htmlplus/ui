@@ -1,11 +1,11 @@
 export { g as getConfig, s as setConfig } from './core/index.js';
 
-let p = '';
-const setPath = (path) => {
-    p = path;
+let basePath = '';
+const setBasePath = (path) => {
+    basePath = path;
 };
-const getPath = () => {
-    return p;
+const getBasePath = () => {
+    return basePath;
 };
 
-export { getPath, setPath };
+export { getBasePath, setBasePath };

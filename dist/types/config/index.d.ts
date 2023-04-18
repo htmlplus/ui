@@ -1,3 +1,3 @@
 export { getConfig, setConfig } from '@htmlplus/element';
-export declare const setPath: (path: string) => void;
-export declare const getPath: () => string;
+export declare const setBasePath: (path: string) => void;
+export declare const getBasePath: () => string;

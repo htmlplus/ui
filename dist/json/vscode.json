@@ -3616,43 +3616,6 @@
       ]
     },
     {
-      "name": "plus-icon2",
-      "description": "TODO",
-      "attributes": [
-        {
-          "name": "color",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "flip",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "rotate",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "size",
-          "description": "TODO",
-          "values": []
-        }
-      ],
-      "references": [
-        {
-          "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/icon2"
-        }
-      ]
-    },
-    {
       "name": "plus-intersection",
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "attributes": [
@@ -4020,6 +3983,63 @@
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/component/switch"
+        }
+      ]
+    },
+    {
+      "name": "plus-symbol",
+      "description": "TODO",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "flip",
+          "description": "TODO",
+          "values": [
+            {
+              "name": "both"
+            },
+            {
+              "name": "horizontal"
+            },
+            {
+              "name": "vertical"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "rotate",
+          "description": "TODO",
+          "values": [
+            {
+              "name": "90"
+            },
+            {
+              "name": "180"
+            },
+            {
+              "name": "270"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "TODO",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/symbol"
         }
       ]
     },
