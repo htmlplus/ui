@@ -1,5 +1,7 @@
 import { Attributes, Element, Property, getConfig, host, styles, toUnit } from '@htmlplus/element';
 
+import { getPath } from '@app/config/index.js';
+
 import { ICON_SIZES } from './icon2.constants.js';
 import { AvatarFlip, AvatarName, AvatarRotate, AvatarSize } from './icon2.types.js';
 
@@ -9,31 +11,31 @@ import { AvatarFlip, AvatarName, AvatarRotate, AvatarSize } from './icon2.types.
 @Element()
 export class Icon2 {
   /**
-   * Adjusts the color of the icons.(All main web color formats are accepted)
+   * TODO
    */
   @Property({ reflect: true })
   color?: string;
 
   /**
-   * Flips the icon.
+   * TODO
    */
   @Property({ reflect: true })
   flip?: AvatarFlip;
 
   /**
-   * Specifies the name of the icon.
+   * TODO
    */
   @Property()
   name?: AvatarName;
 
   /**
-   * Rotates the icon.
+   * TODO
    */
   @Property({ reflect: true })
   rotate?: AvatarRotate;
 
   /**
-   * Specifies the size of the icon.
+   * TODO
    */
   @Property({ reflect: true })
   size?: AvatarSize;
@@ -51,28 +53,36 @@ export class Icon2 {
   }
 
   updatedCallback() {
-    host(this).shadowRoot.querySelector('svg')?.remove();
+    import(`${getPath()}${this.name}.js`)
+      .then((result) => {
+        console.log('RESOLVE', result);
 
-    const div = document.createElement('div');
+        host(this).shadowRoot.querySelector('svg')?.remove();
 
-    div.innerHTML = `
-      <svg
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 24 24"
-        part="svg"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        ${getConfig('asset', 'icon', this.name)
-          .map(
-            ([tag, attributes]) =>
-              `<${tag} ${Object.keys(attributes)
-                .map((key) => `${key}="${attributes[key]}"`)
-                .join(' ')}/>`
-          )
-          .join('')}
-      </svg>
-    `;
+        const div = document.createElement('div');
 
-    host(this).shadowRoot.appendChild(div.firstElementChild);
+        div.innerHTML = `
+          <svg
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24"
+            part="svg"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            ${getConfig('asset', 'icon', this.name)
+              .map(
+                ([tag, attributes]) =>
+                  `<${tag} ${Object.keys(attributes)
+                    .map((key) => `${key}="${attributes[key]}"`)
+                    .join(' ')}/>`
+              )
+              .join('')}
+          </svg>
+        `;
+
+        host(this).shadowRoot.appendChild(div.firstElementChild);
+      })
+      .catch((error) => {
+        console.log('ERROR', error);
+      });
   }
 }

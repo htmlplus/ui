@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.8-next-04171750",
+  "version": "0.8.8-next-04182033",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -4040,31 +4040,31 @@
             "properties": [
               {
                 "name": "color",
-                "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
+                "description": "TODO",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "flip",
-                "description": "Flips the icon.",
+                "description": "TODO",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "name",
-                "description": "Specifies the name of the icon.",
+                "description": "TODO",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "rotate",
-                "description": "Rotates the icon.",
+                "description": "TODO",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "size",
-                "description": "Specifies the size of the icon.",
+                "description": "TODO",
                 "deprecated": false,
                 "experimental": false
               }
@@ -4073,7 +4073,7 @@
           "attributes": [
             {
               "name": "color",
-              "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
+              "description": "TODO",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4082,7 +4082,7 @@
             },
             {
               "name": "flip",
-              "description": "Flips the icon.",
+              "description": "TODO",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4091,7 +4091,7 @@
             },
             {
               "name": "name",
-              "description": "Specifies the name of the icon.",
+              "description": "TODO",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4100,7 +4100,7 @@
             },
             {
               "name": "rotate",
-              "description": "Rotates the icon.",
+              "description": "TODO",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4109,7 +4109,7 @@
             },
             {
               "name": "size",
-              "description": "Specifies the size of the icon.",
+              "description": "TODO",
               "deprecated": false,
               "experimental": false,
               "value": {

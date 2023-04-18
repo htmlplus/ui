@@ -6,23 +6,23 @@ export declare class Icon2 {
     static TAG: string;
     static STYLES: string;
     /**
-     * Adjusts the color of the icons.(All main web color formats are accepted)
+     * TODO
      */
     color?: string;
     /**
-     * Flips the icon.
+     * TODO
      */
     flip?: AvatarFlip;
     /**
-     * Specifies the name of the icon.
+     * TODO
      */
     name?: AvatarName;
     /**
-     * Rotates the icon.
+     * TODO
      */
     rotate?: AvatarRotate;
     /**
-     * Specifies the size of the icon.
+     * TODO
      */
     size?: AvatarSize;
     get attributes(): {
@@ -32,46 +32,46 @@ export declare class Icon2 {
 }
 export interface Icon2JSX {
     /**
-     * Adjusts the color of the icons.(All main web color formats are accepted)
+     * TODO
      */
     color?: string;
     /**
-     * Flips the icon.
+     * TODO
      */
     flip?: AvatarFlip;
     /**
-     * Specifies the name of the icon.
+     * TODO
      */
     name?: AvatarName;
     /**
-     * Rotates the icon.
+     * TODO
      */
     rotate?: AvatarRotate;
     /**
-     * Specifies the size of the icon.
+     * TODO
      */
     size?: AvatarSize;
 }
 declare global {
     interface HTMLPlusIcon2Element extends HTMLElement {
         /**
-         * Adjusts the color of the icons.(All main web color formats are accepted)
+         * TODO
          */
         color?: string;
         /**
-         * Flips the icon.
+         * TODO
          */
         flip?: AvatarFlip;
         /**
-         * Specifies the name of the icon.
+         * TODO
          */
         name?: AvatarName;
         /**
-         * Rotates the icon.
+         * TODO
          */
         rotate?: AvatarRotate;
         /**
-         * Specifies the size of the icon.
+         * TODO
          */
         size?: AvatarSize;
     }

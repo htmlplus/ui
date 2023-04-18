@@ -3621,27 +3621,27 @@
       "attributes": [
         {
           "name": "color",
-          "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
+          "description": "TODO",
           "values": []
         },
         {
           "name": "flip",
-          "description": "Flips the icon.",
+          "description": "TODO",
           "values": []
         },
         {
           "name": "name",
-          "description": "Specifies the name of the icon.",
+          "description": "TODO",
           "values": []
         },
         {
           "name": "rotate",
-          "description": "Rotates the icon.",
+          "description": "TODO",
           "values": []
         },
         {
           "name": "size",
-          "description": "Specifies the size of the icon.",
+          "description": "TODO",
           "values": []
         }
       ],

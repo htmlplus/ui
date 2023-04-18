@@ -67,6 +67,7 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
+      "lastModified": "2023-04-17T13:36:13.154Z",
       "methods": [
         {
           "async": true,
@@ -286,6 +287,7 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "experimental": false,
       "key": "animation",
+      "lastModified": "2023-04-17T11:53:59.799Z",
       "methods": [
         {
           "async": false,
@@ -721,6 +723,7 @@
       "description": "Sets a preferred aspect ratio only for the first child inside the component.",
       "experimental": false,
       "key": "aspect-ratio",
+      "lastModified": "2023-04-17T11:37:42.060Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -803,6 +806,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
+      "lastModified": "2023-04-17T11:37:47.069Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -886,6 +890,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
+      "lastModified": "2023-04-13T17:24:55.878Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -960,6 +965,7 @@
       "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
+      "lastModified": "2023-04-17T11:37:51.087Z",
       "methods": [],
       "parts": [
         {
@@ -1157,6 +1163,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
+      "lastModified": "2023-04-17T11:38:05.173Z",
       "methods": [
         {
           "async": false,
@@ -1336,6 +1343,7 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
+      "lastModified": "2023-04-17T11:38:12.356Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1456,6 +1464,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "card-body",
+      "lastModified": "2023-02-03T21:24:20.656Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -1484,6 +1493,7 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
+      "lastModified": "2023-04-17T11:38:19.931Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1547,6 +1557,7 @@
       "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
+      "lastModified": "2023-04-17T11:38:24.346Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1644,6 +1655,7 @@
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
+      "lastModified": "2023-04-17T11:38:30.861Z",
       "methods": [
         {
           "async": false,
@@ -2003,6 +2015,7 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
+      "lastModified": "2023-04-17T11:38:35.662Z",
       "methods": [
         {
           "async": false,
@@ -2724,6 +2737,7 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
+      "lastModified": "2023-04-17T11:38:39.579Z",
       "methods": [],
       "parts": [
         {
@@ -3052,6 +3066,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
+      "lastModified": "2023-02-03T21:24:21.404Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3093,6 +3108,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
+      "lastModified": "2023-02-03T21:24:21.452Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3134,6 +3150,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-footer",
+      "lastModified": "2023-02-03T21:24:21.491Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3157,6 +3174,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-header",
+      "lastModified": "2023-02-03T21:24:21.541Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3180,6 +3198,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-toggler",
+      "lastModified": "2023-02-03T21:24:21.578Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3230,6 +3249,7 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
+      "lastModified": "2023-04-17T11:38:43.447Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3426,6 +3446,7 @@
       "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
+      "lastModified": "2023-04-17T11:38:47.111Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3672,6 +3693,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
+      "lastModified": "2023-02-03T21:24:22.144Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3722,6 +3744,7 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
+      "lastModified": "2023-04-17T11:38:51.043Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3821,6 +3844,7 @@
       "description": "A component that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
+      "lastModified": "2023-04-17T11:38:56.971Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3906,6 +3930,7 @@
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
+      "lastModified": "2023-04-17T11:39:00.374Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4070,6 +4095,7 @@
       "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
+      "lastModified": "2023-04-17T11:39:03.635Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4702,6 +4728,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid-item",
+      "lastModified": "2023-02-26T20:23:39.869Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5450,6 +5477,7 @@
       "description": "Symbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).",
       "experimental": false,
       "key": "icon",
+      "lastModified": "2023-04-17T19:48:04.175Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5565,6 +5593,7 @@
       "description": "TODO",
       "experimental": false,
       "key": "icon2",
+      "lastModified": "2023-04-18T17:02:40.573Z",
       "methods": [],
       "parts": [
         {
@@ -5576,7 +5605,7 @@
         {
           "attribute": "color",
           "deprecated": false,
-          "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
+          "description": "TODO",
           "experimental": false,
           "model": false,
           "name": "color",
@@ -5585,7 +5614,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Adjusts the color of the icons.(All main web color formats are accepted)"
+              "value": "TODO"
             }
           ],
           "type": "string"
@@ -5593,7 +5622,7 @@
         {
           "attribute": "flip",
           "deprecated": false,
-          "description": "Flips the icon.",
+          "description": "TODO",
           "experimental": false,
           "model": false,
           "name": "flip",
@@ -5602,7 +5631,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Flips the icon."
+              "value": "TODO"
             }
           ],
           "type": "AvatarFlip",
@@ -5611,7 +5640,7 @@
         {
           "attribute": "name",
           "deprecated": false,
-          "description": "Specifies the name of the icon.",
+          "description": "TODO",
           "experimental": false,
           "model": false,
           "name": "name",
@@ -5620,7 +5649,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies the name of the icon."
+              "value": "TODO"
             }
           ],
           "type": "AvatarName",
@@ -5629,7 +5658,7 @@
         {
           "attribute": "rotate",
           "deprecated": false,
-          "description": "Rotates the icon.",
+          "description": "TODO",
           "experimental": false,
           "model": false,
           "name": "rotate",
@@ -5638,7 +5667,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Rotates the icon."
+              "value": "TODO"
             }
           ],
           "type": "AvatarRotate",
@@ -5647,7 +5676,7 @@
         {
           "attribute": "size",
           "deprecated": false,
-          "description": "Specifies the size of the icon.",
+          "description": "TODO",
           "experimental": false,
           "model": false,
           "name": "size",
@@ -5656,7 +5685,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies the size of the icon."
+              "value": "TODO"
             }
           ],
           "type": "AvatarSize",
@@ -5696,6 +5725,7 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
+      "lastModified": "2023-04-17T11:39:13.537Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5812,6 +5842,7 @@
       "description": "With a portal, you can render a component in a different place in the DOM tree,",
       "experimental": true,
       "key": "portal",
+      "lastModified": "2023-04-17T11:39:25.738Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5914,6 +5945,7 @@
       "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
+      "lastModified": "2023-04-17T11:39:36.917Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6004,6 +6036,7 @@
       "description": "Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.",
       "experimental": false,
       "key": "scroll-indicator",
+      "lastModified": "2023-04-17T11:39:33.206Z",
       "methods": [],
       "parts": [
         {
@@ -6143,6 +6176,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
+      "lastModified": "2023-04-17T11:39:41.351Z",
       "methods": [
         {
           "async": false,
@@ -6649,6 +6683,7 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
+      "lastModified": "2023-04-17T11:39:45.513Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6725,6 +6760,7 @@
       "description": "Component content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
+      "lastModified": "2023-04-17T11:39:49.367Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6844,6 +6880,7 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
+      "lastModified": "2023-04-17T11:39:53.102Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6914,6 +6951,7 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
+      "lastModified": "2023-04-17T11:39:59.930Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6995,6 +7033,7 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
+      "lastModified": "2023-02-03T21:24:23.965Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7076,6 +7115,7 @@
       "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
+      "lastModified": "2023-02-03T21:24:23.998Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7122,6 +7162,7 @@
       "description": "TODO: This component contains panels.",
       "experimental": false,
       "key": "tabs-panels",
+      "lastModified": "2023-02-03T21:24:24.033Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7168,6 +7209,7 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
+      "lastModified": "2023-02-03T21:24:24.069Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7230,6 +7272,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "tooltip",
+      "lastModified": "2023-03-09T22:11:42.253Z",
       "methods": [
         {
           "async": false,
