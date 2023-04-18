@@ -1,0 +1,29 @@
+$icon-flip: (
+  both: scale(-1),
+  horizontal: scaleX(-1),
+  vertical: scaleY(-1)
+);
+
+$icon-rotate: (
+  90: rotate(90deg),
+  180: rotate(180deg),
+  270: rotate(270deg)
+);
+
+$icon-size: (
+  xs: 0.7em,
+  sm: 0.85em,
+  md: 1em,
+  lg: 1.5em,
+  xl: 1.75em,
+  1x: 1em,
+  2x: 2em,
+  3x: 3em,
+  4x: 4em,
+  5x: 5em,
+  6x: 6em,
+  7x: 7em,
+  8x: 8em,
+  9x: 9em,
+  10x: 10em
+);

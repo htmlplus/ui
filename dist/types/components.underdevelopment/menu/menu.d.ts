@@ -56,7 +56,7 @@ export declare class Menu {
     observer?: any;
     get $host(): HTMLElement;
     get getGrowX(): string;
-    get getGrowY(): "top" | "bottom" | "both" | "pointer";
+    get getGrowY(): "top" | "bottom" | "pointer" | "both";
     get reverse(): boolean;
     get style(): {
         top: string;

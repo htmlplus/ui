@@ -1,0 +1,42 @@
+@import 'icon2.variables';
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+}
+
+:host(#{boolean(flip)}),
+:host(#{boolean(rotate)}) {
+  filter: none;
+}
+
+@each $key, $value in $icon-flip {
+  :host([flip='#{$key}']) {
+    transform: $value;
+  }
+}
+
+@each $key, $value in $icon-rotate {
+  :host([rotate='#{$key}']) {
+    transform: $value;
+  }
+}
+
+@each $key, $value in $icon-size {
+  :host([size='#{$key}']) {
+    height: $value;
+    width: $value;
+  }
+}
+
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}

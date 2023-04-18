@@ -3,8 +3,8 @@ import path from 'path';
 
 import nodes from '../node_modules/@tabler/icons/tabler-nodes.json' assert { type: 'json' };
 
-for (const key of Object.keys(nodes).slice(0)) {
-  const directory = path.join('src/components/icon/assets/names');
+for (const key of Object.keys(nodes)) {
+  const directory = path.join('src/components/icon2/assets/names');
 
   if (!fs.existsSync(directory)) fs.mkdirSync(directory, { recursive: true }); 
 

@@ -5560,6 +5560,121 @@
       "title": "Icon"
     },
     {
+      "events": [],
+      "deprecated": false,
+      "description": "TODO",
+      "experimental": false,
+      "key": "icon2",
+      "methods": [],
+      "parts": [
+        {
+          "name": "svg",
+          "description": "The svg element."
+        }
+      ],
+      "properties": [
+        {
+          "attribute": "color",
+          "deprecated": false,
+          "description": "Adjusts the color of the icons.(All main web color formats are accepted)",
+          "experimental": false,
+          "model": false,
+          "name": "color",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Adjusts the color of the icons.(All main web color formats are accepted)"
+            }
+          ],
+          "type": "string"
+        },
+        {
+          "attribute": "flip",
+          "deprecated": false,
+          "description": "Flips the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "flip",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Flips the icon."
+            }
+          ],
+          "type": "AvatarFlip",
+          "typeReference": "./icon2.types.js"
+        },
+        {
+          "attribute": "name",
+          "deprecated": false,
+          "description": "Specifies the name of the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "name",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies the name of the icon."
+            }
+          ],
+          "type": "AvatarName",
+          "typeReference": "./icon2.types.js"
+        },
+        {
+          "attribute": "rotate",
+          "deprecated": false,
+          "description": "Rotates the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "rotate",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Rotates the icon."
+            }
+          ],
+          "type": "AvatarRotate",
+          "typeReference": "./icon2.types.js"
+        },
+        {
+          "attribute": "size",
+          "deprecated": false,
+          "description": "Specifies the size of the icon.",
+          "experimental": false,
+          "model": false,
+          "name": "size",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies the size of the icon."
+            }
+          ],
+          "type": "AvatarSize",
+          "typeReference": "./icon2.types.js"
+        }
+      ],
+      "readmeContent": "# Icon\n\nTODO\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n<LastModified />\n",
+      "slots": [],
+      "styles": [],
+      "tags": [
+        {
+          "key": "part",
+          "value": "svg - The svg element."
+        }
+      ],
+      "title": "Icon2"
+    },
+    {
       "events": [
         {
           "cancelable": false,
