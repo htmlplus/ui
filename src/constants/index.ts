@@ -1,3 +1,4 @@
+export const CONFIG_NAMESPACE = 'PLUS';
 export const GLOBAL_CONFIG_NAME = 'htmlplus';
 export const BREAKPOINTS = {
   xs: 0,

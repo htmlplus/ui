@@ -6,9 +6,10 @@ import {
   Method,
   Property,
   Watch,
-  getConfig,
   host
 } from '@htmlplus/element';
+
+import { getConfig } from '@app/config';
 
 import { ANIMATION_EASINGS } from './animation.constants';
 import {

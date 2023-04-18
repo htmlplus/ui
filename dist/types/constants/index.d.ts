@@ -1,3 +1,4 @@
+export declare const CONFIG_NAMESPACE = "PLUS";
 export declare const GLOBAL_CONFIG_NAME = "htmlplus";
 export declare const BREAKPOINTS: {
     xs: number;

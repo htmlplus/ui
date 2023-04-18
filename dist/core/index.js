@@ -808,25 +808,6 @@ const typeOf = (input) => {
         .toLowerCase();
 };
 
-let defaults = {
-    component: {}
-};
-const getConfig = (...parameters) => {
-    if (typeof window == 'undefined')
-        return;
-    let config = window['HTMLPLUS'];
-    for (const parameter of parameters) {
-        if (!config)
-            break;
-        config = config[parameter];
-    }
-    return config;
-};
-const setConfig = (config, override) => {
-    if (typeof window == 'undefined')
-        return;
-    window['HTMLPLUS'] = merge({}, defaults, override ? {} : window['HTMLPLUS'], config);
-};
 const merge = (target, ...sources) => {
     for (const source of sources) {
         if (!source)
@@ -845,6 +826,26 @@ const merge = (target, ...sources) => {
         }
     }
     return target;
+};
+
+let defaults = {
+    component: {}
+};
+const getConfig = (namespace, ...parameters) => {
+    if (typeof window == 'undefined')
+        return;
+    let config = window[namespace];
+    for (const parameter of parameters) {
+        if (!config)
+            break;
+        config = config[parameter];
+    }
+    return config;
+};
+const setConfig = (namespace, config, override) => {
+    if (typeof window == 'undefined')
+        return;
+    window[namespace] = merge({}, defaults, override ? {} : window[namespace], config);
 };
 
 const defineProperty = Object.defineProperty;
@@ -947,14 +948,18 @@ const getMembers = (target) => {
     return target[STATIC_MEMBERS] || {};
 };
 
-const getStyles = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
-};
-
 const getTag = (target) => {
     var _a;
     return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
+};
+
+const getNamespace = (instance) => {
+    return getTag(instance).split('-')[0].toUpperCase();
+};
+
+const getStyles = (target) => {
+    var _a;
+    return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
 };
 
 const host = (target) => {
@@ -1253,7 +1258,7 @@ function Element() {
             connectedCallback() {
                 const instance = this[API_INSTANCE];
                 // TODO: experimental for global config
-                Object.assign(instance, getConfig('component', getTag(instance), 'property'));
+                Object.assign(instance, getConfig(getNamespace(instance), 'component', getTag(instance), 'property'));
                 const connect = () => {
                     instance[API_CONNECTED] = true;
                     call(instance, LIFECYCLE_CONNECTED);
@@ -1994,6 +1999,16 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
+const CONFIG_NAMESPACE = 'PLUS';
+const BREAKPOINTS = {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1400
+};
+
 const toAxis = (input, rtl) => {
     if (!input)
         return input;
@@ -2002,15 +2017,6 @@ const toAxis = (input, rtl) => {
     if (input.match(/end/))
         input = rtl ? 'left' : 'right';
     return input;
-};
-
-const BREAKPOINTS = {
-    xs: 0,
-    sm: 576,
-    md: 768,
-    lg: 992,
-    xl: 1200,
-    xxl: 1400
 };
 
 function Media(query) {
@@ -2087,4 +2093,4 @@ Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
 // @Override()
 // override?: { [key: string]: any };
 
-export { Animation2 as A, Bind as B, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, Attributes as d, off as e, classes as f, getConfig as g, host as h, isRTL as i, createLink as j, toAxis as k, Animation as l, Scrollbar as m, Portal as n, on as o, Media as p, queryAll as q, request as r, setConfig as s, toUnit as t, uhtml as u, query as v };
+export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, Attributes as d, off as e, classes as f, getConfig as g, host as h, isRTL as i, createLink as j, toAxis as k, Animation as l, Scrollbar as m, Portal as n, on as o, Media as p, queryAll as q, request as r, setConfig as s, toUnit as t, uhtml as u, query as v };

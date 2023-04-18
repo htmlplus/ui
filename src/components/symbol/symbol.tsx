@@ -1,6 +1,6 @@
-import { Attributes, Element, Property, getConfig, host, styles, toUnit } from '@htmlplus/element';
+import { Attributes, Element, Property, host, styles, toUnit } from '@htmlplus/element';
 
-import { getBasePath } from '@app/config';
+import { getBasePath, getConfig } from '@app/config';
 
 import { SYMBOL_SIZES } from './symbol.constants';
 import { SymbolFlip, SymbolName, SymbolRotate, SymbolSize } from './symbol.types';
