@@ -1,9 +1,17 @@
-import { Attributes, Element, Property, host, styles, toUnit } from '@htmlplus/element';
+import { Attributes, Element, Property, State, host, styles, toUnit } from '@htmlplus/element';
 
-import { getBasePath, getConfig } from '@app/config';
+import { getConfig, setConfig } from '@app/config';
 
 import { SYMBOL_SIZES } from './symbol.constants';
-import { SymbolFlip, SymbolName, SymbolRotate, SymbolSize } from './symbol.types';
+import {
+  SymbolFlip,
+  SymbolResolver,
+  SymbolRotate,
+  SymbolSize,
+  SymbolTransformer
+} from './symbol.types';
+
+const parser = new DOMParser();
 
 /**
  * @part svg - The svg element.
@@ -26,7 +34,19 @@ export class Symbol {
    * TODO
    */
   @Property()
-  name?: SymbolName;
+  label?: string;
+
+  /**
+   * TODO
+   */
+  @Property()
+  name?: string;
+
+  /**
+   * TODO
+   */
+  @Property()
+  resolver?: SymbolResolver;
 
   /**
    * TODO
@@ -40,11 +60,23 @@ export class Symbol {
   @Property({ reflect: true })
   size?: SymbolSize;
 
+  /**
+   * TODO
+   */
+  @Property()
+  transformer?: SymbolTransformer;
+
+  @State()
+  svg?: SVGElement;
+
   @Attributes()
   get attributes() {
     const size = SYMBOL_SIZES.includes(this.size as any) ? null : toUnit(this.size);
     return {
-      style: styles({
+      'aria-label': this.label ? this.label : null,
+      'aria-hidden': this.label ? null : 'true',
+      'role': this.label ? 'img' : null,
+      'style': styles({
         color: this.color ? `color: ${this.color}` : null,
         height: size,
         width: size
@@ -52,55 +84,63 @@ export class Symbol {
     };
   }
 
-  get nodes() {
+  get $host() {
+    return host(this);
+  }
+
+  get cache() {
     return getConfig('asset', 'symbol', this.name);
   }
 
-  update() {
-    host(this).shadowRoot.querySelector('svg')?.remove();
+  updatedCallback() {
+    if (this.svg) return;
 
-    const div = document.createElement('div');
+    this.svg = this.cache?.cloneNode(true);
 
-    div.innerHTML = `
-      <svg
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 24 24"
-        part="svg"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        ${this.nodes
-          .map(
-            ([tag, attributes]) =>
-              `<${tag} ${Object.keys(attributes)
-                .map((key) => `${key}="${attributes[key]}"`)
-                .join(' ')}/>`
-          )
-          .join('')}
-      </svg>
-    `;
+    if (this.svg) return;
 
-    host(this).shadowRoot.appendChild(div.firstElementChild);
+    if (!this.resolver) return console.warn('TODO', this.$host);
+
+    this.resolver(this.name)
+      .then((result) => {
+        const div = document.createElement('div');
+
+        div.innerHTML = result;
+
+        const element = div.firstElementChild;
+
+        if (element?.tagName?.toLowerCase() != 'svg') throw new Error();
+
+        const parsed = parser
+          .parseFromString(element.outerHTML, 'text/html')
+          .body.querySelector('svg');
+
+        if (!parsed) throw new Error();
+
+        let svg = document.adoptNode(parsed) as SVGElement;
+
+        svg.part.add('svg');
+
+        svg.setAttribute('xmlns', svg.getAttribute('xmlns') || 'http://www.w3.org/2000/svg');
+
+        svg = this.transformer?.(svg) || svg;
+
+        this.svg = svg.cloneNode(true) as SVGElement;
+
+        setConfig({
+          asset: {
+            symbol: {
+              [this.name]: svg
+            }
+          }
+        });
+      })
+      .catch((error) => {
+        console.warn('TODO', this.$host);
+      });
   }
 
-  updatedCallback() {
-    if (this.nodes) return this.update();
-
-    const file = `${getBasePath()}/${this.name}.js`;
-
-    import(/* @vite-ignore */ file)
-
-      .then(() => {
-        this.update();
-      })
-      .catch(() => {
-        throw new Error(
-          [
-            `Failed to fetch '${file}' file.`,
-            `The "symbol" component load dynamically the dependency files,`,
-            `It seems that the given file name is wrong or the assets path is not set correctly.`,
-            `Refer to the document to set the assets path correctly.`
-          ].join(' ')
-        );
-      });
+  render() {
+    return this.svg || null;
   }
 }

@@ -1,3 +1,0 @@
-import { register } from '../register.js';
-
-register('bookmark-off', [["path",{"d":"M3 3l18 18"}],["path",{"d":"M17 17v3l-5 -3l-5 3v-13m1.178 -2.818c.252 -.113 .53 -.176 .822 -.176h6a2 2 0 0 1 2 2v7"}]]);
