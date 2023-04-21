@@ -1,4 +1,4 @@
-import { SymbolFlip, SymbolName, SymbolRotate, SymbolSize } from './symbol.types';
+import { SymbolFlip, SymbolResolver, SymbolRotate, SymbolSize } from './symbol.types';
 /**
  * @part svg - The svg element.
  */
@@ -16,7 +16,15 @@ export declare class Symbol {
     /**
      * TODO
      */
-    name?: SymbolName;
+    label?: string;
+    /**
+     * TODO
+     */
+    name?: string;
+    /**
+     * TODO
+     */
+    resolver?: SymbolResolver;
     /**
      * TODO
      */
@@ -25,12 +33,19 @@ export declare class Symbol {
      * TODO
      */
     size?: SymbolSize;
+    svg?: SVGElement;
     get attributes(): {
+        'aria-label': string;
+        'aria-hidden': string;
+        role: string;
         style: string;
     };
-    get nodes(): any;
-    update(): void;
-    updatedCallback(): void;
+    get $host(): HTMLElement;
+    connectCallback(): Promise<void>;
+    get cache(): any;
+    set cache(cache: any);
+    updateCallback(): void;
+    render(): SVGElement;
 }
 export interface SymbolJSX {
     /**
@@ -44,7 +59,15 @@ export interface SymbolJSX {
     /**
      * TODO
      */
-    name?: SymbolName;
+    label?: string;
+    /**
+     * TODO
+     */
+    name?: string;
+    /**
+     * TODO
+     */
+    resolver?: SymbolResolver;
     /**
      * TODO
      */
@@ -67,7 +90,15 @@ declare global {
         /**
          * TODO
          */
-        name?: SymbolName;
+        label?: string;
+        /**
+         * TODO
+         */
+        name?: string;
+        /**
+         * TODO
+         */
+        resolver?: SymbolResolver;
         /**
          * TODO
          */

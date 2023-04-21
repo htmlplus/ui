@@ -4011,7 +4011,17 @@
           ]
         },
         {
+          "name": "label",
+          "description": "TODO",
+          "values": []
+        },
+        {
           "name": "name",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "resolver",
           "description": "TODO",
           "values": []
         },

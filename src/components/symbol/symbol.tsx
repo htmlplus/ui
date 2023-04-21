@@ -3,15 +3,33 @@ import { Attributes, Element, Property, State, host, styles, toUnit } from '@htm
 import { getConfig, setConfig } from '@app/config';
 
 import { SYMBOL_SIZES } from './symbol.constants';
-import {
-  SymbolFlip,
-  SymbolResolver,
-  SymbolRotate,
-  SymbolSize,
-  SymbolTransformer
-} from './symbol.types';
+import { SymbolFlip, SymbolResolver, SymbolRotate, SymbolSize } from './symbol.types';
 
-const parser = new DOMParser();
+const parse = (input: SVGElement | string): SVGElement => {
+  if (input instanceof SVGElement) return input;
+
+  const div = document.createElement('div');
+
+  div.innerHTML = input;
+
+  const element = div.firstElementChild;
+
+  if (element?.tagName?.toLowerCase() != 'svg') throw new Error();
+
+  const parsed = new DOMParser()
+    .parseFromString(element.outerHTML, 'text/html')
+    .body.querySelector('svg');
+
+  if (!parsed) throw new Error();
+
+  const svg = document.adoptNode(parsed) as SVGElement;
+
+  svg.part.add('svg');
+
+  svg.setAttribute('xmlns', svg.getAttribute('xmlns') || 'http://www.w3.org/2000/svg');
+
+  return svg;
+};
 
 /**
  * @part svg - The svg element.
@@ -60,12 +78,6 @@ export class Symbol {
   @Property({ reflect: true })
   size?: SymbolSize;
 
-  /**
-   * TODO
-   */
-  @Property()
-  transformer?: SymbolTransformer;
-
   @State()
   svg?: SVGElement;
 
@@ -88,55 +100,42 @@ export class Symbol {
     return host(this);
   }
 
+  async connectCallback() {
+    const defaults = getConfig('component', Symbol['TAG'], 'defaults') ?? true;
+
+    if (!defaults) return;
+
+    await import('./symbols');
+  }
+
   get cache() {
     return getConfig('asset', 'symbol', this.name);
   }
 
-  updatedCallback() {
+  set cache(cache) {
+    setConfig({ asset: { symbol: { [this.name]: cache } } });
+  }
+
+  updateCallback() {
     if (this.svg) return;
+
+    try {
+      this.cache = parse(this.cache);
+    } catch {}
 
     this.svg = this.cache?.cloneNode(true);
 
     if (this.svg) return;
 
-    if (!this.resolver) return console.warn('TODO', this.$host);
+    if (!this.resolver) return console.warn('TODO1', this.$host);
 
-    this.resolver(this.name)
+    this.resolver(this.name, parse)
       .then((result) => {
-        const div = document.createElement('div');
-
-        div.innerHTML = result;
-
-        const element = div.firstElementChild;
-
-        if (element?.tagName?.toLowerCase() != 'svg') throw new Error();
-
-        const parsed = parser
-          .parseFromString(element.outerHTML, 'text/html')
-          .body.querySelector('svg');
-
-        if (!parsed) throw new Error();
-
-        let svg = document.adoptNode(parsed) as SVGElement;
-
-        svg.part.add('svg');
-
-        svg.setAttribute('xmlns', svg.getAttribute('xmlns') || 'http://www.w3.org/2000/svg');
-
-        svg = this.transformer?.(svg) || svg;
-
-        this.svg = svg.cloneNode(true) as SVGElement;
-
-        setConfig({
-          asset: {
-            symbol: {
-              [this.name]: svg
-            }
-          }
-        });
+        this.cache = parse(result);
+        this.svg = this.cache?.cloneNode(true);
       })
       .catch((error) => {
-        console.warn('TODO', this.$host);
+        console.warn('TODO2', this.$host);
       });
   }
 

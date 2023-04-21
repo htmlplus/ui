@@ -4822,7 +4822,19 @@
                 "experimental": false
               },
               {
+                "name": "label",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
                 "name": "name",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "resolver",
                 "description": "TODO",
                 "deprecated": false,
                 "experimental": false
@@ -4861,12 +4873,30 @@
               }
             },
             {
+              "name": "label",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            },
+            {
               "name": "name",
               "description": "TODO",
               "deprecated": false,
               "experimental": false,
               "value": {
                 "type": "string"
+              }
+            },
+            {
+              "name": "resolver",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "(name: string, parser: SymbolParser) => Promise<SVGElement | string>"
               }
             },
             {
