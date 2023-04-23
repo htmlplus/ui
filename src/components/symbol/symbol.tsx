@@ -5,6 +5,8 @@ import { getConfig, setConfig } from '@app/config';
 import { SYMBOL_SIZES } from './symbol.constants';
 import { SymbolFlip, SymbolResolver, SymbolRotate, SymbolSize } from './symbol.types';
 
+let domParser;
+
 const parse = (input: SVGElement | string): SVGElement => {
   if (input instanceof SVGElement) return input;
 
@@ -16,7 +18,9 @@ const parse = (input: SVGElement | string): SVGElement => {
 
   if (element?.tagName?.toLowerCase() != 'svg') throw new Error();
 
-  const parsed = new DOMParser()
+  domParser ||= new DOMParser();
+
+  const parsed = domParser
     .parseFromString(element.outerHTML, 'text/html')
     .body.querySelector('svg');
 
@@ -41,6 +45,12 @@ export class Symbol {
    */
   @Property({ reflect: true })
   color?: string;
+
+  /**
+   * TODO
+   */
+  @Property()
+  defaults?: boolean = true;
 
   /**
    * TODO
@@ -85,11 +95,11 @@ export class Symbol {
   get attributes() {
     const size = SYMBOL_SIZES.includes(this.size as any) ? null : toUnit(this.size);
     return {
-      'aria-label': this.label ? this.label : null,
-      'aria-hidden': this.label ? null : 'true',
+      'aria-label': this.label ?? null,
+      'aria-hidden': `${!this.label}`,
       'role': this.label ? 'img' : null,
       'style': styles({
-        color: this.color ? `color: ${this.color}` : null,
+        color: this.color ?? null,
         height: size,
         width: size
       })
@@ -100,14 +110,6 @@ export class Symbol {
     return host(this);
   }
 
-  async connectCallback() {
-    const defaults = getConfig('component', Symbol['TAG'], 'defaults') ?? true;
-
-    if (!defaults) return;
-
-    await import('./symbols');
-  }
-
   get cache() {
     return getConfig('asset', 'symbol', this.name);
   }
@@ -116,23 +118,40 @@ export class Symbol {
     setConfig({ asset: { symbol: { [this.name]: cache } } });
   }
 
+  async connectCallback() {
+    if (!this.defaults) return;
+    await import('./symbols');
+  }
+
+  update(input: SVGElement | string) {
+    this.svg = (this.cache = parse(input))?.cloneNode(true) as SVGElement;
+  }
+
   updateCallback() {
     if (this.svg) return;
 
-    try {
-      this.cache = parse(this.cache);
-    } catch {}
+    if (this.cache instanceof Promise) {
+      this.cache
+        .then(() => {
+          this.update(this.cache);
+        })
+        .catch((error) => {
+          console.warn('TODO3', this.$host);
+        });
+      return;
+    }
 
-    this.svg = this.cache?.cloneNode(true);
+    try {
+      this.update(this.cache);
+    } catch {}
 
     if (this.svg) return;
 
     if (!this.resolver) return console.warn('TODO1', this.$host);
 
-    this.resolver(this.name, parse)
-      .then((result) => {
-        this.cache = parse(result);
-        this.svg = this.cache?.cloneNode(true);
+    this.cache = this.resolver(this.name, parse)
+      .then((input) => {
+        this.update(input);
       })
       .catch((error) => {
         console.warn('TODO2', this.$host);

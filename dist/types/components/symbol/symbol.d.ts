@@ -12,6 +12,10 @@ export declare class Symbol {
     /**
      * TODO
      */
+    defaults?: boolean;
+    /**
+     * TODO
+     */
     flip?: SymbolFlip;
     /**
      * TODO
@@ -41,9 +45,10 @@ export declare class Symbol {
         style: string;
     };
     get $host(): HTMLElement;
-    connectCallback(): Promise<void>;
     get cache(): any;
     set cache(cache: any);
+    connectCallback(): Promise<void>;
+    update(input: SVGElement | string): void;
     updateCallback(): void;
     render(): SVGElement;
 }
@@ -52,6 +57,10 @@ export interface SymbolJSX {
      * TODO
      */
     color?: string;
+    /**
+     * TODO
+     */
+    defaults?: boolean;
     /**
      * TODO
      */
@@ -83,6 +92,10 @@ declare global {
          * TODO
          */
         color?: string;
+        /**
+         * TODO
+         */
+        defaults?: boolean;
         /**
          * TODO
          */

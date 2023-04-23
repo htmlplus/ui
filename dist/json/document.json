@@ -6819,7 +6819,7 @@
       "description": "TODO",
       "experimental": false,
       "key": "symbol",
-      "lastModified": "2023-04-21T13:01:45.464Z",
+      "lastModified": "2023-04-23T11:37:36.069Z",
       "methods": [],
       "parts": [
         {
@@ -6844,6 +6844,24 @@
             }
           ],
           "type": "string"
+        },
+        {
+          "attribute": "defaults",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "initializer": true,
+          "model": false,
+          "name": "defaults",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "boolean"
         },
         {
           "attribute": "flip",

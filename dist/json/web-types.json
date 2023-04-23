@@ -4816,6 +4816,13 @@
                 "experimental": false
               },
               {
+                "name": "defaults",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": true
+              },
+              {
                 "name": "flip",
                 "description": "TODO",
                 "deprecated": false,
@@ -4862,6 +4869,16 @@
               "value": {
                 "type": "string"
               }
+            },
+            {
+              "name": "defaults",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              },
+              "default": true
             },
             {
               "name": "flip",
