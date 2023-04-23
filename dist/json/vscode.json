@@ -3560,16 +3560,16 @@
     },
     {
       "name": "plus-icon",
-      "description": "Symbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).",
+      "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience.",
       "attributes": [
         {
           "name": "color",
-          "description": "TODOsize (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)inversespininactive/disabledAdjusts the color of the icons.(All main web color formats are accepted)",
+          "description": "Specifies the color.",
           "values": []
         },
         {
           "name": "flip",
-          "description": "Flips the icon.",
+          "description": "Flips in `horizontal`, `vertical` or `both` directions.",
           "values": [
             {
               "name": "both"
@@ -3583,13 +3583,23 @@
           ]
         },
         {
+          "name": "label",
+          "description": "Specifies an alternate description to use for assistive devices.",
+          "values": []
+        },
+        {
           "name": "name",
-          "description": "Specifies the name of the icon.",
+          "description": "Specifies the name.",
+          "values": []
+        },
+        {
+          "name": "resolver",
+          "description": "TODO",
           "values": []
         },
         {
           "name": "rotate",
-          "description": "Rotates the icon.",
+          "description": "Specifies the rotation.",
           "values": [
             {
               "name": "90"
@@ -3604,7 +3614,7 @@
         },
         {
           "name": "size",
-          "description": "Specifies the size of the icon.`xs`, `sm`, `lg` and `1x` to `10x`.",
+          "description": "Specifies the size.",
           "values": []
         }
       ],
@@ -3983,85 +3993,6 @@
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/component/switch"
-        }
-      ]
-    },
-    {
-      "name": "plus-symbol",
-      "description": "TODO",
-      "attributes": [
-        {
-          "name": "color",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "defaults",
-          "description": "TODO",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ]
-        },
-        {
-          "name": "flip",
-          "description": "TODO",
-          "values": [
-            {
-              "name": "both"
-            },
-            {
-              "name": "horizontal"
-            },
-            {
-              "name": "vertical"
-            }
-          ]
-        },
-        {
-          "name": "label",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "name",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "resolver",
-          "description": "TODO",
-          "values": []
-        },
-        {
-          "name": "rotate",
-          "description": "TODO",
-          "values": [
-            {
-              "name": "90"
-            },
-            {
-              "name": "180"
-            },
-            {
-              "name": "270"
-            }
-          ]
-        },
-        {
-          "name": "size",
-          "description": "TODO",
-          "values": []
-        }
-      ],
-      "references": [
-        {
-          "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/symbol"
         }
       ]
     },

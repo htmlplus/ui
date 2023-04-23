@@ -1,48 +1,28 @@
 @import 'icon.variables';
 
 :host {
-  direction: ltr;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  letter-spacing: normal;
-  line-height: 1;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  speak: never;
-  text-align: center;
-  text-decoration: inherit;
-  text-rendering: auto;
-  text-rendering: optimizeLegibility;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
-:host(#{boolean(flip)}),
-:host(#{boolean(rotate)}) {
-  filter: none;
-}
-
-@each $key, $value in $icon-flip {
-  :host([flip='#{$key}']) {
-    transform: $value;
-  }
-}
-
-@each $key, $value in $icon-rotate {
-  :host([rotate='#{$key}']) {
-    transform: $value;
-  }
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
 }
 
 @each $key, $value in $icon-size {
   :host([size='#{$key}']) {
-    font-size: $value;
+    height: $value;
+    width: $value;
   }
+}
+
+svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
 }

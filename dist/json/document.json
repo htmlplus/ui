@@ -5474,17 +5474,22 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "Symbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).",
+      "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-04-17T19:48:04.175Z",
+      "lastModified": "2023-04-23T17:13:49.423Z",
       "methods": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "svg",
+          "description": "The svg element."
+        }
+      ],
       "properties": [
         {
           "attribute": "color",
           "deprecated": false,
-          "description": "TODOsize (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)inversespininactive/disabledAdjusts the color of the icons.(All main web color formats are accepted)",
+          "description": "Specifies the color.",
           "experimental": false,
           "model": false,
           "name": "color",
@@ -5493,7 +5498,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODOsize (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)inversespininactive/disabledAdjusts the color of the icons.(All main web color formats are accepted)"
+              "value": "Specifies the color."
             }
           ],
           "type": "string"
@@ -5501,7 +5506,7 @@
         {
           "attribute": "flip",
           "deprecated": false,
-          "description": "Flips the icon.",
+          "description": "Flips in `horizontal`, `vertical` or `both` directions.",
           "experimental": false,
           "model": false,
           "name": "flip",
@@ -5510,32 +5515,68 @@
           "tags": [
             {
               "key": "",
-              "value": "Flips the icon."
+              "value": "Flips in `horizontal`, `vertical` or `both` directions."
             }
           ],
-          "type": "'both' | 'horizontal' | 'vertical'"
+          "type": "IconFlip",
+          "typeReference": "./icon.types"
         },
         {
-          "attribute": "name",
+          "attribute": "label",
           "deprecated": false,
-          "description": "Specifies the name of the icon.",
+          "description": "Specifies an alternate description to use for assistive devices.",
           "experimental": false,
           "model": false,
-          "name": "name",
-          "reflects": true,
+          "name": "label",
+          "reflects": false,
           "required": false,
           "tags": [
             {
               "key": "",
-              "value": "Specifies the name of the icon."
+              "value": "Specifies an alternate description to use for assistive devices."
             }
           ],
           "type": "string"
         },
         {
+          "attribute": "name",
+          "deprecated": false,
+          "description": "Specifies the name.",
+          "experimental": false,
+          "model": false,
+          "name": "name",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies the name."
+            }
+          ],
+          "type": "string"
+        },
+        {
+          "attribute": "resolver",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "model": false,
+          "name": "resolver",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "IconResolver",
+          "typeReference": "./icon.types"
+        },
+        {
           "attribute": "rotate",
           "deprecated": false,
-          "description": "Rotates the icon.",
+          "description": "Specifies the rotation.",
           "experimental": false,
           "model": false,
           "name": "rotate",
@@ -5544,15 +5585,16 @@
           "tags": [
             {
               "key": "",
-              "value": "Rotates the icon."
+              "value": "Specifies the rotation."
             }
           ],
-          "type": "90 | 180 | 270"
+          "type": "IconRotate",
+          "typeReference": "./icon.types"
         },
         {
           "attribute": "size",
           "deprecated": false,
-          "description": "Specifies the size of the icon.`xs`, `sm`, `lg` and `1x` to `10x`.",
+          "description": "Specifies the size.",
           "experimental": false,
           "model": false,
           "name": "size",
@@ -5561,28 +5603,20 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies the size of the icon.`xs`, `sm`, `lg` and `1x` to `10x`."
+              "value": "Specifies the size."
             }
           ],
-          "type": "string"
+          "type": "IconSize",
+          "typeReference": "./icon.types"
         }
       ],
-      "readmeContent": "# Icon\n\nSymbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).\n\n<Playground />\n\n<Usage />\n\n## Libraries\n\nTODO\n\n### Material Design\n\nThe `plus-icon` component will display an icon from any icon font that supports ligatures. As a prerequisite, you must include one, such as the [Material icon font](https://google.github.io/material-design-icons/#icon-font-for-the-web) in your project, for instance, via Google Web Fonts.\n\n```html\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" />\n```\n\nConnect `Material icon font` to the `plus-icon` component.\n\n```css\nplus-icon {\n  font-family: 'Material Icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n### Font Awesome\n\n[Font Awesome](https://fontawesome.com/icons) can be used with the Icon component as follow:\n\n```html\n<plus-icon class=\"fa fa-home\"></plus-icon>\n```\n\n### IcoMoon\n\nTODO\n\nConnect `Custom icon font` to the `plus-icon` component.\n\n```css\n@font-face {\n  font-family: 'your icons';\n  src: url('path/icons.eot');\n  src: url('path/icons.eot') format('embedded-opentype'),\n       url('path/icons.ttf') format('truetype'),\n       url('path/icons.woff') format('woff'),\n       url('path/icons.svg') format('svg');\n  font-weight: normal;\n  font-style: normal;\n  font-display: block;\n}\n\nplus-icon {\n  font-family: 'your icons';\n}\n```\n\nTo use an icon simply wrap the icon name (font ligature) with the `plus-icon` component.\n\n```html\n<plus-icon>home</plus-icon>\n```\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n# Accessibility\n\nIcons can convey all sorts of meaningful information, so it's important that they reach the largest amount of people possible. There are two use cases you'll want to consider:\n\n- **Decorative Icons** are only being used for visual or branding reinforcement. If they were removed from the page, users would still understand and be able to use your page.\n- **Semantic Icons** are ones that you're using to convey meaning, rather than just pure decoration. This includes icons without text next to them used as interactive controls — buttons, form elements, toggles, etc.\n\n### Decorative Icons\n\nIf your icons are purely decorative, you'll need to manually add an aria-hidden attribute to each of your icons so they're accessible.\n\n```html\n<plus-icon class=\"fa fa-home\" aria-hidden=\"true\"></plus-icon>\n```\n\n> Using property shorthand You might be tempted to use <i aria-hidden></i> and leave the =\"true\" part out. Don't, it's important for screen readers to have a value that follows the spec.\n\n### Semantic Icons\n\nIf your icons have semantic meaning, you'll need to manually add a few things so that your icon is appropriately accessible:\n\n- `aria-hidden=\"true\"` attribute\n- Provide a text alternative inside a `<span>` (or similar) element. Also include appropriate CSS to visually hide the element while keeping it accessible to assisitive technologies.\n- title attribute on the icon to provide a tooltip for sighted mouse users.\n\n```html\n<plus-icon aria-hidden=\"true\" class=\"fa fa-home\" title=\"Time to destination by car\"></plus-icon>\n<span class=\"sr-only\">Time to destination by car:</span>\n<span>4 minutes</span>\n```\n\nIn the case of focusable interactive elements, there are various options to include an alternative text or label to the element, without the need for any visually hidden `<span>` or similar. For instance, simply adding the aria-label attribute with a text description to the interactive element itself will be sufficient to provide an accessible alternative name for the element. If you need to provide a visual tooltip on mouseover/focus, we recommend additionally using the title attribute or a custom tooltip solution.\n\n```html\n<a href=\"path/to/shopping/cart\" aria-label=\"View 3 items in your shopping cart\">\n  <plus-icon aria-hidden=\"true\" class=\"fa fa-home\"></plus-icon>\n</a>\n```\n\n## Reference\n\n[https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility](https://fontawesome.com/v5.15/how-to-use/on-the-web/other-topics/accessibility)\n\n<LastModified />\n",
-      "slots": [
-        {
-          "name": "default",
-          "description": "The default slot."
-        }
-      ],
+      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\n<Example value=\"name\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Custom\n\n<Example value=\"custom\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Override Size\n\n<Example value=\"override-size\" />\n\n### defaults\n\n<Example value=\"defaults\" />\n\n### Resolver\n\n<Example value=\"resolver\" />\n\n### Boxicons\n\nFor more information click [here](https://boxicons.com).\n\n<Example value=\"boxicons\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example value=\"font-awesome\" />\n\n### Heroicons\n\nFor more information click [here](https://heroicons.com).\n\n<Example value=\"heroicons\" />\n\n### Iconoir\n\nFor more information click [here](https://iconoir.com).\n\n<Example value=\"iconoir\" />\n\n### Ionicons\n\nFor more information click [here](https://ionicons.com).\n\n<Example value=\"ionicons\" />\n\n### Jam\n\nFor more information click [here](https://jam-icons.com).\n\n<Example value=\"jam\" />\n\n### Lucide\n\nFor more information click [here](https://lucide.dev).\n\n<Example value=\"lucide\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example value=\"material\" />\n\n### Remix\n\nFor more information click [here](https://remixicon.com).\n\n<Example value=\"remix\" />\n\n### Tabler\n\nFor more information click [here](https://tabler-icons.io).\n\n<Example value=\"tabler\" />\n\n### Unicons\n\nFor more information click [here](https://iconscout.com/unicons).\n\n<Example value=\"unicons\" />\n\n### Multiple Library\n\n<Example value=\"multiple-library\" />\n\n<LastModified />\n",
+      "slots": [],
       "styles": [],
       "tags": [
         {
-          "key": "development",
-          "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
+          "key": "part",
+          "value": "svg - The svg element."
         }
       ],
       "title": "Icon"
@@ -6812,174 +6846,6 @@
       "styles": [],
       "tags": [],
       "title": "Switch"
-    },
-    {
-      "events": [],
-      "deprecated": false,
-      "description": "TODO",
-      "experimental": false,
-      "key": "symbol",
-      "lastModified": "2023-04-23T11:37:36.069Z",
-      "methods": [],
-      "parts": [
-        {
-          "name": "svg",
-          "description": "The svg element."
-        }
-      ],
-      "properties": [
-        {
-          "attribute": "color",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "color",
-          "reflects": true,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "string"
-        },
-        {
-          "attribute": "defaults",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "initializer": true,
-          "model": false,
-          "name": "defaults",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "boolean"
-        },
-        {
-          "attribute": "flip",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "flip",
-          "reflects": true,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "SymbolFlip",
-          "typeReference": "./symbol.types"
-        },
-        {
-          "attribute": "label",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "label",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "string"
-        },
-        {
-          "attribute": "name",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "name",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "string"
-        },
-        {
-          "attribute": "resolver",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "resolver",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "SymbolResolver",
-          "typeReference": "./symbol.types"
-        },
-        {
-          "attribute": "rotate",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "rotate",
-          "reflects": true,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "SymbolRotate",
-          "typeReference": "./symbol.types"
-        },
-        {
-          "attribute": "size",
-          "deprecated": false,
-          "description": "TODO",
-          "experimental": false,
-          "model": false,
-          "name": "size",
-          "reflects": true,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "TODO"
-            }
-          ],
-          "type": "SymbolSize",
-          "typeReference": "./symbol.types"
-        }
-      ],
-      "readmeContent": "# Symbol\n\nTODO\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n<LastModified />\n",
-      "slots": [],
-      "styles": [],
-      "tags": [
-        {
-          "key": "part",
-          "value": "svg - The svg element."
-        }
-      ],
-      "title": "Symbol"
     },
     {
       "events": [

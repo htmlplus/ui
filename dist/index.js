@@ -34,7 +34,6 @@ export { Signature } from './signature.js';
 export { Spinner } from './spinner.js';
 export { Sticky } from './sticky.js';
 export { Switch } from './switch.js';
-export { Symbol } from './symbol.js';
 export { Tabs } from './tabs.js';
 export { TabsBar } from './tabs-bar.js';
 export { TabsPanel } from './tabs-panel.js';

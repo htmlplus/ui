@@ -1,4 +1,4 @@
-export const SYMBOL_SIZES = [
+export const ICON_SIZES = [
   'xs',
   'sm',
   'md',

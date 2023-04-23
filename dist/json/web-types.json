@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.8-next-04231535",
+  "version": "0.8.8-next-04232130",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -3936,7 +3936,7 @@
         },
         {
           "name": "plus-icon",
-          "description": "Symbols for common actions and items.This component gives you access to the icon libraries (font awesome, icon material, ...).",
+          "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience.",
           "doc-url": "https://www.htmlplus.io/javascript/component/icon",
           "deprecated": false,
           "experimental": false,
@@ -3945,31 +3945,43 @@
             "properties": [
               {
                 "name": "color",
-                "description": "TODOsize (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)inversespininactive/disabledAdjusts the color of the icons.(All main web color formats are accepted)",
+                "description": "Specifies the color.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "flip",
-                "description": "Flips the icon.",
+                "description": "Flips in `horizontal`, `vertical` or `both` directions.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "label",
+                "description": "Specifies an alternate description to use for assistive devices.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "name",
-                "description": "Specifies the name of the icon.",
+                "description": "Specifies the name.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "resolver",
+                "description": "TODO",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "rotate",
-                "description": "Rotates the icon.",
+                "description": "Specifies the rotation.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "size",
-                "description": "Specifies the size of the icon.`xs`, `sm`, `lg` and `1x` to `10x`.",
+                "description": "Specifies the size.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -3978,7 +3990,7 @@
           "attributes": [
             {
               "name": "color",
-              "description": "TODOsize (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)inversespininactive/disabledAdjusts the color of the icons.(All main web color formats are accepted)",
+              "description": "Specifies the color.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -3987,7 +3999,7 @@
             },
             {
               "name": "flip",
-              "description": "Flips the icon.",
+              "description": "Flips in `horizontal`, `vertical` or `both` directions.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -3995,39 +4007,52 @@
               }
             },
             {
-              "name": "name",
-              "description": "Specifies the name of the icon.",
+              "name": "label",
+              "description": "Specifies an alternate description to use for assistive devices.",
               "deprecated": false,
               "experimental": false,
               "value": {
                 "type": "string"
+              }
+            },
+            {
+              "name": "name",
+              "description": "Specifies the name.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "resolver",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "(name: string, parser: IconParser) => Promise<SVGElement | string>"
               }
             },
             {
               "name": "rotate",
-              "description": "Rotates the icon.",
+              "description": "Specifies the rotation.",
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "90 | 180 | 270"
+                "type": "90 | 180 | 270 | (number & {})"
               }
             },
             {
               "name": "size",
-              "description": "Specifies the size of the icon.`xs`, `sm`, `lg` and `1x` to `10x`.",
+              "description": "Specifies the size.",
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "string"
+                "type": "typeof ICON_SIZES[number] | (string & {})"
               }
             }
           ],
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
+          "slots": []
         },
         {
           "name": "plus-intersection",
@@ -4795,143 +4820,6 @@
               "experimental": false,
               "value": {
                 "type": "boolean"
-              }
-            }
-          ],
-          "slots": []
-        },
-        {
-          "name": "plus-symbol",
-          "description": "TODO",
-          "doc-url": "https://www.htmlplus.io/javascript/component/symbol",
-          "deprecated": false,
-          "experimental": false,
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "color",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "defaults",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false,
-                "default": true
-              },
-              {
-                "name": "flip",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "label",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "name",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "resolver",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "rotate",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "size",
-                "description": "TODO",
-                "deprecated": false,
-                "experimental": false
-              }
-            ]
-          },
-          "attributes": [
-            {
-              "name": "color",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "defaults",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "boolean"
-              },
-              "default": true
-            },
-            {
-              "name": "flip",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "'both' | 'horizontal' | 'vertical'"
-              }
-            },
-            {
-              "name": "label",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "name",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "resolver",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "(name: string, parser: SymbolParser) => Promise<SVGElement | string>"
-              }
-            },
-            {
-              "name": "rotate",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "90 | 180 | 270"
-              }
-            },
-            {
-              "name": "size",
-              "description": "TODO",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "typeof SYMBOL_SIZES[number] | (string & {})"
               }
             }
           ],

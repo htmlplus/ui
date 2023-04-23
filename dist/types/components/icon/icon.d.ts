@@ -1,104 +1,113 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
+import { IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
 /**
- * @development
- * @slot default - The default slot.
+ * @part svg - The svg element.
  */
 export declare class Icon {
     static TAG: string;
     static STYLES: string;
     /**
-     * TODO
-     * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
-     * inverse
-     * spin
-     * inactive/disabled
-     */
-    /**
-     * Adjusts the color of the icons.(All main web color formats are accepted)
+     * Specifies the color.
      */
     color?: string;
     /**
-     * Flips the icon.
+     * Flips in `horizontal`, `vertical` or `both` directions.
      */
-    flip?: 'both' | 'horizontal' | 'vertical';
+    flip?: IconFlip;
     /**
-     * Specifies the name of the icon.
+     * Specifies an alternate description to use for assistive devices.
+     */
+    label?: string;
+    /**
+     * Specifies the name.
      */
     name?: string;
     /**
-     * Rotates the icon.
+     * TODO
      */
-    rotate?: 90 | 180 | 270;
+    resolver?: IconResolver;
     /**
-     * Specifies the size of the icon.
-     * `xs`, `sm`, `lg` and `1x` to `10x`.
+     * Specifies the rotation.
      */
-    size?: string;
+    rotate?: IconRotate;
+    /**
+     * Specifies the size.
+     */
+    size?: IconSize;
+    svg?: SVGElement;
     get attributes(): {
+        'aria-label': string;
+        'aria-hidden': string;
+        role: string;
         style: string;
     };
-    render(): uhtml.Hole;
+    get $host(): HTMLElement;
+    get cache(): any;
+    set cache(cache: any);
+    get style(): string;
+    update(input: SVGElement | string): void;
+    updateCallback(): void;
+    render(): SVGElement;
 }
 export interface IconJSX {
     /**
-     * TODO
-     * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
-     * inverse
-     * spin
-     * inactive/disabled
-     */
-    /**
-     * Adjusts the color of the icons.(All main web color formats are accepted)
+     * Specifies the color.
      */
     color?: string;
     /**
-     * Flips the icon.
+     * Flips in `horizontal`, `vertical` or `both` directions.
      */
-    flip?: 'both' | 'horizontal' | 'vertical';
+    flip?: IconFlip;
     /**
-     * Specifies the name of the icon.
+     * Specifies an alternate description to use for assistive devices.
+     */
+    label?: string;
+    /**
+     * Specifies the name.
      */
     name?: string;
     /**
-     * Rotates the icon.
+     * TODO
      */
-    rotate?: 90 | 180 | 270;
+    resolver?: IconResolver;
     /**
-     * Specifies the size of the icon.
-     * `xs`, `sm`, `lg` and `1x` to `10x`.
+     * Specifies the rotation.
      */
-    size?: string;
+    rotate?: IconRotate;
+    /**
+     * Specifies the size.
+     */
+    size?: IconSize;
 }
 declare global {
     interface HTMLPlusIconElement extends HTMLElement {
         /**
-         * TODO
-         * size (cm,mm,in,px,pt,pc,em,ex,ch,rem,vw,vh,vmin,vmax,%)
-         * inverse
-         * spin
-         * inactive/disabled
-         */
-        /**
-         * Adjusts the color of the icons.(All main web color formats are accepted)
+         * Specifies the color.
          */
         color?: string;
         /**
-         * Flips the icon.
+         * Flips in `horizontal`, `vertical` or `both` directions.
          */
-        flip?: 'both' | 'horizontal' | 'vertical';
+        flip?: IconFlip;
         /**
-         * Specifies the name of the icon.
+         * Specifies an alternate description to use for assistive devices.
+         */
+        label?: string;
+        /**
+         * Specifies the name.
          */
         name?: string;
         /**
-         * Rotates the icon.
+         * TODO
          */
-        rotate?: 90 | 180 | 270;
+        resolver?: IconResolver;
         /**
-         * Specifies the size of the icon.
-         * `xs`, `sm`, `lg` and `1x` to `10x`.
+         * Specifies the rotation.
          */
-        size?: string;
+        rotate?: IconRotate;
+        /**
+         * Specifies the size.
+         */
+        size?: IconSize;
     }
     var HTMLPlusIconElement: {
         prototype: HTMLPlusIconElement;
