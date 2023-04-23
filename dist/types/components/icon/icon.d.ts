@@ -44,8 +44,9 @@ export declare class Icon {
     get cache(): any;
     set cache(cache: any);
     get style(): string;
-    update(input: SVGElement | string): void;
-    updateCallback(): void;
+    sync(input?: SVGElement | string): boolean;
+    update(): void;
+    watcher(): void;
     render(): SVGElement;
 }
 export interface IconJSX {

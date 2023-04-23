@@ -1,4 +1,13 @@
-import { Attributes, Element, Property, State, host, styles, toUnit } from '@htmlplus/element';
+import {
+  Attributes,
+  Element,
+  Property,
+  State,
+  Watch,
+  host,
+  styles,
+  toUnit
+} from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@app/config';
 
@@ -148,39 +157,53 @@ export class Icon {
     });
   }
 
-  update(input: SVGElement | string) {
-    this.svg = (this.cache = parse(input))?.cloneNode(true) as SVGElement;
+  sync(input?: SVGElement | string): boolean {
+    if (input) {
+      this.cache = parse(input);
+    }
+
+    if (!this.cache) return;
+
+    this.svg = this.cache.cloneNode(true);
+
+    return true;
   }
 
-  updateCallback() {
-    if (this.svg) return;
-
+  update() {
     if (this.cache instanceof Promise) {
       this.cache
         .then(() => {
-          this.update(this.cache);
+          this.sync();
         })
-        .catch((error) => {
+        .catch(() => {
           console.warn('TODO3', this.$host);
         });
       return;
     }
 
     try {
-      this.update(this.cache);
+      if (this.sync(this.cache)) return;
     } catch {}
 
-    if (this.svg) return;
-
-    if (!this.resolver) return console.warn('TODO1', this.$host);
+    if (!this.resolver) {
+      console.warn('TODO1', this.$host);
+      return;
+    }
 
     this.cache = this.resolver(this.name, parse)
       .then((input) => {
-        this.update(input);
+        this.sync(input);
       })
-      .catch((error) => {
+      .catch(() => {
         console.warn('TODO2', this.$host);
       });
+  }
+
+  @Watch('name', true)
+  watcher() {
+    requestAnimationFrame(() => {
+      this.update();
+    });
   }
 
   render() {
