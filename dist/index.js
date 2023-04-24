@@ -32,6 +32,7 @@ export { ScrollDetector } from './scroll-detector.js';
 export { ScrollIndicator } from './scroll-indicator.js';
 export { Signature } from './signature.js';
 export { Spinner } from './spinner.js';
+export { Stack } from './stack.js';
 export { Sticky } from './sticky.js';
 export { Switch } from './switch.js';
 export { Tabs } from './tabs.js';

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.8-next-04242150",
+  "version": "0.8.8-next-04242340",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -4690,6 +4690,55 @@
             }
           ],
           "slots": []
+        },
+        {
+          "name": "plus-stack",
+          "doc-url": "https://www.htmlplus.io/javascript/component/stack",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "gap",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "vertical",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "gap",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "vertical",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
         },
         {
           "name": "plus-sticky",

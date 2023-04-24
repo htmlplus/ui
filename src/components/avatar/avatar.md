@@ -28,6 +28,10 @@ An image representing a user's profile picture.
 
 <Example value="icon" />
 
+### Icon Ratio
+
+<Example value="icon-ratio" />
+
 ### Svg
 
 <Example value="svg" />

@@ -3927,6 +3927,34 @@
       ]
     },
     {
+      "name": "plus-stack",
+      "attributes": [
+        {
+          "name": "gap",
+          "description": "TODO.",
+          "values": []
+        },
+        {
+          "name": "vertical",
+          "description": "TODO.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/stack"
+        }
+      ]
+    },
+    {
       "name": "plus-sticky",
       "description": "Component content is positioned based on the user's scroll position.",
       "attributes": [

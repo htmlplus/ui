@@ -806,7 +806,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-04-17T11:37:47.069Z",
+      "lastModified": "2023-04-24T19:20:46.543Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -849,7 +849,7 @@
           "typeReference": "./avatar.types"
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Svg Ratio\n\n<Example value=\"svg-ratio\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Tooltip\n\n<Example value=\"tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Tooltip\n\n<Example value=\"group-tooltip\" />\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Icon Ratio\n\n<Example value=\"icon-ratio\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Svg Ratio\n\n<Example value=\"svg-ratio\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Tooltip\n\n<Example value=\"tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Tooltip\n\n<Example value=\"group-tooltip\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -6654,6 +6654,65 @@
         }
       ],
       "title": "Spinner"
+    },
+    {
+      "events": [],
+      "deprecated": false,
+      "experimental": false,
+      "key": "stack",
+      "lastModified": "2023-04-24T20:07:02.083Z",
+      "methods": [],
+      "parts": [],
+      "properties": [
+        {
+          "attribute": "gap",
+          "deprecated": false,
+          "description": "TODO.",
+          "experimental": false,
+          "model": false,
+          "name": "gap",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ],
+          "type": "string"
+        },
+        {
+          "attribute": "vertical",
+          "deprecated": false,
+          "description": "TODO.",
+          "experimental": false,
+          "model": false,
+          "name": "vertical",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO."
+            }
+          ],
+          "type": "boolean"
+        }
+      ],
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ],
+      "styles": [],
+      "tags": [
+        {
+          "key": "slot",
+          "value": "default - The default slot."
+        }
+      ],
+      "title": "Stack"
     },
     {
       "events": [

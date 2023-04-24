@@ -32,6 +32,7 @@ export * from './scroll-detector/scroll-detector';
 export * from './scroll-indicator/scroll-indicator';
 export * from './signature/signature';
 export * from './spinner/spinner';
+export * from './stack/stack';
 export * from './sticky/sticky';
 export * from './switch/switch';
 export * from './tabs/tabs';
