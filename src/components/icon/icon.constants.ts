@@ -12,6 +12,5 @@ export const ICON_SIZES = [
   '6x',
   '7x',
   '8x',
-  '9x',
-  '10x'
+  '9x'
 ] as const;

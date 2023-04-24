@@ -28,6 +28,10 @@ A graphical representation of an action, object, or idea that is used in a user 
 
 <Example value="color" />
 
+### Custom Color
+
+<Example value="custom-color" />
+
 ### Flip
 
 <Example value="flip" />
@@ -40,9 +44,9 @@ A graphical representation of an action, object, or idea that is used in a user 
 
 <Example value="label" />
 
-### Custom
+### Register A Custom Name
 
-<Example value="custom" />
+<Example value="register-a-custom-name" />
 
 ### Custom Size
 
@@ -52,19 +56,9 @@ A graphical representation of an action, object, or idea that is used in a user 
 
 <Example value="override-size" />
 
-### defaults
-
-<Example value="defaults" />
-
 ### Resolver
 
 <Example value="resolver" />
-
-### Boxicons
-
-For more information click [here](https://boxicons.com).
-
-<Example value="boxicons" />
 
 ### Font Awesome
 
@@ -72,59 +66,11 @@ For more information click [here](https://fontawesome.com).
 
 <Example value="font-awesome" />
 
-### Heroicons
-
-For more information click [here](https://heroicons.com).
-
-<Example value="heroicons" />
-
-### Iconoir
-
-For more information click [here](https://iconoir.com).
-
-<Example value="iconoir" />
-
-### Ionicons
-
-For more information click [here](https://ionicons.com).
-
-<Example value="ionicons" />
-
-### Jam
-
-For more information click [here](https://jam-icons.com).
-
-<Example value="jam" />
-
-### Lucide
-
-For more information click [here](https://lucide.dev).
-
-<Example value="lucide" />
-
 ### Material
 
 For more information click [here](https://fonts.google.com/icons).
 
 <Example value="material" />
-
-### Remix
-
-For more information click [here](https://remixicon.com).
-
-<Example value="remix" />
-
-### Tabler
-
-For more information click [here](https://tabler-icons.io).
-
-<Example value="tabler" />
-
-### Unicons
-
-For more information click [here](https://iconscout.com/unicons).
-
-<Example value="unicons" />
 
 ### Multiple Library
 

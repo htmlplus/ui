@@ -100,7 +100,7 @@ export class Icon {
   get attributes() {
     return {
       'aria-label': this.label ?? null,
-      'aria-hidden': `${!this.label}`,
+      'aria-hidden': this.label ? null : `${!this.label}`,
       'role': this.label ? 'img' : null,
       'style': this.style
     };
