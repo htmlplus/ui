@@ -9,7 +9,25 @@ export class Stack {
    * TODO.
    */
   @Property()
+  alignItems?: string = 'center';
+
+  /**
+   * TODO.
+   */
+  @Property()
   gap?: string;
+
+  /**
+   * TODO.
+   */
+  @Property()
+  justifyContent?: string = 'center';
+
+  /**
+   * TODO.
+   */
+  @Property()
+  reverse?: boolean;
 
   /**
    * TODO.
@@ -25,12 +43,16 @@ export class Stack {
   }
 
   get style() {
+    let direction = this.vertical ? 'column' : 'row';
+
+    if (this.reverse) direction += '-reverse';
+
     return styles({
-      'align-items': 'center',
+      'align-items': this.alignItems,
       'display': 'flex',
-      'flex-direction': this.vertical ? 'column' : 'row',
+      'flex-direction': direction,
       'gap': toUnit(this.gap),
-      'justify-content': 'center'
+      'justify-content': this.justifyContent
     });
   }
 
