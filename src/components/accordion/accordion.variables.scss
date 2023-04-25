@@ -1,6 +1,6 @@
 $accordion-background-color: white !default;
-$accordion-border: solid 1px lightgray !default;
-$accordion-border-radius: 0.25rem !default;
-$accordion-disabled-opacity: 0.5 !default;
+$accordion-border: solid $border-width lightgray !default;
+$accordion-border-radius: $border-radius !default;
+$accordion-disabled-opacity: $disabled-opacity !default;
 $accordion-padding: 1rem !default;
 $accordion-transition: all 0.2s ease-in-out !default;

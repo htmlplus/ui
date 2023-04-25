@@ -67,7 +67,7 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2023-04-17T13:36:13.154Z",
+      "lastModified": "2023-04-25T15:50:52.668Z",
       "methods": [
         {
           "async": true,
@@ -806,7 +806,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-04-24T19:20:46.543Z",
+      "lastModified": "2023-04-25T15:51:33.149Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -860,7 +860,7 @@
         {
           "description": "Used to adjust the border-radius.",
           "name": "--plus-avatar-border-radius",
-          "initializer": "4px"
+          "initializer": "0.25rem"
         },
         {
           "description": "Used to adjust the ratio of size to font-size.",
@@ -965,7 +965,7 @@
       "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2023-04-17T11:37:51.087Z",
+      "lastModified": "2023-04-25T15:53:38.234Z",
       "methods": [],
       "parts": [
         {
@@ -1343,7 +1343,7 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
-      "lastModified": "2023-04-17T11:38:12.356Z",
+      "lastModified": "2023-04-25T15:53:45.005Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1433,7 +1433,7 @@
         {
           "description": "Used to adjust the border-color.",
           "name": "--plus-card-border-color",
-          "initializer": "rgba(0,0,0,.125)"
+          "initializer": "#d3d3d3"
         },
         {
           "description": "Used to adjust the border-radius.",
@@ -3108,7 +3108,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
-      "lastModified": "2023-02-03T21:24:21.452Z",
+      "lastModified": "2023-04-25T15:57:24.721Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5477,7 +5477,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-04-24T17:16:29.937Z",
+      "lastModified": "2023-04-25T15:59:09.530Z",
       "methods": [],
       "parts": [
         {
@@ -6094,7 +6094,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2023-04-17T11:39:41.351Z",
+      "lastModified": "2023-04-25T16:00:59.107Z",
       "methods": [
         {
           "async": false,
@@ -6857,7 +6857,7 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
-      "lastModified": "2023-04-17T11:39:53.102Z",
+      "lastModified": "2023-04-24T21:29:25.755Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6900,7 +6900,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Switch\n\nToggles the state of a single item on or off.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Checked\n\n<Example value=\"checked\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Event\n\n<Example value=\"event\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### 3D\n\n<Example value=\"3d\" />\n\n<LastModified />\n",
+      "readmeContent": "# Switch\n\nToggles the state of a single item on or off.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Checked\n\n<Example value=\"checked\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Event\n\n<Example value=\"event\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### 3D\n\n<Example value=\"three-dimensional\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [],
