@@ -1,5 +1,7 @@
 import { Attributes, Element, Property, styles, toUnit } from '@htmlplus/element';
 
+import { StackAlignItems, StackJustifyContent } from './stack.types';
+
 /**
  * @slot default - The default slot.
  */
@@ -9,7 +11,7 @@ export class Stack {
    * TODO.
    */
   @Property()
-  alignItems?: string = 'center';
+  alignItems?: StackAlignItems = 'center';
 
   /**
    * TODO.
@@ -21,7 +23,7 @@ export class Stack {
    * TODO.
    */
   @Property()
-  justifyContent?: string = 'center';
+  justifyContent?: StackJustifyContent = 'center';
 
   /**
    * TODO.
