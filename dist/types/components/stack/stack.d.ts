@@ -1,4 +1,5 @@
 import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
+import { StackAlignItems, StackJustifyContent } from './stack.types';
 /**
  * @slot default - The default slot.
  */
@@ -7,7 +8,19 @@ export declare class Stack {
     /**
      * TODO.
      */
+    alignItems?: StackAlignItems;
+    /**
+     * TODO.
+     */
     gap?: string;
+    /**
+     * TODO.
+     */
+    justifyContent?: StackJustifyContent;
+    /**
+     * TODO.
+     */
+    reverse?: boolean;
     /**
      * TODO.
      */
@@ -22,7 +35,19 @@ export interface StackJSX {
     /**
      * TODO.
      */
+    alignItems?: StackAlignItems;
+    /**
+     * TODO.
+     */
     gap?: string;
+    /**
+     * TODO.
+     */
+    justifyContent?: StackJustifyContent;
+    /**
+     * TODO.
+     */
+    reverse?: boolean;
     /**
      * TODO.
      */
@@ -33,7 +58,19 @@ declare global {
         /**
          * TODO.
          */
+        alignItems?: StackAlignItems;
+        /**
+         * TODO.
+         */
         gap?: string;
+        /**
+         * TODO.
+         */
+        justifyContent?: StackJustifyContent;
+        /**
+         * TODO.
+         */
+        reverse?: boolean;
         /**
          * TODO.
          */

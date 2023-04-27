@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.8",
+  "version": "0.8.9-next-04280200",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -4700,7 +4700,27 @@
             "events": [],
             "properties": [
               {
+                "name": "alignItems",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false,
+                "default": "'center'"
+              },
+              {
                 "name": "gap",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "justifyContent",
+                "description": "TODO.",
+                "deprecated": false,
+                "experimental": false,
+                "default": "'center'"
+              },
+              {
+                "name": "reverse",
                 "description": "TODO.",
                 "deprecated": false,
                 "experimental": false
@@ -4715,12 +4735,41 @@
           },
           "attributes": [
             {
+              "name": "align-items",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | (string & {})"
+              },
+              "default": "'center'"
+            },
+            {
               "name": "gap",
               "description": "TODO.",
               "deprecated": false,
               "experimental": false,
               "value": {
                 "type": "string"
+              }
+            },
+            {
+              "name": "justify-content",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | (string & {})"
+              },
+              "default": "'center'"
+            },
+            {
+              "name": "reverse",
+              "description": "TODO.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
               }
             },
             {

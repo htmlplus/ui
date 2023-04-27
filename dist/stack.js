@@ -4,18 +4,31 @@ import { _ as __decorate, c as styles, t as toUnit, u as uhtml, P as Property, d
  * @slot default - The default slot.
  */
 let Stack = class Stack {
+    constructor() {
+        /**
+         * TODO.
+         */
+        this.alignItems = 'center';
+        /**
+         * TODO.
+         */
+        this.justifyContent = 'center';
+    }
     get attributes() {
         return {
             style: this.style
         };
     }
     get style() {
+        let direction = this.vertical ? 'column' : 'row';
+        if (this.reverse)
+            direction += '-reverse';
         return styles({
-            'align-items': 'center',
+            'align-items': this.alignItems,
             'display': 'flex',
-            'flex-direction': this.vertical ? 'column' : 'row',
+            'flex-direction': direction,
             'gap': toUnit(this.gap),
-            'justify-content': 'center'
+            'justify-content': this.justifyContent
         });
     }
     render() {
@@ -26,9 +39,24 @@ let Stack = class Stack {
 Stack.TAG = "plus-stack";
 __decorate([
     Property({
+        type: 264
+    })
+], Stack.prototype, "alignItems", void 0);
+__decorate([
+    Property({
         type: 256
     })
 ], Stack.prototype, "gap", void 0);
+__decorate([
+    Property({
+        type: 264
+    })
+], Stack.prototype, "justifyContent", void 0);
+__decorate([
+    Property({
+        type: 2
+    })
+], Stack.prototype, "reverse", void 0);
 __decorate([
     Property({
         type: 2

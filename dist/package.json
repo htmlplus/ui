@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.8.8",
+  "version": "0.8.9-next-04280200",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI components.",
@@ -54,6 +54,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/react": "^18.0.25",
+    "bootstrap-icons": "^1.10.5",
     "change-case": "^4.1.2",
     "cypress": "^11.2.0",
     "cypress-file-upload": "^5.0.8",

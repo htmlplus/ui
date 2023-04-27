@@ -3930,9 +3930,66 @@
       "name": "plus-stack",
       "attributes": [
         {
+          "name": "align-items",
+          "description": "TODO.",
+          "values": [
+            {
+              "name": "flex-start"
+            },
+            {
+              "name": "flex-end"
+            },
+            {
+              "name": "center"
+            },
+            {
+              "name": "baseline"
+            },
+            {
+              "name": "stretch"
+            }
+          ]
+        },
+        {
           "name": "gap",
           "description": "TODO.",
           "values": []
+        },
+        {
+          "name": "justify-content",
+          "description": "TODO.",
+          "values": [
+            {
+              "name": "flex-start"
+            },
+            {
+              "name": "flex-end"
+            },
+            {
+              "name": "center"
+            },
+            {
+              "name": "space-between"
+            },
+            {
+              "name": "space-around"
+            },
+            {
+              "name": "space-evenly"
+            }
+          ]
+        },
+        {
+          "name": "reverse",
+          "description": "TODO.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
         },
         {
           "name": "vertical",
