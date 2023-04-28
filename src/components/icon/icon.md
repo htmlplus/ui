@@ -1,6 +1,6 @@
 # Icon
 
-A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience.
+A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. A wide range of icons is available [here](https://www.htmlplus.io/component/icon/names).
 
 <Playground />
 
@@ -17,6 +17,8 @@ A graphical representation of an action, object, or idea that is used in a user 
 <Example value="default" />
 
 ### Name
+
+To see all names click [here](https://www.htmlplus.io/component/icon/names).
 
 <Example value="name" />
 
