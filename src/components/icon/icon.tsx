@@ -74,7 +74,7 @@ export class Icon {
   name?: string;
 
   /**
-   * TODO
+   * An asynchronous function to load SVG files.
    */
   @Property()
   resolver?: IconResolver = (name) => {
@@ -175,9 +175,7 @@ export class Icon {
         .then(() => {
           this.sync();
         })
-        .catch(() => {
-          console.warn('TODO3', this.$host);
-        });
+        .catch(() => undefined);
       return;
     }
 
@@ -185,8 +183,18 @@ export class Icon {
       if (this.sync(this.cache)) return;
     } catch {}
 
-    if (!this.resolver) {
-      console.warn('TODO1', this.$host);
+    if (typeof this.resolver != 'function') {
+      console.warn(
+        [
+          `The icon component is not able to find an SVG file with the name of \`${this.name}\`. `,
+          'This component uses an asynchronous function called `resolver` to load SVG files. ',
+          'The function is defined as built-in by default. ',
+          'It is possible that it has not been reconfigured correctly. ',
+          'To solve the problem, ',
+          'read the documentation to check the correct configuration of the `resolver` property.'
+        ].join(''),
+        this.$host
+      );
       return;
     }
 
@@ -195,7 +203,14 @@ export class Icon {
         this.sync(input);
       })
       .catch(() => {
-        console.warn('TODO2', this.$host);
+        console.warn(
+          [
+            `The icon component is not able to resolve an SVG file with the name of \`${this.name}\`. `,
+            `There is a problem with the \`resolver\` property, and its output cannot be used. `,
+            'Make sure that the output of the property is an SVG.'
+          ].join(''),
+          this.$host
+        );
       });
   }
 
