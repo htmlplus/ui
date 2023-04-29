@@ -10,11 +10,15 @@ const files = glob.sync('../node_modules/bootstrap-icons/icons/*.svg', {
   absolute: true
 });
 
+const directory = path.join(__dirname, '../src/components/icon/assets/names');
+
+if (!fs.existsSync(directory)) {
+  fs.mkdirSync(directory, { recursive: true });
+}
+
+const names = [];
+
 for (const from of files) {
-  const directory = path.join(__dirname, '../src/components/icon/assets/names');
-
-  if (!fs.existsSync(directory)) fs.mkdirSync(directory, { recursive: true });
-
   const key = path.basename(from, '.svg');
 
   const to = path.join(directory, `${key}.js`);
@@ -24,4 +28,8 @@ for (const from of files) {
   const content = [`export default \`${svg}\`;`].join('\n');
 
   fs.writeFileSync(to, content, 'utf8');
+
+  names.push(key);
 }
+
+fs.writeFileSync(directory + '.json', JSON.stringify(names, null, 2), 'utf8');

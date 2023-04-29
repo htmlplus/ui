@@ -22,7 +22,7 @@ export declare class Icon {
      */
     name?: string;
     /**
-     * TODO
+     * An asynchronous function to load SVG files.
      */
     resolver?: IconResolver;
     /**
@@ -67,7 +67,7 @@ export interface IconJSX {
      */
     name?: string;
     /**
-     * TODO
+     * An asynchronous function to load SVG files.
      */
     resolver?: IconResolver;
     /**
@@ -98,7 +98,7 @@ declare global {
          */
         name?: string;
         /**
-         * TODO
+         * An asynchronous function to load SVG files.
          */
         resolver?: IconResolver;
         /**

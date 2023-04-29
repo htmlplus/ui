@@ -47,6 +47,7 @@ export default [
     }
   }),
   assets({
+    once: true,
     destination(context) {
       return `dist/${context.fileName}`;
     }

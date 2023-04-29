@@ -45,7 +45,7 @@ const parse = (input) => {
 let Icon = class Icon {
     constructor() {
         /**
-         * TODO
+         * An asynchronous function to load SVG files.
          */
         this.resolver = name => {
             return import(`./icon/names/${name}.js`).then(module => (module === null || module === void 0 ? void 0 : module['default']) || module);
@@ -116,9 +116,7 @@ let Icon = class Icon {
         if (this.cache instanceof Promise) {
             this.cache.then(() => {
                 this.sync();
-            }).catch(() => {
-                console.warn('TODO3', this.$host);
-            });
+            }).catch(() => undefined);
             return;
         }
         try {
@@ -126,14 +124,14 @@ let Icon = class Icon {
                 return;
         }
         catch (_a) { }
-        if (!this.resolver) {
-            console.warn('TODO1', this.$host);
+        if (typeof this.resolver != 'function') {
+            console.warn([`The icon component is not able to find an SVG file with the name of \`${this.name}\`. `, 'This component uses an asynchronous function called `resolver` to load SVG files. ', 'The function is defined as built-in by default. ', 'It is possible that it has not been reconfigured correctly. ', 'To solve the problem, ', 'read the documentation to check the correct configuration of the `resolver` property.'].join(''), this.$host);
             return;
         }
         this.cache = this.resolver(this.name, parse).then(input => {
             this.sync(input);
         }).catch(() => {
-            console.warn('TODO2', this.$host);
+            console.warn([`The icon component is not able to resolve an SVG file with the name of \`${this.name}\`. `, `There is a problem with the \`resolver\` property, and its output cannot be used. `, 'Make sure that the output of the property is an SVG.'].join(''), this.$host);
         });
     }
     watcher() {
