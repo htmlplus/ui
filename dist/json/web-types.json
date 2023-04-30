@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.8.9-next-04280200",
+  "version": "0.8.9",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {

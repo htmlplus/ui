@@ -5,7 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.0] - 0000-00-00
+## [0.8.9] - 2023-04-30
+
+### Updated
+
+- Updated the `icon` assets.
+
+## [0.8.8] - 2023-04-25
+
+### Updated
+
+- Refactor the `icon`.
+
+## [0.8.7] - 2023-04-16
 
 ### Added
 
@@ -14,7 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Updated
 
-- Refactor the `icon`.
 - Moved the animation assets.
 - Added the `initializer` property for `styles` to the `json/document.json`.
 
