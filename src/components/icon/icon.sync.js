@@ -67,8 +67,6 @@ fetch(file_url).then((response) => {
       const content = [`export default \`${icon.content}\`;`].join('\n');
 
       fs.writeFileSync(file, content, 'utf8');
-
-      delete icon.content;
     }
 
     fs.writeFileSync(`${directory}.json`, JSON.stringify(icons, null, 2), 'utf8');
