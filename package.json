@@ -13,7 +13,6 @@
     "clean": "rimraf .cache dist public/build",
     "format": "prettier --write .",
     "start": "node scripts/start.js",
-    "sync": "node scripts/sync.js",
     "test:open": "cypress open",
     "test:run": "cypress run"
   },
@@ -63,7 +62,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/react": "^18.0.25",
-    "bootstrap-icons": "^1.10.5",
+    "adm-zip": "^0.5.10",
     "change-case": "^4.1.2",
     "cypress": "^11.2.0",
     "cypress-file-upload": "^5.0.8",
