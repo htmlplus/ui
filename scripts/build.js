@@ -65,16 +65,6 @@ const options = defineConfig({
 
     htmlplus(...plugins),
 
-    // TODO
-    {
-      name: 'dynamic-import-replacer',
-      resolveDynamicImport(specifier, importer) {
-        if (importer.endsWith('icon.tsx')) {
-          return '`./icon/names/${name}.js`';
-        }
-      }
-    },
-
     resolve({
       browser: true
     }),

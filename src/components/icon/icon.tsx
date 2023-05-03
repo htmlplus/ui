@@ -11,10 +11,10 @@ import {
 
 import { getConfig, setConfig } from '@app/config';
 
-import { ICON_SIZES } from './icon.constants';
+import { ICON_FALLBACK_SVG, ICON_SIZES } from './icon.constants';
 import { IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
 
-let domParser;
+let parser;
 
 const parse = (input: SVGElement | string): SVGElement => {
   if (input instanceof SVGElement) return input;
@@ -27,11 +27,9 @@ const parse = (input: SVGElement | string): SVGElement => {
 
   if (element?.tagName?.toLowerCase() != 'svg') throw new Error();
 
-  domParser ||= new DOMParser();
+  parser ||= new DOMParser();
 
-  const parsed = domParser
-    .parseFromString(element.outerHTML, 'text/html')
-    .body.querySelector('svg');
+  const parsed = parser.parseFromString(element.outerHTML, 'text/html').body.querySelector('svg');
 
   if (!parsed) throw new Error();
 
@@ -77,8 +75,10 @@ export class Icon {
    * An asynchronous function to load SVG files.
    */
   @Property()
-  resolver?: IconResolver = (name) => {
-    return import(`./assets/names/${name}.js`).then((module) => module?.['default'] || module);
+  resolver?: IconResolver = async (name) => {
+    return fetch(`https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/${name}.svg`, {
+      mode: 'cors'
+    }).then((response) => response.text());
   };
 
   /**
@@ -175,7 +175,10 @@ export class Icon {
         .then(() => {
           this.sync();
         })
-        .catch(() => undefined);
+        .catch(() => {
+          // TODO
+          this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true) as any;
+        });
       return;
     }
 
@@ -203,6 +206,9 @@ export class Icon {
         this.sync(input);
       })
       .catch(() => {
+        // TODO
+        this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true) as any;
+
         console.warn(
           [
             `The icon component is not able to resolve an SVG file with the name of \`${this.name}\`. `,
