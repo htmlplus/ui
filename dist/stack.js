@@ -1,4 +1,4 @@
-import { _ as __decorate, c as styles, t as toUnit, u as uhtml, P as Property, d as Attributes, b as Element } from './core/index.js';
+import { _ as __decorate, d as styles, t as toUnit, b as html, e as attributes, h as host, P as Property, c as Element } from './core/index.js';
 
 /**
  * @slot default - The default slot.
@@ -14,11 +14,6 @@ let Stack = class Stack {
          */
         this.justifyContent = 'center';
     }
-    get attributes() {
-        return {
-            style: this.style
-        };
-    }
     get style() {
         let direction = this.vertical ? 'column' : 'row';
         if (this.reverse)
@@ -32,7 +27,11 @@ let Stack = class Stack {
         });
     }
     render() {
-        return uhtml.html `<slot />`;
+        return html `${attributes(host(this), [{
+                "style": styles(this.style)
+            }])}
+        <slot />
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -62,9 +61,6 @@ __decorate([
         type: 2
     })
 ], Stack.prototype, "vertical", void 0);
-__decorate([
-    Attributes()
-], Stack.prototype, "attributes", null);
 Stack = __decorate([
     Element()
 ], Stack);

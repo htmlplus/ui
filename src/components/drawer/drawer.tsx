@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Event,
@@ -156,14 +155,6 @@ export class Drawer {
 
   get $host() {
     return host(this);
-  }
-
-  @Attributes()
-  get attributes() {
-    return {
-      platform: this.platform,
-      style: this.styles
-    };
   }
 
   get classes() {
@@ -382,7 +373,7 @@ export class Drawer {
 
   render() {
     return (
-      <>
+      <host platform={this.platform} style={this.styles}>
         {this.hasBackdrop ? (
           <div className="backdrop" part="backdrop">
             <div />
@@ -393,7 +384,7 @@ export class Drawer {
         <div className={this.classes} ref={($element) => (this.$root = $element)}>
           <slot />
         </div>
-      </>
+      </host>
     );
   }
 }

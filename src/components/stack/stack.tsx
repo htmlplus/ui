@@ -1,4 +1,4 @@
-import { Attributes, Element, Property, styles, toUnit } from '@htmlplus/element';
+import { Element, Property, styles, toUnit } from '@htmlplus/element';
 
 import { StackAlignItems, StackJustifyContent } from './stack.types';
 
@@ -37,13 +37,6 @@ export class Stack {
   @Property()
   vertical?: boolean;
 
-  @Attributes()
-  get attributes() {
-    return {
-      style: this.style
-    };
-  }
-
   get style() {
     let direction = this.vertical ? 'column' : 'row';
 
@@ -59,6 +52,10 @@ export class Stack {
   }
 
   render() {
-    return <slot />;
+    return (
+      <host style={this.style}>
+        <slot />
+      </host>
+    );
   }
 }

@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { AvatarShape, AvatarSize } from './avatar.types';
 /**
  * @stable
@@ -15,9 +14,6 @@ export declare class Avatar {
      * Specifies the size of the component.
      */
     size?: AvatarSize;
-    get attributes(): {
-        style: string;
-    };
     get PLACEMENTS(): {
         bottom: {
             [x: string]: string | number;
@@ -95,7 +91,8 @@ export declare class Avatar {
             transform: string;
         };
     };
-    render(): uhtml.Hole;
+    get style(): string;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AvatarJSX {
     /**

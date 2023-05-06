@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * TODO: Arranges tabs within a bar.
  * @slot default - The default slot.
@@ -18,10 +17,7 @@ export declare class TabsBar {
      * Reverses the arrangement of the tabs.
      */
     reverse?: boolean;
-    get attributes(): {
-        role: string;
-    };
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsBarJSX {
     /**

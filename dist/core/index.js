@@ -41,6 +41,467 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+// apis
+const API_CONNECTED = Symbol();
+const API_HOST = Symbol();
+const API_INSTANCE = Symbol();
+const API_LOCKED = Symbol();
+const API_REQUEST = Symbol();
+const API_RENDER_COMPLETED = Symbol();
+const API_STACKS = Symbol();
+// lifecycle
+const LIFECYCLE_ADOPTED = 'adoptedCallback';
+const LIFECYCLE_CONNECT = 'connectCallback';
+const LIFECYCLE_CONNECTED = 'connectedCallback';
+const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
+const LIFECYCLE_LOADED = 'loadedCallback';
+const LIFECYCLE_UPDATE = 'updateCallback';
+const LIFECYCLE_UPDATED = 'updatedCallback';
+// methods
+const METHOD_RENDER = 'render';
+// statics
+const STATIC_MEMBERS = 'MEMBERS';
+const STATIC_STYLES = 'STYLES';
+const STATIC_TAG = 'TAG';
+// types
+const TYPE_ARRAY = 1;
+const TYPE_BOOLEAN = 2;
+const TYPE_DATE = 4;
+const TYPE_FUNCTION = 16;
+const TYPE_NULL = 32;
+const TYPE_NUMBER = 64;
+const TYPE_OBJECT = 128;
+const TYPE_UNDEFINED = 512;
+
+const addMember = (target, key, data) => {
+    var _a;
+    target[_a = STATIC_MEMBERS] || (target[_a] = {});
+    target[STATIC_MEMBERS][key] = data;
+};
+
+const appendToMethod = (target, propertyKey, handler) => {
+    // Gets the previous function
+    const previous = target[propertyKey];
+    // Creates new function
+    function next(...parameters) {
+        // Calls the previous
+        const result = previous === null || previous === void 0 ? void 0 : previous.bind(this)(...parameters);
+        // Calls the appended
+        handler.bind(this)(...parameters);
+        // Returns the result
+        return result;
+    }
+    // Replaces the next with the previous one
+    target[propertyKey] = next;
+};
+
+const outsides = [];
+const off = (target, type, handler, options) => {
+    if (type != 'outside')
+        return target.removeEventListener(type, handler, options);
+    const index = outsides.findIndex((outside) => outside.target == target && outside.handler == handler && outside.options == options);
+    const outside = outsides[index];
+    if (!outside)
+        return;
+    off(document, outside.type, outside.callback, outside.options);
+    outsides.splice(index, 1);
+};
+const on = (target, type, handler, options) => {
+    if (type != 'outside')
+        return target.addEventListener(type, handler, options);
+    const callback = (event) => {
+        !event.composedPath().some((item) => item == target) && handler(event);
+    };
+    type = 'ontouchstart' in window.document.documentElement ? 'touchstart' : 'click';
+    on(document, type, callback, options);
+    outsides.push({
+        target,
+        type,
+        handler,
+        options,
+        callback
+    });
+};
+
+const isEvent = (input) => {
+    return !!(input === null || input === void 0 ? void 0 : input.match(/on[A-Z]\w+/g));
+};
+
+const toEvent = (input) => {
+    return input === null || input === void 0 ? void 0 : input.slice(2).toLowerCase();
+};
+
+/**
+ * Source: ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt
+ */
+/**
+ * Lower case as a function.
+ */
+function lowerCase(str) {
+    return str.toLowerCase();
+}
+
+// Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
+var DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
+// Remove all non-word characters.
+var DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
+/**
+ * Normalize the string into something other libraries can manipulate easier.
+ */
+function noCase(input, options) {
+    if (options === void 0) { options = {}; }
+    var _a = options.splitRegexp, splitRegexp = _a === void 0 ? DEFAULT_SPLIT_REGEXP : _a, _b = options.stripRegexp, stripRegexp = _b === void 0 ? DEFAULT_STRIP_REGEXP : _b, _c = options.transform, transform = _c === void 0 ? lowerCase : _c, _d = options.delimiter, delimiter = _d === void 0 ? " " : _d;
+    var result = replace(replace(input, splitRegexp, "$1\0$2"), stripRegexp, "\0");
+    var start = 0;
+    var end = result.length;
+    // Trim the delimiter from around the output string.
+    while (result.charAt(start) === "\0")
+        start++;
+    while (result.charAt(end - 1) === "\0")
+        end--;
+    // Transform each token independently.
+    return result.slice(start, end).split("\0").map(transform).join(delimiter);
+}
+/**
+ * Replace `re` in the input string with the replacement value.
+ */
+function replace(input, re, value) {
+    if (re instanceof RegExp)
+        return input.replace(re, value);
+    return re.reduce(function (input, re) { return input.replace(re, value); }, input);
+}
+
+function pascalCaseTransform(input, index) {
+    var firstChar = input.charAt(0);
+    var lowerChars = input.substr(1).toLowerCase();
+    if (index > 0 && firstChar >= "0" && firstChar <= "9") {
+        return "_" + firstChar + lowerChars;
+    }
+    return "" + firstChar.toUpperCase() + lowerChars;
+}
+function pascalCase(input, options) {
+    if (options === void 0) { options = {}; }
+    return noCase(input, __assign({ delimiter: "", transform: pascalCaseTransform }, options));
+}
+
+function camelCaseTransform(input, index) {
+    if (index === 0)
+        return input.toLowerCase();
+    return pascalCaseTransform(input, index);
+}
+function camelCase(input, options) {
+    if (options === void 0) { options = {}; }
+    return pascalCase(input, __assign({ transform: camelCaseTransform }, options));
+}
+
+function dotCase(input, options) {
+    if (options === void 0) { options = {}; }
+    return noCase(input, __assign({ delimiter: "." }, options));
+}
+
+function paramCase(input, options) {
+    if (options === void 0) { options = {}; }
+    return dotCase(input, __assign({ delimiter: "-" }, options));
+}
+
+const updateAttribute = (node, key, value) => {
+    const name = paramCase(key);
+    if ([undefined, null, false].includes(value))
+        return node.removeAttribute(name);
+    node.setAttribute(name, value === true ? '' : value);
+};
+
+const symbol = Symbol();
+const attributes$1 = (element, attributes) => {
+    const prev = element[symbol] || {};
+    const next = Object.assign({}, ...attributes);
+    const prevClass = (prev.class || '').split(' ');
+    const nextClass = (next.class || '').split(' ');
+    const newClass = element.className
+        .split(' ')
+        .filter((key) => !prevClass.includes(key) && !nextClass.includes(key))
+        .concat(nextClass)
+        .filter((key) => key)
+        .join(' ');
+    updateAttribute(element, 'class', newClass || undefined);
+    if (prev.style || next.style)
+        element.setAttribute('style', next.style || '');
+    for (const key in prev)
+        isEvent(key) && off(element, toEvent(key), prev[key]);
+    for (const key in next) {
+        if (['class', 'style'].includes(key))
+            continue;
+        if (isEvent(key))
+            on(element, toEvent(key), next[key]);
+        else
+            updateAttribute(element, key, next[key]);
+    }
+    element[symbol] = Object.assign({}, next);
+};
+
+const call = (target, key, ...parameters) => {
+    var _a;
+    return (_a = target[key]) === null || _a === void 0 ? void 0 : _a.call(target, ...parameters);
+};
+
+const typeOf = (input) => {
+    return Object.prototype.toString
+        .call(input)
+        .replace(/\[|\]|object| /g, '')
+        .toLowerCase();
+};
+
+const classes = (input, smart) => {
+    const result = [];
+    switch (typeOf(input)) {
+        case 'array': {
+            input.forEach((item) => {
+                const value = classes(item, smart);
+                if (!value)
+                    return;
+                result.push(value);
+            });
+            break;
+        }
+        case 'object': {
+            const keys = Object.keys(input);
+            for (const key of keys) {
+                const value = input[key];
+                const name = paramCase(key);
+                const type = typeOf(value);
+                if (!smart) {
+                    if (!value)
+                        continue;
+                    result.push(name);
+                    continue;
+                }
+                switch (type) {
+                    case 'boolean': {
+                        if (!value)
+                            continue;
+                        result.push(`${name}`);
+                        break;
+                    }
+                    case 'number': {
+                        result.push(`${name}-${value}`);
+                        break;
+                    }
+                    case 'string': {
+                        switch (value) {
+                            case '':
+                            case 'true':
+                                result.push(`${name}`);
+                                break;
+                            case 'false':
+                                break;
+                            default:
+                                result.push(`${name}-${value}`);
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
+            break;
+        }
+        case 'string': {
+            result.push(input);
+            break;
+        }
+    }
+    return result.join(' ');
+};
+
+const merge = (target, ...sources) => {
+    for (const source of sources) {
+        if (!source)
+            continue;
+        if (typeOf(source) != 'object') {
+            target = source;
+            continue;
+        }
+        for (const key of Object.keys(source)) {
+            if (target[key] instanceof Object && source[key] instanceof Object && target[key] !== source[key]) {
+                target[key] = merge(target[key], source[key]);
+            }
+            else {
+                target[key] = source[key];
+            }
+        }
+    }
+    return target;
+};
+
+let defaults = {
+    component: {}
+};
+const getConfig = (namespace, ...parameters) => {
+    if (typeof window == 'undefined')
+        return;
+    let config = window[namespace];
+    for (const parameter of parameters) {
+        if (!config)
+            break;
+        config = config[parameter];
+    }
+    return config;
+};
+const setConfig = (namespace, config, override) => {
+    if (typeof window == 'undefined')
+        return;
+    window[namespace] = merge({}, defaults, override ? {} : window[namespace], config);
+};
+
+const defineProperty = Object.defineProperty;
+
+const host = (target) => {
+    return target[API_HOST]();
+};
+
+const direction = (target) => {
+    return getComputedStyle(host(target)).getPropertyValue('direction').toLowerCase();
+};
+
+const fromAttribute = (input, type) => {
+    const string = `${input}`;
+    if (TYPE_BOOLEAN & type) {
+        if (string === '')
+            return true;
+        if (string === 'false')
+            return false;
+        if (string === 'true')
+            return true;
+    }
+    if (TYPE_NUMBER & type) {
+        if (string != '' && !isNaN(input)) {
+            return parseFloat(input);
+        }
+    }
+    if (TYPE_NULL & type) {
+        if (string === 'null') {
+            return null;
+        }
+    }
+    if (TYPE_DATE & type) {
+        const value = new Date(input);
+        if (value.toString() != 'Invalid Date') {
+            return value;
+        }
+    }
+    if (TYPE_ARRAY & type) {
+        try {
+            const value = JSON.parse(input);
+            if (typeOf(value) == 'array') {
+                return value;
+            }
+        }
+        catch (_a) { }
+    }
+    if (TYPE_OBJECT & type) {
+        try {
+            const value = JSON.parse(input);
+            if (typeOf(value) == 'object') {
+                return value;
+            }
+        }
+        catch (_b) { }
+    }
+    if (TYPE_UNDEFINED & type) {
+        if (string === 'undefined') {
+            return undefined;
+        }
+    }
+    return input;
+};
+
+const getFramework = (target) => {
+    const keys = Object.keys(target);
+    const has = (key) => keys.some((key) => key.startsWith(key));
+    if (has())
+        return 'angular';
+    if (has())
+        return 'react';
+    if (has())
+        return 'svelte';
+    if (has())
+        return 'vue';
+};
+
+// TODO
+const getMembers = (target) => {
+    return target[STATIC_MEMBERS] || {};
+};
+
+const getTag = (target) => {
+    var _a;
+    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
+};
+
+const getNamespace = (instance) => {
+    return getTag(instance).split('-')[0].toUpperCase();
+};
+
+const getStyles = (target) => {
+    var _a;
+    return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
+};
+
+const isRTL = (target) => direction(target) == 'rtl';
+
+const isServer = () => {
+    return !(typeof window != 'undefined' && window.document);
+};
+
+const shadowRoot = (target) => {
+    var _a;
+    return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
+};
+
+function query(target, selectors) {
+    var _a;
+    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
+}
+
+function queryAll(target, selectors) {
+    var _a;
+    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
+}
+
+const task = (options) => {
+    let isPending, promise;
+    const run = () => {
+        if (options.canStart && !options.canStart())
+            return Promise.resolve(false);
+        if (!isPending)
+            promise = enqueue();
+        return promise;
+    };
+    const enqueue = async () => {
+        isPending = true;
+        try {
+            await promise;
+        }
+        catch (error) {
+            Promise.reject(error);
+        }
+        // TODO: maybe is optional
+        if (!isPending)
+            return promise;
+        try {
+            if (options.canRun && !options.canRun())
+                return (isPending = false);
+            options.run();
+            isPending = false;
+            return true;
+        }
+        catch (error) {
+            isPending = false;
+            throw error;
+        }
+    };
+    return run;
+};
+
 class MapSet extends Map {
     set(key, value) {
         super.set(key, value);
@@ -738,281 +1199,7 @@ const render = (where, what) => {
     return where;
 };
 const html = tag('html');
-const svg = tag('svg');
-var uhtml = { Hole, html, render, svg };
-
-// apis
-const API_ATTRIBUTES_SYNCER = Symbol();
-const API_CONNECTED = Symbol();
-const API_HOST = Symbol();
-const API_INSTANCE = Symbol();
-const API_LOCKED = Symbol();
-const API_REQUEST = Symbol();
-const API_RENDER_COMPLETED = Symbol();
-const API_STACKS = Symbol();
-// lifecycle
-const LIFECYCLE_ADOPTED = 'adoptedCallback';
-const LIFECYCLE_CONNECT = 'connectCallback';
-const LIFECYCLE_CONNECTED = 'connectedCallback';
-const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
-const LIFECYCLE_LOADED = 'loadedCallback';
-const LIFECYCLE_UPDATE = 'updateCallback';
-const LIFECYCLE_UPDATED = 'updatedCallback';
-// methods
-const METHOD_RENDER = 'render';
-// statics
-const STATIC_MEMBERS = 'MEMBERS';
-const STATIC_STYLES = 'STYLES';
-const STATIC_TAG = 'TAG';
-// types
-const TYPE_ARRAY = 1;
-const TYPE_BOOLEAN = 2;
-const TYPE_DATE = 4;
-const TYPE_FUNCTION = 16;
-const TYPE_NULL = 32;
-const TYPE_NUMBER = 64;
-const TYPE_OBJECT = 128;
-const TYPE_UNDEFINED = 512;
-
-const addMember = (target, key, data) => {
-    var _a;
-    target[_a = STATIC_MEMBERS] || (target[_a] = {});
-    target[STATIC_MEMBERS][key] = data;
-};
-
-const appendToMethod = (target, propertyKey, handler) => {
-    // Gets the previous function
-    const previous = target[propertyKey];
-    // Creates new function
-    function next(...parameters) {
-        // Calls the previous
-        const result = previous === null || previous === void 0 ? void 0 : previous.bind(this)(...parameters);
-        // Calls the appended
-        handler.bind(this)(...parameters);
-        // Returns the result
-        return result;
-    }
-    // Replaces the next with the previous one
-    target[propertyKey] = next;
-};
-
-const call = (target, key, ...parameters) => {
-    var _a;
-    return (_a = target[key]) === null || _a === void 0 ? void 0 : _a.call(target, ...parameters);
-};
-
-const typeOf = (input) => {
-    return Object.prototype.toString
-        .call(input)
-        .replace(/\[|\]|object| /g, '')
-        .toLowerCase();
-};
-
-const merge = (target, ...sources) => {
-    for (const source of sources) {
-        if (!source)
-            continue;
-        if (typeOf(source) != 'object') {
-            target = source;
-            continue;
-        }
-        for (const key of Object.keys(source)) {
-            if (target[key] instanceof Object && source[key] instanceof Object && target[key] !== source[key]) {
-                target[key] = merge(target[key], source[key]);
-            }
-            else {
-                target[key] = source[key];
-            }
-        }
-    }
-    return target;
-};
-
-let defaults = {
-    component: {}
-};
-const getConfig = (namespace, ...parameters) => {
-    if (typeof window == 'undefined')
-        return;
-    let config = window[namespace];
-    for (const parameter of parameters) {
-        if (!config)
-            break;
-        config = config[parameter];
-    }
-    return config;
-};
-const setConfig = (namespace, config, override) => {
-    if (typeof window == 'undefined')
-        return;
-    window[namespace] = merge({}, defaults, override ? {} : window[namespace], config);
-};
-
-const defineProperty = Object.defineProperty;
-
-const outsides = [];
-const off = (target, type, handler, options) => {
-    if (type != 'outside')
-        return target.removeEventListener(type, handler, options);
-    const index = outsides.findIndex((outside) => outside.target == target && outside.handler == handler && outside.options == options);
-    const outside = outsides[index];
-    if (!outside)
-        return;
-    off(document, outside.type, outside.callback, outside.options);
-    outsides.splice(index, 1);
-};
-const on = (target, type, handler, options) => {
-    if (type != 'outside')
-        return target.addEventListener(type, handler, options);
-    const callback = (event) => {
-        !event.composedPath().some((item) => item == target) && handler(event);
-    };
-    type = 'ontouchstart' in window.document.documentElement ? 'touchstart' : 'click';
-    on(document, type, callback, options);
-    outsides.push({
-        target,
-        type,
-        handler,
-        options,
-        callback
-    });
-};
-
-const fromAttribute = (input, type) => {
-    const string = `${input}`;
-    if (TYPE_BOOLEAN & type) {
-        if (string === '')
-            return true;
-        if (string === 'false')
-            return false;
-        if (string === 'true')
-            return true;
-    }
-    if (TYPE_NUMBER & type) {
-        if (string != '' && !isNaN(input)) {
-            return parseFloat(input);
-        }
-    }
-    if (TYPE_NULL & type) {
-        if (string === 'null') {
-            return null;
-        }
-    }
-    if (TYPE_DATE & type) {
-        const value = new Date(input);
-        if (value.toString() != 'Invalid Date') {
-            return value;
-        }
-    }
-    if (TYPE_ARRAY & type) {
-        try {
-            const value = JSON.parse(input);
-            if (typeOf(value) == 'array') {
-                return value;
-            }
-        }
-        catch (_a) { }
-    }
-    if (TYPE_OBJECT & type) {
-        try {
-            const value = JSON.parse(input);
-            if (typeOf(value) == 'object') {
-                return value;
-            }
-        }
-        catch (_b) { }
-    }
-    if (TYPE_UNDEFINED & type) {
-        if (string === 'undefined') {
-            return undefined;
-        }
-    }
-    return input;
-};
-
-const getFramework = (target) => {
-    const keys = Object.keys(target);
-    const has = (key) => keys.some((key) => key.startsWith(key));
-    if (has())
-        return 'angular';
-    if (has())
-        return 'react';
-    if (has())
-        return 'svelte';
-    if (has())
-        return 'vue';
-};
-
-// TODO
-const getMembers = (target) => {
-    return target[STATIC_MEMBERS] || {};
-};
-
-const getTag = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
-};
-
-const getNamespace = (instance) => {
-    return getTag(instance).split('-')[0].toUpperCase();
-};
-
-const getStyles = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
-};
-
-const host = (target) => {
-    return target[API_HOST]();
-};
-
-const isEvent = (input) => {
-    return !!(input === null || input === void 0 ? void 0 : input.match(/on[A-Z]\w+/g));
-};
-
-const isServer = () => {
-    return !(typeof window != 'undefined' && window.document);
-};
-
-const task = (options) => {
-    let isPending, promise;
-    const run = () => {
-        if (options.canStart && !options.canStart())
-            return Promise.resolve(false);
-        if (!isPending)
-            promise = enqueue();
-        return promise;
-    };
-    const enqueue = async () => {
-        isPending = true;
-        try {
-            await promise;
-        }
-        catch (error) {
-            Promise.reject(error);
-        }
-        // TODO: maybe is optional
-        if (!isPending)
-            return promise;
-        try {
-            if (options.canRun && !options.canRun())
-                return (isPending = false);
-            options.run();
-            isPending = false;
-            return true;
-        }
-        catch (error) {
-            isPending = false;
-            throw error;
-        }
-    };
-    return run;
-};
-
-const shadowRoot = (target) => {
-    var _a;
-    return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
-};
+tag('svg');
 
 /**
  * Updates the DOM with a scheduled task.
@@ -1075,128 +1262,29 @@ const request = (target, name, previous, callback) => {
     call(target, API_REQUEST);
 };
 
-const toEvent = (input) => {
-    return input === null || input === void 0 ? void 0 : input.slice(2).toLowerCase();
-};
-
-/**
- * Source: ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt
- */
-/**
- * Lower case as a function.
- */
-function lowerCase(str) {
-    return str.toLowerCase();
-}
-
-// Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
-var DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
-// Remove all non-word characters.
-var DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
-/**
- * Normalize the string into something other libraries can manipulate easier.
- */
-function noCase(input, options) {
-    if (options === void 0) { options = {}; }
-    var _a = options.splitRegexp, splitRegexp = _a === void 0 ? DEFAULT_SPLIT_REGEXP : _a, _b = options.stripRegexp, stripRegexp = _b === void 0 ? DEFAULT_STRIP_REGEXP : _b, _c = options.transform, transform = _c === void 0 ? lowerCase : _c, _d = options.delimiter, delimiter = _d === void 0 ? " " : _d;
-    var result = replace(replace(input, splitRegexp, "$1\0$2"), stripRegexp, "\0");
-    var start = 0;
-    var end = result.length;
-    // Trim the delimiter from around the output string.
-    while (result.charAt(start) === "\0")
-        start++;
-    while (result.charAt(end - 1) === "\0")
-        end--;
-    // Transform each token independently.
-    return result.slice(start, end).split("\0").map(transform).join(delimiter);
-}
-/**
- * Replace `re` in the input string with the replacement value.
- */
-function replace(input, re, value) {
-    if (re instanceof RegExp)
-        return input.replace(re, value);
-    return re.reduce(function (input, re) { return input.replace(re, value); }, input);
-}
-
-function pascalCaseTransform(input, index) {
-    var firstChar = input.charAt(0);
-    var lowerChars = input.substr(1).toLowerCase();
-    if (index > 0 && firstChar >= "0" && firstChar <= "9") {
-        return "_" + firstChar + lowerChars;
+const styles = (input) => {
+    switch (typeOf(input)) {
+        case 'array':
+            return input.join('; ');
+        case 'object':
+            return Object.keys(input)
+                .filter((key) => input[key] !== undefined && input[key] !== null)
+                .map((key) => `${key.startsWith('--') ? '--' : ''}${paramCase(key)}: ${input[key]}`)
+                .join('; ');
+        case 'string':
+            return input;
+        default:
+            return '';
     }
-    return "" + firstChar.toUpperCase() + lowerChars;
-}
-function pascalCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return noCase(input, __assign({ delimiter: "", transform: pascalCaseTransform }, options));
-}
-
-function camelCaseTransform(input, index) {
-    if (index === 0)
-        return input.toLowerCase();
-    return pascalCaseTransform(input, index);
-}
-function camelCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return pascalCase(input, __assign({ transform: camelCaseTransform }, options));
-}
-
-function dotCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return noCase(input, __assign({ delimiter: "." }, options));
-}
-
-function paramCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return dotCase(input, __assign({ delimiter: "-" }, options));
-}
-
-const updateAttribute = (node, key, value) => {
-    const name = paramCase(key);
-    if ([undefined, null, false].includes(value))
-        return node.removeAttribute(name);
-    node.setAttribute(name, value === true ? '' : value);
 };
 
-const syncAttributes = (node) => {
-    let prev = {};
-    return (next = {}) => {
-        const prevClass = (prev.class || '').split(' ');
-        const nextClass = (next.class || '').split(' ');
-        const newClass = node.className
-            .split(' ')
-            .filter((key) => !prevClass.includes(key) && !nextClass.includes(key))
-            .concat(nextClass)
-            .filter((key) => key)
-            .join(' ');
-        updateAttribute(node, 'class', newClass || undefined);
-        if (prev.style || next.style)
-            node.setAttribute('style', next.style || '');
-        for (const key in prev)
-            isEvent(key) && off(node, toEvent(key), prev[key]);
-        for (const key in next) {
-            if (['class', 'style'].includes(key))
-                continue;
-            if (isEvent(key))
-                on(node, toEvent(key), next[key]);
-            else
-                updateAttribute(node, key, next[key]);
-        }
-        prev = Object.assign({}, next);
-    };
+const toUnit = (input, unit = 'px') => {
+    if (input == null || input === '')
+        return undefined;
+    if (isNaN(+input))
+        return String(input);
+    return `${Number(input)}${unit}`;
 };
-
-function Attributes() {
-    return function (target, propertyKey) {
-        appendToMethod(target, LIFECYCLE_CONNECTED, function () {
-            this[API_ATTRIBUTES_SYNCER] = syncAttributes(host(this));
-        });
-        appendToMethod(target, LIFECYCLE_UPDATED, function () {
-            this[API_ATTRIBUTES_SYNCER](this[propertyKey]);
-        });
-    };
-}
 
 function Bind() {
     return function (target, propertyKey, descriptor) {
@@ -1402,107 +1490,6 @@ function Watch(keys, immediate) {
         });
     };
 }
-
-const classes = (input, smart) => {
-    const result = [];
-    switch (typeOf(input)) {
-        case 'array': {
-            input.forEach((item) => {
-                const value = classes(item, smart);
-                if (!value)
-                    return;
-                result.push(value);
-            });
-            break;
-        }
-        case 'object': {
-            const keys = Object.keys(input);
-            for (const key of keys) {
-                const value = input[key];
-                const name = paramCase(key);
-                const type = typeOf(value);
-                if (!smart) {
-                    if (!value)
-                        continue;
-                    result.push(name);
-                    continue;
-                }
-                switch (type) {
-                    case 'boolean': {
-                        if (!value)
-                            continue;
-                        result.push(`${name}`);
-                        break;
-                    }
-                    case 'number': {
-                        result.push(`${name}-${value}`);
-                        break;
-                    }
-                    case 'string': {
-                        switch (value) {
-                            case '':
-                            case 'true':
-                                result.push(`${name}`);
-                                break;
-                            case 'false':
-                                break;
-                            default:
-                                result.push(`${name}-${value}`);
-                                break;
-                        }
-                        break;
-                    }
-                }
-            }
-            break;
-        }
-        case 'string': {
-            result.push(input);
-            break;
-        }
-    }
-    return result.join(' ');
-};
-
-const direction = (target) => {
-    return getComputedStyle(host(target)).getPropertyValue('direction').toLowerCase();
-};
-
-const isRTL = (target) => direction(target) == 'rtl';
-
-function query(target, selectors) {
-    var _a;
-    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
-}
-
-function queryAll(target, selectors) {
-    var _a;
-    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
-}
-
-const styles = (input) => {
-    switch (typeOf(input)) {
-        case 'array':
-            return input.join('; ');
-        case 'object':
-            return Object.keys(input)
-                .filter((key) => input[key] !== undefined && input[key] !== null)
-                .map((key) => `${key.startsWith('--') ? '--' : ''}${paramCase(key)}: ${input[key]}`)
-                .join('; ');
-        case 'string':
-            return input;
-        default:
-            return '';
-    }
-};
-
-const toUnit = (input, unit = 'px') => {
-    if (input == null || input === '')
-        return undefined;
-    if (isNaN(+input))
-        return String(input);
-    return `${Number(input)}${unit}`;
-};
 
 class Animation2 {
     get animations() {
@@ -2093,4 +2080,4 @@ Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
 // @Override()
 // override?: { [key: string]: any };
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, Attributes as d, off as e, classes as f, getConfig as g, host as h, isRTL as i, createLink as j, toAxis as k, Animation as l, Scrollbar as m, Portal as n, on as o, Media as p, queryAll as q, request as r, setConfig as s, toUnit as t, uhtml as u, query as v };
+export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, __awaiter as a, html as b, Element as c, styles as d, attributes$1 as e, off as f, getConfig as g, host as h, isRTL as i, classes as j, createLink as k, toAxis as l, Animation as m, Scrollbar as n, on as o, Portal as p, queryAll as q, request as r, setConfig as s, toUnit as t, Media as u, query as v };

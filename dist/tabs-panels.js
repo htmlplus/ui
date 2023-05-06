@@ -1,4 +1,4 @@
-import { _ as __decorate, u as uhtml, P as Property, W as Watch, b as Element, j as createLink } from './core/index.js';
+import { _ as __decorate, b as html, P as Property, W as Watch, c as Element, k as createLink } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}";
 
@@ -18,7 +18,7 @@ let TabsPanels = class TabsPanels {
         reconnect(this);
     }
     render() {
-        return uhtml.html `<slot />`;
+        return html `<slot />`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY

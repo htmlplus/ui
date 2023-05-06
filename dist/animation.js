@@ -1,4 +1,4 @@
-import { s as setConfig, _ as __decorate, h as host, u as uhtml, P as Property, E as Event, M as Method, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { s as setConfig, _ as __decorate, h as host, b as html, P as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 import { getConfig } from './config.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}";
@@ -234,7 +234,7 @@ let Animation = class Animation {
         (_c = this.instance) === null || _c === void 0 ? void 0 : _c.removeEventListener('remove', this.onFinish);
     }
     render() {
-        return uhtml.html `<slot />`;
+        return html `<slot />`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY

@@ -1,4 +1,4 @@
-import { Attributes, Element, Property, State, Watch, createLink } from '@htmlplus/element';
+import { Element, Property, State, Watch, createLink } from '@htmlplus/element';
 
 const { Inject, reconnect } = createLink('Toast');
 
@@ -25,7 +25,6 @@ export class ToastToggler {
   @State()
   tunnel?: boolean;
 
-  @Attributes()
   get attributes() {
     return {
       role: 'button',

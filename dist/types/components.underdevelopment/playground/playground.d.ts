@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { PlaygroundReferences } from './playground.types';
 /**
  * TODO
@@ -15,5 +14,5 @@ export declare class Playground {
     references?: PlaygroundReferences;
     get $host(): HTMLElement;
     get $references(): (Element | PlaygroundReferences[])[];
-    render(): JSX.Element;
+    render(): any;
 }

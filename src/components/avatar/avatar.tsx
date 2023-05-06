@@ -1,4 +1,4 @@
-import { Attributes, Element, Property, isRTL, toUnit } from '@htmlplus/element';
+import { Element, Property, isRTL, toUnit } from '@htmlplus/element';
 
 import { AVATAR_SIZES } from './avatar.constants';
 import { AvatarShape, AvatarSize } from './avatar.types';
@@ -20,14 +20,6 @@ export class Avatar {
    */
   @Property({ reflect: true })
   size?: AvatarSize = 'md';
-
-  @Attributes()
-  get attributes() {
-    if (AVATAR_SIZES.includes(this.size as any)) return;
-    return {
-      style: `--plus-avatar-size: ${toUnit(this.size)}`
-    };
-  }
 
   get PLACEMENTS() {
     const offset = this.shape == 'circle' ? '14.64466%' : '0';
@@ -110,16 +102,21 @@ export class Avatar {
     };
   }
 
+  get style() {
+    if (AVATAR_SIZES.includes(this.size as any)) return;
+    return `--plus-avatar-size: ${toUnit(this.size)}`;
+  }
+
   render() {
     return (
-      <>
+      <host style={this.style}>
         <slot />
         {Object.keys(this.PLACEMENTS).map((PLACEMENT) => (
           <div className={PLACEMENT} style={this.PLACEMENTS[PLACEMENT]}>
             <slot name={PLACEMENT} />
           </div>
         ))}
-      </>
+      </host>
     );
   }
 }

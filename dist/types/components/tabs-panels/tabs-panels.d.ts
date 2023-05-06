@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * TODO: This component contains panels.
  * @slot default - The default slot.
@@ -14,7 +13,7 @@ export declare class TabsPanels {
      * Watchers
      */
     watcher(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsPanelsJSX {
     /**

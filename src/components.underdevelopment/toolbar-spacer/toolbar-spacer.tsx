@@ -1,4 +1,4 @@
-import { Attributes, Element, Property } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 /**
  * @development
@@ -11,7 +11,6 @@ export class ToolbarSpacer {
   @Property()
   grow?: number = 1;
 
-  @Attributes()
   get attributes() {
     return {
       style: `flex-grow: ${this.grow};`

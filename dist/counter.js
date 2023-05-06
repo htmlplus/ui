@@ -1,4 +1,4 @@
-import { _ as __decorate, P as Property, E as Event, S as State, d as Attributes, M as Method, B as Bind, W as Watch, b as Element } from './core/index.js';
+import { _ as __decorate, b as html, e as attributes, h as host, P as Property, E as Event, S as State, M as Method, B as Bind, W as Watch, c as Element } from './core/index.js';
 
 const COUNTER_EASINGS = {
     'ease-out-expo': (currentTime, beginningValue, changeInValue, duration) => {
@@ -41,11 +41,6 @@ let Counter = class Counter {
          */
         this.numerals = [];
         this.state = 'idle';
-    }
-    get attributes() {
-        return {
-            state: this.state
-        };
     }
     get easingFunction() {
         return (COUNTER_EASINGS[this.easing] || this.easing);
@@ -176,7 +171,9 @@ let Counter = class Counter {
         this.stop();
     }
     render() {
-        return this.formated;
+        return html `${attributes(host(this), [{
+                "state": this.state
+            }])}${this.formated}`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -241,9 +238,6 @@ __decorate([
 __decorate([
     State()
 ], Counter.prototype, "state", void 0);
-__decorate([
-    Attributes()
-], Counter.prototype, "attributes", null);
 __decorate([
     Method()
 ], Counter.prototype, "complete", null);

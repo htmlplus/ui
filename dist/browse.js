@@ -1,4 +1,4 @@
-import { _ as __decorate, u as uhtml, P as Property, E as Event, S as State, d as Attributes, M as Method, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, b as html, e as attributes, h as host, P as Property, E as Event, S as State, M as Method, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{cursor:pointer}input[type=file]{display:none}";
 
@@ -95,7 +95,10 @@ let Browse = class Browse {
         this.do(event.dataTransfer.files);
     }
     render() {
-        return uhtml.html `<slot /><input accept=${this.accept} multiple=${this.multiple} ref=${$element => this.$input = $element} type="file" onChange=${this.onChange} onClick=${event => event.stopPropagation()} />`;
+        return html `${attributes(host(this), [this.attributes])}
+        <slot />
+        <input accept=${this.accept} multiple=${this.multiple} ref=${$element => this.$input = $element} type="file" onChange=${this.onChange} onClick=${event => event.stopPropagation()} />
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -155,9 +158,6 @@ __decorate([
 __decorate([
     State()
 ], Browse.prototype, "dragging", void 0);
-__decorate([
-    Attributes()
-], Browse.prototype, "attributes", null);
 __decorate([
     Method()
 ], Browse.prototype, "browse", null);

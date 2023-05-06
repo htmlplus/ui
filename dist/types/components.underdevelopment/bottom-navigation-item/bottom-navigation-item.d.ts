@@ -1,4 +1,3 @@
-/// <reference types="react" />
 /**
  * @development
  * @group bottom-navigation
@@ -31,5 +30,5 @@ export declare class BottomNavigationItem {
     /**
      * Lifecycles
      */
-    render(): JSX.Element;
+    render(): any;
 }

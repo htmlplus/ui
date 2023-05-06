@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, o as on, e as off, u as uhtml, P as Property, E as Event, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, h as host, o as on, f as off, b as html, P as Property, E as Event, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 /**
  * @stable
@@ -45,7 +45,7 @@ let ClickOutside = class ClickOutside {
         this.unbind();
     }
     render() {
-        return uhtml.html `<slot />`;
+        return html `<slot />`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY

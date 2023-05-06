@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 /**
  * @stable
@@ -33,7 +32,7 @@ export declare class ClickOutside {
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface ClickOutsideJSX {
     /**

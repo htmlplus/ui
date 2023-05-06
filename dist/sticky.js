@@ -1,4 +1,4 @@
-import { _ as __decorate, t as toUnit, c as styles, u as uhtml, P as Property, E as Event, S as State, d as Attributes, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, t as toUnit, d as styles, b as html, e as attributes, h as host, P as Property, E as Event, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
 
@@ -14,12 +14,6 @@ let Sticky = class Sticky {
          * Specifies the space from top.
          */
         this.top = 0;
-    }
-    get attributes() {
-        return {
-            state: this.watcher ? this.state : null,
-            style: this.style
-        };
     }
     get sizer() {
         const top = toUnit(this.top);
@@ -76,11 +70,19 @@ let Sticky = class Sticky {
         this.unbind();
     }
     render() {
-        return uhtml.html `<div class="sizer-wrapper">
+        return html `${attributes(host(this), [{
+                "state": this.watcher ? this.state : null
+            }, {
+                "style": styles(this.style)
+            }])}
+        <div class="sizer-wrapper">
           <div class="sizer" ref=${$element => this.$element = $element} style=${styles(this.sizer)}></div>
-        </div><slot />${this.state && uhtml.html `<div class=${this.state}>
+        </div>
+        <slot />
+        ${this.state && html `<div class=${this.state}>
             <slot name=${this.state} />
-          </div>`}`;
+          </div>`}
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -108,9 +110,6 @@ __decorate([
 __decorate([
     State()
 ], Sticky.prototype, "state", void 0);
-__decorate([
-    Attributes()
-], Sticky.prototype, "attributes", null);
 __decorate([
     Watch(['disabled', 'watcher'])
 ], Sticky.prototype, "watchers", null);

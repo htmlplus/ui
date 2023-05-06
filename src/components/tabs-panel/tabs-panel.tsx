@@ -1,4 +1,4 @@
-import { Attributes, Element, Property } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 import { createLink } from '@app/services';
 
@@ -21,14 +21,11 @@ export class TabsPanel {
   @Inject(true)
   tunnel?: any;
 
-  @Attributes()
-  get attributes() {
-    return {
-      active: this.tunnel && this.tunnel === this.value
-    };
-  }
-
   render() {
-    return <slot />;
+    return (
+      <host active={this.tunnel && this.tunnel === this.value}>
+        <slot />
+      </host>
+    );
   }
 }

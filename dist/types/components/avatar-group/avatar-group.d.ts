@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @stable
  * @slot default - The default slot.
@@ -14,7 +13,7 @@ export declare class AvatarGroup {
      * Specifies whether avatars should be displayed compressed or not.
      */
     stacked?: boolean;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AvatarGroupJSX {
     /**

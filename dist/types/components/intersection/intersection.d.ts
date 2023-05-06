@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 /**
  * @stable
@@ -43,9 +42,6 @@ export declare class Intersection {
     plusChange: EventEmitter<IntersectionObserverEntry>;
     isIntersecting?: boolean;
     observer?: IntersectionObserver;
-    get attributes(): {
-        state: string;
-    };
     get disconnected(): boolean;
     get options(): {
         root: Element;
@@ -58,7 +54,7 @@ export declare class Intersection {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface IntersectionJSX {
     /**

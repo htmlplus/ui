@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 import './assets/names/fading-entrance/fade-in.js';
@@ -157,7 +156,7 @@ export declare class Animation {
     onRemove(): void;
     updatedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AnimationJSX {
     /**

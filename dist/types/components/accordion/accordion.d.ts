@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { Animation2 } from '@app/services';
 /**
@@ -59,7 +58,7 @@ export declare class Accordion {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AccordionJSX {
     /**

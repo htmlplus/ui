@@ -34,12 +34,6 @@ export declare class Icon {
      */
     size?: IconSize;
     svg?: SVGElement;
-    get attributes(): {
-        'aria-label': string;
-        'aria-hidden': string;
-        role: string;
-        style: string;
-    };
     get $host(): HTMLElement;
     get cache(): any;
     set cache(cache: any);
@@ -47,7 +41,7 @@ export declare class Icon {
     sync(input?: SVGElement | string): boolean;
     update(): void;
     watcher(): void;
-    render(): SVGElement;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface IconJSX {
     /**

@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { CardElevation } from './card.types';
 /**
  * @slot default - The default slot.
@@ -23,7 +22,7 @@ export declare class Card {
      * Use tile property to neutralize border-radius.
      */
     tile?: boolean;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CardJSX {
     /**

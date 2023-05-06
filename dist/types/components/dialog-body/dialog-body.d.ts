@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @slot default - The default slot.
  */
@@ -9,7 +8,7 @@ export declare class DialogBody {
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
     scrollable?: boolean;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogBodyJSX {
     /**

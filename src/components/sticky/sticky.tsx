@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Event,
@@ -51,14 +50,6 @@ export class Sticky {
   state?: StickyState;
 
   observer?: IntersectionObserver;
-
-  @Attributes()
-  get attributes() {
-    return {
-      state: this.watcher ? this.state : null,
-      style: this.style
-    };
-  }
 
   get sizer() {
     const top = toUnit(this.top);
@@ -127,7 +118,7 @@ export class Sticky {
 
   render() {
     return (
-      <>
+      <host state={this.watcher ? this.state : null} style={this.style}>
         <div className="sizer-wrapper">
           <div
             className="sizer"
@@ -141,7 +132,7 @@ export class Sticky {
             <slot name={this.state} />
           </div>
         )}
-      </>
+      </host>
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Attributes, Element, Event, EventEmitter, Property, Watch, host } from '@htmlplus/element';
+import { Element, Event, EventEmitter, Property, Watch, host } from '@htmlplus/element';
 
 import { Animation } from '@app/services';
 
@@ -72,7 +72,6 @@ export class BottomNavigation {
   // @Observable()
   tunnel?: any;
 
-  @Attributes()
   get attributes() {
     return {
       state: 'open'

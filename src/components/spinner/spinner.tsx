@@ -1,4 +1,4 @@
-import { Attributes, Element, Property } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 import { SpinnerSize, SpinnerType } from './spinner.types';
 
@@ -19,13 +19,6 @@ export class Spinner {
   @Property({ reflect: true })
   type?: SpinnerType = 'default';
 
-  @Attributes()
-  get attributes() {
-    return {
-      role: 'status'
-    };
-  }
-
   get elements() {
     const map = {
       'default': 8,
@@ -39,11 +32,13 @@ export class Spinner {
 
   render() {
     return (
-      <div className="root">
-        {this.elements.map((element) => (
-          <div key={element} />
-        ))}
-      </div>
+      <host role="status">
+        <div className="root">
+          {this.elements.map((element) => (
+            <div key={element} />
+          ))}
+        </div>
+      </host>
     );
   }
 }

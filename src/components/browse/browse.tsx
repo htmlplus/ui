@@ -1,13 +1,4 @@
-import {
-  Attributes,
-  Bind,
-  Element,
-  Event,
-  EventEmitter,
-  Method,
-  Property,
-  State
-} from '@htmlplus/element';
+import { Bind, Element, Event, EventEmitter, Method, Property, State } from '@htmlplus/element';
 
 import { BrowseEvent, BrowseFile } from './browse.types';
 
@@ -91,7 +82,6 @@ export class Browse {
 
   timeout?;
 
-  @Attributes()
   get attributes() {
     const attributes = {};
 
@@ -216,7 +206,7 @@ export class Browse {
 
   render() {
     return (
-      <>
+      <host {...this.attributes}>
         <slot />
         <input
           accept={this.accept}
@@ -226,7 +216,7 @@ export class Browse {
           onChange={this.onChange}
           onClick={(event) => event.stopPropagation()}
         />
-      </>
+      </host>
     );
   }
 }

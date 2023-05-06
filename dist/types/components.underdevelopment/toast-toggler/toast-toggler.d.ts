@@ -1,4 +1,3 @@
-/// <reference types="react" />
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
@@ -24,5 +23,5 @@ export declare class ToastToggler {
      * Watchers
      */
     watcher(): void;
-    render(): JSX.Element;
+    render(): any;
 }

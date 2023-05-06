@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Property } from '@htmlplus/element';
+import { Bind, Element, Property } from '@htmlplus/element';
 
 import { createLink } from '@app/services';
 
@@ -30,14 +30,6 @@ export class TabsTab {
   @Inject()
   change?: Function = () => console.log('TODO: can not use out of tabs');
 
-  @Attributes()
-  get attributes() {
-    return {
-      active: this.tunnel && this.tunnel === this.value,
-      onClick: this.onClick
-    };
-  }
-
   /**
    * Events handler
    */
@@ -49,9 +41,11 @@ export class TabsTab {
 
   render() {
     return (
-      <span>
-        <slot />
-      </span>
+      <host active={this.tunnel && this.tunnel === this.value} onClick={this.onClick}>
+        <span>
+          <slot />
+        </span>
+      </host>
     );
   }
 }

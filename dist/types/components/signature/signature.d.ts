@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import type CoreType from 'signature_pad';
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
@@ -144,7 +143,7 @@ export declare class Signature {
     onResize(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SignatureJSX {
     /**

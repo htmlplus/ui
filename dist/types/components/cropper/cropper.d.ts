@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import type CropperCoreType from 'cropperjs';
 import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, CropperPointerEvent, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomEvent } from './cropper.types';
@@ -204,7 +203,7 @@ export declare class Cropper {
     connectCallback(): Promise<void>;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CropperJSX {
     /**

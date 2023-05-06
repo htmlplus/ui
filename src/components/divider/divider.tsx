@@ -1,4 +1,4 @@
-import { Attributes, Element, Property } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
@@ -34,15 +34,11 @@ export class Divider {
   @Property({ reflect: true })
   vertical?: boolean;
 
-  @Attributes()
-  get attributes() {
-    return {
-      'aria-orientation': this.vertical ? 'vertical' : 'horizontal',
-      'role': 'separator'
-    };
-  }
-
   render() {
-    return <slot />;
+    return (
+      <host aria-orientation={this.vertical ? 'vertical' : 'horizontal'} role="separator">
+        <slot />
+      </host>
+    );
   }
 }

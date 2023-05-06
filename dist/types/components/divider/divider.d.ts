@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 export declare class Divider {
     static TAG: string;
@@ -23,11 +22,7 @@ export declare class Divider {
      *  Draws the divider in a vertical orientation.
      */
     vertical?: boolean;
-    get attributes(): {
-        'aria-orientation': string;
-        role: string;
-    };
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DividerJSX {
     /**

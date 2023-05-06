@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { EventEmitter } from '@htmlplus/element';
 import { Animation } from '@app/services';
 import { ToastPlacement, ToastType } from './toast.types';
@@ -120,5 +119,5 @@ export declare class Toast {
      */
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): JSX.Element;
+    render(): any;
 }

@@ -1,4 +1,4 @@
-import { Attributes, Element, Property } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 /**
  * TODO: Arranges tabs within a bar.
@@ -24,14 +24,11 @@ export class TabsBar {
   @Property({ reflect: true })
   reverse?: boolean;
 
-  @Attributes()
-  get attributes() {
-    return {
-      role: 'tablist'
-    };
-  }
-
   render() {
-    return <slot />;
+    return (
+      <host role="tablist">
+        <slot />
+      </host>
+    );
   }
 }

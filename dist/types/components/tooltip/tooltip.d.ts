@@ -1,5 +1,4 @@
 /// <reference types="node" />
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import type * as FloatingCoreType from '@floating-ui/dom';
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
@@ -56,10 +55,6 @@ export declare class Tooltip {
     $activator?: Element;
     cleanup?: Function;
     timeout?: NodeJS.Timeout;
-    get attributes(): {
-        role: string;
-        state: "hide" | "show";
-    };
     get options(): Partial<{
         placement?: FloatingCoreType.Placement;
         strategy?: FloatingCoreType.Strategy;
@@ -105,7 +100,7 @@ export declare class Tooltip {
     connectCallback(): Promise<void>;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TooltipJSX {
     /**

@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { FloatingOffset, FloatingPlacement } from './floating.types';
 /**
  * @stable
@@ -20,10 +19,7 @@ export declare class Floating {
      */
     placement?: FloatingPlacement;
     get style(): string;
-    get attributes(): {
-        style: string;
-    };
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface FloatingJSX {
     /**

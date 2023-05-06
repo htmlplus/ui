@@ -1,4 +1,4 @@
-import { _ as __decorate, i as isRTL, k as toAxis, t as toUnit, c as styles, u as uhtml, P as Property, d as Attributes, b as Element } from './core/index.js';
+import { _ as __decorate, i as isRTL, l as toAxis, t as toUnit, d as styles, b as html, e as attributes, h as host, P as Property, c as Element } from './core/index.js';
 
 /**
  * @stable
@@ -42,13 +42,12 @@ let Floating = class Floating {
         }
         return styles(style);
     }
-    get attributes() {
-        return {
-            style: this.style
-        };
-    }
     render() {
-        return uhtml.html `<slot />`;
+        return html `${attributes(host(this), [{
+                "style": styles(this.style)
+            }])}
+        <slot />
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -68,9 +67,6 @@ __decorate([
         type: 8
     })
 ], Floating.prototype, "placement", void 0);
-__decorate([
-    Attributes()
-], Floating.prototype, "attributes", null);
 Floating = __decorate([
     Element()
 ], Floating);

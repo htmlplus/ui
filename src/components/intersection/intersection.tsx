@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Event,
@@ -67,13 +66,6 @@ export class Intersection {
   isIntersecting?: boolean;
 
   observer?: IntersectionObserver;
-
-  @Attributes()
-  get attributes() {
-    return {
-      state: this.isIntersecting ? 'in' : 'out'
-    };
-  }
 
   get disconnected() {
     return this.once && this.isIntersecting;
@@ -144,6 +136,10 @@ export class Intersection {
   }
 
   render() {
-    return <slot />;
+    return (
+      <host state={this.isIntersecting ? 'in' : 'out'}>
+        <slot />
+      </host>
+    );
   }
 }

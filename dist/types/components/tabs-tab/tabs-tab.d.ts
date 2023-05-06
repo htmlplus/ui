@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * TODO: Tabs make it easy to switch between different views.
  * @slot default - The default slot.
@@ -16,15 +15,11 @@ export declare class TabsTab {
     value?: any;
     tunnel?: any;
     change?: Function;
-    get attributes(): {
-        active: boolean;
-        onClick: () => void;
-    };
     /**
      * Events handler
      */
     onClick(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsTabJSX {
     /**

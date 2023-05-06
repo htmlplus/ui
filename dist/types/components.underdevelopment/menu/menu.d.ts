@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { EventEmitter } from '@htmlplus/element';
 import { MenuAlignX, MenuAlignY, MenuGrowX, MenuGrowY } from './menu.types';
 /**
@@ -79,5 +78,5 @@ export declare class Menu {
     onOutsideClick(event: any): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): JSX.Element;
+    render(): any;
 }

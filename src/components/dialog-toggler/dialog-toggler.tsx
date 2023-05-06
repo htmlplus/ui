@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Property, State, Watch } from '@htmlplus/element';
+import { Bind, Element, Property, State, Watch } from '@htmlplus/element';
 
 import { createLink } from '@app/services';
 
@@ -29,15 +29,6 @@ export class DialogToggler {
   @Inject(true)
   tunnel?: boolean;
 
-  @Attributes()
-  get attributes() {
-    return {
-      role: 'button',
-      state: this.tunnel ? 'open' : 'close',
-      onClick: this.onClick
-    };
-  }
-
   get text() {
     return this.tunnel ? 'Close' : 'Open';
   }
@@ -60,7 +51,11 @@ export class DialogToggler {
   }
 
   render() {
-    return <slot>{this.text}</slot>;
+    return (
+      <host role="button" state={this.tunnel ? 'open' : 'close'} onClick={this.onClick}>
+        <slot>{this.text}</slot>
+      </host>
+    );
   }
 }
 

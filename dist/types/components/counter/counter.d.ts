@@ -54,9 +54,6 @@ export declare class Counter {
     remaining?: number;
     requestAnimationFrame?: number;
     startTime?: number;
-    get attributes(): {
-        state: "idle" | "completed" | "paused" | "running" | "stopped";
-    };
     get easingFunction(): any;
     get formated(): string;
     get reverse(): boolean;
@@ -80,7 +77,7 @@ export declare class Counter {
     reset(): void;
     watcher(): void;
     disconnectedCallback(): void;
-    render(): string;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CounterJSX {
     /**

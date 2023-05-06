@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @development
  * @slot default - The default slot.
@@ -6,7 +5,7 @@ import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 export declare class CardBody {
     static TAG: string;
     static STYLES: string;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CardBodyJSX {
 }

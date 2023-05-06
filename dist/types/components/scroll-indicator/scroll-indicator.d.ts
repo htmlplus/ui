@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 /**
@@ -25,7 +24,6 @@ export declare class ScrollIndicator {
     plusScroll: EventEmitter<number>;
     $indicator: HTMLElement;
     get $source(): Element | Document;
-    get attributes(): {};
     get progress(): number;
     /**
      * Internal Methods
@@ -45,7 +43,7 @@ export declare class ScrollIndicator {
      */
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface ScrollIndicatorJSX {
     /**

@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Event,
@@ -178,22 +177,6 @@ export class Dialog {
 
   get $host() {
     return host(this);
-  }
-
-  @Attributes()
-  get attributes() {
-    const attributes = {
-      tabindex: -1
-    };
-
-    if (this.isOpen) {
-      attributes['role'] = 'dialog';
-      attributes['aria-modal'] = 'true';
-    } else {
-      attributes['aria-hidden'] = 'true';
-    }
-
-    return attributes;
   }
 
   get classes() {
@@ -435,7 +418,12 @@ export class Dialog {
 
   render() {
     return (
-      <>
+      <host
+        aria-hidden={this.isOpen ? null : 'true'}
+        aria-modal={this.isOpen ? 'true' : null}
+        tabIndex={-1}
+        role={this.isOpen ? 'dialog' : null}
+      >
         {this.backdrop && (
           <div className="backdrop" part="backdrop">
             <div />
@@ -448,7 +436,7 @@ export class Dialog {
             </div>
           </div>
         </div>
-      </>
+      </host>
     );
   }
 }

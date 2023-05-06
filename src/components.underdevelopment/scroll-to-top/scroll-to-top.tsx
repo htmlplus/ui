@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Event,
@@ -53,7 +52,6 @@ export class ScrollToTop {
   @State()
   state: ScrollToTopChangeEvent = 'hide';
 
-  @Attributes()
   get attributes() {
     return {
       role: 'button',

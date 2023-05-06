@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 /**
  * @development
@@ -39,7 +38,7 @@ export declare class Tabs {
      * Lifecycles
      */
     connectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsJSX {
     /**

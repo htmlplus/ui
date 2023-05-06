@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Event,
@@ -95,13 +94,6 @@ export class Counter {
   requestAnimationFrame?: number;
 
   startTime?: number;
-
-  @Attributes()
-  get attributes() {
-    return {
-      state: this.state
-    };
-  }
 
   get easingFunction() {
     return (COUNTER_EASINGS[this.easing] || this.easing) as any;
@@ -251,6 +243,6 @@ export class Counter {
   }
 
   render() {
-    return this.formated;
+    return <host state={this.state}>{this.formated}</host>;
   }
 }

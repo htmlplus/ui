@@ -1,4 +1,3 @@
-/// <reference types="react" />
 /**
  * @development
  * @slot default - The default slot.
@@ -20,5 +19,5 @@ export declare class Toolbar {
      * TODO
      */
     wrap?: boolean;
-    render(): JSX.Element;
+    render(): any;
 }

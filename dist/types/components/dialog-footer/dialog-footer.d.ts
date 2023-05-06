@@ -1,11 +1,10 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @slot default - The default slot.
  */
 export declare class DialogFooter {
     static TAG: string;
     static STYLES: string;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogFooterJSX {
 }

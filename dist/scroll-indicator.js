@@ -1,4 +1,4 @@
-import { _ as __decorate, o as on, e as off, u as uhtml, P as Property, E as Event, d as Attributes, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, o as on, f as off, b as html, P as Property, E as Event, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{--plus-scroll-indicator-color:#a6a6a6;--plus-scroll-indicator-background-color:#e9e9e9;--plus-scroll-indicator-size:0.5em}:host{background-color:var(--plus-scroll-indicator-background-color);display:block;height:var(--plus-scroll-indicator-size);width:100%}.indicator{background-color:var(--plus-scroll-indicator-color);height:100%;width:0}";
 
@@ -18,11 +18,6 @@ let ScrollIndicator = class ScrollIndicator {
         if (this.source === 'document')
             return document;
         return document.querySelector(this.source);
-    }
-    get attributes() {
-        return {
-        // 'role': 'TODO'
-        };
     }
     get progress() {
         var _a;
@@ -73,7 +68,7 @@ let ScrollIndicator = class ScrollIndicator {
         this.unbind();
     }
     render() {
-        return uhtml.html `<div class="indicator" part="indicator" ref=${$element => this.$indicator = $element} />`;
+        return html `<div class="indicator" part="indicator" ref=${$element => this.$indicator = $element} />`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -93,9 +88,6 @@ __decorate([
 __decorate([
     Event()
 ], ScrollIndicator.prototype, "plusScroll", void 0);
-__decorate([
-    Attributes()
-], ScrollIndicator.prototype, "attributes", null);
 __decorate([
     Watch(['disabled', 'source'])
 ], ScrollIndicator.prototype, "watcher", null);

@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 /**
  * @slot default - The default slot.
@@ -152,7 +151,7 @@ export declare class Grid {
      */
     wrapXxl?: GridWrap;
     updatedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface GridJSX {
     /**

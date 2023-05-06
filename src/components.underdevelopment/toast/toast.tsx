@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Element,
   Event,
   EventEmitter,
@@ -138,7 +137,6 @@ export class Toast {
     return host(this);
   }
 
-  @Attributes()
   get attributes() {
     return {
       // TODO

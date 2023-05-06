@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 export declare class Switch {
     static TAG: string;
@@ -17,18 +16,10 @@ export declare class Switch {
      * @model
      */
     plusChange: EventEmitter<void>;
-    get attributes(): {
-        'aria-checked': string;
-        'aria-disabled': string;
-        role: string;
-        tabindex: string;
-        onClick: (event: any) => void;
-        onKeyDown: (event: any) => void;
-    };
     toggle(): void;
     onClick(event: any): void;
     onKeyDown(event: any): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SwitchJSX {
     /**

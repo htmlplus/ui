@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
@@ -16,11 +15,6 @@ export declare class DialogToggler {
     connector?: string;
     toggle?: Function;
     tunnel?: boolean;
-    get attributes(): {
-        role: string;
-        state: string;
-        onClick: () => void;
-    };
     get text(): "Close" | "Open";
     /**
      * Watchers
@@ -30,7 +24,7 @@ export declare class DialogToggler {
      * Events handler
      */
     onClick(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogTogglerJSX {
     /**

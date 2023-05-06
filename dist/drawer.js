@@ -1,4 +1,4 @@
-import { _ as __decorate, j as createLink, h as host, k as toAxis, i as isRTL, f as classes, c as styles, l as Animation, m as Scrollbar, e as off, o as on, u as uhtml, P as Property, E as Event, S as State, d as Attributes, W as Watch, B as Bind, p as Media, b as Element } from './core/index.js';
+import { _ as __decorate, k as createLink, h as host, l as toAxis, i as isRTL, j as classes, d as styles, m as Animation, n as Scrollbar, f as off, o as on, b as html, e as attributes, P as Property, E as Event, S as State, W as Watch, B as Bind, u as Media, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{--plus-drawer-size:280px;--plus-drawer-mini-size:80px}:host{display:block;overflow:hidden;position:relative;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.root{height:100%;position:relative;z-index:1}.backdrop,.root{transition:inherit}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([temporary=on-breakpoint][state=mobile]),:host([temporary]:not([temporary=false]):not([temporary=on-breakpoint])){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]:not([animation=false])){transition:.3s}:host([state=closed]){display:none}:host([state=opened][mini-state=leaved]){overflow:visible}:host([state=closing]),:host([state=open]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1)!important}:host([state=closing]) .backdrop,:host([state=open]) .backdrop{opacity:0}:host([mini-state=entered]),:host([mini-state=entering]),:host([mini-state=leave]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1 + var(--plus-drawer-mini-size))}";
 
@@ -24,12 +24,6 @@ let Drawer = class Drawer {
     }
     get $host() {
         return host(this);
-    }
-    get attributes() {
-        return {
-            platform: this.platform,
-            style: this.styles
-        };
     }
     get classes() {
         const placement = toAxis(this.placement || 'start', isRTL(this));
@@ -204,11 +198,18 @@ let Drawer = class Drawer {
         this.terminate();
     }
     render() {
-        return uhtml.html `${this.hasBackdrop ? uhtml.html `<div class="backdrop" part="backdrop">
+        return html `${attributes(host(this), [{
+                "platform": this.platform
+            }, {
+                "style": styles(this.styles)
+            }])}
+        ${this.hasBackdrop ? html `<div class="backdrop" part="backdrop">
             <div />
-          </div>` : ''}<div class=${this.classes} ref=${$element => this.$root = $element}>
+          </div>` : ''}
+        <div class=${this.classes} ref=${$element => this.$root = $element}>
           <slot />
-        </div>`;
+        </div>
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -300,9 +301,6 @@ __decorate([
 __decorate([
     Observable()
 ], Drawer.prototype, "tunnel", void 0);
-__decorate([
-    Attributes()
-], Drawer.prototype, "attributes", null);
 __decorate([
     Action()
 ], Drawer.prototype, "toggle", null);

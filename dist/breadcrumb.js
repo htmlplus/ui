@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, r as request, q as queryAll, u as uhtml, P as Property, d as Attributes, S as State, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, h as host, r as request, q as queryAll, b as html, e as attributes, P as Property, S as State, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{--plus-breadcrumb-gutter-x:0.5em;--plus-breadcrumb-gutter-y:0.5em}:host{display:inline-block}.container{align-items:center;column-gap:var(--plus-breadcrumb-gutter-x);display:flex;flex-wrap:wrap;row-gap:var(--plus-breadcrumb-gutter-y)}.expander,.separator{align-items:center;display:flex;flex-shrink:0;justify-content:center;user-select:none}.expander{background-color:#f5f5f5;border-radius:.25rem;color:currentColor;cursor:pointer}.expander:focus{outline-color:currentColor}.separator{color:currentColor}.rtl{transform:scaleX(-1)}.expander ::slotted(*),svg{fill:currentColor;height:1em}";
 
@@ -26,11 +26,6 @@ let Breadcrumb = class Breadcrumb {
         this.offset = 1;
         this.expand = false;
         this.observer = new MutationObserver(this.onChange);
-    }
-    get attributes() {
-        return {
-            'aria-label': 'breadcrumb'
-        };
     }
     get $children() {
         return Array.from(this.$host.children).filter($node => {
@@ -125,32 +120,36 @@ let Breadcrumb = class Breadcrumb {
         });
     }
     render() {
-        return uhtml.html `<div class="container">
-        ${this.items.map(item => {
+        return html `${attributes(host(this), [{
+                "aria-label": "breadcrumb"
+            }])}
+        <div class="container">
+          ${this.items.map(item => {
             switch (item.type) {
                 case 'item':
                     {
-                        return uhtml.html `<div key=${item.key} part="item">
-                  <slot name=${item.slot} />
-                </div>`;
+                        return html `<div key=${item.key} part="item">
+                    <slot name=${item.slot} />
+                  </div>`;
                     }
                 case 'expander':
                     {
-                        return uhtml.html `<div aria-disabled="false" aria-label=${this.expanderText} class="expander" key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => this.expand = true} onKeyDown=${event => event.key.match(/Enter| /) && (this.expand = true)}>
-                  <slot name="expander">
-                    <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-                    </svg>
-                  </slot>
-                </div>`;
+                        return html `<div aria-disabled="false" aria-label=${this.expanderText} class="expander" key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => this.expand = true} onKeyDown=${event => event.key.match(/Enter| /) && (this.expand = true)}>
+                    <slot name="expander">
+                      <svg focusable="false" viewbox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                      </svg>
+                    </slot>
+                  </div>`;
                     }
                 case 'separator':
                     {
-                        return uhtml.html `<div key=${item.key} aria-hidden="true" class="separator" part="separator" />`;
+                        return html `<div key=${item.key} aria-hidden="true" class="separator" part="separator" />`;
                     }
             }
         })}
-      </div>`;
+        </div>
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -177,9 +176,6 @@ __decorate([
         type: 256
     })
 ], Breadcrumb.prototype, "separator", void 0);
-__decorate([
-    Attributes()
-], Breadcrumb.prototype, "attributes", null);
 __decorate([
     State()
 ], Breadcrumb.prototype, "expand", void 0);

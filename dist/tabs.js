@@ -1,4 +1,4 @@
-import { _ as __decorate, j as createLink, u as uhtml, P as Property, E as Event, W as Watch, b as Element } from './core/index.js';
+import { _ as __decorate, k as createLink, b as html, P as Property, E as Event, W as Watch, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:flex;flex-direction:column}:host([vertical]:not([vertical=false])){flex-direction:row}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar[reverse]:not([reverse=false])){flex-direction:column-reverse}";
 
@@ -47,7 +47,7 @@ let Tabs = class Tabs {
         this.initialize();
     }
     render() {
-        return uhtml.html `<slot />`;
+        return html `<slot />`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY

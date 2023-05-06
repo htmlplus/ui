@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { Animation } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
@@ -90,10 +89,6 @@ export declare class Drawer {
     isOpen?: boolean;
     tunnel?: boolean;
     get $host(): HTMLElement;
-    get attributes(): {
-        platform: DrawerPlatform;
-        style: string;
-    };
     get classes(): string;
     get hasBackdrop(): boolean;
     get isTemporary(): boolean;
@@ -113,7 +108,7 @@ export declare class Drawer {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DrawerJSX {
     /**

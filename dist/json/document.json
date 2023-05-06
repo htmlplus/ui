@@ -67,7 +67,6 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2023-05-01T10:49:28.118Z",
       "methods": [
         {
           "async": true,
@@ -287,7 +286,6 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2023-05-01T10:49:28.205Z",
       "methods": [
         {
           "async": false,
@@ -723,7 +721,6 @@
       "description": "Sets a preferred aspect ratio only for the first child inside the component.",
       "experimental": false,
       "key": "aspect-ratio",
-      "lastModified": "2023-05-01T10:49:28.207Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -806,7 +803,6 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-05-01T10:49:28.214Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -890,7 +886,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
-      "lastModified": "2023-05-01T10:49:28.210Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -965,7 +960,6 @@
       "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2023-05-01T10:49:28.219Z",
       "methods": [],
       "parts": [
         {
@@ -1163,7 +1157,6 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2023-05-01T10:49:28.222Z",
       "methods": [
         {
           "async": false,
@@ -1343,7 +1336,6 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
-      "lastModified": "2023-05-01T10:49:28.229Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1464,7 +1456,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "card-body",
-      "lastModified": "2023-05-01T10:49:28.224Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -1493,7 +1484,6 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
-      "lastModified": "2023-05-01T10:49:28.233Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1557,7 +1547,6 @@
       "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
-      "lastModified": "2023-05-01T10:49:28.236Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1655,7 +1644,6 @@
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
-      "lastModified": "2023-05-01T10:49:28.241Z",
       "methods": [
         {
           "async": false,
@@ -2015,7 +2003,6 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
-      "lastModified": "2023-05-01T10:49:28.247Z",
       "methods": [
         {
           "async": false,
@@ -2737,7 +2724,6 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
-      "lastModified": "2023-05-01T10:49:28.278Z",
       "methods": [],
       "parts": [
         {
@@ -3066,7 +3052,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
-      "lastModified": "2023-05-01T10:49:28.253Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3108,7 +3093,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
-      "lastModified": "2023-05-01T10:49:28.256Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3150,7 +3134,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-footer",
-      "lastModified": "2023-05-01T10:49:28.259Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3174,7 +3157,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-header",
-      "lastModified": "2023-05-01T10:49:28.262Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3198,7 +3180,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-toggler",
-      "lastModified": "2023-05-01T10:49:28.272Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3249,7 +3230,6 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2023-05-01T10:49:28.285Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3446,7 +3426,6 @@
       "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2023-05-01T10:49:28.291Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3693,7 +3672,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
-      "lastModified": "2023-05-01T10:49:28.287Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3744,7 +3722,6 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
-      "lastModified": "2023-05-01T10:49:28.295Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3844,7 +3821,6 @@
       "description": "A component that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
-      "lastModified": "2023-05-01T10:49:28.299Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3930,7 +3906,6 @@
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
-      "lastModified": "2023-05-01T10:49:28.311Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4095,7 +4070,6 @@
       "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
-      "lastModified": "2023-05-01T10:49:28.331Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4728,7 +4702,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid-item",
-      "lastModified": "2023-05-01T10:49:28.316Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5477,7 +5450,6 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-05-03T12:27:23.603Z",
       "methods": [],
       "parts": [
         {
@@ -5643,7 +5615,6 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
-      "lastModified": "2023-05-01T10:49:29.812Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5760,7 +5731,6 @@
       "description": "With a portal, you can render a component in a different place in the DOM tree,",
       "experimental": true,
       "key": "portal",
-      "lastModified": "2023-05-01T10:49:29.814Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5863,7 +5833,6 @@
       "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
-      "lastModified": "2023-05-01T10:49:29.817Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5954,7 +5923,6 @@
       "description": "Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.",
       "experimental": false,
       "key": "scroll-indicator",
-      "lastModified": "2023-05-01T10:49:29.821Z",
       "methods": [],
       "parts": [
         {
@@ -6094,7 +6062,6 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2023-05-01T10:49:29.826Z",
       "methods": [
         {
           "async": false,
@@ -6601,7 +6568,6 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2023-05-01T10:49:29.834Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6660,7 +6626,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "stack",
-      "lastModified": "2023-05-01T10:49:29.836Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6792,7 +6757,6 @@
       "description": "Component content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
-      "lastModified": "2023-05-01T10:49:29.841Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6912,7 +6876,6 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
-      "lastModified": "2023-05-01T10:49:29.843Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6983,7 +6946,6 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
-      "lastModified": "2023-05-01T10:49:29.852Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7065,7 +7027,6 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
-      "lastModified": "2023-05-01T10:49:29.845Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7147,7 +7108,6 @@
       "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
-      "lastModified": "2023-05-01T10:49:29.847Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7194,7 +7154,6 @@
       "description": "TODO: This component contains panels.",
       "experimental": false,
       "key": "tabs-panels",
-      "lastModified": "2023-05-01T10:49:29.848Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7241,7 +7200,6 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
-      "lastModified": "2023-05-01T10:49:29.850Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7304,7 +7262,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "tooltip",
-      "lastModified": "2023-05-01T10:49:29.858Z",
       "methods": [
         {
           "async": false,

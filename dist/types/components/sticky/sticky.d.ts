@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { StickyState, StickyTop } from './sticky.types';
 /**
@@ -29,10 +28,6 @@ export declare class Sticky {
     $element: HTMLElement;
     state?: StickyState;
     observer?: IntersectionObserver;
-    get attributes(): {
-        state: StickyState;
-        style: string;
-    };
     get sizer(): {
         top: string;
     };
@@ -43,7 +38,7 @@ export declare class Sticky {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StickyJSX {
     /**

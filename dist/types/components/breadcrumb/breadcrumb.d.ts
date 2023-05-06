@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
@@ -27,9 +26,6 @@ export declare class Breadcrumb {
      * Specifies the separator between items.
      */
     separator?: string;
-    get attributes(): {
-        'aria-label': string;
-    };
     expand: boolean;
     observer: MutationObserver;
     get $children(): Element[];
@@ -42,7 +38,7 @@ export declare class Breadcrumb {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface BreadcrumbJSX {
     /**

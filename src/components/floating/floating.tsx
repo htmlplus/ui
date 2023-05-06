@@ -1,4 +1,4 @@
-import { Attributes, Element, Property, isRTL, styles, toUnit } from '@htmlplus/element';
+import { Element, Property, isRTL, styles, toUnit } from '@htmlplus/element';
 
 import { toAxis } from '@app/helpers';
 
@@ -70,14 +70,11 @@ export class Floating {
     return styles(style);
   }
 
-  @Attributes()
-  get attributes() {
-    return {
-      style: this.style
-    };
-  }
-
   render() {
-    return <slot />;
+    return (
+      <host style={this.style}>
+        <slot />
+      </host>
+    );
   }
 }

@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { BrowseEvent } from './browse.types';
 /**
@@ -68,7 +67,7 @@ export declare class Browse {
     onDragLeave(): void;
     onDragOver(event: any): void;
     onDrop(event: any): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface BrowseJSX {
     /**

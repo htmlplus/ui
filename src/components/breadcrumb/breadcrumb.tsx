@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Property, State, host, queryAll } from '@htmlplus/element';
+import { Bind, Element, Property, State, host, queryAll } from '@htmlplus/element';
 import { request } from '@htmlplus/element/client/utils/request';
 
 import * as CONSTANTS from './breadcrumb.constants';
@@ -37,13 +37,6 @@ export class Breadcrumb {
    */
   @Property()
   separator?: string;
-
-  @Attributes()
-  get attributes() {
-    return {
-      'aria-label': 'breadcrumb'
-    };
-  }
 
   @State()
   expand: boolean = false;
@@ -169,45 +162,47 @@ export class Breadcrumb {
 
   render() {
     return (
-      <div className="container">
-        {this.items.map((item) => {
-          switch (item.type) {
-            case 'item': {
-              return (
-                <div key={item.key} part="item">
-                  <slot name={item.slot} />
-                </div>
-              );
+      <host aria-label="breadcrumb">
+        <div className="container">
+          {this.items.map((item) => {
+            switch (item.type) {
+              case 'item': {
+                return (
+                  <div key={item.key} part="item">
+                    <slot name={item.slot} />
+                  </div>
+                );
+              }
+              case 'expander': {
+                return (
+                  <div
+                    aria-disabled="false"
+                    aria-label={this.expanderText}
+                    className="expander"
+                    key={item.key}
+                    part="expander"
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => (this.expand = true)}
+                    onKeyDown={(event) => event.key.match(/Enter| /) && (this.expand = true)}
+                  >
+                    <slot name="expander">
+                      <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                      </svg>
+                    </slot>
+                  </div>
+                );
+              }
+              case 'separator': {
+                return (
+                  <div key={item.key} aria-hidden="true" className="separator" part="separator" />
+                );
+              }
             }
-            case 'expander': {
-              return (
-                <div
-                  aria-disabled="false"
-                  aria-label={this.expanderText}
-                  className="expander"
-                  key={item.key}
-                  part="expander"
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => (this.expand = true)}
-                  onKeyDown={(event) => event.key.match(/Enter| /) && (this.expand = true)}
-                >
-                  <slot name="expander">
-                    <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-                    </svg>
-                  </slot>
-                </div>
-              );
-            }
-            case 'separator': {
-              return (
-                <div key={item.key} aria-hidden="true" className="separator" part="separator" />
-              );
-            }
-          }
-        })}
-      </div>
+          })}
+        </div>
+      </host>
     );
   }
 }

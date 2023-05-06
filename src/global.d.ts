@@ -8,6 +8,11 @@ declare module 'react' {
   interface SVGAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     part?: string;
   }
+  namespace JSX {
+    // interface IntrinsicElements {
+    //   host: React.DetailedHTMLProps<Omit<React.HTMLAttributes<HTMLElement>, 'part'>, HTMLElement>;
+    // }
+  }
 }
 
 export {};

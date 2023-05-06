@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
  * @slot default - The default slot.
@@ -11,10 +10,7 @@ export declare class TabsPanel {
      */
     value?: any;
     tunnel?: any;
-    get attributes(): {
-        active: boolean;
-    };
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsPanelJSX {
     /**

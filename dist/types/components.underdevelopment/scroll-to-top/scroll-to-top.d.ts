@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { EventEmitter } from '@htmlplus/element';
 import { ScrollToTopChangeEvent, ScrollToTopReference } from './scroll-to-top.types';
 /**
@@ -45,5 +44,5 @@ export declare class ScrollToTop {
     onScroll(event: any): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): JSX.Element;
+    render(): any;
 }

@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { StackAlignItems, StackJustifyContent } from './stack.types';
 /**
  * @slot default - The default slot.
@@ -25,11 +24,8 @@ export declare class Stack {
      * TODO.
      */
     vertical?: boolean;
-    get attributes(): {
-        style: string;
-    };
     get style(): string;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StackJSX {
     /**

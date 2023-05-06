@@ -1,4 +1,4 @@
-import { _ as __decorate, u as uhtml, P as Property, d as Attributes, b as Element } from './core/index.js';
+import { _ as __decorate, b as html, e as attributes, h as host, P as Property, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:flex;flex:0 0 auto;overflow:auto}:host([reverse]:not([reverse=false])){flex-direction:row-reverse}:host([grow]:not([grow=false])) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=end][reverse]:not([reverse=false])),:host([justify=start]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]:not([reverse=false])){justify-content:flex-end}";
 
@@ -13,13 +13,12 @@ let TabsBar = class TabsBar {
          */
         this.justify = 'start';
     }
-    get attributes() {
-        return {
-            role: 'tablist'
-        };
-    }
     render() {
-        return uhtml.html `<slot />`;
+        return html `${attributes(host(this), [{
+                "role": "tablist"
+            }])}
+        <slot />
+      `;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -44,9 +43,6 @@ __decorate([
         type: 2
     })
 ], TabsBar.prototype, "reverse", void 0);
-__decorate([
-    Attributes()
-], TabsBar.prototype, "attributes", null);
 TabsBar = __decorate([
     Element()
 ], TabsBar);

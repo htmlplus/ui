@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 /**
  * @stable
  * @slot default - The default slot.
@@ -10,7 +9,7 @@ export declare class Center {
      * Converts the `display` CSS property from `flex` to `inline-flex`.
      */
     inline?: boolean;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CenterJSX {
     /**

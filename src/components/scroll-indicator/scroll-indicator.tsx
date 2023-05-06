@@ -1,14 +1,4 @@
-import {
-  Attributes,
-  Bind,
-  Element,
-  Event,
-  EventEmitter,
-  Property,
-  Watch,
-  off,
-  on
-} from '@htmlplus/element';
+import { Bind, Element, Event, EventEmitter, Property, Watch, off, on } from '@htmlplus/element';
 
 import { ScrollIndicatorSource } from './scroll-indicator.types';
 
@@ -49,13 +39,6 @@ export class ScrollIndicator {
     if (this.source === 'document') return document;
 
     return document.querySelector(this.source);
-  }
-
-  @Attributes()
-  get attributes() {
-    return {
-      // 'role': 'TODO'
-    };
   }
 
   get progress() {

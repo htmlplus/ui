@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { SpinnerSize, SpinnerType } from './spinner.types';
 /**
  * @stable
@@ -14,11 +13,8 @@ export declare class Spinner {
      * Specifies which variant of the spinner to use.
      */
     type?: SpinnerType;
-    get attributes(): {
-        role: string;
-    };
     get elements(): number[];
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SpinnerJSX {
     /**

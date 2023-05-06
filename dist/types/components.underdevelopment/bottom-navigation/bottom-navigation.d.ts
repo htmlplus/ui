@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { EventEmitter } from '@htmlplus/element';
 import { Animation } from '@app/services';
 /**
@@ -72,5 +71,5 @@ export declare class BottomNavigation {
      */
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): JSX.Element;
+    render(): any;
 }

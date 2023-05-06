@@ -1,4 +1,3 @@
-import uhtml from "@htmlplus/element/client/vendors/uhtml.js";
 import { EventEmitter } from '@htmlplus/element';
 import { Animation, Portal } from '@app/services';
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
@@ -103,9 +102,6 @@ export declare class Dialog {
     portalInstance?: Portal;
     tunnel?: boolean;
     get $host(): HTMLElement;
-    get attributes(): {
-        tabindex: number;
-    };
     get classes(): string;
     get isCurrent(): boolean;
     get zIndex(): string;
@@ -124,7 +120,7 @@ export declare class Dialog {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): uhtml.Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogJSX {
     /**

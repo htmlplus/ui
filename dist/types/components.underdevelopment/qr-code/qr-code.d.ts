@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { QRCodeError } from './qr-code.types';
 /**
  * TODO
@@ -38,5 +37,5 @@ export declare class QRCode {
         height: string;
     };
     loadedCallback(): void;
-    render(): JSX.Element;
+    render(): any;
 }

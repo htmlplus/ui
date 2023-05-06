@@ -1,5 +1,4 @@
 import {
-  Attributes,
   Bind,
   Element,
   Method,
@@ -100,14 +99,6 @@ export class Tooltip {
   cleanup?: Function;
 
   timeout?: NodeJS.Timeout;
-
-  @Attributes()
-  get attributes() {
-    return {
-      role: 'tooltip',
-      state: this.state
-    };
-  }
 
   get options() {
     const PLACEMENT = {
@@ -362,10 +353,10 @@ export class Tooltip {
 
   render() {
     return (
-      <>
+      <host role="tooltip" state={this.state}>
         <slot />
         <div part="arrow"></div>
-      </>
+      </host>
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Attributes, Bind, Element, Property, State, classes } from '@htmlplus/element';
+import { Bind, Element, Property, State, classes } from '@htmlplus/element';
 
 // const { Inject } = createLink('BottomNavigation');
 
@@ -28,7 +28,6 @@ export class BottomNavigationItem {
   @State()
   tunnel?: any;
 
-  @Attributes()
   get attributes() {
     return {
       grow: this.tunnel?.grow,

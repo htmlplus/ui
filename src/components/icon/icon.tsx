@@ -1,13 +1,4 @@
-import {
-  Attributes,
-  Element,
-  Property,
-  State,
-  Watch,
-  host,
-  styles,
-  toUnit
-} from '@htmlplus/element';
+import { Element, Property, State, Watch, host, styles, toUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@app/config';
 
@@ -95,16 +86,6 @@ export class Icon {
 
   @State()
   svg?: SVGElement;
-
-  @Attributes()
-  get attributes() {
-    return {
-      'aria-label': this.label ?? null,
-      'aria-hidden': this.label ? null : `${!this.label}`,
-      'role': this.label ? 'img' : null,
-      'style': this.style
-    };
-  }
 
   get $host() {
     return host(this);
@@ -228,6 +209,15 @@ export class Icon {
   }
 
   render() {
-    return this.svg || null;
+    return (
+      <host
+        aria-hidden={this.label ? null : `${!this.label}`}
+        aria-label={this.label ?? null}
+        role={this.label ? 'img' : null}
+        style={this.style}
+      >
+        {this.svg || null}
+      </host>
+    );
   }
 }
