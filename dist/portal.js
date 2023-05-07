@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, p as Portal$1, P as Property, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, q as Portal$1, P as Property, H as Host, W as Watch, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:contents}";
 
@@ -19,11 +19,20 @@ let Portal = class Portal {
         this.target = 'body';
     }
     get $nodes() {
-        return Array.from(host(this).children);
+        return Array.from(this.$host.children);
     }
-    /**
-     * Internal Methods
-     */
+    watcher(next, prev, name) {
+        switch (name) {
+            case 'disabled':
+                next ? this.terminate() : this.initialize();
+                break;
+            case 'strategy':
+            case 'target':
+                this.terminate();
+                this.initialize();
+                break;
+        }
+    }
     initialize() {
         if (typeof window === 'undefined')
             return;
@@ -39,24 +48,6 @@ let Portal = class Portal {
         var _a;
         (_a = this.instance) === null || _a === void 0 ? void 0 : _a.revert();
     }
-    /**
-     * Watchers
-     */
-    watcher(next, prev, name) {
-        switch (name) {
-            case 'disabled':
-                next ? this.terminate() : this.initialize();
-                break;
-            case 'strategy':
-            case 'target':
-                this.terminate();
-                this.initialize();
-                break;
-        }
-    }
-    /**
-     * Lifecycles
-     */
     connectedCallback() {
         this.initialize();
     }
@@ -83,6 +74,9 @@ __decorate([
         type: 0
     })
 ], Portal.prototype, "target", void 0);
+__decorate([
+    Host()
+], Portal.prototype, "$host", void 0);
 __decorate([
     Watch(['disabled', 'strategy', 'target'])
 ], Portal.prototype, "watcher", null);

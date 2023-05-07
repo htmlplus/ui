@@ -1,4 +1,4 @@
-import { Element, Property, query } from '@htmlplus/element';
+import { Element, Property, Query } from '@htmlplus/element';
 
 import {
   GridAlignContent,
@@ -224,6 +224,9 @@ export class Grid {
   @Property()
   wrapXxl?: GridWrap;
 
+  @Query('div')
+  $root!: HTMLElement;
+
   // TODO: auto keys detect, support spread attribute <div {...attributes} />
   updatedCallback() {
     const keys = [
@@ -262,13 +265,11 @@ export class Grid {
       'wrapXxl'
     ];
 
-    const div = query(this, 'div');
-
     for (const key of keys) {
       const name = key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
       const value = this[key];
-      if (value) div.setAttribute(name, value);
-      else div.removeAttribute(name);
+      if (value) this.$root.setAttribute(name, value);
+      else this.$root.removeAttribute(name);
     }
   }
 

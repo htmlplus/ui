@@ -1,4 +1,4 @@
-import { Element, Property, Watch, host } from '@htmlplus/element';
+import { Element, Host, Property, Watch } from '@htmlplus/element';
 
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
@@ -27,35 +27,14 @@ export class Portal {
   @Property()
   target?: PortalTarget = 'body';
 
+  @Host()
+  $host!: HTMLElement;
+
   instance?: PortalCore;
 
   get $nodes() {
-    return Array.from(host(this).children);
+    return Array.from(this.$host.children);
   }
-
-  /**
-   * Internal Methods
-   */
-
-  initialize() {
-    if (typeof window === 'undefined') return;
-
-    if (this.disabled) return;
-
-    this.instance = new PortalCore({
-      source: this.$nodes,
-      strategy: this.strategy,
-      target: this.target
-    });
-  }
-
-  terminate() {
-    this.instance?.revert();
-  }
-
-  /**
-   * Watchers
-   */
 
   @Watch(['disabled', 'strategy', 'target'])
   watcher(next, prev, name) {
@@ -72,9 +51,21 @@ export class Portal {
     }
   }
 
-  /**
-   * Lifecycles
-   */
+  initialize() {
+    if (typeof window === 'undefined') return;
+
+    if (this.disabled) return;
+
+    this.instance = new PortalCore({
+      source: this.$nodes,
+      strategy: this.strategy,
+      target: this.target
+    });
+  }
+
+  terminate() {
+    this.instance?.revert();
+  }
 
   connectedCallback() {
     this.initialize();

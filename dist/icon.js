@@ -1,4 +1,4 @@
-import { _ as __decorate, a as __awaiter, h as host, t as toUnit, d as styles, b as html, e as attributes, P as Property, S as State, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, a as __awaiter, t as toUnit, c as styles, h as html, d as attributes, e as host, P as Property, H as Host, S as State, W as Watch, b as Element } from './core/index.js';
 import { getConfig, setConfig } from './config.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{align-items:center;display:inline-flex;height:1em;justify-content:center;vertical-align:middle;width:1em}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size=\"1x\"]){height:1em;width:1em}:host([size=\"2x\"]){height:2em;width:2em}:host([size=\"3x\"]){height:3em;width:3em}:host([size=\"4x\"]){height:4em;width:4em}:host([size=\"5x\"]){height:5em;width:5em}:host([size=\"6x\"]){height:6em;width:6em}:host([size=\"7x\"]){height:7em;width:7em}:host([size=\"8x\"]){height:8em;width:8em}:host([size=\"9x\"]){height:9em;width:9em}svg{display:block;height:100%;width:100%}";
@@ -59,9 +59,6 @@ let Icon = class Icon {
             }).then(response => response.text());
         });
     }
-    get $host() {
-        return host(this);
-    }
     get cache() {
         return getConfig('asset', 'icon', this.name);
     }
@@ -102,6 +99,11 @@ let Icon = class Icon {
             transform
         });
     }
+    watcher() {
+        requestAnimationFrame(() => {
+            this.update();
+        });
+    }
     sync(input) {
         if (input) {
             this.cache = parse(input);
@@ -136,11 +138,6 @@ let Icon = class Icon {
             // TODO
             this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true);
             console.warn([`The icon component is not able to resolve an SVG file with the name of \`${this.name}\`. `, `There is a problem with the \`resolver\` property, and its output cannot be used. `, 'Make sure that the output of the property is an SVG.'].join(''), this.$host);
-        });
-    }
-    watcher() {
-        requestAnimationFrame(() => {
-            this.update();
         });
     }
     render() {
@@ -201,6 +198,9 @@ __decorate([
         type: 256
     })
 ], Icon.prototype, "size", void 0);
+__decorate([
+    Host()
+], Icon.prototype, "$host", void 0);
 __decorate([
     State()
 ], Icon.prototype, "svg", void 0);

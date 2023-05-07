@@ -1,4 +1,4 @@
-import { _ as __decorate, P as Property, E as Event, W as Watch, B as Bind, k as createLink, h as host, l as toAxis, i as isRTL, j as classes, m as Animation, n as Scrollbar, f as off, p as Portal, o as on, b as html, e as attributes, c as Element } from './core/index.js';
+import { _ as __decorate, P as Property, E as Event, H as Host, Q as Query, W as Watch, B as Bind, l as createLink, m as toAxis, i as isRTL, k as classes, n as Animation, p as Scrollbar, j as off, q as Portal, o as on, h as html, d as attributes, e as host, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host([animation]:not([animation=false])[state=closing]),:host([animation]:not([animation=false])[state=opening]){transition:all .5s ease-out}:host([animation]:not([animation=false])[state=closing]) .dialog,:host([animation]:not([animation=false])[state=opening]) .dialog{overflow:hidden}:host([animation]:not([animation=false])[state=closing]) ::slotted(*),:host([animation]:not([animation=false])[state=opening]) ::slotted(*){transition:all .5s ease-out}:host([animation=fade][state=closing]),:host([animation=fade][state=open]){opacity:0}:host([animation=fade][state=closing]) ::slotted(*),:host([animation=fade][state=open]) ::slotted(*){transform:translateY(-50px)}:host([animation=fade][state=closing]) .y-bottom ::slotted(*),:host([animation=fade][state=open]) .y-bottom ::slotted(*){transform:translateY(50px)}:host([animation=fade][state=closing]) .x-right ::slotted(*),:host([animation=fade][state=open]) .x-right ::slotted(*){transform:translate(50px)}:host([animation=fade][state=closing]) .x-left ::slotted(*),:host([animation=fade][state=open]) .x-left ::slotted(*){transform:translate(-50px)}:host([animation=fade][state=close]),:host([animation=fade][state=opening]){opacity:1}:host([animation=fade][state=close]) ::slotted(*),:host([animation=fade][state=opening]) ::slotted(*){transform:translate(0)}:host{display:block;height:100%;left:0;outline:0;overflow:hidden;position:fixed;top:0;width:100%;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.dialog{height:100%;left:0;overflow-x:hidden;overflow-y:auto;position:fixed;top:0;width:100%;z-index:1}.table{display:table;height:100%;margin:auto;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}.fullscreen .cell{padding:0}.fullscreen ::slotted(*){border:0;border-radius:0}.fullscreen .cell{max-width:none}.fullscreen ::slotted(*){min-height:100vh}@media (min-width:576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media (max-width:575.98px){.fullscreen-sm-down .cell{padding:0}.fullscreen-sm-down ::slotted(*){border:0;border-radius:0}.fullscreen-sm-down .cell{max-width:none}.fullscreen-sm-down ::slotted(*){min-height:100vh}}@media (max-width:767.98px){.fullscreen-md-down .cell{padding:0}.fullscreen-md-down ::slotted(*){border:0;border-radius:0}.fullscreen-md-down .cell{max-width:none}.fullscreen-md-down ::slotted(*){min-height:100vh}}@media (min-width:992px){.size-lg .cell,.size-xl .cell{max-width:800px}}@media (max-width:991.98px){.fullscreen-lg-down .cell{padding:0}.fullscreen-lg-down ::slotted(*){border:0;border-radius:0}.fullscreen-lg-down .cell{max-width:none}.fullscreen-lg-down ::slotted(*){min-height:100vh}}@media (min-width:1200px){.size-xl .cell{max-width:1140px}}@media (max-width:1199.98px){.fullscreen-xl-down .cell{padding:0}.fullscreen-xl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xl-down .cell{max-width:none}.fullscreen-xl-down ::slotted(*){min-height:100vh}}@media (max-width:1399.98px){.fullscreen-xxl-down .cell{padding:0}.fullscreen-xxl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xxl-down .cell{max-width:none}.fullscreen-xxl-down ::slotted(*){min-height:100vh}}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none!important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
 
@@ -37,9 +37,6 @@ let Dialog = Dialog_1 = class Dialog {
          */
         this.portalTarget = 'body';
     }
-    get $host() {
-        return host(this);
-    }
     get classes() {
         let placement = this.placement || '';
         if (placement.match(/^(top|bottom)$/))
@@ -72,6 +69,17 @@ let Dialog = Dialog_1 = class Dialog {
             return;
         const zIndex = window.getComputedStyle(instance.$host).getPropertyValue('z-index');
         return `${parseInt(zIndex) + 1}`;
+    }
+    watcher(next, prev, name) {
+        switch (name) {
+            case 'connector':
+                reconnect(this);
+                break;
+            case 'open':
+                next && !this.isOpen && this.tryShow(true, true);
+                !next && this.isOpen && this.tryHide(true, true);
+                break;
+        }
     }
     hide() {
         this.tryHide(true, false);
@@ -150,17 +158,6 @@ let Dialog = Dialog_1 = class Dialog {
             }
         });
     }
-    watcher(next, prev, name) {
-        switch (name) {
-            case 'connector':
-                reconnect(this);
-                break;
-            case 'open':
-                next && !this.isOpen && this.tryShow(true, true);
-                !next && this.isOpen && this.tryHide(true, true);
-                break;
-        }
-    }
     onHide() {
         // reset document's scroll
         Scrollbar.reset(this);
@@ -234,7 +231,7 @@ let Dialog = Dialog_1 = class Dialog {
         <div class=${this.classes}>
           <div class="table">
             <div class="cell">
-              <slot ref=${$element => this.$cell = $element} />
+              <slot />
             </div>
           </div>
         </div>
@@ -345,14 +342,20 @@ __decorate([
     Event()
 ], Dialog.prototype, "plusOpened", void 0);
 __decorate([
+    Host()
+], Dialog.prototype, "$host", void 0);
+__decorate([
+    Query('slot')
+], Dialog.prototype, "$cell", void 0);
+__decorate([
     Observable()
 ], Dialog.prototype, "tunnel", void 0);
 __decorate([
-    Action()
-], Dialog.prototype, "toggle", null);
-__decorate([
     Watch(['connector', 'open'])
 ], Dialog.prototype, "watcher", null);
+__decorate([
+    Action()
+], Dialog.prototype, "toggle", null);
 __decorate([
     Bind()
 ], Dialog.prototype, "onEscape", null);

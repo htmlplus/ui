@@ -95,16 +95,17 @@ export declare class Dialog {
      * When the dialog is completely shown and its animation is completed.
      */
     plusOpened: EventEmitter<void>;
-    static instances: any[];
+    $host: HTMLElement;
     $cell: HTMLElement;
+    static instances: any[];
     animate?: Animation;
     isOpen?: boolean;
     portalInstance?: Portal;
     tunnel?: boolean;
-    get $host(): HTMLElement;
     get classes(): string;
     get isCurrent(): boolean;
     get zIndex(): string;
+    watcher(next: any, prev: any, name: any): void;
     hide(): void;
     show(): void;
     toggle(): void;
@@ -113,7 +114,6 @@ export declare class Dialog {
     terminate(): void;
     tryHide(animation: any, silent: any): void;
     tryShow(animation: any, silent: any): void;
-    watcher(next: any, prev: any, name: any): void;
     onHide(): void;
     onShow(): void;
     onEscape(event: any): void;

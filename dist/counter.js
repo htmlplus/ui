@@ -1,4 +1,4 @@
-import { _ as __decorate, b as html, e as attributes, h as host, P as Property, E as Event, S as State, M as Method, B as Bind, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, h as html, d as attributes, e as host, P as Property, E as Event, M as Method, S as State, W as Watch, B as Bind, b as Element } from './core/index.js';
 
 const COUNTER_EASINGS = {
     'ease-out-expo': (currentTime, beginningValue, changeInValue, duration) => {
@@ -41,41 +41,6 @@ let Counter = class Counter {
          */
         this.numerals = [];
         this.state = 'idle';
-    }
-    get easingFunction() {
-        return (COUNTER_EASINGS[this.easing] || this.easing);
-    }
-    get formated() {
-        var _a;
-        const counter = (_a = this.counter) !== null && _a !== void 0 ? _a : this.from;
-        const negative = counter < 0 ? '-' : '';
-        let result;
-        let x1;
-        let x2;
-        let x3;
-        result = Math.abs(counter).toFixed(this.decimals);
-        result += '';
-        const x = result.split('.');
-        x1 = x[0];
-        x2 = x.length > 1 ? this.decimal + x[1] : '';
-        if (this.separator) {
-            x3 = '';
-            for (let i = 0, length = x1.length; i < length; ++i) {
-                if (i !== 0 && i % 3 === 0) {
-                    x3 = this.separator + x3;
-                }
-                x3 = x1[length - i - 1] + x3;
-            }
-            x1 = x3;
-        }
-        if (this.numerals && this.numerals.length) {
-            x1 = x1.replace(/[0-9]/g, w => this.numerals[+w]);
-            x2 = x2.replace(/[0-9]/g, w => this.numerals[+w]);
-        }
-        return negative + x1 + x2;
-    }
-    get reverse() {
-        return this.to < this.from;
     }
     /**
      * Completes the transition.
@@ -128,6 +93,52 @@ let Counter = class Counter {
         this.state = 'stopped';
         this.play = false;
     }
+    get easingFunction() {
+        return (COUNTER_EASINGS[this.easing] || this.easing);
+    }
+    get formated() {
+        var _a;
+        const counter = (_a = this.counter) !== null && _a !== void 0 ? _a : this.from;
+        const negative = counter < 0 ? '-' : '';
+        let result;
+        let x1;
+        let x2;
+        let x3;
+        result = Math.abs(counter).toFixed(this.decimals);
+        result += '';
+        const x = result.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? this.decimal + x[1] : '';
+        if (this.separator) {
+            x3 = '';
+            for (let i = 0, length = x1.length; i < length; ++i) {
+                if (i !== 0 && i % 3 === 0) {
+                    x3 = this.separator + x3;
+                }
+                x3 = x1[length - i - 1] + x3;
+            }
+            x1 = x3;
+        }
+        if (this.numerals && this.numerals.length) {
+            x1 = x1.replace(/[0-9]/g, w => this.numerals[+w]);
+            x2 = x2.replace(/[0-9]/g, w => this.numerals[+w]);
+        }
+        return negative + x1 + x2;
+    }
+    get reverse() {
+        return this.to < this.from;
+    }
+    watcher() {
+        // TODO: remove requestAnimationFrame
+        requestAnimationFrame(() => {
+            if (this.play == true && this.state != 'running')
+                this.start();
+            if (this.play != true && this.state == 'paused')
+                this.stop();
+            if (this.play != true && this.state == 'running')
+                this.stop();
+        });
+    }
     count(timestamp) {
         if (!this.startTime)
             this.startTime = timestamp;
@@ -155,17 +166,6 @@ let Counter = class Counter {
     reset() {
         this.remaining = undefined;
         this.startTime = undefined;
-    }
-    watcher() {
-        // TODO: remove requestAnimationFrame
-        requestAnimationFrame(() => {
-            if (this.play == true && this.state != 'running')
-                this.start();
-            if (this.play != true && this.state == 'paused')
-                this.stop();
-            if (this.play != true && this.state == 'running')
-                this.stop();
-        });
     }
     disconnectedCallback() {
         this.stop();
@@ -233,12 +233,6 @@ __decorate([
     Event()
 ], Counter.prototype, "plusComplete", void 0);
 __decorate([
-    State()
-], Counter.prototype, "counter", void 0);
-__decorate([
-    State()
-], Counter.prototype, "state", void 0);
-__decorate([
     Method()
 ], Counter.prototype, "complete", null);
 __decorate([
@@ -251,11 +245,17 @@ __decorate([
     Method()
 ], Counter.prototype, "stop", null);
 __decorate([
-    Bind()
-], Counter.prototype, "count", null);
+    State()
+], Counter.prototype, "counter", void 0);
+__decorate([
+    State()
+], Counter.prototype, "state", void 0);
 __decorate([
     Watch(['play'], true)
 ], Counter.prototype, "watcher", null);
+__decorate([
+    Bind()
+], Counter.prototype, "count", null);
 Counter = __decorate([
     Element()
 ], Counter);

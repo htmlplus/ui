@@ -99,19 +99,6 @@ export declare class Animation {
      * Fires when the animation is removed (i.e., put into an `active` replace state).
      */
     plusRemove: EventEmitter<void>;
-    get options(): {
-        composite: AnimationComposite;
-        delay: number;
-        direction: AnimationDirection;
-        duration: number;
-        easing: any;
-        endDelay: number;
-        fill: AnimationFill;
-        iterationComposite: AnimationIterationComposite;
-        iterations: number;
-        iterationStart: number;
-        playbackRate: number;
-    };
     /**
      * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
      * caused by this animation and aborts its playback.
@@ -150,6 +137,20 @@ export declare class Animation {
      * Sets the speed of an animation after first synchronizing its playback position.
      */
     updatePlaybackRate(playbackRate: number): void;
+    $host: HTMLElement;
+    get options(): {
+        composite: AnimationComposite;
+        delay: number;
+        direction: AnimationDirection;
+        duration: number;
+        easing: any;
+        endDelay: number;
+        fill: AnimationFill;
+        iterationComposite: AnimationIterationComposite;
+        iterations: number;
+        iterationStart: number;
+        playbackRate: number;
+    };
     watcher(): void;
     onCancel(): void;
     onFinish(): void;

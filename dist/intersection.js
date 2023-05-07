@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, b as html, e as attributes, P as Property, E as Event, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, h as html, d as attributes, e as host, P as Property, E as Event, H as Host, S as State, W as Watch, B as Bind, b as Element } from './core/index.js';
 
 /**
  * @stable
@@ -14,15 +14,6 @@ let Intersection = class Intersection {
             rootMargin: this.rootMargin,
             threshold: this.threshold
         };
-    }
-    bind() {
-        this.observer = new IntersectionObserver(this.onIntersecting, this.options);
-        this.observer.observe(host(this));
-    }
-    unbind() {
-        var _a;
-        (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
-        delete this.observer;
     }
     watcher(next, prev, name) {
         switch (name) {
@@ -47,6 +38,15 @@ let Intersection = class Intersection {
                 this.bind();
                 break;
         }
+    }
+    bind() {
+        this.observer = new IntersectionObserver(this.onIntersecting, this.options);
+        this.observer.observe(this.$host);
+    }
+    unbind() {
+        var _a;
+        (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
+        delete this.observer;
     }
     onIntersecting(entries) {
         const [entry] = entries;
@@ -102,6 +102,9 @@ __decorate([
 __decorate([
     Event()
 ], Intersection.prototype, "plusChange", void 0);
+__decorate([
+    Host()
+], Intersection.prototype, "$host", void 0);
 __decorate([
     State()
 ], Intersection.prototype, "isIntersecting", void 0);

@@ -457,16 +457,6 @@ const shadowRoot = (target) => {
     return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
 };
 
-function query(target, selectors) {
-    var _a;
-    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
-}
-
-function queryAll(target, selectors) {
-    var _a;
-    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
-}
-
 const task = (options) => {
     let isPending, promise;
     const run = () => {
@@ -1394,6 +1384,16 @@ function Event$1(options = {}) {
     };
 }
 
+function Host() {
+    return function (target, propertyKey) {
+        defineProperty(target, propertyKey, {
+            get() {
+                return host(this);
+            }
+        });
+    };
+}
+
 function Method() {
     return function (target, propertyKey) {
         appendToMethod(target, LIFECYCLE_CONNECTED, function () {
@@ -1439,6 +1439,28 @@ function Property(options) {
             };
             // TODO: configurable
             defineProperty(element, propertyKey, { get, set, configurable: true });
+        });
+    };
+}
+
+function Query(selectors) {
+    return function (target, propertyKey) {
+        defineProperty(target, propertyKey, {
+            get() {
+                var _a;
+                return (_a = shadowRoot(this)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
+            }
+        });
+    };
+}
+
+function QueryAll(selectors) {
+    return function (target, propertyKey) {
+        defineProperty(target, propertyKey, {
+            get() {
+                var _a;
+                return (_a = shadowRoot(this)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
+            }
         });
     };
 }
@@ -2080,4 +2102,4 @@ Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
 // @Override()
 // override?: { [key: string]: any };
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, Property as P, State as S, Watch as W, __decorate as _, __awaiter as a, html as b, Element as c, styles as d, attributes$1 as e, off as f, getConfig as g, host as h, isRTL as i, classes as j, createLink as k, toAxis as l, Animation as m, Scrollbar as n, on as o, Portal as p, queryAll as q, request as r, setConfig as s, toUnit as t, Media as u, query as v };
+export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Host as H, Method as M, Property as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, attributes$1 as d, host as e, QueryAll as f, getConfig as g, html as h, isRTL as i, off as j, classes as k, createLink as l, toAxis as m, Animation as n, on as o, Scrollbar as p, Portal as q, request as r, setConfig as s, toUnit as t, Media as u };

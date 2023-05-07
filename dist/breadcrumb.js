@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, r as request, q as queryAll, b as html, e as attributes, P as Property, S as State, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, r as request, h as html, d as attributes, e as host, P as Property, S as State, H as Host, f as QueryAll, B as Bind, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{--plus-breadcrumb-gutter-x:0.5em;--plus-breadcrumb-gutter-y:0.5em}:host{display:inline-block}.container{align-items:center;column-gap:var(--plus-breadcrumb-gutter-x);display:flex;flex-wrap:wrap;row-gap:var(--plus-breadcrumb-gutter-y)}.expander,.separator{align-items:center;display:flex;flex-shrink:0;justify-content:center;user-select:none}.expander{background-color:#f5f5f5;border-radius:.25rem;color:currentColor;cursor:pointer}.expander:focus{outline-color:currentColor}.separator{color:currentColor}.rtl{transform:scaleX(-1)}.expander ::slotted(*),svg{fill:currentColor;height:1em}";
 
@@ -31,9 +31,6 @@ let Breadcrumb = class Breadcrumb {
         return Array.from(this.$host.children).filter($node => {
             return !$node.matches([BREADCRUMB_EXPANDER_QUERY, BREADCRUMB_SEPARATOR_QUERY].join(','));
         });
-    }
-    get $host() {
-        return host(this);
     }
     get items() {
         const $children = this.$children;
@@ -115,7 +112,7 @@ let Breadcrumb = class Breadcrumb {
         const template = this.template;
         if (!template)
             return;
-        queryAll(this, '.separator').forEach(element => {
+        this.$separators.forEach(element => {
             element.innerHTML = template;
         });
     }
@@ -179,6 +176,12 @@ __decorate([
 __decorate([
     State()
 ], Breadcrumb.prototype, "expand", void 0);
+__decorate([
+    Host()
+], Breadcrumb.prototype, "$host", void 0);
+__decorate([
+    QueryAll('.separator')
+], Breadcrumb.prototype, "$separators", void 0);
 __decorate([
     Bind()
 ], Breadcrumb.prototype, "onChange", null);

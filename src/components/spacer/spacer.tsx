@@ -1,10 +1,7 @@
 import { Element, Property } from '@htmlplus/element';
 
-/**
- * @development
- */
 @Element()
-export class ToolbarSpacer {
+export class Spacer {
   /**
    * TODO
    */

@@ -1,4 +1,4 @@
-import { _ as __decorate, k as createLink, b as html, P as Property, E as Event, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, l as createLink, h as html, P as Property, E as Event, W as Watch, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:flex;flex-direction:column}:host([vertical]:not([vertical=false])){flex-direction:row}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar[reverse]:not([reverse=false])){flex-direction:column-reverse}";
 
@@ -11,9 +11,16 @@ const { Action, Observable, reconnect } = createLink({
  * @slot default - The default slot.
  */
 let Tabs = class Tabs {
-    /**
-     * Internal Methods
-     */
+    watcher(next, prev, name) {
+        switch (name) {
+            case 'connector':
+                reconnect(this);
+                break;
+            case 'value':
+                this.tunnel = next;
+                break;
+        }
+    }
     broadcast(value) {
         this.tunnel = value;
     }
@@ -27,22 +34,6 @@ let Tabs = class Tabs {
     initialize() {
         this.broadcast(this.value);
     }
-    /**
-     * Watchers
-     */
-    watcher(next, prev, name) {
-        switch (name) {
-            case 'connector':
-                reconnect(this);
-                break;
-            case 'value':
-                this.tunnel = next;
-                break;
-        }
-    }
-    /**
-     * Lifecycles
-     */
     connectedCallback() {
         this.initialize();
     }
@@ -79,11 +70,11 @@ __decorate([
     Observable()
 ], Tabs.prototype, "tunnel", void 0);
 __decorate([
-    Action()
-], Tabs.prototype, "change", null);
-__decorate([
     Watch(['connector', 'value'])
 ], Tabs.prototype, "watcher", null);
+__decorate([
+    Action()
+], Tabs.prototype, "change", null);
 Tabs = __decorate([
     Element()
 ], Tabs);

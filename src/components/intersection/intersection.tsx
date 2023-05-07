@@ -3,10 +3,10 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Property,
   State,
-  Watch,
-  host
+  Watch
 } from '@htmlplus/element';
 
 /**
@@ -62,6 +62,9 @@ export class Intersection {
   @Event()
   plusChange!: EventEmitter<IntersectionObserverEntry>;
 
+  @Host()
+  $host!: HTMLElement;
+
   @State()
   isIntersecting?: boolean;
 
@@ -77,16 +80,6 @@ export class Intersection {
       rootMargin: this.rootMargin,
       threshold: this.threshold
     };
-  }
-
-  bind() {
-    this.observer = new IntersectionObserver(this.onIntersecting, this.options);
-    this.observer.observe(host(this));
-  }
-
-  unbind() {
-    this.observer?.disconnect();
-    delete this.observer;
   }
 
   @Watch(['behavior', 'disabled', 'once', 'root', 'rootMargin', 'threshold'])
@@ -111,6 +104,16 @@ export class Intersection {
         this.bind();
         break;
     }
+  }
+
+  bind() {
+    this.observer = new IntersectionObserver(this.onIntersecting, this.options);
+    this.observer.observe(this.$host);
+  }
+
+  unbind() {
+    this.observer?.disconnect();
+    delete this.observer;
   }
 
   @Bind()

@@ -28,8 +28,9 @@ export declare class Breadcrumb {
     separator?: string;
     expand: boolean;
     observer: MutationObserver;
+    $host: HTMLElement;
+    $separators: HTMLElement[];
     get $children(): Element[];
-    get $host(): HTMLElement;
     get items(): any[];
     get template(): string;
     bind(): void;

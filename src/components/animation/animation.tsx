@@ -3,10 +3,10 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Method,
   Property,
-  Watch,
-  host
+  Watch
 } from '@htmlplus/element';
 
 import { getConfig } from '@app/config';
@@ -154,23 +154,6 @@ export class Animation {
   @Event()
   plusRemove!: EventEmitter<void>;
 
-  get options() {
-    return {
-      composite: this.composite,
-      delay: this.delay,
-      direction: this.direction,
-      duration: this.duration,
-      easing:
-        ANIMATION_EASINGS[this.easing] ?? getConfig('asset', 'easing', this.easing) ?? this.easing,
-      endDelay: this.endDelay,
-      fill: this.fill,
-      iterationComposite: this.iterationComposite,
-      iterations: this.iterations,
-      iterationStart: this.iterationStart,
-      playbackRate: this.playbackRate
-    };
-  }
-
   /**
    * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
    * caused by this animation and aborts its playback.
@@ -242,6 +225,26 @@ export class Animation {
     this.instance?.updatePlaybackRate(playbackRate);
   }
 
+  @Host()
+  $host!: HTMLElement;
+
+  get options() {
+    return {
+      composite: this.composite,
+      delay: this.delay,
+      direction: this.direction,
+      duration: this.duration,
+      easing:
+        ANIMATION_EASINGS[this.easing] ?? getConfig('asset', 'easing', this.easing) ?? this.easing,
+      endDelay: this.endDelay,
+      fill: this.fill,
+      iterationComposite: this.iterationComposite,
+      iterations: this.iterations,
+      iterationStart: this.iterationStart,
+      playbackRate: this.playbackRate
+    };
+  }
+
   @Watch('run', true)
   watcher() {
     this.run ? this.play() : this.pause();
@@ -270,7 +273,7 @@ export class Animation {
 
     const keyframes = this.keyframes ?? getConfig('asset', 'animation', this.name) ?? [];
 
-    this.instance = host(this).animate(keyframes, this.options);
+    this.instance = this.$host.animate(keyframes, this.options);
 
     this.instance.addEventListener('cancel', this.onCancel);
     this.instance.addEventListener('finish', this.onFinish);

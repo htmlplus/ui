@@ -4295,60 +4295,6 @@
           "slots": []
         },
         {
-          "name": "plus-scroll-indicator",
-          "description": "Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/scroll-indicator",
-          "deprecated": false,
-          "experimental": false,
-          "js": {
-            "events": [
-              {
-                "name": "plus-scroll",
-                "description": "When the children is scrolled this event trigger.",
-                "deprecated": false,
-                "experimental": false
-              }
-            ],
-            "properties": [
-              {
-                "name": "disabled",
-                "description": "Disables the component function.",
-                "deprecated": false,
-                "experimental": false
-              },
-              {
-                "name": "source",
-                "description": "Specifies the source of the scroll.",
-                "deprecated": false,
-                "experimental": false,
-                "default": "'document'"
-              }
-            ]
-          },
-          "attributes": [
-            {
-              "name": "disabled",
-              "description": "Disables the component function.",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "boolean"
-              }
-            },
-            {
-              "name": "source",
-              "description": "Specifies the source of the scroll.",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "string | HTMLElement"
-              },
-              "default": "'document'"
-            }
-          ],
-          "slots": []
-        },
-        {
           "name": "plus-signature",
           "description": "Allows user to draw smooth signatures.",
           "doc-url": "https://www.htmlplus.io/javascript/component/signature",
@@ -4638,6 +4584,37 @@
                 "type": "number"
               },
               "default": "0.7"
+            }
+          ],
+          "slots": []
+        },
+        {
+          "name": "plus-spacer",
+          "doc-url": "https://www.htmlplus.io/javascript/component/spacer",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "grow",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": "1"
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "grow",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "number"
+              },
+              "default": "1"
             }
           ],
           "slots": []

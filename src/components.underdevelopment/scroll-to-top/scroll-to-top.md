@@ -1,5 +1,0 @@
-- add arguments to the `scroll` method
-- add show offset property
-- animationable
-- state readonly attribute
-- runtime change props

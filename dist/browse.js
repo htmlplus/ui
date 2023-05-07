@@ -1,4 +1,4 @@
-import { _ as __decorate, b as html, e as attributes, h as host, P as Property, E as Event, S as State, M as Method, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, h as html, d as attributes, e as host, P as Property, E as Event, Q as Query, S as State, M as Method, B as Bind, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{cursor:pointer}input[type=file]{display:none}";
 
@@ -97,7 +97,7 @@ let Browse = class Browse {
     render() {
         return html `${attributes(host(this), [this.attributes])}
         <slot />
-        <input accept=${this.accept} multiple=${this.multiple} ref=${$element => this.$input = $element} type="file" onChange=${this.onChange} onClick=${event => event.stopPropagation()} />
+        <input accept=${this.accept} multiple=${this.multiple} type="file" onChange=${this.onChange} onClick=${event => event.stopPropagation()} />
       `;
     }
 };
@@ -155,6 +155,9 @@ __decorate([
 __decorate([
     Event()
 ], Browse.prototype, "plusSuccess", void 0);
+__decorate([
+    Query('input')
+], Browse.prototype, "$input", void 0);
 __decorate([
     State()
 ], Browse.prototype, "dragging", void 0);

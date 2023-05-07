@@ -150,6 +150,7 @@ export declare class Grid {
      * size of contents is more than the twelve-column width for extra-extra-large screen devices.
      */
     wrapXxl?: GridWrap;
+    $root: HTMLElement;
     updatedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }

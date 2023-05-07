@@ -19,20 +19,12 @@ export declare class Portal {
      * node or any html elements.
      */
     target?: PortalTarget;
+    $host: HTMLElement;
     instance?: PortalCore;
     get $nodes(): Element[];
-    /**
-     * Internal Methods
-     */
+    watcher(next: any, prev: any, name: any): void;
     initialize(): void;
     terminate(): void;
-    /**
-     * Watchers
-     */
-    watcher(next: any, prev: any, name: any): void;
-    /**
-     * Lifecycles
-     */
     connectedCallback(): void;
     disconnectedCallback(): void;
 }

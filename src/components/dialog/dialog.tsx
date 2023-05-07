@@ -3,10 +3,11 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Property,
+  Query,
   Watch,
   classes,
-  host,
   isRTL,
   off,
   on
@@ -161,9 +162,13 @@ export class Dialog {
   @Event()
   plusOpened!: EventEmitter<void>;
 
-  static instances = [];
+  @Host()
+  $host!: HTMLElement;
 
+  @Query('slot')
   $cell!: HTMLElement;
+
+  static instances = [];
 
   animate?: Animation;
 
@@ -174,10 +179,6 @@ export class Dialog {
 
   @Observable()
   tunnel?: boolean;
-
-  get $host() {
-    return host(this);
-  }
 
   get classes() {
     let placement = this.placement || '';
@@ -228,6 +229,23 @@ export class Dialog {
     const zIndex = window.getComputedStyle(instance.$host).getPropertyValue('z-index');
 
     return `${parseInt(zIndex) + 1}`;
+  }
+
+  @Watch(['connector', 'open'])
+  watcher(next, prev, name) {
+    switch (name) {
+      case 'connector':
+        reconnect(this);
+
+        break;
+
+      case 'open':
+        next && !this.isOpen && this.tryShow(true, true);
+
+        !next && this.isOpen && this.tryHide(true, true);
+
+        break;
+    }
   }
 
   hide() {
@@ -316,23 +334,6 @@ export class Dialog {
         this.plusOpened();
       }
     });
-  }
-
-  @Watch(['connector', 'open'])
-  watcher(next, prev, name) {
-    switch (name) {
-      case 'connector':
-        reconnect(this);
-
-        break;
-
-      case 'open':
-        next && !this.isOpen && this.tryShow(true, true);
-
-        !next && this.isOpen && this.tryHide(true, true);
-
-        break;
-    }
   }
 
   onHide() {
@@ -432,7 +433,7 @@ export class Dialog {
         <div className={this.classes}>
           <div className="table">
             <div className="cell">
-              <slot ref={($element) => (this.$cell = $element)} />
+              <slot />
             </div>
           </div>
         </div>

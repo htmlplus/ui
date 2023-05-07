@@ -1,4 +1,4 @@
-import { _ as __decorate, h as host, a as __awaiter, b as html, P as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, a as __awaiter, h as html, P as Property, E as Event, M as Method, H as Host, Q as Query, W as Watch, B as Bind, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;height:150px;width:300px}:host([disabled]:not([disabled=false])){opacity:.5}canvas{display:block;height:100%;width:100%}";
 
@@ -36,9 +36,6 @@ let Signature = class Signature {
         this.history = [];
         this.index = -1;
         this.observer = new ResizeObserver(this.onResize);
-    }
-    get $host() {
-        return host(this);
     }
     /**
      * Specifies whether redo can be performed or not.
@@ -161,6 +158,34 @@ let Signature = class Signature {
         const data = this.history[this.index] || [];
         this.instance.fromData(data);
     }
+    watcher(next, prev, name) {
+        switch (name) {
+            case 'color':
+                this.instance.penColor = next;
+                break;
+            case 'disabled':
+                this.instance[next ? 'off' : 'on']();
+                break;
+            case 'distance':
+                this.instance.minDistance = next;
+                break;
+            case 'velocity':
+                this.instance.velocityFilterWeight = next;
+                break;
+            case 'backgroundColor':
+            case 'dotSize':
+            case 'maxWidth':
+            case 'minWidth':
+            case 'throttle':
+                this.instance[name] = next;
+                break;
+            case 'resizable':
+                this.observer[next ? 'observe' : 'unobserve'](this.$host);
+                break;
+        }
+        // TODO
+        this.fromData(this.toData());
+    }
     bind() {
         this.instance = new Core(this.$canvas, {
             backgroundColor: this.backgroundColor,
@@ -200,34 +225,6 @@ let Signature = class Signature {
         this.observer.disconnect();
         (_a = this.instance) === null || _a === void 0 ? void 0 : _a.off();
     }
-    watcher(next, prev, name) {
-        switch (name) {
-            case 'color':
-                this.instance.penColor = next;
-                break;
-            case 'disabled':
-                this.instance[next ? 'off' : 'on']();
-                break;
-            case 'distance':
-                this.instance.minDistance = next;
-                break;
-            case 'velocity':
-                this.instance.velocityFilterWeight = next;
-                break;
-            case 'backgroundColor':
-            case 'dotSize':
-            case 'maxWidth':
-            case 'minWidth':
-            case 'throttle':
-                this.instance[name] = next;
-                break;
-            case 'resizable':
-                this.observer[next ? 'observe' : 'unobserve'](this.$host);
-                break;
-        }
-        // TODO
-        this.fromData(this.toData());
-    }
     onEnd() {
         this.index++;
         this.history[this.index] = this.toData();
@@ -246,7 +243,7 @@ let Signature = class Signature {
         this.unbind();
     }
     render() {
-        return html `<canvas part="canvas" ref=${$element => this.$canvas = $element}></canvas>`;
+        return html `<canvas part="canvas"></canvas>`;
     }
 };
 // THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -360,6 +357,12 @@ __decorate([
 __decorate([
     Method()
 ], Signature.prototype, "undo", null);
+__decorate([
+    Host()
+], Signature.prototype, "$host", void 0);
+__decorate([
+    Query('canvas')
+], Signature.prototype, "$canvas", void 0);
 __decorate([
     Watch()
 ], Signature.prototype, "watcher", null);

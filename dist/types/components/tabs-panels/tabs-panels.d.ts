@@ -9,9 +9,6 @@ export declare class TabsPanels {
      * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
      */
     connector?: string;
-    /**
-     * Watchers
-     */
     watcher(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }

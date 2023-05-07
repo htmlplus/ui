@@ -24,19 +24,10 @@ export declare class Tabs {
      */
     plusChange: EventEmitter<any>;
     tunnel?: any;
-    /**
-     * Internal Methods
-     */
+    watcher(next: any, prev: any, name: any): void;
     broadcast(value: any): void;
     change(value: any): void;
     initialize(): void;
-    /**
-     * Watchers
-     */
-    watcher(next: any, prev: any, name: any): void;
-    /**
-     * Lifecycles
-     */
     connectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }

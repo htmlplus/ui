@@ -68,12 +68,6 @@ export declare class Signature {
      * Fires before a stroke starts.
      */
     plusStart: EventEmitter<PointerEvent>;
-    $canvas: HTMLCanvasElement;
-    get $host(): HTMLElement;
-    instance?: CoreType;
-    history: SignaturePointGroup[][];
-    index: number;
-    observer: ResizeObserver;
     /**
      * Specifies whether redo can be performed or not.
      */
@@ -136,9 +130,15 @@ export declare class Signature {
      * Reverts the last action.
      */
     undo(): void;
+    $host: HTMLElement;
+    $canvas: HTMLCanvasElement;
+    instance?: CoreType;
+    history: SignaturePointGroup[][];
+    index: number;
+    observer: ResizeObserver;
+    watcher(next: any, prev: any, name: any): void;
     bind(): void;
     unbind(): void;
-    watcher(next: any, prev: any, name: any): void;
     onEnd(): void;
     onResize(): void;
     loadedCallback(): void;

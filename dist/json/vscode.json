@@ -3756,35 +3756,6 @@
       ]
     },
     {
-      "name": "plus-scroll-indicator",
-      "description": "Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "Disables the component function.",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ]
-        },
-        {
-          "name": "source",
-          "description": "Specifies the source of the scroll.",
-          "values": []
-        }
-      ],
-      "references": [
-        {
-          "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/scroll-indicator"
-        }
-      ]
-    },
-    {
       "name": "plus-signature",
       "description": "Allows user to draw smooth signatures.",
       "attributes": [
@@ -3869,6 +3840,22 @@
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/component/signature"
+        }
+      ]
+    },
+    {
+      "name": "plus-spacer",
+      "attributes": [
+        {
+          "name": "grow",
+          "description": "TODO",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/spacer"
         }
       ]
     },

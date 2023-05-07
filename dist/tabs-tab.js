@@ -1,4 +1,4 @@
-import { _ as __decorate, k as createLink, b as html, e as attributes, h as host, P as Property, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, l as createLink, h as html, d as attributes, e as host, P as Property, B as Bind, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{align-items:center;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]:not([disabled=false])) span{opacity:.5}:host([active]:not([active=false])){background-color:#d2d2d2}";
 

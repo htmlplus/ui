@@ -51,10 +51,25 @@ export declare class Tooltip {
      * TODO
      */
     z?: 'auto' | 'vertical' | 'horizontal' | 'move';
-    state?: 'hide' | 'show';
+    /**
+     * Hides the component.
+     */
+    hide(): void;
+    /**
+     * Shows the component.
+     */
+    show(): void;
+    /**
+     * Updates the component's position.
+     */
+    update(): void;
+    $host: HTMLElement;
+    $arrow: HTMLElement;
     $activator?: Element;
+    state?: 'hide' | 'show';
     cleanup?: Function;
     timeout?: NodeJS.Timeout;
+    get $reference(): Element;
     get options(): Partial<{
         placement?: FloatingCoreType.Placement;
         strategy?: FloatingCoreType.Strategy;
@@ -75,26 +90,11 @@ export declare class Tooltip {
         })[];
         platform?: FloatingCoreType.Platform;
     }>;
-    get $arrow(): HTMLDivElement;
-    get $host(): HTMLElement;
-    get $reference(): Element;
-    /**
-     * Hides the component.
-     */
-    hide(): void;
-    /**
-     * Shows the component.
-     */
-    show(): void;
-    /**
-     * Updates the component's position.
-     */
-    update(): void;
+    watcher(next: any, prev: any, key: any): void;
     bind(): void;
     unbind(): void;
     events(all: boolean): any[];
     observe(active: boolean): void;
-    watcher(next: any, prev: any, key: any): void;
     onHide(): void;
     onShow(): void;
     connectCallback(): Promise<void>;

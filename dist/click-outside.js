@@ -1,23 +1,14 @@
-import { _ as __decorate, h as host, o as on, f as off, b as html, P as Property, E as Event, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, o as on, j as off, h as html, P as Property, E as Event, H as Host, W as Watch, B as Bind, b as Element } from './core/index.js';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
 let ClickOutside = class ClickOutside {
-    get $host() {
-        return host(this);
-    }
     get options() {
         return {
             capture: this.capture
         };
-    }
-    bind() {
-        on(this.$host, 'outside', this.onClickOutside, this.options);
-    }
-    unbind() {
-        off(this.$host, 'outside', this.onClickOutside, this.options);
     }
     watcher(next, prev, name) {
         switch (name) {
@@ -30,6 +21,12 @@ let ClickOutside = class ClickOutside {
                 this.bind();
                 break;
         }
+    }
+    bind() {
+        on(this.$host, 'outside', this.onClickOutside, this.options);
+    }
+    unbind() {
+        off(this.$host, 'outside', this.onClickOutside, this.options);
     }
     onClickOutside() {
         if (this.once)
@@ -71,6 +68,9 @@ __decorate([
         cancelable: true
     })
 ], ClickOutside.prototype, "plusClickOutside", void 0);
+__decorate([
+    Host()
+], ClickOutside.prototype, "$host", void 0);
 __decorate([
     Watch(['capture', 'disabled', 'once'])
 ], ClickOutside.prototype, "watcher", null);

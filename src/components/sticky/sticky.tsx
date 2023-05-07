@@ -4,6 +4,7 @@ import {
   Event,
   EventEmitter,
   Property,
+  Query,
   State,
   Watch,
   styles,
@@ -44,7 +45,8 @@ export class Sticky {
   @Event()
   plusChange!: EventEmitter<StickyState>;
 
-  $element!: HTMLElement;
+  @Query('.sizer')
+  $sizer!: HTMLElement;
 
   @State()
   state?: StickyState;
@@ -68,25 +70,6 @@ export class Sticky {
     });
   }
 
-  bind() {
-    if (!this.watcher) return;
-
-    // TODO
-    // if (this.disabled) return;
-
-    this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
-
-    this.observer.observe(this.$element);
-  }
-
-  unbind() {
-    // TODO: immediately rerenders after remove `watcher` attribute
-    requestAnimationFrame(() => {
-      this.state = undefined;
-      this.observer?.disconnect();
-    });
-  }
-
   @Watch(['disabled', 'watcher'])
   watchers(next, prev, key) {
     switch (key) {
@@ -97,6 +80,25 @@ export class Sticky {
         next ? this.bind() : this.unbind();
         break;
     }
+  }
+
+  bind() {
+    if (!this.watcher) return;
+
+    // TODO
+    // if (this.disabled) return;
+
+    this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
+
+    this.observer.observe(this.$sizer);
+  }
+
+  unbind() {
+    // TODO: immediately rerenders after remove `watcher` attribute
+    requestAnimationFrame(() => {
+      this.state = undefined;
+      this.observer?.disconnect();
+    });
   }
 
   @Bind()
@@ -120,11 +122,7 @@ export class Sticky {
     return (
       <host state={this.watcher ? this.state : null} style={this.style}>
         <div className="sizer-wrapper">
-          <div
-            className="sizer"
-            ref={($element) => (this.$element = $element)}
-            style={this.sizer}
-          ></div>
+          <div className="sizer" style={this.sizer}></div>
         </div>
         <slot />
         {this.state && (

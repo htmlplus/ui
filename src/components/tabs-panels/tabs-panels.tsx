@@ -19,10 +19,6 @@ export class TabsPanels {
   @Property()
   connector?: string;
 
-  /**
-   * Watchers
-   */
-
   @Watch(['connector'])
   watcher() {
     reconnect(this);

@@ -80,15 +80,15 @@ export declare class Drawer {
      * When the drawer is completely shown and its animation is completed.
      */
     plusOpened: EventEmitter<void>;
-    platform?: DrawerPlatform;
+    $host: HTMLElement;
     $root: HTMLElement;
+    platform?: DrawerPlatform;
     animations: {
         open?: Animation;
         mini?: Animation;
     };
     isOpen?: boolean;
     tunnel?: boolean;
-    get $host(): HTMLElement;
     get classes(): string;
     get hasBackdrop(): boolean;
     get isTemporary(): boolean;

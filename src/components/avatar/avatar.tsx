@@ -21,7 +21,7 @@ export class Avatar {
   @Property({ reflect: true })
   size?: AvatarSize = 'md';
 
-  get PLACEMENTS() {
+  get placements() {
     const offset = this.shape == 'circle' ? '14.64466%' : '0';
     return {
       'bottom': {
@@ -111,9 +111,9 @@ export class Avatar {
     return (
       <host style={this.style}>
         <slot />
-        {Object.keys(this.PLACEMENTS).map((PLACEMENT) => (
-          <div className={PLACEMENT} style={this.PLACEMENTS[PLACEMENT]}>
-            <slot name={PLACEMENT} />
+        {Object.keys(this.placements).map((placement) => (
+          <div className={placement} style={this.placements[placement]}>
+            <slot name={placement} />
           </div>
         ))}
       </host>

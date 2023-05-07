@@ -5,6 +5,7 @@ import {
   EventEmitter,
   Method,
   Property,
+  Query,
   Watch,
   classes
 } from '@htmlplus/element';
@@ -173,6 +174,91 @@ export class Cropper {
   @Event({ cancelable: true })
   plusZoom!: EventEmitter<CropperZoomEvent>;
 
+  /**
+   * Flips horizontally.
+   */
+  @Method()
+  flipX(): void {
+    this.instance.scale(-1, 1);
+  }
+
+  /**
+   * Flips vertically.
+   */
+  @Method()
+  flipY(): void {
+    this.instance.scale(1, -1);
+  }
+
+  /**
+   * Moves the canvas with relative offsets.
+   * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
+   * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
+   */
+  @Method()
+  move(offsetX?: number, offsetY?: number): void {
+    this.instance.move(offsetX ?? null, offsetY ?? null);
+  }
+
+  /**
+   * Moves the canvas to an absolute point.
+   * @param x - The `left` value of the canvas. Use `null` to ignore this.
+   * @param y - The `top` value of the canvas. Use `null` to ignore this.
+   */
+  @Method()
+  moveTo(x?: number, y?: number): void {
+    this.instance.moveTo(x ?? null, y ?? null);
+  }
+
+  /**
+   * Resets the image and viewport to their initial states.
+   */
+  @Method()
+  reset(): void {
+    this.instance.reset();
+  }
+
+  /**
+   * Rotates the image with a relative degree.
+   */
+  @Method()
+  rotate(degree: number): void {
+    this.instance.rotate(degree);
+  }
+
+  /**
+   * Rotates the image to an absolute degree.
+   */
+  @Method()
+  rotateTo(degree: number): void {
+    this.instance.rotateTo(degree);
+  }
+
+  /**
+   * Gets `canvas` from the cropped image.
+   */
+  @Method()
+  toCanvas(): HTMLCanvasElement {
+    return this.instance.getCroppedCanvas(/* TODO */);
+  }
+
+  /**
+   * Zooms the canvas with a relative ratio.
+   */
+  @Method()
+  zoom(ratio: number): void {
+    this.instance.zoom(ratio);
+  }
+
+  /**
+   * Zooms the canvas to an absolute ratio.
+   */
+  @Method()
+  zoomTo(ratio: number): void {
+    this.instance.zoomTo(ratio /*, TODO */);
+  }
+
+  @Query('.image')
   $image!: HTMLImageElement;
 
   instance?: CropperCoreType;
@@ -263,88 +349,49 @@ export class Cropper {
     };
   }
 
-  /**
-   * Flips horizontally.
-   */
-  @Method()
-  flipX(): void {
-    this.instance.scale(-1, 1);
-  }
+  @Watch()
+  watcher(next, prev, name) {
+    if (this.locked) return;
 
-  /**
-   * Flips vertically.
-   */
-  @Method()
-  flipY(): void {
-    this.instance.scale(1, -1);
-  }
+    switch (name) {
+      case 'aspectRatio':
+      case 'shape':
+        this.instance.setAspectRatio(this.options.aspectRatio);
+        break;
 
-  /**
-   * Moves the canvas with relative offsets.
-   * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
-   * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
-   */
-  @Method()
-  move(offsetX?: number, offsetY?: number): void {
-    this.instance.move(offsetX ?? null, offsetY ?? null);
-  }
+      case 'disabled':
+        next ? this.instance.disable() : this.instance.enable();
+        break;
 
-  /**
-   * Moves the canvas to an absolute point.
-   * @param x - The `left` value of the canvas. Use `null` to ignore this.
-   * @param y - The `top` value of the canvas. Use `null` to ignore this.
-   */
-  @Method()
-  moveTo(x?: number, y?: number): void {
-    this.instance.moveTo(x ?? null, y ?? null);
-  }
+      case 'mode':
+        // TODO: Doesn't work.
+        // this.instance.setDragMode(next);
+        // TODO: Remove this after fixing the above issue.
+        this.unbind();
+        this.bind();
+        break;
 
-  /**
-   * Resets the image and viewport to their initial states.
-   */
-  @Method()
-  reset(): void {
-    this.instance.reset();
-  }
+      case 'src':
+        this.instance.replace(this.src, false /* TODO */);
+        break;
 
-  /**
-   * Rotates the image with a relative degree.
-   */
-  @Method()
-  rotate(degree: number): void {
-    this.instance.rotate(degree);
-  }
+      case 'value':
+        this.sync(next);
+        break;
 
-  /**
-   * Rotates the image to an absolute degree.
-   */
-  @Method()
-  rotateTo(degree: number): void {
-    this.instance.rotateTo(degree);
-  }
-
-  /**
-   * Gets `canvas` from the cropped image.
-   */
-  @Method()
-  toCanvas(): HTMLCanvasElement {
-    return this.instance.getCroppedCanvas(/* TODO */);
-  }
-
-  /**
-   * Zooms the canvas with a relative ratio.
-   */
-  @Method()
-  zoom(ratio: number): void {
-    this.instance.zoom(ratio);
-  }
-
-  /**
-   * Zooms the canvas to an absolute ratio.
-   */
-  @Method()
-  zoomTo(ratio: number): void {
-    this.instance.zoomTo(ratio /*, TODO */);
+      case 'area':
+      case 'backdrop':
+      case 'background':
+      case 'guides':
+      case 'indicator':
+      case 'responsive':
+      case 'view':
+      case 'zoomable':
+      case 'zoomRatio':
+        this.unbind();
+        this.bind();
+        break;
+    }
   }
 
   bind() {
@@ -395,51 +442,6 @@ export class Cropper {
     requestAnimationFrame(() => {
       this.locked = false;
     });
-  }
-
-  @Watch()
-  watcher(next, prev, name) {
-    if (this.locked) return;
-
-    switch (name) {
-      case 'aspectRatio':
-      case 'shape':
-        this.instance.setAspectRatio(this.options.aspectRatio);
-        break;
-
-      case 'disabled':
-        next ? this.instance.disable() : this.instance.enable();
-        break;
-
-      case 'mode':
-        // TODO: Doesn't work.
-        // this.instance.setDragMode(next);
-        // TODO: Remove this after fixing the above issue.
-        this.unbind();
-        this.bind();
-        break;
-
-      case 'src':
-        this.instance.replace(this.src, false /* TODO */);
-        break;
-
-      case 'value':
-        this.sync(next);
-        break;
-
-      case 'area':
-      case 'backdrop':
-      case 'background':
-      case 'guides':
-      case 'indicator':
-      case 'responsive':
-      case 'view':
-      case 'zoomable':
-      case 'zoomRatio':
-        this.unbind();
-        this.bind();
-        break;
-    }
   }
 
   @Bind()
@@ -521,12 +523,7 @@ export class Cropper {
   render() {
     return (
       <div className={this.classes}>
-        <img
-          className="image"
-          alt="cropper"
-          ref={($element) => (this.$image = $element)}
-          src={this.src}
-        />
+        <img className="image" alt="cropper" src={this.src} />
       </div>
     );
   }

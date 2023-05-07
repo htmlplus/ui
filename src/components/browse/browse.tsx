@@ -1,4 +1,13 @@
-import { Bind, Element, Event, EventEmitter, Method, Property, State } from '@htmlplus/element';
+import {
+  Bind,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  Query,
+  State
+} from '@htmlplus/element';
 
 import { BrowseEvent, BrowseFile } from './browse.types';
 
@@ -75,6 +84,7 @@ export class Browse {
   @Event()
   plusSuccess!: EventEmitter<BrowseEvent>;
 
+  @Query('input')
   $input!: HTMLElement;
 
   @State()
@@ -211,7 +221,6 @@ export class Browse {
         <input
           accept={this.accept}
           multiple={this.multiple}
-          ref={($element) => (this.$input = $element)}
           type="file"
           onChange={this.onChange}
           onClick={(event) => event.stopPropagation()}

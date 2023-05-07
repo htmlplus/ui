@@ -41,9 +41,17 @@ export class Tabs {
   @Observable()
   tunnel?: any;
 
-  /**
-   * Internal Methods
-   */
+  @Watch(['connector', 'value'])
+  watcher(next, prev, name) {
+    switch (name) {
+      case 'connector':
+        reconnect(this);
+        break;
+      case 'value':
+        this.tunnel = next;
+        break;
+    }
+  }
 
   broadcast(value: any) {
     this.tunnel = value;
@@ -60,26 +68,6 @@ export class Tabs {
   initialize() {
     this.broadcast(this.value);
   }
-
-  /**
-   * Watchers
-   */
-
-  @Watch(['connector', 'value'])
-  watcher(next, prev, name) {
-    switch (name) {
-      case 'connector':
-        reconnect(this);
-        break;
-      case 'value':
-        this.tunnel = next;
-        break;
-    }
-  }
-
-  /**
-   * Lifecycles
-   */
 
   connectedCallback() {
     this.initialize();

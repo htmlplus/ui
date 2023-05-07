@@ -42,18 +42,18 @@ export declare class Accordion {
      * TODO.
      */
     plusExpanded: EventEmitter<void>;
+    $host: HTMLElement;
     $body: HTMLElement;
     $header: HTMLElement;
-    get $host(): HTMLElement;
     animate: Animation2;
     opened: boolean;
     hide(): Promise<void>;
     show(): Promise<void>;
     toggle(): Promise<void>;
+    watcher(next: any, prev: any, name: any): void;
     bind(): void;
     unbind(): void;
     try(open: boolean, silent?: boolean): void;
-    watcher(next: any, prev: any, name: any): void;
     onClick(): void;
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;

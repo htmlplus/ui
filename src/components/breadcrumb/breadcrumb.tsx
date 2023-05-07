@@ -1,4 +1,4 @@
-import { Bind, Element, Property, State, host, queryAll } from '@htmlplus/element';
+import { Bind, Element, Host, Property, QueryAll, State } from '@htmlplus/element';
 import { request } from '@htmlplus/element/client/utils/request';
 
 import * as CONSTANTS from './breadcrumb.constants';
@@ -43,16 +43,18 @@ export class Breadcrumb {
 
   observer: MutationObserver = new MutationObserver(this.onChange);
 
+  @Host()
+  $host!: HTMLElement;
+
+  @QueryAll('.separator')
+  $separators!: HTMLElement[];
+
   get $children() {
     return Array.from(this.$host.children).filter(($node) => {
       return !$node.matches(
         [CONSTANTS.BREADCRUMB_EXPANDER_QUERY, CONSTANTS.BREADCRUMB_SEPARATOR_QUERY].join(',')
       );
     });
-  }
-
-  get $host() {
-    return host(this);
   }
 
   get items() {
@@ -155,7 +157,7 @@ export class Breadcrumb {
 
     if (!template) return;
 
-    queryAll(this, '.separator').forEach((element) => {
+    this.$separators.forEach((element) => {
       element.innerHTML = template;
     });
   }

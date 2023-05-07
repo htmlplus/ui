@@ -33,14 +33,14 @@ export declare class Icon {
      * Specifies the size.
      */
     size?: IconSize;
+    $host: HTMLElement;
     svg?: SVGElement;
-    get $host(): HTMLElement;
     get cache(): any;
     set cache(cache: any);
     get style(): string;
+    watcher(): void;
     sync(input?: SVGElement | string): boolean;
     update(): void;
-    watcher(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface IconJSX {

@@ -3,9 +3,9 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Property,
   Watch,
-  host,
   off,
   on
 } from '@htmlplus/element';
@@ -41,22 +41,13 @@ export class ClickOutside {
   @Event({ cancelable: true })
   plusClickOutside!: EventEmitter<void>;
 
-  get $host() {
-    return host(this);
-  }
+  @Host()
+  $host!: HTMLElement;
 
   get options() {
     return {
       capture: this.capture
     };
-  }
-
-  bind() {
-    on(this.$host, 'outside', this.onClickOutside, this.options);
-  }
-
-  unbind() {
-    off(this.$host, 'outside', this.onClickOutside, this.options);
   }
 
   @Watch(['capture', 'disabled', 'once'])
@@ -71,6 +62,14 @@ export class ClickOutside {
         this.bind();
         break;
     }
+  }
+
+  bind() {
+    on(this.$host, 'outside', this.onClickOutside, this.options);
+  }
+
+  unbind() {
+    off(this.$host, 'outside', this.onClickOutside, this.options);
   }
 
   @Bind()

@@ -101,6 +101,50 @@ export declare class Cropper {
      * Fires when the component starts to `zoom in` or `zoom out`.
      */
     plusZoom: EventEmitter<CropperZoomEvent>;
+    /**
+     * Flips horizontally.
+     */
+    flipX(): void;
+    /**
+     * Flips vertically.
+     */
+    flipY(): void;
+    /**
+     * Moves the canvas with relative offsets.
+     * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
+     * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
+     */
+    move(offsetX?: number, offsetY?: number): void;
+    /**
+     * Moves the canvas to an absolute point.
+     * @param x - The `left` value of the canvas. Use `null` to ignore this.
+     * @param y - The `top` value of the canvas. Use `null` to ignore this.
+     */
+    moveTo(x?: number, y?: number): void;
+    /**
+     * Resets the image and viewport to their initial states.
+     */
+    reset(): void;
+    /**
+     * Rotates the image with a relative degree.
+     */
+    rotate(degree: number): void;
+    /**
+     * Rotates the image to an absolute degree.
+     */
+    rotateTo(degree: number): void;
+    /**
+     * Gets `canvas` from the cropped image.
+     */
+    toCanvas(): HTMLCanvasElement;
+    /**
+     * Zooms the canvas with a relative ratio.
+     */
+    zoom(ratio: number): void;
+    /**
+     * Zooms the canvas to an absolute ratio.
+     */
+    zoomTo(ratio: number): void;
     $image: HTMLImageElement;
     instance?: CropperCoreType;
     locked?: boolean;
@@ -146,54 +190,10 @@ export declare class Cropper {
         ready: () => void;
         zoom: (event: any) => void;
     };
-    /**
-     * Flips horizontally.
-     */
-    flipX(): void;
-    /**
-     * Flips vertically.
-     */
-    flipY(): void;
-    /**
-     * Moves the canvas with relative offsets.
-     * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
-     * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
-     */
-    move(offsetX?: number, offsetY?: number): void;
-    /**
-     * Moves the canvas to an absolute point.
-     * @param x - The `left` value of the canvas. Use `null` to ignore this.
-     * @param y - The `top` value of the canvas. Use `null` to ignore this.
-     */
-    moveTo(x?: number, y?: number): void;
-    /**
-     * Resets the image and viewport to their initial states.
-     */
-    reset(): void;
-    /**
-     * Rotates the image with a relative degree.
-     */
-    rotate(degree: number): void;
-    /**
-     * Rotates the image to an absolute degree.
-     */
-    rotateTo(degree: number): void;
-    /**
-     * Gets `canvas` from the cropped image.
-     */
-    toCanvas(): HTMLCanvasElement;
-    /**
-     * Zooms the canvas with a relative ratio.
-     */
-    zoom(ratio: number): void;
-    /**
-     * Zooms the canvas to an absolute ratio.
-     */
-    zoomTo(ratio: number): void;
+    watcher(next: any, prev: any, name: any): void;
     bind(): void;
     unbind(): void;
     sync(value?: any): void;
-    watcher(next: any, prev: any, name: any): void;
     onCrop(): void;
     onCropEnd(event: any): void;
     onCropMove(event: any): void;

@@ -3,10 +3,11 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Method,
   Property,
-  Watch,
-  host
+  Query,
+  Watch
 } from '@htmlplus/element';
 
 import { Animation2 } from '@app/services';
@@ -66,13 +67,14 @@ export class Accordion {
   @Event()
   plusExpanded!: EventEmitter<void>;
 
+  @Host()
+  $host!: HTMLElement;
+
+  @Query('.body')
   $body!: HTMLElement;
 
+  @Query('.header')
   $header!: HTMLElement;
-
-  get $host() {
-    return host(this);
-  }
 
   animate = new Animation2({
     key: 'state',
@@ -129,6 +131,17 @@ export class Accordion {
     return this.open ? this.hide() : this.show();
   }
 
+  @Watch(['open'])
+  watcher(next, prev, name) {
+    // TODO: problem with `false` and `undefined`
+    if (!next == !prev) return;
+    switch (name) {
+      case 'open':
+        this.try(next, true);
+        break;
+    }
+  }
+
   bind() {
     this.animate.initialize((this.opened = this.open) ? 'entered' : 'leaved');
   }
@@ -152,17 +165,6 @@ export class Accordion {
       this.animate.enter(silent);
     } else {
       this.animate.leave(silent);
-    }
-  }
-
-  @Watch(['open'])
-  watcher(next, prev, name) {
-    // TODO: problem with `false` and `undefined`
-    if (!next == !prev) return;
-    switch (name) {
-      case 'open':
-        this.try(next, true);
-        break;
     }
   }
 
@@ -200,7 +202,6 @@ export class Accordion {
           part="header"
           role="button"
           tabIndex={this.disabled ? -1 : 0}
-          ref={($element) => (this.$header = $element)}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown as any}
         >
@@ -225,7 +226,7 @@ export class Accordion {
             </slot>
           </slot>
         </div>
-        <div className="body" part="body" ref={($element) => (this.$body = $element)}>
+        <div className="body" part="body">
           <slot className="content" part="content"></slot>
         </div>
       </>

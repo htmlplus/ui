@@ -1,4 +1,4 @@
-import { _ as __decorate, i as isRTL, t as toUnit, b as html, e as attributes, d as styles, h as host, P as Property, c as Element } from './core/index.js';
+import { _ as __decorate, i as isRTL, t as toUnit, h as html, d as attributes, c as styles, e as host, P as Property, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{--plus-avatar-border-radius:0.25rem;--plus-avatar-font-size-ratio:0.35;--plus-avatar-size:auto}:host{align-items:center;background-color:#d3d3d3;border-radius:var(--plus-avatar-border-radius);color:gray;display:inline-flex;font-size:calc(var(--plus-avatar-size)*var(--plus-avatar-font-size-ratio));height:var(--plus-avatar-size);justify-content:center;position:relative;text-align:center;text-transform:uppercase;user-select:none;vertical-align:middle;width:var(--plus-avatar-size)}:host([shape=circle]){--plus-avatar-border-radius:50%}:host([shape=round]){--plus-avatar-border-radius:0.25rem}:host([shape=tile]){--plus-avatar-border-radius:0}:host([size=xxs]){--plus-avatar-size:1rem}:host([size=xs]){--plus-avatar-size:1.5rem}:host([size=sm]){--plus-avatar-size:2rem}:host([size=md]){--plus-avatar-size:3rem}:host([size=lg]){--plus-avatar-size:4rem}:host([size=xl]){--plus-avatar-size:6rem}:host([size=xxl]){--plus-avatar-size:8rem}::slotted(:not([slot])){border-radius:var(--plus-avatar-border-radius);height:100%;inset:0;position:absolute;width:100%}div{position:absolute}";
 
@@ -19,7 +19,7 @@ let Avatar = class Avatar {
          */
         this.size = 'md';
     }
-    get PLACEMENTS() {
+    get placements() {
         const offset = this.shape == 'circle' ? '14.64466%' : '0';
         return {
             'bottom': {
@@ -109,8 +109,8 @@ let Avatar = class Avatar {
                 "style": styles(this.style)
             }])}
         <slot />
-        ${Object.keys(this.PLACEMENTS).map(PLACEMENT => html `<div class=${PLACEMENT} style=${styles(this.PLACEMENTS[PLACEMENT])}>
-            <slot name=${PLACEMENT} />
+        ${Object.keys(this.placements).map(placement => html `<div class=${placement} style=${styles(this.placements[placement])}>
+            <slot name=${placement} />
           </div>`)}
       `;
     }

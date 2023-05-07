@@ -1,13 +1,13 @@
 import {
   Bind,
   Element,
+  Host,
   Method,
   Property,
+  Query,
   Watch,
   State,
-  host,
   isRTL,
-  query,
   off,
   on
 } from '@htmlplus/element';
@@ -91,78 +91,6 @@ export class Tooltip {
   @Property()
   z?: 'auto' | 'vertical' | 'horizontal' | 'move' = 'auto';
 
-  @State()
-  state?: 'hide' | 'show' = 'hide';
-
-  $activator?: Element;
-
-  cleanup?: Function;
-
-  timeout?: NodeJS.Timeout;
-
-  get options() {
-    const PLACEMENT = {
-      'top': 'top',
-      'top-left': isRTL(this) ? 'top-end' : 'top-start',
-      'top-right': isRTL(this) ? 'top-start' : 'top-end',
-      'top-start': 'top-start',
-      'top-end': 'top-end',
-      'right': 'right',
-      'right-top': 'right-start',
-      'right-bottom': 'right-end',
-      'bottom': 'bottom',
-      'bottom-left': isRTL(this) ? 'bottom-end' : 'bottom-start',
-      'bottom-right': isRTL(this) ? 'bottom-start' : 'bottom-end',
-      'bottom-start': 'bottom-start',
-      'bottom-end': 'bottom-end',
-      'left': 'left',
-      'left-top': 'left-start',
-      'left-bottom': 'left-end',
-      'start': isRTL(this) ? 'right' : 'left',
-      'start-top': isRTL(this) ? 'right-start' : 'left-start',
-      'start-bottom': isRTL(this) ? 'right-end' : 'left-end',
-      'end': isRTL(this) ? 'left' : 'right',
-      'end-top': isRTL(this) ? 'left-start' : 'right-start',
-      'end-bottom': isRTL(this) ? 'left-end' : 'right-end'
-    };
-
-    const padding = [this.offset].flat();
-
-    return {
-      middleware: [
-        FloatingCore.offset({ crossAxis: padding[0] || 0, mainAxis: padding[1] || 0 }),
-        FloatingCore.flip(),
-        this.arrow && FloatingCore.arrow({ element: this.$arrow })
-        // FloatingCore.hide()
-      ],
-      placement: PLACEMENT[this.placement],
-      strategy: this.fixed ? 'fixed' : 'absolute'
-    } as Partial<FloatingCoreType.ComputePositionConfig>;
-  }
-
-  get $arrow() {
-    return query(this, '[part=arrow]') as HTMLDivElement;
-  }
-
-  get $host() {
-    return host(this);
-  }
-
-  get $reference() {
-    if (typeof this.reference != 'string') return this.reference;
-
-    switch (this.reference) {
-      case 'next':
-        return this.$host.nextElementSibling;
-      case 'parent':
-        return this.$host.parentElement;
-      case 'previous':
-        return this.$host.previousElementSibling;
-    }
-
-    return document.querySelector(this.reference);
-  }
-
   /**
    * Hides the component.
    */
@@ -225,6 +153,98 @@ export class Tooltip {
         top: arrowY == null ? '' : `${arrowY}px`
       });
     });
+  }
+
+  @Host()
+  $host!: HTMLElement;
+
+  @Query('[part=arrow]')
+  $arrow!: HTMLElement;
+
+  $activator?: Element;
+
+  @State()
+  state?: 'hide' | 'show' = 'hide';
+
+  cleanup?: Function;
+
+  timeout?: NodeJS.Timeout;
+
+  get $reference() {
+    if (typeof this.reference != 'string') return this.reference;
+
+    switch (this.reference) {
+      case 'next':
+        return this.$host.nextElementSibling;
+      case 'parent':
+        return this.$host.parentElement;
+      case 'previous':
+        return this.$host.previousElementSibling;
+    }
+
+    return document.querySelector(this.reference);
+  }
+
+  get options() {
+    const PLACEMENT = {
+      'top': 'top',
+      'top-left': isRTL(this) ? 'top-end' : 'top-start',
+      'top-right': isRTL(this) ? 'top-start' : 'top-end',
+      'top-start': 'top-start',
+      'top-end': 'top-end',
+      'right': 'right',
+      'right-top': 'right-start',
+      'right-bottom': 'right-end',
+      'bottom': 'bottom',
+      'bottom-left': isRTL(this) ? 'bottom-end' : 'bottom-start',
+      'bottom-right': isRTL(this) ? 'bottom-start' : 'bottom-end',
+      'bottom-start': 'bottom-start',
+      'bottom-end': 'bottom-end',
+      'left': 'left',
+      'left-top': 'left-start',
+      'left-bottom': 'left-end',
+      'start': isRTL(this) ? 'right' : 'left',
+      'start-top': isRTL(this) ? 'right-start' : 'left-start',
+      'start-bottom': isRTL(this) ? 'right-end' : 'left-end',
+      'end': isRTL(this) ? 'left' : 'right',
+      'end-top': isRTL(this) ? 'left-start' : 'right-start',
+      'end-bottom': isRTL(this) ? 'left-end' : 'right-end'
+    };
+
+    const padding = [this.offset].flat();
+
+    return {
+      middleware: [
+        FloatingCore.offset({ crossAxis: padding[0] || 0, mainAxis: padding[1] || 0 }),
+        FloatingCore.flip(),
+        this.arrow && FloatingCore.arrow({ element: this.$arrow })
+        // FloatingCore.hide()
+      ],
+      placement: PLACEMENT[this.placement],
+      strategy: this.fixed ? 'fixed' : 'absolute'
+    } as Partial<FloatingCoreType.ComputePositionConfig>;
+  }
+
+  @Watch()
+  watcher(next, prev, key) {
+    switch (key) {
+      case 'disabled':
+        next ? this.unbind() : this.bind();
+        break;
+
+      case 'fixed':
+      case 'offset':
+      case 'placement':
+        if (this.state == 'hide') break;
+        this.update();
+        break;
+
+      case 'reference':
+      case 'trigger':
+        this.unbind();
+        this.bind();
+        break;
+    }
   }
 
   bind() {
@@ -299,28 +319,6 @@ export class Tooltip {
     if (!active) return;
 
     this.cleanup = FloatingCore.autoUpdate(this.$activator, this.$host, this.update.bind(this));
-  }
-
-  @Watch()
-  watcher(next, prev, key) {
-    switch (key) {
-      case 'disabled':
-        next ? this.unbind() : this.bind();
-        break;
-
-      case 'fixed':
-      case 'offset':
-      case 'placement':
-        if (this.state == 'hide') break;
-        this.update();
-        break;
-
-      case 'reference':
-      case 'trigger':
-        this.unbind();
-        this.bind();
-        break;
-    }
   }
 
   @Bind()

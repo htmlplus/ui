@@ -41,6 +41,11 @@ export class ScrollDetector {
     return document.querySelector(this.reference);
   }
 
+  @Watch(['disabled', 'reference'])
+  watcher(next) {
+    next ? this.unbind() : this.bind();
+  }
+
   bind() {
     if (this.disabled) return;
 
@@ -53,11 +58,6 @@ export class ScrollDetector {
 
   unbind() {
     off(this.$reference, 'scroll', this.onScroll);
-  }
-
-  @Watch(['disabled', 'reference'])
-  watcher(next) {
-    next ? this.unbind() : this.bind();
   }
 
   @Bind()

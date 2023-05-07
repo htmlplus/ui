@@ -25,16 +25,16 @@ export declare class Sticky {
      * Fires when the state is changed. To enable, set the `watcher` property to `true`.
      */
     plusChange: EventEmitter<StickyState>;
-    $element: HTMLElement;
+    $sizer: HTMLElement;
     state?: StickyState;
     observer?: IntersectionObserver;
     get sizer(): {
         top: string;
     };
     get style(): string;
+    watchers(next: any, prev: any, key: any): void;
     bind(): void;
     unbind(): void;
-    watchers(next: any, prev: any, key: any): void;
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;

@@ -40,6 +40,7 @@ export declare class Intersection {
      * Fires When the browser detects that the component has been unveiled or obscured.
      */
     plusChange: EventEmitter<IntersectionObserverEntry>;
+    $host: HTMLElement;
     isIntersecting?: boolean;
     observer?: IntersectionObserver;
     get disconnected(): boolean;
@@ -48,9 +49,9 @@ export declare class Intersection {
         rootMargin: string;
         threshold: number | number[];
     };
+    watcher(next: any, prev: any, name: any): void;
     bind(): void;
     unbind(): void;
-    watcher(next: any, prev: any, name: any): void;
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     connectedCallback(): void;
     disconnectedCallback(): void;

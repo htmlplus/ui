@@ -49,14 +49,6 @@ export declare class Counter {
      * Is Triggered when transition ended.
      */
     plusComplete: EventEmitter<void>;
-    counter?: number;
-    state?: 'idle' | 'completed' | 'paused' | 'running' | 'stopped';
-    remaining?: number;
-    requestAnimationFrame?: number;
-    startTime?: number;
-    get easingFunction(): any;
-    get formated(): string;
-    get reverse(): boolean;
     /**
      * Completes the transition.
      */
@@ -73,9 +65,17 @@ export declare class Counter {
      * Stops the transition.
      */
     stop(): void;
+    counter?: number;
+    state?: 'idle' | 'completed' | 'paused' | 'running' | 'stopped';
+    remaining?: number;
+    requestAnimationFrame?: number;
+    startTime?: number;
+    get easingFunction(): any;
+    get formated(): string;
+    get reverse(): boolean;
+    watcher(): void;
     count(timestamp: number): void;
     reset(): void;
-    watcher(): void;
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }

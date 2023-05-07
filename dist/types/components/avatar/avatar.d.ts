@@ -14,7 +14,7 @@ export declare class Avatar {
      * Specifies the size of the component.
      */
     size?: AvatarSize;
-    get PLACEMENTS(): {
+    get placements(): {
         bottom: {
             [x: string]: string | number;
             bottom: number;

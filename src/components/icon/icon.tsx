@@ -1,4 +1,4 @@
-import { Element, Property, State, Watch, host, styles, toUnit } from '@htmlplus/element';
+import { Element, Host, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@app/config';
 
@@ -84,12 +84,11 @@ export class Icon {
   @Property({ reflect: true })
   size?: IconSize;
 
+  @Host()
+  $host!: HTMLElement;
+
   @State()
   svg?: SVGElement;
-
-  get $host() {
-    return host(this);
-  }
 
   get cache() {
     return getConfig('asset', 'icon', this.name);
@@ -135,6 +134,13 @@ export class Icon {
       height: size,
       width: size,
       transform
+    });
+  }
+
+  @Watch('name', true)
+  watcher() {
+    requestAnimationFrame(() => {
+      this.update();
     });
   }
 
@@ -199,13 +205,6 @@ export class Icon {
           this.$host
         );
       });
-  }
-
-  @Watch('name', true)
-  watcher() {
-    requestAnimationFrame(() => {
-      this.update();
-    });
   }
 
   render() {

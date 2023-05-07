@@ -1,4 +1,4 @@
-import { _ as __decorate, A as Animation2, h as host, a as __awaiter, b as html, P as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, A as Animation2, a as __awaiter, h as html, P as Property, E as Event, H as Host, Q as Query, M as Method, W as Watch, B as Bind, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{background-color:#fff;border:1px solid #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type,:last-of-type)){border-radius:0}:host(:not(:only-of-type):first-of-type){border-bottom-left-radius:0;border-bottom-right-radius:0}:host(:not(:only-of-type):last-of-type){border-top-left-radius:0;border-top-right-radius:0}:host([disabled]:not([disabled=false])){opacity:.5}:host([disabled]:not([disabled=false])) .header{cursor:auto}.header{border-radius:inherit;cursor:pointer;overflow-anchor:none;padding:1rem;position:relative;user-select:none}.header,.summary{align-items:center;display:flex}.summary{flex:1 1 auto}.icon{align-items:center;display:flex;flex:0 0 auto}.body{overflow:hidden;transition:all .2s ease-in-out}.content{display:block;padding:1rem}:host([state=collapsed]) .body{display:none}:host(:not([state=collapsed])) .header{border-bottom-left-radius:0;border-bottom-right-radius:0}svg{transition:all .2s ease-in-out}:host([state^=collap]) svg{transform:rotate(90deg)}:host([state^=expand]) svg{transform:rotate(-90deg)}";
 
@@ -56,9 +56,6 @@ let Accordion = class Accordion {
         });
         this.opened = false;
     }
-    get $host() {
-        return host(this);
-    }
     hide() {
         return __awaiter(this, void 0, void 0, function* () {
             this.try(false, true);
@@ -73,6 +70,16 @@ let Accordion = class Accordion {
         return __awaiter(this, void 0, void 0, function* () {
             return this.open ? this.hide() : this.show();
         });
+    }
+    watcher(next, prev, name) {
+        // TODO: problem with `false` and `undefined`
+        if (!next == !prev)
+            return;
+        switch (name) {
+            case 'open':
+                this.try(next, true);
+                break;
+        }
     }
     bind() {
         this.animate.initialize((this.opened = this.open) ? 'entered' : 'leaved');
@@ -97,16 +104,6 @@ let Accordion = class Accordion {
             this.animate.leave(silent);
         }
     }
-    watcher(next, prev, name) {
-        // TODO: problem with `false` and `undefined`
-        if (!next == !prev)
-            return;
-        switch (name) {
-            case 'open':
-                this.try(next, true);
-                break;
-        }
-    }
     onClick() {
         this.try(!this.open);
     }
@@ -127,7 +124,7 @@ let Accordion = class Accordion {
     }
     render() {
         return html `
-        <div aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} class="header" part="header" role="button" tabindex=${this.disabled ? -1 : 0} ref=${$element => this.$header = $element} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
+        <div aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} class="header" part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
           <slot class="summary" name="summary" part="summary">
             ${this.summary}
           </slot>
@@ -139,7 +136,7 @@ let Accordion = class Accordion {
             </slot>
           </slot>
         </div>
-        <div class="body" part="body" ref=${$element => this.$body = $element}>
+        <div class="body" part="body">
           <slot class="content" part="content"></slot>
         </div>
       `;
@@ -182,6 +179,15 @@ __decorate([
 __decorate([
     Event()
 ], Accordion.prototype, "plusExpanded", void 0);
+__decorate([
+    Host()
+], Accordion.prototype, "$host", void 0);
+__decorate([
+    Query('.body')
+], Accordion.prototype, "$body", void 0);
+__decorate([
+    Query('.header')
+], Accordion.prototype, "$header", void 0);
 __decorate([
     Method()
 ], Accordion.prototype, "hide", null);

@@ -1,4 +1,4 @@
-import { _ as __decorate, t as toUnit, d as styles, b as html, e as attributes, h as host, P as Property, E as Event, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, t as toUnit, c as styles, h as html, d as attributes, e as host, P as Property, E as Event, Q as Query, S as State, W as Watch, B as Bind, b as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
 
@@ -30,24 +30,6 @@ let Sticky = class Sticky {
             zIndex: (_a = this.zIndex) !== null && _a !== void 0 ? _a : null
         });
     }
-    bind() {
-        if (!this.watcher)
-            return;
-        // TODO
-        // if (this.disabled) return;
-        this.observer = new IntersectionObserver(this.onIntersecting, {
-            threshold: [1]
-        });
-        this.observer.observe(this.$element);
-    }
-    unbind() {
-        // TODO: immediately rerenders after remove `watcher` attribute
-        requestAnimationFrame(() => {
-            var _a;
-            this.state = undefined;
-            (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
-        });
-    }
     watchers(next, prev, key) {
         switch (key) {
             case 'disabled':
@@ -57,6 +39,24 @@ let Sticky = class Sticky {
                 next ? this.bind() : this.unbind();
                 break;
         }
+    }
+    bind() {
+        if (!this.watcher)
+            return;
+        // TODO
+        // if (this.disabled) return;
+        this.observer = new IntersectionObserver(this.onIntersecting, {
+            threshold: [1]
+        });
+        this.observer.observe(this.$sizer);
+    }
+    unbind() {
+        // TODO: immediately rerenders after remove `watcher` attribute
+        requestAnimationFrame(() => {
+            var _a;
+            this.state = undefined;
+            (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
+        });
     }
     onIntersecting(entries) {
         const [entry] = entries;
@@ -76,7 +76,7 @@ let Sticky = class Sticky {
                 "style": styles(this.style)
             }])}
         <div class="sizer-wrapper">
-          <div class="sizer" ref=${$element => this.$element = $element} style=${styles(this.sizer)}></div>
+          <div class="sizer" style=${styles(this.sizer)}></div>
         </div>
         <slot />
         ${this.state && html `<div class=${this.state}>
@@ -107,6 +107,9 @@ __decorate([
 __decorate([
     Event()
 ], Sticky.prototype, "plusChange", void 0);
+__decorate([
+    Query('.sizer')
+], Sticky.prototype, "$sizer", void 0);
 __decorate([
     State()
 ], Sticky.prototype, "state", void 0);

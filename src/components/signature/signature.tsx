@@ -3,10 +3,11 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Method,
   Property,
-  Watch,
-  host
+  Query,
+  Watch
 } from '@htmlplus/element';
 
 import type CoreType from 'signature_pad';
@@ -110,20 +111,6 @@ export class Signature {
    */
   @Event()
   plusStart!: EventEmitter<PointerEvent>;
-
-  $canvas!: HTMLCanvasElement;
-
-  get $host() {
-    return host(this);
-  }
-
-  instance?: CoreType;
-
-  history: SignaturePointGroup[][] = [];
-
-  index: number = -1;
-
-  observer: ResizeObserver = new ResizeObserver(this.onResize);
 
   /**
    * Specifies whether redo can be performed or not.
@@ -276,6 +263,51 @@ export class Signature {
     this.instance.fromData(data);
   }
 
+  @Host()
+  $host!: HTMLElement;
+
+  @Query('canvas')
+  $canvas!: HTMLCanvasElement;
+
+  instance?: CoreType;
+
+  history: SignaturePointGroup[][] = [];
+
+  index: number = -1;
+
+  observer: ResizeObserver = new ResizeObserver(this.onResize);
+
+  @Watch()
+  watcher(next, prev, name) {
+    switch (name) {
+      case 'color':
+        this.instance.penColor = next;
+        break;
+      case 'disabled':
+        this.instance[next ? 'off' : 'on']();
+        break;
+      case 'distance':
+        this.instance.minDistance = next;
+        break;
+      case 'velocity':
+        this.instance.velocityFilterWeight = next;
+        break;
+      case 'backgroundColor':
+      case 'dotSize':
+      case 'maxWidth':
+      case 'minWidth':
+      case 'throttle':
+        this.instance[name] = next;
+        break;
+      case 'resizable':
+        this.observer[next ? 'observe' : 'unobserve'](this.$host);
+        break;
+    }
+
+    // TODO
+    this.fromData(this.toData());
+  }
+
   bind() {
     this.instance = new Core(this.$canvas, {
       backgroundColor: this.backgroundColor,
@@ -321,37 +353,6 @@ export class Signature {
     this.instance?.off();
   }
 
-  @Watch()
-  watcher(next, prev, name) {
-    switch (name) {
-      case 'color':
-        this.instance.penColor = next;
-        break;
-      case 'disabled':
-        this.instance[next ? 'off' : 'on']();
-        break;
-      case 'distance':
-        this.instance.minDistance = next;
-        break;
-      case 'velocity':
-        this.instance.velocityFilterWeight = next;
-        break;
-      case 'backgroundColor':
-      case 'dotSize':
-      case 'maxWidth':
-      case 'minWidth':
-      case 'throttle':
-        this.instance[name] = next;
-        break;
-      case 'resizable':
-        this.observer[next ? 'observe' : 'unobserve'](this.$host);
-        break;
-    }
-
-    // TODO
-    this.fromData(this.toData());
-  }
-
   @Bind()
   onEnd() {
     this.index++;
@@ -378,6 +379,6 @@ export class Signature {
   }
 
   render() {
-    return <canvas part="canvas" ref={($element) => (this.$canvas = $element)}></canvas>;
+    return <canvas part="canvas"></canvas>;
   }
 }

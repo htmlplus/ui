@@ -5906,100 +5906,6 @@
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "When the children is scrolled this event trigger.",
-          "detail": "EventEmitter<number>",
-          "experimental": false,
-          "model": false,
-          "name": "plusScroll",
-          "tags": [
-            {
-              "key": "",
-              "value": "When the children is scrolled this event trigger."
-            }
-          ]
-        }
-      ],
-      "deprecated": false,
-      "description": "Scroll Indicator is a responsive reading progress bar that increases with the scroll of the container.",
-      "experimental": false,
-      "key": "scroll-indicator",
-      "methods": [],
-      "parts": [
-        {
-          "name": "indicator",
-          "description": "Indicator element."
-        }
-      ],
-      "properties": [
-        {
-          "attribute": "disabled",
-          "deprecated": false,
-          "description": "Disables the component function.",
-          "experimental": false,
-          "model": false,
-          "name": "disabled",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "Disables the component function."
-            }
-          ],
-          "type": "boolean"
-        },
-        {
-          "attribute": "source",
-          "deprecated": false,
-          "description": "Specifies the source of the scroll.",
-          "experimental": false,
-          "initializer": "'document'",
-          "model": false,
-          "name": "source",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "Specifies the source of the scroll."
-            }
-          ],
-          "type": "ScrollIndicatorSource",
-          "typeReference": "./scroll-indicator.types"
-        }
-      ],
-      "readmeContent": "# Scroll Indicator\r\n\r\nScroll Indicator is a responsive reading progress bar that increases with the scroll of the container.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
-      "slots": [],
-      "styles": [
-        {
-          "description": "Used to adjust the color.",
-          "name": "--plus-scroll-indicator-color",
-          "initializer": "#a6a6a6"
-        },
-        {
-          "description": "Used to adjust the background-color.",
-          "name": "--plus-scroll-indicator-background-color",
-          "initializer": "#e9e9e9"
-        },
-        {
-          "description": "Used to adjust the size.",
-          "name": "--plus-scroll-indicator-size",
-          "initializer": "0.5em"
-        }
-      ],
-      "tags": [
-        {
-          "key": "part",
-          "value": "indicator - Indicator element."
-        }
-      ],
-      "title": "Scroll Indicator"
-    },
-    {
-      "events": [
-        {
-          "cancelable": false,
-          "deprecated": false,
           "description": "Fires after updating the stroke.",
           "detail": "EventEmitter<PointerEvent>",
           "experimental": false,
@@ -6561,6 +6467,38 @@
         }
       ],
       "title": "Signature"
+    },
+    {
+      "events": [],
+      "deprecated": false,
+      "experimental": false,
+      "key": "spacer",
+      "methods": [],
+      "parts": [],
+      "properties": [
+        {
+          "attribute": "grow",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "initializer": "1",
+          "model": false,
+          "name": "grow",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "number"
+        }
+      ],
+      "slots": [],
+      "styles": [],
+      "tags": [],
+      "title": "Spacer"
     },
     {
       "events": [],

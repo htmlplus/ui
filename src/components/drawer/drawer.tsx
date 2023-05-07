@@ -3,11 +3,12 @@ import {
   Element,
   Event,
   EventEmitter,
+  Host,
   Property,
+  Query,
   State,
   Watch,
   classes,
-  host,
   isRTL,
   off,
   on,
@@ -141,10 +142,14 @@ export class Drawer {
   @Event()
   plusOpened!: EventEmitter<void>;
 
+  @Host()
+  $host!: HTMLElement;
+
+  @Query('.root')
+  $root!: HTMLElement;
+
   @State()
   platform?: DrawerPlatform;
-
-  $root!: HTMLElement;
 
   animations: { open?: Animation; mini?: Animation } = {};
 
@@ -152,10 +157,6 @@ export class Drawer {
 
   @Observable()
   tunnel?: boolean;
-
-  get $host() {
-    return host(this);
-  }
 
   get classes() {
     const placement = toAxis(this.placement || 'start', isRTL(this));
@@ -381,7 +382,7 @@ export class Drawer {
         ) : (
           ''
         )}
-        <div className={this.classes} ref={($element) => (this.$root = $element)}>
+        <div className={this.classes}>
           <slot />
         </div>
       </host>

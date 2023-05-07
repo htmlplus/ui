@@ -1,4 +1,4 @@
-import { s as setConfig, _ as __decorate, h as host, b as html, P as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { s as setConfig, _ as __decorate, h as html, P as Property, E as Event, M as Method, H as Host, W as Watch, B as Bind, b as Element } from './core/index.js';
 import { getConfig } from './config.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}";
@@ -121,22 +121,6 @@ let Animation = class Animation {
          */
         this.playbackRate = 1;
     }
-    get options() {
-        var _a, _b;
-        return {
-            composite: this.composite,
-            delay: this.delay,
-            direction: this.direction,
-            duration: this.duration,
-            easing: (_b = (_a = ANIMATION_EASINGS[this.easing]) !== null && _a !== void 0 ? _a : getConfig('asset', 'easing', this.easing)) !== null && _b !== void 0 ? _b : this.easing,
-            endDelay: this.endDelay,
-            fill: this.fill,
-            iterationComposite: this.iterationComposite,
-            iterations: this.iterations,
-            iterationStart: this.iterationStart,
-            playbackRate: this.playbackRate
-        };
-    }
     /**
      * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
      * caused by this animation and aborts its playback.
@@ -200,6 +184,22 @@ let Animation = class Animation {
         var _a;
         (_a = this.instance) === null || _a === void 0 ? void 0 : _a.updatePlaybackRate(playbackRate);
     }
+    get options() {
+        var _a, _b;
+        return {
+            composite: this.composite,
+            delay: this.delay,
+            direction: this.direction,
+            duration: this.duration,
+            easing: (_b = (_a = ANIMATION_EASINGS[this.easing]) !== null && _a !== void 0 ? _a : getConfig('asset', 'easing', this.easing)) !== null && _b !== void 0 ? _b : this.easing,
+            endDelay: this.endDelay,
+            fill: this.fill,
+            iterationComposite: this.iterationComposite,
+            iterations: this.iterations,
+            iterationStart: this.iterationStart,
+            playbackRate: this.playbackRate
+        };
+    }
     watcher() {
         this.run ? this.play() : this.pause();
     }
@@ -219,7 +219,7 @@ let Animation = class Animation {
         var _a, _b;
         this.disconnectedCallback();
         const keyframes = (_b = (_a = this.keyframes) !== null && _a !== void 0 ? _a : getConfig('asset', 'animation', this.name)) !== null && _b !== void 0 ? _b : [];
-        this.instance = host(this).animate(keyframes, this.options);
+        this.instance = this.$host.animate(keyframes, this.options);
         this.instance.addEventListener('cancel', this.onCancel);
         this.instance.addEventListener('finish', this.onFinish);
         this.instance.addEventListener('remove', this.onRemove);
@@ -350,6 +350,9 @@ __decorate([
 __decorate([
     Method()
 ], Animation.prototype, "updatePlaybackRate", null);
+__decorate([
+    Host()
+], Animation.prototype, "$host", void 0);
 __decorate([
     Watch('run', true)
 ], Animation.prototype, "watcher", null);

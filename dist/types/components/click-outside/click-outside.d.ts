@@ -22,13 +22,13 @@ export declare class ClickOutside {
      * Fires when outside of the component is clicked.
      */
     plusClickOutside: EventEmitter<void>;
-    get $host(): HTMLElement;
+    $host: HTMLElement;
     get options(): {
         capture: boolean;
     };
+    watcher(next: any, prev: any, name: any): void;
     bind(): void;
     unbind(): void;
-    watcher(next: any, prev: any, name: any): void;
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;

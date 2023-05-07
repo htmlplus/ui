@@ -83,55 +83,6 @@ export class Counter {
   @Event()
   plusComplete!: EventEmitter<void>;
 
-  @State()
-  counter?: number;
-
-  @State()
-  state?: 'idle' | 'completed' | 'paused' | 'running' | 'stopped' = 'idle';
-
-  remaining?: number;
-
-  requestAnimationFrame?: number;
-
-  startTime?: number;
-
-  get easingFunction() {
-    return (COUNTER_EASINGS[this.easing] || this.easing) as any;
-  }
-
-  get formated() {
-    const counter = this.counter ?? this.from;
-    const negative = counter < 0 ? '-' : '';
-    let result: string;
-    let x1: string;
-    let x2: string;
-    let x3: string;
-    result = Math.abs(counter).toFixed(this.decimals);
-    result += '';
-    const x = result.split('.');
-    x1 = x[0];
-    x2 = x.length > 1 ? this.decimal + x[1] : '';
-    if (this.separator) {
-      x3 = '';
-      for (let i = 0, length = x1.length; i < length; ++i) {
-        if (i !== 0 && i % 3 === 0) {
-          x3 = this.separator + x3;
-        }
-        x3 = x1[length - i - 1] + x3;
-      }
-      x1 = x3;
-    }
-    if (this.numerals && this.numerals.length) {
-      x1 = x1.replace(/[0-9]/g, (w) => this.numerals[+w]);
-      x2 = x2.replace(/[0-9]/g, (w) => this.numerals[+w]);
-    }
-    return negative + x1 + x2;
-  }
-
-  get reverse() {
-    return this.to < this.from;
-  }
-
   /**
    * Completes the transition.
    */
@@ -190,6 +141,65 @@ export class Counter {
     this.play = false;
   }
 
+  @State()
+  counter?: number;
+
+  @State()
+  state?: 'idle' | 'completed' | 'paused' | 'running' | 'stopped' = 'idle';
+
+  remaining?: number;
+
+  requestAnimationFrame?: number;
+
+  startTime?: number;
+
+  get easingFunction() {
+    return (COUNTER_EASINGS[this.easing] || this.easing) as any;
+  }
+
+  get formated() {
+    const counter = this.counter ?? this.from;
+    const negative = counter < 0 ? '-' : '';
+    let result: string;
+    let x1: string;
+    let x2: string;
+    let x3: string;
+    result = Math.abs(counter).toFixed(this.decimals);
+    result += '';
+    const x = result.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? this.decimal + x[1] : '';
+    if (this.separator) {
+      x3 = '';
+      for (let i = 0, length = x1.length; i < length; ++i) {
+        if (i !== 0 && i % 3 === 0) {
+          x3 = this.separator + x3;
+        }
+        x3 = x1[length - i - 1] + x3;
+      }
+      x1 = x3;
+    }
+    if (this.numerals && this.numerals.length) {
+      x1 = x1.replace(/[0-9]/g, (w) => this.numerals[+w]);
+      x2 = x2.replace(/[0-9]/g, (w) => this.numerals[+w]);
+    }
+    return negative + x1 + x2;
+  }
+
+  get reverse() {
+    return this.to < this.from;
+  }
+
+  @Watch(['play'], true)
+  watcher() {
+    // TODO: remove requestAnimationFrame
+    requestAnimationFrame(() => {
+      if (this.play == true && this.state != 'running') this.start();
+      if (this.play != true && this.state == 'paused') this.stop();
+      if (this.play != true && this.state == 'running') this.stop();
+    });
+  }
+
   @Bind()
   count(timestamp: number) {
     if (!this.startTime) this.startTime = timestamp;
@@ -226,16 +236,6 @@ export class Counter {
   reset() {
     this.remaining = undefined;
     this.startTime = undefined;
-  }
-
-  @Watch(['play'], true)
-  watcher() {
-    // TODO: remove requestAnimationFrame
-    requestAnimationFrame(() => {
-      if (this.play == true && this.state != 'running') this.start();
-      if (this.play != true && this.state == 'paused') this.stop();
-      if (this.play != true && this.state == 'running') this.stop();
-    });
   }
 
   disconnectedCallback() {
