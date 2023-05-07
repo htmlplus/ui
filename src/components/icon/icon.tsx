@@ -1,8 +1,9 @@
 import { Element, Host, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@app/config';
+import { isSize } from '@app/helpers';
 
-import { ICON_FALLBACK_SVG, ICON_SIZES } from './icon.constants';
+import { ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
 
 let parser;
@@ -107,7 +108,7 @@ export class Icon {
   get style() {
     let size, transform;
 
-    if (!ICON_SIZES.includes(this.size as any)) {
+    if (!isSize(this.size)) {
       size = toUnit(this.size);
     }
 

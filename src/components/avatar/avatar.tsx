@@ -1,6 +1,7 @@
 import { Element, Property, isRTL, toUnit } from '@htmlplus/element';
 
-import { AVATAR_SIZES } from './avatar.constants';
+import { isSize } from '@app/helpers';
+
 import { AvatarShape, AvatarSize } from './avatar.types';
 
 /**
@@ -103,7 +104,7 @@ export class Avatar {
   }
 
   get style() {
-    if (AVATAR_SIZES.includes(this.size as any)) return;
+    if (isSize(this.size)) return;
     return `--plus-avatar-size: ${toUnit(this.size)}`;
   }
 
