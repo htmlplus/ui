@@ -22,6 +22,7 @@ import { Animation2 } from '@app/services';
  * @slot icon-expand   - The expand icon slot.
  * @slot icon-collapse - The collapse icon slot.
  * @slot summary       - The summary slot.
+ * @stable
  */
 @Element()
 export class Accordion {

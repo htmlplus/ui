@@ -1,6 +1,13 @@
-export type BrowseError = 'MIN' | 'MAX';
+export enum BrowseError {
+  Min = 'MIN',
+  Max = 'MAX'
+}
 
-export type BrowseFileError = 'ACCEPT' | 'MIN_SIZE' | 'MAX_SIZE';
+export enum BrowseFileError {
+  Accept = 'ACCEPT',
+  Min_Size = 'MIN_SIZE',
+  Max_Size = 'MAX_SIZE'
+}
 
 export interface BrowseFile {
   errors?: Array<BrowseFileError>;

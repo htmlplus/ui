@@ -9,7 +9,7 @@ import {
   State
 } from '@htmlplus/element';
 
-import { BrowseEvent, BrowseFile } from './browse.types';
+import { BrowseError, BrowseEvent, BrowseFile, BrowseFileError } from './browse.types';
 
 /**
  * @slot default - The default slot.
@@ -127,9 +127,9 @@ export class Browse {
       files: []
     };
 
-    if (this.min > files.length) detail.errors.push('MIN');
+    if (this.min > files.length) detail.errors.push(BrowseError.Min);
 
-    if (this.max < files.length) detail.errors.push('MAX');
+    if (this.max < files.length) detail.errors.push(BrowseError.Max);
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -150,12 +150,12 @@ export class Browse {
 
         if (isMime && isPattern && value.file.type.startsWith(type.slice(0, -1))) break;
 
-        value.errors.push('ACCEPT');
+        value.errors.push(BrowseFileError.Accept);
       }
 
-      if (this.minSize > value.file.size) value.errors.push('MIN_SIZE');
+      if (this.minSize > value.file.size) value.errors.push(BrowseFileError.Min_Size);
 
-      if (this.maxSize < value.file.size) value.errors.push('MAX_SIZE');
+      if (this.maxSize < value.file.size) value.errors.push(BrowseFileError.Max_Size);
 
       detail.files.push(value);
     }
