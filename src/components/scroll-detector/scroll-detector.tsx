@@ -36,7 +36,7 @@ export class ScrollDetector {
   get $reference() {
     if (typeof this.reference != 'string') return this.reference;
 
-    if (this.reference == 'document') return document.documentElement;
+    if (this.reference == 'document') return document as any;
 
     return document.querySelector(this.reference);
   }
@@ -63,7 +63,7 @@ export class ScrollDetector {
   @Bind()
   onScroll() {
     const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } =
-      this.$reference;
+      this.$reference.documentElement || this.$reference;
 
     const offset = this.vertical ? scrollTop : scrollLeft;
 

@@ -1,0 +1,35 @@
+/*
+ * host
+ */
+$progress-bar-background-color: gainsboro !default;
+$progress-bar-border-radius: $border-radius !default;
+$progress-bar-font-size: 0.75rem !default;
+$progress-bar-height: 1rem !default;
+
+/*
+ * buffer
+ */
+$progress-bar-buffer-background-color: lightblue !default;
+
+/*
+ * indicator
+ */
+$progress-bar-indicator-background-color: dodgerblue !default;
+$progress-bar-indicator-color: white !default;
+$progress-bar-indicator-transition: width 0.6s ease !default;
+
+/*
+ * indeterminate
+ */
+$progress-bar-indeterminate-indicator-width: 50% !important !default;
+$progress-bar-indeterminate-indicator-animation: indeterminate 2s linear infinite !default;
+@keyframes indeterminate {
+  from {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    left: 100%;
+    transform: translateX(0);
+  }
+}

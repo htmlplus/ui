@@ -1,0 +1,12 @@
+@import 'progress-bar-stack.variables';
+
+:host {
+  background-color: $progress-bar-stack-background-color;
+  border-radius: $progress-bar-stack-border-radius;
+  display: flex;
+  overflow: hidden;
+}
+
+::slotted(plus-progress-bar) {
+  overflow: visible;
+}

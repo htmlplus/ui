@@ -1,0 +1,41 @@
+@import 'progress-bar.variables';
+
+:host {
+  background-color: $progress-bar-background-color;
+  border-radius: $progress-bar-border-radius;
+  font-size: $progress-bar-font-size;
+  height: $progress-bar-height;
+  display: flex;
+  overflow: hidden;
+  position: relative; // TODO
+}
+
+:host > * {
+  position: absolute;
+  inset: 0;
+}
+
+.underlay {
+  background-color: transparent;
+}
+
+.buffer {
+  background-color: $progress-bar-buffer-background-color;
+}
+
+.indicator {
+  background-color: $progress-bar-indicator-background-color;
+  color: $progress-bar-indicator-color;
+  transition: $progress-bar-indicator-transition;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+:host([variant='indeterminate']) .indicator {
+  animation: $progress-bar-indeterminate-indicator-animation;
+  width: $progress-bar-indeterminate-indicator-width;
+}
