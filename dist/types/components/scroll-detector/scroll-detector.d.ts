@@ -22,7 +22,7 @@ export declare class ScrollDetector {
      */
     plusChange: EventEmitter<ScrollDetectorChangeEvent>;
     offset?: number;
-    get $reference(): Element;
+    get $reference(): any;
     watcher(next: any): void;
     bind(): void;
     unbind(): void;

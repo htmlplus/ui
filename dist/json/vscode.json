@@ -226,7 +226,29 @@
         {
           "name": "size",
           "description": "Specifies the size of the component.",
-          "values": []
+          "values": [
+            {
+              "name": "xxs"
+            },
+            {
+              "name": "xs"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "lg"
+            },
+            {
+              "name": "xl"
+            },
+            {
+              "name": "xxl"
+            }
+          ]
         }
       ],
       "references": [
@@ -3615,7 +3637,50 @@
         {
           "name": "size",
           "description": "Specifies the size.",
-          "values": []
+          "values": [
+            {
+              "name": "xs"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "lg"
+            },
+            {
+              "name": "xl"
+            },
+            {
+              "name": "1x"
+            },
+            {
+              "name": "2x"
+            },
+            {
+              "name": "3x"
+            },
+            {
+              "name": "4x"
+            },
+            {
+              "name": "5x"
+            },
+            {
+              "name": "6x"
+            },
+            {
+              "name": "7x"
+            },
+            {
+              "name": "8x"
+            },
+            {
+              "name": "9x"
+            }
+          ]
         }
       ],
       "references": [
@@ -3707,6 +3772,65 @@
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/component/portal"
+        }
+      ]
+    },
+    {
+      "name": "plus-progress-bar",
+      "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
+      "attributes": [
+        {
+          "name": "buffer",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "TODO",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "min",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "max",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "variant",
+          "description": "TODO",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "TODO",
+          "values": []
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/progress-bar"
+        }
+      ]
+    },
+    {
+      "name": "plus-progress-bar-stack",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/component/progress-bar-stack"
         }
       ]
     },
@@ -3845,6 +3969,7 @@
     },
     {
       "name": "plus-spacer",
+      "description": "TODO",
       "attributes": [
         {
           "name": "grow",
@@ -3915,6 +4040,7 @@
     },
     {
       "name": "plus-stack",
+      "description": "TODO.",
       "attributes": [
         {
           "name": "align-items",
@@ -4218,6 +4344,7 @@
     },
     {
       "name": "plus-tooltip",
+      "description": "TODO.",
       "attributes": [
         {
           "name": "arrow",

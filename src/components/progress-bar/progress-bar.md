@@ -1,6 +1,6 @@
 # Progress Bar
 
-TODO
+Progress bar expresses an unspecified wait time or display the length of a process.
 
 <Playground />
 
@@ -19,6 +19,10 @@ TODO
 ### Value
 
 <Example value="value" />
+
+### Color
+
+<Example value="color" />
 
 ### Label
 
@@ -47,5 +51,17 @@ TODO
 ### Aria Label
 
 <Example value="aria-label" />
+
+### Stacked
+
+<Example value="stacked" />
+
+### Latency
+
+<Example value="latency" />
+
+### Customization
+
+<Example value="customization" />
 
 <LastModified />

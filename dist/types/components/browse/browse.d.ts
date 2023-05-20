@@ -67,7 +67,7 @@ export declare class Browse {
     onDragLeave(): void;
     onDragOver(event: any): void;
     onDrop(event: any): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface BrowseJSX {
     /**

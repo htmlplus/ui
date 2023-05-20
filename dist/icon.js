@@ -1,24 +1,8 @@
-import { _ as __decorate, a as __awaiter, t as toUnit, c as styles, h as html, d as attributes, e as host, P as Property, H as Host, S as State, W as Watch, b as Element } from './core/index.js';
+import { _ as __decorate, a as __awaiter, d as isSize, t as toUnit, c as styles, h as html, e as attributes, f as host, P as Property, H as Host, S as State, W as Watch, b as Element } from './core/index.js';
 import { getConfig, setConfig } from './config.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{align-items:center;display:inline-flex;height:1em;justify-content:center;vertical-align:middle;width:1em}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size=\"1x\"]){height:1em;width:1em}:host([size=\"2x\"]){height:2em;width:2em}:host([size=\"3x\"]){height:3em;width:3em}:host([size=\"4x\"]){height:4em;width:4em}:host([size=\"5x\"]){height:5em;width:5em}:host([size=\"6x\"]){height:6em;width:6em}:host([size=\"7x\"]){height:7em;width:7em}:host([size=\"8x\"]){height:8em;width:8em}:host([size=\"9x\"]){height:9em;width:9em}svg{display:block;height:100%;width:100%}";
 
-const ICON_SIZES = [
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    '1x',
-    '2x',
-    '3x',
-    '4x',
-    '5x',
-    '6x',
-    '7x',
-    '8x',
-    '9x'
-];
 const ICON_FALLBACK_SVG = `
   <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
     <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
@@ -73,7 +57,7 @@ let Icon = class Icon {
     }
     get style() {
         let size, transform;
-        if (!ICON_SIZES.includes(this.size)) {
+        if (!isSize(this.size)) {
             size = toUnit(this.size);
         }
         if (this.rotate) {
@@ -195,7 +179,7 @@ __decorate([
 __decorate([
     Property({
         reflect: true,
-        type: 256
+        type: 328
     })
 ], Icon.prototype, "size", void 0);
 __decorate([

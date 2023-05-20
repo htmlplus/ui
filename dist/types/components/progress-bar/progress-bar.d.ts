@@ -1,0 +1,102 @@
+export declare class ProgressBar {
+    static TAG: string;
+    static STYLES: string;
+    /**
+     * TODO
+     */
+    buffer?: number;
+    /**
+     * TODO
+     */
+    label?: boolean;
+    /**
+     * TODO
+     */
+    min?: number;
+    /**
+     * TODO
+     */
+    max?: number;
+    /**
+     * TODO
+     */
+    variant?: string;
+    /**
+     * TODO
+     */
+    value?: number;
+    $host: HTMLElement;
+    get percentage(): string;
+    get progress(): number;
+    get stacked(): boolean;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+}
+export interface ProgressBarJSX {
+    /**
+     * TODO
+     */
+    buffer?: number;
+    /**
+     * TODO
+     */
+    label?: boolean;
+    /**
+     * TODO
+     */
+    min?: number;
+    /**
+     * TODO
+     */
+    max?: number;
+    /**
+     * TODO
+     */
+    variant?: string;
+    /**
+     * TODO
+     */
+    value?: number;
+}
+declare global {
+    interface HTMLPlusProgressBarElement extends HTMLElement {
+        /**
+         * TODO
+         */
+        buffer?: number;
+        /**
+         * TODO
+         */
+        label?: boolean;
+        /**
+         * TODO
+         */
+        min?: number;
+        /**
+         * TODO
+         */
+        max?: number;
+        /**
+         * TODO
+         */
+        variant?: string;
+        /**
+         * TODO
+         */
+        value?: number;
+    }
+    var HTMLPlusProgressBarElement: {
+        prototype: HTMLPlusProgressBarElement;
+        new (): HTMLPlusProgressBarElement;
+    };
+    interface HTMLElementTagNameMap {
+        "plus-progress-bar": HTMLPlusProgressBarElement;
+    }
+    namespace JSX {
+        interface IntrinsicElements {
+            "plus-progress-bar": ProgressBarJSX & {
+                [key: string]: any;
+            };
+        }
+    }
+}
+export type ProgressBarElement = globalThis.HTMLPlusProgressBarElement;

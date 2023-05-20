@@ -12,6 +12,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @slot icon-expand   - The expand icon slot.
  * @slot icon-collapse - The collapse icon slot.
  * @slot summary       - The summary slot.
+ * @stable
  */
 let Accordion = class Accordion {
     constructor() {

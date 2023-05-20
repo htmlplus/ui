@@ -32,7 +32,7 @@ export declare class ClickOutside {
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface ClickOutsideJSX {
     /**

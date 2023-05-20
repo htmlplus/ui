@@ -67,6 +67,7 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
+      "lastModified": "2023-05-07T16:09:24.918Z",
       "methods": [
         {
           "async": true,
@@ -230,6 +231,10 @@
         {
           "key": "slot",
           "value": "summary       - The summary slot."
+        },
+        {
+          "key": "stable",
+          "value": ""
         }
       ],
       "title": "Accordion"
@@ -286,6 +291,7 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "experimental": false,
       "key": "animation",
+      "lastModified": "2023-05-07T12:45:19.902Z",
       "methods": [
         {
           "async": false,
@@ -721,6 +727,7 @@
       "description": "Sets a preferred aspect ratio only for the first child inside the component.",
       "experimental": false,
       "key": "aspect-ratio",
+      "lastModified": "2023-05-01T10:49:28.207Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -803,6 +810,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
+      "lastModified": "2023-05-07T16:36:34.719Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -886,6 +894,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
+      "lastModified": "2023-05-01T10:49:28.210Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -960,6 +969,7 @@
       "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
+      "lastModified": "2023-05-07T12:17:20.467Z",
       "methods": [],
       "parts": [
         {
@@ -1157,6 +1167,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
+      "lastModified": "2023-05-07T15:34:51.846Z",
       "methods": [
         {
           "async": false,
@@ -1314,7 +1325,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Browse\r\n\r\nAllows you to select file or files by using click or drag & drop functionality.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Browse\r\n\r\nAllows you to select file or files by using click or drag & drop functionality.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Multiple\r\n\r\n<Example value=\"multiple\" />\r\n\r\n### Accept\r\n\r\n<Example value=\"accept\" />\r\n\r\n### Droppable\r\n\r\n<Example value=\"droppable\" />\r\n\r\n### Min\r\n\r\n<Example value=\"min\" />\r\n\r\n### Max\r\n\r\n<Example value=\"max\" />\r\n\r\n### Min Size\r\n\r\n<Example value=\"min-size\" />\r\n\r\n### Max Size\r\n\r\n<Example value=\"max-size\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -1336,6 +1347,7 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
+      "lastModified": "2023-05-01T10:49:28.229Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1456,6 +1468,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "card-body",
+      "lastModified": "2023-05-01T10:49:28.224Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -1484,6 +1497,7 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
+      "lastModified": "2023-05-07T12:47:43.448Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1547,6 +1561,7 @@
       "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
+      "lastModified": "2023-05-07T13:21:44.366Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1644,6 +1659,7 @@
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
+      "lastModified": "2023-05-07T13:22:05.668Z",
       "methods": [
         {
           "async": false,
@@ -2003,6 +2019,7 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
+      "lastModified": "2023-05-07T13:22:43.322Z",
       "methods": [
         {
           "async": false,
@@ -2724,6 +2741,7 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
+      "lastModified": "2023-05-07T13:23:11.265Z",
       "methods": [],
       "parts": [
         {
@@ -3052,6 +3070,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
+      "lastModified": "2023-05-01T10:49:28.253Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3093,6 +3112,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
+      "lastModified": "2023-05-01T10:49:28.256Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3134,6 +3154,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-footer",
+      "lastModified": "2023-05-01T10:49:28.259Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3157,6 +3178,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-header",
+      "lastModified": "2023-05-01T10:49:28.262Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3180,6 +3202,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-toggler",
+      "lastModified": "2023-05-06T18:15:39.983Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3230,6 +3253,7 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
+      "lastModified": "2023-05-06T17:31:52.668Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3426,6 +3450,7 @@
       "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
+      "lastModified": "2023-05-07T12:06:18.841Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3672,6 +3697,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
+      "lastModified": "2023-05-06T18:26:33.576Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3722,6 +3748,7 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
+      "lastModified": "2023-05-01T10:49:28.295Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3821,6 +3848,7 @@
       "description": "A component that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
+      "lastModified": "2023-05-07T20:18:35.573Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3906,6 +3934,7 @@
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
+      "lastModified": "2023-05-01T10:49:28.311Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4070,6 +4099,7 @@
       "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
+      "lastModified": "2023-05-07T12:30:17.796Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4702,6 +4732,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid-item",
+      "lastModified": "2023-05-01T10:49:28.316Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5450,6 +5481,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.",
       "experimental": false,
       "key": "icon",
+      "lastModified": "2023-05-07T16:42:33.433Z",
       "methods": [],
       "parts": [
         {
@@ -5615,6 +5647,7 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
+      "lastModified": "2023-05-07T13:25:26.781Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5731,6 +5764,7 @@
       "description": "With a portal, you can render a component in a different place in the DOM tree,",
       "experimental": true,
       "key": "portal",
+      "lastModified": "2023-05-07T13:26:08.732Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5811,6 +5845,142 @@
       "title": "Portal"
     },
     {
+      "events": [],
+      "deprecated": false,
+      "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
+      "experimental": false,
+      "key": "progress-bar",
+      "lastModified": "2023-05-20T13:24:44.436Z",
+      "methods": [],
+      "parts": [],
+      "properties": [
+        {
+          "attribute": "buffer",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "model": false,
+          "name": "buffer",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "number"
+        },
+        {
+          "attribute": "label",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "model": false,
+          "name": "label",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "boolean"
+        },
+        {
+          "attribute": "min",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "initializer": "0",
+          "model": false,
+          "name": "min",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "number"
+        },
+        {
+          "attribute": "max",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "initializer": "100",
+          "model": false,
+          "name": "max",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "number"
+        },
+        {
+          "attribute": "variant",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "model": false,
+          "name": "variant",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "string"
+        },
+        {
+          "attribute": "value",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "initializer": "0",
+          "model": false,
+          "name": "value",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "number"
+        }
+      ],
+      "readmeContent": "# Progress Bar\r\n\r\nProgress bar expresses an unspecified wait time or display the length of a process.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Value\r\n\r\n<Example value=\"value\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Custom Label\r\n\r\n<Example value=\"custom-label\" />\r\n\r\n### Height\r\n\r\n<Example value=\"height\" />\r\n\r\n### Indeterminate\r\n\r\n<Example value=\"indeterminate\" />\r\n\r\n### Buffer\r\n\r\n<Example value=\"buffer\" />\r\n\r\n### Min And Max\r\n\r\n<Example value=\"min-and-max\" />\r\n\r\n### Aria Label\r\n\r\n<Example value=\"aria-label\" />\r\n\r\n### Stacked\r\n\r\n<Example value=\"stacked\" />\r\n\r\n### Latency\r\n\r\n<Example value=\"latency\" />\r\n\r\n### Customization\r\n\r\n<Example value=\"customization\" />\r\n\r\n<LastModified />\r\n",
+      "slots": [],
+      "styles": [],
+      "tags": [],
+      "title": "Progress Bar"
+    },
+    {
+      "events": [],
+      "deprecated": false,
+      "experimental": false,
+      "key": "progress-bar-stack",
+      "lastModified": "2023-05-10T19:53:20.791Z",
+      "methods": [],
+      "parts": [],
+      "properties": [],
+      "slots": [],
+      "styles": [],
+      "tags": [],
+      "title": "Progress Bar Stack"
+    },
+    {
       "events": [
         {
           "cancelable": false,
@@ -5833,6 +6003,7 @@
       "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
+      "lastModified": "2023-05-20T13:13:52.270Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5890,7 +6061,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Scroll Detector\r\n\r\nDetects scroll event from an element.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Scroll Detector\r\n\r\nDetects scroll event from an element.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"default\" />\r\n\r\n### Scroll Indicator\r\n\r\n<Example value=\"scroll-indicator\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -5968,6 +6139,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
+      "lastModified": "2023-05-07T13:27:55.442Z",
       "methods": [
         {
           "async": false,
@@ -6471,8 +6643,10 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "TODO",
       "experimental": false,
       "key": "spacer",
+      "lastModified": "2023-05-07T15:20:25.639Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6495,6 +6669,7 @@
           "type": "number"
         }
       ],
+      "readmeContent": "# Spacer\r\n\r\nTODO\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
       "tags": [],
@@ -6506,6 +6681,7 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
+      "lastModified": "2023-05-07T13:03:56.146Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6562,8 +6738,10 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "TODO.",
       "experimental": false,
       "key": "stack",
+      "lastModified": "2023-05-07T14:49:36.628Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6657,6 +6835,7 @@
           "type": "boolean"
         }
       ],
+      "readmeContent": "# Stack\r\n\r\nTODO.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -6695,6 +6874,7 @@
       "description": "Component content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
+      "lastModified": "2023-05-07T13:28:29.867Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6814,6 +6994,7 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
+      "lastModified": "2023-05-06T17:40:27.953Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6884,6 +7065,7 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
+      "lastModified": "2023-05-07T13:29:16.802Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6965,6 +7147,7 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
+      "lastModified": "2023-05-06T17:40:58.185Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7046,6 +7229,7 @@
       "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
+      "lastModified": "2023-05-06T17:41:28.242Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7092,6 +7276,7 @@
       "description": "TODO: This component contains panels.",
       "experimental": false,
       "key": "tabs-panels",
+      "lastModified": "2023-05-07T13:29:29.701Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7138,6 +7323,7 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
+      "lastModified": "2023-05-06T17:42:01.010Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7198,8 +7384,10 @@
     {
       "events": [],
       "deprecated": false,
+      "description": "TODO.",
       "experimental": false,
       "key": "tooltip",
+      "lastModified": "2023-05-07T15:21:28.891Z",
       "methods": [
         {
           "async": false,
@@ -7413,6 +7601,7 @@
           "type": "'auto' | 'vertical' | 'horizontal' | 'move'"
         }
       ],
+      "readmeContent": "# Tooltip\r\n\r\nTODO.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
       "tags": [

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -577,7 +577,7 @@
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "typeof AVATAR_SIZES[number] | (number & {}) | (string & {})"
+                "type": "'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | (number & {}) | (string & {})"
               },
               "default": "'md'"
             }
@@ -4048,7 +4048,7 @@
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "typeof ICON_SIZES[number] | (string & {})"
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | (number & {}) | (string & {})"
               }
             }
           ],
@@ -4224,6 +4224,129 @@
               "description": "The default slot."
             }
           ]
+        },
+        {
+          "name": "plus-progress-bar",
+          "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
+          "doc-url": "https://www.htmlplus.io/javascript/component/progress-bar",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "buffer",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "label",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "min",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": "0"
+              },
+              {
+                "name": "max",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": "100"
+              },
+              {
+                "name": "variant",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "value",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false,
+                "default": "0"
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "buffer",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "number"
+              }
+            },
+            {
+              "name": "label",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "min",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "max",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "number"
+              },
+              "default": "100"
+            },
+            {
+              "name": "variant",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "value",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "number"
+              },
+              "default": "0"
+            }
+          ],
+          "slots": []
+        },
+        {
+          "name": "plus-progress-bar-stack",
+          "doc-url": "https://www.htmlplus.io/javascript/component/progress-bar-stack",
+          "deprecated": false,
+          "experimental": false,
+          "js": {
+            "events": [],
+            "properties": []
+          },
+          "attributes": [],
+          "slots": []
         },
         {
           "name": "plus-scroll-detector",
@@ -4590,6 +4713,7 @@
         },
         {
           "name": "plus-spacer",
+          "description": "TODO",
           "doc-url": "https://www.htmlplus.io/javascript/component/spacer",
           "deprecated": false,
           "experimental": false,
@@ -4670,6 +4794,7 @@
         },
         {
           "name": "plus-stack",
+          "description": "TODO.",
           "doc-url": "https://www.htmlplus.io/javascript/component/stack",
           "deprecated": false,
           "experimental": false,
@@ -5161,6 +5286,7 @@
         },
         {
           "name": "plus-tooltip",
+          "description": "TODO.",
           "doc-url": "https://www.htmlplus.io/javascript/component/tooltip",
           "deprecated": false,
           "experimental": false,

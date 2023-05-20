@@ -10,7 +10,7 @@ export declare class TabsPanel {
      */
     value?: any;
     tunnel?: any;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface TabsPanelJSX {
     /**

@@ -28,6 +28,8 @@ export * from './grid-item/grid-item';
 export * from './icon/icon';
 export * from './intersection/intersection';
 export * from './portal/portal';
+export * from './progress-bar/progress-bar';
+export * from './progress-bar-stack/progress-bar-stack';
 export * from './scroll-detector/scroll-detector';
 export * from './signature/signature';
 export * from './spacer/spacer';

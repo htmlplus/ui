@@ -28,6 +28,8 @@ export { GridItem } from './grid-item.js';
 export { Icon } from './icon.js';
 export { Intersection } from './intersection.js';
 export { Portal } from './portal.js';
+export { ProgressBar } from './progress-bar.js';
+export { ProgressBarStack } from './progress-bar-stack.js';
 export { ScrollDetector } from './scroll-detector.js';
 export { Signature } from './signature.js';
 export { Spacer } from './spacer.js';

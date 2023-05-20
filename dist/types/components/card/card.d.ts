@@ -22,7 +22,7 @@ export declare class Card {
      * Use tile property to neutralize border-radius.
      */
     tile?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface CardJSX {
     /**

@@ -2018,6 +2018,28 @@ const BREAKPOINTS = {
     xxl: 1400
 };
 
+// TODO: use regex
+const isSize = (input) => {
+    return [
+        'xxs',
+        'xs',
+        'sm',
+        'md',
+        'lg',
+        'xl',
+        'xxl',
+        '1x',
+        '2x',
+        '3x',
+        '4x',
+        '5x',
+        '6x',
+        '7x',
+        '8x',
+        '9x'
+    ].includes(input);
+};
+
 const toAxis = (input, rtl) => {
     if (!input)
         return input;
@@ -2102,4 +2124,4 @@ Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
 // @Override()
 // override?: { [key: string]: any };
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Host as H, Method as M, Property as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, attributes$1 as d, host as e, QueryAll as f, getConfig as g, html as h, isRTL as i, off as j, classes as k, createLink as l, toAxis as m, Animation as n, on as o, Scrollbar as p, Portal as q, request as r, setConfig as s, toUnit as t, Media as u };
+export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Host as H, Method as M, Property as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, isSize as d, attributes$1 as e, host as f, getConfig as g, html as h, isRTL as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v };

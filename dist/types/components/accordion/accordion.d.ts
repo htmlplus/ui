@@ -10,6 +10,7 @@ import { Animation2 } from '@app/services';
  * @slot icon-expand   - The expand icon slot.
  * @slot icon-collapse - The collapse icon slot.
  * @slot summary       - The summary slot.
+ * @stable
  */
 export declare class Accordion {
     static TAG: string;
@@ -58,7 +59,7 @@ export declare class Accordion {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AccordionJSX {
     /**

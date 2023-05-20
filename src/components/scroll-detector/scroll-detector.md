@@ -18,4 +18,8 @@ Open the developer console.
 
 <Example value="default" />
 
+### Scroll Indicator
+
+<Example value="scroll-indicator" />
+
 <LastModified />

@@ -57,7 +57,10 @@ export class ScrollDetector {
   }
 
   unbind() {
-    off(this.$reference, 'scroll', this.onScroll);
+    // TODO
+    try {
+      off(this.$reference, 'scroll', this.onScroll);
+    } catch {}
   }
 
   @Bind()

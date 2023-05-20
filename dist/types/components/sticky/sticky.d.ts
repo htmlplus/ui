@@ -38,7 +38,7 @@ export declare class Sticky {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface StickyJSX {
     /**
