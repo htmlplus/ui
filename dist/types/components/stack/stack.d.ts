@@ -25,7 +25,7 @@ export declare class Stack {
      */
     vertical?: boolean;
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StackJSX {
     /**

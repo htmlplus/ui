@@ -29,7 +29,7 @@ export declare class ProgressBar {
     get percentage(): string;
     get progress(): number;
     get stacked(): boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface ProgressBarJSX {
     /**

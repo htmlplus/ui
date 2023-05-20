@@ -19,7 +19,7 @@ export declare class Floating {
      */
     placement?: FloatingPlacement;
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface FloatingJSX {
     /**

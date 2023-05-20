@@ -200,7 +200,7 @@ export declare class GridItem {
      * Overrides the default order of the grid-item for extra-extra-large display sizes.
      */
     orderXxl?: GridItemOrder;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface GridItemJSX {
     /**

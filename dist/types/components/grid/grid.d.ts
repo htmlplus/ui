@@ -152,7 +152,7 @@ export declare class Grid {
     wrapXxl?: GridWrap;
     $root: HTMLElement;
     updatedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface GridJSX {
     /**

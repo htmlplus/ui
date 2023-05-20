@@ -67,7 +67,6 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2023-05-07T16:09:24.918Z",
       "methods": [
         {
           "async": true,
@@ -182,12 +181,12 @@
           "description": "The icon slot."
         },
         {
-          "name": "icon",
-          "description": "expand   - The expand icon slot."
+          "name": "icon-expand",
+          "description": "The expand icon slot."
         },
         {
-          "name": "icon",
-          "description": "collapse - The collapse icon slot."
+          "name": "icon-collapse",
+          "description": "The collapse icon slot."
         },
         {
           "name": "summary",
@@ -196,42 +195,6 @@
       ],
       "styles": [],
       "tags": [
-        {
-          "key": "part",
-          "value": "body          - The body element."
-        },
-        {
-          "key": "part",
-          "value": "content       - The content element."
-        },
-        {
-          "key": "part",
-          "value": "summary       - The summary element."
-        },
-        {
-          "key": "part",
-          "value": "svg           - The svg element."
-        },
-        {
-          "key": "slot",
-          "value": "default       - The default slot."
-        },
-        {
-          "key": "slot",
-          "value": "icon          - The icon slot."
-        },
-        {
-          "key": "slot",
-          "value": "icon-expand   - The expand icon slot."
-        },
-        {
-          "key": "slot",
-          "value": "icon-collapse - The collapse icon slot."
-        },
-        {
-          "key": "slot",
-          "value": "summary       - The summary slot."
-        },
         {
           "key": "stable",
           "value": ""
@@ -291,7 +254,6 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2023-05-07T12:45:19.902Z",
       "methods": [
         {
           "async": false,
@@ -713,10 +675,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Animation"
@@ -727,7 +685,6 @@
       "description": "Sets a preferred aspect ratio only for the first child inside the component.",
       "experimental": false,
       "key": "aspect-ratio",
-      "lastModified": "2023-05-01T10:49:28.207Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -796,10 +753,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Aspect Ratio"
@@ -810,7 +763,6 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-05-07T16:36:34.719Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -881,10 +833,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Avatar"
@@ -894,7 +842,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
-      "lastModified": "2023-05-01T10:49:28.210Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -955,10 +902,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Avatar Group"
@@ -969,7 +912,6 @@
       "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2023-05-07T12:17:20.467Z",
       "methods": [],
       "parts": [
         {
@@ -1084,32 +1026,7 @@
           "initializer": "0.5em"
         }
       ],
-      "tags": [
-        {
-          "key": "part",
-          "value": "expander  - The expander element."
-        },
-        {
-          "key": "part",
-          "value": "item      - The breadcrumb elements."
-        },
-        {
-          "key": "part",
-          "value": "separator - The separator elements."
-        },
-        {
-          "key": "slot",
-          "value": "default   - The default slot."
-        },
-        {
-          "key": "slot",
-          "value": "expander  - The expander slot."
-        },
-        {
-          "key": "slot",
-          "value": "separator - The separator slot."
-        }
-      ],
+      "tags": [],
       "title": "Breadcrumb"
     },
     {
@@ -1167,7 +1084,6 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2023-05-07T15:34:51.846Z",
       "methods": [
         {
           "async": false,
@@ -1333,12 +1249,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Browse"
     },
     {
@@ -1347,7 +1258,6 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
-      "lastModified": "2023-05-01T10:49:28.229Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1455,12 +1365,7 @@
           "initializer": "none"
         }
       ],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Card"
     },
     {
@@ -1468,7 +1373,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "card-body",
-      "lastModified": "2023-05-01T10:49:28.224Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -1483,10 +1387,6 @@
         {
           "key": "development",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Card Body"
@@ -1497,7 +1397,6 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
-      "lastModified": "2023-05-07T12:47:43.448Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1531,10 +1430,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Center"
@@ -1561,7 +1456,6 @@
       "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
-      "lastModified": "2023-05-07T13:21:44.366Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1629,10 +1523,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Click Outside"
@@ -1659,7 +1549,6 @@
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
-      "lastModified": "2023-05-07T13:22:05.668Z",
       "methods": [
         {
           "async": false,
@@ -2019,7 +1908,6 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
-      "lastModified": "2023-05-07T13:22:43.322Z",
       "methods": [
         {
           "async": false,
@@ -2741,7 +2629,6 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
-      "lastModified": "2023-05-07T13:23:11.265Z",
       "methods": [],
       "parts": [
         {
@@ -3053,16 +2940,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "part",
-          "value": "backdrop - Backdrop element."
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Dialog"
     },
     {
@@ -3070,7 +2948,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
-      "lastModified": "2023-05-01T10:49:28.253Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3099,12 +2976,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Dialog Body"
     },
     {
@@ -3112,7 +2984,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
-      "lastModified": "2023-05-01T10:49:28.256Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3141,12 +3012,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Dialog Content"
     },
     {
@@ -3154,7 +3020,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-footer",
-      "lastModified": "2023-05-01T10:49:28.259Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3165,12 +3030,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Dialog Footer"
     },
     {
@@ -3178,7 +3038,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-header",
-      "lastModified": "2023-05-01T10:49:28.262Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3189,12 +3048,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Dialog Header"
     },
     {
@@ -3202,7 +3056,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-toggler",
-      "lastModified": "2023-05-06T18:15:39.983Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3233,10 +3086,6 @@
       "styles": [],
       "tags": [
         {
-          "key": "slot",
-          "value": "default - The default slot."
-        },
-        {
           "key": "TODO",
           "value": "open    - Specifies the content of toggler when it's opened."
         },
@@ -3253,7 +3102,6 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2023-05-06T17:31:52.668Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3450,7 +3298,6 @@
       "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2023-05-07T12:06:18.841Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3684,12 +3531,7 @@
           "initializer": "80px"
         }
       ],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Drawer"
     },
     {
@@ -3697,7 +3539,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
-      "lastModified": "2023-05-06T18:26:33.576Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3728,10 +3569,6 @@
       "styles": [],
       "tags": [
         {
-          "key": "slot",
-          "value": "default - The default slot."
-        },
-        {
           "key": "TODO",
           "value": "open    - Specifies the content of toggler when it's opened."
         },
@@ -3748,7 +3585,6 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
-      "lastModified": "2023-05-01T10:49:28.295Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3848,7 +3684,6 @@
       "description": "A component that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
-      "lastModified": "2023-05-07T20:18:35.573Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3920,10 +3755,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Floating"
@@ -3934,7 +3765,6 @@
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
-      "lastModified": "2023-05-01T10:49:28.311Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4099,7 +3929,6 @@
       "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
-      "lastModified": "2023-05-07T12:30:17.796Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4719,12 +4548,7 @@
           "initializer": "0"
         }
       ],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Grid"
     },
     {
@@ -4732,7 +4556,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid-item",
-      "lastModified": "2023-05-01T10:49:28.316Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5467,12 +5290,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Grid Item"
     },
     {
@@ -5481,7 +5299,6 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-05-07T16:42:33.433Z",
       "methods": [],
       "parts": [
         {
@@ -5617,12 +5434,7 @@
       "readmeContent": "# Icon\r\n\r\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Name\r\n\r\nTo see all names click [here](https://icons.getbootstrap.com).\r\n\r\n<Example value=\"name\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Custom Color\r\n\r\n<Example value=\"custom-color\" />\r\n\r\n### Flip\r\n\r\n<Example value=\"flip\" />\r\n\r\n### Rotate\r\n\r\n<Example value=\"rotate\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Register A Custom Name\r\n\r\n<Example value=\"register-a-custom-name\" />\r\n\r\n### Custom Size\r\n\r\n<Example value=\"custom-size\" />\r\n\r\n### Override Size\r\n\r\n<Example value=\"override-size\" />\r\n\r\n### Resolver\r\n\r\n<Example value=\"resolver\" />\r\n\r\n### Font Awesome\r\n\r\nFor more information click [here](https://fontawesome.com).\r\n\r\n<Example value=\"font-awesome\" />\r\n\r\n### Material\r\n\r\nFor more information click [here](https://fonts.google.com/icons).\r\n\r\n<Example value=\"material\" />\r\n\r\n### Multiple Library\r\n\r\n<Example value=\"multiple-library\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
-      "tags": [
-        {
-          "key": "part",
-          "value": "svg - The svg element."
-        }
-      ],
+      "tags": [],
       "title": "Icon"
     },
     {
@@ -5647,7 +5459,6 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
-      "lastModified": "2023-05-07T13:25:26.781Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5750,10 +5561,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Intersection"
@@ -5764,7 +5571,6 @@
       "description": "With a portal, you can render a component in a different place in the DOM tree,",
       "experimental": true,
       "key": "portal",
-      "lastModified": "2023-05-07T13:26:08.732Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5836,10 +5642,6 @@
         {
           "key": "experimental",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Portal"
@@ -5850,7 +5652,6 @@
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "experimental": false,
       "key": "progress-bar",
-      "lastModified": "2023-05-20T13:24:44.436Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5971,7 +5772,6 @@
       "deprecated": false,
       "experimental": false,
       "key": "progress-bar-stack",
-      "lastModified": "2023-05-10T19:53:20.791Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -6003,7 +5803,6 @@
       "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
-      "lastModified": "2023-05-20T13:13:52.270Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6139,7 +5938,6 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2023-05-07T13:27:55.442Z",
       "methods": [
         {
           "async": false,
@@ -6630,10 +6428,6 @@
       "styles": [],
       "tags": [
         {
-          "key": "part",
-          "value": "canvas - The canvas element."
-        },
-        {
           "key": "stable",
           "value": ""
         }
@@ -6646,7 +6440,6 @@
       "description": "TODO",
       "experimental": false,
       "key": "spacer",
-      "lastModified": "2023-05-07T15:20:25.639Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6681,7 +6474,6 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2023-05-07T13:03:56.146Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6741,7 +6533,6 @@
       "description": "TODO.",
       "experimental": false,
       "key": "stack",
-      "lastModified": "2023-05-07T14:49:36.628Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6843,12 +6634,7 @@
         }
       ],
       "styles": [],
-      "tags": [
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        }
-      ],
+      "tags": [],
       "title": "Stack"
     },
     {
@@ -6874,7 +6660,6 @@
       "description": "Component content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
-      "lastModified": "2023-05-07T13:28:29.867Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6952,18 +6737,6 @@
         {
           "key": "stable",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
-        },
-        {
-          "key": "slot",
-          "value": "normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`."
-        },
-        {
-          "key": "slot",
-          "value": "stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`."
         }
       ],
       "title": "Sticky"
@@ -6994,7 +6767,6 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
-      "lastModified": "2023-05-06T17:40:27.953Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7065,7 +6837,6 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
-      "lastModified": "2023-05-07T13:29:16.802Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7133,10 +6904,6 @@
         {
           "key": "development",
           "value": ""
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Tabs"
@@ -7147,7 +6914,6 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
-      "lastModified": "2023-05-06T17:40:58.185Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7215,10 +6981,6 @@
         {
           "key": "",
           "value": "TODO: Arranges tabs within a bar."
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Tabs Bar"
@@ -7229,7 +6991,6 @@
       "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
-      "lastModified": "2023-05-06T17:41:28.242Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7262,10 +7023,6 @@
         {
           "key": "",
           "value": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed."
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Tabs Panel"
@@ -7276,7 +7033,6 @@
       "description": "TODO: This component contains panels.",
       "experimental": false,
       "key": "tabs-panels",
-      "lastModified": "2023-05-07T13:29:29.701Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7309,10 +7065,6 @@
         {
           "key": "",
           "value": "TODO: This component contains panels."
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Tabs Panels"
@@ -7323,7 +7075,6 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
-      "lastModified": "2023-05-06T17:42:01.010Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7373,10 +7124,6 @@
         {
           "key": "",
           "value": "TODO: Tabs make it easy to switch between different views."
-        },
-        {
-          "key": "slot",
-          "value": "default - The default slot."
         }
       ],
       "title": "Tabs Tab"
@@ -7387,7 +7134,6 @@
       "description": "TODO.",
       "experimental": false,
       "key": "tooltip",
-      "lastModified": "2023-05-07T15:21:28.891Z",
       "methods": [
         {
           "async": false,

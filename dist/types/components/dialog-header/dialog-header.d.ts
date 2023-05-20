@@ -4,7 +4,7 @@
 export declare class DialogHeader {
     static TAG: string;
     static STYLES: string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogHeaderJSX {
 }

@@ -17,7 +17,7 @@ export declare class TabsBar {
      * Reverses the arrangement of the tabs.
      */
     reverse?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsBarJSX {
     /**

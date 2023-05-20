@@ -121,12 +121,12 @@
               "description": "The icon slot."
             },
             {
-              "name": "icon",
-              "description": "expand   - The expand icon slot."
+              "name": "icon-expand",
+              "description": "The expand icon slot."
             },
             {
-              "name": "icon",
-              "description": "collapse - The collapse icon slot."
+              "name": "icon-collapse",
+              "description": "The collapse icon slot."
             },
             {
               "name": "summary",

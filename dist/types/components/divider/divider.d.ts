@@ -22,7 +22,7 @@ export declare class Divider {
      *  Draws the divider in a vertical orientation.
      */
     vertical?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DividerJSX {
     /**
