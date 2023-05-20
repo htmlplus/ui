@@ -2,3 +2,4 @@
 - add arrow keyboard
 - add readonly property and its example
 - add keyboard example
+- add `before` and `after` slots for the header to support `progress-bar`
