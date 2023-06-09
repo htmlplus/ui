@@ -11,8 +11,8 @@
   "scripts": {
     "build": "npm run clean && node scripts/build.js",
     "clean": "rimraf .cache dist public/build",
+    "dev": "node scripts/start.js",
     "format": "prettier --write .",
-    "start": "node scripts/start.js",
     "test:open": "cypress open",
     "test:run": "cypress run"
   },
