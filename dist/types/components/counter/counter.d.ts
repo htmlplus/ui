@@ -1,9 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 import { CounterEasing } from './counter.types';
 /**
  * @stable
  */
-export declare class Counter {
+export declare class Counter extends PlusBase {
     static TAG: string;
     /**
      * Easing function. Click [here](http://robertpenner.com/easing) for more details.

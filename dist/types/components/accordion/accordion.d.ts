@@ -1,4 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 import { Animation2 } from '@app/services';
 /**
  * @part body          - The body element.
@@ -12,7 +13,7 @@ import { Animation2 } from '@app/services';
  * @slot summary       - The summary slot.
  * @stable
  */
-export declare class Accordion {
+export declare class Accordion extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -43,7 +44,6 @@ export declare class Accordion {
      * TODO.
      */
     plusExpanded: EventEmitter<void>;
-    $host: HTMLElement;
     $body: HTMLElement;
     $header: HTMLElement;
     animate: Animation2;

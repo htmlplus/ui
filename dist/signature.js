@@ -1,4 +1,4 @@
-import { _ as __decorate, a as __awaiter, h as html, P as Property, E as Event, M as Method, H as Host, Q as Query, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, a as __awaiter, h as html, b as Property, E as Event, M as Method, Q as Query, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;height:150px;width:300px}:host([disabled]:not([disabled=false])){opacity:.5}canvas{display:block;height:100%;width:100%}";
 
@@ -7,8 +7,9 @@ let Core;
  * @part canvas - The canvas element.
  * @stable
  */
-let Signature = class Signature {
+let Signature = class Signature extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Specifies the background color.
          */
@@ -357,9 +358,6 @@ __decorate([
 __decorate([
     Method()
 ], Signature.prototype, "undo", null);
-__decorate([
-    Host()
-], Signature.prototype, "$host", void 0);
 __decorate([
     Query('canvas')
 ], Signature.prototype, "$canvas", void 0);

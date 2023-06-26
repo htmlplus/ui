@@ -1,12 +1,14 @@
 import { Element, Property, styles, toUnit } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 import { StackAlignItems, StackJustifyContent } from './stack.types';
 
 /**
  * @slot default - The default slot.
  */
 @Element()
-export class Stack {
+export class Stack extends PlusBase {
   /**
    * TODO.
    */

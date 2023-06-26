@@ -3,13 +3,13 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Method,
   Property,
   Query,
   Watch
 } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { Animation2 } from '@app/services';
 
 /**
@@ -25,7 +25,7 @@ import { Animation2 } from '@app/services';
  * @stable
  */
 @Element()
-export class Accordion {
+export class Accordion extends PlusBase {
   /**
    * TODO.
    */
@@ -67,9 +67,6 @@ export class Accordion {
    */
   @Event()
   plusExpanded!: EventEmitter<void>;
-
-  @Host()
-  $host!: HTMLElement;
 
   @Query('.body')
   $body!: HTMLElement;

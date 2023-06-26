@@ -1,4 +1,4 @@
-import { _ as __decorate, h as html, c as styles, P as Property, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, h as html, d as styles, b as Property, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}.root{border-radius:inherit;overflow:hidden;position:relative}::slotted(*){box-sizing:border-box;height:100%;inset:0;margin:0;position:absolute;width:100%}";
 
@@ -6,8 +6,9 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @stable
  * @slot default - The default slot.
  */
-let AspectRatio = class AspectRatio {
+let AspectRatio = class AspectRatio extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Specifies the minimum height.
          */

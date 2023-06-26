@@ -1,5 +1,6 @@
 import { Element, Property, Watch } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { createLink } from '@app/services';
 
 const { reconnect } = createLink({
@@ -12,7 +13,7 @@ const { reconnect } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class TabsPanels {
+export class TabsPanels extends PlusBase {
   /**
    * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
    */

@@ -5322,7 +5322,8 @@
               "value": "Specifies the color."
             }
           ],
-          "type": "string"
+          "type": "IconColor",
+          "typeReference": "./icon.types"
         },
         {
           "attribute": "flip",
@@ -6477,6 +6478,24 @@
       "methods": [],
       "parts": [],
       "properties": [
+        {
+          "attribute": "color",
+          "deprecated": false,
+          "description": "Specifies the color.",
+          "experimental": false,
+          "model": false,
+          "name": "color",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Specifies the color."
+            }
+          ],
+          "type": "SpinnerColor",
+          "typeReference": "./spinner.types"
+        },
         {
           "attribute": "size",
           "deprecated": false,

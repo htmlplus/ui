@@ -1,4 +1,4 @@
-import { s as setConfig, _ as __decorate, h as html, P as Property, E as Event, M as Method, H as Host, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { s as setConfig, _ as __decorate, P as PlusBase, h as html, b as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 import { getConfig } from './config.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}";
@@ -59,8 +59,9 @@ register('fade-out', [
  * @stable
  * @slot default - The default slot.
  */
-let Animation = class Animation {
+let Animation = class Animation extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Determines how values are combined between this animation and other,
          * separate animations that do not specify their own specific composite operation.
@@ -350,9 +351,6 @@ __decorate([
 __decorate([
     Method()
 ], Animation.prototype, "updatePlaybackRate", null);
-__decorate([
-    Host()
-], Animation.prototype, "$host", void 0);
 __decorate([
     Watch('run', true)
 ], Animation.prototype, "watcher", null);

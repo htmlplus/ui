@@ -1,9 +1,10 @@
+import { PlusBase } from '@app/core';
 import { FloatingOffset, FloatingPlacement } from './floating.types';
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class Floating {
+export declare class Floating extends PlusBase {
     static TAG: string;
     /**
      * Positions the element relative to the viewport and prevents it from moving even when scrolled.

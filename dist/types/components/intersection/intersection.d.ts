@@ -1,9 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class Intersection {
+export declare class Intersection extends PlusBase {
     static TAG: string;
     /**
      * Disables the component functionality.
@@ -40,7 +41,6 @@ export declare class Intersection {
      * Fires When the browser detects that the component has been unveiled or obscured.
      */
     plusChange: EventEmitter<IntersectionObserverEntry>;
-    $host: HTMLElement;
     isIntersecting?: boolean;
     observer?: IntersectionObserver;
     get disconnected(): boolean;

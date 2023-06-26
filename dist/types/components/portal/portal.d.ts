@@ -1,9 +1,10 @@
+import { PlusBase } from '@app/core';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 /**
  * @experimental
  * @slot default - The default slot.
  */
-export declare class Portal {
+export declare class Portal extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -19,7 +20,6 @@ export declare class Portal {
      * node or any html elements.
      */
     target?: PortalTarget;
-    $host: HTMLElement;
     instance?: PortalCore;
     get $nodes(): Element[];
     watcher(next: any, prev: any, name: any): void;

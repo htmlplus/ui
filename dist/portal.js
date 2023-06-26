@@ -1,4 +1,4 @@
-import { _ as __decorate, u as Portal$1, P as Property, H as Host, W as Watch, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, u as Portal$1, b as Property, W as Watch, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:contents}";
 
@@ -6,8 +6,9 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @experimental
  * @slot default - The default slot.
  */
-let Portal = class Portal {
+let Portal = class Portal extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Specifies the position of the portal content relative to the target.
          */
@@ -74,9 +75,6 @@ __decorate([
         type: 0
     })
 ], Portal.prototype, "target", void 0);
-__decorate([
-    Host()
-], Portal.prototype, "$host", void 0);
 __decorate([
     Watch(['disabled', 'strategy', 'target'])
 ], Portal.prototype, "watcher", null);

@@ -1,5 +1,6 @@
-import { Element, Property, isRTL, toUnit } from '@htmlplus/element';
+import { Element, Property, toUnit } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { isSize } from '@app/helpers';
 
 import { AvatarShape, AvatarSize } from './avatar.types';
@@ -9,7 +10,7 @@ import { AvatarShape, AvatarSize } from './avatar.types';
  * @slot default - The default slot.
  */
 @Element()
-export class Avatar {
+export class Avatar extends PlusBase {
   /**
    * Specifies the shape of the component.
    */
@@ -27,27 +28,27 @@ export class Avatar {
     return {
       'bottom': {
         bottom: 0,
-        [isRTL(this) ? 'right' : 'left']: '50%',
+        [this.isRTL ? 'right' : 'left']: '50%',
         transform: 'translate(-50%, +50%)'
       },
       'center': {
         top: '50%',
-        [isRTL(this) ? 'right' : 'left']: '50%',
+        [this.isRTL ? 'right' : 'left']: '50%',
         transform: 'translate(-50%, -50%)'
       },
       'end': {
         top: '50%',
-        [isRTL(this) ? 'left' : 'right']: 0,
+        [this.isRTL ? 'left' : 'right']: 0,
         transform: 'translate(+50%, -50%)'
       },
       'end-bottom': {
         bottom: offset,
-        [isRTL(this) ? 'left' : 'right']: offset,
+        [this.isRTL ? 'left' : 'right']: offset,
         transform: 'translate(+50%, +50%)'
       },
       'end-top': {
         top: offset,
-        [isRTL(this) ? 'left' : 'right']: offset,
+        [this.isRTL ? 'left' : 'right']: offset,
         transform: 'translate(+50%, -50%)'
       },
       'left': {
@@ -82,22 +83,22 @@ export class Avatar {
       },
       'start': {
         top: '50%',
-        [isRTL(this) ? 'right' : 'left']: 0,
+        [this.isRTL ? 'right' : 'left']: 0,
         transform: 'translate(-50%, -50%)'
       },
       'start-bottom': {
         bottom: offset,
-        [isRTL(this) ? 'right' : 'left']: offset,
+        [this.isRTL ? 'right' : 'left']: offset,
         transform: 'translate(-50%, +50%)'
       },
       'start-top': {
         top: offset,
-        [isRTL(this) ? 'right' : 'left']: offset,
+        [this.isRTL ? 'right' : 'left']: offset,
         transform: 'translate(-50%, -50%)'
       },
       'top': {
         top: 0,
-        [isRTL(this) ? 'right' : 'left']: '50%',
+        [this.isRTL ? 'right' : 'left']: '50%',
         transform: 'translate(-50%, -50%)'
       }
     };

@@ -1,4 +1,4 @@
-import { _ as __decorate, A as Animation2, a as __awaiter, h as html, P as Property, E as Event, H as Host, Q as Query, M as Method, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, A as Animation2, a as __awaiter, h as html, b as Property, E as Event, Q as Query, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{background-color:#fff;border:1px solid #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type,:last-of-type)){border-radius:0}:host(:not(:only-of-type):first-of-type){border-bottom-left-radius:0;border-bottom-right-radius:0}:host(:not(:only-of-type):last-of-type){border-top-left-radius:0;border-top-right-radius:0}:host([disabled]:not([disabled=false])){opacity:.5}:host([disabled]:not([disabled=false])) .header{cursor:auto}.header{border-radius:inherit;cursor:pointer;overflow-anchor:none;padding:1rem;position:relative;user-select:none}.header,.summary{align-items:center;display:flex}.summary{flex:1 1 auto}.icon{align-items:center;display:flex;flex:0 0 auto}.body{overflow:hidden;transition:all .2s ease-in-out}.content{display:block;padding:1rem}:host([state=collapsed]) .body{display:none}:host(:not([state=collapsed])) .header{border-bottom-left-radius:0;border-bottom-right-radius:0}svg{transition:all .2s ease-in-out}:host([state^=collap]) svg{transform:rotate(90deg)}:host([state^=expand]) svg{transform:rotate(-90deg)}";
 
@@ -14,8 +14,9 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @slot summary       - The summary slot.
  * @stable
  */
-let Accordion = class Accordion {
+let Accordion = class Accordion extends PlusBase {
     constructor() {
+        super(...arguments);
         this.animate = new Animation2({
             key: 'state',
             source: () => this.$body,
@@ -180,9 +181,6 @@ __decorate([
 __decorate([
     Event()
 ], Accordion.prototype, "plusExpanded", void 0);
-__decorate([
-    Host()
-], Accordion.prototype, "$host", void 0);
 __decorate([
     Query('.body')
 ], Accordion.prototype, "$body", void 0);

@@ -1,5 +1,7 @@
 import { Element, Property } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 import {
   GridItemAlignSelf,
   GridItemColumn,
@@ -11,7 +13,7 @@ import {
  * @slot default - The default slot.
  */
 @Element()
-export class GridItem {
+export class GridItem extends PlusBase {
   /**
    * Aligns the grid-item vertically in its container (grid).
    * It overrides the align-items property of its parent.

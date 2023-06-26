@@ -1513,6 +1513,18 @@ function Watch(keys, immediate) {
     };
 }
 
+class PlusBase {
+    get direction() {
+        return direction(this);
+    }
+    get isRTL() {
+        return isRTL(this);
+    }
+}
+__decorate([
+    Host()
+], PlusBase.prototype, "$host", void 0);
+
 class Animation2 {
     get animations() {
         return this.source.getAnimations();
@@ -2040,6 +2052,12 @@ const isSize = (input) => {
     ].includes(input);
 };
 
+const isValidCSSColor = (input) => {
+    const option = new Option();
+    option.style.color = input;
+    return option.style.color !== '';
+};
+
 const toAxis = (input, rtl) => {
     if (!input)
         return input;
@@ -2124,4 +2142,4 @@ Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
 // @Override()
 // override?: { [key: string]: any };
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Host as H, Method as M, Property as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Element as b, styles as c, isSize as d, attributes$1 as e, host as f, getConfig as g, html as h, isRTL as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v };
+export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, PlusBase as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w };

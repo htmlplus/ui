@@ -55,19 +55,18 @@ plus-accordion:first-of-type {
 plus-accordion:last-of-type {
     margin-bottom: 0;
 }
-
 /*
  * indeterminate
  */
 
-plus-progress-bar[variant='indeterminate']::part(indicator) {
+progress-bar[variant='indeterminate'] .indicator {
     animation: none;
     background-color: transparent;
     width: auto !important;
 }
 
-plus-progress-bar[variant='indeterminate']::part(indicator)::before,
-plus-progress-bar[variant='indeterminate']::part(indicator)::after {
+progress-bar[variant='indeterminate'] .indicator::before,
+progress-bar[variant='indeterminate'] .indicator::after {
     content: '';
     position: absolute;
     inset: 0 auto 0 0;
@@ -76,13 +75,13 @@ plus-progress-bar[variant='indeterminate']::part(indicator)::after {
     animation-iteration-count: infinite;
 }
 
-plus-progress-bar[variant='indeterminate']::part(indicator)::before {
+progress-bar[variant='indeterminate'] .indicator::before {
     animation-name: indeterminate-before;
     animation-delay: 0s;
     animation-timing-function: cubic-bezier(0.65, 0.815, 0.735, 0.395);
 }
 
-plus-progress-bar[variant='indeterminate']::part(indicator)::after {
+progress-bar[variant='indeterminate'] .indicator::after {
     animation-name: indeterminate-after;
     animation-delay: 1.15s;
     animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);

@@ -1,11 +1,12 @@
-import { _ as __decorate, i as isRTL, n as toAxis, t as toUnit, c as styles, h as html, e as attributes, f as host, P as Property, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, n as toAxis, t as toUnit, d as styles, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
-let Floating = class Floating {
+let Floating = class Floating extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Specifies the deviation from the center.
          */
@@ -17,17 +18,16 @@ let Floating = class Floating {
     }
     get style() {
         var _a;
-        const rtl = isRTL(this);
         let placement = this.placement || '';
         if (placement.match(/^(top|bottom)$/))
             placement = `-${placement}`;
         let [x, y] = placement.split('-');
         x || (x = 'center');
         y || (y = 'center');
-        x = toAxis(x, rtl);
+        x = toAxis(x, this.isRTL);
         const centeredX = x == 'center';
         const centeredY = y == 'center';
-        const X = !centeredX ? x : rtl ? 'right' : 'left';
+        const X = !centeredX ? x : this.isRTL ? 'right' : 'left';
         const Y = !centeredY ? y : 'top';
         const offset = [this.offset].flat().map(offset => toUnit(offset));
         const offsetX = offset[0];
@@ -38,7 +38,7 @@ let Floating = class Floating {
         style[X] = centeredX ? `calc(50% + ${offsetX})` : `calc(0px + ${offsetX})`;
         style[Y] = centeredY ? `calc(50% + ${offsetY})` : `calc(0px + ${offsetY})`;
         if (centeredX || centeredY) {
-            style['transform'] = `translate(${centeredX ? `${rtl ? '' : '-'}50%` : '0'}, ${centeredY ? '-50%' : '0'})`;
+            style['transform'] = `translate(${centeredX ? `${this.isRTL ? '' : '-'}50%` : '0'}, ${centeredY ? '-50%' : '0'})`;
         }
         return styles(style);
     }

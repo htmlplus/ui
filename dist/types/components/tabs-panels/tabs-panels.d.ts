@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 /**
  * TODO: This component contains panels.
  * @slot default - The default slot.
  */
-export declare class TabsPanels {
+export declare class TabsPanels extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

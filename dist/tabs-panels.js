@@ -1,4 +1,4 @@
-import { _ as __decorate, h as html, P as Property, W as Watch, b as Element, m as createLink } from './core/index.js';
+import { _ as __decorate, P as PlusBase, h as html, b as Property, W as Watch, c as Element, m as createLink } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}";
 
@@ -10,7 +10,7 @@ const { reconnect } = createLink({
  * TODO: This component contains panels.
  * @slot default - The default slot.
  */
-let TabsPanels = class TabsPanels {
+let TabsPanels = class TabsPanels extends PlusBase {
     watcher() {
         reconnect(this);
     }

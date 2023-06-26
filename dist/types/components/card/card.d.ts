@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 import { CardElevation } from './card.types';
 /**
  * @slot default - The default slot.
  */
-export declare class Card {
+export declare class Card extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

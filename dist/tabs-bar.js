@@ -1,4 +1,4 @@
-import { _ as __decorate, h as html, e as attributes, f as host, P as Property, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:flex;flex:0 0 auto;overflow:auto}:host([reverse]:not([reverse=false])){flex-direction:row-reverse}:host([grow]:not([grow=false])) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=end][reverse]:not([reverse=false])),:host([justify=start]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]:not([reverse=false])){justify-content:flex-end}";
 
@@ -6,8 +6,9 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * TODO: Arranges tabs within a bar.
  * @slot default - The default slot.
  */
-let TabsBar = class TabsBar {
+let TabsBar = class TabsBar extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Specifies how the tabs are aligned.
          */

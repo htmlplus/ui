@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
 /**
  * @stable
  */
-export declare class FormatBytes {
+export declare class FormatBytes extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

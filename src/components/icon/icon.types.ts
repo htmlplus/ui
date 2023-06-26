@@ -1,3 +1,4 @@
+export type IconColor = (string & {});
 export type IconParser = (input: SVGElement | string) => SVGElement;
 export type IconFlip = 'both' | 'horizontal' | 'vertical';
 export type IconResolver = (name: string, parser: IconParser) => Promise<SVGElement | string>;

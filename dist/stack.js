@@ -1,10 +1,11 @@
-import { _ as __decorate, c as styles, t as toUnit, h as html, e as attributes, f as host, P as Property, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, d as styles, t as toUnit, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
 
 /**
  * @slot default - The default slot.
  */
-let Stack = class Stack {
+let Stack = class Stack extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * TODO.
          */

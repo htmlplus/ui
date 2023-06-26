@@ -1,5 +1,6 @@
 import { Bind, Element, Property, State, Watch } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink({
@@ -13,7 +14,7 @@ const { Inject, reconnect } = createLink({
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
 @Element()
-export class DialogToggler {
+export class DialogToggler extends PlusBase {
   /**
    * This property helps you to attach which dialog this toggler controls.
    * It doesn't matter where the dialog toggler is.

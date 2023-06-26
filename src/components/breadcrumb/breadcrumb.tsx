@@ -1,5 +1,7 @@
-import { Bind, Element, Host, Property, QueryAll, State } from '@htmlplus/element';
+import { Bind, Element, Property, QueryAll, State } from '@htmlplus/element';
 import { request } from '@htmlplus/element/client/utils/request';
+
+import { PlusBase } from '@app/core';
 
 import * as CONSTANTS from './breadcrumb.constants';
 
@@ -12,7 +14,7 @@ import * as CONSTANTS from './breadcrumb.constants';
  * @slot separator - The separator slot.
  */
 @Element()
-export class Breadcrumb {
+export class Breadcrumb extends PlusBase {
   /**
    * Specifies the label for the expander button.
    */
@@ -42,9 +44,6 @@ export class Breadcrumb {
   expand: boolean = false;
 
   observer: MutationObserver = new MutationObserver(this.onChange);
-
-  @Host()
-  $host!: HTMLElement;
 
   @QueryAll('.separator')
   $separators!: HTMLElement[];

@@ -1,9 +1,11 @@
 import { Element, Property } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
 @Element()
-export class Divider {
+export class Divider extends PlusBase {
   /**
    * Specifies the location of the default slot.
    */

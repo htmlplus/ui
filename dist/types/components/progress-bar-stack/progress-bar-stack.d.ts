@@ -1,4 +1,5 @@
-export declare class ProgressBarStack {
+import { PlusBase } from '@app/core';
+export declare class ProgressBarStack extends PlusBase {
     static TAG: string;
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;

@@ -1,12 +1,13 @@
 import { EventEmitter } from '@htmlplus/element';
 import type CropperCoreType from 'cropperjs';
+import { PlusBase } from '@app/core';
 import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, CropperPointerEvent, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomEvent } from './cropper.types';
 /**
  * @dependencies cropperjs
  * @stable
  * @thirdParty
  */
-export declare class Cropper {
+export declare class Cropper extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

@@ -1,11 +1,13 @@
 import { Element, Property } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 /**
  * @stable
  * @slot default - The default slot.
  */
 @Element()
-export class AspectRatio {
+export class AspectRatio extends PlusBase {
   /**
    * Specifies the minimum height.
    */

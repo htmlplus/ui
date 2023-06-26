@@ -1,4 +1,5 @@
-export declare class ProgressBar {
+import { PlusBase } from '@app/core';
+export declare class ProgressBar extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -25,7 +26,6 @@ export declare class ProgressBar {
      * TODO
      */
     value?: number;
-    $host: HTMLElement;
     get percentage(): string;
     get progress(): number;
     get stacked(): boolean;

@@ -7,6 +7,9 @@
   height: 1em;
   width: 1em;
   vertical-align: middle;
+
+  // TODO
+  color: var(--plus-color, currentColor);
 }
 
 @each $key, $value in $icon-size {

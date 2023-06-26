@@ -1,14 +1,15 @@
-import { IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
+import { PlusBase } from '@app/core';
+import { IconColor, IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
 /**
  * @part svg - The svg element.
  */
-export declare class Icon {
+export declare class Icon extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: IconColor;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -33,7 +34,6 @@ export declare class Icon {
      * Specifies the size.
      */
     size?: IconSize;
-    $host: HTMLElement;
     svg?: SVGElement;
     get cache(): any;
     set cache(cache: any);
@@ -47,7 +47,7 @@ export interface IconJSX {
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: IconColor;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -78,7 +78,7 @@ declare global {
         /**
          * Specifies the color.
          */
-        color?: string;
+        color?: IconColor;
         /**
          * Flips in `horizontal`, `vertical` or `both` directions.
          */

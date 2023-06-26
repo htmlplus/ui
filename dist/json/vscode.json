@@ -3989,6 +3989,11 @@
       "description": "An indicator of progress and activity.",
       "attributes": [
         {
+          "name": "color",
+          "description": "Specifies the color.",
+          "values": []
+        },
+        {
           "name": "size",
           "description": "Specifies the size of the spinner.",
           "values": [

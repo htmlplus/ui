@@ -1,11 +1,12 @@
 import { EventEmitter } from '@htmlplus/element';
 import type CoreType from 'signature_pad';
+import { PlusBase } from '@app/core';
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 /**
  * @part canvas - The canvas element.
  * @stable
  */
-export declare class Signature {
+export declare class Signature extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -130,7 +131,6 @@ export declare class Signature {
      * Reverts the last action.
      */
     undo(): void;
-    $host: HTMLElement;
     $canvas: HTMLCanvasElement;
     instance?: CoreType;
     history: SignaturePointGroup[][];

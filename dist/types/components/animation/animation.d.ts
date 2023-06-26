@@ -1,4 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 import './assets/names/fading-entrance/fade-in.js';
 import './assets/names/fading-exits/fade-out.js';
@@ -6,7 +7,7 @@ import './assets/names/fading-exits/fade-out.js';
  * @stable
  * @slot default - The default slot.
  */
-export declare class Animation {
+export declare class Animation extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -137,7 +138,6 @@ export declare class Animation {
      * Sets the speed of an animation after first synchronizing its playback position.
      */
     updatePlaybackRate(playbackRate: number): void;
-    $host: HTMLElement;
     get options(): {
         composite: AnimationComposite;
         delay: number;

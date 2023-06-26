@@ -1,4 +1,4 @@
-import { _ as __decorate, m as createLink, h as html, e as attributes, f as host, P as Property, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, m as createLink, P as PlusBase, h as html, e as attributes, f as host, b as Property, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{cursor:default;display:inline-block;user-select:none}";
 
@@ -11,8 +11,9 @@ const { Inject, reconnect } = createLink({
  * @TODO open    - Specifies the content of toggler when it's opened.
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
-let DialogToggler = class DialogToggler {
+let DialogToggler = class DialogToggler extends PlusBase {
     constructor() {
+        super(...arguments);
         this.toggle = () => console.log('TODO: can not use out of dialog');
     }
     get text() {

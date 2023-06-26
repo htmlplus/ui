@@ -1,10 +1,11 @@
-import { _ as __decorate, o as on, k as off, P as Property, E as Event, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, o as on, k as off, b as Property, E as Event, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 /**
  * @stable
  */
-let ScrollDetector = class ScrollDetector {
+let ScrollDetector = class ScrollDetector extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Specifies the reference of the scroll.
          */

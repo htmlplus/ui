@@ -2,13 +2,15 @@ import { Element, Property } from '@htmlplus/element';
 
 import type { Faker as FakerCoreType } from '@faker-js/faker';
 
+import { PlusBase } from '@app/core';
+
 /**
  * @dependencies @faker-js/faker
  * @stable
  * @thirdParty
  */
 @Element()
-export class Faker {
+export class Faker extends PlusBase {
   /**
    * Specifies the [API](https://fakerjs.dev/api).
    */

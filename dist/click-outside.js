@@ -1,10 +1,10 @@
-import { _ as __decorate, o as on, k as off, h as html, P as Property, E as Event, H as Host, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, o as on, k as off, h as html, b as Property, E as Event, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
-let ClickOutside = class ClickOutside {
+let ClickOutside = class ClickOutside extends PlusBase {
     get options() {
         return {
             capture: this.capture
@@ -68,9 +68,6 @@ __decorate([
         cancelable: true
     })
 ], ClickOutside.prototype, "plusClickOutside", void 0);
-__decorate([
-    Host()
-], ClickOutside.prototype, "$host", void 0);
 __decorate([
     Watch(['capture', 'disabled', 'once'])
 ], ClickOutside.prototype, "watcher", null);

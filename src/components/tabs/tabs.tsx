@@ -1,5 +1,6 @@
 import { Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { createLink } from '@app/services';
 
 const { Action, Observable, reconnect } = createLink({
@@ -12,7 +13,7 @@ const { Action, Observable, reconnect } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class Tabs {
+export class Tabs extends PlusBase {
   /**
    * Provides your own value.
    */

@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
 /**
  * @slot default - The default slot.
  */
-export declare class Grid {
+export declare class Grid extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

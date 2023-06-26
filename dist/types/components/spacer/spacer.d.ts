@@ -1,4 +1,5 @@
-export declare class Spacer {
+import { PlusBase } from '@app/core';
+export declare class Spacer extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

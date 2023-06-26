@@ -1,5 +1,6 @@
+import { PlusBase } from '@app/core';
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
-export declare class Divider {
+export declare class Divider extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

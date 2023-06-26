@@ -3,18 +3,17 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Property,
   Query,
   State,
   Watch,
   classes,
-  isRTL,
   off,
   on,
   styles
 } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { Media } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, Scrollbar, createLink } from '@app/services';
@@ -36,7 +35,7 @@ const { Action, Observable, reconnect } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class Drawer {
+export class Drawer extends PlusBase {
   /**
    * TODO
    */
@@ -142,9 +141,6 @@ export class Drawer {
   @Event()
   plusOpened!: EventEmitter<void>;
 
-  @Host()
-  $host!: HTMLElement;
-
   @Query('.root')
   $root!: HTMLElement;
 
@@ -159,7 +155,7 @@ export class Drawer {
   tunnel?: boolean;
 
   get classes() {
-    const placement = toAxis(this.placement || 'start', isRTL(this));
+    const placement = toAxis(this.placement || 'start', this.isRTL);
 
     return classes(
       [

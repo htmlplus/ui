@@ -6,6 +6,9 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: middle;
+
+  // TODO
+  color: var(--plus-color, currentColor);
 }
 
 @each $key, $value in $spinner-sizes {

@@ -1,20 +1,13 @@
-import {
-  Bind,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Property,
-  State,
-  Watch
-} from '@htmlplus/element';
+import { Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
+
+import { PlusBase } from '@app/core';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
 @Element()
-export class Intersection {
+export class Intersection extends PlusBase {
   /**
    * Disables the component functionality.
    */
@@ -61,9 +54,6 @@ export class Intersection {
    */
   @Event()
   plusChange!: EventEmitter<IntersectionObserverEntry>;
-
-  @Host()
-  $host!: HTMLElement;
 
   @State()
   isIntersecting?: boolean;

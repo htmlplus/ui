@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 /**
  * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
  * @slot default - The default slot.
  */
-export declare class TabsPanel {
+export declare class TabsPanel extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

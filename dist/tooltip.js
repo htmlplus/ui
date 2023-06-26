@@ -1,4 +1,4 @@
-import { _ as __decorate, i as isRTL, o as on, k as off, a as __awaiter, h as html, e as attributes, f as host, P as Property, M as Method, H as Host, Q as Query, S as State, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, o as on, k as off, a as __awaiter, h as html, e as attributes, f as host, b as Property, M as Method, Q as Query, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{background-color:#000;border-radius:4px;color:#fff;font-size:90%;font-weight:700;padding:4px 8px;position:absolute;width:max-content}:host([fixed]:not([fixed=false])){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;height:0;position:absolute;width:0}:host([arrow]:not([arrow=false])) [part=arrow]{display:block}:host([arrow]:not([arrow=false])):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=top]) [part=arrow]{border-color:#000 transparent transparent;border-style:solid;border-width:6px 6px 0;bottom:-6px;transform:translateX(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=right]) [part=arrow]{border-color:transparent #000 transparent transparent;border-style:solid;border-width:6px 6px 6px 0;left:-6px;transform:translateY(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=bottom]) [part=arrow]{border-color:transparent transparent #000;border-style:solid;border-width:0 6px 6px;top:-6px;transform:translateX(-50%)}:host([arrow]:not([arrow=false])):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]:not([arrow=false])):host([placement-computed^=left]) [part=arrow]{border-color:transparent transparent transparent #000;border-style:solid;border-width:6px 0 6px 6px;right:-6px;transform:translateY(-50%)}";
 
@@ -7,8 +7,9 @@ let FloatingCore;
  * @dependencies @floating-ui/dom
  * @thirdParty
  */
-let Tooltip = class Tooltip {
+let Tooltip = class Tooltip extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * TODO
          */
@@ -98,27 +99,27 @@ let Tooltip = class Tooltip {
     get options() {
         const PLACEMENT = {
             'top': 'top',
-            'top-left': isRTL(this) ? 'top-end' : 'top-start',
-            'top-right': isRTL(this) ? 'top-start' : 'top-end',
+            'top-left': this.isRTL ? 'top-end' : 'top-start',
+            'top-right': this.isRTL ? 'top-start' : 'top-end',
             'top-start': 'top-start',
             'top-end': 'top-end',
             'right': 'right',
             'right-top': 'right-start',
             'right-bottom': 'right-end',
             'bottom': 'bottom',
-            'bottom-left': isRTL(this) ? 'bottom-end' : 'bottom-start',
-            'bottom-right': isRTL(this) ? 'bottom-start' : 'bottom-end',
+            'bottom-left': this.isRTL ? 'bottom-end' : 'bottom-start',
+            'bottom-right': this.isRTL ? 'bottom-start' : 'bottom-end',
             'bottom-start': 'bottom-start',
             'bottom-end': 'bottom-end',
             'left': 'left',
             'left-top': 'left-start',
             'left-bottom': 'left-end',
-            'start': isRTL(this) ? 'right' : 'left',
-            'start-top': isRTL(this) ? 'right-start' : 'left-start',
-            'start-bottom': isRTL(this) ? 'right-end' : 'left-end',
-            'end': isRTL(this) ? 'left' : 'right',
-            'end-top': isRTL(this) ? 'left-start' : 'right-start',
-            'end-bottom': isRTL(this) ? 'left-end' : 'right-end'
+            'start': this.isRTL ? 'right' : 'left',
+            'start-top': this.isRTL ? 'right-start' : 'left-start',
+            'start-bottom': this.isRTL ? 'right-end' : 'left-end',
+            'end': this.isRTL ? 'left' : 'right',
+            'end-top': this.isRTL ? 'left-start' : 'right-start',
+            'end-bottom': this.isRTL ? 'left-end' : 'right-end'
         };
         const padding = [this.offset].flat();
         return {
@@ -303,9 +304,6 @@ __decorate([
 __decorate([
     Method()
 ], Tooltip.prototype, "update", null);
-__decorate([
-    Host()
-], Tooltip.prototype, "$host", void 0);
 __decorate([
     Query('[part=arrow]')
 ], Tooltip.prototype, "$arrow", void 0);

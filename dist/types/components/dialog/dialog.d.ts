@@ -1,11 +1,12 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 import { Animation, Portal } from '@app/services';
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 /**
  * @part backdrop - Backdrop element.
  * @slot default - The default slot.
  */
-export declare class Dialog {
+export declare class Dialog extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -95,7 +96,6 @@ export declare class Dialog {
      * When the dialog is completely shown and its animation is completed.
      */
     plusOpened: EventEmitter<void>;
-    $host: HTMLElement;
     $cell: HTMLElement;
     static instances: any[];
     animate?: Animation;

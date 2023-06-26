@@ -3,16 +3,15 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Property,
   Query,
   Watch,
   classes,
-  isRTL,
   off,
   on
 } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { toAxis } from '@app/helpers';
 import { Animation, Portal, Scrollbar, createLink } from '@app/services';
 
@@ -34,7 +33,7 @@ const { Action, Observable, reconnect } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class Dialog {
+export class Dialog extends PlusBase {
   /**
    * TODO
    */
@@ -162,9 +161,6 @@ export class Dialog {
   @Event()
   plusOpened!: EventEmitter<void>;
 
-  @Host()
-  $host!: HTMLElement;
-
   @Query('slot')
   $cell!: HTMLElement;
 
@@ -191,7 +187,7 @@ export class Dialog {
 
     y = y || 'center';
 
-    x = toAxis(x, isRTL(this));
+    x = toAxis(x, this.isRTL);
 
     return classes(
       [

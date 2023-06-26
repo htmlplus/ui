@@ -1,7 +1,8 @@
+import { PlusBase } from '@app/core';
 /**
  * @slot default - The default slot.
  */
-export declare class DialogHeader {
+export declare class DialogHeader extends PlusBase {
     static TAG: string;
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;

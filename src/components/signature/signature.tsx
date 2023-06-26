@@ -3,7 +3,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Method,
   Property,
   Query,
@@ -11,6 +10,8 @@ import {
 } from '@htmlplus/element';
 
 import type CoreType from 'signature_pad';
+
+import { PlusBase } from '@app/core';
 
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
@@ -21,7 +22,7 @@ let Core;
  * @stable
  */
 @Element()
-export class Signature {
+export class Signature extends PlusBase {
   /**
    * Specifies the background color.
    */
@@ -262,9 +263,6 @@ export class Signature {
 
     this.instance.fromData(data);
   }
-
-  @Host()
-  $host!: HTMLElement;
 
   @Query('canvas')
   $canvas!: HTMLCanvasElement;

@@ -1,7 +1,8 @@
+import { PlusBase } from '@app/core';
 /**
  * @slot default - The default slot.
  */
-export declare class DialogContent {
+export declare class DialogContent extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

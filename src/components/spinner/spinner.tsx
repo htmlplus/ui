@@ -1,12 +1,21 @@
-import { Element, Property } from '@htmlplus/element';
+import { Element, Property, styles } from '@htmlplus/element';
 
-import { SpinnerSize, SpinnerType } from './spinner.types';
+import { PlusBase } from '@app/core';
+import { isValidCSSColor } from '@app/helpers';
+
+import { SpinnerColor, SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
  * @stable
  */
 @Element()
-export class Spinner {
+export class Spinner extends PlusBase {
+  /**
+   * Specifies the color.
+   */
+  @Property({ reflect: true })
+  color?: SpinnerColor;
+
   /**
    * Specifies the size of the spinner.
    */
@@ -18,6 +27,12 @@ export class Spinner {
    */
   @Property({ reflect: true })
   type?: SpinnerType = 'default';
+
+  get style() {
+    return styles({
+      color: isValidCSSColor(this.color) ? this.color : null
+    });
+  }
 
   get elements() {
     const map = {
@@ -32,7 +47,7 @@ export class Spinner {
 
   render() {
     return (
-      <host role="status">
+      <host role="status" style={this.style}>
         <div className="root">
           {this.elements.map((element) => (
             <div key={element} />

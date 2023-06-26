@@ -1,10 +1,11 @@
-import { Element, Host, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
+import { Element, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@app/config';
-import { isSize } from '@app/helpers';
+import { PlusBase } from '@app/core';
+import { isSize, isValidCSSColor } from '@app/helpers';
 
 import { ICON_FALLBACK_SVG } from './icon.constants';
-import { IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
+import { IconColor, IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
 
 let parser;
 
@@ -38,12 +39,12 @@ const parse = (input: SVGElement | string): SVGElement => {
  * @part svg - The svg element.
  */
 @Element()
-export class Icon {
+export class Icon extends PlusBase {
   /**
    * Specifies the color.
    */
   @Property({ reflect: true })
-  color?: string;
+  color?: IconColor;
 
   /**
    * Flips in `horizontal`, `vertical` or `both` directions.
@@ -84,9 +85,6 @@ export class Icon {
    */
   @Property({ reflect: true })
   size?: IconSize;
-
-  @Host()
-  $host!: HTMLElement;
 
   @State()
   svg?: SVGElement;
@@ -131,7 +129,7 @@ export class Icon {
     }
 
     return styles({
-      color: this.color,
+      color: isValidCSSColor(this.color) ? this.color : null,
       height: size,
       width: size,
       transform

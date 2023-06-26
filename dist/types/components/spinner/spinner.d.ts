@@ -1,10 +1,15 @@
-import { SpinnerSize, SpinnerType } from './spinner.types';
+import { PlusBase } from '@app/core';
+import { SpinnerColor, SpinnerSize, SpinnerType } from './spinner.types';
 /**
  * @stable
  */
-export declare class Spinner {
+export declare class Spinner extends PlusBase {
     static TAG: string;
     static STYLES: string;
+    /**
+     * Specifies the color.
+     */
+    color?: SpinnerColor;
     /**
      * Specifies the size of the spinner.
      */
@@ -13,10 +18,15 @@ export declare class Spinner {
      * Specifies which variant of the spinner to use.
      */
     type?: SpinnerType;
+    get style(): string;
     get elements(): number[];
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SpinnerJSX {
+    /**
+     * Specifies the color.
+     */
+    color?: SpinnerColor;
     /**
      * Specifies the size of the spinner.
      */
@@ -28,6 +38,10 @@ export interface SpinnerJSX {
 }
 declare global {
     interface HTMLPlusSpinnerElement extends HTMLElement {
+        /**
+         * Specifies the color.
+         */
+        color?: SpinnerColor;
         /**
          * Specifies the size of the spinner.
          */

@@ -3994,7 +3994,7 @@
               "deprecated": false,
               "experimental": false,
               "value": {
-                "type": "string"
+                "type": "(string & {})"
               }
             },
             {
@@ -4753,6 +4753,12 @@
             "events": [],
             "properties": [
               {
+                "name": "color",
+                "description": "Specifies the color.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
                 "name": "size",
                 "description": "Specifies the size of the spinner.",
                 "deprecated": false,
@@ -4769,6 +4775,15 @@
             ]
           },
           "attributes": [
+            {
+              "name": "color",
+              "description": "Specifies the color.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "(string & {})"
+              }
+            },
             {
               "name": "size",
               "description": "Specifies the size of the spinner.",

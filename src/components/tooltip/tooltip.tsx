@@ -1,18 +1,8 @@
-import {
-  Bind,
-  Element,
-  Host,
-  Method,
-  Property,
-  Query,
-  Watch,
-  State,
-  isRTL,
-  off,
-  on
-} from '@htmlplus/element';
+import { Bind, Element, Method, Property, Query, Watch, State, off, on } from '@htmlplus/element';
 
 import type * as FloatingCoreType from '@floating-ui/dom';
+
+import { PlusBase } from '@app/core';
 
 import {
   TooltipDelay,
@@ -29,7 +19,7 @@ let FloatingCore: typeof FloatingCoreType;
  * @thirdParty
  */
 @Element()
-export class Tooltip {
+export class Tooltip extends PlusBase {
   /**
    * Specifies whether to display the arrow or not.
    */
@@ -155,9 +145,6 @@ export class Tooltip {
     });
   }
 
-  @Host()
-  $host!: HTMLElement;
-
   @Query('[part=arrow]')
   $arrow!: HTMLElement;
 
@@ -188,27 +175,27 @@ export class Tooltip {
   get options() {
     const PLACEMENT = {
       'top': 'top',
-      'top-left': isRTL(this) ? 'top-end' : 'top-start',
-      'top-right': isRTL(this) ? 'top-start' : 'top-end',
+      'top-left': this.isRTL ? 'top-end' : 'top-start',
+      'top-right': this.isRTL ? 'top-start' : 'top-end',
       'top-start': 'top-start',
       'top-end': 'top-end',
       'right': 'right',
       'right-top': 'right-start',
       'right-bottom': 'right-end',
       'bottom': 'bottom',
-      'bottom-left': isRTL(this) ? 'bottom-end' : 'bottom-start',
-      'bottom-right': isRTL(this) ? 'bottom-start' : 'bottom-end',
+      'bottom-left': this.isRTL ? 'bottom-end' : 'bottom-start',
+      'bottom-right': this.isRTL ? 'bottom-start' : 'bottom-end',
       'bottom-start': 'bottom-start',
       'bottom-end': 'bottom-end',
       'left': 'left',
       'left-top': 'left-start',
       'left-bottom': 'left-end',
-      'start': isRTL(this) ? 'right' : 'left',
-      'start-top': isRTL(this) ? 'right-start' : 'left-start',
-      'start-bottom': isRTL(this) ? 'right-end' : 'left-end',
-      'end': isRTL(this) ? 'left' : 'right',
-      'end-top': isRTL(this) ? 'left-start' : 'right-start',
-      'end-bottom': isRTL(this) ? 'left-end' : 'right-end'
+      'start': this.isRTL ? 'right' : 'left',
+      'start-top': this.isRTL ? 'right-start' : 'left-start',
+      'start-bottom': this.isRTL ? 'right-end' : 'left-end',
+      'end': this.isRTL ? 'left' : 'right',
+      'end-top': this.isRTL ? 'left-start' : 'right-start',
+      'end-bottom': this.isRTL ? 'left-end' : 'right-end'
     };
 
     const padding = [this.offset].flat();

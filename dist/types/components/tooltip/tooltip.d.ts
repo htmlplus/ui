@@ -1,11 +1,12 @@
 /// <reference types="node" />
 import type * as FloatingCoreType from '@floating-ui/dom';
+import { PlusBase } from '@app/core';
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
  * @dependencies @floating-ui/dom
  * @thirdParty
  */
-export declare class Tooltip {
+export declare class Tooltip extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -63,7 +64,6 @@ export declare class Tooltip {
      * Updates the component's position.
      */
     update(): void;
-    $host: HTMLElement;
     $arrow: HTMLElement;
     $activator?: Element;
     state?: 'hide' | 'show';

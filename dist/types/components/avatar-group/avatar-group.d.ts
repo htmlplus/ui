@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class AvatarGroup {
+export declare class AvatarGroup extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

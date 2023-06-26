@@ -9,13 +9,15 @@ import {
   State
 } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 import { BrowseError, BrowseEvent, BrowseFile, BrowseFileError } from './browse.types';
 
 /**
  * @slot default - The default slot.
  */
 @Element()
-export class Browse {
+export class Browse extends PlusBase {
   /**
    * One or more
    * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)

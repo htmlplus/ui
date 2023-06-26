@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 /**
  * @development
  * @slot default - The default slot.
  */
-export declare class CardBody {
+export declare class CardBody extends PlusBase {
     static TAG: string;
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;

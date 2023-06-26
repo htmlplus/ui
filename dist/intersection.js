@@ -1,10 +1,10 @@
-import { _ as __decorate, h as html, e as attributes, f as host, P as Property, E as Event, H as Host, S as State, W as Watch, B as Bind, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, h as html, e as attributes, f as host, b as Property, E as Event, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
-let Intersection = class Intersection {
+let Intersection = class Intersection extends PlusBase {
     get disconnected() {
         return this.once && this.isIntersecting;
     }
@@ -102,9 +102,6 @@ __decorate([
 __decorate([
     Event()
 ], Intersection.prototype, "plusChange", void 0);
-__decorate([
-    Host()
-], Intersection.prototype, "$host", void 0);
 __decorate([
     State()
 ], Intersection.prototype, "isIntersecting", void 0);

@@ -1,9 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class ClickOutside {
+export declare class ClickOutside extends PlusBase {
     static TAG: string;
     /**
      * A boolean value indicating that events of this type will be dispatched to the registered
@@ -22,7 +23,6 @@ export declare class ClickOutside {
      * Fires when outside of the component is clicked.
      */
     plusClickOutside: EventEmitter<void>;
-    $host: HTMLElement;
     get options(): {
         capture: boolean;
     };

@@ -1,4 +1,4 @@
-import { _ as __decorate, P as Property, E as Event, H as Host, Q as Query, W as Watch, B as Bind, m as createLink, n as toAxis, i as isRTL, l as classes, p as Animation, q as Scrollbar, k as off, u as Portal, o as on, h as html, e as attributes, f as host, b as Element } from './core/index.js';
+import { _ as __decorate, b as Property, E as Event, Q as Query, W as Watch, B as Bind, m as createLink, P as PlusBase, n as toAxis, l as classes, p as Animation, q as Scrollbar, k as off, u as Portal, o as on, h as html, e as attributes, f as host, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host([animation]:not([animation=false])[state=closing]),:host([animation]:not([animation=false])[state=opening]){transition:all .5s ease-out}:host([animation]:not([animation=false])[state=closing]) .dialog,:host([animation]:not([animation=false])[state=opening]) .dialog{overflow:hidden}:host([animation]:not([animation=false])[state=closing]) ::slotted(*),:host([animation]:not([animation=false])[state=opening]) ::slotted(*){transition:all .5s ease-out}:host([animation=fade][state=closing]),:host([animation=fade][state=open]){opacity:0}:host([animation=fade][state=closing]) ::slotted(*),:host([animation=fade][state=open]) ::slotted(*){transform:translateY(-50px)}:host([animation=fade][state=closing]) .y-bottom ::slotted(*),:host([animation=fade][state=open]) .y-bottom ::slotted(*){transform:translateY(50px)}:host([animation=fade][state=closing]) .x-right ::slotted(*),:host([animation=fade][state=open]) .x-right ::slotted(*){transform:translate(50px)}:host([animation=fade][state=closing]) .x-left ::slotted(*),:host([animation=fade][state=open]) .x-left ::slotted(*){transform:translate(-50px)}:host([animation=fade][state=close]),:host([animation=fade][state=opening]){opacity:1}:host([animation=fade][state=close]) ::slotted(*),:host([animation=fade][state=opening]) ::slotted(*){transform:translate(0)}:host{display:block;height:100%;left:0;outline:0;overflow:hidden;position:fixed;top:0;width:100%;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.dialog{height:100%;left:0;overflow-x:hidden;overflow-y:auto;position:fixed;top:0;width:100%;z-index:1}.table{display:table;height:100%;margin:auto;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}.fullscreen .cell{padding:0}.fullscreen ::slotted(*){border:0;border-radius:0}.fullscreen .cell{max-width:none}.fullscreen ::slotted(*){min-height:100vh}@media (min-width:576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media (max-width:575.98px){.fullscreen-sm-down .cell{padding:0}.fullscreen-sm-down ::slotted(*){border:0;border-radius:0}.fullscreen-sm-down .cell{max-width:none}.fullscreen-sm-down ::slotted(*){min-height:100vh}}@media (max-width:767.98px){.fullscreen-md-down .cell{padding:0}.fullscreen-md-down ::slotted(*){border:0;border-radius:0}.fullscreen-md-down .cell{max-width:none}.fullscreen-md-down ::slotted(*){min-height:100vh}}@media (min-width:992px){.size-lg .cell,.size-xl .cell{max-width:800px}}@media (max-width:991.98px){.fullscreen-lg-down .cell{padding:0}.fullscreen-lg-down ::slotted(*){border:0;border-radius:0}.fullscreen-lg-down .cell{max-width:none}.fullscreen-lg-down ::slotted(*){min-height:100vh}}@media (min-width:1200px){.size-xl .cell{max-width:1140px}}@media (max-width:1199.98px){.fullscreen-xl-down .cell{padding:0}.fullscreen-xl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xl-down .cell{max-width:none}.fullscreen-xl-down ::slotted(*){min-height:100vh}}@media (max-width:1399.98px){.fullscreen-xxl-down .cell{padding:0}.fullscreen-xxl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xxl-down .cell{max-width:none}.fullscreen-xxl-down ::slotted(*){min-height:100vh}}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none!important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
 
@@ -11,8 +11,9 @@ const { Action, Observable, reconnect } = createLink({
  * @part backdrop - Backdrop element.
  * @slot default - The default slot.
  */
-let Dialog = Dialog_1 = class Dialog {
+let Dialog = Dialog_1 = class Dialog extends PlusBase {
     constructor() {
+        super(...arguments);
         /**
          * Activate the dialog's backdrop to show or not.
          */
@@ -44,7 +45,7 @@ let Dialog = Dialog_1 = class Dialog {
         let [x, y] = placement.split('-');
         x = x || 'center';
         y = y || 'center';
-        x = toAxis(x, isRTL(this));
+        x = toAxis(x, this.isRTL);
         return classes(['dialog', {
                 x,
                 y,
@@ -341,9 +342,6 @@ __decorate([
 __decorate([
     Event()
 ], Dialog.prototype, "plusOpened", void 0);
-__decorate([
-    Host()
-], Dialog.prototype, "$host", void 0);
 __decorate([
     Query('slot')
 ], Dialog.prototype, "$cell", void 0);

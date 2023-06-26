@@ -1,8 +1,9 @@
+import { PlusBase } from '@app/core';
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class AspectRatio {
+export declare class AspectRatio extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

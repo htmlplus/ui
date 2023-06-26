@@ -1,11 +1,13 @@
 import { Element, Property } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 /**
  * @stable
  * @slot default - The default slot.
  */
 @Element()
-export class AvatarGroup {
+export class AvatarGroup extends PlusBase {
   /**
    * Specifies whether to prominent the avatar when the mouse is entered or not.
    */

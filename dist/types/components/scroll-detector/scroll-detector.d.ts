@@ -1,9 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-detector.types';
 /**
  * @stable
  */
-export declare class ScrollDetector {
+export declare class ScrollDetector extends PlusBase {
     static TAG: string;
     /**
      * Disables the component functionality.

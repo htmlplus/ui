@@ -1,4 +1,4 @@
-import { _ as __decorate, h as html, b as Element } from './core/index.js';
+import { _ as __decorate, P as PlusBase, h as html, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{flex:1 1 auto;padding:1rem}";
 
@@ -6,7 +6,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @development
  * @slot default - The default slot.
  */
-let CardBody = class CardBody {
+let CardBody = class CardBody extends PlusBase {
     render() {
         return html `<slot />`;
     }

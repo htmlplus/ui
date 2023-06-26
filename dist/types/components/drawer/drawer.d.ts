@@ -1,10 +1,11 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 import { Animation } from '@app/services';
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 /**
  * @slot default - The default slot.
  */
-export declare class Drawer {
+export declare class Drawer extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -80,7 +81,6 @@ export declare class Drawer {
      * When the drawer is completely shown and its animation is completed.
      */
     plusOpened: EventEmitter<void>;
-    $host: HTMLElement;
     $root: HTMLElement;
     platform?: DrawerPlatform;
     animations: {

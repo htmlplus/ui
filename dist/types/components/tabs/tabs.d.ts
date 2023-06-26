@@ -1,9 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
+import { PlusBase } from '@app/core';
 /**
  * @development
  * @slot default - The default slot.
  */
-export declare class Tabs {
+export declare class Tabs extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

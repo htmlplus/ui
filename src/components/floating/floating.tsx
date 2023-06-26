@@ -1,5 +1,6 @@
-import { Element, Property, isRTL, styles, toUnit } from '@htmlplus/element';
+import { Element, Property, styles, toUnit } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { toAxis } from '@app/helpers';
 
 import { FloatingOffset, FloatingPlacement } from './floating.types';
@@ -9,7 +10,7 @@ import { FloatingOffset, FloatingPlacement } from './floating.types';
  * @slot default - The default slot.
  */
 @Element()
-export class Floating {
+export class Floating extends PlusBase {
   /**
    * Positions the element relative to the viewport and prevents it from moving even when scrolled.
    * Otherwise, the element is positioned relative to its nearest ancestor.
@@ -30,8 +31,6 @@ export class Floating {
   placement?: FloatingPlacement = 'end-bottom';
 
   get style() {
-    const rtl = isRTL(this);
-
     let placement = this.placement || '';
 
     if (placement.match(/^(top|bottom)$/)) placement = `-${placement}`;
@@ -41,12 +40,12 @@ export class Floating {
     x ||= 'center';
     y ||= 'center';
 
-    x = toAxis(x, rtl);
+    x = toAxis(x, this.isRTL);
 
     const centeredX = x == 'center';
     const centeredY = y == 'center';
 
-    const X = !centeredX ? x : rtl ? 'right' : 'left';
+    const X = !centeredX ? x : this.isRTL ? 'right' : 'left';
     const Y = !centeredY ? y : 'top';
 
     const offset = [this.offset].flat().map((offset) => toUnit(offset));
@@ -62,7 +61,7 @@ export class Floating {
     style[Y] = centeredY ? `calc(50% + ${offsetY})` : `calc(0px + ${offsetY})`;
 
     if (centeredX || centeredY) {
-      style['transform'] = `translate(${centeredX ? `${rtl ? '' : '-'}50%` : '0'}, ${
+      style['transform'] = `translate(${centeredX ? `${this.isRTL ? '' : '-'}50%` : '0'}, ${
         centeredY ? '-50%' : '0'
       })`;
     }

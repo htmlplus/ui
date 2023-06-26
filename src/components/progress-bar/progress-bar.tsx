@@ -1,7 +1,9 @@
-import { Element, Host, Property } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
+
+import { PlusBase } from '@app/core';
 
 @Element()
-export class ProgressBar {
+export class ProgressBar extends PlusBase {
   /**
    * TODO
    */
@@ -37,9 +39,6 @@ export class ProgressBar {
    */
   @Property()
   value?: number = 0;
-
-  @Host()
-  $host!: HTMLElement;
 
   get percentage() {
     return this.progress + '%';

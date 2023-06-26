@@ -1,5 +1,6 @@
-import { Element, Host, Property, Watch } from '@htmlplus/element';
+import { Element, Property, Watch } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
 
 /**
@@ -7,7 +8,7 @@ import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/service
  * @slot default - The default slot.
  */
 @Element()
-export class Portal {
+export class Portal extends PlusBase {
   /**
    * Disables the portal.
    */
@@ -26,9 +27,6 @@ export class Portal {
    */
   @Property()
   target?: PortalTarget = 'body';
-
-  @Host()
-  $host!: HTMLElement;
 
   instance?: PortalCore;
 

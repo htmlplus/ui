@@ -1,9 +1,10 @@
+import { PlusBase } from '@app/core';
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
-export declare class DrawerToggler {
+export declare class DrawerToggler extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**

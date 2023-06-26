@@ -1,3 +1,4 @@
+import { PlusBase } from '@app/core';
 /**
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
@@ -6,7 +7,7 @@
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
  */
-export declare class Breadcrumb {
+export declare class Breadcrumb extends PlusBase {
     static TAG: string;
     static STYLES: string;
     /**
@@ -28,7 +29,6 @@ export declare class Breadcrumb {
     separator?: string;
     expand: boolean;
     observer: MutationObserver;
-    $host: HTMLElement;
     $separators: HTMLElement[];
     get $children(): Element[];
     get items(): any[];

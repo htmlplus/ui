@@ -1,4 +1,4 @@
-import { _ as __decorate, m as createLink, h as html, P as Property, E as Event, W as Watch, b as Element } from './core/index.js';
+import { _ as __decorate, m as createLink, P as PlusBase, h as html, b as Property, E as Event, W as Watch, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:flex;flex-direction:column}:host([vertical]:not([vertical=false])){flex-direction:row}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]:not([vertical=false])) ::slotted(plus-tabs-bar[reverse]:not([reverse=false])){flex-direction:column-reverse}";
 
@@ -10,7 +10,7 @@ const { Action, Observable, reconnect } = createLink({
  * @development
  * @slot default - The default slot.
  */
-let Tabs = class Tabs {
+let Tabs = class Tabs extends PlusBase {
     watcher(next, prev, name) {
         switch (name) {
             case 'connector':

@@ -1,12 +1,14 @@
 import { Element, Property } from '@htmlplus/element';
 
+import { PlusBase } from '@app/core';
+
 import { CardElevation } from './card.types';
 
 /**
  * @slot default - The default slot.
  */
 @Element()
-export class Card {
+export class Card extends PlusBase {
   /**
    * If you want the card to have shadow, use the elevation property,
    * And select the property value between `1` and `24`.

@@ -1,3 +1,4 @@
 - add inverse, spin, disabled or inactive properties
 - add pre load example for bundle names
 - add an example for svg raw loader in next
+- add fallback property and examples
