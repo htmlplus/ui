@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { IconColor, IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
 /**
  * @part svg - The svg element.

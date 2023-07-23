@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * @development
  * @slot default - The default slot.

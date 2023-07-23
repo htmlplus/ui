@@ -1,4 +1,4 @@
-import { PortalStrategy, PortalTarget } from '@app/services';
+import { PortalStrategy, PortalTarget } from "../../services";
 export type DialogPortalTarget = PortalTarget;
 export type DialogPortalStrategy = PortalStrategy;
 export type DialogFullscreen = boolean | 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';

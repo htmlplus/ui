@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.

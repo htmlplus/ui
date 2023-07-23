@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
 /**
  * @stable

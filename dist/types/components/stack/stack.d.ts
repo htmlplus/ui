@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { StackAlignItems, StackJustifyContent } from './stack.types';
 /**
  * @slot default - The default slot.

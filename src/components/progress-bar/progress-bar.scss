@@ -35,6 +35,11 @@
   white-space: nowrap;
 }
 
+// TODO
+:host(#{boolean(immediate)}) .indicator {
+  transition: none;
+}
+
 :host([variant='indeterminate']) .indicator {
   animation: $progress-bar-indeterminate-indicator-animation;
   width: $progress-bar-indeterminate-indicator-width;

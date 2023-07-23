@@ -3785,6 +3785,18 @@
           "values": []
         },
         {
+          "name": "immediate",
+          "description": "TODO",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
           "name": "label",
           "description": "TODO",
           "values": [

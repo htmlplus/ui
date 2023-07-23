@@ -9,8 +9,8 @@ import { defineConfig, rollup } from 'rollup';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { summary } from 'rollup-plugin-summary';
-// import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import ttypescript from 'ttypescript';
 import { fileURLToPath } from 'url';
 
 import plugins from '../plus.config.js';
@@ -72,14 +72,17 @@ const options = defineConfig({
     commonjs(),
 
     typescript({
-      useTsconfigDeclarationDir: true
+      typescript: ttypescript,
+      useTsconfigDeclarationDir: true,
+      tsconfigDefaults: {
+        compilerOptions: {
+          plugins: [
+            { transform: 'typescript-transform-paths' },
+            { transform: 'typescript-transform-paths', afterDeclarations: true }
+          ]
+        }
+      }
     }),
-
-    // terser({
-    //   format: {
-    //     comments: false
-    //   }
-    // }),
 
     summary()
   ]

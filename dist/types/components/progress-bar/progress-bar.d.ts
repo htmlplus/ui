@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 export declare class ProgressBar extends PlusBase {
     static TAG: string;
     static STYLES: string;
@@ -6,6 +6,10 @@ export declare class ProgressBar extends PlusBase {
      * TODO
      */
     buffer?: number;
+    /**
+     * TODO
+     */
+    immediate?: boolean;
     /**
      * TODO
      */
@@ -39,6 +43,10 @@ export interface ProgressBarJSX {
     /**
      * TODO
      */
+    immediate?: boolean;
+    /**
+     * TODO
+     */
     label?: boolean;
     /**
      * TODO
@@ -63,6 +71,10 @@ declare global {
          * TODO
          */
         buffer?: number;
+        /**
+         * TODO
+         */
+        immediate?: boolean;
         /**
          * TODO
          */

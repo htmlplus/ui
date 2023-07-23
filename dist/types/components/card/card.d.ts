@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { CardElevation } from './card.types';
 /**
  * @slot default - The default slot.

@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * TODO: Arranges tabs within a bar.
  * @slot default - The default slot.

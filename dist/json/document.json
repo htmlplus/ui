@@ -5674,6 +5674,23 @@
           "type": "number"
         },
         {
+          "attribute": "immediate",
+          "deprecated": false,
+          "description": "TODO",
+          "experimental": false,
+          "model": false,
+          "name": "immediate",
+          "reflects": true,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "TODO"
+            }
+          ],
+          "type": "boolean"
+        },
+        {
           "attribute": "label",
           "deprecated": false,
           "description": "TODO",

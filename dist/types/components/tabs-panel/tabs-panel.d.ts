@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.
  * @slot default - The default slot.

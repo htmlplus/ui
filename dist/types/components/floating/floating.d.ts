@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { FloatingOffset, FloatingPlacement } from './floating.types';
 /**
  * @stable

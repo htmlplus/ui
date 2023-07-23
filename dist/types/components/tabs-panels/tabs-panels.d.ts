@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * TODO: This component contains panels.
  * @slot default - The default slot.

@@ -13,6 +13,12 @@ export class ProgressBar extends PlusBase {
   /**
    * TODO
    */
+  @Property({ reflect: true })
+  immediate?: boolean;
+
+  /**
+   * TODO
+   */
   @Property()
   label?: boolean;
 

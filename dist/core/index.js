@@ -1514,7 +1514,7 @@ function Watch(keys, immediate) {
 }
 
 class PlusBase {
-    get direction() {
+    get dir() {
         return direction(this);
     }
     get isRTL() {

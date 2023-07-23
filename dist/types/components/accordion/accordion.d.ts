@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from '@app/core';
-import { Animation2 } from '@app/services';
+import { PlusBase } from "../../core";
+import { Animation2 } from "../../services";
 /**
  * @part body          - The body element.
  * @part content       - The content element.

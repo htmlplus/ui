@@ -1,5 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 import './assets/names/fading-entrance/fade-in.js';
 import './assets/names/fading-exits/fade-out.js';

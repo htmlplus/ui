@@ -4241,6 +4241,12 @@
                 "experimental": false
               },
               {
+                "name": "immediate",
+                "description": "TODO",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
                 "name": "label",
                 "description": "TODO",
                 "deprecated": false,
@@ -4283,6 +4289,15 @@
               "experimental": false,
               "value": {
                 "type": "number"
+              }
+            },
+            {
+              "name": "immediate",
+              "description": "TODO",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
               }
             },
             {

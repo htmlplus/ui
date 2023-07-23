@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import type CoreType from 'signature_pad';
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 /**
  * @part canvas - The canvas element.

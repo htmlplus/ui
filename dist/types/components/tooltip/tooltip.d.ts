@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import type * as FloatingCoreType from '@floating-ui/dom';
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
  * @dependencies @floating-ui/dom

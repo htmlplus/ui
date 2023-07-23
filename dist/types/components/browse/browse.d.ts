@@ -1,5 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { BrowseEvent } from './browse.types';
 /**
  * @slot default - The default slot.

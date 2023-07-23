@@ -1,5 +1,5 @@
-import { PlusBase } from '@app/core';
-import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
+import { PlusBase } from "../../core";
+import { Portal as PortalCore, PortalStrategy, PortalTarget } from "../../services";
 /**
  * @experimental
  * @slot default - The default slot.

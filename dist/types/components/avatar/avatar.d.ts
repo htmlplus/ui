@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 import { AvatarShape, AvatarSize } from './avatar.types';
 /**
  * @stable

@@ -1,5 +1,5 @@
 import type { Faker as FakerCoreType } from '@faker-js/faker';
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * @dependencies @faker-js/faker
  * @stable

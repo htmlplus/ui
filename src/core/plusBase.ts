@@ -4,7 +4,7 @@ export class PlusBase {
     @Host()
     $host!: HTMLElement;
 
-    get direction() {
+    get dir() {
         return direction(this);
     }
 

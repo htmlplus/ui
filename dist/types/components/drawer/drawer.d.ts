@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from '@app/core';
-import { Animation } from '@app/services';
+import { PlusBase } from "../../core";
+import { Animation } from "../../services";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 /**
  * @slot default - The default slot.

@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * TODO: Tabs make it easy to switch between different views.
  * @slot default - The default slot.

@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from '@app/core';
-import { Animation, Portal } from '@app/services';
+import { PlusBase } from "../../core";
+import { Animation, Portal } from "../../services";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 /**
  * @part backdrop - Backdrop element.

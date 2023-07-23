@@ -1,4 +1,4 @@
-import { PlusBase } from '@app/core';
+import { PlusBase } from "../../core";
 /**
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
