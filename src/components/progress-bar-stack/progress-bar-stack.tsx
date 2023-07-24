@@ -1,9 +1,9 @@
 import { Element } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 @Element()
-export class ProgressBarStack extends PlusBase {
+export class ProgressBarStack extends PlusCore {
   render() {
     return <slot />;
   }

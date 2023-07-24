@@ -11,7 +11,7 @@ import {
 
 import type CoreType from 'signature_pad';
 
-import { PlusBase } from '@app/core';
+import { PlusForm } from '@app/core';
 
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
@@ -22,7 +22,7 @@ let Core;
  * @stable
  */
 @Element()
-export class Signature extends PlusBase {
+export class Signature extends PlusForm {
   /**
    * Specifies the background color.
    */

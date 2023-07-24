@@ -1,6 +1,6 @@
 import { Element, Property, styles, toUnit } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { toAxis } from '@app/helpers';
 
 import { FloatingOffset, FloatingPlacement } from './floating.types';
@@ -10,7 +10,7 @@ import { FloatingOffset, FloatingPlacement } from './floating.types';
  * @slot default - The default slot.
  */
 @Element()
-export class Floating extends PlusBase {
+export class Floating extends PlusCore {
   /**
    * Positions the element relative to the viewport and prevents it from moving even when scrolled.
    * Otherwise, the element is positioned relative to its nearest ancestor.

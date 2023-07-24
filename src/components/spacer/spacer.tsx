@@ -1,9 +1,9 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 @Element()
-export class Spacer extends PlusBase {
+export class Spacer extends PlusCore {
   /**
    * TODO
    */

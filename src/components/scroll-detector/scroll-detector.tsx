@@ -1,6 +1,6 @@
 import { Bind, Element, Event, EventEmitter, Property, Watch, off, on } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-detector.types';
 
@@ -8,7 +8,7 @@ import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-det
  * @stable
  */
 @Element()
-export class ScrollDetector extends PlusBase {
+export class ScrollDetector extends PlusCore {
   /**
    * Disables the component functionality.
    */

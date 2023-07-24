@@ -1,7 +1,7 @@
 import { Element, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@app/config';
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { isSize, isValidCSSColor } from '@app/helpers';
 
 import { ICON_FALLBACK_SVG } from './icon.constants';
@@ -39,7 +39,7 @@ const parse = (input: SVGElement | string): SVGElement => {
  * @part svg - The svg element.
  */
 @Element()
-export class Icon extends PlusBase {
+export class Icon extends PlusCore {
   /**
    * Specifies the color.
    */

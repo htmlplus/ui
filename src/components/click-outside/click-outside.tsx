@@ -1,13 +1,13 @@
 import { Bind, Element, Event, EventEmitter, Property, Watch, off, on } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
 @Element()
-export class ClickOutside extends PlusBase {
+export class ClickOutside extends PlusCore {
   /**
    * A boolean value indicating that events of this type will be dispatched to the registered
    * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.

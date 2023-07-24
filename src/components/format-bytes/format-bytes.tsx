@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import { FORMAT_BYTES_STANDARD } from './format-bytes.constants';
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
@@ -9,7 +9,7 @@ import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './form
  * @stable
  */
 @Element()
-export class FormatBytes extends PlusBase {
+export class FormatBytes extends PlusCore {
   /**
    * Specifies the unit will be shown as an abbreviation or not.
    */

@@ -1,6 +1,6 @@
 import { Element, Property, styles } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { isValidCSSColor } from '@app/helpers';
 
 import { SpinnerColor, SpinnerSize, SpinnerType } from './spinner.types';
@@ -9,7 +9,7 @@ import { SpinnerColor, SpinnerSize, SpinnerType } from './spinner.types';
  * @stable
  */
 @Element()
-export class Spinner extends PlusBase {
+export class Spinner extends PlusCore {
   /**
    * Specifies the color.
    */

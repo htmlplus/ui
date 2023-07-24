@@ -11,7 +11,7 @@ import {
   on
 } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { toAxis } from '@app/helpers';
 import { Animation, Portal, Scrollbar, createLink } from '@app/services';
 
@@ -33,7 +33,7 @@ const { Action, Observable, reconnect } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class Dialog extends PlusBase {
+export class Dialog extends PlusCore {
   /**
    * TODO
    */

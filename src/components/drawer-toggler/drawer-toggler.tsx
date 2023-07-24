@@ -1,6 +1,6 @@
 import { Bind, Element, Property, Watch } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { createLink } from '@app/services';
 
 const { Inject, reconnect } = createLink({
@@ -14,7 +14,7 @@ const { Inject, reconnect } = createLink({
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
 @Element()
-export class DrawerToggler extends PlusBase {
+export class DrawerToggler extends PlusCore {
   /**
    * This property helps you to attach which drawer this toggler controls.
    * It doesn't matter where the drawer toggler is.

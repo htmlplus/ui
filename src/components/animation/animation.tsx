@@ -1,7 +1,7 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
 
 import { getConfig } from '@app/config';
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import { ANIMATION_EASINGS } from './animation.constants';
 import {
@@ -19,7 +19,7 @@ import './assets/names/fading-exits/fade-out.js';
  * @slot default - The default slot.
  */
 @Element()
-export class Animation extends PlusBase {
+export class Animation extends PlusCore {
   /**
    * Determines how values are combined between this animation and other,
    * separate animations that do not specify their own specific composite operation.

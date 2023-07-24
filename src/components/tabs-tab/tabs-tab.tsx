@@ -1,6 +1,6 @@
 import { Bind, Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink({
@@ -12,7 +12,7 @@ const { Inject } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class TabsTab extends PlusBase {
+export class TabsTab extends PlusCore {
   /**
    * A Tab can be disabled by setting disabled property.
    */

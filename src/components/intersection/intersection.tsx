@@ -1,13 +1,13 @@
 import { Bind, Element, Event, EventEmitter, Property, State, Watch } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
 @Element()
-export class Intersection extends PlusBase {
+export class Intersection extends PlusCore {
   /**
    * Disables the component functionality.
    */

@@ -1,13 +1,13 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 /**
  * TODO: Arranges tabs within a bar.
  * @slot default - The default slot.
  */
 @Element()
-export class TabsBar extends PlusBase {
+export class TabsBar extends PlusCore {
   /**
    * Grows tabs as much as all available space (occupies all horizontal space).
    */

@@ -1,12 +1,12 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 /**
  * @slot default - The default slot.
  */
 @Element()
-export class DialogBody extends PlusBase {
+export class DialogBody extends PlusCore {
   /**
    * It makes the user able to scroll the content by adding a scroll beside it.
    */

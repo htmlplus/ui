@@ -12,7 +12,7 @@ import {
 
 import type CropperCoreType from 'cropperjs';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import {
   CropperCropEvent,
@@ -37,7 +37,7 @@ let CropperCore: typeof CropperCoreType;
  * @thirdParty
  */
 @Element()
-export class Cropper extends PlusBase {
+export class Cropper extends PlusCore {
   /**
    * A number between 0 and 1. Specifies the automatic cropping area size.
    */

@@ -1,9 +1,9 @@
 import { Bind, Element, Event, EventEmitter, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 @Element()
-export class Switch extends PlusBase {
+export class Switch extends PlusCore {
   /**
    * Puts the switch in checked state.
    * @model

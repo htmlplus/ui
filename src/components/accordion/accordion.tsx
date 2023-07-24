@@ -9,7 +9,7 @@ import {
   Watch
 } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { Animation2 } from '@app/services';
 
 /**
@@ -25,7 +25,7 @@ import { Animation2 } from '@app/services';
  * @stable
  */
 @Element()
-export class Accordion extends PlusBase {
+export class Accordion extends PlusCore {
   /**
    * TODO.
    */

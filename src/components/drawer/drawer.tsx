@@ -13,7 +13,7 @@ import {
   styles
 } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { Media } from '@app/decorators';
 import { toAxis } from '@app/helpers';
 import { Animation, Scrollbar, createLink } from '@app/services';
@@ -35,7 +35,7 @@ const { Action, Observable, reconnect } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class Drawer extends PlusBase {
+export class Drawer extends PlusCore {
   /**
    * TODO
    */

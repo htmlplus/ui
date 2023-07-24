@@ -11,7 +11,7 @@ import {
   toUnit
 } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -22,7 +22,7 @@ import { StickyState, StickyTop } from './sticky.types';
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
  */
 @Element()
-export class Sticky extends PlusBase {
+export class Sticky extends PlusCore {
   /**
    * Specifies the space from top.
    */

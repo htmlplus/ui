@@ -9,7 +9,7 @@ import {
   Watch
 } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import { COUNTER_EASINGS } from './counter.constants';
 import { CounterEasing } from './counter.types';
@@ -18,7 +18,7 @@ import { CounterEasing } from './counter.types';
  * @stable
  */
 @Element()
-export class Counter extends PlusBase {
+export class Counter extends PlusCore {
   /**
    * Easing function. Click [here](http://robertpenner.com/easing) for more details.
    */

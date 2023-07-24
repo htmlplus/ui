@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { createLink } from '@app/services';
 
 const { Inject } = createLink({
@@ -12,7 +12,7 @@ const { Inject } = createLink({
  * @slot default - The default slot.
  */
 @Element()
-export class TabsPanel extends PlusBase {
+export class TabsPanel extends PlusCore {
   /**
    * Provides your own value.
    */

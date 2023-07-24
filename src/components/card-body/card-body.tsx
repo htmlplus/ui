@@ -1,13 +1,13 @@
 import { Element } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 /**
  * @development
  * @slot default - The default slot.
  */
 @Element()
-export class CardBody extends PlusBase {
+export class CardBody extends PlusCore {
   render() {
     return <slot />;
   }

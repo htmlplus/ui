@@ -2,7 +2,7 @@ import { Bind, Element, Method, Property, Query, Watch, State, off, on } from '@
 
 import type * as FloatingCoreType from '@floating-ui/dom';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 import {
   TooltipDelay,
@@ -19,7 +19,7 @@ let FloatingCore: typeof FloatingCoreType;
  * @thirdParty
  */
 @Element()
-export class Tooltip extends PlusBase {
+export class Tooltip extends PlusCore {
   /**
    * Specifies whether to display the arrow or not.
    */

@@ -1,12 +1,12 @@
 import { Element } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 /**
  * @slot default - The default slot.
  */
 @Element()
-export class DialogFooter extends PlusBase {
+export class DialogFooter extends PlusCore {
   render() {
     return <slot />;
   }

@@ -1,6 +1,6 @@
 import { Element, Property, toUnit } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 import { isSize } from '@app/helpers';
 
 import { AvatarShape, AvatarSize } from './avatar.types';
@@ -10,7 +10,7 @@ import { AvatarShape, AvatarSize } from './avatar.types';
  * @slot default - The default slot.
  */
 @Element()
-export class Avatar extends PlusBase {
+export class Avatar extends PlusCore {
   /**
    * Specifies the shape of the component.
    */

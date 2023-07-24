@@ -1,9 +1,9 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusBase } from '@app/core';
+import { PlusCore } from '@app/core';
 
 @Element()
-export class ProgressBar extends PlusBase {
+export class ProgressBar extends PlusCore {
   /**
    * TODO
    */
