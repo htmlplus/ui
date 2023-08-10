@@ -5,7 +5,7 @@ import { PlusCore } from '@app/core';
 import { isSize, isValidCSSColor } from '@app/helpers';
 
 import { ICON_FALLBACK_SVG } from './icon.constants';
-import { IconColor, IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
+import { IconFlip, IconResolver, IconSize } from './icon.types';
 
 let parser;
 
@@ -44,7 +44,7 @@ export class Icon extends PlusCore {
    * Specifies the color.
    */
   @Property({ reflect: true })
-  color?: IconColor;
+  color?: string;
 
   /**
    * Flips in `horizontal`, `vertical` or `both` directions.
@@ -78,7 +78,7 @@ export class Icon extends PlusCore {
    * Specifies the rotation.
    */
   @Property({ reflect: true })
-  rotate?: IconRotate;
+  rotate?: number;
 
   /**
    * Specifies the size.

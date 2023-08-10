@@ -3,7 +3,7 @@ import { Element, Property, styles } from '@htmlplus/element';
 import { PlusCore } from '@app/core';
 import { isValidCSSColor } from '@app/helpers';
 
-import { SpinnerColor, SpinnerSize, SpinnerType } from './spinner.types';
+import { SpinnerSize, SpinnerType } from './spinner.types';
 
 /**
  * @stable
@@ -14,7 +14,7 @@ export class Spinner extends PlusCore {
    * Specifies the color.
    */
   @Property({ reflect: true })
-  color?: SpinnerColor;
+  color?: string;
 
   /**
    * Specifies the size of the spinner.
