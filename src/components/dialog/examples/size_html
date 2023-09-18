@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-stack gap="1rem">
+      <button id="element1">Small dialog</button>
+      <button id="element2">Large dialog</button>
+      <button id="element3">Extra large dialog</button>
+    </plus-stack>
+    <plus-dialog id="element4" animation="fade">
+      <plus-dialog-content>
+        <plus-dialog-header> Dialog Title </plus-dialog-header>
+        <plus-dialog-body>
+          <plus-faker></plus-faker>
+        </plus-dialog-body>
+        <plus-dialog-footer>
+          <button id="element5">Close</button>
+        </plus-dialog-footer>
+      </plus-dialog-content>
+    </plus-dialog>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-content.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-footer.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-header.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+
+      const hide = () => {
+        element4.open = false;
+      };
+      const show = (size) => {
+        element4.size = size;
+        element4.open = true;
+      };
+      element1.addEventListener('click', (event) => show('sm'));
+      element2.addEventListener('click', (event) => show('md'));
+      element3.addEventListener('click', (event) => show('lg'));
+      element4.addEventListener('plus-close', () => hide());
+      element5.addEventListener('click', () => hide());
+    </script>
+  </body>
+</html>

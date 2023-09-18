@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-click-outside id="$clickOutside">
+      <plus-card elevation="10">
+        <plus-card-body>
+          <b id="$inside">0</b> time(s) inside clicked
+          <br />
+          <b id="$outside">0</b> time(s) outside clicked
+        </plus-card-body>
+      </plus-card>
+    </plus-click-outside>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/card-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/click-outside.js';
+
+      let inside = 0;
+      let outside = 0;
+
+      $clickOutside.addEventListener('click', () => {
+        inside = inside + 1;
+        $inside.innerHTML = `${inside}`;
+      });
+
+      $clickOutside.addEventListener('plus-click-outside', () => {
+        outside = outside + 1;
+        $outside.innerHTML = `${outside}`;
+      });
+    </script>
+  </body>
+</html>

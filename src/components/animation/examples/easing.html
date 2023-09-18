@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-animation {
+        background: lightgray;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-grid justify-content="evenly" gutter="md">
+      <plus-grid-item xs="12" sm="auto">
+        <plus-animation
+          easing="linear"
+          iterations="Infinity"
+          name="fade-out-down"
+          run
+        ></plus-animation>
+      </plus-grid-item>
+      <plus-grid-item xs="12" sm="auto">
+        <plus-animation
+          easing="ease-in"
+          iterations="Infinity"
+          name="fade-out-down"
+          run
+        ></plus-animation>
+      </plus-grid-item>
+      <plus-grid-item xs="12" sm="auto">
+        <plus-animation
+          easing="cubic-bezier(0.25, 0.50, 0.25, 0.50)"
+          iterations="Infinity"
+          name="fade-out-down"
+          run
+        ></plus-animation>
+      </plus-grid-item>
+    </plus-grid>
+    <br />
+    <br />
+    <br />
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/fading-exits/fade-out-down.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+    </script>
+  </body>
+</html>

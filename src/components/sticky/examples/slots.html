@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .container {
+        height: 20rem;
+        overflow: auto;
+      }
+      header {
+        background: lightgray;
+        text-align: center;
+        padding: 1rem;
+      }
+      plus-faker {
+        display: block;
+        padding: 1rem;
+        text-align: justify;
+      }
+      plus-sticky[state='normal'] header {
+        border-radius: 4px;
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <br />
+      <plus-sticky watcher>
+        <header slot="normal">Normal Header</header>
+        <header slot="stick">Stick Header</header>
+      </plus-sticky>
+      <plus-faker api="lorem.paragraphs" arguments='[20, "\n\n"]'></plus-faker>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/sticky.js';
+    </script>
+  </body>
+</html>

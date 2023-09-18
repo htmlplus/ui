@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-center>
+      <plus-signature id="$signature" background-color="lightgray"></plus-signature>
+    </plus-center>
+    <br />
+    <plus-center>
+      <button id="$button">Clear</button>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/signature.js';
+
+      $button.addEventListener('click', () => {
+        $signature.clear();
+      });
+    </script>
+  </body>
+</html>

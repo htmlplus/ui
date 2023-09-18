@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-center>
+      <plus-signature id="$signature" background-color="lightgray"></plus-signature>
+    </plus-center>
+    <br />
+    <plus-stack gap="1rem">
+      <button id="$with">Save With Background</button>
+      <button id="$without">Save Without Background</button>
+    </plus-stack>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/signature.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+
+      const save = (background) => {
+        const image = new Image();
+
+        image.src = $signature.toDataURL('image/svg+xml', background);
+
+        const tab = open('', '_blank');
+
+        setTimeout(() => {
+          tab.document.write(image.outerHTML);
+        }, 250);
+      };
+
+      $with.addEventListener('click', () => save(true));
+
+      $without.addEventListener('click', () => save(false));
+    </script>
+  </body>
+</html>

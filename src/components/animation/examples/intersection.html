@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-animation {
+        background: lightgray;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+      }
+      plus-intersection {
+        display: block;
+        text-align: center;
+        margin: 1000px auto;
+      }
+      .container {
+        position: relative;
+        height: 20rem;
+        overflow: auto;
+        background-color: whitesmoke;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <plus-intersection id="$intersection">
+        <plus-animation id="$animation" name="heart-beat" run="false"></plus-animation>
+      </plus-intersection>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/attention-seekers/heart-beat.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/intersection.js';
+
+      $intersection.addEventListener('plus-change', (event) => {
+        $animation.run = event.detail.isIntersecting;
+      });
+    </script>
+  </body>
+</html>

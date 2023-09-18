@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-intersection {
+        display: block;
+        text-align: center;
+        margin: 25rem auto;
+      }
+      .container {
+        position: relative;
+        height: 20rem;
+        overflow: auto;
+        background-color: whitesmoke;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <plus-intersection id="$intersection">
+        <plus-counter id="$counter" to="1000" play="false"></plus-counter>
+      </plus-intersection>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/counter.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/intersection.js';
+
+      $intersection.addEventListener('plus-change', (event) => {
+        $counter.play = event.detail.isIntersecting;
+      });
+    </script>
+  </body>
+</html>

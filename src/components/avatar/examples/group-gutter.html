@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-avatar-group {
+        --plus-avatar-group-gutter-stacked: -2rem;
+        --plus-avatar-group-gutter-unstacked: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-center>
+      <plus-avatar-group>
+        <plus-avatar></plus-avatar>
+        <plus-avatar></plus-avatar>
+        <plus-avatar></plus-avatar>
+      </plus-avatar-group>
+    </plus-center>
+    <br />
+    <plus-center>
+      <plus-avatar-group stacked>
+        <plus-avatar></plus-avatar>
+        <plus-avatar></plus-avatar>
+        <plus-avatar></plus-avatar>
+      </plus-avatar-group>
+    </plus-center>
+
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/avatar-group.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/avatar.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-animation {
+        background: lightgray;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-grid justify-content="evenly" gutter="md">
+      <plus-grid-item xs="12" sm="auto">
+        <plus-animation iterations="Infinity" name="flip-in-x" run></plus-animation>
+      </plus-grid-item>
+      <plus-grid-item xs="12" sm="auto">
+        <plus-animation iterations="Infinity" name="flip-in-y" run></plus-animation>
+      </plus-grid-item>
+    </plus-grid>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/flippers/flip-in-x.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/flippers/flip-in-y.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+    </script>
+  </body>
+</html>

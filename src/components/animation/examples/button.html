@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-animation {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-center>
+      <plus-animation id="$animation" name="tada">
+        <button id="$button">Click Me</button>
+      </plus-animation>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/attention-seekers/tada.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+
+      $button.addEventListener('click', () => {
+        $animation.run = true;
+      });
+    </script>
+  </body>
+</html>

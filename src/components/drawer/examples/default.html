@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-card {
+        --plus-card-background-color: lightgray;
+        padding: 10rem 0;
+        text-align: center;
+      }
+      plus-drawer plus-card {
+        --plus-card-background-color: lightblue;
+        margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-grid>
+      <plus-grid-item xs="auto">
+        <plus-drawer animation="fade" size="200px" connector="drawer-default">
+          <plus-card> Drawer Content </plus-card>
+        </plus-drawer>
+      </plus-grid-item>
+      <plus-grid-item xs="grow">
+        <plus-card>
+          <plus-drawer-toggler connector="drawer-default"> Toggle </plus-drawer-toggler>
+        </plus-card>
+      </plus-grid-item>
+    </plus-grid>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/drawer-toggler.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/drawer.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+    </script>
+  </body>
+</html>

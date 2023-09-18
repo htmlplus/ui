@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body dock>
+    <plus-center>
+      <plus-dialog-toggler connector="dialog-cropper"> Open </plus-dialog-toggler>
+    </plus-center>
+    <plus-dialog id="$dialog" animation="fade" connector="dialog-cropper">
+      <plus-dialog-content>
+        <plus-dialog-header> Cropper </plus-dialog-header>
+        <plus-dialog-body>
+          <plus-cropper
+            id="$cropper"
+            disabled
+            src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
+          ></plus-cropper>
+        </plus-dialog-body>
+        <plus-dialog-footer>
+          <plus-dialog-toggler> Close </plus-dialog-toggler>
+        </plus-dialog-footer>
+      </plus-dialog-content>
+    </plus-dialog>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/cropper.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-content.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-footer.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-header.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-toggler.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog.js';
+      import 'https://cdn.skypack.dev/cropperjs';
+
+      $dialog.addEventListener('plus-opened', () => {
+        $cropper.disabled = false;
+      });
+
+      $dialog.addEventListener('plus-closed', () => {
+        $cropper.disabled = true;
+      });
+    </script>
+  </body>
+</html>

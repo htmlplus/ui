@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-accordion summary="First">
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <plus-accordion summary="Second">
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <plus-accordion summary="Third" disabled>
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+    </script>
+  </body>
+</html>

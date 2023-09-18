@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-progress-bar.thin {
+        height: 2px;
+      }
+      plus-progress-bar.thick {
+        height: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-progress-bar value="50" class="thin"></plus-progress-bar>
+    <br />
+    <plus-progress-bar value="50"></plus-progress-bar>
+    <br />
+    <plus-progress-bar value="50" class="thick"></plus-progress-bar>
+
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/progress-bar.js';
+    </script>
+  </body>
+</html>

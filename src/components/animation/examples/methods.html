@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      button {
+        margin: 0 0.5rem;
+      }
+      plus-animation {
+        background: lightgray;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-center>
+      <plus-animation id="$animation" iterations="3" name="fade-out"></plus-animation>
+    </plus-center>
+    <br />
+    <plus-center>
+      <button id="$cancel">Cancel</button>
+      <button id="$finish">Finish</button>
+      <button id="$pause">Pause</button>
+      <button id="$play">Play</button>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+
+      $cancel.addEventListener('click', () => {
+        $animation.cancel();
+      });
+
+      $finish.addEventListener('click', () => {
+        $animation.finish();
+      });
+
+      $pause.addEventListener('click', () => {
+        $animation.pause();
+      });
+
+      $play.addEventListener('click', () => {
+        $animation.play();
+      });
+    </script>
+  </body>
+</html>

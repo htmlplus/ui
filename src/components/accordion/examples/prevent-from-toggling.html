@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-accordion summary="Summary" id="$accordion">
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+
+      $accordion.addEventListener('plus-collapse', (event) => {
+        if (confirm('Are you sure you want to collapse it?')) return;
+        event.preventDefault();
+      });
+
+      $accordion.addEventListener('plus-expand', (event) => {
+        if (confirm('Are you sure you want to expand it?')) return;
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>

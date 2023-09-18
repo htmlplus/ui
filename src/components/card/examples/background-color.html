@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-card {
+        height: 12rem;
+        width: 12rem;
+        margin: auto;
+      }
+      plus-card.pink {
+        --plus-card-background-color: #ef9a9a;
+      }
+      plus-card.yellow {
+        --plus-card-background-color: #fff59d;
+      }
+      plus-card.blue {
+        --plus-card-background-color: #80cbc4;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-grid justify-content="evenly" gutter="md">
+      <plus-grid-item xs="12" sm="auto">
+        <plus-card class="pink"></plus-card>
+      </plus-grid-item>
+      <plus-grid-item xs="12" sm="auto">
+        <plus-card class="yellow"></plus-card>
+      </plus-grid-item>
+      <plus-grid-item xs="12" sm="auto">
+        <plus-card class="blue"></plus-card>
+      </plus-grid-item>
+    </plus-grid>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+    </script>
+  </body>
+</html>

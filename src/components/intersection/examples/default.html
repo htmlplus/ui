@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .container {
+        background-color: whitesmoke;
+        height: 20rem;
+        overflow: auto;
+      }
+
+      .status {
+        color: white;
+        background-color: black;
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+      }
+
+      plus-card {
+        width: 15rem;
+        margin: auto;
+      }
+
+      plus-intersection {
+        display: block;
+        margin: 40rem auto;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <plus-sticky top="1rem" z-index="1">
+        <plus-center>
+          <div id="$status" class="status"></div>
+        </plus-center>
+      </plus-sticky>
+      <plus-intersection id="$intersection">
+        <plus-card elevation="10">
+          <plus-card-body>
+            <plus-faker></plus-faker>
+          </plus-card-body>
+        </plus-card>
+      </plus-intersection>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/card-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/intersection.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/sticky.js';
+
+      $intersection.addEventListener('plus-change', (event) => {
+        $status.innerHTML = event.detail.isIntersecting ? 'In Viewport' : 'Out of Viewport';
+      });
+    </script>
+  </body>
+</html>

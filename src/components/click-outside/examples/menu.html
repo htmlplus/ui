@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-card {
+        position: absolute;
+        top: calc(100% + 0.25rem);
+      }
+      plus-click-outside {
+        display: inline-block;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-center>
+      <plus-click-outside id="$clickOutside">
+        <button id="$button">Open Menu Dropdown</button>
+        <plus-card elevation="10" id="$menu" hidden outlined>
+          <plus-card-body> It will stay visible until you click outside. </plus-card-body>
+        </plus-card>
+      </plus-click-outside>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/card-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/click-outside.js';
+
+      $button.addEventListener('click', () => {
+        $menu.hidden = !$menu.hidden;
+      });
+
+      $clickOutside.addEventListener('plus-click-outside', () => {
+        $menu.hidden = true;
+      });
+    </script>
+  </body>
+</html>

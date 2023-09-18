@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .container {
+        position: relative;
+        height: 20rem;
+        overflow: auto;
+        background-color: whitesmoke;
+      }
+
+      img {
+        width: 12rem;
+        height: 12rem;
+        object-fit: cover;
+        margin: 0;
+      }
+
+      img:not([hidden]) {
+        display: block;
+      }
+
+      plus-card {
+        display: inline-block;
+      }
+
+      plus-intersection {
+        display: block;
+        text-align: center;
+        margin: 50rem auto;
+      }
+
+      plus-spinner {
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <plus-intersection id="$intersection" once>
+        <plus-card elevation="10">
+          <plus-spinner></plus-spinner>
+          <img alt="Lazy Image" hidden data-src="https://placekitten.com/200/200" />
+        </plus-card>
+      </plus-intersection>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/intersection.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/spinner.js';
+
+      $intersection.addEventListener('plus-change', (event) => {
+        if (!event.detail.isIntersecting) return;
+
+        setTimeout(() => {
+          const image = event.target.querySelector('img');
+
+          const spinner = event.target.querySelector('plus-spinner');
+
+          const src = image.getAttribute('data-src');
+
+          image.setAttribute('src', src);
+
+          image.hidden = false;
+
+          spinner.hidden = true;
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

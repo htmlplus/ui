@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-divider {
+        --plus-divider-color: darkgray;
+        --plus-divider-width: 0.5rem;
+        margin: 2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-grid align-items="center" justify-content="evenly">
+      <plus-grid-item xs="5">
+        <plus-faker></plus-faker>
+      </plus-grid-item>
+      <plus-divider vertical></plus-divider>
+      <plus-grid-item xs="5">
+        <plus-faker></plus-faker>
+      </plus-grid-item>
+    </plus-grid>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/divider.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+    </script>
+  </body>
+</html>

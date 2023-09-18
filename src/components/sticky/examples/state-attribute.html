@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .container {
+        height: 20rem;
+        overflow: auto;
+      }
+      plus-faker {
+        display: block;
+        padding: 1rem;
+        text-align: justify;
+      }
+      plus-sticky[state='normal'] {
+        background-color: gold;
+      }
+      plus-sticky[state='stick'] {
+        background-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <plus-faker api="lorem.paragraphs"></plus-faker>
+      <plus-sticky watcher>
+        <plus-faker></plus-faker>
+      </plus-sticky>
+      <plus-faker api="lorem.paragraphs" arguments='[20, "\n\n"]'></plus-faker>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/sticky.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .container {
+        height: 20rem;
+        overflow: auto;
+      }
+      aside,
+      header {
+        background: lightgray;
+        text-align: center;
+        padding: 1rem;
+      }
+      plus-faker {
+        display: block;
+        padding: 1rem;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body dock>
+    <div class="container">
+      <header>Header</header>
+      <plus-grid>
+        <plus-grid-item xs="7">
+          <plus-faker api="lorem.paragraphs" arguments='[10, "\n\n"]'></plus-faker>
+        </plus-grid-item>
+        <plus-grid-item xs="5">
+          <br />
+          <plus-sticky>
+            <aside>A Sticky Sidebar</aside>
+          </plus-sticky>
+        </plus-grid-item>
+      </plus-grid>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/sticky.js';
+    </script>
+  </body>
+</html>

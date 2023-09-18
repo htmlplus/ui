@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-center>
+      <plus-cropper
+        src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
+        id="$cropper"
+      ></plus-cropper>
+    </plus-center>
+    <br />
+    <plus-center>
+      <button id="$button">To Base64</button>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/cropper.js';
+      import 'https://cdn.skypack.dev/cropperjs';
+
+      $button.addEventListener('click', () => {
+        const image = new Image();
+
+        image.src = $cropper.toCanvas().toDataURL();
+
+        const tab = open('', '_blank');
+
+        setTimeout(() => {
+          tab.document.write(image.outerHTML);
+        }, 250);
+      });
+    </script>
+  </body>
+</html>

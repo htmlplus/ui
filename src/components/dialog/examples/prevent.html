@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-center>
+      <plus-dialog-toggler connector="dialog-prevent"> Open </plus-dialog-toggler>
+    </plus-center>
+    <plus-dialog id="$dialog" animation="fade" connector="dialog-prevent">
+      <plus-dialog-content>
+        <plus-dialog-header> Dialog Title </plus-dialog-header>
+        <plus-dialog-body>
+          <plus-faker></plus-faker>
+        </plus-dialog-body>
+        <plus-dialog-footer>
+          <plus-dialog-toggler> Close </plus-dialog-toggler>
+        </plus-dialog-footer>
+      </plus-dialog-content>
+    </plus-dialog>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-content.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-footer.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-header.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog-toggler.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/dialog.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+
+      $dialog.addEventListener('plus-open', (event) => {
+        if (confirm('Are you sure you want to open it?')) return;
+        event.preventDefault();
+      });
+
+      $dialog.addEventListener('plus-close', (event) => {
+        if (confirm('Are you sure you want to close it?')) return;
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>

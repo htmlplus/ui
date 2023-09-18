@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .root {
+        padding: 5rem 0;
+        position: relative;
+      }
+      plus-animation {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1rem;
+        height: 1rem;
+        border: solid 1px red;
+        transform-origin: top left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <plus-animation duration="5000" id="$animation" iterations="Infinity" run></plus-animation>
+    </div>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+
+      $animation.keyframes = [
+        {
+          transform: 'scale(0) rotate(0deg) translate(-50%, -50%)',
+          opacity: '1'
+        },
+        {
+          transform: 'scale(7) rotate(960deg) translate(-50%, -50%)',
+          opacity: '0'
+        }
+      ];
+    </script>
+  </body>
+</html>

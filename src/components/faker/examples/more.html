@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-stack vertical>
+      <plus-faker api="name.fullName"></plus-faker>
+      <plus-faker api="address.county"></plus-faker>
+      <plus-faker api="date.weekday"></plus-faker>
+      <plus-faker api="animal.dog"></plus-faker>
+      <plus-faker api="internet.email"></plus-faker>
+      <plus-faker api="phone.number"></plus-faker>
+      <plus-faker api="color.human"></plus-faker>
+      <plus-faker api="datatype.uuid"></plus-faker>
+    </plus-stack>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+    </script>
+  </body>
+</html>

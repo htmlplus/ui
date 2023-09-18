@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-grid div {
+        color: #00bcd4;
+        border: 1px solid #ffffff;
+        background-color: #e0f7fa;
+        padding: 0.5em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-grid>
+      <plus-grid-item xs="3">
+        <div>xs=3</div>
+      </plus-grid-item>
+      <plus-grid-item offset-xs="3" xs="3">
+        <div>offset-xs="3", xs=3</div>
+      </plus-grid-item>
+      <plus-grid-item xs="3">
+        <div>xs=3</div>
+      </plus-grid-item>
+    </plus-grid>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid-item.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/grid.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-center>
+      <plus-cropper
+        src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
+        id="$cropper"
+      ></plus-cropper>
+    </plus-center>
+    <br />
+    <plus-center>
+      <button id="$button">To URL</button>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/cropper.js';
+      import 'https://cdn.skypack.dev/cropperjs';
+
+      $button.addEventListener('click', () => {
+        $cropper.toCanvas().toBlob((blob) => {
+          open(URL.createObjectURL(blob), '_blank');
+        });
+      });
+    </script>
+  </body>
+</html>

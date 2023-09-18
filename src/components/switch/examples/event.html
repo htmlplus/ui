@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-center>
+      <plus-switch id="$switch"></plus-switch>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/switch.js';
+
+      $switch.addEventListener('plus-change', (event) => {
+        alert(`Will be changed to ${event.target.checked ? 'On' : 'Off'}`);
+      });
+    </script>
+  </body>
+</html>

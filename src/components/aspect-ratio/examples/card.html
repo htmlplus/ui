@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-card {
+        width: 300px;
+      }
+      .placeholder {
+        background-color: lightgray;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-center>
+      <plus-card outlined>
+        <plus-card-body>
+          <plus-aspect-ratio value="16/9">
+            <div class="placeholder"></div>
+          </plus-aspect-ratio>
+          <h3>Title</h3>
+          <p>Description of the card.</p>
+        </plus-card-body>
+      </plus-card>
+    </plus-center>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/aspect-ratio.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/card-body.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/card.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+    </script>
+  </body>
+</html>

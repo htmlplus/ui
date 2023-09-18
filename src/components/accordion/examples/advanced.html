@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      [slot='summary'] {
+        flex-grow: 1;
+        margin-right: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-accordion>
+      <plus-stack slot="summary" justify-content="space-between">
+        <span>Summary</span>
+        <button>Action</button>
+      </plus-stack>
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+    </script>
+  </body>
+</html>
