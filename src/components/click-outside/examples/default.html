@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -23,13 +23,19 @@
       let outside = 0;
 
       $clickOutside.addEventListener('click', () => {
-        inside = inside + 1;
-        $inside.innerHTML = `${inside}`;
+        const count = inside + 1;
+
+        inside = count;
+
+        $inside.innerHTML = `${count}`;
       });
 
       $clickOutside.addEventListener('plus-click-outside', () => {
-        outside = outside + 1;
-        $outside.innerHTML = `${outside}`;
+        const count = outside + 1;
+
+        outside = count;
+
+        $outside.innerHTML = `${count}`;
       });
     </script>
   </body>
