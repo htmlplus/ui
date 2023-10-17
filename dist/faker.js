@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusBase, a as __awaiter, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, a as __awaiter, b as Property, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{white-space:pre-wrap}";
 
@@ -7,7 +7,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @stable
  * @thirdParty
  */
-let Faker = class Faker extends PlusBase {
+let Faker = class Faker extends PlusCore {
     constructor() {
         super(...arguments);
         /**

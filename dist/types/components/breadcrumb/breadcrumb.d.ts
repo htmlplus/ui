@@ -1,4 +1,4 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
@@ -7,7 +7,7 @@ import { PlusBase } from "../../core";
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
  */
-export declare class Breadcrumb extends PlusBase {
+export declare class Breadcrumb extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

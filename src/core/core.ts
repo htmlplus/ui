@@ -5,8 +5,8 @@ export class PlusCore {
     $host!: HTMLElement;
 
     // TODO
-    get dir() {
-        return direction(this);
+    get dir(): 'ltr' | 'rtl' {
+        return direction(this) as any;
     }
 
     get isRTL() {

@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class AvatarGroup extends PlusBase {
+export declare class AvatarGroup extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

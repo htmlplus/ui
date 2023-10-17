@@ -1,10 +1,10 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
-export declare class DialogToggler extends PlusBase {
+export declare class DialogToggler extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

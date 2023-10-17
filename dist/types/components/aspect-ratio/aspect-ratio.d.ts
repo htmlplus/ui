@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class AspectRatio extends PlusBase {
+export declare class AspectRatio extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

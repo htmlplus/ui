@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * TODO: Arranges tabs within a bar.
  * @slot default - The default slot.
  */
-export declare class TabsBar extends PlusBase {
+export declare class TabsBar extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

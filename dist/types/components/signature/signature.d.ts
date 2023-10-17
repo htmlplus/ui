@@ -1,12 +1,12 @@
 import { EventEmitter } from '@htmlplus/element';
 import type CoreType from 'signature_pad';
-import { PlusBase } from "../../core";
+import { PlusForm } from "../../core";
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 /**
  * @part canvas - The canvas element.
  * @stable
  */
-export declare class Signature extends PlusBase {
+export declare class Signature extends PlusForm {
     static TAG: string;
     static STYLES: string;
     /**

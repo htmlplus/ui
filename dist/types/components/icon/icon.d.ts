@@ -1,15 +1,15 @@
-import { PlusBase } from "../../core";
-import { IconColor, IconFlip, IconResolver, IconRotate, IconSize } from './icon.types';
+import { PlusCore } from "../../core";
+import { IconFlip, IconResolver, IconSize } from './icon.types';
 /**
  * @part svg - The svg element.
  */
-export declare class Icon extends PlusBase {
+export declare class Icon extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**
      * Specifies the color.
      */
-    color?: IconColor;
+    color?: string;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -29,7 +29,7 @@ export declare class Icon extends PlusBase {
     /**
      * Specifies the rotation.
      */
-    rotate?: IconRotate;
+    rotate?: number;
     /**
      * Specifies the size.
      */
@@ -47,7 +47,7 @@ export interface IconJSX {
     /**
      * Specifies the color.
      */
-    color?: IconColor;
+    color?: string;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -67,7 +67,7 @@ export interface IconJSX {
     /**
      * Specifies the rotation.
      */
-    rotate?: IconRotate;
+    rotate?: number;
     /**
      * Specifies the size.
      */
@@ -78,7 +78,7 @@ declare global {
         /**
          * Specifies the color.
          */
-        color?: IconColor;
+        color?: string;
         /**
          * Flips in `horizontal`, `vertical` or `both` directions.
          */
@@ -98,7 +98,7 @@ declare global {
         /**
          * Specifies the rotation.
          */
-        rotate?: IconRotate;
+        rotate?: number;
         /**
          * Specifies the size.
          */

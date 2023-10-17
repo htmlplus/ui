@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusBase, a as __awaiter, h as html, b as Property, E as Event, M as Method, Q as Query, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, x as PlusForm, a as __awaiter, h as html, b as Property, E as Event, M as Method, Q as Query, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;height:150px;width:300px}:host([disabled]:not([disabled=false])){opacity:.5}canvas{display:block;height:100%;width:100%}";
 
@@ -7,7 +7,7 @@ let Core;
  * @part canvas - The canvas element.
  * @stable
  */
-let Signature = class Signature extends PlusBase {
+let Signature = class Signature extends PlusForm {
     constructor() {
         super(...arguments);
         /**

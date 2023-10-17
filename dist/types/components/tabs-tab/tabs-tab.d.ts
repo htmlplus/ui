@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * TODO: Tabs make it easy to switch between different views.
  * @slot default - The default slot.
  */
-export declare class TabsTab extends PlusBase {
+export declare class TabsTab extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

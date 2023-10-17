@@ -1,11 +1,11 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { Animation } from "../../services";
 import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
 /**
  * @slot default - The default slot.
  */
-export declare class Drawer extends PlusBase {
+export declare class Drawer extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

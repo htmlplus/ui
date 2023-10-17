@@ -1,5 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
 import './assets/names/fading-entrance/fade-in.js';
 import './assets/names/fading-exits/fade-out.js';
@@ -7,7 +7,7 @@ import './assets/names/fading-exits/fade-out.js';
  * @stable
  * @slot default - The default slot.
  */
-export declare class Animation extends PlusBase {
+export declare class Animation extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

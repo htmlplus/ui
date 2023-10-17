@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusBase, h as html, e as attributes, f as host, b as Property, E as Event, M as Method, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, f as host, b as Property, E as Event, M as Method, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 const COUNTER_EASINGS = {
     'ease-out-expo': (currentTime, beginningValue, changeInValue, duration) => {
@@ -10,7 +10,7 @@ const COUNTER_EASINGS = {
 /**
  * @stable
  */
-let Counter = class Counter extends PlusBase {
+let Counter = class Counter extends PlusCore {
     constructor() {
         super(...arguments);
         /**

@@ -3622,17 +3622,7 @@
         {
           "name": "rotate",
           "description": "Specifies the rotation.",
-          "values": [
-            {
-              "name": "90"
-            },
-            {
-              "name": "180"
-            },
-            {
-              "name": "270"
-            }
-          ]
+          "values": []
         },
         {
           "name": "size",

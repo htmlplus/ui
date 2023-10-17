@@ -1,12 +1,12 @@
 /// <reference types="node" />
 import type * as FloatingCoreType from '@floating-ui/dom';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
  * @dependencies @floating-ui/dom
  * @thirdParty
  */
-export declare class Tooltip extends PlusBase {
+export declare class Tooltip extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

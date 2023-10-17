@@ -1,5 +1,5 @@
-import { PlusBase } from "../../core";
-export declare class Spacer extends PlusBase {
+import { PlusCore } from "../../core";
+export declare class Spacer extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

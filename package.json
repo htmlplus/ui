@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI components.",
@@ -55,7 +55,7 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^0.7.7"
+    "@htmlplus/element": "^0.7.8"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",

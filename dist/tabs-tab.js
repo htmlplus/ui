@@ -1,4 +1,4 @@
-import { _ as __decorate, m as createLink, P as PlusBase, h as html, e as attributes, f as host, b as Property, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, m as createLink, P as PlusCore, h as html, e as attributes, f as host, b as Property, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{align-items:center;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]:not([disabled=false])) span{opacity:.5}:host([active]:not([active=false])){background-color:#d2d2d2}";
 
@@ -9,7 +9,7 @@ const { Inject } = createLink({
  * TODO: Tabs make it easy to switch between different views.
  * @slot default - The default slot.
  */
-let TabsTab = class TabsTab extends PlusBase {
+let TabsTab = class TabsTab extends PlusCore {
     constructor() {
         super(...arguments);
         this.change = () => console.log('TODO: can not use out of tabs');

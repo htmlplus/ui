@@ -1,5 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { Animation2 } from "../../services";
 /**
  * @part body          - The body element.
@@ -13,7 +13,7 @@ import { Animation2 } from "../../services";
  * @slot summary       - The summary slot.
  * @stable
  */
-export declare class Accordion extends PlusBase {
+export declare class Accordion extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

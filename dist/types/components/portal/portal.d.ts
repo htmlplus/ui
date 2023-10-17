@@ -1,10 +1,10 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { Portal as PortalCore, PortalStrategy, PortalTarget } from "../../services";
 /**
  * @experimental
  * @slot default - The default slot.
  */
-export declare class Portal extends PlusBase {
+export declare class Portal extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

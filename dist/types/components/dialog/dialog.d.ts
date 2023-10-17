@@ -1,12 +1,12 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { Animation, Portal } from "../../services";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 /**
  * @part backdrop - Backdrop element.
  * @slot default - The default slot.
  */
-export declare class Dialog extends PlusBase {
+export declare class Dialog extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

@@ -1,10 +1,10 @@
-import { _ as __decorate, P as PlusBase, n as toAxis, t as toUnit, d as styles, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, n as toAxis, t as toUnit, d as styles, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
 
 /**
  * @stable
  * @slot default - The default slot.
  */
-let Floating = class Floating extends PlusBase {
+let Floating = class Floating extends PlusCore {
     constructor() {
         super(...arguments);
         /**

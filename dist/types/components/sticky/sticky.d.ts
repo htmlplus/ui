@@ -1,5 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { StickyState, StickyTop } from './sticky.types';
 /**
  * @stable
@@ -7,7 +7,7 @@ import { StickyState, StickyTop } from './sticky.types';
  * @slot normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`.
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
  */
-export declare class Sticky extends PlusBase {
+export declare class Sticky extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

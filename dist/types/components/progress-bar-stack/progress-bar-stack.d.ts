@@ -1,5 +1,5 @@
-import { PlusBase } from "../../core";
-export declare class ProgressBarStack extends PlusBase {
+import { PlusCore } from "../../core";
+export declare class ProgressBarStack extends PlusCore {
     static TAG: string;
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;

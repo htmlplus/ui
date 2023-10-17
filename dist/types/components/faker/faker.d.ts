@@ -1,11 +1,11 @@
 import type { Faker as FakerCoreType } from '@faker-js/faker';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @dependencies @faker-js/faker
  * @stable
  * @thirdParty
  */
-export declare class Faker extends PlusBase {
+export declare class Faker extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

@@ -1,8 +1,8 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @slot default - The default slot.
  */
-export declare class DialogBody extends PlusBase {
+export declare class DialogBody extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

@@ -1,8 +1,8 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @slot default - The default slot.
  */
-export declare class DialogFooter extends PlusBase {
+export declare class DialogFooter extends PlusCore {
     static TAG: string;
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;

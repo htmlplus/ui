@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
 /**
  * @stable
  */
-export declare class FormatBytes extends PlusBase {
+export declare class FormatBytes extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

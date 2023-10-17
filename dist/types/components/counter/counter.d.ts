@@ -1,10 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { CounterEasing } from './counter.types';
 /**
  * @stable
  */
-export declare class Counter extends PlusBase {
+export declare class Counter extends PlusCore {
     static TAG: string;
     /**
      * Easing function. Click [here](http://robertpenner.com/easing) for more details.

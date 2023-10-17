@@ -53,6 +53,7 @@ const API_STACKS = Symbol();
 const LIFECYCLE_ADOPTED = 'adoptedCallback';
 const LIFECYCLE_CONNECT = 'connectCallback';
 const LIFECYCLE_CONNECTED = 'connectedCallback';
+const LIFECYCLE_CONSTRUCTED = 'constructedCallback';
 const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
 const LIFECYCLE_LOADED = 'loadedCallback';
 const LIFECYCLE_UPDATE = 'updateCallback';
@@ -64,14 +65,14 @@ const STATIC_MEMBERS = 'MEMBERS';
 const STATIC_STYLES = 'STYLES';
 const STATIC_TAG = 'TAG';
 // types
-const TYPE_ARRAY = 1;
-const TYPE_BOOLEAN = 2;
-const TYPE_DATE = 4;
-const TYPE_FUNCTION = 16;
-const TYPE_NULL = 32;
-const TYPE_NUMBER = 64;
-const TYPE_OBJECT = 128;
-const TYPE_UNDEFINED = 512;
+const TYPE_ARRAY = 2 ** 0;
+const TYPE_BOOLEAN = 2 ** 1;
+const TYPE_DATE = 2 ** 2;
+const TYPE_FUNCTION = 2 ** 4;
+const TYPE_NULL = 2 ** 5;
+const TYPE_NUMBER = 2 ** 6;
+const TYPE_OBJECT = 2 ** 7;
+const TYPE_UNDEFINED = 2 ** 9;
 
 const addMember = (target, key, data) => {
     var _a;
@@ -1305,13 +1306,15 @@ function Element() {
             constructor() {
                 super();
                 this.attachShadow({ mode: 'open' });
-                this[API_INSTANCE] = new constructor();
-                Object.keys(members)
-                    .filter((key) => members[key].type != TYPE_FUNCTION)
-                    .forEach((key) => {
-                    members[key].default = this[API_INSTANCE][key];
+                const instance = (this[API_INSTANCE] = new constructor());
+                Object.keys(members).forEach((key) => {
+                    if (members[key].type != TYPE_FUNCTION) {
+                        members[key].default = instance[key];
+                    }
                 });
-                this[API_INSTANCE][API_HOST] = () => this;
+                instance[API_HOST] = () => this;
+                // TODO
+                call(instance, LIFECYCLE_CONSTRUCTED);
             }
             static get observedAttributes() {
                 return Object.keys(members)
@@ -1426,7 +1429,8 @@ function Property(options) {
             });
         }
         defineProperty(target, propertyKey, { get, set });
-        appendToMethod(target, LIFECYCLE_CONNECTED, function () {
+        // TODO: check the lifecycle
+        appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
             const element = host(this);
             // TODO: experimental for isolated options
             if (element === this)
@@ -1513,7 +1517,8 @@ function Watch(keys, immediate) {
     };
 }
 
-class PlusBase {
+class PlusCore {
+    // TODO
     get dir() {
         return direction(this);
     }
@@ -1523,7 +1528,10 @@ class PlusBase {
 }
 __decorate([
     Host()
-], PlusBase.prototype, "$host", void 0);
+], PlusCore.prototype, "$host", void 0);
+
+class PlusForm extends PlusCore {
+}
 
 class Animation2 {
     get animations() {
@@ -2142,4 +2150,4 @@ Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
 // @Override()
 // override?: { [key: string]: any };
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, PlusBase as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w };
+export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };

@@ -1,10 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { BrowseEvent } from './browse.types';
 /**
  * @slot default - The default slot.
  */
-export declare class Browse extends PlusBase {
+export declare class Browse extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

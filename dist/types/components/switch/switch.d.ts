@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
-export declare class Switch extends PlusBase {
+import { PlusCore } from "../../core";
+export declare class Switch extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

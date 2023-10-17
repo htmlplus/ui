@@ -1,10 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class Intersection extends PlusBase {
+export declare class Intersection extends PlusCore {
     static TAG: string;
     /**
      * Disables the component functionality.

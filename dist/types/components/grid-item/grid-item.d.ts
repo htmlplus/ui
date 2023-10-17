@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 /**
  * @slot default - The default slot.
  */
-export declare class GridItem extends PlusBase {
+export declare class GridItem extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**

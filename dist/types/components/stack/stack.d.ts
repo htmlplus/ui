@@ -1,9 +1,9 @@
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 import { StackAlignItems, StackJustifyContent } from './stack.types';
 /**
  * @slot default - The default slot.
  */
-export declare class Stack extends PlusBase {
+export declare class Stack extends PlusCore {
     static TAG: string;
     /**
      * TODO.

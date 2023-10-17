@@ -1,15 +1,15 @@
-import { PlusBase } from "../../core";
-import { SpinnerColor, SpinnerSize, SpinnerType } from './spinner.types';
+import { PlusCore } from "../../core";
+import { SpinnerSize, SpinnerType } from './spinner.types';
 /**
  * @stable
  */
-export declare class Spinner extends PlusBase {
+export declare class Spinner extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**
      * Specifies the color.
      */
-    color?: SpinnerColor;
+    color?: string;
     /**
      * Specifies the size of the spinner.
      */
@@ -26,7 +26,7 @@ export interface SpinnerJSX {
     /**
      * Specifies the color.
      */
-    color?: SpinnerColor;
+    color?: string;
     /**
      * Specifies the size of the spinner.
      */
@@ -41,7 +41,7 @@ declare global {
         /**
          * Specifies the color.
          */
-        color?: SpinnerColor;
+        color?: string;
         /**
          * Specifies the size of the spinner.
          */

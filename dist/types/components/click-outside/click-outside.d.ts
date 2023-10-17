@@ -1,10 +1,10 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusBase } from "../../core";
+import { PlusCore } from "../../core";
 /**
  * @stable
  * @slot default - The default slot.
  */
-export declare class ClickOutside extends PlusBase {
+export declare class ClickOutside extends PlusCore {
     static TAG: string;
     /**
      * A boolean value indicating that events of this type will be dispatched to the registered

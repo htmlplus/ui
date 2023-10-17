@@ -1,5 +1,5 @@
-import { PlusBase } from "../../core";
-export declare class ProgressBar extends PlusBase {
+import { PlusCore } from "../../core";
+export declare class ProgressBar extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**
