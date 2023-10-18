@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.0] - 0000-00-00
+## [0.0.0] - 2023-10-17
 
 ### Added
 
@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added the `PlusBase` class.
 - Added an experimental color property for the `Icon` component.
 - Added an experimental color property for the `Spinner` component.
+
+### Updated
+
+- Updated the `@htmlplus/element` dependency to `0.7.8` version.
 
 ## [0.9.2] - 2023-05-20
 
