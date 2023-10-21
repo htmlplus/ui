@@ -318,14 +318,16 @@ export class Tooltip extends PlusCore {
     this.show();
   }
 
-  async connectCallback() {
-    try {
-      FloatingCore = await import('@floating-ui/dom');
-    } catch {
-      throw new Error(
-        "The `tooltip` component depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem."
-      );
-    }
+  connectCallback() {
+    return import('@floating-ui/dom')
+      .then((module) => {
+        FloatingCore = module;
+      })
+      .catch(() => {
+        throw new Error(
+          "The `tooltip` component depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem."
+        );
+      });
   }
 
   connectedCallback() {

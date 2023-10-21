@@ -1,6 +1,6 @@
 {
   "name": "@htmlplus/core",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI components.",
@@ -86,8 +86,8 @@
     "vite": "^3.2.4"
   },
   "peerDependencies": {
-    "@faker-js/faker": "^7.6.0",
-    "@floating-ui/dom": "^1.2.1",
-    "cropperjs": "^1.5.13"
+    "@faker-js/faker": "^8.2.0",
+    "@floating-ui/dom": "^1.5.3",
+    "cropperjs": "^1.6.1"
   }
 }

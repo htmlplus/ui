@@ -45,16 +45,18 @@ export class Faker extends PlusCore {
     return method(...this.arguments) || null;
   }
 
-  async connectCallback() {
+  connectCallback() {
     if (this.instance) return;
 
-    try {
-      this.instance = (await import('@faker-js/faker/locale/en')).faker;
-    } catch {
-      throw new Error(
-        "The `faker` component depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem."
-      );
-    }
+    return import('@faker-js/faker')
+      .then((module) => {
+        this.instance = module.faker;
+      })
+      .catch(() => {
+        throw new Error(
+          "The `faker` component depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem."
+        );
+      });
   }
 
   render() {

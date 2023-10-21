@@ -504,14 +504,16 @@ export class Cropper extends PlusCore {
     event.preventDefault();
   }
 
-  async connectCallback() {
-    try {
-      CropperCore = (await import('cropperjs')).default;
-    } catch {
-      throw new Error(
-        "The `cropper` component depends on an external package, but it doesn't seem to be installed. Running `npm install cropperjs` will fix this problem."
-      );
-    }
+  connectCallback() {
+    return import('cropperjs')
+      .then((module) => {
+        CropperCore = module.default;
+      })
+      .catch(() => {
+        throw new Error(
+          "The `cropper` component depends on an external package, but it doesn't seem to be installed. Running `npm install cropperjs` will fix this problem."
+        );
+      });
   }
 
   loadedCallback() {
