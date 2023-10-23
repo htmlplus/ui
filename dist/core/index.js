@@ -363,58 +363,6 @@ const direction = (target) => {
     return getComputedStyle(host(target)).getPropertyValue('direction').toLowerCase();
 };
 
-const fromAttribute = (input, type) => {
-    const string = `${input}`;
-    if (TYPE_BOOLEAN & type) {
-        if (string === '')
-            return true;
-        if (string === 'false')
-            return false;
-        if (string === 'true')
-            return true;
-    }
-    if (TYPE_NUMBER & type) {
-        if (string != '' && !isNaN(input)) {
-            return parseFloat(input);
-        }
-    }
-    if (TYPE_NULL & type) {
-        if (string === 'null') {
-            return null;
-        }
-    }
-    if (TYPE_DATE & type) {
-        const value = new Date(input);
-        if (value.toString() != 'Invalid Date') {
-            return value;
-        }
-    }
-    if (TYPE_ARRAY & type) {
-        try {
-            const value = JSON.parse(input);
-            if (typeOf(value) == 'array') {
-                return value;
-            }
-        }
-        catch (_a) { }
-    }
-    if (TYPE_OBJECT & type) {
-        try {
-            const value = JSON.parse(input);
-            if (typeOf(value) == 'object') {
-                return value;
-            }
-        }
-        catch (_b) { }
-    }
-    if (TYPE_UNDEFINED & type) {
-        if (string === 'undefined') {
-            return undefined;
-        }
-    }
-    return input;
-};
-
 const getFramework = (target) => {
     const keys = Object.keys(target);
     const has = (key) => keys.some((key) => key.startsWith(key));
@@ -1269,6 +1217,60 @@ const styles = (input) => {
     }
 };
 
+const toProperty = (input, type) => {
+    if (type === undefined)
+        return input;
+    const string = `${input}`;
+    if (TYPE_BOOLEAN & type) {
+        if (string === '')
+            return true;
+        if (string === 'false')
+            return false;
+        if (string === 'true')
+            return true;
+    }
+    if (TYPE_NUMBER & type) {
+        if (string != '' && !isNaN(input)) {
+            return parseFloat(input);
+        }
+    }
+    if (TYPE_NULL & type) {
+        if (string === 'null') {
+            return null;
+        }
+    }
+    if (TYPE_DATE & type) {
+        const value = new Date(input);
+        if (value.toString() != 'Invalid Date') {
+            return value;
+        }
+    }
+    if (TYPE_ARRAY & type) {
+        try {
+            const value = JSON.parse(input);
+            if (typeOf(value) == 'array') {
+                return value;
+            }
+        }
+        catch (_a) { }
+    }
+    if (TYPE_OBJECT & type) {
+        try {
+            const value = JSON.parse(input);
+            if (typeOf(value) == 'object') {
+                return value;
+            }
+        }
+        catch (_b) { }
+    }
+    if (TYPE_UNDEFINED & type) {
+        if (string === 'undefined') {
+            return undefined;
+        }
+    }
+    return input;
+};
+
 const toUnit = (input, unit = 'px') => {
     if (input == null || input === '')
         return undefined;
@@ -1331,7 +1333,7 @@ function Element() {
                     return;
                 const name = camelCase(attribute);
                 const type = (_a = members[name]) === null || _a === void 0 ? void 0 : _a.type;
-                const value = fromAttribute(next, type);
+                const value = toProperty(next, type);
                 if (instance[name] === value)
                     return;
                 instance[name] = value;
@@ -1417,14 +1419,15 @@ function Property(options) {
         }
         function set(next) {
             const previous = this[symbol];
-            if (next === previous)
+            const parsed = toProperty(next, options === null || options === void 0 ? void 0 : options.type);
+            if (parsed === previous)
                 return;
-            this[symbol] = next;
+            this[symbol] = parsed;
             request(this, name, previous, (skipped) => {
                 if (!(options === null || options === void 0 ? void 0 : options.reflect) || skipped)
                     return;
                 target[API_LOCKED] = true;
-                updateAttribute(host(this), name, next);
+                updateAttribute(host(this), name, parsed);
                 target[API_LOCKED] = false;
             });
         }
@@ -2139,15 +2142,5 @@ function Media(query) {
         };
     };
 }
-
-Object.keys(BREAKPOINTS).sort((a, b) => BREAKPOINTS[a] - BREAKPOINTS[b]);
-// TODO
-// /**
-//  * Overrides the properties based on breakpoints. [More](/override).
-//  * @experimental
-//  */
-// @Property()
-// @Override()
-// override?: { [key: string]: any };
 
 export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };
