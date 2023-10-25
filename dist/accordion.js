@@ -64,21 +64,24 @@ let Accordion = class Accordion extends PlusCore {
     }
     /**
      * Collapses the component.
-     * @returns
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
      */
     collapse() {
         return this.try(false, true);
     }
     /**
      * Expands the component.
-     * @returns
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
      */
     expand() {
         return this.try(true, true);
     }
     /**
-     * Toggles between collapse and expand
-     * @returns
+     * Toggles between `collapse` and `expand` state.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
      */
     toggle() {
         return this.try(!this.open, true);

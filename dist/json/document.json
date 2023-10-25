@@ -67,7 +67,7 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2023-10-25T18:10:19.934Z",
+      "lastModified": "2023-10-25T20:43:08.211Z",
       "methods": [
         {
           "async": false,
@@ -84,7 +84,7 @@
             },
             {
               "key": "returns",
-              "value": ""
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if theoperation was successful or `false` if it was canceled."
             }
           ],
           "signature": "collapse() => Promise<boolean>"
@@ -104,14 +104,14 @@
             },
             {
               "key": "returns",
-              "value": ""
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if theoperation was successful or `false` if it was canceled."
             }
           ],
           "signature": "expand() => Promise<boolean>"
         },
         {
           "async": false,
-          "description": "Toggles between collapse and expand",
+          "description": "Toggles between `collapse` and `expand` state.",
           "deprecated": false,
           "experimental": false,
           "name": "toggle",
@@ -120,11 +120,11 @@
           "tags": [
             {
               "key": "",
-              "value": "Toggles between collapse and expand"
+              "value": "Toggles between `collapse` and `expand` state."
             },
             {
               "key": "returns",
-              "value": ""
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if theoperation was successful or `false` if it was canceled."
             }
           ],
           "signature": "toggle() => Promise<boolean>"
@@ -201,7 +201,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Accordion\r\n\r\nA vertically stacked list of headers that reveal or hide associated sections of content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Open\r\n\r\n<Example value=\"open\" />\r\n\r\n### Persistent\r\n\r\n<Example value=\"persistent\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Custom Icon\r\n\r\n<Example value=\"custom-icon\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Custom Summary Template\r\n\r\n<Example value=\"custom-summary-template\" />\r\n\r\n### Prevent From Toggling\r\n\r\n<Example value=\"prevent-from-toggling\" />\r\n\r\n### Slots\r\n\r\n<Example value=\"slots\" />\r\n\r\n### Async Content\r\n\r\n<Example value=\"async-content\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Accordion\r\n\r\nA vertically stacked list of headers that reveal or hide associated sections of content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Open\r\n\r\n<Example value=\"open\" />\r\n\r\n### Methods\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"methods\" />\r\n\r\n### Persistent\r\n\r\n<Example value=\"persistent\" />\r\n\r\n### Custom Icon\r\n\r\n<Example value=\"custom-icon\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Custom Summary Template\r\n\r\n<Example value=\"custom-summary-template\" />\r\n\r\n### Prevent From Toggling\r\n\r\n<Example value=\"prevent-from-toggling\" />\r\n\r\n### Slots\r\n\r\n<Example value=\"slots\" />\r\n\r\n### Async Content\r\n\r\n<Example value=\"async-content\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",

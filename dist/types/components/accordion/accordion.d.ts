@@ -57,17 +57,20 @@ export declare class Accordion extends PlusCore {
     promise?: Promise<boolean>;
     /**
      * Collapses the component.
-     * @returns
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
      */
     collapse(): Promise<boolean>;
     /**
      * Expands the component.
-     * @returns
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
      */
     expand(): Promise<boolean>;
     /**
-     * Toggles between collapse and expand
-     * @returns
+     * Toggles between `collapse` and `expand` state.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
      */
     toggle(): Promise<boolean>;
     watcher(next: any, prev: any, name: any): void;

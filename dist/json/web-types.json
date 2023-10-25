@@ -79,7 +79,7 @@
               },
               {
                 "name": "toggle",
-                "description": "Toggles between collapse and expand",
+                "description": "Toggles between `collapse` and `expand` state.",
                 "deprecated": false,
                 "experimental": false
               }
