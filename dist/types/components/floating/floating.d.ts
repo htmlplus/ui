@@ -20,7 +20,7 @@ export declare class Floating extends PlusCore {
      */
     placement?: FloatingPlacement;
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface FloatingJSX {
     /**

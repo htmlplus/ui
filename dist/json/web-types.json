@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -23,25 +23,25 @@
             "events": [
               {
                 "name": "plus-collapse",
-                "description": "TODO.",
+                "description": "Fires when the component is about to collapse.This event can be [canceled](TODO).",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-collapsed",
-                "description": "TODO.",
+                "description": "Fires after the component has collapsed.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-expand",
-                "description": "TODO.",
+                "description": "Fires when the component is about to expand.This event can be [canceled](TODO).",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-expanded",
-                "description": "TODO.",
+                "description": "Fires after the component has expanded.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -49,34 +49,37 @@
             "properties": [
               {
                 "name": "disabled",
-                "description": "TODO.",
+                "description": "Disables the component functionality.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "open",
-                "description": "TODO.",
+                "description": "Control the component to expand or not.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "summary",
-                "description": "TODO.",
+                "description": "The summary text displayed on the header.",
                 "deprecated": false,
                 "experimental": false
               },
               {
-                "name": "hide",
+                "name": "collapse",
+                "description": "Collapses the component.",
                 "deprecated": false,
                 "experimental": false
               },
               {
-                "name": "show",
+                "name": "expand",
+                "description": "Expands the component.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "toggle",
+                "description": "Toggles between collapse and expand",
                 "deprecated": false,
                 "experimental": false
               }
@@ -85,7 +88,7 @@
           "attributes": [
             {
               "name": "disabled",
-              "description": "TODO.",
+              "description": "Disables the component functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -94,7 +97,7 @@
             },
             {
               "name": "open",
-              "description": "TODO.",
+              "description": "Control the component to expand or not.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -103,7 +106,7 @@
             },
             {
               "name": "summary",
-              "description": "TODO.",
+              "description": "The summary text displayed on the header.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -131,6 +134,18 @@
             {
               "name": "summary",
               "description": "The summary slot."
+            },
+            {
+              "name": "top",
+              "description": "The top slot."
+            },
+            {
+              "name": "middle",
+              "description": "The middle slot."
+            },
+            {
+              "name": "bottom",
+              "description": "The bottom slot."
             }
           ]
         },

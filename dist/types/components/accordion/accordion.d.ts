@@ -11,98 +11,119 @@ import { Animation2 } from "../../services";
  * @slot icon-expand   - The expand icon slot.
  * @slot icon-collapse - The collapse icon slot.
  * @slot summary       - The summary slot.
+ * @slot top           - The top slot.
+ * @slot middle        - The middle slot.
+ * @slot bottom        - The bottom slot.
+ *
  * @stable
  */
 export declare class Accordion extends PlusCore {
     static TAG: string;
     static STYLES: string;
     /**
-     * TODO.
+     * Disables the component functionality.
      */
     disabled?: boolean;
     /**
-     * TODO.
+     * Control the component to expand or not.
      */
     open?: boolean;
     /**
-     * TODO.
+     * The summary text displayed on the header.
      */
     summary?: string;
     /**
-     * TODO.
+     * Fires when the component is about to collapse.
+     * This event can be [canceled](TODO).
      */
     plusCollapse: EventEmitter<void>;
     /**
-     * TODO.
+     * Fires after the component has collapsed.
      */
     plusCollapsed: EventEmitter<void>;
     /**
-     * TODO.
+     * Fires when the component is about to expand.
+     * This event can be [canceled](TODO).
      */
     plusExpand: EventEmitter<void>;
     /**
-     * TODO.
+     * Fires after the component has expanded.
      */
     plusExpanded: EventEmitter<void>;
     $body: HTMLElement;
     $header: HTMLElement;
     animate: Animation2;
     opened: boolean;
-    hide(): Promise<void>;
-    show(): Promise<void>;
-    toggle(): Promise<void>;
+    promise?: Promise<boolean>;
+    /**
+     * Collapses the component.
+     * @returns
+     */
+    collapse(): Promise<boolean>;
+    /**
+     * Expands the component.
+     * @returns
+     */
+    expand(): Promise<boolean>;
+    /**
+     * Toggles between collapse and expand
+     * @returns
+     */
+    toggle(): Promise<boolean>;
     watcher(next: any, prev: any, name: any): void;
-    bind(): void;
-    unbind(): void;
-    try(open: boolean, silent?: boolean): void;
+    initialize(): void;
+    terminate(): void;
+    try(open: boolean, silent?: boolean): Promise<boolean>;
     onClick(): void;
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AccordionJSX {
     /**
-     * TODO.
+     * Disables the component functionality.
      */
     disabled?: boolean;
     /**
-     * TODO.
+     * Control the component to expand or not.
      */
     open?: boolean;
     /**
-     * TODO.
+     * The summary text displayed on the header.
      */
     summary?: string;
     /**
-     * TODO.
+     * Fires when the component is about to collapse.
+     * This event can be [canceled](TODO).
      */
     onPlusCollapse?: (event: CustomEvent<void>) => void;
     /**
-     * TODO.
+     * Fires after the component has collapsed.
      */
     onPlusCollapsed?: (event: CustomEvent<void>) => void;
     /**
-     * TODO.
+     * Fires when the component is about to expand.
+     * This event can be [canceled](TODO).
      */
     onPlusExpand?: (event: CustomEvent<void>) => void;
     /**
-     * TODO.
+     * Fires after the component has expanded.
      */
     onPlusExpanded?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusAccordionElement extends HTMLElement {
         /**
-         * TODO.
+         * Disables the component functionality.
          */
         disabled?: boolean;
         /**
-         * TODO.
+         * Control the component to expand or not.
          */
         open?: boolean;
         /**
-         * TODO.
+         * The summary text displayed on the header.
          */
         summary?: string;
     }

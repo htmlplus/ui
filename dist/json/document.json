@@ -5,7 +5,7 @@
         {
           "cancelable": true,
           "deprecated": false,
-          "description": "TODO.",
+          "description": "Fires when the component is about to collapse.This event can be [canceled](TODO).",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -13,14 +13,14 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "Fires when the component is about to collapse.This event can be [canceled](TODO)."
             }
           ]
         },
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "TODO.",
+          "description": "Fires after the component has collapsed.",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -28,14 +28,14 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "Fires after the component has collapsed."
             }
           ]
         },
         {
           "cancelable": true,
           "deprecated": false,
-          "description": "TODO.",
+          "description": "Fires when the component is about to expand.This event can be [canceled](TODO).",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -43,14 +43,14 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "Fires when the component is about to expand.This event can be [canceled](TODO)."
             }
           ]
         },
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "TODO.",
+          "description": "Fires after the component has expanded.",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -58,7 +58,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "Fires after the component has expanded."
             }
           ]
         }
@@ -67,37 +67,67 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2023-09-16T17:16:34.555Z",
+      "lastModified": "2023-10-25T18:10:19.934Z",
       "methods": [
         {
-          "async": true,
+          "async": false,
+          "description": "Collapses the component.",
           "deprecated": false,
           "experimental": false,
-          "name": "hide",
+          "name": "collapse",
           "parameters": [],
-          "returns": "void",
-          "tags": [],
-          "signature": "hide() => void"
+          "returns": "Promise<boolean>",
+          "tags": [
+            {
+              "key": "",
+              "value": "Collapses the component."
+            },
+            {
+              "key": "returns",
+              "value": ""
+            }
+          ],
+          "signature": "collapse() => Promise<boolean>"
         },
         {
-          "async": true,
+          "async": false,
+          "description": "Expands the component.",
           "deprecated": false,
           "experimental": false,
-          "name": "show",
+          "name": "expand",
           "parameters": [],
-          "returns": "void",
-          "tags": [],
-          "signature": "show() => void"
+          "returns": "Promise<boolean>",
+          "tags": [
+            {
+              "key": "",
+              "value": "Expands the component."
+            },
+            {
+              "key": "returns",
+              "value": ""
+            }
+          ],
+          "signature": "expand() => Promise<boolean>"
         },
         {
-          "async": true,
+          "async": false,
+          "description": "Toggles between collapse and expand",
           "deprecated": false,
           "experimental": false,
           "name": "toggle",
           "parameters": [],
-          "returns": "void",
-          "tags": [],
-          "signature": "toggle() => void"
+          "returns": "Promise<boolean>",
+          "tags": [
+            {
+              "key": "",
+              "value": "Toggles between collapse and expand"
+            },
+            {
+              "key": "returns",
+              "value": ""
+            }
+          ],
+          "signature": "toggle() => Promise<boolean>"
         }
       ],
       "parts": [
@@ -122,7 +152,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "TODO.",
+          "description": "Disables the component functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -131,7 +161,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "Disables the component functionality."
             }
           ],
           "type": "boolean"
@@ -139,7 +169,7 @@
         {
           "attribute": "open",
           "deprecated": false,
-          "description": "TODO.",
+          "description": "Control the component to expand or not.",
           "experimental": false,
           "model": false,
           "name": "open",
@@ -148,7 +178,7 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "Control the component to expand or not."
             }
           ],
           "type": "boolean"
@@ -156,7 +186,7 @@
         {
           "attribute": "summary",
           "deprecated": false,
-          "description": "TODO.",
+          "description": "The summary text displayed on the header.",
           "experimental": false,
           "model": false,
           "name": "summary",
@@ -165,13 +195,13 @@
           "tags": [
             {
               "key": "",
-              "value": "TODO."
+              "value": "The summary text displayed on the header."
             }
           ],
           "type": "string"
         }
       ],
-      "readmeContent": "# Accordion\r\n\r\nA vertically stacked list of headers that reveal or hide associated sections of content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Open\r\n\r\n<Example value=\"open\" />\r\n\r\n### Persistent\r\n\r\n<Example value=\"persistent\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Custom Icon\r\n\r\n<Example value=\"custom-icon\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Advanced\r\n\r\n<Example value=\"advanced\" />\r\n\r\n### Prevent From Toggling\r\n\r\n<Example value=\"prevent-from-toggling\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Accordion\r\n\r\nA vertically stacked list of headers that reveal or hide associated sections of content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Open\r\n\r\n<Example value=\"open\" />\r\n\r\n### Persistent\r\n\r\n<Example value=\"persistent\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Custom Icon\r\n\r\n<Example value=\"custom-icon\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Custom Summary Template\r\n\r\n<Example value=\"custom-summary-template\" />\r\n\r\n### Prevent From Toggling\r\n\r\n<Example value=\"prevent-from-toggling\" />\r\n\r\n### Slots\r\n\r\n<Example value=\"slots\" />\r\n\r\n### Async Content\r\n\r\n<Example value=\"async-content\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -192,6 +222,18 @@
         {
           "name": "summary",
           "description": "The summary slot."
+        },
+        {
+          "name": "top",
+          "description": "The top slot."
+        },
+        {
+          "name": "middle",
+          "description": "The middle slot."
+        },
+        {
+          "name": "bottom",
+          "description": "The bottom slot."
         }
       ],
       "styles": [],
@@ -255,7 +297,7 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2023-10-07T17:12:45.853Z",
+      "lastModified": "2023-10-25T18:10:20.175Z",
       "methods": [
         {
           "async": false,
@@ -687,7 +729,7 @@
       "description": "Sets a preferred aspect ratio only for the first child inside the component.",
       "experimental": false,
       "key": "aspect-ratio",
-      "lastModified": "2023-08-10T21:43:21.120Z",
+      "lastModified": "2023-10-25T18:10:20.172Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -766,7 +808,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-10-17T13:16:14.289Z",
+      "lastModified": "2023-10-25T18:11:07.834Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -917,7 +959,7 @@
       "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2023-08-10T21:43:21.086Z",
+      "lastModified": "2023-10-25T18:10:20.174Z",
       "methods": [],
       "parts": [
         {
@@ -1090,7 +1132,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2023-10-07T17:42:06.341Z",
+      "lastModified": "2023-10-25T18:10:20.168Z",
       "methods": [
         {
           "async": false,
@@ -1265,7 +1307,7 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
-      "lastModified": "2023-08-10T21:52:06.545Z",
+      "lastModified": "2023-10-25T18:10:20.174Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1406,7 +1448,7 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
-      "lastModified": "2023-08-10T21:43:21.089Z",
+      "lastModified": "2023-10-25T18:10:20.162Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1466,7 +1508,7 @@
       "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
-      "lastModified": "2023-10-15T14:54:14.798Z",
+      "lastModified": "2023-10-25T18:10:20.133Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1560,7 +1602,7 @@
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
-      "lastModified": "2023-10-07T17:27:38.691Z",
+      "lastModified": "2023-10-25T18:10:20.162Z",
       "methods": [
         {
           "async": false,
@@ -1920,7 +1962,7 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
-      "lastModified": "2023-10-09T18:51:07.871Z",
+      "lastModified": "2023-10-25T18:10:20.105Z",
       "methods": [
         {
           "async": false,
@@ -2642,7 +2684,7 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
-      "lastModified": "2023-08-10T21:57:21.748Z",
+      "lastModified": "2023-10-25T18:10:20.133Z",
       "methods": [],
       "parts": [
         {
@@ -3121,7 +3163,7 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2023-08-10T21:43:21.111Z",
+      "lastModified": "2023-10-25T18:10:20.093Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3318,7 +3360,7 @@
       "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2023-08-10T21:43:21.093Z",
+      "lastModified": "2023-10-25T18:10:20.036Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3607,7 +3649,7 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
-      "lastModified": "2023-08-10T21:49:10.124Z",
+      "lastModified": "2023-10-25T18:10:20.036Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3707,7 +3749,7 @@
       "description": "A component that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
-      "lastModified": "2023-08-10T21:48:58.400Z",
+      "lastModified": "2023-10-25T18:10:20.036Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3789,7 +3831,7 @@
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
-      "lastModified": "2023-08-10T21:43:21.055Z",
+      "lastModified": "2023-10-25T18:10:20.081Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3954,7 +3996,7 @@
       "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
-      "lastModified": "2023-08-10T21:43:21.103Z",
+      "lastModified": "2023-10-25T18:10:20.036Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5326,7 +5368,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-08-10T21:48:04.977Z",
+      "lastModified": "2023-10-25T18:10:20.022Z",
       "methods": [],
       "parts": [
         {
@@ -5486,7 +5528,7 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
-      "lastModified": "2023-08-10T21:47:57.856Z",
+      "lastModified": "2023-10-25T18:10:19.999Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5681,7 +5723,7 @@
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "experimental": false,
       "key": "progress-bar",
-      "lastModified": "2023-08-10T21:47:28.481Z",
+      "lastModified": "2023-10-25T18:10:19.995Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5851,7 +5893,7 @@
       "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
-      "lastModified": "2023-09-24T09:50:29.925Z",
+      "lastModified": "2023-10-25T18:10:19.975Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5987,7 +6029,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2023-09-16T11:08:55.058Z",
+      "lastModified": "2023-10-25T18:10:19.975Z",
       "methods": [
         {
           "async": false,
@@ -6525,7 +6567,7 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2023-08-10T21:43:21.120Z",
+      "lastModified": "2023-10-25T18:10:19.963Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6730,7 +6772,7 @@
       "description": "Component content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
-      "lastModified": "2023-08-10T21:43:21.115Z",
+      "lastModified": "2023-10-25T18:10:19.954Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6838,7 +6880,7 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
-      "lastModified": "2023-08-10T21:57:56.108Z",
+      "lastModified": "2023-10-25T18:10:19.941Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6909,7 +6951,7 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
-      "lastModified": "2023-09-16T08:30:14.559Z",
+      "lastModified": "2023-10-25T18:10:19.929Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7211,7 +7253,7 @@
       "description": "TODO.",
       "experimental": false,
       "key": "tooltip",
-      "lastModified": "2023-07-24T18:27:08.975Z",
+      "lastModified": "2023-10-19T22:04:12.021Z",
       "methods": [
         {
           "async": false,

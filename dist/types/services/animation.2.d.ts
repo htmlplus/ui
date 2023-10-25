@@ -18,18 +18,15 @@ export interface Animation2Config {
 export declare class Animation2 {
     state: Animation2State;
     private config;
-    private destroy;
-    private get animations();
+    private destroy?;
+    private get animation();
     private get source();
     private get target();
     constructor(config: Animation2Config);
     dispose(): void;
-    enter(parameters?: any): void;
+    enter(parameters?: any): Promise<boolean>;
     initialize(state?: Animation2State): void;
-    leave(parameters?: any): void;
-    private bind;
+    leave(parameters?: any): Promise<boolean>;
     private next;
-    private reverse;
-    private unbind;
     private update;
 }

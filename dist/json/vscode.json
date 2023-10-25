@@ -8,7 +8,7 @@
       "attributes": [
         {
           "name": "disabled",
-          "description": "TODO.",
+          "description": "Disables the component functionality.",
           "values": [
             {
               "name": "false"
@@ -20,7 +20,7 @@
         },
         {
           "name": "open",
-          "description": "TODO.",
+          "description": "Control the component to expand or not.",
           "values": [
             {
               "name": "false"
@@ -32,7 +32,7 @@
         },
         {
           "name": "summary",
-          "description": "TODO.",
+          "description": "The summary text displayed on the header.",
           "values": []
         }
       ],

@@ -12,6 +12,10 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @slot icon-expand   - The expand icon slot.
  * @slot icon-collapse - The collapse icon slot.
  * @slot summary       - The summary slot.
+ * @slot top           - The top slot.
+ * @slot middle        - The middle slot.
+ * @slot bottom        - The bottom slot.
+ *
  * @stable
  */
 let Accordion = class Accordion extends PlusCore {
@@ -58,74 +62,85 @@ let Accordion = class Accordion extends PlusCore {
         });
         this.opened = false;
     }
-    hide() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.try(false, true);
-        });
+    /**
+     * Collapses the component.
+     * @returns
+     */
+    collapse() {
+        return this.try(false, true);
     }
-    show() {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.try(true, true);
-        });
+    /**
+     * Expands the component.
+     * @returns
+     */
+    expand() {
+        return this.try(true, true);
     }
+    /**
+     * Toggles between collapse and expand
+     * @returns
+     */
     toggle() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.open ? this.hide() : this.show();
-        });
+        return this.try(!this.open, true);
     }
     watcher(next, prev, name) {
-        // TODO: problem with `false` and `undefined`
-        if (!next == !prev)
-            return;
         switch (name) {
             case 'open':
+                // TODO: problem with `false` and `undefined`
+                if (!next == !prev)
+                    break;
                 this.try(next, true);
                 break;
         }
     }
-    bind() {
-        this.animate.initialize((this.opened = this.open) ? 'entered' : 'leaved');
+    initialize() {
+        this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
     }
-    unbind() {
+    terminate() {
         var _a;
         (_a = this.animate) === null || _a === void 0 ? void 0 : _a.dispose();
     }
     try(open, silent) {
-        if (this.disabled)
-            return;
-        if (this.opened == open)
-            return;
-        const event = open ? this.plusExpand : this.plusCollapse;
-        if (!silent && event.call(this).defaultPrevented)
-            return;
-        this.opened = this.open = open;
-        if (this.open) {
-            this.animate.enter(silent);
-        }
-        else {
-            this.animate.leave(silent);
-        }
+        return __awaiter(this, void 0, void 0, function* () {
+            // TODO
+            if (this.disabled)
+                return true;
+            if (this.opened == open)
+                return yield this.promise;
+            if (!silent) {
+                const event = open ? this.plusExpand : this.plusCollapse;
+                const prevented = event.call(this).defaultPrevented;
+                // TODO
+                if (prevented)
+                    return true;
+            }
+            this.opened = this.open = open;
+            const fn = this.open ? this.animate.enter : this.animate.leave;
+            this.promise = fn.bind(this.animate)(silent);
+            return yield this.promise;
+        });
     }
     onClick() {
-        this.try(!this.open);
+        this.try(!this.open, false);
     }
     onKeyDown(event) {
         switch (event.key) {
             case ' ':
             case 'Enter':
                 event.preventDefault();
-                this.try(!this.open);
+                this.try(!this.open, false);
                 break;
         }
     }
     loadedCallback() {
-        this.bind();
+        this.initialize();
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
         return html `
+        <slot name="top" />
         <div aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} class="header" part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
           <slot class="summary" name="summary" part="summary">
             ${this.summary}
@@ -138,9 +153,11 @@ let Accordion = class Accordion extends PlusCore {
             </slot>
           </slot>
         </div>
+        <slot name="middle" />
         <div class="body" part="body">
           <slot class="content" part="content"></slot>
         </div>
+        <slot name="bottom" />
       `;
     }
 };
@@ -189,10 +206,10 @@ __decorate([
 ], Accordion.prototype, "$header", void 0);
 __decorate([
     Method()
-], Accordion.prototype, "hide", null);
+], Accordion.prototype, "collapse", null);
 __decorate([
     Method()
-], Accordion.prototype, "show", null);
+], Accordion.prototype, "expand", null);
 __decorate([
     Method()
 ], Accordion.prototype, "toggle", null);
