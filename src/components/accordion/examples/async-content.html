@@ -19,7 +19,12 @@
       ></plus-progress-bar>
       <plus-faker></plus-faker>
     </plus-accordion>
-    <script>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/progress-bar.js';
+
       $accordion.addEventListener('plus-expand', (event) => {
         event.preventDefault();
         $progress.hidden = false;
@@ -28,12 +33,6 @@
           $accordion.open = true;
         }, 2500);
       })
-    </script>
-    <script type="module">
-      import 'https://cdn.skypack.dev/@faker-js/faker';
-      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
-      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
-      import 'https://cdn.skypack.dev/@htmlplus/core/progress-bar.js';
     </script>
   </body>
 </html>
