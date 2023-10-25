@@ -20,11 +20,17 @@
       import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
       import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
 
-      $collapse.addEventListener('click', () => $accordion.collapse());
+      $collapse.addEventListener('click', () => {
+        $accordion.collapse();
+      });
 
-      $expand.addEventListener('click', () => $accordion.expand());
+      $expand.addEventListener('click', () => {
+        $accordion.expand();
+      });
 
-      $toggle.addEventListener('click', () => $accordion.toggle());
+      $toggle.addEventListener('click', () => {
+        $accordion.toggle();
+      });
     </script>
   </body>
 </html>
