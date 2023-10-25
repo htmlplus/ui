@@ -22,48 +22,54 @@ import { Animation2 } from '@app/services';
  * @slot icon-expand   - The expand icon slot.
  * @slot icon-collapse - The collapse icon slot.
  * @slot summary       - The summary slot.
+ * @slot top           - The top slot.
+ * @slot middle        - The middle slot.
+ * @slot bottom        - The bottom slot.
+ *
  * @stable
  */
 @Element()
 export class Accordion extends PlusCore {
   /**
-   * TODO.
+   * Disables the component functionality.
    */
   @Property({ reflect: true })
   disabled?: boolean;
 
   /**
-   * TODO.
+   * Control the component to expand or not.
    */
   @Property({ reflect: true })
   open?: boolean;
 
   /**
-   * TODO.
+   * The summary text displayed on the header.
    */
   @Property()
   summary?: string;
 
   /**
-   * TODO.
+   * Fires when the component is about to collapse.
+   * This event can be [canceled](TODO).
    */
   @Event({ cancelable: true })
   plusCollapse!: EventEmitter<void>;
 
   /**
-   * TODO.
+   * Fires after the component has collapsed.
    */
   @Event()
   plusCollapsed!: EventEmitter<void>;
 
   /**
-   * TODO.
+   * Fires when the component is about to expand.
+   * This event can be [canceled](TODO).
    */
   @Event({ cancelable: true })
   plusExpand!: EventEmitter<void>;
 
   /**
-   * TODO.
+   * Fires after the component has expanded.
    */
   @Event()
   plusExpanded!: EventEmitter<void>;
@@ -114,61 +120,81 @@ export class Accordion extends PlusCore {
 
   opened: boolean = false;
 
+  promise?: Promise<boolean>;
+
+  /**
+   * Collapses the component.
+   * @returns
+   */
   @Method()
-  async hide() {
-    this.try(false, true);
+  collapse(): Promise<boolean> {
+    return this.try(false, true);
   }
 
+  /**
+   * Expands the component.
+   * @returns
+   */
   @Method()
-  async show() {
-    this.try(true, true);
+  expand(): Promise<boolean> {
+    return this.try(true, true);
   }
 
+  /**
+   * Toggles between collapse and expand
+   * @returns
+   */
   @Method()
-  async toggle() {
-    return this.open ? this.hide() : this.show();
+  toggle(): Promise<boolean> {
+    return this.try(!this.open, true);
   }
 
   @Watch(['open'])
   watcher(next, prev, name) {
-    // TODO: problem with `false` and `undefined`
-    if (!next == !prev) return;
     switch (name) {
       case 'open':
+        // TODO: problem with `false` and `undefined`
+        if (!next == !prev) break;
         this.try(next, true);
         break;
     }
   }
 
-  bind() {
-    this.animate.initialize((this.opened = this.open) ? 'entered' : 'leaved');
+  initialize() {
+    this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
   }
 
-  unbind() {
+  terminate() {
     this.animate?.dispose();
   }
 
-  try(open: boolean, silent?: boolean) {
-    if (this.disabled) return;
+  async try(open: boolean, silent?: boolean): Promise<boolean> {
+    // TODO
+    if (this.disabled) return true;
 
-    if (this.opened == open) return;
+    if (this.opened == open) return await this.promise;
 
-    const event = open ? this.plusExpand : this.plusCollapse;
+    if (!silent) {
+      const event = open ? this.plusExpand : this.plusCollapse;
 
-    if (!silent && event.call(this).defaultPrevented) return;
+      const prevented = event.call(this).defaultPrevented;
+
+      // TODO
+      if (prevented) return true;
+    }
 
     this.opened = this.open = open;
 
-    if (this.open) {
-      this.animate.enter(silent);
-    } else {
-      this.animate.leave(silent);
-    }
+    const fn = this.open ? this.animate.enter : this.animate.leave;
+
+    this.promise = fn.bind(this.animate)(silent);
+
+    return await this.promise;
   }
 
   @Bind()
   onClick() {
-    this.try(!this.open);
+    this.try(!this.open, false);
   }
 
   @Bind()
@@ -177,22 +203,23 @@ export class Accordion extends PlusCore {
       case ' ':
       case 'Enter':
         event.preventDefault();
-        this.try(!this.open);
+        this.try(!this.open, false);
         break;
     }
   }
 
   loadedCallback() {
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {
     return (
       <>
+        <slot name="top" />
         <div
           aria-disabled={!!this.disabled}
           aria-expanded={!!this.open}
@@ -224,9 +251,11 @@ export class Accordion extends PlusCore {
             </slot>
           </slot>
         </div>
+        <slot name="middle" />
         <div className="body" part="body">
           <slot className="content" part="content"></slot>
         </div>
+        <slot name="bottom" />
       </>
     );
   }

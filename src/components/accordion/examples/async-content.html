@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-progress-bar {
+        height: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-accordion id="$accordion" summary="Summary">
+      <plus-progress-bar
+        id="$progress"
+        variant="indeterminate"
+        slot="top"
+        hidden
+      ></plus-progress-bar>
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <script>
+      $accordion.addEventListener('plus-expand', (event) => {
+        event.preventDefault();
+        $progress.hidden = false;
+        setTimeout(() => {
+          $progress.hidden = true;
+          $accordion.open = true;
+        }, 2500);
+      })
+    </script>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/progress-bar.js';
+    </script>
+  </body>
+</html>

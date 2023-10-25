@@ -24,10 +24,10 @@ export class Animation2 {
 
   private config: Animation2Config;
 
-  private destroy = [];
+  private destroy?: Function;
 
-  private get animations() {
-    return this.source.getAnimations();
+  private get animation() {
+    return this.source.getAnimations()[0];
   }
 
   private get source() {
@@ -64,89 +64,95 @@ export class Animation2 {
   }
 
   public dispose() {
-    this.unbind();
+    this.destroy?.();
   }
 
-  public enter(parameters?: any) {
-    if (this.state == 'leaving') return this.reverse();
+  public enter(parameters?: any): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.destroy?.();
 
-    this.update('enter');
+      this.update('enter');
 
-    this.config.onEnter?.(parameters);
+      this.config.onEnter?.(parameters);
 
-    this.next(() => {
-      this.update('entering');
+      this.next(() => {
+        this.update('entering');
 
-      this.config.onEntering?.(parameters);
+        this.config.onEntering?.(parameters);
 
-      this.bind(parameters);
-    });
+        const onCancel = () => {
+          resolve(true);
+        };
+
+        const onFinish = () => {
+          this.update('entered');
+
+          this.config.onEntered?.(parameters);
+
+          resolve(false);
+        };
+
+        if (!this.animation) return onFinish();
+
+        this.destroy = () => {
+          resolve(true);
+
+          this.animation?.removeEventListener('cancel', onCancel);
+          this.animation?.removeEventListener('finish', onFinish);
+        };
+
+        this.animation.addEventListener('cancel', onCancel, { once: true });
+        this.animation.addEventListener('finish', onFinish, { once: true });
+      });
+    })
   }
 
   public initialize(state?: Animation2State) {
     this.update(state);
   }
 
-  public leave(parameters?: any) {
-    if (this.state == 'entering') return this.reverse();
+  public leave(parameters?: any): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.destroy?.();
 
-    this.update('leave');
+      this.update('leave');
 
-    this.config.onLeave?.(parameters);
+      this.config.onLeave?.(parameters);
 
-    this.next(() => {
-      this.update('leaving');
+      this.next(() => {
+        this.update('leaving');
 
-      this.config.onLeaving?.(parameters);
+        this.config.onLeaving?.(parameters);
 
-      this.bind(parameters);
-    });
-  }
+        const onCancel = () => {
+          resolve(true);
+        };
 
-  private bind(parameters) {
-    this.unbind();
-
-    const callback = () => {
-      switch (this.state) {
-        case 'entering':
-          this.update('entered');
-          this.config.onEntered?.(parameters);
-          break;
-        case 'leaving':
+        const onFinish = () => {
           this.update('leaved');
+
           this.config.onLeaved?.(parameters);
-          break;
-      }
-    };
 
-    if (!this.animations.length) return callback();
+          resolve(false);
+        };
 
-    this.animations.forEach((animation) => {
-      const destroy = () => {
-        animation.removeEventListener('finish', callback);
-      };
+        if (!this.animation) return onFinish();
 
-      this.destroy.push(destroy);
+        this.destroy = () => {
+          resolve(true);
 
-      animation.addEventListener('finish', callback, { once: true });
-    });
+          this.animation?.removeEventListener('cancel', onCancel);
+          this.animation?.removeEventListener('finish', onFinish);
+        };
+
+        this.animation.addEventListener('cancel', onCancel, { once: true });
+        this.animation.addEventListener('finish', onFinish, { once: true });
+      });
+    })
   }
 
   private next(callback) {
     requestAnimationFrame(() => setTimeout(() => callback(), 5));
-  }
-
-  private reverse() {
-    this.update(this.state == 'entering' ? 'leaving' : 'entering');
-    for (const animation of this.animations) {
-      animation.reverse();
-    }
-  }
-
-  private unbind() {
-    for (const callback of this.destroy) {
-      callback();
-    }
   }
 
   private update(state: Animation2State) {

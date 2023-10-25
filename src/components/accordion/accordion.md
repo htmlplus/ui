@@ -36,12 +36,20 @@ A vertically stacked list of headers that reveal or hide associated sections of 
 
 <Example value="customized" />
 
-### Advanced
+### Custom Summary Template
 
-<Example value="advanced" />
+<Example value="custom-summary-template" />
 
 ### Prevent From Toggling
 
 <Example value="prevent-from-toggling" />
+
+### Slots
+
+<Example value="slots" />
+
+### Async Content
+
+<Example value="async-content" />
 
 <LastModified />
