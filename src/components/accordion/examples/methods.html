@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body rtl>
+    <plus-stack gap="1rem">
+      <button id="$collapse">Collapse</button>
+      <button id="$expand">Expand</button>
+      <button id="$toggle">Toggle</button>
+    </plus-stack>
+    <br />
+    <plus-accordion id="$accordion" summary="Summary">
+      <plus-faker></plus-faker>
+    </plus-accordion>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@faker-js/faker';
+      import 'https://cdn.skypack.dev/@htmlplus/core/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/faker.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+
+      $collapse.addEventListener('click', () => $accordion.collapse());
+
+      $expand.addEventListener('click', () => $accordion.expand());
+
+      $toggle.addEventListener('click', () => $accordion.toggle());
+    </script>
+  </body>
+</html>

@@ -16,17 +16,23 @@ A vertically stacked list of headers that reveal or hide associated sections of 
 
 <Example value="default" />
 
+### Disabled
+
+<Example value="disabled" />
+
 ### Open
 
 <Example value="open" />
 
+### Methods
+
+Open the developer console.
+
+<Example value="methods" />
+
 ### Persistent
 
 <Example value="persistent" />
-
-### Disabled
-
-<Example value="disabled" />
 
 ### Custom Icon
 

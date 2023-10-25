@@ -124,7 +124,8 @@ export class Accordion extends PlusCore {
 
   /**
    * Collapses the component.
-   * @returns
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
    */
   @Method()
   collapse(): Promise<boolean> {
@@ -133,7 +134,8 @@ export class Accordion extends PlusCore {
 
   /**
    * Expands the component.
-   * @returns
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
    */
   @Method()
   expand(): Promise<boolean> {
@@ -141,8 +143,9 @@ export class Accordion extends PlusCore {
   }
 
   /**
-   * Toggles between collapse and expand
-   * @returns
+   * Toggles between `collapse` and `expand` state.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
    */
   @Method()
   toggle(): Promise<boolean> {
