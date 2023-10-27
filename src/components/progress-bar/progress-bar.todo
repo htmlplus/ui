@@ -1,2 +1,3 @@
 - add `striped` example.
 - add `stripes-animated` example.
+- add height to support `thin`, `normal`, and `thick` values
