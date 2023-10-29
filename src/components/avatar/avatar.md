@@ -28,9 +28,13 @@ An image representing a user's profile picture.
 
 <Example value="icon" />
 
-### Icon Ratio
+### Icon Ratio (Inline)
 
-<Example value="icon-ratio" />
+<Example value="icon-ratio-inline" />
+
+### Icon Ratio (Global)
+
+<Example value="icon-ratio-global" />
 
 ### Svg
 
@@ -64,6 +68,10 @@ An image representing a user's profile picture.
 
 <Example value="tooltip" />
 
+### Link With Tooltip
+
+<Example value="link-with-tooltip" />
+
 ### Slots
 
 <Example value="slots" />
@@ -84,8 +92,16 @@ An image representing a user's profile picture.
 
 <Example value="group-gutter" />
 
+### Group Link
+
+<Example value="group-link" />
+
 ### Group Tooltip
 
 <Example value="group-tooltip" />
+
+### Group Link With Tooltip
+
+<Example value="group-link-with-tooltip" />
 
 <LastModified />

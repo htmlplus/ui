@@ -104,7 +104,7 @@ export class Animation2 {
         this.animation.addEventListener('cancel', onCancel, { once: true });
         this.animation.addEventListener('finish', onFinish, { once: true });
       });
-    })
+    });
   }
 
   public initialize(state?: Animation2State) {
@@ -148,7 +148,7 @@ export class Animation2 {
         this.animation.addEventListener('cancel', onCancel, { once: true });
         this.animation.addEventListener('finish', onFinish, { once: true });
       });
-    })
+    });
   }
 
   private next(callback) {

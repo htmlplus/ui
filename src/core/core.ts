@@ -1,15 +1,15 @@
 import { Host, direction, isRTL } from '@htmlplus/element';
 
 export class PlusCore {
-    @Host()
-    $host!: HTMLElement;
+  @Host()
+  $host!: HTMLElement;
 
-    // TODO
-    get dir(): 'ltr' | 'rtl' {
-        return direction(this) as any;
-    }
+  // TODO
+  get dir(): 'ltr' | 'rtl' {
+    return direction(this) as any;
+  }
 
-    get isRTL() {
-        return isRTL(this);
-    }
+  get isRTL() {
+    return isRTL(this);
+  }
 }

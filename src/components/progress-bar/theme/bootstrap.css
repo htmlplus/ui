@@ -3,23 +3,25 @@
  */
 
 progress-bar[type^='striped'] .indicator {
-    background-image: linear-gradient(45deg,
-            rgba(255, 255, 255, 0.15) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.15) 50%,
-            rgba(255, 255, 255, 0.15) 75%,
-            transparent 75%,
-            transparent);
-    background-size: 1rem 1remt;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1remt;
 }
 
 progress-bar[type='striped-animated'] .indicator {
-    animation: 1s linear infinite striped-animated;
+  animation: 1s linear infinite striped-animated;
 }
 
 @keyframes striped-animated {
-    0% {
-        background-position-x: 1rem;
-    }
+  0% {
+    background-position-x: 1rem;
+  }
 }

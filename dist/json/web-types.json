@@ -4364,7 +4364,12 @@
               "default": "0"
             }
           ],
-          "slots": []
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
         },
         {
           "name": "plus-progress-bar-stack",

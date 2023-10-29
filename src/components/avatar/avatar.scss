@@ -48,10 +48,14 @@
 
 ::slotted(*:not([slot])) {
   border-radius: var(--plus-avatar-border-radius);
-  position: absolute;
-  inset: 0;
   height: 100%;
   width: 100%;
+}
+
+// TODO: Experimental
+::slotted(a) {
+  position: absolute;
+  inset: 0;
 }
 
 div {
