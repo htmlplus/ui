@@ -23,46 +23,65 @@ export declare class Card extends PlusCore {
      * Use tile property to neutralize border-radius.
      */
     tile?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CardJSX {
     /**
-     * If you want the card to have shadow, use the elevation property,
-     * And select the property value between `1` and `24`.
-     */
-    elevation?: CardElevation;
+    * If you want the card to have shadow, use the elevation property,
+    * And select the property value between `1` and `24`.
+    */
+    "elevation"?: CardElevation;
     /**
-     * Use the flat property to neutralize elevation.
-     */
-    flat?: boolean;
+    * Use the flat property to neutralize elevation.
+    */
+    "flat"?: boolean;
     /**
-     * If you want the card to have border, use the outlined property.
-     */
-    outlined?: boolean;
+    * If you want the card to have border, use the outlined property.
+    */
+    "outlined"?: boolean;
     /**
-     * Use tile property to neutralize border-radius.
-     */
-    tile?: boolean;
+    * Use tile property to neutralize border-radius.
+    */
+    "tile"?: boolean;
+}
+export interface CardAttributeJSX {
+    /**
+    * If you want the card to have shadow, use the elevation property,
+    * And select the property value between `1` and `24`.
+    */
+    "elevation"?: CardElevation;
+    /**
+    * Use the flat property to neutralize elevation.
+    */
+    "flat"?: boolean;
+    /**
+    * If you want the card to have border, use the outlined property.
+    */
+    "outlined"?: boolean;
+    /**
+    * Use tile property to neutralize border-radius.
+    */
+    "tile"?: boolean;
 }
 declare global {
     interface HTMLPlusCardElement extends HTMLElement {
         /**
-         * If you want the card to have shadow, use the elevation property,
-         * And select the property value between `1` and `24`.
-         */
-        elevation?: CardElevation;
+        * If you want the card to have shadow, use the elevation property,
+        * And select the property value between `1` and `24`.
+        */
+        "elevation"?: CardElevation;
         /**
-         * Use the flat property to neutralize elevation.
-         */
-        flat?: boolean;
+        * Use the flat property to neutralize elevation.
+        */
+        "flat"?: boolean;
         /**
-         * If you want the card to have border, use the outlined property.
-         */
-        outlined?: boolean;
+        * If you want the card to have border, use the outlined property.
+        */
+        "outlined"?: boolean;
         /**
-         * Use tile property to neutralize border-radius.
-         */
-        tile?: boolean;
+        * Use tile property to neutralize border-radius.
+        */
+        "tile"?: boolean;
     }
     var HTMLPlusCardElement: {
         prototype: HTMLPlusCardElement;
@@ -73,7 +92,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-card": CardJSX & {
+            "plus-card": CardAttributeJSX & {
                 [key: string]: any;
             };
         }

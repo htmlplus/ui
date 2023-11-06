@@ -20,38 +20,53 @@ export declare class Floating extends PlusCore {
      */
     placement?: FloatingPlacement;
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface FloatingJSX {
     /**
-     * Positions the element relative to the viewport and prevents it from moving even when scrolled.
-     * Otherwise, the element is positioned relative to its nearest ancestor.
-     */
-    fixed?: boolean;
+    * Positions the element relative to the viewport and prevents it from moving even when scrolled.
+    * Otherwise, the element is positioned relative to its nearest ancestor.
+    */
+    "fixed"?: boolean;
     /**
-     * Specifies the deviation from the center.
-     */
-    offset?: FloatingOffset;
+    * Specifies the deviation from the center.
+    */
+    "offset"?: FloatingOffset;
     /**
-     * Specifies the display location.
-     */
-    placement?: FloatingPlacement;
+    * Specifies the display location.
+    */
+    "placement"?: FloatingPlacement;
+}
+export interface FloatingAttributeJSX {
+    /**
+    * Positions the element relative to the viewport and prevents it from moving even when scrolled.
+    * Otherwise, the element is positioned relative to its nearest ancestor.
+    */
+    "fixed"?: boolean;
+    /**
+    * Specifies the deviation from the center.
+    */
+    "offset"?: FloatingOffset;
+    /**
+    * Specifies the display location.
+    */
+    "placement"?: FloatingPlacement;
 }
 declare global {
     interface HTMLPlusFloatingElement extends HTMLElement {
         /**
-         * Positions the element relative to the viewport and prevents it from moving even when scrolled.
-         * Otherwise, the element is positioned relative to its nearest ancestor.
-         */
-        fixed?: boolean;
+        * Positions the element relative to the viewport and prevents it from moving even when scrolled.
+        * Otherwise, the element is positioned relative to its nearest ancestor.
+        */
+        "fixed"?: boolean;
         /**
-         * Specifies the deviation from the center.
-         */
-        offset?: FloatingOffset;
+        * Specifies the deviation from the center.
+        */
+        "offset"?: FloatingOffset;
         /**
-         * Specifies the display location.
-         */
-        placement?: FloatingPlacement;
+        * Specifies the display location.
+        */
+        "placement"?: FloatingPlacement;
     }
     var HTMLPlusFloatingElement: {
         prototype: HTMLPlusFloatingElement;
@@ -62,7 +77,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-floating": FloatingJSX & {
+            "plus-floating": FloatingAttributeJSX & {
                 [key: string]: any;
             };
         }

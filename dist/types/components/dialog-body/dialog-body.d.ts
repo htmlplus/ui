@@ -9,20 +9,26 @@ export declare class DialogBody extends PlusCore {
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
     scrollable?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogBodyJSX {
     /**
-     * It makes the user able to scroll the content by adding a scroll beside it.
-     */
-    scrollable?: boolean;
+    * It makes the user able to scroll the content by adding a scroll beside it.
+    */
+    "scrollable"?: boolean;
+}
+export interface DialogBodyAttributeJSX {
+    /**
+    * It makes the user able to scroll the content by adding a scroll beside it.
+    */
+    "scrollable"?: boolean;
 }
 declare global {
     interface HTMLPlusDialogBodyElement extends HTMLElement {
         /**
-         * It makes the user able to scroll the content by adding a scroll beside it.
-         */
-        scrollable?: boolean;
+        * It makes the user able to scroll the content by adding a scroll beside it.
+        */
+        "scrollable"?: boolean;
     }
     var HTMLPlusDialogBodyElement: {
         prototype: HTMLPlusDialogBodyElement;
@@ -33,7 +39,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog-body": DialogBodyJSX & {
+            "plus-dialog-body": DialogBodyAttributeJSX & {
                 [key: string]: any;
             };
         }

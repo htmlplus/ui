@@ -32,42 +32,61 @@ export declare class ClickOutside extends PlusCore {
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface ClickOutsideJSX {
     /**
-     * A boolean value indicating that events of this type will be dispatched to the registered
-     * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
-     */
-    capture?: boolean;
+    * A boolean value indicating that events of this type will be dispatched to the registered
+    * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
+    */
+    "capture"?: boolean;
     /**
-     * Disables the component functionality.
-     */
-    disabled?: boolean;
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
     /**
-     * The event fires only once.
-     */
-    once?: boolean;
+    * The event fires only once.
+    */
+    "once"?: boolean;
     /**
-     * Fires when outside of the component is clicked.
-     */
-    onPlusClickOutside?: (event: CustomEvent<void>) => void;
+    * Fires when outside of the component is clicked.
+    */
+    "onPlusClickOutside"?: (event: CustomEvent<void>) => void;
+}
+export interface ClickOutsideAttributeJSX {
+    /**
+    * A boolean value indicating that events of this type will be dispatched to the registered
+    * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
+    */
+    "capture"?: boolean;
+    /**
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
+    /**
+    * The event fires only once.
+    */
+    "once"?: boolean;
+    /**
+    * Fires when outside of the component is clicked.
+    */
+    "onplus-click-outside"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusClickOutsideElement extends HTMLElement {
         /**
-         * A boolean value indicating that events of this type will be dispatched to the registered
-         * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
-         */
-        capture?: boolean;
+        * A boolean value indicating that events of this type will be dispatched to the registered
+        * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
+        */
+        "capture"?: boolean;
         /**
-         * Disables the component functionality.
-         */
-        disabled?: boolean;
+        * Disables the component functionality.
+        */
+        "disabled"?: boolean;
         /**
-         * The event fires only once.
-         */
-        once?: boolean;
+        * The event fires only once.
+        */
+        "once"?: boolean;
     }
     var HTMLPlusClickOutsideElement: {
         prototype: HTMLPlusClickOutsideElement;
@@ -78,7 +97,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-click-outside": ClickOutsideJSX & {
+            "plus-click-outside": ClickOutsideAttributeJSX & {
                 [key: string]: any;
             };
         }

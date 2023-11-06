@@ -39,46 +39,65 @@ export declare class Breadcrumb extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface BreadcrumbJSX {
     /**
-     * Specifies the label for the expander button.
-     */
-    expanderText?: string;
+    * Specifies the label for the expander button.
+    */
+    "expanderText"?: string;
     /**
-     * Specifies the position of the expander button.
-     * The expander button is displayed when the number of items reached the maximum limit.
-     */
-    offset?: number;
+    * Specifies the position of the expander button.
+    * The expander button is displayed when the number of items reached the maximum limit.
+    */
+    "offset"?: number;
     /**
-     * Specifies the Maximum number of items that are allowed to be displayed.
-     */
-    max?: number;
+    * Specifies the Maximum number of items that are allowed to be displayed.
+    */
+    "max"?: number;
     /**
-     * Specifies the separator between items.
-     */
-    separator?: string;
+    * Specifies the separator between items.
+    */
+    "separator"?: string;
+}
+export interface BreadcrumbAttributeJSX {
+    /**
+    * Specifies the label for the expander button.
+    */
+    "expander-text"?: string;
+    /**
+    * Specifies the position of the expander button.
+    * The expander button is displayed when the number of items reached the maximum limit.
+    */
+    "offset"?: number;
+    /**
+    * Specifies the Maximum number of items that are allowed to be displayed.
+    */
+    "max"?: number;
+    /**
+    * Specifies the separator between items.
+    */
+    "separator"?: string;
 }
 declare global {
     interface HTMLPlusBreadcrumbElement extends HTMLElement {
         /**
-         * Specifies the label for the expander button.
-         */
-        expanderText?: string;
+        * Specifies the label for the expander button.
+        */
+        "expanderText"?: string;
         /**
-         * Specifies the position of the expander button.
-         * The expander button is displayed when the number of items reached the maximum limit.
-         */
-        offset?: number;
+        * Specifies the position of the expander button.
+        * The expander button is displayed when the number of items reached the maximum limit.
+        */
+        "offset"?: number;
         /**
-         * Specifies the Maximum number of items that are allowed to be displayed.
-         */
-        max?: number;
+        * Specifies the Maximum number of items that are allowed to be displayed.
+        */
+        "max"?: number;
         /**
-         * Specifies the separator between items.
-         */
-        separator?: string;
+        * Specifies the separator between items.
+        */
+        "separator"?: string;
     }
     var HTMLPlusBreadcrumbElement: {
         prototype: HTMLPlusBreadcrumbElement;
@@ -89,7 +108,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-breadcrumb": BreadcrumbJSX & {
+            "plus-breadcrumb": BreadcrumbAttributeJSX & {
                 [key: string]: any;
             };
         }

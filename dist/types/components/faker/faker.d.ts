@@ -30,40 +30,58 @@ export declare class Faker extends PlusCore {
 }
 export interface FakerJSX {
     /**
-     * Specifies the [API](https://fakerjs.dev/api).
-     */
-    api?: string;
+    * Specifies the [API](https://fakerjs.dev/api).
+    */
+    "api"?: string;
     /**
-     * Specifies the API's arguments as an array.
-     */
-    arguments?: Array<any>;
+    * Specifies the API's arguments as an array.
+    */
+    "arguments"?: Array<any>;
     /**
-     * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
-     */
-    instance?: FakerCoreType;
+    * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
+    */
+    "instance"?: FakerCoreType;
     /**
-     * Keeps the result constant.
-     */
-    seed?: number;
+    * Keeps the result constant.
+    */
+    "seed"?: number;
+}
+export interface FakerAttributeJSX {
+    /**
+    * Specifies the [API](https://fakerjs.dev/api).
+    */
+    "api"?: string;
+    /**
+    * Specifies the API's arguments as an array.
+    */
+    "arguments"?: Array<any>;
+    /**
+    * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
+    */
+    "instance"?: FakerCoreType;
+    /**
+    * Keeps the result constant.
+    */
+    "seed"?: number;
 }
 declare global {
     interface HTMLPlusFakerElement extends HTMLElement {
         /**
-         * Specifies the [API](https://fakerjs.dev/api).
-         */
-        api?: string;
+        * Specifies the [API](https://fakerjs.dev/api).
+        */
+        "api"?: string;
         /**
-         * Specifies the API's arguments as an array.
-         */
-        arguments?: Array<any>;
+        * Specifies the API's arguments as an array.
+        */
+        "arguments"?: Array<any>;
         /**
-         * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
-         */
-        instance?: FakerCoreType;
+        * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
+        */
+        "instance"?: FakerCoreType;
         /**
-         * Keeps the result constant.
-         */
-        seed?: number;
+        * Keeps the result constant.
+        */
+        "seed"?: number;
     }
     var HTMLPlusFakerElement: {
         prototype: HTMLPlusFakerElement;
@@ -74,7 +92,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-faker": FakerJSX & {
+            "plus-faker": FakerAttributeJSX & {
                 [key: string]: any;
             };
         }

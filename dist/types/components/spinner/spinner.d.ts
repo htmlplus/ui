@@ -20,36 +20,50 @@ export declare class Spinner extends PlusCore {
     type?: SpinnerType;
     get style(): string;
     get elements(): number[];
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SpinnerJSX {
     /**
-     * Specifies the color.
-     */
-    color?: string;
+    * Specifies the color.
+    */
+    "color"?: string;
     /**
-     * Specifies the size of the spinner.
-     */
-    size?: SpinnerSize;
+    * Specifies the size of the spinner.
+    */
+    "size"?: SpinnerSize;
     /**
-     * Specifies which variant of the spinner to use.
-     */
-    type?: SpinnerType;
+    * Specifies which variant of the spinner to use.
+    */
+    "type"?: SpinnerType;
+}
+export interface SpinnerAttributeJSX {
+    /**
+    * Specifies the color.
+    */
+    "color"?: string;
+    /**
+    * Specifies the size of the spinner.
+    */
+    "size"?: SpinnerSize;
+    /**
+    * Specifies which variant of the spinner to use.
+    */
+    "type"?: SpinnerType;
 }
 declare global {
     interface HTMLPlusSpinnerElement extends HTMLElement {
         /**
-         * Specifies the color.
-         */
-        color?: string;
+        * Specifies the color.
+        */
+        "color"?: string;
         /**
-         * Specifies the size of the spinner.
-         */
-        size?: SpinnerSize;
+        * Specifies the size of the spinner.
+        */
+        "size"?: SpinnerSize;
         /**
-         * Specifies which variant of the spinner to use.
-         */
-        type?: SpinnerType;
+        * Specifies which variant of the spinner to use.
+        */
+        "type"?: SpinnerType;
     }
     var HTMLPlusSpinnerElement: {
         prototype: HTMLPlusSpinnerElement;
@@ -60,7 +74,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-spinner": SpinnerJSX & {
+            "plus-spinner": SpinnerAttributeJSX & {
                 [key: string]: any;
             };
         }

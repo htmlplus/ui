@@ -5,9 +5,11 @@ import { PlusCore } from "../../core";
 export declare class DialogFooter extends PlusCore {
     static TAG: string;
     static STYLES: string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogFooterJSX {
+}
+export interface DialogFooterAttributeJSX {
 }
 declare global {
     interface HTMLPlusDialogFooterElement extends HTMLElement {
@@ -21,7 +23,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog-footer": DialogFooterJSX & {
+            "plus-dialog-footer": DialogFooterAttributeJSX & {
                 [key: string]: any;
             };
         }

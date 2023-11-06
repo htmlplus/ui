@@ -157,179 +157,271 @@ export declare class Animation extends PlusCore {
     onRemove(): void;
     updatedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AnimationJSX {
     /**
-     * Determines how values are combined between this animation and other,
-     * separate animations that do not specify their own specific composite operation.
-     */
-    composite?: AnimationComposite;
+    * Determines how values are combined between this animation and other,
+    * separate animations that do not specify their own specific composite operation.
+    */
+    "composite"?: AnimationComposite;
     /**
-     * The number of milliseconds to delay the start of the animation.
-     */
-    delay?: number;
+    * The number of milliseconds to delay the start of the animation.
+    */
+    "delay"?: number;
     /**
-     * Whether the animation runs forwards (`normal`), backwards (`reverse`),
-     * switches direction after each iteration (`alternate`), or runs
-     * backwards and switches direction after each iteration (`alternate-reverse`).
-     */
-    direction?: AnimationDirection;
+    * Whether the animation runs forwards (`normal`), backwards (`reverse`),
+    * switches direction after each iteration (`alternate`), or runs
+    * backwards and switches direction after each iteration (`alternate-reverse`).
+    */
+    "direction"?: AnimationDirection;
     /**
-     * The number of milliseconds each iteration of the animation takes to complete.
-     * Keep in mind that your animation will not run if this value is 0.
-     */
-    duration?: number;
+    * The number of milliseconds each iteration of the animation takes to complete.
+    * Keep in mind that your animation will not run if this value is 0.
+    */
+    "duration"?: number;
     /**
-     * The rate of the animation's change over time.
-     * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
-     * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
-     */
-    easing?: string;
+    * The rate of the animation's change over time.
+    * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
+    * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
+    */
+    "easing"?: string;
     /**
-     * The number of milliseconds to delay after the end of an animation.
-     * This is primarily of use when sequencing animations based on the end time of another animation.
-     */
-    endDelay?: number;
+    * The number of milliseconds to delay after the end of an animation.
+    * This is primarily of use when sequencing animations based on the end time of another animation.
+    */
+    "endDelay"?: number;
     /**
-     * Dictates whether the animation's effects should be reflected by the element(s)
-     * prior to playing ("`backwards`"), retained after the animation has completed
-     * playing ("`forwards`"), or `both`.
-     */
-    fill?: AnimationFill;
+    * Dictates whether the animation's effects should be reflected by the element(s)
+    * prior to playing ("`backwards`"), retained after the animation has completed
+    * playing ("`forwards`"), or `both`.
+    */
+    "fill"?: AnimationFill;
     /**
-     * The [Animation](https://mdn.io/api-animation) object instance.
-     */
-    instance?: globalThis.Animation;
+    * The [Animation](https://mdn.io/api-animation) object instance.
+    */
+    "instance"?: globalThis.Animation;
     /**
-     * Determines how values build from iteration to iteration in this animation.
-     * Can be set to `accumulate` or `replace`.
-     */
-    iterationComposite?: AnimationIterationComposite;
+    * Determines how values build from iteration to iteration in this animation.
+    * Can be set to `accumulate` or `replace`.
+    */
+    "iterationComposite"?: AnimationIterationComposite;
     /**
-     * The number of times the animation should repeat. And can also take a value of
-     * [Infinity](https://mdn.io/infinity)
-     * to make it repeat for as long as the element exists.
-     */
-    iterations?: number;
+    * The number of times the animation should repeat. And can also take a value of
+    * [Infinity](https://mdn.io/infinity)
+    * to make it repeat for as long as the element exists.
+    */
+    "iterations"?: number;
     /**
-     * Describes at what point in the iteration the animation should start.
-     * 0.5 would indicate starting halfway through the first iteration for example,
-     * and with this value set, an animation with 2 iterations would end halfway through
-     * a third iteration.
-     */
-    iterationStart?: number;
+    * Describes at what point in the iteration the animation should start.
+    * 0.5 would indicate starting halfway through the first iteration for example,
+    * and with this value set, an animation with 2 iterations would end halfway through
+    * a third iteration.
+    */
+    "iterationStart"?: number;
     /**
-     * A [keyframes](https://mdn.io/keyframe-formats)
-     * object or `null`.
-     */
-    keyframes?: Keyframe[];
+    * A [keyframes](https://mdn.io/keyframe-formats)
+    * object or `null`.
+    */
+    "keyframes"?: Keyframe[];
     /**
-     * Specifies what kind of animation will play.
-     * The list of available animations is [here](/component/animation/names).
-     */
-    name?: string;
+    * Specifies what kind of animation will play.
+    * The list of available animations is [here](/component/animation/names).
+    */
+    "name"?: string;
     /**
-     * Sets the animation's playback rate.
-     */
-    playbackRate?: number;
+    * Sets the animation's playback rate.
+    */
+    "playbackRate"?: number;
     /**
-     * Starts the animation.
-     */
-    run?: boolean;
+    * Starts the animation.
+    */
+    "run"?: boolean;
     /**
-     * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
-     * method is called or when the animation enters the "`idle`" play state from another state.
-     */
-    onPlusCancel?: (event: CustomEvent<void>) => void;
+    * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
+    * method is called or when the animation enters the "`idle`" play state from another state.
+    */
+    "onPlusCancel"?: (event: CustomEvent<void>) => void;
     /**
-     * Fires when the animation finishes playing.
-     */
-    onPlusFinish?: (event: CustomEvent<void>) => void;
+    * Fires when the animation finishes playing.
+    */
+    "onPlusFinish"?: (event: CustomEvent<void>) => void;
     /**
-     * Fires when the animation is removed (i.e., put into an `active` replace state).
-     */
-    onPlusRemove?: (event: CustomEvent<void>) => void;
+    * Fires when the animation is removed (i.e., put into an `active` replace state).
+    */
+    "onPlusRemove"?: (event: CustomEvent<void>) => void;
+}
+export interface AnimationAttributeJSX {
+    /**
+    * Determines how values are combined between this animation and other,
+    * separate animations that do not specify their own specific composite operation.
+    */
+    "composite"?: AnimationComposite;
+    /**
+    * The number of milliseconds to delay the start of the animation.
+    */
+    "delay"?: number;
+    /**
+    * Whether the animation runs forwards (`normal`), backwards (`reverse`),
+    * switches direction after each iteration (`alternate`), or runs
+    * backwards and switches direction after each iteration (`alternate-reverse`).
+    */
+    "direction"?: AnimationDirection;
+    /**
+    * The number of milliseconds each iteration of the animation takes to complete.
+    * Keep in mind that your animation will not run if this value is 0.
+    */
+    "duration"?: number;
+    /**
+    * The rate of the animation's change over time.
+    * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
+    * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
+    */
+    "easing"?: string;
+    /**
+    * The number of milliseconds to delay after the end of an animation.
+    * This is primarily of use when sequencing animations based on the end time of another animation.
+    */
+    "end-delay"?: number;
+    /**
+    * Dictates whether the animation's effects should be reflected by the element(s)
+    * prior to playing ("`backwards`"), retained after the animation has completed
+    * playing ("`forwards`"), or `both`.
+    */
+    "fill"?: AnimationFill;
+    /**
+    * The [Animation](https://mdn.io/api-animation) object instance.
+    */
+    "instance"?: globalThis.Animation;
+    /**
+    * Determines how values build from iteration to iteration in this animation.
+    * Can be set to `accumulate` or `replace`.
+    */
+    "iteration-composite"?: AnimationIterationComposite;
+    /**
+    * The number of times the animation should repeat. And can also take a value of
+    * [Infinity](https://mdn.io/infinity)
+    * to make it repeat for as long as the element exists.
+    */
+    "iterations"?: number;
+    /**
+    * Describes at what point in the iteration the animation should start.
+    * 0.5 would indicate starting halfway through the first iteration for example,
+    * and with this value set, an animation with 2 iterations would end halfway through
+    * a third iteration.
+    */
+    "iteration-start"?: number;
+    /**
+    * A [keyframes](https://mdn.io/keyframe-formats)
+    * object or `null`.
+    */
+    "keyframes"?: Keyframe[];
+    /**
+    * Specifies what kind of animation will play.
+    * The list of available animations is [here](/component/animation/names).
+    */
+    "name"?: string;
+    /**
+    * Sets the animation's playback rate.
+    */
+    "playback-rate"?: number;
+    /**
+    * Starts the animation.
+    */
+    "run"?: boolean;
+    /**
+    * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
+    * method is called or when the animation enters the "`idle`" play state from another state.
+    */
+    "onplus-cancel"?: (event: CustomEvent<void>) => void;
+    /**
+    * Fires when the animation finishes playing.
+    */
+    "onplus-finish"?: (event: CustomEvent<void>) => void;
+    /**
+    * Fires when the animation is removed (i.e., put into an `active` replace state).
+    */
+    "onplus-remove"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusAnimationElement extends HTMLElement {
         /**
-         * Determines how values are combined between this animation and other,
-         * separate animations that do not specify their own specific composite operation.
-         */
-        composite?: AnimationComposite;
+        * Determines how values are combined between this animation and other,
+        * separate animations that do not specify their own specific composite operation.
+        */
+        "composite"?: AnimationComposite;
         /**
-         * The number of milliseconds to delay the start of the animation.
-         */
-        delay?: number;
+        * The number of milliseconds to delay the start of the animation.
+        */
+        "delay"?: number;
         /**
-         * Whether the animation runs forwards (`normal`), backwards (`reverse`),
-         * switches direction after each iteration (`alternate`), or runs
-         * backwards and switches direction after each iteration (`alternate-reverse`).
-         */
-        direction?: AnimationDirection;
+        * Whether the animation runs forwards (`normal`), backwards (`reverse`),
+        * switches direction after each iteration (`alternate`), or runs
+        * backwards and switches direction after each iteration (`alternate-reverse`).
+        */
+        "direction"?: AnimationDirection;
         /**
-         * The number of milliseconds each iteration of the animation takes to complete.
-         * Keep in mind that your animation will not run if this value is 0.
-         */
-        duration?: number;
+        * The number of milliseconds each iteration of the animation takes to complete.
+        * Keep in mind that your animation will not run if this value is 0.
+        */
+        "duration"?: number;
         /**
-         * The rate of the animation's change over time.
-         * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
-         * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
-         */
-        easing?: string;
+        * The rate of the animation's change over time.
+        * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
+        * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
+        */
+        "easing"?: string;
         /**
-         * The number of milliseconds to delay after the end of an animation.
-         * This is primarily of use when sequencing animations based on the end time of another animation.
-         */
-        endDelay?: number;
+        * The number of milliseconds to delay after the end of an animation.
+        * This is primarily of use when sequencing animations based on the end time of another animation.
+        */
+        "endDelay"?: number;
         /**
-         * Dictates whether the animation's effects should be reflected by the element(s)
-         * prior to playing ("`backwards`"), retained after the animation has completed
-         * playing ("`forwards`"), or `both`.
-         */
-        fill?: AnimationFill;
+        * Dictates whether the animation's effects should be reflected by the element(s)
+        * prior to playing ("`backwards`"), retained after the animation has completed
+        * playing ("`forwards`"), or `both`.
+        */
+        "fill"?: AnimationFill;
         /**
-         * The [Animation](https://mdn.io/api-animation) object instance.
-         */
-        instance?: globalThis.Animation;
+        * The [Animation](https://mdn.io/api-animation) object instance.
+        */
+        "instance"?: globalThis.Animation;
         /**
-         * Determines how values build from iteration to iteration in this animation.
-         * Can be set to `accumulate` or `replace`.
-         */
-        iterationComposite?: AnimationIterationComposite;
+        * Determines how values build from iteration to iteration in this animation.
+        * Can be set to `accumulate` or `replace`.
+        */
+        "iterationComposite"?: AnimationIterationComposite;
         /**
-         * The number of times the animation should repeat. And can also take a value of
-         * [Infinity](https://mdn.io/infinity)
-         * to make it repeat for as long as the element exists.
-         */
-        iterations?: number;
+        * The number of times the animation should repeat. And can also take a value of
+        * [Infinity](https://mdn.io/infinity)
+        * to make it repeat for as long as the element exists.
+        */
+        "iterations"?: number;
         /**
-         * Describes at what point in the iteration the animation should start.
-         * 0.5 would indicate starting halfway through the first iteration for example,
-         * and with this value set, an animation with 2 iterations would end halfway through
-         * a third iteration.
-         */
-        iterationStart?: number;
+        * Describes at what point in the iteration the animation should start.
+        * 0.5 would indicate starting halfway through the first iteration for example,
+        * and with this value set, an animation with 2 iterations would end halfway through
+        * a third iteration.
+        */
+        "iterationStart"?: number;
         /**
-         * A [keyframes](https://mdn.io/keyframe-formats)
-         * object or `null`.
-         */
-        keyframes?: Keyframe[];
+        * A [keyframes](https://mdn.io/keyframe-formats)
+        * object or `null`.
+        */
+        "keyframes"?: Keyframe[];
         /**
-         * Specifies what kind of animation will play.
-         * The list of available animations is [here](/component/animation/names).
-         */
-        name?: string;
+        * Specifies what kind of animation will play.
+        * The list of available animations is [here](/component/animation/names).
+        */
+        "name"?: string;
         /**
-         * Sets the animation's playback rate.
-         */
-        playbackRate?: number;
+        * Sets the animation's playback rate.
+        */
+        "playbackRate"?: number;
         /**
-         * Starts the animation.
-         */
-        run?: boolean;
+        * Starts the animation.
+        */
+        "run"?: boolean;
     }
     var HTMLPlusAnimationElement: {
         prototype: HTMLPlusAnimationElement;
@@ -340,7 +432,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-animation": AnimationJSX & {
+            "plus-animation": AnimationAttributeJSX & {
                 [key: string]: any;
             };
         }

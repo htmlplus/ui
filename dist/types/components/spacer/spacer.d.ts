@@ -12,16 +12,22 @@ export declare class Spacer extends PlusCore {
 }
 export interface SpacerJSX {
     /**
-     * TODO
-     */
-    grow?: number;
+    * TODO
+    */
+    "grow"?: number;
+}
+export interface SpacerAttributeJSX {
+    /**
+    * TODO
+    */
+    "grow"?: number;
 }
 declare global {
     interface HTMLPlusSpacerElement extends HTMLElement {
         /**
-         * TODO
-         */
-        grow?: number;
+        * TODO
+        */
+        "grow"?: number;
     }
     var HTMLPlusSpacerElement: {
         prototype: HTMLPlusSpacerElement;
@@ -32,7 +38,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-spacer": SpacerJSX & {
+            "plus-spacer": SpacerAttributeJSX & {
                 [key: string]: any;
             };
         }

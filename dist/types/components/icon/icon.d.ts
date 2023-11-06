@@ -41,68 +41,98 @@ export declare class Icon extends PlusCore {
     watcher(): void;
     sync(input?: SVGElement | string): boolean;
     update(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface IconJSX {
     /**
-     * Specifies the color.
-     */
-    color?: string;
+    * Specifies the color.
+    */
+    "color"?: string;
     /**
-     * Flips in `horizontal`, `vertical` or `both` directions.
-     */
-    flip?: IconFlip;
+    * Flips in `horizontal`, `vertical` or `both` directions.
+    */
+    "flip"?: IconFlip;
     /**
-     * Specifies an alternate description to use for assistive devices.
-     */
-    label?: string;
+    * Specifies an alternate description to use for assistive devices.
+    */
+    "label"?: string;
     /**
-     * Specifies the name.
-     */
-    name?: string;
+    * Specifies the name.
+    */
+    "name"?: string;
     /**
-     * An asynchronous function to load SVG files.
-     */
-    resolver?: IconResolver;
+    * An asynchronous function to load SVG files.
+    */
+    "resolver"?: IconResolver;
     /**
-     * Specifies the rotation.
-     */
-    rotate?: number;
+    * Specifies the rotation.
+    */
+    "rotate"?: number;
     /**
-     * Specifies the size.
-     */
-    size?: IconSize;
+    * Specifies the size.
+    */
+    "size"?: IconSize;
+}
+export interface IconAttributeJSX {
+    /**
+    * Specifies the color.
+    */
+    "color"?: string;
+    /**
+    * Flips in `horizontal`, `vertical` or `both` directions.
+    */
+    "flip"?: IconFlip;
+    /**
+    * Specifies an alternate description to use for assistive devices.
+    */
+    "label"?: string;
+    /**
+    * Specifies the name.
+    */
+    "name"?: string;
+    /**
+    * An asynchronous function to load SVG files.
+    */
+    "resolver"?: IconResolver;
+    /**
+    * Specifies the rotation.
+    */
+    "rotate"?: number;
+    /**
+    * Specifies the size.
+    */
+    "size"?: IconSize;
 }
 declare global {
     interface HTMLPlusIconElement extends HTMLElement {
         /**
-         * Specifies the color.
-         */
-        color?: string;
+        * Specifies the color.
+        */
+        "color"?: string;
         /**
-         * Flips in `horizontal`, `vertical` or `both` directions.
-         */
-        flip?: IconFlip;
+        * Flips in `horizontal`, `vertical` or `both` directions.
+        */
+        "flip"?: IconFlip;
         /**
-         * Specifies an alternate description to use for assistive devices.
-         */
-        label?: string;
+        * Specifies an alternate description to use for assistive devices.
+        */
+        "label"?: string;
         /**
-         * Specifies the name.
-         */
-        name?: string;
+        * Specifies the name.
+        */
+        "name"?: string;
         /**
-         * An asynchronous function to load SVG files.
-         */
-        resolver?: IconResolver;
+        * An asynchronous function to load SVG files.
+        */
+        "resolver"?: IconResolver;
         /**
-         * Specifies the rotation.
-         */
-        rotate?: number;
+        * Specifies the rotation.
+        */
+        "rotate"?: number;
         /**
-         * Specifies the size.
-         */
-        size?: IconSize;
+        * Specifies the size.
+        */
+        "size"?: IconSize;
     }
     var HTMLPlusIconElement: {
         prototype: HTMLPlusIconElement;
@@ -113,7 +143,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-icon": IconJSX & {
+            "plus-icon": IconAttributeJSX & {
                 [key: string]: any;
             };
         }

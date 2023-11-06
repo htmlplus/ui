@@ -20,28 +20,38 @@ export declare class TabsTab extends PlusCore {
      * Events handler
      */
     onClick(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsTabJSX {
     /**
-     * A Tab can be disabled by setting disabled property.
-     */
-    disabled?: boolean;
+    * A Tab can be disabled by setting disabled property.
+    */
+    "disabled"?: boolean;
     /**
-     * Provides your own value.
-     */
-    value?: any;
+    * Provides your own value.
+    */
+    "value"?: any;
+}
+export interface TabsTabAttributeJSX {
+    /**
+    * A Tab can be disabled by setting disabled property.
+    */
+    "disabled"?: boolean;
+    /**
+    * Provides your own value.
+    */
+    "value"?: any;
 }
 declare global {
     interface HTMLPlusTabsTabElement extends HTMLElement {
         /**
-         * A Tab can be disabled by setting disabled property.
-         */
-        disabled?: boolean;
+        * A Tab can be disabled by setting disabled property.
+        */
+        "disabled"?: boolean;
         /**
-         * Provides your own value.
-         */
-        value?: any;
+        * Provides your own value.
+        */
+        "value"?: any;
     }
     var HTMLPlusTabsTabElement: {
         prototype: HTMLPlusTabsTabElement;
@@ -52,7 +62,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tabs-tab": TabsTabJSX & {
+            "plus-tabs-tab": TabsTabAttributeJSX & {
                 [key: string]: any;
             };
         }

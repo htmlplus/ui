@@ -5,9 +5,11 @@ import { PlusCore } from "../../core";
 export declare class DialogHeader extends PlusCore {
     static TAG: string;
     static STYLES: string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogHeaderJSX {
+}
+export interface DialogHeaderAttributeJSX {
 }
 declare global {
     interface HTMLPlusDialogHeaderElement extends HTMLElement {
@@ -21,7 +23,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog-header": DialogHeaderJSX & {
+            "plus-dialog-header": DialogHeaderAttributeJSX & {
                 [key: string]: any;
             };
         }

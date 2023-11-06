@@ -23,52 +23,74 @@ export declare class Divider extends PlusCore {
      *  Draws the divider in a vertical orientation.
      */
     vertical?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DividerJSX {
     /**
-     * Specifies the location of the default slot.
-     */
-    placement?: DividerPlacement;
+    * Specifies the location of the default slot.
+    */
+    "placement"?: DividerPlacement;
     /**
-     * Specifies the width of the border.
-     */
-    width?: DividerWidth;
+    * Specifies the width of the border.
+    */
+    "width"?: DividerWidth;
     /**
-     * Specifies the style of the border.
-     */
-    type?: DividerType;
+    * Specifies the style of the border.
+    */
+    "type"?: DividerType;
     /**
-     * Specifies the amount of indentation.
-     */
-    variant?: DividerVariant;
+    * Specifies the amount of indentation.
+    */
+    "variant"?: DividerVariant;
     /**
-     *  Draws the divider in a vertical orientation.
-     */
-    vertical?: boolean;
+    *  Draws the divider in a vertical orientation.
+    */
+    "vertical"?: boolean;
+}
+export interface DividerAttributeJSX {
+    /**
+    * Specifies the location of the default slot.
+    */
+    "placement"?: DividerPlacement;
+    /**
+    * Specifies the width of the border.
+    */
+    "width"?: DividerWidth;
+    /**
+    * Specifies the style of the border.
+    */
+    "type"?: DividerType;
+    /**
+    * Specifies the amount of indentation.
+    */
+    "variant"?: DividerVariant;
+    /**
+    *  Draws the divider in a vertical orientation.
+    */
+    "vertical"?: boolean;
 }
 declare global {
     interface HTMLPlusDividerElement extends HTMLElement {
         /**
-         * Specifies the location of the default slot.
-         */
-        placement?: DividerPlacement;
+        * Specifies the location of the default slot.
+        */
+        "placement"?: DividerPlacement;
         /**
-         * Specifies the width of the border.
-         */
-        width?: DividerWidth;
+        * Specifies the width of the border.
+        */
+        "width"?: DividerWidth;
         /**
-         * Specifies the style of the border.
-         */
-        type?: DividerType;
+        * Specifies the style of the border.
+        */
+        "type"?: DividerType;
         /**
-         * Specifies the amount of indentation.
-         */
-        variant?: DividerVariant;
+        * Specifies the amount of indentation.
+        */
+        "variant"?: DividerVariant;
         /**
-         *  Draws the divider in a vertical orientation.
-         */
-        vertical?: boolean;
+        *  Draws the divider in a vertical orientation.
+        */
+        "vertical"?: boolean;
     }
     var HTMLPlusDividerElement: {
         prototype: HTMLPlusDividerElement;
@@ -79,7 +101,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-divider": DividerJSX & {
+            "plus-divider": DividerAttributeJSX & {
                 [key: string]: any;
             };
         }

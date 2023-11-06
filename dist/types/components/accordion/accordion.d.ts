@@ -81,54 +81,86 @@ export declare class Accordion extends PlusCore {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AccordionJSX {
     /**
-     * Disables the component functionality.
-     */
-    disabled?: boolean;
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
     /**
-     * Control the component to expand or not.
-     */
-    open?: boolean;
+    * Control the component to expand or not.
+    */
+    "open"?: boolean;
     /**
-     * The summary text displayed on the header.
-     */
-    summary?: string;
+    * The summary text displayed on the header.
+    */
+    "summary"?: string;
     /**
-     * Fires when the component is about to collapse.
-     * This event can be [canceled](TODO).
-     */
-    onPlusCollapse?: (event: CustomEvent<void>) => void;
+    * Fires when the component is about to collapse.
+    * This event can be [canceled](TODO).
+    */
+    "onPlusCollapse"?: (event: CustomEvent<void>) => void;
     /**
-     * Fires after the component has collapsed.
-     */
-    onPlusCollapsed?: (event: CustomEvent<void>) => void;
+    * Fires after the component has collapsed.
+    */
+    "onPlusCollapsed"?: (event: CustomEvent<void>) => void;
     /**
-     * Fires when the component is about to expand.
-     * This event can be [canceled](TODO).
-     */
-    onPlusExpand?: (event: CustomEvent<void>) => void;
+    * Fires when the component is about to expand.
+    * This event can be [canceled](TODO).
+    */
+    "onPlusExpand"?: (event: CustomEvent<void>) => void;
     /**
-     * Fires after the component has expanded.
-     */
-    onPlusExpanded?: (event: CustomEvent<void>) => void;
+    * Fires after the component has expanded.
+    */
+    "onPlusExpanded"?: (event: CustomEvent<void>) => void;
+}
+export interface AccordionAttributeJSX {
+    /**
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
+    /**
+    * Control the component to expand or not.
+    */
+    "open"?: boolean;
+    /**
+    * The summary text displayed on the header.
+    */
+    "summary"?: string;
+    /**
+    * Fires when the component is about to collapse.
+    * This event can be [canceled](TODO).
+    */
+    "onplus-collapse"?: (event: CustomEvent<void>) => void;
+    /**
+    * Fires after the component has collapsed.
+    */
+    "onplus-collapsed"?: (event: CustomEvent<void>) => void;
+    /**
+    * Fires when the component is about to expand.
+    * This event can be [canceled](TODO).
+    */
+    "onplus-expand"?: (event: CustomEvent<void>) => void;
+    /**
+    * Fires after the component has expanded.
+    */
+    "onplus-expanded"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusAccordionElement extends HTMLElement {
         /**
-         * Disables the component functionality.
-         */
-        disabled?: boolean;
+        * Disables the component functionality.
+        */
+        "disabled"?: boolean;
         /**
-         * Control the component to expand or not.
-         */
-        open?: boolean;
+        * Control the component to expand or not.
+        */
+        "open"?: boolean;
         /**
-         * The summary text displayed on the header.
-         */
-        summary?: string;
+        * The summary text displayed on the header.
+        */
+        "summary"?: string;
     }
     var HTMLPlusAccordionElement: {
         prototype: HTMLPlusAccordionElement;
@@ -139,7 +171,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-accordion": AccordionJSX & {
+            "plus-accordion": AccordionAttributeJSX & {
                 [key: string]: any;
             };
         }

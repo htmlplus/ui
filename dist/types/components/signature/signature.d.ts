@@ -143,116 +143,178 @@ export declare class Signature extends PlusForm {
     onResize(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SignatureJSX {
     /**
-     * Specifies the background color.
-     */
-    backgroundColor?: string;
+    * Specifies the background color.
+    */
+    "backgroundColor"?: string;
     /**
-     * Clears the canvas after resizing.
-     */
-    clearOnResize?: boolean;
+    * Clears the canvas after resizing.
+    */
+    "clearOnResize"?: boolean;
     /**
-     * Specifies the color of the strokes.
-     */
-    color?: string;
+    * Specifies the color of the strokes.
+    */
+    "color"?: string;
     /**
-     * Disables the component functionality.
-     */
-    disabled?: boolean;
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
     /**
-     * Specifies the distance between the previous point and the next one.
-     */
-    distance?: number;
+    * Specifies the distance between the previous point and the next one.
+    */
+    "distance"?: number;
     /**
-     * Specifies the radius of a single dot.
-     */
-    dotSize?: number;
+    * Specifies the radius of a single dot.
+    */
+    "dotSize"?: number;
     /**
-     * Specifies the maximum width of the strokes.
-     */
-    maxWidth?: number;
+    * Specifies the maximum width of the strokes.
+    */
+    "maxWidth"?: number;
     /**
-     * Specifies the minimum width of the strokes.
-     */
-    minWidth?: number;
+    * Specifies the minimum width of the strokes.
+    */
+    "minWidth"?: number;
     /**
-     * Observes the component dimensions to apply new changes on the canvas.
-     */
-    resizable?: boolean;
+    * Observes the component dimensions to apply new changes on the canvas.
+    */
+    "resizable"?: boolean;
     /**
-     * Specifies the time distance between the previous point and the next one.
-     */
-    throttle?: number;
+    * Specifies the time distance between the previous point and the next one.
+    */
+    "throttle"?: number;
     /**
-     * Specifies the velocity based on the previous velocity.
-     */
-    velocity?: number;
+    * Specifies the velocity based on the previous velocity.
+    */
+    "velocity"?: number;
     /**
-     * Fires after updating the stroke.
-     */
-    onPlusAfter?: (event: CustomEvent<PointerEvent>) => void;
+    * Fires after updating the stroke.
+    */
+    "onPlusAfter"?: (event: CustomEvent<PointerEvent>) => void;
     /**
-     * Fires before updating the stroke.
-     */
-    onPlusBefore?: (event: CustomEvent<PointerEvent>) => void;
+    * Fires before updating the stroke.
+    */
+    "onPlusBefore"?: (event: CustomEvent<PointerEvent>) => void;
     /**
-     * Fires after a stroke ends.
-     */
-    onPlusEnd?: (event: CustomEvent<PointerEvent>) => void;
+    * Fires after a stroke ends.
+    */
+    "onPlusEnd"?: (event: CustomEvent<PointerEvent>) => void;
     /**
-     * Fires before a stroke starts.
-     */
-    onPlusStart?: (event: CustomEvent<PointerEvent>) => void;
+    * Fires before a stroke starts.
+    */
+    "onPlusStart"?: (event: CustomEvent<PointerEvent>) => void;
+}
+export interface SignatureAttributeJSX {
+    /**
+    * Specifies the background color.
+    */
+    "background-color"?: string;
+    /**
+    * Clears the canvas after resizing.
+    */
+    "clear-on-resize"?: boolean;
+    /**
+    * Specifies the color of the strokes.
+    */
+    "color"?: string;
+    /**
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
+    /**
+    * Specifies the distance between the previous point and the next one.
+    */
+    "distance"?: number;
+    /**
+    * Specifies the radius of a single dot.
+    */
+    "dot-size"?: number;
+    /**
+    * Specifies the maximum width of the strokes.
+    */
+    "max-width"?: number;
+    /**
+    * Specifies the minimum width of the strokes.
+    */
+    "min-width"?: number;
+    /**
+    * Observes the component dimensions to apply new changes on the canvas.
+    */
+    "resizable"?: boolean;
+    /**
+    * Specifies the time distance between the previous point and the next one.
+    */
+    "throttle"?: number;
+    /**
+    * Specifies the velocity based on the previous velocity.
+    */
+    "velocity"?: number;
+    /**
+    * Fires after updating the stroke.
+    */
+    "onplus-after"?: (event: CustomEvent<PointerEvent>) => void;
+    /**
+    * Fires before updating the stroke.
+    */
+    "onplus-before"?: (event: CustomEvent<PointerEvent>) => void;
+    /**
+    * Fires after a stroke ends.
+    */
+    "onplus-end"?: (event: CustomEvent<PointerEvent>) => void;
+    /**
+    * Fires before a stroke starts.
+    */
+    "onplus-start"?: (event: CustomEvent<PointerEvent>) => void;
 }
 declare global {
     interface HTMLPlusSignatureElement extends HTMLElement {
         /**
-         * Specifies the background color.
-         */
-        backgroundColor?: string;
+        * Specifies the background color.
+        */
+        "backgroundColor"?: string;
         /**
-         * Clears the canvas after resizing.
-         */
-        clearOnResize?: boolean;
+        * Clears the canvas after resizing.
+        */
+        "clearOnResize"?: boolean;
         /**
-         * Specifies the color of the strokes.
-         */
-        color?: string;
+        * Specifies the color of the strokes.
+        */
+        "color"?: string;
         /**
-         * Disables the component functionality.
-         */
-        disabled?: boolean;
+        * Disables the component functionality.
+        */
+        "disabled"?: boolean;
         /**
-         * Specifies the distance between the previous point and the next one.
-         */
-        distance?: number;
+        * Specifies the distance between the previous point and the next one.
+        */
+        "distance"?: number;
         /**
-         * Specifies the radius of a single dot.
-         */
-        dotSize?: number;
+        * Specifies the radius of a single dot.
+        */
+        "dotSize"?: number;
         /**
-         * Specifies the maximum width of the strokes.
-         */
-        maxWidth?: number;
+        * Specifies the maximum width of the strokes.
+        */
+        "maxWidth"?: number;
         /**
-         * Specifies the minimum width of the strokes.
-         */
-        minWidth?: number;
+        * Specifies the minimum width of the strokes.
+        */
+        "minWidth"?: number;
         /**
-         * Observes the component dimensions to apply new changes on the canvas.
-         */
-        resizable?: boolean;
+        * Observes the component dimensions to apply new changes on the canvas.
+        */
+        "resizable"?: boolean;
         /**
-         * Specifies the time distance between the previous point and the next one.
-         */
-        throttle?: number;
+        * Specifies the time distance between the previous point and the next one.
+        */
+        "throttle"?: number;
         /**
-         * Specifies the velocity based on the previous velocity.
-         */
-        velocity?: number;
+        * Specifies the velocity based on the previous velocity.
+        */
+        "velocity"?: number;
     }
     var HTMLPlusSignatureElement: {
         prototype: HTMLPlusSignatureElement;
@@ -263,7 +325,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-signature": SignatureJSX & {
+            "plus-signature": SignatureAttributeJSX & {
                 [key: string]: any;
             };
         }

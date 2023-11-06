@@ -100,98 +100,143 @@ export declare class Tooltip extends PlusCore {
     connectCallback(): Promise<void>;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TooltipJSX {
     /**
-     * Specifies whether to display the arrow or not.
-     */
-    arrow?: boolean;
+    * Specifies whether to display the arrow or not.
+    */
+    "arrow"?: boolean;
     /**
-     * Specifies a delay in milliseconds for show or hide.
-     * Use a number for both show and hide or
-     * create an array of two separate numbers for show and hide.
-     */
-    delay?: TooltipDelay;
+    * Specifies a delay in milliseconds for show or hide.
+    * Use a number for both show and hide or
+    * create an array of two separate numbers for show and hide.
+    */
+    "delay"?: TooltipDelay;
     /**
-     * Disables the component functionality.
-     */
-    disabled?: boolean;
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
     /**
-     * TODO
-     */
-    fixed?: boolean;
+    * TODO
+    */
+    "fixed"?: boolean;
     /**
-     * TODO
-     */
-    offset?: TooltipOffset;
+    * TODO
+    */
+    "offset"?: TooltipOffset;
     /**
-     * Specifies the display location of the component relative to the reference.
-     */
-    placement?: TooltipPlacement;
+    * Specifies the display location of the component relative to the reference.
+    */
+    "placement"?: TooltipPlacement;
     /**
-     * Specifies the element to which the tooltip will be attached.
-     * Use `next` to attach to the next sibling.
-     * Use `parent` to attach to the parent.
-     * Use `previous` to attach to the previous sibling.
-     * Use a string to find an element to attach to that.
-     * Use an element to attach to that.
-     */
-    reference?: TooltipReference;
+    * Specifies the element to which the tooltip will be attached.
+    * Use `next` to attach to the next sibling.
+    * Use `parent` to attach to the parent.
+    * Use `previous` to attach to the previous sibling.
+    * Use a string to find an element to attach to that.
+    * Use an element to attach to that.
+    */
+    "reference"?: TooltipReference;
     /**
-     * Specifies the activation method.
-     */
-    trigger?: TooltipTrigger;
+    * Specifies the activation method.
+    */
+    "trigger"?: TooltipTrigger;
     /**
-     * TODO
-     */
-    z?: 'auto' | 'vertical' | 'horizontal' | 'move';
+    * TODO
+    */
+    "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
+}
+export interface TooltipAttributeJSX {
+    /**
+    * Specifies whether to display the arrow or not.
+    */
+    "arrow"?: boolean;
+    /**
+    * Specifies a delay in milliseconds for show or hide.
+    * Use a number for both show and hide or
+    * create an array of two separate numbers for show and hide.
+    */
+    "delay"?: TooltipDelay;
+    /**
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
+    /**
+    * TODO
+    */
+    "fixed"?: boolean;
+    /**
+    * TODO
+    */
+    "offset"?: TooltipOffset;
+    /**
+    * Specifies the display location of the component relative to the reference.
+    */
+    "placement"?: TooltipPlacement;
+    /**
+    * Specifies the element to which the tooltip will be attached.
+    * Use `next` to attach to the next sibling.
+    * Use `parent` to attach to the parent.
+    * Use `previous` to attach to the previous sibling.
+    * Use a string to find an element to attach to that.
+    * Use an element to attach to that.
+    */
+    "reference"?: TooltipReference;
+    /**
+    * Specifies the activation method.
+    */
+    "trigger"?: TooltipTrigger;
+    /**
+    * TODO
+    */
+    "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
 }
 declare global {
     interface HTMLPlusTooltipElement extends HTMLElement {
         /**
-         * Specifies whether to display the arrow or not.
-         */
-        arrow?: boolean;
+        * Specifies whether to display the arrow or not.
+        */
+        "arrow"?: boolean;
         /**
-         * Specifies a delay in milliseconds for show or hide.
-         * Use a number for both show and hide or
-         * create an array of two separate numbers for show and hide.
-         */
-        delay?: TooltipDelay;
+        * Specifies a delay in milliseconds for show or hide.
+        * Use a number for both show and hide or
+        * create an array of two separate numbers for show and hide.
+        */
+        "delay"?: TooltipDelay;
         /**
-         * Disables the component functionality.
-         */
-        disabled?: boolean;
+        * Disables the component functionality.
+        */
+        "disabled"?: boolean;
         /**
-         * TODO
-         */
-        fixed?: boolean;
+        * TODO
+        */
+        "fixed"?: boolean;
         /**
-         * TODO
-         */
-        offset?: TooltipOffset;
+        * TODO
+        */
+        "offset"?: TooltipOffset;
         /**
-         * Specifies the display location of the component relative to the reference.
-         */
-        placement?: TooltipPlacement;
+        * Specifies the display location of the component relative to the reference.
+        */
+        "placement"?: TooltipPlacement;
         /**
-         * Specifies the element to which the tooltip will be attached.
-         * Use `next` to attach to the next sibling.
-         * Use `parent` to attach to the parent.
-         * Use `previous` to attach to the previous sibling.
-         * Use a string to find an element to attach to that.
-         * Use an element to attach to that.
-         */
-        reference?: TooltipReference;
+        * Specifies the element to which the tooltip will be attached.
+        * Use `next` to attach to the next sibling.
+        * Use `parent` to attach to the parent.
+        * Use `previous` to attach to the previous sibling.
+        * Use a string to find an element to attach to that.
+        * Use an element to attach to that.
+        */
+        "reference"?: TooltipReference;
         /**
-         * Specifies the activation method.
-         */
-        trigger?: TooltipTrigger;
+        * Specifies the activation method.
+        */
+        "trigger"?: TooltipTrigger;
         /**
-         * TODO
-         */
-        z?: 'auto' | 'vertical' | 'horizontal' | 'move';
+        * TODO
+        */
+        "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
     }
     var HTMLPlusTooltipElement: {
         prototype: HTMLPlusTooltipElement;
@@ -202,7 +247,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tooltip": TooltipJSX & {
+            "plus-tooltip": TooltipAttributeJSX & {
                 [key: string]: any;
             };
         }

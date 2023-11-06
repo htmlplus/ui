@@ -30,34 +30,49 @@ export declare class Portal extends PlusCore {
 }
 export interface PortalJSX {
     /**
-     * Disables the portal.
-     */
-    disabled?: boolean;
+    * Disables the portal.
+    */
+    "disabled"?: boolean;
     /**
-     * Specifies the position of the portal content relative to the target.
-     */
-    strategy?: PortalStrategy;
+    * Specifies the position of the portal content relative to the target.
+    */
+    "strategy"?: PortalStrategy;
     /**
-     * Specifies the position of the portal content, It Can include css selectors,
-     * node or any html elements.
-     */
-    target?: PortalTarget;
+    * Specifies the position of the portal content, It Can include css selectors,
+    * node or any html elements.
+    */
+    "target"?: PortalTarget;
+}
+export interface PortalAttributeJSX {
+    /**
+    * Disables the portal.
+    */
+    "disabled"?: boolean;
+    /**
+    * Specifies the position of the portal content relative to the target.
+    */
+    "strategy"?: PortalStrategy;
+    /**
+    * Specifies the position of the portal content, It Can include css selectors,
+    * node or any html elements.
+    */
+    "target"?: PortalTarget;
 }
 declare global {
     interface HTMLPlusPortalElement extends HTMLElement {
         /**
-         * Disables the portal.
-         */
-        disabled?: boolean;
+        * Disables the portal.
+        */
+        "disabled"?: boolean;
         /**
-         * Specifies the position of the portal content relative to the target.
-         */
-        strategy?: PortalStrategy;
+        * Specifies the position of the portal content relative to the target.
+        */
+        "strategy"?: PortalStrategy;
         /**
-         * Specifies the position of the portal content, It Can include css selectors,
-         * node or any html elements.
-         */
-        target?: PortalTarget;
+        * Specifies the position of the portal content, It Can include css selectors,
+        * node or any html elements.
+        */
+        "target"?: PortalTarget;
     }
     var HTMLPlusPortalElement: {
         prototype: HTMLPlusPortalElement;
@@ -68,7 +83,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-portal": PortalJSX & {
+            "plus-portal": PortalAttributeJSX & {
                 [key: string]: any;
             };
         }

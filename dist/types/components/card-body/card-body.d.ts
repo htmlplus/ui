@@ -6,9 +6,11 @@ import { PlusCore } from "../../core";
 export declare class CardBody extends PlusCore {
     static TAG: string;
     static STYLES: string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CardBodyJSX {
+}
+export interface CardBodyAttributeJSX {
 }
 declare global {
     interface HTMLPlusCardBodyElement extends HTMLElement {
@@ -22,7 +24,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-card-body": CardBodyJSX & {
+            "plus-card-body": CardBodyAttributeJSX & {
                 [key: string]: any;
             };
         }

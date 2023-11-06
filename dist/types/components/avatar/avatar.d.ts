@@ -93,28 +93,38 @@ export declare class Avatar extends PlusCore {
         };
     };
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AvatarJSX {
     /**
-     * Specifies the shape of the component.
-     */
-    shape?: AvatarShape;
+    * Specifies the shape of the component.
+    */
+    "shape"?: AvatarShape;
     /**
-     * Specifies the size of the component.
-     */
-    size?: AvatarSize;
+    * Specifies the size of the component.
+    */
+    "size"?: AvatarSize;
+}
+export interface AvatarAttributeJSX {
+    /**
+    * Specifies the shape of the component.
+    */
+    "shape"?: AvatarShape;
+    /**
+    * Specifies the size of the component.
+    */
+    "size"?: AvatarSize;
 }
 declare global {
     interface HTMLPlusAvatarElement extends HTMLElement {
         /**
-         * Specifies the shape of the component.
-         */
-        shape?: AvatarShape;
+        * Specifies the shape of the component.
+        */
+        "shape"?: AvatarShape;
         /**
-         * Specifies the size of the component.
-         */
-        size?: AvatarSize;
+        * Specifies the size of the component.
+        */
+        "size"?: AvatarSize;
     }
     var HTMLPlusAvatarElement: {
         prototype: HTMLPlusAvatarElement;
@@ -125,7 +135,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-avatar": AvatarJSX & {
+            "plus-avatar": AvatarAttributeJSX & {
                 [key: string]: any;
             };
         }

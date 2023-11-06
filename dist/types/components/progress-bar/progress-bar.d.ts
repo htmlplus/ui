@@ -36,68 +36,98 @@ export declare class ProgressBar extends PlusCore {
     get percentage(): string;
     get progress(): number;
     get stacked(): boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface ProgressBarJSX {
     /**
-     * TODO
-     */
-    buffer?: number;
+    * TODO
+    */
+    "buffer"?: number;
     /**
-     * TODO
-     */
-    immediate?: boolean;
+    * TODO
+    */
+    "immediate"?: boolean;
     /**
-     * TODO
-     */
-    label?: boolean;
+    * TODO
+    */
+    "label"?: boolean;
     /**
-     * TODO
-     */
-    min?: number;
+    * TODO
+    */
+    "min"?: number;
     /**
-     * TODO
-     */
-    max?: number;
+    * TODO
+    */
+    "max"?: number;
     /**
-     * TODO
-     */
-    variant?: string;
+    * TODO
+    */
+    "variant"?: string;
     /**
-     * TODO
-     */
-    value?: number;
+    * TODO
+    */
+    "value"?: number;
+}
+export interface ProgressBarAttributeJSX {
+    /**
+    * TODO
+    */
+    "buffer"?: number;
+    /**
+    * TODO
+    */
+    "immediate"?: boolean;
+    /**
+    * TODO
+    */
+    "label"?: boolean;
+    /**
+    * TODO
+    */
+    "min"?: number;
+    /**
+    * TODO
+    */
+    "max"?: number;
+    /**
+    * TODO
+    */
+    "variant"?: string;
+    /**
+    * TODO
+    */
+    "value"?: number;
 }
 declare global {
     interface HTMLPlusProgressBarElement extends HTMLElement {
         /**
-         * TODO
-         */
-        buffer?: number;
+        * TODO
+        */
+        "buffer"?: number;
         /**
-         * TODO
-         */
-        immediate?: boolean;
+        * TODO
+        */
+        "immediate"?: boolean;
         /**
-         * TODO
-         */
-        label?: boolean;
+        * TODO
+        */
+        "label"?: boolean;
         /**
-         * TODO
-         */
-        min?: number;
+        * TODO
+        */
+        "min"?: number;
         /**
-         * TODO
-         */
-        max?: number;
+        * TODO
+        */
+        "max"?: number;
         /**
-         * TODO
-         */
-        variant?: string;
+        * TODO
+        */
+        "variant"?: string;
         /**
-         * TODO
-         */
-        value?: number;
+        * TODO
+        */
+        "value"?: number;
     }
     var HTMLPlusProgressBarElement: {
         prototype: HTMLPlusProgressBarElement;
@@ -108,7 +138,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-progress-bar": ProgressBarJSX & {
+            "plus-progress-bar": ProgressBarAttributeJSX & {
                 [key: string]: any;
             };
         }

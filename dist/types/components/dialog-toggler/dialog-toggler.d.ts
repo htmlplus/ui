@@ -25,26 +25,35 @@ export declare class DialogToggler extends PlusCore {
      * Events handler
      */
     onClick(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogTogglerJSX {
     /**
-     * This property helps you to attach which dialog this toggler controls.
-     * It doesn't matter where the dialog toggler is.
-     * You can put the dialog's toggler inside or outside of the dialog.
-     * Read more about connectors [here](/connector).
-     */
-    connector?: string;
+    * This property helps you to attach which dialog this toggler controls.
+    * It doesn't matter where the dialog toggler is.
+    * You can put the dialog's toggler inside or outside of the dialog.
+    * Read more about connectors [here](/connector).
+    */
+    "connector"?: string;
+}
+export interface DialogTogglerAttributeJSX {
+    /**
+    * This property helps you to attach which dialog this toggler controls.
+    * It doesn't matter where the dialog toggler is.
+    * You can put the dialog's toggler inside or outside of the dialog.
+    * Read more about connectors [here](/connector).
+    */
+    "connector"?: string;
 }
 declare global {
     interface HTMLPlusDialogTogglerElement extends HTMLElement {
         /**
-         * This property helps you to attach which dialog this toggler controls.
-         * It doesn't matter where the dialog toggler is.
-         * You can put the dialog's toggler inside or outside of the dialog.
-         * Read more about connectors [here](/connector).
-         */
-        connector?: string;
+        * This property helps you to attach which dialog this toggler controls.
+        * It doesn't matter where the dialog toggler is.
+        * You can put the dialog's toggler inside or outside of the dialog.
+        * Read more about connectors [here](/connector).
+        */
+        "connector"?: string;
     }
     var HTMLPlusDialogTogglerElement: {
         prototype: HTMLPlusDialogTogglerElement;
@@ -55,7 +64,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog-toggler": DialogTogglerJSX & {
+            "plus-dialog-toggler": DialogTogglerAttributeJSX & {
                 [key: string]: any;
             };
         }

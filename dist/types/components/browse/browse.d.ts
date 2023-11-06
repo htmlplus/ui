@@ -68,92 +68,140 @@ export declare class Browse extends PlusCore {
     onDragLeave(): void;
     onDragOver(event: any): void;
     onDrop(event: any): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface BrowseJSX {
     /**
-     * One or more
-     * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
-     * describing file types to allow.
-     */
-    accept?: string;
+    * One or more
+    * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
+    * describing file types to allow.
+    */
+    "accept"?: string;
     /**
-     * Disables the component functionality.
-     */
-    disabled?: boolean;
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
     /**
-     * Adds droppable ability.
-     */
-    droppable?: boolean;
+    * Adds droppable ability.
+    */
+    "droppable"?: boolean;
     /**
-     * Specifies the minimum number of files.
-     */
-    min?: number;
+    * Specifies the minimum number of files.
+    */
+    "min"?: number;
     /**
-     * Specifies the maximum number of files.
-     */
-    max?: number;
+    * Specifies the maximum number of files.
+    */
+    "max"?: number;
     /**
-     * Specifies the minimum size of the file(s) in bytes.
-     */
-    minSize?: number;
+    * Specifies the minimum size of the file(s) in bytes.
+    */
+    "minSize"?: number;
     /**
-     * Specifies the maximum size of the file(s) in bytes.
-     */
-    maxSize?: number;
+    * Specifies the maximum size of the file(s) in bytes.
+    */
+    "maxSize"?: number;
     /**
-     * Allows to select more than one file.
-     */
-    multiple?: boolean;
+    * Allows to select more than one file.
+    */
+    "multiple"?: boolean;
     /**
-     * Fires when file(s) are selected.
-     */
-    onPlusChange?: (event: CustomEvent<BrowseEvent>) => void;
+    * Fires when file(s) are selected.
+    */
+    "onPlusChange"?: (event: CustomEvent<BrowseEvent>) => void;
     /**
-     * Fires when selected invalid file(s).
-     */
-    onPlusError?: (event: CustomEvent<BrowseEvent>) => void;
+    * Fires when selected invalid file(s).
+    */
+    "onPlusError"?: (event: CustomEvent<BrowseEvent>) => void;
     /**
-     * Fires when file(s) are added successfully.
-     */
-    onPlusSuccess?: (event: CustomEvent<BrowseEvent>) => void;
+    * Fires when file(s) are added successfully.
+    */
+    "onPlusSuccess"?: (event: CustomEvent<BrowseEvent>) => void;
+}
+export interface BrowseAttributeJSX {
+    /**
+    * One or more
+    * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
+    * describing file types to allow.
+    */
+    "accept"?: string;
+    /**
+    * Disables the component functionality.
+    */
+    "disabled"?: boolean;
+    /**
+    * Adds droppable ability.
+    */
+    "droppable"?: boolean;
+    /**
+    * Specifies the minimum number of files.
+    */
+    "min"?: number;
+    /**
+    * Specifies the maximum number of files.
+    */
+    "max"?: number;
+    /**
+    * Specifies the minimum size of the file(s) in bytes.
+    */
+    "min-size"?: number;
+    /**
+    * Specifies the maximum size of the file(s) in bytes.
+    */
+    "max-size"?: number;
+    /**
+    * Allows to select more than one file.
+    */
+    "multiple"?: boolean;
+    /**
+    * Fires when file(s) are selected.
+    */
+    "onplus-change"?: (event: CustomEvent<BrowseEvent>) => void;
+    /**
+    * Fires when selected invalid file(s).
+    */
+    "onplus-error"?: (event: CustomEvent<BrowseEvent>) => void;
+    /**
+    * Fires when file(s) are added successfully.
+    */
+    "onplus-success"?: (event: CustomEvent<BrowseEvent>) => void;
 }
 declare global {
     interface HTMLPlusBrowseElement extends HTMLElement {
         /**
-         * One or more
-         * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
-         * describing file types to allow.
-         */
-        accept?: string;
+        * One or more
+        * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
+        * describing file types to allow.
+        */
+        "accept"?: string;
         /**
-         * Disables the component functionality.
-         */
-        disabled?: boolean;
+        * Disables the component functionality.
+        */
+        "disabled"?: boolean;
         /**
-         * Adds droppable ability.
-         */
-        droppable?: boolean;
+        * Adds droppable ability.
+        */
+        "droppable"?: boolean;
         /**
-         * Specifies the minimum number of files.
-         */
-        min?: number;
+        * Specifies the minimum number of files.
+        */
+        "min"?: number;
         /**
-         * Specifies the maximum number of files.
-         */
-        max?: number;
+        * Specifies the maximum number of files.
+        */
+        "max"?: number;
         /**
-         * Specifies the minimum size of the file(s) in bytes.
-         */
-        minSize?: number;
+        * Specifies the minimum size of the file(s) in bytes.
+        */
+        "minSize"?: number;
         /**
-         * Specifies the maximum size of the file(s) in bytes.
-         */
-        maxSize?: number;
+        * Specifies the maximum size of the file(s) in bytes.
+        */
+        "maxSize"?: number;
         /**
-         * Allows to select more than one file.
-         */
-        multiple?: boolean;
+        * Allows to select more than one file.
+        */
+        "multiple"?: boolean;
     }
     var HTMLPlusBrowseElement: {
         prototype: HTMLPlusBrowseElement;
@@ -164,7 +212,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-browse": BrowseJSX & {
+            "plus-browse": BrowseAttributeJSX & {
                 [key: string]: any;
             };
         }

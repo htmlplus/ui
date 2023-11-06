@@ -30,42 +30,61 @@ export declare class Tabs extends PlusCore {
     change(value: any): void;
     initialize(): void;
     connectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsJSX {
     /**
-     * Provides your own value.
-     */
-    value?: any;
+    * Provides your own value.
+    */
+    "value"?: any;
     /**
-     * You can use vertical property for vertical mode.
-     */
-    vertical?: boolean;
+    * You can use vertical property for vertical mode.
+    */
+    "vertical"?: boolean;
     /**
-     * Panels are not always used inside tabs.They may be used outside, in which you can use
-     * this property to connect them to their corresponding tabs.
-     */
-    connector?: string;
+    * Panels are not always used inside tabs.They may be used outside, in which you can use
+    * this property to connect them to their corresponding tabs.
+    */
+    "connector"?: string;
     /**
-     * Fired when the value changes.
-     */
-    onPlusChange?: (event: CustomEvent<any>) => void;
+    * Fired when the value changes.
+    */
+    "onPlusChange"?: (event: CustomEvent<any>) => void;
+}
+export interface TabsAttributeJSX {
+    /**
+    * Provides your own value.
+    */
+    "value"?: any;
+    /**
+    * You can use vertical property for vertical mode.
+    */
+    "vertical"?: boolean;
+    /**
+    * Panels are not always used inside tabs.They may be used outside, in which you can use
+    * this property to connect them to their corresponding tabs.
+    */
+    "connector"?: string;
+    /**
+    * Fired when the value changes.
+    */
+    "onplus-change"?: (event: CustomEvent<any>) => void;
 }
 declare global {
     interface HTMLPlusTabsElement extends HTMLElement {
         /**
-         * Provides your own value.
-         */
-        value?: any;
+        * Provides your own value.
+        */
+        "value"?: any;
         /**
-         * You can use vertical property for vertical mode.
-         */
-        vertical?: boolean;
+        * You can use vertical property for vertical mode.
+        */
+        "vertical"?: boolean;
         /**
-         * Panels are not always used inside tabs.They may be used outside, in which you can use
-         * this property to connect them to their corresponding tabs.
-         */
-        connector?: string;
+        * Panels are not always used inside tabs.They may be used outside, in which you can use
+        * this property to connect them to their corresponding tabs.
+        */
+        "connector"?: string;
     }
     var HTMLPlusTabsElement: {
         prototype: HTMLPlusTabsElement;
@@ -76,7 +95,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tabs": TabsJSX & {
+            "plus-tabs": TabsAttributeJSX & {
                 [key: string]: any;
             };
         }

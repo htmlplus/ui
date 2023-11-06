@@ -2,9 +2,11 @@ import { PlusCore } from "../../core";
 export declare class ProgressBarStack extends PlusCore {
     static TAG: string;
     static STYLES: string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface ProgressBarStackJSX {
+}
+export interface ProgressBarStackAttributeJSX {
 }
 declare global {
     interface HTMLPlusProgressBarStackElement extends HTMLElement {
@@ -18,7 +20,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-progress-bar-stack": ProgressBarStackJSX & {
+            "plus-progress-bar-stack": ProgressBarStackAttributeJSX & {
                 [key: string]: any;
             };
         }

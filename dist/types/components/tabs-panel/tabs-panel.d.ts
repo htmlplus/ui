@@ -11,20 +11,26 @@ export declare class TabsPanel extends PlusCore {
      */
     value?: any;
     tunnel?: any;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsPanelJSX {
     /**
-     * Provides your own value.
-     */
-    value?: any;
+    * Provides your own value.
+    */
+    "value"?: any;
+}
+export interface TabsPanelAttributeJSX {
+    /**
+    * Provides your own value.
+    */
+    "value"?: any;
 }
 declare global {
     interface HTMLPlusTabsPanelElement extends HTMLElement {
         /**
-         * Provides your own value.
-         */
-        value?: any;
+        * Provides your own value.
+        */
+        "value"?: any;
     }
     var HTMLPlusTabsPanelElement: {
         prototype: HTMLPlusTabsPanelElement;
@@ -35,7 +41,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tabs-panel": TabsPanelJSX & {
+            "plus-tabs-panel": TabsPanelAttributeJSX & {
                 [key: string]: any;
             };
         }

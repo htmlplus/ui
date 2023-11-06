@@ -26,52 +26,74 @@ export declare class Stack extends PlusCore {
      */
     vertical?: boolean;
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StackJSX {
     /**
-     * TODO.
-     */
-    alignItems?: StackAlignItems;
+    * TODO.
+    */
+    "alignItems"?: StackAlignItems;
     /**
-     * TODO.
-     */
-    gap?: string;
+    * TODO.
+    */
+    "gap"?: string;
     /**
-     * TODO.
-     */
-    justifyContent?: StackJustifyContent;
+    * TODO.
+    */
+    "justifyContent"?: StackJustifyContent;
     /**
-     * TODO.
-     */
-    reverse?: boolean;
+    * TODO.
+    */
+    "reverse"?: boolean;
     /**
-     * TODO.
-     */
-    vertical?: boolean;
+    * TODO.
+    */
+    "vertical"?: boolean;
+}
+export interface StackAttributeJSX {
+    /**
+    * TODO.
+    */
+    "align-items"?: StackAlignItems;
+    /**
+    * TODO.
+    */
+    "gap"?: string;
+    /**
+    * TODO.
+    */
+    "justify-content"?: StackJustifyContent;
+    /**
+    * TODO.
+    */
+    "reverse"?: boolean;
+    /**
+    * TODO.
+    */
+    "vertical"?: boolean;
 }
 declare global {
     interface HTMLPlusStackElement extends HTMLElement {
         /**
-         * TODO.
-         */
-        alignItems?: StackAlignItems;
+        * TODO.
+        */
+        "alignItems"?: StackAlignItems;
         /**
-         * TODO.
-         */
-        gap?: string;
+        * TODO.
+        */
+        "gap"?: string;
         /**
-         * TODO.
-         */
-        justifyContent?: StackJustifyContent;
+        * TODO.
+        */
+        "justifyContent"?: StackJustifyContent;
         /**
-         * TODO.
-         */
-        reverse?: boolean;
+        * TODO.
+        */
+        "reverse"?: boolean;
         /**
-         * TODO.
-         */
-        vertical?: boolean;
+        * TODO.
+        */
+        "vertical"?: boolean;
     }
     var HTMLPlusStackElement: {
         prototype: HTMLPlusStackElement;
@@ -82,7 +104,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-stack": StackJSX & {
+            "plus-stack": StackAttributeJSX & {
                 [key: string]: any;
             };
         }

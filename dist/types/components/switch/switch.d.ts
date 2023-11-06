@@ -20,35 +20,51 @@ export declare class Switch extends PlusCore {
     toggle(): void;
     onClick(event: any): void;
     onKeyDown(event: any): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SwitchJSX {
     /**
-     * Puts the switch in checked state.
-     * @model
-     */
-    checked?: boolean;
+    * Puts the switch in checked state.
+    * @model
+    */
+    "checked"?: boolean;
     /**
-     * Disables the switch.
-     */
-    disabled?: boolean;
+    * Disables the switch.
+    */
+    "disabled"?: boolean;
     /**
-     * When the switch state is changed this event triggers.
-     * @model
-     */
-    onPlusChange?: (event: CustomEvent<void>) => void;
+    * When the switch state is changed this event triggers.
+    * @model
+    */
+    "onPlusChange"?: (event: CustomEvent<void>) => void;
+}
+export interface SwitchAttributeJSX {
+    /**
+    * Puts the switch in checked state.
+    * @model
+    */
+    "checked"?: boolean;
+    /**
+    * Disables the switch.
+    */
+    "disabled"?: boolean;
+    /**
+    * When the switch state is changed this event triggers.
+    * @model
+    */
+    "onplus-change"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusSwitchElement extends HTMLElement {
         /**
-         * Puts the switch in checked state.
-         * @model
-         */
-        checked?: boolean;
+        * Puts the switch in checked state.
+        * @model
+        */
+        "checked"?: boolean;
         /**
-         * Disables the switch.
-         */
-        disabled?: boolean;
+        * Disables the switch.
+        */
+        "disabled"?: boolean;
     }
     var HTMLPlusSwitchElement: {
         prototype: HTMLPlusSwitchElement;
@@ -59,7 +75,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-switch": SwitchJSX & {
+            "plus-switch": SwitchAttributeJSX & {
                 [key: string]: any;
             };
         }
