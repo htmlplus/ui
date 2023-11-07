@@ -5365,10 +5365,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.",
+      "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-10-29T20:19:48.334Z",
+      "lastModified": "2023-11-06T17:19:18.332Z",
       "methods": [],
       "parts": [
         {
@@ -5500,7 +5500,7 @@
           "typeReference": "./icon.types"
         }
       ],
-      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://icons.getbootstrap.com).\n\n<Example value=\"name\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Override Size\n\n<Example value=\"override-size\" />\n\n### Resolver\n\n<Example value=\"resolver\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example value=\"font-awesome\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example value=\"material\" />\n\n### Multiple Library\n\n<Example value=\"multiple-library\" />\n\n<LastModified />\n",
+      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://icons.getbootstrap.com).\n\n<Example value=\"name\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Override Size\n\n<Example value=\"override-size\" />\n\n### Resolver\n\n<Example value=\"resolver\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example value=\"font-awesome\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example value=\"material\" />\n\n### Multiple Library\n\n<Example value=\"multiple-library\" />\n\n<LastModified />\n",
       "slots": [],
       "styles": [],
       "tags": [],

@@ -170,7 +170,7 @@ export interface CounterAttributeJSX {
     /**
     * Is Triggered when transition ended.
     */
-    "onplus-complete"?: (event: CustomEvent<void>) => void;
+    "onPlusComplete"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusCounterElement extends HTMLElement {

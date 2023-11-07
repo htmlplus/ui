@@ -255,19 +255,19 @@ export interface SignatureAttributeJSX {
     /**
     * Fires after updating the stroke.
     */
-    "onplus-after"?: (event: CustomEvent<PointerEvent>) => void;
+    "onPlusAfter"?: (event: CustomEvent<PointerEvent>) => void;
     /**
     * Fires before updating the stroke.
     */
-    "onplus-before"?: (event: CustomEvent<PointerEvent>) => void;
+    "onPlusBefore"?: (event: CustomEvent<PointerEvent>) => void;
     /**
     * Fires after a stroke ends.
     */
-    "onplus-end"?: (event: CustomEvent<PointerEvent>) => void;
+    "onPlusEnd"?: (event: CustomEvent<PointerEvent>) => void;
     /**
     * Fires before a stroke starts.
     */
-    "onplus-start"?: (event: CustomEvent<PointerEvent>) => void;
+    "onPlusStart"?: (event: CustomEvent<PointerEvent>) => void;
 }
 declare global {
     interface HTMLPlusSignatureElement extends HTMLElement {

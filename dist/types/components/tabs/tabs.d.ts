@@ -68,7 +68,7 @@ export interface TabsAttributeJSX {
     /**
     * Fired when the value changes.
     */
-    "onplus-change"?: (event: CustomEvent<any>) => void;
+    "onPlusChange"?: (event: CustomEvent<any>) => void;
 }
 declare global {
     interface HTMLPlusTabsElement extends HTMLElement {

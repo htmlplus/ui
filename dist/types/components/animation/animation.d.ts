@@ -333,15 +333,15 @@ export interface AnimationAttributeJSX {
     * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
     * method is called or when the animation enters the "`idle`" play state from another state.
     */
-    "onplus-cancel"?: (event: CustomEvent<void>) => void;
+    "onPlusCancel"?: (event: CustomEvent<void>) => void;
     /**
     * Fires when the animation finishes playing.
     */
-    "onplus-finish"?: (event: CustomEvent<void>) => void;
+    "onPlusFinish"?: (event: CustomEvent<void>) => void;
     /**
     * Fires when the animation is removed (i.e., put into an `active` replace state).
     */
-    "onplus-remove"?: (event: CustomEvent<void>) => void;
+    "onPlusRemove"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusAnimationElement extends HTMLElement {

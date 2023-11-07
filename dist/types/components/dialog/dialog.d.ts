@@ -286,19 +286,19 @@ export interface DialogAttributeJSX {
     /**
     * When the dialog is going to hide
     */
-    "onplus-close"?: (event: CustomEvent<void>) => void;
+    "onPlusClose"?: (event: CustomEvent<void>) => void;
     /**
     * When the dialog is completely closed and its animation is completed.
     */
-    "onplus-closed"?: (event: CustomEvent<void>) => void;
+    "onPlusClosed"?: (event: CustomEvent<void>) => void;
     /**
     * When the dialog is going to show this event triggers
     */
-    "onplus-open"?: (event: CustomEvent<void>) => void;
+    "onPlusOpen"?: (event: CustomEvent<void>) => void;
     /**
     * When the dialog is completely shown and its animation is completed.
     */
-    "onplus-opened"?: (event: CustomEvent<void>) => void;
+    "onPlusOpened"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusDialogElement extends HTMLElement {

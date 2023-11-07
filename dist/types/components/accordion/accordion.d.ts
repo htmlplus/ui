@@ -132,20 +132,20 @@ export interface AccordionAttributeJSX {
     * Fires when the component is about to collapse.
     * This event can be [canceled](TODO).
     */
-    "onplus-collapse"?: (event: CustomEvent<void>) => void;
+    "onPlusCollapse"?: (event: CustomEvent<void>) => void;
     /**
     * Fires after the component has collapsed.
     */
-    "onplus-collapsed"?: (event: CustomEvent<void>) => void;
+    "onPlusCollapsed"?: (event: CustomEvent<void>) => void;
     /**
     * Fires when the component is about to expand.
     * This event can be [canceled](TODO).
     */
-    "onplus-expand"?: (event: CustomEvent<void>) => void;
+    "onPlusExpand"?: (event: CustomEvent<void>) => void;
     /**
     * Fires after the component has expanded.
     */
-    "onplus-expanded"?: (event: CustomEvent<void>) => void;
+    "onPlusExpanded"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusAccordionElement extends HTMLElement {

@@ -66,7 +66,7 @@ export interface ScrollDetectorAttributeJSX {
     /**
     * Fires when the scroll starts changing.
     */
-    "onplus-change"?: (event: CustomEvent<ScrollDetectorChangeEvent>) => void;
+    "onPlusChange"?: (event: CustomEvent<ScrollDetectorChangeEvent>) => void;
 }
 declare global {
     interface HTMLPlusScrollDetectorElement extends HTMLElement {

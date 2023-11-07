@@ -156,15 +156,15 @@ export interface BrowseAttributeJSX {
     /**
     * Fires when file(s) are selected.
     */
-    "onplus-change"?: (event: CustomEvent<BrowseEvent>) => void;
+    "onPlusChange"?: (event: CustomEvent<BrowseEvent>) => void;
     /**
     * Fires when selected invalid file(s).
     */
-    "onplus-error"?: (event: CustomEvent<BrowseEvent>) => void;
+    "onPlusError"?: (event: CustomEvent<BrowseEvent>) => void;
     /**
     * Fires when file(s) are added successfully.
     */
-    "onplus-success"?: (event: CustomEvent<BrowseEvent>) => void;
+    "onPlusSuccess"?: (event: CustomEvent<BrowseEvent>) => void;
 }
 declare global {
     interface HTMLPlusBrowseElement extends HTMLElement {

@@ -13,17 +13,6 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
 function __decorate(decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,81 +121,111 @@ const toEvent = (input) => {
     return input === null || input === void 0 ? void 0 : input.slice(2).toLowerCase();
 };
 
+// Regexps involved with splitting words in various case formats.
+const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
+const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
+const SPLIT_NUMBER_LOWER_RE = /(\d)(\p{Ll})/gu;
+const SPLIT_LETTER_NUMBER_RE = /(\p{L})(\d)/gu;
+// Regexp involved with stripping non-word characters from the result.
+const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
+// The replacement value for splits.
+const SPLIT_REPLACE_VALUE = "$1\0$2";
+// The default characters to keep after transforming case.
+const DEFAULT_PREFIX_CHARACTERS = "";
 /**
- * Source: ftp://ftp.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt
+ * Split any cased input strings into an array of words.
  */
-/**
- * Lower case as a function.
- */
-function lowerCase(str) {
-    return str.toLowerCase();
-}
-
-// Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
-var DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
-// Remove all non-word characters.
-var DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
-/**
- * Normalize the string into something other libraries can manipulate easier.
- */
-function noCase(input, options) {
-    if (options === void 0) { options = {}; }
-    var _a = options.splitRegexp, splitRegexp = _a === void 0 ? DEFAULT_SPLIT_REGEXP : _a, _b = options.stripRegexp, stripRegexp = _b === void 0 ? DEFAULT_STRIP_REGEXP : _b, _c = options.transform, transform = _c === void 0 ? lowerCase : _c, _d = options.delimiter, delimiter = _d === void 0 ? " " : _d;
-    var result = replace(replace(input, splitRegexp, "$1\0$2"), stripRegexp, "\0");
-    var start = 0;
-    var end = result.length;
+function split(input, options = {}) {
+    const { separateNumbers } = options;
+    let result = input.trim();
+    result = result
+        .replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE)
+        .replace(SPLIT_UPPER_UPPER_RE, SPLIT_REPLACE_VALUE);
+    if (separateNumbers) {
+        result = result
+            .replace(SPLIT_NUMBER_LOWER_RE, SPLIT_REPLACE_VALUE)
+            .replace(SPLIT_LETTER_NUMBER_RE, SPLIT_REPLACE_VALUE);
+    }
+    result = result.replace(DEFAULT_STRIP_REGEXP, "\0");
+    let start = 0;
+    let end = result.length;
     // Trim the delimiter from around the output string.
     while (result.charAt(start) === "\0")
         start++;
+    if (start === end)
+        return [];
     while (result.charAt(end - 1) === "\0")
         end--;
-    // Transform each token independently.
-    return result.slice(start, end).split("\0").map(transform).join(delimiter);
+    return result.slice(start, end).split(/\0/g);
 }
 /**
- * Replace `re` in the input string with the replacement value.
+ * Convert a string to camel case (`fooBar`).
  */
-function replace(input, re, value) {
-    if (re instanceof RegExp)
-        return input.replace(re, value);
-    return re.reduce(function (input, re) { return input.replace(re, value); }, input);
-}
-
-function pascalCaseTransform(input, index) {
-    var firstChar = input.charAt(0);
-    var lowerChars = input.substr(1).toLowerCase();
-    if (index > 0 && firstChar >= "0" && firstChar <= "9") {
-        return "_" + firstChar + lowerChars;
-    }
-    return "" + firstChar.toUpperCase() + lowerChars;
-}
-function pascalCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return noCase(input, __assign({ delimiter: "", transform: pascalCaseTransform }, options));
-}
-
-function camelCaseTransform(input, index) {
-    if (index === 0)
-        return input.toLowerCase();
-    return pascalCaseTransform(input, index);
-}
 function camelCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return pascalCase(input, __assign({ transform: camelCaseTransform }, options));
+    const prefix = getPrefix(input, options?.prefixCharacters);
+    const lower = lowerFactory(options?.locale);
+    const upper = upperFactory(options?.locale);
+    const transform = pascalCaseTransformFactory(lower, upper);
+    return (prefix +
+        split(input, options)
+            .map((word, index) => {
+            if (index === 0)
+                return lower(word);
+            return transform(word, index);
+        })
+            .join(""));
 }
-
-function dotCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return noCase(input, __assign({ delimiter: "." }, options));
+/**
+ * Convert a string to pascal case (`FooBar`).
+ */
+function pascalCase(input, options) {
+    const prefix = getPrefix(input, options?.prefixCharacters);
+    const lower = lowerFactory(options?.locale);
+    const upper = upperFactory(options?.locale);
+    return (prefix +
+        split(input, options).map(pascalCaseTransformFactory(lower, upper)).join(""));
 }
-
-function paramCase(input, options) {
-    if (options === void 0) { options = {}; }
-    return dotCase(input, __assign({ delimiter: "-" }, options));
+/**
+ * Convert a string to kebab case (`foo-bar`).
+ */
+function kebabCase(input, options) {
+    const prefix = getPrefix(input, options?.prefixCharacters);
+    const lower = lowerFactory(options?.locale);
+    return prefix + split(input, options).map(lower).join("-");
+}
+function lowerFactory(locale) {
+    return locale === false
+        ? (input) => input.toLowerCase()
+        : (input) => input.toLocaleLowerCase(locale);
+}
+function upperFactory(locale) {
+    return locale === false
+        ? (input) => input.toUpperCase()
+        : (input) => input.toLocaleUpperCase(locale);
+}
+function pascalCaseTransformFactory(lower, upper) {
+    return (word, index) => {
+        const char0 = word[0];
+        const initial = index > 0 && char0 >= "0" && char0 <= "9" ? "_" + char0 : upper(char0);
+        return initial + lower(word.slice(1));
+    };
+}
+function getPrefix(input, prefixCharacters = DEFAULT_PREFIX_CHARACTERS) {
+    let prefix = "";
+    for (let i = 0; i < input.length; i++) {
+        const char = input.charAt(i);
+        if (prefixCharacters.includes(char)) {
+            prefix += char;
+        }
+        else {
+            break;
+        }
+    }
+    return prefix;
 }
 
 const updateAttribute = (node, key, value) => {
-    const name = paramCase(key);
+    const name = kebabCase(key);
     if ([undefined, null, false].includes(value))
         return node.removeAttribute(name);
     node.setAttribute(name, value === true ? '' : value);
@@ -268,7 +287,7 @@ const classes = (input, smart) => {
             const keys = Object.keys(input);
             for (const key of keys) {
                 const value = input[key];
-                const name = paramCase(key);
+                const name = kebabCase(key);
                 const type = typeOf(value);
                 if (!smart) {
                     if (!value)
@@ -364,16 +383,20 @@ const direction = (target) => {
 };
 
 const getFramework = (target) => {
-    const keys = Object.keys(target);
-    const has = (key) => keys.some((key) => key.startsWith(key));
-    if (has())
-        return 'angular';
-    if (has())
-        return 'react';
-    if (has())
+    if ('_qc_' in target)
+        return 'qwik';
+    if ('_$owner' in target)
+        return 'solid';
+    if ('__svelte_meta' in target)
         return 'svelte';
-    if (has())
+    if ('__vnode' in target)
         return 'vue';
+    const keys = Object.keys(target);
+    const has = (input) => keys.some((key) => key.startsWith(input));
+    if (has('__zone_symbol__'))
+        return 'angular';
+    if (has('__react'))
+        return 'react';
 };
 
 // TODO
@@ -1208,7 +1231,7 @@ const styles = (input) => {
         case 'object':
             return Object.keys(input)
                 .filter((key) => input[key] !== undefined && input[key] !== null)
-                .map((key) => `${key.startsWith('--') ? '--' : ''}${paramCase(key)}: ${input[key]}`)
+                .map((key) => `${key.startsWith('--') ? '--' : ''}${kebabCase(key)}: ${input[key]}`)
                 .join('; ');
         case 'string':
             return input;
@@ -1321,7 +1344,7 @@ function Element() {
             static get observedAttributes() {
                 return Object.keys(members)
                     .filter((key) => members[key].type != TYPE_FUNCTION)
-                    .map((key) => paramCase(key));
+                    .map((key) => kebabCase(key));
             }
             adoptedCallback() {
                 call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
@@ -1373,11 +1396,16 @@ function Event$1(options = {}) {
                     (_a = options.bubbles) !== null && _a !== void 0 ? _a : (options.bubbles = false);
                     let name = options.name || String(propertyKey);
                     switch (framework) {
+                        case 'qwik':
+                            name = pascalCase(name).toLowerCase();
+                            break;
+                        case 'preact':
                         case 'react':
+                        case 'solid':
                             name = pascalCase(name);
                             break;
                         default:
-                            name = paramCase(name);
+                            name = kebabCase(name);
                             break;
                     }
                     const event = new CustomEvent(name, Object.assign(Object.assign({}, options), { detail }));

@@ -129,7 +129,7 @@ export interface IntersectionAttributeJSX {
     /**
     * Fires When the browser detects that the component has been unveiled or obscured.
     */
-    "onplus-change"?: (event: CustomEvent<IntersectionObserverEntry>) => void;
+    "onPlusChange"?: (event: CustomEvent<IntersectionObserverEntry>) => void;
 }
 declare global {
     interface HTMLPlusIntersectionElement extends HTMLElement {

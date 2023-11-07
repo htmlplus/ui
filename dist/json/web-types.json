@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/core",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -3951,7 +3951,7 @@
         },
         {
           "name": "plus-icon",
-          "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://fonts.google.com/icons) library.",
+          "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
           "doc-url": "https://www.htmlplus.io/javascript/component/icon",
           "deprecated": false,
           "experimental": false,

@@ -52,7 +52,7 @@ export interface SwitchAttributeJSX {
     * When the switch state is changed this event triggers.
     * @model
     */
-    "onplus-change"?: (event: CustomEvent<void>) => void;
+    "onPlusChange"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusSwitchElement extends HTMLElement {

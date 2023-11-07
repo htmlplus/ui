@@ -246,19 +246,19 @@ export interface DrawerAttributeJSX {
     /**
     * When the drawer is going to hide
     */
-    "onplus-close"?: (event: CustomEvent<void>) => void;
+    "onPlusClose"?: (event: CustomEvent<void>) => void;
     /**
     * When the drawer is completely closed and its animation is completed.
     */
-    "onplus-closed"?: (event: CustomEvent<void>) => void;
+    "onPlusClosed"?: (event: CustomEvent<void>) => void;
     /**
     * When the drawer is going to show this event triggers
     */
-    "onplus-open"?: (event: CustomEvent<void>) => void;
+    "onPlusOpen"?: (event: CustomEvent<void>) => void;
     /**
     * When the drawer is completely shown and its animation is completed.
     */
-    "onplus-opened"?: (event: CustomEvent<void>) => void;
+    "onPlusOpened"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusDrawerElement extends HTMLElement {

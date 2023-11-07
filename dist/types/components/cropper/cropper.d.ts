@@ -372,27 +372,27 @@ export interface CropperAttributeJSX {
     /**
     * Fires when the `image` or the `viewport` is changed.
     */
-    "onplus-crop"?: (event: CustomEvent<CropperCropEvent>) => void;
+    "onPlusCrop"?: (event: CustomEvent<CropperCropEvent>) => void;
     /**
     * Fires when the `image` or the `viewport` changes are finished.
     */
-    "onplus-crop-end"?: (event: CustomEvent<CropperPointerEvent>) => void;
+    "onPlusCropEnd"?: (event: CustomEvent<CropperPointerEvent>) => void;
     /**
     * Fires when the `image` or the `viewport` is changing.
     */
-    "onplus-crop-move"?: (event: CustomEvent<CropperPointerEvent>) => void;
+    "onPlusCropMove"?: (event: CustomEvent<CropperPointerEvent>) => void;
     /**
     * Fires when the `image` or the `viewport` starts to change.
     */
-    "onplus-crop-start"?: (event: CustomEvent<CropperPointerEvent>) => void;
+    "onPlusCropStart"?: (event: CustomEvent<CropperPointerEvent>) => void;
     /**
     * Fires when the image has been loaded and the component is ready for operation.
     */
-    "onplus-ready"?: (event: CustomEvent<void>) => void;
+    "onPlusReady"?: (event: CustomEvent<void>) => void;
     /**
     * Fires when the component starts to `zoom in` or `zoom out`.
     */
-    "onplus-zoom"?: (event: CustomEvent<CropperZoomEvent>) => void;
+    "onPlusZoom"?: (event: CustomEvent<CropperZoomEvent>) => void;
 }
 declare global {
     interface HTMLPlusCropperElement extends HTMLElement {

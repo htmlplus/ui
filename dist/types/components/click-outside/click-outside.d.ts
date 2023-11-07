@@ -70,7 +70,7 @@ export interface ClickOutsideAttributeJSX {
     /**
     * Fires when outside of the component is clicked.
     */
-    "onplus-click-outside"?: (event: CustomEvent<void>) => void;
+    "onPlusClickOutside"?: (event: CustomEvent<void>) => void;
 }
 declare global {
     interface HTMLPlusClickOutsideElement extends HTMLElement {

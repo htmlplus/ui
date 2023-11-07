@@ -75,7 +75,7 @@ export interface StickyAttributeJSX {
     /**
     * Fires when the state is changed. To enable, set the `watcher` property to `true`.
     */
-    "onplus-change"?: (event: CustomEvent<StickyState>) => void;
+    "onPlusChange"?: (event: CustomEvent<StickyState>) => void;
 }
 declare global {
     interface HTMLPlusStickyElement extends HTMLElement {
