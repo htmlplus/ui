@@ -1397,11 +1397,11 @@ function Event$1(options = {}) {
                     let name = options.name || String(propertyKey);
                     switch (framework) {
                         case 'qwik':
+                        case 'solid':
                             name = pascalCase(name).toLowerCase();
                             break;
                         case 'preact':
                         case 'react':
-                        case 'solid':
                             name = pascalCase(name);
                             break;
                         default:
