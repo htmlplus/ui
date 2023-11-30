@@ -122,96 +122,7 @@ export declare class Dialog extends PlusCore {
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface DialogJSX {
-    /**
-    * TODO
-    */
-    "animation"?: string;
-    /**
-    * Activate the dialog's backdrop to show or not.
-    */
-    "backdrop"?: boolean;
-    /**
-    * This property helps you to attach which dialog toggler controls the dialog.
-    * It doesn't matter where the dialog toggler is.
-    * You can put the dialog's toggler inside or outside of the dialog.
-    * Read more about connectors [here](/connector).
-    */
-    "connector"?: string;
-    /**
-    * Set the height of the dialog as much as the screen's height.
-    */
-    "fullHeight"?: boolean;
-    /**
-    * Set the width of the dialog as much as the screen's width.
-    */
-    "fullWidth"?: boolean;
-    /**
-    * Set both width and height of the dialog to occupy the screen size.
-    */
-    "fullscreen"?: DialogFullscreen;
-    /**
-    * Closes the dialog when `escape` key is pressed.
-    */
-    "keyboard"?: boolean;
-    /**
-    * Control dialog to show or not.
-    */
-    "open"?: boolean;
-    /**
-    * It prevents the dialog from closing on clicking outside of the element.
-    */
-    "persistent"?: boolean;
-    /**
-    * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
-    * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
-    */
-    "placement"?: DialogPlacement;
-    /**
-    * Enables or disables the portal.
-    * @experimental
-    */
-    "portal"?: boolean;
-    /**
-    * Specifies the position of the dialog.
-    * @experimental
-    */
-    "portalStrategy"?: DialogPortalStrategy;
-    /**
-    * Specifies the position of the dialog relative to the target.
-    * @experimental
-    */
-    "portalTarget"?: DialogPortalTarget;
-    /**
-    * It makes the user able to scroll the content by adding a scroll beside it.
-    */
-    "scrollable"?: boolean;
-    /**
-    * Determine the width of the dialog.
-    */
-    "size"?: DialogSize;
-    /**
-    * Removes the margin around the dialog's content.
-    */
-    "sticky"?: boolean;
-    /**
-    * When the dialog is going to hide
-    */
-    "onPlusClose"?: (event: CustomEvent<void>) => void;
-    /**
-    * When the dialog is completely closed and its animation is completed.
-    */
-    "onPlusClosed"?: (event: CustomEvent<void>) => void;
-    /**
-    * When the dialog is going to show this event triggers
-    */
-    "onPlusOpen"?: (event: CustomEvent<void>) => void;
-    /**
-    * When the dialog is completely shown and its animation is completed.
-    */
-    "onPlusOpened"?: (event: CustomEvent<void>) => void;
-}
-export interface DialogAttributeJSX {
+export interface DialogAttributes {
     /**
     * TODO
     */
@@ -283,96 +194,104 @@ export interface DialogAttributeJSX {
     * Removes the margin around the dialog's content.
     */
     "sticky"?: boolean;
+}
+export interface DialogEvents {
     /**
     * When the dialog is going to hide
     */
-    "onPlusClose"?: (event: CustomEvent<void>) => void;
+    onPlusClose?: (event: CustomEvent<void>) => void;
     /**
     * When the dialog is completely closed and its animation is completed.
     */
-    "onPlusClosed"?: (event: CustomEvent<void>) => void;
+    onPlusClosed?: (event: CustomEvent<void>) => void;
     /**
     * When the dialog is going to show this event triggers
     */
-    "onPlusOpen"?: (event: CustomEvent<void>) => void;
+    onPlusOpen?: (event: CustomEvent<void>) => void;
     /**
     * When the dialog is completely shown and its animation is completed.
     */
-    "onPlusOpened"?: (event: CustomEvent<void>) => void;
+    onPlusOpened?: (event: CustomEvent<void>) => void;
+}
+export interface DialogMethods {
+}
+export interface DialogProperties {
+    /**
+    * TODO
+    */
+    animation?: string;
+    /**
+    * Activate the dialog's backdrop to show or not.
+    */
+    backdrop?: boolean;
+    /**
+    * This property helps you to attach which dialog toggler controls the dialog.
+    * It doesn't matter where the dialog toggler is.
+    * You can put the dialog's toggler inside or outside of the dialog.
+    * Read more about connectors [here](/connector).
+    */
+    connector?: string;
+    /**
+    * Set the height of the dialog as much as the screen's height.
+    */
+    fullHeight?: boolean;
+    /**
+    * Set the width of the dialog as much as the screen's width.
+    */
+    fullWidth?: boolean;
+    /**
+    * Set both width and height of the dialog to occupy the screen size.
+    */
+    fullscreen?: DialogFullscreen;
+    /**
+    * Closes the dialog when `escape` key is pressed.
+    */
+    keyboard?: boolean;
+    /**
+    * Control dialog to show or not.
+    */
+    open?: boolean;
+    /**
+    * It prevents the dialog from closing on clicking outside of the element.
+    */
+    persistent?: boolean;
+    /**
+    * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
+    * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
+    */
+    placement?: DialogPlacement;
+    /**
+    * Enables or disables the portal.
+    * @experimental
+    */
+    portal?: boolean;
+    /**
+    * Specifies the position of the dialog.
+    * @experimental
+    */
+    portalStrategy?: DialogPortalStrategy;
+    /**
+    * Specifies the position of the dialog relative to the target.
+    * @experimental
+    */
+    portalTarget?: DialogPortalTarget;
+    /**
+    * It makes the user able to scroll the content by adding a scroll beside it.
+    */
+    scrollable?: boolean;
+    /**
+    * Determine the width of the dialog.
+    */
+    size?: DialogSize;
+    /**
+    * Removes the margin around the dialog's content.
+    */
+    sticky?: boolean;
+}
+export interface DialogJSX extends DialogEvents, DialogProperties {
 }
 declare global {
-    interface HTMLPlusDialogElement extends HTMLElement {
-        /**
-        * TODO
-        */
-        "animation"?: string;
-        /**
-        * Activate the dialog's backdrop to show or not.
-        */
-        "backdrop"?: boolean;
-        /**
-        * This property helps you to attach which dialog toggler controls the dialog.
-        * It doesn't matter where the dialog toggler is.
-        * You can put the dialog's toggler inside or outside of the dialog.
-        * Read more about connectors [here](/connector).
-        */
-        "connector"?: string;
-        /**
-        * Set the height of the dialog as much as the screen's height.
-        */
-        "fullHeight"?: boolean;
-        /**
-        * Set the width of the dialog as much as the screen's width.
-        */
-        "fullWidth"?: boolean;
-        /**
-        * Set both width and height of the dialog to occupy the screen size.
-        */
-        "fullscreen"?: DialogFullscreen;
-        /**
-        * Closes the dialog when `escape` key is pressed.
-        */
-        "keyboard"?: boolean;
-        /**
-        * Control dialog to show or not.
-        */
-        "open"?: boolean;
-        /**
-        * It prevents the dialog from closing on clicking outside of the element.
-        */
-        "persistent"?: boolean;
-        /**
-        * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
-        * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
-        */
-        "placement"?: DialogPlacement;
-        /**
-        * Enables or disables the portal.
-        * @experimental
-        */
-        "portal"?: boolean;
-        /**
-        * Specifies the position of the dialog.
-        * @experimental
-        */
-        "portalStrategy"?: DialogPortalStrategy;
-        /**
-        * Specifies the position of the dialog relative to the target.
-        * @experimental
-        */
-        "portalTarget"?: DialogPortalTarget;
-        /**
-        * It makes the user able to scroll the content by adding a scroll beside it.
-        */
-        "scrollable"?: boolean;
-        /**
-        * Determine the width of the dialog.
-        */
-        "size"?: DialogSize;
-        /**
-        * Removes the margin around the dialog's content.
-        */
-        "sticky"?: boolean;
+    interface HTMLPlusDialogElement extends HTMLElement, DialogMethods, DialogProperties {
     }
     var HTMLPlusDialogElement: {
         prototype: HTMLPlusDialogElement;
@@ -383,7 +302,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog": DialogAttributeJSX & {
+            "plus-dialog": DialogEvents & DialogAttributes & {
                 [key: string]: any;
             };
         }

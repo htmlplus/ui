@@ -206,101 +206,7 @@ export declare class Cropper extends PlusCore {
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface CropperJSX {
-    /**
-    * A number between 0 and 1. Specifies the automatic cropping area size.
-    */
-    "area"?: number;
-    /**
-    * Specifies the initial aspect ratio of the viewport.
-    */
-    "aspectRatio"?: CropperAspectRatio;
-    /**
-    * Shows the black modal above the image and under the viewport.
-    */
-    "backdrop"?: boolean;
-    /**
-    * Shows the grid background of the container.
-    */
-    "background"?: boolean;
-    /**
-    * Disables the component functionality.
-    */
-    "disabled"?: boolean;
-    /**
-    * Shows the dashed lines above the viewport.
-    */
-    "guides"?: boolean;
-    /**
-    * Shows the center indicator above the viewport.
-    */
-    "indicator"?: boolean;
-    /**
-    * Specifies the mode.
-    */
-    "mode"?: CropperMode;
-    /**
-    * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
-    */
-    "resizer"?: CropperResizer;
-    /**
-    * Specifies the shape of the resizer.
-    */
-    "resizerShape"?: CropperResizerShape;
-    /**
-    * Re-renders when resizing the window.
-    */
-    "responsive"?: CropperResponsive;
-    /**
-    * Specifies the shape of the viewport.
-    */
-    "shape"?: CropperShape;
-    /**
-    * Specifies the image's src.
-    */
-    "src"?: string;
-    /**
-    * Gets/Sets data.
-    */
-    "value"?: CropperValue;
-    /**
-    * Specifies the view.
-    */
-    "view"?: CropperView;
-    /**
-    * Enables to zoom the image.
-    */
-    "zoomable"?: CropperZoomable;
-    /**
-    * Specifies zoom ratio when zooming the image by wheeling the mouse.
-    */
-    "zoomRatio"?: number;
-    /**
-    * Fires when the `image` or the `viewport` is changed.
-    */
-    "onPlusCrop"?: (event: CustomEvent<CropperCropEvent>) => void;
-    /**
-    * Fires when the `image` or the `viewport` changes are finished.
-    */
-    "onPlusCropEnd"?: (event: CustomEvent<CropperPointerEvent>) => void;
-    /**
-    * Fires when the `image` or the `viewport` is changing.
-    */
-    "onPlusCropMove"?: (event: CustomEvent<CropperPointerEvent>) => void;
-    /**
-    * Fires when the `image` or the `viewport` starts to change.
-    */
-    "onPlusCropStart"?: (event: CustomEvent<CropperPointerEvent>) => void;
-    /**
-    * Fires when the image has been loaded and the component is ready for operation.
-    */
-    "onPlusReady"?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires when the component starts to `zoom in` or `zoom out`.
-    */
-    "onPlusZoom"?: (event: CustomEvent<CropperZoomEvent>) => void;
-}
-export interface CropperAttributeJSX {
+export interface CropperAttributes {
     /**
     * A number between 0 and 1. Specifies the automatic cropping area size.
     */
@@ -369,101 +275,153 @@ export interface CropperAttributeJSX {
     * Specifies zoom ratio when zooming the image by wheeling the mouse.
     */
     "zoom-ratio"?: number;
+}
+export interface CropperEvents {
     /**
     * Fires when the `image` or the `viewport` is changed.
     */
-    "onPlusCrop"?: (event: CustomEvent<CropperCropEvent>) => void;
+    onPlusCrop?: (event: CustomEvent<CropperCropEvent>) => void;
     /**
     * Fires when the `image` or the `viewport` changes are finished.
     */
-    "onPlusCropEnd"?: (event: CustomEvent<CropperPointerEvent>) => void;
+    onPlusCropEnd?: (event: CustomEvent<CropperPointerEvent>) => void;
     /**
     * Fires when the `image` or the `viewport` is changing.
     */
-    "onPlusCropMove"?: (event: CustomEvent<CropperPointerEvent>) => void;
+    onPlusCropMove?: (event: CustomEvent<CropperPointerEvent>) => void;
     /**
     * Fires when the `image` or the `viewport` starts to change.
     */
-    "onPlusCropStart"?: (event: CustomEvent<CropperPointerEvent>) => void;
+    onPlusCropStart?: (event: CustomEvent<CropperPointerEvent>) => void;
     /**
     * Fires when the image has been loaded and the component is ready for operation.
     */
-    "onPlusReady"?: (event: CustomEvent<void>) => void;
+    onPlusReady?: (event: CustomEvent<void>) => void;
     /**
     * Fires when the component starts to `zoom in` or `zoom out`.
     */
-    "onPlusZoom"?: (event: CustomEvent<CropperZoomEvent>) => void;
+    onPlusZoom?: (event: CustomEvent<CropperZoomEvent>) => void;
+}
+export interface CropperMethods {
+    /**
+    * Flips horizontally.
+    */
+    flipX(): void;
+    /**
+    * Flips vertically.
+    */
+    flipY(): void;
+    /**
+    * Moves the canvas with relative offsets.
+    * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
+    * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
+    */
+    move(offsetX?: number, offsetY?: number): void;
+    /**
+    * Moves the canvas to an absolute point.
+    * @param x - The `left` value of the canvas. Use `null` to ignore this.
+    * @param y - The `top` value of the canvas. Use `null` to ignore this.
+    */
+    moveTo(x?: number, y?: number): void;
+    /**
+    * Resets the image and viewport to their initial states.
+    */
+    reset(): void;
+    /**
+    * Rotates the image with a relative degree.
+    */
+    rotate(degree: number): void;
+    /**
+    * Rotates the image to an absolute degree.
+    */
+    rotateTo(degree: number): void;
+    /**
+    * Gets `canvas` from the cropped image.
+    */
+    toCanvas(): HTMLCanvasElement;
+    /**
+    * Zooms the canvas with a relative ratio.
+    */
+    zoom(ratio: number): void;
+    /**
+    * Zooms the canvas to an absolute ratio.
+    */
+    zoomTo(ratio: number): void;
+}
+export interface CropperProperties {
+    /**
+    * A number between 0 and 1. Specifies the automatic cropping area size.
+    */
+    area?: number;
+    /**
+    * Specifies the initial aspect ratio of the viewport.
+    */
+    aspectRatio?: CropperAspectRatio;
+    /**
+    * Shows the black modal above the image and under the viewport.
+    */
+    backdrop?: boolean;
+    /**
+    * Shows the grid background of the container.
+    */
+    background?: boolean;
+    /**
+    * Disables the component functionality.
+    */
+    disabled?: boolean;
+    /**
+    * Shows the dashed lines above the viewport.
+    */
+    guides?: boolean;
+    /**
+    * Shows the center indicator above the viewport.
+    */
+    indicator?: boolean;
+    /**
+    * Specifies the mode.
+    */
+    mode?: CropperMode;
+    /**
+    * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
+    */
+    resizer?: CropperResizer;
+    /**
+    * Specifies the shape of the resizer.
+    */
+    resizerShape?: CropperResizerShape;
+    /**
+    * Re-renders when resizing the window.
+    */
+    responsive?: CropperResponsive;
+    /**
+    * Specifies the shape of the viewport.
+    */
+    shape?: CropperShape;
+    /**
+    * Specifies the image's src.
+    */
+    src?: string;
+    /**
+    * Gets/Sets data.
+    */
+    value?: CropperValue;
+    /**
+    * Specifies the view.
+    */
+    view?: CropperView;
+    /**
+    * Enables to zoom the image.
+    */
+    zoomable?: CropperZoomable;
+    /**
+    * Specifies zoom ratio when zooming the image by wheeling the mouse.
+    */
+    zoomRatio?: number;
+}
+export interface CropperJSX extends CropperEvents, CropperProperties {
 }
 declare global {
-    interface HTMLPlusCropperElement extends HTMLElement {
-        /**
-        * A number between 0 and 1. Specifies the automatic cropping area size.
-        */
-        "area"?: number;
-        /**
-        * Specifies the initial aspect ratio of the viewport.
-        */
-        "aspectRatio"?: CropperAspectRatio;
-        /**
-        * Shows the black modal above the image and under the viewport.
-        */
-        "backdrop"?: boolean;
-        /**
-        * Shows the grid background of the container.
-        */
-        "background"?: boolean;
-        /**
-        * Disables the component functionality.
-        */
-        "disabled"?: boolean;
-        /**
-        * Shows the dashed lines above the viewport.
-        */
-        "guides"?: boolean;
-        /**
-        * Shows the center indicator above the viewport.
-        */
-        "indicator"?: boolean;
-        /**
-        * Specifies the mode.
-        */
-        "mode"?: CropperMode;
-        /**
-        * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
-        */
-        "resizer"?: CropperResizer;
-        /**
-        * Specifies the shape of the resizer.
-        */
-        "resizerShape"?: CropperResizerShape;
-        /**
-        * Re-renders when resizing the window.
-        */
-        "responsive"?: CropperResponsive;
-        /**
-        * Specifies the shape of the viewport.
-        */
-        "shape"?: CropperShape;
-        /**
-        * Specifies the image's src.
-        */
-        "src"?: string;
-        /**
-        * Gets/Sets data.
-        */
-        "value"?: CropperValue;
-        /**
-        * Specifies the view.
-        */
-        "view"?: CropperView;
-        /**
-        * Enables to zoom the image.
-        */
-        "zoomable"?: CropperZoomable;
-        /**
-        * Specifies zoom ratio when zooming the image by wheeling the mouse.
-        */
-        "zoomRatio"?: number;
+    interface HTMLPlusCropperElement extends HTMLElement, CropperMethods, CropperProperties {
     }
     var HTMLPlusCropperElement: {
         prototype: HTMLPlusCropperElement;
@@ -474,7 +432,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-cropper": CropperAttributeJSX & {
+            "plus-cropper": CropperEvents & CropperAttributes & {
                 [key: string]: any;
             };
         }

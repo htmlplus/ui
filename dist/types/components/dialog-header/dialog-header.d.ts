@@ -7,12 +7,18 @@ export declare class DialogHeader extends PlusCore {
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface DialogHeaderJSX {
+export interface DialogHeaderAttributes {
 }
-export interface DialogHeaderAttributeJSX {
+export interface DialogHeaderEvents {
+}
+export interface DialogHeaderMethods {
+}
+export interface DialogHeaderProperties {
+}
+export interface DialogHeaderJSX extends DialogHeaderEvents, DialogHeaderProperties {
 }
 declare global {
-    interface HTMLPlusDialogHeaderElement extends HTMLElement {
+    interface HTMLPlusDialogHeaderElement extends HTMLElement, DialogHeaderMethods, DialogHeaderProperties {
     }
     var HTMLPlusDialogHeaderElement: {
         prototype: HTMLPlusDialogHeaderElement;
@@ -23,7 +29,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog-header": DialogHeaderAttributeJSX & {
+            "plus-dialog-header": DialogHeaderEvents & DialogHeaderAttributes & {
                 [key: string]: any;
             };
         }

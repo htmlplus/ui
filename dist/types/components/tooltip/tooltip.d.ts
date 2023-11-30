@@ -102,7 +102,7 @@ export declare class Tooltip extends PlusCore {
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface TooltipJSX {
+export interface TooltipAttributes {
     /**
     * Specifies whether to display the arrow or not.
     */
@@ -147,33 +147,49 @@ export interface TooltipJSX {
     */
     "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
 }
-export interface TooltipAttributeJSX {
+export interface TooltipEvents {
+}
+export interface TooltipMethods {
+    /**
+    * Hides the component.
+    */
+    hide(): any;
+    /**
+    * Shows the component.
+    */
+    show(): any;
+    /**
+    * Updates the component's position.
+    */
+    update(): any;
+}
+export interface TooltipProperties {
     /**
     * Specifies whether to display the arrow or not.
     */
-    "arrow"?: boolean;
+    arrow?: boolean;
     /**
     * Specifies a delay in milliseconds for show or hide.
     * Use a number for both show and hide or
     * create an array of two separate numbers for show and hide.
     */
-    "delay"?: TooltipDelay;
+    delay?: TooltipDelay;
     /**
     * Disables the component functionality.
     */
-    "disabled"?: boolean;
+    disabled?: boolean;
     /**
     * TODO
     */
-    "fixed"?: boolean;
+    fixed?: boolean;
     /**
     * TODO
     */
-    "offset"?: TooltipOffset;
+    offset?: TooltipOffset;
     /**
     * Specifies the display location of the component relative to the reference.
     */
-    "placement"?: TooltipPlacement;
+    placement?: TooltipPlacement;
     /**
     * Specifies the element to which the tooltip will be attached.
     * Use `next` to attach to the next sibling.
@@ -182,61 +198,20 @@ export interface TooltipAttributeJSX {
     * Use a string to find an element to attach to that.
     * Use an element to attach to that.
     */
-    "reference"?: TooltipReference;
+    reference?: TooltipReference;
     /**
     * Specifies the activation method.
     */
-    "trigger"?: TooltipTrigger;
+    trigger?: TooltipTrigger;
     /**
     * TODO
     */
-    "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
+    z?: 'auto' | 'vertical' | 'horizontal' | 'move';
+}
+export interface TooltipJSX extends TooltipEvents, TooltipProperties {
 }
 declare global {
-    interface HTMLPlusTooltipElement extends HTMLElement {
-        /**
-        * Specifies whether to display the arrow or not.
-        */
-        "arrow"?: boolean;
-        /**
-        * Specifies a delay in milliseconds for show or hide.
-        * Use a number for both show and hide or
-        * create an array of two separate numbers for show and hide.
-        */
-        "delay"?: TooltipDelay;
-        /**
-        * Disables the component functionality.
-        */
-        "disabled"?: boolean;
-        /**
-        * TODO
-        */
-        "fixed"?: boolean;
-        /**
-        * TODO
-        */
-        "offset"?: TooltipOffset;
-        /**
-        * Specifies the display location of the component relative to the reference.
-        */
-        "placement"?: TooltipPlacement;
-        /**
-        * Specifies the element to which the tooltip will be attached.
-        * Use `next` to attach to the next sibling.
-        * Use `parent` to attach to the parent.
-        * Use `previous` to attach to the previous sibling.
-        * Use a string to find an element to attach to that.
-        * Use an element to attach to that.
-        */
-        "reference"?: TooltipReference;
-        /**
-        * Specifies the activation method.
-        */
-        "trigger"?: TooltipTrigger;
-        /**
-        * TODO
-        */
-        "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
+    interface HTMLPlusTooltipElement extends HTMLElement, TooltipMethods, TooltipProperties {
     }
     var HTMLPlusTooltipElement: {
         prototype: HTMLPlusTooltipElement;
@@ -247,7 +222,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tooltip": TooltipAttributeJSX & {
+            "plus-tooltip": TooltipEvents & TooltipAttributes & {
                 [key: string]: any;
             };
         }

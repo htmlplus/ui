@@ -7,12 +7,18 @@ export declare class DialogFooter extends PlusCore {
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface DialogFooterJSX {
+export interface DialogFooterAttributes {
 }
-export interface DialogFooterAttributeJSX {
+export interface DialogFooterEvents {
+}
+export interface DialogFooterMethods {
+}
+export interface DialogFooterProperties {
+}
+export interface DialogFooterJSX extends DialogFooterEvents, DialogFooterProperties {
 }
 declare global {
-    interface HTMLPlusDialogFooterElement extends HTMLElement {
+    interface HTMLPlusDialogFooterElement extends HTMLElement, DialogFooterMethods, DialogFooterProperties {
     }
     var HTMLPlusDialogFooterElement: {
         prototype: HTMLPlusDialogFooterElement;
@@ -23,7 +29,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-dialog-footer": DialogFooterAttributeJSX & {
+            "plus-dialog-footer": DialogFooterEvents & DialogFooterAttributes & {
                 [key: string]: any;
             };
         }

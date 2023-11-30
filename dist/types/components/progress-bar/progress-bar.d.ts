@@ -38,7 +38,7 @@ export declare class ProgressBar extends PlusCore {
     get stacked(): boolean;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface ProgressBarJSX {
+export interface ProgressBarAttributes {
     /**
     * TODO
     */
@@ -68,66 +68,44 @@ export interface ProgressBarJSX {
     */
     "value"?: number;
 }
-export interface ProgressBarAttributeJSX {
+export interface ProgressBarEvents {
+}
+export interface ProgressBarMethods {
+}
+export interface ProgressBarProperties {
     /**
     * TODO
     */
-    "buffer"?: number;
+    buffer?: number;
     /**
     * TODO
     */
-    "immediate"?: boolean;
+    immediate?: boolean;
     /**
     * TODO
     */
-    "label"?: boolean;
+    label?: boolean;
     /**
     * TODO
     */
-    "min"?: number;
+    min?: number;
     /**
     * TODO
     */
-    "max"?: number;
+    max?: number;
     /**
     * TODO
     */
-    "variant"?: string;
+    variant?: string;
     /**
     * TODO
     */
-    "value"?: number;
+    value?: number;
+}
+export interface ProgressBarJSX extends ProgressBarEvents, ProgressBarProperties {
 }
 declare global {
-    interface HTMLPlusProgressBarElement extends HTMLElement {
-        /**
-        * TODO
-        */
-        "buffer"?: number;
-        /**
-        * TODO
-        */
-        "immediate"?: boolean;
-        /**
-        * TODO
-        */
-        "label"?: boolean;
-        /**
-        * TODO
-        */
-        "min"?: number;
-        /**
-        * TODO
-        */
-        "max"?: number;
-        /**
-        * TODO
-        */
-        "variant"?: string;
-        /**
-        * TODO
-        */
-        "value"?: number;
+    interface HTMLPlusProgressBarElement extends HTMLElement, ProgressBarMethods, ProgressBarProperties {
     }
     var HTMLPlusProgressBarElement: {
         prototype: HTMLPlusProgressBarElement;
@@ -138,7 +116,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-progress-bar": ProgressBarAttributeJSX & {
+            "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & {
                 [key: string]: any;
             };
         }

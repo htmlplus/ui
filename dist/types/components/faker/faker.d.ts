@@ -28,7 +28,7 @@ export declare class Faker extends PlusCore {
     connectCallback(): Promise<void>;
     render(): any;
 }
-export interface FakerJSX {
+export interface FakerAttributes {
     /**
     * Specifies the [API](https://fakerjs.dev/api).
     */
@@ -46,42 +46,32 @@ export interface FakerJSX {
     */
     "seed"?: number;
 }
-export interface FakerAttributeJSX {
+export interface FakerEvents {
+}
+export interface FakerMethods {
+}
+export interface FakerProperties {
     /**
     * Specifies the [API](https://fakerjs.dev/api).
     */
-    "api"?: string;
+    api?: string;
     /**
     * Specifies the API's arguments as an array.
     */
-    "arguments"?: Array<any>;
+    arguments?: Array<any>;
     /**
     * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
     */
-    "instance"?: FakerCoreType;
+    instance?: FakerCoreType;
     /**
     * Keeps the result constant.
     */
-    "seed"?: number;
+    seed?: number;
+}
+export interface FakerJSX extends FakerEvents, FakerProperties {
 }
 declare global {
-    interface HTMLPlusFakerElement extends HTMLElement {
-        /**
-        * Specifies the [API](https://fakerjs.dev/api).
-        */
-        "api"?: string;
-        /**
-        * Specifies the API's arguments as an array.
-        */
-        "arguments"?: Array<any>;
-        /**
-        * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
-        */
-        "instance"?: FakerCoreType;
-        /**
-        * Keeps the result constant.
-        */
-        "seed"?: number;
+    interface HTMLPlusFakerElement extends HTMLElement, FakerMethods, FakerProperties {
     }
     var HTMLPlusFakerElement: {
         prototype: HTMLPlusFakerElement;
@@ -92,7 +82,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-faker": FakerAttributeJSX & {
+            "plus-faker": FakerEvents & FakerAttributes & {
                 [key: string]: any;
             };
         }

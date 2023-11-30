@@ -22,7 +22,7 @@ export declare class Floating extends PlusCore {
     get style(): string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface FloatingJSX {
+export interface FloatingAttributes {
     /**
     * Positions the element relative to the viewport and prevents it from moving even when scrolled.
     * Otherwise, the element is positioned relative to its nearest ancestor.
@@ -37,36 +37,29 @@ export interface FloatingJSX {
     */
     "placement"?: FloatingPlacement;
 }
-export interface FloatingAttributeJSX {
+export interface FloatingEvents {
+}
+export interface FloatingMethods {
+}
+export interface FloatingProperties {
     /**
     * Positions the element relative to the viewport and prevents it from moving even when scrolled.
     * Otherwise, the element is positioned relative to its nearest ancestor.
     */
-    "fixed"?: boolean;
+    fixed?: boolean;
     /**
     * Specifies the deviation from the center.
     */
-    "offset"?: FloatingOffset;
+    offset?: FloatingOffset;
     /**
     * Specifies the display location.
     */
-    "placement"?: FloatingPlacement;
+    placement?: FloatingPlacement;
+}
+export interface FloatingJSX extends FloatingEvents, FloatingProperties {
 }
 declare global {
-    interface HTMLPlusFloatingElement extends HTMLElement {
-        /**
-        * Positions the element relative to the viewport and prevents it from moving even when scrolled.
-        * Otherwise, the element is positioned relative to its nearest ancestor.
-        */
-        "fixed"?: boolean;
-        /**
-        * Specifies the deviation from the center.
-        */
-        "offset"?: FloatingOffset;
-        /**
-        * Specifies the display location.
-        */
-        "placement"?: FloatingPlacement;
+    interface HTMLPlusFloatingElement extends HTMLElement, FloatingMethods, FloatingProperties {
     }
     var HTMLPlusFloatingElement: {
         prototype: HTMLPlusFloatingElement;
@@ -77,7 +70,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-floating": FloatingAttributeJSX & {
+            "plus-floating": FloatingEvents & FloatingAttributes & {
                 [key: string]: any;
             };
         }

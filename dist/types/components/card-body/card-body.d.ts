@@ -8,12 +8,18 @@ export declare class CardBody extends PlusCore {
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface CardBodyJSX {
+export interface CardBodyAttributes {
 }
-export interface CardBodyAttributeJSX {
+export interface CardBodyEvents {
+}
+export interface CardBodyMethods {
+}
+export interface CardBodyProperties {
+}
+export interface CardBodyJSX extends CardBodyEvents, CardBodyProperties {
 }
 declare global {
-    interface HTMLPlusCardBodyElement extends HTMLElement {
+    interface HTMLPlusCardBodyElement extends HTMLElement, CardBodyMethods, CardBodyProperties {
     }
     var HTMLPlusCardBodyElement: {
         prototype: HTMLPlusCardBodyElement;
@@ -24,7 +30,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-card-body": CardBodyAttributeJSX & {
+            "plus-card-body": CardBodyEvents & CardBodyAttributes & {
                 [key: string]: any;
             };
         }

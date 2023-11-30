@@ -22,7 +22,7 @@ export declare class Spinner extends PlusCore {
     get elements(): number[];
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface SpinnerJSX {
+export interface SpinnerAttributes {
     /**
     * Specifies the color.
     */
@@ -36,34 +36,28 @@ export interface SpinnerJSX {
     */
     "type"?: SpinnerType;
 }
-export interface SpinnerAttributeJSX {
+export interface SpinnerEvents {
+}
+export interface SpinnerMethods {
+}
+export interface SpinnerProperties {
     /**
     * Specifies the color.
     */
-    "color"?: string;
+    color?: string;
     /**
     * Specifies the size of the spinner.
     */
-    "size"?: SpinnerSize;
+    size?: SpinnerSize;
     /**
     * Specifies which variant of the spinner to use.
     */
-    "type"?: SpinnerType;
+    type?: SpinnerType;
+}
+export interface SpinnerJSX extends SpinnerEvents, SpinnerProperties {
 }
 declare global {
-    interface HTMLPlusSpinnerElement extends HTMLElement {
-        /**
-        * Specifies the color.
-        */
-        "color"?: string;
-        /**
-        * Specifies the size of the spinner.
-        */
-        "size"?: SpinnerSize;
-        /**
-        * Specifies which variant of the spinner to use.
-        */
-        "type"?: SpinnerType;
+    interface HTMLPlusSpinnerElement extends HTMLElement, SpinnerMethods, SpinnerProperties {
     }
     var HTMLPlusSpinnerElement: {
         prototype: HTMLPlusSpinnerElement;
@@ -74,7 +68,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-spinner": SpinnerAttributeJSX & {
+            "plus-spinner": SpinnerEvents & SpinnerAttributes & {
                 [key: string]: any;
             };
         }

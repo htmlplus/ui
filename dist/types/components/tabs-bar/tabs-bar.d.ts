@@ -20,7 +20,7 @@ export declare class TabsBar extends PlusCore {
     reverse?: boolean;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface TabsBarJSX {
+export interface TabsBarAttributes {
     /**
     * Grows tabs as much as all available space (occupies all horizontal space).
     */
@@ -34,34 +34,28 @@ export interface TabsBarJSX {
     */
     "reverse"?: boolean;
 }
-export interface TabsBarAttributeJSX {
+export interface TabsBarEvents {
+}
+export interface TabsBarMethods {
+}
+export interface TabsBarProperties {
     /**
     * Grows tabs as much as all available space (occupies all horizontal space).
     */
-    "grow"?: boolean;
+    grow?: boolean;
     /**
     * Specifies how the tabs are aligned.
     */
-    "justify"?: 'start' | 'center' | 'end';
+    justify?: 'start' | 'center' | 'end';
     /**
     * Reverses the arrangement of the tabs.
     */
-    "reverse"?: boolean;
+    reverse?: boolean;
+}
+export interface TabsBarJSX extends TabsBarEvents, TabsBarProperties {
 }
 declare global {
-    interface HTMLPlusTabsBarElement extends HTMLElement {
-        /**
-        * Grows tabs as much as all available space (occupies all horizontal space).
-        */
-        "grow"?: boolean;
-        /**
-        * Specifies how the tabs are aligned.
-        */
-        "justify"?: 'start' | 'center' | 'end';
-        /**
-        * Reverses the arrangement of the tabs.
-        */
-        "reverse"?: boolean;
+    interface HTMLPlusTabsBarElement extends HTMLElement, TabsBarMethods, TabsBarProperties {
     }
     var HTMLPlusTabsBarElement: {
         prototype: HTMLPlusTabsBarElement;
@@ -72,7 +66,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tabs-bar": TabsBarAttributeJSX & {
+            "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & {
                 [key: string]: any;
             };
         }

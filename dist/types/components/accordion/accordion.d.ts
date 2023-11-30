@@ -83,7 +83,7 @@ export declare class Accordion extends PlusCore {
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface AccordionJSX {
+export interface AccordionAttributes {
     /**
     * Disables the component functionality.
     */
@@ -96,71 +96,65 @@ export interface AccordionJSX {
     * The summary text displayed on the header.
     */
     "summary"?: string;
-    /**
-    * Fires when the component is about to collapse.
-    * This event can be [canceled](TODO).
-    */
-    "onPlusCollapse"?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires after the component has collapsed.
-    */
-    "onPlusCollapsed"?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires when the component is about to expand.
-    * This event can be [canceled](TODO).
-    */
-    "onPlusExpand"?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires after the component has expanded.
-    */
-    "onPlusExpanded"?: (event: CustomEvent<void>) => void;
 }
-export interface AccordionAttributeJSX {
-    /**
-    * Disables the component functionality.
-    */
-    "disabled"?: boolean;
-    /**
-    * Control the component to expand or not.
-    */
-    "open"?: boolean;
-    /**
-    * The summary text displayed on the header.
-    */
-    "summary"?: string;
+export interface AccordionEvents {
     /**
     * Fires when the component is about to collapse.
     * This event can be [canceled](TODO).
     */
-    "onPlusCollapse"?: (event: CustomEvent<void>) => void;
+    onPlusCollapse?: (event: CustomEvent<void>) => void;
     /**
     * Fires after the component has collapsed.
     */
-    "onPlusCollapsed"?: (event: CustomEvent<void>) => void;
+    onPlusCollapsed?: (event: CustomEvent<void>) => void;
     /**
     * Fires when the component is about to expand.
     * This event can be [canceled](TODO).
     */
-    "onPlusExpand"?: (event: CustomEvent<void>) => void;
+    onPlusExpand?: (event: CustomEvent<void>) => void;
     /**
     * Fires after the component has expanded.
     */
-    "onPlusExpanded"?: (event: CustomEvent<void>) => void;
+    onPlusExpanded?: (event: CustomEvent<void>) => void;
+}
+export interface AccordionMethods {
+    /**
+    * Collapses the component.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    collapse(): Promise<boolean>;
+    /**
+    * Expands the component.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    expand(): Promise<boolean>;
+    /**
+    * Toggles between `collapse` and `expand` state.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    toggle(): Promise<boolean>;
+}
+export interface AccordionProperties {
+    /**
+    * Disables the component functionality.
+    */
+    disabled?: boolean;
+    /**
+    * Control the component to expand or not.
+    */
+    open?: boolean;
+    /**
+    * The summary text displayed on the header.
+    */
+    summary?: string;
+}
+export interface AccordionJSX extends AccordionEvents, AccordionProperties {
 }
 declare global {
-    interface HTMLPlusAccordionElement extends HTMLElement {
-        /**
-        * Disables the component functionality.
-        */
-        "disabled"?: boolean;
-        /**
-        * Control the component to expand or not.
-        */
-        "open"?: boolean;
-        /**
-        * The summary text displayed on the header.
-        */
-        "summary"?: string;
+    interface HTMLPlusAccordionElement extends HTMLElement, AccordionMethods, AccordionProperties {
     }
     var HTMLPlusAccordionElement: {
         prototype: HTMLPlusAccordionElement;
@@ -171,7 +165,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-accordion": AccordionAttributeJSX & {
+            "plus-accordion": AccordionEvents & AccordionAttributes & {
                 [key: string]: any;
             };
         }

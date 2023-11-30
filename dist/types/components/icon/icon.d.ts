@@ -43,7 +43,7 @@ export declare class Icon extends PlusCore {
     update(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface IconJSX {
+export interface IconAttributes {
     /**
     * Specifies the color.
     */
@@ -73,66 +73,44 @@ export interface IconJSX {
     */
     "size"?: IconSize;
 }
-export interface IconAttributeJSX {
+export interface IconEvents {
+}
+export interface IconMethods {
+}
+export interface IconProperties {
     /**
     * Specifies the color.
     */
-    "color"?: string;
+    color?: string;
     /**
     * Flips in `horizontal`, `vertical` or `both` directions.
     */
-    "flip"?: IconFlip;
+    flip?: IconFlip;
     /**
     * Specifies an alternate description to use for assistive devices.
     */
-    "label"?: string;
+    label?: string;
     /**
     * Specifies the name.
     */
-    "name"?: string;
+    name?: string;
     /**
     * An asynchronous function to load SVG files.
     */
-    "resolver"?: IconResolver;
+    resolver?: IconResolver;
     /**
     * Specifies the rotation.
     */
-    "rotate"?: number;
+    rotate?: number;
     /**
     * Specifies the size.
     */
-    "size"?: IconSize;
+    size?: IconSize;
+}
+export interface IconJSX extends IconEvents, IconProperties {
 }
 declare global {
-    interface HTMLPlusIconElement extends HTMLElement {
-        /**
-        * Specifies the color.
-        */
-        "color"?: string;
-        /**
-        * Flips in `horizontal`, `vertical` or `both` directions.
-        */
-        "flip"?: IconFlip;
-        /**
-        * Specifies an alternate description to use for assistive devices.
-        */
-        "label"?: string;
-        /**
-        * Specifies the name.
-        */
-        "name"?: string;
-        /**
-        * An asynchronous function to load SVG files.
-        */
-        "resolver"?: IconResolver;
-        /**
-        * Specifies the rotation.
-        */
-        "rotate"?: number;
-        /**
-        * Specifies the size.
-        */
-        "size"?: IconSize;
+    interface HTMLPlusIconElement extends HTMLElement, IconMethods, IconProperties {
     }
     var HTMLPlusIconElement: {
         prototype: HTMLPlusIconElement;
@@ -143,7 +121,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-icon": IconAttributeJSX & {
+            "plus-icon": IconEvents & IconAttributes & {
                 [key: string]: any;
             };
         }

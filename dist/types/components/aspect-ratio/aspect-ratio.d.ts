@@ -24,21 +24,7 @@ export declare class AspectRatio extends PlusCore {
     };
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface AspectRatioJSX {
-    /**
-    * Specifies the minimum height.
-    */
-    "minHeight"?: number | string;
-    /**
-    * Specifies the maximum height.
-    */
-    "maxHeight"?: number | string;
-    /**
-    * Specifies the ratio.
-    */
-    "value"?: number | string;
-}
-export interface AspectRatioAttributeJSX {
+export interface AspectRatioAttributes {
     /**
     * Specifies the minimum height.
     */
@@ -52,20 +38,28 @@ export interface AspectRatioAttributeJSX {
     */
     "value"?: number | string;
 }
+export interface AspectRatioEvents {
+}
+export interface AspectRatioMethods {
+}
+export interface AspectRatioProperties {
+    /**
+    * Specifies the minimum height.
+    */
+    minHeight?: number | string;
+    /**
+    * Specifies the maximum height.
+    */
+    maxHeight?: number | string;
+    /**
+    * Specifies the ratio.
+    */
+    value?: number | string;
+}
+export interface AspectRatioJSX extends AspectRatioEvents, AspectRatioProperties {
+}
 declare global {
-    interface HTMLPlusAspectRatioElement extends HTMLElement {
-        /**
-        * Specifies the minimum height.
-        */
-        "minHeight"?: number | string;
-        /**
-        * Specifies the maximum height.
-        */
-        "maxHeight"?: number | string;
-        /**
-        * Specifies the ratio.
-        */
-        "value"?: number | string;
+    interface HTMLPlusAspectRatioElement extends HTMLElement, AspectRatioMethods, AspectRatioProperties {
     }
     var HTMLPlusAspectRatioElement: {
         prototype: HTMLPlusAspectRatioElement;
@@ -76,7 +70,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-aspect-ratio": AspectRatioAttributeJSX & {
+            "plus-aspect-ratio": AspectRatioEvents & AspectRatioAttributes & {
                 [key: string]: any;
             };
         }

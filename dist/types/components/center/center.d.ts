@@ -12,24 +12,26 @@ export declare class Center extends PlusCore {
     inline?: boolean;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface CenterJSX {
+export interface CenterAttributes {
     /**
     * Converts the `display` CSS property from `flex` to `inline-flex`.
     */
     "inline"?: boolean;
 }
-export interface CenterAttributeJSX {
+export interface CenterEvents {
+}
+export interface CenterMethods {
+}
+export interface CenterProperties {
     /**
     * Converts the `display` CSS property from `flex` to `inline-flex`.
     */
-    "inline"?: boolean;
+    inline?: boolean;
+}
+export interface CenterJSX extends CenterEvents, CenterProperties {
 }
 declare global {
-    interface HTMLPlusCenterElement extends HTMLElement {
-        /**
-        * Converts the `display` CSS property from `flex` to `inline-flex`.
-        */
-        "inline"?: boolean;
+    interface HTMLPlusCenterElement extends HTMLElement, CenterMethods, CenterProperties {
     }
     var HTMLPlusCenterElement: {
         prototype: HTMLPlusCenterElement;
@@ -40,7 +42,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-center": CenterAttributeJSX & {
+            "plus-center": CenterEvents & CenterAttributes & {
                 [key: string]: any;
             };
         }

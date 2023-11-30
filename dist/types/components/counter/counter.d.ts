@@ -80,7 +80,7 @@ export declare class Counter extends PlusCore {
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface CounterJSX {
+export interface CounterAttributes {
     /**
     * Easing function. Click [here](http://robertpenner.com/easing) for more details.
     */
@@ -121,99 +121,77 @@ export interface CounterJSX {
     * Target value.
     */
     "to"?: number;
-    /**
-    * Is Triggered when transition ended.
-    */
-    "onPlusComplete"?: (event: CustomEvent<void>) => void;
 }
-export interface CounterAttributeJSX {
-    /**
-    * Easing function. Click [here](http://robertpenner.com/easing) for more details.
-    */
-    "easing"?: CounterEasing;
-    /**
-    * Specifies decimal character.
-    */
-    "decimal"?: string;
-    /**
-    * Amount of decimals to display.
-    */
-    "decimals"?: number;
-    /**
-    * Delay in milliseconds before starting the transition.
-    */
-    "delay"?: number;
-    /**
-    * Duration in milliseconds.
-    */
-    "duration"?: number;
-    /**
-    * Initial value.
-    */
-    "from"?: number;
-    /**
-    * Specifies numeral glyph substitution.
-    */
-    "numerals"?: string[];
-    /**
-    * Starts/Stops the transition.
-    */
-    "play"?: boolean;
-    /**
-    * Specifies character of thousands separator.
-    */
-    "separator"?: string;
-    /**
-    * Target value.
-    */
-    "to"?: number;
+export interface CounterEvents {
     /**
     * Is Triggered when transition ended.
     */
-    "onPlusComplete"?: (event: CustomEvent<void>) => void;
+    onPlusComplete?: (event: CustomEvent<void>) => void;
+}
+export interface CounterMethods {
+    /**
+    * Completes the transition.
+    */
+    complete(): any;
+    /**
+    * Pauses the transition.
+    */
+    pause(): any;
+    /**
+    * Starts the transition.
+    */
+    start(): any;
+    /**
+    * Stops the transition.
+    */
+    stop(): any;
+}
+export interface CounterProperties {
+    /**
+    * Easing function. Click [here](http://robertpenner.com/easing) for more details.
+    */
+    easing?: CounterEasing;
+    /**
+    * Specifies decimal character.
+    */
+    decimal?: string;
+    /**
+    * Amount of decimals to display.
+    */
+    decimals?: number;
+    /**
+    * Delay in milliseconds before starting the transition.
+    */
+    delay?: number;
+    /**
+    * Duration in milliseconds.
+    */
+    duration?: number;
+    /**
+    * Initial value.
+    */
+    from?: number;
+    /**
+    * Specifies numeral glyph substitution.
+    */
+    numerals?: string[];
+    /**
+    * Starts/Stops the transition.
+    */
+    play?: boolean;
+    /**
+    * Specifies character of thousands separator.
+    */
+    separator?: string;
+    /**
+    * Target value.
+    */
+    to?: number;
+}
+export interface CounterJSX extends CounterEvents, CounterProperties {
 }
 declare global {
-    interface HTMLPlusCounterElement extends HTMLElement {
-        /**
-        * Easing function. Click [here](http://robertpenner.com/easing) for more details.
-        */
-        "easing"?: CounterEasing;
-        /**
-        * Specifies decimal character.
-        */
-        "decimal"?: string;
-        /**
-        * Amount of decimals to display.
-        */
-        "decimals"?: number;
-        /**
-        * Delay in milliseconds before starting the transition.
-        */
-        "delay"?: number;
-        /**
-        * Duration in milliseconds.
-        */
-        "duration"?: number;
-        /**
-        * Initial value.
-        */
-        "from"?: number;
-        /**
-        * Specifies numeral glyph substitution.
-        */
-        "numerals"?: string[];
-        /**
-        * Starts/Stops the transition.
-        */
-        "play"?: boolean;
-        /**
-        * Specifies character of thousands separator.
-        */
-        "separator"?: string;
-        /**
-        * Target value.
-        */
-        "to"?: number;
+    interface HTMLPlusCounterElement extends HTMLElement, CounterMethods, CounterProperties {
     }
     var HTMLPlusCounterElement: {
         prototype: HTMLPlusCounterElement;
@@ -224,7 +202,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-counter": CounterAttributeJSX & {
+            "plus-counter": CounterEvents & CounterAttributes & {
                 [key: string]: any;
             };
         }

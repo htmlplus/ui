@@ -13,24 +13,26 @@ export declare class TabsPanels extends PlusCore {
     watcher(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface TabsPanelsJSX {
+export interface TabsPanelsAttributes {
     /**
     * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
     */
     "connector"?: string;
 }
-export interface TabsPanelsAttributeJSX {
+export interface TabsPanelsEvents {
+}
+export interface TabsPanelsMethods {
+}
+export interface TabsPanelsProperties {
     /**
     * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
     */
-    "connector"?: string;
+    connector?: string;
+}
+export interface TabsPanelsJSX extends TabsPanelsEvents, TabsPanelsProperties {
 }
 declare global {
-    interface HTMLPlusTabsPanelsElement extends HTMLElement {
-        /**
-        * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
-        */
-        "connector"?: string;
+    interface HTMLPlusTabsPanelsElement extends HTMLElement, TabsPanelsMethods, TabsPanelsProperties {
     }
     var HTMLPlusTabsPanelsElement: {
         prototype: HTMLPlusTabsPanelsElement;
@@ -41,7 +43,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tabs-panels": TabsPanelsAttributeJSX & {
+            "plus-tabs-panels": TabsPanelsEvents & TabsPanelsAttributes & {
                 [key: string]: any;
             };
         }

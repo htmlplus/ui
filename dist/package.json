@@ -47,7 +47,7 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^0.8.5"
+    "@htmlplus/element": "^0.8.6"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^23.0.2",

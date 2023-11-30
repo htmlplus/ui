@@ -32,7 +32,7 @@ export declare class ScrollDetector extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
-export interface ScrollDetectorJSX {
+export interface ScrollDetectorAttributes {
     /**
     * Disables the component functionality.
     */
@@ -45,43 +45,33 @@ export interface ScrollDetectorJSX {
     * Indicates which scroll (horizontal or vertical) is to be used as the source.
     */
     "vertical"?: boolean;
-    /**
-    * Fires when the scroll starts changing.
-    */
-    "onPlusChange"?: (event: CustomEvent<ScrollDetectorChangeEvent>) => void;
 }
-export interface ScrollDetectorAttributeJSX {
-    /**
-    * Disables the component functionality.
-    */
-    "disabled"?: boolean;
-    /**
-    * Specifies the reference of the scroll.
-    */
-    "reference"?: ScrollDetectorReference;
-    /**
-    * Indicates which scroll (horizontal or vertical) is to be used as the source.
-    */
-    "vertical"?: boolean;
+export interface ScrollDetectorEvents {
     /**
     * Fires when the scroll starts changing.
     */
-    "onPlusChange"?: (event: CustomEvent<ScrollDetectorChangeEvent>) => void;
+    onPlusChange?: (event: CustomEvent<ScrollDetectorChangeEvent>) => void;
+}
+export interface ScrollDetectorMethods {
+}
+export interface ScrollDetectorProperties {
+    /**
+    * Disables the component functionality.
+    */
+    disabled?: boolean;
+    /**
+    * Specifies the reference of the scroll.
+    */
+    reference?: ScrollDetectorReference;
+    /**
+    * Indicates which scroll (horizontal or vertical) is to be used as the source.
+    */
+    vertical?: boolean;
+}
+export interface ScrollDetectorJSX extends ScrollDetectorEvents, ScrollDetectorProperties {
 }
 declare global {
-    interface HTMLPlusScrollDetectorElement extends HTMLElement {
-        /**
-        * Disables the component functionality.
-        */
-        "disabled"?: boolean;
-        /**
-        * Specifies the reference of the scroll.
-        */
-        "reference"?: ScrollDetectorReference;
-        /**
-        * Indicates which scroll (horizontal or vertical) is to be used as the source.
-        */
-        "vertical"?: boolean;
+    interface HTMLPlusScrollDetectorElement extends HTMLElement, ScrollDetectorMethods, ScrollDetectorProperties {
     }
     var HTMLPlusScrollDetectorElement: {
         prototype: HTMLPlusScrollDetectorElement;
@@ -92,7 +82,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-scroll-detector": ScrollDetectorAttributeJSX & {
+            "plus-scroll-detector": ScrollDetectorEvents & ScrollDetectorAttributes & {
                 [key: string]: any;
             };
         }

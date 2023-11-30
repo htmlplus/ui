@@ -4,12 +4,18 @@ export declare class ProgressBarStack extends PlusCore {
     static STYLES: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface ProgressBarStackJSX {
+export interface ProgressBarStackAttributes {
 }
-export interface ProgressBarStackAttributeJSX {
+export interface ProgressBarStackEvents {
+}
+export interface ProgressBarStackMethods {
+}
+export interface ProgressBarStackProperties {
+}
+export interface ProgressBarStackJSX extends ProgressBarStackEvents, ProgressBarStackProperties {
 }
 declare global {
-    interface HTMLPlusProgressBarStackElement extends HTMLElement {
+    interface HTMLPlusProgressBarStackElement extends HTMLElement, ProgressBarStackMethods, ProgressBarStackProperties {
     }
     var HTMLPlusProgressBarStackElement: {
         prototype: HTMLPlusProgressBarStackElement;
@@ -20,7 +26,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-progress-bar-stack": ProgressBarStackAttributeJSX & {
+            "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & {
                 [key: string]: any;
             };
         }

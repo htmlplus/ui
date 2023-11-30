@@ -32,7 +32,7 @@ export declare class Tabs extends PlusCore {
     connectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface TabsJSX {
+export interface TabsAttributes {
     /**
     * Provides your own value.
     */
@@ -46,45 +46,34 @@ export interface TabsJSX {
     * this property to connect them to their corresponding tabs.
     */
     "connector"?: string;
-    /**
-    * Fired when the value changes.
-    */
-    "onPlusChange"?: (event: CustomEvent<any>) => void;
 }
-export interface TabsAttributeJSX {
+export interface TabsEvents {
+    /**
+    * Fired when the value changes.
+    */
+    onPlusChange?: (event: CustomEvent<any>) => void;
+}
+export interface TabsMethods {
+}
+export interface TabsProperties {
     /**
     * Provides your own value.
     */
-    "value"?: any;
+    value?: any;
     /**
     * You can use vertical property for vertical mode.
     */
-    "vertical"?: boolean;
+    vertical?: boolean;
     /**
     * Panels are not always used inside tabs.They may be used outside, in which you can use
     * this property to connect them to their corresponding tabs.
     */
-    "connector"?: string;
-    /**
-    * Fired when the value changes.
-    */
-    "onPlusChange"?: (event: CustomEvent<any>) => void;
+    connector?: string;
+}
+export interface TabsJSX extends TabsEvents, TabsProperties {
 }
 declare global {
-    interface HTMLPlusTabsElement extends HTMLElement {
-        /**
-        * Provides your own value.
-        */
-        "value"?: any;
-        /**
-        * You can use vertical property for vertical mode.
-        */
-        "vertical"?: boolean;
-        /**
-        * Panels are not always used inside tabs.They may be used outside, in which you can use
-        * this property to connect them to their corresponding tabs.
-        */
-        "connector"?: string;
+    interface HTMLPlusTabsElement extends HTMLElement, TabsMethods, TabsProperties {
     }
     var HTMLPlusTabsElement: {
         prototype: HTMLPlusTabsElement;
@@ -95,7 +84,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-tabs": TabsAttributeJSX & {
+            "plus-tabs": TabsEvents & TabsAttributes & {
                 [key: string]: any;
             };
         }

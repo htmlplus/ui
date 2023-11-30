@@ -27,7 +27,7 @@ export declare class DrawerToggler extends PlusCore {
     onClick(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface DrawerTogglerJSX {
+export interface DrawerTogglerAttributes {
     /**
     * This property helps you to attach which drawer this toggler controls.
     * It doesn't matter where the drawer toggler is.
@@ -36,24 +36,23 @@ export interface DrawerTogglerJSX {
     */
     "connector"?: string;
 }
-export interface DrawerTogglerAttributeJSX {
+export interface DrawerTogglerEvents {
+}
+export interface DrawerTogglerMethods {
+}
+export interface DrawerTogglerProperties {
     /**
     * This property helps you to attach which drawer this toggler controls.
     * It doesn't matter where the drawer toggler is.
     * You can put the drawer's toggler inside or outside of the drawer.
     * Read more about connectors [here](/connector).
     */
-    "connector"?: string;
+    connector?: string;
+}
+export interface DrawerTogglerJSX extends DrawerTogglerEvents, DrawerTogglerProperties {
 }
 declare global {
-    interface HTMLPlusDrawerTogglerElement extends HTMLElement {
-        /**
-        * This property helps you to attach which drawer this toggler controls.
-        * It doesn't matter where the drawer toggler is.
-        * You can put the drawer's toggler inside or outside of the drawer.
-        * Read more about connectors [here](/connector).
-        */
-        "connector"?: string;
+    interface HTMLPlusDrawerTogglerElement extends HTMLElement, DrawerTogglerMethods, DrawerTogglerProperties {
     }
     var HTMLPlusDrawerTogglerElement: {
         prototype: HTMLPlusDrawerTogglerElement;
@@ -64,7 +63,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-drawer-toggler": DrawerTogglerAttributeJSX & {
+            "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & {
                 [key: string]: any;
             };
         }

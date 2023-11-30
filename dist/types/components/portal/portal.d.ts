@@ -28,7 +28,7 @@ export declare class Portal extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
 }
-export interface PortalJSX {
+export interface PortalAttributes {
     /**
     * Disables the portal.
     */
@@ -43,36 +43,29 @@ export interface PortalJSX {
     */
     "target"?: PortalTarget;
 }
-export interface PortalAttributeJSX {
+export interface PortalEvents {
+}
+export interface PortalMethods {
+}
+export interface PortalProperties {
     /**
     * Disables the portal.
     */
-    "disabled"?: boolean;
+    disabled?: boolean;
     /**
     * Specifies the position of the portal content relative to the target.
     */
-    "strategy"?: PortalStrategy;
+    strategy?: PortalStrategy;
     /**
     * Specifies the position of the portal content, It Can include css selectors,
     * node or any html elements.
     */
-    "target"?: PortalTarget;
+    target?: PortalTarget;
+}
+export interface PortalJSX extends PortalEvents, PortalProperties {
 }
 declare global {
-    interface HTMLPlusPortalElement extends HTMLElement {
-        /**
-        * Disables the portal.
-        */
-        "disabled"?: boolean;
-        /**
-        * Specifies the position of the portal content relative to the target.
-        */
-        "strategy"?: PortalStrategy;
-        /**
-        * Specifies the position of the portal content, It Can include css selectors,
-        * node or any html elements.
-        */
-        "target"?: PortalTarget;
+    interface HTMLPlusPortalElement extends HTMLElement, PortalMethods, PortalProperties {
     }
     var HTMLPlusPortalElement: {
         prototype: HTMLPlusPortalElement;
@@ -83,7 +76,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-portal": PortalAttributeJSX & {
+            "plus-portal": PortalEvents & PortalAttributes & {
                 [key: string]: any;
             };
         }

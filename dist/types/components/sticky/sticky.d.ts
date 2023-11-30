@@ -41,25 +41,7 @@ export declare class Sticky extends PlusCore {
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface StickyJSX {
-    /**
-    * Specifies the space from top.
-    */
-    "top"?: StickyTop;
-    /**
-    * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
-    */
-    "watcher"?: boolean;
-    /**
-    * Specifies the z-index.
-    */
-    "zIndex"?: number;
-    /**
-    * Fires when the state is changed. To enable, set the `watcher` property to `true`.
-    */
-    "onPlusChange"?: (event: CustomEvent<StickyState>) => void;
-}
-export interface StickyAttributeJSX {
+export interface StickyAttributes {
     /**
     * Specifies the space from top.
     */
@@ -72,25 +54,33 @@ export interface StickyAttributeJSX {
     * Specifies the z-index.
     */
     "z-index"?: number;
+}
+export interface StickyEvents {
     /**
     * Fires when the state is changed. To enable, set the `watcher` property to `true`.
     */
-    "onPlusChange"?: (event: CustomEvent<StickyState>) => void;
+    onPlusChange?: (event: CustomEvent<StickyState>) => void;
+}
+export interface StickyMethods {
+}
+export interface StickyProperties {
+    /**
+    * Specifies the space from top.
+    */
+    top?: StickyTop;
+    /**
+    * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
+    */
+    watcher?: boolean;
+    /**
+    * Specifies the z-index.
+    */
+    zIndex?: number;
+}
+export interface StickyJSX extends StickyEvents, StickyProperties {
 }
 declare global {
-    interface HTMLPlusStickyElement extends HTMLElement {
-        /**
-        * Specifies the space from top.
-        */
-        "top"?: StickyTop;
-        /**
-        * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
-        */
-        "watcher"?: boolean;
-        /**
-        * Specifies the z-index.
-        */
-        "zIndex"?: number;
+    interface HTMLPlusStickyElement extends HTMLElement, StickyMethods, StickyProperties {
     }
     var HTMLPlusStickyElement: {
         prototype: HTMLPlusStickyElement;
@@ -101,7 +91,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-sticky": StickyAttributeJSX & {
+            "plus-sticky": StickyEvents & StickyAttributes & {
                 [key: string]: any;
             };
         }

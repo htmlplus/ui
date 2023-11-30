@@ -41,26 +41,7 @@ export declare class Breadcrumb extends PlusCore {
     updatedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface BreadcrumbJSX {
-    /**
-    * Specifies the label for the expander button.
-    */
-    "expanderText"?: string;
-    /**
-    * Specifies the position of the expander button.
-    * The expander button is displayed when the number of items reached the maximum limit.
-    */
-    "offset"?: number;
-    /**
-    * Specifies the Maximum number of items that are allowed to be displayed.
-    */
-    "max"?: number;
-    /**
-    * Specifies the separator between items.
-    */
-    "separator"?: string;
-}
-export interface BreadcrumbAttributeJSX {
+export interface BreadcrumbAttributes {
     /**
     * Specifies the label for the expander button.
     */
@@ -79,25 +60,33 @@ export interface BreadcrumbAttributeJSX {
     */
     "separator"?: string;
 }
+export interface BreadcrumbEvents {
+}
+export interface BreadcrumbMethods {
+}
+export interface BreadcrumbProperties {
+    /**
+    * Specifies the label for the expander button.
+    */
+    expanderText?: string;
+    /**
+    * Specifies the position of the expander button.
+    * The expander button is displayed when the number of items reached the maximum limit.
+    */
+    offset?: number;
+    /**
+    * Specifies the Maximum number of items that are allowed to be displayed.
+    */
+    max?: number;
+    /**
+    * Specifies the separator between items.
+    */
+    separator?: string;
+}
+export interface BreadcrumbJSX extends BreadcrumbEvents, BreadcrumbProperties {
+}
 declare global {
-    interface HTMLPlusBreadcrumbElement extends HTMLElement {
-        /**
-        * Specifies the label for the expander button.
-        */
-        "expanderText"?: string;
-        /**
-        * Specifies the position of the expander button.
-        * The expander button is displayed when the number of items reached the maximum limit.
-        */
-        "offset"?: number;
-        /**
-        * Specifies the Maximum number of items that are allowed to be displayed.
-        */
-        "max"?: number;
-        /**
-        * Specifies the separator between items.
-        */
-        "separator"?: string;
+    interface HTMLPlusBreadcrumbElement extends HTMLElement, BreadcrumbMethods, BreadcrumbProperties {
     }
     var HTMLPlusBreadcrumbElement: {
         prototype: HTMLPlusBreadcrumbElement;
@@ -108,7 +97,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-breadcrumb": BreadcrumbAttributeJSX & {
+            "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & {
                 [key: string]: any;
             };
         }

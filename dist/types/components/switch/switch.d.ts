@@ -22,7 +22,7 @@ export declare class Switch extends PlusCore {
     onKeyDown(event: any): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface SwitchJSX {
+export interface SwitchAttributes {
     /**
     * Puts the switch in checked state.
     * @model
@@ -32,39 +32,31 @@ export interface SwitchJSX {
     * Disables the switch.
     */
     "disabled"?: boolean;
-    /**
-    * When the switch state is changed this event triggers.
-    * @model
-    */
-    "onPlusChange"?: (event: CustomEvent<void>) => void;
 }
-export interface SwitchAttributeJSX {
-    /**
-    * Puts the switch in checked state.
-    * @model
-    */
-    "checked"?: boolean;
-    /**
-    * Disables the switch.
-    */
-    "disabled"?: boolean;
+export interface SwitchEvents {
     /**
     * When the switch state is changed this event triggers.
     * @model
     */
-    "onPlusChange"?: (event: CustomEvent<void>) => void;
+    onPlusChange?: (event: CustomEvent<void>) => void;
+}
+export interface SwitchMethods {
+}
+export interface SwitchProperties {
+    /**
+    * Puts the switch in checked state.
+    * @model
+    */
+    checked?: boolean;
+    /**
+    * Disables the switch.
+    */
+    disabled?: boolean;
+}
+export interface SwitchJSX extends SwitchEvents, SwitchProperties {
 }
 declare global {
-    interface HTMLPlusSwitchElement extends HTMLElement {
-        /**
-        * Puts the switch in checked state.
-        * @model
-        */
-        "checked"?: boolean;
-        /**
-        * Disables the switch.
-        */
-        "disabled"?: boolean;
+    interface HTMLPlusSwitchElement extends HTMLElement, SwitchMethods, SwitchProperties {
     }
     var HTMLPlusSwitchElement: {
         prototype: HTMLPlusSwitchElement;
@@ -75,7 +67,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-switch": SwitchAttributeJSX & {
+            "plus-switch": SwitchEvents & SwitchAttributes & {
                 [key: string]: any;
             };
         }

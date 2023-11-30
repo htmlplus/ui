@@ -28,29 +28,7 @@ export declare class Stack extends PlusCore {
     get style(): string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
-export interface StackJSX {
-    /**
-    * TODO.
-    */
-    "alignItems"?: StackAlignItems;
-    /**
-    * TODO.
-    */
-    "gap"?: string;
-    /**
-    * TODO.
-    */
-    "justifyContent"?: StackJustifyContent;
-    /**
-    * TODO.
-    */
-    "reverse"?: boolean;
-    /**
-    * TODO.
-    */
-    "vertical"?: boolean;
-}
-export interface StackAttributeJSX {
+export interface StackAttributes {
     /**
     * TODO.
     */
@@ -72,28 +50,36 @@ export interface StackAttributeJSX {
     */
     "vertical"?: boolean;
 }
+export interface StackEvents {
+}
+export interface StackMethods {
+}
+export interface StackProperties {
+    /**
+    * TODO.
+    */
+    alignItems?: StackAlignItems;
+    /**
+    * TODO.
+    */
+    gap?: string;
+    /**
+    * TODO.
+    */
+    justifyContent?: StackJustifyContent;
+    /**
+    * TODO.
+    */
+    reverse?: boolean;
+    /**
+    * TODO.
+    */
+    vertical?: boolean;
+}
+export interface StackJSX extends StackEvents, StackProperties {
+}
 declare global {
-    interface HTMLPlusStackElement extends HTMLElement {
-        /**
-        * TODO.
-        */
-        "alignItems"?: StackAlignItems;
-        /**
-        * TODO.
-        */
-        "gap"?: string;
-        /**
-        * TODO.
-        */
-        "justifyContent"?: StackJustifyContent;
-        /**
-        * TODO.
-        */
-        "reverse"?: boolean;
-        /**
-        * TODO.
-        */
-        "vertical"?: boolean;
+    interface HTMLPlusStackElement extends HTMLElement, StackMethods, StackProperties {
     }
     var HTMLPlusStackElement: {
         prototype: HTMLPlusStackElement;
@@ -104,7 +90,7 @@ declare global {
     }
     namespace JSX {
         interface IntrinsicElements {
-            "plus-stack": StackAttributeJSX & {
+            "plus-stack": StackEvents & StackAttributes & {
                 [key: string]: any;
             };
         }
