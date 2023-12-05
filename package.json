@@ -33,7 +33,7 @@
     "directory": "dist"
   },
   "engines": {
-    "node": ">= 12.7.0"
+    "node": ">= 20.10.0"
   },
   "keywords": [
     "component",
