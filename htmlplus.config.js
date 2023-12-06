@@ -12,7 +12,7 @@ import {
   validate,
   visualStudioCode,
   webTypes,
-} from '@htmlplus/element/compiler/index.js';
+} from '@htmlplus/element/transformer/index.js';
 import fs from 'fs';
 import path from 'path';
 

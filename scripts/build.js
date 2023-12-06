@@ -1,4 +1,4 @@
-import { rollup as htmlplus } from '@htmlplus/element/bundlers/index.js';
+import { htmlplus } from '@htmlplus/element/bundlers/rollup.js';
 
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
@@ -13,7 +13,7 @@ import typescript from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 import { fileURLToPath } from 'url';
 
-import plugins from '../plus.config.js';
+import plugins from '../htmlplus.config.js';
 
 const join = (file) => path.join(fileURLToPath(import.meta.url), '../..', file);
 
