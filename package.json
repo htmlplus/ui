@@ -10,7 +10,7 @@
   "web-types": "json/web-types.json",
   "scripts": {
     "build": "npm run clean && node scripts/build.js",
-    "clean": "rimraf .cache dist public/build",
+    "clean": "rimraf .cache dist",
     "dev": "node scripts/start.js",
     "format": "prettier --write .",
     "test:open": "cypress open",

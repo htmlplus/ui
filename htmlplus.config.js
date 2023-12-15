@@ -11,12 +11,13 @@ import {
   style,
   validate,
   visualStudioCode,
-  webTypes,
+  webTypes
 } from '@htmlplus/element/transformer/index.js';
+
 import fs from 'fs';
 import path from 'path';
 
-import PACKAGE from './package.json' assert { type: 'json' };
+const PACKAGE = JSON.parse(fs.readFileSync('./package.json'));
 
 export default [
   read(),
@@ -143,18 +144,18 @@ export default [
           }
         } catch {}
       }
-      
+
       for (const output in outputs) {
         if (!Object.hasOwnProperty.call(outputs, output)) return;
 
         const file = path.join('dist', 'theme', output);
 
         const directory = path.dirname(file);
-        
-        if (!fs.existsSync(directory)) fs.mkdirSync(directory, { recursive: true }); 
+
+        if (!fs.existsSync(directory)) fs.mkdirSync(directory, { recursive: true });
 
         fs.writeFileSync(file, outputs[output], 'utf8');
       }
     }
-  },
+  }
 ];
