@@ -16,32 +16,32 @@
         {
           "name": "plus-accordion",
           "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/accordion",
+          "doc-url": "https://www.htmlplus.io/javascript/element/accordion",
           "deprecated": false,
           "experimental": false,
           "js": {
             "events": [
               {
                 "name": "plus-collapse",
-                "description": "Fires when the component is about to collapse.This event can be [canceled](TODO).",
+                "description": "Fires when the element is about to collapse.This event can be [canceled](TODO).",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-collapsed",
-                "description": "Fires after the component has collapsed.",
+                "description": "Fires after the element has collapsed.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-expand",
-                "description": "Fires when the component is about to expand.This event can be [canceled](TODO).",
+                "description": "Fires when the element is about to expand.This event can be [canceled](TODO).",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-expanded",
-                "description": "Fires after the component has expanded.",
+                "description": "Fires after the element has expanded.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -49,13 +49,13 @@
             "properties": [
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "open",
-                "description": "Control the component to expand or not.",
+                "description": "Control the element to expand or not.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -67,13 +67,13 @@
               },
               {
                 "name": "collapse",
-                "description": "Collapses the component.",
+                "description": "Collapses the element.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "expand",
-                "description": "Expands the component.",
+                "description": "Expands the element.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -88,7 +88,7 @@
           "attributes": [
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -97,7 +97,7 @@
             },
             {
               "name": "open",
-              "description": "Control the component to expand or not.",
+              "description": "Control the element to expand or not.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -151,8 +151,8 @@
         },
         {
           "name": "plus-animation",
-          "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
-          "doc-url": "https://www.htmlplus.io/javascript/component/animation",
+          "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
+          "doc-url": "https://www.htmlplus.io/javascript/element/animation",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -261,7 +261,7 @@
               },
               {
                 "name": "name",
-                "description": "Specifies what kind of animation will play.The list of available animations is [here](/component/animation/names).",
+                "description": "Specifies what kind of animation will play.The list of available animations is [here](/element/animation/names).",
                 "deprecated": false,
                 "experimental": false
               },
@@ -449,7 +449,7 @@
             },
             {
               "name": "name",
-              "description": "Specifies what kind of animation will play.The list of available animations is [here](/component/animation/names).",
+              "description": "Specifies what kind of animation will play.The list of available animations is [here](/element/animation/names).",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -485,8 +485,8 @@
         },
         {
           "name": "plus-aspect-ratio",
-          "description": "Sets a preferred aspect ratio only for the first child inside the component.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/aspect-ratio",
+          "description": "Sets a preferred aspect ratio only for the first child inside the element.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/aspect-ratio",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -553,7 +553,7 @@
         {
           "name": "plus-avatar",
           "description": "An image representing a user's profile picture.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/avatar",
+          "doc-url": "https://www.htmlplus.io/javascript/element/avatar",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -561,14 +561,14 @@
             "properties": [
               {
                 "name": "shape",
-                "description": "Specifies the shape of the component.",
+                "description": "Specifies the shape of the element.",
                 "deprecated": false,
                 "experimental": false,
                 "default": "'round'"
               },
               {
                 "name": "size",
-                "description": "Specifies the size of the component.",
+                "description": "Specifies the size of the element.",
                 "deprecated": false,
                 "experimental": false,
                 "default": "'md'"
@@ -578,7 +578,7 @@
           "attributes": [
             {
               "name": "shape",
-              "description": "Specifies the shape of the component.",
+              "description": "Specifies the shape of the element.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -588,7 +588,7 @@
             },
             {
               "name": "size",
-              "description": "Specifies the size of the component.",
+              "description": "Specifies the size of the element.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -606,7 +606,7 @@
         },
         {
           "name": "plus-avatar-group",
-          "doc-url": "https://www.htmlplus.io/javascript/component/avatar-group",
+          "doc-url": "https://www.htmlplus.io/javascript/element/avatar-group",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -655,8 +655,8 @@
         },
         {
           "name": "plus-breadcrumb",
-          "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/breadcrumb",
+          "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/breadcrumb",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -748,7 +748,7 @@
         {
           "name": "plus-browse",
           "description": "Allows you to select file or files by using click or drag & drop functionality.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/browse",
+          "doc-url": "https://www.htmlplus.io/javascript/element/browse",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -781,7 +781,7 @@
               },
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -841,7 +841,7 @@
             },
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -913,7 +913,7 @@
         {
           "name": "plus-card",
           "description": "Cards contain content and actions about a single subject.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/card",
+          "doc-url": "https://www.htmlplus.io/javascript/element/card",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -992,7 +992,7 @@
         },
         {
           "name": "plus-card-body",
-          "doc-url": "https://www.htmlplus.io/javascript/component/card-body",
+          "doc-url": "https://www.htmlplus.io/javascript/element/card-body",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -1010,7 +1010,7 @@
         {
           "name": "plus-center",
           "description": "Centers content vertically and horizontally.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/center",
+          "doc-url": "https://www.htmlplus.io/javascript/element/center",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -1045,14 +1045,14 @@
         {
           "name": "plus-click-outside",
           "description": "Detects when a click event happens outside of itself.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/click-outside",
+          "doc-url": "https://www.htmlplus.io/javascript/element/click-outside",
           "deprecated": false,
           "experimental": false,
           "js": {
             "events": [
               {
                 "name": "plus-click-outside",
-                "description": "Fires when outside of the component is clicked.",
+                "description": "Fires when outside of the element is clicked.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -1066,7 +1066,7 @@
               },
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -1090,7 +1090,7 @@
             },
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -1117,7 +1117,7 @@
         {
           "name": "plus-counter",
           "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/counter",
+          "doc-url": "https://www.htmlplus.io/javascript/element/counter",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -1325,7 +1325,7 @@
         {
           "name": "plus-cropper",
           "description": "Used for cropping large images to fit a container before uploading them to the server.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/cropper",
+          "doc-url": "https://www.htmlplus.io/javascript/element/cropper",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -1356,13 +1356,13 @@
               },
               {
                 "name": "plus-ready",
-                "description": "Fires when the image has been loaded and the component is ready for operation.",
+                "description": "Fires when the image has been loaded and the element is ready for operation.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "plus-zoom",
-                "description": "Fires when the component starts to `zoom in` or `zoom out`.",
+                "description": "Fires when the element starts to `zoom in` or `zoom out`.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -1396,7 +1396,7 @@
               },
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -1583,7 +1583,7 @@
             },
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -1712,7 +1712,7 @@
         {
           "name": "plus-dialog",
           "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/dialog",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2006,7 +2006,7 @@
         },
         {
           "name": "plus-dialog-body",
-          "doc-url": "https://www.htmlplus.io/javascript/component/dialog-body",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-body",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2040,7 +2040,7 @@
         },
         {
           "name": "plus-dialog-content",
-          "doc-url": "https://www.htmlplus.io/javascript/component/dialog-content",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-content",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2074,7 +2074,7 @@
         },
         {
           "name": "plus-dialog-footer",
-          "doc-url": "https://www.htmlplus.io/javascript/component/dialog-footer",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-footer",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2091,7 +2091,7 @@
         },
         {
           "name": "plus-dialog-header",
-          "doc-url": "https://www.htmlplus.io/javascript/component/dialog-header",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-header",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2108,7 +2108,7 @@
         },
         {
           "name": "plus-dialog-toggler",
-          "doc-url": "https://www.htmlplus.io/javascript/component/dialog-toggler",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-toggler",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2143,7 +2143,7 @@
         {
           "name": "plus-divider",
           "description": "A thin line that divides the content vertically or horizontally.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/divider",
+          "doc-url": "https://www.htmlplus.io/javascript/element/divider",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2240,8 +2240,8 @@
         },
         {
           "name": "plus-drawer",
-          "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/drawer",
+          "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/drawer",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2469,7 +2469,7 @@
         },
         {
           "name": "plus-drawer-toggler",
-          "doc-url": "https://www.htmlplus.io/javascript/component/drawer-toggler",
+          "doc-url": "https://www.htmlplus.io/javascript/element/drawer-toggler",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2504,7 +2504,7 @@
         {
           "name": "plus-faker",
           "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
-          "doc-url": "https://www.htmlplus.io/javascript/component/faker",
+          "doc-url": "https://www.htmlplus.io/javascript/element/faker",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2580,8 +2580,8 @@
         },
         {
           "name": "plus-floating",
-          "description": "A component that appears in front of all screen content.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/floating",
+          "description": "A element that appears in front of all screen content.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/floating",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2650,7 +2650,7 @@
         {
           "name": "plus-format-bytes",
           "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/format-bytes",
+          "doc-url": "https://www.htmlplus.io/javascript/element/format-bytes",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -2792,8 +2792,8 @@
         },
         {
           "name": "plus-grid",
-          "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/grid",
+          "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/grid",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -3315,7 +3315,7 @@
         },
         {
           "name": "plus-grid-item",
-          "doc-url": "https://www.htmlplus.io/javascript/component/grid-item",
+          "doc-url": "https://www.htmlplus.io/javascript/element/grid-item",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -3952,7 +3952,7 @@
         {
           "name": "plus-icon",
           "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/icon",
+          "doc-url": "https://www.htmlplus.io/javascript/element/icon",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4072,14 +4072,14 @@
         {
           "name": "plus-intersection",
           "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
-          "doc-url": "https://www.htmlplus.io/javascript/component/intersection",
+          "doc-url": "https://www.htmlplus.io/javascript/element/intersection",
           "deprecated": false,
           "experimental": false,
           "js": {
             "events": [
               {
                 "name": "plus-change",
-                "description": "Fires When the browser detects that the component has been unveiled or obscured.",
+                "description": "Fires When the browser detects that the element has been unveiled or obscured.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -4087,7 +4087,7 @@
             "properties": [
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -4120,7 +4120,7 @@
           "attributes": [
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4173,8 +4173,8 @@
         },
         {
           "name": "plus-portal",
-          "description": "With a portal, you can render a component in a different place in the DOM tree,",
-          "doc-url": "https://www.htmlplus.io/javascript/component/portal",
+          "description": "With a portal, you can render a element in a different place in the DOM tree,",
+          "doc-url": "https://www.htmlplus.io/javascript/element/portal",
           "deprecated": false,
           "experimental": true,
           "js": {
@@ -4243,7 +4243,7 @@
         {
           "name": "plus-progress-bar",
           "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/progress-bar",
+          "doc-url": "https://www.htmlplus.io/javascript/element/progress-bar",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4373,7 +4373,7 @@
         },
         {
           "name": "plus-progress-bar-stack",
-          "doc-url": "https://www.htmlplus.io/javascript/component/progress-bar-stack",
+          "doc-url": "https://www.htmlplus.io/javascript/element/progress-bar-stack",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4386,7 +4386,7 @@
         {
           "name": "plus-scroll-detector",
           "description": "Detects scroll event from an element.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/scroll-detector",
+          "doc-url": "https://www.htmlplus.io/javascript/element/scroll-detector",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4401,7 +4401,7 @@
             "properties": [
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -4423,7 +4423,7 @@
           "attributes": [
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4455,7 +4455,7 @@
         {
           "name": "plus-signature",
           "description": "Allows user to draw smooth signatures.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/signature",
+          "doc-url": "https://www.htmlplus.io/javascript/element/signature",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4508,7 +4508,7 @@
               },
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -4540,7 +4540,7 @@
               },
               {
                 "name": "resizable",
-                "description": "Observes the component dimensions to apply new changes on the canvas.",
+                "description": "Observes the element dimensions to apply new changes on the canvas.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -4625,7 +4625,7 @@
               },
               {
                 "name": "resize",
-                "description": "Syncs the canvas dimensions with the component dimensions.",
+                "description": "Syncs the canvas dimensions with the element dimensions.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -4669,7 +4669,7 @@
             },
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4716,7 +4716,7 @@
             },
             {
               "name": "resizable",
-              "description": "Observes the component dimensions to apply new changes on the canvas.",
+              "description": "Observes the element dimensions to apply new changes on the canvas.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -4749,7 +4749,7 @@
         {
           "name": "plus-spacer",
           "description": "TODO",
-          "doc-url": "https://www.htmlplus.io/javascript/component/spacer",
+          "doc-url": "https://www.htmlplus.io/javascript/element/spacer",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4781,7 +4781,7 @@
         {
           "name": "plus-spinner",
           "description": "An indicator of progress and activity.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/spinner",
+          "doc-url": "https://www.htmlplus.io/javascript/element/spinner",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4845,7 +4845,7 @@
         {
           "name": "plus-stack",
           "description": "TODO.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/stack",
+          "doc-url": "https://www.htmlplus.io/javascript/element/stack",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -4943,8 +4943,8 @@
         },
         {
           "name": "plus-sticky",
-          "description": "Component content is positioned based on the user's scroll position.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/sticky",
+          "description": "Element content is positioned based on the user's scroll position.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/sticky",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5026,7 +5026,7 @@
         {
           "name": "plus-switch",
           "description": "Toggles the state of a single item on or off.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/switch",
+          "doc-url": "https://www.htmlplus.io/javascript/element/switch",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5078,7 +5078,7 @@
         {
           "name": "plus-tabs",
           "description": "Organizes content across different screens.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/tabs",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5150,7 +5150,7 @@
         {
           "name": "plus-tabs-bar",
           "description": "TODO: Arranges tabs within a bar.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/tabs-bar",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-bar",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5216,8 +5216,8 @@
         },
         {
           "name": "plus-tabs-panel",
-          "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/tabs-panel",
+          "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panel",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5251,8 +5251,8 @@
         },
         {
           "name": "plus-tabs-panels",
-          "description": "TODO: This component contains panels.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/tabs-panels",
+          "description": "TODO: This element contains panels.",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panels",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5287,7 +5287,7 @@
         {
           "name": "plus-tabs-tab",
           "description": "TODO: Tabs make it easy to switch between different views.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/tabs-tab",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-tab",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5337,7 +5337,7 @@
         {
           "name": "plus-tooltip",
           "description": "TODO.",
-          "doc-url": "https://www.htmlplus.io/javascript/component/tooltip",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tooltip",
           "deprecated": false,
           "experimental": false,
           "js": {
@@ -5357,7 +5357,7 @@
               },
               {
                 "name": "disabled",
-                "description": "Disables the component functionality.",
+                "description": "Disables the element functionality.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -5375,7 +5375,7 @@
               },
               {
                 "name": "placement",
-                "description": "Specifies the display location of the component relative to the reference.",
+                "description": "Specifies the display location of the element relative to the reference.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -5401,19 +5401,19 @@
               },
               {
                 "name": "hide",
-                "description": "Hides the component.",
+                "description": "Hides the element.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "show",
-                "description": "Shows the component.",
+                "description": "Shows the element.",
                 "deprecated": false,
                 "experimental": false
               },
               {
                 "name": "update",
-                "description": "Updates the component's position.",
+                "description": "Updates the element's position.",
                 "deprecated": false,
                 "experimental": false
               }
@@ -5440,7 +5440,7 @@
             },
             {
               "name": "disabled",
-              "description": "Disables the component functionality.",
+              "description": "Disables the element functionality.",
               "deprecated": false,
               "experimental": false,
               "value": {
@@ -5467,7 +5467,7 @@
             },
             {
               "name": "placement",
-              "description": "Specifies the display location of the component relative to the reference.",
+              "description": "Specifies the display location of the element relative to the reference.",
               "deprecated": false,
               "experimental": false,
               "value": {

@@ -1,5 +1,5 @@
 .cache
 dist
 node_modules
-src/components/animation/assets/names
+src/elements/animation/assets/names
 .prettierrc

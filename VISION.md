@@ -1,6 +1,6 @@
 # Vision
 
-This is probably the last huge collection of frameworkless `UI components` you'll use in your web applications as a developer.
+This is probably the last huge collection of frameworkless `UI elements` you'll use in your web applications as a developer.
 
 Today, the extent of the web is not a secret to anyone. So that we see the presence of web-based applications on `Desktops`, `Phones`, `Tablets`, `Televisions`, and `IoTs`.
 

@@ -10,11 +10,11 @@ let Avatar = class Avatar extends PlusCore {
     constructor() {
         super(...arguments);
         /**
-         * Specifies the shape of the component.
+         * Specifies the shape of the element.
          */
         this.shape = 'round';
         /**
-         * Specifies the size of the component.
+         * Specifies the size of the element.
          */
         this.size = 'md';
     }

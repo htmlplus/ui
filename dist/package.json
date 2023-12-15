@@ -3,10 +3,10 @@
   "version": "1.0.0-alpha.1",
   "license": "MIT",
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
-  "description": "The Next generation of UI components.",
+  "description": "The Next generation of UI elements.",
   "type": "module",
   "main": "index.js",
-  "types": "types/components/index.d.ts",
+  "types": "types/elements/index.d.ts",
   "web-types": "json/web-types.json",
   "files": [
     "**/*.*"
@@ -25,17 +25,17 @@
     "directory": "dist"
   },
   "engines": {
-    "node": ">= 12.7.0"
+    "node": ">= 20.10.0"
   },
   "keywords": [
-    "component",
-    "component library",
+    "element",
+    "element library",
     "ui",
-    "components",
-    "ui components",
+    "elements",
+    "ui elements",
     "design system",
     "custom elements",
-    "web components",
+    "web elements",
     "frontend"
   ],
   "repository": {

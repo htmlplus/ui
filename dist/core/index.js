@@ -353,7 +353,7 @@ const merge = (target, ...sources) => {
 };
 
 let defaults = {
-    component: {}
+    element: {}
 };
 const getConfig = (namespace, ...parameters) => {
     if (typeof window == 'undefined')
@@ -379,7 +379,7 @@ const host = (target) => {
 };
 
 const direction = (target) => {
-    return getComputedStyle(host(target)).getPropertyValue('direction').toLowerCase();
+    return getComputedStyle(host(target)).getPropertyValue('direction');
 };
 
 const getFramework = (target) => {
@@ -420,6 +420,9 @@ const getStyles = (target) => {
 
 const isRTL = (target) => direction(target) == 'rtl';
 
+/**
+ * Determines if the current code is running on a server.
+ */
 const isServer = () => {
     return !(typeof window != 'undefined' && window.document);
 };
@@ -428,6 +431,16 @@ const shadowRoot = (target) => {
     var _a;
     return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
 };
+
+function query(target, selectors) {
+    var _a;
+    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
+}
+
+function queryAll(target, selectors) {
+    var _a;
+    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
+}
 
 const task = (options) => {
     let isPending, promise;
@@ -1165,7 +1178,7 @@ tag('svg');
 
 /**
  * Updates the DOM with a scheduled task.
- * @param target The component instance.
+ * @param target The element instance.
  * @param name Property/State name.
  * @param previous The previous value of Property/State.
  * @param callback Invoked when the rendering phase is completed.
@@ -1240,6 +1253,16 @@ const styles = (input) => {
     }
 };
 
+function toDecorator(util, ...parameters) {
+    return function (target, propertyKey) {
+        defineProperty(target, propertyKey, {
+            get() {
+                return util(this, ...parameters);
+            }
+        });
+    };
+}
+
 const toProperty = (input, type) => {
     if (type === undefined)
         return input;
@@ -1302,6 +1325,10 @@ const toUnit = (input, unit = 'px') => {
     return `${Number(input)}${unit}`;
 };
 
+/**
+ * Used to bind a method of a class to the current context,
+ * making it easier to reference `this` within the method.
+ */
 function Bind() {
     return function (target, propertyKey, descriptor) {
         return {
@@ -1319,6 +1346,11 @@ function Bind() {
     };
 }
 
+/**
+ * The class marked with this decorator is considered a
+ * [Custom Element](https://mdn.io/using-custom-elements),
+ * and its name, in kebab-case, serves as the element name.
+ */
 function Element() {
     return function (constructor) {
         if (isServer())
@@ -1364,7 +1396,7 @@ function Element() {
             connectedCallback() {
                 const instance = this[API_INSTANCE];
                 // TODO: experimental for global config
-                Object.assign(instance, getConfig(getNamespace(instance), 'component', getTag(instance), 'property'));
+                Object.assign(instance, getConfig(getNamespace(instance), 'element', getTag(instance), 'property'));
                 const connect = () => {
                     instance[API_CONNECTED] = true;
                     call(instance, LIFECYCLE_CONNECTED);
@@ -1385,6 +1417,12 @@ function Element() {
     };
 }
 
+/**
+ * Provides the capability to dispatch a [CustomEvent](https://mdn.io/custom-event)
+ * from an element.
+ *
+ * @param options An object that configures options for the event dispatcher.
+ */
 function Event$1(options = {}) {
     return function (target, propertyKey) {
         defineProperty(target, propertyKey, {
@@ -1394,7 +1432,7 @@ function Event$1(options = {}) {
                     const element = host(this);
                     const framework = getFramework(element);
                     (_a = options.bubbles) !== null && _a !== void 0 ? _a : (options.bubbles = false);
-                    let name = options.name || String(propertyKey);
+                    let name = String(propertyKey);
                     switch (framework) {
                         case 'qwik':
                         case 'solid':
@@ -1417,16 +1455,17 @@ function Event$1(options = {}) {
     };
 }
 
+/**
+ * Indicates the host of the element.
+ */
 function Host() {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
-            get() {
-                return host(this);
-            }
-        });
-    };
+    return toDecorator(host);
 }
 
+/**
+ * Provides a way to encapsulate functionality within an element
+ * and invoke it as needed, both internally and externally.
+ */
 function Method() {
     return function (target, propertyKey) {
         appendToMethod(target, LIFECYCLE_CONNECTED, function () {
@@ -1437,6 +1476,10 @@ function Method() {
     };
 }
 
+/**
+ * Creates a reactive property, reflecting a corresponding attribute value,
+ * and updates the element when the property is set.
+ */
 function Property(options) {
     return function (target, propertyKey) {
         const name = String(propertyKey);
@@ -1477,28 +1520,24 @@ function Property(options) {
     };
 }
 
+/**
+ * Selects the first element in the shadow dom that matches a specified CSS selector.
+ */
 function Query(selectors) {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
-            get() {
-                var _a;
-                return (_a = shadowRoot(this)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
-            }
-        });
-    };
+    return toDecorator(query, selectors);
 }
 
+/**
+ * Selects all elements in the shadow dom that match a specified CSS selector.
+ */
 function QueryAll(selectors) {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
-            get() {
-                var _a;
-                return (_a = shadowRoot(this)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
-            }
-        });
-    };
+    return toDecorator(queryAll, selectors);
 }
 
+/**
+ * Applying this decorator to any `class property` will trigger the
+ * element to re-render upon the desired property changes.
+ */
 function State() {
     return function (target, propertyKey) {
         const name = String(propertyKey);
@@ -1519,10 +1558,11 @@ function State() {
 }
 
 /**
- * Monitors `@Property` and `@State` to catch changes.
- * The decorated method will be invoked after any
- * changes with the `key`, `newValue`, and `oldValue` as parameters.
- * If the arguments aren't defined, all of the `@Property` and `@State` are considered.
+ * Monitors `@Property` and `@State` to detect changes.
+ * The decorated method will be called after any changes,
+ * with the `key`, `newValue`, and `oldValue` as parameters.
+ * If the `key` is not defined, all `@Property` and `@State` are considered.
+ *
  * @param keys Collection of `@Property` and `@State` names.
  * @param immediate Triggers the callback immediately after initialization.
  */

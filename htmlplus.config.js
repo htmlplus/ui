@@ -33,14 +33,14 @@ export default [
     eventName(eventName) {
       return eventName.replace(/Plus/, '');
     },
-    importerComponent(context) {
+    importerElement(context) {
       return {
         source: `@htmlplus/core/${context.fileName}`
       };
     },
-    importerComponentType(context) {
+    importerElementType(context) {
       return {
-        source: `@htmlplus/core/types/components/${context.fileName}/${context.fileName}`,
+        source: `@htmlplus/core/types/elements/${context.fileName}/${context.fileName}`,
         imported: `${context.className}JSX`,
         local: `${context.className}JSX`
       };
@@ -92,7 +92,7 @@ export default [
   visualStudioCode({
     destination: `${PACKAGE.publishConfig.directory}/json/vscode.json`,
     reference(context) {
-      return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
+      return `https://www.htmlplus.io/javascript/element/${context.elementKey}`;
     },
     transformer(context, element) {
       element.name = 'plus-' + element.name;
@@ -109,7 +109,7 @@ export default [
     packageName: PACKAGE.name,
     packageVersion: PACKAGE.version,
     reference(context) {
-      return `https://www.htmlplus.io/javascript/component/${context.componentKey}`;
+      return `https://www.htmlplus.io/javascript/element/${context.elementKey}`;
     },
     transformer(context, element) {
       element.name = 'plus-' + element.name;

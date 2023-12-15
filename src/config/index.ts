@@ -6,7 +6,7 @@ export interface Config {
   asset?: {
     [key: string]: any;
   };
-  component?: {
+  element?: {
     [key: string]: {
       property?: {
         [key: string]: any;

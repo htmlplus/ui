@@ -20,12 +20,12 @@ const join = (file) => path.join(fileURLToPath(import.meta.url), '../..', file);
 const options = defineConfig({
   input: Object.fromEntries(
     glob
-      .sync(['src/components/*/*.tsx'], { absolute: true })
+      .sync(['src/elements/*/*.tsx'], { absolute: true })
       .map((file) => [[path.basename(file, path.extname(file)), file]])
       .flat(1)
       .concat([
         ['config', join('src/config/index.ts')],
-        ['index', join('src/components/index.ts')]
+        ['index', join('src/elements/index.ts')]
       ])
   ),
   output: [
@@ -36,7 +36,7 @@ const options = defineConfig({
       manualChunks(id) {
         const normalized = path.normalize(id).split(path.sep).join('/');
 
-        if (normalized.includes('/src/components/')) return;
+        if (normalized.includes('/src/elements/')) return;
 
         if (normalized.includes('/src/config/')) return;
 
@@ -121,8 +121,8 @@ const options = defineConfig({
         );
       }
 
-      for (const component of document.components) {
-        for (const style of component.styles) {
+      for (const element of document.elements) {
+        for (const style of element.styles) {
           const initializer = styles[style.name];
           if (!initializer) continue;
           style.initializer = initializer;
