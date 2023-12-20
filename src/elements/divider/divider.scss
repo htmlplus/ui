@@ -1,19 +1,19 @@
 @import 'divider.variables';
 
 :host {
-  // @prop Used to adjust the color.
+  // @Property() Used to adjust the color.
   --plus-divider-color: #{$divider-color};
 
-  // @prop Used to adjust the gutter.
+  // @Property() Used to adjust the gutter.
   --plus-divider-gutter: #{$divider-gutter};
 
-  // @prop Used to adjust the opacity.
+  // @Property() Used to adjust the opacity.
   --plus-divider-opacity: #{$divider-opacity};
 
-  // @prop Used to adjust the type.
+  // @Property() Used to adjust the type.
   --plus-divider-type: #{$divider-type};
 
-  // @prop Used to adjust the width.
+  // @Property() Used to adjust the width.
   --plus-divider-width: #{$divider-width};
 }
 

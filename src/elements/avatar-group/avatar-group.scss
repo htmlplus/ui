@@ -1,10 +1,10 @@
 @import 'avatar-group.variables';
 
 :host {
-  // @prop Used to adjust the gutter between avatars in stacked mode.
+  // @Property() Used to adjust the gutter between avatars in stacked mode.
   --plus-avatar-group-gutter-stacked: #{$avatar-group-gutter-stacked};
 
-  // @prop Used to adjust the gutter between avatars in unstacked mode.
+  // @Property() Used to adjust the gutter between avatars in unstacked mode.
   --plus-avatar-group-gutter-unstacked: #{$avatar-group-gutter-unstacked};
 }
 

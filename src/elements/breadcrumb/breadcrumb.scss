@@ -1,10 +1,10 @@
 @import 'breadcrumb.variables';
 
 :host {
-  // @prop Used to adjust the Horizontal gap.
+  // @Property() Used to adjust the Horizontal gap.
   --plus-breadcrumb-gutter-x: #{$breadcrumb-gutter-x};
 
-  // @prop Used to adjust the Vertical gap.
+  // @Property() Used to adjust the Vertical gap.
   --plus-breadcrumb-gutter-y: #{$breadcrumb-gutter-y};
 }
 

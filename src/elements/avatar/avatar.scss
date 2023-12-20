@@ -1,13 +1,13 @@
 @import 'avatar.variables';
 
 :host {
-  // @prop Used to adjust the border-radius.
+  // @Property() Used to adjust the border-radius.
   --plus-avatar-border-radius: #{$avatar-border-radius};
 
-  // @prop Used to adjust the ratio of size to font-size.
+  // @Property() Used to adjust the ratio of size to font-size.
   --plus-avatar-font-size-ratio: #{$avatar-font-size-ratio};
 
-  // @prop Used to adjust the size (width & height).
+  // @Property() Used to adjust the size (width & height).
   --plus-avatar-size: #{$avatar-size};
 }
 

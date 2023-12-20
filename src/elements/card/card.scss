@@ -1,19 +1,19 @@
 @import 'card.variables';
 
 :host {
-  // @prop Used to adjust the background-color.
+  // @Property() Used to adjust the background-color.
   --plus-card-background-color: #{$card-background-color};
 
-  // @prop Used to adjust the border-color.
+  // @Property() Used to adjust the border-color.
   --plus-card-border-color: #{$card-border-color};
 
-  // @prop Used to adjust the border-radius.
+  // @Property() Used to adjust the border-radius.
   --plus-card-border-radius: #{$card-border-radius};
 
-  // @prop Used to adjust the border-width.
+  // @Property() Used to adjust the border-width.
   --plus-card-border-width: #{$card-border-width};
 
-  // @prop Used to adjust the box-shodow.
+  // @Property() Used to adjust the box-shodow.
   --plus-card-box-shadow: none;
 }
 

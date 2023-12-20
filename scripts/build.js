@@ -104,28 +104,22 @@ const options = defineConfig({
 
       const document = JSON.parse(fs.readFileSync(source, 'utf8'));
 
-      const styles = {};
-
       for (const module of bundle.cache.modules) {
-        if (!module.id.endsWith('.scss')) continue;
-        Object.assign(
-          styles,
-          Object.fromEntries(
-            module.code
-              .match(/{--plus-(.+):(.+)[}]/g)?.[0]
-              .split(';')
-              .map((section) =>
-                section.split(':').map((string) => string.trim().replace(/{|}/g, ''))
-              ) || []
-          )
-        );
-      }
-
-      for (const element of document.elements) {
-        for (const style of element.styles) {
-          const initializer = styles[style.name];
-          if (!initializer) continue;
-          style.initializer = initializer;
+        if (module.id.endsWith('.scss')) {
+          for (const element of document.elements) {
+            if (module.id.endsWith(`${element.key}.scss`)) {
+              for (const style of element.styles) {
+                style.initializer = module.code
+                  ?.split(style.name)
+                  ?.at(1)
+                  ?.split(':')
+                  ?.filter((section) => !!section)
+                  ?.at(0)
+                  ?.split(/;|}/)
+                  ?.at(0);
+              }
+            }
+          }
         }
       }
 
