@@ -2,23 +2,7 @@ import { getConfig as getConfigCore, setConfig as setConfigCore } from '@htmlplu
 
 import * as CONSTANTS from '@app/constants';
 
-export interface Config {
-  asset?: {
-    [key: string]: any;
-  };
-  element?: {
-    [key: string]: {
-      property?: {
-        [key: string]: any;
-      };
-    };
-  };
-}
+export { Config } from '@htmlplus/element';
 
-export const getConfig = (...parameters: string[]) => {
-  return getConfigCore(CONSTANTS.CONFIG_NAMESPACE, ...parameters);
-};
-
-export const setConfig = (config: Config, override?: boolean) => {
-  setConfigCore(CONSTANTS.CONFIG_NAMESPACE, config, override);
-};
+export const getConfig = getConfigCore(CONSTANTS.CONFIG_NAMESPACE);
+export const setConfig = setConfigCore(CONSTANTS.CONFIG_NAMESPACE);

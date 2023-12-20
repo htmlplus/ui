@@ -36,7 +36,7 @@ const ANIMATION_EASINGS = {
 };
 
 const register = (name, keyframe) => {
-  setConfig('PLUS', {
+  setConfig('PLUS')({
     asset: {
       animation: {
         [name]: keyframe

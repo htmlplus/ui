@@ -86,6 +86,9 @@ const appendToMethod = (target, propertyKey, handler) => {
 };
 
 const outsides = [];
+/**
+ * TODO
+ */
 const off = (target, type, handler, options) => {
     if (type != 'outside')
         return target.removeEventListener(type, handler, options);
@@ -96,6 +99,9 @@ const off = (target, type, handler, options) => {
     off(document, outside.type, outside.callback, outside.options);
     outsides.splice(index, 1);
 };
+/**
+ * TODO
+ */
 const on = (target, type, handler, options) => {
     if (type != 'outside')
         return target.addEventListener(type, handler, options);
@@ -271,6 +277,9 @@ const typeOf = (input) => {
         .toLowerCase();
 };
 
+/**
+ * TODO
+ */
 const classes = (input, smart) => {
     const result = [];
     switch (typeOf(input)) {
@@ -332,6 +341,13 @@ const classes = (input, smart) => {
     return result.join(' ');
 };
 
+/**
+ * Indicates whether the current code is running on a server.
+ */
+const isServer = () => {
+    return !(typeof window != 'undefined' && window.document);
+};
+
 const merge = (target, ...sources) => {
     for (const source of sources) {
         if (!source)
@@ -352,32 +368,46 @@ const merge = (target, ...sources) => {
     return target;
 };
 
-let defaults = {
+const DEFAULTS = {
     element: {}
 };
-const getConfig = (namespace, ...parameters) => {
-    if (typeof window == 'undefined')
+/**
+ * TODO
+ */
+const getConfig = (namespace) => (...keys) => {
+    if (isServer())
         return;
     let config = window[namespace];
-    for (const parameter of parameters) {
+    for (const key of keys) {
         if (!config)
             break;
-        config = config[parameter];
+        config = config[key];
     }
     return config;
 };
-const setConfig = (namespace, config, override) => {
-    if (typeof window == 'undefined')
+/**
+ * TODO
+ */
+const setConfig = (namespace) => (config, options) => {
+    if (isServer())
         return;
-    window[namespace] = merge({}, defaults, override ? {} : window[namespace], config);
+    const previous = (options === null || options === void 0 ? void 0 : options.override) ? {} : window[namespace];
+    window[namespace] = merge({}, DEFAULTS, previous, config);
 };
 
 const defineProperty = Object.defineProperty;
 
+/**
+ * Indicates the host of the element.
+ */
 const host = (target) => {
     return target[API_HOST]();
 };
 
+/**
+ * Indicates whether the [Direction](https://mdn.io/css-direction)
+ * of the element is `Right-To-Left` or `Left-To-Right`.
+ */
 const direction = (target) => {
     return getComputedStyle(host(target)).getPropertyValue('direction');
 };
@@ -418,25 +448,27 @@ const getStyles = (target) => {
     return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
 };
 
-const isRTL = (target) => direction(target) == 'rtl';
-
 /**
- * Determines if the current code is running on a server.
+ * Indicates whether the direction of the element is `Right-To-Left` or not.
  */
-const isServer = () => {
-    return !(typeof window != 'undefined' && window.document);
-};
+const isRTL = (target) => direction(target) == 'rtl';
 
 const shadowRoot = (target) => {
     var _a;
     return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
 };
 
+/**
+ * Selects the first element in the shadow dom that matches a specified CSS selector.
+ */
 function query(target, selectors) {
     var _a;
     return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
 }
 
+/**
+ * Selects all elements in the shadow dom that match a specified CSS selector.
+ */
 function queryAll(target, selectors) {
     var _a;
     return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
@@ -1237,6 +1269,9 @@ const request = (target, name, previous, callback) => {
     call(target, API_REQUEST);
 };
 
+/**
+ * TODO
+ */
 const styles = (input) => {
     switch (typeOf(input)) {
         case 'array':
@@ -1317,6 +1352,9 @@ const toProperty = (input, type) => {
     return input;
 };
 
+/**
+ * TODO
+ */
 const toUnit = (input, unit = 'px') => {
     if (input == null || input === '')
         return undefined;
@@ -1396,7 +1434,7 @@ function Element() {
             connectedCallback() {
                 const instance = this[API_INSTANCE];
                 // TODO: experimental for global config
-                Object.assign(instance, getConfig(getNamespace(instance), 'element', getTag(instance), 'property'));
+                Object.assign(instance, getConfig(getNamespace(instance))('element', getTag(instance), 'property'));
                 const connect = () => {
                     instance[API_CONNECTED] = true;
                     call(instance, LIFECYCLE_CONNECTED);

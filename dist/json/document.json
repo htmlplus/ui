@@ -297,7 +297,7 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2023-12-15T17:36:25.091Z",
+      "lastModified": "2023-12-20T20:54:23.260Z",
       "methods": [
         {
           "async": false,
