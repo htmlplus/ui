@@ -1,7 +1,7 @@
 import { Bind, Element, Event, EventEmitter, Method, Property, Watch } from '@htmlplus/element';
 
-import { getConfig } from '@app/config';
-import { PlusCore } from '@app/core';
+import { getConfig } from '@/config';
+import { PlusCore } from '@/core';
 
 import { ANIMATION_EASINGS } from './animation.constants';
 import {

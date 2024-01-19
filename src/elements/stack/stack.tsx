@@ -1,6 +1,6 @@
 import { Element, Property, styles, toUnit } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import { StackAlignItems, StackJustifyContent } from './stack.types';
 

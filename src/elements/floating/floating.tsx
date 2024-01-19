@@ -1,7 +1,7 @@
 import { Element, Property, styles, toUnit } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { toAxis } from '@app/helpers';
+import { PlusCore } from '@/core';
+import { toAxis } from '@/helpers';
 
 import { FloatingOffset, FloatingPlacement } from './floating.types';
 

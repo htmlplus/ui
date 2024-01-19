@@ -13,10 +13,10 @@ import {
   styles
 } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { Media } from '@app/decorators';
-import { toAxis } from '@app/helpers';
-import { Animation, Scrollbar, createLink } from '@app/services';
+import { PlusCore } from '@/core';
+import { Media } from '@/decorators';
+import { toAxis } from '@/helpers';
+import { Animation, Scrollbar, createLink } from '@/services';
 
 import {
   DrawerBackdrop,

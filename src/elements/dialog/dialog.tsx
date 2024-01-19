@@ -11,9 +11,9 @@ import {
   on
 } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { toAxis } from '@app/helpers';
-import { Animation, Portal, Scrollbar, createLink } from '@app/services';
+import { PlusCore } from '@/core';
+import { toAxis } from '@/helpers';
+import { Animation, Portal, Scrollbar, createLink } from '@/services';
 
 import {
   DialogFullscreen,

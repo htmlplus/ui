@@ -9,7 +9,7 @@ import {
   Watch
 } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import { COUNTER_EASINGS } from './counter.constants';
 import { CounterEasing } from './counter.types';

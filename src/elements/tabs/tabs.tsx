@@ -1,7 +1,7 @@
 import { Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { createLink } from '@app/services';
+import { PlusCore } from '@/core';
+import { createLink } from '@/services';
 
 const { Action, Observable, reconnect } = createLink({
   crawl: false,

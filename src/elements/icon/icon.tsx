@@ -1,8 +1,8 @@
 import { Element, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
 
-import { getConfig, setConfig } from '@app/config';
-import { PlusCore } from '@app/core';
-import { isSize, isValidCSSColor } from '@app/helpers';
+import { getConfig, setConfig } from '@/config';
+import { PlusCore } from '@/core';
+import { isSize, isValidCSSColor } from '@/helpers';
 
 import { ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconSize } from './icon.types';

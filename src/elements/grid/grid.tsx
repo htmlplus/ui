@@ -1,6 +1,6 @@
 import { Element, Property, Query } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import {
   GridAlignContent,

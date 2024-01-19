@@ -1,7 +1,7 @@
 import { Bind, Element, Property, State, Watch } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { createLink } from '@app/services';
+import { PlusCore } from '@/core';
+import { createLink } from '@/services';
 
 const { Inject, reconnect } = createLink({
   crawl: true,

@@ -14,8 +14,8 @@ createServer({
   resolve: {
     alias: [
       {
-        find: '@app',
-        replacement: path.resolve('src')
+        find: /@\//,
+        replacement: path.resolve('src') + '/'
       }
     ]
   },

@@ -1,6 +1,6 @@
 import { off, on } from '@htmlplus/element';
 
-import * as CONSTANTS from '@app/constants';
+import * as CONSTANTS from '@/constants';
 
 export function Media(query: string) {
   const getMedia = (target: any, query: string) => {

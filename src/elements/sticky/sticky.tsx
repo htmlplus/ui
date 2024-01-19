@@ -11,7 +11,7 @@ import {
   toUnit
 } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import { StickyState, StickyTop } from './sticky.types';
 

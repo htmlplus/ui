@@ -1,7 +1,7 @@
 import { Element, Property, styles } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { isValidCSSColor } from '@app/helpers';
+import { PlusCore } from '@/core';
+import { isValidCSSColor } from '@/helpers';
 
 import { SpinnerSize, SpinnerType } from './spinner.types';
 

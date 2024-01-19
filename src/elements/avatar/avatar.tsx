@@ -1,7 +1,7 @@
 import { Element, Property, toUnit } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { isSize } from '@app/helpers';
+import { PlusCore } from '@/core';
+import { isSize } from '@/helpers';
 
 import { AvatarShape, AvatarSize } from './avatar.types';
 

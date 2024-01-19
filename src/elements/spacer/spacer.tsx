@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 @Element()
 export class Spacer extends PlusCore {

@@ -1,7 +1,7 @@
 import { Bind, Element, Property, QueryAll, State } from '@htmlplus/element';
 import { request } from '@htmlplus/element/client/utils/request';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import * as CONSTANTS from './breadcrumb.constants';
 

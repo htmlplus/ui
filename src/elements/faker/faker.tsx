@@ -2,7 +2,7 @@ import { Element, Property } from '@htmlplus/element';
 
 import type { Faker as FakerCoreType } from '@faker-js/faker';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 /**
  * @dependencies @faker-js/faker

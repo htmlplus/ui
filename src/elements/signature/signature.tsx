@@ -11,7 +11,7 @@ import {
 
 import type CoreType from 'signature_pad';
 
-import { PlusForm } from '@app/core';
+import { PlusForm } from '@/core';
 
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 

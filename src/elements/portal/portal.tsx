@@ -1,7 +1,7 @@
 import { Element, Property, Watch } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@app/services';
+import { PlusCore } from '@/core';
+import { Portal as PortalCore, PortalStrategy, PortalTarget } from '@/services';
 
 /**
  * @experimental

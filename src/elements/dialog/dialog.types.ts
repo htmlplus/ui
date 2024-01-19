@@ -1,4 +1,4 @@
-import { PortalStrategy, PortalTarget } from '@app/services';
+import { PortalStrategy, PortalTarget } from '@/services';
 
 export type DialogPortalTarget = PortalTarget;
 export type DialogPortalStrategy = PortalStrategy;

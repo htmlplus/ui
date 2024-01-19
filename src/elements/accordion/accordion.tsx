@@ -9,8 +9,8 @@ import {
   Watch
 } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
-import { Animation2 } from '@app/services';
+import { PlusCore } from '@/core';
+import { Animation2 } from '@/services';
 
 /**
  * @part body          - The body element.

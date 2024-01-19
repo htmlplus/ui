@@ -9,7 +9,7 @@ import {
   State
 } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import { BrowseError, BrowseEvent, BrowseFile, BrowseFileError } from './browse.types';
 

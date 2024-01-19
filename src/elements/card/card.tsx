@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import { CardElevation } from './card.types';
 

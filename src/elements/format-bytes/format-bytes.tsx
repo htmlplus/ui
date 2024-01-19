@@ -1,6 +1,6 @@
 import { Element, Property } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import { FORMAT_BYTES_STANDARD } from './format-bytes.constants';
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';

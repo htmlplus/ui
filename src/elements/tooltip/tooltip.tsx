@@ -2,7 +2,7 @@ import { Bind, Element, Method, Property, Query, Watch, State, off, on } from '@
 
 import type * as FloatingCoreType from '@floating-ui/dom';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import {
   TooltipDelay,

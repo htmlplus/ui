@@ -1,6 +1,6 @@
 import { Bind, Element, Event, EventEmitter, Property, Watch, off, on } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 /**
  * @stable

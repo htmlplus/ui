@@ -1,6 +1,6 @@
 import { Bind, Element, Event, EventEmitter, Property } from '@htmlplus/element';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 @Element()
 export class Switch extends PlusCore {

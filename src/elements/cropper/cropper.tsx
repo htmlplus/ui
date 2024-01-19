@@ -12,7 +12,7 @@ import {
 
 import type CropperCoreType from 'cropperjs';
 
-import { PlusCore } from '@app/core';
+import { PlusCore } from '@/core';
 
 import {
   CropperCropEvent,
