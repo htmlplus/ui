@@ -1,5 +1,4 @@
-export const CONFIG_NAMESPACE = 'PLUS';
-export const GLOBAL_CONFIG_NAME = 'htmlplus';
+export const CONFIG_NAMESPACE = '$htmlplus';
 export const BREAKPOINTS = {
   xs: 0,
   sm: 576,

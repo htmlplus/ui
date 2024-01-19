@@ -2131,7 +2131,7 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
-const CONFIG_NAMESPACE = 'PLUS';
+const CONFIG_NAMESPACE = '$htmlplus';
 const BREAKPOINTS = {
     xs: 0,
     sm: 576,
