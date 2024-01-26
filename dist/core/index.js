@@ -354,10 +354,10 @@ const DEFAULTS = {
 /**
  * TODO
  */
-const getConfig = (namespace) => (...keys) => {
+const getConfig = (...keys) => {
     if (isServer())
         return;
-    let config = window[namespace];
+    let config = window[`$htmlplus$`];
     for (const key of keys) {
         if (!config)
             break;
@@ -368,11 +368,11 @@ const getConfig = (namespace) => (...keys) => {
 /**
  * TODO
  */
-const setConfig = (namespace) => (config, options) => {
+const setConfig = (config, options) => {
     if (isServer())
         return;
-    const previous = (options === null || options === void 0 ? void 0 : options.override) ? {} : window[namespace];
-    window[namespace] = merge({}, DEFAULTS, previous, config);
+    const previous = (options === null || options === void 0 ? void 0 : options.override) ? {} : window[`$htmlplus$`];
+    window[`$htmlplus$`] = merge({}, DEFAULTS, previous, config);
 };
 
 const defineProperty = Object.defineProperty;
@@ -414,18 +414,14 @@ const getMembers = (target) => {
     return target[STATIC_MEMBERS] || {};
 };
 
-const getTag = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
-};
-
-const getNamespace = (instance) => {
-    return getTag(instance).split('-')[0].toUpperCase();
-};
-
 const getStyles = (target) => {
     var _a;
     return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
+};
+
+const getTag = (target) => {
+    var _a;
+    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
 };
 
 /**
@@ -1414,7 +1410,7 @@ function Element() {
             connectedCallback() {
                 const instance = this[API_INSTANCE];
                 // TODO: experimental for global config
-                Object.assign(instance, getConfig(getNamespace(instance))('element', getTag(instance), 'property'));
+                Object.assign(instance, getConfig('element', getTag(instance), 'property'));
                 const connect = () => {
                     instance[API_CONNECTED] = true;
                     call(instance, LIFECYCLE_CONNECTED);
@@ -2131,16 +2127,6 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
-const CONFIG_NAMESPACE = '$htmlplus';
-const BREAKPOINTS = {
-    xs: 0,
-    sm: 576,
-    md: 768,
-    lg: 992,
-    xl: 1200,
-    xxl: 1400
-};
-
 // TODO: use regex
 const isSize = (input) => {
     return [
@@ -2177,6 +2163,15 @@ const toAxis = (input, rtl) => {
     if (input.match(/end/))
         input = rtl ? 'left' : 'right';
     return input;
+};
+
+const BREAKPOINTS = {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1400
 };
 
 function Media(query) {
@@ -2243,4 +2238,4 @@ function Media(query) {
     };
 }
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };
+export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };

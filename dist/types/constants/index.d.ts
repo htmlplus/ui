@@ -1,4 +1,3 @@
-export declare const CONFIG_NAMESPACE = "$htmlplus";
 export declare const BREAKPOINTS: {
     xs: number;
     sm: number;

@@ -1,7 +1,7 @@
 import { setConfig } from '@htmlplus/element';
 
 export const register = (name, keyframe) => {
-  setConfig('$htmlplus')({
+  setConfig({
     asset: {
       animation: {
         [name]: keyframe

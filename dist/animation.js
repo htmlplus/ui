@@ -1,5 +1,4 @@
-import { s as setConfig, _ as __decorate, P as PlusCore, h as html, b as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
-import { getConfig } from './config.js';
+import { s as setConfig, _ as __decorate, P as PlusCore, g as getConfig, h as html, b as Property, E as Event, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block}";
 
@@ -36,7 +35,7 @@ const ANIMATION_EASINGS = {
 };
 
 const register = (name, keyframe) => {
-  setConfig('$htmlplus')({
+  setConfig({
     asset: {
       animation: {
         [name]: keyframe
