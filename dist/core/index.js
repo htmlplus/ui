@@ -1453,7 +1453,6 @@ function Event$1(options = {}) {
                             name = pascalCase(name).toLowerCase();
                             break;
                         case 'preact':
-                        case 'react':
                             name = pascalCase(name);
                             break;
                         default:
