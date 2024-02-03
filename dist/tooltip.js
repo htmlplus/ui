@@ -34,7 +34,7 @@ let Tooltip = class Tooltip extends PlusCore {
         this.state = 'hide';
     }
     /**
-     * Hides the component.
+     * Hides the element.
      */
     hide() {
         var _a;
@@ -48,7 +48,7 @@ let Tooltip = class Tooltip extends PlusCore {
         }, delay);
     }
     /**
-     * Shows the component.
+     * Shows the element.
      */
     show() {
         var _a;
@@ -62,7 +62,7 @@ let Tooltip = class Tooltip extends PlusCore {
         }, delay);
     }
     /**
-     * Updates the component's position.
+     * Updates the element's position.
      */
     update() {
         this.$host.removeAttribute('placement-computed');
@@ -220,7 +220,7 @@ let Tooltip = class Tooltip extends PlusCore {
         return import('@floating-ui/dom').then(module => {
             FloatingCore = module;
         }).catch(() => {
-            throw new Error("The `tooltip` component depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem.");
+            throw new Error("The `tooltip` element depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem.");
         });
     }
     connectedCallback() {

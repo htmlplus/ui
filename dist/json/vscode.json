@@ -8,7 +8,7 @@
       "attributes": [
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -20,7 +20,7 @@
         },
         {
           "name": "open",
-          "description": "Control the component to expand or not.",
+          "description": "Control the element to expand or not.",
           "values": [
             {
               "name": "false"
@@ -39,13 +39,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/accordion"
+          "url": "https://www.htmlplus.io/javascript/element/accordion"
         }
       ]
     },
     {
       "name": "plus-animation",
-      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
+      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "attributes": [
         {
           "name": "composite",
@@ -149,7 +149,7 @@
         },
         {
           "name": "name",
-          "description": "Specifies what kind of animation will play.The list of available animations is [here](/component/animation/names).",
+          "description": "Specifies what kind of animation will play.The list of available animations is [here](/element/animation/names).",
           "values": []
         },
         {
@@ -173,13 +173,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/animation"
+          "url": "https://www.htmlplus.io/javascript/element/animation"
         }
       ]
     },
     {
       "name": "plus-aspect-ratio",
-      "description": "Sets a preferred aspect ratio only for the first child inside the component.",
+      "description": "Sets a preferred aspect ratio only for the first child inside the element.",
       "attributes": [
         {
           "name": "min-height",
@@ -200,7 +200,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/aspect-ratio"
+          "url": "https://www.htmlplus.io/javascript/element/aspect-ratio"
         }
       ]
     },
@@ -210,7 +210,7 @@
       "attributes": [
         {
           "name": "shape",
-          "description": "Specifies the shape of the component.",
+          "description": "Specifies the shape of the element.",
           "values": [
             {
               "name": "circle"
@@ -225,7 +225,7 @@
         },
         {
           "name": "size",
-          "description": "Specifies the size of the component.",
+          "description": "Specifies the size of the element.",
           "values": [
             {
               "name": "xxs"
@@ -254,7 +254,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/avatar"
+          "url": "https://www.htmlplus.io/javascript/element/avatar"
         }
       ]
     },
@@ -289,13 +289,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/avatar-group"
+          "url": "https://www.htmlplus.io/javascript/element/avatar-group"
         }
       ]
     },
     {
       "name": "plus-breadcrumb",
-      "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
+      "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
       "attributes": [
         {
           "name": "expander-text",
@@ -321,7 +321,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/breadcrumb"
+          "url": "https://www.htmlplus.io/javascript/element/breadcrumb"
         }
       ]
     },
@@ -336,7 +336,7 @@
         },
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -394,7 +394,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/browse"
+          "url": "https://www.htmlplus.io/javascript/element/browse"
         }
       ]
     },
@@ -520,7 +520,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/card"
+          "url": "https://www.htmlplus.io/javascript/element/card"
         }
       ]
     },
@@ -530,7 +530,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/card-body"
+          "url": "https://www.htmlplus.io/javascript/element/card-body"
         }
       ]
     },
@@ -554,7 +554,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/center"
+          "url": "https://www.htmlplus.io/javascript/element/center"
         }
       ]
     },
@@ -576,7 +576,7 @@
         },
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -602,7 +602,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/click-outside"
+          "url": "https://www.htmlplus.io/javascript/element/click-outside"
         }
       ]
     },
@@ -678,7 +678,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/counter"
+          "url": "https://www.htmlplus.io/javascript/element/counter"
         }
       ]
     },
@@ -722,7 +722,7 @@
         },
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -886,7 +886,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/cropper"
+          "url": "https://www.htmlplus.io/javascript/element/cropper"
         }
       ]
     },
@@ -1140,7 +1140,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/dialog"
+          "url": "https://www.htmlplus.io/javascript/element/dialog"
         }
       ]
     },
@@ -1163,7 +1163,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/dialog-body"
+          "url": "https://www.htmlplus.io/javascript/element/dialog-body"
         }
       ]
     },
@@ -1186,7 +1186,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/dialog-content"
+          "url": "https://www.htmlplus.io/javascript/element/dialog-content"
         }
       ]
     },
@@ -1196,7 +1196,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/dialog-footer"
+          "url": "https://www.htmlplus.io/javascript/element/dialog-footer"
         }
       ]
     },
@@ -1206,7 +1206,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/dialog-header"
+          "url": "https://www.htmlplus.io/javascript/element/dialog-header"
         }
       ]
     },
@@ -1222,7 +1222,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/dialog-toggler"
+          "url": "https://www.htmlplus.io/javascript/element/dialog-toggler"
         }
       ]
     },
@@ -1327,13 +1327,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/divider"
+          "url": "https://www.htmlplus.io/javascript/element/divider"
         }
       ]
     },
     {
       "name": "plus-drawer",
-      "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
+      "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "attributes": [
         {
           "name": "animation",
@@ -1479,7 +1479,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/drawer"
+          "url": "https://www.htmlplus.io/javascript/element/drawer"
         }
       ]
     },
@@ -1495,7 +1495,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/drawer-toggler"
+          "url": "https://www.htmlplus.io/javascript/element/drawer-toggler"
         }
       ]
     },
@@ -1527,13 +1527,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/faker"
+          "url": "https://www.htmlplus.io/javascript/element/faker"
         }
       ]
     },
     {
       "name": "plus-floating",
-      "description": "A component that appears in front of all screen content.",
+      "description": "A element that appears in front of all screen content.",
       "attributes": [
         {
           "name": "fixed",
@@ -1628,7 +1628,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/floating"
+          "url": "https://www.htmlplus.io/javascript/element/floating"
         }
       ]
     },
@@ -1738,13 +1738,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/format-bytes"
+          "url": "https://www.htmlplus.io/javascript/element/format-bytes"
         }
       ]
     },
     {
       "name": "plus-grid",
-      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
+      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "attributes": [
         {
           "name": "align-content",
@@ -2434,7 +2434,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/grid"
+          "url": "https://www.htmlplus.io/javascript/element/grid"
         }
       ]
     },
@@ -3576,7 +3576,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/grid-item"
+          "url": "https://www.htmlplus.io/javascript/element/grid-item"
         }
       ]
     },
@@ -3676,7 +3676,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/icon"
+          "url": "https://www.htmlplus.io/javascript/element/icon"
         }
       ]
     },
@@ -3686,7 +3686,7 @@
       "attributes": [
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -3727,13 +3727,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/intersection"
+          "url": "https://www.htmlplus.io/javascript/element/intersection"
         }
       ]
     },
     {
       "name": "plus-portal",
-      "description": "With a portal, you can render a component in a different place in the DOM tree,",
+      "description": "With a portal, you can render a element in a different place in the DOM tree,",
       "attributes": [
         {
           "name": "disabled",
@@ -3761,7 +3761,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/portal"
+          "url": "https://www.htmlplus.io/javascript/element/portal"
         }
       ]
     },
@@ -3822,7 +3822,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/progress-bar"
+          "url": "https://www.htmlplus.io/javascript/element/progress-bar"
         }
       ]
     },
@@ -3832,7 +3832,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/progress-bar-stack"
+          "url": "https://www.htmlplus.io/javascript/element/progress-bar-stack"
         }
       ]
     },
@@ -3842,7 +3842,7 @@
       "attributes": [
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -3877,7 +3877,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/scroll-detector"
+          "url": "https://www.htmlplus.io/javascript/element/scroll-detector"
         }
       ]
     },
@@ -3909,7 +3909,7 @@
         },
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -3941,7 +3941,7 @@
         },
         {
           "name": "resizable",
-          "description": "Observes the component dimensions to apply new changes on the canvas.",
+          "description": "Observes the element dimensions to apply new changes on the canvas.",
           "values": [
             {
               "name": "false"
@@ -3965,7 +3965,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/signature"
+          "url": "https://www.htmlplus.io/javascript/element/signature"
         }
       ]
     },
@@ -3982,7 +3982,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/spacer"
+          "url": "https://www.htmlplus.io/javascript/element/spacer"
         }
       ]
     },
@@ -4041,7 +4041,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/spinner"
+          "url": "https://www.htmlplus.io/javascript/element/spinner"
         }
       ]
     },
@@ -4127,13 +4127,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/stack"
+          "url": "https://www.htmlplus.io/javascript/element/stack"
         }
       ]
     },
     {
       "name": "plus-sticky",
-      "description": "Component content is positioned based on the user's scroll position.",
+      "description": "Element content is positioned based on the user's scroll position.",
       "attributes": [
         {
           "name": "top",
@@ -4161,7 +4161,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/sticky"
+          "url": "https://www.htmlplus.io/javascript/element/sticky"
         }
       ]
     },
@@ -4197,7 +4197,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/switch"
+          "url": "https://www.htmlplus.io/javascript/element/switch"
         }
       ]
     },
@@ -4231,7 +4231,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/tabs"
+          "url": "https://www.htmlplus.io/javascript/element/tabs"
         }
       ]
     },
@@ -4282,13 +4282,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/tabs-bar"
+          "url": "https://www.htmlplus.io/javascript/element/tabs-bar"
         }
       ]
     },
     {
       "name": "plus-tabs-panel",
-      "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
+      "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
       "attributes": [
         {
           "name": "value",
@@ -4299,13 +4299,13 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/tabs-panel"
+          "url": "https://www.htmlplus.io/javascript/element/tabs-panel"
         }
       ]
     },
     {
       "name": "plus-tabs-panels",
-      "description": "TODO: This component contains panels.",
+      "description": "TODO: This element contains panels.",
       "attributes": [
         {
           "name": "connector",
@@ -4316,7 +4316,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/tabs-panels"
+          "url": "https://www.htmlplus.io/javascript/element/tabs-panels"
         }
       ]
     },
@@ -4345,7 +4345,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/tabs-tab"
+          "url": "https://www.htmlplus.io/javascript/element/tabs-tab"
         }
       ]
     },
@@ -4372,7 +4372,7 @@
         },
         {
           "name": "disabled",
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -4401,7 +4401,7 @@
         },
         {
           "name": "placement",
-          "description": "Specifies the display location of the component relative to the reference.",
+          "description": "Specifies the display location of the element relative to the reference.",
           "values": [
             {
               "name": "top"
@@ -4526,7 +4526,7 @@
       "references": [
         {
           "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/component/tooltip"
+          "url": "https://www.htmlplus.io/javascript/element/tooltip"
         }
       ]
     }

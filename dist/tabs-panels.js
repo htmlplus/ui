@@ -7,7 +7,7 @@ const { reconnect } = createLink({
     namespace: ({ connector }) => connector ? `Tabs:${connector}` : undefined
 });
 /**
- * TODO: This component contains panels.
+ * TODO: This element contains panels.
  * @slot default - The default slot.
  */
 let TabsPanels = class TabsPanels extends PlusCore {

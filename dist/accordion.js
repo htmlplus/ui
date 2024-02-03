@@ -63,7 +63,7 @@ let Accordion = class Accordion extends PlusCore {
         this.opened = false;
     }
     /**
-     * Collapses the component.
+     * Collapses the element.
      * @returns {Promise<boolean>} A Promise that resolves to `true` if the
      * operation was successful or `false` if it was canceled.
      */
@@ -71,7 +71,7 @@ let Accordion = class Accordion extends PlusCore {
         return this.try(false, true);
     }
     /**
-     * Expands the component.
+     * Expands the element.
      * @returns {Promise<boolean>} A Promise that resolves to `true` if the
      * operation was successful or `false` if it was canceled.
      */

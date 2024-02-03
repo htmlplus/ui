@@ -67,8 +67,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added the material colors.
 - Added the `PlusBase` class.
-- Added an experimental color property for the `Icon` component.
-- Added an experimental color property for the `Spinner` component.
+- Added an experimental color property for the `Icon` element.
+- Added an experimental color property for the `Spinner` element.
 
 ### Updated
 
@@ -78,24 +78,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- The `Progress Bar` component.
-- The `Progress Bar Stack` component.
+- The `Progress Bar` element.
+- The `Progress Bar Stack` element.
 
 ### Removed
 
-- removed the `Scroll Indicator` component.
+- removed the `Scroll Indicator` element.
 
 ### Updated
 
 - Updated the `Scroll Detector` reference.
-- Updated all components based on the `@Host`, `@Query`, and `@QueryAll` decorators.
+- Updated all elements based on the `@Host`, `@Query`, and `@QueryAll` decorators.
 - Cleaned the code base.
 
 ## [0.9.1] - 2023-05-06
 
 ### Updated
 
-- Updated all components based on the `host` element.
+- Updated all elements based on the `host` element.
 
 ## [0.9.0] - 2023-05-03
 
@@ -120,7 +120,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added the themeing system.
-- The `Accordion` component.
+- The `Accordion` element.
 
 ### Updated
 
@@ -131,38 +131,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- The `Avatar` component.
-- The `Floating` component.
+- The `Avatar` element.
+- The `Floating` element.
 
 ### Updated
 
 - Improved the `Global Config`.
-- Renamed the `source` property to `reference` in the `Scroll Detector` component.
-- The error message for third-party components has been updated.
+- Renamed the `source` property to `reference` in the `Scroll Detector` element.
+- The error message for third-party elements has been updated.
 - Updated the `outside click` dependencies.
 
 ## [0.8.5] - 2023-03-01
 
 ### Updated
 
-- Added lazy loading to the `Cropper` component.
-- Added lazy loading to the `Faker` component.
+- Added lazy loading to the `Cropper` element.
+- Added lazy loading to the `Faker` element.
 
 ## [0.8.4] - 2023-02-28
 
 ### Added
 
-- The `Animation` component.
-- The `Aspect Ratio` component.
-- The `Center` component.
-- The `Click Outside` component.
-- The `Counter` component.
-- The `Cropper` component.
-- The `Divider` component.
-- The `Faker` component.
-- The `Format Bytes` component.
-- The `Intersection` component.
-- The `Scroll Detector` component.
-- The `Signature` component.
-- The `Spinner` component.
-- The `Sticky` component.
+- The `Animation` element.
+- The `Aspect Ratio` element.
+- The `Center` element.
+- The `Click Outside` element.
+- The `Counter` element.
+- The `Cropper` element.
+- The `Divider` element.
+- The `Faker` element.
+- The `Format Bytes` element.
+- The `Intersection` element.
+- The `Scroll Detector` element.
+- The `Signature` element.
+- The `Spinner` element.
+- The `Sticky` element.

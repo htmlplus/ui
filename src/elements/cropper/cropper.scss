@@ -1,0 +1,305 @@
+@import '../../../node_modules/cropperjs/dist/cropper.min';
+@import 'cropper.variables';
+
+:host {
+  // @Property() Used to adjust the backdrop color.
+  --plus-cropper-backdrop-color: #{$cropper-backdrop-color};
+
+  // @Property() Used to adjust the backdrop opacity.
+  --plus-cropper-backdrop-opacity: #{$cropper-backdrop-opacity};
+
+  // @Property() Used to adjust the guides color.
+  --plus-cropper-guides-color: #{$cropper-guides-color};
+
+  // @Property() Used to adjust the guides opacity.
+  --plus-cropper-guides-opacity: #{$cropper-guides-opacity};
+
+  // @Property() Used to adjust the guides style.
+  --plus-cropper-guides-style: #{$cropper-guides-style};
+
+  // @Property() Used to adjust the guides weight.
+  --plus-cropper-guides-weight: #{$cropper-guides-weight};
+
+  // @Property() Used to adjust the indicator color.
+  --plus-cropper-indicator-color: #{$cropper-indicator-color};
+
+  // @Property() Used to adjust the indicator opacity.
+  --plus-cropper-indicator-opacity: #{$cropper-indicator-opacity};
+
+  // @Property() Used to adjust the indicator size.
+  --plus-cropper-indicator-size: #{$cropper-indicator-size};
+
+  // @Property() Used to adjust the indicator weight.
+  --plus-cropper-indicator-weight: #{$cropper-indicator-weight};
+
+  // @Property() Used to adjust the resizer color.
+  --plus-cropper-resizer-color: #{$cropper-resizer-color};
+
+  // @Property() Used to adjust the resizer offset.
+  --plus-cropper-resizer-offset: #{$cropper-resizer-offset};
+
+  // @Property() Used to adjust the resizer opacity.
+  --plus-cropper-resizer-opacity: #{$cropper-resizer-opacity};
+
+  // @Property() Used to adjust the resizer size.
+  --plus-cropper-resizer-size: #{$cropper-resizer-size};
+
+  // @Property() Used to adjust the resizer weight.
+  --plus-cropper-resizer-weight: #{$cropper-resizer-weight};
+
+  // @Property() Used to adjust the viewport color.
+  --plus-cropper-viewport-color: #{$cropper-viewport-color};
+
+  // @Property() Used to adjust the viewport opacity.
+  --plus-cropper-viewport-opacity: #{$cropper-viewport-opacity};
+
+  // @Property() Used to adjust the viewport style.
+  --plus-cropper-viewport-style: #{$cropper-viewport-style};
+
+  // @Property() Used to adjust the viewport weight.
+  --plus-cropper-viewport-weight: #{$cropper-viewport-weight};
+}
+
+:host {
+  display: block;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+}
+
+.cropper-modal {
+  background-color: var(--plus-cropper-backdrop-color);
+  opacity: var(--plus-cropper-backdrop-opacity);
+}
+
+.cropper-line {
+  display: none;
+}
+
+.resizer-main {
+  .cropper-point.point-ne,
+  .cropper-point.point-nw,
+  .cropper-point.point-sw,
+  .cropper-point.point-se {
+    display: none;
+  }
+}
+
+.resizer-edge {
+  .cropper-point.point-e,
+  .cropper-point.point-n,
+  .cropper-point.point-w,
+  .cropper-point.point-s {
+    display: none;
+  }
+}
+
+.shape-circle {
+  .cropper-face,
+  .cropper-view-box,
+  .cropper-view-box::after {
+    border-radius: 50%;
+  }
+  .cropper-dashed {
+    &.dashed-h {
+      width: calc(92.5% - var(--plus-cropper-guides-weight));
+    }
+    &.dashed-v {
+      height: calc(92.5% - var(--plus-cropper-guides-weight));
+    }
+  }
+  .cropper-point {
+    &.point-ne {
+      top: 14.64466%;
+      right: 14.64466%;
+    }
+    &.point-nw {
+      top: 14.64466%;
+      left: 14.64466%;
+    }
+    &.point-sw {
+      bottom: 14.64466%;
+      left: 14.64466%;
+    }
+    &.point-se {
+      right: 14.64466%;
+      bottom: 14.64466%;
+    }
+  }
+}
+
+.cropper-dashed {
+  border-color: var(--plus-cropper-guides-color);
+  border-style: var(--plus-cropper-guides-style);
+  opacity: var(--plus-cropper-guides-opacity);
+  &.dashed-h {
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-width: var(--plus-cropper-guides-weight);
+    border-bottom-width: var(--plus-cropper-guides-weight);
+  }
+  &.dashed-v {
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-width: var(--plus-cropper-guides-weight);
+    border-right-width: var(--plus-cropper-guides-weight);
+  }
+}
+
+.cropper-view-box {
+  outline: none;
+  position: relative;
+  &::after {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-style: var(--plus-cropper-viewport-style);
+    border-color: var(--plus-cropper-viewport-color);
+    border-width: var(--plus-cropper-viewport-weight);
+    opacity: var(--plus-cropper-viewport-opacity);
+  }
+}
+
+.cropper-point {
+  &[class*='point-'] {
+    --plus-cropper-resizer-offset-negative: calc((50% + var(--plus-cropper-resizer-offset)) * -1);
+    --plus-cropper-resizer-offset-positive: calc((50% + var(--plus-cropper-resizer-offset)) * +1);
+    margin: 0;
+    height: var(--plus-cropper-resizer-size);
+    width: var(--plus-cropper-resizer-size);
+    opacity: var(--plus-cropper-resizer-opacity);
+    background-color: var(--plus-cropper-resizer-color);
+    &:before {
+      content: none;
+    }
+  }
+  &.point-e {
+    right: 0;
+    transform: translate(var(--plus-cropper-resizer-offset-positive), -50%);
+  }
+  &.point-n {
+    top: 0;
+    transform: translate(-50%, var(--plus-cropper-resizer-offset-negative));
+  }
+  &.point-w {
+    left: 0;
+    transform: translate(var(--plus-cropper-resizer-offset-negative), -50%);
+  }
+  &.point-s {
+    bottom: 0;
+    transform: translate(-50%, var(--plus-cropper-resizer-offset-positive));
+  }
+  &.point-ne {
+    top: 0;
+    right: 0;
+    transform: translate(
+      var(--plus-cropper-resizer-offset-positive),
+      var(--plus-cropper-resizer-offset-negative)
+    );
+  }
+  &.point-nw {
+    top: 0;
+    left: 0;
+    transform: translate(
+      var(--plus-cropper-resizer-offset-negative),
+      var(--plus-cropper-resizer-offset-negative)
+    );
+  }
+  &.point-sw {
+    bottom: 0;
+    left: 0;
+    transform: translate(
+      var(--plus-cropper-resizer-offset-negative),
+      var(--plus-cropper-resizer-offset-positive)
+    );
+  }
+  &.point-se {
+    right: 0;
+    bottom: 0;
+    transform: translate(
+      var(--plus-cropper-resizer-offset-positive),
+      var(--plus-cropper-resizer-offset-positive)
+    );
+  }
+}
+
+.resizer-shape-circle .cropper-point[class*='point-'] {
+  border-radius: 50%;
+}
+
+.cropper-center {
+  opacity: var(--plus-cropper-indicator-opacity);
+  &:before {
+    background-color: var(--plus-cropper-indicator-color);
+    top: calc(var(--plus-cropper-indicator-weight) / 2 * -1);
+    left: calc(var(--plus-cropper-indicator-size) / 2 * -1);
+    height: var(--plus-cropper-indicator-weight);
+    width: var(--plus-cropper-indicator-size);
+  }
+  &:after {
+    background-color: var(--plus-cropper-indicator-color);
+    top: calc(var(--plus-cropper-indicator-size) / 2 * -1);
+    left: calc(var(--plus-cropper-indicator-weight) / 2 * -1);
+    height: var(--plus-cropper-indicator-size);
+    width: var(--plus-cropper-indicator-weight);
+  }
+}
+
+.resizer-shape-line .cropper-point[class*='point-'] {
+  background-color: transparent;
+  border-style: solid;
+  border-color: var(--plus-cropper-resizer-color);
+  border-width: var(--plus-cropper-resizer-weight);
+  &.point-e {
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+  }
+  &.point-n {
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+  }
+  &.point-w {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  &.point-s {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+  }
+  &.point-ne {
+    border-bottom: none;
+    border-left: none;
+  }
+  &.point-nw {
+    border-right: none;
+    border-bottom: none;
+  }
+  &.point-sw {
+    border-top: none;
+    border-right: none;
+  }
+  &.point-se {
+    border-top: none;
+    border-left: none;
+  }
+}
+
+// .cropper-disabled .cropper-drag-box, .cropper-disabled .cropper-face, .cropper-disabled .cropper-line, .cropper-disabled .cropper-point {
+//   cursor: not-allowed;
+// }

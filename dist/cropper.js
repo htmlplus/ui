@@ -318,7 +318,7 @@ let Cropper = class Cropper extends PlusCore {
         return import('cropperjs').then(module => {
             CropperCore = module.default;
         }).catch(() => {
-            throw new Error("The `cropper` component depends on an external package, but it doesn't seem to be installed. Running `npm install cropperjs` will fix this problem.");
+            throw new Error("The `cropper` element depends on an external package, but it doesn't seem to be installed. Running `npm install cropperjs` will fix this problem.");
         });
     }
     loadedCallback() {

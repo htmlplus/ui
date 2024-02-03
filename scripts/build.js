@@ -1,4 +1,4 @@
-import { rollup as htmlplus } from '@htmlplus/element/bundlers/index.js';
+import { htmlplus } from '@htmlplus/element/bundlers/rollup.js';
 
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
@@ -13,19 +13,19 @@ import typescript from 'rollup-plugin-typescript2';
 import ttypescript from 'ttypescript';
 import { fileURLToPath } from 'url';
 
-import plugins from '../plus.config.js';
+import plugins from '../htmlplus.config.js';
 
 const join = (file) => path.join(fileURLToPath(import.meta.url), '../..', file);
 
 const options = defineConfig({
   input: Object.fromEntries(
     glob
-      .sync(['src/components/*/*.tsx'], { absolute: true })
+      .sync(['src/elements/*/*.tsx'], { absolute: true })
       .map((file) => [[path.basename(file, path.extname(file)), file]])
       .flat(1)
       .concat([
         ['config', join('src/config/index.ts')],
-        ['index', join('src/components/index.ts')]
+        ['index', join('src/elements/index.ts')]
       ])
   ),
   output: [
@@ -36,7 +36,7 @@ const options = defineConfig({
       manualChunks(id) {
         const normalized = path.normalize(id).split(path.sep).join('/');
 
-        if (normalized.includes('/src/components/')) return;
+        if (normalized.includes('/src/elements/')) return;
 
         if (normalized.includes('/src/config/')) return;
 
@@ -104,28 +104,22 @@ const options = defineConfig({
 
       const document = JSON.parse(fs.readFileSync(source, 'utf8'));
 
-      const styles = {};
-
       for (const module of bundle.cache.modules) {
-        if (!module.id.endsWith('.scss')) continue;
-        Object.assign(
-          styles,
-          Object.fromEntries(
-            module.code
-              .match(/{--plus-(.+):(.+)[}]/g)?.[0]
-              .split(';')
-              .map((section) =>
-                section.split(':').map((string) => string.trim().replace(/{|}/g, ''))
-              ) || []
-          )
-        );
-      }
-
-      for (const component of document.components) {
-        for (const style of component.styles) {
-          const initializer = styles[style.name];
-          if (!initializer) continue;
-          style.initializer = initializer;
+        if (module.id.endsWith('.scss')) {
+          for (const element of document.elements) {
+            if (module.id.endsWith(`${element.key}.scss`)) {
+              for (const style of element.styles) {
+                style.initializer = module.code
+                  ?.split(style.name)
+                  ?.at(1)
+                  ?.split(':')
+                  ?.filter((section) => !!section)
+                  ?.at(0)
+                  ?.split(/;|}/)
+                  ?.at(0);
+              }
+            }
+          }
         }
       }
 

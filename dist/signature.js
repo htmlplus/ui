@@ -134,7 +134,7 @@ let Signature = class Signature extends PlusForm {
         this.instance.fromData(data);
     }
     /**
-     * Syncs the canvas dimensions with the component dimensions.
+     * Syncs the canvas dimensions with the element dimensions.
      * @param clear Clears the canvas after resizing.
      */
     resize(clear) {

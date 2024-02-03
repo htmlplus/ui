@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body isolate>
+    <plus-stack gap="2rem">
+      <plus-icon name="home_outline"></plus-icon>
+      <plus-icon name="home_round"></plus-icon>
+      <plus-icon name="home_sharp"></plus-icon>
+    </plus-stack>
+    <script type="module">
+      import { setConfig } from 'https://cdn.skypack.dev/@htmlplus/core/config.js';
+
+      setConfig({
+        element: {
+          'plus-icon': {
+            property: {
+              resolver: (name, parser) => {
+                const [all, icon, type] = name.match(/^(.*)_(outline|round|sharp)$/);
+
+                const url = `https://cdn.jsdelivr.net/npm/@material-icons/svg/svg/${icon}/${type}.svg`;
+
+                return fetch(url)
+                  .then((response) => response.text())
+                  .then((raw) => parser(raw))
+                  .then((svg) => {
+                    svg.setAttribute('fill', 'currentColor');
+                    return svg;
+                  });
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/icon.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+    </script>
+  </body>
+</html>

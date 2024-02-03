@@ -1,11 +1,11 @@
 {
-  "components": [
+  "elements": [
     {
       "events": [
         {
           "cancelable": true,
           "deprecated": false,
-          "description": "Fires when the component is about to collapse.This event can be [canceled](TODO).",
+          "description": "Fires when the element is about to collapse.This event can be [canceled](TODO).",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -13,14 +13,14 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires when the component is about to collapse.This event can be [canceled](TODO)."
+              "value": "Fires when the element is about to collapse.This event can be [canceled](TODO)."
             }
           ]
         },
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "Fires after the component has collapsed.",
+          "description": "Fires after the element has collapsed.",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -28,14 +28,14 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires after the component has collapsed."
+              "value": "Fires after the element has collapsed."
             }
           ]
         },
         {
           "cancelable": true,
           "deprecated": false,
-          "description": "Fires when the component is about to expand.This event can be [canceled](TODO).",
+          "description": "Fires when the element is about to expand.This event can be [canceled](TODO).",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -43,14 +43,14 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires when the component is about to expand.This event can be [canceled](TODO)."
+              "value": "Fires when the element is about to expand.This event can be [canceled](TODO)."
             }
           ]
         },
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "Fires after the component has expanded.",
+          "description": "Fires after the element has expanded.",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -58,7 +58,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires after the component has expanded."
+              "value": "Fires after the element has expanded."
             }
           ]
         }
@@ -67,11 +67,11 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2023-10-29T20:19:35.951Z",
+      "lastModified": "2024-01-19T15:49:59.393Z",
       "methods": [
         {
           "async": false,
-          "description": "Collapses the component.",
+          "description": "Collapses the element.",
           "deprecated": false,
           "experimental": false,
           "name": "collapse",
@@ -80,7 +80,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Collapses the component."
+              "value": "Collapses the element."
             },
             {
               "key": "returns",
@@ -91,7 +91,7 @@
         },
         {
           "async": false,
-          "description": "Expands the component.",
+          "description": "Expands the element.",
           "deprecated": false,
           "experimental": false,
           "name": "expand",
@@ -100,7 +100,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Expands the component."
+              "value": "Expands the element."
             },
             {
               "key": "returns",
@@ -152,7 +152,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -161,7 +161,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -169,7 +169,7 @@
         {
           "attribute": "open",
           "deprecated": false,
-          "description": "Control the component to expand or not.",
+          "description": "Control the element to expand or not.",
           "experimental": false,
           "model": false,
           "name": "open",
@@ -178,7 +178,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Control the component to expand or not."
+              "value": "Control the element to expand or not."
             }
           ],
           "type": "boolean"
@@ -294,10 +294,10 @@
         }
       ],
       "deprecated": false,
-      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).",
+      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2023-10-29T20:19:36.905Z",
+      "lastModified": "2024-01-26T13:28:17.928Z",
       "methods": [
         {
           "async": false,
@@ -657,7 +657,7 @@
         {
           "attribute": "name",
           "deprecated": false,
-          "description": "Specifies what kind of animation will play.The list of available animations is [here](/component/animation/names).",
+          "description": "Specifies what kind of animation will play.The list of available animations is [here](/element/animation/names).",
           "experimental": false,
           "model": false,
           "name": "name",
@@ -666,7 +666,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies what kind of animation will play.The list of available animations is [here](/component/animation/names)."
+              "value": "Specifies what kind of animation will play.The list of available animations is [here](/element/animation/names)."
             }
           ],
           "type": "string"
@@ -707,7 +707,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Animation\n\nCreates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/component/animation/names).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://www.htmlplus.io/component/animation/names).\n<Example value=\"name\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Easing\n\nTo see all easings click [here](https://github.com/htmlplus/core/blob/main/src/components/animation/animation.constants.ts).\n<Example value=\"easing\" />\n\n### Methods\n\n<Example value=\"methods\" />\n\n### Keyframes\n\n<Example value=\"keyframes\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Button\n\n<Example value=\"button\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<LastModified />\n",
+      "readmeContent": "# Animation\n\nCreates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://www.htmlplus.io/element/animation/names).\n<Example value=\"name\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Easing\n\nTo see all easings click [here](https://github.com/htmlplus/core/blob/main/src/elements/animation/animation.constants.ts).\n<Example value=\"easing\" />\n\n### Methods\n\n<Example value=\"methods\" />\n\n### Keyframes\n\n<Example value=\"keyframes\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Button\n\n<Example value=\"button\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -726,10 +726,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "Sets a preferred aspect ratio only for the first child inside the component.",
+      "description": "Sets a preferred aspect ratio only for the first child inside the element.",
       "experimental": false,
       "key": "aspect-ratio",
-      "lastModified": "2023-10-29T20:19:37.032Z",
+      "lastModified": "2024-01-19T15:50:00.053Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -786,7 +786,7 @@
           "type": "number | string"
         }
       ],
-      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the component.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Video\n\n<Example value=\"video\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Map\n\n<Example value=\"map\" />\n\n### More\n\n<Example value=\"more\" />\n\n<LastModified />\n",
+      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Video\n\n<Example value=\"video\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Map\n\n<Example value=\"map\" />\n\n### More\n\n<Example value=\"more\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -808,14 +808,14 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2023-10-29T20:35:39.555Z",
+      "lastModified": "2024-01-19T15:50:00.255Z",
       "methods": [],
       "parts": [],
       "properties": [
         {
           "attribute": "shape",
           "deprecated": false,
-          "description": "Specifies the shape of the component.",
+          "description": "Specifies the shape of the element.",
           "experimental": false,
           "initializer": "'round'",
           "model": false,
@@ -825,7 +825,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies the shape of the component."
+              "value": "Specifies the shape of the element."
             }
           ],
           "type": "AvatarShape",
@@ -834,7 +834,7 @@
         {
           "attribute": "size",
           "deprecated": false,
-          "description": "Specifies the size of the component.",
+          "description": "Specifies the size of the element.",
           "experimental": false,
           "initializer": "'md'",
           "model": false,
@@ -844,7 +844,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies the size of the component."
+              "value": "Specifies the size of the element."
             }
           ],
           "type": "AvatarSize",
@@ -861,18 +861,18 @@
       "styles": [
         {
           "description": "Used to adjust the border-radius.",
-          "name": "--plus-avatar-border-radius",
-          "initializer": "0.25rem"
+          "initializer": "0.25rem",
+          "name": "--plus-avatar-border-radius"
         },
         {
           "description": "Used to adjust the ratio of size to font-size.",
-          "name": "--plus-avatar-font-size-ratio",
-          "initializer": "0.35"
+          "initializer": "0.35",
+          "name": "--plus-avatar-font-size-ratio"
         },
         {
           "description": "Used to adjust the size (width & height).",
-          "name": "--plus-avatar-size",
-          "initializer": "auto"
+          "initializer": "auto",
+          "name": "--plus-avatar-size"
         }
       ],
       "tags": [
@@ -888,7 +888,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
-      "lastModified": "2023-10-29T20:19:37.600Z",
+      "lastModified": "2024-01-19T15:50:00.157Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -936,13 +936,13 @@
       "styles": [
         {
           "description": "Used to adjust the gutter between avatars in stacked mode.",
-          "name": "--plus-avatar-group-gutter-stacked",
-          "initializer": "-0.5rem"
+          "initializer": "-0.5rem",
+          "name": "--plus-avatar-group-gutter-stacked"
         },
         {
           "description": "Used to adjust the gutter between avatars in unstacked mode.",
-          "name": "--plus-avatar-group-gutter-unstacked",
-          "initializer": "0.5rem"
+          "initializer": "0.5rem",
+          "name": "--plus-avatar-group-gutter-unstacked"
         }
       ],
       "tags": [
@@ -956,10 +956,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "Breadcrumb component is a navigation pattern that shows the actual path of the current page.",
+      "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2023-10-29T20:19:39.615Z",
+      "lastModified": "2024-01-19T15:50:00.745Z",
       "methods": [],
       "parts": [
         {
@@ -1047,7 +1047,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Breadcrumb\n\nBreadcrumb component is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Custom Separator\n\n<Example value=\"custom-separator\" />\n\n### Limitation\n\n<Example value=\"limitation\" />\n\n### Custom Expander\n\n<Example value=\"custom-expander\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
+      "readmeContent": "# Breadcrumb\n\nBreadcrumb element is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Custom Separator\n\n<Example value=\"custom-separator\" />\n\n### Limitation\n\n<Example value=\"limitation\" />\n\n### Custom Expander\n\n<Example value=\"custom-expander\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1065,13 +1065,13 @@
       "styles": [
         {
           "description": "Used to adjust the Horizontal gap.",
-          "name": "--plus-breadcrumb-gutter-x",
-          "initializer": "0.5em"
+          "initializer": "0.5em",
+          "name": "--plus-breadcrumb-gutter-x"
         },
         {
           "description": "Used to adjust the Vertical gap.",
-          "name": "--plus-breadcrumb-gutter-y",
-          "initializer": "0.5em"
+          "initializer": "0.5em",
+          "name": "--plus-breadcrumb-gutter-y"
         }
       ],
       "tags": [],
@@ -1132,7 +1132,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2023-10-29T20:19:40.134Z",
+      "lastModified": "2024-01-19T15:50:01.013Z",
       "methods": [
         {
           "async": false,
@@ -1173,7 +1173,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -1182,7 +1182,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -1307,7 +1307,7 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
-      "lastModified": "2023-10-29T20:19:40.636Z",
+      "lastModified": "2024-01-19T15:50:01.244Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1381,7 +1381,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Card\n\nCards contain content and actions about a single subject.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Elevation\n\nThe card component accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\n<Example value=\"elevation\" />\n\n### Outlined\n\nBy default, the card component has no border. outlined property Adds border.\n<Example value=\"outlined\" />\n\n### Border Color\n\n<Example value=\"border-color\" />\n\n### Border Width\n\nBy default, the card component has no border. outlined property Adds border.\n<Example value=\"border-width\" />\n\n### Tile\n\nBy default, the card component has border-radius. The tile property neutralizes border-radius.\n<Example value=\"tile\" />\n\n### Background Color\n\n<Example value=\"background-color\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n<LastModified />\n",
+      "readmeContent": "# Card\n\nCards contain content and actions about a single subject.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Elevation\n\nThe card element accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\n<Example value=\"elevation\" />\n\n### Outlined\n\nBy default, the card element has no border. outlined property Adds border.\n<Example value=\"outlined\" />\n\n### Border Color\n\n<Example value=\"border-color\" />\n\n### Border Width\n\nBy default, the card element has no border. outlined property Adds border.\n<Example value=\"border-width\" />\n\n### Tile\n\nBy default, the card element has border-radius. The tile property neutralizes border-radius.\n<Example value=\"tile\" />\n\n### Background Color\n\n<Example value=\"background-color\" />\n\n### Customize\n\n<Example value=\"customize\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -1391,28 +1391,28 @@
       "styles": [
         {
           "description": "Used to adjust the background-color.",
-          "name": "--plus-card-background-color",
-          "initializer": "#fff"
+          "initializer": "#fff",
+          "name": "--plus-card-background-color"
         },
         {
           "description": "Used to adjust the border-color.",
-          "name": "--plus-card-border-color",
-          "initializer": "#d3d3d3"
+          "initializer": "#d3d3d3",
+          "name": "--plus-card-border-color"
         },
         {
           "description": "Used to adjust the border-radius.",
-          "name": "--plus-card-border-radius",
-          "initializer": "0.25rem"
+          "initializer": "0.25rem",
+          "name": "--plus-card-border-radius"
         },
         {
           "description": "Used to adjust the border-width.",
-          "name": "--plus-card-border-width",
-          "initializer": "1px"
+          "initializer": "1px",
+          "name": "--plus-card-border-width"
         },
         {
           "description": "Used to adjust the box-shodow.",
-          "name": "--plus-card-box-shadow",
-          "initializer": "none"
+          "initializer": "none",
+          "name": "--plus-card-box-shadow"
         }
       ],
       "tags": [],
@@ -1423,7 +1423,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "card-body",
-      "lastModified": "2023-10-29T20:19:40.223Z",
+      "lastModified": "2024-01-19T15:50:01.114Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -1448,7 +1448,7 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
-      "lastModified": "2023-10-29T20:19:40.816Z",
+      "lastModified": "2024-01-19T15:50:01.490Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1491,7 +1491,7 @@
         {
           "cancelable": true,
           "deprecated": false,
-          "description": "Fires when outside of the component is clicked.",
+          "description": "Fires when outside of the element is clicked.",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -1499,7 +1499,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires when outside of the component is clicked."
+              "value": "Fires when outside of the element is clicked."
             }
           ]
         }
@@ -1508,7 +1508,7 @@
       "description": "Detects when a click event happens outside of itself.",
       "experimental": false,
       "key": "click-outside",
-      "lastModified": "2023-10-29T20:19:41.079Z",
+      "lastModified": "2024-01-19T15:50:01.557Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1532,7 +1532,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -1541,7 +1541,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -1602,7 +1602,7 @@
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "experimental": false,
       "key": "counter",
-      "lastModified": "2023-10-29T20:19:41.674Z",
+      "lastModified": "2024-01-19T15:50:01.716Z",
       "methods": [
         {
           "async": false,
@@ -1929,7 +1929,7 @@
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "Fires when the image has been loaded and the component is ready for operation.",
+          "description": "Fires when the image has been loaded and the element is ready for operation.",
           "detail": "EventEmitter<void>",
           "experimental": false,
           "model": false,
@@ -1937,14 +1937,14 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires when the image has been loaded and the component is ready for operation."
+              "value": "Fires when the image has been loaded and the element is ready for operation."
             }
           ]
         },
         {
           "cancelable": true,
           "deprecated": false,
-          "description": "Fires when the component starts to `zoom in` or `zoom out`.",
+          "description": "Fires when the element starts to `zoom in` or `zoom out`.",
           "detail": "EventEmitter<CropperZoomEvent>",
           "detailReference": "./cropper.types",
           "experimental": false,
@@ -1953,7 +1953,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires when the component starts to `zoom in` or `zoom out`."
+              "value": "Fires when the element starts to `zoom in` or `zoom out`."
             }
           ]
         }
@@ -1962,7 +1962,7 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
-      "lastModified": "2023-10-29T20:19:42.842Z",
+      "lastModified": "2024-01-19T15:50:02.078Z",
       "methods": [
         {
           "async": false,
@@ -2267,7 +2267,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -2276,7 +2276,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -2507,98 +2507,98 @@
       "styles": [
         {
           "description": "Used to adjust the backdrop color.",
-          "name": "--plus-cropper-backdrop-color",
-          "initializer": "#000"
+          "initializer": "#000",
+          "name": "--plus-cropper-backdrop-color"
         },
         {
           "description": "Used to adjust the backdrop opacity.",
-          "name": "--plus-cropper-backdrop-opacity",
-          "initializer": "0.5"
+          "initializer": "0.5",
+          "name": "--plus-cropper-backdrop-opacity"
         },
         {
           "description": "Used to adjust the guides color.",
-          "name": "--plus-cropper-guides-color",
-          "initializer": "#fff"
+          "initializer": "#fff",
+          "name": "--plus-cropper-guides-color"
         },
         {
           "description": "Used to adjust the guides opacity.",
-          "name": "--plus-cropper-guides-opacity",
-          "initializer": "0.5"
+          "initializer": "0.5",
+          "name": "--plus-cropper-guides-opacity"
         },
         {
           "description": "Used to adjust the guides style.",
-          "name": "--plus-cropper-guides-style",
-          "initializer": "dashed"
+          "initializer": "dashed",
+          "name": "--plus-cropper-guides-style"
         },
         {
           "description": "Used to adjust the guides weight.",
-          "name": "--plus-cropper-guides-weight",
-          "initializer": "1px"
+          "initializer": "1px",
+          "name": "--plus-cropper-guides-weight"
         },
         {
           "description": "Used to adjust the indicator color.",
-          "name": "--plus-cropper-indicator-color",
-          "initializer": "#fff"
+          "initializer": "#fff",
+          "name": "--plus-cropper-indicator-color"
         },
         {
           "description": "Used to adjust the indicator opacity.",
-          "name": "--plus-cropper-indicator-opacity",
-          "initializer": "1"
+          "initializer": "1",
+          "name": "--plus-cropper-indicator-opacity"
         },
         {
           "description": "Used to adjust the indicator size.",
-          "name": "--plus-cropper-indicator-size",
-          "initializer": "10px"
+          "initializer": "10px",
+          "name": "--plus-cropper-indicator-size"
         },
         {
           "description": "Used to adjust the indicator weight.",
-          "name": "--plus-cropper-indicator-weight",
-          "initializer": "2px"
+          "initializer": "2px",
+          "name": "--plus-cropper-indicator-weight"
         },
         {
           "description": "Used to adjust the resizer color.",
-          "name": "--plus-cropper-resizer-color",
-          "initializer": "#fff"
+          "initializer": "#fff",
+          "name": "--plus-cropper-resizer-color"
         },
         {
           "description": "Used to adjust the resizer offset.",
-          "name": "--plus-cropper-resizer-offset",
-          "initializer": "0px"
+          "initializer": "0px",
+          "name": "--plus-cropper-resizer-offset"
         },
         {
           "description": "Used to adjust the resizer opacity.",
-          "name": "--plus-cropper-resizer-opacity",
-          "initializer": "1"
+          "initializer": "1",
+          "name": "--plus-cropper-resizer-opacity"
         },
         {
           "description": "Used to adjust the resizer size.",
-          "name": "--plus-cropper-resizer-size",
-          "initializer": "5px"
+          "initializer": "5px",
+          "name": "--plus-cropper-resizer-size"
         },
         {
           "description": "Used to adjust the resizer weight.",
-          "name": "--plus-cropper-resizer-weight",
-          "initializer": "1px"
+          "initializer": "1px",
+          "name": "--plus-cropper-resizer-weight"
         },
         {
           "description": "Used to adjust the viewport color.",
-          "name": "--plus-cropper-viewport-color",
-          "initializer": "#fff"
+          "initializer": "#fff",
+          "name": "--plus-cropper-viewport-color"
         },
         {
           "description": "Used to adjust the viewport opacity.",
-          "name": "--plus-cropper-viewport-opacity",
-          "initializer": "1"
+          "initializer": "1",
+          "name": "--plus-cropper-viewport-opacity"
         },
         {
           "description": "Used to adjust the viewport style.",
-          "name": "--plus-cropper-viewport-style",
-          "initializer": "solid"
+          "initializer": "solid",
+          "name": "--plus-cropper-viewport-style"
         },
         {
           "description": "Used to adjust the viewport weight.",
-          "name": "--plus-cropper-viewport-weight",
-          "initializer": "1px"
+          "initializer": "1px",
+          "name": "--plus-cropper-viewport-weight"
         }
       ],
       "tags": [
@@ -2684,7 +2684,7 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
-      "lastModified": "2023-10-29T20:19:44.131Z",
+      "lastModified": "2024-01-19T15:50:02.741Z",
       "methods": [],
       "parts": [
         {
@@ -3004,7 +3004,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
-      "lastModified": "2023-10-29T20:19:42.998Z",
+      "lastModified": "2024-01-19T15:50:02.435Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3041,7 +3041,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
-      "lastModified": "2023-10-29T20:19:43.167Z",
+      "lastModified": "2024-01-19T15:50:02.475Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3078,7 +3078,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-footer",
-      "lastModified": "2023-10-29T20:19:43.283Z",
+      "lastModified": "2024-01-19T15:50:02.511Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3097,7 +3097,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-header",
-      "lastModified": "2023-10-29T20:19:43.354Z",
+      "lastModified": "2024-01-19T15:50:02.542Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -3116,7 +3116,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-toggler",
-      "lastModified": "2023-10-29T20:19:43.421Z",
+      "lastModified": "2024-01-19T15:50:02.593Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3163,7 +3163,7 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2023-10-29T20:19:44.448Z",
+      "lastModified": "2024-01-19T15:50:02.995Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3266,28 +3266,28 @@
       "styles": [
         {
           "description": "Used to adjust the color.",
-          "name": "--plus-divider-color",
-          "initializer": "grey"
+          "initializer": "grey",
+          "name": "--plus-divider-color"
         },
         {
           "description": "Used to adjust the gutter.",
-          "name": "--plus-divider-gutter",
-          "initializer": "0.5rem"
+          "initializer": "0.5rem",
+          "name": "--plus-divider-gutter"
         },
         {
           "description": "Used to adjust the opacity.",
-          "name": "--plus-divider-opacity",
-          "initializer": "0.25"
+          "initializer": "0.25",
+          "name": "--plus-divider-opacity"
         },
         {
           "description": "Used to adjust the type.",
-          "name": "--plus-divider-type",
-          "initializer": "unset"
+          "initializer": "unset",
+          "name": "--plus-divider-type"
         },
         {
           "description": "Used to adjust the width.",
-          "name": "--plus-divider-width",
-          "initializer": "unset"
+          "initializer": "unset",
+          "name": "--plus-divider-width"
         }
       ],
       "tags": [],
@@ -3357,10 +3357,10 @@
         }
       ],
       "deprecated": false,
-      "description": "This component lets you add collapsible side contents like navigation alongside some primary content.",
+      "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2023-10-29T20:19:45.248Z",
+      "lastModified": "2024-01-19T15:50:03.270Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3575,7 +3575,7 @@
           "typeReference": "./drawer.types"
         }
       ],
-      "readmeContent": "# Drawer\n\nThis component lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
+      "readmeContent": "# Drawer\n\nThis element lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -3585,13 +3585,13 @@
       "styles": [
         {
           "description": "You can use it to set the width size of the drawer using css variables.",
-          "name": "--plus-drawer-size",
-          "initializer": "280px"
+          "initializer": "280px",
+          "name": "--plus-drawer-size"
         },
         {
           "description": "You can use it to set the minimum width size of the drawer using css variables.",
-          "name": "--plus-drawer-mini-size",
-          "initializer": "80px"
+          "initializer": "80px",
+          "name": "--plus-drawer-mini-size"
         }
       ],
       "tags": [],
@@ -3602,7 +3602,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
-      "lastModified": "2023-10-29T20:19:44.841Z",
+      "lastModified": "2024-01-19T15:50:03.160Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3649,7 +3649,7 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
-      "lastModified": "2023-10-29T20:19:45.584Z",
+      "lastModified": "2024-01-19T15:50:03.440Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3746,10 +3746,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "A component that appears in front of all screen content.",
+      "description": "A element that appears in front of all screen content.",
       "experimental": false,
       "key": "floating",
-      "lastModified": "2023-10-29T20:19:45.973Z",
+      "lastModified": "2024-01-19T15:50:03.555Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3809,7 +3809,7 @@
           "typeReference": "./floating.types"
         }
       ],
-      "readmeContent": "# Floating\n\nA component that appears in front of all screen content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Fixed\n\n<Example value=\"fixed\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Button\n\n<Example value=\"button\" />\n\n<LastModified />\n",
+      "readmeContent": "# Floating\n\nA element that appears in front of all screen content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Fixed\n\n<Example value=\"fixed\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Button\n\n<Example value=\"button\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -3831,7 +3831,7 @@
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "experimental": false,
       "key": "format-bytes",
-      "lastModified": "2023-10-29T20:19:46.483Z",
+      "lastModified": "2024-01-19T15:50:03.762Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3993,10 +3993,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
+      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
-      "lastModified": "2023-10-29T20:19:47.650Z",
+      "lastModified": "2024-01-19T15:50:04.180Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -4597,7 +4597,7 @@
           "typeReference": "./grid.types"
         }
       ],
-      "readmeContent": "# Grid\n\nIt's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main components, `plus-grid` as a container & `plus-grid-item`. By using these components, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Auto Sizing\n\n<Example value=\"auto-sizing\" />\n\n### Gutter\n\n<Example value=\"gutter\" />\n\n### Gutter X\n\n<Example value=\"gutter-x\" />\n\n### Gutter Y\n\n<Example value=\"gutter-y\" />\n\n### Align Items\n\n<Example value=\"align-items\" />\n\n### Align Content\n\n<Example value=\"align-content\" />\n\n### Align Self\n\n<Example value=\"align-self\" />\n\n### Justify Content\n\n<Example value=\"justify-content\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Wrap\n\n<Example value=\"wrap\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Order\n\n<Example value=\"order\" />\n\n### Hide\n\n<Example value=\"hide\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
+      "readmeContent": "# Grid\n\nIt's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Auto Sizing\n\n<Example value=\"auto-sizing\" />\n\n### Gutter\n\n<Example value=\"gutter\" />\n\n### Gutter X\n\n<Example value=\"gutter-x\" />\n\n### Gutter Y\n\n<Example value=\"gutter-y\" />\n\n### Align Items\n\n<Example value=\"align-items\" />\n\n### Align Content\n\n<Example value=\"align-content\" />\n\n### Align Self\n\n<Example value=\"align-self\" />\n\n### Justify Content\n\n<Example value=\"justify-content\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Wrap\n\n<Example value=\"wrap\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Order\n\n<Example value=\"order\" />\n\n### Hide\n\n<Example value=\"hide\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -4607,13 +4607,13 @@
       "styles": [
         {
           "description": "TODO",
-          "name": "--plus-grid--gutter-x",
-          "initializer": "0"
+          "initializer": "0",
+          "name": "--plus-grid--gutter-x"
         },
         {
           "description": "TODO",
-          "name": "--plus-grid--gutter-y",
-          "initializer": "0"
+          "initializer": "0",
+          "name": "--plus-grid--gutter-y"
         }
       ],
       "tags": [],
@@ -4624,7 +4624,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "grid-item",
-      "lastModified": "2023-10-29T20:19:46.744Z",
+      "lastModified": "2024-01-19T15:50:03.846Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5368,7 +5368,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2023-11-06T17:19:18.332Z",
+      "lastModified": "2024-01-19T15:50:04.587Z",
       "methods": [],
       "parts": [
         {
@@ -5511,7 +5511,7 @@
         {
           "cancelable": false,
           "deprecated": false,
-          "description": "Fires When the browser detects that the component has been unveiled or obscured.",
+          "description": "Fires When the browser detects that the element has been unveiled or obscured.",
           "detail": "EventEmitter<IntersectionObserverEntry>",
           "experimental": false,
           "model": false,
@@ -5519,7 +5519,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Fires When the browser detects that the component has been unveiled or obscured."
+              "value": "Fires When the browser detects that the element has been unveiled or obscured."
             }
           ]
         }
@@ -5528,14 +5528,14 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "experimental": false,
       "key": "intersection",
-      "lastModified": "2023-10-29T20:19:48.519Z",
+      "lastModified": "2024-01-19T15:50:04.724Z",
       "methods": [],
       "parts": [],
       "properties": [
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -5544,7 +5544,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -5638,10 +5638,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "With a portal, you can render a component in a different place in the DOM tree,",
+      "description": "With a portal, you can render a element in a different place in the DOM tree,",
       "experimental": true,
       "key": "portal",
-      "lastModified": "2023-10-29T20:19:48.629Z",
+      "lastModified": "2024-01-19T15:50:04.773Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5679,7 +5679,7 @@
             }
           ],
           "type": "PortalStrategy",
-          "typeReference": "@app/services"
+          "typeReference": "@/services"
         },
         {
           "attribute": "target",
@@ -5698,10 +5698,10 @@
             }
           ],
           "type": "PortalTarget",
-          "typeReference": "@app/services"
+          "typeReference": "@/services"
         }
       ],
-      "readmeContent": "# Portal\n\nWith a portal, you can render a component in a different place in the DOM tree,\neven if this place is not in your app's scope. Portals are very handy when working\nwith modals, notifications, popups or other elements that are sensitive to where\nthey're placed in the DOM tree.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
+      "readmeContent": "# Portal\n\nWith a portal, you can render a element in a different place in the DOM tree,\neven if this place is not in your app's scope. Portals are very handy when working\nwith modals, notifications, popups or other elements that are sensitive to where\nthey're placed in the DOM tree.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -5723,7 +5723,7 @@
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "experimental": false,
       "key": "progress-bar",
-      "lastModified": "2023-10-29T20:19:49.207Z",
+      "lastModified": "2024-01-19T15:50:04.956Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5866,7 +5866,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "progress-bar-stack",
-      "lastModified": "2023-10-29T20:19:48.699Z",
+      "lastModified": "2024-01-19T15:50:04.797Z",
       "methods": [],
       "parts": [],
       "properties": [],
@@ -5898,14 +5898,14 @@
       "description": "Detects scroll event from an element.",
       "experimental": false,
       "key": "scroll-detector",
-      "lastModified": "2023-10-29T20:19:49.387Z",
+      "lastModified": "2024-01-19T15:50:05.083Z",
       "methods": [],
       "parts": [],
       "properties": [
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -5914,7 +5914,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -6034,7 +6034,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2023-10-29T20:19:50.052Z",
+      "lastModified": "2024-01-19T15:50:05.443Z",
       "methods": [
         {
           "async": false,
@@ -6277,7 +6277,7 @@
         },
         {
           "async": false,
-          "description": "Syncs the canvas dimensions with the component dimensions.",
+          "description": "Syncs the canvas dimensions with the element dimensions.",
           "deprecated": false,
           "experimental": false,
           "name": "resize",
@@ -6293,7 +6293,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Syncs the canvas dimensions with the component dimensions."
+              "value": "Syncs the canvas dimensions with the element dimensions."
             },
             {
               "key": "param",
@@ -6382,7 +6382,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -6391,7 +6391,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -6469,7 +6469,7 @@
         {
           "attribute": "resizable",
           "deprecated": false,
-          "description": "Observes the component dimensions to apply new changes on the canvas.",
+          "description": "Observes the element dimensions to apply new changes on the canvas.",
           "experimental": false,
           "model": false,
           "name": "resizable",
@@ -6478,7 +6478,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Observes the component dimensions to apply new changes on the canvas."
+              "value": "Observes the element dimensions to apply new changes on the canvas."
             }
           ],
           "type": "boolean"
@@ -6537,7 +6537,7 @@
       "description": "TODO",
       "experimental": false,
       "key": "spacer",
-      "lastModified": "2023-10-29T20:19:50.131Z",
+      "lastModified": "2024-01-19T15:50:05.502Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6572,7 +6572,7 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2023-10-29T20:19:50.775Z",
+      "lastModified": "2024-01-19T15:50:05.613Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6649,7 +6649,7 @@
       "description": "TODO.",
       "experimental": false,
       "key": "stack",
-      "lastModified": "2023-10-29T20:19:50.891Z",
+      "lastModified": "2024-01-19T15:50:05.739Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6774,10 +6774,10 @@
         }
       ],
       "deprecated": false,
-      "description": "Component content is positioned based on the user's scroll position.",
+      "description": "Element content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
-      "lastModified": "2023-10-29T20:19:51.180Z",
+      "lastModified": "2024-01-19T15:50:05.891Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6835,7 +6835,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Sticky\n\nComponent content is positioned based on the user's scroll position.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Top\n\n<Example value=\"top\" />\n\n### Contacts\n\n<Example value=\"contacts\" />\n\n### State Attribute\n\n<Example value=\"state-attribute\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Sidebar\n\n<Example value=\"sidebar\" />\n\n<LastModified />\n",
+      "readmeContent": "# Sticky\n\nElement content is positioned based on the user's scroll position.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Top\n\n<Example value=\"top\" />\n\n### Contacts\n\n<Example value=\"contacts\" />\n\n### State Attribute\n\n<Example value=\"state-attribute\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Sidebar\n\n<Example value=\"sidebar\" />\n\n<LastModified />\n",
       "slots": [
         {
           "name": "default",
@@ -6885,7 +6885,7 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
-      "lastModified": "2023-10-29T20:19:51.432Z",
+      "lastModified": "2024-01-19T15:50:06.056Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6956,7 +6956,7 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
-      "lastModified": "2023-10-29T20:19:52.002Z",
+      "lastModified": "2024-01-19T15:50:06.329Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7034,7 +7034,7 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
-      "lastModified": "2023-10-29T20:19:51.497Z",
+      "lastModified": "2024-01-19T15:50:06.096Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7109,10 +7109,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed.",
+      "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
-      "lastModified": "2023-10-29T20:19:51.552Z",
+      "lastModified": "2024-01-19T15:50:06.123Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7144,7 +7144,7 @@
       "tags": [
         {
           "key": "",
-          "value": "TODO: This component contains the contents of each tab and when the tab is activated the panel is displayed."
+          "value": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed."
         }
       ],
       "title": "Tabs Panel"
@@ -7152,10 +7152,10 @@
     {
       "events": [],
       "deprecated": false,
-      "description": "TODO: This component contains panels.",
+      "description": "TODO: This element contains panels.",
       "experimental": false,
       "key": "tabs-panels",
-      "lastModified": "2023-10-29T20:19:51.607Z",
+      "lastModified": "2024-01-19T15:50:06.152Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7187,7 +7187,7 @@
       "tags": [
         {
           "key": "",
-          "value": "TODO: This component contains panels."
+          "value": "TODO: This element contains panels."
         }
       ],
       "title": "Tabs Panels"
@@ -7198,7 +7198,7 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
-      "lastModified": "2023-10-29T20:19:51.669Z",
+      "lastModified": "2024-01-19T15:50:06.187Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7258,11 +7258,11 @@
       "description": "TODO.",
       "experimental": false,
       "key": "tooltip",
-      "lastModified": "2023-10-29T20:19:52.494Z",
+      "lastModified": "2024-01-19T15:50:06.513Z",
       "methods": [
         {
           "async": false,
-          "description": "Hides the component.",
+          "description": "Hides the element.",
           "deprecated": false,
           "experimental": false,
           "name": "hide",
@@ -7271,14 +7271,14 @@
           "tags": [
             {
               "key": "",
-              "value": "Hides the component."
+              "value": "Hides the element."
             }
           ],
           "signature": "hide() => void"
         },
         {
           "async": false,
-          "description": "Shows the component.",
+          "description": "Shows the element.",
           "deprecated": false,
           "experimental": false,
           "name": "show",
@@ -7287,14 +7287,14 @@
           "tags": [
             {
               "key": "",
-              "value": "Shows the component."
+              "value": "Shows the element."
             }
           ],
           "signature": "show() => void"
         },
         {
           "async": false,
-          "description": "Updates the component's position.",
+          "description": "Updates the element's position.",
           "deprecated": false,
           "experimental": false,
           "name": "update",
@@ -7303,7 +7303,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Updates the component's position."
+              "value": "Updates the element's position."
             }
           ],
           "signature": "update() => void"
@@ -7349,7 +7349,7 @@
         {
           "attribute": "disabled",
           "deprecated": false,
-          "description": "Disables the component functionality.",
+          "description": "Disables the element functionality.",
           "experimental": false,
           "model": false,
           "name": "disabled",
@@ -7358,7 +7358,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Disables the component functionality."
+              "value": "Disables the element functionality."
             }
           ],
           "type": "boolean"
@@ -7401,7 +7401,7 @@
         {
           "attribute": "placement",
           "deprecated": false,
-          "description": "Specifies the display location of the component relative to the reference.",
+          "description": "Specifies the display location of the element relative to the reference.",
           "experimental": false,
           "model": false,
           "name": "placement",
@@ -7410,7 +7410,7 @@
           "tags": [
             {
               "key": "",
-              "value": "Specifies the display location of the component relative to the reference."
+              "value": "Specifies the display location of the element relative to the reference."
             }
           ],
           "type": "TooltipPlacement",

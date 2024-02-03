@@ -86,6 +86,9 @@ const appendToMethod = (target, propertyKey, handler) => {
 };
 
 const outsides = [];
+/**
+ * TODO
+ */
 const off = (target, type, handler, options) => {
     if (type != 'outside')
         return target.removeEventListener(type, handler, options);
@@ -96,6 +99,9 @@ const off = (target, type, handler, options) => {
     off(document, outside.type, outside.callback, outside.options);
     outsides.splice(index, 1);
 };
+/**
+ * TODO
+ */
 const on = (target, type, handler, options) => {
     if (type != 'outside')
         return target.addEventListener(type, handler, options);
@@ -271,16 +277,16 @@ const typeOf = (input) => {
         .toLowerCase();
 };
 
+/**
+ * TODO
+ */
 const classes = (input, smart) => {
     const result = [];
     switch (typeOf(input)) {
         case 'array': {
-            input.forEach((item) => {
-                const value = classes(item, smart);
-                if (!value)
-                    return;
-                result.push(value);
-            });
+            for (const item of input) {
+                result.push(classes(item, smart));
+            }
             break;
         }
         case 'object': {
@@ -290,34 +296,17 @@ const classes = (input, smart) => {
                 const name = kebabCase(key);
                 const type = typeOf(value);
                 if (!smart) {
-                    if (!value)
-                        continue;
-                    result.push(name);
+                    value && result.push(name);
                     continue;
                 }
                 switch (type) {
                     case 'boolean': {
-                        if (!value)
-                            continue;
-                        result.push(`${name}`);
+                        value && result.push(`${name}`);
                         break;
                     }
-                    case 'number': {
-                        result.push(`${name}-${value}`);
-                        break;
-                    }
+                    case 'number':
                     case 'string': {
-                        switch (value) {
-                            case '':
-                            case 'true':
-                                result.push(`${name}`);
-                                break;
-                            case 'false':
-                                break;
-                            default:
-                                result.push(`${name}-${value}`);
-                                break;
-                        }
+                        result.push(`${name}-${value}`);
                         break;
                     }
                 }
@@ -329,7 +318,14 @@ const classes = (input, smart) => {
             break;
         }
     }
-    return result.join(' ');
+    return result.filter((item) => item).join(' ');
+};
+
+/**
+ * Indicates whether the current code is running on a server.
+ */
+const isServer = () => {
+    return !(typeof window != 'undefined' && window.document);
 };
 
 const merge = (target, ...sources) => {
@@ -352,34 +348,48 @@ const merge = (target, ...sources) => {
     return target;
 };
 
-let defaults = {
-    component: {}
+const DEFAULTS = {
+    element: {}
 };
-const getConfig = (namespace, ...parameters) => {
-    if (typeof window == 'undefined')
+/**
+ * TODO
+ */
+const getConfig = (...keys) => {
+    if (isServer())
         return;
-    let config = window[namespace];
-    for (const parameter of parameters) {
+    let config = window[`$htmlplus$`];
+    for (const key of keys) {
         if (!config)
             break;
-        config = config[parameter];
+        config = config[key];
     }
     return config;
 };
-const setConfig = (namespace, config, override) => {
-    if (typeof window == 'undefined')
+/**
+ * TODO
+ */
+const setConfig = (config, options) => {
+    if (isServer())
         return;
-    window[namespace] = merge({}, defaults, override ? {} : window[namespace], config);
+    const previous = (options === null || options === void 0 ? void 0 : options.override) ? {} : window[`$htmlplus$`];
+    window[`$htmlplus$`] = merge({}, DEFAULTS, previous, config);
 };
 
 const defineProperty = Object.defineProperty;
 
+/**
+ * Indicates the host of the element.
+ */
 const host = (target) => {
     return target[API_HOST]();
 };
 
+/**
+ * Indicates whether the [Direction](https://mdn.io/css-direction)
+ * of the element is `Right-To-Left` or `Left-To-Right`.
+ */
 const direction = (target) => {
-    return getComputedStyle(host(target)).getPropertyValue('direction').toLowerCase();
+    return getComputedStyle(host(target)).getPropertyValue('direction');
 };
 
 const getFramework = (target) => {
@@ -404,30 +414,41 @@ const getMembers = (target) => {
     return target[STATIC_MEMBERS] || {};
 };
 
-const getTag = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
-};
-
-const getNamespace = (instance) => {
-    return getTag(instance).split('-')[0].toUpperCase();
-};
-
 const getStyles = (target) => {
     var _a;
     return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
 };
 
-const isRTL = (target) => direction(target) == 'rtl';
-
-const isServer = () => {
-    return !(typeof window != 'undefined' && window.document);
+const getTag = (target) => {
+    var _a;
+    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
 };
+
+/**
+ * Indicates whether the direction of the element is `Right-To-Left` or not.
+ */
+const isRTL = (target) => direction(target) == 'rtl';
 
 const shadowRoot = (target) => {
     var _a;
     return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
 };
+
+/**
+ * Selects the first element in the shadow dom that matches a specified CSS selector.
+ */
+function query(target, selectors) {
+    var _a;
+    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
+}
+
+/**
+ * Selects all elements in the shadow dom that match a specified CSS selector.
+ */
+function queryAll(target, selectors) {
+    var _a;
+    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
+}
 
 const task = (options) => {
     let isPending, promise;
@@ -1165,7 +1186,7 @@ tag('svg');
 
 /**
  * Updates the DOM with a scheduled task.
- * @param target The component instance.
+ * @param target The element instance.
  * @param name Property/State name.
  * @param previous The previous value of Property/State.
  * @param callback Invoked when the rendering phase is completed.
@@ -1224,6 +1245,9 @@ const request = (target, name, previous, callback) => {
     call(target, API_REQUEST);
 };
 
+/**
+ * Converts a JavaScript object containing CSS styles to a CSS string.
+ */
 const styles = (input) => {
     switch (typeOf(input)) {
         case 'array':
@@ -1239,6 +1263,16 @@ const styles = (input) => {
             return '';
     }
 };
+
+function toDecorator(util, ...parameters) {
+    return function (target, propertyKey) {
+        defineProperty(target, propertyKey, {
+            get() {
+                return util(this, ...parameters);
+            }
+        });
+    };
+}
 
 const toProperty = (input, type) => {
     if (type === undefined)
@@ -1294,14 +1328,21 @@ const toProperty = (input, type) => {
     return input;
 };
 
+/**
+ * Converts a value to a unit.
+ */
 const toUnit = (input, unit = 'px') => {
-    if (input == null || input === '')
-        return undefined;
+    if (input === null || input === undefined || input === '')
+        return input;
     if (isNaN(+input))
         return String(input);
-    return `${Number(input)}${unit}`;
+    return Number(input) + unit;
 };
 
+/**
+ * Used to bind a method of a class to the current context,
+ * making it easier to reference `this` within the method.
+ */
 function Bind() {
     return function (target, propertyKey, descriptor) {
         return {
@@ -1319,6 +1360,11 @@ function Bind() {
     };
 }
 
+/**
+ * The class marked with this decorator is considered a
+ * [Custom Element](https://mdn.io/using-custom-elements),
+ * and its name, in kebab-case, serves as the element name.
+ */
 function Element() {
     return function (constructor) {
         if (isServer())
@@ -1364,7 +1410,7 @@ function Element() {
             connectedCallback() {
                 const instance = this[API_INSTANCE];
                 // TODO: experimental for global config
-                Object.assign(instance, getConfig(getNamespace(instance), 'component', getTag(instance), 'property'));
+                Object.assign(instance, getConfig('element', getTag(instance), 'property'));
                 const connect = () => {
                     instance[API_CONNECTED] = true;
                     call(instance, LIFECYCLE_CONNECTED);
@@ -1385,6 +1431,12 @@ function Element() {
     };
 }
 
+/**
+ * Provides the capability to dispatch a [CustomEvent](https://mdn.io/custom-event)
+ * from an element.
+ *
+ * @param options An object that configures options for the event dispatcher.
+ */
 function Event$1(options = {}) {
     return function (target, propertyKey) {
         defineProperty(target, propertyKey, {
@@ -1394,7 +1446,7 @@ function Event$1(options = {}) {
                     const element = host(this);
                     const framework = getFramework(element);
                     (_a = options.bubbles) !== null && _a !== void 0 ? _a : (options.bubbles = false);
-                    let name = options.name || String(propertyKey);
+                    let name = String(propertyKey);
                     switch (framework) {
                         case 'qwik':
                         case 'solid':
@@ -1417,16 +1469,17 @@ function Event$1(options = {}) {
     };
 }
 
+/**
+ * Indicates the host of the element.
+ */
 function Host() {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
-            get() {
-                return host(this);
-            }
-        });
-    };
+    return toDecorator(host);
 }
 
+/**
+ * Provides a way to encapsulate functionality within an element
+ * and invoke it as needed, both internally and externally.
+ */
 function Method() {
     return function (target, propertyKey) {
         appendToMethod(target, LIFECYCLE_CONNECTED, function () {
@@ -1437,6 +1490,10 @@ function Method() {
     };
 }
 
+/**
+ * Creates a reactive property, reflecting a corresponding attribute value,
+ * and updates the element when the property is set.
+ */
 function Property(options) {
     return function (target, propertyKey) {
         const name = String(propertyKey);
@@ -1477,28 +1534,37 @@ function Property(options) {
     };
 }
 
+/**
+ * Selects the first element in the shadow dom that matches a specified CSS selector.
+ *
+ * @param selectors A string containing one or more selectors to match.
+ * This string must be a valid CSS selector string; if it isn't, a `SyntaxError` exception is thrown. See
+ * [Locating DOM elements using selectors](https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors)
+ * for more about selectors and how to manage them.
+ */
 function Query(selectors) {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
-            get() {
-                var _a;
-                return (_a = shadowRoot(this)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
-            }
-        });
-    };
+    return toDecorator(query, selectors);
 }
 
+/**
+ * Selects all elements in the shadow dom that match a specified CSS selector.
+ *
+ * @param selectors A string containing one or more selectors to match against.
+ * This string must be a valid
+ * [CSS selector](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors)
+ * string; if it's not, a `SyntaxError` exception is thrown. See
+ * [Locating DOM elements using selectors](https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/Locating_DOM_elements_using_selectors)
+ * for more information about using selectors to identify elements.
+ * Multiple selectors may be specified by separating them using commas.
+ */
 function QueryAll(selectors) {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
-            get() {
-                var _a;
-                return (_a = shadowRoot(this)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
-            }
-        });
-    };
+    return toDecorator(queryAll, selectors);
 }
 
+/**
+ * Applying this decorator to any `class property` will trigger the
+ * element to re-render upon the desired property changes.
+ */
 function State() {
     return function (target, propertyKey) {
         const name = String(propertyKey);
@@ -1519,10 +1585,11 @@ function State() {
 }
 
 /**
- * Monitors `@Property` and `@State` to catch changes.
- * The decorated method will be invoked after any
- * changes with the `key`, `newValue`, and `oldValue` as parameters.
- * If the arguments aren't defined, all of the `@Property` and `@State` are considered.
+ * Monitors `@Property` and `@State` to detect changes.
+ * The decorated method will be called after any changes,
+ * with the `key`, `newValue`, and `oldValue` as parameters.
+ * If the `key` is not defined, all `@Property` and `@State` are considered.
+ *
  * @param keys Collection of `@Property` and `@State` names.
  * @param immediate Triggers the callback immediately after initialization.
  */
@@ -2060,16 +2127,6 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
-const CONFIG_NAMESPACE = 'PLUS';
-const BREAKPOINTS = {
-    xs: 0,
-    sm: 576,
-    md: 768,
-    lg: 992,
-    xl: 1200,
-    xxl: 1400
-};
-
 // TODO: use regex
 const isSize = (input) => {
     return [
@@ -2106,6 +2163,15 @@ const toAxis = (input, rtl) => {
     if (input.match(/end/))
         input = rtl ? 'left' : 'right';
     return input;
+};
+
+const BREAKPOINTS = {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1400
 };
 
 function Media(query) {
@@ -2172,4 +2238,4 @@ function Media(query) {
     };
 }
 
-export { Animation2 as A, Bind as B, CONFIG_NAMESPACE as C, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };
+export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };
