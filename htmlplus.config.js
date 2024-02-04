@@ -2,7 +2,6 @@ import {
   assets,
   copy,
   customElement,
-  customElementReact,
   document,
   extract,
   parse,
@@ -27,25 +26,6 @@ export default [
   style(),
   customElement({
     prefix: 'plus-'
-  }),
-  customElementReact({
-    compact: true,
-    destination: '../distributions/react',
-    eventName(eventName) {
-      return eventName.replace(/Plus/, '');
-    },
-    importerElement(context) {
-      return {
-        source: `@htmlplus/core/${context.fileName}`
-      };
-    },
-    importerElementType(context) {
-      return {
-        source: `@htmlplus/core/types/elements/${context.fileName}/${context.fileName}`,
-        imported: `${context.className}JSX`,
-        local: `${context.className}JSX`
-      };
-    }
   }),
   assets({
     once: true,
