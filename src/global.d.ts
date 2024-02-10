@@ -9,9 +9,9 @@ declare module 'react' {
     part?: string;
   }
   namespace JSX {
-    // interface IntrinsicElements {
-    //   host: React.DetailedHTMLProps<Omit<React.HTMLAttributes<HTMLElement>, 'part'>, HTMLElement>;
-    // }
+    interface IntrinsicElements {
+      host: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+    }
   }
 }
 
