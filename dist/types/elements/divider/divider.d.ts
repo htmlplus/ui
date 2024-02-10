@@ -23,7 +23,7 @@ export declare class Divider extends PlusCore {
      *  Draws the divider in a vertical orientation.
      */
     vertical?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface DividerAttributes {
     /**

@@ -157,7 +157,7 @@ export declare class Animation extends PlusCore {
     onRemove(): void;
     updatedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AnimationAttributes {
     /**
