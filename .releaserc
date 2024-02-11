@@ -1,4 +1,7 @@
 {
+  "assets": [
+    "dist/**"
+  ],
   "branches": [
     "main"
   ],
