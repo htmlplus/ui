@@ -1,7 +1,4 @@
 {
-  "assets": [
-    "dist/**"
-  ],
   "branches": [
     "main"
   ],
@@ -22,7 +19,14 @@
         ]
       }
     ],
-    "@semantic-release/npm",
-    "@semantic-release/github"
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "dist"
+      }
+    ],
+    [
+      "@semantic-release/github"
+    ]
   ]
 }
