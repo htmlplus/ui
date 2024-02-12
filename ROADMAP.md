@@ -5,7 +5,7 @@
 - [x] animation
 - [x] aspect-ratio
 - [ ] autocomplete
-- [ ] avatar
+- [x] avatar
 - [ ] badge
 - [ ] bottom-navigation
 - [ ] box
