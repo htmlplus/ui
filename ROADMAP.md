@@ -1,6 +1,6 @@
 ## Roadmap
 
-- [ ] accordion
+- [x] accordion
 - [ ] alert
 - [x] animation
 - [x] aspect-ratio
