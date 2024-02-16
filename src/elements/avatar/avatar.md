@@ -40,9 +40,13 @@ An image representing a user's profile picture.
 
 <Example value="svg" />
 
-### Svg Ratio
+### Svg Ratio (Inline)
 
-<Example value="svg-ratio" />
+<Example value="svg-ratio-inline" />
+
+### Svg Ratio (Global)
+
+<Example value="svg-ratio-global" />
 
 ### Shape
 
