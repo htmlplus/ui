@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/htmlplus/core/compare/v1.1.1...v1.1.2) (2024-02-17)
+
+
+### Bug Fixes
+
+* Update npm packages ([0c9d9c8](https://github.com/htmlplus/core/commit/0c9d9c8bcb8c1fa9106ef50ad4b46e40bd2a1608))
+
 ## [1.1.1](https://github.com/htmlplus/core/compare/v1.1.0...v1.1.1) (2024-02-16)
 
 
