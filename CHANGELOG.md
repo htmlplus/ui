@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/htmlplus/core/compare/v1.1.2...v1.1.3) (2024-02-17)
+
+
+### Bug Fixes
+
+* Fix disabled style in browse. ([c4ec810](https://github.com/htmlplus/core/commit/c4ec8105b99dc57c09a64e2c41bd62342e3c2552))
+
 ## [1.1.2](https://github.com/htmlplus/core/compare/v1.1.1...v1.1.2) (2024-02-17)
 
 
