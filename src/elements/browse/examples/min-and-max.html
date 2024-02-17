@@ -6,14 +6,16 @@
   </head>
   <body>
     <plus-center>
-      <plus-browse id="$browse"> Click Here </plus-browse>
+      <plus-browse id="$browse" min="3" max="5" multiple> Click Here </plus-browse>
     </plus-center>
     <script type="module">
       import 'https://cdn.skypack.dev/@htmlplus/core/browse.js';
       import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
 
       $browse.addEventListener('plus-change', (event) => {
-        console.log(event.detail);
+        if (event.detail.error) {
+          alert(event.detail.error.message);
+        }
       });
     </script>
   </body>

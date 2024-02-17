@@ -6,14 +6,14 @@
   </head>
   <body>
     <plus-center>
-      <plus-browse id="$browse"> Click Here </plus-browse>
+      <plus-browse id="$browse" multiple>Click Here</plus-browse>
     </plus-center>
     <script type="module">
       import 'https://cdn.skypack.dev/@htmlplus/core/browse.js';
       import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
 
       $browse.addEventListener('plus-change', (event) => {
-        console.log(event.detail);
+        alert(`${event.detail.files.length} file(s) are selected.`);
       });
     </script>
   </body>

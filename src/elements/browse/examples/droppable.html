@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-browse {
+        background: white;
+        border: 2px dashed lightgray;
+        border-radius: 4px;
+        display: block;
+        padding: 3rem;
+        text-align: center;
+      }
+      plus-browse[dragging]:not([dragging='false']) {
+        border-color: darkgray;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-browse id="$browse" droppable> Click or Drag & Drop a file(s) here </plus-browse>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/browse.js';
+
+      $browse.addEventListener('plus-change', (event) => {
+        const name = event.detail.files[0].file.name;
+        alert(`File '${name}' selected.`);
+      });
+    </script>
+  </body>
+</html>

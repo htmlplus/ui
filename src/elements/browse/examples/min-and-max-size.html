@@ -6,14 +6,16 @@
   </head>
   <body>
     <plus-center>
-      <plus-browse id="$browse"> Click Here </plus-browse>
+      <plus-browse id="$browse" min-size="1000000" max-size="5000000"> Click Here </plus-browse>
     </plus-center>
     <script type="module">
       import 'https://cdn.skypack.dev/@htmlplus/core/browse.js';
       import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
 
       $browse.addEventListener('plus-change', (event) => {
-        console.log(event.detail);
+        if (event.detail.files?.[0]?.errors.length) {
+          alert(event.detail.files[0].errors[0].message)
+        }
       });
     </script>
   </body>

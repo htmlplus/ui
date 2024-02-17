@@ -1,17 +1,16 @@
-export declare enum BrowseError {
-    Min = "MIN",
-    Max = "MAX"
+export interface BrowseError {
+    type: 'min' | 'max';
+    message: string;
 }
-export declare enum BrowseFileError {
-    Accept = "ACCEPT",
-    Min_Size = "MIN_SIZE",
-    Max_Size = "MAX_SIZE"
+export interface BrowseFileError {
+    type: 'accept' | 'min' | 'max';
+    message: string;
 }
 export interface BrowseFile {
     errors?: Array<BrowseFileError>;
     file?: File;
 }
 export interface BrowseEvent {
-    errors?: Array<BrowseError>;
+    error?: BrowseError;
     files?: Array<BrowseFile>;
 }

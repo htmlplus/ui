@@ -11,9 +11,10 @@ import {
 
 import { PlusCore } from '@/core';
 
-import { BrowseError, BrowseEvent, BrowseFile, BrowseFileError } from './browse.types';
+import { BrowseEvent, BrowseFile } from './browse.types';
 
 /**
+ * @stable
  * @slot default - The default slot.
  */
 @Element()
@@ -125,13 +126,21 @@ export class Browse extends PlusCore {
 
   do(files: FileList) {
     const detail: BrowseEvent = {
-      errors: [],
+      error: undefined,
       files: []
     };
 
-    if (this.min > files.length) detail.errors.push(BrowseError.Min);
+    if (this.min > files.length)
+      detail.error = {
+        type: 'min',
+        message: `A minimum of "${this.min}" file(s) must be selected`
+      };
 
-    if (this.max < files.length) detail.errors.push(BrowseError.Max);
+    if (this.max < files.length)
+      detail.error = {
+        type: 'max',
+        message: `A maximum of "${this.max}" file(s) must be selected`
+      };
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -152,17 +161,28 @@ export class Browse extends PlusCore {
 
         if (isMime && isPattern && value.file.type.startsWith(type.slice(0, -1))) break;
 
-        value.errors.push(BrowseFileError.Accept);
+        value.errors.push({
+          type: 'accept',
+          message: `Only file(s) with the extensions "${this.accept}" are accepted`
+        });
       }
 
-      if (this.minSize > value.file.size) value.errors.push(BrowseFileError.Min_Size);
+      if (this.minSize > value.file.size)
+        value.errors.push({
+          type: 'min',
+          message: `The minimum file size allowed is "${this.minSize}" bytes`
+        });
 
-      if (this.maxSize < value.file.size) value.errors.push(BrowseFileError.Max_Size);
+      if (this.maxSize < value.file.size)
+        value.errors.push({
+          type: 'min',
+          message: `The maximum file size allowed is "${this.maxSize}" bytes`
+        });
 
       detail.files.push(value);
     }
 
-    const error = detail.errors.length || detail.files.some((file) => file.errors.length);
+    const error = detail.error || detail.files.some((file) => file.errors.length);
 
     const filtered = detail.files.filter((file) => !error || file.errors.length);
 

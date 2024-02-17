@@ -1132,7 +1132,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2024-02-17T09:22:22.627Z",
+      "lastModified": "2024-02-17T20:38:14.091Z",
       "methods": [
         {
           "async": false,
@@ -1290,7 +1290,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Browse\r\n\r\nAllows you to select file or files by using click or drag & drop functionality.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Multiple\r\n\r\n<Example value=\"multiple\" />\r\n\r\n### Accept\r\n\r\n<Example value=\"accept\" />\r\n\r\n### Droppable\r\n\r\n<Example value=\"droppable\" />\r\n\r\n### Min\r\n\r\n<Example value=\"min\" />\r\n\r\n### Max\r\n\r\n<Example value=\"max\" />\r\n\r\n### Min Size\r\n\r\n<Example value=\"min-size\" />\r\n\r\n### Max Size\r\n\r\n<Example value=\"max-size\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Browse\r\n\r\nAllows you to select file or files by using click or drag & drop functionality.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Multiple\r\n\r\n<Example value=\"multiple\" />\r\n\r\n### Accept\r\n\r\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\r\n\r\n<Example value=\"accept\" />\r\n\r\n### Droppable\r\n\r\n<Example value=\"droppable\" />\r\n\r\n### Min & Max\r\n\r\n<Example value=\"min-and-max\" />\r\n\r\n### Min & Max Size\r\n\r\n<Example value=\"min-and-max-size\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -1298,7 +1298,12 @@
         }
       ],
       "styles": [],
-      "tags": [],
+      "tags": [
+        {
+          "key": "stable",
+          "value": ""
+        }
+      ],
       "title": "Browse"
     },
     {

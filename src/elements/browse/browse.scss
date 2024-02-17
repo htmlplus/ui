@@ -1,7 +1,13 @@
+@import 'browse.variables';
+
 :host {
   cursor: pointer;
 }
 
 input[type='file'] {
   display: none;
+}
+
+:host(#{boolean(disabled)}) {
+  opacity: $browse-disabled-opacity;
 }

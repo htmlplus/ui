@@ -14,6 +14,8 @@ Allows you to select file or files by using click or drag & drop functionality.
 
 ### Default
 
+Open the developer console.
+
 <Example value="default" />
 
 ### Disabled
@@ -26,26 +28,20 @@ Allows you to select file or files by using click or drag & drop functionality.
 
 ### Accept
 
+One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.
+
 <Example value="accept" />
 
 ### Droppable
 
 <Example value="droppable" />
 
-### Min
+### Min & Max
 
-<Example value="min" />
+<Example value="min-and-max" />
 
-### Max
+### Min & Max Size
 
-<Example value="max" />
-
-### Min Size
-
-<Example value="min-size" />
-
-### Max Size
-
-<Example value="max-size" />
+<Example value="min-and-max-size" />
 
 <LastModified />
