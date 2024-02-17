@@ -30,7 +30,7 @@ export declare class Tabs extends PlusCore {
     change(value: any): void;
     initialize(): void;
     connectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsAttributes {
     /**

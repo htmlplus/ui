@@ -14,7 +14,7 @@ export declare class AvatarGroup extends PlusCore {
      * Specifies whether avatars should be displayed compressed or not.
      */
     stacked?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AvatarGroupAttributes {
     /**
