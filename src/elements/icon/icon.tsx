@@ -36,6 +36,7 @@ const parse = (input: SVGElement | string): SVGElement => {
 };
 
 /**
+ * @stable
  * @part svg - The svg element.
  */
 @Element()

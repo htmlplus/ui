@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body isolate>
+    <plus-center>
+      <plus-icon name="heart"></plus-icon>
+    </plus-center>
+    <script type="module">
+      import { setConfig } from 'https://cdn.skypack.dev/@htmlplus/core/config.js';
+
+      setConfig({
+        element: {
+          'plus-icon': {
+            property: {
+              resolver: async (name, parser) => {
+                return fetch(`https://cdn.jsdelivr.net/npm/@tabler/icons/icons/${name}.svg`)
+                  .then((response) => response.text())
+                  .then((raw) => parser(raw))
+                  .then((svg) => {
+                    svg.setAttribute('fill', 'currentColor');
+                    return svg;
+                  });
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/icon.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/center.js';
+    </script>
+  </body>
+</html>

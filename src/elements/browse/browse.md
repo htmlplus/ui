@@ -32,10 +32,6 @@ One or more [unique file type specifiers](https://developer.mozilla.org/en-US/do
 
 <Example value="accept" />
 
-### Droppable
-
-<Example value="droppable" />
-
 ### Min & Max
 
 <Example value="min-and-max" />
@@ -43,5 +39,9 @@ One or more [unique file type specifiers](https://developer.mozilla.org/en-US/do
 ### Min & Max Size
 
 <Example value="min-and-max-size" />
+
+### Droppable
+
+<Example value="droppable" />
 
 <LastModified />

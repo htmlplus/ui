@@ -13,6 +13,7 @@ import { PlusCore } from '@/core';
 import { Animation2 } from '@/services';
 
 /**
+ * @stable
  * @part body          - The body element.
  * @part content       - The content element.
  * @part summary       - The summary element.
@@ -25,8 +26,6 @@ import { Animation2 } from '@/services';
  * @slot top           - The top slot.
  * @slot middle        - The middle slot.
  * @slot bottom        - The bottom slot.
- *
- * @stable
  */
 @Element()
 export class Accordion extends PlusCore {

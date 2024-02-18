@@ -18,8 +18,8 @@ import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.ty
 let Core;
 
 /**
- * @part canvas - The canvas element.
  * @stable
+ * @part canvas - The canvas element.
  */
 @Element()
 export class Signature extends PlusForm {
