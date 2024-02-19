@@ -30,6 +30,10 @@ the hierarchy.
 
 <Example value="limitation" />
 
+### With Icon
+
+<Example value="with-icon" />
+
 ### Custom Expander
 
 <Example value="custom-expander" />

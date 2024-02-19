@@ -6,6 +6,7 @@ import { PlusCore } from '@/core';
 import * as CONSTANTS from './breadcrumb.constants';
 
 /**
+ * @stable
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
  * @part separator - The separator elements.
