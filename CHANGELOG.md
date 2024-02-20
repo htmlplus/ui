@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/htmlplus/core/compare/v1.1.3...v1.1.4) (2024-02-20)
+
+
+### Bug Fixes
+
+* Update divider styles ([e9d820d](https://github.com/htmlplus/core/commit/e9d820d0bbdac96d9fe1e0b747aa4a41b4c426c4))
+
 ## [1.1.3](https://github.com/htmlplus/core/compare/v1.1.2...v1.1.3) (2024-02-17)
 
 
