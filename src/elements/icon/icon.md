@@ -60,6 +60,8 @@ To see all names click [here](https://icons.getbootstrap.com).
 
 ### Resolver
 
+Use `import`, `fetch` or any asynchronous function to load SVG files.
+
 <Example value="resolver" />
 
 ### Font Awesome
