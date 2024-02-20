@@ -1,5 +1,6 @@
 import { PlusCore } from "../../core";
 /**
+ * @stable
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
  * @part separator - The separator elements.
@@ -39,7 +40,7 @@ export declare class Breadcrumb extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface BreadcrumbAttributes {
     /**

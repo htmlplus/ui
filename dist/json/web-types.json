@@ -2236,7 +2236,12 @@
               }
             }
           ],
-          "slots": []
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
         },
         {
           "name": "plus-drawer",

@@ -2,6 +2,7 @@ import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
 import { Animation2 } from "../../services";
 /**
+ * @stable
  * @part body          - The body element.
  * @part content       - The content element.
  * @part summary       - The summary element.
@@ -14,8 +15,6 @@ import { Animation2 } from "../../services";
  * @slot top           - The top slot.
  * @slot middle        - The middle slot.
  * @slot bottom        - The bottom slot.
- *
- * @stable
  */
 export declare class Accordion extends PlusCore {
     static TAG: string;
@@ -81,7 +80,7 @@ export declare class Accordion extends PlusCore {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AccordionAttributes {
     /**

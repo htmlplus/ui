@@ -93,7 +93,7 @@ export declare class Avatar extends PlusCore {
         };
     };
     get style(): string;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AvatarAttributes {
     /**

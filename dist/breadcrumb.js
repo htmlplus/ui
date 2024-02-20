@@ -6,6 +6,7 @@ const BREADCRUMB_EXPANDER_QUERY = '[slot=expander]';
 const BREADCRUMB_SEPARATOR_QUERY = '[slot=separator]';
 
 /**
+ * @stable
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
  * @part separator - The separator elements.

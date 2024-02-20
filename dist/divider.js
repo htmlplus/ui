@@ -1,7 +1,13 @@
-import { _ as __decorate, P as PlusCore, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, v as slots, f as host, b as Property, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{--plus-divider-color:grey;--plus-divider-gutter:0.5rem;--plus-divider-opacity:0.25;--plus-divider-type:unset;--plus-divider-width:unset}:host{align-items:center;color:var(--plus-divider-color);display:flex;font-size:.75rem}:host:after,:host:before{content:\"\";flex:1 1 auto;opacity:var(--plus-divider-opacity)}:host([placement=end]):after,:host([placement=start]):before{content:none}:host([type=dashed]){--plus-divider-type:dashed}:host([type=dotted]){--plus-divider-type:dotted}:host([type=double]){--plus-divider-type:double}:host([type=groove]){--plus-divider-type:groove}:host([type=inset]){--plus-divider-type:inset}:host([type=outset]){--plus-divider-type:outset}:host([type=ridge]){--plus-divider-type:ridge}:host([type=solid]){--plus-divider-type:solid}:host([width=xs]){--plus-divider-width:1px}:host([width=sm]){--plus-divider-width:2px}:host([width=md]){--plus-divider-width:3px}:host([width=lg]){--plus-divider-width:4px}:host([width=xl]){--plus-divider-width:5px}:host([aria-orientation=horizontal]){flex-direction:row}:host([aria-orientation=horizontal]):after,:host([aria-orientation=horizontal]):before{border-top:var(--plus-divider-width) var(--plus-divider-type) var(--plus-divider-color)}:host([aria-orientation=horizontal]):before{margin-inline-end:var(--plus-divider-gutter)}:host([aria-orientation=horizontal]):after{margin-inline-start:var(--plus-divider-gutter)}:host([aria-orientation=horizontal]:empty):before{margin-inline-end:0}:host([aria-orientation=horizontal]:empty):after{margin-inline-start:0}:host([aria-orientation=horizontal][variant=inset]):before{margin-inline-start:5rem}:host([aria-orientation=horizontal][variant=middle]):before{margin-inline-start:1rem}:host([aria-orientation=horizontal][variant=middle]):after{margin-inline-end:1rem}:host([aria-orientation=vertical]){align-self:stretch;flex-direction:column;height:auto;min-height:100%}:host([aria-orientation=vertical]):after,:host([aria-orientation=vertical]):before{border-left:var(--plus-divider-width) var(--plus-divider-type) var(--plus-divider-color)}:host([aria-orientation=vertical]):before{margin-block-end:var(--plus-divider-gutter)}:host([aria-orientation=vertical]):after{margin-block-start:var(--plus-divider-gutter)}:host([aria-orientation=vertical]:empty):after,:host([aria-orientation=vertical]:empty):before{margin-block:0}:host([aria-orientation=vertical][variant=inset]):before{margin-block-start:5rem}:host([aria-orientation=vertical][variant=middle]):before{margin-block-start:1rem}:host([aria-orientation=vertical][variant=middle]):after{margin-block-end:1rem}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host([type=dashed])::part(line){border-style:dashed}:host([type=dotted])::part(line){border-style:dotted}:host([type=double])::part(line){border-style:double}:host([type=groove])::part(line){border-style:groove}:host([type=inset])::part(line){border-style:inset}:host([type=outset])::part(line){border-style:outset}:host([type=ridge])::part(line){border-style:ridge}:host([type=solid])::part(line){border-style:solid}:host([width=xs])::part(line){border-width:1px}:host([width=sm])::part(line){border-width:2px}:host([width=md])::part(line){border-width:3px}:host([width=lg])::part(line){border-width:4px}:host([width=xl])::part(line){border-width:5px}:host{align-items:center;display:flex;gap:.5rem}:host::part(line){border-color:#d3d3d3;flex:1 1 auto}:host([placement=end])::part(after),:host([placement=start])::part(before){display:none}:host([aria-orientation=horizontal]){flex-direction:row}:host([aria-orientation=horizontal])::part(line){border-bottom:none;border-left:none;border-right:none}:host([aria-orientation=horizontal][variant=inset])::part(before){margin-inline-start:5rem}:host([aria-orientation=horizontal][variant=middle])::part(before){margin-inline-start:1rem}:host([aria-orientation=horizontal][variant=middle])::part(after){margin-inline-end:1rem}:host([aria-orientation=vertical]){align-self:stretch;flex-direction:column;height:auto;min-height:100%}:host([aria-orientation=vertical])::part(line){border-bottom:none;border-right:none;border-top:none}:host([aria-orientation=vertical][variant=inset])::part(before){margin-block-start:5rem}:host([aria-orientation=vertical][variant=middle])::part(before){margin-block-start:1rem}:host([aria-orientation=vertical][variant=middle])::part(after){margin-block-end:1rem}:host([data-empty]:not([data-empty=false])){gap:0}";
 
+/**
+ * @part line    - The before and after element.
+ * @part before  - The before element.
+ * @part after   - The after element.
+ * @slot default - The default slot.
+ */
 let Divider = class Divider extends PlusCore {
     constructor() {
         super(...arguments);
@@ -26,9 +32,13 @@ let Divider = class Divider extends PlusCore {
         return html `${attributes(host(this), [{
                 "aria-orientation": this.vertical ? 'vertical' : 'horizontal'
             }, {
+                "data-empty": `${!slots(this).default}`
+            }, {
                 "role": "separator"
             }])}
+        <div part="line before"></div>
         <slot />
+        <div part="line after"></div>
       `;
     }
 };

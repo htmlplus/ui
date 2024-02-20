@@ -1282,6 +1282,24 @@ const request = (target, name, previous, callback) => {
 };
 
 /**
+ * Returns the slots name.
+ */
+const slots = (target) => {
+    var _a;
+    const slots = {};
+    const children = Array.from(host(target).childNodes);
+    for (const child of children) {
+        if (child.nodeName == '#comment')
+            continue;
+        const name = child['slot'] || (((_a = child.nodeValue) === null || _a === void 0 ? void 0 : _a.trim()) && 'default') || ('slot' in child && 'default');
+        if (!name)
+            continue;
+        slots[name] = true;
+    }
+    return slots;
+};
+
+/**
  * Converts a JavaScript object containing CSS styles to a CSS string.
  */
 const styles = (input) => {
@@ -2275,4 +2293,4 @@ function Media(query) {
     };
 }
 
-export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, Media as v, isValidCSSColor as w, PlusForm as x };
+export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, slots as v, Media as w, isValidCSSColor as x, PlusForm as y };

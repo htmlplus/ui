@@ -1,5 +1,11 @@
 import { PlusCore } from "../../core";
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
+/**
+ * @part line    - The before and after element.
+ * @part before  - The before element.
+ * @part after   - The after element.
+ * @slot default - The default slot.
+ */
 export declare class Divider extends PlusCore {
     static TAG: string;
     static STYLES: string;
@@ -23,7 +29,7 @@ export declare class Divider extends PlusCore {
      *  Draws the divider in a vertical orientation.
      */
     vertical?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface DividerAttributes {
     /**

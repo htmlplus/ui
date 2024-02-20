@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 import { IconFlip, IconResolver, IconSize } from './icon.types';
 /**
+ * @stable
  * @part svg - The svg element.
  */
 export declare class Icon extends PlusCore {
@@ -41,7 +42,7 @@ export declare class Icon extends PlusCore {
     watcher(): void;
     sync(input?: SVGElement | string): boolean;
     update(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface IconAttributes {
     /**

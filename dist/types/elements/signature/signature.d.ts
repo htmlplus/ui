@@ -3,8 +3,8 @@ import type CoreType from 'signature_pad';
 import { PlusForm } from "../../core";
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 /**
- * @part canvas - The canvas element.
  * @stable
+ * @part canvas - The canvas element.
  */
 export declare class Signature extends PlusForm {
     static TAG: string;
@@ -143,7 +143,7 @@ export declare class Signature extends PlusForm {
     onResize(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface SignatureAttributes {
     /**

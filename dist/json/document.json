@@ -67,7 +67,7 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2024-02-17T09:22:22.456Z",
+      "lastModified": "2024-02-18T20:23:43.283Z",
       "methods": [
         {
           "async": false,
@@ -297,7 +297,7 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2024-02-17T09:22:22.578Z",
+      "lastModified": "2024-02-18T20:23:41.165Z",
       "methods": [
         {
           "async": false,
@@ -808,7 +808,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2024-02-17T09:22:22.614Z",
+      "lastModified": "2024-02-18T20:52:58.417Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -959,7 +959,7 @@
       "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2024-02-17T09:22:22.623Z",
+      "lastModified": "2024-02-19T16:07:09.803Z",
       "methods": [],
       "parts": [
         {
@@ -1047,7 +1047,7 @@
           "type": "string"
         }
       ],
-      "readmeContent": "# Breadcrumb\r\n\r\nBreadcrumb element is a navigation pattern that shows the actual path of the current page.\r\nIt represents the route using links, which enables the user to easily navigate upwards through\r\nthe hierarchy.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Separator\r\n\r\n<Example value=\"separator\" />\r\n\r\n### Custom Separator\r\n\r\n<Example value=\"custom-separator\" />\r\n\r\n### Limitation\r\n\r\n<Example value=\"limitation\" />\r\n\r\n### Custom Expander\r\n\r\n<Example value=\"custom-expander\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Breadcrumb\r\n\r\nBreadcrumb element is a navigation pattern that shows the actual path of the current page.\r\nIt represents the route using links, which enables the user to easily navigate upwards through\r\nthe hierarchy.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Separator\r\n\r\n<Example value=\"separator\" />\r\n\r\n### Custom Separator\r\n\r\n<Example value=\"custom-separator\" />\r\n\r\n### Limitation\r\n\r\n<Example value=\"limitation\" />\r\n\r\n### With Icon\r\n\r\n<Example value=\"with-icon\" />\r\n\r\n### Custom Expander\r\n\r\n<Example value=\"custom-expander\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -1074,7 +1074,12 @@
           "name": "--plus-breadcrumb-gutter-y"
         }
       ],
-      "tags": [],
+      "tags": [
+        {
+          "key": "stable",
+          "value": ""
+        }
+      ],
       "title": "Breadcrumb"
     },
     {
@@ -1132,7 +1137,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2024-02-17T20:38:14.091Z",
+      "lastModified": "2024-02-18T20:32:36.972Z",
       "methods": [
         {
           "async": false,
@@ -1290,7 +1295,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Browse\r\n\r\nAllows you to select file or files by using click or drag & drop functionality.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Multiple\r\n\r\n<Example value=\"multiple\" />\r\n\r\n### Accept\r\n\r\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\r\n\r\n<Example value=\"accept\" />\r\n\r\n### Droppable\r\n\r\n<Example value=\"droppable\" />\r\n\r\n### Min & Max\r\n\r\n<Example value=\"min-and-max\" />\r\n\r\n### Min & Max Size\r\n\r\n<Example value=\"min-and-max-size\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Browse\r\n\r\nAllows you to select file or files by using click or drag & drop functionality.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Multiple\r\n\r\n<Example value=\"multiple\" />\r\n\r\n### Accept\r\n\r\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\r\n\r\n<Example value=\"accept\" />\r\n\r\n### Min & Max\r\n\r\n<Example value=\"min-and-max\" />\r\n\r\n### Min & Max Size\r\n\r\n<Example value=\"min-and-max-size\" />\r\n\r\n### Droppable\r\n\r\n<Example value=\"droppable\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -3168,9 +3173,22 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2024-02-17T09:22:22.950Z",
+      "lastModified": "2024-02-20T19:20:17.873Z",
       "methods": [],
-      "parts": [],
+      "parts": [
+        {
+          "name": "line",
+          "description": "The before and after element."
+        },
+        {
+          "name": "before",
+          "description": "The before element."
+        },
+        {
+          "name": "after",
+          "description": "The after element."
+        }
+      ],
       "properties": [
         {
           "attribute": "placement",
@@ -3266,35 +3284,14 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Card\r\n\r\n<Example value=\"card\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
-      "slots": [],
-      "styles": [
+      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n### Card\r\n\r\n<Example value=\"card\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
+      "slots": [
         {
-          "description": "Used to adjust the color.",
-          "initializer": "grey",
-          "name": "--plus-divider-color"
-        },
-        {
-          "description": "Used to adjust the gutter.",
-          "initializer": "0.5rem",
-          "name": "--plus-divider-gutter"
-        },
-        {
-          "description": "Used to adjust the opacity.",
-          "initializer": "0.25",
-          "name": "--plus-divider-opacity"
-        },
-        {
-          "description": "Used to adjust the type.",
-          "initializer": "unset",
-          "name": "--plus-divider-type"
-        },
-        {
-          "description": "Used to adjust the width.",
-          "initializer": "unset",
-          "name": "--plus-divider-width"
+          "name": "default",
+          "description": "The default slot."
         }
       ],
+      "styles": [],
       "tags": [],
       "title": "Divider"
     },
@@ -3654,7 +3651,7 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "experimental": false,
       "key": "faker",
-      "lastModified": "2024-02-17T09:22:22.969Z",
+      "lastModified": "2024-02-18T20:38:23.509Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5291,7 +5288,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2024-02-17T09:22:23.013Z",
+      "lastModified": "2024-02-19T15:13:19.535Z",
       "methods": [],
       "parts": [
         {
@@ -5426,7 +5423,12 @@
       "readmeContent": "# Icon\r\n\r\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Name\r\n\r\nTo see all names click [here](https://icons.getbootstrap.com).\r\n\r\n<Example value=\"name\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Custom Color\r\n\r\n<Example value=\"custom-color\" />\r\n\r\n### Flip\r\n\r\n<Example value=\"flip\" />\r\n\r\n### Rotate\r\n\r\n<Example value=\"rotate\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Register A Custom Name\r\n\r\n<Example value=\"register-a-custom-name\" />\r\n\r\n### Custom Size\r\n\r\n<Example value=\"custom-size\" />\r\n\r\n### Override Size\r\n\r\n<Example value=\"override-size\" />\r\n\r\n### Resolver\r\n\r\n<Example value=\"resolver\" />\r\n\r\n### Font Awesome\r\n\r\nFor more information click [here](https://fontawesome.com).\r\n\r\n<Example value=\"font-awesome\" />\r\n\r\n### Material\r\n\r\nFor more information click [here](https://fonts.google.com/icons).\r\n\r\n<Example value=\"material\" />\r\n\r\n### Multiple Library\r\n\r\n<Example value=\"multiple-library\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
-      "tags": [],
+      "tags": [
+        {
+          "key": "stable",
+          "value": ""
+        }
+      ],
       "title": "Icon"
     },
     {
@@ -5875,7 +5877,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2024-02-17T09:22:23.057Z",
+      "lastModified": "2024-02-18T20:25:26.718Z",
       "methods": [
         {
           "async": false,
