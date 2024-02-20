@@ -12,6 +12,10 @@ A thin line that divides the content vertically or horizontally.
 
 <Examples />
 
+### Default
+
+<Example value="default" />
+
 ### Width
 
 <Example value="width" />
@@ -36,13 +40,13 @@ A thin line that divides the content vertically or horizontally.
 
 <Example value="vertical" />
 
-### Card
-
-<Example value="card" />
-
 ### Customize
 
 <Example value="customize" />
+
+### Card
+
+<Example value="card" />
 
 ### Sticky
 

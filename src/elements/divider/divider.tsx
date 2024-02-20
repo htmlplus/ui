@@ -1,9 +1,15 @@
-import { Element, Property } from '@htmlplus/element';
+import { Element, Property, slots } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
+/**
+ * @part line    - The before and after element.
+ * @part before  - The before element.
+ * @part after   - The after element.
+ * @slot default - The default slot.
+ */
 @Element()
 export class Divider extends PlusCore {
   /**
@@ -38,8 +44,14 @@ export class Divider extends PlusCore {
 
   render() {
     return (
-      <host aria-orientation={this.vertical ? 'vertical' : 'horizontal'} role="separator">
+      <host
+        aria-orientation={this.vertical ? 'vertical' : 'horizontal'}
+        data-empty={`${!slots(this).default}`}
+        role="separator"
+      >
+        <div part="line before"></div>
         <slot />
+        <div part="line after"></div>
       </host>
     );
   }

@@ -1,89 +1,52 @@
 @import 'divider.variables';
 
-:host {
-  // @Property() Used to adjust the color.
-  --plus-divider-color: #{$divider-color};
-
-  // @Property() Used to adjust the gutter.
-  --plus-divider-gutter: #{$divider-gutter};
-
-  // @Property() Used to adjust the opacity.
-  --plus-divider-opacity: #{$divider-opacity};
-
-  // @Property() Used to adjust the type.
-  --plus-divider-type: #{$divider-type};
-
-  // @Property() Used to adjust the width.
-  --plus-divider-width: #{$divider-width};
-}
-
-:host {
-  align-items: center;
-  color: var(--plus-divider-color);
-  display: flex;
-  font-size: 0.75rem;
-}
-
-:host:before,
-:host:after {
-  content: '';
-  flex: 1 1 auto;
-  opacity: var(--plus-divider-opacity);
-}
-
-:host([placement='start']):before,
-:host([placement='end']):after {
-  content: none;
-}
-
 @each $key in $divider-types {
-  :host([type='#{$key}']) {
-    --plus-divider-type: #{$key};
+  :host([type='#{$key}'])::part(line) {
+    border-style: #{$key};
   }
 }
 
 @each $key, $value in $divider-widths {
-  :host([width='#{$key}']) {
-    --plus-divider-width: #{$value};
+  :host([width='#{$key}'])::part(line) {
+    border-width: #{$value};
   }
+}
+
+:host {
+  align-items: center;
+  display: flex;
+  gap: $divider-gutter;
+}
+
+:host::part(line) {
+  flex: 1 1 auto;
+  border-color: $divider-color;
+}
+
+:host([placement='start'])::part(before),
+:host([placement='end'])::part(after) {
+  display: none;
 }
 
 :host([aria-orientation='horizontal']) {
   flex-direction: row;
 
-  &:before,
-  &:after {
-    border-top-color: var(--plus-divider-color);
-    border-top-style: var(--plus-divider-type);
-    border-top-width: var(--plus-divider-width);
-  }
-
-  &:before {
-    margin-inline-end: var(--plus-divider-gutter);
-  }
-
-  &:after {
-    margin-inline-start: var(--plus-divider-gutter);
+  &::part(line) {
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
   }
 }
 
-:host([aria-orientation='horizontal']:empty):before {
-  margin-inline-end: 0;
-}
-
-:host([aria-orientation='horizontal']:empty):after {
-  margin-inline-start: 0;
-}
-
-:host([aria-orientation='horizontal'][variant='inset']):before {
+:host([aria-orientation='horizontal'][variant='inset'])::part(before) {
   margin-inline-start: 5rem;
 }
 
-:host([aria-orientation='horizontal'][variant='middle']):before {
+:host([aria-orientation='horizontal'][variant='middle'])::part(before) {
   margin-inline-start: 1rem;
 }
 
-:host([aria-orientation='horizontal'][variant='middle']):after {
+:host([aria-orientation='horizontal'][variant='middle'])::part(after) {
   margin-inline-end: 1rem;
 }
 
@@ -93,35 +56,25 @@
   min-height: 100%;
   align-self: stretch;
 
-  &:before,
-  &:after {
-    border-left-color: var(--plus-divider-color);
-    border-left-style: var(--plus-divider-type);
-    border-left-width: var(--plus-divider-width);
-  }
-
-  &:before {
-    margin-block-end: var(--plus-divider-gutter);
-  }
-
-  &:after {
-    margin-block-start: var(--plus-divider-gutter);
+  &::part(line) {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
   }
 }
 
-:host([aria-orientation='vertical']:empty):before,
-:host([aria-orientation='vertical']:empty):after {
-  margin-block: 0;
-}
-
-:host([aria-orientation='vertical'][variant='inset']):before {
+:host([aria-orientation='vertical'][variant='inset'])::part(before) {
   margin-block-start: 5rem;
 }
 
-:host([aria-orientation='vertical'][variant='middle']):before {
+:host([aria-orientation='vertical'][variant='middle'])::part(before) {
   margin-block-start: 1rem;
 }
 
-:host([aria-orientation='vertical'][variant='middle']):after {
+:host([aria-orientation='vertical'][variant='middle'])::part(after) {
   margin-block-end: 1rem;
+}
+
+:host(#{boolean(data-empty)}) {
+  gap: 0;
 }
