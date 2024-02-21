@@ -58,6 +58,10 @@ To see all names click [here](https://icons.getbootstrap.com).
 
 <Example value="override-size" />
 
+### Animation
+
+<Example value="animation" />
+
 ### Resolver
 
 Use `import`, `fetch` or any asynchronous function to load SVG files.

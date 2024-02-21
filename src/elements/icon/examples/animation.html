@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-stack gap="2rem">
+      <plus-animation duration="1000" iterations="Infinity" name="pulse" run>
+        <plus-icon name="heart"></plus-icon>
+      </plus-animation>
+      <plus-animation duration="1000" iterations="Infinity" name="swing" run>
+        <plus-icon name="telephone"></plus-icon>
+      </plus-animation>
+      <plus-animation duration="2000" iterations="Infinity" name="tada" run>
+        <plus-icon name="bell"></plus-icon>
+      </plus-animation>
+    </plus-stack>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/attention-seekers/pulse.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/attention-seekers/swing.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/animation/names/attention-seekers/tada.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/icon.js';
+      import 'https://cdn.skypack.dev/@htmlplus/core/stack.js';
+    </script>
+  </body>
+</html>
