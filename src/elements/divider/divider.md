@@ -44,10 +44,6 @@ A thin line that divides the content vertically or horizontally.
 
 <Example value="customize" />
 
-### Card
-
-<Example value="card" />
-
 ### Sticky
 
 <Example value="sticky" />
