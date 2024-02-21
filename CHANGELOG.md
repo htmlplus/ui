@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/htmlplus/core/compare/v1.1.4...v1.1.5) (2024-02-21)
+
+
+### Bug Fixes
+
+* Fix with-icon example of breadcrumb ([d84cd17](https://github.com/htmlplus/core/commit/d84cd17a57de74d4be9e236e4585905de5672cef))
+
 ## [1.1.4](https://github.com/htmlplus/core/compare/v1.1.3...v1.1.4) (2024-02-20)
 
 
