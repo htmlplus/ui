@@ -44,8 +44,8 @@ By default, the card element has border-radius. The tile property neutralizes bo
 
 <Example value="background-color" />
 
-### Customize
+### Customized
 
-<Example value="customize" />
+<Example value="customized" />
 
 <LastModified />

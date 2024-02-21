@@ -40,9 +40,9 @@ A thin line that divides the content vertically or horizontally.
 
 <Example value="vertical" />
 
-### Customize
+### Customized
 
-<Example value="customize" />
+<Example value="customized" />
 
 ### Sticky
 

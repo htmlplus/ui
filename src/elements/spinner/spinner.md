@@ -32,8 +32,8 @@ An indicator of progress and activity.
 
 <Example value="type" />
 
-### Customize
+### Customized
 
-<Example value="customize" />
+<Example value="customized" />
 
 <LastModified />
