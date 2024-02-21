@@ -959,7 +959,7 @@
       "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
       "experimental": false,
       "key": "breadcrumb",
-      "lastModified": "2024-02-19T16:07:09.803Z",
+      "lastModified": "2024-02-20T20:21:40.920Z",
       "methods": [],
       "parts": [
         {
@@ -3173,7 +3173,7 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2024-02-20T19:20:17.873Z",
+      "lastModified": "2024-02-20T20:53:51.899Z",
       "methods": [],
       "parts": [
         {
@@ -3284,7 +3284,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n### Card\r\n\r\n<Example value=\"card\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -5288,7 +5288,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2024-02-20T19:41:18.076Z",
+      "lastModified": "2024-02-21T16:07:50.556Z",
       "methods": [],
       "parts": [
         {
@@ -5420,7 +5420,7 @@
           "typeReference": "./icon.types"
         }
       ],
-      "readmeContent": "# Icon\r\n\r\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Name\r\n\r\nTo see all names click [here](https://icons.getbootstrap.com).\r\n\r\n<Example value=\"name\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Custom Color\r\n\r\n<Example value=\"custom-color\" />\r\n\r\n### Flip\r\n\r\n<Example value=\"flip\" />\r\n\r\n### Rotate\r\n\r\n<Example value=\"rotate\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Register A Custom Name\r\n\r\n<Example value=\"register-a-custom-name\" />\r\n\r\n### Custom Size\r\n\r\n<Example value=\"custom-size\" />\r\n\r\n### Override Size\r\n\r\n<Example value=\"override-size\" />\r\n\r\n### Resolver\r\n\r\nUse `import`, `fetch` or any asynchronous function to load SVG files.\r\n\r\n<Example value=\"resolver\" />\r\n\r\n### Font Awesome\r\n\r\nFor more information click [here](https://fontawesome.com).\r\n\r\n<Example value=\"font-awesome\" />\r\n\r\n### Material\r\n\r\nFor more information click [here](https://fonts.google.com/icons).\r\n\r\n<Example value=\"material\" />\r\n\r\n### Multiple Library\r\n\r\n<Example value=\"multiple-library\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Icon\r\n\r\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Name\r\n\r\nTo see all names click [here](https://icons.getbootstrap.com).\r\n\r\n<Example value=\"name\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Custom Color\r\n\r\n<Example value=\"custom-color\" />\r\n\r\n### Flip\r\n\r\n<Example value=\"flip\" />\r\n\r\n### Rotate\r\n\r\n<Example value=\"rotate\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Register A Custom Name\r\n\r\n<Example value=\"register-a-custom-name\" />\r\n\r\n### Custom Size\r\n\r\n<Example value=\"custom-size\" />\r\n\r\n### Override Size\r\n\r\n<Example value=\"override-size\" />\r\n\r\n### Animation\r\n\r\n<Example value=\"animation\" />\r\n\r\n### Resolver\r\n\r\nUse `import`, `fetch` or any asynchronous function to load SVG files.\r\n\r\n<Example value=\"resolver\" />\r\n\r\n### Font Awesome\r\n\r\nFor more information click [here](https://fontawesome.com).\r\n\r\n<Example value=\"font-awesome\" />\r\n\r\n### Material\r\n\r\nFor more information click [here](https://fonts.google.com/icons).\r\n\r\n<Example value=\"material\" />\r\n\r\n### Multiple Library\r\n\r\n<Example value=\"multiple-library\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
       "tags": [
