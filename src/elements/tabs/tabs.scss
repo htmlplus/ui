@@ -3,14 +3,14 @@
   flex-direction: column;
 }
 
-:host(#{boolean(vertical)}) {
+:host([vertical]) {
   flex-direction: row;
 
   ::slotted(plus-tabs-bar) {
     flex-direction: column;
   }
 
-  ::slotted(plus-tabs-bar#{boolean(reverse)}) {
+  ::slotted(plus-tabs-bar[reverse]) {
     flex-direction: column-reverse;
   }
 }

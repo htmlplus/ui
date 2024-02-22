@@ -11,6 +11,6 @@
 }
 
 // TODO
-:host(#{boolean(hidden)}) {
+:host([hidden]) {
   display: none !important;
 }

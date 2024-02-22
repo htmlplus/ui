@@ -32,9 +32,9 @@ Used for cropping large images to fit a container before uploading them to the s
 
 <Example value="guides" />
 
-### Backdrop
+### Transparent
 
-<Example value="backdrop" />
+<Example value="transparent" />
 
 ### Background
 

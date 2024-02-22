@@ -6,7 +6,7 @@
   height: 150px;
 }
 
-:host(#{boolean(disabled)}) {
+:host([disabled]) {
   opacity: $signature-disabled-opacity;
 }
 

@@ -1,6 +1,6 @@
 import { _ as __decorate, P as PlusCore, t as toUnit, d as styles, h as html, e as attributes, f as host, b as Property, E as Event, Q as Query, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]:not([hidden=false])){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
 
 /**
  * @stable

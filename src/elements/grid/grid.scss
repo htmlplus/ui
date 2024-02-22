@@ -26,17 +26,17 @@ div {
 }
 
 // TODO
-#{boolean(vertical)} {
+[vertical] {
   flex-direction: column;
 }
 
 // TODO
-#{boolean(reverse)} {
+[reverse] {
   flex-direction: row-reverse;
 }
 
 // TODO
-#{boolean(vertical)}#{boolean(reverse)} {
+[vertical][reverse] {
   flex-direction: column-reverse;
 }
 

@@ -5,9 +5,9 @@ import { PlusCore } from '@/core';
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 
 /**
- * @part line    - The before and after element.
- * @part before  - The before element.
- * @part after   - The after element.
+ * @part line    - The prefix and suffix element.
+ * @part prefix  - The prefix element.
+ * @part suffix  - The suffix element.
  * @slot default - The default slot.
  */
 @Element()
@@ -49,9 +49,9 @@ export class Divider extends PlusCore {
         data-empty={`${!slots(this).default}`}
         role="separator"
       >
-        <div part="line before"></div>
+        <div part="line prefix"></div>
         <slot />
-        <div part="line after"></div>
+        <div part="line suffix"></div>
       </host>
     );
   }

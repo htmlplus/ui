@@ -73,7 +73,7 @@
 
 // TODO
 
-:host(#{boolean(temporary)}:not([temporary='on-breakpoint'])),
+:host([temporary]:not([temporary='on-breakpoint'])),
 :host([temporary='on-breakpoint'][state='mobile']) {
   position: fixed;
   top: 0;
@@ -82,7 +82,7 @@
   left: 0;
 }
 
-:host(#{boolean(animation)}) {
+:host([animation]) {
   transition: $drawer-transition;
 }
 

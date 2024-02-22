@@ -697,18 +697,6 @@
           "values": []
         },
         {
-          "name": "backdrop",
-          "description": "Shows the black modal above the image and under the viewport.",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ]
-        },
-        {
           "name": "background",
           "description": "Shows the grid background of the container.",
           "values": [
@@ -837,6 +825,18 @@
           "values": []
         },
         {
+          "name": "transparent",
+          "description": "Hides the black modal above the image and under the viewport.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
           "name": "value",
           "description": "Gets/Sets data.",
           "values": []
@@ -898,18 +898,6 @@
           "name": "animation",
           "description": "TODO",
           "values": []
-        },
-        {
-          "name": "backdrop",
-          "description": "Activate the dialog's backdrop to show or not.",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ]
         },
         {
           "name": "connector",
@@ -1127,6 +1115,18 @@
         {
           "name": "sticky",
           "description": "Removes the margin around the dialog's content.",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ]
+        },
+        {
+          "name": "transparent",
+          "description": "Deactivate the dialog's backdrop to show or not.",
           "values": [
             {
               "name": "false"

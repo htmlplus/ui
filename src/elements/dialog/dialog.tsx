@@ -41,12 +41,6 @@ export class Dialog extends PlusCore {
   animation?: string;
 
   /**
-   * Activate the dialog's backdrop to show or not.
-   */
-  @Property()
-  backdrop?: boolean = true;
-
-  /**
    * This property helps you to attach which dialog toggler controls the dialog.
    * It doesn't matter where the dialog toggler is.
    * You can put the dialog's toggler inside or outside of the dialog.
@@ -77,7 +71,7 @@ export class Dialog extends PlusCore {
    * Closes the dialog when `escape` key is pressed.
    */
   @Property()
-  keyboard?: boolean = true;
+  keyboard?: boolean;
 
   /**
    * Control dialog to show or not.
@@ -136,6 +130,12 @@ export class Dialog extends PlusCore {
    */
   @Property()
   sticky?: boolean;
+
+  /**
+   * Deactivate the dialog's backdrop to show or not.
+   */
+  @Property()
+  transparent?: boolean;
 
   /**
    * When the dialog is going to hide
@@ -421,7 +421,7 @@ export class Dialog extends PlusCore {
         tabIndex={-1}
         role={this.isOpen ? 'dialog' : null}
       >
-        {this.backdrop && (
+        {!this.transparent && (
           <div className="backdrop" part="backdrop">
             <div />
           </div>

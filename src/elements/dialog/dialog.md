@@ -32,9 +32,9 @@ A dialog is a `conversation` between the system and the user. It is prompted whe
 
 <Example value="size" />
 
-### Backdrop
+### Transparent
 
-<Example value="backdrop" />
+<Example value="transparent" />
 
 ### Scrollable
 

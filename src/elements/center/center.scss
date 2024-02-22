@@ -4,6 +4,6 @@
   justify-content: center;
 }
 
-:host(#{boolean(inline)}) {
+:host([inline]) {
   display: inline-flex;
 }

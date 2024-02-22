@@ -19,10 +19,6 @@ export declare class Cropper extends PlusCore {
      */
     aspectRatio?: CropperAspectRatio;
     /**
-     * Shows the black modal above the image and under the viewport.
-     */
-    backdrop?: boolean;
-    /**
      * Shows the grid background of the container.
      */
     background?: boolean;
@@ -62,6 +58,10 @@ export declare class Cropper extends PlusCore {
      * Specifies the image's src.
      */
     src?: string;
+    /**
+     * Hides the black modal above the image and under the viewport.
+     */
+    transparent?: boolean;
     /**
      * Gets/Sets data.
      */
@@ -216,10 +216,6 @@ export interface CropperAttributes {
     */
     "aspect-ratio"?: CropperAspectRatio;
     /**
-    * Shows the black modal above the image and under the viewport.
-    */
-    "backdrop"?: boolean;
-    /**
     * Shows the grid background of the container.
     */
     "background"?: boolean;
@@ -259,6 +255,10 @@ export interface CropperAttributes {
     * Specifies the image's src.
     */
     "src"?: string;
+    /**
+    * Hides the black modal above the image and under the viewport.
+    */
+    "transparent"?: boolean;
     /**
     * Gets/Sets data.
     */
@@ -358,10 +358,6 @@ export interface CropperProperties {
     */
     aspectRatio?: CropperAspectRatio;
     /**
-    * Shows the black modal above the image and under the viewport.
-    */
-    backdrop?: boolean;
-    /**
     * Shows the grid background of the container.
     */
     background?: boolean;
@@ -401,6 +397,10 @@ export interface CropperProperties {
     * Specifies the image's src.
     */
     src?: string;
+    /**
+    * Hides the black modal above the image and under the viewport.
+    */
+    transparent?: boolean;
     /**
     * Gets/Sets data.
     */

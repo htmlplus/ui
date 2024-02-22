@@ -51,12 +51,6 @@ export class Cropper extends PlusCore {
   aspectRatio?: CropperAspectRatio;
 
   /**
-   * Shows the black modal above the image and under the viewport.
-   */
-  @Property()
-  backdrop?: boolean = true;
-
-  /**
    * Shows the grid background of the container.
    */
   @Property()
@@ -115,6 +109,12 @@ export class Cropper extends PlusCore {
    */
   @Property()
   src?: string;
+
+  /**
+   * Hides the black modal above the image and under the viewport.
+   */
+  @Property()
+  transparent?: boolean;
 
   /**
    * Gets/Sets data.
@@ -329,7 +329,7 @@ export class Cropper extends PlusCore {
       minContainerWidth: 0,
       minCropBoxHeight: 0,
       minCropBoxWidth: 0,
-      modal: this.backdrop,
+      modal: !this.transparent,
       movable: true,
       preview: '',
       responsive: !!this.responsive,
@@ -382,7 +382,7 @@ export class Cropper extends PlusCore {
         break;
 
       case 'area':
-      case 'backdrop':
+      case 'transparent':
       case 'background':
       case 'guides':
       case 'indicator':

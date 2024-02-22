@@ -36,7 +36,7 @@
 }
 
 // TODO
-:host(#{boolean(immediate)}) .indicator {
+:host([immediate]) .indicator {
   transition: none;
 }
 

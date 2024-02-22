@@ -11,7 +11,7 @@
   user-select: none;
 }
 
-:host(#{boolean(disabled)}) {
+:host([disabled]) {
   opacity: 0.5;
 }
 
@@ -71,7 +71,7 @@
   }
 }
 
-:host(#{boolean(checked)}) {
+:host([checked]) {
   .root {
     background: #2196f3;
   }

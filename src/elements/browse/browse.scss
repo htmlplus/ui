@@ -8,6 +8,6 @@ input[type='file'] {
   display: none;
 }
 
-:host(#{boolean(disabled)}) {
+:host([disabled]) {
   opacity: $browse-disabled-opacity;
 }

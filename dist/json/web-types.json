@@ -1382,13 +1382,6 @@
                 "experimental": false
               },
               {
-                "name": "backdrop",
-                "description": "Shows the black modal above the image and under the viewport.",
-                "deprecated": false,
-                "experimental": false,
-                "default": true
-              },
-              {
                 "name": "background",
                 "description": "Shows the grid background of the container.",
                 "deprecated": false,
@@ -1450,6 +1443,12 @@
               {
                 "name": "src",
                 "description": "Specifies the image's src.",
+                "deprecated": false,
+                "experimental": false
+              },
+              {
+                "name": "transparent",
+                "description": "Hides the black modal above the image and under the viewport.",
                 "deprecated": false,
                 "experimental": false
               },
@@ -1563,16 +1562,6 @@
               }
             },
             {
-              "name": "backdrop",
-              "description": "Shows the black modal above the image and under the viewport.",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "boolean"
-              },
-              "default": true
-            },
-            {
               "name": "background",
               "description": "Shows the grid background of the container.",
               "deprecated": false,
@@ -1668,6 +1657,15 @@
               }
             },
             {
+              "name": "transparent",
+              "description": "Hides the black modal above the image and under the viewport.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            },
+            {
               "name": "value",
               "description": "Gets/Sets data.",
               "deprecated": false,
@@ -1750,13 +1748,6 @@
                 "experimental": false
               },
               {
-                "name": "backdrop",
-                "description": "Activate the dialog's backdrop to show or not.",
-                "deprecated": false,
-                "experimental": false,
-                "default": true
-              },
-              {
                 "name": "connector",
                 "description": "This property helps you to attach which dialog toggler controls the dialog.It doesn't matter where the dialog toggler is.You can put the dialog's toggler inside or outside of the dialog.Read more about connectors [here](/connector).",
                 "deprecated": false,
@@ -1784,8 +1775,7 @@
                 "name": "keyboard",
                 "description": "Closes the dialog when `escape` key is pressed.",
                 "deprecated": false,
-                "experimental": false,
-                "default": true
+                "experimental": false
               },
               {
                 "name": "open",
@@ -1843,6 +1833,12 @@
                 "description": "Removes the margin around the dialog's content.",
                 "deprecated": false,
                 "experimental": false
+              },
+              {
+                "name": "transparent",
+                "description": "Deactivate the dialog's backdrop to show or not.",
+                "deprecated": false,
+                "experimental": false
               }
             ]
           },
@@ -1855,16 +1851,6 @@
               "value": {
                 "type": "string"
               }
-            },
-            {
-              "name": "backdrop",
-              "description": "Activate the dialog's backdrop to show or not.",
-              "deprecated": false,
-              "experimental": false,
-              "value": {
-                "type": "boolean"
-              },
-              "default": true
             },
             {
               "name": "connector",
@@ -1909,8 +1895,7 @@
               "experimental": false,
               "value": {
                 "type": "boolean"
-              },
-              "default": true
+              }
             },
             {
               "name": "open",
@@ -1990,6 +1975,15 @@
             {
               "name": "sticky",
               "description": "Removes the margin around the dialog's content.",
+              "deprecated": false,
+              "experimental": false,
+              "value": {
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "transparent",
+              "description": "Deactivate the dialog's backdrop to show or not.",
               "deprecated": false,
               "experimental": false,
               "value": {

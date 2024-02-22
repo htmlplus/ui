@@ -23,8 +23,8 @@
   border-color: $divider-color;
 }
 
-:host([placement='start'])::part(before),
-:host([placement='end'])::part(after) {
+:host([placement='start'])::part(prefix),
+:host([placement='end'])::part(suffix) {
   display: none;
 }
 
@@ -38,15 +38,15 @@
   }
 }
 
-:host([aria-orientation='horizontal'][variant='inset'])::part(before) {
+:host([aria-orientation='horizontal'][variant='inset'])::part(prefix) {
   margin-inline-start: 5rem;
 }
 
-:host([aria-orientation='horizontal'][variant='middle'])::part(before) {
+:host([aria-orientation='horizontal'][variant='middle'])::part(prefix) {
   margin-inline-start: 1rem;
 }
 
-:host([aria-orientation='horizontal'][variant='middle'])::part(after) {
+:host([aria-orientation='horizontal'][variant='middle'])::part(suffix) {
   margin-inline-end: 1rem;
 }
 
@@ -63,18 +63,18 @@
   }
 }
 
-:host([aria-orientation='vertical'][variant='inset'])::part(before) {
+:host([aria-orientation='vertical'][variant='inset'])::part(prefix) {
   margin-block-start: 5rem;
 }
 
-:host([aria-orientation='vertical'][variant='middle'])::part(before) {
+:host([aria-orientation='vertical'][variant='middle'])::part(prefix) {
   margin-block-start: 1rem;
 }
 
-:host([aria-orientation='vertical'][variant='middle'])::part(after) {
+:host([aria-orientation='vertical'][variant='middle'])::part(suffix) {
   margin-block-end: 1rem;
 }
 
-:host(#{boolean(data-empty)}) {
+:host([data-empty]) {
   gap: 0;
 }

@@ -9,7 +9,7 @@
   position: absolute;
 }
 
-:host(#{boolean(fixed)}) {
+:host([fixed]) {
   position: fixed;
 }
 
@@ -28,7 +28,7 @@
   height: 0;
 }
 
-:host(#{boolean(arrow)}) {
+:host([arrow]) {
   [part='arrow'] {
     display: block;
   }

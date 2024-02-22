@@ -1,9 +1,9 @@
 import { PlusCore } from "../../core";
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 /**
- * @part line    - The before and after element.
- * @part before  - The before element.
- * @part after   - The after element.
+ * @part line    - The prefix and suffix element.
+ * @part prefix  - The prefix element.
+ * @part suffix  - The suffix element.
  * @slot default - The default slot.
  */
 export declare class Divider extends PlusCore {

@@ -14,10 +14,6 @@ export declare class Dialog extends PlusCore {
      */
     animation?: string;
     /**
-     * Activate the dialog's backdrop to show or not.
-     */
-    backdrop?: boolean;
-    /**
      * This property helps you to attach which dialog toggler controls the dialog.
      * It doesn't matter where the dialog toggler is.
      * You can put the dialog's toggler inside or outside of the dialog.
@@ -81,6 +77,10 @@ export declare class Dialog extends PlusCore {
      */
     sticky?: boolean;
     /**
+     * Deactivate the dialog's backdrop to show or not.
+     */
+    transparent?: boolean;
+    /**
      * When the dialog is going to hide
      */
     plusClose: EventEmitter<void>;
@@ -127,10 +127,6 @@ export interface DialogAttributes {
     * TODO
     */
     "animation"?: string;
-    /**
-    * Activate the dialog's backdrop to show or not.
-    */
-    "backdrop"?: boolean;
     /**
     * This property helps you to attach which dialog toggler controls the dialog.
     * It doesn't matter where the dialog toggler is.
@@ -194,6 +190,10 @@ export interface DialogAttributes {
     * Removes the margin around the dialog's content.
     */
     "sticky"?: boolean;
+    /**
+    * Deactivate the dialog's backdrop to show or not.
+    */
+    "transparent"?: boolean;
 }
 export interface DialogEvents {
     /**
@@ -220,10 +220,6 @@ export interface DialogProperties {
     * TODO
     */
     animation?: string;
-    /**
-    * Activate the dialog's backdrop to show or not.
-    */
-    backdrop?: boolean;
     /**
     * This property helps you to attach which dialog toggler controls the dialog.
     * It doesn't matter where the dialog toggler is.
@@ -287,6 +283,10 @@ export interface DialogProperties {
     * Removes the margin around the dialog's content.
     */
     sticky?: boolean;
+    /**
+    * Deactivate the dialog's backdrop to show or not.
+    */
+    transparent?: boolean;
 }
 export interface DialogJSX extends DialogEvents, DialogProperties {
 }

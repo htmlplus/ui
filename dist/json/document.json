@@ -67,7 +67,7 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "experimental": false,
       "key": "accordion",
-      "lastModified": "2024-02-18T20:23:43.283Z",
+      "lastModified": "2024-02-22T16:15:00.826Z",
       "methods": [
         {
           "async": false,
@@ -297,7 +297,7 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "experimental": false,
       "key": "animation",
-      "lastModified": "2024-02-18T20:23:41.165Z",
+      "lastModified": "2024-02-22T12:19:56.612Z",
       "methods": [
         {
           "async": false,
@@ -888,7 +888,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "avatar-group",
-      "lastModified": "2024-02-17T09:22:22.590Z",
+      "lastModified": "2024-02-22T16:15:40.653Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1137,7 +1137,7 @@
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "experimental": false,
       "key": "browse",
-      "lastModified": "2024-02-18T20:32:36.972Z",
+      "lastModified": "2024-02-22T16:15:00.907Z",
       "methods": [
         {
           "async": false,
@@ -1317,7 +1317,7 @@
       "description": "Cards contain content and actions about a single subject.",
       "experimental": false,
       "key": "card",
-      "lastModified": "2024-02-17T09:22:22.641Z",
+      "lastModified": "2024-02-22T16:16:56.788Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1391,7 +1391,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Card\r\n\r\nCards contain content and actions about a single subject.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Elevation\r\n\r\nThe card element accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\r\n<Example value=\"elevation\" />\r\n\r\n### Outlined\r\n\r\nBy default, the card element has no border. outlined property Adds border.\r\n<Example value=\"outlined\" />\r\n\r\n### Border Color\r\n\r\n<Example value=\"border-color\" />\r\n\r\n### Border Width\r\n\r\nBy default, the card element has no border. outlined property Adds border.\r\n<Example value=\"border-width\" />\r\n\r\n### Tile\r\n\r\nBy default, the card element has border-radius. The tile property neutralizes border-radius.\r\n<Example value=\"tile\" />\r\n\r\n### Background Color\r\n\r\n<Example value=\"background-color\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Card\r\n\r\nCards contain content and actions about a single subject.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Elevation\r\n\r\nThe card element accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\r\n<Example value=\"elevation\" />\r\n\r\n### Outlined\r\n\r\nBy default, the card element has no border. outlined property Adds border.\r\n<Example value=\"outlined\" />\r\n\r\n### Border Color\r\n\r\n<Example value=\"border-color\" />\r\n\r\n### Border Width\r\n\r\nBy default, the card element has no border. outlined property Adds border.\r\n<Example value=\"border-width\" />\r\n\r\n### Tile\r\n\r\nBy default, the card element has border-radius. The tile property neutralizes border-radius.\r\n<Example value=\"tile\" />\r\n\r\n### Background Color\r\n\r\n<Example value=\"background-color\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -1458,7 +1458,7 @@
       "description": "Centers content vertically and horizontally.",
       "experimental": false,
       "key": "center",
-      "lastModified": "2024-02-17T09:22:22.643Z",
+      "lastModified": "2024-02-22T16:17:07.966Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -1972,7 +1972,7 @@
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "experimental": false,
       "key": "cropper",
-      "lastModified": "2024-02-17T09:22:22.677Z",
+      "lastModified": "2024-02-22T16:10:59.626Z",
       "methods": [
         {
           "async": false,
@@ -2240,24 +2240,6 @@
           "typeReference": "./cropper.types"
         },
         {
-          "attribute": "backdrop",
-          "deprecated": false,
-          "description": "Shows the black modal above the image and under the viewport.",
-          "experimental": false,
-          "initializer": true,
-          "model": false,
-          "name": "backdrop",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "Shows the black modal above the image and under the viewport."
-            }
-          ],
-          "type": "boolean"
-        },
-        {
           "attribute": "background",
           "deprecated": false,
           "description": "Shows the grid background of the container.",
@@ -2438,6 +2420,23 @@
           "type": "string"
         },
         {
+          "attribute": "transparent",
+          "deprecated": false,
+          "description": "Hides the black modal above the image and under the viewport.",
+          "experimental": false,
+          "model": false,
+          "name": "transparent",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Hides the black modal above the image and under the viewport."
+            }
+          ],
+          "type": "boolean"
+        },
+        {
           "attribute": "value",
           "deprecated": false,
           "description": "Gets/Sets data.",
@@ -2512,7 +2511,7 @@
           "type": "number"
         }
       ],
-      "readmeContent": "# Cropper\r\n\r\nUsed for cropping large images to fit a container before uploading them to the server.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Shape\r\n\r\n<Example value=\"shape\" />\r\n\r\n### Indicator\r\n\r\n<Example value=\"indicator\" />\r\n\r\n### Guides\r\n\r\n<Example value=\"guides\" />\r\n\r\n### Backdrop\r\n\r\n<Example value=\"backdrop\" />\r\n\r\n### Background\r\n\r\n<Example value=\"background\" />\r\n\r\n### Area\r\n\r\n<Example value=\"area\" />\r\n\r\n### Aspect Ratio\r\n\r\n<Example value=\"aspect-ratio\" />\r\n\r\n### Mode\r\n\r\n<Example value=\"mode\" />\r\n\r\n### Zoomable\r\n\r\n<Example value=\"zoomable\" />\r\n\r\n### Zoom Ratio\r\n\r\n<Example value=\"zoom-ratio\" />\r\n\r\n### To Base64\r\n\r\n<Example value=\"to-base64\" />\r\n\r\n### To Blob\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"to-blob\" />\r\n\r\n### To Url\r\n\r\n<Example value=\"to-url\" />\r\n\r\n### Styles\r\n\r\n<Example value=\"styles\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Cropper\r\n\r\nUsed for cropping large images to fit a container before uploading them to the server.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Shape\r\n\r\n<Example value=\"shape\" />\r\n\r\n### Indicator\r\n\r\n<Example value=\"indicator\" />\r\n\r\n### Guides\r\n\r\n<Example value=\"guides\" />\r\n\r\n### Transparent\r\n\r\n<Example value=\"transparent\" />\r\n\r\n### Background\r\n\r\n<Example value=\"background\" />\r\n\r\n### Area\r\n\r\n<Example value=\"area\" />\r\n\r\n### Aspect Ratio\r\n\r\n<Example value=\"aspect-ratio\" />\r\n\r\n### Mode\r\n\r\n<Example value=\"mode\" />\r\n\r\n### Zoomable\r\n\r\n<Example value=\"zoomable\" />\r\n\r\n### Zoom Ratio\r\n\r\n<Example value=\"zoom-ratio\" />\r\n\r\n### To Base64\r\n\r\n<Example value=\"to-base64\" />\r\n\r\n### To Blob\r\n\r\nOpen the developer console.\r\n\r\n<Example value=\"to-blob\" />\r\n\r\n### To Url\r\n\r\n<Example value=\"to-url\" />\r\n\r\n### Styles\r\n\r\n<Example value=\"styles\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [
         {
@@ -2694,7 +2693,7 @@
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "experimental": false,
       "key": "dialog",
-      "lastModified": "2024-02-17T09:22:22.703Z",
+      "lastModified": "2024-02-22T16:17:23.436Z",
       "methods": [],
       "parts": [
         {
@@ -2719,24 +2718,6 @@
             }
           ],
           "type": "string"
-        },
-        {
-          "attribute": "backdrop",
-          "deprecated": false,
-          "description": "Activate the dialog's backdrop to show or not.",
-          "experimental": false,
-          "initializer": true,
-          "model": false,
-          "name": "backdrop",
-          "reflects": false,
-          "required": false,
-          "tags": [
-            {
-              "key": "",
-              "value": "Activate the dialog's backdrop to show or not."
-            }
-          ],
-          "type": "boolean"
         },
         {
           "attribute": "connector",
@@ -2812,7 +2793,6 @@
           "deprecated": false,
           "description": "Closes the dialog when `escape` key is pressed.",
           "experimental": false,
-          "initializer": true,
           "model": false,
           "name": "keyboard",
           "reflects": false,
@@ -2996,9 +2976,26 @@
             }
           ],
           "type": "boolean"
+        },
+        {
+          "attribute": "transparent",
+          "deprecated": false,
+          "description": "Deactivate the dialog's backdrop to show or not.",
+          "experimental": false,
+          "model": false,
+          "name": "transparent",
+          "reflects": false,
+          "required": false,
+          "tags": [
+            {
+              "key": "",
+              "value": "Deactivate the dialog's backdrop to show or not."
+            }
+          ],
+          "type": "boolean"
         }
       ],
-      "readmeContent": "# Dialog\r\n\r\nA dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Animation\r\n\r\n<Example value=\"animation\" />\r\n\r\n### Persistent\r\n\r\n<Example value=\"persistent\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Backdrop\r\n\r\n<Example value=\"backdrop\" />\r\n\r\n### Scrollable\r\n\r\n<Example value=\"scrollable\" />\r\n\r\n### Specific Scrollable\r\n\r\n<Example value=\"specific-scrollable\" />\r\n\r\n### Fullscreen\r\n\r\n<Example value=\"fullscreen\" />\r\n\r\n### Full Width\r\n\r\n<Example value=\"full-width\" />\r\n\r\n### Full Height\r\n\r\n<Example value=\"full-height\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n### Nesting\r\n\r\n<Example value=\"nesting\" />\r\n\r\n### Prevent\r\n\r\n<Example value=\"prevent\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Dialog\r\n\r\nA dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Animation\r\n\r\n<Example value=\"animation\" />\r\n\r\n### Persistent\r\n\r\n<Example value=\"persistent\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Transparent\r\n\r\n<Example value=\"transparent\" />\r\n\r\n### Scrollable\r\n\r\n<Example value=\"scrollable\" />\r\n\r\n### Specific Scrollable\r\n\r\n<Example value=\"specific-scrollable\" />\r\n\r\n### Fullscreen\r\n\r\n<Example value=\"fullscreen\" />\r\n\r\n### Full Width\r\n\r\n<Example value=\"full-width\" />\r\n\r\n### Full Height\r\n\r\n<Example value=\"full-height\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n### Nesting\r\n\r\n<Example value=\"nesting\" />\r\n\r\n### Prevent\r\n\r\n<Example value=\"prevent\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -3014,7 +3011,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-body",
-      "lastModified": "2024-02-17T09:22:22.679Z",
+      "lastModified": "2024-02-22T16:17:36.329Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3051,7 +3048,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "dialog-content",
-      "lastModified": "2024-02-17T09:22:22.681Z",
+      "lastModified": "2024-02-22T16:17:52.954Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3173,20 +3170,20 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2024-02-20T20:53:51.899Z",
+      "lastModified": "2024-02-22T16:18:06.654Z",
       "methods": [],
       "parts": [
         {
           "name": "line",
-          "description": "The before and after element."
+          "description": "The prefix and suffix element."
         },
         {
-          "name": "before",
-          "description": "The before element."
+          "name": "prefix",
+          "description": "The prefix element."
         },
         {
-          "name": "after",
-          "description": "The after element."
+          "name": "suffix",
+          "description": "The suffix element."
         }
       ],
       "properties": [
@@ -3284,7 +3281,7 @@
           "type": "boolean"
         }
       ],
-      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
       "slots": [
         {
           "name": "default",
@@ -3362,7 +3359,7 @@
       "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2024-02-17T09:22:22.960Z",
+      "lastModified": "2024-02-22T16:18:52.930Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3916,7 +3913,7 @@
       "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "experimental": false,
       "key": "grid",
-      "lastModified": "2024-02-17T09:22:22.998Z",
+      "lastModified": "2024-02-22T16:19:47.200Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5566,7 +5563,7 @@
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "experimental": false,
       "key": "progress-bar",
-      "lastModified": "2024-02-17T09:22:23.032Z",
+      "lastModified": "2024-02-22T16:19:58.139Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5877,7 +5874,7 @@
       "description": "Allows user to draw smooth signatures.",
       "experimental": false,
       "key": "signature",
-      "lastModified": "2024-02-18T20:25:26.718Z",
+      "lastModified": "2024-02-22T16:15:00.909Z",
       "methods": [
         {
           "async": false,
@@ -6415,7 +6412,7 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2024-02-17T09:22:23.077Z",
+      "lastModified": "2024-02-21T20:06:32.669Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6475,7 +6472,7 @@
           "typeReference": "./spinner.types"
         }
       ],
-      "readmeContent": "# Spinner\r\n\r\nAn indicator of progress and activity.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Custom Size\r\n\r\n<Example value=\"custom-size\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Customize\r\n\r\n<Example value=\"customize\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Spinner\r\n\r\nAn indicator of progress and activity.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Size\r\n\r\n<Example value=\"size\" />\r\n\r\n### Custom Size\r\n\r\n<Example value=\"custom-size\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n<LastModified />\r\n",
       "slots": [],
       "styles": [],
       "tags": [
@@ -6728,7 +6725,7 @@
       "description": "Toggles the state of a single item on or off.",
       "experimental": false,
       "key": "switch",
-      "lastModified": "2024-02-17T09:22:23.098Z",
+      "lastModified": "2024-02-22T16:20:08.490Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6799,7 +6796,7 @@
       "description": "Organizes content across different screens.",
       "experimental": false,
       "key": "tabs",
-      "lastModified": "2024-02-17T09:22:23.113Z",
+      "lastModified": "2024-02-22T16:20:27.033Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6877,7 +6874,7 @@
       "description": "TODO: Arranges tabs within a bar.",
       "experimental": false,
       "key": "tabs-bar",
-      "lastModified": "2024-02-17T09:22:23.100Z",
+      "lastModified": "2024-02-22T16:20:59.278Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6955,7 +6952,7 @@
       "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
       "experimental": false,
       "key": "tabs-panel",
-      "lastModified": "2024-02-17T09:22:23.102Z",
+      "lastModified": "2024-02-22T16:21:08.662Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7041,7 +7038,7 @@
       "description": "TODO: Tabs make it easy to switch between different views.",
       "experimental": false,
       "key": "tabs-tab",
-      "lastModified": "2024-02-17T09:22:23.105Z",
+      "lastModified": "2024-02-22T16:21:24.159Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -7101,7 +7098,7 @@
       "description": "TODO.",
       "experimental": false,
       "key": "tooltip",
-      "lastModified": "2024-02-17T09:22:23.121Z",
+      "lastModified": "2024-02-22T16:21:41.918Z",
       "methods": [
         {
           "async": false,

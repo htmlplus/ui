@@ -1,5 +1,5 @@
-:host(#{boolean(animation)}[state='opening']),
-:host(#{boolean(animation)}[state='closing']) {
+:host([animation][state='opening']),
+:host([animation][state='closing']) {
   transition: all 0.5s ease-out;
 
   .dialog {

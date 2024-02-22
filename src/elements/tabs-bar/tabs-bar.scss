@@ -4,16 +4,16 @@
   overflow: auto;
 }
 
-:host(#{boolean(reverse)}) {
+:host([reverse]) {
   flex-direction: row-reverse;
 }
 
-:host(#{boolean(grow)}) ::slotted(plus-tabs-tab) {
+:host([grow]) ::slotted(plus-tabs-tab) {
   flex-grow: 1;
 }
 
 :host([justify='start']),
-:host([justify='end']#{boolean(reverse)}) {
+:host([justify='end'][reverse]) {
   justify-content: flex-start;
 }
 
@@ -22,6 +22,6 @@
 }
 
 :host([justify='end']),
-:host([justify='start']#{boolean(reverse)}) {
+:host([justify='start'][reverse]) {
   justify-content: flex-end;
 }

@@ -26,11 +26,11 @@
   border-top-left-radius: 0;
 }
 
-:host(#{boolean(disabled)}) {
+:host([disabled]) {
   opacity: $accordion-disabled-opacity;
 }
 
-:host(#{boolean(disabled)}) .header {
+:host([disabled]) .header {
   cursor: initial;
 }
 

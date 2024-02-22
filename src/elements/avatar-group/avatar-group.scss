@@ -22,11 +22,11 @@
   margin-inline-end: 0 !important;
 }
 
-:host(#{boolean(hoverable)}) ::slotted(plus-avatar:hover) {
+:host([hoverable]) ::slotted(plus-avatar:hover) {
   z-index: 1;
 }
 
-:host(#{boolean(stacked)}) ::slotted(plus-avatar) {
+:host([stacked]) ::slotted(plus-avatar) {
   box-shadow: $avatar-group-box-shadow;
   margin-inline-end: var(--plus-avatar-group-gutter-stacked);
 }
