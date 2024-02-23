@@ -10,9 +10,9 @@ let DialogBody = class DialogBody extends PlusCore {
         return html `<slot />`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogBody.TAG = "plus-dialog-body";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogBody.STYLES = css_248z;
 __decorate([
     Property({

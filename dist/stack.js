@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, d as styles, t as toUnit, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, t as toUnit, h as html, e as attributes, d as styles, f as host, b as Property, c as Element } from './core/index.js';
 
 /**
  * @slot default - The default slot.
@@ -19,13 +19,13 @@ let Stack = class Stack extends PlusCore {
         let direction = this.vertical ? 'column' : 'row';
         if (this.reverse)
             direction += '-reverse';
-        return styles({
+        return {
             'align-items': this.alignItems,
             'display': 'flex',
             'flex-direction': direction,
             'gap': toUnit(this.gap),
             'justify-content': this.justifyContent
-        });
+        };
     }
     render() {
         return html `${attributes(host(this), [{
@@ -35,7 +35,7 @@ let Stack = class Stack extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Stack.TAG = "plus-stack";
 __decorate([
     Property({

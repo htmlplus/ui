@@ -22,9 +22,9 @@ let TabsBar = class TabsBar extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 TabsBar.TAG = "plus-tabs-bar";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 TabsBar.STYLES = css_248z;
 __decorate([
     Property({

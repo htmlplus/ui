@@ -9,8 +9,7 @@ import {
   Watch,
   classes,
   off,
-  on,
-  styles
+  on
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
@@ -187,11 +186,11 @@ export class Drawer extends PlusCore {
     return false;
   }
 
-  get styles() {
-    return styles({
+  get style(): any {
+    return {
       '--plus-drawer-size': this.size ?? null,
       '--plus-drawer-mini-size': this.miniSize ?? null
-    });
+    };
   }
 
   hide() {
@@ -370,7 +369,7 @@ export class Drawer extends PlusCore {
 
   render() {
     return (
-      <host platform={this.platform} style={this.styles}>
+      <host platform={this.platform} style={this.style}>
         {this.hasBackdrop ? (
           <div className="backdrop" part="backdrop">
             <div />

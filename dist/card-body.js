@@ -11,9 +11,9 @@ let CardBody = class CardBody extends PlusCore {
         return html `<slot />`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 CardBody.TAG = "plus-card-body";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 CardBody.STYLES = css_248z;
 CardBody = __decorate([
     Element()

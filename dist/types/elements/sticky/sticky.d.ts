@@ -32,14 +32,14 @@ export declare class Sticky extends PlusCore {
     get sizer(): {
         top: string;
     };
-    get style(): string;
+    get style(): any;
     watchers(next: any, prev: any, key: any): void;
     bind(): void;
     unbind(): void;
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StickyAttributes {
     /**

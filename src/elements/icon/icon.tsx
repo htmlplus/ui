@@ -1,4 +1,4 @@
-import { Element, Property, State, Watch, styles, toUnit } from '@htmlplus/element';
+import { Element, Property, State, Watch, toUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
@@ -104,7 +104,7 @@ export class Icon extends PlusCore {
     });
   }
 
-  get style() {
+  get style(): any {
     let size, transform;
 
     if (!isSize(this.size)) {
@@ -129,12 +129,12 @@ export class Icon extends PlusCore {
       }
     }
 
-    return styles({
+    return {
       color: isValidCSSColor(this.color) ? this.color : null,
       height: size,
       width: size,
       transform
-    });
+    };
   }
 
   @Watch('name', true)

@@ -177,7 +177,7 @@ let Counter = class Counter extends PlusCore {
             }])}${this.formated}`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Counter.TAG = "plus-counter";
 __decorate([
     Property({

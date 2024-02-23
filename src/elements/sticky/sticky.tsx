@@ -7,7 +7,6 @@ import {
   Query,
   State,
   Watch,
-  styles,
   toUnit
 } from '@htmlplus/element';
 
@@ -65,11 +64,11 @@ export class Sticky extends PlusCore {
     };
   }
 
-  get style() {
-    return styles({
+  get style(): any {
+    return {
       top: toUnit(this.top),
       zIndex: this.zIndex ?? null
-    });
+    };
   }
 
   @Watch(['disabled', 'watcher'])

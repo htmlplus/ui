@@ -247,9 +247,9 @@ let Signature = class Signature extends PlusForm {
         return html `<canvas part="canvas"></canvas>`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Signature.TAG = "plus-signature";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Signature.STYLES = css_248z;
 __decorate([
     Property({

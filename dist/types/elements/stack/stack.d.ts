@@ -25,8 +25,8 @@ export declare class Stack extends PlusCore {
      * TODO.
      */
     vertical?: boolean;
-    get style(): string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    get style(): any;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StackAttributes {
     /**

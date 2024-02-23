@@ -10,9 +10,9 @@ let DialogHeader = class DialogHeader extends PlusCore {
         return html `<slot />`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogHeader.TAG = "plus-dialog-header";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogHeader.STYLES = css_248z;
 DialogHeader = __decorate([
     Element()

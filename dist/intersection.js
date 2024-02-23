@@ -72,7 +72,7 @@ let Intersection = class Intersection extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Intersection.TAG = "plus-intersection";
 __decorate([
     Property({

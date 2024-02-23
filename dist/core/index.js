@@ -30,7 +30,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
-// apis
+// APIs
 const API_CONNECTED = Symbol();
 const API_HOST = Symbol();
 const API_INSTANCE = Symbol();
@@ -1303,19 +1303,10 @@ const slots = (target) => {
  * Converts a JavaScript object containing CSS styles to a CSS string.
  */
 const styles = (input) => {
-    switch (typeOf(input)) {
-        case 'array':
-            return input.join('; ');
-        case 'object':
-            return Object.keys(input)
-                .filter((key) => input[key] !== undefined && input[key] !== null)
-                .map((key) => `${key.startsWith('--') ? '--' : ''}${kebabCase(key)}: ${input[key]}`)
-                .join('; ');
-        case 'string':
-            return input;
-        default:
-            return '';
-    }
+    return Object.keys(input)
+        .filter((key) => input[key] !== undefined && input[key] !== null)
+        .map((key) => `${key.startsWith('--') ? '--' : ''}${kebabCase(key)}: ${input[key]}`)
+        .join('; ');
 };
 
 function toDecorator(util, ...parameters) {

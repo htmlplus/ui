@@ -18,9 +18,9 @@ let GridItem = class GridItem extends PlusCore {
         return html `<slot />`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 GridItem.TAG = "plus-grid-item";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 GridItem.STYLES = css_248z;
 __decorate([
     Property({

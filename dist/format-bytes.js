@@ -142,9 +142,9 @@ let FormatBytes = class FormatBytes extends PlusCore {
         return this.formated;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 FormatBytes.TAG = "plus-format-bytes";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 FormatBytes.STYLES = css_248z;
 __decorate([
     Property({

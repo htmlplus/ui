@@ -43,9 +43,9 @@ let DrawerToggler = class DrawerToggler extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DrawerToggler.TAG = "plus-drawer-toggler";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DrawerToggler.STYLES = css_248z;
 __decorate([
     Property({

@@ -231,9 +231,9 @@ let Dialog = Dialog_1 = class Dialog extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Dialog.TAG = "plus-dialog";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Dialog.STYLES = css_248z;
 Dialog.instances = [];
 __decorate([

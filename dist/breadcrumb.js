@@ -151,9 +151,9 @@ let Breadcrumb = class Breadcrumb extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Breadcrumb.TAG = "plus-breadcrumb";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Breadcrumb.STYLES = css_248z;
 __decorate([
     Property({

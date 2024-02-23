@@ -45,7 +45,7 @@ let ClickOutside = class ClickOutside extends PlusCore {
         return html `<slot />`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 ClickOutside.TAG = "plus-click-outside";
 __decorate([
     Property({

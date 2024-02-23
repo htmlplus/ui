@@ -729,7 +729,7 @@
       "description": "Sets a preferred aspect ratio only for the first child inside the element.",
       "experimental": false,
       "key": "aspect-ratio",
-      "lastModified": "2024-02-17T09:22:22.587Z",
+      "lastModified": "2024-02-23T18:40:46.166Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -808,7 +808,7 @@
       "description": "An image representing a user's profile picture.",
       "experimental": false,
       "key": "avatar",
-      "lastModified": "2024-02-18T20:52:58.417Z",
+      "lastModified": "2024-02-23T18:40:56.857Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3359,7 +3359,7 @@
       "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "experimental": false,
       "key": "drawer",
-      "lastModified": "2024-02-22T16:18:52.930Z",
+      "lastModified": "2024-02-23T18:43:41.720Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -3601,7 +3601,7 @@
       "deprecated": false,
       "experimental": false,
       "key": "drawer-toggler",
-      "lastModified": "2024-02-17T09:22:22.953Z",
+      "lastModified": "2024-02-23T18:22:14.622Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -5285,7 +5285,7 @@
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "experimental": false,
       "key": "icon",
-      "lastModified": "2024-02-21T16:07:50.556Z",
+      "lastModified": "2024-02-23T18:47:27.893Z",
       "methods": [],
       "parts": [
         {
@@ -6412,7 +6412,7 @@
       "description": "An indicator of progress and activity.",
       "experimental": false,
       "key": "spinner",
-      "lastModified": "2024-02-21T20:06:32.669Z",
+      "lastModified": "2024-02-23T18:41:36.123Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6489,7 +6489,7 @@
       "description": "TODO.",
       "experimental": false,
       "key": "stack",
-      "lastModified": "2024-02-17T09:22:23.081Z",
+      "lastModified": "2024-02-23T18:41:46.651Z",
       "methods": [],
       "parts": [],
       "properties": [
@@ -6617,7 +6617,7 @@
       "description": "Element content is positioned based on the user's scroll position.",
       "experimental": false,
       "key": "sticky",
-      "lastModified": "2024-02-17T09:22:23.090Z",
+      "lastModified": "2024-02-23T18:41:59.825Z",
       "methods": [],
       "parts": [],
       "properties": [

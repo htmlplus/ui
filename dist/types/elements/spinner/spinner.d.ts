@@ -18,9 +18,9 @@ export declare class Spinner extends PlusCore {
      * Specifies which variant of the spinner to use.
      */
     type?: SpinnerType;
-    get style(): string;
+    get style(): any;
     get elements(): number[];
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SpinnerAttributes {
     /**

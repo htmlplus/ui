@@ -92,7 +92,7 @@ export declare class Drawer extends PlusCore {
     get classes(): string;
     get hasBackdrop(): boolean;
     get isTemporary(): boolean;
-    get styles(): string;
+    get style(): any;
     hide(): void;
     show(): void;
     toggle(): void;
@@ -108,7 +108,7 @@ export declare class Drawer extends PlusCore {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DrawerAttributes {
     /**

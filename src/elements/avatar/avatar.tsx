@@ -104,9 +104,11 @@ export class Avatar extends PlusCore {
     };
   }
 
-  get style() {
-    if (isSize(this.size)) return;
-    return `--plus-avatar-size: ${toUnit(this.size)}`;
+  get style(): any {
+    if (isSize(this.size)) return {};
+    return {
+      '--plus-avatar-size': toUnit(this.size)
+    };
   }
 
   render() {

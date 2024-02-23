@@ -10,9 +10,9 @@ let DialogFooter = class DialogFooter extends PlusCore {
         return html `<slot />`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogFooter.TAG = "plus-dialog-footer";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 DialogFooter.STYLES = css_248z;
 DialogFooter = __decorate([
     Element()

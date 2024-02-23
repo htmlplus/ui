@@ -1,16 +1,12 @@
 /// <reference types="vite/client" />
-import '@types/react';
 
-declare module 'react' {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    part?: string;
-  }
-  interface SVGAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    part?: string;
-  }
+declare global {
   namespace JSX {
     interface IntrinsicElements {
-      host: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      host: React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & { [key: string]: any },
+        HTMLElement
+      >;
     }
   }
 }

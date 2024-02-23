@@ -16,9 +16,9 @@ let Spacer = class Spacer extends PlusCore {
         };
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Spacer.TAG = "plus-spacer";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Spacer.STYLES = css_248z;
 __decorate([
     Property({

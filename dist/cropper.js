@@ -329,9 +329,9 @@ let Cropper = class Cropper extends PlusCore {
       </div>`;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Cropper.TAG = "plus-cropper";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Cropper.STYLES = css_248z;
 __decorate([
     Property({

@@ -1,4 +1,4 @@
-import { Element, Property, styles, toUnit } from '@htmlplus/element';
+import { Element, Property, toUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 
@@ -39,18 +39,18 @@ export class Stack extends PlusCore {
   @Property()
   vertical?: boolean;
 
-  get style() {
+  get style(): any {
     let direction = this.vertical ? 'column' : 'row';
 
     if (this.reverse) direction += '-reverse';
 
-    return styles({
+    return {
       'align-items': this.alignItems,
       'display': 'flex',
       'flex-direction': direction,
       'gap': toUnit(this.gap),
       'justify-content': this.justifyContent
-    });
+    };
   }
 
   render() {

@@ -1,4 +1,4 @@
-import { Element, Property, styles } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 import { isValidCSSColor } from '@/helpers';
@@ -28,10 +28,10 @@ export class Spinner extends PlusCore {
   @Property({ reflect: true })
   type?: SpinnerType = 'default';
 
-  get style() {
-    return styles({
+  get style(): any {
+    return {
       color: isValidCSSColor(this.color) ? this.color : null
-    });
+    };
   }
 
   get elements() {

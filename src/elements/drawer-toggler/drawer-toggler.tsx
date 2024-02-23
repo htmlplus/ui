@@ -59,7 +59,3 @@ export class DrawerToggler extends PlusCore {
     );
   }
 }
-
-// TODO
-// <slot name="close" />
-// <slot name="open" />

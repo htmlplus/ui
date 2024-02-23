@@ -28,7 +28,6 @@ export default [
     prefix: 'plus-'
   }),
   assets({
-    once: true,
     destination(context) {
       return `dist/${context.fileName}`;
     }

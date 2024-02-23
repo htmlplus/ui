@@ -100,8 +100,10 @@ let Avatar = class Avatar extends PlusCore {
     }
     get style() {
         if (isSize(this.size))
-            return;
-        return `--plus-avatar-size: ${toUnit(this.size)}`;
+            return {};
+        return {
+            '--plus-avatar-size': toUnit(this.size)
+        };
     }
     render() {
         return html `${attributes(host(this), [{
@@ -114,9 +116,9 @@ let Avatar = class Avatar extends PlusCore {
       `;
     }
 };
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Avatar.TAG = "plus-avatar";
-// THIS PROPERTY IS AUTO-ADDED, DO NOT EDIT MANUALY
+// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Avatar.STYLES = css_248z;
 __decorate([
     Property({

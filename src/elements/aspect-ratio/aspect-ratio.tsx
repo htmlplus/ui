@@ -38,7 +38,7 @@ export class AspectRatio extends PlusCore {
     if (!isNaN(valueA + valueB)) return valueA / valueB;
   }
 
-  get style() {
+  get style(): any {
     const ratio = this.ratio;
 
     if (!ratio) return;
