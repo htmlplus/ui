@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/htmlplus/core/compare/v1.1.6...v1.1.7) (2024-02-23)
+
+
+### Bug Fixes
+
+* Fix style typing ([c006626](https://github.com/htmlplus/core/commit/c006626e036c21e593f6f2f3d7131959a0785bf4))
+
 ## [1.1.6](https://github.com/htmlplus/core/compare/v1.1.5...v1.1.6) (2024-02-22)
 
 
