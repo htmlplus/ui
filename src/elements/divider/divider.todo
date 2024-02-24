@@ -5,3 +5,8 @@
   - min-width: 100%
 - do we need these properties for `aria-orientation=vertical`
   - min-width: auto
+- add shadow example
+  - https://uicookies.com/css-divider/
+  - https://devdevout.com/css/css-gradient-borders
+  - https://codepen.io/mburridge/pen/WNbzvyW
+  - https://devsnap.me/css-border-examples

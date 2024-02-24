@@ -8,6 +8,7 @@
   display: flex;
   overflow: hidden;
   position: relative; // TODO
+  direction: ltr; // TODO
 }
 
 :host > * {
@@ -15,15 +16,15 @@
   inset: 0;
 }
 
-.underlay {
+:host::part(underlay) {
   background-color: transparent;
 }
 
-.buffer {
+:host::part(buffer) {
   background-color: $progress-bar-buffer-background-color;
 }
 
-.indicator {
+:host::part(indicator) {
   background-color: $progress-bar-indicator-background-color;
   color: $progress-bar-indicator-color;
   transition: $progress-bar-indicator-transition;
@@ -36,11 +37,11 @@
 }
 
 // TODO
-:host([immediate]) .indicator {
+:host([immediate])::part(indicator) {
   transition: none;
 }
 
-:host([variant='indeterminate']) .indicator {
+:host([variant='indeterminate'])::part(indicator) {
   animation: $progress-bar-indeterminate-indicator-animation;
   width: $progress-bar-indeterminate-indicator-width;
 }

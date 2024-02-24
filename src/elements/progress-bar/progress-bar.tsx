@@ -73,16 +73,14 @@ export class ProgressBar extends PlusCore {
           minWidth: this.stacked ? this.percentage : null
         }}
       >
-        <div className="underlay" part="underlay"></div>
+        <div part="underlay"></div>
         <div
-          className="buffer"
           part="buffer"
           style={{
             width: (this.buffer || 0) + '%'
           }}
         ></div>
         <div
-          className="indicator"
           part="indicator"
           style={{
             width: this.stacked ? '100%' : this.percentage

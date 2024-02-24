@@ -3170,7 +3170,7 @@
       "description": "A thin line that divides the content vertically or horizontally.",
       "experimental": false,
       "key": "divider",
-      "lastModified": "2024-02-22T16:18:06.654Z",
+      "lastModified": "2024-02-24T13:08:56.009Z",
       "methods": [],
       "parts": [
         {
@@ -5563,7 +5563,7 @@
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "experimental": false,
       "key": "progress-bar",
-      "lastModified": "2024-02-22T16:19:58.139Z",
+      "lastModified": "2024-02-24T21:26:49.278Z",
       "methods": [],
       "parts": [],
       "properties": [
