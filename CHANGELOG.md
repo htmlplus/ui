@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/htmlplus/core/compare/v1.1.8...v1.1.9) (2024-02-25)
+
+
+### Bug Fixes
+
+* Add @htmlplus/element to main dependencies ([31bdace](https://github.com/htmlplus/core/commit/31bdace029d67be8d6c7bb6af5e9b559ba08db97))
+
 ## [1.1.8](https://github.com/htmlplus/core/compare/v1.1.7...v1.1.8) (2024-02-25)
 
 
