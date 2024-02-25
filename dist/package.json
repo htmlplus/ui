@@ -46,8 +46,10 @@
     "url": "https://github.com/htmlplus/core/issues"
   },
   "homepage": "https://htmlplus.io",
+  "dependencies": {
+    "@htmlplus/element": "^2.1.5"
+  },
   "devDependencies": {
-    "@htmlplus/element": "^2.1.5",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@semantic-release/changelog": "^6.0.3",
