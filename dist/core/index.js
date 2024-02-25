@@ -92,7 +92,9 @@ const outsides = [];
 const off = (target, type, handler, options) => {
     if (type != 'outside')
         return target.removeEventListener(type, handler, options);
-    const index = outsides.findIndex((outside) => outside.target == target && outside.handler == handler && outside.options == options);
+    const index = outsides.findIndex((outside) => {
+        return outside.target == target && outside.handler == handler && outside.options == options;
+    });
     const outside = outsides[index];
     if (!outside)
         return;
@@ -373,7 +375,9 @@ const merge = (target, ...sources) => {
             continue;
         }
         for (const key of Object.keys(source)) {
-            if (target[key] instanceof Object && source[key] instanceof Object && target[key] !== source[key]) {
+            if (target[key] instanceof Object &&
+                source[key] instanceof Object &&
+                target[key] !== source[key]) {
                 target[key] = merge(target[key], source[key]);
             }
             else {
@@ -487,16 +491,16 @@ function queryAll(target, selectors) {
 }
 
 const task = (options) => {
-    let isPending, promise;
+    let running, promise;
     const run = () => {
         if (options.canStart && !options.canStart())
             return Promise.resolve(false);
-        if (!isPending)
+        if (!running)
             promise = enqueue();
         return promise;
     };
     const enqueue = async () => {
-        isPending = true;
+        running = true;
         try {
             await promise;
         }
@@ -504,17 +508,17 @@ const task = (options) => {
             Promise.reject(error);
         }
         // TODO: maybe is optional
-        if (!isPending)
+        if (!running)
             return promise;
         try {
             if (options.canRun && !options.canRun())
-                return (isPending = false);
-            options.run();
-            isPending = false;
+                return (running = false);
+            options.handler();
+            running = false;
             return true;
         }
         catch (error) {
-            isPending = false;
+            running = false;
             throw error;
         }
     };
@@ -1231,52 +1235,52 @@ const request = (target, name, previous, callback) => {
     var _a, _b;
     // Creates/Gets a stacks.
     const stacks = (target[_a = API_STACKS] || (target[_a] = new Map()));
-    // Creates/Updates a stack
+    // Creates/Updates a stack.
     const stack = stacks.get(name) || { callbacks: [], previous };
     // Adds the callback to the stack, if exists.
     callback && stack.callbacks.push(callback);
     // Stores the stack.
     stacks.set(name, stack);
-    // Creates/Gets a micro task function.
-    target[_b = API_REQUEST] || (target[_b] = task({
-        run: () => {
-            // Skips the rendering phase if DOM isn't ready.
-            if (!target[API_CONNECTED])
-                return;
-            // Calculates the states to pass into lifecycles' callbacks.
-            const states = new Map(Array.from(stacks)
-                .filter((stack) => stack[0])
-                .map((stack) => [stack[0], stack[1].previous]));
-            // Calls the lifecycle's callback before the rendering phase.
-            call(target, LIFECYCLE_UPDATE, states);
-            // Calculates the template.
-            const template = () => {
-                // Calculates the markup.
-                const markup = call(target, METHOD_RENDER);
-                // Calculates the styles.
-                const styles = getStyles(target);
-                // Returns the markup if styles don't exist.
-                if (!styles)
-                    return markup;
-                // Returns the markup and styles together.
-                return html `<style>${styles}</style>${markup}`;
-            };
-            // Renders template to the DOM.
-            render(shadowRoot(target), template);
-            // Invokes requests' callback.
-            stacks.forEach((state) => {
-                state.callbacks.forEach((callback, index, callbacks) => {
-                    callback(callbacks.length - 1 != index);
-                });
+    // Defines a handler.
+    const handler = () => {
+        // Skips the rendering phase if DOM isn't ready.
+        if (!target[API_CONNECTED])
+            return;
+        // Calculates the states to pass into lifecycles' callbacks.
+        const states = new Map(Array.from(stacks)
+            .filter((stack) => stack[0])
+            .map((stack) => [stack[0], stack[1].previous]));
+        // Calls the lifecycle's callback before the rendering phase.
+        call(target, LIFECYCLE_UPDATE, states);
+        // Calculates the template.
+        const template = () => {
+            // Calculates the markup.
+            const markup = call(target, METHOD_RENDER);
+            // Calculates the styles.
+            const styles = getStyles(target);
+            // Returns the markup if styles don't exist.
+            if (!styles)
+                return markup;
+            // Returns the markup and styles together.
+            return html `<style>${styles}</style>${markup}`;
+        };
+        // Renders template to the DOM.
+        render(shadowRoot(target), template);
+        // Invokes requests' callback.
+        stacks.forEach((state) => {
+            state.callbacks.forEach((callback, index, callbacks) => {
+                callback(callbacks.length - 1 != index);
             });
-            // Calls the lifecycle's callback after the rendering phase.
-            call(target, LIFECYCLE_UPDATED, states);
-            // Clears stacks.
-            stacks.clear();
-            // TODO: releated to the @Watch decorator.
-            target[API_RENDER_COMPLETED] = true;
-        }
-    }));
+        });
+        // Calls the lifecycle's callback after the rendering phase.
+        call(target, LIFECYCLE_UPDATED, states);
+        // Clears stacks.
+        stacks.clear();
+        // TODO: releated to the @Watch decorator.
+        target[API_RENDER_COMPLETED] = true;
+    };
+    // Creates/Gets a micro task function.
+    target[_b = API_REQUEST] || (target[_b] = task({ handler }));
     // Calls the micro task.
     call(target, API_REQUEST);
 };
