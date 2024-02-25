@@ -1,3 +1,11 @@
+## [1.1.8](https://github.com/htmlplus/core/compare/v1.1.7...v1.1.8) (2024-02-25)
+
+
+### Bug Fixes
+
+* Add @htmlplus/element to dev dependency ([4d360d4](https://github.com/htmlplus/core/commit/4d360d4b87eb36ea26d8115b5ea4d02881173803))
+* Support rtl direction in progress-bar ([084484a](https://github.com/htmlplus/core/commit/084484a2ab5effd1955d49f5748024c303cdbc4a))
+
 ## [1.1.7](https://github.com/htmlplus/core/compare/v1.1.6...v1.1.7) (2024-02-23)
 
 
