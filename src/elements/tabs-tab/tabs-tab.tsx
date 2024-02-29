@@ -9,6 +9,7 @@ const { Inject } = createLink({
 
 /**
  * TODO: Tabs make it easy to switch between different views.
+ * 
  * @slot default - The default slot.
  */
 @Element()

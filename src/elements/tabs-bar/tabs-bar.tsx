@@ -4,6 +4,7 @@ import { PlusCore } from '@/core';
 
 /**
  * TODO: Arranges tabs within a bar.
+ * 
  * @slot default - The default slot.
  */
 @Element()

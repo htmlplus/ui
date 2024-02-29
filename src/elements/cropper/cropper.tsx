@@ -32,9 +32,9 @@ import {
 let CropperCore: typeof CropperCoreType;
 
 /**
- * @dependencies cropperjs
- * @stable
  * @thirdParty
+ * @stable
+ * @dependencies cropperjs
  */
 @Element()
 export class Cropper extends PlusCore {

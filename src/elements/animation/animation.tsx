@@ -16,6 +16,7 @@ import './assets/names/fading-exits/fade-out.js';
 
 /**
  * @stable
+ * 
  * @slot default - The default slot.
  */
 @Element()

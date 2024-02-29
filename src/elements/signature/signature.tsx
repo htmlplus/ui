@@ -19,6 +19,7 @@ let Core;
 
 /**
  * @stable
+ * 
  * @part canvas - The canvas element.
  */
 @Element()

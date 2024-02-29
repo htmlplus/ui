@@ -8,6 +8,7 @@ import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './d
  * @part line    - The prefix and suffix element.
  * @part prefix  - The prefix element.
  * @part suffix  - The suffix element.
+ * 
  * @slot default - The default slot.
  */
 @Element()

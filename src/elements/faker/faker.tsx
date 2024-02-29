@@ -5,9 +5,9 @@ import type { Faker as FakerCoreType } from '@faker-js/faker';
 import { PlusCore } from '@/core';
 
 /**
- * @dependencies @faker-js/faker
- * @stable
  * @thirdParty
+ * @stable
+ * @dependencies @faker-js/faker
  */
 @Element()
 export class Faker extends PlusCore {

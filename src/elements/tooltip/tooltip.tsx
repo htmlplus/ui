@@ -15,8 +15,9 @@ import {
 let FloatingCore: typeof FloatingCoreType;
 
 /**
- * @dependencies @floating-ui/dom
  * @thirdParty
+ * 
+ * @dependencies @floating-ui/dom
  */
 @Element()
 export class Tooltip extends PlusCore {

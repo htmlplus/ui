@@ -37,6 +37,7 @@ const parse = (input: SVGElement | string): SVGElement => {
 
 /**
  * @stable
+ * 
  * @part svg - The svg element.
  */
 @Element()
@@ -171,7 +172,7 @@ export class Icon extends PlusCore {
 
     try {
       if (this.sync(this.cache)) return;
-    } catch {}
+    } catch { }
 
     if (typeof this.resolver != 'function') {
       console.warn(

@@ -4,6 +4,7 @@ import { PlusCore } from '@/core';
 
 /**
  * @development
+ * 
  * @slot default - The default slot.
  */
 @Element()
