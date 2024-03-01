@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/htmlplus/core/compare/v1.1.9...v1.1.10) (2024-03-01)
+
+
+### Bug Fixes
+
+* Update documentation ([182bfd9](https://github.com/htmlplus/core/commit/182bfd92227c932284d345a65614ae2053d52273))
+
 ## [1.1.9](https://github.com/htmlplus/core/compare/v1.1.8...v1.1.9) (2024-02-25)
 
 
