@@ -3,6 +3,7 @@ import { PlusCore } from "../../core";
 import { BrowseEvent } from './browse.types';
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 export declare class Browse extends PlusCore {

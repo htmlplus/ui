@@ -4,11 +4,9 @@
   "tags": [
     {
       "name": "plus-accordion",
-      "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "attributes": [
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -16,11 +14,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "open",
-          "description": "Control the element to expand or not.",
           "values": [
             {
               "name": "false"
@@ -28,12 +26,13 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Control the element to expand or not."
         },
         {
           "name": "summary",
-          "description": "The summary text displayed on the header.",
-          "values": []
+          "values": [],
+          "description": "The summary text displayed on the header."
         }
       ],
       "references": [
@@ -41,15 +40,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/accordion"
         }
-      ]
+      ],
+      "description": "A vertically stacked list of headers that reveal or hide associated sections of content."
     },
     {
       "name": "plus-animation",
-      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "attributes": [
         {
           "name": "composite",
-          "description": "Determines how values are combined between this animation and other,separate animations that do not specify their own specific composite operation.",
           "values": [
             {
               "name": "add"
@@ -60,16 +58,16 @@
             {
               "name": "replace"
             }
-          ]
+          ],
+          "description": "Determines how values are combined between this animation and other, separate animations that do not specify their own specific composite operation."
         },
         {
           "name": "delay",
-          "description": "The number of milliseconds to delay the start of the animation.",
-          "values": []
+          "values": [],
+          "description": "The number of milliseconds to delay the start of the animation."
         },
         {
           "name": "direction",
-          "description": "Whether the animation runs forwards (`normal`), backwards (`reverse`),switches direction after each iteration (`alternate`), or runsbackwards and switches direction after each iteration (`alternate-reverse`).",
           "values": [
             {
               "name": "alternate-reverse"
@@ -83,26 +81,26 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Whether the animation runs forwards (`normal`), backwards (`reverse`), switches direction after each iteration (`alternate`), or runs backwards and switches direction after each iteration (`alternate-reverse`)."
         },
         {
           "name": "duration",
-          "description": "The number of milliseconds each iteration of the animation takes to complete.Keep in mind that your animation will not run if this value is 0.",
-          "values": []
+          "values": [],
+          "description": "The number of milliseconds each iteration of the animation takes to complete. Keep in mind that your animation will not run if this value is 0."
         },
         {
           "name": "easing",
-          "description": "The rate of the animation's change over time.Accepts the pre-defined values \"`linear`\", \"`ease`\", \"`ease-in`\", \"`ease-out`\", and \"`ease-in-out`\",or a custom \"`cubic-bezier`\" value like \"`cubic-bezier(0.42, 0, 0.58, 1)`\".",
-          "values": []
+          "values": [],
+          "description": "The rate of the animation's change over time. Accepts the pre-defined values \"`linear`\", \"`ease`\", \"`ease-in`\", \"`ease-out`\", and \"`ease-in-out`\", or a custom \"`cubic-bezier`\" value like \"`cubic-bezier(0.42, 0, 0.58, 1)`\"."
         },
         {
           "name": "end-delay",
-          "description": "The number of milliseconds to delay after the end of an animation.This is primarily of use when sequencing animations based on the end time of another animation.",
-          "values": []
+          "values": [],
+          "description": "The number of milliseconds to delay after the end of an animation. This is primarily of use when sequencing animations based on the end time of another animation."
         },
         {
           "name": "fill",
-          "description": "Dictates whether the animation's effects should be reflected by the element(s)prior to playing (\"`backwards`\"), retained after the animation has completedplaying (\"`forwards`\"), or `both`.",
           "values": [
             {
               "name": "backwards"
@@ -113,16 +111,16 @@
             {
               "name": "none"
             }
-          ]
+          ],
+          "description": "Dictates whether the animation's effects should be reflected by the element(s) prior to playing (\"`backwards`\"), retained after the animation has completed playing (\"`forwards`\"), or `both`."
         },
         {
           "name": "instance",
-          "description": "The [Animation](https://mdn.io/api-animation) object instance.",
-          "values": []
+          "values": [],
+          "description": "The [Animation](https://mdn.io/api-animation) object instance."
         },
         {
           "name": "iteration-composite",
-          "description": "Determines how values build from iteration to iteration in this animation.Can be set to `accumulate` or `replace`.",
           "values": [
             {
               "name": "accumulate"
@@ -130,36 +128,36 @@
             {
               "name": "replace"
             }
-          ]
+          ],
+          "description": "Determines how values build from iteration to iteration in this animation. Can be set to `accumulate` or `replace`."
         },
         {
           "name": "iterations",
-          "description": "The number of times the animation should repeat. And can also take a value of[Infinity](https://mdn.io/infinity)to make it repeat for as long as the element exists.",
-          "values": []
+          "values": [],
+          "description": "The number of times the animation should repeat. And can also take a value of [Infinity](https://mdn.io/infinity) to make it repeat for as long as the element exists."
         },
         {
           "name": "iteration-start",
-          "description": "Describes at what point in the iteration the animation should start.0.5 would indicate starting halfway through the first iteration for example,and with this value set, an animation with 2 iterations would end halfway througha third iteration.",
-          "values": []
+          "values": [],
+          "description": "Describes at what point in the iteration the animation should start. 0.5 would indicate starting halfway through the first iteration for example, and with this value set, an animation with 2 iterations would end halfway through a third iteration."
         },
         {
           "name": "keyframes",
-          "description": "A [keyframes](https://mdn.io/keyframe-formats)object or `null`.",
-          "values": []
+          "values": [],
+          "description": "A [keyframes](https://mdn.io/keyframe-formats) object or `null`."
         },
         {
           "name": "name",
-          "description": "Specifies what kind of animation will play.The list of available animations is [here](/element/animation/names).",
-          "values": []
+          "values": [],
+          "description": "Specifies what kind of animation will play. The list of available animations is [here](/element/animation/names)."
         },
         {
           "name": "playback-rate",
-          "description": "Sets the animation's playback rate.",
-          "values": []
+          "values": [],
+          "description": "Sets the animation's playback rate."
         },
         {
           "name": "run",
-          "description": "Starts the animation.",
           "values": [
             {
               "name": "false"
@@ -167,7 +165,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Starts the animation."
         }
       ],
       "references": [
@@ -175,26 +174,26 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/animation"
         }
-      ]
+      ],
+      "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names)."
     },
     {
       "name": "plus-aspect-ratio",
-      "description": "Sets a preferred aspect ratio only for the first child inside the element.",
       "attributes": [
         {
           "name": "min-height",
-          "description": "Specifies the minimum height.",
-          "values": []
+          "values": [],
+          "description": "Specifies the minimum height."
         },
         {
           "name": "max-height",
-          "description": "Specifies the maximum height.",
-          "values": []
+          "values": [],
+          "description": "Specifies the maximum height."
         },
         {
           "name": "value",
-          "description": "Specifies the ratio.",
-          "values": []
+          "values": [],
+          "description": "Specifies the ratio."
         }
       ],
       "references": [
@@ -202,15 +201,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/aspect-ratio"
         }
-      ]
+      ],
+      "description": "Sets a preferred aspect ratio only for the first child inside the element."
     },
     {
       "name": "plus-avatar",
-      "description": "An image representing a user's profile picture.",
       "attributes": [
         {
           "name": "shape",
-          "description": "Specifies the shape of the element.",
           "values": [
             {
               "name": "circle"
@@ -221,11 +219,11 @@
             {
               "name": "tile"
             }
-          ]
+          ],
+          "description": "Specifies the shape of the element."
         },
         {
           "name": "size",
-          "description": "Specifies the size of the element.",
           "values": [
             {
               "name": "xxs"
@@ -248,7 +246,8 @@
             {
               "name": "xxl"
             }
-          ]
+          ],
+          "description": "Specifies the size of the element."
         }
       ],
       "references": [
@@ -256,14 +255,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/avatar"
         }
-      ]
+      ],
+      "description": "An image representing a user's profile picture."
     },
     {
       "name": "plus-avatar-group",
       "attributes": [
         {
           "name": "hoverable",
-          "description": "Specifies whether to prominent the avatar when the mouse is entered or not.",
           "values": [
             {
               "name": "false"
@@ -271,11 +270,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Specifies whether to prominent the avatar when the mouse is entered or not."
         },
         {
           "name": "stacked",
-          "description": "Specifies whether avatars should be displayed compressed or not.",
           "values": [
             {
               "name": "false"
@@ -283,7 +282,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Specifies whether avatars should be displayed compressed or not."
         }
       ],
       "references": [
@@ -295,27 +295,26 @@
     },
     {
       "name": "plus-breadcrumb",
-      "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
       "attributes": [
         {
           "name": "expander-text",
-          "description": "Specifies the label for the expander button.",
-          "values": []
+          "values": [],
+          "description": "Specifies the label for the expander button."
         },
         {
           "name": "offset",
-          "description": "Specifies the position of the expander button.The expander button is displayed when the number of items reached the maximum limit.",
-          "values": []
+          "values": [],
+          "description": "Specifies the position of the expander button. The expander button is displayed when the number of items reached the maximum limit."
         },
         {
           "name": "max",
-          "description": "Specifies the Maximum number of items that are allowed to be displayed.",
-          "values": []
+          "values": [],
+          "description": "Specifies the Maximum number of items that are allowed to be displayed."
         },
         {
           "name": "separator",
-          "description": "Specifies the separator between items.",
-          "values": []
+          "values": [],
+          "description": "Specifies the separator between items."
         }
       ],
       "references": [
@@ -323,20 +322,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/breadcrumb"
         }
-      ]
+      ],
+      "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page."
     },
     {
       "name": "plus-browse",
-      "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "attributes": [
         {
           "name": "accept",
-          "description": "One or more[unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)describing file types to allow.",
-          "values": []
+          "values": [],
+          "description": "One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow."
         },
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -344,11 +342,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "droppable",
-          "description": "Adds droppable ability.",
           "values": [
             {
               "name": "false"
@@ -356,31 +354,31 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Adds droppable ability."
         },
         {
           "name": "min",
-          "description": "Specifies the minimum number of files.",
-          "values": []
+          "values": [],
+          "description": "Specifies the minimum number of files."
         },
         {
           "name": "max",
-          "description": "Specifies the maximum number of files.",
-          "values": []
+          "values": [],
+          "description": "Specifies the maximum number of files."
         },
         {
           "name": "min-size",
-          "description": "Specifies the minimum size of the file(s) in bytes.",
-          "values": []
+          "values": [],
+          "description": "Specifies the minimum size of the file(s) in bytes."
         },
         {
           "name": "max-size",
-          "description": "Specifies the maximum size of the file(s) in bytes.",
-          "values": []
+          "values": [],
+          "description": "Specifies the maximum size of the file(s) in bytes."
         },
         {
           "name": "multiple",
-          "description": "Allows to select more than one file.",
           "values": [
             {
               "name": "false"
@@ -388,7 +386,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Allows to select more than one file."
         }
       ],
       "references": [
@@ -396,15 +395,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/browse"
         }
-      ]
+      ],
+      "description": "Allows you to select file or files by using click or drag & drop functionality."
     },
     {
       "name": "plus-card",
-      "description": "Cards contain content and actions about a single subject.",
       "attributes": [
         {
           "name": "elevation",
-          "description": "If you want the card to have shadow, use the elevation property,And select the property value between `1` and `24`.",
           "values": [
             {
               "name": "1"
@@ -478,11 +476,11 @@
             {
               "name": "24"
             }
-          ]
+          ],
+          "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
         },
         {
           "name": "flat",
-          "description": "Use the flat property to neutralize elevation.",
           "values": [
             {
               "name": "false"
@@ -490,11 +488,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Use the flat property to neutralize elevation."
         },
         {
           "name": "outlined",
-          "description": "If you want the card to have border, use the outlined property.",
           "values": [
             {
               "name": "false"
@@ -502,11 +500,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "If you want the card to have border, use the outlined property."
         },
         {
           "name": "tile",
-          "description": "Use tile property to neutralize border-radius.",
           "values": [
             {
               "name": "false"
@@ -514,7 +512,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Use tile property to neutralize border-radius."
         }
       ],
       "references": [
@@ -522,7 +521,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/card"
         }
-      ]
+      ],
+      "description": "Cards contain content and actions about a single subject."
     },
     {
       "name": "plus-card-body",
@@ -536,11 +536,9 @@
     },
     {
       "name": "plus-center",
-      "description": "Centers content vertically and horizontally.",
       "attributes": [
         {
           "name": "inline",
-          "description": "Converts the `display` CSS property from `flex` to `inline-flex`.",
           "values": [
             {
               "name": "false"
@@ -548,7 +546,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
         }
       ],
       "references": [
@@ -556,15 +555,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/center"
         }
-      ]
+      ],
+      "description": "Centers content vertically and horizontally."
     },
     {
       "name": "plus-click-outside",
-      "description": "Detects when a click event happens outside of itself.",
       "attributes": [
         {
           "name": "capture",
-          "description": "A boolean value indicating that events of this type will be dispatched to the registered`listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.",
           "values": [
             {
               "name": "false"
@@ -572,11 +570,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "A boolean value indicating that events of this type will be dispatched to the registered `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree."
         },
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -584,11 +582,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "once",
-          "description": "The event fires only once.",
           "values": [
             {
               "name": "false"
@@ -596,7 +594,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "The event fires only once."
         }
       ],
       "references": [
@@ -604,15 +603,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/click-outside"
         }
-      ]
+      ],
+      "description": "Detects when a click event happens outside of itself."
     },
     {
       "name": "plus-counter",
-      "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "attributes": [
         {
           "name": "easing",
-          "description": "Easing function. Click [here](http://robertpenner.com/easing) for more details.",
           "values": [
             {
               "name": "ease-out-expo"
@@ -620,41 +618,41 @@
             {
               "name": "linear"
             }
-          ]
+          ],
+          "description": "Easing function. Click [here](http://robertpenner.com/easing) for more details."
         },
         {
           "name": "decimal",
-          "description": "Specifies decimal character.",
-          "values": []
+          "values": [],
+          "description": "Specifies decimal character."
         },
         {
           "name": "decimals",
-          "description": "Amount of decimals to display.",
-          "values": []
+          "values": [],
+          "description": "Amount of decimals to display."
         },
         {
           "name": "delay",
-          "description": "Delay in milliseconds before starting the transition.",
-          "values": []
+          "values": [],
+          "description": "Delay in milliseconds before starting the transition."
         },
         {
           "name": "duration",
-          "description": "Duration in milliseconds.",
-          "values": []
+          "values": [],
+          "description": "Duration in milliseconds."
         },
         {
           "name": "from",
-          "description": "Initial value.",
-          "values": []
+          "values": [],
+          "description": "Initial value."
         },
         {
           "name": "numerals",
-          "description": "Specifies numeral glyph substitution.",
-          "values": []
+          "values": [],
+          "description": "Specifies numeral glyph substitution."
         },
         {
           "name": "play",
-          "description": "Starts/Stops the transition.",
           "values": [
             {
               "name": "false"
@@ -662,17 +660,18 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Starts/Stops the transition."
         },
         {
           "name": "separator",
-          "description": "Specifies character of thousands separator.",
-          "values": []
+          "values": [],
+          "description": "Specifies character of thousands separator."
         },
         {
           "name": "to",
-          "description": "Target value.",
-          "values": []
+          "values": [],
+          "description": "Target value."
         }
       ],
       "references": [
@@ -680,25 +679,24 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/counter"
         }
-      ]
+      ],
+      "description": "Can be used to quickly create animations that display numerical data in a more interesting way."
     },
     {
       "name": "plus-cropper",
-      "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "attributes": [
         {
           "name": "area",
-          "description": "A number between 0 and 1. Specifies the automatic cropping area size.",
-          "values": []
+          "values": [],
+          "description": "A number between 0 and 1. Specifies the automatic cropping area size."
         },
         {
           "name": "aspect-ratio",
-          "description": "Specifies the initial aspect ratio of the viewport.",
-          "values": []
+          "values": [],
+          "description": "Specifies the initial aspect ratio of the viewport."
         },
         {
           "name": "background",
-          "description": "Shows the grid background of the container.",
           "values": [
             {
               "name": "false"
@@ -706,11 +704,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Shows the grid background of the container."
         },
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -718,11 +716,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "guides",
-          "description": "Shows the dashed lines above the viewport.",
           "values": [
             {
               "name": "false"
@@ -730,11 +728,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Shows the dashed lines above the viewport."
         },
         {
           "name": "indicator",
-          "description": "Shows the center indicator above the viewport.",
           "values": [
             {
               "name": "false"
@@ -742,11 +740,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Shows the center indicator above the viewport."
         },
         {
           "name": "mode",
-          "description": "Specifies the mode.",
           "values": [
             {
               "name": "crop"
@@ -757,11 +755,11 @@
             {
               "name": "none"
             }
-          ]
+          ],
+          "description": "Specifies the mode."
         },
         {
           "name": "resizer",
-          "description": "Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).",
           "values": [
             {
               "name": "both"
@@ -772,11 +770,11 @@
             {
               "name": "main"
             }
-          ]
+          ],
+          "description": "Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`)."
         },
         {
           "name": "resizer-shape",
-          "description": "Specifies the shape of the resizer.",
           "values": [
             {
               "name": "circle"
@@ -787,11 +785,11 @@
             {
               "name": "square"
             }
-          ]
+          ],
+          "description": "Specifies the shape of the resizer."
         },
         {
           "name": "responsive",
-          "description": "Re-renders when resizing the window.",
           "values": [
             {
               "name": "false"
@@ -802,11 +800,11 @@
             {
               "name": "reset"
             }
-          ]
+          ],
+          "description": "Re-renders when resizing the window."
         },
         {
           "name": "shape",
-          "description": "Specifies the shape of the viewport.",
           "values": [
             {
               "name": "circle"
@@ -817,16 +815,16 @@
             {
               "name": "square"
             }
-          ]
+          ],
+          "description": "Specifies the shape of the viewport."
         },
         {
           "name": "src",
-          "description": "Specifies the image's src.",
-          "values": []
+          "values": [],
+          "description": "Specifies the image's src."
         },
         {
           "name": "transparent",
-          "description": "Hides the black modal above the image and under the viewport.",
           "values": [
             {
               "name": "false"
@@ -834,16 +832,16 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the black modal above the image and under the viewport."
         },
         {
           "name": "value",
-          "description": "Gets/Sets data.",
-          "values": []
+          "values": [],
+          "description": "Gets/Sets data."
         },
         {
           "name": "view",
-          "description": "Specifies the view.",
           "values": [
             {
               "name": "contain"
@@ -857,11 +855,11 @@
             {
               "name": "none"
             }
-          ]
+          ],
+          "description": "Specifies the view."
         },
         {
           "name": "zoomable",
-          "description": "Enables to zoom the image.",
           "values": [
             {
               "name": "false"
@@ -875,12 +873,13 @@
             {
               "name": "wheel"
             }
-          ]
+          ],
+          "description": "Enables to zoom the image."
         },
         {
           "name": "zoom-ratio",
-          "description": "Specifies zoom ratio when zooming the image by wheeling the mouse.",
-          "values": []
+          "values": [],
+          "description": "Specifies zoom ratio when zooming the image by wheeling the mouse."
         }
       ],
       "references": [
@@ -888,25 +887,24 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/cropper"
         }
-      ]
+      ],
+      "description": "Used for cropping large images to fit a container before uploading them to the server."
     },
     {
       "name": "plus-dialog",
-      "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "attributes": [
         {
           "name": "animation",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "connector",
-          "description": "This property helps you to attach which dialog toggler controls the dialog.It doesn't matter where the dialog toggler is.You can put the dialog's toggler inside or outside of the dialog.Read more about connectors [here](/connector).",
-          "values": []
+          "values": [],
+          "description": "This property helps you to attach which dialog toggler controls the dialog. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
         },
         {
           "name": "full-height",
-          "description": "Set the height of the dialog as much as the screen's height.",
           "values": [
             {
               "name": "false"
@@ -914,11 +912,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Set the height of the dialog as much as the screen's height."
         },
         {
           "name": "full-width",
-          "description": "Set the width of the dialog as much as the screen's width.",
           "values": [
             {
               "name": "false"
@@ -926,11 +924,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Set the width of the dialog as much as the screen's width."
         },
         {
           "name": "fullscreen",
-          "description": "Set both width and height of the dialog to occupy the screen size.",
           "values": [
             {
               "name": "false"
@@ -953,11 +951,11 @@
             {
               "name": "xxl-down"
             }
-          ]
+          ],
+          "description": "Set both width and height of the dialog to occupy the screen size."
         },
         {
           "name": "keyboard",
-          "description": "Closes the dialog when `escape` key is pressed.",
           "values": [
             {
               "name": "false"
@@ -965,11 +963,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Closes the dialog when `escape` key is pressed."
         },
         {
           "name": "open",
-          "description": "Control dialog to show or not.",
           "values": [
             {
               "name": "false"
@@ -977,11 +975,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Control dialog to show or not."
         },
         {
           "name": "persistent",
-          "description": "It prevents the dialog from closing on clicking outside of the element.",
           "values": [
             {
               "name": "false"
@@ -989,11 +987,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "It prevents the dialog from closing on clicking outside of the element."
         },
         {
           "name": "placement",
-          "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.",
           "values": [
             {
               "name": "bottom"
@@ -1061,11 +1059,11 @@
             {
               "name": "top"
             }
-          ]
+          ],
+          "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
         },
         {
           "name": "portal",
-          "description": "Enables or disables the portal.",
           "values": [
             {
               "name": "false"
@@ -1073,21 +1071,21 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Enables or disables the portal."
         },
         {
           "name": "portal-strategy",
-          "description": "Specifies the position of the dialog.",
-          "values": []
+          "values": [],
+          "description": "Specifies the position of the dialog."
         },
         {
           "name": "portal-target",
-          "description": "Specifies the position of the dialog relative to the target.",
-          "values": []
+          "values": [],
+          "description": "Specifies the position of the dialog relative to the target."
         },
         {
           "name": "scrollable",
-          "description": "It makes the user able to scroll the content by adding a scroll beside it.",
           "values": [
             {
               "name": "false"
@@ -1095,11 +1093,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "It makes the user able to scroll the content by adding a scroll beside it."
         },
         {
           "name": "size",
-          "description": "Determine the width of the dialog.",
           "values": [
             {
               "name": "sm"
@@ -1110,11 +1108,11 @@
             {
               "name": "xl"
             }
-          ]
+          ],
+          "description": "Determine the width of the dialog."
         },
         {
           "name": "sticky",
-          "description": "Removes the margin around the dialog's content.",
           "values": [
             {
               "name": "false"
@@ -1122,11 +1120,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Removes the margin around the dialog's content."
         },
         {
           "name": "transparent",
-          "description": "Deactivate the dialog's backdrop to show or not.",
           "values": [
             {
               "name": "false"
@@ -1134,7 +1132,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Deactivate the dialog's backdrop to show or not."
         }
       ],
       "references": [
@@ -1142,14 +1141,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/dialog"
         }
-      ]
+      ],
+      "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow."
     },
     {
       "name": "plus-dialog-body",
       "attributes": [
         {
           "name": "scrollable",
-          "description": "It makes the user able to scroll the content by adding a scroll beside it.",
           "values": [
             {
               "name": "false"
@@ -1157,7 +1156,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "It makes the user able to scroll the content by adding a scroll beside it."
         }
       ],
       "references": [
@@ -1172,7 +1172,6 @@
       "attributes": [
         {
           "name": "scrollable",
-          "description": "It makes the user able to scroll the content by adding a scroll beside it.",
           "values": [
             {
               "name": "false"
@@ -1180,7 +1179,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "It makes the user able to scroll the content by adding a scroll beside it."
         }
       ],
       "references": [
@@ -1215,8 +1215,8 @@
       "attributes": [
         {
           "name": "connector",
-          "description": "This property helps you to attach which dialog this toggler controls.It doesn't matter where the dialog toggler is.You can put the dialog's toggler inside or outside of the dialog.Read more about connectors [here](/connector).",
-          "values": []
+          "values": [],
+          "description": "This property helps you to attach which dialog this toggler controls. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
         }
       ],
       "references": [
@@ -1228,11 +1228,9 @@
     },
     {
       "name": "plus-divider",
-      "description": "A thin line that divides the content vertically or horizontally.",
       "attributes": [
         {
           "name": "placement",
-          "description": "Specifies the location of the default slot.",
           "values": [
             {
               "name": "start"
@@ -1243,11 +1241,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Specifies the location of the default slot."
         },
         {
           "name": "width",
-          "description": "Specifies the width of the border.",
           "values": [
             {
               "name": "xs"
@@ -1264,11 +1262,11 @@
             {
               "name": "xl"
             }
-          ]
+          ],
+          "description": "Specifies the width of the border."
         },
         {
           "name": "type",
-          "description": "Specifies the style of the border.",
           "values": [
             {
               "name": "dashed"
@@ -1294,11 +1292,11 @@
             {
               "name": "solid"
             }
-          ]
+          ],
+          "description": "Specifies the style of the border."
         },
         {
           "name": "variant",
-          "description": "Specifies the amount of indentation.",
           "values": [
             {
               "name": "middle"
@@ -1309,11 +1307,11 @@
             {
               "name": "full"
             }
-          ]
+          ],
+          "description": "Specifies the amount of indentation."
         },
         {
           "name": "vertical",
-          "description": "Draws the divider in a vertical orientation.",
           "values": [
             {
               "name": "false"
@@ -1321,7 +1319,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Draws the divider in a vertical orientation."
         }
       ],
       "references": [
@@ -1329,20 +1328,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/divider"
         }
-      ]
+      ],
+      "description": "A thin line that divides the content vertically or horizontally."
     },
     {
       "name": "plus-drawer",
-      "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "attributes": [
         {
           "name": "animation",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "backdrop",
-          "description": "Activate the drawer's backdrop to show or not.",
           "values": [
             {
               "name": "false"
@@ -1353,11 +1351,11 @@
             {
               "name": "auto"
             }
-          ]
+          ],
+          "description": "Activate the drawer's backdrop to show or not."
         },
         {
           "name": "breakpoint",
-          "description": "Sets the mobile breakpoint to apply alternate styles for mobile deviceswhen the breakpoint value is met.",
           "values": [
             {
               "name": "xs"
@@ -1371,16 +1369,16 @@
             {
               "name": "lg"
             }
-          ]
+          ],
+          "description": "Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met."
         },
         {
           "name": "connector",
-          "description": "This property helps you to attach which drawer toggler controls the drawer.It doesn't matter where the drawer toggler is.You can put the drawer's toggler inside or outside of the drawer.Read more about connectors [here](/connector).",
-          "values": []
+          "values": [],
+          "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
         },
         {
           "name": "mini",
-          "description": "Set the width of drawer to the minimum size you specified for the `mini-size` property.",
           "values": [
             {
               "name": "false"
@@ -1388,16 +1386,16 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Set the width of drawer to the minimum size you specified for the `mini-size` property."
         },
         {
           "name": "mini-size",
-          "description": "Sets the minimum width size of the drawer.",
-          "values": []
+          "values": [],
+          "description": "Sets the minimum width size of the drawer."
         },
         {
           "name": "open",
-          "description": "Control drawer to show or not.",
           "values": [
             {
               "name": "false"
@@ -1405,11 +1403,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Control drawer to show or not."
         },
         {
           "name": "persistent",
-          "description": "If true, don't allow the drawer to be closed by clicking outside of the drawer.If false, the drawer will be closed by clicking outside of it.",
           "values": [
             {
               "name": "false"
@@ -1417,11 +1415,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it."
         },
         {
           "name": "placement",
-          "description": "Specifies where the drawer will open.",
           "values": [
             {
               "name": "start"
@@ -1441,11 +1439,11 @@
             {
               "name": "bottom"
             }
-          ]
+          ],
+          "description": "Specifies where the drawer will open."
         },
         {
           "name": "flexible",
-          "description": "It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced.If false doesn't allow the width of the drawer to reduce.",
           "values": [
             {
               "name": "false"
@@ -1453,16 +1451,16 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce."
         },
         {
           "name": "size",
-          "description": "Determine the width of the drawer.",
-          "values": []
+          "values": [],
+          "description": "Determine the width of the drawer."
         },
         {
           "name": "temporary",
-          "description": "On default the drawer is considered as a part of the main container.it pushes the other contents on opening.If true it will be opened over other contents and doesn't affect other contents.A temporary drawer sits above its application and uses a backdrop to darken the background.",
           "values": [
             {
               "name": "false"
@@ -1473,7 +1471,8 @@
             {
               "name": "on-breakpoint"
             }
-          ]
+          ],
+          "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background."
         }
       ],
       "references": [
@@ -1481,15 +1480,16 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/drawer"
         }
-      ]
+      ],
+      "description": "This element lets you add collapsible side contents like navigation alongside some primary content."
     },
     {
       "name": "plus-drawer-toggler",
       "attributes": [
         {
           "name": "connector",
-          "description": "This property helps you to attach which drawer this toggler controls.It doesn't matter where the drawer toggler is.You can put the drawer's toggler inside or outside of the drawer.Read more about connectors [here](/connector).",
-          "values": []
+          "values": [],
+          "description": "This property helps you to attach which drawer this toggler controls. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
         }
       ],
       "references": [
@@ -1501,27 +1501,26 @@
     },
     {
       "name": "plus-faker",
-      "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "attributes": [
         {
           "name": "api",
-          "description": "Specifies the [API](https://fakerjs.dev/api).",
-          "values": []
+          "values": [],
+          "description": "Specifies the [API](https://fakerjs.dev/api)."
         },
         {
           "name": "arguments",
-          "description": "Specifies the API's arguments as an array.",
-          "values": []
+          "values": [],
+          "description": "Specifies the API's arguments as an array."
         },
         {
           "name": "instance",
-          "description": "The [Faker](https://fakerjs.dev/guide/usage.html) object instance.",
-          "values": []
+          "values": [],
+          "description": "The [Faker](https://fakerjs.dev/guide/usage.html) object instance."
         },
         {
           "name": "seed",
-          "description": "Keeps the result constant.",
-          "values": []
+          "values": [],
+          "description": "Keeps the result constant."
         }
       ],
       "references": [
@@ -1529,15 +1528,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/faker"
         }
-      ]
+      ],
+      "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/)."
     },
     {
       "name": "plus-format-bytes",
-      "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "attributes": [
         {
           "name": "display",
-          "description": "Specifies the unit will be shown as an abbreviation or not.",
           "values": [
             {
               "name": "long"
@@ -1545,26 +1543,26 @@
             {
               "name": "short"
             }
-          ]
+          ],
+          "description": "Specifies the unit will be shown as an abbreviation or not."
         },
         {
           "name": "locale",
-          "description": "Localizes the result. [More](https://mdn.io/number-format/constructor).",
-          "values": []
+          "values": [],
+          "description": "Localizes the result. [More](https://mdn.io/number-format/constructor)."
         },
         {
           "name": "decimals",
-          "description": "Specifies the number of decimal places.Use an array to specify the minimum and maximum.",
-          "values": []
+          "values": [],
+          "description": "Specifies the number of decimal places. Use an array to specify the minimum and maximum."
         },
         {
           "name": "separator",
-          "description": "Specifies the separator between number and unit.",
-          "values": []
+          "values": [],
+          "description": "Specifies the separator between number and unit."
         },
         {
           "name": "signed",
-          "description": "Shows plus sign for positive numbers.If the difference is exactly zero a space character will be prepended instead for better alignment.",
           "values": [
             {
               "name": "false"
@@ -1572,11 +1570,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Shows plus sign for positive numbers. If the difference is exactly zero a space character will be prepended instead for better alignment."
         },
         {
           "name": "standard",
-          "description": "Specifies the standard of units.[Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported.",
           "values": [
             {
               "name": "IEC"
@@ -1590,11 +1588,11 @@
             {
               "name": "METRIC_OCTET"
             }
-          ]
+          ],
+          "description": "Specifies the standard of units. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported."
         },
         {
           "name": "unit",
-          "description": "Specifies the unit in which the result will be returned.",
           "values": [
             {
               "name": "auto"
@@ -1626,12 +1624,13 @@
             {
               "name": "yotta"
             }
-          ]
+          ],
+          "description": "Specifies the unit in which the result will be returned."
         },
         {
           "name": "value",
-          "description": "The bytes value to convert.",
-          "values": []
+          "values": [],
+          "description": "The bytes value to convert."
         }
       ],
       "references": [
@@ -1639,15 +1638,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/format-bytes"
         }
-      ]
+      ],
+      "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported."
     },
     {
       "name": "plus-grid",
-      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
       "attributes": [
         {
           "name": "align-content",
-          "description": "Aligns contents vertically across all rows (It overrides alignItems).",
           "values": [
             {
               "name": "start"
@@ -1670,11 +1668,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows (It overrides alignItems)."
         },
         {
           "name": "align-content-xs",
-          "description": "Aligns contents vertically across all rows for extra-small display sizes(It overrides alignItemsXs).",
           "values": [
             {
               "name": "start"
@@ -1697,11 +1695,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows for extra-small display sizes (It overrides alignItemsXs)."
         },
         {
           "name": "align-content-sm",
-          "description": "Aligns contents vertically across all rows for small display sizes(It overrides alignItemsSm).",
           "values": [
             {
               "name": "start"
@@ -1724,11 +1722,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows for small display sizes (It overrides alignItemsSm)."
         },
         {
           "name": "align-content-md",
-          "description": "Aligns contents vertically across all rows for medium display sizes(It overrides alignItemsMd).",
           "values": [
             {
               "name": "start"
@@ -1751,11 +1749,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows for medium display sizes (It overrides alignItemsMd)."
         },
         {
           "name": "align-content-lg",
-          "description": "Aligns contents vertically across all rows for large display sizes(It overrides alignItemsLg).",
           "values": [
             {
               "name": "start"
@@ -1778,11 +1776,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows for large display sizes (It overrides alignItemsLg)."
         },
         {
           "name": "align-content-xl",
-          "description": "Aligns contents vertically across all rows for extra-large display sizes(It overrides alignItemsXl).",
           "values": [
             {
               "name": "start"
@@ -1805,11 +1803,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows for extra-large display sizes (It overrides alignItemsXl)."
         },
         {
           "name": "align-content-xxl",
-          "description": "Aligns contents vertically across all rows for extra-extra-large display sizes(It overrides alignItemsXXl).",
           "values": [
             {
               "name": "start"
@@ -1832,11 +1830,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically across all rows for extra-extra-large display sizes (It overrides alignItemsXXl)."
         },
         {
           "name": "align-items",
-          "description": "Aligns contents vertically inside their own row.",
           "values": [
             {
               "name": "start"
@@ -1850,11 +1848,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row."
         },
         {
           "name": "align-items-xs",
-          "description": "Aligns contents vertically inside their own row for extra-small display sizes.",
           "values": [
             {
               "name": "start"
@@ -1868,11 +1866,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row for extra-small display sizes."
         },
         {
           "name": "align-items-sm",
-          "description": "Aligns contents vertically inside their own row for small display sizes.",
           "values": [
             {
               "name": "start"
@@ -1886,11 +1884,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row for small display sizes."
         },
         {
           "name": "align-items-md",
-          "description": "Aligns contents vertically inside their own row for medium display sizes.",
           "values": [
             {
               "name": "start"
@@ -1904,11 +1902,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row for medium display sizes."
         },
         {
           "name": "align-items-lg",
-          "description": "Aligns contents vertically inside their own row for large display sizes.",
           "values": [
             {
               "name": "start"
@@ -1922,11 +1920,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row for large display sizes."
         },
         {
           "name": "align-items-xl",
-          "description": "Aligns contents vertically inside their own row for extra-large display sizes.",
           "values": [
             {
               "name": "start"
@@ -1940,11 +1938,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row for extra-large display sizes."
         },
         {
           "name": "align-items-xxl",
-          "description": "Aligns contents vertically inside their own row for extra-extra-large display sizes.",
           "values": [
             {
               "name": "start"
@@ -1958,11 +1956,11 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "Aligns contents vertically inside their own row for extra-extra-large display sizes."
         },
         {
           "name": "gutter",
-          "description": "Adds a gap between contents to make space between them vertically and horizontally.",
           "values": [
             {
               "name": "xs"
@@ -1982,11 +1980,11 @@
             {
               "name": "xxl"
             }
-          ]
+          ],
+          "description": "Adds a gap between contents to make space between them vertically and horizontally."
         },
         {
           "name": "gutter-x",
-          "description": "Adds a gap between contents to make space between them horizontally.",
           "values": [
             {
               "name": "xs"
@@ -2006,11 +2004,11 @@
             {
               "name": "xxl"
             }
-          ]
+          ],
+          "description": "Adds a gap between contents to make space between them horizontally."
         },
         {
           "name": "gutter-y",
-          "description": "Adds a gap between contents to make space between them vertically.",
           "values": [
             {
               "name": "xs"
@@ -2030,11 +2028,11 @@
             {
               "name": "xxl"
             }
-          ]
+          ],
+          "description": "Adds a gap between contents to make space between them vertically."
         },
         {
           "name": "justify-content",
-          "description": "Justifies contents horizontally.",
           "values": [
             {
               "name": "start"
@@ -2054,11 +2052,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally."
         },
         {
           "name": "justify-content-xs",
-          "description": "Justifies contents horizontally for extra-small display sizes.",
           "values": [
             {
               "name": "start"
@@ -2078,11 +2076,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally for extra-small display sizes."
         },
         {
           "name": "justify-content-sm",
-          "description": "Justifies contents horizontally for small display sizes.",
           "values": [
             {
               "name": "start"
@@ -2102,11 +2100,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally for small display sizes."
         },
         {
           "name": "justify-content-md",
-          "description": "Justifies contents horizontally for medium display sizes.",
           "values": [
             {
               "name": "start"
@@ -2126,11 +2124,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally for medium display sizes."
         },
         {
           "name": "justify-content-lg",
-          "description": "Justifies contents horizontally for large display sizes.",
           "values": [
             {
               "name": "start"
@@ -2150,11 +2148,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally for large display sizes."
         },
         {
           "name": "justify-content-xl",
-          "description": "Justifies contents horizontally for extra-large display sizes.",
           "values": [
             {
               "name": "start"
@@ -2174,11 +2172,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally for extra-large display sizes."
         },
         {
           "name": "justify-content-xxl",
-          "description": "Justifies contents horizontally for extra-extra-large display sizes.",
           "values": [
             {
               "name": "start"
@@ -2198,11 +2196,11 @@
             {
               "name": "evenly"
             }
-          ]
+          ],
+          "description": "Justifies contents horizontally for extra-extra-large display sizes."
         },
         {
           "name": "reverse",
-          "description": "Reverses the flow of contents from left-to-right to right-to-left, or vice-versa.",
           "values": [
             {
               "name": "false"
@@ -2210,11 +2208,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Reverses the flow of contents from left-to-right to right-to-left, or vice-versa."
         },
         {
           "name": "vertical",
-          "description": "Changes the flow of contents from left-to-right to top-to-down.",
           "values": [
             {
               "name": "false"
@@ -2222,11 +2220,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Changes the flow of contents from left-to-right to top-to-down."
         },
         {
           "name": "wrap",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width.",
           "values": [
             {
               "name": "on"
@@ -2237,11 +2235,11 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width."
         },
         {
           "name": "wrap-xs",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width for extra-small screen devices.",
           "values": [
             {
               "name": "on"
@@ -2252,11 +2250,11 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-small screen devices."
         },
         {
           "name": "wrap-sm",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width for small screen devices.",
           "values": [
             {
               "name": "on"
@@ -2267,11 +2265,11 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for small screen devices."
         },
         {
           "name": "wrap-md",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width for medium screen devices.",
           "values": [
             {
               "name": "on"
@@ -2282,11 +2280,11 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for medium screen devices."
         },
         {
           "name": "wrap-lg",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width for large screen devices.",
           "values": [
             {
               "name": "on"
@@ -2297,11 +2295,11 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for large screen devices."
         },
         {
           "name": "wrap-xl",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width for extra-large screen devices.",
           "values": [
             {
               "name": "on"
@@ -2312,11 +2310,11 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-large screen devices."
         },
         {
           "name": "wrap-xxl",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative widthsize of contents is more than the twelve-column width for extra-extra-large screen devices.",
           "values": [
             {
               "name": "on"
@@ -2327,7 +2325,8 @@
             {
               "name": "reverse"
             }
-          ]
+          ],
+          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-extra-large screen devices."
         }
       ],
       "references": [
@@ -2335,14 +2334,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/grid"
         }
-      ]
+      ],
+      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints."
     },
     {
       "name": "plus-grid-item",
       "attributes": [
         {
           "name": "align-self",
-          "description": "Aligns the grid-item vertically in its container (grid).It overrides the align-items property of its parent.",
           "values": [
             {
               "name": "auto"
@@ -2359,11 +2358,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid). It overrides the align-items property of its parent."
         },
         {
           "name": "align-self-xs",
-          "description": "Aligns the grid-item vertically in its container (grid) for extra-small display sizes.It also applies to larger breakpoints and display sizes while they are not specified.(It overrides the align-items property of its parent just for extra-small breakpoints).",
           "values": [
             {
               "name": "auto"
@@ -2380,11 +2379,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid) for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-small breakpoints)."
         },
         {
           "name": "align-self-sm",
-          "description": "Aligns the grid-item vertically in its container (grid) for small display sizes.It also applies to larger breakpoints and display sizes while they are not specified.(It overrides the align-items property of its parent just for small breakpoints).",
           "values": [
             {
               "name": "auto"
@@ -2401,11 +2400,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid) for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for small breakpoints)."
         },
         {
           "name": "align-self-md",
-          "description": "Aligns the grid-item vertically in its container (grid) for medium display sizes.It also applies to larger breakpoints and display sizes while they are not specified.(It overrides the align-items property of its parent just for medium breakpoints).",
           "values": [
             {
               "name": "auto"
@@ -2422,11 +2421,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid) for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for medium breakpoints)."
         },
         {
           "name": "align-self-lg",
-          "description": "Aligns the grid-item vertically in its container (grid) for large display sizes.It also applies to larger breakpoints and display sizes while they are not specified.(It overrides the align-items property of its parent just for large breakpoints).",
           "values": [
             {
               "name": "auto"
@@ -2443,11 +2442,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid) for large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for large breakpoints)."
         },
         {
           "name": "align-self-xl",
-          "description": "Aligns the grid-item vertically in its container (grid) for extra-large display sizes.It also applies to larger breakpoints and display sizes while they are not specified.(It overrides the align-items property of its parent just for extra-large breakpoints).",
           "values": [
             {
               "name": "auto"
@@ -2464,11 +2463,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid) for extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-large breakpoints)."
         },
         {
           "name": "align-self-xxl",
-          "description": "Aligns the grid-item vertically in its container (grid) for extra-extra-large display sizes.It also applies to larger breakpoints and display sizes while they are not specified.(It overrides the align-items property of its parent just for extra-extra-large breakpoints).",
           "values": [
             {
               "name": "auto"
@@ -2485,11 +2484,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Aligns the grid-item vertically in its container (grid) for extra-extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-extra-large breakpoints)."
         },
         {
           "name": "xs",
-          "description": "Specifies the number of columns for extra-small viewports (portrait phones).It also determines the number of columns for bigger display sizes whenother upper breakpoints (sm, md, lg, xl and xxl) are not specified.",
           "values": [
             {
               "name": "1"
@@ -2533,11 +2532,11 @@
             {
               "name": "grow"
             }
-          ]
+          ],
+          "description": "Specifies the number of columns for extra-small viewports (portrait phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (sm, md, lg, xl and xxl) are not specified."
         },
         {
           "name": "sm",
-          "description": "Specifies the number of columns for small viewports (landscape phones).It also determines the number of columns for bigger display sizes whenother upper breakpoints (md, lg, xl and xxl) are not specified.",
           "values": [
             {
               "name": "1"
@@ -2581,11 +2580,11 @@
             {
               "name": "grow"
             }
-          ]
+          ],
+          "description": "Specifies the number of columns for small viewports (landscape phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (md, lg, xl and xxl) are not specified."
         },
         {
           "name": "md",
-          "description": "Specifies the number of columns for medium viewports (tablets).It also determines the number of columns for bigger display sizes whenother upper breakpoints (lg, xl and xxl) are not specified.",
           "values": [
             {
               "name": "1"
@@ -2629,11 +2628,11 @@
             {
               "name": "grow"
             }
-          ]
+          ],
+          "description": "Specifies the number of columns for medium viewports (tablets). It also determines the number of columns for bigger display sizes when other upper breakpoints (lg, xl and xxl) are not specified."
         },
         {
           "name": "lg",
-          "description": "Specifies the number of columns for large viewports (desktop).It also determines the number of columns for bigger display sizes whenthe upper breakpoint (xl and xxl) is not specified.",
           "values": [
             {
               "name": "1"
@@ -2677,11 +2676,11 @@
             {
               "name": "grow"
             }
-          ]
+          ],
+          "description": "Specifies the number of columns for large viewports (desktop). It also determines the number of columns for bigger display sizes when the upper breakpoint (xl and xxl) is not specified."
         },
         {
           "name": "xl",
-          "description": "Specifies the number of columns for large viewports (large desktops).It also determines the number of columns for bigger display sizes whenthe upper breakpoint (xxl) is not specified.",
           "values": [
             {
               "name": "1"
@@ -2725,11 +2724,11 @@
             {
               "name": "grow"
             }
-          ]
+          ],
+          "description": "Specifies the number of columns for large viewports (large desktops). It also determines the number of columns for bigger display sizes when the upper breakpoint (xxl) is not specified."
         },
         {
           "name": "xxl",
-          "description": "Specifies the number of columns for extra-extra-large viewports (larger desktops).",
           "values": [
             {
               "name": "1"
@@ -2773,11 +2772,11 @@
             {
               "name": "grow"
             }
-          ]
+          ],
+          "description": "Specifies the number of columns for extra-extra-large viewports (larger desktops)."
         },
         {
           "name": "hide-xs",
-          "description": "Hides the grid-item in extra-small display sizes (portrait phones).",
           "values": [
             {
               "name": "false"
@@ -2785,11 +2784,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in extra-small display sizes (portrait phones)."
         },
         {
           "name": "hide-sm",
-          "description": "Hides the grid-item in small display sizes (landscape phones).",
           "values": [
             {
               "name": "false"
@@ -2797,11 +2796,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in small display sizes (landscape phones)."
         },
         {
           "name": "hide-md",
-          "description": "Hides the grid-item in medium display sizes (tablets).",
           "values": [
             {
               "name": "false"
@@ -2809,11 +2808,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in medium display sizes (tablets)."
         },
         {
           "name": "hide-lg",
-          "description": "Hides the grid-item in large display sizes (desktop).",
           "values": [
             {
               "name": "false"
@@ -2821,11 +2820,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in large display sizes (desktop)."
         },
         {
           "name": "hide-xl",
-          "description": "Hides the grid-item in extra-large display sizes (large desktops).",
           "values": [
             {
               "name": "false"
@@ -2833,11 +2832,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in extra-large display sizes (large desktops)."
         },
         {
           "name": "hide-xxl",
-          "description": "Hides the grid-item in extra-extra-large display sizes (larger desktops).",
           "values": [
             {
               "name": "false"
@@ -2845,11 +2844,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in extra-extra-large display sizes (larger desktops)."
         },
         {
           "name": "hide",
-          "description": "Hides the grid-item in all display sizes.",
           "values": [
             {
               "name": "false"
@@ -2857,11 +2856,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in all display sizes."
         },
         {
           "name": "hide-sm-up",
-          "description": "Hides the grid-item in small and larger display sizes.",
           "values": [
             {
               "name": "false"
@@ -2869,11 +2868,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in small and larger display sizes."
         },
         {
           "name": "hide-md-up",
-          "description": "Hides the grid-item in medium and larger display sizes.",
           "values": [
             {
               "name": "false"
@@ -2881,11 +2880,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in medium and larger display sizes."
         },
         {
           "name": "hide-lg-up",
-          "description": "Hides the grid-item in large and larger display sizes.",
           "values": [
             {
               "name": "false"
@@ -2893,11 +2892,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in large and larger display sizes."
         },
         {
           "name": "hide-xl-up",
-          "description": "Hides the grid-item in large and larger display sizes.",
           "values": [
             {
               "name": "false"
@@ -2905,11 +2904,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in large and larger display sizes."
         },
         {
           "name": "hide-sm-down",
-          "description": "Hides the grid-item in small and smaller display sizes.",
           "values": [
             {
               "name": "false"
@@ -2917,11 +2916,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in small and smaller display sizes."
         },
         {
           "name": "hide-md-down",
-          "description": "Hides the grid-item in medium and smaller display sizes.",
           "values": [
             {
               "name": "false"
@@ -2929,11 +2928,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in medium and smaller display sizes."
         },
         {
           "name": "hide-lg-down",
-          "description": "Hides the grid-item in large and smaller display sizes.",
           "values": [
             {
               "name": "false"
@@ -2941,11 +2940,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in large and smaller display sizes."
         },
         {
           "name": "hide-xl-down",
-          "description": "Hides the grid-item in large and smaller display sizes.",
           "values": [
             {
               "name": "false"
@@ -2953,11 +2952,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in large and smaller display sizes."
         },
         {
           "name": "hide-xxl-down",
-          "description": "Hides the grid-item in large and smaller display sizes.",
           "values": [
             {
               "name": "false"
@@ -2965,11 +2964,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Hides the grid-item in large and smaller display sizes."
         },
         {
           "name": "offset-xs",
-          "description": "Adds an offset space before the grid-item for extra-small display sizes.It also applies to larger breakpoints and display sizes while they are not specified.",
           "values": [
             {
               "name": "1"
@@ -3007,11 +3006,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Adds an offset space before the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
         },
         {
           "name": "offset-sm",
-          "description": "Adds an offset space before the grid-item for small display sizes.It also applies to larger breakpoints and display sizes while they are not specified.",
           "values": [
             {
               "name": "1"
@@ -3049,11 +3048,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Adds an offset space before the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
         },
         {
           "name": "offset-md",
-          "description": "Adds an offset space before the grid-item for medium display sizes.It also applies to larger breakpoints and display sizes while they are not specified.",
           "values": [
             {
               "name": "1"
@@ -3091,11 +3090,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Adds an offset space before the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
         },
         {
           "name": "offset-lg",
-          "description": "Adds an offset space before the grid-item for large display sizes.It also applies to the larger breakpoint (xl) while that is not specified.",
           "values": [
             {
               "name": "1"
@@ -3133,11 +3132,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Adds an offset space before the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified."
         },
         {
           "name": "offset-xl",
-          "description": "Adds an offset space before the grid-item for extra-large display sizes.",
           "values": [
             {
               "name": "1"
@@ -3175,11 +3174,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Adds an offset space before the grid-item for extra-large display sizes."
         },
         {
           "name": "offset-xxl",
-          "description": "Adds an offset space before the grid-item for extra-extra-large display sizes.",
           "values": [
             {
               "name": "1"
@@ -3217,11 +3216,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Adds an offset space before the grid-item for extra-extra-large display sizes."
         },
         {
           "name": "order-xs",
-          "description": "Overrides the default order of the grid-item for extra-small display sizes.It also applies to larger breakpoints and display sizes while they are not specified.",
           "values": [
             {
               "name": "1"
@@ -3259,11 +3258,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Overrides the default order of the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
         },
         {
           "name": "order-sm",
-          "description": "Overrides the default order of the grid-item for small display sizes.It also applies to larger breakpoints and display sizes while they are not specified.",
           "values": [
             {
               "name": "1"
@@ -3301,11 +3300,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Overrides the default order of the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
         },
         {
           "name": "order-md",
-          "description": "Overrides the default order of the grid-item for medium display sizes.It also applies to larger breakpoints and display sizes while they are not specified.",
           "values": [
             {
               "name": "1"
@@ -3343,11 +3342,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Overrides the default order of the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
         },
         {
           "name": "order-lg",
-          "description": "Overrides the default order of the grid-item for large display sizes.It also applies to the larger breakpoint (xl) while that is not specified.",
           "values": [
             {
               "name": "1"
@@ -3385,11 +3384,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Overrides the default order of the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified."
         },
         {
           "name": "order-xl",
-          "description": "Overrides the default order of the grid-item for extra-large display sizes.",
           "values": [
             {
               "name": "1"
@@ -3427,11 +3426,11 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Overrides the default order of the grid-item for extra-large display sizes."
         },
         {
           "name": "order-xxl",
-          "description": "Overrides the default order of the grid-item for extra-extra-large display sizes.",
           "values": [
             {
               "name": "1"
@@ -3469,7 +3468,8 @@
             {
               "name": "12"
             }
-          ]
+          ],
+          "description": "Overrides the default order of the grid-item for extra-extra-large display sizes."
         }
       ],
       "references": [
@@ -3481,16 +3481,14 @@
     },
     {
       "name": "plus-icon",
-      "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "attributes": [
         {
           "name": "color",
-          "description": "Specifies the color.",
-          "values": []
+          "values": [],
+          "description": "Specifies the color."
         },
         {
           "name": "flip",
-          "description": "Flips in `horizontal`, `vertical` or `both` directions.",
           "values": [
             {
               "name": "both"
@@ -3501,31 +3499,31 @@
             {
               "name": "vertical"
             }
-          ]
+          ],
+          "description": "Flips in `horizontal`, `vertical` or `both` directions."
         },
         {
           "name": "label",
-          "description": "Specifies an alternate description to use for assistive devices.",
-          "values": []
+          "values": [],
+          "description": "Specifies an alternate description to use for assistive devices."
         },
         {
           "name": "name",
-          "description": "Specifies the name.",
-          "values": []
+          "values": [],
+          "description": "Specifies the name."
         },
         {
           "name": "resolver",
-          "description": "An asynchronous function to load SVG files.",
-          "values": []
+          "values": [],
+          "description": "An asynchronous function to load SVG files."
         },
         {
           "name": "rotate",
-          "description": "Specifies the rotation.",
-          "values": []
+          "values": [],
+          "description": "Specifies the rotation."
         },
         {
           "name": "size",
-          "description": "Specifies the size.",
           "values": [
             {
               "name": "xs"
@@ -3569,7 +3567,8 @@
             {
               "name": "9x"
             }
-          ]
+          ],
+          "description": "Specifies the size."
         }
       ],
       "references": [
@@ -3577,15 +3576,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/icon"
         }
-      ]
+      ],
+      "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library."
     },
     {
       "name": "plus-intersection",
-      "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "attributes": [
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -3593,11 +3591,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "once",
-          "description": "The event fires only once.",
           "values": [
             {
               "name": "false"
@@ -3605,22 +3603,23 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "The event fires only once."
         },
         {
           "name": "root",
-          "description": "The element that is used as the viewport for checking visibility of the target. Must be theancestor of the target. Defaults to the browser viewport if not specified or if `null`.",
-          "values": []
+          "values": [],
+          "description": "The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport if not specified or if `null`."
         },
         {
           "name": "root-margin",
-          "description": "Margin around the root. Can have values similar to the CSS[margin](https://mdn.io/margin)property, e.g. `\"10px 20px 30px 40px\"` (top, right, bottom, left). The values can bepercentages. This set of values serves to grow or shrink each side of the root element'sbounding box before computing intersections. Defaults to all zeros.",
-          "values": []
+          "values": [],
+          "description": "Margin around the root. Can have values similar to the CSS [margin](https://mdn.io/margin) property, e.g. `\"10px 20px 30px 40px\"` (top, right, bottom, left). The values can be percentages. This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. Defaults to all zeros."
         },
         {
           "name": "threshold",
-          "description": "Either a single number or an array of numbers which indicate at what percentage of thetarget's visibility the observer's callback should be executed. If you only want to detectwhen visibility passes the 50% mark, you can use a value of 0.5. If you want the callback torun every time visibility passes another 25%, you would specify the array[0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, thecallback will be run). A value of 1.0 means that the threshold isn't considered passed untilevery pixel is visible.",
-          "values": []
+          "values": [],
+          "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
         }
       ],
       "references": [
@@ -3628,20 +3627,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/intersection"
         }
-      ]
+      ],
+      "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport)."
     },
     {
       "name": "plus-progress-bar",
-      "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "attributes": [
         {
           "name": "buffer",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "immediate",
-          "description": "TODO",
           "values": [
             {
               "name": "false"
@@ -3649,11 +3647,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "TODO"
         },
         {
           "name": "label",
-          "description": "TODO",
           "values": [
             {
               "name": "false"
@@ -3661,27 +3659,28 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "TODO"
         },
         {
           "name": "min",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "max",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "variant",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "value",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -3689,7 +3688,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/progress-bar"
         }
-      ]
+      ],
+      "description": "Progress bar expresses an unspecified wait time or display the length of a process."
     },
     {
       "name": "plus-progress-bar-stack",
@@ -3703,11 +3703,9 @@
     },
     {
       "name": "plus-scroll-detector",
-      "description": "Detects scroll event from an element.",
       "attributes": [
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -3715,20 +3713,20 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "reference",
-          "description": "Specifies the reference of the scroll.",
           "values": [
             {
               "name": "document"
             }
-          ]
+          ],
+          "description": "Specifies the reference of the scroll."
         },
         {
           "name": "vertical",
-          "description": "Indicates which scroll (horizontal or vertical) is to be used as the source.",
           "values": [
             {
               "name": "false"
@@ -3736,7 +3734,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
         }
       ],
       "references": [
@@ -3744,20 +3743,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/scroll-detector"
         }
-      ]
+      ],
+      "description": "Detects scroll event from an element."
     },
     {
       "name": "plus-signature",
-      "description": "Allows user to draw smooth signatures.",
       "attributes": [
         {
           "name": "background-color",
-          "description": "Specifies the background color.",
-          "values": []
+          "values": [],
+          "description": "Specifies the background color."
         },
         {
           "name": "clear-on-resize",
-          "description": "Clears the canvas after resizing.",
           "values": [
             {
               "name": "false"
@@ -3765,16 +3763,16 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Clears the canvas after resizing."
         },
         {
           "name": "color",
-          "description": "Specifies the color of the strokes.",
-          "values": []
+          "values": [],
+          "description": "Specifies the color of the strokes."
         },
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -3782,31 +3780,31 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "distance",
-          "description": "Specifies the distance between the previous point and the next one.",
-          "values": []
+          "values": [],
+          "description": "Specifies the distance between the previous point and the next one."
         },
         {
           "name": "dot-size",
-          "description": "Specifies the radius of a single dot.",
-          "values": []
+          "values": [],
+          "description": "Specifies the radius of a single dot."
         },
         {
           "name": "max-width",
-          "description": "Specifies the maximum width of the strokes.",
-          "values": []
+          "values": [],
+          "description": "Specifies the maximum width of the strokes."
         },
         {
           "name": "min-width",
-          "description": "Specifies the minimum width of the strokes.",
-          "values": []
+          "values": [],
+          "description": "Specifies the minimum width of the strokes."
         },
         {
           "name": "resizable",
-          "description": "Observes the element dimensions to apply new changes on the canvas.",
           "values": [
             {
               "name": "false"
@@ -3814,17 +3812,18 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Observes the element dimensions to apply new changes on the canvas."
         },
         {
           "name": "throttle",
-          "description": "Specifies the time distance between the previous point and the next one.",
-          "values": []
+          "values": [],
+          "description": "Specifies the time distance between the previous point and the next one."
         },
         {
           "name": "velocity",
-          "description": "Specifies the velocity based on the previous velocity.",
-          "values": []
+          "values": [],
+          "description": "Specifies the velocity based on the previous velocity."
         }
       ],
       "references": [
@@ -3832,16 +3831,16 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/signature"
         }
-      ]
+      ],
+      "description": "Allows user to draw smooth signatures."
     },
     {
       "name": "plus-spacer",
-      "description": "TODO",
       "attributes": [
         {
           "name": "grow",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -3849,20 +3848,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/spacer"
         }
-      ]
+      ],
+      "description": "TODO"
     },
     {
       "name": "plus-spinner",
-      "description": "An indicator of progress and activity.",
       "attributes": [
         {
           "name": "color",
-          "description": "Specifies the color.",
-          "values": []
+          "values": [],
+          "description": "Specifies the color."
         },
         {
           "name": "size",
-          "description": "Specifies the size of the spinner.",
           "values": [
             {
               "name": "inherit"
@@ -3876,11 +3874,11 @@
             {
               "name": "lg"
             }
-          ]
+          ],
+          "description": "Specifies the size of the spinner."
         },
         {
           "name": "type",
-          "description": "Specifies which variant of the spinner to use.",
           "values": [
             {
               "name": "default"
@@ -3900,7 +3898,8 @@
             {
               "name": "square"
             }
-          ]
+          ],
+          "description": "Specifies which variant of the spinner to use."
         }
       ],
       "references": [
@@ -3908,15 +3907,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/spinner"
         }
-      ]
+      ],
+      "description": "An indicator of progress and activity."
     },
     {
       "name": "plus-stack",
-      "description": "TODO.",
       "attributes": [
         {
           "name": "align-items",
-          "description": "TODO.",
           "values": [
             {
               "name": "flex-start"
@@ -3933,16 +3931,16 @@
             {
               "name": "stretch"
             }
-          ]
+          ],
+          "description": "TODO."
         },
         {
           "name": "gap",
-          "description": "TODO.",
-          "values": []
+          "values": [],
+          "description": "TODO."
         },
         {
           "name": "justify-content",
-          "description": "TODO.",
           "values": [
             {
               "name": "flex-start"
@@ -3962,11 +3960,11 @@
             {
               "name": "space-evenly"
             }
-          ]
+          ],
+          "description": "TODO."
         },
         {
           "name": "reverse",
-          "description": "TODO.",
           "values": [
             {
               "name": "false"
@@ -3974,11 +3972,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "TODO."
         },
         {
           "name": "vertical",
-          "description": "TODO.",
           "values": [
             {
               "name": "false"
@@ -3986,7 +3984,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "TODO."
         }
       ],
       "references": [
@@ -3994,20 +3993,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/stack"
         }
-      ]
+      ],
+      "description": "TODO."
     },
     {
       "name": "plus-sticky",
-      "description": "Element content is positioned based on the user's scroll position.",
       "attributes": [
         {
           "name": "top",
-          "description": "Specifies the space from top.",
-          "values": []
+          "values": [],
+          "description": "Specifies the space from top."
         },
         {
           "name": "watcher",
-          "description": "To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.",
           "values": [
             {
               "name": "false"
@@ -4015,12 +4013,13 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`."
         },
         {
           "name": "z-index",
-          "description": "Specifies the z-index.",
-          "values": []
+          "values": [],
+          "description": "Specifies the z-index."
         }
       ],
       "references": [
@@ -4028,15 +4027,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/sticky"
         }
-      ]
+      ],
+      "description": "Element content is positioned based on the user's scroll position."
     },
     {
       "name": "plus-switch",
-      "description": "Toggles the state of a single item on or off.",
       "attributes": [
         {
           "name": "checked",
-          "description": "Puts the switch in checked state.",
           "values": [
             {
               "name": "false"
@@ -4044,11 +4042,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Puts the switch in checked state."
         },
         {
           "name": "disabled",
-          "description": "Disables the switch.",
           "values": [
             {
               "name": "false"
@@ -4056,7 +4054,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the switch."
         }
       ],
       "references": [
@@ -4064,20 +4063,19 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/switch"
         }
-      ]
+      ],
+      "description": "Toggles the state of a single item on or off."
     },
     {
       "name": "plus-tabs",
-      "description": "Organizes content across different screens.",
       "attributes": [
         {
           "name": "value",
-          "description": "Provides your own value.",
-          "values": []
+          "values": [],
+          "description": "Provides your own value."
         },
         {
           "name": "vertical",
-          "description": "You can use vertical property for vertical mode.",
           "values": [
             {
               "name": "false"
@@ -4085,12 +4083,13 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "You can use vertical property for vertical mode."
         },
         {
           "name": "connector",
-          "description": "Panels are not always used inside tabs.They may be used outside, in which you can usethis property to connect them to their corresponding tabs.",
-          "values": []
+          "values": [],
+          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
         }
       ],
       "references": [
@@ -4098,15 +4097,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/tabs"
         }
-      ]
+      ],
+      "description": "Organizes content across different screens."
     },
     {
       "name": "plus-tabs-bar",
-      "description": "TODO: Arranges tabs within a bar.",
       "attributes": [
         {
           "name": "grow",
-          "description": "Grows tabs as much as all available space (occupies all horizontal space).",
           "values": [
             {
               "name": "false"
@@ -4114,11 +4112,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Grows tabs as much as all available space (occupies all horizontal space)."
         },
         {
           "name": "justify",
-          "description": "Specifies how the tabs are aligned.",
           "values": [
             {
               "name": "start"
@@ -4129,11 +4127,11 @@
             {
               "name": "end"
             }
-          ]
+          ],
+          "description": "Specifies how the tabs are aligned."
         },
         {
           "name": "reverse",
-          "description": "Reverses the arrangement of the tabs.",
           "values": [
             {
               "name": "false"
@@ -4141,7 +4139,8 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Reverses the arrangement of the tabs."
         }
       ],
       "references": [
@@ -4149,16 +4148,16 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/tabs-bar"
         }
-      ]
+      ],
+      "description": "TODO: Arranges tabs within a bar."
     },
     {
       "name": "plus-tabs-panel",
-      "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
       "attributes": [
         {
           "name": "value",
-          "description": "Provides your own value.",
-          "values": []
+          "values": [],
+          "description": "Provides your own value."
         }
       ],
       "references": [
@@ -4166,16 +4165,16 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/tabs-panel"
         }
-      ]
+      ],
+      "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed."
     },
     {
       "name": "plus-tabs-panels",
-      "description": "TODO: This element contains panels.",
       "attributes": [
         {
           "name": "connector",
-          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.",
-          "values": []
+          "values": [],
+          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
         }
       ],
       "references": [
@@ -4183,15 +4182,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/tabs-panels"
         }
-      ]
+      ],
+      "description": "TODO: This element contains panels."
     },
     {
       "name": "plus-tabs-tab",
-      "description": "TODO: Tabs make it easy to switch between different views.",
       "attributes": [
         {
           "name": "disabled",
-          "description": "A Tab can be disabled by setting disabled property.",
           "values": [
             {
               "name": "false"
@@ -4199,12 +4197,13 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "A Tab can be disabled by setting disabled property."
         },
         {
           "name": "value",
-          "description": "Provides your own value.",
-          "values": []
+          "values": [],
+          "description": "Provides your own value."
         }
       ],
       "references": [
@@ -4212,15 +4211,14 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/tabs-tab"
         }
-      ]
+      ],
+      "description": "TODO: Tabs make it easy to switch between different views."
     },
     {
       "name": "plus-tooltip",
-      "description": "TODO.",
       "attributes": [
         {
           "name": "arrow",
-          "description": "Specifies whether to display the arrow or not.",
           "values": [
             {
               "name": "false"
@@ -4228,16 +4226,16 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Specifies whether to display the arrow or not."
         },
         {
           "name": "delay",
-          "description": "Specifies a delay in milliseconds for show or hide.Use a number for both show and hide orcreate an array of two separate numbers for show and hide.",
-          "values": []
+          "values": [],
+          "description": "Specifies a delay in milliseconds for show or hide. Use a number for both show and hide or create an array of two separate numbers for show and hide."
         },
         {
           "name": "disabled",
-          "description": "Disables the element functionality.",
           "values": [
             {
               "name": "false"
@@ -4245,11 +4243,11 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "Disables the element functionality."
         },
         {
           "name": "fixed",
-          "description": "TODO",
           "values": [
             {
               "name": "false"
@@ -4257,16 +4255,16 @@
             {
               "name": "true"
             }
-          ]
+          ],
+          "description": "TODO"
         },
         {
           "name": "offset",
-          "description": "TODO",
-          "values": []
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "placement",
-          "description": "Specifies the display location of the element relative to the reference.",
           "values": [
             {
               "name": "top"
@@ -4334,11 +4332,11 @@
             {
               "name": "end-bottom"
             }
-          ]
+          ],
+          "description": "Specifies the display location of the element relative to the reference."
         },
         {
           "name": "reference",
-          "description": "Specifies the element to which the tooltip will be attached.Use `next` to attach to the next sibling.Use `parent` to attach to the parent.Use `previous` to attach to the previous sibling.Use a string to find an element to attach to that.Use an element to attach to that.",
           "values": [
             {
               "name": "next"
@@ -4349,11 +4347,11 @@
             {
               "name": "previous"
             }
-          ]
+          ],
+          "description": "Specifies the element to which the tooltip will be attached. Use `next` to attach to the next sibling. Use `parent` to attach to the parent. Use `previous` to attach to the previous sibling. Use a string to find an element to attach to that. Use an element to attach to that."
         },
         {
           "name": "trigger",
-          "description": "Specifies the activation method.",
           "values": [
             {
               "name": "click"
@@ -4367,11 +4365,11 @@
             {
               "name": "manual"
             }
-          ]
+          ],
+          "description": "Specifies the activation method."
         },
         {
           "name": "z",
-          "description": "TODO",
           "values": [
             {
               "name": "auto"
@@ -4385,7 +4383,8 @@
             {
               "name": "move"
             }
-          ]
+          ],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4393,7 +4392,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/tooltip"
         }
-      ]
+      ],
+      "description": "TODO."
     }
   ]
 }

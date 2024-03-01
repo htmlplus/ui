@@ -4,6 +4,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 /**
  * @stable
+ *
  * @slot default - The default slot.
  * @slot normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`.
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.

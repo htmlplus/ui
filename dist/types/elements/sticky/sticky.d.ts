@@ -3,6 +3,7 @@ import { PlusCore } from "../../core";
 import { StickyState, StickyTop } from './sticky.types';
 /**
  * @stable
+ *
  * @slot default - The default slot.
  * @slot normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`.
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.

@@ -2,6 +2,7 @@ import { PlusCore } from "../../core";
 import { AvatarShape, AvatarSize } from './avatar.types';
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 export declare class Avatar extends PlusCore {

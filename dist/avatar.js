@@ -4,6 +4,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 let Avatar = class Avatar extends PlusCore {

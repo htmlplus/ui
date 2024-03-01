@@ -6,6 +6,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
  * @part line    - The prefix and suffix element.
  * @part prefix  - The prefix element.
  * @part suffix  - The suffix element.
+ *
  * @slot default - The default slot.
  */
 let Divider = class Divider extends PlusCore {

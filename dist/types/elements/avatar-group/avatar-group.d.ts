@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 export declare class AvatarGroup extends PlusCore {

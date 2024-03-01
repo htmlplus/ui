@@ -8,6 +8,7 @@ const { reconnect } = createLink({
 });
 /**
  * TODO: This element contains panels.
+ *
  * @slot default - The default slot.
  */
 let TabsPanels = class TabsPanels extends PlusCore {

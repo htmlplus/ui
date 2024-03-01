@@ -5,6 +5,7 @@ import './assets/names/fading-entrance/fade-in.js';
 import './assets/names/fading-exits/fade-out.js';
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 export declare class Animation extends PlusCore {

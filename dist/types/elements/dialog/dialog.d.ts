@@ -4,6 +4,7 @@ import { Animation, Portal } from "../../services";
 import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
 /**
  * @part backdrop - Backdrop element.
+ *
  * @slot default - The default slot.
  */
 export declare class Dialog extends PlusCore {

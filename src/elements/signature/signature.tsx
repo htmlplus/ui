@@ -19,7 +19,7 @@ let Core;
 
 /**
  * @stable
- * 
+ *
  * @part canvas - The canvas element.
  */
 @Element()
@@ -150,8 +150,8 @@ export class Signature extends PlusForm {
 
   /**
    * Draws from the data.
-   * @param data Collections of points.
-   * @param clear Clears the canvas before drawing new points.
+   * @param data  - Collections of points.
+   * @param clear - Clears the canvas before drawing new points.
    */
   @Method()
   fromData(data: SignaturePointGroup[], clear?: boolean) {
@@ -163,8 +163,8 @@ export class Signature extends PlusForm {
    * Draws from the data URL. [More](https://mdn.io/drawImage).
    * This method does not populate the internal data structure that represents the drawn signature.
    * Thus, after using `fromDataURL`, `toData` won't work properly.
-   * @param dataUrl A string containing the [data URL](https://mdn.io/dataURL).
-   * @param options TODO
+   * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
+   * @param options - TODO
    */
   @Method()
   async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
@@ -209,7 +209,7 @@ export class Signature extends PlusForm {
 
   /**
    * Returns SVG string.
-   * @param includeBackgroundColor Adds the background color to the SVG output.
+   * @param includeBackgroundColor - Adds the background color to the SVG output.
    */
   @Method()
   toSVG(includeBackgroundColor?: boolean): string {
@@ -232,7 +232,7 @@ export class Signature extends PlusForm {
 
   /**
    * Syncs the canvas dimensions with the element dimensions.
-   * @param clear Clears the canvas after resizing.
+   * @param clear - Clears the canvas after resizing.
    */
   @Method()
   resize(clear?: boolean) {

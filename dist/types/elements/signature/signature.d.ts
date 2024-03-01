@@ -4,6 +4,7 @@ import { PlusForm } from "../../core";
 import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 /**
  * @stable
+ *
  * @part canvas - The canvas element.
  */
 export declare class Signature extends PlusForm {
@@ -87,16 +88,16 @@ export declare class Signature extends PlusForm {
     clear(): void;
     /**
      * Draws from the data.
-     * @param data Collections of points.
-     * @param clear Clears the canvas before drawing new points.
+     * @param data  - Collections of points.
+     * @param clear - Clears the canvas before drawing new points.
      */
     fromData(data: SignaturePointGroup[], clear?: boolean): void;
     /**
      * Draws from the data URL. [More](https://mdn.io/drawImage).
      * This method does not populate the internal data structure that represents the drawn signature.
      * Thus, after using `fromDataURL`, `toData` won't work properly.
-     * @param dataUrl A string containing the [data URL](https://mdn.io/dataURL).
-     * @param options TODO
+     * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
+     * @param options - TODO
      */
     fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions): Promise<void>;
     /**
@@ -115,7 +116,7 @@ export declare class Signature extends PlusForm {
     toDataURL(type: 'image/svg+xml', includeBackgroundColor?: boolean): string;
     /**
      * Returns SVG string.
-     * @param includeBackgroundColor Adds the background color to the SVG output.
+     * @param includeBackgroundColor - Adds the background color to the SVG output.
      */
     toSVG(includeBackgroundColor?: boolean): string;
     /**
@@ -124,7 +125,7 @@ export declare class Signature extends PlusForm {
     redo(): void;
     /**
      * Syncs the canvas dimensions with the element dimensions.
-     * @param clear Clears the canvas after resizing.
+     * @param clear - Clears the canvas after resizing.
      */
     resize(clear?: boolean): void;
     /**
@@ -228,16 +229,16 @@ export interface SignatureMethods {
     clear(): any;
     /**
     * Draws from the data.
-    * @param data Collections of points.
-    * @param clear Clears the canvas before drawing new points.
+    * @param data  - Collections of points.
+    * @param clear - Clears the canvas before drawing new points.
     */
     fromData(data: SignaturePointGroup[], clear?: boolean): any;
     /**
     * Draws from the data URL. [More](https://mdn.io/drawImage).
     * This method does not populate the internal data structure that represents the drawn signature.
     * Thus, after using `fromDataURL`, `toData` won't work properly.
-    * @param dataUrl A string containing the [data URL](https://mdn.io/dataURL).
-    * @param options TODO
+    * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
+    * @param options - TODO
     */
     fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions): any;
     /**
@@ -252,7 +253,7 @@ export interface SignatureMethods {
     toDataURL(type?: string, options?: any): string;
     /**
     * Returns SVG string.
-    * @param includeBackgroundColor Adds the background color to the SVG output.
+    * @param includeBackgroundColor - Adds the background color to the SVG output.
     */
     toSVG(includeBackgroundColor?: boolean): string;
     /**
@@ -261,7 +262,7 @@ export interface SignatureMethods {
     redo(): any;
     /**
     * Syncs the canvas dimensions with the element dimensions.
-    * @param clear Clears the canvas after resizing.
+    * @param clear - Clears the canvas after resizing.
     */
     resize(clear?: boolean): any;
     /**

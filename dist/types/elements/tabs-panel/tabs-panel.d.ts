@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
+ *
  * @slot default - The default slot.
  */
 export declare class TabsPanel extends PlusCore {

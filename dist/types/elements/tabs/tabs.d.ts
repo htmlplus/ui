@@ -2,6 +2,7 @@ import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
 /**
  * @development
+ *
  * @slot default - The default slot.
  */
 export declare class Tabs extends PlusCore {

@@ -2,6 +2,7 @@ import { PlusCore } from "../../core";
 import { IconFlip, IconResolver, IconSize } from './icon.types';
 /**
  * @stable
+ *
  * @part svg - The svg element.
  */
 export declare class Icon extends PlusCore {

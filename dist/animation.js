@@ -56,6 +56,7 @@ register('fade-out', [
 
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 let Animation = class Animation extends PlusCore {

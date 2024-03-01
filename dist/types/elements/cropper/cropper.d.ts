@@ -3,9 +3,9 @@ import type CropperCoreType from 'cropperjs';
 import { PlusCore } from "../../core";
 import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, CropperPointerEvent, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomEvent } from './cropper.types';
 /**
- * @dependencies cropperjs
- * @stable
  * @thirdParty
+ * @stable
+ * @dependencies cropperjs
  */
 export declare class Cropper extends PlusCore {
     static TAG: string;

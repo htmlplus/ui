@@ -2,6 +2,7 @@ import { _ as __decorate, P as PlusCore, h as html, e as attributes, f as host, 
 
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 let Intersection = class Intersection extends PlusCore {

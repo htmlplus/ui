@@ -30,6 +30,7 @@ const parse = (input) => {
 };
 /**
  * @stable
+ *
  * @part svg - The svg element.
  */
 let Icon = class Icon extends PlusCore {

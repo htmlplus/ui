@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * TODO: Tabs make it easy to switch between different views.
+ *
  * @slot default - The default slot.
  */
 export declare class TabsTab extends PlusCore {

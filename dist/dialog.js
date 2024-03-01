@@ -9,6 +9,7 @@ const { Action, Observable, reconnect } = createLink({
 });
 /**
  * @part backdrop - Backdrop element.
+ *
  * @slot default - The default slot.
  */
 let Dialog = Dialog_1 = class Dialog extends PlusCore {

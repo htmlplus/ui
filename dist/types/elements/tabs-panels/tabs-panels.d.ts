@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * TODO: This element contains panels.
+ *
  * @slot default - The default slot.
  */
 export declare class TabsPanels extends PlusCore {

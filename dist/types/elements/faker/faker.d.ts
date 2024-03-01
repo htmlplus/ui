@@ -1,9 +1,9 @@
 import type { Faker as FakerCoreType } from '@faker-js/faker';
 import { PlusCore } from "../../core";
 /**
- * @dependencies @faker-js/faker
- * @stable
  * @thirdParty
+ * @stable
+ * @dependencies @faker-js/faker
  */
 export declare class Faker extends PlusCore {
     static TAG: string;

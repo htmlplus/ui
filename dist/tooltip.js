@@ -4,8 +4,9 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 let FloatingCore;
 /**
- * @dependencies @floating-ui/dom
  * @thirdParty
+ *
+ * @dependencies @floating-ui/dom
  */
 let Tooltip = class Tooltip extends PlusCore {
     constructor() {

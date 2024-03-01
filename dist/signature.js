@@ -5,6 +5,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 let Core;
 /**
  * @stable
+ *
  * @part canvas - The canvas element.
  */
 let Signature = class Signature extends PlusForm {
@@ -66,8 +67,8 @@ let Signature = class Signature extends PlusForm {
     }
     /**
      * Draws from the data.
-     * @param data Collections of points.
-     * @param clear Clears the canvas before drawing new points.
+     * @param data  - Collections of points.
+     * @param clear - Clears the canvas before drawing new points.
      */
     fromData(data, clear) {
         if (clear)
@@ -78,8 +79,8 @@ let Signature = class Signature extends PlusForm {
      * Draws from the data URL. [More](https://mdn.io/drawImage).
      * This method does not populate the internal data structure that represents the drawn signature.
      * Thus, after using `fromDataURL`, `toData` won't work properly.
-     * @param dataUrl A string containing the [data URL](https://mdn.io/dataURL).
-     * @param options TODO
+     * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
+     * @param options - TODO
      */
     fromDataURL(dataUrl, options) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -116,7 +117,7 @@ let Signature = class Signature extends PlusForm {
     }
     /**
      * Returns SVG string.
-     * @param includeBackgroundColor Adds the background color to the SVG output.
+     * @param includeBackgroundColor - Adds the background color to the SVG output.
      */
     toSVG(includeBackgroundColor) {
         return this.instance.toSVG({
@@ -135,7 +136,7 @@ let Signature = class Signature extends PlusForm {
     }
     /**
      * Syncs the canvas dimensions with the element dimensions.
-     * @param clear Clears the canvas after resizing.
+     * @param clear - Clears the canvas after resizing.
      */
     resize(clear) {
         const { width, height, offsetWidth, offsetHeight } = this.$canvas;

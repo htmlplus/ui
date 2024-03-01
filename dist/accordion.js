@@ -4,10 +4,12 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 /**
  * @stable
+ *
  * @part body          - The body element.
  * @part content       - The content element.
  * @part summary       - The summary element.
  * @part svg           - The svg element.
+ *
  * @slot default       - The default slot.
  * @slot icon          - The icon slot.
  * @slot icon-expand   - The expand icon slot.

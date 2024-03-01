@@ -3,8 +3,9 @@ import type * as FloatingCoreType from '@floating-ui/dom';
 import { PlusCore } from "../../core";
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
- * @dependencies @floating-ui/dom
  * @thirdParty
+ *
+ * @dependencies @floating-ui/dom
  */
 export declare class Tooltip extends PlusCore {
     static TAG: string;

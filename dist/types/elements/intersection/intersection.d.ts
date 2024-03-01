@@ -2,6 +2,7 @@ import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 export declare class Intersection extends PlusCore {

@@ -2,6 +2,7 @@ import { _ as __decorate, P as PlusCore, o as on, k as off, h as html, b as Prop
 
 /**
  * @stable
+ *
  * @slot default - The default slot.
  */
 let ClickOutside = class ClickOutside extends PlusCore {

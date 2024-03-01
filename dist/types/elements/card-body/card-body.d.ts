@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * @development
+ *
  * @slot default - The default slot.
  */
 export declare class CardBody extends PlusCore {

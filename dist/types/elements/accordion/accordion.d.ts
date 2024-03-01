@@ -3,10 +3,12 @@ import { PlusCore } from "../../core";
 import { Animation2 } from "../../services";
 /**
  * @stable
+ *
  * @part body          - The body element.
  * @part content       - The content element.
  * @part summary       - The summary element.
  * @part svg           - The svg element.
+ *
  * @slot default       - The default slot.
  * @slot icon          - The icon slot.
  * @slot icon-expand   - The expand icon slot.

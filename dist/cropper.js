@@ -4,9 +4,9 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 let CropperCore;
 /**
- * @dependencies cropperjs
- * @stable
  * @thirdParty
+ * @stable
+ * @dependencies cropperjs
  */
 let Cropper = class Cropper extends PlusCore {
     constructor() {
