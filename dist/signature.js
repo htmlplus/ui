@@ -249,9 +249,9 @@ let Signature = class Signature extends PlusForm {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Signature.TAG = "plus-signature";
+Signature.tag = "plus-signature";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Signature.STYLES = css_248z;
+Signature.style = css_248z;
 __decorate([
     Property({
         type: 256

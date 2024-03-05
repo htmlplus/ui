@@ -19,9 +19,9 @@ let GridItem = class GridItem extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-GridItem.TAG = "plus-grid-item";
+GridItem.tag = "plus-grid-item";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-GridItem.STYLES = css_248z;
+GridItem.style = css_248z;
 __decorate([
     Property({
         reflect: true,

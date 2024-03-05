@@ -11,9 +11,9 @@ let Card = class Card extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Card.TAG = "plus-card";
+Card.tag = "plus-card";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Card.STYLES = css_248z;
+Card.style = css_248z;
 __decorate([
     Property({
         reflect: true,

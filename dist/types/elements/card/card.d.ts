@@ -4,8 +4,8 @@ import { CardElevation } from './card.types';
  * @slot default - The default slot.
  */
 export declare class Card extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * If you want the card to have shadow, use the elevation property,
      * And select the property value between `1` and `24`.

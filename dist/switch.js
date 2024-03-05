@@ -48,9 +48,9 @@ let Switch = class Switch extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Switch.TAG = "plus-switch";
+Switch.tag = "plus-switch";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Switch.STYLES = css_248z;
+Switch.style = css_248z;
 __decorate([
     Property({
         reflect: true,

@@ -9,8 +9,8 @@ import './assets/names/fading-exits/fade-out.js';
  * @slot default - The default slot.
  */
 export declare class Animation extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Determines how values are combined between this animation and other,
      * separate animations that do not specify their own specific composite operation.

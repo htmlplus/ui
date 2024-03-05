@@ -4,7 +4,7 @@ import { StackAlignItems, StackJustifyContent } from './stack.types';
  * @slot default - The default slot.
  */
 export declare class Stack extends PlusCore {
-    static TAG: string;
+    static tag: string;
     /**
      * TODO.
      */

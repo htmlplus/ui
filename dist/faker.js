@@ -41,9 +41,9 @@ let Faker = class Faker extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Faker.TAG = "plus-faker";
+Faker.tag = "plus-faker";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Faker.STYLES = css_248z;
+Faker.style = css_248z;
 __decorate([
     Property({
         type: 256

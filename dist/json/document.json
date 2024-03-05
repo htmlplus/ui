@@ -77,6 +77,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -85,6 +86,7 @@
         {
           "attribute": "open",
           "name": "open",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -93,6 +95,7 @@
         {
           "attribute": "summary",
           "name": "summary",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -257,6 +260,7 @@
           "attribute": "composite",
           "initializer": "'replace'",
           "name": "composite",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "AnimationComposite",
@@ -267,6 +271,7 @@
           "attribute": "delay",
           "initializer": "0",
           "name": "delay",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -276,6 +281,7 @@
           "attribute": "direction",
           "initializer": "'normal'",
           "name": "direction",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "AnimationDirection",
@@ -286,6 +292,7 @@
           "attribute": "duration",
           "initializer": "1000",
           "name": "duration",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -295,6 +302,7 @@
           "attribute": "easing",
           "initializer": "'linear'",
           "name": "easing",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -304,6 +312,7 @@
           "attribute": "end-delay",
           "initializer": "0",
           "name": "endDelay",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -313,6 +322,7 @@
           "attribute": "fill",
           "initializer": "'none'",
           "name": "fill",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "AnimationFill",
@@ -322,6 +332,7 @@
         {
           "attribute": "instance",
           "name": "instance",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "globalThis.Animation",
@@ -331,6 +342,7 @@
           "attribute": "iteration-composite",
           "initializer": "'replace'",
           "name": "iterationComposite",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "AnimationIterationComposite",
@@ -341,6 +353,7 @@
           "attribute": "iterations",
           "initializer": "1",
           "name": "iterations",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -350,6 +363,7 @@
           "attribute": "iteration-start",
           "initializer": "0",
           "name": "iterationStart",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -358,6 +372,7 @@
         {
           "attribute": "keyframes",
           "name": "keyframes",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "Keyframe[]",
@@ -366,6 +381,7 @@
         {
           "attribute": "name",
           "name": "name",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -375,6 +391,7 @@
           "attribute": "playback-rate",
           "initializer": "1",
           "name": "playbackRate",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -383,6 +400,7 @@
         {
           "attribute": "run",
           "name": "run",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -410,6 +428,7 @@
         {
           "attribute": "min-height",
           "name": "minHeight",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number | string",
@@ -418,6 +437,7 @@
         {
           "attribute": "max-height",
           "name": "maxHeight",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number | string",
@@ -427,6 +447,7 @@
           "attribute": "value",
           "initializer": "1",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number | string",
@@ -455,6 +476,7 @@
           "attribute": "shape",
           "initializer": "'round'",
           "name": "shape",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "AvatarShape",
@@ -465,6 +487,7 @@
           "attribute": "size",
           "initializer": "'md'",
           "name": "size",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "AvatarSize",
@@ -509,6 +532,7 @@
         {
           "attribute": "hoverable",
           "name": "hoverable",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -517,6 +541,7 @@
         {
           "attribute": "stacked",
           "name": "stacked",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -554,6 +579,7 @@
           "attribute": "expander-text",
           "initializer": "'Show path'",
           "name": "expanderText",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -563,6 +589,7 @@
           "attribute": "offset",
           "initializer": "1",
           "name": "offset",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -571,6 +598,7 @@
         {
           "attribute": "max",
           "name": "max",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -579,6 +607,7 @@
         {
           "attribute": "separator",
           "name": "separator",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -655,7 +684,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-02-29T14:21:36.708Z",
+      "lastModified": "2024-03-04T19:33:44.735Z",
       "methods": [
         {
           "async": false,
@@ -670,6 +699,7 @@
         {
           "attribute": "accept",
           "name": "accept",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -678,6 +708,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -686,6 +717,7 @@
         {
           "attribute": "droppable",
           "name": "droppable",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -694,6 +726,7 @@
         {
           "attribute": "min",
           "name": "min",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -702,6 +735,7 @@
         {
           "attribute": "max",
           "name": "max",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -710,6 +744,7 @@
         {
           "attribute": "min-size",
           "name": "minSize",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -718,6 +753,7 @@
         {
           "attribute": "max-size",
           "name": "maxSize",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -726,6 +762,7 @@
         {
           "attribute": "multiple",
           "name": "multiple",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -753,6 +790,7 @@
         {
           "attribute": "elevation",
           "name": "elevation",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "CardElevation",
@@ -762,6 +800,7 @@
         {
           "attribute": "flat",
           "name": "flat",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -770,6 +809,7 @@
         {
           "attribute": "outlined",
           "name": "outlined",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -778,6 +818,7 @@
         {
           "attribute": "tile",
           "name": "tile",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -846,6 +887,7 @@
         {
           "attribute": "inline",
           "name": "inline",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -880,6 +922,7 @@
         {
           "attribute": "capture",
           "name": "capture",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -888,6 +931,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -896,6 +940,7 @@
         {
           "attribute": "once",
           "name": "once",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -964,6 +1009,7 @@
           "attribute": "easing",
           "initializer": "'ease-out-expo'",
           "name": "easing",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CounterEasing",
@@ -974,6 +1020,7 @@
           "attribute": "decimal",
           "initializer": "'.'",
           "name": "decimal",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -983,6 +1030,7 @@
           "attribute": "decimals",
           "initializer": "0",
           "name": "decimals",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -992,6 +1040,7 @@
           "attribute": "delay",
           "initializer": "0",
           "name": "delay",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -1001,6 +1050,7 @@
           "attribute": "duration",
           "initializer": "1000",
           "name": "duration",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -1010,6 +1060,7 @@
           "attribute": "from",
           "initializer": "0",
           "name": "from",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -1018,6 +1069,7 @@
         {
           "attribute": "numerals",
           "name": "numerals",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string[]",
@@ -1026,6 +1078,7 @@
         {
           "attribute": "play",
           "name": "play",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1034,6 +1087,7 @@
         {
           "attribute": "separator",
           "name": "separator",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1042,6 +1096,7 @@
         {
           "attribute": "to",
           "name": "to",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -1237,6 +1292,7 @@
           "attribute": "area",
           "initializer": "0.75",
           "name": "area",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -1245,6 +1301,7 @@
         {
           "attribute": "aspect-ratio",
           "name": "aspectRatio",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperAspectRatio",
@@ -1254,6 +1311,7 @@
         {
           "attribute": "background",
           "name": "background",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1262,6 +1320,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1270,6 +1329,7 @@
         {
           "attribute": "guides",
           "name": "guides",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1278,6 +1338,7 @@
         {
           "attribute": "indicator",
           "name": "indicator",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1287,6 +1348,7 @@
           "attribute": "mode",
           "initializer": "'move'",
           "name": "mode",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperMode",
@@ -1297,6 +1359,7 @@
           "attribute": "resizer",
           "initializer": "'both'",
           "name": "resizer",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperResizer",
@@ -1307,6 +1370,7 @@
           "attribute": "resizer-shape",
           "initializer": "'square'",
           "name": "resizerShape",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperResizerShape",
@@ -1317,6 +1381,7 @@
           "attribute": "responsive",
           "initializer": "'reset'",
           "name": "responsive",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperResponsive",
@@ -1327,6 +1392,7 @@
           "attribute": "shape",
           "initializer": "'rectangle'",
           "name": "shape",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperShape",
@@ -1336,6 +1402,7 @@
         {
           "attribute": "src",
           "name": "src",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1344,6 +1411,7 @@
         {
           "attribute": "transparent",
           "name": "transparent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1352,6 +1420,7 @@
         {
           "attribute": "value",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperValue",
@@ -1362,6 +1431,7 @@
           "attribute": "view",
           "initializer": "'cover'",
           "name": "view",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperView",
@@ -1372,6 +1442,7 @@
           "attribute": "zoomable",
           "initializer": true,
           "name": "zoomable",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "CropperZoomable",
@@ -1382,6 +1453,7 @@
           "attribute": "zoom-ratio",
           "initializer": "0.1",
           "name": "zoomRatio",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -1526,6 +1598,7 @@
         {
           "attribute": "animation",
           "name": "animation",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "string",
@@ -1534,6 +1607,7 @@
         {
           "attribute": "connector",
           "name": "connector",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1542,6 +1616,7 @@
         {
           "attribute": "full-height",
           "name": "fullHeight",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1550,6 +1625,7 @@
         {
           "attribute": "full-width",
           "name": "fullWidth",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1558,6 +1634,7 @@
         {
           "attribute": "fullscreen",
           "name": "fullscreen",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DialogFullscreen",
@@ -1567,6 +1644,7 @@
         {
           "attribute": "keyboard",
           "name": "keyboard",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1575,6 +1653,7 @@
         {
           "attribute": "open",
           "name": "open",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1583,6 +1662,7 @@
         {
           "attribute": "persistent",
           "name": "persistent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1592,6 +1672,7 @@
           "attribute": "placement",
           "initializer": "'top'",
           "name": "placement",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DialogPlacement",
@@ -1601,6 +1682,7 @@
         {
           "attribute": "portal",
           "name": "portal",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1611,6 +1693,7 @@
           "attribute": "portal-strategy",
           "initializer": "'append'",
           "name": "portalStrategy",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DialogPortalStrategy",
@@ -1622,6 +1705,7 @@
           "attribute": "portal-target",
           "initializer": "'body'",
           "name": "portalTarget",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DialogPortalTarget",
@@ -1632,6 +1716,7 @@
         {
           "attribute": "scrollable",
           "name": "scrollable",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1640,6 +1725,7 @@
         {
           "attribute": "size",
           "name": "size",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DialogSize",
@@ -1649,6 +1735,7 @@
         {
           "attribute": "sticky",
           "name": "sticky",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1657,6 +1744,7 @@
         {
           "attribute": "transparent",
           "name": "transparent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1689,6 +1777,7 @@
         {
           "attribute": "scrollable",
           "name": "scrollable",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1713,6 +1802,7 @@
         {
           "attribute": "scrollable",
           "name": "scrollable",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1767,6 +1857,7 @@
         {
           "attribute": "connector",
           "name": "connector",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1802,6 +1893,7 @@
           "attribute": "placement",
           "initializer": "'center'",
           "name": "placement",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "DividerPlacement",
@@ -1812,6 +1904,7 @@
           "attribute": "width",
           "initializer": "'md'",
           "name": "width",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "DividerWidth",
@@ -1822,6 +1915,7 @@
           "attribute": "type",
           "initializer": "'solid'",
           "name": "type",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "DividerType",
@@ -1832,6 +1926,7 @@
           "attribute": "variant",
           "initializer": "'full'",
           "name": "variant",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "DividerVariant",
@@ -1841,6 +1936,7 @@
         {
           "attribute": "vertical",
           "name": "vertical",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1906,6 +2002,7 @@
         {
           "attribute": "animation",
           "name": "animation",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "string",
@@ -1915,6 +2012,7 @@
           "attribute": "backdrop",
           "initializer": "'auto'",
           "name": "backdrop",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DrawerBackdrop",
@@ -1925,6 +2023,7 @@
           "attribute": "breakpoint",
           "initializer": "'md'",
           "name": "breakpoint",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DrawerBreakpoint",
@@ -1934,6 +2033,7 @@
         {
           "attribute": "connector",
           "name": "connector",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1942,6 +2042,7 @@
         {
           "attribute": "mini",
           "name": "mini",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1950,6 +2051,7 @@
         {
           "attribute": "mini-size",
           "name": "miniSize",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1958,6 +2060,7 @@
         {
           "attribute": "open",
           "name": "open",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -1966,6 +2069,7 @@
         {
           "attribute": "persistent",
           "name": "persistent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1974,6 +2078,7 @@
         {
           "attribute": "placement",
           "name": "placement",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DrawerPlacement",
@@ -1983,6 +2088,7 @@
         {
           "attribute": "flexible",
           "name": "flexible",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -1991,6 +2097,7 @@
         {
           "attribute": "size",
           "name": "size",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -1999,6 +2106,7 @@
         {
           "attribute": "temporary",
           "name": "temporary",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "DrawerTemporary",
@@ -2037,6 +2145,7 @@
         {
           "attribute": "connector",
           "name": "connector",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -2072,6 +2181,7 @@
           "attribute": "api",
           "initializer": "'lorem.paragraph'",
           "name": "api",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -2080,6 +2190,7 @@
         {
           "attribute": "arguments",
           "name": "arguments",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "Array<any>",
@@ -2088,6 +2199,7 @@
         {
           "attribute": "instance",
           "name": "instance",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "FakerCoreType",
@@ -2097,6 +2209,7 @@
         {
           "attribute": "seed",
           "name": "seed",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -2121,6 +2234,7 @@
           "attribute": "display",
           "initializer": "'short'",
           "name": "display",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "FormatBytesDisplay",
@@ -2130,6 +2244,7 @@
         {
           "attribute": "locale",
           "name": "locale",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string | string[]",
@@ -2138,6 +2253,7 @@
         {
           "attribute": "decimals",
           "name": "decimals",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number | [number, number]",
@@ -2147,6 +2263,7 @@
           "attribute": "separator",
           "initializer": "' '",
           "name": "separator",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -2155,6 +2272,7 @@
         {
           "attribute": "signed",
           "name": "signed",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -2164,6 +2282,7 @@
           "attribute": "standard",
           "initializer": "'METRIC'",
           "name": "standard",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "FormatBytesStandard",
@@ -2174,6 +2293,7 @@
           "attribute": "unit",
           "initializer": "'auto'",
           "name": "unit",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "FormatBytesUnit",
@@ -2183,6 +2303,7 @@
         {
           "attribute": "value",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -2205,6 +2326,7 @@
           "attribute": "align-content",
           "initializer": "'stretch'",
           "name": "alignContent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2214,6 +2336,7 @@
         {
           "attribute": "align-content-xs",
           "name": "alignContentXs",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2223,6 +2346,7 @@
         {
           "attribute": "align-content-sm",
           "name": "alignContentSm",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2232,6 +2356,7 @@
         {
           "attribute": "align-content-md",
           "name": "alignContentMd",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2241,6 +2366,7 @@
         {
           "attribute": "align-content-lg",
           "name": "alignContentLg",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2250,6 +2376,7 @@
         {
           "attribute": "align-content-xl",
           "name": "alignContentXl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2259,6 +2386,7 @@
         {
           "attribute": "align-content-xxl",
           "name": "alignContentXxl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignContent",
@@ -2269,6 +2397,7 @@
           "attribute": "align-items",
           "initializer": "'stretch'",
           "name": "alignItems",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2278,6 +2407,7 @@
         {
           "attribute": "align-items-xs",
           "name": "alignItemsXs",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2287,6 +2417,7 @@
         {
           "attribute": "align-items-sm",
           "name": "alignItemsSm",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2296,6 +2427,7 @@
         {
           "attribute": "align-items-md",
           "name": "alignItemsMd",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2305,6 +2437,7 @@
         {
           "attribute": "align-items-lg",
           "name": "alignItemsLg",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2314,6 +2447,7 @@
         {
           "attribute": "align-items-xl",
           "name": "alignItemsXl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2323,6 +2457,7 @@
         {
           "attribute": "align-items-xxl",
           "name": "alignItemsXxl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridAlignItems",
@@ -2332,6 +2467,7 @@
         {
           "attribute": "gutter",
           "name": "gutter",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridGutter",
@@ -2341,6 +2477,7 @@
         {
           "attribute": "gutter-x",
           "name": "gutterX",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridGutter",
@@ -2350,6 +2487,7 @@
         {
           "attribute": "gutter-y",
           "name": "gutterY",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridGutter",
@@ -2360,6 +2498,7 @@
           "attribute": "justify-content",
           "initializer": "'start'",
           "name": "justifyContent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2369,6 +2508,7 @@
         {
           "attribute": "justify-content-xs",
           "name": "justifyContentXs",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2378,6 +2518,7 @@
         {
           "attribute": "justify-content-sm",
           "name": "justifyContentSm",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2387,6 +2528,7 @@
         {
           "attribute": "justify-content-md",
           "name": "justifyContentMd",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2396,6 +2538,7 @@
         {
           "attribute": "justify-content-lg",
           "name": "justifyContentLg",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2405,6 +2548,7 @@
         {
           "attribute": "justify-content-xl",
           "name": "justifyContentXl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2414,6 +2558,7 @@
         {
           "attribute": "justify-content-xxl",
           "name": "justifyContentXxl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridJustifyContent",
@@ -2423,6 +2568,7 @@
         {
           "attribute": "reverse",
           "name": "reverse",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -2431,6 +2577,7 @@
         {
           "attribute": "vertical",
           "name": "vertical",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -2440,6 +2587,7 @@
           "attribute": "wrap",
           "initializer": "'on'",
           "name": "wrap",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2449,6 +2597,7 @@
         {
           "attribute": "wrap-xs",
           "name": "wrapXs",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2458,6 +2607,7 @@
         {
           "attribute": "wrap-sm",
           "name": "wrapSm",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2467,6 +2617,7 @@
         {
           "attribute": "wrap-md",
           "name": "wrapMd",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2476,6 +2627,7 @@
         {
           "attribute": "wrap-lg",
           "name": "wrapLg",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2485,6 +2637,7 @@
         {
           "attribute": "wrap-xl",
           "name": "wrapXl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2494,6 +2647,7 @@
         {
           "attribute": "wrap-xxl",
           "name": "wrapXxl",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "GridWrap",
@@ -2533,6 +2687,7 @@
           "attribute": "align-self",
           "initializer": "'auto'",
           "name": "alignSelf",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2542,6 +2697,7 @@
         {
           "attribute": "align-self-xs",
           "name": "alignSelfXs",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2551,6 +2707,7 @@
         {
           "attribute": "align-self-sm",
           "name": "alignSelfSm",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2560,6 +2717,7 @@
         {
           "attribute": "align-self-md",
           "name": "alignSelfMd",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2569,6 +2727,7 @@
         {
           "attribute": "align-self-lg",
           "name": "alignSelfLg",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2578,6 +2737,7 @@
         {
           "attribute": "align-self-xl",
           "name": "alignSelfXl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2587,6 +2747,7 @@
         {
           "attribute": "align-self-xxl",
           "name": "alignSelfXxl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemAlignSelf",
@@ -2596,6 +2757,7 @@
         {
           "attribute": "xs",
           "name": "xs",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemColumn",
@@ -2605,6 +2767,7 @@
         {
           "attribute": "sm",
           "name": "sm",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemColumn",
@@ -2614,6 +2777,7 @@
         {
           "attribute": "md",
           "name": "md",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemColumn",
@@ -2623,6 +2787,7 @@
         {
           "attribute": "lg",
           "name": "lg",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemColumn",
@@ -2632,6 +2797,7 @@
         {
           "attribute": "xl",
           "name": "xl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemColumn",
@@ -2641,6 +2807,7 @@
         {
           "attribute": "xxl",
           "name": "xxl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemColumn",
@@ -2650,6 +2817,7 @@
         {
           "attribute": "hide-xs",
           "name": "hideXs",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2658,6 +2826,7 @@
         {
           "attribute": "hide-sm",
           "name": "hideSm",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2666,6 +2835,7 @@
         {
           "attribute": "hide-md",
           "name": "hideMd",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2674,6 +2844,7 @@
         {
           "attribute": "hide-lg",
           "name": "hideLg",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2682,6 +2853,7 @@
         {
           "attribute": "hide-xl",
           "name": "hideXl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2690,6 +2862,7 @@
         {
           "attribute": "hide-xxl",
           "name": "hideXxl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2698,6 +2871,7 @@
         {
           "attribute": "hide",
           "name": "hide",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2706,6 +2880,7 @@
         {
           "attribute": "hide-sm-up",
           "name": "hideSmUp",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2714,6 +2889,7 @@
         {
           "attribute": "hide-md-up",
           "name": "hideMdUp",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2722,6 +2898,7 @@
         {
           "attribute": "hide-lg-up",
           "name": "hideLgUp",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2730,6 +2907,7 @@
         {
           "attribute": "hide-xl-up",
           "name": "hideXlUp",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2738,6 +2916,7 @@
         {
           "attribute": "hide-sm-down",
           "name": "hideSmDown",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2746,6 +2925,7 @@
         {
           "attribute": "hide-md-down",
           "name": "hideMdDown",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2754,6 +2934,7 @@
         {
           "attribute": "hide-lg-down",
           "name": "hideLgDown",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2762,6 +2943,7 @@
         {
           "attribute": "hide-xl-down",
           "name": "hideXlDown",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2770,6 +2952,7 @@
         {
           "attribute": "hide-xxl-down",
           "name": "hideXxlDown",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -2778,6 +2961,7 @@
         {
           "attribute": "offset-xs",
           "name": "offsetXs",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOffset",
@@ -2787,6 +2971,7 @@
         {
           "attribute": "offset-sm",
           "name": "offsetSm",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOffset",
@@ -2796,6 +2981,7 @@
         {
           "attribute": "offset-md",
           "name": "offsetMd",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOffset",
@@ -2805,6 +2991,7 @@
         {
           "attribute": "offset-lg",
           "name": "offsetLg",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOffset",
@@ -2814,6 +3001,7 @@
         {
           "attribute": "offset-xl",
           "name": "offsetXl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOffset",
@@ -2823,6 +3011,7 @@
         {
           "attribute": "offset-xxl",
           "name": "offsetXxl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOffset",
@@ -2832,6 +3021,7 @@
         {
           "attribute": "order-xs",
           "name": "orderXs",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOrder",
@@ -2841,6 +3031,7 @@
         {
           "attribute": "order-sm",
           "name": "orderSm",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOrder",
@@ -2850,6 +3041,7 @@
         {
           "attribute": "order-md",
           "name": "orderMd",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOrder",
@@ -2859,6 +3051,7 @@
         {
           "attribute": "order-lg",
           "name": "orderLg",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOrder",
@@ -2868,6 +3061,7 @@
         {
           "attribute": "order-xl",
           "name": "orderXl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOrder",
@@ -2877,6 +3071,7 @@
         {
           "attribute": "order-xxl",
           "name": "orderXxl",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "GridItemOrder",
@@ -2902,6 +3097,7 @@
         {
           "attribute": "color",
           "name": "color",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "string",
@@ -2910,6 +3106,7 @@
         {
           "attribute": "flip",
           "name": "flip",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "IconFlip",
@@ -2919,6 +3116,7 @@
         {
           "attribute": "label",
           "name": "label",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -2927,6 +3125,7 @@
         {
           "attribute": "name",
           "name": "name",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -2935,6 +3134,7 @@
         {
           "attribute": "resolver",
           "name": "resolver",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "IconResolver",
@@ -2944,6 +3144,7 @@
         {
           "attribute": "rotate",
           "name": "rotate",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "number",
@@ -2952,6 +3153,7 @@
         {
           "attribute": "size",
           "name": "size",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "IconSize",
@@ -2987,6 +3189,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -2995,6 +3198,7 @@
         {
           "attribute": "once",
           "name": "once",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3003,6 +3207,7 @@
         {
           "attribute": "root",
           "name": "root",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "Element",
@@ -3012,6 +3217,7 @@
         {
           "attribute": "root-margin",
           "name": "rootMargin",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -3020,6 +3226,7 @@
         {
           "attribute": "threshold",
           "name": "threshold",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number | number[]",
@@ -3047,6 +3254,7 @@
         {
           "attribute": "buffer",
           "name": "buffer",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3055,6 +3263,7 @@
         {
           "attribute": "immediate",
           "name": "immediate",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3063,6 +3272,7 @@
         {
           "attribute": "label",
           "name": "label",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3072,6 +3282,7 @@
           "attribute": "min",
           "initializer": "0",
           "name": "min",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3081,6 +3292,7 @@
           "attribute": "max",
           "initializer": "100",
           "name": "max",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3089,6 +3301,7 @@
         {
           "attribute": "variant",
           "name": "variant",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "string",
@@ -3098,6 +3311,7 @@
           "attribute": "value",
           "initializer": "0",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3141,6 +3355,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3150,6 +3365,7 @@
           "attribute": "reference",
           "initializer": "'document'",
           "name": "reference",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "ScrollDetectorReference",
@@ -3159,6 +3375,7 @@
         {
           "attribute": "vertical",
           "name": "vertical",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3369,6 +3586,7 @@
           "attribute": "background-color",
           "initializer": "'rgba(0, 0, 0, 0)'",
           "name": "backgroundColor",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -3377,6 +3595,7 @@
         {
           "attribute": "clear-on-resize",
           "name": "clearOnResize",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3386,6 +3605,7 @@
           "attribute": "color",
           "initializer": "'black'",
           "name": "color",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -3394,6 +3614,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3402,6 +3623,7 @@
         {
           "attribute": "distance",
           "name": "distance",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3410,6 +3632,7 @@
         {
           "attribute": "dot-size",
           "name": "dotSize",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3419,6 +3642,7 @@
           "attribute": "max-width",
           "initializer": "2.5",
           "name": "maxWidth",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3428,6 +3652,7 @@
           "attribute": "min-width",
           "initializer": "0.5",
           "name": "minWidth",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3436,6 +3661,7 @@
         {
           "attribute": "resizable",
           "name": "resizable",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3445,6 +3671,7 @@
           "attribute": "throttle",
           "initializer": "16",
           "name": "throttle",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3454,6 +3681,7 @@
           "attribute": "velocity",
           "initializer": "0.7",
           "name": "velocity",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3482,6 +3710,7 @@
           "attribute": "grow",
           "initializer": "1",
           "name": "grow",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3502,6 +3731,7 @@
         {
           "attribute": "color",
           "name": "color",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "string",
@@ -3511,6 +3741,7 @@
           "attribute": "size",
           "initializer": "'inherit'",
           "name": "size",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "SpinnerSize",
@@ -3521,6 +3752,7 @@
           "attribute": "type",
           "initializer": "'default'",
           "name": "type",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "SpinnerType",
@@ -3544,6 +3776,7 @@
           "attribute": "align-items",
           "initializer": "'center'",
           "name": "alignItems",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "StackAlignItems",
@@ -3553,6 +3786,7 @@
         {
           "attribute": "gap",
           "name": "gap",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -3562,6 +3796,7 @@
           "attribute": "justify-content",
           "initializer": "'center'",
           "name": "justifyContent",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "StackJustifyContent",
@@ -3571,6 +3806,7 @@
         {
           "attribute": "reverse",
           "name": "reverse",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3579,6 +3815,7 @@
         {
           "attribute": "vertical",
           "name": "vertical",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3614,6 +3851,7 @@
           "attribute": "top",
           "initializer": "0",
           "name": "top",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "StickyTop",
@@ -3623,6 +3861,7 @@
         {
           "attribute": "watcher",
           "name": "watcher",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "boolean",
@@ -3631,6 +3870,7 @@
         {
           "attribute": "z-index",
           "name": "zIndex",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
@@ -3674,6 +3914,7 @@
         {
           "attribute": "checked",
           "name": "checked",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3683,6 +3924,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3710,6 +3952,7 @@
         {
           "attribute": "value",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "any",
@@ -3718,6 +3961,7 @@
         {
           "attribute": "vertical",
           "name": "vertical",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3726,6 +3970,7 @@
         {
           "attribute": "connector",
           "name": "connector",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -3753,6 +3998,7 @@
         {
           "attribute": "grow",
           "name": "grow",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3762,6 +4008,7 @@
           "attribute": "justify",
           "initializer": "'start'",
           "name": "justify",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "'start' | 'center' | 'end'",
@@ -3770,6 +4017,7 @@
         {
           "attribute": "reverse",
           "name": "reverse",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3795,6 +4043,7 @@
         {
           "attribute": "value",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "any",
@@ -3820,6 +4069,7 @@
         {
           "attribute": "connector",
           "name": "connector",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "string",
@@ -3845,6 +4095,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3853,6 +4104,7 @@
         {
           "attribute": "value",
           "name": "value",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "any",
@@ -3903,6 +4155,7 @@
         {
           "attribute": "arrow",
           "name": "arrow",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3911,6 +4164,7 @@
         {
           "attribute": "delay",
           "name": "delay",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "TooltipDelay",
@@ -3920,6 +4174,7 @@
         {
           "attribute": "disabled",
           "name": "disabled",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3928,6 +4183,7 @@
         {
           "attribute": "fixed",
           "name": "fixed",
+          "readonly": false,
           "reflects": true,
           "required": false,
           "type": "boolean",
@@ -3936,6 +4192,7 @@
         {
           "attribute": "offset",
           "name": "offset",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "TooltipOffset",
@@ -3945,6 +4202,7 @@
         {
           "attribute": "placement",
           "name": "placement",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "TooltipPlacement",
@@ -3955,6 +4213,7 @@
           "attribute": "reference",
           "initializer": "'previous'",
           "name": "reference",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "TooltipReference",
@@ -3964,6 +4223,7 @@
         {
           "attribute": "trigger",
           "name": "trigger",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "TooltipTrigger",
@@ -3974,6 +4234,7 @@
           "attribute": "z",
           "initializer": "'auto'",
           "name": "z",
+          "readonly": false,
           "reflects": false,
           "required": false,
           "type": "'auto' | 'vertical' | 'horizontal' | 'move'",

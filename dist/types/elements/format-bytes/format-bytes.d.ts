@@ -4,8 +4,8 @@ import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './form
  * @stable
  */
 export declare class FormatBytes extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the unit will be shown as an abbreviation or not.
      */

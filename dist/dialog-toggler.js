@@ -44,9 +44,9 @@ let DialogToggler = class DialogToggler extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogToggler.TAG = "plus-dialog-toggler";
+DialogToggler.tag = "plus-dialog-toggler";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogToggler.STYLES = css_248z;
+DialogToggler.style = css_248z;
 __decorate([
     Property({
         type: 256

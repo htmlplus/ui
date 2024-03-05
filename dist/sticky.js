@@ -88,9 +88,9 @@ let Sticky = class Sticky extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Sticky.TAG = "plus-sticky";
+Sticky.tag = "plus-sticky";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Sticky.STYLES = css_248z;
+Sticky.style = css_248z;
 __decorate([
     Property({
         type: 320

@@ -6,8 +6,8 @@ import { IconFlip, IconResolver, IconSize } from './icon.types';
  * @part svg - The svg element.
  */
 export declare class Icon extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the color.
      */

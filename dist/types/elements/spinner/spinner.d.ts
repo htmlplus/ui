@@ -4,8 +4,8 @@ import { SpinnerSize, SpinnerType } from './spinner.types';
  * @stable
  */
 export declare class Spinner extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the color.
      */

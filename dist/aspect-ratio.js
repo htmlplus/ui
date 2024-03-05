@@ -50,9 +50,9 @@ let AspectRatio = class AspectRatio extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-AspectRatio.TAG = "plus-aspect-ratio";
+AspectRatio.tag = "plus-aspect-ratio";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-AspectRatio.STYLES = css_248z;
+AspectRatio.style = css_248z;
 __decorate([
     Property({
         type: 320

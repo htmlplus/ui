@@ -142,9 +142,9 @@ let Icon = class Icon extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Icon.TAG = "plus-icon";
+Icon.tag = "plus-icon";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Icon.STYLES = css_248z;
+Icon.style = css_248z;
 __decorate([
     Property({
         reflect: true,

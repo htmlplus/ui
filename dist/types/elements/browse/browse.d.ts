@@ -7,8 +7,8 @@ import { BrowseEvent } from './browse.types';
  * @slot default - The default slot.
  */
 export declare class Browse extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * One or more
      * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)

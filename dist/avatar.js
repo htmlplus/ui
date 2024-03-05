@@ -118,9 +118,9 @@ let Avatar = class Avatar extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Avatar.TAG = "plus-avatar";
+Avatar.tag = "plus-avatar";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Avatar.STYLES = css_248z;
+Avatar.style = css_248z;
 __decorate([
     Property({
         reflect: true,

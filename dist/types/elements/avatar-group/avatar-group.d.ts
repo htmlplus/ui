@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class AvatarGroup extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies whether to prominent the avatar when the mouse is entered or not.
      */

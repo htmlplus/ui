@@ -11,9 +11,9 @@ let DialogBody = class DialogBody extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogBody.TAG = "plus-dialog-body";
+DialogBody.tag = "plus-dialog-body";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogBody.STYLES = css_248z;
+DialogBody.style = css_248z;
 __decorate([
     Property({
         reflect: true,

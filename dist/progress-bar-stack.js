@@ -8,9 +8,9 @@ let ProgressBarStack = class ProgressBarStack extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-ProgressBarStack.TAG = "plus-progress-bar-stack";
+ProgressBarStack.tag = "plus-progress-bar-stack";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-ProgressBarStack.STYLES = css_248z;
+ProgressBarStack.style = css_248z;
 ProgressBarStack = __decorate([
     Element()
 ], ProgressBarStack);

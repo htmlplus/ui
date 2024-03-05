@@ -11,9 +11,9 @@ let DialogHeader = class DialogHeader extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogHeader.TAG = "plus-dialog-header";
+DialogHeader.tag = "plus-dialog-header";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogHeader.STYLES = css_248z;
+DialogHeader.style = css_248z;
 DialogHeader = __decorate([
     Element()
 ], DialogHeader);

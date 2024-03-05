@@ -166,9 +166,9 @@ let Accordion = class Accordion extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Accordion.TAG = "plus-accordion";
+Accordion.tag = "plus-accordion";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Accordion.STYLES = css_248z;
+Accordion.style = css_248z;
 __decorate([
     Property({
         reflect: true,

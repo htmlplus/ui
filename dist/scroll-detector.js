@@ -65,7 +65,7 @@ let ScrollDetector = class ScrollDetector extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-ScrollDetector.TAG = "plus-scroll-detector";
+ScrollDetector.tag = "plus-scroll-detector";
 __decorate([
     Property({
         type: 2

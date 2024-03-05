@@ -8,8 +8,8 @@ import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, Croppe
  * @dependencies cropperjs
  */
 export declare class Cropper extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * A number between 0 and 1. Specifies the automatic cropping area size.
      */

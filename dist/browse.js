@@ -119,9 +119,9 @@ let Browse = class Browse extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Browse.TAG = "plus-browse";
+Browse.tag = "plus-browse";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Browse.STYLES = css_248z;
+Browse.style = css_248z;
 __decorate([
     Property({
         type: 256

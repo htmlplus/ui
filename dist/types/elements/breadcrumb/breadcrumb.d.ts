@@ -11,8 +11,8 @@ import { PlusCore } from "../../core";
  * @slot separator - The separator slot.
  */
 export declare class Breadcrumb extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the label for the expander button.
      */

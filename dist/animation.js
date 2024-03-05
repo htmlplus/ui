@@ -239,9 +239,9 @@ let Animation = class Animation extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Animation.TAG = "plus-animation";
+Animation.tag = "plus-animation";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Animation.STYLES = css_248z;
+Animation.style = css_248z;
 __decorate([
     Property({
         type: 8

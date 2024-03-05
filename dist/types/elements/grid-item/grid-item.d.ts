@@ -4,8 +4,8 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
  * @slot default - The default slot.
  */
 export declare class GridItem extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Aligns the grid-item vertically in its container (grid).
      * It overrides the align-items property of its parent.

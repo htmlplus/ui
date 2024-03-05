@@ -1,7 +1,7 @@
 import { PlusCore } from "../../core";
 export declare class Spacer extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * TODO
      */

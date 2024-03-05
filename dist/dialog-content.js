@@ -11,9 +11,9 @@ let DialogContent = class DialogContent extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogContent.TAG = "plus-dialog-content";
+DialogContent.tag = "plus-dialog-content";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogContent.STYLES = css_248z;
+DialogContent.style = css_248z;
 __decorate([
     Property({
         reflect: true,

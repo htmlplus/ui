@@ -4,8 +4,8 @@ import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridW
  * @slot default - The default slot.
  */
 export declare class Grid extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Aligns contents vertically across all rows (It overrides alignItems).
      */

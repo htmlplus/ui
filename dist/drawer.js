@@ -211,9 +211,9 @@ let Drawer = class Drawer extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Drawer.TAG = "plus-drawer";
+Drawer.tag = "plus-drawer";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Drawer.STYLES = css_248z;
+Drawer.style = css_248z;
 __decorate([
     Property({
         reflect: true,

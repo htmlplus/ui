@@ -58,9 +58,9 @@ let ProgressBar = class ProgressBar extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-ProgressBar.TAG = "plus-progress-bar";
+ProgressBar.tag = "plus-progress-bar";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-ProgressBar.STYLES = css_248z;
+ProgressBar.style = css_248z;
 __decorate([
     Property({
         type: 64

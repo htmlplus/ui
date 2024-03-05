@@ -6,8 +6,8 @@ import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, Draw
  * @slot default - The default slot.
  */
 export declare class Drawer extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * TODO
      */

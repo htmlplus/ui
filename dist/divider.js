@@ -44,9 +44,9 @@ let Divider = class Divider extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Divider.TAG = "plus-divider";
+Divider.tag = "plus-divider";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Divider.STYLES = css_248z;
+Divider.style = css_248z;
 __decorate([
     Property({
         reflect: true,

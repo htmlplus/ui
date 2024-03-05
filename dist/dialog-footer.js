@@ -11,9 +11,9 @@ let DialogFooter = class DialogFooter extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogFooter.TAG = "plus-dialog-footer";
+DialogFooter.tag = "plus-dialog-footer";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogFooter.STYLES = css_248z;
+DialogFooter.style = css_248z;
 DialogFooter = __decorate([
     Element()
 ], DialogFooter);

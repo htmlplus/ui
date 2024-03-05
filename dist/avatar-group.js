@@ -13,9 +13,9 @@ let AvatarGroup = class AvatarGroup extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-AvatarGroup.TAG = "plus-avatar-group";
+AvatarGroup.tag = "plus-avatar-group";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-AvatarGroup.STYLES = css_248z;
+AvatarGroup.style = css_248z;
 __decorate([
     Property({
         reflect: true,

@@ -5,7 +5,7 @@ import { CounterEasing } from './counter.types';
  * @stable
  */
 export declare class Counter extends PlusCore {
-    static TAG: string;
+    static tag: string;
     /**
      * Easing function. Click [here](http://robertpenner.com/easing) for more details.
      */

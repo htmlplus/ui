@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class TabsBar extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Grows tabs as much as all available space (occupies all horizontal space).
      */

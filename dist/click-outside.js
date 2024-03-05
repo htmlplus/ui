@@ -47,7 +47,7 @@ let ClickOutside = class ClickOutside extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-ClickOutside.TAG = "plus-click-outside";
+ClickOutside.tag = "plus-click-outside";
 __decorate([
     Property({
         type: 2

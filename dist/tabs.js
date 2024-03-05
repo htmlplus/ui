@@ -43,9 +43,9 @@ let Tabs = class Tabs extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Tabs.TAG = "plus-tabs";
+Tabs.tag = "plus-tabs";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Tabs.STYLES = css_248z;
+Tabs.style = css_248z;
 __decorate([
     Property({
         type: 0

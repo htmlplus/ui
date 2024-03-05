@@ -44,9 +44,9 @@ let Spinner = class Spinner extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Spinner.TAG = "plus-spinner";
+Spinner.tag = "plus-spinner";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Spinner.STYLES = css_248z;
+Spinner.style = css_248z;
 __decorate([
     Property({
         reflect: true,

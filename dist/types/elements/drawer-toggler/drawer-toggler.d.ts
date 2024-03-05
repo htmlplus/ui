@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
 export declare class DrawerToggler extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * This property helps you to attach which drawer this toggler controls.
      * It doesn't matter where the drawer toggler is.

@@ -45,9 +45,9 @@ let Grid = class Grid extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Grid.TAG = "plus-grid";
+Grid.tag = "plus-grid";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Grid.STYLES = css_248z;
+Grid.style = css_248z;
 __decorate([
     Property({
         type: 8

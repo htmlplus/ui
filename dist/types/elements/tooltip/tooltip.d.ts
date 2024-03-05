@@ -8,8 +8,8 @@ import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, Toolti
  * @dependencies @floating-ui/dom
  */
 export declare class Tooltip extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies whether to display the arrow or not.
      */

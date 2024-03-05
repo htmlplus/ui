@@ -3,8 +3,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class DialogHeader extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogHeaderAttributes {

@@ -8,8 +8,8 @@ import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.ty
  * @part canvas - The canvas element.
  */
 export declare class Signature extends PlusForm {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the background color.
      */

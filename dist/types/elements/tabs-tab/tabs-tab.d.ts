@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class TabsTab extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * A Tab can be disabled by setting disabled property.
      */

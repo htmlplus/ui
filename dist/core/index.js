@@ -30,45 +30,6 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
-// APIs
-const API_CONNECTED = Symbol();
-const API_HOST = Symbol();
-const API_INSTANCE = Symbol();
-const API_LOCKED = Symbol();
-const API_REQUEST = Symbol();
-const API_RENDER_COMPLETED = Symbol();
-const API_STACKS = Symbol();
-// lifecycle
-const LIFECYCLE_ADOPTED = 'adoptedCallback';
-const LIFECYCLE_CONNECT = 'connectCallback';
-const LIFECYCLE_CONNECTED = 'connectedCallback';
-const LIFECYCLE_CONSTRUCTED = 'constructedCallback';
-const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
-const LIFECYCLE_LOADED = 'loadedCallback';
-const LIFECYCLE_UPDATE = 'updateCallback';
-const LIFECYCLE_UPDATED = 'updatedCallback';
-// methods
-const METHOD_RENDER = 'render';
-// statics
-const STATIC_MEMBERS = 'MEMBERS';
-const STATIC_STYLES = 'STYLES';
-const STATIC_TAG = 'TAG';
-// types
-const TYPE_ARRAY = 2 ** 0;
-const TYPE_BOOLEAN = 2 ** 1;
-const TYPE_DATE = 2 ** 2;
-const TYPE_FUNCTION = 2 ** 4;
-const TYPE_NULL = 2 ** 5;
-const TYPE_NUMBER = 2 ** 6;
-const TYPE_OBJECT = 2 ** 7;
-const TYPE_UNDEFINED = 2 ** 9;
-
-const addMember = (target, key, data) => {
-    var _a;
-    target[_a = STATIC_MEMBERS] || (target[_a] = {});
-    target[STATIC_MEMBERS][key] = data;
-};
-
 const appendToMethod = (target, propertyKey, handler) => {
     // Gets the previous function
     const previous = target[propertyKey];
@@ -417,6 +378,37 @@ const setConfig = (config, options) => {
 
 const defineProperty = Object.defineProperty;
 
+// APIs
+const API_CONNECTED = Symbol();
+const API_HOST = Symbol();
+const API_INSTANCE = Symbol();
+const API_LOCKED = Symbol();
+const API_REQUEST = Symbol();
+const API_RENDER_COMPLETED = Symbol();
+const API_STACKS = Symbol();
+// lifecycle
+const LIFECYCLE_ADOPTED = 'adoptedCallback';
+const LIFECYCLE_CONNECT = 'connectCallback';
+const LIFECYCLE_CONNECTED = 'connectedCallback';
+const LIFECYCLE_CONSTRUCTED = 'constructedCallback';
+const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
+const LIFECYCLE_LOADED = 'loadedCallback';
+const LIFECYCLE_UPDATE = 'updateCallback';
+const LIFECYCLE_UPDATED = 'updatedCallback';
+// methods
+const METHOD_RENDER = 'render';
+// statics
+const STATIC_STYLE = 'style';
+const STATIC_TAG = 'tag';
+// types
+const TYPE_ARRAY = 2 ** 0;
+const TYPE_BOOLEAN = 2 ** 1;
+const TYPE_DATE = 2 ** 2;
+const TYPE_NULL = 2 ** 5;
+const TYPE_NUMBER = 2 ** 6;
+const TYPE_OBJECT = 2 ** 7;
+const TYPE_UNDEFINED = 2 ** 9;
+
 /**
  * Indicates the host of the element.
  */
@@ -449,14 +441,9 @@ const getFramework = (target) => {
         return 'react';
 };
 
-// TODO
-const getMembers = (target) => {
-    return target[STATIC_MEMBERS] || {};
-};
-
 const getStyles = (target) => {
     var _a;
-    return (_a = target.constructor[STATIC_STYLES]) !== null && _a !== void 0 ? _a : target[STATIC_STYLES];
+    return (_a = target.constructor[STATIC_STYLE]) !== null && _a !== void 0 ? _a : target[STATIC_STYLE];
 };
 
 const getTag = (target) => {
@@ -1330,10 +1317,10 @@ const toProperty = (input, type) => {
     if (TYPE_BOOLEAN & type) {
         if (string === '')
             return true;
-        if (string === 'false')
-            return false;
         if (string === 'true')
             return true;
+        if (string === 'false')
+            return false;
     }
     if (TYPE_NUMBER & type) {
         if (string != '' && !isNaN(input)) {
@@ -1421,40 +1408,36 @@ function Element() {
         const tag = getTag(constructor);
         if (customElements.get(tag))
             return;
-        const members = getMembers(constructor);
         class Plus extends HTMLElement {
             constructor() {
                 super();
                 this.attachShadow({ mode: 'open' });
                 const instance = (this[API_INSTANCE] = new constructor());
-                Object.keys(members).forEach((key) => {
-                    if (members[key].type != TYPE_FUNCTION) {
-                        members[key].default = instance[key];
-                    }
-                });
                 instance[API_HOST] = () => this;
                 // TODO
                 call(instance, LIFECYCLE_CONSTRUCTED);
             }
+            // TODO
+            static get formAssociated() {
+                return constructor['formAssociated'];
+            }
+            // TODO
             static get observedAttributes() {
-                return Object.keys(members)
-                    .filter((key) => members[key].type != TYPE_FUNCTION)
-                    .map((key) => kebabCase(key));
+                return constructor['observedAttributes'];
             }
             adoptedCallback() {
                 call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
             }
             attributeChangedCallback(attribute, prev, next) {
-                var _a;
                 const instance = this[API_INSTANCE];
                 if (instance[API_LOCKED])
                     return;
                 const name = camelCase(attribute);
-                const type = (_a = members[name]) === null || _a === void 0 ? void 0 : _a.type;
-                const value = toProperty(next, type);
-                if (instance[name] === value)
-                    return;
-                instance[name] = value;
+                // ensures the integrity of readonly properties to prevent potential errors.
+                try {
+                    this[name] = next;
+                }
+                catch (_a) { }
             }
             connectedCallback() {
                 const instance = this[API_INSTANCE];
@@ -1532,7 +1515,7 @@ function Host() {
  */
 function Method() {
     return function (target, propertyKey) {
-        appendToMethod(target, LIFECYCLE_CONNECTED, function () {
+        appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
             defineProperty(host(this), propertyKey, {
                 get: () => this[propertyKey].bind(this)
             });
@@ -1545,40 +1528,75 @@ function Method() {
  * and updates the element when the property is set.
  */
 function Property(options) {
-    return function (target, propertyKey) {
+    return function (target, propertyKey, descriptor) {
+        var _a;
+        // Converts property name to string.
         const name = String(propertyKey);
-        const symbol = Symbol();
-        addMember(target.constructor, name, options);
-        function get() {
-            return this[symbol];
+        // Registers an attribute that is intricately linked to the property.
+        ((_a = target.constructor)['observedAttributes'] || (_a['observedAttributes'] = [])).push(kebabCase(name));
+        // TODO: This feature is an experimental
+        // When the property is a getter function.
+        if (descriptor) {
+            // Checks the reflection.
+            if (options === null || options === void 0 ? void 0 : options.reflect) {
+                // Stores the original getter function.
+                const getter = descriptor.get;
+                // Defines a new getter function.
+                descriptor.get = function () {
+                    const value = getter === null || getter === void 0 ? void 0 : getter.apply(this);
+                    target[API_LOCKED] = true;
+                    updateAttribute(host(this), name, value);
+                    target[API_LOCKED] = false;
+                    return value;
+                };
+                // TODO: Check the lifecycle
+                appendToMethod(target, LIFECYCLE_UPDATED, function () {
+                    // Calls the getter function to update the related attribute.
+                    this[name];
+                });
+            }
         }
-        function set(next) {
-            const previous = this[symbol];
-            if (next === previous)
-                return;
-            this[symbol] = next;
-            request(this, name, previous, (skipped) => {
-                if (!(options === null || options === void 0 ? void 0 : options.reflect) || skipped)
+        // When the property is normal.
+        else {
+            // Creates a unique symbol.
+            const symbol = Symbol();
+            // Defines a getter function to use in the target class.
+            function get() {
+                return this[symbol];
+            }
+            // Defines a setter function to use in the target class.
+            function set(next) {
+                const previous = this[symbol];
+                if (next === previous)
                     return;
-                target[API_LOCKED] = true;
-                updateAttribute(host(this), name, next);
-                target[API_LOCKED] = false;
-            });
+                this[symbol] = next;
+                request(this, name, previous, (skipped) => {
+                    if (!(options === null || options === void 0 ? void 0 : options.reflect) || skipped)
+                        return;
+                    target[API_LOCKED] = true;
+                    updateAttribute(host(this), name, next);
+                    target[API_LOCKED] = false;
+                });
+            }
+            // Attaches the getter and setter functions to the current property of the target class.
+            defineProperty(target, propertyKey, { get, set });
         }
-        defineProperty(target, propertyKey, { get, set });
-        // TODO: check the lifecycle
+        // TODO: Check the lifecycle
         appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
+            // Gets the host element from the target class.
             const element = host(this);
-            // TODO: experimental for isolated options
-            if (element === this)
-                return;
+            // Defines a getter function to use in the host element.
             const get = () => {
                 return this[propertyKey];
             };
-            const set = (input) => {
-                this[propertyKey] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
-            };
-            // TODO: configurable
+            // Defines a setter function to use in the host element.
+            const set = descriptor
+                ? undefined
+                : (input) => {
+                    this[propertyKey] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
+                };
+            // TODO: Check the configuration.
+            // Attaches the getter and setter functions to the current property of the host element.
             defineProperty(element, propertyKey, { get, set, configurable: true });
         });
     };

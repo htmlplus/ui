@@ -6,8 +6,8 @@ import { PlusCore } from "../../core";
  * @dependencies @faker-js/faker
  */
 export declare class Faker extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the [API](https://fakerjs.dev/api).
      */

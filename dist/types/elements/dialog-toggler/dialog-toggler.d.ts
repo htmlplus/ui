@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
 export declare class DialogToggler extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * This property helps you to attach which dialog this toggler controls.
      * It doesn't matter where the dialog toggler is.

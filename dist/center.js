@@ -13,9 +13,9 @@ let Center = class Center extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Center.TAG = "plus-center";
+Center.tag = "plus-center";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Center.STYLES = css_248z;
+Center.style = css_248z;
 __decorate([
     Property({
         reflect: true,

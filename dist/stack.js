@@ -36,7 +36,7 @@ let Stack = class Stack extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Stack.TAG = "plus-stack";
+Stack.tag = "plus-stack";
 __decorate([
     Property({
         type: 264

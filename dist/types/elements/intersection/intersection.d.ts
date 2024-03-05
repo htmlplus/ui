@@ -6,7 +6,7 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class Intersection extends PlusCore {
-    static TAG: string;
+    static tag: string;
     /**
      * Disables the element functionality.
      */

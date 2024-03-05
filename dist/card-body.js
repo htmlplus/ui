@@ -13,9 +13,9 @@ let CardBody = class CardBody extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-CardBody.TAG = "plus-card-body";
+CardBody.tag = "plus-card-body";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-CardBody.STYLES = css_248z;
+CardBody.style = css_248z;
 CardBody = __decorate([
     Element()
 ], CardBody);

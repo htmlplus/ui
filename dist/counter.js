@@ -178,7 +178,7 @@ let Counter = class Counter extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Counter.TAG = "plus-counter";
+Counter.tag = "plus-counter";
 __decorate([
     Property({
         type: 8

@@ -9,8 +9,8 @@ import { StickyState, StickyTop } from './sticky.types';
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
  */
 export declare class Sticky extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the space from top.
      */

@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class Center extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Converts the `display` CSS property from `flex` to `inline-flex`.
      */

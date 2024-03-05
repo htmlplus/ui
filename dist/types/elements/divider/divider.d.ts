@@ -8,8 +8,8 @@ import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './d
  * @slot default - The default slot.
  */
 export declare class Divider extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the location of the default slot.
      */

@@ -5,7 +5,7 @@ import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-det
  * @stable
  */
 export declare class ScrollDetector extends PlusCore {
-    static TAG: string;
+    static tag: string;
     /**
      * Disables the element functionality.
      */

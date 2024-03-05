@@ -5,8 +5,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class TabsPanels extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
      */

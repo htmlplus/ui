@@ -19,8 +19,8 @@ import { Animation2 } from "../../services";
  * @slot bottom        - The bottom slot.
  */
 export declare class Accordion extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Disables the element functionality.
      */

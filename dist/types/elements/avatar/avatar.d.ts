@@ -6,8 +6,8 @@ import { AvatarShape, AvatarSize } from './avatar.types';
  * @slot default - The default slot.
  */
 export declare class Avatar extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * Specifies the shape of the element.
      */

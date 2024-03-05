@@ -20,9 +20,9 @@ let TabsPanels = class TabsPanels extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-TabsPanels.TAG = "plus-tabs-panels";
+TabsPanels.tag = "plus-tabs-panels";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-TabsPanels.STYLES = css_248z;
+TabsPanels.style = css_248z;
 __decorate([
     Property({
         type: 256

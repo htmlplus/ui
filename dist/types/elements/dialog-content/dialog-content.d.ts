@@ -3,8 +3,8 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class DialogContent extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * It makes the user able to scroll the content by adding a scroll beside it.
      */

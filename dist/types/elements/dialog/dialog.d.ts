@@ -8,8 +8,8 @@ import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTa
  * @slot default - The default slot.
  */
 export declare class Dialog extends PlusCore {
-    static TAG: string;
-    static STYLES: string;
+    static tag: string;
+    static style: string;
     /**
      * TODO
      */

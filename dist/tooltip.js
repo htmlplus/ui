@@ -242,9 +242,9 @@ let Tooltip = class Tooltip extends PlusCore {
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Tooltip.TAG = "plus-tooltip";
+Tooltip.tag = "plus-tooltip";
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Tooltip.STYLES = css_248z;
+Tooltip.style = css_248z;
 __decorate([
     Property({
         reflect: true,
