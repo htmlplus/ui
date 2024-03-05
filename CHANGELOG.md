@@ -1,3 +1,10 @@
+## [1.1.11](https://github.com/htmlplus/core/compare/v1.1.10...v1.1.11) (2024-03-05)
+
+
+### Bug Fixes
+
+* Update @htmlplus/element dependency. ([bf83548](https://github.com/htmlplus/core/commit/bf83548f52c4ba51da2d176a42e0691de8af6491))
+
 ## [1.1.10](https://github.com/htmlplus/core/compare/v1.1.9...v1.1.10) (2024-03-01)
 
 
