@@ -1,4 +1,4 @@
-import { _ as __decorate, m as createLink, P as PlusCore, h as html, e as attributes, f as host, b as Property, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, l as createLink, P as PlusCore, h as html, e as attributes, b as Property, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]) span{opacity:.5}:host([active]){background-color:#d2d2d2}";
 
@@ -24,7 +24,7 @@ let TabsTab = class TabsTab extends PlusCore {
         this.change(this.value);
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "active": this.tunnel && this.tunnel === this.value
             }, {
                 "onClick": this.onClick

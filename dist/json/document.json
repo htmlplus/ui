@@ -684,7 +684,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-03-04T19:33:44.735Z",
+      "lastModified": "2024-03-05T06:41:02.762Z",
       "methods": [
         {
           "async": false,
@@ -3248,7 +3248,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-02-24T21:26:49.278Z",
+      "lastModified": "2024-03-06T19:00:47.966Z",
       "methods": [],
       "properties": [
         {

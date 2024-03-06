@@ -101,7 +101,7 @@ export declare class Tooltip extends PlusCore {
     connectCallback(): Promise<void>;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface TooltipAttributes {
     /**

@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, h as html, e as attributes, d as styles, f as host, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, d as styles, b as Property, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}@keyframes indeterminate{0%{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{background-color:#dcdcdc;border-radius:.25rem;direction:ltr;display:flex;font-size:.75rem;height:1rem;overflow:hidden;position:relative}:host>*{inset:0;position:absolute}:host::part(underlay){background-color:transparent}:host::part(buffer){background-color:#add8e6}:host::part(indicator){align-items:center;background-color:#1e90ff;color:#fff;display:flex;flex-direction:column;justify-content:center;overflow:hidden;transition:width .6s ease;white-space:nowrap}:host([immediate])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50%!important}";
 
@@ -27,12 +27,11 @@ let ProgressBar = class ProgressBar extends PlusCore {
     get progress() {
         return (this.value - this.min) * (100 / Math.abs(this.max - this.min));
     }
-    // TODO: get from parent context
     get stacked() {
-        return this.$host.parentElement.nodeName == 'PLUS-PROGRESS-BAR-STACK';
+        return this.$host.parentElement.nodeName.startsWith(this.$host.nodeName);
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "aria-valuemin": this.min
             }, {
                 "aria-valuemax": this.max

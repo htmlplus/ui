@@ -30,9 +30,9 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
-const appendToMethod = (target, propertyKey, handler) => {
+const appendToMethod = (target, key, handler) => {
     // Gets the previous function
-    const previous = target[propertyKey];
+    const previous = target[key];
     // Creates new function
     function next(...parameters) {
         // Calls the previous
@@ -43,43 +43,98 @@ const appendToMethod = (target, propertyKey, handler) => {
         return result;
     }
     // Replaces the next with the previous one
-    target[propertyKey] = next;
+    target[key] = next;
+};
+
+// APIs
+const API_CONNECTED = Symbol();
+const API_HOST = Symbol();
+const API_INSTANCE = Symbol();
+const API_LOCKED = Symbol();
+const API_REQUEST = Symbol();
+const API_RENDER_COMPLETED = Symbol();
+const API_STACKS = Symbol();
+// lifecycle
+const LIFECYCLE_ADOPTED = 'adoptedCallback';
+const LIFECYCLE_CONNECT = 'connectCallback';
+const LIFECYCLE_CONNECTED = 'connectedCallback';
+const LIFECYCLE_CONSTRUCTED = 'constructedCallback';
+const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
+const LIFECYCLE_LOADED = 'loadedCallback';
+const LIFECYCLE_UPDATE = 'updateCallback';
+const LIFECYCLE_UPDATED = 'updatedCallback';
+// methods
+const METHOD_RENDER = 'render';
+// statics
+const STATIC_STYLE = 'style';
+const STATIC_TAG = 'tag';
+// types
+const TYPE_ARRAY = 2 ** 0;
+const TYPE_BOOLEAN = 2 ** 1;
+const TYPE_DATE = 2 ** 2;
+const TYPE_NULL = 2 ** 5;
+const TYPE_NUMBER = 2 ** 6;
+const TYPE_OBJECT = 2 ** 7;
+const TYPE_UNDEFINED = 2 ** 9;
+
+/**
+ * Indicates the host of the element.
+ */
+const host = (target) => {
+    try {
+        return target[API_HOST]();
+    }
+    catch (_a) {
+        return target;
+    }
 };
 
 const outsides = [];
 /**
  * TODO
  */
+const dispatch = (target, type, eventInitDict) => {
+    const event = new CustomEvent(type, eventInitDict);
+    host(target).dispatchEvent(event);
+    return event;
+};
+/**
+ * TODO
+ */
+const on = (target, type, handler, options) => {
+    const element = host(target);
+    if (type != 'outside') {
+        return element.addEventListener(type, handler, options);
+    }
+    const callback = (event) => {
+        !event.composedPath().some((item) => item == element) && handler(event);
+    };
+    type = 'ontouchstart' in window.document.documentElement ? 'touchstart' : 'click';
+    on(document, type, callback, options);
+    outsides.push({
+        callback,
+        element,
+        handler,
+        options,
+        type
+    });
+};
+/**
+ * TODO
+ */
 const off = (target, type, handler, options) => {
-    if (type != 'outside')
-        return target.removeEventListener(type, handler, options);
+    const element = host(target);
+    if (type != 'outside') {
+        return element.removeEventListener(type, handler, options);
+    }
     const index = outsides.findIndex((outside) => {
-        return outside.target == target && outside.handler == handler && outside.options == options;
+        return outside.element == element && outside.handler == handler && outside.options == options;
     });
     const outside = outsides[index];
     if (!outside)
         return;
     off(document, outside.type, outside.callback, outside.options);
     outsides.splice(index, 1);
-};
-/**
- * TODO
- */
-const on = (target, type, handler, options) => {
-    if (type != 'outside')
-        return target.addEventListener(type, handler, options);
-    const callback = (event) => {
-        !event.composedPath().some((item) => item == target) && handler(event);
-    };
-    type = 'ontouchstart' in window.document.documentElement ? 'touchstart' : 'click';
-    on(document, type, callback, options);
-    outsides.push({
-        target,
-        type,
-        handler,
-        options,
-        callback
-    });
 };
 
 const isEvent = (input) => {
@@ -229,15 +284,18 @@ function splitPrefixSuffix(input, options = {}) {
     ];
 }
 
-const updateAttribute = (node, key, value) => {
+const updateAttribute = (target, key, value) => {
+    const element = host(target);
     const name = kebabCase(key);
-    if ([undefined, null, false].includes(value))
-        return node.removeAttribute(name);
-    node.setAttribute(name, value === true ? '' : value);
+    if ([undefined, null, false].includes(value)) {
+        return element.removeAttribute(name);
+    }
+    element.setAttribute(name, value === true ? '' : value);
 };
 
 const symbol = Symbol();
-const attributes$1 = (element, attributes) => {
+const attributes$1 = (target, attributes) => {
+    const element = host(target);
     const prev = element[symbol] || {};
     const next = Object.assign({}, ...attributes);
     const prevClass = (prev.class || '').split(' ');
@@ -378,44 +436,6 @@ const setConfig = (config, options) => {
 
 const defineProperty = Object.defineProperty;
 
-// APIs
-const API_CONNECTED = Symbol();
-const API_HOST = Symbol();
-const API_INSTANCE = Symbol();
-const API_LOCKED = Symbol();
-const API_REQUEST = Symbol();
-const API_RENDER_COMPLETED = Symbol();
-const API_STACKS = Symbol();
-// lifecycle
-const LIFECYCLE_ADOPTED = 'adoptedCallback';
-const LIFECYCLE_CONNECT = 'connectCallback';
-const LIFECYCLE_CONNECTED = 'connectedCallback';
-const LIFECYCLE_CONSTRUCTED = 'constructedCallback';
-const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
-const LIFECYCLE_LOADED = 'loadedCallback';
-const LIFECYCLE_UPDATE = 'updateCallback';
-const LIFECYCLE_UPDATED = 'updatedCallback';
-// methods
-const METHOD_RENDER = 'render';
-// statics
-const STATIC_STYLE = 'style';
-const STATIC_TAG = 'tag';
-// types
-const TYPE_ARRAY = 2 ** 0;
-const TYPE_BOOLEAN = 2 ** 1;
-const TYPE_DATE = 2 ** 2;
-const TYPE_NULL = 2 ** 5;
-const TYPE_NUMBER = 2 ** 6;
-const TYPE_OBJECT = 2 ** 7;
-const TYPE_UNDEFINED = 2 ** 9;
-
-/**
- * Indicates the host of the element.
- */
-const host = (target) => {
-    return target[API_HOST]();
-};
-
 /**
  * Indicates whether the [Direction](https://mdn.io/css-direction)
  * of the element is `Right-To-Left` or `Left-To-Right`.
@@ -425,15 +445,16 @@ const direction = (target) => {
 };
 
 const getFramework = (target) => {
-    if ('_qc_' in target)
+    const element = host(target);
+    if ('_qc_' in element)
         return 'qwik';
-    if ('_$owner' in target)
+    if ('_$owner' in element)
         return 'solid';
-    if ('__svelte_meta' in target)
+    if ('__svelte_meta' in element)
         return 'svelte';
-    if ('__vnode' in target)
+    if ('__vnode' in element)
         return 'vue';
-    const keys = Object.keys(target);
+    const keys = Object.keys(element);
     const has = (input) => keys.some((key) => key.startsWith(input));
     if (has('__zone_symbol__'))
         return 'angular';
@@ -1277,8 +1298,9 @@ const request = (target, name, previous, callback) => {
  */
 const slots = (target) => {
     var _a;
+    const element = host(target);
     const slots = {};
-    const children = Array.from(host(target).childNodes);
+    const children = Array.from(element.childNodes);
     for (const child of children) {
         if (child.nodeName == '#comment')
             continue;
@@ -1301,8 +1323,8 @@ const styles = (input) => {
 };
 
 function toDecorator(util, ...parameters) {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
+    return function (target, key) {
+        defineProperty(target, key, {
             get() {
                 return util(this, ...parameters);
             }
@@ -1380,12 +1402,12 @@ const toUnit = (input, unit = 'px') => {
  * making it easier to reference `this` within the method.
  */
 function Bind() {
-    return function (target, propertyKey, descriptor) {
+    return function (target, key, descriptor) {
         return {
             configurable: true,
             get() {
                 const value = descriptor === null || descriptor === void 0 ? void 0 : descriptor.value.bind(this);
-                defineProperty(this, propertyKey, {
+                defineProperty(this, key, {
                     value,
                     configurable: true,
                     writable: true
@@ -1411,19 +1433,15 @@ function Element() {
         class Plus extends HTMLElement {
             constructor() {
                 super();
-                this.attachShadow({ mode: 'open' });
+                this.attachShadow({
+                    mode: 'open',
+                    delegatesFocus: constructor['delegatesFocus'],
+                    slotAssignment: constructor['slotAssignment']
+                });
                 const instance = (this[API_INSTANCE] = new constructor());
                 instance[API_HOST] = () => this;
                 // TODO
                 call(instance, LIFECYCLE_CONSTRUCTED);
-            }
-            // TODO
-            static get formAssociated() {
-                return constructor['formAssociated'];
-            }
-            // TODO
-            static get observedAttributes() {
-                return constructor['observedAttributes'];
             }
             adoptedCallback() {
                 call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
@@ -1459,6 +1477,10 @@ function Element() {
                 call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
             }
         }
+        // TODO
+        Plus.formAssociated = constructor['formAssociated'];
+        // TODO
+        Plus.observedAttributes = constructor['observedAttributes'];
         customElements.define(tag, Plus);
     };
 }
@@ -1470,15 +1492,15 @@ function Element() {
  * @param options An object that configures options for the event dispatcher.
  */
 function Event$1(options = {}) {
-    return function (target, propertyKey) {
-        defineProperty(target, propertyKey, {
+    return function (target, key) {
+        defineProperty(target, key, {
             get() {
                 return (detail) => {
                     var _a, _b;
                     const element = host(this);
-                    const framework = getFramework(element);
+                    const framework = getFramework(this);
                     (_a = options.bubbles) !== null && _a !== void 0 ? _a : (options.bubbles = false);
-                    let type = String(propertyKey);
+                    let type = String(key);
                     switch (framework) {
                         case 'qwik':
                         case 'solid':
@@ -1493,8 +1515,7 @@ function Event$1(options = {}) {
                     }
                     let event;
                     event || (event = (_b = getConfig('event', 'resolver')) === null || _b === void 0 ? void 0 : _b({ detail, element, framework, options, type }));
-                    event || (event = new CustomEvent(type, Object.assign(Object.assign({}, options), { detail })));
-                    element.dispatchEvent(event);
+                    event || (event = dispatch(this, type, Object.assign(Object.assign({}, options), { detail })));
                     return event;
                 };
             }
@@ -1514,10 +1535,10 @@ function Host() {
  * and invoke it as needed, both internally and externally.
  */
 function Method() {
-    return function (target, propertyKey) {
+    return function (target, key) {
         appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
-            defineProperty(host(this), propertyKey, {
-                get: () => this[propertyKey].bind(this)
+            defineProperty(host(this), key, {
+                get: () => this[key].bind(this)
             });
         });
     };
@@ -1528,10 +1549,10 @@ function Method() {
  * and updates the element when the property is set.
  */
 function Property(options) {
-    return function (target, propertyKey, descriptor) {
+    return function (target, key, descriptor) {
         var _a;
         // Converts property name to string.
-        const name = String(propertyKey);
+        const name = String(key);
         // Registers an attribute that is intricately linked to the property.
         ((_a = target.constructor)['observedAttributes'] || (_a['observedAttributes'] = [])).push(kebabCase(name));
         // TODO: This feature is an experimental
@@ -1544,8 +1565,10 @@ function Property(options) {
                 // Defines a new getter function.
                 descriptor.get = function () {
                     const value = getter === null || getter === void 0 ? void 0 : getter.apply(this);
+                    // TODO: target or this
                     target[API_LOCKED] = true;
-                    updateAttribute(host(this), name, value);
+                    updateAttribute(this, name, value);
+                    // TODO: target or this
                     target[API_LOCKED] = false;
                     return value;
                 };
@@ -1573,31 +1596,31 @@ function Property(options) {
                 request(this, name, previous, (skipped) => {
                     if (!(options === null || options === void 0 ? void 0 : options.reflect) || skipped)
                         return;
+                    // TODO: target or this
                     target[API_LOCKED] = true;
-                    updateAttribute(host(this), name, next);
+                    updateAttribute(this, name, next);
+                    // TODO: target or this
                     target[API_LOCKED] = false;
                 });
             }
             // Attaches the getter and setter functions to the current property of the target class.
-            defineProperty(target, propertyKey, { get, set });
+            defineProperty(target, key, { get, set });
         }
         // TODO: Check the lifecycle
         appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
-            // Gets the host element from the target class.
-            const element = host(this);
             // Defines a getter function to use in the host element.
             const get = () => {
-                return this[propertyKey];
+                return this[key];
             };
             // Defines a setter function to use in the host element.
             const set = descriptor
                 ? undefined
                 : (input) => {
-                    this[propertyKey] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
+                    this[key] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
                 };
             // TODO: Check the configuration.
             // Attaches the getter and setter functions to the current property of the host element.
-            defineProperty(element, propertyKey, { get, set, configurable: true });
+            defineProperty(host(this), key, { get, set, configurable: true });
         });
     };
 }
@@ -1634,8 +1657,8 @@ function QueryAll(selectors) {
  * element to re-render upon the desired property changes.
  */
 function State() {
-    return function (target, propertyKey) {
-        const name = String(propertyKey);
+    return function (target, key) {
+        const name = String(key);
         const symbol = Symbol();
         function get() {
             return this[symbol];
@@ -1648,7 +1671,7 @@ function State() {
             request(this, name, previous);
         }
         // TODO: configurable
-        defineProperty(target, propertyKey, { get, set, configurable: true });
+        defineProperty(target, key, { get, set, configurable: true });
     };
 }
 
@@ -1662,21 +1685,21 @@ function State() {
  * @param immediate Triggers the callback immediately after initialization.
  */
 function Watch(keys, immediate) {
-    return function (target, propertyKey) {
+    return function (target, key) {
         // Gets all keys
-        const all = [keys].flat().filter((key) => key);
+        const all = [keys].flat().filter((item) => item);
         // Registers a lifecycle to detect changes.
         appendToMethod(target, LIFECYCLE_UPDATED, function (states) {
             // Skips the logic if 'immediate' wasn't passed.
             if (!immediate && !this[API_RENDER_COMPLETED])
                 return;
             // Loops the keys.
-            states.forEach((previous, key) => {
+            states.forEach((previous, item) => {
                 // Skips the current key.
-                if (all.length && !all.includes(key))
+                if (all.length && !all.includes(item))
                     return;
                 // Invokes the method with parameters.
-                this[propertyKey](this[key], previous, key);
+                this[key](this[item], previous, item);
             });
         });
     };
@@ -2306,4 +2329,4 @@ function Media(query) {
     };
 }
 
-export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, host as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, createLink as m, toAxis as n, on as o, Animation as p, Scrollbar as q, request as r, setConfig as s, toUnit as t, Portal as u, slots as v, Media as w, isValidCSSColor as x, PlusForm as y };
+export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, createLink as l, toAxis as m, Animation as n, on as o, Scrollbar as p, Portal as q, request as r, setConfig as s, toUnit as t, slots as u, Media as v, isValidCSSColor as w, PlusForm as x };

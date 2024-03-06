@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, r as request, h as html, e as attributes, f as host, b as Property, S as State, j as QueryAll, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, r as request, h as html, e as attributes, b as Property, S as State, f as QueryAll, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{--plus-breadcrumb-gutter-x:0.5em;--plus-breadcrumb-gutter-y:0.5em}:host{display:inline-block}.container{align-items:center;column-gap:var(--plus-breadcrumb-gutter-x);display:flex;flex-wrap:wrap;row-gap:var(--plus-breadcrumb-gutter-y)}.expander,.separator{align-items:center;display:flex;flex-shrink:0;justify-content:center;user-select:none}.expander{background-color:#f5f5f5;border-radius:.25rem;color:currentColor;cursor:pointer}.expander:focus{outline-color:currentColor}.separator{color:currentColor}.rtl{transform:scaleX(-1)}.expander ::slotted(*),svg{fill:currentColor;height:1em}";
 
@@ -121,7 +121,7 @@ let Breadcrumb = class Breadcrumb extends PlusCore {
         });
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "aria-label": "breadcrumb"
             }])}
         <div class="container">

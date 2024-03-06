@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, a as __awaiter, g as getConfig, s as setConfig, i as isSize, t as toUnit, x as isValidCSSColor, h as html, e as attributes, d as styles, f as host, b as Property, S as State, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, a as __awaiter, g as getConfig, s as setConfig, i as isSize, t as toUnit, w as isValidCSSColor, h as html, e as attributes, d as styles, b as Property, S as State, W as Watch, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;color:var(--plus-color,currentColor);display:inline-flex;height:1em;justify-content:center;vertical-align:middle;width:1em}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size=\"1x\"]){height:1em;width:1em}:host([size=\"2x\"]){height:2em;width:2em}:host([size=\"3x\"]){height:3em;width:3em}:host([size=\"4x\"]){height:4em;width:4em}:host([size=\"5x\"]){height:5em;width:5em}:host([size=\"6x\"]){height:6em;width:6em}:host([size=\"7x\"]){height:7em;width:7em}:host([size=\"8x\"]){height:8em;width:8em}:host([size=\"9x\"]){height:9em;width:9em}svg{display:block;height:100%;width:100%}";
 
@@ -128,7 +128,7 @@ let Icon = class Icon extends PlusCore {
     }
     render() {
         var _a;
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "aria-hidden": this.label ? null : `${!this.label}`
             }, {
                 "aria-label": (_a = this.label) !== null && _a !== void 0 ? _a : null

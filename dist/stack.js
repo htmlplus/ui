@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, t as toUnit, h as html, e as attributes, d as styles, f as host, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, t as toUnit, h as html, e as attributes, d as styles, b as Property, c as Element } from './core/index.js';
 
 /**
  * @slot default - The default slot.
@@ -28,7 +28,7 @@ let Stack = class Stack extends PlusCore {
         };
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "style": styles(this.style)
             }])}
         <slot />

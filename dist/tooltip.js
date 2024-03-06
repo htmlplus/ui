@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, o as on, k as off, h as html, e as attributes, f as host, b as Property, M as Method, Q as Query, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, o as on, j as off, h as html, e as attributes, b as Property, M as Method, Q as Query, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{background-color:#000;border-radius:4px;color:#fff;font-size:90%;font-weight:700;padding:4px 8px;position:absolute;width:max-content}:host([fixed]){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;height:0;position:absolute;width:0}:host([arrow]) [part=arrow]{display:block}:host([arrow]):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]):host([placement-computed^=top]) [part=arrow]{border-color:#000 transparent transparent;border-style:solid;border-width:6px 6px 0;bottom:-6px;transform:translateX(-50%)}:host([arrow]):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]):host([placement-computed^=right]) [part=arrow]{border-color:transparent #000 transparent transparent;border-style:solid;border-width:6px 6px 6px 0;left:-6px;transform:translateY(-50%)}:host([arrow]):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]):host([placement-computed^=bottom]) [part=arrow]{border-color:transparent transparent #000;border-style:solid;border-width:0 6px 6px;top:-6px;transform:translateX(-50%)}:host([arrow]):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]):host([placement-computed^=left]) [part=arrow]{border-color:transparent transparent transparent #000;border-style:solid;border-width:6px 0 6px 6px;right:-6px;transform:translateY(-50%)}";
 
@@ -231,7 +231,7 @@ let Tooltip = class Tooltip extends PlusCore {
         this.unbind();
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "role": "tooltip"
             }, {
                 "state": this.state

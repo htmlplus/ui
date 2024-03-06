@@ -57,9 +57,8 @@ export class ProgressBar extends PlusCore {
     return (this.value - this.min) * (100 / Math.abs(this.max - this.min));
   }
 
-  // TODO: get from parent context
   get stacked() {
-    return this.$host.parentElement.nodeName == 'PLUS-PROGRESS-BAR-STACK';
+    return this.$host.parentElement.nodeName.startsWith(this.$host.nodeName);
   }
 
   render() {

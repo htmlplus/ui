@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, h as html, e as attributes, f as host, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, b as Property, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:flex;flex:0 0 auto;overflow:auto}:host([reverse]){flex-direction:row-reverse}:host([grow]) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=end][reverse]),:host([justify=start]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]){justify-content:flex-end}";
 
@@ -16,7 +16,7 @@ let TabsBar = class TabsBar extends PlusCore {
         this.justify = 'start';
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "role": "tablist"
             }])}
         <slot />

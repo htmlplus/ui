@@ -1,4 +1,4 @@
-import { _ as __decorate, m as createLink, P as PlusCore, h as html, e as attributes, f as host, b as Property, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, l as createLink, P as PlusCore, h as html, e as attributes, b as Property, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{cursor:default;display:inline-block;user-select:none}";
 
@@ -32,7 +32,7 @@ let DialogToggler = class DialogToggler extends PlusCore {
         this.toggle();
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "role": "button"
             }, {
                 "state": this.tunnel ? 'open' : 'close'

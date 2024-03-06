@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, h as html, e as attributes, f as host, b as Property, E as Event, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, b as Property, E as Event, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 /**
  * @stable
@@ -66,7 +66,7 @@ let Intersection = class Intersection extends PlusCore {
         this.unbind();
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "state": this.isIntersecting ? 'in' : 'out'
             }])}
         <slot />

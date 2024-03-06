@@ -1,4 +1,4 @@
-import { _ as __decorate, m as createLink, P as PlusCore, n as toAxis, l as classes, p as Animation, q as Scrollbar, k as off, o as on, h as html, e as attributes, d as styles, f as host, b as Property, E as Event, Q as Query, S as State, W as Watch, B as Bind, w as Media, c as Element } from './core/index.js';
+import { _ as __decorate, l as createLink, P as PlusCore, m as toAxis, k as classes, n as Animation, p as Scrollbar, j as off, o as on, h as html, e as attributes, d as styles, b as Property, E as Event, Q as Query, S as State, W as Watch, B as Bind, v as Media, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{--plus-drawer-size:280px;--plus-drawer-mini-size:80px}:host{display:block;overflow:hidden;position:relative;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.root{height:100%;position:relative;z-index:1}.backdrop,.root{transition:inherit}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([temporary=on-breakpoint][state=mobile]),:host([temporary]:not([temporary=on-breakpoint])){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]){transition:.3s}:host([state=closed]){display:none}:host([state=opened][mini-state=leaved]){overflow:visible}:host([state=closing]),:host([state=open]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1)!important}:host([state=closing]) .backdrop,:host([state=open]) .backdrop{opacity:0}:host([mini-state=entered]),:host([mini-state=entering]),:host([mini-state=leave]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1 + var(--plus-drawer-mini-size))}";
 
@@ -196,7 +196,7 @@ let Drawer = class Drawer extends PlusCore {
         this.terminate();
     }
     render() {
-        return html `${attributes(host(this), [{
+        return html `${attributes(this, [{
                 "platform": this.platform
             }, {
                 "style": styles(this.style)
