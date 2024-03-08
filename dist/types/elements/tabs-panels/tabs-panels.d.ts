@@ -7,28 +7,15 @@ import { PlusCore } from "../../core";
 export declare class TabsPanels extends PlusCore {
     static tag: string;
     static style: string;
-    /**
-     * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
-     */
-    connector?: string;
-    watcher(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsPanelsAttributes {
-    /**
-    * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
-    */
-    "connector"?: string;
 }
 export interface TabsPanelsEvents {
 }
 export interface TabsPanelsMethods {
 }
 export interface TabsPanelsProperties {
-    /**
-    * Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs.
-    */
-    connector?: string;
 }
 export interface TabsPanelsJSX extends TabsPanelsEvents, TabsPanelsProperties {
 }

@@ -1,31 +1,26 @@
-import { _ as __decorate, l as createLink, P as PlusCore, h as html, e as attributes, b as Property, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, b as Property, S as State, C as Consumer, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]) span{opacity:.5}:host([active]){background-color:#d2d2d2}";
 
-const { Inject } = createLink({
-    crawl: true
-});
 /**
  * TODO: Tabs make it easy to switch between different views.
  *
  * @slot default - The default slot.
  */
 let TabsTab = class TabsTab extends PlusCore {
-    constructor() {
-        super(...arguments);
-        this.change = () => console.log('TODO: can not use out of tabs');
-    }
     /**
      * Events handler
      */
     onClick() {
-        if (this.disabled)
-            return;
-        this.change(this.value);
+        var _a;
+        if (!this.disabled) {
+            (_a = this.parent) === null || _a === void 0 ? void 0 : _a.change(this.value);
+        }
     }
     render() {
+        var _a;
         return html `${attributes(this, [{
-                "active": this.tunnel && this.tunnel === this.value
+                "active": ((_a = this.parent) === null || _a === void 0 ? void 0 : _a.current) === this.value
             }, {
                 "onClick": this.onClick
             }])}
@@ -47,15 +42,13 @@ __decorate([
 ], TabsTab.prototype, "disabled", void 0);
 __decorate([
     Property({
-        type: 0
+        type: 320
     })
 ], TabsTab.prototype, "value", void 0);
 __decorate([
-    Inject(true)
-], TabsTab.prototype, "tunnel", void 0);
-__decorate([
-    Inject()
-], TabsTab.prototype, "change", void 0);
+    State(),
+    Consumer('tabs')
+], TabsTab.prototype, "parent", void 0);
 __decorate([
     Bind()
 ], TabsTab.prototype, "onClick", null);

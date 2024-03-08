@@ -201,7 +201,7 @@ export declare class Cropper extends PlusCore {
     onCropStart(event: any): void;
     onReady(): void;
     onZoom(event: any): void;
-    connectCallback(): Promise<void>;
+    connectedCallback(): Promise<void>;
     loadedCallback(): void;
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;

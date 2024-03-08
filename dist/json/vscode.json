@@ -4105,11 +4105,6 @@
             }
           ],
           "description": "You can use vertical property for vertical mode."
-        },
-        {
-          "name": "connector",
-          "values": [],
-          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
         }
       ],
       "references": [
@@ -4190,13 +4185,7 @@
     },
     {
       "name": "plus-tabs-panels",
-      "attributes": [
-        {
-          "name": "connector",
-          "values": [],
-          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
-        }
-      ],
+      "attributes": [],
       "references": [
         {
           "name": "Source code",

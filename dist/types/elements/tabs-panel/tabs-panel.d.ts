@@ -1,4 +1,5 @@
 import { PlusCore } from "../../core";
+import { TabsContext } from '../tabs/tabs.context';
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
  *
@@ -10,15 +11,15 @@ export declare class TabsPanel extends PlusCore {
     /**
      * Provides your own value.
      */
-    value?: any;
-    tunnel?: any;
+    value?: number | string;
+    parent?: TabsContext;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsPanelAttributes {
     /**
     * Provides your own value.
     */
-    "value"?: any;
+    "value"?: number | string;
 }
 export interface TabsPanelEvents {
 }
@@ -28,7 +29,7 @@ export interface TabsPanelProperties {
     /**
     * Provides your own value.
     */
-    value?: any;
+    value?: number | string;
 }
 export interface TabsPanelJSX extends TabsPanelEvents, TabsPanelProperties {
 }

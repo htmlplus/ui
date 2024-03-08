@@ -1,10 +1,7 @@
-import { _ as __decorate, l as createLink, P as PlusCore, h as html, e as attributes, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, b as Property, S as State, C as Consumer, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:none}:host([active]){display:block}";
 
-const { Inject } = createLink({
-    crawl: true
-});
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
  *
@@ -12,8 +9,9 @@ const { Inject } = createLink({
  */
 let TabsPanel = class TabsPanel extends PlusCore {
     render() {
+        var _a;
         return html `${attributes(this, [{
-                "active": this.tunnel && this.tunnel === this.value
+                "active": ((_a = this.parent) === null || _a === void 0 ? void 0 : _a.current) === this.value
             }])}
         <slot />
       `;
@@ -25,12 +23,13 @@ TabsPanel.tag = "plus-tabs-panel";
 TabsPanel.style = css_248z;
 __decorate([
     Property({
-        type: 0
+        type: 320
     })
 ], TabsPanel.prototype, "value", void 0);
 __decorate([
-    Inject(true)
-], TabsPanel.prototype, "tunnel", void 0);
+    State(),
+    Consumer('tabs')
+], TabsPanel.prototype, "parent", void 0);
 TabsPanel = __decorate([
     Element()
 ], TabsPanel);

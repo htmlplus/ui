@@ -45,7 +45,7 @@ export class Faker extends PlusCore {
     return method(...this.arguments) || null;
   }
 
-  connectCallback() {
+  connectedCallback() {
     if (this.instance) return;
 
     return import('@faker-js/faker')

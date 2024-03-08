@@ -310,7 +310,7 @@ let Cropper = class Cropper extends PlusCore {
             return;
         event.preventDefault();
     }
-    connectCallback() {
+    connectedCallback() {
         return import('cropperjs').then(module => {
             CropperCore = module.default;
         }).catch(() => {

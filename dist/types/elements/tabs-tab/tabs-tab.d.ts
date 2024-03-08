@@ -1,4 +1,5 @@
 import { PlusCore } from "../../core";
+import { TabsContext } from '../tabs/tabs.context';
 /**
  * TODO: Tabs make it easy to switch between different views.
  *
@@ -14,9 +15,8 @@ export declare class TabsTab extends PlusCore {
     /**
      * Provides your own value.
      */
-    value?: any;
-    tunnel?: any;
-    change?: Function;
+    value?: number | string;
+    parent?: TabsContext;
     /**
      * Events handler
      */
@@ -31,7 +31,7 @@ export interface TabsTabAttributes {
     /**
     * Provides your own value.
     */
-    "value"?: any;
+    "value"?: number | string;
 }
 export interface TabsTabEvents {
 }
@@ -45,7 +45,7 @@ export interface TabsTabProperties {
     /**
     * Provides your own value.
     */
-    value?: any;
+    value?: number | string;
 }
 export interface TabsTabJSX extends TabsTabEvents, TabsTabProperties {
 }

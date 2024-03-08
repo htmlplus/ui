@@ -98,8 +98,7 @@ export declare class Tooltip extends PlusCore {
     observe(active: boolean): void;
     onHide(): void;
     onShow(): void;
-    connectCallback(): Promise<void>;
-    connectedCallback(): void;
+    connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }

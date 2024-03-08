@@ -1154,7 +1154,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-02-29T14:21:36.713Z",
+      "lastModified": "2024-03-08T21:24:04.830Z",
       "methods": [
         {
           "async": false,
@@ -1592,7 +1592,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-02-29T14:21:36.714Z",
+      "lastModified": "2024-03-08T21:44:46.097Z",
       "methods": [],
       "properties": [
         {
@@ -2174,7 +2174,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-02-29T14:21:36.717Z",
+      "lastModified": "2024-03-08T21:24:11.666Z",
       "methods": [],
       "properties": [
         {
@@ -3857,7 +3857,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-02-29T14:21:36.729Z",
+      "lastModified": "2024-03-08T22:38:54.690Z",
       "methods": [],
       "properties": [
         {
@@ -3866,7 +3866,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "any",
+          "type": "number | string",
           "description": "Provides your own value."
         },
         {
@@ -3877,15 +3877,6 @@
           "required": false,
           "type": "boolean",
           "description": "You can use vertical property for vertical mode."
-        },
-        {
-          "attribute": "connector",
-          "name": "connector",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "string",
-          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
         }
       ],
       "readmeContent": "# Tabs\r\n\r\nOrganizes content across different screens.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Grow\r\n\r\n<Example value=\"grow\" />\r\n\r\n### Justify\r\n\r\n<Example value=\"justify\" />\r\n\r\n### Reverse\r\n\r\n<Example value=\"reverse\" />\r\n\r\n### Separate\r\n\r\n<Example value=\"separate\" />\r\n\r\n### Below\r\n\r\n<Example value=\"below\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n<LastModified />\r\n",
@@ -3903,7 +3894,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2024-02-29T14:21:36.724Z",
+      "lastModified": "2024-03-08T21:51:36.068Z",
       "methods": [],
       "properties": [
         {
@@ -3948,7 +3939,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2024-02-29T14:21:36.725Z",
+      "lastModified": "2024-03-08T22:14:18.115Z",
       "methods": [],
       "properties": [
         {
@@ -3957,7 +3948,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "any",
+          "type": "number | string",
           "description": "Provides your own value."
         }
       ],
@@ -3974,19 +3965,9 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2024-02-29T14:21:36.727Z",
+      "lastModified": "2024-03-08T21:51:23.853Z",
       "methods": [],
-      "properties": [
-        {
-          "attribute": "connector",
-          "name": "connector",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "string",
-          "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
-        }
-      ],
+      "properties": [],
       "styles": [],
       "title": "Tabs Panels",
       "description": "TODO: This element contains panels.",
@@ -4000,7 +3981,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2024-02-29T14:21:36.728Z",
+      "lastModified": "2024-03-08T22:14:28.282Z",
       "methods": [],
       "properties": [
         {
@@ -4018,7 +3999,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "any",
+          "type": "number | string",
           "description": "Provides your own value."
         }
       ],
@@ -4035,7 +4016,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2024-02-29T14:21:36.730Z",
+      "lastModified": "2024-03-08T21:25:36.005Z",
       "methods": [
         {
           "async": false,

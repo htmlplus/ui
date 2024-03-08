@@ -504,7 +504,7 @@ export class Cropper extends PlusCore {
     event.preventDefault();
   }
 
-  connectCallback() {
+  connectedCallback() {
     return import('cropperjs')
       .then((module) => {
         CropperCore = module.default;

@@ -56,7 +56,6 @@ const API_RENDER_COMPLETED = Symbol();
 const API_STACKS = Symbol();
 // lifecycle
 const LIFECYCLE_ADOPTED = 'adoptedCallback';
-const LIFECYCLE_CONNECT = 'connectCallback';
 const LIFECYCLE_CONNECTED = 'connectedCallback';
 const LIFECYCLE_CONSTRUCTED = 'constructedCallback';
 const LIFECYCLE_DISCONNECTED = 'disconnectedCallback';
@@ -1419,6 +1418,26 @@ function Bind() {
 }
 
 /**
+ * TODO
+ * @param namespace
+ */
+function Consumer(namespace) {
+    return function (target, key) {
+        appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
+            const options = {
+                bubbles: true
+            };
+            options.detail = (state) => {
+                this[key] = state;
+                const successful = !!host(this).parentElement;
+                return successful;
+            };
+            dispatch(this, `internal:context:${namespace}`, options);
+        });
+    };
+}
+
+/**
  * The class marked with this decorator is considered a
  * [Custom Element](https://mdn.io/using-custom-elements),
  * and its name, in kebab-case, serves as the element name.
@@ -1457,14 +1476,13 @@ function Element() {
                 const instance = this[API_INSTANCE];
                 // TODO: experimental for global config
                 Object.assign(instance, getConfig('element', getTag(instance), 'property'));
+                instance[API_CONNECTED] = true;
                 const connect = () => {
-                    instance[API_CONNECTED] = true;
-                    call(instance, LIFECYCLE_CONNECTED);
                     request(instance, undefined, undefined, () => {
                         call(instance, LIFECYCLE_LOADED);
                     });
                 };
-                const callback = call(instance, LIFECYCLE_CONNECT);
+                const callback = call(instance, LIFECYCLE_CONNECTED);
                 if (!(callback === null || callback === void 0 ? void 0 : callback.then))
                     return connect();
                 callback.then(() => connect());
@@ -1618,6 +1636,36 @@ function Property(options) {
             // TODO: Check the configuration.
             // Attaches the getter and setter functions to the current property of the host element.
             defineProperty(host(this), key, { get, set, configurable: true });
+        });
+    };
+}
+
+/**
+ * TODO
+ * @param namespace
+ */
+function Provider(namespace) {
+    return function (target, key, descriptor) {
+        const symbol = Symbol();
+        const update = (instance) => (updater) => {
+            const state = descriptor.get.call(instance);
+            const successful = updater(state);
+            if (successful)
+                return;
+            instance[symbol].delete(updater);
+        };
+        appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
+            this[symbol] || (this[symbol] = new Set());
+            const handler = (event) => {
+                event.stopPropagation();
+                const updater = event.detail;
+                this[symbol].add(updater);
+                update(this)(updater);
+            };
+            on(this, `internal:context:${namespace}`, handler);
+        });
+        appendToMethod(target, LIFECYCLE_UPDATED, function () {
+            this[symbol].forEach(update(this));
         });
     };
 }
@@ -2326,4 +2374,4 @@ function Media(query) {
     };
 }
 
-export { Animation2 as A, Bind as B, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, createLink as l, toAxis as m, Animation as n, on as o, Scrollbar as p, Portal as q, request as r, setConfig as s, toUnit as t, slots as u, Media as v, isValidCSSColor as w, PlusForm as x };
+export { Animation2 as A, Bind as B, Consumer as C, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, createLink as l, toAxis as m, Animation as n, on as o, Scrollbar as p, Portal as q, request as r, setConfig as s, toUnit as t, slots as u, Media as v, isValidCSSColor as w, PlusForm as x, Provider as y };

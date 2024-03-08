@@ -1,5 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
+import { TabsContext } from './tabs.context';
 /**
  * @development
  *
@@ -11,42 +12,28 @@ export declare class Tabs extends PlusCore {
     /**
      * Provides your own value.
      */
-    value?: any;
+    value?: number | string;
     /**
      * You can use vertical property for vertical mode.
      */
     vertical?: boolean;
     /**
-     * Panels are not always used inside tabs.They may be used outside, in which you can use
-     * this property to connect them to their corresponding tabs.
-     */
-    connector?: string;
-    /**
      * Fired when the value changes.
      */
     plusChange: EventEmitter<any>;
-    tunnel?: any;
-    watcher(next: any, prev: any, name: any): void;
-    broadcast(value: any): void;
-    change(value: any): void;
-    initialize(): void;
-    connectedCallback(): void;
+    get state(): TabsContext;
+    change(value: number | string): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsAttributes {
     /**
     * Provides your own value.
     */
-    "value"?: any;
+    "value"?: number | string;
     /**
     * You can use vertical property for vertical mode.
     */
     "vertical"?: boolean;
-    /**
-    * Panels are not always used inside tabs.They may be used outside, in which you can use
-    * this property to connect them to their corresponding tabs.
-    */
-    "connector"?: string;
 }
 export interface TabsEvents {
     /**
@@ -60,16 +47,11 @@ export interface TabsProperties {
     /**
     * Provides your own value.
     */
-    value?: any;
+    value?: number | string;
     /**
     * You can use vertical property for vertical mode.
     */
     vertical?: boolean;
-    /**
-    * Panels are not always used inside tabs.They may be used outside, in which you can use
-    * this property to connect them to their corresponding tabs.
-    */
-    connector?: string;
 }
 export interface TabsJSX extends TabsEvents, TabsProperties {
 }

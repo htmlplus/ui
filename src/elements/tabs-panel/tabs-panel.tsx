@@ -1,15 +1,12 @@
-import { Element, Property } from '@htmlplus/element';
+import { Consumer, Element, Property, State } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { createLink } from '@/services';
 
-const { Inject } = createLink({
-  crawl: true
-});
+import { TabsContext } from '../tabs/tabs.context';
 
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()
@@ -18,14 +15,15 @@ export class TabsPanel extends PlusCore {
    * Provides your own value.
    */
   @Property()
-  value?: any;
+  value?: number | string;
 
-  @Inject(true)
-  tunnel?: any;
+  @State()
+  @Consumer('tabs')
+  parent?: TabsContext;
 
   render() {
     return (
-      <host active={this.tunnel && this.tunnel === this.value}>
+      <host active={this.parent?.current === this.value}>
         <slot />
       </host>
     );

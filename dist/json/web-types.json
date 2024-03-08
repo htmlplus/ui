@@ -3770,10 +3770,6 @@
               {
                 "name": "vertical",
                 "description": "You can use vertical property for vertical mode."
-              },
-              {
-                "name": "connector",
-                "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
               }
             ]
           },
@@ -3781,7 +3777,7 @@
             {
               "name": "value",
               "value": {
-                "type": "any"
+                "type": "number | string"
               },
               "description": "Provides your own value."
             },
@@ -3791,13 +3787,6 @@
                 "type": "boolean"
               },
               "description": "You can use vertical property for vertical mode."
-            },
-            {
-              "name": "connector",
-              "value": {
-                "type": "string"
-              },
-              "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
             }
           ],
           "description": "Organizes content across different screens.",
@@ -3877,7 +3866,7 @@
             {
               "name": "value",
               "value": {
-                "type": "any"
+                "type": "number | string"
               },
               "description": "Provides your own value."
             }
@@ -3895,22 +3884,9 @@
           "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panels",
           "js": {
             "events": [],
-            "properties": [
-              {
-                "name": "connector",
-                "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
-              }
-            ]
+            "properties": []
           },
-          "attributes": [
-            {
-              "name": "connector",
-              "value": {
-                "type": "string"
-              },
-              "description": "Panels are not always used inside tabs.They may be used outside, in which you can use this property to connect them to their corresponding tabs."
-            }
-          ],
+          "attributes": [],
           "description": "TODO: This element contains panels.",
           "slots": [
             {
@@ -3946,7 +3922,7 @@
             {
               "name": "value",
               "value": {
-                "type": "any"
+                "type": "number | string"
               },
               "description": "Provides your own value."
             }

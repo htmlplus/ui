@@ -1,16 +1,12 @@
-import { Element, Event, EventEmitter, Property, Watch } from '@htmlplus/element';
+import { Element, Event, EventEmitter, Property, Provider } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { createLink } from '@/services';
 
-const { Action, Observable, reconnect } = createLink({
-  crawl: false,
-  namespace: ({ connector }) => (connector ? `Tabs:${connector}` : undefined)
-});
+import { TabsContext } from './tabs.context';
 
 /**
  * @development
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()
@@ -19,7 +15,7 @@ export class Tabs extends PlusCore {
    * Provides your own value.
    */
   @Property()
-  value?: any;
+  value?: number | string;
 
   /**
    * You can use vertical property for vertical mode.
@@ -28,51 +24,25 @@ export class Tabs extends PlusCore {
   vertical?: boolean;
 
   /**
-   * Panels are not always used inside tabs.They may be used outside, in which you can use
-   * this property to connect them to their corresponding tabs.
-   */
-  @Property()
-  connector?: string;
-
-  /**
    * Fired when the value changes.
    */
   @Event({ cancelable: true })
   plusChange!: EventEmitter<any>;
 
-  @Observable()
-  tunnel?: any;
-
-  @Watch(['connector', 'value'])
-  watcher(next, prev, name) {
-    switch (name) {
-      case 'connector':
-        reconnect(this);
-        break;
-      case 'value':
-        this.tunnel = next;
-        break;
-    }
+  @Provider('tabs')
+  get state(): TabsContext {
+    return {
+      current: this.value,
+      change: this.change.bind(this)
+    };
   }
 
-  broadcast(value: any) {
-    this.tunnel = value;
-  }
-
-  @Action()
-  change(value: any) {
+  change(value: number | string) {
     const event = this.plusChange(value);
+
     if (event.defaultPrevented) return;
+
     this.value = value;
-    this.broadcast(this.value);
-  }
-
-  initialize() {
-    this.broadcast(this.value);
-  }
-
-  connectedCallback() {
-    this.initialize();
   }
 
   render() {

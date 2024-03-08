@@ -1,15 +1,12 @@
-import { Bind, Element, Property } from '@htmlplus/element';
+import { Bind, Consumer, Element, Property, State } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { createLink } from '@/services';
 
-const { Inject } = createLink({
-  crawl: true
-});
+import { TabsContext } from '../tabs/tabs.context';
 
 /**
  * TODO: Tabs make it easy to switch between different views.
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()
@@ -24,26 +21,25 @@ export class TabsTab extends PlusCore {
    * Provides your own value.
    */
   @Property()
-  value?: any;
+  value?: number | string;
 
-  @Inject(true)
-  tunnel?: any;
-
-  @Inject()
-  change?: Function = () => console.log('TODO: can not use out of tabs');
+  @State()
+  @Consumer('tabs')
+  parent?: TabsContext;
 
   /**
    * Events handler
    */
   @Bind()
   onClick() {
-    if (this.disabled) return;
-    this.change(this.value);
+    if (!this.disabled) {
+      this.parent?.change(this.value);
+    }
   }
 
   render() {
     return (
-      <host active={this.tunnel && this.tunnel === this.value} onClick={this.onClick}>
+      <host active={this.parent?.current === this.value} onClick={this.onClick}>
         <span>
           <slot />
         </span>

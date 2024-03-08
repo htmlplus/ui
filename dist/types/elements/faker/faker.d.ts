@@ -25,7 +25,7 @@ export declare class Faker extends PlusCore {
      */
     seed?: number;
     get content(): any;
-    connectCallback(): Promise<void>;
+    connectedCallback(): Promise<void>;
     render(): any;
 }
 export interface FakerAttributes {

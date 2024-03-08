@@ -217,15 +217,13 @@ let Tooltip = class Tooltip extends PlusCore {
     onShow() {
         this.show();
     }
-    connectCallback() {
+    connectedCallback() {
         return import('@floating-ui/dom').then(module => {
             FloatingCore = module;
+            this.bind();
         }).catch(() => {
             throw new Error("The `tooltip` element depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem.");
         });
-    }
-    connectedCallback() {
-        this.bind();
     }
     disconnectedCallback() {
         this.unbind();
