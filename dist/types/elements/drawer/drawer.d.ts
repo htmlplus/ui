@@ -108,7 +108,7 @@ export declare class Drawer extends PlusCore {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DrawerAttributes {
     /**

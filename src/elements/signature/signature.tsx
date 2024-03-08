@@ -10,10 +10,9 @@ import {
 } from '@htmlplus/element';
 
 import type CoreType from 'signature_pad';
+import type { PointGroup } from 'signature_pad';
 
 import { PlusForm } from '@/core';
-
-import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 
 let Core;
 
@@ -85,10 +84,46 @@ export class Signature extends PlusForm {
   throttle?: number = 16;
 
   /**
+   * Gets/Sets data.
+   */
+  @Property()
+  value?: string;
+
+  /**
    * Specifies the velocity based on the previous velocity.
    */
   @Property()
   velocity?: number = 0.7;
+
+  /**
+   * The canvas element.
+   */
+  @Property()
+  get canvas(): HTMLCanvasElement {
+    return this.$canvas;
+  }
+
+  /**
+   * Specifies whether redo can be performed or not.
+   */
+  @Property()
+  get redoable(): boolean {
+    return this.index != this.history.length - 1;
+  }
+
+  /**
+   * Specifies whether undo can be performed or not.
+   */
+  @Property()
+  get undoable(): boolean {
+    return this.index != -1;
+  }
+
+  /**
+   * Fires after the latest changes have occurred with a delay to prepare the value.
+   */
+  @Event()
+  plusChange!: EventEmitter<void>;
 
   /**
    * Fires after updating the stroke.
@@ -115,119 +150,19 @@ export class Signature extends PlusForm {
   plusStart!: EventEmitter<PointerEvent>;
 
   /**
-   * Specifies whether redo can be performed or not.
-   */
-  @Method()
-  canRedo(): boolean {
-    return this.index != this.history.length - 1;
-  }
-
-  /**
-   * Specifies whether undo can be performed or not.
-   */
-  @Method()
-  canUndo(): boolean {
-    return this.index != -1;
-  }
-
-  /**
-   * The canvas element.
-   */
-  @Method()
-  canvas(): HTMLCanvasElement {
-    return this.$canvas;
-  }
-
-  /**
-   * Clears the canvas.
-   */
-  @Method()
-  clear() {
-    this.index = -1;
-    this.history = [];
-    this.instance.clear();
-  }
-
-  /**
-   * Draws from the data.
-   * @param data  - Collections of points.
-   * @param clear - Clears the canvas before drawing new points.
-   */
-  @Method()
-  fromData(data: SignaturePointGroup[], clear?: boolean) {
-    if (clear) this.clear();
-    this.instance.fromData(data);
-  }
-
-  /**
-   * Draws from the data URL. [More](https://mdn.io/drawImage).
-   * This method does not populate the internal data structure that represents the drawn signature.
-   * Thus, after using `fromDataURL`, `toData` won't work properly.
-   * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
-   * @param options - TODO
-   */
-  @Method()
-  async fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) {
-    await this.instance.fromDataURL(dataUrl, {
-      ratio: options.ratio,
-      width: options.width,
-      height: options.height,
-      xOffset: options.offsetX,
-      yOffset: options.offsetY
-    });
-  }
-
-  /**
-   * Returns `true` if canvas is empty.
-   */
-  @Method()
-  isEmpty(): boolean {
-    return this.instance?.isEmpty();
-  }
-
-  /**
-   * Returns data of the canvas.
-   * @returns Collections of points.
-   */
-  @Method()
-  toData(): SignaturePointGroup[] {
-    return JSON.parse(JSON.stringify(this.instance.toData()));
-  }
-
-  /**
-   * Returns [data URL](https://mdn.io/dataURL). [More](https://mdn.io/toDataURL).
-   */
-  toDataURL(type?: string, encoderOptions?: number): string;
-  toDataURL(type: 'image/svg+xml', includeBackgroundColor?: boolean): string;
-  @Method()
-  toDataURL(type?: string, options?: any): string {
-    if (type == 'image/svg+xml') {
-      options = { includeBackgroundColor: options };
-    }
-    return this.instance.toDataURL(type, options);
-  }
-
-  /**
-   * Returns SVG string.
-   * @param includeBackgroundColor - Adds the background color to the SVG output.
-   */
-  @Method()
-  toSVG(includeBackgroundColor?: boolean): string {
-    return this.instance.toSVG({ includeBackgroundColor });
-  }
-
-  /**
    * Reverts the last undo action.
    */
   @Method()
   redo() {
-    if (!this.canRedo()) return;
+    if (!this.redoable) return;
 
     this.index++;
 
     const data = this.history[this.index] || [];
 
     this.instance.fromData(data);
+
+    this.update(true, true);
   }
 
   /**
@@ -246,9 +181,11 @@ export class Signature extends PlusForm {
 
     if (!this.instance) return;
 
-    if (clear ?? this.clearOnResize) return this.clear();
+    if (clear ?? this.clearOnResize) {
+      return this.reset(true);
+    }
 
-    this.fromData(this.toData());
+    this.instance.fromData(this.clone());
   }
 
   /**
@@ -256,13 +193,15 @@ export class Signature extends PlusForm {
    */
   @Method()
   undo() {
-    if (!this.canUndo()) return;
+    if (!this.undoable) return;
 
     this.index--;
 
     const data = this.history[this.index] || [];
 
     this.instance.fromData(data);
+
+    this.update(true, true);
   }
 
   @Query('canvas')
@@ -270,14 +209,25 @@ export class Signature extends PlusForm {
 
   instance?: CoreType;
 
-  history: SignaturePointGroup[][] = [];
+  history: PointGroup[][] = [];
 
   index: number = -1;
 
-  observer: ResizeObserver = new ResizeObserver(this.onResize);
+  observer: ResizeObserver = new ResizeObserver(() => this.resize());
+
+  previous?: string;
+
+  timeout?: number = 0;
 
   @Watch()
   watcher(next, prev, name) {
+    // TODO
+    if (!this.instance) {
+      return setTimeout(() => {
+        this.watcher(next, prev, name);
+      }, 250);
+    }
+
     switch (name) {
       case 'color':
         this.instance.penColor = next;
@@ -301,10 +251,16 @@ export class Signature extends PlusForm {
       case 'resizable':
         this.observer[next ? 'observe' : 'unobserve'](this.$host);
         break;
+      case 'value':
+        // TODO
+        this.load();
+        break;
     }
 
+    if (name == 'value') return;
+
     // TODO
-    this.fromData(this.toData());
+    this.instance.fromData(this.clone());
   }
 
   bind() {
@@ -319,6 +275,7 @@ export class Signature extends PlusForm {
       velocityFilterWeight: this.velocity
     });
 
+    this.instance.addEventListener('beginStroke', this.onStart);
     this.instance.addEventListener('endStroke', this.onEnd);
 
     const events = {
@@ -347,30 +304,95 @@ export class Signature extends PlusForm {
     requestAnimationFrame(() => this.resize());
   }
 
+  clone() {
+    return JSON.parse(JSON.stringify(this.instance.toData()));
+  }
+
+  // TODO
+  load() {
+    if (this.previous == this.value) return;
+
+    this.reset(false);
+
+    this.previous = this.value;
+
+    const image = document.createElement('img');
+
+    image.src = 'data:image/svg+xml;base64,' + btoa(this.value);
+
+    image.onerror = () => {
+      image.remove();
+    };
+
+    image.onload = () => {
+      const context = this.$canvas.getContext('2d');
+
+      context.drawImage(image, 0, 0);
+
+      image.remove();
+    };
+  }
+
+  reset(includeValue: boolean) {
+    this.index = -1;
+
+    this.history = [];
+
+    this.instance.clear();
+
+    if (!includeValue) return;
+
+    this.previous = this.value = undefined;
+  }
+
   unbind() {
     this.observer.disconnect();
     this.instance?.off();
+  }
+
+  update(force: boolean, silent: boolean) {
+    if (!force && this.timeout > Date.now()) return;
+
+    this.timeout = Date.now() + 500;
+
+    const value = this.instance.isEmpty() ? undefined : this.instance.toSVG();
+
+    this.previous = this.value = value;
+
+    if (silent) return;
+
+    this.plusChange();
+  }
+
+  @Bind()
+  onStart() {
+    if (this.value && this.index == -1) {
+      this.reset(true);
+    }
   }
 
   @Bind()
   onEnd() {
     this.index++;
 
-    this.history[this.index] = this.toData();
+    this.history[this.index] = this.clone();
 
     this.history.length = this.index + 1;
-  }
 
-  @Bind()
-  onResize() {
-    this.resize();
+    this.update(false, false);
   }
 
   loadedCallback() {
-    import('signature_pad').then((moddule) => {
-      Core = moddule.default;
-      this.bind();
-    });
+    return import('signature_pad')
+      .then((module) => {
+        Core = module.default;
+        this.bind();
+      })
+      .catch(() => {
+        throw new Error(
+          "The `signature` element depends on an external package, but it doesn't seem to be installed. Running `npm install signature_pad` will fix this problem."
+        );
+      });
   }
 
   disconnectedCallback() {

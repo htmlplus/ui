@@ -3821,9 +3821,29 @@
           "description": "Specifies the time distance between the previous point and the next one."
         },
         {
+          "name": "value",
+          "values": [],
+          "description": "Gets/Sets data."
+        },
+        {
           "name": "velocity",
           "values": [],
           "description": "Specifies the velocity based on the previous velocity."
+        },
+        {
+          "name": "canvas",
+          "values": [],
+          "description": "The canvas element."
+        },
+        {
+          "name": "redoable",
+          "values": [],
+          "description": "Specifies whether redo can be performed or not."
+        },
+        {
+          "name": "undoable",
+          "values": [],
+          "description": "Specifies whether undo can be performed or not."
         }
       ],
       "references": [

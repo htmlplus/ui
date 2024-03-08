@@ -1,24 +1,19 @@
-- background image
-- readonly
-- value
 - keyboards
 - does clearOnResize need to observer?
-- change event
+- clear event
 - rescale based on window.devicePixelRatio
 - getTrimmedCanvas
 - examples for:
-  - dotSize
-  - throttle
-  - velocity
   - plusAfter
   - plusBefore
   - plusEnd
   - plusStart
   - canvas
-  - fromData
-  - fromDataURL
-  - isEmpty
-  - toData
-  - toDataURL
-  - toSVG
   - resize
+
+  - dotSize 
+  - throttle
+  - velocity
+  - readonly
+  - required
+  - form validation

@@ -21,7 +21,7 @@ export declare class TabsTab extends PlusCore {
      * Events handler
      */
     onClick(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsTabAttributes {
     /**

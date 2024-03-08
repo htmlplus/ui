@@ -3280,6 +3280,10 @@
           "js": {
             "events": [
               {
+                "name": "plus-change",
+                "description": "Fires after the latest changes have occurred with a delay to prepare the value."
+              },
+              {
                 "name": "plus-after",
                 "description": "Fires after updating the stroke."
               },
@@ -3343,49 +3347,25 @@
                 "description": "Specifies the time distance between the previous point and the next one."
               },
               {
+                "name": "value",
+                "description": "Gets/Sets data."
+              },
+              {
                 "name": "velocity",
                 "default": "0.7",
                 "description": "Specifies the velocity based on the previous velocity."
-              },
-              {
-                "name": "canRedo",
-                "description": "Specifies whether redo can be performed or not."
-              },
-              {
-                "name": "canUndo",
-                "description": "Specifies whether undo can be performed or not."
               },
               {
                 "name": "canvas",
                 "description": "The canvas element."
               },
               {
-                "name": "clear",
-                "description": "Clears the canvas."
+                "name": "redoable",
+                "description": "Specifies whether redo can be performed or not."
               },
               {
-                "name": "fromData",
-                "description": "Draws from the data."
-              },
-              {
-                "name": "fromDataURL",
-                "description": "Draws from the data URL. [More](https://mdn.io/drawImage). This method does not populate the internal data structure that represents the drawn signature. Thus, after using `fromDataURL`, `toData` won't work properly."
-              },
-              {
-                "name": "isEmpty",
-                "description": "Returns `true` if canvas is empty."
-              },
-              {
-                "name": "toData",
-                "description": "Returns data of the canvas."
-              },
-              {
-                "name": "toDataURL",
-                "description": ""
-              },
-              {
-                "name": "toSVG",
-                "description": "Returns SVG string."
+                "name": "undoable",
+                "description": "Specifies whether undo can be performed or not."
               },
               {
                 "name": "redo",
@@ -3478,12 +3458,40 @@
               "description": "Specifies the time distance between the previous point and the next one."
             },
             {
+              "name": "value",
+              "value": {
+                "type": "string"
+              },
+              "description": "Gets/Sets data."
+            },
+            {
               "name": "velocity",
               "value": {
                 "type": "number"
               },
               "default": "0.7",
               "description": "Specifies the velocity based on the previous velocity."
+            },
+            {
+              "name": "canvas",
+              "value": {
+                "type": ""
+              },
+              "description": "The canvas element."
+            },
+            {
+              "name": "redoable",
+              "value": {
+                "type": ""
+              },
+              "description": "Specifies whether redo can be performed or not."
+            },
+            {
+              "name": "undoable",
+              "value": {
+                "type": ""
+              },
+              "description": "Specifies whether undo can be performed or not."
             }
           ],
           "description": "Allows user to draw smooth signatures."

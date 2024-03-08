@@ -1,7 +1,8 @@
+/// <reference types="node" />
 import { EventEmitter } from '@htmlplus/element';
 import type CoreType from 'signature_pad';
+import type { PointGroup } from 'signature_pad';
 import { PlusForm } from "../../core";
-import { SignatureFromDataURLOptions, SignaturePointGroup } from './signature.types';
 /**
  * @stable
  *
@@ -51,9 +52,29 @@ export declare class Signature extends PlusForm {
      */
     throttle?: number;
     /**
+     * Gets/Sets data.
+     */
+    value?: string;
+    /**
      * Specifies the velocity based on the previous velocity.
      */
     velocity?: number;
+    /**
+     * The canvas element.
+     */
+    get canvas(): HTMLCanvasElement;
+    /**
+     * Specifies whether redo can be performed or not.
+     */
+    get redoable(): boolean;
+    /**
+     * Specifies whether undo can be performed or not.
+     */
+    get undoable(): boolean;
+    /**
+     * Fires after the latest changes have occurred with a delay to prepare the value.
+     */
+    plusChange: EventEmitter<void>;
     /**
      * Fires after updating the stroke.
      */
@@ -71,55 +92,6 @@ export declare class Signature extends PlusForm {
      */
     plusStart: EventEmitter<PointerEvent>;
     /**
-     * Specifies whether redo can be performed or not.
-     */
-    canRedo(): boolean;
-    /**
-     * Specifies whether undo can be performed or not.
-     */
-    canUndo(): boolean;
-    /**
-     * The canvas element.
-     */
-    canvas(): HTMLCanvasElement;
-    /**
-     * Clears the canvas.
-     */
-    clear(): void;
-    /**
-     * Draws from the data.
-     * @param data  - Collections of points.
-     * @param clear - Clears the canvas before drawing new points.
-     */
-    fromData(data: SignaturePointGroup[], clear?: boolean): void;
-    /**
-     * Draws from the data URL. [More](https://mdn.io/drawImage).
-     * This method does not populate the internal data structure that represents the drawn signature.
-     * Thus, after using `fromDataURL`, `toData` won't work properly.
-     * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
-     * @param options - TODO
-     */
-    fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions): Promise<void>;
-    /**
-     * Returns `true` if canvas is empty.
-     */
-    isEmpty(): boolean;
-    /**
-     * Returns data of the canvas.
-     * @returns Collections of points.
-     */
-    toData(): SignaturePointGroup[];
-    /**
-     * Returns [data URL](https://mdn.io/dataURL). [More](https://mdn.io/toDataURL).
-     */
-    toDataURL(type?: string, encoderOptions?: number): string;
-    toDataURL(type: 'image/svg+xml', includeBackgroundColor?: boolean): string;
-    /**
-     * Returns SVG string.
-     * @param includeBackgroundColor - Adds the background color to the SVG output.
-     */
-    toSVG(includeBackgroundColor?: boolean): string;
-    /**
      * Reverts the last undo action.
      */
     redo(): void;
@@ -134,17 +106,23 @@ export declare class Signature extends PlusForm {
     undo(): void;
     $canvas: HTMLCanvasElement;
     instance?: CoreType;
-    history: SignaturePointGroup[][];
+    history: PointGroup[][];
     index: number;
     observer: ResizeObserver;
-    watcher(next: any, prev: any, name: any): void;
+    previous?: string;
+    timeout?: number;
+    watcher(next: any, prev: any, name: any): NodeJS.Timeout;
     bind(): void;
+    clone(): any;
+    load(): void;
+    reset(includeValue: boolean): void;
     unbind(): void;
+    update(force: boolean, silent: boolean): void;
+    onStart(): void;
     onEnd(): void;
-    onResize(): void;
-    loadedCallback(): void;
+    loadedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SignatureAttributes {
     /**
@@ -188,11 +166,31 @@ export interface SignatureAttributes {
     */
     "throttle"?: number;
     /**
+    * Gets/Sets data.
+    */
+    "value"?: string;
+    /**
     * Specifies the velocity based on the previous velocity.
     */
     "velocity"?: number;
+    /**
+    * The canvas element.
+    */
+    "canvas": any;
+    /**
+    * Specifies whether redo can be performed or not.
+    */
+    "redoable": any;
+    /**
+    * Specifies whether undo can be performed or not.
+    */
+    "undoable": any;
 }
 export interface SignatureEvents {
+    /**
+    * Fires after the latest changes have occurred with a delay to prepare the value.
+    */
+    onPlusChange?: (event: CustomEvent<void>) => void;
     /**
     * Fires after updating the stroke.
     */
@@ -211,51 +209,6 @@ export interface SignatureEvents {
     onPlusStart?: (event: CustomEvent<PointerEvent>) => void;
 }
 export interface SignatureMethods {
-    /**
-    * Specifies whether redo can be performed or not.
-    */
-    canRedo(): boolean;
-    /**
-    * Specifies whether undo can be performed or not.
-    */
-    canUndo(): boolean;
-    /**
-    * The canvas element.
-    */
-    canvas(): HTMLCanvasElement;
-    /**
-    * Clears the canvas.
-    */
-    clear(): any;
-    /**
-    * Draws from the data.
-    * @param data  - Collections of points.
-    * @param clear - Clears the canvas before drawing new points.
-    */
-    fromData(data: SignaturePointGroup[], clear?: boolean): any;
-    /**
-    * Draws from the data URL. [More](https://mdn.io/drawImage).
-    * This method does not populate the internal data structure that represents the drawn signature.
-    * Thus, after using `fromDataURL`, `toData` won't work properly.
-    * @param dataUrl - A string containing the [data URL](https://mdn.io/dataURL).
-    * @param options - TODO
-    */
-    fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions): any;
-    /**
-    * Returns `true` if canvas is empty.
-    */
-    isEmpty(): boolean;
-    /**
-    * Returns data of the canvas.
-    * @returns Collections of points.
-    */
-    toData(): SignaturePointGroup[];
-    toDataURL(type?: string, options?: any): string;
-    /**
-    * Returns SVG string.
-    * @param includeBackgroundColor - Adds the background color to the SVG output.
-    */
-    toSVG(includeBackgroundColor?: boolean): string;
     /**
     * Reverts the last undo action.
     */
@@ -312,9 +265,25 @@ export interface SignatureProperties {
     */
     throttle?: number;
     /**
+    * Gets/Sets data.
+    */
+    value?: string;
+    /**
     * Specifies the velocity based on the previous velocity.
     */
     velocity?: number;
+    /**
+    * The canvas element.
+    */
+    canvas: any;
+    /**
+    * Specifies whether redo can be performed or not.
+    */
+    redoable: any;
+    /**
+    * Specifies whether undo can be performed or not.
+    */
+    undoable: any;
 }
 export interface SignatureJSX extends SignatureEvents, SignatureProperties {
 }

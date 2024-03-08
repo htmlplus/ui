@@ -28,6 +28,10 @@ Allows user to draw smooth signatures.
 
 <Example value="disabled" />
 
+### Value
+
+<Example value="value" />
+
 ### Width
 
 <Example value="width" />

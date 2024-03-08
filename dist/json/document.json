@@ -3392,6 +3392,12 @@
       "events": [
         {
           "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusChange",
+          "description": "Fires after the latest changes have occurred with a delay to prepare the value."
+        },
+        {
+          "cancelable": false,
           "detail": "EventEmitter<PointerEvent>",
           "name": "plusAfter",
           "description": "Fires after updating the stroke."
@@ -3416,139 +3422,8 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-03-01T17:00:04.637Z",
+      "lastModified": "2024-03-08T19:44:53.895Z",
       "methods": [
-        {
-          "async": false,
-          "name": "canRedo",
-          "parameters": [],
-          "returns": "boolean",
-          "signature": "canRedo() => boolean",
-          "description": "Specifies whether redo can be performed or not."
-        },
-        {
-          "async": false,
-          "name": "canUndo",
-          "parameters": [],
-          "returns": "boolean",
-          "signature": "canUndo() => boolean",
-          "description": "Specifies whether undo can be performed or not."
-        },
-        {
-          "async": false,
-          "name": "canvas",
-          "parameters": [],
-          "returns": "HTMLCanvasElement",
-          "signature": "canvas() => HTMLCanvasElement",
-          "description": "The canvas element."
-        },
-        {
-          "async": false,
-          "name": "clear",
-          "parameters": [],
-          "returns": "void",
-          "signature": "clear() => void",
-          "description": "Clears the canvas."
-        },
-        {
-          "async": false,
-          "name": "fromData",
-          "parameters": [
-            {
-              "description": "Collections of points.",
-              "required": true,
-              "name": "data",
-              "type": "SignaturePointGroup[]"
-            },
-            {
-              "description": "Clears the canvas before drawing new points.",
-              "required": false,
-              "name": "clear",
-              "type": "boolean"
-            }
-          ],
-          "returns": "void",
-          "signature": "fromData(data: SignaturePointGroup[], clear?: boolean) => void",
-          "description": "Draws from the data."
-        },
-        {
-          "async": true,
-          "name": "fromDataURL",
-          "parameters": [
-            {
-              "description": "A string containing the [data URL](https://mdn.io/dataURL).",
-              "required": true,
-              "name": "dataUrl",
-              "type": "string"
-            },
-            {
-              "description": "TODO",
-              "required": false,
-              "name": "options",
-              "type": "SignatureFromDataURLOptions",
-              "typeReference": "./signature.types"
-            }
-          ],
-          "returns": "void",
-          "signature": "fromDataURL(dataUrl: string, options?: SignatureFromDataURLOptions) => void",
-          "description": "Draws from the data URL. [More](https://mdn.io/drawImage). This method does not populate the internal data structure that represents the drawn signature. Thus, after using `fromDataURL`, `toData` won't work properly."
-        },
-        {
-          "async": false,
-          "name": "isEmpty",
-          "parameters": [],
-          "returns": "boolean",
-          "signature": "isEmpty() => boolean",
-          "description": "Returns `true` if canvas is empty."
-        },
-        {
-          "async": false,
-          "name": "toData",
-          "parameters": [],
-          "returns": "SignaturePointGroup[]",
-          "signature": "toData() => SignaturePointGroup[]",
-          "description": "Returns data of the canvas.",
-          "tags": [
-            {
-              "key": "returns",
-              "value": "Collections of points."
-            }
-          ]
-        },
-        {
-          "async": false,
-          "name": "toDataURL",
-          "parameters": [
-            {
-              "required": false,
-              "name": "type",
-              "type": "string"
-            },
-            {
-              "required": false,
-              "name": "options",
-              "type": "any"
-            }
-          ],
-          "returns": "string",
-          "signature": "toDataURL(type?: string, options?: any) => string",
-          "description": ""
-        },
-        {
-          "async": false,
-          "name": "toSVG",
-          "parameters": [
-            {
-              "description": "Adds the background color to the SVG output.",
-              "required": false,
-              "name": "includeBackgroundColor",
-              "type": "boolean"
-            }
-          ],
-          "returns": "string",
-          "signature": "toSVG(includeBackgroundColor?: boolean) => string",
-          "description": "Returns SVG string."
-        },
         {
           "async": false,
           "name": "redo",
@@ -3678,6 +3553,15 @@
           "description": "Specifies the time distance between the previous point and the next one."
         },
         {
+          "attribute": "value",
+          "name": "value",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "string",
+          "description": "Gets/Sets data."
+        },
+        {
           "attribute": "velocity",
           "initializer": "0.7",
           "name": "velocity",
@@ -3686,9 +3570,36 @@
           "required": false,
           "type": "number",
           "description": "Specifies the velocity based on the previous velocity."
+        },
+        {
+          "attribute": "canvas",
+          "name": "canvas",
+          "readonly": true,
+          "reflects": false,
+          "required": false,
+          "type": "HTMLCanvasElement",
+          "description": "The canvas element."
+        },
+        {
+          "attribute": "redoable",
+          "name": "redoable",
+          "readonly": true,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Specifies whether redo can be performed or not."
+        },
+        {
+          "attribute": "undoable",
+          "name": "undoable",
+          "readonly": true,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Specifies whether undo can be performed or not."
         }
       ],
-      "readmeContent": "# Signature\r\n\r\nAllows user to draw smooth signatures.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Dimensions\r\n\r\n<Example value=\"dimensions\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Distance\r\n\r\n<Example value=\"distance\" />\r\n\r\n### Clear\r\n\r\n<Example value=\"clear\" />\r\n\r\n### History\r\n\r\n<Example value=\"history\" />\r\n\r\n### Resizable\r\n\r\n<Example value=\"resizable\" />\r\n\r\n### Clear On Resize\r\n\r\n<Example value=\"clear-on-resize\" />\r\n\r\n### Save\r\n\r\n<Example value=\"save\" />\r\n\r\n<LastModified />\r\n",
+      "readmeContent": "# Signature\r\n\r\nAllows user to draw smooth signatures.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Dimensions\r\n\r\n<Example value=\"dimensions\" />\r\n\r\n### Disabled\r\n\r\n<Example value=\"disabled\" />\r\n\r\n### Value\r\n\r\n<Example value=\"value\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Distance\r\n\r\n<Example value=\"distance\" />\r\n\r\n### Clear\r\n\r\n<Example value=\"clear\" />\r\n\r\n### History\r\n\r\n<Example value=\"history\" />\r\n\r\n### Resizable\r\n\r\n<Example value=\"resizable\" />\r\n\r\n### Clear On Resize\r\n\r\n<Example value=\"clear-on-resize\" />\r\n\r\n### Save\r\n\r\n<Example value=\"save\" />\r\n\r\n<LastModified />\r\n",
       "styles": [],
       "title": "Signature",
       "description": "Allows user to draw smooth signatures.",

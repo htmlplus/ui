@@ -1447,13 +1447,9 @@ function Element() {
                 call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
             }
             attributeChangedCallback(attribute, prev, next) {
-                const instance = this[API_INSTANCE];
-                if (instance[API_LOCKED])
-                    return;
-                const name = camelCase(attribute);
                 // ensures the integrity of readonly properties to prevent potential errors.
                 try {
-                    this[name] = next;
+                    this[camelCase(attribute)] = next;
                 }
                 catch (_a) { }
             }
@@ -1565,11 +1561,9 @@ function Property(options) {
                 // Defines a new getter function.
                 descriptor.get = function () {
                     const value = getter === null || getter === void 0 ? void 0 : getter.apply(this);
-                    // TODO: target or this
-                    target[API_LOCKED] = true;
+                    this[API_LOCKED] = true;
                     updateAttribute(this, name, value);
-                    // TODO: target or this
-                    target[API_LOCKED] = false;
+                    this[API_LOCKED] = false;
                     return value;
                 };
                 // TODO: Check the lifecycle
@@ -1594,13 +1588,13 @@ function Property(options) {
                     return;
                 this[symbol] = next;
                 request(this, name, previous, (skipped) => {
-                    if (!(options === null || options === void 0 ? void 0 : options.reflect) || skipped)
+                    if (skipped)
                         return;
-                    // TODO: target or this
-                    target[API_LOCKED] = true;
+                    if (!(options === null || options === void 0 ? void 0 : options.reflect))
+                        return;
+                    this[API_LOCKED] = true;
                     updateAttribute(this, name, next);
-                    // TODO: target or this
-                    target[API_LOCKED] = false;
+                    this[API_LOCKED] = false;
                 });
             }
             // Attaches the getter and setter functions to the current property of the target class.
@@ -1616,6 +1610,9 @@ function Property(options) {
             const set = descriptor
                 ? undefined
                 : (input) => {
+                    if (this[API_LOCKED]) {
+                        return;
+                    }
                     this[key] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
                 };
             // TODO: Check the configuration.
