@@ -1,3 +1,10 @@
+## [1.1.14](https://github.com/htmlplus/core/compare/v1.1.13...v1.1.14) (2024-03-08)
+
+
+### Bug Fixes
+
+* Update lifecycles and use new context api on tabs ([3e33c6b](https://github.com/htmlplus/core/commit/3e33c6b0a9288d92e46b670c75402b2b46f3311c))
+
 ## [1.1.13](https://github.com/htmlplus/core/compare/v1.1.12...v1.1.13) (2024-03-08)
 
 
