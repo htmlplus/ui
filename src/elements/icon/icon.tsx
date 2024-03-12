@@ -1,8 +1,8 @@
-import { Element, Property, State, Watch, toUnit } from '@htmlplus/element';
+import { Element, Property, State, Watch, toUnit, isCSSColor } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
-import { isSize, isValidCSSColor } from '@/helpers';
+import { isSize } from '@/helpers';
 
 import { ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
@@ -37,7 +37,7 @@ const parse = (input: SVGElement | string): SVGElement => {
 
 /**
  * @stable
- * 
+ *
  * @part svg - The svg element.
  */
 @Element()
@@ -131,7 +131,7 @@ export class Icon extends PlusCore {
     }
 
     return {
-      color: isValidCSSColor(this.color) ? this.color : null,
+      color: isCSSColor(this.color) ? this.color : null,
       height: size,
       width: size,
       transform
@@ -172,7 +172,7 @@ export class Icon extends PlusCore {
 
     try {
       if (this.sync(this.cache)) return;
-    } catch { }
+    } catch {}
 
     if (typeof this.resolver != 'function') {
       console.warn(
