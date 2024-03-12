@@ -3,7 +3,9 @@ import {
   Element,
   Event,
   EventEmitter,
+  Method,
   Property,
+  Provider,
   Query,
   Watch,
   classes,
@@ -13,28 +15,20 @@ import {
 
 import { PlusCore } from '@/core';
 import { toAxis } from '@/helpers';
-import { Animation, Portal, Scrollbar, createLink } from '@/services';
+import { Animation2, Scrollbar } from '@/services';
 
-import {
-  DialogFullscreen,
-  DialogPlacement,
-  DialogPortalStrategy,
-  DialogPortalTarget,
-  DialogSize
-} from './dialog.types';
-
-const { Action, Observable, reconnect } = createLink({
-  crawl: false,
-  namespace: ({ connector }) => (connector ? `Dialog:${connector}` : undefined)
-});
+import { DialogContext } from './dialog.context';
+import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
 
 /**
  * @part backdrop - Backdrop element.
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()
 export class Dialog extends PlusCore {
+  static instances: Dialog[] = [];
+
   /**
    * TODO
    */
@@ -94,27 +88,6 @@ export class Dialog extends PlusCore {
   placement?: DialogPlacement = 'top';
 
   /**
-   * Enables or disables the portal.
-   * @experimental
-   */
-  @Property()
-  portal?: boolean;
-
-  /**
-   * Specifies the position of the dialog.
-   * @experimental
-   */
-  @Property()
-  portalStrategy?: DialogPortalStrategy = 'append';
-
-  /**
-   * Specifies the position of the dialog relative to the target.
-   * @experimental
-   */
-  @Property()
-  portalTarget?: DialogPortalTarget = 'body';
-
-  /**
    * It makes the user able to scroll the content by adding a scroll beside it.
    */
   @Property()
@@ -165,17 +138,87 @@ export class Dialog extends PlusCore {
   @Query('slot')
   $cell!: HTMLElement;
 
-  static instances = [];
+  @Provider('dialog.connector')
+  get state(): DialogContext {
+    return {
+      open: this.opened,
+      toggle: () => {
+        this.try(!this.open, false);
+      }
+    };
+  }
 
-  animate?: Animation;
+  animate = new Animation2({
+    key: 'state',
+    source: () => this.$host,
+    target: () => this.$host,
+    states: {
+      enter: 'open',
+      entering: 'opening',
+      entered: 'opened',
+      leave: 'close',
+      leaving: 'closing',
+      leaved: 'closed'
+    },
+    onEnter: () => {
+      // remove document's scroll
+      Scrollbar.remove(this);
 
-  isOpen?: boolean;
+      // add keydown listener
+      on(document, 'keydown', this.onEscape, true);
 
-  // TODO: replace with FC
-  portalInstance?: Portal;
+      // remove outside click listener
+      on(this.$cell, 'outside', this.onClickOutside, true);
 
-  @Observable()
-  tunnel?: boolean;
+      // set z-index
+      this.$host.style.zIndex = this.zIndex;
+
+      // update state
+      this.open = this.opened = true;
+
+      // register dialog's instance
+      Dialog.instances.push(this);
+    },
+    onEntering: () => {
+      this.opened = this.open = true;
+    },
+    onEntered: (silent) => {
+      if (silent) return;
+
+      this.plusOpened();
+    },
+    onLeave: () => {},
+    onLeaving: () => {
+      this.opened = this.open = false;
+    },
+    onLeaved: (silent) => {
+      // reset document's scroll
+      Scrollbar.reset(this);
+
+      // remove keydown listener
+      off(document, 'keydown', this.onEscape, true);
+
+      // remove outside click listener
+      off(this.$cell, 'outside', this.onClickOutside, true);
+
+      // reset z-index
+      this.$host.style.zIndex = null;
+
+      // update state
+      this.open = this.opened = false;
+
+      // unregister dialog's instance
+      Dialog.instances = Dialog.instances.filter((instance) => instance !== this);
+
+      if (silent) return;
+
+      this.plusClosed();
+    }
+  });
+
+  opened: boolean = false;
+
+  promise?: Promise<boolean>;
 
   get classes() {
     let placement = this.placement || '';
@@ -209,11 +252,7 @@ export class Dialog extends PlusCore {
   }
 
   get isCurrent() {
-    const instances = Dialog.instances;
-
-    const last = instances.length - 1;
-
-    return instances[last] === this;
+    return Dialog.instances.at(-1) === this;
   }
 
   get zIndex() {
@@ -228,182 +267,100 @@ export class Dialog extends PlusCore {
     return `${parseInt(zIndex) + 1}`;
   }
 
-  @Watch(['connector', 'open'])
+  /**
+   * Hides the element.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  @Method()
+  hide(): Promise<boolean> {
+    return this.try(false, true);
+  }
+
+  /**
+   * Shows the element.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  @Method()
+  show(): Promise<boolean> {
+    return this.try(true, true);
+  }
+
+  /**
+   * Toggles between `collapse` and `expand` state.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  @Method()
+  toggle(): Promise<boolean> {
+    return this.try(!this.open, true);
+  }
+
+  @Watch(['open'])
   watcher(next, prev, name) {
     switch (name) {
-      case 'connector':
-        reconnect(this);
-
-        break;
-
       case 'open':
-        next && !this.isOpen && this.tryShow(true, true);
-
-        !next && this.isOpen && this.tryHide(true, true);
-
+        // TODO: problem with `false` and `undefined`
+        if (!next == !prev) break;
+        this.try(next, true);
         break;
     }
   }
 
-  hide() {
-    this.tryHide(true, false);
-  }
-
-  show() {
-    this.tryShow(true, false);
-  }
-
-  @Action()
-  toggle() {
-    this.isOpen ? this.hide() : this.show();
-  }
-
-  broadcast(value) {
-    this.tunnel = value;
-  }
-
   initialize() {
-    this.animate = new Animation({
-      key: 'state',
-      source: () => this.$host,
-      target: () => this.$host,
-      state: this.open ? 'entered' : 'leaved',
-      states: {
-        enter: 'open',
-        entering: 'opening',
-        entered: 'opened',
-        leave: 'close',
-        leaving: 'closing',
-        leaved: 'closed'
-      }
-    });
-
-    if (!this.open) return;
-
-    this.tryShow(false, true);
+    this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
   }
 
   terminate() {
-    this.onHide();
-
     this.animate?.dispose();
   }
 
-  tryHide(animation, silent) {
-    if (!this.isOpen) return;
+  async try(open: boolean, silent?: boolean): Promise<boolean> {
+    if (this.opened == open) return await this.promise;
 
-    if (!silent && this.plusClose().defaultPrevented) return;
+    if (!silent) {
+      const event = open ? this.plusOpen : this.plusClose;
 
-    if (!animation) return this.onHide();
+      const prevented = event.call(this).defaultPrevented;
 
-    this.animate.leave({
-      onLeave: () => {
-        // TODO: experimantal new link
-        this.broadcast(false);
-      },
-      onLeaved: () => {
-        // TODO: experimantal portal
-        this.portalInstance?.revert();
+      // TODO
+      if (prevented) return true;
+    }
 
-        this.onHide();
+    this.opened = this.open = open;
 
-        if (silent) return;
+    const fn = this.open ? this.animate.enter : this.animate.leave;
 
-        this.plusClosed();
-      }
-    });
-  }
+    this.promise = fn.bind(this.animate)(silent);
 
-  tryShow(animation, silent) {
-    if (this.isOpen) return;
-
-    if (!silent && this.plusOpen().defaultPrevented) return;
-
-    if (!animation) return this.onShow();
-
-    this.animate.enter({
-      onEnter: () => {
-        this.onShow();
-      },
-      onEntered: () => {
-        if (silent) return;
-
-        this.plusOpened();
-      }
-    });
-  }
-
-  onHide() {
-    // reset document's scroll
-    Scrollbar.reset(this);
-
-    // remove outside click listener
-    off(this.$cell, 'outside', this.onClickOutside, true);
-
-    // remove keydown listener
-    off(document, 'keydown', this.onEscape, true);
-
-    // reset z-index
-    this.$host.style.zIndex = null;
-
-    // update state
-    this.open = this.isOpen = false;
-
-    // unregister dialog's instance
-    Dialog.instances = Dialog.instances.filter((instance) => instance !== this);
-
-    // TODO: experimantal new link
-    this.broadcast(false);
-  }
-
-  onShow() {
-    // TODO: experimantal portal
-    this.portalInstance =
-      this.portal &&
-      new Portal({
-        source: this.$host,
-        target: this.portalTarget,
-        strategy: this.portalStrategy
-      });
-
-    // remove document's scroll
-    Scrollbar.remove(this);
-
-    // remove outside click listener
-    on(this.$cell, 'outside', this.onClickOutside, true);
-
-    // add keydown listener
-    on(document, 'keydown', this.onEscape, true);
-
-    // set z-index
-    this.$host.style.zIndex = this.zIndex;
-
-    // update state
-    this.open = this.isOpen = true;
-
-    // register dialog's instance
-    Dialog.instances.push(this);
-
-    // TODO: experimantal new link
-    this.broadcast(true);
+    return await this.promise;
   }
 
   @Bind()
   onEscape(event) {
-    if (!this.isOpen || !this.isCurrent) return;
+    // TODO
+    if (!this.opened) return;
+
+    if (!this.isCurrent) return;
 
     if (!this.keyboard || event.key !== 'Escape') return;
 
     event.preventDefault();
 
-    this.tryHide(true, false);
+    this.try(false, false);
   }
 
   @Bind()
   onClickOutside() {
-    if (!this.isOpen || !this.isCurrent || this.persistent) return;
+    // TODO
+    if (!this.opened) return;
 
-    this.tryHide(true, false);
+    if (!this.isCurrent) return;
+
+    if (this.persistent) return;
+
+    this.try(false, false);
   }
 
   loadedCallback() {
@@ -417,10 +374,10 @@ export class Dialog extends PlusCore {
   render() {
     return (
       <host
-        aria-hidden={this.isOpen ? null : 'true'}
-        aria-modal={this.isOpen ? 'true' : null}
+        aria-hidden={this.opened ? null : 'true'}
+        aria-modal={this.opened ? 'true' : null}
         tabIndex={-1}
-        role={this.isOpen ? 'dialog' : null}
+        role={this.opened ? 'dialog' : null}
       >
         {!this.transparent && (
           <div className="backdrop" part="backdrop">

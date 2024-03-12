@@ -1,12 +1,8 @@
-import { Bind, Element, Property, State, Watch } from '@htmlplus/element';
+import { Consumer, Element, Property, State } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { createLink } from '@/services';
 
-const { Inject, reconnect } = createLink({
-  crawl: true,
-  namespace: ({ connector }) => (connector ? `Dialog:${connector}` : undefined)
-});
+import { DialogContext } from '../dialog/dialog.context';
 
 /**
  * @slot default - The default slot.
@@ -24,37 +20,18 @@ export class DialogToggler extends PlusCore {
   @Property()
   connector?: string;
 
-  @Inject()
-  toggle?: Function = () => console.log('TODO: can not use out of dialog');
-
-  @Inject(true)
-  tunnel?: boolean;
-
-  get text() {
-    return this.tunnel ? 'Close' : 'Open';
-  }
-
-  /**
-   * Watchers
-   */
-
-  @Watch(['connector'])
-  watcher() {
-    reconnect(this);
-  }
-
-  /**
-   * Events handler
-   */
-  @Bind()
-  onClick() {
-    this.toggle();
-  }
+  @State()
+  @Consumer('dialog.connector')
+  dialog?: DialogContext;
 
   render() {
     return (
-      <host role="button" state={this.tunnel ? 'open' : 'close'} onClick={this.onClick}>
-        <slot>{this.text}</slot>
+      <host
+        role="button"
+        state={this.dialog?.open ? 'open' : 'close'}
+        onClick={this.dialog?.toggle}
+      >
+        <slot>{this.dialog?.open ? 'Close' : 'Open'}</slot>
       </host>
     );
   }
