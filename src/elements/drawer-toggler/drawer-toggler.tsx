@@ -1,12 +1,8 @@
-import { Bind, Element, Property, Watch } from '@htmlplus/element';
+import { Consumer, Element, Property, State } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { createLink } from '@/services';
 
-const { Inject, reconnect } = createLink({
-  crawl: true,
-  namespace: ({ connector }) => (connector ? `Drawer:${connector}` : undefined)
-});
+import { DrawerContext } from '../drawer/drawer.context';
 
 /**
  * @slot default - The default slot.
@@ -24,38 +20,23 @@ export class DrawerToggler extends PlusCore {
   @Property()
   connector?: string;
 
-  @Inject()
-  toggle?: Function = () => console.log('TODO: can not use out of drawer');
-
-  @Inject(true)
-  tunnel?: boolean;
-
-  get text() {
-    return this.tunnel ? 'Close' : 'Open';
-  }
-
-  /**
-   * Watchers
-   */
-
-  @Watch(['connector'])
-  watcher() {
-    reconnect(this);
-  }
-
-  /**
-   * Events handler
-   */
-  @Bind()
-  onClick() {
-    this.toggle();
-  }
+  @State()
+  @Consumer('drawer.connector')
+  drawer?: DrawerContext;
 
   render() {
     return (
-      <host role="button" state={this.tunnel ? 'open' : 'close'} onClick={this.onClick}>
-        <slot>{this.text}</slot>
+      <host
+        role="button"
+        state={this.drawer?.open ? 'open' : 'close'}
+        onClick={this.drawer?.toggle}
+      >
+        <slot>{this.drawer?.open ? 'Close' : 'Open'}</slot>
       </host>
     );
   }
 }
+
+// TODO
+// <slot name="close" />
+// <slot name="open" />

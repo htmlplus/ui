@@ -4,31 +4,24 @@ import {
   Event,
   EventEmitter,
   Property,
+  Provider,
   Query,
-  State,
+  Method,
   Watch,
   classes,
+  on,
   off,
-  on
+  toUnit,
+  State
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Media } from '@/decorators';
+import { Breakpoint } from '@/decorators';
 import { toAxis } from '@/helpers';
-import { Animation, Scrollbar, createLink } from '@/services';
+import { Animation2, Scrollbar } from '@/services';
 
-import {
-  DrawerBackdrop,
-  DrawerBreakpoint,
-  DrawerPlacement,
-  DrawerPlatform,
-  DrawerTemporary
-} from './drawer.types';
-
-const { Action, Observable, reconnect } = createLink({
-  crawl: false,
-  namespace: ({ connector }) => (connector ? `Drawer:${connector}` : undefined)
-});
+import { DrawerContext } from './drawer.context';
+import { DrawerPlacement, DrawerFloating } from './drawer.types';
 
 /**
  * @slot default - The default slot.
@@ -39,20 +32,13 @@ export class Drawer extends PlusCore {
    * TODO
    */
   @Property({ reflect: true })
-  animation?: string;
+  animation?: boolean | string;
 
   /**
-   * Activate the drawer's backdrop to show or not.
+   * Activate the drawer's backdrop to show or not. It works when floating is activated.
    */
   @Property()
-  backdrop?: DrawerBackdrop = 'auto';
-
-  /**
-   * Sets the mobile breakpoint to apply alternate styles for mobile devices
-   * when the breakpoint value is met.
-   */
-  @Property()
-  breakpoint?: DrawerBreakpoint = 'md';
+  backdrop?: boolean;
 
   /**
    * This property helps you to attach which drawer toggler controls the drawer.
@@ -64,6 +50,15 @@ export class Drawer extends PlusCore {
   connector?: string;
 
   /**
+   * On default the drawer is considered as a part of the main container.
+   * it pushes the other contents on opening.
+   * If true it will be opened over other contents and doesn't affect other contents.
+   * A floating drawer sits above its application and uses a backdrop to darken the background.
+   */
+  @Property()
+  floating?: DrawerFloating;
+
+  /**
    * Set the width of drawer to the minimum size you specified for the `mini-size` property.
    */
   @Property({ reflect: true })
@@ -73,7 +68,7 @@ export class Drawer extends PlusCore {
    * Sets the minimum width size of the drawer.
    */
   @Property()
-  miniSize?: string;
+  miniSize?: number | string = 80;
 
   /**
    * Control drawer to show or not.
@@ -105,16 +100,23 @@ export class Drawer extends PlusCore {
    * Determine the width of the drawer.
    */
   @Property()
-  size?: string;
+  size?: number | string = 280;
 
   /**
-   * On default the drawer is considered as a part of the main container.
-   * it pushes the other contents on opening.
-   * If true it will be opened over other contents and doesn't affect other contents.
-   * A temporary drawer sits above its application and uses a backdrop to darken the background.
+   * TODO
    */
-  @Property()
-  temporary?: DrawerTemporary;
+  @Property({ reflect: true })
+  get floated(): boolean {
+    if (!this.floating) return false;
+
+    if (this.floating === true) return true;
+
+    const breakpoint = this.floating.split('-').at(1);
+
+    const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl']; // TODO
+
+    return breakpoints.indexOf(this.breakpoint) <= breakpoints.indexOf(breakpoint);
+  }
 
   /**
    * When the drawer is going to hide
@@ -140,25 +142,97 @@ export class Drawer extends PlusCore {
   @Event()
   plusOpened!: EventEmitter<void>;
 
-  @Query('.root')
+  @State()
+  @Breakpoint()
+  breakpoint?;
+
+  @Query('[part=root]')
   $root!: HTMLElement;
 
-  @State()
-  platform?: DrawerPlatform;
+  @Provider('drawer.connector')
+  get state(): DrawerContext {
+    return {
+      open: this.opened,
+      toggle: () => {
+        this.try(!this.open, false);
+      }
+    };
+  }
 
-  animations: { open?: Animation; mini?: Animation } = {};
+  animate = {
+    main: new Animation2({
+      key: 'state',
+      source: () => this.$host,
+      target: () => this.$host,
+      states: {
+        enter: 'open',
+        entering: 'opening',
+        entered: 'opened',
+        leave: 'close',
+        leaving: 'closing',
+        leaved: 'closed'
+      },
+      onEnter: () => {
+        // remove document's scroll
+        this.floated && Scrollbar.remove(this);
 
-  isOpen?: boolean;
+        // remove outside click listener
+        on(this.$root, 'outside', this.onClickOutside, true);
 
-  @Observable()
-  tunnel?: boolean;
+        // update state
+        this.open = this.opened = true;
+      },
+      onEntering: () => {
+        // this.opened = this.open = true;
+      },
+      onEntered: (silent) => {
+        if (silent) return;
+
+        this.plusOpened();
+      },
+      onLeave: () => {},
+      onLeaving: () => {
+        // this.opened = this.open = false;
+      },
+      onLeaved: (silent) => {
+        // reset document's scroll
+        Scrollbar.reset(this);
+
+        // remove outside click listener
+        off(this.$root, 'outside', this.onClickOutside, true);
+
+        // update state
+        this.open = this.opened = false;
+
+        if (silent) return;
+
+        this.plusClosed();
+      }
+    }),
+    mini: new Animation2({
+      key: 'state-mini',
+      source: () => this.$host,
+      target: () => this.$host,
+      states: {
+        enter: 'open',
+        entering: 'opening',
+        entered: 'opened',
+        leave: 'close',
+        leaving: 'closing',
+        leaved: 'closed'
+      }
+    })
+  };
+
+  opened: boolean = false;
+
+  promise?: Promise<boolean>;
 
   get classes() {
     const placement = toAxis(this.placement || 'start', this.isRTL);
 
     return classes(
       [
-        'root',
         {
           [placement]: true,
           reverse: this.flexible
@@ -169,194 +243,118 @@ export class Drawer extends PlusCore {
   }
 
   get hasBackdrop() {
-    if (!this.isTemporary) return false;
-
-    if (this.backdrop) return true;
-
-    if (this.backdrop === 'auto') return true;
-
-    return false;
-  }
-
-  get isTemporary() {
-    if (this.temporary) return true;
-
-    if (this.temporary === 'on-breakpoint' && this.platform === 'mobile') return true;
-
-    return false;
+    return this.backdrop && this.floated;
   }
 
   get style(): any {
+    const size = toUnit(this.size);
+
+    const miniSize = toUnit(this.miniSize);
+
+    const offset = `calc(${
+      this.open ? (this.mini ? `-${size} + ${miniSize}` : '0px') : `-${size}`
+    })`;
+
     return {
-      '--plus-drawer-size': this.size ?? null,
-      '--plus-drawer-mini-size': this.miniSize ?? null
+      '--plus-drawer-size': size,
+      '--plus-drawer-offset': offset
     };
   }
 
-  hide() {
-    this.tryHide(true, false);
+  /**
+   * Hides the element.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  @Method()
+  hide(): Promise<boolean> {
+    return this.try(false, true);
   }
 
-  show() {
-    this.tryShow(true, false);
+  /**
+   * Shows the element.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  @Method()
+  show(): Promise<boolean> {
+    return this.try(true, true);
   }
 
-  @Action()
-  toggle() {
-    this.isOpen ? this.hide() : this.show();
+  /**
+   * Toggles between `collapse` and `expand` state.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  @Method()
+  toggle(): Promise<boolean> {
+    return this.try(!this.open, true);
   }
 
-  broadcast(value) {
-    this.tunnel = value;
-  }
-
-  initialize() {
-    this.animations.open = new Animation({
-      key: 'state',
-      source: () => this.$host,
-      target: () => this.$host,
-      state: this.open ? 'entered' : 'leaved',
-      states: {
-        enter: 'open',
-        entering: 'opening',
-        entered: 'opened',
-        leave: 'close',
-        leaving: 'closing',
-        leaved: 'closed'
-      }
-    });
-
-    this.animations.mini = new Animation({
-      key: 'mini-state',
-      source: () => this.$host,
-      target: () => this.$host,
-      state: this.mini ? 'entered' : 'leaved',
-      states: {
-        enter: 'enter',
-        entering: 'entering',
-        entered: 'entered',
-        leave: 'leave',
-        leaving: 'leaving',
-        leaved: 'leaved'
-      }
-    });
-
-    if (!this.open) return;
-
-    this.tryShow(false, true);
-  }
-
-  terminate() {
-    this.animations.open?.dispose();
-    this.animations.mini?.dispose();
-  }
-
-  tryHide(animation, silent) {
-    if (!this.isOpen) return;
-
-    if (!silent && this.plusClose().defaultPrevented) return;
-
-    if (!animation) return this.onHide();
-
-    this.animations.open?.leave({
-      onLeave: () => {
-        // TODO: experimantal new link
-        this.broadcast(false);
-      },
-      onLeaved: () => {
-        this.onHide();
-
-        if (silent) return;
-
-        this.plusClosed();
-      }
-    });
-  }
-
-  tryShow(animation, silent) {
-    if (this.isOpen) return;
-
-    if (!silent && this.plusOpen().defaultPrevented) return;
-
-    if (!animation) return this.onShow();
-
-    this.animations.open?.enter({
-      onEnter: () => {
-        this.onShow();
-      },
-      onEntered: () => {
-        if (silent) return;
-
-        this.plusOpened();
-      }
-    });
-  }
-
-  @Watch(['connector', 'mini', 'open'])
+  @Watch(['breakpoint', 'mini', 'open'])
   watcher(next, prev, name) {
     switch (name) {
-      case 'connector':
-        reconnect(this);
-
+      case 'breakpoint':
+        if (!this.floated) {
+          this.try(false, false);
+        }
         break;
-
-      case 'mini':
-        next && this.animations.mini?.enter();
-
-        !next && this.animations.mini?.leave();
-
-        break;
-
       case 'open':
-        next && !this.isOpen && this.tryShow(true, true);
-
-        !next && this.isOpen && this.tryHide(true, true);
-
+        // TODO: problem with `false` and `undefined`
+        if (!next == !prev) break;
+        this.try(next, true);
+        break;
+      case 'mini':
+        // TODO: problem with `false` and `undefined`
+        if (!next == !prev) break;
+        this.animate.mini[next ? 'enter' : 'leave']();
         break;
     }
   }
 
-  onHide() {
-    // reset document's scroll
-    Scrollbar.reset(this);
+  initialize() {
+    this.opened = !!this.open;
 
-    // remove outside click listener
-    off(this.$root, 'outside', this.onClickOutside, true);
-
-    // update state
-    this.open = this.isOpen = false;
-
-    // TODO: experimantal new link
-    this.broadcast(false);
+    this.animate.main.initialize(this.open ? 'entered' : 'leaved');
+    this.animate.mini.initialize(this.mini ? 'entered' : 'leaved');
   }
 
-  onShow() {
-    // remove document's scroll
-    this.isTemporary && Scrollbar.remove(this);
-
-    // remove outside click listener
-    on(this.$root, 'outside', this.onClickOutside, true);
-
-    // update state
-    this.open = this.isOpen = true;
-
-    // TODO: experimantal new link
-    this.broadcast(true);
+  terminate() {
+    this.animate.main?.dispose();
+    this.animate.mini?.dispose();
   }
 
-  @Bind()
-  @Media('[breakpoint]-down')
-  onMedia(event) {
-    this.platform = event.matches ? 'mobile' : 'desktop';
+  async try(open: boolean, silent?: boolean): Promise<boolean> {
+    if (this.opened == open) return await this.promise;
 
-    if (!event.matches && this.open) this.open = false;
+    if (!silent) {
+      const event = open ? this.plusOpen : this.plusClose;
+
+      const prevented = event.call(this).defaultPrevented;
+
+      // TODO
+      if (prevented) return true;
+    }
+
+    this.opened = this.open = open;
+
+    const fn = this.open ? this.animate.main.enter : this.animate.main.leave;
+
+    this.promise = fn.bind(this.animate.main)(silent);
+
+    return await this.promise;
   }
 
   @Bind()
   onClickOutside() {
-    if (!this.isOpen || !this.isTemporary || this.persistent) return;
+    // TODO
+    if (!this.opened) return;
 
-    this.tryHide(true, false);
+    if (!this.floated) return;
+
+    if (this.persistent) return;
+
+    this.try(false, false);
   }
 
   loadedCallback() {
@@ -369,15 +367,13 @@ export class Drawer extends PlusCore {
 
   render() {
     return (
-      <host platform={this.platform} style={this.style}>
+      <host>
         {this.hasBackdrop ? (
-          <div className="backdrop" part="backdrop">
+          <div part="backdrop">
             <div />
           </div>
-        ) : (
-          ''
-        )}
-        <div className={this.classes}>
+        ) : null}
+        <div className={this.classes} part="root" style={this.style}>
           <slot />
         </div>
       </host>

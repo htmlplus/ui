@@ -1,27 +1,20 @@
 @import 'drawer.variables';
 
 :host {
-  // @Property() You can use it to set the width size of the drawer using css variables.
-  --plus-drawer-size: 280px;
-
-  // @Property() You can use it to set the minimum width size of the drawer using css variables.
-  --plus-drawer-mini-size: 80px;
-}
-
-:host {
   display: block;
   position: relative;
   overflow: hidden;
   z-index: $drawer-z-index;
 }
 
-.backdrop {
+[part='backdrop'] {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
+  transition: inherit;
   * {
     width: 100%;
     height: 100%;
@@ -30,14 +23,10 @@
   }
 }
 
-.root {
+[part='root'] {
   height: 100%;
   position: relative;
   z-index: 1;
-}
-
-.backdrop,
-.root {
   transition: inherit;
 }
 
@@ -73,8 +62,7 @@
 
 // TODO
 
-:host([temporary]:not([temporary='on-breakpoint'])),
-:host([temporary='on-breakpoint'][state='mobile']) {
+:host([floated]) {
   position: fixed;
   top: 0;
   right: 0;
@@ -86,24 +74,18 @@
   transition: $drawer-transition;
 }
 
-:host([state='closed']) {
+:host([animation][state='closed']) {
   display: none;
 }
 
-:host([state='opened'][mini-state='leaved']) {
+:host([animation][state='opened'][state-mini='closed']) {
   overflow: visible;
 }
 
-:host([state='open']),
-:host([state='closing']) {
-  --plus-drawer-offset: calc(var(--plus-drawer-size) * -1) !important;
-  .backdrop {
+:host([animation][state='open']),
+:host([animation][state='closing']) {
+  padding: 0.000001px;
+  [part='backdrop'] {
     opacity: 0;
   }
-}
-
-:host([mini-state='entering']),
-:host([mini-state='entered']),
-:host([mini-state='leave']) {
-  --plus-drawer-offset: calc(var(--plus-drawer-size) * -1 + var(--plus-drawer-mini-size));
 }
