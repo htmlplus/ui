@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/htmlplus/core/compare/v1.1.14...v1.2.0) (2024-03-16)
+
+
+### Bug Fixes
+
+* Refactor dialog ([4919991](https://github.com/htmlplus/core/commit/49199914efa20ea8422de26ba8c41b395593efcf))
+
+
+### Features
+
+* Add `active` readonly property for the `tabs` element ([e8f5c60](https://github.com/htmlplus/core/commit/e8f5c604837c5da549f582c5dd9c339e617f1319))
+
 ## [1.1.14](https://github.com/htmlplus/core/compare/v1.1.13...v1.1.14) (2024-03-08)
 
 
