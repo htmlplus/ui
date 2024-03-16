@@ -1364,23 +1364,6 @@
                 "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
               },
               {
-                "name": "portal",
-                "description": "Enables or disables the portal.",
-                "experimental": true
-              },
-              {
-                "name": "portalStrategy",
-                "default": "'append'",
-                "description": "Specifies the position of the dialog.",
-                "experimental": true
-              },
-              {
-                "name": "portalTarget",
-                "default": "'body'",
-                "description": "Specifies the position of the dialog relative to the target.",
-                "experimental": true
-              },
-              {
                 "name": "scrollable",
                 "description": "It makes the user able to scroll the content by adding a scroll beside it."
               },
@@ -1395,6 +1378,18 @@
               {
                 "name": "transparent",
                 "description": "Deactivate the dialog's backdrop to show or not."
+              },
+              {
+                "name": "hide",
+                "description": "Hides the element."
+              },
+              {
+                "name": "show",
+                "description": "Shows the element."
+              },
+              {
+                "name": "toggle",
+                "description": "Toggles between `collapse` and `expand` state."
               }
             ]
           },
@@ -1462,32 +1457,6 @@
               },
               "default": "'top'",
               "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
-            },
-            {
-              "name": "portal",
-              "value": {
-                "type": "boolean"
-              },
-              "description": "Enables or disables the portal.",
-              "experimental": true
-            },
-            {
-              "name": "portal-strategy",
-              "value": {
-                "type": "PortalStrategy"
-              },
-              "default": "'append'",
-              "description": "Specifies the position of the dialog.",
-              "experimental": true
-            },
-            {
-              "name": "portal-target",
-              "value": {
-                "type": "PortalTarget"
-              },
-              "default": "'body'",
-              "description": "Specifies the position of the dialog relative to the target.",
-              "experimental": true
             },
             {
               "name": "scrollable",
@@ -1750,17 +1719,15 @@
               },
               {
                 "name": "backdrop",
-                "default": "'auto'",
-                "description": "Activate the drawer's backdrop to show or not."
-              },
-              {
-                "name": "breakpoint",
-                "default": "'md'",
-                "description": "Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met."
+                "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
               },
               {
                 "name": "connector",
                 "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+              },
+              {
+                "name": "floating",
+                "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
               },
               {
                 "name": "mini",
@@ -1768,6 +1735,7 @@
               },
               {
                 "name": "miniSize",
+                "default": "80",
                 "description": "Sets the minimum width size of the drawer."
               },
               {
@@ -1788,11 +1756,24 @@
               },
               {
                 "name": "size",
+                "default": "280",
                 "description": "Determine the width of the drawer."
               },
               {
-                "name": "temporary",
-                "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background."
+                "name": "floated",
+                "description": "TODO"
+              },
+              {
+                "name": "hide",
+                "description": "Hides the element."
+              },
+              {
+                "name": "show",
+                "description": "Shows the element."
+              },
+              {
+                "name": "toggle",
+                "description": "Toggles between `collapse` and `expand` state."
               }
             ]
           },
@@ -1800,25 +1781,16 @@
             {
               "name": "animation",
               "value": {
-                "type": "string"
+                "type": "boolean | string"
               },
               "description": "TODO"
             },
             {
               "name": "backdrop",
               "value": {
-                "type": "boolean | 'auto'"
+                "type": "boolean"
               },
-              "default": "'auto'",
-              "description": "Activate the drawer's backdrop to show or not."
-            },
-            {
-              "name": "breakpoint",
-              "value": {
-                "type": "'xs' | 'sm' | 'md' | 'lg'"
-              },
-              "default": "'md'",
-              "description": "Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met."
+              "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
             },
             {
               "name": "connector",
@@ -1826,6 +1798,13 @@
                 "type": "string"
               },
               "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+            },
+            {
+              "name": "floating",
+              "value": {
+                "type": "boolean | 'on-xs-down' | 'on-sm-down' | 'on-md-down' | 'on-lg-down'"
+              },
+              "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
             },
             {
               "name": "mini",
@@ -1837,8 +1816,9 @@
             {
               "name": "mini-size",
               "value": {
-                "type": "string"
+                "type": "number | string"
               },
+              "default": "80",
               "description": "Sets the minimum width size of the drawer."
             },
             {
@@ -1872,16 +1852,17 @@
             {
               "name": "size",
               "value": {
-                "type": "string"
+                "type": "number | string"
               },
+              "default": "280",
               "description": "Determine the width of the drawer."
             },
             {
-              "name": "temporary",
+              "name": "floated",
               "value": {
-                "type": "boolean | 'on-breakpoint'"
+                "type": ""
               },
-              "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background."
+              "description": "TODO"
             }
           ],
           "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
@@ -3859,6 +3840,10 @@
               {
                 "name": "value",
                 "description": "Provides your own value."
+              },
+              {
+                "name": "active",
+                "description": "TODO"
               }
             ]
           },
@@ -3869,6 +3854,13 @@
                 "type": "number | string"
               },
               "description": "Provides your own value."
+            },
+            {
+              "name": "active",
+              "value": {
+                "type": ""
+              },
+              "description": "TODO"
             }
           ],
           "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
@@ -3908,6 +3900,10 @@
               {
                 "name": "value",
                 "description": "Provides your own value."
+              },
+              {
+                "name": "active",
+                "description": "TODO"
               }
             ]
           },
@@ -3925,6 +3921,13 @@
                 "type": "number | string"
               },
               "description": "Provides your own value."
+            },
+            {
+              "name": "active",
+              "value": {
+                "type": ""
+              },
+              "description": "TODO"
             }
           ],
           "description": "TODO: Tabs make it easy to switch between different views.",

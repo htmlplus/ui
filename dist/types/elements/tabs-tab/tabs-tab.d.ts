@@ -16,12 +16,16 @@ export declare class TabsTab extends PlusCore {
      * Provides your own value.
      */
     value?: number | string;
+    /**
+     * TODO
+     */
+    get active(): boolean;
     parent?: TabsContext;
     /**
      * Events handler
      */
     onClick(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface TabsTabAttributes {
     /**
@@ -46,6 +50,10 @@ export interface TabsTabProperties {
     * Provides your own value.
     */
     value?: number | string;
+    /**
+    * TODO
+    */
+    active: any;
 }
 export interface TabsTabJSX extends TabsTabEvents, TabsTabProperties {
 }

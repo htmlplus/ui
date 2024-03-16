@@ -1,7 +1,8 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
-import { Animation, Portal } from "../../services";
-import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTarget, DialogSize } from './dialog.types';
+import { Animation2 } from "../../services";
+import { DialogContext } from './dialog.context';
+import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
 /**
  * @part backdrop - Backdrop element.
  *
@@ -10,6 +11,7 @@ import { DialogFullscreen, DialogPlacement, DialogPortalStrategy, DialogPortalTa
 export declare class Dialog extends PlusCore {
     static tag: string;
     static style: string;
+    static instances: Dialog[];
     /**
      * TODO
      */
@@ -51,21 +53,6 @@ export declare class Dialog extends PlusCore {
      */
     placement?: DialogPlacement;
     /**
-     * Enables or disables the portal.
-     * @experimental
-     */
-    portal?: boolean;
-    /**
-     * Specifies the position of the dialog.
-     * @experimental
-     */
-    portalStrategy?: DialogPortalStrategy;
-    /**
-     * Specifies the position of the dialog relative to the target.
-     * @experimental
-     */
-    portalTarget?: DialogPortalTarget;
-    /**
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
     scrollable?: boolean;
@@ -98,30 +85,40 @@ export declare class Dialog extends PlusCore {
      */
     plusOpened: EventEmitter<void>;
     $cell: HTMLElement;
-    static instances: any[];
-    animate?: Animation;
-    isOpen?: boolean;
-    portalInstance?: Portal;
-    tunnel?: boolean;
+    get state(): DialogContext;
+    animate: Animation2;
+    opened: boolean;
+    promise?: Promise<boolean>;
     get classes(): string;
     get isCurrent(): boolean;
     get zIndex(): string;
+    /**
+     * Hides the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    hide(): Promise<boolean>;
+    /**
+     * Shows the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    show(): Promise<boolean>;
+    /**
+     * Toggles between `collapse` and `expand` state.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    toggle(): Promise<boolean>;
     watcher(next: any, prev: any, name: any): void;
-    hide(): void;
-    show(): void;
-    toggle(): void;
-    broadcast(value: any): void;
     initialize(): void;
     terminate(): void;
-    tryHide(animation: any, silent: any): void;
-    tryShow(animation: any, silent: any): void;
-    onHide(): void;
-    onShow(): void;
+    try(open: boolean, silent?: boolean): Promise<boolean>;
     onEscape(event: any): void;
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface DialogAttributes {
     /**
@@ -165,21 +162,6 @@ export interface DialogAttributes {
     */
     "placement"?: DialogPlacement;
     /**
-    * Enables or disables the portal.
-    * @experimental
-    */
-    "portal"?: boolean;
-    /**
-    * Specifies the position of the dialog.
-    * @experimental
-    */
-    "portal-strategy"?: DialogPortalStrategy;
-    /**
-    * Specifies the position of the dialog relative to the target.
-    * @experimental
-    */
-    "portal-target"?: DialogPortalTarget;
-    /**
     * It makes the user able to scroll the content by adding a scroll beside it.
     */
     "scrollable"?: boolean;
@@ -215,6 +197,24 @@ export interface DialogEvents {
     onPlusOpened?: (event: CustomEvent<void>) => void;
 }
 export interface DialogMethods {
+    /**
+    * Hides the element.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    hide(): Promise<boolean>;
+    /**
+    * Shows the element.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    show(): Promise<boolean>;
+    /**
+    * Toggles between `collapse` and `expand` state.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    toggle(): Promise<boolean>;
 }
 export interface DialogProperties {
     /**
@@ -257,21 +257,6 @@ export interface DialogProperties {
     * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
     */
     placement?: DialogPlacement;
-    /**
-    * Enables or disables the portal.
-    * @experimental
-    */
-    portal?: boolean;
-    /**
-    * Specifies the position of the dialog.
-    * @experimental
-    */
-    portalStrategy?: DialogPortalStrategy;
-    /**
-    * Specifies the position of the dialog relative to the target.
-    * @experimental
-    */
-    portalTarget?: DialogPortalTarget;
     /**
     * It makes the user able to scroll the content by adding a scroll beside it.
     */

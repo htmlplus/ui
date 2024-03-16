@@ -1,11 +1,7 @@
-import { _ as __decorate, l as createLink, P as PlusCore, m as toAxis, k as classes, n as Animation, p as Scrollbar, j as off, o as on, h as html, e as attributes, d as styles, b as Property, E as Event, Q as Query, S as State, W as Watch, B as Bind, v as Media, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, A as Animation2, m as Scrollbar, o as on, j as off, n as toAxis, k as classes, t as toUnit, a as __awaiter, h as html, d as styles, b as Property, E as Event, S as State, q as Breakpoint, Q as Query, l as Provider, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{--plus-drawer-size:280px;--plus-drawer-mini-size:80px}:host{display:block;overflow:hidden;position:relative;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.root{height:100%;position:relative;z-index:1}.backdrop,.root{transition:inherit}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([temporary=on-breakpoint][state=mobile]),:host([temporary]:not([temporary=on-breakpoint])){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]){transition:.3s}:host([state=closed]){display:none}:host([state=opened][mini-state=leaved]){overflow:visible}:host([state=closing]),:host([state=open]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1)!important}:host([state=closing]) .backdrop,:host([state=open]) .backdrop{opacity:0}:host([mini-state=entered]),:host([mini-state=entering]),:host([mini-state=leave]){--plus-drawer-offset:calc(var(--plus-drawer-size)*-1 + var(--plus-drawer-mini-size))}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block;overflow:hidden;position:relative;z-index:1000}[part=backdrop]{height:100%;left:0;position:fixed;top:0;transition:inherit;width:100%;z-index:1}[part=backdrop] *{background-color:#000;height:100%;opacity:.5;width:100%}[part=root]{height:100%;position:relative;transition:inherit;z-index:1}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([floated]){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=closing]),:host([animation][state=open]){padding:.000001px}:host([animation][state=closing]) [part=backdrop],:host([animation][state=open]) [part=backdrop]{opacity:0}";
 
-const { Action, Observable, reconnect } = createLink({
-    crawl: false,
-    namespace: ({ connector }) => connector ? `Drawer:${connector}` : undefined
-});
 /**
  * @slot default - The default slot.
  */
@@ -13,181 +9,194 @@ let Drawer = class Drawer extends PlusCore {
     constructor() {
         super(...arguments);
         /**
-         * Activate the drawer's backdrop to show or not.
+         * Sets the minimum width size of the drawer.
          */
-        this.backdrop = 'auto';
+        this.miniSize = 80;
         /**
-         * Sets the mobile breakpoint to apply alternate styles for mobile devices
-         * when the breakpoint value is met.
+         * Determine the width of the drawer.
          */
-        this.breakpoint = 'md';
-        this.animations = {};
+        this.size = 280;
+        this.animate = {
+            main: new Animation2({
+                key: 'state',
+                source: () => this.$host,
+                target: () => this.$host,
+                states: {
+                    enter: 'open',
+                    entering: 'opening',
+                    entered: 'opened',
+                    leave: 'close',
+                    leaving: 'closing',
+                    leaved: 'closed'
+                },
+                onEnter: () => {
+                    // remove document's scroll
+                    this.floated && Scrollbar.remove(this);
+                    // remove outside click listener
+                    on(this.$root, 'outside', this.onClickOutside, true);
+                    // update state
+                    this.open = this.opened = true;
+                },
+                onEntering: () => {
+                    // this.opened = this.open = true;
+                },
+                onEntered: silent => {
+                    if (silent)
+                        return;
+                    this.plusOpened();
+                },
+                onLeave: () => { },
+                onLeaving: () => {
+                    // this.opened = this.open = false;
+                },
+                onLeaved: silent => {
+                    // reset document's scroll
+                    Scrollbar.reset(this);
+                    // remove outside click listener
+                    off(this.$root, 'outside', this.onClickOutside, true);
+                    // update state
+                    this.open = this.opened = false;
+                    if (silent)
+                        return;
+                    this.plusClosed();
+                }
+            }),
+            mini: new Animation2({
+                key: 'state-mini',
+                source: () => this.$host,
+                target: () => this.$host,
+                states: {
+                    enter: 'open',
+                    entering: 'opening',
+                    entered: 'opened',
+                    leave: 'close',
+                    leaving: 'closing',
+                    leaved: 'closed'
+                }
+            })
+        };
+        this.opened = false;
+    }
+    /**
+     * TODO
+     */
+    get floated() {
+        if (!this.floating)
+            return false;
+        if (this.floating === true)
+            return true;
+        const breakpoint = this.floating.split('-').at(1);
+        const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl']; // TODO
+        return breakpoints.indexOf(this.breakpoint) <= breakpoints.indexOf(breakpoint);
+    }
+    get state() {
+        return {
+            open: this.opened,
+            toggle: () => {
+                this.try(!this.open, false);
+            }
+        };
     }
     get classes() {
         const placement = toAxis(this.placement || 'start', this.isRTL);
-        return classes(['root', {
+        return classes([{
                 [placement]: true,
                 reverse: this.flexible
             }], true);
     }
     get hasBackdrop() {
-        if (!this.isTemporary)
-            return false;
-        if (this.backdrop)
-            return true;
-        if (this.backdrop === 'auto')
-            return true;
-        return false;
-    }
-    get isTemporary() {
-        if (this.temporary)
-            return true;
-        if (this.temporary === 'on-breakpoint' && this.platform === 'mobile')
-            return true;
-        return false;
+        return this.backdrop && this.floated;
     }
     get style() {
-        var _a, _b;
+        const size = toUnit(this.size);
+        const miniSize = toUnit(this.miniSize);
+        const offset = `calc(${this.open ? this.mini ? `-${size} + ${miniSize}` : '0px' : `-${size}`})`;
         return {
-            '--plus-drawer-size': (_a = this.size) !== null && _a !== void 0 ? _a : null,
-            '--plus-drawer-mini-size': (_b = this.miniSize) !== null && _b !== void 0 ? _b : null
+            '--plus-drawer-size': size,
+            '--plus-drawer-offset': offset
         };
     }
+    /**
+     * Hides the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
     hide() {
-        this.tryHide(true, false);
+        return this.try(false, true);
     }
+    /**
+     * Shows the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
     show() {
-        this.tryShow(true, false);
+        return this.try(true, true);
     }
+    /**
+     * Toggles between `collapse` and `expand` state.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
     toggle() {
-        this.isOpen ? this.hide() : this.show();
-    }
-    broadcast(value) {
-        this.tunnel = value;
-    }
-    initialize() {
-        this.animations.open = new Animation({
-            key: 'state',
-            source: () => this.$host,
-            target: () => this.$host,
-            state: this.open ? 'entered' : 'leaved',
-            states: {
-                enter: 'open',
-                entering: 'opening',
-                entered: 'opened',
-                leave: 'close',
-                leaving: 'closing',
-                leaved: 'closed'
-            }
-        });
-        this.animations.mini = new Animation({
-            key: 'mini-state',
-            source: () => this.$host,
-            target: () => this.$host,
-            state: this.mini ? 'entered' : 'leaved',
-            states: {
-                enter: 'enter',
-                entering: 'entering',
-                entered: 'entered',
-                leave: 'leave',
-                leaving: 'leaving',
-                leaved: 'leaved'
-            }
-        });
-        if (!this.open)
-            return;
-        this.tryShow(false, true);
-    }
-    terminate() {
-        var _a, _b;
-        (_a = this.animations.open) === null || _a === void 0 ? void 0 : _a.dispose();
-        (_b = this.animations.mini) === null || _b === void 0 ? void 0 : _b.dispose();
-    }
-    tryHide(animation, silent) {
-        var _a;
-        if (!this.isOpen)
-            return;
-        if (!silent && this.plusClose().defaultPrevented)
-            return;
-        if (!animation)
-            return this.onHide();
-        (_a = this.animations.open) === null || _a === void 0 ? void 0 : _a.leave({
-            onLeave: () => {
-                // TODO: experimantal new link
-                this.broadcast(false);
-            },
-            onLeaved: () => {
-                this.onHide();
-                if (silent)
-                    return;
-                this.plusClosed();
-            }
-        });
-    }
-    tryShow(animation, silent) {
-        var _a;
-        if (this.isOpen)
-            return;
-        if (!silent && this.plusOpen().defaultPrevented)
-            return;
-        if (!animation)
-            return this.onShow();
-        (_a = this.animations.open) === null || _a === void 0 ? void 0 : _a.enter({
-            onEnter: () => {
-                this.onShow();
-            },
-            onEntered: () => {
-                if (silent)
-                    return;
-                this.plusOpened();
-            }
-        });
+        return this.try(!this.open, true);
     }
     watcher(next, prev, name) {
-        var _a, _b;
         switch (name) {
-            case 'connector':
-                reconnect(this);
-                break;
-            case 'mini':
-                next && ((_a = this.animations.mini) === null || _a === void 0 ? void 0 : _a.enter());
-                !next && ((_b = this.animations.mini) === null || _b === void 0 ? void 0 : _b.leave());
+            case 'breakpoint':
+                if (!this.floated) {
+                    this.try(false, false);
+                }
                 break;
             case 'open':
-                next && !this.isOpen && this.tryShow(true, true);
-                !next && this.isOpen && this.tryHide(true, true);
+                // TODO: problem with `false` and `undefined`
+                if (!next == !prev)
+                    break;
+                this.try(next, true);
+                break;
+            case 'mini':
+                // TODO: problem with `false` and `undefined`
+                if (!next == !prev)
+                    break;
+                this.animate.mini[next ? 'enter' : 'leave']();
                 break;
         }
     }
-    onHide() {
-        // reset document's scroll
-        Scrollbar.reset(this);
-        // remove outside click listener
-        off(this.$root, 'outside', this.onClickOutside, true);
-        // update state
-        this.open = this.isOpen = false;
-        // TODO: experimantal new link
-        this.broadcast(false);
+    initialize() {
+        this.opened = !!this.open;
+        this.animate.main.initialize(this.open ? 'entered' : 'leaved');
+        this.animate.mini.initialize(this.mini ? 'entered' : 'leaved');
     }
-    onShow() {
-        // remove document's scroll
-        this.isTemporary && Scrollbar.remove(this);
-        // remove outside click listener
-        on(this.$root, 'outside', this.onClickOutside, true);
-        // update state
-        this.open = this.isOpen = true;
-        // TODO: experimantal new link
-        this.broadcast(true);
+    terminate() {
+        var _a, _b;
+        (_a = this.animate.main) === null || _a === void 0 ? void 0 : _a.dispose();
+        (_b = this.animate.mini) === null || _b === void 0 ? void 0 : _b.dispose();
     }
-    onMedia(event) {
-        this.platform = event.matches ? 'mobile' : 'desktop';
-        if (!event.matches && this.open)
-            this.open = false;
+    try(open, silent) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.opened == open)
+                return yield this.promise;
+            if (!silent) {
+                const event = open ? this.plusOpen : this.plusClose;
+                const prevented = event.call(this).defaultPrevented;
+                // TODO
+                if (prevented)
+                    return true;
+            }
+            this.opened = this.open = open;
+            const fn = this.open ? this.animate.main.enter : this.animate.main.leave;
+            this.promise = fn.bind(this.animate.main)(silent);
+            return yield this.promise;
+        });
     }
     onClickOutside() {
-        if (!this.isOpen || !this.isTemporary || this.persistent)
+        // TODO
+        if (!this.opened)
             return;
-        this.tryHide(true, false);
+        if (!this.floated)
+            return;
+        if (this.persistent)
+            return;
+        this.try(false, false);
     }
     loadedCallback() {
         this.initialize();
@@ -196,15 +205,11 @@ let Drawer = class Drawer extends PlusCore {
         this.terminate();
     }
     render() {
-        return html `${attributes(this, [{
-                "platform": this.platform
-            }, {
-                "style": styles(this.style)
-            }])}
-        ${this.hasBackdrop ? html `<div class="backdrop" part="backdrop">
+        return html `
+        ${this.hasBackdrop ? html `<div part="backdrop">
             <div />
-          </div>` : ''}
-        <div class=${this.classes}>
+          </div>` : null}
+        <div class=${this.classes} part="root" style=${styles(this.style)}>
           <slot />
         </div>
       `;
@@ -217,24 +222,24 @@ Drawer.style = css_248z;
 __decorate([
     Property({
         reflect: true,
-        type: 256
+        type: 258
     })
 ], Drawer.prototype, "animation", void 0);
 __decorate([
     Property({
-        type: 10
+        type: 2
     })
 ], Drawer.prototype, "backdrop", void 0);
-__decorate([
-    Property({
-        type: 8
-    })
-], Drawer.prototype, "breakpoint", void 0);
 __decorate([
     Property({
         type: 256
     })
 ], Drawer.prototype, "connector", void 0);
+__decorate([
+    Property({
+        type: 10
+    })
+], Drawer.prototype, "floating", void 0);
 __decorate([
     Property({
         reflect: true,
@@ -243,7 +248,7 @@ __decorate([
 ], Drawer.prototype, "mini", void 0);
 __decorate([
     Property({
-        type: 256
+        type: 320
     })
 ], Drawer.prototype, "miniSize", void 0);
 __decorate([
@@ -269,14 +274,15 @@ __decorate([
 ], Drawer.prototype, "flexible", void 0);
 __decorate([
     Property({
-        type: 256
+        type: 320
     })
 ], Drawer.prototype, "size", void 0);
 __decorate([
     Property({
-        type: 10
+        reflect: true,
+        type: 0
     })
-], Drawer.prototype, "temporary", void 0);
+], Drawer.prototype, "floated", null);
 __decorate([
     Event({
         cancelable: true
@@ -294,24 +300,27 @@ __decorate([
     Event()
 ], Drawer.prototype, "plusOpened", void 0);
 __decorate([
-    Query('.root')
+    State(),
+    Breakpoint()
+], Drawer.prototype, "breakpoint", void 0);
+__decorate([
+    Query('[part=root]')
 ], Drawer.prototype, "$root", void 0);
 __decorate([
-    State()
-], Drawer.prototype, "platform", void 0);
+    Provider('drawer.connector')
+], Drawer.prototype, "state", null);
 __decorate([
-    Observable()
-], Drawer.prototype, "tunnel", void 0);
+    Method()
+], Drawer.prototype, "hide", null);
 __decorate([
-    Action()
+    Method()
+], Drawer.prototype, "show", null);
+__decorate([
+    Method()
 ], Drawer.prototype, "toggle", null);
 __decorate([
-    Watch(['connector', 'mini', 'open'])
+    Watch(['breakpoint', 'mini', 'open'])
 ], Drawer.prototype, "watcher", null);
-__decorate([
-    Bind(),
-    Media('[breakpoint]-down')
-], Drawer.prototype, "onMedia", null);
 __decorate([
     Bind()
 ], Drawer.prototype, "onClickOutside", null);

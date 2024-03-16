@@ -1,4 +1,5 @@
 import { PlusCore } from "../../core";
+import { DialogContext } from '../dialog/dialog.context';
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
@@ -14,18 +15,8 @@ export declare class DialogToggler extends PlusCore {
      * Read more about connectors [here](/connector).
      */
     connector?: string;
-    toggle?: Function;
-    tunnel?: boolean;
-    get text(): "Close" | "Open";
-    /**
-     * Watchers
-     */
-    watcher(): void;
-    /**
-     * Events handler
-     */
-    onClick(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    dialog?: DialogContext;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface DialogTogglerAttributes {
     /**

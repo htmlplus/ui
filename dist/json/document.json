@@ -1592,8 +1592,51 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-03-08T21:44:46.097Z",
-      "methods": [],
+      "lastModified": "2024-03-12T00:09:59.040Z",
+      "methods": [
+        {
+          "async": false,
+          "name": "hide",
+          "parameters": [],
+          "returns": "Promise<boolean>",
+          "signature": "hide() => Promise<boolean>",
+          "description": "Hides the element.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if the operation was successful or `false` if it was canceled."
+            }
+          ]
+        },
+        {
+          "async": false,
+          "name": "show",
+          "parameters": [],
+          "returns": "Promise<boolean>",
+          "signature": "show() => Promise<boolean>",
+          "description": "Shows the element.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if the operation was successful or `false` if it was canceled."
+            }
+          ]
+        },
+        {
+          "async": false,
+          "name": "toggle",
+          "parameters": [],
+          "returns": "Promise<boolean>",
+          "signature": "toggle() => Promise<boolean>",
+          "description": "Toggles between `collapse` and `expand` state.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if the operation was successful or `false` if it was canceled."
+            }
+          ]
+        }
+      ],
       "properties": [
         {
           "attribute": "animation",
@@ -1678,40 +1721,6 @@
           "type": "DialogPlacement",
           "typeReference": "./dialog.types",
           "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
-        },
-        {
-          "attribute": "portal",
-          "name": "portal",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "boolean",
-          "description": "Enables or disables the portal.",
-          "experimental": true
-        },
-        {
-          "attribute": "portal-strategy",
-          "initializer": "'append'",
-          "name": "portalStrategy",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "DialogPortalStrategy",
-          "typeReference": "./dialog.types",
-          "description": "Specifies the position of the dialog.",
-          "experimental": true
-        },
-        {
-          "attribute": "portal-target",
-          "initializer": "'body'",
-          "name": "portalTarget",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "DialogPortalTarget",
-          "typeReference": "./dialog.types",
-          "description": "Specifies the position of the dialog relative to the target.",
-          "experimental": true
         },
         {
           "attribute": "scrollable",
@@ -1851,7 +1860,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2024-02-17T09:22:22.938Z",
+      "lastModified": "2024-03-12T00:20:24.531Z",
       "methods": [],
       "properties": [
         {
@@ -1996,8 +2005,51 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-02-23T18:43:41.720Z",
-      "methods": [],
+      "lastModified": "2024-03-16T19:28:20.005Z",
+      "methods": [
+        {
+          "async": false,
+          "name": "hide",
+          "parameters": [],
+          "returns": "Promise<boolean>",
+          "signature": "hide() => Promise<boolean>",
+          "description": "Hides the element.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if the operation was successful or `false` if it was canceled."
+            }
+          ]
+        },
+        {
+          "async": false,
+          "name": "show",
+          "parameters": [],
+          "returns": "Promise<boolean>",
+          "signature": "show() => Promise<boolean>",
+          "description": "Shows the element.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if the operation was successful or `false` if it was canceled."
+            }
+          ]
+        },
+        {
+          "async": false,
+          "name": "toggle",
+          "parameters": [],
+          "returns": "Promise<boolean>",
+          "signature": "toggle() => Promise<boolean>",
+          "description": "Toggles between `collapse` and `expand` state.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "{Promise<boolean>} A Promise that resolves to `true` if the operation was successful or `false` if it was canceled."
+            }
+          ]
+        }
+      ],
       "properties": [
         {
           "attribute": "animation",
@@ -2005,30 +2057,17 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "boolean | string",
           "description": "TODO"
         },
         {
           "attribute": "backdrop",
-          "initializer": "'auto'",
           "name": "backdrop",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "DrawerBackdrop",
-          "typeReference": "./drawer.types",
-          "description": "Activate the drawer's backdrop to show or not."
-        },
-        {
-          "attribute": "breakpoint",
-          "initializer": "'md'",
-          "name": "breakpoint",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "DrawerBreakpoint",
-          "typeReference": "./drawer.types",
-          "description": "Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met."
+          "type": "boolean",
+          "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
         },
         {
           "attribute": "connector",
@@ -2038,6 +2077,16 @@
           "required": false,
           "type": "string",
           "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+        },
+        {
+          "attribute": "floating",
+          "name": "floating",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "DrawerFloating",
+          "typeReference": "./drawer.types",
+          "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
         },
         {
           "attribute": "mini",
@@ -2050,11 +2099,12 @@
         },
         {
           "attribute": "mini-size",
+          "initializer": "80",
           "name": "miniSize",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
+          "type": "number | string",
           "description": "Sets the minimum width size of the drawer."
         },
         {
@@ -2096,37 +2146,26 @@
         },
         {
           "attribute": "size",
+          "initializer": "280",
           "name": "size",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
+          "type": "number | string",
           "description": "Determine the width of the drawer."
         },
         {
-          "attribute": "temporary",
-          "name": "temporary",
-          "readonly": false,
-          "reflects": false,
+          "attribute": "floated",
+          "name": "floated",
+          "readonly": true,
+          "reflects": true,
           "required": false,
-          "type": "DrawerTemporary",
-          "typeReference": "./drawer.types",
-          "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background."
+          "type": "boolean",
+          "description": "TODO"
         }
       ],
       "readmeContent": "# Drawer\r\n\r\nThis element lets you add collapsible side contents like navigation alongside some primary content.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n<LastModified />\r\n",
-      "styles": [
-        {
-          "description": "You can use it to set the width size of the drawer using css variables.",
-          "initializer": "280px",
-          "name": "--plus-drawer-size"
-        },
-        {
-          "description": "You can use it to set the minimum width size of the drawer using css variables.",
-          "initializer": "80px",
-          "name": "--plus-drawer-mini-size"
-        }
-      ],
+      "styles": [],
       "title": "Drawer",
       "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "slots": [
@@ -2139,7 +2178,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2024-02-23T18:22:14.622Z",
+      "lastModified": "2024-03-12T00:23:47.656Z",
       "methods": [],
       "properties": [
         {
@@ -3091,7 +3130,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-02-29T14:21:36.719Z",
+      "lastModified": "2024-03-12T00:17:15.772Z",
       "methods": [],
       "properties": [
         {
@@ -3636,7 +3675,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-02-23T18:41:36.123Z",
+      "lastModified": "2024-03-12T00:17:09.629Z",
       "methods": [],
       "properties": [
         {
@@ -3857,7 +3896,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-03-08T22:38:54.690Z",
+      "lastModified": "2024-03-14T22:46:54.003Z",
       "methods": [],
       "properties": [
         {
@@ -3939,7 +3978,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2024-03-08T22:14:18.115Z",
+      "lastModified": "2024-03-14T23:01:15.221Z",
       "methods": [],
       "properties": [
         {
@@ -3950,6 +3989,15 @@
           "required": false,
           "type": "number | string",
           "description": "Provides your own value."
+        },
+        {
+          "attribute": "active",
+          "name": "active",
+          "readonly": true,
+          "reflects": true,
+          "required": false,
+          "type": "",
+          "description": "TODO"
         }
       ],
       "styles": [],
@@ -3981,7 +4029,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2024-03-08T22:14:28.282Z",
+      "lastModified": "2024-03-14T23:01:50.009Z",
       "methods": [],
       "properties": [
         {
@@ -4001,6 +4049,15 @@
           "required": false,
           "type": "number | string",
           "description": "Provides your own value."
+        },
+        {
+          "attribute": "active",
+          "name": "active",
+          "readonly": true,
+          "reflects": true,
+          "required": false,
+          "type": "",
+          "description": "TODO"
         }
       ],
       "styles": [],

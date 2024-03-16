@@ -122,7 +122,7 @@ export declare class Signature extends PlusForm {
     onEnd(): void;
     loadedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface SignatureAttributes {
     /**
@@ -173,18 +173,6 @@ export interface SignatureAttributes {
     * Specifies the velocity based on the previous velocity.
     */
     "velocity"?: number;
-    /**
-    * The canvas element.
-    */
-    "canvas": any;
-    /**
-    * Specifies whether redo can be performed or not.
-    */
-    "redoable": any;
-    /**
-    * Specifies whether undo can be performed or not.
-    */
-    "undoable": any;
 }
 export interface SignatureEvents {
     /**
@@ -275,15 +263,15 @@ export interface SignatureProperties {
     /**
     * The canvas element.
     */
-    canvas: any;
+    readonly canvas: HTMLCanvasElement;
     /**
     * Specifies whether redo can be performed or not.
     */
-    redoable: any;
+    readonly redoable: boolean;
     /**
     * Specifies whether undo can be performed or not.
     */
-    undoable: any;
+    readonly undoable: boolean;
 }
 export interface SignatureJSX extends SignatureEvents, SignatureProperties {
 }

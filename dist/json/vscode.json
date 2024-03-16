@@ -1063,28 +1063,6 @@
           "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
         },
         {
-          "name": "portal",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ],
-          "description": "Enables or disables the portal."
-        },
-        {
-          "name": "portal-strategy",
-          "values": [],
-          "description": "Specifies the position of the dialog."
-        },
-        {
-          "name": "portal-target",
-          "values": [],
-          "description": "Specifies the position of the dialog relative to the target."
-        },
-        {
           "name": "scrollable",
           "values": [
             {
@@ -1336,7 +1314,14 @@
       "attributes": [
         {
           "name": "animation",
-          "values": [],
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
           "description": "TODO"
         },
         {
@@ -1347,35 +1332,38 @@
             },
             {
               "name": "true"
-            },
-            {
-              "name": "auto"
             }
           ],
-          "description": "Activate the drawer's backdrop to show or not."
-        },
-        {
-          "name": "breakpoint",
-          "values": [
-            {
-              "name": "xs"
-            },
-            {
-              "name": "sm"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "lg"
-            }
-          ],
-          "description": "Sets the mobile breakpoint to apply alternate styles for mobile devices when the breakpoint value is met."
+          "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
         },
         {
           "name": "connector",
           "values": [],
           "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+        },
+        {
+          "name": "floating",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            },
+            {
+              "name": "on-xs-down"
+            },
+            {
+              "name": "on-sm-down"
+            },
+            {
+              "name": "on-md-down"
+            },
+            {
+              "name": "on-lg-down"
+            }
+          ],
+          "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
         },
         {
           "name": "mini",
@@ -1460,19 +1448,9 @@
           "description": "Determine the width of the drawer."
         },
         {
-          "name": "temporary",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            },
-            {
-              "name": "on-breakpoint"
-            }
-          ],
-          "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A temporary drawer sits above its application and uses a backdrop to darken the background."
+          "name": "floated",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4173,6 +4151,11 @@
           "name": "value",
           "values": [],
           "description": "Provides your own value."
+        },
+        {
+          "name": "active",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4213,6 +4196,11 @@
           "name": "value",
           "values": [],
           "description": "Provides your own value."
+        },
+        {
+          "name": "active",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [

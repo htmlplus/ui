@@ -472,6 +472,16 @@ const getTag = (target) => {
 };
 
 /**
+ * Determines whether the given input string is a valid
+ * [CSS Color](https://mdn.io/color-value) or not.
+ */
+const isCSSColor = (input) => {
+    const option = new Option();
+    option.style.color = input;
+    return option.style.color !== '';
+};
+
+/**
  * Indicates whether the direction of the element is `Right-To-Left` or not.
  */
 const isRTL = (target) => direction(target) == 'rtl';
@@ -1417,22 +1427,115 @@ function Bind() {
     };
 }
 
-/**
- * TODO
- * @param namespace
- */
+function Provider(namespace) {
+    return function (target, key, descriptor) {
+        const symbol = Symbol();
+        const [MAIN, SUB] = namespace.split('.');
+        const prefix = `htmlplus:${MAIN}`;
+        const cleanups = (instance) => {
+            return (instance[symbol] || (instance[symbol] = new Map()));
+        };
+        const update = (instance) => {
+            const options = {};
+            options.detail = descriptor.get.call(instance);
+            dispatch(instance, `${prefix}:update`, options);
+            if (!SUB)
+                return;
+            options.bubbles = true;
+            dispatch(instance, `${prefix}:${instance[SUB]}:update`, options);
+        };
+        // TODO
+        appendToMethod(target, LIFECYCLE_CONNECTED, function () {
+            const cleanup = () => {
+                off(this, `${prefix}:presence`, onPresence);
+                cleanups(this).delete(prefix);
+            };
+            const onPresence = (event) => {
+                event.stopPropagation();
+                event.detail(this, descriptor.get.call(this));
+            };
+            on(this, `${prefix}:presence`, onPresence);
+            cleanups(this).set(prefix, cleanup);
+        });
+        appendToMethod(target, LIFECYCLE_UPDATE, function (states) {
+            var _a;
+            update(this);
+            if (cleanups(this).size && !states.has(SUB))
+                return;
+            (_a = cleanups(this).get(`${prefix}:${states.get(SUB)}`)) === null || _a === void 0 ? void 0 : _a();
+            const type = `${prefix}:${this[SUB]}`;
+            const cleanup = () => {
+                off(window, `${type}:presence`, onPresence);
+                cleanups(this).delete(type);
+                dispatch(window, `${type}:disconnect`);
+            };
+            const onPresence = () => {
+                update(this);
+            };
+            on(window, `${type}:presence`, onPresence);
+            cleanups(this).set(type, cleanup);
+        });
+        appendToMethod(target, LIFECYCLE_DISCONNECTED, function () {
+            cleanups(this).forEach((cleanup) => cleanup());
+        });
+    };
+}
 function Consumer(namespace) {
     return function (target, key) {
-        appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
+        const symbol = Symbol();
+        const [MAIN, SUB] = namespace.split('.');
+        const prefix = `htmlplus:${MAIN}`;
+        const cleanups = (instance) => {
+            return (instance[symbol] || (instance[symbol] = new Map()));
+        };
+        const update = (instance, state) => {
+            instance[key] = state;
+        };
+        // TODO
+        appendToMethod(target, LIFECYCLE_CONNECTED, function () {
             const options = {
                 bubbles: true
             };
-            options.detail = (state) => {
-                this[key] = state;
-                const successful = !!host(this).parentElement;
-                return successful;
+            options.detail = (parent, state) => {
+                update(this, state);
+                const cleanup = () => {
+                    off(parent, `${prefix}:update`, onUpdate);
+                    cleanups(this).delete(prefix);
+                    update(this, undefined);
+                };
+                const onUpdate = (event) => {
+                    update(this, event.detail);
+                };
+                on(parent, `${prefix}:update`, onUpdate);
+                cleanups(this).set(prefix, cleanup);
             };
-            dispatch(this, `internal:context:${namespace}`, options);
+            dispatch(this, `${prefix}:presence`, options);
+        });
+        appendToMethod(target, LIFECYCLE_UPDATE, function (states) {
+            var _a;
+            if (cleanups(this).size && !states.has(SUB))
+                return;
+            (_a = cleanups(this).get(`${prefix}:${states.get(SUB)}`)) === null || _a === void 0 ? void 0 : _a();
+            const type = `${prefix}:${this[SUB]}`;
+            const cleanup = () => {
+                off(window, `${type}:disconnect`, onDisconnect);
+                off(window, `${type}:update`, onUpdate);
+                cleanups(this).delete(type);
+                update(this, undefined);
+            };
+            const onDisconnect = () => {
+                update(this, undefined);
+            };
+            const onUpdate = (event) => {
+                update(this, event.detail);
+            };
+            on(window, `${type}:disconnect`, onDisconnect);
+            on(window, `${type}:update`, onUpdate);
+            cleanups(this).set(type, cleanup);
+            dispatch(window, `${type}:presence`);
+        });
+        appendToMethod(target, LIFECYCLE_DISCONNECTED, function () {
+            cleanups(this).forEach((cleanup) => cleanup());
         });
     };
 }
@@ -1449,7 +1552,12 @@ function Element() {
         const tag = getTag(constructor);
         if (customElements.get(tag))
             return;
-        class Plus extends HTMLElement {
+        customElements.define(tag, proxy(constructor));
+    };
+}
+const proxy = (constructor) => {
+    var _a;
+    return _a = class Plus extends HTMLElement {
             constructor() {
                 super();
                 this.attachShadow({
@@ -1490,14 +1598,13 @@ function Element() {
             disconnectedCallback() {
                 call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
             }
-        }
+        },
         // TODO
-        Plus.formAssociated = constructor['formAssociated'];
+        _a.formAssociated = constructor['formAssociated'],
         // TODO
-        Plus.observedAttributes = constructor['observedAttributes'];
-        customElements.define(tag, Plus);
-    };
-}
+        _a.observedAttributes = constructor['observedAttributes'],
+        _a;
+};
 
 /**
  * Provides the capability to dispatch a [CustomEvent](https://mdn.io/custom-event)
@@ -1505,7 +1612,7 @@ function Element() {
  *
  * @param options An object that configures options for the event dispatcher.
  */
-function Event$1(options = {}) {
+function Event(options = {}) {
     return function (target, key) {
         defineProperty(target, key, {
             get() {
@@ -1636,36 +1743,6 @@ function Property(options) {
             // TODO: Check the configuration.
             // Attaches the getter and setter functions to the current property of the host element.
             defineProperty(host(this), key, { get, set, configurable: true });
-        });
-    };
-}
-
-/**
- * TODO
- * @param namespace
- */
-function Provider(namespace) {
-    return function (target, key, descriptor) {
-        const symbol = Symbol();
-        const update = (instance) => (updater) => {
-            const state = descriptor.get.call(instance);
-            const successful = updater(state);
-            if (successful)
-                return;
-            instance[symbol].delete(updater);
-        };
-        appendToMethod(target, LIFECYCLE_CONSTRUCTED, function () {
-            this[symbol] || (this[symbol] = new Set());
-            const handler = (event) => {
-                event.stopPropagation();
-                const updater = event.detail;
-                this[symbol].add(updater);
-                update(this)(updater);
-            };
-            on(this, `internal:context:${namespace}`, handler);
-        });
-        appendToMethod(target, LIFECYCLE_UPDATED, function () {
-            this[symbol].forEach(update(this));
         });
     };
 }
@@ -1876,345 +1953,6 @@ class Animation2 {
     }
 }
 
-class Animation {
-    constructor(config) {
-        const states = Object.assign({}, {
-            enter: 'enter',
-            entering: 'entering',
-            entered: 'entered',
-            leave: 'leave',
-            leaving: 'leaving',
-            leaved: 'leaved'
-        }, config.states);
-        this.config = Object.assign({}, {
-            reflect: 'class',
-            states,
-            onEnter: () => undefined,
-            onEntering: () => undefined,
-            onEntered: () => undefined,
-            onEnterCanceled: () => undefined,
-            onLeave: () => undefined,
-            onLeaving: () => undefined,
-            onLeaved: () => undefined,
-            onLeaveCanceled: () => undefined
-        }, config);
-        this.init();
-    }
-    get sources() {
-        let { source } = this.config;
-        try {
-            source = source();
-        }
-        catch (_a) { }
-        return [source].flat(1);
-    }
-    get targets() {
-        let { target } = this.config;
-        try {
-            target = target();
-        }
-        catch (_a) { }
-        return [target].flat(1);
-    }
-    duration() {
-        return this.sources
-            .map((item) => {
-            try {
-                const style = window.getComputedStyle(item);
-                const duration = [
-                    style.animationDelay,
-                    style.transitionDelay,
-                    style.animationDuration,
-                    style.transitionDuration
-                ].map((item = '0s') => parseFloat(item) * (/ms/g.test(item) ? 1 : 1000));
-                return Math.max(...duration.slice(0, 2)) + Math.max(...duration.slice(2));
-            }
-            catch (_a) {
-                return 0;
-            }
-        })
-            .sort((a, b) => a - b)
-            .pop();
-    }
-    init() {
-        let { state } = this.config;
-        this.update(state);
-    }
-    next(callback) {
-        requestAnimationFrame(() => setTimeout(() => callback(), 5));
-    }
-    update(state) {
-        const { key, states } = this.config;
-        this.targets.map((target) => target.setAttribute(key, states[state]));
-    }
-    cancel() {
-        clearTimeout(this.timeout);
-    }
-    dispose() {
-        clearTimeout(this.timeout);
-    }
-    enter(config) {
-        this.cancel();
-        config = Object.assign({}, this.config, config);
-        this.update('enter');
-        config.onEnter();
-        this.next(() => {
-            clearTimeout(this.timeout);
-            this.update('entering');
-            config.onEntering();
-            const duration = this.duration();
-            this.timeout = setTimeout(() => {
-                this.update('entered');
-                config.onEntered();
-            }, duration);
-        });
-    }
-    leave(config) {
-        this.cancel();
-        config = Object.assign({}, this.config, config);
-        this.update('leave');
-        config.onLeave();
-        this.next(() => {
-            clearTimeout(this.timeout);
-            this.update('leaving');
-            config.onLeaving();
-            const duration = this.duration();
-            this.timeout = setTimeout(() => {
-                this.update('leaved');
-                config.onLeaved();
-            }, duration);
-        });
-    }
-}
-
-const properties = [];
-const attach = (property) => {
-    switch (property.type) {
-        case 'ACTION':
-            getRelated(property, 'INJECT').forEach((to) => inject(property, to));
-            break;
-        case 'OBSERVABLE':
-            getRelated(property, 'INJECT').forEach((to) => inject(property, to));
-            // TODO
-            let value = getValue(property);
-            Object.defineProperty(property.instance, property.name, {
-                enumerable: true,
-                configurable: true,
-                get() {
-                    return value;
-                },
-                set(input) {
-                    if (input === value)
-                        return;
-                    value = input;
-                    getRelated(property, 'INJECT').forEach((to) => inject(property, to));
-                }
-            });
-            break;
-        case 'INJECT':
-            getRelated(property, 'ACTION', 'OBSERVABLE').forEach((to) => inject(to, property));
-            break;
-    }
-};
-const connect = (property) => {
-    property = prepare(property);
-    register(property);
-    if (!property.config.crawl || property.namespace)
-        return attach(property);
-    queue(property);
-};
-const detach = (property) => {
-    switch (property.type) {
-        case 'ACTION':
-            getRelated(property, 'INJECT').forEach((to) => setValue(to, to.initialize));
-            break;
-        case 'INJECT':
-            setValue(property, property.initialize);
-            break;
-        case 'OBSERVABLE':
-            // TODO
-            Object.defineProperty(property.instance, property.name, {
-                value: getValue(property),
-                enumerable: true,
-                configurable: true
-            });
-            getRelated(property, 'INJECT').forEach((to) => setValue(to, to.initialize));
-            break;
-    }
-};
-const disconnect = (property) => {
-    property = properties.find((item) => {
-        return item.instance == property.instance && item.name == property.name;
-    });
-    detach(property);
-    unregister(property);
-};
-const findParent = (property) => {
-    var _a;
-    let element = (_a = property.element) === null || _a === void 0 ? void 0 : _a.parentElement;
-    while (element) {
-        if (element.shadowRoot) {
-            const parent = properties.find((item) => {
-                return item.element == element && item.name == property.name;
-            });
-            if (parent)
-                return parent;
-        }
-        element = element.parentElement;
-    }
-};
-const getRelated = (property, ...types) => {
-    return properties.filter((item) => {
-        if (typeof item.namespace == 'undefined')
-            return;
-        if (!types.includes(item.type))
-            return;
-        if (item.name != property.name)
-            return;
-        if (item.namespace === property.namespace)
-            return true;
-        if (item.namespace === property)
-            return true;
-        if (item === property.namespace)
-            return true;
-    });
-};
-const getValue = (property) => {
-    return property.instance[property.name];
-};
-const inject = (from, to) => {
-    let value = getValue(from);
-    if (typeof value === 'function')
-        value = value.bind(from.instance);
-    setValue(to, value);
-};
-const prepare = (property) => {
-    var _a;
-    const { config, instance, name } = property;
-    const element = host(instance);
-    const initialize = instance[name];
-    const namespace = (_a = config === null || config === void 0 ? void 0 : config.namespace) === null || _a === void 0 ? void 0 : _a.call(config, instance);
-    return Object.assign({}, property, { element, initialize, namespace });
-};
-// TODO
-let timeout;
-const unresolved = new Set();
-const queue = (property) => {
-    unresolved.add(property);
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-        Array.from(unresolved).forEach((source) => {
-            const parent = findParent(source);
-            if (!parent)
-                return;
-            source.namespace = parent;
-            unresolved.delete(source);
-            attach(source);
-        });
-    }, 0);
-};
-const reconnect = (instance) => {
-    properties
-        .filter((property) => property.instance == instance)
-        .forEach((property) => {
-        disconnect(property);
-        connect(property);
-    });
-};
-const register = (property) => {
-    properties.push(property);
-};
-const setValue = (property, value) => {
-    property.instance[property.name] = value;
-    /**
-     * TODO
-     * extra render should be removed. callback 'attributeChangedCallback' in '@Element'
-     * should use the 'request' method inside itself to update properties.
-     */
-    if (property.type == 'INJECT' && property.options)
-        request(property.instance);
-    // .then(() => {
-    //   // render(property.instance)
-    // })
-    // .catch(() => undefined);
-};
-const unregister = (property) => {
-    const index = properties.findIndex((item) => item === property);
-    properties.splice(index, 1);
-};
-const createDecorator = (parameters) => {
-    return (target, name) => {
-        const { connectedCallback, disconnectedCallback } = target;
-        target.connectedCallback = function () {
-            connectedCallback === null || connectedCallback === void 0 ? void 0 : connectedCallback.call(this);
-            connect(Object.assign(Object.assign({}, parameters), { instance: this, name }));
-        };
-        target.disconnectedCallback = function () {
-            disconnectedCallback === null || disconnectedCallback === void 0 ? void 0 : disconnectedCallback.call(this);
-            disconnect({
-                instance: this,
-                name
-            });
-        };
-    };
-};
-const createLink = (config) => {
-    const Action = () => {
-        return createDecorator({ config, type: 'ACTION' });
-    };
-    const Inject = (state) => {
-        return createDecorator({ config, type: 'INJECT', options: state });
-    };
-    const Observable = () => {
-        return createDecorator({ config, type: 'OBSERVABLE' });
-    };
-    return {
-        Action,
-        Inject,
-        Observable,
-        reconnect
-    };
-};
-
-class Portal {
-    constructor(options) {
-        this.options = options;
-        this.keys = new Map();
-        this.init();
-    }
-    get source() {
-        return [this.options.source].flat();
-    }
-    get strategy() {
-        return this.options.strategy;
-    }
-    get target() {
-        let target = this.options.target;
-        if (typeof target === 'string')
-            target = document.querySelector(target);
-        return target;
-    }
-    init() {
-        for (let i = 0; i < this.source.length; i++) {
-            const node = this.source[i];
-            const place = document.createElement('div');
-            this.keys.set(node, place);
-            node['before'](place);
-            this.target[this.strategy](node);
-        }
-    }
-    revert() {
-        for (let i = 0; i < this.source.length; i++) {
-            const node = this.source[i];
-            if (!this.keys.has(node))
-                continue;
-            const place = this.keys.get(node);
-            place['replaceWith'](node);
-            this.keys.delete(node);
-        }
-    }
-}
-
 // TODO: add dynamic target like html, body, ...
 class Scrollbar {
     static get width() {
@@ -2285,12 +2023,6 @@ const isSize = (input) => {
     ].includes(input);
 };
 
-const isValidCSSColor = (input) => {
-    const option = new Option();
-    option.style.color = input;
-    return option.style.color !== '';
-};
-
 const toAxis = (input, rtl) => {
     if (!input)
         return input;
@@ -2310,68 +2042,43 @@ const BREAKPOINTS = {
     xxl: 1400
 };
 
-function Media(query) {
-    const getMedia = (target, query) => {
-        const breakpoints = sort(BREAKPOINTS);
-        query = normalize(target, query);
-        if (!query)
-            return;
-        const [key, direction] = query.split('-');
-        const isUp = direction === 'up';
-        const isDown = direction === 'down';
-        const index = breakpoints.findIndex((breakpoint) => breakpoint.key === key);
-        const min = breakpoints[index].value;
-        const max = (breakpoints[index + 1] || {}).value - 1;
-        if (isUp || isNaN(max)) {
-            query = `(min-width: ${min}px)`;
-        }
-        else if (isDown) {
-            query = `(max-width: ${max}px)`;
-        }
-        else {
-            query = `(min-width: ${min}px) and (max-width: ${max}px)`;
-        }
-        return window.matchMedia(query);
-    };
-    const normalize = (target, query) => {
-        const isProperty = query.match(/\[(.*)\]/);
-        if (isProperty) {
-            const property = isProperty[1];
-            query = query.replace(`[${property}]`, target[property]);
-        }
-        return query;
-    };
-    const sort = (breakpoints) => {
-        return Object.keys(breakpoints)
-            .map((key) => {
-            return {
-                key,
-                value: breakpoints[key]
-            };
-        })
-            .sort((a, b) => a.value - b.value);
-    };
-    return function (target, propertyKey) {
-        let media;
+/**
+ * TODO: target typing
+ */
+function Breakpoint() {
+    return function (target, key) {
+        const symbol = Symbol();
         const connected = target.connectedCallback;
         target.connectedCallback = function () {
-            media = getMedia(this, query);
-            const callback = this[propertyKey];
-            on(media, 'change', callback);
-            connected && connected.bind(this)();
-            // TODO
-            const event = new Event('change');
-            event.matches = media.matches;
-            event.media = media.media;
-            media.dispatchEvent(event);
+            this[symbol] = [];
+            const keys = Object.keys(BREAKPOINTS);
+            const callback = (media) => {
+                var _a;
+                if (media.matches) {
+                    this[key] = ((_a = media.currentTarget) === null || _a === void 0 ? void 0 : _a.breakpoint) || media.breakpoint;
+                }
+            };
+            this[symbol] = keys.map((key, index) => {
+                const min = BREAKPOINTS[keys[index]];
+                const max = BREAKPOINTS[keys[index + 1]];
+                const query = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
+                const media = window.matchMedia(query);
+                media['breakpoint'] = key;
+                on(media, 'change', callback);
+                callback(media);
+                return () => off(media, 'change', callback);
+            });
+            connected === null || connected === void 0 ? void 0 : connected.call(this);
         };
         const disconnected = target.disconnectedCallback;
         target.disconnectedCallback = function () {
-            const callback = this[propertyKey];
-            off(media, 'change', callback);
-            disconnected && disconnected.bind(this)();
+            for (const teardown of this[symbol]) {
+                teardown();
+            }
+            this[symbol] = [];
+            disconnected === null || disconnected === void 0 ? void 0 : disconnected.call(this);
         };
     };
 }
 
-export { Animation2 as A, Bind as B, Consumer as C, Event$1 as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, createLink as l, toAxis as m, Animation as n, on as o, Scrollbar as p, Portal as q, request as r, setConfig as s, toUnit as t, slots as u, Media as v, isValidCSSColor as w, PlusForm as x, Provider as y };
+export { Animation2 as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, Provider as l, Scrollbar as m, toAxis as n, on as o, slots as p, Breakpoint as q, request as r, setConfig as s, toUnit as t, isCSSColor as u, PlusForm as v };

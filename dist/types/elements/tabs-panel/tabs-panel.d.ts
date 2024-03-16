@@ -12,8 +12,12 @@ export declare class TabsPanel extends PlusCore {
      * Provides your own value.
      */
     value?: number | string;
+    /**
+     * TODO
+     */
+    get active(): boolean;
     parent?: TabsContext;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface TabsPanelAttributes {
     /**
@@ -30,6 +34,10 @@ export interface TabsPanelProperties {
     * Provides your own value.
     */
     value?: number | string;
+    /**
+    * TODO
+    */
+    active: any;
 }
 export interface TabsPanelJSX extends TabsPanelEvents, TabsPanelProperties {
 }

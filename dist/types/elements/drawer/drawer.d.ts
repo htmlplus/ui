@@ -1,7 +1,8 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
-import { Animation } from "../../services";
-import { DrawerBackdrop, DrawerBreakpoint, DrawerPlacement, DrawerPlatform, DrawerTemporary } from './drawer.types';
+import { Animation2 } from "../../services";
+import { DrawerContext } from './drawer.context';
+import { DrawerPlacement, DrawerFloating } from './drawer.types';
 /**
  * @slot default - The default slot.
  */
@@ -11,16 +12,11 @@ export declare class Drawer extends PlusCore {
     /**
      * TODO
      */
-    animation?: string;
+    animation?: boolean | string;
     /**
-     * Activate the drawer's backdrop to show or not.
+     * Activate the drawer's backdrop to show or not. It works when floating is activated.
      */
-    backdrop?: DrawerBackdrop;
-    /**
-     * Sets the mobile breakpoint to apply alternate styles for mobile devices
-     * when the breakpoint value is met.
-     */
-    breakpoint?: DrawerBreakpoint;
+    backdrop?: boolean;
     /**
      * This property helps you to attach which drawer toggler controls the drawer.
      * It doesn't matter where the drawer toggler is.
@@ -29,13 +25,20 @@ export declare class Drawer extends PlusCore {
      */
     connector?: string;
     /**
+     * On default the drawer is considered as a part of the main container.
+     * it pushes the other contents on opening.
+     * If true it will be opened over other contents and doesn't affect other contents.
+     * A floating drawer sits above its application and uses a backdrop to darken the background.
+     */
+    floating?: DrawerFloating;
+    /**
      * Set the width of drawer to the minimum size you specified for the `mini-size` property.
      */
     mini?: boolean;
     /**
      * Sets the minimum width size of the drawer.
      */
-    miniSize?: string;
+    miniSize?: number | string;
     /**
      * Control drawer to show or not.
      */
@@ -57,14 +60,11 @@ export declare class Drawer extends PlusCore {
     /**
      * Determine the width of the drawer.
      */
-    size?: string;
+    size?: number | string;
     /**
-     * On default the drawer is considered as a part of the main container.
-     * it pushes the other contents on opening.
-     * If true it will be opened over other contents and doesn't affect other contents.
-     * A temporary drawer sits above its application and uses a backdrop to darken the background.
+     * TODO
      */
-    temporary?: DrawerTemporary;
+    get floated(): boolean;
     /**
      * When the drawer is going to hide
      */
@@ -81,49 +81,54 @@ export declare class Drawer extends PlusCore {
      * When the drawer is completely shown and its animation is completed.
      */
     plusOpened: EventEmitter<void>;
+    breakpoint?: any;
     $root: HTMLElement;
-    platform?: DrawerPlatform;
-    animations: {
-        open?: Animation;
-        mini?: Animation;
+    get state(): DrawerContext;
+    animate: {
+        main: Animation2;
+        mini: Animation2;
     };
-    isOpen?: boolean;
-    tunnel?: boolean;
+    opened: boolean;
+    promise?: Promise<boolean>;
     get classes(): string;
     get hasBackdrop(): boolean;
-    get isTemporary(): boolean;
     get style(): any;
-    hide(): void;
-    show(): void;
-    toggle(): void;
-    broadcast(value: any): void;
+    /**
+     * Hides the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    hide(): Promise<boolean>;
+    /**
+     * Shows the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    show(): Promise<boolean>;
+    /**
+     * Toggles between `collapse` and `expand` state.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    toggle(): Promise<boolean>;
+    watcher(next: any, prev: any, name: any): void;
     initialize(): void;
     terminate(): void;
-    tryHide(animation: any, silent: any): void;
-    tryShow(animation: any, silent: any): void;
-    watcher(next: any, prev: any, name: any): void;
-    onHide(): void;
-    onShow(): void;
-    onMedia(event: any): void;
+    try(open: boolean, silent?: boolean): Promise<boolean>;
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface DrawerAttributes {
     /**
     * TODO
     */
-    "animation"?: string;
+    "animation"?: boolean | string;
     /**
-    * Activate the drawer's backdrop to show or not.
+    * Activate the drawer's backdrop to show or not. It works when floating is activated.
     */
-    "backdrop"?: DrawerBackdrop;
-    /**
-    * Sets the mobile breakpoint to apply alternate styles for mobile devices
-    * when the breakpoint value is met.
-    */
-    "breakpoint"?: DrawerBreakpoint;
+    "backdrop"?: boolean;
     /**
     * This property helps you to attach which drawer toggler controls the drawer.
     * It doesn't matter where the drawer toggler is.
@@ -132,13 +137,20 @@ export interface DrawerAttributes {
     */
     "connector"?: string;
     /**
+    * On default the drawer is considered as a part of the main container.
+    * it pushes the other contents on opening.
+    * If true it will be opened over other contents and doesn't affect other contents.
+    * A floating drawer sits above its application and uses a backdrop to darken the background.
+    */
+    "floating"?: DrawerFloating;
+    /**
     * Set the width of drawer to the minimum size you specified for the `mini-size` property.
     */
     "mini"?: boolean;
     /**
     * Sets the minimum width size of the drawer.
     */
-    "mini-size"?: string;
+    "mini-size"?: number | string;
     /**
     * Control drawer to show or not.
     */
@@ -160,14 +172,7 @@ export interface DrawerAttributes {
     /**
     * Determine the width of the drawer.
     */
-    "size"?: string;
-    /**
-    * On default the drawer is considered as a part of the main container.
-    * it pushes the other contents on opening.
-    * If true it will be opened over other contents and doesn't affect other contents.
-    * A temporary drawer sits above its application and uses a backdrop to darken the background.
-    */
-    "temporary"?: DrawerTemporary;
+    "size"?: number | string;
 }
 export interface DrawerEvents {
     /**
@@ -188,21 +193,34 @@ export interface DrawerEvents {
     onPlusOpened?: (event: CustomEvent<void>) => void;
 }
 export interface DrawerMethods {
+    /**
+    * Hides the element.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    hide(): Promise<boolean>;
+    /**
+    * Shows the element.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    show(): Promise<boolean>;
+    /**
+    * Toggles between `collapse` and `expand` state.
+    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+    * operation was successful or `false` if it was canceled.
+    */
+    toggle(): Promise<boolean>;
 }
 export interface DrawerProperties {
     /**
     * TODO
     */
-    animation?: string;
+    animation?: boolean | string;
     /**
-    * Activate the drawer's backdrop to show or not.
+    * Activate the drawer's backdrop to show or not. It works when floating is activated.
     */
-    backdrop?: DrawerBackdrop;
-    /**
-    * Sets the mobile breakpoint to apply alternate styles for mobile devices
-    * when the breakpoint value is met.
-    */
-    breakpoint?: DrawerBreakpoint;
+    backdrop?: boolean;
     /**
     * This property helps you to attach which drawer toggler controls the drawer.
     * It doesn't matter where the drawer toggler is.
@@ -211,13 +229,20 @@ export interface DrawerProperties {
     */
     connector?: string;
     /**
+    * On default the drawer is considered as a part of the main container.
+    * it pushes the other contents on opening.
+    * If true it will be opened over other contents and doesn't affect other contents.
+    * A floating drawer sits above its application and uses a backdrop to darken the background.
+    */
+    floating?: DrawerFloating;
+    /**
     * Set the width of drawer to the minimum size you specified for the `mini-size` property.
     */
     mini?: boolean;
     /**
     * Sets the minimum width size of the drawer.
     */
-    miniSize?: string;
+    miniSize?: number | string;
     /**
     * Control drawer to show or not.
     */
@@ -239,14 +264,11 @@ export interface DrawerProperties {
     /**
     * Determine the width of the drawer.
     */
-    size?: string;
+    size?: number | string;
     /**
-    * On default the drawer is considered as a part of the main container.
-    * it pushes the other contents on opening.
-    * If true it will be opened over other contents and doesn't affect other contents.
-    * A temporary drawer sits above its application and uses a backdrop to darken the background.
+    * TODO
     */
-    temporary?: DrawerTemporary;
+    readonly floated: boolean;
 }
 export interface DrawerJSX extends DrawerEvents, DrawerProperties {
 }

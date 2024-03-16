@@ -1,12 +1,8 @@
-import { _ as __decorate, b as Property, E as Event, Q as Query, W as Watch, B as Bind, l as createLink, P as PlusCore, m as toAxis, k as classes, n as Animation, p as Scrollbar, j as off, q as Portal, o as on, h as html, e as attributes, c as Element } from './core/index.js';
+import { _ as __decorate, b as Property, E as Event, Q as Query, l as Provider, M as Method, W as Watch, B as Bind, P as PlusCore, A as Animation2, m as Scrollbar, o as on, j as off, n as toAxis, k as classes, a as __awaiter, h as html, e as attributes, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host([animation][state=closing]),:host([animation][state=opening]){transition:all .5s ease-out}:host([animation][state=closing]) .dialog,:host([animation][state=opening]) .dialog{overflow:hidden}:host([animation][state=closing]) ::slotted(*),:host([animation][state=opening]) ::slotted(*){transition:all .5s ease-out}:host([animation=fade][state=closing]),:host([animation=fade][state=open]){opacity:0}:host([animation=fade][state=closing]) ::slotted(*),:host([animation=fade][state=open]) ::slotted(*){transform:translateY(-50px)}:host([animation=fade][state=closing]) .y-bottom ::slotted(*),:host([animation=fade][state=open]) .y-bottom ::slotted(*){transform:translateY(50px)}:host([animation=fade][state=closing]) .x-right ::slotted(*),:host([animation=fade][state=open]) .x-right ::slotted(*){transform:translate(50px)}:host([animation=fade][state=closing]) .x-left ::slotted(*),:host([animation=fade][state=open]) .x-left ::slotted(*){transform:translate(-50px)}:host([animation=fade][state=close]),:host([animation=fade][state=opening]){opacity:1}:host([animation=fade][state=close]) ::slotted(*),:host([animation=fade][state=opening]) ::slotted(*){transform:translate(0)}:host{display:block;height:100%;left:0;outline:0;overflow:hidden;position:fixed;top:0;width:100%;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.dialog{height:100%;left:0;overflow-x:hidden;overflow-y:auto;position:fixed;top:0;width:100%;z-index:1}.table{display:table;height:100%;margin:auto;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}.fullscreen .cell{padding:0}.fullscreen ::slotted(*){border:0;border-radius:0}.fullscreen .cell{max-width:none}.fullscreen ::slotted(*){min-height:100vh}@media (min-width:576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media (max-width:575.98px){.fullscreen-sm-down .cell{padding:0}.fullscreen-sm-down ::slotted(*){border:0;border-radius:0}.fullscreen-sm-down .cell{max-width:none}.fullscreen-sm-down ::slotted(*){min-height:100vh}}@media (max-width:767.98px){.fullscreen-md-down .cell{padding:0}.fullscreen-md-down ::slotted(*){border:0;border-radius:0}.fullscreen-md-down .cell{max-width:none}.fullscreen-md-down ::slotted(*){min-height:100vh}}@media (min-width:992px){.size-lg .cell,.size-xl .cell{max-width:800px}}@media (max-width:991.98px){.fullscreen-lg-down .cell{padding:0}.fullscreen-lg-down ::slotted(*){border:0;border-radius:0}.fullscreen-lg-down .cell{max-width:none}.fullscreen-lg-down ::slotted(*){min-height:100vh}}@media (min-width:1200px){.size-xl .cell{max-width:1140px}}@media (max-width:1199.98px){.fullscreen-xl-down .cell{padding:0}.fullscreen-xl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xl-down .cell{max-width:none}.fullscreen-xl-down ::slotted(*){min-height:100vh}}@media (max-width:1399.98px){.fullscreen-xxl-down .cell{padding:0}.fullscreen-xxl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xxl-down .cell{max-width:none}.fullscreen-xxl-down ::slotted(*){min-height:100vh}}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none!important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
 
 var Dialog_1;
-const { Action, Observable, reconnect } = createLink({
-    crawl: false,
-    namespace: ({ connector }) => connector ? `Dialog:${connector}` : undefined
-});
 /**
  * @part backdrop - Backdrop element.
  *
@@ -20,16 +16,71 @@ let Dialog = Dialog_1 = class Dialog extends PlusCore {
          * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
          */
         this.placement = 'top';
-        /**
-         * Specifies the position of the dialog.
-         * @experimental
-         */
-        this.portalStrategy = 'append';
-        /**
-         * Specifies the position of the dialog relative to the target.
-         * @experimental
-         */
-        this.portalTarget = 'body';
+        this.animate = new Animation2({
+            key: 'state',
+            source: () => this.$host,
+            target: () => this.$host,
+            states: {
+                enter: 'open',
+                entering: 'opening',
+                entered: 'opened',
+                leave: 'close',
+                leaving: 'closing',
+                leaved: 'closed'
+            },
+            onEnter: () => {
+                // remove document's scroll
+                Scrollbar.remove(this);
+                // add keydown listener
+                on(document, 'keydown', this.onEscape, true);
+                // remove outside click listener
+                on(this.$cell, 'outside', this.onClickOutside, true);
+                // set z-index
+                this.$host.style.zIndex = this.zIndex;
+                // update state
+                this.open = this.opened = true;
+                // register dialog's instance
+                Dialog_1.instances.push(this);
+            },
+            onEntering: () => {
+                this.opened = this.open = true;
+            },
+            onEntered: silent => {
+                if (silent)
+                    return;
+                this.plusOpened();
+            },
+            onLeave: () => { },
+            onLeaving: () => {
+                this.opened = this.open = false;
+            },
+            onLeaved: silent => {
+                // reset document's scroll
+                Scrollbar.reset(this);
+                // remove keydown listener
+                off(document, 'keydown', this.onEscape, true);
+                // remove outside click listener
+                off(this.$cell, 'outside', this.onClickOutside, true);
+                // reset z-index
+                this.$host.style.zIndex = null;
+                // update state
+                this.open = this.opened = false;
+                // unregister dialog's instance
+                Dialog_1.instances = Dialog_1.instances.filter(instance => instance !== this);
+                if (silent)
+                    return;
+                this.plusClosed();
+            }
+        });
+        this.opened = false;
+    }
+    get state() {
+        return {
+            open: this.opened,
+            toggle: () => {
+                this.try(!this.open, false);
+            }
+        };
     }
     get classes() {
         let placement = this.placement || '';
@@ -51,9 +102,7 @@ let Dialog = Dialog_1 = class Dialog extends PlusCore {
             }], true);
     }
     get isCurrent() {
-        const instances = Dialog_1.instances;
-        const last = instances.length - 1;
-        return instances[last] === this;
+        return Dialog_1.instances.at(-1) === this;
     }
     get zIndex() {
         if (Dialog_1.instances.length < 1)
@@ -64,144 +113,84 @@ let Dialog = Dialog_1 = class Dialog extends PlusCore {
         const zIndex = window.getComputedStyle(instance.$host).getPropertyValue('z-index');
         return `${parseInt(zIndex) + 1}`;
     }
+    /**
+     * Hides the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    hide() {
+        return this.try(false, true);
+    }
+    /**
+     * Shows the element.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    show() {
+        return this.try(true, true);
+    }
+    /**
+     * Toggles between `collapse` and `expand` state.
+     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+     * operation was successful or `false` if it was canceled.
+     */
+    toggle() {
+        return this.try(!this.open, true);
+    }
     watcher(next, prev, name) {
         switch (name) {
-            case 'connector':
-                reconnect(this);
-                break;
             case 'open':
-                next && !this.isOpen && this.tryShow(true, true);
-                !next && this.isOpen && this.tryHide(true, true);
+                // TODO: problem with `false` and `undefined`
+                if (!next == !prev)
+                    break;
+                this.try(next, true);
                 break;
         }
     }
-    hide() {
-        this.tryHide(true, false);
-    }
-    show() {
-        this.tryShow(true, false);
-    }
-    toggle() {
-        this.isOpen ? this.hide() : this.show();
-    }
-    broadcast(value) {
-        this.tunnel = value;
-    }
     initialize() {
-        this.animate = new Animation({
-            key: 'state',
-            source: () => this.$host,
-            target: () => this.$host,
-            state: this.open ? 'entered' : 'leaved',
-            states: {
-                enter: 'open',
-                entering: 'opening',
-                entered: 'opened',
-                leave: 'close',
-                leaving: 'closing',
-                leaved: 'closed'
-            }
-        });
-        if (!this.open)
-            return;
-        this.tryShow(false, true);
+        this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
     }
     terminate() {
         var _a;
-        this.onHide();
         (_a = this.animate) === null || _a === void 0 ? void 0 : _a.dispose();
     }
-    tryHide(animation, silent) {
-        if (!this.isOpen)
-            return;
-        if (!silent && this.plusClose().defaultPrevented)
-            return;
-        if (!animation)
-            return this.onHide();
-        this.animate.leave({
-            onLeave: () => {
-                // TODO: experimantal new link
-                this.broadcast(false);
-            },
-            onLeaved: () => {
-                var _a;
-                // TODO: experimantal portal
-                (_a = this.portalInstance) === null || _a === void 0 ? void 0 : _a.revert();
-                this.onHide();
-                if (silent)
-                    return;
-                this.plusClosed();
+    try(open, silent) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.opened == open)
+                return yield this.promise;
+            if (!silent) {
+                const event = open ? this.plusOpen : this.plusClose;
+                const prevented = event.call(this).defaultPrevented;
+                // TODO
+                if (prevented)
+                    return true;
             }
+            this.opened = this.open = open;
+            const fn = this.open ? this.animate.enter : this.animate.leave;
+            this.promise = fn.bind(this.animate)(silent);
+            return yield this.promise;
         });
-    }
-    tryShow(animation, silent) {
-        if (this.isOpen)
-            return;
-        if (!silent && this.plusOpen().defaultPrevented)
-            return;
-        if (!animation)
-            return this.onShow();
-        this.animate.enter({
-            onEnter: () => {
-                this.onShow();
-            },
-            onEntered: () => {
-                if (silent)
-                    return;
-                this.plusOpened();
-            }
-        });
-    }
-    onHide() {
-        // reset document's scroll
-        Scrollbar.reset(this);
-        // remove outside click listener
-        off(this.$cell, 'outside', this.onClickOutside, true);
-        // remove keydown listener
-        off(document, 'keydown', this.onEscape, true);
-        // reset z-index
-        this.$host.style.zIndex = null;
-        // update state
-        this.open = this.isOpen = false;
-        // unregister dialog's instance
-        Dialog_1.instances = Dialog_1.instances.filter(instance => instance !== this);
-        // TODO: experimantal new link
-        this.broadcast(false);
-    }
-    onShow() {
-        // TODO: experimantal portal
-        this.portalInstance = this.portal && new Portal({
-            source: this.$host,
-            target: this.portalTarget,
-            strategy: this.portalStrategy
-        });
-        // remove document's scroll
-        Scrollbar.remove(this);
-        // remove outside click listener
-        on(this.$cell, 'outside', this.onClickOutside, true);
-        // add keydown listener
-        on(document, 'keydown', this.onEscape, true);
-        // set z-index
-        this.$host.style.zIndex = this.zIndex;
-        // update state
-        this.open = this.isOpen = true;
-        // register dialog's instance
-        Dialog_1.instances.push(this);
-        // TODO: experimantal new link
-        this.broadcast(true);
     }
     onEscape(event) {
-        if (!this.isOpen || !this.isCurrent)
+        // TODO
+        if (!this.opened)
+            return;
+        if (!this.isCurrent)
             return;
         if (!this.keyboard || event.key !== 'Escape')
             return;
         event.preventDefault();
-        this.tryHide(true, false);
+        this.try(false, false);
     }
     onClickOutside() {
-        if (!this.isOpen || !this.isCurrent || this.persistent)
+        // TODO
+        if (!this.opened)
             return;
-        this.tryHide(true, false);
+        if (!this.isCurrent)
+            return;
+        if (this.persistent)
+            return;
+        this.try(false, false);
     }
     loadedCallback() {
         this.initialize();
@@ -211,13 +200,13 @@ let Dialog = Dialog_1 = class Dialog extends PlusCore {
     }
     render() {
         return html `${attributes(this, [{
-                "aria-hidden": this.isOpen ? null : 'true'
+                "aria-hidden": this.opened ? null : 'true'
             }, {
-                "aria-modal": this.isOpen ? 'true' : null
+                "aria-modal": this.opened ? 'true' : null
             }, {
                 "tabindex": -1
             }, {
-                "role": this.isOpen ? 'dialog' : null
+                "role": this.opened ? 'dialog' : null
             }])}
         ${!this.transparent && html `<div class="backdrop" part="backdrop">
             <div />
@@ -288,21 +277,6 @@ __decorate([
     Property({
         type: 2
     })
-], Dialog.prototype, "portal", void 0);
-__decorate([
-    Property({
-        type: 0
-    })
-], Dialog.prototype, "portalStrategy", void 0);
-__decorate([
-    Property({
-        type: 0
-    })
-], Dialog.prototype, "portalTarget", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
 ], Dialog.prototype, "scrollable", void 0);
 __decorate([
     Property({
@@ -339,14 +313,20 @@ __decorate([
     Query('slot')
 ], Dialog.prototype, "$cell", void 0);
 __decorate([
-    Observable()
-], Dialog.prototype, "tunnel", void 0);
+    Provider('dialog.connector')
+], Dialog.prototype, "state", null);
 __decorate([
-    Watch(['connector', 'open'])
-], Dialog.prototype, "watcher", null);
+    Method()
+], Dialog.prototype, "hide", null);
 __decorate([
-    Action()
+    Method()
+], Dialog.prototype, "show", null);
+__decorate([
+    Method()
 ], Dialog.prototype, "toggle", null);
+__decorate([
+    Watch(['open'])
+], Dialog.prototype, "watcher", null);
 __decorate([
     Bind()
 ], Dialog.prototype, "onEscape", null);

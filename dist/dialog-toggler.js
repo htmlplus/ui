@@ -1,45 +1,23 @@
-import { _ as __decorate, l as createLink, P as PlusCore, h as html, e as attributes, b as Property, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, e as attributes, b as Property, S as State, C as Consumer, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{cursor:default;display:inline-block;user-select:none}";
 
-const { Inject, reconnect } = createLink({
-    crawl: true,
-    namespace: ({ connector }) => connector ? `Dialog:${connector}` : undefined
-});
 /**
  * @slot default - The default slot.
  * @TODO open    - Specifies the content of toggler when it's opened.
  * @TODO close   - Specifies the content of toggler when it's closed.
  */
 let DialogToggler = class DialogToggler extends PlusCore {
-    constructor() {
-        super(...arguments);
-        this.toggle = () => console.log('TODO: can not use out of dialog');
-    }
-    get text() {
-        return this.tunnel ? 'Close' : 'Open';
-    }
-    /**
-     * Watchers
-     */
-    watcher() {
-        reconnect(this);
-    }
-    /**
-     * Events handler
-     */
-    onClick() {
-        this.toggle();
-    }
     render() {
+        var _a, _b, _c;
         return html `${attributes(this, [{
                 "role": "button"
             }, {
-                "state": this.tunnel ? 'open' : 'close'
+                "state": ((_a = this.dialog) === null || _a === void 0 ? void 0 : _a.open) ? 'open' : 'close'
             }, {
-                "onClick": this.onClick
+                "onClick": (_b = this.dialog) === null || _b === void 0 ? void 0 : _b.toggle
             }])}
-        <slot>${this.text}</slot>
+        <slot>${((_c = this.dialog) === null || _c === void 0 ? void 0 : _c.open) ? 'Close' : 'Open'}</slot>
       `;
     }
 };
@@ -53,17 +31,9 @@ __decorate([
     })
 ], DialogToggler.prototype, "connector", void 0);
 __decorate([
-    Inject()
-], DialogToggler.prototype, "toggle", void 0);
-__decorate([
-    Inject(true)
-], DialogToggler.prototype, "tunnel", void 0);
-__decorate([
-    Watch(['connector'])
-], DialogToggler.prototype, "watcher", null);
-__decorate([
-    Bind()
-], DialogToggler.prototype, "onClick", null);
+    State(),
+    Consumer('dialog.connector')
+], DialogToggler.prototype, "dialog", void 0);
 DialogToggler = __decorate([
     Element()
 ], DialogToggler);
