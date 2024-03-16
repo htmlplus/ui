@@ -4,6 +4,7 @@
   justify-content: center;
   user-select: none;
   padding: 0.5rem 1rem;
+  background-color: whitesmoke;
 }
 
 :host([disabled]) {
@@ -13,5 +14,5 @@
 }
 
 :host([active]) {
-  background-color: rgba(210, 210, 210, 1);
+  background-color: lightgray;
 }

@@ -23,6 +23,18 @@ export class TabsTab extends PlusCore {
   @Property()
   value?: number | string;
 
+  /**
+   * TODO
+   */
+  @Property({ reflect: true })
+  get active() {
+    if (this.parent?.current === null) return false;
+
+    if (this.parent?.current === undefined) return false;
+
+    return this.parent?.current === this.value;
+  }
+
   @State()
   @Consumer('tabs')
   parent?: TabsContext;
@@ -39,7 +51,7 @@ export class TabsTab extends PlusCore {
 
   render() {
     return (
-      <host active={this.parent?.current === this.value} onClick={this.onClick}>
+      <host onClick={this.onClick}>
         <span>
           <slot />
         </span>
