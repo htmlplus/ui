@@ -6,8 +6,8 @@ import { DrawerContext } from '../drawer/drawer.context';
 
 /**
  * @slot default - The default slot.
- * @TODO open    - Specifies the content of toggler when it's opened.
- * @TODO close   - Specifies the content of toggler when it's closed.
+ * @slot open    - Specifies the content of toggler when it's opened.
+ * @slot close   - Specifies the content of toggler when it's closed.
  */
 @Element()
 export class DrawerToggler extends PlusCore {
@@ -28,15 +28,12 @@ export class DrawerToggler extends PlusCore {
     return (
       <host
         role="button"
-        state={this.drawer?.open ? 'open' : 'close'}
+        state={this.drawer?.open ? 'opened' : 'closed'}
         onClick={this.drawer?.toggle}
       >
         <slot>{this.drawer?.open ? 'Close' : 'Open'}</slot>
+        <slot name={this.drawer?.open ? 'close' : 'open'}></slot>
       </host>
     );
   }
 }
-
-// TODO
-// <slot name="close" />
-// <slot name="open" />

@@ -6,8 +6,8 @@ import { DialogContext } from '../dialog/dialog.context';
 
 /**
  * @slot default - The default slot.
- * @TODO open    - Specifies the content of toggler when it's opened.
- * @TODO close   - Specifies the content of toggler when it's closed.
+ * @slot open    - Specifies the content of toggler when it's opened.
+ * @slot close   - Specifies the content of toggler when it's closed.
  */
 @Element()
 export class DialogToggler extends PlusCore {
@@ -28,15 +28,12 @@ export class DialogToggler extends PlusCore {
     return (
       <host
         role="button"
-        state={this.dialog?.open ? 'open' : 'close'}
+        state={this.dialog?.open ? 'opened' : 'closed'}
         onClick={this.dialog?.toggle}
       >
         <slot>{this.dialog?.open ? 'Close' : 'Open'}</slot>
+        <slot name={this.dialog?.open ? 'close' : 'open'}></slot>
       </host>
     );
   }
 }
-
-// TODO
-// <slot name="close" />
-// <slot name="open" />
