@@ -4,24 +4,24 @@ The Next generation of UI elements for modern browsers based on [Custom Elements
 
 ## Installation
 
-UI Elements is available as an [npm package](https://npmjs.com/package/@htmlplus/core).
+UI Elements is available as an [npm package](https://npmjs.com/package/@htmlplus/ui).
 
 npm
 
 ```
-npm install @htmlplus/core
+npm install @htmlplus/ui
 ```
 
 yarn
 
 ```
-yarn add @htmlplus/core
+yarn add @htmlplus/ui
 ```
 
 pnpm
 
 ```
-pnpm install @htmlplus/core
+pnpm install @htmlplus/ui
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ An example of basic usage of UI elements in React, Angular, Vue, Svelte and etc.
 Import dependency into your application.
 
 ```js
-import '@htmlplus/core';
+import '@htmlplus/ui';
 ```
 
 UI elements same as native HTML tags are available.
@@ -46,4 +46,4 @@ Full documentation is available [here](https://htmlplus.io).
 
 ## License
 
-Code released under the [MIT License](https://github.com/htmlplus/core/blob/main/LICENSE).
+Code released under the [MIT License](https://github.com/htmlplus/ui/blob/main/LICENSE).

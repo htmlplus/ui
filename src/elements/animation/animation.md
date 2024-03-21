@@ -27,7 +27,7 @@ To see all names click [here](https://www.htmlplus.io/element/animation/names).
 
 ### Easing
 
-To see all easings click [here](https://github.com/htmlplus/core/blob/main/src/elements/animation/animation.constants.ts).
+To see all easings click [here](https://github.com/htmlplus/ui/blob/main/src/elements/animation/animation.constants.ts).
 <Example value="easing" />
 
 ### Methods
