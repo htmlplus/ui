@@ -8,6 +8,7 @@
   "main": "index.js",
   "types": "types/elements/index.d.ts",
   "web-types": "json/web-types.json",
+  "scripts": {},
   "files": [
     "**/*.*"
   ],
