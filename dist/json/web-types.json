@@ -1606,6 +1606,14 @@
             {
               "name": "default",
               "description": "The default slot."
+            },
+            {
+              "name": "open",
+              "description": "Specifies the content of toggler when it's opened."
+            },
+            {
+              "name": "close",
+              "description": "Specifies the content of toggler when it's closed."
             }
           ]
         },
@@ -1898,6 +1906,14 @@
             {
               "name": "default",
               "description": "The default slot."
+            },
+            {
+              "name": "open",
+              "description": "Specifies the content of toggler when it's opened."
+            },
+            {
+              "name": "close",
+              "description": "Specifies the content of toggler when it's closed."
             }
           ]
         },
