@@ -3,8 +3,123 @@
     "main"
   ],
   "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "releaseRules": [
+          {
+            "type": "build",
+            "release": false
+          },
+          {
+            "type": "chore",
+            "release": false
+          },
+          {
+            "type": "ci",
+            "release": false
+          },
+          {
+            "type": "docs",
+            "release": "patch"
+          },
+          {
+            "type": "feat",
+            "release": "minor"
+          },
+          {
+            "type": "fix",
+            "release": "patch"
+          },
+          {
+            "type": "perf",
+            "release": "patch"
+          },
+          {
+            "type": "refactor",
+            "release": "patch"
+          },
+          {
+            "type": "revert",
+            "release": "patch"
+          },
+          {
+            "type": "style",
+            "release": "patch"
+          },
+          {
+            "type": "test",
+            "release": false
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "build",
+              "hidden": true,
+              "section": ""
+            },
+            {
+              "type": "chore",
+              "hidden": true,
+              "section": ""
+            },
+            {
+              "type": "ci",
+              "hidden": true,
+              "section": ""
+            },
+            {
+              "type": "docs",
+              "hidden": false,
+              "section": "Changes"
+            },
+            {
+              "type": "feat",
+              "hidden": false,
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "hidden": false,
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "perf",
+              "hidden": false,
+              "section": "Changes"
+            },
+            {
+              "type": "refactor",
+              "hidden": false,
+              "section": "Changes"
+            },
+            {
+              "type": "revert",
+              "hidden": true,
+              "section": ""
+            },
+            {
+              "type": "style",
+              "hidden": false,
+              "section": "Changes"
+            },
+            {
+              "type": "test",
+              "hidden": true,
+              "section": ""
+            }
+          ]
+        }
+      }
+    ],
     [
       "@semantic-release/changelog",
       {
