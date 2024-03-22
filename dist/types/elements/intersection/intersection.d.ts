@@ -51,8 +51,8 @@ export declare class Intersection extends PlusCore {
         threshold: number | number[];
     };
     watcher(next: any, prev: any, name: any): void;
-    bind(): void;
-    unbind(): void;
+    initialize(): void;
+    terminate(): void;
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     connectedCallback(): void;
     disconnectedCallback(): void;

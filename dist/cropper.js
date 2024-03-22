@@ -203,8 +203,8 @@ let Cropper = class Cropper extends PlusCore {
                 // TODO: Doesn't work.
                 // this.instance.setDragMode(next);
                 // TODO: Remove this after fixing the above issue.
-                this.unbind();
-                this.bind();
+                this.terminate();
+                this.initialize();
                 break;
             case 'src':
                 this.instance.replace(this.src, false /* TODO */);
@@ -221,18 +221,13 @@ let Cropper = class Cropper extends PlusCore {
             case 'view':
             case 'zoomable':
             case 'zoomRatio':
-                this.unbind();
-                this.bind();
+                this.terminate();
+                this.initialize();
                 break;
         }
     }
-    bind() {
+    initialize() {
         this.instance = new CropperCore(this.$image, this.options);
-    }
-    unbind() {
-        var _a;
-        // TODO: has a problem in documentation
-        (_a = this.instance) === null || _a === void 0 ? void 0 : _a.destroy();
     }
     sync(value) {
         if (!this.instance)
@@ -267,6 +262,11 @@ let Cropper = class Cropper extends PlusCore {
         requestAnimationFrame(() => {
             this.locked = false;
         });
+    }
+    terminate() {
+        var _a;
+        // TODO: has a problem in documentation
+        (_a = this.instance) === null || _a === void 0 ? void 0 : _a.destroy();
     }
     onCrop() {
         this.sync();
@@ -318,10 +318,10 @@ let Cropper = class Cropper extends PlusCore {
         });
     }
     loadedCallback() {
-        this.bind();
+        this.initialize();
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
         return html `<div class=${this.classes}>

@@ -36,8 +36,8 @@ export declare class Breadcrumb extends PlusCore {
     get $children(): Element[];
     get items(): any[];
     get template(): string;
-    bind(): void;
-    unbind(): void;
+    initialize(): void;
+    terminate(): void;
     onChange(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;

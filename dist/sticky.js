@@ -35,14 +35,14 @@ let Sticky = class Sticky extends PlusCore {
     watchers(next, prev, key) {
         switch (key) {
             case 'disabled':
-                next ? this.unbind() : this.bind();
+                next ? this.terminate() : this.initialize();
                 break;
             case 'watcher':
-                next ? this.bind() : this.unbind();
+                next ? this.initialize() : this.terminate();
                 break;
         }
     }
-    bind() {
+    initialize() {
         if (!this.watcher)
             return;
         // TODO
@@ -52,7 +52,7 @@ let Sticky = class Sticky extends PlusCore {
         });
         this.observer.observe(this.$sizer);
     }
-    unbind() {
+    terminate() {
         // TODO: immediately rerenders after remove `watcher` attribute
         requestAnimationFrame(() => {
             var _a;
@@ -66,10 +66,10 @@ let Sticky = class Sticky extends PlusCore {
         this.plusChange(this.state);
     }
     loadedCallback() {
-        this.bind();
+        this.initialize();
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
         return html `${attributes(this, [{

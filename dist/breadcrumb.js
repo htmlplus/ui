@@ -94,22 +94,22 @@ let Breadcrumb = class Breadcrumb extends PlusCore {
         $clone === null || $clone === void 0 ? void 0 : $clone.removeAttribute('slot');
         return ($clone === null || $clone === void 0 ? void 0 : $clone.outerHTML) || this.separator;
     }
-    bind() {
+    initialize() {
         this.observer.observe(this.$host, {
             childList: true
         });
     }
-    unbind() {
+    terminate() {
         this.observer.disconnect();
     }
     onChange() {
         request(this);
     }
     connectedCallback() {
-        this.bind();
+        this.initialize();
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     // TODO: use 'dangerouslySetInnerHTML' instead
     updatedCallback() {

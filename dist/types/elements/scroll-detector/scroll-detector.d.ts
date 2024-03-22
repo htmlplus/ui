@@ -25,8 +25,8 @@ export declare class ScrollDetector extends PlusCore {
     offset?: number;
     get $reference(): any;
     watcher(next: any): void;
-    bind(): void;
-    unbind(): void;
+    initialize(): void;
+    terminate(): void;
     onScroll(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;

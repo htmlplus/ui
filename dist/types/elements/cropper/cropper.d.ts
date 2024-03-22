@@ -192,9 +192,9 @@ export declare class Cropper extends PlusCore {
         zoom: (event: any) => void;
     };
     watcher(next: any, prev: any, name: any): void;
-    bind(): void;
-    unbind(): void;
+    initialize(): void;
     sync(value?: any): void;
+    terminate(): void;
     onCrop(): void;
     onCropEnd(event: any): void;
     onCropMove(event: any): void;

@@ -92,8 +92,8 @@ export declare class Tooltip extends PlusCore {
         platform?: FloatingCoreType.Platform;
     }>;
     watcher(next: any, prev: any, key: any): void;
-    bind(): void;
-    unbind(): void;
+    initialize(): void;
+    terminate(): void;
     events(all: boolean): any[];
     observe(active: boolean): void;
     onHide(): void;

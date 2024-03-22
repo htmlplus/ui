@@ -20,31 +20,31 @@ let Intersection = class Intersection extends PlusCore {
         switch (name) {
             case 'disabled':
                 if (next)
-                    this.unbind();
+                    this.terminate();
                 else if (!this.disconnected)
-                    this.bind();
+                    this.initialize();
                 break;
             case 'once':
                 if (next || this.disabled)
                     break;
-                this.unbind();
-                this.bind();
+                this.terminate();
+                this.initialize();
                 break;
             case 'root':
             case 'rootMargin':
             case 'threshold':
                 if (this.disabled || this.disconnected)
                     break;
-                this.unbind();
-                this.bind();
+                this.terminate();
+                this.initialize();
                 break;
         }
     }
-    bind() {
+    initialize() {
         this.observer = new IntersectionObserver(this.onIntersecting, this.options);
         this.observer.observe(this.$host);
     }
-    unbind() {
+    terminate() {
         var _a;
         (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
         delete this.observer;
@@ -55,15 +55,15 @@ let Intersection = class Intersection extends PlusCore {
         this.plusChange(entry);
         if (!this.isIntersecting || !this.once)
             return;
-        this.unbind();
+        this.terminate();
     }
     connectedCallback() {
         if (this.disabled)
             return;
-        this.bind();
+        this.initialize();
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
         return html `${attributes(this, [{

@@ -139,7 +139,7 @@ let Tooltip = class Tooltip extends PlusCore {
     watcher(next, prev, key) {
         switch (key) {
             case 'disabled':
-                next ? this.unbind() : this.bind();
+                next ? this.terminate() : this.initialize();
                 break;
             case 'fixed':
             case 'offset':
@@ -150,12 +150,12 @@ let Tooltip = class Tooltip extends PlusCore {
                 break;
             case 'reference':
             case 'trigger':
-                this.unbind();
-                this.bind();
+                this.terminate();
+                this.initialize();
                 break;
         }
     }
-    bind() {
+    initialize() {
         // TODO
         if (this.disabled)
             return;
@@ -193,7 +193,7 @@ let Tooltip = class Tooltip extends PlusCore {
         //   });
         // });
     }
-    unbind() {
+    terminate() {
         clearTimeout(this.timeout);
         if (!this.$activator)
             return;
@@ -220,13 +220,13 @@ let Tooltip = class Tooltip extends PlusCore {
     connectedCallback() {
         return import('@floating-ui/dom').then(module => {
             FloatingCore = module;
-            this.bind();
+            this.initialize();
         }).catch(() => {
             throw new Error("The `tooltip` element depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem.");
         });
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
         return html `${attributes(this, [{

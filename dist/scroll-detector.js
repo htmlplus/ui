@@ -19,9 +19,9 @@ let ScrollDetector = class ScrollDetector extends PlusCore {
         return document.querySelector(this.reference);
     }
     watcher(next) {
-        next ? this.unbind() : this.bind();
+        next ? this.terminate() : this.initialize();
     }
-    bind() {
+    initialize() {
         if (this.disabled)
             return;
         if (!this.$reference)
@@ -29,7 +29,7 @@ let ScrollDetector = class ScrollDetector extends PlusCore {
         on(this.$reference, 'scroll', this.onScroll);
         this.onScroll();
     }
-    unbind() {
+    terminate() {
         // TODO
         try {
             off(this.$reference, 'scroll', this.onScroll);
@@ -55,10 +55,10 @@ let ScrollDetector = class ScrollDetector extends PlusCore {
         });
     }
     connectedCallback() {
-        this.bind();
+        this.initialize();
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
         return null;

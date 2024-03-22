@@ -28,8 +28,8 @@ export declare class ClickOutside extends PlusCore {
         capture: boolean;
     };
     watcher(next: any, prev: any, name: any): void;
-    bind(): void;
-    unbind(): void;
+    initialize(): void;
+    terminate(): void;
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
