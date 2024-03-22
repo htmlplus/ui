@@ -4,7 +4,7 @@ import { PlusCore } from '@/core';
 
 /**
  * @stable
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()
@@ -44,37 +44,39 @@ export class ClickOutside extends PlusCore {
   watcher(next, prev, name) {
     switch (name) {
       case 'disabled':
-        next ? this.unbind() : this.bind();
+        next ? this.terminate() : this.initialize();
         break;
       case 'capture':
       case 'once':
-        this.unbind();
-        this.bind();
+        this.terminate();
+        this.initialize();
         break;
     }
   }
 
-  bind() {
+  initialize() {
     on(this.$host, 'outside', this.onClickOutside, this.options);
   }
 
-  unbind() {
+  terminate() {
     off(this.$host, 'outside', this.onClickOutside, this.options);
   }
 
   @Bind()
   onClickOutside() {
-    if (this.once) this.unbind();
+    if (this.once) {
+      this.terminate();
+    }
     this.plusClickOutside();
   }
 
   connectedCallback() {
     if (this.disabled) return;
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {

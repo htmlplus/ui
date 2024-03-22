@@ -369,8 +369,8 @@ export class Cropper extends PlusCore {
         // TODO: Doesn't work.
         // this.instance.setDragMode(next);
         // TODO: Remove this after fixing the above issue.
-        this.unbind();
-        this.bind();
+        this.terminate();
+        this.initialize();
         break;
 
       case 'src':
@@ -390,19 +390,14 @@ export class Cropper extends PlusCore {
       case 'view':
       case 'zoomable':
       case 'zoomRatio':
-        this.unbind();
-        this.bind();
+        this.terminate();
+        this.initialize();
         break;
     }
   }
 
-  bind() {
+  initialize() {
     this.instance = new CropperCore(this.$image, this.options);
-  }
-
-  unbind() {
-    // TODO: has a problem in documentation
-    this.instance?.destroy();
   }
 
   sync(value?) {
@@ -444,6 +439,11 @@ export class Cropper extends PlusCore {
     requestAnimationFrame(() => {
       this.locked = false;
     });
+  }
+
+  terminate() {
+    // TODO: has a problem in documentation
+    this.instance?.destroy();
   }
 
   @Bind()
@@ -517,11 +517,11 @@ export class Cropper extends PlusCore {
   }
 
   loadedCallback() {
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {

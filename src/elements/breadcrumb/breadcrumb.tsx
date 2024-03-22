@@ -7,11 +7,11 @@ import * as CONSTANTS from './breadcrumb.constants';
 
 /**
  * @stable
- * 
+ *
  * @part expander  - The expander element.
  * @part item      - The breadcrumb elements.
  * @part separator - The separator elements.
- * 
+ *
  * @slot default   - The default slot.
  * @slot expander  - The expander slot.
  * @slot separator - The separator slot.
@@ -132,11 +132,11 @@ export class Breadcrumb extends PlusCore {
     return $clone?.outerHTML || this.separator;
   }
 
-  bind() {
+  initialize() {
     this.observer.observe(this.$host, { childList: true });
   }
 
-  unbind() {
+  terminate() {
     this.observer.disconnect();
   }
 
@@ -146,11 +146,11 @@ export class Breadcrumb extends PlusCore {
   }
 
   connectedCallback() {
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   // TODO: use 'dangerouslySetInnerHTML' instead

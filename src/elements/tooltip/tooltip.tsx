@@ -217,7 +217,7 @@ export class Tooltip extends PlusCore {
   watcher(next, prev, key) {
     switch (key) {
       case 'disabled':
-        next ? this.unbind() : this.bind();
+        next ? this.terminate() : this.initialize();
         break;
 
       case 'fixed':
@@ -229,13 +229,13 @@ export class Tooltip extends PlusCore {
 
       case 'reference':
       case 'trigger':
-        this.unbind();
-        this.bind();
+        this.terminate();
+        this.initialize();
         break;
     }
   }
 
-  bind() {
+  initialize() {
     // TODO
     if (this.disabled) return;
 
@@ -277,7 +277,7 @@ export class Tooltip extends PlusCore {
     // });
   }
 
-  unbind() {
+  terminate() {
     clearTimeout(this.timeout);
 
     if (!this.$activator) return;
@@ -323,7 +323,7 @@ export class Tooltip extends PlusCore {
     return import('@floating-ui/dom')
       .then((module) => {
         FloatingCore = module;
-        this.bind();
+        this.initialize();
       })
       .catch(() => {
         throw new Error(
@@ -333,7 +333,7 @@ export class Tooltip extends PlusCore {
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {

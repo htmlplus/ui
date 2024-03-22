@@ -45,10 +45,10 @@ export class ScrollDetector extends PlusCore {
 
   @Watch(['disabled', 'reference'])
   watcher(next) {
-    next ? this.unbind() : this.bind();
+    next ? this.terminate() : this.initialize();
   }
 
-  bind() {
+  initialize() {
     if (this.disabled) return;
 
     if (!this.$reference) return;
@@ -58,7 +58,7 @@ export class ScrollDetector extends PlusCore {
     this.onScroll();
   }
 
-  unbind() {
+  terminate() {
     // TODO
     try {
       off(this.$reference, 'scroll', this.onScroll);
@@ -94,11 +94,11 @@ export class ScrollDetector extends PlusCore {
   }
 
   connectedCallback() {
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {

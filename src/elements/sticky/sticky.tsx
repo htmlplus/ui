@@ -16,7 +16,7 @@ import { StickyState, StickyTop } from './sticky.types';
 
 /**
  * @stable
- * 
+ *
  * @slot default - The default slot.
  * @slot normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`.
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
@@ -76,15 +76,15 @@ export class Sticky extends PlusCore {
   watchers(next, prev, key) {
     switch (key) {
       case 'disabled':
-        next ? this.unbind() : this.bind();
+        next ? this.terminate() : this.initialize();
         break;
       case 'watcher':
-        next ? this.bind() : this.unbind();
+        next ? this.initialize() : this.terminate();
         break;
     }
   }
 
-  bind() {
+  initialize() {
     if (!this.watcher) return;
 
     // TODO
@@ -95,7 +95,7 @@ export class Sticky extends PlusCore {
     this.observer.observe(this.$sizer);
   }
 
-  unbind() {
+  terminate() {
     // TODO: immediately rerenders after remove `watcher` attribute
     requestAnimationFrame(() => {
       this.state = undefined;
@@ -113,11 +113,11 @@ export class Sticky extends PlusCore {
   }
 
   loadedCallback() {
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {

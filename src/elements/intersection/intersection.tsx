@@ -4,7 +4,7 @@ import { PlusCore } from '@/core';
 
 /**
  * @stable
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()
@@ -77,32 +77,32 @@ export class Intersection extends PlusCore {
   watcher(next, prev, name) {
     switch (name) {
       case 'disabled':
-        if (next) this.unbind();
-        else if (!this.disconnected) this.bind();
+        if (next) this.terminate();
+        else if (!this.disconnected) this.initialize();
         break;
 
       case 'once':
         if (next || this.disabled) break;
-        this.unbind();
-        this.bind();
+        this.terminate();
+        this.initialize();
         break;
 
       case 'root':
       case 'rootMargin':
       case 'threshold':
         if (this.disabled || this.disconnected) break;
-        this.unbind();
-        this.bind();
+        this.terminate();
+        this.initialize();
         break;
     }
   }
 
-  bind() {
+  initialize() {
     this.observer = new IntersectionObserver(this.onIntersecting, this.options);
     this.observer.observe(this.$host);
   }
 
-  unbind() {
+  terminate() {
     this.observer?.disconnect();
     delete this.observer;
   }
@@ -117,16 +117,16 @@ export class Intersection extends PlusCore {
 
     if (!this.isIntersecting || !this.once) return;
 
-    this.unbind();
+    this.terminate();
   }
 
   connectedCallback() {
     if (this.disabled) return;
-    this.bind();
+    this.initialize();
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {
