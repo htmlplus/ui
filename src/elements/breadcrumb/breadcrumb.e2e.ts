@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { property } from '../support/utils';
+import { property } from '../../../cypress/support/utils';
 
 describe('plus-breadcrumb', () => {
   beforeEach(() => {

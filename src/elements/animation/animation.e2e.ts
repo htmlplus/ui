@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import { method, property } from '../support/utils';
+import { method, property } from '../../../cypress/support/utils';
 
 describe('plus-animation', () => {
   beforeEach(() => {
