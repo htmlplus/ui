@@ -50,7 +50,7 @@ export default [
       return JSON.stringify(
         {
           ...JSON.parse(content),
-          scripts: {}
+          scripts: undefined
         },
         null,
         2
