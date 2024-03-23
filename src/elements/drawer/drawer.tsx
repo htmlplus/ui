@@ -18,7 +18,7 @@ import {
 import { PlusCore } from '@/core';
 import { Breakpoint } from '@/decorators';
 import { toAxis } from '@/helpers';
-import { Animation2, Scrollbar } from '@/services';
+import { Animation, Scrollbar } from '@/services';
 
 import { DrawerContext } from './drawer.context';
 import { DrawerPlacement, DrawerFloating } from './drawer.types';
@@ -160,7 +160,7 @@ export class Drawer extends PlusCore {
   }
 
   animate = {
-    main: new Animation2({
+    main: new Animation({
       key: 'state',
       source: () => this.$host,
       target: () => this.$host,
@@ -209,7 +209,7 @@ export class Drawer extends PlusCore {
         this.plusClosed();
       }
     }),
-    mini: new Animation2({
+    mini: new Animation({
       key: 'state-mini',
       source: () => this.$host,
       target: () => this.$host,

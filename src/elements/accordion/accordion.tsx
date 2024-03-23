@@ -10,16 +10,16 @@ import {
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Animation2 } from '@/services';
+import { Animation } from '@/services';
 
 /**
  * @stable
- * 
+ *
  * @part body          - The body element.
  * @part content       - The content element.
  * @part summary       - The summary element.
  * @part svg           - The svg element.
- * 
+ *
  * @slot default       - The default slot.
  * @slot icon          - The icon slot.
  * @slot icon-expand   - The expand icon slot.
@@ -81,7 +81,7 @@ export class Accordion extends PlusCore {
   @Query('.header')
   $header!: HTMLElement;
 
-  animate = new Animation2({
+  animate = new Animation({
     key: 'state',
     source: () => this.$body,
     target: () => this.$host,

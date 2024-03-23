@@ -1,28 +1,28 @@
-export type Animation2Element = HTMLElement | (() => HTMLElement);
+export type AnimationElement = HTMLElement | (() => HTMLElement);
 
-export type Animation2Event = (parameters?: any) => void;
+export type AnimationEvent = (parameters?: any) => void;
 
-export type Animation2State = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';
+export type AnimationState = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';
 
-export interface Animation2Config {
+export interface AnimationConfig {
   key: string;
-  source: Animation2Element;
-  target: Animation2Element;
+  source: AnimationElement;
+  target: AnimationElement;
   states?: {
-    [key in Animation2State]?: string;
+    [key in AnimationState]?: string;
   };
-  onEnter?: Animation2Event;
-  onEntering?: Animation2Event;
-  onEntered?: Animation2Event;
-  onLeave?: Animation2Event;
-  onLeaving?: Animation2Event;
-  onLeaved?: Animation2Event;
+  onEnter?: AnimationEvent;
+  onEntering?: AnimationEvent;
+  onEntered?: AnimationEvent;
+  onLeave?: AnimationEvent;
+  onLeaving?: AnimationEvent;
+  onLeaved?: AnimationEvent;
 }
 
-export class Animation2 {
-  public state: Animation2State = 'leaved';
+export class Animation {
+  public state: AnimationState = 'leaved';
 
-  private config: Animation2Config;
+  private config: AnimationConfig;
 
   private destroy?: Function;
 
@@ -46,7 +46,7 @@ export class Animation2 {
     return element;
   }
 
-  constructor(config: Animation2Config) {
+  constructor(config: AnimationConfig) {
     this.config = Object.assign({}, this.config, config, {
       states: Object.assign(
         {},
@@ -107,7 +107,7 @@ export class Animation2 {
     });
   }
 
-  public initialize(state?: Animation2State) {
+  public initialize(state?: AnimationState) {
     this.update(state);
   }
 
@@ -155,7 +155,7 @@ export class Animation2 {
     requestAnimationFrame(() => setTimeout(() => callback(), 5));
   }
 
-  private update(state: Animation2State) {
+  private update(state: AnimationState) {
     this.state = state;
 
     const value = this.config.states[this.state];

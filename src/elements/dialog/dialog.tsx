@@ -15,7 +15,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toAxis } from '@/helpers';
-import { Animation2, Scrollbar } from '@/services';
+import { Animation, Scrollbar } from '@/services';
 
 import { DialogContext } from './dialog.context';
 import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
@@ -148,7 +148,7 @@ export class Dialog extends PlusCore {
     };
   }
 
-  animate = new Animation2({
+  animate = new Animation({
     key: 'state',
     source: () => this.$host,
     target: () => this.$host,
