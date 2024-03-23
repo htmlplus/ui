@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, A as Animation2, m as Scrollbar, o as on, j as off, n as toAxis, k as classes, t as toUnit, a as __awaiter, h as html, d as styles, b as Property, E as Event, S as State, q as Breakpoint, Q as Query, l as Provider, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, A as Animation, m as Scrollbar, o as on, j as off, n as toAxis, k as classes, t as toUnit, a as __awaiter, h as html, d as styles, b as Property, E as Event, S as State, q as Breakpoint, Q as Query, l as Provider, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block;overflow:hidden;position:relative;z-index:1000}[part=backdrop]{height:100%;left:0;position:fixed;top:0;transition:inherit;width:100%;z-index:1}[part=backdrop] *{background-color:#000;height:100%;opacity:.5;width:100%}[part=root]{height:100%;position:relative;transition:inherit;z-index:1}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([floated]){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=closing]),:host([animation][state=open]){padding:.000001px}:host([animation][state=closing]) [part=backdrop],:host([animation][state=open]) [part=backdrop]{opacity:0}";
 
@@ -17,7 +17,7 @@ let Drawer = class Drawer extends PlusCore {
          */
         this.size = 280;
         this.animate = {
-            main: new Animation2({
+            main: new Animation({
                 key: 'state',
                 source: () => this.$host,
                 target: () => this.$host,
@@ -61,7 +61,7 @@ let Drawer = class Drawer extends PlusCore {
                     this.plusClosed();
                 }
             }),
-            mini: new Animation2({
+            mini: new Animation({
                 key: 'state-mini',
                 source: () => this.$host,
                 target: () => this.$host,

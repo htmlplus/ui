@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
-import { Animation2 } from "../../services";
+import { Animation } from "../../services";
 import { DialogContext } from './dialog.context';
 import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
 /**
@@ -86,7 +86,7 @@ export declare class Dialog extends PlusCore {
     plusOpened: EventEmitter<void>;
     $cell: HTMLElement;
     get state(): DialogContext;
-    animate: Animation2;
+    animate: Animation;
     opened: boolean;
     promise?: Promise<boolean>;
     get classes(): string;

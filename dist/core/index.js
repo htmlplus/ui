@@ -1843,7 +1843,7 @@ __decorate([
 class PlusForm extends PlusCore {
 }
 
-class Animation2 {
+class Animation {
     get animation() {
         return this.source.getAnimations()[0];
     }
@@ -2081,4 +2081,4 @@ function Breakpoint() {
     };
 }
 
-export { Animation2 as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, Provider as l, Scrollbar as m, toAxis as n, on as o, slots as p, Breakpoint as q, request as r, setConfig as s, toUnit as t, isCSSColor as u, PlusForm as v };
+export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, Provider as l, Scrollbar as m, toAxis as n, on as o, slots as p, Breakpoint as q, request as r, setConfig as s, toUnit as t, isCSSColor as u, PlusForm as v };

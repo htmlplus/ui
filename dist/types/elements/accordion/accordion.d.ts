@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
-import { Animation2 } from "../../services";
+import { Animation } from "../../services";
 /**
  * @stable
  *
@@ -53,7 +53,7 @@ export declare class Accordion extends PlusCore {
     plusExpanded: EventEmitter<void>;
     $body: HTMLElement;
     $header: HTMLElement;
-    animate: Animation2;
+    animate: Animation;
     opened: boolean;
     promise?: Promise<boolean>;
     /**

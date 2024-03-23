@@ -1,6 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from "../../core";
-import { Animation2 } from "../../services";
+import { Animation } from "../../services";
 import { DrawerContext } from './drawer.context';
 import { DrawerPlacement, DrawerFloating } from './drawer.types';
 /**
@@ -85,8 +85,8 @@ export declare class Drawer extends PlusCore {
     $root: HTMLElement;
     get state(): DrawerContext;
     animate: {
-        main: Animation2;
-        mini: Animation2;
+        main: Animation;
+        mini: Animation;
     };
     opened: boolean;
     promise?: Promise<boolean>;
