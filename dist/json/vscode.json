@@ -44,6 +44,29 @@
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content."
     },
     {
+      "name": "plus-accordions",
+      "attributes": [
+        {
+          "name": "persistent",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "Specifies that only one accordion can be open."
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/accordions"
+        }
+      ]
+    },
+    {
       "name": "plus-animation",
       "attributes": [
         {

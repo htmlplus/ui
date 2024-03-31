@@ -51,6 +51,7 @@ export declare class Accordion extends PlusCore {
      * Fires after the element has expanded.
      */
     plusExpanded: EventEmitter<void>;
+    accordions?: any;
     $body: HTMLElement;
     $header: HTMLElement;
     animate: Animation;
@@ -82,7 +83,7 @@ export declare class Accordion extends PlusCore {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface AccordionAttributes {
     /**

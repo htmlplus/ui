@@ -122,7 +122,7 @@ export declare class Signature extends PlusForm {
     onEnd(): void;
     loadedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SignatureAttributes {
     /**

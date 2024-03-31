@@ -1,4 +1,5 @@
 export { Accordion } from './accordion.js';
+export { Accordions } from './accordions.js';
 export { Animation } from './animation.js';
 export { AspectRatio } from './aspect-ratio.js';
 export { Avatar } from './avatar.js';

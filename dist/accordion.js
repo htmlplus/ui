@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, A as Animation, a as __awaiter, h as html, b as Property, E as Event, Q as Query, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, A as Animation, a as __awaiter, h as html, b as Property, E as Event, S as State, C as Consumer, Q as Query, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{background-color:#fff;border:1px solid #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type,:last-of-type)){border-radius:0}:host(:not(:only-of-type):first-of-type){border-bottom-left-radius:0;border-bottom-right-radius:0}:host(:not(:only-of-type):last-of-type){border-top-left-radius:0;border-top-right-radius:0}:host([disabled]){opacity:.5}:host([disabled]) .header{cursor:auto}.header{border-radius:inherit;cursor:pointer;overflow-anchor:none;padding:1rem;position:relative;user-select:none}.header,.summary{align-items:center;display:flex}.summary{flex:1 1 auto}.icon{align-items:center;display:flex;flex:0 0 auto}.body{overflow:hidden;transition:all .2s ease-in-out}.content{display:block;padding:1rem}:host([state=collapsed]) .body{display:none}:host(:not([state=collapsed])) .header{border-bottom-left-radius:0;border-bottom-right-radius:0}svg{transition:all .2s ease-in-out}:host([state^=collap]) svg{transform:rotate(90deg)}:host([state^=expand]) svg{transform:rotate(-90deg)}";
 
@@ -105,6 +105,7 @@ let Accordion = class Accordion extends PlusCore {
         (_a = this.animate) === null || _a === void 0 ? void 0 : _a.dispose();
     }
     try(open, silent) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
             // TODO
             if (this.disabled)
@@ -119,6 +120,10 @@ let Accordion = class Accordion extends PlusCore {
                     return true;
             }
             this.opened = this.open = open;
+            // TODO
+            if (this.open) {
+                (_a = this.accordions) === null || _a === void 0 ? void 0 : _a.open(this.$host);
+            }
             const fn = this.open ? this.animate.enter : this.animate.leave;
             this.promise = fn.bind(this.animate)(silent);
             return yield this.promise;
@@ -202,6 +207,10 @@ __decorate([
 __decorate([
     Event()
 ], Accordion.prototype, "plusExpanded", void 0);
+__decorate([
+    State(),
+    Consumer('accordions')
+], Accordion.prototype, "accordions", void 0);
 __decorate([
     Query('.body')
 ], Accordion.prototype, "$body", void 0);

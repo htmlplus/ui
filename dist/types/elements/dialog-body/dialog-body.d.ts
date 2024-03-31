@@ -9,7 +9,7 @@ export declare class DialogBody extends PlusCore {
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
     scrollable?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DialogBodyAttributes {
     /**

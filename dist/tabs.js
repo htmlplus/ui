@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, h as html, b as Property, E as Event, l as Provider, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, b as Property, E as Event, d as Provider, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
 

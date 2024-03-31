@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-03-23T19:44:25.940Z",
+      "lastModified": "2024-03-31T16:05:55.529Z",
       "methods": [
         {
           "async": false,
@@ -157,6 +157,32 @@
         {
           "name": "bottom",
           "description": "The bottom slot."
+        }
+      ]
+    },
+    {
+      "events": [],
+      "key": "accordions",
+      "lastModified": "2024-03-31T16:29:23.322Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "persistent",
+          "name": "persistent",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Specifies that only one accordion can be open."
+        }
+      ],
+      "styles": [],
+      "title": "Accordions",
+      "subset": true,
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
         }
       ]
     },
@@ -3457,7 +3483,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-03-23T19:47:17.613Z",
+      "lastModified": "2024-03-31T16:24:07.657Z",
       "methods": [
         {
           "async": false,

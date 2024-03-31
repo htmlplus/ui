@@ -122,6 +122,34 @@
           ]
         },
         {
+          "name": "plus-accordions",
+          "doc-url": "https://www.htmlplus.io/javascript/element/accordions",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "persistent",
+                "description": "Specifies that only one accordion can be open."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "persistent",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Specifies that only one accordion can be open."
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
           "name": "plus-animation",
           "doc-url": "https://www.htmlplus.io/javascript/element/animation",
           "js": {

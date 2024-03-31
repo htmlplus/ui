@@ -46,11 +46,12 @@ const appendToMethod = (target, key, handler) => {
     target[key] = next;
 };
 
+// TODO
+const MAPPER = Symbol();
 // APIs
 const API_CONNECTED = Symbol();
 const API_HOST = Symbol();
 const API_INSTANCE = Symbol();
-const API_LOCKED = Symbol();
 const API_REQUEST = Symbol();
 const API_RENDER_COMPLETED = Symbol();
 const API_STACKS = Symbol();
@@ -1345,7 +1346,7 @@ const toProperty = (input, type) => {
     if (type === undefined)
         return input;
     const string = `${input}`;
-    if (TYPE_BOOLEAN & type) {
+    if (TYPE_BOOLEAN & type || type === Boolean) {
         if (string === '')
             return true;
         if (string === 'true')
@@ -1353,23 +1354,23 @@ const toProperty = (input, type) => {
         if (string === 'false')
             return false;
     }
-    if (TYPE_NUMBER & type) {
+    if (TYPE_NUMBER & type || type === Number) {
         if (string != '' && !isNaN(input)) {
             return parseFloat(input);
         }
     }
-    if (TYPE_NULL & type) {
+    if (TYPE_NULL & type || type === null) {
         if (string === 'null') {
             return null;
         }
     }
-    if (TYPE_DATE & type) {
+    if (TYPE_DATE & type || type === Date) {
         const value = new Date(input);
         if (value.toString() != 'Invalid Date') {
             return value;
         }
     }
-    if (TYPE_ARRAY & type) {
+    if (TYPE_ARRAY & type || type === Array) {
         try {
             const value = JSON.parse(input);
             if (typeOf(value) == 'array') {
@@ -1378,7 +1379,7 @@ const toProperty = (input, type) => {
         }
         catch (_a) { }
     }
-    if (TYPE_OBJECT & type) {
+    if (TYPE_OBJECT & type || type === Object) {
         try {
             const value = JSON.parse(input);
             if (typeOf(value) == 'object') {
@@ -1387,7 +1388,7 @@ const toProperty = (input, type) => {
         }
         catch (_b) { }
     }
-    if (TYPE_UNDEFINED & type) {
+    if (TYPE_UNDEFINED & type || type === undefined) {
         if (string === 'undefined') {
             return undefined;
         }
@@ -1493,10 +1494,14 @@ function Consumer(namespace) {
         };
         // TODO
         appendToMethod(target, LIFECYCLE_CONNECTED, function () {
+            // TODO
+            let connected;
             const options = {
                 bubbles: true
             };
             options.detail = (parent, state) => {
+                // TODO
+                connected = true;
                 update(this, state);
                 const cleanup = () => {
                     off(parent, `${prefix}:update`, onUpdate);
@@ -1510,6 +1515,8 @@ function Consumer(namespace) {
                 cleanups(this).set(prefix, cleanup);
             };
             dispatch(this, `${prefix}:presence`, options);
+            // TODO: When the `Provider` element is activated after the `Consumer` element.
+            !connected && setTimeout(() => dispatch(this, `${prefix}:presence`, options));
         });
         appendToMethod(target, LIFECYCLE_UPDATE, function (states) {
             var _a;
@@ -1567,18 +1574,20 @@ const proxy = (constructor) => {
                 });
                 const instance = (this[API_INSTANCE] = new constructor());
                 instance[API_HOST] = () => this;
-                // TODO
                 call(instance, LIFECYCLE_CONSTRUCTED);
             }
             adoptedCallback() {
                 call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
             }
-            attributeChangedCallback(attribute, prev, next) {
-                // ensures the integrity of readonly properties to prevent potential errors.
+            attributeChangedCallback(key, prev, next) {
+                var _a;
+                // Ensures the integrity of readonly properties to prevent potential errors.
                 try {
-                    this[camelCase(attribute)] = next;
+                    const attribute = (_a = constructor[MAPPER]) === null || _a === void 0 ? void 0 : _a[key];
+                    const property = attribute || camelCase(key);
+                    this[property] = next;
                 }
-                catch (_a) { }
+                catch (_b) { }
             }
             connectedCallback() {
                 const instance = this[API_INSTANCE];
@@ -1599,9 +1608,7 @@ const proxy = (constructor) => {
                 call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
             }
         },
-        // TODO
         _a.formAssociated = constructor['formAssociated'],
-        // TODO
         _a.observedAttributes = constructor['observedAttributes'],
         _a;
 };
@@ -1671,11 +1678,22 @@ function Method() {
  */
 function Property(options) {
     return function (target, key, descriptor) {
-        var _a;
+        var _a, _b, _c;
+        // Creates a unique symbol for the lock flag.
+        const locked = Symbol();
         // Converts property name to string.
         const name = String(key);
+        // Calculates attribute.
+        const attribute = (options === null || options === void 0 ? void 0 : options.attribute) || kebabCase(name);
         // Registers an attribute that is intricately linked to the property.
-        ((_a = target.constructor)['observedAttributes'] || (_a['observedAttributes'] = [])).push(kebabCase(name));
+        ((_a = target.constructor)['observedAttributes'] || (_a['observedAttributes'] = [])).push(attribute);
+        // TODO
+        if (attribute) {
+            // TODO
+            (_b = target.constructor)[_c = MAPPER] || (_b[_c] = {});
+            // TODO
+            target.constructor[MAPPER][attribute] = name;
+        }
         // TODO: This feature is an experimental
         // When the property is a getter function.
         if (descriptor) {
@@ -1686,15 +1704,15 @@ function Property(options) {
                 // Defines a new getter function.
                 descriptor.get = function () {
                     const value = getter === null || getter === void 0 ? void 0 : getter.apply(this);
-                    this[API_LOCKED] = true;
-                    updateAttribute(this, name, value);
-                    this[API_LOCKED] = false;
+                    this[locked] = true;
+                    updateAttribute(this, attribute, value);
+                    this[locked] = false;
                     return value;
                 };
                 // TODO: Check the lifecycle
                 appendToMethod(target, LIFECYCLE_UPDATED, function () {
                     // Calls the getter function to update the related attribute.
-                    this[name];
+                    this[key];
                 });
             }
         }
@@ -1717,9 +1735,9 @@ function Property(options) {
                         return;
                     if (!(options === null || options === void 0 ? void 0 : options.reflect))
                         return;
-                    this[API_LOCKED] = true;
-                    updateAttribute(this, name, next);
-                    this[API_LOCKED] = false;
+                    this[locked] = true;
+                    updateAttribute(this, attribute, next);
+                    this[locked] = false;
                 });
             }
             // Attaches the getter and setter functions to the current property of the target class.
@@ -1735,7 +1753,7 @@ function Property(options) {
             const set = descriptor
                 ? undefined
                 : (input) => {
-                    if (this[API_LOCKED]) {
+                    if (this[locked]) {
                         return;
                     }
                     this[key] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
@@ -2081,4 +2099,4 @@ function Breakpoint() {
     };
 }
 
-export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, styles as d, attributes$1 as e, QueryAll as f, getConfig as g, html as h, isSize as i, off as j, classes as k, Provider as l, Scrollbar as m, toAxis as n, on as o, slots as p, Breakpoint as q, request as r, setConfig as s, toUnit as t, isCSSColor as u, PlusForm as v };
+export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, attributes$1 as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, Scrollbar as m, toAxis as n, on as o, slots as p, Breakpoint as q, request as r, setConfig as s, toUnit as t, isCSSColor as u, PlusForm as v };
