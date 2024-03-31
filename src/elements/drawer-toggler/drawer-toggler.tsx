@@ -5,6 +5,8 @@ import { PlusCore } from '@/core';
 import { DrawerContext } from '../drawer/drawer.context';
 
 /**
+ * @subset
+ *
  * @slot default - The default slot.
  * @slot open    - Specifies the content of toggler when it's opened.
  * @slot close   - Specifies the content of toggler when it's closed.

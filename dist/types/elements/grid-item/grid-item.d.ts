@@ -1,6 +1,8 @@
 import { PlusCore } from "../../core";
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
 /**
+ * @subset
+ *
  * @slot default - The default slot.
  */
 export declare class GridItem extends PlusCore {

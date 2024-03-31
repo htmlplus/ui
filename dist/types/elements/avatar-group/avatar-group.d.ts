@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * @stable
+ * @subset
  *
  * @slot default - The default slot.
  */

@@ -6,6 +6,7 @@ import { TabsContext } from '../tabs/tabs.context';
 
 /**
  * TODO: Tabs make it easy to switch between different views.
+ * @subset
  *
  * @slot default - The default slot.
  */

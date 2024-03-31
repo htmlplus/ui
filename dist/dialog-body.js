@@ -3,6 +3,8 @@ import { _ as __decorate, P as PlusCore, h as html, b as Property, c as Element 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{flex:1 1 auto;padding:1rem;position:relative}:host([scrollable]){overflow:hidden;overflow-y:auto}";
 
 /**
+ * @subset
+ *
  * @slot default - The default slot.
  */
 let DialogBody = class DialogBody extends PlusCore {

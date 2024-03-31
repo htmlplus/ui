@@ -4,6 +4,7 @@ import { PlusCore } from '@/core';
 
 /**
  * TODO: This element contains panels.
+ * @subset
  *
  * @slot default - The default slot.
  */

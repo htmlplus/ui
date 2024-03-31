@@ -6,6 +6,7 @@ import { TabsContext } from '../tabs/tabs.context';
 
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
+ * @subset
  *
  * @slot default - The default slot.
  */

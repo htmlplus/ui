@@ -4,6 +4,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 /**
  * TODO: Tabs make it easy to switch between different views.
+ * @subset
  *
  * @slot default - The default slot.
  */

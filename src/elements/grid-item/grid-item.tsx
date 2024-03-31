@@ -10,6 +10,8 @@ import {
 } from './grid-item.types';
 
 /**
+ * @subset
+ *
  * @slot default - The default slot.
  */
 @Element()

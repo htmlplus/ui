@@ -552,7 +552,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2024-03-21T22:28:51.426Z",
+      "lastModified": "2024-03-31T17:08:22.612Z",
       "methods": [],
       "properties": [
         {
@@ -588,6 +588,7 @@
       ],
       "title": "Avatar Group",
       "stable": true,
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -891,12 +892,13 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2024-03-21T22:28:51.468Z",
+      "lastModified": "2024-03-31T17:08:38.647Z",
       "methods": [],
       "properties": [],
       "styles": [],
       "title": "Card Body",
       "development": true,
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -1806,7 +1808,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2024-03-21T22:28:51.521Z",
+      "lastModified": "2024-03-31T17:08:47.325Z",
       "methods": [],
       "properties": [
         {
@@ -1821,6 +1823,7 @@
       ],
       "styles": [],
       "title": "Dialog Body",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -1831,7 +1834,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2024-03-21T22:28:51.523Z",
+      "lastModified": "2024-03-31T17:08:53.730Z",
       "methods": [],
       "properties": [
         {
@@ -1846,6 +1849,7 @@
       ],
       "styles": [],
       "title": "Dialog Content",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -1856,11 +1860,12 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2024-03-21T22:28:51.526Z",
+      "lastModified": "2024-03-31T17:08:59.961Z",
       "methods": [],
       "properties": [],
       "styles": [],
       "title": "Dialog Footer",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -1871,11 +1876,12 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2024-03-21T22:28:51.528Z",
+      "lastModified": "2024-03-31T17:09:04.517Z",
       "methods": [],
       "properties": [],
       "styles": [],
       "title": "Dialog Header",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -1886,7 +1892,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2024-03-21T22:28:51.530Z",
+      "lastModified": "2024-03-31T17:09:12.810Z",
       "methods": [],
       "properties": [
         {
@@ -1901,6 +1907,7 @@
       ],
       "styles": [],
       "title": "Dialog Toggler",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -2202,7 +2209,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2024-03-21T22:28:51.554Z",
+      "lastModified": "2024-03-31T17:09:24.780Z",
       "methods": [],
       "properties": [
         {
@@ -2217,6 +2224,7 @@
       ],
       "styles": [],
       "title": "Drawer Toggler",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -2741,7 +2749,7 @@
     {
       "events": [],
       "key": "grid-item",
-      "lastModified": "2024-03-21T22:28:51.582Z",
+      "lastModified": "2024-03-31T17:09:32.453Z",
       "methods": [],
       "properties": [
         {
@@ -3142,6 +3150,7 @@
       ],
       "styles": [],
       "title": "Grid Item",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -3393,11 +3402,18 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2024-03-21T22:28:51.618Z",
+      "lastModified": "2024-03-31T17:10:09.198Z",
       "methods": [],
       "properties": [],
       "styles": [],
-      "title": "Progress Bar Stack"
+      "title": "Progress Bar Stack",
+      "subset": true,
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
     },
     {
       "events": [
@@ -3955,7 +3971,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2024-03-21T22:28:51.691Z",
+      "lastModified": "2024-03-31T17:11:42.482Z",
       "methods": [],
       "properties": [
         {
@@ -3990,6 +4006,7 @@
       "styles": [],
       "title": "Tabs Bar",
       "description": "TODO: Arranges tabs within a bar.",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -4000,7 +4017,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2024-03-21T22:28:51.693Z",
+      "lastModified": "2024-03-31T17:11:49.726Z",
       "methods": [],
       "properties": [
         {
@@ -4025,6 +4042,7 @@
       "styles": [],
       "title": "Tabs Panel",
       "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -4035,12 +4053,13 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2024-03-21T22:28:51.695Z",
+      "lastModified": "2024-03-31T17:11:54.462Z",
       "methods": [],
       "properties": [],
       "styles": [],
       "title": "Tabs Panels",
       "description": "TODO: This element contains panels.",
+      "subset": true,
       "slots": [
         {
           "name": "default",
@@ -4051,7 +4070,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2024-03-21T22:28:51.697Z",
+      "lastModified": "2024-03-31T17:12:00.308Z",
       "methods": [],
       "properties": [
         {
@@ -4085,6 +4104,7 @@
       "styles": [],
       "title": "Tabs Tab",
       "description": "TODO: Tabs make it easy to switch between different views.",
+      "subset": true,
       "slots": [
         {
           "name": "default",

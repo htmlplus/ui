@@ -4,6 +4,7 @@ var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:ho
 
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
+ * @subset
  *
  * @slot default - The default slot.
  */

@@ -1,6 +1,7 @@
 import { PlusCore } from "../../core";
 /**
  * TODO: Arranges tabs within a bar.
+ * @subset
  *
  * @slot default - The default slot.
  */

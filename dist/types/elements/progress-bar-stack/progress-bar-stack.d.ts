@@ -1,4 +1,9 @@
 import { PlusCore } from "../../core";
+/**
+ * @subset
+ *
+ * @slot default - The default slot.
+ */
 export declare class ProgressBarStack extends PlusCore {
     static tag: string;
     static style: string;

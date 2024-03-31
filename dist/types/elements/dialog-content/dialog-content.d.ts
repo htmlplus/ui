@@ -1,5 +1,7 @@
 import { PlusCore } from "../../core";
 /**
+ * @subset
+ *
  * @slot default - The default slot.
  */
 export declare class DialogContent extends PlusCore {

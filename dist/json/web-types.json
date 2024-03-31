@@ -3245,7 +3245,13 @@
             "events": [],
             "properties": []
           },
-          "attributes": []
+          "attributes": [],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
         },
         {
           "name": "plus-scroll-detector",
