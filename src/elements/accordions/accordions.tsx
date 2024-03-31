@@ -10,7 +10,7 @@ import { PlusCore } from '@/core';
 @Element()
 export class Accordions extends PlusCore {
   /**
-   * TODO
+   * Specifies that only one accordion can be open.
    */
   @Property()
   persistent?: boolean;
