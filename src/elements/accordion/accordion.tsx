@@ -1,11 +1,13 @@
 import {
   Bind,
+  Consumer,
   Element,
   Event,
   EventEmitter,
   Method,
   Property,
   Query,
+  State,
   Watch
 } from '@htmlplus/element';
 
@@ -74,6 +76,10 @@ export class Accordion extends PlusCore {
    */
   @Event()
   plusExpanded!: EventEmitter<void>;
+
+  @State()
+  @Consumer('accordions')
+  accordions?: any;
 
   @Query('.body')
   $body!: HTMLElement;
@@ -188,6 +194,11 @@ export class Accordion extends PlusCore {
     }
 
     this.opened = this.open = open;
+
+    // TODO
+    if (this.open) {
+      this.accordions?.open(this.$host);
+    }
 
     const fn = this.open ? this.animate.enter : this.animate.leave;
 
