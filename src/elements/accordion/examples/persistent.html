@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body rtl>
-    <div id="$accordions">
+    <plus-accordions persistent>
       <plus-accordion summary="First">
         <plus-faker></plus-faker>
       </plus-accordion>
@@ -15,19 +15,12 @@
       <plus-accordion summary="Third">
         <plus-faker></plus-faker>
       </plus-accordion>
-    </div>
+    </plus-accordions>
     <script type="module">
       import 'https://cdn.skypack.dev/@faker-js/faker';
       import 'https://cdn.skypack.dev/@htmlplus/ui/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/ui/accordions.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/faker.js';
-
-      Array.from($accordions.children).forEach((accordion, index, accordions) => {
-        accordion.addEventListener('plus-expand', (event) => {
-          accordions.forEach((accordion) => {
-            accordion.open = event.target == accordion;
-          });
-        });
-      });
     </script>
   </body>
 </html>

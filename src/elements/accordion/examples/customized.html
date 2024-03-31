@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       plus-accordion {
-        border: 0;
-        border-radius: 0;
+        border: 2px solid whitesmoke;
+        box-shadow: 0 5px 15px rgba(0,0,0,.1);
       }
       plus-accordion:not(:last-of-type) {
-        border-bottom: solid 2px lightgray;
+        margin-bottom: 0.5rem;
       }
       plus-accordion::part(body),
       plus-accordion::part(svg) {
@@ -18,7 +18,7 @@
       plus-accordion::part(header) {
         column-gap: 0.5rem;
         flex-direction: row-reverse;
-        padding-left: 0;
+        padding: 0.75rem;
       }
       plus-accordion[state^='expand']::part(header) {
         font-weight: bold;
