@@ -1,4 +1,4 @@
-import { Element, Property } from '@htmlplus/element';
+import { Element, Property, isCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 
@@ -8,34 +8,40 @@ import { PlusCore } from '@/core';
 @Element()
 export class ProgressBar extends PlusCore {
   /**
-   * TODO
+   * Specifies the secondary progress of the bar by a number between `min` and `max`.
    */
   @Property()
   buffer?: number;
 
   /**
-   * TODO
+   * Specifies the color of the bar.
    */
   @Property({ reflect: true })
-  immediate?: boolean;
+  color?: string;
 
   /**
-   * TODO
+   * Displays the progress percentage.
    */
   @Property()
   label?: boolean;
 
   /**
-   * TODO
+   * Specifies the minimum value of the progress.
    */
   @Property()
   min?: number = 0;
 
   /**
-   * TODO
+   * Specifies the maximum value of the progress.
    */
   @Property()
   max?: number = 100;
+
+  /**
+   * Eliminates delays in updating value.
+   */
+  @Property({ reflect: true })
+  sync?: boolean;
 
   /**
    * TODO
@@ -44,7 +50,7 @@ export class ProgressBar extends PlusCore {
   variant?: string;
 
   /**
-   * TODO
+   * Specifies the progress of the bar by a number between `min` and `max`.
    */
   @Property()
   value?: number = 0;
@@ -69,14 +75,17 @@ export class ProgressBar extends PlusCore {
         aria-valuenow={this.progress}
         role="progressbar"
         style={{
-          minWidth: this.stacked ? this.percentage : null
+          'minWidth': this.stacked ? this.percentage : null,
+          '--plus-progress-bar-current-background-color': isCSSColor(this.color)
+            ? this.color
+            : undefined
         }}
       >
         <div part="underlay"></div>
         <div
           part="buffer"
           style={{
-            width: (this.buffer || 0) + '%'
+            width: `${this.buffer || 0}%`
           }}
         ></div>
         <div
