@@ -1,3 +1,24 @@
+## [1.1.0](https://github.com/htmlplus/ui/compare/v1.0.0...v1.1.0) (2024-04-01)
+
+
+### Changes
+
+* Add `subset` tag to the elements. ([6484827](https://github.com/htmlplus/ui/commit/648482754c1de4da439b168b6f0b3c2ac5fa796d))
+* Update `accordion` examples. ([8690521](https://github.com/htmlplus/ui/commit/8690521decbbfd69333c982b4ee61e4e573e2735))
+* Update `Accordions` documentation. ([0760a21](https://github.com/htmlplus/ui/commit/0760a21280a6cb43a1394eb926dab1296edc067e))
+* Update the examples of the `progress-bar` element. ([a14be06](https://github.com/htmlplus/ui/commit/a14be06c3689115e430fad1315b2e989f66ea576))
+
+
+### Features
+
+* Add `Accordions` element. ([618e702](https://github.com/htmlplus/ui/commit/618e70277fb3df3880fa16ac96b079ff63066b67))
+* Add the `color` property to the `progress-bar` element. ([7d4f44e](https://github.com/htmlplus/ui/commit/7d4f44e9d952707c5c01f0896d93b7a51331bfbd))
+
+
+### Bug Fixes
+
+* Fix the empty state of the `divider` element. ([0718dac](https://github.com/htmlplus/ui/commit/0718dace42ef48ab661b66bc8dee7d4cf541451c))
+
 ## 1.0.0 (2024-03-22)
 
 
