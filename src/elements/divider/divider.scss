@@ -75,6 +75,6 @@
   margin-block-end: 1rem;
 }
 
-:host([data-empty]) {
+:host(:empty) {
   gap: 0;
 }
