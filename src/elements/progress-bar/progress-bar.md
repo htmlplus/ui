@@ -24,6 +24,10 @@ Progress bar expresses an unspecified wait time or display the length of a proce
 
 <Example value="color" />
 
+### Custom Color
+
+<Example value="custom-color" />
+
 ### Label
 
 <Example value="label" />
@@ -56,12 +60,12 @@ Progress bar expresses an unspecified wait time or display the length of a proce
 
 <Example value="stacked" />
 
-### Latency
+### Sync
 
-<Example value="latency" />
+<Example value="sync" />
 
-### Customization
+### Customized
 
-<Example value="customization" />
+<Example value="customized" />
 
 <LastModified />

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-progress-bar {
+        border-radius: 1rem;
+        background-color: transparent;
+        border: solid 0.30rem transparent;
+        outline: solid 0.15rem gainsboro;
+       }
+
+      plus-progress-bar::part(buffer) {
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+      }
+
+      plus-progress-bar::part(indicator) {
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+      }
+    </style>
+  </head>
+  <body>
+    <plus-progress-bar value="60" buffer="80"></plus-progress-bar>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/ui/progress-bar.js';
+    </script>
+  </body>
+</html>

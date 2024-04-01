@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-progress-bar[color="primary"] {
+        --plus-progress-bar-current-background-color: #00BFFF;
+      }
+      plus-progress-bar[color="secondary"] {
+        --plus-progress-bar-current-background-color: #7CFC00;
+      }
+      plus-progress-bar[color="tertiary"] {
+        --plus-progress-bar-current-background-color: #FF1493;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-progress-bar value="50" color="primary"></plus-progress-bar>
+    <br />
+    <plus-progress-bar value="30" color="secondary"></plus-progress-bar>
+    <br />
+    <plus-progress-bar value="70" color="tertiary"></plus-progress-bar>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/ui/progress-bar.js';
+    </script>
+  </body>
+</html>

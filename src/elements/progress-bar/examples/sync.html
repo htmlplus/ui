@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-progress-bar id="$sync" sync></plus-progress-bar>
+    <br />
+    <plus-progress-bar id="$latency"></plus-progress-bar>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/ui/progress-bar.js';
+
+      function update() {
+        if (!$sync || !$latency) return;
+
+        const value = Math.random() * 100;
+
+        $sync.value = value;
+        $latency.value = value;
+
+        setTimeout(() => update(), 100);
+      }
+
+      update();
+    </script>
+  </body>
+</html>
