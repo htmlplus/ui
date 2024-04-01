@@ -6,31 +6,35 @@ export declare class ProgressBar extends PlusCore {
     static tag: string;
     static style: string;
     /**
-     * TODO
+     * Specifies the secondary progress of the bar by a number between `min` and `max`.
      */
     buffer?: number;
     /**
-     * TODO
+     * Specifies the color of the bar.
      */
-    immediate?: boolean;
+    color?: string;
     /**
-     * TODO
+     * Displays the progress percentage.
      */
     label?: boolean;
     /**
-     * TODO
+     * Specifies the minimum value of the progress.
      */
     min?: number;
     /**
-     * TODO
+     * Specifies the maximum value of the progress.
      */
     max?: number;
+    /**
+     * Eliminates delays in updating value.
+     */
+    sync?: boolean;
     /**
      * TODO
      */
     variant?: string;
     /**
-     * TODO
+     * Specifies the progress of the bar by a number between `min` and `max`.
      */
     value?: number;
     get percentage(): string;
@@ -40,31 +44,35 @@ export declare class ProgressBar extends PlusCore {
 }
 export interface ProgressBarAttributes {
     /**
-    * TODO
+    * Specifies the secondary progress of the bar by a number between `min` and `max`.
     */
     "buffer"?: number;
     /**
-    * TODO
+    * Specifies the color of the bar.
     */
-    "immediate"?: boolean;
+    "color"?: string;
     /**
-    * TODO
+    * Displays the progress percentage.
     */
     "label"?: boolean;
     /**
-    * TODO
+    * Specifies the minimum value of the progress.
     */
     "min"?: number;
     /**
-    * TODO
+    * Specifies the maximum value of the progress.
     */
     "max"?: number;
+    /**
+    * Eliminates delays in updating value.
+    */
+    "sync"?: boolean;
     /**
     * TODO
     */
     "variant"?: string;
     /**
-    * TODO
+    * Specifies the progress of the bar by a number between `min` and `max`.
     */
     "value"?: number;
 }
@@ -74,31 +82,35 @@ export interface ProgressBarMethods {
 }
 export interface ProgressBarProperties {
     /**
-    * TODO
+    * Specifies the secondary progress of the bar by a number between `min` and `max`.
     */
     buffer?: number;
     /**
-    * TODO
+    * Specifies the color of the bar.
     */
-    immediate?: boolean;
+    color?: string;
     /**
-    * TODO
+    * Displays the progress percentage.
     */
     label?: boolean;
     /**
-    * TODO
+    * Specifies the minimum value of the progress.
     */
     min?: number;
     /**
-    * TODO
+    * Specifies the maximum value of the progress.
     */
     max?: number;
+    /**
+    * Eliminates delays in updating value.
+    */
+    sync?: boolean;
     /**
     * TODO
     */
     variant?: string;
     /**
-    * TODO
+    * Specifies the progress of the bar by a number between `min` and `max`.
     */
     value?: number;
 }

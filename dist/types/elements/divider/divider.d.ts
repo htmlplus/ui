@@ -1,6 +1,8 @@
 import { PlusCore } from "../../core";
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
 /**
+ * @stable
+ *
  * @part line    - The prefix and suffix element.
  * @part prefix  - The prefix element.
  * @part suffix  - The suffix element.

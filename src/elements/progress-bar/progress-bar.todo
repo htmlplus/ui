@@ -1,3 +1,5 @@
 - add `striped` example.
 - add `stripes-animated` example.
 - add height to support `thin`, `normal`, and `thick` values
+- add `progress-bar-value` element
+- add 3D examples.

@@ -1304,25 +1304,6 @@ const request = (target, name, previous, callback) => {
 };
 
 /**
- * Returns the slots name.
- */
-const slots = (target) => {
-    var _a;
-    const element = host(target);
-    const slots = {};
-    const children = Array.from(element.childNodes);
-    for (const child of children) {
-        if (child.nodeName == '#comment')
-            continue;
-        const name = child['slot'] || (((_a = child.nodeValue) === null || _a === void 0 ? void 0 : _a.trim()) && 'default') || ('slot' in child && 'default');
-        if (!name)
-            continue;
-        slots[name] = true;
-    }
-    return slots;
-};
-
-/**
  * Converts a JavaScript object containing CSS styles to a CSS string.
  */
 const styles = (input) => {
@@ -2099,4 +2080,4 @@ function Breakpoint() {
     };
 }
 
-export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, attributes$1 as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, Scrollbar as m, toAxis as n, on as o, slots as p, Breakpoint as q, request as r, setConfig as s, toUnit as t, isCSSColor as u, PlusForm as v };
+export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, attributes$1 as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, Scrollbar as m, toAxis as n, on as o, Breakpoint as p, isCSSColor as q, request as r, setConfig as s, toUnit as t, PlusForm as u };

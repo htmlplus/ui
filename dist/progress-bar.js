@@ -1,6 +1,6 @@
-import { _ as __decorate, P as PlusCore, h as html, f as attributes, e as styles, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, f as attributes, e as styles, q as isCSSColor, b as Property, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}@keyframes indeterminate{0%{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{background-color:#dcdcdc;border-radius:.25rem;direction:ltr;display:flex;font-size:.75rem;height:1rem;overflow:hidden;position:relative}:host>*{inset:0;position:absolute}:host::part(underlay){background-color:transparent}:host::part(buffer){background-color:#add8e6}:host::part(indicator){align-items:center;background-color:#1e90ff;color:#fff;display:flex;flex-direction:column;justify-content:center;overflow:hidden;transition:width .6s ease;white-space:nowrap}:host([immediate])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50%!important}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}@keyframes indeterminate{0%{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{--plus-progress-bar-current-background-color:#1e90ff}:host{background-color:#dcdcdc;border-radius:.25rem;direction:ltr;display:flex;font-size:.75rem;height:1rem;overflow:hidden;position:relative}:host>*{inset:0;position:absolute}:host::part(underlay){background-color:transparent}:host::part(indicator){align-items:center;color:#fff;display:flex;flex-direction:column;justify-content:center;overflow:hidden;transition:width .6s ease;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host::part(buffer){background-color:var(--plus-progress-bar-current-background-color);opacity:.25}:host::part(indicator){background-color:var(--plus-progress-bar-current-background-color)}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50%!important}";
 
 /**
  * @slot default - The default slot.
@@ -9,15 +9,15 @@ let ProgressBar = class ProgressBar extends PlusCore {
     constructor() {
         super(...arguments);
         /**
-         * TODO
+         * Specifies the minimum value of the progress.
          */
         this.min = 0;
         /**
-         * TODO
+         * Specifies the maximum value of the progress.
          */
         this.max = 100;
         /**
-         * TODO
+         * Specifies the progress of the bar by a number between `min` and `max`.
          */
         this.value = 0;
     }
@@ -41,12 +41,13 @@ let ProgressBar = class ProgressBar extends PlusCore {
                 "role": "progressbar"
             }, {
                 "style": styles({
-                    minWidth: this.stacked ? this.percentage : null
+                    'minWidth': this.stacked ? this.percentage : null,
+                    '--plus-progress-bar-current-background-color': isCSSColor(this.color) ? this.color : undefined
                 })
             }])}
         <div part="underlay"></div>
         <div part="buffer" style=${styles({
-            width: (this.buffer || 0) + '%'
+            width: `${this.buffer || 0}%`
         })}></div>
         <div part="indicator" style=${styles({
             width: this.stacked ? '100%' : this.percentage
@@ -68,9 +69,9 @@ __decorate([
 __decorate([
     Property({
         reflect: true,
-        type: 2
+        type: 256
     })
-], ProgressBar.prototype, "immediate", void 0);
+], ProgressBar.prototype, "color", void 0);
 __decorate([
     Property({
         type: 2
@@ -86,6 +87,12 @@ __decorate([
         type: 64
     })
 ], ProgressBar.prototype, "max", void 0);
+__decorate([
+    Property({
+        reflect: true,
+        type: 2
+    })
+], ProgressBar.prototype, "sync", void 0);
 __decorate([
     Property({
         reflect: true,

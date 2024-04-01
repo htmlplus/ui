@@ -1926,7 +1926,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-03-21T22:44:54.650Z",
+      "lastModified": "2024-04-01T14:31:51.176Z",
       "methods": [],
       "properties": [
         {
@@ -1987,6 +1987,7 @@
       "styles": [],
       "title": "Divider",
       "description": "A thin line that divides the content vertically or horizontally.",
+      "stable": true,
       "parts": [
         {
           "name": "line",
@@ -3318,7 +3319,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-03-21T22:44:53.558Z",
+      "lastModified": "2024-04-01T19:17:36.960Z",
       "methods": [],
       "properties": [
         {
@@ -3328,16 +3329,16 @@
           "reflects": false,
           "required": false,
           "type": "number",
-          "description": "TODO"
+          "description": "Specifies the secondary progress of the bar by a number between `min` and `max`."
         },
         {
-          "attribute": "immediate",
-          "name": "immediate",
+          "attribute": "color",
+          "name": "color",
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "boolean",
-          "description": "TODO"
+          "type": "string",
+          "description": "Specifies the color of the bar."
         },
         {
           "attribute": "label",
@@ -3346,7 +3347,7 @@
           "reflects": false,
           "required": false,
           "type": "boolean",
-          "description": "TODO"
+          "description": "Displays the progress percentage."
         },
         {
           "attribute": "min",
@@ -3356,7 +3357,7 @@
           "reflects": false,
           "required": false,
           "type": "number",
-          "description": "TODO"
+          "description": "Specifies the minimum value of the progress."
         },
         {
           "attribute": "max",
@@ -3366,7 +3367,16 @@
           "reflects": false,
           "required": false,
           "type": "number",
-          "description": "TODO"
+          "description": "Specifies the maximum value of the progress."
+        },
+        {
+          "attribute": "sync",
+          "name": "sync",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Eliminates delays in updating value."
         },
         {
           "attribute": "variant",
@@ -3385,11 +3395,17 @@
           "reflects": false,
           "required": false,
           "type": "number",
-          "description": "TODO"
+          "description": "Specifies the progress of the bar by a number between `min` and `max`."
         }
       ],
-      "readmeContent": "# Progress Bar\r\n\r\nProgress bar expresses an unspecified wait time or display the length of a process.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Value\r\n\r\n<Example value=\"value\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Custom Label\r\n\r\n<Example value=\"custom-label\" />\r\n\r\n### Height\r\n\r\n<Example value=\"height\" />\r\n\r\n### Indeterminate\r\n\r\n<Example value=\"indeterminate\" />\r\n\r\n### Buffer\r\n\r\n<Example value=\"buffer\" />\r\n\r\n### Min And Max\r\n\r\n<Example value=\"min-and-max\" />\r\n\r\n### Aria Label\r\n\r\n<Example value=\"aria-label\" />\r\n\r\n### Stacked\r\n\r\n<Example value=\"stacked\" />\r\n\r\n### Latency\r\n\r\n<Example value=\"latency\" />\r\n\r\n### Customization\r\n\r\n<Example value=\"customization\" />\r\n\r\n<LastModified />\r\n",
-      "styles": [],
+      "readmeContent": "# Progress Bar\r\n\r\nProgress bar expresses an unspecified wait time or display the length of a process.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Value\r\n\r\n<Example value=\"value\" />\r\n\r\n### Color\r\n\r\n<Example value=\"color\" />\r\n\r\n### Custom Color\r\n\r\n<Example value=\"custom-color\" />\r\n\r\n### Label\r\n\r\n<Example value=\"label\" />\r\n\r\n### Custom Label\r\n\r\n<Example value=\"custom-label\" />\r\n\r\n### Height\r\n\r\n<Example value=\"height\" />\r\n\r\n### Indeterminate\r\n\r\n<Example value=\"indeterminate\" />\r\n\r\n### Buffer\r\n\r\n<Example value=\"buffer\" />\r\n\r\n### Min And Max\r\n\r\n<Example value=\"min-and-max\" />\r\n\r\n### Aria Label\r\n\r\n<Example value=\"aria-label\" />\r\n\r\n### Stacked\r\n\r\n<Example value=\"stacked\" />\r\n\r\n### Sync\r\n\r\n<Example value=\"sync\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n<LastModified />\r\n",
+      "styles": [
+        {
+          "description": "Specifies the current color of the bar.",
+          "initializer": "#1e90ff",
+          "name": "--plus-progress-bar-current-background-color"
+        }
+      ],
       "title": "Progress Bar",
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "slots": [

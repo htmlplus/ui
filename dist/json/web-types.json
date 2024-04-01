@@ -3145,25 +3145,29 @@
             "properties": [
               {
                 "name": "buffer",
-                "description": "TODO"
+                "description": "Specifies the secondary progress of the bar by a number between `min` and `max`."
               },
               {
-                "name": "immediate",
-                "description": "TODO"
+                "name": "color",
+                "description": "Specifies the color of the bar."
               },
               {
                 "name": "label",
-                "description": "TODO"
+                "description": "Displays the progress percentage."
               },
               {
                 "name": "min",
                 "default": "0",
-                "description": "TODO"
+                "description": "Specifies the minimum value of the progress."
               },
               {
                 "name": "max",
                 "default": "100",
-                "description": "TODO"
+                "description": "Specifies the maximum value of the progress."
+              },
+              {
+                "name": "sync",
+                "description": "Eliminates delays in updating value."
               },
               {
                 "name": "variant",
@@ -3172,7 +3176,7 @@
               {
                 "name": "value",
                 "default": "0",
-                "description": "TODO"
+                "description": "Specifies the progress of the bar by a number between `min` and `max`."
               }
             ]
           },
@@ -3182,21 +3186,21 @@
               "value": {
                 "type": "number"
               },
-              "description": "TODO"
+              "description": "Specifies the secondary progress of the bar by a number between `min` and `max`."
             },
             {
-              "name": "immediate",
+              "name": "color",
               "value": {
-                "type": "boolean"
+                "type": "string"
               },
-              "description": "TODO"
+              "description": "Specifies the color of the bar."
             },
             {
               "name": "label",
               "value": {
                 "type": "boolean"
               },
-              "description": "TODO"
+              "description": "Displays the progress percentage."
             },
             {
               "name": "min",
@@ -3204,7 +3208,7 @@
                 "type": "number"
               },
               "default": "0",
-              "description": "TODO"
+              "description": "Specifies the minimum value of the progress."
             },
             {
               "name": "max",
@@ -3212,7 +3216,14 @@
                 "type": "number"
               },
               "default": "100",
-              "description": "TODO"
+              "description": "Specifies the maximum value of the progress."
+            },
+            {
+              "name": "sync",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Eliminates delays in updating value."
             },
             {
               "name": "variant",
@@ -3227,7 +3238,7 @@
                 "type": "number"
               },
               "default": "0",
-              "description": "TODO"
+              "description": "Specifies the progress of the bar by a number between `min` and `max`."
             }
           ],
           "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
