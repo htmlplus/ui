@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body rtl>
-    <plus-accordion summary="First">
-      <plus-faker></plus-faker>
-    </plus-accordion>
-    <plus-accordion summary="Second">
-      <plus-faker></plus-faker>
-    </plus-accordion>
-    <plus-accordion summary="Third" disabled>
-      <plus-faker></plus-faker>
-    </plus-accordion>
+    <plus-accordions>
+      <plus-accordion summary="First">
+        <plus-faker></plus-faker>
+      </plus-accordion>
+      <plus-accordion summary="Second">
+        <plus-faker></plus-faker>
+      </plus-accordion>
+      <plus-accordion summary="Third" disabled>
+        <plus-faker></plus-faker>
+      </plus-accordion>
+    </plus-accordions>
     <script type="module">
       import 'https://cdn.skypack.dev/@faker-js/faker';
       import 'https://cdn.skypack.dev/@htmlplus/ui/accordion.js';
+      import 'https://cdn.skypack.dev/@htmlplus/ui/accordions.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/faker.js';
     </script>
   </body>

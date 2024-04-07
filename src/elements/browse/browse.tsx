@@ -15,7 +15,7 @@ import { BrowseEvent, BrowseFile } from './browse.types';
 
 /**
  * @stable
- * 
+ *
  * @slot default - The default slot.
  */
 @Element()

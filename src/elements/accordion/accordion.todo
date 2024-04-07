@@ -3,6 +3,5 @@
 - add readonly property and its example
 - add keyboard example
 - check the `aria-expanded` to change with `open` property or something else.
-- example for icon slot.
 - check the `cancel` parameter in the `expand`, `colapse`, and `toggle` methods.
 - should it prevent to toggle with method when it's disabled.
