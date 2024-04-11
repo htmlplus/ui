@@ -231,6 +231,11 @@
       "name": "plus-avatar",
       "attributes": [
         {
+          "name": "color",
+          "values": [],
+          "description": "Specifies the color."
+        },
+        {
           "name": "shape",
           "values": [
             {

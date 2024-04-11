@@ -7,7 +7,7 @@ import { PlusCore } from "../../core";
 export declare class ProgressBarStack extends PlusCore {
     static tag: string;
     static style: string;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface ProgressBarStackAttributes {
 }

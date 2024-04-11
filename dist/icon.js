@@ -1,11 +1,17 @@
-import { _ as __decorate, P as PlusCore, a as __awaiter, g as getConfig, s as setConfig, i as isSize, t as toUnit, q as isCSSColor, h as html, f as attributes, e as styles, b as Property, S as State, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, a as __awaiter, g as getConfig, s as setConfig, u as isCSSColor, v as isSize, p as toUnit, w as query, h as html, j as attributes, e as styles, b as Property, W as Watch, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;color:var(--plus-color,currentColor);display:inline-flex;height:1em;justify-content:center;vertical-align:middle;width:1em}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size=\"1x\"]){height:1em;width:1em}:host([size=\"2x\"]){height:2em;width:2em}:host([size=\"3x\"]){height:3em;width:3em}:host([size=\"4x\"]){height:4em;width:4em}:host([size=\"5x\"]){height:5em;width:5em}:host([size=\"6x\"]){height:6em;width:6em}:host([size=\"7x\"]){height:7em;width:7em}:host([size=\"8x\"]){height:8em;width:8em}:host([size=\"9x\"]){height:9em;width:9em}svg{display:block;height:100%;width:100%}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;display:inline-flex;height:1em;justify-content:center;vertical-align:middle;width:1em}:host([flip=both]){scale:-1 -1}:host([flip=horizontal]){scale:-1 1}:host([flip=vertical]){scale:1 -1}:host::part(svg){display:block;height:100%;width:100%}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size=\"1x\"]){height:1em;width:1em}:host([size=\"2x\"]){height:2em;width:2em}:host([size=\"3x\"]){height:3em;width:3em}:host([size=\"4x\"]){height:4em;width:4em}:host([size=\"5x\"]){height:5em;width:5em}:host([size=\"6x\"]){height:6em;width:6em}:host([size=\"7x\"]){height:7em;width:7em}:host([size=\"8x\"]){height:8em;width:8em}:host([size=\"9x\"]){height:9em;width:9em}";
 
+const ICON_DEFAULT_SVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
+  </svg>
+`;
 const ICON_FALLBACK_SVG = `
-  <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
-    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
-    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
   </svg>
 `;
 
@@ -58,59 +64,44 @@ let Icon = class Icon extends PlusCore {
         });
     }
     get style() {
-        let size, transform;
-        if (!isSize(this.size)) {
-            size = toUnit(this.size);
+        const style = {};
+        if (isCSSColor(this.color)) {
+            style.color = this.color;
         }
         if (this.rotate) {
-            transform = `${transform || ''}rotate(${this.rotate}deg) `;
+            style.rotate = this.rotate + 'deg';
         }
-        if (this.flip) {
-            switch (this.flip) {
-                case 'both':
-                    transform = `${transform || ''}scale(-1)`;
-                    break;
-                case 'horizontal':
-                    transform = `${transform || ''}scaleX(-1)`;
-                    break;
-                case 'vertical':
-                    transform = `${transform || ''}scaleY(-1)`;
-                    break;
-            }
+        if (!isSize(this.size)) {
+            style.height = toUnit(this.size);
+            style.width = toUnit(this.size);
         }
-        return {
-            color: isCSSColor(this.color) ? this.color : null,
-            height: size,
-            width: size,
-            transform
-        };
+        return style;
     }
     watcher() {
-        requestAnimationFrame(() => {
-            this.update();
-        });
+        requestAnimationFrame(() => this.update());
     }
-    sync(input) {
-        if (input) {
-            this.cache = parse(input);
+    sync(input, cacheable) {
+        var _a;
+        const element = parse(input);
+        if (cacheable) {
+            this.cache = element;
         }
-        if (!this.cache)
-            return;
-        this.svg = this.cache.cloneNode(true);
-        return true;
+        (_a = query(this, 'svg')) === null || _a === void 0 ? void 0 : _a.remove();
+        const cloned = element.cloneNode(true);
+        this.$host.shadowRoot.appendChild(cloned);
+        return cloned;
     }
     update() {
         if (this.cache instanceof Promise) {
-            this.cache.then(() => {
-                this.sync();
+            this.cache.then(input => {
+                this.sync(input, true);
             }).catch(() => {
-                // TODO
-                this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true);
+                this.sync(ICON_FALLBACK_SVG, false);
             });
             return;
         }
         try {
-            if (this.sync(this.cache))
+            if (this.sync(this.cache, true))
                 return;
         }
         catch (_a) { }
@@ -119,12 +110,14 @@ let Icon = class Icon extends PlusCore {
             return;
         }
         this.cache = this.resolver(this.name, parse).then(input => {
-            this.sync(input);
+            return this.sync(input, true);
         }).catch(() => {
-            // TODO
-            this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true);
+            this.sync(ICON_FALLBACK_SVG, false);
             console.warn([`The icon element is not able to resolve an SVG file with the name of \`${this.name}\`. `, `There is a problem with the \`resolver\` property, and its output cannot be used. `, 'Make sure that the output of the property is an SVG.'].join(''), this.$host);
         });
+    }
+    loadedCallback() {
+        !this.name && this.sync(ICON_DEFAULT_SVG, false);
     }
     render() {
         var _a;
@@ -136,9 +129,7 @@ let Icon = class Icon extends PlusCore {
                 "role": this.label ? 'img' : null
             }, {
                 "style": styles(this.style)
-            }])}
-        ${this.svg || null}
-      `;
+            }])}`;
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -184,9 +175,6 @@ __decorate([
         type: 328
     })
 ], Icon.prototype, "size", void 0);
-__decorate([
-    State()
-], Icon.prototype, "svg", void 0);
 __decorate([
     Watch('name', true)
 ], Icon.prototype, "watcher", null);

@@ -36,14 +36,14 @@ export declare class Icon extends PlusCore {
      * Specifies the size.
      */
     size?: IconSize;
-    svg?: SVGElement;
     get cache(): any;
     set cache(cache: any);
     get style(): any;
     watcher(): void;
-    sync(input?: SVGElement | string): boolean;
+    sync(input: SVGElement | string, cacheable: boolean): SVGElement;
     update(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    loadedCallback(): void;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface IconAttributes {
     /**

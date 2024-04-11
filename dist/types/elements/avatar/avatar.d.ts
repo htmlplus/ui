@@ -9,6 +9,10 @@ export declare class Avatar extends PlusCore {
     static tag: string;
     static style: string;
     /**
+     * Specifies the color.
+     */
+    color?: string;
+    /**
      * Specifies the shape of the element.
      */
     shape?: AvatarShape;
@@ -93,10 +97,13 @@ export declare class Avatar extends PlusCore {
             transform: string;
         };
     };
-    get style(): any;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AvatarAttributes {
+    /**
+    * Specifies the color.
+    */
+    "color"?: string;
     /**
     * Specifies the shape of the element.
     */
@@ -111,6 +118,10 @@ export interface AvatarEvents {
 export interface AvatarMethods {
 }
 export interface AvatarProperties {
+    /**
+    * Specifies the color.
+    */
+    color?: string;
     /**
     * Specifies the shape of the element.
     */

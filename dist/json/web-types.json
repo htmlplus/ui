@@ -459,24 +459,32 @@
             "events": [],
             "properties": [
               {
+                "name": "color",
+                "description": "Specifies the color."
+              },
+              {
                 "name": "shape",
-                "default": "'round'",
                 "description": "Specifies the shape of the element."
               },
               {
                 "name": "size",
-                "default": "'md'",
                 "description": "Specifies the size of the element."
               }
             ]
           },
           "attributes": [
             {
+              "name": "color",
+              "value": {
+                "type": "string"
+              },
+              "description": "Specifies the color."
+            },
+            {
               "name": "shape",
               "value": {
                 "type": "'circle' | 'round' | 'tile'"
               },
-              "default": "'round'",
               "description": "Specifies the shape of the element."
             },
             {
@@ -484,7 +492,6 @@
               "value": {
                 "type": "'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | (number & {}) | (string & {})"
               },
-              "default": "'md'",
               "description": "Specifies the size of the element."
             }
           ],

@@ -21,7 +21,7 @@ export declare class AspectRatio extends PlusCore {
     value?: number | string;
     get ratio(): number;
     get style(): any;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AspectRatioAttributes {
     /**

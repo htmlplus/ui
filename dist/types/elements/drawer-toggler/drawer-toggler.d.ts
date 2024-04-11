@@ -18,7 +18,7 @@ export declare class DrawerToggler extends PlusCore {
      */
     connector?: string;
     drawer?: DrawerContext;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface DrawerTogglerAttributes {
     /**

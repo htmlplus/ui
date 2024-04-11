@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, t as toUnit, h as html, f as attributes, e as styles, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, p as toUnit, h as html, j as attributes, e as styles, b as Property, c as Element } from './core/index.js';
 
 /**
  * @slot default - The default slot.

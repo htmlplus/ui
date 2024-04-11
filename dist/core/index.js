@@ -2000,38 +2000,6 @@ class Scrollbar {
 Scrollbar.keys = new Set();
 Scrollbar.style = {};
 
-// TODO: use regex
-const isSize = (input) => {
-    return [
-        'xxs',
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'xl',
-        'xxl',
-        '1x',
-        '2x',
-        '3x',
-        '4x',
-        '5x',
-        '6x',
-        '7x',
-        '8x',
-        '9x'
-    ].includes(input);
-};
-
-const toAxis = (input, rtl) => {
-    if (!input)
-        return input;
-    if (input.match(/start/))
-        input = rtl ? 'right' : 'left';
-    if (input.match(/end/))
-        input = rtl ? 'left' : 'right';
-    return input;
-};
-
 const BREAKPOINTS = {
     xs: 0,
     sm: 576,
@@ -2080,4 +2048,78 @@ function Breakpoint() {
     };
 }
 
-export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, attributes$1 as f, getConfig as g, html as h, isSize as i, QueryAll as j, off as k, classes as l, Scrollbar as m, toAxis as n, on as o, Breakpoint as p, isCSSColor as q, request as r, setConfig as s, toUnit as t, PlusForm as u };
+/**
+ * TODO: target typing
+ */
+function CSSColorVariable() {
+    return function (target, key) {
+        const updated = target.updatedCallback;
+        target.updatedCallback = function () {
+            const element = host(this);
+            const variable = `--${target.constructor.tag}-${String(key)}`;
+            const value = this[key];
+            if (isCSSColor(value)) {
+                element.style.setProperty(variable, value);
+            }
+            else {
+                element.style.removeProperty(variable);
+            }
+            return updated === null || updated === void 0 ? void 0 : updated.call(this);
+        };
+    };
+}
+
+// TODO: use regex
+const isSize = (input) => {
+    return [
+        'xxs',
+        'xs',
+        'sm',
+        'md',
+        'lg',
+        'xl',
+        'xxl',
+        '1x',
+        '2x',
+        '3x',
+        '4x',
+        '5x',
+        '6x',
+        '7x',
+        '8x',
+        '9x'
+    ].includes(input);
+};
+
+const toAxis = (input, rtl) => {
+    if (!input)
+        return input;
+    if (input.match(/start/))
+        input = rtl ? 'right' : 'left';
+    if (input.match(/end/))
+        input = rtl ? 'left' : 'right';
+    return input;
+};
+
+/**
+ * TODO: target typing
+ */
+function CSSSizeVariable() {
+    return function (target, key) {
+        const updated = target.updatedCallback;
+        target.updatedCallback = function () {
+            const element = host(this);
+            const variable = `--${target.constructor.tag}-${String(key)}`;
+            const value = this[key];
+            if (isSize(value)) {
+                element.style.removeProperty(variable);
+            }
+            else if (value) {
+                element.style.setProperty(variable, toUnit(value));
+            }
+            return updated === null || updated === void 0 ? void 0 : updated.call(this);
+        };
+    };
+}
+
+export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, CSSColorVariable as f, getConfig as g, html as h, CSSSizeVariable as i, attributes$1 as j, QueryAll as k, off as l, classes as m, Scrollbar as n, on as o, toUnit as p, Breakpoint as q, request as r, setConfig as s, toAxis as t, isCSSColor as u, isSize as v, query as w, PlusForm as x };

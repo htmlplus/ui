@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, h as html, f as attributes, b as Property, S as State, C as Consumer, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, h as html, j as attributes, b as Property, S as State, C as Consumer, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{cursor:default;display:inline-block;user-select:none}";
 

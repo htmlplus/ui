@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-04-07T20:39:32.071Z",
+      "lastModified": "2024-04-11T22:23:58.372Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-04-07T20:39:32.679Z",
+      "lastModified": "2024-04-11T21:46:39.484Z",
       "methods": [],
       "properties": [
         {
@@ -495,12 +495,20 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-04-07T20:39:33.273Z",
+      "lastModified": "2024-04-11T22:25:50.100Z",
       "methods": [],
       "properties": [
         {
+          "attribute": "color",
+          "name": "color",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "string",
+          "description": "Specifies the color."
+        },
+        {
           "attribute": "shape",
-          "initializer": "'round'",
           "name": "shape",
           "readonly": false,
           "reflects": true,
@@ -511,7 +519,6 @@
         },
         {
           "attribute": "size",
-          "initializer": "'md'",
           "name": "size",
           "readonly": false,
           "reflects": true,
@@ -521,21 +528,16 @@
           "description": "Specifies the size of the element."
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Icon Ratio (Inline)\n\n<Example value=\"icon-ratio-inline\" />\n\n### Icon Ratio (Global)\n\n<Example value=\"icon-ratio-global\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Svg Ratio (Inline)\n\n<Example value=\"svg-ratio-inline\" />\n\n### Svg Ratio (Global)\n\n<Example value=\"svg-ratio-global\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link\n\n<Example value=\"link\" />\n\n### Tooltip\n\n<Example value=\"tooltip\" />\n\n### Link With Tooltip\n\n<Example value=\"link-with-tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Link\n\n<Example value=\"group-link\" />\n\n### Group Tooltip\n\n<Example value=\"group-tooltip\" />\n\n### Group Link With Tooltip\n\n<Example value=\"group-link-with-tooltip\" />\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Size Overriding\n\n<Example value=\"size-overriding\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link With Tooltip\n\n<Example value=\"link-with-tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Link With Tooltip\n\n<Example value=\"group-link-with-tooltip\" />\n\n<LastModified />\n",
       "styles": [
         {
-          "description": "Used to adjust the border-radius.",
-          "initializer": "0.25rem",
-          "name": "--plus-avatar-border-radius"
-        },
-        {
-          "description": "Used to adjust the ratio of size to font-size.",
-          "initializer": "0.35",
-          "name": "--plus-avatar-font-size-ratio"
+          "description": "Used to adjust the color.",
+          "initializer": "gray",
+          "name": "--plus-avatar-color"
         },
         {
           "description": "Used to adjust the size (width & height).",
-          "initializer": "auto",
+          "initializer": "3rem",
           "name": "--plus-avatar-size"
         }
       ],
@@ -552,7 +554,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2024-04-07T20:39:32.740Z",
+      "lastModified": "2024-04-11T21:54:54.702Z",
       "methods": [],
       "properties": [
         {
@@ -574,18 +576,7 @@
           "description": "Specifies whether avatars should be displayed compressed or not."
         }
       ],
-      "styles": [
-        {
-          "description": "Used to adjust the gutter between avatars in stacked mode.",
-          "initializer": "-0.5rem",
-          "name": "--plus-avatar-group-gutter-stacked"
-        },
-        {
-          "description": "Used to adjust the gutter between avatars in unstacked mode.",
-          "initializer": "0.5rem",
-          "name": "--plus-avatar-group-gutter-unstacked"
-        }
-      ],
+      "styles": [],
       "title": "Avatar Group",
       "stable": true,
       "subset": true,
@@ -3162,7 +3153,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-04-07T20:39:37.036Z",
+      "lastModified": "2024-04-11T23:14:02.263Z",
       "methods": [],
       "properties": [
         {
@@ -3232,7 +3223,7 @@
           "description": "Specifies the size."
         }
       ],
-      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://icons.getbootstrap.com).\n\n<Example value=\"name\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Override Size\n\n<Example value=\"override-size\" />\n\n### Animation\n\n<Example value=\"animation\" />\n\n### Resolver\n\nUse `import`, `fetch` or any asynchronous function to load SVG files.\n\n<Example value=\"resolver\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example value=\"font-awesome\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example value=\"material\" />\n\n### Multiple Library\n\n<Example value=\"multiple-library\" />\n\n<LastModified />\n",
+      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://icons.getbootstrap.com).\n\n<Example value=\"name\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Size Overriding\n\n<Example value=\"size-overriding\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Animation\n\n<Example value=\"animation\" />\n\n### Resolver\n\nUse `import`, `fetch` or any asynchronous function to load SVG files.\n\n<Example value=\"resolver\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example value=\"font-awesome\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example value=\"material\" />\n\n### Multiple Library\n\n<Example value=\"multiple-library\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Icon",
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
