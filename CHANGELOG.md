@@ -1,3 +1,11 @@
+## [1.2.0](https://github.com/htmlplus/ui/compare/v1.1.0...v1.2.0) (2024-04-11)
+
+
+### Features
+
+* Add color for the avatar element. ([c4dc8c4](https://github.com/htmlplus/ui/commit/c4dc8c40840b44d3b4c4f32fe1a96f5ea4361a4c))
+* Add default svg for the icon element. ([41526c0](https://github.com/htmlplus/ui/commit/41526c06241175ae414385b7f2b34d056f2e56ac))
+
 ## [1.1.0](https://github.com/htmlplus/ui/compare/v1.0.0...v1.1.0) (2024-04-01)
 
 
