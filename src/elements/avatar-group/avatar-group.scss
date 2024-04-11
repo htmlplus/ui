@@ -1,21 +1,13 @@
 @import 'avatar-group.variables';
 
 :host {
-  // @Property() Used to adjust the gutter between avatars in stacked mode.
-  --plus-avatar-group-gutter-stacked: #{$avatar-group-gutter-stacked};
-
-  // @Property() Used to adjust the gutter between avatars in unstacked mode.
-  --plus-avatar-group-gutter-unstacked: #{$avatar-group-gutter-unstacked};
-}
-
-:host {
   align-items: center;
   display: inline-flex;
   flex-wrap: wrap;
 }
 
 :host ::slotted(plus-avatar) {
-  margin-inline-end: var(--plus-avatar-group-gutter-unstacked);
+  margin-inline-end: $avatar-group-gutter-unstacked;
 }
 
 :host ::slotted(plus-avatar:last-of-type) {
@@ -28,5 +20,5 @@
 
 :host([stacked]) ::slotted(plus-avatar) {
   box-shadow: $avatar-group-box-shadow;
-  margin-inline-end: var(--plus-avatar-group-gutter-stacked);
+  margin-inline-end: $avatar-group-gutter-stacked;
 }
