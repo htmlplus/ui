@@ -1,10 +1,10 @@
-import { Element, Property, State, Watch, toUnit, isCSSColor } from '@htmlplus/element';
+import { Element, Property, Watch, toUnit, isCSSColor, query } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
 import { isSize } from '@/helpers';
 
-import { ICON_FALLBACK_SVG } from './icon.constants';
+import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
 
 let parser;
@@ -88,9 +88,6 @@ export class Icon extends PlusCore {
   @Property({ reflect: true })
   size?: IconSize;
 
-  @State()
-  svg?: SVGElement;
-
   get cache() {
     return getConfig('asset', 'icon', this.name);
   }
@@ -106,73 +103,60 @@ export class Icon extends PlusCore {
   }
 
   get style(): any {
-    let size, transform;
+    const style = {} as any;
 
-    if (!isSize(this.size)) {
-      size = toUnit(this.size);
+    if (isCSSColor(this.color)) {
+      style.color = this.color;
     }
 
     if (this.rotate) {
-      transform = `${transform || ''}rotate(${this.rotate}deg) `;
+      style.rotate = this.rotate + 'deg';
     }
 
-    if (this.flip) {
-      switch (this.flip) {
-        case 'both':
-          transform = `${transform || ''}scale(-1)`;
-          break;
-        case 'horizontal':
-          transform = `${transform || ''}scaleX(-1)`;
-          break;
-        case 'vertical':
-          transform = `${transform || ''}scaleY(-1)`;
-          break;
-      }
+    if (!isSize(this.size)) {
+      style.height = toUnit(this.size);
+      style.width = toUnit(this.size);
     }
 
-    return {
-      color: isCSSColor(this.color) ? this.color : null,
-      height: size,
-      width: size,
-      transform
-    };
+    return style;
   }
 
   @Watch('name', true)
   watcher() {
-    requestAnimationFrame(() => {
-      this.update();
-    });
+    requestAnimationFrame(() => this.update());
   }
 
-  sync(input?: SVGElement | string): boolean {
-    if (input) {
-      this.cache = parse(input);
+  sync(input: SVGElement | string, cacheable: boolean): SVGElement {
+    const element = parse(input);
+
+    if (cacheable) {
+      this.cache = element;
     }
 
-    if (!this.cache) return;
+    query(this, 'svg')?.remove();
 
-    this.svg = this.cache.cloneNode(true);
+    const cloned = element.cloneNode(true) as SVGElement;
 
-    return true;
+    this.$host.shadowRoot.appendChild(cloned);
+
+    return cloned;
   }
 
   update() {
     if (this.cache instanceof Promise) {
       this.cache
-        .then(() => {
-          this.sync();
+        .then((input) => {
+          this.sync(input, true);
         })
         .catch(() => {
-          // TODO
-          this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true) as any;
+          this.sync(ICON_FALLBACK_SVG, false);
         });
       return;
     }
 
     try {
-      if (this.sync(this.cache)) return;
-    } catch {}
+      if (this.sync(this.cache, true)) return;
+    } catch { }
 
     if (typeof this.resolver != 'function') {
       console.warn(
@@ -191,11 +175,10 @@ export class Icon extends PlusCore {
 
     this.cache = this.resolver(this.name, parse)
       .then((input) => {
-        this.sync(input);
+        return this.sync(input, true);
       })
       .catch(() => {
-        // TODO
-        this.svg = parse(ICON_FALLBACK_SVG).cloneNode(true) as any;
+        this.sync(ICON_FALLBACK_SVG, false);
 
         console.warn(
           [
@@ -208,6 +191,10 @@ export class Icon extends PlusCore {
       });
   }
 
+  loadedCallback() {
+    !this.name && this.sync(ICON_DEFAULT_SVG, false);
+  }
+
   render() {
     return (
       <host
@@ -215,9 +202,7 @@ export class Icon extends PlusCore {
         aria-label={this.label ?? null}
         role={this.label ? 'img' : null}
         style={this.style}
-      >
-        {this.svg || null}
-      </host>
+      ></host>
     );
   }
 }

@@ -26,6 +26,14 @@ To see all names click [here](https://icons.getbootstrap.com).
 
 <Example value="size" />
 
+### Size Overriding
+
+<Example value="size-overriding" />
+
+### Wildcard Size
+
+<Example value="wildcard-size" />
+
 ### Color
 
 <Example value="color" />
@@ -49,14 +57,6 @@ To see all names click [here](https://icons.getbootstrap.com).
 ### Register A Custom Name
 
 <Example value="register-a-custom-name" />
-
-### Custom Size
-
-<Example value="custom-size" />
-
-### Override Size
-
-<Example value="override-size" />
 
 ### Animation
 

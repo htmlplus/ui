@@ -1,26 +1,35 @@
 @import 'icon.variables';
 
 :host {
+  height: $icon-size;
+  width: $icon-size;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 1em;
-  width: 1em;
   vertical-align: middle;
-
-  // TODO
-  color: var(--plus-color, currentColor);
 }
 
-@each $key, $value in $icon-size {
+:host([flip='both']) {
+  scale: -1 -1;
+}
+
+:host([flip='horizontal']) {
+  scale: -1 1;
+}
+
+:host([flip='vertical']) {
+  scale: 1 -1;
+}
+
+:host::part(svg) {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@each $key, $value in $icon-sizes {
   :host([size='#{$key}']) {
     height: $value;
     width: $value;
   }
-}
-
-svg {
-  display: block;
-  height: 100%;
-  width: 100%;
 }

@@ -2,3 +2,5 @@
 - add pre load example for bundle names
 - add an example for svg raw loader in next
 - add fallback property and examples
+- support string for rotate
+- get fallback svg from global config

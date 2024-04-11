@@ -1,4 +1,5 @@
-$icon-size: (
+$icon-size: 1em !default;
+$icon-sizes: (
   xs: 0.7em,
   sm: 0.85em,
   md: 1em,
@@ -13,4 +14,4 @@ $icon-size: (
   7x: 7em,
   8x: 8em,
   9x: 9em
-);
+) !default;
