@@ -81,10 +81,10 @@ export class Accordion extends PlusCore {
   @Consumer('accordions')
   accordions?: any;
 
-  @Query('.body')
+  @Query('[part=body]')
   $body!: HTMLElement;
 
-  @Query('.header')
+  @Query('[part=header]')
   $header!: HTMLElement;
 
   animate = new Animation({
@@ -238,17 +238,16 @@ export class Accordion extends PlusCore {
         <div
           aria-disabled={!!this.disabled}
           aria-expanded={!!this.open}
-          className="header"
           part="header"
           role="button"
           tabIndex={this.disabled ? -1 : 0}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown as any}
         >
-          <slot className="summary" name="summary" part="summary">
+          <slot name="summary" part="summary">
             {this.summary}
           </slot>
-          <slot className="icon" name="icon">
+          <slot name="icon">
             <slot name={`icon-${this.open ? 'collapse' : 'expand'}`}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -267,8 +266,8 @@ export class Accordion extends PlusCore {
           </slot>
         </div>
         <slot name="middle" />
-        <div className="body" part="body">
-          <slot className="content" part="content"></slot>
+        <div part="body">
+          <slot part="content" />
         </div>
         <slot name="bottom" />
       </>

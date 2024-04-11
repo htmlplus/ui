@@ -1,11 +1,10 @@
 @import 'accordion.variables';
 
 :host {
-  display: block;
-  background-color: $accordion-background-color;
   border: $accordion-border;
+  border-radius: $accordion-border-radius;
+  display: block;
   overflow-anchor: none;
-  border-radius: 0.25rem;
 }
 
 :host(:not(:first-of-type)) {
@@ -30,60 +29,60 @@
   opacity: $accordion-disabled-opacity;
 }
 
-:host([disabled]) .header {
+:host([disabled])::part(header) {
   cursor: initial;
 }
 
-.header {
+:host::part(header) {
+  padding: $accordion-padding;
   position: relative;
   display: flex;
   align-items: center;
   border-radius: inherit;
-  padding: 1rem;
   user-select: none;
   cursor: pointer;
   overflow-anchor: none;
 }
 
-.summary {
+:host::part(summary) {
   flex: 1 1 auto;
   display: flex;
   align-items: center;
 }
 
-.icon {
+:host::part(icon) {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
 }
 
-.body {
-  overflow: hidden;
+:host::part(body) {
   transition: $accordion-transition;
+  overflow: hidden;
 }
 
-.content {
-  display: block;
+:host::part(content) {
   padding: $accordion-padding;
+  display: block;
 }
 
-:host([state='collapsed']) .body {
+:host([state='collapsed'])::part(body) {
   display: none;
 }
 
-:host(:not([state='collapsed'])) .header {
+:host(:not([state='collapsed']))::part(header) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-svg {
+:host::part(svg) {
   transition: $accordion-transition;
 }
 
-:host([state^='collap']) svg {
-  transform: rotate(+90deg);
+:host([state^='collap'])::part(svg) {
+  rotate: +90deg;
 }
 
-:host([state^='expand']) svg {
-  transform: rotate(-90deg);
+:host([state^='expand'])::part(svg) {
+  rotate: -90deg;
 }
