@@ -20,6 +20,10 @@ An image representing a user's profile picture.
 
 <Example value="text" />
 
+### Color
+
+<Example value="color" />
+
 ### Image
 
 <Example value="image" />
@@ -28,25 +32,9 @@ An image representing a user's profile picture.
 
 <Example value="icon" />
 
-### Icon Ratio (Inline)
-
-<Example value="icon-ratio-inline" />
-
-### Icon Ratio (Global)
-
-<Example value="icon-ratio-global" />
-
 ### Svg
 
 <Example value="svg" />
-
-### Svg Ratio (Inline)
-
-<Example value="svg-ratio-inline" />
-
-### Svg Ratio (Global)
-
-<Example value="svg-ratio-global" />
 
 ### Shape
 
@@ -56,21 +44,13 @@ An image representing a user's profile picture.
 
 <Example value="size" />
 
-### Custom Size
+### Size Overriding
 
-<Example value="custom-size" />
+<Example value="size-overriding" />
 
 ### Wildcard Size
 
 <Example value="wildcard-size" />
-
-### Link
-
-<Example value="link" />
-
-### Tooltip
-
-<Example value="tooltip" />
 
 ### Link With Tooltip
 
@@ -95,14 +75,6 @@ An image representing a user's profile picture.
 ### Group Gutter
 
 <Example value="group-gutter" />
-
-### Group Link
-
-<Example value="group-link" />
-
-### Group Tooltip
-
-<Example value="group-tooltip" />
 
 ### Group Link With Tooltip
 

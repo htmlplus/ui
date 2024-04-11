@@ -1,14 +1,14 @@
-$avatar-background-color: lightgray !default;
+$avatar-background-color: hsl(from var(--plus-avatar-color) h s 90%) !default;
 $avatar-border-radius: $border-radius !default;
-$avatar-color: gray !default;
-$avatar-font-size-ratio: 0.35 !default;
-$avatar-size: auto !default;
+$avatar-color: var(--plus-avatar-color) !default;
+$avatar-font-size: calc(var(--plus-avatar-size) * 0.35) !default;
+$avatar-size: var(--plus-avatar-size) !default;
 $avatar-sizes: (
-  'xxs': 1rem,
-  'xs': 1.5rem,
-  'sm': 2rem,
-  'md': 3rem,
-  'lg': 4rem,
-  'xl': 6rem,
-  'xxl': 8rem
+  xxs: 1rem,
+  xs: 1.5rem,
+  sm: 2rem,
+  md: 3rem,
+  lg: 4rem,
+  xl: 6rem,
+  xxl: 8rem
 ) !default;

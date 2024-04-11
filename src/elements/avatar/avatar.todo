@@ -1,2 +1,2 @@
-- add `status`, `badge`, `actions`, `fallback`, `color` examples.
-- add `color` property.
+- add `status`, `badge`, `actions`, `fallback` examples.
+- example for `Icon Inline Ratio`,  `Icon Global Ratio`, `SVG Inline Ratio`,  `SVG Global Ratio`

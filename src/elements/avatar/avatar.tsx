@@ -1,9 +1,9 @@
-import { Element, Property, toUnit } from '@htmlplus/element';
+import { Element, Property } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { isSize } from '@/helpers';
 
 import { AvatarShape, AvatarSize } from './avatar.types';
+import { CSSColorVariable, CSSSizeVariable } from '@/decorators';
 
 /**
  * @stable
@@ -13,16 +13,24 @@ import { AvatarShape, AvatarSize } from './avatar.types';
 @Element()
 export class Avatar extends PlusCore {
   /**
+   * Specifies the color.
+   */
+  @Property({ reflect: true })
+  @CSSColorVariable()
+  color?: string;
+
+  /**
    * Specifies the shape of the element.
    */
   @Property({ reflect: true })
-  shape?: AvatarShape = 'round';
+  shape?: AvatarShape;
 
   /**
    * Specifies the size of the element.
    */
   @Property({ reflect: true })
-  size?: AvatarSize = 'md';
+  @CSSSizeVariable()
+  size?: AvatarSize;
 
   get placements() {
     const offset = this.shape == 'circle' ? '14.64466%' : '0';
@@ -105,23 +113,14 @@ export class Avatar extends PlusCore {
     };
   }
 
-  get style(): any {
-    if (isSize(this.size)) return {};
-    return {
-      '--plus-avatar-size': toUnit(this.size)
-    };
-  }
-
   render() {
     return (
-      <host style={this.style}>
+      <>
         <slot />
         {Object.keys(this.placements).map((placement) => (
-          <div className={placement} style={this.placements[placement]}>
-            <slot name={placement} />
-          </div>
+          <slot name={placement} style={this.placements[placement]} />
         ))}
-      </host>
+      </>
     );
   }
 }

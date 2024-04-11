@@ -1,23 +1,19 @@
 @import 'avatar.variables';
 
 :host {
-  // @Property() Used to adjust the border-radius.
-  --plus-avatar-border-radius: #{$avatar-border-radius};
-
-  // @Property() Used to adjust the ratio of size to font-size.
-  --plus-avatar-font-size-ratio: #{$avatar-font-size-ratio};
+  // @Property() Used to adjust the color.
+  --plus-avatar-color: gray;
 
   // @Property() Used to adjust the size (width & height).
-  --plus-avatar-size: #{$avatar-size};
+  --plus-avatar-size: #{map-get($avatar-sizes, md)};
 }
 
 :host {
-  border-radius: var(--plus-avatar-border-radius);
-  font-size: calc(var(--plus-avatar-size) * var(--plus-avatar-font-size-ratio));
-  height: var(--plus-avatar-size);
-  width: var(--plus-avatar-size);
-  background-color: $avatar-background-color;
   color: $avatar-color;
+  background-color: $avatar-background-color;
+  border-radius: $avatar-border-radius;
+  height: $avatar-size;
+  width: $avatar-size;
   align-items: center;
   display: inline-flex;
   justify-content: center;
@@ -29,15 +25,15 @@
 }
 
 :host([shape='circle']) {
-  --plus-avatar-border-radius: 50%;
+  border-radius: 50%;
 }
 
 :host([shape='round']) {
-  --plus-avatar-border-radius: #{$avatar-border-radius};
+  border-radius: $avatar-border-radius;
 }
 
 :host([shape='tile']) {
-  --plus-avatar-border-radius: 0;
+  border-radius: 0;
 }
 
 @each $key, $value in $avatar-sizes {
@@ -46,18 +42,25 @@
   }
 }
 
-::slotted(*:not([slot])) {
-  border-radius: var(--plus-avatar-border-radius);
-  height: 100%;
-  width: 100%;
+// TODO: Experimental
+
+slot[name] {
+  display: block;
+  position: absolute;
 }
 
-// TODO: Experimental
+slot:not([name]) {
+  border-radius: inherit;
+  font-size: $avatar-font-size;
+}
+
 ::slotted(a) {
   position: absolute;
   inset: 0;
 }
 
-div {
-  position: absolute;
+::slotted(:not([slot]):not(plus-icon)) {
+  border-radius: inherit;
+  height: 100%;
+  width: 100%;
 }
