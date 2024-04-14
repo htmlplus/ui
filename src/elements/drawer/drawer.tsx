@@ -190,7 +190,7 @@ export class Drawer extends PlusCore {
 
         this.plusOpened();
       },
-      onLeave: () => {},
+      onLeave: () => { },
       onLeaving: () => {
         // this.opened = this.open = false;
       },
@@ -251,9 +251,8 @@ export class Drawer extends PlusCore {
 
     const miniSize = toUnit(this.miniSize);
 
-    const offset = `calc(${
-      this.open ? (this.mini ? `-${size} + ${miniSize}` : '0px') : `-${size}`
-    })`;
+    const offset = `calc(${this.open ? (this.mini ? `-${size} + ${miniSize}` : '0px') : `-${size}`
+      })`;
 
     return {
       '--plus-drawer-size': size,
@@ -367,7 +366,7 @@ export class Drawer extends PlusCore {
 
   render() {
     return (
-      <host>
+      <>
         {this.hasBackdrop ? (
           <div part="backdrop">
             <div />
@@ -376,7 +375,7 @@ export class Drawer extends PlusCore {
         <div className={this.classes} part="root" style={this.style}>
           <slot />
         </div>
-      </host>
+      </>
     );
   }
 }

@@ -3,6 +3,7 @@ import { Element, Property, toUnit } from '@htmlplus/element';
 import { PlusCore } from '@/core';
 
 import { StackAlignItems, StackJustifyContent } from './stack.types';
+import { Style } from '@/decorators';
 
 /**
  * @slot default - The default slot.
@@ -39,7 +40,8 @@ export class Stack extends PlusCore {
   @Property()
   vertical?: boolean;
 
-  get style(): any {
+  @Style()
+  get style() {
     let direction = this.vertical ? 'column' : 'row';
 
     if (this.reverse) direction += '-reverse';
@@ -54,10 +56,6 @@ export class Stack extends PlusCore {
   }
 
   render() {
-    return (
-      <host style={this.style}>
-        <slot />
-      </host>
-    );
+    return <slot />
   }
 }

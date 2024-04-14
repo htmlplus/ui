@@ -325,6 +325,18 @@
       "name": "plus-breadcrumb",
       "attributes": [
         {
+          "name": "block",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "TODO."
+        },
+        {
           "name": "expander-text",
           "values": [],
           "description": "Specifies the label for the expander button."

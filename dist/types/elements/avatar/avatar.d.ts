@@ -97,6 +97,10 @@ export declare class Avatar extends PlusCore {
             transform: string;
         };
     };
+    get style(): {
+        '--plus-avatar-color': string;
+        '--plus-avatar-size': string;
+    };
     render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface AvatarAttributes {

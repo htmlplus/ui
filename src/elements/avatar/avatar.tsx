@@ -1,9 +1,10 @@
-import { Element, Property } from '@htmlplus/element';
+import { Element, Property, isCSSColor, toUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
+import { isSize } from '@/helpers';
 
 import { AvatarShape, AvatarSize } from './avatar.types';
-import { CSSColorVariable, CSSSizeVariable } from '@/decorators';
 
 /**
  * @stable
@@ -16,7 +17,6 @@ export class Avatar extends PlusCore {
    * Specifies the color.
    */
   @Property({ reflect: true })
-  @CSSColorVariable()
   color?: string;
 
   /**
@@ -29,7 +29,6 @@ export class Avatar extends PlusCore {
    * Specifies the size of the element.
    */
   @Property({ reflect: true })
-  @CSSSizeVariable()
   size?: AvatarSize;
 
   get placements() {
@@ -111,6 +110,14 @@ export class Avatar extends PlusCore {
         transform: 'translate(-50%, -50%)'
       }
     };
+  }
+
+  @Style()
+  get style() {
+    return {
+      '--plus-avatar-color': isCSSColor(this.color) ? this.color : undefined,
+      '--plus-avatar-size': isSize(this.color) ? undefined : toUnit(this.size),
+    }
   }
 
   render() {

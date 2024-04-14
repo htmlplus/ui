@@ -37,6 +37,10 @@ export declare class ProgressBar extends PlusCore {
      * Specifies the progress of the bar by a number between `min` and `max`.
      */
     value?: number;
+    get style(): {
+        'min-width': string;
+        '--plus-progress-bar-indicator-background-color': string;
+    };
     get percentage(): string;
     get progress(): number;
     get stacked(): boolean;

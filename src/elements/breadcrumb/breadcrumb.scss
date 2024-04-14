@@ -1,27 +1,18 @@
 @import 'breadcrumb.variables';
 
 :host {
-  // @Property() Used to adjust the Horizontal gap.
-  --plus-breadcrumb-gutter-x: #{$breadcrumb-gutter-x};
-
-  // @Property() Used to adjust the Vertical gap.
-  --plus-breadcrumb-gutter-y: #{$breadcrumb-gutter-y};
-}
-
-:host {
-  display: inline-block;
-}
-
-.container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: var(--plus-breadcrumb-gutter-x);
-  row-gap: var(--plus-breadcrumb-gutter-y);
+  gap: $breadcrumb-gap;
 }
 
-.expander,
-.separator {
+:host([block]) {
+  display: flex;
+}
+
+[part='expander'],
+[part='separator'] {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,7 +20,7 @@
   flex-shrink: 0;
 }
 
-.expander {
+[part='expander'] {
   background-color: $breadcrumb-expander-background-color;
   border-radius: $breadcrumb-expander-border-radius;
   color: $breadcrumb-expander-color;
@@ -39,16 +30,17 @@
   }
 }
 
-.separator {
+[part='separator'] {
   color: $breadcrumb-separator-color;
 }
 
-.rtl {
+:dir(rtl)[part='expander'],
+:dir(rtl)[part='separator'] {
   transform: scaleX(-1);
 }
 
-svg,
-.expander ::slotted(*) {
+[part='expander'] svg,
+[part='expander'] ::slotted(*) {
   fill: currentColor;
 
   // TODO

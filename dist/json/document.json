@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-04-11T21:46:39.484Z",
+      "lastModified": "2024-04-13T22:28:03.463Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-04-11T22:25:50.100Z",
+      "lastModified": "2024-04-13T21:03:26.891Z",
       "methods": [],
       "properties": [
         {
@@ -590,9 +590,18 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-04-07T20:39:33.535Z",
+      "lastModified": "2024-04-13T23:36:12.981Z",
       "methods": [],
       "properties": [
+        {
+          "attribute": "block",
+          "name": "block",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "TODO."
+        },
         {
           "attribute": "expander-text",
           "initializer": "'Show path'",
@@ -633,18 +642,7 @@
         }
       ],
       "readmeContent": "# Breadcrumb\n\nBreadcrumb element is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Custom Separator\n\n<Example value=\"custom-separator\" />\n\n### Limitation\n\n<Example value=\"limitation\" />\n\n### With Icon\n\n<Example value=\"with-icon\" />\n\n### Custom Expander\n\n<Example value=\"custom-expander\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
-      "styles": [
-        {
-          "description": "Used to adjust the Horizontal gap.",
-          "initializer": "0.5em",
-          "name": "--plus-breadcrumb-gutter-x"
-        },
-        {
-          "description": "Used to adjust the Vertical gap.",
-          "initializer": "0.5em",
-          "name": "--plus-breadcrumb-gutter-y"
-        }
-      ],
+      "styles": [],
       "title": "Breadcrumb",
       "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
       "stable": true,
@@ -2028,7 +2026,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-04-07T20:39:35.879Z",
+      "lastModified": "2024-04-14T00:21:36.817Z",
       "methods": [
         {
           "async": false,
@@ -3153,7 +3151,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-04-11T23:14:02.263Z",
+      "lastModified": "2024-04-13T21:15:19.872Z",
       "methods": [],
       "properties": [
         {
@@ -3310,7 +3308,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-04-07T20:39:37.435Z",
+      "lastModified": "2024-04-13T22:13:30.072Z",
       "methods": [],
       "properties": [
         {
@@ -3392,9 +3390,9 @@
       "readmeContent": "# Progress Bar\n\nProgress bar expresses an unspecified wait time or display the length of a process.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Value\n\n<Example value=\"value\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Custom Label\n\n<Example value=\"custom-label\" />\n\n### Height\n\n<Example value=\"height\" />\n\n### Indeterminate\n\n<Example value=\"indeterminate\" />\n\n### Buffer\n\n<Example value=\"buffer\" />\n\n### Min And Max\n\n<Example value=\"min-and-max\" />\n\n### Aria Label\n\n<Example value=\"aria-label\" />\n\n### Stacked\n\n<Example value=\"stacked\" />\n\n### Sync\n\n<Example value=\"sync\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
       "styles": [
         {
-          "description": "Specifies the current color of the bar.",
+          "description": "Specifies the color of the bar.",
           "initializer": "#1e90ff",
-          "name": "--plus-progress-bar-current-background-color"
+          "name": "--plus-progress-bar-indicator-background-color"
         }
       ],
       "title": "Progress Bar",
@@ -3698,7 +3696,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2024-04-07T20:39:37.961Z",
+      "lastModified": "2024-04-13T21:25:18.034Z",
       "methods": [],
       "properties": [
         {
@@ -3720,7 +3718,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-04-07T20:39:38.198Z",
+      "lastModified": "2024-04-13T21:26:54.272Z",
       "methods": [],
       "properties": [
         {
@@ -3764,7 +3762,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-04-07T20:39:38.244Z",
+      "lastModified": "2024-04-13T21:22:17.535Z",
       "methods": [],
       "properties": [
         {
@@ -3839,7 +3837,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-04-07T20:39:38.397Z",
+      "lastModified": "2024-04-13T23:01:55.980Z",
       "methods": [],
       "properties": [
         {

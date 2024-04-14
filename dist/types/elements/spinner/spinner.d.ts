@@ -18,7 +18,9 @@ export declare class Spinner extends PlusCore {
      * Specifies which variant of the spinner to use.
      */
     type?: SpinnerType;
-    get style(): any;
+    get style(): {
+        color: string;
+    };
     get elements(): number[];
     render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }

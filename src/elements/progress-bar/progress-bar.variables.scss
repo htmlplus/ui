@@ -7,16 +7,18 @@ $progress-bar-font-size: 0.75rem !default;
 $progress-bar-height: 1rem !default;
 
 /*
- * buffer
- */
-$progress-bar-buffer-opacity: 0.25 !default;
-
-/*
  * indicator
  */
-$progress-bar-indicator-background-color: dodgerblue !default;
+$progress-bar-indicator-background-color: var(
+  --plus-progress-bar-indicator-background-color
+) !default;
 $progress-bar-indicator-color: white !default;
 $progress-bar-indicator-transition: width 0.6s ease !default;
+
+/*
+* buffer
+*/
+$progress-bar-buffer-background-color: hsl(from $progress-bar-indicator-background-color h s 80);
 
 /*
  * indeterminate

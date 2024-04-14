@@ -3,6 +3,7 @@
 - [x] accordion
 - [ ] alert
 - [x] animation
+- [ ] app loading bar
 - [x] aspect-ratio
 - [ ] autocomplete
 - [x] avatar

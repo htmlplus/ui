@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, p as toUnit, h as html, j as attributes, e as styles, b as Property, E as Event, Q as Query, S as State, W as Watch, B as Bind, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, t as toUnit, h as html, k as attributes, e as styles, b as Property, E as Event, Q as Query, S as State, j as Style, W as Watch, B as Bind, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
 
@@ -17,19 +17,19 @@ let Sticky = class Sticky extends PlusCore {
          */
         this.top = 0;
     }
+    get style() {
+        var _a;
+        return {
+            'top': toUnit(this.top),
+            'z-index': (_a = this.zIndex) !== null && _a !== void 0 ? _a : undefined
+        };
+    }
     get sizer() {
         const top = toUnit(this.top);
         if (!top)
             return;
         return {
             top: `calc((${top} + 1px) * -1)`
-        };
-    }
-    get style() {
-        var _a;
-        return {
-            top: toUnit(this.top),
-            zIndex: (_a = this.zIndex) !== null && _a !== void 0 ? _a : null
         };
     }
     watchers(next, prev, key) {
@@ -74,8 +74,6 @@ let Sticky = class Sticky extends PlusCore {
     render() {
         return html `${attributes(this, [{
                 "state": this.watcher ? this.state : null
-            }, {
-                "style": styles(this.style)
             }])}
         <div class="sizer-wrapper">
           <div class="sizer" style=${styles(this.sizer)}></div>
@@ -115,6 +113,9 @@ __decorate([
 __decorate([
     State()
 ], Sticky.prototype, "state", void 0);
+__decorate([
+    Style()
+], Sticky.prototype, "style", null);
 __decorate([
     Watch(['disabled', 'watcher'])
 ], Sticky.prototype, "watchers", null);

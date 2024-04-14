@@ -6,6 +6,7 @@ import { isSize } from '@/helpers';
 
 import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
+import { Style } from '@/decorators';
 
 let parser;
 
@@ -102,23 +103,14 @@ export class Icon extends PlusCore {
     });
   }
 
-  get style(): any {
-    const style = {} as any;
-
-    if (isCSSColor(this.color)) {
-      style.color = this.color;
+  @Style()
+  get style() {
+    return {
+      color: isCSSColor(this.color) ? this.color : undefined,
+      height: !isSize(this.size) ? toUnit(this.size) : undefined,
+      width: !isSize(this.size) ? toUnit(this.size) : undefined,
+      rotate: this.rotate ? this.rotate + 'deg' : undefined,
     }
-
-    if (this.rotate) {
-      style.rotate = this.rotate + 'deg';
-    }
-
-    if (!isSize(this.size)) {
-      style.height = toUnit(this.size);
-      style.width = toUnit(this.size);
-    }
-
-    return style;
   }
 
   @Watch('name', true)
@@ -201,7 +193,6 @@ export class Icon extends PlusCore {
         aria-hidden={this.label ? null : `${!this.label}`}
         aria-label={this.label ?? null}
         role={this.label ? 'img' : null}
-        style={this.style}
       ></host>
     );
   }

@@ -13,6 +13,7 @@ import {
 import { PlusCore } from '@/core';
 
 import { StickyState, StickyTop } from './sticky.types';
+import { Style } from '@/decorators';
 
 /**
  * @stable
@@ -55,6 +56,14 @@ export class Sticky extends PlusCore {
 
   observer?: IntersectionObserver;
 
+  @Style()
+  get style() {
+    return {
+      'top': toUnit(this.top),
+      'z-index': this.zIndex ?? undefined
+    };
+  }
+
   get sizer() {
     const top = toUnit(this.top);
 
@@ -62,13 +71,6 @@ export class Sticky extends PlusCore {
 
     return {
       top: `calc((${top} + 1px) * -1)`
-    };
-  }
-
-  get style(): any {
-    return {
-      top: toUnit(this.top),
-      zIndex: this.zIndex ?? null
     };
   }
 
@@ -122,7 +124,7 @@ export class Sticky extends PlusCore {
 
   render() {
     return (
-      <host state={this.watcher ? this.state : null} style={this.style}>
+      <host state={this.watcher ? this.state : null}>
         <div className="sizer-wrapper">
           <div className="sizer" style={this.sizer}></div>
         </div>

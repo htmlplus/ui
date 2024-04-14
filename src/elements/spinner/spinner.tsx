@@ -3,6 +3,7 @@ import { Element, Property, isCSSColor } from '@htmlplus/element';
 import { PlusCore } from '@/core';
 
 import { SpinnerSize, SpinnerType } from './spinner.types';
+import { Style } from '@/decorators';
 
 /**
  * @stable
@@ -27,9 +28,10 @@ export class Spinner extends PlusCore {
   @Property({ reflect: true })
   type?: SpinnerType = 'default';
 
-  get style(): any {
+  @Style()
+  get style() {
     return {
-      color: isCSSColor(this.color) ? this.color : null
+      color: isCSSColor(this.color) ? this.color : undefined
     };
   }
 
@@ -46,7 +48,7 @@ export class Spinner extends PlusCore {
 
   render() {
     return (
-      <host role="status" style={this.style}>
+      <host role="status">
         <div className="root">
           {this.elements.map((element) => (
             <div key={element} />

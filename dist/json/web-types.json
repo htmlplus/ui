@@ -549,6 +549,10 @@
             "events": [],
             "properties": [
               {
+                "name": "block",
+                "description": "TODO."
+              },
+              {
                 "name": "expanderText",
                 "default": "'Show path'",
                 "description": "Specifies the label for the expander button."
@@ -569,6 +573,13 @@
             ]
           },
           "attributes": [
+            {
+              "name": "block",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "TODO."
+            },
             {
               "name": "expander-text",
               "value": {

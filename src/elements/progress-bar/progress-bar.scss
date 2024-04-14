@@ -1,8 +1,8 @@
 @import 'progress-bar.variables';
 
 :host {
-  // @Property() Specifies the current color of the bar.
-  --plus-progress-bar-current-background-color: #{$progress-bar-indicator-background-color};
+  // @Property() Specifies the color of the bar.
+  --plus-progress-bar-indicator-background-color: dodgerblue;
 }
 
 :host {
@@ -26,9 +26,11 @@
 }
 
 :host::part(buffer) {
+  background-color: $progress-bar-buffer-background-color;
 }
 
 :host::part(indicator) {
+  background-color: $progress-bar-indicator-background-color;
   color: $progress-bar-indicator-color;
   transition: $progress-bar-indicator-transition;
   display: flex;
@@ -44,15 +46,6 @@
 }
 
 // TODO
-
-:host::part(buffer) {
-  background-color: var(--plus-progress-bar-current-background-color);
-  opacity: $progress-bar-buffer-opacity;
-}
-
-:host::part(indicator) {
-  background-color: var(--plus-progress-bar-current-background-color);
-}
 
 :host([variant='indeterminate'])::part(indicator) {
   animation: $progress-bar-indeterminate-indicator-animation;

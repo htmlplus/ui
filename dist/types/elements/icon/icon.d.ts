@@ -38,7 +38,12 @@ export declare class Icon extends PlusCore {
     size?: IconSize;
     get cache(): any;
     set cache(cache: any);
-    get style(): any;
+    get style(): {
+        color: string;
+        height: string;
+        width: string;
+        rotate: string;
+    };
     watcher(): void;
     sync(input: SVGElement | string, cacheable: boolean): SVGElement;
     update(): void;

@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, a as __awaiter, g as getConfig, s as setConfig, u as isCSSColor, v as isSize, p as toUnit, w as query, h as html, j as attributes, e as styles, b as Property, W as Watch, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, a as __awaiter, g as getConfig, s as setConfig, i as isCSSColor, f as isSize, t as toUnit, v as query, h as html, k as attributes, b as Property, j as Style, W as Watch, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;display:inline-flex;height:1em;justify-content:center;vertical-align:middle;width:1em}:host([flip=both]){scale:-1 -1}:host([flip=horizontal]){scale:-1 1}:host([flip=vertical]){scale:1 -1}:host::part(svg){display:block;height:100%;width:100%}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size=\"1x\"]){height:1em;width:1em}:host([size=\"2x\"]){height:2em;width:2em}:host([size=\"3x\"]){height:3em;width:3em}:host([size=\"4x\"]){height:4em;width:4em}:host([size=\"5x\"]){height:5em;width:5em}:host([size=\"6x\"]){height:6em;width:6em}:host([size=\"7x\"]){height:7em;width:7em}:host([size=\"8x\"]){height:8em;width:8em}:host([size=\"9x\"]){height:9em;width:9em}";
 
@@ -64,18 +64,12 @@ let Icon = class Icon extends PlusCore {
         });
     }
     get style() {
-        const style = {};
-        if (isCSSColor(this.color)) {
-            style.color = this.color;
-        }
-        if (this.rotate) {
-            style.rotate = this.rotate + 'deg';
-        }
-        if (!isSize(this.size)) {
-            style.height = toUnit(this.size);
-            style.width = toUnit(this.size);
-        }
-        return style;
+        return {
+            color: isCSSColor(this.color) ? this.color : undefined,
+            height: !isSize(this.size) ? toUnit(this.size) : undefined,
+            width: !isSize(this.size) ? toUnit(this.size) : undefined,
+            rotate: this.rotate ? this.rotate + 'deg' : undefined
+        };
     }
     watcher() {
         requestAnimationFrame(() => this.update());
@@ -127,8 +121,6 @@ let Icon = class Icon extends PlusCore {
                 "aria-label": (_a = this.label) !== null && _a !== void 0 ? _a : null
             }, {
                 "role": this.label ? 'img' : null
-            }, {
-                "style": styles(this.style)
             }])}`;
     }
 };
@@ -175,6 +167,9 @@ __decorate([
         type: 328
     })
 ], Icon.prototype, "size", void 0);
+__decorate([
+    Style()
+], Icon.prototype, "style", null);
 __decorate([
     Watch('name', true)
 ], Icon.prototype, "watcher", null);

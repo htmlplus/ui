@@ -1,6 +1,7 @@
 import { Element, Property, isCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
 
 /**
  * @slot default - The default slot.
@@ -55,6 +56,16 @@ export class ProgressBar extends PlusCore {
   @Property()
   value?: number = 0;
 
+  @Style()
+  get style() {
+    return {
+      'min-width': this.stacked ? this.percentage : null,
+      '--plus-progress-bar-indicator-background-color': isCSSColor(this.color)
+        ? this.color
+        : undefined
+    }
+  }
+
   get percentage() {
     return this.progress + '%';
   }
@@ -74,12 +85,6 @@ export class ProgressBar extends PlusCore {
         aria-valuemax={this.max}
         aria-valuenow={this.progress}
         role="progressbar"
-        style={{
-          'minWidth': this.stacked ? this.percentage : null,
-          '--plus-progress-bar-current-background-color': isCSSColor(this.color)
-            ? this.color
-            : undefined
-        }}
       >
         <div part="underlay"></div>
         <div

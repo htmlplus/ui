@@ -14,6 +14,10 @@ export declare class Breadcrumb extends PlusCore {
     static tag: string;
     static style: string;
     /**
+     * TODO.
+     */
+    block?: boolean;
+    /**
      * Specifies the label for the expander button.
      */
     expanderText?: string;
@@ -46,6 +50,10 @@ export declare class Breadcrumb extends PlusCore {
 }
 export interface BreadcrumbAttributes {
     /**
+    * TODO.
+    */
+    "block"?: boolean;
+    /**
     * Specifies the label for the expander button.
     */
     "expander-text"?: string;
@@ -68,6 +76,10 @@ export interface BreadcrumbEvents {
 export interface BreadcrumbMethods {
 }
 export interface BreadcrumbProperties {
+    /**
+    * TODO.
+    */
+    block?: boolean;
     /**
     * Specifies the label for the expander button.
     */

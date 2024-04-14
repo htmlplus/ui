@@ -2051,18 +2051,27 @@ function Breakpoint() {
 /**
  * TODO: target typing
  */
-function CSSColorVariable() {
+function Style() {
     return function (target, key) {
+        const symbol = Symbol();
         const updated = target.updatedCallback;
         target.updatedCallback = function () {
             const element = host(this);
-            const variable = `--${target.constructor.tag}-${String(key)}`;
-            const value = this[key];
-            if (isCSSColor(value)) {
-                element.style.setProperty(variable, value);
+            let style = this[symbol];
+            if (!style) {
+                style = new CSSStyleSheet();
+                style.replace(':host {}');
+                element.shadowRoot.adoptedStyleSheets.push(style);
+                style = this[symbol] = style.cssRules[0].style;
             }
-            else {
-                element.style.removeProperty(variable);
+            const value = this[key];
+            for (const key of Object.keys(value)) {
+                if (value[key]) {
+                    style.setProperty(key, value[key]);
+                }
+                else if (value) {
+                    style.removeProperty(key);
+                }
             }
             return updated === null || updated === void 0 ? void 0 : updated.call(this);
         };
@@ -2101,25 +2110,4 @@ const toAxis = (input, rtl) => {
     return input;
 };
 
-/**
- * TODO: target typing
- */
-function CSSSizeVariable() {
-    return function (target, key) {
-        const updated = target.updatedCallback;
-        target.updatedCallback = function () {
-            const element = host(this);
-            const variable = `--${target.constructor.tag}-${String(key)}`;
-            const value = this[key];
-            if (isSize(value)) {
-                element.style.removeProperty(variable);
-            }
-            else if (value) {
-                element.style.setProperty(variable, toUnit(value));
-            }
-            return updated === null || updated === void 0 ? void 0 : updated.call(this);
-        };
-    };
-}
-
-export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, CSSColorVariable as f, getConfig as g, html as h, CSSSizeVariable as i, attributes$1 as j, QueryAll as k, off as l, classes as m, Scrollbar as n, on as o, toUnit as p, Breakpoint as q, request as r, setConfig as s, toAxis as t, isCSSColor as u, isSize as v, query as w, PlusForm as x };
+export { Animation as A, Bind as B, Consumer as C, Event as E, Method as M, PlusCore as P, Query as Q, State as S, Watch as W, __decorate as _, __awaiter as a, Property as b, Element as c, Provider as d, styles as e, isSize as f, getConfig as g, html as h, isCSSColor as i, Style as j, attributes$1 as k, QueryAll as l, off as m, classes as n, on as o, Scrollbar as p, toAxis as q, request as r, setConfig as s, toUnit as t, Breakpoint as u, query as v, PlusForm as w };

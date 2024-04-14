@@ -30,10 +30,13 @@ export declare class Sticky extends PlusCore {
     $sizer: HTMLElement;
     state?: StickyState;
     observer?: IntersectionObserver;
+    get style(): {
+        top: string;
+        'z-index': number;
+    };
     get sizer(): {
         top: string;
     };
-    get style(): any;
     watchers(next: any, prev: any, key: any): void;
     initialize(): void;
     terminate(): void;

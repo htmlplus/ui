@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, b as Property, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, b as Property, j as Style, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block}";
 
@@ -25,6 +25,9 @@ __decorate([
         type: 64
     })
 ], Spacer.prototype, "grow", void 0);
+__decorate([
+    Style()
+], Spacer.prototype, "attributes", null);
 Spacer = __decorate([
     Element()
 ], Spacer);

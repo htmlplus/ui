@@ -1,4 +1,4 @@
-import { _ as __decorate, P as PlusCore, h as html, e as styles, b as Property, f as CSSColorVariable, i as CSSSizeVariable, c as Element } from './core/index.js';
+import { _ as __decorate, P as PlusCore, i as isCSSColor, f as isSize, t as toUnit, h as html, e as styles, b as Property, j as Style, c as Element } from './core/index.js';
 
 var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{--plus-avatar-color:gray;--plus-avatar-size:3rem}:host{align-items:center;background-color:hsl(from var(--plus-avatar-color) h s 90%);border-radius:.25rem;color:var(--plus-avatar-color);display:inline-flex;height:var(--plus-avatar-size);justify-content:center;position:relative;text-align:center;text-transform:uppercase;user-select:none;vertical-align:middle;width:var(--plus-avatar-size)}:host([shape=circle]){border-radius:50%}:host([shape=round]){border-radius:.25rem}:host([shape=tile]){border-radius:0}:host([size=xxs]){--plus-avatar-size:1rem}:host([size=xs]){--plus-avatar-size:1.5rem}:host([size=sm]){--plus-avatar-size:2rem}:host([size=md]){--plus-avatar-size:3rem}:host([size=lg]){--plus-avatar-size:4rem}:host([size=xl]){--plus-avatar-size:6rem}:host([size=xxl]){--plus-avatar-size:8rem}slot[name]{display:block;position:absolute}slot:not([name]){border-radius:inherit;font-size:calc(var(--plus-avatar-size)*.35)}::slotted(a){inset:0;position:absolute}::slotted(:not([slot]):not(plus-icon)){border-radius:inherit;height:100%;width:100%}";
 
@@ -88,6 +88,12 @@ let Avatar = class Avatar extends PlusCore {
             }
         };
     }
+    get style() {
+        return {
+            '--plus-avatar-color': isCSSColor(this.color) ? this.color : undefined,
+            '--plus-avatar-size': isSize(this.color) ? undefined : toUnit(this.size)
+        };
+    }
     render() {
         return html `
         <slot />
@@ -103,8 +109,7 @@ __decorate([
     Property({
         reflect: true,
         type: 256
-    }),
-    CSSColorVariable()
+    })
 ], Avatar.prototype, "color", void 0);
 __decorate([
     Property({
@@ -116,9 +121,11 @@ __decorate([
     Property({
         reflect: true,
         type: 328
-    }),
-    CSSSizeVariable()
+    })
 ], Avatar.prototype, "size", void 0);
+__decorate([
+    Style()
+], Avatar.prototype, "style", null);
 Avatar = __decorate([
     Element()
 ], Avatar);

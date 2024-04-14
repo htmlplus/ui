@@ -25,7 +25,13 @@ export declare class Stack extends PlusCore {
      * TODO.
      */
     vertical?: boolean;
-    get style(): any;
+    get style(): {
+        'align-items': StackAlignItems;
+        display: string;
+        'flex-direction': string;
+        gap: string;
+        'justify-content': StackJustifyContent;
+    };
     render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface StackAttributes {
