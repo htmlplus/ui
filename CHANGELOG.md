@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/htmlplus/ui/compare/v1.2.0...v1.2.1) (2024-04-14)
+
+
+### Changes
+
+* Improve runtime CSS styles. ([1f269c9](https://github.com/htmlplus/ui/commit/1f269c9399695a12d22c30d849160b7eb1f32aa5))
+
 ## [1.2.0](https://github.com/htmlplus/ui/compare/v1.1.0...v1.2.0) (2024-04-11)
 
 
