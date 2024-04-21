@@ -456,10 +456,12 @@ const getFramework = (target) => {
         return 'vue';
     const keys = Object.keys(element);
     const has = (input) => keys.some((key) => key.startsWith(input));
-    if (has('__zone_symbol__'))
-        return 'angular';
+    if (has('_blazor'))
+        return 'blazor';
     if (has('__react'))
         return 'react';
+    if (has('__zone_symbol__'))
+        return 'angular';
 };
 
 const getStyles = (target) => {
@@ -1476,6 +1478,9 @@ function Consumer(namespace) {
         // TODO
         appendToMethod(target, LIFECYCLE_CONNECTED, function () {
             // TODO
+            if (SUB && this[SUB])
+                return;
+            // TODO
             let connected;
             const options = {
                 bubbles: true
@@ -1611,12 +1616,24 @@ function Event(options = {}) {
                     (_a = options.bubbles) !== null && _a !== void 0 ? _a : (options.bubbles = false);
                     let type = String(key);
                     switch (framework) {
+                        // TODO: Experimental
+                        case 'blazor':
+                            options.bubbles = true;
+                            type = pascalCase(type);
+                            window['Blazor'].registerCustomEventType(type, {
+                                createEventArgs: (event) => ({
+                                    detail: event.detail
+                                })
+                            });
+                            break;
                         case 'qwik':
-                        case 'solid':
                             type = pascalCase(type).toLowerCase();
                             break;
                         case 'preact':
                             type = pascalCase(type);
+                            break;
+                        case 'solid':
+                            type = pascalCase(type).toLowerCase();
                             break;
                         default:
                             type = kebabCase(type);
@@ -1624,6 +1641,7 @@ function Event(options = {}) {
                     }
                     let event;
                     event || (event = (_b = getConfig('event', 'resolver')) === null || _b === void 0 ? void 0 : _b({ detail, element, framework, options, type }));
+                    event && element.dispatchEvent(event);
                     event || (event = dispatch(this, type, Object.assign(Object.assign({}, options), { detail })));
                     return event;
                 };

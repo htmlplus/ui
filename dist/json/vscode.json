@@ -1248,6 +1248,11 @@
       "name": "plus-divider",
       "attributes": [
         {
+          "name": "color",
+          "values": [],
+          "description": "Specifies the color."
+        },
+        {
           "name": "placement",
           "values": [
             {

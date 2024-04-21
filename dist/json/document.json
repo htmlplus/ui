@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-04-21T21:03:22.314Z",
+      "lastModified": "2024-04-21T21:08:14.454Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-04-21T21:03:22.326Z",
+      "lastModified": "2024-04-21T21:08:23.476Z",
       "methods": [
         {
           "async": false,
@@ -1919,6 +1919,15 @@
       "methods": [],
       "properties": [
         {
+          "attribute": "color",
+          "name": "color",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "string",
+          "description": "Specifies the color."
+        },
+        {
           "attribute": "placement",
           "initializer": "'center'",
           "name": "placement",
@@ -1972,8 +1981,14 @@
           "description": "Draws the divider in a vertical orientation."
         }
       ],
-      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
-      "styles": [],
+      "readmeContent": "# Divider\n\nA thin line that divides the content vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Width\n\n<Example value=\"width\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Variant\n\n<Example value=\"variant\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Horizontal\n\n<Example value=\"horizontal\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n<LastModified />\n",
+      "styles": [
+        {
+          "description": "Used to adjust the color.",
+          "initializer": "#000",
+          "name": "--plus-divider-color"
+        }
+      ],
       "title": "Divider",
       "description": "A thin line that divides the content vertically or horizontally.",
       "stable": true,
@@ -3504,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-04-21T21:03:22.329Z",
+      "lastModified": "2024-04-21T21:08:10.882Z",
       "methods": [
         {
           "async": false,

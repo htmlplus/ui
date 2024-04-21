@@ -22,7 +22,7 @@ export declare class Spinner extends PlusCore {
         color: string;
     };
     get elements(): number[];
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SpinnerAttributes {
     /**

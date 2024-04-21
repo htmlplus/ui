@@ -13,6 +13,10 @@ export declare class Divider extends PlusCore {
     static tag: string;
     static style: string;
     /**
+     * Specifies the color.
+     */
+    color?: string;
+    /**
      * Specifies the location of the default slot.
      */
     placement?: DividerPlacement;
@@ -32,9 +36,16 @@ export declare class Divider extends PlusCore {
      *  Draws the divider in a vertical orientation.
      */
     vertical?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    get style(): {
+        '--plus-divider-color': string;
+    };
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface DividerAttributes {
+    /**
+    * Specifies the color.
+    */
+    "color"?: string;
     /**
     * Specifies the location of the default slot.
     */
@@ -61,6 +72,10 @@ export interface DividerEvents {
 export interface DividerMethods {
 }
 export interface DividerProperties {
+    /**
+    * Specifies the color.
+    */
+    color?: string;
     /**
     * Specifies the location of the default slot.
     */

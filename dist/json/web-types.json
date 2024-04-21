@@ -1670,6 +1670,10 @@
             "events": [],
             "properties": [
               {
+                "name": "color",
+                "description": "Specifies the color."
+              },
+              {
                 "name": "placement",
                 "default": "'center'",
                 "description": "Specifies the location of the default slot."
@@ -1696,6 +1700,13 @@
             ]
           },
           "attributes": [
+            {
+              "name": "color",
+              "value": {
+                "type": "string"
+              },
+              "description": "Specifies the color."
+            },
             {
               "name": "placement",
               "value": {

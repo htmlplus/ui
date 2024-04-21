@@ -32,7 +32,7 @@ export declare class Stack extends PlusCore {
         gap: string;
         'justify-content': StackJustifyContent;
     };
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StackAttributes {
     /**
