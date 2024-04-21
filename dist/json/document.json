@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-04-13T23:36:12.981Z",
+      "lastModified": "2024-04-14T16:08:27.224Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-04-07T20:39:33.768Z",
+      "lastModified": "2024-04-21T21:03:22.314Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-04-07T20:39:35.487Z",
+      "lastModified": "2024-04-21T21:03:22.326Z",
       "methods": [
         {
           "async": false,
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-04-07T20:39:35.694Z",
+      "lastModified": "2024-04-21T21:03:22.329Z",
       "methods": [],
       "properties": [
         {
@@ -1972,7 +1972,7 @@
           "description": "Draws the divider in a vertical orientation."
         }
       ],
-      "readmeContent": "# Divider\n\nA thin line that divides the content vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Width\n\n<Example value=\"width\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Variant\n\n<Example value=\"variant\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Horizontal\n\n<Example value=\"horizontal\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n<LastModified />\n",
+      "readmeContent": "# Divider\r\n\r\nA thin line that divides the content vertically or horizontally.\r\n\r\n<Playground />\r\n\r\n<Usage />\r\n\r\n<Api />\r\n\r\n<GlobalConfig />\r\n\r\n<Examples />\r\n\r\n### Default\r\n\r\n<Example value=\"default\" />\r\n\r\n### Width\r\n\r\n<Example value=\"width\" />\r\n\r\n### Type\r\n\r\n<Example value=\"type\" />\r\n\r\n### Variant\r\n\r\n<Example value=\"variant\" />\r\n\r\n### Placement\r\n\r\n<Example value=\"placement\" />\r\n\r\n### Horizontal\r\n\r\n<Example value=\"horizontal\" />\r\n\r\n### Vertical\r\n\r\n<Example value=\"vertical\" />\r\n\r\n### Customized\r\n\r\n<Example value=\"customized\" />\r\n\r\n### Sticky\r\n\r\n<Example value=\"sticky\" />\r\n\r\n<LastModified />\r\n",
       "styles": [],
       "title": "Divider",
       "description": "A thin line that divides the content vertically or horizontally.",
@@ -3504,7 +3504,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-04-07T20:39:37.926Z",
+      "lastModified": "2024-04-21T21:03:22.329Z",
       "methods": [
         {
           "async": false,
