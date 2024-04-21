@@ -1,4 +1,5 @@
-$divider-color: lightgray;
+$divider-color: var(--plus-divider-color);
+$divider-border-color: hsl(from var(--plus-divider-color) h s 85);
 $divider-gutter: 0.5rem;
 $divider-types: (dashed, dotted, double, groove, inset, outset, ridge, solid);
 $divider-widths: (

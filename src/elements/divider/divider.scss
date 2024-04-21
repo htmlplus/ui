@@ -1,5 +1,10 @@
 @import 'divider.variables';
 
+:host {
+  // @Property() Used to adjust the color.
+  --plus-divider-color: black;
+}
+
 @each $key in $divider-types {
   :host([type='#{$key}'])::part(line) {
     border-style: #{$key};
@@ -13,14 +18,15 @@
 }
 
 :host {
+  color: $divider-color;
+  gap: $divider-gutter;
   align-items: center;
   display: flex;
-  gap: $divider-gutter;
 }
 
 :host::part(line) {
+  border-color: $divider-border-color;
   flex: 1 1 auto;
-  border-color: $divider-color;
 }
 
 :host([placement='start'])::part(prefix),

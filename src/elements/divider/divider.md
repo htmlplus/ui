@@ -24,6 +24,10 @@ A thin line that divides the content vertically or horizontally.
 
 <Example value="type" />
 
+### Color
+
+<Example value="color" />
+
 ### Variant
 
 <Example value="variant" />
@@ -40,9 +44,9 @@ A thin line that divides the content vertically or horizontally.
 
 <Example value="vertical" />
 
-### Customized
+### Icon
 
-<Example value="customized" />
+<Example value="icon" />
 
 ### Sticky
 

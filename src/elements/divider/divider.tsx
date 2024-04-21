@@ -1,8 +1,9 @@
-import { Element, Property } from '@htmlplus/element';
+import { Element, Property, isCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
+import { Style } from '@/decorators';
 
 /**
  * @stable
@@ -15,6 +16,12 @@ import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './d
  */
 @Element()
 export class Divider extends PlusCore {
+  /**
+   * Specifies the color.
+   */
+  @Property({ reflect: true })
+  color?: string;
+
   /**
    * Specifies the location of the default slot.
    */
@@ -44,6 +51,13 @@ export class Divider extends PlusCore {
    */
   @Property({ reflect: true })
   vertical?: boolean;
+
+  @Style()
+  get style() {
+    return {
+      '--plus-divider-color': isCSSColor(this.color) ? this.color : undefined
+    }
+  }
 
   render() {
     return (
