@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -6,18 +6,19 @@
   </head>
   <body>
     <plus-stack gap="1rem">
-      <button id="element1">Small dialog</button>
-      <button id="element2">Large dialog</button>
-      <button id="element3">Extra large dialog</button>
+      <button id="$button1">Small</button>
+      <button id="$button2">Medium</button>
+      <button id="$button3">Large</button>
+      <button id="$button4">Extra Large</button>
     </plus-stack>
-    <plus-dialog id="element4" animation="fade">
+    <plus-dialog animation connector="dialog-size" id="$dialog">
       <plus-dialog-content>
-        <plus-dialog-header> Dialog Title </plus-dialog-header>
+        <plus-dialog-header>Dialog Title</plus-dialog-header>
         <plus-dialog-body>
           <plus-faker></plus-faker>
         </plus-dialog-body>
         <plus-dialog-footer>
-          <button id="element5">Close</button>
+          <plus-dialog-toggler>Close</plus-dialog-toggler>
         </plus-dialog-footer>
       </plus-dialog-content>
     </plus-dialog>
@@ -27,22 +28,20 @@
       import 'https://cdn.skypack.dev/@htmlplus/ui/dialog-content.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/dialog-footer.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/dialog-header.js';
+      import 'https://cdn.skypack.dev/@htmlplus/ui/dialog-toggler.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/dialog.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/faker.js';
       import 'https://cdn.skypack.dev/@htmlplus/ui/stack.js';
 
-      const hide = () => {
-        element4.open = false;
-      };
       const show = (size) => {
-        element4.size = size;
-        element4.open = true;
+        $dialog.size = size;
+        $dialog.open = true;
       };
-      element1.addEventListener('click', (event) => show('sm'));
-      element2.addEventListener('click', (event) => show('md'));
-      element3.addEventListener('click', (event) => show('lg'));
-      element4.addEventListener('plus-close', () => hide());
-      element5.addEventListener('click', () => hide());
+
+      $button1.addEventListener('click', () => show('sm'));
+      $button2.addEventListener('click', () => show('md'));
+      $button3.addEventListener('click', () => show('lg'));
+      $button4.addEventListener('click', () => show('xl'));
     </script>
   </body>
 </html>

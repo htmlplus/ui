@@ -1443,7 +1443,7 @@
             {
               "name": "animation",
               "value": {
-                "type": "string"
+                "type": "boolean | string"
               },
               "description": "TODO"
             },
@@ -1514,7 +1514,7 @@
             {
               "name": "size",
               "value": {
-                "type": "'sm' | 'lg' | 'xl'"
+                "type": "'sm' | 'md' | 'lg' | 'xl'"
               },
               "description": "Determine the width of the dialog."
             },

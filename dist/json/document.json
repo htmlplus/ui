@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-04-21T21:08:14.454Z",
+      "lastModified": "2024-04-22T20:03:45.976Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-04-07T20:39:34.962Z",
+      "lastModified": "2024-04-22T20:07:17.000Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-04-21T21:08:23.476Z",
+      "lastModified": "2024-04-15T19:15:11.382Z",
       "methods": [
         {
           "async": false,
@@ -1661,7 +1661,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "boolean | string",
           "description": "TODO"
         },
         {
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-04-14T00:21:36.817Z",
+      "lastModified": "2024-04-22T20:07:14.835Z",
       "methods": [
         {
           "async": false,
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-04-21T21:08:10.882Z",
+      "lastModified": "2024-04-22T20:03:50.836Z",
       "methods": [
         {
           "async": false,

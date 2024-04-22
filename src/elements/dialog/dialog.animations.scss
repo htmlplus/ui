@@ -11,8 +11,8 @@
   }
 }
 
-:host([animation='fade'][state='open']),
-:host([animation='fade'][state='closing']) {
+:host([animation][state='open']),
+:host([animation][state='closing']) {
   opacity: 0;
 
   ::slotted(*) {
@@ -32,8 +32,8 @@
   }
 }
 
-:host([animation='fade'][state='close']),
-:host([animation='fade'][state='opening']) {
+:host([animation][state='close']),
+:host([animation][state='opening']) {
   opacity: 1;
 
   ::slotted(*) {

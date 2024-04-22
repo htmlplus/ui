@@ -15,7 +15,7 @@ export declare class Dialog extends PlusCore {
     /**
      * TODO
      */
-    animation?: string;
+    animation?: boolean | string;
     /**
      * This property helps you to attach which dialog toggler controls the dialog.
      * It doesn't matter where the dialog toggler is.
@@ -124,7 +124,7 @@ export interface DialogAttributes {
     /**
     * TODO
     */
-    "animation"?: string;
+    "animation"?: boolean | string;
     /**
     * This property helps you to attach which dialog toggler controls the dialog.
     * It doesn't matter where the dialog toggler is.
@@ -220,7 +220,7 @@ export interface DialogProperties {
     /**
     * TODO
     */
-    animation?: string;
+    animation?: boolean | string;
     /**
     * This property helps you to attach which dialog toggler controls the dialog.
     * It doesn't matter where the dialog toggler is.

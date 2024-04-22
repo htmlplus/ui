@@ -33,7 +33,7 @@ export class Dialog extends PlusCore {
    * TODO
    */
   @Property({ reflect: true })
-  animation?: string;
+  animation?: boolean | string;
 
   /**
    * This property helps you to attach which dialog toggler controls the dialog.
@@ -187,7 +187,7 @@ export class Dialog extends PlusCore {
 
       this.plusOpened();
     },
-    onLeave: () => {},
+    onLeave: () => { },
     onLeaving: () => {
       this.opened = this.open = false;
     },
