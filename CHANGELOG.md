@@ -1,3 +1,22 @@
+## [1.3.0](https://github.com/htmlplus/ui/compare/v1.2.1...v1.3.0) (2024-04-24)
+
+
+### Changes
+
+* Add default background-color in scss variables. ([7ce43f8](https://github.com/htmlplus/ui/commit/7ce43f8fedcef9c1df76a70f3a701040206d698f))
+
+
+### Features
+
+* Add boolean type to the animation property of the dialog element. ([b4393cf](https://github.com/htmlplus/ui/commit/b4393cfb7b4d8b76d2e8f9b218966b1be7e82e10))
+* Add color property for divider element. ([7d66f2a](https://github.com/htmlplus/ui/commit/7d66f2a05958c620fd47615be32a896369f5bc69))
+
+
+### Bug Fixes
+
+* Update @htmlplus/element dependency to fix the event resolver in global config. ([94f8d9a](https://github.com/htmlplus/ui/commit/94f8d9a9ea7d977485c6243dfd1ceccf00ae0f10))
+* Update the slots styles of avatar in rtl mode. ([77d35d1](https://github.com/htmlplus/ui/commit/77d35d12ce329f0d7460c0542352f6500ef59195))
+
 ## [1.2.1](https://github.com/htmlplus/ui/compare/v1.2.0...v1.2.1) (2024-04-14)
 
 
