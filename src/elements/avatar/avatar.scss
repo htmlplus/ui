@@ -64,3 +64,7 @@ slot:not([name]) {
   height: 100%;
   width: 100%;
 }
+
+::slotted(plus-avatar) {
+  border: $avatar-border;
+}

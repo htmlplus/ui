@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-04-13T21:03:26.891Z",
+      "lastModified": "2024-04-24T16:38:39.219Z",
       "methods": [],
       "properties": [
         {
@@ -528,7 +528,7 @@
           "description": "Specifies the size of the element."
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Size Overriding\n\n<Example value=\"size-overriding\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link With Tooltip\n\n<Example value=\"link-with-tooltip\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Link With Tooltip\n\n<Example value=\"group-link-with-tooltip\" />\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Size Overriding\n\n<Example value=\"size-overriding\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link With Tooltip\n\n<Example value=\"link-with-tooltip\" />\n\n### With Avatar\n\n<Example value=\"with-avatar\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Link With Tooltip\n\n<Example value=\"group-link-with-tooltip\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "Used to adjust the color.",
@@ -554,7 +554,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2024-04-11T21:54:54.702Z",
+      "lastModified": "2024-04-24T15:55:56.273Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-04-22T20:03:45.976Z",
+      "lastModified": "2024-04-24T16:11:13.642Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-04-22T20:07:17.000Z",
+      "lastModified": "2024-04-22T20:29:48.846Z",
       "methods": [
         {
           "async": false,
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-04-22T20:07:14.835Z",
+      "lastModified": "2024-04-22T20:29:42.777Z",
       "methods": [
         {
           "async": false,
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-04-22T20:03:50.836Z",
+      "lastModified": "2024-04-24T16:11:13.643Z",
       "methods": [
         {
           "async": false,

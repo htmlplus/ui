@@ -1,4 +1,5 @@
 $avatar-background-color: hsl(from var(--plus-avatar-color) h s 90%) !default;
+$avatar-border: solid 2px white !default;
 $avatar-border-radius: $border-radius !default;
 $avatar-color: var(--plus-avatar-color) !default;
 $avatar-font-size: calc(var(--plus-avatar-size) * 0.35) !default;

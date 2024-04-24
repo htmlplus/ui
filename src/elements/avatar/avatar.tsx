@@ -1,4 +1,4 @@
-import { Element, Property, isCSSColor, toUnit } from '@htmlplus/element';
+import { Element, Property, isCSSColor, slots, toUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 import { Style } from '@/decorators';
@@ -33,83 +33,129 @@ export class Avatar extends PlusCore {
 
   get placements() {
     const offset = this.shape == 'circle' ? '14.64466%' : '0';
-    return {
-      'bottom': {
-        bottom: 0,
-        [this.isRTL ? 'right' : 'left']: '50%',
-        transform: 'translate(-50%, +50%)'
+
+    return [
+      {
+        key: 'bottom',
+        style: {
+          bottom: 0,
+          [this.isRTL ? 'right' : 'left']: '50%',
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, +50%)`
+        }
       },
-      'center': {
-        top: '50%',
-        [this.isRTL ? 'right' : 'left']: '50%',
-        transform: 'translate(-50%, -50%)'
+      {
+        key: 'center',
+        style: {
+          top: '50%',
+          [this.isRTL ? 'right' : 'left']: '50%',
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`,
+        }
       },
-      'end': {
-        top: '50%',
-        [this.isRTL ? 'left' : 'right']: 0,
-        transform: 'translate(+50%, -50%)'
+      {
+        key: 'end',
+        style: {
+          top: '50%',
+          [this.isRTL ? 'left' : 'right']: 0,
+          transform: `translate(${this.isRTL ? '-50%' : '+50%'}, -50%)`,
+        }
       },
-      'end-bottom': {
-        bottom: offset,
-        [this.isRTL ? 'left' : 'right']: offset,
-        transform: 'translate(+50%, +50%)'
+      {
+        key: 'end-bottom',
+        style: {
+          bottom: offset,
+          [this.isRTL ? 'left' : 'right']: offset,
+          transform: `translate(${this.isRTL ? '-50%' : '+50%'}, +50%)`
+        }
       },
-      'end-top': {
-        top: offset,
-        [this.isRTL ? 'left' : 'right']: offset,
-        transform: 'translate(+50%, -50%)'
+      {
+        key: 'end-top',
+        style: {
+          top: offset,
+          [this.isRTL ? 'left' : 'right']: offset,
+          transform: `translate(${this.isRTL ? '-50%' : '+50%'}, -50%)`
+        }
       },
-      'left': {
-        top: '50%',
-        left: 0,
-        transform: 'translate(-50%, -50%)'
+      {
+        key: 'left',
+        style: {
+          top: '50%',
+          left: 0,
+          transform: 'translate(-50%, -50%)'
+        }
       },
-      'left-bottom': {
-        bottom: offset,
-        left: offset,
-        transform: 'translate(-50%, +50%)'
+      {
+        key: 'left-bottom',
+        style: {
+          bottom: offset,
+          left: offset,
+          transform: 'translate(-50%, +50%)'
+        }
       },
-      'left-top': {
-        top: offset,
-        left: offset,
-        transform: 'translate(-50%, -50%)'
+      {
+        key: 'left-top',
+        style: {
+          top: offset,
+          left: offset,
+          transform: 'translate(-50%, -50%)'
+        }
       },
-      'right': {
-        top: '50%',
-        right: 0,
-        transform: 'translate(+50%, -50%)'
+      {
+        key: 'right',
+        style: {
+          top: '50%',
+          right: 0,
+          transform: 'translate(+50%, -50%)'
+        }
       },
-      'right-bottom': {
-        bottom: offset,
-        right: offset,
-        transform: 'translate(+50%, +50%)'
+      {
+        key: 'right-bottom',
+        style: {
+          bottom: offset,
+          right: offset,
+          transform: 'translate(+50%, +50%)'
+        }
       },
-      'right-top': {
-        top: offset,
-        right: offset,
-        transform: 'translate(+50%, -50%)'
+      {
+        key: 'right-top',
+        style: {
+          top: offset,
+          right: offset,
+          transform: 'translate(+50%, -50%)'
+        }
       },
-      'start': {
-        top: '50%',
-        [this.isRTL ? 'right' : 'left']: 0,
-        transform: 'translate(-50%, -50%)'
+      {
+        key: 'start',
+        style: {
+          top: '50%',
+          [this.isRTL ? 'right' : 'left']: 0,
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+        }
       },
-      'start-bottom': {
-        bottom: offset,
-        [this.isRTL ? 'right' : 'left']: offset,
-        transform: 'translate(-50%, +50%)'
+      {
+        key: 'start-bottom',
+        style: {
+          bottom: offset,
+          [this.isRTL ? 'right' : 'left']: offset,
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, +50%)`
+        }
       },
-      'start-top': {
-        top: offset,
-        [this.isRTL ? 'right' : 'left']: offset,
-        transform: 'translate(-50%, -50%)'
+      {
+        key: 'start-top',
+        style: {
+          top: offset,
+          [this.isRTL ? 'right' : 'left']: offset,
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+        }
       },
-      'top': {
-        top: 0,
-        [this.isRTL ? 'right' : 'left']: '50%',
-        transform: 'translate(-50%, -50%)'
+      {
+        key: 'top',
+        style: {
+          top: 0,
+          [this.isRTL ? 'right' : 'left']: '50%',
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+        }
       }
-    };
+    ];
   }
 
   @Style()
@@ -124,8 +170,8 @@ export class Avatar extends PlusCore {
     return (
       <>
         <slot />
-        {Object.keys(this.placements).map((placement) => (
-          <slot name={placement} style={this.placements[placement]} />
+        {this.placements.map((placement) => (
+          <slot name={placement.key} style={placement.style} />
         ))}
       </>
     );

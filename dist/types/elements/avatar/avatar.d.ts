@@ -20,83 +20,101 @@ export declare class Avatar extends PlusCore {
      * Specifies the size of the element.
      */
     size?: AvatarSize;
-    get placements(): {
-        bottom: {
+    get placements(): ({
+        key: string;
+        style: {
             [x: string]: string | number;
             bottom: number;
             transform: string;
+            top?: undefined;
+            left?: undefined;
+            right?: undefined;
         };
-        center: {
-            [x: string]: string;
-            top: string;
-            transform: string;
-        };
-        end: {
+    } | {
+        key: string;
+        style: {
             [x: string]: string | number;
             top: string;
             transform: string;
+            bottom?: undefined;
+            left?: undefined;
+            right?: undefined;
         };
-        'end-bottom': {
+    } | {
+        key: string;
+        style: {
             [x: string]: string;
             bottom: string;
             transform: string;
+            top?: undefined;
+            left?: undefined;
+            right?: undefined;
         };
-        'end-top': {
-            [x: string]: string;
-            top: string;
-            transform: string;
-        };
-        left: {
+    } | {
+        key: string;
+        style: {
             top: string;
             left: number;
             transform: string;
+            bottom?: undefined;
+            right?: undefined;
         };
-        'left-bottom': {
+    } | {
+        key: string;
+        style: {
             bottom: string;
             left: string;
             transform: string;
+            top?: undefined;
+            right?: undefined;
         };
-        'left-top': {
+    } | {
+        key: string;
+        style: {
             top: string;
             left: string;
             transform: string;
+            bottom?: undefined;
+            right?: undefined;
         };
-        right: {
+    } | {
+        key: string;
+        style: {
             top: string;
             right: number;
             transform: string;
+            bottom?: undefined;
+            left?: undefined;
         };
-        'right-bottom': {
+    } | {
+        key: string;
+        style: {
             bottom: string;
             right: string;
             transform: string;
+            top?: undefined;
+            left?: undefined;
         };
-        'right-top': {
+    } | {
+        key: string;
+        style: {
             top: string;
             right: string;
             transform: string;
+            bottom?: undefined;
+            left?: undefined;
         };
-        start: {
-            [x: string]: string | number;
-            top: string;
-            transform: string;
-        };
-        'start-bottom': {
-            [x: string]: string;
-            bottom: string;
-            transform: string;
-        };
-        'start-top': {
-            [x: string]: string;
-            top: string;
-            transform: string;
-        };
-        top: {
+    } | {
+        key: string;
+        style: {
             [x: string]: string | number;
             top: number;
             transform: string;
+            bottom?: undefined;
+            left?: undefined;
+            right?: undefined;
         };
-    };
+    })[];
     get style(): {
         '--plus-avatar-color': string;
         '--plus-avatar-size': string;

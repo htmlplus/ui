@@ -19,6 +19,6 @@
 }
 
 :host([stacked]) ::slotted(plus-avatar) {
-  box-shadow: $avatar-group-box-shadow;
+  border: $avatar-group-stacked-children-border;
   margin-inline-end: $avatar-group-gutter-stacked;
 }

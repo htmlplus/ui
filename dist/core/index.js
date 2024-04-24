@@ -1620,11 +1620,14 @@ function Event(options = {}) {
                         case 'blazor':
                             options.bubbles = true;
                             type = pascalCase(type);
-                            window['Blazor'].registerCustomEventType(type, {
-                                createEventArgs: (event) => ({
-                                    detail: event.detail
-                                })
-                            });
+                            try {
+                                window['Blazor'].registerCustomEventType(type, {
+                                    createEventArgs: (event) => ({
+                                        detail: event.detail
+                                    })
+                                });
+                            }
+                            catch (_c) { }
                             break;
                         case 'qwik':
                             type = pascalCase(type).toLowerCase();
@@ -1858,7 +1861,83 @@ __decorate([
 ], PlusCore.prototype, "$host", void 0);
 
 class PlusForm extends PlusCore {
+    get form() {
+        return this.internals.form;
+    }
+    get validationMessage() {
+        return this.internals.validationMessage;
+    }
+    get validity() {
+        return this.internals.validity;
+    }
+    get willValidate() {
+        return this.internals.willValidate;
+    }
+    checkValidity() {
+        return this.internals.checkValidity();
+    }
+    reportValidity() {
+        return this.internals.reportValidity();
+    }
+    setCustomValidity(error) {
+        this.internals.setValidity({ customError: true }, error);
+    }
+    constructedCallback() {
+        this.internals = this.$host.attachInternals();
+    }
+    connectedCallback() {
+        if (this.$host.tabIndex < 0) {
+            this.$host.tabIndex = 0;
+        }
+    }
 }
+PlusForm.formAssociated = true;
+__decorate([
+    Property({
+        reflect: true,
+        type: Boolean
+    })
+], PlusForm.prototype, "disabled", void 0);
+__decorate([
+    Property({
+        reflect: true,
+        type: String
+    })
+], PlusForm.prototype, "name", void 0);
+__decorate([
+    Property({
+        attribute: 'readonly',
+        reflect: true,
+        type: Boolean
+    })
+], PlusForm.prototype, "readOnly", void 0);
+__decorate([
+    Property({
+        reflect: true,
+        type: Boolean
+    })
+], PlusForm.prototype, "required", void 0);
+__decorate([
+    Property()
+], PlusForm.prototype, "form", null);
+__decorate([
+    Property()
+], PlusForm.prototype, "validationMessage", null);
+__decorate([
+    Property()
+], PlusForm.prototype, "validity", null);
+__decorate([
+    Property()
+], PlusForm.prototype, "willValidate", null);
+__decorate([
+    Method()
+], PlusForm.prototype, "checkValidity", null);
+__decorate([
+    Method()
+], PlusForm.prototype, "reportValidity", null);
+__decorate([
+    Method()
+], PlusForm.prototype, "setCustomValidity", null);
 
 class Animation {
     get animation() {

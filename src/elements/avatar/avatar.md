@@ -56,6 +56,10 @@ An image representing a user's profile picture.
 
 <Example value="link-with-tooltip" />
 
+### With Avatar
+
+<Example value="with-avatar" />
+
 ### Slots
 
 <Example value="slots" />
