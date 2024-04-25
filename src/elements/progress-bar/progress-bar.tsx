@@ -63,7 +63,7 @@ export class ProgressBar extends PlusCore {
       '--plus-progress-bar-indicator-background-color': isCSSColor(this.color)
         ? this.color
         : undefined
-    }
+    };
   }
 
   get percentage() {

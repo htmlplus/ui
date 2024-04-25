@@ -48,7 +48,7 @@ export class Avatar extends PlusCore {
         style: {
           top: '50%',
           [this.isRTL ? 'right' : 'left']: '50%',
-          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`,
+          transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
         }
       },
       {
@@ -56,7 +56,7 @@ export class Avatar extends PlusCore {
         style: {
           top: '50%',
           [this.isRTL ? 'left' : 'right']: 0,
-          transform: `translate(${this.isRTL ? '-50%' : '+50%'}, -50%)`,
+          transform: `translate(${this.isRTL ? '-50%' : '+50%'}, -50%)`
         }
       },
       {
@@ -162,8 +162,8 @@ export class Avatar extends PlusCore {
   get style() {
     return {
       '--plus-avatar-color': isCSSColor(this.color) ? this.color : undefined,
-      '--plus-avatar-size': isSize(this.color) ? undefined : toUnit(this.size),
-    }
+      '--plus-avatar-size': isSize(this.color) ? undefined : toUnit(this.size)
+    };
   }
 
   render() {

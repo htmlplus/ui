@@ -40,9 +40,6 @@ export class TabsTab extends PlusCore {
   @Consumer('tabs')
   parent?: TabsContext;
 
-  /**
-   * Events handler
-   */
   @Bind()
   onClick() {
     if (!this.disabled) {
@@ -53,9 +50,7 @@ export class TabsTab extends PlusCore {
   render() {
     return (
       <host onClick={this.onClick}>
-        <span>
-          <slot />
-        </span>
+        <slot />
       </host>
     );
   }

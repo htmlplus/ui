@@ -5,14 +5,18 @@
   user-select: none;
   padding: 0.5rem 1rem;
   background-color: whitesmoke;
-}
-
-:host([disabled]) {
-  span {
-    opacity: 0.5;
-  }
+  text-align: center;
+  gap: 0.5rem;
 }
 
 :host([active]) {
   background-color: lightgray;
+}
+
+:host([disabled]) {
+  opacity: 0.5;
+}
+
+:host(:not([disabled])) {
+  cursor: pointer;
 }

@@ -203,9 +203,7 @@ export class Breadcrumb extends PlusCore {
               );
             }
             case 'separator': {
-              return (
-                <div key={item.key} aria-hidden="true" part="separator" />
-              );
+              return <div key={item.key} aria-hidden="true" part="separator" />;
             }
           }
         })}

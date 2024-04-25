@@ -16,6 +16,10 @@ Organizes content across different screens.
 
 <Example value="default" />
 
+### Disabled
+
+<Example value="disabled" />
+
 ### Grow
 
 <Example value="grow" />
@@ -27,10 +31,6 @@ Organizes content across different screens.
 ### Reverse
 
 <Example value="reverse" />
-
-### Separate
-
-<Example value="separate" />
 
 ### Below
 

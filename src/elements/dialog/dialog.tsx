@@ -187,7 +187,7 @@ export class Dialog extends PlusCore {
 
       this.plusOpened();
     },
-    onLeave: () => { },
+    onLeave: () => {},
     onLeaving: () => {
       this.opened = this.open = false;
     },

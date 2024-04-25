@@ -1,9 +1,9 @@
 import { Element, Property, isCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
 
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
-import { Style } from '@/decorators';
 
 /**
  * @stable
@@ -56,7 +56,7 @@ export class Divider extends PlusCore {
   get style() {
     return {
       '--plus-divider-color': isCSSColor(this.color) ? this.color : undefined
-    }
+    };
   }
 
   render() {

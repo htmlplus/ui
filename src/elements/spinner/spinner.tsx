@@ -1,9 +1,9 @@
 import { Element, Property, isCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
 
 import { SpinnerSize, SpinnerType } from './spinner.types';
-import { Style } from '@/decorators';
 
 /**
  * @stable

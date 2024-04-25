@@ -11,9 +11,9 @@ import {
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
 
 import { StickyState, StickyTop } from './sticky.types';
-import { Style } from '@/decorators';
 
 /**
  * @stable

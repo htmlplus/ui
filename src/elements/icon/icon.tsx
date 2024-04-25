@@ -2,11 +2,11 @@ import { Element, Property, Watch, toUnit, isCSSColor, query } from '@htmlplus/e
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
 import { isSize } from '@/helpers';
 
 import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
-import { Style } from '@/decorators';
 
 let parser;
 
@@ -109,8 +109,8 @@ export class Icon extends PlusCore {
       color: isCSSColor(this.color) ? this.color : undefined,
       height: !isSize(this.size) ? toUnit(this.size) : undefined,
       width: !isSize(this.size) ? toUnit(this.size) : undefined,
-      rotate: this.rotate ? this.rotate + 'deg' : undefined,
-    }
+      rotate: this.rotate ? this.rotate + 'deg' : undefined
+    };
   }
 
   @Watch('name', true)
@@ -148,7 +148,7 @@ export class Icon extends PlusCore {
 
     try {
       if (this.sync(this.cache, true)) return;
-    } catch { }
+    } catch {}
 
     if (typeof this.resolver != 'function') {
       console.warn(

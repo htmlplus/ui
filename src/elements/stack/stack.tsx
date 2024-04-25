@@ -1,9 +1,9 @@
 import { Element, Property, toUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { Style } from '@/decorators';
 
 import { StackAlignItems, StackJustifyContent } from './stack.types';
-import { Style } from '@/decorators';
 
 /**
  * @slot default - The default slot.
@@ -56,6 +56,6 @@ export class Stack extends PlusCore {
   }
 
   render() {
-    return <slot />
+    return <slot />;
   }
 }
