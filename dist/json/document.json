@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-05-29T16:35:55.338Z",
+      "lastModified": "2024-06-03T20:00:51.574Z",
       "methods": [
         {
           "async": false,
@@ -102,7 +102,7 @@
           "description": "The summary text displayed on the header."
         }
       ],
-      "readmeContent": "# Accordion\n\nA vertically stacked list of headers that reveal or hide associated sections of content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Open\n\n<Example value=\"open\" />\n\n### Methods\n\nOpen the developer console.\n\n<Example value=\"methods\" />\n\n### Persistent\n\n<Example value=\"persistent\" />\n\n### Custom Icon\n\n<Example value=\"custom-icon\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### Custom Summary Template\n\n<Example value=\"custom-summary-template\" />\n\n### Prevent From Toggling\n\n<Example value=\"prevent-from-toggling\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Async Content\n\n<Example value=\"async-content\" />\n\n<LastModified />\n",
+      "readmeContent": "# Accordion\n\nA vertically stacked list of headers that reveal or hide associated sections of content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Open\n\n<Example src=\"examples/open\" />\n\n### Methods\n\nOpen the developer console.\n\n<Example src=\"examples/methods\" />\n\n### Persistent\n\n<Example src=\"examples/persistent\" />\n\n### Custom Icon\n\n<Example src=\"examples/custom-icon\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n### Custom Summary Template\n\n<Example src=\"examples/custom-summary-template\" />\n\n### Prevent From Toggling\n\n<Example src=\"examples/prevent-from-toggling\" />\n\n### Slots\n\n<Example src=\"examples/slots\" />\n\n### Async Content\n\n<Example src=\"examples/async-content\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Accordion",
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2024-04-07T20:39:32.428Z",
+      "lastModified": "2024-06-03T20:00:51.670Z",
       "methods": [
         {
           "async": false,
@@ -433,7 +433,7 @@
           "description": "Starts the animation."
         }
       ],
-      "readmeContent": "# Animation\n\nCreates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://www.htmlplus.io/element/animation/names).\n<Example value=\"name\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Easing\n\nTo see all easings click [here](https://github.com/htmlplus/ui/blob/main/src/elements/animation/animation.constants.ts).\n<Example value=\"easing\" />\n\n### Methods\n\n<Example value=\"methods\" />\n\n### Keyframes\n\n<Example value=\"keyframes\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Button\n\n<Example value=\"button\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<LastModified />\n",
+      "readmeContent": "# Animation\n\nCreates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Name\n\nTo see all names click [here](https://www.htmlplus.io/element/animation/names).\n<Example src=\"examples/name\" />\n\n### Duration\n\n<Example src=\"examples/duration\" />\n\n### Easing\n\nTo see all easings click [here](https://github.com/htmlplus/ui/blob/main/src/elements/animation/animation.constants.ts).\n<Example src=\"examples/easing\" />\n\n### Methods\n\n<Example src=\"examples/methods\" />\n\n### Keyframes\n\n<Example src=\"examples/keyframes\" />\n\n### Register A Custom Name\n\n<Example src=\"examples/register-a-custom-name\" />\n\n### Button\n\n<Example src=\"examples/button\" />\n\n### Intersection\n\n<Example src=\"examples/intersection\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Animation",
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-04-25T20:47:08.525Z",
+      "lastModified": "2024-06-03T20:00:51.658Z",
       "methods": [],
       "properties": [
         {
@@ -480,7 +480,7 @@
           "description": "Specifies the ratio."
         }
       ],
-      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Video\n\n<Example value=\"video\" />\n\n### Card\n\n<Example value=\"card\" />\n\n### Map\n\n<Example value=\"map\" />\n\n### More\n\n<Example value=\"more\" />\n\n<LastModified />\n",
+      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Image\n\n<Example src=\"examples/image\" />\n\n### Video\n\n<Example src=\"examples/video\" />\n\n### Card\n\n<Example src=\"examples/card\" />\n\n### Map\n\n<Example src=\"examples/map\" />\n\n### More\n\n<Example src=\"examples/more\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Aspect Ratio",
       "description": "Sets a preferred aspect ratio only for the first child inside the element.",
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-04-25T20:47:08.792Z",
+      "lastModified": "2024-06-03T20:00:51.658Z",
       "methods": [],
       "properties": [
         {
@@ -528,7 +528,7 @@
           "description": "Specifies the size of the element."
         }
       ],
-      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Text\n\n<Example value=\"text\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Image\n\n<Example value=\"image\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Svg\n\n<Example value=\"svg\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Size Overriding\n\n<Example value=\"size-overriding\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Link With Tooltip\n\n<Example value=\"link-with-tooltip\" />\n\n### With Avatar\n\n<Example value=\"with-avatar\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Group\n\n<Example value=\"group\" />\n\n### Group Stacked\n\n<Example value=\"group-stacked\" />\n\n### Group Hoverable\n\n<Example value=\"group-hoverable\" />\n\n### Group Gutter\n\n<Example value=\"group-gutter\" />\n\n### Group Link With Tooltip\n\n<Example value=\"group-link-with-tooltip\" />\n\n<LastModified />\n",
+      "readmeContent": "# Avatar\n\nAn image representing a user's profile picture.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Text\n\n<Example src=\"examples/text\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Image\n\n<Example src=\"examples/image\" />\n\n### Icon\n\n<Example src=\"examples/icon\" />\n\n### Svg\n\n<Example src=\"examples/svg\" />\n\n### Shape\n\n<Example src=\"examples/shape\" />\n\n### Size\n\n<Example src=\"examples/size\" />\n\n### Size Overriding\n\n<Example src=\"examples/size-overriding\" />\n\n### Wildcard Size\n\n<Example src=\"examples/wildcard-size\" />\n\n### Link With Tooltip\n\n<Example src=\"examples/link-with-tooltip\" />\n\n### With Avatar\n\n<Example src=\"examples/with-avatar\" />\n\n### Slots\n\n<Example src=\"examples/slots\" />\n\n### Group\n\n<Example src=\"examples/group\" />\n\n### Group Stacked\n\n<Example src=\"examples/group-stacked\" />\n\n### Group Hoverable\n\n<Example src=\"examples/group-hoverable\" />\n\n### Group Gutter\n\n<Example src=\"examples/group-gutter\" />\n\n### Group Link With Tooltip\n\n<Example src=\"examples/group-link-with-tooltip\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "Used to adjust the color.",
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-04-25T20:47:09.146Z",
+      "lastModified": "2024-06-03T20:00:51.658Z",
       "methods": [],
       "properties": [
         {
@@ -641,7 +641,7 @@
           "description": "Specifies the separator between items."
         }
       ],
-      "readmeContent": "# Breadcrumb\n\nBreadcrumb element is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Custom Separator\n\n<Example value=\"custom-separator\" />\n\n### Limitation\n\n<Example value=\"limitation\" />\n\n### With Icon\n\n<Example value=\"with-icon\" />\n\n### Custom Expander\n\n<Example value=\"custom-expander\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
+      "readmeContent": "# Breadcrumb\n\nBreadcrumb element is a navigation pattern that shows the actual path of the current page.\nIt represents the route using links, which enables the user to easily navigate upwards through\nthe hierarchy.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Separator\n\n<Example src=\"examples/separator\" />\n\n### Custom Separator\n\n<Example src=\"examples/custom-separator\" />\n\n### Limitation\n\n<Example src=\"examples/limitation\" />\n\n### With Icon\n\n<Example src=\"examples/with-icon\" />\n\n### Custom Expander\n\n<Example src=\"examples/custom-expander\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Breadcrumb",
       "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page.",
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-04-25T20:47:09.357Z",
+      "lastModified": "2024-06-03T20:00:51.658Z",
       "methods": [
         {
           "async": false,
@@ -785,7 +785,7 @@
           "description": "Allows to select more than one file."
         }
       ],
-      "readmeContent": "# Browse\n\nAllows you to select file or files by using click or drag & drop functionality.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Multiple\n\n<Example value=\"multiple\" />\n\n### Accept\n\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\n\n<Example value=\"accept\" />\n\n### Min & Max\n\n<Example value=\"min-and-max\" />\n\n### Min & Max Size\n\n<Example value=\"min-and-max-size\" />\n\n### Droppable\n\n<Example value=\"droppable\" />\n\n<LastModified />\n",
+      "readmeContent": "# Browse\n\nAllows you to select file or files by using click or drag & drop functionality.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example src=\"examples/default\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Multiple\n\n<Example src=\"examples/multiple\" />\n\n### Accept\n\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\n\n<Example src=\"examples/accept\" />\n\n### Min & Max\n\n<Example src=\"examples/min-and-max\" />\n\n### Min & Max Size\n\n<Example src=\"examples/min-and-max-size\" />\n\n### Droppable\n\n<Example src=\"examples/droppable\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Browse",
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
@@ -800,7 +800,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2024-04-07T20:39:33.991Z",
+      "lastModified": "2024-06-03T20:00:51.658Z",
       "methods": [],
       "properties": [
         {
@@ -841,7 +841,7 @@
           "description": "Use tile property to neutralize border-radius."
         }
       ],
-      "readmeContent": "# Card\n\nCards contain content and actions about a single subject.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Elevation\n\nThe card element accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\n<Example value=\"elevation\" />\n\n### Outlined\n\nBy default, the card element has no border. outlined property Adds border.\n<Example value=\"outlined\" />\n\n### Border Color\n\n<Example value=\"border-color\" />\n\n### Border Width\n\nBy default, the card element has no border. outlined property Adds border.\n<Example value=\"border-width\" />\n\n### Tile\n\nBy default, the card element has border-radius. The tile property neutralizes border-radius.\n<Example value=\"tile\" />\n\n### Background Color\n\n<Example value=\"background-color\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
+      "readmeContent": "# Card\n\nCards contain content and actions about a single subject.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Elevation\n\nThe card element accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.\n<Example src=\"examples/elevation\" />\n\n### Outlined\n\nBy default, the card element has no border. outlined property Adds border.\n<Example src=\"examples/outlined\" />\n\n### Border Color\n\n<Example src=\"examples/border-color\" />\n\n### Border Width\n\nBy default, the card element has no border. outlined property Adds border.\n<Example src=\"examples/border-width\" />\n\n### Tile\n\nBy default, the card element has border-radius. The tile property neutralizes border-radius.\n<Example src=\"examples/tile\" />\n\n### Background Color\n\n<Example src=\"examples/background-color\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "Used to adjust the background-color.",
@@ -898,7 +898,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2024-04-07T20:39:34.055Z",
+      "lastModified": "2024-06-03T20:00:51.655Z",
       "methods": [],
       "properties": [
         {
@@ -911,7 +911,7 @@
           "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
         }
       ],
-      "readmeContent": "# Center\n\nCenters content vertically and horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Inline\n\n<Example value=\"inline\" />\n\n<LastModified />\n",
+      "readmeContent": "# Center\n\nCenters content vertically and horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Inline\n\n<Example src=\"examples/inline\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Center",
       "description": "Centers content vertically and horizontally.",
@@ -933,7 +933,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-04-24T19:33:25.745Z",
+      "lastModified": "2024-06-03T20:00:51.655Z",
       "methods": [],
       "properties": [
         {
@@ -964,7 +964,7 @@
           "description": "The event fires only once."
         }
       ],
-      "readmeContent": "# Click Outside\n\nDetects when a click event happens outside of itself.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Menu\n\n<Example value=\"menu\" />\n\n<LastModified />\n",
+      "readmeContent": "# Click Outside\n\nDetects when a click event happens outside of itself.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Menu\n\n<Example src=\"examples/menu\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Click Outside",
       "description": "Detects when a click event happens outside of itself.",
@@ -986,7 +986,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2024-04-07T20:39:34.409Z",
+      "lastModified": "2024-06-03T20:00:51.641Z",
       "methods": [
         {
           "async": false,
@@ -1120,7 +1120,7 @@
           "description": "Target value."
         }
       ],
-      "readmeContent": "# Counter\n\nCan be used to quickly create animations that display numerical data in a more interesting way.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Range\n\n<Example value=\"range\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Duration\n\n<Example value=\"duration\" />\n\n### Delay\n\n<Example value=\"delay\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Decimal\n\n<Example value=\"decimal\" />\n\n### Separator & Decimal\n\n<Example value=\"separator-decimal\" />\n\n### Numerals\n\n<Example value=\"numerals\" />\n\n### Intersection\n\n<Example value=\"intersection\" />\n\n<LastModified />\n",
+      "readmeContent": "# Counter\n\nCan be used to quickly create animations that display numerical data in a more interesting way.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Range\n\n<Example src=\"examples/range\" />\n\n### Reverse\n\n<Example src=\"examples/reverse\" />\n\n### Duration\n\n<Example src=\"examples/duration\" />\n\n### Delay\n\n<Example src=\"examples/delay\" />\n\n### Separator\n\n<Example src=\"examples/separator\" />\n\n### Decimal\n\n<Example src=\"examples/decimal\" />\n\n### Separator & Decimal\n\n<Example src=\"examples/separator-decimal\" />\n\n### Numerals\n\n<Example src=\"examples/numerals\" />\n\n### Intersection\n\n<Example src=\"examples/intersection\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Counter",
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-04-25T20:47:10.324Z",
+      "lastModified": "2024-06-03T20:00:51.651Z",
       "methods": [
         {
           "async": false,
@@ -1477,7 +1477,7 @@
           "description": "Specifies zoom ratio when zooming the image by wheeling the mouse."
         }
       ],
-      "readmeContent": "# Cropper\n\nUsed for cropping large images to fit a container before uploading them to the server.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Shape\n\n<Example value=\"shape\" />\n\n### Indicator\n\n<Example value=\"indicator\" />\n\n### Guides\n\n<Example value=\"guides\" />\n\n### Transparent\n\n<Example value=\"transparent\" />\n\n### Background\n\n<Example value=\"background\" />\n\n### Area\n\n<Example value=\"area\" />\n\n### Aspect Ratio\n\n<Example value=\"aspect-ratio\" />\n\n### Mode\n\n<Example value=\"mode\" />\n\n### Zoomable\n\n<Example value=\"zoomable\" />\n\n### Zoom Ratio\n\n<Example value=\"zoom-ratio\" />\n\n### To Base64\n\n<Example value=\"to-base64\" />\n\n### To Blob\n\nOpen the developer console.\n\n<Example value=\"to-blob\" />\n\n### To Url\n\n<Example value=\"to-url\" />\n\n### Styles\n\n<Example value=\"styles\" />\n\n<LastModified />\n",
+      "readmeContent": "# Cropper\n\nUsed for cropping large images to fit a container before uploading them to the server.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Shape\n\n<Example src=\"examples/shape\" />\n\n### Indicator\n\n<Example src=\"examples/indicator\" />\n\n### Guides\n\n<Example src=\"examples/guides\" />\n\n### Transparent\n\n<Example src=\"examples/transparent\" />\n\n### Background\n\n<Example src=\"examples/background\" />\n\n### Area\n\n<Example src=\"examples/area\" />\n\n### Aspect Ratio\n\n<Example src=\"examples/aspect-ratio\" />\n\n### Mode\n\n<Example src=\"examples/mode\" />\n\n### Zoomable\n\n<Example src=\"examples/zoomable\" />\n\n### Zoom Ratio\n\n<Example src=\"examples/zoom-ratio\" />\n\n### To Base64\n\n<Example src=\"examples/to-base64\" />\n\n### To Blob\n\nOpen the developer console.\n\n<Example src=\"examples/to-blob\" />\n\n### To Url\n\n<Example src=\"examples/to-url\" />\n\n### Styles\n\n<Example src=\"examples/styles\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "Used to adjust the backdrop color.",
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-04-25T20:47:11.063Z",
+      "lastModified": "2024-06-03T20:00:51.651Z",
       "methods": [
         {
           "async": false,
@@ -1777,7 +1777,7 @@
           "description": "Deactivate the dialog's backdrop to show or not."
         }
       ],
-      "readmeContent": "# Dialog\n\nA dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Animation\n\n<Example value=\"animation\" />\n\n### Persistent\n\n<Example value=\"persistent\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Transparent\n\n<Example value=\"transparent\" />\n\n### Scrollable\n\n<Example value=\"scrollable\" />\n\n### Specific Scrollable\n\n<Example value=\"specific-scrollable\" />\n\n### Fullscreen\n\n<Example value=\"fullscreen\" />\n\n### Full Width\n\n<Example value=\"full-width\" />\n\n### Full Height\n\n<Example value=\"full-height\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n### Nesting\n\n<Example value=\"nesting\" />\n\n### Prevent\n\n<Example value=\"prevent\" />\n\n<LastModified />\n",
+      "readmeContent": "# Dialog\n\nA dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Animation\n\n<Example src=\"examples/animation\" />\n\n### Persistent\n\n<Example src=\"examples/persistent\" />\n\n### Placement\n\n<Example src=\"examples/placement\" />\n\n### Size\n\n<Example src=\"examples/size\" />\n\n### Transparent\n\n<Example src=\"examples/transparent\" />\n\n### Scrollable\n\n<Example src=\"examples/scrollable\" />\n\n### Specific Scrollable\n\n<Example src=\"examples/specific-scrollable\" />\n\n### Fullscreen\n\n<Example src=\"examples/fullscreen\" />\n\n### Full Width\n\n<Example src=\"examples/full-width\" />\n\n### Full Height\n\n<Example src=\"examples/full-height\" />\n\n### Sticky\n\n<Example src=\"examples/sticky\" />\n\n### Nesting\n\n<Example src=\"examples/nesting\" />\n\n### Prevent\n\n<Example src=\"examples/prevent\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Dialog",
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-04-25T20:47:11.203Z",
+      "lastModified": "2024-06-03T20:00:51.641Z",
       "methods": [],
       "properties": [
         {
@@ -1981,7 +1981,7 @@
           "description": "Draws the divider in a vertical orientation."
         }
       ],
-      "readmeContent": "# Divider\n\nA thin line that divides the content vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Width\n\n<Example value=\"width\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Variant\n\n<Example value=\"variant\" />\n\n### Placement\n\n<Example value=\"placement\" />\n\n### Horizontal\n\n<Example value=\"horizontal\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Icon\n\n<Example value=\"icon\" />\n\n### Sticky\n\n<Example value=\"sticky\" />\n\n<LastModified />\n",
+      "readmeContent": "# Divider\n\nA thin line that divides the content vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Width\n\n<Example src=\"examples/width\" />\n\n### Type\n\n<Example src=\"examples/type\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Variant\n\n<Example src=\"examples/variant\" />\n\n### Placement\n\n<Example src=\"examples/placement\" />\n\n### Horizontal\n\n<Example src=\"examples/horizontal\" />\n\n### Vertical\n\n<Example src=\"examples/vertical\" />\n\n### Icon\n\n<Example src=\"examples/icon\" />\n\n### Sticky\n\n<Example src=\"examples/sticky\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "Used to adjust the color.",
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-04-25T20:47:11.478Z",
+      "lastModified": "2024-06-03T20:00:51.641Z",
       "methods": [
         {
           "async": false,
@@ -2200,7 +2200,7 @@
           "description": "TODO"
         }
       ],
-      "readmeContent": "# Drawer\n\nThis element lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
+      "readmeContent": "# Drawer\n\nThis element lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Drawer",
       "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
@@ -2248,7 +2248,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-04-07T20:39:35.999Z",
+      "lastModified": "2024-06-03T20:00:51.631Z",
       "methods": [],
       "properties": [
         {
@@ -2290,7 +2290,7 @@
           "description": "Keeps the result constant."
         }
       ],
-      "readmeContent": "# Faker\n\nGenerates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### API\n\nTo see all APIs click [here](https://fakerjs.dev/api).\n\n<Example value=\"api\" />\n\n### API's Arguments\n\n<Example value=\"arguments\" />\n\n### Seed\n\n<Example value=\"seed\" />\n\n### Localization\n\nMakes the result localized. Consider that localization configure globally. [More](https://fakerjs.dev/guide/localization.html).\n\n<Example value=\"localization\" />\n\n### More\n\n<Example value=\"more\" />\n\n<LastModified />\n",
+      "readmeContent": "# Faker\n\nGenerates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### API\n\nTo see all APIs click [here](https://fakerjs.dev/api).\n\n<Example src=\"examples/api\" />\n\n### API's Arguments\n\n<Example src=\"examples/arguments\" />\n\n### Seed\n\n<Example src=\"examples/seed\" />\n\n### Localization\n\nMakes the result localized. Consider that localization configure globally. [More](https://fakerjs.dev/guide/localization.html).\n\n<Example src=\"examples/localization\" />\n\n### More\n\n<Example src=\"examples/more\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Faker",
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
@@ -2301,7 +2301,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2024-04-07T20:39:36.302Z",
+      "lastModified": "2024-06-03T20:00:51.635Z",
       "methods": [],
       "properties": [
         {
@@ -2384,7 +2384,7 @@
           "description": "The bytes value to convert."
         }
       ],
-      "readmeContent": "# Format Bytes\n\nConverts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Standard\n\n<Example value=\"standard\" />\n\n### Formatting\n\n<Example value=\"formatting\" />\n\n### Decimals\n\n<Example value=\"decimals\" />\n\n### Unit\n\n<Example value=\"unit\" />\n\n### Display\n\n<Example value=\"display\" />\n\n### Separator\n\n<Example value=\"separator\" />\n\n### Signed\n\n<Example value=\"signed\" />\n\n### Locale\n\n<Example value=\"locale\" />\n\n<LastModified />\n",
+      "readmeContent": "# Format Bytes\n\nConverts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Standard\n\n<Example src=\"examples/standard\" />\n\n### Formatting\n\n<Example src=\"examples/formatting\" />\n\n### Decimals\n\n<Example src=\"examples/decimals\" />\n\n### Unit\n\n<Example src=\"examples/unit\" />\n\n### Display\n\n<Example src=\"examples/display\" />\n\n### Separator\n\n<Example src=\"examples/separator\" />\n\n### Signed\n\n<Example src=\"examples/signed\" />\n\n### Locale\n\n<Example src=\"examples/locale\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Format Bytes",
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
@@ -2393,7 +2393,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2024-04-07T20:39:36.688Z",
+      "lastModified": "2024-06-03T20:00:51.617Z",
       "methods": [],
       "properties": [
         {
@@ -2729,7 +2729,7 @@
           "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-extra-large screen devices."
         }
       ],
-      "readmeContent": "# Grid\n\nIt's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example value=\"default\" />\n\n### Auto Sizing\n\n<Example value=\"auto-sizing\" />\n\n### Gutter\n\n<Example value=\"gutter\" />\n\n### Gutter X\n\n<Example value=\"gutter-x\" />\n\n### Gutter Y\n\n<Example value=\"gutter-y\" />\n\n### Align Items\n\n<Example value=\"align-items\" />\n\n### Align Content\n\n<Example value=\"align-content\" />\n\n### Align Self\n\n<Example value=\"align-self\" />\n\n### Justify Content\n\n<Example value=\"justify-content\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Wrap\n\n<Example value=\"wrap\" />\n\n### Offset\n\n<Example value=\"offset\" />\n\n### Order\n\n<Example value=\"order\" />\n\n### Hide\n\n<Example value=\"hide\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
+      "readmeContent": "# Grid\n\nIt's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n### Default\n<Example src=\"examples/default\" />\n\n### Auto Sizing\n\n<Example src=\"examples/auto-sizing\" />\n\n### Gutter\n\n<Example src=\"examples/gutter\" />\n\n### Gutter X\n\n<Example src=\"examples/gutter-x\" />\n\n### Gutter Y\n\n<Example src=\"examples/gutter-y\" />\n\n### Align Items\n\n<Example src=\"examples/align-items\" />\n\n### Align Content\n\n<Example src=\"examples/align-content\" />\n\n### Align Self\n\n<Example src=\"examples/align-self\" />\n\n### Justify Content\n\n<Example src=\"examples/justify-content\" />\n\n### Reverse\n\n<Example src=\"examples/reverse\" />\n\n### Wrap\n\n<Example src=\"examples/wrap\" />\n\n### Offset\n\n<Example src=\"examples/offset\" />\n\n### Order\n\n<Example src=\"examples/order\" />\n\n### Hide\n\n<Example src=\"examples/hide\" />\n\n### Vertical\n\n<Example src=\"examples/vertical\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "TODO",
@@ -3166,7 +3166,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-04-25T20:47:12.453Z",
+      "lastModified": "2024-06-03T20:00:51.631Z",
       "methods": [],
       "properties": [
         {
@@ -3236,7 +3236,7 @@
           "description": "Specifies the size."
         }
       ],
-      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Name\n\nTo see all names click [here](https://icons.getbootstrap.com).\n\n<Example value=\"name\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Size Overriding\n\n<Example value=\"size-overriding\" />\n\n### Wildcard Size\n\n<Example value=\"wildcard-size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Flip\n\n<Example value=\"flip\" />\n\n### Rotate\n\n<Example value=\"rotate\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Register A Custom Name\n\n<Example value=\"register-a-custom-name\" />\n\n### Animation\n\n<Example value=\"animation\" />\n\n### Resolver\n\nUse `import`, `fetch` or any asynchronous function to load SVG files.\n\n<Example value=\"resolver\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example value=\"font-awesome\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example value=\"material\" />\n\n### Multiple Library\n\n<Example value=\"multiple-library\" />\n\n<LastModified />\n",
+      "readmeContent": "# Icon\n\nA graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Name\n\nTo see all names click [here](https://icons.getbootstrap.com).\n\n<Example src=\"examples/name\" />\n\n### Size\n\n<Example src=\"examples/size\" />\n\n### Size Overriding\n\n<Example src=\"examples/size-overriding\" />\n\n### Wildcard Size\n\n<Example src=\"examples/wildcard-size\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Custom Color\n\n<Example src=\"examples/custom-color\" />\n\n### Flip\n\n<Example src=\"examples/flip\" />\n\n### Rotate\n\n<Example src=\"examples/rotate\" />\n\n### Label\n\n<Example src=\"examples/label\" />\n\n### Register A Custom Name\n\n<Example src=\"examples/register-a-custom-name\" />\n\n### Animation\n\n<Example src=\"examples/animation\" />\n\n### Resolver\n\nUse `import`, `fetch` or any asynchronous function to load SVG files.\n\n<Example src=\"examples/resolver\" />\n\n### Font Awesome\n\nFor more information click [here](https://fontawesome.com).\n\n<Example src=\"examples/font-awesome\" />\n\n### Material\n\nFor more information click [here](https://fonts.google.com/icons).\n\n<Example src=\"examples/material\" />\n\n### Multiple Library\n\n<Example src=\"examples/multiple-library\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Icon",
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
@@ -3258,7 +3258,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2024-04-07T20:39:37.131Z",
+      "lastModified": "2024-06-03T20:00:51.627Z",
       "methods": [],
       "properties": [
         {
@@ -3308,7 +3308,7 @@
           "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
         }
       ],
-      "readmeContent": "# Intersection\n\nThe [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nObserves the user's viewport to detect the visibility of the Card.\n<Example value=\"default\" />\n\n### Lazy Image\n\nLoads the image after appearing in the user's viewport.\n<Example value=\"lazy-image\" />\n\n<LastModified />\n",
+      "readmeContent": "# Intersection\n\nThe [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nObserves the user's viewport to detect the visibility of the Card.\n<Example src=\"examples/default\" />\n\n### Lazy Image\n\nLoads the image after appearing in the user's viewport.\n<Example src=\"examples/lazy-image\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Intersection",
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
@@ -3323,7 +3323,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-04-25T20:47:12.909Z",
+      "lastModified": "2024-06-03T20:00:51.636Z",
       "methods": [],
       "properties": [
         {
@@ -3402,7 +3402,7 @@
           "description": "Specifies the progress of the bar by a number between `min` and `max`."
         }
       ],
-      "readmeContent": "# Progress Bar\n\nProgress bar expresses an unspecified wait time or display the length of a process.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Value\n\n<Example value=\"value\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Custom Color\n\n<Example value=\"custom-color\" />\n\n### Label\n\n<Example value=\"label\" />\n\n### Custom Label\n\n<Example value=\"custom-label\" />\n\n### Height\n\n<Example value=\"height\" />\n\n### Indeterminate\n\n<Example value=\"indeterminate\" />\n\n### Buffer\n\n<Example value=\"buffer\" />\n\n### Min And Max\n\n<Example value=\"min-and-max\" />\n\n### Aria Label\n\n<Example value=\"aria-label\" />\n\n### Stacked\n\n<Example value=\"stacked\" />\n\n### Sync\n\n<Example value=\"sync\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
+      "readmeContent": "# Progress Bar\n\nProgress bar expresses an unspecified wait time or display the length of a process.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Value\n\n<Example src=\"examples/value\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Custom Color\n\n<Example src=\"examples/custom-color\" />\n\n### Label\n\n<Example src=\"examples/label\" />\n\n### Custom Label\n\n<Example src=\"examples/custom-label\" />\n\n### Height\n\n<Example src=\"examples/height\" />\n\n### Indeterminate\n\n<Example src=\"examples/indeterminate\" />\n\n### Buffer\n\n<Example src=\"examples/buffer\" />\n\n### Min And Max\n\n<Example src=\"examples/min-and-max\" />\n\n### Aria Label\n\n<Example src=\"examples/aria-label\" />\n\n### Stacked\n\n<Example src=\"examples/stacked\" />\n\n### Sync\n\n<Example src=\"examples/sync\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n<LastModified />\n",
       "styles": [
         {
           "description": "Specifies the color of the bar.",
@@ -3446,7 +3446,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2024-04-07T20:39:37.521Z",
+      "lastModified": "2024-06-03T20:00:51.637Z",
       "methods": [],
       "properties": [
         {
@@ -3479,7 +3479,7 @@
           "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
         }
       ],
-      "readmeContent": "# Scroll Detector\n\nDetects scroll event from an element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example value=\"default\" />\n\n### Scroll Indicator\n\n<Example value=\"scroll-indicator\" />\n\n<LastModified />\n",
+      "readmeContent": "# Scroll Detector\n\nDetects scroll event from an element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example src=\"examples/default\" />\n\n### Scroll Indicator\n\n<Example src=\"examples/scroll-indicator\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Scroll Detector",
       "description": "Detects scroll event from an element.",
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-04-25T20:47:13.332Z",
+      "lastModified": "2024-06-03T20:00:51.610Z",
       "methods": [
         {
           "async": false,
@@ -3696,7 +3696,7 @@
           "description": "Specifies whether undo can be performed or not."
         }
       ],
-      "readmeContent": "# Signature\n\nAllows user to draw smooth signatures.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Dimensions\n\n<Example value=\"dimensions\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Value\n\n<Example value=\"value\" />\n\n### Width\n\n<Example value=\"width\" />\n\n### Distance\n\n<Example value=\"distance\" />\n\n### Clear\n\n<Example value=\"clear\" />\n\n### History\n\n<Example value=\"history\" />\n\n### Resizable\n\n<Example value=\"resizable\" />\n\n### Clear On Resize\n\n<Example value=\"clear-on-resize\" />\n\n### Save\n\n<Example value=\"save\" />\n\n<LastModified />\n",
+      "readmeContent": "# Signature\n\nAllows user to draw smooth signatures.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Dimensions\n\n<Example src=\"examples/dimensions\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Value\n\n<Example src=\"examples/value\" />\n\n### Width\n\n<Example src=\"examples/width\" />\n\n### Distance\n\n<Example src=\"examples/distance\" />\n\n### Clear\n\n<Example src=\"examples/clear\" />\n\n### History\n\n<Example src=\"examples/history\" />\n\n### Resizable\n\n<Example src=\"examples/resizable\" />\n\n### Clear On Resize\n\n<Example src=\"examples/clear-on-resize\" />\n\n### Save\n\n<Example src=\"examples/save\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Signature",
       "description": "Allows user to draw smooth signatures.",
@@ -3711,7 +3711,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2024-04-13T21:25:18.034Z",
+      "lastModified": "2024-06-03T20:00:51.607Z",
       "methods": [],
       "properties": [
         {
@@ -3725,7 +3725,7 @@
           "description": "TODO"
         }
       ],
-      "readmeContent": "# Spacer\n\nTODO\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
+      "readmeContent": "# Spacer\n\nTODO\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Spacer",
       "description": "TODO"
@@ -3733,7 +3733,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-04-25T20:47:13.491Z",
+      "lastModified": "2024-06-03T20:00:51.604Z",
       "methods": [],
       "properties": [
         {
@@ -3768,7 +3768,7 @@
           "description": "Specifies which variant of the spinner to use."
         }
       ],
-      "readmeContent": "# Spinner\n\nAn indicator of progress and activity.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Size\n\n<Example value=\"size\" />\n\n### Custom Size\n\n<Example value=\"custom-size\" />\n\n### Color\n\n<Example value=\"color\" />\n\n### Type\n\n<Example value=\"type\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n<LastModified />\n",
+      "readmeContent": "# Spinner\n\nAn indicator of progress and activity.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Size\n\n<Example src=\"examples/size\" />\n\n### Custom Size\n\n<Example src=\"examples/custom-size\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Type\n\n<Example src=\"examples/type\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Spinner",
       "description": "An indicator of progress and activity.",
@@ -3777,7 +3777,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-06-03T19:25:53.459Z",
+      "lastModified": "2024-06-03T20:00:51.596Z",
       "methods": [],
       "properties": [
         {
@@ -3831,7 +3831,7 @@
           "description": "Whether the stack is vertical."
         }
       ],
-      "readmeContent": "# Stack\n\nA container for arranging elements vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Divider\n\n<Example value=\"divider\" />\n\n<LastModified />\n",
+      "readmeContent": "# Stack\n\nA container for arranging elements vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Vertical\n\n<Example src=\"examples/vertical\" />\n\n### Divider\n\n<Example src=\"examples/divider\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Stack",
       "description": "A container for arranging elements vertically or horizontally.",
@@ -3853,7 +3853,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-04-25T20:47:13.807Z",
+      "lastModified": "2024-06-03T20:00:51.601Z",
       "methods": [],
       "properties": [
         {
@@ -3886,7 +3886,7 @@
           "description": "Specifies the z-index."
         }
       ],
-      "readmeContent": "# Sticky\n\nElement content is positioned based on the user's scroll position.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Top\n\n<Example value=\"top\" />\n\n### Contacts\n\n<Example value=\"contacts\" />\n\n### State Attribute\n\n<Example value=\"state-attribute\" />\n\n### Slots\n\n<Example value=\"slots\" />\n\n### Sidebar\n\n<Example value=\"sidebar\" />\n\n<LastModified />\n",
+      "readmeContent": "# Sticky\n\nElement content is positioned based on the user's scroll position.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Top\n\n<Example src=\"examples/top\" />\n\n### Contacts\n\n<Example src=\"examples/contacts\" />\n\n### State Attribute\n\n<Example src=\"examples/state-attribute\" />\n\n### Slots\n\n<Example src=\"examples/slots\" />\n\n### Sidebar\n\n<Example src=\"examples/sidebar\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Sticky",
       "description": "Element content is positioned based on the user's scroll position.",
@@ -3917,7 +3917,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2024-04-07T20:39:38.542Z",
+      "lastModified": "2024-06-03T20:00:51.598Z",
       "methods": [],
       "properties": [
         {
@@ -3940,7 +3940,7 @@
           "description": "Disables the switch."
         }
       ],
-      "readmeContent": "# Switch\n\nToggles the state of a single item on or off.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Checked\n\n<Example value=\"checked\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Event\n\n<Example value=\"event\" />\n\n### Customized\n\n<Example value=\"customized\" />\n\n### 3D\n\n<Example value=\"three-dimensional\" />\n\n<LastModified />\n",
+      "readmeContent": "# Switch\n\nToggles the state of a single item on or off.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Checked\n\n<Example src=\"examples/checked\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Event\n\n<Example src=\"examples/event\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n### 3D\n\n<Example src=\"examples/three-dimensional\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Switch",
       "description": "Toggles the state of a single item on or off."
@@ -3955,7 +3955,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-04-24T19:40:32.261Z",
+      "lastModified": "2024-06-03T20:00:51.594Z",
       "methods": [],
       "properties": [
         {
@@ -3977,7 +3977,7 @@
           "description": "You can use vertical property for vertical mode."
         }
       ],
-      "readmeContent": "# Tabs\n\nOrganizes content across different screens.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Grow\n\n<Example value=\"grow\" />\n\n### Justify\n\n<Example value=\"justify\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Below\n\n<Example value=\"below\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
+      "readmeContent": "# Tabs\n\nOrganizes content across different screens.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Grow\n\n<Example src=\"examples/grow\" />\n\n### Justify\n\n<Example src=\"examples/justify\" />\n\n### Reverse\n\n<Example src=\"examples/reverse\" />\n\n### Below\n\n<Example src=\"examples/below\" />\n\n### Vertical\n\n<Example src=\"examples/vertical\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Tabs",
       "description": "Organizes content across different screens.",
@@ -4136,7 +4136,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2024-04-07T20:39:39.117Z",
+      "lastModified": "2024-06-03T20:00:51.592Z",
       "methods": [
         {
           "async": false,
@@ -4253,7 +4253,7 @@
           "description": "TODO"
         }
       ],
-      "readmeContent": "# Tooltip\n\nTODO.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
+      "readmeContent": "# Tooltip\n\nTODO.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Tooltip",
       "description": "TODO.",
