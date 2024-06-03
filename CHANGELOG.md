@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/htmlplus/ui/compare/v1.3.0...v1.3.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* Upgrade the accordion element. ([54dd1a9](https://github.com/htmlplus/ui/commit/54dd1a955d10efff2ec611c08c608301569d5b2b))
+* Upgrade the stack element. ([f10dcc8](https://github.com/htmlplus/ui/commit/f10dcc82d4356a545327c469377e66e31971c07b))
+
 ## [1.3.0](https://github.com/htmlplus/ui/compare/v1.2.1...v1.3.0) (2024-04-24)
 
 
