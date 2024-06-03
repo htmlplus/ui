@@ -3,7 +3,7 @@ import { Element, Property, toUnit } from '@htmlplus/element';
 import { PlusCore } from '@/core';
 import { Style } from '@/decorators';
 
-import { StackAlignItems, StackJustifyContent } from './stack.types';
+import { StackAlign, StackGap, StackJustify } from './stack.types';
 
 /**
  * @slot default - The default slot.
@@ -11,31 +11,31 @@ import { StackAlignItems, StackJustifyContent } from './stack.types';
 @Element()
 export class Stack extends PlusCore {
   /**
-   * TODO.
+   * The gap between items.
    */
   @Property()
-  alignItems?: StackAlignItems = 'center';
+  gap?: StackGap;
 
   /**
-   * TODO.
+   * The alignment of items along the cross axis.
    */
   @Property()
-  gap?: string;
+  items?: StackAlign = 'center';
 
   /**
-   * TODO.
+   * The distribution of items along the main axis.
    */
   @Property()
-  justifyContent?: StackJustifyContent = 'center';
+  justify?: StackJustify = 'center';
 
   /**
-   * TODO.
+   * Whether to reverse the order of items.
    */
   @Property()
   reverse?: boolean;
 
   /**
-   * TODO.
+   * Whether the stack is vertical.
    */
   @Property()
   vertical?: boolean;
@@ -47,11 +47,13 @@ export class Stack extends PlusCore {
     if (this.reverse) direction += '-reverse';
 
     return {
-      'align-items': this.alignItems,
+      'align-items': this.items?.replace(/start|end/, 'flex-$&'),
       'display': 'flex',
       'flex-direction': direction,
       'gap': toUnit(this.gap),
-      'justify-content': this.justifyContent
+      'justify-content': this.justify
+        ?.replace(/start|end/, 'flex-$&')
+        ?.replace(/between|around|evenly/, 'space-$&')
     };
   }
 

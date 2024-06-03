@@ -1,6 +1,6 @@
 # Stack
 
-TODO.
+A container for arranging elements vertically or horizontally.
 
 <Playground />
 
@@ -15,5 +15,13 @@ TODO.
 ### Default
 
 <Example value="default" />
+
+### Vertical
+
+<Example value="vertical" />
+
+### Divider
+
+<Example value="divider" />
 
 <LastModified />

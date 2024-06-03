@@ -1,16 +1,13 @@
-export type StackAlignItems =
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'baseline'
-  | 'stretch'
-  | (string & {});
+export type StackAlign = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
 
-export type StackJustifyContent =
-  | 'flex-start'
-  | 'flex-end'
+export type StackGap = number | string;
+
+export type StackJustify =
+  | 'normal'
+  | 'start'
+  | 'end'
   | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | (string & {});
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch';
