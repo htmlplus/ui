@@ -14,26 +14,26 @@ Element content is positioned based on the user's scroll position.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Top
 
-<Example value="top" />
+<Example src="examples/top" />
 
 ### Contacts
 
-<Example value="contacts" />
+<Example src="examples/contacts" />
 
 ### State Attribute
 
-<Example value="state-attribute" />
+<Example src="examples/state-attribute" />
 
 ### Slots
 
-<Example value="slots" />
+<Example src="examples/slots" />
 
 ### Sidebar
 
-<Example value="sidebar" />
+<Example src="examples/sidebar" />
 
 <LastModified />

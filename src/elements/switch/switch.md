@@ -14,26 +14,26 @@ Toggles the state of a single item on or off.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Checked
 
-<Example value="checked" />
+<Example src="examples/checked" />
 
 ### Disabled
 
-<Example value="disabled" />
+<Example src="examples/disabled" />
 
 ### Event
 
-<Example value="event" />
+<Example src="examples/event" />
 
 ### Customized
 
-<Example value="customized" />
+<Example src="examples/customized" />
 
 ### 3D
 
-<Example value="three-dimensional" />
+<Example src="examples/three-dimensional" />
 
 <LastModified />

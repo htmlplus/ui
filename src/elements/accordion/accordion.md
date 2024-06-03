@@ -14,48 +14,48 @@ A vertically stacked list of headers that reveal or hide associated sections of 
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Disabled
 
-<Example value="disabled" />
+<Example src="examples/disabled" />
 
 ### Open
 
-<Example value="open" />
+<Example src="examples/open" />
 
 ### Methods
 
 Open the developer console.
 
-<Example value="methods" />
+<Example src="examples/methods" />
 
 ### Persistent
 
-<Example value="persistent" />
+<Example src="examples/persistent" />
 
 ### Custom Icon
 
-<Example value="custom-icon" />
+<Example src="examples/custom-icon" />
 
 ### Customized
 
-<Example value="customized" />
+<Example src="examples/customized" />
 
 ### Custom Summary Template
 
-<Example value="custom-summary-template" />
+<Example src="examples/custom-summary-template" />
 
 ### Prevent From Toggling
 
-<Example value="prevent-from-toggling" />
+<Example src="examples/prevent-from-toggling" />
 
 ### Slots
 
-<Example value="slots" />
+<Example src="examples/slots" />
 
 ### Async Content
 
-<Example value="async-content" />
+<Example src="examples/async-content" />
 
 <LastModified />

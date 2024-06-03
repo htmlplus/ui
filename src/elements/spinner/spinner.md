@@ -14,26 +14,26 @@ An indicator of progress and activity.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Size
 
-<Example value="size" />
+<Example src="examples/size" />
 
 ### Custom Size
 
-<Example value="custom-size" />
+<Example src="examples/custom-size" />
 
 ### Color
 
-<Example value="color" />
+<Example src="examples/color" />
 
 ### Type
 
-<Example value="type" />
+<Example src="examples/type" />
 
 ### Customized
 
-<Example value="customized" />
+<Example src="examples/customized" />
 
 <LastModified />

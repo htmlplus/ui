@@ -14,38 +14,38 @@ Cards contain content and actions about a single subject.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Elevation
 
 The card element accepts a custom elevation between `1` and `24`. The elevation property specifies the value of the box-shodow property.
-<Example value="elevation" />
+<Example src="examples/elevation" />
 
 ### Outlined
 
 By default, the card element has no border. outlined property Adds border.
-<Example value="outlined" />
+<Example src="examples/outlined" />
 
 ### Border Color
 
-<Example value="border-color" />
+<Example src="examples/border-color" />
 
 ### Border Width
 
 By default, the card element has no border. outlined property Adds border.
-<Example value="border-width" />
+<Example src="examples/border-width" />
 
 ### Tile
 
 By default, the card element has border-radius. The tile property neutralizes border-radius.
-<Example value="tile" />
+<Example src="examples/tile" />
 
 ### Background Color
 
-<Example value="background-color" />
+<Example src="examples/background-color" />
 
 ### Customized
 
-<Example value="customized" />
+<Example src="examples/customized" />
 
 <LastModified />

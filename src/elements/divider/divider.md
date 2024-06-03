@@ -14,42 +14,42 @@ A thin line that divides the content vertically or horizontally.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Width
 
-<Example value="width" />
+<Example src="examples/width" />
 
 ### Type
 
-<Example value="type" />
+<Example src="examples/type" />
 
 ### Color
 
-<Example value="color" />
+<Example src="examples/color" />
 
 ### Variant
 
-<Example value="variant" />
+<Example src="examples/variant" />
 
 ### Placement
 
-<Example value="placement" />
+<Example src="examples/placement" />
 
 ### Horizontal
 
-<Example value="horizontal" />
+<Example src="examples/horizontal" />
 
 ### Vertical
 
-<Example value="vertical" />
+<Example src="examples/vertical" />
 
 ### Icon
 
-<Example value="icon" />
+<Example src="examples/icon" />
 
 ### Sticky
 
-<Example value="sticky" />
+<Example src="examples/sticky" />
 
 <LastModified />

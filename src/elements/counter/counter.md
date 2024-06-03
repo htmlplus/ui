@@ -14,42 +14,42 @@ Can be used to quickly create animations that display numerical data in a more i
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Range
 
-<Example value="range" />
+<Example src="examples/range" />
 
 ### Reverse
 
-<Example value="reverse" />
+<Example src="examples/reverse" />
 
 ### Duration
 
-<Example value="duration" />
+<Example src="examples/duration" />
 
 ### Delay
 
-<Example value="delay" />
+<Example src="examples/delay" />
 
 ### Separator
 
-<Example value="separator" />
+<Example src="examples/separator" />
 
 ### Decimal
 
-<Example value="decimal" />
+<Example src="examples/decimal" />
 
 ### Separator & Decimal
 
-<Example value="separator-decimal" />
+<Example src="examples/separator-decimal" />
 
 ### Numerals
 
-<Example value="numerals" />
+<Example src="examples/numerals" />
 
 ### Intersection
 
-<Example value="intersection" />
+<Example src="examples/intersection" />
 
 <LastModified />

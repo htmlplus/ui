@@ -16,30 +16,30 @@ the hierarchy.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Separator
 
-<Example value="separator" />
+<Example src="examples/separator" />
 
 ### Custom Separator
 
-<Example value="custom-separator" />
+<Example src="examples/custom-separator" />
 
 ### Limitation
 
-<Example value="limitation" />
+<Example src="examples/limitation" />
 
 ### With Icon
 
-<Example value="with-icon" />
+<Example src="examples/with-icon" />
 
 ### Custom Expander
 
-<Example value="custom-expander" />
+<Example src="examples/custom-expander" />
 
 ### Customized
 
-<Example value="customized" />
+<Example src="examples/customized" />
 
 <LastModified />

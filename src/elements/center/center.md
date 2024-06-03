@@ -14,10 +14,10 @@ Centers content vertically and horizontally.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Inline
 
-<Example value="inline" />
+<Example src="examples/inline" />
 
 <LastModified />

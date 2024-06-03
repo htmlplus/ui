@@ -14,38 +14,38 @@ Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.or
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Standard
 
-<Example value="standard" />
+<Example src="examples/standard" />
 
 ### Formatting
 
-<Example value="formatting" />
+<Example src="examples/formatting" />
 
 ### Decimals
 
-<Example value="decimals" />
+<Example src="examples/decimals" />
 
 ### Unit
 
-<Example value="unit" />
+<Example src="examples/unit" />
 
 ### Display
 
-<Example value="display" />
+<Example src="examples/display" />
 
 ### Separator
 
-<Example value="separator" />
+<Example src="examples/separator" />
 
 ### Signed
 
-<Example value="signed" />
+<Example src="examples/signed" />
 
 ### Locale
 
-<Example value="locale" />
+<Example src="examples/locale" />
 
 <LastModified />

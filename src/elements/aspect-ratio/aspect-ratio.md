@@ -14,26 +14,26 @@ Sets a preferred aspect ratio only for the first child inside the element.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Image
 
-<Example value="image" />
+<Example src="examples/image" />
 
 ### Video
 
-<Example value="video" />
+<Example src="examples/video" />
 
 ### Card
 
-<Example value="card" />
+<Example src="examples/card" />
 
 ### Map
 
-<Example value="map" />
+<Example src="examples/map" />
 
 ### More
 
-<Example value="more" />
+<Example src="examples/more" />
 
 <LastModified />

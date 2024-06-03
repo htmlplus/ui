@@ -14,74 +14,74 @@ A graphical representation of an action, object, or idea that is used in a user 
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Name
 
 To see all names click [here](https://icons.getbootstrap.com).
 
-<Example value="name" />
+<Example src="examples/name" />
 
 ### Size
 
-<Example value="size" />
+<Example src="examples/size" />
 
 ### Size Overriding
 
-<Example value="size-overriding" />
+<Example src="examples/size-overriding" />
 
 ### Wildcard Size
 
-<Example value="wildcard-size" />
+<Example src="examples/wildcard-size" />
 
 ### Color
 
-<Example value="color" />
+<Example src="examples/color" />
 
 ### Custom Color
 
-<Example value="custom-color" />
+<Example src="examples/custom-color" />
 
 ### Flip
 
-<Example value="flip" />
+<Example src="examples/flip" />
 
 ### Rotate
 
-<Example value="rotate" />
+<Example src="examples/rotate" />
 
 ### Label
 
-<Example value="label" />
+<Example src="examples/label" />
 
 ### Register A Custom Name
 
-<Example value="register-a-custom-name" />
+<Example src="examples/register-a-custom-name" />
 
 ### Animation
 
-<Example value="animation" />
+<Example src="examples/animation" />
 
 ### Resolver
 
 Use `import`, `fetch` or any asynchronous function to load SVG files.
 
-<Example value="resolver" />
+<Example src="examples/resolver" />
 
 ### Font Awesome
 
 For more information click [here](https://fontawesome.com).
 
-<Example value="font-awesome" />
+<Example src="examples/font-awesome" />
 
 ### Material
 
 For more information click [here](https://fonts.google.com/icons).
 
-<Example value="material" />
+<Example src="examples/material" />
 
 ### Multiple Library
 
-<Example value="multiple-library" />
+<Example src="examples/multiple-library" />
 
 <LastModified />

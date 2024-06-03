@@ -14,30 +14,30 @@ Organizes content across different screens.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Disabled
 
-<Example value="disabled" />
+<Example src="examples/disabled" />
 
 ### Grow
 
-<Example value="grow" />
+<Example src="examples/grow" />
 
 ### Justify
 
-<Example value="justify" />
+<Example src="examples/justify" />
 
 ### Reverse
 
-<Example value="reverse" />
+<Example src="examples/reverse" />
 
 ### Below
 
-<Example value="below" />
+<Example src="examples/below" />
 
 ### Vertical
 
-<Example value="vertical" />
+<Example src="examples/vertical" />
 
 <LastModified />

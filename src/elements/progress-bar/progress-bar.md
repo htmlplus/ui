@@ -14,58 +14,58 @@ Progress bar expresses an unspecified wait time or display the length of a proce
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Value
 
-<Example value="value" />
+<Example src="examples/value" />
 
 ### Color
 
-<Example value="color" />
+<Example src="examples/color" />
 
 ### Custom Color
 
-<Example value="custom-color" />
+<Example src="examples/custom-color" />
 
 ### Label
 
-<Example value="label" />
+<Example src="examples/label" />
 
 ### Custom Label
 
-<Example value="custom-label" />
+<Example src="examples/custom-label" />
 
 ### Height
 
-<Example value="height" />
+<Example src="examples/height" />
 
 ### Indeterminate
 
-<Example value="indeterminate" />
+<Example src="examples/indeterminate" />
 
 ### Buffer
 
-<Example value="buffer" />
+<Example src="examples/buffer" />
 
 ### Min And Max
 
-<Example value="min-and-max" />
+<Example src="examples/min-and-max" />
 
 ### Aria Label
 
-<Example value="aria-label" />
+<Example src="examples/aria-label" />
 
 ### Stacked
 
-<Example value="stacked" />
+<Example src="examples/stacked" />
 
 ### Sync
 
-<Example value="sync" />
+<Example src="examples/sync" />
 
 ### Customized
 
-<Example value="customized" />
+<Example src="examples/customized" />
 
 <LastModified />

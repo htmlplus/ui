@@ -14,74 +14,74 @@ An image representing a user's profile picture.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Text
 
-<Example value="text" />
+<Example src="examples/text" />
 
 ### Color
 
-<Example value="color" />
+<Example src="examples/color" />
 
 ### Image
 
-<Example value="image" />
+<Example src="examples/image" />
 
 ### Icon
 
-<Example value="icon" />
+<Example src="examples/icon" />
 
 ### Svg
 
-<Example value="svg" />
+<Example src="examples/svg" />
 
 ### Shape
 
-<Example value="shape" />
+<Example src="examples/shape" />
 
 ### Size
 
-<Example value="size" />
+<Example src="examples/size" />
 
 ### Size Overriding
 
-<Example value="size-overriding" />
+<Example src="examples/size-overriding" />
 
 ### Wildcard Size
 
-<Example value="wildcard-size" />
+<Example src="examples/wildcard-size" />
 
 ### Link With Tooltip
 
-<Example value="link-with-tooltip" />
+<Example src="examples/link-with-tooltip" />
 
 ### With Avatar
 
-<Example value="with-avatar" />
+<Example src="examples/with-avatar" />
 
 ### Slots
 
-<Example value="slots" />
+<Example src="examples/slots" />
 
 ### Group
 
-<Example value="group" />
+<Example src="examples/group" />
 
 ### Group Stacked
 
-<Example value="group-stacked" />
+<Example src="examples/group-stacked" />
 
 ### Group Hoverable
 
-<Example value="group-hoverable" />
+<Example src="examples/group-hoverable" />
 
 ### Group Gutter
 
-<Example value="group-gutter" />
+<Example src="examples/group-gutter" />
 
 ### Group Link With Tooltip
 
-<Example value="group-link-with-tooltip" />
+<Example src="examples/group-link-with-tooltip" />
 
 <LastModified />

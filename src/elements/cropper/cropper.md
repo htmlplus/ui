@@ -14,68 +14,68 @@ Used for cropping large images to fit a container before uploading them to the s
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Disabled
 
-<Example value="disabled" />
+<Example src="examples/disabled" />
 
 ### Shape
 
-<Example value="shape" />
+<Example src="examples/shape" />
 
 ### Indicator
 
-<Example value="indicator" />
+<Example src="examples/indicator" />
 
 ### Guides
 
-<Example value="guides" />
+<Example src="examples/guides" />
 
 ### Transparent
 
-<Example value="transparent" />
+<Example src="examples/transparent" />
 
 ### Background
 
-<Example value="background" />
+<Example src="examples/background" />
 
 ### Area
 
-<Example value="area" />
+<Example src="examples/area" />
 
 ### Aspect Ratio
 
-<Example value="aspect-ratio" />
+<Example src="examples/aspect-ratio" />
 
 ### Mode
 
-<Example value="mode" />
+<Example src="examples/mode" />
 
 ### Zoomable
 
-<Example value="zoomable" />
+<Example src="examples/zoomable" />
 
 ### Zoom Ratio
 
-<Example value="zoom-ratio" />
+<Example src="examples/zoom-ratio" />
 
 ### To Base64
 
-<Example value="to-base64" />
+<Example src="examples/to-base64" />
 
 ### To Blob
 
 Open the developer console.
 
-<Example value="to-blob" />
+<Example src="examples/to-blob" />
 
 ### To Url
 
-<Example value="to-url" />
+<Example src="examples/to-url" />
 
 ### Styles
 
-<Example value="styles" />
+<Example src="examples/styles" />
 
 <LastModified />

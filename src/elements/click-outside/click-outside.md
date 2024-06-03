@@ -14,10 +14,10 @@ Detects when a click event happens outside of itself.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Menu
 
-<Example value="menu" />
+<Example src="examples/menu" />
 
 <LastModified />

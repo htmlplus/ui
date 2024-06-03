@@ -14,6 +14,6 @@ This element lets you add collapsible side contents like navigation alongside so
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 <LastModified />

@@ -16,32 +16,32 @@ Allows you to select file or files by using click or drag & drop functionality.
 
 Open the developer console.
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Disabled
 
-<Example value="disabled" />
+<Example src="examples/disabled" />
 
 ### Multiple
 
-<Example value="multiple" />
+<Example src="examples/multiple" />
 
 ### Accept
 
 One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.
 
-<Example value="accept" />
+<Example src="examples/accept" />
 
 ### Min & Max
 
-<Example value="min-and-max" />
+<Example src="examples/min-and-max" />
 
 ### Min & Max Size
 
-<Example value="min-and-max-size" />
+<Example src="examples/min-and-max-size" />
 
 ### Droppable
 
-<Example value="droppable" />
+<Example src="examples/droppable" />
 
 <LastModified />

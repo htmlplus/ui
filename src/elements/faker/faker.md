@@ -14,30 +14,30 @@ Generates massive amounts of fake (but realistic) data for testing and developme
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### API
 
 To see all APIs click [here](https://fakerjs.dev/api).
 
-<Example value="api" />
+<Example src="examples/api" />
 
 ### API's Arguments
 
-<Example value="arguments" />
+<Example src="examples/arguments" />
 
 ### Seed
 
-<Example value="seed" />
+<Example src="examples/seed" />
 
 ### Localization
 
 Makes the result localized. Consider that localization configure globally. [More](https://fakerjs.dev/guide/localization.html).
 
-<Example value="localization" />
+<Example src="examples/localization" />
 
 ### More
 
-<Example value="more" />
+<Example src="examples/more" />
 
 <LastModified />

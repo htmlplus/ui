@@ -14,40 +14,40 @@ Creates an animation and applies it to the content. Powered by the [Web Animatio
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Name
 
 To see all names click [here](https://www.htmlplus.io/element/animation/names).
-<Example value="name" />
+<Example src="examples/name" />
 
 ### Duration
 
-<Example value="duration" />
+<Example src="examples/duration" />
 
 ### Easing
 
 To see all easings click [here](https://github.com/htmlplus/ui/blob/main/src/elements/animation/animation.constants.ts).
-<Example value="easing" />
+<Example src="examples/easing" />
 
 ### Methods
 
-<Example value="methods" />
+<Example src="examples/methods" />
 
 ### Keyframes
 
-<Example value="keyframes" />
+<Example src="examples/keyframes" />
 
 ### Register A Custom Name
 
-<Example value="register-a-custom-name" />
+<Example src="examples/register-a-custom-name" />
 
 ### Button
 
-<Example value="button" />
+<Example src="examples/button" />
 
 ### Intersection
 
-<Example value="intersection" />
+<Example src="examples/intersection" />
 
 <LastModified />

@@ -14,50 +14,50 @@ Allows user to draw smooth signatures.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Color
 
-<Example value="color" />
+<Example src="examples/color" />
 
 ### Dimensions
 
-<Example value="dimensions" />
+<Example src="examples/dimensions" />
 
 ### Disabled
 
-<Example value="disabled" />
+<Example src="examples/disabled" />
 
 ### Value
 
-<Example value="value" />
+<Example src="examples/value" />
 
 ### Width
 
-<Example value="width" />
+<Example src="examples/width" />
 
 ### Distance
 
-<Example value="distance" />
+<Example src="examples/distance" />
 
 ### Clear
 
-<Example value="clear" />
+<Example src="examples/clear" />
 
 ### History
 
-<Example value="history" />
+<Example src="examples/history" />
 
 ### Resizable
 
-<Example value="resizable" />
+<Example src="examples/resizable" />
 
 ### Clear On Resize
 
-<Example value="clear-on-resize" />
+<Example src="examples/clear-on-resize" />
 
 ### Save
 
-<Example value="save" />
+<Example src="examples/save" />
 
 <LastModified />

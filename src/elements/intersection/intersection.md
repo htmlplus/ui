@@ -15,11 +15,11 @@ The [Intersection Observer API](https://mdn.io/intersection-observer-api) provid
 ### Default
 
 Observes the user's viewport to detect the visibility of the Card.
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Lazy Image
 
 Loads the image after appearing in the user's viewport.
-<Example value="lazy-image" />
+<Example src="examples/lazy-image" />
 
 <LastModified />

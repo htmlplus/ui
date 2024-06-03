@@ -14,14 +14,14 @@ A container for arranging elements vertically or horizontally.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Vertical
 
-<Example value="vertical" />
+<Example src="examples/vertical" />
 
 ### Divider
 
-<Example value="divider" />
+<Example src="examples/divider" />
 
 <LastModified />

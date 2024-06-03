@@ -14,6 +14,6 @@ TODO.
 
 ### Default
 
-<Example value="default" />
+<Example src="examples/default" />
 
 <LastModified />

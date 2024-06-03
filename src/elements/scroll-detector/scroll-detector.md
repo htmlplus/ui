@@ -16,10 +16,10 @@ Detects scroll event from an element.
 
 Open the developer console.
 
-<Example value="default" />
+<Example src="examples/default" />
 
 ### Scroll Indicator
 
-<Example value="scroll-indicator" />
+<Example src="examples/scroll-indicator" />
 
 <LastModified />
