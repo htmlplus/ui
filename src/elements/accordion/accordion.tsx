@@ -170,6 +170,12 @@ export class Accordion extends PlusCore {
     }
   }
 
+  getId(key: string) {
+    if (this.$host.id) {
+      return this.$host.id + '-' + key;
+    }
+  }
+
   initialize() {
     this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
   }
@@ -236,8 +242,10 @@ export class Accordion extends PlusCore {
       <>
         <slot name="top" />
         <div
+          aria-controls={this.getId('body')}
           aria-disabled={!!this.disabled}
           aria-expanded={!!this.open}
+          id={this.getId('header')}
           part="header"
           role="button"
           tabIndex={this.disabled ? -1 : 0}
@@ -250,10 +258,12 @@ export class Accordion extends PlusCore {
           <slot name="icon">
             <slot name={`icon-${this.open ? 'collapse' : 'expand'}`}>
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
                 fill="currentColor"
+                focusable="false"
                 viewBox="0 0 16 16"
                 part="svg"
               >
@@ -266,7 +276,12 @@ export class Accordion extends PlusCore {
           </slot>
         </div>
         <slot name="middle" />
-        <div part="body">
+        <div
+          part="body"
+          role="region"
+          aria-labelledby={this.getId('header')}
+          id={this.getId('body')}
+        >
           <slot part="content" />
         </div>
         <slot name="bottom" />

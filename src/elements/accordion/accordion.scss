@@ -11,16 +11,16 @@
   border-top: 0;
 }
 
-:host(:not(:first-of-type, :last-of-type)) {
+:host(:not(:first-of-type):not(:last-of-type)) {
   border-radius: 0;
 }
 
-:host(:not(:only-of-type):first-of-type) {
+:host(:first-of-type:not(:last-of-type)) {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-:host(:not(:only-of-type):last-of-type) {
+:host(:last-of-type:not(:first-of-type)) {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
