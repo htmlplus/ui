@@ -36,7 +36,7 @@ const appendToMethod = (target, key, handler) => {
     // Creates new function
     function next(...parameters) {
         // Calls the previous
-        const result = previous === null || previous === void 0 ? void 0 : previous.bind(this)(...parameters);
+        const result = previous?.bind(this)(...parameters);
         // Calls the appended
         handler.bind(this)(...parameters);
         // Returns the result
@@ -84,7 +84,7 @@ const host = (target) => {
     try {
         return target[API_HOST]();
     }
-    catch (_a) {
+    catch {
         return target;
     }
 };
@@ -138,11 +138,11 @@ const off = (target, type, handler, options) => {
 };
 
 const isEvent = (input) => {
-    return !!(input === null || input === void 0 ? void 0 : input.match(/on[A-Z]\w+/g));
+    return !!input?.match(/on[A-Z]\w+/g);
 };
 
 const toEvent = (input) => {
-    return input === null || input === void 0 ? void 0 : input.slice(2).toLowerCase();
+    return input?.slice(2).toLowerCase();
 };
 
 // Regexps involved with splitting words in various case formats.
@@ -319,12 +319,11 @@ const attributes$1 = (target, attributes) => {
         else
             updateAttribute(element, key, next[key]);
     }
-    element[symbol] = Object.assign({}, next);
+    element[symbol] = { ...next };
 };
 
 const call = (target, key, ...parameters) => {
-    var _a;
-    return (_a = target[key]) === null || _a === void 0 ? void 0 : _a.call(target, ...parameters);
+    return target[key]?.call(target, ...parameters);
 };
 
 const typeOf = (input) => {
@@ -430,7 +429,7 @@ const getConfig = (...keys) => {
 const setConfig = (config, options) => {
     if (isServer())
         return;
-    const previous = (options === null || options === void 0 ? void 0 : options.override) ? {} : window[`$htmlplus$`];
+    const previous = options?.override ? {} : window[`$htmlplus$`];
     window[`$htmlplus$`] = merge({}, DEFAULTS, previous, config);
 };
 
@@ -465,13 +464,11 @@ const getFramework = (target) => {
 };
 
 const getStyles = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_STYLE]) !== null && _a !== void 0 ? _a : target[STATIC_STYLE];
+    return target.constructor[STATIC_STYLE] ?? target[STATIC_STYLE];
 };
 
 const getTag = (target) => {
-    var _a;
-    return (_a = target.constructor[STATIC_TAG]) !== null && _a !== void 0 ? _a : target[STATIC_TAG];
+    return target.constructor[STATIC_TAG] ?? target[STATIC_TAG];
 };
 
 /**
@@ -490,24 +487,21 @@ const isCSSColor = (input) => {
 const isRTL = (target) => direction(target) == 'rtl';
 
 const shadowRoot = (target) => {
-    var _a;
-    return (_a = host(target)) === null || _a === void 0 ? void 0 : _a.shadowRoot;
+    return host(target)?.shadowRoot;
 };
 
 /**
  * Selects the first element in the shadow dom that matches a specified CSS selector.
  */
 function query(target, selectors) {
-    var _a;
-    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelector(selectors);
+    return shadowRoot(target)?.querySelector(selectors);
 }
 
 /**
  * Selects all elements in the shadow dom that match a specified CSS selector.
  */
 function queryAll(target, selectors) {
-    var _a;
-    return (_a = shadowRoot(target)) === null || _a === void 0 ? void 0 : _a.querySelectorAll(selectors);
+    return shadowRoot(target)?.querySelectorAll(selectors);
 }
 
 const task = (options) => {
@@ -1252,9 +1246,8 @@ tag('svg');
  * @param callback Invoked when the rendering phase is completed.
  */
 const request = (target, name, previous, callback) => {
-    var _a, _b;
     // Creates/Gets a stacks.
-    const stacks = (target[_a = API_STACKS] || (target[_a] = new Map()));
+    const stacks = (target[API_STACKS] ||= new Map());
     // Creates/Updates a stack.
     const stack = stacks.get(name) || { callbacks: [], previous };
     // Adds the callback to the stack, if exists.
@@ -1300,7 +1293,7 @@ const request = (target, name, previous, callback) => {
         target[API_RENDER_COMPLETED] = true;
     };
     // Creates/Gets a micro task function.
-    target[_b = API_REQUEST] || (target[_b] = task({ handler }));
+    target[API_REQUEST] ||= task({ handler });
     // Calls the micro task.
     call(target, API_REQUEST);
 };
@@ -1360,7 +1353,7 @@ const toProperty = (input, type) => {
                 return value;
             }
         }
-        catch (_a) { }
+        catch { }
     }
     if (TYPE_OBJECT & type || type === Object) {
         try {
@@ -1369,7 +1362,7 @@ const toProperty = (input, type) => {
                 return value;
             }
         }
-        catch (_b) { }
+        catch { }
     }
     if (TYPE_UNDEFINED & type || type === undefined) {
         if (string === 'undefined') {
@@ -1399,7 +1392,7 @@ function Bind() {
         return {
             configurable: true,
             get() {
-                const value = descriptor === null || descriptor === void 0 ? void 0 : descriptor.value.bind(this);
+                const value = descriptor?.value.bind(this);
                 defineProperty(this, key, {
                     value,
                     configurable: true,
@@ -1417,7 +1410,7 @@ function Provider(namespace) {
         const [MAIN, SUB] = namespace.split('.');
         const prefix = `htmlplus:${MAIN}`;
         const cleanups = (instance) => {
-            return (instance[symbol] || (instance[symbol] = new Map()));
+            return (instance[symbol] ||= new Map());
         };
         const update = (instance) => {
             const options = {};
@@ -1442,11 +1435,10 @@ function Provider(namespace) {
             cleanups(this).set(prefix, cleanup);
         });
         appendToMethod(target, LIFECYCLE_UPDATE, function (states) {
-            var _a;
             update(this);
             if (cleanups(this).size && !states.has(SUB))
                 return;
-            (_a = cleanups(this).get(`${prefix}:${states.get(SUB)}`)) === null || _a === void 0 ? void 0 : _a();
+            cleanups(this).get(`${prefix}:${states.get(SUB)}`)?.();
             const type = `${prefix}:${this[SUB]}`;
             const cleanup = () => {
                 off(window, `${type}:presence`, onPresence);
@@ -1470,7 +1462,7 @@ function Consumer(namespace) {
         const [MAIN, SUB] = namespace.split('.');
         const prefix = `htmlplus:${MAIN}`;
         const cleanups = (instance) => {
-            return (instance[symbol] || (instance[symbol] = new Map()));
+            return (instance[symbol] ||= new Map());
         };
         const update = (instance, state) => {
             instance[key] = state;
@@ -1505,10 +1497,9 @@ function Consumer(namespace) {
             !connected && setTimeout(() => dispatch(this, `${prefix}:presence`, options));
         });
         appendToMethod(target, LIFECYCLE_UPDATE, function (states) {
-            var _a;
             if (cleanups(this).size && !states.has(SUB))
                 return;
-            (_a = cleanups(this).get(`${prefix}:${states.get(SUB)}`)) === null || _a === void 0 ? void 0 : _a();
+            cleanups(this).get(`${prefix}:${states.get(SUB)}`)?.();
             const type = `${prefix}:${this[SUB]}`;
             const cleanup = () => {
                 off(window, `${type}:disconnect`, onDisconnect);
@@ -1549,54 +1540,51 @@ function Element() {
     };
 }
 const proxy = (constructor) => {
-    var _a;
-    return _a = class Plus extends HTMLElement {
-            constructor() {
-                super();
-                this.attachShadow({
-                    mode: 'open',
-                    delegatesFocus: constructor['delegatesFocus'],
-                    slotAssignment: constructor['slotAssignment']
+    return class Plus extends HTMLElement {
+        static formAssociated = constructor['formAssociated'];
+        static observedAttributes = constructor['observedAttributes'];
+        constructor() {
+            super();
+            this.attachShadow({
+                mode: 'open',
+                delegatesFocus: constructor['delegatesFocus'],
+                slotAssignment: constructor['slotAssignment']
+            });
+            const instance = (this[API_INSTANCE] = new constructor());
+            instance[API_HOST] = () => this;
+            call(instance, LIFECYCLE_CONSTRUCTED);
+        }
+        adoptedCallback() {
+            call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
+        }
+        attributeChangedCallback(key, prev, next) {
+            // Ensures the integrity of readonly properties to prevent potential errors.
+            try {
+                const attribute = constructor[MAPPER]?.[key];
+                const property = attribute || camelCase(key);
+                this[property] = next;
+            }
+            catch { }
+        }
+        connectedCallback() {
+            const instance = this[API_INSTANCE];
+            // TODO: experimental for global config
+            Object.assign(instance, getConfig('element', getTag(instance), 'property'));
+            instance[API_CONNECTED] = true;
+            const connect = () => {
+                request(instance, undefined, undefined, () => {
+                    call(instance, LIFECYCLE_LOADED);
                 });
-                const instance = (this[API_INSTANCE] = new constructor());
-                instance[API_HOST] = () => this;
-                call(instance, LIFECYCLE_CONSTRUCTED);
-            }
-            adoptedCallback() {
-                call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
-            }
-            attributeChangedCallback(key, prev, next) {
-                var _a;
-                // Ensures the integrity of readonly properties to prevent potential errors.
-                try {
-                    const attribute = (_a = constructor[MAPPER]) === null || _a === void 0 ? void 0 : _a[key];
-                    const property = attribute || camelCase(key);
-                    this[property] = next;
-                }
-                catch (_b) { }
-            }
-            connectedCallback() {
-                const instance = this[API_INSTANCE];
-                // TODO: experimental for global config
-                Object.assign(instance, getConfig('element', getTag(instance), 'property'));
-                instance[API_CONNECTED] = true;
-                const connect = () => {
-                    request(instance, undefined, undefined, () => {
-                        call(instance, LIFECYCLE_LOADED);
-                    });
-                };
-                const callback = call(instance, LIFECYCLE_CONNECTED);
-                if (!(callback === null || callback === void 0 ? void 0 : callback.then))
-                    return connect();
-                callback.then(() => connect());
-            }
-            disconnectedCallback() {
-                call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
-            }
-        },
-        _a.formAssociated = constructor['formAssociated'],
-        _a.observedAttributes = constructor['observedAttributes'],
-        _a;
+            };
+            const callback = call(instance, LIFECYCLE_CONNECTED);
+            if (!callback?.then)
+                return connect();
+            callback.then(() => connect());
+        }
+        disconnectedCallback() {
+            call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
+        }
+    };
 };
 
 /**
@@ -1610,10 +1598,9 @@ function Event(options = {}) {
         defineProperty(target, key, {
             get() {
                 return (detail) => {
-                    var _a, _b;
                     const element = host(this);
                     const framework = getFramework(this);
-                    (_a = options.bubbles) !== null && _a !== void 0 ? _a : (options.bubbles = false);
+                    options.bubbles ??= false;
                     let type = String(key);
                     switch (framework) {
                         // TODO: Experimental
@@ -1627,25 +1614,24 @@ function Event(options = {}) {
                                     })
                                 });
                             }
-                            catch (_c) { }
+                            catch { }
                             break;
                         case 'qwik':
-                            type = pascalCase(type).toLowerCase();
-                            break;
-                        case 'preact':
-                            type = pascalCase(type);
-                            break;
                         case 'solid':
                             type = pascalCase(type).toLowerCase();
+                            break;
+                        case 'react':
+                        case 'preact':
+                            type = pascalCase(type);
                             break;
                         default:
                             type = kebabCase(type);
                             break;
                     }
                     let event;
-                    event || (event = (_b = getConfig('event', 'resolver')) === null || _b === void 0 ? void 0 : _b({ detail, element, framework, options, type }));
+                    event ||= getConfig('event', 'resolver')?.({ detail, element, framework, options, type });
                     event && element.dispatchEvent(event);
-                    event || (event = dispatch(this, type, Object.assign(Object.assign({}, options), { detail })));
+                    event ||= dispatch(this, type, { ...options, detail });
                     return event;
                 };
             }
@@ -1680,19 +1666,18 @@ function Method() {
  */
 function Property(options) {
     return function (target, key, descriptor) {
-        var _a, _b, _c;
         // Creates a unique symbol for the lock flag.
         const locked = Symbol();
         // Converts property name to string.
         const name = String(key);
         // Calculates attribute.
-        const attribute = (options === null || options === void 0 ? void 0 : options.attribute) || kebabCase(name);
+        const attribute = options?.attribute || kebabCase(name);
         // Registers an attribute that is intricately linked to the property.
-        ((_a = target.constructor)['observedAttributes'] || (_a['observedAttributes'] = [])).push(attribute);
+        (target.constructor['observedAttributes'] ||= []).push(attribute);
         // TODO
         if (attribute) {
             // TODO
-            (_b = target.constructor)[_c = MAPPER] || (_b[_c] = {});
+            target.constructor[MAPPER] ||= {};
             // TODO
             target.constructor[MAPPER][attribute] = name;
         }
@@ -1700,12 +1685,12 @@ function Property(options) {
         // When the property is a getter function.
         if (descriptor) {
             // Checks the reflection.
-            if (options === null || options === void 0 ? void 0 : options.reflect) {
+            if (options?.reflect) {
                 // Stores the original getter function.
                 const getter = descriptor.get;
                 // Defines a new getter function.
                 descriptor.get = function () {
-                    const value = getter === null || getter === void 0 ? void 0 : getter.apply(this);
+                    const value = getter?.apply(this);
                     this[locked] = true;
                     updateAttribute(this, attribute, value);
                     this[locked] = false;
@@ -1735,7 +1720,7 @@ function Property(options) {
                 request(this, name, previous, (skipped) => {
                     if (skipped)
                         return;
-                    if (!(options === null || options === void 0 ? void 0 : options.reflect))
+                    if (!options?.reflect)
                         return;
                     this[locked] = true;
                     updateAttribute(this, attribute, next);
@@ -1758,7 +1743,7 @@ function Property(options) {
                     if (this[locked]) {
                         return;
                     }
-                    this[key] = toProperty(input, options === null || options === void 0 ? void 0 : options.type);
+                    this[key] = toProperty(input, options?.type);
                 };
             // TODO: Check the configuration.
             // Attaches the getter and setter functions to the current property of the host element.

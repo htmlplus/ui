@@ -3648,69 +3648,69 @@
             "events": [],
             "properties": [
               {
-                "name": "alignItems",
-                "default": "'center'",
-                "description": "TODO."
-              },
-              {
                 "name": "gap",
-                "description": "TODO."
+                "description": "The gap between items."
               },
               {
-                "name": "justifyContent",
+                "name": "items",
                 "default": "'center'",
-                "description": "TODO."
+                "description": "The alignment of items along the cross axis."
+              },
+              {
+                "name": "justify",
+                "default": "'center'",
+                "description": "The distribution of items along the main axis."
               },
               {
                 "name": "reverse",
-                "description": "TODO."
+                "description": "Whether to reverse the order of items."
               },
               {
                 "name": "vertical",
-                "description": "TODO."
+                "description": "Whether the stack is vertical."
               }
             ]
           },
           "attributes": [
             {
-              "name": "align-items",
-              "value": {
-                "type": "'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | (string & {})"
-              },
-              "default": "'center'",
-              "description": "TODO."
-            },
-            {
               "name": "gap",
               "value": {
-                "type": "string"
+                "type": "number | string"
               },
-              "description": "TODO."
+              "description": "The gap between items."
             },
             {
-              "name": "justify-content",
+              "name": "items",
               "value": {
-                "type": "'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | (string & {})"
+                "type": "'start' | 'end' | 'center' | 'baseline' | 'stretch'"
               },
               "default": "'center'",
-              "description": "TODO."
+              "description": "The alignment of items along the cross axis."
+            },
+            {
+              "name": "justify",
+              "value": {
+                "type": "'normal' | 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch'"
+              },
+              "default": "'center'",
+              "description": "The distribution of items along the main axis."
             },
             {
               "name": "reverse",
               "value": {
                 "type": "boolean"
               },
-              "description": "TODO."
+              "description": "Whether to reverse the order of items."
             },
             {
               "name": "vertical",
               "value": {
                 "type": "boolean"
               },
-              "description": "TODO."
+              "description": "Whether the stack is vertical."
             }
           ],
-          "description": "TODO.",
+          "description": "A container for arranging elements vertically or horizontally.",
           "slots": [
             {
               "name": "default",

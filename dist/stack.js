@@ -7,24 +7,25 @@ let Stack = class Stack extends PlusCore {
     constructor() {
         super(...arguments);
         /**
-         * TODO.
+         * The alignment of items along the cross axis.
          */
-        this.alignItems = 'center';
+        this.items = 'center';
         /**
-         * TODO.
+         * The distribution of items along the main axis.
          */
-        this.justifyContent = 'center';
+        this.justify = 'center';
     }
     get style() {
+        var _a, _b, _c;
         let direction = this.vertical ? 'column' : 'row';
         if (this.reverse)
             direction += '-reverse';
         return {
-            'align-items': this.alignItems,
+            'align-items': (_a = this.items) === null || _a === void 0 ? void 0 : _a.replace(/start|end/, 'flex-$&'),
             'display': 'flex',
             'flex-direction': direction,
             'gap': toUnit(this.gap),
-            'justify-content': this.justifyContent
+            'justify-content': (_c = (_b = this.justify) === null || _b === void 0 ? void 0 : _b.replace(/start|end/, 'flex-$&')) === null || _c === void 0 ? void 0 : _c.replace(/between|around|evenly/, 'space-$&')
         };
     }
     render() {
@@ -35,19 +36,19 @@ let Stack = class Stack extends PlusCore {
 Stack.tag = "plus-stack";
 __decorate([
     Property({
-        type: 264
-    })
-], Stack.prototype, "alignItems", void 0);
-__decorate([
-    Property({
-        type: 256
+        type: 320
     })
 ], Stack.prototype, "gap", void 0);
 __decorate([
     Property({
-        type: 264
+        type: 8
     })
-], Stack.prototype, "justifyContent", void 0);
+], Stack.prototype, "items", void 0);
+__decorate([
+    Property({
+        type: 8
+    })
+], Stack.prototype, "justify", void 0);
 __decorate([
     Property({
         type: 2

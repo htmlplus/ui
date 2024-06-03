@@ -1,58 +1,58 @@
 import { PlusCore } from "../../core";
-import { StackAlignItems, StackJustifyContent } from './stack.types';
+import { StackAlign, StackGap, StackJustify } from './stack.types';
 /**
  * @slot default - The default slot.
  */
 export declare class Stack extends PlusCore {
     static tag: string;
     /**
-     * TODO.
+     * The gap between items.
      */
-    alignItems?: StackAlignItems;
+    gap?: StackGap;
     /**
-     * TODO.
+     * The alignment of items along the cross axis.
      */
-    gap?: string;
+    items?: StackAlign;
     /**
-     * TODO.
+     * The distribution of items along the main axis.
      */
-    justifyContent?: StackJustifyContent;
+    justify?: StackJustify;
     /**
-     * TODO.
+     * Whether to reverse the order of items.
      */
     reverse?: boolean;
     /**
-     * TODO.
+     * Whether the stack is vertical.
      */
     vertical?: boolean;
     get style(): {
-        'align-items': StackAlignItems;
+        'align-items': string;
         display: string;
         'flex-direction': string;
         gap: string;
-        'justify-content': StackJustifyContent;
+        'justify-content': string;
     };
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface StackAttributes {
     /**
-    * TODO.
+    * The gap between items.
     */
-    "align-items"?: StackAlignItems;
+    "gap"?: StackGap;
     /**
-    * TODO.
+    * The alignment of items along the cross axis.
     */
-    "gap"?: string;
+    "items"?: StackAlign;
     /**
-    * TODO.
+    * The distribution of items along the main axis.
     */
-    "justify-content"?: StackJustifyContent;
+    "justify"?: StackJustify;
     /**
-    * TODO.
+    * Whether to reverse the order of items.
     */
     "reverse"?: boolean;
     /**
-    * TODO.
+    * Whether the stack is vertical.
     */
     "vertical"?: boolean;
 }
@@ -62,23 +62,23 @@ export interface StackMethods {
 }
 export interface StackProperties {
     /**
-    * TODO.
+    * The gap between items.
     */
-    alignItems?: StackAlignItems;
+    gap?: StackGap;
     /**
-    * TODO.
+    * The alignment of items along the cross axis.
     */
-    gap?: string;
+    items?: StackAlign;
     /**
-    * TODO.
+    * The distribution of items along the main axis.
     */
-    justifyContent?: StackJustifyContent;
+    justify?: StackJustify;
     /**
-    * TODO.
+    * Whether to reverse the order of items.
     */
     reverse?: boolean;
     /**
-    * TODO.
+    * Whether the stack is vertical.
     */
     vertical?: boolean;
 }

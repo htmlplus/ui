@@ -76,6 +76,7 @@ export declare class Accordion extends PlusCore {
      */
     toggle(): Promise<boolean>;
     watcher(next: any, prev: any, name: any): void;
+    getId(key: string): string;
     initialize(): void;
     terminate(): void;
     try(open: boolean, silent?: boolean): Promise<boolean>;

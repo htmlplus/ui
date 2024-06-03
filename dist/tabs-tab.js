@@ -1,6 +1,6 @@
 import { _ as __decorate, P as PlusCore, h as html, k as attributes, b as Property, S as State, C as Consumer, B as Bind, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;background-color:#f5f5f5;display:flex;justify-content:center;padding:.5rem 1rem;user-select:none}:host([disabled]) span{opacity:.5}:host([active]){background-color:#d3d3d3}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;background-color:#f5f5f5;display:flex;gap:.5rem;justify-content:center;padding:.5rem 1rem;text-align:center;user-select:none}:host([active]){background-color:#d3d3d3}:host([disabled]){opacity:.5}:host(:not([disabled])){cursor:pointer}";
 
 /**
  * TODO: Tabs make it easy to switch between different views.
@@ -20,9 +20,6 @@ let TabsTab = class TabsTab extends PlusCore {
             return false;
         return ((_c = this.parent) === null || _c === void 0 ? void 0 : _c.current) === this.value;
     }
-    /**
-     * Events handler
-     */
     onClick() {
         var _a;
         if (!this.disabled) {
@@ -33,9 +30,7 @@ let TabsTab = class TabsTab extends PlusCore {
         return html `${attributes(this, [{
                 "onClick": this.onClick
             }])}
-        <span>
-          <slot />
-        </span>
+        <slot />
       `;
     }
 };

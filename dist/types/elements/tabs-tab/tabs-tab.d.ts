@@ -22,9 +22,6 @@ export declare class TabsTab extends PlusCore {
      */
     get active(): boolean;
     parent?: TabsContext;
-    /**
-     * Events handler
-     */
     onClick(): void;
     render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }

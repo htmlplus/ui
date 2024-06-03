@@ -3972,13 +3972,18 @@
       "name": "plus-stack",
       "attributes": [
         {
-          "name": "align-items",
+          "name": "gap",
+          "values": [],
+          "description": "The gap between items."
+        },
+        {
+          "name": "items",
           "values": [
             {
-              "name": "flex-start"
+              "name": "start"
             },
             {
-              "name": "flex-end"
+              "name": "end"
             },
             {
               "name": "center"
@@ -3990,36 +3995,37 @@
               "name": "stretch"
             }
           ],
-          "description": "TODO."
+          "description": "The alignment of items along the cross axis."
         },
         {
-          "name": "gap",
-          "values": [],
-          "description": "TODO."
-        },
-        {
-          "name": "justify-content",
+          "name": "justify",
           "values": [
             {
-              "name": "flex-start"
+              "name": "normal"
             },
             {
-              "name": "flex-end"
+              "name": "start"
+            },
+            {
+              "name": "end"
             },
             {
               "name": "center"
             },
             {
-              "name": "space-between"
+              "name": "between"
             },
             {
-              "name": "space-around"
+              "name": "around"
             },
             {
-              "name": "space-evenly"
+              "name": "evenly"
+            },
+            {
+              "name": "stretch"
             }
           ],
-          "description": "TODO."
+          "description": "The distribution of items along the main axis."
         },
         {
           "name": "reverse",
@@ -4031,7 +4037,7 @@
               "name": "true"
             }
           ],
-          "description": "TODO."
+          "description": "Whether to reverse the order of items."
         },
         {
           "name": "vertical",
@@ -4043,7 +4049,7 @@
               "name": "true"
             }
           ],
-          "description": "TODO."
+          "description": "Whether the stack is vertical."
         }
       ],
       "references": [
@@ -4052,7 +4058,7 @@
           "url": "https://www.htmlplus.io/javascript/element/stack"
         }
       ],
-      "description": "TODO."
+      "description": "A container for arranging elements vertically or horizontally."
     },
     {
       "name": "plus-sticky",

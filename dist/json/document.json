@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-04-11T22:23:58.372Z",
+      "lastModified": "2024-05-29T16:35:55.338Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-04-13T22:28:03.463Z",
+      "lastModified": "2024-04-25T20:47:08.525Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-04-24T16:38:39.219Z",
+      "lastModified": "2024-04-25T20:47:08.792Z",
       "methods": [],
       "properties": [
         {
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-04-14T16:08:27.224Z",
+      "lastModified": "2024-04-25T20:47:09.146Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-04-24T16:11:13.642Z",
+      "lastModified": "2024-04-25T20:47:09.357Z",
       "methods": [
         {
           "async": false,
@@ -933,7 +933,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-04-07T20:39:34.166Z",
+      "lastModified": "2024-04-24T19:33:25.745Z",
       "methods": [],
       "properties": [
         {
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-04-22T20:29:48.846Z",
+      "lastModified": "2024-04-25T20:47:10.324Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-04-15T19:15:11.382Z",
+      "lastModified": "2024-04-25T20:47:11.063Z",
       "methods": [
         {
           "async": false,
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-04-21T21:03:22.329Z",
+      "lastModified": "2024-04-25T20:47:11.203Z",
       "methods": [],
       "properties": [
         {
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-04-22T20:29:42.777Z",
+      "lastModified": "2024-04-25T20:47:11.478Z",
       "methods": [
         {
           "async": false,
@@ -3166,7 +3166,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-04-13T21:15:19.872Z",
+      "lastModified": "2024-04-25T20:47:12.453Z",
       "methods": [],
       "properties": [
         {
@@ -3323,7 +3323,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-04-13T22:13:30.072Z",
+      "lastModified": "2024-04-25T20:47:12.909Z",
       "methods": [],
       "properties": [
         {
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-04-24T16:11:13.643Z",
+      "lastModified": "2024-04-25T20:47:13.332Z",
       "methods": [
         {
           "async": false,
@@ -3733,7 +3733,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-04-13T21:26:54.272Z",
+      "lastModified": "2024-04-25T20:47:13.491Z",
       "methods": [],
       "properties": [
         {
@@ -3777,39 +3777,40 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-04-13T21:22:17.535Z",
+      "lastModified": "2024-06-03T19:25:53.459Z",
       "methods": [],
       "properties": [
-        {
-          "attribute": "align-items",
-          "initializer": "'center'",
-          "name": "alignItems",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "StackAlignItems",
-          "typeReference": "./stack.types",
-          "description": "TODO."
-        },
         {
           "attribute": "gap",
           "name": "gap",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
-          "description": "TODO."
+          "type": "StackGap",
+          "typeReference": "./stack.types",
+          "description": "The gap between items."
         },
         {
-          "attribute": "justify-content",
+          "attribute": "items",
           "initializer": "'center'",
-          "name": "justifyContent",
+          "name": "items",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "StackJustifyContent",
+          "type": "StackAlign",
           "typeReference": "./stack.types",
-          "description": "TODO."
+          "description": "The alignment of items along the cross axis."
+        },
+        {
+          "attribute": "justify",
+          "initializer": "'center'",
+          "name": "justify",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "StackJustify",
+          "typeReference": "./stack.types",
+          "description": "The distribution of items along the main axis."
         },
         {
           "attribute": "reverse",
@@ -3818,7 +3819,7 @@
           "reflects": false,
           "required": false,
           "type": "boolean",
-          "description": "TODO."
+          "description": "Whether to reverse the order of items."
         },
         {
           "attribute": "vertical",
@@ -3827,13 +3828,13 @@
           "reflects": false,
           "required": false,
           "type": "boolean",
-          "description": "TODO."
+          "description": "Whether the stack is vertical."
         }
       ],
-      "readmeContent": "# Stack\n\nTODO.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n<LastModified />\n",
+      "readmeContent": "# Stack\n\nA container for arranging elements vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n### Divider\n\n<Example value=\"divider\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Stack",
-      "description": "TODO.",
+      "description": "A container for arranging elements vertically or horizontally.",
       "slots": [
         {
           "name": "default",
@@ -3852,7 +3853,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-04-13T23:01:55.980Z",
+      "lastModified": "2024-04-25T20:47:13.807Z",
       "methods": [],
       "properties": [
         {
@@ -3954,7 +3955,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-04-07T20:39:38.815Z",
+      "lastModified": "2024-04-24T19:40:32.261Z",
       "methods": [],
       "properties": [
         {
@@ -3976,7 +3977,7 @@
           "description": "You can use vertical property for vertical mode."
         }
       ],
-      "readmeContent": "# Tabs\n\nOrganizes content across different screens.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Grow\n\n<Example value=\"grow\" />\n\n### Justify\n\n<Example value=\"justify\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Separate\n\n<Example value=\"separate\" />\n\n### Below\n\n<Example value=\"below\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
+      "readmeContent": "# Tabs\n\nOrganizes content across different screens.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example value=\"default\" />\n\n### Disabled\n\n<Example value=\"disabled\" />\n\n### Grow\n\n<Example value=\"grow\" />\n\n### Justify\n\n<Example value=\"justify\" />\n\n### Reverse\n\n<Example value=\"reverse\" />\n\n### Below\n\n<Example value=\"below\" />\n\n### Vertical\n\n<Example value=\"vertical\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Tabs",
       "description": "Organizes content across different screens.",
@@ -4090,7 +4091,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2024-04-07T20:39:38.672Z",
+      "lastModified": "2024-04-24T20:08:44.532Z",
       "methods": [],
       "properties": [
         {

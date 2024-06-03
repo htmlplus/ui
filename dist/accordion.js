@@ -1,6 +1,6 @@
 import { _ as __decorate, P as PlusCore, A as Animation, a as __awaiter, h as html, b as Property, E as Event, S as State, C as Consumer, Q as Query, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
 
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{border:1px solid #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type,:last-of-type)){border-radius:0}:host(:not(:only-of-type):first-of-type){border-bottom-left-radius:0;border-bottom-right-radius:0}:host(:not(:only-of-type):last-of-type){border-top-left-radius:0;border-top-right-radius:0}:host([disabled]){opacity:.5}:host([disabled])::part(header){cursor:auto}:host::part(header){align-items:center;border-radius:inherit;cursor:pointer;display:flex;overflow-anchor:none;padding:1rem;position:relative;user-select:none}:host::part(summary){align-items:center;display:flex;flex:1 1 auto}:host::part(icon){align-items:center;display:flex;flex:0 0 auto}:host::part(body){overflow:hidden;transition:all .2s ease-in-out}:host::part(content){display:block;padding:1rem}:host([state=collapsed])::part(body){display:none}:host(:not([state=collapsed]))::part(header){border-bottom-left-radius:0;border-bottom-right-radius:0}:host::part(svg){transition:all .2s ease-in-out}:host([state^=collap])::part(svg){rotate:90deg}:host([state^=expand])::part(svg){rotate:-90deg}";
+var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{border:1px solid #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type):not(:last-of-type)){border-radius:0}:host(:first-of-type:not(:last-of-type)){border-bottom-left-radius:0;border-bottom-right-radius:0}:host(:last-of-type:not(:first-of-type)){border-top-left-radius:0;border-top-right-radius:0}:host([disabled]){opacity:.5}:host([disabled])::part(header){cursor:auto}:host::part(header){align-items:center;border-radius:inherit;cursor:pointer;display:flex;overflow-anchor:none;padding:1rem;position:relative;user-select:none}:host::part(summary){align-items:center;display:flex;flex:1 1 auto}:host::part(icon){align-items:center;display:flex;flex:0 0 auto}:host::part(body){overflow:hidden;transition:all .2s ease-in-out}:host::part(content){display:block;padding:1rem}:host([state=collapsed])::part(body){display:none}:host(:not([state=collapsed]))::part(header){border-bottom-left-radius:0;border-bottom-right-radius:0}:host::part(svg){transition:all .2s ease-in-out}:host([state^=collap])::part(svg){rotate:90deg}:host([state^=expand])::part(svg){rotate:-90deg}";
 
 /**
  * @stable
@@ -97,6 +97,11 @@ let Accordion = class Accordion extends PlusCore {
                 break;
         }
     }
+    getId(key) {
+        if (this.$host.id) {
+            return this.$host.id + '-' + key;
+        }
+    }
     initialize() {
         this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
     }
@@ -150,20 +155,20 @@ let Accordion = class Accordion extends PlusCore {
     render() {
         return html `
         <slot name="top" />
-        <div aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
+        <div aria-controls=${this.getId('body')} aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} id=${this.getId('header')} part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
           <slot name="summary" part="summary">
             ${this.summary}
           </slot>
           <slot name="icon">
             <slot name=${`icon-${this.open ? 'collapse' : 'expand'}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16" part="svg">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" focusable="false" viewbox="0 0 16 16" part="svg">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
               </svg>
             </slot>
           </slot>
         </div>
         <slot name="middle" />
-        <div part="body">
+        <div part="body" role="region" aria-labelledby=${this.getId('header')} id=${this.getId('body')}>
           <slot part="content" />
         </div>
         <slot name="bottom" />
