@@ -16,6 +16,10 @@ Allows user to draw smooth signatures.
 
 <Example src="examples/default" />
 
+### Background Color
+
+<Example src="examples/background-color" />
+
 ### Color
 
 <Example src="examples/color" />

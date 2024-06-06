@@ -27,7 +27,7 @@ export class Signature extends PlusForm {
    * Specifies the background color.
    */
   @Property()
-  backgroundColor?: string = 'rgba(0, 0, 0, 0)';
+  backgroundColor?: string = 'lightgray';
 
   /**
    * Clears the canvas after resizing.
@@ -263,8 +263,12 @@ export class Signature extends PlusForm {
     this.instance.fromData(this.clone());
   }
 
-  bind() {
-    this.instance = new Core(this.$canvas, {
+  clone() {
+    return JSON.parse(JSON.stringify(this.instance.toData()));
+  }
+
+  initialize() {
+    const options = {
       backgroundColor: this.backgroundColor,
       dotSize: this.dotSize,
       minDistance: this.distance,
@@ -273,7 +277,9 @@ export class Signature extends PlusForm {
       penColor: this.color,
       throttle: this.throttle,
       velocityFilterWeight: this.velocity
-    });
+    }
+
+    this.instance = new Core(this.$canvas, options);
 
     this.instance.addEventListener('beginStroke', this.onStart);
     this.instance.addEventListener('endStroke', this.onEnd);
@@ -302,10 +308,6 @@ export class Signature extends PlusForm {
 
     // TODO
     requestAnimationFrame(() => this.resize());
-  }
-
-  clone() {
-    return JSON.parse(JSON.stringify(this.instance.toData()));
   }
 
   // TODO
@@ -345,7 +347,7 @@ export class Signature extends PlusForm {
     this.previous = this.value = undefined;
   }
 
-  unbind() {
+  terminate() {
     this.observer.disconnect();
     this.instance?.off();
   }
@@ -362,6 +364,11 @@ export class Signature extends PlusForm {
     if (silent) return;
 
     this.plusChange();
+  }
+
+  @Bind()
+  onReset() {
+    this.value = undefined;
   }
 
   @Bind()
@@ -386,7 +393,11 @@ export class Signature extends PlusForm {
     return import('signature_pad')
       .then((module) => {
         Core = module.default;
-        this.bind();
+        try {
+          this.initialize();
+        } catch {
+          throw new Error('TODO');
+        }
       })
       .catch(() => {
         throw new Error(
@@ -396,10 +407,11 @@ export class Signature extends PlusForm {
   }
 
   disconnectedCallback() {
-    this.unbind();
+    this.terminate();
   }
 
   render() {
-    return <canvas part="canvas"></canvas>;
+    // TODO: tabIndex
+    return <canvas part="canvas" tabIndex={0}></canvas>;
   }
 }
