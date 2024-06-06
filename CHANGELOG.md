@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/htmlplus/ui/compare/v1.3.1...v1.3.2) (2024-06-06)
+
+
+### Bug Fixes
+
+* Resolve the examples source. ([342b494](https://github.com/htmlplus/ui/commit/342b494d5e32a2390afbc3d4414934cd730e9db0))
+
 ## [1.3.1](https://github.com/htmlplus/ui/compare/v1.3.0...v1.3.1) (2024-06-03)
 
 
