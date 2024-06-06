@@ -46,7 +46,7 @@ export declare class Breadcrumb extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface BreadcrumbAttributes {
     /**

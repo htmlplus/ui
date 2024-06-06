@@ -44,7 +44,7 @@ export declare class ProgressBar extends PlusCore {
     get percentage(): string;
     get progress(): number;
     get stacked(): boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface ProgressBarAttributes {
     /**

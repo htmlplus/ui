@@ -48,7 +48,7 @@ export declare class Icon extends PlusCore {
     sync(input: SVGElement | string, cacheable: boolean): SVGElement;
     update(): void;
     loadedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface IconAttributes {
     /**

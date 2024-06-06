@@ -23,7 +23,7 @@ export declare class TabsTab extends PlusCore {
     get active(): boolean;
     parent?: TabsContext;
     onClick(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface TabsTabAttributes {
     /**

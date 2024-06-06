@@ -18,7 +18,7 @@ export declare class TabsPanel extends PlusCore {
      */
     get active(): boolean;
     parent?: TabsContext;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import("@htmlplus/element/client/utils/index.js").Hole;
 }
 export interface TabsPanelAttributes {
     /**
