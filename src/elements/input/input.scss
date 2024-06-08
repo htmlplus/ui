@@ -1,0 +1,133 @@
+:host {
+  display: grid;
+  align-items: center;
+  grid-template:
+    ' . label . '
+    'before control after'
+    ' . hint . ';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto auto;
+}
+
+[part='label'] {
+  grid-area: label;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+[part='before'] {
+  grid-area: before;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+[part='control'] {
+  grid-area: control;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  border: $border;
+  border-radius: $border-radius;
+  &:has([part='input']:focus) {
+    border-color: #90b5e2;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+    z-index: 3; // TODO
+  }
+}
+
+[part='start'] {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+[part='input'] {
+  border: none;
+  padding: 0;
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  background: inherit;
+  border-radius: inherit;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+[part='end'] {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+[part='after'] {
+  grid-area: after;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+[part='hint'] {
+  grid-area: hint;
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.875rem;
+  color: gray;
+}
+
+[part='clearable'] {
+  cursor: pointer;
+  padding: 0.25em;
+  display: flex;
+  align-items: center;
+}
+
+// TODO
+[part='after'],
+[part='before'] {
+  height: 100%;
+}
+[part='before']::slotted(:focus),
+[part='after']::slotted(:focus) {
+  z-index: 3;
+}
+::slotted([slot='before']:not(:first-child)) {
+  // margin-inline-start: -2px !important;
+  border-radius: 0 !important;
+}
+::slotted([slot='after']:not(:last-child)) {
+  // margin-inline-end: -2px !important;
+  border-radius: 0 !important;
+}
+::slotted([slot='before']:first-child) {
+  border-end-end-radius: 0 !important;
+  border-start-end-radius: 0 !important;
+}
+::slotted([slot='after']:last-child) {
+  border-end-start-radius: 0 !important;
+  border-start-start-radius: 0 !important;
+}
+
+:has(*) {
+  background-color: yellow;
+}
+
+::slotted([slot='start']) {
+  // margin-inline-start: 0.5rem;
+}
+::slotted([slot='end']) {
+  // margin-inline-end: 0.5rem;
+}
+::slotted([slot='before']) {
+  // border-radius: $border-radius;
+}
+// :host([type='color']) {
+//   [part='input'] {
+//     padding: 0;
+//     &::-webkit-color-swatch {
+//       border: none;
+//     }
+//     &::-webkit-color-swatch-wrapper {
+//       padding: 0;
+//     }
+//   }
+// }

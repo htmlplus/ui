@@ -26,6 +26,8 @@ export * from './format-bytes/format-bytes';
 export * from './grid/grid';
 export * from './grid-item/grid-item';
 export * from './icon/icon';
+export * from './input/input';
+export * from './input-field/input-field';
 export * from './intersection/intersection';
 export * from './progress-bar/progress-bar';
 export * from './progress-bar-stack/progress-bar-stack';

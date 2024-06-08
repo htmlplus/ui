@@ -5,9 +5,130 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="module" src="/elements/index.ts"></script>
-    <style></style>
+    <style>
+      plus-signature {
+       }
+    </style>
   </head>
   <body>
-    <script></script>
+    <plus-input-field hint="hint">
+      <input />
+      <span slot="hint">hint slot</span>
+      <span slot="label">label slot</span>
+      <plus-icon slot="before"></plus-icon>
+      <plus-icon slot="before"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+      <plus-icon slot="after"></plus-icon>
+      <plus-icon slot="after"></plus-icon>
+    </plus-input-field>
+    <form>
+      <plus-signature id="$si" name="qqq" background-color="#fdeeee"></plus-signature>
+
+      <button type="submit">submit</button>
+      <button type="reset">reset</button>
+    </form>
+
+    <script>
+      setTimeout(() => {
+        $si.value = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 150" width="300" height="150"><path d="M 224.000,77.000 C 223.213,78.515 223.000,78.000 222.000,79.000" stroke-width="2.827" stroke="black" fill="none" stroke-linecap="round"></path><path d="M 222.000,79.000 C 220.432,78.714 220.713,79.515 219.000,79.000" stroke-width="3.979" stroke="black" fill="none" stroke-linecap="round"></path><path d="M 219.000,79.000 C 217.691,79.309 217.932,79.214 217.000,80.000" stroke-width="4.579" stroke="black" fill="none" stroke-linecap="round"></path><path d="M 217.000,80.000 C 217.309,80.691 216.691,80.309 217.000,81.000" stroke-width="5.225" stroke="black" fill="none" stroke-linecap="round"></path><path d="M 217.000,81.000 C 216.000,81.500 216.309,81.691 215.000,82.000" stroke-width="5.019" stroke="black" fill="none" stroke-linecap="round"></path><path d="M 215.000,82.000 C 213.691,82.309 214.000,82.500 213.000,83.000" stroke-width="4.985" stroke="black" fill="none" stroke-linecap="round"></path><path d="M 213.000,83.000 C 213.000,83.500 212.691,83.309 213.000,84.000" stroke-width="5.210" stroke="black" fill="none" stroke-linecap="round"></path></svg>`
+      }, 1000);
+    </script>
+
+    <plus-signature></plus-signature>
+    <plus-input>
+      <button slot="before">Open</button>
+      <span slot="before">Open</span>
+      <button slot="before">Close</button>
+      <button slot="after">Open</button>
+      <button slot="after">Close</button>
+    </plus-input>
+    <br />
+    <input />
+    <form>
+      <plus-input id="i1" name="adsda" value="aaaa" type="color" clearable> </plus-input>
+      <plus-input id="i1" name="aa" value="aaaa" clearable> </plus-input>
+      <button type="submit">submit</button>
+      <plus-input id="i2" value-event="input" name="bbb">
+        <b slot="clearable">clearable</b>
+      </plus-input>
+    </form>
+    <script>
+      i1.addEventListener('plus-change', (event) => {
+        // i2.value = i1.value;
+        i2.value = event.target.value;
+      })
+      i2.addEventListener('plus-change', (event) => {
+        // i1.value = i2.value;
+        i1.value = event.target.value;
+      })
+    </script>
+    <br />
+    <plus-input>
+      <plus-icon slot="start"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input>
+      <plus-icon slot="end"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input label="label">
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input label="label" id="aaaaaaaaaaaaaaa">
+      <span slot="label">label slotaaaaaa</span>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input hint="hint">
+      <span slot="label">label slot</span>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input hint="hint">
+      <span slot="hint">hint slot</span>
+      <span slot="label">label slot</span>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input hint="hint">
+      <span slot="hint">hint slot</span>
+      <span slot="label">label slot</span>
+      <plus-icon slot="before"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+      <plus-icon slot="after"></plus-icon>
+    </plus-input>
+    <br />
+    <plus-input hint="hint">
+      <span slot="hint">hint slot</span>
+      <span slot="label">label slot</span>
+      <plus-icon slot="before"></plus-icon>
+      <plus-icon slot="before"></plus-icon>
+      <plus-icon slot="before"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="start"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+      <plus-icon slot="end"></plus-icon>
+      <plus-icon slot="after"></plus-icon>
+      <plus-icon slot="after"></plus-icon>
+      <plus-icon slot="after"></plus-icon>
+    </plus-input>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { Bind, Method, Property, Watch, off, on } from '@htmlplus/element';
+import { Method, Property, Watch, off, on } from '@htmlplus/element';
 
 import { PlusCore } from './core';
 
@@ -78,6 +78,14 @@ export abstract class PlusForm extends PlusCore {
   @Watch('value', true)
   valueWatcher() {
     this.internals.setFormValue(this.value);
+
+    // const validity = { ...this.validity };
+
+    // if (this.required) {
+    //   validity.valueMissing = [undefined, null, ''].includes(this.value);
+    // }
+
+    // this.internals.setValidity(validity, this.validationMessage);
   }
 
   constructedCallback() {
