@@ -1,3 +1,9 @@
+## [1.3.3](https://github.com/htmlplus/ui/compare/v1.3.2...v1.3.3) (2024-07-16)
+
+### Bug Fixes
+
+* Update all npm packages. ([4c50a99](https://github.com/htmlplus/ui/commit/4c50a99adb3266ab018e4b5508c7403c07f7fcd0))
+
 ## [1.3.2](https://github.com/htmlplus/ui/compare/v1.3.1...v1.3.2) (2024-06-06)
 
 
