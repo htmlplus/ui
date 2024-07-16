@@ -22,6 +22,7 @@ createServer({
   css: {
     preprocessorOptions: {
       scss: {
+        includePaths: ['node_modules'],
         additionalData: `
           @import "./src/styles/mixins/index.scss";
           @import "./src/styles/variables/index.scss";

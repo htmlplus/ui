@@ -3374,7 +3374,7 @@
             "properties": [
               {
                 "name": "backgroundColor",
-                "default": "'rgba(0, 0, 0, 0)'",
+                "default": "'lightgray'",
                 "description": "Specifies the background color."
               },
               {
@@ -3458,7 +3458,7 @@
               "value": {
                 "type": "string"
               },
-              "default": "'rgba(0, 0, 0, 0)'",
+              "default": "'lightgray'",
               "description": "Specifies the background color."
             },
             {

@@ -112,17 +112,18 @@ export declare class Signature extends PlusForm {
     previous?: string;
     timeout?: number;
     watcher(next: any, prev: any, name: any): NodeJS.Timeout;
-    bind(): void;
     clone(): any;
+    initialize(): void;
     load(): void;
     reset(includeValue: boolean): void;
-    unbind(): void;
+    terminate(): void;
     update(force: boolean, silent: boolean): void;
+    onReset(): void;
     onStart(): void;
     onEnd(): void;
     loadedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SignatureAttributes {
     /**

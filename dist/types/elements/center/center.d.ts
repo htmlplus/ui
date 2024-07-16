@@ -11,7 +11,7 @@ export declare class Center extends PlusCore {
      * Converts the `display` CSS property from `flex` to `inline-flex`.
      */
     inline?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface CenterAttributes {
     /**

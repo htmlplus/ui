@@ -20,7 +20,7 @@ export declare class TabsBar extends PlusCore {
      * Reverses the arrangement of the tabs.
      */
     reverse?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TabsBarAttributes {
     /**

@@ -54,6 +54,7 @@ const options = defineConfig({
       minimize: true,
       use: {
         sass: {
+          includePaths: ['node_modules'],
           data: `
             @import "./src/styles/mixins/index.scss";
             @import "./src/styles/variables/index.scss";

@@ -83,8 +83,8 @@ export declare class Tooltip extends PlusCore {
                 strategy: FloatingCoreType.Strategy;
                 x: number;
                 y: number;
-                initialPlacement: FloatingCoreType.Placement;
                 middlewareData: FloatingCoreType.MiddlewareData;
+                initialPlacement: FloatingCoreType.Placement;
                 rects: FloatingCoreType.ElementRects;
                 elements: FloatingCoreType.Elements;
             }) => FloatingCoreType.MiddlewareReturn | Promise<FloatingCoreType.MiddlewareReturn>;
@@ -100,7 +100,7 @@ export declare class Tooltip extends PlusCore {
     onShow(): void;
     connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface TooltipAttributes {
     /**

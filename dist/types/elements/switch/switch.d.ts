@@ -20,7 +20,7 @@ export declare class Switch extends PlusCore {
     toggle(): void;
     onClick(event: any): void;
     onKeyDown(event: any): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
 }
 export interface SwitchAttributes {
     /**

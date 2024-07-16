@@ -14,7 +14,7 @@ let Signature = class Signature extends PlusForm {
         /**
          * Specifies the background color.
          */
-        this.backgroundColor = 'rgba(0, 0, 0, 0)';
+        this.backgroundColor = 'lightgray';
         /**
          * Specifies the color of the strokes.
          */
@@ -137,8 +137,11 @@ let Signature = class Signature extends PlusForm {
         // TODO
         this.instance.fromData(this.clone());
     }
-    bind() {
-        this.instance = new Core(this.$canvas, {
+    clone() {
+        return JSON.parse(JSON.stringify(this.instance.toData()));
+    }
+    initialize() {
+        const options = {
             backgroundColor: this.backgroundColor,
             dotSize: this.dotSize,
             minDistance: this.distance,
@@ -147,7 +150,8 @@ let Signature = class Signature extends PlusForm {
             penColor: this.color,
             throttle: this.throttle,
             velocityFilterWeight: this.velocity
-        });
+        };
+        this.instance = new Core(this.$canvas, options);
         this.instance.addEventListener('beginStroke', this.onStart);
         this.instance.addEventListener('endStroke', this.onEnd);
         const events = {
@@ -171,9 +175,6 @@ let Signature = class Signature extends PlusForm {
         }
         // TODO
         requestAnimationFrame(() => this.resize());
-    }
-    clone() {
-        return JSON.parse(JSON.stringify(this.instance.toData()));
     }
     // TODO
     load() {
@@ -200,7 +201,7 @@ let Signature = class Signature extends PlusForm {
             return;
         this.previous = this.value = undefined;
     }
-    unbind() {
+    terminate() {
         var _a;
         this.observer.disconnect();
         (_a = this.instance) === null || _a === void 0 ? void 0 : _a.off();
@@ -214,6 +215,9 @@ let Signature = class Signature extends PlusForm {
         if (silent)
             return;
         this.plusChange();
+    }
+    onReset() {
+        this.value = undefined;
     }
     onStart() {
         if (this.value && this.index == -1) {
@@ -229,16 +233,22 @@ let Signature = class Signature extends PlusForm {
     loadedCallback() {
         return import('./vendors/signature_pad.js').then(module => {
             Core = module.default;
-            this.bind();
+            try {
+                this.initialize();
+            }
+            catch (_a) {
+                throw new Error('TODO');
+            }
         }).catch(() => {
             throw new Error("The `signature` element depends on an external package, but it doesn't seem to be installed. Running `npm install signature_pad` will fix this problem.");
         });
     }
     disconnectedCallback() {
-        this.unbind();
+        this.terminate();
     }
     render() {
-        return html `<canvas part="canvas"></canvas>`;
+        // TODO: tabIndex
+        return html `<canvas part="canvas" tabindex=${0}></canvas>`;
     }
 };
 // THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
@@ -351,6 +361,9 @@ __decorate([
 __decorate([
     Watch()
 ], Signature.prototype, "watcher", null);
+__decorate([
+    Bind()
+], Signature.prototype, "onReset", null);
 __decorate([
     Bind()
 ], Signature.prototype, "onStart", null);

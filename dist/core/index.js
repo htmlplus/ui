@@ -30,6 +30,11 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+
 const appendToMethod = (target, key, handler) => {
     // Gets the previous function
     const previous = target[key];
@@ -1031,8 +1036,8 @@ const cache$1 = new WeakMapSet();
 // a RegExp that helps checking nodes that cannot contain comments
 const textOnly = /^(?:textarea|script|style|title|plaintext|xmp)$/;
 const createCache = () => ({
-    stack: [],
-    entry: null,
+    stack: [], // each template gets a stack for each interpolation "hole"
+    entry: null, // each entry contains details, such as:
     //  * the template that is representing
     //  * the type of node it represents (html or svg)
     //  * the content fragment with all nodes
@@ -1867,15 +1872,31 @@ class PlusForm extends PlusCore {
     setCustomValidity(error) {
         this.internals.setValidity({ customError: true }, error);
     }
+    valueWatcher() {
+        this.internals.setFormValue(this.value);
+    }
     constructedCallback() {
         this.internals = this.$host.attachInternals();
     }
     connectedCallback() {
-        if (this.$host.tabIndex < 0) {
-            this.$host.tabIndex = 0;
+        // TODO
+        if (this.internals.form) {
+            on(this.internals.form, 'reset', this.onReset);
+        }
+        // TODO
+        // if (this.$host.tabIndex < 0) {
+        //   this.$host.tabIndex = 0;
+        // }
+    }
+    disconnectedCallback() {
+        // TODO
+        if (this.internals.form) {
+            off(this.internals.form, 'reset', this.onReset);
         }
     }
 }
+// TODO
+PlusForm.delegatesFocus = true;
 PlusForm.formAssociated = true;
 __decorate([
     Property({
@@ -1923,6 +1944,9 @@ __decorate([
 __decorate([
     Method()
 ], PlusForm.prototype, "setCustomValidity", null);
+__decorate([
+    Watch('value', true)
+], PlusForm.prototype, "valueWatcher", null);
 
 class Animation {
     get animation() {
