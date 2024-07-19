@@ -1,331 +1,287 @@
-import { _ as __decorate, P as PlusCore, A as Animation, p as Scrollbar, o as on, m as off, q as toAxis, n as classes, t as toUnit, a as __awaiter, h as html, e as styles, b as Property, E as Event, S as State, u as Breakpoint, Q as Query, d as Provider, M as Method, W as Watch, B as Bind, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block;overflow:hidden;position:relative;z-index:1000}[part=backdrop]{height:100%;left:0;position:fixed;top:0;transition:inherit;width:100%;z-index:1}[part=backdrop] *{background-color:#000;height:100%;opacity:.5;width:100%}[part=root]{height:100%;position:relative;transition:inherit;z-index:1}.left,.right{width:var(--plus-drawer-size)}.bottom,.top{height:var(--plus-drawer-size)}.left.reverse,.right{margin:0 var(--plus-drawer-offset,0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset,0)}.bottom.reverse,.top{margin:var(--plus-drawer-offset,0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset,0) 0}:host([floated]){bottom:0;left:0;position:fixed;right:0;top:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=closing]),:host([animation][state=open]){padding:.000001px}:host([animation][state=closing]) [part=backdrop],:host([animation][state=open]) [part=backdrop]{opacity:0}";
-
-/**
- * @slot default - The default slot.
- */
-let Drawer = class Drawer extends PlusCore {
-    constructor() {
-        super(...arguments);
-        /**
-         * Sets the minimum width size of the drawer.
-         */
-        this.miniSize = 80;
-        /**
-         * Determine the width of the drawer.
-         */
-        this.size = 280;
-        this.animate = {
-            main: new Animation({
-                key: 'state',
-                source: () => this.$host,
-                target: () => this.$host,
-                states: {
-                    enter: 'open',
-                    entering: 'opening',
-                    entered: 'opened',
-                    leave: 'close',
-                    leaving: 'closing',
-                    leaved: 'closed'
-                },
-                onEnter: () => {
-                    // remove document's scroll
-                    this.floated && Scrollbar.remove(this);
-                    // remove outside click listener
-                    on(this.$root, 'outside', this.onClickOutside, true);
-                    // update state
-                    this.open = this.opened = true;
-                },
-                onEntering: () => {
-                    // this.opened = this.open = true;
-                },
-                onEntered: silent => {
-                    if (silent)
-                        return;
-                    this.plusOpened();
-                },
-                onLeave: () => { },
-                onLeaving: () => {
-                    // this.opened = this.open = false;
-                },
-                onLeaved: silent => {
-                    // reset document's scroll
-                    Scrollbar.reset(this);
-                    // remove outside click listener
-                    off(this.$root, 'outside', this.onClickOutside, true);
-                    // update state
-                    this.open = this.opened = false;
-                    if (silent)
-                        return;
-                    this.plusClosed();
-                }
-            }),
-            mini: new Animation({
-                key: 'state-mini',
-                source: () => this.$host,
-                target: () => this.$host,
-                states: {
-                    enter: 'open',
-                    entering: 'opening',
-                    entered: 'opened',
-                    leave: 'close',
-                    leaving: 'closing',
-                    leaved: 'closed'
-                }
-            })
-        };
-        this.opened = false;
-    }
-    /**
-     * TODO
-     */
-    get floated() {
-        if (!this.floating)
-            return false;
-        if (this.floating === true)
-            return true;
-        const breakpoint = this.floating.split('-').at(1);
-        const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl']; // TODO
-        return breakpoints.indexOf(this.breakpoint) <= breakpoints.indexOf(breakpoint);
-    }
-    get state() {
-        return {
-            open: this.opened,
-            toggle: () => {
-                this.try(!this.open, false);
-            }
-        };
-    }
-    get classes() {
-        const placement = toAxis(this.placement || 'start', this.isRTL);
-        return classes([{
-                [placement]: true,
-                reverse: this.flexible
-            }], true);
-    }
-    get hasBackdrop() {
-        return this.backdrop && this.floated;
-    }
-    get style() {
-        const size = toUnit(this.size);
-        const miniSize = toUnit(this.miniSize);
-        const offset = `calc(${this.open ? this.mini ? `-${size} + ${miniSize}` : '0px' : `-${size}`})`;
-        return {
-            '--plus-drawer-size': size,
-            '--plus-drawer-offset': offset
-        };
-    }
-    /**
-     * Hides the element.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    hide() {
-        return this.try(false, true);
-    }
-    /**
-     * Shows the element.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    show() {
-        return this.try(true, true);
-    }
-    /**
-     * Toggles between `collapse` and `expand` state.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    toggle() {
-        return this.try(!this.open, true);
-    }
-    watcher(next, prev, name) {
-        switch (name) {
-            case 'breakpoint':
-                if (!this.floated) {
-                    this.try(false, false);
-                }
-                break;
-            case 'open':
-                // TODO: problem with `false` and `undefined`
-                if (!next == !prev)
-                    break;
-                this.try(next, true);
-                break;
-            case 'mini':
-                // TODO: problem with `false` and `undefined`
-                if (!next == !prev)
-                    break;
-                this.animate.mini[next ? 'enter' : 'leave']();
-                break;
+import { P as PlusCore, A as Animation, n as Scrollbar, o as on, l as off, p as toAxis, m as classes, t as toUnit, h as html, d as styles, a as Property, E as Event, S as State, q as Breakpoint, Q as Query, c as Provider, M as Method, W as Watch, B as Bind, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  display: block;\n  position: relative;\n  overflow: hidden;\n  z-index: 1000;\n}\n\n[part=backdrop] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 1;\n  transition: inherit;\n}\n\n[part=backdrop] * {\n  width: 100%;\n  height: 100%;\n  background-color: black;\n  opacity: 0.5;\n}\n\n[part=root] {\n  height: 100%;\n  position: relative;\n  z-index: 1;\n  transition: inherit;\n}\n\n.right,\n.left {\n  width: var(--plus-drawer-size);\n}\n\n.top,\n.bottom {\n  height: var(--plus-drawer-size);\n}\n\n.right,\n.left.reverse {\n  margin: 0 var(--plus-drawer-offset, 0) 0 0;\n}\n\n.left,\n.right.reverse {\n  margin: 0 0 0 var(--plus-drawer-offset, 0);\n}\n\n.top,\n.bottom.reverse {\n  margin: var(--plus-drawer-offset, 0) 0 0 0;\n}\n\n.bottom,\n.top.reverse {\n  margin: 0 0 var(--plus-drawer-offset, 0) 0;\n}\n\n:host([floated]) {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n}\n\n:host([animation]) {\n  transition: 0.3s;\n}\n\n:host([animation][state=closed]) {\n  display: none;\n}\n\n:host([animation][state=opened][state-mini=closed]) {\n  overflow: visible;\n}\n\n:host([animation][state=open]),\n:host([animation][state=closing]) {\n  padding: 0.000001px;\n}\n\n:host([animation][state=open]) [part=backdrop],\n:host([animation][state=closing]) [part=backdrop] {\n  opacity: 0;\n}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
+};
+let Drawer = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.miniSize = 80;
+    this.size = 280;
+    this.animate = {
+      main: new Animation({
+        key: "state",
+        source: () => this.$host,
+        target: () => this.$host,
+        states: {
+          enter: "open",
+          entering: "opening",
+          entered: "opened",
+          leave: "close",
+          leaving: "closing",
+          leaved: "closed"
+        },
+        onEnter: () => {
+          this.floated && Scrollbar.remove(this);
+          on(this.$root, "outside", this.onClickOutside, true);
+          this.open = this.opened = true;
+        },
+        onEntering: () => {
+        },
+        onEntered: (silent) => {
+          if (silent) return;
+          this.plusOpened();
+        },
+        onLeave: () => {
+        },
+        onLeaving: () => {
+        },
+        onLeaved: (silent) => {
+          Scrollbar.reset(this);
+          off(this.$root, "outside", this.onClickOutside, true);
+          this.open = this.opened = false;
+          if (silent) return;
+          this.plusClosed();
         }
+      }),
+      mini: new Animation({
+        key: "state-mini",
+        source: () => this.$host,
+        target: () => this.$host,
+        states: {
+          enter: "open",
+          entering: "opening",
+          entered: "opened",
+          leave: "close",
+          leaving: "closing",
+          leaved: "closed"
+        }
+      })
+    };
+    this.opened = false;
+  }
+  get floated() {
+    if (!this.floating) return false;
+    if (this.floating === true) return true;
+    const breakpoint = this.floating.split("-").at(1);
+    const breakpoints = ["xs", "sm", "md", "lg", "xl"];
+    return breakpoints.indexOf(this.breakpoint) <= breakpoints.indexOf(breakpoint);
+  }
+  get state() {
+    return {
+      open: this.opened,
+      toggle: () => {
+        this.try(!this.open, false);
+      }
+    };
+  }
+  get classes() {
+    const placement = toAxis(this.placement || "start", this.isRTL);
+    return classes([{
+      [placement]: true,
+      reverse: this.flexible
+    }]);
+  }
+  get hasBackdrop() {
+    return this.backdrop && this.floated;
+  }
+  get style() {
+    const size = toUnit(this.size);
+    const miniSize = toUnit(this.miniSize);
+    const offset = `calc(${this.open ? this.mini ? `-${size} + ${miniSize}` : "0px" : `-${size}`})`;
+    return {
+      "--plus-drawer-size": size,
+      "--plus-drawer-offset": offset
+    };
+  }
+  hide() {
+    return this.try(false, true);
+  }
+  show() {
+    return this.try(true, true);
+  }
+  toggle() {
+    return this.try(!this.open, true);
+  }
+  watcher(next, prev, name) {
+    switch (name) {
+      case "breakpoint":
+        if (!this.floated) {
+          this.try(false, false);
+        }
+        break;
+      case "open":
+        if (!next == !prev) break;
+        this.try(next, true);
+        break;
+      case "mini":
+        if (!next == !prev) break;
+        this.animate.mini[next ? "enter" : "leave"]();
+        break;
     }
-    initialize() {
-        this.opened = !!this.open;
-        this.animate.main.initialize(this.open ? 'entered' : 'leaved');
-        this.animate.mini.initialize(this.mini ? 'entered' : 'leaved');
+  }
+  initialize() {
+    this.opened = !!this.open;
+    this.animate.main.initialize(this.open ? "entered" : "leaved");
+    this.animate.mini.initialize(this.mini ? "entered" : "leaved");
+  }
+  terminate() {
+    var _a, _b;
+    (_a = this.animate.main) == null ? void 0 : _a.dispose();
+    (_b = this.animate.mini) == null ? void 0 : _b.dispose();
+  }
+  async try(open, silent) {
+    if (this.opened == open) return await this.promise;
+    if (!silent) {
+      const event = open ? this.plusOpen : this.plusClose;
+      const prevented = event.call(this).defaultPrevented;
+      if (prevented) return true;
     }
-    terminate() {
-        var _a, _b;
-        (_a = this.animate.main) === null || _a === void 0 ? void 0 : _a.dispose();
-        (_b = this.animate.mini) === null || _b === void 0 ? void 0 : _b.dispose();
-    }
-    try(open, silent) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (this.opened == open)
-                return yield this.promise;
-            if (!silent) {
-                const event = open ? this.plusOpen : this.plusClose;
-                const prevented = event.call(this).defaultPrevented;
-                // TODO
-                if (prevented)
-                    return true;
-            }
-            this.opened = this.open = open;
-            const fn = this.open ? this.animate.main.enter : this.animate.main.leave;
-            this.promise = fn.bind(this.animate.main)(silent);
-            return yield this.promise;
-        });
-    }
-    onClickOutside() {
-        // TODO
-        if (!this.opened)
-            return;
-        if (!this.floated)
-            return;
-        if (this.persistent)
-            return;
-        this.try(false, false);
-    }
-    loadedCallback() {
-        this.initialize();
-    }
-    disconnectedCallback() {
-        this.terminate();
-    }
-    render() {
-        return html `
-        ${this.hasBackdrop ? html `<div part="backdrop">
+    this.opened = this.open = open;
+    const fn = this.open ? this.animate.main.enter : this.animate.main.leave;
+    this.promise = fn.bind(this.animate.main)(silent);
+    return await this.promise;
+  }
+  onClickOutside() {
+    if (!this.opened) return;
+    if (!this.floated) return;
+    if (this.persistent) return;
+    this.try(false, false);
+  }
+  loadedCallback() {
+    this.initialize();
+  }
+  disconnectedCallback() {
+    this.terminate();
+  }
+  render() {
+    return html`
+        ${this.hasBackdrop ? html`<div part="backdrop">
             <div />
           </div>` : null}
         <div class=${this.classes} part="root" style=${styles(this.style)}>
           <slot />
         </div>
       `;
-    }
+  }
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Drawer.tag = "plus-drawer";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Drawer.style = css_248z;
-__decorate([
-    Property({
-        reflect: true,
-        type: 258
-    })
-], Drawer.prototype, "animation", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Drawer.prototype, "backdrop", void 0);
-__decorate([
-    Property({
-        type: 256
-    })
-], Drawer.prototype, "connector", void 0);
-__decorate([
-    Property({
-        type: 10
-    })
-], Drawer.prototype, "floating", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Drawer.prototype, "mini", void 0);
-__decorate([
-    Property({
-        type: 320
-    })
-], Drawer.prototype, "miniSize", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Drawer.prototype, "open", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Drawer.prototype, "persistent", void 0);
-__decorate([
-    Property({
-        type: 8
-    })
-], Drawer.prototype, "placement", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Drawer.prototype, "flexible", void 0);
-__decorate([
-    Property({
-        type: 320
-    })
-], Drawer.prototype, "size", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 0
-    })
-], Drawer.prototype, "floated", null);
-__decorate([
-    Event({
-        cancelable: true
-    })
-], Drawer.prototype, "plusClose", void 0);
-__decorate([
-    Event()
-], Drawer.prototype, "plusClosed", void 0);
-__decorate([
-    Event({
-        cancelable: true
-    })
-], Drawer.prototype, "plusOpen", void 0);
-__decorate([
-    Event()
-], Drawer.prototype, "plusOpened", void 0);
-__decorate([
-    State(),
-    Breakpoint()
-], Drawer.prototype, "breakpoint", void 0);
-__decorate([
-    Query('[part=root]')
-], Drawer.prototype, "$root", void 0);
-__decorate([
-    Provider('drawer.connector')
-], Drawer.prototype, "state", null);
-__decorate([
-    Method()
-], Drawer.prototype, "hide", null);
-__decorate([
-    Method()
-], Drawer.prototype, "show", null);
-__decorate([
-    Method()
-], Drawer.prototype, "toggle", null);
-__decorate([
-    Watch(['breakpoint', 'mini', 'open'])
-], Drawer.prototype, "watcher", null);
-__decorate([
-    Bind()
-], Drawer.prototype, "onClickOutside", null);
-Drawer = __decorate([
-    Element()
+Drawer.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 258
+  })
+], Drawer.prototype, "animation", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Drawer.prototype, "backdrop", 2);
+__decorateClass([
+  Property({
+    type: 256
+  })
+], Drawer.prototype, "connector", 2);
+__decorateClass([
+  Property({
+    type: 10
+  })
+], Drawer.prototype, "floating", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Drawer.prototype, "mini", 2);
+__decorateClass([
+  Property({
+    type: 320
+  })
+], Drawer.prototype, "miniSize", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Drawer.prototype, "open", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Drawer.prototype, "persistent", 2);
+__decorateClass([
+  Property({
+    type: 8
+  })
+], Drawer.prototype, "placement", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Drawer.prototype, "flexible", 2);
+__decorateClass([
+  Property({
+    type: 320
+  })
+], Drawer.prototype, "size", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  })
+], Drawer.prototype, "floated", 1);
+__decorateClass([
+  Event({
+    cancelable: true
+  })
+], Drawer.prototype, "plusClose", 2);
+__decorateClass([
+  Event()
+], Drawer.prototype, "plusClosed", 2);
+__decorateClass([
+  Event({
+    cancelable: true
+  })
+], Drawer.prototype, "plusOpen", 2);
+__decorateClass([
+  Event()
+], Drawer.prototype, "plusOpened", 2);
+__decorateClass([
+  State(),
+  Breakpoint()
+], Drawer.prototype, "breakpoint", 2);
+__decorateClass([
+  Query("[part=root]")
+], Drawer.prototype, "$root", 2);
+__decorateClass([
+  Provider("drawer.connector")
+], Drawer.prototype, "state", 1);
+__decorateClass([
+  Method()
+], Drawer.prototype, "hide", 1);
+__decorateClass([
+  Method()
+], Drawer.prototype, "show", 1);
+__decorateClass([
+  Method()
+], Drawer.prototype, "toggle", 1);
+__decorateClass([
+  Watch(["breakpoint", "mini", "open"])
+], Drawer.prototype, "watcher", 1);
+__decorateClass([
+  Bind()
+], Drawer.prototype, "onClickOutside", 1);
+Drawer = __decorateClass([
+  Element()
 ], Drawer);
-
-export { Drawer };
+export {
+  Drawer
+};

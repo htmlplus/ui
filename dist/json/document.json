@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-07-12T13:39:03.361Z",
+      "lastModified": "2024-07-18T16:39:24.258Z",
       "methods": [
         {
           "async": false,
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2024-07-12T13:03:16.367Z",
+      "lastModified": "2024-07-18T16:39:24.259Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-07-12T13:03:16.368Z",
+      "lastModified": "2024-07-18T16:39:24.261Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-07-12T13:03:16.370Z",
+      "lastModified": "2024-07-18T16:39:24.264Z",
       "methods": [],
       "properties": [
         {
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-07-12T13:03:16.371Z",
+      "lastModified": "2024-07-18T16:39:24.266Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-07-12T13:03:16.372Z",
+      "lastModified": "2024-07-18T16:39:24.267Z",
       "methods": [
         {
           "async": false,
@@ -800,7 +800,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2024-07-12T13:03:16.374Z",
+      "lastModified": "2024-07-18T16:39:24.268Z",
       "methods": [],
       "properties": [
         {
@@ -845,12 +845,12 @@
       "styles": [
         {
           "description": "Used to adjust the background-color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-card-background-color"
         },
         {
           "description": "Used to adjust the border-color.",
-          "initializer": "#d3d3d3",
+          "initializer": "lightgray",
           "name": "--plus-card-border-color"
         },
         {
@@ -898,7 +898,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2024-07-12T13:03:16.375Z",
+      "lastModified": "2024-07-18T16:39:24.269Z",
       "methods": [],
       "properties": [
         {
@@ -933,7 +933,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-07-12T13:03:16.375Z",
+      "lastModified": "2024-07-18T16:39:24.269Z",
       "methods": [],
       "properties": [
         {
@@ -986,7 +986,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2024-07-12T13:03:16.376Z",
+      "lastModified": "2024-07-18T16:39:24.271Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-07-16T16:38:14.050Z",
+      "lastModified": "2024-07-18T16:39:24.273Z",
       "methods": [
         {
           "async": false,
@@ -1481,7 +1481,7 @@
       "styles": [
         {
           "description": "Used to adjust the backdrop color.",
-          "initializer": "#000",
+          "initializer": "black",
           "name": "--plus-cropper-backdrop-color"
         },
         {
@@ -1491,7 +1491,7 @@
         },
         {
           "description": "Used to adjust the guides color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-guides-color"
         },
         {
@@ -1511,7 +1511,7 @@
         },
         {
           "description": "Used to adjust the indicator color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-indicator-color"
         },
         {
@@ -1531,7 +1531,7 @@
         },
         {
           "description": "Used to adjust the resizer color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-resizer-color"
         },
         {
@@ -1556,7 +1556,7 @@
         },
         {
           "description": "Used to adjust the viewport color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-viewport-color"
         },
         {
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-07-12T13:03:16.382Z",
+      "lastModified": "2024-07-18T16:39:24.276Z",
       "methods": [
         {
           "async": false,
@@ -1823,7 +1823,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2024-07-12T13:03:16.379Z",
+      "lastModified": "2024-07-18T16:39:24.274Z",
       "methods": [],
       "properties": [
         {
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-07-12T13:03:16.383Z",
+      "lastModified": "2024-07-18T16:39:24.278Z",
       "methods": [],
       "properties": [
         {
@@ -1985,7 +1985,7 @@
       "styles": [
         {
           "description": "Used to adjust the color.",
-          "initializer": "#000",
+          "initializer": "black",
           "name": "--plus-divider-color"
         }
       ],
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-07-12T13:03:16.393Z",
+      "lastModified": "2024-07-18T16:39:24.278Z",
       "methods": [
         {
           "async": false,
@@ -2248,7 +2248,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-07-12T13:03:16.394Z",
+      "lastModified": "2024-07-18T16:39:24.279Z",
       "methods": [],
       "properties": [
         {
@@ -2301,7 +2301,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2024-07-12T13:03:16.395Z",
+      "lastModified": "2024-07-18T16:39:24.281Z",
       "methods": [],
       "properties": [
         {
@@ -2393,7 +2393,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2024-07-12T13:03:16.397Z",
+      "lastModified": "2024-07-18T16:39:24.283Z",
       "methods": [],
       "properties": [
         {
@@ -3166,7 +3166,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-07-12T13:03:16.398Z",
+      "lastModified": "2024-07-18T16:39:24.285Z",
       "methods": [],
       "properties": [
         {
@@ -3258,7 +3258,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2024-07-12T13:03:16.399Z",
+      "lastModified": "2024-07-18T16:39:24.286Z",
       "methods": [],
       "properties": [
         {
@@ -3323,7 +3323,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-07-12T13:03:16.401Z",
+      "lastModified": "2024-07-18T16:39:24.288Z",
       "methods": [],
       "properties": [
         {
@@ -3406,7 +3406,7 @@
       "styles": [
         {
           "description": "Specifies the color of the bar.",
-          "initializer": "#1e90ff",
+          "initializer": "dodgerblue",
           "name": "--plus-progress-bar-indicator-background-color"
         }
       ],
@@ -3446,7 +3446,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2024-07-12T13:03:16.401Z",
+      "lastModified": "2024-07-18T16:39:24.288Z",
       "methods": [],
       "properties": [
         {
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-07-12T13:03:16.402Z",
+      "lastModified": "2024-07-18T16:39:24.290Z",
       "methods": [
         {
           "async": false,
@@ -3733,7 +3733,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-07-12T13:03:16.404Z",
+      "lastModified": "2024-07-18T16:39:24.291Z",
       "methods": [],
       "properties": [
         {
@@ -3777,7 +3777,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-07-12T13:03:16.404Z",
+      "lastModified": "2024-07-18T16:39:24.291Z",
       "methods": [],
       "properties": [
         {
@@ -3853,7 +3853,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-07-12T13:03:16.405Z",
+      "lastModified": "2024-07-18T16:39:24.292Z",
       "methods": [],
       "properties": [
         {
@@ -3917,7 +3917,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2024-07-12T13:03:16.406Z",
+      "lastModified": "2024-07-18T16:39:24.293Z",
       "methods": [],
       "properties": [
         {
@@ -3955,7 +3955,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-07-12T13:03:16.408Z",
+      "lastModified": "2024-07-18T16:39:24.294Z",
       "methods": [],
       "properties": [
         {

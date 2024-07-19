@@ -1,214 +1,166 @@
-import { _ as __decorate, b as Property, E as Event, Q as Query, d as Provider, M as Method, W as Watch, B as Bind, P as PlusCore, A as Animation, p as Scrollbar, o as on, m as off, q as toAxis, n as classes, a as __awaiter, h as html, k as attributes, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host([animation][state=closing]),:host([animation][state=opening]){transition:all .5s ease-out}:host([animation][state=closing]) .dialog,:host([animation][state=opening]) .dialog{overflow:hidden}:host([animation][state=closing]) ::slotted(*),:host([animation][state=opening]) ::slotted(*){transition:all .5s ease-out}:host([animation][state=closing]),:host([animation][state=open]){opacity:0}:host([animation][state=closing]) ::slotted(*),:host([animation][state=open]) ::slotted(*){transform:translateY(-50px)}:host([animation][state=closing]) .y-bottom ::slotted(*),:host([animation][state=open]) .y-bottom ::slotted(*){transform:translateY(50px)}:host([animation][state=closing]) .x-right ::slotted(*),:host([animation][state=open]) .x-right ::slotted(*){transform:translate(50px)}:host([animation][state=closing]) .x-left ::slotted(*),:host([animation][state=open]) .x-left ::slotted(*){transform:translate(-50px)}:host([animation][state=close]),:host([animation][state=opening]){opacity:1}:host([animation][state=close]) ::slotted(*),:host([animation][state=opening]) ::slotted(*){transform:translate(0)}:host{display:block;height:100%;left:0;outline:0;overflow:hidden;position:fixed;top:0;width:100%;z-index:1000}.backdrop{left:0;position:fixed;top:0;z-index:1}.backdrop,.backdrop *{height:100%;width:100%}.backdrop *{background-color:#000;opacity:.5}.dialog{height:100%;left:0;overflow-x:hidden;overflow-y:auto;position:fixed;top:0;width:100%;z-index:1}.table{display:table;height:100%;margin:auto;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}.fullscreen .cell{padding:0}.fullscreen ::slotted(*){border:0;border-radius:0}.fullscreen .cell{max-width:none}.fullscreen ::slotted(*){min-height:100vh}@media (min-width:576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media (max-width:575.98px){.fullscreen-sm-down .cell{padding:0}.fullscreen-sm-down ::slotted(*){border:0;border-radius:0}.fullscreen-sm-down .cell{max-width:none}.fullscreen-sm-down ::slotted(*){min-height:100vh}}@media (max-width:767.98px){.fullscreen-md-down .cell{padding:0}.fullscreen-md-down ::slotted(*){border:0;border-radius:0}.fullscreen-md-down .cell{max-width:none}.fullscreen-md-down ::slotted(*){min-height:100vh}}@media (min-width:992px){.size-lg .cell,.size-xl .cell{max-width:800px}}@media (max-width:991.98px){.fullscreen-lg-down .cell{padding:0}.fullscreen-lg-down ::slotted(*){border:0;border-radius:0}.fullscreen-lg-down .cell{max-width:none}.fullscreen-lg-down ::slotted(*){min-height:100vh}}@media (min-width:1200px){.size-xl .cell{max-width:1140px}}@media (max-width:1199.98px){.fullscreen-xl-down .cell{padding:0}.fullscreen-xl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xl-down .cell{max-width:none}.fullscreen-xl-down ::slotted(*){min-height:100vh}}@media (max-width:1399.98px){.fullscreen-xxl-down .cell{padding:0}.fullscreen-xxl-down ::slotted(*){border:0;border-radius:0}.fullscreen-xxl-down .cell{max-width:none}.fullscreen-xxl-down ::slotted(*){min-height:100vh}}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none!important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
-
-var Dialog_1;
-/**
- * @part backdrop - Backdrop element.
- *
- * @slot default - The default slot.
- */
-let Dialog = Dialog_1 = class Dialog extends PlusCore {
-    constructor() {
-        super(...arguments);
-        /**
-         * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
-         * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
-         */
-        this.placement = 'top';
-        this.animate = new Animation({
-            key: 'state',
-            source: () => this.$host,
-            target: () => this.$host,
-            states: {
-                enter: 'open',
-                entering: 'opening',
-                entered: 'opened',
-                leave: 'close',
-                leaving: 'closing',
-                leaved: 'closed'
-            },
-            onEnter: () => {
-                // remove document's scroll
-                Scrollbar.remove(this);
-                // add keydown listener
-                on(document, 'keydown', this.onEscape, true);
-                // remove outside click listener
-                on(this.$cell, 'outside', this.onClickOutside, true);
-                // set z-index
-                this.$host.style.zIndex = this.zIndex;
-                // update state
-                this.open = this.opened = true;
-                // register dialog's instance
-                Dialog_1.instances.push(this);
-            },
-            onEntering: () => {
-                this.opened = this.open = true;
-            },
-            onEntered: silent => {
-                if (silent)
-                    return;
-                this.plusOpened();
-            },
-            onLeave: () => { },
-            onLeaving: () => {
-                this.opened = this.open = false;
-            },
-            onLeaved: silent => {
-                // reset document's scroll
-                Scrollbar.reset(this);
-                // remove keydown listener
-                off(document, 'keydown', this.onEscape, true);
-                // remove outside click listener
-                off(this.$cell, 'outside', this.onClickOutside, true);
-                // reset z-index
-                this.$host.style.zIndex = null;
-                // update state
-                this.open = this.opened = false;
-                // unregister dialog's instance
-                Dialog_1.instances = Dialog_1.instances.filter(instance => instance !== this);
-                if (silent)
-                    return;
-                this.plusClosed();
-            }
-        });
-        this.opened = false;
+import { P as PlusCore, A as Animation, n as Scrollbar, o as on, l as off, p as toAxis, m as classes, h as html, j as attributes, a as Property, E as Event, Q as Query, c as Provider, M as Method, W as Watch, B as Bind, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host([animation][state=opening]),\n:host([animation][state=closing]) {\n  transition: all 0.5s ease-out;\n}\n\n:host([animation][state=opening]) .dialog,\n:host([animation][state=closing]) .dialog {\n  overflow: hidden;\n}\n\n:host([animation][state=opening]) ::slotted(*),\n:host([animation][state=closing]) ::slotted(*) {\n  transition: all 0.5s ease-out;\n}\n\n:host([animation][state=open]),\n:host([animation][state=closing]) {\n  opacity: 0;\n}\n\n:host([animation][state=open]) ::slotted(*),\n:host([animation][state=closing]) ::slotted(*) {\n  transform: translate(0, -50px);\n}\n\n:host([animation][state=open]) .y-bottom ::slotted(*),\n:host([animation][state=closing]) .y-bottom ::slotted(*) {\n  transform: translate(0, 50px);\n}\n\n:host([animation][state=open]) .x-right ::slotted(*),\n:host([animation][state=closing]) .x-right ::slotted(*) {\n  transform: translate(50px, 0);\n}\n\n:host([animation][state=open]) .x-left ::slotted(*),\n:host([animation][state=closing]) .x-left ::slotted(*) {\n  transform: translate(-50px, 0);\n}\n\n:host([animation][state=close]),\n:host([animation][state=opening]) {\n  opacity: 1;\n}\n\n:host([animation][state=close]) ::slotted(*),\n:host([animation][state=opening]) ::slotted(*) {\n  transform: translate(0, 0);\n}\n\n:host {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  display: block;\n  outline: 0;\n  overflow: hidden;\n}\n\n.backdrop {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 1;\n}\n\n.backdrop * {\n  width: 100%;\n  height: 100%;\n  background-color: black;\n  opacity: 0.5;\n}\n\n.dialog {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow-x: hidden;\n  overflow-y: auto;\n  z-index: 1;\n}\n\n.table {\n  display: table;\n  margin: auto;\n  height: 100%;\n  position: relative;\n}\n\n.cell {\n  display: table-cell;\n}\n\n.scrollable ::slotted(*) {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.x-right .table {\n  margin-right: 0;\n}\n\n.x-left .table {\n  margin-left: 0;\n}\n\n.y-top .cell {\n  vertical-align: top;\n}\n\n.y-center .cell {\n  vertical-align: middle;\n}\n\n.y-bottom .cell {\n  vertical-align: bottom;\n}\n\n.full-height ::slotted(*) {\n  min-height: calc(100vh - 1rem);\n}\n\n.full-height.sticky ::slotted(*) {\n  min-height: 100vh;\n}\n\n.cell {\n  padding: 0.5rem;\n}\n\n.scrollable ::slotted(*) {\n  max-height: calc(100vh - 1rem);\n}\n\n.fullscreen .cell {\n  padding: 0;\n}\n\n.fullscreen ::slotted(*) {\n  border: 0;\n  border-radius: 0;\n}\n\n.fullscreen .cell {\n  max-width: none;\n}\n\n.fullscreen ::slotted(*) {\n  min-height: 100vh;\n}\n\n@media (min-width: 576px) {\n  .full-height ::slotted(*) {\n    min-height: calc(100vh - 3.5rem);\n  }\n  .full-height.sticky ::slotted(*) {\n    min-height: 100vh;\n  }\n  .cell {\n    padding: 1.75rem;\n  }\n  .scrollable ::slotted(*) {\n    max-height: calc(100vh - 3.5rem);\n  }\n  .cell {\n    max-width: 500px;\n  }\n  .size-sm .cell {\n    max-width: 300px;\n  }\n}\n\n@media (max-width: 575.98px) {\n  .fullscreen-sm-down .cell {\n    padding: 0;\n  }\n  .fullscreen-sm-down ::slotted(*) {\n    border: 0;\n    border-radius: 0;\n  }\n  .fullscreen-sm-down .cell {\n    max-width: none;\n  }\n  .fullscreen-sm-down ::slotted(*) {\n    min-height: 100vh;\n  }\n}\n\n@media (max-width: 767.98px) {\n  .fullscreen-md-down .cell {\n    padding: 0;\n  }\n  .fullscreen-md-down ::slotted(*) {\n    border: 0;\n    border-radius: 0;\n  }\n  .fullscreen-md-down .cell {\n    max-width: none;\n  }\n  .fullscreen-md-down ::slotted(*) {\n    min-height: 100vh;\n  }\n}\n\n@media (min-width: 992px) {\n  .size-lg .cell {\n    max-width: 800px;\n  }\n  .size-xl .cell {\n    max-width: 800px;\n  }\n}\n\n@media (max-width: 991.98px) {\n  .fullscreen-lg-down .cell {\n    padding: 0;\n  }\n  .fullscreen-lg-down ::slotted(*) {\n    border: 0;\n    border-radius: 0;\n  }\n  .fullscreen-lg-down .cell {\n    max-width: none;\n  }\n  .fullscreen-lg-down ::slotted(*) {\n    min-height: 100vh;\n  }\n}\n\n@media (min-width: 1200px) {\n  .size-xl .cell {\n    max-width: 1140px;\n  }\n}\n\n@media (max-width: 1199.98px) {\n  .fullscreen-xl-down .cell {\n    padding: 0;\n  }\n  .fullscreen-xl-down ::slotted(*) {\n    border: 0;\n    border-radius: 0;\n  }\n  .fullscreen-xl-down .cell {\n    max-width: none;\n  }\n  .fullscreen-xl-down ::slotted(*) {\n    min-height: 100vh;\n  }\n}\n\n@media (max-width: 1399.98px) {\n  .fullscreen-xxl-down .cell {\n    padding: 0;\n  }\n  .fullscreen-xxl-down ::slotted(*) {\n    border: 0;\n    border-radius: 0;\n  }\n  .fullscreen-xxl-down .cell {\n    max-width: none;\n  }\n  .fullscreen-xxl-down ::slotted(*) {\n    min-height: 100vh;\n  }\n}\n\n:host([state=closed]) {\n  display: none;\n}\n\n.cell {\n  width: 100vw;\n}\n\n::slotted(*) {\n  pointer-events: auto;\n}\n\n.full-width .cell {\n  max-width: none !important;\n}\n\n.sticky .cell {\n  padding: 0;\n}\n\n.sticky ::slotted(*) {\n  border: 0;\n  border-radius: 0;\n}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
+};
+let Dialog = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.placement = "top";
+    this.animate = new Animation({
+      key: "state",
+      source: () => this.$host,
+      target: () => this.$host,
+      states: {
+        enter: "open",
+        entering: "opening",
+        entered: "opened",
+        leave: "close",
+        leaving: "closing",
+        leaved: "closed"
+      },
+      onEnter: () => {
+        Scrollbar.remove(this);
+        on(document, "keydown", this.onEscape, true);
+        on(this.$cell, "outside", this.onClickOutside, true);
+        this.$host.style.zIndex = this.zIndex;
+        this.open = this.opened = true;
+        Dialog.instances.push(this);
+      },
+      onEntering: () => {
+        this.opened = this.open = true;
+      },
+      onEntered: (silent) => {
+        if (silent) return;
+        this.plusOpened();
+      },
+      onLeave: () => {
+      },
+      onLeaving: () => {
+        this.opened = this.open = false;
+      },
+      onLeaved: (silent) => {
+        Scrollbar.reset(this);
+        off(document, "keydown", this.onEscape, true);
+        off(this.$cell, "outside", this.onClickOutside, true);
+        this.$host.style.zIndex = null;
+        this.open = this.opened = false;
+        Dialog.instances = Dialog.instances.filter((instance) => instance !== this);
+        if (silent) return;
+        this.plusClosed();
+      }
+    });
+    this.opened = false;
+  }
+  get state() {
+    return {
+      open: this.opened,
+      toggle: () => {
+        this.try(!this.open, false);
+      }
+    };
+  }
+  get classes() {
+    let placement = this.placement || "";
+    if (placement.match(/^(top|bottom)$/)) placement = `-${placement}`;
+    let [x, y] = placement.split("-");
+    x = x || "center";
+    y = y || "center";
+    x = toAxis(x, this.isRTL);
+    return classes(["dialog", {
+      x,
+      y,
+      size: this.size,
+      sticky: this.sticky,
+      fullWidth: this.fullWidth,
+      fullHeight: this.fullHeight,
+      fullscreen: this.fullscreen,
+      scrollable: this.scrollable
+    }]);
+  }
+  get isCurrent() {
+    return Dialog.instances.at(-1) === this;
+  }
+  get zIndex() {
+    if (Dialog.instances.length < 1) return;
+    const [instance] = Dialog.instances.slice(-1);
+    if (!instance) return;
+    const zIndex = window.getComputedStyle(instance.$host).getPropertyValue("z-index");
+    return `${parseInt(zIndex) + 1}`;
+  }
+  hide() {
+    return this.try(false, true);
+  }
+  show() {
+    return this.try(true, true);
+  }
+  toggle() {
+    return this.try(!this.open, true);
+  }
+  watcher(next, prev, name) {
+    switch (name) {
+      case "open":
+        if (!next == !prev) break;
+        this.try(next, true);
+        break;
     }
-    get state() {
-        return {
-            open: this.opened,
-            toggle: () => {
-                this.try(!this.open, false);
-            }
-        };
+  }
+  initialize() {
+    this.animate.initialize((this.opened = !!this.open) ? "entered" : "leaved");
+  }
+  terminate() {
+    var _a;
+    (_a = this.animate) == null ? void 0 : _a.dispose();
+  }
+  async try(open, silent) {
+    if (this.opened == open) return await this.promise;
+    if (!silent) {
+      const event = open ? this.plusOpen : this.plusClose;
+      const prevented = event.call(this).defaultPrevented;
+      if (prevented) return true;
     }
-    get classes() {
-        let placement = this.placement || '';
-        if (placement.match(/^(top|bottom)$/))
-            placement = `-${placement}`;
-        let [x, y] = placement.split('-');
-        x = x || 'center';
-        y = y || 'center';
-        x = toAxis(x, this.isRTL);
-        return classes(['dialog', {
-                x,
-                y,
-                size: this.size,
-                sticky: this.sticky,
-                fullWidth: this.fullWidth,
-                fullHeight: this.fullHeight,
-                fullscreen: this.fullscreen,
-                scrollable: this.scrollable
-            }], true);
-    }
-    get isCurrent() {
-        return Dialog_1.instances.at(-1) === this;
-    }
-    get zIndex() {
-        if (Dialog_1.instances.length < 1)
-            return;
-        const [instance] = Dialog_1.instances.slice(-1);
-        if (!instance)
-            return;
-        const zIndex = window.getComputedStyle(instance.$host).getPropertyValue('z-index');
-        return `${parseInt(zIndex) + 1}`;
-    }
-    /**
-     * Hides the element.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    hide() {
-        return this.try(false, true);
-    }
-    /**
-     * Shows the element.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    show() {
-        return this.try(true, true);
-    }
-    /**
-     * Toggles between `collapse` and `expand` state.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    toggle() {
-        return this.try(!this.open, true);
-    }
-    watcher(next, prev, name) {
-        switch (name) {
-            case 'open':
-                // TODO: problem with `false` and `undefined`
-                if (!next == !prev)
-                    break;
-                this.try(next, true);
-                break;
-        }
-    }
-    initialize() {
-        this.animate.initialize((this.opened = !!this.open) ? 'entered' : 'leaved');
-    }
-    terminate() {
-        var _a;
-        (_a = this.animate) === null || _a === void 0 ? void 0 : _a.dispose();
-    }
-    try(open, silent) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (this.opened == open)
-                return yield this.promise;
-            if (!silent) {
-                const event = open ? this.plusOpen : this.plusClose;
-                const prevented = event.call(this).defaultPrevented;
-                // TODO
-                if (prevented)
-                    return true;
-            }
-            this.opened = this.open = open;
-            const fn = this.open ? this.animate.enter : this.animate.leave;
-            this.promise = fn.bind(this.animate)(silent);
-            return yield this.promise;
-        });
-    }
-    onEscape(event) {
-        // TODO
-        if (!this.opened)
-            return;
-        if (!this.isCurrent)
-            return;
-        if (!this.keyboard || event.key !== 'Escape')
-            return;
-        event.preventDefault();
-        this.try(false, false);
-    }
-    onClickOutside() {
-        // TODO
-        if (!this.opened)
-            return;
-        if (!this.isCurrent)
-            return;
-        if (this.persistent)
-            return;
-        this.try(false, false);
-    }
-    loadedCallback() {
-        this.initialize();
-    }
-    disconnectedCallback() {
-        this.terminate();
-    }
-    render() {
-        return html `${attributes(this, [{
-                "aria-hidden": this.opened ? null : 'true'
-            }, {
-                "aria-modal": this.opened ? 'true' : null
-            }, {
-                "tabindex": -1
-            }, {
-                "role": this.opened ? 'dialog' : null
-            }])}
-        ${!this.transparent && html `<div class="backdrop" part="backdrop">
+    this.opened = this.open = open;
+    const fn = this.open ? this.animate.enter : this.animate.leave;
+    this.promise = fn.bind(this.animate)(silent);
+    return await this.promise;
+  }
+  onEscape(event) {
+    if (!this.opened) return;
+    if (!this.isCurrent) return;
+    if (!this.keyboard || event.key !== "Escape") return;
+    event.preventDefault();
+    this.try(false, false);
+  }
+  onClickOutside() {
+    if (!this.opened) return;
+    if (!this.isCurrent) return;
+    if (this.persistent) return;
+    this.try(false, false);
+  }
+  loadedCallback() {
+    this.initialize();
+  }
+  disconnectedCallback() {
+    this.terminate();
+  }
+  render() {
+    return html`${attributes(this, [{
+      "aria-hidden": this.opened ? null : "true"
+    }, {
+      "aria-modal": this.opened ? "true" : null
+    }, {
+      "tabindex": -1
+    }, {
+      "role": this.opened ? "dialog" : null
+    }])}
+        ${!this.transparent && html`<div class="backdrop" part="backdrop">
             <div />
           </div>`}
         <div class=${this.classes}>
@@ -219,122 +171,121 @@ let Dialog = Dialog_1 = class Dialog extends PlusCore {
           </div>
         </div>
       `;
-    }
+  }
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Dialog.tag = "plus-dialog";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Dialog.style = css_248z;
+Dialog.style = STYLE_IMPORTED;
 Dialog.instances = [];
-__decorate([
-    Property({
-        reflect: true,
-        type: 258
-    })
-], Dialog.prototype, "animation", void 0);
-__decorate([
-    Property({
-        type: 256
-    })
-], Dialog.prototype, "connector", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "fullHeight", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "fullWidth", void 0);
-__decorate([
-    Property({
-        type: 10
-    })
-], Dialog.prototype, "fullscreen", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "keyboard", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Dialog.prototype, "open", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "persistent", void 0);
-__decorate([
-    Property({
-        type: 8
-    })
-], Dialog.prototype, "placement", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "scrollable", void 0);
-__decorate([
-    Property({
-        type: 8
-    })
-], Dialog.prototype, "size", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "sticky", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Dialog.prototype, "transparent", void 0);
-__decorate([
-    Event({
-        cancelable: true
-    })
-], Dialog.prototype, "plusClose", void 0);
-__decorate([
-    Event()
-], Dialog.prototype, "plusClosed", void 0);
-__decorate([
-    Event({
-        cancelable: true
-    })
-], Dialog.prototype, "plusOpen", void 0);
-__decorate([
-    Event()
-], Dialog.prototype, "plusOpened", void 0);
-__decorate([
-    Query('slot')
-], Dialog.prototype, "$cell", void 0);
-__decorate([
-    Provider('dialog.connector')
-], Dialog.prototype, "state", null);
-__decorate([
-    Method()
-], Dialog.prototype, "hide", null);
-__decorate([
-    Method()
-], Dialog.prototype, "show", null);
-__decorate([
-    Method()
-], Dialog.prototype, "toggle", null);
-__decorate([
-    Watch(['open'])
-], Dialog.prototype, "watcher", null);
-__decorate([
-    Bind()
-], Dialog.prototype, "onEscape", null);
-__decorate([
-    Bind()
-], Dialog.prototype, "onClickOutside", null);
-Dialog = Dialog_1 = __decorate([
-    Element()
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 258
+  })
+], Dialog.prototype, "animation", 2);
+__decorateClass([
+  Property({
+    type: 256
+  })
+], Dialog.prototype, "connector", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "fullHeight", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "fullWidth", 2);
+__decorateClass([
+  Property({
+    type: 10
+  })
+], Dialog.prototype, "fullscreen", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "keyboard", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Dialog.prototype, "open", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "persistent", 2);
+__decorateClass([
+  Property({
+    type: 8
+  })
+], Dialog.prototype, "placement", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "scrollable", 2);
+__decorateClass([
+  Property({
+    type: 8
+  })
+], Dialog.prototype, "size", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "sticky", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Dialog.prototype, "transparent", 2);
+__decorateClass([
+  Event({
+    cancelable: true
+  })
+], Dialog.prototype, "plusClose", 2);
+__decorateClass([
+  Event()
+], Dialog.prototype, "plusClosed", 2);
+__decorateClass([
+  Event({
+    cancelable: true
+  })
+], Dialog.prototype, "plusOpen", 2);
+__decorateClass([
+  Event()
+], Dialog.prototype, "plusOpened", 2);
+__decorateClass([
+  Query("slot")
+], Dialog.prototype, "$cell", 2);
+__decorateClass([
+  Provider("dialog.connector")
+], Dialog.prototype, "state", 1);
+__decorateClass([
+  Method()
+], Dialog.prototype, "hide", 1);
+__decorateClass([
+  Method()
+], Dialog.prototype, "show", 1);
+__decorateClass([
+  Method()
+], Dialog.prototype, "toggle", 1);
+__decorateClass([
+  Watch(["open"])
+], Dialog.prototype, "watcher", 1);
+__decorateClass([
+  Bind()
+], Dialog.prototype, "onEscape", 1);
+__decorateClass([
+  Bind()
+], Dialog.prototype, "onClickOutside", 1);
+Dialog = __decorateClass([
+  Element()
 ], Dialog);
-
-export { Dialog };
+export {
+  Dialog
+};

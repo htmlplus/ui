@@ -1,129 +1,120 @@
-import { _ as __decorate, P as PlusCore, t as toUnit, h as html, k as attributes, e as styles, b as Property, E as Event, Q as Query, S as State, j as Style, W as Watch, B as Bind, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block;position:sticky;will-change:auto}.sizer-wrapper{pointer-events:none;position:relative;visibility:hidden}.sizer{position:absolute}";
-
-/**
- * @stable
- *
- * @slot default - The default slot.
- * @slot normal  - Activated when the state becomes `normal`. To enable, set the `watcher` property to `true`.
- * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
- */
-let Sticky = class Sticky extends PlusCore {
-    constructor() {
-        super(...arguments);
-        /**
-         * Specifies the space from top.
-         */
-        this.top = 0;
+import { P as PlusCore, t as toUnit, h as html, j as attributes, d as styles, a as Property, E as Event, Q as Query, S as State, f as Style, W as Watch, B as Bind, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  position: sticky;\n  display: block;\n  will-change: auto;\n}\n\n.sizer-wrapper {\n  position: relative;\n  pointer-events: none;\n  visibility: hidden;\n}\n\n.sizer {\n  position: absolute;\n}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
+};
+let Sticky = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.top = 0;
+  }
+  get style() {
+    return {
+      "top": toUnit(this.top),
+      "z-index": this.zIndex ?? void 0
+    };
+  }
+  get sizer() {
+    const top = toUnit(this.top);
+    if (!top) return;
+    return {
+      top: `calc((${top} + 1px) * -1)`
+    };
+  }
+  watchers(next, prev, key) {
+    switch (key) {
+      case "disabled":
+        next ? this.terminate() : this.initialize();
+        break;
+      case "watcher":
+        next ? this.initialize() : this.terminate();
+        break;
     }
-    get style() {
-        var _a;
-        return {
-            'top': toUnit(this.top),
-            'z-index': (_a = this.zIndex) !== null && _a !== void 0 ? _a : undefined
-        };
-    }
-    get sizer() {
-        const top = toUnit(this.top);
-        if (!top)
-            return;
-        return {
-            top: `calc((${top} + 1px) * -1)`
-        };
-    }
-    watchers(next, prev, key) {
-        switch (key) {
-            case 'disabled':
-                next ? this.terminate() : this.initialize();
-                break;
-            case 'watcher':
-                next ? this.initialize() : this.terminate();
-                break;
-        }
-    }
-    initialize() {
-        if (!this.watcher)
-            return;
-        // TODO
-        // if (this.disabled) return;
-        this.observer = new IntersectionObserver(this.onIntersecting, {
-            threshold: [1]
-        });
-        this.observer.observe(this.$sizer);
-    }
-    terminate() {
-        // TODO: immediately rerenders after remove `watcher` attribute
-        requestAnimationFrame(() => {
-            var _a;
-            this.state = undefined;
-            (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
-        });
-    }
-    onIntersecting(entries) {
-        const [entry] = entries;
-        this.state = entry.intersectionRatio < 1 ? 'stick' : 'normal';
-        this.plusChange(this.state);
-    }
-    loadedCallback() {
-        this.initialize();
-    }
-    disconnectedCallback() {
-        this.terminate();
-    }
-    render() {
-        return html `${attributes(this, [{
-                "state": this.watcher ? this.state : null
-            }])}
+  }
+  initialize() {
+    if (!this.watcher) return;
+    this.observer = new IntersectionObserver(this.onIntersecting, {
+      threshold: [1]
+    });
+    this.observer.observe(this.$sizer);
+  }
+  terminate() {
+    requestAnimationFrame(() => {
+      var _a;
+      this.state = void 0;
+      (_a = this.observer) == null ? void 0 : _a.disconnect();
+    });
+  }
+  onIntersecting(entries) {
+    const [entry] = entries;
+    this.state = entry.intersectionRatio < 1 ? "stick" : "normal";
+    this.plusChange(this.state);
+  }
+  loadedCallback() {
+    this.initialize();
+  }
+  disconnectedCallback() {
+    this.terminate();
+  }
+  render() {
+    return html`${attributes(this, [{
+      "state": this.watcher ? this.state : null
+    }])}
         <div class="sizer-wrapper">
           <div class="sizer" style=${styles(this.sizer)}></div>
         </div>
         <slot />
-        ${this.state && html `<div class=${this.state}>
+        ${this.state && html`<div class=${this.state}>
             <slot name=${this.state} />
           </div>`}
       `;
-    }
+  }
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Sticky.tag = "plus-sticky";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Sticky.style = css_248z;
-__decorate([
-    Property({
-        type: 320
-    })
-], Sticky.prototype, "top", void 0);
-__decorate([
-    Property({
-        type: 2
-    })
-], Sticky.prototype, "watcher", void 0);
-__decorate([
-    Property({
-        type: 64
-    })
-], Sticky.prototype, "zIndex", void 0);
-__decorate([
-    Event()
-], Sticky.prototype, "plusChange", void 0);
-__decorate([
-    Query('.sizer')
-], Sticky.prototype, "$sizer", void 0);
-__decorate([
-    State()
-], Sticky.prototype, "state", void 0);
-__decorate([
-    Style()
-], Sticky.prototype, "style", null);
-__decorate([
-    Watch(['disabled', 'watcher'])
-], Sticky.prototype, "watchers", null);
-__decorate([
-    Bind()
-], Sticky.prototype, "onIntersecting", null);
-Sticky = __decorate([
-    Element()
+Sticky.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    type: 320
+  })
+], Sticky.prototype, "top", 2);
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Sticky.prototype, "watcher", 2);
+__decorateClass([
+  Property({
+    type: 64
+  })
+], Sticky.prototype, "zIndex", 2);
+__decorateClass([
+  Event()
+], Sticky.prototype, "plusChange", 2);
+__decorateClass([
+  Query(".sizer")
+], Sticky.prototype, "$sizer", 2);
+__decorateClass([
+  State()
+], Sticky.prototype, "state", 2);
+__decorateClass([
+  Style()
+], Sticky.prototype, "style", 1);
+__decorateClass([
+  Watch(["disabled", "watcher"])
+], Sticky.prototype, "watchers", 1);
+__decorateClass([
+  Bind()
+], Sticky.prototype, "onIntersecting", 1);
+Sticky = __decorateClass([
+  Element()
 ], Sticky);
-
-export { Sticky };
+export {
+  Sticky
+};
