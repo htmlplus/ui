@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { ScrollDetectorChangeEvent, ScrollDetectorReference } from './scroll-detector.types';
+
 /**
  * @stable
  */

@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { StackAlign, StackGap, StackJustify } from './stack.types';
+
 /**
  * @slot default - The default slot.
  */
@@ -32,7 +33,7 @@ export declare class Stack extends PlusCore {
         gap: string;
         'justify-content': string;
     };
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface StackAttributes {
     /**

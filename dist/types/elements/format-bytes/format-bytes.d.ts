@@ -1,11 +1,12 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
+
 /**
  * @stable
  */
 export declare class FormatBytes extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the unit will be shown as an abbreviation or not.
      */

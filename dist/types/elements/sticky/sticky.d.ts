@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { StickyState, StickyTop } from './sticky.types';
+
 /**
  * @stable
  *
@@ -10,7 +11,7 @@ import { StickyState, StickyTop } from './sticky.types';
  */
 export declare class Sticky extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the space from top.
      */
@@ -43,7 +44,7 @@ export declare class Sticky extends PlusCore {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface StickyAttributes {
     /**

@@ -1,7 +1,8 @@
 import { EventEmitter } from '@htmlplus/element';
-import type CropperCoreType from 'cropperjs';
-import { PlusCore } from "../../core";
+import { default as CropperCoreType } from 'cropperjs';
+import { PlusCore } from '../../core';
 import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, CropperPointerEvent, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomEvent } from './cropper.types';
+
 /**
  * @thirdParty
  * @stable
@@ -9,7 +10,7 @@ import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, Croppe
  */
 export declare class Cropper extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * A number between 0 and 1. Specifies the automatic cropping area size.
      */
@@ -204,7 +205,7 @@ export declare class Cropper extends PlusCore {
     connectedCallback(): Promise<void>;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface CropperAttributes {
     /**

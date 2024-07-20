@@ -1,7 +1,7 @@
+import { PlusCore } from '../../core';
+import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /// <reference types="node" />
 import type * as FloatingCoreType from '@floating-ui/dom';
-import { PlusCore } from "../../core";
-import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
 /**
  * @thirdParty
  *
@@ -9,7 +9,7 @@ import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, Toolti
  */
 export declare class Tooltip extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies whether to display the arrow or not.
      */
@@ -79,7 +79,7 @@ export declare class Tooltip extends PlusCore {
             options?: any;
             fn: (state: {
                 placement: FloatingCoreType.Placement;
-                platform: import("@floating-ui/core").Platform;
+                platform: import('@floating-ui/core').Platform;
                 strategy: FloatingCoreType.Strategy;
                 x: number;
                 y: number;
@@ -100,7 +100,7 @@ export declare class Tooltip extends PlusCore {
     onShow(): void;
     connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface TooltipAttributes {
     /**

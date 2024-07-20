@@ -1,5 +1,6 @@
-import type { Faker as FakerCoreType } from '@faker-js/faker';
-import { PlusCore } from "../../core";
+import { Faker as FakerCoreType } from '@faker-js/faker';
+import { PlusCore } from '../../core';
+
 /**
  * @thirdParty
  * @stable
@@ -7,7 +8,7 @@ import { PlusCore } from "../../core";
  */
 export declare class Faker extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the [API](https://fakerjs.dev/api).
      */

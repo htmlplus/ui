@@ -1,8 +1,9 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
-import { Animation } from "../../services";
+import { PlusCore } from '../../core';
+import { Animation } from '../../services';
 import { DialogContext } from './dialog.context';
 import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
+
 /**
  * @part backdrop - Backdrop element.
  *
@@ -10,7 +11,7 @@ import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
  */
 export declare class Dialog extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     static instances: Dialog[];
     /**
      * TODO
@@ -118,7 +119,7 @@ export declare class Dialog extends PlusCore {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DialogAttributes {
     /**

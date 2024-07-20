@@ -1,11 +1,12 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { SpinnerSize, SpinnerType } from './spinner.types';
+
 /**
  * @stable
  */
 export declare class Spinner extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the color.
      */
@@ -22,7 +23,7 @@ export declare class Spinner extends PlusCore {
         color: string;
     };
     get elements(): number[];
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface SpinnerAttributes {
     /**

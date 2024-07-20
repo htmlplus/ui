@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @subset
  *
@@ -6,14 +7,14 @@ import { PlusCore } from "../../core";
  */
 export declare class Accordions extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies that only one accordion can be open.
      */
     persistent?: boolean;
     get state(): any;
     open(target: HTMLElement): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface AccordionsAttributes {
     /**

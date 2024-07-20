@@ -1,8 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
-import './assets/names/fading-entrance/fade-in.js';
-import './assets/names/fading-exits/fade-out.js';
+
 /**
  * @stable
  *
@@ -10,7 +9,7 @@ import './assets/names/fading-exits/fade-out.js';
  */
 export declare class Animation extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Determines how values are combined between this animation and other,
      * separate animations that do not specify their own specific composite operation.
@@ -158,7 +157,7 @@ export declare class Animation extends PlusCore {
     onRemove(): void;
     updatedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface AnimationAttributes {
     /**

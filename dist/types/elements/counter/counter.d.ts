@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { CounterEasing } from './counter.types';
+
 /**
  * @stable
  */
@@ -78,7 +79,7 @@ export declare class Counter extends PlusCore {
     count(timestamp: number): void;
     reset(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface CounterAttributes {
     /**

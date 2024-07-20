@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { BrowseEvent } from './browse.types';
+
 /**
  * @stable
  *
@@ -8,7 +9,7 @@ import { BrowseEvent } from './browse.types';
  */
 export declare class Browse extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * One or more
      * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
@@ -70,7 +71,7 @@ export declare class Browse extends PlusCore {
     onDragLeave(): void;
     onDragOver(event: any): void;
     onDrop(event: any): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface BrowseAttributes {
     /**

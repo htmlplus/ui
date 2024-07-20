@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { TabsContext } from '../tabs/tabs.context';
+
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
  * @subset
@@ -8,7 +9,7 @@ import { TabsContext } from '../tabs/tabs.context';
  */
 export declare class TabsPanel extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Provides your own value.
      */
@@ -18,7 +19,7 @@ export declare class TabsPanel extends PlusCore {
      */
     get active(): boolean;
     parent?: TabsContext;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface TabsPanelAttributes {
     /**

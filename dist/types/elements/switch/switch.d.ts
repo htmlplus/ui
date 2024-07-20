@@ -1,8 +1,9 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 export declare class Switch extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Puts the switch in checked state.
      * @model
@@ -20,7 +21,7 @@ export declare class Switch extends PlusCore {
     toggle(): void;
     onClick(event: any): void;
     onKeyDown(event: any): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface SwitchAttributes {
     /**

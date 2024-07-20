@@ -1,11 +1,12 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { CardElevation } from './card.types';
+
 /**
  * @slot default - The default slot.
  */
 export declare class Card extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * If you want the card to have shadow, use the elevation property,
      * And select the property value between `1` and `24`.
@@ -23,7 +24,7 @@ export declare class Card extends PlusCore {
      * Use tile property to neutralize border-radius.
      */
     tile?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface CardAttributes {
     /**

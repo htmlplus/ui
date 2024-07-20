@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { DrawerContext } from '../drawer/drawer.context';
+
 /**
  * @subset
  *
@@ -9,7 +10,7 @@ import { DrawerContext } from '../drawer/drawer.context';
  */
 export declare class DrawerToggler extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * This property helps you to attach which drawer this toggler controls.
      * It doesn't matter where the drawer toggler is.
@@ -18,7 +19,7 @@ export declare class DrawerToggler extends PlusCore {
      */
     connector?: string;
     drawer?: DrawerContext;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DrawerTogglerAttributes {
     /**

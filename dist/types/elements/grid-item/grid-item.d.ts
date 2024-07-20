@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
+
 /**
  * @subset
  *
@@ -7,7 +8,7 @@ import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from
  */
 export declare class GridItem extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Aligns the grid-item vertically in its container (grid).
      * It overrides the align-items property of its parent.
@@ -203,7 +204,7 @@ export declare class GridItem extends PlusCore {
      * Overrides the default order of the grid-item for extra-extra-large display sizes.
      */
     orderXxl?: GridItemOrder;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface GridItemAttributes {
     /**

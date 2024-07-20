@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @stable
  *
@@ -12,7 +13,7 @@ import { PlusCore } from "../../core";
  */
 export declare class Breadcrumb extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * TODO.
      */
@@ -46,7 +47,7 @@ export declare class Breadcrumb extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface BreadcrumbAttributes {
     /**

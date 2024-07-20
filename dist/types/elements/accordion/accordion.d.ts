@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
-import { Animation } from "../../services";
+import { PlusCore } from '../../core';
+import { Animation } from '../../services';
+
 /**
  * @stable
  *
@@ -20,7 +21,7 @@ import { Animation } from "../../services";
  */
 export declare class Accordion extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Disables the element functionality.
      */
@@ -84,7 +85,7 @@ export declare class Accordion extends PlusCore {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface AccordionAttributes {
     /**

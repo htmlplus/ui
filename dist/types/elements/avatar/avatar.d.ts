@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { AvatarShape, AvatarSize } from './avatar.types';
+
 /**
  * @stable
  *
@@ -7,7 +8,7 @@ import { AvatarShape, AvatarSize } from './avatar.types';
  */
 export declare class Avatar extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the color.
      */
@@ -119,7 +120,7 @@ export declare class Avatar extends PlusCore {
         '--plus-avatar-color': string;
         '--plus-avatar-size': string;
     };
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface AvatarAttributes {
     /**

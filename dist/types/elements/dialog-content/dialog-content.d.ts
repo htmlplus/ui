@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @subset
  *
@@ -6,12 +7,12 @@ import { PlusCore } from "../../core";
  */
 export declare class DialogContent extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
     scrollable?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DialogContentAttributes {
     /**

@@ -1,11 +1,12 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { GridAlignContent, GridAlignItems, GridGutter, GridJustifyContent, GridWrap } from './grid.types';
+
 /**
  * @slot default - The default slot.
  */
 export declare class Grid extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Aligns contents vertically across all rows (It overrides alignItems).
      */
@@ -153,7 +154,7 @@ export declare class Grid extends PlusCore {
     wrapXxl?: GridWrap;
     $root: HTMLElement;
     updatedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface GridAttributes {
     /**

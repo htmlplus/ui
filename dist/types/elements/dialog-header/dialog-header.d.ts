@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @subset
  *
@@ -6,8 +7,8 @@ import { PlusCore } from "../../core";
  */
 export declare class DialogHeader extends PlusCore {
     static tag: string;
-    static style: string;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    static style: any;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DialogHeaderAttributes {
 }

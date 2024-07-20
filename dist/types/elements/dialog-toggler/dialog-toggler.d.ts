@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { DialogContext } from '../dialog/dialog.context';
+
 /**
  * @subset
  *
@@ -9,7 +10,7 @@ import { DialogContext } from '../dialog/dialog.context';
  */
 export declare class DialogToggler extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * This property helps you to attach which dialog this toggler controls.
      * It doesn't matter where the dialog toggler is.
@@ -18,7 +19,7 @@ export declare class DialogToggler extends PlusCore {
      */
     connector?: string;
     dialog?: DialogContext;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DialogTogglerAttributes {
     /**

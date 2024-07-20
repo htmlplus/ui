@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
+
 /**
  * @stable
  *
@@ -7,7 +8,7 @@ import { IconFlip, IconResolver, IconSize } from './icon.types';
  */
 export declare class Icon extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the color.
      */
@@ -48,7 +49,7 @@ export declare class Icon extends PlusCore {
     sync(input: SVGElement | string, cacheable: boolean): SVGElement;
     update(): void;
     loadedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface IconAttributes {
     /**

@@ -1,5 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @stable
  *
@@ -33,7 +34,7 @@ export declare class ClickOutside extends PlusCore {
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface ClickOutsideAttributes {
     /**

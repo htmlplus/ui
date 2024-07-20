@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * TODO: Arranges tabs within a bar.
  * @subset
@@ -7,7 +8,7 @@ import { PlusCore } from "../../core";
  */
 export declare class TabsBar extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Grows tabs as much as all available space (occupies all horizontal space).
      */
@@ -20,7 +21,7 @@ export declare class TabsBar extends PlusCore {
      * Reverses the arrangement of the tabs.
      */
     reverse?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface TabsBarAttributes {
     /**

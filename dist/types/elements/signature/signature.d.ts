@@ -1,8 +1,7 @@
-/// <reference types="node" />
 import { EventEmitter } from '@htmlplus/element';
-import type CoreType from 'signature_pad';
-import type { PointGroup } from 'signature_pad';
-import { PlusForm } from "../../core";
+import { default as CoreType, PointGroup } from 'signature_pad';
+import { PlusForm } from '../../core';
+
 /**
  * @stable
  *
@@ -10,7 +9,7 @@ import { PlusForm } from "../../core";
  */
 export declare class Signature extends PlusForm {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the background color.
      */
@@ -123,7 +122,7 @@ export declare class Signature extends PlusForm {
     onEnd(): void;
     loadedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface SignatureAttributes {
     /**

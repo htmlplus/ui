@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
+
 /**
  * @stable
  *
@@ -11,7 +12,7 @@ import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './d
  */
 export declare class Divider extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies the color.
      */
@@ -39,7 +40,7 @@ export declare class Divider extends PlusCore {
     get style(): {
         '--plus-divider-color': string;
     };
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DividerAttributes {
     /**

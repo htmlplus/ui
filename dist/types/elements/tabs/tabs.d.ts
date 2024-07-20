@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { TabsContext } from './tabs.context';
+
 /**
  * @development
  *
@@ -8,7 +9,7 @@ import { TabsContext } from './tabs.context';
  */
 export declare class Tabs extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Provides your own value.
      */
@@ -23,7 +24,7 @@ export declare class Tabs extends PlusCore {
     plusChange: EventEmitter<any>;
     get state(): TabsContext;
     change(value: number | string): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface TabsAttributes {
     /**

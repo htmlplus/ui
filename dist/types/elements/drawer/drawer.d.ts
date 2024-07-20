@@ -1,14 +1,15 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
-import { Animation } from "../../services";
+import { PlusCore } from '../../core';
+import { Animation } from '../../services';
 import { DrawerContext } from './drawer.context';
 import { DrawerPlacement, DrawerFloating } from './drawer.types';
+
 /**
  * @slot default - The default slot.
  */
 export declare class Drawer extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * TODO
      */
@@ -118,7 +119,7 @@ export declare class Drawer extends PlusCore {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface DrawerAttributes {
     /**

@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { TabsContext } from '../tabs/tabs.context';
+
 /**
  * TODO: Tabs make it easy to switch between different views.
  * @subset
@@ -8,7 +9,7 @@ import { TabsContext } from '../tabs/tabs.context';
  */
 export declare class TabsTab extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * A Tab can be disabled by setting disabled property.
      */
@@ -23,7 +24,7 @@ export declare class TabsTab extends PlusCore {
     get active(): boolean;
     parent?: TabsContext;
     onClick(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface TabsTabAttributes {
     /**

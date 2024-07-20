@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @stable
  *
@@ -6,12 +7,12 @@ import { PlusCore } from "../../core";
  */
 export declare class Center extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Converts the `display` CSS property from `flex` to `inline-flex`.
      */
     inline?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface CenterAttributes {
     /**

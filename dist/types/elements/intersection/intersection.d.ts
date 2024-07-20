@@ -1,5 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @stable
  *
@@ -56,7 +57,7 @@ export declare class Intersection extends PlusCore {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface IntersectionAttributes {
     /**

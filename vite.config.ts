@@ -5,6 +5,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { defineConfig } from 'vite';
 import path from 'path';
 import dts from 'vite-plugin-dts';
+import * as ts from 'typescript';
 
 import plugins from './htmlplus.config.js';
 
@@ -36,18 +37,36 @@ export default defineConfig({
           name: 'TODO',
           supports: (id) => id.endsWith('.tsx'),
           transform({ root, id, code, program, outDir, host }) {
+            const _ts = (ts as any).default as typeof ts;
+
             const sourceFile = program.getSourceFile(id);
 
             if (!sourceFile) return [];
 
-            const sourceFileNew = sourceFile.update(code, {
+            const sourceFileUpdated = sourceFile.update(code, {
               newLength: code.length,
               span: { start: 0, length: sourceFile.text.length }
             });
 
+            const originalGetSourceFile = host.getSourceFile;
+            host.getSourceFile = (sourceFileName, languageVersion, onError) => {
+              if (sourceFileName === id) {
+                return sourceFileUpdated;
+              }
+              return originalGetSourceFile(sourceFileName, languageVersion, onError);
+            };
+
+            let output;
+
+            const program1 = _ts.createProgram([id], program.getCompilerOptions(), host, program);
+
+            program1.emit(sourceFileUpdated, (ileName, contents) => {
+              output = contents;
+            });
+
             return [
               {
-                content: sourceFileNew.text,
+                content: output || sourceFileUpdated.text,
                 path: path.relative(root, id.replace(/\.tsx?$/, '.d.ts'))
               }
             ];

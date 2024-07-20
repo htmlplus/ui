@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @stable
  * @subset
@@ -7,7 +8,7 @@ import { PlusCore } from "../../core";
  */
 export declare class AvatarGroup extends PlusCore {
     static tag: string;
-    static style: string;
+    static style: any;
     /**
      * Specifies whether to prominent the avatar when the mouse is entered or not.
      */
@@ -16,7 +17,7 @@ export declare class AvatarGroup extends PlusCore {
      * Specifies whether avatars should be displayed compressed or not.
      */
     stacked?: boolean;
-    render(): import("@htmlplus/element/client/utils/uhtml").Hole;
+    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
 }
 export interface AvatarGroupAttributes {
     /**
