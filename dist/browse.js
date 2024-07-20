@@ -1,5 +1,5 @@
 import { P as PlusCore, h as html, j as attributes, a as Property, E as Event, Q as Query, S as State, M as Method, B as Bind, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  cursor: pointer;\n}\n\ninput[type=file] {\n  display: none;\n}\n\n:host([disabled]) {\n  opacity: 0.5;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{display:none}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

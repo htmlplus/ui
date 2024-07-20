@@ -1,5 +1,5 @@
 import { P as PlusCore, t as toUnit, h as html, j as attributes, d as styles, a as Property, E as Event, Q as Query, S as State, f as Style, W as Watch, B as Bind, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  position: sticky;\n  display: block;\n  will-change: auto;\n}\n\n.sizer-wrapper {\n  position: relative;\n  pointer-events: none;\n  visibility: hidden;\n}\n\n.sizer {\n  position: absolute;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:sticky;display:block;will-change:auto}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

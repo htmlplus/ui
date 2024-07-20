@@ -1,5 +1,5 @@
 import { s as setConfig, P as PlusCore, g as getConfig, h as html, a as Property, E as Event, M as Method, W as Watch, B as Bind, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  display: block;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   "ease": "ease",
   "ease-in": "ease-in",

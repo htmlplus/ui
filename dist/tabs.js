@@ -1,5 +1,5 @@
 import { P as PlusCore, h as html, a as Property, E as Event, c as Provider, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  display: flex;\n  flex-direction: column;\n  gap: 0.5rem;\n}\n\n:host([vertical]) {\n  flex-direction: row;\n}\n:host([vertical]) ::slotted(plus-tabs-bar) {\n  flex-direction: column;\n}\n:host([vertical]) ::slotted(plus-tabs-bar[reverse]) {\n  flex-direction: column-reverse;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

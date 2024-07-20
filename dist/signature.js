@@ -1,5 +1,5 @@
 import { v as PlusForm, h as html, a as Property, E as Event, M as Method, Q as Query, W as Watch, B as Bind, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  display: block;\n  width: 300px;\n  height: 150px;\n}\n\n:host([disabled]) {\n  opacity: 0.5;\n}\n\ncanvas {\n  display: block;\n  width: 100%;\n  height: 100%;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

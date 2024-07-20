@@ -20,6 +20,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         includePaths: ['node_modules'],
+        outputStyle: 'compressed',
         additionalData: [
           '@import "./src/styles/mixins/index.scss";',
           '@import "./src/styles/variables/index.scss";',
@@ -30,6 +31,7 @@ export default defineConfig({
   },
   plugins: [
     htmlplus(...plugins),
+    peerDepsExternal(),
     dts({
       outDir: 'dist/types',
       resolvers: [
@@ -74,7 +76,6 @@ export default defineConfig({
         }
       ]
     }),
-    peerDepsExternal(),
     {
       name: 'TODO',
       writeBundle(options, bundle) {

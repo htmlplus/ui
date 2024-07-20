@@ -1,5 +1,5 @@
 import { P as PlusCore, h as html, j as attributes, a as Property, S as State, C as Consumer, B as Bind, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  user-select: none;\n  padding: 0.5rem 1rem;\n  background-color: whitesmoke;\n  text-align: center;\n  gap: 0.5rem;\n}\n\n:host([active]) {\n  background-color: lightgray;\n}\n\n:host([disabled]) {\n  opacity: 0.5;\n}\n\n:host(:not([disabled])) {\n  cursor: pointer;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;align-items:center;justify-content:center;user-select:none;padding:.5rem 1rem;background-color:#f5f5f5;text-align:center;gap:.5rem}:host([active]){background-color:#d3d3d3}:host([disabled]){opacity:.5}:host(:not([disabled])){cursor:pointer}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

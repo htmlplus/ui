@@ -1,5 +1,5 @@
 import { P as PlusCore, h as html, a as Property, b as Element } from "./core/index.js";
-const STYLE_IMPORTED = ":host,\n:host::before,\n:host::after {\n  box-sizing: border-box;\n}\n\n:host *,\n:host *::before,\n:host *::after {\n  box-sizing: border-box;\n}\n\n:host([hidden]) {\n  display: none !important;\n}\n\n:host {\n  position: relative;\n  flex: 1 1 auto;\n  padding: 1rem;\n}\n\n:host([scrollable]) {\n  overflow: hidden;\n  overflow-y: auto;\n}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:relative;flex:1 1 auto;padding:1rem}:host([scrollable]){overflow:hidden;overflow-y:auto}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
