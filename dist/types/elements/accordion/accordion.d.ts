@@ -20,8 +20,6 @@ import { Animation } from '../../services';
  * @slot bottom        - The bottom slot.
  */
 export declare class Accordion extends PlusCore {
-    static tag: string;
-    static style: any;
     /**
      * Disables the element functionality.
      */
@@ -85,94 +83,92 @@ export declare class Accordion extends PlusCore {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
+    render(): import("react").JSX.Element;
 }
 export interface AccordionAttributes {
-    /**
-    * Disables the element functionality.
-    */
-    "disabled"?: boolean;
-    /**
-    * Control the element to expand or not.
-    */
-    "open"?: boolean;
-    /**
-    * The summary text displayed on the header.
-    */
-    "summary"?: string;
+  /**
+  * Disables the element functionality.
+  */
+  "disabled"?: boolean;
+  /**
+  * Control the element to expand or not.
+  */
+  "open"?: boolean;
+  /**
+  * The summary text displayed on the header.
+  */
+  "summary"?: string;
 }
 export interface AccordionEvents {
-    /**
-    * Fires when the element is about to collapse.
-    * This event can be [canceled](TODO).
-    */
-    onPlusCollapse?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires after the element has collapsed.
-    */
-    onPlusCollapsed?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires when the element is about to expand.
-    * This event can be [canceled](TODO).
-    */
-    onPlusExpand?: (event: CustomEvent<void>) => void;
-    /**
-    * Fires after the element has expanded.
-    */
-    onPlusExpanded?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires when the element is about to collapse.
+  * This event can be [canceled](TODO).
+  */
+  onPlusCollapse?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires after the element has collapsed.
+  */
+  onPlusCollapsed?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires when the element is about to expand.
+  * This event can be [canceled](TODO).
+  */
+  onPlusExpand?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires after the element has expanded.
+  */
+  onPlusExpanded?: (event: CustomEvent<void>) => void;
 }
 export interface AccordionMethods {
-    /**
-    * Collapses the element.
-    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-    * operation was successful or `false` if it was canceled.
-    */
-    collapse(): Promise<boolean>;
-    /**
-    * Expands the element.
-    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-    * operation was successful or `false` if it was canceled.
-    */
-    expand(): Promise<boolean>;
-    /**
-    * Toggles between `collapse` and `expand` state.
-    * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-    * operation was successful or `false` if it was canceled.
-    */
-    toggle(): Promise<boolean>;
+  /**
+  * Collapses the element.
+  * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+  * operation was successful or `false` if it was canceled.
+  */
+  collapse(): Promise<boolean>;
+  /**
+  * Expands the element.
+  * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+  * operation was successful or `false` if it was canceled.
+  */
+  expand(): Promise<boolean>;
+  /**
+  * Toggles between `collapse` and `expand` state.
+  * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+  * operation was successful or `false` if it was canceled.
+  */
+  toggle(): Promise<boolean>;
 }
 export interface AccordionProperties {
-    /**
-    * Disables the element functionality.
-    */
-    disabled?: boolean;
-    /**
-    * Control the element to expand or not.
-    */
-    open?: boolean;
-    /**
-    * The summary text displayed on the header.
-    */
-    summary?: string;
+  /**
+  * Disables the element functionality.
+  */
+  disabled?: boolean;
+  /**
+  * Control the element to expand or not.
+  */
+  open?: boolean;
+  /**
+  * The summary text displayed on the header.
+  */
+  summary?: string;
 }
-export interface AccordionJSX extends AccordionEvents, AccordionProperties {
-}
+export interface AccordionJSX extends AccordionEvents, AccordionProperties {}
 declare global {
-    interface HTMLPlusAccordionElement extends HTMLElement, AccordionMethods, AccordionProperties {
+  interface HTMLPlusAccordionElement extends HTMLElement, AccordionMethods, AccordionProperties {}
+  var HTMLPlusAccordionElement: {
+    prototype: HTMLPlusAccordionElement;
+    new (): HTMLPlusAccordionElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-accordion": HTMLPlusAccordionElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-accordion": AccordionEvents & AccordionAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusAccordionElement: {
-        prototype: HTMLPlusAccordionElement;
-        new (): HTMLPlusAccordionElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-accordion": HTMLPlusAccordionElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-accordion": AccordionEvents & AccordionAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type AccordionElement = globalThis.HTMLPlusAccordionElement;

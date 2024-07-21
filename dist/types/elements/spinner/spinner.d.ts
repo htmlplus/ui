@@ -5,8 +5,6 @@ import { SpinnerSize, SpinnerType } from './spinner.types';
  * @stable
  */
 export declare class Spinner extends PlusCore {
-    static tag: string;
-    static style: any;
     /**
      * Specifies the color.
      */
@@ -23,58 +21,54 @@ export declare class Spinner extends PlusCore {
         color: string;
     };
     get elements(): number[];
-    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
+    render(): import("react").JSX.Element;
 }
 export interface SpinnerAttributes {
-    /**
-    * Specifies the color.
-    */
-    "color"?: string;
-    /**
-    * Specifies the size of the spinner.
-    */
-    "size"?: SpinnerSize;
-    /**
-    * Specifies which variant of the spinner to use.
-    */
-    "type"?: SpinnerType;
+  /**
+  * Specifies the color.
+  */
+  "color"?: string;
+  /**
+  * Specifies the size of the spinner.
+  */
+  "size"?: SpinnerSize;
+  /**
+  * Specifies which variant of the spinner to use.
+  */
+  "type"?: SpinnerType;
 }
-export interface SpinnerEvents {
-}
-export interface SpinnerMethods {
-}
+export interface SpinnerEvents {}
+export interface SpinnerMethods {}
 export interface SpinnerProperties {
-    /**
-    * Specifies the color.
-    */
-    color?: string;
-    /**
-    * Specifies the size of the spinner.
-    */
-    size?: SpinnerSize;
-    /**
-    * Specifies which variant of the spinner to use.
-    */
-    type?: SpinnerType;
+  /**
+  * Specifies the color.
+  */
+  color?: string;
+  /**
+  * Specifies the size of the spinner.
+  */
+  size?: SpinnerSize;
+  /**
+  * Specifies which variant of the spinner to use.
+  */
+  type?: SpinnerType;
 }
-export interface SpinnerJSX extends SpinnerEvents, SpinnerProperties {
-}
+export interface SpinnerJSX extends SpinnerEvents, SpinnerProperties {}
 declare global {
-    interface HTMLPlusSpinnerElement extends HTMLElement, SpinnerMethods, SpinnerProperties {
+  interface HTMLPlusSpinnerElement extends HTMLElement, SpinnerMethods, SpinnerProperties {}
+  var HTMLPlusSpinnerElement: {
+    prototype: HTMLPlusSpinnerElement;
+    new (): HTMLPlusSpinnerElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-spinner": HTMLPlusSpinnerElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-spinner": SpinnerEvents & SpinnerAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusSpinnerElement: {
-        prototype: HTMLPlusSpinnerElement;
-        new (): HTMLPlusSpinnerElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-spinner": HTMLPlusSpinnerElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-spinner": SpinnerEvents & SpinnerAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type SpinnerElement = globalThis.HTMLPlusSpinnerElement;

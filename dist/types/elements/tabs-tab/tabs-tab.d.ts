@@ -8,8 +8,6 @@ import { TabsContext } from '../tabs/tabs.context';
  * @slot default - The default slot.
  */
 export declare class TabsTab extends PlusCore {
-    static tag: string;
-    static style: any;
     /**
      * A Tab can be disabled by setting disabled property.
      */
@@ -24,54 +22,50 @@ export declare class TabsTab extends PlusCore {
     get active(): boolean;
     parent?: TabsContext;
     onClick(): void;
-    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
+    render(): import("react").JSX.Element;
 }
 export interface TabsTabAttributes {
-    /**
-    * A Tab can be disabled by setting disabled property.
-    */
-    "disabled"?: boolean;
-    /**
-    * Provides your own value.
-    */
-    "value"?: number | string;
+  /**
+  * A Tab can be disabled by setting disabled property.
+  */
+  "disabled"?: boolean;
+  /**
+  * Provides your own value.
+  */
+  "value"?: number | string;
 }
-export interface TabsTabEvents {
-}
-export interface TabsTabMethods {
-}
+export interface TabsTabEvents {}
+export interface TabsTabMethods {}
 export interface TabsTabProperties {
-    /**
-    * A Tab can be disabled by setting disabled property.
-    */
-    disabled?: boolean;
-    /**
-    * Provides your own value.
-    */
-    value?: number | string;
-    /**
-    * TODO
-    */
-    active: any;
+  /**
+  * A Tab can be disabled by setting disabled property.
+  */
+  disabled?: boolean;
+  /**
+  * Provides your own value.
+  */
+  value?: number | string;
+  /**
+  * TODO
+  */
+  active;
 }
-export interface TabsTabJSX extends TabsTabEvents, TabsTabProperties {
-}
+export interface TabsTabJSX extends TabsTabEvents, TabsTabProperties {}
 declare global {
-    interface HTMLPlusTabsTabElement extends HTMLElement, TabsTabMethods, TabsTabProperties {
+  interface HTMLPlusTabsTabElement extends HTMLElement, TabsTabMethods, TabsTabProperties {}
+  var HTMLPlusTabsTabElement: {
+    prototype: HTMLPlusTabsTabElement;
+    new (): HTMLPlusTabsTabElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-tabs-tab": HTMLPlusTabsTabElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusTabsTabElement: {
-        prototype: HTMLPlusTabsTabElement;
-        new (): HTMLPlusTabsTabElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-tabs-tab": HTMLPlusTabsTabElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type TabsTabElement = globalThis.HTMLPlusTabsTabElement;

@@ -6,36 +6,28 @@ import { PlusCore } from '../../core';
  * @slot default - The default slot.
  */
 export declare class ProgressBarStack extends PlusCore {
-    static tag: string;
-    static style: any;
-    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
+    render(): import("react").JSX.Element;
 }
-export interface ProgressBarStackAttributes {
-}
-export interface ProgressBarStackEvents {
-}
-export interface ProgressBarStackMethods {
-}
-export interface ProgressBarStackProperties {
-}
-export interface ProgressBarStackJSX extends ProgressBarStackEvents, ProgressBarStackProperties {
-}
+export interface ProgressBarStackAttributes {}
+export interface ProgressBarStackEvents {}
+export interface ProgressBarStackMethods {}
+export interface ProgressBarStackProperties {}
+export interface ProgressBarStackJSX extends ProgressBarStackEvents, ProgressBarStackProperties {}
 declare global {
-    interface HTMLPlusProgressBarStackElement extends HTMLElement, ProgressBarStackMethods, ProgressBarStackProperties {
+  interface HTMLPlusProgressBarStackElement extends HTMLElement, ProgressBarStackMethods, ProgressBarStackProperties {}
+  var HTMLPlusProgressBarStackElement: {
+    prototype: HTMLPlusProgressBarStackElement;
+    new (): HTMLPlusProgressBarStackElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-progress-bar-stack": HTMLPlusProgressBarStackElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusProgressBarStackElement: {
-        prototype: HTMLPlusProgressBarStackElement;
-        new (): HTMLPlusProgressBarStackElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-progress-bar-stack": HTMLPlusProgressBarStackElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type ProgressBarStackElement = globalThis.HTMLPlusProgressBarStackElement;

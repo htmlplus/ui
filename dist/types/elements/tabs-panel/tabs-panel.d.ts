@@ -8,8 +8,6 @@ import { TabsContext } from '../tabs/tabs.context';
  * @slot default - The default slot.
  */
 export declare class TabsPanel extends PlusCore {
-    static tag: string;
-    static style: any;
     /**
      * Provides your own value.
      */
@@ -19,46 +17,42 @@ export declare class TabsPanel extends PlusCore {
      */
     get active(): boolean;
     parent?: TabsContext;
-    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
+    render(): import("react").JSX.Element;
 }
 export interface TabsPanelAttributes {
-    /**
-    * Provides your own value.
-    */
-    "value"?: number | string;
+  /**
+  * Provides your own value.
+  */
+  "value"?: number | string;
 }
-export interface TabsPanelEvents {
-}
-export interface TabsPanelMethods {
-}
+export interface TabsPanelEvents {}
+export interface TabsPanelMethods {}
 export interface TabsPanelProperties {
-    /**
-    * Provides your own value.
-    */
-    value?: number | string;
-    /**
-    * TODO
-    */
-    active: any;
+  /**
+  * Provides your own value.
+  */
+  value?: number | string;
+  /**
+  * TODO
+  */
+  active;
 }
-export interface TabsPanelJSX extends TabsPanelEvents, TabsPanelProperties {
-}
+export interface TabsPanelJSX extends TabsPanelEvents, TabsPanelProperties {}
 declare global {
-    interface HTMLPlusTabsPanelElement extends HTMLElement, TabsPanelMethods, TabsPanelProperties {
+  interface HTMLPlusTabsPanelElement extends HTMLElement, TabsPanelMethods, TabsPanelProperties {}
+  var HTMLPlusTabsPanelElement: {
+    prototype: HTMLPlusTabsPanelElement;
+    new (): HTMLPlusTabsPanelElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-tabs-panel": HTMLPlusTabsPanelElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusTabsPanelElement: {
-        prototype: HTMLPlusTabsPanelElement;
-        new (): HTMLPlusTabsPanelElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-tabs-panel": HTMLPlusTabsPanelElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type TabsPanelElement = globalThis.HTMLPlusTabsPanelElement;

@@ -12,8 +12,6 @@ import { PlusCore } from '../../core';
  * @slot separator - The separator slot.
  */
 export declare class Breadcrumb extends PlusCore {
-    static tag: string;
-    static style: any;
     /**
      * TODO.
      */
@@ -47,76 +45,72 @@ export declare class Breadcrumb extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): import('@htmlplus/element/client/utils/uhtml').Hole;
+    render(): import("react").JSX.Element;
 }
 export interface BreadcrumbAttributes {
-    /**
-    * TODO.
-    */
-    "block"?: boolean;
-    /**
-    * Specifies the label for the expander button.
-    */
-    "expander-text"?: string;
-    /**
-    * Specifies the position of the expander button.
-    * The expander button is displayed when the number of items reached the maximum limit.
-    */
-    "offset"?: number;
-    /**
-    * Specifies the Maximum number of items that are allowed to be displayed.
-    */
-    "max"?: number;
-    /**
-    * Specifies the separator between items.
-    */
-    "separator"?: string;
+  /**
+  * TODO.
+  */
+  "block"?: boolean;
+  /**
+  * Specifies the label for the expander button.
+  */
+  "expander-text"?: string;
+  /**
+  * Specifies the position of the expander button.
+  * The expander button is displayed when the number of items reached the maximum limit.
+  */
+  "offset"?: number;
+  /**
+  * Specifies the Maximum number of items that are allowed to be displayed.
+  */
+  "max"?: number;
+  /**
+  * Specifies the separator between items.
+  */
+  "separator"?: string;
 }
-export interface BreadcrumbEvents {
-}
-export interface BreadcrumbMethods {
-}
+export interface BreadcrumbEvents {}
+export interface BreadcrumbMethods {}
 export interface BreadcrumbProperties {
-    /**
-    * TODO.
-    */
-    block?: boolean;
-    /**
-    * Specifies the label for the expander button.
-    */
-    expanderText?: string;
-    /**
-    * Specifies the position of the expander button.
-    * The expander button is displayed when the number of items reached the maximum limit.
-    */
-    offset?: number;
-    /**
-    * Specifies the Maximum number of items that are allowed to be displayed.
-    */
-    max?: number;
-    /**
-    * Specifies the separator between items.
-    */
-    separator?: string;
+  /**
+  * TODO.
+  */
+  block?: boolean;
+  /**
+  * Specifies the label for the expander button.
+  */
+  expanderText?: string;
+  /**
+  * Specifies the position of the expander button.
+  * The expander button is displayed when the number of items reached the maximum limit.
+  */
+  offset?: number;
+  /**
+  * Specifies the Maximum number of items that are allowed to be displayed.
+  */
+  max?: number;
+  /**
+  * Specifies the separator between items.
+  */
+  separator?: string;
 }
-export interface BreadcrumbJSX extends BreadcrumbEvents, BreadcrumbProperties {
-}
+export interface BreadcrumbJSX extends BreadcrumbEvents, BreadcrumbProperties {}
 declare global {
-    interface HTMLPlusBreadcrumbElement extends HTMLElement, BreadcrumbMethods, BreadcrumbProperties {
+  interface HTMLPlusBreadcrumbElement extends HTMLElement, BreadcrumbMethods, BreadcrumbProperties {}
+  var HTMLPlusBreadcrumbElement: {
+    prototype: HTMLPlusBreadcrumbElement;
+    new (): HTMLPlusBreadcrumbElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-breadcrumb": HTMLPlusBreadcrumbElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusBreadcrumbElement: {
-        prototype: HTMLPlusBreadcrumbElement;
-        new (): HTMLPlusBreadcrumbElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-breadcrumb": HTMLPlusBreadcrumbElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type BreadcrumbElement = globalThis.HTMLPlusBreadcrumbElement;
