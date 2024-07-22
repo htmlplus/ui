@@ -17,7 +17,7 @@ export declare class TabsPanel extends PlusCore {
      */
     get active(): boolean;
     parent?: TabsContext;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface TabsPanelAttributes {
   /**

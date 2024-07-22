@@ -33,7 +33,7 @@ export declare class ClickOutside extends PlusCore {
     onClickOutside(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface ClickOutsideAttributes {
   /**

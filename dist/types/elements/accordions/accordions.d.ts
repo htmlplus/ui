@@ -12,7 +12,7 @@ export declare class Accordions extends PlusCore {
     persistent?: boolean;
     get state(): any;
     open(target: HTMLElement): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface AccordionsAttributes {
   /**

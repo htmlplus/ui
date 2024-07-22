@@ -225,12 +225,6 @@ __decorateClass([
 ], Signature.prototype, "color", 2);
 __decorateClass([
   Property({
-    reflect: true,
-    type: 2
-  })
-], Signature.prototype, "disabled", 2);
-__decorateClass([
-  Property({
     type: 64
   })
 ], Signature.prototype, "distance", 2);

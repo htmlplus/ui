@@ -83,7 +83,7 @@ export declare class Accordion extends PlusCore {
     onKeyDown(event: KeyboardEvent): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface AccordionAttributes {
   /**

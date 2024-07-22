@@ -3,6 +3,7 @@
     "target": "ES2016",
     "lib": ["dom", "es2019"],
     "jsx": "preserve",
+    "jsxImportSource": "@htmlplus/element",
     "experimentalDecorators": true,
     "module": "ESNext",
     "moduleResolution": "node",

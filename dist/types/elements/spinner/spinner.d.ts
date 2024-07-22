@@ -21,7 +21,7 @@ export declare class Spinner extends PlusCore {
         color: string;
     };
     get elements(): number[];
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface SpinnerAttributes {
   /**

@@ -42,7 +42,7 @@ export declare class Sticky extends PlusCore {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface StickyAttributes {
   /**

@@ -22,7 +22,7 @@ export declare class TabsTab extends PlusCore {
     get active(): boolean;
     parent?: TabsContext;
     onClick(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface TabsTabAttributes {
   /**

@@ -118,7 +118,7 @@ export declare class Avatar extends PlusCore {
         '--plus-avatar-color': string;
         '--plus-avatar-size': string;
     };
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface AvatarAttributes {
   /**

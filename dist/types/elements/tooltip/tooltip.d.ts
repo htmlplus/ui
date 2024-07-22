@@ -1,7 +1,5 @@
 import { PlusCore } from '../../core';
 import { TooltipDelay, TooltipOffset, TooltipPlacement, TooltipReference, TooltipTrigger } from './tooltip.types';
-/// <reference types="node" />
-/// <reference types="react" />
 import type * as FloatingCoreType from '@floating-ui/dom';
 /**
  * @thirdParty
@@ -70,26 +68,7 @@ export declare class Tooltip extends PlusCore {
     cleanup?: Function;
     timeout?: NodeJS.Timeout;
     get $reference(): Element;
-    get options(): Partial<{
-        placement?: FloatingCoreType.Placement;
-        strategy?: FloatingCoreType.Strategy;
-        middleware?: (false | {
-            name: string;
-            options?: any;
-            fn: (state: {
-                x: number;
-                y: number;
-                placement: FloatingCoreType.Placement;
-                platform: import('@floating-ui/core').Platform;
-                strategy: FloatingCoreType.Strategy;
-                middlewareData: FloatingCoreType.MiddlewareData;
-                initialPlacement: FloatingCoreType.Placement;
-                rects: FloatingCoreType.ElementRects;
-                elements: FloatingCoreType.Elements;
-            }) => FloatingCoreType.MiddlewareReturn | Promise<FloatingCoreType.MiddlewareReturn>;
-        })[];
-        platform?: FloatingCoreType.Platform;
-    }>;
+    get options(): Partial<FloatingCoreType.ComputePositionConfig>;
     watcher(next: any, prev: any, key: any): void;
     initialize(): void;
     terminate(): void;
@@ -99,7 +78,7 @@ export declare class Tooltip extends PlusCore {
     onShow(): void;
     connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface TooltipAttributes {
   /**

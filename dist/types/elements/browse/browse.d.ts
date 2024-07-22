@@ -69,7 +69,7 @@ export declare class Browse extends PlusCore {
     onDragLeave(): void;
     onDragOver(event: any): void;
     onDrop(event: any): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface BrowseAttributes {
   /**

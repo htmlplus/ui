@@ -15,7 +15,7 @@ export declare class AvatarGroup extends PlusCore {
      * Specifies whether avatars should be displayed compressed or not.
      */
     stacked?: boolean;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface AvatarGroupAttributes {
   /**

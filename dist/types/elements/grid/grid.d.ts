@@ -152,7 +152,7 @@ export declare class Grid extends PlusCore {
     wrapXxl?: GridWrap;
     $root: HTMLElement;
     updatedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface GridAttributes {
   /**

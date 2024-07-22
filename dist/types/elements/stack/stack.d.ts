@@ -32,7 +32,7 @@ export declare class Stack extends PlusCore {
         gap: string;
         'justify-content': string;
     };
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface StackAttributes {
   /**

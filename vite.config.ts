@@ -10,6 +10,9 @@ import plugins from './htmlplus.config.js';
 
 export default defineConfig({
   cacheDir: '.cache',
+  server: {
+    open: 'src/index.html'
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
@@ -101,8 +104,7 @@ export default defineConfig({
       entry: Object.fromEntries(
         glob
           .sync(['src/elements/*/*.tsx'], { absolute: true })
-          .map((file) => [[path.basename(file, path.extname(file)), file]])
-          .flat(1)
+          .map((file) => [path.basename(file, path.extname(file)), file])
           .concat([
             ['config', 'src/config/index.ts'],
             ['index', 'src/elements/index.ts']
@@ -120,9 +122,6 @@ export default defineConfig({
           if (normalized.includes('/src/elements/')) {
             return normalized.split('/src/elements/')[1].split('/')[0];
           }
-
-          // TODO
-          if (normalized.includes('/src/config/')) return 'TODO';
 
           if (normalized.includes('signature_pad')) return 'vendors/signature_pad';
 

@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-07-19T13:29:14.520Z",
+      "lastModified": "2024-07-21T21:37:09.958Z",
       "methods": [
         {
           "async": false,
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-07-18T16:39:24.290Z",
+      "lastModified": "2024-07-21T21:21:36.081Z",
       "methods": [
         {
           "async": false,
@@ -3582,15 +3582,6 @@
           "required": false,
           "type": "string",
           "description": "Specifies the color of the strokes."
-        },
-        {
-          "attribute": "disabled",
-          "name": "disabled",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Disables the element functionality."
         },
         {
           "attribute": "distance",

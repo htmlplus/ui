@@ -78,7 +78,7 @@ export declare class Counter extends PlusCore {
     count(timestamp: number): void;
     reset(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface CounterAttributes {
   /**

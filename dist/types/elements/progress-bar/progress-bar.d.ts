@@ -43,7 +43,7 @@ export declare class ProgressBar extends PlusCore {
     get percentage(): string;
     get progress(): number;
     get stacked(): boolean;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface ProgressBarAttributes {
   /**

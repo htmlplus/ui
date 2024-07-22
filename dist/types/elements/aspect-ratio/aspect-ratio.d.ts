@@ -20,7 +20,7 @@ export declare class AspectRatio extends PlusCore {
     value?: number | string;
     get ratio(): number;
     get style(): any;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface AspectRatioAttributes {
   /**

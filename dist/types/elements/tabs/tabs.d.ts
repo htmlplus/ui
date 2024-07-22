@@ -22,7 +22,7 @@ export declare class Tabs extends PlusCore {
     plusChange: EventEmitter<any>;
     get state(): TabsContext;
     change(value: number | string): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface TabsAttributes {
   /**

@@ -42,12 +42,6 @@ export class Signature extends PlusForm {
   color?: string = 'black';
 
   /**
-   * Disables the element functionality.
-   */
-  @Property({ reflect: true })
-  disabled?: boolean;
-
-  /**
    * Specifies the distance between the previous point and the next one.
    */
   @Property()

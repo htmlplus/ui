@@ -22,7 +22,7 @@ export declare class Card extends PlusCore {
      * Use tile property to neutralize border-radius.
      */
     tile?: boolean;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface CardAttributes {
   /**

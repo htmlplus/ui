@@ -7,7 +7,7 @@ import { PlusCore } from '../../core';
  * @slot default - The default slot.
  */
 export declare class CardBody extends PlusCore {
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface CardBodyAttributes {}
 export interface CardBodyEvents {}

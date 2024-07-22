@@ -45,7 +45,7 @@ export declare class Breadcrumb extends PlusCore {
     connectedCallback(): void;
     disconnectedCallback(): void;
     updatedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface BreadcrumbAttributes {
   /**

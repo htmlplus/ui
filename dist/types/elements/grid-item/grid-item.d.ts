@@ -202,7 +202,7 @@ export declare class GridItem extends PlusCore {
      * Overrides the default order of the grid-item for extra-extra-large display sizes.
      */
     orderXxl?: GridItemOrder;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface GridItemAttributes {
   /**

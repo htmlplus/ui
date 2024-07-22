@@ -10,7 +10,7 @@ export declare class Center extends PlusCore {
      * Converts the `display` CSS property from `flex` to `inline-flex`.
      */
     inline?: boolean;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface CenterAttributes {
   /**

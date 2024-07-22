@@ -17,7 +17,7 @@ export declare class DialogToggler extends PlusCore {
      */
     connector?: string;
     dialog?: DialogContext;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface DialogTogglerAttributes {
   /**

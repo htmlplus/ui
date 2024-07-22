@@ -3387,10 +3387,6 @@
                 "description": "Specifies the color of the strokes."
               },
               {
-                "name": "disabled",
-                "description": "Disables the element functionality."
-              },
-              {
                 "name": "distance",
                 "description": "Specifies the distance between the previous point and the next one."
               },
@@ -3475,13 +3471,6 @@
               },
               "default": "'black'",
               "description": "Specifies the color of the strokes."
-            },
-            {
-              "name": "disabled",
-              "value": {
-                "type": "boolean"
-              },
-              "description": "Disables the element functionality."
             },
             {
               "name": "distance",

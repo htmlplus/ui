@@ -17,7 +17,7 @@ export declare class DrawerToggler extends PlusCore {
      */
     connector?: string;
     drawer?: DrawerContext;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface DrawerTogglerAttributes {
   /**

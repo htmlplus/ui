@@ -203,7 +203,7 @@ export declare class Cropper extends PlusCore {
     connectedCallback(): Promise<void>;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface CropperAttributes {
   /**

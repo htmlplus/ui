@@ -21,10 +21,6 @@ export declare class Signature extends PlusForm {
      */
     color?: string;
     /**
-     * Disables the element functionality.
-     */
-    disabled?: boolean;
-    /**
      * Specifies the distance between the previous point and the next one.
      */
     distance?: number;
@@ -120,7 +116,7 @@ export declare class Signature extends PlusForm {
     onEnd(): void;
     loadedCallback(): Promise<void>;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface SignatureAttributes {
   /**
@@ -135,10 +131,6 @@ export interface SignatureAttributes {
   * Specifies the color of the strokes.
   */
   "color"?: string;
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
   /**
   * Specifies the distance between the previous point and the next one.
   */
@@ -222,10 +214,6 @@ export interface SignatureProperties {
   * Specifies the color of the strokes.
   */
   color?: string;
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
   /**
   * Specifies the distance between the previous point and the next one.
   */

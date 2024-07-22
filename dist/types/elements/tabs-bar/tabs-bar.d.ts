@@ -19,7 +19,7 @@ export declare class TabsBar extends PlusCore {
      * Reverses the arrangement of the tabs.
      */
     reverse?: boolean;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface TabsBarAttributes {
   /**

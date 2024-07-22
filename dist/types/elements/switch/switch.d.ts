@@ -19,7 +19,7 @@ export declare class Switch extends PlusCore {
     toggle(): void;
     onClick(event: any): void;
     onKeyDown(event: any): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface SwitchAttributes {
   /**

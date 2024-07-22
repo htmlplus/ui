@@ -38,7 +38,7 @@ export declare class Divider extends PlusCore {
     get style(): {
         '--plus-divider-color': string;
     };
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface DividerAttributes {
   /**

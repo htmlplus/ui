@@ -117,7 +117,7 @@ export declare class Dialog extends PlusCore {
     onClickOutside(): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface DialogAttributes {
   /**

@@ -47,7 +47,7 @@ export declare class Icon extends PlusCore {
     sync(input: SVGElement | string, cacheable: boolean): SVGElement;
     update(): void;
     loadedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface IconAttributes {
   /**

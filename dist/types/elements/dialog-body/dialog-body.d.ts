@@ -10,7 +10,7 @@ export declare class DialogBody extends PlusCore {
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
     scrollable?: boolean;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface DialogBodyAttributes {
   /**

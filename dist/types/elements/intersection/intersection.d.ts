@@ -56,7 +56,7 @@ export declare class Intersection extends PlusCore {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface IntersectionAttributes {
   /**

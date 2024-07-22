@@ -155,7 +155,7 @@ export declare class Animation extends PlusCore {
     onRemove(): void;
     updatedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("react").JSX.Element;
+    render(): any;
 }
 export interface AnimationAttributes {
   /**
