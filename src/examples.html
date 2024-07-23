@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>HTMLPLUS | UI EXAMPLES</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      fetch('/api/examples')
+        .then((response) => response.json())
+        .then((keys) => {
+          for (const key of keys) {
+            const button = document.createElement('button');
+            button.textContent = key;
+            document.body.append(button);
+            button.addEventListener('click', () => {
+              const iframe = document.createElement('iframe');
+              fetch('/api/examples/' + key)
+                .then((response) => response.text())
+                .then((response) => {
+                  [
+                    ['https://cdn.skypack.dev/@htmlplus/ui/config.js', '/src/config/index.ts'],
+                    ['https://cdn.skypack.dev/@htmlplus/ui/animation/names/(.*?).js', '/src/elements/animation/assets/names/$1.js'],
+                    ['https://cdn.skypack.dev/@htmlplus/ui/(.*?).js', '/src/elements/$1/$1.tsx'],
+                    ['https://cdn.skypack.dev/', '/node_modules/'],
+                  ]
+                    .forEach(([a, b]) => {
+                      response = response.replace(new RegExp(a, 'g'), b)
+                    })
+                  iframe.srcdoc = response
+                })
+              button.after(iframe);
+              button.remove();
+            })
+          }
+        })
+    </script>
+  </body>
+</html>

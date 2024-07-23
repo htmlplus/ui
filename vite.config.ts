@@ -6,6 +6,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import dts from 'vite-plugin-dts';
 
+import { examples } from './src/examples.plugin.js';
 import plugins from './htmlplus.config.js';
 
 export default defineConfig({
@@ -32,6 +33,7 @@ export default defineConfig({
     }
   },
   plugins: [
+    examples(),
     htmlplus(...plugins),
     peerDepsExternal(),
     dts({
