@@ -44,6 +44,7 @@ export declare class Sticky extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface StickyAttributes {
   /**
   * Specifies the space from top.

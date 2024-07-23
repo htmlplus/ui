@@ -49,6 +49,7 @@ export declare class Icon extends PlusCore {
     loadedCallback(): void;
     render(): any;
 }
+
 export interface IconAttributes {
   /**
   * Specifies the color.

@@ -9,6 +9,7 @@ import { PlusCore } from '../../core';
 export declare class TabsPanels extends PlusCore {
     render(): any;
 }
+
 export interface TabsPanelsAttributes {}
 export interface TabsPanelsEvents {}
 export interface TabsPanelsMethods {}

@@ -12,6 +12,7 @@ export declare class DialogBody extends PlusCore {
     scrollable?: boolean;
     render(): any;
 }
+
 export interface DialogBodyAttributes {
   /**
   * It makes the user able to scroll the content by adding a scroll beside it.

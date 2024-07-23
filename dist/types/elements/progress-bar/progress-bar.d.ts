@@ -45,6 +45,7 @@ export declare class ProgressBar extends PlusCore {
     get stacked(): boolean;
     render(): any;
 }
+
 export interface ProgressBarAttributes {
   /**
   * Specifies the secondary progress of the bar by a number between `min` and `max`.

@@ -9,6 +9,7 @@ export declare class Spacer extends PlusCore {
         style: string;
     };
 }
+
 export interface SpacerAttributes {
   /**
   * TODO

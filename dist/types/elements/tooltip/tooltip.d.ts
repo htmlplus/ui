@@ -80,6 +80,7 @@ export declare class Tooltip extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface TooltipAttributes {
   /**
   * Specifies whether to display the arrow or not.

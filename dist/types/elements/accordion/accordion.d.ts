@@ -85,6 +85,7 @@ export declare class Accordion extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface AccordionAttributes {
   /**
   * Disables the element functionality.

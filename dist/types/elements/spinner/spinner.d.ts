@@ -23,6 +23,7 @@ export declare class Spinner extends PlusCore {
     get elements(): number[];
     render(): any;
 }
+
 export interface SpinnerAttributes {
   /**
   * Specifies the color.

@@ -8,6 +8,7 @@ import { PlusCore } from '../../core';
 export declare class DialogHeader extends PlusCore {
     render(): any;
 }
+
 export interface DialogHeaderAttributes {}
 export interface DialogHeaderEvents {}
 export interface DialogHeaderMethods {}

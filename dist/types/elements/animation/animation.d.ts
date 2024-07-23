@@ -157,6 +157,7 @@ export declare class Animation extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface AnimationAttributes {
   /**
   * Determines how values are combined between this animation and other,

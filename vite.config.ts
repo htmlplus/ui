@@ -39,8 +39,13 @@ export default defineConfig({
     dts({
       outDir: 'dist/types',
       resolvers: [
+        /**
+         * This resolver generates `.d.ts` files for each `.tsx` file.
+         * While this approach is somewhat of a workaround and temporary,
+         * we are actively seeking a more robust solution.
+         */
         {
-          name: 'TODO',
+          name: 'attach-dynamic-typing',
           supports: (id) => id.endsWith('.tsx'),
           transform({ root, id, code, program }) {
             const sourceFile = program.getSourceFile(id)!;
@@ -48,7 +53,9 @@ export default defineConfig({
             let output = '';
 
             program.emit(sourceFile, (fileName, contents) => {
-              output = contents + code.match(/export interface.*$/s)?.pop() || '';
+              output =
+                contents + code.split('THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY').pop() ||
+                '';
             });
 
             return [
@@ -120,7 +127,6 @@ export default defineConfig({
         manualChunks(id) {
           const normalized = path.normalize(id).split(path.sep).join('/');
 
-          // TODO
           if (normalized.includes('/src/elements/')) {
             return normalized.split('/src/elements/')[1].split('/')[0];
           }

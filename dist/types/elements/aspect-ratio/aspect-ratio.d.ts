@@ -22,6 +22,7 @@ export declare class AspectRatio extends PlusCore {
     get style(): any;
     render(): any;
 }
+
 export interface AspectRatioAttributes {
   /**
   * Specifies the minimum height.

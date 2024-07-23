@@ -27,6 +27,7 @@ export declare class Faker extends PlusCore {
     connectedCallback(): Promise<void>;
     render(): any;
 }
+
 export interface FakerAttributes {
   /**
   * Specifies the [API](https://fakerjs.dev/api).

@@ -21,6 +21,7 @@ export declare class TabsBar extends PlusCore {
     reverse?: boolean;
     render(): any;
 }
+
 export interface TabsBarAttributes {
   /**
   * Grows tabs as much as all available space (occupies all horizontal space).

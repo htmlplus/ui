@@ -118,6 +118,7 @@ export declare class Signature extends PlusForm {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface SignatureAttributes {
   /**
   * Specifies the background color.

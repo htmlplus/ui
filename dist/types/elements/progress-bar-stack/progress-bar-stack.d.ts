@@ -8,6 +8,7 @@ import { PlusCore } from '../../core';
 export declare class ProgressBarStack extends PlusCore {
     render(): any;
 }
+
 export interface ProgressBarStackAttributes {}
 export interface ProgressBarStackEvents {}
 export interface ProgressBarStackMethods {}

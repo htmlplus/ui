@@ -43,6 +43,7 @@ export declare class FormatBytes extends PlusCore {
     get formated(): string;
     render(): string;
 }
+
 export interface FormatBytesAttributes {
   /**
   * Specifies the unit will be shown as an abbreviation or not.

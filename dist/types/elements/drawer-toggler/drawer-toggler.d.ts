@@ -19,6 +19,7 @@ export declare class DrawerToggler extends PlusCore {
     drawer?: DrawerContext;
     render(): any;
 }
+
 export interface DrawerTogglerAttributes {
   /**
   * This property helps you to attach which drawer this toggler controls.

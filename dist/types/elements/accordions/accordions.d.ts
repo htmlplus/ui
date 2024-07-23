@@ -14,6 +14,7 @@ export declare class Accordions extends PlusCore {
     open(target: HTMLElement): void;
     render(): any;
 }
+
 export interface AccordionsAttributes {
   /**
   * Specifies that only one accordion can be open.

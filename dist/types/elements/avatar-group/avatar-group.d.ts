@@ -17,6 +17,7 @@ export declare class AvatarGroup extends PlusCore {
     stacked?: boolean;
     render(): any;
 }
+
 export interface AvatarGroupAttributes {
   /**
   * Specifies whether to prominent the avatar when the mouse is entered or not.

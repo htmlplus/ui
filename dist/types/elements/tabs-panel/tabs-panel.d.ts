@@ -19,6 +19,7 @@ export declare class TabsPanel extends PlusCore {
     parent?: TabsContext;
     render(): any;
 }
+
 export interface TabsPanelAttributes {
   /**
   * Provides your own value.

@@ -40,6 +40,7 @@ export declare class Divider extends PlusCore {
     };
     render(): any;
 }
+
 export interface DividerAttributes {
   /**
   * Specifies the color.

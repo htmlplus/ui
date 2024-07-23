@@ -32,6 +32,7 @@ export declare class ScrollDetector extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface ScrollDetectorAttributes {
   /**
   * Disables the element functionality.

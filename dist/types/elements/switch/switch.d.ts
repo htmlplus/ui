@@ -21,6 +21,7 @@ export declare class Switch extends PlusCore {
     onKeyDown(event: any): void;
     render(): any;
 }
+
 export interface SwitchAttributes {
   /**
   * Puts the switch in checked state.

@@ -71,6 +71,7 @@ export declare class Browse extends PlusCore {
     onDrop(event: any): void;
     render(): any;
 }
+
 export interface BrowseAttributes {
   /**
   * One or more

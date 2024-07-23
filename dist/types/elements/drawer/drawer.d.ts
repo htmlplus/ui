@@ -119,6 +119,7 @@ export declare class Drawer extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface DrawerAttributes {
   /**
   * TODO

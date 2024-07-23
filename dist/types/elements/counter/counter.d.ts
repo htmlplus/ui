@@ -80,6 +80,7 @@ export declare class Counter extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface CounterAttributes {
   /**
   * Easing function. Click [here](http://robertpenner.com/easing) for more details.

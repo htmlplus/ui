@@ -19,6 +19,7 @@ export declare class DialogToggler extends PlusCore {
     dialog?: DialogContext;
     render(): any;
 }
+
 export interface DialogTogglerAttributes {
   /**
   * This property helps you to attach which dialog this toggler controls.

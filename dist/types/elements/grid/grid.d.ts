@@ -154,6 +154,7 @@ export declare class Grid extends PlusCore {
     updatedCallback(): void;
     render(): any;
 }
+
 export interface GridAttributes {
   /**
   * Aligns contents vertically across all rows (It overrides alignItems).

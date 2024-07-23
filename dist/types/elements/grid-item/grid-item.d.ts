@@ -204,6 +204,7 @@ export declare class GridItem extends PlusCore {
     orderXxl?: GridItemOrder;
     render(): any;
 }
+
 export interface GridItemAttributes {
   /**
   * Aligns the grid-item vertically in its container (grid).

@@ -35,6 +35,7 @@ export declare class ClickOutside extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface ClickOutsideAttributes {
   /**
   * A boolean value indicating that events of this type will be dispatched to the registered

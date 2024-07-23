@@ -205,6 +205,7 @@ export declare class Cropper extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface CropperAttributes {
   /**
   * A number between 0 and 1. Specifies the automatic cropping area size.

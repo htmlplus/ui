@@ -119,6 +119,7 @@ export declare class Dialog extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface DialogAttributes {
   /**
   * TODO

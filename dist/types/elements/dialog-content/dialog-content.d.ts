@@ -12,6 +12,7 @@ export declare class DialogContent extends PlusCore {
     scrollable?: boolean;
     render(): any;
 }
+
 export interface DialogContentAttributes {
   /**
   * It makes the user able to scroll the content by adding a scroll beside it.

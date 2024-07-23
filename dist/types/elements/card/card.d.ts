@@ -24,6 +24,7 @@ export declare class Card extends PlusCore {
     tile?: boolean;
     render(): any;
 }
+
 export interface CardAttributes {
   /**
   * If you want the card to have shadow, use the elevation property,

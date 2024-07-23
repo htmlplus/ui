@@ -24,6 +24,7 @@ export declare class Tabs extends PlusCore {
     change(value: number | string): void;
     render(): any;
 }
+
 export interface TabsAttributes {
   /**
   * Provides your own value.

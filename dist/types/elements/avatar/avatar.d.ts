@@ -120,6 +120,7 @@ export declare class Avatar extends PlusCore {
     };
     render(): any;
 }
+
 export interface AvatarAttributes {
   /**
   * Specifies the color.

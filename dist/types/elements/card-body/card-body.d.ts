@@ -9,6 +9,7 @@ import { PlusCore } from '../../core';
 export declare class CardBody extends PlusCore {
     render(): any;
 }
+
 export interface CardBodyAttributes {}
 export interface CardBodyEvents {}
 export interface CardBodyMethods {}

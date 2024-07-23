@@ -58,6 +58,7 @@ export declare class Intersection extends PlusCore {
     disconnectedCallback(): void;
     render(): any;
 }
+
 export interface IntersectionAttributes {
   /**
   * Disables the element functionality.

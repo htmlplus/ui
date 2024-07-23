@@ -47,6 +47,7 @@ export declare class Breadcrumb extends PlusCore {
     updatedCallback(): void;
     render(): any;
 }
+
 export interface BreadcrumbAttributes {
   /**
   * TODO.

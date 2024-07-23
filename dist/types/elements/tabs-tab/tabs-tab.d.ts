@@ -24,6 +24,7 @@ export declare class TabsTab extends PlusCore {
     onClick(): void;
     render(): any;
 }
+
 export interface TabsTabAttributes {
   /**
   * A Tab can be disabled by setting disabled property.

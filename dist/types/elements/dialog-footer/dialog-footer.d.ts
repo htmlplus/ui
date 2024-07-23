@@ -8,6 +8,7 @@ import { PlusCore } from '../../core';
 export declare class DialogFooter extends PlusCore {
     render(): any;
 }
+
 export interface DialogFooterAttributes {}
 export interface DialogFooterEvents {}
 export interface DialogFooterMethods {}

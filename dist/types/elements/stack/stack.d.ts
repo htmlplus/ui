@@ -34,6 +34,7 @@ export declare class Stack extends PlusCore {
     };
     render(): any;
 }
+
 export interface StackAttributes {
   /**
   * The gap between items.
