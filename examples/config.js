@@ -3,6 +3,10 @@ export const API_DETAILS = '/api/examples/';
 export const MAPPER = [
   ['https://cdn.skypack.dev/@htmlplus/ui/config.js', '/src/config/index.ts'],
   [
+    'https://cdn.skypack.dev/@faker-js/faker/locale/ja',
+    '/node_modules/@faker-js/faker/dist/esm/locale/ja.mjs'
+  ],
+  [
     'https://cdn.skypack.dev/@htmlplus/ui/animation/names/(.*?).js',
     '/src/elements/animation/assets/names/$1.js'
   ],

@@ -6,8 +6,6 @@ const $preview = document.getElementById('preview');
 const $refresh = document.getElementById('refresh');
 const $title = document.getElementById('title');
 
-let currentKey;
-
 async function getCategories() {
   const result = [];
 
@@ -75,19 +73,19 @@ async function load() {
 }
 
 async function select(key) {
+  key ||= $menu.querySelector(`a.active`).getAttribute('href');
+
   $menu
-    .querySelector(`a[href="${currentKey}"]`)
+    .querySelector(`a.active`)
     ?.classList
     ?.remove('active');
 
-  currentKey = key;
-
   $menu
-    .querySelector(`a[href="${currentKey}"]`)
+    .querySelector(`a[href="${key}"]`)
     ?.classList
     ?.add('active');
 
-  updateTitle();
+  updateTitle(key);
 
   const iframe = document.createElement('iframe');
 
@@ -110,17 +108,17 @@ function toTitleCase(input) {
   return input.replace(/-+/g, ' ').split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-function updateTitle() {
-  $title.innerHTML = currentKey;
+function updateTitle(key) {
+  $title.innerHTML = key;
 }
 
 $cdn.addEventListener('click', function () {
   $cdn.classList.toggle('active');
-  select(currentKey);
+  select();
 })
 
 $refresh.addEventListener('click', function () {
-  select(currentKey);
+  select();
 })
 
 window.onload = load;
