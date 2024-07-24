@@ -1,8 +1,12 @@
 import { API_DETAILS, API_LIST, MAPPER } from './config';
 
+const $cdn = document.getElementById('cdn');
 const $menu = document.getElementById('menu');
 const $preview = document.getElementById('preview');
+const $refresh = document.getElementById('refresh');
 const $title = document.getElementById('title');
+
+let currentKey;
 
 async function getCategories() {
   const result = [];
@@ -69,15 +73,19 @@ async function load() {
 }
 
 async function select(key) {
-  updateTitle(key);
+  $menu
+    .querySelector(`a[href="${currentKey}"]`)
+    ?.classList
+    ?.remove('active');
+
+  currentKey = key;
 
   $menu
-    .querySelectorAll('a')
-    .forEach(function ($a) {
-      $a.classList.remove('active');
-    });
+    .querySelector(`a[href="${currentKey}"]`)
+    ?.classList
+    ?.add('active');
 
-  $menu.querySelector(`a[href="${key}"]`).classList.add('active');
+  updateTitle();
 
   const iframe = document.createElement('iframe');
 
@@ -87,9 +95,11 @@ async function select(key) {
 
   let text = await getDetails(key);
 
-  MAPPER.forEach(([a, b]) => {
-    text = text.replace(new RegExp(a, 'g'), b);
-  });
+  if (!$cdn.classList.contains('active')) {
+    MAPPER.forEach(([a, b]) => {
+      text = text.replace(new RegExp(a, 'g'), b);
+    });
+  }
 
   iframe.srcdoc = text;
 }
@@ -98,8 +108,17 @@ function toTitleCase(input) {
   return input.replace(/-+/g, ' ').split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-function updateTitle(key) {
-  $title.innerHTML = key;
+function updateTitle() {
+  $title.innerHTML = currentKey;
 }
+
+$cdn.addEventListener('click', function () {
+  $cdn.classList.toggle('active');
+  select(currentKey);
+})
+
+$refresh.addEventListener('click', function () {
+  select(currentKey);
+})
 
 window.onload = load;
