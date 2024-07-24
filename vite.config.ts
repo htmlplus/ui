@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import dts from 'vite-plugin-dts';
 
-import { examples } from './src/examples/plugin';
+import { examples } from './examples/plugin';
 import plugins from './htmlplus.config';
 
 export default defineConfig({
