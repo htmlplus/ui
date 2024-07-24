@@ -70,6 +70,8 @@ async function load() {
       });
     }
   }
+
+  select(categories.at(0).items.at(0).key);
 }
 
 async function select(key) {
