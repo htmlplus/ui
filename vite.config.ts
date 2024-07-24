@@ -6,8 +6,8 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import dts from 'vite-plugin-dts';
 
-import { examples } from './src/examples.plugin.js';
-import plugins from './htmlplus.config.js';
+import { examples } from './src/examples/plugin';
+import plugins from './htmlplus.config';
 
 export default defineConfig({
   cacheDir: '.cache',

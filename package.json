@@ -12,6 +12,7 @@
     "build": "npm run clean && vite build",
     "clean": "rimraf .cache dist",
     "dev": "vite",
+    "dev:examples": "vite --open src/examples/index.html",
     "format": "prettier --write .",
     "test:open": "cypress open",
     "test:run": "cypress run"
