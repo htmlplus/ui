@@ -1,3 +1,15 @@
+## [1.3.4](https://github.com/htmlplus/ui/compare/v1.3.3...v1.3.4) (2024-07-24)
+
+### Changes
+
+* Init build by vite ([421ce91](https://github.com/htmlplus/ui/commit/421ce9168edcb0ed3c802cec2400f357d56e9734))
+
+### Bug Fixes
+
+* Add typing for outputs ([5dc78f9](https://github.com/htmlplus/ui/commit/5dc78f9f712ed68edbf2160122b04703c4e6dda0))
+* Update auto generation typings. ([5ea5f5a](https://github.com/htmlplus/ui/commit/5ea5f5a79f9036904b7c155f53a889221f98f445))
+* Update JSX reference. ([d174fba](https://github.com/htmlplus/ui/commit/d174fba328ae7ef7c1ab4a33ff341e8505a72bc6))
+
 ## [1.3.3](https://github.com/htmlplus/ui/compare/v1.3.2...v1.3.3) (2024-07-16)
 
 ### Bug Fixes
