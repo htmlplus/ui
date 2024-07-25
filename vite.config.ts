@@ -1,9 +1,10 @@
 import { htmlplus } from '@htmlplus/element/bundlers/vite.js';
+
 import glob from 'fast-glob';
 import fs from 'fs';
+import path from 'path';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { defineConfig } from 'vite';
-import path from 'path';
 import dts from 'vite-plugin-dts';
 
 import { examples } from './examples/plugin';

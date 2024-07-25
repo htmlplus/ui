@@ -271,7 +271,7 @@ export class Signature extends PlusForm {
       penColor: this.color,
       throttle: this.throttle,
       velocityFilterWeight: this.velocity
-    }
+    };
 
     this.instance = new Core(this.$canvas, options);
 

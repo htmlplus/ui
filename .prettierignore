@@ -3,3 +3,4 @@ dist
 node_modules
 src/elements/animation/assets/names
 .prettierrc
+CHANGELOG.md

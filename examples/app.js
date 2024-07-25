@@ -21,7 +21,7 @@ async function getCategories() {
         id: componentId,
         title: toTitleCase(componentId),
         items: []
-      })
+      });
     }
 
     const component = result.find((component) => component.id == componentId);
@@ -29,7 +29,7 @@ async function getCategories() {
     component.items.push({
       key,
       title: toTitleCase(exampleId)
-    })
+    });
   }
 
   return result;
@@ -59,31 +59,29 @@ async function load() {
       $ul.append($li);
 
       const $a = document.createElement('a');
-      $a.href = example.key;
+      $a.href = '#' + example.key;
       $li.append($a);
       $a.innerHTML = example.title;
       $a.addEventListener('click', function (event) {
-        event.preventDefault();
         select(example.key);
       });
     }
   }
 
-  select(categories.at(0).items.at(0).key);
+  if (location.hash) {
+    select(location.hash.replace('#', ''));
+    document.querySelector(`a[href="${location.hash}"]`).scrollIntoView();
+  } else {
+    select(categories.at(0).items.at(0).key);
+  }
 }
 
 async function select(key) {
-  key ||= $menu.querySelector(`a.active`).getAttribute('href');
+  key ||= $menu.querySelector(`a.active`).getAttribute('href').replace('#', '');
 
-  $menu
-    .querySelector(`a.active`)
-    ?.classList
-    ?.remove('active');
+  $menu.querySelector(`a.active`)?.classList?.remove('active');
 
-  $menu
-    .querySelector(`a[href="${key}"]`)
-    ?.classList
-    ?.add('active');
+  $menu.querySelector(`a[href="#${key}"]`)?.classList?.add('active');
 
   updateTitle(key);
 
@@ -105,7 +103,11 @@ async function select(key) {
 }
 
 function toTitleCase(input) {
-  return input.replace(/-+/g, ' ').split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  return input
+    .replace(/-+/g, ' ')
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 function updateTitle(key) {
@@ -115,10 +117,10 @@ function updateTitle(key) {
 $cdn.addEventListener('click', function () {
   $cdn.classList.toggle('active');
   select();
-})
+});
 
 $refresh.addEventListener('click', function () {
   select();
-})
+});
 
 window.onload = load;
