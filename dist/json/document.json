@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-06-03T20:00:51.574Z",
+      "lastModified": "2024-07-24T15:03:58.183Z",
       "methods": [
         {
           "async": false,
@@ -163,7 +163,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2024-04-07T20:39:32.111Z",
+      "lastModified": "2024-07-12T13:41:05.911Z",
       "methods": [],
       "properties": [
         {
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2024-06-03T20:00:51.670Z",
+      "lastModified": "2024-07-18T16:39:24.259Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-06-03T20:00:51.658Z",
+      "lastModified": "2024-07-18T16:39:24.261Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-06-03T20:00:51.658Z",
+      "lastModified": "2024-07-18T16:39:24.264Z",
       "methods": [],
       "properties": [
         {
@@ -554,7 +554,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2024-04-24T15:55:56.273Z",
+      "lastModified": "2024-07-12T13:03:16.368Z",
       "methods": [],
       "properties": [
         {
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-06-03T20:00:51.658Z",
+      "lastModified": "2024-07-18T16:39:24.266Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-06-03T20:00:51.658Z",
+      "lastModified": "2024-07-24T17:13:51.416Z",
       "methods": [
         {
           "async": false,
@@ -800,7 +800,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2024-06-03T20:00:51.658Z",
+      "lastModified": "2024-07-18T16:39:24.268Z",
       "methods": [],
       "properties": [
         {
@@ -845,12 +845,12 @@
       "styles": [
         {
           "description": "Used to adjust the background-color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-card-background-color"
         },
         {
           "description": "Used to adjust the border-color.",
-          "initializer": "#d3d3d3",
+          "initializer": "lightgray",
           "name": "--plus-card-border-color"
         },
         {
@@ -881,7 +881,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2024-04-07T20:39:33.801Z",
+      "lastModified": "2024-07-12T13:03:16.372Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -898,7 +898,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2024-06-03T20:00:51.655Z",
+      "lastModified": "2024-07-18T16:39:24.269Z",
       "methods": [],
       "properties": [
         {
@@ -933,7 +933,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-06-03T20:00:51.655Z",
+      "lastModified": "2024-07-18T16:39:24.269Z",
       "methods": [],
       "properties": [
         {
@@ -986,7 +986,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2024-06-03T20:00:51.641Z",
+      "lastModified": "2024-07-18T16:39:24.271Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-06-03T20:00:51.651Z",
+      "lastModified": "2024-07-18T16:39:24.273Z",
       "methods": [
         {
           "async": false,
@@ -1481,7 +1481,7 @@
       "styles": [
         {
           "description": "Used to adjust the backdrop color.",
-          "initializer": "#000",
+          "initializer": "black",
           "name": "--plus-cropper-backdrop-color"
         },
         {
@@ -1491,7 +1491,7 @@
         },
         {
           "description": "Used to adjust the guides color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-guides-color"
         },
         {
@@ -1511,7 +1511,7 @@
         },
         {
           "description": "Used to adjust the indicator color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-indicator-color"
         },
         {
@@ -1531,7 +1531,7 @@
         },
         {
           "description": "Used to adjust the resizer color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-resizer-color"
         },
         {
@@ -1556,7 +1556,7 @@
         },
         {
           "description": "Used to adjust the viewport color.",
-          "initializer": "#fff",
+          "initializer": "white",
           "name": "--plus-cropper-viewport-color"
         },
         {
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-06-03T20:00:51.651Z",
+      "lastModified": "2024-07-18T16:39:24.276Z",
       "methods": [
         {
           "async": false,
@@ -1797,7 +1797,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2024-04-07T20:39:34.995Z",
+      "lastModified": "2024-07-12T13:03:16.379Z",
       "methods": [],
       "properties": [
         {
@@ -1823,7 +1823,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2024-04-07T20:39:35.030Z",
+      "lastModified": "2024-07-18T16:39:24.274Z",
       "methods": [],
       "properties": [
         {
@@ -1849,7 +1849,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2024-04-07T20:39:35.069Z",
+      "lastModified": "2024-07-12T13:03:16.380Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1865,7 +1865,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2024-04-07T20:39:35.106Z",
+      "lastModified": "2024-07-12T13:03:16.380Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1881,7 +1881,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2024-04-07T20:39:35.136Z",
+      "lastModified": "2024-07-12T13:03:16.380Z",
       "methods": [],
       "properties": [
         {
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-06-03T20:00:51.641Z",
+      "lastModified": "2024-07-24T17:23:59.403Z",
       "methods": [],
       "properties": [
         {
@@ -1985,7 +1985,7 @@
       "styles": [
         {
           "description": "Used to adjust the color.",
-          "initializer": "#000",
+          "initializer": "black",
           "name": "--plus-divider-color"
         }
       ],
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-06-03T20:00:51.641Z",
+      "lastModified": "2024-07-18T16:39:24.278Z",
       "methods": [
         {
           "async": false,
@@ -2214,7 +2214,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2024-04-07T20:39:35.724Z",
+      "lastModified": "2024-07-12T13:03:16.393Z",
       "methods": [],
       "properties": [
         {
@@ -2248,7 +2248,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-06-03T20:00:51.631Z",
+      "lastModified": "2024-07-24T17:37:57.443Z",
       "methods": [],
       "properties": [
         {
@@ -2301,7 +2301,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2024-06-03T20:00:51.635Z",
+      "lastModified": "2024-07-18T16:39:24.281Z",
       "methods": [],
       "properties": [
         {
@@ -2393,7 +2393,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2024-06-03T20:00:51.617Z",
+      "lastModified": "2024-07-18T16:39:24.283Z",
       "methods": [],
       "properties": [
         {
@@ -2754,7 +2754,7 @@
     {
       "events": [],
       "key": "grid-item",
-      "lastModified": "2024-04-07T20:39:36.401Z",
+      "lastModified": "2024-07-12T13:03:16.396Z",
       "methods": [],
       "properties": [
         {
@@ -3166,7 +3166,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-06-03T20:00:51.631Z",
+      "lastModified": "2024-07-18T16:39:24.285Z",
       "methods": [],
       "properties": [
         {
@@ -3258,7 +3258,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2024-06-03T20:00:51.627Z",
+      "lastModified": "2024-07-18T16:39:24.286Z",
       "methods": [],
       "properties": [
         {
@@ -3323,7 +3323,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-06-03T20:00:51.636Z",
+      "lastModified": "2024-07-18T16:39:24.288Z",
       "methods": [],
       "properties": [
         {
@@ -3406,7 +3406,7 @@
       "styles": [
         {
           "description": "Specifies the color of the bar.",
-          "initializer": "#1e90ff",
+          "initializer": "dodgerblue",
           "name": "--plus-progress-bar-indicator-background-color"
         }
       ],
@@ -3422,7 +3422,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2024-04-07T20:39:37.172Z",
+      "lastModified": "2024-07-12T13:03:16.399Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -3446,7 +3446,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2024-06-03T20:00:51.637Z",
+      "lastModified": "2024-07-18T16:39:24.288Z",
       "methods": [],
       "properties": [
         {
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-06-03T20:00:51.610Z",
+      "lastModified": "2024-07-21T21:21:36.081Z",
       "methods": [
         {
           "async": false,
@@ -3556,7 +3556,7 @@
       "properties": [
         {
           "attribute": "background-color",
-          "initializer": "'rgba(0, 0, 0, 0)'",
+          "initializer": "'lightgray'",
           "name": "backgroundColor",
           "readonly": false,
           "reflects": false,
@@ -3582,15 +3582,6 @@
           "required": false,
           "type": "string",
           "description": "Specifies the color of the strokes."
-        },
-        {
-          "attribute": "disabled",
-          "name": "disabled",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Disables the element functionality."
         },
         {
           "attribute": "distance",
@@ -3696,7 +3687,7 @@
           "description": "Specifies whether undo can be performed or not."
         }
       ],
-      "readmeContent": "# Signature\n\nAllows user to draw smooth signatures.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Dimensions\n\n<Example src=\"examples/dimensions\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Value\n\n<Example src=\"examples/value\" />\n\n### Width\n\n<Example src=\"examples/width\" />\n\n### Distance\n\n<Example src=\"examples/distance\" />\n\n### Clear\n\n<Example src=\"examples/clear\" />\n\n### History\n\n<Example src=\"examples/history\" />\n\n### Resizable\n\n<Example src=\"examples/resizable\" />\n\n### Clear On Resize\n\n<Example src=\"examples/clear-on-resize\" />\n\n### Save\n\n<Example src=\"examples/save\" />\n\n<LastModified />\n",
+      "readmeContent": "# Signature\n\nAllows user to draw smooth signatures.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Background Color\n\n<Example src=\"examples/background-color\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Dimensions\n\n<Example src=\"examples/dimensions\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Value\n\n<Example src=\"examples/value\" />\n\n### Width\n\n<Example src=\"examples/width\" />\n\n### Distance\n\n<Example src=\"examples/distance\" />\n\n### Clear\n\n<Example src=\"examples/clear\" />\n\n### History\n\n<Example src=\"examples/history\" />\n\n### Resizable\n\n<Example src=\"examples/resizable\" />\n\n### Clear On Resize\n\n<Example src=\"examples/clear-on-resize\" />\n\n### Save\n\n<Example src=\"examples/save\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Signature",
       "description": "Allows user to draw smooth signatures.",
@@ -3711,7 +3702,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2024-06-03T20:00:51.607Z",
+      "lastModified": "2024-07-12T13:03:16.402Z",
       "methods": [],
       "properties": [
         {
@@ -3733,7 +3724,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-06-03T20:00:51.604Z",
+      "lastModified": "2024-07-18T16:39:24.291Z",
       "methods": [],
       "properties": [
         {
@@ -3777,7 +3768,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-06-03T20:00:51.596Z",
+      "lastModified": "2024-07-18T16:39:24.291Z",
       "methods": [],
       "properties": [
         {
@@ -3853,7 +3844,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-06-03T20:00:51.601Z",
+      "lastModified": "2024-07-18T16:39:24.292Z",
       "methods": [],
       "properties": [
         {
@@ -3917,7 +3908,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2024-06-03T20:00:51.598Z",
+      "lastModified": "2024-07-18T16:39:24.293Z",
       "methods": [],
       "properties": [
         {
@@ -3955,7 +3946,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-06-03T20:00:51.594Z",
+      "lastModified": "2024-07-18T16:39:24.294Z",
       "methods": [],
       "properties": [
         {
@@ -3992,7 +3983,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2024-04-07T20:39:38.582Z",
+      "lastModified": "2024-07-12T13:03:16.406Z",
       "methods": [],
       "properties": [
         {
@@ -4038,7 +4029,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2024-04-07T20:39:38.609Z",
+      "lastModified": "2024-07-12T13:03:16.406Z",
       "methods": [],
       "properties": [
         {
@@ -4074,7 +4065,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2024-04-07T20:39:38.639Z",
+      "lastModified": "2024-07-12T13:03:16.407Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -4091,7 +4082,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2024-04-24T20:08:44.532Z",
+      "lastModified": "2024-07-12T13:03:16.407Z",
       "methods": [],
       "properties": [
         {
@@ -4136,7 +4127,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2024-06-03T20:00:51.592Z",
+      "lastModified": "2024-07-12T13:03:16.409Z",
       "methods": [
         {
           "async": false,

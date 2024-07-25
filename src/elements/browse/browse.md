@@ -34,9 +34,13 @@ One or more [unique file type specifiers](https://developer.mozilla.org/en-US/do
 
 ### Min & Max
 
+Choose between 3 and 5 files.
+
 <Example src="examples/min-and-max" />
 
 ### Min & Max Size
+
+Select a file with a size between 1MB and 5MB.
 
 <Example src="examples/min-and-max-size" />
 

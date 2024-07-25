@@ -11,7 +11,15 @@
     "^[.](.*)"
   ],
   "importOrderCaseInsensitive": true,
-  "importOrderParserPlugins" : ["typescript", "jsx", "classProperties", "[\"decorators\", { \"decoratorsBeforeExport\": true }]"],
+  "importOrderParserPlugins" : [
+    "typescript", 
+    "jsx", 
+    "classProperties", 
+    "[\"decorators\", { \"decoratorsBeforeExport\": true }]"
+  ],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": false
+  "importOrderSortSpecifiers": false,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ]
 }

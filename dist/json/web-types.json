@@ -3374,7 +3374,7 @@
             "properties": [
               {
                 "name": "backgroundColor",
-                "default": "'rgba(0, 0, 0, 0)'",
+                "default": "'lightgray'",
                 "description": "Specifies the background color."
               },
               {
@@ -3385,10 +3385,6 @@
                 "name": "color",
                 "default": "'black'",
                 "description": "Specifies the color of the strokes."
-              },
-              {
-                "name": "disabled",
-                "description": "Disables the element functionality."
               },
               {
                 "name": "distance",
@@ -3458,7 +3454,7 @@
               "value": {
                 "type": "string"
               },
-              "default": "'rgba(0, 0, 0, 0)'",
+              "default": "'lightgray'",
               "description": "Specifies the background color."
             },
             {
@@ -3475,13 +3471,6 @@
               },
               "default": "'black'",
               "description": "Specifies the color of the strokes."
-            },
-            {
-              "name": "disabled",
-              "value": {
-                "type": "boolean"
-              },
-              "description": "Disables the element functionality."
             },
             {
               "name": "distance",

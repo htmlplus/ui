@@ -1,5 +1,6 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { DialogContext } from '../dialog/dialog.context';
+
 /**
  * @subset
  *
@@ -8,8 +9,6 @@ import { DialogContext } from '../dialog/dialog.context';
  * @slot close   - Specifies the content of toggler when it's closed.
  */
 export declare class DialogToggler extends PlusCore {
-    static tag: string;
-    static style: string;
     /**
      * This property helps you to attach which dialog this toggler controls.
      * It doesn't matter where the dialog toggler is.
@@ -18,48 +17,45 @@ export declare class DialogToggler extends PlusCore {
      */
     connector?: string;
     dialog?: DialogContext;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
+
 export interface DialogTogglerAttributes {
-    /**
-    * This property helps you to attach which dialog this toggler controls.
-    * It doesn't matter where the dialog toggler is.
-    * You can put the dialog's toggler inside or outside of the dialog.
-    * Read more about connectors [here](/connector).
-    */
-    "connector"?: string;
+  /**
+  * This property helps you to attach which dialog this toggler controls.
+  * It doesn't matter where the dialog toggler is.
+  * You can put the dialog's toggler inside or outside of the dialog.
+  * Read more about connectors [here](/connector).
+  */
+  "connector"?: string;
 }
-export interface DialogTogglerEvents {
-}
-export interface DialogTogglerMethods {
-}
+export interface DialogTogglerEvents {}
+export interface DialogTogglerMethods {}
 export interface DialogTogglerProperties {
-    /**
-    * This property helps you to attach which dialog this toggler controls.
-    * It doesn't matter where the dialog toggler is.
-    * You can put the dialog's toggler inside or outside of the dialog.
-    * Read more about connectors [here](/connector).
-    */
-    connector?: string;
+  /**
+  * This property helps you to attach which dialog this toggler controls.
+  * It doesn't matter where the dialog toggler is.
+  * You can put the dialog's toggler inside or outside of the dialog.
+  * Read more about connectors [here](/connector).
+  */
+  connector?: string;
 }
-export interface DialogTogglerJSX extends DialogTogglerEvents, DialogTogglerProperties {
-}
+export interface DialogTogglerJSX extends DialogTogglerEvents, DialogTogglerProperties {}
 declare global {
-    interface HTMLPlusDialogTogglerElement extends HTMLElement, DialogTogglerMethods, DialogTogglerProperties {
+  interface HTMLPlusDialogTogglerElement extends HTMLElement, DialogTogglerMethods, DialogTogglerProperties {}
+  var HTMLPlusDialogTogglerElement: {
+    prototype: HTMLPlusDialogTogglerElement;
+    new (): HTMLPlusDialogTogglerElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-dialog-toggler": HTMLPlusDialogTogglerElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusDialogTogglerElement: {
-        prototype: HTMLPlusDialogTogglerElement;
-        new (): HTMLPlusDialogTogglerElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-dialog-toggler": HTMLPlusDialogTogglerElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type DialogTogglerElement = globalThis.HTMLPlusDialogTogglerElement;

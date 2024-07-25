@@ -1,13 +1,12 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { AvatarShape, AvatarSize } from './avatar.types';
+
 /**
  * @stable
  *
  * @slot default - The default slot.
  */
 export declare class Avatar extends PlusCore {
-    static tag: string;
-    static style: string;
     /**
      * Specifies the color.
      */
@@ -119,58 +118,55 @@ export declare class Avatar extends PlusCore {
         '--plus-avatar-color': string;
         '--plus-avatar-size': string;
     };
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
+
 export interface AvatarAttributes {
-    /**
-    * Specifies the color.
-    */
-    "color"?: string;
-    /**
-    * Specifies the shape of the element.
-    */
-    "shape"?: AvatarShape;
-    /**
-    * Specifies the size of the element.
-    */
-    "size"?: AvatarSize;
+  /**
+  * Specifies the color.
+  */
+  "color"?: string;
+  /**
+  * Specifies the shape of the element.
+  */
+  "shape"?: AvatarShape;
+  /**
+  * Specifies the size of the element.
+  */
+  "size"?: AvatarSize;
 }
-export interface AvatarEvents {
-}
-export interface AvatarMethods {
-}
+export interface AvatarEvents {}
+export interface AvatarMethods {}
 export interface AvatarProperties {
-    /**
-    * Specifies the color.
-    */
-    color?: string;
-    /**
-    * Specifies the shape of the element.
-    */
-    shape?: AvatarShape;
-    /**
-    * Specifies the size of the element.
-    */
-    size?: AvatarSize;
+  /**
+  * Specifies the color.
+  */
+  color?: string;
+  /**
+  * Specifies the shape of the element.
+  */
+  shape?: AvatarShape;
+  /**
+  * Specifies the size of the element.
+  */
+  size?: AvatarSize;
 }
-export interface AvatarJSX extends AvatarEvents, AvatarProperties {
-}
+export interface AvatarJSX extends AvatarEvents, AvatarProperties {}
 declare global {
-    interface HTMLPlusAvatarElement extends HTMLElement, AvatarMethods, AvatarProperties {
+  interface HTMLPlusAvatarElement extends HTMLElement, AvatarMethods, AvatarProperties {}
+  var HTMLPlusAvatarElement: {
+    prototype: HTMLPlusAvatarElement;
+    new (): HTMLPlusAvatarElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-avatar": HTMLPlusAvatarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-avatar": AvatarEvents & AvatarAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusAvatarElement: {
-        prototype: HTMLPlusAvatarElement;
-        new (): HTMLPlusAvatarElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-avatar": HTMLPlusAvatarElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-avatar": AvatarEvents & AvatarAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type AvatarElement = globalThis.HTMLPlusAvatarElement;

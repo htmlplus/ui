@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @development
  * @subset
@@ -6,36 +7,29 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class CardBody extends PlusCore {
-    static tag: string;
-    static style: string;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
-export interface CardBodyAttributes {
-}
-export interface CardBodyEvents {
-}
-export interface CardBodyMethods {
-}
-export interface CardBodyProperties {
-}
-export interface CardBodyJSX extends CardBodyEvents, CardBodyProperties {
-}
+
+export interface CardBodyAttributes {}
+export interface CardBodyEvents {}
+export interface CardBodyMethods {}
+export interface CardBodyProperties {}
+export interface CardBodyJSX extends CardBodyEvents, CardBodyProperties {}
 declare global {
-    interface HTMLPlusCardBodyElement extends HTMLElement, CardBodyMethods, CardBodyProperties {
+  interface HTMLPlusCardBodyElement extends HTMLElement, CardBodyMethods, CardBodyProperties {}
+  var HTMLPlusCardBodyElement: {
+    prototype: HTMLPlusCardBodyElement;
+    new (): HTMLPlusCardBodyElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-card-body": HTMLPlusCardBodyElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-card-body": CardBodyEvents & CardBodyAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusCardBodyElement: {
-        prototype: HTMLPlusCardBodyElement;
-        new (): HTMLPlusCardBodyElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-card-body": HTMLPlusCardBodyElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-card-body": CardBodyEvents & CardBodyAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type CardBodyElement = globalThis.HTMLPlusCardBodyElement;

@@ -1,29 +1,31 @@
-import { _ as __decorate, P as PlusCore, h as html, b as Property, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;display:flex;justify-content:center}:host([inline]){display:inline-flex}";
-
-/**
- * @stable
- *
- * @slot default - The default slot.
- */
-let Center = class Center extends PlusCore {
-    render() {
-        return html `<slot />`;
-    }
+import { P as PlusCore, h as html, a as Property, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;align-items:center;justify-content:center}:host([inline]){display:inline-flex}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
+let Center = class extends PlusCore {
+  render() {
+    return html`<slot />`;
+  }
+};
 Center.tag = "plus-center";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Center.style = css_248z;
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Center.prototype, "inline", void 0);
-Center = __decorate([
-    Element()
+Center.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Center.prototype, "inline", 2);
+Center = __decorateClass([
+  Element()
 ], Center);
-
-export { Center };
+export {
+  Center
+};

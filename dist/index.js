@@ -1,45 +1,90 @@
-export { Accordion } from './accordion.js';
-export { Accordions } from './accordions.js';
-export { Animation } from './animation.js';
-export { AspectRatio } from './aspect-ratio.js';
-export { Avatar } from './avatar.js';
-export { AvatarGroup } from './avatar-group.js';
-export { Breadcrumb } from './breadcrumb.js';
-export { Browse } from './browse.js';
-export { Card } from './card.js';
-export { CardBody } from './card-body.js';
-export { Center } from './center.js';
-export { ClickOutside } from './click-outside.js';
-export { Counter } from './counter.js';
-export { Cropper } from './cropper.js';
-export { Dialog } from './dialog.js';
-export { DialogBody } from './dialog-body.js';
-export { DialogContent } from './dialog-content.js';
-export { DialogFooter } from './dialog-footer.js';
-export { DialogHeader } from './dialog-header.js';
-export { DialogToggler } from './dialog-toggler.js';
-export { Divider } from './divider.js';
-export { Drawer } from './drawer.js';
-export { DrawerToggler } from './drawer-toggler.js';
-export { Faker } from './faker.js';
-export { FormatBytes } from './format-bytes.js';
-export { Grid } from './grid.js';
-export { GridItem } from './grid-item.js';
-export { Icon } from './icon.js';
-export { Intersection } from './intersection.js';
-export { ProgressBar } from './progress-bar.js';
-export { ProgressBarStack } from './progress-bar-stack.js';
-export { ScrollDetector } from './scroll-detector.js';
-export { Signature } from './signature.js';
-export { Spacer } from './spacer.js';
-export { Spinner } from './spinner.js';
-export { Stack } from './stack.js';
-export { Sticky } from './sticky.js';
-export { Switch } from './switch.js';
-export { Tabs } from './tabs.js';
-export { TabsBar } from './tabs-bar.js';
-export { TabsPanel } from './tabs-panel.js';
-export { TabsPanels } from './tabs-panels.js';
-export { TabsTab } from './tabs-tab.js';
-export { Tooltip } from './tooltip.js';
-import './core/index.js';
+import { Accordion } from "./accordion.js";
+import { Accordions } from "./accordions.js";
+import { Animation } from "./animation.js";
+import { AspectRatio } from "./aspect-ratio.js";
+import { Avatar } from "./avatar.js";
+import { AvatarGroup } from "./avatar-group.js";
+import { Breadcrumb } from "./breadcrumb.js";
+import { Browse } from "./browse.js";
+import { Card } from "./card.js";
+import { CardBody } from "./card-body.js";
+import { Center } from "./center.js";
+import { ClickOutside } from "./click-outside.js";
+import { Counter } from "./counter.js";
+import { Cropper } from "./cropper.js";
+import { Dialog } from "./dialog.js";
+import { DialogBody } from "./dialog-body.js";
+import { DialogContent } from "./dialog-content.js";
+import { DialogFooter } from "./dialog-footer.js";
+import { DialogHeader } from "./dialog-header.js";
+import { DialogToggler } from "./dialog-toggler.js";
+import { Divider } from "./divider.js";
+import { Drawer } from "./drawer.js";
+import { DrawerToggler } from "./drawer-toggler.js";
+import { Faker } from "./faker.js";
+import { FormatBytes } from "./format-bytes.js";
+import { Grid } from "./grid.js";
+import { GridItem } from "./grid-item.js";
+import { Icon } from "./icon.js";
+import { Intersection } from "./intersection.js";
+import { ProgressBar } from "./progress-bar.js";
+import { ProgressBarStack } from "./progress-bar-stack.js";
+import { ScrollDetector } from "./scroll-detector.js";
+import { Signature } from "./signature.js";
+import { Spacer } from "./spacer.js";
+import { Spinner } from "./spinner.js";
+import { Stack } from "./stack.js";
+import { Sticky } from "./sticky.js";
+import { Switch } from "./switch.js";
+import { Tabs } from "./tabs.js";
+import { TabsBar } from "./tabs-bar.js";
+import { TabsPanel } from "./tabs-panel.js";
+import { TabsPanels } from "./tabs-panels.js";
+import { TabsTab } from "./tabs-tab.js";
+import { Tooltip } from "./tooltip.js";
+export {
+  Accordion,
+  Accordions,
+  Animation,
+  AspectRatio,
+  Avatar,
+  AvatarGroup,
+  Breadcrumb,
+  Browse,
+  Card,
+  CardBody,
+  Center,
+  ClickOutside,
+  Counter,
+  Cropper,
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogToggler,
+  Divider,
+  Drawer,
+  DrawerToggler,
+  Faker,
+  FormatBytes,
+  Grid,
+  GridItem,
+  Icon,
+  Intersection,
+  ProgressBar,
+  ProgressBarStack,
+  ScrollDetector,
+  Signature,
+  Spacer,
+  Spinner,
+  Stack,
+  Sticky,
+  Switch,
+  Tabs,
+  TabsBar,
+  TabsPanel,
+  TabsPanels,
+  TabsTab,
+  Tooltip
+};

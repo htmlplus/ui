@@ -3810,18 +3810,6 @@
           "description": "Specifies the color of the strokes."
         },
         {
-          "name": "disabled",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ],
-          "description": "Disables the element functionality."
-        },
-        {
           "name": "distance",
           "values": [],
           "description": "Specifies the distance between the previous point and the next one."

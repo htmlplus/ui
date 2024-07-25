@@ -1,71 +1,65 @@
-import { _ as __decorate, P as PlusCore, b as Property, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{white-space:pre-wrap}";
-
-/**
- * @thirdParty
- * @stable
- * @dependencies @faker-js/faker
- */
-let Faker = class Faker extends PlusCore {
-    constructor() {
-        super(...arguments);
-        /**
-         * Specifies the [API](https://fakerjs.dev/api).
-         */
-        this.api = 'lorem.paragraph';
-        /**
-         * Specifies the API's arguments as an array.
-         */
-        this.arguments = [];
-    }
-    get content() {
-        var _a;
-        const method = (_a = this.api) === null || _a === void 0 ? void 0 : _a.split('.').reduce((result, key) => result === null || result === void 0 ? void 0 : result[key], this.instance);
-        if (!method)
-            return null;
-        this.instance.seed(this.seed);
-        return method(...this.arguments) || null;
-    }
-    connectedCallback() {
-        if (this.instance)
-            return;
-        return import('@faker-js/faker').then(module => {
-            this.instance = module.faker;
-        }).catch(() => {
-            throw new Error("The `faker` element depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem.");
-        });
-    }
-    render() {
-        return this.content;
-    }
+import { P as PlusCore, a as Property, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre-wrap}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
+let Faker = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.api = "lorem.paragraph";
+    this.arguments = [];
+  }
+  get content() {
+    var _a;
+    const method = (_a = this.api) == null ? void 0 : _a.split(".").reduce((result, key) => result == null ? void 0 : result[key], this.instance);
+    if (!method) return null;
+    this.instance.seed(this.seed);
+    return method(...this.arguments) || null;
+  }
+  connectedCallback() {
+    if (this.instance) return;
+    return import("@faker-js/faker").then((module) => {
+      this.instance = module.faker;
+    }).catch(() => {
+      throw new Error("The `faker` element depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem.");
+    });
+  }
+  render() {
+    return this.content;
+  }
+};
 Faker.tag = "plus-faker";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Faker.style = css_248z;
-__decorate([
-    Property({
-        type: 256
-    })
-], Faker.prototype, "api", void 0);
-__decorate([
-    Property({
-        type: 1
-    })
-], Faker.prototype, "arguments", void 0);
-__decorate([
-    Property({
-        type: 0
-    })
-], Faker.prototype, "instance", void 0);
-__decorate([
-    Property({
-        type: 64
-    })
-], Faker.prototype, "seed", void 0);
-Faker = __decorate([
-    Element()
+Faker.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    type: 256
+  })
+], Faker.prototype, "api", 2);
+__decorateClass([
+  Property({
+    type: 1
+  })
+], Faker.prototype, "arguments", 2);
+__decorateClass([
+  Property({
+    type: 0
+  })
+], Faker.prototype, "instance", 2);
+__decorateClass([
+  Property({
+    type: 64
+  })
+], Faker.prototype, "seed", 2);
+Faker = __decorateClass([
+  Element()
 ], Faker);
-
-export { Faker };
+export {
+  Faker
+};

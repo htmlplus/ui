@@ -1,11 +1,11 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { CounterEasing } from './counter.types';
+
 /**
  * @stable
  */
 export declare class Counter extends PlusCore {
-    static tag: string;
     /**
      * Easing function. Click [here](http://robertpenner.com/easing) for more details.
      */
@@ -78,134 +78,133 @@ export declare class Counter extends PlusCore {
     count(timestamp: number): void;
     reset(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
+
 export interface CounterAttributes {
-    /**
-    * Easing function. Click [here](http://robertpenner.com/easing) for more details.
-    */
-    "easing"?: CounterEasing;
-    /**
-    * Specifies decimal character.
-    */
-    "decimal"?: string;
-    /**
-    * Amount of decimals to display.
-    */
-    "decimals"?: number;
-    /**
-    * Delay in milliseconds before starting the transition.
-    */
-    "delay"?: number;
-    /**
-    * Duration in milliseconds.
-    */
-    "duration"?: number;
-    /**
-    * Initial value.
-    */
-    "from"?: number;
-    /**
-    * Specifies numeral glyph substitution.
-    */
-    "numerals"?: string[];
-    /**
-    * Starts/Stops the transition.
-    */
-    "play"?: boolean;
-    /**
-    * Specifies character of thousands separator.
-    */
-    "separator"?: string;
-    /**
-    * Target value.
-    */
-    "to"?: number;
+  /**
+  * Easing function. Click [here](http://robertpenner.com/easing) for more details.
+  */
+  "easing"?: CounterEasing;
+  /**
+  * Specifies decimal character.
+  */
+  "decimal"?: string;
+  /**
+  * Amount of decimals to display.
+  */
+  "decimals"?: number;
+  /**
+  * Delay in milliseconds before starting the transition.
+  */
+  "delay"?: number;
+  /**
+  * Duration in milliseconds.
+  */
+  "duration"?: number;
+  /**
+  * Initial value.
+  */
+  "from"?: number;
+  /**
+  * Specifies numeral glyph substitution.
+  */
+  "numerals"?: string[];
+  /**
+  * Starts/Stops the transition.
+  */
+  "play"?: boolean;
+  /**
+  * Specifies character of thousands separator.
+  */
+  "separator"?: string;
+  /**
+  * Target value.
+  */
+  "to"?: number;
 }
 export interface CounterEvents {
-    /**
-    * Is Triggered when transition ended.
-    */
-    onPlusComplete?: (event: CustomEvent<void>) => void;
+  /**
+  * Is Triggered when transition ended.
+  */
+  onPlusComplete?: (event: CustomEvent<void>) => void;
 }
 export interface CounterMethods {
-    /**
-    * Completes the transition.
-    */
-    complete(): any;
-    /**
-    * Pauses the transition.
-    */
-    pause(): any;
-    /**
-    * Starts the transition.
-    */
-    start(): any;
-    /**
-    * Stops the transition.
-    */
-    stop(): any;
+  /**
+  * Completes the transition.
+  */
+  complete();
+  /**
+  * Pauses the transition.
+  */
+  pause();
+  /**
+  * Starts the transition.
+  */
+  start();
+  /**
+  * Stops the transition.
+  */
+  stop();
 }
 export interface CounterProperties {
-    /**
-    * Easing function. Click [here](http://robertpenner.com/easing) for more details.
-    */
-    easing?: CounterEasing;
-    /**
-    * Specifies decimal character.
-    */
-    decimal?: string;
-    /**
-    * Amount of decimals to display.
-    */
-    decimals?: number;
-    /**
-    * Delay in milliseconds before starting the transition.
-    */
-    delay?: number;
-    /**
-    * Duration in milliseconds.
-    */
-    duration?: number;
-    /**
-    * Initial value.
-    */
-    from?: number;
-    /**
-    * Specifies numeral glyph substitution.
-    */
-    numerals?: string[];
-    /**
-    * Starts/Stops the transition.
-    */
-    play?: boolean;
-    /**
-    * Specifies character of thousands separator.
-    */
-    separator?: string;
-    /**
-    * Target value.
-    */
-    to?: number;
+  /**
+  * Easing function. Click [here](http://robertpenner.com/easing) for more details.
+  */
+  easing?: CounterEasing;
+  /**
+  * Specifies decimal character.
+  */
+  decimal?: string;
+  /**
+  * Amount of decimals to display.
+  */
+  decimals?: number;
+  /**
+  * Delay in milliseconds before starting the transition.
+  */
+  delay?: number;
+  /**
+  * Duration in milliseconds.
+  */
+  duration?: number;
+  /**
+  * Initial value.
+  */
+  from?: number;
+  /**
+  * Specifies numeral glyph substitution.
+  */
+  numerals?: string[];
+  /**
+  * Starts/Stops the transition.
+  */
+  play?: boolean;
+  /**
+  * Specifies character of thousands separator.
+  */
+  separator?: string;
+  /**
+  * Target value.
+  */
+  to?: number;
 }
-export interface CounterJSX extends CounterEvents, CounterProperties {
-}
+export interface CounterJSX extends CounterEvents, CounterProperties {}
 declare global {
-    interface HTMLPlusCounterElement extends HTMLElement, CounterMethods, CounterProperties {
+  interface HTMLPlusCounterElement extends HTMLElement, CounterMethods, CounterProperties {}
+  var HTMLPlusCounterElement: {
+    prototype: HTMLPlusCounterElement;
+    new (): HTMLPlusCounterElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-counter": HTMLPlusCounterElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-counter": CounterEvents & CounterAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusCounterElement: {
-        prototype: HTMLPlusCounterElement;
-        new (): HTMLPlusCounterElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-counter": HTMLPlusCounterElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-counter": CounterEvents & CounterAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type CounterElement = globalThis.HTMLPlusCounterElement;

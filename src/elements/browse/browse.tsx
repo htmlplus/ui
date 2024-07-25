@@ -140,7 +140,7 @@ export class Browse extends PlusCore {
     if (this.max < files.length)
       detail.error = {
         type: 'max',
-        message: `A maximum of "${this.max}" file(s) must be selected`
+        message: `A maximum of "${this.max}" file(s) must be selected.`
       };
 
     for (let i = 0; i < files.length; i++) {
@@ -164,20 +164,20 @@ export class Browse extends PlusCore {
 
         value.errors.push({
           type: 'accept',
-          message: `Only file(s) with the extensions "${this.accept}" are accepted`
+          message: `Only file(s) with the extensions "${this.accept}" are accepted.`
         });
       }
 
       if (this.minSize > value.file.size)
         value.errors.push({
           type: 'min',
-          message: `The minimum file size allowed is "${this.minSize}" bytes`
+          message: `The minimum file size allowed is "${this.minSize}" bytes.`
         });
 
       if (this.maxSize < value.file.size)
         value.errors.push({
           type: 'min',
-          message: `The maximum file size allowed is "${this.maxSize}" bytes`
+          message: `The maximum file size allowed is "${this.maxSize}" bytes.`
         });
 
       detail.files.push(value);

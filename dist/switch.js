@@ -1,38 +1,44 @@
-import { _ as __decorate, P as PlusCore, h as html, k as attributes, b as Property, E as Event, B as Bind, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{border-radius:2em;cursor:pointer;display:inline-block;height:2em;overflow:hidden;user-select:none;vertical-align:middle;width:3.5em}:host([disabled]){opacity:.5}.root{align-items:center;display:flex;flex-wrap:nowrap;height:100%;justify-content:space-between;position:relative;width:100%}.handle,.root{border-radius:inherit;transition:.3s}.handle{background:#fff;height:1.5em;left:50%;position:absolute;top:50%;width:1.5em;z-index:1}.slot{border-radius:inherit;font-size:.8em}.off{border-bottom-left-radius:0;border-top-left-radius:0;padding:0 .5em 0 0}.on{border-bottom-right-radius:0;border-top-right-radius:0;padding:0 0 0 .5em}:host .root{background:#d3d3d3}:host .handle{transform:translate(-1.5em,-50%)}:host .on{opacity:0}:host .off{opacity:1}:host([checked]) .root{background:#2196f3}:host([checked]) .handle{transform:translate(calc(1.5em - 100%),-50%)}:host([checked]) .on{opacity:1}:host([checked]) .off{opacity:0}";
-
-let Switch = class Switch extends PlusCore {
-    toggle() {
-        if (this.disabled)
-            return;
-        this.checked = !this.checked;
-        this.plusChange();
-    }
-    onClick(event) {
-        event.preventDefault();
-        this.toggle();
-    }
-    onKeyDown(event) {
-        if (event.key != ' ' && event.key != 'Enter')
-            return;
-        event.preventDefault();
-        this.toggle();
-    }
-    render() {
-        return html `${attributes(this, [{
-                "aria-checked": `${!!this.checked}`
-            }, {
-                "aria-disabled": `${!!this.disabled}`
-            }, {
-                "role": "switch"
-            }, {
-                "tabindex": 0
-            }, {
-                "onClick": this.onClick
-            }, {
-                "onKeyDown": this.onKeyDown
-            }])}
+import { P as PlusCore, h as html, j as attributes, a as Property, E as Event, B as Bind, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2em;width:3.5em;border-radius:2em;cursor:pointer;display:inline-block;vertical-align:middle;overflow:hidden;user-select:none}:host([disabled]){opacity:.5}.root{align-items:center;border-radius:inherit;display:flex;flex-wrap:nowrap;height:100%;width:100%;justify-content:space-between;position:relative;transition:.3s}.handle{width:1.5em;height:1.5em;background:#fff;border-radius:inherit;position:absolute;top:50%;left:50%;z-index:1;transition:.3s}.slot{font-size:.8em;border-radius:inherit}.off{padding:0 .5em 0 0;border-top-left-radius:0;border-bottom-left-radius:0}.on{padding:0 0 0 .5em;border-top-right-radius:0;border-bottom-right-radius:0}:host .root{background:#d3d3d3}:host .handle{transform:translate(calc(-1.5em - 0%), -50%)}:host .on{opacity:0}:host .off{opacity:1}:host([checked]) .root{background:#2196f3}:host([checked]) .handle{transform:translate(calc(1.5em - 100%), -50%)}:host([checked]) .on{opacity:1}:host([checked]) .off{opacity:0}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
+};
+let Switch = class extends PlusCore {
+  toggle() {
+    if (this.disabled) return;
+    this.checked = !this.checked;
+    this.plusChange();
+  }
+  onClick(event) {
+    event.preventDefault();
+    this.toggle();
+  }
+  onKeyDown(event) {
+    if (event.key != " " && event.key != "Enter") return;
+    event.preventDefault();
+    this.toggle();
+  }
+  render() {
+    return html`${attributes(this, [{
+      "aria-checked": `${!!this.checked}`
+    }, {
+      "aria-disabled": `${!!this.disabled}`
+    }, {
+      "role": "switch"
+    }, {
+      "tabindex": 0
+    }, {
+      "onClick": this.onClick
+    }, {
+      "onKeyDown": this.onKeyDown
+    }])}
         <div class="root" part="root">
           <div class="slot on" part="slot on">
             <slot name="on" />
@@ -45,35 +51,34 @@ let Switch = class Switch extends PlusCore {
           </div>
         </div>
       `;
-    }
+  }
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 Switch.tag = "plus-switch";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Switch.style = css_248z;
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Switch.prototype, "checked", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Switch.prototype, "disabled", void 0);
-__decorate([
-    Event()
-], Switch.prototype, "plusChange", void 0);
-__decorate([
-    Bind()
-], Switch.prototype, "onClick", null);
-__decorate([
-    Bind()
-], Switch.prototype, "onKeyDown", null);
-Switch = __decorate([
-    Element()
+Switch.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Switch.prototype, "checked", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Switch.prototype, "disabled", 2);
+__decorateClass([
+  Event()
+], Switch.prototype, "plusChange", 2);
+__decorateClass([
+  Bind()
+], Switch.prototype, "onClick", 1);
+__decorateClass([
+  Bind()
+], Switch.prototype, "onKeyDown", 1);
+Switch = __decorateClass([
+  Element()
 ], Switch);
-
-export { Switch };
+export {
+  Switch
+};

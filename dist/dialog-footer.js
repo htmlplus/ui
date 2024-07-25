@@ -1,23 +1,25 @@
-import { _ as __decorate, P as PlusCore, h as html, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{align-items:center;border-bottom-left-radius:calc(.3rem - 1px);border-bottom-right-radius:calc(.3rem - 1px);border-top:1px solid rgba(0,0,0,.2);display:flex;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;padding:.75rem}:host ::slotted(*){margin:.25rem}";
-
-/**
- * @subset
- *
- * @slot default - The default slot.
- */
-let DialogFooter = class DialogFooter extends PlusCore {
-    render() {
-        return html `<slot />`;
-    }
+import { P as PlusCore, h as html, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-wrap:wrap;flex-shrink:0;align-items:center;justify-content:flex-end;padding:.75rem;border-top:solid 1px rgba(0,0,0,.2);border-bottom-right-radius:calc(.3rem - 1px);border-bottom-left-radius:calc(.3rem - 1px)}:host ::slotted(*){margin:.25rem}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
+let DialogFooter = class extends PlusCore {
+  render() {
+    return html`<slot />`;
+  }
+};
 DialogFooter.tag = "plus-dialog-footer";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-DialogFooter.style = css_248z;
-DialogFooter = __decorate([
-    Element()
+DialogFooter.style = STYLE_IMPORTED;
+DialogFooter = __decorateClass([
+  Element()
 ], DialogFooter);
-
-export { DialogFooter };
+export {
+  DialogFooter
+};

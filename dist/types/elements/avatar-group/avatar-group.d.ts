@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * @stable
  * @subset
@@ -6,8 +7,6 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class AvatarGroup extends PlusCore {
-    static tag: string;
-    static style: string;
     /**
      * Specifies whether to prominent the avatar when the mouse is entered or not.
      */
@@ -16,50 +15,47 @@ export declare class AvatarGroup extends PlusCore {
      * Specifies whether avatars should be displayed compressed or not.
      */
     stacked?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
+
 export interface AvatarGroupAttributes {
-    /**
-    * Specifies whether to prominent the avatar when the mouse is entered or not.
-    */
-    "hoverable"?: boolean;
-    /**
-    * Specifies whether avatars should be displayed compressed or not.
-    */
-    "stacked"?: boolean;
+  /**
+  * Specifies whether to prominent the avatar when the mouse is entered or not.
+  */
+  "hoverable"?: boolean;
+  /**
+  * Specifies whether avatars should be displayed compressed or not.
+  */
+  "stacked"?: boolean;
 }
-export interface AvatarGroupEvents {
-}
-export interface AvatarGroupMethods {
-}
+export interface AvatarGroupEvents {}
+export interface AvatarGroupMethods {}
 export interface AvatarGroupProperties {
-    /**
-    * Specifies whether to prominent the avatar when the mouse is entered or not.
-    */
-    hoverable?: boolean;
-    /**
-    * Specifies whether avatars should be displayed compressed or not.
-    */
-    stacked?: boolean;
+  /**
+  * Specifies whether to prominent the avatar when the mouse is entered or not.
+  */
+  hoverable?: boolean;
+  /**
+  * Specifies whether avatars should be displayed compressed or not.
+  */
+  stacked?: boolean;
 }
-export interface AvatarGroupJSX extends AvatarGroupEvents, AvatarGroupProperties {
-}
+export interface AvatarGroupJSX extends AvatarGroupEvents, AvatarGroupProperties {}
 declare global {
-    interface HTMLPlusAvatarGroupElement extends HTMLElement, AvatarGroupMethods, AvatarGroupProperties {
+  interface HTMLPlusAvatarGroupElement extends HTMLElement, AvatarGroupMethods, AvatarGroupProperties {}
+  var HTMLPlusAvatarGroupElement: {
+    prototype: HTMLPlusAvatarGroupElement;
+    new (): HTMLPlusAvatarGroupElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-avatar-group": HTMLPlusAvatarGroupElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusAvatarGroupElement: {
-        prototype: HTMLPlusAvatarGroupElement;
-        new (): HTMLPlusAvatarGroupElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-avatar-group": HTMLPlusAvatarGroupElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type AvatarGroupElement = globalThis.HTMLPlusAvatarGroupElement;

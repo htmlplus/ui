@@ -1,54 +1,55 @@
-import { _ as __decorate, P as PlusCore, h as html, b as Property, E as Event, d as Provider, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
-
-/**
- * @development
- *
- * @slot default - The default slot.
- */
-let Tabs = class Tabs extends PlusCore {
-    get state() {
-        return {
-            current: this.value,
-            change: this.change.bind(this)
-        };
-    }
-    change(value) {
-        const event = this.plusChange(value);
-        if (event.defaultPrevented)
-            return;
-        this.value = value;
-    }
-    render() {
-        return html `<slot />`;
-    }
+import { P as PlusCore, h as html, a as Property, E as Event, c as Provider, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
+let Tabs = class extends PlusCore {
+  get state() {
+    return {
+      current: this.value,
+      change: this.change.bind(this)
+    };
+  }
+  change(value) {
+    const event = this.plusChange(value);
+    if (event.defaultPrevented) return;
+    this.value = value;
+  }
+  render() {
+    return html`<slot />`;
+  }
+};
 Tabs.tag = "plus-tabs";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Tabs.style = css_248z;
-__decorate([
-    Property({
-        type: 320
-    })
-], Tabs.prototype, "value", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], Tabs.prototype, "vertical", void 0);
-__decorate([
-    Event({
-        cancelable: true
-    })
-], Tabs.prototype, "plusChange", void 0);
-__decorate([
-    Provider('tabs')
-], Tabs.prototype, "state", null);
-Tabs = __decorate([
-    Element()
+Tabs.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    type: 320
+  })
+], Tabs.prototype, "value", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], Tabs.prototype, "vertical", 2);
+__decorateClass([
+  Event({
+    cancelable: true
+  })
+], Tabs.prototype, "plusChange", 2);
+__decorateClass([
+  Provider("tabs")
+], Tabs.prototype, "state", 1);
+Tabs = __decorateClass([
+  Element()
 ], Tabs);
-
-export { Tabs };
+export {
+  Tabs
+};

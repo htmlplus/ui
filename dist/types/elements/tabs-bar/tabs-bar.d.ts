@@ -1,4 +1,5 @@
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
+
 /**
  * TODO: Arranges tabs within a bar.
  * @subset
@@ -6,8 +7,6 @@ import { PlusCore } from "../../core";
  * @slot default - The default slot.
  */
 export declare class TabsBar extends PlusCore {
-    static tag: string;
-    static style: string;
     /**
      * Grows tabs as much as all available space (occupies all horizontal space).
      */
@@ -20,58 +19,55 @@ export declare class TabsBar extends PlusCore {
      * Reverses the arrangement of the tabs.
      */
     reverse?: boolean;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
+
 export interface TabsBarAttributes {
-    /**
-    * Grows tabs as much as all available space (occupies all horizontal space).
-    */
-    "grow"?: boolean;
-    /**
-    * Specifies how the tabs are aligned.
-    */
-    "justify"?: 'start' | 'center' | 'end';
-    /**
-    * Reverses the arrangement of the tabs.
-    */
-    "reverse"?: boolean;
+  /**
+  * Grows tabs as much as all available space (occupies all horizontal space).
+  */
+  "grow"?: boolean;
+  /**
+  * Specifies how the tabs are aligned.
+  */
+  "justify"?: 'start' | 'center' | 'end';
+  /**
+  * Reverses the arrangement of the tabs.
+  */
+  "reverse"?: boolean;
 }
-export interface TabsBarEvents {
-}
-export interface TabsBarMethods {
-}
+export interface TabsBarEvents {}
+export interface TabsBarMethods {}
 export interface TabsBarProperties {
-    /**
-    * Grows tabs as much as all available space (occupies all horizontal space).
-    */
-    grow?: boolean;
-    /**
-    * Specifies how the tabs are aligned.
-    */
-    justify?: 'start' | 'center' | 'end';
-    /**
-    * Reverses the arrangement of the tabs.
-    */
-    reverse?: boolean;
+  /**
+  * Grows tabs as much as all available space (occupies all horizontal space).
+  */
+  grow?: boolean;
+  /**
+  * Specifies how the tabs are aligned.
+  */
+  justify?: 'start' | 'center' | 'end';
+  /**
+  * Reverses the arrangement of the tabs.
+  */
+  reverse?: boolean;
 }
-export interface TabsBarJSX extends TabsBarEvents, TabsBarProperties {
-}
+export interface TabsBarJSX extends TabsBarEvents, TabsBarProperties {}
 declare global {
-    interface HTMLPlusTabsBarElement extends HTMLElement, TabsBarMethods, TabsBarProperties {
+  interface HTMLPlusTabsBarElement extends HTMLElement, TabsBarMethods, TabsBarProperties {}
+  var HTMLPlusTabsBarElement: {
+    prototype: HTMLPlusTabsBarElement;
+    new (): HTMLPlusTabsBarElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-tabs-bar": HTMLPlusTabsBarElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusTabsBarElement: {
-        prototype: HTMLPlusTabsBarElement;
-        new (): HTMLPlusTabsBarElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-tabs-bar": HTMLPlusTabsBarElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type TabsBarElement = globalThis.HTMLPlusTabsBarElement;

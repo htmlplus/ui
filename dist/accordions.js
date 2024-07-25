@@ -1,47 +1,46 @@
-import { _ as __decorate, P as PlusCore, h as html, b as Property, d as Provider, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:block}";
-
-/**
- * @subset
- *
- * @slot default - The default slot.
- */
-let Accordions = class Accordions extends PlusCore {
-    get state() {
-        return {
-            open: this.open.bind(this)
-        };
-    }
-    open(target) {
-        if (!this.persistent)
-            return;
-        for (const accordion of Array.from(this.$host.children)) {
-            if (accordion === target)
-                continue;
-            if (!accordion['open'])
-                continue;
-            accordion.shadowRoot.querySelector('[part=header]')['click']();
-        }
-    }
-    render() {
-        return html `<slot />`;
-    }
+import { P as PlusCore, h as html, a as Property, c as Provider, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
+let Accordions = class extends PlusCore {
+  get state() {
+    return {
+      open: this.open.bind(this)
+    };
+  }
+  open(target) {
+    if (!this.persistent) return;
+    for (const accordion of Array.from(this.$host.children)) {
+      if (accordion === target) continue;
+      if (!accordion["open"]) continue;
+      accordion.shadowRoot.querySelector("[part=header]")["click"]();
+    }
+  }
+  render() {
+    return html`<slot />`;
+  }
+};
 Accordions.tag = "plus-accordions";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-Accordions.style = css_248z;
-__decorate([
-    Property({
-        type: 2
-    })
-], Accordions.prototype, "persistent", void 0);
-__decorate([
-    Provider('accordions')
-], Accordions.prototype, "state", null);
-Accordions = __decorate([
-    Element()
+Accordions.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    type: 2
+  })
+], Accordions.prototype, "persistent", 2);
+__decorateClass([
+  Provider("accordions")
+], Accordions.prototype, "state", 1);
+Accordions = __decorateClass([
+  Element()
 ], Accordions);
-
-export { Accordions };
+export {
+  Accordions
+};

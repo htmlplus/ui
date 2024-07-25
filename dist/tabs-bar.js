@@ -1,53 +1,51 @@
-import { _ as __decorate, P as PlusCore, h as html, k as attributes, b as Property, c as Element } from './core/index.js';
-
-var css_248z = ":host,:host:after,:host:before{box-sizing:border-box}:host *,:host :after,:host :before{box-sizing:border-box}:host([hidden]){display:none!important}:host{display:flex;flex:0 0 auto;overflow:auto}:host([reverse]){flex-direction:row-reverse}:host([grow]) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=end][reverse]),:host([justify=start]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]){justify-content:flex-end}";
-
-/**
- * TODO: Arranges tabs within a bar.
- * @subset
- *
- * @slot default - The default slot.
- */
-let TabsBar = class TabsBar extends PlusCore {
-    constructor() {
-        super(...arguments);
-        /**
-         * Specifies how the tabs are aligned.
-         */
-        this.justify = 'start';
-    }
-    render() {
-        return html `${attributes(this, [{
-                "role": "tablist"
-            }])}
+import { P as PlusCore, h as html, j as attributes, a as Property, b as Element } from "./core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{flex:0 0 auto;display:flex;overflow:auto}:host([reverse]){flex-direction:row-reverse}:host([grow]) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=start]),:host([justify=end][reverse]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]){justify-content:flex-end}";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __decorateClass = (decorators, target, key, kind) => {
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
+  return result;
+};
+let TabsBar = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.justify = "start";
+  }
+  render() {
+    return html`${attributes(this, [{
+      "role": "tablist"
+    }])}
         <slot />
       `;
-    }
+  }
 };
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
 TabsBar.tag = "plus-tabs-bar";
-// THIS IS AUTO-ADDED, DO NOT EDIT MANUALY
-TabsBar.style = css_248z;
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], TabsBar.prototype, "grow", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 8
-    })
-], TabsBar.prototype, "justify", void 0);
-__decorate([
-    Property({
-        reflect: true,
-        type: 2
-    })
-], TabsBar.prototype, "reverse", void 0);
-TabsBar = __decorate([
-    Element()
+TabsBar.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], TabsBar.prototype, "grow", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 8
+  })
+], TabsBar.prototype, "justify", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 2
+  })
+], TabsBar.prototype, "reverse", 2);
+TabsBar = __decorateClass([
+  Element()
 ], TabsBar);
-
-export { TabsBar };
+export {
+  TabsBar
+};

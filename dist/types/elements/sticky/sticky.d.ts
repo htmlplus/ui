@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
-import { PlusCore } from "../../core";
+import { PlusCore } from '../../core';
 import { StickyState, StickyTop } from './sticky.types';
+
 /**
  * @stable
  *
@@ -9,8 +10,6 @@ import { StickyState, StickyTop } from './sticky.types';
  * @slot stick   - Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`.
  */
 export declare class Sticky extends PlusCore {
-    static tag: string;
-    static style: string;
     /**
      * Specifies the space from top.
      */
@@ -43,62 +42,60 @@ export declare class Sticky extends PlusCore {
     onIntersecting(entries: IntersectionObserverEntry[]): void;
     loadedCallback(): void;
     disconnectedCallback(): void;
-    render(): import("@htmlplus/element/client/utils/index.js").Hole;
+    render(): any;
 }
+
 export interface StickyAttributes {
-    /**
-    * Specifies the space from top.
-    */
-    "top"?: StickyTop;
-    /**
-    * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
-    */
-    "watcher"?: boolean;
-    /**
-    * Specifies the z-index.
-    */
-    "z-index"?: number;
+  /**
+  * Specifies the space from top.
+  */
+  "top"?: StickyTop;
+  /**
+  * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
+  */
+  "watcher"?: boolean;
+  /**
+  * Specifies the z-index.
+  */
+  "z-index"?: number;
 }
 export interface StickyEvents {
-    /**
-    * Fires when the state is changed. To enable, set the `watcher` property to `true`.
-    */
-    onPlusChange?: (event: CustomEvent<StickyState>) => void;
+  /**
+  * Fires when the state is changed. To enable, set the `watcher` property to `true`.
+  */
+  onPlusChange?: (event: CustomEvent<StickyState>) => void;
 }
-export interface StickyMethods {
-}
+export interface StickyMethods {}
 export interface StickyProperties {
-    /**
-    * Specifies the space from top.
-    */
-    top?: StickyTop;
-    /**
-    * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
-    */
-    watcher?: boolean;
-    /**
-    * Specifies the z-index.
-    */
-    zIndex?: number;
+  /**
+  * Specifies the space from top.
+  */
+  top?: StickyTop;
+  /**
+  * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
+  */
+  watcher?: boolean;
+  /**
+  * Specifies the z-index.
+  */
+  zIndex?: number;
 }
-export interface StickyJSX extends StickyEvents, StickyProperties {
-}
+export interface StickyJSX extends StickyEvents, StickyProperties {}
 declare global {
-    interface HTMLPlusStickyElement extends HTMLElement, StickyMethods, StickyProperties {
+  interface HTMLPlusStickyElement extends HTMLElement, StickyMethods, StickyProperties {}
+  var HTMLPlusStickyElement: {
+    prototype: HTMLPlusStickyElement;
+    new (): HTMLPlusStickyElement;
+  };
+  interface HTMLElementTagNameMap {
+    "plus-sticky": HTMLPlusStickyElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-sticky": StickyEvents & StickyAttributes & {
+        [key: string]: any;
+      };
     }
-    var HTMLPlusStickyElement: {
-        prototype: HTMLPlusStickyElement;
-        new (): HTMLPlusStickyElement;
-    };
-    interface HTMLElementTagNameMap {
-        "plus-sticky": HTMLPlusStickyElement;
-    }
-    namespace JSX {
-        interface IntrinsicElements {
-            "plus-sticky": StickyEvents & StickyAttributes & {
-                [key: string]: any;
-            };
-        }
-    }
+  }
 }
 export type StickyElement = globalThis.HTMLPlusStickyElement;
