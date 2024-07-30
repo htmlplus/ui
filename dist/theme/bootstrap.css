@@ -8,8 +8,12 @@ plus-accordion::part(content) {
 
 plus-accordion::part(header) {
   padding: 1rem 1.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out,
+    border-radius 0.15s ease;
 }
 
 plus-accordion:not([state='collapsed'])::part(header) {

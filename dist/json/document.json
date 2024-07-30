@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-07-24T15:03:58.183Z",
+      "lastModified": "2024-07-29T18:18:56.591Z",
       "methods": [
         {
           "async": false,
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2024-07-18T16:39:24.259Z",
+      "lastModified": "2024-07-25T12:45:58.041Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-07-18T16:39:24.261Z",
+      "lastModified": "2024-07-25T12:45:58.042Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-07-18T16:39:24.264Z",
+      "lastModified": "2024-07-25T12:45:58.046Z",
       "methods": [],
       "properties": [
         {
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-07-18T16:39:24.266Z",
+      "lastModified": "2024-07-25T12:45:58.048Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-07-24T17:13:51.416Z",
+      "lastModified": "2024-07-25T12:45:58.050Z",
       "methods": [
         {
           "async": false,
@@ -785,7 +785,7 @@
           "description": "Allows to select more than one file."
         }
       ],
-      "readmeContent": "# Browse\n\nAllows you to select file or files by using click or drag & drop functionality.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example src=\"examples/default\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Multiple\n\n<Example src=\"examples/multiple\" />\n\n### Accept\n\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\n\n<Example src=\"examples/accept\" />\n\n### Min & Max\n\n<Example src=\"examples/min-and-max\" />\n\n### Min & Max Size\n\n<Example src=\"examples/min-and-max-size\" />\n\n### Droppable\n\n<Example src=\"examples/droppable\" />\n\n<LastModified />\n",
+      "readmeContent": "# Browse\n\nAllows you to select file or files by using click or drag & drop functionality.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\nOpen the developer console.\n\n<Example src=\"examples/default\" />\n\n### Disabled\n\n<Example src=\"examples/disabled\" />\n\n### Multiple\n\n<Example src=\"examples/multiple\" />\n\n### Accept\n\nOne or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow.\n\n<Example src=\"examples/accept\" />\n\n### Min & Max\n\nChoose between 3 and 5 files.\n\n<Example src=\"examples/min-and-max\" />\n\n### Min & Max Size\n\nSelect a file with a size between 1MB and 5MB.\n\n<Example src=\"examples/min-and-max-size\" />\n\n### Droppable\n\n<Example src=\"examples/droppable\" />\n\n<LastModified />\n",
       "styles": [],
       "title": "Browse",
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
@@ -800,7 +800,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2024-07-18T16:39:24.268Z",
+      "lastModified": "2024-07-25T12:45:58.052Z",
       "methods": [],
       "properties": [
         {
@@ -898,7 +898,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2024-07-18T16:39:24.269Z",
+      "lastModified": "2024-07-25T12:45:58.052Z",
       "methods": [],
       "properties": [
         {
@@ -933,7 +933,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-07-18T16:39:24.269Z",
+      "lastModified": "2024-07-25T12:45:58.053Z",
       "methods": [],
       "properties": [
         {
@@ -986,7 +986,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2024-07-18T16:39:24.271Z",
+      "lastModified": "2024-07-25T12:45:58.055Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-07-18T16:39:24.273Z",
+      "lastModified": "2024-07-25T12:45:58.058Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-07-18T16:39:24.276Z",
+      "lastModified": "2024-07-25T12:45:58.061Z",
       "methods": [
         {
           "async": false,
@@ -1823,7 +1823,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2024-07-18T16:39:24.274Z",
+      "lastModified": "2024-07-25T12:45:58.059Z",
       "methods": [],
       "properties": [
         {
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-07-24T17:23:59.403Z",
+      "lastModified": "2024-07-25T12:45:58.063Z",
       "methods": [],
       "properties": [
         {
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-07-18T16:39:24.278Z",
+      "lastModified": "2024-07-25T12:45:58.064Z",
       "methods": [
         {
           "async": false,
@@ -2248,7 +2248,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-07-24T17:37:57.443Z",
+      "lastModified": "2024-07-25T12:45:58.065Z",
       "methods": [],
       "properties": [
         {
@@ -2301,7 +2301,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2024-07-18T16:39:24.281Z",
+      "lastModified": "2024-07-25T12:45:58.067Z",
       "methods": [],
       "properties": [
         {
@@ -2393,7 +2393,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2024-07-18T16:39:24.283Z",
+      "lastModified": "2024-07-25T12:45:58.070Z",
       "methods": [],
       "properties": [
         {
@@ -3166,7 +3166,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-07-18T16:39:24.285Z",
+      "lastModified": "2024-07-25T12:45:58.073Z",
       "methods": [],
       "properties": [
         {
@@ -3258,7 +3258,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2024-07-18T16:39:24.286Z",
+      "lastModified": "2024-07-25T12:45:58.074Z",
       "methods": [],
       "properties": [
         {
@@ -3323,7 +3323,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-07-18T16:39:24.288Z",
+      "lastModified": "2024-07-25T12:45:58.076Z",
       "methods": [],
       "properties": [
         {
@@ -3446,7 +3446,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2024-07-18T16:39:24.288Z",
+      "lastModified": "2024-07-25T12:45:58.076Z",
       "methods": [],
       "properties": [
         {
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-07-21T21:21:36.081Z",
+      "lastModified": "2024-07-30T17:29:31.977Z",
       "methods": [
         {
           "async": false,
@@ -3724,7 +3724,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-07-18T16:39:24.291Z",
+      "lastModified": "2024-07-25T12:45:58.080Z",
       "methods": [],
       "properties": [
         {
@@ -3768,7 +3768,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-07-18T16:39:24.291Z",
+      "lastModified": "2024-07-25T12:45:58.080Z",
       "methods": [],
       "properties": [
         {
@@ -3844,7 +3844,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-07-18T16:39:24.292Z",
+      "lastModified": "2024-07-25T12:45:58.082Z",
       "methods": [],
       "properties": [
         {
@@ -3908,7 +3908,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2024-07-18T16:39:24.293Z",
+      "lastModified": "2024-07-25T12:45:58.083Z",
       "methods": [],
       "properties": [
         {
@@ -3946,7 +3946,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-07-18T16:39:24.294Z",
+      "lastModified": "2024-07-25T12:45:58.084Z",
       "methods": [],
       "properties": [
         {

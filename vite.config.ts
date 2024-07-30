@@ -10,6 +10,8 @@ import dts from 'vite-plugin-dts';
 import { examples } from './examples/plugin';
 import plugins from './htmlplus.config';
 
+const DESTINATION = 'dist';
+
 export default defineConfig({
   cacheDir: '.cache',
   server: {
@@ -68,43 +70,7 @@ export default defineConfig({
           }
         }
       ]
-    }),
-    {
-      name: 'TODO',
-      writeBundle(options, bundle) {
-        const source = 'dist/json/document.json';
-
-        const document = JSON.parse(fs.readFileSync(source, 'utf8'));
-
-        for (const element of document.elements) {
-          const module = bundle[element.key + '.js'];
-
-          if (!module) continue;
-
-          for (const key in module['modules']) {
-            if (!key.includes('.scss')) continue;
-
-            const code = module['modules'][key].code;
-
-            if (!code) continue;
-
-            for (const style of element.styles) {
-              style.initializer = code
-                ?.split(style.name)
-                ?.at(1)
-                ?.split(':')
-                ?.filter((section) => !!section)
-                ?.at(0)
-                ?.split(/;|}/)
-                ?.at(0)
-                ?.trim();
-            }
-          }
-        }
-
-        fs.writeFileSync(source, JSON.stringify(document, null, 2), 'utf8');
-      }
-    }
+    })
   ],
   build: {
     emptyOutDir: false,
@@ -123,7 +89,7 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        dir: 'dist',
+        dir: DESTINATION,
         chunkFileNames: `[name].js`,
         manualChunks(id) {
           const normalized = path.normalize(id).split(path.sep).join('/');

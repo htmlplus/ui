@@ -39,7 +39,7 @@ let Browse = class extends PlusCore {
     };
     if (this.max < files.length) detail.error = {
       type: "max",
-      message: `A maximum of "${this.max}" file(s) must be selected`
+      message: `A maximum of "${this.max}" file(s) must be selected.`
     };
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -55,16 +55,16 @@ let Browse = class extends PlusCore {
         if (isMime && isPattern && value.file.type.startsWith(type.slice(0, -1))) break;
         value.errors.push({
           type: "accept",
-          message: `Only file(s) with the extensions "${this.accept}" are accepted`
+          message: `Only file(s) with the extensions "${this.accept}" are accepted.`
         });
       }
       if (this.minSize > value.file.size) value.errors.push({
         type: "min",
-        message: `The minimum file size allowed is "${this.minSize}" bytes`
+        message: `The minimum file size allowed is "${this.minSize}" bytes.`
       });
       if (this.maxSize < value.file.size) value.errors.push({
         type: "min",
-        message: `The maximum file size allowed is "${this.maxSize}" bytes`
+        message: `The maximum file size allowed is "${this.maxSize}" bytes.`
       });
       detail.files.push(value);
     }
