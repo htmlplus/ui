@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/htmlplus/ui/compare/v1.3.4...v1.3.5) (2024-07-30)
+
+### Bug Fixes
+
+* Fix the output scale of the signature. ([980b2f5](https://github.com/htmlplus/ui/commit/980b2f541def5a5f02bc10cc7cab85dce19a8d62))
+* Update the @htmlplus/element and signature_pad packages. ([ef09002](https://github.com/htmlplus/ui/commit/ef09002ed4576449d383c9a6e6dd14e147517874))
+
 ## [1.3.4](https://github.com/htmlplus/ui/compare/v1.3.3...v1.3.4) (2024-07-24)
 
 ### Changes
