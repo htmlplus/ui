@@ -16,6 +16,8 @@ import {
 import fs from 'fs';
 import path from 'path';
 
+const DESTINATION = 'dist';
+
 const PACKAGE = JSON.parse(fs.readFileSync('./package.json'));
 
 export default [
@@ -29,23 +31,23 @@ export default [
   }),
   assets({
     destination(context) {
-      return `dist/${context.fileName}`;
+      return `${DESTINATION}/${context.fileName}`;
     }
   }),
   copy({
     at: 'finish',
     source: 'package-lock.json',
-    destination: 'dist/package-lock.json'
+    destination: `${DESTINATION}/package-lock.json`
   }),
   copy({
     at: 'finish',
     source: 'README.md',
-    destination: 'dist/README.md'
+    destination: `${DESTINATION}/README.md`
   }),
   copy({
     at: 'finish',
     source: 'package.json',
-    destination: 'dist/package.json',
+    destination: `${DESTINATION}/package.json`,
     transformer(content) {
       return JSON.stringify(
         {
@@ -59,7 +61,7 @@ export default [
   }),
   readme(),
   document({
-    destination: 'dist/json/document.json',
+    destination: `${DESTINATION}/json/document.json`,
     transformer(context, element) {
       element.description ||= context?.readmeContent
         ?.split('#')[1]
@@ -121,13 +123,13 @@ export default [
 
             outputs[file] += content + '\n';
           }
-        } catch {}
+        } catch { }
       }
 
       for (const output in outputs) {
         if (!Object.hasOwnProperty.call(outputs, output)) return;
 
-        const file = path.join('dist', 'theme', output);
+        const file = path.join(DESTINATION, 'theme', output);
 
         const directory = path.dirname(file);
 

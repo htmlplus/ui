@@ -110,6 +110,7 @@ export declare class Signature extends PlusForm {
     load(): void;
     reset(includeValue: boolean): void;
     terminate(): void;
+    toSVG(): string;
     update(force: boolean, silent: boolean): void;
     onReset(): void;
     onStart(): void;

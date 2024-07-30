@@ -346,12 +346,19 @@ export class Signature extends PlusForm {
     this.instance?.off();
   }
 
+  toSVG() {
+    return this
+      .instance
+      .toSVG()
+      .replace(/<svg[^>]*>(.*?)<\/svg>/, `<svg viewBox="0 0 ${this.$canvas.width} ${this.$canvas.height}">$1<svg>`);
+  }
+
   update(force: boolean, silent: boolean) {
     if (!force && this.timeout > Date.now()) return;
 
     this.timeout = Date.now() + 500;
 
-    const value = this.instance.isEmpty() ? undefined : this.instance.toSVG();
+    const value = this.instance.isEmpty() ? undefined : this.toSVG();
 
     this.previous = this.value = value;
 
