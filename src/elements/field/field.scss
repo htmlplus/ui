@@ -1,0 +1,122 @@
+:host {
+  display: grid;
+  align-items: center;
+  grid-template:
+    ' . label . '
+    'before control after'
+    ' . hint . ';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto auto;
+}
+
+[part='label'] {
+  grid-area: label;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+[part='before'] {
+  grid-area: before;
+  display: flex;
+  flex-wrap: nowrap;
+
+  // new
+  align-self: stretch;
+  align-items: center;
+}
+
+[part='control'] {
+  grid-area: control;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  border: $border;
+  border-radius: $border-radius;
+
+  // new
+  position: relative;
+}
+
+[part='start'] {
+  display: flex;
+  flex-wrap: nowrap;
+
+  // new
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+[part='input'] {
+  display: block;
+  flex-grow: 1;
+  width: 100%;
+}
+
+[part='end'] {
+  display: flex;
+  flex-wrap: nowrap;
+
+  // new
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+[part='after'] {
+  grid-area: after;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+[part='hint'] {
+  grid-area: hint;
+  display: block;
+  margin-top: 0.125rem;
+  font-size: 0.875rem;
+  color: gray;
+}
+
+// TODO
+[part='input'] {
+  &::slotted(*) {
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline-start: calc(var(--plus-field-start-offset) + 0.5rem);
+    padding-inline-end: calc(var(--plus-field-end-offset) + 0.5rem);
+  }
+  &::slotted(*:focus-visible) {
+    outline: none;
+  }
+}
+[part='start']::slotted(*) {
+  margin-inline-start: 0.5rem;
+}
+[part='end']::slotted(*) {
+  margin-inline-end: 0.5rem;
+}
+
+:host([focused]) [part='control'] {
+  border-color: #90b5e2;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+  z-index: 3; // TODO
+}
+// [part='input']::slotted(input):-webkit-inner-spin-button,
+// [part='input']::slotted(input):-webkit-calendar-picker-indicator {
+//   display: none;
+//   -webkit-appearance: none;
+// }
+// [part='input']::slotted(input:-webkit-inner-spin-button),
+// [part='input']::slotted(input:-webkit-calendar-picker-indicator) {
+//   display: none;
+//   -webkit-appearance: none;
+// }
+[part='input']::slotted(input) {
+  height: 80px;
+}
