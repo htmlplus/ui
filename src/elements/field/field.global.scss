@@ -1,0 +1,19 @@
+:global plus-field input[type='date']::-webkit-inner-spin-button,
+:global plus-field input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+:global plus-field input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+:global plus-field input[type='number']::-webkit-outer-spin-button,
+:global plus-field input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:global plus-field select {
+  appearance: none;
+}

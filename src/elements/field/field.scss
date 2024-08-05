@@ -1,28 +1,67 @@
-:host {
-  display: grid;
-  align-items: center;
-  grid-template:
-    ' . label . '
-    'before control after'
-    ' . hint . ';
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto auto;
-}
+@import 'field.global';
+@import 'field.variables';
 
-[part='label'] {
-  grid-area: label;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-[part='before'] {
-  grid-area: before;
+// TODO
+@mixin outer($area) {
+  grid-area: $area;
   display: flex;
   flex-wrap: nowrap;
 
   // new
   align-self: stretch;
   align-items: center;
+}
+@mixin inner($ltr) {
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  @if $ltr {
+    left: 0;
+  } @else {
+    right: 0;
+  }
+  display: flex;
+  flex-wrap: nowrap;
+}
+@mixin ttttt($area) {
+  grid-area: $area;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+:host {
+  display: grid;
+  align-items: center;
+  grid-template:
+    ' . header . '
+    'before control after'
+    ' . footer . ';
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto auto;
+
+  // TODO
+  --plus-field-start-offset: this-offset-start;
+  --plus-field-end-offset: this-offset-end;
+}
+
+[part='before'] {
+  @include outer(before);
+}
+
+[part='header'] {
+  @include ttttt(header);
+}
+
+[part='start'] {
+  @include inner(true);
+}
+
+[part='label'] {
+  grid-area: header;
+
+  // new
+  margin-bottom: 0.5rem;
 }
 
 [part='control'] {
@@ -37,53 +76,49 @@
   position: relative;
 }
 
-[part='start'] {
-  display: flex;
-  flex-wrap: nowrap;
-
-  // new
-  align-items: center;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(0, -50%);
-}
-
 [part='input'] {
-  display: block;
   flex-grow: 1;
   width: 100%;
+
+  // TODO
+  border-radius: inherit;
+  display: block;
 }
 
 [part='end'] {
-  display: flex;
-  flex-wrap: nowrap;
+  @include inner(false);
+}
 
-  // new
-  align-items: center;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translate(0, -50%);
+[part='footer'] {
+  @include ttttt(footer);
 }
 
 [part='after'] {
-  grid-area: after;
-  display: flex;
-  flex-wrap: nowrap;
+  @include outer(after);
+}
+
+/////////////////////////////////////////////////
+
+[part='error'] {
+  grid-area: footer;
+  display: block;
 }
 
 [part='hint'] {
-  grid-area: hint;
+  grid-area: footer;
   display: block;
-  margin-top: 0.125rem;
-  font-size: 0.875rem;
-  color: gray;
+}
+
+[part='success'] {
+  grid-area: footer;
+  display: block;
 }
 
 // TODO
 [part='input'] {
   &::slotted(*) {
+    border-radius: inherit;
+    display: block;
     border: none;
     width: 100%;
     box-sizing: border-box;
@@ -94,29 +129,34 @@
     outline: none;
   }
 }
-[part='start']::slotted(*) {
-  margin-inline-start: 0.5rem;
-}
-[part='end']::slotted(*) {
-  margin-inline-end: 0.5rem;
-}
-
 :host([focused]) [part='control'] {
   border-color: #90b5e2;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
   z-index: 3; // TODO
 }
-// [part='input']::slotted(input):-webkit-inner-spin-button,
-// [part='input']::slotted(input):-webkit-calendar-picker-indicator {
-//   display: none;
-//   -webkit-appearance: none;
-// }
-// [part='input']::slotted(input:-webkit-inner-spin-button),
-// [part='input']::slotted(input:-webkit-calendar-picker-indicator) {
-//   display: none;
-//   -webkit-appearance: none;
-// }
-[part='input']::slotted(input) {
-  height: 80px;
+::slotted(:where(this-xxx)) {
+  border-radius: 0;
+}
+.after,
+::slotted([slot='before']) {
+  border-end-end-radius: 0;
+  border-start-end-radius: 0;
+}
+.before,
+::slotted([slot='after']) {
+  border-end-start-radius: 0;
+  border-start-start-radius: 0;
+}
+[part='error'] {
+  color: red;
+}
+[part='success'] {
+  color: green;
+}
+:host([state='valid']) [part='control'] {
+  border-color: green;
+}
+:host([state='invalid']) [part='control'] {
+  border-color: red;
 }
