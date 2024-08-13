@@ -39,10 +39,6 @@
     ' . footer . ';
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto auto auto;
-
-  // TODO
-  --plus-field-start-offset: this-offset-start;
-  --plus-field-end-offset: this-offset-end;
 }
 
 [part='before'] {
@@ -60,7 +56,7 @@
 [part='label'] {
   grid-area: header;
 
-  // new
+  // TODO
   margin-bottom: 0.5rem;
 }
 
@@ -69,11 +65,13 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  border: $border;
-  border-radius: $border-radius;
+  // border: $border;
+  // border-radius: $border-radius;
 
-  // new
+  // TODO
   position: relative;
+  --plus-field-control-start-offset: this-offset-start;
+  --plus-field-control-end-offset: this-offset-end;
 }
 
 [part='input'] {
@@ -97,45 +95,79 @@
   @include outer(after);
 }
 
-/////////////////////////////////////////////////
+///////////////////////// TODO /////////////////////////////////////////////////
 
+:host(:not([dense])) {
+  margin-bottom: 1rem;
+}
 [part='error'] {
   grid-area: footer;
   display: block;
 }
-
 [part='hint'] {
   grid-area: footer;
   display: block;
 }
-
 [part='success'] {
   grid-area: footer;
   display: block;
 }
-
-// TODO
+[part='action'] > svg {
+  display: block;
+}
 [part='input'] {
-  &::slotted(*) {
-    border-radius: inherit;
-    display: block;
-    border: none;
-    width: 100%;
-    box-sizing: border-box;
-    padding-inline-start: calc(var(--plus-field-start-offset) + 0.5rem);
-    padding-inline-end: calc(var(--plus-field-end-offset) + 0.5rem);
-  }
-  &::slotted(*:focus-visible) {
-    outline: none;
-  }
+  display: flex;
+  this-sa-asas: dsd;
 }
-:host([focused]) [part='control'] {
-  border-color: #90b5e2;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
-  z-index: 3; // TODO
+
+[part='input'] ::slotted(input[type='color']) {
+  // display: block;
+  // width: 100%;
+  // box-sizing: border-box;
 }
-::slotted(:where(this-xxx)) {
+
+// [part='input'] {
+//   &::slotted(
+//       :where(
+//           input[type='color'],
+//           input[type='date'],
+//           input[type='datetime'],
+//           input[type='datetime-local'],
+//           input[type='email'],
+//           input[type='file'],
+//           input[type='month'],
+//           input[type='number'],
+//           input[type='password'],
+//           input[type='range'],
+//           input[type='search'],
+//           input[type='tel'],
+//           input[type='text'],
+//           input[type='time'],
+//           input[type='url'],
+//           input[type='week'],
+//           select,
+//           textarea
+//         )
+//     ) {
+//     // border-radius: $border-radius;
+//     display: block;
+//     //     border: none;
+//     width: 100%;
+//     box-sizing: border-box;
+//     padding-inline-start: calc(var(--plus-field-control-start-offset) + 0.5rem);
+//     padding-inline-end: calc(var(--plus-field-control-end-offset) + 0.5rem);
+//   }
+//   //   &::slotted(*:focus-visible) {
+//   //     outline: none;
+//   //   }
+// }
+// :host([focused]) [part='control'] {
+//   border-color: #90b5e2;
+//   outline: 0;
+//   box-shadow: 0 0 0 0.25rem rgba(32, 107, 196, 0.25);
+//   z-index: 3; // TODO
+// }
+::slotted(:where(this-tiles)) {
   border-radius: 0;
 }
 .after,

@@ -9,43 +9,15 @@ import {
 
 import { PlusCore } from '@/core';
 
-const ca = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
-  </svg>
-`;
+import { FIELD_ACTION_ICONS } from './field.constants';
 
-const t = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-  </svg>
-`;
-
-const i = {
-  'date': ca,
-  'datetime-local': ca,
-  'month': ca,
-  'week': ca,
-  'time': t,
-  'select': '',
-}
-
-const actions = {
-  'date': 'showPicker',
-  'datetime-local': 'showPicker',
-  'month': 'showPicker',
-  'week': 'showPicker',
-  'time': 'showPicker',
-  'select': 'showPicker',
-}
 @Element()
 export class Field extends PlusCore {
-  @Property()
-  error?: boolean | string;
+  @Property({ reflect: true })
+  dense?: boolean;
 
   @Property()
-  success?: boolean | string;
+  error?: boolean | string;
 
   @Property()
   for?: string;
@@ -62,19 +34,18 @@ export class Field extends PlusCore {
   @Property()
   loading?: boolean;
 
-  @Property({ reflect: true })
-  get focused(): boolean {
-    return !!this.focusin;
-  }
+  @Property()
+  success?: boolean | string;
 
   @Property({ reflect: true })
-  get state(): undefined | 'valid' | 'invalid' {
-    if (this.has('error')) return 'invalid';
-    if (this.has('success')) return 'valid';
+  get state() {
+    return [
+      ['error', 'invalid'],
+      ['success', 'valid']
+    ]
+      ?.find(([key]) => this.has(key))
+      ?.pop();
   }
-
-  @State()
-  focusin?: boolean;
 
   @State()
   tick?: number;
@@ -89,15 +60,11 @@ export class Field extends PlusCore {
   get action() {
     if (!this.$input) return;
 
-    const action = actions[this.type];
-
-    if (!action) return;
-
-    const handler = this.$input[action]?.bind(this.$input);
+    const handler = this.$input['showPicker']?.bind(this.$input);
 
     if (!handler) return;
 
-    const icon = Object.assign({}, i, this.icons)[this.type];
+    const icon = Object.assign({}, FIELD_ACTION_ICONS, this.icons)[this.type];
 
     if (!icon) return;
 
@@ -128,13 +95,7 @@ export class Field extends PlusCore {
     }
   }
 
-  get type() {
-    if (this.$input instanceof HTMLInputElement)
-      return this.$input.type;
-    return this.$input?.nodeName.toLowerCase();
-  }
-
-  get xxx() {
+  get tiles() {
     const children = Array.from(this.$host.children);
 
     const before = children
@@ -145,9 +106,17 @@ export class Field extends PlusCore {
       .map((child, index) => child.getAttribute('slot') == 'after' ? index + 1 : 0)
       .filter((index) => !!index);
 
-    const all = [...before.slice(1), ...after.slice(0, -1)];
+    const result = [...before.slice(1), ...after.slice(0, -1)]
+      .map((item) => `:nth-child(${item})`)
+      .join(',');
 
-    return all.map((item) => `:nth-child(${item})`).join(',');
+    return result;
+  }
+
+  get type() {
+    if (this.$input instanceof HTMLInputElement)
+      return this.$input.type;
+    return this.$input?.nodeName.toLowerCase();
   }
 
   $part(key: string) {
@@ -175,27 +144,11 @@ export class Field extends PlusCore {
   }
 
   @Bind()
-  onFocusin() {
-    this.focusin = true;
-  }
-
-  @Bind()
-  onFocusout() {
-    this.focusin = false;
-  }
-
-  @Bind()
   onInputChange() {
     // TODO
     this.refresh();
 
-    this.$input?.removeEventListener('focusin', this.onFocusin);
-    this.$input?.removeEventListener('focusout', this.onFocusout);
-
     this.$input = this.$slot().assignedElements().at(0) as HTMLElement;
-
-    this.$input?.addEventListener('focusin', this.onFocusin);
-    this.$input?.addEventListener('focusout', this.onFocusout);
   }
 
   connectedCallback() {
@@ -249,6 +202,7 @@ export class Field extends PlusCore {
               <slot name="end" />
               <i
                 dangerouslySetInnerHTML={{ __html: this.action.icon }}
+                part="action"
                 onClick={this.action.handler}
               />
             </div>
