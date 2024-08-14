@@ -1,4 +1,4 @@
-import { htmlplus } from '@htmlplus/element/bundlers/vite.js';
+import { vite as htmlplus } from '@htmlplus/element/bundlers.js';
 
 import glob from 'fast-glob';
 import fs from 'fs';

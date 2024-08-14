@@ -1,90 +1,6 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-const appendToMethod = (target, key, handler) => {
-  const previous = target[key];
-  function next(...parameters) {
-    const result = previous == null ? void 0 : previous.bind(this)(...parameters);
-    handler.bind(this)(...parameters);
-    return result;
-  }
-  target[key] = next;
-};
-const MAPPER = Symbol();
-const API_CONNECTED = Symbol();
-const API_HOST = Symbol();
-const API_INSTANCE = Symbol();
-const API_REQUEST = Symbol();
-const API_RENDER_COMPLETED = Symbol();
-const API_STACKS = Symbol();
-const LIFECYCLE_ADOPTED = "adoptedCallback";
-const LIFECYCLE_CONNECTED = "connectedCallback";
-const LIFECYCLE_CONSTRUCTED = "constructedCallback";
-const LIFECYCLE_DISCONNECTED = "disconnectedCallback";
-const LIFECYCLE_LOADED = "loadedCallback";
-const LIFECYCLE_UPDATE = "updateCallback";
-const LIFECYCLE_UPDATED = "updatedCallback";
-const METHOD_RENDER = "render";
-const STATIC_STYLE = "style";
-const STATIC_TAG = "tag";
-const TYPE_ARRAY = 2 ** 0;
-const TYPE_BOOLEAN = 2 ** 1;
-const TYPE_DATE = 2 ** 2;
-const TYPE_NULL = 2 ** 5;
-const TYPE_NUMBER = 2 ** 6;
-const TYPE_OBJECT = 2 ** 7;
-const TYPE_UNDEFINED = 2 ** 9;
-const host = (target) => {
-  try {
-    return target[API_HOST]();
-  } catch {
-    return target;
-  }
-};
-const outsides = [];
-const dispatch = (target, type, eventInitDict) => {
-  const event2 = new CustomEvent(type, eventInitDict);
-  host(target).dispatchEvent(event2);
-  return event2;
-};
-const on = (target, type, handler, options) => {
-  const element = host(target);
-  if (type != "outside") {
-    return element.addEventListener(type, handler, options);
-  }
-  const callback = (event2) => {
-    !event2.composedPath().some((item) => item == element) && handler(event2);
-  };
-  type = "ontouchstart" in window.document.documentElement ? "touchstart" : "click";
-  on(document, type, callback, options);
-  outsides.push({
-    callback,
-    element,
-    handler,
-    options,
-    type
-  });
-};
-const off = (target, type, handler, options) => {
-  const element = host(target);
-  if (type != "outside") {
-    return element.removeEventListener(type, handler, options);
-  }
-  const index = outsides.findIndex((outside2) => {
-    return outside2.element == element && outside2.handler == handler && outside2.options == options;
-  });
-  const outside = outsides[index];
-  if (!outside)
-    return;
-  off(document, outside.type, outside.callback, outside.options);
-  outsides.splice(index, 1);
-};
-const isEvent = (input) => {
-  return !!(input == null ? void 0 : input.match(/on[A-Z]\w+/g));
-};
-const toEvent = (input) => {
-  return input == null ? void 0 : input.slice(2).toLowerCase();
-};
 const SPLIT_LOWER_UPPER_RE = new RegExp("([\\p{Ll}\\d])(\\p{Lu})", "gu");
 const SPLIT_UPPER_UPPER_RE = new RegExp("(\\p{Lu})([\\p{Lu}][\\p{Ll}])", "gu");
 const SPLIT_SEPARATE_NUMBER_RE = new RegExp("(\\d)\\p{Ll}|(\\p{L})\\d", "u");
@@ -180,6 +96,91 @@ function splitPrefixSuffix(input, options = {}) {
     input.slice(suffixIndex)
   ];
 }
+const MAPPER = Symbol();
+const API_CONNECTED = Symbol();
+const API_HOST = Symbol();
+const API_INSTANCE = Symbol();
+const API_REQUEST = Symbol();
+const API_RENDER_COMPLETED = Symbol();
+const API_STACKS = Symbol();
+const API_STYLE = Symbol();
+const LIFECYCLE_ADOPTED = "adoptedCallback";
+const LIFECYCLE_CONNECTED = "connectedCallback";
+const LIFECYCLE_CONSTRUCTED = "constructedCallback";
+const LIFECYCLE_DISCONNECTED = "disconnectedCallback";
+const LIFECYCLE_LOADED = "loadedCallback";
+const LIFECYCLE_UPDATE = "updateCallback";
+const LIFECYCLE_UPDATED = "updatedCallback";
+const METHOD_RENDER = "render";
+const STATIC_STYLE = "style";
+const STATIC_TAG = "tag";
+const TYPE_ARRAY = 2 ** 0;
+const TYPE_BOOLEAN = 2 ** 1;
+const TYPE_DATE = 2 ** 2;
+const TYPE_NULL = 2 ** 5;
+const TYPE_NUMBER = 2 ** 6;
+const TYPE_OBJECT = 2 ** 7;
+const TYPE_UNDEFINED = 2 ** 9;
+const appendToMethod = (target, key, handler) => {
+  const previous = target[key];
+  function next(...parameters) {
+    const result = previous == null ? void 0 : previous.bind(this)(...parameters);
+    handler.bind(this)(...parameters);
+    return result;
+  }
+  target[key] = next;
+};
+const host = (target) => {
+  try {
+    return target[API_HOST]();
+  } catch {
+    return target;
+  }
+};
+const outsides = [];
+const dispatch = (target, type, eventInitDict) => {
+  const event2 = new CustomEvent(type, eventInitDict);
+  host(target).dispatchEvent(event2);
+  return event2;
+};
+const on = (target, type, handler, options) => {
+  const element = host(target);
+  if (type != "outside") {
+    return element.addEventListener(type, handler, options);
+  }
+  const callback = (event2) => {
+    !event2.composedPath().some((item) => item == element) && handler(event2);
+  };
+  type = "ontouchstart" in window.document.documentElement ? "touchstart" : "click";
+  on(document, type, callback, options);
+  outsides.push({
+    callback,
+    element,
+    handler,
+    options,
+    type
+  });
+};
+const off = (target, type, handler, options) => {
+  const element = host(target);
+  if (type != "outside") {
+    return element.removeEventListener(type, handler, options);
+  }
+  const index = outsides.findIndex((outside2) => {
+    return outside2.element == element && outside2.handler == handler && outside2.options == options;
+  });
+  const outside = outsides[index];
+  if (!outside)
+    return;
+  off(document, outside.type, outside.callback, outside.options);
+  outsides.splice(index, 1);
+};
+const isEvent = (input) => {
+  return !!(input == null ? void 0 : input.match(/on[A-Z]\w+/g));
+};
+const toEvent = (input) => {
+  return input == null ? void 0 : input.slice(2).toLowerCase();
+};
 const updateAttribute = (target, key, value) => {
   const element = host(target);
   const name = kebabCase(key);
@@ -189,7 +190,7 @@ const updateAttribute = (target, key, value) => {
   element.setAttribute(name, value === true ? "" : value);
 };
 const symbol = Symbol();
-const attributes$1 = (target, attributes2) => {
+const attributes$2 = (target, attributes2) => {
   const element = host(target);
   const prev = element[symbol] || {};
   const next = Object.assign({}, ...attributes2);
@@ -388,14 +389,13 @@ class WeakMapSet extends WeakMap {
 /*! (c) Andrea Giammarchi - ISC */
 const empty = /^(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)$/i;
 const elements = /<([a-z]+[a-z0-9:._-]*)([^>]*?)(\/?)>/g;
-const attributes = /([^\s\\>"'=]+)\s*=\s*(['"]?)\x01/g;
+const attributes$1 = /([^\s\\>"'=]+)\s*=\s*(['"]?)\x01/g;
 const holes = /[\x01\x02]/g;
 var instrument = (template, prefix2, svg) => {
   let i = 0;
   return template.join("").trim().replace(elements, (_, name, attrs, selfClosing) => {
-    let ml = name + attrs.replace(attributes, "=$2$1").trimEnd();
-    if (selfClosing.length)
-      ml += svg || empty.test(name) ? " /" : "></" + name;
+    let ml = name + attrs.replace(attributes$1, "=$2$1").trimEnd();
+    if (selfClosing.length) ml += svg || empty.test(name) ? " /" : "></" + name;
     return "<" + ml + ">";
   }).replace(holes, (hole) => hole === "" ? "<!--" + prefix2 + i++ + "-->" : prefix2 + i++);
 };
@@ -411,8 +411,7 @@ const remove = ({ firstChild, lastChild }) => {
 const diffable = (node, operation) => node.nodeType === nodeType ? 1 / operation < 0 ? operation ? remove(node) : node.lastChild : operation ? node.valueOf() : node.firstChild : node;
 const persistent = (fragment) => {
   const { firstChild, lastChild } = fragment;
-  if (firstChild === lastChild)
-    return lastChild || fragment;
+  if (firstChild === lastChild) return lastChild || fragment;
   const { childNodes } = fragment;
   const nodes = [...childNodes];
   return {
@@ -421,8 +420,7 @@ const persistent = (fragment) => {
     firstChild,
     lastChild,
     valueOf() {
-      if (childNodes.length !== nodes.length)
-        fragment.append(...nodes);
+      if (childNodes.length !== nodes.length) fragment.append(...nodes);
       return fragment;
     }
   };
@@ -432,10 +430,8 @@ const aria = (node) => (values) => {
   for (const key in values) {
     const name = key === "role" ? key : `aria-${key}`;
     const value = values[key];
-    if (value == null)
-      node.removeAttribute(name);
-    else
-      node.setAttribute(name, value);
+    if (value == null) node.removeAttribute(name);
+    else node.setAttribute(name, value);
   }
 };
 const attribute = (node, name) => {
@@ -452,8 +448,7 @@ const attribute = (node, name) => {
       } else {
         const value = newValue;
         if (value == null) {
-          if (!orphan)
-            node.removeAttributeNode(attributeNode);
+          if (!orphan) node.removeAttributeNode(attributeNode);
           orphan = true;
         } else {
           attributeNode.value = value;
@@ -468,32 +463,25 @@ const attribute = (node, name) => {
 };
 const boolean = (node, key, oldValue) => (newValue) => {
   if (oldValue !== !!newValue) {
-    if (oldValue = !!newValue)
-      node.setAttribute(key, "");
-    else
-      node.removeAttribute(key);
+    if (oldValue = !!newValue) node.setAttribute(key, "");
+    else node.removeAttribute(key);
   }
 };
 const data = ({ dataset }) => (values) => {
   for (const key in values) {
     const value = values[key];
-    if (value == null)
-      delete dataset[key];
-    else
-      dataset[key] = value;
+    if (value == null) delete dataset[key];
+    else dataset[key] = value;
   }
 };
 const event = (node, name) => {
   let oldValue, lower, type = name.slice(2);
-  if (!(name in node) && (lower = name.toLowerCase()) in node)
-    type = lower.slice(2);
+  if (!(name in node) && (lower = name.toLowerCase()) in node) type = lower.slice(2);
   return (newValue) => {
     const info = isArray$1(newValue) ? newValue : [newValue, false];
     if (oldValue !== info[0]) {
-      if (oldValue)
-        node.removeEventListener(type, oldValue, info[1]);
-      if (oldValue = info[0])
-        node.addEventListener(type, oldValue, info[1]);
+      if (oldValue) node.removeEventListener(type, oldValue, info[1]);
+      if (oldValue = info[0]) node.addEventListener(type, oldValue, info[1]);
     }
   };
 };
@@ -502,10 +490,8 @@ const ref = (node) => {
   return (value) => {
     if (oldValue !== value) {
       oldValue = value;
-      if (typeof value === "function")
-        value(node);
-      else
-        value.current = node;
+      if (typeof value === "function") value(node);
+      else value.current = node;
     }
   };
 };
@@ -531,12 +517,10 @@ var udomdiff = (parentNode, a, b, get, before) => {
   while (aStart < aEnd || bStart < bEnd) {
     if (aEnd === aStart) {
       const node = bEnd < bLength ? bStart ? get(b[bStart - 1], -0).nextSibling : get(b[bEnd - bStart], 0) : before;
-      while (bStart < bEnd)
-        parentNode.insertBefore(get(b[bStart++], 1), node);
+      while (bStart < bEnd) parentNode.insertBefore(get(b[bStart++], 1), node);
     } else if (bEnd === bStart) {
       while (aStart < aEnd) {
-        if (!map || !map.has(a[aStart]))
-          parentNode.removeChild(get(a[aStart], -1));
+        if (!map || !map.has(a[aStart])) parentNode.removeChild(get(a[aStart], -1));
         aStart++;
       }
     } else if (a[aStart] === b[bStart]) {
@@ -554,34 +538,36 @@ var udomdiff = (parentNode, a, b, get, before) => {
       if (!map) {
         map = /* @__PURE__ */ new Map();
         let i = bStart;
-        while (i < bEnd)
-          map.set(b[i], i++);
+        while (i < bEnd) map.set(b[i], i++);
       }
       if (map.has(a[aStart])) {
         const index = map.get(a[aStart]);
         if (bStart < index && index < bEnd) {
           let i = aStart;
           let sequence = 1;
-          while (++i < aEnd && i < bEnd && map.get(a[i]) === index + sequence)
-            sequence++;
+          while (++i < aEnd && i < bEnd && map.get(a[i]) === index + sequence) sequence++;
           if (sequence > index - bStart) {
             const node = get(a[aStart], 0);
-            while (bStart < index)
-              parentNode.insertBefore(get(b[bStart++], 1), node);
+            while (bStart < index) parentNode.insertBefore(get(b[bStart++], 1), node);
           } else {
             parentNode.replaceChild(get(b[bStart++], 1), get(a[aStart++], -1));
           }
-        } else
-          aStart++;
-      } else
-        parentNode.removeChild(get(a[aStart++], -1));
+        } else aStart++;
+      } else parentNode.removeChild(get(a[aStart++], -1));
     }
   }
   return b;
 };
 const { isArray, prototype } = Array;
 const { indexOf } = prototype;
-const { createDocumentFragment, createElement, createElementNS, createTextNode, createTreeWalker, importNode } = new Proxy(typeof window == "undefined" ? {} : window.document, {
+const {
+  createDocumentFragment,
+  createElement,
+  createElementNS,
+  createTextNode,
+  createTreeWalker,
+  importNode
+} = new Proxy(typeof window == "undefined" ? {} : window.document, {
   get: (target, method) => (target[method] || function() {
   }).bind(target)
 });
@@ -592,8 +578,7 @@ const createHTML = (html2) => {
 };
 let xml;
 const createSVG = (svg) => {
-  if (!xml)
-    xml = createElementNS("http://www.w3.org/2000/svg", "svg");
+  if (!xml) xml = createElementNS("http://www.w3.org/2000/svg", "svg");
   xml.innerHTML = svg;
   const content = createDocumentFragment();
   content.append(...xml.childNodes);
@@ -632,8 +617,7 @@ const handleAnything = (comment) => {
       case "boolean":
         if (oldValue !== newValue) {
           oldValue = newValue;
-          if (!text2)
-            text2 = createTextNode("");
+          if (!text2) text2 = createTextNode("");
           text2.data = newValue;
           nodes = diff(comment, nodes, [text2]);
         }
@@ -649,17 +633,18 @@ const handleAnything = (comment) => {
         }
         if (isArray(newValue)) {
           oldValue = newValue;
-          if (newValue.length === 0)
-            nodes = diff(comment, nodes, []);
-          else if (typeof newValue[0] === "object")
-            nodes = diff(comment, nodes, newValue);
-          else
-            anyContent(String(newValue));
+          if (newValue.length === 0) nodes = diff(comment, nodes, []);
+          else if (typeof newValue[0] === "object") nodes = diff(comment, nodes, newValue);
+          else anyContent(String(newValue));
           break;
         }
         if (oldValue !== newValue && "ELEMENT_NODE" in newValue) {
           oldValue = newValue;
-          nodes = diff(comment, nodes, newValue.nodeType === 11 ? [...newValue.childNodes] : [newValue]);
+          nodes = diff(
+            comment,
+            nodes,
+            newValue.nodeType === 11 ? [...newValue.childNodes] : [newValue]
+          );
         }
         break;
       case "function":
@@ -678,8 +663,7 @@ const handleAttribute = (node, name) => {
     case "@":
       return event(node, "on" + name.slice(1));
     case "o":
-      if (name[1] === "n")
-        return event(node, name);
+      if (name[1] === "n") return event(node, name);
   }
   switch (name) {
     case "ref":
@@ -747,8 +731,7 @@ const mapTemplate = (type, template) => {
   let search = `${prefix}${i}`;
   while (i < length) {
     const node = tw.nextNode();
-    if (!node)
-      throw `bad template: ${text2}`;
+    if (!node) throw `bad template: ${text2}`;
     if (node.nodeType === 8) {
       if (node.data === search) {
         nodes.push({ type: "node", path: createPath(node) });
@@ -785,23 +768,18 @@ const unroll = (info, { type, template, values }) => {
   if (!entry || entry.template !== template || entry.type !== type)
     info.entry = entry = createEntry(type, template);
   const { content, updates, wire } = entry;
-  for (let i = 0; i < length; i++)
-    updates[i](values[i]);
+  for (let i = 0; i < length; i++) updates[i](values[i]);
   return wire || (entry.wire = persistent(content));
 };
 const unrollValues = ({ stack }, values) => {
   const { length } = values;
   for (let i = 0; i < length; i++) {
     const hole = values[i];
-    if (hole instanceof Hole)
-      values[i] = unroll(stack[i] || (stack[i] = createCache()), hole);
-    else if (isArray(hole))
-      unrollValues(stack[i] || (stack[i] = createCache()), hole);
-    else
-      stack[i] = null;
+    if (hole instanceof Hole) values[i] = unroll(stack[i] || (stack[i] = createCache()), hole);
+    else if (isArray(hole)) unrollValues(stack[i] || (stack[i] = createCache()), hole);
+    else stack[i] = null;
   }
-  if (length < stack.length)
-    stack.splice(length);
+  if (length < stack.length) stack.splice(length);
   return length;
 };
 class Hole {
@@ -845,7 +823,7 @@ const render = (where, what) => {
   }
   return where;
 };
-const html = tag("html");
+const html$1 = tag("html");
 tag("svg");
 const request = (target, name, previous, callback) => {
   const stacks = target[API_STACKS] || (target[API_STACKS] = /* @__PURE__ */ new Map());
@@ -857,19 +835,52 @@ const request = (target, name, previous, callback) => {
       return;
     const states = new Map(Array.from(stacks).filter((stack2) => stack2[0]).map((stack2) => [stack2[0], stack2[1].previous]));
     call(target, LIFECYCLE_UPDATE, states);
-    const template = () => {
-      const markup = call(target, METHOD_RENDER);
-      const styles2 = getStyles(target);
-      if (!styles2)
-        return markup;
-      return html`<style>${styles2}</style>${markup}`;
-    };
-    render(shadowRoot(target), template);
+    render(shadowRoot(target), () => call(target, METHOD_RENDER));
     stacks.forEach((state) => {
       state.callbacks.forEach((callback2, index, callbacks) => {
         callback2(callbacks.length - 1 != index);
       });
     });
+    (() => {
+      const raw = getStyles(target);
+      if (!raw)
+        return;
+      const regex1 = /this-([\w-]+)(?:-([\w-]+))?/g;
+      const regex2 = /(\s*\w+\s*:\s*(undefined|null)\s*;?)/g;
+      const hasGlobal = raw.includes(":global");
+      const hasVariable = raw.includes("this-");
+      let localSheet = target[API_STYLE];
+      let globalSheet = target.constructor[API_STYLE];
+      if (!hasVariable && localSheet)
+        return;
+      const parsed = raw.replace(regex1, (match, key) => {
+        let value = target;
+        for (const section of key.split("-")) {
+          value = value == null ? void 0 : value[section];
+        }
+        return value;
+      }).replace(regex2, "");
+      if (!localSheet) {
+        localSheet = new CSSStyleSheet();
+        target[API_STYLE] = localSheet;
+        shadowRoot(target).adoptedStyleSheets.push(localSheet);
+      }
+      const localStyle = parsed;
+      localSheet.replace(localStyle);
+      if (!hasGlobal || globalSheet)
+        return;
+      if (!globalSheet) {
+        globalSheet = new CSSStyleSheet();
+        target.constructor[API_STYLE] = globalSheet;
+        document.adoptedStyleSheets.push(globalSheet);
+      }
+      const globalStyle = parsed.split("}").map((rule) => {
+        let [selectors, properties] = rule.split("{");
+        selectors = selectors.split(",").map((selector) => selector.trim()).filter((selector) => selector.startsWith(":global")).map((selector) => selector.replace(":global", "")).map((selector) => selector.trim()).join(",");
+        return selectors ? `${selectors}{${properties}}` : "";
+      }).filter((selector) => !!selector).join("");
+      globalSheet.replace(globalStyle);
+    })();
     call(target, LIFECYCLE_UPDATED, states);
     stacks.clear();
     target[API_RENDER_COMPLETED] = true;
@@ -877,7 +888,7 @@ const request = (target, name, previous, callback) => {
   target[API_REQUEST] || (target[API_REQUEST] = task({ handler }));
   call(target, API_REQUEST);
 };
-const styles = (input) => {
+const styles$1 = (input) => {
   return Object.keys(input).filter((key) => input[key] !== void 0 && input[key] !== null).map((key) => `${key.startsWith("--") ? "--" : ""}${kebabCase(key)}: ${input[key]}`).join("; ");
 };
 function toDecorator(util, ...parameters) {
@@ -1289,6 +1300,9 @@ function Watch(keys, immediate) {
     });
   };
 }
+const attributes = attributes$2;
+const html = html$1;
+const styles = styles$1;
 var __defProp$1 = Object.defineProperty;
 var __decorateClass$1 = (decorators, target, key, kind) => {
   var result = void 0;
@@ -1673,7 +1687,7 @@ export {
   getConfig as g,
   html as h,
   isCSSColor as i,
-  attributes$1 as j,
+  attributes as j,
   QueryAll as k,
   off as l,
   classes as m,
@@ -1681,9 +1695,8 @@ export {
   on as o,
   toAxis as p,
   Breakpoint as q,
-  request as r,
+  query as r,
   setConfig as s,
   toUnit as t,
-  query as u,
-  PlusForm as v
+  PlusForm as u
 };

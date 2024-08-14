@@ -34,6 +34,7 @@ export declare class Breadcrumb extends PlusCore {
      */
     separator?: string;
     expand: boolean;
+    tick?: number;
     observer: MutationObserver;
     $separators: HTMLElement[];
     get $children(): Element[];
@@ -44,7 +45,6 @@ export declare class Breadcrumb extends PlusCore {
     onChange(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    updatedCallback(): void;
     render(): any;
 }
 
