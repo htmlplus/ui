@@ -1,4 +1,4 @@
-import { v as PlusForm, h as html, a as Property, E as Event, M as Method, Q as Query, W as Watch, B as Bind, b as Element } from "./core/index.js";
+import { u as PlusForm, h as html, a as Property, E as Event, M as Method, Q as Query, W as Watch, B as Bind, b as Element } from "./core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;

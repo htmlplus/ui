@@ -1,5 +1,4 @@
 import { Bind, Element, Property, QueryAll, State } from '@htmlplus/element';
-import { request } from '@htmlplus/element/client/utils/request';
 
 import { PlusCore } from '@/core';
 
@@ -51,6 +50,9 @@ export class Breadcrumb extends PlusCore {
 
   @State()
   expand: boolean = false;
+
+  @State()
+  tick?: number;
 
   observer: MutationObserver = new MutationObserver(this.onChange);
 
@@ -148,7 +150,7 @@ export class Breadcrumb extends PlusCore {
 
   @Bind()
   onChange() {
-    request(this);
+    this.tick = Math.random();
   }
 
   connectedCallback() {
@@ -159,18 +161,8 @@ export class Breadcrumb extends PlusCore {
     this.terminate();
   }
 
-  // TODO: use 'dangerouslySetInnerHTML' instead
-  updatedCallback() {
-    const template = this.template;
-
-    if (!template) return;
-
-    this.$separators.forEach((element) => {
-      element.innerHTML = template;
-    });
-  }
-
   render() {
+    const template = this.template;
     return (
       <host aria-label="breadcrumb">
         {this.items.map((item) => {
@@ -203,7 +195,14 @@ export class Breadcrumb extends PlusCore {
               );
             }
             case 'separator': {
-              return <div key={item.key} aria-hidden="true" part="separator" />;
+              return (
+                <div
+                  key={item.key}
+                  aria-hidden="true"
+                  part="separator"
+                  dangerouslySetInnerHTML={{ __html: template }}
+                />
+              );
             }
           }
         })}

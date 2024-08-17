@@ -11,7 +11,7 @@ import {
   validate,
   visualStudioCode,
   webTypes
-} from '@htmlplus/element/transformer/index.js';
+} from '@htmlplus/element/transformer.js';
 
 import fs from 'fs';
 import path from 'path';

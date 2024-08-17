@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-07-29T18:18:56.591Z",
+      "lastModified": "2024-08-13T10:54:45.524Z",
       "methods": [
         {
           "async": false,
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-07-25T12:45:58.048Z",
+      "lastModified": "2024-08-13T20:46:27.901Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-07-25T12:45:58.050Z",
+      "lastModified": "2024-08-13T11:04:36.263Z",
       "methods": [
         {
           "async": false,
@@ -3519,7 +3519,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-07-30T17:29:31.977Z",
+      "lastModified": "2024-07-30T17:47:51.485Z",
       "methods": [
         {
           "async": false,
