@@ -1,30 +1,3 @@
-/*
- * host
- */
-$progress-bar-background-color: gainsboro !default;
-$progress-bar-border-radius: $border-radius !default;
-$progress-bar-font-size: 0.75rem !default;
-$progress-bar-height: 1rem !default;
-
-/*
- * indicator
- */
-$progress-bar-indicator-background-color: var(
-  --plus-progress-bar-indicator-background-color
-) !default;
-$progress-bar-indicator-color: white !default;
-$progress-bar-indicator-transition: width 0.6s ease !default;
-
-/*
-* buffer
-*/
-$progress-bar-buffer-background-color: hsl(from $progress-bar-indicator-background-color h s 80);
-
-/*
- * indeterminate
- */
-$progress-bar-indeterminate-indicator-width: 50% !important !default;
-$progress-bar-indeterminate-indicator-animation: indeterminate 2s linear infinite !default;
 @keyframes indeterminate {
   from {
     left: 0;
