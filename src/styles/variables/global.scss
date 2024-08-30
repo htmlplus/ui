@@ -1,6 +1,150 @@
-$background-color: whitesmoke !default;
-$border: solid 1px lightgray !default;
-$border-radius: 0.25rem !default;
-$border-width: 1px !default;
-$disabled-opacity: 0.5 !default;
-$spacer: 1rem !default;
+$background-color                                                         : whitesmoke !default;
+$border                                                                   : solid 1px lightgray !default;
+$border-radius                                                            : 0.25rem !default;
+$border-width                                                             : 1px !default;
+$disabled-opacity                                                         : 0.5 !default;
+$spacer                                                                   : 1rem !default;
+
+$accordion-border                                                         : $border !default;
+$accordion-border-radius                                                  : $border-radius !default;
+$accordion-disabled-opacity                                               : $disabled-opacity !default;
+$accordion-padding                                                        : 1rem !default;
+$accordion-transition                                                     : all 0.2s ease-in-out !default;
+
+$avatar-background-color                                                  : hsl(from var(--plus-avatar-color) h s 90%) !default;
+$avatar-border                                                            : solid 2px white !default;
+$avatar-border-radius                                                     : $border-radius !default;
+$avatar-color                                                             : var(--plus-avatar-color) !default;
+$avatar-font-size                                                         : calc(var(--plus-avatar-size) * 0.35) !default;
+$avatar-size                                                              : var(--plus-avatar-size) !default;
+$avatar-sizes                                                             : (xxs: 1rem, xs: 1.5rem, sm: 2rem, md: 3rem, lg: 4rem, xl: 6rem, xxl: 8rem) !default;
+
+$avatar-group-stacked-children-border                                     : 2px solid white !default;
+$avatar-group-stacked-gutter                                              : -0.5rem !default;
+$avatar-group-unstacked-gutter                                            : 0.5rem !default;
+
+$breadcrumb-gap                                                           : 0.5em;
+$breadcrumb-expander-background-color                                     : $background-color;
+$breadcrumb-expander-border-radius                                        : $border-radius;
+$breadcrumb-expander-color                                                : currentColor;
+$breadcrumb-separator-color                                               : currentColor;
+
+$browse-disabled-opacity                                                  : $disabled-opacity !default;
+
+$card-background-color                                                    : white !default;
+$card-border-color                                                        : lightgray !default;
+$card-border-radius                                                       : $border-radius !default;
+$card-border-width                                                        : $border-width !default;
+$card-elevation                                                           : (
+                                                                               1: '0 02px 01px -1px rgba(0, 0, 0, 0.2), 0 01px 01px 0px rgba(0, 0, 0, 0.14), 0 1px 03px 0px rgba(0, 0, 0, 0.12)',
+                                                                               2: '0 03px 01px -2px rgba(0, 0, 0, 0.2), 0 02px 02px 0px rgba(0, 0, 0, 0.14), 0 1px 05px 0px rgba(0, 0, 0, 0.12)',
+                                                                               3: '0 03px 03px -2px rgba(0, 0, 0, 0.2), 0 03px 04px 0px rgba(0, 0, 0, 0.14), 0 1px 08px 0px rgba(0, 0, 0, 0.12)',
+                                                                               4: '0 02px 04px -1px rgba(0, 0, 0, 0.2), 0 04px 05px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12)',
+                                                                               5: '0 03px 05px -1px rgba(0, 0, 0, 0.2), 0 05px 08px 0px rgba(0, 0, 0, 0.14), 0 1px 14px 0px rgba(0, 0, 0, 0.12)',
+                                                                               6: '0 03px 05px -1px rgba(0, 0, 0, 0.2), 0 06px 10px 0px rgba(0, 0, 0, 0.14), 0 1px 18px 0px rgba(0, 0, 0, 0.12)',
+                                                                               7: '0 04px 05px -2px rgba(0, 0, 0, 0.2), 0 07px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12)',
+                                                                               8: '0 05px 05px -3px rgba(0, 0, 0, 0.2), 0 08px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12)',
+                                                                               9: '0 05px 06px -3px rgba(0, 0, 0, 0.2), 0 09px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12)',
+                                                                              10: '0 06px 06px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12)',
+                                                                              11: '0 06px 07px -4px rgba(0, 0, 0, 0.2), 0 11px 15px 1px rgba(0, 0, 0, 0.14), 0 4px 20px 3px rgba(0, 0, 0, 0.12)',
+                                                                              12: '0 07px 08px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12)',
+                                                                              13: '0 07px 08px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12)',
+                                                                              14: '0 07px 09px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12)',
+                                                                              15: '0 08px 09px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12)',
+                                                                              16: '0 08px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12)',
+                                                                              17: '0 08px 11px -5px rgba(0, 0, 0, 0.2), 0 17px 26px 2px rgba(0, 0, 0, 0.14), 0 6px 32px 5px rgba(0, 0, 0, 0.12)',
+                                                                              18: '0 09px 11px -5px rgba(0, 0, 0, 0.2), 0 18px 28px 2px rgba(0, 0, 0, 0.14), 0 7px 34px 6px rgba(0, 0, 0, 0.12)',
+                                                                              19: '0 09px 12px -6px rgba(0, 0, 0, 0.2), 0 19px 29px 2px rgba(0, 0, 0, 0.14), 0 7px 36px 6px rgba(0, 0, 0, 0.12)',
+                                                                              20: '0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12)',
+                                                                              21: '0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 21px 33px 3px rgba(0, 0, 0, 0.14), 0 8px 40px 7px rgba(0, 0, 0, 0.12)',
+                                                                              22: '0 10px 14px -6px rgba(0, 0, 0, 0.2), 0 22px 35px 3px rgba(0, 0, 0, 0.14), 0 8px 42px 7px rgba(0, 0, 0, 0.12)',
+                                                                              23: '0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12)',
+                                                                              24: '0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12)',
+                                                                            ) !default;
+
+
+$card-body-padding-x                                                      : $spacer !default;
+$card-body-padding-y                                                      : $spacer !default;
+
+$cropper-backdrop-color                                                   : black;
+$cropper-backdrop-opacity                                                 : 0.5;
+$cropper-guides-color                                                     : white;
+$cropper-guides-opacity                                                   : 0.5;
+$cropper-guides-style                                                     : dashed;
+$cropper-guides-weight                                                    : 1px;
+$cropper-indicator-color                                                  : white;
+$cropper-indicator-opacity                                                : 1;
+$cropper-indicator-size                                                   : 10px;
+$cropper-indicator-weight                                                 : 2px;
+$cropper-resizer-color                                                    : white;
+$cropper-resizer-offset                                                   : 0px;
+$cropper-resizer-opacity                                                  : 1;
+$cropper-resizer-size                                                     : 5px;
+$cropper-resizer-weight                                                   : 1px;
+$cropper-viewport-color                                                   : white;
+$cropper-viewport-opacity                                                 : 1;
+$cropper-viewport-style                                                   : solid;
+$cropper-viewport-weight                                                  : 1px;
+
+$dialog-body-padding                                                      : 1rem;
+
+$dialog-content-box-shadow                                                : 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+$dialog-content-background-color                                          : white;
+$dialog-content-border-width                                              : 1px;
+$dialog-content-border-color                                              : rgba(0, 0, 0, 0.2);
+$dialog-content-border-radius                                             : 0.3rem;
+
+$dialog-footer-border-color                                               : rgba(0, 0, 0, 0.2);
+$dialog-footer-border-width                                               : 1px;
+$dialog-footer-border-radius                                              : calc(0.3rem - 1px);
+$dialog-footer-padding                                                    : 1rem;
+$dialog-footer-margin-between                                             : 0.5rem;
+
+$dialog-header-border-color                                               : rgba(0, 0, 0, 0.2);
+$dialog-header-border-width                                               : 1px;
+$dialog-header-border-radius                                              : calc(0.3rem - 1px);
+$dialog-header-padding                                                    : 1rem;
+
+$divider-color                                                            : var(--plus-divider-color);
+$divider-border-color                                                     : hsl(from var(--plus-divider-color) h s 85);
+$divider-gutter                                                           : 0.5rem;
+$divider-types                                                            : (dashed, dotted, double, groove, inset, outset, ridge, solid);
+$divider-widths                                                           : (xs: 1px, sm: 2px, md: 3px, lg: 4px, xl: 5px);
+
+$drawer-backdrop-background-color                                         : black;
+$drawer-backdrop-opacity                                                  : 0.5;
+$drawer-transition                                                        : 0.3s;
+$drawer-z-index                                                           : 1000;
+
+$icon-size                                                                : 1em !default;
+$icon-sizes                                                               : (xs: 0.7em, sm: 0.85em, md: 1em, lg: 1.5em, xl: 1.75em, 1x: 1em, 2x: 2em, 3x: 3em, 4x: 4em, 5x: 5em, 6x: 6em, 7x: 7em, 8x: 8em, 9x: 9em) !default;
+
+$progress-bar-background-color                                            : gainsboro !default;
+$progress-bar-border-radius                                               : $border-radius !default;
+$progress-bar-font-size                                                   : 0.75rem !default;
+$progress-bar-height                                                      : 1rem !default;
+$progress-bar-indicator-background-color                                  : var(--plus-progress-bar-indicator-background-color) !default;
+$progress-bar-indicator-color                                             : white !default;
+$progress-bar-indicator-transition                                        : width 0.6s ease !default;
+$progress-bar-buffer-background-color                                     : hsl(from $progress-bar-indicator-background-color h s 80);
+$progress-bar-indeterminate-indicator-width                               : 50% !important !default;
+$progress-bar-indeterminate-indicator-animation                           : indeterminate 2s linear infinite !default;
+
+$progress-bar-stack-background-color                                      : gainsboro !default;
+$progress-bar-stack-border-radius                                         : $border-radius !default;
+
+$signature-disabled-opacity                                               : $disabled-opacity !default;
+
+$spinner-sizes                                                            : (inherit: 1em, sm: 1rem, md: 2rem, lg: 3rem);
+
+$sticky-top                                                               : 0px;
+$sticky-z-index                                                           : 1;
+
+$switch-height                                                            : 2em;
+$switch-width                                                             : 3.5em;
+$switch-transition                                                        : 0.3s;
+$switch-handle-height                                                     : 1.5em;
+$switch-handle-width                                                      : 1.5em;
+$switch-handle-offset                                                     : 0.25em;
+$switch-on-padding                                                        : 0 0 0 0.5em;
+$switch-off-padding                                                       : 0 0.5em 0 0;

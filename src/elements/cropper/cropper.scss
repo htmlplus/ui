@@ -1,7 +1,5 @@
 @import 'cropperjs/dist/cropper.min';
 
-@import 'cropper.variables';
-
 :host {
   // @Property() Used to adjust the backdrop color.
   --plus-cropper-backdrop-color: #{$cropper-backdrop-color};
