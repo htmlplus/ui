@@ -19,9 +19,9 @@ $avatar-font-size                                                         : calc
 $avatar-size                                                              : var(--plus-avatar-size) !default;
 $avatar-sizes                                                             : (xxs: 1rem, xs: 1.5rem, sm: 2rem, md: 3rem, lg: 4rem, xl: 6rem, xxl: 8rem) !default;
 
-$avatar-group-gutter-stacked                                              : -0.5rem !default;
-$avatar-group-gutter-unstacked                                            : 0.5rem !default;
 $avatar-group-stacked-children-border                                     : 2px solid white !default;
+$avatar-group-stacked-gutter                                              : -0.5rem !default;
+$avatar-group-unstacked-gutter                                            : 0.5rem !default;
 
 $breadcrumb-gap                                                           : 0.5em;
 $breadcrumb-expander-background-color                                     : $background-color;
