@@ -1,150 +1,373 @@
-$background-color                                                         : whitesmoke !default;
-$border                                                                   : solid 1px lightgray !default;
-$border-radius                                                            : 0.25rem !default;
-$border-width                                                             : 1px !default;
-$disabled-opacity                                                         : 0.5 !default;
-$spacer                                                                   : 1rem !default;
+// TODO
+@import 'bootstrap';
 
-$accordion-border                                                         : $border !default;
-$accordion-border-radius                                                  : $border-radius !default;
-$accordion-disabled-opacity                                               : $disabled-opacity !default;
-$accordion-padding                                                        : 1rem !default;
-$accordion-transition                                                     : all 0.2s ease-in-out !default;
+/*
+ * TODO
+ */
 
-$avatar-background-color                                                  : hsl(from var(--plus-avatar-color) h s 90%) !default;
-$avatar-border                                                            : solid 2px white !default;
-$avatar-border-radius                                                     : $border-radius !default;
-$avatar-color                                                             : var(--plus-avatar-color) !default;
-$avatar-font-size                                                         : calc(var(--plus-avatar-size) * 0.35) !default;
-$avatar-size                                                              : var(--plus-avatar-size) !default;
-$avatar-sizes                                                             : (xxs: 1rem, xs: 1.5rem, sm: 2rem, md: 3rem, lg: 4rem, xl: 6rem, xxl: 8rem) !default;
+$background-color                               : whitesmoke !default;
+$border                                         : solid 1px lightgray !default;
+$border-radius                                  : 0.25rem !default;
+$border-width                                   : 1px !default;
+$disabled-opacity                               : 0.5 !default;
+$spacer                                         : 1rem !default;
 
-$avatar-group-stacked-children-border                                     : 2px solid white !default;
-$avatar-group-stacked-gutter                                              : -0.5rem !default;
-$avatar-group-unstacked-gutter                                            : 0.5rem !default;
+/*
+ * ACCORDION
+ */
 
-$breadcrumb-gap                                                           : 0.5em;
-$breadcrumb-expander-background-color                                     : $background-color;
-$breadcrumb-expander-border-radius                                        : $border-radius;
-$breadcrumb-expander-color                                                : currentColor;
-$breadcrumb-separator-color                                               : currentColor;
+$accordion-border                               : $border !default;
+$accordion-border-radius                        : $border-radius !default;
+$accordion-disabled-opacity                     : $disabled-opacity !default;
+$accordion-padding                              : 1rem !default;
+$accordion-transition                           : all 0.2s ease-in-out !default;
 
-$browse-disabled-opacity                                                  : $disabled-opacity !default;
+/*
+ * AVATAR
+ */
 
-$card-background-color                                                    : white !default;
-$card-border-color                                                        : lightgray !default;
-$card-border-radius                                                       : $border-radius !default;
-$card-border-width                                                        : $border-width !default;
-$card-elevation                                                           : (
-                                                                               1: '0 02px 01px -1px rgba(0, 0, 0, 0.2), 0 01px 01px 0px rgba(0, 0, 0, 0.14), 0 1px 03px 0px rgba(0, 0, 0, 0.12)',
-                                                                               2: '0 03px 01px -2px rgba(0, 0, 0, 0.2), 0 02px 02px 0px rgba(0, 0, 0, 0.14), 0 1px 05px 0px rgba(0, 0, 0, 0.12)',
-                                                                               3: '0 03px 03px -2px rgba(0, 0, 0, 0.2), 0 03px 04px 0px rgba(0, 0, 0, 0.14), 0 1px 08px 0px rgba(0, 0, 0, 0.12)',
-                                                                               4: '0 02px 04px -1px rgba(0, 0, 0, 0.2), 0 04px 05px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12)',
-                                                                               5: '0 03px 05px -1px rgba(0, 0, 0, 0.2), 0 05px 08px 0px rgba(0, 0, 0, 0.14), 0 1px 14px 0px rgba(0, 0, 0, 0.12)',
-                                                                               6: '0 03px 05px -1px rgba(0, 0, 0, 0.2), 0 06px 10px 0px rgba(0, 0, 0, 0.14), 0 1px 18px 0px rgba(0, 0, 0, 0.12)',
-                                                                               7: '0 04px 05px -2px rgba(0, 0, 0, 0.2), 0 07px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12)',
-                                                                               8: '0 05px 05px -3px rgba(0, 0, 0, 0.2), 0 08px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12)',
-                                                                               9: '0 05px 06px -3px rgba(0, 0, 0, 0.2), 0 09px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12)',
-                                                                              10: '0 06px 06px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12)',
-                                                                              11: '0 06px 07px -4px rgba(0, 0, 0, 0.2), 0 11px 15px 1px rgba(0, 0, 0, 0.14), 0 4px 20px 3px rgba(0, 0, 0, 0.12)',
-                                                                              12: '0 07px 08px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12)',
-                                                                              13: '0 07px 08px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12)',
-                                                                              14: '0 07px 09px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12)',
-                                                                              15: '0 08px 09px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12)',
-                                                                              16: '0 08px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12)',
-                                                                              17: '0 08px 11px -5px rgba(0, 0, 0, 0.2), 0 17px 26px 2px rgba(0, 0, 0, 0.14), 0 6px 32px 5px rgba(0, 0, 0, 0.12)',
-                                                                              18: '0 09px 11px -5px rgba(0, 0, 0, 0.2), 0 18px 28px 2px rgba(0, 0, 0, 0.14), 0 7px 34px 6px rgba(0, 0, 0, 0.12)',
-                                                                              19: '0 09px 12px -6px rgba(0, 0, 0, 0.2), 0 19px 29px 2px rgba(0, 0, 0, 0.14), 0 7px 36px 6px rgba(0, 0, 0, 0.12)',
-                                                                              20: '0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12)',
-                                                                              21: '0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 21px 33px 3px rgba(0, 0, 0, 0.14), 0 8px 40px 7px rgba(0, 0, 0, 0.12)',
-                                                                              22: '0 10px 14px -6px rgba(0, 0, 0, 0.2), 0 22px 35px 3px rgba(0, 0, 0, 0.14), 0 8px 42px 7px rgba(0, 0, 0, 0.12)',
-                                                                              23: '0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12)',
-                                                                              24: '0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12)',
-                                                                            ) !default;
+$avatar-background-color                        : hsl(from var(--plus-avatar-color) h s 90%) !default;
+$avatar-border                                  : solid 2px white !default;
+$avatar-border-radius                           : $border-radius !default;
+$avatar-color                                   : var(--plus-avatar-color) !default;
+$avatar-font-size                               : calc(var(--plus-avatar-size) * 0.35) !default;
+$avatar-size                                    : var(--plus-avatar-size) !default;
+$avatar-sizes                                   : (xxs: 1rem, xs: 1.5rem, sm: 2rem, md: 3rem, lg: 4rem, xl: 6rem, xxl: 8rem) !default;
 
+/*
+ * AVATAR GROUP
+ */
 
-$card-body-padding-x                                                      : $spacer !default;
-$card-body-padding-y                                                      : $spacer !default;
+$avatar-group-stacked-children-border           : 2px solid white !default;
+$avatar-group-stacked-gutter                    : -0.5rem !default;
+$avatar-group-unstacked-gutter                  : 0.5rem !default;
 
-$cropper-backdrop-color                                                   : black;
-$cropper-backdrop-opacity                                                 : 0.5;
-$cropper-guides-color                                                     : white;
-$cropper-guides-opacity                                                   : 0.5;
-$cropper-guides-style                                                     : dashed;
-$cropper-guides-weight                                                    : 1px;
-$cropper-indicator-color                                                  : white;
-$cropper-indicator-opacity                                                : 1;
-$cropper-indicator-size                                                   : 10px;
-$cropper-indicator-weight                                                 : 2px;
-$cropper-resizer-color                                                    : white;
-$cropper-resizer-offset                                                   : 0px;
-$cropper-resizer-opacity                                                  : 1;
-$cropper-resizer-size                                                     : 5px;
-$cropper-resizer-weight                                                   : 1px;
-$cropper-viewport-color                                                   : white;
-$cropper-viewport-opacity                                                 : 1;
-$cropper-viewport-style                                                   : solid;
-$cropper-viewport-weight                                                  : 1px;
+/*
+ * BREADCRUMB
+ */
 
-$dialog-body-padding                                                      : 1rem;
+$breadcrumb-gap                                 : 0.5em !default;
+$breadcrumb-expander-background-color           : $background-color !default;
+$breadcrumb-expander-border-radius              : $border-radius !default;
+$breadcrumb-expander-color                      : currentColor !default;
+$breadcrumb-separator-color                     : currentColor !default;
 
-$dialog-content-box-shadow                                                : 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-$dialog-content-background-color                                          : white;
-$dialog-content-border-width                                              : 1px;
-$dialog-content-border-color                                              : rgba(0, 0, 0, 0.2);
-$dialog-content-border-radius                                             : 0.3rem;
+/*
+ * BROWSE
+ */
 
-$dialog-footer-border-color                                               : rgba(0, 0, 0, 0.2);
-$dialog-footer-border-width                                               : 1px;
-$dialog-footer-border-radius                                              : calc(0.3rem - 1px);
-$dialog-footer-padding                                                    : 1rem;
-$dialog-footer-margin-between                                             : 0.5rem;
+$browse-disabled-opacity                        : $disabled-opacity !default;
 
-$dialog-header-border-color                                               : rgba(0, 0, 0, 0.2);
-$dialog-header-border-width                                               : 1px;
-$dialog-header-border-radius                                              : calc(0.3rem - 1px);
-$dialog-header-padding                                                    : 1rem;
+/*
+ * CARD
+ */
 
-$divider-color                                                            : var(--plus-divider-color);
-$divider-border-color                                                     : hsl(from var(--plus-divider-color) h s 85);
-$divider-gutter                                                           : 0.5rem;
-$divider-types                                                            : (dashed, dotted, double, groove, inset, outset, ridge, solid);
-$divider-widths                                                           : (xs: 1px, sm: 2px, md: 3px, lg: 4px, xl: 5px);
+$card-background-color                          : white !default;
+$card-border-color                              : lightgray !default;
+$card-border-radius                             : $border-radius !default;
+$card-border-width                              : $border-width !default;
+$card-elevation                                 : (
+                                                     1: '0 02px 01px -1px rgba(0, 0, 0, 0.2), 0 01px 01px 0px rgba(0, 0, 0, 0.14), 0 1px 03px 0px rgba(0, 0, 0, 0.12)',
+                                                     2: '0 03px 01px -2px rgba(0, 0, 0, 0.2), 0 02px 02px 0px rgba(0, 0, 0, 0.14), 0 1px 05px 0px rgba(0, 0, 0, 0.12)',
+                                                     3: '0 03px 03px -2px rgba(0, 0, 0, 0.2), 0 03px 04px 0px rgba(0, 0, 0, 0.14), 0 1px 08px 0px rgba(0, 0, 0, 0.12)',
+                                                     4: '0 02px 04px -1px rgba(0, 0, 0, 0.2), 0 04px 05px 0px rgba(0, 0, 0, 0.14), 0 1px 10px 0px rgba(0, 0, 0, 0.12)',
+                                                     5: '0 03px 05px -1px rgba(0, 0, 0, 0.2), 0 05px 08px 0px rgba(0, 0, 0, 0.14), 0 1px 14px 0px rgba(0, 0, 0, 0.12)',
+                                                     6: '0 03px 05px -1px rgba(0, 0, 0, 0.2), 0 06px 10px 0px rgba(0, 0, 0, 0.14), 0 1px 18px 0px rgba(0, 0, 0, 0.12)',
+                                                     7: '0 04px 05px -2px rgba(0, 0, 0, 0.2), 0 07px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 16px 1px rgba(0, 0, 0, 0.12)',
+                                                     8: '0 05px 05px -3px rgba(0, 0, 0, 0.2), 0 08px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12)',
+                                                     9: '0 05px 06px -3px rgba(0, 0, 0, 0.2), 0 09px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12)',
+                                                    10: '0 06px 06px -3px rgba(0, 0, 0, 0.2), 0 10px 14px 1px rgba(0, 0, 0, 0.14), 0 4px 18px 3px rgba(0, 0, 0, 0.12)',
+                                                    11: '0 06px 07px -4px rgba(0, 0, 0, 0.2), 0 11px 15px 1px rgba(0, 0, 0, 0.14), 0 4px 20px 3px rgba(0, 0, 0, 0.12)',
+                                                    12: '0 07px 08px -4px rgba(0, 0, 0, 0.2), 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12)',
+                                                    13: '0 07px 08px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12)',
+                                                    14: '0 07px 09px -4px rgba(0, 0, 0, 0.2), 0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12)',
+                                                    15: '0 08px 09px -5px rgba(0, 0, 0, 0.2), 0 15px 22px 2px rgba(0, 0, 0, 0.14), 0 6px 28px 5px rgba(0, 0, 0, 0.12)',
+                                                    16: '0 08px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12)',
+                                                    17: '0 08px 11px -5px rgba(0, 0, 0, 0.2), 0 17px 26px 2px rgba(0, 0, 0, 0.14), 0 6px 32px 5px rgba(0, 0, 0, 0.12)',
+                                                    18: '0 09px 11px -5px rgba(0, 0, 0, 0.2), 0 18px 28px 2px rgba(0, 0, 0, 0.14), 0 7px 34px 6px rgba(0, 0, 0, 0.12)',
+                                                    19: '0 09px 12px -6px rgba(0, 0, 0, 0.2), 0 19px 29px 2px rgba(0, 0, 0, 0.14), 0 7px 36px 6px rgba(0, 0, 0, 0.12)',
+                                                    20: '0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 20px 31px 3px rgba(0, 0, 0, 0.14), 0 8px 38px 7px rgba(0, 0, 0, 0.12)',
+                                                    21: '0 10px 13px -6px rgba(0, 0, 0, 0.2), 0 21px 33px 3px rgba(0, 0, 0, 0.14), 0 8px 40px 7px rgba(0, 0, 0, 0.12)',
+                                                    22: '0 10px 14px -6px rgba(0, 0, 0, 0.2), 0 22px 35px 3px rgba(0, 0, 0, 0.14), 0 8px 42px 7px rgba(0, 0, 0, 0.12)',
+                                                    23: '0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12)',
+                                                    24: '0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12)',
+                                                  ) !default;
 
-$drawer-backdrop-background-color                                         : black;
-$drawer-backdrop-opacity                                                  : 0.5;
-$drawer-transition                                                        : 0.3s;
-$drawer-z-index                                                           : 1000;
+/*
+ * CARD BODY
+ */
 
-$icon-size                                                                : 1em !default;
-$icon-sizes                                                               : (xs: 0.7em, sm: 0.85em, md: 1em, lg: 1.5em, xl: 1.75em, 1x: 1em, 2x: 2em, 3x: 3em, 4x: 4em, 5x: 5em, 6x: 6em, 7x: 7em, 8x: 8em, 9x: 9em) !default;
+$card-body-padding-x                            : $spacer !default;
+$card-body-padding-y                            : $spacer !default;
 
-$progress-bar-background-color                                            : gainsboro !default;
-$progress-bar-border-radius                                               : $border-radius !default;
-$progress-bar-font-size                                                   : 0.75rem !default;
-$progress-bar-height                                                      : 1rem !default;
-$progress-bar-indicator-background-color                                  : var(--plus-progress-bar-indicator-background-color) !default;
-$progress-bar-indicator-color                                             : white !default;
-$progress-bar-indicator-transition                                        : width 0.6s ease !default;
-$progress-bar-buffer-background-color                                     : hsl(from $progress-bar-indicator-background-color h s 80);
-$progress-bar-indeterminate-indicator-width                               : 50% !important !default;
-$progress-bar-indeterminate-indicator-animation                           : indeterminate 2s linear infinite !default;
+/*
+ * CROPPER
+ */
 
-$progress-bar-stack-background-color                                      : gainsboro !default;
-$progress-bar-stack-border-radius                                         : $border-radius !default;
+$cropper-backdrop-color                         : black !default;
+$cropper-backdrop-opacity                       : 0.5 !default;
+$cropper-guides-color                           : white !default;
+$cropper-guides-opacity                         : 0.5 !default;
+$cropper-guides-style                           : dashed !default;
+$cropper-guides-weight                          : 1px !default;
+$cropper-indicator-color                        : white !default;
+$cropper-indicator-opacity                      : 1 !default;
+$cropper-indicator-size                         : 10px !default;
+$cropper-indicator-weight                       : 2px !default;
+$cropper-resizer-color                          : white !default;
+$cropper-resizer-offset                         : 0px !default;
+$cropper-resizer-opacity                        : 1 !default;
+$cropper-resizer-size                           : 5px !default;
+$cropper-resizer-weight                         : 1px !default;
+$cropper-viewport-color                         : white !default;
+$cropper-viewport-opacity                       : 1 !default;
+$cropper-viewport-style                         : solid !default;
+$cropper-viewport-weight                        : 1px !default;
 
-$signature-disabled-opacity                                               : $disabled-opacity !default;
+/*
+ * DIALOG BODY
+ */
 
-$spinner-sizes                                                            : (inherit: 1em, sm: 1rem, md: 2rem, lg: 3rem);
+$dialog-body-padding                            : 1rem !default;
 
-$sticky-top                                                               : 0px;
-$sticky-z-index                                                           : 1;
+/*
+ * DIALOG CONTENT
+ */
 
-$switch-height                                                            : 2em;
-$switch-width                                                             : 3.5em;
-$switch-transition                                                        : 0.3s;
-$switch-handle-height                                                     : 1.5em;
-$switch-handle-width                                                      : 1.5em;
-$switch-handle-offset                                                     : 0.25em;
-$switch-on-padding                                                        : 0 0 0 0.5em;
-$switch-off-padding                                                       : 0 0.5em 0 0;
+$dialog-content-box-shadow                      : 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !default;
+$dialog-content-background-color                : white !default;
+$dialog-content-border-width                    : 1px !default;
+$dialog-content-border-color                    : rgba(0, 0, 0, 0.2) !default;
+$dialog-content-border-radius                   : 0.3rem !default;
+
+/*
+ * DIALOG FOOTER
+ */
+
+$dialog-footer-border-color                     : rgba(0, 0, 0, 0.2) !default;
+$dialog-footer-border-width                     : 1px !default;
+$dialog-footer-border-radius                    : calc(0.3rem - 1px) !default;
+$dialog-footer-padding                          : 1rem !default;
+$dialog-footer-margin-between                   : 0.5rem !default;
+
+/*
+ * DIALOG HEADER
+ */
+
+$dialog-header-border-color                     : rgba(0, 0, 0, 0.2) !default;
+$dialog-header-border-width                     : 1px !default;
+$dialog-header-border-radius                    : calc(0.3rem - 1px) !default;
+$dialog-header-padding                          : 1rem !default;
+
+/*
+ * DIVIDER
+ */
+
+$divider-color                                  : var(--plus-divider-color) !default;
+$divider-border-color                           : hsl(from var(--plus-divider-color) h s 85) !default;
+$divider-gutter                                 : 0.5rem !default;
+$divider-types                                  : (dashed, dotted, double, groove, inset, outset, ridge, solid) !default;
+$divider-widths                                 : (xs: 1px, sm: 2px, md: 3px, lg: 4px, xl: 5px) !default;
+
+/*
+ * DRAWER
+ */
+
+$drawer-backdrop-background-color               : black !default;
+$drawer-backdrop-opacity                        : 0.5 !default;
+$drawer-transition                              : 0.3s !default;
+$drawer-z-index                                 : 1000 !default;
+
+/*
+ * FIELD RANGE
+ */
+
+$field-color-width                               : $form-color-width !default;
+$field-color-height                              : $input-height !default;
+$field-color-padding                             : $input-padding-y !default;
+$field-color-border-radius                       : $input-border-radius !default;
+$field-color-height-sm                           : $input-height-sm !default;
+$field-color-height-lg                           : $input-height-lg !default;
+
+/*
+ * FIELD RANGE
+ */
+
+$field-range-track-background-color              : var(--#{$prefix}secondary-bg) !default;
+$field-range-track-border-radius                 : 1rem !default;
+$field-range-track-box-shadow                    : var(--#{$prefix}box-shadow-inset) !default;
+$field-range-track-cursor                        : pointer !default;
+$field-range-track-height                        : 0.5rem !default;
+$field-range-track-width                         : 100% !default;
+
+$field-range-thumb-background-color              : $component-active-bg !default;
+$field-range-thumb-background-image              : var(--#{$prefix}gradient) !default;
+$field-range-thumb-border                        : 0 !default;
+$field-range-thumb-border-radius                 : 1rem !default;
+$field-range-thumb-box-shadow                    : 0 .1rem .25rem rgba($black, .1) !default;
+$field-range-thumb-width                         : 1rem !default;
+$field-range-thumb-height                        : $field-range-thumb-width !default;
+$field-range-thumb-margin-top                    : ($field-range-track-height - $field-range-thumb-height) * 0.5; // Webkit specific
+$field-range-thumb-transition                    : background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+$field-range-thumb-active-background-color       : mix(white, $component-active-bg, 70%) !default;
+$field-range-thumb-active-background-image       : var(--#{$prefix}gradient) !default;
+
+$field-range-thumb-disabled-background-color     : var(--#{$prefix}secondary-color) !default;
+
+$field-range-thumb-focus-box-shadow              : 0 0 0 1px $body-bg, $input-focus-box-shadow !default;
+$field-range-thumb-focus-box-shadow-width        : $input-focus-width !default; // For focus box shadow issue in Edge
+
+$field-range-height                              : $field-range-thumb-height + $field-range-thumb-focus-box-shadow-width * 2 !default;
+
+/*
+ * FIELD SELECT
+ */
+
+$field-select-padding-x                          : $input-padding-x !default;
+$field-select-padding-y                          : $input-padding-y !default;
+
+$field-select-background-color                   : $input-bg !default;
+$field-select-background-image                   : var(--#{$prefix}form-select-bg-img), var(--#{$prefix}form-select-bg-icon, none) !default;
+$field-select-background-position                : right $field-select-padding-x center !default;
+$field-select-background-size                    : 16px 12px !default; // In pixels because image dimensions
+$field-select-border                             : $input-border-width solid $input-border-color !default;
+$field-select-border-radius                      : $input-border-radius !default;
+$field-select-box-shadow                         : var(--#{$prefix}box-shadow-inset) !default;
+$field-select-color                              : $input-color !default;
+$field-select-font-family                        : $input-font-family !default;
+$field-select-font-size                          : $input-font-size !default;
+$field-select-font-weight                        : $input-font-weight !default;
+$field-select-line-height                        : $input-line-height !default;
+// $field-select-min-height
+$field-select-text-shadow                        : 0 0 0 $field-select-color !default;
+$field-select-transition                         : $input-transition !default;
+
+$field-select-disabled-color                     : null !default;
+$field-select-disabled-background-color          : $input-disabled-bg !default;
+$field-select-disabled-border-color              : $input-disabled-border-color !default;
+
+// $field-select-focus-background-color
+$field-select-focus-border-color                 : $input-focus-border-color !default;
+$field-select-focus-box-shadow                   : $field-select-box-shadow, 0 0 0 $input-focus-width $input-btn-focus-color !default;
+// $field-select-focus-color
+
+$field-select-indicator-padding                  : $field-select-padding-x * 3 !default; // Extra padding for background-image
+$field-select-indicator-light                    : url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !default;
+$field-select-indicator-dark                     : url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23dee2e6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !default;
+
+$field-select-padding                            : $field-select-padding-y $field-select-indicator-padding $field-select-padding-y $field-select-padding-x !default;
+
+// $field-select-placeholder-color
+
+$field-select-border-radius-sm                   : $input-border-radius-sm !default;
+$field-select-font-size-sm                       : $input-font-size-sm !default;
+$field-select-padding-sm                         : $input-padding-y-sm $field-select-indicator-padding $input-padding-y-sm $input-padding-x-sm !default;
+
+$field-select-border-radius-lg                   : $input-border-radius-lg !default;
+$field-select-font-size-lg                       : $input-font-size-lg !default;
+$field-select-padding-lg                         : $input-padding-y-lg $field-select-indicator-padding $input-padding-y-lg $input-padding-x-lg !default;
+
+/*
+ * FIELD TEXTAREA
+ */
+
+$field-textarea-padding-x                        : $input-padding-x !default;
+$field-textarea-padding-y                        : $input-padding-y !default;
+
+$field-textarea-background-color                 : $input-bg !default;
+$field-textarea-border                           : $input-border-width solid $input-border-color !default;
+$field-textarea-border-radius                    : $input-border-radius !default;
+$field-textarea-box-shadow                       : $input-box-shadow !default;
+$field-textarea-color                            : $input-color !default;
+$field-textarea-font-family                      : $input-font-family !default;
+$field-textarea-font-size                        : $input-font-size !default;
+$field-textarea-font-weight                      : $input-font-weight !default;
+$field-textarea-line-height                      : $input-line-height !default;
+$field-textarea-min-height                       : $input-height !default;
+// $field-textarea-text-shadow
+$field-textarea-transition                       : $input-transition !default;
+
+$field-textarea-disabled-color                   : $input-disabled-color !default;
+$field-textarea-disabled-background-color        : $input-disabled-bg !default;
+$field-textarea-disabled-border-color            : $input-disabled-border-color !default;
+
+$field-textarea-focus-background-color           : $input-focus-bg !default;
+$field-textarea-focus-border-color               : $input-focus-border-color !default;
+$field-textarea-focus-box-shadow                 : $field-textarea-box-shadow, $input-focus-box-shadow !default;
+$field-textarea-focus-color                      : $input-focus-color !default;
+
+$field-textarea-padding                          : $field-textarea-padding-y $field-textarea-padding-x !default;
+
+$field-textarea-placeholder-color                : $input-placeholder-color !default;
+
+$field-textarea-border-radius-sm                 : $input-border-radius-sm !default;
+$field-textarea-font-size-sm                     : $input-font-size-sm !default;
+$field-textarea-min-height-sm                    : $input-height-sm !default;
+$field-textarea-padding-sm                       : $input-padding-y-sm $input-padding-x-sm !default;
+
+$field-textarea-border-radius-lg                 : $input-border-radius-lg !default;
+$field-textarea-font-size-lg                     : $input-font-size-lg !default;
+$field-textarea-min-height-lg                    : $input-height-lg !default;
+$field-textarea-padding-lg                       : $input-padding-y-lg $input-padding-x-lg !default;
+
+/*
+ * ICON
+ */
+
+$icon-size                                      : 1em !default;
+$icon-sizes                                     : (xs: 0.7em, sm: 0.85em, md: 1em, lg: 1.5em, xl: 1.75em, 1x: 1em, 2x: 2em, 3x: 3em, 4x: 4em, 5x: 5em, 6x: 6em, 7x: 7em, 8x: 8em, 9x: 9em) !default;
+
+/*
+ * PROGRESS BAR
+ */
+
+$progress-bar-background-color                  : gainsboro !default;
+$progress-bar-border-radius                     : $border-radius !default;
+$progress-bar-font-size                         : 0.75rem !default;
+$progress-bar-height                            : 1rem !default;
+$progress-bar-indicator-background-color        : var(--plus-progress-bar-indicator-background-color) !default;
+$progress-bar-indicator-color                   : white !default;
+$progress-bar-indicator-transition              : width 0.6s ease !default;
+$progress-bar-buffer-background-color           : hsl(from $progress-bar-indicator-background-color h s 80) !default;
+$progress-bar-indeterminate-indicator-width     : 50% !important !default;
+$progress-bar-indeterminate-indicator-animation : indeterminate 2s linear infinite !default;
+
+/*
+ * PROGRESS BAR STACK
+ */
+
+$progress-bar-stack-background-color            : gainsboro !default;
+$progress-bar-stack-border-radius               : $border-radius !default;
+
+/*
+ * SIGNATURE
+ */
+
+$signature-disabled-opacity                     : $disabled-opacity !default;
+
+/*
+ * SPINNER
+ */
+
+$spinner-sizes                                  : (inherit: 1em, sm: 1rem, md: 2rem, lg: 3rem) !default;
+
+/*
+ * STICKY
+ */
+
+$sticky-top                                     : 0px !default;
+$sticky-z-index                                 : 1 !default;
+
+/*
+ * SWITCH
+ */
+
+$switch-height                                  : 2em !default;
+$switch-width                                   : 3.5em !default;
+$switch-transition                              : 0.3s !default;
+$switch-handle-height                           : 1.5em !default;
+$switch-handle-width                            : 1.5em !default;
+$switch-handle-offset                           : 0.25em !default;
+$switch-on-padding                              : 0 0 0 0.5em !default;
+$switch-off-padding                             : 0 0.5em 0 0 !default;

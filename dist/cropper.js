@@ -64,7 +64,7 @@ let Cropper = class extends PlusCore {
       resizer: this.resizer,
       resizerShape: this.resizerShape,
       shape: this.shape
-    }]);
+    }], true);
   }
   get options() {
     const aspectRatio = (() => {

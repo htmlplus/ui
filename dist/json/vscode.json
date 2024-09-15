@@ -1565,6 +1565,133 @@
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/)."
     },
     {
+      "name": "plus-field",
+      "attributes": [
+        {
+          "name": "dense",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "down",
+          "values": [],
+          "description": ""
+        },
+        {
+          "name": "error",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "for",
+          "values": [],
+          "description": ""
+        },
+        {
+          "name": "hint",
+          "values": [],
+          "description": ""
+        },
+        {
+          "name": "label",
+          "values": [],
+          "description": ""
+        },
+        {
+          "name": "loading",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plain",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "size",
+          "values": [
+            {
+              "name": "sm"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "lg"
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "success",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "up",
+          "values": [],
+          "description": ""
+        },
+        {
+          "name": "state",
+          "values": [],
+          "description": ""
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/field"
+        }
+      ],
+      "description": "- https://getbootstrap.com/docs/5.3/forms/form-control/"
+    },
+    {
+      "name": "plus-field-addon",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/field-addon"
+        }
+      ]
+    },
+    {
       "name": "plus-format-bytes",
       "attributes": [
         {

@@ -1,0 +1,5 @@
+- add example for input type `hidden` and `image`
+- https://getbootstrap.com/docs/5.3/forms/form-control/#form-text
+- https://getbootstrap.com/docs/5.3/forms/form-control/#readonly-plain-text
+- https://getbootstrap.com/docs/5.3/forms/checks-radios
+- https://getbootstrap.com/docs/5.3/forms/input-group

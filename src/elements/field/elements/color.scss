@@ -1,0 +1,30 @@
+::slotted(input[type='color']) {
+  width: $field-color-width;
+  height: $field-color-height;
+  padding: $field-color-padding;
+}
+
+::slotted(input[type='color']:not(:disabled):not([readonly])) {
+  cursor: pointer;
+}
+
+global :host input[type='color']::-moz-color-swatch {
+  border: 0 !important;
+  border-radius: $field-color-border-radius;
+}
+
+global :host input[type='color']::-webkit-color-swatch {
+  border: 0 !important;
+  border-radius: $field-color-border-radius;
+}
+
+:host([size='sm']) ::slotted(input[type='color']) {
+  height: $field-color-height-sm;
+}
+
+:host([size='md']) ::slotted(input[type='color']) {
+}
+
+:host([size='lg']) ::slotted(input[type='color']) {
+  height: $field-color-height-lg;
+}

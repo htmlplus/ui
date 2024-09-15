@@ -83,7 +83,7 @@ let Dialog = class extends PlusCore {
       fullHeight: this.fullHeight,
       fullscreen: this.fullscreen,
       scrollable: this.scrollable
-    }]);
+    }], true);
   }
   get isCurrent() {
     return Dialog.instances.at(-1) === this;

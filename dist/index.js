@@ -22,6 +22,8 @@ import { Divider } from "./divider.js";
 import { Drawer } from "./drawer.js";
 import { DrawerToggler } from "./drawer-toggler.js";
 import { Faker } from "./faker.js";
+import { Field } from "./field.js";
+import { FieldAddon } from "./field-addon.js";
 import { FormatBytes } from "./format-bytes.js";
 import { Grid } from "./grid.js";
 import { GridItem } from "./grid-item.js";
@@ -67,6 +69,8 @@ export {
   Drawer,
   DrawerToggler,
   Faker,
+  Field,
+  FieldAddon,
   FormatBytes,
   Grid,
   GridItem,

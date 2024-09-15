@@ -1,0 +1,110 @@
+global :host {
+  // Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
+  // See https://stackoverflow.com/a/54997118
+
+  [list]:not([type='date']):not([type='datetime-local']):not([type='month']):not([type='week']):not(
+      [type='time']
+    )::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+
+  // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+
+  ::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+
+  // Fix height of inputs with a type of datetime-local, date, month, week, or time
+  // See https://github.com/twbs/bootstrap/issues/18842
+
+  ::-webkit-datetime-edit-fields-wrapper,
+  ::-webkit-datetime-edit-text,
+  ::-webkit-datetime-edit-minute,
+  ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-day-field,
+  ::-webkit-datetime-edit-month-field,
+  ::-webkit-datetime-edit-year-field {
+    padding: 0;
+  }
+
+  ::-webkit-inner-spin-button {
+    height: auto;
+  }
+
+  // 1. This overrides the extra rounded corners on search inputs in iOS so that our
+  //    `.form-control` class can properly style them. Note that this cannot simply
+  //    be added to `.form-control` as it's not specific enough. For details, see
+  //    https://github.com/twbs/bootstrap/issues/11586.
+  // 2. Correct the outline style in Safari.
+
+  [type='search'] {
+    -webkit-appearance: textfield; // 1
+    outline-offset: -2px; // 2
+  }
+
+  // TODO
+  ::-webkit-file-upload-button {
+    font: inherit;
+    -webkit-appearance: button;
+  }
+
+  // Remove the inner padding in Chrome and Safari on macOS.
+
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  // Remove padding around color pickers in webkit browsers
+
+  ::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  // 1. Inherit font family and line height for file input buttons
+  // 2. Correct the inability to style clickable types in iOS and Safari.
+
+  ::file-selector-button {
+    font: inherit; // 1
+    -webkit-appearance: button; // 2
+  }
+
+  ::-webkit-date-and-time-value {
+    // On Android Chrome, form-control's "width: 100%" makes the input width too small
+    // Tested under Android 11 / Chrome 89, Android 12 / Chrome 100, Android 13 / Chrome 109
+    //
+    // On iOS Safari, form-control's "appearance: none" + "width: 100%" makes the input width too small
+    // Tested under iOS 16.2 / Safari 16.2
+    min-width: 85px; // Seems to be a good minimum safe width
+
+    // Add some height to date inputs on iOS
+    // https://github.com/twbs/bootstrap/issues/23307
+    // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
+    // Multiply line-height by 1em if it has no unit
+    // TODO
+    // height: if(unit($input-line-height) == '', $input-line-height * 1em, $input-line-height);
+
+    // Android Chrome type="date" is taller than the other inputs
+    // because of "margin: 1px 24px 1px 4px" inside the shadow DOM
+    // Tested under Android 11 / Chrome 89, Android 12 / Chrome 100, Android 13 / Chrome 109
+    margin: 0;
+  }
+
+  // Prevent excessive date input height in Webkit
+  // https://github.com/twbs/bootstrap/issues/34433
+  // ::-webkit-datetime-edit {
+  //   display: block;
+  //   padding: 0;
+  // }
+
+  // TODO
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::file-selector-button,
+    *::-moz-range-thumb,
+    *::-webkit-file-upload-button,
+    *::-webkit-slider-thumb {
+      transition: none;
+    }
+  }
+}

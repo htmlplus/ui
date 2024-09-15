@@ -1,0 +1,92 @@
+/*
+ * REBOOT
+ */
+
+::slotted(input[type='range']) {
+  // Remove the margin in Firefox and Safari
+  margin: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/*
+ * MAIN
+ */
+
+::slotted(input[type='range']) {
+  width: 100%;
+  height: $field-range-height;
+  padding: 0; // Need to reset padding
+  appearance: none;
+  background-color: transparent;
+}
+
+::slotted(input[type='range']:focus) {
+  outline: 0;
+}
+
+::slotted(input[type='range']:disabled) {
+  pointer-events: none;
+}
+
+global :host input[type='range']::-moz-focus-outer {
+  border: 0;
+}
+
+// Style range inputs the same across browsers. Vendor-specific rules for pseudo
+// elements cannot be mixed. As such, there are no shared styles for focus or
+// active states on prefixed selectors.
+
+@each $key in (-moz-range-track, -webkit-slider-runnable-track) {
+  global :host input[type='range']::#{$key} {
+    width: $field-range-track-width;
+    height: $field-range-track-height;
+    color: transparent; // Why in webkit?
+    cursor: $field-range-track-cursor;
+    background-color: $field-range-track-background-color;
+    border-color: transparent; // Firefox specific?
+    border-radius: $field-range-track-border-radius;
+    box-shadow: $field-range-track-box-shadow;
+  }
+}
+
+@each $key in (-moz-range-thumb, -webkit-slider-thumb) {
+  global :host input[type='range']::#{$key} {
+    width: $field-range-thumb-width;
+    height: $field-range-thumb-height;
+    @if ($key == -webkit-slider-thumb) {
+      margin-top: $field-range-thumb-margin-top;
+    }
+    appearance: none;
+    background-color: $field-range-thumb-background-color;
+    background-image: $field-range-thumb-background-image;
+    border: $field-range-thumb-border;
+    border-radius: $field-range-thumb-border-radius;
+    box-shadow: $field-range-thumb-box-shadow;
+    transition: $field-range-thumb-transition;
+
+    &:active {
+      background-color: $field-range-thumb-active-background-color;
+      background-image: $field-range-thumb-active-background-image;
+    }
+  }
+
+  // Pseudo-elements must be split across multiple rulesets to have an effect.
+  // No box-shadow() mixin for focus accessibility.
+  global :host input[type='range']:focus::#{$key} {
+    box-shadow: $field-range-thumb-focus-box-shadow;
+  }
+
+  global :host input[type='range']:disabled::#{$key} {
+    background-color: $field-range-thumb-disabled-background-color;
+  }
+
+  // TODO
+  @media (prefers-reduced-motion: reduce) {
+    global :host input[type='range']::#{$key} {
+      transition: none;
+    }
+  }
+}

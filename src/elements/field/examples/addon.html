@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-field>
+      <plus-field-addon slot="before">@</plus-field-addon>
+      <input />
+    </plus-field>
+    <plus-field>
+      <input />
+      <plus-field-addon slot="after">@example.com</plus-field-addon>
+    </plus-field>
+    <plus-field>
+      <plus-field-addon slot="before"> https://example.com/users/ </plus-field-addon>
+      <input />
+    </plus-field>
+    <plus-field>
+      <plus-field-addon slot="before">$</plus-field-addon>
+      <input />
+      <plus-field-addon slot="after">.00</plus-field-addon>
+    </plus-field>
+    <plus-field>
+      <plus-field-addon slot="before">$</plus-field-addon>
+      <plus-field-addon slot="before">0.00</plus-field-addon>
+      <input />
+    </plus-field>
+    <plus-field>
+      <input />
+      <plus-field-addon slot="after">$</plus-field-addon>
+      <plus-field-addon slot="after">0.00</plus-field-addon>
+    </plus-field>
+    <script type="module">
+      import 'https://cdn.skypack.dev/@htmlplus/ui/field.js';
+      import 'https://cdn.skypack.dev/@htmlplus/ui/field-addon.js';
+    </script>
+  </body>
+</html>

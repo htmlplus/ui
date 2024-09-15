@@ -87,7 +87,7 @@ let Drawer = class extends PlusCore {
     return classes([{
       [placement]: true,
       reverse: this.flexible
-    }]);
+    }], true);
   }
   get hasBackdrop() {
     return this.backdrop && this.floated;

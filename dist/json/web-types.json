@@ -2033,6 +2033,161 @@
           "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/)."
         },
         {
+          "name": "plus-field",
+          "doc-url": "https://www.htmlplus.io/javascript/element/field",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "dense",
+                "description": ""
+              },
+              {
+                "name": "down",
+                "description": ""
+              },
+              {
+                "name": "error",
+                "description": ""
+              },
+              {
+                "name": "for",
+                "description": ""
+              },
+              {
+                "name": "hint",
+                "description": ""
+              },
+              {
+                "name": "label",
+                "description": ""
+              },
+              {
+                "name": "loading",
+                "description": ""
+              },
+              {
+                "name": "plain",
+                "description": ""
+              },
+              {
+                "name": "size",
+                "default": "'md'",
+                "description": ""
+              },
+              {
+                "name": "success",
+                "description": ""
+              },
+              {
+                "name": "up",
+                "description": ""
+              },
+              {
+                "name": "state",
+                "description": ""
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "dense",
+              "value": {
+                "type": "boolean"
+              },
+              "description": ""
+            },
+            {
+              "name": "down",
+              "value": {
+                "type": "string"
+              },
+              "description": ""
+            },
+            {
+              "name": "error",
+              "value": {
+                "type": "boolean | string"
+              },
+              "description": ""
+            },
+            {
+              "name": "for",
+              "value": {
+                "type": "string"
+              },
+              "description": ""
+            },
+            {
+              "name": "hint",
+              "value": {
+                "type": "string"
+              },
+              "description": ""
+            },
+            {
+              "name": "label",
+              "value": {
+                "type": "string"
+              },
+              "description": ""
+            },
+            {
+              "name": "loading",
+              "value": {
+                "type": "boolean"
+              },
+              "description": ""
+            },
+            {
+              "name": "plain",
+              "value": {
+                "type": "boolean"
+              },
+              "description": ""
+            },
+            {
+              "name": "size",
+              "value": {
+                "type": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'",
+              "description": ""
+            },
+            {
+              "name": "success",
+              "value": {
+                "type": "boolean | string"
+              },
+              "description": ""
+            },
+            {
+              "name": "up",
+              "value": {
+                "type": "string"
+              },
+              "description": ""
+            },
+            {
+              "name": "state",
+              "value": {
+                "type": ""
+              },
+              "description": ""
+            }
+          ],
+          "description": "- https://getbootstrap.com/docs/5.3/forms/form-control/"
+        },
+        {
+          "name": "plus-field-addon",
+          "doc-url": "https://www.htmlplus.io/javascript/element/field-addon",
+          "js": {
+            "events": [],
+            "properties": []
+          },
+          "attributes": []
+        },
+        {
           "name": "plus-format-bytes",
           "doc-url": "https://www.htmlplus.io/javascript/element/format-bytes",
           "js": {

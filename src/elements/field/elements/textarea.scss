@@ -1,0 +1,91 @@
+/*
+ * REBOOT
+ */
+
+::slotted(textarea) {
+  // Remove the margin in Firefox and Safari
+  margin: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
+  // Textareas should really only resize vertically so they don't break their (horizontal) containers.
+  resize: vertical;
+}
+
+/*
+ * MAIN
+ */
+
+::slotted(textarea) {
+  display: block;
+  width: 100%;
+  padding: $field-textarea-padding;
+  font-family: $field-textarea-font-family;
+  font-size: $field-textarea-font-size;
+  font-weight: $field-textarea-font-weight;
+  line-height: $field-textarea-line-height;
+  color: $field-textarea-color;
+  appearance: none; // Fix appearance for date inputs in Safari
+  background-color: $field-textarea-background-color;
+  background-clip: padding-box;
+  border: $field-textarea-border;
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  border-radius: $field-textarea-border-radius;
+  box-shadow: $field-textarea-box-shadow;
+  transition: $field-textarea-transition;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::slotted(textarea) {
+    transition: none;
+  }
+}
+
+// Customize the `:focus` state to imitate native WebKit styles.
+::slotted(textarea:focus) {
+  color: $field-textarea-focus-color;
+  background-color: $field-textarea-focus-background-color;
+  border-color: $field-textarea-focus-border-color;
+  outline: 0;
+  box-shadow: $field-textarea-focus-box-shadow;
+}
+
+::slotted(textarea)::placeholder {
+  color: $field-textarea-placeholder-color;
+  // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+  opacity: 1;
+}
+
+// HTML5 says that controls under a fieldset > legend:first-child won't be
+// disabled if the fieldset is disabled. Due to implementation difficulty, we
+// don't honor that edge case; we style them as disabled anyway.
+::slotted(textarea:disabled) {
+  color: $field-textarea-disabled-color;
+  background-color: $field-textarea-disabled-background-color;
+  border-color: $field-textarea-disabled-border-color;
+  // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+  opacity: 1;
+}
+
+// Make sure textareas don't shrink too much when resized
+// https://github.com/twbs/bootstrap/pull/29124
+
+:host([size='sm']) ::slotted(textarea) {
+  padding: $field-textarea-padding-sm;
+  font-size: $field-textarea-font-size-sm;
+  border-radius: $field-textarea-border-radius-sm;
+  min-height: $field-textarea-min-height-sm;
+}
+
+:host([size='md']) ::slotted(textarea) {
+  min-height: $field-textarea-min-height;
+}
+
+:host([size='lg']) ::slotted(textarea) {
+  padding: $field-textarea-padding-lg;
+  font-size: $field-textarea-font-size-lg;
+  border-radius: $field-textarea-border-radius-lg;
+  min-height: $field-textarea-min-height-lg;
+}

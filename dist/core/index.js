@@ -112,6 +112,7 @@ const LIFECYCLE_LOADED = "loadedCallback";
 const LIFECYCLE_UPDATE = "updateCallback";
 const LIFECYCLE_UPDATED = "updatedCallback";
 const METHOD_RENDER = "render";
+const STATIC_GLOBAL_STYLE = "globalStyle";
 const STATIC_STYLE = "style";
 const STATIC_TAG = "tag";
 const TYPE_ARRAY = 2 ** 0;
@@ -224,7 +225,7 @@ const classes = (input, smart) => {
   switch (typeOf(input)) {
     case "array": {
       for (const item of input) {
-        result.push(classes(item));
+        result.push(classes(item, smart));
       }
       break;
     }
@@ -234,6 +235,10 @@ const classes = (input, smart) => {
         const value = input[key];
         const name = kebabCase(key);
         const type = typeOf(value);
+        if (!smart) {
+          value && result.push(name);
+          continue;
+        }
         switch (type) {
           case "boolean": {
             value && result.push(`${name}`);
@@ -847,7 +852,7 @@ const request = (target, name, previous, callback) => {
         return;
       const regex1 = /this-([\w-]+)(?:-([\w-]+))?/g;
       const regex2 = /(\s*\w+\s*:\s*(undefined|null)\s*;?)/g;
-      const hasGlobal = raw.includes(":global");
+      const hasGlobal = target.constructor[STATIC_GLOBAL_STYLE];
       const hasVariable = raw.includes("this-");
       let localSheet = target[API_STYLE];
       let globalSheet = target.constructor[API_STYLE];
@@ -874,11 +879,7 @@ const request = (target, name, previous, callback) => {
         target.constructor[API_STYLE] = globalSheet;
         document.adoptedStyleSheets.push(globalSheet);
       }
-      const globalStyle = parsed.split("}").map((rule) => {
-        let [selectors, properties] = rule.split("{");
-        selectors = selectors.split(",").map((selector) => selector.trim()).filter((selector) => selector.startsWith(":global")).map((selector) => selector.replace(":global", "")).map((selector) => selector.trim()).join(",");
-        return selectors ? `${selectors}{${properties}}` : "";
-      }).filter((selector) => !!selector).join("");
+      const globalStyle = target.constructor[STATIC_GLOBAL_STYLE];
       globalSheet.replace(globalStyle);
     })();
     call(target, LIFECYCLE_UPDATED, states);
@@ -887,6 +888,21 @@ const request = (target, name, previous, callback) => {
   };
   target[API_REQUEST] || (target[API_REQUEST] = task({ handler }));
   call(target, API_REQUEST);
+};
+const slots = (target) => {
+  var _a;
+  const element = host(target);
+  const slots2 = {};
+  const children = Array.from(element.childNodes);
+  for (const child of children) {
+    if (child.nodeName == "#comment")
+      continue;
+    const name = child["slot"] || ((_a = child.nodeValue) == null ? void 0 : _a.trim()) && "default" || "slot" in child && "default";
+    if (!name)
+      continue;
+    slots2[name] = true;
+  }
+  return slots2;
 };
 const styles$1 = (input) => {
   return Object.keys(input).filter((key) => input[key] !== void 0 && input[key] !== null).map((key) => `${key.startsWith("--") ? "--" : ""}${kebabCase(key)}: ${input[key]}`).join("; ");
@@ -1268,6 +1284,9 @@ function Query(selectors) {
 }
 function QueryAll(selectors) {
   return toDecorator(queryAll, selectors);
+}
+function Slots() {
+  return toDecorator(slots);
 }
 function State() {
   return function(target, key) {
@@ -1695,8 +1714,9 @@ export {
   on as o,
   toAxis as p,
   Breakpoint as q,
-  query as r,
+  Slots as r,
   setConfig as s,
   toUnit as t,
-  PlusForm as u
+  query as u,
+  PlusForm as v
 };

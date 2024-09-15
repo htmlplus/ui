@@ -4,17 +4,21 @@ import {
   Property,
   Slots,
   State,
-  query, classes
+  classes,
+  query,
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
 
-import { FIELD_ACTION_ICONS } from './field.constants';
+import { FieldSize } from './field.types';
 
 @Element()
 export class Field extends PlusCore {
   @Property({ reflect: true })
   dense?: boolean;
+
+  @Property()
+  down?: string;
 
   @Property()
   error?: boolean | string;
@@ -26,16 +30,22 @@ export class Field extends PlusCore {
   hint?: string;
 
   @Property()
-  icons?; // TODO
-
-  @Property()
   label?: string;
 
   @Property()
   loading?: boolean;
 
+  @Property({ reflect: true })
+  plain?: boolean;
+
+  @Property({ reflect: true })
+  size?: FieldSize = 'md';
+
   @Property()
   success?: boolean | string;
+
+  @Property()
+  up?: string;
 
   @Property({ reflect: true })
   get state() {
@@ -57,35 +67,18 @@ export class Field extends PlusCore {
 
   observer?: MutationObserver;
 
-  get action() {
-    if (!this.$input) return;
-
-    const handler = this.$input['showPicker']?.bind(this.$input);
-
-    if (!handler) return;
-
-    const icon = Object.assign({}, FIELD_ACTION_ICONS, this.icons)[this.type];
-
-    if (!icon) return;
-
-    return { handler, icon }
-  }
-
   get details() {
-    for (const key of ['error', 'success']) {
-      if (this.slots[key]) return key;
-      if (this[key]?.length) return key;
-      if (this[key]) break;
-    }
-    return this.has('hint') && 'hint';
+    if (this.has('error')) return 'details error';
+    if (this.has('success')) return 'details success';
+    return 'details hint';
   }
 
   get hasHeader() {
-    return this.has('label');
+    return this.has('label') || this.has('up');
   }
 
   get hasFooter() {
-    return this.details;
+    return this.has('error') || this.has('success') || this.has('hint') || this.has('down');
   }
 
   get offset() {
@@ -168,19 +161,22 @@ export class Field extends PlusCore {
       <>
         {this.hasHeader && (
           <>
-            {/* {this.has('extra1') == true && (
-              <div part="header">
+            {this.has('up') ?
+              (
+                <div part="header">
+                  <label part="label" >
+                    <slot name="label">{this.label}</slot>
+                  </label>
+                  <slot name="up" part="up">{this.up}</slot>
+                </div>
+              )
+              :
+              (
                 <label part="label" >
                   <slot name="label">{this.label}</slot>
                 </label>
-                <div>extra1</div>
-              </div>
-            )} */}
-            {this.has('extra1') != true && (
-              <label part="label" >
-                <slot name="label">{this.label}</slot>
-              </label>
-            )}
+              )
+            }
           </>
         )}
         {this.has('before') && (
@@ -197,14 +193,9 @@ export class Field extends PlusCore {
             </div>
           )}
           <slot part="input" onSlotChange={this.onInputChange} />
-          {(this.has('end') || this.action) && (
+          {this.has('end') && (
             <div part="end">
               <slot name="end" />
-              <i
-                dangerouslySetInnerHTML={{ __html: this.action.icon }}
-                part="action"
-                onClick={this.action.handler}
-              />
             </div>
           )}
         </slot>
@@ -213,19 +204,22 @@ export class Field extends PlusCore {
         )}
         {this.hasFooter && (
           <>
-            {/* {this.has('extra2') == true && (
-              <div part="footer">
+            {this.has('down') ?
+              (
+                <div part="footer">
+                  <slot name={this.details} part={this.details}>
+                    {this[this.details]}
+                  </slot>
+                  <slot name="down" part="down">{this.down}</slot>
+                </div>
+              )
+              :
+              (
                 <slot name={this.details} part={this.details}>
                   {this[this.details]}
                 </slot>
-                <div>extra2</div>
-              </div>
-            )} */}
-            {this.has('extra2') != true && (
-              <slot name={this.details} part={this.details}>
-                {this[this.details]}
-              </slot>
-            )}
+              )
+            }
           </>
         )}
       </>
