@@ -11,6 +11,12 @@
   line-height: inherit;
 }
 
+// Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+global :host input[type='range']::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
 /*
  * MAIN
  */

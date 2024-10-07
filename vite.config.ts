@@ -1,7 +1,6 @@
 import { vite as htmlplus } from '@htmlplus/element/bundlers.js';
 
 import glob from 'fast-glob';
-import fs from 'fs';
 import path from 'path';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { defineConfig } from 'vite';

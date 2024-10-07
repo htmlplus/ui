@@ -14,6 +14,12 @@
   resize: vertical;
 }
 
+// Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+global :host input[type='range']::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
 /*
  * MAIN
  */
@@ -52,6 +58,7 @@
   box-shadow: $field-textarea-focus-box-shadow;
 }
 
+// TODO: also should generate for this `textarea::-moz-placeholder` selector
 ::slotted(textarea)::placeholder {
   color: $field-textarea-placeholder-color;
   // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.

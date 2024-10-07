@@ -84,9 +84,6 @@ global :host select:-moz-focusring {
   border-radius: $field-select-border-radius-sm;
 }
 
-:host([size='md']) ::slotted(select) {
-}
-
 :host([size='lg']) ::slotted(select) {
   padding: $field-select-padding-lg;
   font-size: $field-select-font-size-lg;
