@@ -112,43 +112,43 @@ Browse.tag = "plus-browse";
 Browse.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Browse.prototype, "accept", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Browse.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Browse.prototype, "droppable", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Browse.prototype, "min", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Browse.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Browse.prototype, "minSize", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Browse.prototype, "maxSize", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Browse.prototype, "multiple", 2);
 __decorateClass([

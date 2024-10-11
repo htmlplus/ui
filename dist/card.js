@@ -20,25 +20,25 @@ Card.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 64
+    type: 128
   })
 ], Card.prototype, "elevation", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Card.prototype, "flat", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Card.prototype, "outlined", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Card.prototype, "tile", 2);
 Card = __decorateClass([

@@ -32,7 +32,7 @@ Accordions.tag = "plus-accordions";
 Accordions.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Accordions.prototype, "persistent", 2);
 __decorateClass([

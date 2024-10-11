@@ -29,7 +29,7 @@ DrawerToggler.tag = "plus-drawer-toggler";
 DrawerToggler.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], DrawerToggler.prototype, "connector", 2);
 __decorateClass([

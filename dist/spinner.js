@@ -44,19 +44,19 @@ Spinner.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 256
+    type: 512
   })
 ], Spinner.prototype, "color", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Spinner.prototype, "size", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Spinner.prototype, "type", 2);
 __decorateClass([

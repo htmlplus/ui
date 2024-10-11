@@ -53,18 +53,18 @@ let ClickOutside = class extends PlusCore {
 ClickOutside.tag = "plus-click-outside";
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], ClickOutside.prototype, "capture", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], ClickOutside.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], ClickOutside.prototype, "once", 2);
 __decorateClass([

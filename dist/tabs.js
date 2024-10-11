@@ -30,13 +30,13 @@ Tabs.tag = "plus-tabs";
 Tabs.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], Tabs.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Tabs.prototype, "vertical", 2);
 __decorateClass([

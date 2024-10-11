@@ -177,59 +177,59 @@ Drawer.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 258
+    type: 516
   })
 ], Drawer.prototype, "animation", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Drawer.prototype, "backdrop", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Drawer.prototype, "connector", 2);
 __decorateClass([
   Property({
-    type: 10
+    type: 20
   })
 ], Drawer.prototype, "floating", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Drawer.prototype, "mini", 2);
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], Drawer.prototype, "miniSize", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Drawer.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Drawer.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Drawer.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Drawer.prototype, "flexible", 2);
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], Drawer.prototype, "size", 2);
 __decorateClass([

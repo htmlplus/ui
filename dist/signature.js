@@ -213,57 +213,57 @@ Signature.tag = "plus-signature";
 Signature.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Signature.prototype, "backgroundColor", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Signature.prototype, "clearOnResize", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Signature.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Signature.prototype, "distance", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Signature.prototype, "dotSize", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Signature.prototype, "maxWidth", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Signature.prototype, "minWidth", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Signature.prototype, "resizable", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Signature.prototype, "throttle", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Signature.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Signature.prototype, "velocity", 2);
 __decorateClass([

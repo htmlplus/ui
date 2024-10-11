@@ -20,13 +20,13 @@ AvatarGroup.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], AvatarGroup.prototype, "hoverable", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], AvatarGroup.prototype, "stacked", 2);
 AvatarGroup = __decorateClass([

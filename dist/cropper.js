@@ -273,68 +273,68 @@ Cropper.tag = "plus-cropper";
 Cropper.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Cropper.prototype, "area", 2);
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], Cropper.prototype, "aspectRatio", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Cropper.prototype, "background", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Cropper.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Cropper.prototype, "guides", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Cropper.prototype, "indicator", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Cropper.prototype, "mode", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Cropper.prototype, "resizer", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Cropper.prototype, "resizerShape", 2);
 __decorateClass([
   Property({
-    type: 10
+    type: 20
   })
 ], Cropper.prototype, "responsive", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Cropper.prototype, "shape", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Cropper.prototype, "src", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Cropper.prototype, "transparent", 2);
 __decorateClass([
@@ -344,17 +344,17 @@ __decorateClass([
 ], Cropper.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Cropper.prototype, "view", 2);
 __decorateClass([
   Property({
-    type: 10
+    type: 20
   })
 ], Cropper.prototype, "zoomable", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Cropper.prototype, "zoomRatio", 2);
 __decorateClass([

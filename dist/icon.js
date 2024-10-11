@@ -123,23 +123,23 @@ Icon.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 256
+    type: 512
   })
 ], Icon.prototype, "color", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Icon.prototype, "flip", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Icon.prototype, "label", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Icon.prototype, "name", 2);
 __decorateClass([
@@ -150,13 +150,13 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 64
+    type: 128
   })
 ], Icon.prototype, "rotate", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 328
+    type: 656
   })
 ], Icon.prototype, "size", 2);
 __decorateClass([

@@ -20,7 +20,7 @@ Center.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Center.prototype, "inline", 2);
 Center = __decorateClass([

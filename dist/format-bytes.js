@@ -131,42 +131,42 @@ FormatBytes.tag = "plus-format-bytes";
 FormatBytes.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], FormatBytes.prototype, "display", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 513
   })
 ], FormatBytes.prototype, "locale", 2);
 __decorateClass([
   Property({
-    type: 65
+    type: 129
   })
 ], FormatBytes.prototype, "decimals", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], FormatBytes.prototype, "separator", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], FormatBytes.prototype, "signed", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], FormatBytes.prototype, "standard", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], FormatBytes.prototype, "unit", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], FormatBytes.prototype, "value", 2);
 FormatBytes = __decorateClass([

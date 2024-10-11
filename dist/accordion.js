@@ -144,18 +144,18 @@ Accordion.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Accordion.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Accordion.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Accordion.prototype, "summary", 2);
 __decorateClass([

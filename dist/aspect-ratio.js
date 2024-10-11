@@ -43,17 +43,17 @@ AspectRatio.tag = "plus-aspect-ratio";
 AspectRatio.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], AspectRatio.prototype, "minHeight", 2);
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], AspectRatio.prototype, "maxHeight", 2);
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], AspectRatio.prototype, "value", 2);
 AspectRatio = __decorateClass([

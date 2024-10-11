@@ -39,7 +39,7 @@ Faker.tag = "plus-faker";
 Faker.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Faker.prototype, "api", 2);
 __decorateClass([
@@ -54,7 +54,7 @@ __decorateClass([
 ], Faker.prototype, "instance", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Faker.prototype, "seed", 2);
 Faker = __decorateClass([

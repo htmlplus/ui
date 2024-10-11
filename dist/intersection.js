@@ -74,12 +74,12 @@ let Intersection = class extends PlusCore {
 Intersection.tag = "plus-intersection";
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Intersection.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Intersection.prototype, "once", 2);
 __decorateClass([
@@ -89,12 +89,12 @@ __decorateClass([
 ], Intersection.prototype, "root", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Intersection.prototype, "rootMargin", 2);
 __decorateClass([
   Property({
-    type: 65
+    type: 129
   })
 ], Intersection.prototype, "threshold", 2);
 __decorateClass([

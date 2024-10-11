@@ -40,37 +40,37 @@ Divider.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 256
+    type: 512
   })
 ], Divider.prototype, "color", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Divider.prototype, "placement", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Divider.prototype, "width", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Divider.prototype, "type", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], Divider.prototype, "variant", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Divider.prototype, "vertical", 2);
 __decorateClass([

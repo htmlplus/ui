@@ -58,13 +58,13 @@ Switch.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Switch.prototype, "checked", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Switch.prototype, "disabled", 2);
 __decorateClass([

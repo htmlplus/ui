@@ -58,45 +58,45 @@ ProgressBar.tag = "plus-progress-bar";
 ProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], ProgressBar.prototype, "buffer", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 256
+    type: 512
   })
 ], ProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], ProgressBar.prototype, "label", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], ProgressBar.prototype, "min", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], ProgressBar.prototype, "max", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], ProgressBar.prototype, "sync", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 256
+    type: 512
   })
 ], ProgressBar.prototype, "variant", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], ProgressBar.prototype, "value", 2);
 __decorateClass([

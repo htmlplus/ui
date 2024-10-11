@@ -34,27 +34,27 @@ let Stack = class extends PlusCore {
 Stack.tag = "plus-stack";
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], Stack.prototype, "gap", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Stack.prototype, "items", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Stack.prototype, "justify", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Stack.prototype, "reverse", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Stack.prototype, "vertical", 2);
 __decorateClass([

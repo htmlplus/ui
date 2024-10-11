@@ -20,7 +20,7 @@ DialogContent.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], DialogContent.prototype, "scrollable", 2);
 DialogContent = __decorateClass([

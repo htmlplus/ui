@@ -28,19 +28,19 @@ TabsBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], TabsBar.prototype, "grow", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], TabsBar.prototype, "justify", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], TabsBar.prototype, "reverse", 2);
 TabsBar = __decorateClass([

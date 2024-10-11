@@ -179,68 +179,68 @@ Dialog.instances = [];
 __decorateClass([
   Property({
     reflect: true,
-    type: 258
+    type: 516
   })
 ], Dialog.prototype, "animation", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Dialog.prototype, "connector", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "fullHeight", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "fullWidth", 2);
 __decorateClass([
   Property({
-    type: 10
+    type: 20
   })
 ], Dialog.prototype, "fullscreen", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "keyboard", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Dialog.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "scrollable", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Dialog.prototype, "size", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "sticky", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Dialog.prototype, "transparent", 2);
 __decorateClass([

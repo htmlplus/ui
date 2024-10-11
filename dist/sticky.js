@@ -81,17 +81,17 @@ Sticky.tag = "plus-sticky";
 Sticky.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 320
+    type: 640
   })
 ], Sticky.prototype, "top", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Sticky.prototype, "watcher", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Sticky.prototype, "zIndex", 2);
 __decorateClass([

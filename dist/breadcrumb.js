@@ -132,27 +132,27 @@ Breadcrumb.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Breadcrumb.prototype, "block", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Breadcrumb.prototype, "expanderText", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Breadcrumb.prototype, "offset", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Breadcrumb.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Breadcrumb.prototype, "separator", 2);
 __decorateClass([

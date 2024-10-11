@@ -38,167 +38,167 @@ Grid.tag = "plus-grid";
 Grid.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContent", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContentXs", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContentSm", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContentMd", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContentLg", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContentXl", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignContentXxl", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItems", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItemsXs", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItemsSm", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItemsMd", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItemsLg", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItemsXl", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "alignItemsXxl", 2);
 __decorateClass([
   Property({
-    type: 264
+    type: 528
   })
 ], Grid.prototype, "gutter", 2);
 __decorateClass([
   Property({
-    type: 264
+    type: 528
   })
 ], Grid.prototype, "gutterX", 2);
 __decorateClass([
   Property({
-    type: 264
+    type: 528
   })
 ], Grid.prototype, "gutterY", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContent", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContentXs", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContentSm", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContentMd", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContentLg", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContentXl", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "justifyContentXxl", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Grid.prototype, "reverse", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], Grid.prototype, "vertical", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrap", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrapXs", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrapSm", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrapMd", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrapLg", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrapXl", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Grid.prototype, "wrapXxl", 2);
 __decorateClass([

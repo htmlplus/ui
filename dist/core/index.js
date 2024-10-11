@@ -96,6 +96,7 @@ function splitPrefixSuffix(input, options = {}) {
     input.slice(suffixIndex)
   ];
 }
+const KEY = "htmlplus";
 const MAPPER = Symbol();
 const API_CONNECTED = Symbol();
 const API_HOST = Symbol();
@@ -115,12 +116,12 @@ const METHOD_RENDER = "render";
 const STATIC_STYLE = "style";
 const STATIC_TAG = "tag";
 const TYPE_ARRAY = 2 ** 0;
-const TYPE_BOOLEAN = 2 ** 1;
-const TYPE_DATE = 2 ** 2;
-const TYPE_NULL = 2 ** 5;
-const TYPE_NUMBER = 2 ** 6;
-const TYPE_OBJECT = 2 ** 7;
-const TYPE_UNDEFINED = 2 ** 9;
+const TYPE_BOOLEAN = 2 ** 2;
+const TYPE_DATE = 2 ** 3;
+const TYPE_NULL = 2 ** 6;
+const TYPE_NUMBER = 2 ** 7;
+const TYPE_OBJECT = 2 ** 8;
+const TYPE_UNDEFINED = 2 ** 10;
 const appendToMethod = (target, key, handler) => {
   const previous = target[key];
   function next(...parameters) {
@@ -318,9 +319,6 @@ const getFramework = (target) => {
     return "react";
   if (has("__zone_symbol__"))
     return "angular";
-};
-const getStyles = (target) => {
-  return target.constructor[STATIC_STYLE] ?? target[STATIC_STYLE];
 };
 const getTag = (target) => {
   return target.constructor[STATIC_TAG] ?? target[STATIC_TAG];
@@ -842,12 +840,14 @@ const request = (target, name, previous, callback) => {
       });
     });
     (() => {
-      const raw = getStyles(target);
+      var _a, _b, _c;
+      const raw = target.constructor[STATIC_STYLE];
       if (!raw)
         return;
       const regex1 = /this-([\w-]+)(?:-([\w-]+))?/g;
       const regex2 = /(\s*\w+\s*:\s*(undefined|null)\s*;?)/g;
-      const hasGlobal = raw.includes(":global");
+      const regex3 = /global\s+[^{]+\{[^{}]*\{[^{}]*\}[^{}]*\}|global\s+[^{]+\{[^{}]*\}/g;
+      const hasGlobal = raw.includes("global");
       const hasVariable = raw.includes("this-");
       let localSheet = target[API_STYLE];
       let globalSheet = target.constructor[API_STYLE];
@@ -865,8 +865,8 @@ const request = (target, name, previous, callback) => {
         target[API_STYLE] = localSheet;
         shadowRoot(target).adoptedStyleSheets.push(localSheet);
       }
-      const localStyle = parsed;
-      localSheet.replace(localStyle);
+      const localStyle = parsed.replace(regex3, "");
+      localSheet.replaceSync(localStyle);
       if (!hasGlobal || globalSheet)
         return;
       if (!globalSheet) {
@@ -874,12 +874,8 @@ const request = (target, name, previous, callback) => {
         target.constructor[API_STYLE] = globalSheet;
         document.adoptedStyleSheets.push(globalSheet);
       }
-      const globalStyle = parsed.split("}").map((rule) => {
-        let [selectors, properties] = rule.split("{");
-        selectors = selectors.split(",").map((selector) => selector.trim()).filter((selector) => selector.startsWith(":global")).map((selector) => selector.replace(":global", "")).map((selector) => selector.trim()).join(",");
-        return selectors ? `${selectors}{${properties}}` : "";
-      }).filter((selector) => !!selector).join("");
-      globalSheet.replace(globalStyle);
+      const globalStyle = (_c = (_b = (_a = parsed == null ? void 0 : parsed.match(regex3)) == null ? void 0 : _a.join("")) == null ? void 0 : _b.replaceAll("global", "")) == null ? void 0 : _c.replaceAll(":host", getTag(target));
+      globalSheet.replaceSync(globalStyle);
     })();
     call(target, LIFECYCLE_UPDATED, states);
     stacks.clear();
@@ -980,7 +976,7 @@ function Provider(namespace) {
   return function(target, key, descriptor) {
     const symbol2 = Symbol();
     const [MAIN, SUB] = namespace.split(".");
-    const prefix2 = `htmlplus:${MAIN}`;
+    const prefix2 = `${KEY}:${MAIN}`;
     const cleanups = (instance) => {
       return instance[symbol2] || (instance[symbol2] = /* @__PURE__ */ new Map());
     };
@@ -1032,7 +1028,7 @@ function Consumer(namespace) {
   return function(target, key) {
     const symbol2 = Symbol();
     const [MAIN, SUB] = namespace.split(".");
-    const prefix2 = `htmlplus:${MAIN}`;
+    const prefix2 = `${KEY}:${MAIN}`;
     const cleanups = (instance) => {
       return instance[symbol2] || (instance[symbol2] = /* @__PURE__ */ new Map());
     };

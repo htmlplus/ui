@@ -71,17 +71,17 @@ let ScrollDetector = class extends PlusCore {
 ScrollDetector.tag = "plus-scroll-detector";
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], ScrollDetector.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 264
+    type: 528
   })
 ], ScrollDetector.prototype, "reference", 2);
 __decorateClass([
   Property({
-    type: 2
+    type: 4
   })
 ], ScrollDetector.prototype, "vertical", 2);
 __decorateClass([

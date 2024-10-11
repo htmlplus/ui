@@ -142,32 +142,32 @@ let Counter = class extends PlusCore {
 Counter.tag = "plus-counter";
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Counter.prototype, "easing", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Counter.prototype, "decimal", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Counter.prototype, "decimals", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Counter.prototype, "delay", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Counter.prototype, "duration", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Counter.prototype, "from", 2);
 __decorateClass([
@@ -178,17 +178,17 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Counter.prototype, "play", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 512
   })
 ], Counter.prototype, "separator", 2);
 __decorateClass([
   Property({
-    type: 64
+    type: 128
   })
 ], Counter.prototype, "to", 2);
 __decorateClass([

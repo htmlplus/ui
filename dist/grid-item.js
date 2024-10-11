@@ -24,247 +24,247 @@ GridItem.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelf", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelfXs", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelfSm", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelfMd", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelfLg", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelfXl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "alignSelfXxl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "xs", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "sm", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "md", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "lg", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "xl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "xxl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideXs", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideSm", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideMd", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideLg", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideXl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideXxl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hide", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideSmUp", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideMdUp", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideLgUp", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideXlUp", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideSmDown", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideMdDown", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideLgDown", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideXlDown", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], GridItem.prototype, "hideXxlDown", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "offsetXs", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "offsetSm", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "offsetMd", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "offsetLg", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "offsetXl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "offsetXxl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "orderXs", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "orderSm", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "orderMd", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "orderLg", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "orderXl", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 8
+    type: 16
   })
 ], GridItem.prototype, "orderXxl", 2);
 GridItem = __decorateClass([

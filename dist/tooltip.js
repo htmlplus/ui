@@ -195,49 +195,49 @@ Tooltip.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Tooltip.prototype, "arrow", 2);
 __decorateClass([
   Property({
-    type: 65
+    type: 129
   })
 ], Tooltip.prototype, "delay", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Tooltip.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 2
+    type: 4
   })
 ], Tooltip.prototype, "fixed", 2);
 __decorateClass([
   Property({
-    type: 65
+    type: 129
   })
 ], Tooltip.prototype, "offset", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Tooltip.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 264
+    type: 528
   })
 ], Tooltip.prototype, "reference", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 17
   })
 ], Tooltip.prototype, "trigger", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 16
   })
 ], Tooltip.prototype, "z", 2);
 __decorateClass([
