@@ -29,6 +29,7 @@ export * from './icon/icon';
 export * from './intersection/intersection';
 export * from './progress-bar/progress-bar';
 export * from './progress-bar-stack/progress-bar-stack';
+export * from './relative-time/relative-time';
 export * from './scroll-detector/scroll-detector';
 export * from './signature/signature';
 export * from './spacer/spacer';

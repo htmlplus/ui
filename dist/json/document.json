@@ -3436,6 +3436,57 @@
       ]
     },
     {
+      "events": [],
+      "key": "relative-time",
+      "lastModified": "2024-10-16T17:03:30.236Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "format",
+          "initializer": "'long'",
+          "name": "format",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "'long' | 'short' | 'narrow'",
+          "description": "The format style for the relative time."
+        },
+        {
+          "attribute": "numeric",
+          "initializer": "'auto'",
+          "name": "numeric",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "'always' | 'auto'",
+          "description": "Determines whether the numeric value should always be displayed."
+        },
+        {
+          "attribute": "sync",
+          "initializer": false,
+          "name": "sync",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Determines whether the relative time should be updated automatically."
+        },
+        {
+          "attribute": "value",
+          "name": "value",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "Date",
+          "description": "The date and time to be displayed in a relative format."
+        }
+      ],
+      "readmeContent": "# Relative Time\n\nOutputs a localized time phrase relative to the provided datetime.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Value\n\n<Example src=\"examples/value\" />\n\n### Sync\n\n<Example src=\"examples/sync\" />\n\n### Format\n\n<Example src=\"examples/format\" />\n\n### Numeric\n\n<Example src=\"examples/numeric\" />\n\n### Localization\n\n<Example src=\"examples/localization\" />\n\n<LastModified />\n",
+      "styles": [],
+      "title": "Relative Time",
+      "description": "Outputs a localized time phrase relative to the provided datetime."
+    },
+    {
       "events": [
         {
           "cancelable": false,

@@ -29,6 +29,7 @@ import { Icon } from "./icon.js";
 import { Intersection } from "./intersection.js";
 import { ProgressBar } from "./progress-bar.js";
 import { ProgressBarStack } from "./progress-bar-stack.js";
+import { RelativeTime } from "./relative-time.js";
 import { ScrollDetector } from "./scroll-detector.js";
 import { Signature } from "./signature.js";
 import { Spacer } from "./spacer.js";
@@ -74,6 +75,7 @@ export {
   Intersection,
   ProgressBar,
   ProgressBarStack,
+  RelativeTime,
   ScrollDetector,
   Signature,
   Spacer,

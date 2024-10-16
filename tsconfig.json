@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["dom", "es2019"],
+    "lib": ["dom", "ES2023"],
     "jsx": "preserve",
     "jsxImportSource": "@htmlplus/element",
     "experimentalDecorators": true,

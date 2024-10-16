@@ -3740,6 +3740,62 @@
       ]
     },
     {
+      "name": "plus-relative-time",
+      "attributes": [
+        {
+          "name": "format",
+          "values": [
+            {
+              "name": "long"
+            },
+            {
+              "name": "short"
+            },
+            {
+              "name": "narrow"
+            }
+          ],
+          "description": "The format style for the relative time."
+        },
+        {
+          "name": "numeric",
+          "values": [
+            {
+              "name": "always"
+            },
+            {
+              "name": "auto"
+            }
+          ],
+          "description": "Determines whether the numeric value should always be displayed."
+        },
+        {
+          "name": "sync",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "Determines whether the relative time should be updated automatically."
+        },
+        {
+          "name": "value",
+          "values": [],
+          "description": "The date and time to be displayed in a relative format."
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/relative-time"
+        }
+      ],
+      "description": "Outputs a localized time phrase relative to the provided datetime."
+    },
+    {
       "name": "plus-scroll-detector",
       "attributes": [
         {
