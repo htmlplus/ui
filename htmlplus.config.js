@@ -31,6 +31,9 @@ export default [
   assets({
     destination(context) {
       return `${DESTINATION}/elements/${context.fileName}`;
+    },
+    json(context) {
+      return `${DESTINATION}/elements/${context.fileName}/assets.json`;
     }
   }),
   readme(),

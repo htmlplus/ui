@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "0.0.0",
+  "version": "1.4.0",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
