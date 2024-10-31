@@ -1,5 +1,7 @@
-@import 'dialog.variables';
-@import 'dialog.animations';
+@use 'sass:map';
+
+@use 'dialog.variables' as *;
+@use 'dialog.animations' as *;
 
 @mixin fill {
   position: fixed;
@@ -90,7 +92,7 @@
   // TODO
   @include media-breakpoint-up($key) {
     // margin in current breakpoint
-    $margin: map-get($dialog-margin, $key);
+    $margin: map.get($dialog-margin, $key);
 
     @if ($margin) {
       // TODO
@@ -116,7 +118,7 @@
     }
 
     // dialog size in current breakpoint
-    $size: map-get($dialog-size, $key);
+    $size: map.get($dialog-size, $key);
 
     // dialog sizes
     @each $key, $value in $size {

@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { CardElevation } from './card.types';
-
 /**
  * @slot default - The default slot.
  */

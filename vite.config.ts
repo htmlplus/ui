@@ -1,7 +1,6 @@
 import { vite as htmlplus } from '@htmlplus/element/bundlers.js';
 
-import glob from 'fast-glob';
-import fs from 'fs';
+import { glob } from 'glob';
 import path from 'path';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import { defineConfig } from 'vite';
@@ -25,13 +24,15 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        includePaths: ['node_modules'],
-        outputStyle: 'compressed',
+        api: 'modern-compiler',
+        style: 'compressed',
         additionalData: [
-          '@import "./src/styles/mixins/index.scss";',
-          '@import "./src/styles/variables/index.scss";',
-          '@import "./src/styles/reset.scss";'
-        ].join('\n')
+          'src/styles/mixins',
+          'src/styles/variables',
+          'src/styles/reset.scss',
+        ]
+          .map((file) => `@use "${path.resolve(__dirname, file)}" as *;`)
+          .join('\n')
       }
     }
   },
@@ -40,7 +41,7 @@ export default defineConfig({
     htmlplus(...plugins),
     peerDepsExternal(),
     dts({
-      outDir: 'dist/types',
+      outDir: `${DESTINATION}/types`,
       resolvers: [
         /**
          * This resolver generates `.d.ts` files for each `.tsx` file.
@@ -80,10 +81,10 @@ export default defineConfig({
       entry: Object.fromEntries(
         glob
           .sync(['src/elements/*/*.tsx'], { absolute: true })
-          .map((file) => [path.basename(file, path.extname(file)), file])
+          .map((file) => ['elements/' + path.basename(file, path.extname(file)), file])
           .concat([
-            ['config', 'src/config/index.ts'],
-            ['index', 'src/elements/index.ts']
+            ['core/config', 'src/config/index.ts'],
+            ['elements/index', 'src/elements/index.ts']
           ])
       )
     },
@@ -94,9 +95,7 @@ export default defineConfig({
         manualChunks(id) {
           const normalized = path.normalize(id).split(path.sep).join('/');
 
-          if (normalized.includes('/src/elements/')) {
-            return normalized.split('/src/elements/')[1].split('/')[0];
-          }
+          if (normalized.includes('/src/elements/')) return;
 
           if (normalized.includes('signature_pad')) return 'vendors/signature_pad';
 

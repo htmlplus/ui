@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { GridItemAlignSelf, GridItemColumn, GridItemOffset, GridItemOrder } from './grid-item.types';
-
 /**
  * @subset
  *

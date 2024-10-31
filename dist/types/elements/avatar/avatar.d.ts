@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { AvatarShape, AvatarSize } from './avatar.types';
-
 /**
  * @stable
  *

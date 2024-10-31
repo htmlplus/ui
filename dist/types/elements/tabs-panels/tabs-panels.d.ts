@@ -1,5 +1,4 @@
 import { PlusCore } from '../../core';
-
 /**
  * TODO: This element contains panels.
  * @subset

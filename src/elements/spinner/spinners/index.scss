@@ -1,6 +1,6 @@
-@import 'bounce';
-@import 'default';
-@import 'dual-ring';
-@import 'ring';
-@import 'ripple';
-@import 'square';
+@forward 'bounce';
+@forward 'default';
+@forward 'dual-ring';
+@forward 'ring';
+@forward 'ripple';
+@forward 'square';

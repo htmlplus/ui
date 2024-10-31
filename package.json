@@ -5,9 +5,9 @@
   "author": "Masood Abdolian <m.abdolian@gmail.com>",
   "description": "The Next generation of UI elements.",
   "type": "module",
-  "main": "index.js",
-  "types": "types/elements/index.d.ts",
-  "web-types": "json/web-types.json",
+  "main": "./dist/elements/index.js",
+  "types": "./dist/types/elements/index.d.ts",
+  "web-types": "./dist/json/web-types.json",
   "scripts": {
     "build": "npm run clean && vite build",
     "clean": "rimraf .cache dist",
@@ -17,8 +17,36 @@
     "test:open": "cypress open",
     "test:run": "cypress run"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/elements/index.js",
+      "types": "./dist/types/elements/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/elements/*",
+      "types": "./dist/types/elements/*/*.d.ts"
+    },
+    "./*/*": {
+      "import": "./dist/elements/*/*",
+      "types": null
+    },
+    "./config.js": {
+      "import": "./dist/core/config.js",
+      "types": "./dist/types/config/index.d.ts"
+    },
+    "./json/*": {
+      "import": "./dist/json/*",
+      "types": null
+    },
+    "./package.json": {
+      "import": "./package.json",
+      "types": null
+    }
+  },
   "files": [
-    "**/*.*"
+    "./dist/*",
+    "./package.json",
+    "./README.md"
   ],
   "funding": [
     {
@@ -30,9 +58,6 @@
       "url": "https://opencollective.com/htmlplus"
     }
   ],
-  "publishConfig": {
-    "directory": "dist"
-  },
   "engines": {
     "node": ">= 20.10.0"
   },
@@ -56,29 +81,30 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^2.13.2"
+    "@htmlplus/element": "^3.0.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^10.1.0",
+    "@semantic-release/github": "^11.0.0",
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "cypress": "^13.13.0",
+    "cypress": "^13.15.1",
     "cypress-file-upload": "^5.0.8",
     "cypress-real-events": "^1.13.0",
-    "fast-glob": "^3.3.2",
+    "glob": "^11.0.0",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "semantic-release": "^24.0.0",
-    "signature_pad": "^5.0.2",
-    "typescript": "^5.5.3",
-    "vite": "^5.3.4",
-    "vite-plugin-dts": "^4.0.0-beta.1"
+    "sass-embedded": "^1.80.4",
+    "semantic-release": "^24.2.0",
+    "signature_pad": "^5.0.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.3.0"
   },
   "peerDependencies": {
     "@faker-js/faker": "^8.2.0",

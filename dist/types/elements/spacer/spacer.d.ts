@@ -1,5 +1,4 @@
 import { PlusCore } from '../../core';
-
 export declare class Spacer extends PlusCore {
     /**
      * TODO

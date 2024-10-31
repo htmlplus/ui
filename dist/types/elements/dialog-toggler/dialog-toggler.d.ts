@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { DialogContext } from '../dialog/dialog.context';
-
 /**
  * @subset
  *

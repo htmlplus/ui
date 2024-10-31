@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
-
 /**
  * @stable
  *

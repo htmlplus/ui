@@ -1,5 +1,4 @@
 import { PlusCore } from './core';
-
 export declare abstract class PlusForm extends PlusCore {
     static delegatesFocus: boolean;
     static formAssociated: boolean;

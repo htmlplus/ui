@@ -1,9 +1,11 @@
+@use 'sass:map';
+
 :host {
   // @Property() Used to adjust the color.
   --plus-avatar-color: gray;
 
   // @Property() Used to adjust the size (width & height).
-  --plus-avatar-size: #{map-get($avatar-sizes, md)};
+  --plus-avatar-size: #{map.get($avatar-sizes, md)};
 }
 
 :host {

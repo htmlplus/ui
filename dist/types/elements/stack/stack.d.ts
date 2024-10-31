@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { StackAlign, StackGap, StackJustify } from './stack.types';
-
 /**
  * @slot default - The default slot.
  */

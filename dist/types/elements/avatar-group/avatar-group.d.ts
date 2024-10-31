@@ -1,5 +1,4 @@
 import { PlusCore } from '../../core';
-
 /**
  * @stable
  * @subset

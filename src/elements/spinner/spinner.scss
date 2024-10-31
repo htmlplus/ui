@@ -1,4 +1,4 @@
-@import 'spinners';
+@use 'spinners' as *;
 
 :host {
   color: currentColor;

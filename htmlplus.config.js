@@ -1,6 +1,5 @@
 import {
   assets,
-  copy,
   customElement,
   document,
   extract,
@@ -31,32 +30,7 @@ export default [
   }),
   assets({
     destination(context) {
-      return `${DESTINATION}/${context.fileName}`;
-    }
-  }),
-  copy({
-    at: 'finish',
-    source: 'package-lock.json',
-    destination: `${DESTINATION}/package-lock.json`
-  }),
-  copy({
-    at: 'finish',
-    source: 'README.md',
-    destination: `${DESTINATION}/README.md`
-  }),
-  copy({
-    at: 'finish',
-    source: 'package.json',
-    destination: `${DESTINATION}/package.json`,
-    transformer(content) {
-      return JSON.stringify(
-        {
-          ...JSON.parse(content),
-          scripts: undefined
-        },
-        null,
-        2
-      );
+      return `${DESTINATION}/elements/${context.fileName}`;
     }
   }),
   readme(),
@@ -72,7 +46,7 @@ export default [
     }
   }),
   visualStudioCode({
-    destination: `${PACKAGE.publishConfig.directory}/json/vscode.json`,
+    destination: `${DESTINATION}/json/vscode.json`,
     reference(context) {
       return `https://www.htmlplus.io/javascript/element/${context.elementKey}`;
     },
@@ -87,7 +61,7 @@ export default [
     }
   }),
   webTypes({
-    destination: `${PACKAGE.publishConfig.directory}/${PACKAGE['web-types']}`,
+    destination: `${DESTINATION}/json/web-types.json`,
     packageName: PACKAGE.name,
     packageVersion: PACKAGE.version,
     reference(context) {
@@ -123,7 +97,7 @@ export default [
 
             outputs[file] += content + '\n';
           }
-        } catch { }
+        } catch {}
       }
 
       for (const output in outputs) {

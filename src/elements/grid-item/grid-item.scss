@@ -1,4 +1,4 @@
-@import 'grid-item.variables';
+@use 'grid-item.variables' as *;
 
 :host {
   flex-grow: 0;

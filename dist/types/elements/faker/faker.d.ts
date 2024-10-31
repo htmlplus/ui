@@ -1,6 +1,5 @@
 import { Faker as FakerCoreType } from '@faker-js/faker';
 import { PlusCore } from '../../core';
-
 /**
  * @thirdParty
  * @stable

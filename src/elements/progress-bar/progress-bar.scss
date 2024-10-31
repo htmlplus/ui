@@ -1,4 +1,4 @@
-@import 'progress-bar.variables';
+@use 'progress-bar.variables' as *;
 
 :host {
   // @Property() Specifies the color of the bar.

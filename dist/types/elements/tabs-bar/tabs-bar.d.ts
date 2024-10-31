@@ -1,5 +1,4 @@
 import { PlusCore } from '../../core';
-
 /**
  * TODO: Arranges tabs within a bar.
  * @subset

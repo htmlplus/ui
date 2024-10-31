@@ -1,7 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { default as CoreType, PointGroup } from 'signature_pad';
 import { PlusForm } from '../../core';
-
 /**
  * @stable
  *

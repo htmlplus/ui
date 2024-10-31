@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-10-10T19:41:37.714Z",
+      "lastModified": "2024-10-24T14:14:12.346Z",
       "methods": [
         {
           "async": false,
@@ -163,7 +163,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2024-07-12T13:41:05.911Z",
+      "lastModified": "2024-10-24T14:14:12.347Z",
       "methods": [],
       "properties": [
         {
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2024-10-07T20:18:07.646Z",
+      "lastModified": "2024-10-24T14:14:12.374Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-07-25T12:45:58.042Z",
+      "lastModified": "2024-10-24T14:14:12.376Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +495,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-08-30T08:51:16.505Z",
+      "lastModified": "2024-10-24T14:14:12.382Z",
       "methods": [],
       "properties": [
         {
@@ -554,7 +554,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2024-08-30T08:51:16.505Z",
+      "lastModified": "2024-10-24T14:14:12.377Z",
       "methods": [],
       "properties": [
         {
@@ -590,7 +590,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-08-30T08:51:16.506Z",
+      "lastModified": "2024-10-24T14:14:12.384Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +700,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-10-11T09:26:09.245Z",
+      "lastModified": "2024-10-24T14:14:12.387Z",
       "methods": [
         {
           "async": false,
@@ -800,7 +800,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2024-08-30T08:51:16.507Z",
+      "lastModified": "2024-10-24T14:14:12.389Z",
       "methods": [],
       "properties": [
         {
@@ -881,7 +881,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2024-08-30T08:51:16.506Z",
+      "lastModified": "2024-10-24T14:14:12.387Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -898,7 +898,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2024-07-25T12:45:58.052Z",
+      "lastModified": "2024-10-24T14:14:12.390Z",
       "methods": [],
       "properties": [
         {
@@ -933,7 +933,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-07-25T12:45:58.053Z",
+      "lastModified": "2024-10-24T14:14:12.391Z",
       "methods": [],
       "properties": [
         {
@@ -986,7 +986,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2024-09-15T15:42:31.254Z",
+      "lastModified": "2024-10-24T14:14:12.393Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1171,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-10-10T19:41:37.715Z",
+      "lastModified": "2024-10-24T14:14:12.397Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1609,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-07-25T12:45:58.061Z",
+      "lastModified": "2024-10-24T14:14:12.403Z",
       "methods": [
         {
           "async": false,
@@ -1797,7 +1797,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2024-08-30T08:51:16.507Z",
+      "lastModified": "2024-10-24T14:14:12.397Z",
       "methods": [],
       "properties": [
         {
@@ -1823,7 +1823,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2024-08-30T08:51:16.508Z",
+      "lastModified": "2024-10-24T14:14:12.398Z",
       "methods": [],
       "properties": [
         {
@@ -1849,7 +1849,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2024-08-30T08:51:16.508Z",
+      "lastModified": "2024-10-24T14:14:12.398Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1865,7 +1865,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2024-08-30T08:51:16.509Z",
+      "lastModified": "2024-10-24T14:14:12.399Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1881,7 +1881,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2024-07-12T13:03:16.380Z",
+      "lastModified": "2024-10-24T14:14:12.399Z",
       "methods": [],
       "properties": [
         {
@@ -1915,7 +1915,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-08-30T08:51:16.509Z",
+      "lastModified": "2024-10-24T14:14:12.405Z",
       "methods": [],
       "properties": [
         {
@@ -2041,7 +2041,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-10-10T19:41:37.715Z",
+      "lastModified": "2024-10-24T14:14:12.406Z",
       "methods": [
         {
           "async": false,
@@ -2214,7 +2214,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2024-07-12T13:03:16.393Z",
+      "lastModified": "2024-10-24T14:14:12.405Z",
       "methods": [],
       "properties": [
         {
@@ -2248,7 +2248,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-07-25T12:45:58.065Z",
+      "lastModified": "2024-10-24T14:14:12.408Z",
       "methods": [],
       "properties": [
         {
@@ -2301,7 +2301,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2024-07-25T12:45:58.067Z",
+      "lastModified": "2024-10-24T14:14:12.411Z",
       "methods": [],
       "properties": [
         {
@@ -2393,7 +2393,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2024-07-25T12:45:58.070Z",
+      "lastModified": "2024-10-24T14:14:12.415Z",
       "methods": [],
       "properties": [
         {
@@ -2754,7 +2754,7 @@
     {
       "events": [],
       "key": "grid-item",
-      "lastModified": "2024-07-12T13:03:16.396Z",
+      "lastModified": "2024-10-24T14:14:12.411Z",
       "methods": [],
       "properties": [
         {
@@ -3166,7 +3166,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-10-10T19:41:37.715Z",
+      "lastModified": "2024-10-24T14:14:12.418Z",
       "methods": [],
       "properties": [
         {
@@ -3258,7 +3258,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2024-07-25T12:45:58.074Z",
+      "lastModified": "2024-10-24T14:14:12.419Z",
       "methods": [],
       "properties": [
         {
@@ -3323,7 +3323,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-10-10T19:41:37.716Z",
+      "lastModified": "2024-10-24T14:14:12.423Z",
       "methods": [],
       "properties": [
         {
@@ -3422,7 +3422,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2024-08-30T08:51:16.510Z",
+      "lastModified": "2024-10-24T14:14:12.420Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -3436,6 +3436,57 @@
       ]
     },
     {
+      "events": [],
+      "key": "relative-time",
+      "lastModified": "2024-10-30T21:00:36.742Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "format",
+          "initializer": "'long'",
+          "name": "format",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "'long' | 'short' | 'narrow'",
+          "description": "The format style for the relative time."
+        },
+        {
+          "attribute": "numeric",
+          "initializer": "'auto'",
+          "name": "numeric",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "'always' | 'auto'",
+          "description": "Determines whether the numeric value should always be displayed."
+        },
+        {
+          "attribute": "sync",
+          "initializer": false,
+          "name": "sync",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Determines whether the relative time should be updated automatically."
+        },
+        {
+          "attribute": "value",
+          "name": "value",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "Date",
+          "description": "The date and time to be displayed in a relative format."
+        }
+      ],
+      "readmeContent": "# Relative Time\n\nOutputs a localized time phrase relative to the provided datetime.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Value\n\n<Example src=\"examples/value\" />\n\n### Sync\n\n<Example src=\"examples/sync\" />\n\n### Format\n\n<Example src=\"examples/format\" />\n\n### Numeric\n\n<Example src=\"examples/numeric\" />\n\n### Localization\n\n<Example src=\"examples/localization\" />\n\n<LastModified />\n",
+      "styles": [],
+      "title": "Relative Time",
+      "description": "Outputs a localized time phrase relative to the provided datetime."
+    },
+    {
       "events": [
         {
           "cancelable": false,
@@ -3446,7 +3497,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2024-07-25T12:45:58.076Z",
+      "lastModified": "2024-10-24T14:14:12.436Z",
       "methods": [],
       "properties": [
         {
@@ -3519,7 +3570,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-10-10T19:41:37.716Z",
+      "lastModified": "2024-10-24T14:14:12.439Z",
       "methods": [
         {
           "async": false,
@@ -3702,7 +3753,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2024-07-12T13:03:16.402Z",
+      "lastModified": "2024-10-24T14:14:12.439Z",
       "methods": [],
       "properties": [
         {
@@ -3724,7 +3775,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-10-07T19:14:34.331Z",
+      "lastModified": "2024-10-24T14:14:12.441Z",
       "methods": [],
       "properties": [
         {
@@ -3768,7 +3819,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-10-11T13:02:17.725Z",
+      "lastModified": "2024-10-24T14:14:12.442Z",
       "methods": [],
       "properties": [
         {
@@ -3844,7 +3895,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-10-07T19:14:45.683Z",
+      "lastModified": "2024-10-24T14:14:12.444Z",
       "methods": [],
       "properties": [
         {
@@ -3908,7 +3959,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2024-08-30T08:51:16.512Z",
+      "lastModified": "2024-10-24T14:14:12.445Z",
       "methods": [],
       "properties": [
         {
@@ -3946,7 +3997,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-07-25T12:45:58.084Z",
+      "lastModified": "2024-10-24T14:14:12.447Z",
       "methods": [],
       "properties": [
         {
@@ -3983,7 +4034,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2024-07-12T13:03:16.406Z",
+      "lastModified": "2024-10-24T14:14:12.445Z",
       "methods": [],
       "properties": [
         {
@@ -4029,7 +4080,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2024-07-12T13:03:16.406Z",
+      "lastModified": "2024-10-24T14:14:12.445Z",
       "methods": [],
       "properties": [
         {
@@ -4065,7 +4116,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2024-07-12T13:03:16.407Z",
+      "lastModified": "2024-10-24T14:14:12.446Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -4082,7 +4133,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2024-07-12T13:03:16.407Z",
+      "lastModified": "2024-10-24T14:14:12.446Z",
       "methods": [],
       "properties": [
         {
@@ -4127,7 +4178,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2024-10-10T19:41:37.717Z",
+      "lastModified": "2024-10-24T14:14:12.449Z",
       "methods": [
         {
           "async": false,

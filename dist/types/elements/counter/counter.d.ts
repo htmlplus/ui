@@ -1,7 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { CounterEasing } from './counter.types';
-
 /**
  * @stable
  */

@@ -3,7 +3,6 @@ import { PlusCore } from '../../core';
 import { Animation } from '../../services';
 import { DrawerContext } from './drawer.context';
 import { DrawerPlacement, DrawerFloating } from './drawer.types';
-
 /**
  * @slot default - The default slot.
  */

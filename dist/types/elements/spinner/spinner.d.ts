@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { SpinnerSize, SpinnerType } from './spinner.types';
-
 /**
  * @stable
  */

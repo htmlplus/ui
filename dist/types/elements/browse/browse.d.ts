@@ -1,7 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { BrowseEvent } from './browse.types';
-
 /**
  * @stable
  *

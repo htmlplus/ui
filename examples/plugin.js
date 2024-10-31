@@ -1,5 +1,5 @@
-import glob from 'fast-glob';
 import fs from 'fs';
+import { glob } from 'glob';
 import path from 'path';
 
 import { API_DETAILS, API_LIST } from './config';

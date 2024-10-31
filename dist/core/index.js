@@ -1421,6 +1421,100 @@ __decorateClass([
 __decorateClass([
   Watch("value", true)
 ], PlusForm.prototype, "valueWatcher", 1);
+const BREAKPOINTS = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400
+};
+function Breakpoint() {
+  return function(target, key) {
+    const symbol2 = Symbol();
+    const connected = target.connectedCallback;
+    target.connectedCallback = function() {
+      this[symbol2] = [];
+      const keys = Object.keys(BREAKPOINTS);
+      const callback = (media) => {
+        var _a;
+        if (media.matches) {
+          this[key] = ((_a = media.currentTarget) == null ? void 0 : _a.breakpoint) || media.breakpoint;
+        }
+      };
+      this[symbol2] = keys.map((key2, index) => {
+        const min = BREAKPOINTS[keys[index]];
+        const max = BREAKPOINTS[keys[index + 1]];
+        const query2 = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
+        const media = window.matchMedia(query2);
+        media["breakpoint"] = key2;
+        on(media, "change", callback);
+        callback(media);
+        return () => off(media, "change", callback);
+      });
+      connected == null ? void 0 : connected.call(this);
+    };
+    const disconnected = target.disconnectedCallback;
+    target.disconnectedCallback = function() {
+      for (const teardown of this[symbol2]) {
+        teardown();
+      }
+      this[symbol2] = [];
+      disconnected == null ? void 0 : disconnected.call(this);
+    };
+  };
+}
+function Style() {
+  return function(target, key) {
+    const symbol2 = Symbol();
+    const updated = target.updatedCallback;
+    target.updatedCallback = function() {
+      const element = host(this);
+      let style = this[symbol2];
+      if (!style) {
+        style = new CSSStyleSheet();
+        style.replace(":host {}");
+        element.shadowRoot.adoptedStyleSheets.push(style);
+        style = this[symbol2] = style.cssRules[0].style;
+      }
+      const value = this[key];
+      for (const key2 of Object.keys(value)) {
+        if (value[key2]) {
+          style.setProperty(key2, value[key2]);
+        } else if (value) {
+          style.removeProperty(key2);
+        }
+      }
+      return updated == null ? void 0 : updated.call(this);
+    };
+  };
+}
+const isSize = (input) => {
+  return [
+    "xxs",
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "xxl",
+    "1x",
+    "2x",
+    "3x",
+    "4x",
+    "5x",
+    "6x",
+    "7x",
+    "8x",
+    "9x"
+  ].includes(input);
+};
+const toAxis = (input, rtl) => {
+  if (!input) return input;
+  if (input.match(/start/)) input = rtl ? "right" : "left";
+  if (input.match(/end/)) input = rtl ? "left" : "right";
+  return input;
+};
 class Animation {
   constructor(config) {
     this.state = "leaved";
@@ -1570,129 +1664,35 @@ const _Scrollbar = class _Scrollbar {
 _Scrollbar.keys = /* @__PURE__ */ new Set();
 _Scrollbar.style = {};
 let Scrollbar = _Scrollbar;
-const BREAKPOINTS = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1400
-};
-function Breakpoint() {
-  return function(target, key) {
-    const symbol2 = Symbol();
-    const connected = target.connectedCallback;
-    target.connectedCallback = function() {
-      this[symbol2] = [];
-      const keys = Object.keys(BREAKPOINTS);
-      const callback = (media) => {
-        var _a;
-        if (media.matches) {
-          this[key] = ((_a = media.currentTarget) == null ? void 0 : _a.breakpoint) || media.breakpoint;
-        }
-      };
-      this[symbol2] = keys.map((key2, index) => {
-        const min = BREAKPOINTS[keys[index]];
-        const max = BREAKPOINTS[keys[index + 1]];
-        const query2 = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
-        const media = window.matchMedia(query2);
-        media["breakpoint"] = key2;
-        on(media, "change", callback);
-        callback(media);
-        return () => off(media, "change", callback);
-      });
-      connected == null ? void 0 : connected.call(this);
-    };
-    const disconnected = target.disconnectedCallback;
-    target.disconnectedCallback = function() {
-      for (const teardown of this[symbol2]) {
-        teardown();
-      }
-      this[symbol2] = [];
-      disconnected == null ? void 0 : disconnected.call(this);
-    };
-  };
-}
-function Style() {
-  return function(target, key) {
-    const symbol2 = Symbol();
-    const updated = target.updatedCallback;
-    target.updatedCallback = function() {
-      const element = host(this);
-      let style = this[symbol2];
-      if (!style) {
-        style = new CSSStyleSheet();
-        style.replace(":host {}");
-        element.shadowRoot.adoptedStyleSheets.push(style);
-        style = this[symbol2] = style.cssRules[0].style;
-      }
-      const value = this[key];
-      for (const key2 of Object.keys(value)) {
-        if (value[key2]) {
-          style.setProperty(key2, value[key2]);
-        } else if (value) {
-          style.removeProperty(key2);
-        }
-      }
-      return updated == null ? void 0 : updated.call(this);
-    };
-  };
-}
-const isSize = (input) => {
-  return [
-    "xxs",
-    "xs",
-    "sm",
-    "md",
-    "lg",
-    "xl",
-    "xxl",
-    "1x",
-    "2x",
-    "3x",
-    "4x",
-    "5x",
-    "6x",
-    "7x",
-    "8x",
-    "9x"
-  ].includes(input);
-};
-const toAxis = (input, rtl) => {
-  if (!input) return input;
-  if (input.match(/start/)) input = rtl ? "right" : "left";
-  if (input.match(/end/)) input = rtl ? "left" : "right";
-  return input;
-};
 export {
   Animation as A,
   Bind as B,
   Consumer as C,
-  Event as E,
+  Element as E,
   Method as M,
   PlusCore as P,
   Query as Q,
-  State as S,
+  Style as S,
   Watch as W,
   Property as a,
-  Element as b,
-  Provider as c,
-  styles as d,
-  isSize as e,
-  Style as f,
-  getConfig as g,
+  off as b,
+  Event as c,
+  attributes as d,
+  State as e,
+  Provider as f,
+  PlusForm as g,
   html as h,
   isCSSColor as i,
-  attributes as j,
-  QueryAll as k,
-  off as l,
-  classes as m,
-  Scrollbar as n,
+  Scrollbar as j,
+  toAxis as k,
+  classes as l,
+  Breakpoint as m,
+  isSize as n,
   on as o,
-  toAxis as p,
-  Breakpoint as q,
+  getConfig as p,
+  setConfig as q,
   query as r,
-  setConfig as s,
+  styles as s,
   toUnit as t,
-  PlusForm as u
+  QueryAll as u
 };

@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
-
 /**
  * @stable
  *

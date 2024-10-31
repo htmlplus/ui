@@ -3294,6 +3294,68 @@
           ]
         },
         {
+          "name": "plus-relative-time",
+          "doc-url": "https://www.htmlplus.io/javascript/element/relative-time",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "format",
+                "default": "'long'",
+                "description": "The format style for the relative time."
+              },
+              {
+                "name": "numeric",
+                "default": "'auto'",
+                "description": "Determines whether the numeric value should always be displayed."
+              },
+              {
+                "name": "sync",
+                "default": false,
+                "description": "Determines whether the relative time should be updated automatically."
+              },
+              {
+                "name": "value",
+                "description": "The date and time to be displayed in a relative format."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "format",
+              "value": {
+                "type": "'long' | 'short' | 'narrow'"
+              },
+              "default": "'long'",
+              "description": "The format style for the relative time."
+            },
+            {
+              "name": "numeric",
+              "value": {
+                "type": "'always' | 'auto'"
+              },
+              "default": "'auto'",
+              "description": "Determines whether the numeric value should always be displayed."
+            },
+            {
+              "name": "sync",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Determines whether the relative time should be updated automatically."
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "Date"
+              },
+              "description": "The date and time to be displayed in a relative format."
+            }
+          ],
+          "description": "Outputs a localized time phrase relative to the provided datetime."
+        },
+        {
           "name": "plus-scroll-detector",
           "doc-url": "https://www.htmlplus.io/javascript/element/scroll-detector",
           "js": {

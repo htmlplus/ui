@@ -1,6 +1,5 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-
 export declare class Switch extends PlusCore {
     /**
      * Puts the switch in checked state.

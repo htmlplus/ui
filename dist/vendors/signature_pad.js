@@ -1,5 +1,5 @@
 /*!
- * Signature Pad v5.0.2 | https://github.com/szimek/signature_pad
+ * Signature Pad v5.0.4 | https://github.com/szimek/signature_pad
  * (c) 2024 Szymon Nowak | Released under the MIT license
  */
 class Point {
@@ -39,7 +39,7 @@ class Bezier {
     const l2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
     const dxm = m1.x - m2.x;
     const dym = m1.y - m2.y;
-    const k = l2 / (l1 + l2);
+    const k = l1 + l2 == 0 ? 0 : l2 / (l1 + l2);
     const cm = { x: m2.x + dxm * k, y: m2.y + dym * k };
     const tx = s2.x - cm.x;
     const ty = s2.y - cm.y;
@@ -83,7 +83,7 @@ class SignatureEventTarget {
   constructor() {
     try {
       this._et = new EventTarget();
-    } catch (error) {
+    } catch (_a) {
       this._et = document;
     }
   }
@@ -197,13 +197,16 @@ class SignaturePad extends SignatureEventTarget {
       this._strokeEnd(this._touchEventToSignatureEvent(event));
     };
     this._handlePointerDown = (event) => {
-      if (!this._isLeftButtonPressed(event) || this._drawingStroke) {
+      if (!event.isPrimary || !this._isLeftButtonPressed(event) || this._drawingStroke) {
         return;
       }
       event.preventDefault();
       this._strokeBegin(this._pointerEventToSignatureEvent(event));
     };
     this._handlePointerMove = (event) => {
+      if (!event.isPrimary) {
+        return;
+      }
       if (!this._isLeftButtonPressed(event, true) || !this._drawingStroke) {
         this._strokeEnd(this._pointerEventToSignatureEvent(event), false);
         return;
@@ -212,7 +215,7 @@ class SignaturePad extends SignatureEventTarget {
       this._strokeMoveUpdate(this._pointerEventToSignatureEvent(event));
     };
     this._handlePointerUp = (event) => {
-      if (this._isLeftButtonPressed(event)) {
+      if (!event.isPrimary || this._isLeftButtonPressed(event)) {
         return;
       }
       event.preventDefault();

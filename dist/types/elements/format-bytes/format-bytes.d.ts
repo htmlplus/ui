@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { FormatBytesDisplay, FormatBytesStandard, FormatBytesUnit } from './format-bytes.types';
-
 /**
  * @stable
  */

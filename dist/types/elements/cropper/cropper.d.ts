@@ -2,7 +2,6 @@ import { EventEmitter } from '@htmlplus/element';
 import { default as CropperCoreType } from 'cropperjs';
 import { PlusCore } from '../../core';
 import { CropperCropEvent, CropperAspectRatio, CropperValue, CropperMode, CropperPointerEvent, CropperResizer, CropperResizerShape, CropperResponsive, CropperShape, CropperView, CropperZoomable, CropperZoomEvent } from './cropper.types';
-
 /**
  * @thirdParty
  * @stable

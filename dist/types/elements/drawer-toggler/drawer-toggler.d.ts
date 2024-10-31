@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { DrawerContext } from '../drawer/drawer.context';
-
 /**
  * @subset
  *

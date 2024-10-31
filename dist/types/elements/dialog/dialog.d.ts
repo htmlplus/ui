@@ -3,7 +3,6 @@ import { PlusCore } from '../../core';
 import { Animation } from '../../services';
 import { DialogContext } from './dialog.context';
 import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
-
 /**
  * @part backdrop - Backdrop element.
  *

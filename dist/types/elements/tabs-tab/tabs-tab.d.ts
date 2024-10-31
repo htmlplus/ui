@@ -1,6 +1,5 @@
 import { PlusCore } from '../../core';
 import { TabsContext } from '../tabs/tabs.context';
-
 /**
  * TODO: Tabs make it easy to switch between different views.
  * @subset

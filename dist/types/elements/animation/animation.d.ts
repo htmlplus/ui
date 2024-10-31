@@ -1,7 +1,6 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { AnimationComposite, AnimationDirection, AnimationFill, AnimationIterationComposite } from './animation.types';
-
 /**
  * @stable
  *
