@@ -1,15 +1,15 @@
 export const API_LIST = '/api/examples';
 export const API_DETAILS = '/api/examples/';
 export const MAPPER = [
-  ['https://cdn.skypack.dev/@htmlplus/ui/config.js', '/src/config/index.ts'],
+  ['https://esm.run/@htmlplus/ui/config.js', '/src/config/index.ts'],
   [
-    'https://cdn.skypack.dev/@faker-js/faker/locale/ja',
+    'https://esm.run/@faker-js/faker/locale/ja',
     '/node_modules/@faker-js/faker/dist/esm/locale/ja.mjs'
   ],
   [
-    'https://cdn.skypack.dev/@htmlplus/ui/animation/names/(.*?).js',
+    'https://esm.run/@htmlplus/ui/animation/names/(.*?).js',
     '/src/elements/animation/assets/names/$1.js'
   ],
-  ['https://cdn.skypack.dev/@htmlplus/ui/(.*?).js', '/src/elements/$1/$1.tsx'],
-  ['https://cdn.skypack.dev/', '/node_modules/']
+  ['https://esm.run/@htmlplus/ui/(.*?).js', '/src/elements/$1/$1.tsx'],
+  ['https://esm.run/', '/node_modules/']
 ];
