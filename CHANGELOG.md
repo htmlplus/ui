@@ -1,3 +1,14 @@
+## [1.4.0](https://github.com/htmlplus/ui/compare/v1.3.7...v1.4.0) (2024-10-31)
+
+### Features
+
+* Add the `RelativeTime` element ([ecf63fa](https://github.com/htmlplus/ui/commit/ecf63fa99f55f4dce08591855ccaac6c3792cb31))
+
+### Bug Fixes
+
+* Include the breaking change configuration in the '.releaserc' file ([be98bd1](https://github.com/htmlplus/ui/commit/be98bd15b400c3426a407d1d90a677484646489e))
+* Update all npm packages and integrate the latest changes into the source code ([6ce69f2](https://github.com/htmlplus/ui/commit/6ce69f2aa3d1b135c5eb252028f5b94435fde84f))
+
 ## [1.3.7](https://github.com/htmlplus/ui/compare/v1.3.6...v1.3.7) (2024-10-11)
 
 ### Bug Fixes
