@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/htmlplus/ui/compare/v1.4.0...v1.4.1) (2024-10-31)
+
+### Bug Fixes
+
+* Incorporate asset JSON files into the output ([8d99816](https://github.com/htmlplus/ui/commit/8d99816ef8178b9f844ea9180ddba722be53c2cd))
+
 ## [1.4.0](https://github.com/htmlplus/ui/compare/v1.3.7...v1.4.0) (2024-10-31)
 
 ### Features
