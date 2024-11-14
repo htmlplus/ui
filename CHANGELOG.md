@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/htmlplus/ui/compare/v1.4.1...v1.5.0) (2024-11-14)
+
+### Features
+
+* Add the `AppProgressBar` element ([58aeeb1](https://github.com/htmlplus/ui/commit/58aeeb1dec372f3059f9b038104f22fe0ad8a943))
+
 ## [1.4.1](https://github.com/htmlplus/ui/compare/v1.4.0...v1.4.1) (2024-10-31)
 
 ### Bug Fixes
