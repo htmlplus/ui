@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -398,6 +398,88 @@
               "description": "The default slot."
             }
           ]
+        },
+        {
+          "name": "plus-app-progress-bar",
+          "doc-url": "https://www.htmlplus.io/javascript/element/app-progress-bar",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "minimum",
+                "default": "0.08",
+                "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
+              },
+              {
+                "name": "trickleDisabled",
+                "description": "Turn off the automatic incrementing behavior by setting this to `true`."
+              },
+              {
+                "name": "trickleRate",
+                "default": "0.02",
+                "description": "The rate at which the progress bar increments when trickling."
+              },
+              {
+                "name": "trickleSpeed",
+                "default": "800",
+                "description": "Adjust how often to trickle/increment, in ms."
+              },
+              {
+                "name": "done",
+                "description": "Hides the progress bar. If true is passed, the bar briefly appears before hiding."
+              },
+              {
+                "name": "increase",
+                "description": "Increments by a random amount."
+              },
+              {
+                "name": "set",
+                "description": "Adjusts the progress of the bar, with the argument representing a value between `0` and `1`."
+              },
+              {
+                "name": "start",
+                "description": "Shows the progress bar."
+              },
+              {
+                "name": "trickle",
+                "description": "Increments the progress by a random amount based on the trickle rate."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "minimum",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.08",
+              "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
+            },
+            {
+              "name": "trickle-disabled",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Turn off the automatic incrementing behavior by setting this to `true`."
+            },
+            {
+              "name": "trickle-rate",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.02",
+              "description": "The rate at which the progress bar increments when trickling."
+            },
+            {
+              "name": "trickle-speed",
+              "value": {
+                "type": "number"
+              },
+              "default": "800",
+              "description": "Adjust how often to trickle/increment, in ms."
+            }
+          ],
+          "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations."
         },
         {
           "name": "plus-aspect-ratio",

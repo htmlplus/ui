@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-10-24T14:14:12.346Z",
+      "lastModified": "2024-10-31T21:52:00.644Z",
       "methods": [
         {
           "async": false,
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2024-10-24T14:14:12.374Z",
+      "lastModified": "2024-10-31T21:52:00.642Z",
       "methods": [
         {
           "async": false,
@@ -447,8 +447,124 @@
     },
     {
       "events": [],
+      "key": "app-progress-bar",
+      "lastModified": "2024-11-14T15:55:49.889Z",
+      "methods": [
+        {
+          "async": false,
+          "name": "done",
+          "parameters": [
+            {
+              "required": false,
+              "name": "force",
+              "type": "boolean"
+            }
+          ],
+          "returns": "void",
+          "signature": "done(force?: boolean) => void",
+          "description": "Hides the progress bar. If true is passed, the bar briefly appears before hiding."
+        },
+        {
+          "async": false,
+          "name": "increase",
+          "parameters": [
+            {
+              "required": false,
+              "name": "amount",
+              "type": "number"
+            }
+          ],
+          "returns": "void",
+          "signature": "increase(amount?: number) => void",
+          "description": "Increments by a random amount."
+        },
+        {
+          "async": false,
+          "name": "set",
+          "parameters": [
+            {
+              "required": true,
+              "name": "progress",
+              "type": "number"
+            }
+          ],
+          "returns": "void",
+          "signature": "set(progress: number) => void",
+          "description": "Adjusts the progress of the bar, with the argument representing a value between `0` and `1`."
+        },
+        {
+          "async": false,
+          "name": "start",
+          "parameters": [],
+          "returns": "void",
+          "signature": "start() => void",
+          "description": "Shows the progress bar."
+        },
+        {
+          "async": false,
+          "name": "trickle",
+          "parameters": [],
+          "returns": "void",
+          "signature": "trickle() => void",
+          "description": "Increments the progress by a random amount based on the trickle rate."
+        }
+      ],
+      "properties": [
+        {
+          "attribute": "minimum",
+          "initializer": "0.08",
+          "name": "minimum",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
+        },
+        {
+          "attribute": "trickle-disabled",
+          "name": "trickleDisabled",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Turn off the automatic incrementing behavior by setting this to `true`."
+        },
+        {
+          "attribute": "trickle-rate",
+          "initializer": "0.02",
+          "name": "trickleRate",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "The rate at which the progress bar increments when trickling."
+        },
+        {
+          "attribute": "trickle-speed",
+          "initializer": "800",
+          "name": "trickleSpeed",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Adjust how often to trickle/increment, in ms."
+        }
+      ],
+      "readmeContent": "# App Progress Bar\n\nA progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Customized\n\n<Example src=\"examples/customized\" />\n\n### Methods\n\n<Example src=\"examples/methods\" />\n\n### Minimum\n\n<Example src=\"examples/minimum\" />\n\n### Trickle\n\n<Example src=\"examples/trickle\" />\n\n<LastModified />\n",
+      "styles": [],
+      "title": "App Progress Bar",
+      "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations.",
+      "parts": [
+        {
+          "name": "bar",
+          "description": "The bar element."
+        }
+      ]
+    },
+    {
+      "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2024-10-24T14:14:12.376Z",
+      "lastModified": "2024-10-31T21:52:00.487Z",
       "methods": [],
       "properties": [
         {
@@ -495,7 +611,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-10-24T14:14:12.382Z",
+      "lastModified": "2024-10-31T21:52:00.591Z",
       "methods": [],
       "properties": [
         {
@@ -590,7 +706,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2024-10-24T14:14:12.384Z",
+      "lastModified": "2024-10-31T21:52:00.410Z",
       "methods": [],
       "properties": [
         {
@@ -700,7 +816,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2024-10-24T14:14:12.387Z",
+      "lastModified": "2024-10-31T21:52:00.489Z",
       "methods": [
         {
           "async": false,
@@ -800,7 +916,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2024-10-24T14:14:12.389Z",
+      "lastModified": "2024-10-31T21:52:00.644Z",
       "methods": [],
       "properties": [
         {
@@ -898,7 +1014,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2024-10-24T14:14:12.390Z",
+      "lastModified": "2024-10-31T21:52:00.644Z",
       "methods": [],
       "properties": [
         {
@@ -933,7 +1049,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2024-10-24T14:14:12.391Z",
+      "lastModified": "2024-10-31T21:52:00.591Z",
       "methods": [],
       "properties": [
         {
@@ -986,7 +1102,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2024-10-24T14:14:12.393Z",
+      "lastModified": "2024-10-31T21:52:00.596Z",
       "methods": [
         {
           "async": false,
@@ -1171,7 +1287,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2024-10-24T14:14:12.397Z",
+      "lastModified": "2024-10-31T21:52:00.643Z",
       "methods": [
         {
           "async": false,
@@ -1609,7 +1725,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2024-10-24T14:14:12.403Z",
+      "lastModified": "2024-10-31T21:52:00.586Z",
       "methods": [
         {
           "async": false,
@@ -1915,7 +2031,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-10-24T14:14:12.405Z",
+      "lastModified": "2024-10-31T21:52:00.591Z",
       "methods": [],
       "properties": [
         {
@@ -2041,7 +2157,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-10-24T14:14:12.406Z",
+      "lastModified": "2024-10-31T21:52:00.644Z",
       "methods": [
         {
           "async": false,
@@ -2248,7 +2364,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-10-24T14:14:12.408Z",
+      "lastModified": "2024-10-31T21:52:00.591Z",
       "methods": [],
       "properties": [
         {
@@ -2301,7 +2417,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2024-10-24T14:14:12.411Z",
+      "lastModified": "2024-10-31T21:52:00.643Z",
       "methods": [],
       "properties": [
         {
@@ -2393,7 +2509,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2024-10-24T14:14:12.415Z",
+      "lastModified": "2024-10-31T21:52:00.483Z",
       "methods": [],
       "properties": [
         {
@@ -3166,7 +3282,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2024-10-24T14:14:12.418Z",
+      "lastModified": "2024-10-31T21:52:00.410Z",
       "methods": [],
       "properties": [
         {
@@ -3258,7 +3374,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2024-10-24T14:14:12.419Z",
+      "lastModified": "2024-10-31T21:52:00.490Z",
       "methods": [],
       "properties": [
         {
@@ -3323,7 +3439,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-10-24T14:14:12.423Z",
+      "lastModified": "2024-11-07T21:53:35.370Z",
       "methods": [],
       "properties": [
         {
@@ -3438,7 +3554,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2024-10-30T21:00:36.742Z",
+      "lastModified": "2024-10-31T21:52:00.642Z",
       "methods": [],
       "properties": [
         {
@@ -3497,7 +3613,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2024-10-24T14:14:12.436Z",
+      "lastModified": "2024-10-31T21:52:00.489Z",
       "methods": [],
       "properties": [
         {
@@ -3570,7 +3686,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-10-24T14:14:12.439Z",
+      "lastModified": "2024-10-31T21:52:00.644Z",
       "methods": [
         {
           "async": false,
@@ -3775,7 +3891,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-10-24T14:14:12.441Z",
+      "lastModified": "2024-10-31T21:52:00.591Z",
       "methods": [],
       "properties": [
         {
@@ -3819,7 +3935,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-10-24T14:14:12.442Z",
+      "lastModified": "2024-10-31T21:52:00.410Z",
       "methods": [],
       "properties": [
         {
@@ -3895,7 +4011,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-10-24T14:14:12.444Z",
+      "lastModified": "2024-10-31T21:52:00.643Z",
       "methods": [],
       "properties": [
         {
@@ -3959,7 +4075,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2024-10-24T14:14:12.445Z",
+      "lastModified": "2024-10-31T21:52:00.591Z",
       "methods": [],
       "properties": [
         {
@@ -3997,7 +4113,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2024-10-24T14:14:12.447Z",
+      "lastModified": "2024-10-31T21:52:00.411Z",
       "methods": [],
       "properties": [
         {

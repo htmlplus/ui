@@ -1,6 +1,7 @@
 import { Accordion } from "./accordion.js";
 import { Accordions } from "./accordions.js";
 import { Animation } from "./animation.js";
+import { AppProgressBar } from "./app-progress-bar.js";
 import { AspectRatio } from "./aspect-ratio.js";
 import { Avatar } from "./avatar.js";
 import { AvatarGroup } from "./avatar-group.js";
@@ -47,6 +48,7 @@ export {
   Accordion,
   Accordions,
   Animation,
+  AppProgressBar,
   AspectRatio,
   Avatar,
   AvatarGroup,

@@ -11,6 +11,12 @@ $accordion-disabled-opacity                                               : $dis
 $accordion-padding                                                        : 1rem !default;
 $accordion-transition                                                     : all 0.2s ease-in-out !default;
 
+$app-progress-bar-height                                                  : 2px !default;
+$app-progress-bar-transition                                              : 200ms linear !default;
+$app-progress-bar-z-index                                                 : 1031 !default;
+$app-progress-bar-bar-background-color                                    : dodgerblue !default;
+$app-progress-bar-bar-transition                                          : 200ms ease !default;
+
 $avatar-background-color                                                  : hsl(from var(--plus-avatar-color) h s 90%) !default;
 $avatar-border                                                            : solid 2px white !default;
 $avatar-border-radius                                                     : $border-radius !default;

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-app-progress-bar {
+        /* This style is for demonstration purposes only and not for actual projects */
+        position: static;
+
+        height: 4px;
+        transition: 2500ms ease;
+        z-index: 1500;
+      }
+      plus-app-progress-bar::part(bar) {
+        background-color: #d63939;
+        transition: 500ms ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-app-progress-bar id="$appProgressBar"></plus-app-progress-bar>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/app-progress-bar.js';
+
+      requestAnimationFrame(() => {
+        $appProgressBar.start();
+      });
+
+      setTimeout(() => {
+        $appProgressBar.done();
+      }, 5000);
+    </script>
+  </body>
+</html>

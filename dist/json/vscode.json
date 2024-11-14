@@ -201,6 +201,45 @@
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names)."
     },
     {
+      "name": "plus-app-progress-bar",
+      "attributes": [
+        {
+          "name": "minimum",
+          "values": [],
+          "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
+        },
+        {
+          "name": "trickle-disabled",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "Turn off the automatic incrementing behavior by setting this to `true`."
+        },
+        {
+          "name": "trickle-rate",
+          "values": [],
+          "description": "The rate at which the progress bar increments when trickling."
+        },
+        {
+          "name": "trickle-speed",
+          "values": [],
+          "description": "Adjust how often to trickle/increment, in ms."
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/app-progress-bar"
+        }
+      ],
+      "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations."
+    },
+    {
       "name": "plus-aspect-ratio",
       "attributes": [
         {

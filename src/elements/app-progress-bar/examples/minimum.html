@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-app-progress-bar {
+        /* This style is for demonstration purposes only and not for actual projects */
+        position: static;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-app-progress-bar
+      id="$appProgressBar1"
+      minimum="0.25"
+      trickle-disabled
+    ></plus-app-progress-bar>
+    <br />
+    <plus-app-progress-bar
+      id="$appProgressBar2"
+      minimum="0.50"
+      trickle-disabled
+    ></plus-app-progress-bar>
+    <br />
+    <plus-app-progress-bar
+      id="$appProgressBar3"
+      minimum="0.75"
+      trickle-disabled
+    ></plus-app-progress-bar>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/app-progress-bar.js';
+
+      requestAnimationFrame(() => {
+        $appProgressBar1.start();
+        $appProgressBar2.start();
+        $appProgressBar3.start();
+      });
+    </script>
+  </body>
+</html>

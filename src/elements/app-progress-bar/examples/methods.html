@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-app-progress-bar {
+        /* This style is for demonstration purposes only and not for actual projects */
+        position: static;
+      }
+    </style>
+  </head>
+  <body isolate>
+    <plus-app-progress-bar id="$appProgressBar"></plus-app-progress-bar>
+    <br />
+    <plus-stack gap="0.5rem">
+      <button id="$start">Start</button>
+      <button id="$set">Set</button>
+      <button id="$increase">Increase</button>
+      <button id="$trickle">Trickle</button>
+      <button id="$done">Done</button>
+      <button id="$forceDone">Force Done</button>
+    </plus-stack>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/app-progress-bar.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
+
+      $start.addEventListener('click', () => {
+        $appProgressBar.start();
+      });
+
+      $set.addEventListener('click', () => {
+        $appProgressBar.set(0.4);
+      });
+
+      $increase.addEventListener('click', () => {
+        $appProgressBar.increase();
+      });
+
+      $trickle.addEventListener('click', () => {
+        $appProgressBar.trickle();
+      });
+
+      $done.addEventListener('click', () => {
+        $appProgressBar.done();
+      });
+
+      $forceDone.addEventListener('click', () => {
+        $appProgressBar.done(true);
+      });
+    </script>
+  </body>
+</html>

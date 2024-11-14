@@ -1,0 +1,26 @@
+:host {
+  height: $app-progress-bar-height;
+  transition: $app-progress-bar-transition;
+  z-index: $app-progress-bar-z-index;
+  display: block;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+[part='bar'] {
+  background-color: $app-progress-bar-bar-background-color;
+  transition: $app-progress-bar-bar-transition;
+  height: 100%;
+  width: 100%;
+}
+
+:host([state='idle']) {
+  display: none;
+}
+
+:host([state='completed']) {
+  opacity: 0;
+}
