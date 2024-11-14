@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/htmlplus/ui/compare/v1.5.0...v1.5.1) (2024-11-14)
+
+### Bug Fixes
+
+* Address the issue related to hiding the overflow of the `AppProgressBar` element ([f42736f](https://github.com/htmlplus/ui/commit/f42736fd0ed95a8d2388144239276fd20efa21d1))
+
 ## [1.5.0](https://github.com/htmlplus/ui/compare/v1.4.1...v1.5.0) (2024-11-14)
 
 ### Features
