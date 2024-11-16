@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/htmlplus/ui/compare/v1.5.1...v1.5.2) (2024-11-16)
+
+### Bug Fixes
+
+* Roll back the Node engine from version 22.10.0 to version 20.10.0 ([1536e63](https://github.com/htmlplus/ui/commit/1536e63785fbe6d99b6d10d4d6f11cfe8396c88a))
+
 ## [1.5.1](https://github.com/htmlplus/ui/compare/v1.5.0...v1.5.1) (2024-11-14)
 
 ### Bug Fixes
