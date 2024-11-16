@@ -81,7 +81,7 @@
   },
   "homepage": "https://htmlplus.io",
   "dependencies": {
-    "@htmlplus/element": "^3.1.0"
+    "@htmlplus/element": "^3.1.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
