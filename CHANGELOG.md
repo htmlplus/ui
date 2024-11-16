@@ -1,3 +1,9 @@
+## [1.5.3](https://github.com/htmlplus/ui/compare/v1.5.2...v1.5.3) (2024-11-16)
+
+### Bug Fixes
+
+* Update the @htmlplus/element dependency ([2368120](https://github.com/htmlplus/ui/commit/23681205d955a7512165ea93305c19f10db42eb6))
+
 ## [1.5.2](https://github.com/htmlplus/ui/compare/v1.5.1...v1.5.2) (2024-11-16)
 
 ### Bug Fixes
