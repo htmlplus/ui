@@ -1,3 +1,9 @@
+## [1.5.4](https://github.com/htmlplus/ui/compare/v1.5.3...v1.5.4) (2024-11-18)
+
+### Bug Fixes
+
+* Enhance the exports section in the package.json file for improved usability ([166d4e1](https://github.com/htmlplus/ui/commit/166d4e18497350c6899ac406c03f5e8d3a57ba34))
+
 ## [1.5.3](https://github.com/htmlplus/ui/compare/v1.5.2...v1.5.3) (2024-11-16)
 
 ### Bug Fixes
