@@ -26,10 +26,6 @@
       "import": "./dist/elements/*",
       "types": "./dist/types/elements/*/*.d.ts"
     },
-    "./*/*": {
-      "import": "./dist/elements/*/*",
-      "types": null
-    },
     "./config.js": {
       "import": "./dist/core/config.js",
       "types": "./dist/types/config/index.d.ts"
