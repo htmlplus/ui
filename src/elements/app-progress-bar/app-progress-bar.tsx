@@ -27,7 +27,8 @@ export class AppProgressBar extends PlusCore {
 
   /**
    * Adjust how often to trickle/increment, in ms.
-   */ @Property()
+   */
+  @Property()
   trickleSpeed?: number = 800;
 
   @Query('[part=bar]')

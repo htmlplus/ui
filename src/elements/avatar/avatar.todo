@@ -1,2 +1,3 @@
-- add `status`, `badge`, `actions`, `fallback` examples.
+- add `Variants`, `ring`, `status`, `badge`, `actions`, `fallback`, `overflow with menu` examples.
+- check the https://www.chakra-ui.com/docs/components/avatar
 - example for `Icon Inline Ratio`,  `Icon Global Ratio`, `SVG Inline Ratio`,  `SVG Global Ratio`

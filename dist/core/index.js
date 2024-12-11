@@ -833,7 +833,7 @@ const request = (target, name, previous, callback) => {
       return;
     const states = new Map(Array.from(stacks).filter((stack2) => stack2[0]).map((stack2) => [stack2[0], stack2[1].previous]));
     call(target, LIFECYCLE_UPDATE, states);
-    render(shadowRoot(target), () => call(target, METHOD_RENDER));
+    render(shadowRoot(target), () => call(target, METHOD_RENDER) ?? null);
     stacks.forEach((state) => {
       state.callbacks.forEach((callback2, index, callbacks) => {
         callback2(callbacks.length - 1 != index);

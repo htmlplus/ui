@@ -1,5 +1,5 @@
-import { P as PlusCore, a as Property, S as Style, E as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
+import { P as PlusCore, a as Property, E as Element } from "../core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;flex-grow:this-grow}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -15,11 +15,6 @@ let Spacer = class extends PlusCore {
     super(...arguments);
     this.grow = 1;
   }
-  get attributes() {
-    return {
-      style: `flex-grow: ${this.grow};`
-    };
-  }
 };
 Spacer.tag = "plus-spacer";
 Spacer.style = STYLE_IMPORTED;
@@ -28,9 +23,6 @@ __decorateClass([
     type: 128
   })
 ], Spacer.prototype, "grow", 2);
-__decorateClass([
-  Style()
-], Spacer.prototype, "attributes", 1);
 Spacer = __decorateClass([
   Element()
 ], Spacer);

@@ -1,84 +1,86 @@
-## Roadmap
+# Roadmap
 
-- [x] accordion
-- [ ] alert
-- [x] animation
-- [ ] app loading bar
-- [x] aspect-ratio
-- [ ] autocomplete
-- [x] avatar
-- [ ] badge
-- [ ] bottom-navigation
-- [ ] box
-- [ ] breadcrumb
-- [ ] browse
-- [ ] calendar
-- [ ] card
-- [ ] carosel
-- [x] center
-- [ ] checkbox
-- [ ] chips
-- [x] click-outside
-- [ ] color-picker
-- [ ] combobox
-- [x] counter
-- [x] cropper
-- [ ] data-table
-- [ ] date-picker
-- [ ] dialog
-- [x] divider
-- [ ] draggable
-- [ ] drawer
-- [ ] floating button
-- [ ] format-bytes
-- [ ] grid
-- [ ] icon
-- [ ] image
-- [ ] input
-- [x] intersection
-- [ ] key-value
-- [ ] label
-- [ ] layer
-- [ ] layout
-- [ ] list
-- [ ] menu
-- [ ] movable
-- [ ] overlay
-- [ ] pagination
-- [ ] parallax
-- [ ] placeholder
-- [ ] portal
-- [ ] progress-bar
-- [ ] radio-group
-- [ ] rating
-- [ ] ribbon
-- [ ] ruler
-- [x] scroll-detector
-- [ ] scroll-indicator
-- [ ] scroll-spy
-- [ ] scrollbar
-- [ ] select
-- [x] signature
-- [ ] skeleton-loader
-- [ ] slider
-- [ ] sortable
-- [ ] sparklines
-- [x] spinner
-- [ ] splitter
-- [ ] stamp
-- [ ] stepper
-- [x] sticky
-- [ ] switch
-- [ ] table
-- [ ] tabs
-- [ ] textarea
-- [ ] time-picker
-- [ ] timeline
-- [ ] toast
-- [ ] toolbar
-- [ ] tooltip
-- [ ] tracking
-- [ ] treeview
-- [ ] truncate
-- [ ] typography
-- [ ] uploader
+- [x] Accordion
+- [x] Accordions
+- [x] Animation
+- [x] Aspect Ratio
+- [x] Avatar
+- [x] Avatar Group
+- [x] Breadcrumb
+- [x] Browse
+- [x] Center
+- [x] Click Outside
+- [x] Counter
+- [x] Cropper
+- [x] Divider
+- [x] Faker
+- [x] Format Bytes
+- [x] Icon
+- [x] Intersection
+- [x] Scroll Detector
+- [x] Signature
+- [x] Spinner
+- [x] Sticky
+- [ ] App Progress Bar
+- [ ] Alert
+- [ ] Autocomplete
+- [ ] Badge
+- [ ] Bottom Navigation
+- [ ] Box
+- [ ] Calendar
+- [ ] Card
+- [ ] Carosel
+- [ ] Checkbox
+- [ ] Chips
+- [ ] Color Picker
+- [ ] Combobox
+- [ ] Data Table
+- [ ] Date Picker
+- [ ] Dialog
+- [ ] Draggable
+- [ ] Drawer
+- [ ] Floating Button
+- [ ] Grid
+- [ ] Image
+- [ ] Input
+- [ ] Key Value
+- [ ] Label
+- [ ] Layer
+- [ ] Layout
+- [ ] List
+- [ ] Menu
+- [ ] Movable
+- [ ] Overlay
+- [ ] Pagination
+- [ ] Parallax
+- [ ] Placeholder
+- [ ] Portal
+- [ ] Progress Bar
+- [ ] Radio Group
+- [ ] Rating
+- [ ] Ribbon
+- [ ] Ruler
+- [ ] Scroll Spy
+- [ ] Scrollbar
+- [ ] Select
+- [ ] Skeleton Loader
+- [ ] Slider
+- [ ] Sortable
+- [ ] Sparklines
+- [ ] Splitter
+- [ ] Stamp
+- [ ] Stepper
+- [ ] Switch
+- [ ] Table
+- [ ] Tabs
+- [ ] Textarea
+- [ ] Time Picker
+- [ ] Timeline
+- [ ] Toast
+- [ ] Toolbar
+- [ ] Tooltip
+- [ ] Tracking
+- [ ] Treeview
+- [ ] Truncate
+- [ ] Typography
+- [ ] Uploader

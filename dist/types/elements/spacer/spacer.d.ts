@@ -4,9 +4,6 @@ export declare class Spacer extends PlusCore {
      * TODO
      */
     grow?: number;
-    get attributes(): {
-        style: string;
-    };
 }
 
 export interface SpacerAttributes {

@@ -17,7 +17,8 @@ export declare class AppProgressBar extends PlusCore {
     trickleRate?: number;
     /**
      * Adjust how often to trickle/increment, in ms.
-     */ trickleSpeed?: number;
+     */
+    trickleSpeed?: number;
     $bar: HTMLDivElement;
     state?: 'completed' | 'idle' | 'progressing';
     progress: number | null;
