@@ -1,3 +1,9 @@
+## [1.5.5](https://github.com/htmlplus/ui/compare/v1.5.4...v1.5.5) (2024-12-12)
+
+### Bug Fixes
+
+* Update the @htmlplus/element package to resolve the rendering issue of the element template without utilizing the render function ([c22768c](https://github.com/htmlplus/ui/commit/c22768c5a4b2f75f4ec7f44b4503cc98d5128981))
+
 ## [1.5.4](https://github.com/htmlplus/ui/compare/v1.5.3...v1.5.4) (2024-11-18)
 
 ### Bug Fixes
