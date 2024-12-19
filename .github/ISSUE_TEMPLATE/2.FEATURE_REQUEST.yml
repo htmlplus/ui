@@ -17,6 +17,7 @@ body:
     attributes:
       label: Description
       description: "Describe the feature in detail, including why it's valuable."
+    validations:
       required: true
 
   - type: textarea
