@@ -1,3 +1,9 @@
+## [1.5.6](https://github.com/htmlplus/ui/compare/v1.5.5...v1.5.6) (2025-01-20)
+
+### Bug Fixes
+
+* Update the @htmlplus/element to the latest version. ([acae0f6](https://github.com/htmlplus/ui/commit/acae0f6d232a9925cffdd7810b16de2a737d60b2))
+
 ## [1.5.5](https://github.com/htmlplus/ui/compare/v1.5.4...v1.5.5) (2024-12-12)
 
 ### Bug Fixes
