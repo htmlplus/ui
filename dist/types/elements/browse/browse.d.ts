@@ -181,4 +181,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-browse": BrowseEvents & BrowseAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type BrowseElement = globalThis.HTMLPlusBrowseElement;

@@ -30,4 +30,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-header": DialogHeaderEvents & DialogHeaderAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DialogHeaderElement = globalThis.HTMLPlusDialogHeaderElement;

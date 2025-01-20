@@ -1,6 +1,7 @@
 import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { TabsContext } from './tabs.context';
+import { TabsValue } from './tabs.types';
 /**
  * @development
  *
@@ -10,7 +11,7 @@ export declare class Tabs extends PlusCore {
     /**
      * Provides your own value.
      */
-    value?: number | string;
+    value?: TabsValue;
     /**
      * You can use vertical property for vertical mode.
      */
@@ -18,9 +19,9 @@ export declare class Tabs extends PlusCore {
     /**
      * Fired when the value changes.
      */
-    plusChange: EventEmitter<any>;
+    plusChange: EventEmitter<TabsValue>;
     get state(): TabsContext;
-    change(value: number | string): void;
+    change(value: TabsValue): void;
     render(): any;
 }
 
@@ -28,7 +29,7 @@ export interface TabsAttributes {
   /**
   * Provides your own value.
   */
-  "value"?: number | string;
+  "value"?: TabsValue;
   /**
   * You can use vertical property for vertical mode.
   */
@@ -38,14 +39,14 @@ export interface TabsEvents {
   /**
   * Fired when the value changes.
   */
-  onPlusChange?: (event: CustomEvent<any>) => void;
+  onPlusChange?: (event: CustomEvent<TabsValue>) => void;
 }
 export interface TabsMethods {}
 export interface TabsProperties {
   /**
   * Provides your own value.
   */
-  value?: number | string;
+  value?: TabsValue;
   /**
   * You can use vertical property for vertical mode.
   */
@@ -61,6 +62,15 @@ declare global {
   interface HTMLElementTagNameMap {
     "plus-tabs": HTMLPlusTabsElement;
   }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs": TabsEvents & TabsAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "plus-tabs": TabsEvents & TabsAttributes & {

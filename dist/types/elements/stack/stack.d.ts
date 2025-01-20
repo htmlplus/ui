@@ -98,4 +98,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-stack": StackEvents & StackAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type StackElement = globalThis.HTMLPlusStackElement;

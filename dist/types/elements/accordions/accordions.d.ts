@@ -46,4 +46,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-accordions": AccordionsEvents & AccordionsAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type AccordionsElement = globalThis.HTMLPlusAccordionsElement;

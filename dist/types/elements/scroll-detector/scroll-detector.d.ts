@@ -85,4 +85,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-scroll-detector": ScrollDetectorEvents & ScrollDetectorAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type ScrollDetectorElement = globalThis.HTMLPlusScrollDetectorElement;

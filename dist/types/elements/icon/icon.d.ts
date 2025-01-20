@@ -129,4 +129,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-icon": IconEvents & IconAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type IconElement = globalThis.HTMLPlusIconElement;

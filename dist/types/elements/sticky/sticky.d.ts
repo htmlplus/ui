@@ -97,4 +97,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-sticky": StickyEvents & StickyAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type StickyElement = globalThis.HTMLPlusStickyElement;

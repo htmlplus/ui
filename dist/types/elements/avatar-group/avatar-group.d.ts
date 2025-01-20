@@ -57,4 +57,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type AvatarGroupElement = globalThis.HTMLPlusAvatarGroupElement;

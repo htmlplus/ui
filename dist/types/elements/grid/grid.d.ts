@@ -468,4 +468,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-grid": GridEvents & GridAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type GridElement = globalThis.HTMLPlusGridElement;

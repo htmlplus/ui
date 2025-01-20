@@ -70,4 +70,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-aspect-ratio": AspectRatioEvents & AspectRatioAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type AspectRatioElement = globalThis.HTMLPlusAspectRatioElement;

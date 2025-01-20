@@ -57,4 +57,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DialogTogglerElement = globalThis.HTMLPlusDialogTogglerElement;

@@ -90,4 +90,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-click-outside": ClickOutsideEvents & ClickOutsideAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type ClickOutsideElement = globalThis.HTMLPlusClickOutsideElement;

@@ -435,4 +435,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-cropper": CropperEvents & CropperAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type CropperElement = globalThis.HTMLPlusCropperElement;

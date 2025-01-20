@@ -44,4 +44,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-body": DialogBodyEvents & DialogBodyAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DialogBodyElement = globalThis.HTMLPlusDialogBodyElement;

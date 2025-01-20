@@ -83,4 +83,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type RelativeTimeElement = globalThis.HTMLPlusRelativeTimeElement;

@@ -69,4 +69,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type TabsBarElement = globalThis.HTMLPlusTabsBarElement;

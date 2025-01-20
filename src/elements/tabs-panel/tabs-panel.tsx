@@ -3,6 +3,7 @@ import { Consumer, Element, Property, State } from '@htmlplus/element';
 import { PlusCore } from '@/core';
 
 import { TabsContext } from '../tabs/tabs.context';
+import { TabsValue } from '../tabs/tabs.types';
 
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
@@ -16,7 +17,7 @@ export class TabsPanel extends PlusCore {
    * Provides your own value.
    */
   @Property()
-  value?: number | string;
+  value?: TabsValue;
 
   /**
    * TODO

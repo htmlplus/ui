@@ -1,5 +1,6 @@
 import { PlusCore } from '../../core';
 import { TabsContext } from '../tabs/tabs.context';
+import { TabsValue } from '../tabs/tabs.types';
 /**
  * TODO: Tabs make it easy to switch between different views.
  * @subset
@@ -14,7 +15,7 @@ export declare class TabsTab extends PlusCore {
     /**
      * Provides your own value.
      */
-    value?: number | string;
+    value?: TabsValue;
     /**
      * TODO
      */
@@ -32,7 +33,7 @@ export interface TabsTabAttributes {
   /**
   * Provides your own value.
   */
-  "value"?: number | string;
+  "value"?: TabsValue;
 }
 export interface TabsTabEvents {}
 export interface TabsTabMethods {}
@@ -44,7 +45,7 @@ export interface TabsTabProperties {
   /**
   * Provides your own value.
   */
-  value?: number | string;
+  value?: TabsValue;
   /**
   * TODO
   */
@@ -60,6 +61,15 @@ declare global {
   interface HTMLElementTagNameMap {
     "plus-tabs-tab": HTMLPlusTabsTabElement;
   }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & {

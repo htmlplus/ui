@@ -133,4 +133,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type ProgressBarElement = globalThis.HTMLPlusProgressBarElement;

@@ -113,4 +113,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type BreadcrumbElement = globalThis.HTMLPlusBreadcrumbElement;

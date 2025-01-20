@@ -204,4 +204,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tooltip": TooltipEvents & TooltipAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type TooltipElement = globalThis.HTMLPlusTooltipElement;

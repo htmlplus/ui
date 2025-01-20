@@ -206,4 +206,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-counter": CounterEvents & CounterAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type CounterElement = globalThis.HTMLPlusCounterElement;

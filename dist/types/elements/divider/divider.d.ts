@@ -112,4 +112,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-divider": DividerEvents & DividerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DividerElement = globalThis.HTMLPlusDividerElement;

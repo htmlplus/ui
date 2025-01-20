@@ -149,4 +149,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-intersection": IntersectionEvents & IntersectionAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type IntersectionElement = globalThis.HTMLPlusIntersectionElement;

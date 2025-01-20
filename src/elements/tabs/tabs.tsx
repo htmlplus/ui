@@ -3,6 +3,7 @@ import { Element, Event, EventEmitter, Property, Provider } from '@htmlplus/elem
 import { PlusCore } from '@/core';
 
 import { TabsContext } from './tabs.context';
+import { TabsValue } from './tabs.types';
 
 /**
  * @development
@@ -15,7 +16,7 @@ export class Tabs extends PlusCore {
    * Provides your own value.
    */
   @Property()
-  value?: number | string;
+  value?: TabsValue;
 
   /**
    * You can use vertical property for vertical mode.
@@ -27,7 +28,7 @@ export class Tabs extends PlusCore {
    * Fired when the value changes.
    */
   @Event({ cancelable: true })
-  plusChange!: EventEmitter<any>;
+  plusChange!: EventEmitter<TabsValue>;
 
   @Provider('tabs')
   get state(): TabsContext {
@@ -37,7 +38,7 @@ export class Tabs extends PlusCore {
     };
   }
 
-  change(value: number | string) {
+  change(value: TabsValue) {
     const event = this.plusChange(value);
 
     if (event.defaultPrevented) return;

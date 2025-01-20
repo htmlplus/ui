@@ -278,4 +278,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-signature": SignatureEvents & SignatureAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type SignatureElement = globalThis.HTMLPlusSignatureElement;

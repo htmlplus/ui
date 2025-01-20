@@ -71,4 +71,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-spinner": SpinnerEvents & SpinnerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type SpinnerElement = globalThis.HTMLPlusSpinnerElement;

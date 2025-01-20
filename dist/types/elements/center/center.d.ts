@@ -44,4 +44,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-center": CenterEvents & CenterAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type CenterElement = globalThis.HTMLPlusCenterElement;

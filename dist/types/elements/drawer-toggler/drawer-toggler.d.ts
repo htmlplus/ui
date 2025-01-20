@@ -57,4 +57,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DrawerTogglerElement = globalThis.HTMLPlusDrawerTogglerElement;

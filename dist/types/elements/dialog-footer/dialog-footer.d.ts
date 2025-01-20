@@ -30,4 +30,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-footer": DialogFooterEvents & DialogFooterAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DialogFooterElement = globalThis.HTMLPlusDialogFooterElement;

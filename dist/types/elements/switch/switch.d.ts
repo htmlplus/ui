@@ -69,4 +69,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-switch": SwitchEvents & SwitchAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type SwitchElement = globalThis.HTMLPlusSwitchElement;

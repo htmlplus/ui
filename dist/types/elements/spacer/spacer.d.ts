@@ -38,4 +38,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-spacer": SpacerEvents & SpacerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type SpacerElement = globalThis.HTMLPlusSpacerElement;

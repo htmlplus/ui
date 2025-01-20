@@ -137,4 +137,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type FormatBytesElement = globalThis.HTMLPlusFormatBytesElement;

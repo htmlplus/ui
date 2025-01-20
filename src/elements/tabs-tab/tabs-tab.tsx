@@ -3,6 +3,7 @@ import { Bind, Consumer, Element, Property, State } from '@htmlplus/element';
 import { PlusCore } from '@/core';
 
 import { TabsContext } from '../tabs/tabs.context';
+import { TabsValue } from '../tabs/tabs.types';
 
 /**
  * TODO: Tabs make it easy to switch between different views.
@@ -22,7 +23,7 @@ export class TabsTab extends PlusCore {
    * Provides your own value.
    */
   @Property()
-  value?: number | string;
+  value?: TabsValue;
 
   /**
    * TODO

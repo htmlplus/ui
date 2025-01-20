@@ -388,4 +388,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-animation": AnimationEvents & AnimationAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type AnimationElement = globalThis.HTMLPlusAnimationElement;

@@ -83,4 +83,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-faker": FakerEvents & FakerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type FakerElement = globalThis.HTMLPlusFakerElement;

@@ -82,4 +82,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-card": CardEvents & CardAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type CardElement = globalThis.HTMLPlusCardElement;

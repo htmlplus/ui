@@ -1,5 +1,6 @@
 import { PlusCore } from '../../core';
 import { TabsContext } from '../tabs/tabs.context';
+import { TabsValue } from '../tabs/tabs.types';
 /**
  * TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.
  * @subset
@@ -10,7 +11,7 @@ export declare class TabsPanel extends PlusCore {
     /**
      * Provides your own value.
      */
-    value?: number | string;
+    value?: TabsValue;
     /**
      * TODO
      */
@@ -23,7 +24,7 @@ export interface TabsPanelAttributes {
   /**
   * Provides your own value.
   */
-  "value"?: number | string;
+  "value"?: TabsValue;
 }
 export interface TabsPanelEvents {}
 export interface TabsPanelMethods {}
@@ -31,7 +32,7 @@ export interface TabsPanelProperties {
   /**
   * Provides your own value.
   */
-  value?: number | string;
+  value?: TabsValue;
   /**
   * TODO
   */
@@ -47,6 +48,15 @@ declare global {
   interface HTMLElementTagNameMap {
     "plus-tabs-panel": HTMLPlusTabsPanelElement;
   }
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & {

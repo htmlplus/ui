@@ -287,4 +287,13 @@ declare global {
     }
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-drawer": DrawerEvents & DrawerAttributes & {
+        [key: string]: any;
+      };
+    }
+  }
+}
 export type DrawerElement = globalThis.HTMLPlusDrawerElement;
