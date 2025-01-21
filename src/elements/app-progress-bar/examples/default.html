@@ -16,11 +16,11 @@
       import 'https://esm.run/@htmlplus/ui/app-progress-bar.js';
 
       requestAnimationFrame(() => {
-        $appProgressBar.start();
+        $appProgressBar?.start();
       });
 
       setTimeout(() => {
-        $appProgressBar.done();
+        $appProgressBar?.done();
       }, 1500);
     </script>
   </body>

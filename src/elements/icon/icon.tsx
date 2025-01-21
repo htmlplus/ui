@@ -64,7 +64,7 @@ export class Icon extends PlusCore {
   /**
    * Specifies the name.
    */
-  @Property()
+  @Property({ reflect: true })
   name?: string;
 
   /**

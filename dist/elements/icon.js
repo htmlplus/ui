@@ -139,6 +139,7 @@ __decorateClass([
 ], Icon.prototype, "label", 2);
 __decorateClass([
   Property({
+    reflect: true,
     type: 512
   })
 ], Icon.prototype, "name", 2);
