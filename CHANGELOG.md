@@ -1,3 +1,9 @@
+## [1.5.7](https://github.com/htmlplus/ui/compare/v1.5.6...v1.5.7) (2025-01-21)
+
+### Bug Fixes
+
+* Update some examples to ensure they function correctly ([920b6ed](https://github.com/htmlplus/ui/commit/920b6ed9d595c8b17ae75573c220e736c4e8a217))
+
 ## [1.5.6](https://github.com/htmlplus/ui/compare/v1.5.5...v1.5.6) (2025-01-20)
 
 ### Bug Fixes
