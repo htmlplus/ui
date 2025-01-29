@@ -1,0 +1,6 @@
+- add size
+- add variant 'bordered' | 'flat' | 'solid' | 'shadow' like heroui.com
+- add multiline 
+- add symbol slot  
+- more example like heroui.com
+- add copy button example

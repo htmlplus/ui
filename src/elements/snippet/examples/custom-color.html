@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-snippet[color='primary'] {
+        --plus-snippet-color: #ff5449;
+      }
+      plus-snippet[color='secondary'] {
+        --plus-snippet-color: #08dfc8;
+      }
+      plus-snippet[color='tertiary'] {
+        --plus-snippet-color: #5f9ee9;
+      }
+    </style>
+  </head>
+  <body rtl>
+    <plus-stack gap="0.5rem" items="stretch" vertical>
+      <plus-snippet symbol="$" color="primary">npm i @htmlplus/ui</plus-snippet>
+      <plus-snippet symbol="$" color="secondary">npm i @htmlplus/ui</plus-snippet>
+      <plus-snippet symbol="$" color="tertiary">npm i @htmlplus/ui</plus-snippet>
+    </plus-stack>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/snippet.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+:host {
+  // @Property() Used to adjust the color.
+  --plus-snippet-color: black;
+}
+
+:host {
+  background-color: $snippet-background-color;
+  border: $snippet-border;
+  border-radius: $snippet-border-radius;
+  color: $snippet-color;
+  gap: $snippet-gap;
+  padding: $snippet-padding;
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+pre {
+  gap: $snippet-pre-gap;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin: 0;
+  flex-grow: 1;
+}
+
+[part='default'] {
+  display: block;
+}
+
+[part='symbol'] {
+  color: $snippet-symbol-color;
+  display: contents;
+  user-select: none;
+}
