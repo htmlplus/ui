@@ -1,40 +1,13 @@
-import { Element, Property, Watch, toUnit, isCSSColor, query } from '@htmlplus/element';
+import { Element, Property, toUnit, isCSSColor, query } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
 import { Style } from '@/decorators';
 import { isSize } from '@/helpers';
+import { AsyncCache } from '@/services';
 
 import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './icon.constants';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
-
-let parser;
-
-const parse = (input: SVGElement | string): SVGElement => {
-  if (input instanceof SVGElement) return input;
-
-  const div = document.createElement('div');
-
-  div.innerHTML = input;
-
-  const element = div.firstElementChild;
-
-  if (element?.tagName?.toLowerCase() != 'svg') throw new Error();
-
-  parser ||= new DOMParser();
-
-  const parsed = parser.parseFromString(element.outerHTML, 'text/html').body.querySelector('svg');
-
-  if (!parsed) throw new Error();
-
-  const svg = document.adoptNode(parsed) as SVGElement;
-
-  svg.part.add('svg');
-
-  svg.setAttribute('xmlns', svg.getAttribute('xmlns') || 'http://www.w3.org/2000/svg');
-
-  return svg;
-};
 
 /**
  * @stable
@@ -71,10 +44,16 @@ export class Icon extends PlusCore {
    * An asynchronous function to load SVG files.
    */
   @Property()
-  resolver?: IconResolver = async (name) => {
+  resolver?: IconResolver = ({ name }) => {
     return fetch(`https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/${name}.svg`, {
       mode: 'cors'
-    }).then((response) => response.text());
+    }).then(async (response) => {
+      const body = await response.text();
+
+      if (!response.ok) throw new Error(body);
+
+      return body;
+    });
   };
 
   /**
@@ -89,19 +68,44 @@ export class Icon extends PlusCore {
   @Property({ reflect: true })
   size?: IconSize;
 
-  get cache() {
-    return getConfig('asset', 'icon', this.name);
-  }
-
-  set cache(cache) {
-    setConfig({
-      asset: {
-        icon: {
-          [this.name]: cache
-        }
+  cache = new AsyncCache<IconResolver>({
+    type: 'external',
+    key: (params) => params.name,
+    cache: () => {
+      setConfig({ asset: { icon: {} } });
+      return getConfig('asset', 'icon');
+    },
+    resolver: async (params) => {
+      if (typeof this.resolver !== 'function') {
+        console.warn(
+          [
+            `The icon element is not able to find an SVG file with the name of \`${params.name}\`. `,
+            'This element uses an asynchronous function called `resolver` to load SVG files. ',
+            'The function is defined as built-in by default. ',
+            'It is possible that it has not been reconfigured correctly. ',
+            'To solve the problem, ',
+            'read the documentation to check the correct configuration of the `resolver` property.'
+          ].join(''),
+          this.$host
+        );
+        return;
       }
-    });
-  }
+
+      try {
+        return await this.resolver(params);
+      } catch (error) {
+        console.warn(
+          [
+            `The icon element is not able to resolve an SVG file with the name of \`${params.name}\`. `,
+            `There is a problem with the \`resolver\` property, and its output cannot be used. `,
+            'Make sure that the output of the property is a string SVG.'
+          ].join(''),
+          this.$host
+        );
+        throw error;
+      }
+    }
+  });
 
   @Style()
   get style() {
@@ -113,78 +117,25 @@ export class Icon extends PlusCore {
     };
   }
 
-  @Watch('name', true)
-  watcher() {
-    requestAnimationFrame(() => this.update());
-  }
+  async update() {
+    let svg: string;
 
-  sync(input: SVGElement | string, cacheable: boolean): SVGElement {
-    const element = parse(input);
-
-    if (cacheable) {
-      this.cache = element;
+    try {
+      svg = this.name && (await this.cache.resolve({ name: this.name }));
+    } catch (error) {
+      svg = ICON_FALLBACK_SVG;
+      throw error;
     }
 
     query(this, 'svg')?.remove();
 
-    const cloned = element.cloneNode(true) as SVGElement;
+    svg = (svg || ICON_DEFAULT_SVG).replace(/<svg/, '<svg part="svg"');
 
-    this.$host.shadowRoot.appendChild(cloned);
-
-    return cloned;
-  }
-
-  update() {
-    if (this.cache instanceof Promise) {
-      this.cache
-        .then((input) => {
-          this.sync(input, true);
-        })
-        .catch(() => {
-          this.sync(ICON_FALLBACK_SVG, false);
-        });
-      return;
-    }
-
-    try {
-      if (this.sync(this.cache, true)) return;
-    } catch {}
-
-    if (typeof this.resolver != 'function') {
-      console.warn(
-        [
-          `The icon element is not able to find an SVG file with the name of \`${this.name}\`. `,
-          'This element uses an asynchronous function called `resolver` to load SVG files. ',
-          'The function is defined as built-in by default. ',
-          'It is possible that it has not been reconfigured correctly. ',
-          'To solve the problem, ',
-          'read the documentation to check the correct configuration of the `resolver` property.'
-        ].join(''),
-        this.$host
-      );
-      return;
-    }
-
-    this.cache = this.resolver(this.name, parse)
-      .then((input) => {
-        return this.sync(input, true);
-      })
-      .catch(() => {
-        this.sync(ICON_FALLBACK_SVG, false);
-
-        console.warn(
-          [
-            `The icon element is not able to resolve an SVG file with the name of \`${this.name}\`. `,
-            `There is a problem with the \`resolver\` property, and its output cannot be used. `,
-            'Make sure that the output of the property is an SVG.'
-          ].join(''),
-          this.$host
-        );
-      });
+    this.$host.shadowRoot.innerHTML += svg;
   }
 
   loadedCallback() {
-    !this.name && this.sync(ICON_DEFAULT_SVG, false);
+    this.update();
   }
 
   render() {

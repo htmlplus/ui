@@ -1,6 +1,5 @@
-export type IconParser = (input: SVGElement | string) => SVGElement;
 export type IconFlip = 'both' | 'horizontal' | 'vertical';
-export type IconResolver = (name: string, parser: IconParser) => Promise<SVGElement | string>;
+export type IconResolver = (params: { name: string }) => Promise<string>;
 export type IconSize =
   | 'xs'
   | 'sm'
