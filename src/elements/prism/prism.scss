@@ -5,10 +5,13 @@
 pre {
   // TODO: remove !important
   margin: 0 !important;
+  display: flex;
+  align-items: start;
 }
 
 code {
   display: block;
+  flex-grow: 1;
 }
 
 :host([theme='default']) {

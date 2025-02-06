@@ -17,6 +17,7 @@ let PrismCore: typeof PrismType;
  * @part code    - The code element.
  * @part pre     - The pre element.
  *
+ * @slot end     - The end slot.
  * @slot default - The default slot.
  */
 @Element()
@@ -141,6 +142,13 @@ export class Prism extends PlusCore {
     return [`language-${this.language}`].join(' ');
   }
 
+  get html() {
+    return Array.from(this.$host.childNodes)
+      .filter((node: HTMLElement) => !node.slot)
+      .map((node) => node.textContent)
+      .join('');
+  }
+
   get preClass() {
     return [`language-${this.language}`, ...this.pluginKeys].join(' ');
   }
@@ -212,7 +220,7 @@ export class Prism extends PlusCore {
       <div>
         <style />
         {/* prettier-ignore */}
-        <pre className={this.preClass} {...this.attributes}><code className={this.codeClass} part="code" dangerouslySetInnerHTML={{ __html: this.$host.innerHTML }}></code></pre>
+        <pre className={this.preClass} {...this.attributes}><code className={this.codeClass} part="code" dangerouslySetInnerHTML={{ __html: this.html }}></code><slot name="end" /></pre>
       </div>
     );
   }

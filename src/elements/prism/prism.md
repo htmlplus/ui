@@ -48,4 +48,8 @@ The basic configuration for the `resolver` property are shown here, this configu
 
 <Example src="examples/sync" />
 
+### Slot End
+
+<Example src="examples/slot-end" />
+
 <LastModified />
