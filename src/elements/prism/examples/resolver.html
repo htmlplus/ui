@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-prism language="python" theme="solarizedlight" plugins='{"line-numbers":true}'
+      >print("Hello, World!")</plus-prism
+    >
+    <script type="module">
+      import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
+
+      setConfig({
+        element: {
+          'plus-prism': {
+            property:{
+              async resolver({ key, value }) {
+                switch (key) {
+                  case 'language': {
+                    await import(`https://esm.run/prismjs/components/prism-${value}`);
+                    break;
+                  }
+                  case 'plugin': {
+                    await import(`https://esm.run/prismjs/plugins/${value}/prism-${value}`);
+                    try {
+                      const url = `https://cdn.jsdelivr.net/npm/prismjs/plugins/${value}/prism-${value}.css`;
+                      const styles = await fetch(url).then((response) => response.text());
+                      return styles;
+                    } catch {}
+                    break;
+                  }
+                  case 'theme': {
+                    const url = `https://cdn.jsdelivr.net/npm/prismjs/themes/prism-${value}.css`;
+                    const styles = await fetch(url).then((response) => response.text());
+                    return styles;
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/prism.js';
+    </script>
+  </body>
+</html>

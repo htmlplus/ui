@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-stack gap="0.5rem" items="stretch" vertical>
+      <plus-prism theme="default">const theme = 'default';</plus-prism>
+      <plus-prism theme="coy">const theme = 'coy';</plus-prism>
+      <plus-prism theme="dark">const theme = 'dark';</plus-prism>
+      <plus-prism theme="funky">const theme = 'funky';</plus-prism>
+      <plus-prism theme="okaidia">const theme = 'okaidia';</plus-prism>
+      <plus-prism theme="solarizedlight">const theme = 'solarizedlight';</plus-prism>
+      <plus-prism theme="tomorrow">const theme = 'tomorrow';</plus-prism>
+      <plus-prism theme="twilight">const theme = 'twilight';</plus-prism>
+    </plus-stack>
+    <script type="module">
+      import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
+
+      setConfig({
+        element: {
+          'plus-prism': {
+            property:{
+              async resolver({ key, value }) {
+                if (key == 'theme') {
+                  const url = `https://cdn.jsdelivr.net/npm/prismjs/themes/prism-${value}.css`;
+                  const styles = await fetch(url).then((response) => response.text());
+                  return styles;
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/prism.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
+    </script>
+  </body>
+</html>

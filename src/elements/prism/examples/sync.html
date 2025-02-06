@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-stack gap="0.5rem" items="stretch" vertical>
+      <plus-prism id="$prism1">const now = 0;</plus-prism>
+      <plus-prism id="$prism2" sync>const now = 0;</plus-prism>
+      <plus-center>
+        <button id="$change">Change</button>
+      </plus-center>
+    </plus-stack>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/center.js';
+      import 'https://esm.run/@htmlplus/ui/prism.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
+      $change.addEventListener('click', () => {
+        $prism1.innerHTML = `const now = ${Date.now()};`;
+        $prism2.innerHTML = `const now = ${Date.now()};`;
+      });
+    </script>
+  </body>
+</html>

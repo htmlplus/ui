@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-prism id="$prism"></plus-prism>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/prism.js';
+
+      $prism.innerHTML = 'class Person {\n  constructor(name) {\n    this.name = name;\n  }\n\n  sayHello() {\n    console.log(`Hello, my name is ${this.name}`);\n  }\n}';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <plus-stack gap="0.5rem" items="stretch" vertical>
+      <plus-prism language="css">p { color: red }</plus-prism>
+      <plus-prism language="csharp">string text = "Hello World!";</plus-prism>
+      <plus-prism language="rust">let arr: [i32; 4] = [10, 20, 30, 40];</plus-prism>
+    </plus-stack>
+    <script type="module">
+      import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
+
+      setConfig({
+        element: {
+          'plus-prism': {
+            property:{
+              async resolver({ key, value }) {
+                if (key == 'language') {
+                  await import(`https://esm.run/prismjs/components/prism-${value}`);
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/prism.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
+    </script>
+  </body>
+</html>
