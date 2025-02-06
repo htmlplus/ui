@@ -13,6 +13,7 @@ import type CoreType from 'signature_pad';
 import type { PointGroup } from 'signature_pad';
 
 import { PlusForm } from '@/core';
+import { ExternalDependencyError } from '@/errors';
 
 let Core;
 
@@ -347,10 +348,12 @@ export class Signature extends PlusForm {
   }
 
   toSVG() {
-    return this
-      .instance
+    return this.instance
       .toSVG()
-      .replace(/<svg[^>]*>(.*?)<\/svg>/, `<svg viewBox="0 0 ${this.$canvas.width} ${this.$canvas.height}">$1<svg>`);
+      .replace(
+        /<svg[^>]*>(.*?)<\/svg>/,
+        `<svg viewBox="0 0 ${this.$canvas.width} ${this.$canvas.height}">$1<svg>`
+      );
   }
 
   update(force: boolean, silent: boolean) {
@@ -400,10 +403,8 @@ export class Signature extends PlusForm {
           throw new Error('TODO');
         }
       })
-      .catch(() => {
-        throw new Error(
-          "The `signature` element depends on an external package, but it doesn't seem to be installed. Running `npm install signature_pad` will fix this problem."
-        );
+      .catch((error) => {
+        throw new ExternalDependencyError(this.$host, 'signature_pad', { cause: error });
       });
   }
 

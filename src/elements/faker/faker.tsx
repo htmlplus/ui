@@ -3,6 +3,7 @@ import { Element, Property } from '@htmlplus/element';
 import type { Faker as FakerCoreType } from '@faker-js/faker';
 
 import { PlusCore } from '@/core';
+import { ExternalDependencyError } from '@/errors';
 
 /**
  * @thirdParty
@@ -52,10 +53,8 @@ export class Faker extends PlusCore {
       .then((module) => {
         this.instance = module.faker;
       })
-      .catch(() => {
-        throw new Error(
-          "The `faker` element depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem."
-        );
+      .catch((error) => {
+        throw new ExternalDependencyError(this.$host, '@faker-js/faker', { cause: error });
       });
   }
 

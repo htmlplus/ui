@@ -13,6 +13,7 @@ import {
 import type CropperCoreType from 'cropperjs';
 
 import { PlusCore } from '@/core';
+import { ExternalDependencyError } from '@/errors';
 
 import {
   CropperCropEvent,
@@ -509,10 +510,8 @@ export class Cropper extends PlusCore {
       .then((module) => {
         CropperCore = module.default;
       })
-      .catch(() => {
-        throw new Error(
-          "The `cropper` element depends on an external package, but it doesn't seem to be installed. Running `npm install cropperjs` will fix this problem."
-        );
+      .catch((error) => {
+        throw new ExternalDependencyError(this.$host, 'cropperjs', { cause: error });
       });
   }
 

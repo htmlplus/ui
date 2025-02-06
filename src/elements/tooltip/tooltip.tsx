@@ -3,6 +3,7 @@ import { Bind, Element, Method, Property, Query, Watch, State, off, on } from '@
 import type * as FloatingCoreType from '@floating-ui/dom';
 
 import { PlusCore } from '@/core';
+import { ExternalDependencyError } from '@/errors';
 
 import {
   TooltipDelay,
@@ -325,10 +326,8 @@ export class Tooltip extends PlusCore {
         FloatingCore = module;
         this.initialize();
       })
-      .catch(() => {
-        throw new Error(
-          "The `tooltip` element depends on an external package, but it doesn't seem to be installed. Running `npm install @floating-ui/dom` will fix this problem."
-        );
+      .catch((error) => {
+        throw new ExternalDependencyError(this.$host, '@floating-ui/dom', { cause: error });
       });
   }
 
