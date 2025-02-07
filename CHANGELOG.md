@@ -1,3 +1,16 @@
+## [1.6.0](https://github.com/htmlplus/ui/compare/v1.5.7...v1.6.0) (2025-02-07)
+
+### Features
+
+* Add the `Prism` element ([25963c3](https://github.com/htmlplus/ui/commit/25963c3f862fc4590ab5a4e57a5567a93d361dbe))
+* Add the `Snippet` element ([312cdea](https://github.com/htmlplus/ui/commit/312cdea1eb5edced3b1cb50c688951f2f556ed63))
+
+### Bug Fixes
+
+* Revise and enhance the examples for the `prism` element ([63d79e6](https://github.com/htmlplus/ui/commit/63d79e669e9b4b3a72f8b5930e37b14e2c521757))
+* Update the `prism` element's `multiline` example ([e74438d](https://github.com/htmlplus/ui/commit/e74438d97c46ea4821530ae1e07949c7f150bfae))
+* Update the type of the`resolver` property in the `icon` element ([405fddf](https://github.com/htmlplus/ui/commit/405fddfcd465c5e640a5328c6d6866c872cb3ec9))
+
 ## [1.5.7](https://github.com/htmlplus/ui/compare/v1.5.6...v1.5.7) (2025-01-21)
 
 ### Bug Fixes
