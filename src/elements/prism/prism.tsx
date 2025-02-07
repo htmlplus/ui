@@ -15,9 +15,10 @@ let PrismCore: typeof PrismType;
  * @dependencies prismjs
  *
  * @part code    - The code element.
+ * @part copy    - The copy element.
  * @part pre     - The pre element.
  *
- * @slot end     - The end slot.
+ * @slot copy    - The copy slot.
  * @slot default - The default slot.
  */
 @Element()
@@ -143,10 +144,11 @@ export class Prism extends PlusCore {
   }
 
   get html() {
-    return Array.from(this.$host.childNodes)
-      .filter((node: HTMLElement) => !node.slot)
-      .map((node) => node.textContent)
-      .join('');
+    const cloned = this.$host.cloneNode(true) as HTMLElement;
+
+    cloned.querySelectorAll('[slot]').forEach((slot) => slot.remove());
+
+    return cloned.innerHTML;
   }
 
   get preClass() {
@@ -220,7 +222,7 @@ export class Prism extends PlusCore {
       <div>
         <style />
         {/* prettier-ignore */}
-        <pre className={this.preClass} {...this.attributes}><code className={this.codeClass} part="code" dangerouslySetInnerHTML={{ __html: this.html }}></code><slot name="end" /></pre>
+        <pre className={this.preClass} part="pre" {...this.attributes}><code className={this.codeClass} part="code" dangerouslySetInnerHTML={{ __html: this.html }}></code><span className="copy" part="copy"><slot name="copy" /></span></pre>
       </div>
     );
   }

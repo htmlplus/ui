@@ -1,5 +1,6 @@
 :host {
   display: block;
+  direction: ltr;
 }
 
 pre {
@@ -12,6 +13,15 @@ pre {
 code {
   display: block;
   flex-grow: 1;
+}
+
+// TODO: find a better solution
+.copy {
+  width: 0;
+  direction: rtl;
+  slot {
+    direction: ltr;
+  }
 }
 
 :host([theme='default']) {
