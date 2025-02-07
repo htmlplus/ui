@@ -3703,6 +3703,57 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport)."
     },
     {
+      "name": "plus-prism",
+      "attributes": [
+        {
+          "name": "language",
+          "values": [],
+          "description": "The programming language to highlight."
+        },
+        {
+          "name": "theme",
+          "values": [],
+          "description": "The theme to apply for syntax highlighting."
+        },
+        {
+          "name": "plugins",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "Plugins to enhance Prism's functionality."
+        },
+        {
+          "name": "sync",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "Whether to synchronize updates with DOM changes."
+        },
+        {
+          "name": "resolver",
+          "values": [],
+          "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/prism"
+        }
+      ],
+      "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/)."
+    },
+    {
       "name": "plus-progress-bar",
       "attributes": [
         {
@@ -3974,6 +4025,28 @@
         }
       ],
       "description": "Allows user to draw smooth signatures."
+    },
+    {
+      "name": "plus-snippet",
+      "attributes": [
+        {
+          "name": "color",
+          "values": [],
+          "description": "Specifies the color."
+        },
+        {
+          "name": "symbol",
+          "values": [],
+          "description": "Specifies the symbol."
+        }
+      ],
+      "references": [
+        {
+          "name": "Source code",
+          "url": "https://www.htmlplus.io/javascript/element/snippet"
+        }
+      ],
+      "description": "A component that can be used to display inline code snippets."
     },
     {
       "name": "plus-spacer",

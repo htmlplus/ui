@@ -1421,6 +1421,30 @@ __decorateClass([
 __decorateClass([
   Watch("value", true)
 ], PlusForm.prototype, "valueWatcher", 1);
+class ExternalDependencyError extends Error {
+  constructor(element, key, options) {
+    const message = [
+      `The "${element.localName}" element depends on an external package, `,
+      `but it doesn't seem to be installed. `,
+      `Running "npm install ${key}" will fix this problem.`
+    ].join("");
+    super(message, options);
+    this.name = "ExternalDependencyError";
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ExternalDependencyError);
+    }
+  }
+}
+class NotEmptyPropertyError extends Error {
+  constructor(element, key, options) {
+    const message = `The "${element.localName}" element has a property named "${key}" that must not be empty.`;
+    super(message, options);
+    this.name = "NotEmptyPropertyError";
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, NotEmptyPropertyError);
+    }
+  }
+}
 const BREAKPOINTS = {
   xs: 0,
   sm: 576,
@@ -1489,32 +1513,6 @@ function Style() {
     };
   };
 }
-const isSize = (input) => {
-  return [
-    "xxs",
-    "xs",
-    "sm",
-    "md",
-    "lg",
-    "xl",
-    "xxl",
-    "1x",
-    "2x",
-    "3x",
-    "4x",
-    "5x",
-    "6x",
-    "7x",
-    "8x",
-    "9x"
-  ].includes(input);
-};
-const toAxis = (input, rtl) => {
-  if (!input) return input;
-  if (input.match(/start/)) input = rtl ? "right" : "left";
-  if (input.match(/end/)) input = rtl ? "left" : "right";
-  return input;
-};
 class Animation {
   constructor(config) {
     this.state = "leaved";
@@ -1624,6 +1622,62 @@ class Animation {
     this.target.setAttribute(this.config.key, value);
   }
 }
+const _AsyncCache = class _AsyncCache {
+  constructor(config) {
+    this.config = config;
+    this.cache = {};
+  }
+  get currentCache() {
+    switch (this.config.type) {
+      case "basic":
+        return this.cache;
+      case "external":
+        return this.config.cache();
+      case "global":
+        return _AsyncCache.globalCache;
+    }
+  }
+  has(key) {
+    return Object.hasOwn(this.currentCache, key);
+  }
+  get(key) {
+    return this.currentCache[key];
+  }
+  remove(key) {
+    delete this.currentCache[key];
+  }
+  set(key, value) {
+    this.currentCache[key] = value;
+  }
+  getKey(...params) {
+    if (this.config.type === "external") {
+      return this.config.key(...params);
+    }
+    const namespace = this.config.type === "global" ? this.config.namespace : "";
+    const key = [namespace].concat(...params).filter((key2) => !!key2).map((param) => JSON.stringify(param)).join(":");
+    return key;
+  }
+  async resolve(...params) {
+    const key = this.getKey(...params);
+    const has = this.has(key);
+    const value = this.get(key);
+    const pending = value instanceof Promise;
+    if (has && !pending) return value;
+    if (!has) {
+      this.set(key, this.config.resolver(...params));
+    }
+    try {
+      const result = await this.get(key);
+      this.set(key, result);
+      return result;
+    } catch (error) {
+      this.remove(key);
+      throw error;
+    }
+  }
+};
+_AsyncCache.globalCache = {};
+let AsyncCache = _AsyncCache;
 const _Scrollbar = class _Scrollbar {
   static get width() {
     const div = document.createElement("div");
@@ -1664,12 +1718,39 @@ const _Scrollbar = class _Scrollbar {
 _Scrollbar.keys = /* @__PURE__ */ new Set();
 _Scrollbar.style = {};
 let Scrollbar = _Scrollbar;
+const isSize = (input) => {
+  return [
+    "xxs",
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "xxl",
+    "1x",
+    "2x",
+    "3x",
+    "4x",
+    "5x",
+    "6x",
+    "7x",
+    "8x",
+    "9x"
+  ].includes(input);
+};
+const toAxis = (input, rtl) => {
+  if (!input) return input;
+  if (input.match(/start/)) input = rtl ? "right" : "left";
+  if (input.match(/end/)) input = rtl ? "left" : "right";
+  return input;
+};
 export {
-  Animation as A,
+  AsyncCache as A,
   Bind as B,
   Consumer as C,
   Element as E,
   Method as M,
+  NotEmptyPropertyError as N,
   PlusCore as P,
   Query as Q,
   Style as S,
@@ -1679,20 +1760,22 @@ export {
   Event as c,
   attributes as d,
   State as e,
-  Provider as f,
-  PlusForm as g,
+  ExternalDependencyError as f,
+  Provider as g,
   html as h,
   isCSSColor as i,
-  Scrollbar as j,
-  toAxis as k,
-  classes as l,
-  Breakpoint as m,
-  isSize as n,
+  PlusForm as j,
+  Animation as k,
+  Scrollbar as l,
+  toAxis as m,
+  classes as n,
   on as o,
-  getConfig as p,
-  setConfig as q,
-  query as r,
+  Breakpoint as p,
+  isSize as q,
+  setConfig as r,
   styles as s,
   toUnit as t,
-  QueryAll as u
+  getConfig as u,
+  query as v,
+  QueryAll as w
 };

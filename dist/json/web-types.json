@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -3149,7 +3149,7 @@
             {
               "name": "resolver",
               "value": {
-                "type": "(name: string, parser: IconParser) => Promise<SVGElement | string>"
+                "type": "(params: {\n  name: string;\n}) => Promise<string>"
               },
               "description": "An asynchronous function to load SVG files."
             },
@@ -3242,6 +3242,87 @@
           ],
           "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
           "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
+          "name": "plus-prism",
+          "doc-url": "https://www.htmlplus.io/javascript/element/prism",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "language",
+                "default": "'javascript'",
+                "description": "The programming language to highlight."
+              },
+              {
+                "name": "theme",
+                "default": "'default'",
+                "description": "The theme to apply for syntax highlighting."
+              },
+              {
+                "name": "plugins",
+                "description": "Plugins to enhance Prism's functionality."
+              },
+              {
+                "name": "sync",
+                "description": "Whether to synchronize updates with DOM changes."
+              },
+              {
+                "name": "resolver",
+                "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "language",
+              "value": {
+                "type": "string"
+              },
+              "default": "'javascript'",
+              "description": "The programming language to highlight."
+            },
+            {
+              "name": "theme",
+              "value": {
+                "type": "string"
+              },
+              "default": "'default'",
+              "description": "The theme to apply for syntax highlighting."
+            },
+            {
+              "name": "plugins",
+              "value": {
+                "type": "{ [key in string]: boolean | { [key in string]: string } }"
+              },
+              "description": "Plugins to enhance Prism's functionality."
+            },
+            {
+              "name": "sync",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Whether to synchronize updates with DOM changes."
+            },
+            {
+              "name": "resolver",
+              "value": {
+                "type": "(params: {\n  key: string;\n  value: string;\n}) => Promise<any>"
+              },
+              "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
+            }
+          ],
+          "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/).",
+          "slots": [
+            {
+              "name": "copy",
+              "description": "The copy slot."
+            },
             {
               "name": "default",
               "description": "The default slot."
@@ -3699,6 +3780,50 @@
             }
           ],
           "description": "Allows user to draw smooth signatures."
+        },
+        {
+          "name": "plus-snippet",
+          "doc-url": "https://www.htmlplus.io/javascript/element/snippet",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "color",
+                "description": "Specifies the color."
+              },
+              {
+                "name": "symbol",
+                "description": "Specifies the symbol."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "color",
+              "value": {
+                "type": "string"
+              },
+              "description": "Specifies the color."
+            },
+            {
+              "name": "symbol",
+              "value": {
+                "type": "string"
+              },
+              "description": "Specifies the symbol."
+            }
+          ],
+          "description": "A component that can be used to display inline code snippets.",
+          "slots": [
+            {
+              "name": "copy",
+              "description": "The copy slot."
+            },
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
         },
         {
           "name": "plus-spacer",

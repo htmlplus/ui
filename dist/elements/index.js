@@ -28,11 +28,13 @@ import { Grid } from "./grid.js";
 import { GridItem } from "./grid-item.js";
 import { Icon } from "./icon.js";
 import { Intersection } from "./intersection.js";
+import { Prism } from "./prism.js";
 import { ProgressBar } from "./progress-bar.js";
 import { ProgressBarStack } from "./progress-bar-stack.js";
 import { RelativeTime } from "./relative-time.js";
 import { ScrollDetector } from "./scroll-detector.js";
 import { Signature } from "./signature.js";
+import { Snippet } from "./snippet.js";
 import { Spacer } from "./spacer.js";
 import { Spinner } from "./spinner.js";
 import { Stack } from "./stack.js";
@@ -75,11 +77,13 @@ export {
   GridItem,
   Icon,
   Intersection,
+  Prism,
   ProgressBar,
   ProgressBarStack,
   RelativeTime,
   ScrollDetector,
   Signature,
+  Snippet,
   Spacer,
   Spinner,
   Stack,

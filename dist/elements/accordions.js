@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, a as Property, f as Provider, E as Element } from "../core/index.js";
+import { P as PlusCore, h as html, a as Property, g as Provider, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;

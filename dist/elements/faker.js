@@ -1,4 +1,4 @@
-import { P as PlusCore, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, f as ExternalDependencyError, a as Property, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre-wrap}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -27,8 +27,10 @@ let Faker = class extends PlusCore {
     if (this.instance) return;
     return import("@faker-js/faker").then((module) => {
       this.instance = module.faker;
-    }).catch(() => {
-      throw new Error("The `faker` element depends on an external package, but it doesn't seem to be installed. Running `npm install @faker-js/faker` will fix this problem.");
+    }).catch((error) => {
+      throw new ExternalDependencyError(this.$host, "@faker-js/faker", {
+        cause: error
+      });
     });
   }
   render() {

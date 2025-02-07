@@ -1,4 +1,5 @@
 import { PlusCore } from '../../core';
+import { AsyncCache } from '../../services';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
 /**
  * @stable
@@ -34,17 +35,14 @@ export declare class Icon extends PlusCore {
      * Specifies the size.
      */
     size?: IconSize;
-    get cache(): any;
-    set cache(cache: any);
+    cache: AsyncCache<IconResolver>;
     get style(): {
         color: string;
         height: string;
         width: string;
         rotate: string;
     };
-    watcher(): void;
-    sync(input: SVGElement | string, cacheable: boolean): SVGElement;
-    update(): void;
+    update(): Promise<void>;
     loadedCallback(): void;
     render(): any;
 }

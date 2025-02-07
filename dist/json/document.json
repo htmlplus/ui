@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2024-11-19T17:03:08.731Z",
+      "lastModified": "2025-02-06T12:09:46.591Z",
       "methods": [
         {
           "async": false,
@@ -1287,7 +1287,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-01-21T19:04:01.750Z",
+      "lastModified": "2025-02-03T18:01:33.115Z",
       "methods": [
         {
           "async": false,
@@ -2364,7 +2364,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2024-11-19T17:03:08.761Z",
+      "lastModified": "2025-02-03T18:01:37.449Z",
       "methods": [],
       "properties": [
         {
@@ -3282,7 +3282,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-01-21T19:11:52.827Z",
+      "lastModified": "2025-01-29T20:07:39.730Z",
       "methods": [],
       "properties": [
         {
@@ -3430,6 +3430,93 @@
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "stable": true,
       "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
+    },
+    {
+      "events": [],
+      "key": "prism",
+      "lastModified": "2025-02-07T15:18:40.918Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "language",
+          "initializer": "'javascript'",
+          "name": "language",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "string",
+          "description": "The programming language to highlight."
+        },
+        {
+          "attribute": "theme",
+          "initializer": "'default'",
+          "name": "theme",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "string",
+          "description": "The theme to apply for syntax highlighting."
+        },
+        {
+          "attribute": "plugins",
+          "name": "plugins",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "PrismPlugins",
+          "typeReference": "./prism.types",
+          "description": "Plugins to enhance Prism's functionality."
+        },
+        {
+          "attribute": "sync",
+          "name": "sync",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Whether to synchronize updates with DOM changes."
+        },
+        {
+          "attribute": "resolver",
+          "name": "resolver",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "PrismResolver",
+          "typeReference": "./prism.types",
+          "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
+        }
+      ],
+      "readmeContent": "# Prism\n\nSyntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/).\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Multiline\n\n<Example src=\"examples/multiline\" />\n\n### Language\n\nMany languages are supported by `PrismJS`, though only a few are loaded by default. These can be checked in `window.Prism.languages`. To use other languages, the `resolver` property should be configured.\n\n<Example src=\"examples/language\" />\n\n### Theme\n\nThe default theme is supported by default. If other themes are required, the `resolver` property should be configured to return a raw CSS style.\n\n<Example src=\"examples/theme\" />\n\n### Plugins\n\nTo use `PrismJS` plugins, the `plugins` property should be configured. All parameters required for plugin configuration are derived from `data-*` attributes. For instance, the `line-numbers` plugin has a configuration parameter named `data-start`, which is mapped to `start` with a valid value specified in the official `PrismJS` documentation.\n\n<Example src=\"examples/plugins\" />\n\n### Resolver\n\nThe basic configuration for the `resolver` property are shown here, this configuration support all `themes`, `plugins`, and `languages` of the `PrismJS`.\n\n<Example src=\"examples/resolver\" />\n\n### Sync\n\n<Example src=\"examples/sync\" />\n\n### Copy Slot\n\n<Example src=\"examples/copy-slot\" />\n\n<LastModified />\n",
+      "styles": [],
+      "title": "Prism",
+      "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/).",
+      "thirdParty": true,
+      "dependencies": "prismjs",
+      "parts": [
+        {
+          "name": "code",
+          "description": "The code element."
+        },
+        {
+          "name": "copy",
+          "description": "The copy element."
+        },
+        {
+          "name": "pre",
+          "description": "The pre element."
+        }
+      ],
+      "slots": [
+        {
+          "name": "copy",
+          "description": "The copy slot."
+        },
         {
           "name": "default",
           "description": "The default slot."
@@ -3686,7 +3773,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2024-11-19T17:03:08.774Z",
+      "lastModified": "2025-02-03T18:01:44.560Z",
       "methods": [
         {
           "async": false,
@@ -3863,6 +3950,70 @@
         {
           "name": "canvas",
           "description": "The canvas element."
+        }
+      ]
+    },
+    {
+      "events": [],
+      "key": "snippet",
+      "lastModified": "2025-02-06T17:13:00.461Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "color",
+          "name": "color",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "string",
+          "description": "Specifies the color."
+        },
+        {
+          "attribute": "symbol",
+          "name": "symbol",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "string",
+          "description": "Specifies the symbol."
+        }
+      ],
+      "readmeContent": "# Snippet\n\nA component that can be used to display inline code snippets.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Symbol\n\n<Example src=\"examples/symbol\" />\n\n### Color\n\n<Example src=\"examples/color\" />\n\n### Custom Color\n\n<Example src=\"examples/custom-color\" />\n\n<LastModified />\n",
+      "styles": [
+        {
+          "description": "Used to adjust the color.",
+          "initializer": "black",
+          "name": "--plus-snippet-color"
+        }
+      ],
+      "title": "Snippet",
+      "description": "A component that can be used to display inline code snippets.",
+      "parts": [
+        {
+          "name": "copy",
+          "description": "The copy element."
+        },
+        {
+          "name": "default",
+          "description": "The default element."
+        },
+        {
+          "name": "pre",
+          "description": "The pre element."
+        },
+        {
+          "name": "symbol",
+          "description": "The symbol element."
+        }
+      ],
+      "slots": [
+        {
+          "name": "copy",
+          "description": "The copy slot."
+        },
+        {
+          "name": "default",
+          "description": "The default slot."
         }
       ]
     },
@@ -4298,7 +4449,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2024-11-19T17:03:08.780Z",
+      "lastModified": "2025-02-03T18:01:48.415Z",
       "methods": [
         {
           "async": false,
