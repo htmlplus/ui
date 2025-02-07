@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
-    <plus-prism id="$prism"></plus-prism>
+    <plus-prism id="$prism" sync></plus-prism>
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/prism.js';
 
-      $prism.innerHTML = 'class Person {\n  constructor(name) {\n    this.name = name;\n  }\n\n  sayHello() {\n    console.log(`Hello, my name is ${this.name}`);\n  }\n}';
+      requestAnimationFrame(() => {
+        $prism.innerHTML = 'class Person {\n  constructor(name) {\n    this.name = name;\n  }\n  sayHello() {\n    console.log(`Hello, my name is ${this.name}`);\n  }\n}';
+      });
     </script>
   </body>
 </html>
