@@ -1,0 +1,27 @@
+.indicator {
+  box-sizing: border-box;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+.indicator:after,
+.indicator:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  border-radius: 50%;
+  background: var(--plus-loading-color-secondary);
+  animation: spin 1s linear infinite;
+  transform-origin: 0px 100%;
+}
+.indicator:before {
+  transform-origin: 0 50%;
+  background: var(--plus-loading-color-primary);
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

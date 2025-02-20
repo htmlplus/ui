@@ -1,0 +1,25 @@
+.indicator {
+  width: 48px;
+  height: 48px;
+}
+.indicator:before,
+.indicator:after {
+  content: '';
+  display: block;
+  height: 24px;
+  background: var(--plus-loading-color-primary);
+  animation: mvx 0.3s infinite ease-in alternate;
+}
+.indicator:before {
+  animation-name: mvrx;
+}
+@keyframes mvx {
+  100% {
+    transform: translateY(50%);
+  }
+}
+@keyframes mvrx {
+  100% {
+    transform: translateY(-50%);
+  }
+}

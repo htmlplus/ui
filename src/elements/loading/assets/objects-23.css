@@ -1,0 +1,40 @@
+.indicator {
+  width: 48px;
+  height: 12px;
+  background: var(--plus-loading-color-primary);
+  margin-top: 40px;
+  display: inline-block;
+  position: relative;
+}
+.indicator::after {
+  content: '';
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  position: absolute;
+  border: 15px solid transparent;
+  border-top-color: var(--plus-loading-color-primary);
+  box-sizing: border-box;
+  animation: bump 0.4s ease-in-out infinite alternate;
+}
+.indicator::before {
+  content: '';
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%, 0);
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: var(--plus-loading-color-primary);
+  box-sizing: border-box;
+  animation: bump 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes bump {
+  0% {
+    transform: translate(-50%, 5px);
+  }
+  100% {
+    transform: translate(-50%, -5px);
+  }
+}

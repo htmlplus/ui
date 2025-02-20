@@ -1,0 +1,84 @@
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--plus-loading-color-primary);
+  box-shadow:
+    32px 0 var(--plus-loading-color-primary),
+    -32px 0 var(--plus-loading-color-primary);
+  position: relative;
+  animation: flash 0.3s ease-in infinite alternate;
+}
+.indicator::before,
+.indicator::after {
+  content: '';
+  position: absolute;
+  left: -64px;
+  top: 0;
+  background: var(--plus-loading-color-primary);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform-origin: 35px -35px;
+  transform: rotate(45deg);
+  animation: hitL 0.3s ease-in infinite alternate;
+}
+
+.indicator::after {
+  left: 64px;
+  transform: rotate(-45deg);
+  transform-origin: -35px -35px;
+  animation: hitR 0.3s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+    box-shadow:
+      32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25),
+      -32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+  25% {
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+    box-shadow:
+      32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25),
+      -32px 0 hsl(from var(--plus-loading-color-primary) h s l / 1);
+  }
+  50% {
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 1);
+    box-shadow:
+      32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25),
+      -32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+  75% {
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+    box-shadow:
+      32px 0 hsl(from var(--plus-loading-color-primary) h s l / 1),
+      -32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+}
+
+@keyframes hitL {
+  0% {
+    transform: rotate(45deg);
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 1);
+  }
+  25%,
+  100% {
+    transform: rotate(0deg);
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+}
+
+@keyframes hitR {
+  0%,
+  75% {
+    transform: rotate(0deg);
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+  100% {
+    transform: rotate(-45deg);
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 1);
+  }
+}

@@ -1,0 +1,37 @@
+.indicator {
+  width: 64px;
+  height: 48px;
+  position: relative;
+  animation: split 1s ease-in infinite alternate;
+}
+.indicator::before,
+.indicator::after {
+  content: '';
+  position: absolute;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  transform: translateX(-10px);
+  background: var(--plus-loading-color-secondary);
+  opacity: 0.75;
+  backdrop-filter: blur(20px);
+}
+
+.indicator::after {
+  left: auto;
+  right: 0;
+  background: var(--plus-loading-color-primary);
+  transform: translateX(10px);
+}
+
+@keyframes split {
+  0%,
+  25% {
+    width: 64px;
+  }
+  100% {
+    width: 148px;
+  }
+}

@@ -1,0 +1,35 @@
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  background: var(--plus-loading-color-primary);
+  box-shadow:
+    -24px 0 var(--plus-loading-color-primary),
+    24px 0 var(--plus-loading-color-primary);
+  box-sizing: border-box;
+  animation: shadowPulse 2s linear infinite;
+}
+
+@keyframes shadowPulse {
+  33% {
+    background: var(--plus-loading-color-primary);
+    box-shadow:
+      -24px 0 var(--plus-loading-color-secondary),
+      24px 0 var(--plus-loading-color-primary);
+  }
+  66% {
+    background: var(--plus-loading-color-secondary);
+    box-shadow:
+      -24px 0 var(--plus-loading-color-primary),
+      24px 0 var(--plus-loading-color-primary);
+  }
+  100% {
+    background: var(--plus-loading-color-primary);
+    box-shadow:
+      -24px 0 var(--plus-loading-color-primary),
+      24px 0 var(--plus-loading-color-secondary);
+  }
+}

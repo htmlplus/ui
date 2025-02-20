@@ -1,0 +1,34 @@
+.indicator {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+.indicator:before,
+.indicator:after {
+  content: '';
+  display: block;
+  border: 32px solid transparent;
+  border-top-color: var(--plus-loading-color-primary);
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: weld-rotate 2s infinite ease-in;
+}
+.indicator:before {
+  border-color: transparent transparent transparent var(--plus-loading-color-secondary);
+  animation-delay: 0.5s;
+  animation-direction: reverse;
+}
+@keyframes weld-rotate {
+  0%,
+  25% {
+    transform: rotate(0deg);
+  }
+  50%,
+  75% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

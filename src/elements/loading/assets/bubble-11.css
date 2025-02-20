@@ -1,0 +1,26 @@
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  background: var(--plus-loading-color-primary);
+  box-sizing: border-box;
+  animation: shadowExpandX 2s linear infinite alternate;
+}
+
+@keyframes shadowExpandX {
+  0% {
+    box-shadow:
+      0 0,
+      0 0;
+    color: hsl(from var(--plus-loading-color-primary) h s l / 0.2);
+  }
+  100% {
+    box-shadow:
+      -24px 0,
+      24px 0;
+    color: hsl(from var(--plus-loading-color-primary) h s l / 0.8);
+  }
+}

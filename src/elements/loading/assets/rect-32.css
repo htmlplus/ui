@@ -1,0 +1,38 @@
+.indicator {
+  position: relative;
+  border: 24px solid;
+  border-color: var(--plus-loading-color-primary) transparent var(--plus-loading-color-primary)
+    transparent;
+  animation: rotate 2s linear infinite;
+}
+.indicator:before,
+.indicator:after {
+  content: '';
+  display: block;
+  border: 24px solid transparent;
+  border-left-color: var(--plus-loading-color-primary);
+  position: absolute;
+  left: -24px;
+  top: -24px;
+  animation: prix 1s infinite ease-in;
+  transform-origin: 0% 100%;
+}
+.indicator:before {
+  border-color: transparent var(--plus-loading-color-primary) transparent transparent;
+  transform-origin: 100% 0%;
+  animation-delay: 0.5s;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes prix {
+  20%,
+  80% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+}

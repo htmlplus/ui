@@ -28,6 +28,7 @@ export * from './grid/grid';
 export * from './grid-item/grid-item';
 export * from './icon/icon';
 export * from './intersection/intersection';
+export * from './loading/loading';
 export * from './prism/prism';
 export * from './progress-bar/progress-bar';
 export * from './progress-bar-stack/progress-bar-stack';

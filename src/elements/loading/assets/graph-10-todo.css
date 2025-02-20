@@ -1,0 +1,56 @@
+.indicator {
+  margin: auto;
+  width: 100px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  background: hsl(from var(--plus-loading-color-tertiary) h s l / 0.3);
+  border-radius: 5px;
+  box-shadow:
+    0px 35px 0 -5px #aaa,
+    0 -5px 0 0px #ddd,
+    0 -25px 0 -5px var(--plus-loading-color-primary),
+    -25px -30px 0 0px #ddd,
+    -25px 30px 0 0px #ddd,
+    25px -30px 0 0px #ddd,
+    25px 30px 0 0px #ddd,
+    20px 10px 0 5px #ddd,
+    20px -10px 0 5px #ddd,
+    -20px -10px 0 5px #ddd,
+    -20px 10px 0 5px #ddd;
+}
+.indicator:after,
+.indicator:before {
+  content: '';
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  display: block;
+  position: absolute;
+  border: 4px dashed var(--plus-loading-color-primary);
+  bottom: -4px;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+  animation: tape 4s linear infinite;
+}
+.indicator:before {
+  right: 0;
+  box-shadow:
+    0 0 0 4px var(--plus-loading-color-primary),
+    0 0 0 34px var(--plus-loading-color-tertiary);
+}
+.indicator:after {
+  left: 0;
+  box-shadow:
+    0 0 0 4px var(--plus-loading-color-primary),
+    0 0 0 65px var(--plus-loading-color-tertiary);
+}
+
+@keyframes tape {
+  0% {
+    transform: rotate(0deg) scale(0.4);
+  }
+  100% {
+    transform: rotate(-360deg) scale(0.4);
+  }
+}

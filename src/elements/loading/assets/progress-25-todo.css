@@ -1,0 +1,30 @@
+.indicator {
+  width: 120px;
+  height: 24px;
+  -webkit-mask:
+    radial-gradient(
+        circle closest-side,
+        var(--plus-loading-color-primary) 94%,
+        hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      )
+      0 0/25% 100%,
+    linear-gradient(var(--plus-loading-color-primary) 0 0) center/calc(100% - 12px)
+      calc(100% - 12px) no-repeat;
+  mask:
+    radial-gradient(
+        circle closest-side,
+        var(--plus-loading-color-primary) 94%,
+        hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      )
+      0 0/25% 100%,
+    linear-gradient(var(--plus-loading-color-primary) 0 0) center/calc(100% - 12px)
+      calc(100% - 12px) no-repeat;
+  background: linear-gradient(var(--plus-loading-color-secondary) 0 0) left/0% 100% no-repeat
+    var(--plus-loading-color-primary);
+  animation: bblprg 2s infinite linear;
+}
+@keyframes bblprg {
+  100% {
+    background-size: 100% 100%;
+  }
+}

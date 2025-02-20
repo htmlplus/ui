@@ -1,0 +1,38 @@
+.indicator {
+  border: 24px solid;
+  border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.15)
+    hsl(from var(--plus-loading-color-primary) h s l / 0.25)
+    hsl(from var(--plus-loading-color-primary) h s l / 0.35)
+    hsl(from var(--plus-loading-color-primary) h s l / 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.15)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.25)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.35)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.75);
+  }
+  33% {
+    border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.75)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.15)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.25)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.35);
+  }
+  66% {
+    border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.35)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.75)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.15)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+  100% {
+    border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.25)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.35)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.75)
+      hsl(from var(--plus-loading-color-primary) h s l / 0.15);
+  }
+}

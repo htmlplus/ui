@@ -1,4 +1,16 @@
-import { API_DETAILS, API_LIST, MAPPER } from './config';
+const MAPPER = [
+  ['https://esm.run/@htmlplus/ui/config.js', '/src/config/index.ts'],
+  [
+    'https://esm.run/@faker-js/faker/locale/ja',
+    '/node_modules/@faker-js/faker/dist/esm/locale/ja.mjs'
+  ],
+  [
+    'https://esm.run/@htmlplus/ui/animation/names/(.*?).js',
+    '/src/elements/animation/assets/names/$1.js'
+  ],
+  ['https://esm.run/@htmlplus/ui/(.*?).js', '/src/elements/$1/$1.tsx'],
+  ['https://esm.run/', '/node_modules/']
+];
 
 const $cdn = document.getElementById('cdn');
 const $menu = document.getElementById('menu');
@@ -12,7 +24,7 @@ async function getCategories() {
   const keys = await getKeys();
 
   for (const key of keys) {
-    const [, , componentId, , exampleId] = key.split('/');
+    const [, , componentId, , exampleId] = key.replace('.html', '').split('/');
 
     const exist = result.some((component) => component.id == componentId);
 
@@ -36,11 +48,11 @@ async function getCategories() {
 }
 
 async function getDetails(key) {
-  return await fetch(API_DETAILS + key).then((response) => response.text());
+  return await fetch('/' + key).then((response) => response.text());
 }
 
 async function getKeys() {
-  return await fetch(API_LIST).then((response) => response.json());
+  return await fetch('/src/elements/*/examples/*.html').then((response) => response.json());
 }
 
 async function load() {

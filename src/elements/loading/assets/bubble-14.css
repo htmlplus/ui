@@ -1,0 +1,49 @@
+.indicator {
+  width: 82px;
+  height: 18px;
+  position: relative;
+}
+.indicator::before,
+.indicator::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  top: 0;
+  background: var(--plus-loading-color-secondary);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: jump 0.5s ease-in infinite alternate;
+}
+
+.indicator::after {
+  background: hsl(from var(--plus-loading-color-tertiary) h s l / 0);
+  color: var(--plus-loading-color-primary);
+  top: 100%;
+  box-shadow:
+    32px -20px,
+    -32px -20px;
+  animation: split 0.5s ease-out infinite alternate;
+}
+
+@keyframes split {
+  0% {
+    box-shadow:
+      8px -20px,
+      -8px -20px;
+  }
+  100% {
+    box-shadow:
+      32px -20px,
+      -32px -20px;
+  }
+}
+@keyframes jump {
+  0% {
+    transform: translate(-50%, -150%);
+  }
+  100% {
+    transform: translate(-50%, 10%);
+  }
+}

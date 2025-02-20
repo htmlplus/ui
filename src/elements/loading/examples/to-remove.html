@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        background: #263038;
+      }
+      main {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+       }
+      div {
+        min-width: 200px;
+        width: 33.33%;
+        height: 360px;
+        padding: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      div:nth-child(2n+1) {
+        background: rgba(0, 0, 0, .1);
+      }
+      span {
+        position: absolute;
+        color: white;
+        top: 1rem;
+        left: 1rem;;
+      }
+    </style>
+  </head>
+  <body onload="load()">
+    <main></main>
+    <script type="module">
+      import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
+
+      setConfig({
+        element: {
+          'plus-loading': {
+            property: {
+              resolver: (key) => fetch('/' + key + '?raw').then((response) => response.text())
+            }
+          }
+        }
+      });
+    </script>
+    <script type="module">
+      import '/src/elements/loading/loading.tsx';
+    </script>
+    <script>
+      function load() {
+        fetch('/src/elements/loading/assets/**/*.*')
+          .then((response) => response.json())
+          .then((assets) => {
+            const keys = ['circle', 'bubble', 'rect', 'line', 'progress', 'text', 'objects', 'graph', 'skeleton'];
+
+            const items = assets.sort((a, b) => a.localeCompare(b));
+
+            keys
+              .map((key) => items.filter((item) => item.startsWith(`src/elements/loading/assets/${key}-`)))
+              .flat(1)
+              .forEach((asset) => {
+                document.getElementsByTagName('main').item(0).innerHTML += `<div><span>${asset.split('/').at(-1)}</span><plus-loading type="${asset}"></plus-loader></div>`;
+              })
+          });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+.indicator {
+  width: 8px;
+  height: 48px;
+  display: block;
+  margin: auto;
+  left: -20px;
+  position: relative;
+  border-radius: 4px;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow:
+      20px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25),
+      40px 0 var(--plus-loading-color-primary),
+      60px 0 var(--plus-loading-color-primary);
+  }
+  50% {
+    box-shadow:
+      20px 0 var(--plus-loading-color-primary),
+      40px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25),
+      60px 0 var(--plus-loading-color-primary);
+  }
+  100% {
+    box-shadow:
+      20px 0 var(--plus-loading-color-primary),
+      40px 0 var(--plus-loading-color-primary),
+      60px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.25);
+  }
+}

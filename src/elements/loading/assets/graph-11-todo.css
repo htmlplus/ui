@@ -1,0 +1,49 @@
+.indicator {
+  width: 120px;
+  height: 80px;
+  position: relative;
+  transform: rotate(-90deg);
+  background: linear-gradient(
+    174deg,
+    hsl(from var(--plus-loading-color-tertiary) h s l / 0) 49%,
+    var(--plus-loading-color-tertiary) 50%,
+    hsl(from var(--plus-loading-color-tertiary) h s l / 0) 51%
+  );
+}
+.indicator:after,
+.indicator:before {
+  content: '';
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  display: block;
+  position: absolute;
+  border: 4px dashed var(--plus-loading-color-primary);
+  bottom: 49px;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+  animation: tape 4s linear infinite;
+}
+.indicator:before {
+  right: -14px;
+  box-shadow:
+    0 0 0 4px var(--plus-loading-color-primary),
+    0 0 0 34px var(--plus-loading-color-tertiary),
+    0 0 5px 34px #0005;
+}
+.indicator:after {
+  left: -13px;
+  box-shadow:
+    0 0 0 4px var(--plus-loading-color-primary),
+    0 0 0 65px var(--plus-loading-color-tertiary),
+    0 0 5px 65px #0005;
+}
+
+@keyframes tape {
+  0% {
+    transform: rotate(0deg) scale(0.4);
+  }
+  100% {
+    transform: rotate(-360deg) scale(0.4);
+  }
+}

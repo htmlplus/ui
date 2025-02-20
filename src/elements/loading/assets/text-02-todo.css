@@ -1,0 +1,35 @@
+.indicator {
+  font-size: 48px;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: var(--plus-loading-color-primary);
+  letter-spacing: 2px;
+  position: relative;
+  box-sizing: border-box;
+}
+.indicator::after {
+  content: 'Loading';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #263238;
+  text-shadow:
+    0 0 2px var(--plus-loading-color-primary),
+    0 0 1px var(--plus-loading-color-primary),
+    0 0 1px var(--plus-loading-color-primary);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: animloader 6s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}

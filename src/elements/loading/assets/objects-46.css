@@ -1,0 +1,32 @@
+.indicator {
+  width: 48px;
+  height: 78px;
+  box-sizing: border-box;
+  border: 2px solid var(--plus-loading-color-primary);
+  position: relative;
+  border-radius: 50% 50% 50% 50% / 25% 25% 25% 25%;
+}
+
+.indicator::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 50%);
+  width: 10px;
+  height: 10px;
+  background: var(--plus-loading-color-primary);
+  border-radius: 50%;
+  animation: fadeDown 1s ease-out infinite;
+}
+
+@keyframes fadeDown {
+  0% {
+    top: 0%;
+    opacity: 1;
+  }
+  100% {
+    top: 60%;
+    opacity: 0;
+  }
+}

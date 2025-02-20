@@ -1,0 +1,45 @@
+.indicator {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+  background-color: var(--plus-loading-color-primary);
+  background: radial-gradient(
+    ellipse at center,
+    var(--plus-loading-color-secondary) 0%,
+    var(--plus-loading-color-secondary) 14%,
+    var(--plus-loading-color-primary) 15%,
+    var(--plus-loading-color-primary) 100%
+  );
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+.indicator::after,
+.indicator::before {
+  content: '';
+  position: absolute;
+  height: 16px;
+  width: 4px;
+  background: var(--plus-loading-color-secondary);
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  transform-origin: 25% 0;
+  box-sizing: border-box;
+  animation: rotation 10s linear infinite;
+}
+.indicator::before {
+  height: 22px;
+  width: 2px;
+  transform: translateX(-50%) rotate(0deg);
+  animation-duration: 1s;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

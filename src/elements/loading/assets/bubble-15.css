@@ -1,0 +1,25 @@
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--plus-loading-color-secondary);
+  position: relative;
+}
+.indicator:before,
+.indicator:after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  inset: 0;
+  background: var(--plus-loading-color-primary);
+  transform: rotate(0deg) translate(30px);
+  animation: rotate 1s ease infinite;
+}
+.indicator:after {
+  animation-delay: 0.5s;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg) translate(30px);
+  }
+}

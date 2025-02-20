@@ -1,0 +1,52 @@
+.indicator {
+  height: 150px;
+  width: 100px;
+  border-radius: 55px 55px 10px 10px;
+  position: relative;
+  background: var(--plus-loading-color-secondary);
+
+  background-image: linear-gradient(
+    0deg,
+    #f63a99 25%,
+    #30dcf6 25%,
+    #30dcf6 25%,
+    #30dcf6 50%,
+    #f2d200 50%,
+    #f2d200 50%,
+    #f2d200 75%,
+    #70ca5c 75%
+  );
+  background-position: 0px 0px;
+  background-size: auto 175px;
+  background-repeat: repeat-y;
+  animation: colorShift 6s linear infinite;
+}
+.indicator:before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  bottom: 15px;
+  width: 15px;
+  height: 100px;
+  border-radius: 50px;
+  background: hsl(from var(--plus-loading-color-primary) h s l / 0.5);
+}
+
+.indicator:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 0);
+  box-shadow: 0 15px 2px hsl(from var(--plus-loading-color-tertiary) h s l / 0.25) inset;
+  width: 32px;
+  height: 45px;
+  background: #e09c5f;
+  border-radius: 0 0 12px 12px;
+}
+
+@keyframes colorShift {
+  to {
+    background-position: 0 175px;
+  }
+}

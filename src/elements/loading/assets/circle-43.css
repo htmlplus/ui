@@ -1,0 +1,27 @@
+.indicator {
+  width: 8px;
+  height: 8px;
+  position: relative;
+  border-radius: 50%;
+  background: var(--plus-loading-color-primary);
+  animation: wave 1s ease-in infinite;
+}
+
+@keyframes wave {
+  0% {
+    box-shadow:
+      0 0 0 0px hsl(from var(--plus-loading-color-primary) h s l / 1),
+      0 0 0 20px hsl(from var(--plus-loading-color-primary) h s l / 0.2),
+      0 0 0 40px hsl(from var(--plus-loading-color-primary) h s l / 0.6),
+      0 0 0 60px hsl(from var(--plus-loading-color-primary) h s l / 0.4),
+      0 0 0 80px hsl(from var(--plus-loading-color-primary) h s l / 0.2);
+  }
+  100% {
+    box-shadow:
+      0 0 0 80px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      0 0 0 60px hsl(from var(--plus-loading-color-primary) h s l / 0.2),
+      0 0 0 40px hsl(from var(--plus-loading-color-primary) h s l / 0.4),
+      0 0 0 20px hsl(from var(--plus-loading-color-primary) h s l / 0.6),
+      0 0 0 0px hsl(from var(--plus-loading-color-primary) h s l / 1);
+  }
+}

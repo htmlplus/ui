@@ -1,0 +1,25 @@
+.indicator {
+  border: 24px solid var(--plus-loading-color-primary);
+  border-color: var(--plus-loading-color-secondary) var(--plus-loading-color-secondary)
+    var(--plus-loading-color-primary) var(--plus-loading-color-primary);
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite;
+}
+
+.indicator:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -125%);
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--plus-loading-color-primary);
+  border-radius: 50%;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

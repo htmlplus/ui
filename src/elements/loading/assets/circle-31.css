@@ -1,0 +1,23 @@
+.indicator {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 10px solid;
+  border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.15)
+    hsl(from var(--plus-loading-color-primary) h s l / 0.25)
+    hsl(from var(--plus-loading-color-primary) h s l / 0.35)
+    hsl(from var(--plus-loading-color-primary) h s l / 0.5);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

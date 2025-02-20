@@ -1,0 +1,17 @@
+:host {
+  --plus-loading-color-primary: white;
+  --plus-loading-color-secondary: #ff3d00;
+  --plus-loading-color-tertiary: black;
+
+  // --plus-loading-color-primary: blue;
+  // --plus-loading-color-secondary: yellow;
+  // --plus-loading-color-tertiary: pink;
+}
+
+:host {
+  display: inline-flex;
+  place-items: center;
+}
+
+// hsl(from var(--plus-loading-color-primary) h s l / 0)
+// hsl(from var(--plus-loading-color-tertiary) h s l / 0)

@@ -1,0 +1,32 @@
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--plus-loading-color-primary);
+  box-shadow:
+    32px 0 var(--plus-loading-color-primary),
+    -32px 0 var(--plus-loading-color-primary);
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.14);
+    box-shadow:
+      32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.14),
+      -32px 0 var(--plus-loading-color-primary);
+  }
+  50% {
+    background-color: var(--plus-loading-color-primary);
+    box-shadow:
+      32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.14),
+      -32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.14);
+  }
+  100% {
+    background-color: hsl(from var(--plus-loading-color-primary) h s l / 0.14);
+    box-shadow:
+      32px 0 var(--plus-loading-color-primary),
+      -32px 0 hsl(from var(--plus-loading-color-primary) h s l / 0.14);
+  }
+}

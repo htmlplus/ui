@@ -1,0 +1,11 @@
+.indicator {
+  border: 24px solid var(--plus-loading-color-primary);
+  border-color: var(--plus-loading-color-secondary) var(--plus-loading-color-primary)
+    var(--plus-loading-color-primary) var(--plus-loading-color-primary);
+  animation: rotate 2s steps(4) infinite;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

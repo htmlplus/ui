@@ -1,0 +1,101 @@
+.indicator {
+  width: 180px;
+  height: 140px;
+  display: block;
+  margin: 0 auto 20px;
+  background-image: radial-gradient(
+      circle 25px at 25px 25px,
+      var(--plus-loading-color-primary) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 50px at 50px 50px,
+      var(--plus-loading-color-primary) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 25px at 25px 25px,
+      var(--plus-loading-color-primary) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 15px at 15px 15px,
+      var(--plus-loading-color-primary) 100%,
+      transparent 0
+    ),
+    linear-gradient(var(--plus-loading-color-primary) 50px, transparent 0);
+  background-size:
+    50px 50px,
+    100px 75px,
+    50px 50px,
+    30px 32px,
+    136px 20px;
+  background-repeat: no-repeat;
+  background-position:
+    0px 30px,
+    30px 0px,
+    113px 29px,
+    147px 50px,
+    23px 60px;
+  position: relative;
+  box-sizing: border-box;
+}
+.indicator::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 65px;
+  width: 2px;
+  height: 6px;
+  color: var(--plus-loading-color-primary);
+  box-sizing: border-box;
+  animation: animloader 0.6s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow:
+      25px 0 var(--plus-loading-color-primary),
+      50px 0 var(--plus-loading-color-primary),
+      75px 0 var(--plus-loading-color-primary),
+      100px 0 var(--plus-loading-color-primary),
+      125px 0 var(--plus-loading-color-primary),
+      150px 0 var(--plus-loading-color-primary),
+      25px 0 var(--plus-loading-color-primary),
+      50px 0 var(--plus-loading-color-primary),
+      75px 0 var(--plus-loading-color-primary),
+      100px 0 var(--plus-loading-color-primary),
+      125px 0 var(--plus-loading-color-primary),
+      150px 0 var(--plus-loading-color-primary);
+  }
+  50% {
+    box-shadow:
+      25px 20px var(--plus-loading-color-primary),
+      50px 60px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      75px 30px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      100px 70px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      125px 40px var(--plus-loading-color-primary),
+      150px 60px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      25px 20px var(--plus-loading-color-primary),
+      50px 30px var(--plus-loading-color-primary),
+      75px 10px var(--plus-loading-color-primary),
+      100px 30px var(--plus-loading-color-primary),
+      125px 30px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      150px 30px hsl(from var(--plus-loading-color-primary) h s l / 0);
+  }
+  100% {
+    box-shadow:
+      25px 60px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      50px 60px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      75px 50px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      100px 70px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      125px 70px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      150px 60px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      25px 80px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      50px 80px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      75px 70px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      100px 60px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      125px 30px hsl(from var(--plus-loading-color-primary) h s l / 0),
+      150px 30px hsl(from var(--plus-loading-color-primary) h s l / 0);
+  }
+}

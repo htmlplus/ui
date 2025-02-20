@@ -1,0 +1,31 @@
+.indicator {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 10px solid;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+@keyframes animloader {
+  0% {
+    border-color: var(--plus-loading-color-primary)
+      hsl(from var(--plus-loading-color-primary) h s l / 0)
+      hsl(from var(--plus-loading-color-primary) h s l / 0)
+      hsl(from var(--plus-loading-color-primary) h s l / 0);
+  }
+  33% {
+    border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary)
+      hsl(from var(--plus-loading-color-primary) h s l / 0)
+      hsl(from var(--plus-loading-color-primary) h s l / 0);
+  }
+  66% {
+    border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary)
+      var(--plus-loading-color-primary) hsl(from var(--plus-loading-color-primary) h s l / 0);
+  }
+  100% {
+    border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary)
+      var(--plus-loading-color-primary) var(--plus-loading-color-primary);
+  }
+}

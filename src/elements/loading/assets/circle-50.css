@@ -1,0 +1,27 @@
+.indicator {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.indicator:before,
+.indicator:after {
+  content: '';
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 0 10px 2px hsl(from var(--plus-loading-color-tertiary) h s l / 0.3) inset;
+}
+.indicator:after {
+  box-shadow: 0 2px 0 var(--plus-loading-color-secondary) inset;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

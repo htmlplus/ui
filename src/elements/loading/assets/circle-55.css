@@ -1,0 +1,39 @@
+.indicator {
+  position: relative;
+  border: 24px solid hsl(from var(--plus-loading-color-tertiary) h s l / 0);
+  border-radius: 50%;
+  animation: piefill 2s linear infinite;
+}
+
+@keyframes piefill {
+  0%,
+  19% {
+    border-color: hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0);
+  }
+  20%,
+  39% {
+    border-color: var(--plus-loading-color-primary)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0);
+  }
+  40%,
+  59% {
+    border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0)
+      hsl(from var(--plus-loading-color-tertiary) h s l / 0);
+  }
+  60%,
+  79% {
+    border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary)
+      var(--plus-loading-color-primary) hsl(from var(--plus-loading-color-tertiary) h s l / 0);
+  }
+  80%,
+  100% {
+    border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary)
+      var(--plus-loading-color-primary) var(--plus-loading-color-primary);
+  }
+}
