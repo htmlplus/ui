@@ -1,10 +1,10 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  border: 10px solid;
+  border: calc(var(--plus-loading-size) / 4.8) solid;
   border-color: hsl(from var(--plus-loading-color-primary) h s l / 0.15)
     hsl(from var(--plus-loading-color-primary) h s l / 0.25)
     hsl(from var(--plus-loading-color-primary) h s l / 0.35)

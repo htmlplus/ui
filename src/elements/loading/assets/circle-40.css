@@ -1,6 +1,6 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   background: var(--plus-loading-color-primary);
   display: inline-block;
   border-radius: 50%;

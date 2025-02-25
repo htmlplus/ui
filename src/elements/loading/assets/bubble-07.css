@@ -1,15 +1,16 @@
 .indicator {
   box-sizing: border-box;
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   animation: spin 1s linear infinite;
+  display: block;
 }
 .indicator:after,
 .indicator:before {
   content: '';
-  width: 24px;
-  height: 24px;
+  width: calc(var(--plus-loading-size) / 2);
+  height: calc(var(--plus-loading-size) / 2);
   position: absolute;
   border-radius: 50%;
   background: var(--plus-loading-color-secondary);

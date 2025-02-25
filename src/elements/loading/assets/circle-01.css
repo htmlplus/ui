@@ -1,7 +1,7 @@
 .indicator {
-  width: 48px;
-  height: 48px;
-  border: 5px solid var(--plus-loading-color-primary);
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
+  border: calc(var(--plus-loading-size) / 9.6) solid var(--plus-loading-color-primary);
   border-bottom-color: var(--plus-loading-color-secondary);
   border-radius: 50%;
   display: inline-block;

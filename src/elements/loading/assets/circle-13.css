@@ -1,7 +1,7 @@
 .indicator {
-  width: 48px;
-  height: 48px;
-  border: 3px solid var(--plus-loading-color-primary);
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
+  border: calc(var(--plus-loading-size) / 16) solid var(--plus-loading-color-primary);
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -15,8 +15,8 @@
   left: 0;
   top: 0;
   background: var(--plus-loading-color-secondary);
-  width: 16px;
-  height: 16px;
+  width: calc(var(--plus-loading-size) / 3);
+  height: calc(var(--plus-loading-size) / 3);
   transform: translate(-50%, 50%);
   border-radius: 50%;
 }

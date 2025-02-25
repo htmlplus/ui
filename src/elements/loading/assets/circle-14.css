@@ -1,10 +1,10 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  border: 2px solid var(--plus-loading-color-secondary);
+  border: calc(var(--plus-loading-size) / 24) solid var(--plus-loading-color-secondary);
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
@@ -12,11 +12,11 @@
   content: '';
   box-sizing: border-box;
   position: absolute;
-  left: 4px;
-  top: 4px;
-  border: 2px solid var(--plus-loading-color-primary);
-  width: 12px;
-  height: 12px;
+  left: calc(var(--plus-loading-size) / 12);
+  top: calc(var(--plus-loading-size) / 12);
+  border: calc(var(--plus-loading-size) / 24) solid var(--plus-loading-color-primary);
+  width: calc(var(--plus-loading-size) / 4);
+  height: calc(var(--plus-loading-size) / 4);
   border-radius: 50%;
 }
 

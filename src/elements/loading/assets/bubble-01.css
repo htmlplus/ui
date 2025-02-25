@@ -1,9 +1,8 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   border-radius: 50%;
   display: block;
-  margin: 15px auto;
   position: relative;
   box-sizing: border-box;
   animation: zeroRotation 1s linear infinite alternate;
@@ -16,8 +15,8 @@
   left: 0;
   top: 0;
   background: var(--plus-loading-color-secondary);
-  width: 16px;
-  height: 16px;
+  width: calc(var(--plus-loading-size) / 3);
+  height: calc(var(--plus-loading-size) / 3);
   transform: translate(-50%, 50%);
   border-radius: 50%;
 }

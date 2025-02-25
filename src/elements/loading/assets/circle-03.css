@@ -1,6 +1,6 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   border-radius: 50%;
   position: relative;
   animation: rotate 1s linear infinite;
@@ -11,7 +11,7 @@
   position: absolute;
   inset: 0px;
   border-radius: 50%;
-  border: 5px solid var(--plus-loading-color-primary);
+  border: calc(var(--plus-loading-size) / 9.6) solid var(--plus-loading-color-primary);
   animation: prixClipFix 2s linear infinite;
 }
 

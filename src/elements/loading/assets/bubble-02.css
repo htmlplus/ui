@@ -1,8 +1,7 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   display: block;
-  margin: 15px auto;
   position: relative;
   color: var(--plus-loading-color-primary);
   box-sizing: border-box;
@@ -13,8 +12,8 @@
   content: '';
   box-sizing: border-box;
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: calc(var(--plus-loading-size) / 2);
+  height: calc(var(--plus-loading-size) / 2);
   top: 0;
   background-color: var(--plus-loading-color-primary);
   border-radius: 50%;

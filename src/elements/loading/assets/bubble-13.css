@@ -1,15 +1,14 @@
 .indicator {
-  width: 16px;
-  height: 16px;
+  width: calc(var(--plus-loading-size) / 3);
+  height: calc(var(--plus-loading-size) / 3);
   border-radius: 50%;
   display: block;
-  margin: 15px auto;
   position: relative;
   background: var(--plus-loading-color-secondary);
   color: var(--plus-loading-color-primary);
   box-shadow:
-    -24px 0,
-    24px 0;
+    calc(var(--plus-loading-size) / -2) 0,
+    calc(var(--plus-loading-size) / 2) 0;
   box-sizing: border-box;
   animation: rotation 2s ease-in-out infinite;
 }

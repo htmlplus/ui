@@ -1,10 +1,10 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  border: 3px solid;
+  border: calc(var(--plus-loading-size) / 16) solid;
   border-color: var(--plus-loading-color-primary) var(--plus-loading-color-primary) transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
@@ -18,10 +18,10 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  border: 3px solid;
+  border: calc(var(--plus-loading-size) / 16) solid;
   border-color: transparent var(--plus-loading-color-secondary) var(--plus-loading-color-secondary);
-  width: 24px;
-  height: 24px;
+  width: calc(var(--plus-loading-size) / 2);
+  height: calc(var(--plus-loading-size) / 2);
   border-radius: 50%;
   animation: rotationBack 0.5s linear infinite;
   transform-origin: center center;

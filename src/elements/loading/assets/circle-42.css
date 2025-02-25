@@ -1,14 +1,14 @@
 .indicator {
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   display: inline-block;
   position: relative;
 }
 .indicator::after,
 .indicator::before {
   content: '';
-  width: 48px;
-  height: 48px;
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
   border-radius: 50%;
   background: var(--plus-loading-color-primary);
   position: absolute;

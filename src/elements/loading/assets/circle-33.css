@@ -1,7 +1,7 @@
 .indicator {
-  width: 48px;
-  height: 48px;
-  border: 10px solid var(--plus-loading-color-primary);
+  width: var(--plus-loading-size);
+  height: var(--plus-loading-size);
+  border: calc(var(--plus-loading-size) / 4.8) solid var(--plus-loading-color-primary);
   border-radius: 50%;
   position: relative;
   transform: rotate(45deg);
@@ -11,9 +11,9 @@
   content: '';
   position: absolute;
   box-sizing: border-box;
-  inset: -10px;
+  inset: calc(var(--plus-loading-size) / -4.8);
   border-radius: 50%;
-  border: 10px solid var(--plus-loading-color-secondary);
+  border: calc(var(--plus-loading-size) / 4.8) solid var(--plus-loading-color-secondary);
   animation: prixClipFix 2s infinite linear;
 }
 

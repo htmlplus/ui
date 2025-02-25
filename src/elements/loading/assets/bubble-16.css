@@ -1,6 +1,6 @@
 .indicator {
-  width: 64px;
-  height: 12px;
+  width: calc(var(--plus-loading-size) * 4 / 3);
+  height: calc(var(--plus-loading-size) / 4);
   background: radial-gradient(circle 6px, var(--plus-loading-color-primary) 100%, transparent 0),
     radial-gradient(circle 6px, var(--plus-loading-color-primary) 100%, transparent 0);
   background-size: 12px 12px;
@@ -13,8 +13,8 @@
 .indicator:before {
   content: '';
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: calc(var(--plus-loading-size) / 4);
+  height: calc(var(--plus-loading-size) / 4);
   border-radius: 50%;
   background: var(--plus-loading-color-secondary);
   inset: 0;
