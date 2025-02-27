@@ -1,10 +1,9 @@
-import { Element, Property, Query, isCSSColor } from '@htmlplus/element';
+import { Element, Property, Style, toCSSColor, toCSSUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
 import { AsyncCache } from '@/services';
 
-import { LoadingSize } from './loading.types';
+import { LoadingResolver, LoadingSize } from './loading.types';
 
 @Element()
 export class Loading extends PlusCore {
@@ -26,35 +25,65 @@ export class Loading extends PlusCore {
   @Property({ reflect: true })
   type?: string = 'default';
 
+  /**
+   * TODO
+   */
   @Property()
-  resolver?: (type: string) => Promise<string>;
+  resolver?: LoadingResolver;
 
-  @Query('style')
-  $style!: HTMLElement;
-
-  cache = new AsyncCache<any>({
+  cache = new AsyncCache<LoadingResolver>({
     type: 'global',
     namespace: 'loading',
-    resolver: (params) => this.resolver(params)
+    resolver: async (params) => {
+      if (typeof this.resolver !== 'function') {
+        console.warn(
+          [
+            `The 'loading' element can't find the '${params.type}' file. `,
+            `It uses an async 'resolver' function to load files, which isn't set up by default. `,
+            `You may need to configure it properly. `,
+            `Check the documentation for the correct resolver setup to fix the issue.`
+          ].join(''),
+          this.$host
+        );
+        return;
+      }
+
+      try {
+        return await this.resolver(params);
+      } catch (error) {
+        console.warn(
+          [
+            `The 'loading' element is not able to resolve the '${params.type}' file. `,
+            `There is a problem with the 'resolver' property, and its output cannot be used. `,
+            'Make sure that the output of the property is correct.'
+          ].join(''),
+          this.$host
+        );
+        throw error;
+      }
+    }
   });
 
   @Style()
-  get style() {
-    return {
-      color: isCSSColor(this.color) ? this.color : undefined
-    };
-  }
+  async style() {
+    let style = '';
 
-  updatedCallback() {
-    this.cache.resolve(this.type).then((style) => {
-      this.$style.innerHTML = style;
-    });
+    if (toCSSColor(this.color)) {
+      style += `:host { --plus-loading-color: ${this.color} }`;
+    }
+
+    if (toCSSUnit(this.size)) {
+      style += `:host { --plus-loading-size: ${toCSSUnit(this.size)} }`;
+    }
+
+    style += await this.cache.resolve({ type: this.type });
+
+    return style;
   }
 
   render() {
     return (
       <host role="status">
-        <style />
         <span className="indicator"></span>
       </host>
     );

@@ -33,9 +33,15 @@
         top: 1rem;
         left: 1rem;;
       }
+      input {
+        display: block;
+        margin: 0 auto;
+      }
     </style>
+    <style id="$style"></style>
   </head>
   <body onload="load()">
+    <input type="range" min="8" max="240" oninput="change(event)" />
     <main></main>
     <script type="module">
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
@@ -44,7 +50,13 @@
         element: {
           'plus-loading': {
             property: {
-              resolver: (key) => fetch('/' + key + '?raw').then((response) => response.text())
+              resolver: ({ type }) => {
+                return new Promise((r) => {
+                  setTimeout(() => {
+                    fetch('/' + type + '?raw').then((response) => response.text()).then(r)
+                  }, 0);
+                })
+              }
             }
           }
         }
@@ -54,6 +66,9 @@
       import '/src/elements/loading/loading.tsx';
     </script>
     <script>
+      function change(event) {
+        $style.innerHTML = `plus-loading { --plus-loading-size: ${event.target.value}px }`
+      }
       function load() {
         fetch('/src/elements/loading/assets/**/*.*')
           .then((response) => response.json())
@@ -62,12 +77,16 @@
 
             const items = assets.sort((a, b) => a.localeCompare(b));
 
+            let innerHTML = '';
+
             keys
               .map((key) => items.filter((item) => item.startsWith(`src/elements/loading/assets/${key}-`)))
               .flat(1)
               .forEach((asset) => {
-                document.getElementsByTagName('main').item(0).innerHTML += `<div><span>${asset.split('/').at(-1)}</span><plus-loading type="${asset}"></plus-loader></div>`;
-              })
+                innerHTML += `<div><span>${asset.split('/').at(-1)}</span><plus-loading type="${asset}"></plus-loader></div>`;
+              });
+
+            document.getElementsByTagName('main').item(0).innerHTML = innerHTML;
           });
       }
     </script>
