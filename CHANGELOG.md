@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/htmlplus/ui/compare/v1.6.0...v1.6.1) (2025-02-28)
+
+### Bug Fixes
+
+* Enhance the logic for loading external dependencies and elevate code quality by using the `style` decorator ([8590d8c](https://github.com/htmlplus/ui/commit/8590d8c9b35425984d1c7cbb85d559ac579cef9c))
+
 ## [1.6.0](https://github.com/htmlplus/ui/compare/v1.5.7...v1.6.0) (2025-02-07)
 
 ### Features
