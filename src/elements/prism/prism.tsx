@@ -1,4 +1,4 @@
-import { Bind, Element, Property, Query, State } from '@htmlplus/element';
+import { Bind, Element, Property, State, Style } from '@htmlplus/element';
 
 import type PrismType from 'prismjs';
 
@@ -52,9 +52,6 @@ export class Prism extends PlusCore {
    */
   @Property()
   resolver?: PrismResolver;
-
-  @Query('style')
-  $style!: HTMLElement;
 
   @State()
   tick: number;
@@ -159,6 +156,7 @@ export class Prism extends PlusCore {
     return Object.keys(this.plugins || {}).filter((key) => !!this.plugins[key]);
   }
 
+  @Style()
   async update() {
     if (!PrismCore) return;
 
@@ -166,26 +164,25 @@ export class Prism extends PlusCore {
       throw new NotEmptyPropertyError(this.$host, 'language');
     }
 
-    this.$style.innerHTML = '';
+    let style = '';
 
     for (const asset of this.assets) {
       if (!asset.value) continue;
 
       const result = await this.cache.resolve(asset);
 
-      const style = result?.default || result || '';
+      const content = result?.default || result || '';
 
-      if (typeof style != 'string') continue;
+      if (typeof content != 'string') continue;
 
-      this.$style.innerHTML += style;
-    }
-
-    // TODO
-    if (this.$style.innerHTML) {
-      this.$style.innerHTML = `:host([theme="${this.theme}"]){${this.$style.innerHTML}}`;
+      style += content;
     }
 
     PrismCore.highlightAllUnder(this.$host.shadowRoot, false);
+
+    if (!style) return;
+
+    return `:host([theme="${this.theme}"]){${style}}`;
   }
 
   @Bind()
@@ -195,8 +192,8 @@ export class Prism extends PlusCore {
 
   connectedCallback() {
     return import('prismjs')
-      .then((module) => {
-        PrismCore = module;
+      .then((module: any) => {
+        PrismCore = module.default || module;
       })
       .catch((error) => {
         throw new ExternalDependencyError(this.$host, 'prismjs', { cause: error });
@@ -210,17 +207,14 @@ export class Prism extends PlusCore {
   updatedCallback() {
     this.observer.disconnect();
 
-    if (this.sync) {
-      this.observer.observe(this.$host, { childList: true });
-    }
+    if (!this.sync) return;
 
-    this.update();
+    this.observer.observe(this.$host, { childList: true });
   }
 
   render() {
     return (
       <div>
-        <style />
         {/* prettier-ignore */}
         <pre className={this.preClass} part="pre" {...this.attributes}><code className={this.codeClass} part="code" dangerouslySetInnerHTML={{ __html: this.html }}></code><span className="copy" part="copy"><slot name="copy" /></span></pre>
       </div>

@@ -395,8 +395,8 @@ export class Signature extends PlusForm {
 
   loadedCallback() {
     return import('signature_pad')
-      .then((module) => {
-        Core = module.default;
+      .then((module: any) => {
+         Core = module.default || module;
         try {
           this.initialize();
         } catch {

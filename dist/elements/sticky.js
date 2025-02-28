@@ -1,4 +1,4 @@
-import { P as PlusCore, t as toUnit, h as html, d as attributes, s as styles, a as Property, c as Event, Q as Query, e as State, S as Style, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, t as toCSSUnit, h as html, d as attributes, s as styles, a as Property, c as Event, e as State, S as Style, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:sticky;display:block;will-change:auto}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -17,13 +17,13 @@ let Sticky = class extends PlusCore {
   }
   get style() {
     return {
-      "top": toUnit(this.top),
+      "top": toCSSUnit(this.top),
       "z-index": this.zIndex ?? void 0
     };
   }
   get sizer() {
-    const top = toUnit(this.top);
-    if (!top) return;
+    const top = toCSSUnit(this.top);
+    if (!top) return {};
     return {
       top: `calc((${top} + 1px) * -1)`
     };

@@ -1,5 +1,3 @@
-export const API_LIST = '/api/examples';
-export const API_DETAILS = '/api/examples/';
 export const MAPPER = [
   ['https://esm.run/@htmlplus/ui/config.js', '/src/config/index.ts'],
   [
@@ -11,5 +9,5 @@ export const MAPPER = [
     '/src/elements/animation/assets/names/$1.js'
   ],
   ['https://esm.run/@htmlplus/ui/(.*?).js', '/src/elements/$1/$1.tsx'],
-  ['https://esm.run/', '/node_modules/']
+  ['https://esm.run/', '']
 ];

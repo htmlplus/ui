@@ -2,39 +2,57 @@ import fs from 'fs';
 import { glob } from 'glob';
 import path from 'path';
 
-import { API_DETAILS, API_LIST } from './config';
+import { MAPPER } from './configs';
 
-export const examples = () => ({
-  name: 'examples',
-  configureServer(server) {
-    server.middlewares.use((req, res, next) => {
-      next();
+const root = path.resolve(import.meta.dirname, '..');
 
-      const url = req.url?.startsWith('/') ? req.url : '/' + req.url;
+/** @type {any} */
+export const examples = () => {
+  return {
+    name: 'examples',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html, ctx) {
+        if (ctx.originalUrl.endsWith('?local')) {
+          MAPPER.forEach(([a, b]) => {
+            html = html.replace(new RegExp(a, 'g'), b);
+          });
+        }
 
-      if (url.startsWith(API_DETAILS)) {
-        const filePath = path.resolve(process.cwd(), url.replace(API_DETAILS, '') + '.html');
+        html = html.replaceAll(/import\s*\(\s*['"`](@?[\w-]+)/g, (result1, result2) => {
+          if (ctx.originalUrl.endsWith('?local')) {
+            for (let i = 0; i < 10; i++) {
+              const directory = path.resolve(root, '../'.repeat(i), 'node_modules', result2);
 
-        let content = fs.readFileSync(filePath, 'utf-8');
+              if (!fs.existsSync(directory)) continue;
 
-        res.writeHead(200, { 'Content-Type': 'text/html' });
+              result1 = result1.replace(result2, directory);
 
-        res.end(content);
+              break;
+            }
+          }
+          return result1.replace('import(', 'import(/* @vite-ignore */');
+        });
 
-        return;
+        return html;
       }
+    },
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const file = req.url.replace(/^\/?/, '');
 
-      if (url.startsWith(API_LIST)) {
-        const pattern = 'src/elements/*/examples/*.html';
+        if (file.includes('*')) {
+          const content = JSON.stringify(glob.sync(file, { cwd: root }));
 
-        const files = glob.sync(pattern).map((file) => file.replace('.html', ''));
+          res.writeHead(200, { 'Content-Type': 'application/json' });
 
-        res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(content);
 
-        res.end(JSON.stringify(files));
+          return;
+        }
 
-        return;
-      }
-    });
-  }
-});
+        next();
+      });
+    }
+  };
+};

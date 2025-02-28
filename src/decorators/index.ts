@@ -1,2 +1,1 @@
-export * from './breakpoint';
-export * from './style';
+export * from './breakpoint'; 

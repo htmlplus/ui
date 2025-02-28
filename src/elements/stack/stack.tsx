@@ -1,7 +1,6 @@
-import { Element, Property, toUnit } from '@htmlplus/element';
+import { Element, Property, Style, toCSSUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
 
 import { StackAlign, StackGap, StackJustify } from './stack.types';
 
@@ -50,7 +49,7 @@ export class Stack extends PlusCore {
       'align-items': this.items?.replace(/start|end/, 'flex-$&'),
       'display': 'flex',
       'flex-direction': direction,
-      'gap': toUnit(this.gap),
+      'gap': toCSSUnit(this.gap),
       'justify-content': this.justify
         ?.replace(/start|end/, 'flex-$&')
         ?.replace(/between|around|evenly/, 'space-$&')

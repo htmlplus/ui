@@ -1,7 +1,6 @@
-import { Element, Property, isCSSColor } from '@htmlplus/element';
+import { Element, Property, Style, toCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
 
 /**
  * @slot default - The default slot.
@@ -60,9 +59,7 @@ export class ProgressBar extends PlusCore {
   get style() {
     return {
       'min-width': this.stacked ? this.percentage : null,
-      '--plus-progress-bar-indicator-background-color': isCSSColor(this.color)
-        ? this.color
-        : undefined
+      '--plus-progress-bar-indicator-background-color': toCSSColor(this.color)
     };
   }
 

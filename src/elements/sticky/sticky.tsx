@@ -6,12 +6,12 @@ import {
   Property,
   Query,
   State,
+  Style,
   Watch,
-  toUnit
+  toCSSUnit
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
 
 import { StickyState, StickyTop } from './sticky.types';
 
@@ -59,15 +59,15 @@ export class Sticky extends PlusCore {
   @Style()
   get style() {
     return {
-      'top': toUnit(this.top),
+      'top': toCSSUnit(this.top),
       'z-index': this.zIndex ?? undefined
     };
   }
 
   get sizer() {
-    const top = toUnit(this.top);
+    const top = toCSSUnit(this.top);
 
-    if (!top) return;
+    if (!top) return {};
 
     return {
       top: `calc((${top} + 1px) * -1)`

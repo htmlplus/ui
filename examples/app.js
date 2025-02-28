@@ -1,5 +1,3 @@
-import { API_DETAILS, API_LIST, MAPPER } from './config';
-
 const $cdn = document.getElementById('cdn');
 const $menu = document.getElementById('menu');
 const $preview = document.getElementById('preview');
@@ -12,7 +10,7 @@ async function getCategories() {
   const keys = await getKeys();
 
   for (const key of keys) {
-    const [, , componentId, , exampleId] = key.split('/');
+    const [, , componentId, , exampleId] = key.replace('.html', '').split('/');
 
     const exist = result.some((component) => component.id == componentId);
 
@@ -35,12 +33,10 @@ async function getCategories() {
   return result;
 }
 
-async function getDetails(key) {
-  return await fetch(API_DETAILS + key).then((response) => response.text());
-}
-
 async function getKeys() {
-  return await fetch(API_LIST).then((response) => response.json());
+  return await fetch('/src/elements/*/examples/*.html')
+    .then((response) => response.json())
+    .then((keys) => keys.sort((a, b) => a.localeCompare(b)));
 }
 
 async function load() {
@@ -87,19 +83,11 @@ async function select(key) {
 
   const iframe = document.createElement('iframe');
 
+  iframe.src = `/${key}${$cdn.classList.contains('active') ? '?cdn' : '?local'}`;
+
   $preview.innerHTML = '';
 
   $preview.appendChild(iframe);
-
-  let text = await getDetails(key);
-
-  if (!$cdn.classList.contains('active')) {
-    MAPPER.forEach(([a, b]) => {
-      text = text.replace(new RegExp(a, 'g'), b);
-    });
-  }
-
-  iframe.srcdoc = text;
 }
 
 function toTitleCase(input) {

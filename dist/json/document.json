@@ -611,7 +611,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2024-11-25T19:41:15.793Z",
+      "lastModified": "2025-02-27T20:55:12.221Z",
       "methods": [],
       "properties": [
         {
@@ -1287,7 +1287,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-02-03T18:01:33.115Z",
+      "lastModified": "2025-02-28T11:51:01.571Z",
       "methods": [
         {
           "async": false,
@@ -2031,7 +2031,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2024-11-19T17:03:08.759Z",
+      "lastModified": "2025-02-27T20:55:12.222Z",
       "methods": [],
       "properties": [
         {
@@ -2157,7 +2157,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2024-11-19T17:03:08.760Z",
+      "lastModified": "2025-02-27T20:55:12.222Z",
       "methods": [
         {
           "async": false,
@@ -2364,7 +2364,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-02-03T18:01:37.449Z",
+      "lastModified": "2025-02-28T11:53:04.953Z",
       "methods": [],
       "properties": [
         {
@@ -3282,7 +3282,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-01-29T20:07:39.730Z",
+      "lastModified": "2025-02-28T11:30:44.352Z",
       "methods": [],
       "properties": [
         {
@@ -3439,7 +3439,7 @@
     {
       "events": [],
       "key": "prism",
-      "lastModified": "2025-02-07T15:18:40.918Z",
+      "lastModified": "2025-02-28T11:53:57.757Z",
       "methods": [],
       "properties": [
         {
@@ -3526,7 +3526,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2024-11-19T17:03:08.772Z",
+      "lastModified": "2025-02-27T20:55:12.223Z",
       "methods": [],
       "properties": [
         {
@@ -3773,7 +3773,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-02-03T18:01:44.560Z",
+      "lastModified": "2025-02-28T11:54:58.832Z",
       "methods": [
         {
           "async": false,
@@ -3956,7 +3956,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-02-06T17:13:00.461Z",
+      "lastModified": "2025-02-27T20:55:12.224Z",
       "methods": [],
       "properties": [
         {
@@ -4042,7 +4042,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2024-11-19T17:03:08.776Z",
+      "lastModified": "2025-02-27T20:55:12.224Z",
       "methods": [],
       "properties": [
         {
@@ -4086,7 +4086,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2024-11-19T17:03:08.777Z",
+      "lastModified": "2025-02-27T20:55:12.224Z",
       "methods": [],
       "properties": [
         {
@@ -4162,7 +4162,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2024-11-19T17:03:08.777Z",
+      "lastModified": "2025-02-27T20:55:12.225Z",
       "methods": [],
       "properties": [
         {
@@ -4449,7 +4449,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2025-02-03T18:01:48.415Z",
+      "lastModified": "2025-02-28T11:37:22.396Z",
       "methods": [
         {
           "async": false,

@@ -33,6 +33,8 @@ export declare class Sticky extends PlusCore {
         'z-index': number;
     };
     get sizer(): {
+        top?: undefined;
+    } | {
         top: string;
     };
     watchers(next: any, prev: any, key: any): void;

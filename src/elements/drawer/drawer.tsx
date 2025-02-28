@@ -11,8 +11,8 @@ import {
   classes,
   on,
   off,
-  toUnit,
-  State
+  State,
+  toCSSUnit
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
@@ -247,9 +247,9 @@ export class Drawer extends PlusCore {
   }
 
   get style(): any {
-    const size = toUnit(this.size);
+    const size = toCSSUnit(this.size);
 
-    const miniSize = toUnit(this.miniSize);
+    const miniSize = toCSSUnit(this.miniSize);
 
     const offset = `calc(${
       this.open ? (this.mini ? `-${size} + ${miniSize}` : '0px') : `-${size}`

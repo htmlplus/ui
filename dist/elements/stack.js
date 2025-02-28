@@ -1,4 +1,4 @@
-import { P as PlusCore, t as toUnit, h as html, a as Property, S as Style, E as Element } from "../core/index.js";
+import { P as PlusCore, t as toCSSUnit, h as html, a as Property, S as Style, E as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -23,7 +23,7 @@ let Stack = class extends PlusCore {
       "align-items": (_a = this.items) == null ? void 0 : _a.replace(/start|end/, "flex-$&"),
       "display": "flex",
       "flex-direction": direction,
-      "gap": toUnit(this.gap),
+      "gap": toCSSUnit(this.gap),
       "justify-content": (_c = (_b = this.justify) == null ? void 0 : _b.replace(/start|end/, "flex-$&")) == null ? void 0 : _c.replace(/between|around|evenly/, "space-$&")
     };
   }

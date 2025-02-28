@@ -1,7 +1,6 @@
-import { Element, Property, isCSSColor } from '@htmlplus/element';
+import { Element, Property, Style, toCSSColor } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
 
 /**
  * @part copy    - The copy element.
@@ -29,7 +28,7 @@ export class Snippet extends PlusCore {
   @Style()
   get style() {
     return {
-      '--plus-snippet-color': isCSSColor(this.color) ? this.color : undefined
+      '--plus-snippet-color': toCSSColor(this.color)
     };
   }
 

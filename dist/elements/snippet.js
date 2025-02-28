@@ -1,4 +1,4 @@
-import { P as PlusCore, i as isCSSColor, h as html, a as Property, S as Style, E as Element } from "../core/index.js";
+import { P as PlusCore, i as toCSSColor, h as html, a as Property, S as Style, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{--plus-snippet-color: black}:host{background-color:hsl(from var(--plus-snippet-color) h s 90%);border:none;border-radius:.5rem;color:var(--plus-snippet-color);gap:.5rem;padding:.5rem 1rem;direction:ltr;display:flex;align-items:center;justify-content:space-between}pre{gap:.5rem;display:flex;align-items:center;white-space:nowrap;margin:0;flex-grow:1}[part=default]{display:block}[part=symbol]{color:hsl(from var(--plus-snippet-color) h s 60%);display:contents;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -13,7 +13,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 let Snippet = class extends PlusCore {
   get style() {
     return {
-      "--plus-snippet-color": isCSSColor(this.color) ? this.color : void 0
+      "--plus-snippet-color": toCSSColor(this.color)
     };
   }
   render() {

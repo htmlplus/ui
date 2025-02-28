@@ -887,6 +887,20 @@ const request = (target, name, previous, callback) => {
 const styles$1 = (input) => {
   return Object.keys(input).filter((key) => input[key] !== void 0 && input[key] !== null).map((key) => `${key.startsWith("--") ? "--" : ""}${kebabCase(key)}: ${input[key]}`).join("; ");
 };
+const toCSSColor = (input) => {
+  return isCSSColor(input) ? input : void 0;
+};
+const toCSSUnit = (input) => {
+  if (input == null || input === "") {
+    return;
+  }
+  if (typeof input === "number" || !isNaN(Number(input))) {
+    return `${input}px`;
+  }
+  if (/^\d+(\.\d+)?(px|pt|cm|mm|in|em|rem|%|vw|vh)$/.test(input)) {
+    return input;
+  }
+};
 function toDecorator(util, ...parameters) {
   return function(target, key) {
     defineProperty(target, key, {
@@ -948,13 +962,6 @@ const toProperty = (input, type) => {
     }
   }
   return input;
-};
-const toUnit = (input, unit = "px") => {
-  if (input === null || input === void 0 || input === "")
-    return input;
-  if (isNaN(+input))
-    return String(input);
-  return Number(input) + unit;
 };
 function Bind() {
   return function(target, key, descriptor) {
@@ -1282,6 +1289,62 @@ function State() {
     defineProperty(target, key, { get, set, configurable: true });
   };
 }
+function Style() {
+  return function(target, key) {
+    const LAST = Symbol();
+    const SHEET = Symbol();
+    appendToMethod(target, LIFECYCLE_UPDATED, function() {
+      var _a;
+      let sheet = this[SHEET];
+      let value = this[key];
+      const update = (value2) => (result) => {
+        if (value2 && value2 !== this[LAST])
+          return;
+        sheet.replaceSync(toCssString(result));
+        this[LAST] = void 0;
+      };
+      if (!sheet) {
+        sheet = new CSSStyleSheet();
+        this[SHEET] = sheet;
+        (_a = shadowRoot(this)) == null ? void 0 : _a.adoptedStyleSheets.push(sheet);
+      }
+      if (typeof value === "function") {
+        value = value.call(this);
+      }
+      if (value instanceof Promise) {
+        value.then(update(this[LAST] = value)).catch((error) => {
+          throw new Error("TODO", { cause: error });
+        });
+      } else {
+        update()(value);
+      }
+    });
+  };
+}
+const toCssString = (input, parent) => {
+  if (typeof input == "string") {
+    return input.trim();
+  }
+  if (Array.isArray(input)) {
+    return input.map((item) => toCssString(item, parent)).filter(Boolean).join("\n");
+  }
+  if (typeof input != "object")
+    return "";
+  let result = "";
+  for (const key of Object.keys(input)) {
+    const value = input[key];
+    const ignore = [null, void 0, false].includes(value);
+    if (ignore)
+      continue;
+    const cssKey = key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
+    if (typeof value === "object") {
+      result += `${cssKey} {${toCssString(value, cssKey)}}`;
+    } else {
+      result += `${cssKey}: ${value};`;
+    }
+  }
+  return parent ? result : `:host {${result}}`;
+};
 function Watch(keys, immediate) {
   return function(target, key) {
     const all = [keys].flat().filter((item) => item);
@@ -1444,74 +1507,6 @@ class NotEmptyPropertyError extends Error {
       Error.captureStackTrace(this, NotEmptyPropertyError);
     }
   }
-}
-const BREAKPOINTS = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1400
-};
-function Breakpoint() {
-  return function(target, key) {
-    const symbol2 = Symbol();
-    const connected = target.connectedCallback;
-    target.connectedCallback = function() {
-      this[symbol2] = [];
-      const keys = Object.keys(BREAKPOINTS);
-      const callback = (media) => {
-        var _a;
-        if (media.matches) {
-          this[key] = ((_a = media.currentTarget) == null ? void 0 : _a.breakpoint) || media.breakpoint;
-        }
-      };
-      this[symbol2] = keys.map((key2, index) => {
-        const min = BREAKPOINTS[keys[index]];
-        const max = BREAKPOINTS[keys[index + 1]];
-        const query2 = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
-        const media = window.matchMedia(query2);
-        media["breakpoint"] = key2;
-        on(media, "change", callback);
-        callback(media);
-        return () => off(media, "change", callback);
-      });
-      connected == null ? void 0 : connected.call(this);
-    };
-    const disconnected = target.disconnectedCallback;
-    target.disconnectedCallback = function() {
-      for (const teardown of this[symbol2]) {
-        teardown();
-      }
-      this[symbol2] = [];
-      disconnected == null ? void 0 : disconnected.call(this);
-    };
-  };
-}
-function Style() {
-  return function(target, key) {
-    const symbol2 = Symbol();
-    const updated = target.updatedCallback;
-    target.updatedCallback = function() {
-      const element = host(this);
-      let style = this[symbol2];
-      if (!style) {
-        style = new CSSStyleSheet();
-        style.replace(":host {}");
-        element.shadowRoot.adoptedStyleSheets.push(style);
-        style = this[symbol2] = style.cssRules[0].style;
-      }
-      const value = this[key];
-      for (const key2 of Object.keys(value)) {
-        if (value[key2]) {
-          style.setProperty(key2, value[key2]);
-        } else if (value) {
-          style.removeProperty(key2);
-        }
-      }
-      return updated == null ? void 0 : updated.call(this);
-    };
-  };
 }
 class Animation {
   constructor(config) {
@@ -1718,26 +1713,49 @@ const _Scrollbar = class _Scrollbar {
 _Scrollbar.keys = /* @__PURE__ */ new Set();
 _Scrollbar.style = {};
 let Scrollbar = _Scrollbar;
-const isSize = (input) => {
-  return [
-    "xxs",
-    "xs",
-    "sm",
-    "md",
-    "lg",
-    "xl",
-    "xxl",
-    "1x",
-    "2x",
-    "3x",
-    "4x",
-    "5x",
-    "6x",
-    "7x",
-    "8x",
-    "9x"
-  ].includes(input);
+const BREAKPOINTS = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400
 };
+function Breakpoint() {
+  return function(target, key) {
+    const symbol2 = Symbol();
+    const connected = target.connectedCallback;
+    target.connectedCallback = function() {
+      this[symbol2] = [];
+      const keys = Object.keys(BREAKPOINTS);
+      const callback = (media) => {
+        var _a;
+        if (media.matches) {
+          this[key] = ((_a = media.currentTarget) == null ? void 0 : _a.breakpoint) || media.breakpoint;
+        }
+      };
+      this[symbol2] = keys.map((key2, index) => {
+        const min = BREAKPOINTS[keys[index]];
+        const max = BREAKPOINTS[keys[index + 1]];
+        const query2 = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
+        const media = window.matchMedia(query2);
+        media["breakpoint"] = key2;
+        on(media, "change", callback);
+        callback(media);
+        return () => off(media, "change", callback);
+      });
+      connected == null ? void 0 : connected.call(this);
+    };
+    const disconnected = target.disconnectedCallback;
+    target.disconnectedCallback = function() {
+      for (const teardown of this[symbol2]) {
+        teardown();
+      }
+      this[symbol2] = [];
+      disconnected == null ? void 0 : disconnected.call(this);
+    };
+  };
+}
 const toAxis = (input, rtl) => {
   if (!input) return input;
   if (input.match(/start/)) input = rtl ? "right" : "left";
@@ -1763,7 +1781,7 @@ export {
   ExternalDependencyError as f,
   Provider as g,
   html as h,
-  isCSSColor as i,
+  toCSSColor as i,
   PlusForm as j,
   Animation as k,
   Scrollbar as l,
@@ -1771,11 +1789,10 @@ export {
   classes as n,
   on as o,
   Breakpoint as p,
-  isSize as q,
-  setConfig as r,
+  setConfig as q,
+  getConfig as r,
   styles as s,
-  toUnit as t,
-  getConfig as u,
-  query as v,
-  QueryAll as w
+  toCSSUnit as t,
+  query as u,
+  QueryAll as v
 };

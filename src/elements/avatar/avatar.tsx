@@ -1,8 +1,6 @@
-import { Element, Property, isCSSColor, slots, toUnit } from '@htmlplus/element';
+import { Element, Property, Style, toCSSColor, toCSSUnit } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
-import { isSize } from '@/helpers';
 
 import { AvatarShape, AvatarSize } from './avatar.types';
 
@@ -161,8 +159,8 @@ export class Avatar extends PlusCore {
   @Style()
   get style() {
     return {
-      '--plus-avatar-color': isCSSColor(this.color) ? this.color : undefined,
-      '--plus-avatar-size': isSize(this.color) ? undefined : toUnit(this.size)
+      '--plus-avatar-color': toCSSColor(this.color),
+      '--plus-avatar-size': toCSSUnit(this.size)
     };
   }
 

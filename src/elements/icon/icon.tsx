@@ -1,9 +1,7 @@
-import { Element, Property, toUnit, isCSSColor, query } from '@htmlplus/element';
+import { Element, Property, Style, query, toCSSColor, toCSSUnit } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
-import { Style } from '@/decorators';
-import { isSize } from '@/helpers';
 import { AsyncCache } from '@/services';
 
 import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './icon.constants';
@@ -110,9 +108,9 @@ export class Icon extends PlusCore {
   @Style()
   get style() {
     return {
-      color: isCSSColor(this.color) ? this.color : undefined,
-      height: !isSize(this.size) ? toUnit(this.size) : undefined,
-      width: !isSize(this.size) ? toUnit(this.size) : undefined,
+      color: toCSSColor(this.color),
+      height: toCSSUnit(this.size),
+      width: toCSSUnit(this.size),
       rotate: this.rotate ? this.rotate + 'deg' : undefined
     };
   }

@@ -507,8 +507,8 @@ export class Cropper extends PlusCore {
 
   connectedCallback() {
     return import('cropperjs')
-      .then((module) => {
-        CropperCore = module.default;
+      .then((module: any) => {
+        CropperCore = module.default || module;
       })
       .catch((error) => {
         throw new ExternalDependencyError(this.$host, 'cropperjs', { cause: error });
