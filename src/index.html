@@ -5,9 +5,50 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="module" src="/src/elements/index.ts"></script>
-    <style></style>
+    <style>
+      plus-scroll-spy {
+
+        height: 350px;
+      }
+      plus-scroll-spy-target {
+        display: flex;
+        flex-direction: column;
+      }
+      plus-scroll-spy-target::part(active) {
+        color: green
+      }
+    </style>
   </head>
   <body>
-    <script></script>
+    <plus-scroll-spy>
+      <div id="list-item-1">
+        <h4>Item 1</h4>
+        <plus-faker api="lorem.paragraphs" arguments='[5, "\n\n"]'></plus-faker>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2</h4>
+        <plus-faker api="lorem.paragraphs" arguments='[5, "\n\n"]'></plus-faker>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3</h4>
+        <plus-faker api="lorem.paragraphs" arguments='[5, "\n\n"]'></plus-faker>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4</h4>
+        <plus-faker api="lorem.paragraphs" arguments='[5, "\n\n"]'></plus-faker>
+      </div>
+      <div id="list-item-5">
+        <h4>Item 5</h4>
+        <plus-faker api="lorem.paragraphs" arguments='[5, "\n\n"]'></plus-faker>
+      </div>
+    </plus-scroll-spy>
+    <plus-scroll-spy-target></plus-scroll-spy-target>
+    <plus-scroll-spy-target>
+      <a href="#list-item-1">Item 1</a>
+      <a href="#list-item-2">Item 2</a>
+      <a href="#list-item-3">Item 3</a>
+      <a href="#list-item-4">Item 4</a>
+      <a href="#list-item-5">Item 5</a>
+    </plus-scroll-spy-target>
   </body>
 </html>

@@ -33,6 +33,8 @@ export * from './progress-bar/progress-bar';
 export * from './progress-bar-stack/progress-bar-stack';
 export * from './relative-time/relative-time';
 export * from './scroll-detector/scroll-detector';
+export * from './scroll-spy/scroll-spy';
+export * from './scroll-spy-target/scroll-spy-target';
 export * from './signature/signature';
 export * from './snippet/snippet';
 export * from './spacer/spacer';
