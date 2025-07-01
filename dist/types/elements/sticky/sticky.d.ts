@@ -41,7 +41,7 @@ export declare class Sticky extends PlusCore {
     initialize(): void;
     terminate(): void;
     onIntersecting(entries: IntersectionObserverEntry[]): void;
-    loadedCallback(): void;
+    readyCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

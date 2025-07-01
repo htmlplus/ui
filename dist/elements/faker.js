@@ -25,7 +25,7 @@ let Faker = class extends PlusCore {
   }
   connectedCallback() {
     if (this.instance) return;
-    return import("@faker-js/faker").then((module) => {
+    import("@faker-js/faker").then((module) => {
       var _a;
       this.instance = ((_a = module.default) == null ? void 0 : _a.faker) || module.faker;
     }).catch((error) => {

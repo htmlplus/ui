@@ -68,7 +68,7 @@ let RelativeTime = class extends PlusCore {
     if (!this.sync) return;
     const interval = (difference > 0 ? 0 : unit.value) + difference % unit.value;
     this.timeout = window.setTimeout(() => {
-      this.tick = Math.random();
+      this.forceUpdate();
     }, interval);
   }
   disconnectedCallback() {
@@ -106,9 +106,6 @@ __decorateClass([
 __decorateClass([
   State()
 ], RelativeTime.prototype, "formatted", 2);
-__decorateClass([
-  State()
-], RelativeTime.prototype, "tick", 2);
 RelativeTime = __decorateClass([
   Element()
 ], RelativeTime);

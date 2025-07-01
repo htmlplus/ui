@@ -76,7 +76,7 @@ export declare class Tooltip extends PlusCore {
     observe(active: boolean): void;
     onHide(): void;
     onShow(): void;
-    connectedCallback(): Promise<void>;
+    connectedCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

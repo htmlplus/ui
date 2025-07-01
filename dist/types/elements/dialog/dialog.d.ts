@@ -114,7 +114,7 @@ export declare class Dialog extends PlusCore {
     try(open: boolean, silent?: boolean): Promise<boolean>;
     onEscape(event: any): void;
     onClickOutside(): void;
-    loadedCallback(): void;
+    readyCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

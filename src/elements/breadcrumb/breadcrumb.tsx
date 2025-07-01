@@ -51,10 +51,7 @@ export class Breadcrumb extends PlusCore {
   @State()
   expand: boolean = false;
 
-  @State()
-  tick?: number;
-
-  observer: MutationObserver = new MutationObserver(this.onChange);
+  observer: MutationObserver = new MutationObserver(this.forceUpdate);
 
   @QueryAll('[part=separator]')
   $separators!: HTMLElement[];
@@ -146,11 +143,6 @@ export class Breadcrumb extends PlusCore {
 
   terminate() {
     this.observer.disconnect();
-  }
-
-  @Bind()
-  onChange() {
-    this.tick = Math.random();
   }
 
   connectedCallback() {

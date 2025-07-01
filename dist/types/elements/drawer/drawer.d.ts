@@ -114,7 +114,7 @@ export declare class Drawer extends PlusCore {
     terminate(): void;
     try(open: boolean, silent?: boolean): Promise<boolean>;
     onClickOutside(): void;
-    loadedCallback(): void;
+    readyCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

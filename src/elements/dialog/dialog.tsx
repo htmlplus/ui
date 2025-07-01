@@ -363,7 +363,7 @@ export class Dialog extends PlusCore {
     this.try(false, false);
   }
 
-  loadedCallback() {
+  readyCallback() {
     this.initialize();
   }
 

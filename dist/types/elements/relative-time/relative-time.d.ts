@@ -17,7 +17,6 @@ export declare class RelativeTime extends PlusCore {
      */
     value?: Date;
     formatted?: string;
-    tick?: number;
     timeout: number;
     get isValid(): boolean;
     get lang(): string;

@@ -199,8 +199,7 @@ export declare class Cropper extends PlusCore {
     onCropStart(event: any): void;
     onReady(): void;
     onZoom(event: any): void;
-    connectedCallback(): Promise<void>;
-    loadedCallback(): void;
+    connectedCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

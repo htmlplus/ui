@@ -1,6 +1,13 @@
 var __defProp = Object.defineProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateSet = (obj, member, value, setter2) => (__accessCheck(obj, member, "write to private field"), setter2 ? setter2.call(obj, value) : member.set(obj, value), value);
 const SPLIT_LOWER_UPPER_RE = new RegExp("([\\p{Ll}\\d])(\\p{Lu})", "gu");
 const SPLIT_UPPER_UPPER_RE = new RegExp("(\\p{Lu})([\\p{Lu}][\\p{Ll}])", "gu");
 const SPLIT_SEPARATE_NUMBER_RE = new RegExp("(\\d)\\p{Ll}|(\\p{L})\\d", "u");
@@ -36,17 +43,6 @@ function splitSeparateNumbers(value) {
 function noCase(input, options) {
   const [prefix2, words, suffix] = splitPrefixSuffix(input, options);
   return prefix2 + words.map(lowerFactory(options == null ? void 0 : options.locale)).join((options == null ? void 0 : options.delimiter) ?? " ") + suffix;
-}
-function camelCase(input, options) {
-  const [prefix2, words, suffix] = splitPrefixSuffix(input, options);
-  const lower = lowerFactory(options == null ? void 0 : options.locale);
-  const upper = upperFactory(options == null ? void 0 : options.locale);
-  const transform = pascalCaseTransformFactory(lower, upper);
-  return prefix2 + words.map((word, index) => {
-    if (index === 0)
-      return lower(word);
-    return transform(word, index);
-  }).join("") + suffix;
 }
 function pascalCase(input, options) {
   const [prefix2, words, suffix] = splitPrefixSuffix(input, options);
@@ -97,10 +93,8 @@ function splitPrefixSuffix(input, options = {}) {
   ];
 }
 const KEY = "htmlplus";
-const MAPPER = Symbol();
 const API_CONNECTED = Symbol();
 const API_HOST = Symbol();
-const API_INSTANCE = Symbol();
 const API_REQUEST = Symbol();
 const API_RENDER_COMPLETED = Symbol();
 const API_STACKS = Symbol();
@@ -109,7 +103,7 @@ const LIFECYCLE_ADOPTED = "adoptedCallback";
 const LIFECYCLE_CONNECTED = "connectedCallback";
 const LIFECYCLE_CONSTRUCTED = "constructedCallback";
 const LIFECYCLE_DISCONNECTED = "disconnectedCallback";
-const LIFECYCLE_LOADED = "loadedCallback";
+const LIFECYCLE_READY = "readyCallback";
 const LIFECYCLE_UPDATE = "updateCallback";
 const LIFECYCLE_UPDATED = "updatedCallback";
 const METHOD_RENDER = "render";
@@ -122,15 +116,6 @@ const TYPE_NULL = 2 ** 6;
 const TYPE_NUMBER = 2 ** 7;
 const TYPE_OBJECT = 2 ** 8;
 const TYPE_UNDEFINED = 2 ** 10;
-const appendToMethod = (target, key, handler) => {
-  const previous = target[key];
-  function next(...parameters) {
-    const result = previous == null ? void 0 : previous.bind(this)(...parameters);
-    handler.bind(this)(...parameters);
-    return result;
-  }
-  target[key] = next;
-};
 const host = (target) => {
   try {
     return target[API_HOST]();
@@ -184,11 +169,11 @@ const toEvent = (input) => {
 };
 const updateAttribute = (target, key, value) => {
   const element = host(target);
-  const name = kebabCase(key);
   if ([void 0, null, false].includes(value)) {
-    return element.removeAttribute(name);
+    element.removeAttribute(key);
+  } else {
+    element.setAttribute(key, value === true ? "" : value);
   }
-  element.setAttribute(name, value === true ? "" : value);
 };
 const symbol = Symbol();
 const attributes$2 = (target, attributes2) => {
@@ -209,13 +194,13 @@ const attributes$2 = (target, attributes2) => {
     if (isEvent(key))
       on(element, toEvent(key), next[key]);
     else
-      updateAttribute(element, key, next[key]);
+      updateAttribute(element, kebabCase(key), next[key]);
   }
   element[symbol] = { ...next };
 };
-const call = (target, key, ...parameters) => {
+const call = (target, key, ...args) => {
   var _a;
-  return (_a = target[key]) == null ? void 0 : _a.call(target, ...parameters);
+  return (_a = target[key]) == null ? void 0 : _a.apply(target, args);
 };
 const typeOf = (input) => {
   return Object.prototype.toString.call(input).replace(/\[|\]|object| /g, "").toLowerCase();
@@ -823,7 +808,7 @@ const render = (where, what) => {
 };
 const html$1 = tag("html");
 tag("svg");
-const request = (target, name, previous, callback) => {
+const requestUpdate = (target, name, previous, callback) => {
   const stacks = target[API_STACKS] || (target[API_STACKS] = /* @__PURE__ */ new Map());
   const stack = stacks.get(name) || { callbacks: [], previous };
   callback && stack.callbacks.push(callback);
@@ -901,11 +886,11 @@ const toCSSUnit = (input) => {
     return input;
   }
 };
-function toDecorator(util, ...parameters) {
+function toDecorator(util, ...args) {
   return function(target, key) {
     defineProperty(target, key, {
       get() {
-        return util(this, ...parameters);
+        return util(this, ...args);
       }
     });
   };
@@ -963,24 +948,42 @@ const toProperty = (input, type) => {
   }
   return input;
 };
+const wrapMethod = (mode, target, key, handler) => {
+  const original = target[key];
+  if (original && typeof original !== "function") {
+    throw new TypeError(`Property ${String(key)} is not a function`);
+  }
+  function wrapped(...args) {
+    if (mode == "before") {
+      handler.apply(this, args);
+    }
+    const result = original == null ? void 0 : original.apply(this, args);
+    if (mode == "after") {
+      handler.apply(this, args);
+    }
+    return result;
+  }
+  target[key] = wrapped;
+};
 function Bind() {
   return function(target, key, descriptor) {
+    const original = descriptor.value;
     return {
       configurable: true,
       get() {
-        const value = descriptor == null ? void 0 : descriptor.value.bind(this);
+        const next = original.bind(this);
         defineProperty(this, key, {
-          value,
+          value: next,
           configurable: true,
           writable: true
         });
-        return value;
+        return next;
       }
     };
   };
 }
 function Provider(namespace) {
-  return function(target, key, descriptor) {
+  return function(target, key) {
     const symbol2 = Symbol();
     const [MAIN, SUB] = namespace.split(".");
     const prefix2 = `${KEY}:${MAIN}`;
@@ -989,26 +992,26 @@ function Provider(namespace) {
     };
     const update = (instance) => {
       const options = {};
-      options.detail = descriptor.get.call(instance);
+      options.detail = instance[key];
       dispatch(instance, `${prefix2}:update`, options);
       if (!SUB)
         return;
       options.bubbles = true;
       dispatch(instance, `${prefix2}:${instance[SUB]}:update`, options);
     };
-    appendToMethod(target, LIFECYCLE_CONNECTED, function() {
+    wrapMethod("after", target, LIFECYCLE_CONNECTED, function() {
       const cleanup = () => {
         off(this, `${prefix2}:presence`, onPresence);
         cleanups(this).delete(prefix2);
       };
       const onPresence = (event2) => {
         event2.stopPropagation();
-        event2.detail(this, descriptor.get.call(this));
+        event2.detail(this, this[key]);
       };
       on(this, `${prefix2}:presence`, onPresence);
       cleanups(this).set(prefix2, cleanup);
     });
-    appendToMethod(target, LIFECYCLE_UPDATE, function(states) {
+    wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
       var _a;
       update(this);
       if (cleanups(this).size && !states.has(SUB))
@@ -1026,7 +1029,7 @@ function Provider(namespace) {
       on(window, `${type}:presence`, onPresence);
       cleanups(this).set(type, cleanup);
     });
-    appendToMethod(target, LIFECYCLE_DISCONNECTED, function() {
+    wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
       cleanups(this).forEach((cleanup) => cleanup());
     });
   };
@@ -1042,7 +1045,7 @@ function Consumer(namespace) {
     const update = (instance, state) => {
       instance[key] = state;
     };
-    appendToMethod(target, LIFECYCLE_CONNECTED, function() {
+    wrapMethod("after", target, LIFECYCLE_CONNECTED, function() {
       if (SUB && this[SUB])
         return;
       let connected;
@@ -1066,7 +1069,7 @@ function Consumer(namespace) {
       dispatch(this, `${prefix2}:presence`, options);
       !connected && setTimeout(() => dispatch(this, `${prefix2}:presence`, options));
     });
-    appendToMethod(target, LIFECYCLE_UPDATE, function(states) {
+    wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
       var _a;
       if (cleanups(this).size && !states.has(SUB))
         return;
@@ -1089,7 +1092,7 @@ function Consumer(namespace) {
       cleanups(this).set(type, cleanup);
       dispatch(window, `${type}:presence`);
     });
-    appendToMethod(target, LIFECYCLE_DISCONNECTED, function() {
+    wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
       cleanups(this).forEach((cleanup) => cleanup());
     });
   };
@@ -1105,165 +1108,158 @@ function Element() {
   };
 }
 const proxy = (constructor) => {
-  var _a;
+  var _instance, _a;
   return _a = class extends HTMLElement {
     constructor() {
       super();
+      __privateAdd(this, _instance);
       this.attachShadow({
         mode: "open",
         delegatesFocus: constructor["delegatesFocus"],
         slotAssignment: constructor["slotAssignment"]
       });
-      const instance = this[API_INSTANCE] = new constructor();
-      instance[API_HOST] = () => this;
-      call(instance, LIFECYCLE_CONSTRUCTED);
+      __privateSet(this, _instance, new constructor());
+      __privateGet(this, _instance)[API_HOST] = () => this;
+      call(__privateGet(this, _instance), LIFECYCLE_CONSTRUCTED);
     }
     adoptedCallback() {
-      call(this[API_INSTANCE], LIFECYCLE_ADOPTED);
+      call(__privateGet(this, _instance), LIFECYCLE_ADOPTED);
     }
     attributeChangedCallback(key, prev, next) {
-      var _a2;
-      try {
-        const attribute2 = (_a2 = constructor[MAPPER]) == null ? void 0 : _a2[key];
-        const property = attribute2 || camelCase(key);
-        this[property] = next;
-      } catch {
+      if (prev != next) {
+        __privateGet(this, _instance)["RAW:" + key] = next;
       }
     }
     connectedCallback() {
-      const instance = this[API_INSTANCE];
-      Object.assign(instance, getConfig("element", getTag(instance), "property"));
-      instance[API_CONNECTED] = true;
-      const connect = () => {
-        request(instance, void 0, void 0, () => {
-          call(instance, LIFECYCLE_LOADED);
-        });
-      };
-      const callback = call(instance, LIFECYCLE_CONNECTED);
-      if (!(callback == null ? void 0 : callback.then))
-        return connect();
-      callback.then(() => connect());
+      Object.assign(__privateGet(this, _instance), getConfig("element", getTag(__privateGet(this, _instance)), "property"));
+      __privateGet(this, _instance)[API_CONNECTED] = true;
+      call(__privateGet(this, _instance), LIFECYCLE_CONNECTED);
+      requestUpdate(__privateGet(this, _instance), void 0, void 0, () => {
+        call(__privateGet(this, _instance), LIFECYCLE_READY);
+      });
     }
     disconnectedCallback() {
-      call(this[API_INSTANCE], LIFECYCLE_DISCONNECTED);
+      call(__privateGet(this, _instance), LIFECYCLE_DISCONNECTED);
     }
-  }, __publicField(_a, "formAssociated", constructor["formAssociated"]), __publicField(_a, "observedAttributes", constructor["observedAttributes"]), _a;
+  }, _instance = new WeakMap(), __publicField(_a, "formAssociated", constructor["formAssociated"]), __publicField(_a, "observedAttributes", constructor["observedAttributes"]), _a;
 };
 function Event(options = {}) {
   return function(target, key) {
-    defineProperty(target, key, {
-      get() {
-        return (detail) => {
-          var _a;
-          const element = host(this);
-          const framework = getFramework(this);
-          options.bubbles ?? (options.bubbles = false);
-          let type = String(key);
-          switch (framework) {
-            case "blazor":
-              options.bubbles = true;
-              type = pascalCase(type);
-              try {
-                window["Blazor"].registerCustomEventType(type, {
-                  createEventArgs: (event3) => ({
-                    detail: event3.detail
-                  })
-                });
-              } catch {
-              }
-              break;
-            case "qwik":
-            case "solid":
-              type = pascalCase(type).toLowerCase();
-              break;
-            case "react":
-            case "preact":
-              type = pascalCase(type);
-              break;
-            default:
-              type = kebabCase(type);
-              break;
+    target[key] = function(detail) {
+      var _a;
+      const element = host(this);
+      const framework = getFramework(this);
+      options.bubbles ?? (options.bubbles = false);
+      let type = String(key);
+      switch (framework) {
+        case "blazor":
+          options.bubbles = true;
+          type = pascalCase(type);
+          try {
+            window["Blazor"].registerCustomEventType(type, {
+              createEventArgs: (event3) => ({
+                detail: event3.detail
+              })
+            });
+          } catch {
           }
-          let event2;
-          event2 || (event2 = (_a = getConfig("event", "resolver")) == null ? void 0 : _a({ detail, element, framework, options, type }));
-          event2 && element.dispatchEvent(event2);
-          event2 || (event2 = dispatch(this, type, { ...options, detail }));
-          return event2;
-        };
+          break;
+        case "qwik":
+        case "solid":
+          type = pascalCase(type).toLowerCase();
+          break;
+        case "react":
+        case "preact":
+          type = pascalCase(type);
+          break;
+        default:
+          type = kebabCase(type);
+          break;
       }
-    });
+      let event2;
+      event2 || (event2 = (_a = getConfig("event", "resolver")) == null ? void 0 : _a({ detail, element, framework, options, type }));
+      event2 && element.dispatchEvent(event2);
+      event2 || (event2 = dispatch(this, type, { ...options, detail }));
+      return event2;
+    };
   };
 }
 function Host() {
   return toDecorator(host);
 }
 function Method() {
-  return function(target, key) {
-    appendToMethod(target, LIFECYCLE_CONSTRUCTED, function() {
-      defineProperty(host(this), key, {
-        get: () => this[key].bind(this)
-      });
+  return function(target, key, descriptor) {
+    wrapMethod("before", target, LIFECYCLE_CONSTRUCTED, function() {
+      host(this)[key] = this[key].bind(this);
     });
   };
 }
 function Property(options) {
   return function(target, key, descriptor) {
-    var _a, _b;
-    const locked = Symbol();
-    const name = String(key);
-    const attribute2 = (options == null ? void 0 : options.attribute) || kebabCase(name);
+    var _a;
+    const KEY2 = Symbol();
+    const LOCKED = Symbol();
+    const attribute2 = (options == null ? void 0 : options.attribute) || kebabCase(key);
+    const originalSetter = descriptor == null ? void 0 : descriptor.set;
     ((_a = target.constructor)["observedAttributes"] || (_a["observedAttributes"] = [])).push(attribute2);
-    if (attribute2) {
-      (_b = target.constructor)[MAPPER] || (_b[MAPPER] = {});
-      target.constructor[MAPPER][attribute2] = name;
+    function get() {
+      return this[KEY2];
     }
-    if (descriptor) {
-      if (options == null ? void 0 : options.reflect) {
-        const getter = descriptor.get;
-        descriptor.get = function() {
-          const value = getter == null ? void 0 : getter.apply(this);
-          this[locked] = true;
-          updateAttribute(this, attribute2, value);
-          this[locked] = false;
-          return value;
-        };
-        appendToMethod(target, LIFECYCLE_UPDATED, function() {
-          this[key];
-        });
+    function set(value) {
+      const previous = this[KEY2];
+      const next = value;
+      if (!originalSetter && next === previous)
+        return;
+      if (originalSetter) {
+        originalSetter.call(this, next);
+      } else {
+        this[KEY2] = next;
       }
-    } else {
-      let get = function() {
-        return this[symbol2];
-      }, set = function(next) {
-        const previous = this[symbol2];
-        if (next === previous)
+      requestUpdate(this, key, previous, (skipped) => {
+        if (skipped)
           return;
-        this[symbol2] = next;
-        request(this, name, previous, (skipped) => {
-          if (skipped)
-            return;
-          if (!(options == null ? void 0 : options.reflect))
-            return;
-          this[locked] = true;
-          updateAttribute(this, attribute2, next);
-          this[locked] = false;
-        });
-      };
-      const symbol2 = Symbol();
-      defineProperty(target, key, { get, set });
+        if (!(options == null ? void 0 : options.reflect))
+          return;
+        this[LOCKED] = true;
+        updateAttribute(this, attribute2, next);
+        this[LOCKED] = false;
+      });
     }
-    appendToMethod(target, LIFECYCLE_CONSTRUCTED, function() {
-      const get = () => {
+    if (originalSetter) {
+      descriptor.set = set;
+    }
+    if (!descriptor) {
+      defineProperty(target, key, { configurable: true, get, set });
+    }
+    defineProperty(target, "RAW:" + attribute2, {
+      set(value) {
+        if (!this[LOCKED]) {
+          this[key] = toProperty(value, options == null ? void 0 : options.type);
+        }
+      }
+    });
+    wrapMethod("before", target, LIFECYCLE_CONSTRUCTED, function() {
+      const get2 = () => {
+        if (descriptor && !descriptor.get) {
+          throw new Error(`Property '${key}' does not have a getter. Unable to retrieve value.`);
+        }
         return this[key];
       };
-      const set = descriptor ? void 0 : (input) => {
-        if (this[locked]) {
-          return;
+      const set2 = (value) => {
+        if (descriptor && !descriptor.set) {
+          throw new Error(`Property '${key}' does not have a setter. Unable to assign value.`);
         }
-        this[key] = toProperty(input, options == null ? void 0 : options.type);
+        this[key] = value;
       };
-      defineProperty(host(this), key, { get, set, configurable: true });
+      defineProperty(host(this), key, { configurable: true, get: get2, set: set2 });
     });
+    if ((options == null ? void 0 : options.reflect) && (descriptor == null ? void 0 : descriptor.get)) {
+      wrapMethod("before", target, LIFECYCLE_UPDATED, function() {
+        this[LOCKED] = true;
+        updateAttribute(this, attribute2, this[key]);
+        this[LOCKED] = false;
+      });
+    }
   };
 }
 function Query(selectors) {
@@ -1274,26 +1270,29 @@ function QueryAll(selectors) {
 }
 function State() {
   return function(target, key) {
+    const KEY2 = Symbol();
     const name = String(key);
-    const symbol2 = Symbol();
-    function get() {
-      return this[symbol2];
-    }
-    function set(next) {
-      const previous = this[symbol2];
-      if (next === previous)
-        return;
-      this[symbol2] = next;
-      request(this, name, previous);
-    }
-    defineProperty(target, key, { get, set, configurable: true });
+    defineProperty(target, key, {
+      enumerable: true,
+      configurable: true,
+      get() {
+        return this[KEY2];
+      },
+      set(next) {
+        const previous = this[KEY2];
+        if (next === previous)
+          return;
+        this[KEY2] = next;
+        requestUpdate(this, name, previous);
+      }
+    });
   };
 }
 function Style() {
   return function(target, key) {
     const LAST = Symbol();
     const SHEET = Symbol();
-    appendToMethod(target, LIFECYCLE_UPDATED, function() {
+    wrapMethod("before", target, LIFECYCLE_UPDATED, function() {
       var _a;
       let sheet = this[SHEET];
       let value = this[key];
@@ -1348,7 +1347,7 @@ const toCssString = (input, parent) => {
 function Watch(keys, immediate) {
   return function(target, key) {
     const all = [keys].flat().filter((item) => item);
-    appendToMethod(target, LIFECYCLE_UPDATED, function(states) {
+    wrapMethod("after", target, LIFECYCLE_UPDATED, function(states) {
       if (!immediate && !this[API_RENDER_COMPLETED])
         return;
       states.forEach((previous, item) => {
@@ -1363,12 +1362,13 @@ const attributes = attributes$2;
 const html = html$1;
 const styles = styles$1;
 var __defProp$1 = Object.defineProperty;
+var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
 var __decorateClass$1 = (decorators, target, key, kind) => {
-  var result = void 0;
+  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc$1(target, key) : target;
   for (var i = decorators.length - 1, decorator; i >= 0; i--)
     if (decorator = decorators[i])
-      result = decorator(target, key, result) || result;
-  if (result) __defProp$1(target, key, result);
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp$1(target, key, result);
   return result;
 };
 class PlusCore {
@@ -1379,10 +1379,19 @@ class PlusCore {
   get isRTL() {
     return isRTL(this);
   }
+  forceUpdate() {
+    this.tick = Math.random();
+  }
 }
 __decorateClass$1([
   Host()
-], PlusCore.prototype, "$host");
+], PlusCore.prototype, "$host", 2);
+__decorateClass$1([
+  State()
+], PlusCore.prototype, "tick", 2);
+__decorateClass$1([
+  Bind()
+], PlusCore.prototype, "forceUpdate", 1);
 var __defProp2 = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -1762,6 +1771,606 @@ const toAxis = (input, rtl) => {
   if (input.match(/end/)) input = rtl ? "left" : "right";
   return input;
 };
+/*!
+ * Signature Pad v5.0.4 | https://github.com/szimek/signature_pad
+ * (c) 2024 Szymon Nowak | Released under the MIT license
+ */
+class Point {
+  constructor(x, y, pressure, time) {
+    if (isNaN(x) || isNaN(y)) {
+      throw new Error(`Point is invalid: (${x}, ${y})`);
+    }
+    this.x = +x;
+    this.y = +y;
+    this.pressure = pressure || 0;
+    this.time = time || Date.now();
+  }
+  distanceTo(start) {
+    return Math.sqrt(Math.pow(this.x - start.x, 2) + Math.pow(this.y - start.y, 2));
+  }
+  equals(other) {
+    return this.x === other.x && this.y === other.y && this.pressure === other.pressure && this.time === other.time;
+  }
+  velocityFrom(start) {
+    return this.time !== start.time ? this.distanceTo(start) / (this.time - start.time) : 0;
+  }
+}
+class Bezier {
+  static fromPoints(points, widths) {
+    const c2 = this.calculateControlPoints(points[0], points[1], points[2]).c2;
+    const c3 = this.calculateControlPoints(points[1], points[2], points[3]).c1;
+    return new Bezier(points[1], c2, c3, points[2], widths.start, widths.end);
+  }
+  static calculateControlPoints(s1, s2, s3) {
+    const dx1 = s1.x - s2.x;
+    const dy1 = s1.y - s2.y;
+    const dx2 = s2.x - s3.x;
+    const dy2 = s2.y - s3.y;
+    const m1 = { x: (s1.x + s2.x) / 2, y: (s1.y + s2.y) / 2 };
+    const m2 = { x: (s2.x + s3.x) / 2, y: (s2.y + s3.y) / 2 };
+    const l1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+    const l2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+    const dxm = m1.x - m2.x;
+    const dym = m1.y - m2.y;
+    const k = l1 + l2 == 0 ? 0 : l2 / (l1 + l2);
+    const cm = { x: m2.x + dxm * k, y: m2.y + dym * k };
+    const tx = s2.x - cm.x;
+    const ty = s2.y - cm.y;
+    return {
+      c1: new Point(m1.x + tx, m1.y + ty),
+      c2: new Point(m2.x + tx, m2.y + ty)
+    };
+  }
+  constructor(startPoint, control2, control1, endPoint, startWidth, endWidth) {
+    this.startPoint = startPoint;
+    this.control2 = control2;
+    this.control1 = control1;
+    this.endPoint = endPoint;
+    this.startWidth = startWidth;
+    this.endWidth = endWidth;
+  }
+  length() {
+    const steps = 10;
+    let length = 0;
+    let px;
+    let py;
+    for (let i = 0; i <= steps; i += 1) {
+      const t = i / steps;
+      const cx = this.point(t, this.startPoint.x, this.control1.x, this.control2.x, this.endPoint.x);
+      const cy = this.point(t, this.startPoint.y, this.control1.y, this.control2.y, this.endPoint.y);
+      if (i > 0) {
+        const xdiff = cx - px;
+        const ydiff = cy - py;
+        length += Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+      }
+      px = cx;
+      py = cy;
+    }
+    return length;
+  }
+  point(t, start, c1, c2, end) {
+    return start * (1 - t) * (1 - t) * (1 - t) + 3 * c1 * (1 - t) * (1 - t) * t + 3 * c2 * (1 - t) * t * t + end * t * t * t;
+  }
+}
+class SignatureEventTarget {
+  constructor() {
+    try {
+      this._et = new EventTarget();
+    } catch (_a) {
+      this._et = document;
+    }
+  }
+  addEventListener(type, listener, options) {
+    this._et.addEventListener(type, listener, options);
+  }
+  dispatchEvent(event2) {
+    return this._et.dispatchEvent(event2);
+  }
+  removeEventListener(type, callback, options) {
+    this._et.removeEventListener(type, callback, options);
+  }
+}
+function throttle(fn, wait = 250) {
+  let previous = 0;
+  let timeout = null;
+  let result;
+  let storedContext;
+  let storedArgs;
+  const later = () => {
+    previous = Date.now();
+    timeout = null;
+    result = fn.apply(storedContext, storedArgs);
+    if (!timeout) {
+      storedContext = null;
+      storedArgs = [];
+    }
+  };
+  return function wrapper(...args) {
+    const now = Date.now();
+    const remaining = wait - (now - previous);
+    storedContext = this;
+    storedArgs = args;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      result = fn.apply(storedContext, storedArgs);
+      if (!timeout) {
+        storedContext = null;
+        storedArgs = [];
+      }
+    } else if (!timeout) {
+      timeout = window.setTimeout(later, remaining);
+    }
+    return result;
+  };
+}
+class SignaturePad extends SignatureEventTarget {
+  constructor(canvas, options = {}) {
+    var _a, _b, _c;
+    super();
+    this.canvas = canvas;
+    this._drawingStroke = false;
+    this._isEmpty = true;
+    this._lastPoints = [];
+    this._data = [];
+    this._lastVelocity = 0;
+    this._lastWidth = 0;
+    this._handleMouseDown = (event2) => {
+      if (!this._isLeftButtonPressed(event2, true) || this._drawingStroke) {
+        return;
+      }
+      this._strokeBegin(this._pointerEventToSignatureEvent(event2));
+    };
+    this._handleMouseMove = (event2) => {
+      if (!this._isLeftButtonPressed(event2, true) || !this._drawingStroke) {
+        this._strokeEnd(this._pointerEventToSignatureEvent(event2), false);
+        return;
+      }
+      this._strokeMoveUpdate(this._pointerEventToSignatureEvent(event2));
+    };
+    this._handleMouseUp = (event2) => {
+      if (this._isLeftButtonPressed(event2)) {
+        return;
+      }
+      this._strokeEnd(this._pointerEventToSignatureEvent(event2));
+    };
+    this._handleTouchStart = (event2) => {
+      if (event2.targetTouches.length !== 1 || this._drawingStroke) {
+        return;
+      }
+      if (event2.cancelable) {
+        event2.preventDefault();
+      }
+      this._strokeBegin(this._touchEventToSignatureEvent(event2));
+    };
+    this._handleTouchMove = (event2) => {
+      if (event2.targetTouches.length !== 1) {
+        return;
+      }
+      if (event2.cancelable) {
+        event2.preventDefault();
+      }
+      if (!this._drawingStroke) {
+        this._strokeEnd(this._touchEventToSignatureEvent(event2), false);
+        return;
+      }
+      this._strokeMoveUpdate(this._touchEventToSignatureEvent(event2));
+    };
+    this._handleTouchEnd = (event2) => {
+      if (event2.targetTouches.length !== 0) {
+        return;
+      }
+      if (event2.cancelable) {
+        event2.preventDefault();
+      }
+      this.canvas.removeEventListener("touchmove", this._handleTouchMove);
+      this._strokeEnd(this._touchEventToSignatureEvent(event2));
+    };
+    this._handlePointerDown = (event2) => {
+      if (!event2.isPrimary || !this._isLeftButtonPressed(event2) || this._drawingStroke) {
+        return;
+      }
+      event2.preventDefault();
+      this._strokeBegin(this._pointerEventToSignatureEvent(event2));
+    };
+    this._handlePointerMove = (event2) => {
+      if (!event2.isPrimary) {
+        return;
+      }
+      if (!this._isLeftButtonPressed(event2, true) || !this._drawingStroke) {
+        this._strokeEnd(this._pointerEventToSignatureEvent(event2), false);
+        return;
+      }
+      event2.preventDefault();
+      this._strokeMoveUpdate(this._pointerEventToSignatureEvent(event2));
+    };
+    this._handlePointerUp = (event2) => {
+      if (!event2.isPrimary || this._isLeftButtonPressed(event2)) {
+        return;
+      }
+      event2.preventDefault();
+      this._strokeEnd(this._pointerEventToSignatureEvent(event2));
+    };
+    this.velocityFilterWeight = options.velocityFilterWeight || 0.7;
+    this.minWidth = options.minWidth || 0.5;
+    this.maxWidth = options.maxWidth || 2.5;
+    this.throttle = (_a = options.throttle) !== null && _a !== void 0 ? _a : 16;
+    this.minDistance = (_b = options.minDistance) !== null && _b !== void 0 ? _b : 5;
+    this.dotSize = options.dotSize || 0;
+    this.penColor = options.penColor || "black";
+    this.backgroundColor = options.backgroundColor || "rgba(0,0,0,0)";
+    this.compositeOperation = options.compositeOperation || "source-over";
+    this.canvasContextOptions = (_c = options.canvasContextOptions) !== null && _c !== void 0 ? _c : {};
+    this._strokeMoveUpdate = this.throttle ? throttle(SignaturePad.prototype._strokeUpdate, this.throttle) : SignaturePad.prototype._strokeUpdate;
+    this._ctx = canvas.getContext("2d", this.canvasContextOptions);
+    this.clear();
+    this.on();
+  }
+  clear() {
+    const { _ctx: ctx, canvas } = this;
+    ctx.fillStyle = this.backgroundColor;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    this._data = [];
+    this._reset(this._getPointGroupOptions());
+    this._isEmpty = true;
+  }
+  fromDataURL(dataUrl, options = {}) {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      const ratio = options.ratio || window.devicePixelRatio || 1;
+      const width = options.width || this.canvas.width / ratio;
+      const height = options.height || this.canvas.height / ratio;
+      const xOffset = options.xOffset || 0;
+      const yOffset = options.yOffset || 0;
+      this._reset(this._getPointGroupOptions());
+      image.onload = () => {
+        this._ctx.drawImage(image, xOffset, yOffset, width, height);
+        resolve();
+      };
+      image.onerror = (error) => {
+        reject(error);
+      };
+      image.crossOrigin = "anonymous";
+      image.src = dataUrl;
+      this._isEmpty = false;
+    });
+  }
+  toDataURL(type = "image/png", encoderOptions) {
+    switch (type) {
+      case "image/svg+xml":
+        if (typeof encoderOptions !== "object") {
+          encoderOptions = void 0;
+        }
+        return `data:image/svg+xml;base64,${btoa(this.toSVG(encoderOptions))}`;
+      default:
+        if (typeof encoderOptions !== "number") {
+          encoderOptions = void 0;
+        }
+        return this.canvas.toDataURL(type, encoderOptions);
+    }
+  }
+  on() {
+    this.canvas.style.touchAction = "none";
+    this.canvas.style.msTouchAction = "none";
+    this.canvas.style.userSelect = "none";
+    const isIOS = /Macintosh/.test(navigator.userAgent) && "ontouchstart" in document;
+    if (window.PointerEvent && !isIOS) {
+      this._handlePointerEvents();
+    } else {
+      this._handleMouseEvents();
+      if ("ontouchstart" in window) {
+        this._handleTouchEvents();
+      }
+    }
+  }
+  off() {
+    this.canvas.style.touchAction = "auto";
+    this.canvas.style.msTouchAction = "auto";
+    this.canvas.style.userSelect = "auto";
+    this.canvas.removeEventListener("pointerdown", this._handlePointerDown);
+    this.canvas.removeEventListener("mousedown", this._handleMouseDown);
+    this.canvas.removeEventListener("touchstart", this._handleTouchStart);
+    this._removeMoveUpEventListeners();
+  }
+  _getListenerFunctions() {
+    var _a;
+    const canvasWindow = window.document === this.canvas.ownerDocument ? window : (_a = this.canvas.ownerDocument.defaultView) !== null && _a !== void 0 ? _a : this.canvas.ownerDocument;
+    return {
+      addEventListener: canvasWindow.addEventListener.bind(canvasWindow),
+      removeEventListener: canvasWindow.removeEventListener.bind(canvasWindow)
+    };
+  }
+  _removeMoveUpEventListeners() {
+    const { removeEventListener } = this._getListenerFunctions();
+    removeEventListener("pointermove", this._handlePointerMove);
+    removeEventListener("pointerup", this._handlePointerUp);
+    removeEventListener("mousemove", this._handleMouseMove);
+    removeEventListener("mouseup", this._handleMouseUp);
+    removeEventListener("touchmove", this._handleTouchMove);
+    removeEventListener("touchend", this._handleTouchEnd);
+  }
+  isEmpty() {
+    return this._isEmpty;
+  }
+  fromData(pointGroups, { clear = true } = {}) {
+    if (clear) {
+      this.clear();
+    }
+    this._fromData(pointGroups, this._drawCurve.bind(this), this._drawDot.bind(this));
+    this._data = this._data.concat(pointGroups);
+  }
+  toData() {
+    return this._data;
+  }
+  _isLeftButtonPressed(event2, only) {
+    if (only) {
+      return event2.buttons === 1;
+    }
+    return (event2.buttons & 1) === 1;
+  }
+  _pointerEventToSignatureEvent(event2) {
+    return {
+      event: event2,
+      type: event2.type,
+      x: event2.clientX,
+      y: event2.clientY,
+      pressure: "pressure" in event2 ? event2.pressure : 0
+    };
+  }
+  _touchEventToSignatureEvent(event2) {
+    const touch = event2.changedTouches[0];
+    return {
+      event: event2,
+      type: event2.type,
+      x: touch.clientX,
+      y: touch.clientY,
+      pressure: touch.force
+    };
+  }
+  _getPointGroupOptions(group) {
+    return {
+      penColor: group && "penColor" in group ? group.penColor : this.penColor,
+      dotSize: group && "dotSize" in group ? group.dotSize : this.dotSize,
+      minWidth: group && "minWidth" in group ? group.minWidth : this.minWidth,
+      maxWidth: group && "maxWidth" in group ? group.maxWidth : this.maxWidth,
+      velocityFilterWeight: group && "velocityFilterWeight" in group ? group.velocityFilterWeight : this.velocityFilterWeight,
+      compositeOperation: group && "compositeOperation" in group ? group.compositeOperation : this.compositeOperation
+    };
+  }
+  _strokeBegin(event2) {
+    const cancelled = !this.dispatchEvent(new CustomEvent("beginStroke", { detail: event2, cancelable: true }));
+    if (cancelled) {
+      return;
+    }
+    const { addEventListener } = this._getListenerFunctions();
+    switch (event2.event.type) {
+      case "mousedown":
+        addEventListener("mousemove", this._handleMouseMove);
+        addEventListener("mouseup", this._handleMouseUp);
+        break;
+      case "touchstart":
+        addEventListener("touchmove", this._handleTouchMove);
+        addEventListener("touchend", this._handleTouchEnd);
+        break;
+      case "pointerdown":
+        addEventListener("pointermove", this._handlePointerMove);
+        addEventListener("pointerup", this._handlePointerUp);
+        break;
+    }
+    this._drawingStroke = true;
+    const pointGroupOptions = this._getPointGroupOptions();
+    const newPointGroup = Object.assign(Object.assign({}, pointGroupOptions), { points: [] });
+    this._data.push(newPointGroup);
+    this._reset(pointGroupOptions);
+    this._strokeUpdate(event2);
+  }
+  _strokeUpdate(event2) {
+    if (!this._drawingStroke) {
+      return;
+    }
+    if (this._data.length === 0) {
+      this._strokeBegin(event2);
+      return;
+    }
+    this.dispatchEvent(new CustomEvent("beforeUpdateStroke", { detail: event2 }));
+    const point = this._createPoint(event2.x, event2.y, event2.pressure);
+    const lastPointGroup = this._data[this._data.length - 1];
+    const lastPoints = lastPointGroup.points;
+    const lastPoint = lastPoints.length > 0 && lastPoints[lastPoints.length - 1];
+    const isLastPointTooClose = lastPoint ? point.distanceTo(lastPoint) <= this.minDistance : false;
+    const pointGroupOptions = this._getPointGroupOptions(lastPointGroup);
+    if (!lastPoint || !(lastPoint && isLastPointTooClose)) {
+      const curve = this._addPoint(point, pointGroupOptions);
+      if (!lastPoint) {
+        this._drawDot(point, pointGroupOptions);
+      } else if (curve) {
+        this._drawCurve(curve, pointGroupOptions);
+      }
+      lastPoints.push({
+        time: point.time,
+        x: point.x,
+        y: point.y,
+        pressure: point.pressure
+      });
+    }
+    this.dispatchEvent(new CustomEvent("afterUpdateStroke", { detail: event2 }));
+  }
+  _strokeEnd(event2, shouldUpdate = true) {
+    this._removeMoveUpEventListeners();
+    if (!this._drawingStroke) {
+      return;
+    }
+    if (shouldUpdate) {
+      this._strokeUpdate(event2);
+    }
+    this._drawingStroke = false;
+    this.dispatchEvent(new CustomEvent("endStroke", { detail: event2 }));
+  }
+  _handlePointerEvents() {
+    this._drawingStroke = false;
+    this.canvas.addEventListener("pointerdown", this._handlePointerDown);
+  }
+  _handleMouseEvents() {
+    this._drawingStroke = false;
+    this.canvas.addEventListener("mousedown", this._handleMouseDown);
+  }
+  _handleTouchEvents() {
+    this.canvas.addEventListener("touchstart", this._handleTouchStart);
+  }
+  _reset(options) {
+    this._lastPoints = [];
+    this._lastVelocity = 0;
+    this._lastWidth = (options.minWidth + options.maxWidth) / 2;
+    this._ctx.fillStyle = options.penColor;
+    this._ctx.globalCompositeOperation = options.compositeOperation;
+  }
+  _createPoint(x, y, pressure) {
+    const rect = this.canvas.getBoundingClientRect();
+    return new Point(x - rect.left, y - rect.top, pressure, (/* @__PURE__ */ new Date()).getTime());
+  }
+  _addPoint(point, options) {
+    const { _lastPoints } = this;
+    _lastPoints.push(point);
+    if (_lastPoints.length > 2) {
+      if (_lastPoints.length === 3) {
+        _lastPoints.unshift(_lastPoints[0]);
+      }
+      const widths = this._calculateCurveWidths(_lastPoints[1], _lastPoints[2], options);
+      const curve = Bezier.fromPoints(_lastPoints, widths);
+      _lastPoints.shift();
+      return curve;
+    }
+    return null;
+  }
+  _calculateCurveWidths(startPoint, endPoint, options) {
+    const velocity = options.velocityFilterWeight * endPoint.velocityFrom(startPoint) + (1 - options.velocityFilterWeight) * this._lastVelocity;
+    const newWidth = this._strokeWidth(velocity, options);
+    const widths = {
+      end: newWidth,
+      start: this._lastWidth
+    };
+    this._lastVelocity = velocity;
+    this._lastWidth = newWidth;
+    return widths;
+  }
+  _strokeWidth(velocity, options) {
+    return Math.max(options.maxWidth / (velocity + 1), options.minWidth);
+  }
+  _drawCurveSegment(x, y, width) {
+    const ctx = this._ctx;
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, width, 0, 2 * Math.PI, false);
+    this._isEmpty = false;
+  }
+  _drawCurve(curve, options) {
+    const ctx = this._ctx;
+    const widthDelta = curve.endWidth - curve.startWidth;
+    const drawSteps = Math.ceil(curve.length()) * 2;
+    ctx.beginPath();
+    ctx.fillStyle = options.penColor;
+    for (let i = 0; i < drawSteps; i += 1) {
+      const t = i / drawSteps;
+      const tt = t * t;
+      const ttt = tt * t;
+      const u = 1 - t;
+      const uu = u * u;
+      const uuu = uu * u;
+      let x = uuu * curve.startPoint.x;
+      x += 3 * uu * t * curve.control1.x;
+      x += 3 * u * tt * curve.control2.x;
+      x += ttt * curve.endPoint.x;
+      let y = uuu * curve.startPoint.y;
+      y += 3 * uu * t * curve.control1.y;
+      y += 3 * u * tt * curve.control2.y;
+      y += ttt * curve.endPoint.y;
+      const width = Math.min(curve.startWidth + ttt * widthDelta, options.maxWidth);
+      this._drawCurveSegment(x, y, width);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+  _drawDot(point, options) {
+    const ctx = this._ctx;
+    const width = options.dotSize > 0 ? options.dotSize : (options.minWidth + options.maxWidth) / 2;
+    ctx.beginPath();
+    this._drawCurveSegment(point.x, point.y, width);
+    ctx.closePath();
+    ctx.fillStyle = options.penColor;
+    ctx.fill();
+  }
+  _fromData(pointGroups, drawCurve, drawDot) {
+    for (const group of pointGroups) {
+      const { points } = group;
+      const pointGroupOptions = this._getPointGroupOptions(group);
+      if (points.length > 1) {
+        for (let j = 0; j < points.length; j += 1) {
+          const basicPoint = points[j];
+          const point = new Point(basicPoint.x, basicPoint.y, basicPoint.pressure, basicPoint.time);
+          if (j === 0) {
+            this._reset(pointGroupOptions);
+          }
+          const curve = this._addPoint(point, pointGroupOptions);
+          if (curve) {
+            drawCurve(curve, pointGroupOptions);
+          }
+        }
+      } else {
+        this._reset(pointGroupOptions);
+        drawDot(points[0], pointGroupOptions);
+      }
+    }
+  }
+  toSVG({ includeBackgroundColor = false } = {}) {
+    const pointGroups = this._data;
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    const minX = 0;
+    const minY = 0;
+    const maxX = this.canvas.width / ratio;
+    const maxY = this.canvas.height / ratio;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svg.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    svg.setAttribute("viewBox", `${minX} ${minY} ${maxX} ${maxY}`);
+    svg.setAttribute("width", maxX.toString());
+    svg.setAttribute("height", maxY.toString());
+    if (includeBackgroundColor && this.backgroundColor) {
+      const rect = document.createElement("rect");
+      rect.setAttribute("width", "100%");
+      rect.setAttribute("height", "100%");
+      rect.setAttribute("fill", this.backgroundColor);
+      svg.appendChild(rect);
+    }
+    this._fromData(pointGroups, (curve, { penColor }) => {
+      const path = document.createElement("path");
+      if (!isNaN(curve.control1.x) && !isNaN(curve.control1.y) && !isNaN(curve.control2.x) && !isNaN(curve.control2.y)) {
+        const attr = `M ${curve.startPoint.x.toFixed(3)},${curve.startPoint.y.toFixed(3)} C ${curve.control1.x.toFixed(3)},${curve.control1.y.toFixed(3)} ${curve.control2.x.toFixed(3)},${curve.control2.y.toFixed(3)} ${curve.endPoint.x.toFixed(3)},${curve.endPoint.y.toFixed(3)}`;
+        path.setAttribute("d", attr);
+        path.setAttribute("stroke-width", (curve.endWidth * 2.25).toFixed(3));
+        path.setAttribute("stroke", penColor);
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke-linecap", "round");
+        svg.appendChild(path);
+      }
+    }, (point, { penColor, dotSize, minWidth, maxWidth }) => {
+      const circle = document.createElement("circle");
+      const size = dotSize > 0 ? dotSize : (minWidth + maxWidth) / 2;
+      circle.setAttribute("r", size.toString());
+      circle.setAttribute("cx", point.x.toString());
+      circle.setAttribute("cy", point.y.toString());
+      circle.setAttribute("fill", penColor);
+      svg.appendChild(circle);
+    });
+    return svg.outerHTML;
+  }
+}
+const signature_pad = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: SignaturePad
+}, Symbol.toStringTag, { value: "Module" }));
 export {
   AsyncCache as A,
   Bind as B,
@@ -1794,5 +2403,6 @@ export {
   styles as s,
   toCSSUnit as t,
   query as u,
-  QueryAll as v
+  QueryAll as v,
+  signature_pad as w
 };

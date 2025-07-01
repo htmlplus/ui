@@ -33,9 +33,6 @@ export class RelativeTime extends PlusCore {
   @State()
   formatted?: string;
 
-  @State()
-  tick?: number;
-
   timeout: number;
 
   get isValid() {
@@ -69,7 +66,7 @@ export class RelativeTime extends PlusCore {
     const interval = (difference > 0 ? 0 : unit.value) + (difference % unit.value);
 
     this.timeout = window.setTimeout(() => {
-      this.tick = Math.random();
+      this.forceUpdate();
     }, interval);
   }
 

@@ -2,7 +2,9 @@ import { EventEmitter } from '@htmlplus/element';
 import { default as CoreType, PointGroup } from 'signature_pad';
 import { PlusForm } from '../../core';
 /**
+ * @thirdParty
  * @stable
+ * @dependencies signature_pad
  *
  * @part canvas - The canvas element.
  */
@@ -114,7 +116,7 @@ export declare class Signature extends PlusForm {
     onReset(): void;
     onStart(): void;
     onEnd(): void;
-    loadedCallback(): Promise<void>;
+    readyCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

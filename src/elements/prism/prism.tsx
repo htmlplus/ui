@@ -1,4 +1,4 @@
-import { Bind, Element, Property, State, Style } from '@htmlplus/element';
+import { Element, Property, Style } from '@htmlplus/element';
 
 import type PrismType from 'prismjs';
 
@@ -53,10 +53,7 @@ export class Prism extends PlusCore {
   @Property()
   resolver?: PrismResolver;
 
-  @State()
-  tick: number;
-
-  observer: MutationObserver = new MutationObserver(this.onChange);
+  observer: MutationObserver = new MutationObserver(this.forceUpdate);
 
   cache = new AsyncCache<PrismResolver>({
     type: 'global',
@@ -185,23 +182,15 @@ export class Prism extends PlusCore {
     return `:host([theme="${this.theme}"]){${style}}`;
   }
 
-  @Bind()
-  onChange() {
-    this.tick++;
-  }
-
   connectedCallback() {
-    return import('prismjs')
+    import('prismjs')
       .then((module: any) => {
         PrismCore = module.default || module;
+        this.forceUpdate();
       })
       .catch((error) => {
         throw new ExternalDependencyError(this.$host, 'prismjs', { cause: error });
       });
-  }
-
-  disconnectedCallback() {
-    this.observer.disconnect();
   }
 
   updatedCallback() {
@@ -210,6 +199,10 @@ export class Prism extends PlusCore {
     if (!this.sync) return;
 
     this.observer.observe(this.$host, { childList: true });
+  }
+
+  disconnectedCallback() {
+    this.observer.disconnect();
   }
 
   render() {

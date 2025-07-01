@@ -114,7 +114,7 @@ export class Sticky extends PlusCore {
     this.plusChange(this.state);
   }
 
-  loadedCallback() {
+  readyCallback() {
     this.initialize();
   }
 

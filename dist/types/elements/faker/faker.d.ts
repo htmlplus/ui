@@ -23,7 +23,7 @@ export declare class Faker extends PlusCore {
      */
     seed?: number;
     get content(): any;
-    connectedCallback(): Promise<void>;
+    connectedCallback(): void;
     render(): any;
 }
 

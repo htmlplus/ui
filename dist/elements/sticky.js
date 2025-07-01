@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, t as toCSSUnit, h as html, d as attributes, s as styles, a as Property, c as Event, e as State, S as Style, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { P as PlusCore, t as toCSSUnit, h as html, d as attributes, s as styles, a as Property, c as Event, Q as Query, e as State, S as Style, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:sticky;display:block;will-change:auto}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -57,7 +57,7 @@ let Sticky = class extends PlusCore {
     this.state = entry.intersectionRatio < 1 ? "stick" : "normal";
     this.plusChange(this.state);
   }
-  loadedCallback() {
+  readyCallback() {
     this.initialize();
   }
   disconnectedCallback() {

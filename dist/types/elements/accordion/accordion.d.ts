@@ -80,7 +80,7 @@ export declare class Accordion extends PlusCore {
     try(open: boolean, silent?: boolean): Promise<boolean>;
     onClick(): void;
     onKeyDown(event: KeyboardEvent): void;
-    loadedCallback(): void;
+    readyCallback(): void;
     disconnectedCallback(): void;
     render(): any;
 }

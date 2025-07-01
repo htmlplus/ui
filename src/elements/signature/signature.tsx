@@ -18,7 +18,9 @@ import { ExternalDependencyError } from '@/errors';
 let Core;
 
 /**
+ * @thirdParty
  * @stable
+ * @dependencies signature_pad
  *
  * @part canvas - The canvas element.
  */
@@ -393,10 +395,10 @@ export class Signature extends PlusForm {
     this.update(false, false);
   }
 
-  loadedCallback() {
-    return import('signature_pad')
+  readyCallback() {
+    import('signature_pad')
       .then((module: any) => {
-         Core = module.default || module;
+        Core = module.default || module;
         try {
           this.initialize();
         } catch {

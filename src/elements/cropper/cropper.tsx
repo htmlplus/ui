@@ -398,6 +398,10 @@ export class Cropper extends PlusCore {
   }
 
   initialize() {
+    if (!CropperCore) return;
+
+    if (this.instance) return;
+
     this.instance = new CropperCore(this.$image, this.options);
   }
 
@@ -428,6 +432,7 @@ export class Cropper extends PlusCore {
 
     this.locked = true;
 
+    // TODO: This assignment applies additional rendering during cropping
     this.value = {
       rotate: this.instance.getData().rotate,
       top: to(viewport.top - image.top, image.height),
@@ -445,6 +450,8 @@ export class Cropper extends PlusCore {
   terminate() {
     // TODO: has a problem in documentation
     this.instance?.destroy();
+
+    this.instance = undefined;
   }
 
   @Bind()
@@ -506,17 +513,14 @@ export class Cropper extends PlusCore {
   }
 
   connectedCallback() {
-    return import('cropperjs')
+    import('cropperjs')
       .then((module: any) => {
         CropperCore = module.default || module;
+        this.initialize();
       })
       .catch((error) => {
         throw new ExternalDependencyError(this.$host, 'cropperjs', { cause: error });
       });
-  }
-
-  loadedCallback() {
-    this.initialize();
   }
 
   disconnectedCallback() {

@@ -33,7 +33,6 @@ export declare class Prism extends PlusCore {
      * A custom resolver function to load Prism assets (e.g., languages, themes, plugins).
      */
     resolver?: PrismResolver;
-    tick: number;
     observer: MutationObserver;
     cache: AsyncCache<PrismResolver>;
     get attributes(): {};
@@ -46,10 +45,9 @@ export declare class Prism extends PlusCore {
     get preClass(): string;
     get pluginKeys(): string[];
     update(): Promise<string>;
-    onChange(): void;
-    connectedCallback(): Promise<void>;
-    disconnectedCallback(): void;
+    connectedCallback(): void;
     updatedCallback(): void;
+    disconnectedCallback(): void;
     render(): any;
 }
 

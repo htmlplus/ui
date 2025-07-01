@@ -43,7 +43,7 @@ export declare class Icon extends PlusCore {
         rotate: string;
     };
     update(): Promise<void>;
-    loadedCallback(): void;
+    readyCallback(): void;
     render(): any;
 }
 
