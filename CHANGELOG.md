@@ -1,3 +1,9 @@
+## [1.6.2](https://github.com/htmlplus/ui/compare/v1.6.1...v1.6.2) (2025-07-01)
+
+### Bug Fixes
+
+* Fix how the `readyCallback` lifecycle is being used ([29b3682](https://github.com/htmlplus/ui/commit/29b368203980e702a033e6699c2b3978b720b32f))
+
 ## [1.6.1](https://github.com/htmlplus/ui/compare/v1.6.0...v1.6.1) (2025-02-28)
 
 ### Bug Fixes
