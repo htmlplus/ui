@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @media (min-width: 0px) {
+        plus-carousel-slide {
+          flex-basis: 100% !important;
+        }
+      }
+      @media (min-width: 750px) {
+        plus-carousel-slide {
+          flex-basis: 50% !important;
+        }
+      }
+      @media (min-width: 1200px) {
+        plus-carousel-slide {
+          flex-basis: calc(100% / 3) !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <plus-carousel variant="presentation">
+      <plus-carousel-slides>
+        <plus-carousel-slide>1</plus-carousel-slide>
+        <plus-carousel-slide>2</plus-carousel-slide>
+        <plus-carousel-slide>3</plus-carousel-slide>
+        <plus-carousel-slide>4</plus-carousel-slide>
+        <plus-carousel-slide>5</plus-carousel-slide>
+        <plus-carousel-slide>6</plus-carousel-slide>
+        <plus-carousel-slide>7</plus-carousel-slide>
+        <plus-carousel-slide>8</plus-carousel-slide>
+        <plus-carousel-slide>9</plus-carousel-slide>
+      </plus-carousel-slides>
+      <plus-carousel-button type="previous"></plus-carousel-button>
+      <plus-carousel-button type="next"></plus-carousel-button>
+    </plus-carousel>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/carousel.js';
+      import 'https://esm.run/@htmlplus/ui/carousel-button.js';
+      import 'https://esm.run/@htmlplus/ui/carousel-slide.js';
+      import 'https://esm.run/@htmlplus/ui/carousel-slides.js';
+    </script>
+  </body>
+</html>

@@ -132,7 +132,7 @@ export class Icon extends PlusCore {
     this.$host.shadowRoot.innerHTML += svg;
   }
 
-  loadedCallback() {
+  readyCallback() {
     this.update();
   }
 

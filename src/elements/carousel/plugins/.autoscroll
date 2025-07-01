@@ -1,0 +1,247 @@
+import { Bind } from '@htmlplus/element';
+
+import type { EngineType, ScrollBodyType } from 'embla-carousel';
+
+import { CarouselPlugin } from './base';
+
+export class CarouselPluginAuto extends CarouselPlugin {
+  private instanceAutoDirection: 'forward' | 'backward' = 'forward';
+  private instanceAutoSpeed: number = 2;
+  private instanceAutoStartDelay: number = 1000;
+  private instanceAutoPlayOnInit: boolean = true;
+  private instanceAutoStopOnFocusIn: boolean = true;
+  private instanceAutoStopOnInteraction: boolean = true;
+  private instanceAutoStopOnMouseEnter: boolean = false;
+  private instanceAutoRootNode: null | ((emblaRoot: HTMLElement) => HTMLElement | null) = null;
+
+  private defaultScrollBehaviour: ScrollBodyType;
+
+  private isPlaying: boolean = false;
+
+  private mouseIsOver: boolean = false;
+
+  private timeout: number = 0;
+
+  public get playing(): boolean {
+    return this.isPlaying;
+  }
+
+  public initialize() {
+    this.api.on('reInit', this.handleInit);
+    this.handleInit();
+  }
+
+  public reset() {
+    if (!this.isPlaying) return;
+
+    this.stop();
+
+    this.startOnSettle();
+  }
+
+  public start() {
+    if (this.destroyed) return;
+    if (this.isPlaying) return;
+    // this.api.emit('autoScroll:play');
+    const engine = this.api.internalEngine();
+    this.timeout = engine.ownerWindow.setTimeout(() => {
+      engine.scrollBody = this.createAutoScrollBehaviour(engine);
+      engine.animation.start();
+    }, this.instanceAutoStartDelay);
+    this.isPlaying = true;
+  }
+
+  public stop() {
+    if (this.destroyed) return;
+    if (!this.isPlaying) return;
+    // this.api.emit('autoScroll:stop');
+    const engine = this.api.internalEngine();
+    engine.scrollBody = this.defaultScrollBehaviour;
+    engine.ownerWindow.clearTimeout(this.timeout);
+    this.timeout = 0;
+    this.isPlaying = false;
+  }
+
+  public terminate() {
+    this.api.off('reInit', this.handleInit);
+  }
+
+  private startOnSettle() {
+    this.api.on('settle', this.handleSettle);
+  }
+
+  @Bind()
+  private handleFocusOut() {
+    this.start();
+  }
+
+  @Bind()
+  private handleInit() {
+    if (this.api.scrollSnapList().length <= 1) return;
+
+    const engine = this.api.internalEngine();
+
+    this.destroyed = false;
+    this.defaultScrollBehaviour = engine.scrollBody;
+
+    const isDraggable = !!engine.options.watchDrag;
+
+    const emblaRootNode = this.api.rootNode();
+    const root = this.instanceAutoRootNode?.(emblaRootNode) || emblaRootNode;
+
+    if (isDraggable) {
+      this.api.on('pointerDown', this.handlePointerDown);
+    }
+
+    if (isDraggable && !this.instanceAutoStopOnInteraction) {
+      this.api.on('pointerUp', this.handlePointerUp);
+    }
+
+    if (this.instanceAutoStopOnMouseEnter) {
+      engine.eventStore.add(root, 'mouseenter', this.handleMouseEnter);
+    }
+
+    if (this.instanceAutoStopOnMouseEnter && !this.instanceAutoStopOnInteraction) {
+      engine.eventStore.add(root, 'mouseleave', this.handleMouseLeave);
+    }
+
+    if (this.instanceAutoStopOnFocusIn) {
+      this.api.on('slideFocusStart', this.handleSlideFocusStart);
+    }
+
+    if (this.instanceAutoStopOnFocusIn && !this.instanceAutoStopOnInteraction) {
+      engine.eventStore.add(this.api.containerNode(), 'focusout', this.handleFocusOut);
+    }
+
+    if (this.instanceAutoPlayOnInit) {
+      this.start();
+    }
+  }
+
+  @Bind()
+  private handleMouseEnter() {
+    this.mouseIsOver = true;
+    this.stop();
+  }
+
+  @Bind()
+  private handleMouseLeave() {
+    this.mouseIsOver = false;
+    this.start();
+  }
+
+  @Bind()
+  private handlePointerDown() {
+    if (!this.mouseIsOver) {
+      this.stop();
+    }
+  }
+
+  @Bind()
+  private handlePointerUp() {
+    if (!this.mouseIsOver) {
+      this.startOnSettle();
+    }
+  }
+
+  @Bind()
+  private handleSettle() {
+    this.api.off('settle', this.handleSettle);
+    this.start();
+  }
+
+  @Bind()
+  private handleSlideFocusStart() {
+    this.stop();
+  }
+
+  //////////////////
+
+  destroyed: boolean;
+
+  destroy() {
+    this.api
+      .off('pointerDown', this.handlePointerDown)
+      .off('pointerUp', this.handlePointerUp)
+      .off('slideFocusStart', this.handleSlideFocusStart)
+      .off('settle', this.handleSettle);
+
+    this.stop();
+    this.destroyed = true;
+    this.isPlaying = false;
+  }
+
+  @Bind()
+  createAutoScrollBehaviour(engine: EngineType): ScrollBodyType {
+    const {
+      location,
+      previousLocation,
+      offsetLocation,
+      target,
+      scrollTarget,
+      index,
+      indexPrevious,
+      limit: { reachedMin, reachedMax, constrain },
+      options: { loop }
+    } = engine;
+    const directionSign = this.instanceAutoDirection === 'forward' ? -1 : 1;
+    const noop = (): ScrollBodyType => self;
+
+    let bodyVelocity = 0;
+    let scrollDirection = 0;
+    let rawLocation = location.get();
+    let rawLocationPrevious = 0;
+    let hasSettled = false;
+
+    const seek = (): ScrollBodyType => {
+      let directionDiff = 0;
+
+      previousLocation.set(location);
+
+      bodyVelocity = directionSign * this.instanceAutoSpeed;
+      rawLocation += bodyVelocity;
+      location.add(bodyVelocity);
+      target.set(location);
+
+      directionDiff = rawLocation - rawLocationPrevious;
+      scrollDirection = Math.sign(directionDiff);
+      rawLocationPrevious = rawLocation;
+
+      const currentIndex = scrollTarget.byDistance(0, false).index;
+
+      if (index.get() !== currentIndex) {
+        indexPrevious.set(index.get());
+        index.set(currentIndex);
+        this.api.emit('select');
+      }
+
+      const reachedEnd =
+        this.instanceAutoDirection === 'forward'
+          ? reachedMin(offsetLocation.get())
+          : reachedMax(offsetLocation.get());
+
+      if (!loop && reachedEnd) {
+        hasSettled = true;
+        const constrainedLocation = constrain(location.get());
+        location.set(constrainedLocation);
+        target.set(location);
+        this.stop();
+      }
+
+      return self;
+    };
+
+    const self: ScrollBodyType = {
+      direction: () => scrollDirection,
+      duration: () => -1,
+      velocity: () => bodyVelocity,
+      settled: () => hasSettled,
+      seek,
+      useBaseFriction: noop,
+      useBaseDuration: noop,
+      useFriction: noop,
+      useDuration: noop
+    };
+    return self;
+  }
+}

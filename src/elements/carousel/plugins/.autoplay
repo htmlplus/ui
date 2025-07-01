@@ -1,0 +1,193 @@
+import { CarouselPlugin } from './base';
+
+export class CarouselPluginAutoplay extends CarouselPlugin {
+  options: OptionsType;
+  emblaApi: EmblaCarouselType;
+  destroyed: boolean;
+  delay: ReturnType<EmblaCarouselType['scrollSnapList']>;
+  timerStartTime: null | number = null;
+  timerId = 0;
+  autoplayActive = false;
+  mouseIsOver = false;
+  playOnDocumentVisible = false;
+  jump = false;
+
+  init(emblaApiInstance: EmblaCarouselType) {
+    this.emblaApi = emblaApiInstance;
+
+    this.options = {
+      active: true,
+      breakpoints: {},
+      delay: 4000,
+      jump: false,
+      playOnInit: true,
+      stopOnFocusIn: true,
+      stopOnInteraction: true,
+      stopOnMouseEnter: false,
+      stopOnLastSnap: false,
+      rootNode: null
+    };
+
+    if (this.emblaApi.scrollSnapList().length <= 1) return;
+
+    this.jump = this.options.jump;
+    this.destroyed = false;
+    this.delay = normalizeDelay(this.emblaApi, this.options.delay);
+
+    const { eventStore, ownerDocument } = this.emblaApi.internalEngine();
+    const isDraggable = !!this.emblaApi.internalEngine().options.watchDrag;
+    const root = getAutoplayRootNode(this.emblaApi, this.options.rootNode);
+
+    eventStore.add(ownerDocument, 'visibilitychange', this.visibilityChange);
+
+    if (isDraggable) {
+      this.emblaApi.on('pointerDown', this.pointerDown);
+    }
+
+    if (isDraggable && !this.options.stopOnInteraction) {
+      this.emblaApi.on('pointerUp', this.pointerUp);
+    }
+
+    if (this.options.stopOnMouseEnter) {
+      eventStore.add(root, 'mouseenter', this.mouseEnter);
+    }
+
+    if (this.options.stopOnMouseEnter && !this.options.stopOnInteraction) {
+      eventStore.add(root, 'mouseleave', this.mouseLeave);
+    }
+
+    if (this.options.stopOnFocusIn) {
+      this.emblaApi.on('slideFocusStart', this.stopAutoplay);
+    }
+
+    if (this.options.stopOnFocusIn && !this.options.stopOnInteraction) {
+      eventStore.add(this.emblaApi.containerNode(), 'focusout', this.startAutoplay);
+    }
+
+    if (this.options.playOnInit) this.startAutoplay();
+  }
+
+  destroy() {
+    this.emblaApi
+      .off('pointerDown', this.pointerDown)
+      .off('pointerUp', this.pointerUp)
+      .off('slideFocusStart', this.stopAutoplay);
+
+    this.stopAutoplay();
+    this.destroyed = true;
+    this.autoplayActive = false;
+  }
+
+  setTimer() {
+    const { ownerWindow } = this.emblaApi.internalEngine();
+    ownerWindow.clearTimeout(this.timerId);
+    this.timerId = ownerWindow.setTimeout(
+      this.next,
+      this.delay[this.emblaApi.selectedScrollSnap()]
+    );
+    this.timerStartTime = new Date().getTime();
+    this.emblaApi.emit('autoplay:timerset');
+  }
+
+  clearTimer() {
+    const { ownerWindow } = this.emblaApi.internalEngine();
+    ownerWindow.clearTimeout(this.timerId);
+    this.timerId = 0;
+    this.timerStartTime = null;
+    this.emblaApi.emit('autoplay:timerstopped');
+  }
+
+  startAutoplay() {
+    if (this.destroyed) return;
+    if (this.documentIsHidden()) {
+      this.playOnDocumentVisible = true;
+      return;
+    }
+    if (!this.autoplayActive) this.emblaApi.emit('autoplay:play');
+
+    this.setTimer();
+    this.autoplayActive = true;
+  }
+
+  stopAutoplay() {
+    if (this.destroyed) return;
+    if (this.autoplayActive) this.emblaApi.emit('autoplay:stop');
+
+    this.clearTimer();
+    this.autoplayActive = false;
+  }
+
+  visibilityChange() {
+    if (this.documentIsHidden()) {
+      this.playOnDocumentVisible = this.autoplayActive;
+      return this.stopAutoplay();
+    }
+
+    if (this.playOnDocumentVisible) this.startAutoplay();
+  }
+
+  documentIsHidden(): boolean {
+    const { ownerDocument } = this.emblaApi.internalEngine();
+    return ownerDocument.visibilityState === 'hidden';
+  }
+
+  pointerDown() {
+    if (!this.mouseIsOver) this.stopAutoplay();
+  }
+
+  pointerUp() {
+    if (!this.mouseIsOver) this.startAutoplay();
+  }
+
+  mouseEnter() {
+    this.mouseIsOver = true;
+    this.stopAutoplay();
+  }
+
+  mouseLeave() {
+    this.mouseIsOver = false;
+    this.startAutoplay();
+  }
+
+  play(jumpOverride?: boolean) {
+    if (typeof jumpOverride !== 'undefined') this.jump = jumpOverride;
+    this.startAutoplay();
+  }
+
+  stop() {
+    if (this.autoplayActive) this.stopAutoplay();
+  }
+
+  reset() {
+    if (this.autoplayActive) this.startAutoplay();
+  }
+
+  isPlaying(): boolean {
+    return this.autoplayActive;
+  }
+
+  next() {
+    const { index } = this.emblaApi.internalEngine();
+    const nextIndex = index.clone().add(1).get();
+    const lastIndex = this.emblaApi.scrollSnapList().length - 1;
+    const kill = this.options.stopOnLastSnap && nextIndex === lastIndex;
+
+    if (this.emblaApi.canScrollNext()) {
+      this.emblaApi.scrollNext(this.jump);
+    } else {
+      this.emblaApi.scrollTo(0, this.jump);
+    }
+
+    this.emblaApi.emit('autoplay:select');
+
+    if (kill) return this.stopAutoplay();
+    this.startAutoplay();
+  }
+
+  timeUntilNext(): number | null {
+    if (!this.timerStartTime) return null;
+    const currentDelay = this.delay[this.emblaApi.selectedScrollSnap()];
+    const timePastSinceStart = new Date().getTime() - this.timerStartTime;
+    return currentDelay - timePastSinceStart;
+  }
+}

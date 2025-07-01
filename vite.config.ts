@@ -97,8 +97,6 @@ export default defineConfig({
 
           if (normalized.includes('/src/elements/')) return;
 
-          if (normalized.includes('signature_pad')) return 'vendors/signature_pad';
-
           return 'core/index';
         }
       }

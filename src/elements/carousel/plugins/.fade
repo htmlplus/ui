@@ -1,0 +1,254 @@
+import { Bind } from '@htmlplus/element';
+
+import type { EmblaCarouselType, ScrollBodyType } from 'embla-carousel';
+
+import { CarouselPlugin } from './base';
+
+function clampNumber(number: number, min: number, max: number): number {
+  return Math.min(Math.max(number, min), max);
+}
+
+function isNumber(value: number | null): value is number {
+  return typeof value === 'number' && !isNaN(value);
+}
+
+export class CarouselPluginFade extends CarouselPlugin {
+  private readonly fullOpacity: number = 1;
+  private readonly noOpacity: number = 0;
+  private readonly fadeFriction: number = 0.68;
+
+  private opacities: number[] = [];
+  private fadeToNextDistance: number;
+  private distanceFromPointerDown: number = 0;
+  private fadeVelocity: number = 0;
+  private progress: number = 0;
+  private shouldFadePair: boolean = false;
+
+  private defaultSettledBehaviour: ScrollBodyType['settled'];
+  private defaultProgressBehaviour: EmblaCarouselType['scrollProgress'];
+
+  public initialize() {
+    const selectedSnap = this.api.selectedScrollSnap();
+    const { scrollBody, containerRect, axis } = this.api.internalEngine();
+    const containerSize = axis.measureSize(containerRect);
+
+    this.fadeToNextDistance = clampNumber(containerSize * 0.75, 200, 500);
+    this.shouldFadePair = false;
+
+    this.opacities = this.api
+      .scrollSnapList()
+      .map((_, index) => (index === selectedSnap ? this.fullOpacity : this.noOpacity));
+
+    this.defaultSettledBehaviour = scrollBody.settled;
+    this.defaultProgressBehaviour = this.api.scrollProgress;
+
+    scrollBody.settled = this.settled.bind(this);
+    this.api.scrollProgress = () => this.progress;
+
+    this.api
+      .on('select', this.handleSelect)
+      .on('slideFocus', this.handleSlideFocus)
+      .on('pointerDown', this.handlePointerDown)
+      .on('pointerUp', this.handlePointerUp);
+
+    this.disableScroll();
+    this.fadeToSelectedSnapInstantly();
+  }
+
+  public terminate() {
+    const { scrollBody } = this.api.internalEngine();
+    scrollBody.settled = this.defaultSettledBehaviour;
+    this.api.scrollProgress = this.defaultProgressBehaviour;
+
+    this.api
+      .off('select', this.handleSelect)
+      .off('slideFocus', this.handleSlideFocus)
+      .off('pointerDown', this.handlePointerDown)
+      .off('pointerUp', this.handlePointerUp);
+
+    this.api.slideNodes().forEach((slideNode) => {
+      const slideStyle = slideNode.style;
+      slideStyle.opacity = '';
+      slideStyle.transform = '';
+      slideStyle.pointerEvents = '';
+      if (!slideNode.getAttribute('style')) slideNode.removeAttribute('style');
+    });
+  }
+
+  private disableScroll() {
+    const { translate, slideLooper } = this.api.internalEngine();
+
+    translate.clear();
+    translate.toggleActive(false);
+
+    slideLooper.loopPoints.forEach(({ translate }) => {
+      translate.clear();
+      translate.toggleActive(false);
+    });
+  }
+
+  private fade() {
+    const { dragHandler, scrollBody } = this.api.internalEngine();
+    const pointerDown = dragHandler.pointerDown();
+    const velocity = scrollBody.velocity();
+    const duration = scrollBody.duration();
+    const fadeIndex = this.getFadeIndex();
+    const noFadeIndex = !isNumber(fadeIndex);
+
+    if (pointerDown) {
+      if (!velocity) return;
+
+      this.distanceFromPointerDown += velocity;
+      this.fadeVelocity = Math.abs(velocity / this.fadeToNextDistance);
+      this.lockExcessiveScroll(fadeIndex);
+    }
+
+    if (!pointerDown) {
+      if (!duration || noFadeIndex) return;
+
+      this.fadeVelocity += (this.fullOpacity - this.opacities[fadeIndex]) / duration;
+      this.fadeVelocity *= this.fadeFriction;
+    }
+
+    if (noFadeIndex) return;
+    this.setOpacities(fadeIndex, this.fadeVelocity);
+  }
+
+  private fadeToSelectedSnapInstantly() {
+    const selectedSnap = this.api.selectedScrollSnap();
+    this.setOpacities(selectedSnap, this.fullOpacity);
+  }
+
+  private getFadeIndex(): number | null {
+    const { dragHandler, index, scrollBody } = this.api.internalEngine();
+    const selectedSnap = this.api.selectedScrollSnap();
+
+    if (!dragHandler.pointerDown()) return selectedSnap;
+
+    const directionSign = Math.sign(scrollBody.velocity());
+    const distanceSign = Math.sign(this.distanceFromPointerDown);
+    const nextSnap = index
+      .clone()
+      .set(selectedSnap)
+      .add(directionSign * -1)
+      .get();
+
+    if (!directionSign || !distanceSign) return null;
+    return distanceSign === directionSign ? nextSnap : selectedSnap;
+  }
+
+  private getSlideTransform(position: number): string {
+    const { axis } = this.api.internalEngine();
+    const translateAxis = axis.scroll.toUpperCase();
+    return `translate${translateAxis}(${axis.direction(position)}px)`;
+  }
+
+  private lockExcessiveScroll(fadeIndex: number | null) {
+    const { scrollSnaps, location, target } = this.api.internalEngine();
+    if (!isNumber(fadeIndex) || this.opacities[fadeIndex] < 0.5) return;
+
+    location.set(scrollSnaps[fadeIndex]);
+    target.set(location);
+  }
+
+  private setOpacities(fadeIndex: number, velocity: number) {
+    const scrollSnaps = this.api.scrollSnapList();
+
+    scrollSnaps.forEach((_, indexA) => {
+      const absVelocity = Math.abs(velocity);
+      const currentOpacity = this.opacities[indexA];
+      const isFadeIndex = indexA === fadeIndex;
+
+      const nextOpacity = isFadeIndex ? currentOpacity + absVelocity : currentOpacity - absVelocity;
+
+      const clampedOpacity = clampNumber(nextOpacity, this.noOpacity, this.fullOpacity);
+      this.opacities[indexA] = clampedOpacity;
+
+      const fadePair = isFadeIndex && this.shouldFadePair;
+      const indexB = this.api.previousScrollSnap();
+
+      if (fadePair) this.opacities[indexB] = 1 - clampedOpacity;
+      if (isFadeIndex) this.setProgress(fadeIndex, clampedOpacity);
+
+      this.setOpacity(indexA);
+    });
+  }
+
+  private setOpacity(index: number) {
+    const slidesInSnap = this.api.internalEngine().slideRegistry[index];
+    const { scrollSnaps, containerRect } = this.api.internalEngine();
+    const opacity = this.opacities[index];
+
+    slidesInSnap.forEach((slideIndex) => {
+      const slideStyle = this.api.slideNodes()[slideIndex].style;
+      const roundedOpacity = parseFloat(opacity.toFixed(2));
+      const hasOpacity = roundedOpacity > this.noOpacity;
+      const position = hasOpacity ? scrollSnaps[index] : containerRect.width + 2;
+      const transform = this.getSlideTransform(position);
+
+      if (hasOpacity) slideStyle.transform = transform;
+
+      slideStyle.opacity = roundedOpacity.toString();
+      slideStyle.pointerEvents = opacity > 0.5 ? 'auto' : 'none';
+
+      if (!hasOpacity) slideStyle.transform = transform;
+    });
+  }
+
+  private setProgress(fadeIndex: number, opacity: number) {
+    const { index, dragHandler, scrollSnaps } = this.api.internalEngine();
+    const pointerDown = dragHandler.pointerDown();
+    const snapFraction = 1 / (scrollSnaps.length - 1);
+
+    let indexA = fadeIndex;
+    let indexB = pointerDown ? this.api.selectedScrollSnap() : this.api.previousScrollSnap();
+
+    if (pointerDown && indexA === indexB) {
+      const reverseSign = Math.sign(this.distanceFromPointerDown) * -1;
+      indexA = indexB;
+      indexB = index.clone().set(indexB).add(reverseSign).get();
+    }
+
+    const currentPosition = indexB * snapFraction;
+    const diffPosition = (indexA - indexB) * snapFraction;
+    this.progress = currentPosition + diffPosition * opacity;
+  }
+
+  private settled(): boolean {
+    const { target, location } = this.api.internalEngine();
+    const diffToTarget = target.get() - location.get();
+    const notReachedTarget = Math.abs(diffToTarget) >= 1;
+    const fadeIndex = this.getFadeIndex();
+    const noFadeIndex = !isNumber(fadeIndex);
+
+    this.fade();
+
+    if (noFadeIndex || notReachedTarget) return false;
+    return this.opacities[fadeIndex] > 0.999;
+  }
+
+  @Bind()
+  private handlePointerDown() {
+    this.shouldFadePair = false;
+    this.distanceFromPointerDown = 0;
+    this.fadeVelocity = 0;
+  }
+
+  @Bind()
+  private handlePointerUp() {
+    this.shouldFadePair = false;
+  }
+
+  @Bind()
+  private handleSelect() {
+    const duration = this.api.internalEngine().scrollBody.duration();
+    this.fadeVelocity = duration ? 0 : this.fullOpacity;
+    this.shouldFadePair = true;
+    if (!duration) this.fadeToSelectedSnapInstantly();
+  }
+
+  @Bind()
+  private handleSlideFocus() {
+    this.fadeToSelectedSnapInstantly();
+  }
+}

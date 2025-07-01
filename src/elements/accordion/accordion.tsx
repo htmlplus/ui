@@ -229,7 +229,7 @@ export class Accordion extends PlusCore {
     }
   }
 
-  loadedCallback() {
+  readyCallback() {
     this.initialize();
   }
 

@@ -1,0 +1,17 @@
+:host {
+  background-color: $carousel-progress-background-color;
+  border-radius: $carousel-progress-border-radius;
+  height: $carousel-progress-height;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar {
+  background-color: $carousel-progress-bar-background-color;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+}

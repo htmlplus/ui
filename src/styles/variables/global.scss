@@ -67,7 +67,35 @@ $card-elevation                                                           : (
                                                                               23: '0 11px 14px -7px rgba(0, 0, 0, 0.2), 0 23px 36px 3px rgba(0, 0, 0, 0.14), 0 9px 44px 8px rgba(0, 0, 0, 0.12)',
                                                                               24: '0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12)',
                                                                             ) !default;
+                                                                          
+$carousel-button-width                                                    : 2.25rem !default;
+$carousel-button-height                                                   : 2.25rem !default;
+$carousel-button-border-radius                                            : 50% !default;
+$carousel-button-box-shadow                                               : inset 0 0 0 0.2rem rgb(234, 234, 234) !default;
+$carousel-button-color                                                    : rgb(54, 49, 61) !default;
+$carousel-button-disabled-opacity                                         : 0.5 !default;
+$carousel-button-svg-ratio                                                : 35% !default;
 
+$carousel-indicators-numbers-button-width                                 : 2rem !default;
+$carousel-indicators-numbers-button-height                                : 2rem !default;
+$carousel-indicators-button-background-color                              : lightgray !default;
+$carousel-indicators-button-border                                        : solid 0.25rem transparent !default;
+$carousel-indicators-button-border-radius                                 : 50% !default;
+$carousel-indicators-button-selected-background-color                     : gray !default;
+$carousel-indicators-button-transition                                    : all 0.5s ease !default;
+$carousel-indicators-button-height                                        : 1.25rem !default;
+$carousel-indicators-button-width                                         : 1.25rem !default;
+$carousel-indicators-infinity-button-level-1-scale                         : 0.75 !default;
+$carousel-indicators-infinity-button-level-2-scale                         : 0.5 !default;
+$carousel-indicators-infinity-root-transform                               : translateX(calc(var(--plus-carousel-indicators-selected) * -1.25rem - 0.625rem)) !default;
+$carousel-indicators-root-transition                                      : all 0.5s ease !default;
+
+$carousel-progress-background-color                                       : whitesmoke !default;
+$carousel-progress-bar-background-color                                   : lightgray !default;
+$carousel-progress-border-radius                                          : 1.8rem !default;
+$carousel-progress-height                                                 : 0.6rem !default;
+
+$carousel-slides-container-transition                                     : height 0.25s !default;
 
 $card-body-padding-x                                                      : $spacer !default;
 $card-body-padding-y                                                      : $spacer !default;

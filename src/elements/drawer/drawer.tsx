@@ -357,7 +357,7 @@ export class Drawer extends PlusCore {
     this.try(false, false);
   }
 
-  loadedCallback() {
+  readyCallback() {
     this.initialize();
   }
 

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-carousel-slide {
+        overflow: hidden;
+      }
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-carousel variant="presentation" duration="30" draggable="snap" loop>
+      <plus-carousel-slides>
+        <plus-carousel-slide>
+          <img
+            src="https://www.embla-carousel.com/static/slide-1-47ed6052f4455272d8f76db16447d760.jpg"
+          />
+        </plus-carousel-slide>
+        <plus-carousel-slide>
+          <img
+            src="https://www.embla-carousel.com/static/slide-2-dc15cfe63eb4aeb8c9c09823179ee64c.jpg"
+          />
+        </plus-carousel-slide>
+        <plus-carousel-slide>
+          <img
+            src="https://www.embla-carousel.com/static/slide-3-6362505742d23d7cd240880140151a95.jpg"
+          />
+        </plus-carousel-slide>
+        <plus-carousel-slide>
+          <img
+            src="https://www.embla-carousel.com/static/slide-4-ebad84cfea5ff9481504ded363c22003.jpg"
+          />
+        </plus-carousel-slide>
+        <plus-carousel-slide>
+          <img
+            src="https://www.embla-carousel.com/static/slide-5-2d88e98502aa565d6269834d7a7be406.jpg"
+          />
+        </plus-carousel-slide>
+      </plus-carousel-slides>
+    </plus-carousel>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/carousel.js';
+      import 'https://esm.run/@htmlplus/ui/carousel-slide.js';
+      import 'https://esm.run/@htmlplus/ui/carousel-slides.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+:host {
+  display: inline-flex;
+}
+
+.root {
+  transition: $carousel-indicators-root-transition;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  background-color: $carousel-indicators-button-background-color;
+  border: $carousel-indicators-button-border;
+  width: $carousel-indicators-button-width;
+  height: $carousel-indicators-button-height;
+  border-radius: $carousel-indicators-button-border-radius;
+  transition: $carousel-indicators-button-transition;
+  appearance: none;
+  background-clip: padding-box;
+  touch-action: manipulation;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+button.selected {
+  background-color: $carousel-indicators-button-selected-background-color;
+}
+
+:host([numbers]) button {
+  width: $carousel-indicators-numbers-button-width;
+  height: $carousel-indicators-numbers-button-height;
+}
+
+:host([clickable]) button {
+  cursor: pointer;
+}
+
+:host([infinity]) {
+  width: 0;
+
+  .root {
+    transform: $carousel-indicators-infinity-root-transform;
+  }
+
+  button {
+    scale: 0;
+  }
+
+  button.selected {
+    scale: 1;
+  }
+
+  :is(.prev-1, .next-1) {
+    scale: $carousel-indicators-infinity-button-level-1-scale;
+  }
+
+  :is(.prev-2, .next-2) {
+    scale: $carousel-indicators-infinity-button-level-2-scale;
+  }
+}

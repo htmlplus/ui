@@ -321,7 +321,7 @@ export class Tooltip extends PlusCore {
   }
 
   connectedCallback() {
-    return import('@floating-ui/dom')
+    import('@floating-ui/dom')
       .then((module: any) => {
         FloatingCore = module.default || module;
         this.initialize();

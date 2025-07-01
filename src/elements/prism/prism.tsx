@@ -1,4 +1,4 @@
-import { Bind, Element, Property, State, Style } from '@htmlplus/element';
+import { Element, Property, Style } from '@htmlplus/element';
 
 import type PrismType from 'prismjs';
 
@@ -53,39 +53,36 @@ export class Prism extends PlusCore {
   @Property()
   resolver?: PrismResolver;
 
-  @State()
-  tick: number;
-
-  observer: MutationObserver = new MutationObserver(this.onChange);
+  observer: MutationObserver = new MutationObserver(this.forceUpdate);
 
   cache = new AsyncCache<PrismResolver>({
     type: 'global',
     namespace: 'prism',
     resolver: async (params) => {
       if (typeof this.resolver !== 'function') {
-        console.warn(
-          [
-            `The 'prism' element can't find the '${params.key}' file for '${params.value}'. `,
-            `It uses an async 'resolver' function to load files, which isn't set up by default. `,
-            `You may need to configure it properly. `,
-            `Check the documentation for the correct resolver setup to fix the issue.`
-          ].join(''),
-          this.$host
-        );
+        const message = [
+          `The 'prism' element can't find the '${params.key}' file for '${params.value}'. `,
+          `It uses an async 'resolver' function to load files, which isn't set up by default. `,
+          `You may need to configure it properly. `,
+          `Check the documentation for the correct resolver setup to fix the issue.`
+        ].join('');
+
+        console.warn(message, this.$host);
+
         return;
       }
 
       try {
         return await this.resolver(params);
       } catch (error) {
-        console.warn(
-          [
-            `The 'prism' element is not able to resolve the '${params.key}' file for '${params.value}'. `,
-            `There is a problem with the 'resolver' property, and its output cannot be used. `,
-            'Make sure that the output of the property is correct.'
-          ].join(''),
-          this.$host
-        );
+        const message = [
+          `The 'prism' element is not able to resolve the '${params.key}' file for '${params.value}'. `,
+          `There is a problem with the 'resolver' property, and its output cannot be used. `,
+          'Make sure that the output of the property is correct.'
+        ].join('');
+
+        console.warn(message, this.$host);
+
         throw error;
       }
     }
@@ -185,23 +182,15 @@ export class Prism extends PlusCore {
     return `:host([theme="${this.theme}"]){${style}}`;
   }
 
-  @Bind()
-  onChange() {
-    this.tick++;
-  }
-
   connectedCallback() {
-    return import('prismjs')
+    import('prismjs')
       .then((module: any) => {
         PrismCore = module.default || module;
+        this.forceUpdate();
       })
       .catch((error) => {
         throw new ExternalDependencyError(this.$host, 'prismjs', { cause: error });
       });
-  }
-
-  disconnectedCallback() {
-    this.observer.disconnect();
   }
 
   updatedCallback() {
@@ -210,6 +199,10 @@ export class Prism extends PlusCore {
     if (!this.sync) return;
 
     this.observer.observe(this.$host, { childList: true });
+  }
+
+  disconnectedCallback() {
+    this.observer.disconnect();
   }
 
   render() {

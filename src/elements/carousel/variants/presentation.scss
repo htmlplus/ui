@@ -1,0 +1,71 @@
+global plus-carousel[variant='presentation'] {
+  position: relative;
+
+  plus-carousel-button {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+  }
+
+  plus-carousel-button[type='previous']:dir(ltr),
+  plus-carousel-button[type='next']:dir(rtl) {
+    left: 1rem;
+  }
+
+  plus-carousel-button[type='previous']:dir(rtl),
+  plus-carousel-button[type='next']:dir(ltr) {
+    right: 1rem;
+  }
+
+  plus-carousel-counter {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 1;
+  }
+
+  plus-carousel-indicators {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    z-index: 1;
+    transform: translateX(-50%);
+  }
+
+  plus-carousel-progress {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 4px;
+  }
+
+  plus-carousel-slide {
+    flex-basis: 100%;
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    height: 12rem;
+  }
+
+  &[axis='x'] plus-carousel-slide {
+    margin-left: 0.5rem;
+  }
+
+  &[axis='y'] plus-carousel-slide {
+    margin-top: 0.5rem;
+  }
+
+  // TODO
+  &[axis='y'] plus-carousel-slides::part(container) {
+    // height: calc(var(--slide-spacing) + var(--slide-height));
+    height: 12rem;
+  }
+}
