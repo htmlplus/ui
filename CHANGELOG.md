@@ -1,3 +1,9 @@
+## [1.6.5](https://github.com/htmlplus/ui/compare/v1.6.4...v1.6.5) (2025-07-02)
+
+### Bug Fixes
+
+* Build the source ([8f5b486](https://github.com/htmlplus/ui/commit/8f5b4869efbbfa9e14fabd7efff0d026a0e77031))
+
 ## [1.6.4](https://github.com/htmlplus/ui/compare/v1.6.3...v1.6.4) (2025-07-02)
 
 ### Bug Fixes
