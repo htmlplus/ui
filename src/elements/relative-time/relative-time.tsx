@@ -28,7 +28,7 @@ export class RelativeTime extends PlusCore {
    * The date and time to be displayed in a relative format.
    */
   @Property()
-  value?: Date = new Date();
+  value?: Date | string = new Date();
 
   @State()
   formatted?: string;
@@ -36,11 +36,15 @@ export class RelativeTime extends PlusCore {
   timeout: number;
 
   get isValid() {
-    return this.value instanceof Date;
+    return this.parsed instanceof Date;
   }
 
   get lang() {
     return `${this.$host.lang || window.document.documentElement.lang || window.navigator.language}`.toLowerCase();
+  }
+
+  get parsed() {
+    return new Date(this.value);
   }
 
   refresh() {
@@ -48,7 +52,7 @@ export class RelativeTime extends PlusCore {
 
     if (!this.isValid) return;
 
-    const difference = this.value.getTime() - Date.now();
+    const difference = this.parsed.getTime() - Date.now();
 
     const unit = RELATIVE_TIME_UNITS.findLast((unit, index) => {
       return Math.floor(Math.abs(difference) / unit.value) || !index;
@@ -80,6 +84,6 @@ export class RelativeTime extends PlusCore {
 
   render() {
     if (!this.isValid || !this.formatted) return 'Invalid date';
-    return <time dateTime={this.value.toISOString()}>{this.formatted}</time>;
+    return <time dateTime={this.parsed.toISOString()}>{this.formatted}</time>;
   }
 }

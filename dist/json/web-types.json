@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -3511,7 +3511,7 @@
             {
               "name": "value",
               "value": {
-                "type": "Date"
+                "type": "Date | string"
               },
               "description": "The date and time to be displayed in a relative format."
             }

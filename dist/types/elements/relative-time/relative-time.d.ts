@@ -15,11 +15,12 @@ export declare class RelativeTime extends PlusCore {
     /**
      * The date and time to be displayed in a relative format.
      */
-    value?: Date;
+    value?: Date | string;
     formatted?: string;
     timeout: number;
     get isValid(): boolean;
     get lang(): string;
+    get parsed(): Date;
     refresh(): void;
     disconnectedCallback(): void;
     updateCallback(): void;
@@ -42,7 +43,7 @@ export interface RelativeTimeAttributes {
   /**
   * The date and time to be displayed in a relative format.
   */
-  "value"?: Date;
+  "value"?: Date | string;
 }
 export interface RelativeTimeEvents {}
 export interface RelativeTimeMethods {}
@@ -62,7 +63,7 @@ export interface RelativeTimeProperties {
   /**
   * The date and time to be displayed in a relative format.
   */
-  value?: Date;
+  value?: Date | string;
 }
 export interface RelativeTimeJSX extends RelativeTimeEvents, RelativeTimeProperties {}
 declare global {

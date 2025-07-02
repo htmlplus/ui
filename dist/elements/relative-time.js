@@ -48,15 +48,18 @@ let RelativeTime = class extends PlusCore {
     this.value = /* @__PURE__ */ new Date();
   }
   get isValid() {
-    return this.value instanceof Date;
+    return this.parsed instanceof Date;
   }
   get lang() {
     return `${this.$host.lang || window.document.documentElement.lang || window.navigator.language}`.toLowerCase();
   }
+  get parsed() {
+    return new Date(this.value);
+  }
   refresh() {
     clearTimeout(this.timeout);
     if (!this.isValid) return;
-    const difference = this.value.getTime() - Date.now();
+    const difference = this.parsed.getTime() - Date.now();
     const unit = RELATIVE_TIME_UNITS.findLast((unit2, index) => {
       return Math.floor(Math.abs(difference) / unit2.value) || !index;
     });
@@ -79,7 +82,7 @@ let RelativeTime = class extends PlusCore {
   }
   render() {
     if (!this.isValid || !this.formatted) return "Invalid date";
-    return html`<time dateTime=${this.value.toISOString()}>${this.formatted}</time>`;
+    return html`<time dateTime=${this.parsed.toISOString()}>${this.formatted}</time>`;
   }
 };
 RelativeTime.tag = "plus-relative-time";
@@ -100,7 +103,7 @@ __decorateClass([
 ], RelativeTime.prototype, "sync", 2);
 __decorateClass([
   Property({
-    type: 8
+    type: 520
   })
 ], RelativeTime.prototype, "value", 2);
 __decorateClass([

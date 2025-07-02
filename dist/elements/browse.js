@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, d as attributes, a as Property, c as Event, Q as Query, e as State, M as Method, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, d as attributes, h as html, a as Property, c as Event, e as State, M as Method, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;

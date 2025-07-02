@@ -3641,7 +3641,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2025-07-01T18:13:45.936Z",
+      "lastModified": "2025-07-02T14:20:57.380Z",
       "methods": [],
       "properties": [
         {
@@ -3680,7 +3680,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "Date",
+          "type": "Date | string",
           "description": "The date and time to be displayed in a relative format."
         }
       ],

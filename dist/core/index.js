@@ -595,6 +595,7 @@ const handleAnything = (comment) => {
   let oldValue, text2, nodes = [];
   const anyContent = (newValue) => {
     switch (typeof newValue) {
+      // primitives are handled as text content
       case "string":
       case "number":
       case "boolean":
@@ -605,6 +606,7 @@ const handleAnything = (comment) => {
           nodes = diff(comment, nodes, [text2]);
         }
         break;
+      // null, and undefined are used to cleanup previous content
       case "object":
       case "undefined":
         if (newValue == null) {
@@ -1152,6 +1154,7 @@ function Event(options = {}) {
       options.bubbles ?? (options.bubbles = false);
       let type = String(key);
       switch (framework) {
+        // TODO: Experimental
         case "blazor":
           options.bubbles = true;
           type = pascalCase(type);
