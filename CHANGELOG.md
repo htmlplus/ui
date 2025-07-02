@@ -1,3 +1,9 @@
+## [1.6.4](https://github.com/htmlplus/ui/compare/v1.6.3...v1.6.4) (2025-07-02)
+
+### Bug Fixes
+
+* Resolve vulnerabilities by updating npm packages ([a9a6391](https://github.com/htmlplus/ui/commit/a9a639118cd62ede09c0a850ab3d98b014139714))
+
 ## [1.6.3](https://github.com/htmlplus/ui/compare/v1.6.2...v1.6.3) (2025-07-02)
 
 ### Bug Fixes
