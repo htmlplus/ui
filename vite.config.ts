@@ -24,7 +24,6 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler',
         style: 'compressed',
         additionalData: [
           'src/styles/mixins',
