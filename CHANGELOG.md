@@ -1,3 +1,9 @@
+## [1.6.3](https://github.com/htmlplus/ui/compare/v1.6.2...v1.6.3) (2025-07-02)
+
+### Bug Fixes
+
+* Add support for string type values in the `RelativeTime` element's `value` property ([57e5a7f](https://github.com/htmlplus/ui/commit/57e5a7fa498023bcb9f997d39022beed5cd0fc20))
+
 ## [1.6.2](https://github.com/htmlplus/ui/compare/v1.6.1...v1.6.2) (2025-07-01)
 
 ### Bug Fixes
