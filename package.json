@@ -97,7 +97,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "sass": "^1.89.2",
     "semantic-release": "^24.2.0",
-    "signature_pad": "^5.0.4",
     "typescript": "^5.6.3",
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.3.0"
@@ -106,6 +105,7 @@
     "@faker-js/faker": "^8.2.0",
     "@floating-ui/dom": "^1.5.3",
     "cropperjs": "^1.6.1",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.29.0",
+    "signature_pad": "^5.0.10"
   }
 }
