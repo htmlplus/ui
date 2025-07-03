@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/htmlplus/ui/compare/v1.6.5...v1.7.0) (2025-07-03)
+
+### Features
+
+* Add the `Carousel`, `CarouselButton`, `CarouselCounter`, `CarouselIndicators`, `CarouselProgress`, `CarouselSlide`, and `CarouselSlide` elements. ([0a200c0](https://github.com/htmlplus/ui/commit/0a200c01ae9327b35b938866cb1a275c7ad8a003))
+
 ## [1.6.5](https://github.com/htmlplus/ui/compare/v1.6.4...v1.6.5) (2025-07-02)
 
 ### Bug Fixes
