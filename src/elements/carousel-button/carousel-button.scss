@@ -1,0 +1,32 @@
+:host {
+  display: inline-flex;
+}
+
+button {
+  box-shadow: $carousel-button-box-shadow;
+  color: $carousel-button-color;
+  border-radius: $carousel-button-border-radius;
+  width: $carousel-button-width;
+  height: $carousel-button-height;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:disabled {
+  opacity: $carousel-button-disabled-opacity;
+}
+
+svg {
+  width: $carousel-button-svg-ratio;
+  height: $carousel-button-svg-ratio;
+}

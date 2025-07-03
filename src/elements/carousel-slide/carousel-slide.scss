@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  flex: 0 0 auto;
+}
+
+:host([clickable]) {
+  cursor: pointer;
+}
+
+global plus-carousel[axis='x'] plus-carousel-slide {
+  min-width: 0;
+}
+
+global plus-carousel[axis='y'] plus-carousel-slide {
+  min-height: 0;
+}

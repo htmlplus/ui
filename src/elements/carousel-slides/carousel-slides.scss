@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+}
+
+global plus-carousel[auto-height] plus-carousel-slides::part(container) {
+  transition: $carousel-slides-container-transition;
+  align-items: flex-start;
+}
+
+global plus-carousel[axis='x'] plus-carousel-slides::part(container) {
+  flex-direction: row;
+  touch-action: pan-y pinch-zoom;
+}
+
+global plus-carousel[axis='y'] plus-carousel-slides::part(container) {
+  flex-direction: column;
+  touch-action: pan-x pinch-zoom;
+}

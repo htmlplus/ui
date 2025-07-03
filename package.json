@@ -105,6 +105,7 @@
     "@faker-js/faker": "^8.2.0",
     "@floating-ui/dom": "^1.5.3",
     "cropperjs": "^1.6.1",
+    "embla-carousel": "^8.6.0",
     "prismjs": "^1.29.0",
     "signature_pad": "^5.0.10"
   }
