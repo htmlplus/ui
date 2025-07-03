@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+
+:host([direction='horizontal']) {
+  flex-direction: row;
+}
+
+:host([direction='vertical']) {
+  flex-direction: column;
+}
