@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.6.3",
+  "version": "1.6.5",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -897,6 +897,522 @@
         {
           "name": "plus-card-body",
           "doc-url": "https://www.htmlplus.io/javascript/element/card-body",
+          "js": {
+            "events": [],
+            "properties": []
+          },
+          "attributes": [],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
+          "name": "plus-carousel",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel",
+          "js": {
+            "events": [
+              {
+                "name": "plus-destroy",
+                "description": "TODO: Indicates whether the carousel has been successfully initialized."
+              },
+              {
+                "name": "plus-init",
+                "description": "Runs when the carousel mounts for the first time."
+              },
+              {
+                "name": "plus-pointer-down",
+                "description": "Runs when the user has a pointer down on the carousel. It's triggered by a `touchstart` or a `mousedown` event."
+              },
+              {
+                "name": "plus-pointer-up",
+                "description": "Runs when the user has released the pointer from the carousel. It's triggered by a `touchend` or a `mouseup` event."
+              },
+              {
+                "name": "plus-re-init",
+                "description": "TODO"
+              },
+              {
+                "name": "plus-resize",
+                "description": "Runs when the carousel container or the slide sizes change. It's using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) under the hood."
+              },
+              {
+                "name": "plus-scroll",
+                "description": "Runs when the carousel is scrolling. It might be a good idea to throttle this if you're doing expensive stuff in your callback function."
+              },
+              {
+                "name": "plus-select",
+                "description": "Runs when the selected scroll snap changes."
+              },
+              {
+                "name": "plus-settle",
+                "description": "Runs when the carousel has settled after scroll has been triggered."
+              },
+              {
+                "name": "plus-slide-focus",
+                "description": "Runs when a slide receives focus. For example, when a focusable element like a button, link or input receives focus inside a slide."
+              },
+              {
+                "name": "plus-slide-focus-start",
+                "description": "TODO"
+              },
+              {
+                "name": "plus-slides-changed",
+                "description": "Runs when slides are added to, or removed from the carousel **container**."
+              },
+              {
+                "name": "plus-slides-in-view",
+                "description": "Runs when any slide has **entered** or **exited** the viewport."
+              }
+            ],
+            "properties": [
+              {
+                "name": "align",
+                "default": "'center'",
+                "description": "Align the slides relative to the carousel viewport."
+              },
+              {
+                "name": "autoHeight",
+                "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
+              },
+              {
+                "name": "axis",
+                "default": "'x'",
+                "description": "Choose scroll axis between `x` and `y`."
+              },
+              {
+                "name": "classes",
+                "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
+              },
+              {
+                "name": "containScroll",
+                "default": "'trimSnaps'",
+                "description": "Clear leading and trailing empty space that causes excessive scrolling. Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them. **Note**: When this is active, it will **override alignments** applied by the **align** property for enough slides at the **start** and the **end** of the carousel, in order to **cover** the **leading** and **trailing space**."
+              },
+              {
+                "name": "draggable",
+                "description": "Enables scrolling the carousel using mouse and touch interactions."
+              },
+              {
+                "name": "dragThreshold",
+                "default": "10",
+                "description": "Drag threshold in pixels. This only affects **when** clicks are fired and not. In contrast to other carousel libraries, it will **not affect when dragging** of the carousel **starts**. **Note**: Browsers handle touch events differently than mouse events. Browsers won't fire the click event when a touch event includes an accidental slight swipe gesture. This is why this threshold only works for mouse events."
+              },
+              {
+                "name": "duration",
+                "default": "25",
+                "description": "Set scroll duration when triggered by any of the API methods. Higher numbers enables slower scrolling. Drag interactions are not affected because duration is then determined by the drag force. **Note**: Duration is **not** in milliseconds because Embla uses an attraction physics simulation when scrolling instead of easings. Only values between `20-60` are recommended."
+              },
+              {
+                "name": "focusable",
+                "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
+              },
+              {
+                "name": "inViewThreshold",
+                "default": "0",
+                "description": "This is the Intersection Observer [threshold](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#creating_an_intersection_observer) option that will be applied to all slides."
+              },
+              {
+                "name": "loop",
+                "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
+              },
+              {
+                "name": "plugins",
+                "description": "Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality."
+              },
+              {
+                "name": "mirror",
+                "description": "Matches the current slide on another carousel using its id."
+              },
+              {
+                "name": "mirrorType",
+                "default": "'sync-smooth'",
+                "description": "Specifies how the carousel should be mirrored onto another carousel."
+              },
+              {
+                "name": "resizable",
+                "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
+              },
+              {
+                "name": "slidesToScroll",
+                "default": "1",
+                "description": "Group slides together. Drag interactions, dot navigation, and previous/next buttons are mapped to group slides into the given number, which has to be an integer. Set it to `auto` if you want to group slides automatically."
+              },
+              {
+                "name": "startIndex",
+                "default": "0",
+                "description": "Set the initial scroll snap to the given number. First snap index starts at 0. Please note that this is not necessarily equal to the number of slides when used together with the `slidesToScroll` property."
+              },
+              {
+                "name": "tweenFactorBase",
+                "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
+              },
+              {
+                "name": "variant",
+                "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
+              },
+              {
+                "name": "api",
+                "description": "The Embla carousel API."
+              },
+              {
+                "name": "canScrollNext",
+                "description": "Check the possibility to scroll to a next snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`."
+              },
+              {
+                "name": "canScrollPrevious",
+                "description": "Check the possiblity to scroll to a previous snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`."
+              },
+              {
+                "name": "previousScrollSnap",
+                "description": "Get the index of the previously selected snap point."
+              },
+              {
+                "name": "scrollNext",
+                "description": "TODO: Resets automatic behavior in the carousel."
+              },
+              {
+                "name": "scrollPrevious",
+                "description": "Scroll to the previous snap point if possible. When **loop** property is disabled and the carousel has reached the first snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the previous slide instantly."
+              },
+              {
+                "name": "scrollProgress",
+                "description": "Check how far the carousel has scrolled of its scrollable length from 0 - 1. For example, **0.5 equals 50%**. For example, this can be useful when creating a scroll progress bar."
+              },
+              {
+                "name": "scrollSnapList",
+                "description": "Get an array containing all the snap point positions. Each position represents how far the carousel needs to progress in order to reach this position."
+              },
+              {
+                "name": "scrollToIndex",
+                "description": "Scroll to a snap point by its unique index. If **loop** property is enabled, Embla Carousel will choose the closest way to the target snap point. Set the **jump** parameter to `true` when you want to go to the desired slide instantly."
+              },
+              {
+                "name": "selectedScrollSnap",
+                "description": "Get the index of the selected snap point."
+              },
+              {
+                "name": "slideNodes",
+                "description": "Get all the slide nodes inside the container. This method can be useful when you need to manipulate the slide elements dynamically or similar."
+              },
+              {
+                "name": "slidesInView",
+                "description": "Get slide indexes **visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option."
+              },
+              {
+                "name": "slidesNotInView",
+                "description": "Get slide indexes **not visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "align",
+              "value": {
+                "type": "'start' | 'center' | 'end'"
+              },
+              "default": "'center'",
+              "description": "Align the slides relative to the carousel viewport."
+            },
+            {
+              "name": "auto-height",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
+            },
+            {
+              "name": "axis",
+              "value": {
+                "type": "'x' | 'y'"
+              },
+              "default": "'x'",
+              "description": "Choose scroll axis between `x` and `y`."
+            },
+            {
+              "name": "classes",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
+            },
+            {
+              "name": "contain-scroll",
+              "value": {
+                "type": "'off' | 'keepSnaps' | 'trimSnaps'"
+              },
+              "default": "'trimSnaps'",
+              "description": "Clear leading and trailing empty space that causes excessive scrolling. Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them. **Note**: When this is active, it will **override alignments** applied by the **align** property for enough slides at the **start** and the **end** of the carousel, in order to **cover** the **leading** and **trailing space**."
+            },
+            {
+              "name": "draggable",
+              "value": {
+                "type": "'free' | 'snap'"
+              },
+              "description": "Enables scrolling the carousel using mouse and touch interactions."
+            },
+            {
+              "name": "drag-threshold",
+              "value": {
+                "type": "number"
+              },
+              "default": "10",
+              "description": "Drag threshold in pixels. This only affects **when** clicks are fired and not. In contrast to other carousel libraries, it will **not affect when dragging** of the carousel **starts**. **Note**: Browsers handle touch events differently than mouse events. Browsers won't fire the click event when a touch event includes an accidental slight swipe gesture. This is why this threshold only works for mouse events."
+            },
+            {
+              "name": "duration",
+              "value": {
+                "type": "number"
+              },
+              "default": "25",
+              "description": "Set scroll duration when triggered by any of the API methods. Higher numbers enables slower scrolling. Drag interactions are not affected because duration is then determined by the drag force. **Note**: Duration is **not** in milliseconds because Embla uses an attraction physics simulation when scrolling instead of easings. Only values between `20-60` are recommended."
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
+            },
+            {
+              "name": "in-view-threshold",
+              "value": {
+                "type": "number"
+              },
+              "default": "0",
+              "description": "This is the Intersection Observer [threshold](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#creating_an_intersection_observer) option that will be applied to all slides."
+            },
+            {
+              "name": "loop",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
+            },
+            {
+              "name": "plugins",
+              "value": {
+                "type": "EmblaPluginType[]"
+              },
+              "description": "Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality."
+            },
+            {
+              "name": "mirror",
+              "value": {
+                "type": "string"
+              },
+              "description": "Matches the current slide on another carousel using its id."
+            },
+            {
+              "name": "mirror-type",
+              "value": {
+                "type": "'sync-jump' | 'sync-smooth' | 'click-inherit' | 'click-jump' | 'click-smooth'"
+              },
+              "default": "'sync-smooth'",
+              "description": "Specifies how the carousel should be mirrored onto another carousel."
+            },
+            {
+              "name": "resizable",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
+            },
+            {
+              "name": "slides-to-scroll",
+              "value": {
+                "type": "'auto' | number"
+              },
+              "default": "1",
+              "description": "Group slides together. Drag interactions, dot navigation, and previous/next buttons are mapped to group slides into the given number, which has to be an integer. Set it to `auto` if you want to group slides automatically."
+            },
+            {
+              "name": "start-index",
+              "value": {
+                "type": "number"
+              },
+              "default": "0",
+              "description": "Set the initial scroll snap to the given number. First snap index starts at 0. Please note that this is not necessarily equal to the number of slides when used together with the `slidesToScroll` property."
+            },
+            {
+              "name": "tween-factor-base",
+              "value": {
+                "type": "number"
+              },
+              "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
+            },
+            {
+              "name": "variant",
+              "value": {
+                "type": "string"
+              },
+              "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
+            },
+            {
+              "name": "api",
+              "value": {
+                "type": ""
+              },
+              "description": "The Embla carousel API."
+            }
+          ],
+          "description": "A carousel element for cycling through elements—like images or text slides.",
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
+          "name": "plus-carousel-button",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-button",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "jump",
+                "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
+              },
+              {
+                "name": "type",
+                "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "jump",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
+            },
+            {
+              "name": "type",
+              "value": {
+                "type": "'previous' | 'next' | number"
+              },
+              "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
+          "name": "plus-carousel-counter",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-counter",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "template",
+                "default": "'%CURRENT% / %TOTAL%'",
+                "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "template",
+              "value": {
+                "type": "string"
+              },
+              "default": "'%CURRENT% / %TOTAL%'",
+              "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
+            }
+          ]
+        },
+        {
+          "name": "plus-carousel-indicators",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-indicators",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "clickable",
+                "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
+              },
+              {
+                "name": "infinity",
+                "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
+              },
+              {
+                "name": "numbers",
+                "description": "Displays slide numbers inside the indicators."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "clickable",
+              "value": {
+                "type": "boolean | 'jump'"
+              },
+              "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
+            },
+            {
+              "name": "infinity",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
+            },
+            {
+              "name": "numbers",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Displays slide numbers inside the indicators."
+            }
+          ]
+        },
+        {
+          "name": "plus-carousel-progress",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-progress",
+          "js": {
+            "events": [],
+            "properties": []
+          },
+          "attributes": []
+        },
+        {
+          "name": "plus-carousel-slide",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-slide",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "clickable",
+                "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
+              }
+            ]
+          },
+          "attributes": [
+            {
+              "name": "clickable",
+              "value": {
+                "type": "boolean | 'jump'"
+              },
+              "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ]
+        },
+        {
+          "name": "plus-carousel-slides",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-slides",
           "js": {
             "events": [],
             "properties": []

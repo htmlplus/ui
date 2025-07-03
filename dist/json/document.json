@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2025-07-02T14:54:34.688Z",
+      "lastModified": "2025-07-02T16:39:56.712Z",
       "methods": [
         {
           "async": false,
@@ -163,7 +163,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2025-07-02T14:54:34.689Z",
+      "lastModified": "2025-07-02T16:39:56.713Z",
       "methods": [],
       "properties": [
         {
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2025-07-02T14:54:34.720Z",
+      "lastModified": "2025-07-02T16:39:56.745Z",
       "methods": [
         {
           "async": false,
@@ -448,7 +448,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-07-02T14:54:34.728Z",
+      "lastModified": "2025-07-02T16:39:56.747Z",
       "methods": [
         {
           "async": false,
@@ -564,7 +564,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2025-07-02T14:54:34.730Z",
+      "lastModified": "2025-07-02T16:39:56.750Z",
       "methods": [],
       "properties": [
         {
@@ -611,7 +611,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2025-07-02T14:54:34.734Z",
+      "lastModified": "2025-07-02T16:39:56.755Z",
       "methods": [],
       "properties": [
         {
@@ -670,7 +670,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2025-07-02T14:54:34.735Z",
+      "lastModified": "2025-07-02T16:39:56.755Z",
       "methods": [],
       "properties": [
         {
@@ -706,7 +706,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2025-07-02T14:55:53.596Z",
+      "lastModified": "2025-07-02T16:41:03.332Z",
       "methods": [],
       "properties": [
         {
@@ -816,7 +816,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2025-07-02T14:54:34.743Z",
+      "lastModified": "2025-07-02T16:39:56.761Z",
       "methods": [
         {
           "async": false,
@@ -916,7 +916,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2025-07-02T14:54:34.746Z",
+      "lastModified": "2025-07-02T16:39:56.764Z",
       "methods": [],
       "properties": [
         {
@@ -997,7 +997,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2025-07-02T14:54:34.746Z",
+      "lastModified": "2025-07-02T16:39:56.765Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1012,9 +1012,576 @@
       ]
     },
     {
+      "events": [
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusDestroy",
+          "description": "TODO: Indicates whether the carousel has been successfully initialized.",
+          "Property": "() get initialized(): boolean { return !!this.api; } Runs when the carousel has been destroyed. This only fires once and will be the last event the carousel fires."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusInit",
+          "description": "Runs when the carousel mounts for the first time."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusPointerDown",
+          "description": "Runs when the user has a pointer down on the carousel. It's triggered by a `touchstart` or a `mousedown` event."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusPointerUp",
+          "description": "Runs when the user has released the pointer from the carousel. It's triggered by a `touchend` or a `mouseup` event."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusReInit",
+          "description": "TODO"
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusResize",
+          "description": "Runs when the carousel container or the slide sizes change. It's using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) under the hood."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusScroll",
+          "description": "Runs when the carousel is scrolling. It might be a good idea to throttle this if you're doing expensive stuff in your callback function."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusSelect",
+          "description": "Runs when the selected scroll snap changes."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusSettle",
+          "description": "Runs when the carousel has settled after scroll has been triggered."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusSlideFocus",
+          "description": "Runs when a slide receives focus. For example, when a focusable element like a button, link or input receives focus inside a slide."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusSlideFocusStart",
+          "description": "TODO"
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusSlidesChanged",
+          "description": "Runs when slides are added to, or removed from the carousel **container**."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusSlidesInView",
+          "description": "Runs when any slide has **entered** or **exited** the viewport."
+        }
+      ],
+      "key": "carousel",
+      "lastModified": "2025-07-03T11:11:25.923Z",
+      "methods": [
+        {
+          "async": false,
+          "name": "canScrollNext",
+          "parameters": [],
+          "returns": "boolean",
+          "signature": "canScrollNext() => boolean",
+          "description": "Check the possibility to scroll to a next snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`."
+        },
+        {
+          "async": false,
+          "name": "canScrollPrevious",
+          "parameters": [],
+          "returns": "boolean",
+          "signature": "canScrollPrevious() => boolean",
+          "description": "Check the possiblity to scroll to a previous snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`."
+        },
+        {
+          "async": false,
+          "name": "previousScrollSnap",
+          "parameters": [],
+          "returns": "number",
+          "signature": "previousScrollSnap() => number",
+          "description": "Get the index of the previously selected snap point."
+        },
+        {
+          "async": false,
+          "name": "scrollNext",
+          "parameters": [
+            {
+              "required": false,
+              "name": "jump",
+              "type": "boolean"
+            }
+          ],
+          "returns": "void",
+          "signature": "scrollNext(jump?: boolean) => void",
+          "description": "TODO: Resets automatic behavior in the carousel.",
+          "Method": "() reset() { // this.plugins.auto.reset(); } Scroll to the next snap point if possible. When **loop** property is disabled and the carousel has reached the last snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the next slide instantly."
+        },
+        {
+          "async": false,
+          "name": "scrollPrevious",
+          "parameters": [
+            {
+              "required": false,
+              "name": "jump",
+              "type": "boolean"
+            }
+          ],
+          "returns": "void",
+          "signature": "scrollPrevious(jump?: boolean) => void",
+          "description": "Scroll to the previous snap point if possible. When **loop** property is disabled and the carousel has reached the first snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the previous slide instantly."
+        },
+        {
+          "async": false,
+          "name": "scrollProgress",
+          "parameters": [],
+          "returns": "number",
+          "signature": "scrollProgress() => number",
+          "description": "Check how far the carousel has scrolled of its scrollable length from 0 - 1. For example, **0.5 equals 50%**. For example, this can be useful when creating a scroll progress bar."
+        },
+        {
+          "async": false,
+          "name": "scrollSnapList",
+          "parameters": [],
+          "returns": "number[]",
+          "signature": "scrollSnapList() => number[]",
+          "description": "Get an array containing all the snap point positions. Each position represents how far the carousel needs to progress in order to reach this position."
+        },
+        {
+          "async": false,
+          "name": "scrollToIndex",
+          "parameters": [
+            {
+              "required": true,
+              "name": "index",
+              "type": "number"
+            },
+            {
+              "required": false,
+              "name": "jump",
+              "type": "boolean"
+            }
+          ],
+          "returns": "void",
+          "signature": "scrollToIndex(index: number, jump?: boolean) => void",
+          "description": "Scroll to a snap point by its unique index. If **loop** property is enabled, Embla Carousel will choose the closest way to the target snap point. Set the **jump** parameter to `true` when you want to go to the desired slide instantly."
+        },
+        {
+          "async": false,
+          "name": "selectedScrollSnap",
+          "parameters": [],
+          "returns": "number",
+          "signature": "selectedScrollSnap() => number",
+          "description": "Get the index of the selected snap point."
+        },
+        {
+          "async": false,
+          "name": "slideNodes",
+          "parameters": [],
+          "returns": "HTMLElement[]",
+          "signature": "slideNodes() => HTMLElement[]",
+          "description": "Get all the slide nodes inside the container. This method can be useful when you need to manipulate the slide elements dynamically or similar."
+        },
+        {
+          "async": false,
+          "name": "slidesInView",
+          "parameters": [],
+          "returns": "number[]",
+          "signature": "slidesInView() => number[]",
+          "description": "Get slide indexes **visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option."
+        },
+        {
+          "async": false,
+          "name": "slidesNotInView",
+          "parameters": [],
+          "returns": "number[]",
+          "signature": "slidesNotInView() => number[]",
+          "description": "Get slide indexes **not visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option."
+        }
+      ],
+      "properties": [
+        {
+          "attribute": "align",
+          "initializer": "'center'",
+          "name": "align",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "CarouselAlign",
+          "typeReference": "./carousel.types",
+          "description": "Align the slides relative to the carousel viewport."
+        },
+        {
+          "attribute": "auto-height",
+          "name": "autoHeight",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
+        },
+        {
+          "attribute": "axis",
+          "initializer": "'x'",
+          "name": "axis",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "CarouselAxis",
+          "typeReference": "./carousel.types",
+          "description": "Choose scroll axis between `x` and `y`."
+        },
+        {
+          "attribute": "classes",
+          "name": "classes",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
+        },
+        {
+          "attribute": "contain-scroll",
+          "initializer": "'trimSnaps'",
+          "name": "containScroll",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "CarouselContainScroll",
+          "typeReference": "./carousel.types",
+          "description": "Clear leading and trailing empty space that causes excessive scrolling. Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them. **Note**: When this is active, it will **override alignments** applied by the **align** property for enough slides at the **start** and the **end** of the carousel, in order to **cover** the **leading** and **trailing space**."
+        },
+        {
+          "attribute": "draggable",
+          "name": "draggable",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "CarouselDraggable",
+          "typeReference": "./carousel.types",
+          "description": "Enables scrolling the carousel using mouse and touch interactions."
+        },
+        {
+          "attribute": "drag-threshold",
+          "initializer": "10",
+          "name": "dragThreshold",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Drag threshold in pixels. This only affects **when** clicks are fired and not. In contrast to other carousel libraries, it will **not affect when dragging** of the carousel **starts**. **Note**: Browsers handle touch events differently than mouse events. Browsers won't fire the click event when a touch event includes an accidental slight swipe gesture. This is why this threshold only works for mouse events."
+        },
+        {
+          "attribute": "duration",
+          "initializer": "25",
+          "name": "duration",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Set scroll duration when triggered by any of the API methods. Higher numbers enables slower scrolling. Drag interactions are not affected because duration is then determined by the drag force. **Note**: Duration is **not** in milliseconds because Embla uses an attraction physics simulation when scrolling instead of easings. Only values between `20-60` are recommended."
+        },
+        {
+          "attribute": "focusable",
+          "name": "focusable",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
+        },
+        {
+          "attribute": "in-view-threshold",
+          "initializer": "0",
+          "name": "inViewThreshold",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "This is the Intersection Observer [threshold](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#creating_an_intersection_observer) option that will be applied to all slides."
+        },
+        {
+          "attribute": "loop",
+          "name": "loop",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
+        },
+        {
+          "attribute": "plugins",
+          "name": "plugins",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "EmblaPluginType[]",
+          "description": "Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality."
+        },
+        {
+          "attribute": "mirror",
+          "name": "mirror",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "string",
+          "description": "Matches the current slide on another carousel using its id."
+        },
+        {
+          "attribute": "mirror-type",
+          "initializer": "'sync-smooth'",
+          "name": "mirrorType",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "CarouselMirrorType",
+          "typeReference": "./carousel.types",
+          "description": "Specifies how the carousel should be mirrored onto another carousel."
+        },
+        {
+          "attribute": "resizable",
+          "name": "resizable",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
+        },
+        {
+          "attribute": "slides-to-scroll",
+          "initializer": "1",
+          "name": "slidesToScroll",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "CarouselSlidesToScroll",
+          "typeReference": "./carousel.types",
+          "description": "Group slides together. Drag interactions, dot navigation, and previous/next buttons are mapped to group slides into the given number, which has to be an integer. Set it to `auto` if you want to group slides automatically."
+        },
+        {
+          "attribute": "start-index",
+          "initializer": "0",
+          "name": "startIndex",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Set the initial scroll snap to the given number. First snap index starts at 0. Please note that this is not necessarily equal to the number of slides when used together with the `slidesToScroll` property."
+        },
+        {
+          "attribute": "tween-factor-base",
+          "name": "tweenFactorBase",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "string",
+          "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
+        },
+        {
+          "attribute": "api",
+          "name": "api",
+          "readonly": true,
+          "reflects": false,
+          "required": false,
+          "type": "EmblaCarouselType | undefined",
+          "description": "The Embla carousel API."
+        }
+      ],
+      "readmeContent": "# Carousel\n\nA carousel element for cycling through elements—like images or text slides.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Loop\n\n<Example src=\"examples/loop\" />\n\n### Duration\n\n<Example src=\"examples/duration\" />\n\n### Start Index\n\n<Example src=\"examples/start-index\" />\n\n### Align\n\n<Example src=\"examples/align\" />\n\n### Draggable Free\n\n<Example src=\"examples/draggable-free\" />\n\n### Draggable Snap\n\n<Example src=\"examples/draggable-snap\" />\n\n### Y Axis\n\n<Example src=\"examples/y-axis\" />\n\n### Direction\n\n<Example src=\"examples/direction\" />\n\n### Indicators\n\n<Example src=\"examples/indicators\" />\n\n### Indicators Clickable\n\n<Example src=\"examples/indicators-clickable\" />\n\n### Indicators Clickable Jump\n\n<Example src=\"examples/indicators-clickable-jump\" />\n\n### Indicators Numbers\n\n<Example src=\"examples/indicators-numbers\" />\n\n### Indicators Infinity\n\n<Example src=\"examples/indicators-infinity\" />\n\n### Resizable\n\n<Example src=\"examples/resizable\" />\n\n### Variable Widths\n\n<Example src=\"examples/variable-widths\" />\n\n### Thumbnails\n\n<Example src=\"examples/thumbnails\" />\n\n### Auto Height\n\n<Example src=\"examples/auto-height\" />\n\n### Classes\n\n<Example src=\"examples/classes\" />\n\n### Opacity\n\n<Example src=\"examples/opacity\" />\n\n### Parallax\n\n<Example src=\"examples/parallax\" />\n\n### Scale\n\n<Example src=\"examples/scale\" />\n\n### Counter Template\n\n<Example src=\"examples/counter-template\" />\n\n### Progress\n\n<Example src=\"examples/progress\" />\n\n### Slides Per View\n\n<Example src=\"examples/slides-per-view\" />\n\n### Events\n\nOpen the developer console.\n\n<Example src=\"examples/events\" />\n\n### Complex\n\n<Example src=\"examples/complex\" />\n\n<LastModified />\n",
+      "styles": [],
+      "title": "Carousel",
+      "description": "A carousel element for cycling through elements—like images or text slides.",
+      "thirdParty": true,
+      "dependenciess": [
+        {
+          "name": "embla",
+          "description": "carousel"
+        }
+      ],
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
+    },
+    {
+      "events": [],
+      "key": "carousel-button",
+      "lastModified": "2025-07-03T09:22:00.134Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "jump",
+          "name": "jump",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean",
+          "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
+        },
+        {
+          "attribute": "type",
+          "name": "type",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "'previous' | 'next' | number",
+          "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
+        }
+      ],
+      "styles": [],
+      "title": "Carousel Button",
+      "subset": true,
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
+    },
+    {
+      "events": [],
+      "key": "carousel-counter",
+      "lastModified": "2025-07-03T09:22:00.134Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "template",
+          "initializer": "'%CURRENT% / %TOTAL%'",
+          "name": "template",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "string",
+          "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
+        }
+      ],
+      "styles": [],
+      "title": "Carousel Counter",
+      "subset": true
+    },
+    {
+      "events": [],
+      "key": "carousel-indicators",
+      "lastModified": "2025-07-03T09:22:00.136Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "clickable",
+          "name": "clickable",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean | 'jump'",
+          "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
+        },
+        {
+          "attribute": "infinity",
+          "name": "infinity",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
+        },
+        {
+          "attribute": "numbers",
+          "name": "numbers",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Displays slide numbers inside the indicators."
+        }
+      ],
+      "styles": [],
+      "title": "Carousel Indicators",
+      "subset": true
+    },
+    {
+      "events": [],
+      "key": "carousel-progress",
+      "lastModified": "2025-07-03T09:22:00.137Z",
+      "methods": [],
+      "properties": [],
+      "styles": [],
+      "title": "Carousel Progress",
+      "subset": true
+    },
+    {
+      "events": [],
+      "key": "carousel-slide",
+      "lastModified": "2025-07-03T09:22:00.138Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "clickable",
+          "name": "clickable",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean | 'jump'",
+          "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
+        }
+      ],
+      "styles": [],
+      "title": "Carousel Slide",
+      "subset": true,
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
+    },
+    {
+      "events": [],
+      "key": "carousel-slides",
+      "lastModified": "2025-07-03T09:22:00.138Z",
+      "methods": [],
+      "properties": [],
+      "styles": [],
+      "title": "Carousel Slides",
+      "subset": true,
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
+    },
+    {
       "events": [],
       "key": "center",
-      "lastModified": "2025-07-02T14:54:34.759Z",
+      "lastModified": "2025-07-02T16:39:56.778Z",
       "methods": [],
       "properties": [
         {
@@ -1049,7 +1616,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2025-07-02T14:54:34.760Z",
+      "lastModified": "2025-07-02T16:39:56.779Z",
       "methods": [],
       "properties": [
         {
@@ -1102,7 +1669,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2025-07-02T14:54:34.763Z",
+      "lastModified": "2025-07-02T16:39:56.782Z",
       "methods": [
         {
           "async": false,
@@ -1287,7 +1854,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-07-02T14:55:53.597Z",
+      "lastModified": "2025-07-02T16:41:03.332Z",
       "methods": [
         {
           "async": false,
@@ -1725,7 +2292,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2025-07-02T14:54:34.772Z",
+      "lastModified": "2025-07-02T16:39:56.791Z",
       "methods": [
         {
           "async": false,
@@ -1913,7 +2480,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2025-07-02T14:54:34.772Z",
+      "lastModified": "2025-07-02T16:39:56.791Z",
       "methods": [],
       "properties": [
         {
@@ -1939,7 +2506,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2025-07-02T14:54:34.773Z",
+      "lastModified": "2025-07-02T16:39:56.792Z",
       "methods": [],
       "properties": [
         {
@@ -1965,7 +2532,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2025-07-02T14:54:34.773Z",
+      "lastModified": "2025-07-02T16:39:56.792Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1981,7 +2548,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2025-07-02T14:54:34.774Z",
+      "lastModified": "2025-07-02T16:39:56.793Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -1997,7 +2564,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2025-07-02T14:54:34.774Z",
+      "lastModified": "2025-07-02T16:39:56.794Z",
       "methods": [],
       "properties": [
         {
@@ -2031,7 +2598,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-07-02T14:54:34.777Z",
+      "lastModified": "2025-07-02T16:39:56.797Z",
       "methods": [],
       "properties": [
         {
@@ -2157,7 +2724,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-07-02T14:54:34.779Z",
+      "lastModified": "2025-07-02T16:39:56.799Z",
       "methods": [
         {
           "async": false,
@@ -2330,7 +2897,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2025-07-02T14:54:34.780Z",
+      "lastModified": "2025-07-02T16:39:56.800Z",
       "methods": [],
       "properties": [
         {
@@ -2364,7 +2931,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-07-02T14:55:53.597Z",
+      "lastModified": "2025-07-02T16:41:03.333Z",
       "methods": [],
       "properties": [
         {
@@ -2417,7 +2984,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2025-07-02T14:54:34.786Z",
+      "lastModified": "2025-07-02T16:39:56.806Z",
       "methods": [],
       "properties": [
         {
@@ -2509,7 +3076,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2025-07-02T14:54:34.791Z",
+      "lastModified": "2025-07-02T16:39:56.810Z",
       "methods": [],
       "properties": [
         {
@@ -2870,7 +3437,7 @@
     {
       "events": [],
       "key": "grid-item",
-      "lastModified": "2025-07-02T14:54:34.792Z",
+      "lastModified": "2025-07-02T16:39:56.811Z",
       "methods": [],
       "properties": [
         {
@@ -3282,7 +3849,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-07-02T14:54:34.797Z",
+      "lastModified": "2025-07-02T16:39:56.817Z",
       "methods": [],
       "properties": [
         {
@@ -3374,7 +3941,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2025-07-02T14:54:34.798Z",
+      "lastModified": "2025-07-02T16:39:56.818Z",
       "methods": [],
       "properties": [
         {
@@ -3439,7 +4006,7 @@
     {
       "events": [],
       "key": "prism",
-      "lastModified": "2025-07-02T14:55:53.598Z",
+      "lastModified": "2025-07-02T16:41:03.334Z",
       "methods": [],
       "properties": [
         {
@@ -3526,7 +4093,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-07-02T14:54:34.805Z",
+      "lastModified": "2025-07-02T16:39:56.825Z",
       "methods": [],
       "properties": [
         {
@@ -3625,7 +4192,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2025-07-02T14:54:34.805Z",
+      "lastModified": "2025-07-02T16:39:56.825Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -3641,7 +4208,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2025-07-02T14:55:53.599Z",
+      "lastModified": "2025-07-02T16:41:03.334Z",
       "methods": [],
       "properties": [
         {
@@ -3700,7 +4267,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2025-07-02T14:54:34.808Z",
+      "lastModified": "2025-07-02T16:39:56.828Z",
       "methods": [],
       "properties": [
         {
@@ -3773,7 +4340,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-07-02T14:55:53.599Z",
+      "lastModified": "2025-07-02T16:41:03.335Z",
       "methods": [
         {
           "async": false,
@@ -3958,7 +4525,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-07-02T14:54:34.814Z",
+      "lastModified": "2025-07-02T16:39:56.834Z",
       "methods": [],
       "properties": [
         {
@@ -4022,7 +4589,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2025-07-02T14:54:34.814Z",
+      "lastModified": "2025-07-02T16:39:56.835Z",
       "methods": [],
       "properties": [
         {
@@ -4044,7 +4611,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-07-02T14:54:34.817Z",
+      "lastModified": "2025-07-02T16:39:56.840Z",
       "methods": [],
       "properties": [
         {
@@ -4088,7 +4655,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-07-02T14:54:34.819Z",
+      "lastModified": "2025-07-02T16:39:56.841Z",
       "methods": [],
       "properties": [
         {
@@ -4164,7 +4731,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2025-07-02T14:54:34.821Z",
+      "lastModified": "2025-07-02T16:39:56.844Z",
       "methods": [],
       "properties": [
         {
@@ -4228,7 +4795,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2025-07-02T14:54:34.823Z",
+      "lastModified": "2025-07-02T16:39:56.847Z",
       "methods": [],
       "properties": [
         {
@@ -4267,7 +4834,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2025-07-02T14:54:34.826Z",
+      "lastModified": "2025-07-02T16:39:56.850Z",
       "methods": [],
       "properties": [
         {
@@ -4305,7 +4872,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2025-07-02T14:54:34.826Z",
+      "lastModified": "2025-07-02T16:39:56.851Z",
       "methods": [],
       "properties": [
         {
@@ -4351,7 +4918,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2025-07-02T14:54:34.827Z",
+      "lastModified": "2025-07-02T16:39:56.852Z",
       "methods": [],
       "properties": [
         {
@@ -4388,7 +4955,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2025-07-02T14:54:34.827Z",
+      "lastModified": "2025-07-02T16:39:56.853Z",
       "methods": [],
       "properties": [],
       "styles": [],
@@ -4405,7 +4972,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2025-07-02T14:54:34.828Z",
+      "lastModified": "2025-07-02T16:39:56.853Z",
       "methods": [],
       "properties": [
         {
@@ -4451,7 +5018,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2025-07-02T14:54:34.830Z",
+      "lastModified": "2025-07-02T16:39:56.856Z",
       "methods": [
         {
           "async": false,

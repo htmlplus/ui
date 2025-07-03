@@ -9,6 +9,13 @@ import { Breadcrumb } from "./breadcrumb.js";
 import { Browse } from "./browse.js";
 import { Card } from "./card.js";
 import { CardBody } from "./card-body.js";
+import { Carousel } from "./carousel.js";
+import { CarouselButton } from "./carousel-button.js";
+import { CarouselCounter } from "./carousel-counter.js";
+import { CarouselIndicators } from "./carousel-indicators.js";
+import { CarouselProgress } from "./carousel-progress.js";
+import { CarouselSlide } from "./carousel-slide.js";
+import { CarouselSlides } from "./carousel-slides.js";
 import { Center } from "./center.js";
 import { ClickOutside } from "./click-outside.js";
 import { Counter } from "./counter.js";
@@ -58,6 +65,13 @@ export {
   Browse,
   Card,
   CardBody,
+  Carousel,
+  CarouselButton,
+  CarouselCounter,
+  CarouselIndicators,
+  CarouselProgress,
+  CarouselSlide,
+  CarouselSlides,
   Center,
   ClickOutside,
   Counter,

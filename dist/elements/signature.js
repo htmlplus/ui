@@ -191,7 +191,7 @@ let Signature = class extends PlusForm {
     this.update(false, false);
   }
   readyCallback() {
-    import("../core/index.js").then((n) => n.w).then((module) => {
+    import("signature_pad").then((module) => {
       Core = module.default || module;
       try {
         this.initialize();
