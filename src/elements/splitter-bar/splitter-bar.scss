@@ -3,29 +3,3 @@
   flex-grow: 0;
   flex-shrink: 0;
 }
-
-// TODO
-
-global plus-splitter-bar:empty {
-  background-color: whitesmoke;
-  background-repeat: no-repeat;
-  background-position: 50%;
-}
-
-global plus-splitter[direction='horizontal'] plus-splitter-bar:empty {
-  min-width: 12px;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
-}
-
-global plus-splitter[direction='vertical'] plus-splitter-bar:empty {
-  min-height: 12px;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
-}
-
-global plus-splitter[direction='horizontal'] plus-splitter-bar {
-  cursor: col-resize;
-}
-
-global plus-splitter[direction='vertical'] plus-splitter-bar {
-  cursor: row-resize;
-}

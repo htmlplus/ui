@@ -1,7 +1,6 @@
 :host {
   display: flex;
   align-items: stretch;
-  flex-wrap: nowrap;
 }
 
 :host([direction='horizontal']) {
@@ -10,4 +9,26 @@
 
 :host([direction='vertical']) {
   flex-direction: column;
+}
+
+:host([direction='horizontal']) ::slotted(plus-splitter-bar) {
+  cursor: col-resize;
+}
+
+:host([direction='vertical']) ::slotted(plus-splitter-bar) {
+  cursor: row-resize;
+}
+
+:host([variant='default']) ::slotted(plus-splitter-bar) {
+  background-color: whitesmoke;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+:host([variant='default'][direction='horizontal']) ::slotted(plus-splitter-bar) {
+  min-width: 4px;
+}
+
+:host([variant='default'][direction='vertical']) ::slotted(plus-splitter-bar) {
+  min-height: 4px;
 }

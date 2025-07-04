@@ -1,4 +1,12 @@
-import { Debounce, Element, Event, EventEmitter, Property, Provider } from '@htmlplus/element';
+import {
+  Debounce,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+  Property,
+  Provider
+} from '@htmlplus/element';
 
 import Split from 'split.js';
 
@@ -11,6 +19,12 @@ import type { SplitterContext } from './splitter.context';
 @Element()
 export class Splitter extends PlusCore {
   /**
+   * TODO
+   */
+  @Property()
+  gutterSize?: number;
+
+  /**
    * Number of pixels to drag.
    */
   @Property()
@@ -21,6 +35,12 @@ export class Splitter extends PlusCore {
    */
   @Property({ reflect: true })
   direction?: 'horizontal' | 'vertical' = 'horizontal';
+
+  /**
+   * TODO
+   */
+  @Property({ reflect: true })
+  variant?: 'default' | (string & {});
 
   /**
    * Fire on drag.
@@ -50,6 +70,14 @@ export class Splitter extends PlusCore {
 
   instance?: Split.Instance;
 
+  /**
+   * TODO
+   */
+  @Method()
+  getSizes(): number[] {
+    return this.instance?.getSizes() || [];
+  }
+
   @Debounce(0)
   do() {
     const children = Array.from(this.children).sort((a, b) => {
@@ -67,7 +95,7 @@ export class Splitter extends PlusCore {
     ) as SplitterPanel[];
 
     const options: Split.Options = {
-      gutterSize: 0,
+      gutterSize: this.gutterSize ?? 0,
       cursor: '',
       expandToMin: true,
       direction: this.direction,
@@ -81,7 +109,9 @@ export class Splitter extends PlusCore {
       },
       gutterStyle: (dimension, gutterSize, index) => {
         return {
-          [dimension]: getComputedStyle(bars[index - 1].$host).getPropertyValue(dimension)
+          [dimension]: gutterSize
+            ? `${gutterSize}px`
+            : getComputedStyle(bars[index - 1].$host).getPropertyValue(dimension)
         };
       },
       onDrag: () => {

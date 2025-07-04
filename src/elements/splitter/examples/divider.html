@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-splitter {
+        flex-grow: 1;
+        align-self: stretch;
+      }
+      plus-splitter[direction="vertical"] {
+        height: 300px;
+      }
+      plus-splitter-panel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-splitter direction="horizontal" variant="default">
+      <plus-splitter-panel size="40">Panel 1</plus-splitter-panel>
+      <plus-splitter-bar>
+        <plus-divider type="dashed" vertical></plus-divider>
+      </plus-splitter-bar>
+      <plus-splitter-panel size="60">
+        <plus-splitter direction="vertical" variant="default">
+          <plus-splitter-panel>Panel 2</plus-splitter-panel>
+          <plus-splitter-bar>
+            <plus-divider type="dashed"></plus-divider>
+          </plus-splitter-bar>
+          <plus-splitter-panel>Panel 3</plus-splitter-panel>
+        </plus-splitter>
+      </plus-splitter-panel>
+    </plus-splitter>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/divider.js';
+      import 'https://esm.run/@htmlplus/ui/splitter.js';
+      import 'https://esm.run/@htmlplus/ui/splitter-bar.js';
+      import 'https://esm.run/@htmlplus/ui/splitter-panel.js';
+    </script>
+  </body>
+</html>
