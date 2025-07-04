@@ -4,6 +4,8 @@
   flex-shrink: 0;
 }
 
+// TODO
+
 global plus-splitter-bar:empty {
   background-color: whitesmoke;
   background-repeat: no-repeat;
@@ -18,4 +20,12 @@ global plus-splitter[direction='horizontal'] plus-splitter-bar:empty {
 global plus-splitter[direction='vertical'] plus-splitter-bar:empty {
   min-height: 12px;
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+}
+
+global plus-splitter[direction='horizontal'] plus-splitter-bar {
+  cursor: col-resize;
+}
+
+global plus-splitter[direction='vertical'] plus-splitter-bar {
+  cursor: row-resize;
 }

@@ -4,9 +4,9 @@ import Split from 'split.js';
 
 import { PlusCore } from '@/core';
 
-import { SplitterBar } from '../splitter-bar/splitter-bar';
-import { SplitterPanel } from '../splitter-panel/splitter-panel';
-import { SplitterContext } from './splitter.context';
+import type { SplitterBar } from '../splitter-bar/splitter-bar';
+import type { SplitterPanel } from '../splitter-panel/splitter-panel';
+import type { SplitterContext } from './splitter.context';
 
 @Element()
 export class Splitter extends PlusCore {
@@ -22,41 +22,23 @@ export class Splitter extends PlusCore {
   @Property({ reflect: true })
   direction?: 'horizontal' | 'vertical' = 'horizontal';
 
-  // // Cursor to display while dragging.
-  // cursor?: string
-
   /**
-   * TODO: Callback on drag.
+   * Fire on drag.
    */
   @Event()
   plusDrag!: EventEmitter<void>;
 
   /**
-   * TODO: Callback on drag start.
+   * Fire on drag start.
    */
   @Event()
   plusDragStart!: EventEmitter<void>;
 
   /**
-   * TODO: Callback on drag end.
+   * Fire on drag end.
    */
   @Event()
   plusDragEnd!: EventEmitter<void>;
-
-  // // Called to set the style of each element.
-  // elementStyle?(
-  //     dimension: 'width' | 'height',
-  //     elementSize: number,
-  //     gutterSize: number,
-  //     index: number,
-  // ): CSSStyleDeclarationPartial
-
-  // // Called to set the style of the gutter.
-  // gutterStyle?(
-  //     dimension: 'width' | 'height',
-  //     gutterSize: number,
-  //     index: number,
-  // ): CSSStyleDeclarationPartial
 
   @Provider('splitter')
   state: SplitterContext = {
@@ -86,6 +68,7 @@ export class Splitter extends PlusCore {
 
     const options: Split.Options = {
       gutterSize: 0,
+      cursor: '',
       expandToMin: true,
       direction: this.direction,
       dragInterval: this.dragInterval,
