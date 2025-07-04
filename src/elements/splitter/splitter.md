@@ -44,9 +44,13 @@ TODO
 
 <Example src="examples/snap-offset" />
 
-### Bar
+### Overflow
 
-<Example src="examples/bar" />
+<Example src="examples/overflow" />
+
+### Customized
+
+<Example src="examples/customized" />
 
 ### Events
 

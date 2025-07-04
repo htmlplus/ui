@@ -8,7 +8,7 @@ import {
   Provider
 } from '@htmlplus/element';
 
-import Split from 'split.js';
+import Split, { Instance, Options } from 'split.js';
 
 import { PlusCore } from '@/core';
 
@@ -16,6 +16,37 @@ import type { SplitterBar } from '../splitter-bar/splitter-bar';
 import type { SplitterPanel } from '../splitter-panel/splitter-panel';
 import type { SplitterContext } from './splitter.context';
 
+const SafeSplit: typeof Split = (elements: HTMLElement[], options) => {
+  const parentElement = elements.at(0).parentElement;
+
+  const insertBefore = parentElement.insertBefore;
+
+  parentElement.insertBefore = () => undefined;
+
+  const instance = Split(elements, options);
+
+  parentElement.insertBefore = insertBefore;
+
+  const destroy = instance.destroy;
+
+  instance.destroy = (...params) => {
+    const removeChild = parentElement.removeChild;
+
+    parentElement.removeChild = () => undefined;
+
+    destroy(...params);
+
+    parentElement.removeChild = removeChild;
+  };
+
+  return instance;
+};
+
+/**
+ * @thirdParty
+ * @dependencies split.js
+ * @slot default - The default slot.
+ */
 @Element()
 export class Splitter extends PlusCore {
   /**
@@ -68,7 +99,7 @@ export class Splitter extends PlusCore {
 
   children = new Set<PlusCore>();
 
-  instance?: Split.Instance;
+  instance?: Instance;
 
   /**
    * TODO
@@ -80,6 +111,8 @@ export class Splitter extends PlusCore {
 
   @Debounce(0)
   do() {
+    if (!this.children.size) return;
+
     const children = Array.from(this.children).sort((a, b) => {
       const i = Array.from(this.$host.children).indexOf(a.$host);
       const j = Array.from(this.$host.children).indexOf(b.$host);
@@ -94,7 +127,7 @@ export class Splitter extends PlusCore {
       instance.$host.localName.endsWith('panel')
     ) as SplitterPanel[];
 
-    const options: Split.Options = {
+    const options: Options = {
       gutterSize: this.gutterSize ?? 0,
       cursor: '',
       expandToMin: true,
@@ -125,21 +158,12 @@ export class Splitter extends PlusCore {
       }
     };
 
-    const insertBefore = this.$host.insertBefore;
-    const removeChild = this.$host.removeChild;
-
-    this.$host.insertBefore = () => undefined;
-    this.$host.removeChild = () => undefined;
-
     this.instance?.destroy();
 
-    this.instance = Split(
+    this.instance = SafeSplit(
       panels.map(($panel) => $panel.$host),
       options
     );
-
-    this.$host.insertBefore = insertBefore;
-    this.$host.removeChild = removeChild;
   }
 
   register(child: PlusCore) {
@@ -160,6 +184,10 @@ export class Splitter extends PlusCore {
 
   updatedCallback() {
     this.do();
+  }
+
+  disconnectedCallback() {
+    this.instance?.destroy();
   }
 
   render() {

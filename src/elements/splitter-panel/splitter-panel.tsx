@@ -4,6 +4,11 @@ import { PlusCore } from '@/core';
 
 import { SplitterContext } from '../splitter/splitter.context';
 
+/**
+ * @subset
+ *
+ * @slot default - The default slot.
+ */
 @Element()
 export class SplitterPanel extends PlusCore {
   /**
