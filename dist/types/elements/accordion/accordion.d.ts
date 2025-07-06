@@ -19,70 +19,70 @@ import { Animation } from '../../services';
  * @slot bottom        - The bottom slot.
  */
 export declare class Accordion extends PlusCore {
-    /**
-     * Disables the element functionality.
-     */
-    disabled?: boolean;
-    /**
-     * Control the element to expand or not.
-     */
-    open?: boolean;
-    /**
-     * The summary text displayed on the header.
-     */
-    summary?: string;
-    /**
-     * Fires when the element is about to collapse.
-     * This event can be [canceled](TODO).
-     */
-    plusCollapse: EventEmitter<void>;
-    /**
-     * Fires after the element has collapsed.
-     */
-    plusCollapsed: EventEmitter<void>;
-    /**
-     * Fires when the element is about to expand.
-     * This event can be [canceled](TODO).
-     */
-    plusExpand: EventEmitter<void>;
-    /**
-     * Fires after the element has expanded.
-     */
-    plusExpanded: EventEmitter<void>;
-    accordions?: any;
-    $body: HTMLElement;
-    $header: HTMLElement;
-    animate: Animation;
-    opened: boolean;
-    promise?: Promise<boolean>;
-    /**
-     * Collapses the element.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    collapse(): Promise<boolean>;
-    /**
-     * Expands the element.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    expand(): Promise<boolean>;
-    /**
-     * Toggles between `collapse` and `expand` state.
-     * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-     * operation was successful or `false` if it was canceled.
-     */
-    toggle(): Promise<boolean>;
-    watcher(next: any, prev: any, name: any): void;
-    getId(key: string): string;
-    initialize(): void;
-    terminate(): void;
-    try(open: boolean, silent?: boolean): Promise<boolean>;
-    onClick(): void;
-    onKeyDown(event: KeyboardEvent): void;
-    readyCallback(): void;
-    disconnectedCallback(): void;
-    render(): any;
+  /**
+   * Disables the element functionality.
+   */
+  disabled?: boolean;
+  /**
+   * Control the element to expand or not.
+   */
+  open?: boolean;
+  /**
+   * The summary text displayed on the header.
+   */
+  summary?: string;
+  /**
+   * Fires when the element is about to collapse.
+   * This event can be [canceled](TODO).
+   */
+  plusCollapse: EventEmitter<void>;
+  /**
+   * Fires after the element has collapsed.
+   */
+  plusCollapsed: EventEmitter<void>;
+  /**
+   * Fires when the element is about to expand.
+   * This event can be [canceled](TODO).
+   */
+  plusExpand: EventEmitter<void>;
+  /**
+   * Fires after the element has expanded.
+   */
+  plusExpanded: EventEmitter<void>;
+  accordions?: any;
+  $body: HTMLElement;
+  $header: HTMLElement;
+  animate: Animation;
+  opened: boolean;
+  promise?: Promise<boolean>;
+  /**
+   * Collapses the element.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  collapse(): Promise<boolean>;
+  /**
+   * Expands the element.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  expand(): Promise<boolean>;
+  /**
+   * Toggles between `collapse` and `expand` state.
+   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
+   * operation was successful or `false` if it was canceled.
+   */
+  toggle(): Promise<boolean>;
+  watcher(next: any, prev: any, name: any): void;
+  getId(key: string): string;
+  initialize(): void;
+  terminate(): void;
+  try(open: boolean, silent?: boolean): Promise<boolean>;
+  onClick(): void;
+  onKeyDown(event: KeyboardEvent): void;
+  readyCallback(): void;
+  disconnectedCallback(): void;
+  render(): any;
 }
 
 export interface AccordionAttributes {
@@ -153,12 +153,12 @@ export interface AccordionProperties {
   */
   summary?: string;
 }
-export interface AccordionJSX extends AccordionEvents, AccordionProperties {}
+export interface AccordionJSX extends AccordionEvents, AccordionProperties { }
 declare global {
-  interface HTMLPlusAccordionElement extends HTMLElement, AccordionMethods, AccordionProperties {}
+  interface HTMLPlusAccordionElement extends HTMLElement, AccordionMethods, AccordionProperties { }
   var HTMLPlusAccordionElement: {
     prototype: HTMLPlusAccordionElement;
-    new (): HTMLPlusAccordionElement;
+    new(): HTMLPlusAccordionElement;
   };
   interface HTMLElementTagNameMap {
     "plus-accordion": HTMLPlusAccordionElement;
@@ -171,13 +171,18 @@ declare global {
     }
   }
 }
+
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordion": AccordionEvents & AccordionAttributes & {
-        [key: string]: any;
-      };
+      "plus-accordion": AccordionEvents &
+      AccordionAttributes &
+      HTMLAttributes<HTMLElement>; // ✅ Add this
     }
   }
 }
+
+
 export type AccordionElement = globalThis.HTMLPlusAccordionElement;
+
+
