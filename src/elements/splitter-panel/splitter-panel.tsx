@@ -15,13 +15,13 @@ export class SplitterPanel extends PlusCore {
    * Minimum size of element.
    */
   @Property()
-  minSize?: number;
+  min?: number;
 
   /**
    * Maximum size of element.
    */
   @Property()
-  maxSize?: number;
+  max?: number;
 
   /**
    * Initial size of element in percents or CSS values.

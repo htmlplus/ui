@@ -16,6 +16,10 @@ TODO
 
 <Example src="examples/default" />
 
+### Multiple Panels
+
+<Example src="examples/multiple-panels" />
+
 ### Size
 
 <Example src="examples/size" />
@@ -36,9 +40,9 @@ TODO
 
 <Example src="examples/nested" />
 
-### Drag Interval
+### step
 
-<Example src="examples/drag-interval" />
+<Example src="examples/step" />
 
 ### Snap Offset
 

@@ -9,7 +9,7 @@
         align-self: stretch;
       }
 
-      plus-splitter[direction="vertical"] {
+      plus-splitter[layout="vertical"] {
         height: 300px;
       }
 
@@ -29,23 +29,27 @@
         background-color: #00000010;
       }
 
-      plus-splitter[direction='horizontal'] > plus-splitter-bar {
+      plus-splitter-bar[dragging] {
+        background-color: #00000030;
+      }
+
+      plus-splitter[layout='horizontal'] > plus-splitter-bar {
         min-width: 12px;
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
       }
 
-      plus-splitter[direction='vertical'] > plus-splitter-bar {
+      plus-splitter[layout='vertical'] > plus-splitter-bar {
         min-height: 12px;
         background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
       }
     </style>
   </head>
   <body dock>
-    <plus-splitter direction="horizontal">
+    <plus-splitter layout="horizontal">
       <plus-splitter-panel size="40">First</plus-splitter-panel>
       <plus-splitter-bar></plus-splitter-bar>
       <plus-splitter-panel size="60">
-        <plus-splitter direction="vertical">
+        <plus-splitter layout="vertical">
           <plus-splitter-panel>Second</plus-splitter-panel>
           <plus-splitter-bar></plus-splitter-bar>
           <plus-splitter-panel>Third</plus-splitter-panel>

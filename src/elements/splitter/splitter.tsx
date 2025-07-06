@@ -59,13 +59,13 @@ export class Splitter extends PlusCore {
    * Number of pixels to drag.
    */
   @Property()
-  dragInterval?: number = 1;
+  step?: number = 1;
 
   /**
-   * Direction to split: horizontal or vertical.
+   * Direction to split.
    */
   @Property({ reflect: true })
-  direction?: 'horizontal' | 'vertical' = 'horizontal';
+  layout?: 'horizontal' | 'vertical' = 'horizontal';
 
   /**
    * TODO
@@ -109,6 +109,14 @@ export class Splitter extends PlusCore {
     return this.instance?.getSizes() || [];
   }
 
+  /**
+   * TODO
+   */
+  @Method()
+  setSizes(sizes: number[]): void {
+    this.instance?.setSizes(sizes);
+  }
+
   @Debounce(0)
   do() {
     if (!this.children.size) return;
@@ -131,10 +139,10 @@ export class Splitter extends PlusCore {
       gutterSize: this.gutterSize ?? 0,
       cursor: '',
       expandToMin: true,
-      direction: this.direction,
-      dragInterval: this.dragInterval,
-      minSize: panels.map(($panel) => $panel.minSize ?? 0),
-      maxSize: panels.map(($panel) => $panel.maxSize ?? Infinity),
+      direction: this.layout,
+      dragInterval: this.step,
+      minSize: panels.map(($panel) => $panel.min ?? 0),
+      maxSize: panels.map(($panel) => $panel.max ?? Infinity),
       sizes: panels.map(($panel) => $panel.size ?? 100 / panels.length),
       snapOffset: panels.map(($panel) => $panel.snapOffset ?? 0),
       gutter: (index) => {

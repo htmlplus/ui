@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       plus-splitter {
-        height: 300px;
+        height: 150px;
       }
       plus-splitter-panel {
         display: flex;
@@ -15,10 +15,12 @@
     </style>
   </head>
   <body dock>
-    <plus-splitter layout="vertical" variant="default">
+    <plus-splitter variant="default">
       <plus-splitter-panel>First</plus-splitter-panel>
       <plus-splitter-bar></plus-splitter-bar>
       <plus-splitter-panel>Second</plus-splitter-panel>
+      <plus-splitter-bar></plus-splitter-bar>
+      <plus-splitter-panel>Third</plus-splitter-panel>
     </plus-splitter>
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/splitter.js';

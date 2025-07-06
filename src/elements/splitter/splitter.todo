@@ -1,2 +1,4 @@
 - https://primereact.org/splitter/#accessibility
 - https://ant.design/components/splitter#splitter-demo-lazy
+- add collapsible (start/end) prop
+- add defaultSize prop

@@ -8,7 +8,7 @@
         flex-grow: 1;
         align-self: stretch;
       }
-      plus-splitter[direction="vertical"] {
+      plus-splitter[layout="vertical"] {
         height: 300px;
       }
       plus-splitter-panel {
@@ -19,13 +19,13 @@
     </style>
   </head>
   <body dock>
-    <plus-splitter direction="horizontal" variant="default">
+    <plus-splitter layout="horizontal" variant="default">
       <plus-splitter-panel size="40">First</plus-splitter-panel>
       <plus-splitter-bar>
         <plus-divider type="dashed" vertical></plus-divider>
       </plus-splitter-bar>
       <plus-splitter-panel size="60">
-        <plus-splitter direction="vertical" variant="default">
+        <plus-splitter layout="vertical" variant="default">
           <plus-splitter-panel>Second</plus-splitter-panel>
           <plus-splitter-bar>
             <plus-divider type="dashed"></plus-divider>
