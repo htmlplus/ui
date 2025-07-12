@@ -563,6 +563,53 @@
     },
     {
       "events": [],
+      "key": "aspect-ratio",
+      "lastModified": "2025-07-12T18:17:36.643Z",
+      "methods": [],
+      "properties": [
+        {
+          "attribute": "min-height",
+          "name": "minHeight",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number | string",
+          "description": "Specifies the minimum height."
+        },
+        {
+          "attribute": "max-height",
+          "name": "maxHeight",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number | string",
+          "description": "Specifies the maximum height."
+        },
+        {
+          "attribute": "value",
+          "initializer": "1",
+          "name": "value",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number | string",
+          "description": "Specifies the ratio."
+        }
+      ],
+      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Image\n\n<Example src=\"examples/image\" />\n\n### Video\n\n<Example src=\"examples/video\" />\n\n### Card\n\n<Example src=\"examples/card\" />\n\n### Map\n\n<Example src=\"examples/map\" />\n\n<LastModified />\n",
+      "styles": [],
+      "title": "Aspect Ratio",
+      "description": "Sets a preferred aspect ratio only for the first child inside the element.",
+      "stable": true,
+      "slots": [
+        {
+          "name": "default",
+          "description": "The default slot."
+        }
+      ]
+    },
+    {
+      "events": [],
       "key": "avatar",
       "lastModified": "2025-07-06T14:37:56.975Z",
       "methods": [],
@@ -1807,7 +1854,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-07-07T19:00:37.904Z",
+      "lastModified": "2025-07-12T18:14:34.579Z",
       "methods": [
         {
           "async": false,
