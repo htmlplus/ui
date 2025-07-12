@@ -166,6 +166,12 @@ export interface SignatureAttributes {
   * Specifies the velocity based on the previous velocity.
   */
   "velocity"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SignatureProperties>;
+  };
 }
 export interface SignatureEvents {
   /**
@@ -261,6 +267,12 @@ export interface SignatureProperties {
   * Specifies whether undo can be performed or not.
   */
   readonly undoable: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SignatureProperties>;
+  };
 }
 export interface SignatureJSX extends SignatureEvents, SignatureProperties {}
 declare global {
@@ -274,18 +286,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": SignatureEvents & SignatureAttributes & {
-        [key: string]: any;
-      };
+      "plus-signature": SignatureEvents & SignatureAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": SignatureEvents & SignatureAttributes & {
-        [key: string]: any;
-      };
+      "plus-signature": SignatureEvents & SignatureAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

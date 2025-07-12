@@ -65,6 +65,12 @@ export interface DividerAttributes {
   *  Draws the divider in a vertical orientation.
   */
   "vertical"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DividerProperties>;
+  };
 }
 export interface DividerEvents {}
 export interface DividerMethods {}
@@ -93,6 +99,12 @@ export interface DividerProperties {
   *  Draws the divider in a vertical orientation.
   */
   vertical?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DividerProperties>;
+  };
 }
 export interface DividerJSX extends DividerEvents, DividerProperties {}
 declare global {
@@ -106,18 +118,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": DividerEvents & DividerAttributes & {
-        [key: string]: any;
-      };
+      "plus-divider": DividerEvents & DividerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": DividerEvents & DividerAttributes & {
-        [key: string]: any;
-      };
+      "plus-divider": DividerEvents & DividerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

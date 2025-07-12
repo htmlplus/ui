@@ -34,6 +34,12 @@ export interface TabsAttributes {
   * You can use vertical property for vertical mode.
   */
   "vertical"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsProperties>;
+  };
 }
 export interface TabsEvents {
   /**
@@ -51,6 +57,12 @@ export interface TabsProperties {
   * You can use vertical property for vertical mode.
   */
   vertical?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsProperties>;
+  };
 }
 export interface TabsJSX extends TabsEvents, TabsProperties {}
 declare global {
@@ -64,18 +76,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs": TabsEvents & TabsAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs": TabsEvents & TabsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs": TabsEvents & TabsAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs": TabsEvents & TabsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

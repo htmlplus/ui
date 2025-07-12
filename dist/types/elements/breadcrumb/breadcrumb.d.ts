@@ -67,6 +67,12 @@ export interface BreadcrumbAttributes {
   * Specifies the separator between items.
   */
   "separator"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<BreadcrumbProperties>;
+  };
 }
 export interface BreadcrumbEvents {}
 export interface BreadcrumbMethods {}
@@ -92,6 +98,12 @@ export interface BreadcrumbProperties {
   * Specifies the separator between items.
   */
   separator?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<BreadcrumbProperties>;
+  };
 }
 export interface BreadcrumbJSX extends BreadcrumbEvents, BreadcrumbProperties {}
 declare global {
@@ -105,18 +117,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & {
-        [key: string]: any;
-      };
+      "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & {
-        [key: string]: any;
-      };
+      "plus-breadcrumb": BreadcrumbEvents & BreadcrumbAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

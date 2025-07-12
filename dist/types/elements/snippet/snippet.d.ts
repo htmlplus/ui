@@ -32,6 +32,12 @@ export interface SnippetAttributes {
   * Specifies the symbol.
   */
   "symbol"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SnippetProperties>;
+  };
 }
 export interface SnippetEvents {}
 export interface SnippetMethods {}
@@ -44,6 +50,12 @@ export interface SnippetProperties {
   * Specifies the symbol.
   */
   symbol?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SnippetProperties>;
+  };
 }
 export interface SnippetJSX extends SnippetEvents, SnippetProperties {}
 declare global {
@@ -57,18 +69,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": SnippetEvents & SnippetAttributes & {
-        [key: string]: any;
-      };
+      "plus-snippet": SnippetEvents & SnippetAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": SnippetEvents & SnippetAttributes & {
-        [key: string]: any;
-      };
+      "plus-snippet": SnippetEvents & SnippetAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -10,10 +10,24 @@ export declare class CarouselProgress extends CarouselChild {
     render(): any;
 }
 
-export interface CarouselProgressAttributes {}
+export interface CarouselProgressAttributes {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselProgressProperties>;
+  };
+}
 export interface CarouselProgressEvents {}
 export interface CarouselProgressMethods {}
-export interface CarouselProgressProperties {}
+export interface CarouselProgressProperties {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselProgressProperties>;
+  };
+}
 export interface CarouselProgressJSX extends CarouselProgressEvents, CarouselProgressProperties {}
 declare global {
   interface HTMLPlusCarouselProgressElement extends HTMLElement, CarouselProgressMethods, CarouselProgressProperties {}
@@ -26,18 +40,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": CarouselProgressEvents & CarouselProgressAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-progress": CarouselProgressEvents & CarouselProgressAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": CarouselProgressEvents & CarouselProgressAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-progress": CarouselProgressEvents & CarouselProgressAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

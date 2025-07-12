@@ -17,6 +17,12 @@ export interface CenterAttributes {
   * Converts the `display` CSS property from `flex` to `inline-flex`.
   */
   "inline"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CenterProperties>;
+  };
 }
 export interface CenterEvents {}
 export interface CenterMethods {}
@@ -25,6 +31,12 @@ export interface CenterProperties {
   * Converts the `display` CSS property from `flex` to `inline-flex`.
   */
   inline?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CenterProperties>;
+  };
 }
 export interface CenterJSX extends CenterEvents, CenterProperties {}
 declare global {
@@ -38,18 +50,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": CenterEvents & CenterAttributes & {
-        [key: string]: any;
-      };
+      "plus-center": CenterEvents & CenterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": CenterEvents & CenterAttributes & {
-        [key: string]: any;
-      };
+      "plus-center": CenterEvents & CenterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -30,6 +30,12 @@ export interface CarouselButtonAttributes {
   * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
   */
   "type"?: 'previous' | 'next' | number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselButtonProperties>;
+  };
 }
 export interface CarouselButtonEvents {}
 export interface CarouselButtonMethods {}
@@ -42,6 +48,12 @@ export interface CarouselButtonProperties {
   * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
   */
   type?: 'previous' | 'next' | number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselButtonProperties>;
+  };
 }
 export interface CarouselButtonJSX extends CarouselButtonEvents, CarouselButtonProperties {}
 declare global {
@@ -55,18 +67,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-button": CarouselButtonEvents & CarouselButtonAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-button": CarouselButtonEvents & CarouselButtonAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-button": CarouselButtonEvents & CarouselButtonAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-button": CarouselButtonEvents & CarouselButtonAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

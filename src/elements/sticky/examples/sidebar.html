@@ -4,43 +4,47 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+      * {
+        box-sizing: border-box;
+      }
       .container {
         height: 20rem;
         overflow: auto;
+        display: flex;
+        flex-wrap: wrap;
       }
-      aside,
-      header {
+      header,
+      plus-sticky {
         background: lightgray;
         text-align: center;
         padding: 1rem;
       }
-      plus-faker {
-        display: block;
+      header {
+        flex: 0 0 100%;
+      }
+      main {
+        flex: 0 0 60%;
         padding: 1rem;
         text-align: justify;
+      }
+      aside {
+        flex: 0 0 40%;
+        margin-top: 1rem;
       }
     </style>
   </head>
   <body dock>
     <div class="container">
       <header>Header</header>
-      <plus-grid>
-        <plus-grid-item xs="7">
-          <plus-faker api="lorem.paragraphs" arguments='[10, "\n\n"]'></plus-faker>
-        </plus-grid-item>
-        <plus-grid-item xs="5">
-          <br />
-          <plus-sticky>
-            <aside>A Sticky Sidebar</aside>
-          </plus-sticky>
-        </plus-grid-item>
-      </plus-grid>
+      <main>
+        <plus-faker api="lorem.paragraphs" arguments='[10, "\n\n"]'></plus-faker>
+      </main>
+      <aside>
+        <plus-sticky>A Sticky Sidebar</plus-sticky>
+      </aside>
     </div>
     <script type="module">
-      import 'https://esm.run/@faker-js/faker';
       import 'https://esm.run/@htmlplus/ui/faker.js';
-      import 'https://esm.run/@htmlplus/ui/grid-item.js';
-      import 'https://esm.run/@htmlplus/ui/grid.js';
       import 'https://esm.run/@htmlplus/ui/sticky.js';
     </script>
   </body>

@@ -78,6 +78,12 @@ export interface ProgressBarAttributes {
   * Specifies the progress of the bar by a number between `min` and `max`.
   */
   "value"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ProgressBarProperties>;
+  };
 }
 export interface ProgressBarEvents {}
 export interface ProgressBarMethods {}
@@ -114,6 +120,12 @@ export interface ProgressBarProperties {
   * Specifies the progress of the bar by a number between `min` and `max`.
   */
   value?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ProgressBarProperties>;
+  };
 }
 export interface ProgressBarJSX extends ProgressBarEvents, ProgressBarProperties {}
 declare global {
@@ -127,18 +139,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & {
-        [key: string]: any;
-      };
+      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & {
-        [key: string]: any;
-      };
+      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

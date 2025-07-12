@@ -45,6 +45,12 @@ export interface ScrollDetectorAttributes {
   * Indicates which scroll (horizontal or vertical) is to be used as the source.
   */
   "vertical"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ScrollDetectorProperties>;
+  };
 }
 export interface ScrollDetectorEvents {
   /**
@@ -66,6 +72,12 @@ export interface ScrollDetectorProperties {
   * Indicates which scroll (horizontal or vertical) is to be used as the source.
   */
   vertical?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ScrollDetectorProperties>;
+  };
 }
 export interface ScrollDetectorJSX extends ScrollDetectorEvents, ScrollDetectorProperties {}
 declare global {
@@ -79,18 +91,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": ScrollDetectorEvents & ScrollDetectorAttributes & {
-        [key: string]: any;
-      };
+      "plus-scroll-detector": ScrollDetectorEvents & ScrollDetectorAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": ScrollDetectorEvents & ScrollDetectorAttributes & {
-        [key: string]: any;
-      };
+      "plus-scroll-detector": ScrollDetectorEvents & ScrollDetectorAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

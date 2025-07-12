@@ -133,6 +133,12 @@ export interface AvatarAttributes {
   * Specifies the size of the element.
   */
   "size"?: AvatarSize;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AvatarProperties>;
+  };
 }
 export interface AvatarEvents {}
 export interface AvatarMethods {}
@@ -149,6 +155,12 @@ export interface AvatarProperties {
   * Specifies the size of the element.
   */
   size?: AvatarSize;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AvatarProperties>;
+  };
 }
 export interface AvatarJSX extends AvatarEvents, AvatarProperties {}
 declare global {
@@ -162,18 +174,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": AvatarEvents & AvatarAttributes & {
-        [key: string]: any;
-      };
+      "plus-avatar": AvatarEvents & AvatarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": AvatarEvents & AvatarAttributes & {
-        [key: string]: any;
-      };
+      "plus-avatar": AvatarEvents & AvatarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

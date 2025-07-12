@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.6.5",
+  "version": "1.7.0",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -480,59 +480,6 @@
             }
           ],
           "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations."
-        },
-        {
-          "name": "plus-aspect-ratio",
-          "doc-url": "https://www.htmlplus.io/javascript/element/aspect-ratio",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "minHeight",
-                "description": "Specifies the minimum height."
-              },
-              {
-                "name": "maxHeight",
-                "description": "Specifies the maximum height."
-              },
-              {
-                "name": "value",
-                "default": "1",
-                "description": "Specifies the ratio."
-              }
-            ]
-          },
-          "attributes": [
-            {
-              "name": "min-height",
-              "value": {
-                "type": "number | string"
-              },
-              "description": "Specifies the minimum height."
-            },
-            {
-              "name": "max-height",
-              "value": {
-                "type": "number | string"
-              },
-              "description": "Specifies the maximum height."
-            },
-            {
-              "name": "value",
-              "value": {
-                "type": "number | string"
-              },
-              "default": "1",
-              "description": "Specifies the ratio."
-            }
-          ],
-          "description": "Sets a preferred aspect ratio only for the first child inside the element.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
         },
         {
           "name": "plus-avatar",
@@ -4442,6 +4389,11 @@
               {
                 "name": "vertical",
                 "description": "Whether the stack is vertical."
+              },
+              {
+                "name": "wrap",
+                "default": false,
+                "description": "Controls whether items should wrap onto multiple lines."
               }
             ]
           },
@@ -4482,6 +4434,14 @@
                 "type": "boolean"
               },
               "description": "Whether the stack is vertical."
+            },
+            {
+              "name": "wrap",
+              "value": {
+                "type": "boolean | 'reverse'"
+              },
+              "default": false,
+              "description": "Controls whether items should wrap onto multiple lines."
             }
           ],
           "description": "A container for arranging elements vertically or horizontally.",

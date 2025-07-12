@@ -36,6 +36,12 @@ export interface SpinnerAttributes {
   * Specifies which variant of the spinner to use.
   */
   "type"?: SpinnerType;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SpinnerProperties>;
+  };
 }
 export interface SpinnerEvents {}
 export interface SpinnerMethods {}
@@ -52,6 +58,12 @@ export interface SpinnerProperties {
   * Specifies which variant of the spinner to use.
   */
   type?: SpinnerType;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SpinnerProperties>;
+  };
 }
 export interface SpinnerJSX extends SpinnerEvents, SpinnerProperties {}
 declare global {
@@ -65,18 +77,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spinner": SpinnerEvents & SpinnerAttributes & {
-        [key: string]: any;
-      };
+      "plus-spinner": SpinnerEvents & SpinnerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spinner": SpinnerEvents & SpinnerAttributes & {
-        [key: string]: any;
-      };
+      "plus-spinner": SpinnerEvents & SpinnerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -24,12 +24,17 @@ export declare class Stack extends PlusCore {
      * Whether the stack is vertical.
      */
     vertical?: boolean;
+    /**
+     * Controls whether items should wrap onto multiple lines.
+     */
+    wrap?: boolean | 'reverse';
     get style(): {
         'align-items': string;
         display: string;
         'flex-direction': string;
         gap: string;
         'justify-content': string;
+        'flex-wrap': string;
     };
     render(): any;
 }
@@ -55,6 +60,16 @@ export interface StackAttributes {
   * Whether the stack is vertical.
   */
   "vertical"?: boolean;
+  /**
+  * Controls whether items should wrap onto multiple lines.
+  */
+  "wrap"?: boolean | 'reverse';
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<StackProperties>;
+  };
 }
 export interface StackEvents {}
 export interface StackMethods {}
@@ -79,6 +94,16 @@ export interface StackProperties {
   * Whether the stack is vertical.
   */
   vertical?: boolean;
+  /**
+  * Controls whether items should wrap onto multiple lines.
+  */
+  wrap?: boolean | 'reverse';
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<StackProperties>;
+  };
 }
 export interface StackJSX extends StackEvents, StackProperties {}
 declare global {
@@ -92,18 +117,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": StackEvents & StackAttributes & {
-        [key: string]: any;
-      };
+      "plus-stack": StackEvents & StackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": StackEvents & StackAttributes & {
-        [key: string]: any;
-      };
+      "plus-stack": StackEvents & StackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

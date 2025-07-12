@@ -27,6 +27,12 @@ export interface DrawerTogglerAttributes {
   * Read more about connectors [here](/connector).
   */
   "connector"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DrawerTogglerProperties>;
+  };
 }
 export interface DrawerTogglerEvents {}
 export interface DrawerTogglerMethods {}
@@ -38,6 +44,12 @@ export interface DrawerTogglerProperties {
   * Read more about connectors [here](/connector).
   */
   connector?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DrawerTogglerProperties>;
+  };
 }
 export interface DrawerTogglerJSX extends DrawerTogglerEvents, DrawerTogglerProperties {}
 declare global {
@@ -51,18 +63,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & {
-        [key: string]: any;
-      };
+      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & {
-        [key: string]: any;
-      };
+      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

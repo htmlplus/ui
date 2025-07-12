@@ -176,6 +176,12 @@ export interface DialogAttributes {
   * Deactivate the dialog's backdrop to show or not.
   */
   "transparent"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DialogProperties>;
+  };
 }
 export interface DialogEvents {
   /**
@@ -272,6 +278,12 @@ export interface DialogProperties {
   * Deactivate the dialog's backdrop to show or not.
   */
   transparent?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DialogProperties>;
+  };
 }
 export interface DialogJSX extends DialogEvents, DialogProperties {}
 declare global {
@@ -285,18 +297,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": DialogEvents & DialogAttributes & {
-        [key: string]: any;
-      };
+      "plus-dialog": DialogEvents & DialogAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": DialogEvents & DialogAttributes & {
-        [key: string]: any;
-      };
+      "plus-dialog": DialogEvents & DialogAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

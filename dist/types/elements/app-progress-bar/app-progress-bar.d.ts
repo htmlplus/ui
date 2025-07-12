@@ -67,6 +67,12 @@ export interface AppProgressBarAttributes {
   * Adjust how often to trickle/increment, in ms.
   */
   "trickle-speed"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AppProgressBarProperties>;
+  };
 }
 export interface AppProgressBarEvents {}
 export interface AppProgressBarMethods {
@@ -108,6 +114,12 @@ export interface AppProgressBarProperties {
   * Adjust how often to trickle/increment, in ms.
   */
   trickleSpeed?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AppProgressBarProperties>;
+  };
 }
 export interface AppProgressBarJSX extends AppProgressBarEvents, AppProgressBarProperties {}
 declare global {
@@ -121,18 +133,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": AppProgressBarEvents & AppProgressBarAttributes & {
-        [key: string]: any;
-      };
+      "plus-app-progress-bar": AppProgressBarEvents & AppProgressBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": AppProgressBarEvents & AppProgressBarAttributes & {
-        [key: string]: any;
-      };
+      "plus-app-progress-bar": AppProgressBarEvents & AppProgressBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -106,6 +106,12 @@ export interface BrowseAttributes {
   * Allows to select more than one file.
   */
   "multiple"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<BrowseProperties>;
+  };
 }
 export interface BrowseEvents {
   /**
@@ -162,6 +168,12 @@ export interface BrowseProperties {
   * Allows to select more than one file.
   */
   multiple?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<BrowseProperties>;
+  };
 }
 export interface BrowseJSX extends BrowseEvents, BrowseProperties {}
 declare global {
@@ -175,18 +187,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": BrowseEvents & BrowseAttributes & {
-        [key: string]: any;
-      };
+      "plus-browse": BrowseEvents & BrowseAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": BrowseEvents & BrowseAttributes & {
-        [key: string]: any;
-      };
+      "plus-browse": BrowseEvents & BrowseAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

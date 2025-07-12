@@ -400,6 +400,12 @@ export interface GridItemAttributes {
   * Overrides the default order of the grid-item for extra-extra-large display sizes.
   */
   "order-xxl"?: GridItemOrder;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<GridItemProperties>;
+  };
 }
 export interface GridItemEvents {}
 export interface GridItemMethods {}
@@ -599,6 +605,12 @@ export interface GridItemProperties {
   * Overrides the default order of the grid-item for extra-extra-large display sizes.
   */
   orderXxl?: GridItemOrder;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<GridItemProperties>;
+  };
 }
 export interface GridItemJSX extends GridItemEvents, GridItemProperties {}
 declare global {
@@ -612,18 +624,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-grid-item": GridItemEvents & GridItemAttributes & {
-        [key: string]: any;
-      };
+      "plus-grid-item": GridItemEvents & GridItemAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-grid-item": GridItemEvents & GridItemAttributes & {
-        [key: string]: any;
-      };
+      "plus-grid-item": GridItemEvents & GridItemAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

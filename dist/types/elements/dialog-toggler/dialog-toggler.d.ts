@@ -27,6 +27,12 @@ export interface DialogTogglerAttributes {
   * Read more about connectors [here](/connector).
   */
   "connector"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DialogTogglerProperties>;
+  };
 }
 export interface DialogTogglerEvents {}
 export interface DialogTogglerMethods {}
@@ -38,6 +44,12 @@ export interface DialogTogglerProperties {
   * Read more about connectors [here](/connector).
   */
   connector?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DialogTogglerProperties>;
+  };
 }
 export interface DialogTogglerJSX extends DialogTogglerEvents, DialogTogglerProperties {}
 declare global {
@@ -51,18 +63,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & {
-        [key: string]: any;
-      };
+      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & {
-        [key: string]: any;
-      };
+      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

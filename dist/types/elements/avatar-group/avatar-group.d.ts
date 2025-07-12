@@ -26,6 +26,12 @@ export interface AvatarGroupAttributes {
   * Specifies whether avatars should be displayed compressed or not.
   */
   "stacked"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AvatarGroupProperties>;
+  };
 }
 export interface AvatarGroupEvents {}
 export interface AvatarGroupMethods {}
@@ -38,6 +44,12 @@ export interface AvatarGroupProperties {
   * Specifies whether avatars should be displayed compressed or not.
   */
   stacked?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AvatarGroupProperties>;
+  };
 }
 export interface AvatarGroupJSX extends AvatarGroupEvents, AvatarGroupProperties {}
 declare global {
@@ -51,18 +63,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & {
-        [key: string]: any;
-      };
+      "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & {
-        [key: string]: any;
-      };
+      "plus-avatar-group": AvatarGroupEvents & AvatarGroupAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

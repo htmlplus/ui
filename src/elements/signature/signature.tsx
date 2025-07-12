@@ -291,7 +291,7 @@ export class Signature extends PlusForm {
     for (const key in events) {
       if (!events.hasOwnProperty(key)) continue;
       this.instance.addEventListener(key, (event) => {
-        events[key](event['detail']);
+        events[key].call(this, event['detail']);
       });
     }
 

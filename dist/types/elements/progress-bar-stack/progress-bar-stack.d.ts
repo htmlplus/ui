@@ -8,10 +8,24 @@ export declare class ProgressBarStack extends PlusCore {
     render(): any;
 }
 
-export interface ProgressBarStackAttributes {}
+export interface ProgressBarStackAttributes {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ProgressBarStackProperties>;
+  };
+}
 export interface ProgressBarStackEvents {}
 export interface ProgressBarStackMethods {}
-export interface ProgressBarStackProperties {}
+export interface ProgressBarStackProperties {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ProgressBarStackProperties>;
+  };
+}
 export interface ProgressBarStackJSX extends ProgressBarStackEvents, ProgressBarStackProperties {}
 declare global {
   interface HTMLPlusProgressBarStackElement extends HTMLElement, ProgressBarStackMethods, ProgressBarStackProperties {}
@@ -24,18 +38,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & {
-        [key: string]: any;
-      };
+      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & {
-        [key: string]: any;
-      };
+      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

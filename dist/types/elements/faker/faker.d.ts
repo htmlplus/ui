@@ -44,6 +44,12 @@ export interface FakerAttributes {
   * Keeps the result constant.
   */
   "seed"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<FakerProperties>;
+  };
 }
 export interface FakerEvents {}
 export interface FakerMethods {}
@@ -64,6 +70,12 @@ export interface FakerProperties {
   * Keeps the result constant.
   */
   seed?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<FakerProperties>;
+  };
 }
 export interface FakerJSX extends FakerEvents, FakerProperties {}
 declare global {
@@ -77,18 +89,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-faker": FakerEvents & FakerAttributes & {
-        [key: string]: any;
-      };
+      "plus-faker": FakerEvents & FakerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-faker": FakerEvents & FakerAttributes & {
-        [key: string]: any;
-      };
+      "plus-faker": FakerEvents & FakerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -172,6 +172,12 @@ export interface DrawerAttributes {
   * Determine the width of the drawer.
   */
   "size"?: number | string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DrawerProperties>;
+  };
 }
 export interface DrawerEvents {
   /**
@@ -268,6 +274,12 @@ export interface DrawerProperties {
   * TODO
   */
   readonly floated: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DrawerProperties>;
+  };
 }
 export interface DrawerJSX extends DrawerEvents, DrawerProperties {}
 declare global {
@@ -281,18 +293,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": DrawerEvents & DrawerAttributes & {
-        [key: string]: any;
-      };
+      "plus-drawer": DrawerEvents & DrawerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": DrawerEvents & DrawerAttributes & {
-        [key: string]: any;
-      };
+      "plus-drawer": DrawerEvents & DrawerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

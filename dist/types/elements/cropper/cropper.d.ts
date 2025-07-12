@@ -273,6 +273,12 @@ export interface CropperAttributes {
   * Specifies zoom ratio when zooming the image by wheeling the mouse.
   */
   "zoom-ratio"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CropperProperties>;
+  };
 }
 export interface CropperEvents {
   /**
@@ -415,6 +421,12 @@ export interface CropperProperties {
   * Specifies zoom ratio when zooming the image by wheeling the mouse.
   */
   zoomRatio?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CropperProperties>;
+  };
 }
 export interface CropperJSX extends CropperEvents, CropperProperties {}
 declare global {
@@ -428,18 +440,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": CropperEvents & CropperAttributes & {
-        [key: string]: any;
-      };
+      "plus-cropper": CropperEvents & CropperAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": CropperEvents & CropperAttributes & {
-        [key: string]: any;
-      };
+      "plus-cropper": CropperEvents & CropperAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -401,6 +401,12 @@ export interface CarouselAttributes {
   * Can be used to conditionally apply CSS themes or variants.
   */
   "variant"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselProperties>;
+  };
 }
 export interface CarouselEvents {
   /**
@@ -664,6 +670,12 @@ export interface CarouselProperties {
   * The Embla carousel API.
   */
   readonly api: EmblaCarouselType | undefined;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselProperties>;
+  };
 }
 export interface CarouselJSX extends CarouselEvents, CarouselProperties {}
 declare global {
@@ -677,18 +689,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": CarouselEvents & CarouselAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel": CarouselEvents & CarouselAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": CarouselEvents & CarouselAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel": CarouselEvents & CarouselAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

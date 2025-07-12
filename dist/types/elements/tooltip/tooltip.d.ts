@@ -125,6 +125,12 @@ export interface TooltipAttributes {
   * TODO
   */
   "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TooltipProperties>;
+  };
 }
 export interface TooltipEvents {}
 export interface TooltipMethods {
@@ -185,6 +191,12 @@ export interface TooltipProperties {
   * TODO
   */
   z?: 'auto' | 'vertical' | 'horizontal' | 'move';
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TooltipProperties>;
+  };
 }
 export interface TooltipJSX extends TooltipEvents, TooltipProperties {}
 declare global {
@@ -198,18 +210,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": TooltipEvents & TooltipAttributes & {
-        [key: string]: any;
-      };
+      "plus-tooltip": TooltipEvents & TooltipAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": TooltipEvents & TooltipAttributes & {
-        [key: string]: any;
-      };
+      "plus-tooltip": TooltipEvents & TooltipAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

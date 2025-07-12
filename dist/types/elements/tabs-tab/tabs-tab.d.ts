@@ -34,6 +34,12 @@ export interface TabsTabAttributes {
   * Provides your own value.
   */
   "value"?: TabsValue;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsTabProperties>;
+  };
 }
 export interface TabsTabEvents {}
 export interface TabsTabMethods {}
@@ -50,6 +56,12 @@ export interface TabsTabProperties {
   * TODO
   */
   active;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsTabProperties>;
+  };
 }
 export interface TabsTabJSX extends TabsTabEvents, TabsTabProperties {}
 declare global {
@@ -63,18 +75,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs-tab": TabsTabEvents & TabsTabAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -44,6 +44,12 @@ export interface RelativeTimeAttributes {
   * The date and time to be displayed in a relative format.
   */
   "value"?: Date | string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<RelativeTimeProperties>;
+  };
 }
 export interface RelativeTimeEvents {}
 export interface RelativeTimeMethods {}
@@ -64,6 +70,12 @@ export interface RelativeTimeProperties {
   * The date and time to be displayed in a relative format.
   */
   value?: Date | string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<RelativeTimeProperties>;
+  };
 }
 export interface RelativeTimeJSX extends RelativeTimeEvents, RelativeTimeProperties {}
 declare global {
@@ -77,18 +89,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & {
-        [key: string]: any;
-      };
+      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & {
-        [key: string]: any;
-      };
+      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

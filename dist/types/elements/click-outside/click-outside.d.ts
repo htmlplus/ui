@@ -49,6 +49,12 @@ export interface ClickOutsideAttributes {
   * The event fires only once.
   */
   "once"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ClickOutsideProperties>;
+  };
 }
 export interface ClickOutsideEvents {
   /**
@@ -71,6 +77,12 @@ export interface ClickOutsideProperties {
   * The event fires only once.
   */
   once?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<ClickOutsideProperties>;
+  };
 }
 export interface ClickOutsideJSX extends ClickOutsideEvents, ClickOutsideProperties {}
 declare global {
@@ -84,18 +96,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-click-outside": ClickOutsideEvents & ClickOutsideAttributes & {
-        [key: string]: any;
-      };
+      "plus-click-outside": ClickOutsideEvents & ClickOutsideAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-click-outside": ClickOutsideEvents & ClickOutsideAttributes & {
-        [key: string]: any;
-      };
+      "plus-click-outside": ClickOutsideEvents & ClickOutsideAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

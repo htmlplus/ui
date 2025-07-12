@@ -9,10 +9,24 @@ export declare class CardBody extends PlusCore {
     render(): any;
 }
 
-export interface CardBodyAttributes {}
+export interface CardBodyAttributes {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CardBodyProperties>;
+  };
+}
 export interface CardBodyEvents {}
 export interface CardBodyMethods {}
-export interface CardBodyProperties {}
+export interface CardBodyProperties {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CardBodyProperties>;
+  };
+}
 export interface CardBodyJSX extends CardBodyEvents, CardBodyProperties {}
 declare global {
   interface HTMLPlusCardBodyElement extends HTMLElement, CardBodyMethods, CardBodyProperties {}
@@ -25,18 +39,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": CardBodyEvents & CardBodyAttributes & {
-        [key: string]: any;
-      };
+      "plus-card-body": CardBodyEvents & CardBodyAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": CardBodyEvents & CardBodyAttributes & {
-        [key: string]: any;
-      };
+      "plus-card-body": CardBodyEvents & CardBodyAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

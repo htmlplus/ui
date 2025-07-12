@@ -79,6 +79,12 @@ export interface FormatBytesAttributes {
   * The bytes value to convert.
   */
   "value"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<FormatBytesProperties>;
+  };
 }
 export interface FormatBytesEvents {}
 export interface FormatBytesMethods {}
@@ -118,6 +124,12 @@ export interface FormatBytesProperties {
   * The bytes value to convert.
   */
   value?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<FormatBytesProperties>;
+  };
 }
 export interface FormatBytesJSX extends FormatBytesEvents, FormatBytesProperties {}
 declare global {
@@ -131,18 +143,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & {
-        [key: string]: any;
-      };
+      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & {
-        [key: string]: any;
-      };
+      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

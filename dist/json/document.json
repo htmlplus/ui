@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2025-07-02T16:39:56.712Z",
+      "lastModified": "2025-07-07T17:20:15.924Z",
       "methods": [
         {
           "async": false,
@@ -208,7 +208,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2025-07-02T16:39:56.745Z",
+      "lastModified": "2025-07-10T18:54:15.821Z",
       "methods": [
         {
           "async": false,
@@ -563,55 +563,8 @@
     },
     {
       "events": [],
-      "key": "aspect-ratio",
-      "lastModified": "2025-07-02T16:39:56.750Z",
-      "methods": [],
-      "properties": [
-        {
-          "attribute": "min-height",
-          "name": "minHeight",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "number | string",
-          "description": "Specifies the minimum height."
-        },
-        {
-          "attribute": "max-height",
-          "name": "maxHeight",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "number | string",
-          "description": "Specifies the maximum height."
-        },
-        {
-          "attribute": "value",
-          "initializer": "1",
-          "name": "value",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "number | string",
-          "description": "Specifies the ratio."
-        }
-      ],
-      "readmeContent": "# Aspect Ratio\n\nSets a preferred aspect ratio only for the first child inside the element.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Image\n\n<Example src=\"examples/image\" />\n\n### Video\n\n<Example src=\"examples/video\" />\n\n### Card\n\n<Example src=\"examples/card\" />\n\n### Map\n\n<Example src=\"examples/map\" />\n\n### More\n\n<Example src=\"examples/more\" />\n\n<LastModified />\n",
-      "styles": [],
-      "title": "Aspect Ratio",
-      "description": "Sets a preferred aspect ratio only for the first child inside the element.",
-      "stable": true,
-      "slots": [
-        {
-          "name": "default",
-          "description": "The default slot."
-        }
-      ]
-    },
-    {
-      "events": [],
       "key": "avatar",
-      "lastModified": "2025-07-02T16:39:56.755Z",
+      "lastModified": "2025-07-06T14:37:56.975Z",
       "methods": [],
       "properties": [
         {
@@ -916,7 +869,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2025-07-02T16:39:56.764Z",
+      "lastModified": "2025-07-06T20:44:35.902Z",
       "methods": [],
       "properties": [
         {
@@ -1581,7 +1534,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2025-07-02T16:39:56.778Z",
+      "lastModified": "2025-07-06T14:37:56.976Z",
       "methods": [],
       "properties": [
         {
@@ -1854,7 +1807,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-07-02T16:41:03.332Z",
+      "lastModified": "2025-07-07T19:00:37.904Z",
       "methods": [
         {
           "async": false,
@@ -2292,7 +2245,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2025-07-02T16:39:56.791Z",
+      "lastModified": "2025-07-07T17:21:18.248Z",
       "methods": [
         {
           "async": false,
@@ -2598,7 +2551,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-07-02T16:39:56.797Z",
+      "lastModified": "2025-07-07T17:21:18.270Z",
       "methods": [],
       "properties": [
         {
@@ -2724,7 +2677,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-07-02T16:39:56.799Z",
+      "lastModified": "2025-07-09T21:48:34.271Z",
       "methods": [
         {
           "async": false,
@@ -2931,7 +2884,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-07-02T16:41:03.333Z",
+      "lastModified": "2025-07-07T17:21:18.270Z",
       "methods": [],
       "properties": [
         {
@@ -3941,7 +3894,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2025-07-02T16:39:56.818Z",
+      "lastModified": "2025-07-07T17:21:18.301Z",
       "methods": [],
       "properties": [
         {
@@ -4267,7 +4220,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2025-07-02T16:39:56.828Z",
+      "lastModified": "2025-07-07T17:21:18.293Z",
       "methods": [],
       "properties": [
         {
@@ -4340,7 +4293,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-07-02T16:41:03.335Z",
+      "lastModified": "2025-07-10T13:58:22.090Z",
       "methods": [
         {
           "async": false,
@@ -4655,7 +4608,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-07-02T16:39:56.841Z",
+      "lastModified": "2025-07-07T17:47:24.251Z",
       "methods": [],
       "properties": [
         {
@@ -4707,6 +4660,16 @@
           "required": false,
           "type": "boolean",
           "description": "Whether the stack is vertical."
+        },
+        {
+          "attribute": "wrap",
+          "initializer": false,
+          "name": "wrap",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "boolean | 'reverse'",
+          "description": "Controls whether items should wrap onto multiple lines."
         }
       ],
       "readmeContent": "# Stack\n\nA container for arranging elements vertically or horizontally.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n### Vertical\n\n<Example src=\"examples/vertical\" />\n\n### Divider\n\n<Example src=\"examples/divider\" />\n\n<LastModified />\n",
@@ -4731,7 +4694,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2025-07-02T16:39:56.844Z",
+      "lastModified": "2025-07-07T17:21:18.166Z",
       "methods": [],
       "properties": [
         {
@@ -4834,7 +4797,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2025-07-02T16:39:56.850Z",
+      "lastModified": "2025-07-07T17:21:18.270Z",
       "methods": [],
       "properties": [
         {

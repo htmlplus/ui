@@ -72,6 +72,12 @@ export interface PrismAttributes {
   * A custom resolver function to load Prism assets (e.g., languages, themes, plugins).
   */
   "resolver"?: PrismResolver;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<PrismProperties>;
+  };
 }
 export interface PrismEvents {}
 export interface PrismMethods {}
@@ -96,6 +102,12 @@ export interface PrismProperties {
   * A custom resolver function to load Prism assets (e.g., languages, themes, plugins).
   */
   resolver?: PrismResolver;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<PrismProperties>;
+  };
 }
 export interface PrismJSX extends PrismEvents, PrismProperties {}
 declare global {
@@ -109,18 +121,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PrismEvents & PrismAttributes & {
-        [key: string]: any;
-      };
+      "plus-prism": PrismEvents & PrismAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PrismEvents & PrismAttributes & {
-        [key: string]: any;
-      };
+      "plus-prism": PrismEvents & PrismAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

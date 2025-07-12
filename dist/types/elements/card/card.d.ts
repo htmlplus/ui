@@ -42,6 +42,12 @@ export interface CardAttributes {
   * Use tile property to neutralize border-radius.
   */
   "tile"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CardProperties>;
+  };
 }
 export interface CardEvents {}
 export interface CardMethods {}
@@ -63,6 +69,12 @@ export interface CardProperties {
   * Use tile property to neutralize border-radius.
   */
   tile?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CardProperties>;
+  };
 }
 export interface CardJSX extends CardEvents, CardProperties {}
 declare global {
@@ -76,18 +88,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": CardEvents & CardAttributes & {
-        [key: string]: any;
-      };
+      "plus-card": CardEvents & CardAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": CardEvents & CardAttributes & {
-        [key: string]: any;
-      };
+      "plus-card": CardEvents & CardAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

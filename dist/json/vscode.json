@@ -240,33 +240,6 @@
       "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations."
     },
     {
-      "name": "plus-aspect-ratio",
-      "attributes": [
-        {
-          "name": "min-height",
-          "values": [],
-          "description": "Specifies the minimum height."
-        },
-        {
-          "name": "max-height",
-          "values": [],
-          "description": "Specifies the maximum height."
-        },
-        {
-          "name": "value",
-          "values": [],
-          "description": "Specifies the ratio."
-        }
-      ],
-      "references": [
-        {
-          "name": "Source code",
-          "url": "https://www.htmlplus.io/javascript/element/aspect-ratio"
-        }
-      ],
-      "description": "Sets a preferred aspect ratio only for the first child inside the element."
-    },
-    {
       "name": "plus-avatar",
       "attributes": [
         {
@@ -4554,6 +4527,21 @@
             }
           ],
           "description": "Whether the stack is vertical."
+        },
+        {
+          "name": "wrap",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            },
+            {
+              "name": "reverse"
+            }
+          ],
+          "description": "Controls whether items should wrap onto multiple lines."
         }
       ],
       "references": [

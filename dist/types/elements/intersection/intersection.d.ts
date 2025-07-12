@@ -90,6 +90,12 @@ export interface IntersectionAttributes {
   * every pixel is visible.
   */
   "threshold"?: number | number[];
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<IntersectionProperties>;
+  };
 }
 export interface IntersectionEvents {
   /**
@@ -130,6 +136,12 @@ export interface IntersectionProperties {
   * every pixel is visible.
   */
   threshold?: number | number[];
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<IntersectionProperties>;
+  };
 }
 export interface IntersectionJSX extends IntersectionEvents, IntersectionProperties {}
 declare global {
@@ -143,18 +155,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": IntersectionEvents & IntersectionAttributes & {
-        [key: string]: any;
-      };
+      "plus-intersection": IntersectionEvents & IntersectionAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": IntersectionEvents & IntersectionAttributes & {
-        [key: string]: any;
-      };
+      "plus-intersection": IntersectionEvents & IntersectionAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -39,6 +39,12 @@ export class Stack extends PlusCore {
   @Property()
   vertical?: boolean;
 
+  /**
+   * Controls whether items should wrap onto multiple lines.
+   */
+  @Property()
+  wrap?: boolean | 'reverse' = false;
+
   @Style()
   get style() {
     let direction = this.vertical ? 'column' : 'row';
@@ -52,7 +58,17 @@ export class Stack extends PlusCore {
       'gap': toCSSUnit(this.gap),
       'justify-content': this.justify
         ?.replace(/start|end/, 'flex-$&')
-        ?.replace(/between|around|evenly/, 'space-$&')
+        ?.replace(/between|around|evenly/, 'space-$&'),
+      'flex-wrap': (() => {
+        switch (this.wrap) {
+          case false:
+            return 'nowrap';
+          case true:
+            return 'wrap';
+          case 'reverse':
+            return 'wrap-reverse';
+        }
+      })()
     };
   }
 

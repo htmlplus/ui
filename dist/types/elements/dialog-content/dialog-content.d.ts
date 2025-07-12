@@ -17,6 +17,12 @@ export interface DialogContentAttributes {
   * It makes the user able to scroll the content by adding a scroll beside it.
   */
   "scrollable"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DialogContentProperties>;
+  };
 }
 export interface DialogContentEvents {}
 export interface DialogContentMethods {}
@@ -25,6 +31,12 @@ export interface DialogContentProperties {
   * It makes the user able to scroll the content by adding a scroll beside it.
   */
   scrollable?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<DialogContentProperties>;
+  };
 }
 export interface DialogContentJSX extends DialogContentEvents, DialogContentProperties {}
 declare global {
@@ -38,18 +50,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-content": DialogContentEvents & DialogContentAttributes & {
-        [key: string]: any;
-      };
+      "plus-dialog-content": DialogContentEvents & DialogContentAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-content": DialogContentEvents & DialogContentAttributes & {
-        [key: string]: any;
-      };
+      "plus-dialog-content": DialogContentEvents & DialogContentAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

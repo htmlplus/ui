@@ -107,6 +107,7 @@ const LIFECYCLE_READY = "readyCallback";
 const LIFECYCLE_UPDATE = "updateCallback";
 const LIFECYCLE_UPDATED = "updatedCallback";
 const METHOD_RENDER = "render";
+const PROPERTY_OVERRIDE = "override";
 const STATIC_STYLE = "style";
 const STATIC_TAG = "tag";
 const TYPE_ARRAY = 2 ** 0;
@@ -314,6 +315,103 @@ const isCSSColor = (input) => {
   return option.style.color !== "";
 };
 const isRTL = (target) => direction(target) == "rtl";
+const overridable = (Plus) => {
+  if (!Plus.experimentalBreakpoints)
+    return Plus;
+  const breakpoints = Plus.experimentalBreakpoints;
+  const sorted = Object.entries(breakpoints).sort((a, b) => a[1] - b[1]);
+  const ranges = {};
+  sorted.forEach(([key, min], index) => {
+    var _a;
+    const nextMin = (_a = sorted[index + 1]) == null ? void 0 : _a[1];
+    const max = nextMin !== void 0 ? nextMin - 1 : void 0;
+    ranges[key] = [min, max];
+  });
+  Plus["observedAttributes"] || (Plus["observedAttributes"] = []);
+  Plus["observedAttributes"].push(PROPERTY_OVERRIDE);
+  const attributeChangedCallback = Plus.prototype.attributeChangedCallback;
+  Plus.prototype.attributeChangedCallback = function(key, prev, next) {
+    if (key == PROPERTY_OVERRIDE) {
+      try {
+        this[PROPERTY_OVERRIDE] = JSON.parse(next);
+      } catch {
+      }
+    } else {
+      attributeChangedCallback.call(this, key, prev, next);
+    }
+  };
+  function get() {
+    return this[Symbol.for(PROPERTY_OVERRIDE)];
+  }
+  function set(value) {
+    var _a;
+    if (this[Symbol.for(PROPERTY_OVERRIDE)] === value)
+      return;
+    (_a = this.dis) == null ? void 0 : _a.forEach((item) => item());
+    this.dis = [];
+    Object.entries(value).forEach(([key, properties]) => {
+      var _a2;
+      const isCustom = /^(?!@(?:media|container))/.test(key);
+      if (isCustom) {
+        const reg = /\.{2}|-up|-after|-down|-before/;
+        const [a, b] = key.split(reg);
+        const operator = (_a2 = key.match(reg)) == null ? void 0 : _a2.at(0);
+        let min;
+        let max;
+        switch (operator) {
+          case "-before":
+            max = ranges[a][0] ? ranges[a][0] - 1 : void 0;
+            break;
+          case "-down":
+            max = ranges[a][1];
+            break;
+          case "-after":
+            min = ranges[a][1] ? ranges[a][1] + 1 : void 0;
+            break;
+          case "-up":
+            min = ranges[a][0];
+            break;
+          case "..":
+            min = ranges[a][0];
+            max = ranges[b][1];
+            break;
+          default:
+            min = ranges[a][0];
+            max = ranges[a][1];
+            break;
+        }
+        const parts = [];
+        if (min !== void 0)
+          parts.push(`(min-width: ${min}px)`);
+        if (max !== void 0)
+          parts.push(`(max-width: ${max}px)`);
+        key = `@media ${parts.join(" and ")}`;
+      }
+      if (key.startsWith("@media")) {
+        const query2 = key.replace("@media", "");
+        const media = window.matchMedia(query2);
+        const apply = () => {
+          if (media.matches) {
+            Object.assign(this, properties);
+          }
+        };
+        const dispose = () => {
+          media.removeEventListener("change", apply);
+        };
+        media.addEventListener("change", apply);
+        this.dis.push(dispose);
+        if (media.matches)
+          apply();
+      }
+      if (key.startsWith("@container")) {
+        key.replace("@container", "");
+      }
+    });
+    this[Symbol.for(PROPERTY_OVERRIDE)] = value;
+  }
+  defineProperty(Plus.prototype, PROPERTY_OVERRIDE, { configurable: true, get, set });
+  return Plus;
+};
 const shadowRoot = (target) => {
   var _a;
   return (_a = host(target)) == null ? void 0 : _a.shadowRoot;
@@ -1111,7 +1209,7 @@ function Element() {
 }
 const proxy = (constructor) => {
   var _instance, _a;
-  return _a = class extends HTMLElement {
+  return overridable((_a = class extends HTMLElement {
     constructor() {
       super();
       __privateAdd(this, _instance);
@@ -1134,6 +1232,21 @@ const proxy = (constructor) => {
     }
     connectedCallback() {
       Object.assign(__privateGet(this, _instance), getConfig("element", getTag(__privateGet(this, _instance)), "property"));
+      (() => {
+        const key = Object.keys(this).find((key2) => key2.startsWith("__reactProps"));
+        const props = this[key];
+        if (!props)
+          return;
+        for (const [key2, value] of Object.entries(props)) {
+          if (this[key2] != void 0)
+            continue;
+          if (key2 == "children")
+            continue;
+          if (typeof value != "object")
+            continue;
+          this[key2] = value;
+        }
+      })();
       __privateGet(this, _instance)[API_CONNECTED] = true;
       call(__privateGet(this, _instance), LIFECYCLE_CONNECTED);
       requestUpdate(__privateGet(this, _instance), void 0, void 0, () => {
@@ -1143,7 +1256,7 @@ const proxy = (constructor) => {
     disconnectedCallback() {
       call(__privateGet(this, _instance), LIFECYCLE_DISCONNECTED);
     }
-  }, _instance = new WeakMap(), __publicField(_a, "formAssociated", constructor["formAssociated"]), __publicField(_a, "observedAttributes", constructor["observedAttributes"]), _a;
+  }, _instance = new WeakMap(), __publicField(_a, "experimentalBreakpoints", constructor["experimentalBreakpoints"]), __publicField(_a, "formAssociated", constructor["formAssociated"]), __publicField(_a, "observedAttributes", constructor["observedAttributes"]), _a));
 };
 function Event(options = {}) {
   return function(target, key) {
@@ -1399,7 +1512,7 @@ var __decorateClass$1 = (decorators, target, key, kind) => {
   if (kind && result) __defProp$1(target, key, result);
   return result;
 };
-class PlusCore {
+const _PlusCore = class _PlusCore {
   // TODO
   get dir() {
     return direction(this);
@@ -1410,7 +1523,16 @@ class PlusCore {
   forceUpdate() {
     this.tick = Math.random();
   }
-}
+};
+_PlusCore.experimentalBreakpoints = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400
+};
+let PlusCore = _PlusCore;
 __decorateClass$1([
   Host()
 ], PlusCore.prototype, "$host", 2);

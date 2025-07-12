@@ -19,6 +19,12 @@ export interface AccordionsAttributes {
   * Specifies that only one accordion can be open.
   */
   "persistent"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AccordionsProperties>;
+  };
 }
 export interface AccordionsEvents {}
 export interface AccordionsMethods {}
@@ -27,6 +33,12 @@ export interface AccordionsProperties {
   * Specifies that only one accordion can be open.
   */
   persistent?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AccordionsProperties>;
+  };
 }
 export interface AccordionsJSX extends AccordionsEvents, AccordionsProperties {}
 declare global {
@@ -40,18 +52,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": AccordionsEvents & AccordionsAttributes & {
-        [key: string]: any;
-      };
+      "plus-accordions": AccordionsEvents & AccordionsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": AccordionsEvents & AccordionsAttributes & {
-        [key: string]: any;
-      };
+      "plus-accordions": AccordionsEvents & AccordionsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

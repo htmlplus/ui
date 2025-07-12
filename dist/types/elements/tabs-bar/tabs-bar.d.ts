@@ -34,6 +34,12 @@ export interface TabsBarAttributes {
   * Reverses the arrangement of the tabs.
   */
   "reverse"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsBarProperties>;
+  };
 }
 export interface TabsBarEvents {}
 export interface TabsBarMethods {}
@@ -50,6 +56,12 @@ export interface TabsBarProperties {
   * Reverses the arrangement of the tabs.
   */
   reverse?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsBarProperties>;
+  };
 }
 export interface TabsBarJSX extends TabsBarEvents, TabsBarProperties {}
 declare global {
@@ -63,18 +75,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs-bar": TabsBarEvents & TabsBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -59,6 +59,12 @@ export interface StickyAttributes {
   * Specifies the z-index.
   */
   "z-index"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<StickyProperties>;
+  };
 }
 export interface StickyEvents {
   /**
@@ -80,6 +86,12 @@ export interface StickyProperties {
   * Specifies the z-index.
   */
   zIndex?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<StickyProperties>;
+  };
 }
 export interface StickyJSX extends StickyEvents, StickyProperties {}
 declare global {
@@ -93,18 +105,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-sticky": StickyEvents & StickyAttributes & {
-        [key: string]: any;
-      };
+      "plus-sticky": StickyEvents & StickyAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-sticky": StickyEvents & StickyAttributes & {
-        [key: string]: any;
-      };
+      "plus-sticky": StickyEvents & StickyAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

@@ -31,6 +31,12 @@ export interface SwitchAttributes {
   * Disables the switch.
   */
   "disabled"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SwitchProperties>;
+  };
 }
 export interface SwitchEvents {
   /**
@@ -50,6 +56,12 @@ export interface SwitchProperties {
   * Disables the switch.
   */
   disabled?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SwitchProperties>;
+  };
 }
 export interface SwitchJSX extends SwitchEvents, SwitchProperties {}
 declare global {
@@ -63,18 +75,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": SwitchEvents & SwitchAttributes & {
-        [key: string]: any;
-      };
+      "plus-switch": SwitchEvents & SwitchAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": SwitchEvents & SwitchAttributes & {
-        [key: string]: any;
-      };
+      "plus-switch": SwitchEvents & SwitchAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

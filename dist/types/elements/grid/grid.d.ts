@@ -300,6 +300,12 @@ export interface GridAttributes {
   * size of contents is more than the twelve-column width for extra-extra-large screen devices.
   */
   "wrap-xxl"?: GridWrap;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<GridProperties>;
+  };
 }
 export interface GridEvents {}
 export interface GridMethods {}
@@ -449,6 +455,12 @@ export interface GridProperties {
   * size of contents is more than the twelve-column width for extra-extra-large screen devices.
   */
   wrapXxl?: GridWrap;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<GridProperties>;
+  };
 }
 export interface GridJSX extends GridEvents, GridProperties {}
 declare global {
@@ -462,18 +474,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-grid": GridEvents & GridAttributes & {
-        [key: string]: any;
-      };
+      "plus-grid": GridEvents & GridAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-grid": GridEvents & GridAttributes & {
-        [key: string]: any;
-      };
+      "plus-grid": GridEvents & GridAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

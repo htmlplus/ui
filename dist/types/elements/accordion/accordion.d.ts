@@ -98,6 +98,12 @@ export interface AccordionAttributes {
   * The summary text displayed on the header.
   */
   "summary"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AccordionProperties>;
+  };
 }
 export interface AccordionEvents {
   /**
@@ -152,6 +158,12 @@ export interface AccordionProperties {
   * The summary text displayed on the header.
   */
   summary?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AccordionProperties>;
+  };
 }
 export interface AccordionJSX extends AccordionEvents, AccordionProperties {}
 declare global {
@@ -165,18 +177,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordion": AccordionEvents & AccordionAttributes & {
-        [key: string]: any;
-      };
+      "plus-accordion": AccordionEvents & AccordionAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordion": AccordionEvents & AccordionAttributes & {
-        [key: string]: any;
-      };
+      "plus-accordion": AccordionEvents & AccordionAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

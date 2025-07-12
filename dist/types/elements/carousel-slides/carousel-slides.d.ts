@@ -10,10 +10,24 @@ export declare class CarouselSlides extends CarouselChild {
     render(): any;
 }
 
-export interface CarouselSlidesAttributes {}
+export interface CarouselSlidesAttributes {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselSlidesProperties>;
+  };
+}
 export interface CarouselSlidesEvents {}
 export interface CarouselSlidesMethods {}
-export interface CarouselSlidesProperties {}
+export interface CarouselSlidesProperties {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselSlidesProperties>;
+  };
+}
 export interface CarouselSlidesJSX extends CarouselSlidesEvents, CarouselSlidesProperties {}
 declare global {
   interface HTMLPlusCarouselSlidesElement extends HTMLElement, CarouselSlidesMethods, CarouselSlidesProperties {}
@@ -26,18 +40,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-slides": CarouselSlidesEvents & CarouselSlidesAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-slides": CarouselSlidesEvents & CarouselSlidesAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-slides": CarouselSlidesEvents & CarouselSlidesAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-slides": CarouselSlidesEvents & CarouselSlidesAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

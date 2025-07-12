@@ -235,6 +235,12 @@ export interface AnimationAttributes {
   * Starts the animation.
   */
   "run"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AnimationProperties>;
+  };
 }
 export interface AnimationEvents {
   /**
@@ -369,6 +375,12 @@ export interface AnimationProperties {
   * Starts the animation.
   */
   run?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<AnimationProperties>;
+  };
 }
 export interface AnimationJSX extends AnimationEvents, AnimationProperties {}
 declare global {
@@ -382,18 +394,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": AnimationEvents & AnimationAttributes & {
-        [key: string]: any;
-      };
+      "plus-animation": AnimationEvents & AnimationAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": AnimationEvents & AnimationAttributes & {
-        [key: string]: any;
-      };
+      "plus-animation": AnimationEvents & AnimationAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

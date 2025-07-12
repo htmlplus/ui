@@ -43,6 +43,12 @@ export interface CarouselIndicatorsAttributes {
   * Displays slide numbers inside the indicators.
   */
   "numbers"?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselIndicatorsProperties>;
+  };
 }
 export interface CarouselIndicatorsEvents {}
 export interface CarouselIndicatorsMethods {}
@@ -61,6 +67,12 @@ export interface CarouselIndicatorsProperties {
   * Displays slide numbers inside the indicators.
   */
   numbers?: boolean;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselIndicatorsProperties>;
+  };
 }
 export interface CarouselIndicatorsJSX extends CarouselIndicatorsEvents, CarouselIndicatorsProperties {}
 declare global {
@@ -74,18 +86,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": CarouselIndicatorsEvents & CarouselIndicatorsAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-indicators": CarouselIndicatorsEvents & CarouselIndicatorsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": CarouselIndicatorsEvents & CarouselIndicatorsAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-indicators": CarouselIndicatorsEvents & CarouselIndicatorsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

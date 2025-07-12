@@ -121,6 +121,12 @@ export interface CounterAttributes {
   * Target value.
   */
   "to"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CounterProperties>;
+  };
 }
 export interface CounterEvents {
   /**
@@ -187,6 +193,12 @@ export interface CounterProperties {
   * Target value.
   */
   to?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CounterProperties>;
+  };
 }
 export interface CounterJSX extends CounterEvents, CounterProperties {}
 declare global {
@@ -200,18 +212,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": CounterEvents & CounterAttributes & {
-        [key: string]: any;
-      };
+      "plus-counter": CounterEvents & CounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": CounterEvents & CounterAttributes & {
-        [key: string]: any;
-      };
+      "plus-counter": CounterEvents & CounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

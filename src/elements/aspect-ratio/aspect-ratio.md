@@ -32,8 +32,4 @@ Sets a preferred aspect ratio only for the first child inside the element.
 
 <Example src="examples/map" />
 
-### More
-
-<Example src="examples/more" />
-
 <LastModified />

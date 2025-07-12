@@ -31,6 +31,12 @@ export interface CarouselSlideAttributes {
   * When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point.
   */
   "clickable"?: boolean | 'jump';
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselSlideProperties>;
+  };
 }
 export interface CarouselSlideEvents {}
 export interface CarouselSlideMethods {}
@@ -44,6 +50,12 @@ export interface CarouselSlideProperties {
   * When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point.
   */
   clickable?: boolean | 'jump';
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselSlideProperties>;
+  };
 }
 export interface CarouselSlideJSX extends CarouselSlideEvents, CarouselSlideProperties {}
 declare global {
@@ -57,18 +69,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-slide": CarouselSlideEvents & CarouselSlideAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-slide": CarouselSlideEvents & CarouselSlideAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-slide": CarouselSlideEvents & CarouselSlideAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-slide": CarouselSlideEvents & CarouselSlideAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

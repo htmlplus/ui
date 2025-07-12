@@ -76,6 +76,12 @@ export interface IconAttributes {
   * Specifies the size.
   */
   "size"?: IconSize;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<IconProperties>;
+  };
 }
 export interface IconEvents {}
 export interface IconMethods {}
@@ -108,6 +114,12 @@ export interface IconProperties {
   * Specifies the size.
   */
   size?: IconSize;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<IconProperties>;
+  };
 }
 export interface IconJSX extends IconEvents, IconProperties {}
 declare global {
@@ -121,18 +133,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": IconEvents & IconAttributes & {
-        [key: string]: any;
-      };
+      "plus-icon": IconEvents & IconAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": IconEvents & IconAttributes & {
-        [key: string]: any;
-      };
+      "plus-icon": IconEvents & IconAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

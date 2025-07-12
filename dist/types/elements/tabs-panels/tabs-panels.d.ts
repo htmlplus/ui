@@ -9,10 +9,24 @@ export declare class TabsPanels extends PlusCore {
     render(): any;
 }
 
-export interface TabsPanelsAttributes {}
+export interface TabsPanelsAttributes {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsPanelsProperties>;
+  };
+}
 export interface TabsPanelsEvents {}
 export interface TabsPanelsMethods {}
-export interface TabsPanelsProperties {}
+export interface TabsPanelsProperties {
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<TabsPanelsProperties>;
+  };
+}
 export interface TabsPanelsJSX extends TabsPanelsEvents, TabsPanelsProperties {}
 declare global {
   interface HTMLPlusTabsPanelsElement extends HTMLElement, TabsPanelsMethods, TabsPanelsProperties {}
@@ -25,18 +39,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-panels": TabsPanelsEvents & TabsPanelsAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs-panels": TabsPanelsEvents & TabsPanelsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-panels": TabsPanelsEvents & TabsPanelsAttributes & {
-        [key: string]: any;
-      };
+      "plus-tabs-panels": TabsPanelsEvents & TabsPanelsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

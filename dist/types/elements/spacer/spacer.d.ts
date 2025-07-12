@@ -11,6 +11,12 @@ export interface SpacerAttributes {
   * TODO
   */
   "grow"?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SpacerProperties>;
+  };
 }
 export interface SpacerEvents {}
 export interface SpacerMethods {}
@@ -19,6 +25,12 @@ export interface SpacerProperties {
   * TODO
   */
   grow?: number;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<SpacerProperties>;
+  };
 }
 export interface SpacerJSX extends SpacerEvents, SpacerProperties {}
 declare global {
@@ -32,18 +44,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": SpacerEvents & SpacerAttributes & {
-        [key: string]: any;
-      };
+      "plus-spacer": SpacerEvents & SpacerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": SpacerEvents & SpacerAttributes & {
-        [key: string]: any;
-      };
+      "plus-spacer": SpacerEvents & SpacerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }

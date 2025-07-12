@@ -28,6 +28,12 @@ export interface CarouselCounterAttributes {
   * - `%TOTAL%`: Represents the total number of slides in the carousel.
   */
   "template"?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselCounterProperties>;
+  };
 }
 export interface CarouselCounterEvents {}
 export interface CarouselCounterMethods {}
@@ -40,6 +46,12 @@ export interface CarouselCounterProperties {
   * - `%TOTAL%`: Represents the total number of slides in the carousel.
   */
   template?: string;
+  /**
+  * TODO
+  */
+  "override"?: {
+    [key: string]: Partial<CarouselCounterProperties>;
+  };
 }
 export interface CarouselCounterJSX extends CarouselCounterEvents, CarouselCounterProperties {}
 declare global {
@@ -53,18 +65,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & {
-        [key: string]: any;
-      };
+      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
   }
 }
