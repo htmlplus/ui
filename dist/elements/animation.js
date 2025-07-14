@@ -1,4 +1,4 @@
-import { q as setConfig, P as PlusCore, r as getConfig, h as html, a as Property, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { p as setConfig, P as PlusCore, q as getConfig, h as html, a as Property, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   "ease": "ease",

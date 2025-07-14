@@ -1872,49 +1872,6 @@ const _Scrollbar = class _Scrollbar {
 _Scrollbar.keys = /* @__PURE__ */ new Set();
 _Scrollbar.style = {};
 let Scrollbar = _Scrollbar;
-const BREAKPOINTS = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1400
-};
-function Breakpoint() {
-  return function(target, key) {
-    const symbol2 = Symbol();
-    const connected = target.connectedCallback;
-    target.connectedCallback = function() {
-      this[symbol2] = [];
-      const keys = Object.keys(BREAKPOINTS);
-      const callback = (media) => {
-        var _a;
-        if (media.matches) {
-          this[key] = ((_a = media.currentTarget) == null ? void 0 : _a.breakpoint) || media.breakpoint;
-        }
-      };
-      this[symbol2] = keys.map((key2, index) => {
-        const min = BREAKPOINTS[keys[index]];
-        const max = BREAKPOINTS[keys[index + 1]];
-        const query2 = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
-        const media = window.matchMedia(query2);
-        media["breakpoint"] = key2;
-        on(media, "change", callback);
-        callback(media);
-        return () => off(media, "change", callback);
-      });
-      connected == null ? void 0 : connected.call(this);
-    };
-    const disconnected = target.disconnectedCallback;
-    target.disconnectedCallback = function() {
-      for (const teardown of this[symbol2]) {
-        teardown();
-      }
-      this[symbol2] = [];
-      disconnected == null ? void 0 : disconnected.call(this);
-    };
-  };
-}
 const toAxis = (input, rtl) => {
   if (!input) return input;
   if (input.match(/start/)) input = rtl ? "right" : "left";
@@ -1948,11 +1905,10 @@ export {
   toAxis as m,
   classes as n,
   on as o,
-  Breakpoint as p,
-  setConfig as q,
-  getConfig as r,
+  setConfig as p,
+  getConfig as q,
+  query as r,
   styles as s,
   toCSSUnit as t,
-  query as u,
-  QueryAll as v
+  QueryAll as u
 };

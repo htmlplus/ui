@@ -16,12 +16,11 @@ import {
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { Breakpoint } from '@/decorators';
 import { toAxis } from '@/helpers';
 import { Animation, Scrollbar } from '@/services';
 
 import { DrawerContext } from './drawer.context';
-import { DrawerPlacement, DrawerFloating } from './drawer.types';
+import { DrawerPlacement } from './drawer.types';
 
 /**
  * @slot default - The default slot.
@@ -55,8 +54,8 @@ export class Drawer extends PlusCore {
    * If true it will be opened over other contents and doesn't affect other contents.
    * A floating drawer sits above its application and uses a backdrop to darken the background.
    */
-  @Property()
-  floating?: DrawerFloating;
+  @Property({ reflect: true })
+  floating?: boolean;
 
   /**
    * Set the width of drawer to the minimum size you specified for the `mini-size` property.
@@ -103,22 +102,6 @@ export class Drawer extends PlusCore {
   size?: number | string = 280;
 
   /**
-   * TODO
-   */
-  @Property({ reflect: true })
-  get floated(): boolean {
-    if (!this.floating) return false;
-
-    if (this.floating === true) return true;
-
-    const breakpoint = this.floating.split('-').at(1);
-
-    const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl']; // TODO
-
-    return breakpoints.indexOf(this.breakpoint) <= breakpoints.indexOf(breakpoint);
-  }
-
-  /**
    * When the drawer is going to hide
    */
   @Event({ cancelable: true })
@@ -141,10 +124,6 @@ export class Drawer extends PlusCore {
    */
   @Event()
   plusOpened!: EventEmitter<void>;
-
-  @State()
-  @Breakpoint()
-  breakpoint?;
 
   @Query('[part=root]')
   $root!: HTMLElement;
@@ -174,7 +153,7 @@ export class Drawer extends PlusCore {
       },
       onEnter: () => {
         // remove document's scroll
-        this.floated && Scrollbar.remove(this);
+        this.floating && Scrollbar.remove(this);
 
         // remove outside click listener
         on(this.$root, 'outside', this.onClickOutside, true);
@@ -243,7 +222,7 @@ export class Drawer extends PlusCore {
   }
 
   get hasBackdrop() {
-    return this.backdrop && this.floated;
+    return this.backdrop && this.floating;
   }
 
   get style(): any {
@@ -291,14 +270,9 @@ export class Drawer extends PlusCore {
     return this.try(!this.open, true);
   }
 
-  @Watch(['breakpoint', 'mini', 'open'])
+  @Watch(['mini', 'open'])
   watcher(next, prev, name) {
     switch (name) {
-      case 'breakpoint':
-        if (!this.floated) {
-          this.try(false, false);
-        }
-        break;
       case 'open':
         // TODO: problem with `false` and `undefined`
         if (!next == !prev) break;
@@ -350,7 +324,7 @@ export class Drawer extends PlusCore {
     // TODO
     if (!this.opened) return;
 
-    if (!this.floated) return;
+    if (!this.floating) return;
 
     if (this.persistent) return;
 

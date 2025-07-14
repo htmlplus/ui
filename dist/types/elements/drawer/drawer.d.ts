@@ -2,7 +2,7 @@ import { EventEmitter } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { Animation } from '../../services';
 import { DrawerContext } from './drawer.context';
-import { DrawerPlacement, DrawerFloating } from './drawer.types';
+import { DrawerPlacement } from './drawer.types';
 /**
  * @slot default - The default slot.
  */
@@ -28,7 +28,7 @@ export declare class Drawer extends PlusCore {
      * If true it will be opened over other contents and doesn't affect other contents.
      * A floating drawer sits above its application and uses a backdrop to darken the background.
      */
-    floating?: DrawerFloating;
+    floating?: boolean;
     /**
      * Set the width of drawer to the minimum size you specified for the `mini-size` property.
      */
@@ -60,10 +60,6 @@ export declare class Drawer extends PlusCore {
      */
     size?: number | string;
     /**
-     * TODO
-     */
-    get floated(): boolean;
-    /**
      * When the drawer is going to hide
      */
     plusClose: EventEmitter<void>;
@@ -79,7 +75,6 @@ export declare class Drawer extends PlusCore {
      * When the drawer is completely shown and its animation is completed.
      */
     plusOpened: EventEmitter<void>;
-    breakpoint?: any;
     $root: HTMLElement;
     get state(): DrawerContext;
     animate: {
@@ -141,7 +136,7 @@ export interface DrawerAttributes {
   * If true it will be opened over other contents and doesn't affect other contents.
   * A floating drawer sits above its application and uses a backdrop to darken the background.
   */
-  "floating"?: DrawerFloating;
+  "floating"?: boolean;
   /**
   * Set the width of drawer to the minimum size you specified for the `mini-size` property.
   */
@@ -239,7 +234,7 @@ export interface DrawerProperties {
   * If true it will be opened over other contents and doesn't affect other contents.
   * A floating drawer sits above its application and uses a backdrop to darken the background.
   */
-  floating?: DrawerFloating;
+  floating?: boolean;
   /**
   * Set the width of drawer to the minimum size you specified for the `mini-size` property.
   */
@@ -270,10 +265,6 @@ export interface DrawerProperties {
   * Determine the width of the drawer.
   */
   size?: number | string;
-  /**
-  * TODO
-  */
-  readonly floated: boolean;
   /**
   * TODO
   */

@@ -2724,7 +2724,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-07-09T21:48:34.271Z",
+      "lastModified": "2025-07-14T17:51:24.460Z",
       "methods": [
         {
           "async": false,
@@ -2801,10 +2801,9 @@
           "attribute": "floating",
           "name": "floating",
           "readonly": false,
-          "reflects": false,
+          "reflects": true,
           "required": false,
-          "type": "DrawerFloating",
-          "typeReference": "./drawer.types",
+          "type": "boolean",
           "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
         },
         {
@@ -2872,15 +2871,6 @@
           "required": false,
           "type": "number | string",
           "description": "Determine the width of the drawer."
-        },
-        {
-          "attribute": "floated",
-          "name": "floated",
-          "readonly": true,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "TODO"
         }
       ],
       "readmeContent": "# Drawer\n\nThis element lets you add collapsible side contents like navigation alongside some primary content.\n\n<Playground />\n\n<Usage />\n\n<Api />\n\n<GlobalConfig />\n\n<Examples />\n\n### Default\n\n<Example src=\"examples/default\" />\n\n<LastModified />\n",

@@ -1791,18 +1791,6 @@
             },
             {
               "name": "true"
-            },
-            {
-              "name": "on-xs-down"
-            },
-            {
-              "name": "on-sm-down"
-            },
-            {
-              "name": "on-md-down"
-            },
-            {
-              "name": "on-lg-down"
             }
           ],
           "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
@@ -1888,11 +1876,6 @@
           "name": "size",
           "values": [],
           "description": "Determine the width of the drawer."
-        },
-        {
-          "name": "floated",
-          "values": [],
-          "description": "TODO"
         }
       ],
       "references": [

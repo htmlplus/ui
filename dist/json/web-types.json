@@ -2423,10 +2423,6 @@
                 "description": "Determine the width of the drawer."
               },
               {
-                "name": "floated",
-                "description": "TODO"
-              },
-              {
                 "name": "hide",
                 "description": "Hides the element."
               },
@@ -2465,7 +2461,7 @@
             {
               "name": "floating",
               "value": {
-                "type": "boolean | 'on-xs-down' | 'on-sm-down' | 'on-md-down' | 'on-lg-down'"
+                "type": "boolean"
               },
               "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
             },
@@ -2519,13 +2515,6 @@
               },
               "default": "280",
               "description": "Determine the width of the drawer."
-            },
-            {
-              "name": "floated",
-              "value": {
-                "type": ""
-              },
-              "description": "TODO"
             }
           ],
           "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
