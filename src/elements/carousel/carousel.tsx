@@ -85,7 +85,7 @@ export class Carousel extends PlusCore {
    * the carousel, in order to **cover** the **leading** and **trailing space**.
    */
   @Property()
-  containScroll: CarouselContainScroll = 'trimSnaps';
+  containScroll?: CarouselContainScroll = 'trimSnaps';
 
   /**
    * Enables scrolling the carousel using mouse and touch interactions.
@@ -169,7 +169,7 @@ export class Carousel extends PlusCore {
    * Set it to `auto` if you want to group slides automatically.
    */
   @Property()
-  slidesToScroll: CarouselSlidesToScroll = 1;
+  slidesToScroll?: CarouselSlidesToScroll = 1;
 
   /**
    * Set the initial scroll snap to the given number.

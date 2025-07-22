@@ -1094,7 +1094,7 @@
         }
       ],
       "key": "carousel",
-      "lastModified": "2025-07-03T11:11:25.923Z",
+      "lastModified": "2025-07-19T21:09:46.262Z",
       "methods": [
         {
           "async": false,
@@ -1854,7 +1854,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-07-12T18:14:34.579Z",
+      "lastModified": "2025-07-19T18:32:24.564Z",
       "methods": [
         {
           "async": false,

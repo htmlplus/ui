@@ -38,7 +38,7 @@ export declare class Carousel extends PlusCore {
      * the **align** property for enough slides at the **start** and the **end** of
      * the carousel, in order to **cover** the **leading** and **trailing space**.
      */
-    containScroll: CarouselContainScroll;
+    containScroll?: CarouselContainScroll;
     /**
      * Enables scrolling the carousel using mouse and touch interactions.
      */
@@ -100,7 +100,7 @@ export declare class Carousel extends PlusCore {
      * are mapped to group slides into the given number, which has to be an integer.
      * Set it to `auto` if you want to group slides automatically.
      */
-    slidesToScroll: CarouselSlidesToScroll;
+    slidesToScroll?: CarouselSlidesToScroll;
     /**
      * Set the initial scroll snap to the given number.
      * First snap index starts at 0.
@@ -315,7 +315,7 @@ export interface CarouselAttributes {
   * the **align** property for enough slides at the **start** and the **end** of
   * the carousel, in order to **cover** the **leading** and **trailing space**.
   */
-  "contain-scroll": CarouselContainScroll;
+  "contain-scroll"?: CarouselContainScroll;
   /**
   * Enables scrolling the carousel using mouse and touch interactions.
   */
@@ -377,7 +377,7 @@ export interface CarouselAttributes {
   * are mapped to group slides into the given number, which has to be an integer.
   * Set it to `auto` if you want to group slides automatically.
   */
-  "slides-to-scroll": CarouselSlidesToScroll;
+  "slides-to-scroll"?: CarouselSlidesToScroll;
   /**
   * Set the initial scroll snap to the given number.
   * First snap index starts at 0.
@@ -580,7 +580,7 @@ export interface CarouselProperties {
   * the **align** property for enough slides at the **start** and the **end** of
   * the carousel, in order to **cover** the **leading** and **trailing space**.
   */
-  containScroll: CarouselContainScroll;
+  containScroll?: CarouselContainScroll;
   /**
   * Enables scrolling the carousel using mouse and touch interactions.
   */
@@ -642,7 +642,7 @@ export interface CarouselProperties {
   * are mapped to group slides into the given number, which has to be an integer.
   * Set it to `auto` if you want to group slides automatically.
   */
-  slidesToScroll: CarouselSlidesToScroll;
+  slidesToScroll?: CarouselSlidesToScroll;
   /**
   * Set the initial scroll snap to the given number.
   * First snap index starts at 0.
