@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/htmlplus/ui/compare/v1.7.0...v1.7.1) (2025-08-14)
+
+### Bug Fixes
+
+* Update breakpoint values, remove extra dependencies from example files, and replace Markdown docs with descriptions in elements and example HTML ([9d40c12](https://github.com/htmlplus/ui/commit/9d40c12cd33cdce907508abbe5bdbe66ba7d163a))
+
 ## [1.7.0](https://github.com/htmlplus/ui/compare/v1.6.5...v1.7.0) (2025-07-03)
 
 ### Features
