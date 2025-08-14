@@ -4,10 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
+      div {
+        display: flex;
+      }
       plus-card {
         --plus-card-background-color: lightgray;
         padding: 10rem 0;
         text-align: center;
+        flex-grow: 1;
       }
       plus-drawer plus-card {
         --plus-card-background-color: lightblue;
@@ -16,24 +20,18 @@
     </style>
   </head>
   <body>
-    <plus-grid>
-      <plus-grid-item xs="auto">
-        <plus-drawer animation size="200px" connector="drawer-default">
-          <plus-card>Drawer Content</plus-card>
-        </plus-drawer>
-      </plus-grid-item>
-      <plus-grid-item xs="grow">
-        <plus-card>
-          <plus-drawer-toggler connector="drawer-default">Toggle</plus-drawer-toggler>
-        </plus-card>
-      </plus-grid-item>
-    </plus-grid>
+    <div>
+      <plus-drawer animation size="200px" connector="drawer-default">
+        <plus-card>Drawer Content</plus-card>
+      </plus-drawer>
+      <plus-card>
+        <plus-drawer-toggler connector="drawer-default">Toggle</plus-drawer-toggler>
+      </plus-card>
+    </div>
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/card.js';
       import 'https://esm.run/@htmlplus/ui/drawer-toggler.js';
       import 'https://esm.run/@htmlplus/ui/drawer.js';
-      import 'https://esm.run/@htmlplus/ui/grid-item.js';
-      import 'https://esm.run/@htmlplus/ui/grid.js';
     </script>
   </body>
 </html>

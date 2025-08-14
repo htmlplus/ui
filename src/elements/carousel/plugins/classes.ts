@@ -17,16 +17,16 @@ export class CarouselPluginClasses extends CarouselPlugin {
   };
 
   private get active(): boolean {
-    return !!this.instance.classes
+    return !!this.instance.classes;
   }
 
   public events = {
-    'reInit': this.handleInit,
-    'select': this.handleSelect,
-    'slidesInView': this.handleSlidesInView,
-    'pointerDown': this.handlePointerDown,
-    'pointerUp': this.handlePointerUp,
-  }
+    reInit: this.handleInit,
+    select: this.handleSelect,
+    slidesInView: this.handleSlidesInView,
+    pointerDown: this.handlePointerDown,
+    pointerUp: this.handlePointerUp
+  };
 
   public initialize() {
     if (!this.active) return;

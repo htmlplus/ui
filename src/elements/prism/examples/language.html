@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>
+      Many languages are supported by <code>PrismJS</code>, though only a few are loaded by default.
+      These can be checked in <code>window.Prism.languages</code>. To use other languages, the
+      <code>resolver</code> property should be configured.
+    </p>
     <plus-stack gap="0.5rem" items="stretch" vertical>
       <plus-prism language="javascript">const name = '@htmlplus/ui';</plus-prism>
       <plus-prism language="csharp">string text = "Hello World!";</plus-prism>
@@ -14,12 +19,14 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-prism': {
-            property:{
-              async resolver({ key, value }) {
-                if (key == 'language') {
-                  await import(`https://esm.run/prismjs/components/prism-${value}.js`);
+            properties: {
+              resolver: {
+                default: async ({ key, value }) => {
+                  if (key == 'language') {
+                    await import(`https://esm.run/prismjs/components/prism-${value}.js`);
+                  }
                 }
               }
             }

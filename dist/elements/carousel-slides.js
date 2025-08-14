@@ -1,12 +1,14 @@
-import { h as html, E as Element } from "../core/index.js";
+import { h as html, a as Property, O as Overrides, E as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;overflow:hidden}.container{display:flex}global plus-carousel[auto-height] plus-carousel-slides::part(container){transition:height .25s;align-items:flex-start}global plus-carousel[axis=x] plus-carousel-slides::part(container){flex-direction:row;touch-action:pan-y pinch-zoom}global plus-carousel[axis=y] plus-carousel-slides::part(container){flex-direction:column;touch-action:pan-x pinch-zoom}";
+var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
   var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
   for (var i = decorators.length - 1, decorator; i >= 0; i--)
     if (decorator = decorators[i])
-      result = decorator(result) || result;
+      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
+  if (kind && result) __defProp(target, key, result);
   return result;
 };
 let CarouselSlides = class extends CarouselChild {
@@ -22,6 +24,12 @@ let CarouselSlides = class extends CarouselChild {
 };
 CarouselSlides.tag = "plus-carousel-slides";
 CarouselSlides.style = STYLE_IMPORTED;
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], CarouselSlides.prototype, "overrides", 2);
 CarouselSlides = __decorateClass([
   Element()
 ], CarouselSlides);

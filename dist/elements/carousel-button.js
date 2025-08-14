@@ -1,4 +1,4 @@
-import { h as html, a as Property, B as Bind, E as Element } from "../core/index.js";
+import { h as html, a as Property, O as Overrides, B as Bind, E as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}button{box-shadow:inset 0 0 0 .2rem #eaeaea;color:#36313d;border-radius:50%;width:2.25rem;height:2.25rem;appearance:none;background-color:rgba(0,0,0,0);touch-action:manipulation;text-decoration:none;cursor:pointer;border:0;padding:0;margin:0;z-index:1;display:flex;align-items:center;justify-content:center}button:disabled{opacity:.5}svg{width:35%;height:35%}";
 const CAROUSEL_BUTTON_PREVIOUS_SVG = `
@@ -87,6 +87,12 @@ __decorateClass([
     type: 144
   })
 ], CarouselButton.prototype, "type", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], CarouselButton.prototype, "overrides", 2);
 __decorateClass([
   Bind()
 ], CarouselButton.prototype, "handleClick", 1);

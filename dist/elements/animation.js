@@ -1,4 +1,4 @@
-import { q as setConfig, P as PlusCore, r as getConfig, h as html, a as Property, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { v as setConfig, P as PlusCore, q as getConfig, h as html, a as Property, O as Overrides, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   "ease": "ease",
@@ -32,9 +32,9 @@ const ANIMATION_EASINGS = {
   "linear": "linear"
 };
 const register = (name, keyframe) => {
-  setConfig({
-    asset: {
-      animation: {
+  setConfig("plus", {
+    assets: {
+      animations: {
         [name]: keyframe
       }
     }
@@ -107,12 +107,13 @@ let Animation = class extends PlusCore {
     (_a = this.instance) == null ? void 0 : _a.updatePlaybackRate(playbackRate);
   }
   get options() {
+    var _a, _b;
     return {
       composite: this.composite,
       delay: this.delay,
       direction: this.direction,
       duration: this.duration,
-      easing: ANIMATION_EASINGS[this.easing] ?? getConfig("asset", "easing", this.easing) ?? this.easing,
+      easing: ANIMATION_EASINGS[this.easing] ?? ((_b = (_a = getConfig().assets) == null ? void 0 : _a.easings) == null ? void 0 : _b[this.easing]) ?? this.easing,
       endDelay: this.endDelay,
       fill: this.fill,
       iterationComposite: this.iterationComposite,
@@ -137,8 +138,9 @@ let Animation = class extends PlusCore {
     this.plusRemove();
   }
   updatedCallback() {
+    var _a, _b;
     this.disconnectedCallback();
-    const keyframes = this.keyframes ?? getConfig("asset", "animation", this.name) ?? [];
+    const keyframes = this.keyframes ?? ((_b = (_a = getConfig().assets) == null ? void 0 : _a.animations) == null ? void 0 : _b[this.name]) ?? [];
     this.instance = this.$host.animate(keyframes, this.options);
     this.instance.addEventListener("cancel", this.onCancel);
     this.instance.addEventListener("finish", this.onFinish);
@@ -234,6 +236,12 @@ __decorateClass([
     type: 4
   })
 ], Animation.prototype, "run", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Animation.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], Animation.prototype, "plusCancel", 2);

@@ -1,4 +1,4 @@
-import { Q as Query, j as PlusForm, f as ExternalDependencyError, h as html, a as Property, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, j as PlusForm, f as ExternalDependencyError, h as html, a as Property, O as Overrides, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -126,7 +126,7 @@ let Signature = class extends PlusForm {
     for (const key in events) {
       if (!events.hasOwnProperty(key)) continue;
       this.instance.addEventListener(key, (event) => {
-        events[key](event["detail"]);
+        events[key].call(this, event["detail"]);
       });
     }
     if (this.disabled) {
@@ -283,6 +283,12 @@ __decorateClass([
     type: 0
   })
 ], Signature.prototype, "undoable", 1);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Signature.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], Signature.prototype, "plusChange", 2);

@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, h as html, a as Property, O as Overrides, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;align-items:center;justify-content:center}:host([inline]){display:inline-flex}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -23,6 +23,12 @@ __decorateClass([
     type: 4
   })
 ], Center.prototype, "inline", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Center.prototype, "overrides", 2);
 Center = __decorateClass([
   Element()
 ], Center);

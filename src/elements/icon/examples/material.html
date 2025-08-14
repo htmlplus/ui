@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>For more information click <a href="https://fonts.google.com/icons">here</a>.</p>
     <plus-stack gap="2rem">
       <plus-icon name="home_outline"></plus-icon>
       <plus-icon name="home_round"></plus-icon>
@@ -14,21 +15,23 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-icon': {
-            property: {
-              resolver: ({ name }) => {
-                const [all, icon, type] = name.match(/^(.*)_(outline|round|sharp)$/);
+            properties: {
+              resolver: {
+                default: ({ name }) => {
+                  const [all, icon, type] = name.match(/^(.*)_(outline|round|sharp)$/);
 
-                const url = `https://cdn.jsdelivr.net/npm/@material-icons/svg/svg/${icon}/${type}.svg`;
+                  const url = `https://cdn.jsdelivr.net/npm/@material-icons/svg/svg/${icon}/${type}.svg`;
 
-                return fetch(url).then(async (response) => {
-                  const body = await response.text();
+                  return fetch(url).then(async (response) => {
+                    const body = await response.text();
 
-                  if (!response.ok) throw new Error(body);
+                    if (!response.ok) throw new Error(body);
 
-                  return body;
-                });
+                    return body;
+                  });
+                }
               }
             }
           }

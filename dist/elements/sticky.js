@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, t as toCSSUnit, d as attributes, s as styles, h as html, a as Property, c as Event, e as State, S as Style, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, t as toCSSUnit, d as attributes, s as styles, h as html, a as Property, O as Overrides, c as Event, e as State, S as Style, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:sticky;display:block;will-change:auto}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -94,6 +94,12 @@ __decorateClass([
     type: 128
   })
 ], Sticky.prototype, "zIndex", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Sticky.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], Sticky.prototype, "plusChange", 2);

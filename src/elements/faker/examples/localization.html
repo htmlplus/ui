@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>
+      Makes the result localized. Consider that localization configure globally.
+      <a href="https://fakerjs.dev/guide/localization.html">More</a>.
+    </p>
     <plus-faker></plus-faker>
     <script type="module">
       import { faker } from 'https://esm.run/@faker-js/faker/locale/ja';
@@ -12,17 +16,18 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-faker': {
-            property: {
-              instance: faker
+            properties: {
+              instance: {
+                default: faker
+              }
             }
           }
         }
       });
     </script>
     <script type="module">
-      import 'https://esm.run/@faker-js/faker';
       import 'https://esm.run/@htmlplus/ui/faker.js';
     </script>
   </body>

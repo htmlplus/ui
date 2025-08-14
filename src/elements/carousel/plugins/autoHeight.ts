@@ -4,14 +4,14 @@ import { CarouselPlugin } from './base';
 
 export class CarouselPluginAutoHeight extends CarouselPlugin {
   private get active(): boolean {
-    return this.instance.autoHeight && this.instance.options.axis == 'x'
+    return this.instance.autoHeight && this.instance.options.axis == 'x';
   }
 
   public events = {
-    'reInit': this.handleEvent,
-    'select': this.handleEvent,
-    'slideFocus': this.handleEvent,
-  }
+    reInit: this.handleEvent,
+    select: this.handleEvent,
+    slideFocus: this.handleEvent
+  };
 
   public initialize() {
     if (!this.active) return;

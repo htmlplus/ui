@@ -3,28 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+      }
+      plus-cropper {
+        flex: 1;
+        min-width: 15rem;
+      }
+    </style>
   </head>
   <body>
-    <plus-grid gutter="md">
-      <plus-grid-item xs="12" sm="6">
-        <plus-cropper
-          view="none"
-          src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
-        ></plus-cropper>
-      </plus-grid-item>
-      <plus-grid-item xs="12" sm="6">
-        <plus-cropper
-          background
-          view="none"
-          src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
-        ></plus-cropper>
-      </plus-grid-item>
-    </plus-grid>
+    <div class="container">
+      <plus-cropper
+        view="none"
+        src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
+      ></plus-cropper>
+      <plus-cropper
+        background
+        view="none"
+        src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
+      ></plus-cropper>
+    </div>
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/cropper.js';
-      import 'https://esm.run/@htmlplus/ui/grid-item.js';
-      import 'https://esm.run/@htmlplus/ui/grid.js';
-      import 'https://esm.run/cropperjs';
     </script>
   </body>
 </html>

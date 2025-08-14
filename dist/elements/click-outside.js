@@ -1,4 +1,4 @@
-import { P as PlusCore, o as on, b as off, h as html, a as Property, c as Event, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { P as PlusCore, o as on, b as off, h as html, a as Property, O as Overrides, c as Event, W as Watch, B as Bind, E as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -67,6 +67,12 @@ __decorateClass([
     type: 4
   })
 ], ClickOutside.prototype, "once", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], ClickOutside.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true

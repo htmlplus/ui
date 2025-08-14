@@ -33,6 +33,11 @@
           "name": "summary",
           "values": [],
           "description": "The summary text displayed on the header."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -57,6 +62,11 @@
             }
           ],
           "description": "Specifies that only one accordion can be open."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -64,7 +74,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/accordions"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-animation",
@@ -190,6 +201,11 @@
             }
           ],
           "description": "Starts the animation."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -229,6 +245,11 @@
           "name": "trickle-speed",
           "values": [],
           "description": "Adjust how often to trickle/increment, in ms."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -256,6 +277,11 @@
           "name": "value",
           "values": [],
           "description": "Specifies the ratio."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -315,6 +341,11 @@
             }
           ],
           "description": "Specifies the size of the element."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -351,6 +382,11 @@
             }
           ],
           "description": "Specifies whether avatars should be displayed compressed or not."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -358,7 +394,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/avatar-group"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-breadcrumb",
@@ -394,6 +431,11 @@
           "name": "separator",
           "values": [],
           "description": "Specifies the separator between items."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -402,7 +444,7 @@
           "url": "https://www.htmlplus.io/javascript/element/breadcrumb"
         }
       ],
-      "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page."
+      "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page. It represents the route using links, which enables the user to easily navigate upwards through the hierarchy."
     },
     {
       "name": "plus-browse",
@@ -467,6 +509,11 @@
             }
           ],
           "description": "Allows to select more than one file."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -593,6 +640,11 @@
             }
           ],
           "description": "Use tile property to neutralize border-radius."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -605,13 +657,20 @@
     },
     {
       "name": "plus-card-body",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/card-body"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-carousel",
@@ -804,6 +863,11 @@
           "name": "api",
           "values": [],
           "description": "The Embla carousel API."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO: Indicates whether the carousel has been successfully initialized."
         }
       ],
       "references": [
@@ -840,6 +904,11 @@
             }
           ],
           "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -847,7 +916,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/carousel-button"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-carousel-counter",
@@ -856,6 +926,11 @@
           "name": "template",
           "values": [],
           "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -863,7 +938,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/carousel-counter"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-carousel-indicators",
@@ -906,6 +982,11 @@
             }
           ],
           "description": "Displays slide numbers inside the indicators."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -913,17 +994,25 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/carousel-indicators"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-carousel-progress",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/carousel-progress"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-carousel-slide",
@@ -942,6 +1031,11 @@
             }
           ],
           "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -949,17 +1043,25 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/carousel-slide"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-carousel-slides",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/carousel-slides"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-center",
@@ -975,6 +1077,11 @@
             }
           ],
           "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1023,6 +1130,11 @@
             }
           ],
           "description": "The event fires only once."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1099,6 +1211,11 @@
           "name": "to",
           "values": [],
           "description": "Target value."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1307,6 +1424,11 @@
           "name": "zoom-ratio",
           "values": [],
           "description": "Specifies zoom ratio when zooming the image by wheeling the mouse."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1549,6 +1671,11 @@
             }
           ],
           "description": "Deactivate the dialog's backdrop to show or not."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1573,6 +1700,11 @@
             }
           ],
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1580,7 +1712,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/dialog-body"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-dialog-content",
@@ -1596,6 +1729,11 @@
             }
           ],
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1603,27 +1741,42 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/dialog-content"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-dialog-footer",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/dialog-footer"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-dialog-header",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/dialog-header"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-dialog-toggler",
@@ -1632,6 +1785,11 @@
           "name": "connector",
           "values": [],
           "description": "This property helps you to attach which dialog this toggler controls. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1639,7 +1797,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/dialog-toggler"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-divider",
@@ -1741,6 +1900,11 @@
             }
           ],
           "description": "Draws the divider in a vertical orientation."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1791,18 +1955,6 @@
             },
             {
               "name": "true"
-            },
-            {
-              "name": "on-xs-down"
-            },
-            {
-              "name": "on-sm-down"
-            },
-            {
-              "name": "on-md-down"
-            },
-            {
-              "name": "on-lg-down"
             }
           ],
           "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
@@ -1890,7 +2042,7 @@
           "description": "Determine the width of the drawer."
         },
         {
-          "name": "floated",
+          "name": "overrides",
           "values": [],
           "description": "TODO"
         }
@@ -1910,6 +2062,11 @@
           "name": "connector",
           "values": [],
           "description": "This property helps you to attach which drawer this toggler controls. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1917,7 +2074,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/drawer-toggler"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-faker",
@@ -1941,6 +2099,11 @@
           "name": "seed",
           "values": [],
           "description": "Keeps the result constant."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -2051,6 +2214,11 @@
           "name": "value",
           "values": [],
           "description": "The bytes value to convert."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -2747,6 +2915,11 @@
             }
           ],
           "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-extra-large screen devices."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -3890,6 +4063,11 @@
             }
           ],
           "description": "Overrides the default order of the grid-item for extra-extra-large display sizes."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -3897,7 +4075,8 @@
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/grid-item"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-icon",
@@ -3989,6 +4168,11 @@
             }
           ],
           "description": "Specifies the size."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4040,6 +4224,11 @@
           "name": "threshold",
           "values": [],
           "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4091,6 +4280,11 @@
           "name": "resolver",
           "values": [],
           "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4157,6 +4351,11 @@
           "name": "value",
           "values": [],
           "description": "Specifies the progress of the bar by a number between `min` and `max`."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4169,13 +4368,20 @@
     },
     {
       "name": "plus-progress-bar-stack",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
           "url": "https://www.htmlplus.io/javascript/element/progress-bar-stack"
         }
-      ]
+      ],
+      "description": ""
     },
     {
       "name": "plus-relative-time",
@@ -4223,6 +4429,11 @@
           "name": "value",
           "values": [],
           "description": "The date and time to be displayed in a relative format."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4268,6 +4479,11 @@
             }
           ],
           "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4364,6 +4580,11 @@
           "name": "undoable",
           "values": [],
           "description": "Specifies whether undo can be performed or not."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4386,6 +4607,11 @@
           "name": "symbol",
           "values": [],
           "description": "Specifies the symbol."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4403,6 +4629,11 @@
           "name": "grow",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4411,7 +4642,7 @@
           "url": "https://www.htmlplus.io/javascript/element/spacer"
         }
       ],
-      "description": "TODO"
+      "description": ""
     },
     {
       "name": "plus-spinner",
@@ -4462,6 +4693,11 @@
             }
           ],
           "description": "Specifies which variant of the spinner to use."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4554,6 +4790,26 @@
             }
           ],
           "description": "Whether the stack is vertical."
+        },
+        {
+          "name": "wrap",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            },
+            {
+              "name": "reverse"
+            }
+          ],
+          "description": "Controls whether items should wrap onto multiple lines."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4588,6 +4844,11 @@
           "name": "z-index",
           "values": [],
           "description": "Specifies the z-index."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4624,6 +4885,11 @@
             }
           ],
           "description": "Disables the switch."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4653,6 +4919,11 @@
             }
           ],
           "description": "You can use vertical property for vertical mode."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4704,6 +4975,11 @@
             }
           ],
           "description": "Reverses the arrangement of the tabs."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4726,6 +5002,11 @@
           "name": "active",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4738,7 +5019,13 @@
     },
     {
       "name": "plus-tabs-panels",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        }
+      ],
       "references": [
         {
           "name": "Source code",
@@ -4769,6 +5056,11 @@
         },
         {
           "name": "active",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "overrides",
           "values": [],
           "description": "TODO"
         }
@@ -4952,6 +5244,11 @@
             }
           ],
           "description": "TODO"
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4960,7 +5257,7 @@
           "url": "https://www.htmlplus.io/javascript/element/tooltip"
         }
       ],
-      "description": "TODO."
+      "description": "TODO"
     }
   ]
 }

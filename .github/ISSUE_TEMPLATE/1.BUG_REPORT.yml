@@ -1,7 +1,7 @@
 name: 🐛 Bug report
 description: Report a bug or an issue with the project.
-labels: [ "bug" ]
-assignees: [ ]
+labels: ['bug']
+assignees: []
 
 body:
   - type: markdown

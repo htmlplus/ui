@@ -5,13 +5,13 @@ import { CarouselPlugin } from './base';
 
 export class CarouselPluginMirror extends CarouselPlugin {
   private get active(): boolean {
-    return !!this.instance.mirror
+    return !!this.instance.mirror;
   }
 
   public events = {
-    'reInit': this.handleEvent,
-    'select': this.handleEvent,
-  }
+    reInit: this.handleEvent,
+    select: this.handleEvent
+  };
 
   private get carousel() {
     return document.getElementById(this.instance.mirror) as any as Carousel;

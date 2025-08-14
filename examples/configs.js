@@ -5,5 +5,5 @@ export const MAPPER = [
     '/src/elements/animation/assets/names/$1.js'
   ],
   ['https://esm.run/@htmlplus/ui/(.*?).js', '/src/elements/$1/$1.tsx'],
-  ['https://esm.run/', ''],
+  ['https://esm.run/', '']
 ];

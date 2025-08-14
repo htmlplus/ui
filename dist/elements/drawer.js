@@ -1,5 +1,5 @@
-import { Q as Query, P as PlusCore, k as Animation, l as Scrollbar, b as off, o as on, m as toAxis, n as classes, t as toCSSUnit, s as styles, h as html, a as Property, c as Event, e as State, p as Breakpoint, g as Provider, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;position:relative;overflow:hidden;z-index:1000}[part=backdrop]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;transition:inherit}[part=backdrop] *{width:100%;height:100%;background-color:#000;opacity:.5}[part=root]{height:100%;position:relative;z-index:1;transition:inherit}.right,.left{width:var(--plus-drawer-size)}.top,.bottom{height:var(--plus-drawer-size)}.right,.left.reverse{margin:0 var(--plus-drawer-offset, 0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset, 0)}.top,.bottom.reverse{margin:var(--plus-drawer-offset, 0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset, 0) 0}:host([floated]){position:fixed;top:0;right:0;bottom:0;left:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=open]),:host([animation][state=closing]){padding:.000001px}:host([animation][state=open]) [part=backdrop],:host([animation][state=closing]) [part=backdrop]{opacity:0}";
+import { Q as Query, P as PlusCore, k as Animation, l as Scrollbar, b as off, o as on, m as toAxis, n as classes, t as toCSSUnit, s as styles, h as html, a as Property, O as Overrides, c as Event, g as Provider, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;position:relative;overflow:hidden;z-index:1000}[part=backdrop]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;transition:inherit}[part=backdrop] *{width:100%;height:100%;background-color:#000;opacity:.5}[part=root]{height:100%;position:relative;z-index:1;transition:inherit}.right,.left{width:var(--plus-drawer-size)}.top,.bottom{height:var(--plus-drawer-size)}.right,.left.reverse{margin:0 var(--plus-drawer-offset, 0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset, 0)}.top,.bottom.reverse{margin:var(--plus-drawer-offset, 0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset, 0) 0}:host([floating]){position:fixed;top:0;right:0;bottom:0;left:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=open]),:host([animation][state=closing]){padding:.000001px}:host([animation][state=open]) [part=backdrop],:host([animation][state=closing]) [part=backdrop]{opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -29,7 +29,7 @@ let Drawer = class extends PlusCore {
           leaved: "closed"
         },
         onEnter: () => {
-          this.floated && Scrollbar.remove(this);
+          this.floating && Scrollbar.remove(this);
           on(this.$root, "outside", this.onClickOutside, true);
           this.open = this.opened = true;
         },
@@ -67,13 +67,6 @@ let Drawer = class extends PlusCore {
     };
     this.opened = false;
   }
-  get floated() {
-    if (!this.floating) return false;
-    if (this.floating === true) return true;
-    const breakpoint = this.floating.split("-").at(1);
-    const breakpoints = ["xs", "sm", "md", "lg", "xl"];
-    return breakpoints.indexOf(this.breakpoint) <= breakpoints.indexOf(breakpoint);
-  }
   get state() {
     return {
       open: this.opened,
@@ -90,7 +83,7 @@ let Drawer = class extends PlusCore {
     }]);
   }
   get hasBackdrop() {
-    return this.backdrop && this.floated;
+    return this.backdrop && this.floating;
   }
   get style() {
     const size = toCSSUnit(this.size);
@@ -112,11 +105,6 @@ let Drawer = class extends PlusCore {
   }
   watcher(next, prev, name) {
     switch (name) {
-      case "breakpoint":
-        if (!this.floated) {
-          this.try(false, false);
-        }
-        break;
       case "open":
         if (!next == !prev) break;
         this.try(next, true);
@@ -151,7 +139,7 @@ let Drawer = class extends PlusCore {
   }
   onClickOutside() {
     if (!this.opened) return;
-    if (!this.floated) return;
+    if (!this.floating) return;
     if (this.persistent) return;
     this.try(false, false);
   }
@@ -192,7 +180,8 @@ __decorateClass([
 ], Drawer.prototype, "connector", 2);
 __decorateClass([
   Property({
-    type: 20
+    reflect: true,
+    type: 4
   })
 ], Drawer.prototype, "floating", 2);
 __decorateClass([
@@ -234,10 +223,10 @@ __decorateClass([
 ], Drawer.prototype, "size", 2);
 __decorateClass([
   Property({
-    reflect: true,
     type: 0
-  })
-], Drawer.prototype, "floated", 1);
+  }),
+  Overrides()
+], Drawer.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true
@@ -255,10 +244,6 @@ __decorateClass([
   Event()
 ], Drawer.prototype, "plusOpened", 2);
 __decorateClass([
-  State(),
-  Breakpoint()
-], Drawer.prototype, "breakpoint", 2);
-__decorateClass([
   Query("[part=root]")
 ], Drawer.prototype, "$root", 2);
 __decorateClass([
@@ -274,7 +259,7 @@ __decorateClass([
   Method()
 ], Drawer.prototype, "toggle", 1);
 __decorateClass([
-  Watch(["breakpoint", "mini", "open"])
+  Watch(["mini", "open"])
 ], Drawer.prototype, "watcher", 1);
 __decorateClass([
   Bind()

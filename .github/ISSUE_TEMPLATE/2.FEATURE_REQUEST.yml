@@ -1,6 +1,6 @@
 name: 💡 Feature Request
-description: "Suggest a new feature or enhancement for the project."
-labels: ["enhancement"]
+description: 'Suggest a new feature or enhancement for the project.'
+labels: ['enhancement']
 assignees: []
 
 body:
@@ -24,19 +24,19 @@ body:
     id: use_case
     attributes:
       label: Use Case
-      description: "Describe a scenario where this feature would be useful."
-      placeholder: "Explain how this feature would improve the user experience..."
+      description: 'Describe a scenario where this feature would be useful.'
+      placeholder: 'Explain how this feature would improve the user experience...'
 
   - type: textarea
     id: proposed_solution
     attributes:
       label: Proposed Solution
-      description: "Describe how you envision this feature being implemented."
-      placeholder: "Provide ideas or suggestions for implementation..."
+      description: 'Describe how you envision this feature being implemented.'
+      placeholder: 'Provide ideas or suggestions for implementation...'
 
   - type: textarea
     id: additional_context
     attributes:
       label: Additional Context
-      description: "Add any other context or screenshots that might help explain your request."
-      placeholder: "Include any other details here..."
+      description: 'Add any other context or screenshots that might help explain your request.'
+      placeholder: 'Include any other details here...'

@@ -1,4 +1,4 @@
-import { a as Property, E as Element } from "../core/index.js";
+import { a as Property, O as Overrides, E as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}";
 var __defProp = Object.defineProperty;
@@ -43,6 +43,12 @@ __decorateClass([
     type: 512
   })
 ], CarouselCounter.prototype, "template", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], CarouselCounter.prototype, "overrides", 2);
 CarouselCounter = __decorateClass([
   Element()
 ], CarouselCounter);

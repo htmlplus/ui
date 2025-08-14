@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>
+      The default theme is supported by default. If other themes are required, the
+      <code>resolver</code>
+      property should be configured to return a raw CSS style.
+    </p>
     <plus-stack gap="0.5rem" items="stretch" vertical>
       <plus-prism theme="default">const theme = 'default';</plus-prism>
       <plus-prism theme="coy">const theme = 'coy';</plus-prism>
@@ -19,14 +24,16 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-prism': {
-            property:{
-              async resolver({ key, value }) {
-                if (key == 'theme') {
-                  const url = `https://cdn.jsdelivr.net/npm/prismjs/themes/prism-${value}.css`;
-                  const styles = await fetch(url).then((response) => response.text());
-                  return styles;
+            properties: {
+              resolver: {
+                default: async ({ key, value }) => {
+                  if (key == 'theme') {
+                    const url = `https://cdn.jsdelivr.net/npm/prismjs/themes/prism-${value}.css`;
+                    const styles = await fetch(url).then((response) => response.text());
+                    return styles;
+                  }
                 }
               }
             }

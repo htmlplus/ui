@@ -1,4 +1,4 @@
-import { P as PlusCore, t as toCSSUnit, h as html, a as Property, S as Style, E as Element } from "../core/index.js";
+import { P as PlusCore, t as toCSSUnit, h as html, a as Property, O as Overrides, S as Style, E as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -14,6 +14,7 @@ let Stack = class extends PlusCore {
     super(...arguments);
     this.items = "center";
     this.justify = "center";
+    this.wrap = false;
   }
   get style() {
     var _a, _b, _c;
@@ -24,7 +25,17 @@ let Stack = class extends PlusCore {
       "display": "flex",
       "flex-direction": direction,
       "gap": toCSSUnit(this.gap),
-      "justify-content": (_c = (_b = this.justify) == null ? void 0 : _b.replace(/start|end/, "flex-$&")) == null ? void 0 : _c.replace(/between|around|evenly/, "space-$&")
+      "justify-content": (_c = (_b = this.justify) == null ? void 0 : _b.replace(/start|end/, "flex-$&")) == null ? void 0 : _c.replace(/between|around|evenly/, "space-$&"),
+      "flex-wrap": (() => {
+        switch (this.wrap) {
+          case false:
+            return "nowrap";
+          case true:
+            return "wrap";
+          case "reverse":
+            return "wrap-reverse";
+        }
+      })()
     };
   }
   render() {
@@ -57,6 +68,17 @@ __decorateClass([
     type: 4
   })
 ], Stack.prototype, "vertical", 2);
+__decorateClass([
+  Property({
+    type: 20
+  })
+], Stack.prototype, "wrap", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Stack.prototype, "overrides", 2);
 __decorateClass([
   Style()
 ], Stack.prototype, "style", 1);

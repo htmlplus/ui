@@ -115,6 +115,7 @@ const TYPE_DATE = 2 ** 3;
 const TYPE_NULL = 2 ** 6;
 const TYPE_NUMBER = 2 ** 7;
 const TYPE_OBJECT = 2 ** 8;
+const TYPE_STRING = 2 ** 9;
 const TYPE_UNDEFINED = 2 ** 10;
 const host = (target) => {
   try {
@@ -241,9 +242,6 @@ const classes = (input, smart) => {
   }
   return result.filter((item) => item).join(" ");
 };
-const isServer = () => {
-  return !(typeof window != "undefined" && window.document);
-};
 const merge = (target, ...sources) => {
   for (const source of sources) {
     if (!source)
@@ -262,25 +260,19 @@ const merge = (target, ...sources) => {
   }
   return target;
 };
-const DEFAULTS = {
-  element: {}
+const getConfig$1 = (namespace) => {
+  return globalThis[`$htmlplus:${namespace}$`] || {};
 };
-const getConfig = (...keys) => {
-  if (isServer())
-    return;
-  let config = window[`$htmlplus$`];
-  for (const key of keys) {
-    if (!config)
-      break;
-    config = config[key];
-  }
-  return config;
+const getConfigCreator = (namespace) => () => {
+  return getConfig$1(namespace);
 };
-const setConfig = (config, options) => {
-  if (isServer())
-    return;
-  const previous = (options == null ? void 0 : options.override) ? {} : window[`$htmlplus$`];
-  window[`$htmlplus$`] = merge({}, DEFAULTS, previous, config);
+const setConfig$1 = (namespace, config, options) => {
+  const previous = (options == null ? void 0 : options.override) ? {} : globalThis[`$htmlplus:${namespace}$`];
+  const next = merge({}, previous, config);
+  globalThis[`$htmlplus:${namespace}$`] = next;
+};
+const setConfigCreator = (namespace) => (config, options) => {
+  return setConfig$1(namespace, config, options);
 };
 const defineProperty = Object.defineProperty;
 const direction = (target) => {
@@ -308,12 +300,19 @@ const getFramework = (target) => {
 const getTag = (target) => {
   return target.constructor[STATIC_TAG] ?? target[STATIC_TAG];
 };
+const getNamespace = (target) => {
+  var _a, _b;
+  return (_b = (_a = getTag(target)) == null ? void 0 : _a.split("-")) == null ? void 0 : _b.at(0);
+};
 const isCSSColor = (input) => {
   const option = new Option();
   option.style.color = input;
   return option.style.color !== "";
 };
 const isRTL = (target) => direction(target) == "rtl";
+const isServer = () => {
+  return !(typeof window != "undefined" && window.document);
+};
 const shadowRoot = (target) => {
   var _a;
   return (_a = host(target)) == null ? void 0 : _a.shadowRoot;
@@ -948,7 +947,14 @@ const toProperty = (input, type) => {
       return void 0;
     }
   }
-  return input;
+  if (TYPE_STRING & type || type === String) {
+    return input;
+  }
+  try {
+    return JSON.parse(input);
+  } catch {
+    return input;
+  }
 };
 const wrapMethod = (mode, target, key, handler) => {
   const original = target[key];
@@ -1133,7 +1139,31 @@ const proxy = (constructor) => {
       }
     }
     connectedCallback() {
-      Object.assign(__privateGet(this, _instance), getConfig("element", getTag(__privateGet(this, _instance)), "property"));
+      (() => {
+        var _a2, _b;
+        const namespace = getNamespace(__privateGet(this, _instance));
+        const tag2 = getTag(__privateGet(this, _instance));
+        const properties = (_b = (_a2 = getConfig$1(namespace).elements) == null ? void 0 : _a2[tag2]) == null ? void 0 : _b.properties;
+        if (!properties)
+          return;
+        const defaults = Object.fromEntries(Object.entries(properties).map(([key, value]) => [key, value == null ? void 0 : value.default]));
+        Object.assign(this, defaults);
+      })();
+      (() => {
+        const key = Object.keys(this).find((key2) => key2.startsWith("__reactProps"));
+        const props = this[key];
+        if (!props)
+          return;
+        for (const [key2, value] of Object.entries(props)) {
+          if (this[key2] != void 0)
+            continue;
+          if (key2 == "children")
+            continue;
+          if (typeof value != "object")
+            continue;
+          this[key2] = value;
+        }
+      })();
       __privateGet(this, _instance)[API_CONNECTED] = true;
       call(__privateGet(this, _instance), LIFECYCLE_CONNECTED);
       requestUpdate(__privateGet(this, _instance), void 0, void 0, () => {
@@ -1180,7 +1210,8 @@ function Event(options = {}) {
           break;
       }
       let event2;
-      event2 || (event2 = (_a = getConfig("event", "resolver")) == null ? void 0 : _a({ detail, element, framework, options, type }));
+      const resolver = (_a = getConfig$1(getNamespace(target)).event) == null ? void 0 : _a.resolver;
+      event2 || (event2 = resolver == null ? void 0 : resolver({ detail, element, framework, options, type }));
       event2 && element.dispatchEvent(event2);
       event2 || (event2 = dispatch(this, type, { ...options, detail }));
       return event2;
@@ -1219,6 +1250,163 @@ function Method() {
   return function(target, key, descriptor) {
     wrapMethod("before", target, LIFECYCLE_CONSTRUCTED, function() {
       host(this)[key] = this[key].bind(this);
+    });
+  };
+}
+const CONTAINER_DATA = Symbol();
+const getContainers = (breakpoints) => {
+  return Object.entries(breakpoints || {}).reduce((result, [key, breakpoint]) => {
+    if (breakpoint.type !== "container")
+      return result;
+    result[key] = {
+      min: breakpoint.min,
+      max: breakpoint.max
+    };
+    return result;
+  }, {});
+};
+const getMedias = (breakpoints) => {
+  return Object.entries(breakpoints || {}).reduce((result, [key, breakpoint]) => {
+    if (breakpoint.type !== "media")
+      return result;
+    const parts = [];
+    const min = "min" in breakpoint ? breakpoint.min : void 0;
+    const max = "max" in breakpoint ? breakpoint.max : void 0;
+    if (min !== void 0)
+      parts.push(`(min-width: ${min}px)`);
+    if (max !== void 0)
+      parts.push(`(max-width: ${max}px)`);
+    const query2 = parts.join(" and ");
+    if (query2)
+      result[key] = query2;
+    return result;
+  }, {});
+};
+const matchContainer = (element, container) => {
+  const $element = element;
+  const getData = () => {
+    if ($element[CONTAINER_DATA])
+      return $element[CONTAINER_DATA];
+    const listeners = /* @__PURE__ */ new Set();
+    const observer = new ResizeObserver(() => {
+      listeners.forEach((listener) => listener());
+    });
+    observer.observe(element);
+    $element[CONTAINER_DATA] = { listeners, observer };
+    return $element[CONTAINER_DATA];
+  };
+  const getMatches = () => {
+    const width = element.offsetWidth;
+    const matches = (container.min === void 0 || width >= container.min) && (container.max === void 0 || width <= container.max);
+    return matches;
+  };
+  const addEventListener = (type, listener) => {
+    getData().listeners.add(listener);
+  };
+  const removeEventListener = (type, listener) => {
+    const data2 = getData();
+    data2.listeners.delete(listener);
+    if (data2.listeners.size !== 0)
+      return;
+    data2.observer.disconnect();
+    delete $element[CONTAINER_DATA];
+  };
+  return {
+    get matches() {
+      return getMatches();
+    },
+    addEventListener,
+    removeEventListener
+  };
+};
+function Overrides() {
+  return function(target, key) {
+    const DISPOSERS = Symbol();
+    const breakpoints = getConfig$1(getNamespace(target)).breakpoints || {};
+    const containers = getContainers(breakpoints);
+    const medias = getMedias(breakpoints);
+    wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
+      if (!states.has(key))
+        return;
+      const disposers = this[DISPOSERS] ?? (this[DISPOSERS] = /* @__PURE__ */ new Map());
+      const overrides = this[key] || {};
+      const activeKeys = new Set(disposers.keys());
+      const overrideKeys = Object.keys(overrides);
+      const containerKeys = overrideKeys.filter((breakpoint) => breakpoint in containers);
+      const mediaKeys = overrideKeys.filter((breakpoint) => breakpoint in medias);
+      let timeout;
+      let next = {};
+      const apply = (key2) => {
+        clearTimeout(timeout);
+        Object.assign(next, overrides[key2]);
+        timeout = setTimeout(() => {
+          Object.assign(host(this), overrides[key2]);
+          next = {};
+        }, 0);
+      };
+      for (const overrideKey of overrideKeys) {
+        if (activeKeys.delete(overrideKey))
+          continue;
+        const breakpoint = breakpoints[overrideKey];
+        if (!breakpoint)
+          continue;
+        switch (breakpoint.type) {
+          case "container": {
+            const container = containers[overrideKey];
+            if (!container)
+              break;
+            const containerQueryList = matchContainer(host(this), container);
+            const change = () => {
+              for (const containerKey of containerKeys) {
+                if (matchContainer(host(this), containers[containerKey]).matches) {
+                  apply(containerKey);
+                }
+              }
+            };
+            containerQueryList.addEventListener("change", change);
+            const disposer = () => {
+              containerQueryList.removeEventListener("change", change);
+            };
+            disposers.set(overrideKey, disposer);
+            if (!containerQueryList.matches)
+              break;
+            change();
+            break;
+          }
+          case "media": {
+            const media = medias[overrideKey];
+            if (!media)
+              break;
+            const mediaQueryList = window.matchMedia(media);
+            const change = () => {
+              for (const mediaKey of mediaKeys) {
+                if (window.matchMedia(medias[mediaKey]).matches) {
+                  apply(mediaKey);
+                }
+              }
+            };
+            mediaQueryList.addEventListener("change", change);
+            const disposer = () => {
+              mediaQueryList.removeEventListener("change", change);
+            };
+            disposers.set(overrideKey, disposer);
+            if (!mediaQueryList.matches)
+              break;
+            change();
+            break;
+          }
+        }
+      }
+      for (const activeKey of activeKeys) {
+        const disposer = disposers.get(activeKey);
+        disposer();
+        disposers.delete(activeKey);
+      }
+    });
+    wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
+      const disposers = this[DISPOSERS] ?? (this[DISPOSERS] = /* @__PURE__ */ new Map());
+      disposers.forEach((disposer) => disposer());
+      disposers.clear();
     });
   };
 }
@@ -1389,6 +1577,51 @@ function Watch(keys, immediate) {
 const attributes = attributes$2;
 const html = html$1;
 const styles = styles$1;
+const BREAKPOINTS = {
+  "xs": {
+    type: "media",
+    min: 0
+  },
+  "sm": {
+    type: "media",
+    min: 600
+  },
+  "md": {
+    type: "media",
+    min: 900
+  },
+  "lg": {
+    type: "media",
+    min: 1200
+  },
+  "xl": {
+    type: "media",
+    min: 1536
+  },
+  "@xs": {
+    type: "container",
+    min: 0
+  },
+  "@sm": {
+    type: "container",
+    min: 384
+  },
+  "@md": {
+    type: "container",
+    min: 640
+  },
+  "@lg": {
+    type: "container",
+    min: 768
+  },
+  "@xl": {
+    type: "container",
+    min: 1024
+  }
+};
+const NAMESPACE = "plus";
+const getConfig = getConfigCreator(NAMESPACE);
+const setConfig = setConfigCreator(NAMESPACE);
 var __defProp$1 = Object.defineProperty;
 var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
 var __decorateClass$1 = (decorators, target, key, kind) => {
@@ -1399,6 +1632,9 @@ var __decorateClass$1 = (decorators, target, key, kind) => {
   if (kind && result) __defProp$1(target, key, result);
   return result;
 };
+setConfig({
+  breakpoints: BREAKPOINTS
+});
 class PlusCore {
   // TODO
   get dir() {
@@ -1750,49 +1986,6 @@ const _Scrollbar = class _Scrollbar {
 _Scrollbar.keys = /* @__PURE__ */ new Set();
 _Scrollbar.style = {};
 let Scrollbar = _Scrollbar;
-const BREAKPOINTS = {
-  xs: 0,
-  sm: 576,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-  xxl: 1400
-};
-function Breakpoint() {
-  return function(target, key) {
-    const symbol2 = Symbol();
-    const connected = target.connectedCallback;
-    target.connectedCallback = function() {
-      this[symbol2] = [];
-      const keys = Object.keys(BREAKPOINTS);
-      const callback = (media) => {
-        var _a;
-        if (media.matches) {
-          this[key] = ((_a = media.currentTarget) == null ? void 0 : _a.breakpoint) || media.breakpoint;
-        }
-      };
-      this[symbol2] = keys.map((key2, index) => {
-        const min = BREAKPOINTS[keys[index]];
-        const max = BREAKPOINTS[keys[index + 1]];
-        const query2 = `(min-width: ${min}px)` + (max ? ` and (max-width: ${max - 1}px)` : ``);
-        const media = window.matchMedia(query2);
-        media["breakpoint"] = key2;
-        on(media, "change", callback);
-        callback(media);
-        return () => off(media, "change", callback);
-      });
-      connected == null ? void 0 : connected.call(this);
-    };
-    const disconnected = target.disconnectedCallback;
-    target.disconnectedCallback = function() {
-      for (const teardown of this[symbol2]) {
-        teardown();
-      }
-      this[symbol2] = [];
-      disconnected == null ? void 0 : disconnected.call(this);
-    };
-  };
-}
 const toAxis = (input, rtl) => {
   if (!input) return input;
   if (input.match(/start/)) input = rtl ? "right" : "left";
@@ -1807,6 +2000,7 @@ export {
   Listen as L,
   Method as M,
   NotEmptyPropertyError as N,
+  Overrides as O,
   PlusCore as P,
   Query as Q,
   Style as S,
@@ -1826,11 +2020,11 @@ export {
   toAxis as m,
   classes as n,
   on as o,
-  Breakpoint as p,
-  setConfig as q,
-  getConfig as r,
+  setConfig as p,
+  getConfig as q,
+  query as r,
   styles as s,
   toCSSUnit as t,
-  query as u,
-  QueryAll as v
+  QueryAll as u,
+  setConfig$1 as v
 };

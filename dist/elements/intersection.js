@@ -1,4 +1,4 @@
-import { P as PlusCore, d as attributes, h as html, a as Property, c as Event, e as State, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { P as PlusCore, d as attributes, h as html, a as Property, O as Overrides, c as Event, e as State, W as Watch, B as Bind, E as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -97,6 +97,12 @@ __decorateClass([
     type: 129
   })
 ], Intersection.prototype, "threshold", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Intersection.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], Intersection.prototype, "plusChange", 2);

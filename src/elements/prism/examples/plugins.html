@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>
+      To use <code>PrismJS</code> plugins, the <code>plugins</code> property should be configured.
+      All parameters required for plugin configuration are derived from
+      <code>data-*</code> attributes. For instance, the <code>line-numbers</code> plugin has a
+      configuration parameter named <code>data-start</code>, which is mapped to
+      <code>start</code> with a valid value specified in the official
+      <code>PrismJS</code> documentation.
+    </p>
     <plus-stack gap="0.5rem" items="stretch" vertical>
       <plus-prism plugins='{"line-numbers":true}'>const name = '@htmlplus/ui';</plus-prism>
       <plus-prism plugins='{"line-numbers":{"start":5}}'>const name = '@htmlplus/ui';</plus-prism>
@@ -13,17 +21,19 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-prism': {
-            property:{
-              async resolver({ key, value }) {
-                if (key == 'plugin') {
-                  await import(`https://esm.run/prismjs/plugins/${value}/prism-${value}.js`);
-                  try {
-                    const url = `https://cdn.jsdelivr.net/npm/prismjs/plugins/${value}/prism-${value}.css`;
-                    const styles = await fetch(url).then((response) => response.text());
-                    return styles;
-                  } catch {}
+            properties: {
+              resolver: {
+                default: async ({ key, value }) => {
+                  if (key == 'plugin') {
+                    await import(`https://esm.run/prismjs/plugins/${value}/prism-${value}.js`);
+                    try {
+                      const url = `https://cdn.jsdelivr.net/npm/prismjs/plugins/${value}/prism-${value}.css`;
+                      const styles = await fetch(url).then((response) => response.text());
+                      return styles;
+                    } catch {}
+                  }
                 }
               }
             }

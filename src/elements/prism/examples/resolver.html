@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>
+      The basic configuration for the <code>resolver</code> property are shown here, this
+      configuration support all <code>themes</code>, <code>plugins</code>, and
+      <code>languages</code> of the <code>PrismJS</code>.
+    </p>
     <plus-prism language="python" theme="solarizedlight" plugins='{"line-numbers":true}'
       >print("Hello, World!")</plus-prism
     >
@@ -12,28 +17,30 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-prism': {
-            property:{
-              async resolver({ key, value }) {
-                switch (key) {
-                  case 'language': {
-                    await import(`https://esm.run/prismjs/components/prism-${value}.js`);
-                    break;
-                  }
-                  case 'plugin': {
-                    await import(`https://esm.run/prismjs/plugins/${value}/prism-${value}.js`);
-                    try {
-                      const url = `https://cdn.jsdelivr.net/npm/prismjs/plugins/${value}/prism-${value}.css`;
+            properties: {
+              resolver: {
+                default: async ({ key, value }) => {
+                  switch (key) {
+                    case 'language': {
+                      await import(`https://esm.run/prismjs/components/prism-${value}.js`);
+                      break;
+                    }
+                    case 'plugin': {
+                      await import(`https://esm.run/prismjs/plugins/${value}/prism-${value}.js`);
+                      try {
+                        const url = `https://cdn.jsdelivr.net/npm/prismjs/plugins/${value}/prism-${value}.css`;
+                        const styles = await fetch(url).then((response) => response.text());
+                        return styles;
+                      } catch {}
+                      break;
+                    }
+                    case 'theme': {
+                      const url = `https://cdn.jsdelivr.net/npm/prismjs/themes/prism-${value}.css`;
                       const styles = await fetch(url).then((response) => response.text());
                       return styles;
-                    } catch {}
-                    break;
-                  }
-                  case 'theme': {
-                    const url = `https://cdn.jsdelivr.net/npm/prismjs/themes/prism-${value}.css`;
-                    const styles = await fetch(url).then((response) => response.text());
-                    return styles;
+                    }
                   }
                 }
               }

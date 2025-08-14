@@ -1,4 +1,4 @@
-import { P as PlusCore, d as attributes, h as html, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, d as attributes, h as html, a as Property, O as Overrides, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{flex:0 0 auto;display:flex;overflow:auto}:host([reverse]){flex-direction:row-reverse}:host([grow]) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=start]),:host([justify=end][reverse]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]){justify-content:flex-end}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -43,6 +43,12 @@ __decorateClass([
     type: 4
   })
 ], TabsBar.prototype, "reverse", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], TabsBar.prototype, "overrides", 2);
 TabsBar = __decorateClass([
   Element()
 ], TabsBar);

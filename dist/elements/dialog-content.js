@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, h as html, a as Property, O as Overrides, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:relative;display:flex;flex-direction:column;background-color:#fff;background-clip:padding-box;border:solid 1px rgba(0,0,0,.2);border-radius:.3rem;box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);outline:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -23,6 +23,12 @@ __decorateClass([
     type: 4
   })
 ], DialogContent.prototype, "scrollable", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], DialogContent.prototype, "overrides", 2);
 DialogContent = __decorateClass([
   Element()
 ], DialogContent);

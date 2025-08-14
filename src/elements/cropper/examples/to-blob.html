@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <p data-doc>Open the developer console.</p>
     <plus-center>
       <plus-cropper
         src="https://fengyuanchen.github.io/cropperjs/images/picture.jpg"
@@ -18,7 +19,6 @@
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/center.js';
       import 'https://esm.run/@htmlplus/ui/cropper.js';
-      import 'https://esm.run/cropperjs';
 
       $button.addEventListener('click', () => {
         $cropper.toCanvas().toBlob((blob) => {

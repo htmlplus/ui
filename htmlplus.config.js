@@ -36,16 +36,10 @@ export default [
       return `${DESTINATION}/elements/${context.fileName}/assets.json`;
     }
   }),
-  readme(),
   document({
     destination: `${DESTINATION}/json/document.json`,
     transformer(context, element) {
-      element.description ||= context?.readmeContent
-        ?.split('#')[1]
-        ?.split('\n')
-        ?.slice(1)
-        ?.filter((line) => !!line.trim())[0]
-        ?.trim();
+      element.examples = element.examples?.split(',').map((example) => example.trim()) || [];
     }
   }),
   visualStudioCode({
@@ -55,12 +49,6 @@ export default [
     },
     transformer(context, element) {
       element.name = 'plus-' + element.name;
-      element.description ||= context?.readmeContent
-        ?.split('#')[1]
-        ?.split('\n')
-        ?.slice(1)
-        ?.filter((line) => !!line.trim())[0]
-        ?.trim();
     }
   }),
   webTypes({
@@ -72,12 +60,6 @@ export default [
     },
     transformer(context, element) {
       element.name = 'plus-' + element.name;
-      element.description ||= context?.readmeContent
-        ?.split('#')[1]
-        ?.split('\n')
-        ?.slice(1)
-        ?.filter((line) => !!line.trim())[0]
-        ?.trim();
     }
   }),
   {
@@ -100,7 +82,7 @@ export default [
 
             outputs[file] += content + '\n';
           }
-        } catch {}
+        } catch { }
       }
 
       for (const output in outputs) {

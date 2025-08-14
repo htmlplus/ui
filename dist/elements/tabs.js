@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, a as Property, c as Event, g as Provider, E as Element } from "../core/index.js";
+import { P as PlusCore, h as html, a as Property, O as Overrides, c as Event, g as Provider, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -39,6 +39,12 @@ __decorateClass([
     type: 4
   })
 ], Tabs.prototype, "vertical", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Tabs.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true

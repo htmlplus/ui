@@ -1,4 +1,4 @@
-import { P as PlusCore, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, a as Property, O as Overrides, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;flex-grow:this-grow}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -23,6 +23,12 @@ __decorateClass([
     type: 128
   })
 ], Spacer.prototype, "grow", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Spacer.prototype, "overrides", 2);
 Spacer = __decorateClass([
   Element()
 ], Spacer);

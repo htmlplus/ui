@@ -8,45 +8,48 @@
         background: lightgray;
         width: 100px;
         height: 100px;
-        margin: auto;
       }
     </style>
   </head>
   <body>
-    <plus-grid justify-content="evenly" gutter="md">
-      <plus-grid-item xs="12" sm="auto">
-        <plus-animation
-          easing="linear"
-          iterations="Infinity"
-          name="fade-out-down"
-          run
-        ></plus-animation>
-      </plus-grid-item>
-      <plus-grid-item xs="12" sm="auto">
-        <plus-animation
-          easing="ease-in"
-          iterations="Infinity"
-          name="fade-out-down"
-          run
-        ></plus-animation>
-      </plus-grid-item>
-      <plus-grid-item xs="12" sm="auto">
-        <plus-animation
-          easing="cubic-bezier(0.25, 0.50, 0.25, 0.50)"
-          iterations="Infinity"
-          name="fade-out-down"
-          run
-        ></plus-animation>
-      </plus-grid-item>
-    </plus-grid>
+    <p data-doc>
+      To see all easings click
+      <a
+        href="https://github.com/htmlplus/ui/blob/main/src/elements/animation/animation.constants.ts"
+        >here</a
+      >.
+    </p>
+    <plus-stack
+      gap="1rem"
+      justify="evenly"
+      overrides='{"@xs":{"vertical":true},"@sm":{"vertical":false}}'
+    >
+      <plus-animation
+        easing="linear"
+        iterations="Infinity"
+        name="fade-out-down"
+        run
+      ></plus-animation>
+      <plus-animation
+        easing="ease-in"
+        iterations="Infinity"
+        name="fade-out-down"
+        run
+      ></plus-animation>
+      <plus-animation
+        easing="cubic-bezier(0.25, 0.50, 0.25, 0.50)"
+        iterations="Infinity"
+        name="fade-out-down"
+        run
+      ></plus-animation>
+    </plus-stack>
     <br />
     <br />
     <br />
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/animation.js';
       import 'https://esm.run/@htmlplus/ui/animation/names/fading-exits/fade-out-down.js';
-      import 'https://esm.run/@htmlplus/ui/grid-item.js';
-      import 'https://esm.run/@htmlplus/ui/grid.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
     </script>
   </body>
 </html>

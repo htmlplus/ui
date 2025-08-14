@@ -2,31 +2,31 @@ type AsyncFunction = (...args: any[]) => Promise<any>;
 
 type CacheStore<T extends AsyncFunction> = Record<string, CacheValue<T>>;
 
-type CacheValue<T extends AsyncFunction> = Promise<Awaited<ReturnType<T>>> | Awaited<ReturnType<T>>
+type CacheValue<T extends AsyncFunction> = Promise<Awaited<ReturnType<T>>> | Awaited<ReturnType<T>>;
 
 type AsyncCacheConfig<T extends AsyncFunction> =
   | {
-    type: 'basic';
-    resolver: T;
-  }
+      type: 'basic';
+      resolver: T;
+    }
   | {
-    type: 'external';
-    key: (...params: Parameters<T>) => string;
-    cache: () => CacheStore<T>;
-    resolver: T;
-  }
+      type: 'external';
+      key: (...params: Parameters<T>) => string;
+      cache: () => CacheStore<T>;
+      resolver: T;
+    }
   | {
-    type: 'global';
-    namespace: string;
-    resolver: T;
-  };
+      type: 'global';
+      namespace: string;
+      resolver: T;
+    };
 
 export class AsyncCache<T extends AsyncFunction> {
   private static globalCache = {};
 
   private cache: CacheStore<T> = {};
 
-  constructor(private config: AsyncCacheConfig<T>) { }
+  constructor(private config: AsyncCacheConfig<T>) {}
 
   private get currentCache(): CacheStore<T> {
     switch (this.config.type) {
@@ -48,7 +48,7 @@ export class AsyncCache<T extends AsyncFunction> {
   }
 
   private remove(key: string): void {
-    delete this.currentCache[key]
+    delete this.currentCache[key];
   }
 
   private set(key: string, value: CacheValue<T>): void {
@@ -66,7 +66,7 @@ export class AsyncCache<T extends AsyncFunction> {
       .concat(...params)
       .filter((key) => !!key)
       .map((param) => JSON.stringify(param))
-      .join(':')
+      .join(':');
 
     return key;
   }
@@ -92,11 +92,10 @@ export class AsyncCache<T extends AsyncFunction> {
       this.set(key, result);
 
       return result;
-
     } catch (error) {
       this.remove(key);
 
-      throw error
+      throw error;
     }
   }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>For more information click <a href="https://fontawesome.com">here</a>.</p>
     <plus-stack gap="2rem">
       <plus-icon name="far-user"></plus-icon>
       <plus-icon name="fas-user"></plus-icon>
@@ -14,26 +15,28 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-icon': {
-            property: {
-              resolver: ({ name }) => {
-                let category = 'regular';
+            properties: {
+              resolver: {
+                default: ({ name }) => {
+                  let category = 'regular';
 
-                if (name.startsWith('fas-')) category = 'solid';
-                if (name.startsWith('fab-')) category = 'brands';
+                  if (name.startsWith('fas-')) category = 'solid';
+                  if (name.startsWith('fab-')) category = 'brands';
 
-                name = name.replace(/^fa[rbs]-/, '');
+                  name = name.replace(/^fa[rbs]-/, '');
 
-                const url = `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/svgs/${category}/${name}.svg`;
+                  const url = `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/svgs/${category}/${name}.svg`;
 
-                return fetch(url).then(async (response) => {
-                  const body = await response.text();
+                  return fetch(url).then(async (response) => {
+                    const body = await response.text();
 
-                  if (!response.ok) throw new Error(body);
+                    if (!response.ok) throw new Error(body);
 
-                  return body;
-                });
+                    return body;
+                  });
+                }
               }
             }
           }

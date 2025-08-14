@@ -15,6 +15,7 @@
     </style>
   </head>
   <body dock>
+    <p data-doc>Open the developer console.</p>
     <div class="container">
       <div class="scrollable reference1">
         <plus-faker api="lorem.paragraphs" arguments='[20, "\n\n"]'></plus-faker>
@@ -22,7 +23,6 @@
       <plus-scroll-detector id="$detector" reference=".reference1" vertical></plus-scroll-detector>
     </div>
     <script type="module">
-      import 'https://esm.run/@faker-js/faker';
       import 'https://esm.run/@htmlplus/ui/faker.js';
       import 'https://esm.run/@htmlplus/ui/scroll-detector.js';
 

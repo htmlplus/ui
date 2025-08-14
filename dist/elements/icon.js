@@ -1,4 +1,4 @@
-import { P as PlusCore, A as AsyncCache, q as setConfig, r as getConfig, t as toCSSUnit, i as toCSSColor, u as query, d as attributes, h as html, a as Property, S as Style, E as Element } from "../core/index.js";
+import { P as PlusCore, A as AsyncCache, p as setConfig, q as getConfig, t as toCSSUnit, i as toCSSColor, r as query, d as attributes, h as html, a as Property, O as Overrides, S as Style, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:1em;width:1em;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}:host([flip=both]){scale:-1 -1}:host([flip=horizontal]){scale:-1 1}:host([flip=vertical]){scale:1 -1}:host::part(svg){display:block;height:100%;width:100%}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size="1x"]){height:1em;width:1em}:host([size="2x"]){height:2em;width:2em}:host([size="3x"]){height:3em;width:3em}:host([size="4x"]){height:4em;width:4em}:host([size="5x"]){height:5em;width:5em}:host([size="6x"]){height:6em;width:6em}:host([size="7x"]){height:7em;width:7em}:host([size="8x"]){height:8em;width:8em}:host([size="9x"]){height:9em;width:9em}';
 const ICON_DEFAULT_SVG = `
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -40,12 +40,13 @@ let Icon = class extends PlusCore {
       type: "external",
       key: (params) => params.name,
       cache: () => {
+        var _a;
         setConfig({
-          asset: {
-            icon: {}
+          assets: {
+            icons: {}
           }
         });
-        return getConfig("asset", "icon");
+        return (_a = getConfig().assets) == null ? void 0 : _a.icons;
       },
       resolver: async (params) => {
         if (typeof this.resolver !== "function") {
@@ -139,6 +140,12 @@ __decorateClass([
     type: 656
   })
 ], Icon.prototype, "size", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Icon.prototype, "overrides", 2);
 __decorateClass([
   Style()
 ], Icon.prototype, "style", 1);

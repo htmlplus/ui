@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, h as html, a as Property, O as Overrides, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{align-items:center;display:inline-flex;flex-wrap:wrap}:host ::slotted(plus-avatar){margin-inline-end:.5rem}:host ::slotted(plus-avatar:last-of-type){margin-inline-end:0 !important}:host([hoverable]) ::slotted(plus-avatar:hover){z-index:1}:host([stacked]) ::slotted(plus-avatar){border:2px solid #fff;margin-inline-end:-0.5rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -29,6 +29,12 @@ __decorateClass([
     type: 4
   })
 ], AvatarGroup.prototype, "stacked", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], AvatarGroup.prototype, "overrides", 2);
 AvatarGroup = __decorateClass([
   Element()
 ], AvatarGroup);

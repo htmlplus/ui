@@ -25,11 +25,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         style: 'compressed',
-        additionalData: [
-          'src/styles/mixins',
-          'src/styles/variables',
-          'src/styles/reset.scss',
-        ]
+        additionalData: ['src/styles/mixins', 'src/styles/variables', 'src/styles/reset.scss']
           .map((file) => `@use "${path.resolve(__dirname, file)}" as *;`)
           .join('\n')
       }

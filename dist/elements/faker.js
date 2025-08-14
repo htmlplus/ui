@@ -1,4 +1,4 @@
-import { P as PlusCore, f as ExternalDependencyError, a as Property, E as Element } from "../core/index.js";
+import { P as PlusCore, f as ExternalDependencyError, a as Property, O as Overrides, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre-wrap}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -60,6 +60,12 @@ __decorateClass([
     type: 128
   })
 ], Faker.prototype, "seed", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], Faker.prototype, "overrides", 2);
 Faker = __decorateClass([
   Element()
 ], Faker);

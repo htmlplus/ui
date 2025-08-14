@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body isolate>
+    <p data-doc>
+      Use <code>import</code>, <code>fetch</code> or any asynchronous function to load SVG files.
+    </p>
     <plus-center>
       <plus-icon name="heart"></plus-icon>
     </plus-center>
@@ -12,19 +15,21 @@
       import { setConfig } from 'https://esm.run/@htmlplus/ui/config.js';
 
       setConfig({
-        element: {
+        elements: {
           'plus-icon': {
-            property: {
-              resolver: ({ name }) => {
-                const url = `https://cdn.jsdelivr.net/npm/@tabler/icons/icons/${name}.svg`;
+            properties: {
+              resolver: {
+                default: ({ name }) => {
+                  const url = `https://cdn.jsdelivr.net/npm/@tabler/icons/icons/${name}.svg`;
 
-                return fetch(url).then(async (response) => {
-                  const body = await response.text();
+                  return fetch(url).then(async (response) => {
+                    const body = await response.text();
 
-                  if (!response.ok) throw new Error(body);
+                    if (!response.ok) throw new Error(body);
 
-                  return body;
-                });
+                    return body;
+                  });
+                }
               }
             }
           }

@@ -6,14 +6,14 @@ import { CarouselPlugin } from './base';
 
 export class CarouselPluginTween extends CarouselPlugin {
   private get active(): boolean {
-    return !!this.instance.tweenFactorBase
+    return !!this.instance.tweenFactorBase;
   }
 
   public events = {
-    'reInit': this.handleEvent,
-    'scroll': this.handleEvent,
-    'slideFocus': this.handleEvent,
-  }
+    reInit: this.handleEvent,
+    scroll: this.handleEvent,
+    slideFocus: this.handleEvent
+  };
 
   public initialize() {
     if (!this.active) return;
@@ -52,17 +52,18 @@ export class CarouselPluginTween extends CarouselPlugin {
       engine.slideRegistry[snapIndex].forEach((slideIndex) => {
         if (isScrollEvent && !slidesInView.includes(slideIndex)) return;
 
-        engine.options.loop && engine.slideLooper.loopPoints.forEach((item) => {
-          const target = item.target();
+        engine.options.loop &&
+          engine.slideLooper.loopPoints.forEach((item) => {
+            const target = item.target();
 
-          if (target === 0) return;
+            if (target === 0) return;
 
-          if (slideIndex !== item.index) return;
+            if (slideIndex !== item.index) return;
 
-          const sign = Math.sign(target);
+            const sign = Math.sign(target);
 
-          diffToTarget = scrollSnap + sign * (1 - sign * scrollProgress);
-        });
+            diffToTarget = scrollSnap + sign * (1 - sign * scrollProgress);
+          });
 
         const factor1 = diffToTarget * factor;
 
