@@ -19,7 +19,7 @@ let CarouselProgress = class extends CarouselChild {
   handleUpdate() {
     if (!this.api) return;
     const value = this.api.scrollProgress();
-    if (typeof value != "number") {
+    if (typeof value !== "number") {
       return this.$bar.removeAttribute("style");
     }
     const progress = Math.max(0, Math.min(1, value)) * 100;

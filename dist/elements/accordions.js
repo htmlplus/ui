@@ -11,8 +11,9 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let Accordions = class extends PlusCore {
-  get state() {
-    return {
+  constructor() {
+    super(...arguments);
+    this.state = {
       open: this.open.bind(this)
     };
   }
@@ -43,7 +44,7 @@ __decorateClass([
 ], Accordions.prototype, "overrides", 2);
 __decorateClass([
   Provider("accordions")
-], Accordions.prototype, "state", 1);
+], Accordions.prototype, "state", 2);
 Accordions = __decorateClass([
   Element()
 ], Accordions);

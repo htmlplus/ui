@@ -21,15 +21,13 @@ let CarouselCounter = class extends CarouselChild {
     return this.template.replaceAll("%TOTAL%", this.total).replaceAll("%CURRENT%", this.current);
   }
   get current() {
-    var _a;
-    const value = (_a = this.api) == null ? void 0 : _a.selectedScrollSnap();
-    if (typeof value != "number") return "-";
+    const value = this.api?.selectedScrollSnap();
+    if (typeof value !== "number") return "-";
     return `${value + 1}`;
   }
   get total() {
-    var _a;
-    const value = (_a = this.api) == null ? void 0 : _a.scrollSnapList().length;
-    if (typeof value != "number") return "-";
+    const value = this.api?.scrollSnapList().length;
+    if (typeof value !== "number") return "-";
     return `${value}`;
   }
   render() {

@@ -68,21 +68,19 @@ let Cropper = class extends PlusCore {
   }
   get options() {
     const aspectRatio = (() => {
-      if (this.shape != "rectangle") return 1;
-      if (typeof this.aspectRatio == "number") return this.aspectRatio;
-      let [valueA, valueB] = `${this.aspectRatio}`.split("/").map((item) => isNaN(item) ? NaN : parseFloat(item));
+      if (this.shape !== "rectangle") return 1;
+      if (typeof this.aspectRatio === "number") return this.aspectRatio;
+      let [valueA, valueB] = `${this.aspectRatio}`.split("/").map((item) => Number.isNaN(Number(item)) ? NaN : parseFloat(item));
       if (valueB === void 0) valueB = 1;
-      if (!isNaN(valueA + valueB)) return valueA / valueB;
+      if (!Number.isNaN(valueA + valueB)) return valueA / valueB;
       return NaN;
     })();
-    const view = (() => {
-      return {
-        none: 0,
-        fit: 1,
-        contain: 2,
-        cover: 3
-      }[this.view];
-    })();
+    const view = {
+      none: 0,
+      fit: 1,
+      contain: 2,
+      cover: 3
+    }[this.view];
     const zoomable = (() => {
       const value = `${this.zoomable}`;
       if (["touch", "wheel"].includes(value)) return value;
@@ -96,8 +94,8 @@ let Cropper = class extends PlusCore {
       center: this.indicator,
       checkCrossOrigin: true,
       checkOrientation: true,
-      cropBoxMovable: this.mode == "crop",
-      cropBoxResizable: this.mode == "crop",
+      cropBoxMovable: this.mode === "crop",
+      cropBoxResizable: this.mode === "crop",
       data: this.value,
       dragMode: this.mode,
       guides: this.guides,
@@ -113,15 +111,15 @@ let Cropper = class extends PlusCore {
       movable: true,
       preview: "",
       responsive: !!this.responsive,
-      restore: this.responsive == "reset",
+      restore: this.responsive === "reset",
       rotatable: true,
       scalable: true,
       toggleDragModeOnDblclick: false,
       viewMode: view,
       wheelZoomRatio: this.zoomRatio,
       zoomable: !!zoomable,
-      zoomOnTouch: zoomable == true || zoomable == "touch",
-      zoomOnWheel: zoomable == true || zoomable == "wheel",
+      zoomOnTouch: zoomable === true || zoomable === "touch",
+      zoomOnWheel: zoomable === true || zoomable === "wheel",
       crop: this.onCrop,
       cropend: this.onCropEnd,
       cropmove: this.onCropMove,
@@ -130,7 +128,7 @@ let Cropper = class extends PlusCore {
       zoom: this.onZoom
     };
   }
-  watcher(next, prev, name) {
+  watcher(next, _prev, name) {
     if (this.locked) return;
     switch (name) {
       case "aspectRatio":
@@ -206,8 +204,7 @@ let Cropper = class extends PlusCore {
     });
   }
   terminate() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.destroy();
+    this.instance?.destroy();
     this.instance = void 0;
   }
   onCrop() {
@@ -268,8 +265,8 @@ let Cropper = class extends PlusCore {
   }
   render() {
     return html`<div class=${this.classes}>
-        <img class="image" alt="cropper" src=${this.src} />
-      </div>`;
+				<img class="image" alt="cropper" src=${this.src} />
+			</div>`;
   }
 };
 Cropper.tag = "plus-cropper";

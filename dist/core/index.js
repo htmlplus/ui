@@ -1,13 +1,3 @@
-var __defProp = Object.defineProperty;
-var __typeError = (msg) => {
-  throw TypeError(msg);
-};
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
-var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
-var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-var __privateSet = (obj, member, value, setter2) => (__accessCheck(obj, member, "write to private field"), setter2 ? setter2.call(obj, value) : member.set(obj, value), value);
 const SPLIT_LOWER_UPPER_RE = new RegExp("([\\p{Ll}\\d])(\\p{Lu})", "gu");
 const SPLIT_UPPER_UPPER_RE = new RegExp("(\\p{Lu})([\\p{Lu}][\\p{Ll}])", "gu");
 const SPLIT_SEPARATE_NUMBER_RE = new RegExp("(\\d)\\p{Ll}|(\\p{L})\\d", "u");
@@ -42,12 +32,12 @@ function splitSeparateNumbers(value) {
 }
 function noCase(input, options) {
   const [prefix2, words, suffix] = splitPrefixSuffix(input, options);
-  return prefix2 + words.map(lowerFactory(options == null ? void 0 : options.locale)).join((options == null ? void 0 : options.delimiter) ?? " ") + suffix;
+  return prefix2 + words.map(lowerFactory(options?.locale)).join(options?.delimiter ?? " ") + suffix;
 }
 function pascalCase(input, options) {
   const [prefix2, words, suffix] = splitPrefixSuffix(input, options);
-  const lower = lowerFactory(options == null ? void 0 : options.locale);
-  const upper = upperFactory(options == null ? void 0 : options.locale);
+  const lower = lowerFactory(options?.locale);
+  const upper = upperFactory(options?.locale);
   const transform = pascalCaseTransformFactory(lower, upper);
   return prefix2 + words.map(transform).join("") + suffix;
 }
@@ -132,11 +122,18 @@ const dispatch = (target, type, eventInitDict) => {
 };
 const on = (target, type, handler, options) => {
   const element = host(target);
-  if (type != "outside") {
+  if (type !== "outside") {
     return element.addEventListener(type, handler, options);
   }
   const callback = (event2) => {
-    !event2.composedPath().some((item) => item == element) && handler(event2);
+    const has = event2.composedPath().some((item) => item === element);
+    if (has)
+      return;
+    if (typeof handler === "function") {
+      handler(event2);
+    } else {
+      handler.handleEvent(event2);
+    }
   };
   type = "ontouchstart" in window.document.documentElement ? "touchstart" : "click";
   on(document, type, callback, options);
@@ -150,11 +147,11 @@ const on = (target, type, handler, options) => {
 };
 const off = (target, type, handler, options) => {
   const element = host(target);
-  if (type != "outside") {
-    return element.removeEventListener(type, handler, options);
+  if (type !== "outside") {
+    return void element.removeEventListener(type, handler, options);
   }
   const index = outsides.findIndex((outside2) => {
-    return outside2.element == element && outside2.handler == handler && outside2.options == options;
+    return outside2.element === element && outside2.handler === handler && outside2.options === options;
   });
   const outside = outsides[index];
   if (!outside)
@@ -163,18 +160,17 @@ const off = (target, type, handler, options) => {
   outsides.splice(index, 1);
 };
 const isEvent = (input) => {
-  return !!(input == null ? void 0 : input.match(/on[A-Z]\w+/g));
+  return !!input?.match(/on[A-Z]\w+/g);
 };
 const toEvent = (input) => {
-  return input == null ? void 0 : input.slice(2).toLowerCase();
+  return input?.slice(2).toLowerCase();
 };
 const updateAttribute = (target, key, value) => {
   const element = host(target);
-  if ([void 0, null, false].includes(value)) {
-    element.removeAttribute(key);
-  } else {
-    element.setAttribute(key, value === true ? "" : value);
+  if (value === void 0 || value === null || value === false) {
+    return void element.removeAttribute(key);
   }
+  element.setAttribute(key, value === true ? "" : String(value));
 };
 const symbol = Symbol();
 const attributes$2 = (target, attributes2) => {
@@ -200,8 +196,7 @@ const attributes$2 = (target, attributes2) => {
   element[symbol] = { ...next };
 };
 const call = (target, key, ...args) => {
-  var _a;
-  return (_a = target[key]) == null ? void 0 : _a.apply(target, args);
+  return target[key]?.apply(target, args);
 };
 const typeOf = (input) => {
   return Object.prototype.toString.call(input).replace(/\[|\]|object| /g, "").toLowerCase();
@@ -216,9 +211,10 @@ const classes = (input, smart) => {
       break;
     }
     case "object": {
-      const keys = Object.keys(input);
+      const obj = input;
+      const keys = Object.keys(obj);
       for (const key of keys) {
-        const value = input[key];
+        const value = obj[key];
         const name = kebabCase(key);
         const type = typeOf(value);
         switch (type) {
@@ -246,7 +242,7 @@ const merge = (target, ...sources) => {
   for (const source of sources) {
     if (!source)
       continue;
-    if (typeOf(source) != "object") {
+    if (typeOf(source) !== "object") {
       target = source;
       continue;
     }
@@ -267,7 +263,7 @@ const getConfigCreator = (namespace) => () => {
   return getConfig$1(namespace);
 };
 const setConfig$1 = (namespace, config, options) => {
-  const previous = (options == null ? void 0 : options.override) ? {} : globalThis[`$htmlplus:${namespace}$`];
+  const previous = options?.override ? {} : globalThis[`$htmlplus:${namespace}$`];
   const next = merge({}, previous, config);
   globalThis[`$htmlplus:${namespace}$`] = next;
 };
@@ -301,32 +297,31 @@ const getTag = (target) => {
   return target.constructor[STATIC_TAG] ?? target[STATIC_TAG];
 };
 const getNamespace = (target) => {
-  var _a, _b;
-  return (_b = (_a = getTag(target)) == null ? void 0 : _a.split("-")) == null ? void 0 : _b.at(0);
+  return getTag(target)?.split("-")?.at(0);
 };
 const isCSSColor = (input) => {
   const option = new Option();
   option.style.color = input;
   return option.style.color !== "";
 };
-const isRTL = (target) => direction(target) == "rtl";
+const isRTL = (target) => {
+  return direction(target) === "rtl";
+};
 const isServer = () => {
-  return !(typeof window != "undefined" && window.document);
+  return !(typeof window !== "undefined" && window.document);
 };
 const shadowRoot = (target) => {
-  var _a;
-  return (_a = host(target)) == null ? void 0 : _a.shadowRoot;
+  return host(target)?.shadowRoot;
 };
 function query(target, selectors) {
-  var _a;
-  return (_a = shadowRoot(target)) == null ? void 0 : _a.querySelector(selectors);
+  return shadowRoot(target)?.querySelector(selectors);
 }
 function queryAll(target, selectors) {
-  var _a;
-  return (_a = shadowRoot(target)) == null ? void 0 : _a.querySelectorAll(selectors);
+  return shadowRoot(target)?.querySelectorAll(selectors);
 }
 const task = (options) => {
-  let running, promise;
+  let running;
+  let promise;
   const run = () => {
     if (options.canStart && !options.canStart())
       return Promise.resolve(false);
@@ -344,8 +339,10 @@ const task = (options) => {
     if (!running)
       return promise;
     try {
-      if (options.canRun && !options.canRun())
-        return running = false;
+      if (options.canRun && !options.canRun()) {
+        running = false;
+        return running;
+      }
       options.handler();
       running = false;
       return true;
@@ -810,7 +807,8 @@ const render = (where, what) => {
 const html$1 = tag("html");
 tag("svg");
 const requestUpdate = (target, name, previous, callback) => {
-  const stacks = target[API_STACKS] || (target[API_STACKS] = /* @__PURE__ */ new Map());
+  target[API_STACKS] ||= /* @__PURE__ */ new Map();
+  const stacks = target[API_STACKS];
   const stack = stacks.get(name) || { callbacks: [], previous };
   callback && stack.callbacks.push(callback);
   stacks.set(name, stack);
@@ -822,11 +820,10 @@ const requestUpdate = (target, name, previous, callback) => {
     render(shadowRoot(target), () => call(target, METHOD_RENDER) ?? null);
     stacks.forEach((state) => {
       state.callbacks.forEach((callback2, index, callbacks) => {
-        callback2(callbacks.length - 1 != index);
+        callback2(callbacks.length - 1 !== index);
       });
     });
     (() => {
-      var _a, _b, _c;
       const raw = target.constructor[STATIC_STYLE];
       if (!raw)
         return;
@@ -839,17 +836,17 @@ const requestUpdate = (target, name, previous, callback) => {
       let globalSheet = target.constructor[API_STYLE];
       if (!hasVariable && localSheet)
         return;
-      const parsed = raw.replace(regex1, (match, key) => {
+      const parsed = raw.replace(regex1, (_match, key) => {
         let value = target;
         for (const section of key.split("-")) {
-          value = value == null ? void 0 : value[section];
+          value = value?.[section];
         }
         return value;
       }).replace(regex2, "");
       if (!localSheet) {
         localSheet = new CSSStyleSheet();
         target[API_STYLE] = localSheet;
-        shadowRoot(target).adoptedStyleSheets.push(localSheet);
+        shadowRoot(target)?.adoptedStyleSheets.push(localSheet);
       }
       const localStyle = parsed.replace(regex3, "");
       localSheet.replaceSync(localStyle);
@@ -860,14 +857,14 @@ const requestUpdate = (target, name, previous, callback) => {
         target.constructor[API_STYLE] = globalSheet;
         document.adoptedStyleSheets.push(globalSheet);
       }
-      const globalStyle = (_c = (_b = (_a = parsed == null ? void 0 : parsed.match(regex3)) == null ? void 0 : _a.join("")) == null ? void 0 : _b.replaceAll("global", "")) == null ? void 0 : _c.replaceAll(":host", getTag(target));
+      const globalStyle = parsed?.match(regex3)?.join("")?.replaceAll("global", "")?.replaceAll(":host", getTag(target) || "");
       globalSheet.replaceSync(globalStyle);
     })();
     call(target, LIFECYCLE_UPDATED, states);
     stacks.clear();
     target[API_RENDER_COMPLETED] = true;
   };
-  target[API_REQUEST] || (target[API_REQUEST] = task({ handler }));
+  target[API_REQUEST] ||= task({ handler });
   call(target, API_REQUEST);
 };
 const styles$1 = (input) => {
@@ -877,10 +874,10 @@ const toCSSColor = (input) => {
   return isCSSColor(input) ? input : void 0;
 };
 const toCSSUnit = (input) => {
-  if (input == null || input === "") {
+  if (input === void 0 || input === null || input === "") {
     return;
   }
-  if (typeof input === "number" || !isNaN(Number(input))) {
+  if (typeof input === "number" || typeof input === "string" && !Number.isNaN(Number(input))) {
     return `${input}px`;
   }
   if (/^\d+(\.\d+)?(px|pt|cm|mm|in|em|rem|%|vw|vh)$/.test(input)) {
@@ -888,7 +885,7 @@ const toCSSUnit = (input) => {
   }
 };
 function toDecorator(util, ...args) {
-  return function(target, key) {
+  return (target, key) => {
     defineProperty(target, key, {
       get() {
         return util(this, ...args);
@@ -900,7 +897,8 @@ const toProperty = (input, type) => {
   if (type === void 0)
     return input;
   const string = `${input}`;
-  if (TYPE_BOOLEAN & type || type === Boolean) {
+  const typeNumber = typeof type === "number" ? type : 0;
+  if (TYPE_BOOLEAN & typeNumber || type === Boolean) {
     if (string === "")
       return true;
     if (string === "true")
@@ -908,50 +906,49 @@ const toProperty = (input, type) => {
     if (string === "false")
       return false;
   }
-  if (TYPE_NUMBER & type || type === Number) {
-    if (string != "" && !isNaN(input)) {
-      return parseFloat(input);
+  if (TYPE_NUMBER & typeNumber || type === Number) {
+    if (string !== "" && !Number.isNaN(Number(input))) {
+      return parseFloat(string);
     }
   }
-  if (TYPE_NULL & type || type === null) {
+  if (TYPE_NULL & typeNumber || type === null) {
     if (string === "null") {
       return null;
     }
   }
-  if (TYPE_DATE & type || type === Date) {
-    const value = new Date(input);
-    if (value.toString() != "Invalid Date") {
+  if (TYPE_DATE & typeNumber || type === Date) {
+    const value = new Date(string);
+    if (!Number.isNaN(value.getTime())) {
       return value;
     }
   }
-  if (TYPE_ARRAY & type || type === Array) {
+  if (TYPE_ARRAY & typeNumber || type === Array) {
     try {
-      const value = JSON.parse(input);
-      if (typeOf(value) == "array") {
+      const value = JSON.parse(string);
+      if (typeOf(value) === "array")
+        return value;
+    } catch {
+    }
+  }
+  if (TYPE_OBJECT & typeNumber || type === Object) {
+    try {
+      const value = JSON.parse(string);
+      if (typeOf(value) === "object") {
         return value;
       }
     } catch {
     }
   }
-  if (TYPE_OBJECT & type || type === Object) {
-    try {
-      const value = JSON.parse(input);
-      if (typeOf(value) == "object") {
-        return value;
-      }
-    } catch {
-    }
-  }
-  if (TYPE_UNDEFINED & type || type === void 0) {
+  if (TYPE_UNDEFINED & typeNumber) {
     if (string === "undefined") {
       return void 0;
     }
   }
-  if (TYPE_STRING & type || type === String) {
-    return input;
+  if (TYPE_STRING & typeNumber || type === String) {
+    return string;
   }
   try {
-    return JSON.parse(input);
+    return JSON.parse(string);
   } catch {
     return input;
   }
@@ -962,11 +959,11 @@ const wrapMethod = (mode, target, key, handler) => {
     throw new TypeError(`Property ${String(key)} is not a function`);
   }
   function wrapped(...args) {
-    if (mode == "before") {
+    if (mode === "before") {
       handler.apply(this, args);
     }
-    const result = original == null ? void 0 : original.apply(this, args);
-    if (mode == "after") {
+    const result = original?.apply(this, args);
+    if (mode === "after") {
       handler.apply(this, args);
     }
     return result;
@@ -974,7 +971,7 @@ const wrapMethod = (mode, target, key, handler) => {
   target[key] = wrapped;
 };
 function Bind() {
-  return function(target, key, descriptor) {
+  return (_target, key, descriptor) => {
     const original = descriptor.value;
     return {
       configurable: true,
@@ -991,12 +988,12 @@ function Bind() {
   };
 }
 function Provider(namespace) {
-  return function(target, key) {
+  return (target, key) => {
     const symbol2 = Symbol();
     const [MAIN, SUB] = namespace.split(".");
     const prefix2 = `${KEY}:${MAIN}`;
     const cleanups = (instance) => {
-      return instance[symbol2] || (instance[symbol2] = /* @__PURE__ */ new Map());
+      return instance[symbol2] ||= /* @__PURE__ */ new Map();
     };
     const update = (instance) => {
       const options = {};
@@ -1020,11 +1017,10 @@ function Provider(namespace) {
       cleanups(this).set(prefix2, cleanup);
     });
     wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
-      var _a;
       update(this);
       if (cleanups(this).size && !states.has(SUB))
         return;
-      (_a = cleanups(this).get(`${prefix2}:${states.get(SUB)}`)) == null ? void 0 : _a();
+      cleanups(this).get(`${prefix2}:${states.get(SUB)}`)?.();
       const type = `${prefix2}:${this[SUB]}`;
       const cleanup = () => {
         off(window, `${type}:presence`, onPresence);
@@ -1038,17 +1034,19 @@ function Provider(namespace) {
       cleanups(this).set(type, cleanup);
     });
     wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
-      cleanups(this).forEach((cleanup) => cleanup());
+      cleanups(this).forEach((cleanup) => {
+        cleanup();
+      });
     });
   };
 }
 function Consumer(namespace) {
-  return function(target, key) {
+  return (target, key) => {
     const symbol2 = Symbol();
     const [MAIN, SUB] = namespace.split(".");
     const prefix2 = `${KEY}:${MAIN}`;
     const cleanups = (instance) => {
-      return instance[symbol2] || (instance[symbol2] = /* @__PURE__ */ new Map());
+      return instance[symbol2] ||= /* @__PURE__ */ new Map();
     };
     const update = (instance, state) => {
       instance[key] = state;
@@ -1056,7 +1054,7 @@ function Consumer(namespace) {
     wrapMethod("after", target, LIFECYCLE_CONNECTED, function() {
       if (SUB && this[SUB])
         return;
-      let connected;
+      let connected = false;
       const options = {
         bubbles: true
       };
@@ -1078,10 +1076,9 @@ function Consumer(namespace) {
       !connected && setTimeout(() => dispatch(this, `${prefix2}:presence`, options));
     });
     wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
-      var _a;
       if (cleanups(this).size && !states.has(SUB))
         return;
-      (_a = cleanups(this).get(`${prefix2}:${states.get(SUB)}`)) == null ? void 0 : _a();
+      cleanups(this).get(`${prefix2}:${states.get(SUB)}`)?.();
       const type = `${prefix2}:${this[SUB]}`;
       const cleanup = () => {
         off(window, `${type}:disconnect`, onDisconnect);
@@ -1101,52 +1098,60 @@ function Consumer(namespace) {
       dispatch(window, `${type}:presence`);
     });
     wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
-      cleanups(this).forEach((cleanup) => cleanup());
+      cleanups(this).forEach((cleanup) => {
+        cleanup();
+      });
     });
   };
 }
 function Element() {
-  return function(constructor) {
+  return (constructor) => {
     if (isServer())
       return;
     const tag2 = getTag(constructor);
+    if (!tag2)
+      return;
     if (customElements.get(tag2))
       return;
     customElements.define(tag2, proxy(constructor));
   };
 }
 const proxy = (constructor) => {
-  var _instance, _a;
-  return _a = class extends HTMLElement {
+  return class Plus extends HTMLElement {
+    #instance;
+    // biome-ignore lint: TODO
+    static formAssociated = constructor["formAssociated"];
+    // biome-ignore lint: TODO
+    static observedAttributes = constructor["observedAttributes"];
     constructor() {
       super();
-      __privateAdd(this, _instance);
       this.attachShadow({
         mode: "open",
+        // biome-ignore lint: TODO
         delegatesFocus: constructor["delegatesFocus"],
+        // biome-ignore lint: TODO
         slotAssignment: constructor["slotAssignment"]
       });
-      __privateSet(this, _instance, new constructor());
-      __privateGet(this, _instance)[API_HOST] = () => this;
-      call(__privateGet(this, _instance), LIFECYCLE_CONSTRUCTED);
+      this.#instance = new constructor();
+      this.#instance[API_HOST] = () => this;
+      call(this.#instance, LIFECYCLE_CONSTRUCTED);
     }
     adoptedCallback() {
-      call(__privateGet(this, _instance), LIFECYCLE_ADOPTED);
+      call(this.#instance, LIFECYCLE_ADOPTED);
     }
     attributeChangedCallback(key, prev, next) {
-      if (prev != next) {
-        __privateGet(this, _instance)["RAW:" + key] = next;
+      if (prev !== next) {
+        this.#instance[`RAW:${key}`] = next;
       }
     }
     connectedCallback() {
       (() => {
-        var _a2, _b;
-        const namespace = getNamespace(__privateGet(this, _instance));
-        const tag2 = getTag(__privateGet(this, _instance));
-        const properties = (_b = (_a2 = getConfig$1(namespace).elements) == null ? void 0 : _a2[tag2]) == null ? void 0 : _b.properties;
+        const namespace = getNamespace(this.#instance) || "";
+        const tag2 = getTag(this.#instance) || "";
+        const properties = getConfig$1(namespace).elements?.[tag2]?.properties;
         if (!properties)
           return;
-        const defaults = Object.fromEntries(Object.entries(properties).map(([key, value]) => [key, value == null ? void 0 : value.default]));
+        const defaults = Object.fromEntries(Object.entries(properties).map(([key, value]) => [key, value?.default]));
         Object.assign(this, defaults);
       })();
       (() => {
@@ -1155,33 +1160,32 @@ const proxy = (constructor) => {
         if (!props)
           return;
         for (const [key2, value] of Object.entries(props)) {
-          if (this[key2] != void 0)
+          if (this[key2] !== void 0)
             continue;
-          if (key2 == "children")
+          if (key2 === "children")
             continue;
-          if (typeof value != "object")
+          if (typeof value !== "object")
             continue;
           this[key2] = value;
         }
       })();
-      __privateGet(this, _instance)[API_CONNECTED] = true;
-      call(__privateGet(this, _instance), LIFECYCLE_CONNECTED);
-      requestUpdate(__privateGet(this, _instance), void 0, void 0, () => {
-        call(__privateGet(this, _instance), LIFECYCLE_READY);
+      this.#instance[API_CONNECTED] = true;
+      call(this.#instance, LIFECYCLE_CONNECTED);
+      requestUpdate(this.#instance, void 0, void 0, () => {
+        call(this.#instance, LIFECYCLE_READY);
       });
     }
     disconnectedCallback() {
-      call(__privateGet(this, _instance), LIFECYCLE_DISCONNECTED);
+      call(this.#instance, LIFECYCLE_DISCONNECTED);
     }
-  }, _instance = new WeakMap(), __publicField(_a, "formAssociated", constructor["formAssociated"]), __publicField(_a, "observedAttributes", constructor["observedAttributes"]), _a;
+  };
 };
 function Event(options = {}) {
-  return function(target, key) {
+  return (target, key) => {
     target[key] = function(detail) {
-      var _a;
       const element = host(this);
       const framework = getFramework(this);
-      options.bubbles ?? (options.bubbles = false);
+      options.bubbles ??= false;
       let type = String(key);
       switch (framework) {
         // TODO: Experimental
@@ -1210,10 +1214,10 @@ function Event(options = {}) {
           break;
       }
       let event2;
-      const resolver = (_a = getConfig$1(getNamespace(target)).event) == null ? void 0 : _a.resolver;
-      event2 || (event2 = resolver == null ? void 0 : resolver({ detail, element, framework, options, type }));
+      const resolver = getConfig$1(getNamespace(target) || "").event?.resolver;
+      event2 ||= resolver?.({ detail, element, framework, options, type });
       event2 && element.dispatchEvent(event2);
-      event2 || (event2 = dispatch(this, type, { ...options, detail }));
+      event2 ||= dispatch(this, type, { ...options, detail });
       return event2;
     };
   };
@@ -1222,9 +1226,9 @@ function Host() {
   return toDecorator(host);
 }
 function Listen(type, options) {
-  return function(target, key, descriptor) {
+  return (target, key, descriptor) => {
     const element = (instance) => {
-      switch (options == null ? void 0 : options.target) {
+      switch (options?.target) {
         case "body":
           return window.document.body;
         case "document":
@@ -1247,7 +1251,7 @@ function Listen(type, options) {
   };
 }
 function Method() {
-  return function(target, key, descriptor) {
+  return (target, key, _descriptor) => {
     wrapMethod("before", target, LIFECYCLE_CONSTRUCTED, function() {
       host(this)[key] = this[key].bind(this);
     });
@@ -1283,33 +1287,34 @@ const getMedias = (breakpoints) => {
   }, {});
 };
 const matchContainer = (element, container) => {
-  const $element = element;
   const getData = () => {
-    if ($element[CONTAINER_DATA])
-      return $element[CONTAINER_DATA];
+    if (element[CONTAINER_DATA])
+      return element[CONTAINER_DATA];
     const listeners = /* @__PURE__ */ new Set();
     const observer = new ResizeObserver(() => {
-      listeners.forEach((listener) => listener());
+      listeners.forEach((listener) => {
+        listener();
+      });
     });
     observer.observe(element);
-    $element[CONTAINER_DATA] = { listeners, observer };
-    return $element[CONTAINER_DATA];
+    element[CONTAINER_DATA] = { listeners, observer };
+    return element[CONTAINER_DATA];
   };
   const getMatches = () => {
     const width = element.offsetWidth;
     const matches = (container.min === void 0 || width >= container.min) && (container.max === void 0 || width <= container.max);
     return matches;
   };
-  const addEventListener = (type, listener) => {
+  const addEventListener = (_type, listener) => {
     getData().listeners.add(listener);
   };
-  const removeEventListener = (type, listener) => {
+  const removeEventListener = (_type, listener) => {
     const data2 = getData();
     data2.listeners.delete(listener);
     if (data2.listeners.size !== 0)
       return;
     data2.observer.disconnect();
-    delete $element[CONTAINER_DATA];
+    delete element[CONTAINER_DATA];
   };
   return {
     get matches() {
@@ -1320,26 +1325,27 @@ const matchContainer = (element, container) => {
   };
 };
 function Overrides() {
-  return function(target, key) {
+  return (target, key) => {
     const DISPOSERS = Symbol();
-    const breakpoints = getConfig$1(getNamespace(target)).breakpoints || {};
+    const breakpoints = getConfig$1(getNamespace(target) || "").breakpoints || {};
     const containers = getContainers(breakpoints);
     const medias = getMedias(breakpoints);
     wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
       if (!states.has(key))
         return;
-      const disposers = this[DISPOSERS] ?? (this[DISPOSERS] = /* @__PURE__ */ new Map());
+      this[DISPOSERS] ??= /* @__PURE__ */ new Map();
+      const disposers = this[DISPOSERS];
       const overrides = this[key] || {};
       const activeKeys = new Set(disposers.keys());
       const overrideKeys = Object.keys(overrides);
       const containerKeys = overrideKeys.filter((breakpoint) => breakpoint in containers);
       const mediaKeys = overrideKeys.filter((breakpoint) => breakpoint in medias);
-      let timeout;
+      let timeout = -1;
       let next = {};
       const apply = (key2) => {
         clearTimeout(timeout);
         Object.assign(next, overrides[key2]);
-        timeout = setTimeout(() => {
+        timeout = window.setTimeout(() => {
           Object.assign(host(this), overrides[key2]);
           next = {};
         }, 0);
@@ -1399,25 +1405,28 @@ function Overrides() {
       }
       for (const activeKey of activeKeys) {
         const disposer = disposers.get(activeKey);
-        disposer();
+        disposer?.();
         disposers.delete(activeKey);
       }
     });
     wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
-      const disposers = this[DISPOSERS] ?? (this[DISPOSERS] = /* @__PURE__ */ new Map());
-      disposers.forEach((disposer) => disposer());
+      this[DISPOSERS] ??= /* @__PURE__ */ new Map();
+      const disposers = this[DISPOSERS];
+      disposers.forEach((disposer) => {
+        disposer();
+      });
       disposers.clear();
     });
   };
 }
 function Property(options) {
-  return function(target, key, descriptor) {
-    var _a;
+  return (target, key, descriptor) => {
     const KEY2 = Symbol();
     const LOCKED = Symbol();
-    const attribute2 = (options == null ? void 0 : options.attribute) || kebabCase(key);
-    const originalSetter = descriptor == null ? void 0 : descriptor.set;
-    ((_a = target.constructor)["observedAttributes"] || (_a["observedAttributes"] = [])).push(attribute2);
+    const attribute2 = options?.attribute || kebabCase(key);
+    const originalSetter = descriptor?.set;
+    target.constructor["observedAttributes"] ||= [];
+    target.constructor["observedAttributes"].push(attribute2);
     function get() {
       return this[KEY2];
     }
@@ -1434,7 +1443,7 @@ function Property(options) {
       requestUpdate(this, key, previous, (skipped) => {
         if (skipped)
           return;
-        if (!(options == null ? void 0 : options.reflect))
+        if (!options?.reflect)
           return;
         this[LOCKED] = true;
         updateAttribute(this, attribute2, next);
@@ -1447,10 +1456,10 @@ function Property(options) {
     if (!descriptor) {
       defineProperty(target, key, { configurable: true, get, set });
     }
-    defineProperty(target, "RAW:" + attribute2, {
+    defineProperty(target, `RAW:${attribute2}`, {
       set(value) {
         if (!this[LOCKED]) {
-          this[key] = toProperty(value, options == null ? void 0 : options.type);
+          this[key] = toProperty(value, options?.type);
         }
       }
     });
@@ -1469,7 +1478,7 @@ function Property(options) {
       };
       defineProperty(host(this), key, { configurable: true, get: get2, set: set2 });
     });
-    if ((options == null ? void 0 : options.reflect) && (descriptor == null ? void 0 : descriptor.get)) {
+    if (options?.reflect && descriptor?.get) {
       wrapMethod("before", target, LIFECYCLE_UPDATED, function() {
         this[LOCKED] = true;
         updateAttribute(this, attribute2, this[key]);
@@ -1485,7 +1494,7 @@ function QueryAll(selectors) {
   return toDecorator(queryAll, selectors);
 }
 function State() {
-  return function(target, key) {
+  return (target, key) => {
     const KEY2 = Symbol();
     const name = String(key);
     defineProperty(target, key, {
@@ -1505,11 +1514,10 @@ function State() {
   };
 }
 function Style() {
-  return function(target, key) {
+  return (target, key) => {
     const LAST = Symbol();
     const SHEET = Symbol();
     wrapMethod("before", target, LIFECYCLE_UPDATED, function() {
-      var _a;
       let sheet = this[SHEET];
       let value = this[key];
       const update = (value2) => (result) => {
@@ -1521,7 +1529,7 @@ function Style() {
       if (!sheet) {
         sheet = new CSSStyleSheet();
         this[SHEET] = sheet;
-        (_a = shadowRoot(this)) == null ? void 0 : _a.adoptedStyleSheets.push(sheet);
+        shadowRoot(this)?.adoptedStyleSheets.push(sheet);
       }
       if (typeof value === "function") {
         value = value.call(this);
@@ -1537,13 +1545,15 @@ function Style() {
   };
 }
 const toCssString = (input, parent) => {
-  if (typeof input == "string") {
+  if (typeof input === "string") {
     return input.trim();
   }
   if (Array.isArray(input)) {
     return input.map((item) => toCssString(item, parent)).filter(Boolean).join("\n");
   }
-  if (typeof input != "object")
+  if (input === null)
+    return "";
+  if (typeof input !== "object")
     return "";
   let result = "";
   for (const key of Object.keys(input)) {
@@ -1561,7 +1571,7 @@ const toCssString = (input, parent) => {
   return parent ? result : `:host {${result}}`;
 };
 function Watch(keys, immediate) {
-  return function(target, key) {
+  return (target, key) => {
     const all = [keys].flat().filter((item) => item);
     wrapMethod("after", target, LIFECYCLE_UPDATED, function(states) {
       if (!immediate && !this[API_RENDER_COMPLETED])
@@ -1578,23 +1588,23 @@ const attributes = attributes$2;
 const html = html$1;
 const styles = styles$1;
 const BREAKPOINTS = {
-  "xs": {
+  xs: {
     type: "media",
     min: 0
   },
-  "sm": {
+  sm: {
     type: "media",
     min: 600
   },
-  "md": {
+  md: {
     type: "media",
     min: 900
   },
-  "lg": {
+  lg: {
     type: "media",
     min: 1200
   },
-  "xl": {
+  xl: {
     type: "media",
     min: 1536
   },
@@ -1656,14 +1666,14 @@ __decorateClass$1([
 __decorateClass$1([
   Bind()
 ], PlusCore.prototype, "forceUpdate", 1);
-var __defProp2 = Object.defineProperty;
+var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
   var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
   for (var i = decorators.length - 1, decorator; i >= 0; i--)
     if (decorator = decorators[i])
       result = (kind ? decorator(target, key, result) : decorator(result)) || result;
-  if (kind && result) __defProp2(target, key, result);
+  if (kind && result) __defProp(target, key, result);
   return result;
 };
 const _PlusForm = class _PlusForm extends PlusCore {
@@ -1804,43 +1814,38 @@ class Animation {
   }
   get source() {
     const element = this.config.source;
-    if (typeof element == "function") return element();
+    if (typeof element === "function") return element();
     return element;
   }
   get target() {
     const element = this.config.target;
-    if (typeof element == "function") return element();
+    if (typeof element === "function") return element();
     return element;
   }
   dispose() {
-    var _a;
-    (_a = this.destroy) == null ? void 0 : _a.call(this);
+    this.destroy?.();
   }
   enter(parameters) {
     return new Promise((resolve) => {
-      var _a, _b, _c;
-      (_a = this.destroy) == null ? void 0 : _a.call(this);
+      this.destroy?.();
       this.update("enter");
-      (_c = (_b = this.config).onEnter) == null ? void 0 : _c.call(_b, parameters);
+      this.config.onEnter?.(parameters);
       this.next(() => {
-        var _a2, _b2;
         this.update("entering");
-        (_b2 = (_a2 = this.config).onEntering) == null ? void 0 : _b2.call(_a2, parameters);
+        this.config.onEntering?.(parameters);
         const onCancel = () => {
           resolve(true);
         };
         const onFinish = () => {
-          var _a3, _b3;
           this.update("entered");
-          (_b3 = (_a3 = this.config).onEntered) == null ? void 0 : _b3.call(_a3, parameters);
+          this.config.onEntered?.(parameters);
           resolve(false);
         };
         if (!this.animation) return onFinish();
         this.destroy = () => {
-          var _a3, _b3;
           resolve(true);
-          (_a3 = this.animation) == null ? void 0 : _a3.removeEventListener("cancel", onCancel);
-          (_b3 = this.animation) == null ? void 0 : _b3.removeEventListener("finish", onFinish);
+          this.animation?.removeEventListener("cancel", onCancel);
+          this.animation?.removeEventListener("finish", onFinish);
         };
         this.animation.addEventListener("cancel", onCancel, { once: true });
         this.animation.addEventListener("finish", onFinish, { once: true });
@@ -1852,29 +1857,25 @@ class Animation {
   }
   leave(parameters) {
     return new Promise((resolve) => {
-      var _a, _b, _c;
-      (_a = this.destroy) == null ? void 0 : _a.call(this);
+      this.destroy?.();
       this.update("leave");
-      (_c = (_b = this.config).onLeave) == null ? void 0 : _c.call(_b, parameters);
+      this.config.onLeave?.(parameters);
       this.next(() => {
-        var _a2, _b2;
         this.update("leaving");
-        (_b2 = (_a2 = this.config).onLeaving) == null ? void 0 : _b2.call(_a2, parameters);
+        this.config.onLeaving?.(parameters);
         const onCancel = () => {
           resolve(true);
         };
         const onFinish = () => {
-          var _a3, _b3;
           this.update("leaved");
-          (_b3 = (_a3 = this.config).onLeaved) == null ? void 0 : _b3.call(_a3, parameters);
+          this.config.onLeaved?.(parameters);
           resolve(false);
         };
         if (!this.animation) return onFinish();
         this.destroy = () => {
-          var _a3, _b3;
           resolve(true);
-          (_a3 = this.animation) == null ? void 0 : _a3.removeEventListener("cancel", onCancel);
-          (_b3 = this.animation) == null ? void 0 : _b3.removeEventListener("finish", onFinish);
+          this.animation?.removeEventListener("cancel", onCancel);
+          this.animation?.removeEventListener("finish", onFinish);
         };
         this.animation.addEventListener("cancel", onCancel, { once: true });
         this.animation.addEventListener("finish", onFinish, { once: true });
@@ -1903,6 +1904,8 @@ const _AsyncCache = class _AsyncCache {
         return this.config.cache();
       case "global":
         return _AsyncCache.globalCache;
+      default:
+        return {};
     }
   }
   has(key) {
@@ -1960,27 +1963,27 @@ const _Scrollbar = class _Scrollbar {
     return width;
   }
   static remove(key) {
-    this.keys.add(key);
-    if (this.keys.size > 1) return;
+    _Scrollbar.keys.add(key);
+    if (_Scrollbar.keys.size > 1) return;
     const rect = document.body.getBoundingClientRect();
     const isOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
     if (!isOverflowing) return;
     const dir = window.getComputedStyle(window.document.body).getPropertyValue("direction").toLowerCase();
     const property = dir == "rtl" ? "paddingLeft" : "paddingRight";
-    this.style = {
+    _Scrollbar.style = {
       overflow: document.body.style.overflow,
       [property]: document.body.style[property]
     };
     document.body.style.overflow = "hidden";
-    const scrollbarWidth = this.width;
+    const scrollbarWidth = _Scrollbar.width;
     document.body.style[property] = `${scrollbarWidth}px`;
   }
   static reset(key) {
-    this.keys.delete(key);
-    if (this.keys.size) return;
-    const keys = Object.keys(this.style);
-    for (const key2 of keys) document.body.style[key2] = this.style[key2];
-    this.style = {};
+    _Scrollbar.keys.delete(key);
+    if (_Scrollbar.keys.size) return;
+    const keys = Object.keys(_Scrollbar.style);
+    for (const key2 of keys) document.body.style[key2] = _Scrollbar.style[key2];
+    _Scrollbar.style = {};
   }
 };
 _Scrollbar.keys = /* @__PURE__ */ new Set();

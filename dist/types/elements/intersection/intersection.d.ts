@@ -60,7 +60,7 @@ export declare class Intersection extends PlusCore {
         rootMargin: string;
         threshold: number | number[];
     };
-    watcher(next: any, prev: any, name: any): void;
+    watcher(next: any, _prev: any, name: any): void;
     initialize(): void;
     terminate(): void;
     onIntersecting(entries: IntersectionObserverEntry[]): void;

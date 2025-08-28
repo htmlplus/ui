@@ -23,7 +23,7 @@ let Spinner = class extends PlusCore {
   }
   get elements() {
     const map = {
-      "default": 8,
+      default: 8,
       "double-bounce": 2
     };
     const number = map[this.type] ?? 1;
@@ -33,10 +33,10 @@ let Spinner = class extends PlusCore {
     return html`${attributes(this, [{
       "role": "status"
     }])}
-        <div class="root">
-          ${this.elements.map((element) => html`<div key=${element} />`)}
-        </div>
-      `;
+				<div class="root">
+					${this.elements.map((element) => html`<div key=${element} />`)}
+				</div>
+			`;
   }
 };
 Spinner.tag = "plus-spinner";

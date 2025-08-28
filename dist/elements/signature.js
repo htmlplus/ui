@@ -29,10 +29,10 @@ let Signature = class extends PlusForm {
     return this.$canvas;
   }
   get redoable() {
-    return this.index != this.history.length - 1;
+    return this.index !== this.history.length - 1;
   }
   get undoable() {
-    return this.index != -1;
+    return this.index !== -1;
   }
   redo() {
     if (!this.redoable) return;
@@ -48,7 +48,7 @@ let Signature = class extends PlusForm {
       offsetWidth,
       offsetHeight
     } = this.$canvas;
-    if (width == offsetWidth && height == offsetHeight) return;
+    if (width === offsetWidth && height === offsetHeight) return;
     this.$canvas.width = offsetWidth;
     this.$canvas.height = offsetHeight;
     if (!this.instance) return;
@@ -97,7 +97,7 @@ let Signature = class extends PlusForm {
         this.load();
         break;
     }
-    if (name == "value") return;
+    if (name === "value") return;
     this.instance.fromData(this.clone());
   }
   clone() {
@@ -124,9 +124,9 @@ let Signature = class extends PlusForm {
       endStroke: this.plusEnd
     };
     for (const key in events) {
-      if (!events.hasOwnProperty(key)) continue;
+      if (!Object.hasOwn(events, key)) continue;
       this.instance.addEventListener(key, (event) => {
-        events[key].call(this, event["detail"]);
+        events[key].call(this, event.detail);
       });
     }
     if (this.disabled) {
@@ -139,11 +139,11 @@ let Signature = class extends PlusForm {
   }
   // TODO
   load() {
-    if (this.previous == this.value) return;
+    if (this.previous === this.value) return;
     this.reset(false);
     this.previous = this.value;
     const image = document.createElement("img");
-    image.src = "data:image/svg+xml;base64," + btoa(this.value);
+    image.src = `data:image/svg+xml;base64,${btoa(this.value)}`;
     image.onerror = () => {
       image.remove();
     };
@@ -161,9 +161,8 @@ let Signature = class extends PlusForm {
     this.previous = this.value = void 0;
   }
   terminate() {
-    var _a;
     this.observer.disconnect();
-    (_a = this.instance) == null ? void 0 : _a.off();
+    this.instance?.off();
   }
   toSVG() {
     return this.instance.toSVG().replace(/<svg[^>]*>(.*?)<\/svg>/, `<svg viewBox="0 0 ${this.$canvas.width} ${this.$canvas.height}">$1<svg>`);
@@ -180,7 +179,7 @@ let Signature = class extends PlusForm {
     this.value = void 0;
   }
   onStart() {
-    if (this.value && this.index == -1) {
+    if (this.value && this.index === -1) {
       this.reset(true);
     }
   }

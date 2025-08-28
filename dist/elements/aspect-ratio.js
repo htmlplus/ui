@@ -35,8 +35,8 @@ let AspectRatio = class extends PlusCore {
   }
   render() {
     return html`<div class="root" style=${styles(this.style)}>
-        <slot />
-      </div>`;
+				<slot />
+			</div>`;
   }
 };
 AspectRatio.tag = "plus-aspect-ratio";

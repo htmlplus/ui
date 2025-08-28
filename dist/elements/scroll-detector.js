@@ -15,8 +15,8 @@ let ScrollDetector = class extends PlusCore {
     this.reference = "document";
   }
   get $reference() {
-    if (typeof this.reference != "string") return this.reference;
-    if (this.reference == "document") return document;
+    if (typeof this.reference !== "string") return this.reference;
+    if (this.reference === "document") return document;
     return document.querySelector(this.reference);
   }
   watcher(next) {
@@ -35,6 +35,8 @@ let ScrollDetector = class extends PlusCore {
     }
   }
   onScroll() {
+    const target = this.$reference instanceof Document ? this.$reference.documentElement : this.$reference;
+    if (!target) return;
     const {
       scrollTop,
       scrollLeft,
@@ -42,13 +44,13 @@ let ScrollDetector = class extends PlusCore {
       scrollWidth,
       clientHeight,
       clientWidth
-    } = this.$reference.documentElement || this.$reference;
+    } = target;
     const offset = this.vertical ? scrollTop : scrollLeft;
     const total = this.vertical ? scrollHeight : scrollWidth;
     const viewport = this.vertical ? clientHeight : clientWidth;
     const overflow = total - viewport;
     const progress = overflow ? Math.round(offset / overflow * 100) : 0;
-    if (this.offset == progress) return;
+    if (this.offset === progress) return;
     this.offset = offset;
     this.plusChange({
       offset,

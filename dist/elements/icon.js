@@ -40,13 +40,12 @@ let Icon = class extends PlusCore {
       type: "external",
       key: (params) => params.name,
       cache: () => {
-        var _a;
         setConfig({
           assets: {
             icons: {}
           }
         });
-        return (_a = getConfig().assets) == null ? void 0 : _a.icons;
+        return getConfig().assets?.icons;
       },
       resolver: async (params) => {
         if (typeof this.resolver !== "function") {
@@ -67,11 +66,10 @@ let Icon = class extends PlusCore {
       color: toCSSColor(this.color),
       height: toCSSUnit(this.size),
       width: toCSSUnit(this.size),
-      rotate: this.rotate ? this.rotate + "deg" : void 0
+      rotate: this.rotate ? `${this.rotate}deg` : void 0
     };
   }
   async update() {
-    var _a;
     let svg;
     try {
       svg = this.name && await this.cache.resolve({
@@ -81,7 +79,7 @@ let Icon = class extends PlusCore {
       svg = ICON_FALLBACK_SVG;
       throw error;
     }
-    (_a = query(this, "svg")) == null ? void 0 : _a.remove();
+    query(this, "svg")?.remove();
     svg = (svg || ICON_DEFAULT_SVG).replace(/<svg/, '<svg part="svg"');
     this.$host.shadowRoot.innerHTML += svg;
   }

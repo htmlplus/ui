@@ -17,13 +17,11 @@ let CarouselSlide = class extends CarouselChild {
     this.events = ["init", "reInit", "select"];
   }
   get index() {
-    var _a;
-    return Array.prototype.indexOf.call(((_a = this.api) == null ? void 0 : _a.slideNodes()) || [], this.$host);
+    return Array.prototype.indexOf.call(this.api?.slideNodes() || [], this.$host);
   }
   handleClick() {
-    var _a;
     if (this.clickable) {
-      (_a = this.state) == null ? void 0 : _a.scrollTo(this.index, this.clickable == "jump");
+      this.state?.scrollTo(this.index, this.clickable === "jump");
     }
   }
   render() {

@@ -50,7 +50,7 @@ let Dialog = class extends PlusCore {
         Scrollbar.reset(this);
         off(document, "keydown", this.onEscape, true);
         off(this.$cell, "outside", this.onClickOutside, true);
-        this.$host.style.zIndex = null;
+        this.$host.style.zIndex = "";
         this.open = this.opened = false;
         Dialog.instances = Dialog.instances.filter((instance) => instance !== this);
         if (silent) return;
@@ -89,11 +89,11 @@ let Dialog = class extends PlusCore {
     return Dialog.instances.at(-1) === this;
   }
   get zIndex() {
-    if (Dialog.instances.length < 1) return;
+    if (Dialog.instances.length < 1) return "";
     const [instance] = Dialog.instances.slice(-1);
-    if (!instance) return;
+    if (!instance) return "";
     const zIndex = window.getComputedStyle(instance.$host).getPropertyValue("z-index");
-    return `${parseInt(zIndex) + 1}`;
+    return `${parseInt(zIndex, 10) + 1}`;
   }
   hide() {
     return this.try(false, true);
@@ -107,20 +107,21 @@ let Dialog = class extends PlusCore {
   watcher(next, prev, name) {
     switch (name) {
       case "open":
-        if (!next == !prev) break;
+        if (!next === !prev) break;
         this.try(next, true);
         break;
     }
   }
   initialize() {
-    this.animate.initialize((this.opened = !!this.open) ? "entered" : "leaved");
+    this.opened = !!this.open;
+    const state = this.opened ? "entered" : "leaved";
+    this.animate.initialize(state);
   }
   terminate() {
-    var _a;
-    (_a = this.animate) == null ? void 0 : _a.dispose();
+    this.animate?.dispose();
   }
   async try(open, silent) {
-    if (this.opened == open) return await this.promise;
+    if (this.opened === open) return await this.promise;
     if (!silent) {
       const event = open ? this.plusOpen : this.plusClose;
       const prevented = event.call(this).defaultPrevented;
@@ -160,17 +161,17 @@ let Dialog = class extends PlusCore {
     }, {
       "role": this.opened ? "dialog" : null
     }])}
-        ${!this.transparent && html`<div class="backdrop" part="backdrop">
-            <div />
-          </div>`}
-        <div class=${this.classes}>
-          <div class="table">
-            <div class="cell">
-              <slot />
-            </div>
-          </div>
-        </div>
-      `;
+				${!this.transparent && html`<div class="backdrop" part="backdrop">
+						<div />
+					</div>`}
+				<div class=${this.classes}>
+					<div class="table">
+						<div class="cell">
+							<slot />
+						</div>
+					</div>
+				</div>
+			`;
   }
 };
 Dialog.tag = "plus-dialog";

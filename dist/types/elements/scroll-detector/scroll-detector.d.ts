@@ -31,7 +31,7 @@ export declare class ScrollDetector extends PlusCore {
      */
     plusChange: EventEmitter<ScrollDetectorChangeEvent>;
     offset?: number;
-    get $reference(): any;
+    get $reference(): Document | Element;
     watcher(next: any): void;
     initialize(): void;
     terminate(): void;

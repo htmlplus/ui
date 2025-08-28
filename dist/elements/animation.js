@@ -1,7 +1,7 @@
 import { v as setConfig, P as PlusCore, q as getConfig, h as html, a as Property, O as Overrides, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
-  "ease": "ease",
+  ease: "ease",
   "ease-in": "ease-in",
   "ease-out": "ease-out",
   "ease-in-out": "ease-in-out",
@@ -29,7 +29,7 @@ const ANIMATION_EASINGS = {
   "ease-in-back": "cubic-bezier(0.6, -0.28, 0.735, 0.045)",
   "ease-out-back": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
   "ease-in-out-back": "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
-  "linear": "linear"
+  linear: "linear"
 };
 const register = (name, keyframe) => {
   setConfig("plus", {
@@ -74,46 +74,37 @@ let Animation = class extends PlusCore {
     this.playbackRate = 1;
   }
   cancel() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.cancel();
+    this.instance?.cancel();
   }
   commitStyles() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.commitStyles();
+    this.instance?.commitStyles();
   }
   finish() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.finish();
+    this.instance?.finish();
   }
   pause() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.pause();
+    this.instance?.pause();
   }
   persist() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.persist();
+    this.instance?.persist();
   }
   play() {
-    var _a;
     this.run = true;
-    (_a = this.instance) == null ? void 0 : _a.play();
+    this.instance?.play();
   }
   reverse() {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.reverse();
+    this.instance?.reverse();
   }
   updatePlaybackRate(playbackRate) {
-    var _a;
-    (_a = this.instance) == null ? void 0 : _a.updatePlaybackRate(playbackRate);
+    this.instance?.updatePlaybackRate(playbackRate);
   }
   get options() {
-    var _a, _b;
     return {
       composite: this.composite,
       delay: this.delay,
       direction: this.direction,
       duration: this.duration,
-      easing: ANIMATION_EASINGS[this.easing] ?? ((_b = (_a = getConfig().assets) == null ? void 0 : _a.easings) == null ? void 0 : _b[this.easing]) ?? this.easing,
+      easing: ANIMATION_EASINGS[this.easing] ?? getConfig().assets?.easings?.[this.easing] ?? this.easing,
       endDelay: this.endDelay,
       fill: this.fill,
       iterationComposite: this.iterationComposite,
@@ -138,9 +129,8 @@ let Animation = class extends PlusCore {
     this.plusRemove();
   }
   updatedCallback() {
-    var _a, _b;
     this.disconnectedCallback();
-    const keyframes = this.keyframes ?? ((_b = (_a = getConfig().assets) == null ? void 0 : _a.animations) == null ? void 0 : _b[this.name]) ?? [];
+    const keyframes = this.keyframes ?? getConfig().assets?.animations?.[this.name] ?? [];
     this.instance = this.$host.animate(keyframes, this.options);
     this.instance.addEventListener("cancel", this.onCancel);
     this.instance.addEventListener("finish", this.onFinish);
@@ -149,10 +139,9 @@ let Animation = class extends PlusCore {
     this.pause();
   }
   disconnectedCallback() {
-    var _a, _b, _c;
-    (_a = this.instance) == null ? void 0 : _a.removeEventListener("cancel", this.onCancel);
-    (_b = this.instance) == null ? void 0 : _b.removeEventListener("finish", this.onFinish);
-    (_c = this.instance) == null ? void 0 : _c.removeEventListener("remove", this.onFinish);
+    this.instance?.removeEventListener("cancel", this.onCancel);
+    this.instance?.removeEventListener("finish", this.onFinish);
+    this.instance?.removeEventListener("remove", this.onFinish);
   }
   render() {
     return html`<slot />`;

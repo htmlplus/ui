@@ -18,10 +18,10 @@ export type CarouselDraggable = 'free' | 'snap';
  * @value 'click-smooth'  - Smoothly scrolls the target carousel when a slide is clicked.
  */
 export type CarouselMirrorType =
-  | 'sync-jump'
-  | 'sync-smooth'
-  | 'click-inherit'
-  | 'click-jump'
-  | 'click-smooth';
+	| 'sync-jump'
+	| 'sync-smooth'
+	| 'click-inherit'
+	| 'click-jump'
+	| 'click-smooth';
 
 export type CarouselSlidesToScroll = 'auto' | number;

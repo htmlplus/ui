@@ -1,4 +1,4 @@
 export interface DrawerContext {
-  open: boolean;
-  toggle(): void;
+	open: boolean;
+	toggle(): void;
 }

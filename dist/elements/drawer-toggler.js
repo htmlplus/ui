@@ -12,17 +12,16 @@ var __decorateClass = (decorators, target, key, kind) => {
 };
 let DrawerToggler = class extends PlusCore {
   render() {
-    var _a, _b, _c, _d;
     return html`${attributes(this, [{
       "role": "button"
     }, {
-      "state": ((_a = this.drawer) == null ? void 0 : _a.open) ? "opened" : "closed"
+      "state": this.drawer?.open ? "opened" : "closed"
     }, {
-      "onClick": (_b = this.drawer) == null ? void 0 : _b.toggle
+      "onClick": this.drawer?.toggle
     }])}
-        <slot>${((_c = this.drawer) == null ? void 0 : _c.open) ? "Close" : "Open"}</slot>
-        <slot name=${((_d = this.drawer) == null ? void 0 : _d.open) ? "close" : "open"}></slot>
-      `;
+				<slot>${this.drawer?.open ? "Close" : "Open"}</slot>
+				<slot name=${this.drawer?.open ? "close" : "open"}></slot>
+			`;
   }
 };
 DrawerToggler.tag = "plus-drawer-toggler";

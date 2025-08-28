@@ -288,7 +288,7 @@ export declare class Carousel extends PlusCore {
     /**
      * TODO: Stops automatic behavior in the carousel.
      */
-    watcher(next: any, prev: any, name: any): void;
+    watcher(_next: any, _prev: any, name: any): void;
     initialize(): void;
     terminate(): void;
     register($element: HTMLElement): void;

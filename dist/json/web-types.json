@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -2968,7 +2968,7 @@
             {
               "name": "arguments",
               "value": {
-                "type": "Array<any>"
+                "type": "unknown[]"
               },
               "description": "Specifies the API's arguments as an array."
             },
@@ -4254,7 +4254,7 @@
             {
               "name": "resolver",
               "value": {
-                "type": "(params: {\n  key: string;\n  value: string;\n}) => Promise<any>"
+                "type": "(params: {\n  key: string;\n  value: string;\n}) => Promise<unknown>"
               },
               "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
             },
@@ -5545,7 +5545,7 @@
             {
               "name": "trigger",
               "value": {
-                "type": "'click' | 'focus' | 'hover' | 'manual' | Array<TooltipTrigger>"
+                "type": "'click' | 'focus' | 'hover' | 'manual' | TooltipTrigger[]"
               },
               "description": "Specifies the activation method."
             },

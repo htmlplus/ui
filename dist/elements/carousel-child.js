@@ -32,19 +32,16 @@ class CarouselChild extends PlusCore {
     this.forceUpdate();
   }
   readyCallback() {
-    var _a;
-    (_a = this.state) == null ? void 0 : _a.register(this.$host);
+    this.state?.register(this.$host);
   }
   updateCallback() {
-    var _a, _b;
-    if (((_a = this.state) == null ? void 0 : _a.api) != this.api) {
-      this.handleApiChange((_b = this.state) == null ? void 0 : _b.api);
+    if (this.state?.api !== this.api) {
+      this.handleApiChange(this.state?.api);
     }
   }
   disconnectedCallback() {
-    var _a;
     this.terminate();
-    (_a = this.state) == null ? void 0 : _a.unregister(this.$host);
+    this.state?.unregister(this.$host);
   }
 }
 __decorateClass([

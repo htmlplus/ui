@@ -82,7 +82,7 @@ let FormatBytes = class extends PlusCore {
     this.unit = "auto";
   }
   get formated() {
-    if (isNaN(this.value)) return null;
+    if (this.value === void 0 || Number.isNaN(this.value)) return null;
     const bytes = Math.abs(this.value);
     const standard = FORMAT_BYTES_STANDARD[this.standard];
     if (!standard) return null;
@@ -94,18 +94,18 @@ let FormatBytes = class extends PlusCore {
     let found;
     for (let index = 0; index < units.length; index++) {
       const [short, long] = units[index];
-      const from = index ? Math.pow(base, index) : 0;
-      const to = Math.pow(base, index + 1);
+      const from = index ? base ** index : 0;
+      const to = base ** (index + 1);
       found = {
         from,
         long,
         short,
         to
       };
-      if (this.unit == "base") break;
-      if (this.unit != "auto") {
-        if (this.unit == long) break;
-        if (units.some(([, long2]) => this.unit == long2)) continue;
+      if (this.unit === "base") break;
+      if (this.unit !== "auto") {
+        if (this.unit === long) break;
+        if (units.some(([, long2]) => this.unit === long2)) continue;
       }
       if (bytes >= from && bytes < to) break;
     }
@@ -116,11 +116,11 @@ let FormatBytes = class extends PlusCore {
       maximumFractionDigits: decimals[1] || decimals[0]
     });
     let result = "";
-    result += this.value < 0 ? "-" : this.signed ? this.value == 0 ? " " : "+" : "";
-    result += formatter.format(bytes / ((found == null ? void 0 : found.from) || 1));
+    result += this.value < 0 ? "-" : this.signed ? this.value === 0 ? " " : "+" : "";
+    result += formatter.format(bytes / (found?.from || 1));
     result += this.separator || "";
-    result += (found == null ? void 0 : found[this.display]) || "";
-    result += this.display == "long" ? unit : "";
+    result += found?.[this.display] || "";
+    result += this.display === "long" ? unit : "";
     return result;
   }
   render() {

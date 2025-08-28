@@ -11,8 +11,8 @@ import { Breakpoint } from '../../types';
  *
  * @part canvas - The canvas element.
  *
- * @example default, background-color, color, dimensions, disabled, value,
- *          width, distance, clear, history, resizable, clear-on-resize, save
+ * @examples default, background-color, color, dimensions, disabled, value,
+ *           width, distance, clear, history, resizable, clear-on-resize, save
  */
 export declare class Signature extends PlusForm {
     /**

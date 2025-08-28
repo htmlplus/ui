@@ -24,7 +24,7 @@ let ProgressBar = class extends PlusCore {
     };
   }
   get percentage() {
-    return this.progress + "%";
+    return `${this.progress}%`;
   }
   get progress() {
     return (this.value - this.min) * (100 / Math.abs(this.max - this.min));
@@ -42,16 +42,16 @@ let ProgressBar = class extends PlusCore {
     }, {
       "role": "progressbar"
     }])}
-        <div part="underlay"></div>
-        <div part="buffer" style=${styles({
+				<div part="underlay"></div>
+				<div part="buffer" style=${styles({
       width: `${this.buffer || 0}%`
     })}></div>
-        <div part="indicator" style=${styles({
+				<div part="indicator" style=${styles({
       width: this.stacked ? "100%" : this.percentage
     })}>
-          <slot>${this.label ? this.percentage : null}</slot>
-        </div>
-      `;
+					<slot>${this.label ? this.percentage : null}</slot>
+				</div>
+			`;
   }
 };
 ProgressBar.tag = "plus-progress-bar";

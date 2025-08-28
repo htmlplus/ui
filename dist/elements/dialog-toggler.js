@@ -12,17 +12,16 @@ var __decorateClass = (decorators, target, key, kind) => {
 };
 let DialogToggler = class extends PlusCore {
   render() {
-    var _a, _b, _c, _d;
     return html`${attributes(this, [{
       "role": "button"
     }, {
-      "state": ((_a = this.dialog) == null ? void 0 : _a.open) ? "opened" : "closed"
+      "state": this.dialog?.open ? "opened" : "closed"
     }, {
-      "onClick": (_b = this.dialog) == null ? void 0 : _b.toggle
+      "onClick": this.dialog?.toggle
     }])}
-        <slot>${((_c = this.dialog) == null ? void 0 : _c.open) ? "Close" : "Open"}</slot>
-        <slot name=${((_d = this.dialog) == null ? void 0 : _d.open) ? "close" : "open"}></slot>
-      `;
+				<slot>${this.dialog?.open ? "Close" : "Open"}</slot>
+				<slot name=${this.dialog?.open ? "close" : "open"}></slot>
+			`;
   }
 };
 DialogToggler.tag = "plus-dialog-toggler";

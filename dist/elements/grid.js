@@ -30,8 +30,8 @@ let Grid = class extends PlusCore {
   }
   render() {
     return html`<div>
-        <slot />
-      </div>`;
+				<slot />
+			</div>`;
   }
 };
 Grid.tag = "plus-grid";

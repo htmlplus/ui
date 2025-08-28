@@ -4,52 +4,57 @@ import type { Carousel } from '../carousel';
 import { CarouselPlugin } from './base';
 
 export class CarouselPluginMirror extends CarouselPlugin {
-  private get active(): boolean {
-    return !!this.instance.mirror;
-  }
+	private get active(): boolean {
+		return !!this.instance.mirror;
+	}
 
-  public events = {
-    reInit: this.handleEvent,
-    select: this.handleEvent
-  };
+	public events = {
+		reInit: this.handleEvent,
+		select: this.handleEvent
+	};
 
-  private get carousel() {
-    return document.getElementById(this.instance.mirror) as any as Carousel;
-  }
+	private get carousel() {
+		return document.getElementById(this.instance.mirror) as unknown as Carousel;
+	}
 
-  public initialize() {
-    if (!this.active) return;
+	public initialize() {
+		if (!this.active) return;
 
-    // TODO: remove ? char
-    if (!this.instance.mirrorType?.startsWith('sync')) return;
+		// TODO: remove ? char
+		if (!this.instance.mirrorType?.startsWith('sync')) return;
 
-    super.initialize();
+		super.initialize();
 
-    this.handleEvent();
-  }
+		this.handleEvent();
+	}
 
-  // TODO
-  public scrollTo(index: number, jump?: boolean) {
-    switch (this.instance.mirrorType) {
-      case 'click-inherit':
-        jump = jump;
-        break;
-      case 'click-jump':
-        jump = true;
-        break;
-      case 'click-smooth':
-        jump = false;
-        break;
-    }
-    this.carousel?.scrollToIndex(index, jump);
-  }
+	// TODO
+	public scrollTo(index: number, jump?: boolean) {
+		let shouldJump: boolean;
 
-  @Bind()
-  private handleEvent() {
-    const index = this.api.selectedScrollSnap();
+		switch (this.instance.mirrorType) {
+			case 'click-inherit':
+				shouldJump = jump ?? false;
+				break;
+			case 'click-jump':
+				shouldJump = true;
+				break;
+			case 'click-smooth':
+				shouldJump = false;
+				break;
+			default:
+				shouldJump = jump ?? false;
+		}
 
-    const jump = this.instance.mirrorType == 'sync-jump';
+		this.carousel?.scrollToIndex(index, shouldJump);
+	}
 
-    this.carousel?.scrollToIndex(index, jump);
-  }
+	@Bind()
+	private handleEvent() {
+		const index = this.api.selectedScrollSnap();
+
+		const jump = this.instance.mirrorType === 'sync-jump';
+
+		this.carousel?.scrollToIndex(index, jump);
+	}
 }

@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2025-08-14T15:00:31.102Z",
+      "lastModified": "2025-08-28T21:58:58.308Z",
       "methods": [
         {
           "async": false,
@@ -185,7 +185,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2025-08-14T15:00:31.103Z",
+      "lastModified": "2025-08-28T21:58:58.309Z",
       "methods": [],
       "properties": [
         {
@@ -242,7 +242,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2025-08-14T15:00:31.136Z",
+      "lastModified": "2025-08-28T21:58:58.320Z",
       "methods": [
         {
           "async": false,
@@ -502,7 +502,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-08-14T15:00:31.138Z",
+      "lastModified": "2025-08-28T21:58:58.320Z",
       "methods": [
         {
           "async": false,
@@ -634,7 +634,7 @@
     {
       "events": [],
       "key": "aspect-ratio",
-      "lastModified": "2025-08-14T15:00:31.140Z",
+      "lastModified": "2025-08-28T21:58:58.321Z",
       "methods": [],
       "properties": [
         {
@@ -697,7 +697,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2025-08-14T15:00:31.146Z",
+      "lastModified": "2025-08-28T21:58:58.321Z",
       "methods": [],
       "properties": [
         {
@@ -785,7 +785,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2025-08-14T15:00:31.147Z",
+      "lastModified": "2025-08-28T21:58:58.321Z",
       "methods": [],
       "properties": [
         {
@@ -833,7 +833,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2025-08-14T15:00:31.150Z",
+      "lastModified": "2025-08-28T21:58:58.321Z",
       "methods": [],
       "properties": [
         {
@@ -961,7 +961,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2025-08-14T15:00:31.152Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [
         {
           "async": false,
@@ -1079,7 +1079,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2025-08-14T15:00:31.154Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1179,7 +1179,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2025-08-14T15:00:31.154Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1288,7 +1288,7 @@
         }
       ],
       "key": "carousel",
-      "lastModified": "2025-08-14T15:00:31.162Z",
+      "lastModified": "2025-08-28T21:58:58.324Z",
       "methods": [
         {
           "async": false,
@@ -1668,7 +1668,7 @@
     {
       "events": [],
       "key": "carousel-button",
-      "lastModified": "2025-08-14T15:00:31.162Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1715,7 +1715,7 @@
     {
       "events": [],
       "key": "carousel-counter",
-      "lastModified": "2025-08-14T15:00:31.163Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1748,7 +1748,7 @@
     {
       "events": [],
       "key": "carousel-indicators",
-      "lastModified": "2025-08-14T15:00:31.163Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1798,7 +1798,7 @@
     {
       "events": [],
       "key": "carousel-progress",
-      "lastModified": "2025-08-14T15:00:31.164Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1821,7 +1821,7 @@
     {
       "events": [],
       "key": "carousel-slide",
-      "lastModified": "2025-08-14T15:00:31.164Z",
+      "lastModified": "2025-08-28T21:58:58.322Z",
       "methods": [],
       "properties": [
         {
@@ -1859,7 +1859,7 @@
     {
       "events": [],
       "key": "carousel-slides",
-      "lastModified": "2025-08-14T15:00:31.165Z",
+      "lastModified": "2025-08-28T21:58:58.323Z",
       "methods": [],
       "properties": [
         {
@@ -1888,7 +1888,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2025-08-14T15:00:31.166Z",
+      "lastModified": "2025-08-28T21:58:58.324Z",
       "methods": [],
       "properties": [
         {
@@ -1936,7 +1936,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2025-08-14T15:00:31.167Z",
+      "lastModified": "2025-08-28T21:58:58.324Z",
       "methods": [],
       "properties": [
         {
@@ -2002,7 +2002,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2025-08-14T15:00:31.170Z",
+      "lastModified": "2025-08-28T21:58:58.324Z",
       "methods": [
         {
           "async": false,
@@ -2208,7 +2208,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-08-14T15:00:31.175Z",
+      "lastModified": "2025-08-28T21:58:58.325Z",
       "methods": [
         {
           "async": false,
@@ -2673,7 +2673,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2025-08-14T15:00:31.180Z",
+      "lastModified": "2025-08-28T21:58:58.326Z",
       "methods": [
         {
           "async": false,
@@ -2886,7 +2886,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2025-08-14T15:00:31.180Z",
+      "lastModified": "2025-08-28T21:58:58.325Z",
       "methods": [],
       "properties": [
         {
@@ -2924,7 +2924,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2025-08-14T15:00:31.180Z",
+      "lastModified": "2025-08-28T21:58:58.325Z",
       "methods": [],
       "properties": [
         {
@@ -2962,7 +2962,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2025-08-14T15:00:31.181Z",
+      "lastModified": "2025-08-28T21:58:58.325Z",
       "methods": [],
       "properties": [
         {
@@ -2991,7 +2991,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2025-08-14T15:00:31.181Z",
+      "lastModified": "2025-08-28T21:58:58.326Z",
       "methods": [],
       "properties": [
         {
@@ -3020,7 +3020,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2025-08-14T15:00:31.182Z",
+      "lastModified": "2025-08-28T21:58:58.326Z",
       "methods": [],
       "properties": [
         {
@@ -3066,7 +3066,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-08-14T15:00:31.188Z",
+      "lastModified": "2025-08-28T21:58:58.326Z",
       "methods": [],
       "properties": [
         {
@@ -3213,7 +3213,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-08-14T15:00:31.189Z",
+      "lastModified": "2025-08-28T21:58:58.327Z",
       "methods": [
         {
           "async": false,
@@ -3388,7 +3388,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2025-08-14T15:00:31.189Z",
+      "lastModified": "2025-08-28T21:58:58.326Z",
       "methods": [],
       "properties": [
         {
@@ -3434,7 +3434,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-08-14T15:00:31.192Z",
+      "lastModified": "2025-08-28T21:58:58.327Z",
       "methods": [],
       "properties": [
         {
@@ -3453,7 +3453,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "Array<any>",
+          "type": "unknown[]",
           "description": "Specifies the API's arguments as an array."
         },
         {
@@ -3504,7 +3504,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2025-08-14T15:00:31.195Z",
+      "lastModified": "2025-08-28T21:58:58.327Z",
       "methods": [],
       "properties": [
         {
@@ -3616,7 +3616,7 @@
     {
       "events": [],
       "key": "grid",
-      "lastModified": "2025-08-14T15:00:31.200Z",
+      "lastModified": "2025-08-28T21:58:58.328Z",
       "methods": [],
       "properties": [
         {
@@ -4003,7 +4003,7 @@
     {
       "events": [],
       "key": "grid-item",
-      "lastModified": "2025-08-14T15:00:31.201Z",
+      "lastModified": "2025-08-28T21:58:58.327Z",
       "methods": [],
       "properties": [
         {
@@ -4427,7 +4427,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-08-14T15:00:31.205Z",
+      "lastModified": "2025-08-28T21:58:58.328Z",
       "methods": [],
       "properties": [
         {
@@ -4546,7 +4546,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2025-08-14T15:00:31.206Z",
+      "lastModified": "2025-08-28T21:58:58.328Z",
       "methods": [],
       "properties": [
         {
@@ -4624,7 +4624,7 @@
     {
       "events": [],
       "key": "prism",
-      "lastModified": "2025-08-14T15:00:31.209Z",
+      "lastModified": "2025-08-28T21:58:58.328Z",
       "methods": [],
       "properties": [
         {
@@ -4730,7 +4730,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-08-14T15:00:31.213Z",
+      "lastModified": "2025-08-28T21:58:58.329Z",
       "methods": [],
       "properties": [
         {
@@ -4854,7 +4854,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2025-08-14T15:00:31.214Z",
+      "lastModified": "2025-08-28T21:58:58.328Z",
       "methods": [],
       "properties": [
         {
@@ -4883,7 +4883,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2025-08-14T15:00:31.216Z",
+      "lastModified": "2025-08-28T21:58:58.329Z",
       "methods": [],
       "properties": [
         {
@@ -4959,7 +4959,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2025-08-14T15:00:31.217Z",
+      "lastModified": "2025-08-28T21:58:58.329Z",
       "methods": [],
       "properties": [
         {
@@ -5045,7 +5045,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-08-14T15:00:31.220Z",
+      "lastModified": "2025-08-28T21:58:58.329Z",
       "methods": [
         {
           "async": false,
@@ -5235,13 +5235,26 @@
           "description": "The canvas element."
         }
       ],
-      "example": "default, background-color, color, dimensions, disabled, value, width, distance, clear, history, resizable, clear-on-resize, save",
-      "examples": []
+      "examples": [
+        "default",
+        "background-color",
+        "color",
+        "dimensions",
+        "disabled",
+        "value",
+        "width",
+        "distance",
+        "clear",
+        "history",
+        "resizable",
+        "clear-on-resize",
+        "save"
+      ]
     },
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-08-14T15:00:31.222Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5320,7 +5333,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2025-08-14T15:00:31.223Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5354,7 +5367,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-08-14T15:00:31.226Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5415,7 +5428,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-08-14T15:00:31.227Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5515,7 +5528,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2025-08-14T15:00:31.229Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5596,7 +5609,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2025-08-14T15:00:31.230Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5652,7 +5665,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2025-08-14T15:00:31.233Z",
+      "lastModified": "2025-08-28T21:58:58.331Z",
       "methods": [],
       "properties": [
         {
@@ -5708,7 +5721,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2025-08-14T15:00:31.233Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5765,7 +5778,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2025-08-14T15:00:31.234Z",
+      "lastModified": "2025-08-28T21:58:58.330Z",
       "methods": [],
       "properties": [
         {
@@ -5813,7 +5826,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2025-08-14T15:00:31.235Z",
+      "lastModified": "2025-08-28T21:58:58.331Z",
       "methods": [],
       "properties": [
         {
@@ -5842,7 +5855,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2025-08-14T15:00:31.236Z",
+      "lastModified": "2025-08-28T21:58:58.331Z",
       "methods": [],
       "properties": [
         {
@@ -5899,7 +5912,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2025-08-14T15:00:31.239Z",
+      "lastModified": "2025-08-28T21:58:58.331Z",
       "methods": [
         {
           "async": false,

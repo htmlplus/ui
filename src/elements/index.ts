@@ -1,3 +1,5 @@
+export type * from '@/types';
+
 export * from './accordion/accordion';
 export * from './accordions/accordions';
 export * from './animation/animation';
@@ -53,5 +55,3 @@ export * from './tabs-panel/tabs-panel';
 export * from './tabs-panels/tabs-panels';
 export * from './tabs-tab/tabs-tab';
 export * from './tooltip/tooltip';
-
-export type * from '@/types'

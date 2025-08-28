@@ -12,7 +12,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 };
 let Avatar = class extends PlusCore {
   get placements() {
-    const offset = this.shape == "circle" ? "14.64466%" : "0";
+    const offset = this.shape === "circle" ? "14.64466%" : "0";
     return [{
       key: "bottom",
       style: {
@@ -128,9 +128,9 @@ let Avatar = class extends PlusCore {
   }
   render() {
     return html`
-        <slot />
-        ${this.placements.map((placement) => html`<slot name=${placement.key} style=${styles(placement.style)} />`)}
-      `;
+				<slot />
+				${this.placements.map((placement) => html`<slot name=${placement.key} style=${styles(placement.style)} />`)}
+			`;
   }
 };
 Avatar.tag = "plus-avatar";

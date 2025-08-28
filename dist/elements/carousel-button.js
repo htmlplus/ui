@@ -33,45 +33,42 @@ let CarouselButton = class extends CarouselChild {
     this.events = ["init", "reInit", "select"];
   }
   get content() {
-    var _a;
     switch (this.type) {
       case "next":
-        return this.dir == "ltr" ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
+        return this.dir === "ltr" ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
       case "previous":
-        return this.dir == "rtl" ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
+        return this.dir === "rtl" ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
       default:
-        return (_a = this.type) == null ? void 0 : _a.toString();
+        return this.type?.toString();
     }
   }
   get disabled() {
-    var _a, _b;
     switch (this.type) {
       case "next":
-        return !((_a = this.api) == null ? void 0 : _a.canScrollNext());
+        return !this.api?.canScrollNext();
       case "previous":
-        return !((_b = this.api) == null ? void 0 : _b.canScrollPrev());
+        return !this.api?.canScrollPrev();
       default:
         return false;
     }
   }
   handleClick() {
-    var _a, _b, _c;
     switch (this.type) {
       case "next":
-        (_a = this.api) == null ? void 0 : _a.scrollNext(this.jump);
+        this.api?.scrollNext(this.jump);
         break;
       case "previous":
-        (_b = this.api) == null ? void 0 : _b.scrollPrev(this.jump);
+        this.api?.scrollPrev(this.jump);
         break;
       default:
-        (_c = this.api) == null ? void 0 : _c.scrollTo(this.type, this.jump);
+        this.api?.scrollTo(this.type, this.jump);
         break;
     }
   }
   render() {
     return html`<button .disabled=${this.disabled} part="button" type="button" onClick=${this.handleClick}>
-        <slot .innerHTML=${this.content}></slot>
-      </button>`;
+				<slot .innerHTML=${this.content}></slot>
+			</button>`;
   }
 };
 CarouselButton.tag = "plus-carousel-button";

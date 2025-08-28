@@ -77,9 +77,9 @@ let Breadcrumb = class extends PlusCore {
   }
   get template() {
     const $node = this.$host.querySelector(BREADCRUMB_SEPARATOR_QUERY);
-    const $clone = $node == null ? void 0 : $node.cloneNode(true);
-    $clone == null ? void 0 : $clone.removeAttribute("slot");
-    return ($clone == null ? void 0 : $clone.outerHTML) || this.separator;
+    const $clone = $node?.cloneNode(true);
+    $clone?.removeAttribute("slot");
+    return $clone?.outerHTML || this.separator;
   }
   initialize() {
     this.observer.observe(this.$host, {
@@ -100,28 +100,36 @@ let Breadcrumb = class extends PlusCore {
     return html`${attributes(this, [{
       "aria-label": "breadcrumb"
     }])}
-        ${this.items.map((item) => {
+				${this.items.map((item) => {
       switch (item.type) {
         case "item": {
           return html`<div key=${item.key} part="item">
-                  <slot name=${item.slot} />
-                </div>`;
+									<slot name=${item.slot} />
+								</div>`;
         }
         case "expander": {
-          return html`<div aria-disabled="false" aria-label=${this.expanderText} key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => this.expand = true} onKeyDown=${(event) => event.key.match(/Enter| /) && (this.expand = true)}>
-                  <slot name="expander">
-                    <svg focusable="false" viewbox="0 0 24 24" aria-hidden="true">
-                      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-                    </svg>
-                  </slot>
-                </div>`;
+          return html`<div aria-disabled="false" aria-label=${this.expanderText} key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => {
+            this.expand = true;
+          }} onKeyDown=${(event) => {
+            if (event.key.match(/Enter| /)) {
+              this.expand = true;
+            }
+          }}>
+									<slot name="expander">
+										<svg focusable="false" viewbox="0 0 24 24" aria-hidden="true">
+											<path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+										</svg>
+									</slot>
+								</div>`;
         }
         case "separator": {
           return html`<div key=${item.key} aria-hidden="true" part="separator" .innerHTML=${template} />`;
         }
+        default:
+          return null;
       }
     })}
-      `;
+			`;
   }
 };
 Breadcrumb.tag = "plus-breadcrumb";

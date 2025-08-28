@@ -65,7 +65,7 @@ export declare class Browse extends PlusCore {
     $input: HTMLElement;
     dragging?: boolean;
     timeout?: any;
-    get attributes(): {};
+    get attributes(): any;
     get types(): string[];
     /**
      * Opens the browse dialog.

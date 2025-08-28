@@ -15,7 +15,7 @@ let ClickOutside = class extends PlusCore {
       capture: this.capture
     };
   }
-  watcher(next, prev, name) {
+  watcher(next, _prev, name) {
     switch (name) {
       case "disabled":
         next ? this.terminate() : this.initialize();

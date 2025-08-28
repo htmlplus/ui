@@ -29,10 +29,10 @@ let Divider = class extends PlusCore {
     }, {
       "role": "separator"
     }])}
-        <div part="line prefix"></div>
-        <slot />
-        <div part="line suffix"></div>
-      `;
+				<div part="line prefix"></div>
+				<slot />
+				<div part="line suffix"></div>
+			`;
   }
 };
 Divider.tag = "plus-divider";

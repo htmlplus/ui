@@ -1,19 +1,19 @@
 export interface BrowseError {
-  type: 'min' | 'max';
-  message: string;
+	type: 'min' | 'max';
+	message: string;
 }
 
 export interface BrowseFileError {
-  type: 'accept' | 'min' | 'max';
-  message: string;
+	type: 'accept' | 'min' | 'max';
+	message: string;
 }
 
 export interface BrowseFile {
-  errors?: Array<BrowseFileError>;
-  file?: File;
+	errors?: BrowseFileError[];
+	file?: File;
 }
 
 export interface BrowseEvent {
-  error?: BrowseError;
-  files?: Array<BrowseFile>;
+	error?: BrowseError;
+	files?: BrowseFile[];
 }

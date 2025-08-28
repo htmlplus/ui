@@ -30,7 +30,7 @@ let Accordion = class extends PlusCore {
       },
       onEntering: () => {
         this.opened = this.open = true;
-        this.$body.style.height = this.$body.scrollHeight + "px";
+        this.$body.style.height = `${this.$body.scrollHeight}px`;
       },
       onEntered: (silent) => {
         this.$body.style.height = "";
@@ -38,7 +38,7 @@ let Accordion = class extends PlusCore {
         this.plusExpanded();
       },
       onLeave: () => {
-        this.$body.style.height = this.$body.scrollHeight + "px";
+        this.$body.style.height = `${this.$body.scrollHeight}px`;
       },
       onLeaving: () => {
         this.opened = this.open = false;
@@ -64,27 +64,27 @@ let Accordion = class extends PlusCore {
   watcher(next, prev, name) {
     switch (name) {
       case "open":
-        if (!next == !prev) break;
+        if (!next === !prev) break;
         this.try(next, true);
         break;
     }
   }
   getId(key) {
     if (this.$host.id) {
-      return this.$host.id + "-" + key;
+      return `${this.$host.id}-${key}`;
     }
   }
   initialize() {
-    this.animate.initialize((this.opened = !!this.open) ? "entered" : "leaved");
+    this.opened = !!this.open;
+    const state = this.opened ? "entered" : "leaved";
+    this.animate.initialize(state);
   }
   terminate() {
-    var _a;
-    (_a = this.animate) == null ? void 0 : _a.dispose();
+    this.animate?.dispose();
   }
   async try(open, silent) {
-    var _a;
     if (this.disabled) return true;
-    if (this.opened == open) return await this.promise;
+    if (this.opened === open) return await this.promise;
     if (!silent) {
       const event = open ? this.plusExpand : this.plusCollapse;
       const prevented = event.call(this).defaultPrevented;
@@ -92,7 +92,7 @@ let Accordion = class extends PlusCore {
     }
     this.opened = this.open = open;
     if (this.open) {
-      (_a = this.accordions) == null ? void 0 : _a.open(this.$host);
+      this.accordions?.open(this.$host);
     }
     const fn = this.open ? this.animate.enter : this.animate.leave;
     this.promise = fn.bind(this.animate)(silent);
@@ -118,25 +118,25 @@ let Accordion = class extends PlusCore {
   }
   render() {
     return html`
-        <slot name="top" />
-        <div aria-controls=${this.getId("body")} aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} id=${this.getId("header")} part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
-          <slot name="summary" part="summary">
-            ${this.summary}
-          </slot>
-          <slot name="icon">
-            <slot name=${`icon-${this.open ? "collapse" : "expand"}`}>
-              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" focusable="false" viewbox="0 0 16 16" part="svg">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-              </svg>
-            </slot>
-          </slot>
-        </div>
-        <slot name="middle" />
-        <div part="body" role="region" aria-labelledby=${this.getId("header")} id=${this.getId("body")}>
-          <slot part="content" />
-        </div>
-        <slot name="bottom" />
-      `;
+				<slot name="top" />
+				<div aria-controls=${this.getId("body")} aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} id=${this.getId("header")} part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
+					<slot name="summary" part="summary">
+						${this.summary}
+					</slot>
+					<slot name="icon">
+						<slot name=${`icon-${this.open ? "collapse" : "expand"}`}>
+							<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" focusable="false" viewbox="0 0 16 16" part="svg">
+								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+							</svg>
+						</slot>
+					</slot>
+				</div>
+				<slot name="middle" />
+				<div part="body" role="region" aria-labelledby=${this.getId("header")} id=${this.getId("body")}>
+					<slot part="content" />
+				</div>
+				<slot name="bottom" />
+			`;
   }
 };
 Accordion.tag = "plus-accordion";

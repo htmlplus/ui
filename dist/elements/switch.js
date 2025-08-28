@@ -21,7 +21,7 @@ let Switch = class extends PlusCore {
     this.toggle();
   }
   onKeyDown(event) {
-    if (event.key != " " && event.key != "Enter") return;
+    if (event.key !== " " && event.key !== "Enter") return;
     event.preventDefault();
     this.toggle();
   }
@@ -39,18 +39,18 @@ let Switch = class extends PlusCore {
     }, {
       "onKeyDown": this.onKeyDown
     }])}
-        <div class="root" part="root">
-          <div class="slot on" part="slot on">
-            <slot name="on" />
-          </div>
-          <div class="handle" part="handle">
-            <slot name="handle" />
-          </div>
-          <div class="slot off" part="slot off">
-            <slot name="off" />
-          </div>
-        </div>
-      `;
+				<div class="root" part="root">
+					<div class="slot on" part="slot on">
+						<slot name="on" />
+					</div>
+					<div class="handle" part="handle">
+						<slot name="handle" />
+					</div>
+					<div class="slot off" part="slot off">
+						<slot name="off" />
+					</div>
+				</div>
+			`;
   }
 };
 Switch.tag = "plus-switch";

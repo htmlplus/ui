@@ -19,7 +19,7 @@ export declare class Faker extends PlusCore {
     /**
      * Specifies the API's arguments as an array.
      */
-    arguments?: Array<any>;
+    arguments?: unknown[];
     /**
      * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
      */
@@ -45,7 +45,7 @@ export interface FakerAttributes {
   /**
   * Specifies the API's arguments as an array.
   */
-  "arguments"?: Array<any>;
+  "arguments"?: unknown[];
   /**
   * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
   */
@@ -69,7 +69,7 @@ export interface FakerProperties {
   /**
   * Specifies the API's arguments as an array.
   */
-  arguments?: Array<any>;
+  arguments?: unknown[];
   /**
   * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
   */

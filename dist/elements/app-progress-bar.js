@@ -25,7 +25,7 @@ let AppProgressBar = class extends PlusCore {
   }
   increase(amount) {
     if (!this.progress) {
-      return this.start();
+      return void this.start();
     }
     if (typeof amount !== "number") {
       amount = (1 - this.progress) * this.clamp(Math.random() * this.progress, 0.1, 0.95);
@@ -37,7 +37,7 @@ let AppProgressBar = class extends PlusCore {
     clearTimeout(this.timeout);
     progress = this.clamp(progress, this.minimum, 1);
     this.progress = progress === 1 ? null : progress;
-    if (this.state != "progressing") {
+    if (this.state !== "progressing") {
       this.state = "progressing";
       this.update(0);
     }
@@ -48,7 +48,9 @@ let AppProgressBar = class extends PlusCore {
       this.timeout = window.setTimeout(() => {
         this.state = "completed";
         const speed2 = parseFloat(getComputedStyle(this.$host).transitionDuration) * 1e3;
-        this.timeout = window.setTimeout(() => this.state = "idle", speed2);
+        this.timeout = window.setTimeout(() => {
+          this.state = "idle";
+        }, speed2);
       }, speed);
     });
   }
@@ -82,8 +84,8 @@ let AppProgressBar = class extends PlusCore {
     return html`${attributes(this, [{
       "state": this.state
     }])}
-        <div part="bar"></div>
-      `;
+				<div part="bar"></div>
+			`;
   }
 };
 AppProgressBar.tag = "plus-app-progress-bar";

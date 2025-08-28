@@ -19,8 +19,8 @@ let TabsBar = class extends PlusCore {
     return html`${attributes(this, [{
       "role": "tablist"
     }])}
-        <slot />
-      `;
+				<slot />
+			`;
   }
 };
 TabsBar.tag = "plus-tabs-bar";

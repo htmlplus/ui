@@ -11,15 +11,16 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let Browse = class extends PlusCore {
+  // biome-ignore lint: TODO
   get attributes() {
     const attributes2 = {};
     if (this.disabled) return attributes2;
-    attributes2["onClick"] = this.onClick;
+    attributes2.onClick = this.onClick;
     if (!this.droppable) return attributes2;
-    attributes2["dragging"] = this.dragging;
-    attributes2["onDragLeave"] = this.onDragLeave;
-    attributes2["onDragOver"] = this.onDragOver;
-    attributes2["onDrop"] = this.onDrop;
+    attributes2.dragging = this.dragging;
+    attributes2.onDragLeave = this.onDragLeave;
+    attributes2.onDragOver = this.onDragOver;
+    attributes2.onDrop = this.onDrop;
     return attributes2;
   }
   get types() {
@@ -103,9 +104,9 @@ let Browse = class extends PlusCore {
   }
   render() {
     return html`${attributes(this, [this.attributes])}
-        <slot />
-        <input accept=${this.accept} multiple=${this.multiple} type="file" onChange=${this.onChange} onClick=${(event) => event.stopPropagation()} />
-      `;
+				<slot />
+				<input accept=${this.accept} multiple=${this.multiple} type="file" onChange=${this.onChange} onClick=${(event) => event.stopPropagation()} />
+			`;
   }
 };
 Browse.tag = "plus-browse";

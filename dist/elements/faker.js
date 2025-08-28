@@ -17,8 +17,7 @@ let Faker = class extends PlusCore {
     this.arguments = [];
   }
   get content() {
-    var _a;
-    const method = (_a = this.api) == null ? void 0 : _a.split(".").reduce((result, key) => result == null ? void 0 : result[key], this.instance);
+    const method = this.api?.split(".").reduce((result, key) => result?.[key], this.instance);
     if (!method) return null;
     this.instance.seed(this.seed);
     return method(...this.arguments) || null;
@@ -26,8 +25,7 @@ let Faker = class extends PlusCore {
   connectedCallback() {
     if (this.instance) return;
     import("@faker-js/faker").then((module) => {
-      var _a;
-      this.instance = ((_a = module.default) == null ? void 0 : _a.faker) || module.faker;
+      this.instance = module.default?.faker || module.faker;
     }).catch((error) => {
       throw new ExternalDependencyError(this.$host, "@faker-js/faker", {
         cause: error

@@ -19,22 +19,21 @@ let Tooltip = class extends PlusCore {
     this.trigger = ["focus", "hover"];
     this.z = "auto";
     this.state = "hide";
+    this.EVENTS = [["click", "click", this.onShow], ["click", "blur", this.onHide], ["click", "outside", this.onHide], ["focus", "focus", this.onShow], ["focus", "blur", this.onHide], ["hover", "mouseenter", this.onShow], ["hover", "mouseleave", this.onHide]];
   }
   hide() {
-    var _a;
-    if (this.state == "hide") return;
+    if (this.state === "hide") return;
     clearTimeout(this.timeout);
-    const delay = ((_a = this.delay) == null ? void 0 : _a[1]) || this.delay || 0;
+    const delay = this.delay?.[1] || this.delay || 0;
     this.timeout = setTimeout(() => {
       this.state = "hide";
       this.observe(false);
     }, delay);
   }
   show() {
-    var _a;
-    if (this.state == "show") return;
+    if (this.state === "show") return;
     clearTimeout(this.timeout);
-    const delay = ((_a = this.delay) == null ? void 0 : _a[0]) || this.delay || 0;
+    const delay = this.delay?.[0] || this.delay || 0;
     this.timeout = setTimeout(() => {
       this.state = "show";
       this.observe(true);
@@ -66,7 +65,7 @@ let Tooltip = class extends PlusCore {
     });
   }
   get $reference() {
-    if (typeof this.reference != "string") return this.reference;
+    if (typeof this.reference !== "string") return this.reference;
     switch (this.reference) {
       case "next":
         return this.$host.nextElementSibling;
@@ -79,26 +78,26 @@ let Tooltip = class extends PlusCore {
   }
   get options() {
     const PLACEMENT = {
-      "top": "top",
+      top: "top",
       "top-left": this.isRTL ? "top-end" : "top-start",
       "top-right": this.isRTL ? "top-start" : "top-end",
       "top-start": "top-start",
       "top-end": "top-end",
-      "right": "right",
+      right: "right",
       "right-top": "right-start",
       "right-bottom": "right-end",
-      "bottom": "bottom",
+      bottom: "bottom",
       "bottom-left": this.isRTL ? "bottom-end" : "bottom-start",
       "bottom-right": this.isRTL ? "bottom-start" : "bottom-end",
       "bottom-start": "bottom-start",
       "bottom-end": "bottom-end",
-      "left": "left",
+      left: "left",
       "left-top": "left-start",
       "left-bottom": "left-end",
-      "start": this.isRTL ? "right" : "left",
+      start: this.isRTL ? "right" : "left",
       "start-top": this.isRTL ? "right-start" : "left-start",
       "start-bottom": this.isRTL ? "right-end" : "left-end",
-      "end": this.isRTL ? "left" : "right",
+      end: this.isRTL ? "left" : "right",
       "end-top": this.isRTL ? "left-start" : "right-start",
       "end-bottom": this.isRTL ? "left-end" : "right-end"
     };
@@ -119,7 +118,7 @@ let Tooltip = class extends PlusCore {
       strategy: this.fixed ? "fixed" : "absolute"
     };
   }
-  watcher(next, prev, key) {
+  watcher(next, _prev, key) {
     switch (key) {
       case "disabled":
         next ? this.terminate() : this.initialize();
@@ -127,7 +126,7 @@ let Tooltip = class extends PlusCore {
       case "fixed":
       case "offset":
       case "placement":
-        if (this.state == "hide") break;
+        if (this.state === "hide") break;
         this.update();
         break;
       case "reference":
@@ -154,11 +153,10 @@ let Tooltip = class extends PlusCore {
     });
   }
   events(all) {
-    return [["click", "click", this.onShow], ["click", "blur", this.onHide], ["click", "outside", this.onHide], ["focus", "focus", this.onShow], ["focus", "blur", this.onHide], ["hover", "mouseenter", this.onShow], ["hover", "mouseleave", this.onHide]].filter((row) => all || [this.trigger].flat().includes(row[0])).map((row) => row.slice(1));
+    return this.EVENTS.filter((row) => all || [this.trigger].flat().includes(row[0])).map((row) => row.slice(1));
   }
   observe(active) {
-    var _a;
-    (_a = this.cleanup) == null ? void 0 : _a.call(this);
+    this.cleanup?.();
     if (!active) return;
     this.cleanup = FloatingCore.autoUpdate(this.$activator, this.$host, this.update.bind(this));
   }
@@ -187,9 +185,9 @@ let Tooltip = class extends PlusCore {
     }, {
       "state": this.state
     }])}
-        <slot />
-        <div part="arrow"></div>
-      `;
+				<slot />
+				<div part="arrow"></div>
+			`;
   }
 };
 Tooltip.tag = "plus-tooltip";

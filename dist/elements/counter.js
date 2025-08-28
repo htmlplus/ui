@@ -1,7 +1,7 @@
 import { P as PlusCore, d as attributes, h as html, a as Property, O as Overrides, c as Event, M as Method, e as State, W as Watch, B as Bind, E as Element } from "../core/index.js";
 const COUNTER_EASINGS = {
   "ease-out-expo": (currentTime, beginningValue, changeInValue, duration) => {
-    return changeInValue * (-Math.pow(2, -10 * currentTime / duration) + 1) * 1024 / 1023 + beginningValue;
+    return changeInValue * (-(2 ** (-10 * currentTime / duration)) + 1) * 1024 / 1023 + beginningValue;
   }
 };
 var __defProp = Object.defineProperty;
@@ -34,7 +34,7 @@ let Counter = class extends PlusCore {
     this.play = false;
   }
   pause() {
-    if (this.state != "running") return;
+    if (this.state !== "running") return;
     cancelAnimationFrame(this.requestAnimationFrame);
     this.state = "paused";
   }
@@ -89,7 +89,7 @@ let Counter = class extends PlusCore {
       }
       x1 = x3;
     }
-    if (this.numerals && this.numerals.length) {
+    if (this.numerals?.length) {
       x1 = x1.replace(/[0-9]/g, (w) => this.numerals[+w]);
       x2 = x2.replace(/[0-9]/g, (w) => this.numerals[+w]);
     }
@@ -100,9 +100,9 @@ let Counter = class extends PlusCore {
   }
   watcher() {
     requestAnimationFrame(() => {
-      if (this.play == true && this.state != "running") this.start();
-      if (this.play != true && this.state == "paused") this.stop();
-      if (this.play != true && this.state == "running") this.stop();
+      if (this.play === true && this.state !== "running") this.start();
+      if (this.play !== true && this.state === "paused") this.stop();
+      if (this.play !== true && this.state === "running") this.stop();
     });
   }
   count(timestamp) {

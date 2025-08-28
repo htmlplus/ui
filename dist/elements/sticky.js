@@ -17,7 +17,7 @@ let Sticky = class extends PlusCore {
   }
   get style() {
     return {
-      "top": toCSSUnit(this.top),
+      top: toCSSUnit(this.top),
       "z-index": this.zIndex ?? void 0
     };
   }
@@ -28,7 +28,7 @@ let Sticky = class extends PlusCore {
       top: `calc((${top} + 1px) * -1)`
     };
   }
-  watchers(next, prev, key) {
+  watchers(next, _prev, key) {
     switch (key) {
       case "disabled":
         next ? this.terminate() : this.initialize();
@@ -47,9 +47,8 @@ let Sticky = class extends PlusCore {
   }
   terminate() {
     requestAnimationFrame(() => {
-      var _a;
       this.state = void 0;
-      (_a = this.observer) == null ? void 0 : _a.disconnect();
+      this.observer?.disconnect();
     });
   }
   onIntersecting(entries) {
@@ -67,14 +66,14 @@ let Sticky = class extends PlusCore {
     return html`${attributes(this, [{
       "state": this.watcher ? this.state : null
     }])}
-        <div class="sizer-wrapper">
-          <div class="sizer" style=${styles(this.sizer)}></div>
-        </div>
-        <slot />
-        ${this.state && html`<div class=${this.state}>
-            <slot name=${this.state} />
-          </div>`}
-      `;
+				<div class="sizer-wrapper">
+					<div class="sizer" style=${styles(this.sizer)}></div>
+				</div>
+				<slot />
+				${this.state && html`<div class=${this.state}>
+						<slot name=${this.state} />
+					</div>`}
+			`;
   }
 };
 Sticky.tag = "plus-sticky";

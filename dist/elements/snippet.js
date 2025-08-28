@@ -18,12 +18,12 @@ let Snippet = class extends PlusCore {
   }
   render() {
     return html`
-        <pre part="pre">
-          <span part="symbol">${this.symbol}</span>
-          <slot part="default" />
-        </pre>
-        <slot name="copy" part="copy" />
-      `;
+				<pre part="pre">
+					<span part="symbol">${this.symbol}</span>
+					<slot part="default" />
+				</pre>
+				<slot name="copy" part="copy" />
+			`;
   }
 };
 Snippet.tag = "plus-snippet";

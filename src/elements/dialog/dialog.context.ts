@@ -1,4 +1,4 @@
 export interface DialogContext {
-  open: boolean;
-  toggle(): void;
+	open: boolean;
+	toggle(): void;
 }

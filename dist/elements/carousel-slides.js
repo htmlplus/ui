@@ -18,8 +18,8 @@ let CarouselSlides = class extends CarouselChild {
   }
   render() {
     return html`<div class="container" part="container">
-        <slot />
-      </div>`;
+				<slot />
+			</div>`;
   }
 };
 CarouselSlides.tag = "plus-carousel-slides";

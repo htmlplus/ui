@@ -12,23 +12,21 @@ var __decorateClass = (decorators, target, key, kind) => {
 };
 let TabsTab = class extends PlusCore {
   get active() {
-    var _a, _b, _c;
-    if (((_a = this.parent) == null ? void 0 : _a.current) === null) return false;
-    if (((_b = this.parent) == null ? void 0 : _b.current) === void 0) return false;
-    return ((_c = this.parent) == null ? void 0 : _c.current) === this.value;
+    if (this.parent?.current === null) return false;
+    if (this.parent?.current === void 0) return false;
+    return this.parent?.current === this.value;
   }
   onClick() {
-    var _a;
     if (!this.disabled) {
-      (_a = this.parent) == null ? void 0 : _a.change(this.value);
+      this.parent?.change(this.value);
     }
   }
   render() {
     return html`${attributes(this, [{
       "onClick": this.onClick
     }])}
-        <slot />
-      `;
+				<slot />
+			`;
   }
 };
 TabsTab.tag = "plus-tabs-tab";

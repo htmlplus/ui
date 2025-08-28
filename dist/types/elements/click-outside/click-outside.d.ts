@@ -35,7 +35,7 @@ export declare class ClickOutside extends PlusCore {
     get options(): {
         capture: boolean;
     };
-    watcher(next: any, prev: any, name: any): void;
+    watcher(next: any, _prev: any, name: any): void;
     initialize(): void;
     terminate(): void;
     onClickOutside(): void;

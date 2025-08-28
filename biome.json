@@ -1,0 +1,74 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": ["**", "!dist"]
+	},
+	"formatter": {
+		"enabled": true,
+		"lineWidth": 100
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"noInteractiveElementToNoninteractiveRole": "off",
+				"noStaticElementInteractions": "off",
+				"useAriaPropsForRole": "off",
+				"useAriaPropsSupportedByRole": "off",
+				"useSemanticElements": "off"
+			},
+			"complexity": {
+				"noImportantStyles": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "none"
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"identifierOrder": "lexicographic",
+						"groups": [
+							":NODE:",
+							":BLANK_LINE:",
+
+							"@htmlplus/**",
+							":BLANK_LINE:",
+
+							":PACKAGE:",
+							":BLANK_LINE:",
+
+							":ALIAS:",
+							":BLANK_LINE:",
+
+							":SIDE_EFFECT:",
+							":BLANK_LINE:",
+
+							":PATH:",
+							":BLANK_LINE:"
+						]
+					}
+				}
+			}
+		}
+	}
+}

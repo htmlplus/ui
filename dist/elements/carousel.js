@@ -42,7 +42,7 @@ class CarouselPluginAutoHeight extends CarouselPlugin {
     };
   }
   get active() {
-    return this.instance.autoHeight && this.instance.options.axis == "x";
+    return this.instance.autoHeight && this.instance.options.axis === "x";
   }
   initialize() {
     if (!this.active) return;
@@ -200,33 +200,33 @@ class CarouselPluginMirror extends CarouselPlugin {
     return document.getElementById(this.instance.mirror);
   }
   initialize() {
-    var _a;
     if (!this.active) return;
-    if (!((_a = this.instance.mirrorType) == null ? void 0 : _a.startsWith("sync"))) return;
+    if (!this.instance.mirrorType?.startsWith("sync")) return;
     super.initialize();
     this.handleEvent();
   }
   // TODO
   scrollTo(index, jump) {
-    var _a;
+    let shouldJump;
     switch (this.instance.mirrorType) {
       case "click-inherit":
-        jump = jump;
+        shouldJump = jump ?? false;
         break;
       case "click-jump":
-        jump = true;
+        shouldJump = true;
         break;
       case "click-smooth":
-        jump = false;
+        shouldJump = false;
         break;
+      default:
+        shouldJump = jump ?? false;
     }
-    (_a = this.carousel) == null ? void 0 : _a.scrollToIndex(index, jump);
+    this.carousel?.scrollToIndex(index, shouldJump);
   }
   handleEvent() {
-    var _a;
     const index = this.api.selectedScrollSnap();
-    const jump = this.instance.mirrorType == "sync-jump";
-    (_a = this.carousel) == null ? void 0 : _a.scrollToIndex(index, jump);
+    const jump = this.instance.mirrorType === "sync-jump";
+    this.carousel?.scrollToIndex(index, jump);
   }
 }
 __decorateClass$2([
@@ -266,7 +266,7 @@ class CarouselPluginTween extends CarouselPlugin {
       slide.style.removeProperty("--plus-carousel-factor-2");
     });
   }
-  handleEvent(event, eventName) {
+  handleEvent(_event, eventName) {
     const engine = this.api.internalEngine();
     const isScrollEvent = eventName === "scroll";
     const slidesInView = this.api.slidesInView();
@@ -359,16 +359,16 @@ let Carousel = class extends PlusCore {
       align: this.align,
       axis: this.axis,
       container: this.$viewport.shadowRoot.querySelector("div"),
-      containScroll: this.containScroll == "off" ? false : this.containScroll,
+      containScroll: this.containScroll === "off" ? false : this.containScroll,
       direction: this.dir,
-      dragFree: this.draggable == "free",
+      dragFree: this.draggable === "free",
       dragThreshold: this.dragThreshold,
       duration: this.duration,
       inViewThreshold: this.inViewThreshold,
       loop: this.loop,
       slidesToScroll: this.slidesToScroll,
       slides: Array.from(this.$viewport.children),
-      skipSnaps: this.draggable == "free",
+      skipSnaps: this.draggable === "free",
       startIndex: this.startIndex,
       watchDrag: !!this.draggable,
       watchFocus: !!this.focusable,
@@ -377,55 +377,42 @@ let Carousel = class extends PlusCore {
     };
   }
   canScrollNext() {
-    var _a;
-    return !!((_a = this.api) == null ? void 0 : _a.canScrollNext());
+    return !!this.api?.canScrollNext();
   }
   canScrollPrevious() {
-    var _a;
-    return !!((_a = this.api) == null ? void 0 : _a.canScrollPrev());
+    return !!this.api?.canScrollPrev();
   }
   previousScrollSnap() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.previousScrollSnap()) || 0;
+    return this.api?.previousScrollSnap() || 0;
   }
   scrollNext(jump) {
-    var _a;
-    (_a = this.api) == null ? void 0 : _a.scrollNext(jump);
+    this.api?.scrollNext(jump);
   }
   scrollPrevious(jump) {
-    var _a;
-    (_a = this.api) == null ? void 0 : _a.scrollPrev(jump);
+    this.api?.scrollPrev(jump);
   }
   scrollProgress() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.scrollProgress()) || 0;
+    return this.api?.scrollProgress() || 0;
   }
   scrollSnapList() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.scrollSnapList()) || [];
+    return this.api?.scrollSnapList() || [];
   }
   scrollToIndex(index, jump) {
-    var _a;
-    (_a = this.api) == null ? void 0 : _a.scrollTo(index, jump);
+    this.api?.scrollTo(index, jump);
   }
   selectedScrollSnap() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.selectedScrollSnap()) || 0;
+    return this.api?.selectedScrollSnap() || 0;
   }
   slideNodes() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.slideNodes()) || [];
+    return this.api?.slideNodes() || [];
   }
   slidesInView() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.slidesInView()) || [];
+    return this.api?.slidesInView() || [];
   }
   slidesNotInView() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.slidesNotInView()) || [];
+    return this.api?.slidesNotInView() || [];
   }
-  watcher(next, prev, name) {
-    var _a;
+  watcher(_next, _prev, name) {
     switch (name) {
       case "autoHeight":
         this.internalPlugins.autoHeight.reinitialize();
@@ -441,7 +428,7 @@ let Carousel = class extends PlusCore {
         this.internalPlugins.tween.reinitialize();
         break;
       default:
-        (_a = this.api) == null ? void 0 : _a.reInit(this.options, this.plugins);
+        this.api?.reInit(this.options, this.plugins);
         break;
     }
   }
@@ -450,13 +437,17 @@ let Carousel = class extends PlusCore {
     if (this.api) return;
     this.emblaApi = EmblaCarouselCore(this.$viewport, this.options, this.plugins);
     this.api.on("init", () => {
-      Object.values(this.internalPlugins).forEach((plugin) => plugin.initialize());
+      Object.values(this.internalPlugins).forEach((plugin) => {
+        plugin.initialize();
+      });
     }).on("destroy", () => {
-      Object.values(this.internalPlugins).forEach((plugin) => plugin.terminate());
+      Object.values(this.internalPlugins).forEach((plugin) => {
+        plugin.terminate();
+      });
     });
     this.events.forEach((event) => {
       this.api.on(event, () => {
-        this["plus" + event.at(0).toUpperCase() + event.slice(1)]();
+        this[`plus${event.at(0).toUpperCase()}${event.slice(1)}`]();
       });
     });
     this.state = Object.assign({}, this.state, {
@@ -464,8 +455,7 @@ let Carousel = class extends PlusCore {
     });
   }
   terminate() {
-    var _a;
-    (_a = this.api) == null ? void 0 : _a.destroy();
+    this.api?.destroy();
     this.$viewport = void 0;
     this.emblaApi = void 0;
     this.state = Object.assign({}, this.state, {
@@ -473,7 +463,6 @@ let Carousel = class extends PlusCore {
     });
   }
   register($element) {
-    var _a;
     switch ($element.localName.split("-").at(-1)) {
       case "slide":
         if (!this.api) break;
@@ -481,7 +470,7 @@ let Carousel = class extends PlusCore {
         this.api.reInit(this.options, this.plugins);
         break;
       case "slides":
-        (_a = this.api) == null ? void 0 : _a.destroy();
+        this.api?.destroy();
         this.$viewport = $element;
         this.initialize();
         break;
@@ -510,8 +499,7 @@ let Carousel = class extends PlusCore {
     });
   }
   disconnectedCallback() {
-    var _a;
-    (_a = this.api) == null ? void 0 : _a.destroy();
+    this.api?.destroy();
   }
   render() {
     return html`<slot />`;

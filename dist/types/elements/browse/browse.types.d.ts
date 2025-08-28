@@ -7,10 +7,10 @@ export interface BrowseFileError {
     message: string;
 }
 export interface BrowseFile {
-    errors?: Array<BrowseFileError>;
+    errors?: BrowseFileError[];
     file?: File;
 }
 export interface BrowseEvent {
     error?: BrowseError;
-    files?: Array<BrowseFile>;
+    files?: BrowseFile[];
 }

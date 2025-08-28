@@ -1,5 +1,5 @@
 export type AnimationElement = HTMLElement | (() => HTMLElement);
-export type AnimationEvent = (parameters?: any) => void;
+export type AnimationEvent = (parameters?: unknown) => void;
 export type AnimationState = 'enter' | 'entering' | 'entered' | 'leave' | 'leaving' | 'leaved';
 export interface AnimationConfig {
     key: string;
@@ -24,9 +24,9 @@ export declare class Animation {
     private get target();
     constructor(config: AnimationConfig);
     dispose(): void;
-    enter(parameters?: any): Promise<boolean>;
+    enter(parameters?: unknown): Promise<boolean>;
     initialize(state?: AnimationState): void;
-    leave(parameters?: any): Promise<boolean>;
+    leave(parameters?: unknown): Promise<boolean>;
     private next;
     private update;
 }

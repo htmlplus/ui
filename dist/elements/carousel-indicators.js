@@ -17,19 +17,16 @@ let CarouselIndicators = class extends CarouselChild {
     this.events = ["init", "reInit", "select"];
   }
   get indexes() {
-    var _a;
-    return ((_a = this.api) == null ? void 0 : _a.slideNodes().map((_, index) => index)) || [];
+    return this.api?.slideNodes().map((_, index) => index) || [];
   }
   scrollTo(index) {
-    var _a;
     if (this.clickable) {
-      (_a = this.api) == null ? void 0 : _a.scrollTo(index, this.clickable === "jump");
+      this.api?.scrollTo(index, this.clickable === "jump");
     }
   }
   get style() {
-    var _a;
     return {
-      "--plus-carousel-indicators-selected": ((_a = this.api) == null ? void 0 : _a.selectedScrollSnap()) || 0
+      "--plus-carousel-indicators-selected": this.api?.selectedScrollSnap() || 0
     };
   }
   getClass(index) {
@@ -42,10 +39,10 @@ let CarouselIndicators = class extends CarouselChild {
   }
   render() {
     return html`<div class="root" part="root">
-        ${this.indexes.map((index) => html`<button part="indicator" type="button" class=${this.getClass(index)} onClick=${() => this.scrollTo(index)}>
-            ${this.numbers ? index + 1 : ""}
-          </button>`)}
-      </div>`;
+				${this.indexes.map((index) => html`<button part="indicator" type="button" class=${this.getClass(index)} onClick=${() => this.scrollTo(index)}>
+						${this.numbers ? index + 1 : ""}
+					</button>`)}
+			</div>`;
   }
 };
 CarouselIndicators.tag = "plus-carousel-indicators";

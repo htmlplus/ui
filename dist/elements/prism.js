@@ -55,7 +55,7 @@ let Prism = class extends PlusCore {
         value: this.language
       });
     }
-    if (this.theme && this.theme != "default") {
+    if (this.theme && this.theme !== "default") {
       assets.push({
         key: "theme",
         value: this.theme
@@ -74,7 +74,9 @@ let Prism = class extends PlusCore {
   }
   get html() {
     const cloned = this.$host.cloneNode(true);
-    cloned.querySelectorAll("[slot]").forEach((slot) => slot.remove());
+    cloned.querySelectorAll("[slot]").forEach((slot) => {
+      slot.remove();
+    });
     return cloned.innerHTML;
   }
   get preClass() {
@@ -92,8 +94,8 @@ let Prism = class extends PlusCore {
     for (const asset of this.assets) {
       if (!asset.value) continue;
       const result = await this.cache.resolve(asset);
-      const content = (result == null ? void 0 : result.default) || result || "";
-      if (typeof content != "string") continue;
+      const content = result?.default || result || "";
+      if (typeof content !== "string") continue;
       style += content;
     }
     PrismCore.highlightAllUnder(this.$host.shadowRoot, false);
@@ -122,13 +124,17 @@ let Prism = class extends PlusCore {
   }
   render() {
     return html`<div>
-        
-        <pre ref=${($element) => attributes($element, [{
+				<pre ref=${($element) => attributes($element, [{
       "class": this.preClass
     }, {
       "part": "pre"
-    }, this.attributes])}><code class=${this.codeClass} part="code" .innerHTML=${this.html}></code><span class="copy" part="copy"><slot name="copy" /></span></pre>
-      </div>`;
+    }, this.attributes])}>
+					<code class=${this.codeClass} part="code" .innerHTML=${this.html}></code>
+					<span class="copy" part="copy">
+						<slot name="copy" />
+					</span>
+				</pre>
+			</div>`;
   }
 };
 Prism.tag = "plus-prism";

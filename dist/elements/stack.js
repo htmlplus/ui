@@ -17,15 +17,14 @@ let Stack = class extends PlusCore {
     this.wrap = false;
   }
   get style() {
-    var _a, _b, _c;
     let direction = this.vertical ? "column" : "row";
     if (this.reverse) direction += "-reverse";
     return {
-      "align-items": (_a = this.items) == null ? void 0 : _a.replace(/start|end/, "flex-$&"),
-      "display": "flex",
+      "align-items": this.items?.replace(/start|end/, "flex-$&"),
+      display: "flex",
       "flex-direction": direction,
-      "gap": toCSSUnit(this.gap),
-      "justify-content": (_c = (_b = this.justify) == null ? void 0 : _b.replace(/start|end/, "flex-$&")) == null ? void 0 : _c.replace(/between|around|evenly/, "space-$&"),
+      gap: toCSSUnit(this.gap),
+      "justify-content": this.justify?.replace(/start|end/, "flex-$&")?.replace(/between|around|evenly/, "space-$&"),
       "flex-wrap": (() => {
         switch (this.wrap) {
           case false:

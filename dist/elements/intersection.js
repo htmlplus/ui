@@ -20,7 +20,7 @@ let Intersection = class extends PlusCore {
       threshold: this.threshold
     };
   }
-  watcher(next, prev, name) {
+  watcher(next, _prev, name) {
     switch (name) {
       case "disabled":
         if (next) this.terminate();
@@ -45,8 +45,7 @@ let Intersection = class extends PlusCore {
     this.observer.observe(this.$host);
   }
   terminate() {
-    var _a;
-    (_a = this.observer) == null ? void 0 : _a.disconnect();
+    this.observer?.disconnect();
     delete this.observer;
   }
   onIntersecting(entries) {
@@ -67,8 +66,8 @@ let Intersection = class extends PlusCore {
     return html`${attributes(this, [{
       "state": this.isIntersecting ? "in" : "out"
     }])}
-        <slot />
-      `;
+				<slot />
+			`;
   }
 };
 Intersection.tag = "plus-intersection";

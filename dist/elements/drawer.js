@@ -106,11 +106,11 @@ let Drawer = class extends PlusCore {
   watcher(next, prev, name) {
     switch (name) {
       case "open":
-        if (!next == !prev) break;
+        if (!next === !prev) break;
         this.try(next, true);
         break;
       case "mini":
-        if (!next == !prev) break;
+        if (!next === !prev) break;
         this.animate.mini[next ? "enter" : "leave"]();
         break;
     }
@@ -121,12 +121,11 @@ let Drawer = class extends PlusCore {
     this.animate.mini.initialize(this.mini ? "entered" : "leaved");
   }
   terminate() {
-    var _a, _b;
-    (_a = this.animate.main) == null ? void 0 : _a.dispose();
-    (_b = this.animate.mini) == null ? void 0 : _b.dispose();
+    this.animate.main?.dispose();
+    this.animate.mini?.dispose();
   }
   async try(open, silent) {
-    if (this.opened == open) return await this.promise;
+    if (this.opened === open) return await this.promise;
     if (!silent) {
       const event = open ? this.plusOpen : this.plusClose;
       const prevented = event.call(this).defaultPrevented;
@@ -151,13 +150,13 @@ let Drawer = class extends PlusCore {
   }
   render() {
     return html`
-        ${this.hasBackdrop ? html`<div part="backdrop">
-            <div />
-          </div>` : null}
-        <div class=${this.classes} part="root" style=${styles(this.style)}>
-          <slot />
-        </div>
-      `;
+				${this.hasBackdrop ? html`<div part="backdrop">
+						<div />
+					</div>` : null}
+				<div class=${this.classes} part="root" style=${styles(this.style)}>
+					<slot />
+				</div>
+			`;
   }
 };
 Drawer.tag = "plus-drawer";

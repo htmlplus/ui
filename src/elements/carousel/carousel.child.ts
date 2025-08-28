@@ -4,61 +4,61 @@ import type { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 
 import { PlusCore } from '@/core';
 
-import { CarouselContext } from './carousel.context';
+import type { CarouselContext } from './carousel.context';
 
 export abstract class CarouselChild extends PlusCore {
-  api?: EmblaCarouselType;
+	api?: EmblaCarouselType;
 
-  abstract events: EmblaEventType[];
+	abstract events: EmblaEventType[];
 
-  @State()
-  @Consumer('carousel')
-  state: CarouselContext | undefined;
+	@State()
+	@Consumer('carousel')
+	state: CarouselContext | undefined;
 
-  initialize() {
-    if (!this.api) return;
+	initialize() {
+		if (!this.api) return;
 
-    for (const event of this.events) {
-      this.api.on(event, this.handleUpdate);
-    }
-  }
+		for (const event of this.events) {
+			this.api.on(event, this.handleUpdate);
+		}
+	}
 
-  terminate() {
-    if (!this.api) return;
+	terminate() {
+		if (!this.api) return;
 
-    for (const event of this.events) {
-      this.api.off(event, this.handleUpdate);
-    }
+		for (const event of this.events) {
+			this.api.off(event, this.handleUpdate);
+		}
 
-    this.api = undefined;
-  }
+		this.api = undefined;
+	}
 
-  handleApiChange(api: EmblaCarouselType) {
-    this.terminate();
+	handleApiChange(api: EmblaCarouselType) {
+		this.terminate();
 
-    this.api = api;
+		this.api = api;
 
-    this.initialize();
-  }
+		this.initialize();
+	}
 
-  @Bind()
-  handleUpdate() {
-    this.forceUpdate();
-  }
+	@Bind()
+	handleUpdate() {
+		this.forceUpdate();
+	}
 
-  readyCallback() {
-    this.state?.register(this.$host);
-  }
+	readyCallback() {
+		this.state?.register(this.$host);
+	}
 
-  updateCallback() {
-    if (this.state?.api != this.api) {
-      this.handleApiChange(this.state?.api);
-    }
-  }
+	updateCallback() {
+		if (this.state?.api !== this.api) {
+			this.handleApiChange(this.state?.api);
+		}
+	}
 
-  disconnectedCallback() {
-    this.terminate();
+	disconnectedCallback() {
+		this.terminate();
 
-    this.state?.unregister(this.$host);
-  }
+		this.state?.unregister(this.$host);
+	}
 }

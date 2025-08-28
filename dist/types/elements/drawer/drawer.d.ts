@@ -94,7 +94,7 @@ export declare class Drawer extends PlusCore {
     promise?: Promise<boolean>;
     get classes(): string;
     get hasBackdrop(): boolean;
-    get style(): any;
+    get style(): Record<string, string>;
     /**
      * Hides the element.
      * @returns {Promise<boolean>} A Promise that resolves to `true` if the
