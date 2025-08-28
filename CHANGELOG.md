@@ -1,3 +1,9 @@
+## [1.7.2](https://github.com/htmlplus/ui/compare/v1.7.1...v1.7.2) (2025-08-28)
+
+### Bug Fixes
+
+* Integrate Biome, Husky, and Lint-Staged to improve code consistency, automation, and overall development workflow ([da41333](https://github.com/htmlplus/ui/commit/da4133315f620b972ef2ef60f535738696ac127f))
+
 ## [1.7.1](https://github.com/htmlplus/ui/compare/v1.7.0...v1.7.1) (2025-08-14)
 
 ### Bug Fixes
