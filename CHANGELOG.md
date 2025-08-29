@@ -1,3 +1,9 @@
+## [1.7.3](https://github.com/htmlplus/ui/compare/v1.7.2...v1.7.3) (2025-08-29)
+
+### Bug Fixes
+
+* Keep the lines in a single line to prevent unwanted extra spacing within the `prism` element ([16a6ca3](https://github.com/htmlplus/ui/commit/16a6ca35b133bb0971620de558e08c5122728ede))
+
 ## [1.7.2](https://github.com/htmlplus/ui/compare/v1.7.1...v1.7.2) (2025-08-28)
 
 ### Bug Fixes
