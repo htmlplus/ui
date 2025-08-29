@@ -213,7 +213,9 @@ export class Prism extends PlusCore {
 				this.forceUpdate();
 			})
 			.catch((error) => {
-				throw new ExternalDependencyError(this.$host, 'prismjs', { cause: error });
+				throw new ExternalDependencyError(this.$host, 'prismjs', {
+					cause: error
+				});
 			});
 	}
 
@@ -232,16 +234,8 @@ export class Prism extends PlusCore {
 	render() {
 		return (
 			<div>
-				<pre className={this.preClass} part="pre" {...this.attributes}>
-					<code
-						className={this.codeClass}
-						part="code"
-						dangerouslySetInnerHTML={{ __html: this.html }}
-					></code>
-					<span className="copy" part="copy">
-						<slot name="copy" />
-					</span>
-				</pre>
+				{/** biome-ignore format: Preserve structure on one line to avoid extra whitespace */}
+				<pre className={this.preClass} part="pre" {...this.attributes}><code className={this.codeClass} part="code" dangerouslySetInnerHTML={{ __html: this.html }}></code><span className="copy" part="copy"><slot name="copy" /></span></pre>
 			</div>
 		);
 	}
