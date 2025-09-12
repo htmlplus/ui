@@ -1,3 +1,9 @@
+## [1.7.4](https://github.com/htmlplus/ui/compare/v1.7.3...v1.7.4) (2025-09-12)
+
+### Bug Fixes
+
+* Fix overrides property type definition ([dcbbb01](https://github.com/htmlplus/ui/commit/dcbbb0185e9b5817ece39091363b395b7d5481c3))
+
 ## [1.7.3](https://github.com/htmlplus/ui/compare/v1.7.2...v1.7.3) (2025-08-29)
 
 ### Bug Fixes
