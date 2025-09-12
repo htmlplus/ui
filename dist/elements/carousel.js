@@ -1,4 +1,4 @@
-import { B as Bind, P as PlusCore, f as ExternalDependencyError, h as html, a as Property, O as Overrides, c as Event, e as State, g as Provider, M as Method, W as Watch, E as Element } from "../core/index.js";
+import { B as Bind, P as PlusCore, E as ExternalDependencyError, h as html, c as Property, V as Variant, O as Overrides, e as Event, S as State, f as Provider, M as Method, W as Watch, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}global plus-carousel[variant=presentation]{position:relative}global plus-carousel[variant=presentation] plus-carousel-button{position:absolute;top:50%;z-index:1;transform:translateY(-50%)}global plus-carousel[variant=presentation] plus-carousel-button[type=previous]:dir(ltr),global plus-carousel[variant=presentation] plus-carousel-button[type=next]:dir(rtl){left:1rem}global plus-carousel[variant=presentation] plus-carousel-button[type=previous]:dir(rtl),global plus-carousel[variant=presentation] plus-carousel-button[type=next]:dir(ltr){right:1rem}global plus-carousel[variant=presentation] plus-carousel-counter{position:absolute;right:1rem;bottom:1rem;z-index:1}global plus-carousel[variant=presentation] plus-carousel-indicators{position:absolute;left:50%;bottom:1rem;z-index:1;transform:translateX(-50%)}global plus-carousel[variant=presentation] plus-carousel-progress{position:absolute;top:-0.5rem;right:0;left:0;z-index:1;height:4px}global plus-carousel[variant=presentation] plus-carousel-slide{flex-basis:100%;background-color:#f5f5f5;border-radius:.5rem;font-size:2.5rem;font-weight:600;display:flex;align-items:center;justify-content:center;user-select:none;height:12rem}global plus-carousel[variant=presentation][axis=x] plus-carousel-slide{margin-left:.5rem}global plus-carousel[variant=presentation][axis=y] plus-carousel-slide{margin-top:.5rem}global plus-carousel[variant=presentation][axis=y] plus-carousel-slides::part(container){height:12rem}:host{display:block}";
 class CarouselPlugin {
   constructor(instance) {
@@ -603,8 +603,9 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 512
-  })
+    type: 0
+  }),
+  Variant()
 ], Carousel.prototype, "variant", 2);
 __decorateClass([
   Property({

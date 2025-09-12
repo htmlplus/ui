@@ -1,4 +1,4 @@
-import { P as PlusCore, e as State, C as Consumer, B as Bind } from "../core/index.js";
+import { P as PlusCore, S as State, C as Consumer, B as Bind } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

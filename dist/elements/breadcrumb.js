@@ -1,4 +1,4 @@
-import { u as QueryAll, P as PlusCore, d as attributes, h as html, a as Property, O as Overrides, e as State, E as Element } from "../core/index.js";
+import { u as QueryAll, P as PlusCore, b as attributes, h as html, c as Property, V as Variant, O as Overrides, S as State, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.5em}:host([block]){display:flex}[part=expander],[part=separator]{display:flex;align-items:center;justify-content:center;user-select:none;flex-shrink:0}[part=expander]{background-color:#f5f5f5;border-radius:.25rem;color:currentColor;cursor:pointer}[part=expander]:focus{outline-color:currentColor}[part=separator]{color:currentColor}:dir(rtl)[part=expander],:dir(rtl)[part=separator]{transform:scaleX(-1)}[part=expander] svg,[part=expander] ::slotted(*){fill:currentColor;height:1em}";
 const BREADCRUMB_EXPANDER_QUERY = "[slot=expander]";
 const BREADCRUMB_SEPARATOR_QUERY = "[slot=separator]";
@@ -160,6 +160,13 @@ __decorateClass([
     type: 512
   })
 ], Breadcrumb.prototype, "separator", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], Breadcrumb.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0

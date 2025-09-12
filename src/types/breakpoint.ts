@@ -1,11 +1,9 @@
-import type { OverridesConfigBreakpointCreator } from '@htmlplus/element';
+import type { OverridableValue } from '@htmlplus/element';
 
 import type { BREAKPOINTS } from '@/constants';
 
-// biome-ignore lint: TODO
+export type BreakpointBase = keyof typeof BREAKPOINTS;
+
 export interface BreakpointOverrides {}
 
-export type Breakpoint = OverridesConfigBreakpointCreator<
-	keyof typeof BREAKPOINTS,
-	BreakpointOverrides
->;
+export type Breakpoint = OverridableValue<BreakpointBase, BreakpointOverrides>;

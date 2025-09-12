@@ -1,4 +1,4 @@
-import { P as PlusCore, t as toCSSUnit, h as html, a as Property, O as Overrides, S as Style, E as Element } from "../core/index.js";
+import { P as PlusCore, t as toCSSUnit, h as html, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -62,6 +62,13 @@ __decorateClass([
     type: 4
   })
 ], Stack.prototype, "reverse", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], Stack.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 4

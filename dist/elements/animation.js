@@ -1,4 +1,4 @@
-import { v as setConfig, P as PlusCore, q as getConfig, h as html, a as Property, O as Overrides, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { v as setConfig, P as PlusCore, l as getConfig, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   ease: "ease",
@@ -225,6 +225,13 @@ __decorateClass([
     type: 4
   })
 ], Animation.prototype, "run", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], Animation.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0

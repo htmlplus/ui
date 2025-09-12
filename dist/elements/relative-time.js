@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, a as Property, O as Overrides, e as State, E as Element } from "../core/index.js";
+import { P as PlusCore, h as html, c as Property, V as Variant, O as Overrides, S as State, d as Element } from "../core/index.js";
 const RELATIVE_TIME_UNITS = [
   {
     name: "second",
@@ -106,6 +106,13 @@ __decorateClass([
     type: 520
   })
 ], RelativeTime.prototype, "value", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], RelativeTime.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0

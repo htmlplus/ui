@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, d as attributes, h as html, a as Property, O as Overrides, c as Event, e as State, M as Method, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, b as attributes, h as html, c as Property, O as Overrides, V as Variant, e as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -158,6 +158,13 @@ __decorateClass([
   }),
   Overrides()
 ], Browse.prototype, "overrides", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], Browse.prototype, "variant", 2);
 __decorateClass([
   Event()
 ], Browse.prototype, "plusChange", 2);

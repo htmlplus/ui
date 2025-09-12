@@ -84,6 +84,7 @@ function splitPrefixSuffix(input, options = {}) {
 }
 const KEY = "htmlplus";
 const API_CONNECTED = Symbol();
+const API_DEFAULTS = Symbol();
 const API_HOST = Symbol();
 const API_REQUEST = Symbol();
 const API_RENDER_COMPLETED = Symbol();
@@ -1340,15 +1341,20 @@ function Overrides() {
       const overrideKeys = Object.keys(overrides);
       const containerKeys = overrideKeys.filter((breakpoint) => breakpoint in containers);
       const mediaKeys = overrideKeys.filter((breakpoint) => breakpoint in medias);
-      let timeout = -1;
       let next = {};
-      const apply = (key2) => {
-        clearTimeout(timeout);
-        Object.assign(next, overrides[key2]);
-        timeout = window.setTimeout(() => {
-          Object.assign(host(this), overrides[key2]);
+      let scheduled = false;
+      const apply = (overrideKey) => {
+        overrideKey && Object.assign(next, overrides[overrideKey]);
+        if (scheduled)
+          return;
+        scheduled = true;
+        queueMicrotask(() => {
+          scheduled = false;
+          const defaults = Object.assign({}, this[API_DEFAULTS], next);
+          delete defaults[key];
+          Object.assign(host(this), defaults);
           next = {};
-        }, 0);
+        });
       };
       for (const overrideKey of overrideKeys) {
         if (activeKeys.delete(overrideKey))
@@ -1368,6 +1374,7 @@ function Overrides() {
                   apply(containerKey);
                 }
               }
+              apply();
             };
             containerQueryList.addEventListener("change", change);
             const disposer = () => {
@@ -1390,6 +1397,7 @@ function Overrides() {
                   apply(mediaKey);
                 }
               }
+              apply();
             };
             mediaQueryList.addEventListener("change", change);
             const disposer = () => {
@@ -1462,6 +1470,10 @@ function Property(options) {
           this[key] = toProperty(value, options?.type);
         }
       }
+    });
+    wrapMethod("before", target, LIFECYCLE_CONNECTED, function() {
+      this[API_DEFAULTS] ||= {};
+      this[API_DEFAULTS][key] = this[key];
     });
     wrapMethod("before", target, LIFECYCLE_CONSTRUCTED, function() {
       const get2 = () => {
@@ -1570,6 +1582,22 @@ const toCssString = (input, parent) => {
   }
   return parent ? result : `:host {${result}}`;
 };
+function Variant() {
+  return (target, key) => {
+    wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
+      if (!states.has(key))
+        return;
+      const namespace = getNamespace(target) || "";
+      const tag2 = getTag(this) || "";
+      const properties = getConfig$1(namespace).elements?.[tag2]?.variants?.[this[key]]?.properties;
+      if (!properties)
+        return;
+      const defaults = Object.assign({}, this[API_DEFAULTS], properties);
+      delete defaults[key];
+      Object.assign(this, defaults);
+    });
+  };
+}
 function Watch(keys, immediate) {
   return (target, key) => {
     const all = [keys].flat().filter((item) => item);
@@ -1999,33 +2027,34 @@ export {
   AsyncCache as A,
   Bind as B,
   Consumer as C,
-  Element as E,
+  ExternalDependencyError as E,
   Listen as L,
   Method as M,
   NotEmptyPropertyError as N,
   Overrides as O,
   PlusCore as P,
   Query as Q,
-  Style as S,
+  State as S,
+  Variant as V,
   Watch as W,
-  Property as a,
-  off as b,
-  Event as c,
-  attributes as d,
-  State as e,
-  ExternalDependencyError as f,
-  Provider as g,
+  off as a,
+  attributes as b,
+  Property as c,
+  Element as d,
+  Event as e,
+  Provider as f,
+  Style as g,
   html as h,
   toCSSColor as i,
   PlusForm as j,
-  Animation as k,
-  Scrollbar as l,
-  toAxis as m,
-  classes as n,
+  setConfig as k,
+  getConfig as l,
+  Animation as m,
+  Scrollbar as n,
   on as o,
-  setConfig as p,
-  getConfig as q,
-  query as r,
+  toAxis as p,
+  query as q,
+  classes as r,
   styles as s,
   toCSSUnit as t,
   QueryAll as u,

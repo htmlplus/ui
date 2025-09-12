@@ -35,6 +35,11 @@
           "description": "The summary text displayed on the header."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -62,6 +67,11 @@
             }
           ],
           "description": "Specifies that only one accordion can be open."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -203,6 +213,11 @@
           "description": "Starts the animation."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -247,6 +262,11 @@
           "description": "Adjust how often to trickle/increment, in ms."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -277,6 +297,11 @@
           "name": "value",
           "values": [],
           "description": "Specifies the ratio."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -343,6 +368,11 @@
           "description": "Specifies the size of the element."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -382,6 +412,11 @@
             }
           ],
           "description": "Specifies whether avatars should be displayed compressed or not."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -431,6 +466,11 @@
           "name": "separator",
           "values": [],
           "description": "Specifies the separator between items."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -512,6 +552,11 @@
         },
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -642,6 +687,11 @@
           "description": "Use tile property to neutralize border-radius."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -660,6 +710,11 @@
       "attributes": [
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -906,6 +961,11 @@
           "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -926,6 +986,11 @@
           "name": "template",
           "values": [],
           "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -987,6 +1052,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1002,6 +1072,11 @@
       "attributes": [
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -1036,6 +1111,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1051,6 +1131,11 @@
       "attributes": [
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -1080,6 +1165,11 @@
         },
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -1133,6 +1223,11 @@
         },
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -1211,6 +1306,11 @@
           "name": "to",
           "values": [],
           "description": "Target value."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -1383,6 +1483,11 @@
           "name": "value",
           "values": [],
           "description": "Gets/Sets data."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "view",
@@ -1673,6 +1778,11 @@
           "description": "Deactivate the dialog's backdrop to show or not."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -1700,6 +1810,11 @@
             }
           ],
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -1731,6 +1846,11 @@
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -1751,6 +1871,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -1766,6 +1891,11 @@
       "attributes": [
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -1788,6 +1918,11 @@
         },
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -1876,17 +2011,7 @@
         },
         {
           "name": "variant",
-          "values": [
-            {
-              "name": "middle"
-            },
-            {
-              "name": "inset"
-            },
-            {
-              "name": "full"
-            }
-          ],
+          "values": [],
           "description": "Specifies the amount of indentation."
         },
         {
@@ -2042,6 +2167,11 @@
           "description": "Determine the width of the drawer."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -2065,6 +2195,11 @@
         },
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -2099,6 +2234,11 @@
           "name": "seed",
           "values": [],
           "description": "Keeps the result constant."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -2214,6 +2354,11 @@
           "name": "value",
           "values": [],
           "description": "The bytes value to convert."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -2798,6 +2943,11 @@
             }
           ],
           "description": "Reverses the flow of contents from left-to-right to right-to-left, or vice-versa."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "vertical",
@@ -4068,6 +4218,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4170,6 +4325,11 @@
           "description": "Specifies the size."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -4226,6 +4386,11 @@
           "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -4280,6 +4445,11 @@
           "name": "resolver",
           "values": [],
           "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -4373,6 +4543,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4431,6 +4606,11 @@
           "description": "The date and time to be displayed in a relative format."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -4467,6 +4647,11 @@
             }
           ],
           "description": "Specifies the reference of the scroll."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "vertical",
@@ -4582,6 +4767,11 @@
           "description": "Specifies whether undo can be performed or not."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -4609,6 +4799,11 @@
           "description": "Specifies the symbol."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -4632,6 +4827,11 @@
         },
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -4693,6 +4893,11 @@
             }
           ],
           "description": "Specifies which variant of the spinner to use."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "overrides",
@@ -4780,6 +4985,11 @@
           "description": "Whether to reverse the order of items."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "vertical",
           "values": [
             {
@@ -4827,6 +5037,11 @@
           "name": "top",
           "values": [],
           "description": "Specifies the space from top."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "watcher",
@@ -4890,6 +5105,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO"
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         }
       ],
       "references": [
@@ -4907,6 +5127,11 @@
           "name": "value",
           "values": [],
           "description": "Provides your own value."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "vertical",
@@ -4977,6 +5202,11 @@
           "description": "Reverses the arrangement of the tabs."
         },
         {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "overrides",
           "values": [],
           "description": "TODO"
@@ -4997,6 +5227,11 @@
           "name": "value",
           "values": [],
           "description": "Provides your own value."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "active",
@@ -5022,6 +5257,11 @@
       "attributes": [
         {
           "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "variant",
           "values": [],
           "description": "TODO"
         }
@@ -5053,6 +5293,11 @@
           "name": "value",
           "values": [],
           "description": "Provides your own value."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "active",
@@ -5226,6 +5471,11 @@
             }
           ],
           "description": "Specifies the activation method."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "TODO"
         },
         {
           "name": "z",

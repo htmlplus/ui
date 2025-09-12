@@ -1,4 +1,4 @@
-import { Q as Query, j as PlusForm, f as ExternalDependencyError, h as html, a as Property, O as Overrides, c as Event, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, j as PlusForm, E as ExternalDependencyError, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -282,6 +282,13 @@ __decorateClass([
     type: 0
   })
 ], Signature.prototype, "undoable", 1);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], Signature.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0

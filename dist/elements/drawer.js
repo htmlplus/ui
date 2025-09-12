@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, k as Animation, l as Scrollbar, b as off, o as on, m as toAxis, n as classes, t as toCSSUnit, s as styles, h as html, a as Property, O as Overrides, c as Event, g as Provider, M as Method, W as Watch, B as Bind, E as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, m as Animation, n as Scrollbar, a as off, o as on, p as toAxis, r as classes, t as toCSSUnit, s as styles, h as html, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;position:relative;overflow:hidden;z-index:1000}[part=backdrop]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;transition:inherit}[part=backdrop] *{width:100%;height:100%;background-color:#000;opacity:.5}[part=root]{height:100%;position:relative;z-index:1;transition:inherit}.right,.left{width:var(--plus-drawer-size)}.top,.bottom{height:var(--plus-drawer-size)}.right,.left.reverse{margin:0 var(--plus-drawer-offset, 0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset, 0)}.top,.bottom.reverse{margin:var(--plus-drawer-offset, 0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset, 0) 0}:host([floating]){position:fixed;top:0;right:0;bottom:0;left:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=open]),:host([animation][state=closing]){padding:.000001px}:host([animation][state=open]) [part=backdrop],:host([animation][state=closing]) [part=backdrop]{opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -220,6 +220,13 @@ __decorateClass([
     type: 640
   })
 ], Drawer.prototype, "size", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], Drawer.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0

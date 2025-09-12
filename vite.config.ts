@@ -76,8 +76,8 @@ export default defineConfig({
 			formats: ['es'],
 			entry: Object.fromEntries(
 				glob
-					.sync(['src/elements/*/*.tsx'], { absolute: true })
-					.map((file) => [`elements/${path.basename(file, path.extname(file))}`, file])
+					.sync(['src/elements/*/index.ts'], { absolute: true })
+					.map((file) => [`elements/${path.basename(path.dirname(file))}`, file])
 					.concat([
 						['elements/carousel-child', 'src/elements/carousel/carousel.child.ts'],
 						['core/config', 'src/config/index.ts'],
