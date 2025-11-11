@@ -1,3 +1,9 @@
+## [1.7.5](https://github.com/htmlplus/ui/compare/v1.7.4...v1.7.5) (2025-11-11)
+
+### Bug Fixes
+
+* Apply CSS variables for color and size on specific elements ([038c91a](https://github.com/htmlplus/ui/commit/038c91a0e5a29f34f8effca3292f257cadbb2d66))
+
 ## [1.7.4](https://github.com/htmlplus/ui/compare/v1.7.3...v1.7.4) (2025-09-12)
 
 ### Bug Fixes
