@@ -11,11 +11,11 @@ import {
 	State,
 	Style,
 	Variant,
-	Watch,
-	toCSSUnit
+	Watch
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { toCSSUnit } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
 import type { StickyState, StickyTop } from './sticky.types';

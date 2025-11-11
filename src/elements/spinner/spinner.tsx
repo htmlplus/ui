@@ -5,11 +5,11 @@ import {
 	type OverridesConfig,
 	Property,
 	Style,
-	Variant,
-	toCSSColor
+	Variant
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { toCSSColor } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
 import type { SpinnerSize, SpinnerType } from './spinner.types';

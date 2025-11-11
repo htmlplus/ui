@@ -5,11 +5,11 @@ import {
 	type OverridesConfig,
 	Property,
 	Style,
-	Variant,
-	toCSSUnit
+	Variant
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { toCSSUnit } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
 import type { StackAlign, StackGap, StackJustify } from './stack.types';

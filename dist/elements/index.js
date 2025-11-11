@@ -2,7 +2,6 @@ import { Accordion } from "./accordion.js";
 import { Accordions } from "./accordions.js";
 import { Animation } from "./animation.js";
 import { AppProgressBar } from "./app-progress-bar.js";
-import { AspectRatio } from "./aspect-ratio.js";
 import { Avatar } from "./avatar.js";
 import { AvatarGroup } from "./avatar-group.js";
 import { Breadcrumb } from "./breadcrumb.js";
@@ -31,8 +30,6 @@ import { Drawer } from "./drawer.js";
 import { DrawerToggler } from "./drawer-toggler.js";
 import { Faker } from "./faker.js";
 import { FormatBytes } from "./format-bytes.js";
-import { Grid } from "./grid.js";
-import { GridItem } from "./grid-item.js";
 import { Icon } from "./icon.js";
 import { Intersection } from "./intersection.js";
 import { Prism } from "./prism.js";
@@ -58,7 +55,6 @@ export {
   Accordions,
   Animation,
   AppProgressBar,
-  AspectRatio,
   Avatar,
   AvatarGroup,
   Breadcrumb,
@@ -87,8 +83,6 @@ export {
   DrawerToggler,
   Faker,
   FormatBytes,
-  Grid,
-  GridItem,
   Icon,
   Intersection,
   Prism,

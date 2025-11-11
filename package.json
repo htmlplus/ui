@@ -79,7 +79,7 @@
 	},
 	"homepage": "https://htmlplus.io",
 	"dependencies": {
-		"@htmlplus/element": "^3.4.0"
+		"@htmlplus/element": "^3.4.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
@@ -105,7 +105,7 @@
 		"vite-plugin-dts": "^4.5.4"
 	},
 	"peerDependencies": {
-		"@faker-js/faker": "^8.2.0",
+		"@faker-js/faker": "^10.1.0",
 		"@floating-ui/dom": "^1.5.3",
 		"cropperjs": "^1.6.1",
 		"embla-carousel": "^8.6.0",

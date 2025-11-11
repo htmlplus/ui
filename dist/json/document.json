@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2025-09-12T19:09:07.239Z",
+      "lastModified": "2025-09-17T13:11:28.291Z",
       "methods": [
         {
           "async": false,
@@ -195,7 +195,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2025-09-12T19:09:07.239Z",
+      "lastModified": "2025-09-12T19:50:47.256Z",
       "methods": [],
       "properties": [
         {
@@ -262,7 +262,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2025-09-12T19:09:07.240Z",
+      "lastModified": "2025-09-12T19:50:47.256Z",
       "methods": [
         {
           "async": false,
@@ -532,7 +532,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-09-12T19:09:07.241Z",
+      "lastModified": "2025-09-12T19:50:47.256Z",
       "methods": [
         {
           "async": false,
@@ -673,81 +673,8 @@
     },
     {
       "events": [],
-      "key": "aspect-ratio",
-      "lastModified": "2025-09-12T19:09:07.241Z",
-      "methods": [],
-      "properties": [
-        {
-          "attribute": "min-height",
-          "name": "minHeight",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "number | string",
-          "description": "Specifies the minimum height."
-        },
-        {
-          "attribute": "max-height",
-          "name": "maxHeight",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "number | string",
-          "description": "Specifies the maximum height."
-        },
-        {
-          "attribute": "value",
-          "initializer": "1",
-          "name": "value",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "number | string",
-          "description": "Specifies the ratio."
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<string>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        }
-      ],
-      "styles": [],
-      "title": "Aspect Ratio",
-      "description": "Sets a preferred aspect ratio only for the first child inside the element.",
-      "stable": true,
-      "slots": [
-        {
-          "name": "default",
-          "description": "The default slot."
-        }
-      ],
-      "examples": [
-        "default",
-        "image",
-        "video",
-        "card",
-        "map"
-      ]
-    },
-    {
-      "events": [],
       "key": "avatar",
-      "lastModified": "2025-09-12T19:09:07.243Z",
+      "lastModified": "2025-10-04T20:08:25.133Z",
       "methods": [],
       "properties": [
         {
@@ -845,7 +772,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2025-09-12T19:09:07.242Z",
+      "lastModified": "2025-09-12T19:50:47.257Z",
       "methods": [],
       "properties": [
         {
@@ -903,7 +830,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2025-09-12T19:09:07.243Z",
+      "lastModified": "2025-09-12T19:50:47.258Z",
       "methods": [],
       "properties": [
         {
@@ -1041,7 +968,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2025-09-12T19:09:07.243Z",
+      "lastModified": "2025-09-12T19:50:47.259Z",
       "methods": [
         {
           "async": false,
@@ -1169,7 +1096,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2025-09-12T19:09:07.244Z",
+      "lastModified": "2025-09-12T19:50:47.259Z",
       "methods": [],
       "properties": [
         {
@@ -1279,7 +1206,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2025-09-12T19:09:07.244Z",
+      "lastModified": "2025-09-12T19:50:47.259Z",
       "methods": [],
       "properties": [
         {
@@ -1398,7 +1325,7 @@
         }
       ],
       "key": "carousel",
-      "lastModified": "2025-09-12T19:09:07.247Z",
+      "lastModified": "2025-09-12T19:50:47.262Z",
       "methods": [
         {
           "async": false,
@@ -1779,7 +1706,7 @@
     {
       "events": [],
       "key": "carousel-button",
-      "lastModified": "2025-09-12T19:09:07.244Z",
+      "lastModified": "2025-09-12T19:50:47.260Z",
       "methods": [],
       "properties": [
         {
@@ -1836,7 +1763,7 @@
     {
       "events": [],
       "key": "carousel-counter",
-      "lastModified": "2025-09-12T19:09:07.245Z",
+      "lastModified": "2025-09-12T19:50:47.260Z",
       "methods": [],
       "properties": [
         {
@@ -1879,7 +1806,7 @@
     {
       "events": [],
       "key": "carousel-indicators",
-      "lastModified": "2025-09-12T19:09:07.245Z",
+      "lastModified": "2025-09-12T19:50:47.260Z",
       "methods": [],
       "properties": [
         {
@@ -1939,7 +1866,7 @@
     {
       "events": [],
       "key": "carousel-progress",
-      "lastModified": "2025-09-12T19:09:07.245Z",
+      "lastModified": "2025-09-12T19:50:47.261Z",
       "methods": [],
       "properties": [
         {
@@ -1972,7 +1899,7 @@
     {
       "events": [],
       "key": "carousel-slide",
-      "lastModified": "2025-09-12T19:09:07.246Z",
+      "lastModified": "2025-09-12T19:50:47.261Z",
       "methods": [],
       "properties": [
         {
@@ -2020,7 +1947,7 @@
     {
       "events": [],
       "key": "carousel-slides",
-      "lastModified": "2025-09-12T19:09:07.246Z",
+      "lastModified": "2025-09-12T19:50:47.261Z",
       "methods": [],
       "properties": [
         {
@@ -2059,7 +1986,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2025-09-12T19:09:07.248Z",
+      "lastModified": "2025-09-12T19:50:47.262Z",
       "methods": [],
       "properties": [
         {
@@ -2117,7 +2044,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2025-09-12T19:09:07.248Z",
+      "lastModified": "2025-09-12T19:50:47.263Z",
       "methods": [],
       "properties": [
         {
@@ -2193,7 +2120,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2025-09-12T19:09:07.249Z",
+      "lastModified": "2025-09-12T19:50:47.263Z",
       "methods": [
         {
           "async": false,
@@ -2409,7 +2336,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-09-12T19:09:07.249Z",
+      "lastModified": "2025-09-12T19:50:47.264Z",
       "methods": [
         {
           "async": false,
@@ -2884,7 +2811,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2025-09-12T19:09:07.251Z",
+      "lastModified": "2025-09-20T19:46:09.739Z",
       "methods": [
         {
           "async": false,
@@ -2970,10 +2897,9 @@
           "attribute": "fullscreen",
           "name": "fullscreen",
           "readonly": false,
-          "reflects": false,
+          "reflects": true,
           "required": false,
-          "type": "DialogFullscreen",
-          "typeReference": "./dialog.types",
+          "type": "boolean",
           "description": "Set both width and height of the dialog to occupy the screen size."
         },
         {
@@ -3107,7 +3033,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2025-09-12T19:09:07.249Z",
+      "lastModified": "2025-09-12T19:50:47.264Z",
       "methods": [],
       "properties": [
         {
@@ -3155,7 +3081,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2025-09-12T19:09:07.250Z",
+      "lastModified": "2025-09-12T19:50:47.264Z",
       "methods": [],
       "properties": [
         {
@@ -3203,7 +3129,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2025-09-12T19:09:07.250Z",
+      "lastModified": "2025-09-12T19:50:47.264Z",
       "methods": [],
       "properties": [
         {
@@ -3242,7 +3168,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2025-09-12T19:09:07.250Z",
+      "lastModified": "2025-09-12T19:50:47.265Z",
       "methods": [],
       "properties": [
         {
@@ -3281,7 +3207,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2025-09-12T19:09:07.251Z",
+      "lastModified": "2025-09-12T19:50:47.265Z",
       "methods": [],
       "properties": [
         {
@@ -3337,7 +3263,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-09-12T19:09:07.251Z",
+      "lastModified": "2025-09-30T16:00:16.679Z",
       "methods": [],
       "properties": [
         {
@@ -3484,7 +3410,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-09-12T19:09:07.252Z",
+      "lastModified": "2025-09-30T15:17:30.611Z",
       "methods": [
         {
           "async": false,
@@ -3669,7 +3595,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2025-09-12T19:09:07.252Z",
+      "lastModified": "2025-09-12T19:50:47.266Z",
       "methods": [],
       "properties": [
         {
@@ -3725,7 +3651,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-09-12T19:09:07.253Z",
+      "lastModified": "2025-09-28T18:42:49.111Z",
       "methods": [],
       "properties": [
         {
@@ -3805,7 +3731,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2025-09-12T19:09:07.253Z",
+      "lastModified": "2025-09-12T19:50:47.269Z",
       "methods": [],
       "properties": [
         {
@@ -3926,839 +3852,8 @@
     },
     {
       "events": [],
-      "key": "grid",
-      "lastModified": "2025-09-12T19:09:07.254Z",
-      "methods": [],
-      "properties": [
-        {
-          "attribute": "align-content",
-          "initializer": "'stretch'",
-          "name": "alignContent",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows (It overrides alignItems)."
-        },
-        {
-          "attribute": "align-content-xs",
-          "name": "alignContentXs",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows for extra-small display sizes (It overrides alignItemsXs)."
-        },
-        {
-          "attribute": "align-content-sm",
-          "name": "alignContentSm",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows for small display sizes (It overrides alignItemsSm)."
-        },
-        {
-          "attribute": "align-content-md",
-          "name": "alignContentMd",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows for medium display sizes (It overrides alignItemsMd)."
-        },
-        {
-          "attribute": "align-content-lg",
-          "name": "alignContentLg",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows for large display sizes (It overrides alignItemsLg)."
-        },
-        {
-          "attribute": "align-content-xl",
-          "name": "alignContentXl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows for extra-large display sizes (It overrides alignItemsXl)."
-        },
-        {
-          "attribute": "align-content-xxl",
-          "name": "alignContentXxl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignContent",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically across all rows for extra-extra-large display sizes (It overrides alignItemsXXl)."
-        },
-        {
-          "attribute": "align-items",
-          "initializer": "'stretch'",
-          "name": "alignItems",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row."
-        },
-        {
-          "attribute": "align-items-xs",
-          "name": "alignItemsXs",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row for extra-small display sizes."
-        },
-        {
-          "attribute": "align-items-sm",
-          "name": "alignItemsSm",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row for small display sizes."
-        },
-        {
-          "attribute": "align-items-md",
-          "name": "alignItemsMd",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row for medium display sizes."
-        },
-        {
-          "attribute": "align-items-lg",
-          "name": "alignItemsLg",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row for large display sizes."
-        },
-        {
-          "attribute": "align-items-xl",
-          "name": "alignItemsXl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row for extra-large display sizes."
-        },
-        {
-          "attribute": "align-items-xxl",
-          "name": "alignItemsXxl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridAlignItems",
-          "typeReference": "./grid.types",
-          "description": "Aligns contents vertically inside their own row for extra-extra-large display sizes."
-        },
-        {
-          "attribute": "gutter",
-          "name": "gutter",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridGutter",
-          "typeReference": "./grid.types",
-          "description": "Adds a gap between contents to make space between them vertically and horizontally."
-        },
-        {
-          "attribute": "gutter-x",
-          "name": "gutterX",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridGutter",
-          "typeReference": "./grid.types",
-          "description": "Adds a gap between contents to make space between them horizontally."
-        },
-        {
-          "attribute": "gutter-y",
-          "name": "gutterY",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridGutter",
-          "typeReference": "./grid.types",
-          "description": "Adds a gap between contents to make space between them vertically."
-        },
-        {
-          "attribute": "justify-content",
-          "initializer": "'start'",
-          "name": "justifyContent",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally."
-        },
-        {
-          "attribute": "justify-content-xs",
-          "name": "justifyContentXs",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally for extra-small display sizes."
-        },
-        {
-          "attribute": "justify-content-sm",
-          "name": "justifyContentSm",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally for small display sizes."
-        },
-        {
-          "attribute": "justify-content-md",
-          "name": "justifyContentMd",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally for medium display sizes."
-        },
-        {
-          "attribute": "justify-content-lg",
-          "name": "justifyContentLg",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally for large display sizes."
-        },
-        {
-          "attribute": "justify-content-xl",
-          "name": "justifyContentXl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally for extra-large display sizes."
-        },
-        {
-          "attribute": "justify-content-xxl",
-          "name": "justifyContentXxl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridJustifyContent",
-          "typeReference": "./grid.types",
-          "description": "Justifies contents horizontally for extra-extra-large display sizes."
-        },
-        {
-          "attribute": "reverse",
-          "name": "reverse",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "boolean",
-          "description": "Reverses the flow of contents from left-to-right to right-to-left, or vice-versa."
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<string>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
-          "attribute": "vertical",
-          "name": "vertical",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "boolean",
-          "description": "Changes the flow of contents from left-to-right to top-to-down."
-        },
-        {
-          "attribute": "wrap",
-          "initializer": "'on'",
-          "name": "wrap",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width."
-        },
-        {
-          "attribute": "wrap-xs",
-          "name": "wrapXs",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-small screen devices."
-        },
-        {
-          "attribute": "wrap-sm",
-          "name": "wrapSm",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for small screen devices."
-        },
-        {
-          "attribute": "wrap-md",
-          "name": "wrapMd",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for medium screen devices."
-        },
-        {
-          "attribute": "wrap-lg",
-          "name": "wrapLg",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for large screen devices."
-        },
-        {
-          "attribute": "wrap-xl",
-          "name": "wrapXl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-large screen devices."
-        },
-        {
-          "attribute": "wrap-xxl",
-          "name": "wrapXxl",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "GridWrap",
-          "typeReference": "./grid.types",
-          "description": "Controls allowing the container to wrap the content or not if the cumulative width size of contents is more than the twelve-column width for extra-extra-large screen devices."
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        }
-      ],
-      "styles": [
-        {
-          "description": "TODO",
-          "initializer": "0",
-          "name": "--plus-grid--gutter-x"
-        },
-        {
-          "description": "TODO",
-          "initializer": "0",
-          "name": "--plus-grid--gutter-y"
-        }
-      ],
-      "title": "Grid",
-      "description": "It's the most flexible and powerful grid system which you need to build simple to complex responsive layouts, using two main elements, `plus-grid` as a container & `plus-grid-item`. By using these elements, align your content in any form & shape and for all screen sizes with 12 available column sizes and 6 breakpoints.",
-      "slots": [
-        {
-          "name": "default",
-          "description": "The default slot."
-        }
-      ],
-      "examples": [
-        "default",
-        "auto-sizing",
-        "gutter",
-        "gutter-x",
-        "gutter-y",
-        "align-items",
-        "align-content",
-        "align-self",
-        "justify-content",
-        "reverse",
-        "wrap",
-        "offset",
-        "order",
-        "hide",
-        "vertical"
-      ]
-    },
-    {
-      "events": [],
-      "key": "grid-item",
-      "lastModified": "2025-09-12T19:09:07.254Z",
-      "methods": [],
-      "properties": [
-        {
-          "attribute": "align-self",
-          "initializer": "'auto'",
-          "name": "alignSelf",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid). It overrides the align-items property of its parent."
-        },
-        {
-          "attribute": "align-self-xs",
-          "name": "alignSelfXs",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid) for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-small breakpoints)."
-        },
-        {
-          "attribute": "align-self-sm",
-          "name": "alignSelfSm",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid) for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for small breakpoints)."
-        },
-        {
-          "attribute": "align-self-md",
-          "name": "alignSelfMd",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid) for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for medium breakpoints)."
-        },
-        {
-          "attribute": "align-self-lg",
-          "name": "alignSelfLg",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid) for large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for large breakpoints)."
-        },
-        {
-          "attribute": "align-self-xl",
-          "name": "alignSelfXl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid) for extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-large breakpoints)."
-        },
-        {
-          "attribute": "align-self-xxl",
-          "name": "alignSelfXxl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemAlignSelf",
-          "typeReference": "./grid-item.types",
-          "description": "Aligns the grid-item vertically in its container (grid) for extra-extra-large display sizes. It also applies to larger breakpoints and display sizes while they are not specified. (It overrides the align-items property of its parent just for extra-extra-large breakpoints)."
-        },
-        {
-          "attribute": "xs",
-          "name": "xs",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemColumn",
-          "typeReference": "./grid-item.types",
-          "description": "Specifies the number of columns for extra-small viewports (portrait phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (sm, md, lg, xl and xxl) are not specified."
-        },
-        {
-          "attribute": "sm",
-          "name": "sm",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemColumn",
-          "typeReference": "./grid-item.types",
-          "description": "Specifies the number of columns for small viewports (landscape phones). It also determines the number of columns for bigger display sizes when other upper breakpoints (md, lg, xl and xxl) are not specified."
-        },
-        {
-          "attribute": "md",
-          "name": "md",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemColumn",
-          "typeReference": "./grid-item.types",
-          "description": "Specifies the number of columns for medium viewports (tablets). It also determines the number of columns for bigger display sizes when other upper breakpoints (lg, xl and xxl) are not specified."
-        },
-        {
-          "attribute": "lg",
-          "name": "lg",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemColumn",
-          "typeReference": "./grid-item.types",
-          "description": "Specifies the number of columns for large viewports (desktop). It also determines the number of columns for bigger display sizes when the upper breakpoint (xl and xxl) is not specified."
-        },
-        {
-          "attribute": "xl",
-          "name": "xl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemColumn",
-          "typeReference": "./grid-item.types",
-          "description": "Specifies the number of columns for large viewports (large desktops). It also determines the number of columns for bigger display sizes when the upper breakpoint (xxl) is not specified."
-        },
-        {
-          "attribute": "xxl",
-          "name": "xxl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemColumn",
-          "typeReference": "./grid-item.types",
-          "description": "Specifies the number of columns for extra-extra-large viewports (larger desktops)."
-        },
-        {
-          "attribute": "hide-xs",
-          "name": "hideXs",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in extra-small display sizes (portrait phones)."
-        },
-        {
-          "attribute": "hide-sm",
-          "name": "hideSm",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in small display sizes (landscape phones)."
-        },
-        {
-          "attribute": "hide-md",
-          "name": "hideMd",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in medium display sizes (tablets)."
-        },
-        {
-          "attribute": "hide-lg",
-          "name": "hideLg",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in large display sizes (desktop)."
-        },
-        {
-          "attribute": "hide-xl",
-          "name": "hideXl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in extra-large display sizes (large desktops)."
-        },
-        {
-          "attribute": "hide-xxl",
-          "name": "hideXxl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in extra-extra-large display sizes (larger desktops)."
-        },
-        {
-          "attribute": "hide",
-          "name": "hide",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in all display sizes."
-        },
-        {
-          "attribute": "hide-sm-up",
-          "name": "hideSmUp",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in small and larger display sizes."
-        },
-        {
-          "attribute": "hide-md-up",
-          "name": "hideMdUp",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in medium and larger display sizes."
-        },
-        {
-          "attribute": "hide-lg-up",
-          "name": "hideLgUp",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in large and larger display sizes."
-        },
-        {
-          "attribute": "hide-xl-up",
-          "name": "hideXlUp",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in large and larger display sizes."
-        },
-        {
-          "attribute": "hide-sm-down",
-          "name": "hideSmDown",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in small and smaller display sizes."
-        },
-        {
-          "attribute": "hide-md-down",
-          "name": "hideMdDown",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in medium and smaller display sizes."
-        },
-        {
-          "attribute": "hide-lg-down",
-          "name": "hideLgDown",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in large and smaller display sizes."
-        },
-        {
-          "attribute": "hide-xl-down",
-          "name": "hideXlDown",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in large and smaller display sizes."
-        },
-        {
-          "attribute": "hide-xxl-down",
-          "name": "hideXxlDown",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Hides the grid-item in large and smaller display sizes."
-        },
-        {
-          "attribute": "offset-xs",
-          "name": "offsetXs",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOffset",
-          "typeReference": "./grid-item.types",
-          "description": "Adds an offset space before the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
-        },
-        {
-          "attribute": "offset-sm",
-          "name": "offsetSm",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOffset",
-          "typeReference": "./grid-item.types",
-          "description": "Adds an offset space before the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
-        },
-        {
-          "attribute": "offset-md",
-          "name": "offsetMd",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOffset",
-          "typeReference": "./grid-item.types",
-          "description": "Adds an offset space before the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
-        },
-        {
-          "attribute": "offset-lg",
-          "name": "offsetLg",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOffset",
-          "typeReference": "./grid-item.types",
-          "description": "Adds an offset space before the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified."
-        },
-        {
-          "attribute": "offset-xl",
-          "name": "offsetXl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOffset",
-          "typeReference": "./grid-item.types",
-          "description": "Adds an offset space before the grid-item for extra-large display sizes."
-        },
-        {
-          "attribute": "offset-xxl",
-          "name": "offsetXxl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOffset",
-          "typeReference": "./grid-item.types",
-          "description": "Adds an offset space before the grid-item for extra-extra-large display sizes."
-        },
-        {
-          "attribute": "order-xs",
-          "name": "orderXs",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOrder",
-          "typeReference": "./grid-item.types",
-          "description": "Overrides the default order of the grid-item for extra-small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
-        },
-        {
-          "attribute": "order-sm",
-          "name": "orderSm",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOrder",
-          "typeReference": "./grid-item.types",
-          "description": "Overrides the default order of the grid-item for small display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
-        },
-        {
-          "attribute": "order-md",
-          "name": "orderMd",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOrder",
-          "typeReference": "./grid-item.types",
-          "description": "Overrides the default order of the grid-item for medium display sizes. It also applies to larger breakpoints and display sizes while they are not specified."
-        },
-        {
-          "attribute": "order-lg",
-          "name": "orderLg",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOrder",
-          "typeReference": "./grid-item.types",
-          "description": "Overrides the default order of the grid-item for large display sizes. It also applies to the larger breakpoint (xl) while that is not specified."
-        },
-        {
-          "attribute": "order-xl",
-          "name": "orderXl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOrder",
-          "typeReference": "./grid-item.types",
-          "description": "Overrides the default order of the grid-item for extra-large display sizes."
-        },
-        {
-          "attribute": "order-xxl",
-          "name": "orderXxl",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "GridItemOrder",
-          "typeReference": "./grid-item.types",
-          "description": "Overrides the default order of the grid-item for extra-extra-large display sizes."
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<string>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        }
-      ],
-      "styles": [],
-      "title": "Grid Item",
-      "description": "",
-      "subset": true,
-      "slots": [
-        {
-          "name": "default",
-          "description": "The default slot."
-        }
-      ],
-      "examples": []
-    },
-    {
-      "events": [],
       "key": "icon",
-      "lastModified": "2025-09-12T19:09:07.255Z",
+      "lastModified": "2025-09-30T15:02:36.101Z",
       "methods": [],
       "properties": [
         {
@@ -4887,7 +3982,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2025-09-12T19:09:07.255Z",
+      "lastModified": "2025-09-12T19:50:47.271Z",
       "methods": [],
       "properties": [
         {
@@ -4975,7 +4070,7 @@
     {
       "events": [],
       "key": "prism",
-      "lastModified": "2025-09-12T19:09:07.255Z",
+      "lastModified": "2025-09-12T19:50:47.272Z",
       "methods": [],
       "properties": [
         {
@@ -5091,7 +4186,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-09-12T19:09:07.256Z",
+      "lastModified": "2025-09-30T16:00:00.706Z",
       "methods": [],
       "properties": [
         {
@@ -5216,7 +4311,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2025-09-12T19:09:07.256Z",
+      "lastModified": "2025-09-12T19:50:47.272Z",
       "methods": [],
       "properties": [
         {
@@ -5255,7 +4350,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2025-09-12T19:09:07.257Z",
+      "lastModified": "2025-09-12T19:50:47.273Z",
       "methods": [],
       "properties": [
         {
@@ -5341,7 +4436,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2025-09-12T19:09:07.257Z",
+      "lastModified": "2025-09-12T19:50:47.273Z",
       "methods": [],
       "properties": [
         {
@@ -5437,7 +4532,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-09-12T19:09:07.257Z",
+      "lastModified": "2025-09-12T19:50:47.274Z",
       "methods": [
         {
           "async": false,
@@ -5656,7 +4751,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-09-12T19:09:07.257Z",
+      "lastModified": "2025-09-30T15:59:37.899Z",
       "methods": [],
       "properties": [
         {
@@ -5745,7 +4840,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2025-09-12T19:09:07.258Z",
+      "lastModified": "2025-09-30T15:55:44.608Z",
       "methods": [],
       "properties": [
         {
@@ -5789,7 +4884,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-09-12T19:09:07.258Z",
+      "lastModified": "2025-09-30T15:59:19.489Z",
       "methods": [],
       "properties": [
         {
@@ -5860,7 +4955,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-09-12T19:09:07.258Z",
+      "lastModified": "2025-09-30T15:01:33.589Z",
       "methods": [],
       "properties": [
         {
@@ -5970,7 +5065,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2025-09-12T19:09:07.259Z",
+      "lastModified": "2025-09-30T15:00:06.086Z",
       "methods": [],
       "properties": [
         {
@@ -6061,7 +5156,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2025-09-12T19:09:07.259Z",
+      "lastModified": "2025-09-12T19:50:47.276Z",
       "methods": [],
       "properties": [
         {
@@ -6127,7 +5222,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2025-09-12T19:09:07.261Z",
+      "lastModified": "2025-09-12T19:50:47.278Z",
       "methods": [],
       "properties": [
         {
@@ -6193,7 +5288,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2025-09-12T19:09:07.259Z",
+      "lastModified": "2025-09-12T19:50:47.276Z",
       "methods": [],
       "properties": [
         {
@@ -6260,7 +5355,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2025-09-12T19:09:07.260Z",
+      "lastModified": "2025-09-12T19:50:47.276Z",
       "methods": [],
       "properties": [
         {
@@ -6318,7 +5413,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2025-09-12T19:09:07.260Z",
+      "lastModified": "2025-09-12T19:50:47.277Z",
       "methods": [],
       "properties": [
         {
@@ -6357,7 +5452,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2025-09-12T19:09:07.260Z",
+      "lastModified": "2025-09-12T19:50:47.277Z",
       "methods": [],
       "properties": [
         {
@@ -6424,7 +5519,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2025-09-12T19:09:07.262Z",
+      "lastModified": "2025-09-12T19:50:47.278Z",
       "methods": [
         {
           "async": false,

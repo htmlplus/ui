@@ -14,12 +14,11 @@ import {
 	Watch,
 	classes,
 	off,
-	on,
-	toCSSUnit
+	on
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
-import { toAxis } from '@/helpers';
+import { toAxis, toCSSUnit } from '@/helpers';
 import { Animation, Scrollbar } from '@/services';
 import type { Breakpoint } from '@/types';
 
@@ -252,9 +251,7 @@ export class Drawer extends PlusCore {
 
 		const miniSize = toCSSUnit(this.miniSize);
 
-		const offset = `calc(${
-			this.open ? (this.mini ? `-${size} + ${miniSize}` : '0px') : `-${size}`
-		})`;
+		const offset = `calc(${this.open ? (this.mini ? `${size} * -1 + ${miniSize}` : '0px') : `${size} * -1`})`;
 
 		return {
 			'--plus-drawer-size': size,

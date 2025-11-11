@@ -25,7 +25,7 @@ let Faker = class extends PlusCore {
   connectedCallback() {
     if (this.instance) return;
     import("@faker-js/faker").then((module) => {
-      this.instance = module.default?.faker || module.faker;
+      this.instance = module.faker;
     }).catch((error) => {
       throw new ExternalDependencyError(this.$host, "@faker-js/faker", {
         cause: error

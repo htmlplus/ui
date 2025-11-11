@@ -5,12 +5,11 @@ import {
 	type OverridesConfig,
 	Property,
 	Style,
-	Variant,
-	toCSSColor,
-	toCSSUnit
+	Variant
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { toCSSColor, toCSSUnit } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
 import type { AvatarShape, AvatarSize } from './avatar.types';

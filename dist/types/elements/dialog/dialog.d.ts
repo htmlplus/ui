@@ -3,7 +3,7 @@ import { PlusCore } from '../../core';
 import { Animation } from '../../services';
 import { Breakpoint } from '../../types';
 import { DialogContext } from './dialog.context';
-import { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
+import { DialogPlacement, DialogSize } from './dialog.types';
 /**
  * A dialog is a `conversation` between the system and the user.
  * It is prompted when the system needs input from the user or to
@@ -40,7 +40,7 @@ export declare class Dialog extends PlusCore {
     /**
      * Set both width and height of the dialog to occupy the screen size.
      */
-    fullscreen?: DialogFullscreen;
+    fullscreen?: boolean;
     /**
      * Closes the dialog when `escape` key is pressed.
      */
@@ -158,7 +158,7 @@ export interface DialogAttributes {
   /**
   * Set both width and height of the dialog to occupy the screen size.
   */
-  "fullscreen"?: DialogFullscreen;
+  "fullscreen"?: boolean;
   /**
   * Closes the dialog when `escape` key is pressed.
   */
@@ -262,7 +262,7 @@ export interface DialogProperties {
   /**
   * Set both width and height of the dialog to occupy the screen size.
   */
-  fullscreen?: DialogFullscreen;
+  fullscreen?: boolean;
   /**
   * Closes the dialog when `escape` key is pressed.
   */

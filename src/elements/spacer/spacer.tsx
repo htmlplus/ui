@@ -4,6 +4,7 @@ import {
 	Overrides,
 	type OverridesConfig,
 	Property,
+	Style,
 	Variant
 } from '@htmlplus/element';
 
@@ -34,4 +35,11 @@ export class Spacer extends PlusCore {
 	@Property({ reflect: true })
 	@Variant()
 	variant?: OverridableValue<string>;
+
+	@Style()
+	get style() {
+		return {
+			'flex-grow': this.grow
+		};
+	}
 }

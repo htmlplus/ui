@@ -305,6 +305,9 @@ const isCSSColor = (input) => {
   option.style.color = input;
   return option.style.color !== "";
 };
+const isCSSUnit = (input) => {
+  return /^\d+(\.\d+)?(px|pt|cm|mm|in|em|rem|%|vw|vh)$/.test(input);
+};
 const isRTL = (target) => {
   return direction(target) === "rtl";
 };
@@ -870,20 +873,6 @@ const requestUpdate = (target, name, previous, callback) => {
 };
 const styles$1 = (input) => {
   return Object.keys(input).filter((key) => input[key] !== void 0 && input[key] !== null).map((key) => `${key.startsWith("--") ? "--" : ""}${kebabCase(key)}: ${input[key]}`).join("; ");
-};
-const toCSSColor = (input) => {
-  return isCSSColor(input) ? input : void 0;
-};
-const toCSSUnit = (input) => {
-  if (input === void 0 || input === null || input === "") {
-    return;
-  }
-  if (typeof input === "number" || typeof input === "string" && !Number.isNaN(Number(input))) {
-    return `${input}px`;
-  }
-  if (/^\d+(\.\d+)?(px|pt|cm|mm|in|em|rem|%|vw|vh)$/.test(input)) {
-    return input;
-  }
 };
 function toDecorator(util, ...args) {
   return (target, key) => {
@@ -1819,6 +1808,26 @@ class NotEmptyPropertyError extends Error {
     }
   }
 }
+const toAxis = (input, rtl) => {
+  if (!input) return input;
+  if (input.match(/start/)) input = rtl ? "right" : "left";
+  if (input.match(/end/)) input = rtl ? "left" : "right";
+  return input;
+};
+const toCSSColor = (input) => {
+  if (!input) return;
+  if (isCSSColor(input)) return input;
+  const key = input.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/[_\s.:]+/g, "-").replace(/-+/g, "-").toLowerCase().replace(/^-+|-+$/g, "");
+  return `var(--plus-palette-${key})`;
+};
+const toCSSUnit = (input) => {
+  if (typeof input === "string" && isCSSUnit(input)) {
+    return input;
+  }
+  if (typeof input === "number" || typeof input === "string" && !Number.isNaN(Number(input))) {
+    return `calc(var(--plus-spacing, 1px) * ${input})`;
+  }
+};
 class Animation {
   constructor(config) {
     this.state = "leaved";
@@ -2017,12 +2026,6 @@ const _Scrollbar = class _Scrollbar {
 _Scrollbar.keys = /* @__PURE__ */ new Set();
 _Scrollbar.style = {};
 let Scrollbar = _Scrollbar;
-const toAxis = (input, rtl) => {
-  if (!input) return input;
-  if (input.match(/start/)) input = rtl ? "right" : "left";
-  if (input.match(/end/)) input = rtl ? "left" : "right";
-  return input;
-};
 export {
   AsyncCache as A,
   Bind as B,

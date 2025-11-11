@@ -23,7 +23,7 @@ import { Animation, Scrollbar } from '@/services';
 import type { Breakpoint } from '@/types';
 
 import type { DialogContext } from './dialog.context';
-import type { DialogFullscreen, DialogPlacement, DialogSize } from './dialog.types';
+import type { DialogPlacement, DialogSize } from './dialog.types';
 
 /**
  * A dialog is a `conversation` between the system and the user.
@@ -71,8 +71,8 @@ export class Dialog extends PlusCore {
 	/**
 	 * Set both width and height of the dialog to occupy the screen size.
 	 */
-	@Property()
-	fullscreen?: DialogFullscreen;
+	@Property({ reflect: true })
+	fullscreen?: boolean;
 
 	/**
 	 * Closes the dialog when `escape` key is pressed.
@@ -269,7 +269,6 @@ export class Dialog extends PlusCore {
 					sticky: this.sticky,
 					fullWidth: this.fullWidth,
 					fullHeight: this.fullHeight,
-					fullscreen: this.fullscreen,
 					scrollable: this.scrollable
 				}
 			],

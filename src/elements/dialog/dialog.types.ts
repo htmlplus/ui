@@ -1,4 +1,3 @@
-export type DialogFullscreen = boolean | 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';
 export type DialogSize = 'sm' | 'md' | 'lg' | 'xl';
 export type DialogPlacement =
 	| 'bottom'

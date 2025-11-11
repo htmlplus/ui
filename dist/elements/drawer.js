@@ -88,7 +88,7 @@ let Drawer = class extends PlusCore {
   get style() {
     const size = toCSSUnit(this.size);
     const miniSize = toCSSUnit(this.miniSize);
-    const offset = `calc(${this.open ? this.mini ? `-${size} + ${miniSize}` : "0px" : `-${size}`})`;
+    const offset = `calc(${this.open ? this.mini ? `${size} * -1 + ${miniSize}` : "0px" : `${size} * -1`})`;
     return {
       "--plus-drawer-size": size,
       "--plus-drawer-offset": offset

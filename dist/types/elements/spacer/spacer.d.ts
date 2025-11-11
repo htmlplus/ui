@@ -17,6 +17,9 @@ export declare class Spacer extends PlusCore {
      * TODO
      */
     variant?: OverridableValue<string>;
+    get style(): {
+        'flex-grow': number;
+    };
 }
 
 export interface SpacerAttributes {

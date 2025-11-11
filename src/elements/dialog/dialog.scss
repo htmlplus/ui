@@ -130,24 +130,18 @@
       }
     }
   }
+}
 
-  // TODO
-  @include media-breakpoint-down($key) {
-    // current fullscreen's suffix
-    $key: if(breakpoint-min($key) == null, '', '#{$key}-down');
+// TODO
+:host([fullscreen]) {
+  @include sticky;
 
-    // generate fullscreen's class
-    @include class('fullscreen', $key) {
-      @include sticky;
+  .cell {
+    max-width: none;
+  }
 
-      .cell {
-        max-width: none;
-      }
-
-      ::slotted(*) {
-        min-height: 100vh;
-      }
-    }
+  ::slotted(*) {
+    min-height: 100vh;
   }
 }
 

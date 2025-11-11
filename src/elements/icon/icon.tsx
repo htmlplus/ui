@@ -6,13 +6,12 @@ import {
 	Property,
 	Style,
 	Variant,
-	query,
-	toCSSColor,
-	toCSSUnit
+	query
 } from '@htmlplus/element';
 
 import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
+import { toCSSColor, toCSSUnit } from '@/helpers';
 import { AsyncCache } from '@/services';
 import type { Breakpoint } from '@/types';
 

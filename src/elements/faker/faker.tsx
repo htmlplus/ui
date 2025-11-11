@@ -77,7 +77,7 @@ export class Faker extends PlusCore {
 
 		import('@faker-js/faker')
 			.then((module) => {
-				this.instance = module.default?.faker || module.faker;
+				this.instance = module.faker;
 			})
 			.catch((error) => {
 				throw new ExternalDependencyError(this.$host, '@faker-js/faker', { cause: error });
