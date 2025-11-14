@@ -13,7 +13,7 @@ import { DividerInset, DividerOrientation, DividerPlacement, DividerSize, Divide
  *
  * @slot default - The default slot.
  *
- * @examples default, size, stroke, color, inset, placement, horizontal, vertical, icon, sticky
+ * @examples default, size, stroke, color, inset, placement, horizontal, vertical, icon, sticky, customized
  */
 export declare class Divider extends PlusCore {
     /**

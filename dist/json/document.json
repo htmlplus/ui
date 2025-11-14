@@ -3263,7 +3263,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-11-14T17:56:22.500Z",
+      "lastModified": "2025-11-14T18:21:50.919Z",
       "methods": [],
       "properties": [
         {
@@ -3401,7 +3401,8 @@
         "horizontal",
         "vertical",
         "icon",
-        "sticky"
+        "sticky",
+        "customized"
       ]
     },
     {

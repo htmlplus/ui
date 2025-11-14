@@ -31,7 +31,7 @@ import type {
  *
  * @slot default - The default slot.
  *
- * @examples default, size, stroke, color, inset, placement, horizontal, vertical, icon, sticky
+ * @examples default, size, stroke, color, inset, placement, horizontal, vertical, icon, sticky, customized
  */
 @Element()
 export class Divider extends PlusCore {
