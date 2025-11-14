@@ -4,7 +4,7 @@ import { Breakpoint } from '../../types';
 /**
  * Outputs a localized time phrase relative to the provided datetime.
  *
- * @examples default, value, sync, format, numeric, localization
+ * @examples default, value, sync, format, numeric, localization, parts
  */
 export declare class RelativeTime extends PlusCore {
     /**
@@ -31,7 +31,7 @@ export declare class RelativeTime extends PlusCore {
      * TODO
      */
     overrides?: OverridesConfig<Breakpoint>;
-    formatted?: string;
+    parts: Intl.RelativeTimeFormatPart[];
     timeout: number;
     get isValid(): boolean;
     get lang(): string;

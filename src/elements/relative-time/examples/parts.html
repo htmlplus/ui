@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-relative-time::part(integer) {
+        font-weight: bold;
+      }
+      plus-relative-time::part(literal) {
+        color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <plus-center>
+      <plus-relative-time value="2020-01-01T00:00:00"></plus-relative-time>
+    </plus-center>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/center.js';
+      import 'https://esm.run/@htmlplus/ui/relative-time.js';
+    </script>
+  </body>
+</html>

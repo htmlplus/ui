@@ -46,6 +46,7 @@ let RelativeTime = class extends PlusCore {
     this.numeric = "auto";
     this.sync = false;
     this.value = /* @__PURE__ */ new Date();
+    this.parts = [];
   }
   get isValid() {
     return this.parsed instanceof Date;
@@ -67,7 +68,7 @@ let RelativeTime = class extends PlusCore {
       numeric: this.numeric,
       style: this.format
     });
-    this.formatted = formatter.format(Math.ceil(difference / unit.value), unit.name);
+    this.parts = formatter.formatToParts(Math.ceil(difference / unit.value), unit.name);
     if (!this.sync) return;
     const interval = (difference > 0 ? 0 : unit.value) + difference % unit.value;
     this.timeout = window.setTimeout(() => {
@@ -81,8 +82,10 @@ let RelativeTime = class extends PlusCore {
     this.refresh();
   }
   render() {
-    if (!this.isValid || !this.formatted) return "Invalid date";
-    return html`<time dateTime=${this.parsed.toISOString()}>${this.formatted}</time>`;
+    if (!this.isValid || !this.parts.length) return "Invalid date";
+    return html`<time dateTime=${this.parsed.toISOString()}>
+				${this.parts.map((part) => html`<span part=${part.type}>${part.value}</span>`)}
+			</time>`;
   }
 };
 RelativeTime.tag = "plus-relative-time";
@@ -121,7 +124,7 @@ __decorateClass([
 ], RelativeTime.prototype, "overrides", 2);
 __decorateClass([
   State()
-], RelativeTime.prototype, "formatted", 2);
+], RelativeTime.prototype, "parts", 2);
 RelativeTime = __decorateClass([
   Element()
 ], RelativeTime);

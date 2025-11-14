@@ -16,7 +16,7 @@ import { RELATIVE_TIME_UNITS } from './relative-time.constants';
 /**
  * Outputs a localized time phrase relative to the provided datetime.
  *
- * @examples default, value, sync, format, numeric, localization
+ * @examples default, value, sync, format, numeric, localization, parts
  */
 @Element()
 export class RelativeTime extends PlusCore {
@@ -59,7 +59,7 @@ export class RelativeTime extends PlusCore {
 	overrides?: OverridesConfig<Breakpoint>;
 
 	@State()
-	formatted?: string;
+	parts: Intl.RelativeTimeFormatPart[] = [];
 
 	timeout: number;
 
@@ -91,7 +91,7 @@ export class RelativeTime extends PlusCore {
 			style: this.format
 		});
 
-		this.formatted = formatter.format(Math.ceil(difference / unit.value), unit.name);
+		this.parts = formatter.formatToParts(Math.ceil(difference / unit.value), unit.name);
 
 		if (!this.sync) return;
 
@@ -111,7 +111,13 @@ export class RelativeTime extends PlusCore {
 	}
 
 	render() {
-		if (!this.isValid || !this.formatted) return 'Invalid date';
-		return <time dateTime={this.parsed.toISOString()}>{this.formatted}</time>;
+		if (!this.isValid || !this.parts.length) return 'Invalid date';
+		return (
+			<time dateTime={this.parsed.toISOString()}>
+				{this.parts.map((part) => (
+					<span part={part.type}>{part.value}</span>
+				))}
+			</time>
+		);
 	}
 }
