@@ -1,19 +1,19 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { Breakpoint } from '../../types';
-import { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
+import { DividerInset, DividerOrientation, DividerPlacement, DividerSize, DividerStroke } from './divider.types';
 /**
  * A thin line that divides the content vertically or horizontally.
  *
  * @stable
  *
- * @part line    - The prefix and suffix element.
+ * @part line   - The prefix and suffix element.
  * @part prefix  - The prefix element.
  * @part suffix  - The suffix element.
  *
  * @slot default - The default slot.
  *
- * @examples default, width, type, color, variant, placement, horizontal, vertical, icon, sticky
+ * @examples default, size, stroke, color, inset, placement, horizontal, vertical, icon, sticky
  */
 export declare class Divider extends PlusCore {
     /**
@@ -21,25 +21,29 @@ export declare class Divider extends PlusCore {
      */
     color?: string;
     /**
+     * Specifies the amount of indentation.
+     */
+    inset?: OverridableValue<DividerInset>;
+    /**
+     * Draws the divider in a `horizontal` or `vertical` orientation.
+     */
+    orientation?: DividerOrientation;
+    /**
      * Specifies the location of the default slot.
      */
-    placement?: DividerPlacement;
+    placement?: OverridableValue<DividerPlacement>;
     /**
-     * Specifies the width of the border.
+     * Specifies the thickness of the border.
      */
-    width?: DividerWidth;
+    size?: OverridableValue<DividerSize>;
     /**
      * Specifies the style of the border.
      */
-    type?: DividerType;
+    stroke?: OverridableValue<DividerStroke>;
     /**
-     * Specifies the amount of indentation.
+     * TODO
      */
-    variant?: OverridableValue<DividerVariant>;
-    /**
-     *  Draws the divider in a vertical orientation.
-     */
-    vertical?: boolean;
+    variant?: OverridableValue<string>;
     /**
      * TODO
      */
@@ -56,25 +60,29 @@ export interface DividerAttributes {
   */
   "color"?: string;
   /**
+  * Specifies the amount of indentation.
+  */
+  "inset"?: OverridableValue<DividerInset, DividerInsetOverrides>;
+  /**
+  * Draws the divider in a `horizontal` or `vertical` orientation.
+  */
+  "orientation"?: DividerOrientation;
+  /**
   * Specifies the location of the default slot.
   */
-  "placement"?: DividerPlacement;
+  "placement"?: OverridableValue<DividerPlacement, DividerPlacementOverrides>;
   /**
-  * Specifies the width of the border.
+  * Specifies the thickness of the border.
   */
-  "width"?: DividerWidth;
+  "size"?: OverridableValue<DividerSize, DividerSizeOverrides>;
   /**
   * Specifies the style of the border.
   */
-  "type"?: DividerType;
+  "stroke"?: OverridableValue<DividerStroke, DividerStrokeOverrides>;
   /**
-  * Specifies the amount of indentation.
+  * TODO
   */
-  "variant"?: OverridableValue<DividerVariant, DividerVariantOverrides>;
-  /**
-  *  Draws the divider in a vertical orientation.
-  */
-  "vertical"?: boolean;
+  "variant"?: OverridableValue<string, DividerVariantOverrides>;
   /**
   * TODO
   */
@@ -88,25 +96,29 @@ export interface DividerProperties {
   */
   color?: string;
   /**
+  * Specifies the amount of indentation.
+  */
+  inset?: OverridableValue<DividerInset, DividerInsetOverrides>;
+  /**
+  * Draws the divider in a `horizontal` or `vertical` orientation.
+  */
+  orientation?: DividerOrientation;
+  /**
   * Specifies the location of the default slot.
   */
-  placement?: DividerPlacement;
+  placement?: OverridableValue<DividerPlacement, DividerPlacementOverrides>;
   /**
-  * Specifies the width of the border.
+  * Specifies the thickness of the border.
   */
-  width?: DividerWidth;
+  size?: OverridableValue<DividerSize, DividerSizeOverrides>;
   /**
   * Specifies the style of the border.
   */
-  type?: DividerType;
+  stroke?: OverridableValue<DividerStroke, DividerStrokeOverrides>;
   /**
-  * Specifies the amount of indentation.
+  * TODO
   */
-  variant?: OverridableValue<DividerVariant, DividerVariantOverrides>;
-  /**
-  *  Draws the divider in a vertical orientation.
-  */
-  vertical?: boolean;
+  variant?: OverridableValue<string, DividerVariantOverrides>;
   /**
   * TODO
   */
@@ -136,4 +148,8 @@ declare module "react" {
   }
 }
 export type DividerElement = globalThis.HTMLPlusDividerElement;
+export interface DividerInsetOverrides {}
+export interface DividerPlacementOverrides {}
+export interface DividerSizeOverrides {}
+export interface DividerStrokeOverrides {}
 export interface DividerVariantOverrides {}

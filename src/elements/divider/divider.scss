@@ -1,17 +1,23 @@
 :host {
   // @Property() Used to adjust the color.
   --plus-divider-color: black;
+
+  // @Property() Used to adjust the thickness.
+  --plus-divider-size: 1px;
+
+  // @Property() Used to adjust the stroke.
+  --plus-divider-stroke: solid;
 }
 
-@each $key in $divider-types {
-  :host([type='#{$key}'])::part(line) {
-    border-style: #{$key};
+@each $key in $divider-strokes {
+  :host([stroke='#{$key}']) {
+    --plus-divider-stroke: #{$key};
   }
 }
 
-@each $key, $value in $divider-widths {
-  :host([width='#{$key}'])::part(line) {
-    border-width: #{$value};
+@each $key, $value in $divider-sizes {
+  :host([size='#{$key}']) {
+    --plus-divider-size: #{$value};
   }
 }
 
@@ -24,6 +30,8 @@
 
 :host::part(line) {
   border-color: $divider-border-color;
+  border-style: $divider-border-style;
+  border-width: $divider-border-width;
   flex: 1 1 auto;
 }
 
@@ -32,7 +40,7 @@
   display: none;
 }
 
-:host([aria-orientation='horizontal']) {
+:host([orientation='horizontal']) {
   flex-direction: row;
 
   &::part(line) {
@@ -42,19 +50,23 @@
   }
 }
 
-:host([aria-orientation='horizontal'][variant='inset'])::part(prefix) {
+:host([orientation='horizontal'][inset='start'])::part(prefix) {
   margin-inline-start: 5rem;
 }
 
-:host([aria-orientation='horizontal'][variant='middle'])::part(prefix) {
+:host([orientation='horizontal'][inset='end'])::part(suffix) {
+  margin-inline-end: 5rem;
+}
+
+:host([orientation='horizontal'][inset='both'])::part(prefix) {
   margin-inline-start: 1rem;
 }
 
-:host([aria-orientation='horizontal'][variant='middle'])::part(suffix) {
+:host([orientation='horizontal'][inset='both'])::part(suffix) {
   margin-inline-end: 1rem;
 }
 
-:host([aria-orientation='vertical']) {
+:host([orientation='vertical']) {
   flex-direction: column;
   height: auto;
   min-height: 100%;
@@ -67,18 +79,36 @@
   }
 }
 
-:host([aria-orientation='vertical'][variant='inset'])::part(prefix) {
+:host([orientation='vertical'][inset='start'])::part(prefix) {
   margin-block-start: 5rem;
 }
 
-:host([aria-orientation='vertical'][variant='middle'])::part(prefix) {
+:host([orientation='vertical'][inset='end'])::part(suffix) {
+  margin-block-end: 5rem;
+}
+
+:host([orientation='vertical'][inset='both'])::part(prefix) {
   margin-block-start: 1rem;
 }
 
-:host([aria-orientation='vertical'][variant='middle'])::part(suffix) {
+:host([orientation='vertical'][inset='both'])::part(suffix) {
   margin-block-end: 1rem;
 }
 
 :host(:empty) {
   gap: 0;
+}
+
+slot {
+  display: inline-block;
+}
+
+:host([orientation='horizontal'][stroke='dashed']) slot,
+:host([orientation='horizontal'][stroke='dotted']) slot {
+  min-width: var(--plus-divider-size);
+}
+
+:host([orientation='vertical'][stroke='dashed']) slot,
+:host([orientation='vertical'][stroke='dotted']) slot {
+  min-height: var(--plus-divider-size);
 }

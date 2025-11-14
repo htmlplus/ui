@@ -1,5 +1,5 @@
 import { P as PlusCore, i as toCSSColor, b as attributes, h as html, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{--plus-divider-color: black}:host([type=dashed])::part(line){border-style:dashed}:host([type=dotted])::part(line){border-style:dotted}:host([type=double])::part(line){border-style:double}:host([type=groove])::part(line){border-style:groove}:host([type=inset])::part(line){border-style:inset}:host([type=outset])::part(line){border-style:outset}:host([type=ridge])::part(line){border-style:ridge}:host([type=solid])::part(line){border-style:solid}:host([width=xs])::part(line){border-width:1px}:host([width=sm])::part(line){border-width:2px}:host([width=md])::part(line){border-width:3px}:host([width=lg])::part(line){border-width:4px}:host([width=xl])::part(line){border-width:5px}:host{color:var(--plus-divider-color);gap:.5rem;align-items:center;display:flex}:host::part(line){border-color:hsl(from var(--plus-divider-color) h s 85);flex:1 1 auto}:host([placement=start])::part(prefix),:host([placement=end])::part(suffix){display:none}:host([aria-orientation=horizontal]){flex-direction:row}:host([aria-orientation=horizontal])::part(line){border-right:none;border-bottom:none;border-left:none}:host([aria-orientation=horizontal][variant=inset])::part(prefix){margin-inline-start:5rem}:host([aria-orientation=horizontal][variant=middle])::part(prefix){margin-inline-start:1rem}:host([aria-orientation=horizontal][variant=middle])::part(suffix){margin-inline-end:1rem}:host([aria-orientation=vertical]){flex-direction:column;height:auto;min-height:100%;align-self:stretch}:host([aria-orientation=vertical])::part(line){border-top:none;border-right:none;border-bottom:none}:host([aria-orientation=vertical][variant=inset])::part(prefix){margin-block-start:5rem}:host([aria-orientation=vertical][variant=middle])::part(prefix){margin-block-start:1rem}:host([aria-orientation=vertical][variant=middle])::part(suffix){margin-block-end:1rem}:host(:empty){gap:0}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{--plus-divider-color: black;--plus-divider-size: 1px;--plus-divider-stroke: solid}:host([stroke=dashed]){--plus-divider-stroke: dashed}:host([stroke=dotted]){--plus-divider-stroke: dotted}:host([stroke=double]){--plus-divider-stroke: double}:host([stroke=groove]){--plus-divider-stroke: groove}:host([stroke=inset]){--plus-divider-stroke: inset}:host([stroke=outset]){--plus-divider-stroke: outset}:host([stroke=ridge]){--plus-divider-stroke: ridge}:host([stroke=solid]){--plus-divider-stroke: solid}:host([size=xs]){--plus-divider-size: 1px}:host([size=sm]){--plus-divider-size: 2px}:host([size=md]){--plus-divider-size: 3px}:host([size=lg]){--plus-divider-size: 4px}:host([size=xl]){--plus-divider-size: 5px}:host{color:var(--plus-divider-color);gap:.5rem;align-items:center;display:flex}:host::part(line){border-color:hsl(from var(--plus-divider-color) h s 85);border-style:var(--plus-divider-stroke);border-width:var(--plus-divider-size);flex:1 1 auto}:host([placement=start])::part(prefix),:host([placement=end])::part(suffix){display:none}:host([orientation=horizontal]){flex-direction:row}:host([orientation=horizontal])::part(line){border-right:none;border-bottom:none;border-left:none}:host([orientation=horizontal][inset=start])::part(prefix){margin-inline-start:5rem}:host([orientation=horizontal][inset=end])::part(suffix){margin-inline-end:5rem}:host([orientation=horizontal][inset=both])::part(prefix){margin-inline-start:1rem}:host([orientation=horizontal][inset=both])::part(suffix){margin-inline-end:1rem}:host([orientation=vertical]){flex-direction:column;height:auto;min-height:100%;align-self:stretch}:host([orientation=vertical])::part(line){border-top:none;border-right:none;border-bottom:none}:host([orientation=vertical][inset=start])::part(prefix){margin-block-start:5rem}:host([orientation=vertical][inset=end])::part(suffix){margin-block-end:5rem}:host([orientation=vertical][inset=both])::part(prefix){margin-block-start:1rem}:host([orientation=vertical][inset=both])::part(suffix){margin-block-end:1rem}:host(:empty){gap:0}slot{display:inline-block}:host([orientation=horizontal][stroke=dashed]) slot,:host([orientation=horizontal][stroke=dotted]) slot{min-width:var(--plus-divider-size)}:host([orientation=vertical][stroke=dashed]) slot,:host([orientation=vertical][stroke=dotted]) slot{min-height:var(--plus-divider-size)}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -13,10 +13,11 @@ var __decorateClass = (decorators, target, key, kind) => {
 let Divider = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.inset = "none";
+    this.orientation = "horizontal";
     this.placement = "center";
-    this.width = "md";
-    this.type = "solid";
-    this.variant = "full";
+    this.size = "md";
+    this.stroke = "solid";
   }
   get style() {
     return {
@@ -25,7 +26,7 @@ let Divider = class extends PlusCore {
   }
   render() {
     return html`${attributes(this, [{
-      "aria-orientation": this.vertical ? "vertical" : "horizontal"
+      "aria-orientation": this.orientation
     }, {
       "role": "separator"
     }])}
@@ -46,21 +47,33 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
+    type: 0
+  })
+], Divider.prototype, "inset", 2);
+__decorateClass([
+  Property({
+    reflect: true,
     type: 16
+  })
+], Divider.prototype, "orientation", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
   })
 ], Divider.prototype, "placement", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 0
   })
-], Divider.prototype, "width", 2);
+], Divider.prototype, "size", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 0
   })
-], Divider.prototype, "type", 2);
+], Divider.prototype, "stroke", 2);
 __decorateClass([
   Property({
     reflect: true,
@@ -68,12 +81,6 @@ __decorateClass([
   }),
   Variant()
 ], Divider.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    reflect: true,
-    type: 4
-  })
-], Divider.prototype, "vertical", 2);
 __decorateClass([
   Property({
     type: 0

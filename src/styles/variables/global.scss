@@ -141,9 +141,11 @@ $dialog-header-padding                                                    : 1rem
 
 $divider-color                                                            : var(--plus-divider-color);
 $divider-border-color                                                     : hsl(from var(--plus-divider-color) h s 85);
+$divider-border-style                                                     : var(--plus-divider-stroke);
+$divider-border-width                                                     : var(--plus-divider-size);
 $divider-gutter                                                           : 0.5rem;
-$divider-types                                                            : (dashed, dotted, double, groove, inset, outset, ridge, solid);
-$divider-widths                                                           : (xs: 1px, sm: 2px, md: 3px, lg: 4px, xl: 5px);
+$divider-sizes                                                            : (xs: 1px, sm: 2px, md: 3px, lg: 4px, xl: 5px);
+$divider-strokes                                                          : (dashed, dotted, double, groove, inset, outset, ridge, solid);
 
 $drawer-backdrop-background-color                                         : black;
 $drawer-backdrop-opacity                                                  : 0.5;

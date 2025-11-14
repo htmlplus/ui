@@ -2826,28 +2826,33 @@
                 "description": "Specifies the color."
               },
               {
+                "name": "inset",
+                "default": "'none'",
+                "description": "Specifies the amount of indentation."
+              },
+              {
+                "name": "orientation",
+                "default": "'horizontal'",
+                "description": "Draws the divider in a `horizontal` or `vertical` orientation."
+              },
+              {
                 "name": "placement",
                 "default": "'center'",
                 "description": "Specifies the location of the default slot."
               },
               {
-                "name": "width",
+                "name": "size",
                 "default": "'md'",
-                "description": "Specifies the width of the border."
+                "description": "Specifies the thickness of the border."
               },
               {
-                "name": "type",
+                "name": "stroke",
                 "default": "'solid'",
                 "description": "Specifies the style of the border."
               },
               {
                 "name": "variant",
-                "default": "'full'",
-                "description": "Specifies the amount of indentation."
-              },
-              {
-                "name": "vertical",
-                "description": "Draws the divider in a vertical orientation."
+                "description": "TODO"
               },
               {
                 "name": "overrides",
@@ -2864,25 +2869,41 @@
               "description": "Specifies the color."
             },
             {
+              "name": "inset",
+              "value": {
+                "type": "OverridableValue<DividerInset>"
+              },
+              "default": "'none'",
+              "description": "Specifies the amount of indentation."
+            },
+            {
+              "name": "orientation",
+              "value": {
+                "type": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "description": "Draws the divider in a `horizontal` or `vertical` orientation."
+            },
+            {
               "name": "placement",
               "value": {
-                "type": "'start' | 'center' | 'end'"
+                "type": "OverridableValue<DividerPlacement>"
               },
               "default": "'center'",
               "description": "Specifies the location of the default slot."
             },
             {
-              "name": "width",
+              "name": "size",
               "value": {
-                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+                "type": "OverridableValue<DividerSize>"
               },
               "default": "'md'",
-              "description": "Specifies the width of the border."
+              "description": "Specifies the thickness of the border."
             },
             {
-              "name": "type",
+              "name": "stroke",
               "value": {
-                "type": "'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'"
+                "type": "OverridableValue<DividerStroke>"
               },
               "default": "'solid'",
               "description": "Specifies the style of the border."
@@ -2890,17 +2911,9 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<DividerVariant>"
+                "type": "OverridableValue<string>"
               },
-              "default": "'full'",
-              "description": "Specifies the amount of indentation."
-            },
-            {
-              "name": "vertical",
-              "value": {
-                "type": "boolean"
-              },
-              "description": "Draws the divider in a vertical orientation."
+              "description": "TODO"
             },
             {
               "name": "overrides",

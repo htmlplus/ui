@@ -12,20 +12,26 @@ import { PlusCore } from '@/core';
 import { toCSSColor } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
-import type { DividerPlacement, DividerType, DividerVariant, DividerWidth } from './divider.types';
+import type {
+	DividerInset,
+	DividerOrientation,
+	DividerPlacement,
+	DividerSize,
+	DividerStroke
+} from './divider.types';
 
 /**
  * A thin line that divides the content vertically or horizontally.
  *
  * @stable
  *
- * @part line    - The prefix and suffix element.
+ * @part line   - The prefix and suffix element.
  * @part prefix  - The prefix element.
  * @part suffix  - The suffix element.
  *
  * @slot default - The default slot.
  *
- * @examples default, width, type, color, variant, placement, horizontal, vertical, icon, sticky
+ * @examples default, size, stroke, color, inset, placement, horizontal, vertical, icon, sticky
  */
 @Element()
 export class Divider extends PlusCore {
@@ -36,35 +42,41 @@ export class Divider extends PlusCore {
 	color?: string;
 
 	/**
+	 * Specifies the amount of indentation.
+	 */
+	@Property({ reflect: true })
+	inset?: OverridableValue<DividerInset> = 'none';
+
+	/**
+	 * Draws the divider in a `horizontal` or `vertical` orientation.
+	 */
+	@Property({ reflect: true })
+	orientation?: DividerOrientation = 'horizontal';
+
+	/**
 	 * Specifies the location of the default slot.
 	 */
 	@Property({ reflect: true })
-	placement?: DividerPlacement = 'center';
+	placement?: OverridableValue<DividerPlacement> = 'center';
 
 	/**
-	 * Specifies the width of the border.
+	 * Specifies the thickness of the border.
 	 */
 	@Property({ reflect: true })
-	width?: DividerWidth = 'md';
+	size?: OverridableValue<DividerSize> = 'md';
 
 	/**
 	 * Specifies the style of the border.
 	 */
 	@Property({ reflect: true })
-	type?: DividerType = 'solid';
+	stroke?: OverridableValue<DividerStroke> = 'solid';
 
 	/**
-	 * Specifies the amount of indentation.
+	 * TODO
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<DividerVariant> = 'full';
-
-	/**
-	 *  Draws the divider in a vertical orientation.
-	 */
-	@Property({ reflect: true })
-	vertical?: boolean;
+	variant?: OverridableValue<string>;
 
 	/**
 	 * TODO
@@ -82,7 +94,7 @@ export class Divider extends PlusCore {
 
 	render() {
 		return (
-			<host aria-orientation={this.vertical ? 'vertical' : 'horizontal'} role="separator">
+			<host aria-orientation={this.orientation} role="separator">
 				<div part="line prefix"></div>
 				<slot />
 				<div part="line suffix"></div>

@@ -1892,87 +1892,41 @@
           "description": "Specifies the color."
         },
         {
-          "name": "placement",
+          "name": "inset",
+          "values": [],
+          "description": "Specifies the amount of indentation."
+        },
+        {
+          "name": "orientation",
           "values": [
             {
-              "name": "start"
+              "name": "horizontal"
             },
             {
-              "name": "center"
-            },
-            {
-              "name": "end"
+              "name": "vertical"
             }
           ],
+          "description": "Draws the divider in a `horizontal` or `vertical` orientation."
+        },
+        {
+          "name": "placement",
+          "values": [],
           "description": "Specifies the location of the default slot."
         },
         {
-          "name": "width",
-          "values": [
-            {
-              "name": "xs"
-            },
-            {
-              "name": "sm"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "lg"
-            },
-            {
-              "name": "xl"
-            }
-          ],
-          "description": "Specifies the width of the border."
+          "name": "size",
+          "values": [],
+          "description": "Specifies the thickness of the border."
         },
         {
-          "name": "type",
-          "values": [
-            {
-              "name": "dashed"
-            },
-            {
-              "name": "dotted"
-            },
-            {
-              "name": "double"
-            },
-            {
-              "name": "groove"
-            },
-            {
-              "name": "inset"
-            },
-            {
-              "name": "outset"
-            },
-            {
-              "name": "ridge"
-            },
-            {
-              "name": "solid"
-            }
-          ],
+          "name": "stroke",
+          "values": [],
           "description": "Specifies the style of the border."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "Specifies the amount of indentation."
-        },
-        {
-          "name": "vertical",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ],
-          "description": "Draws the divider in a vertical orientation."
+          "description": "TODO"
         },
         {
           "name": "overrides",

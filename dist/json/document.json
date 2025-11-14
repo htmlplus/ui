@@ -3263,7 +3263,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-11-14T17:55:05.902Z",
+      "lastModified": "2025-11-14T17:56:22.500Z",
       "methods": [],
       "properties": [
         {
@@ -3276,57 +3276,69 @@
           "description": "Specifies the color."
         },
         {
+          "attribute": "inset",
+          "initializer": "'none'",
+          "name": "inset",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<DividerInset>",
+          "typeReference": "@htmlplus/element",
+          "description": "Specifies the amount of indentation."
+        },
+        {
+          "attribute": "orientation",
+          "initializer": "'horizontal'",
+          "name": "orientation",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "DividerOrientation",
+          "typeReference": "./divider.types",
+          "description": "Draws the divider in a `horizontal` or `vertical` orientation."
+        },
+        {
           "attribute": "placement",
           "initializer": "'center'",
           "name": "placement",
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "DividerPlacement",
-          "typeReference": "./divider.types",
+          "type": "OverridableValue<DividerPlacement>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the location of the default slot."
         },
         {
-          "attribute": "width",
+          "attribute": "size",
           "initializer": "'md'",
-          "name": "width",
+          "name": "size",
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "DividerWidth",
-          "typeReference": "./divider.types",
-          "description": "Specifies the width of the border."
+          "type": "OverridableValue<DividerSize>",
+          "typeReference": "@htmlplus/element",
+          "description": "Specifies the thickness of the border."
         },
         {
-          "attribute": "type",
+          "attribute": "stroke",
           "initializer": "'solid'",
-          "name": "type",
+          "name": "stroke",
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "DividerType",
-          "typeReference": "./divider.types",
+          "type": "OverridableValue<DividerStroke>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the style of the border."
         },
         {
           "attribute": "variant",
-          "initializer": "'full'",
           "name": "variant",
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<DividerVariant>",
+          "type": "OverridableValue<string>",
           "typeReference": "@htmlplus/element",
-          "description": "Specifies the amount of indentation."
-        },
-        {
-          "attribute": "vertical",
-          "name": "vertical",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "boolean",
-          "description": "Draws the divider in a vertical orientation."
+          "description": "TODO"
         },
         {
           "attribute": "overrides",
@@ -3344,6 +3356,16 @@
           "description": "Used to adjust the color.",
           "initializer": "black",
           "name": "--plus-divider-color"
+        },
+        {
+          "description": "Used to adjust the thickness.",
+          "initializer": "1px",
+          "name": "--plus-divider-size"
+        },
+        {
+          "description": "Used to adjust the stroke.",
+          "initializer": "solid",
+          "name": "--plus-divider-stroke"
         }
       ],
       "title": "Divider",
@@ -3371,10 +3393,10 @@
       ],
       "examples": [
         "default",
-        "width",
-        "type",
+        "size",
+        "stroke",
         "color",
-        "variant",
+        "inset",
         "placement",
         "horizontal",
         "vertical",
@@ -4956,7 +4978,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-11-14T17:55:05.902Z",
+      "lastModified": "2025-11-14T17:56:22.500Z",
       "methods": [],
       "properties": [
         {
