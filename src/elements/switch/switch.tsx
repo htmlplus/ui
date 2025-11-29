@@ -45,7 +45,7 @@ export class Switch extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * When the switch state is changed this event triggers.

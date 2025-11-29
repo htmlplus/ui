@@ -23,7 +23,7 @@ export declare class Switch extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * When the switch state is changed this event triggers.
      * @model
@@ -52,7 +52,7 @@ export interface SwitchAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, SwitchVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, SwitchVariantOverrides>;
 }
 export interface SwitchEvents {
   /**
@@ -79,7 +79,7 @@ export interface SwitchProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, SwitchVariantOverrides>;
+  variant?: OverridableValue<string & {}, SwitchVariantOverrides>;
 }
 export interface SwitchJSX extends SwitchEvents, SwitchProperties {}
 declare global {

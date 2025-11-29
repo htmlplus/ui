@@ -26,7 +26,7 @@ export declare class Snippet extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -49,7 +49,7 @@ export interface SnippetAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, SnippetVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, SnippetVariantOverrides>;
   /**
   * TODO
   */
@@ -69,7 +69,7 @@ export interface SnippetProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, SnippetVariantOverrides>;
+  variant?: OverridableValue<string & {}, SnippetVariantOverrides>;
   /**
   * TODO
   */

@@ -14,7 +14,7 @@ export declare class DialogFooter extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     render(): any;
 }
 
@@ -26,7 +26,7 @@ export interface DialogFooterAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, DialogFooterVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, DialogFooterVariantOverrides>;
 }
 export interface DialogFooterEvents {}
 export interface DialogFooterMethods {}
@@ -38,7 +38,7 @@ export interface DialogFooterProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, DialogFooterVariantOverrides>;
+  variant?: OverridableValue<string & {}, DialogFooterVariantOverrides>;
 }
 export interface DialogFooterJSX extends DialogFooterEvents, DialogFooterProperties {}
 declare global {

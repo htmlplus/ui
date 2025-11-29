@@ -30,7 +30,7 @@ export declare class Card extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -59,7 +59,7 @@ export interface CardAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, CardVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, CardVariantOverrides>;
   /**
   * TODO
   */
@@ -88,7 +88,7 @@ export interface CardProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, CardVariantOverrides>;
+  variant?: OverridableValue<string & {}, CardVariantOverrides>;
   /**
   * TODO
   */

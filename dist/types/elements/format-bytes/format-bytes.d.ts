@@ -48,7 +48,7 @@ export declare class FormatBytes extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -96,7 +96,7 @@ export interface FormatBytesAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, FormatBytesVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, FormatBytesVariantOverrides>;
   /**
   * TODO
   */
@@ -143,7 +143,7 @@ export interface FormatBytesProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, FormatBytesVariantOverrides>;
+  variant?: OverridableValue<string & {}, FormatBytesVariantOverrides>;
   /**
   * TODO
   */

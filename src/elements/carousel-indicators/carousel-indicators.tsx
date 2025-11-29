@@ -52,7 +52,7 @@ export class CarouselIndicators extends CarouselChild {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	events: EmblaEventType[] = ['init', 'reInit', 'select'];
 

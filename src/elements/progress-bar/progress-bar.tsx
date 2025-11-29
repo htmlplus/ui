@@ -63,7 +63,7 @@ export class ProgressBar extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * Specifies the progress of the bar by a number between `min` and `max`.

@@ -21,7 +21,7 @@ export declare class Sticky extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
      */
@@ -67,7 +67,7 @@ export interface StickyAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, StickyVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, StickyVariantOverrides>;
   /**
   * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
   */
@@ -96,7 +96,7 @@ export interface StickyProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, StickyVariantOverrides>;
+  variant?: OverridableValue<string & {}, StickyVariantOverrides>;
   /**
   * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
   */

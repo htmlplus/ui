@@ -34,7 +34,7 @@ export class Spacer extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	@Style()
 	get style() {

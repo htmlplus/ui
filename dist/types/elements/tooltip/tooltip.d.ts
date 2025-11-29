@@ -55,7 +55,7 @@ export declare class Tooltip extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -139,7 +139,7 @@ export interface TooltipAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, TooltipVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, TooltipVariantOverrides>;
   /**
   * TODO
   */
@@ -207,7 +207,7 @@ export interface TooltipProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, TooltipVariantOverrides>;
+  variant?: OverridableValue<string & {}, TooltipVariantOverrides>;
   /**
   * TODO
   */

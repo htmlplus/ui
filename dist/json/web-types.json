@@ -95,7 +95,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -174,7 +174,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -446,7 +446,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -556,7 +556,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -623,7 +623,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -685,7 +685,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -784,7 +784,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -944,7 +944,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1021,7 +1021,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -1068,7 +1068,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1422,7 +1422,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
             },
@@ -1491,7 +1491,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -1544,7 +1544,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -1618,7 +1618,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1652,7 +1652,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1697,7 +1697,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1737,7 +1737,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1788,7 +1788,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -1866,7 +1866,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -2042,7 +2042,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -2322,7 +2322,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -2554,7 +2554,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -2605,7 +2605,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -2656,7 +2656,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -2703,7 +2703,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -2743,7 +2743,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -2794,7 +2794,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -2911,7 +2911,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3105,7 +3105,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3163,7 +3163,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -3250,7 +3250,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3380,7 +3380,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3491,7 +3491,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3585,7 +3585,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3684,7 +3684,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3803,7 +3803,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -3858,7 +3858,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -3941,7 +3941,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4008,7 +4008,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4248,7 +4248,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4304,7 +4304,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4368,7 +4368,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -4432,7 +4432,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4523,7 +4523,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4604,7 +4604,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4700,7 +4700,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -4747,7 +4747,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4829,7 +4829,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4884,7 +4884,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -4938,7 +4938,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             }
@@ -4997,7 +4997,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },
@@ -5151,7 +5151,7 @@
             {
               "name": "variant",
               "value": {
-                "type": "OverridableValue<string>"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "TODO"
             },

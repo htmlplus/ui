@@ -47,7 +47,7 @@ export declare class Icon extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -96,7 +96,7 @@ export interface IconAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, IconVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, IconVariantOverrides>;
   /**
   * TODO
   */
@@ -136,7 +136,7 @@ export interface IconProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, IconVariantOverrides>;
+  variant?: OverridableValue<string & {}, IconVariantOverrides>;
   /**
   * TODO
   */

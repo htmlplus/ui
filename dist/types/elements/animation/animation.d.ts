@@ -94,7 +94,7 @@ export declare class Animation extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -253,7 +253,7 @@ export interface AnimationAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, AnimationVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, AnimationVariantOverrides>;
   /**
   * TODO
   */
@@ -395,7 +395,7 @@ export interface AnimationProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, AnimationVariantOverrides>;
+  variant?: OverridableValue<string & {}, AnimationVariantOverrides>;
   /**
   * TODO
   */

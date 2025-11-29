@@ -21,7 +21,7 @@ export declare class TabsTab extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -47,7 +47,7 @@ export interface TabsTabAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, TabsTabVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, TabsTabVariantOverrides>;
   /**
   * TODO
   */
@@ -67,7 +67,7 @@ export interface TabsTabProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, TabsTabVariantOverrides>;
+  variant?: OverridableValue<string & {}, TabsTabVariantOverrides>;
   /**
   * TODO
   */

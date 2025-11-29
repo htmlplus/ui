@@ -15,7 +15,7 @@ export declare class CardBody extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     render(): any;
 }
 
@@ -27,7 +27,7 @@ export interface CardBodyAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, CardBodyVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, CardBodyVariantOverrides>;
 }
 export interface CardBodyEvents {}
 export interface CardBodyMethods {}
@@ -39,7 +39,7 @@ export interface CardBodyProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, CardBodyVariantOverrides>;
+  variant?: OverridableValue<string & {}, CardBodyVariantOverrides>;
 }
 export interface CardBodyJSX extends CardBodyEvents, CardBodyProperties {}
 declare global {

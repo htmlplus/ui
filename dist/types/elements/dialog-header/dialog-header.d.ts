@@ -14,7 +14,7 @@ export declare class DialogHeader extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     render(): any;
 }
 
@@ -26,7 +26,7 @@ export interface DialogHeaderAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, DialogHeaderVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, DialogHeaderVariantOverrides>;
 }
 export interface DialogHeaderEvents {}
 export interface DialogHeaderMethods {}
@@ -38,7 +38,7 @@ export interface DialogHeaderProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, DialogHeaderVariantOverrides>;
+  variant?: OverridableValue<string & {}, DialogHeaderVariantOverrides>;
 }
 export interface DialogHeaderJSX extends DialogHeaderEvents, DialogHeaderProperties {}
 declare global {

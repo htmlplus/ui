@@ -43,7 +43,7 @@ export declare class Divider extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -82,7 +82,7 @@ export interface DividerAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, DividerVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, DividerVariantOverrides>;
   /**
   * TODO
   */
@@ -118,7 +118,7 @@ export interface DividerProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, DividerVariantOverrides>;
+  variant?: OverridableValue<string & {}, DividerVariantOverrides>;
   /**
   * TODO
   */

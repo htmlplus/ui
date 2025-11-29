@@ -15,7 +15,7 @@ export declare class TabsPanels extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     render(): any;
 }
 
@@ -27,7 +27,7 @@ export interface TabsPanelsAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, TabsPanelsVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, TabsPanelsVariantOverrides>;
 }
 export interface TabsPanelsEvents {}
 export interface TabsPanelsMethods {}
@@ -39,7 +39,7 @@ export interface TabsPanelsProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, TabsPanelsVariantOverrides>;
+  variant?: OverridableValue<string & {}, TabsPanelsVariantOverrides>;
 }
 export interface TabsPanelsJSX extends TabsPanelsEvents, TabsPanelsProperties {}
 declare global {

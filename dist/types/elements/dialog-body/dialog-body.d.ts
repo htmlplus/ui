@@ -14,7 +14,7 @@ export declare class DialogBody extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -30,7 +30,7 @@ export interface DialogBodyAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, DialogBodyVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, DialogBodyVariantOverrides>;
   /**
   * TODO
   */
@@ -46,7 +46,7 @@ export interface DialogBodyProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, DialogBodyVariantOverrides>;
+  variant?: OverridableValue<string & {}, DialogBodyVariantOverrides>;
   /**
   * TODO
   */

@@ -91,7 +91,7 @@ export class Browse extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * Fires when file(s) are selected.

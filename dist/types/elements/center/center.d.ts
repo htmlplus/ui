@@ -22,7 +22,7 @@ export declare class Center extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     render(): any;
 }
 
@@ -38,7 +38,7 @@ export interface CenterAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, CenterVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, CenterVariantOverrides>;
 }
 export interface CenterEvents {}
 export interface CenterMethods {}
@@ -54,7 +54,7 @@ export interface CenterProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, CenterVariantOverrides>;
+  variant?: OverridableValue<string & {}, CenterVariantOverrides>;
 }
 export interface CenterJSX extends CenterEvents, CenterProperties {}
 declare global {

@@ -44,7 +44,7 @@ export class DialogToggler extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	@State()
 	@Consumer('dialog.connector')

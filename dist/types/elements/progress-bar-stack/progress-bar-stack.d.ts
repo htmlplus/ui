@@ -14,7 +14,7 @@ export declare class ProgressBarStack extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     render(): any;
 }
 
@@ -26,7 +26,7 @@ export interface ProgressBarStackAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, ProgressBarStackVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, ProgressBarStackVariantOverrides>;
 }
 export interface ProgressBarStackEvents {}
 export interface ProgressBarStackMethods {}
@@ -38,7 +38,7 @@ export interface ProgressBarStackProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, ProgressBarStackVariantOverrides>;
+  variant?: OverridableValue<string & {}, ProgressBarStackVariantOverrides>;
 }
 export interface ProgressBarStackJSX extends ProgressBarStackEvents, ProgressBarStackProperties {}
 declare global {

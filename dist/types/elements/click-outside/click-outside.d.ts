@@ -31,7 +31,7 @@ export declare class ClickOutside extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * Fires when outside of the element is clicked.
      */
@@ -69,7 +69,7 @@ export interface ClickOutsideAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, ClickOutsideVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, ClickOutsideVariantOverrides>;
 }
 export interface ClickOutsideEvents {
   /**
@@ -99,7 +99,7 @@ export interface ClickOutsideProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, ClickOutsideVariantOverrides>;
+  variant?: OverridableValue<string & {}, ClickOutsideVariantOverrides>;
 }
 export interface ClickOutsideJSX extends ClickOutsideEvents, ClickOutsideProperties {}
 declare global {

@@ -32,7 +32,7 @@ export class CarouselProgress extends CarouselChild {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	@Query('div')
 	$bar!: HTMLElement;

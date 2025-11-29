@@ -44,7 +44,7 @@ export class ScrollDetector extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * Indicates which scroll (horizontal or vertical) is to be used as the source.

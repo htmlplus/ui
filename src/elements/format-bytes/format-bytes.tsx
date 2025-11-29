@@ -82,7 +82,7 @@ export class FormatBytes extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * TODO

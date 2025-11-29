@@ -26,7 +26,7 @@ export declare class RelativeTime extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -62,7 +62,7 @@ export interface RelativeTimeAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, RelativeTimeVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, RelativeTimeVariantOverrides>;
   /**
   * TODO
   */
@@ -90,7 +90,7 @@ export interface RelativeTimeProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, RelativeTimeVariantOverrides>;
+  variant?: OverridableValue<string & {}, RelativeTimeVariantOverrides>;
   /**
   * TODO
   */

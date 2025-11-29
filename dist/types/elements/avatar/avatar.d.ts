@@ -29,7 +29,7 @@ export declare class Avatar extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -152,7 +152,7 @@ export interface AvatarAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, AvatarVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, AvatarVariantOverrides>;
   /**
   * TODO
   */
@@ -176,7 +176,7 @@ export interface AvatarProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, AvatarVariantOverrides>;
+  variant?: OverridableValue<string & {}, AvatarVariantOverrides>;
   /**
   * TODO
   */

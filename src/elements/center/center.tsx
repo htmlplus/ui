@@ -39,7 +39,7 @@ export class Center extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	render() {
 		return <slot />;

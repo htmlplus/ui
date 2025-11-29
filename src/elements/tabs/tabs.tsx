@@ -38,7 +38,7 @@ export class Tabs extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * You can use vertical property for vertical mode.

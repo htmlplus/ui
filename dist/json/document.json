@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2025-11-14T17:33:29.890Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [
         {
           "async": false,
@@ -107,7 +107,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -195,7 +195,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2025-11-14T17:33:29.891Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -213,7 +213,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -262,7 +262,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2025-11-14T17:33:29.904Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [
         {
           "async": false,
@@ -492,7 +492,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -532,7 +532,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-11-14T17:33:29.905Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [
         {
           "async": false,
@@ -639,7 +639,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -674,7 +674,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2025-11-14T17:33:29.908Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -712,7 +712,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -772,7 +772,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2025-11-14T17:33:29.906Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -799,7 +799,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -830,7 +830,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2025-11-14T17:33:29.910Z",
+      "lastModified": "2025-11-29T20:43:37.273Z",
       "methods": [],
       "properties": [
         {
@@ -886,7 +886,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -968,7 +968,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2025-11-14T17:33:29.911Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [
         {
           "async": false,
@@ -1068,7 +1068,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1096,7 +1096,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2025-11-14T17:33:29.913Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -1142,7 +1142,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1206,7 +1206,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2025-11-14T17:33:29.912Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [],
       "properties": [
         {
@@ -1225,7 +1225,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1325,7 +1325,7 @@
         }
       ],
       "key": "carousel",
-      "lastModified": "2025-11-14T17:33:29.920Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [
         {
           "async": false,
@@ -1632,7 +1632,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
         },
@@ -1706,7 +1706,7 @@
     {
       "events": [],
       "key": "carousel-button",
-      "lastModified": "2025-11-14T17:33:29.914Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -1733,7 +1733,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1763,7 +1763,7 @@
     {
       "events": [],
       "key": "carousel-counter",
-      "lastModified": "2025-11-14T17:33:29.914Z",
+      "lastModified": "2025-11-29T20:43:37.302Z",
       "methods": [],
       "properties": [
         {
@@ -1782,7 +1782,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1806,7 +1806,7 @@
     {
       "events": [],
       "key": "carousel-indicators",
-      "lastModified": "2025-11-14T17:33:29.915Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [],
       "properties": [
         {
@@ -1852,7 +1852,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1866,7 +1866,7 @@
     {
       "events": [],
       "key": "carousel-progress",
-      "lastModified": "2025-11-14T17:33:29.915Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -1885,7 +1885,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1899,7 +1899,7 @@
     {
       "events": [],
       "key": "carousel-slide",
-      "lastModified": "2025-11-14T17:33:29.916Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -1927,7 +1927,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1947,7 +1947,7 @@
     {
       "events": [],
       "key": "carousel-slides",
-      "lastModified": "2025-11-14T17:33:29.916Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -1966,7 +1966,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1986,7 +1986,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2025-11-14T17:33:29.920Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -2014,7 +2014,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -2044,7 +2044,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2025-11-14T17:33:29.921Z",
+      "lastModified": "2025-11-29T20:43:37.316Z",
       "methods": [],
       "properties": [
         {
@@ -2090,7 +2090,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -2120,7 +2120,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2025-11-14T17:33:29.928Z",
+      "lastModified": "2025-11-29T20:43:37.302Z",
       "methods": [
         {
           "async": false,
@@ -2259,7 +2259,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -2336,7 +2336,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-11-14T17:33:29.931Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [
         {
           "async": false,
@@ -2615,7 +2615,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -2811,7 +2811,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2025-11-14T17:33:29.935Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [
         {
           "async": false,
@@ -2983,7 +2983,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3033,7 +3033,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2025-11-14T17:33:29.931Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -3051,7 +3051,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3081,7 +3081,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2025-11-14T17:33:29.932Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [],
       "properties": [
         {
@@ -3099,7 +3099,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3129,7 +3129,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2025-11-14T17:33:29.932Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -3148,7 +3148,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3168,7 +3168,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2025-11-14T17:33:29.932Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -3187,7 +3187,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3207,7 +3207,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2025-11-14T17:33:29.932Z",
+      "lastModified": "2025-11-29T20:43:37.316Z",
       "methods": [],
       "properties": [
         {
@@ -3235,7 +3235,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3263,7 +3263,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-11-14T18:21:50.919Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -3336,7 +3336,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3433,7 +3433,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-11-14T17:33:29.938Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [
         {
           "async": false,
@@ -3587,7 +3587,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3618,7 +3618,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2025-11-14T17:33:29.937Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -3646,7 +3646,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3674,7 +3674,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-11-14T17:33:29.939Z",
+      "lastModified": "2025-11-29T20:43:37.318Z",
       "methods": [],
       "properties": [
         {
@@ -3721,7 +3721,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3754,7 +3754,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2025-11-14T17:33:29.943Z",
+      "lastModified": "2025-11-29T20:43:37.318Z",
       "methods": [],
       "properties": [
         {
@@ -3842,7 +3842,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3876,7 +3876,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-11-14T17:33:29.945Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -3951,7 +3951,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4005,7 +4005,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2025-11-14T17:33:29.946Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -4060,7 +4060,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4093,7 +4093,7 @@
     {
       "events": [],
       "key": "prism",
-      "lastModified": "2025-11-14T17:33:29.947Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -4151,7 +4151,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4209,7 +4209,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-11-14T17:33:29.949Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -4274,7 +4274,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4334,7 +4334,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2025-11-14T17:33:29.947Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -4353,7 +4353,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -4373,7 +4373,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2025-11-14T17:54:47.084Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -4421,7 +4421,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4460,7 +4460,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2025-11-14T17:33:29.951Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [],
       "properties": [
         {
@@ -4489,7 +4489,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4556,7 +4556,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-11-14T17:33:29.953Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [
         {
           "async": false,
@@ -4729,7 +4729,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4775,7 +4775,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-11-14T17:33:29.953Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -4802,7 +4802,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4864,7 +4864,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2025-11-14T17:33:29.954Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -4893,7 +4893,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -4908,7 +4908,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-11-14T17:33:29.955Z",
+      "lastModified": "2025-11-29T20:43:37.318Z",
       "methods": [],
       "properties": [
         {
@@ -4948,7 +4948,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4979,7 +4979,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-11-14T17:56:22.500Z",
+      "lastModified": "2025-11-29T20:43:37.302Z",
       "methods": [],
       "properties": [
         {
@@ -5029,7 +5029,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5089,7 +5089,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2025-11-14T17:33:29.957Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [],
       "properties": [
         {
@@ -5109,7 +5109,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5180,7 +5180,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2025-11-14T17:33:29.958Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -5218,7 +5218,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -5246,7 +5246,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2025-11-14T17:33:29.960Z",
+      "lastModified": "2025-11-29T20:43:37.308Z",
       "methods": [],
       "properties": [
         {
@@ -5265,7 +5265,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5312,7 +5312,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2025-11-14T17:33:29.958Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -5349,7 +5349,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5379,7 +5379,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2025-11-14T17:33:29.959Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [],
       "properties": [
         {
@@ -5398,7 +5398,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5437,7 +5437,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2025-11-14T17:33:29.959Z",
+      "lastModified": "2025-11-29T20:43:37.324Z",
       "methods": [],
       "properties": [
         {
@@ -5456,7 +5456,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -5476,7 +5476,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2025-11-14T17:33:29.959Z",
+      "lastModified": "2025-11-29T20:43:37.272Z",
       "methods": [],
       "properties": [
         {
@@ -5504,7 +5504,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5543,7 +5543,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2025-11-14T17:33:29.961Z",
+      "lastModified": "2025-11-29T20:43:37.325Z",
       "methods": [
         {
           "async": false,
@@ -5655,7 +5655,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string>",
+          "type": "OverridableValue<string & {}>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },

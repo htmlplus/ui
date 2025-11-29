@@ -13,7 +13,7 @@ export declare class CarouselProgress extends CarouselChild {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     $bar: HTMLElement;
     events: EmblaEventType[];
     handleUpdate(): void;
@@ -28,7 +28,7 @@ export interface CarouselProgressAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, CarouselProgressVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, CarouselProgressVariantOverrides>;
 }
 export interface CarouselProgressEvents {}
 export interface CarouselProgressMethods {}
@@ -40,7 +40,7 @@ export interface CarouselProgressProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, CarouselProgressVariantOverrides>;
+  variant?: OverridableValue<string & {}, CarouselProgressVariantOverrides>;
 }
 export interface CarouselProgressJSX extends CarouselProgressEvents, CarouselProgressProperties {}
 declare global {

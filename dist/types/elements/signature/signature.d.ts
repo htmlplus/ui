@@ -74,7 +74,7 @@ export declare class Signature extends PlusForm {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -183,7 +183,7 @@ export interface SignatureAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, SignatureVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, SignatureVariantOverrides>;
   /**
   * TODO
   */
@@ -286,7 +286,7 @@ export interface SignatureProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, SignatureVariantOverrides>;
+  variant?: OverridableValue<string & {}, SignatureVariantOverrides>;
   /**
   * TODO
   */

@@ -67,7 +67,7 @@ export declare class Drawer extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -183,7 +183,7 @@ export interface DrawerAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, DrawerVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, DrawerVariantOverrides>;
   /**
   * TODO
   */
@@ -283,7 +283,7 @@ export interface DrawerProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, DrawerVariantOverrides>;
+  variant?: OverridableValue<string & {}, DrawerVariantOverrides>;
   /**
   * TODO
   */

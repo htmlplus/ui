@@ -44,7 +44,7 @@ export class Sticky extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string>;
+	variant?: OverridableValue<string & {}>;
 
 	/**
 	 * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.

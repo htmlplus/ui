@@ -17,7 +17,7 @@ export declare class CarouselCounter extends CarouselChild {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -41,7 +41,7 @@ export interface CarouselCounterAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, CarouselCounterVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, CarouselCounterVariantOverrides>;
   /**
   * TODO
   */
@@ -61,7 +61,7 @@ export interface CarouselCounterProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, CarouselCounterVariantOverrides>;
+  variant?: OverridableValue<string & {}, CarouselCounterVariantOverrides>;
   /**
   * TODO
   */

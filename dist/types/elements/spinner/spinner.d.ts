@@ -25,7 +25,7 @@ export declare class Spinner extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -53,7 +53,7 @@ export interface SpinnerAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, SpinnerVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, SpinnerVariantOverrides>;
   /**
   * TODO
   */
@@ -77,7 +77,7 @@ export interface SpinnerProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, SpinnerVariantOverrides>;
+  variant?: OverridableValue<string & {}, SpinnerVariantOverrides>;
   /**
   * TODO
   */

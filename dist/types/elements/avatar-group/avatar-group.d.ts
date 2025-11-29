@@ -19,7 +19,7 @@ export declare class AvatarGroup extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * TODO
      */
@@ -39,7 +39,7 @@ export interface AvatarGroupAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, AvatarGroupVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, AvatarGroupVariantOverrides>;
   /**
   * TODO
   */
@@ -59,7 +59,7 @@ export interface AvatarGroupProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, AvatarGroupVariantOverrides>;
+  variant?: OverridableValue<string & {}, AvatarGroupVariantOverrides>;
   /**
   * TODO
   */

@@ -20,7 +20,7 @@ export declare class Tabs extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string>;
+    variant?: OverridableValue<string & {}>;
     /**
      * You can use vertical property for vertical mode.
      */
@@ -46,7 +46,7 @@ export interface TabsAttributes {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string, TabsVariantOverrides>;
+  "variant"?: OverridableValue<string & {}, TabsVariantOverrides>;
   /**
   * You can use vertical property for vertical mode.
   */
@@ -71,7 +71,7 @@ export interface TabsProperties {
   /**
   * TODO
   */
-  variant?: OverridableValue<string, TabsVariantOverrides>;
+  variant?: OverridableValue<string & {}, TabsVariantOverrides>;
   /**
   * You can use vertical property for vertical mode.
   */
