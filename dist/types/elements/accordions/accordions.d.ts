@@ -67,14 +67,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": AccordionsEvents & AccordionsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-accordions": AccordionsEvents & AccordionsAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (AccordionsEvents & AccordionsAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": AccordionsEvents & AccordionsAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-accordions": AccordionsEvents & AccordionsAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (AccordionsEvents & AccordionsAttributes)>;
     }
   }
 }

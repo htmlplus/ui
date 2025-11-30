@@ -68,14 +68,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": CenterEvents & CenterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-center": CenterEvents & CenterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CenterEvents & CenterAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": CenterEvents & CenterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-center": CenterEvents & CenterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CenterEvents & CenterAttributes)>;
     }
   }
 }

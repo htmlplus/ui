@@ -194,14 +194,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": AvatarEvents & AvatarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-avatar": AvatarEvents & AvatarAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (AvatarEvents & AvatarAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": AvatarEvents & AvatarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-avatar": AvatarEvents & AvatarAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (AvatarEvents & AvatarAttributes)>;
     }
   }
 }

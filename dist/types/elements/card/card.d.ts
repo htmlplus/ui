@@ -106,14 +106,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": CardEvents & CardAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-card": CardEvents & CardAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CardEvents & CardAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": CardEvents & CardAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-card": CardEvents & CardAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CardEvents & CardAttributes)>;
     }
   }
 }

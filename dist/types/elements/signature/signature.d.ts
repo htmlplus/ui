@@ -304,14 +304,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": SignatureEvents & SignatureAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-signature": SignatureEvents & SignatureAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SignatureEvents & SignatureAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": SignatureEvents & SignatureAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-signature": SignatureEvents & SignatureAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SignatureEvents & SignatureAttributes)>;
     }
   }
 }

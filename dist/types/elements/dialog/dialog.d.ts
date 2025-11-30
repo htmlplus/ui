@@ -317,14 +317,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": DialogEvents & DialogAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-dialog": DialogEvents & DialogAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DialogEvents & DialogAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": DialogEvents & DialogAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-dialog": DialogEvents & DialogAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DialogEvents & DialogAttributes)>;
     }
   }
 }

@@ -53,14 +53,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": CardBodyEvents & CardBodyAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-card-body": CardBodyEvents & CardBodyAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CardBodyEvents & CardBodyAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": CardBodyEvents & CardBodyAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-card-body": CardBodyEvents & CardBodyAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CardBodyEvents & CardBodyAttributes)>;
     }
   }
 }

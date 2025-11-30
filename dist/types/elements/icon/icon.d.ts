@@ -154,14 +154,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": IconEvents & IconAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-icon": IconEvents & IconAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (IconEvents & IconAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": IconEvents & IconAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-icon": IconEvents & IconAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (IconEvents & IconAttributes)>;
     }
   }
 }

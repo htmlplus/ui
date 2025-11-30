@@ -52,14 +52,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": DialogFooterEvents & DialogFooterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-dialog-footer": DialogFooterEvents & DialogFooterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DialogFooterEvents & DialogFooterAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": DialogFooterEvents & DialogFooterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-dialog-footer": DialogFooterEvents & DialogFooterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DialogFooterEvents & DialogFooterAttributes)>;
     }
   }
 }

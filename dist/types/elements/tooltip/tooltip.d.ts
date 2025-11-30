@@ -229,14 +229,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": TooltipEvents & TooltipAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-tooltip": TooltipEvents & TooltipAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (TooltipEvents & TooltipAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": TooltipEvents & TooltipAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-tooltip": TooltipEvents & TooltipAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (TooltipEvents & TooltipAttributes)>;
     }
   }
 }

@@ -76,14 +76,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (TabsPanelEvents & TabsPanelAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-tabs-panel": TabsPanelEvents & TabsPanelAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (TabsPanelEvents & TabsPanelAttributes)>;
     }
   }
 }

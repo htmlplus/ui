@@ -108,14 +108,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (RelativeTimeEvents & RelativeTimeAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-relative-time": RelativeTimeEvents & RelativeTimeAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (RelativeTimeEvents & RelativeTimeAttributes)>;
     }
   }
 }

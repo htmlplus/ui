@@ -301,14 +301,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": DrawerEvents & DrawerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-drawer": DrawerEvents & DrawerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DrawerEvents & DrawerAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": DrawerEvents & DrawerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-drawer": DrawerEvents & DrawerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DrawerEvents & DrawerAttributes)>;
     }
   }
 }

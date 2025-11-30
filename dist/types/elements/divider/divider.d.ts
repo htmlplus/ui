@@ -136,14 +136,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": DividerEvents & DividerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-divider": DividerEvents & DividerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DividerEvents & DividerAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": DividerEvents & DividerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-divider": DividerEvents & DividerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DividerEvents & DividerAttributes)>;
     }
   }
 }

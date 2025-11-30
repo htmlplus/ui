@@ -413,14 +413,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": AnimationEvents & AnimationAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-animation": AnimationEvents & AnimationAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (AnimationEvents & AnimationAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": AnimationEvents & AnimationAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-animation": AnimationEvents & AnimationAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (AnimationEvents & AnimationAttributes)>;
     }
   }
 }

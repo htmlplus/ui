@@ -64,14 +64,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": SpacerEvents & SpacerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-spacer": SpacerEvents & SpacerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SpacerEvents & SpacerAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": SpacerEvents & SpacerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-spacer": SpacerEvents & SpacerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SpacerEvents & SpacerAttributes)>;
     }
   }
 }

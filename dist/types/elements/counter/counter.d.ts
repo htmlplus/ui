@@ -229,14 +229,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": CounterEvents & CounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-counter": CounterEvents & CounterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CounterEvents & CounterAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": CounterEvents & CounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-counter": CounterEvents & CounterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CounterEvents & CounterAttributes)>;
     }
   }
 }

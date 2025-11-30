@@ -79,14 +79,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CarouselCounterEvents & CarouselCounterAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-carousel-counter": CarouselCounterEvents & CarouselCounterAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CarouselCounterEvents & CarouselCounterAttributes)>;
     }
   }
 }

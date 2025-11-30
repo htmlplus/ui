@@ -174,14 +174,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": IntersectionEvents & IntersectionAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-intersection": IntersectionEvents & IntersectionAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (IntersectionEvents & IntersectionAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": IntersectionEvents & IntersectionAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-intersection": IntersectionEvents & IntersectionAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (IntersectionEvents & IntersectionAttributes)>;
     }
   }
 }

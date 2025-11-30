@@ -135,14 +135,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": StackEvents & StackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-stack": StackEvents & StackAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (StackEvents & StackAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": StackEvents & StackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-stack": StackEvents & StackAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (StackEvents & StackAttributes)>;
     }
   }
 }

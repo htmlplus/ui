@@ -161,14 +161,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (FormatBytesEvents & FormatBytesAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-format-bytes": FormatBytesEvents & FormatBytesAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (FormatBytesEvents & FormatBytesAttributes)>;
     }
   }
 }

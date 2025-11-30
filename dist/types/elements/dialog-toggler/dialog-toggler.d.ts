@@ -77,14 +77,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DialogTogglerEvents & DialogTogglerAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-dialog-toggler": DialogTogglerEvents & DialogTogglerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DialogTogglerEvents & DialogTogglerAttributes)>;
     }
   }
 }

@@ -93,14 +93,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": SwitchEvents & SwitchAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-switch": SwitchEvents & SwitchAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SwitchEvents & SwitchAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": SwitchEvents & SwitchAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-switch": SwitchEvents & SwitchAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SwitchEvents & SwitchAttributes)>;
     }
   }
 }

@@ -141,14 +141,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PrismEvents & PrismAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-prism": PrismEvents & PrismAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (PrismEvents & PrismAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PrismEvents & PrismAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-prism": PrismEvents & PrismAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (PrismEvents & PrismAttributes)>;
     }
   }
 }

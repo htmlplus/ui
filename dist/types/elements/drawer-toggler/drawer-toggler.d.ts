@@ -77,14 +77,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DrawerTogglerEvents & DrawerTogglerAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-drawer-toggler": DrawerTogglerEvents & DrawerTogglerAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (DrawerTogglerEvents & DrawerTogglerAttributes)>;
     }
   }
 }

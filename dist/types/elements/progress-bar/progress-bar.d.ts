@@ -146,14 +146,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (ProgressBarEvents & ProgressBarAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-progress-bar": ProgressBarEvents & ProgressBarAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (ProgressBarEvents & ProgressBarAttributes)>;
     }
   }
 }

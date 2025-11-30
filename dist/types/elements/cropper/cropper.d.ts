@@ -458,14 +458,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": CropperEvents & CropperAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-cropper": CropperEvents & CropperAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CropperEvents & CropperAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": CropperEvents & CropperAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-cropper": CropperEvents & CropperAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (CropperEvents & CropperAttributes)>;
     }
   }
 }

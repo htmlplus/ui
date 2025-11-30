@@ -52,14 +52,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (ProgressBarStackEvents & ProgressBarStackAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-progress-bar-stack": ProgressBarStackEvents & ProgressBarStackAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (ProgressBarStackEvents & ProgressBarStackAttributes)>;
     }
   }
 }

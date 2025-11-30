@@ -87,14 +87,14 @@ declare global {
   }
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": SnippetEvents & SnippetAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-snippet": SnippetEvents & SnippetAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SnippetEvents & SnippetAttributes)>;
     }
   }
 }
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": SnippetEvents & SnippetAttributes & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      "plus-snippet": SnippetEvents & SnippetAttributes & Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, keyof (SnippetEvents & SnippetAttributes)>;
     }
   }
 }
