@@ -1812,7 +1812,7 @@ const toCSSColor = (input) => {
   if (!input) return;
   if (isCSSColor(input)) return input;
   const key = input.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/[_\s.:]+/g, "-").replace(/-+/g, "-").toLowerCase().replace(/^-+|-+$/g, "");
-  return `var(--plus-palette-${key})`;
+  return `var(--${NAMESPACE}-color-${key})`;
 };
 const getCSSColor = (element, input) => {
   if (!input) return;

@@ -1,5 +1,7 @@
 import { isCSSColor } from '@htmlplus/element';
 
+import { NAMESPACE } from '@/constants';
+
 export const toCSSColor = (input?: string): string | undefined => {
 	if (!input) return;
 
@@ -12,5 +14,5 @@ export const toCSSColor = (input?: string): string | undefined => {
 		.toLowerCase()
 		.replace(/^-+|-+$/g, '');
 
-	return `var(--plus-palette-${key})`;
+	return `var(--${NAMESPACE}-color-${key})`;
 };
