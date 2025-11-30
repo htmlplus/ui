@@ -6,9 +6,13 @@ import { Breakpoint } from '../../types';
  *
  * @part bar - The bar element.
  *
- * @examples default, customized, methods, minimum, trickle
+ * @examples default, color, customized, methods, minimum, trickle
  */
 export declare class AppProgressBar extends PlusCore {
+    /**
+     * Specifies the color of the bar.
+     */
+    color?: OverridableValue<string & {}>;
     /**
      * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
      */
@@ -37,6 +41,9 @@ export declare class AppProgressBar extends PlusCore {
     state?: 'completed' | 'idle' | 'progressing';
     progress: number | null;
     timeout?: number;
+    get style(): {
+        '--plus-app-progress-bar-color': string;
+    };
     /**
      * Hides the progress bar. If true is passed, the bar briefly appears before hiding.
      */
@@ -65,6 +72,10 @@ export declare class AppProgressBar extends PlusCore {
 }
 
 export interface AppProgressBarAttributes {
+  /**
+  * Specifies the color of the bar.
+  */
+  "color"?: OverridableValue<string & {}, AppProgressBarColorOverrides>;
   /**
   * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
   */
@@ -115,6 +126,10 @@ export interface AppProgressBarMethods {
 }
 export interface AppProgressBarProperties {
   /**
+  * Specifies the color of the bar.
+  */
+  color?: OverridableValue<string & {}, AppProgressBarColorOverrides>;
+  /**
   * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
   */
   minimum?: number;
@@ -163,4 +178,5 @@ declare module "react" {
   }
 }
 export type AppProgressBarElement = globalThis.HTMLPlusAppProgressBarElement;
+export interface AppProgressBarColorOverrides {}
 export interface AppProgressBarVariantOverrides {}

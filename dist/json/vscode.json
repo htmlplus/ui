@@ -235,6 +235,11 @@
       "name": "plus-app-progress-bar",
       "attributes": [
         {
+          "name": "color",
+          "values": [],
+          "description": "Specifies the color of the bar."
+        },
+        {
           "name": "minimum",
           "values": [],
           "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."

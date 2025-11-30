@@ -7,10 +7,12 @@ import {
 	Property,
 	Query,
 	State,
+	Style,
 	Variant
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
+import { toCSSColor } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
 /**
@@ -18,10 +20,16 @@ import type { Breakpoint } from '@/types';
  *
  * @part bar - The bar element.
  *
- * @examples default, customized, methods, minimum, trickle
+ * @examples default, color, customized, methods, minimum, trickle
  */
 @Element()
 export class AppProgressBar extends PlusCore {
+	/**
+	 * Specifies the color of the bar.
+	 */
+	@Property({ reflect: true })
+	color?: OverridableValue<string & {}> = 'dodgerblue';
+
 	/**
 	 * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
 	 */
@@ -69,6 +77,13 @@ export class AppProgressBar extends PlusCore {
 	progress: number | null = null;
 
 	timeout?: number;
+
+	@Style()
+	get style() {
+		return {
+			'--plus-app-progress-bar-color': toCSSColor(this.color)
+		};
+	}
 
 	/**
 	 * Hides the progress bar. If true is passed, the bar briefly appears before hiding.

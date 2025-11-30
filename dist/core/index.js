@@ -1817,7 +1817,7 @@ const toCSSColor = (input) => {
 const getCSSColor = (element, input) => {
   if (!input) return;
   if (isCSSColor(input)) return input;
-  return window.getComputedStyle(element).getPropertyValue(toCSSColor(input).slice(4, -1)).trim();
+  return window.getComputedStyle(element).getPropertyValue(toCSSColor(input).trim().slice(4, -1)).trim();
 };
 const toAxis = (input, rtl) => {
   if (!input) return input;

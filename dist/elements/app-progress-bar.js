@@ -1,5 +1,5 @@
-import { Q as Query, P as PlusCore, b as attributes, h as html, c as Property, V as Variant, O as Overrides, S as State, M as Method, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:#1e90ff;transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
+import { Q as Query, P as PlusCore, i as toCSSColor, b as attributes, h as html, c as Property, V as Variant, O as Overrides, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:var(--plus-app-progress-bar-color);transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -13,11 +13,17 @@ var __decorateClass = (decorators, target, key, kind) => {
 let AppProgressBar = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.color = "dodgerblue";
     this.minimum = 0.08;
     this.trickleRate = 0.02;
     this.trickleSpeed = 800;
     this.state = "idle";
     this.progress = null;
+  }
+  get style() {
+    return {
+      "--plus-app-progress-bar-color": toCSSColor(this.color)
+    };
   }
   done(force) {
     if (!force && !this.progress) return;
@@ -92,6 +98,12 @@ AppProgressBar.tag = "plus-app-progress-bar";
 AppProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
+    reflect: true,
+    type: 0
+  })
+], AppProgressBar.prototype, "color", 2);
+__decorateClass([
+  Property({
     type: 128
   })
 ], AppProgressBar.prototype, "minimum", 2);
@@ -129,6 +141,9 @@ __decorateClass([
 __decorateClass([
   State()
 ], AppProgressBar.prototype, "state", 2);
+__decorateClass([
+  Style()
+], AppProgressBar.prototype, "style", 1);
 __decorateClass([
   Method()
 ], AppProgressBar.prototype, "done", 1);

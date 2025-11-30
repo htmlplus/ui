@@ -532,7 +532,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-11-30T15:14:33.837Z",
+      "lastModified": "2025-11-30T15:31:39.252Z",
       "methods": [
         {
           "async": false,
@@ -594,6 +594,17 @@
         }
       ],
       "properties": [
+        {
+          "attribute": "color",
+          "initializer": "'dodgerblue'",
+          "name": "color",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
+          "description": "Specifies the color of the bar."
+        },
         {
           "attribute": "minimum",
           "initializer": "0.08",
@@ -665,6 +676,7 @@
       ],
       "examples": [
         "default",
+        "color",
         "customized",
         "methods",
         "minimum",

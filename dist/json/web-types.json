@@ -473,6 +473,11 @@
             "events": [],
             "properties": [
               {
+                "name": "color",
+                "default": "'dodgerblue'",
+                "description": "Specifies the color of the bar."
+              },
+              {
                 "name": "minimum",
                 "default": "0.08",
                 "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
@@ -522,6 +527,14 @@
             ]
           },
           "attributes": [
+            {
+              "name": "color",
+              "value": {
+                "type": "OverridableValue<string & {}>"
+              },
+              "default": "'dodgerblue'",
+              "description": "Specifies the color of the bar."
+            },
             {
               "name": "minimum",
               "value": {
