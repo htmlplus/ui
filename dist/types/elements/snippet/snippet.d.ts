@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 /**
  * A component that can be used to display inline code snippets.
  *
@@ -18,7 +18,7 @@ export declare class Snippet extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Specifies the symbol.
      */
@@ -41,7 +41,7 @@ export interface SnippetAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, SnippetColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the symbol.
   */
@@ -61,7 +61,7 @@ export interface SnippetProperties {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, SnippetColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the symbol.
   */
@@ -99,5 +99,4 @@ declare module "react" {
   }
 }
 export type SnippetElement = globalThis.HTMLPlusSnippetElement;
-export interface SnippetColorOverrides {}
 export interface SnippetVariantOverrides {}

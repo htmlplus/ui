@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 import { AvatarShape, AvatarSize } from './avatar.types';
 /**
  * An image representing a user's profile picture.
@@ -17,7 +17,7 @@ export declare class Avatar extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Specifies the shape of the element.
      */
@@ -140,7 +140,7 @@ export interface AvatarAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, AvatarColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the shape of the element.
   */
@@ -164,7 +164,7 @@ export interface AvatarProperties {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, AvatarColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the shape of the element.
   */
@@ -206,5 +206,4 @@ declare module "react" {
   }
 }
 export type AvatarElement = globalThis.HTMLPlusAvatarElement;
-export interface AvatarColorOverrides {}
 export interface AvatarVariantOverrides {}

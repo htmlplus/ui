@@ -10,7 +10,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor } from '@/helpers';
-import type { Breakpoint } from '@/types';
+import type { Breakpoint, ColorOverrides } from '@/types';
 
 /**
  * A component that can be used to display inline code snippets.
@@ -31,7 +31,7 @@ export class Snippet extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}>;
+	color?: OverridableValue<string & {}, ColorOverrides>;
 
 	/**
 	 * Specifies the symbol.

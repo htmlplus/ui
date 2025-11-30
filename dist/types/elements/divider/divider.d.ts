@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 import { DividerInset, DividerOrientation, DividerPlacement, DividerSize, DividerStroke } from './divider.types';
 /**
  * A thin line that divides the content vertically or horizontally.
@@ -19,7 +19,7 @@ export declare class Divider extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Specifies the amount of indentation.
      */
@@ -58,7 +58,7 @@ export interface DividerAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, DividerColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the amount of indentation.
   */
@@ -94,7 +94,7 @@ export interface DividerProperties {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, DividerColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the amount of indentation.
   */
@@ -148,7 +148,6 @@ declare module "react" {
   }
 }
 export type DividerElement = globalThis.HTMLPlusDividerElement;
-export interface DividerColorOverrides {}
 export interface DividerInsetOverrides {}
 export interface DividerPlacementOverrides {}
 export interface DividerSizeOverrides {}

@@ -532,7 +532,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-11-30T15:43:46.683Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [
         {
           "async": false,
@@ -601,7 +601,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
@@ -686,7 +686,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2025-11-30T15:43:46.683Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [],
       "properties": [
         {
@@ -695,7 +695,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -3276,7 +3276,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-11-30T15:43:46.687Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [],
       "properties": [
         {
@@ -3285,7 +3285,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -3890,7 +3890,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-11-30T15:43:46.687Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [],
       "properties": [
         {
@@ -3899,7 +3899,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -4224,7 +4224,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-11-30T15:43:46.688Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [],
       "properties": [
         {
@@ -4242,7 +4242,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
@@ -4572,7 +4572,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-11-30T15:43:46.689Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [
         {
           "async": false,
@@ -4614,7 +4614,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the background color."
         },
@@ -4634,7 +4634,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the strokes."
         },
@@ -4793,7 +4793,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-11-30T15:43:46.689Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [],
       "properties": [
         {
@@ -4802,7 +4802,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -4927,7 +4927,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-11-30T15:43:46.689Z",
+      "lastModified": "2025-11-30T17:41:21.034Z",
       "methods": [],
       "properties": [
         {
@@ -4936,7 +4936,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string & {}, ColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },

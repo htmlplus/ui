@@ -1,7 +1,7 @@
 import { EventEmitter, OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { default as CoreType, PointGroup } from 'signature_pad';
 import { PlusForm } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 /**
  * Allows user to draw smooth signatures.
  *
@@ -18,7 +18,7 @@ export declare class Signature extends PlusForm {
     /**
      * Specifies the background color.
      */
-    backgroundColor?: OverridableValue<string & {}>;
+    backgroundColor?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Clears the canvas after resizing.
      */
@@ -26,7 +26,7 @@ export declare class Signature extends PlusForm {
     /**
      * Specifies the color of the strokes.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Specifies the distance between the previous point and the next one.
      */
@@ -139,7 +139,7 @@ export interface SignatureAttributes {
   /**
   * Specifies the background color.
   */
-  "background-color"?: OverridableValue<string & {}, SignatureBackgroundColorOverrides>;
+  "background-color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Clears the canvas after resizing.
   */
@@ -147,7 +147,7 @@ export interface SignatureAttributes {
   /**
   * Specifies the color of the strokes.
   */
-  "color"?: OverridableValue<string & {}, SignatureColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the distance between the previous point and the next one.
   */
@@ -230,7 +230,7 @@ export interface SignatureProperties {
   /**
   * Specifies the background color.
   */
-  backgroundColor?: OverridableValue<string & {}, SignatureBackgroundColorOverrides>;
+  backgroundColor?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Clears the canvas after resizing.
   */
@@ -238,7 +238,7 @@ export interface SignatureProperties {
   /**
   * Specifies the color of the strokes.
   */
-  color?: OverridableValue<string & {}, SignatureColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the distance between the previous point and the next one.
   */
@@ -316,6 +316,4 @@ declare module "react" {
   }
 }
 export type SignatureElement = globalThis.HTMLPlusSignatureElement;
-export interface SignatureBackgroundColorOverrides {}
-export interface SignatureColorOverrides {}
 export interface SignatureVariantOverrides {}

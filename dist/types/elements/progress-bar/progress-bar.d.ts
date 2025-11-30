@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 /**
  * Progress bar expresses an unspecified wait time or display the length of a process.
  *
@@ -17,7 +17,7 @@ export declare class ProgressBar extends PlusCore {
     /**
      * Specifies the color of the bar.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Displays the progress percentage.
      */
@@ -64,7 +64,7 @@ export interface ProgressBarAttributes {
   /**
   * Specifies the color of the bar.
   */
-  "color"?: OverridableValue<string & {}, ProgressBarColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Displays the progress percentage.
   */
@@ -104,7 +104,7 @@ export interface ProgressBarProperties {
   /**
   * Specifies the color of the bar.
   */
-  color?: OverridableValue<string & {}, ProgressBarColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Displays the progress percentage.
   */
@@ -158,5 +158,4 @@ declare module "react" {
   }
 }
 export type ProgressBarElement = globalThis.HTMLPlusProgressBarElement;
-export interface ProgressBarColorOverrides {}
 export interface ProgressBarVariantOverrides {}

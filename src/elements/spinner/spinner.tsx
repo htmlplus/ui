@@ -10,7 +10,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor } from '@/helpers';
-import type { Breakpoint } from '@/types';
+import type { Breakpoint, ColorOverrides } from '@/types';
 
 import type { SpinnerSize, SpinnerType } from './spinner.types';
 
@@ -27,7 +27,7 @@ export class Spinner extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}>;
+	color?: OverridableValue<string & {}, ColorOverrides>;
 
 	/**
 	 * Specifies the size of the spinner.

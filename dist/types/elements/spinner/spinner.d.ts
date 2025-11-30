@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 import { SpinnerSize, SpinnerType } from './spinner.types';
 /**
  * An indicator of progress and activity.
@@ -13,7 +13,7 @@ export declare class Spinner extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Specifies the size of the spinner.
      */
@@ -41,7 +41,7 @@ export interface SpinnerAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, SpinnerColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the size of the spinner.
   */
@@ -65,7 +65,7 @@ export interface SpinnerProperties {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, SpinnerColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Specifies the size of the spinner.
   */
@@ -107,5 +107,4 @@ declare module "react" {
   }
 }
 export type SpinnerElement = globalThis.HTMLPlusSpinnerElement;
-export interface SpinnerColorOverrides {}
 export interface SpinnerVariantOverrides {}

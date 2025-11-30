@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 /**
  * A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations.
  *
@@ -12,7 +12,7 @@ export declare class AppProgressBar extends PlusCore {
     /**
      * Specifies the color of the bar.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
      */
@@ -75,7 +75,7 @@ export interface AppProgressBarAttributes {
   /**
   * Specifies the color of the bar.
   */
-  "color"?: OverridableValue<string & {}, AppProgressBarColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
   */
@@ -128,7 +128,7 @@ export interface AppProgressBarProperties {
   /**
   * Specifies the color of the bar.
   */
-  color?: OverridableValue<string & {}, AppProgressBarColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
   */
@@ -178,5 +178,4 @@ declare module "react" {
   }
 }
 export type AppProgressBarElement = globalThis.HTMLPlusAppProgressBarElement;
-export interface AppProgressBarColorOverrides {}
 export interface AppProgressBarVariantOverrides {}

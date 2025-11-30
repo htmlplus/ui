@@ -530,7 +530,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "default": "'dodgerblue'",
               "description": "Specifies the color of the bar."
@@ -615,7 +615,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -2877,7 +2877,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -3455,7 +3455,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -3779,7 +3779,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "description": "Specifies the color of the bar."
             },
@@ -4157,7 +4157,7 @@
             {
               "name": "background-color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "default": "'lightgray'",
               "description": "Specifies the background color."
@@ -4172,7 +4172,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "default": "'black'",
               "description": "Specifies the color of the strokes."
@@ -4303,7 +4303,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -4422,7 +4422,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string & {}, ColorOverrides>"
               },
               "description": "Specifies the color."
             },

@@ -10,7 +10,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor, toCSSUnit } from '@/helpers';
-import type { Breakpoint } from '@/types';
+import type { Breakpoint, ColorOverrides } from '@/types';
 
 import type { AvatarShape, AvatarSize } from './avatar.types';
 
@@ -31,7 +31,7 @@ export class Avatar extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}>;
+	color?: OverridableValue<string & {}, ColorOverrides>;
 
 	/**
 	 * Specifies the shape of the element.

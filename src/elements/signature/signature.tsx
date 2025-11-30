@@ -19,7 +19,7 @@ import type { PointGroup } from 'signature_pad';
 import { PlusForm } from '@/core';
 import { ExternalDependencyError } from '@/errors';
 import { getCSSColor } from '@/helpers';
-import type { Breakpoint } from '@/types';
+import type { Breakpoint, ColorOverrides } from '@/types';
 
 // biome-ignore lint: TODO
 let Core: any;
@@ -42,7 +42,7 @@ export class Signature extends PlusForm {
 	 * Specifies the background color.
 	 */
 	@Property()
-	backgroundColor?: OverridableValue<string & {}> = 'lightgray';
+	backgroundColor?: OverridableValue<string & {}, ColorOverrides> = 'lightgray';
 
 	/**
 	 * Clears the canvas after resizing.
@@ -54,7 +54,7 @@ export class Signature extends PlusForm {
 	 * Specifies the color of the strokes.
 	 */
 	@Property()
-	color?: OverridableValue<string & {}> = 'black';
+	color?: OverridableValue<string & {}, ColorOverrides> = 'black';
 
 	/**
 	 * Specifies the distance between the previous point and the next one.

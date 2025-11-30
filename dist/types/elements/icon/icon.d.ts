@@ -1,7 +1,7 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { AsyncCache } from '../../services';
-import { Breakpoint } from '../../types';
+import { Breakpoint, ColorOverrides } from '../../types';
 import { IconFlip, IconResolver, IconSize } from './icon.types';
 /**
  * A graphical representation of an action, object,
@@ -19,7 +19,7 @@ export declare class Icon extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}>;
+    color?: OverridableValue<string & {}, ColorOverrides>;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -68,7 +68,7 @@ export interface IconAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, IconColorOverrides>;
+  "color"?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Flips in `horizontal`, `vertical` or `both` directions.
   */
@@ -108,7 +108,7 @@ export interface IconProperties {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, IconColorOverrides>;
+  color?: OverridableValue<string & {}, ColorOverrides>;
   /**
   * Flips in `horizontal`, `vertical` or `both` directions.
   */
@@ -166,5 +166,4 @@ declare module "react" {
   }
 }
 export type IconElement = globalThis.HTMLPlusIconElement;
-export interface IconColorOverrides {}
 export interface IconVariantOverrides {}

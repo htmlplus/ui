@@ -13,7 +13,7 @@ import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
 import { toCSSColor, toCSSUnit } from '@/helpers';
 import { AsyncCache } from '@/services';
-import type { Breakpoint } from '@/types';
+import type { Breakpoint, ColorOverrides } from '@/types';
 
 import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './icon.constants';
 import type { IconFlip, IconResolver, IconSize } from './icon.types';
@@ -36,7 +36,7 @@ export class Icon extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}>;
+	color?: OverridableValue<string & {}, ColorOverrides>;
 
 	/**
 	 * Flips in `horizontal`, `vertical` or `both` directions.

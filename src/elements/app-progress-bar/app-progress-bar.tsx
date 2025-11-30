@@ -13,7 +13,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor } from '@/helpers';
-import type { Breakpoint } from '@/types';
+import type { Breakpoint, ColorOverrides } from '@/types';
 
 /**
  * A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations.
@@ -28,7 +28,7 @@ export class AppProgressBar extends PlusCore {
 	 * Specifies the color of the bar.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}> = 'dodgerblue';
+	color?: OverridableValue<string & {}, ColorOverrides> = 'dodgerblue';
 
 	/**
 	 * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
