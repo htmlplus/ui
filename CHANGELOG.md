@@ -1,3 +1,20 @@
+## [1.8.0](https://github.com/htmlplus/ui/compare/v1.7.5...v1.8.0) (2025-11-30)
+
+### Features
+
+* Add `part` attributes to each relative time segment in the `RelativeTime` element for improved styling control ([057eb03](https://github.com/htmlplus/ui/commit/057eb031cffa9a42aa443f283ff138ad34848fa3))
+* Improve `Divider` codebase, introduce new properties, enhance styling, and update examples ([7ac7705](https://github.com/htmlplus/ui/commit/7ac7705d8a9a73bafa460139fbce99f8c797b659))
+
+### Bug Fixes
+
+* Add `color` property support to the `AppProgressBar` element ([f601a74](https://github.com/htmlplus/ui/commit/f601a744dca8d8cf3917fbbaf47dc733b581580b))
+* Add `ColorOverrides` interface support to `color` property across all elements ([a7933dd](https://github.com/htmlplus/ui/commit/a7933dd617faf6c04f2d29f90bc05411e6d2971b))
+* Add missing `customized` example ([4c081f9](https://github.com/htmlplus/ui/commit/4c081f9f23605f1ed5d3e6fcfe218a72f392ec5f))
+* Add support for `color` and `backgroundColor` properties from theme variables to the `Signature` element ([e87aa86](https://github.com/htmlplus/ui/commit/e87aa869e8cc6c92284ec0f3642e8c1bc69abd9e))
+* Update all element `color` prop types to use a stricter `string & {}` constraint for more consistent TypeScript inference ([8268e97](https://github.com/htmlplus/ui/commit/8268e97b8936b0a7e9e89405ac6f11a7d46ce952))
+* Update all element `variant` prop types to use a stricter `string & {}` constraint for more consistent TypeScript inference ([b208e4f](https://github.com/htmlplus/ui/commit/b208e4f14d737d699fd79bf8ed2a427f907fc51a))
+* Update the `@htmlplus/element` to the latest version ([7c772ec](https://github.com/htmlplus/ui/commit/7c772ec99091c32bbf129a461a5a4e682e272619))
+
 ## [1.7.5](https://github.com/htmlplus/ui/compare/v1.7.4...v1.7.5) (2025-11-11)
 
 ### Bug Fixes
