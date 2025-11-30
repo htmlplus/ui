@@ -79,7 +79,7 @@
 	},
 	"homepage": "https://htmlplus.io",
 	"dependencies": {
-		"@htmlplus/element": "^3.4.1"
+		"@htmlplus/element": "^3.4.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.2",
