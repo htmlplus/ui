@@ -17,7 +17,7 @@ export declare class Avatar extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Specifies the shape of the element.
      */
@@ -140,7 +140,7 @@ export interface AvatarAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, AvatarColorOverrides>;
   /**
   * Specifies the shape of the element.
   */
@@ -164,7 +164,7 @@ export interface AvatarProperties {
   /**
   * Specifies the color.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, AvatarColorOverrides>;
   /**
   * Specifies the shape of the element.
   */
@@ -206,4 +206,5 @@ declare module "react" {
   }
 }
 export type AvatarElement = globalThis.HTMLPlusAvatarElement;
+export interface AvatarColorOverrides {}
 export interface AvatarVariantOverrides {}

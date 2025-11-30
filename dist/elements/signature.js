@@ -214,7 +214,7 @@ Signature.tag = "plus-signature";
 Signature.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 0
   })
 ], Signature.prototype, "backgroundColor", 2);
 __decorateClass([
@@ -224,7 +224,7 @@ __decorateClass([
 ], Signature.prototype, "clearOnResize", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 0
   })
 ], Signature.prototype, "color", 2);
 __decorateClass([

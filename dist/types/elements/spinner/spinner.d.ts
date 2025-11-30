@@ -13,7 +13,7 @@ export declare class Spinner extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Specifies the size of the spinner.
      */
@@ -41,7 +41,7 @@ export interface SpinnerAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, SpinnerColorOverrides>;
   /**
   * Specifies the size of the spinner.
   */
@@ -65,7 +65,7 @@ export interface SpinnerProperties {
   /**
   * Specifies the color.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, SpinnerColorOverrides>;
   /**
   * Specifies the size of the spinner.
   */
@@ -107,4 +107,5 @@ declare module "react" {
   }
 }
 export type SpinnerElement = globalThis.HTMLPlusSpinnerElement;
+export interface SpinnerColorOverrides {}
 export interface SpinnerVariantOverrides {}

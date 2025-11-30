@@ -39,7 +39,7 @@ export class Divider extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: string;
+	color?: OverridableValue<string & {}>;
 
 	/**
 	 * Specifies the amount of indentation.

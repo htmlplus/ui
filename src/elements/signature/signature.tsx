@@ -41,7 +41,7 @@ export class Signature extends PlusForm {
 	 * Specifies the background color.
 	 */
 	@Property()
-	backgroundColor?: string = 'lightgray';
+	backgroundColor?: OverridableValue<string & {}> = 'lightgray';
 
 	/**
 	 * Clears the canvas after resizing.
@@ -53,7 +53,7 @@ export class Signature extends PlusForm {
 	 * Specifies the color of the strokes.
 	 */
 	@Property()
-	color?: string = 'black';
+	color?: OverridableValue<string & {}> = 'black';
 
 	/**
 	 * Specifies the distance between the previous point and the next one.

@@ -27,7 +27,7 @@ export class Spinner extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: string;
+	color?: OverridableValue<string & {}>;
 
 	/**
 	 * Specifies the size of the spinner.

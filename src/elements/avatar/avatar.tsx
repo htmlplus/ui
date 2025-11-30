@@ -31,7 +31,7 @@ export class Avatar extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: string;
+	color?: OverridableValue<string & {}>;
 
 	/**
 	 * Specifies the shape of the element.

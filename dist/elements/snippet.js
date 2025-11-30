@@ -31,7 +31,7 @@ Snippet.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 512
+    type: 0
   })
 ], Snippet.prototype, "color", 2);
 __decorateClass([

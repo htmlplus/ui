@@ -19,7 +19,7 @@ export declare class Divider extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Specifies the amount of indentation.
      */
@@ -58,7 +58,7 @@ export interface DividerAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, DividerColorOverrides>;
   /**
   * Specifies the amount of indentation.
   */
@@ -94,7 +94,7 @@ export interface DividerProperties {
   /**
   * Specifies the color.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, DividerColorOverrides>;
   /**
   * Specifies the amount of indentation.
   */
@@ -148,6 +148,7 @@ declare module "react" {
   }
 }
 export type DividerElement = globalThis.HTMLPlusDividerElement;
+export interface DividerColorOverrides {}
 export interface DividerInsetOverrides {}
 export interface DividerPlacementOverrides {}
 export interface DividerSizeOverrides {}

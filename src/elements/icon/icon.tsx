@@ -36,7 +36,7 @@ export class Icon extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: string;
+	color?: OverridableValue<string & {}>;
 
 	/**
 	 * Flips in `horizontal`, `vertical` or `both` directions.

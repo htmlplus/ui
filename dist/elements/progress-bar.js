@@ -64,7 +64,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 512
+    type: 0
   })
 ], ProgressBar.prototype, "color", 2);
 __decorateClass([

@@ -532,7 +532,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-11-29T20:43:37.272Z",
+      "lastModified": "2025-11-30T15:09:11.608Z",
       "methods": [
         {
           "async": false,
@@ -674,7 +674,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2025-11-29T20:43:37.308Z",
+      "lastModified": "2025-11-30T15:06:32.020Z",
       "methods": [],
       "properties": [
         {
@@ -683,7 +683,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
         {
@@ -3263,7 +3264,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-11-29T20:43:37.308Z",
+      "lastModified": "2025-11-30T15:06:32.020Z",
       "methods": [],
       "properties": [
         {
@@ -3272,7 +3273,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
         {
@@ -3876,7 +3878,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-11-29T20:43:37.308Z",
+      "lastModified": "2025-11-30T15:06:32.021Z",
       "methods": [],
       "properties": [
         {
@@ -3885,7 +3887,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
         {
@@ -4209,7 +4212,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-11-29T20:43:37.324Z",
+      "lastModified": "2025-11-30T15:06:32.021Z",
       "methods": [],
       "properties": [
         {
@@ -4227,7 +4230,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
         {
@@ -4556,7 +4560,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-11-29T20:43:37.325Z",
+      "lastModified": "2025-11-30T15:08:30.878Z",
       "methods": [
         {
           "async": false,
@@ -4598,7 +4602,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the background color."
         },
         {
@@ -4617,7 +4622,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the strokes."
         },
         {
@@ -4775,7 +4781,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-11-29T20:43:37.324Z",
+      "lastModified": "2025-11-30T15:06:32.022Z",
       "methods": [],
       "properties": [
         {
@@ -4784,7 +4790,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
         {
@@ -4908,7 +4915,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-11-29T20:43:37.318Z",
+      "lastModified": "2025-11-30T15:06:32.022Z",
       "methods": [],
       "properties": [
         {
@@ -4917,7 +4924,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
         {

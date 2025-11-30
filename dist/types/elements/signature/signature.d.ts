@@ -18,7 +18,7 @@ export declare class Signature extends PlusForm {
     /**
      * Specifies the background color.
      */
-    backgroundColor?: string;
+    backgroundColor?: OverridableValue<string & {}>;
     /**
      * Clears the canvas after resizing.
      */
@@ -26,7 +26,7 @@ export declare class Signature extends PlusForm {
     /**
      * Specifies the color of the strokes.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Specifies the distance between the previous point and the next one.
      */
@@ -139,7 +139,7 @@ export interface SignatureAttributes {
   /**
   * Specifies the background color.
   */
-  "background-color"?: string;
+  "background-color"?: OverridableValue<string & {}, SignatureBackgroundColorOverrides>;
   /**
   * Clears the canvas after resizing.
   */
@@ -147,7 +147,7 @@ export interface SignatureAttributes {
   /**
   * Specifies the color of the strokes.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, SignatureColorOverrides>;
   /**
   * Specifies the distance between the previous point and the next one.
   */
@@ -230,7 +230,7 @@ export interface SignatureProperties {
   /**
   * Specifies the background color.
   */
-  backgroundColor?: string;
+  backgroundColor?: OverridableValue<string & {}, SignatureBackgroundColorOverrides>;
   /**
   * Clears the canvas after resizing.
   */
@@ -238,7 +238,7 @@ export interface SignatureProperties {
   /**
   * Specifies the color of the strokes.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, SignatureColorOverrides>;
   /**
   * Specifies the distance between the previous point and the next one.
   */
@@ -316,4 +316,6 @@ declare module "react" {
   }
 }
 export type SignatureElement = globalThis.HTMLPlusSignatureElement;
+export interface SignatureBackgroundColorOverrides {}
+export interface SignatureColorOverrides {}
 export interface SignatureVariantOverrides {}

@@ -602,7 +602,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Specifies the color."
             },
@@ -2864,7 +2864,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Specifies the color."
             },
@@ -3442,7 +3442,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Specifies the color."
             },
@@ -3766,7 +3766,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Specifies the color of the bar."
             },
@@ -4144,7 +4144,7 @@
             {
               "name": "background-color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "default": "'lightgray'",
               "description": "Specifies the background color."
@@ -4159,7 +4159,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "default": "'black'",
               "description": "Specifies the color of the strokes."
@@ -4290,7 +4290,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Specifies the color."
             },
@@ -4409,7 +4409,7 @@
             {
               "name": "color",
               "value": {
-                "type": "string"
+                "type": "OverridableValue<string & {}>"
               },
               "description": "Specifies the color."
             },

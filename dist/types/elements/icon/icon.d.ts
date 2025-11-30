@@ -19,7 +19,7 @@ export declare class Icon extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -68,7 +68,7 @@ export interface IconAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, IconColorOverrides>;
   /**
   * Flips in `horizontal`, `vertical` or `both` directions.
   */
@@ -108,7 +108,7 @@ export interface IconProperties {
   /**
   * Specifies the color.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, IconColorOverrides>;
   /**
   * Flips in `horizontal`, `vertical` or `both` directions.
   */
@@ -166,4 +166,5 @@ declare module "react" {
   }
 }
 export type IconElement = globalThis.HTMLPlusIconElement;
+export interface IconColorOverrides {}
 export interface IconVariantOverrides {}

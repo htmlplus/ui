@@ -17,7 +17,7 @@ export declare class ProgressBar extends PlusCore {
     /**
      * Specifies the color of the bar.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Displays the progress percentage.
      */
@@ -64,7 +64,7 @@ export interface ProgressBarAttributes {
   /**
   * Specifies the color of the bar.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, ProgressBarColorOverrides>;
   /**
   * Displays the progress percentage.
   */
@@ -104,7 +104,7 @@ export interface ProgressBarProperties {
   /**
   * Specifies the color of the bar.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, ProgressBarColorOverrides>;
   /**
   * Displays the progress percentage.
   */
@@ -158,4 +158,5 @@ declare module "react" {
   }
 }
 export type ProgressBarElement = globalThis.HTMLPlusProgressBarElement;
+export interface ProgressBarColorOverrides {}
 export interface ProgressBarVariantOverrides {}

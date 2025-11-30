@@ -18,7 +18,7 @@ export declare class Snippet extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: string;
+    color?: OverridableValue<string & {}>;
     /**
      * Specifies the symbol.
      */
@@ -41,7 +41,7 @@ export interface SnippetAttributes {
   /**
   * Specifies the color.
   */
-  "color"?: string;
+  "color"?: OverridableValue<string & {}, SnippetColorOverrides>;
   /**
   * Specifies the symbol.
   */
@@ -61,7 +61,7 @@ export interface SnippetProperties {
   /**
   * Specifies the color.
   */
-  color?: string;
+  color?: OverridableValue<string & {}, SnippetColorOverrides>;
   /**
   * Specifies the symbol.
   */
@@ -99,4 +99,5 @@ declare module "react" {
   }
 }
 export type SnippetElement = globalThis.HTMLPlusSnippetElement;
+export interface SnippetColorOverrides {}
 export interface SnippetVariantOverrides {}
