@@ -18,6 +18,7 @@ import type { PointGroup } from 'signature_pad';
 
 import { PlusForm } from '@/core';
 import { ExternalDependencyError } from '@/errors';
+import { getCSSColor } from '@/helpers';
 import type { Breakpoint } from '@/types';
 
 // biome-ignore lint: TODO
@@ -251,8 +252,11 @@ export class Signature extends PlusForm {
 		}
 
 		switch (name) {
+			case 'backgroundColor':
+				this.instance.backgroundColor = getCSSColor(this.$host, this.backgroundColor);
+				break;
 			case 'color':
-				this.instance.penColor = next;
+				this.instance.penColor = getCSSColor(this.$host, this.color);
 				break;
 			case 'disabled':
 				this.instance[next ? 'off' : 'on']();
@@ -263,7 +267,6 @@ export class Signature extends PlusForm {
 			case 'velocity':
 				this.instance.velocityFilterWeight = next;
 				break;
-			case 'backgroundColor':
 			case 'dotSize':
 			case 'maxWidth':
 			case 'minWidth':
@@ -291,12 +294,12 @@ export class Signature extends PlusForm {
 
 	initialize() {
 		const options = {
-			backgroundColor: this.backgroundColor,
+			backgroundColor: getCSSColor(this.$host, this.backgroundColor),
 			dotSize: this.dotSize,
 			minDistance: this.distance,
 			minWidth: this.minWidth,
 			maxWidth: this.maxWidth,
-			penColor: this.color,
+			penColor: getCSSColor(this.$host, this.color),
 			throttle: this.throttle,
 			velocityFilterWeight: this.velocity
 		};

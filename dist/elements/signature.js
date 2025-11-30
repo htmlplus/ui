@@ -1,4 +1,4 @@
-import { Q as Query, j as PlusForm, E as ExternalDependencyError, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, j as PlusForm, k as getCSSColor, E as ExternalDependencyError, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -71,8 +71,11 @@ let Signature = class extends PlusForm {
       }, 250);
     }
     switch (name) {
+      case "backgroundColor":
+        this.instance.backgroundColor = getCSSColor(this.$host, this.backgroundColor);
+        break;
       case "color":
-        this.instance.penColor = next;
+        this.instance.penColor = getCSSColor(this.$host, this.color);
         break;
       case "disabled":
         this.instance[next ? "off" : "on"]();
@@ -83,7 +86,6 @@ let Signature = class extends PlusForm {
       case "velocity":
         this.instance.velocityFilterWeight = next;
         break;
-      case "backgroundColor":
       case "dotSize":
       case "maxWidth":
       case "minWidth":
@@ -105,12 +107,12 @@ let Signature = class extends PlusForm {
   }
   initialize() {
     const options = {
-      backgroundColor: this.backgroundColor,
+      backgroundColor: getCSSColor(this.$host, this.backgroundColor),
       dotSize: this.dotSize,
       minDistance: this.distance,
       minWidth: this.minWidth,
       maxWidth: this.maxWidth,
-      penColor: this.color,
+      penColor: getCSSColor(this.$host, this.color),
       throttle: this.throttle,
       velocityFilterWeight: this.velocity
     };

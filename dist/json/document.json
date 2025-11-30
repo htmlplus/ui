@@ -532,7 +532,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-11-30T15:09:11.608Z",
+      "lastModified": "2025-11-30T15:14:33.837Z",
       "methods": [
         {
           "async": false,
@@ -4560,7 +4560,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-11-30T15:08:30.878Z",
+      "lastModified": "2025-11-30T15:13:19.989Z",
       "methods": [
         {
           "async": false,

@@ -1808,17 +1808,22 @@ class NotEmptyPropertyError extends Error {
     }
   }
 }
-const toAxis = (input, rtl) => {
-  if (!input) return input;
-  if (input.match(/start/)) input = rtl ? "right" : "left";
-  if (input.match(/end/)) input = rtl ? "left" : "right";
-  return input;
-};
 const toCSSColor = (input) => {
   if (!input) return;
   if (isCSSColor(input)) return input;
   const key = input.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/[_\s.:]+/g, "-").replace(/-+/g, "-").toLowerCase().replace(/^-+|-+$/g, "");
   return `var(--plus-palette-${key})`;
+};
+const getCSSColor = (element, input) => {
+  if (!input) return;
+  if (isCSSColor(input)) return input;
+  return window.getComputedStyle(element).getPropertyValue(toCSSColor(input).slice(4, -1)).trim();
+};
+const toAxis = (input, rtl) => {
+  if (!input) return input;
+  if (input.match(/start/)) input = rtl ? "right" : "left";
+  if (input.match(/end/)) input = rtl ? "left" : "right";
+  return input;
 };
 const toCSSUnit = (input) => {
   if (typeof input === "string" && isCSSUnit(input)) {
@@ -2050,16 +2055,17 @@ export {
   html as h,
   toCSSColor as i,
   PlusForm as j,
-  setConfig as k,
-  getConfig as l,
-  Animation as m,
-  Scrollbar as n,
+  getCSSColor as k,
+  setConfig as l,
+  getConfig as m,
+  Animation as n,
   on as o,
-  toAxis as p,
+  Scrollbar as p,
   query as q,
-  classes as r,
+  toAxis as r,
   styles as s,
   toCSSUnit as t,
-  QueryAll as u,
-  setConfig$1 as v
+  classes as u,
+  QueryAll as v,
+  setConfig$1 as w
 };
