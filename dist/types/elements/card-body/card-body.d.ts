@@ -15,7 +15,7 @@ export declare class CardBody extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     render(): any;
 }
 
@@ -28,7 +28,7 @@ export interface CardBodyAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CardBodyVariantOverrides>;
+  "variant"?: OverridableValue<never, CardBodyVariantOverrides>;
 }
 export interface CardBodyAttributesDisables {}
 export type CardBodyAttributes = Filter<CardBodyAttributesBase, CardBodyAttributesDisables>;
@@ -46,7 +46,7 @@ export interface CardBodyPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CardBodyVariantOverrides>;
+  variant?: OverridableValue<never, CardBodyVariantOverrides>;
 }
 export interface CardBodyPropertiesDisables {}
 export type CardBodyProperties = Filter<CardBodyPropertiesBase, CardBodyPropertiesDisables>;

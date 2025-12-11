@@ -17,7 +17,7 @@ export declare class Spinner extends PlusCore {
     /**
      * Specifies the size of the spinner.
      */
-    size?: SpinnerSize;
+    size?: OverridableValue<SpinnerSize>;
     /**
      * Specifies which variant of the spinner to use.
      */
@@ -25,7 +25,7 @@ export declare class Spinner extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -46,7 +46,7 @@ export interface SpinnerAttributesBase {
   /**
   * Specifies the size of the spinner.
   */
-  "size"?: SpinnerSize;
+  "size"?: OverridableValue<SpinnerSize, SpinnerSizeOverrides>;
   /**
   * Specifies which variant of the spinner to use.
   */
@@ -54,7 +54,7 @@ export interface SpinnerAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, SpinnerVariantOverrides>;
+  "variant"?: OverridableValue<never, SpinnerVariantOverrides>;
   /**
   * TODO
   */
@@ -76,7 +76,7 @@ export interface SpinnerPropertiesBase {
   /**
   * Specifies the size of the spinner.
   */
-  size?: SpinnerSize;
+  size?: OverridableValue<SpinnerSize, SpinnerSizeOverrides>;
   /**
   * Specifies which variant of the spinner to use.
   */
@@ -84,7 +84,7 @@ export interface SpinnerPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, SpinnerVariantOverrides>;
+  variant?: OverridableValue<never, SpinnerVariantOverrides>;
   /**
   * TODO
   */
@@ -116,4 +116,5 @@ declare module "react" {
   }
 }
 export type SpinnerElement = globalThis.HTMLPlusSpinnerElement;
+export interface SpinnerSizeOverrides {}
 export interface SpinnerVariantOverrides {}

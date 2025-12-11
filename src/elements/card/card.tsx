@@ -26,7 +26,7 @@ export class Card extends PlusCore {
 	 * And select the property value between `1` and `24`.
 	 */
 	@Property({ reflect: true })
-	elevation?: CardElevation;
+	elevation?: OverridableValue<CardElevation>;
 
 	/**
 	 * Use the flat property to neutralize elevation.
@@ -51,7 +51,7 @@ export class Card extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

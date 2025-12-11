@@ -211,7 +211,7 @@ __decorateClass([
 ], Animation.prototype, "keyframes", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 0
   })
 ], Animation.prototype, "name", 2);
 __decorateClass([

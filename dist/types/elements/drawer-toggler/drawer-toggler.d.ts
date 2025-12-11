@@ -24,7 +24,7 @@ export declare class DrawerToggler extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     drawer?: DrawerContext;
     render(): any;
 }
@@ -45,7 +45,7 @@ export interface DrawerTogglerAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, DrawerTogglerVariantOverrides>;
+  "variant"?: OverridableValue<never, DrawerTogglerVariantOverrides>;
 }
 export interface DrawerTogglerAttributesDisables {}
 export type DrawerTogglerAttributes = Filter<DrawerTogglerAttributesBase, DrawerTogglerAttributesDisables>;
@@ -70,7 +70,7 @@ export interface DrawerTogglerPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, DrawerTogglerVariantOverrides>;
+  variant?: OverridableValue<never, DrawerTogglerVariantOverrides>;
 }
 export interface DrawerTogglerPropertiesDisables {}
 export type DrawerTogglerProperties = Filter<DrawerTogglerPropertiesBase, DrawerTogglerPropertiesDisables>;

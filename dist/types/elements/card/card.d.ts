@@ -14,7 +14,7 @@ export declare class Card extends PlusCore {
      * If you want the card to have shadow, use the elevation property,
      * And select the property value between `1` and `24`.
      */
-    elevation?: CardElevation;
+    elevation?: OverridableValue<CardElevation>;
     /**
      * Use the flat property to neutralize elevation.
      */
@@ -30,7 +30,7 @@ export declare class Card extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -44,7 +44,7 @@ export interface CardAttributesBase {
   * If you want the card to have shadow, use the elevation property,
   * And select the property value between `1` and `24`.
   */
-  "elevation"?: CardElevation;
+  "elevation"?: OverridableValue<CardElevation, CardElevationOverrides>;
   /**
   * Use the flat property to neutralize elevation.
   */
@@ -60,7 +60,7 @@ export interface CardAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CardVariantOverrides>;
+  "variant"?: OverridableValue<never, CardVariantOverrides>;
   /**
   * TODO
   */
@@ -79,7 +79,7 @@ export interface CardPropertiesBase {
   * If you want the card to have shadow, use the elevation property,
   * And select the property value between `1` and `24`.
   */
-  elevation?: CardElevation;
+  elevation?: OverridableValue<CardElevation, CardElevationOverrides>;
   /**
   * Use the flat property to neutralize elevation.
   */
@@ -95,7 +95,7 @@ export interface CardPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CardVariantOverrides>;
+  variant?: OverridableValue<never, CardVariantOverrides>;
   /**
   * TODO
   */
@@ -127,4 +127,5 @@ declare module "react" {
   }
 }
 export type CardElement = globalThis.HTMLPlusCardElement;
+export interface CardElevationOverrides {}
 export interface CardVariantOverrides {}

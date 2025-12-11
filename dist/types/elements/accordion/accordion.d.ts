@@ -41,7 +41,7 @@ export declare class Accordion extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -117,7 +117,7 @@ export interface AccordionAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, AccordionVariantOverrides>;
+  "variant"?: OverridableValue<never, AccordionVariantOverrides>;
   /**
   * TODO
   */
@@ -185,7 +185,7 @@ export interface AccordionPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, AccordionVariantOverrides>;
+  variant?: OverridableValue<never, AccordionVariantOverrides>;
   /**
   * TODO
   */

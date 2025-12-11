@@ -73,7 +73,7 @@ export declare class Cropper extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * Specifies the view.
      */
@@ -279,7 +279,7 @@ export interface CropperAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CropperVariantOverrides>;
+  "variant"?: OverridableValue<never, CropperVariantOverrides>;
   /**
   * Specifies the view.
   */
@@ -435,7 +435,7 @@ export interface CropperPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CropperVariantOverrides>;
+  variant?: OverridableValue<never, CropperVariantOverrides>;
   /**
   * Specifies the view.
   */

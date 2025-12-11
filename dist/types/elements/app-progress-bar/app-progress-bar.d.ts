@@ -32,7 +32,7 @@ export declare class AppProgressBar extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -96,7 +96,7 @@ export interface AppProgressBarAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, AppProgressBarVariantOverrides>;
+  "variant"?: OverridableValue<never, AppProgressBarVariantOverrides>;
   /**
   * TODO
   */
@@ -155,7 +155,7 @@ export interface AppProgressBarPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, AppProgressBarVariantOverrides>;
+  variant?: OverridableValue<never, AppProgressBarVariantOverrides>;
   /**
   * TODO
   */

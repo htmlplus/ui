@@ -22,7 +22,7 @@ export declare class Center extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     render(): any;
 }
 
@@ -39,7 +39,7 @@ export interface CenterAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CenterVariantOverrides>;
+  "variant"?: OverridableValue<never, CenterVariantOverrides>;
 }
 export interface CenterAttributesDisables {}
 export type CenterAttributes = Filter<CenterAttributesBase, CenterAttributesDisables>;
@@ -61,7 +61,7 @@ export interface CenterPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CenterVariantOverrides>;
+  variant?: OverridableValue<never, CenterVariantOverrides>;
 }
 export interface CenterPropertiesDisables {}
 export type CenterProperties = Filter<CenterPropertiesBase, CenterPropertiesDisables>;

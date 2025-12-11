@@ -13,7 +13,7 @@ export declare class CarouselProgress extends CarouselChild {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     $bar: HTMLElement;
     events: EmblaEventType[];
     handleUpdate(): void;
@@ -29,7 +29,7 @@ export interface CarouselProgressAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CarouselProgressVariantOverrides>;
+  "variant"?: OverridableValue<never, CarouselProgressVariantOverrides>;
 }
 export interface CarouselProgressAttributesDisables {}
 export type CarouselProgressAttributes = Filter<CarouselProgressAttributesBase, CarouselProgressAttributesDisables>;
@@ -47,7 +47,7 @@ export interface CarouselProgressPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CarouselProgressVariantOverrides>;
+  variant?: OverridableValue<never, CarouselProgressVariantOverrides>;
 }
 export interface CarouselProgressPropertiesDisables {}
 export type CarouselProgressProperties = Filter<CarouselProgressPropertiesBase, CarouselProgressPropertiesDisables>;

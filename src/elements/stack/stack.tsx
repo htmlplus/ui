@@ -52,7 +52,7 @@ export class Stack extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Whether the stack is vertical.

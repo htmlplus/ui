@@ -43,7 +43,7 @@ export declare class Breadcrumb extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -87,7 +87,7 @@ export interface BreadcrumbAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, BreadcrumbVariantOverrides>;
+  "variant"?: OverridableValue<never, BreadcrumbVariantOverrides>;
   /**
   * TODO
   */
@@ -126,7 +126,7 @@ export interface BreadcrumbPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, BreadcrumbVariantOverrides>;
+  variant?: OverridableValue<never, BreadcrumbVariantOverrides>;
   /**
   * TODO
   */

@@ -28,7 +28,7 @@
         }
       ],
       "key": "accordion",
-      "lastModified": "2025-12-08T16:56:48.157Z",
+      "lastModified": "2025-12-11T15:22:14.028Z",
       "methods": [
         {
           "async": false,
@@ -107,7 +107,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -195,7 +195,7 @@
     {
       "events": [],
       "key": "accordions",
-      "lastModified": "2025-12-08T16:56:48.158Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -213,7 +213,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -262,7 +262,7 @@
         }
       ],
       "key": "animation",
-      "lastModified": "2025-12-08T16:56:48.175Z",
+      "lastModified": "2025-12-11T15:22:14.187Z",
       "methods": [
         {
           "async": false,
@@ -464,7 +464,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies what kind of animation will play. The list of available animations is [here](/element/animation/names)."
         },
         {
@@ -492,7 +493,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -532,7 +533,7 @@
     {
       "events": [],
       "key": "app-progress-bar",
-      "lastModified": "2025-12-08T16:56:48.178Z",
+      "lastModified": "2025-12-11T15:22:14.089Z",
       "methods": [
         {
           "async": false,
@@ -650,7 +651,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -686,7 +687,7 @@
     {
       "events": [],
       "key": "avatar",
-      "lastModified": "2025-12-08T16:56:48.182Z",
+      "lastModified": "2025-12-11T15:22:14.048Z",
       "methods": [],
       "properties": [
         {
@@ -715,8 +716,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "AvatarSize",
-          "typeReference": "./avatar.types",
+          "type": "OverridableValue<AvatarSize>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the size of the element."
         },
         {
@@ -725,7 +726,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -785,7 +786,7 @@
     {
       "events": [],
       "key": "avatar-group",
-      "lastModified": "2025-12-08T16:56:48.178Z",
+      "lastModified": "2025-12-11T15:22:14.037Z",
       "methods": [],
       "properties": [
         {
@@ -812,7 +813,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -843,7 +844,7 @@
     {
       "events": [],
       "key": "breadcrumb",
-      "lastModified": "2025-12-08T16:56:48.183Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -899,7 +900,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -981,7 +982,7 @@
         }
       ],
       "key": "browse",
-      "lastModified": "2025-12-08T16:56:48.184Z",
+      "lastModified": "2025-12-11T15:22:14.048Z",
       "methods": [
         {
           "async": false,
@@ -1081,7 +1082,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1109,7 +1110,7 @@
     {
       "events": [],
       "key": "card",
-      "lastModified": "2025-12-08T16:56:48.186Z",
+      "lastModified": "2025-12-11T15:22:14.187Z",
       "methods": [],
       "properties": [
         {
@@ -1118,8 +1119,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "CardElevation",
-          "typeReference": "./card.types",
+          "type": "OverridableValue<CardElevation>",
+          "typeReference": "@htmlplus/element",
           "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
         },
         {
@@ -1155,7 +1156,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1219,7 +1220,7 @@
     {
       "events": [],
       "key": "card-body",
-      "lastModified": "2025-12-08T16:56:48.185Z",
+      "lastModified": "2025-12-11T15:22:14.155Z",
       "methods": [],
       "properties": [
         {
@@ -1238,7 +1239,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1338,7 +1339,7 @@
         }
       ],
       "key": "carousel",
-      "lastModified": "2025-12-08T16:56:48.192Z",
+      "lastModified": "2025-12-11T15:22:14.152Z",
       "methods": [
         {
           "async": false,
@@ -1645,7 +1646,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
         },
@@ -1719,7 +1720,7 @@
     {
       "events": [],
       "key": "carousel-button",
-      "lastModified": "2025-12-08T16:56:48.186Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -1746,7 +1747,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1776,7 +1777,7 @@
     {
       "events": [],
       "key": "carousel-counter",
-      "lastModified": "2025-12-08T16:56:48.187Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -1795,7 +1796,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1819,7 +1820,7 @@
     {
       "events": [],
       "key": "carousel-indicators",
-      "lastModified": "2025-12-08T16:56:48.187Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -1865,7 +1866,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1879,7 +1880,7 @@
     {
       "events": [],
       "key": "carousel-progress",
-      "lastModified": "2025-12-08T16:56:48.188Z",
+      "lastModified": "2025-12-11T15:22:14.140Z",
       "methods": [],
       "properties": [
         {
@@ -1898,7 +1899,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1912,7 +1913,7 @@
     {
       "events": [],
       "key": "carousel-slide",
-      "lastModified": "2025-12-08T16:56:48.188Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -1940,7 +1941,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1960,7 +1961,7 @@
     {
       "events": [],
       "key": "carousel-slides",
-      "lastModified": "2025-12-08T16:56:48.189Z",
+      "lastModified": "2025-12-11T15:22:14.155Z",
       "methods": [],
       "properties": [
         {
@@ -1979,7 +1980,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1999,7 +2000,7 @@
     {
       "events": [],
       "key": "center",
-      "lastModified": "2025-12-08T16:56:48.193Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -2027,7 +2028,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -2057,7 +2058,7 @@
         }
       ],
       "key": "click-outside",
-      "lastModified": "2025-12-08T16:56:48.194Z",
+      "lastModified": "2025-12-11T15:22:14.050Z",
       "methods": [],
       "properties": [
         {
@@ -2103,7 +2104,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -2133,7 +2134,7 @@
         }
       ],
       "key": "counter",
-      "lastModified": "2025-12-08T16:56:48.195Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [
         {
           "async": false,
@@ -2272,7 +2273,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -2349,7 +2350,7 @@
         }
       ],
       "key": "cropper",
-      "lastModified": "2025-12-08T16:56:48.199Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [
         {
           "async": false,
@@ -2628,7 +2629,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -2824,7 +2825,7 @@
         }
       ],
       "key": "dialog",
-      "lastModified": "2025-12-08T16:56:48.205Z",
+      "lastModified": "2025-12-11T15:22:14.093Z",
       "methods": [
         {
           "async": false,
@@ -2996,7 +2997,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3046,7 +3047,7 @@
     {
       "events": [],
       "key": "dialog-body",
-      "lastModified": "2025-12-08T16:56:48.200Z",
+      "lastModified": "2025-12-11T15:22:14.152Z",
       "methods": [],
       "properties": [
         {
@@ -3064,7 +3065,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3094,7 +3095,7 @@
     {
       "events": [],
       "key": "dialog-content",
-      "lastModified": "2025-12-08T16:56:48.200Z",
+      "lastModified": "2025-12-11T15:22:14.075Z",
       "methods": [],
       "properties": [
         {
@@ -3112,7 +3113,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3142,7 +3143,7 @@
     {
       "events": [],
       "key": "dialog-footer",
-      "lastModified": "2025-12-08T16:56:48.200Z",
+      "lastModified": "2025-12-11T15:22:14.051Z",
       "methods": [],
       "properties": [
         {
@@ -3161,7 +3162,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3181,7 +3182,7 @@
     {
       "events": [],
       "key": "dialog-header",
-      "lastModified": "2025-12-08T16:56:48.200Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -3200,7 +3201,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3220,7 +3221,7 @@
     {
       "events": [],
       "key": "dialog-toggler",
-      "lastModified": "2025-12-08T16:56:48.201Z",
+      "lastModified": "2025-12-11T15:22:14.100Z",
       "methods": [],
       "properties": [
         {
@@ -3248,7 +3249,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3276,7 +3277,7 @@
     {
       "events": [],
       "key": "divider",
-      "lastModified": "2025-12-08T16:56:48.210Z",
+      "lastModified": "2025-12-11T15:22:14.106Z",
       "methods": [],
       "properties": [
         {
@@ -3296,8 +3297,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<DividerInset>",
-          "typeReference": "@htmlplus/element",
+          "type": "DividerInset",
+          "typeReference": "./divider.types",
           "description": "Specifies the amount of indentation."
         },
         {
@@ -3318,8 +3319,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<DividerPlacement>",
-          "typeReference": "@htmlplus/element",
+          "type": "DividerPlacement",
+          "typeReference": "./divider.types",
           "description": "Specifies the location of the default slot."
         },
         {
@@ -3350,7 +3351,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3447,7 +3448,7 @@
         }
       ],
       "key": "drawer",
-      "lastModified": "2025-12-08T16:56:48.212Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [
         {
           "async": false,
@@ -3601,7 +3602,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3632,7 +3633,7 @@
     {
       "events": [],
       "key": "drawer-toggler",
-      "lastModified": "2025-12-08T16:56:48.211Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -3660,7 +3661,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3688,7 +3689,7 @@
     {
       "events": [],
       "key": "faker",
-      "lastModified": "2025-12-08T16:56:48.213Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -3735,7 +3736,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3768,7 +3769,7 @@
     {
       "events": [],
       "key": "format-bytes",
-      "lastModified": "2025-12-08T16:56:48.216Z",
+      "lastModified": "2025-12-11T15:22:14.155Z",
       "methods": [],
       "properties": [
         {
@@ -3856,7 +3857,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3890,7 +3891,7 @@
     {
       "events": [],
       "key": "icon",
-      "lastModified": "2025-12-08T16:56:48.220Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -3928,7 +3929,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "string",
+          "type": "OverridableValue<string & {}>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the name."
         },
         {
@@ -3966,7 +3968,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4020,7 +4022,7 @@
         }
       ],
       "key": "intersection",
-      "lastModified": "2025-12-08T16:56:48.221Z",
+      "lastModified": "2025-12-11T15:22:14.097Z",
       "methods": [],
       "properties": [
         {
@@ -4075,7 +4077,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4108,7 +4110,7 @@
     {
       "events": [],
       "key": "prism",
-      "lastModified": "2025-12-08T16:56:48.222Z",
+      "lastModified": "2025-12-11T15:22:14.155Z",
       "methods": [],
       "properties": [
         {
@@ -4166,7 +4168,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4224,7 +4226,7 @@
     {
       "events": [],
       "key": "progress-bar",
-      "lastModified": "2025-12-08T16:56:48.224Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -4290,7 +4292,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4350,7 +4352,7 @@
     {
       "events": [],
       "key": "progress-bar-stack",
-      "lastModified": "2025-12-08T16:56:48.222Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -4369,7 +4371,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -4389,7 +4391,7 @@
     {
       "events": [],
       "key": "relative-time",
-      "lastModified": "2025-12-08T16:56:48.226Z",
+      "lastModified": "2025-12-11T15:22:14.155Z",
       "methods": [],
       "properties": [
         {
@@ -4437,7 +4439,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4476,7 +4478,7 @@
         }
       ],
       "key": "scroll-detector",
-      "lastModified": "2025-12-08T16:56:48.227Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -4505,7 +4507,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4572,7 +4574,7 @@
         }
       ],
       "key": "signature",
-      "lastModified": "2025-12-08T16:56:48.230Z",
+      "lastModified": "2025-12-11T15:22:14.158Z",
       "methods": [
         {
           "async": false,
@@ -4747,7 +4749,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4793,7 +4795,7 @@
     {
       "events": [],
       "key": "snippet",
-      "lastModified": "2025-12-08T16:56:48.231Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -4821,7 +4823,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4883,7 +4885,7 @@
     {
       "events": [],
       "key": "spacer",
-      "lastModified": "2025-12-08T16:56:48.232Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -4912,7 +4914,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -4927,7 +4929,7 @@
     {
       "events": [],
       "key": "spinner",
-      "lastModified": "2025-12-08T16:56:48.234Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -4947,8 +4949,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "SpinnerSize",
-          "typeReference": "./spinner.types",
+          "type": "OverridableValue<SpinnerSize>",
+          "typeReference": "@htmlplus/element",
           "description": "Specifies the size of the spinner."
         },
         {
@@ -4968,7 +4970,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4999,7 +5001,7 @@
     {
       "events": [],
       "key": "stack",
-      "lastModified": "2025-12-11T13:35:04.457Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -5049,7 +5051,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5109,7 +5111,7 @@
         }
       ],
       "key": "sticky",
-      "lastModified": "2025-12-08T16:56:48.236Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -5129,7 +5131,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5200,7 +5202,7 @@
         }
       ],
       "key": "switch",
-      "lastModified": "2025-12-08T16:56:48.237Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -5238,7 +5240,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -5266,7 +5268,7 @@
         }
       ],
       "key": "tabs",
-      "lastModified": "2025-12-08T16:56:48.240Z",
+      "lastModified": "2025-12-11T15:22:14.158Z",
       "methods": [],
       "properties": [
         {
@@ -5285,7 +5287,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5332,7 +5334,7 @@
     {
       "events": [],
       "key": "tabs-bar",
-      "lastModified": "2025-12-08T16:56:48.238Z",
+      "lastModified": "2025-12-11T15:22:14.155Z",
       "methods": [],
       "properties": [
         {
@@ -5369,7 +5371,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5399,7 +5401,7 @@
     {
       "events": [],
       "key": "tabs-panel",
-      "lastModified": "2025-12-08T16:56:48.238Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [],
       "properties": [
         {
@@ -5418,7 +5420,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5457,7 +5459,7 @@
     {
       "events": [],
       "key": "tabs-panels",
-      "lastModified": "2025-12-08T16:56:48.238Z",
+      "lastModified": "2025-12-11T15:22:14.148Z",
       "methods": [],
       "properties": [
         {
@@ -5476,7 +5478,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -5496,7 +5498,7 @@
     {
       "events": [],
       "key": "tabs-tab",
-      "lastModified": "2025-12-08T16:56:48.239Z",
+      "lastModified": "2025-12-11T15:22:14.036Z",
       "methods": [],
       "properties": [
         {
@@ -5524,7 +5526,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5563,7 +5565,7 @@
     {
       "events": [],
       "key": "tooltip",
-      "lastModified": "2025-12-08T16:56:48.241Z",
+      "lastModified": "2025-12-11T15:22:14.156Z",
       "methods": [
         {
           "async": false,
@@ -5675,7 +5677,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },

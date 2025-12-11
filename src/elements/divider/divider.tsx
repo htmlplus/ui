@@ -45,7 +45,7 @@ export class Divider extends PlusCore {
 	 * Specifies the amount of indentation.
 	 */
 	@Property({ reflect: true })
-	inset?: OverridableValue<DividerInset> = 'none';
+	inset?: DividerInset = 'none';
 
 	/**
 	 * Draws the divider in a `horizontal` or `vertical` orientation.
@@ -57,7 +57,7 @@ export class Divider extends PlusCore {
 	 * Specifies the location of the default slot.
 	 */
 	@Property({ reflect: true })
-	placement?: OverridableValue<DividerPlacement> = 'center';
+	placement?: DividerPlacement = 'center';
 
 	/**
 	 * Specifies the thickness of the border.
@@ -76,7 +76,7 @@ export class Divider extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

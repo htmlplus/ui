@@ -27,7 +27,7 @@ export declare class CarouselIndicators extends CarouselChild {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     events: EmblaEventType[];
     get indexes(): number[];
     scrollTo(index: number): void;
@@ -61,7 +61,7 @@ export interface CarouselIndicatorsAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CarouselIndicatorsVariantOverrides>;
+  "variant"?: OverridableValue<never, CarouselIndicatorsVariantOverrides>;
 }
 export interface CarouselIndicatorsAttributesDisables {}
 export type CarouselIndicatorsAttributes = Filter<CarouselIndicatorsAttributesBase, CarouselIndicatorsAttributesDisables>;
@@ -93,7 +93,7 @@ export interface CarouselIndicatorsPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CarouselIndicatorsVariantOverrides>;
+  variant?: OverridableValue<never, CarouselIndicatorsVariantOverrides>;
 }
 export interface CarouselIndicatorsPropertiesDisables {}
 export type CarouselIndicatorsProperties = Filter<CarouselIndicatorsPropertiesBase, CarouselIndicatorsPropertiesDisables>;

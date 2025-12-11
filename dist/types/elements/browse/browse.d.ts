@@ -53,7 +53,7 @@ export declare class Browse extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * Fires when file(s) are selected.
      */
@@ -127,7 +127,7 @@ export interface BrowseAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, BrowseVariantOverrides>;
+  "variant"?: OverridableValue<never, BrowseVariantOverrides>;
 }
 export interface BrowseAttributesDisables {}
 export type BrowseAttributes = Filter<BrowseAttributesBase, BrowseAttributesDisables>;
@@ -197,7 +197,7 @@ export interface BrowsePropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, BrowseVariantOverrides>;
+  variant?: OverridableValue<never, BrowseVariantOverrides>;
 }
 export interface BrowsePropertiesDisables {}
 export type BrowseProperties = Filter<BrowsePropertiesBase, BrowsePropertiesDisables>;

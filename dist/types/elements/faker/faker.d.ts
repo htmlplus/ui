@@ -31,7 +31,7 @@ export declare class Faker extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -62,7 +62,7 @@ export interface FakerAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, FakerVariantOverrides>;
+  "variant"?: OverridableValue<never, FakerVariantOverrides>;
   /**
   * TODO
   */
@@ -96,7 +96,7 @@ export interface FakerPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, FakerVariantOverrides>;
+  variant?: OverridableValue<never, FakerVariantOverrides>;
   /**
   * TODO
   */

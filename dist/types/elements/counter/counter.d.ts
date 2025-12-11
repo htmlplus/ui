@@ -53,7 +53,7 @@ export declare class Counter extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -138,7 +138,7 @@ export interface CounterAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CounterVariantOverrides>;
+  "variant"?: OverridableValue<never, CounterVariantOverrides>;
   /**
   * TODO
   */
@@ -218,7 +218,7 @@ export interface CounterPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CounterVariantOverrides>;
+  variant?: OverridableValue<never, CounterVariantOverrides>;
   /**
   * TODO
   */

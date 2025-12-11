@@ -77,7 +77,7 @@ export declare class Dialog extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -196,7 +196,7 @@ export interface DialogAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, DialogVariantOverrides>;
+  "variant"?: OverridableValue<never, DialogVariantOverrides>;
   /**
   * TODO
   */
@@ -306,7 +306,7 @@ export interface DialogPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, DialogVariantOverrides>;
+  variant?: OverridableValue<never, DialogVariantOverrides>;
   /**
   * TODO
   */

@@ -25,11 +25,11 @@ export declare class Avatar extends PlusCore {
     /**
      * Specifies the size of the element.
      */
-    size?: AvatarSize;
+    size?: OverridableValue<AvatarSize>;
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -149,11 +149,11 @@ export interface AvatarAttributesBase {
   /**
   * Specifies the size of the element.
   */
-  "size"?: AvatarSize;
+  "size"?: OverridableValue<AvatarSize, AvatarSizeOverrides>;
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, AvatarVariantOverrides>;
+  "variant"?: OverridableValue<never, AvatarVariantOverrides>;
   /**
   * TODO
   */
@@ -179,11 +179,11 @@ export interface AvatarPropertiesBase {
   /**
   * Specifies the size of the element.
   */
-  size?: AvatarSize;
+  size?: OverridableValue<AvatarSize, AvatarSizeOverrides>;
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, AvatarVariantOverrides>;
+  variant?: OverridableValue<never, AvatarVariantOverrides>;
   /**
   * TODO
   */
@@ -215,4 +215,5 @@ declare module "react" {
   }
 }
 export type AvatarElement = globalThis.HTMLPlusAvatarElement;
+export interface AvatarSizeOverrides {}
 export interface AvatarVariantOverrides {}

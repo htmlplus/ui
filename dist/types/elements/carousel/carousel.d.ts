@@ -131,7 +131,7 @@ export declare class Carousel extends PlusCore {
      * Provides a visual style variant for the carousel.
      * Can be used to conditionally apply CSS themes or variants.
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * The Embla carousel API.
      */
@@ -413,7 +413,7 @@ export interface CarouselAttributesBase {
   * Provides a visual style variant for the carousel.
   * Can be used to conditionally apply CSS themes or variants.
   */
-  "variant"?: OverridableValue<string & {}, CarouselVariantOverrides>;
+  "variant"?: OverridableValue<never, CarouselVariantOverrides>;
   /**
   * TODO: Indicates whether the carousel has been successfully initialized.
   */
@@ -682,7 +682,7 @@ export interface CarouselPropertiesBase {
   * Provides a visual style variant for the carousel.
   * Can be used to conditionally apply CSS themes or variants.
   */
-  variant?: OverridableValue<string & {}, CarouselVariantOverrides>;
+  variant?: OverridableValue<never, CarouselVariantOverrides>;
   /**
   * The Embla carousel API.
   */

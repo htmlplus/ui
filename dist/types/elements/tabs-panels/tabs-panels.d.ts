@@ -15,7 +15,7 @@ export declare class TabsPanels extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     render(): any;
 }
 
@@ -28,7 +28,7 @@ export interface TabsPanelsAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, TabsPanelsVariantOverrides>;
+  "variant"?: OverridableValue<never, TabsPanelsVariantOverrides>;
 }
 export interface TabsPanelsAttributesDisables {}
 export type TabsPanelsAttributes = Filter<TabsPanelsAttributesBase, TabsPanelsAttributesDisables>;
@@ -46,7 +46,7 @@ export interface TabsPanelsPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, TabsPanelsVariantOverrides>;
+  variant?: OverridableValue<never, TabsPanelsVariantOverrides>;
 }
 export interface TabsPanelsPropertiesDisables {}
 export type TabsPanelsProperties = Filter<TabsPanelsPropertiesBase, TabsPanelsPropertiesDisables>;

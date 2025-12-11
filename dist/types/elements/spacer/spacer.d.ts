@@ -16,7 +16,7 @@ export declare class Spacer extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     get style(): {
         'flex-grow': number;
     };
@@ -35,7 +35,7 @@ export interface SpacerAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, SpacerVariantOverrides>;
+  "variant"?: OverridableValue<never, SpacerVariantOverrides>;
 }
 export interface SpacerAttributesDisables {}
 export type SpacerAttributes = Filter<SpacerAttributesBase, SpacerAttributesDisables>;
@@ -57,7 +57,7 @@ export interface SpacerPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, SpacerVariantOverrides>;
+  variant?: OverridableValue<never, SpacerVariantOverrides>;
 }
 export interface SpacerPropertiesDisables {}
 export type SpacerProperties = Filter<SpacerPropertiesBase, SpacerPropertiesDisables>;

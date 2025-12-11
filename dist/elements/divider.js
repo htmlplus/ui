@@ -47,7 +47,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 528
   })
 ], Divider.prototype, "inset", 2);
 __decorateClass([
@@ -59,7 +59,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 16
   })
 ], Divider.prototype, "placement", 2);
 __decorateClass([

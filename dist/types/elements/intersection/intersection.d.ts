@@ -47,7 +47,7 @@ export declare class Intersection extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -109,7 +109,7 @@ export interface IntersectionAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, IntersectionVariantOverrides>;
+  "variant"?: OverridableValue<never, IntersectionVariantOverrides>;
   /**
   * TODO
   */
@@ -163,7 +163,7 @@ export interface IntersectionPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, IntersectionVariantOverrides>;
+  variant?: OverridableValue<never, IntersectionVariantOverrides>;
   /**
   * TODO
   */

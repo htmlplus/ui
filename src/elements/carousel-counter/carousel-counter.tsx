@@ -33,7 +33,7 @@ export class CarouselCounter extends CarouselChild {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

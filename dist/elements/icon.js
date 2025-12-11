@@ -118,7 +118,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 512
+    type: 0
   })
 ], Icon.prototype, "name", 2);
 __decorateClass([

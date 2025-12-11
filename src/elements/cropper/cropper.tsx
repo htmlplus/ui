@@ -138,7 +138,7 @@ export class Cropper extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Specifies the view.

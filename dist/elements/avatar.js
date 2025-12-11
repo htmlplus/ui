@@ -150,7 +150,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 656
+    type: 0
   })
 ], Avatar.prototype, "size", 2);
 __decorateClass([

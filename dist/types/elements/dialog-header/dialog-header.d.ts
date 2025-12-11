@@ -14,7 +14,7 @@ export declare class DialogHeader extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     render(): any;
 }
 
@@ -27,7 +27,7 @@ export interface DialogHeaderAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, DialogHeaderVariantOverrides>;
+  "variant"?: OverridableValue<never, DialogHeaderVariantOverrides>;
 }
 export interface DialogHeaderAttributesDisables {}
 export type DialogHeaderAttributes = Filter<DialogHeaderAttributesBase, DialogHeaderAttributesDisables>;
@@ -45,7 +45,7 @@ export interface DialogHeaderPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, DialogHeaderVariantOverrides>;
+  variant?: OverridableValue<never, DialogHeaderVariantOverrides>;
 }
 export interface DialogHeaderPropertiesDisables {}
 export type DialogHeaderProperties = Filter<DialogHeaderPropertiesBase, DialogHeaderPropertiesDisables>;

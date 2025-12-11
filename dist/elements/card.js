@@ -20,7 +20,7 @@ Card.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 128
+    type: 0
   })
 ], Card.prototype, "elevation", 2);
 __decorateClass([

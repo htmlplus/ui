@@ -29,7 +29,7 @@ export declare class Stack extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * Whether the stack is vertical.
      */
@@ -74,7 +74,7 @@ export interface StackAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, StackVariantOverrides>;
+  "variant"?: OverridableValue<never, StackVariantOverrides>;
   /**
   * Whether the stack is vertical.
   */
@@ -116,7 +116,7 @@ export interface StackPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, StackVariantOverrides>;
+  variant?: OverridableValue<never, StackVariantOverrides>;
   /**
   * Whether the stack is vertical.
   */

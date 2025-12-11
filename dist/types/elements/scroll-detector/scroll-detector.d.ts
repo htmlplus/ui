@@ -21,7 +21,7 @@ export declare class ScrollDetector extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * Indicates which scroll (horizontal or vertical) is to be used as the source.
      */
@@ -58,7 +58,7 @@ export interface ScrollDetectorAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, ScrollDetectorVariantOverrides>;
+  "variant"?: OverridableValue<never, ScrollDetectorVariantOverrides>;
   /**
   * Indicates which scroll (horizontal or vertical) is to be used as the source.
   */
@@ -93,7 +93,7 @@ export interface ScrollDetectorPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, ScrollDetectorVariantOverrides>;
+  variant?: OverridableValue<never, ScrollDetectorVariantOverrides>;
   /**
   * Indicates which scroll (horizontal or vertical) is to be used as the source.
   */

@@ -50,7 +50,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 0
   })
 ], Spinner.prototype, "size", 2);
 __decorateClass([

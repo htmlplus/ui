@@ -133,7 +133,7 @@ export class Animation extends PlusCore {
 	 * The list of available animations is [here](/element/animation/names).
 	 */
 	@Property()
-	name?: string;
+	name?: OverridableValue<string & {}>;
 
 	/**
 	 * Sets the animation's playback rate.
@@ -152,7 +152,7 @@ export class Animation extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

@@ -43,14 +43,14 @@ export class Avatar extends PlusCore {
 	 * Specifies the size of the element.
 	 */
 	@Property({ reflect: true })
-	size?: AvatarSize;
+	size?: OverridableValue<AvatarSize>;
 
 	/**
 	 * TODO
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

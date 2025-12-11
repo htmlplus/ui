@@ -310,29 +310,7 @@
         },
         {
           "name": "size",
-          "values": [
-            {
-              "name": "xxs"
-            },
-            {
-              "name": "xs"
-            },
-            {
-              "name": "sm"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "lg"
-            },
-            {
-              "name": "xl"
-            },
-            {
-              "name": "xxl"
-            }
-          ],
+          "values": [],
           "description": "Specifies the size of the element."
         },
         {
@@ -542,80 +520,7 @@
       "attributes": [
         {
           "name": "elevation",
-          "values": [
-            {
-              "name": "1"
-            },
-            {
-              "name": "2"
-            },
-            {
-              "name": "3"
-            },
-            {
-              "name": "4"
-            },
-            {
-              "name": "5"
-            },
-            {
-              "name": "6"
-            },
-            {
-              "name": "7"
-            },
-            {
-              "name": "8"
-            },
-            {
-              "name": "9"
-            },
-            {
-              "name": "10"
-            },
-            {
-              "name": "11"
-            },
-            {
-              "name": "12"
-            },
-            {
-              "name": "13"
-            },
-            {
-              "name": "14"
-            },
-            {
-              "name": "15"
-            },
-            {
-              "name": "16"
-            },
-            {
-              "name": "17"
-            },
-            {
-              "name": "18"
-            },
-            {
-              "name": "19"
-            },
-            {
-              "name": "20"
-            },
-            {
-              "name": "21"
-            },
-            {
-              "name": "22"
-            },
-            {
-              "name": "23"
-            },
-            {
-              "name": "24"
-            }
-          ],
+          "values": [],
           "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
         },
         {
@@ -1898,7 +1803,20 @@
         },
         {
           "name": "inset",
-          "values": [],
+          "values": [
+            {
+              "name": "none"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "end"
+            },
+            {
+              "name": "both"
+            }
+          ],
           "description": "Specifies the amount of indentation."
         },
         {
@@ -1915,7 +1833,17 @@
         },
         {
           "name": "placement",
-          "values": [],
+          "values": [
+            {
+              "name": "start"
+            },
+            {
+              "name": "center"
+            },
+            {
+              "name": "end"
+            }
+          ],
           "description": "Specifies the location of the default slot."
         },
         {
@@ -2902,20 +2830,7 @@
         },
         {
           "name": "size",
-          "values": [
-            {
-              "name": "inherit"
-            },
-            {
-              "name": "sm"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "lg"
-            }
-          ],
+          "values": [],
           "description": "Specifies the size of the spinner."
         },
         {

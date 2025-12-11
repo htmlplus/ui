@@ -15,7 +15,7 @@ export declare class CarouselSlides extends CarouselChild {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     events: EmblaEventType[];
     render(): any;
 }
@@ -29,7 +29,7 @@ export interface CarouselSlidesAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CarouselSlidesVariantOverrides>;
+  "variant"?: OverridableValue<never, CarouselSlidesVariantOverrides>;
 }
 export interface CarouselSlidesAttributesDisables {}
 export type CarouselSlidesAttributes = Filter<CarouselSlidesAttributesBase, CarouselSlidesAttributesDisables>;
@@ -47,7 +47,7 @@ export interface CarouselSlidesPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CarouselSlidesVariantOverrides>;
+  variant?: OverridableValue<never, CarouselSlidesVariantOverrides>;
 }
 export interface CarouselSlidesPropertiesDisables {}
 export type CarouselSlidesProperties = Filter<CarouselSlidesPropertiesBase, CarouselSlidesPropertiesDisables>;

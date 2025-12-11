@@ -19,7 +19,7 @@ export declare class CarouselButton extends CarouselChild {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -44,7 +44,7 @@ export interface CarouselButtonAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, CarouselButtonVariantOverrides>;
+  "variant"?: OverridableValue<never, CarouselButtonVariantOverrides>;
   /**
   * TODO
   */
@@ -70,7 +70,7 @@ export interface CarouselButtonPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, CarouselButtonVariantOverrides>;
+  variant?: OverridableValue<never, CarouselButtonVariantOverrides>;
   /**
   * TODO
   */

@@ -58,7 +58,7 @@ export class ClickOutside extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Fires when outside of the element is clicked.

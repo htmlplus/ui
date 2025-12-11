@@ -54,7 +54,7 @@ export class Icon extends PlusCore {
 	 * Specifies the name.
 	 */
 	@Property({ reflect: true })
-	name?: string;
+	name?: OverridableValue<string & {}>;
 
 	/**
 	 * An asynchronous function to load SVG files.
@@ -89,7 +89,7 @@ export class Icon extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

@@ -44,7 +44,7 @@ export declare class Prism extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -92,7 +92,7 @@ export interface PrismAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, PrismVariantOverrides>;
+  "variant"?: OverridableValue<never, PrismVariantOverrides>;
   /**
   * TODO
   */
@@ -130,7 +130,7 @@ export interface PrismPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, PrismVariantOverrides>;
+  variant?: OverridableValue<never, PrismVariantOverrides>;
   /**
   * TODO
   */

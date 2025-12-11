@@ -33,7 +33,7 @@ export class Spinner extends PlusCore {
 	 * Specifies the size of the spinner.
 	 */
 	@Property({ reflect: true })
-	size?: SpinnerSize = 'inherit';
+	size?: OverridableValue<SpinnerSize> = 'inherit';
 
 	/**
 	 * Specifies which variant of the spinner to use.
@@ -46,7 +46,7 @@ export class Spinner extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	/**
 	 * TODO

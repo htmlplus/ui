@@ -44,7 +44,7 @@ export class CarouselSlide extends CarouselChild {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	events: EmblaEventType[] = ['init', 'reInit', 'select'];
 

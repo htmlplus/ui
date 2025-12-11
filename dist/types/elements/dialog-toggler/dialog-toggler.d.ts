@@ -24,7 +24,7 @@ export declare class DialogToggler extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     dialog?: DialogContext;
     render(): any;
 }
@@ -45,7 +45,7 @@ export interface DialogTogglerAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, DialogTogglerVariantOverrides>;
+  "variant"?: OverridableValue<never, DialogTogglerVariantOverrides>;
 }
 export interface DialogTogglerAttributesDisables {}
 export type DialogTogglerAttributes = Filter<DialogTogglerAttributesBase, DialogTogglerAttributesDisables>;
@@ -70,7 +70,7 @@ export interface DialogTogglerPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, DialogTogglerVariantOverrides>;
+  variant?: OverridableValue<never, DialogTogglerVariantOverrides>;
 }
 export interface DialogTogglerPropertiesDisables {}
 export type DialogTogglerProperties = Filter<DialogTogglerPropertiesBase, DialogTogglerPropertiesDisables>;

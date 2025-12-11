@@ -82,7 +82,7 @@ export declare class Animation extends PlusCore {
      * Specifies what kind of animation will play.
      * The list of available animations is [here](/element/animation/names).
      */
-    name?: string;
+    name?: OverridableValue<string & {}>;
     /**
      * Sets the animation's playback rate.
      */
@@ -94,7 +94,7 @@ export declare class Animation extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -242,7 +242,7 @@ export interface AnimationAttributesBase {
   * Specifies what kind of animation will play.
   * The list of available animations is [here](/element/animation/names).
   */
-  "name"?: string;
+  "name"?: OverridableValue<string & {}, AnimationNameOverrides>;
   /**
   * Sets the animation's playback rate.
   */
@@ -254,7 +254,7 @@ export interface AnimationAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, AnimationVariantOverrides>;
+  "variant"?: OverridableValue<never, AnimationVariantOverrides>;
   /**
   * TODO
   */
@@ -390,7 +390,7 @@ export interface AnimationPropertiesBase {
   * Specifies what kind of animation will play.
   * The list of available animations is [here](/element/animation/names).
   */
-  name?: string;
+  name?: OverridableValue<string & {}, AnimationNameOverrides>;
   /**
   * Sets the animation's playback rate.
   */
@@ -402,7 +402,7 @@ export interface AnimationPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, AnimationVariantOverrides>;
+  variant?: OverridableValue<never, AnimationVariantOverrides>;
   /**
   * TODO
   */
@@ -434,4 +434,5 @@ declare module "react" {
   }
 }
 export type AnimationElement = globalThis.HTMLPlusAnimationElement;
+export interface AnimationNameOverrides {}
 export interface AnimationVariantOverrides {}

@@ -44,7 +44,7 @@ export class DrawerToggler extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	@State()
 	@Consumer('drawer.connector')

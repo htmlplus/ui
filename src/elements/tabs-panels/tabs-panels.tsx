@@ -30,7 +30,7 @@ export class TabsPanels extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	@Variant()
-	variant?: OverridableValue<string & {}>;
+	variant?: OverridableValue<never>;
 
 	render() {
 		return <slot />;

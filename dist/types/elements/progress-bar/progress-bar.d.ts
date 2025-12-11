@@ -37,7 +37,7 @@ export declare class ProgressBar extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * Specifies the progress of the bar by a number between `min` and `max`.
      */
@@ -85,7 +85,7 @@ export interface ProgressBarAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, ProgressBarVariantOverrides>;
+  "variant"?: OverridableValue<never, ProgressBarVariantOverrides>;
   /**
   * Specifies the progress of the bar by a number between `min` and `max`.
   */
@@ -131,7 +131,7 @@ export interface ProgressBarPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, ProgressBarVariantOverrides>;
+  variant?: OverridableValue<never, ProgressBarVariantOverrides>;
   /**
   * Specifies the progress of the bar by a number between `min` and `max`.
   */

@@ -31,7 +31,7 @@ export declare class Icon extends PlusCore {
     /**
      * Specifies the name.
      */
-    name?: string;
+    name?: OverridableValue<string & {}>;
     /**
      * An asynchronous function to load SVG files.
      */
@@ -47,7 +47,7 @@ export declare class Icon extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -81,7 +81,7 @@ export interface IconAttributesBase {
   /**
   * Specifies the name.
   */
-  "name"?: string;
+  "name"?: OverridableValue<string & {}, IconNameOverrides>;
   /**
   * An asynchronous function to load SVG files.
   */
@@ -97,7 +97,7 @@ export interface IconAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, IconVariantOverrides>;
+  "variant"?: OverridableValue<never, IconVariantOverrides>;
   /**
   * TODO
   */
@@ -127,7 +127,7 @@ export interface IconPropertiesBase {
   /**
   * Specifies the name.
   */
-  name?: string;
+  name?: OverridableValue<string & {}, IconNameOverrides>;
   /**
   * An asynchronous function to load SVG files.
   */
@@ -143,7 +143,7 @@ export interface IconPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, IconVariantOverrides>;
+  variant?: OverridableValue<never, IconVariantOverrides>;
   /**
   * TODO
   */
@@ -175,4 +175,5 @@ declare module "react" {
   }
 }
 export type IconElement = globalThis.HTMLPlusIconElement;
+export interface IconNameOverrides {}
 export interface IconVariantOverrides {}

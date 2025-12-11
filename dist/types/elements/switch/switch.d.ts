@@ -23,7 +23,7 @@ export declare class Switch extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * When the switch state is changed this event triggers.
      * @model
@@ -53,7 +53,7 @@ export interface SwitchAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, SwitchVariantOverrides>;
+  "variant"?: OverridableValue<never, SwitchVariantOverrides>;
 }
 export interface SwitchAttributesDisables {}
 export type SwitchAttributes = Filter<SwitchAttributesBase, SwitchAttributesDisables>;
@@ -86,7 +86,7 @@ export interface SwitchPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, SwitchVariantOverrides>;
+  variant?: OverridableValue<never, SwitchVariantOverrides>;
 }
 export interface SwitchPropertiesDisables {}
 export type SwitchProperties = Filter<SwitchPropertiesBase, SwitchPropertiesDisables>;

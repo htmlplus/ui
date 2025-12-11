@@ -23,7 +23,7 @@ export declare class Divider extends PlusCore {
     /**
      * Specifies the amount of indentation.
      */
-    inset?: OverridableValue<DividerInset>;
+    inset?: DividerInset;
     /**
      * Draws the divider in a `horizontal` or `vertical` orientation.
      */
@@ -31,7 +31,7 @@ export declare class Divider extends PlusCore {
     /**
      * Specifies the location of the default slot.
      */
-    placement?: OverridableValue<DividerPlacement>;
+    placement?: DividerPlacement;
     /**
      * Specifies the thickness of the border.
      */
@@ -43,7 +43,7 @@ export declare class Divider extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<string & {}>;
+    variant?: OverridableValue<never>;
     /**
      * TODO
      */
@@ -63,7 +63,7 @@ export interface DividerAttributesBase {
   /**
   * Specifies the amount of indentation.
   */
-  "inset"?: OverridableValue<DividerInset, DividerInsetOverrides>;
+  "inset"?: DividerInset;
   /**
   * Draws the divider in a `horizontal` or `vertical` orientation.
   */
@@ -71,7 +71,7 @@ export interface DividerAttributesBase {
   /**
   * Specifies the location of the default slot.
   */
-  "placement"?: OverridableValue<DividerPlacement, DividerPlacementOverrides>;
+  "placement"?: DividerPlacement;
   /**
   * Specifies the thickness of the border.
   */
@@ -83,7 +83,7 @@ export interface DividerAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<string & {}, DividerVariantOverrides>;
+  "variant"?: OverridableValue<never, DividerVariantOverrides>;
   /**
   * TODO
   */
@@ -105,7 +105,7 @@ export interface DividerPropertiesBase {
   /**
   * Specifies the amount of indentation.
   */
-  inset?: OverridableValue<DividerInset, DividerInsetOverrides>;
+  inset?: DividerInset;
   /**
   * Draws the divider in a `horizontal` or `vertical` orientation.
   */
@@ -113,7 +113,7 @@ export interface DividerPropertiesBase {
   /**
   * Specifies the location of the default slot.
   */
-  placement?: OverridableValue<DividerPlacement, DividerPlacementOverrides>;
+  placement?: DividerPlacement;
   /**
   * Specifies the thickness of the border.
   */
@@ -125,7 +125,7 @@ export interface DividerPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<string & {}, DividerVariantOverrides>;
+  variant?: OverridableValue<never, DividerVariantOverrides>;
   /**
   * TODO
   */
@@ -157,8 +157,6 @@ declare module "react" {
   }
 }
 export type DividerElement = globalThis.HTMLPlusDividerElement;
-export interface DividerInsetOverrides {}
-export interface DividerPlacementOverrides {}
 export interface DividerSizeOverrides {}
 export interface DividerStrokeOverrides {}
 export interface DividerVariantOverrides {}
