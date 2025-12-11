@@ -93,7 +93,8 @@ export declare class Counter extends PlusCore {
     render(): any;
 }
 
-export interface CounterAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CounterAttributesBase {
   /**
   * Easing function. Click [here](http://robertpenner.com/easing) for more details.
   */
@@ -143,13 +144,17 @@ export interface CounterAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<CounterProperties, "overrides">>;
 }
-export interface CounterEvents {
+export interface CounterAttributesDisables {}
+export type CounterAttributes = Filter<CounterAttributesBase, CounterAttributesDisables>;
+export interface CounterEventsBase {
   /**
   * Is Triggered when transition ended.
   */
   onPlusComplete?: (event: CustomEvent<void>) => void;
 }
-export interface CounterMethods {
+export interface CounterEventsDisables {}
+export type CounterEvents = Filter<CounterEventsBase, CounterEventsDisables>;
+export interface CounterMethodsBase {
   /**
   * Completes the transition.
   */
@@ -167,7 +172,9 @@ export interface CounterMethods {
   */
   stop();
 }
-export interface CounterProperties {
+export interface CounterMethodsDisables {}
+export type CounterMethods = Filter<CounterMethodsBase, CounterMethodsDisables>;
+export interface CounterPropertiesBase {
   /**
   * Easing function. Click [here](http://robertpenner.com/easing) for more details.
   */
@@ -217,6 +224,8 @@ export interface CounterProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<CounterProperties, "overrides">>;
 }
+export interface CounterPropertiesDisables {}
+export type CounterProperties = Filter<CounterPropertiesBase, CounterPropertiesDisables>;
 export interface CounterJSX extends CounterEvents, CounterProperties {}
 declare global {
   interface HTMLPlusCounterElement extends HTMLElement, CounterMethods, CounterProperties {}

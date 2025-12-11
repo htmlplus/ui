@@ -127,7 +127,8 @@ export declare class Drawer extends PlusCore {
     render(): any;
 }
 
-export interface DrawerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DrawerAttributesBase {
   /**
   * TODO
   */
@@ -189,7 +190,9 @@ export interface DrawerAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<DrawerProperties, "overrides">>;
 }
-export interface DrawerEvents {
+export interface DrawerAttributesDisables {}
+export type DrawerAttributes = Filter<DrawerAttributesBase, DrawerAttributesDisables>;
+export interface DrawerEventsBase {
   /**
   * When the drawer is going to hide
   */
@@ -207,7 +210,9 @@ export interface DrawerEvents {
   */
   onPlusOpened?: (event: CustomEvent<void>) => void;
 }
-export interface DrawerMethods {
+export interface DrawerEventsDisables {}
+export type DrawerEvents = Filter<DrawerEventsBase, DrawerEventsDisables>;
+export interface DrawerMethodsBase {
   /**
   * Hides the element.
   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
@@ -227,7 +232,9 @@ export interface DrawerMethods {
   */
   toggle(): Promise<boolean>;
 }
-export interface DrawerProperties {
+export interface DrawerMethodsDisables {}
+export type DrawerMethods = Filter<DrawerMethodsBase, DrawerMethodsDisables>;
+export interface DrawerPropertiesBase {
   /**
   * TODO
   */
@@ -289,6 +296,8 @@ export interface DrawerProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<DrawerProperties, "overrides">>;
 }
+export interface DrawerPropertiesDisables {}
+export type DrawerProperties = Filter<DrawerPropertiesBase, DrawerPropertiesDisables>;
 export interface DrawerJSX extends DrawerEvents, DrawerProperties {}
 declare global {
   interface HTMLPlusDrawerElement extends HTMLElement, DrawerMethods, DrawerProperties {}

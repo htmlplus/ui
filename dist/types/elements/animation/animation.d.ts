@@ -172,7 +172,8 @@ export declare class Animation extends PlusCore {
     render(): any;
 }
 
-export interface AnimationAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface AnimationAttributesBase {
   /**
   * Determines how values are combined between this animation and other,
   * separate animations that do not specify their own specific composite operation.
@@ -259,7 +260,9 @@ export interface AnimationAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<AnimationProperties, "overrides">>;
 }
-export interface AnimationEvents {
+export interface AnimationAttributesDisables {}
+export type AnimationAttributes = Filter<AnimationAttributesBase, AnimationAttributesDisables>;
+export interface AnimationEventsBase {
   /**
   * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
   * method is called or when the animation enters the "`idle`" play state from another state.
@@ -274,7 +277,9 @@ export interface AnimationEvents {
   */
   onPlusRemove?: (event: CustomEvent<void>) => void;
 }
-export interface AnimationMethods {
+export interface AnimationEventsDisables {}
+export type AnimationEvents = Filter<AnimationEventsBase, AnimationEventsDisables>;
+export interface AnimationMethodsBase {
   /**
   * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
   * caused by this animation and aborts its playback.
@@ -314,7 +319,9 @@ export interface AnimationMethods {
   */
   updatePlaybackRate(playbackRate: number);
 }
-export interface AnimationProperties {
+export interface AnimationMethodsDisables {}
+export type AnimationMethods = Filter<AnimationMethodsBase, AnimationMethodsDisables>;
+export interface AnimationPropertiesBase {
   /**
   * Determines how values are combined between this animation and other,
   * separate animations that do not specify their own specific composite operation.
@@ -401,6 +408,8 @@ export interface AnimationProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<AnimationProperties, "overrides">>;
 }
+export interface AnimationPropertiesDisables {}
+export type AnimationProperties = Filter<AnimationPropertiesBase, AnimationPropertiesDisables>;
 export interface AnimationJSX extends AnimationEvents, AnimationProperties {}
 declare global {
   interface HTMLPlusAnimationElement extends HTMLElement, AnimationMethods, AnimationProperties {}

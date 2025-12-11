@@ -71,7 +71,8 @@ export declare class AppProgressBar extends PlusCore {
     render(): any;
 }
 
-export interface AppProgressBarAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface AppProgressBarAttributesBase {
   /**
   * Specifies the color of the bar.
   */
@@ -101,8 +102,12 @@ export interface AppProgressBarAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<AppProgressBarProperties, "overrides">>;
 }
-export interface AppProgressBarEvents {}
-export interface AppProgressBarMethods {
+export interface AppProgressBarAttributesDisables {}
+export type AppProgressBarAttributes = Filter<AppProgressBarAttributesBase, AppProgressBarAttributesDisables>;
+export interface AppProgressBarEventsBase {}
+export interface AppProgressBarEventsDisables {}
+export type AppProgressBarEvents = Filter<AppProgressBarEventsBase, AppProgressBarEventsDisables>;
+export interface AppProgressBarMethodsBase {
   /**
   * Hides the progress bar. If true is passed, the bar briefly appears before hiding.
   */
@@ -124,7 +129,9 @@ export interface AppProgressBarMethods {
   */
   trickle(): void;
 }
-export interface AppProgressBarProperties {
+export interface AppProgressBarMethodsDisables {}
+export type AppProgressBarMethods = Filter<AppProgressBarMethodsBase, AppProgressBarMethodsDisables>;
+export interface AppProgressBarPropertiesBase {
   /**
   * Specifies the color of the bar.
   */
@@ -154,6 +161,8 @@ export interface AppProgressBarProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<AppProgressBarProperties, "overrides">>;
 }
+export interface AppProgressBarPropertiesDisables {}
+export type AppProgressBarProperties = Filter<AppProgressBarPropertiesBase, AppProgressBarPropertiesDisables>;
 export interface AppProgressBarJSX extends AppProgressBarEvents, AppProgressBarProperties {}
 declare global {
   interface HTMLPlusAppProgressBarElement extends HTMLElement, AppProgressBarMethods, AppProgressBarProperties {}

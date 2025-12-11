@@ -29,7 +29,8 @@ export declare class DrawerToggler extends PlusCore {
     render(): any;
 }
 
-export interface DrawerTogglerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DrawerTogglerAttributesBase {
   /**
   * This property helps you to attach which drawer this toggler controls.
   * It doesn't matter where the drawer toggler is.
@@ -46,9 +47,15 @@ export interface DrawerTogglerAttributes {
   */
   "variant"?: OverridableValue<string & {}, DrawerTogglerVariantOverrides>;
 }
-export interface DrawerTogglerEvents {}
-export interface DrawerTogglerMethods {}
-export interface DrawerTogglerProperties {
+export interface DrawerTogglerAttributesDisables {}
+export type DrawerTogglerAttributes = Filter<DrawerTogglerAttributesBase, DrawerTogglerAttributesDisables>;
+export interface DrawerTogglerEventsBase {}
+export interface DrawerTogglerEventsDisables {}
+export type DrawerTogglerEvents = Filter<DrawerTogglerEventsBase, DrawerTogglerEventsDisables>;
+export interface DrawerTogglerMethodsBase {}
+export interface DrawerTogglerMethodsDisables {}
+export type DrawerTogglerMethods = Filter<DrawerTogglerMethodsBase, DrawerTogglerMethodsDisables>;
+export interface DrawerTogglerPropertiesBase {
   /**
   * This property helps you to attach which drawer this toggler controls.
   * It doesn't matter where the drawer toggler is.
@@ -65,6 +72,8 @@ export interface DrawerTogglerProperties {
   */
   variant?: OverridableValue<string & {}, DrawerTogglerVariantOverrides>;
 }
+export interface DrawerTogglerPropertiesDisables {}
+export type DrawerTogglerProperties = Filter<DrawerTogglerPropertiesBase, DrawerTogglerPropertiesDisables>;
 export interface DrawerTogglerJSX extends DrawerTogglerEvents, DrawerTogglerProperties {}
 declare global {
   interface HTMLPlusDrawerTogglerElement extends HTMLElement, DrawerTogglerMethods, DrawerTogglerProperties {}

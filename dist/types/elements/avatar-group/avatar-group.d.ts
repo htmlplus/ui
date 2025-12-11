@@ -27,7 +27,8 @@ export declare class AvatarGroup extends PlusCore {
     render(): any;
 }
 
-export interface AvatarGroupAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface AvatarGroupAttributesBase {
   /**
   * Specifies whether to prominent the avatar when the mouse is entered or not.
   */
@@ -45,9 +46,15 @@ export interface AvatarGroupAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<AvatarGroupProperties, "overrides">>;
 }
-export interface AvatarGroupEvents {}
-export interface AvatarGroupMethods {}
-export interface AvatarGroupProperties {
+export interface AvatarGroupAttributesDisables {}
+export type AvatarGroupAttributes = Filter<AvatarGroupAttributesBase, AvatarGroupAttributesDisables>;
+export interface AvatarGroupEventsBase {}
+export interface AvatarGroupEventsDisables {}
+export type AvatarGroupEvents = Filter<AvatarGroupEventsBase, AvatarGroupEventsDisables>;
+export interface AvatarGroupMethodsBase {}
+export interface AvatarGroupMethodsDisables {}
+export type AvatarGroupMethods = Filter<AvatarGroupMethodsBase, AvatarGroupMethodsDisables>;
+export interface AvatarGroupPropertiesBase {
   /**
   * Specifies whether to prominent the avatar when the mouse is entered or not.
   */
@@ -65,6 +72,8 @@ export interface AvatarGroupProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<AvatarGroupProperties, "overrides">>;
 }
+export interface AvatarGroupPropertiesDisables {}
+export type AvatarGroupProperties = Filter<AvatarGroupPropertiesBase, AvatarGroupPropertiesDisables>;
 export interface AvatarGroupJSX extends AvatarGroupEvents, AvatarGroupProperties {}
 declare global {
   interface HTMLPlusAvatarGroupElement extends HTMLElement, AvatarGroupMethods, AvatarGroupProperties {}

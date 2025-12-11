@@ -73,7 +73,8 @@ export declare class Intersection extends PlusCore {
     render(): any;
 }
 
-export interface IntersectionAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface IntersectionAttributesBase {
   /**
   * Disables the element functionality.
   */
@@ -114,14 +115,20 @@ export interface IntersectionAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<IntersectionProperties, "overrides">>;
 }
-export interface IntersectionEvents {
+export interface IntersectionAttributesDisables {}
+export type IntersectionAttributes = Filter<IntersectionAttributesBase, IntersectionAttributesDisables>;
+export interface IntersectionEventsBase {
   /**
   * Fires When the browser detects that the element has been unveiled or obscured.
   */
   onPlusChange?: (event: CustomEvent<IntersectionObserverEntry>) => void;
 }
-export interface IntersectionMethods {}
-export interface IntersectionProperties {
+export interface IntersectionEventsDisables {}
+export type IntersectionEvents = Filter<IntersectionEventsBase, IntersectionEventsDisables>;
+export interface IntersectionMethodsBase {}
+export interface IntersectionMethodsDisables {}
+export type IntersectionMethods = Filter<IntersectionMethodsBase, IntersectionMethodsDisables>;
+export interface IntersectionPropertiesBase {
   /**
   * Disables the element functionality.
   */
@@ -162,6 +169,8 @@ export interface IntersectionProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<IntersectionProperties, "overrides">>;
 }
+export interface IntersectionPropertiesDisables {}
+export type IntersectionProperties = Filter<IntersectionPropertiesBase, IntersectionPropertiesDisables>;
 export interface IntersectionJSX extends IntersectionEvents, IntersectionProperties {}
 declare global {
   interface HTMLPlusIntersectionElement extends HTMLElement, IntersectionMethods, IntersectionProperties {}

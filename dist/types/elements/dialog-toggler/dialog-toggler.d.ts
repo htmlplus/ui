@@ -29,7 +29,8 @@ export declare class DialogToggler extends PlusCore {
     render(): any;
 }
 
-export interface DialogTogglerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DialogTogglerAttributesBase {
   /**
   * This property helps you to attach which dialog this toggler controls.
   * It doesn't matter where the dialog toggler is.
@@ -46,9 +47,15 @@ export interface DialogTogglerAttributes {
   */
   "variant"?: OverridableValue<string & {}, DialogTogglerVariantOverrides>;
 }
-export interface DialogTogglerEvents {}
-export interface DialogTogglerMethods {}
-export interface DialogTogglerProperties {
+export interface DialogTogglerAttributesDisables {}
+export type DialogTogglerAttributes = Filter<DialogTogglerAttributesBase, DialogTogglerAttributesDisables>;
+export interface DialogTogglerEventsBase {}
+export interface DialogTogglerEventsDisables {}
+export type DialogTogglerEvents = Filter<DialogTogglerEventsBase, DialogTogglerEventsDisables>;
+export interface DialogTogglerMethodsBase {}
+export interface DialogTogglerMethodsDisables {}
+export type DialogTogglerMethods = Filter<DialogTogglerMethodsBase, DialogTogglerMethodsDisables>;
+export interface DialogTogglerPropertiesBase {
   /**
   * This property helps you to attach which dialog this toggler controls.
   * It doesn't matter where the dialog toggler is.
@@ -65,6 +72,8 @@ export interface DialogTogglerProperties {
   */
   variant?: OverridableValue<string & {}, DialogTogglerVariantOverrides>;
 }
+export interface DialogTogglerPropertiesDisables {}
+export type DialogTogglerProperties = Filter<DialogTogglerPropertiesBase, DialogTogglerPropertiesDisables>;
 export interface DialogTogglerJSX extends DialogTogglerEvents, DialogTogglerProperties {}
 declare global {
   interface HTMLPlusDialogTogglerElement extends HTMLElement, DialogTogglerMethods, DialogTogglerProperties {}

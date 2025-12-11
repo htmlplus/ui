@@ -18,7 +18,8 @@ export declare class ProgressBarStack extends PlusCore {
     render(): any;
 }
 
-export interface ProgressBarStackAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface ProgressBarStackAttributesBase {
   /**
   * TODO
   */
@@ -28,9 +29,15 @@ export interface ProgressBarStackAttributes {
   */
   "variant"?: OverridableValue<string & {}, ProgressBarStackVariantOverrides>;
 }
-export interface ProgressBarStackEvents {}
-export interface ProgressBarStackMethods {}
-export interface ProgressBarStackProperties {
+export interface ProgressBarStackAttributesDisables {}
+export type ProgressBarStackAttributes = Filter<ProgressBarStackAttributesBase, ProgressBarStackAttributesDisables>;
+export interface ProgressBarStackEventsBase {}
+export interface ProgressBarStackEventsDisables {}
+export type ProgressBarStackEvents = Filter<ProgressBarStackEventsBase, ProgressBarStackEventsDisables>;
+export interface ProgressBarStackMethodsBase {}
+export interface ProgressBarStackMethodsDisables {}
+export type ProgressBarStackMethods = Filter<ProgressBarStackMethodsBase, ProgressBarStackMethodsDisables>;
+export interface ProgressBarStackPropertiesBase {
   /**
   * TODO
   */
@@ -40,6 +47,8 @@ export interface ProgressBarStackProperties {
   */
   variant?: OverridableValue<string & {}, ProgressBarStackVariantOverrides>;
 }
+export interface ProgressBarStackPropertiesDisables {}
+export type ProgressBarStackProperties = Filter<ProgressBarStackPropertiesBase, ProgressBarStackPropertiesDisables>;
 export interface ProgressBarStackJSX extends ProgressBarStackEvents, ProgressBarStackProperties {}
 declare global {
   interface HTMLPlusProgressBarStackElement extends HTMLElement, ProgressBarStackMethods, ProgressBarStackProperties {}

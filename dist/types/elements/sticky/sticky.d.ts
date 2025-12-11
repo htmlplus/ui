@@ -59,7 +59,8 @@ export declare class Sticky extends PlusCore {
     render(): any;
 }
 
-export interface StickyAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface StickyAttributesBase {
   /**
   * Specifies the space from top.
   */
@@ -81,14 +82,20 @@ export interface StickyAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<StickyProperties, "overrides">>;
 }
-export interface StickyEvents {
+export interface StickyAttributesDisables {}
+export type StickyAttributes = Filter<StickyAttributesBase, StickyAttributesDisables>;
+export interface StickyEventsBase {
   /**
   * Fires when the state is changed. To enable, set the `watcher` property to `true`.
   */
   onPlusChange?: (event: CustomEvent<StickyState>) => void;
 }
-export interface StickyMethods {}
-export interface StickyProperties {
+export interface StickyEventsDisables {}
+export type StickyEvents = Filter<StickyEventsBase, StickyEventsDisables>;
+export interface StickyMethodsBase {}
+export interface StickyMethodsDisables {}
+export type StickyMethods = Filter<StickyMethodsBase, StickyMethodsDisables>;
+export interface StickyPropertiesBase {
   /**
   * Specifies the space from top.
   */
@@ -110,6 +117,8 @@ export interface StickyProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<StickyProperties, "overrides">>;
 }
+export interface StickyPropertiesDisables {}
+export type StickyProperties = Filter<StickyPropertiesBase, StickyPropertiesDisables>;
 export interface StickyJSX extends StickyEvents, StickyProperties {}
 declare global {
   interface HTMLPlusStickyElement extends HTMLElement, StickyMethods, StickyProperties {}

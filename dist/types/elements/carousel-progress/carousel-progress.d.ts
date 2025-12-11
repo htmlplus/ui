@@ -20,7 +20,8 @@ export declare class CarouselProgress extends CarouselChild {
     render(): any;
 }
 
-export interface CarouselProgressAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CarouselProgressAttributesBase {
   /**
   * TODO
   */
@@ -30,9 +31,15 @@ export interface CarouselProgressAttributes {
   */
   "variant"?: OverridableValue<string & {}, CarouselProgressVariantOverrides>;
 }
-export interface CarouselProgressEvents {}
-export interface CarouselProgressMethods {}
-export interface CarouselProgressProperties {
+export interface CarouselProgressAttributesDisables {}
+export type CarouselProgressAttributes = Filter<CarouselProgressAttributesBase, CarouselProgressAttributesDisables>;
+export interface CarouselProgressEventsBase {}
+export interface CarouselProgressEventsDisables {}
+export type CarouselProgressEvents = Filter<CarouselProgressEventsBase, CarouselProgressEventsDisables>;
+export interface CarouselProgressMethodsBase {}
+export interface CarouselProgressMethodsDisables {}
+export type CarouselProgressMethods = Filter<CarouselProgressMethodsBase, CarouselProgressMethodsDisables>;
+export interface CarouselProgressPropertiesBase {
   /**
   * TODO
   */
@@ -42,6 +49,8 @@ export interface CarouselProgressProperties {
   */
   variant?: OverridableValue<string & {}, CarouselProgressVariantOverrides>;
 }
+export interface CarouselProgressPropertiesDisables {}
+export type CarouselProgressProperties = Filter<CarouselProgressPropertiesBase, CarouselProgressPropertiesDisables>;
 export interface CarouselProgressJSX extends CarouselProgressEvents, CarouselProgressProperties {}
 declare global {
   interface HTMLPlusCarouselProgressElement extends HTMLElement, CarouselProgressMethods, CarouselProgressProperties {}

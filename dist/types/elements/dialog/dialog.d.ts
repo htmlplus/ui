@@ -135,7 +135,8 @@ export declare class Dialog extends PlusCore {
     render(): any;
 }
 
-export interface DialogAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DialogAttributesBase {
   /**
   * TODO
   */
@@ -201,7 +202,9 @@ export interface DialogAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<DialogProperties, "overrides">>;
 }
-export interface DialogEvents {
+export interface DialogAttributesDisables {}
+export type DialogAttributes = Filter<DialogAttributesBase, DialogAttributesDisables>;
+export interface DialogEventsBase {
   /**
   * When the dialog is going to hide
   */
@@ -219,7 +222,9 @@ export interface DialogEvents {
   */
   onPlusOpened?: (event: CustomEvent<void>) => void;
 }
-export interface DialogMethods {
+export interface DialogEventsDisables {}
+export type DialogEvents = Filter<DialogEventsBase, DialogEventsDisables>;
+export interface DialogMethodsBase {
   /**
   * Hides the element.
   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
@@ -239,7 +244,9 @@ export interface DialogMethods {
   */
   toggle(): Promise<boolean>;
 }
-export interface DialogProperties {
+export interface DialogMethodsDisables {}
+export type DialogMethods = Filter<DialogMethodsBase, DialogMethodsDisables>;
+export interface DialogPropertiesBase {
   /**
   * TODO
   */
@@ -305,6 +312,8 @@ export interface DialogProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<DialogProperties, "overrides">>;
 }
+export interface DialogPropertiesDisables {}
+export type DialogProperties = Filter<DialogPropertiesBase, DialogPropertiesDisables>;
 export interface DialogJSX extends DialogEvents, DialogProperties {}
 declare global {
   interface HTMLPlusDialogElement extends HTMLElement, DialogMethods, DialogProperties {}

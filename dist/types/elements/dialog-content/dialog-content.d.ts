@@ -22,7 +22,8 @@ export declare class DialogContent extends PlusCore {
     render(): any;
 }
 
-export interface DialogContentAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DialogContentAttributesBase {
   /**
   * It makes the user able to scroll the content by adding a scroll beside it.
   */
@@ -36,9 +37,15 @@ export interface DialogContentAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<DialogContentProperties, "overrides">>;
 }
-export interface DialogContentEvents {}
-export interface DialogContentMethods {}
-export interface DialogContentProperties {
+export interface DialogContentAttributesDisables {}
+export type DialogContentAttributes = Filter<DialogContentAttributesBase, DialogContentAttributesDisables>;
+export interface DialogContentEventsBase {}
+export interface DialogContentEventsDisables {}
+export type DialogContentEvents = Filter<DialogContentEventsBase, DialogContentEventsDisables>;
+export interface DialogContentMethodsBase {}
+export interface DialogContentMethodsDisables {}
+export type DialogContentMethods = Filter<DialogContentMethodsBase, DialogContentMethodsDisables>;
+export interface DialogContentPropertiesBase {
   /**
   * It makes the user able to scroll the content by adding a scroll beside it.
   */
@@ -52,6 +59,8 @@ export interface DialogContentProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<DialogContentProperties, "overrides">>;
 }
+export interface DialogContentPropertiesDisables {}
+export type DialogContentProperties = Filter<DialogContentPropertiesBase, DialogContentPropertiesDisables>;
 export interface DialogContentJSX extends DialogContentEvents, DialogContentProperties {}
 declare global {
   interface HTMLPlusDialogContentElement extends HTMLElement, DialogContentMethods, DialogContentProperties {}

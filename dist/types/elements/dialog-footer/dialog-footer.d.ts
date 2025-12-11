@@ -18,7 +18,8 @@ export declare class DialogFooter extends PlusCore {
     render(): any;
 }
 
-export interface DialogFooterAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DialogFooterAttributesBase {
   /**
   * TODO
   */
@@ -28,9 +29,15 @@ export interface DialogFooterAttributes {
   */
   "variant"?: OverridableValue<string & {}, DialogFooterVariantOverrides>;
 }
-export interface DialogFooterEvents {}
-export interface DialogFooterMethods {}
-export interface DialogFooterProperties {
+export interface DialogFooterAttributesDisables {}
+export type DialogFooterAttributes = Filter<DialogFooterAttributesBase, DialogFooterAttributesDisables>;
+export interface DialogFooterEventsBase {}
+export interface DialogFooterEventsDisables {}
+export type DialogFooterEvents = Filter<DialogFooterEventsBase, DialogFooterEventsDisables>;
+export interface DialogFooterMethodsBase {}
+export interface DialogFooterMethodsDisables {}
+export type DialogFooterMethods = Filter<DialogFooterMethodsBase, DialogFooterMethodsDisables>;
+export interface DialogFooterPropertiesBase {
   /**
   * TODO
   */
@@ -40,6 +47,8 @@ export interface DialogFooterProperties {
   */
   variant?: OverridableValue<string & {}, DialogFooterVariantOverrides>;
 }
+export interface DialogFooterPropertiesDisables {}
+export type DialogFooterProperties = Filter<DialogFooterPropertiesBase, DialogFooterPropertiesDisables>;
 export interface DialogFooterJSX extends DialogFooterEvents, DialogFooterProperties {}
 declare global {
   interface HTMLPlusDialogFooterElement extends HTMLElement, DialogFooterMethods, DialogFooterProperties {}

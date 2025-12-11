@@ -22,7 +22,8 @@ export declare class Spacer extends PlusCore {
     };
 }
 
-export interface SpacerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface SpacerAttributesBase {
   /**
   * TODO
   */
@@ -36,9 +37,15 @@ export interface SpacerAttributes {
   */
   "variant"?: OverridableValue<string & {}, SpacerVariantOverrides>;
 }
-export interface SpacerEvents {}
-export interface SpacerMethods {}
-export interface SpacerProperties {
+export interface SpacerAttributesDisables {}
+export type SpacerAttributes = Filter<SpacerAttributesBase, SpacerAttributesDisables>;
+export interface SpacerEventsBase {}
+export interface SpacerEventsDisables {}
+export type SpacerEvents = Filter<SpacerEventsBase, SpacerEventsDisables>;
+export interface SpacerMethodsBase {}
+export interface SpacerMethodsDisables {}
+export type SpacerMethods = Filter<SpacerMethodsBase, SpacerMethodsDisables>;
+export interface SpacerPropertiesBase {
   /**
   * TODO
   */
@@ -52,6 +59,8 @@ export interface SpacerProperties {
   */
   variant?: OverridableValue<string & {}, SpacerVariantOverrides>;
 }
+export interface SpacerPropertiesDisables {}
+export type SpacerProperties = Filter<SpacerPropertiesBase, SpacerPropertiesDisables>;
 export interface SpacerJSX extends SpacerEvents, SpacerProperties {}
 declare global {
   interface HTMLPlusSpacerElement extends HTMLElement, SpacerMethods, SpacerProperties {}

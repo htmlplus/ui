@@ -48,7 +48,8 @@ export declare class ClickOutside extends PlusCore {
     render(): any;
 }
 
-export interface ClickOutsideAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface ClickOutsideAttributesBase {
   /**
   * A boolean value indicating that events of this type will be dispatched to the registered
   * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
@@ -71,14 +72,20 @@ export interface ClickOutsideAttributes {
   */
   "variant"?: OverridableValue<string & {}, ClickOutsideVariantOverrides>;
 }
-export interface ClickOutsideEvents {
+export interface ClickOutsideAttributesDisables {}
+export type ClickOutsideAttributes = Filter<ClickOutsideAttributesBase, ClickOutsideAttributesDisables>;
+export interface ClickOutsideEventsBase {
   /**
   * Fires when outside of the element is clicked.
   */
   onPlusClickOutside?: (event: CustomEvent<void>) => void;
 }
-export interface ClickOutsideMethods {}
-export interface ClickOutsideProperties {
+export interface ClickOutsideEventsDisables {}
+export type ClickOutsideEvents = Filter<ClickOutsideEventsBase, ClickOutsideEventsDisables>;
+export interface ClickOutsideMethodsBase {}
+export interface ClickOutsideMethodsDisables {}
+export type ClickOutsideMethods = Filter<ClickOutsideMethodsBase, ClickOutsideMethodsDisables>;
+export interface ClickOutsidePropertiesBase {
   /**
   * A boolean value indicating that events of this type will be dispatched to the registered
   * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
@@ -101,6 +108,8 @@ export interface ClickOutsideProperties {
   */
   variant?: OverridableValue<string & {}, ClickOutsideVariantOverrides>;
 }
+export interface ClickOutsidePropertiesDisables {}
+export type ClickOutsideProperties = Filter<ClickOutsidePropertiesBase, ClickOutsidePropertiesDisables>;
 export interface ClickOutsideJSX extends ClickOutsideEvents, ClickOutsideProperties {}
 declare global {
   interface HTMLPlusClickOutsideElement extends HTMLElement, ClickOutsideMethods, ClickOutsideProperties {}

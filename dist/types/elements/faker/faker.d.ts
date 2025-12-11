@@ -41,7 +41,8 @@ export declare class Faker extends PlusCore {
     render(): any;
 }
 
-export interface FakerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface FakerAttributesBase {
   /**
   * Specifies the [API](https://fakerjs.dev/api).
   */
@@ -67,9 +68,15 @@ export interface FakerAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<FakerProperties, "overrides">>;
 }
-export interface FakerEvents {}
-export interface FakerMethods {}
-export interface FakerProperties {
+export interface FakerAttributesDisables {}
+export type FakerAttributes = Filter<FakerAttributesBase, FakerAttributesDisables>;
+export interface FakerEventsBase {}
+export interface FakerEventsDisables {}
+export type FakerEvents = Filter<FakerEventsBase, FakerEventsDisables>;
+export interface FakerMethodsBase {}
+export interface FakerMethodsDisables {}
+export type FakerMethods = Filter<FakerMethodsBase, FakerMethodsDisables>;
+export interface FakerPropertiesBase {
   /**
   * Specifies the [API](https://fakerjs.dev/api).
   */
@@ -95,6 +102,8 @@ export interface FakerProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<FakerProperties, "overrides">>;
 }
+export interface FakerPropertiesDisables {}
+export type FakerProperties = Filter<FakerPropertiesBase, FakerPropertiesDisables>;
 export interface FakerJSX extends FakerEvents, FakerProperties {}
 declare global {
   interface HTMLPlusFakerElement extends HTMLElement, FakerMethods, FakerProperties {}

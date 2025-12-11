@@ -38,7 +38,8 @@ export declare class CarouselIndicators extends CarouselChild {
     render(): any;
 }
 
-export interface CarouselIndicatorsAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CarouselIndicatorsAttributesBase {
   /**
   * Controls what happens when you click an indicator.
   * If `true`, it smoothly moves to the slide,
@@ -62,9 +63,15 @@ export interface CarouselIndicatorsAttributes {
   */
   "variant"?: OverridableValue<string & {}, CarouselIndicatorsVariantOverrides>;
 }
-export interface CarouselIndicatorsEvents {}
-export interface CarouselIndicatorsMethods {}
-export interface CarouselIndicatorsProperties {
+export interface CarouselIndicatorsAttributesDisables {}
+export type CarouselIndicatorsAttributes = Filter<CarouselIndicatorsAttributesBase, CarouselIndicatorsAttributesDisables>;
+export interface CarouselIndicatorsEventsBase {}
+export interface CarouselIndicatorsEventsDisables {}
+export type CarouselIndicatorsEvents = Filter<CarouselIndicatorsEventsBase, CarouselIndicatorsEventsDisables>;
+export interface CarouselIndicatorsMethodsBase {}
+export interface CarouselIndicatorsMethodsDisables {}
+export type CarouselIndicatorsMethods = Filter<CarouselIndicatorsMethodsBase, CarouselIndicatorsMethodsDisables>;
+export interface CarouselIndicatorsPropertiesBase {
   /**
   * Controls what happens when you click an indicator.
   * If `true`, it smoothly moves to the slide,
@@ -88,6 +95,8 @@ export interface CarouselIndicatorsProperties {
   */
   variant?: OverridableValue<string & {}, CarouselIndicatorsVariantOverrides>;
 }
+export interface CarouselIndicatorsPropertiesDisables {}
+export type CarouselIndicatorsProperties = Filter<CarouselIndicatorsPropertiesBase, CarouselIndicatorsPropertiesDisables>;
 export interface CarouselIndicatorsJSX extends CarouselIndicatorsEvents, CarouselIndicatorsProperties {}
 declare global {
   interface HTMLPlusCarouselIndicatorsElement extends HTMLElement, CarouselIndicatorsMethods, CarouselIndicatorsProperties {}

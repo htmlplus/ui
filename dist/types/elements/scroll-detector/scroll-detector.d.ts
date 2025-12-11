@@ -45,7 +45,8 @@ export declare class ScrollDetector extends PlusCore {
     render(): any;
 }
 
-export interface ScrollDetectorAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface ScrollDetectorAttributesBase {
   /**
   * Disables the element functionality.
   */
@@ -67,14 +68,20 @@ export interface ScrollDetectorAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<ScrollDetectorProperties, "overrides">>;
 }
-export interface ScrollDetectorEvents {
+export interface ScrollDetectorAttributesDisables {}
+export type ScrollDetectorAttributes = Filter<ScrollDetectorAttributesBase, ScrollDetectorAttributesDisables>;
+export interface ScrollDetectorEventsBase {
   /**
   * Fires when the scroll starts changing.
   */
   onPlusChange?: (event: CustomEvent<ScrollDetectorChangeEvent>) => void;
 }
-export interface ScrollDetectorMethods {}
-export interface ScrollDetectorProperties {
+export interface ScrollDetectorEventsDisables {}
+export type ScrollDetectorEvents = Filter<ScrollDetectorEventsBase, ScrollDetectorEventsDisables>;
+export interface ScrollDetectorMethodsBase {}
+export interface ScrollDetectorMethodsDisables {}
+export type ScrollDetectorMethods = Filter<ScrollDetectorMethodsBase, ScrollDetectorMethodsDisables>;
+export interface ScrollDetectorPropertiesBase {
   /**
   * Disables the element functionality.
   */
@@ -96,6 +103,8 @@ export interface ScrollDetectorProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<ScrollDetectorProperties, "overrides">>;
 }
+export interface ScrollDetectorPropertiesDisables {}
+export type ScrollDetectorProperties = Filter<ScrollDetectorPropertiesBase, ScrollDetectorPropertiesDisables>;
 export interface ScrollDetectorJSX extends ScrollDetectorEvents, ScrollDetectorProperties {}
 declare global {
   interface HTMLPlusScrollDetectorElement extends HTMLElement, ScrollDetectorMethods, ScrollDetectorProperties {}

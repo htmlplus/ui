@@ -64,7 +64,8 @@ export declare class Icon extends PlusCore {
     render(): any;
 }
 
-export interface IconAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface IconAttributesBase {
   /**
   * Specifies the color.
   */
@@ -102,9 +103,15 @@ export interface IconAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<IconProperties, "overrides">>;
 }
-export interface IconEvents {}
-export interface IconMethods {}
-export interface IconProperties {
+export interface IconAttributesDisables {}
+export type IconAttributes = Filter<IconAttributesBase, IconAttributesDisables>;
+export interface IconEventsBase {}
+export interface IconEventsDisables {}
+export type IconEvents = Filter<IconEventsBase, IconEventsDisables>;
+export interface IconMethodsBase {}
+export interface IconMethodsDisables {}
+export type IconMethods = Filter<IconMethodsBase, IconMethodsDisables>;
+export interface IconPropertiesBase {
   /**
   * Specifies the color.
   */
@@ -142,6 +149,8 @@ export interface IconProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<IconProperties, "overrides">>;
 }
+export interface IconPropertiesDisables {}
+export type IconProperties = Filter<IconPropertiesBase, IconPropertiesDisables>;
 export interface IconJSX extends IconEvents, IconProperties {}
 declare global {
   interface HTMLPlusIconElement extends HTMLElement, IconMethods, IconProperties {}

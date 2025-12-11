@@ -42,7 +42,8 @@ export declare class RelativeTime extends PlusCore {
     render(): any;
 }
 
-export interface RelativeTimeAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface RelativeTimeAttributesBase {
   /**
   * The format style for the relative time.
   */
@@ -68,9 +69,15 @@ export interface RelativeTimeAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<RelativeTimeProperties, "overrides">>;
 }
-export interface RelativeTimeEvents {}
-export interface RelativeTimeMethods {}
-export interface RelativeTimeProperties {
+export interface RelativeTimeAttributesDisables {}
+export type RelativeTimeAttributes = Filter<RelativeTimeAttributesBase, RelativeTimeAttributesDisables>;
+export interface RelativeTimeEventsBase {}
+export interface RelativeTimeEventsDisables {}
+export type RelativeTimeEvents = Filter<RelativeTimeEventsBase, RelativeTimeEventsDisables>;
+export interface RelativeTimeMethodsBase {}
+export interface RelativeTimeMethodsDisables {}
+export type RelativeTimeMethods = Filter<RelativeTimeMethodsBase, RelativeTimeMethodsDisables>;
+export interface RelativeTimePropertiesBase {
   /**
   * The format style for the relative time.
   */
@@ -96,6 +103,8 @@ export interface RelativeTimeProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<RelativeTimeProperties, "overrides">>;
 }
+export interface RelativeTimePropertiesDisables {}
+export type RelativeTimeProperties = Filter<RelativeTimePropertiesBase, RelativeTimePropertiesDisables>;
 export interface RelativeTimeJSX extends RelativeTimeEvents, RelativeTimeProperties {}
 declare global {
   interface HTMLPlusRelativeTimeElement extends HTMLElement, RelativeTimeMethods, RelativeTimeProperties {}

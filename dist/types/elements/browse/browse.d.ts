@@ -84,7 +84,8 @@ export declare class Browse extends PlusCore {
     render(): any;
 }
 
-export interface BrowseAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface BrowseAttributesBase {
   /**
   * One or more
   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
@@ -128,7 +129,9 @@ export interface BrowseAttributes {
   */
   "variant"?: OverridableValue<string & {}, BrowseVariantOverrides>;
 }
-export interface BrowseEvents {
+export interface BrowseAttributesDisables {}
+export type BrowseAttributes = Filter<BrowseAttributesBase, BrowseAttributesDisables>;
+export interface BrowseEventsBase {
   /**
   * Fires when file(s) are selected.
   */
@@ -142,13 +145,17 @@ export interface BrowseEvents {
   */
   onPlusSuccess?: (event: CustomEvent<BrowseEvent>) => void;
 }
-export interface BrowseMethods {
+export interface BrowseEventsDisables {}
+export type BrowseEvents = Filter<BrowseEventsBase, BrowseEventsDisables>;
+export interface BrowseMethodsBase {
   /**
   * Opens the browse dialog.
   */
   browse(): void;
 }
-export interface BrowseProperties {
+export interface BrowseMethodsDisables {}
+export type BrowseMethods = Filter<BrowseMethodsBase, BrowseMethodsDisables>;
+export interface BrowsePropertiesBase {
   /**
   * One or more
   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
@@ -192,6 +199,8 @@ export interface BrowseProperties {
   */
   variant?: OverridableValue<string & {}, BrowseVariantOverrides>;
 }
+export interface BrowsePropertiesDisables {}
+export type BrowseProperties = Filter<BrowsePropertiesBase, BrowsePropertiesDisables>;
 export interface BrowseJSX extends BrowseEvents, BrowseProperties {}
 declare global {
   interface HTMLPlusBrowseElement extends HTMLElement, BrowseMethods, BrowseProperties {}

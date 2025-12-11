@@ -56,7 +56,8 @@ export declare class ProgressBar extends PlusCore {
     render(): any;
 }
 
-export interface ProgressBarAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface ProgressBarAttributesBase {
   /**
   * Specifies the secondary progress of the bar by a number between `min` and `max`.
   */
@@ -94,9 +95,15 @@ export interface ProgressBarAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<ProgressBarProperties, "overrides">>;
 }
-export interface ProgressBarEvents {}
-export interface ProgressBarMethods {}
-export interface ProgressBarProperties {
+export interface ProgressBarAttributesDisables {}
+export type ProgressBarAttributes = Filter<ProgressBarAttributesBase, ProgressBarAttributesDisables>;
+export interface ProgressBarEventsBase {}
+export interface ProgressBarEventsDisables {}
+export type ProgressBarEvents = Filter<ProgressBarEventsBase, ProgressBarEventsDisables>;
+export interface ProgressBarMethodsBase {}
+export interface ProgressBarMethodsDisables {}
+export type ProgressBarMethods = Filter<ProgressBarMethodsBase, ProgressBarMethodsDisables>;
+export interface ProgressBarPropertiesBase {
   /**
   * Specifies the secondary progress of the bar by a number between `min` and `max`.
   */
@@ -134,6 +141,8 @@ export interface ProgressBarProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<ProgressBarProperties, "overrides">>;
 }
+export interface ProgressBarPropertiesDisables {}
+export type ProgressBarProperties = Filter<ProgressBarPropertiesBase, ProgressBarPropertiesDisables>;
 export interface ProgressBarJSX extends ProgressBarEvents, ProgressBarProperties {}
 declare global {
   interface HTMLPlusProgressBarElement extends HTMLElement, ProgressBarMethods, ProgressBarProperties {}

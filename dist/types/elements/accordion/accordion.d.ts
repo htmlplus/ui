@@ -100,7 +100,8 @@ export declare class Accordion extends PlusCore {
     render(): any;
 }
 
-export interface AccordionAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface AccordionAttributesBase {
   /**
   * Disables the element functionality.
   */
@@ -122,7 +123,9 @@ export interface AccordionAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<AccordionProperties, "overrides">>;
 }
-export interface AccordionEvents {
+export interface AccordionAttributesDisables {}
+export type AccordionAttributes = Filter<AccordionAttributesBase, AccordionAttributesDisables>;
+export interface AccordionEventsBase {
   /**
   * Fires when the element is about to collapse.
   * This event can be [canceled](TODO).
@@ -142,7 +145,9 @@ export interface AccordionEvents {
   */
   onPlusExpanded?: (event: CustomEvent<void>) => void;
 }
-export interface AccordionMethods {
+export interface AccordionEventsDisables {}
+export type AccordionEvents = Filter<AccordionEventsBase, AccordionEventsDisables>;
+export interface AccordionMethodsBase {
   /**
   * Collapses the element.
   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
@@ -162,7 +167,9 @@ export interface AccordionMethods {
   */
   toggle(): Promise<boolean>;
 }
-export interface AccordionProperties {
+export interface AccordionMethodsDisables {}
+export type AccordionMethods = Filter<AccordionMethodsBase, AccordionMethodsDisables>;
+export interface AccordionPropertiesBase {
   /**
   * Disables the element functionality.
   */
@@ -184,6 +191,8 @@ export interface AccordionProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<AccordionProperties, "overrides">>;
 }
+export interface AccordionPropertiesDisables {}
+export type AccordionProperties = Filter<AccordionPropertiesBase, AccordionPropertiesDisables>;
 export interface AccordionJSX extends AccordionEvents, AccordionProperties {}
 declare global {
   interface HTMLPlusAccordionElement extends HTMLElement, AccordionMethods, AccordionProperties {}

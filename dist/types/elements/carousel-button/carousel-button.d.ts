@@ -31,7 +31,8 @@ export declare class CarouselButton extends CarouselChild {
     render(): any;
 }
 
-export interface CarouselButtonAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CarouselButtonAttributesBase {
   /**
   * Determines whether the carousel instantly jumps to the target slide or transitions smoothly.
   */
@@ -49,9 +50,15 @@ export interface CarouselButtonAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<CarouselButtonProperties, "overrides">>;
 }
-export interface CarouselButtonEvents {}
-export interface CarouselButtonMethods {}
-export interface CarouselButtonProperties {
+export interface CarouselButtonAttributesDisables {}
+export type CarouselButtonAttributes = Filter<CarouselButtonAttributesBase, CarouselButtonAttributesDisables>;
+export interface CarouselButtonEventsBase {}
+export interface CarouselButtonEventsDisables {}
+export type CarouselButtonEvents = Filter<CarouselButtonEventsBase, CarouselButtonEventsDisables>;
+export interface CarouselButtonMethodsBase {}
+export interface CarouselButtonMethodsDisables {}
+export type CarouselButtonMethods = Filter<CarouselButtonMethodsBase, CarouselButtonMethodsDisables>;
+export interface CarouselButtonPropertiesBase {
   /**
   * Determines whether the carousel instantly jumps to the target slide or transitions smoothly.
   */
@@ -69,6 +76,8 @@ export interface CarouselButtonProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<CarouselButtonProperties, "overrides">>;
 }
+export interface CarouselButtonPropertiesDisables {}
+export type CarouselButtonProperties = Filter<CarouselButtonPropertiesBase, CarouselButtonPropertiesDisables>;
 export interface CarouselButtonJSX extends CarouselButtonEvents, CarouselButtonProperties {}
 declare global {
   interface HTMLPlusCarouselButtonElement extends HTMLElement, CarouselButtonMethods, CarouselButtonProperties {}

@@ -20,7 +20,8 @@ export declare class CarouselSlides extends CarouselChild {
     render(): any;
 }
 
-export interface CarouselSlidesAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CarouselSlidesAttributesBase {
   /**
   * TODO
   */
@@ -30,9 +31,15 @@ export interface CarouselSlidesAttributes {
   */
   "variant"?: OverridableValue<string & {}, CarouselSlidesVariantOverrides>;
 }
-export interface CarouselSlidesEvents {}
-export interface CarouselSlidesMethods {}
-export interface CarouselSlidesProperties {
+export interface CarouselSlidesAttributesDisables {}
+export type CarouselSlidesAttributes = Filter<CarouselSlidesAttributesBase, CarouselSlidesAttributesDisables>;
+export interface CarouselSlidesEventsBase {}
+export interface CarouselSlidesEventsDisables {}
+export type CarouselSlidesEvents = Filter<CarouselSlidesEventsBase, CarouselSlidesEventsDisables>;
+export interface CarouselSlidesMethodsBase {}
+export interface CarouselSlidesMethodsDisables {}
+export type CarouselSlidesMethods = Filter<CarouselSlidesMethodsBase, CarouselSlidesMethodsDisables>;
+export interface CarouselSlidesPropertiesBase {
   /**
   * TODO
   */
@@ -42,6 +49,8 @@ export interface CarouselSlidesProperties {
   */
   variant?: OverridableValue<string & {}, CarouselSlidesVariantOverrides>;
 }
+export interface CarouselSlidesPropertiesDisables {}
+export type CarouselSlidesProperties = Filter<CarouselSlidesPropertiesBase, CarouselSlidesPropertiesDisables>;
 export interface CarouselSlidesJSX extends CarouselSlidesEvents, CarouselSlidesProperties {}
 declare global {
   interface HTMLPlusCarouselSlidesElement extends HTMLElement, CarouselSlidesMethods, CarouselSlidesProperties {}

@@ -26,7 +26,8 @@ export declare class Center extends PlusCore {
     render(): any;
 }
 
-export interface CenterAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CenterAttributesBase {
   /**
   * Converts the `display` CSS property from `flex` to `inline-flex`.
   */
@@ -40,9 +41,15 @@ export interface CenterAttributes {
   */
   "variant"?: OverridableValue<string & {}, CenterVariantOverrides>;
 }
-export interface CenterEvents {}
-export interface CenterMethods {}
-export interface CenterProperties {
+export interface CenterAttributesDisables {}
+export type CenterAttributes = Filter<CenterAttributesBase, CenterAttributesDisables>;
+export interface CenterEventsBase {}
+export interface CenterEventsDisables {}
+export type CenterEvents = Filter<CenterEventsBase, CenterEventsDisables>;
+export interface CenterMethodsBase {}
+export interface CenterMethodsDisables {}
+export type CenterMethods = Filter<CenterMethodsBase, CenterMethodsDisables>;
+export interface CenterPropertiesBase {
   /**
   * Converts the `display` CSS property from `flex` to `inline-flex`.
   */
@@ -56,6 +63,8 @@ export interface CenterProperties {
   */
   variant?: OverridableValue<string & {}, CenterVariantOverrides>;
 }
+export interface CenterPropertiesDisables {}
+export type CenterProperties = Filter<CenterPropertiesBase, CenterPropertiesDisables>;
 export interface CenterJSX extends CenterEvents, CenterProperties {}
 declare global {
   interface HTMLPlusCenterElement extends HTMLElement, CenterMethods, CenterProperties {}

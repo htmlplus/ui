@@ -38,7 +38,8 @@ export declare class Tabs extends PlusCore {
     render(): any;
 }
 
-export interface TabsAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface TabsAttributesBase {
   /**
   * Provides your own value.
   */
@@ -56,14 +57,20 @@ export interface TabsAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<TabsProperties, "overrides">>;
 }
-export interface TabsEvents {
+export interface TabsAttributesDisables {}
+export type TabsAttributes = Filter<TabsAttributesBase, TabsAttributesDisables>;
+export interface TabsEventsBase {
   /**
   * Fired when the value changes.
   */
   onPlusChange?: (event: CustomEvent<TabsValue>) => void;
 }
-export interface TabsMethods {}
-export interface TabsProperties {
+export interface TabsEventsDisables {}
+export type TabsEvents = Filter<TabsEventsBase, TabsEventsDisables>;
+export interface TabsMethodsBase {}
+export interface TabsMethodsDisables {}
+export type TabsMethods = Filter<TabsMethodsBase, TabsMethodsDisables>;
+export interface TabsPropertiesBase {
   /**
   * Provides your own value.
   */
@@ -81,6 +88,8 @@ export interface TabsProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<TabsProperties, "overrides">>;
 }
+export interface TabsPropertiesDisables {}
+export type TabsProperties = Filter<TabsPropertiesBase, TabsPropertiesDisables>;
 export interface TabsJSX extends TabsEvents, TabsProperties {}
 declare global {
   interface HTMLPlusTabsElement extends HTMLElement, TabsMethods, TabsProperties {}

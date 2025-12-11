@@ -35,7 +35,8 @@ export declare class Switch extends PlusCore {
     render(): any;
 }
 
-export interface SwitchAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface SwitchAttributesBase {
   /**
   * Puts the switch in checked state.
   * @model
@@ -54,15 +55,21 @@ export interface SwitchAttributes {
   */
   "variant"?: OverridableValue<string & {}, SwitchVariantOverrides>;
 }
-export interface SwitchEvents {
+export interface SwitchAttributesDisables {}
+export type SwitchAttributes = Filter<SwitchAttributesBase, SwitchAttributesDisables>;
+export interface SwitchEventsBase {
   /**
   * When the switch state is changed this event triggers.
   * @model
   */
   onPlusChange?: (event: CustomEvent<void>) => void;
 }
-export interface SwitchMethods {}
-export interface SwitchProperties {
+export interface SwitchEventsDisables {}
+export type SwitchEvents = Filter<SwitchEventsBase, SwitchEventsDisables>;
+export interface SwitchMethodsBase {}
+export interface SwitchMethodsDisables {}
+export type SwitchMethods = Filter<SwitchMethodsBase, SwitchMethodsDisables>;
+export interface SwitchPropertiesBase {
   /**
   * Puts the switch in checked state.
   * @model
@@ -81,6 +88,8 @@ export interface SwitchProperties {
   */
   variant?: OverridableValue<string & {}, SwitchVariantOverrides>;
 }
+export interface SwitchPropertiesDisables {}
+export type SwitchProperties = Filter<SwitchPropertiesBase, SwitchPropertiesDisables>;
 export interface SwitchJSX extends SwitchEvents, SwitchProperties {}
 declare global {
   interface HTMLPlusSwitchElement extends HTMLElement, SwitchMethods, SwitchProperties {}

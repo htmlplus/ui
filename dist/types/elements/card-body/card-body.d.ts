@@ -19,7 +19,8 @@ export declare class CardBody extends PlusCore {
     render(): any;
 }
 
-export interface CardBodyAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CardBodyAttributesBase {
   /**
   * TODO
   */
@@ -29,9 +30,15 @@ export interface CardBodyAttributes {
   */
   "variant"?: OverridableValue<string & {}, CardBodyVariantOverrides>;
 }
-export interface CardBodyEvents {}
-export interface CardBodyMethods {}
-export interface CardBodyProperties {
+export interface CardBodyAttributesDisables {}
+export type CardBodyAttributes = Filter<CardBodyAttributesBase, CardBodyAttributesDisables>;
+export interface CardBodyEventsBase {}
+export interface CardBodyEventsDisables {}
+export type CardBodyEvents = Filter<CardBodyEventsBase, CardBodyEventsDisables>;
+export interface CardBodyMethodsBase {}
+export interface CardBodyMethodsDisables {}
+export type CardBodyMethods = Filter<CardBodyMethodsBase, CardBodyMethodsDisables>;
+export interface CardBodyPropertiesBase {
   /**
   * TODO
   */
@@ -41,6 +48,8 @@ export interface CardBodyProperties {
   */
   variant?: OverridableValue<string & {}, CardBodyVariantOverrides>;
 }
+export interface CardBodyPropertiesDisables {}
+export type CardBodyProperties = Filter<CardBodyPropertiesBase, CardBodyPropertiesDisables>;
 export interface CardBodyJSX extends CardBodyEvents, CardBodyProperties {}
 declare global {
   interface HTMLPlusCardBodyElement extends HTMLElement, CardBodyMethods, CardBodyProperties {}

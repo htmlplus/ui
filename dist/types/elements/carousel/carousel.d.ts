@@ -298,7 +298,8 @@ export declare class Carousel extends PlusCore {
     render(): any;
 }
 
-export interface CarouselAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CarouselAttributesBase {
   /**
   * Align the slides relative to the carousel viewport.
   */
@@ -425,7 +426,9 @@ export interface CarouselAttributes {
    */
   "overrides"?: OverridesConfig<Breakpoint, Omit<CarouselProperties, "overrides">>;
 }
-export interface CarouselEvents {
+export interface CarouselAttributesDisables {}
+export type CarouselAttributes = Filter<CarouselAttributesBase, CarouselAttributesDisables>;
+export interface CarouselEventsBase {
   /**
   * Runs when the carousel has been destroyed.
   * This only fires once and will be the last event the carousel fires.
@@ -485,7 +488,9 @@ export interface CarouselEvents {
   */
   onPlusSlidesInView?: (event: CustomEvent<void>) => void;
 }
-export interface CarouselMethods {
+export interface CarouselEventsDisables {}
+export type CarouselEvents = Filter<CarouselEventsBase, CarouselEventsDisables>;
+export interface CarouselMethodsBase {
   /**
   * Check the possibility to scroll to a next snap point.
   * If **loop** property is enabled and the container holds any slides,
@@ -561,7 +566,9 @@ export interface CarouselMethods {
   */
   slidesNotInView(): number[];
 }
-export interface CarouselProperties {
+export interface CarouselMethodsDisables {}
+export type CarouselMethods = Filter<CarouselMethodsBase, CarouselMethodsDisables>;
+export interface CarouselPropertiesBase {
   /**
   * Align the slides relative to the carousel viewport.
   */
@@ -692,6 +699,8 @@ export interface CarouselProperties {
    */
   overrides?: OverridesConfig<Breakpoint, Omit<CarouselProperties, "overrides">>;
 }
+export interface CarouselPropertiesDisables {}
+export type CarouselProperties = Filter<CarouselPropertiesBase, CarouselPropertiesDisables>;
 export interface CarouselJSX extends CarouselEvents, CarouselProperties {}
 declare global {
   interface HTMLPlusCarouselElement extends HTMLElement, CarouselMethods, CarouselProperties {}

@@ -61,7 +61,8 @@ export declare class Breadcrumb extends PlusCore {
     render(): any;
 }
 
-export interface BreadcrumbAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface BreadcrumbAttributesBase {
   /**
   * TODO.
   */
@@ -92,9 +93,15 @@ export interface BreadcrumbAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<BreadcrumbProperties, "overrides">>;
 }
-export interface BreadcrumbEvents {}
-export interface BreadcrumbMethods {}
-export interface BreadcrumbProperties {
+export interface BreadcrumbAttributesDisables {}
+export type BreadcrumbAttributes = Filter<BreadcrumbAttributesBase, BreadcrumbAttributesDisables>;
+export interface BreadcrumbEventsBase {}
+export interface BreadcrumbEventsDisables {}
+export type BreadcrumbEvents = Filter<BreadcrumbEventsBase, BreadcrumbEventsDisables>;
+export interface BreadcrumbMethodsBase {}
+export interface BreadcrumbMethodsDisables {}
+export type BreadcrumbMethods = Filter<BreadcrumbMethodsBase, BreadcrumbMethodsDisables>;
+export interface BreadcrumbPropertiesBase {
   /**
   * TODO.
   */
@@ -125,6 +132,8 @@ export interface BreadcrumbProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<BreadcrumbProperties, "overrides">>;
 }
+export interface BreadcrumbPropertiesDisables {}
+export type BreadcrumbProperties = Filter<BreadcrumbPropertiesBase, BreadcrumbPropertiesDisables>;
 export interface BreadcrumbJSX extends BreadcrumbEvents, BreadcrumbProperties {}
 declare global {
   interface HTMLPlusBreadcrumbElement extends HTMLElement, BreadcrumbMethods, BreadcrumbProperties {}

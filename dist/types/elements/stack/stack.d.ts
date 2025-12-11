@@ -53,7 +53,8 @@ export declare class Stack extends PlusCore {
     render(): any;
 }
 
-export interface StackAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface StackAttributesBase {
   /**
   * The gap between items.
   */
@@ -87,9 +88,15 @@ export interface StackAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<StackProperties, "overrides">>;
 }
-export interface StackEvents {}
-export interface StackMethods {}
-export interface StackProperties {
+export interface StackAttributesDisables {}
+export type StackAttributes = Filter<StackAttributesBase, StackAttributesDisables>;
+export interface StackEventsBase {}
+export interface StackEventsDisables {}
+export type StackEvents = Filter<StackEventsBase, StackEventsDisables>;
+export interface StackMethodsBase {}
+export interface StackMethodsDisables {}
+export type StackMethods = Filter<StackMethodsBase, StackMethodsDisables>;
+export interface StackPropertiesBase {
   /**
   * The gap between items.
   */
@@ -123,6 +130,8 @@ export interface StackProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<StackProperties, "overrides">>;
 }
+export interface StackPropertiesDisables {}
+export type StackProperties = Filter<StackPropertiesBase, StackPropertiesDisables>;
 export interface StackJSX extends StackEvents, StackProperties {}
 declare global {
   interface HTMLPlusStackElement extends HTMLElement, StackMethods, StackProperties {}

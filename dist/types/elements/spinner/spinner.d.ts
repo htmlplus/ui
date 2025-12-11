@@ -37,7 +37,8 @@ export declare class Spinner extends PlusCore {
     render(): any;
 }
 
-export interface SpinnerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface SpinnerAttributesBase {
   /**
   * Specifies the color.
   */
@@ -59,9 +60,15 @@ export interface SpinnerAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<SpinnerProperties, "overrides">>;
 }
-export interface SpinnerEvents {}
-export interface SpinnerMethods {}
-export interface SpinnerProperties {
+export interface SpinnerAttributesDisables {}
+export type SpinnerAttributes = Filter<SpinnerAttributesBase, SpinnerAttributesDisables>;
+export interface SpinnerEventsBase {}
+export interface SpinnerEventsDisables {}
+export type SpinnerEvents = Filter<SpinnerEventsBase, SpinnerEventsDisables>;
+export interface SpinnerMethodsBase {}
+export interface SpinnerMethodsDisables {}
+export type SpinnerMethods = Filter<SpinnerMethodsBase, SpinnerMethodsDisables>;
+export interface SpinnerPropertiesBase {
   /**
   * Specifies the color.
   */
@@ -83,6 +90,8 @@ export interface SpinnerProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<SpinnerProperties, "overrides">>;
 }
+export interface SpinnerPropertiesDisables {}
+export type SpinnerProperties = Filter<SpinnerPropertiesBase, SpinnerPropertiesDisables>;
 export interface SpinnerJSX extends SpinnerEvents, SpinnerProperties {}
 declare global {
   interface HTMLPlusSpinnerElement extends HTMLElement, SpinnerMethods, SpinnerProperties {}

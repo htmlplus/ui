@@ -218,7 +218,8 @@ export declare class Cropper extends PlusCore {
     render(): any;
 }
 
-export interface CropperAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CropperAttributesBase {
   /**
   * A number between 0 and 1. Specifies the automatic cropping area size.
   */
@@ -296,7 +297,9 @@ export interface CropperAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<CropperProperties, "overrides">>;
 }
-export interface CropperEvents {
+export interface CropperAttributesDisables {}
+export type CropperAttributes = Filter<CropperAttributesBase, CropperAttributesDisables>;
+export interface CropperEventsBase {
   /**
   * Fires when the `image` or the `viewport` is changed.
   */
@@ -322,7 +325,9 @@ export interface CropperEvents {
   */
   onPlusZoom?: (event: CustomEvent<CropperZoomEvent>) => void;
 }
-export interface CropperMethods {
+export interface CropperEventsDisables {}
+export type CropperEvents = Filter<CropperEventsBase, CropperEventsDisables>;
+export interface CropperMethodsBase {
   /**
   * Flips horizontally.
   */
@@ -368,7 +373,9 @@ export interface CropperMethods {
   */
   zoomTo(ratio: number): void;
 }
-export interface CropperProperties {
+export interface CropperMethodsDisables {}
+export type CropperMethods = Filter<CropperMethodsBase, CropperMethodsDisables>;
+export interface CropperPropertiesBase {
   /**
   * A number between 0 and 1. Specifies the automatic cropping area size.
   */
@@ -446,6 +453,8 @@ export interface CropperProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<CropperProperties, "overrides">>;
 }
+export interface CropperPropertiesDisables {}
+export type CropperProperties = Filter<CropperPropertiesBase, CropperPropertiesDisables>;
 export interface CropperJSX extends CropperEvents, CropperProperties {}
 declare global {
   interface HTMLPlusCropperElement extends HTMLElement, CropperMethods, CropperProperties {}

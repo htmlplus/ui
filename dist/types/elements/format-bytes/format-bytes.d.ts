@@ -57,7 +57,8 @@ export declare class FormatBytes extends PlusCore {
     render(): string;
 }
 
-export interface FormatBytesAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface FormatBytesAttributesBase {
   /**
   * Specifies the unit will be shown as an abbreviation or not.
   */
@@ -102,9 +103,15 @@ export interface FormatBytesAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<FormatBytesProperties, "overrides">>;
 }
-export interface FormatBytesEvents {}
-export interface FormatBytesMethods {}
-export interface FormatBytesProperties {
+export interface FormatBytesAttributesDisables {}
+export type FormatBytesAttributes = Filter<FormatBytesAttributesBase, FormatBytesAttributesDisables>;
+export interface FormatBytesEventsBase {}
+export interface FormatBytesEventsDisables {}
+export type FormatBytesEvents = Filter<FormatBytesEventsBase, FormatBytesEventsDisables>;
+export interface FormatBytesMethodsBase {}
+export interface FormatBytesMethodsDisables {}
+export type FormatBytesMethods = Filter<FormatBytesMethodsBase, FormatBytesMethodsDisables>;
+export interface FormatBytesPropertiesBase {
   /**
   * Specifies the unit will be shown as an abbreviation or not.
   */
@@ -149,6 +156,8 @@ export interface FormatBytesProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<FormatBytesProperties, "overrides">>;
 }
+export interface FormatBytesPropertiesDisables {}
+export type FormatBytesProperties = Filter<FormatBytesPropertiesBase, FormatBytesPropertiesDisables>;
 export interface FormatBytesJSX extends FormatBytesEvents, FormatBytesProperties {}
 declare global {
   interface HTMLPlusFormatBytesElement extends HTMLElement, FormatBytesMethods, FormatBytesProperties {}

@@ -37,7 +37,8 @@ export declare class Snippet extends PlusCore {
     render(): any;
 }
 
-export interface SnippetAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface SnippetAttributesBase {
   /**
   * Specifies the color.
   */
@@ -55,9 +56,15 @@ export interface SnippetAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<SnippetProperties, "overrides">>;
 }
-export interface SnippetEvents {}
-export interface SnippetMethods {}
-export interface SnippetProperties {
+export interface SnippetAttributesDisables {}
+export type SnippetAttributes = Filter<SnippetAttributesBase, SnippetAttributesDisables>;
+export interface SnippetEventsBase {}
+export interface SnippetEventsDisables {}
+export type SnippetEvents = Filter<SnippetEventsBase, SnippetEventsDisables>;
+export interface SnippetMethodsBase {}
+export interface SnippetMethodsDisables {}
+export type SnippetMethods = Filter<SnippetMethodsBase, SnippetMethodsDisables>;
+export interface SnippetPropertiesBase {
   /**
   * Specifies the color.
   */
@@ -75,6 +82,8 @@ export interface SnippetProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<SnippetProperties, "overrides">>;
 }
+export interface SnippetPropertiesDisables {}
+export type SnippetProperties = Filter<SnippetPropertiesBase, SnippetPropertiesDisables>;
 export interface SnippetJSX extends SnippetEvents, SnippetProperties {}
 declare global {
   interface HTMLPlusSnippetElement extends HTMLElement, SnippetMethods, SnippetProperties {}

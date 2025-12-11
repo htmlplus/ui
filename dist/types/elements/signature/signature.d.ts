@@ -135,7 +135,8 @@ export declare class Signature extends PlusForm {
     render(): any;
 }
 
-export interface SignatureAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface SignatureAttributesBase {
   /**
   * Specifies the background color.
   */
@@ -189,7 +190,9 @@ export interface SignatureAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<SignatureProperties, "overrides">>;
 }
-export interface SignatureEvents {
+export interface SignatureAttributesDisables {}
+export type SignatureAttributes = Filter<SignatureAttributesBase, SignatureAttributesDisables>;
+export interface SignatureEventsBase {
   /**
   * Fires after the latest changes have occurred with a delay to prepare the value.
   */
@@ -211,7 +214,9 @@ export interface SignatureEvents {
   */
   onPlusStart?: (event: CustomEvent<PointerEvent>) => void;
 }
-export interface SignatureMethods {
+export interface SignatureEventsDisables {}
+export type SignatureEvents = Filter<SignatureEventsBase, SignatureEventsDisables>;
+export interface SignatureMethodsBase {
   /**
   * Reverts the last undo action.
   */
@@ -226,7 +231,9 @@ export interface SignatureMethods {
   */
   undo();
 }
-export interface SignatureProperties {
+export interface SignatureMethodsDisables {}
+export type SignatureMethods = Filter<SignatureMethodsBase, SignatureMethodsDisables>;
+export interface SignaturePropertiesBase {
   /**
   * Specifies the background color.
   */
@@ -292,6 +299,8 @@ export interface SignatureProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<SignatureProperties, "overrides">>;
 }
+export interface SignaturePropertiesDisables {}
+export type SignatureProperties = Filter<SignaturePropertiesBase, SignaturePropertiesDisables>;
 export interface SignatureJSX extends SignatureEvents, SignatureProperties {}
 declare global {
   interface HTMLPlusSignatureElement extends HTMLElement, SignatureMethods, SignatureProperties {}

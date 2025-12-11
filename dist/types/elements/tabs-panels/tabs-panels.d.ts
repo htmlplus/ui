@@ -19,7 +19,8 @@ export declare class TabsPanels extends PlusCore {
     render(): any;
 }
 
-export interface TabsPanelsAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface TabsPanelsAttributesBase {
   /**
   * TODO
   */
@@ -29,9 +30,15 @@ export interface TabsPanelsAttributes {
   */
   "variant"?: OverridableValue<string & {}, TabsPanelsVariantOverrides>;
 }
-export interface TabsPanelsEvents {}
-export interface TabsPanelsMethods {}
-export interface TabsPanelsProperties {
+export interface TabsPanelsAttributesDisables {}
+export type TabsPanelsAttributes = Filter<TabsPanelsAttributesBase, TabsPanelsAttributesDisables>;
+export interface TabsPanelsEventsBase {}
+export interface TabsPanelsEventsDisables {}
+export type TabsPanelsEvents = Filter<TabsPanelsEventsBase, TabsPanelsEventsDisables>;
+export interface TabsPanelsMethodsBase {}
+export interface TabsPanelsMethodsDisables {}
+export type TabsPanelsMethods = Filter<TabsPanelsMethodsBase, TabsPanelsMethodsDisables>;
+export interface TabsPanelsPropertiesBase {
   /**
   * TODO
   */
@@ -41,6 +48,8 @@ export interface TabsPanelsProperties {
   */
   variant?: OverridableValue<string & {}, TabsPanelsVariantOverrides>;
 }
+export interface TabsPanelsPropertiesDisables {}
+export type TabsPanelsProperties = Filter<TabsPanelsPropertiesBase, TabsPanelsPropertiesDisables>;
 export interface TabsPanelsJSX extends TabsPanelsEvents, TabsPanelsProperties {}
 declare global {
   interface HTMLPlusTabsPanelsElement extends HTMLElement, TabsPanelsMethods, TabsPanelsProperties {}

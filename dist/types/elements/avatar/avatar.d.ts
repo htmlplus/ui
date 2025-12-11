@@ -136,7 +136,8 @@ export declare class Avatar extends PlusCore {
     render(): any;
 }
 
-export interface AvatarAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface AvatarAttributesBase {
   /**
   * Specifies the color.
   */
@@ -158,9 +159,15 @@ export interface AvatarAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<AvatarProperties, "overrides">>;
 }
-export interface AvatarEvents {}
-export interface AvatarMethods {}
-export interface AvatarProperties {
+export interface AvatarAttributesDisables {}
+export type AvatarAttributes = Filter<AvatarAttributesBase, AvatarAttributesDisables>;
+export interface AvatarEventsBase {}
+export interface AvatarEventsDisables {}
+export type AvatarEvents = Filter<AvatarEventsBase, AvatarEventsDisables>;
+export interface AvatarMethodsBase {}
+export interface AvatarMethodsDisables {}
+export type AvatarMethods = Filter<AvatarMethodsBase, AvatarMethodsDisables>;
+export interface AvatarPropertiesBase {
   /**
   * Specifies the color.
   */
@@ -182,6 +189,8 @@ export interface AvatarProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<AvatarProperties, "overrides">>;
 }
+export interface AvatarPropertiesDisables {}
+export type AvatarProperties = Filter<AvatarPropertiesBase, AvatarPropertiesDisables>;
 export interface AvatarJSX extends AvatarEvents, AvatarProperties {}
 declare global {
   interface HTMLPlusAvatarElement extends HTMLElement, AvatarMethods, AvatarProperties {}

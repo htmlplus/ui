@@ -38,7 +38,8 @@ export declare class Card extends PlusCore {
     render(): any;
 }
 
-export interface CardAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface CardAttributesBase {
   /**
   * If you want the card to have shadow, use the elevation property,
   * And select the property value between `1` and `24`.
@@ -65,9 +66,15 @@ export interface CardAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<CardProperties, "overrides">>;
 }
-export interface CardEvents {}
-export interface CardMethods {}
-export interface CardProperties {
+export interface CardAttributesDisables {}
+export type CardAttributes = Filter<CardAttributesBase, CardAttributesDisables>;
+export interface CardEventsBase {}
+export interface CardEventsDisables {}
+export type CardEvents = Filter<CardEventsBase, CardEventsDisables>;
+export interface CardMethodsBase {}
+export interface CardMethodsDisables {}
+export type CardMethods = Filter<CardMethodsBase, CardMethodsDisables>;
+export interface CardPropertiesBase {
   /**
   * If you want the card to have shadow, use the elevation property,
   * And select the property value between `1` and `24`.
@@ -94,6 +101,8 @@ export interface CardProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<CardProperties, "overrides">>;
 }
+export interface CardPropertiesDisables {}
+export type CardProperties = Filter<CardPropertiesBase, CardPropertiesDisables>;
 export interface CardJSX extends CardEvents, CardProperties {}
 declare global {
   interface HTMLPlusCardElement extends HTMLElement, CardMethods, CardProperties {}

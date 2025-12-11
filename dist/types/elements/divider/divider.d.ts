@@ -54,7 +54,8 @@ export declare class Divider extends PlusCore {
     render(): any;
 }
 
-export interface DividerAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface DividerAttributesBase {
   /**
   * Specifies the color.
   */
@@ -88,9 +89,15 @@ export interface DividerAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<DividerProperties, "overrides">>;
 }
-export interface DividerEvents {}
-export interface DividerMethods {}
-export interface DividerProperties {
+export interface DividerAttributesDisables {}
+export type DividerAttributes = Filter<DividerAttributesBase, DividerAttributesDisables>;
+export interface DividerEventsBase {}
+export interface DividerEventsDisables {}
+export type DividerEvents = Filter<DividerEventsBase, DividerEventsDisables>;
+export interface DividerMethodsBase {}
+export interface DividerMethodsDisables {}
+export type DividerMethods = Filter<DividerMethodsBase, DividerMethodsDisables>;
+export interface DividerPropertiesBase {
   /**
   * Specifies the color.
   */
@@ -124,6 +131,8 @@ export interface DividerProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<DividerProperties, "overrides">>;
 }
+export interface DividerPropertiesDisables {}
+export type DividerProperties = Filter<DividerPropertiesBase, DividerPropertiesDisables>;
 export interface DividerJSX extends DividerEvents, DividerProperties {}
 declare global {
   interface HTMLPlusDividerElement extends HTMLElement, DividerMethods, DividerProperties {}

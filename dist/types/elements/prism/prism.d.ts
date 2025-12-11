@@ -67,7 +67,8 @@ export declare class Prism extends PlusCore {
     render(): any;
 }
 
-export interface PrismAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface PrismAttributesBase {
   /**
   * The programming language to highlight.
   */
@@ -97,9 +98,15 @@ export interface PrismAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<PrismProperties, "overrides">>;
 }
-export interface PrismEvents {}
-export interface PrismMethods {}
-export interface PrismProperties {
+export interface PrismAttributesDisables {}
+export type PrismAttributes = Filter<PrismAttributesBase, PrismAttributesDisables>;
+export interface PrismEventsBase {}
+export interface PrismEventsDisables {}
+export type PrismEvents = Filter<PrismEventsBase, PrismEventsDisables>;
+export interface PrismMethodsBase {}
+export interface PrismMethodsDisables {}
+export type PrismMethods = Filter<PrismMethodsBase, PrismMethodsDisables>;
+export interface PrismPropertiesBase {
   /**
   * The programming language to highlight.
   */
@@ -129,6 +136,8 @@ export interface PrismProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<PrismProperties, "overrides">>;
 }
+export interface PrismPropertiesDisables {}
+export type PrismProperties = Filter<PrismPropertiesBase, PrismPropertiesDisables>;
 export interface PrismJSX extends PrismEvents, PrismProperties {}
 declare global {
   interface HTMLPlusPrismElement extends HTMLElement, PrismMethods, PrismProperties {}

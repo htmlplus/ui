@@ -25,7 +25,8 @@ export declare class Accordions extends PlusCore {
     render(): any;
 }
 
-export interface AccordionsAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface AccordionsAttributesBase {
   /**
   * Specifies that only one accordion can be open.
   */
@@ -39,9 +40,15 @@ export interface AccordionsAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<AccordionsProperties, "overrides">>;
 }
-export interface AccordionsEvents {}
-export interface AccordionsMethods {}
-export interface AccordionsProperties {
+export interface AccordionsAttributesDisables {}
+export type AccordionsAttributes = Filter<AccordionsAttributesBase, AccordionsAttributesDisables>;
+export interface AccordionsEventsBase {}
+export interface AccordionsEventsDisables {}
+export type AccordionsEvents = Filter<AccordionsEventsBase, AccordionsEventsDisables>;
+export interface AccordionsMethodsBase {}
+export interface AccordionsMethodsDisables {}
+export type AccordionsMethods = Filter<AccordionsMethodsBase, AccordionsMethodsDisables>;
+export interface AccordionsPropertiesBase {
   /**
   * Specifies that only one accordion can be open.
   */
@@ -55,6 +62,8 @@ export interface AccordionsProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<AccordionsProperties, "overrides">>;
 }
+export interface AccordionsPropertiesDisables {}
+export type AccordionsProperties = Filter<AccordionsPropertiesBase, AccordionsPropertiesDisables>;
 export interface AccordionsJSX extends AccordionsEvents, AccordionsProperties {}
 declare global {
   interface HTMLPlusAccordionsElement extends HTMLElement, AccordionsMethods, AccordionsProperties {}

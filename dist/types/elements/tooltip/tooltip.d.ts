@@ -96,7 +96,8 @@ export declare class Tooltip extends PlusCore {
     render(): any;
 }
 
-export interface TooltipAttributes {
+type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
+export interface TooltipAttributesBase {
   /**
   * Specifies whether to display the arrow or not.
   */
@@ -149,8 +150,12 @@ export interface TooltipAttributes {
   */
   "overrides"?: OverridesConfig<Breakpoint, Omit<TooltipProperties, "overrides">>;
 }
-export interface TooltipEvents {}
-export interface TooltipMethods {
+export interface TooltipAttributesDisables {}
+export type TooltipAttributes = Filter<TooltipAttributesBase, TooltipAttributesDisables>;
+export interface TooltipEventsBase {}
+export interface TooltipEventsDisables {}
+export type TooltipEvents = Filter<TooltipEventsBase, TooltipEventsDisables>;
+export interface TooltipMethodsBase {
   /**
   * Hides the element.
   */
@@ -164,7 +169,9 @@ export interface TooltipMethods {
   */
   update();
 }
-export interface TooltipProperties {
+export interface TooltipMethodsDisables {}
+export type TooltipMethods = Filter<TooltipMethodsBase, TooltipMethodsDisables>;
+export interface TooltipPropertiesBase {
   /**
   * Specifies whether to display the arrow or not.
   */
@@ -217,6 +224,8 @@ export interface TooltipProperties {
   */
   overrides?: OverridesConfig<Breakpoint, Omit<TooltipProperties, "overrides">>;
 }
+export interface TooltipPropertiesDisables {}
+export type TooltipProperties = Filter<TooltipPropertiesBase, TooltipPropertiesDisables>;
 export interface TooltipJSX extends TooltipEvents, TooltipProperties {}
 declare global {
   interface HTMLPlusTooltipElement extends HTMLElement, TooltipMethods, TooltipProperties {}
