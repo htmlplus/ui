@@ -1,64 +1,7 @@
 {
 	"name": "@htmlplus/ui",
 	"version": "1.8.0",
-	"license": "MIT",
-	"author": "Masood Abdolian <m.abdolian@gmail.com>",
 	"description": "The Next generation of UI elements.",
-	"type": "module",
-	"main": "./dist/elements/index.js",
-	"types": "./dist/types/elements/index.d.ts",
-	"web-types": "./dist/json/web-types.json",
-	"scripts": {
-		"build": "npm run clean && vite build",
-		"clean": "rimraf .cache dist",
-		"dev": "vite",
-		"dev:examples": "vite --open examples/index.html",
-		"lint": "biome check --write",
-		"prepare": "husky",
-		"test:open": "cypress open",
-		"test:run": "cypress run",
-		"type-check": "tsc --noEmit"
-	},
-	"exports": {
-		".": {
-			"import": "./dist/elements/index.js",
-			"types": "./dist/types/elements/index.d.ts"
-		},
-		"./*": {
-			"import": "./dist/elements/*",
-			"types": "./dist/types/elements/*/*.d.ts"
-		},
-		"./config.js": {
-			"import": "./dist/core/config.js",
-			"types": "./dist/types/config/index.d.ts"
-		},
-		"./json/*": {
-			"import": "./dist/json/*",
-			"types": null
-		},
-		"./package.json": {
-			"import": "./package.json",
-			"types": null
-		}
-	},
-	"files": [
-		"./dist/*",
-		"./package.json",
-		"./README.md"
-	],
-	"funding": [
-		{
-			"type": "github",
-			"url": "https://github.com/sponsors/htmlplus"
-		},
-		{
-			"type": "opencollective",
-			"url": "https://opencollective.com/htmlplus"
-		}
-	],
-	"engines": {
-		"node": ">= 20.10.0"
-	},
 	"keywords": [
 		"element",
 		"element library",
@@ -70,14 +13,67 @@
 		"web elements",
 		"frontend"
 	],
+	"homepage": "https://htmlplus.io",
+	"bugs": {
+		"url": "https://github.com/htmlplus/ui/issues"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/htmlplus/ui.git"
 	},
-	"bugs": {
-		"url": "https://github.com/htmlplus/ui/issues"
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/htmlplus"
+		},
+		{
+			"type": "opencollective",
+			"url": "https://opencollective.com/htmlplus"
+		}
+	],
+	"license": "MIT",
+	"author": "Masood Abdolian <m.abdolian@gmail.com>",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/types/elements/index.d.ts",
+			"import": "./dist/elements/index.js"
+		},
+		"./*": {
+			"types": "./dist/types/elements/*/*.d.ts",
+			"import": "./dist/elements/*"
+		},
+		"./config.js": {
+			"types": "./dist/types/config/index.d.ts",
+			"import": "./dist/core/config.js"
+		},
+		"./json/*": {
+			"types": null,
+			"import": "./dist/json/*"
+		},
+		"./package.json": {
+			"types": null,
+			"import": "./package.json"
+		}
 	},
-	"homepage": "https://htmlplus.io",
+	"main": "./dist/elements/index.js",
+	"types": "./dist/types/elements/index.d.ts",
+	"files": [
+		"./dist/*",
+		"./package.json",
+		"./README.md"
+	],
+	"scripts": {
+		"build": "npm run clean && vite build",
+		"clean": "rimraf .cache dist",
+		"dev": "vite",
+		"dev:examples": "vite --open examples/index.html",
+		"lint": "biome check --write",
+		"prepare": "husky",
+		"test:open": "cypress open",
+		"test:run": "cypress run",
+		"type-check": "tsc --noEmit"
+	},
 	"dependencies": {
 		"@htmlplus/element": "^3.4.2"
 	},
@@ -111,5 +107,9 @@
 		"embla-carousel": "^8.6.0",
 		"prismjs": "^1.29.0",
 		"signature_pad": "^5.0.10"
-	}
+	},
+	"engines": {
+		"node": ">= 20.10.0"
+	},
+	"web-types": "./dist/json/web-types.json"
 }
