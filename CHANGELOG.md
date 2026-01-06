@@ -1,3 +1,14 @@
+## [1.8.1](https://github.com/htmlplus/ui/compare/v1.8.0...v1.8.1) (2026-01-06)
+
+### Changes
+
+* Improve codebase structure, typing, and file naming ([d683d5d](https://github.com/htmlplus/ui/commit/d683d5d2b1e839a41e3a55a053796a9beddc6770))
+
+### Bug Fixes
+
+* Enhance typings with `Disables` interfaces for stronger type safety and flexible attributes, events, methods, and properties. ([fcfcab2](https://github.com/htmlplus/ui/commit/fcfcab2a45c489e06b8a65c4ca6c6c1391756cf3))
+* Update the properties that use the `OverridableValue` type to ensure they behave correctly. ([badbd8c](https://github.com/htmlplus/ui/commit/badbd8c4c3d5deeaf733215abcd2aec602b81caa))
+
 ## [1.8.0](https://github.com/htmlplus/ui/compare/v1.7.5...v1.8.0) (2025-11-30)
 
 ### Features
