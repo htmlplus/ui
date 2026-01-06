@@ -1,12 +1,12 @@
 import { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
-import { Carousel } from '../carousel';
+import { PlusCarousel } from '../element';
 export declare abstract class CarouselPlugin {
-    instance: Carousel;
+    instance: PlusCarousel;
     abstract events: {
         [key in EmblaEventType]?: (event: EmblaCarouselType, eventName: EmblaEventType) => void;
     };
     get api(): EmblaCarouselType;
-    constructor(instance: Carousel);
+    constructor(instance: PlusCarousel);
     initialize(): void;
     terminate(): void;
     reinitialize(): void;

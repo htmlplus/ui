@@ -1,4 +1,4 @@
-import { Q as Query, j as PlusForm, k as getCSSColor, E as ExternalDependencyError, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, i as PlusForm, j as getCSSColor, E as ExternalDependencyError, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -11,15 +11,16 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let Core;
-let Signature = class extends PlusForm {
+let PlusSignature = class extends PlusForm {
   constructor() {
     super(...arguments);
     this.backgroundColor = "lightgray";
-    this.color = "black";
+    this.penColor = "black";
+    this.minDistance = 5;
     this.maxWidth = 2.5;
     this.minWidth = 0.5;
     this.throttle = 16;
-    this.velocity = 0.7;
+    this.velocityFilterWeight = 0.7;
     this.history = [];
     this.index = -1;
     this.observer = new ResizeObserver(() => this.resize());
@@ -34,12 +35,33 @@ let Signature = class extends PlusForm {
   get undoable() {
     return this.index !== -1;
   }
+  clear() {
+    if (!this.ensureInstance()) return;
+    this.index = -1;
+    this.history = [];
+    this.instance?.clear();
+    this.previous = this.value = void 0;
+  }
+  async fromDataURL(dataUrl, options) {
+    if (this.ensureInstance()) {
+      await this.instance?.fromDataURL(dataUrl, options);
+    }
+  }
   redo() {
+    if (!this.ensureInstance()) return;
     if (!this.redoable) return;
     this.index++;
     const data = this.history[this.index] || [];
-    this.instance.fromData(data);
-    this.update(true, true);
+    this.instance?.fromData(data, {
+      clear: true
+    });
+    this.previous = this.value = this.clone();
+    this.plusChange(this.value);
+  }
+  redraw() {
+    if (this.ensureInstance()) {
+      this.instance?.redraw();
+    }
   }
   resize(clear) {
     const {
@@ -51,74 +73,102 @@ let Signature = class extends PlusForm {
     if (width === offsetWidth && height === offsetHeight) return;
     this.$canvas.width = offsetWidth;
     this.$canvas.height = offsetHeight;
-    if (!this.instance) return;
+    if (!this.ensureInstance()) return;
     if (clear ?? this.clearOnResize) {
-      return this.reset(true);
+      return this.clear();
     }
-    this.instance.fromData(this.clone());
+    this.instance?.fromData(this.clone(), {
+      clear: true
+    });
+  }
+  toDataURL(type, quality) {
+    if (this.ensureInstance()) {
+      return this.$canvas?.toDataURL(type, quality);
+    }
+  }
+  toSVG(options) {
+    if (this.ensureInstance()) {
+      return this.instance?.toSVG(options);
+    }
   }
   undo() {
+    if (!this.ensureInstance()) return;
     if (!this.undoable) return;
     this.index--;
     const data = this.history[this.index] || [];
-    this.instance.fromData(data);
-    this.update(true, true);
+    this.instance?.fromData(data, {
+      clear: true
+    });
+    this.previous = this.value = this.clone();
+    this.plusChange(this.value);
   }
-  watcher(next, prev, name) {
-    if (!this.instance) {
-      return setTimeout(() => {
-        this.watcher(next, prev, name);
-      }, 250);
-    }
+  get options() {
+    return {
+      backgroundColor: getCSSColor(this.$host, this.backgroundColor),
+      canvasContextOptions: this.canvasContextOptions,
+      dotSize: this.dotSize,
+      minDistance: this.minDistance,
+      minWidth: this.minWidth,
+      maxWidth: this.maxWidth,
+      penColor: getCSSColor(this.$host, this.penColor),
+      throttle: this.throttle,
+      velocityFilterWeight: this.velocityFilterWeight
+    };
+  }
+  watcher(next, _prev, name) {
+    if (!this.instance) return;
     switch (name) {
       case "backgroundColor":
-        this.instance.backgroundColor = getCSSColor(this.$host, this.backgroundColor);
+        this.instance.backgroundColor = getCSSColor(this.$host, this.backgroundColor) || this.instance.backgroundColor;
         break;
-      case "color":
-        this.instance.penColor = getCSSColor(this.$host, this.color);
+      case "penColor":
+        this.instance.penColor = getCSSColor(this.$host, this.penColor) || this.instance.penColor;
         break;
       case "disabled":
-        this.instance[next ? "off" : "on"]();
+        if (this.disabled) {
+          this.instance.off();
+        } else {
+          this.instance.on();
+        }
         break;
-      case "distance":
-        this.instance.minDistance = next;
-        break;
-      case "velocity":
-        this.instance.velocityFilterWeight = next;
-        break;
+      case "canvasContextOptions":
       case "dotSize":
       case "maxWidth":
+      case "minDistance":
       case "minWidth":
       case "throttle":
+      case "velocityFilterWeight":
         this.instance[name] = next;
         break;
       case "resizable":
-        this.observer[next ? "observe" : "unobserve"](this.$host);
+        if (this.resizable) {
+          this.observer.observe(this.$host);
+        } else {
+          this.observer.unobserve(this.$host);
+        }
         break;
       case "value":
-        this.load();
+        if (this.value !== this.previous) {
+          this.previous = this.value || [];
+          this.instance.fromData(this.value || [], {
+            clear: true
+          });
+        }
         break;
     }
-    if (name === "value") return;
-    this.instance.fromData(this.clone());
   }
   clone() {
-    return JSON.parse(JSON.stringify(this.instance.toData()));
+    return JSON.parse(JSON.stringify(this.instance?.toData() || []));
+  }
+  ensureInstance() {
+    if (this.instance) return true;
+    console.warn("[Signature] Cannot perform operation because signature_pad is not initialized. Wait for the `ready` event before calling this method.");
+    return false;
   }
   initialize() {
-    const options = {
-      backgroundColor: getCSSColor(this.$host, this.backgroundColor),
-      dotSize: this.dotSize,
-      minDistance: this.distance,
-      minWidth: this.minWidth,
-      maxWidth: this.maxWidth,
-      penColor: getCSSColor(this.$host, this.color),
-      throttle: this.throttle,
-      velocityFilterWeight: this.velocity
-    };
-    this.instance = new Core(this.$canvas, options);
-    this.instance.addEventListener("beginStroke", this.onStart);
-    this.instance.addEventListener("endStroke", this.onEnd);
+    this.instance = new Core(this.$canvas, this.options);
+    this.instance?.addEventListener("beginStroke", this.onStart);
+    this.instance?.addEventListener("endStroke", this.onEnd);
     const events = {
       afterUpdateStroke: this.plusAfter,
       beforeUpdateStroke: this.plusBefore,
@@ -126,79 +176,45 @@ let Signature = class extends PlusForm {
       endStroke: this.plusEnd
     };
     for (const key in events) {
-      if (!Object.hasOwn(events, key)) continue;
-      this.instance.addEventListener(key, (event) => {
-        events[key].call(this, event.detail);
-      });
+      if (Object.hasOwn(events, key)) {
+        this.instance?.addEventListener(key, (event) => {
+          events[key].call(this, event.detail);
+        });
+      }
     }
     if (this.disabled) {
-      this.instance.off();
+      this.instance?.off();
     }
     if (this.resizable) {
       this.observer.observe(this.$host);
     }
-    requestAnimationFrame(() => this.resize());
-  }
-  // TODO
-  load() {
-    if (this.previous === this.value) return;
-    this.reset(false);
-    this.previous = this.value;
-    const image = document.createElement("img");
-    image.src = `data:image/svg+xml;base64,${btoa(this.value)}`;
-    image.onerror = () => {
-      image.remove();
-    };
-    image.onload = () => {
-      const context = this.$canvas.getContext("2d");
-      context.drawImage(image, 0, 0);
-      image.remove();
-    };
-  }
-  reset(includeValue) {
-    this.index = -1;
-    this.history = [];
-    this.instance.clear();
-    if (!includeValue) return;
-    this.previous = this.value = void 0;
+    this.resize();
+    this.plusReady();
   }
   terminate() {
     this.observer.disconnect();
     this.instance?.off();
   }
-  toSVG() {
-    return this.instance.toSVG().replace(/<svg[^>]*>(.*?)<\/svg>/, `<svg viewBox="0 0 ${this.$canvas.width} ${this.$canvas.height}">$1<svg>`);
-  }
-  update(force, silent) {
-    if (!force && this.timeout > Date.now()) return;
-    this.timeout = Date.now() + 500;
-    const value = this.instance.isEmpty() ? void 0 : this.toSVG();
-    this.previous = this.value = value;
-    if (silent) return;
-    this.plusChange();
-  }
   onReset() {
-    this.value = void 0;
+    this.clear();
+    this.plusChange(this.value);
   }
   onStart() {
     if (this.value && this.index === -1) {
-      this.reset(true);
+      this.clear();
     }
   }
   onEnd() {
     this.index++;
     this.history[this.index] = this.clone();
     this.history.length = this.index + 1;
-    this.update(false, false);
+    this.previous = this.value = this.clone();
+    this.plusChange(this.value);
   }
   readyCallback() {
     import("signature_pad").then((module) => {
-      Core = module.default || module;
-      try {
-        this.initialize();
-      } catch {
-        throw new Error("TODO");
-      }
+      Core = module.default;
+      this.initialize();
     }).catch((error) => {
       throw new ExternalDependencyError(this.$host, "signature_pad", {
         cause: error
@@ -209,136 +225,159 @@ let Signature = class extends PlusForm {
     this.terminate();
   }
   render() {
-    return html`<canvas part="canvas" tabindex=${0}></canvas>`;
+    return _internal_h_`<canvas part="canvas" tabindex=${0}></canvas>`;
   }
 };
-Signature.tag = "plus-signature";
-Signature.style = STYLE_IMPORTED;
+PlusSignature.tag = "plus-signature";
+PlusSignature.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 0
   })
-], Signature.prototype, "backgroundColor", 2);
+], PlusSignature.prototype, "backgroundColor", 2);
+__decorateClass([
+  Property({
+    type: 0
+  })
+], PlusSignature.prototype, "canvasContextOptions", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Signature.prototype, "clearOnResize", 2);
+], PlusSignature.prototype, "clearOnResize", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Signature.prototype, "color", 2);
+], PlusSignature.prototype, "penColor", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Signature.prototype, "distance", 2);
+], PlusSignature.prototype, "minDistance", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Signature.prototype, "dotSize", 2);
+], PlusSignature.prototype, "dotSize", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Signature.prototype, "maxWidth", 2);
+], PlusSignature.prototype, "maxWidth", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Signature.prototype, "minWidth", 2);
+], PlusSignature.prototype, "minWidth", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Signature.prototype, "resizable", 2);
+], PlusSignature.prototype, "resizable", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Signature.prototype, "throttle", 2);
+], PlusSignature.prototype, "throttle", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1
   })
-], Signature.prototype, "value", 2);
+], PlusSignature.prototype, "value", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Signature.prototype, "velocity", 2);
+], PlusSignature.prototype, "velocityFilterWeight", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Signature.prototype, "canvas", 1);
+], PlusSignature.prototype, "canvas", 1);
 __decorateClass([
   Property({
     type: 0
   })
-], Signature.prototype, "redoable", 1);
+], PlusSignature.prototype, "redoable", 1);
 __decorateClass([
   Property({
     type: 0
   })
-], Signature.prototype, "undoable", 1);
+], PlusSignature.prototype, "undoable", 1);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Signature.prototype, "variant", 2);
+], PlusSignature.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Signature.prototype, "overrides", 2);
+], PlusSignature.prototype, "overrides", 2);
 __decorateClass([
   Event()
-], Signature.prototype, "plusChange", 2);
+], PlusSignature.prototype, "plusAfter", 2);
 __decorateClass([
   Event()
-], Signature.prototype, "plusAfter", 2);
+], PlusSignature.prototype, "plusBefore", 2);
 __decorateClass([
   Event()
-], Signature.prototype, "plusBefore", 2);
+], PlusSignature.prototype, "plusChange", 2);
 __decorateClass([
   Event()
-], Signature.prototype, "plusEnd", 2);
+], PlusSignature.prototype, "plusEnd", 2);
 __decorateClass([
   Event()
-], Signature.prototype, "plusStart", 2);
+], PlusSignature.prototype, "plusReady", 2);
+__decorateClass([
+  Event()
+], PlusSignature.prototype, "plusStart", 2);
 __decorateClass([
   Method()
-], Signature.prototype, "redo", 1);
+], PlusSignature.prototype, "clear", 1);
 __decorateClass([
   Method()
-], Signature.prototype, "resize", 1);
+], PlusSignature.prototype, "fromDataURL", 1);
 __decorateClass([
   Method()
-], Signature.prototype, "undo", 1);
+], PlusSignature.prototype, "redo", 1);
+__decorateClass([
+  Method()
+], PlusSignature.prototype, "redraw", 1);
+__decorateClass([
+  Method()
+], PlusSignature.prototype, "resize", 1);
+__decorateClass([
+  Method()
+], PlusSignature.prototype, "toDataURL", 1);
+__decorateClass([
+  Method()
+], PlusSignature.prototype, "toSVG", 1);
+__decorateClass([
+  Method()
+], PlusSignature.prototype, "undo", 1);
 __decorateClass([
   Query("canvas")
-], Signature.prototype, "$canvas", 2);
+], PlusSignature.prototype, "$canvas", 2);
 __decorateClass([
   Watch()
-], Signature.prototype, "watcher", 1);
+], PlusSignature.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Signature.prototype, "onReset", 1);
+], PlusSignature.prototype, "onReset", 1);
 __decorateClass([
   Bind()
-], Signature.prototype, "onStart", 1);
+], PlusSignature.prototype, "onStart", 1);
 __decorateClass([
   Bind()
-], Signature.prototype, "onEnd", 1);
-Signature = __decorateClass([
+], PlusSignature.prototype, "onEnd", 1);
+PlusSignature = __decorateClass([
   Element()
-], Signature);
+], PlusSignature);
 export {
-  Signature
+  PlusSignature
 };

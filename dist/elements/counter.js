@@ -1,4 +1,4 @@
-import { P as PlusCore, b as attributes, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const COUNTER_EASINGS = {
   "ease-out-expo": (currentTime, beginningValue, changeInValue, duration) => {
     return changeInValue * (-(2 ** (-10 * currentTime / duration)) + 1) * 1024 / 1023 + beginningValue;
@@ -14,7 +14,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Counter = class extends PlusCore {
+let PlusCounter = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.easing = "ease-out-expo";
@@ -134,106 +134,106 @@ let Counter = class extends PlusCore {
     this.stop();
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "state": this.state
     }])}${this.formated}`;
   }
 };
-Counter.tag = "plus-counter";
+PlusCounter.tag = "plus-counter";
 __decorateClass([
   Property({
     type: 16
   })
-], Counter.prototype, "easing", 2);
+], PlusCounter.prototype, "easing", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Counter.prototype, "decimal", 2);
+], PlusCounter.prototype, "decimal", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Counter.prototype, "decimals", 2);
+], PlusCounter.prototype, "decimals", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Counter.prototype, "delay", 2);
+], PlusCounter.prototype, "delay", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Counter.prototype, "duration", 2);
+], PlusCounter.prototype, "duration", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Counter.prototype, "from", 2);
+], PlusCounter.prototype, "from", 2);
 __decorateClass([
   Property({
     type: 1
   })
-], Counter.prototype, "numerals", 2);
+], PlusCounter.prototype, "numerals", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Counter.prototype, "play", 2);
+], PlusCounter.prototype, "play", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Counter.prototype, "separator", 2);
+], PlusCounter.prototype, "separator", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Counter.prototype, "to", 2);
+], PlusCounter.prototype, "to", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Counter.prototype, "variant", 2);
+], PlusCounter.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Counter.prototype, "overrides", 2);
+], PlusCounter.prototype, "overrides", 2);
 __decorateClass([
   Event()
-], Counter.prototype, "plusComplete", 2);
+], PlusCounter.prototype, "plusComplete", 2);
 __decorateClass([
   Method()
-], Counter.prototype, "complete", 1);
+], PlusCounter.prototype, "complete", 1);
 __decorateClass([
   Method()
-], Counter.prototype, "pause", 1);
+], PlusCounter.prototype, "pause", 1);
 __decorateClass([
   Method()
-], Counter.prototype, "start", 1);
+], PlusCounter.prototype, "start", 1);
 __decorateClass([
   Method()
-], Counter.prototype, "stop", 1);
+], PlusCounter.prototype, "stop", 1);
 __decorateClass([
   State()
-], Counter.prototype, "counter", 2);
+], PlusCounter.prototype, "counter", 2);
 __decorateClass([
   State()
-], Counter.prototype, "state", 2);
+], PlusCounter.prototype, "state", 2);
 __decorateClass([
   Watch(["play"], true)
-], Counter.prototype, "watcher", 1);
+], PlusCounter.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Counter.prototype, "count", 1);
-Counter = __decorateClass([
+], PlusCounter.prototype, "count", 1);
+PlusCounter = __decorateClass([
   Element()
-], Counter);
+], PlusCounter);
 export {
-  Counter
+  PlusCounter
 };

@@ -5,22 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <p data-doc>Open the developer console.</p>
     <plus-center>
       <plus-signature id="$signature"></plus-signature>
     </plus-center>
     <br />
-    <plus-center>
-      <button id="$save">Save</button>
-    </plus-center>
+    <plus-stack gap="0.5rem">
+      <button id="$toDataURL">To Data URL</button>
+      <button id="$toSVG">To SVG</button>
+      <button id="$getValue">Get Value</button>
+    </plus-stack>
     <script type="module">
       import 'https://esm.run/@htmlplus/ui/center.js';
       import 'https://esm.run/@htmlplus/ui/signature.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
 
-      $save.addEventListener('click',  ( ) => {
-        const tab = open('', '_blank');
-        setTimeout(() => {
-          tab.document.write($signature.value);
-        }, 250);
+      $toDataURL.addEventListener('click',  ( ) => {
+        console.log($signature.toDataURL());
+      });
+
+      $toSVG.addEventListener('click',  ( ) => {
+        console.log($signature.toSVG());
+      });
+
+      $getValue.addEventListener('click',  ( ) => {
+        console.log($signature.value);
       });
     </script>
   </body>

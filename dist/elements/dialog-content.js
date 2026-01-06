@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, c as Property, V as Variant, O as Overrides, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:relative;display:flex;flex-direction:column;background-color:#fff;background-clip:padding-box;border:solid 1px rgba(0,0,0,.2);border-radius:.3rem;box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);outline:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,35 +10,35 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let DialogContent = class extends PlusCore {
+let PlusDialogContent = class extends PlusCore {
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-DialogContent.tag = "plus-dialog-content";
-DialogContent.style = STYLE_IMPORTED;
+PlusDialogContent.tag = "plus-dialog-content";
+PlusDialogContent.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], DialogContent.prototype, "scrollable", 2);
+], PlusDialogContent.prototype, "scrollable", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], DialogContent.prototype, "variant", 2);
+], PlusDialogContent.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], DialogContent.prototype, "overrides", 2);
-DialogContent = __decorateClass([
+], PlusDialogContent.prototype, "overrides", 2);
+PlusDialogContent = __decorateClass([
   Element()
-], DialogContent);
+], PlusDialogContent);
 export {
-  DialogContent
+  PlusDialogContent
 };

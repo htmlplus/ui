@@ -2,8 +2,8 @@ import type { OverridableValue } from '@htmlplus/element';
 
 import type { BREAKPOINTS } from '@/constants';
 
-export type BreakpointBase = keyof typeof BREAKPOINTS;
+export type PlusBreakpointBase = keyof typeof BREAKPOINTS;
 
-export interface BreakpointOverrides {}
+export interface PlusBreakpointOverrides {}
 
-export type Breakpoint = OverridableValue<BreakpointBase, BreakpointOverrides>;
+export type PlusBreakpoint = OverridableValue<PlusBreakpointBase, PlusBreakpointOverrides>;

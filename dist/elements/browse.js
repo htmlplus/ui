@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, b as attributes, h as html, c as Property, O as Overrides, V as Variant, e as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,18 +10,18 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Browse = class extends PlusCore {
+let PlusBrowse = class extends PlusCore {
   // biome-ignore lint: TODO
   get attributes() {
-    const attributes2 = {};
-    if (this.disabled) return attributes2;
-    attributes2.onClick = this.onClick;
-    if (!this.droppable) return attributes2;
-    attributes2.dragging = this.dragging;
-    attributes2.onDragLeave = this.onDragLeave;
-    attributes2.onDragOver = this.onDragOver;
-    attributes2.onDrop = this.onDrop;
-    return attributes2;
+    const attributes = {};
+    if (this.disabled) return attributes;
+    attributes.onClick = this.onClick;
+    if (!this.droppable) return attributes;
+    attributes.dragging = this.dragging;
+    attributes.onDragLeave = this.onDragLeave;
+    attributes.onDragOver = this.onDragOver;
+    attributes.onDrop = this.onDrop;
+    return attributes;
   }
   get types() {
     return (this.accept || "").split(",").map((type) => type.trim());
@@ -30,20 +30,25 @@ let Browse = class extends PlusCore {
     this.$input.click();
   }
   do(files) {
+    const length = files?.length ?? 0;
     const detail = {
-      error: void 0,
       files: []
     };
-    if (this.min > files.length) detail.error = {
-      type: "min",
-      message: `A minimum of "${this.min}" file(s) must be selected`
-    };
-    if (this.max < files.length) detail.error = {
-      type: "max",
-      message: `A maximum of "${this.max}" file(s) must be selected.`
-    };
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
+    if (this.min !== void 0 && this.min > length) {
+      detail.error = {
+        type: "min",
+        message: `A minimum of "${this.min}" file(s) must be selected`
+      };
+    }
+    if (this.max !== void 0 && this.max < length) {
+      detail.error = {
+        type: "max",
+        message: `A maximum of "${this.max}" file(s) must be selected.`
+      };
+    }
+    for (let i = 0; i < length; i++) {
+      const file = files?.[i];
+      if (!file) continue;
       const value = {
         errors: [],
         file
@@ -59,14 +64,18 @@ let Browse = class extends PlusCore {
           message: `Only file(s) with the extensions "${this.accept}" are accepted.`
         });
       }
-      if (this.minSize > value.file.size) value.errors.push({
-        type: "min",
-        message: `The minimum file size allowed is "${this.minSize}" bytes.`
-      });
-      if (this.maxSize < value.file.size) value.errors.push({
-        type: "min",
-        message: `The maximum file size allowed is "${this.maxSize}" bytes.`
-      });
+      if (this.minSize !== void 0 && this.minSize > value.file.size) {
+        value.errors.push({
+          type: "min",
+          message: `The minimum file size allowed is "${this.minSize}" bytes.`
+        });
+      }
+      if (this.maxSize !== void 0 && this.maxSize < value.file.size) {
+        value.errors.push({
+          type: "min",
+          message: `The maximum file size allowed is "${this.maxSize}" bytes.`
+        });
+      }
       detail.files.push(value);
     }
     const error = detail.error || detail.files.some((file) => file.errors.length);
@@ -87,7 +96,7 @@ let Browse = class extends PlusCore {
   }
   onDragLeave() {
     clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.dragging = false;
     }, 50);
   }
@@ -100,107 +109,107 @@ let Browse = class extends PlusCore {
     event.preventDefault();
     event.stopPropagation();
     this.dragging = false;
-    this.do(event.dataTransfer.files);
+    this.do(event.dataTransfer?.files);
   }
   render() {
-    return html`${attributes(this, [this.attributes])}
+    return _internal_h_`${_internal_a_(this, [this.attributes])}
 				<slot />
 				<input accept=${this.accept} multiple=${this.multiple} type="file" onChange=${this.onChange} onClick=${(event) => event.stopPropagation()} />
 			`;
   }
 };
-Browse.tag = "plus-browse";
-Browse.style = STYLE_IMPORTED;
+PlusBrowse.tag = "plus-browse";
+PlusBrowse.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 512
   })
-], Browse.prototype, "accept", 2);
+], PlusBrowse.prototype, "accept", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Browse.prototype, "disabled", 2);
+], PlusBrowse.prototype, "disabled", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Browse.prototype, "droppable", 2);
+], PlusBrowse.prototype, "droppable", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Browse.prototype, "min", 2);
+], PlusBrowse.prototype, "min", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Browse.prototype, "max", 2);
+], PlusBrowse.prototype, "max", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Browse.prototype, "minSize", 2);
+], PlusBrowse.prototype, "minSize", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Browse.prototype, "maxSize", 2);
+], PlusBrowse.prototype, "maxSize", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Browse.prototype, "multiple", 2);
+], PlusBrowse.prototype, "multiple", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Browse.prototype, "overrides", 2);
+], PlusBrowse.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Browse.prototype, "variant", 2);
+], PlusBrowse.prototype, "variant", 2);
 __decorateClass([
   Event()
-], Browse.prototype, "plusChange", 2);
+], PlusBrowse.prototype, "plusChange", 2);
 __decorateClass([
   Event()
-], Browse.prototype, "plusError", 2);
+], PlusBrowse.prototype, "plusError", 2);
 __decorateClass([
   Event()
-], Browse.prototype, "plusSuccess", 2);
+], PlusBrowse.prototype, "plusSuccess", 2);
 __decorateClass([
   Query("input")
-], Browse.prototype, "$input", 2);
+], PlusBrowse.prototype, "$input", 2);
 __decorateClass([
   State()
-], Browse.prototype, "dragging", 2);
+], PlusBrowse.prototype, "dragging", 2);
 __decorateClass([
   Method()
-], Browse.prototype, "browse", 1);
+], PlusBrowse.prototype, "browse", 1);
 __decorateClass([
   Bind()
-], Browse.prototype, "onClick", 1);
+], PlusBrowse.prototype, "onClick", 1);
 __decorateClass([
   Bind()
-], Browse.prototype, "onChange", 1);
+], PlusBrowse.prototype, "onChange", 1);
 __decorateClass([
   Bind()
-], Browse.prototype, "onDragLeave", 1);
+], PlusBrowse.prototype, "onDragLeave", 1);
 __decorateClass([
   Bind()
-], Browse.prototype, "onDragOver", 1);
+], PlusBrowse.prototype, "onDragOver", 1);
 __decorateClass([
   Bind()
-], Browse.prototype, "onDrop", 1);
-Browse = __decorateClass([
+], PlusBrowse.prototype, "onDrop", 1);
+PlusBrowse = __decorateClass([
   Element()
-], Browse);
+], PlusBrowse);
 export {
-  Browse
+  PlusBrowse
 };

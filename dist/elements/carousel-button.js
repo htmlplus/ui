@@ -1,4 +1,4 @@
-import { h as html, c as Property, V as Variant, O as Overrides, B as Bind, d as Element } from "../core/index.js";
+import { b as _internal_h_, c as Property, V as Variant, O as Overrides, B as Bind, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}button{box-shadow:inset 0 0 0 .2rem #eaeaea;color:#36313d;border-radius:50%;width:2.25rem;height:2.25rem;appearance:none;background-color:rgba(0,0,0,0);touch-action:manipulation;text-decoration:none;cursor:pointer;border:0;padding:0;margin:0;z-index:1;display:flex;align-items:center;justify-content:center}button:disabled{opacity:.5}svg{width:35%;height:35%}";
 const CAROUSEL_BUTTON_PREVIOUS_SVG = `
@@ -27,7 +27,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let CarouselButton = class extends CarouselChild {
+let PlusCarouselButton = class extends CarouselChild {
   constructor() {
     super(...arguments);
     this.events = ["init", "reInit", "select"];
@@ -39,7 +39,7 @@ let CarouselButton = class extends CarouselChild {
       case "previous":
         return this.dir === "rtl" ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
       default:
-        return this.type?.toString();
+        return this.type?.toString() || "";
     }
   }
   get disabled() {
@@ -66,43 +66,43 @@ let CarouselButton = class extends CarouselChild {
     }
   }
   render() {
-    return html`<button .disabled=${this.disabled} part="button" type="button" onClick=${this.handleClick}>
+    return _internal_h_`<button .disabled=${this.disabled} part="button" type="button" onClick=${this.handleClick}>
 				<slot .innerHTML=${this.content}></slot>
 			</button>`;
   }
 };
-CarouselButton.tag = "plus-carousel-button";
-CarouselButton.style = STYLE_IMPORTED;
+PlusCarouselButton.tag = "plus-carousel-button";
+PlusCarouselButton.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 4
   })
-], CarouselButton.prototype, "jump", 2);
+], PlusCarouselButton.prototype, "jump", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 144
   })
-], CarouselButton.prototype, "type", 2);
+], PlusCarouselButton.prototype, "type", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], CarouselButton.prototype, "variant", 2);
+], PlusCarouselButton.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], CarouselButton.prototype, "overrides", 2);
+], PlusCarouselButton.prototype, "overrides", 2);
 __decorateClass([
   Bind()
-], CarouselButton.prototype, "handleClick", 1);
-CarouselButton = __decorateClass([
+], PlusCarouselButton.prototype, "handleClick", 1);
+PlusCarouselButton = __decorateClass([
   Element()
-], CarouselButton);
+], PlusCarouselButton);
 export {
-  CarouselButton
+  PlusCarouselButton
 };

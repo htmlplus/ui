@@ -1,1 +1,1 @@
-export * from './center';
+export * from './element';

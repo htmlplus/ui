@@ -1,2 +1,2 @@
-export * from './scroll-detector';
-export * from './scroll-detector.types';
+export * from './element';
+export * from './types';

@@ -1,0 +1,13 @@
+- keyboards
+- does clearOnResize need to observer?
+- clear event
+- rescale based on window.devicePixelRatio
+- getTrimmedCanvas
+- examples for:
+  - canvas
+  - resize
+  - throttle
+  - velocity
+  - readonly
+  - required
+  - form validation

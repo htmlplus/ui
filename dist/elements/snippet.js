@@ -1,4 +1,4 @@
-import { P as PlusCore, i as toCSSColor, h as html, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
+import { P as PlusCore, h as toCSSColor, b as _internal_h_, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{--plus-snippet-color: black}:host{background-color:hsl(from var(--plus-snippet-color) h s 90%);border:none;border-radius:.5rem;color:var(--plus-snippet-color);gap:.5rem;padding:.5rem 1rem;direction:ltr;display:flex;align-items:center;justify-content:space-between}pre{gap:.5rem;display:flex;align-items:center;white-space:nowrap;margin:0;flex-grow:1}[part=default]{display:block}[part=symbol]{color:hsl(from var(--plus-snippet-color) h s 60%);display:contents;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,14 +10,14 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Snippet = class extends PlusCore {
+let PlusSnippet = class extends PlusCore {
   get style() {
     return {
       "--plus-snippet-color": toCSSColor(this.color)
     };
   }
   render() {
-    return html`
+    return _internal_h_`
 				<pre part="pre">
 					<span part="symbol">${this.symbol}</span>
 					<slot part="default" />
@@ -26,38 +26,38 @@ let Snippet = class extends PlusCore {
 			`;
   }
 };
-Snippet.tag = "plus-snippet";
-Snippet.style = STYLE_IMPORTED;
+PlusSnippet.tag = "plus-snippet";
+PlusSnippet.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   })
-], Snippet.prototype, "color", 2);
+], PlusSnippet.prototype, "color", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Snippet.prototype, "symbol", 2);
+], PlusSnippet.prototype, "symbol", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Snippet.prototype, "variant", 2);
+], PlusSnippet.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Snippet.prototype, "overrides", 2);
+], PlusSnippet.prototype, "overrides", 2);
 __decorateClass([
   Style()
-], Snippet.prototype, "style", 1);
-Snippet = __decorateClass([
+], PlusSnippet.prototype, "style", 1);
+PlusSnippet = __decorateClass([
   Element()
-], Snippet);
+], PlusSnippet);
 export {
-  Snippet
+  PlusSnippet
 };

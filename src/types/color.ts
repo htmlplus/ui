@@ -1,1 +1,1 @@
-export interface ColorOverrides {}
+export interface PlusColorOverrides {}

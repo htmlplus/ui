@@ -1,0 +1,25 @@
+- update docs for the `view` property.
+- add the rest properties in options
+- add ready state
+- captalize event.detail.action
+- review/rename css variables
+- add css variable (height/width) for indicator
+- add the rest methods
+  - clear
+  - crop
+  - get/set Data
+  - get/set CanvasData
+  - get/set CropBoxData
+  - getContainerData
+  - getImageData
+  - getCroppedCanvas
+  - scale
+  - scaleX
+  - scaleY
+- examples
+  - resizer
+  - resizerShape
+  - responsive
+  - value
+  - view
+- add `full` and `auto` to resizer property

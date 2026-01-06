@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, n as Animation, h as html, c as Property, V as Variant, O as Overrides, e as Event, S as State, C as Consumer, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, m as Animation, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, S as State, C as Consumer, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{border:solid 1px #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type):not(:last-of-type)){border-radius:0}:host(:first-of-type:not(:last-of-type)){border-bottom-right-radius:0;border-bottom-left-radius:0}:host(:last-of-type:not(:first-of-type)){border-top-right-radius:0;border-top-left-radius:0}:host([disabled]){opacity:.5}:host([disabled])::part(header){cursor:initial}:host::part(header){padding:1rem;position:relative;display:flex;align-items:center;border-radius:inherit;user-select:none;cursor:pointer;overflow-anchor:none}:host::part(summary){flex:1 1 auto;display:flex;align-items:center}:host::part(icon){flex:0 0 auto;display:flex;align-items:center}:host::part(body){transition:all .2s ease-in-out;overflow:hidden}:host::part(content){padding:1rem;display:block}:host([state=collapsed])::part(body){display:none}:host(:not([state=collapsed]))::part(header){border-bottom-right-radius:0;border-bottom-left-radius:0}:host::part(svg){transition:all .2s ease-in-out}:host([state^=collap])::part(svg){rotate:90deg}:host([state^=expand])::part(svg){rotate:-90deg}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Accordion = class extends PlusCore {
+let PlusAccordion = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.animate = new Animation({
@@ -65,7 +65,7 @@ let Accordion = class extends PlusCore {
     switch (name) {
       case "open":
         if (!next === !prev) break;
-        this.try(next, true);
+        this.try(!!this.open, true);
         break;
     }
   }
@@ -84,7 +84,7 @@ let Accordion = class extends PlusCore {
   }
   async try(open, silent) {
     if (this.disabled) return true;
-    if (this.opened === open) return await this.promise;
+    if (this.opened === open) return !!await this.promise;
     if (!silent) {
       const event = open ? this.plusExpand : this.plusCollapse;
       const prevented = event.call(this).defaultPrevented;
@@ -117,7 +117,7 @@ let Accordion = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`
+    return _internal_h_`
 				<slot name="top" />
 				<div aria-controls=${this.getId("body")} aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} id=${this.getId("header")} part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
 					<slot name="summary" part="summary">
@@ -139,85 +139,85 @@ let Accordion = class extends PlusCore {
 			`;
   }
 };
-Accordion.tag = "plus-accordion";
-Accordion.style = STYLE_IMPORTED;
+PlusAccordion.tag = "plus-accordion";
+PlusAccordion.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Accordion.prototype, "disabled", 2);
+], PlusAccordion.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Accordion.prototype, "open", 2);
+], PlusAccordion.prototype, "open", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Accordion.prototype, "summary", 2);
+], PlusAccordion.prototype, "summary", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Accordion.prototype, "variant", 2);
+], PlusAccordion.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Accordion.prototype, "overrides", 2);
+], PlusAccordion.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Accordion.prototype, "plusCollapse", 2);
+], PlusAccordion.prototype, "plusCollapse", 2);
 __decorateClass([
   Event()
-], Accordion.prototype, "plusCollapsed", 2);
+], PlusAccordion.prototype, "plusCollapsed", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Accordion.prototype, "plusExpand", 2);
+], PlusAccordion.prototype, "plusExpand", 2);
 __decorateClass([
   Event()
-], Accordion.prototype, "plusExpanded", 2);
+], PlusAccordion.prototype, "plusExpanded", 2);
 __decorateClass([
   State(),
   Consumer("accordions")
-], Accordion.prototype, "accordions", 2);
+], PlusAccordion.prototype, "accordions", 2);
 __decorateClass([
   Query("[part=body]")
-], Accordion.prototype, "$body", 2);
+], PlusAccordion.prototype, "$body", 2);
 __decorateClass([
   Query("[part=header]")
-], Accordion.prototype, "$header", 2);
+], PlusAccordion.prototype, "$header", 2);
 __decorateClass([
   Method()
-], Accordion.prototype, "collapse", 1);
+], PlusAccordion.prototype, "collapse", 1);
 __decorateClass([
   Method()
-], Accordion.prototype, "expand", 1);
+], PlusAccordion.prototype, "expand", 1);
 __decorateClass([
   Method()
-], Accordion.prototype, "toggle", 1);
+], PlusAccordion.prototype, "toggle", 1);
 __decorateClass([
   Watch(["open"])
-], Accordion.prototype, "watcher", 1);
+], PlusAccordion.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Accordion.prototype, "onClick", 1);
+], PlusAccordion.prototype, "onClick", 1);
 __decorateClass([
   Bind()
-], Accordion.prototype, "onKeyDown", 1);
-Accordion = __decorateClass([
+], PlusAccordion.prototype, "onKeyDown", 1);
+PlusAccordion = __decorateClass([
   Element()
-], Accordion);
+], PlusAccordion);
 export {
-  Accordion
+  PlusAccordion
 };

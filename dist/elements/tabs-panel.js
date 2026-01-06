@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, c as Property, V as Variant, O as Overrides, S as State, C as Consumer, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, S as State, C as Consumer, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:none}:host([active]){display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,51 +10,51 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let TabsPanel = class extends PlusCore {
+let PlusTabsPanel = class extends PlusCore {
   get active() {
     if (this.parent?.current === null) return false;
     if (this.parent?.current === void 0) return false;
     return this.parent?.current === this.value;
   }
   render() {
-    return html`
+    return _internal_h_`
 				<slot />
 			`;
   }
 };
-TabsPanel.tag = "plus-tabs-panel";
-TabsPanel.style = STYLE_IMPORTED;
+PlusTabsPanel.tag = "plus-tabs-panel";
+PlusTabsPanel.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 640
+    type: 512
   })
-], TabsPanel.prototype, "value", 2);
+], PlusTabsPanel.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], TabsPanel.prototype, "variant", 2);
+], PlusTabsPanel.prototype, "variant", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   })
-], TabsPanel.prototype, "active", 1);
+], PlusTabsPanel.prototype, "active", 1);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], TabsPanel.prototype, "overrides", 2);
+], PlusTabsPanel.prototype, "overrides", 2);
 __decorateClass([
   State(),
   Consumer("tabs")
-], TabsPanel.prototype, "parent", 2);
-TabsPanel = __decorateClass([
+], PlusTabsPanel.prototype, "parent", 2);
+PlusTabsPanel = __decorateClass([
   Element()
-], TabsPanel);
+], PlusTabsPanel);
 export {
-  TabsPanel
+  PlusTabsPanel
 };

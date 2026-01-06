@@ -1,4 +1,4 @@
-import { P as PlusCore, A as AsyncCache, E as ExternalDependencyError, b as attributes, h as html, N as NotEmptyPropertyError, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
+import { P as PlusCore, A as AsyncCache, E as ExternalDependencyError, _ as _internal_a_, b as _internal_h_, N as NotEmptyPropertyError, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;direction:ltr}pre{margin:0 !important;display:flex;align-items:start}code{display:block;flex-grow:1}.copy{width:0;direction:rtl}.copy slot{direction:ltr}:host([theme=default]) code[class*=language-],:host([theme=default]) pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}:host([theme=default]) pre[class*=language-]::-moz-selection,:host([theme=default]) pre[class*=language-] ::-moz-selection,:host([theme=default]) code[class*=language-]::-moz-selection,:host([theme=default]) code[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}:host([theme=default]) pre[class*=language-]::selection,:host([theme=default]) pre[class*=language-] ::selection,:host([theme=default]) code[class*=language-]::selection,:host([theme=default]) code[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{:host([theme=default]) code[class*=language-],:host([theme=default]) pre[class*=language-]{text-shadow:none}}:host([theme=default]) pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:host([theme=default]) :not(pre)>code[class*=language-],:host([theme=default]) pre[class*=language-]{background:#f5f2f0}:host([theme=default]) :not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}:host([theme=default]) .token.comment,:host([theme=default]) .token.prolog,:host([theme=default]) .token.doctype,:host([theme=default]) .token.cdata{color:#708090}:host([theme=default]) .token.punctuation{color:#999}:host([theme=default]) .token.namespace{opacity:.7}:host([theme=default]) .token.property,:host([theme=default]) .token.tag,:host([theme=default]) .token.boolean,:host([theme=default]) .token.number,:host([theme=default]) .token.constant,:host([theme=default]) .token.symbol,:host([theme=default]) .token.deleted{color:#905}:host([theme=default]) .token.selector,:host([theme=default]) .token.attr-name,:host([theme=default]) .token.string,:host([theme=default]) .token.char,:host([theme=default]) .token.builtin,:host([theme=default]) .token.inserted{color:#690}:host([theme=default]) .token.operator,:host([theme=default]) .token.entity,:host([theme=default]) .token.url,:host([theme=default]) .language-css .token.string,:host([theme=default]) .style .token.string{color:#9a6e3a;background:hsla(0,0%,100%,.5)}:host([theme=default]) .token.atrule,:host([theme=default]) .token.attr-value,:host([theme=default]) .token.keyword{color:#07a}:host([theme=default]) .token.function,:host([theme=default]) .token.class-name{color:#dd4a68}:host([theme=default]) .token.regex,:host([theme=default]) .token.important,:host([theme=default]) .token.variable{color:#e90}:host([theme=default]) .token.important,:host([theme=default]) .token.bold{font-weight:bold}:host([theme=default]) .token.italic{font-style:italic}:host([theme=default]) .token.entity{cursor:help}';
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -11,7 +11,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PrismCore;
-let Prism = class extends PlusCore {
+let PlusPrism = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.language = "javascript";
@@ -35,21 +35,22 @@ let Prism = class extends PlusCore {
     });
   }
   get attributes() {
-    const attributes2 = {};
+    const attributes = {};
     for (const pluginKey of this.pluginKeys) {
+      if (!this.plugins) continue;
       const plugin = this.plugins[pluginKey];
       if (typeof plugin !== "object") continue;
       for (const key in plugin) {
         if (Object.hasOwn(plugin, key)) {
-          attributes2[`data-${key}`] = `${plugin[key]}`;
+          attributes[`data-${key}`] = `${plugin[key]}`;
         }
       }
     }
-    return attributes2;
+    return attributes;
   }
   get assets() {
     const assets = [];
-    if (!PrismCore.languages[this.language]) {
+    if (this.language && !PrismCore.languages[this.language]) {
       assets.push({
         key: "language",
         value: this.language
@@ -83,7 +84,7 @@ let Prism = class extends PlusCore {
     return [`language-${this.language}`, ...this.pluginKeys].join(" ");
   }
   get pluginKeys() {
-    return Object.keys(this.plugins || {}).filter((key) => !!this.plugins[key]);
+    return Object.keys(this.plugins || {}).filter((key) => !!this.plugins?.[key]);
   }
   async update() {
     if (!PrismCore) return;
@@ -123,9 +124,9 @@ let Prism = class extends PlusCore {
     this.observer.disconnect();
   }
   render() {
-    return html`<div>
+    return _internal_h_`<div>
 				
-				<pre ref=${($element) => attributes($element, [{
+				<pre ref=${($element) => _internal_a_($element, [{
       "class": this.preClass
     }, {
       "part": "pre"
@@ -133,54 +134,54 @@ let Prism = class extends PlusCore {
 			</div>`;
   }
 };
-Prism.tag = "plus-prism";
-Prism.style = STYLE_IMPORTED;
+PlusPrism.tag = "plus-prism";
+PlusPrism.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 512
   })
-], Prism.prototype, "language", 2);
+], PlusPrism.prototype, "language", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 512
   })
-], Prism.prototype, "theme", 2);
+], PlusPrism.prototype, "theme", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], PlusPrism.prototype, "overrides", 2);
 __decorateClass([
   Property({
     type: 256
   })
-], Prism.prototype, "plugins", 2);
-__decorateClass([
-  Property({
-    type: 4
-  })
-], Prism.prototype, "sync", 2);
+], PlusPrism.prototype, "plugins", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Prism.prototype, "resolver", 2);
+], PlusPrism.prototype, "resolver", 2);
+__decorateClass([
+  Property({
+    type: 4
+  })
+], PlusPrism.prototype, "sync", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Prism.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], Prism.prototype, "overrides", 2);
+], PlusPrism.prototype, "variant", 2);
 __decorateClass([
   Style()
-], Prism.prototype, "update", 1);
-Prism = __decorateClass([
+], PlusPrism.prototype, "update", 1);
+PlusPrism = __decorateClass([
   Element()
-], Prism);
+], PlusPrism);
 export {
-  Prism
+  PlusPrism
 };

@@ -1,4 +1,4 @@
-import { u as classes, h as html, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
+import { r as classes, b as _internal_h_, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}.root{transition:all .5s ease;display:flex;align-items:center}button{background-color:#d3d3d3;border:solid .25rem rgba(0,0,0,0);width:1.25rem;height:1.25rem;border-radius:50%;transition:all .5s ease;appearance:none;background-clip:padding-box;touch-action:manipulation;text-decoration:none;padding:0;margin:0;display:flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:0}button.selected{background-color:gray}:host([numbers]) button{width:2rem;height:2rem}:host([clickable]) button{cursor:pointer}:host([infinity]){width:0}:host([infinity]) .root{transform:translateX(calc(var(--plus-carousel-indicators-selected) * -1.25rem - 0.625rem))}:host([infinity]) button{scale:0}:host([infinity]) button.selected{scale:1}:host([infinity]) :is(.prev-1,.next-1){scale:.75}:host([infinity]) :is(.prev-2,.next-2){scale:.5}";
 var __defProp = Object.defineProperty;
@@ -11,13 +11,16 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let CarouselIndicators = class extends CarouselChild {
+let PlusCarouselIndicators = class extends CarouselChild {
   constructor() {
     super(...arguments);
     this.events = ["init", "reInit", "select"];
   }
   get indexes() {
     return this.api?.slideNodes().map((_, index) => index) || [];
+  }
+  get selected() {
+    return this.api?.selectedScrollSnap() ?? 0;
   }
   scrollTo(index) {
     if (this.clickable) {
@@ -26,11 +29,11 @@ let CarouselIndicators = class extends CarouselChild {
   }
   get style() {
     return {
-      "--plus-carousel-indicators-selected": this.api?.selectedScrollSnap() || 0
+      "--plus-carousel-indicators-selected": this.selected
     };
   }
   getClass(index) {
-    const selected = this.api.selectedScrollSnap();
+    const selected = this.selected;
     return classes({
       selected: selected === index,
       prev: selected > index ? Math.abs(selected - index) : false,
@@ -38,52 +41,52 @@ let CarouselIndicators = class extends CarouselChild {
     });
   }
   render() {
-    return html`<div class="root" part="root">
-				${this.indexes.map((index) => html`<button part="indicator" type="button" class=${this.getClass(index)} onClick=${() => this.scrollTo(index)}>
+    return _internal_h_`<div class="root" part="root">
+				${this.indexes.map((index) => _internal_h_`<button part="indicator" type="button" class=${this.getClass(index)} onClick=${() => this.scrollTo(index)}>
 						${this.numbers ? index + 1 : ""}
 					</button>`)}
 			</div>`;
   }
 };
-CarouselIndicators.tag = "plus-carousel-indicators";
-CarouselIndicators.style = STYLE_IMPORTED;
+PlusCarouselIndicators.tag = "plus-carousel-indicators";
+PlusCarouselIndicators.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 20
   })
-], CarouselIndicators.prototype, "clickable", 2);
+], PlusCarouselIndicators.prototype, "clickable", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], CarouselIndicators.prototype, "infinity", 2);
+], PlusCarouselIndicators.prototype, "infinity", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], CarouselIndicators.prototype, "numbers", 2);
+], PlusCarouselIndicators.prototype, "numbers", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], CarouselIndicators.prototype, "overrides", 2);
+], PlusCarouselIndicators.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], CarouselIndicators.prototype, "variant", 2);
+], PlusCarouselIndicators.prototype, "variant", 2);
 __decorateClass([
   Style()
-], CarouselIndicators.prototype, "style", 1);
-CarouselIndicators = __decorateClass([
+], PlusCarouselIndicators.prototype, "style", 1);
+PlusCarouselIndicators = __decorateClass([
   Element()
-], CarouselIndicators);
+], PlusCarouselIndicators);
 export {
-  CarouselIndicators
+  PlusCarouselIndicators
 };

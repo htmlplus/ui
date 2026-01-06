@@ -1,0 +1,207 @@
+import {
+	Element,
+	type OverridableValue,
+	Overrides,
+	type OverridesConfig,
+	Property,
+	Style,
+	Variant
+} from '@htmlplus/element';
+
+import { PlusCore } from '@/core';
+import { toCSSColor, toCSSUnit } from '@/helpers';
+import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+
+import type { PlusAvatarSize } from './types';
+
+/**
+ * An image representing a user's profile picture.
+ *
+ * @stable
+ *
+ * @slot default - The default slot.
+ *
+ * @examples default, text, color, image, icon, svg, shape, size, size-overriding, wildcard-size,
+ *           link-with-tooltip, with-avatar, slots, group, group-stacked, group-hoverable,
+ *           group-gutter, group-link-with-tooltip
+ */
+@Element()
+export class PlusAvatar extends PlusCore {
+	/**
+	 * Specifies the color.
+	 */
+	@Property({ reflect: true })
+	color?: OverridableValue<string & {}, PlusColorOverrides>;
+
+	/**
+	 * Specifies the shape of the element.
+	 */
+	@Property({ reflect: true })
+	shape?: 'circle' | 'round' | 'tile';
+
+	/**
+	 * Specifies the size of the element.
+	 */
+	@Property({ reflect: true })
+	size?: OverridableValue<PlusAvatarSize>;
+
+	/**
+	 * TODO
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
+
+	/**
+	 * TODO
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	get placements() {
+		const offset = this.shape === 'circle' ? '14.64466%' : '0';
+
+		return [
+			{
+				key: 'bottom',
+				style: {
+					bottom: 0,
+					[this.isRTL ? 'right' : 'left']: '50%',
+					transform: `translate(${this.isRTL ? '+50%' : '-50%'}, +50%)`
+				}
+			},
+			{
+				key: 'center',
+				style: {
+					top: '50%',
+					[this.isRTL ? 'right' : 'left']: '50%',
+					transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+				}
+			},
+			{
+				key: 'end',
+				style: {
+					top: '50%',
+					[this.isRTL ? 'left' : 'right']: 0,
+					transform: `translate(${this.isRTL ? '-50%' : '+50%'}, -50%)`
+				}
+			},
+			{
+				key: 'end-bottom',
+				style: {
+					bottom: offset,
+					[this.isRTL ? 'left' : 'right']: offset,
+					transform: `translate(${this.isRTL ? '-50%' : '+50%'}, +50%)`
+				}
+			},
+			{
+				key: 'end-top',
+				style: {
+					top: offset,
+					[this.isRTL ? 'left' : 'right']: offset,
+					transform: `translate(${this.isRTL ? '-50%' : '+50%'}, -50%)`
+				}
+			},
+			{
+				key: 'left',
+				style: {
+					top: '50%',
+					left: 0,
+					transform: 'translate(-50%, -50%)'
+				}
+			},
+			{
+				key: 'left-bottom',
+				style: {
+					bottom: offset,
+					left: offset,
+					transform: 'translate(-50%, +50%)'
+				}
+			},
+			{
+				key: 'left-top',
+				style: {
+					top: offset,
+					left: offset,
+					transform: 'translate(-50%, -50%)'
+				}
+			},
+			{
+				key: 'right',
+				style: {
+					top: '50%',
+					right: 0,
+					transform: 'translate(+50%, -50%)'
+				}
+			},
+			{
+				key: 'right-bottom',
+				style: {
+					bottom: offset,
+					right: offset,
+					transform: 'translate(+50%, +50%)'
+				}
+			},
+			{
+				key: 'right-top',
+				style: {
+					top: offset,
+					right: offset,
+					transform: 'translate(+50%, -50%)'
+				}
+			},
+			{
+				key: 'start',
+				style: {
+					top: '50%',
+					[this.isRTL ? 'right' : 'left']: 0,
+					transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+				}
+			},
+			{
+				key: 'start-bottom',
+				style: {
+					bottom: offset,
+					[this.isRTL ? 'right' : 'left']: offset,
+					transform: `translate(${this.isRTL ? '+50%' : '-50%'}, +50%)`
+				}
+			},
+			{
+				key: 'start-top',
+				style: {
+					top: offset,
+					[this.isRTL ? 'right' : 'left']: offset,
+					transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+				}
+			},
+			{
+				key: 'top',
+				style: {
+					top: 0,
+					[this.isRTL ? 'right' : 'left']: '50%',
+					transform: `translate(${this.isRTL ? '+50%' : '-50%'}, -50%)`
+				}
+			}
+		];
+	}
+
+	@Style()
+	get style() {
+		return {
+			'--plus-avatar-color': toCSSColor(this.color),
+			'--plus-avatar-size': toCSSUnit(this.size)
+		};
+	}
+
+	render() {
+		return (
+			<>
+				<slot />
+				{this.placements.map((placement) => (
+					<slot name={placement.key} style={placement.style} />
+				))}
+			</>
+		);
+	}
+}

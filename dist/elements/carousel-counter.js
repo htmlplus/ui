@@ -11,14 +11,14 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let CarouselCounter = class extends CarouselChild {
+let PlusCarouselCounter = class extends CarouselChild {
   constructor() {
     super(...arguments);
     this.template = "%CURRENT% / %TOTAL%";
     this.events = ["init", "reInit", "select"];
   }
   get content() {
-    return this.template.replaceAll("%TOTAL%", this.total).replaceAll("%CURRENT%", this.current);
+    return this.template?.replaceAll("%TOTAL%", this.total).replaceAll("%CURRENT%", this.current) || "";
   }
   get current() {
     const value = this.api?.selectedScrollSnap();
@@ -34,29 +34,29 @@ let CarouselCounter = class extends CarouselChild {
     return this.content;
   }
 };
-CarouselCounter.tag = "plus-carousel-counter";
-CarouselCounter.style = STYLE_IMPORTED;
+PlusCarouselCounter.tag = "plus-carousel-counter";
+PlusCarouselCounter.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 512
   })
-], CarouselCounter.prototype, "template", 2);
+], PlusCarouselCounter.prototype, "template", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], CarouselCounter.prototype, "variant", 2);
+], PlusCarouselCounter.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], CarouselCounter.prototype, "overrides", 2);
-CarouselCounter = __decorateClass([
+], PlusCarouselCounter.prototype, "overrides", 2);
+PlusCarouselCounter = __decorateClass([
   Element()
-], CarouselCounter);
+], PlusCarouselCounter);
 export {
-  CarouselCounter
+  PlusCarouselCounter
 };

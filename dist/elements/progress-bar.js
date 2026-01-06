@@ -1,4 +1,4 @@
-import { P as PlusCore, i as toCSSColor, b as attributes, s as styles, h as html, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
+import { P as PlusCore, h as toCSSColor, _ as _internal_a_, k as _internal_s_, b as _internal_h_, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}@keyframes indeterminate{from{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{--plus-progress-bar-indicator-background-color: dodgerblue}:host{background-color:#dcdcdc;border-radius:.25rem;font-size:.75rem;height:1rem;display:flex;overflow:hidden;position:relative;direction:ltr}:host>*{position:absolute;inset:0}:host::part(underlay){background-color:rgba(0,0,0,0)}:host::part(buffer){background-color:hsl(from var(--plus-progress-bar-indicator-background-color) h s 80)}:host::part(indicator){background-color:var(--plus-progress-bar-indicator-background-color);color:#fff;transition:width .6s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50% !important}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,11 +10,11 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let ProgressBar = class extends PlusCore {
+let PlusProgressBar = class extends PlusCore {
   constructor() {
     super(...arguments);
-    this.min = 0;
     this.max = 100;
+    this.min = 0;
     this.value = 0;
   }
   get style() {
@@ -30,10 +30,10 @@ let ProgressBar = class extends PlusCore {
     return (this.value - this.min) * (100 / Math.abs(this.max - this.min));
   }
   get stacked() {
-    return this.$host.parentElement.nodeName.startsWith(this.$host.nodeName);
+    return !!this.$host.parentElement?.nodeName.startsWith(this.$host.nodeName);
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "aria-valuemin": this.min
     }, {
       "aria-valuemax": this.max
@@ -43,10 +43,10 @@ let ProgressBar = class extends PlusCore {
       "role": "progressbar"
     }])}
 				<div part="underlay"></div>
-				<div part="buffer" style=${styles({
+				<div part="buffer" style=${_internal_s_({
       width: `${this.buffer || 0}%`
     })}></div>
-				<div part="indicator" style=${styles({
+				<div part="indicator" style=${_internal_s_({
       width: this.stacked ? "100%" : this.percentage
     })}>
 					<slot>${this.label ? this.percentage : null}</slot>
@@ -54,64 +54,64 @@ let ProgressBar = class extends PlusCore {
 			`;
   }
 };
-ProgressBar.tag = "plus-progress-bar";
-ProgressBar.style = STYLE_IMPORTED;
+PlusProgressBar.tag = "plus-progress-bar";
+PlusProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 128
   })
-], ProgressBar.prototype, "buffer", 2);
+], PlusProgressBar.prototype, "buffer", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   })
-], ProgressBar.prototype, "color", 2);
+], PlusProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], ProgressBar.prototype, "label", 2);
+], PlusProgressBar.prototype, "label", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], ProgressBar.prototype, "min", 2);
+], PlusProgressBar.prototype, "max", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], ProgressBar.prototype, "max", 2);
+], PlusProgressBar.prototype, "min", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], PlusProgressBar.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], ProgressBar.prototype, "sync", 2);
+], PlusProgressBar.prototype, "sync", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], ProgressBar.prototype, "variant", 2);
+], PlusProgressBar.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], ProgressBar.prototype, "value", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], ProgressBar.prototype, "overrides", 2);
+], PlusProgressBar.prototype, "value", 2);
 __decorateClass([
   Style()
-], ProgressBar.prototype, "style", 1);
-ProgressBar = __decorateClass([
+], PlusProgressBar.prototype, "style", 1);
+PlusProgressBar = __decorateClass([
   Element()
-], ProgressBar);
+], PlusProgressBar);
 export {
-  ProgressBar
+  PlusProgressBar
 };

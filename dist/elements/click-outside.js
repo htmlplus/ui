@@ -1,4 +1,4 @@
-import { P as PlusCore, o as on, a as off, h as html, c as Property, O as Overrides, V as Variant, e as Event, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, o as on, a as off, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, B as Bind, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -9,24 +9,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let ClickOutside = class extends PlusCore {
-  get options() {
-    return {
-      capture: this.capture
-    };
-  }
-  watcher(next, _prev, name) {
-    switch (name) {
-      case "disabled":
-        next ? this.terminate() : this.initialize();
-        break;
-      case "capture":
-      case "once":
-        this.terminate();
-        this.initialize();
-        break;
-    }
-  }
+let PlusClickOutside = class extends PlusCore {
   initialize() {
     on(this.$host, "outside", this.onClickOutside, this.options);
   }
@@ -39,7 +22,11 @@ let ClickOutside = class extends PlusCore {
     }
     this.plusClickOutside();
   }
-  connectedCallback() {
+  updatedCallback() {
+    this.terminate();
+    this.options = {
+      capture: this.capture
+    };
     if (this.disabled) return;
     this.initialize();
   }
@@ -47,53 +34,50 @@ let ClickOutside = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-ClickOutside.tag = "plus-click-outside";
+PlusClickOutside.tag = "plus-click-outside";
 __decorateClass([
   Property({
     type: 4
   })
-], ClickOutside.prototype, "capture", 2);
+], PlusClickOutside.prototype, "capture", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], ClickOutside.prototype, "disabled", 2);
+], PlusClickOutside.prototype, "disabled", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], ClickOutside.prototype, "once", 2);
+], PlusClickOutside.prototype, "once", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], ClickOutside.prototype, "overrides", 2);
+], PlusClickOutside.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], ClickOutside.prototype, "variant", 2);
+], PlusClickOutside.prototype, "variant", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], ClickOutside.prototype, "plusClickOutside", 2);
-__decorateClass([
-  Watch(["capture", "disabled", "once"])
-], ClickOutside.prototype, "watcher", 1);
+], PlusClickOutside.prototype, "plusClickOutside", 2);
 __decorateClass([
   Bind()
-], ClickOutside.prototype, "onClickOutside", 1);
-ClickOutside = __decorateClass([
+], PlusClickOutside.prototype, "onClickOutside", 1);
+PlusClickOutside = __decorateClass([
   Element()
-], ClickOutside);
+], PlusClickOutside);
 export {
-  ClickOutside
+  PlusClickOutside
 };

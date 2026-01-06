@@ -1,4 +1,4 @@
-import { P as PlusCore, b as attributes, h as html, c as Property, V as Variant, O as Overrides, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -9,7 +9,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Intersection = class extends PlusCore {
+let PlusIntersection = class extends PlusCore {
   get disconnected() {
     return this.once && this.isIntersecting;
   }
@@ -63,67 +63,67 @@ let Intersection = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "state": this.isIntersecting ? "in" : "out"
     }])}
 				<slot />
 			`;
   }
 };
-Intersection.tag = "plus-intersection";
+PlusIntersection.tag = "plus-intersection";
 __decorateClass([
   Property({
     type: 4
   })
-], Intersection.prototype, "disabled", 2);
+], PlusIntersection.prototype, "disabled", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Intersection.prototype, "once", 2);
+], PlusIntersection.prototype, "once", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Intersection.prototype, "root", 2);
+], PlusIntersection.prototype, "root", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Intersection.prototype, "rootMargin", 2);
+], PlusIntersection.prototype, "rootMargin", 2);
 __decorateClass([
   Property({
     type: 129
   })
-], Intersection.prototype, "threshold", 2);
+], PlusIntersection.prototype, "threshold", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Intersection.prototype, "variant", 2);
+], PlusIntersection.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Intersection.prototype, "overrides", 2);
+], PlusIntersection.prototype, "overrides", 2);
 __decorateClass([
   Event()
-], Intersection.prototype, "plusChange", 2);
+], PlusIntersection.prototype, "plusChange", 2);
 __decorateClass([
   State()
-], Intersection.prototype, "isIntersecting", 2);
+], PlusIntersection.prototype, "isIntersecting", 2);
 __decorateClass([
   Watch(["behavior", "disabled", "once", "root", "rootMargin", "threshold"])
-], Intersection.prototype, "watcher", 1);
+], PlusIntersection.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Intersection.prototype, "onIntersecting", 1);
-Intersection = __decorateClass([
+], PlusIntersection.prototype, "onIntersecting", 1);
+PlusIntersection = __decorateClass([
   Element()
-], Intersection);
+], PlusIntersection);
 export {
-  Intersection
+  PlusIntersection
 };

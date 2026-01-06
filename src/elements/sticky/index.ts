@@ -1,2 +1,2 @@
-export * from './sticky';
-export * from './sticky.types';
+export * from './element';
+export * from './types';

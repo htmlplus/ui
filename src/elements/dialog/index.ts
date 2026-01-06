@@ -1,2 +1,2 @@
-export * from './dialog';
-export * from './dialog.types';
+export * from './element';
+export * from './types';

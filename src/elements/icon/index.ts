@@ -1,2 +1,2 @@
-export * from './icon';
-export * from './icon.types';
+export * from './element';
+export * from './types';

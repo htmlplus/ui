@@ -1,0 +1,72 @@
+import {
+	Element,
+	type OverridableValue,
+	Overrides,
+	type OverridesConfig,
+	Property,
+	Variant
+} from '@htmlplus/element';
+
+import type { EmblaEventType } from 'embla-carousel';
+
+import type { PlusBreakpoint } from '@/types';
+
+import { CarouselChild } from '../carousel/child';
+
+/**
+ * @subset
+ */
+@Element()
+export class PlusCarouselCounter extends CarouselChild {
+	/**
+	 * A customizable template string for displaying the carousel's slide counter.
+	 *
+	 * This template supports two placeholders that will be dynamically replaced:
+	 * - `%CURRENT%`: Represents the number of the currently active slide.
+	 * - `%TOTAL%`: Represents the total number of slides in the carousel.
+	 */
+	@Property()
+	template?: string = '%CURRENT% / %TOTAL%';
+
+	/**
+	 * TODO
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
+
+	/**
+	 * TODO
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	events: EmblaEventType[] = ['init', 'reInit', 'select'];
+
+	get content(): string {
+		return (
+			this.template?.replaceAll('%TOTAL%', this.total).replaceAll('%CURRENT%', this.current) || ''
+		);
+	}
+
+	get current(): string {
+		const value = this.api?.selectedScrollSnap();
+
+		if (typeof value !== 'number') return '-';
+
+		return `${value + 1}`;
+	}
+
+	get total(): string {
+		const value = this.api?.scrollSnapList().length;
+
+		if (typeof value !== 'number') return '-';
+
+		return `${value}`;
+	}
+
+	render() {
+		return this.content;
+	}
+}

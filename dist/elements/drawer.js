@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, n as Animation, p as Scrollbar, a as off, o as on, r as toAxis, u as classes, t as toCSSUnit, s as styles, h as html, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, m as Animation, n as Scrollbar, a as off, o as on, p as toAxis, r as classes, t as toCSSUnit, k as _internal_s_, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;position:relative;overflow:hidden;z-index:1000}[part=backdrop]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;transition:inherit}[part=backdrop] *{width:100%;height:100%;background-color:#000;opacity:.5}[part=root]{height:100%;position:relative;z-index:1;transition:inherit}.right,.left{width:var(--plus-drawer-size)}.top,.bottom{height:var(--plus-drawer-size)}.right,.left.reverse{margin:0 var(--plus-drawer-offset, 0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset, 0)}.top,.bottom.reverse{margin:var(--plus-drawer-offset, 0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset, 0) 0}:host([floating]){position:fixed;top:0;right:0;bottom:0;left:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=open]),:host([animation][state=closing]){padding:.000001px}:host([animation][state=open]) [part=backdrop],:host([animation][state=closing]) [part=backdrop]{opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Drawer = class extends PlusCore {
+let PlusDrawer = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.miniSize = 80;
@@ -107,7 +107,7 @@ let Drawer = class extends PlusCore {
     switch (name) {
       case "open":
         if (!next === !prev) break;
-        this.try(next, true);
+        this.try(!!this.open, true);
         break;
       case "mini":
         if (!next === !prev) break;
@@ -149,130 +149,130 @@ let Drawer = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`
-				${this.hasBackdrop ? html`<div part="backdrop">
+    return _internal_h_`
+				${this.hasBackdrop ? _internal_h_`<div part="backdrop">
 						<div />
 					</div>` : null}
-				<div class=${this.classes} part="root" style=${styles(this.style)}>
+				<div class=${this.classes} part="root" style=${_internal_s_(this.style)}>
 					<slot />
 				</div>
 			`;
   }
 };
-Drawer.tag = "plus-drawer";
-Drawer.style = STYLE_IMPORTED;
+PlusDrawer.tag = "plus-drawer";
+PlusDrawer.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 516
   })
-], Drawer.prototype, "animation", 2);
+], PlusDrawer.prototype, "animation", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Drawer.prototype, "backdrop", 2);
+], PlusDrawer.prototype, "backdrop", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Drawer.prototype, "connector", 2);
+], PlusDrawer.prototype, "connector", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Drawer.prototype, "floating", 2);
+], PlusDrawer.prototype, "floating", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Drawer.prototype, "mini", 2);
+], PlusDrawer.prototype, "mini", 2);
 __decorateClass([
   Property({
     type: 640
   })
-], Drawer.prototype, "miniSize", 2);
+], PlusDrawer.prototype, "miniSize", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Drawer.prototype, "open", 2);
+], PlusDrawer.prototype, "open", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Drawer.prototype, "persistent", 2);
+], PlusDrawer.prototype, "persistent", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Drawer.prototype, "placement", 2);
+], PlusDrawer.prototype, "placement", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Drawer.prototype, "flexible", 2);
+], PlusDrawer.prototype, "flexible", 2);
 __decorateClass([
   Property({
     type: 640
   })
-], Drawer.prototype, "size", 2);
+], PlusDrawer.prototype, "size", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Drawer.prototype, "variant", 2);
+], PlusDrawer.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Drawer.prototype, "overrides", 2);
+], PlusDrawer.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Drawer.prototype, "plusClose", 2);
+], PlusDrawer.prototype, "plusClose", 2);
 __decorateClass([
   Event()
-], Drawer.prototype, "plusClosed", 2);
+], PlusDrawer.prototype, "plusClosed", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Drawer.prototype, "plusOpen", 2);
+], PlusDrawer.prototype, "plusOpen", 2);
 __decorateClass([
   Event()
-], Drawer.prototype, "plusOpened", 2);
+], PlusDrawer.prototype, "plusOpened", 2);
 __decorateClass([
   Query("[part=root]")
-], Drawer.prototype, "$root", 2);
+], PlusDrawer.prototype, "$root", 2);
 __decorateClass([
   Provider("drawer.connector")
-], Drawer.prototype, "state", 1);
+], PlusDrawer.prototype, "state", 1);
 __decorateClass([
   Method()
-], Drawer.prototype, "hide", 1);
+], PlusDrawer.prototype, "hide", 1);
 __decorateClass([
   Method()
-], Drawer.prototype, "show", 1);
+], PlusDrawer.prototype, "show", 1);
 __decorateClass([
   Method()
-], Drawer.prototype, "toggle", 1);
+], PlusDrawer.prototype, "toggle", 1);
 __decorateClass([
   Watch(["mini", "open"])
-], Drawer.prototype, "watcher", 1);
+], PlusDrawer.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Drawer.prototype, "onClickOutside", 1);
-Drawer = __decorateClass([
+], PlusDrawer.prototype, "onClickOutside", 1);
+PlusDrawer = __decorateClass([
   Element()
-], Drawer);
+], PlusDrawer);
 export {
-  Drawer
+  PlusDrawer
 };

@@ -27,8 +27,8 @@
           "description": "Fires after the element has expanded."
         }
       ],
-      "key": "accordion",
-      "lastModified": "2025-12-11T15:22:14.028Z",
+      "key": "plus-accordion",
+      "lastModified": "2026-01-06T19:18:31.911Z",
       "methods": [
         {
           "async": false,
@@ -117,13 +117,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Accordion",
+      "title": "Plus Accordion",
       "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
       "stable": true,
       "parts": [
@@ -194,8 +194,8 @@
     },
     {
       "events": [],
-      "key": "accordions",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-accordions",
+      "lastModified": "2026-01-06T19:18:31.912Z",
       "methods": [],
       "properties": [
         {
@@ -223,13 +223,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Accordions",
+      "title": "Plus Accordions",
       "description": "",
       "subset": true,
       "slots": [
@@ -261,8 +261,8 @@
           "description": "Fires when the animation is removed (i.e., put into an `active` replace state)."
         }
       ],
-      "key": "animation",
-      "lastModified": "2025-12-11T15:22:14.187Z",
+      "key": "plus-animation",
+      "lastModified": "2026-01-06T19:18:31.913Z",
       "methods": [
         {
           "async": false,
@@ -343,8 +343,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "AnimationComposite",
-          "typeReference": "./animation.types",
+          "type": "'add' | 'accumulate' | 'replace'",
           "description": "Determines how values are combined between this animation and other, separate animations that do not specify their own specific composite operation."
         },
         {
@@ -364,8 +363,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "AnimationDirection",
-          "typeReference": "./animation.types",
+          "type": "'alternate-reverse' | 'alternate' | 'normal' | 'reverse'",
           "description": "Whether the animation runs forwards (`normal`), backwards (`reverse`), switches direction after each iteration (`alternate`), or runs backwards and switches direction after each iteration (`alternate-reverse`)."
         },
         {
@@ -405,8 +403,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "AnimationFill",
-          "typeReference": "./animation.types",
+          "type": "'backwards' | 'forwards' | 'none'",
           "description": "Dictates whether the animation's effects should be reflected by the element(s) prior to playing (\"`backwards`\"), retained after the animation has completed playing (\"`forwards`\"), or `both`."
         },
         {
@@ -425,8 +422,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "AnimationIterationComposite",
-          "typeReference": "./animation.types",
+          "type": "'accumulate' | 'replace'",
           "description": "Determines how values build from iteration to iteration in this animation. Can be set to `accumulate` or `replace`."
         },
         {
@@ -503,13 +499,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Animation",
+      "title": "Plus Animation",
       "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
       "stable": true,
       "slots": [
@@ -532,8 +528,8 @@
     },
     {
       "events": [],
-      "key": "app-progress-bar",
-      "lastModified": "2025-12-11T15:22:14.089Z",
+      "key": "plus-app-progress-bar",
+      "lastModified": "2026-01-06T19:18:31.913Z",
       "methods": [
         {
           "async": false,
@@ -602,7 +598,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
@@ -661,13 +657,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "App Progress Bar",
+      "title": "Plus App Progress Bar",
       "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations.",
       "parts": [
         {
@@ -686,8 +682,8 @@
     },
     {
       "events": [],
-      "key": "avatar",
-      "lastModified": "2025-12-11T15:22:14.048Z",
+      "key": "plus-avatar",
+      "lastModified": "2026-01-06T19:18:31.914Z",
       "methods": [],
       "properties": [
         {
@@ -696,7 +692,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -706,8 +702,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "AvatarShape",
-          "typeReference": "./avatar.types",
+          "type": "'circle' | 'round' | 'tile'",
           "description": "Specifies the shape of the element."
         },
         {
@@ -716,7 +711,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<AvatarSize>",
+          "type": "OverridableValue<PlusAvatarSize>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the size of the element."
         },
@@ -736,7 +731,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -753,7 +748,7 @@
           "name": "--plus-avatar-size"
         }
       ],
-      "title": "Avatar",
+      "title": "Plus Avatar",
       "description": "An image representing a user's profile picture.",
       "stable": true,
       "slots": [
@@ -785,8 +780,8 @@
     },
     {
       "events": [],
-      "key": "avatar-group",
-      "lastModified": "2025-12-11T15:22:14.037Z",
+      "key": "plus-avatar-group",
+      "lastModified": "2026-01-06T19:18:31.913Z",
       "methods": [],
       "properties": [
         {
@@ -823,13 +818,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Avatar Group",
+      "title": "Plus Avatar Group",
       "description": "",
       "stable": true,
       "subset": true,
@@ -843,8 +838,8 @@
     },
     {
       "events": [],
-      "key": "breadcrumb",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-breadcrumb",
+      "lastModified": "2026-01-06T19:18:31.914Z",
       "methods": [],
       "properties": [
         {
@@ -910,13 +905,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Breadcrumb",
+      "title": "Plus Breadcrumb",
       "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page. It represents the route using links, which enables the user to easily navigate upwards through the hierarchy.",
       "stable": true,
       "parts": [
@@ -961,28 +956,28 @@
       "events": [
         {
           "cancelable": false,
-          "detail": "EventEmitter<BrowseEvent>",
-          "detailReference": "./browse.types",
+          "detail": "EventEmitter<PlusBrowseEvent>",
+          "detailReference": "./types",
           "name": "plusChange",
           "description": "Fires when file(s) are selected."
         },
         {
           "cancelable": false,
-          "detail": "EventEmitter<BrowseEvent>",
-          "detailReference": "./browse.types",
+          "detail": "EventEmitter<PlusBrowseEvent>",
+          "detailReference": "./types",
           "name": "plusError",
           "description": "Fires when selected invalid file(s)."
         },
         {
           "cancelable": false,
-          "detail": "EventEmitter<BrowseEvent>",
-          "detailReference": "./browse.types",
+          "detail": "EventEmitter<PlusBrowseEvent>",
+          "detailReference": "./types",
           "name": "plusSuccess",
           "description": "Fires when file(s) are added successfully."
         }
       ],
-      "key": "browse",
-      "lastModified": "2025-12-11T15:22:14.048Z",
+      "key": "plus-browse",
+      "lastModified": "2026-01-06T19:18:31.915Z",
       "methods": [
         {
           "async": false,
@@ -1072,7 +1067,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1088,7 +1083,7 @@
         }
       ],
       "styles": [],
-      "title": "Browse",
+      "title": "Plus Browse",
       "description": "Allows you to select file or files by using click or drag & drop functionality.",
       "stable": true,
       "slots": [
@@ -1109,8 +1104,8 @@
     },
     {
       "events": [],
-      "key": "card",
-      "lastModified": "2025-12-11T15:22:14.187Z",
+      "key": "plus-card",
+      "lastModified": "2026-01-06T19:18:31.915Z",
       "methods": [],
       "properties": [
         {
@@ -1119,7 +1114,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<CardElevation>",
+          "type": "OverridableValue<number>",
           "typeReference": "@htmlplus/element",
           "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
         },
@@ -1166,7 +1161,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -1198,7 +1193,7 @@
           "name": "--plus-card-box-shadow"
         }
       ],
-      "title": "Card",
+      "title": "Plus Card",
       "description": "Cards contain content and actions about a single subject.",
       "slots": [
         {
@@ -1219,8 +1214,8 @@
     },
     {
       "events": [],
-      "key": "card-body",
-      "lastModified": "2025-12-11T15:22:14.155Z",
+      "key": "plus-card-body",
+      "lastModified": "2026-01-06T19:18:31.915Z",
       "methods": [],
       "properties": [
         {
@@ -1229,7 +1224,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1245,7 +1240,7 @@
         }
       ],
       "styles": [],
-      "title": "Card Body",
+      "title": "Plus Card Body",
       "description": "",
       "development": true,
       "subset": true,
@@ -1338,8 +1333,8 @@
           "description": "Runs when any slide has **entered** or **exited** the viewport."
         }
       ],
-      "key": "carousel",
-      "lastModified": "2025-12-11T15:22:14.152Z",
+      "key": "plus-carousel",
+      "lastModified": "2026-01-06T19:18:31.919Z",
       "methods": [
         {
           "async": false,
@@ -1470,8 +1465,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CarouselAlign",
-          "typeReference": "./carousel.types",
+          "type": "'start' | 'center' | 'end'",
           "description": "Align the slides relative to the carousel viewport."
         },
         {
@@ -1490,8 +1484,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "CarouselAxis",
-          "typeReference": "./carousel.types",
+          "type": "'x' | 'y'",
           "description": "Choose scroll axis between `x` and `y`."
         },
         {
@@ -1510,8 +1503,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CarouselContainScroll",
-          "typeReference": "./carousel.types",
+          "type": "'off' | 'keepSnaps' | 'trimSnaps'",
           "description": "Clear leading and trailing empty space that causes excessive scrolling. Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them. **Note**: When this is active, it will **override alignments** applied by the **align** property for enough slides at the **start** and the **end** of the carousel, in order to **cover** the **leading** and **trailing space**."
         },
         {
@@ -1520,9 +1512,18 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CarouselDraggable",
-          "typeReference": "./carousel.types",
-          "description": "Enables scrolling the carousel using mouse and touch interactions."
+          "type": "'free' | 'snap'",
+          "description": "Enables scrolling the carousel using mouse and touch interactions.",
+          "values": [
+            {
+              "name": "free",
+              "description": "Allows momentum based scrolling without snapping, where the scroll duration depends on the drag gesture’s intensity."
+            },
+            {
+              "name": "snap",
+              "description": "Allows the carousel to snap to scroll positions when dragged."
+            }
+          ]
         },
         {
           "attribute": "drag-threshold",
@@ -1597,9 +1598,30 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CarouselMirrorType",
-          "typeReference": "./carousel.types",
-          "description": "Specifies how the carousel should be mirrored onto another carousel."
+          "type": "'sync-jump' | 'sync-smooth' | 'click-inherit' | 'click-jump' | 'click-smooth'",
+          "description": "Specifies how the carousel should be mirrored onto another carousel.",
+          "values": [
+            {
+              "name": "sync-jump",
+              "description": "Instantly moves the target carousel to match the current slide."
+            },
+            {
+              "name": "sync-smooth",
+              "description": "Smoothly scrolls the target carousel to match the current slide."
+            },
+            {
+              "name": "click-inherit",
+              "description": "Instantly or smoothly jumps the target carousel when a slide is clicked, based on the source slide's clickable property configuration."
+            },
+            {
+              "name": "click-jump",
+              "description": "Instantly jumps the target carousel when a slide is clicked."
+            },
+            {
+              "name": "click-smooth",
+              "description": "Smoothly scrolls the target carousel when a slide is clicked."
+            }
+          ]
         },
         {
           "attribute": "resizable",
@@ -1617,8 +1639,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CarouselSlidesToScroll",
-          "typeReference": "./carousel.types",
+          "type": "'auto' | number",
           "description": "Group slides together. Drag interactions, dot navigation, and previous/next buttons are mapped to group slides into the given number, which has to be an integer. Set it to `auto` if you want to group slides automatically."
         },
         {
@@ -1665,14 +1686,14 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO: Indicates whether the carousel has been successfully initialized.",
           "Property": "() get initialized(): boolean { return !!this.api; } TODO"
         }
       ],
       "styles": [],
-      "title": "Carousel",
+      "title": "Plus Carousel",
       "description": "A carousel element for cycling through elements—like images or text slides.",
       "thirdParty": true,
       "dependenciess": [
@@ -1719,8 +1740,8 @@
     },
     {
       "events": [],
-      "key": "carousel-button",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-carousel-button",
+      "lastModified": "2026-01-06T19:18:31.916Z",
       "methods": [],
       "properties": [
         {
@@ -1757,13 +1778,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Carousel Button",
+      "title": "Plus Carousel Button",
       "description": "",
       "subset": true,
       "slots": [
@@ -1776,8 +1797,8 @@
     },
     {
       "events": [],
-      "key": "carousel-counter",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-carousel-counter",
+      "lastModified": "2026-01-06T19:18:31.916Z",
       "methods": [],
       "properties": [
         {
@@ -1806,21 +1827,21 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Carousel Counter",
+      "title": "Plus Carousel Counter",
       "description": "",
       "subset": true,
       "examples": []
     },
     {
       "events": [],
-      "key": "carousel-indicators",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-carousel-indicators",
+      "lastModified": "2026-01-06T19:18:31.916Z",
       "methods": [],
       "properties": [
         {
@@ -1856,7 +1877,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1872,15 +1893,15 @@
         }
       ],
       "styles": [],
-      "title": "Carousel Indicators",
+      "title": "Plus Carousel Indicators",
       "description": "",
       "subset": true,
       "examples": []
     },
     {
       "events": [],
-      "key": "carousel-progress",
-      "lastModified": "2025-12-11T15:22:14.140Z",
+      "key": "plus-carousel-progress",
+      "lastModified": "2026-01-06T19:18:31.917Z",
       "methods": [],
       "properties": [
         {
@@ -1889,7 +1910,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1905,15 +1926,15 @@
         }
       ],
       "styles": [],
-      "title": "Carousel Progress",
+      "title": "Plus Carousel Progress",
       "description": "",
       "subset": true,
       "examples": []
     },
     {
       "events": [],
-      "key": "carousel-slide",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-carousel-slide",
+      "lastModified": "2026-01-06T19:18:31.917Z",
       "methods": [],
       "properties": [
         {
@@ -1931,7 +1952,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1947,7 +1968,7 @@
         }
       ],
       "styles": [],
-      "title": "Carousel Slide",
+      "title": "Plus Carousel Slide",
       "description": "",
       "subset": true,
       "slots": [
@@ -1960,8 +1981,8 @@
     },
     {
       "events": [],
-      "key": "carousel-slides",
-      "lastModified": "2025-12-11T15:22:14.155Z",
+      "key": "plus-carousel-slides",
+      "lastModified": "2026-01-06T19:18:31.917Z",
       "methods": [],
       "properties": [
         {
@@ -1970,7 +1991,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -1986,7 +2007,7 @@
         }
       ],
       "styles": [],
-      "title": "Carousel Slides",
+      "title": "Plus Carousel Slides",
       "description": "",
       "subset": true,
       "slots": [
@@ -1999,8 +2020,8 @@
     },
     {
       "events": [],
-      "key": "center",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-center",
+      "lastModified": "2026-01-06T19:18:31.919Z",
       "methods": [],
       "properties": [
         {
@@ -2018,7 +2039,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -2034,7 +2055,7 @@
         }
       ],
       "styles": [],
-      "title": "Center",
+      "title": "Plus Center",
       "description": "Centers content vertically and horizontally.",
       "stable": true,
       "slots": [
@@ -2057,8 +2078,8 @@
           "description": "Fires when outside of the element is clicked."
         }
       ],
-      "key": "click-outside",
-      "lastModified": "2025-12-11T15:22:14.050Z",
+      "key": "plus-click-outside",
+      "lastModified": "2026-01-06T19:18:31.919Z",
       "methods": [],
       "properties": [
         {
@@ -2094,7 +2115,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -2110,7 +2131,7 @@
         }
       ],
       "styles": [],
-      "title": "Click Outside",
+      "title": "Plus Click Outside",
       "description": "Detects when a click event happens outside of itself.",
       "stable": true,
       "slots": [
@@ -2133,8 +2154,8 @@
           "description": "Is Triggered when transition ended."
         }
       ],
-      "key": "counter",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-counter",
+      "lastModified": "2026-01-06T19:18:31.920Z",
       "methods": [
         {
           "async": false,
@@ -2177,8 +2198,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CounterEasing",
-          "typeReference": "./counter.types",
+          "type": "'ease-out-expo' | 'linear'",
           "description": "Easing function. Click [here](http://robertpenner.com/easing) for more details."
         },
         {
@@ -2283,13 +2303,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Counter",
+      "title": "Plus Counter",
       "description": "Can be used to quickly create animations that display numerical data in a more interesting way.",
       "stable": true,
       "examples": [
@@ -2309,29 +2329,29 @@
       "events": [
         {
           "cancelable": false,
-          "detail": "EventEmitter<CropperCropEvent>",
-          "detailReference": "./cropper.types",
+          "detail": "EventEmitter<PlusCropperCropEvent>",
+          "detailReference": "./types",
           "name": "plusCrop",
           "description": "Fires when the `image` or the `viewport` is changed."
         },
         {
           "cancelable": false,
-          "detail": "EventEmitter<CropperPointerEvent>",
-          "detailReference": "./cropper.types",
+          "detail": "EventEmitter<PlusCropperPointerEvent>",
+          "detailReference": "./types",
           "name": "plusCropEnd",
           "description": "Fires when the `image` or the `viewport` changes are finished."
         },
         {
           "cancelable": false,
-          "detail": "EventEmitter<CropperPointerEvent>",
-          "detailReference": "./cropper.types",
+          "detail": "EventEmitter<PlusCropperPointerEvent>",
+          "detailReference": "./types",
           "name": "plusCropMove",
           "description": "Fires when the `image` or the `viewport` is changing."
         },
         {
           "cancelable": false,
-          "detail": "EventEmitter<CropperPointerEvent>",
-          "detailReference": "./cropper.types",
+          "detail": "EventEmitter<PlusCropperPointerEvent>",
+          "detailReference": "./types",
           "name": "plusCropStart",
           "description": "Fires when the `image` or the `viewport` starts to change."
         },
@@ -2343,14 +2363,14 @@
         },
         {
           "cancelable": true,
-          "detail": "EventEmitter<CropperZoomEvent>",
-          "detailReference": "./cropper.types",
+          "detail": "EventEmitter<PlusCropperZoomEvent>",
+          "detailReference": "./types",
           "name": "plusZoom",
           "description": "Fires when the element starts to `zoom in` or `zoom out`."
         }
       ],
-      "key": "cropper",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-cropper",
+      "lastModified": "2026-01-06T19:18:31.921Z",
       "methods": [
         {
           "async": false,
@@ -2500,8 +2520,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperAspectRatio",
-          "typeReference": "./cropper.types",
+          "type": "number | string",
           "description": "Specifies the initial aspect ratio of the viewport."
         },
         {
@@ -2547,9 +2566,22 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperMode",
-          "typeReference": "./cropper.types",
-          "description": "Specifies the mode."
+          "type": "'crop' | 'move' | 'none'",
+          "description": "Specifies the mode.",
+          "values": [
+            {
+              "name": "crop",
+              "description": "Creates a new viewport and allows to move and resize it."
+            },
+            {
+              "name": "move",
+              "description": "Moves the canvas and viewport."
+            },
+            {
+              "name": "none",
+              "description": "Do nothing."
+            }
+          ]
         },
         {
           "attribute": "resizer",
@@ -2558,9 +2590,22 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperResizer",
-          "typeReference": "./cropper.types",
-          "description": "Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`)."
+          "type": "'both' | 'edge' | 'main'",
+          "description": "Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).",
+          "values": [
+            {
+              "name": "both",
+              "description": "Enables to resize the viewport by dragging on the Sides and vertices."
+            },
+            {
+              "name": "edge",
+              "description": "Enables to resize the viewport by dragging on the vertices."
+            },
+            {
+              "name": "main",
+              "description": "Enables to resize the viewport by dragging on the Sides."
+            }
+          ]
         },
         {
           "attribute": "resizer-shape",
@@ -2569,9 +2614,22 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperResizerShape",
-          "typeReference": "./cropper.types",
-          "description": "Specifies the shape of the resizer."
+          "type": "'circle' | 'line' | 'square'",
+          "description": "Specifies the shape of the resizer.",
+          "values": [
+            {
+              "name": "circle",
+              "description": "TODO."
+            },
+            {
+              "name": "line",
+              "description": "TODO."
+            },
+            {
+              "name": "square",
+              "description": "TODO."
+            }
+          ]
         },
         {
           "attribute": "responsive",
@@ -2580,9 +2638,22 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperResponsive",
-          "typeReference": "./cropper.types",
-          "description": "Re-renders when resizing the window."
+          "type": "boolean | 'reset'",
+          "description": "Re-renders when resizing the window.",
+          "values": [
+            {
+              "name": "false",
+              "description": "TODO."
+            },
+            {
+              "name": "true",
+              "description": "TODO."
+            },
+            {
+              "name": "reset",
+              "description": "Restores the cropped area after resizing the window."
+            }
+          ]
         },
         {
           "attribute": "shape",
@@ -2591,9 +2662,22 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperShape",
-          "typeReference": "./cropper.types",
-          "description": "Specifies the shape of the viewport."
+          "type": "'circle' | 'rectangle' | 'square'",
+          "description": "Specifies the shape of the viewport.",
+          "values": [
+            {
+              "name": "circle",
+              "description": "TODO."
+            },
+            {
+              "name": "rectangle",
+              "description": "TODO."
+            },
+            {
+              "name": "square",
+              "description": "TODO."
+            }
+          ]
         },
         {
           "attribute": "src",
@@ -2619,8 +2703,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperValue",
-          "typeReference": "./cropper.types",
+          "type": "PlusCropperValue",
+          "typeReference": "./types",
           "description": "Gets/Sets data."
         },
         {
@@ -2640,9 +2724,26 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperView",
-          "typeReference": "./cropper.types",
-          "description": "Specifies the view."
+          "type": "'contain' | 'cover' | 'fit' | 'none'",
+          "description": "Specifies the view.",
+          "values": [
+            {
+              "name": "contain",
+              "description": "restrict the minimum canvas size to fit within the container. If the proportions of the canvas and the container differ, the minimum canvas will be surrounded by extra space in one of the dimensions."
+            },
+            {
+              "name": "cover",
+              "description": "restrict the minimum canvas size to fill fit the container. If the proportions of the canvas and the container are different, the container will not be able to fit the whole canvas in one of the dimensions."
+            },
+            {
+              "name": "fit",
+              "description": "restrict the viewport to not exceed the size of the canvas."
+            },
+            {
+              "name": "none",
+              "description": "no restrictions."
+            }
+          ]
         },
         {
           "attribute": "zoomable",
@@ -2651,9 +2752,26 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "CropperZoomable",
-          "typeReference": "./cropper.types",
-          "description": "Enables to zoom the image."
+          "type": "boolean | 'touch' | 'wheel'",
+          "description": "Enables to zoom the image.",
+          "values": [
+            {
+              "name": "false",
+              "description": "Unable to zoom the image."
+            },
+            {
+              "name": "true",
+              "description": "Enables to zoom the image by touching and wheeling mouse."
+            },
+            {
+              "name": "touch",
+              "description": "Enables to zoom the image by touching."
+            },
+            {
+              "name": "wheel",
+              "description": "Enables to zoom the image by wheeling mouse."
+            }
+          ]
         },
         {
           "attribute": "zoom-ratio",
@@ -2671,7 +2789,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -2773,7 +2891,7 @@
           "name": "--plus-cropper-viewport-weight"
         }
       ],
-      "title": "Cropper",
+      "title": "Plus Cropper",
       "description": "Used for cropping large images to fit a container before uploading them to the server.",
       "thirdParty": true,
       "stable": true,
@@ -2824,8 +2942,8 @@
           "description": "When the dialog is completely shown and its animation is completed."
         }
       ],
-      "key": "dialog",
-      "lastModified": "2025-12-11T15:22:14.093Z",
+      "key": "plus-dialog",
+      "lastModified": "2026-01-06T19:18:31.923Z",
       "methods": [
         {
           "async": false,
@@ -2950,8 +3068,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "DialogPlacement",
-          "typeReference": "./dialog.types",
+          "type": "PlusDialogPlacement",
+          "typeReference": "./types",
           "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
         },
         {
@@ -2969,8 +3087,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "DialogSize",
-          "typeReference": "./dialog.types",
+          "type": "'sm' | 'md' | 'lg' | 'xl'",
           "description": "Determine the width of the dialog."
         },
         {
@@ -3007,13 +3124,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Dialog",
+      "title": "Plus Dialog",
       "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
       "parts": [
         {
@@ -3046,8 +3163,8 @@
     },
     {
       "events": [],
-      "key": "dialog-body",
-      "lastModified": "2025-12-11T15:22:14.152Z",
+      "key": "plus-dialog-body",
+      "lastModified": "2026-01-06T19:18:31.921Z",
       "methods": [],
       "properties": [
         {
@@ -3075,13 +3192,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Dialog Body",
+      "title": "Plus Dialog Body",
       "description": "",
       "subset": true,
       "slots": [
@@ -3094,8 +3211,8 @@
     },
     {
       "events": [],
-      "key": "dialog-content",
-      "lastModified": "2025-12-11T15:22:14.075Z",
+      "key": "plus-dialog-content",
+      "lastModified": "2026-01-06T19:18:31.921Z",
       "methods": [],
       "properties": [
         {
@@ -3123,13 +3240,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Dialog Content",
+      "title": "Plus Dialog Content",
       "description": "",
       "subset": true,
       "slots": [
@@ -3142,8 +3259,8 @@
     },
     {
       "events": [],
-      "key": "dialog-footer",
-      "lastModified": "2025-12-11T15:22:14.051Z",
+      "key": "plus-dialog-footer",
+      "lastModified": "2026-01-06T19:18:31.921Z",
       "methods": [],
       "properties": [
         {
@@ -3152,7 +3269,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3168,7 +3285,7 @@
         }
       ],
       "styles": [],
-      "title": "Dialog Footer",
+      "title": "Plus Dialog Footer",
       "description": "",
       "subset": true,
       "slots": [
@@ -3181,8 +3298,8 @@
     },
     {
       "events": [],
-      "key": "dialog-header",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-dialog-header",
+      "lastModified": "2026-01-06T19:18:31.922Z",
       "methods": [],
       "properties": [
         {
@@ -3191,7 +3308,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3207,7 +3324,7 @@
         }
       ],
       "styles": [],
-      "title": "Dialog Header",
+      "title": "Plus Dialog Header",
       "description": "",
       "subset": true,
       "slots": [
@@ -3220,8 +3337,8 @@
     },
     {
       "events": [],
-      "key": "dialog-toggler",
-      "lastModified": "2025-12-11T15:22:14.100Z",
+      "key": "plus-dialog-toggler",
+      "lastModified": "2026-01-06T19:18:31.922Z",
       "methods": [],
       "properties": [
         {
@@ -3239,7 +3356,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3255,7 +3372,7 @@
         }
       ],
       "styles": [],
-      "title": "Dialog Toggler",
+      "title": "Plus Dialog Toggler",
       "description": "",
       "subset": true,
       "slots": [
@@ -3276,8 +3393,8 @@
     },
     {
       "events": [],
-      "key": "divider",
-      "lastModified": "2025-12-11T15:22:14.106Z",
+      "key": "plus-divider",
+      "lastModified": "2026-01-06T19:18:31.923Z",
       "methods": [],
       "properties": [
         {
@@ -3286,7 +3403,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -3297,8 +3414,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "DividerInset",
-          "typeReference": "./divider.types",
+          "type": "'none' | 'start' | 'end' | 'both' | (string & {})",
           "description": "Specifies the amount of indentation."
         },
         {
@@ -3308,8 +3424,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "DividerOrientation",
-          "typeReference": "./divider.types",
+          "type": "'horizontal' | 'vertical'",
           "description": "Draws the divider in a `horizontal` or `vertical` orientation."
         },
         {
@@ -3319,8 +3434,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "DividerPlacement",
-          "typeReference": "./divider.types",
+          "type": "'start' | 'center' | 'end'",
           "description": "Specifies the location of the default slot."
         },
         {
@@ -3330,7 +3444,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<DividerSize>",
+          "type": "OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the thickness of the border."
         },
@@ -3341,7 +3455,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<DividerStroke>",
+          "type": "OverridableValue<'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the style of the border."
         },
@@ -3361,7 +3475,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -3383,7 +3497,7 @@
           "name": "--plus-divider-stroke"
         }
       ],
-      "title": "Divider",
+      "title": "Plus Divider",
       "description": "A thin line that divides the content vertically or horizontally.",
       "stable": true,
       "parts": [
@@ -3447,8 +3561,8 @@
           "description": "When the drawer is completely shown and its animation is completed."
         }
       ],
-      "key": "drawer",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-drawer",
+      "lastModified": "2026-01-06T19:18:31.924Z",
       "methods": [
         {
           "async": false,
@@ -3573,8 +3687,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "DrawerPlacement",
-          "typeReference": "./drawer.types",
+          "type": "PlusDrawerPlacement",
+          "typeReference": "./types",
           "description": "Specifies where the drawer will open."
         },
         {
@@ -3612,13 +3726,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Drawer",
+      "title": "Plus Drawer",
       "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
       "slots": [
         {
@@ -3632,8 +3746,8 @@
     },
     {
       "events": [],
-      "key": "drawer-toggler",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-drawer-toggler",
+      "lastModified": "2026-01-06T19:18:31.924Z",
       "methods": [],
       "properties": [
         {
@@ -3651,7 +3765,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -3667,7 +3781,7 @@
         }
       ],
       "styles": [],
-      "title": "Drawer Toggler",
+      "title": "Plus Drawer Toggler",
       "description": "",
       "subset": true,
       "slots": [
@@ -3688,8 +3802,8 @@
     },
     {
       "events": [],
-      "key": "faker",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-faker",
+      "lastModified": "2026-01-06T19:18:31.924Z",
       "methods": [],
       "properties": [
         {
@@ -3746,13 +3860,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Faker",
+      "title": "Plus Faker",
       "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/).",
       "thirdParty": true,
       "stable": true,
@@ -3768,8 +3882,8 @@
     },
     {
       "events": [],
-      "key": "format-bytes",
-      "lastModified": "2025-12-11T15:22:14.155Z",
+      "key": "plus-format-bytes",
+      "lastModified": "2026-01-06T19:18:31.925Z",
       "methods": [],
       "properties": [
         {
@@ -3779,8 +3893,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "FormatBytesDisplay",
-          "typeReference": "./format-bytes.types",
+          "type": "'long' | 'short'",
           "description": "Specifies the unit will be shown as an abbreviation or not."
         },
         {
@@ -3827,8 +3940,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "FormatBytesStandard",
-          "typeReference": "./format-bytes.types",
+          "type": "'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET'",
           "description": "Specifies the standard of units. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported."
         },
         {
@@ -3838,8 +3950,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "FormatBytesUnit",
-          "typeReference": "./format-bytes.types",
+          "type": "'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta'",
           "description": "Specifies the unit in which the result will be returned."
         },
         {
@@ -3867,13 +3978,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Format Bytes",
+      "title": "Plus Format Bytes",
       "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported.",
       "stable": true,
       "examples": [
@@ -3890,8 +4001,8 @@
     },
     {
       "events": [],
-      "key": "icon",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-icon",
+      "lastModified": "2026-01-06T19:18:31.926Z",
       "methods": [],
       "properties": [
         {
@@ -3900,7 +4011,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -3910,8 +4021,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "IconFlip",
-          "typeReference": "./icon.types",
+          "type": "'both' | 'horizontal' | 'vertical'",
           "description": "Flips in `horizontal`, `vertical` or `both` directions."
         },
         {
@@ -3939,8 +4049,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "IconResolver",
-          "typeReference": "./icon.types",
+          "type": "PlusIconResolver",
+          "typeReference": "./types",
           "description": "An asynchronous function to load SVG files."
         },
         {
@@ -3958,8 +4068,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "IconSize",
-          "typeReference": "./icon.types",
+          "type": "PlusIconSize",
+          "typeReference": "./types",
           "description": "Specifies the size."
         },
         {
@@ -3978,13 +4088,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Icon",
+      "title": "Plus Icon",
       "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library.",
       "stable": true,
       "parts": [
@@ -4021,8 +4131,8 @@
           "description": "Fires When the browser detects that the element has been unveiled or obscured."
         }
       ],
-      "key": "intersection",
-      "lastModified": "2025-12-11T15:22:14.097Z",
+      "key": "plus-intersection",
+      "lastModified": "2026-01-06T19:18:31.926Z",
       "methods": [],
       "properties": [
         {
@@ -4087,13 +4197,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Intersection",
+      "title": "Plus Intersection",
       "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
       "stable": true,
       "slots": [
@@ -4109,8 +4219,8 @@
     },
     {
       "events": [],
-      "key": "prism",
-      "lastModified": "2025-12-11T15:22:14.155Z",
+      "key": "plus-prism",
+      "lastModified": "2026-01-06T19:18:31.926Z",
       "methods": [],
       "properties": [
         {
@@ -4134,14 +4244,34 @@
           "description": "The theme to apply for syntax highlighting."
         },
         {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "TODO"
+        },
+        {
           "attribute": "plugins",
           "name": "plugins",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "PrismPlugins",
-          "typeReference": "./prism.types",
+          "type": "PlusPrismPlugins",
+          "typeReference": "./types",
           "description": "Plugins to enhance Prism's functionality."
+        },
+        {
+          "attribute": "resolver",
+          "name": "resolver",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "PlusPrismResolver",
+          "typeReference": "./types",
+          "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
         },
         {
           "attribute": "sync",
@@ -4153,16 +4283,6 @@
           "description": "Whether to synchronize updates with DOM changes."
         },
         {
-          "attribute": "resolver",
-          "name": "resolver",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "PrismResolver",
-          "typeReference": "./prism.types",
-          "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
-        },
-        {
           "attribute": "variant",
           "name": "variant",
           "readonly": false,
@@ -4171,20 +4291,10 @@
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Prism",
+      "title": "Plus Prism",
       "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/).",
       "thirdParty": true,
       "dependencies": "prismjs",
@@ -4225,8 +4335,8 @@
     },
     {
       "events": [],
-      "key": "progress-bar",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-progress-bar",
+      "lastModified": "2026-01-06T19:18:31.927Z",
       "methods": [],
       "properties": [
         {
@@ -4244,7 +4354,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
@@ -4258,6 +4368,16 @@
           "description": "Displays the progress percentage."
         },
         {
+          "attribute": "max",
+          "initializer": "100",
+          "name": "max",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "number",
+          "description": "Specifies the maximum value of the progress."
+        },
+        {
           "attribute": "min",
           "initializer": "0",
           "name": "min",
@@ -4268,14 +4388,14 @@
           "description": "Specifies the minimum value of the progress."
         },
         {
-          "attribute": "max",
-          "initializer": "100",
-          "name": "max",
+          "attribute": "overrides",
+          "name": "overrides",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "number",
-          "description": "Specifies the maximum value of the progress."
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "TODO"
         },
         {
           "attribute": "sync",
@@ -4305,16 +4425,6 @@
           "required": false,
           "type": "number",
           "description": "Specifies the progress of the bar by a number between `min` and `max`."
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         }
       ],
       "styles": [
@@ -4324,7 +4434,7 @@
           "name": "--plus-progress-bar-indicator-background-color"
         }
       ],
-      "title": "Progress Bar",
+      "title": "Plus Progress Bar",
       "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
       "slots": [
         {
@@ -4351,8 +4461,8 @@
     },
     {
       "events": [],
-      "key": "progress-bar-stack",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-progress-bar-stack",
+      "lastModified": "2026-01-06T19:18:31.927Z",
       "methods": [],
       "properties": [
         {
@@ -4361,7 +4471,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4377,7 +4487,7 @@
         }
       ],
       "styles": [],
-      "title": "Progress Bar Stack",
+      "title": "Plus Progress Bar Stack",
       "description": "",
       "subset": true,
       "slots": [
@@ -4390,8 +4500,8 @@
     },
     {
       "events": [],
-      "key": "relative-time",
-      "lastModified": "2025-12-11T15:22:14.155Z",
+      "key": "plus-relative-time",
+      "lastModified": "2026-01-06T19:18:31.928Z",
       "methods": [],
       "properties": [
         {
@@ -4449,13 +4559,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Relative Time",
+      "title": "Plus Relative Time",
       "description": "Outputs a localized time phrase relative to the provided datetime.",
       "examples": [
         "default",
@@ -4471,14 +4581,14 @@
       "events": [
         {
           "cancelable": false,
-          "detail": "EventEmitter<ScrollDetectorChangeEvent>",
-          "detailReference": "./scroll-detector.types",
+          "detail": "EventEmitter<PlusScrollDetectorChangeEvent>",
+          "detailReference": "./types",
           "name": "plusChange",
           "description": "Fires when the scroll starts changing."
         }
       ],
-      "key": "scroll-detector",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-scroll-detector",
+      "lastModified": "2026-01-06T19:18:31.928Z",
       "methods": [],
       "properties": [
         {
@@ -4497,8 +4607,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "ScrollDetectorReference",
-          "typeReference": "./scroll-detector.types",
+          "type": "Element | 'document' | (string & {})",
           "description": "Specifies the reference of the scroll."
         },
         {
@@ -4526,13 +4635,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Scroll Detector",
+      "title": "Plus Scroll Detector",
       "description": "Detects scroll event from an element.",
       "stable": true,
       "examples": [
@@ -4542,12 +4651,6 @@
     },
     {
       "events": [
-        {
-          "cancelable": false,
-          "detail": "EventEmitter<void>",
-          "name": "plusChange",
-          "description": "Fires after the latest changes have occurred with a delay to prepare the value."
-        },
         {
           "cancelable": false,
           "detail": "EventEmitter<PointerEvent>",
@@ -4562,9 +4665,21 @@
         },
         {
           "cancelable": false,
+          "detail": "EventEmitter<PointGroup[]>",
+          "name": "plusChange",
+          "description": "Fires after the latest changes have occurred with a delay to prepare the value."
+        },
+        {
+          "cancelable": false,
           "detail": "EventEmitter<PointerEvent>",
           "name": "plusEnd",
           "description": "Fires after a stroke ends."
+        },
+        {
+          "cancelable": false,
+          "detail": "EventEmitter<void>",
+          "name": "plusReady",
+          "description": "Fires when the underlying `signature_pad` instance has been successfully initialized and the element is ready for interaction."
         },
         {
           "cancelable": false,
@@ -4573,9 +4688,39 @@
           "description": "Fires before a stroke starts."
         }
       ],
-      "key": "signature",
-      "lastModified": "2025-12-11T15:22:14.158Z",
+      "key": "plus-signature",
+      "lastModified": "2026-01-06T19:18:31.929Z",
       "methods": [
+        {
+          "async": false,
+          "name": "clear",
+          "parameters": [],
+          "returns": "void",
+          "signature": "clear() => void",
+          "description": "Clears the canvas"
+        },
+        {
+          "async": true,
+          "name": "fromDataURL",
+          "parameters": [
+            {
+              "description": "The data URL representing the signature image.",
+              "required": true,
+              "name": "dataUrl",
+              "type": "string"
+            },
+            {
+              "description": "Optional configuration for restoring the image.",
+              "required": false,
+              "name": "options",
+              "type": "FromDataUrlOptions",
+              "typeReference": "signature_pad"
+            }
+          ],
+          "returns": "void",
+          "signature": "fromDataURL(dataUrl: string, options?: FromDataUrlOptions) => void",
+          "description": "Restores the signature from a data URL."
+        },
         {
           "async": false,
           "name": "redo",
@@ -4583,6 +4728,14 @@
           "returns": "void",
           "signature": "redo() => void",
           "description": "Reverts the last undo action."
+        },
+        {
+          "async": false,
+          "name": "redraw",
+          "parameters": [],
+          "returns": "void",
+          "signature": "redraw() => void",
+          "description": "Redraw the canvas."
         },
         {
           "async": false,
@@ -4601,6 +4754,56 @@
         },
         {
           "async": false,
+          "name": "toDataURL",
+          "parameters": [
+            {
+              "description": "The image MIME type (e.g. `image/png`, `image/jpeg`). Defaults to `image/png`.",
+              "required": false,
+              "name": "type",
+              "type": "string"
+            },
+            {
+              "description": "A number between `0` and `1` indicating image quality. Applies only to `image/jpeg` or `image/webp`.",
+              "required": false,
+              "name": "quality",
+              "type": "number"
+            }
+          ],
+          "returns": "string | undefined",
+          "signature": "toDataURL(type?: string, quality?: number) => string | undefined",
+          "description": "Returns the current signature as a data URL. The returned string can be used to display the signature image, upload it to a server, or store it for later use.",
+          "see": "https://mdn.io/todataurl",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "A data URL representing the signature, or `undefined` if the signature pad has not been initialized."
+            }
+          ]
+        },
+        {
+          "async": false,
+          "name": "toSVG",
+          "parameters": [
+            {
+              "description": "Optional configuration for the SVG output.",
+              "required": true,
+              "name": "options",
+              "type": "ToSVGOptions",
+              "typeReference": "signature_pad"
+            }
+          ],
+          "returns": "string | undefined",
+          "signature": "toSVG(options: ToSVGOptions) => string | undefined",
+          "description": "Returns the current signature as an SVG string.",
+          "tags": [
+            {
+              "key": "returns",
+              "value": "A string containing the SVG markup of the signature, or `undefined` if the signature pad has not been initialized."
+            }
+          ]
+        },
+        {
+          "async": false,
           "name": "undo",
           "parameters": [],
           "returns": "void",
@@ -4616,9 +4819,19 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the background color."
+        },
+        {
+          "attribute": "canvas-context-options",
+          "name": "canvasContextOptions",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "CanvasRenderingContext2DSettings",
+          "description": "Specifies configuration options for the canvas 2D rendering context. These options are passed to `HTMLCanvasElement.getContext('2d', options)` and control how the drawing context is created (for example, alpha, color space, or desynchronization behavior).",
+          "see": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getContextAttributes"
         },
         {
           "attribute": "clear-on-resize",
@@ -4630,24 +4843,25 @@
           "description": "Clears the canvas after resizing."
         },
         {
-          "attribute": "color",
+          "attribute": "pen-color",
           "initializer": "'black'",
-          "name": "color",
+          "name": "penColor",
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the strokes."
         },
         {
-          "attribute": "distance",
-          "name": "distance",
+          "attribute": "min-distance",
+          "initializer": "5",
+          "name": "minDistance",
           "readonly": false,
           "reflects": false,
           "required": false,
           "type": "number",
-          "description": "Specifies the distance between the previous point and the next one."
+          "description": "Add the next point only if the previous one is farther than x pixels."
         },
         {
           "attribute": "dot-size",
@@ -4703,13 +4917,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "string",
+          "type": "PointGroup[]",
           "description": "Gets/Sets data."
         },
         {
-          "attribute": "velocity",
+          "attribute": "velocity-filter-weight",
           "initializer": "0.7",
-          "name": "velocity",
+          "name": "velocityFilterWeight",
           "readonly": false,
           "reflects": false,
           "required": false,
@@ -4759,13 +4973,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Signature",
+      "title": "Plus Signature",
       "description": "Allows user to draw smooth signatures.",
       "thirdParty": true,
       "stable": true,
@@ -4779,23 +4993,25 @@
       "examples": [
         "default",
         "background-color",
-        "color",
+        "pen-color",
         "dimensions",
         "disabled",
-        "value",
+        "dot-size",
         "width",
-        "distance",
+        "min-distance",
         "clear",
         "history",
         "resizable",
         "clear-on-resize",
-        "save"
+        "save",
+        "load",
+        "events"
       ]
     },
     {
       "events": [],
-      "key": "snippet",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-snippet",
+      "lastModified": "2026-01-06T19:18:31.930Z",
       "methods": [],
       "properties": [
         {
@@ -4804,7 +5020,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -4833,7 +5049,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
@@ -4845,7 +5061,7 @@
           "name": "--plus-snippet-color"
         }
       ],
-      "title": "Snippet",
+      "title": "Plus Snippet",
       "description": "A component that can be used to display inline code snippets.",
       "parts": [
         {
@@ -4884,8 +5100,8 @@
     },
     {
       "events": [],
-      "key": "spacer",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-spacer",
+      "lastModified": "2026-01-06T19:18:31.930Z",
       "methods": [],
       "properties": [
         {
@@ -4904,7 +5120,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -4920,7 +5136,7 @@
         }
       ],
       "styles": [],
-      "title": "Spacer",
+      "title": "Plus Spacer",
       "description": "",
       "examples": [
         "default"
@@ -4928,8 +5144,8 @@
     },
     {
       "events": [],
-      "key": "spinner",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-spinner",
+      "lastModified": "2026-01-06T19:18:31.930Z",
       "methods": [],
       "properties": [
         {
@@ -4938,9 +5154,19 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, ColorOverrides>",
+          "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
+        },
+        {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "TODO"
         },
         {
           "attribute": "size",
@@ -4949,7 +5175,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<SpinnerSize>",
+          "type": "OverridableValue<'sm' | 'md' | 'lg' | 'inherit'>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the size of the spinner."
         },
@@ -4960,8 +5186,8 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "SpinnerType",
-          "typeReference": "./spinner.types",
+          "type": "PlusSpinnerType",
+          "typeReference": "./types",
           "description": "Specifies which variant of the spinner to use."
         },
         {
@@ -4973,20 +5199,10 @@
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Spinner",
+      "title": "Plus Spinner",
       "description": "An indicator of progress and activity.",
       "stable": true,
       "examples": [
@@ -5000,8 +5216,8 @@
     },
     {
       "events": [],
-      "key": "stack",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-stack",
+      "lastModified": "2026-01-06T19:18:31.931Z",
       "methods": [],
       "properties": [
         {
@@ -5010,8 +5226,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "StackGap",
-          "typeReference": "./stack.types",
+          "type": "string | number",
           "description": "The gap between items."
         },
         {
@@ -5021,8 +5236,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "StackAlign",
-          "typeReference": "./stack.types",
+          "type": "'start' | 'end' | 'center' | 'baseline' | 'stretch'",
           "description": "The alignment of items along the cross axis."
         },
         {
@@ -5032,8 +5246,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "StackJustify",
-          "typeReference": "./stack.types",
+          "type": "'start' | 'end' | 'center' | 'stretch' | 'normal' | 'between' | 'around' | 'evenly'",
           "description": "The distribution of items along the main axis."
         },
         {
@@ -5080,13 +5293,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Stack",
+      "title": "Plus Stack",
       "description": "A container for arranging elements vertically or horizontally.",
       "slots": [
         {
@@ -5104,16 +5317,35 @@
       "events": [
         {
           "cancelable": false,
-          "detail": "EventEmitter<StickyState>",
-          "detailReference": "./sticky.types",
+          "detail": "EventEmitter<PlusStickyState>",
+          "detailReference": "./types",
           "name": "plusChange",
           "description": "Fires when the state is changed. To enable, set the `watcher` property to `true`."
         }
       ],
-      "key": "sticky",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-sticky",
+      "lastModified": "2026-01-06T19:18:31.931Z",
       "methods": [],
       "properties": [
+        {
+          "attribute": "disabled",
+          "name": "disabled",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Disables the element functionality."
+        },
+        {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "TODO"
+        },
         {
           "attribute": "top",
           "initializer": "0",
@@ -5121,8 +5353,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "StickyTop",
-          "typeReference": "./sticky.types",
+          "type": "string | number",
           "description": "Specifies the space from top."
         },
         {
@@ -5152,20 +5383,10 @@
           "required": false,
           "type": "number",
           "description": "Specifies the z-index."
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<Breakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Sticky",
+      "title": "Plus Sticky",
       "description": "Element content is positioned based on the user's scroll position.",
       "stable": true,
       "slots": [
@@ -5201,8 +5422,8 @@
           "model": true
         }
       ],
-      "key": "switch",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-switch",
+      "lastModified": "2026-01-06T19:18:31.931Z",
       "methods": [],
       "properties": [
         {
@@ -5230,7 +5451,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5246,7 +5467,7 @@
         }
       ],
       "styles": [],
-      "title": "Switch",
+      "title": "Plus Switch",
       "description": "Toggles the state of a single item on or off.",
       "examples": [
         "default",
@@ -5261,14 +5482,13 @@
       "events": [
         {
           "cancelable": true,
-          "detail": "EventEmitter<TabsValue>",
-          "detailReference": "./tabs.types",
+          "detail": "EventEmitter<string>",
           "name": "plusChange",
           "description": "Fired when the value changes."
         }
       ],
-      "key": "tabs",
-      "lastModified": "2025-12-11T15:22:14.158Z",
+      "key": "plus-tabs",
+      "lastModified": "2026-01-06T19:18:31.933Z",
       "methods": [],
       "properties": [
         {
@@ -5277,8 +5497,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TabsValue",
-          "typeReference": "./tabs.types",
+          "type": "string",
           "description": "Provides your own value."
         },
         {
@@ -5306,13 +5525,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Tabs",
+      "title": "Plus Tabs",
       "description": "Organizes content across different screens.",
       "development": true,
       "slots": [
@@ -5333,8 +5552,8 @@
     },
     {
       "events": [],
-      "key": "tabs-bar",
-      "lastModified": "2025-12-11T15:22:14.155Z",
+      "key": "plus-tabs-bar",
+      "lastModified": "2026-01-06T19:18:31.932Z",
       "methods": [],
       "properties": [
         {
@@ -5381,13 +5600,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Tabs Bar",
+      "title": "Plus Tabs Bar",
       "description": "TODO: Arranges tabs within a bar.",
       "subset": true,
       "slots": [
@@ -5400,8 +5619,8 @@
     },
     {
       "events": [],
-      "key": "tabs-panel",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-tabs-panel",
+      "lastModified": "2026-01-06T19:18:31.932Z",
       "methods": [],
       "properties": [
         {
@@ -5410,8 +5629,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TabsValue",
-          "typeReference": "../tabs/tabs.types",
+          "type": "string",
           "description": "Provides your own value."
         },
         {
@@ -5439,13 +5657,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Tabs Panel",
+      "title": "Plus Tabs Panel",
       "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
       "subset": true,
       "slots": [
@@ -5458,8 +5676,8 @@
     },
     {
       "events": [],
-      "key": "tabs-panels",
-      "lastModified": "2025-12-11T15:22:14.148Z",
+      "key": "plus-tabs-panels",
+      "lastModified": "2026-01-06T19:18:31.932Z",
       "methods": [],
       "properties": [
         {
@@ -5468,7 +5686,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         },
@@ -5484,7 +5702,7 @@
         }
       ],
       "styles": [],
-      "title": "Tabs Panels",
+      "title": "Plus Tabs Panels",
       "description": "TODO: This element contains panels.",
       "subset": true,
       "slots": [
@@ -5497,8 +5715,8 @@
     },
     {
       "events": [],
-      "key": "tabs-tab",
-      "lastModified": "2025-12-11T15:22:14.036Z",
+      "key": "plus-tabs-tab",
+      "lastModified": "2026-01-06T19:18:31.933Z",
       "methods": [],
       "properties": [
         {
@@ -5516,8 +5734,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TabsValue",
-          "typeReference": "../tabs/tabs.types",
+          "type": "string",
           "description": "Provides your own value."
         },
         {
@@ -5545,13 +5762,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Tabs Tab",
+      "title": "Plus Tabs Tab",
       "description": "TODO: Tabs make it easy to switch between different views.",
       "subset": true,
       "slots": [
@@ -5564,8 +5781,8 @@
     },
     {
       "events": [],
-      "key": "tooltip",
-      "lastModified": "2025-12-11T15:22:14.156Z",
+      "key": "plus-tooltip",
+      "lastModified": "2026-01-06T19:18:31.933Z",
       "methods": [
         {
           "async": false,
@@ -5608,8 +5825,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TooltipDelay",
-          "typeReference": "./tooltip.types",
+          "type": "number | [number, number]",
           "description": "Specifies a delay in milliseconds for show or hide. Use a number for both show and hide or create an array of two separate numbers for show and hide."
         },
         {
@@ -5636,8 +5852,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TooltipOffset",
-          "typeReference": "./tooltip.types",
+          "type": "number | [number, number]",
           "description": "TODO"
         },
         {
@@ -5646,8 +5861,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TooltipPlacement",
-          "typeReference": "./tooltip.types",
+          "type": "PlusTooltipPlacement",
+          "typeReference": "./types",
           "description": "Specifies the display location of the element relative to the reference."
         },
         {
@@ -5657,8 +5872,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TooltipReference",
-          "typeReference": "./tooltip.types",
+          "type": "Element | 'next' | 'parent' | 'previous' | (string & {})",
           "description": "Specifies the element to which the tooltip will be attached. Use `next` to attach to the next sibling. Use `parent` to attach to the parent. Use `previous` to attach to the previous sibling. Use a string to find an element to attach to that. Use an element to attach to that."
         },
         {
@@ -5667,8 +5881,8 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "TooltipTrigger",
-          "typeReference": "./tooltip.types",
+          "type": "PlusTooltipTrigger",
+          "typeReference": "./types",
           "description": "Specifies the activation method."
         },
         {
@@ -5697,13 +5911,13 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridesConfig<Breakpoint>",
+          "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO"
         }
       ],
       "styles": [],
-      "title": "Tooltip",
+      "title": "Plus Tooltip",
       "description": "TODO",
       "thirdParty": true,
       "dependencies": "@floating-ui/dom",

@@ -1,1 +1,1 @@
-export * from './dialog-toggler';
+export * from './element';

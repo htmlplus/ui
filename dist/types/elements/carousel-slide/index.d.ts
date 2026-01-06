@@ -1,1 +1,1 @@
-export * from './carousel-slide';
+export * from './element';

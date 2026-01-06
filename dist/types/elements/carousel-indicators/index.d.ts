@@ -1,1 +1,1 @@
-export * from './carousel-indicators';
+export * from './element';

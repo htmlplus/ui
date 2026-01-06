@@ -1,2 +1,2 @@
-export * from './prism';
-export * from './prism.types';
+export * from './element';
+export * from './types';

@@ -1,2 +1,2 @@
-export * from './avatar';
-export * from './avatar.types';
+export * from './element';
+export * from './types';

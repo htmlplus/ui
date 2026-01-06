@@ -1,4 +1,4 @@
-import { h as html, c as Property, O as Overrides, V as Variant, L as Listen, d as Element } from "../core/index.js";
+import { b as _internal_h_, c as Property, O as Overrides, V as Variant, L as Listen, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;flex:0 0 auto}:host([clickable]){cursor:pointer}global plus-carousel[axis=x] plus-carousel-slide{min-width:0}global plus-carousel[axis=y] plus-carousel-slide{min-height:0}";
 var __defProp = Object.defineProperty;
@@ -11,7 +11,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let CarouselSlide = class extends CarouselChild {
+let PlusCarouselSlide = class extends CarouselChild {
   constructor() {
     super(...arguments);
     this.events = ["init", "reInit", "select"];
@@ -25,36 +25,36 @@ let CarouselSlide = class extends CarouselChild {
     }
   }
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-CarouselSlide.tag = "plus-carousel-slide";
-CarouselSlide.style = STYLE_IMPORTED;
+PlusCarouselSlide.tag = "plus-carousel-slide";
+PlusCarouselSlide.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 20
   })
-], CarouselSlide.prototype, "clickable", 2);
+], PlusCarouselSlide.prototype, "clickable", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], CarouselSlide.prototype, "overrides", 2);
+], PlusCarouselSlide.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], CarouselSlide.prototype, "variant", 2);
+], PlusCarouselSlide.prototype, "variant", 2);
 __decorateClass([
   Listen("click")
-], CarouselSlide.prototype, "handleClick", 1);
-CarouselSlide = __decorateClass([
+], PlusCarouselSlide.prototype, "handleClick", 1);
+PlusCarouselSlide = __decorateClass([
   Element()
-], CarouselSlide);
+], PlusCarouselSlide);
 export {
-  CarouselSlide
+  PlusCarouselSlide
 };

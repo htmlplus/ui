@@ -1,4 +1,4 @@
-import { w as setConfig, P as PlusCore, m as getConfig, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { v as setConfig, P as PlusCore, l as getConfig, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   ease: "ease",
@@ -58,7 +58,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Animation = class extends PlusCore {
+let PlusAnimation = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.composite = "replace";
@@ -144,148 +144,148 @@ let Animation = class extends PlusCore {
     this.instance?.removeEventListener("remove", this.onFinish);
   }
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-Animation.tag = "plus-animation";
-Animation.style = STYLE_IMPORTED;
+PlusAnimation.tag = "plus-animation";
+PlusAnimation.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 16
   })
-], Animation.prototype, "composite", 2);
+], PlusAnimation.prototype, "composite", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Animation.prototype, "delay", 2);
+], PlusAnimation.prototype, "delay", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Animation.prototype, "direction", 2);
+], PlusAnimation.prototype, "direction", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Animation.prototype, "duration", 2);
+], PlusAnimation.prototype, "duration", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Animation.prototype, "easing", 2);
+], PlusAnimation.prototype, "easing", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Animation.prototype, "endDelay", 2);
+], PlusAnimation.prototype, "endDelay", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Animation.prototype, "fill", 2);
+], PlusAnimation.prototype, "fill", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Animation.prototype, "instance", 2);
+], PlusAnimation.prototype, "instance", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Animation.prototype, "iterationComposite", 2);
+], PlusAnimation.prototype, "iterationComposite", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Animation.prototype, "iterations", 2);
+], PlusAnimation.prototype, "iterations", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Animation.prototype, "iterationStart", 2);
+], PlusAnimation.prototype, "iterationStart", 2);
 __decorateClass([
   Property({
     type: 1
   })
-], Animation.prototype, "keyframes", 2);
+], PlusAnimation.prototype, "keyframes", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Animation.prototype, "name", 2);
+], PlusAnimation.prototype, "name", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Animation.prototype, "playbackRate", 2);
+], PlusAnimation.prototype, "playbackRate", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Animation.prototype, "run", 2);
+], PlusAnimation.prototype, "run", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Animation.prototype, "variant", 2);
+], PlusAnimation.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Animation.prototype, "overrides", 2);
+], PlusAnimation.prototype, "overrides", 2);
 __decorateClass([
   Event()
-], Animation.prototype, "plusCancel", 2);
+], PlusAnimation.prototype, "plusCancel", 2);
 __decorateClass([
   Event()
-], Animation.prototype, "plusFinish", 2);
+], PlusAnimation.prototype, "plusFinish", 2);
 __decorateClass([
   Event()
-], Animation.prototype, "plusRemove", 2);
+], PlusAnimation.prototype, "plusRemove", 2);
 __decorateClass([
   Method()
-], Animation.prototype, "cancel", 1);
+], PlusAnimation.prototype, "cancel", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "commitStyles", 1);
+], PlusAnimation.prototype, "commitStyles", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "finish", 1);
+], PlusAnimation.prototype, "finish", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "pause", 1);
+], PlusAnimation.prototype, "pause", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "persist", 1);
+], PlusAnimation.prototype, "persist", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "play", 1);
+], PlusAnimation.prototype, "play", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "reverse", 1);
+], PlusAnimation.prototype, "reverse", 1);
 __decorateClass([
   Method()
-], Animation.prototype, "updatePlaybackRate", 1);
+], PlusAnimation.prototype, "updatePlaybackRate", 1);
 __decorateClass([
   Watch("run", true)
-], Animation.prototype, "watcher", 1);
+], PlusAnimation.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Animation.prototype, "onCancel", 1);
+], PlusAnimation.prototype, "onCancel", 1);
 __decorateClass([
   Bind()
-], Animation.prototype, "onFinish", 1);
+], PlusAnimation.prototype, "onFinish", 1);
 __decorateClass([
   Bind()
-], Animation.prototype, "onRemove", 1);
-Animation = __decorateClass([
+], PlusAnimation.prototype, "onRemove", 1);
+PlusAnimation = __decorateClass([
   Element()
-], Animation);
+], PlusAnimation);
 export {
-  Animation
+  PlusAnimation
 };

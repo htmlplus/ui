@@ -1,4 +1,4 @@
-import { Q as Query, h as html, c as Property, O as Overrides, V as Variant, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, b as _internal_h_, c as Property, O as Overrides, V as Variant, B as Bind, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{background-color:#f5f5f5;border-radius:1.8rem;height:.6rem;display:block;position:relative;overflow:hidden}.bar{background-color:#d3d3d3;position:absolute;width:100%;top:0;bottom:0;left:-100%}";
 var __defProp = Object.defineProperty;
@@ -11,7 +11,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let CarouselProgress = class extends CarouselChild {
+let PlusCarouselProgress = class extends CarouselChild {
   constructor() {
     super(...arguments);
     this.events = ["init", "reInit", "scroll", "slideFocus"];
@@ -26,33 +26,33 @@ let CarouselProgress = class extends CarouselChild {
     this.$bar.style.transform = `translate3d(${progress}%, 0px, 0px)`;
   }
   render() {
-    return html`<div class="bar" part="bar" />`;
+    return _internal_h_`<div class="bar" part="bar" />`;
   }
 };
-CarouselProgress.tag = "plus-carousel-progress";
-CarouselProgress.style = STYLE_IMPORTED;
+PlusCarouselProgress.tag = "plus-carousel-progress";
+PlusCarouselProgress.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], CarouselProgress.prototype, "overrides", 2);
+], PlusCarouselProgress.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], CarouselProgress.prototype, "variant", 2);
+], PlusCarouselProgress.prototype, "variant", 2);
 __decorateClass([
   Query("div")
-], CarouselProgress.prototype, "$bar", 2);
+], PlusCarouselProgress.prototype, "$bar", 2);
 __decorateClass([
   Bind()
-], CarouselProgress.prototype, "handleUpdate", 1);
-CarouselProgress = __decorateClass([
+], PlusCarouselProgress.prototype, "handleUpdate", 1);
+PlusCarouselProgress = __decorateClass([
   Element()
-], CarouselProgress);
+], PlusCarouselProgress);
 export {
-  CarouselProgress
+  PlusCarouselProgress
 };

@@ -1,1 +1,1 @@
-export * from './progress-bar-stack';
+export * from './element';

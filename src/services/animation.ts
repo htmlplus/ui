@@ -47,7 +47,7 @@ export class Animation {
 	}
 
 	constructor(config: AnimationConfig) {
-		this.config = Object.assign({}, this.config, config, {
+		this.config = Object.assign({}, config, {
 			states: Object.assign(
 				{},
 				{
@@ -107,7 +107,7 @@ export class Animation {
 		});
 	}
 
-	public initialize(state?: AnimationState) {
+	public initialize(state: AnimationState) {
 		this.update(state);
 	}
 
@@ -151,14 +151,16 @@ export class Animation {
 		});
 	}
 
-	private next(callback) {
+	private next(callback: () => void) {
 		requestAnimationFrame(() => setTimeout(() => callback(), 5));
 	}
 
 	private update(state: AnimationState) {
 		this.state = state;
 
-		const value = this.config.states[this.state];
+		const value = this.config.states?.[this.state];
+
+		if (!value) return;
 
 		this.target.setAttribute(this.config.key, value);
 	}

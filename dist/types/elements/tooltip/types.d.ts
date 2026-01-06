@@ -1,0 +1,2 @@
+export type PlusTooltipPlacement = 'top' | 'top-left' | 'top-right' | 'top-start' | 'top-end' | 'right' | 'right-top' | 'right-bottom' | 'bottom' | 'bottom-left' | 'bottom-right' | 'bottom-start' | 'bottom-end' | 'left' | 'left-top' | 'left-bottom' | 'start' | 'start-top' | 'start-bottom' | 'end' | 'end-top' | 'end-bottom';
+export type PlusTooltipTrigger = 'click' | 'focus' | 'hover' | 'manual' | PlusTooltipTrigger[];

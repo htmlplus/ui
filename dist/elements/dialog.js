@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, n as Animation, p as Scrollbar, a as off, o as on, r as toAxis, u as classes, b as attributes, h as html, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, m as Animation, n as Scrollbar, a as off, o as on, p as toAxis, r as classes, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host([animation][state=opening]),:host([animation][state=closing]){transition:all .5s ease-out}:host([animation][state=opening]) .dialog,:host([animation][state=closing]) .dialog{overflow:hidden}:host([animation][state=opening]) ::slotted(*),:host([animation][state=closing]) ::slotted(*){transition:all .5s ease-out}:host([animation][state=open]),:host([animation][state=closing]){opacity:0}:host([animation][state=open]) ::slotted(*),:host([animation][state=closing]) ::slotted(*){transform:translate(0, -50px)}:host([animation][state=open]) .y-bottom ::slotted(*),:host([animation][state=closing]) .y-bottom ::slotted(*){transform:translate(0, 50px)}:host([animation][state=open]) .x-right ::slotted(*),:host([animation][state=closing]) .x-right ::slotted(*){transform:translate(50px, 0)}:host([animation][state=open]) .x-left ::slotted(*),:host([animation][state=closing]) .x-left ::slotted(*){transform:translate(-50px, 0)}:host([animation][state=close]),:host([animation][state=opening]){opacity:1}:host([animation][state=close]) ::slotted(*),:host([animation][state=opening]) ::slotted(*){transform:translate(0, 0)}:host{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;display:block;outline:0;overflow:hidden}.backdrop{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1}.backdrop *{width:100%;height:100%;background-color:#000;opacity:.5}.dialog{position:fixed;top:0;left:0;width:100%;height:100%;overflow-x:hidden;overflow-y:auto;z-index:1}.table{display:table;margin:auto;height:100%;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}@media(min-width: 576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media(min-width: 992px){.size-lg .cell{max-width:800px}.size-xl .cell{max-width:800px}}@media(min-width: 1200px){.size-xl .cell{max-width:1140px}}:host([fullscreen]) .cell{padding:0}:host([fullscreen]) ::slotted(*){border:0;border-radius:0}:host([fullscreen]) .cell{max-width:none}:host([fullscreen]) ::slotted(*){min-height:100vh}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none !important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Dialog = class extends PlusCore {
+let PlusDialog = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.placement = "top";
@@ -32,7 +32,7 @@ let Dialog = class extends PlusCore {
         on(this.$cell, "outside", this.onClickOutside, true);
         this.$host.style.zIndex = this.zIndex;
         this.open = this.opened = true;
-        Dialog.instances.push(this);
+        PlusDialog.instances.push(this);
       },
       onEntering: () => {
         this.opened = this.open = true;
@@ -52,7 +52,7 @@ let Dialog = class extends PlusCore {
         off(this.$cell, "outside", this.onClickOutside, true);
         this.$host.style.zIndex = "";
         this.open = this.opened = false;
-        Dialog.instances = Dialog.instances.filter((instance) => instance !== this);
+        PlusDialog.instances = PlusDialog.instances.filter((instance) => instance !== this);
         if (silent) return;
         this.plusClosed();
       }
@@ -85,11 +85,11 @@ let Dialog = class extends PlusCore {
     }]);
   }
   get isCurrent() {
-    return Dialog.instances.at(-1) === this;
+    return PlusDialog.instances.at(-1) === this;
   }
   get zIndex() {
-    if (Dialog.instances.length < 1) return "";
-    const [instance] = Dialog.instances.slice(-1);
+    if (PlusDialog.instances.length < 1) return "";
+    const [instance] = PlusDialog.instances.slice(-1);
     if (!instance) return "";
     const zIndex = window.getComputedStyle(instance.$host).getPropertyValue("z-index");
     return `${parseInt(zIndex, 10) + 1}`;
@@ -107,7 +107,7 @@ let Dialog = class extends PlusCore {
     switch (name) {
       case "open":
         if (!next === !prev) break;
-        this.try(next, true);
+        this.try(!!this.open, true);
         break;
     }
   }
@@ -151,7 +151,7 @@ let Dialog = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "aria-hidden": this.opened ? null : "true"
     }, {
       "aria-modal": this.opened ? "true" : null
@@ -160,7 +160,7 @@ let Dialog = class extends PlusCore {
     }, {
       "role": this.opened ? "dialog" : null
     }])}
-				${!this.transparent && html`<div class="backdrop" part="backdrop">
+				${!this.transparent && _internal_h_`<div class="backdrop" part="backdrop">
 						<div />
 					</div>`}
 				<div class=${this.classes}>
@@ -173,133 +173,133 @@ let Dialog = class extends PlusCore {
 			`;
   }
 };
-Dialog.tag = "plus-dialog";
-Dialog.style = STYLE_IMPORTED;
-Dialog.instances = [];
+PlusDialog.tag = "plus-dialog";
+PlusDialog.style = STYLE_IMPORTED;
+PlusDialog.instances = [];
 __decorateClass([
   Property({
     reflect: true,
     type: 516
   })
-], Dialog.prototype, "animation", 2);
+], PlusDialog.prototype, "animation", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Dialog.prototype, "connector", 2);
+], PlusDialog.prototype, "connector", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "fullHeight", 2);
+], PlusDialog.prototype, "fullHeight", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "fullWidth", 2);
+], PlusDialog.prototype, "fullWidth", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Dialog.prototype, "fullscreen", 2);
+], PlusDialog.prototype, "fullscreen", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "keyboard", 2);
+], PlusDialog.prototype, "keyboard", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Dialog.prototype, "open", 2);
+], PlusDialog.prototype, "open", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "persistent", 2);
+], PlusDialog.prototype, "persistent", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Dialog.prototype, "placement", 2);
+], PlusDialog.prototype, "placement", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "scrollable", 2);
+], PlusDialog.prototype, "scrollable", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Dialog.prototype, "size", 2);
+], PlusDialog.prototype, "size", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "sticky", 2);
+], PlusDialog.prototype, "sticky", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Dialog.prototype, "transparent", 2);
+], PlusDialog.prototype, "transparent", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Dialog.prototype, "variant", 2);
+], PlusDialog.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Dialog.prototype, "overrides", 2);
+], PlusDialog.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Dialog.prototype, "plusClose", 2);
+], PlusDialog.prototype, "plusClose", 2);
 __decorateClass([
   Event()
-], Dialog.prototype, "plusClosed", 2);
+], PlusDialog.prototype, "plusClosed", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Dialog.prototype, "plusOpen", 2);
+], PlusDialog.prototype, "plusOpen", 2);
 __decorateClass([
   Event()
-], Dialog.prototype, "plusOpened", 2);
+], PlusDialog.prototype, "plusOpened", 2);
 __decorateClass([
   Query("slot")
-], Dialog.prototype, "$cell", 2);
+], PlusDialog.prototype, "$cell", 2);
 __decorateClass([
   Provider("dialog.connector")
-], Dialog.prototype, "state", 1);
+], PlusDialog.prototype, "state", 1);
 __decorateClass([
   Method()
-], Dialog.prototype, "hide", 1);
+], PlusDialog.prototype, "hide", 1);
 __decorateClass([
   Method()
-], Dialog.prototype, "show", 1);
+], PlusDialog.prototype, "show", 1);
 __decorateClass([
   Method()
-], Dialog.prototype, "toggle", 1);
+], PlusDialog.prototype, "toggle", 1);
 __decorateClass([
   Watch(["open"])
-], Dialog.prototype, "watcher", 1);
+], PlusDialog.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Dialog.prototype, "onEscape", 1);
+], PlusDialog.prototype, "onEscape", 1);
 __decorateClass([
   Bind()
-], Dialog.prototype, "onClickOutside", 1);
-Dialog = __decorateClass([
+], PlusDialog.prototype, "onClickOutside", 1);
+PlusDialog = __decorateClass([
   Element()
-], Dialog);
+], PlusDialog);
 export {
-  Dialog
+  PlusDialog
 };

@@ -4,7 +4,7 @@ import { CarouselPlugin } from './base';
 
 export class CarouselPluginAutoHeight extends CarouselPlugin {
 	private get active(): boolean {
-		return this.instance.autoHeight && this.instance.options.axis === 'x';
+		return !!this.instance.autoHeight && this.instance.options.axis === 'x';
 	}
 
 	public events = {

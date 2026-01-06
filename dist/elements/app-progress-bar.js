@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, i as toCSSColor, b as attributes, h as html, c as Property, V as Variant, O as Overrides, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, h as toCSSColor, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:var(--plus-app-progress-bar-color);transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let AppProgressBar = class extends PlusCore {
+let PlusAppProgressBar = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.color = "dodgerblue";
@@ -87,81 +87,81 @@ let AppProgressBar = class extends PlusCore {
     clearTimeout(this.timeout);
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "state": this.state
     }])}
 				<div part="bar"></div>
 			`;
   }
 };
-AppProgressBar.tag = "plus-app-progress-bar";
-AppProgressBar.style = STYLE_IMPORTED;
+PlusAppProgressBar.tag = "plus-app-progress-bar";
+PlusAppProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   })
-], AppProgressBar.prototype, "color", 2);
+], PlusAppProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], AppProgressBar.prototype, "minimum", 2);
+], PlusAppProgressBar.prototype, "minimum", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], AppProgressBar.prototype, "trickleDisabled", 2);
+], PlusAppProgressBar.prototype, "trickleDisabled", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], AppProgressBar.prototype, "trickleRate", 2);
+], PlusAppProgressBar.prototype, "trickleRate", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], AppProgressBar.prototype, "trickleSpeed", 2);
+], PlusAppProgressBar.prototype, "trickleSpeed", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], AppProgressBar.prototype, "variant", 2);
+], PlusAppProgressBar.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], AppProgressBar.prototype, "overrides", 2);
+], PlusAppProgressBar.prototype, "overrides", 2);
 __decorateClass([
   Query("[part=bar]")
-], AppProgressBar.prototype, "$bar", 2);
+], PlusAppProgressBar.prototype, "$bar", 2);
 __decorateClass([
   State()
-], AppProgressBar.prototype, "state", 2);
+], PlusAppProgressBar.prototype, "state", 2);
 __decorateClass([
   Style()
-], AppProgressBar.prototype, "style", 1);
+], PlusAppProgressBar.prototype, "style", 1);
 __decorateClass([
   Method()
-], AppProgressBar.prototype, "done", 1);
+], PlusAppProgressBar.prototype, "done", 1);
 __decorateClass([
   Method()
-], AppProgressBar.prototype, "increase", 1);
+], PlusAppProgressBar.prototype, "increase", 1);
 __decorateClass([
   Method()
-], AppProgressBar.prototype, "set", 1);
+], PlusAppProgressBar.prototype, "set", 1);
 __decorateClass([
   Method()
-], AppProgressBar.prototype, "start", 1);
+], PlusAppProgressBar.prototype, "start", 1);
 __decorateClass([
   Method()
-], AppProgressBar.prototype, "trickle", 1);
-AppProgressBar = __decorateClass([
+], PlusAppProgressBar.prototype, "trickle", 1);
+PlusAppProgressBar = __decorateClass([
   Element()
-], AppProgressBar);
+], PlusAppProgressBar);
 export {
-  AppProgressBar
+  PlusAppProgressBar
 };

@@ -9,7 +9,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let ScrollDetector = class extends PlusCore {
+let PlusScrollDetector = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.reference = "document";
@@ -17,7 +17,7 @@ let ScrollDetector = class extends PlusCore {
   get $reference() {
     if (typeof this.reference !== "string") return this.reference;
     if (this.reference === "document") return document;
-    return document.querySelector(this.reference);
+    return document.querySelector(this.reference) || void 0;
   }
   watcher(next) {
     next ? this.terminate() : this.initialize();
@@ -29,9 +29,8 @@ let ScrollDetector = class extends PlusCore {
     this.onScroll();
   }
   terminate() {
-    try {
+    if (this.$reference) {
       off(this.$reference, "scroll", this.onScroll);
-    } catch {
     }
   }
   onScroll() {
@@ -70,47 +69,47 @@ let ScrollDetector = class extends PlusCore {
     return null;
   }
 };
-ScrollDetector.tag = "plus-scroll-detector";
+PlusScrollDetector.tag = "plus-scroll-detector";
 __decorateClass([
   Property({
     type: 4
   })
-], ScrollDetector.prototype, "disabled", 2);
+], PlusScrollDetector.prototype, "disabled", 2);
 __decorateClass([
   Property({
     type: 528
   })
-], ScrollDetector.prototype, "reference", 2);
+], PlusScrollDetector.prototype, "reference", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], ScrollDetector.prototype, "variant", 2);
+], PlusScrollDetector.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], ScrollDetector.prototype, "vertical", 2);
+], PlusScrollDetector.prototype, "vertical", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], ScrollDetector.prototype, "overrides", 2);
+], PlusScrollDetector.prototype, "overrides", 2);
 __decorateClass([
   Event()
-], ScrollDetector.prototype, "plusChange", 2);
+], PlusScrollDetector.prototype, "plusChange", 2);
 __decorateClass([
   Watch(["disabled", "reference"])
-], ScrollDetector.prototype, "watcher", 1);
+], PlusScrollDetector.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], ScrollDetector.prototype, "onScroll", 1);
-ScrollDetector = __decorateClass([
+], PlusScrollDetector.prototype, "onScroll", 1);
+PlusScrollDetector = __decorateClass([
   Element()
-], ScrollDetector);
+], PlusScrollDetector);
 export {
-  ScrollDetector
+  PlusScrollDetector
 };

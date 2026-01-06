@@ -1,1 +1,1 @@
-export * from './dialog-content';
+export * from './element';

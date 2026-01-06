@@ -25,7 +25,7 @@ export declare class Animation {
     constructor(config: AnimationConfig);
     dispose(): void;
     enter(parameters?: unknown): Promise<boolean>;
-    initialize(state?: AnimationState): void;
+    initialize(state: AnimationState): void;
     leave(parameters?: unknown): Promise<boolean>;
     private next;
     private update;

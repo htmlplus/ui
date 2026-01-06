@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Tabs = class extends PlusCore {
+let PlusTabs = class extends PlusCore {
   get state() {
     return {
       current: this.value,
@@ -23,46 +23,46 @@ let Tabs = class extends PlusCore {
     this.value = value;
   }
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-Tabs.tag = "plus-tabs";
-Tabs.style = STYLE_IMPORTED;
+PlusTabs.tag = "plus-tabs";
+PlusTabs.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 640
+    type: 512
   })
-], Tabs.prototype, "value", 2);
+], PlusTabs.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Tabs.prototype, "variant", 2);
+], PlusTabs.prototype, "variant", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Tabs.prototype, "vertical", 2);
+], PlusTabs.prototype, "vertical", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Tabs.prototype, "overrides", 2);
+], PlusTabs.prototype, "overrides", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Tabs.prototype, "plusChange", 2);
+], PlusTabs.prototype, "plusChange", 2);
 __decorateClass([
   Provider("tabs")
-], Tabs.prototype, "state", 1);
-Tabs = __decorateClass([
+], PlusTabs.prototype, "state", 1);
+PlusTabs = __decorateClass([
   Element()
-], Tabs);
+], PlusTabs);
 export {
-  Tabs
+  PlusTabs
 };

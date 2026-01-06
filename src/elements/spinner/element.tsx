@@ -1,0 +1,91 @@
+import {
+	Element,
+	type OverridableValue,
+	Overrides,
+	type OverridesConfig,
+	Property,
+	Style,
+	Variant
+} from '@htmlplus/element';
+
+import { PlusCore } from '@/core';
+import { toCSSColor } from '@/helpers';
+import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+
+import type { PlusSpinnerType } from './types';
+
+/**
+ * An indicator of progress and activity.
+ *
+ * @stable
+ *
+ * @examples default, size, custom-size, color, type, customized
+ */
+@Element()
+export class PlusSpinner extends PlusCore {
+	/**
+	 * Specifies the color.
+	 */
+	@Property({ reflect: true })
+	color?: OverridableValue<string & {}, PlusColorOverrides>;
+
+	/**
+	 * TODO
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * Specifies the size of the spinner.
+	 */
+	@Property({ reflect: true })
+	size?: OverridableValue<'sm' | 'md' | 'lg' | 'inherit'> = 'inherit';
+
+	/**
+	 * Specifies which variant of the spinner to use.
+	 */
+	@Property({ reflect: true })
+	type?: PlusSpinnerType = 'default';
+
+	/**
+	 * TODO
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
+
+	@Style()
+	get style() {
+		return {
+			color: toCSSColor(this.color)
+		};
+	}
+
+	get elements() {
+		const map: Record<PlusSpinnerType, number> = {
+			default: 8,
+			'double-bounce': 2,
+			'dual-ring': 1,
+			ring: 1,
+			ripple: 1,
+			square: 1
+		};
+
+		const number = map[this.type || 'default'];
+
+		return Array.from(Array(number).keys());
+	}
+
+	render() {
+		return (
+			<host role="status">
+				<div className="root">
+					{this.elements.map((element) => (
+						<div key={element} />
+					))}
+				</div>
+			</host>
+		);
+	}
+}

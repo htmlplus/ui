@@ -1,4 +1,4 @@
-import { P as PlusCore, t as toCSSUnit, h as html, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
+import { P as PlusCore, t as toCSSUnit, b as _internal_h_, c as Property, V as Variant, O as Overrides, g as Style, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -9,7 +9,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Stack = class extends PlusCore {
+let PlusStack = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.items = "center";
@@ -38,59 +38,59 @@ let Stack = class extends PlusCore {
     };
   }
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-Stack.tag = "plus-stack";
+PlusStack.tag = "plus-stack";
 __decorateClass([
   Property({
     type: 640
   })
-], Stack.prototype, "gap", 2);
+], PlusStack.prototype, "gap", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Stack.prototype, "items", 2);
+], PlusStack.prototype, "items", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Stack.prototype, "justify", 2);
+], PlusStack.prototype, "justify", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Stack.prototype, "reverse", 2);
+], PlusStack.prototype, "reverse", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Stack.prototype, "variant", 2);
+], PlusStack.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Stack.prototype, "vertical", 2);
+], PlusStack.prototype, "vertical", 2);
 __decorateClass([
   Property({
     type: 20
   })
-], Stack.prototype, "wrap", 2);
+], PlusStack.prototype, "wrap", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Stack.prototype, "overrides", 2);
+], PlusStack.prototype, "overrides", 2);
 __decorateClass([
   Style()
-], Stack.prototype, "style", 1);
-Stack = __decorateClass([
+], PlusStack.prototype, "style", 1);
+PlusStack = __decorateClass([
   Element()
-], Stack);
+], PlusStack);
 export {
-  Stack
+  PlusStack
 };

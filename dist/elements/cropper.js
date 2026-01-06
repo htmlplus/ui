@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, u as classes, E as ExternalDependencyError, h as html, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, r as classes, E as ExternalDependencyError, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}/*!\n * Cropper.js v1.6.2\n * https://fengyuanchen.github.io/cropperjs\n *\n * Copyright 2015-present Chen Fengyuan\n * Released under the MIT license\n *\n * Date: 2024-04-21T07:43:02.731Z\n */.cropper-container{-webkit-touch-callout:none;direction:ltr;font-size:0;line-height:0;position:relative;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.cropper-container img{backface-visibility:hidden;display:block;height:100%;image-orientation:0deg;max-height:none !important;max-width:none !important;min-height:0 !important;min-width:0 !important;width:100%}.cropper-canvas,.cropper-crop-box,.cropper-drag-box,.cropper-modal,.cropper-wrap-box{bottom:0;left:0;position:absolute;right:0;top:0}.cropper-canvas,.cropper-wrap-box{overflow:hidden}.cropper-drag-box{background-color:#fff;opacity:0}.cropper-modal{background-color:#000;opacity:.5}.cropper-view-box{display:block;height:100%;outline:1px solid #39f;outline-color:rgba(51, 153, 255, 0.75);overflow:hidden;width:100%}.cropper-dashed{border:0 dashed #eee;display:block;opacity:.5;position:absolute}.cropper-dashed.dashed-h{border-bottom-width:1px;border-top-width:1px;height:33.33333%;left:0;top:33.33333%;width:100%}.cropper-dashed.dashed-v{border-left-width:1px;border-right-width:1px;height:100%;left:33.33333%;top:0;width:33.33333%}.cropper-center{display:block;height:0;left:50%;opacity:.75;position:absolute;top:50%;width:0}.cropper-center:after,.cropper-center:before{background-color:#eee;content:" ";display:block;position:absolute}.cropper-center:before{height:1px;left:-3px;top:0;width:7px}.cropper-center:after{height:7px;left:0;top:-3px;width:1px}.cropper-face,.cropper-line,.cropper-point{display:block;height:100%;opacity:.1;position:absolute;width:100%}.cropper-face{background-color:#fff;left:0;top:0}.cropper-line{background-color:#39f}.cropper-line.line-e{cursor:ew-resize;right:-3px;top:0;width:5px}.cropper-line.line-n{cursor:ns-resize;height:5px;left:0;top:-3px}.cropper-line.line-w{cursor:ew-resize;left:-3px;top:0;width:5px}.cropper-line.line-s{bottom:-3px;cursor:ns-resize;height:5px;left:0}.cropper-point{background-color:#39f;height:5px;opacity:.75;width:5px}.cropper-point.point-e{cursor:ew-resize;margin-top:-3px;right:-3px;top:50%}.cropper-point.point-n{cursor:ns-resize;left:50%;margin-left:-3px;top:-3px}.cropper-point.point-w{cursor:ew-resize;left:-3px;margin-top:-3px;top:50%}.cropper-point.point-s{bottom:-3px;cursor:s-resize;left:50%;margin-left:-3px}.cropper-point.point-ne{cursor:nesw-resize;right:-3px;top:-3px}.cropper-point.point-nw{cursor:nwse-resize;left:-3px;top:-3px}.cropper-point.point-sw{bottom:-3px;cursor:nesw-resize;left:-3px}.cropper-point.point-se{bottom:-3px;cursor:nwse-resize;height:20px;opacity:1;right:-3px;width:20px}@media(min-width: 768px){.cropper-point.point-se{height:15px;width:15px}}@media(min-width: 992px){.cropper-point.point-se{height:10px;width:10px}}@media(min-width: 1200px){.cropper-point.point-se{height:5px;opacity:.75;width:5px}}.cropper-point.point-se:before{background-color:#39f;bottom:-50%;content:" ";display:block;height:200%;opacity:0;position:absolute;right:-50%;width:200%}.cropper-invisible{opacity:0}.cropper-bg{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC")}.cropper-hide{display:block;height:0;position:absolute;width:0}.cropper-hidden{display:none !important}.cropper-move{cursor:move}.cropper-crop{cursor:crosshair}.cropper-disabled .cropper-drag-box,.cropper-disabled .cropper-face,.cropper-disabled .cropper-line,.cropper-disabled .cropper-point{cursor:not-allowed}:host{--plus-cropper-backdrop-color: black;--plus-cropper-backdrop-opacity: 0.5;--plus-cropper-guides-color: white;--plus-cropper-guides-opacity: 0.5;--plus-cropper-guides-style: dashed;--plus-cropper-guides-weight: 1px;--plus-cropper-indicator-color: white;--plus-cropper-indicator-opacity: 1;--plus-cropper-indicator-size: 10px;--plus-cropper-indicator-weight: 2px;--plus-cropper-resizer-color: white;--plus-cropper-resizer-offset: 0px;--plus-cropper-resizer-opacity: 1;--plus-cropper-resizer-size: 5px;--plus-cropper-resizer-weight: 1px;--plus-cropper-viewport-color: white;--plus-cropper-viewport-opacity: 1;--plus-cropper-viewport-style: solid;--plus-cropper-viewport-weight: 1px}:host{display:block}.wrapper{width:100%;height:100%}.image{display:block;max-width:100%}.cropper-modal{background-color:var(--plus-cropper-backdrop-color);opacity:var(--plus-cropper-backdrop-opacity)}.cropper-line{display:none}.resizer-main .cropper-point.point-ne,.resizer-main .cropper-point.point-nw,.resizer-main .cropper-point.point-sw,.resizer-main .cropper-point.point-se{display:none}.resizer-edge .cropper-point.point-e,.resizer-edge .cropper-point.point-n,.resizer-edge .cropper-point.point-w,.resizer-edge .cropper-point.point-s{display:none}.shape-circle .cropper-face,.shape-circle .cropper-view-box,.shape-circle .cropper-view-box::after{border-radius:50%}.shape-circle .cropper-dashed.dashed-h{width:calc(92.5% - var(--plus-cropper-guides-weight))}.shape-circle .cropper-dashed.dashed-v{height:calc(92.5% - var(--plus-cropper-guides-weight))}.shape-circle .cropper-point.point-ne{top:14.64466%;right:14.64466%}.shape-circle .cropper-point.point-nw{top:14.64466%;left:14.64466%}.shape-circle .cropper-point.point-sw{bottom:14.64466%;left:14.64466%}.shape-circle .cropper-point.point-se{right:14.64466%;bottom:14.64466%}.cropper-dashed{border-color:var(--plus-cropper-guides-color);border-style:var(--plus-cropper-guides-style);opacity:var(--plus-cropper-guides-opacity)}.cropper-dashed.dashed-h{left:50%;transform:translateX(-50%);border-top-width:var(--plus-cropper-guides-weight);border-bottom-width:var(--plus-cropper-guides-weight)}.cropper-dashed.dashed-v{top:50%;transform:translateY(-50%);border-left-width:var(--plus-cropper-guides-weight);border-right-width:var(--plus-cropper-guides-weight)}.cropper-view-box{outline:none;position:relative}.cropper-view-box::after{top:0;right:0;left:0;bottom:0;content:"";position:absolute;width:100%;height:100%;border-style:var(--plus-cropper-viewport-style);border-color:var(--plus-cropper-viewport-color);border-width:var(--plus-cropper-viewport-weight);opacity:var(--plus-cropper-viewport-opacity)}.cropper-point[class*=point-]{--plus-cropper-resizer-offset-negative: calc((50% + var(--plus-cropper-resizer-offset)) * -1);--plus-cropper-resizer-offset-positive: calc((50% + var(--plus-cropper-resizer-offset)) * +1);margin:0;height:var(--plus-cropper-resizer-size);width:var(--plus-cropper-resizer-size);opacity:var(--plus-cropper-resizer-opacity);background-color:var(--plus-cropper-resizer-color)}.cropper-point[class*=point-]:before{content:none}.cropper-point.point-e{right:0;transform:translate(var(--plus-cropper-resizer-offset-positive), -50%)}.cropper-point.point-n{top:0;transform:translate(-50%, var(--plus-cropper-resizer-offset-negative))}.cropper-point.point-w{left:0;transform:translate(var(--plus-cropper-resizer-offset-negative), -50%)}.cropper-point.point-s{bottom:0;transform:translate(-50%, var(--plus-cropper-resizer-offset-positive))}.cropper-point.point-ne{top:0;right:0;transform:translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-negative))}.cropper-point.point-nw{top:0;left:0;transform:translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-negative))}.cropper-point.point-sw{bottom:0;left:0;transform:translate(var(--plus-cropper-resizer-offset-negative), var(--plus-cropper-resizer-offset-positive))}.cropper-point.point-se{right:0;bottom:0;transform:translate(var(--plus-cropper-resizer-offset-positive), var(--plus-cropper-resizer-offset-positive))}.resizer-shape-circle .cropper-point[class*=point-]{border-radius:50%}.cropper-center{opacity:var(--plus-cropper-indicator-opacity)}.cropper-center:before{background-color:var(--plus-cropper-indicator-color);top:calc(var(--plus-cropper-indicator-weight)/2*-1);left:calc(var(--plus-cropper-indicator-size)/2*-1);height:var(--plus-cropper-indicator-weight);width:var(--plus-cropper-indicator-size)}.cropper-center:after{background-color:var(--plus-cropper-indicator-color);top:calc(var(--plus-cropper-indicator-size)/2*-1);left:calc(var(--plus-cropper-indicator-weight)/2*-1);height:var(--plus-cropper-indicator-size);width:var(--plus-cropper-indicator-weight)}.resizer-shape-line .cropper-point[class*=point-]{background-color:rgba(0,0,0,0);border-style:solid;border-color:var(--plus-cropper-resizer-color);border-width:var(--plus-cropper-resizer-weight)}.resizer-shape-line .cropper-point[class*=point-].point-e{border-top:none;border-bottom:none;border-left:none}.resizer-shape-line .cropper-point[class*=point-].point-n{border-right:none;border-bottom:none;border-left:none}.resizer-shape-line .cropper-point[class*=point-].point-w{border-top:none;border-right:none;border-bottom:none}.resizer-shape-line .cropper-point[class*=point-].point-s{border-top:none;border-right:none;border-left:none}.resizer-shape-line .cropper-point[class*=point-].point-ne{border-bottom:none;border-left:none}.resizer-shape-line .cropper-point[class*=point-].point-nw{border-right:none;border-bottom:none}.resizer-shape-line .cropper-point[class*=point-].point-sw{border-top:none;border-right:none}.resizer-shape-line .cropper-point[class*=point-].point-se{border-top:none;border-left:none}';
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -11,7 +11,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let CropperCore;
-let Cropper = class extends PlusCore {
+let PlusCropper = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.area = 0.75;
@@ -252,7 +252,7 @@ let Cropper = class extends PlusCore {
   }
   connectedCallback() {
     import("cropperjs").then((module) => {
-      CropperCore = module.default || module;
+      CropperCore = module.default;
       this.initialize();
     }).catch((error) => {
       throw new ExternalDependencyError(this.$host, "cropperjs", {
@@ -264,189 +264,189 @@ let Cropper = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`<div class=${this.classes}>
+    return _internal_h_`<div class=${this.classes}>
 				<img class="image" alt="cropper" src=${this.src} />
 			</div>`;
   }
 };
-Cropper.tag = "plus-cropper";
-Cropper.style = STYLE_IMPORTED;
+PlusCropper.tag = "plus-cropper";
+PlusCropper.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 128
   })
-], Cropper.prototype, "area", 2);
+], PlusCropper.prototype, "area", 2);
 __decorateClass([
   Property({
     type: 640
   })
-], Cropper.prototype, "aspectRatio", 2);
+], PlusCropper.prototype, "aspectRatio", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Cropper.prototype, "background", 2);
+], PlusCropper.prototype, "background", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Cropper.prototype, "disabled", 2);
+], PlusCropper.prototype, "disabled", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Cropper.prototype, "guides", 2);
+], PlusCropper.prototype, "guides", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Cropper.prototype, "indicator", 2);
+], PlusCropper.prototype, "indicator", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Cropper.prototype, "mode", 2);
+], PlusCropper.prototype, "mode", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Cropper.prototype, "resizer", 2);
+], PlusCropper.prototype, "resizer", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Cropper.prototype, "resizerShape", 2);
+], PlusCropper.prototype, "resizerShape", 2);
 __decorateClass([
   Property({
     type: 20
   })
-], Cropper.prototype, "responsive", 2);
+], PlusCropper.prototype, "responsive", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Cropper.prototype, "shape", 2);
+], PlusCropper.prototype, "shape", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Cropper.prototype, "src", 2);
+], PlusCropper.prototype, "src", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], Cropper.prototype, "transparent", 2);
+], PlusCropper.prototype, "transparent", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 256
   })
-], Cropper.prototype, "value", 2);
+], PlusCropper.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Cropper.prototype, "variant", 2);
+], PlusCropper.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Cropper.prototype, "view", 2);
+], PlusCropper.prototype, "view", 2);
 __decorateClass([
   Property({
     type: 20
   })
-], Cropper.prototype, "zoomable", 2);
+], PlusCropper.prototype, "zoomable", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Cropper.prototype, "zoomRatio", 2);
+], PlusCropper.prototype, "zoomRatio", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Cropper.prototype, "overrides", 2);
+], PlusCropper.prototype, "overrides", 2);
 __decorateClass([
   Event()
-], Cropper.prototype, "plusCrop", 2);
+], PlusCropper.prototype, "plusCrop", 2);
 __decorateClass([
   Event()
-], Cropper.prototype, "plusCropEnd", 2);
+], PlusCropper.prototype, "plusCropEnd", 2);
 __decorateClass([
   Event()
-], Cropper.prototype, "plusCropMove", 2);
+], PlusCropper.prototype, "plusCropMove", 2);
 __decorateClass([
   Event()
-], Cropper.prototype, "plusCropStart", 2);
+], PlusCropper.prototype, "plusCropStart", 2);
 __decorateClass([
   Event()
-], Cropper.prototype, "plusReady", 2);
+], PlusCropper.prototype, "plusReady", 2);
 __decorateClass([
   Event({
     cancelable: true
   })
-], Cropper.prototype, "plusZoom", 2);
+], PlusCropper.prototype, "plusZoom", 2);
 __decorateClass([
   Method()
-], Cropper.prototype, "flipX", 1);
+], PlusCropper.prototype, "flipX", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "flipY", 1);
+], PlusCropper.prototype, "flipY", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "move", 1);
+], PlusCropper.prototype, "move", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "moveTo", 1);
+], PlusCropper.prototype, "moveTo", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "reset", 1);
+], PlusCropper.prototype, "reset", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "rotate", 1);
+], PlusCropper.prototype, "rotate", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "rotateTo", 1);
+], PlusCropper.prototype, "rotateTo", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "toCanvas", 1);
+], PlusCropper.prototype, "toCanvas", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "zoom", 1);
+], PlusCropper.prototype, "zoom", 1);
 __decorateClass([
   Method()
-], Cropper.prototype, "zoomTo", 1);
+], PlusCropper.prototype, "zoomTo", 1);
 __decorateClass([
   Query(".image")
-], Cropper.prototype, "$image", 2);
+], PlusCropper.prototype, "$image", 2);
 __decorateClass([
   Watch()
-], Cropper.prototype, "watcher", 1);
+], PlusCropper.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Cropper.prototype, "onCrop", 1);
+], PlusCropper.prototype, "onCrop", 1);
 __decorateClass([
   Bind()
-], Cropper.prototype, "onCropEnd", 1);
+], PlusCropper.prototype, "onCropEnd", 1);
 __decorateClass([
   Bind()
-], Cropper.prototype, "onCropMove", 1);
+], PlusCropper.prototype, "onCropMove", 1);
 __decorateClass([
   Bind()
-], Cropper.prototype, "onCropStart", 1);
+], PlusCropper.prototype, "onCropStart", 1);
 __decorateClass([
   Bind()
-], Cropper.prototype, "onReady", 1);
+], PlusCropper.prototype, "onReady", 1);
 __decorateClass([
   Bind()
-], Cropper.prototype, "onZoom", 1);
-Cropper = __decorateClass([
+], PlusCropper.prototype, "onZoom", 1);
+PlusCropper = __decorateClass([
   Element()
-], Cropper);
+], PlusCropper);
 export {
-  Cropper
+  PlusCropper
 };

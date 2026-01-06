@@ -1,1 +1,1 @@
-export * from './faker';
+export * from './element';

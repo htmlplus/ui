@@ -1,1 +1,1 @@
-export * from './tabs-bar';
+export * from './element';

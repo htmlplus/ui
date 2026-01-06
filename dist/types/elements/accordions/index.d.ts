@@ -1,1 +1,1 @@
-export * from './accordions';
+export * from './element';

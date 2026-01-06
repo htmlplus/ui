@@ -174,7 +174,7 @@ const updateAttribute = (target, key, value) => {
   element.setAttribute(key, value === true ? "" : String(value));
 };
 const symbol = Symbol();
-const attributes$2 = (target, attributes2) => {
+const attributes$1 = (target, attributes2) => {
   const element = host(target);
   const prev = element[symbol] || {};
   const next = Object.assign({}, ...attributes2);
@@ -372,13 +372,14 @@ class WeakMapSet extends WeakMap {
 /*! (c) Andrea Giammarchi - ISC */
 const empty = /^(?:area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)$/i;
 const elements = /<([a-z]+[a-z0-9:._-]*)([^>]*?)(\/?)>/g;
-const attributes$1 = /([^\s\\>"'=]+)\s*=\s*(['"]?)\x01/g;
+const attributes = /([^\s\\>"'=]+)\s*=\s*(['"]?)\x01/g;
 const holes = /[\x01\x02]/g;
 var instrument = (template, prefix2, svg) => {
   let i = 0;
   return template.join("").trim().replace(elements, (_, name, attrs, selfClosing) => {
-    let ml = name + attrs.replace(attributes$1, "=$2$1").trimEnd();
-    if (selfClosing.length) ml += svg || empty.test(name) ? " /" : "></" + name;
+    let ml = name + attrs.replace(attributes, "=$2$1").trimEnd();
+    if (selfClosing.length)
+      ml += svg || empty.test(name) ? " /" : "></" + name;
     return "<" + ml + ">";
   }).replace(holes, (hole) => hole === "" ? "<!--" + prefix2 + i++ + "-->" : prefix2 + i++);
 };
@@ -394,7 +395,8 @@ const remove = ({ firstChild, lastChild }) => {
 const diffable = (node, operation) => node.nodeType === nodeType ? 1 / operation < 0 ? operation ? remove(node) : node.lastChild : operation ? node.valueOf() : node.firstChild : node;
 const persistent = (fragment) => {
   const { firstChild, lastChild } = fragment;
-  if (firstChild === lastChild) return lastChild || fragment;
+  if (firstChild === lastChild)
+    return lastChild || fragment;
   const { childNodes } = fragment;
   const nodes = [...childNodes];
   return {
@@ -403,7 +405,8 @@ const persistent = (fragment) => {
     firstChild,
     lastChild,
     valueOf() {
-      if (childNodes.length !== nodes.length) fragment.append(...nodes);
+      if (childNodes.length !== nodes.length)
+        fragment.append(...nodes);
       return fragment;
     }
   };
@@ -413,8 +416,10 @@ const aria = (node) => (values) => {
   for (const key in values) {
     const name = key === "role" ? key : `aria-${key}`;
     const value = values[key];
-    if (value == null) node.removeAttribute(name);
-    else node.setAttribute(name, value);
+    if (value == null)
+      node.removeAttribute(name);
+    else
+      node.setAttribute(name, value);
   }
 };
 const attribute = (node, name) => {
@@ -431,7 +436,8 @@ const attribute = (node, name) => {
       } else {
         const value = newValue;
         if (value == null) {
-          if (!orphan) node.removeAttributeNode(attributeNode);
+          if (!orphan)
+            node.removeAttributeNode(attributeNode);
           orphan = true;
         } else {
           attributeNode.value = value;
@@ -446,25 +452,32 @@ const attribute = (node, name) => {
 };
 const boolean = (node, key, oldValue) => (newValue) => {
   if (oldValue !== !!newValue) {
-    if (oldValue = !!newValue) node.setAttribute(key, "");
-    else node.removeAttribute(key);
+    if (oldValue = !!newValue)
+      node.setAttribute(key, "");
+    else
+      node.removeAttribute(key);
   }
 };
 const data = ({ dataset }) => (values) => {
   for (const key in values) {
     const value = values[key];
-    if (value == null) delete dataset[key];
-    else dataset[key] = value;
+    if (value == null)
+      delete dataset[key];
+    else
+      dataset[key] = value;
   }
 };
 const event = (node, name) => {
   let oldValue, lower, type = name.slice(2);
-  if (!(name in node) && (lower = name.toLowerCase()) in node) type = lower.slice(2);
+  if (!(name in node) && (lower = name.toLowerCase()) in node)
+    type = lower.slice(2);
   return (newValue) => {
     const info = isArray$1(newValue) ? newValue : [newValue, false];
     if (oldValue !== info[0]) {
-      if (oldValue) node.removeEventListener(type, oldValue, info[1]);
-      if (oldValue = info[0]) node.addEventListener(type, oldValue, info[1]);
+      if (oldValue)
+        node.removeEventListener(type, oldValue, info[1]);
+      if (oldValue = info[0])
+        node.addEventListener(type, oldValue, info[1]);
     }
   };
 };
@@ -473,8 +486,10 @@ const ref = (node) => {
   return (value) => {
     if (oldValue !== value) {
       oldValue = value;
-      if (typeof value === "function") value(node);
-      else value.current = node;
+      if (typeof value === "function")
+        value(node);
+      else
+        value.current = node;
     }
   };
 };
@@ -500,10 +515,12 @@ var udomdiff = (parentNode, a, b, get, before) => {
   while (aStart < aEnd || bStart < bEnd) {
     if (aEnd === aStart) {
       const node = bEnd < bLength ? bStart ? get(b[bStart - 1], -0).nextSibling : get(b[bEnd - bStart], 0) : before;
-      while (bStart < bEnd) parentNode.insertBefore(get(b[bStart++], 1), node);
+      while (bStart < bEnd)
+        parentNode.insertBefore(get(b[bStart++], 1), node);
     } else if (bEnd === bStart) {
       while (aStart < aEnd) {
-        if (!map || !map.has(a[aStart])) parentNode.removeChild(get(a[aStart], -1));
+        if (!map || !map.has(a[aStart]))
+          parentNode.removeChild(get(a[aStart], -1));
         aStart++;
       }
     } else if (a[aStart] === b[bStart]) {
@@ -521,36 +538,34 @@ var udomdiff = (parentNode, a, b, get, before) => {
       if (!map) {
         map = /* @__PURE__ */ new Map();
         let i = bStart;
-        while (i < bEnd) map.set(b[i], i++);
+        while (i < bEnd)
+          map.set(b[i], i++);
       }
       if (map.has(a[aStart])) {
         const index = map.get(a[aStart]);
         if (bStart < index && index < bEnd) {
           let i = aStart;
           let sequence = 1;
-          while (++i < aEnd && i < bEnd && map.get(a[i]) === index + sequence) sequence++;
+          while (++i < aEnd && i < bEnd && map.get(a[i]) === index + sequence)
+            sequence++;
           if (sequence > index - bStart) {
             const node = get(a[aStart], 0);
-            while (bStart < index) parentNode.insertBefore(get(b[bStart++], 1), node);
+            while (bStart < index)
+              parentNode.insertBefore(get(b[bStart++], 1), node);
           } else {
             parentNode.replaceChild(get(b[bStart++], 1), get(a[aStart++], -1));
           }
-        } else aStart++;
-      } else parentNode.removeChild(get(a[aStart++], -1));
+        } else
+          aStart++;
+      } else
+        parentNode.removeChild(get(a[aStart++], -1));
     }
   }
   return b;
 };
 const { isArray, prototype } = Array;
 const { indexOf } = prototype;
-const {
-  createDocumentFragment,
-  createElement,
-  createElementNS,
-  createTextNode,
-  createTreeWalker,
-  importNode
-} = new Proxy(typeof window == "undefined" ? {} : window.document, {
+const { createDocumentFragment, createElement, createElementNS, createTextNode, createTreeWalker, importNode } = new Proxy(typeof window == "undefined" ? {} : window.document, {
   get: (target, method) => (target[method] || function() {
   }).bind(target)
 });
@@ -561,7 +576,8 @@ const createHTML = (html2) => {
 };
 let xml;
 const createSVG = (svg) => {
-  if (!xml) xml = createElementNS("http://www.w3.org/2000/svg", "svg");
+  if (!xml)
+    xml = createElementNS("http://www.w3.org/2000/svg", "svg");
   xml.innerHTML = svg;
   const content = createDocumentFragment();
   content.append(...xml.childNodes);
@@ -601,7 +617,8 @@ const handleAnything = (comment) => {
       case "boolean":
         if (oldValue !== newValue) {
           oldValue = newValue;
-          if (!text2) text2 = createTextNode("");
+          if (!text2)
+            text2 = createTextNode("");
           text2.data = newValue;
           nodes = diff(comment, nodes, [text2]);
         }
@@ -618,18 +635,17 @@ const handleAnything = (comment) => {
         }
         if (isArray(newValue)) {
           oldValue = newValue;
-          if (newValue.length === 0) nodes = diff(comment, nodes, []);
-          else if (typeof newValue[0] === "object") nodes = diff(comment, nodes, newValue);
-          else anyContent(String(newValue));
+          if (newValue.length === 0)
+            nodes = diff(comment, nodes, []);
+          else if (typeof newValue[0] === "object")
+            nodes = diff(comment, nodes, newValue);
+          else
+            anyContent(String(newValue));
           break;
         }
         if (oldValue !== newValue && "ELEMENT_NODE" in newValue) {
           oldValue = newValue;
-          nodes = diff(
-            comment,
-            nodes,
-            newValue.nodeType === 11 ? [...newValue.childNodes] : [newValue]
-          );
+          nodes = diff(comment, nodes, newValue.nodeType === 11 ? [...newValue.childNodes] : [newValue]);
         }
         break;
       case "function":
@@ -648,7 +664,8 @@ const handleAttribute = (node, name) => {
     case "@":
       return event(node, "on" + name.slice(1));
     case "o":
-      if (name[1] === "n") return event(node, name);
+      if (name[1] === "n")
+        return event(node, name);
   }
   switch (name) {
     case "ref":
@@ -716,7 +733,8 @@ const mapTemplate = (type, template) => {
   let search = `${prefix}${i}`;
   while (i < length) {
     const node = tw.nextNode();
-    if (!node) throw `bad template: ${text2}`;
+    if (!node)
+      throw `bad template: ${text2}`;
     if (node.nodeType === 8) {
       if (node.data === search) {
         nodes.push({ type: "node", path: createPath(node) });
@@ -753,18 +771,23 @@ const unroll = (info, { type, template, values }) => {
   if (!entry || entry.template !== template || entry.type !== type)
     info.entry = entry = createEntry(type, template);
   const { content, updates, wire } = entry;
-  for (let i = 0; i < length; i++) updates[i](values[i]);
+  for (let i = 0; i < length; i++)
+    updates[i](values[i]);
   return wire || (entry.wire = persistent(content));
 };
 const unrollValues = ({ stack }, values) => {
   const { length } = values;
   for (let i = 0; i < length; i++) {
     const hole = values[i];
-    if (hole instanceof Hole) values[i] = unroll(stack[i] || (stack[i] = createCache()), hole);
-    else if (isArray(hole)) unrollValues(stack[i] || (stack[i] = createCache()), hole);
-    else stack[i] = null;
+    if (hole instanceof Hole)
+      values[i] = unroll(stack[i] || (stack[i] = createCache()), hole);
+    else if (isArray(hole))
+      unrollValues(stack[i] || (stack[i] = createCache()), hole);
+    else
+      stack[i] = null;
   }
-  if (length < stack.length) stack.splice(length);
+  if (length < stack.length)
+    stack.splice(length);
   return length;
 };
 class Hole {
@@ -808,7 +831,7 @@ const render = (where, what) => {
   }
   return where;
 };
-const html$1 = tag("html");
+const html = tag("html");
 tag("svg");
 const requestUpdate = (target, name, previous, callback) => {
   target[API_STACKS] ||= /* @__PURE__ */ new Map();
@@ -831,28 +854,18 @@ const requestUpdate = (target, name, previous, callback) => {
       const raw = target.constructor[STATIC_STYLE];
       if (!raw)
         return;
-      const regex1 = /this-([\w-]+)(?:-([\w-]+))?/g;
-      const regex2 = /(\s*\w+\s*:\s*(undefined|null)\s*;?)/g;
-      const regex3 = /global\s+[^{]+\{[^{}]*\{[^{}]*\}[^{}]*\}|global\s+[^{]+\{[^{}]*\}/g;
+      const regex = /global\s+[^{]+\{[^{}]*\{[^{}]*\}[^{}]*\}|global\s+[^{]+\{[^{}]*\}/g;
       const hasGlobal = raw.includes("global");
-      const hasVariable = raw.includes("this-");
       let localSheet = target[API_STYLE];
       let globalSheet = target.constructor[API_STYLE];
-      if (!hasVariable && localSheet)
+      if (localSheet)
         return;
-      const parsed = raw.replace(regex1, (_match, key) => {
-        let value = target;
-        for (const section of key.split("-")) {
-          value = value?.[section];
-        }
-        return value;
-      }).replace(regex2, "");
       if (!localSheet) {
         localSheet = new CSSStyleSheet();
         target[API_STYLE] = localSheet;
         shadowRoot(target)?.adoptedStyleSheets.push(localSheet);
       }
-      const localStyle = parsed.replace(regex3, "");
+      const localStyle = raw.replace(regex, "");
       localSheet.replaceSync(localStyle);
       if (!hasGlobal || globalSheet)
         return;
@@ -861,7 +874,7 @@ const requestUpdate = (target, name, previous, callback) => {
         target.constructor[API_STYLE] = globalSheet;
         document.adoptedStyleSheets.push(globalSheet);
       }
-      const globalStyle = parsed?.match(regex3)?.join("")?.replaceAll("global", "")?.replaceAll(":host", getTag(target) || "");
+      const globalStyle = raw?.match(regex)?.join("")?.replaceAll("global", "")?.replaceAll(":host", getTag(target) || "");
       globalSheet.replaceSync(globalStyle);
     })();
     call(target, LIFECYCLE_UPDATED, states);
@@ -871,7 +884,7 @@ const requestUpdate = (target, name, previous, callback) => {
   target[API_REQUEST] ||= task({ handler });
   call(target, API_REQUEST);
 };
-const styles$1 = (input) => {
+const styles = (input) => {
   return Object.keys(input).filter((key) => input[key] !== void 0 && input[key] !== null).map((key) => `${key.startsWith("--") ? "--" : ""}${kebabCase(key)}: ${input[key]}`).join("; ");
 };
 function toDecorator(util, ...args) {
@@ -1601,9 +1614,9 @@ function Watch(keys, immediate) {
     });
   };
 }
-const attributes = attributes$2;
-const html = html$1;
-const styles = styles$1;
+const _internal_a_ = attributes$1;
+const _internal_h_ = html;
+const _internal_s_ = styles;
 const BREAKPOINTS = {
   xs: {
     type: "media",
@@ -1817,7 +1830,9 @@ const toCSSColor = (input) => {
 const getCSSColor = (element, input) => {
   if (!input) return;
   if (isCSSColor(input)) return input;
-  return window.getComputedStyle(element).getPropertyValue(toCSSColor(input).trim().slice(4, -1)).trim();
+  const color = toCSSColor(input);
+  if (!color) return input;
+  return window.getComputedStyle(element).getPropertyValue(color.trim().slice(4, -1)).trim();
 };
 const toAxis = (input, rtl) => {
   if (!input) return input;
@@ -1836,7 +1851,7 @@ const toCSSUnit = (input) => {
 class Animation {
   constructor(config) {
     this.state = "leaved";
-    this.config = Object.assign({}, this.config, config, {
+    this.config = Object.assign({}, config, {
       states: Object.assign(
         {},
         {
@@ -1929,7 +1944,8 @@ class Animation {
   }
   update(state) {
     this.state = state;
-    const value = this.config.states[this.state];
+    const value = this.config.states?.[this.state];
+    if (!value) return;
     this.target.setAttribute(this.config.key, value);
   }
 }
@@ -2010,21 +2026,22 @@ const _Scrollbar = class _Scrollbar {
     const rect = document.body.getBoundingClientRect();
     const isOverflowing = Math.round(rect.left + rect.right) < window.innerWidth;
     if (!isOverflowing) return;
-    const dir = window.getComputedStyle(window.document.body).getPropertyValue("direction").toLowerCase();
-    const property = dir == "rtl" ? "paddingLeft" : "paddingRight";
-    _Scrollbar.style = {
-      overflow: document.body.style.overflow,
-      [property]: document.body.style[property]
-    };
+    const direction2 = window.getComputedStyle(window.document.body).getPropertyValue("direction").toLowerCase();
+    const property = direction2 == "rtl" ? "paddingLeft" : "paddingRight";
+    const value = window.getComputedStyle(window.document.body).getPropertyValue(property.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase());
+    _Scrollbar.style.overflow = document.body.style.overflow;
+    _Scrollbar.style[property] = document.body.style[property];
     document.body.style.overflow = "hidden";
     const scrollbarWidth = _Scrollbar.width;
-    document.body.style[property] = `${scrollbarWidth}px`;
+    document.body.style[property] = `${parseFloat(value) + scrollbarWidth}px`;
   }
   static reset(key) {
     _Scrollbar.keys.delete(key);
     if (_Scrollbar.keys.size) return;
     const keys = Object.keys(_Scrollbar.style);
-    for (const key2 of keys) document.body.style[key2] = _Scrollbar.style[key2];
+    for (const key2 of keys) {
+      document.body.style[key2] = _Scrollbar.style[key2] || "";
+    }
     _Scrollbar.style = {};
   }
 };
@@ -2045,27 +2062,27 @@ export {
   State as S,
   Variant as V,
   Watch as W,
+  _internal_a_ as _,
   off as a,
-  attributes as b,
+  _internal_h_ as b,
   Property as c,
   Element as d,
   Event as e,
   Provider as f,
   Style as g,
-  html as h,
-  toCSSColor as i,
-  PlusForm as j,
-  getCSSColor as k,
-  setConfig as l,
-  getConfig as m,
-  Animation as n,
+  toCSSColor as h,
+  PlusForm as i,
+  getCSSColor as j,
+  _internal_s_ as k,
+  getConfig as l,
+  Animation as m,
+  Scrollbar as n,
   on as o,
-  Scrollbar as p,
+  toAxis as p,
   query as q,
-  toAxis as r,
-  styles as s,
+  classes as r,
+  setConfig as s,
   toCSSUnit as t,
-  classes as u,
-  QueryAll as v,
-  setConfig$1 as w
+  QueryAll as u,
+  setConfig$1 as v
 };

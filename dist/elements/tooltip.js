@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, o as on, a as off, E as ExternalDependencyError, b as attributes, h as html, c as Property, V as Variant, O as Overrides, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, o as on, a as off, E as ExternalDependencyError, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{width:max-content;background-color:#000;color:#fff;font-weight:bold;padding:4px 8px;border-radius:4px;font-size:90%;position:absolute}:host([fixed]){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;position:absolute;width:0;height:0}:host([arrow]) [part=arrow]{display:block}:host([arrow]):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]):host([placement-computed^=top]) [part=arrow]{bottom:-6px;transform:translateX(-50%);border-top:solid 6px #000;border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 0px rgba(0,0,0,0);border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]):host([placement-computed^=right]) [part=arrow]{left:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 6px #000;border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 0px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]):host([placement-computed^=bottom]) [part=arrow]{top:-6px;transform:translateX(-50%);border-top:solid 0px rgba(0,0,0,0);border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 6px #000;border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]):host([placement-computed^=left]) [part=arrow]{right:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 0px rgba(0,0,0,0);border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 6px #000}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -11,7 +11,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let FloatingCore;
-let Tooltip = class extends PlusCore {
+let PlusTooltip = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.offset = [0, 10];
@@ -25,7 +25,7 @@ let Tooltip = class extends PlusCore {
     if (this.state === "hide") return;
     clearTimeout(this.timeout);
     const delay = this.delay?.[1] || this.delay || 0;
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.state = "hide";
       this.observe(false);
     }, delay);
@@ -34,7 +34,7 @@ let Tooltip = class extends PlusCore {
     if (this.state === "show") return;
     clearTimeout(this.timeout);
     const delay = this.delay?.[0] || this.delay || 0;
-    this.timeout = setTimeout(() => {
+    this.timeout = window.setTimeout(() => {
       this.state = "show";
       this.observe(true);
     }, delay);
@@ -118,8 +118,8 @@ let Tooltip = class extends PlusCore {
       strategy: this.fixed ? "fixed" : "absolute"
     };
   }
-  watcher(next, _prev, key) {
-    switch (key) {
+  watcher(next, _prev, name) {
+    switch (name) {
       case "disabled":
         next ? this.terminate() : this.initialize();
         break;
@@ -168,7 +168,7 @@ let Tooltip = class extends PlusCore {
   }
   connectedCallback() {
     import("@floating-ui/dom").then((module) => {
-      FloatingCore = module.default || module;
+      FloatingCore = module;
       this.initialize();
     }).catch((error) => {
       throw new ExternalDependencyError(this.$host, "@floating-ui/dom", {
@@ -180,7 +180,7 @@ let Tooltip = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "role": "tooltip"
     }, {
       "state": this.state
@@ -190,96 +190,96 @@ let Tooltip = class extends PlusCore {
 			`;
   }
 };
-Tooltip.tag = "plus-tooltip";
-Tooltip.style = STYLE_IMPORTED;
+PlusTooltip.tag = "plus-tooltip";
+PlusTooltip.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Tooltip.prototype, "arrow", 2);
+], PlusTooltip.prototype, "arrow", 2);
 __decorateClass([
   Property({
     type: 129
   })
-], Tooltip.prototype, "delay", 2);
+], PlusTooltip.prototype, "delay", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Tooltip.prototype, "disabled", 2);
+], PlusTooltip.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Tooltip.prototype, "fixed", 2);
+], PlusTooltip.prototype, "fixed", 2);
 __decorateClass([
   Property({
     type: 129
   })
-], Tooltip.prototype, "offset", 2);
+], PlusTooltip.prototype, "offset", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Tooltip.prototype, "placement", 2);
+], PlusTooltip.prototype, "placement", 2);
 __decorateClass([
   Property({
     type: 528
   })
-], Tooltip.prototype, "reference", 2);
+], PlusTooltip.prototype, "reference", 2);
 __decorateClass([
   Property({
     type: 17
   })
-], Tooltip.prototype, "trigger", 2);
+], PlusTooltip.prototype, "trigger", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Tooltip.prototype, "variant", 2);
+], PlusTooltip.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], Tooltip.prototype, "z", 2);
+], PlusTooltip.prototype, "z", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Tooltip.prototype, "overrides", 2);
+], PlusTooltip.prototype, "overrides", 2);
 __decorateClass([
   Method()
-], Tooltip.prototype, "hide", 1);
+], PlusTooltip.prototype, "hide", 1);
 __decorateClass([
   Method()
-], Tooltip.prototype, "show", 1);
+], PlusTooltip.prototype, "show", 1);
 __decorateClass([
   Method()
-], Tooltip.prototype, "update", 1);
+], PlusTooltip.prototype, "update", 1);
 __decorateClass([
   Query("[part=arrow]")
-], Tooltip.prototype, "$arrow", 2);
+], PlusTooltip.prototype, "$arrow", 2);
 __decorateClass([
   State()
-], Tooltip.prototype, "state", 2);
+], PlusTooltip.prototype, "state", 2);
 __decorateClass([
   Watch()
-], Tooltip.prototype, "watcher", 1);
+], PlusTooltip.prototype, "watcher", 1);
 __decorateClass([
   Bind()
-], Tooltip.prototype, "onHide", 1);
+], PlusTooltip.prototype, "onHide", 1);
 __decorateClass([
   Bind()
-], Tooltip.prototype, "onShow", 1);
-Tooltip = __decorateClass([
+], PlusTooltip.prototype, "onShow", 1);
+PlusTooltip = __decorateClass([
   Element()
-], Tooltip);
+], PlusTooltip);
 export {
-  Tooltip
+  PlusTooltip
 };

@@ -23,16 +23,18 @@ export default [
 	parse(),
 	validate(),
 	extract(),
-	style(),
-	customElement({
-		prefix: 'plus-'
+	style({
+		source(context) {
+			return `${context.directoryPath}/styles.scss`;
+		}
 	}),
+	customElement(),
 	assets({
 		destination(context) {
-			return `${DESTINATION}/elements/${context.fileName}`;
+			return `${DESTINATION}/elements/${context.directoryName}`;
 		},
 		json(context) {
-			return `${DESTINATION}/elements/${context.fileName}/assets.json`;
+			return `${DESTINATION}/elements/${context.directoryName}/assets.json`;
 		}
 	}),
 	document({
@@ -44,10 +46,7 @@ export default [
 	visualStudioCode({
 		destination: `${DESTINATION}/json/vscode.json`,
 		reference(context) {
-			return `https://www.htmlplus.io/javascript/element/${context.elementKey}`;
-		},
-		transformer(_context, element) {
-			element.name = `plus-${element.name}`;
+			return `https://www.htmlplus.io/javascript/element/${context.elementKey.replace('plus-', '')}`;
 		}
 	}),
 	webTypes({
@@ -55,10 +54,7 @@ export default [
 		packageName: PACKAGE.name,
 		packageVersion: PACKAGE.version,
 		reference(context) {
-			return `https://www.htmlplus.io/javascript/element/${context.elementKey}`;
-		},
-		transformer(_context, element) {
-			element.name = `plus-${element.name}`;
+			return `https://www.htmlplus.io/javascript/element/${context.elementKey.replace('plus-', '')}`;
 		}
 	}),
 	{
@@ -75,7 +71,7 @@ export default [
 					for (const file of files) {
 						const content = fs.readFileSync(path.join(directory, file), 'utf8');
 
-						outputs[`${file.replace('.css', '')}/${context.fileName}.css`] = content;
+						outputs[`${file.replace('.css', '')}/${context.directoryName}.css`] = content;
 
 						outputs[file] ||= '';
 

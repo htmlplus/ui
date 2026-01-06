@@ -1,2 +1,2 @@
-export * from './spinner';
-export * from './spinner.types';
+export * from './element';
+export * from './types';

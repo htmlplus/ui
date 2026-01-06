@@ -1848,12 +1848,47 @@
         },
         {
           "name": "size",
-          "values": [],
+          "values": [
+            {
+              "name": "sm"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "lg"
+            },
+            {
+              "name": "xl'"
+            }
+          ],
           "description": "Specifies the thickness of the border."
         },
         {
           "name": "stroke",
-          "values": [],
+          "values": [
+            {
+              "name": "dotted"
+            },
+            {
+              "name": "double"
+            },
+            {
+              "name": "groove"
+            },
+            {
+              "name": "inset"
+            },
+            {
+              "name": "outset"
+            },
+            {
+              "name": "ridge"
+            },
+            {
+              "name": "solid'"
+            }
+          ],
           "description": "Specifies the style of the border."
         },
         {
@@ -2394,6 +2429,11 @@
           "description": "The theme to apply for syntax highlighting."
         },
         {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "plugins",
           "values": [
             {
@@ -2404,6 +2444,18 @@
             }
           ],
           "description": "Plugins to enhance Prism's functionality."
+        },
+        {
+          "name": "resolver",
+          "values": [
+            {
+              "name": "plugin"
+            },
+            {
+              "name": "theme';\n  value: string;\n  // biome-ignore lint: TODO\n}) => Promise<any"
+            }
+          ],
+          "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
         },
         {
           "name": "sync",
@@ -2418,17 +2470,7 @@
           "description": "Whether to synchronize updates with DOM changes."
         },
         {
-          "name": "resolver",
-          "values": [],
-          "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
-        },
-        {
           "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
-          "name": "overrides",
           "values": [],
           "description": "TODO"
         }
@@ -2467,14 +2509,19 @@
           "description": "Displays the progress percentage."
         },
         {
+          "name": "max",
+          "values": [],
+          "description": "Specifies the maximum value of the progress."
+        },
+        {
           "name": "min",
           "values": [],
           "description": "Specifies the minimum value of the progress."
         },
         {
-          "name": "max",
+          "name": "overrides",
           "values": [],
-          "description": "Specifies the maximum value of the progress."
+          "description": "TODO"
         },
         {
           "name": "sync",
@@ -2497,11 +2544,6 @@
           "name": "value",
           "values": [],
           "description": "Specifies the progress of the bar by a number between `min` and `max`."
-        },
-        {
-          "name": "overrides",
-          "values": [],
-          "description": "TODO"
         }
       ],
       "references": [
@@ -2664,6 +2706,11 @@
           "description": "Specifies the background color."
         },
         {
+          "name": "canvas-context-options",
+          "values": [],
+          "description": "Specifies configuration options for the canvas 2D rendering context. These options are passed to `HTMLCanvasElement.getContext('2d', options)` and control how the drawing context is created (for example, alpha, color space, or desynchronization behavior)."
+        },
+        {
           "name": "clear-on-resize",
           "values": [
             {
@@ -2676,14 +2723,14 @@
           "description": "Clears the canvas after resizing."
         },
         {
-          "name": "color",
+          "name": "pen-color",
           "values": [],
           "description": "Specifies the color of the strokes."
         },
         {
-          "name": "distance",
+          "name": "min-distance",
           "values": [],
-          "description": "Specifies the distance between the previous point and the next one."
+          "description": "Add the next point only if the previous one is farther than x pixels."
         },
         {
           "name": "dot-size",
@@ -2723,7 +2770,7 @@
           "description": "Gets/Sets data."
         },
         {
-          "name": "velocity",
+          "name": "velocity-filter-weight",
           "values": [],
           "description": "Specifies the velocity based on the previous velocity."
         },
@@ -2829,8 +2876,23 @@
           "description": "Specifies the color."
         },
         {
-          "name": "size",
+          "name": "overrides",
           "values": [],
+          "description": "TODO"
+        },
+        {
+          "name": "size",
+          "values": [
+            {
+              "name": "md"
+            },
+            {
+              "name": "lg"
+            },
+            {
+              "name": "inherit'"
+            }
+          ],
           "description": "Specifies the size of the spinner."
         },
         {
@@ -2859,11 +2921,6 @@
         },
         {
           "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
-          "name": "overrides",
           "values": [],
           "description": "TODO"
         }
@@ -2909,9 +2966,6 @@
           "name": "justify",
           "values": [
             {
-              "name": "normal"
-            },
-            {
               "name": "start"
             },
             {
@@ -2921,6 +2975,12 @@
               "name": "center"
             },
             {
+              "name": "stretch"
+            },
+            {
+              "name": "normal"
+            },
+            {
               "name": "between"
             },
             {
@@ -2928,9 +2988,6 @@
             },
             {
               "name": "evenly"
-            },
-            {
-              "name": "stretch"
             }
           ],
           "description": "The distribution of items along the main axis."
@@ -2997,6 +3054,23 @@
       "name": "plus-sticky",
       "attributes": [
         {
+          "name": "disabled",
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
+          "description": "Disables the element functionality."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "TODO"
+        },
+        {
           "name": "top",
           "values": [],
           "description": "Specifies the space from top."
@@ -3022,11 +3096,6 @@
           "name": "z-index",
           "values": [],
           "description": "Specifies the z-index."
-        },
-        {
-          "name": "overrides",
-          "values": [],
-          "description": "TODO"
         }
       ],
       "references": [

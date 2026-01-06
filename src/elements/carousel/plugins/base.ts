@@ -1,6 +1,6 @@
 import type { EmblaCarouselType, EmblaEventType } from 'embla-carousel';
 
-import type { Carousel } from '../carousel';
+import type { PlusCarousel } from '../element';
 
 export abstract class CarouselPlugin {
 	abstract events: {
@@ -11,7 +11,7 @@ export abstract class CarouselPlugin {
 		return this.instance.api;
 	}
 
-	constructor(public instance: Carousel) {}
+	constructor(public instance: PlusCarousel) {}
 
 	public initialize(): void {
 		Object.keys(this.events).forEach((key) => {

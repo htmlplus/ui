@@ -1,4 +1,4 @@
-import { P as PlusCore, b as attributes, h as html, c as Property, V as Variant, O as Overrides, d as Element } from "../core/index.js";
+import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{flex:0 0 auto;display:flex;overflow:auto}:host([reverse]){flex-direction:row-reverse}:host([grow]) ::slotted(plus-tabs-tab){flex-grow:1}:host([justify=start]),:host([justify=end][reverse]){justify-content:flex-start}:host([justify=center]){justify-content:center}:host([justify=end]),:host([justify=start][reverse]){justify-content:flex-end}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,55 +10,55 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let TabsBar = class extends PlusCore {
+let PlusTabsBar = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.justify = "start";
   }
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "role": "tablist"
     }])}
 				<slot />
 			`;
   }
 };
-TabsBar.tag = "plus-tabs-bar";
-TabsBar.style = STYLE_IMPORTED;
+PlusTabsBar.tag = "plus-tabs-bar";
+PlusTabsBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], TabsBar.prototype, "grow", 2);
+], PlusTabsBar.prototype, "grow", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 16
   })
-], TabsBar.prototype, "justify", 2);
+], PlusTabsBar.prototype, "justify", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], TabsBar.prototype, "reverse", 2);
+], PlusTabsBar.prototype, "reverse", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], TabsBar.prototype, "variant", 2);
+], PlusTabsBar.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], TabsBar.prototype, "overrides", 2);
-TabsBar = __decorateClass([
+], PlusTabsBar.prototype, "overrides", 2);
+PlusTabsBar = __decorateClass([
   Element()
-], TabsBar);
+], PlusTabsBar);
 export {
-  TabsBar
+  PlusTabsBar
 };

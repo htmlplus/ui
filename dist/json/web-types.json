@@ -102,7 +102,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -181,7 +181,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -453,7 +453,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -530,7 +530,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "default": "'dodgerblue'",
               "description": "Specifies the color of the bar."
@@ -576,7 +576,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -615,7 +615,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -629,7 +629,7 @@
             {
               "name": "size",
               "value": {
-                "type": "OverridableValue<AvatarSize>"
+                "type": "OverridableValue<PlusAvatarSize>"
               },
               "description": "Specifies the size of the element."
             },
@@ -643,7 +643,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -705,7 +705,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -804,7 +804,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -950,7 +950,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1006,7 +1006,7 @@
             {
               "name": "elevation",
               "value": {
-                "type": "OverridableValue<CardElevation>"
+                "type": "OverridableValue<number>"
               },
               "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
             },
@@ -1041,7 +1041,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -1074,7 +1074,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1449,7 +1449,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO: Indicates whether the carousel has been successfully initialized."
             }
@@ -1511,7 +1511,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -1564,7 +1564,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -1624,7 +1624,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1658,7 +1658,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1703,7 +1703,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1743,7 +1743,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1794,7 +1794,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -1872,7 +1872,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -2062,7 +2062,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -2328,7 +2328,7 @@
             {
               "name": "value",
               "value": {
-                "type": "interface CropperValue {\n  rotate?: number;\n  top?: number;\n  left?: number;\n  height?: number;\n  width?: number;\n}"
+                "type": "{\n  rotate?: number;\n  top?: number;\n  left?: number;\n  height?: number;\n  width?: number;\n}"
               },
               "description": "Gets/Sets data."
             },
@@ -2366,7 +2366,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -2574,7 +2574,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -2625,7 +2625,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -2676,7 +2676,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -2709,7 +2709,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -2749,7 +2749,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -2800,7 +2800,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -2877,7 +2877,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -2908,7 +2908,7 @@
             {
               "name": "size",
               "value": {
-                "type": "OverridableValue<DividerSize>"
+                "type": "OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'>"
               },
               "default": "'md'",
               "description": "Specifies the thickness of the border."
@@ -2916,7 +2916,7 @@
             {
               "name": "stroke",
               "value": {
-                "type": "OverridableValue<DividerStroke>"
+                "type": "OverridableValue<'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'>"
               },
               "default": "'solid'",
               "description": "Specifies the style of the border."
@@ -2931,7 +2931,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -3125,7 +3125,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -3169,7 +3169,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -3270,7 +3270,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -3400,7 +3400,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -3455,7 +3455,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -3511,7 +3511,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -3605,7 +3605,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -3635,23 +3635,23 @@
                 "description": "The theme to apply for syntax highlighting."
               },
               {
-                "name": "plugins",
-                "description": "Plugins to enhance Prism's functionality."
+                "name": "overrides",
+                "description": "TODO"
               },
               {
-                "name": "sync",
-                "description": "Whether to synchronize updates with DOM changes."
+                "name": "plugins",
+                "description": "Plugins to enhance Prism's functionality."
               },
               {
                 "name": "resolver",
                 "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
               },
               {
-                "name": "variant",
-                "description": "TODO"
+                "name": "sync",
+                "description": "Whether to synchronize updates with DOM changes."
               },
               {
-                "name": "overrides",
+                "name": "variant",
                 "description": "TODO"
               }
             ]
@@ -3674,11 +3674,25 @@
               "description": "The theme to apply for syntax highlighting."
             },
             {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "TODO"
+            },
+            {
               "name": "plugins",
               "value": {
                 "type": "{ [key in string]: boolean | { [key in string]: string } }"
               },
               "description": "Plugins to enhance Prism's functionality."
+            },
+            {
+              "name": "resolver",
+              "value": {
+                "type": "(params: {\n  key: 'language' | 'plugin' | 'theme';\n  value: string;\n  // biome-ignore lint: TODO\n}) => Promise<any>"
+              },
+              "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
             },
             {
               "name": "sync",
@@ -3688,23 +3702,9 @@
               "description": "Whether to synchronize updates with DOM changes."
             },
             {
-              "name": "resolver",
-              "value": {
-                "type": "(params: {\n  key: string;\n  value: string;\n}) => Promise<unknown>"
-              },
-              "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
-            },
-            {
               "name": "variant",
               "value": {
                 "type": "OverridableValue<never>"
-              },
-              "description": "TODO"
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<Breakpoint>"
               },
               "description": "TODO"
             }
@@ -3740,14 +3740,18 @@
                 "description": "Displays the progress percentage."
               },
               {
+                "name": "max",
+                "default": "100",
+                "description": "Specifies the maximum value of the progress."
+              },
+              {
                 "name": "min",
                 "default": "0",
                 "description": "Specifies the minimum value of the progress."
               },
               {
-                "name": "max",
-                "default": "100",
-                "description": "Specifies the maximum value of the progress."
+                "name": "overrides",
+                "description": "TODO"
               },
               {
                 "name": "sync",
@@ -3761,10 +3765,6 @@
                 "name": "value",
                 "default": "0",
                 "description": "Specifies the progress of the bar by a number between `min` and `max`."
-              },
-              {
-                "name": "overrides",
-                "description": "TODO"
               }
             ]
           },
@@ -3779,7 +3779,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "description": "Specifies the color of the bar."
             },
@@ -3791,6 +3791,14 @@
               "description": "Displays the progress percentage."
             },
             {
+              "name": "max",
+              "value": {
+                "type": "number"
+              },
+              "default": "100",
+              "description": "Specifies the maximum value of the progress."
+            },
+            {
               "name": "min",
               "value": {
                 "type": "number"
@@ -3799,12 +3807,11 @@
               "description": "Specifies the minimum value of the progress."
             },
             {
-              "name": "max",
+              "name": "overrides",
               "value": {
-                "type": "number"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
-              "default": "100",
-              "description": "Specifies the maximum value of the progress."
+              "description": "TODO"
             },
             {
               "name": "sync",
@@ -3827,13 +3834,6 @@
               },
               "default": "0",
               "description": "Specifies the progress of the bar by a number between `min` and `max`."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<Breakpoint>"
-              },
-              "description": "TODO"
             }
           ],
           "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
@@ -3864,7 +3864,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -3961,7 +3961,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4035,7 +4035,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4048,10 +4048,6 @@
           "js": {
             "events": [
               {
-                "name": "plus-change",
-                "description": "Fires after the latest changes have occurred with a delay to prepare the value."
-              },
-              {
                 "name": "plus-after",
                 "description": "Fires after updating the stroke."
               },
@@ -4060,8 +4056,16 @@
                 "description": "Fires before updating the stroke."
               },
               {
+                "name": "plus-change",
+                "description": "Fires after the latest changes have occurred with a delay to prepare the value."
+              },
+              {
                 "name": "plus-end",
                 "description": "Fires after a stroke ends."
+              },
+              {
+                "name": "plus-ready",
+                "description": "Fires when the underlying `signature_pad` instance has been successfully initialized and the element is ready for interaction."
               },
               {
                 "name": "plus-start",
@@ -4075,17 +4079,22 @@
                 "description": "Specifies the background color."
               },
               {
+                "name": "canvasContextOptions",
+                "description": "Specifies configuration options for the canvas 2D rendering context. These options are passed to `HTMLCanvasElement.getContext('2d', options)` and control how the drawing context is created (for example, alpha, color space, or desynchronization behavior)."
+              },
+              {
                 "name": "clearOnResize",
                 "description": "Clears the canvas after resizing."
               },
               {
-                "name": "color",
+                "name": "penColor",
                 "default": "'black'",
                 "description": "Specifies the color of the strokes."
               },
               {
-                "name": "distance",
-                "description": "Specifies the distance between the previous point and the next one."
+                "name": "minDistance",
+                "default": "5",
+                "description": "Add the next point only if the previous one is farther than x pixels."
               },
               {
                 "name": "dotSize",
@@ -4115,7 +4124,7 @@
                 "description": "Gets/Sets data."
               },
               {
-                "name": "velocity",
+                "name": "velocityFilterWeight",
                 "default": "0.7",
                 "description": "Specifies the velocity based on the previous velocity."
               },
@@ -4140,12 +4149,32 @@
                 "description": "TODO"
               },
               {
+                "name": "clear",
+                "description": "Clears the canvas"
+              },
+              {
+                "name": "fromDataURL",
+                "description": "Restores the signature from a data URL."
+              },
+              {
                 "name": "redo",
                 "description": "Reverts the last undo action."
               },
               {
+                "name": "redraw",
+                "description": "Redraw the canvas."
+              },
+              {
                 "name": "resize",
                 "description": "Syncs the canvas dimensions with the element dimensions."
+              },
+              {
+                "name": "toDataURL",
+                "description": "Returns the current signature as a data URL. The returned string can be used to display the signature image, upload it to a server, or store it for later use."
+              },
+              {
+                "name": "toSVG",
+                "description": "Returns the current signature as an SVG string."
               },
               {
                 "name": "undo",
@@ -4157,10 +4186,17 @@
             {
               "name": "background-color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "default": "'lightgray'",
               "description": "Specifies the background color."
+            },
+            {
+              "name": "canvas-context-options",
+              "value": {
+                "type": "CanvasRenderingContext2DSettings"
+              },
+              "description": "Specifies configuration options for the canvas 2D rendering context. These options are passed to `HTMLCanvasElement.getContext('2d', options)` and control how the drawing context is created (for example, alpha, color space, or desynchronization behavior)."
             },
             {
               "name": "clear-on-resize",
@@ -4170,19 +4206,20 @@
               "description": "Clears the canvas after resizing."
             },
             {
-              "name": "color",
+              "name": "pen-color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "default": "'black'",
               "description": "Specifies the color of the strokes."
             },
             {
-              "name": "distance",
+              "name": "min-distance",
               "value": {
                 "type": "number"
               },
-              "description": "Specifies the distance between the previous point and the next one."
+              "default": "5",
+              "description": "Add the next point only if the previous one is farther than x pixels."
             },
             {
               "name": "dot-size",
@@ -4225,12 +4262,12 @@
             {
               "name": "value",
               "value": {
-                "type": "string"
+                "type": "PointGroup[]"
               },
               "description": "Gets/Sets data."
             },
             {
-              "name": "velocity",
+              "name": "velocity-filter-weight",
               "value": {
                 "type": "number"
               },
@@ -4268,7 +4305,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4303,7 +4340,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "description": "Specifies the color."
             },
@@ -4324,7 +4361,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4374,7 +4411,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -4399,6 +4436,10 @@
                 "description": "Specifies the color."
               },
               {
+                "name": "overrides",
+                "description": "TODO"
+              },
+              {
                 "name": "size",
                 "default": "'inherit'",
                 "description": "Specifies the size of the spinner."
@@ -4411,10 +4452,6 @@
               {
                 "name": "variant",
                 "description": "TODO"
-              },
-              {
-                "name": "overrides",
-                "description": "TODO"
               }
             ]
           },
@@ -4422,14 +4459,21 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, ColorOverrides>"
+                "type": "OverridableValue<string & {}, PlusColorOverrides>"
               },
               "description": "Specifies the color."
             },
             {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "TODO"
+            },
+            {
               "name": "size",
               "value": {
-                "type": "OverridableValue<SpinnerSize>"
+                "type": "OverridableValue<'sm' | 'md' | 'lg' | 'inherit'>"
               },
               "default": "'inherit'",
               "description": "Specifies the size of the spinner."
@@ -4446,13 +4490,6 @@
               "name": "variant",
               "value": {
                 "type": "OverridableValue<never>"
-              },
-              "description": "TODO"
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<Breakpoint>"
               },
               "description": "TODO"
             }
@@ -4506,7 +4543,7 @@
             {
               "name": "gap",
               "value": {
-                "type": "number | string"
+                "type": "string | number"
               },
               "description": "The gap between items."
             },
@@ -4521,7 +4558,7 @@
             {
               "name": "justify",
               "value": {
-                "type": "'normal' | 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly' | 'stretch'"
+                "type": "'start' | 'end' | 'center' | 'stretch' | 'normal' | 'between' | 'around' | 'evenly'"
               },
               "default": "'center'",
               "description": "The distribution of items along the main axis."
@@ -4558,7 +4595,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4583,6 +4620,14 @@
             ],
             "properties": [
               {
+                "name": "disabled",
+                "description": "Disables the element functionality."
+              },
+              {
+                "name": "overrides",
+                "description": "TODO"
+              },
+              {
                 "name": "top",
                 "default": "0",
                 "description": "Specifies the space from top."
@@ -4598,14 +4643,24 @@
               {
                 "name": "zIndex",
                 "description": "Specifies the z-index."
-              },
-              {
-                "name": "overrides",
-                "description": "TODO"
               }
             ]
           },
           "attributes": [
+            {
+              "name": "disabled",
+              "value": {
+                "type": "boolean"
+              },
+              "description": "Disables the element functionality."
+            },
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "TODO"
+            },
             {
               "name": "top",
               "value": {
@@ -4634,13 +4689,6 @@
                 "type": "number"
               },
               "description": "Specifies the z-index."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<Breakpoint>"
-              },
-              "description": "TODO"
             }
           ],
           "description": "Element content is positioned based on the user's scroll position.",
@@ -4706,7 +4754,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -4753,7 +4801,7 @@
             {
               "name": "value",
               "value": {
-                "type": "number | string"
+                "type": "string"
               },
               "description": "Provides your own value."
             },
@@ -4774,7 +4822,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4849,7 +4897,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4890,7 +4938,7 @@
             {
               "name": "value",
               "value": {
-                "type": "number | string"
+                "type": "string"
               },
               "description": "Provides your own value."
             },
@@ -4911,7 +4959,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -4944,7 +4992,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             },
@@ -5003,7 +5051,7 @@
             {
               "name": "value",
               "value": {
-                "type": "number | string"
+                "type": "string"
               },
               "description": "Provides your own value."
             },
@@ -5024,7 +5072,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }
@@ -5157,7 +5205,7 @@
             {
               "name": "trigger",
               "value": {
-                "type": "'click' | 'focus' | 'hover' | 'manual' | TooltipTrigger[]"
+                "type": "'click' | 'focus' | 'hover' | 'manual' | PlusTooltipTrigger[]"
               },
               "description": "Specifies the activation method."
             },
@@ -5179,7 +5227,7 @@
             {
               "name": "overrides",
               "value": {
-                "type": "OverridesConfig<Breakpoint>"
+                "type": "OverridesConfig<PlusBreakpoint>"
               },
               "description": "TODO"
             }

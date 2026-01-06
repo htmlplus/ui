@@ -1,2 +1,2 @@
-export * from './cropper';
-export * from './cropper.types';
+export * from './element';
+export * from './types';

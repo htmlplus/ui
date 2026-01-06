@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, c as Property, V as Variant, O as Overrides, S as State, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, S as State, d as Element } from "../core/index.js";
 const RELATIVE_TIME_UNITS = [
   {
     name: "second",
@@ -39,7 +39,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let RelativeTime = class extends PlusCore {
+let PlusRelativeTime = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.format = "long";
@@ -83,51 +83,51 @@ let RelativeTime = class extends PlusCore {
   }
   render() {
     if (!this.isValid || !this.parts.length) return "Invalid date";
-    return html`<time dateTime=${this.parsed.toISOString()}>
-				${this.parts.map((part) => html`<span part=${part.type}>${part.value}</span>`)}
+    return _internal_h_`<time dateTime=${this.parsed.toISOString()}>
+				${this.parts.map((part) => _internal_h_`<span part=${part.type}>${part.value}</span>`)}
 			</time>`;
   }
 };
-RelativeTime.tag = "plus-relative-time";
+PlusRelativeTime.tag = "plus-relative-time";
 __decorateClass([
   Property({
     type: 16
   })
-], RelativeTime.prototype, "format", 2);
+], PlusRelativeTime.prototype, "format", 2);
 __decorateClass([
   Property({
     type: 16
   })
-], RelativeTime.prototype, "numeric", 2);
+], PlusRelativeTime.prototype, "numeric", 2);
 __decorateClass([
   Property({
     type: 4
   })
-], RelativeTime.prototype, "sync", 2);
+], PlusRelativeTime.prototype, "sync", 2);
 __decorateClass([
   Property({
     type: 520
   })
-], RelativeTime.prototype, "value", 2);
+], PlusRelativeTime.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], RelativeTime.prototype, "variant", 2);
+], PlusRelativeTime.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], RelativeTime.prototype, "overrides", 2);
+], PlusRelativeTime.prototype, "overrides", 2);
 __decorateClass([
   State()
-], RelativeTime.prototype, "parts", 2);
-RelativeTime = __decorateClass([
+], PlusRelativeTime.prototype, "parts", 2);
+PlusRelativeTime = __decorateClass([
   Element()
-], RelativeTime);
+], PlusRelativeTime);
 export {
-  RelativeTime
+  PlusRelativeTime
 };

@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Spacer = class extends PlusCore {
+let PlusSpacer = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.grow = 1;
@@ -21,32 +21,32 @@ let Spacer = class extends PlusCore {
     };
   }
 };
-Spacer.tag = "plus-spacer";
-Spacer.style = STYLE_IMPORTED;
+PlusSpacer.tag = "plus-spacer";
+PlusSpacer.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 128
   })
-], Spacer.prototype, "grow", 2);
+], PlusSpacer.prototype, "grow", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Spacer.prototype, "overrides", 2);
+], PlusSpacer.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Spacer.prototype, "variant", 2);
+], PlusSpacer.prototype, "variant", 2);
 __decorateClass([
   Style()
-], Spacer.prototype, "style", 1);
-Spacer = __decorateClass([
+], PlusSpacer.prototype, "style", 1);
+PlusSpacer = __decorateClass([
   Element()
-], Spacer);
+], PlusSpacer);
 export {
-  Spacer
+  PlusSpacer
 };

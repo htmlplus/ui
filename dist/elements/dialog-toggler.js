@@ -1,4 +1,4 @@
-import { P as PlusCore, b as attributes, h as html, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
+import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-block;cursor:default;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,9 +10,9 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let DialogToggler = class extends PlusCore {
+let PlusDialogToggler = class extends PlusCore {
   render() {
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "role": "button"
     }, {
       "state": this.dialog?.open ? "opened" : "closed"
@@ -24,33 +24,33 @@ let DialogToggler = class extends PlusCore {
 			`;
   }
 };
-DialogToggler.tag = "plus-dialog-toggler";
-DialogToggler.style = STYLE_IMPORTED;
+PlusDialogToggler.tag = "plus-dialog-toggler";
+PlusDialogToggler.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 512
   })
-], DialogToggler.prototype, "connector", 2);
+], PlusDialogToggler.prototype, "connector", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], DialogToggler.prototype, "overrides", 2);
+], PlusDialogToggler.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], DialogToggler.prototype, "variant", 2);
+], PlusDialogToggler.prototype, "variant", 2);
 __decorateClass([
   State(),
   Consumer("dialog.connector")
-], DialogToggler.prototype, "dialog", 2);
-DialogToggler = __decorateClass([
+], PlusDialogToggler.prototype, "dialog", 2);
+PlusDialogToggler = __decorateClass([
   Element()
-], DialogToggler);
+], PlusDialogToggler);
 export {
-  DialogToggler
+  PlusDialogToggler
 };

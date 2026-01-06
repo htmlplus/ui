@@ -1,6 +1,6 @@
 import { Bind } from '@htmlplus/element';
 
-import type { Carousel } from '../carousel';
+import type { PlusCarousel } from '../element';
 import { CarouselPlugin } from './base';
 
 export class CarouselPluginMirror extends CarouselPlugin {
@@ -14,7 +14,7 @@ export class CarouselPluginMirror extends CarouselPlugin {
 	};
 
 	private get carousel() {
-		return document.getElementById(this.instance.mirror) as unknown as Carousel;
+		return document.getElementById(this.instance.mirror) as unknown as PlusCarousel;
 	}
 
 	public initialize() {

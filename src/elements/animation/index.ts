@@ -1,2 +1,1 @@
-export * from './animation';
-export * from './animation.types';
+export * from './element';

@@ -7,8 +7,9 @@ export const getCSSColor = (element: Element, input?: string): string | undefine
 
 	if (isCSSColor(input)) return input;
 
-	return window
-		.getComputedStyle(element)
-		.getPropertyValue(toCSSColor(input).trim().slice(4, -1))
-		.trim();
+	const color = toCSSColor(input);
+
+	if (!color) return input;
+
+	return window.getComputedStyle(element).getPropertyValue(color.trim().slice(4, -1)).trim();
 };

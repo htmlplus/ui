@@ -1,1 +1,1 @@
-export * from './dialog-footer';
+export * from './element';

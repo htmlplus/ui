@@ -1,4 +1,4 @@
-import { v as QueryAll, P as PlusCore, b as attributes, h as html, c as Property, V as Variant, O as Overrides, S as State, d as Element } from "../core/index.js";
+import { u as QueryAll, P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, S as State, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.5em}:host([block]){display:flex}[part=expander],[part=separator]{display:flex;align-items:center;justify-content:center;user-select:none;flex-shrink:0}[part=expander]{background-color:#f5f5f5;border-radius:.25rem;color:currentColor;cursor:pointer}[part=expander]:focus{outline-color:currentColor}[part=separator]{color:currentColor}:dir(rtl)[part=expander],:dir(rtl)[part=separator]{transform:scaleX(-1)}[part=expander] svg,[part=expander] ::slotted(*){fill:currentColor;height:1em}";
 const BREADCRUMB_EXPANDER_QUERY = "[slot=expander]";
 const BREADCRUMB_SEPARATOR_QUERY = "[slot=separator]";
@@ -12,7 +12,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Breadcrumb = class extends PlusCore {
+let PlusBreadcrumb = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.expanderText = "Show path";
@@ -97,18 +97,18 @@ let Breadcrumb = class extends PlusCore {
   }
   render() {
     const template = this.template;
-    return html`${attributes(this, [{
+    return _internal_h_`${_internal_a_(this, [{
       "aria-label": "breadcrumb"
     }])}
 				${this.items.map((item) => {
       switch (item.type) {
         case "item": {
-          return html`<div key=${item.key} part="item">
+          return _internal_h_`<div key=${item.key} part="item">
 									<slot name=${item.slot} />
 								</div>`;
         }
         case "expander": {
-          return html`<div aria-disabled="false" aria-label=${this.expanderText} key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => {
+          return _internal_h_`<div aria-disabled="false" aria-label=${this.expanderText} key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => {
             this.expand = true;
           }} onKeyDown=${(event) => {
             if (event.key.match(/Enter| /)) {
@@ -123,7 +123,7 @@ let Breadcrumb = class extends PlusCore {
 								</div>`;
         }
         case "separator": {
-          return html`<div key=${item.key} aria-hidden="true" part="separator" .innerHTML=${template} />`;
+          return _internal_h_`<div key=${item.key} aria-hidden="true" part="separator" .innerHTML=${template} />`;
         }
         default:
           return null;
@@ -132,56 +132,56 @@ let Breadcrumb = class extends PlusCore {
 			`;
   }
 };
-Breadcrumb.tag = "plus-breadcrumb";
-Breadcrumb.style = STYLE_IMPORTED;
+PlusBreadcrumb.tag = "plus-breadcrumb";
+PlusBreadcrumb.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
     type: 4
   })
-], Breadcrumb.prototype, "block", 2);
+], PlusBreadcrumb.prototype, "block", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Breadcrumb.prototype, "expanderText", 2);
+], PlusBreadcrumb.prototype, "expanderText", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Breadcrumb.prototype, "offset", 2);
+], PlusBreadcrumb.prototype, "offset", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Breadcrumb.prototype, "max", 2);
+], PlusBreadcrumb.prototype, "max", 2);
 __decorateClass([
   Property({
     type: 512
   })
-], Breadcrumb.prototype, "separator", 2);
+], PlusBreadcrumb.prototype, "separator", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Breadcrumb.prototype, "variant", 2);
+], PlusBreadcrumb.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Breadcrumb.prototype, "overrides", 2);
+], PlusBreadcrumb.prototype, "overrides", 2);
 __decorateClass([
   State()
-], Breadcrumb.prototype, "expand", 2);
+], PlusBreadcrumb.prototype, "expand", 2);
 __decorateClass([
   QueryAll("[part=separator]")
-], Breadcrumb.prototype, "$separators", 2);
-Breadcrumb = __decorateClass([
+], PlusBreadcrumb.prototype, "$separators", 2);
+PlusBreadcrumb = __decorateClass([
   Element()
-], Breadcrumb);
+], PlusBreadcrumb);
 export {
-  Breadcrumb
+  PlusBreadcrumb
 };

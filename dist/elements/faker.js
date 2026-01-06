@@ -10,7 +10,7 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let Faker = class extends PlusCore {
+let PlusFaker = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.api = "lorem.paragraph";
@@ -19,8 +19,8 @@ let Faker = class extends PlusCore {
   get content() {
     const method = this.api?.split(".").reduce((result, key) => result?.[key], this.instance);
     if (!method) return null;
-    this.instance.seed(this.seed);
-    return method(...this.arguments) || null;
+    this.instance?.seed(this.seed);
+    return method(...this.arguments || []) || null;
   }
   connectedCallback() {
     if (this.instance) return;
@@ -36,44 +36,44 @@ let Faker = class extends PlusCore {
     return this.content;
   }
 };
-Faker.tag = "plus-faker";
-Faker.style = STYLE_IMPORTED;
+PlusFaker.tag = "plus-faker";
+PlusFaker.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 512
   })
-], Faker.prototype, "api", 2);
+], PlusFaker.prototype, "api", 2);
 __decorateClass([
   Property({
     type: 1
   })
-], Faker.prototype, "arguments", 2);
+], PlusFaker.prototype, "arguments", 2);
 __decorateClass([
   Property({
     type: 0
   })
-], Faker.prototype, "instance", 2);
+], PlusFaker.prototype, "instance", 2);
 __decorateClass([
   Property({
     type: 128
   })
-], Faker.prototype, "seed", 2);
+], PlusFaker.prototype, "seed", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], Faker.prototype, "variant", 2);
+], PlusFaker.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], Faker.prototype, "overrides", 2);
-Faker = __decorateClass([
+], PlusFaker.prototype, "overrides", 2);
+PlusFaker = __decorateClass([
   Element()
-], Faker);
+], PlusFaker);
 export {
-  Faker
+  PlusFaker
 };

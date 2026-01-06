@@ -1,4 +1,4 @@
-import { P as PlusCore, h as html, c as Property, O as Overrides, V as Variant, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{background-color:#dcdcdc;border-radius:.25rem;display:flex;overflow:hidden}::slotted(plus-progress-bar){overflow:visible}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -10,29 +10,29 @@ var __decorateClass = (decorators, target, key, kind) => {
   if (kind && result) __defProp(target, key, result);
   return result;
 };
-let ProgressBarStack = class extends PlusCore {
+let PlusProgressBarStack = class extends PlusCore {
   render() {
-    return html`<slot />`;
+    return _internal_h_`<slot />`;
   }
 };
-ProgressBarStack.tag = "plus-progress-bar-stack";
-ProgressBarStack.style = STYLE_IMPORTED;
+PlusProgressBarStack.tag = "plus-progress-bar-stack";
+PlusProgressBarStack.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 0
   }),
   Overrides()
-], ProgressBarStack.prototype, "overrides", 2);
+], PlusProgressBarStack.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
     type: 0
   }),
   Variant()
-], ProgressBarStack.prototype, "variant", 2);
-ProgressBarStack = __decorateClass([
+], PlusProgressBarStack.prototype, "variant", 2);
+PlusProgressBarStack = __decorateClass([
   Element()
-], ProgressBarStack);
+], PlusProgressBarStack);
 export {
-  ProgressBarStack
+  PlusProgressBarStack
 };
