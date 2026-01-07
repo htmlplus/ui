@@ -74,7 +74,6 @@ export interface PlusAvatarGroupPropertiesBase {
 }
 export interface PlusAvatarGroupPropertiesDisables {}
 export type PlusAvatarGroupProperties = Filter<PlusAvatarGroupPropertiesBase, PlusAvatarGroupPropertiesDisables>;
-export type PlusAvatarGroupAttributesAndEvents = PlusAvatarGroupAttributes & PlusAvatarGroupEvents;
 export interface PlusAvatarGroupJSX extends PlusAvatarGroupEvents, PlusAvatarGroupProperties {}
 declare global {
   interface HTMLPlusAvatarGroupElement extends HTMLElement, PlusAvatarGroupMethods, PlusAvatarGroupProperties {}
@@ -91,38 +90,38 @@ export namespace JSX {
     "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAvatarGroupElement>, HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof PlusAvatarGroupAttributesAndEvents>;
+      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof PlusAvatarGroupAttributesAndEvents>;
+      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof PlusAvatarGroupAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof PlusAvatarGroupAttributesAndEvents>;
+      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof PlusAvatarGroupAttributesAndEvents>;
+      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
     }
   }
 }

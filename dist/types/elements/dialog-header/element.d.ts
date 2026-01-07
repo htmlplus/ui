@@ -49,7 +49,6 @@ export interface PlusDialogHeaderPropertiesBase {
 }
 export interface PlusDialogHeaderPropertiesDisables {}
 export type PlusDialogHeaderProperties = Filter<PlusDialogHeaderPropertiesBase, PlusDialogHeaderPropertiesDisables>;
-export type PlusDialogHeaderAttributesAndEvents = PlusDialogHeaderAttributes & PlusDialogHeaderEvents;
 export interface PlusDialogHeaderJSX extends PlusDialogHeaderEvents, PlusDialogHeaderProperties {}
 declare global {
   interface HTMLPlusDialogHeaderElement extends HTMLElement, PlusDialogHeaderMethods, PlusDialogHeaderProperties {}
@@ -66,38 +65,38 @@ export namespace JSX {
     "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogHeaderElement>, HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof PlusDialogHeaderAttributesAndEvents>;
+      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof PlusDialogHeaderAttributesAndEvents>;
+      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof PlusDialogHeaderAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof PlusDialogHeaderAttributesAndEvents>;
+      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof PlusDialogHeaderAttributesAndEvents>;
+      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
     }
   }
 }

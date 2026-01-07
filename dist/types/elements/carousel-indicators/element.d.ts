@@ -98,7 +98,6 @@ export interface PlusCarouselIndicatorsPropertiesBase {
 }
 export interface PlusCarouselIndicatorsPropertiesDisables {}
 export type PlusCarouselIndicatorsProperties = Filter<PlusCarouselIndicatorsPropertiesBase, PlusCarouselIndicatorsPropertiesDisables>;
-export type PlusCarouselIndicatorsAttributesAndEvents = PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents;
 export interface PlusCarouselIndicatorsJSX extends PlusCarouselIndicatorsEvents, PlusCarouselIndicatorsProperties {}
 declare global {
   interface HTMLPlusCarouselIndicatorsElement extends HTMLElement, PlusCarouselIndicatorsMethods, PlusCarouselIndicatorsProperties {}
@@ -115,38 +114,38 @@ export namespace JSX {
     "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof PlusCarouselIndicatorsAttributesAndEvents>;
+      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof PlusCarouselIndicatorsAttributesAndEvents>;
+      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof PlusCarouselIndicatorsAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof PlusCarouselIndicatorsAttributesAndEvents>;
+      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof PlusCarouselIndicatorsAttributesAndEvents>;
+      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
     }
   }
 }

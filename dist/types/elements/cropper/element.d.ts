@@ -557,7 +557,6 @@ export interface PlusCropperPropertiesBase {
 }
 export interface PlusCropperPropertiesDisables {}
 export type PlusCropperProperties = Filter<PlusCropperPropertiesBase, PlusCropperPropertiesDisables>;
-export type PlusCropperAttributesAndEvents = PlusCropperAttributes & PlusCropperEvents;
 export interface PlusCropperJSX extends PlusCropperEvents, PlusCropperProperties {}
 declare global {
   interface HTMLPlusCropperElement extends HTMLElement, PlusCropperMethods, PlusCropperProperties {}
@@ -574,38 +573,38 @@ export namespace JSX {
     "plus-cropper": PlusCropperAttributes & PlusCropperEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCropperElement>, HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof PlusCropperAttributesAndEvents>;
+      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof PlusCropperAttributesAndEvents>;
+      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof PlusCropperAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof PlusCropperAttributesAndEvents>;
+      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof PlusCropperAttributesAndEvents>;
+      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
     }
   }
 }

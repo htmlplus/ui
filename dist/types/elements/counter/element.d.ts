@@ -225,7 +225,6 @@ export interface PlusCounterPropertiesBase {
 }
 export interface PlusCounterPropertiesDisables {}
 export type PlusCounterProperties = Filter<PlusCounterPropertiesBase, PlusCounterPropertiesDisables>;
-export type PlusCounterAttributesAndEvents = PlusCounterAttributes & PlusCounterEvents;
 export interface PlusCounterJSX extends PlusCounterEvents, PlusCounterProperties {}
 declare global {
   interface HTMLPlusCounterElement extends HTMLElement, PlusCounterMethods, PlusCounterProperties {}
@@ -242,38 +241,38 @@ export namespace JSX {
     "plus-counter": PlusCounterAttributes & PlusCounterEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCounterElement>, HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof PlusCounterAttributesAndEvents>;
+      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof PlusCounterAttributesAndEvents>;
+      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof PlusCounterAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof PlusCounterAttributesAndEvents>;
+      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof PlusCounterAttributesAndEvents>;
+      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
     }
   }
 }

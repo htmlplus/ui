@@ -90,7 +90,6 @@ export interface PlusSwitchPropertiesBase {
 }
 export interface PlusSwitchPropertiesDisables {}
 export type PlusSwitchProperties = Filter<PlusSwitchPropertiesBase, PlusSwitchPropertiesDisables>;
-export type PlusSwitchAttributesAndEvents = PlusSwitchAttributes & PlusSwitchEvents;
 export interface PlusSwitchJSX extends PlusSwitchEvents, PlusSwitchProperties {}
 declare global {
   interface HTMLPlusSwitchElement extends HTMLElement, PlusSwitchMethods, PlusSwitchProperties {}
@@ -107,38 +106,38 @@ export namespace JSX {
     "plus-switch": PlusSwitchAttributes & PlusSwitchEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSwitchElement>, HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof PlusSwitchAttributesAndEvents>;
+      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof PlusSwitchAttributesAndEvents>;
+      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof PlusSwitchAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof PlusSwitchAttributesAndEvents>;
+      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof PlusSwitchAttributesAndEvents>;
+      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
     }
   }
 }

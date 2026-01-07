@@ -733,7 +733,6 @@ export interface PlusCarouselPropertiesBase {
 }
 export interface PlusCarouselPropertiesDisables {}
 export type PlusCarouselProperties = Filter<PlusCarouselPropertiesBase, PlusCarouselPropertiesDisables>;
-export type PlusCarouselAttributesAndEvents = PlusCarouselAttributes & PlusCarouselEvents;
 export interface PlusCarouselJSX extends PlusCarouselEvents, PlusCarouselProperties {}
 declare global {
   interface HTMLPlusCarouselElement extends HTMLElement, PlusCarouselMethods, PlusCarouselProperties {}
@@ -750,38 +749,38 @@ export namespace JSX {
     "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselElement>, HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof PlusCarouselAttributesAndEvents>;
+      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof PlusCarouselAttributesAndEvents>;
+      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof PlusCarouselAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof PlusCarouselAttributesAndEvents>;
+      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof PlusCarouselAttributesAndEvents>;
+      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
     }
   }
 }

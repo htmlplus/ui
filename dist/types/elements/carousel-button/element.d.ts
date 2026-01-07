@@ -78,7 +78,6 @@ export interface PlusCarouselButtonPropertiesBase {
 }
 export interface PlusCarouselButtonPropertiesDisables {}
 export type PlusCarouselButtonProperties = Filter<PlusCarouselButtonPropertiesBase, PlusCarouselButtonPropertiesDisables>;
-export type PlusCarouselButtonAttributesAndEvents = PlusCarouselButtonAttributes & PlusCarouselButtonEvents;
 export interface PlusCarouselButtonJSX extends PlusCarouselButtonEvents, PlusCarouselButtonProperties {}
 declare global {
   interface HTMLPlusCarouselButtonElement extends HTMLElement, PlusCarouselButtonMethods, PlusCarouselButtonProperties {}
@@ -95,38 +94,38 @@ export namespace JSX {
     "plus-carousel-button": PlusCarouselButtonAttributes & PlusCarouselButtonEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-carousel-button": PlusCarouselButtonAttributes & PlusCarouselButtonEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselButtonElement>, HTMLPlusCarouselButtonElement>, keyof (PlusCarouselButtonAttributes & PlusCarouselButtonEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-button": PlusCarouselButtonAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof PlusCarouselButtonAttributesAndEvents>;
+      "plus-carousel-button": PlusCarouselButtonAttributes & PlusCarouselButtonEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof (PlusCarouselButtonAttributes & PlusCarouselButtonEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-button": PlusCarouselButtonAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof PlusCarouselButtonAttributesAndEvents>;
+      "plus-carousel-button": PlusCarouselButtonAttributes & PlusCarouselButtonEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof (PlusCarouselButtonAttributes & PlusCarouselButtonEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-button": PlusCarouselButtonAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof PlusCarouselButtonAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-button": PlusCarouselButtonAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof PlusCarouselButtonAttributesAndEvents>;
+      "plus-carousel-button": PlusCarouselButtonAttributes & PlusCarouselButtonEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof (PlusCarouselButtonAttributes & PlusCarouselButtonEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-button": PlusCarouselButtonAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof PlusCarouselButtonAttributesAndEvents>;
+      "plus-carousel-button": PlusCarouselButtonAttributes & PlusCarouselButtonEvents & Omit<HTMLAttributes<HTMLPlusCarouselButtonElement>, keyof (PlusCarouselButtonAttributes & PlusCarouselButtonEvents)>;
     }
   }
 }

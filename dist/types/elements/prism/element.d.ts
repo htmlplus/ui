@@ -138,7 +138,6 @@ export interface PlusPrismPropertiesBase {
 }
 export interface PlusPrismPropertiesDisables {}
 export type PlusPrismProperties = Filter<PlusPrismPropertiesBase, PlusPrismPropertiesDisables>;
-export type PlusPrismAttributesAndEvents = PlusPrismAttributes & PlusPrismEvents;
 export interface PlusPrismJSX extends PlusPrismEvents, PlusPrismProperties {}
 declare global {
   interface HTMLPlusPrismElement extends HTMLElement, PlusPrismMethods, PlusPrismProperties {}
@@ -155,38 +154,38 @@ export namespace JSX {
     "plus-prism": PlusPrismAttributes & PlusPrismEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-prism": PlusPrismAttributes & PlusPrismEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusPrismElement>, HTMLPlusPrismElement>, keyof (PlusPrismAttributes & PlusPrismEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PlusPrismAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof PlusPrismAttributesAndEvents>;
+      "plus-prism": PlusPrismAttributes & PlusPrismEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof (PlusPrismAttributes & PlusPrismEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PlusPrismAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof PlusPrismAttributesAndEvents>;
+      "plus-prism": PlusPrismAttributes & PlusPrismEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof (PlusPrismAttributes & PlusPrismEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PlusPrismAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof PlusPrismAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-prism": PlusPrismAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof PlusPrismAttributesAndEvents>;
+      "plus-prism": PlusPrismAttributes & PlusPrismEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof (PlusPrismAttributes & PlusPrismEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-prism": PlusPrismAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof PlusPrismAttributesAndEvents>;
+      "plus-prism": PlusPrismAttributes & PlusPrismEvents & Omit<HTMLAttributes<HTMLPlusPrismElement>, keyof (PlusPrismAttributes & PlusPrismEvents)>;
     }
   }
 }

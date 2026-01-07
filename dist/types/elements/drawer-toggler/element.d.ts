@@ -74,7 +74,6 @@ export interface PlusDrawerTogglerPropertiesBase {
 }
 export interface PlusDrawerTogglerPropertiesDisables {}
 export type PlusDrawerTogglerProperties = Filter<PlusDrawerTogglerPropertiesBase, PlusDrawerTogglerPropertiesDisables>;
-export type PlusDrawerTogglerAttributesAndEvents = PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents;
 export interface PlusDrawerTogglerJSX extends PlusDrawerTogglerEvents, PlusDrawerTogglerProperties {}
 declare global {
   interface HTMLPlusDrawerTogglerElement extends HTMLElement, PlusDrawerTogglerMethods, PlusDrawerTogglerProperties {}
@@ -91,38 +90,38 @@ export namespace JSX {
     "plus-drawer-toggler": PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-drawer-toggler": PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDrawerTogglerElement>, HTMLPlusDrawerTogglerElement>, keyof (PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": PlusDrawerTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof PlusDrawerTogglerAttributesAndEvents>;
+      "plus-drawer-toggler": PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof (PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": PlusDrawerTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof PlusDrawerTogglerAttributesAndEvents>;
+      "plus-drawer-toggler": PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof (PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": PlusDrawerTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof PlusDrawerTogglerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-drawer-toggler": PlusDrawerTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof PlusDrawerTogglerAttributesAndEvents>;
+      "plus-drawer-toggler": PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof (PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer-toggler": PlusDrawerTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof PlusDrawerTogglerAttributesAndEvents>;
+      "plus-drawer-toggler": PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents & Omit<HTMLAttributes<HTMLPlusDrawerTogglerElement>, keyof (PlusDrawerTogglerAttributes & PlusDrawerTogglerEvents)>;
     }
   }
 }

@@ -61,7 +61,6 @@ export interface PlusSpacerPropertiesBase {
 }
 export interface PlusSpacerPropertiesDisables {}
 export type PlusSpacerProperties = Filter<PlusSpacerPropertiesBase, PlusSpacerPropertiesDisables>;
-export type PlusSpacerAttributesAndEvents = PlusSpacerAttributes & PlusSpacerEvents;
 export interface PlusSpacerJSX extends PlusSpacerEvents, PlusSpacerProperties {}
 declare global {
   interface HTMLPlusSpacerElement extends HTMLElement, PlusSpacerMethods, PlusSpacerProperties {}
@@ -78,38 +77,38 @@ export namespace JSX {
     "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSpacerElement>, HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof PlusSpacerAttributesAndEvents>;
+      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof PlusSpacerAttributesAndEvents>;
+      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof PlusSpacerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof PlusSpacerAttributesAndEvents>;
+      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof PlusSpacerAttributesAndEvents>;
+      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
     }
   }
 }

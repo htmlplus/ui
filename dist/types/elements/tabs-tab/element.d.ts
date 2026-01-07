@@ -85,7 +85,6 @@ export interface PlusTabsTabPropertiesBase {
 }
 export interface PlusTabsTabPropertiesDisables {}
 export type PlusTabsTabProperties = Filter<PlusTabsTabPropertiesBase, PlusTabsTabPropertiesDisables>;
-export type PlusTabsTabAttributesAndEvents = PlusTabsTabAttributes & PlusTabsTabEvents;
 export interface PlusTabsTabJSX extends PlusTabsTabEvents, PlusTabsTabProperties {}
 declare global {
   interface HTMLPlusTabsTabElement extends HTMLElement, PlusTabsTabMethods, PlusTabsTabProperties {}
@@ -102,38 +101,38 @@ export namespace JSX {
     "plus-tabs-tab": PlusTabsTabAttributes & PlusTabsTabEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tabs-tab": PlusTabsTabAttributes & PlusTabsTabEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTabsTabElement>, HTMLPlusTabsTabElement>, keyof (PlusTabsTabAttributes & PlusTabsTabEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-tab": PlusTabsTabAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof PlusTabsTabAttributesAndEvents>;
+      "plus-tabs-tab": PlusTabsTabAttributes & PlusTabsTabEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof (PlusTabsTabAttributes & PlusTabsTabEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-tab": PlusTabsTabAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof PlusTabsTabAttributesAndEvents>;
+      "plus-tabs-tab": PlusTabsTabAttributes & PlusTabsTabEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof (PlusTabsTabAttributes & PlusTabsTabEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-tab": PlusTabsTabAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof PlusTabsTabAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs-tab": PlusTabsTabAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof PlusTabsTabAttributesAndEvents>;
+      "plus-tabs-tab": PlusTabsTabAttributes & PlusTabsTabEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof (PlusTabsTabAttributes & PlusTabsTabEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-tab": PlusTabsTabAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof PlusTabsTabAttributesAndEvents>;
+      "plus-tabs-tab": PlusTabsTabAttributes & PlusTabsTabEvents & Omit<HTMLAttributes<HTMLPlusTabsTabElement>, keyof (PlusTabsTabAttributes & PlusTabsTabEvents)>;
     }
   }
 }

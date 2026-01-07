@@ -49,7 +49,6 @@ export interface PlusDialogFooterPropertiesBase {
 }
 export interface PlusDialogFooterPropertiesDisables {}
 export type PlusDialogFooterProperties = Filter<PlusDialogFooterPropertiesBase, PlusDialogFooterPropertiesDisables>;
-export type PlusDialogFooterAttributesAndEvents = PlusDialogFooterAttributes & PlusDialogFooterEvents;
 export interface PlusDialogFooterJSX extends PlusDialogFooterEvents, PlusDialogFooterProperties {}
 declare global {
   interface HTMLPlusDialogFooterElement extends HTMLElement, PlusDialogFooterMethods, PlusDialogFooterProperties {}
@@ -66,38 +65,38 @@ export namespace JSX {
     "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogFooterElement>, HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof PlusDialogFooterAttributesAndEvents>;
+      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof PlusDialogFooterAttributesAndEvents>;
+      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof PlusDialogFooterAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof PlusDialogFooterAttributesAndEvents>;
+      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof PlusDialogFooterAttributesAndEvents>;
+      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
     }
   }
 }

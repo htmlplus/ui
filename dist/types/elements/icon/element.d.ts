@@ -151,7 +151,6 @@ export interface PlusIconPropertiesBase {
 }
 export interface PlusIconPropertiesDisables {}
 export type PlusIconProperties = Filter<PlusIconPropertiesBase, PlusIconPropertiesDisables>;
-export type PlusIconAttributesAndEvents = PlusIconAttributes & PlusIconEvents;
 export interface PlusIconJSX extends PlusIconEvents, PlusIconProperties {}
 declare global {
   interface HTMLPlusIconElement extends HTMLElement, PlusIconMethods, PlusIconProperties {}
@@ -168,38 +167,38 @@ export namespace JSX {
     "plus-icon": PlusIconAttributes & PlusIconEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusIconElement>, HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": PlusIconAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof PlusIconAttributesAndEvents>;
+      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": PlusIconAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof PlusIconAttributesAndEvents>;
+      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": PlusIconAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof PlusIconAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-icon": PlusIconAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof PlusIconAttributesAndEvents>;
+      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": PlusIconAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof PlusIconAttributesAndEvents>;
+      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
     }
   }
 }

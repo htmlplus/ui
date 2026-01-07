@@ -104,7 +104,6 @@ export interface PlusFakerPropertiesBase {
 }
 export interface PlusFakerPropertiesDisables {}
 export type PlusFakerProperties = Filter<PlusFakerPropertiesBase, PlusFakerPropertiesDisables>;
-export type PlusFakerAttributesAndEvents = PlusFakerAttributes & PlusFakerEvents;
 export interface PlusFakerJSX extends PlusFakerEvents, PlusFakerProperties {}
 declare global {
   interface HTMLPlusFakerElement extends HTMLElement, PlusFakerMethods, PlusFakerProperties {}
@@ -121,38 +120,38 @@ export namespace JSX {
     "plus-faker": PlusFakerAttributes & PlusFakerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-faker": PlusFakerAttributes & PlusFakerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusFakerElement>, HTMLPlusFakerElement>, keyof (PlusFakerAttributes & PlusFakerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-faker": PlusFakerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof PlusFakerAttributesAndEvents>;
+      "plus-faker": PlusFakerAttributes & PlusFakerEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof (PlusFakerAttributes & PlusFakerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-faker": PlusFakerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof PlusFakerAttributesAndEvents>;
+      "plus-faker": PlusFakerAttributes & PlusFakerEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof (PlusFakerAttributes & PlusFakerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-faker": PlusFakerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof PlusFakerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-faker": PlusFakerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof PlusFakerAttributesAndEvents>;
+      "plus-faker": PlusFakerAttributes & PlusFakerEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof (PlusFakerAttributes & PlusFakerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-faker": PlusFakerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof PlusFakerAttributesAndEvents>;
+      "plus-faker": PlusFakerAttributes & PlusFakerEvents & Omit<HTMLAttributes<HTMLPlusFakerElement>, keyof (PlusFakerAttributes & PlusFakerEvents)>;
     }
   }
 }

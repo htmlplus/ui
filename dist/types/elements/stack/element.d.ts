@@ -131,7 +131,6 @@ export interface PlusStackPropertiesBase {
 }
 export interface PlusStackPropertiesDisables {}
 export type PlusStackProperties = Filter<PlusStackPropertiesBase, PlusStackPropertiesDisables>;
-export type PlusStackAttributesAndEvents = PlusStackAttributes & PlusStackEvents;
 export interface PlusStackJSX extends PlusStackEvents, PlusStackProperties {}
 declare global {
   interface HTMLPlusStackElement extends HTMLElement, PlusStackMethods, PlusStackProperties {}
@@ -148,38 +147,38 @@ export namespace JSX {
     "plus-stack": PlusStackAttributes & PlusStackEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusStackElement>, HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": PlusStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof PlusStackAttributesAndEvents>;
+      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": PlusStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof PlusStackAttributesAndEvents>;
+      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": PlusStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof PlusStackAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-stack": PlusStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof PlusStackAttributesAndEvents>;
+      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": PlusStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof PlusStackAttributesAndEvents>;
+      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
     }
   }
 }

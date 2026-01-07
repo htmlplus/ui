@@ -76,7 +76,6 @@ export interface PlusCarouselCounterPropertiesBase {
 }
 export interface PlusCarouselCounterPropertiesDisables {}
 export type PlusCarouselCounterProperties = Filter<PlusCarouselCounterPropertiesBase, PlusCarouselCounterPropertiesDisables>;
-export type PlusCarouselCounterAttributesAndEvents = PlusCarouselCounterAttributes & PlusCarouselCounterEvents;
 export interface PlusCarouselCounterJSX extends PlusCarouselCounterEvents, PlusCarouselCounterProperties {}
 declare global {
   interface HTMLPlusCarouselCounterElement extends HTMLElement, PlusCarouselCounterMethods, PlusCarouselCounterProperties {}
@@ -93,38 +92,38 @@ export namespace JSX {
     "plus-carousel-counter": PlusCarouselCounterAttributes & PlusCarouselCounterEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-carousel-counter": PlusCarouselCounterAttributes & PlusCarouselCounterEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselCounterElement>, HTMLPlusCarouselCounterElement>, keyof (PlusCarouselCounterAttributes & PlusCarouselCounterEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": PlusCarouselCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof PlusCarouselCounterAttributesAndEvents>;
+      "plus-carousel-counter": PlusCarouselCounterAttributes & PlusCarouselCounterEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof (PlusCarouselCounterAttributes & PlusCarouselCounterEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": PlusCarouselCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof PlusCarouselCounterAttributesAndEvents>;
+      "plus-carousel-counter": PlusCarouselCounterAttributes & PlusCarouselCounterEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof (PlusCarouselCounterAttributes & PlusCarouselCounterEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": PlusCarouselCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof PlusCarouselCounterAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-counter": PlusCarouselCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof PlusCarouselCounterAttributesAndEvents>;
+      "plus-carousel-counter": PlusCarouselCounterAttributes & PlusCarouselCounterEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof (PlusCarouselCounterAttributes & PlusCarouselCounterEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-counter": PlusCarouselCounterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof PlusCarouselCounterAttributesAndEvents>;
+      "plus-carousel-counter": PlusCarouselCounterAttributes & PlusCarouselCounterEvents & Omit<HTMLAttributes<HTMLPlusCarouselCounterElement>, keyof (PlusCarouselCounterAttributes & PlusCarouselCounterEvents)>;
     }
   }
 }

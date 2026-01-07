@@ -409,7 +409,6 @@ export interface PlusAnimationPropertiesBase {
 }
 export interface PlusAnimationPropertiesDisables {}
 export type PlusAnimationProperties = Filter<PlusAnimationPropertiesBase, PlusAnimationPropertiesDisables>;
-export type PlusAnimationAttributesAndEvents = PlusAnimationAttributes & PlusAnimationEvents;
 export interface PlusAnimationJSX extends PlusAnimationEvents, PlusAnimationProperties {}
 declare global {
   interface HTMLPlusAnimationElement extends HTMLElement, PlusAnimationMethods, PlusAnimationProperties {}
@@ -426,38 +425,38 @@ export namespace JSX {
     "plus-animation": PlusAnimationAttributes & PlusAnimationEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAnimationElement>, HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof PlusAnimationAttributesAndEvents>;
+      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof PlusAnimationAttributesAndEvents>;
+      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof PlusAnimationAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof PlusAnimationAttributesAndEvents>;
+      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof PlusAnimationAttributesAndEvents>;
+      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
     }
   }
 }

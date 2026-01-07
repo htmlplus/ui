@@ -314,7 +314,6 @@ export interface PlusDialogPropertiesBase {
 }
 export interface PlusDialogPropertiesDisables {}
 export type PlusDialogProperties = Filter<PlusDialogPropertiesBase, PlusDialogPropertiesDisables>;
-export type PlusDialogAttributesAndEvents = PlusDialogAttributes & PlusDialogEvents;
 export interface PlusDialogJSX extends PlusDialogEvents, PlusDialogProperties {}
 declare global {
   interface HTMLPlusDialogElement extends HTMLElement, PlusDialogMethods, PlusDialogProperties {}
@@ -331,38 +330,38 @@ export namespace JSX {
     "plus-dialog": PlusDialogAttributes & PlusDialogEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogElement>, HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof PlusDialogAttributesAndEvents>;
+      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof PlusDialogAttributesAndEvents>;
+      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof PlusDialogAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof PlusDialogAttributesAndEvents>;
+      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof PlusDialogAttributesAndEvents>;
+      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
     }
   }
 }

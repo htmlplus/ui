@@ -51,7 +51,6 @@ export interface PlusCarouselProgressPropertiesBase {
 }
 export interface PlusCarouselProgressPropertiesDisables {}
 export type PlusCarouselProgressProperties = Filter<PlusCarouselProgressPropertiesBase, PlusCarouselProgressPropertiesDisables>;
-export type PlusCarouselProgressAttributesAndEvents = PlusCarouselProgressAttributes & PlusCarouselProgressEvents;
 export interface PlusCarouselProgressJSX extends PlusCarouselProgressEvents, PlusCarouselProgressProperties {}
 declare global {
   interface HTMLPlusCarouselProgressElement extends HTMLElement, PlusCarouselProgressMethods, PlusCarouselProgressProperties {}
@@ -68,38 +67,38 @@ export namespace JSX {
     "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselProgressElement>, HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof PlusCarouselProgressAttributesAndEvents>;
+      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof PlusCarouselProgressAttributesAndEvents>;
+      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof PlusCarouselProgressAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof PlusCarouselProgressAttributesAndEvents>;
+      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof PlusCarouselProgressAttributesAndEvents>;
+      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
     }
   }
 }

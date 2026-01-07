@@ -84,7 +84,6 @@ export interface PlusSnippetPropertiesBase {
 }
 export interface PlusSnippetPropertiesDisables {}
 export type PlusSnippetProperties = Filter<PlusSnippetPropertiesBase, PlusSnippetPropertiesDisables>;
-export type PlusSnippetAttributesAndEvents = PlusSnippetAttributes & PlusSnippetEvents;
 export interface PlusSnippetJSX extends PlusSnippetEvents, PlusSnippetProperties {}
 declare global {
   interface HTMLPlusSnippetElement extends HTMLElement, PlusSnippetMethods, PlusSnippetProperties {}
@@ -101,38 +100,38 @@ export namespace JSX {
     "plus-snippet": PlusSnippetAttributes & PlusSnippetEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-snippet": PlusSnippetAttributes & PlusSnippetEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSnippetElement>, HTMLPlusSnippetElement>, keyof (PlusSnippetAttributes & PlusSnippetEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": PlusSnippetAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof PlusSnippetAttributesAndEvents>;
+      "plus-snippet": PlusSnippetAttributes & PlusSnippetEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof (PlusSnippetAttributes & PlusSnippetEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": PlusSnippetAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof PlusSnippetAttributesAndEvents>;
+      "plus-snippet": PlusSnippetAttributes & PlusSnippetEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof (PlusSnippetAttributes & PlusSnippetEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": PlusSnippetAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof PlusSnippetAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-snippet": PlusSnippetAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof PlusSnippetAttributesAndEvents>;
+      "plus-snippet": PlusSnippetAttributes & PlusSnippetEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof (PlusSnippetAttributes & PlusSnippetEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-snippet": PlusSnippetAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof PlusSnippetAttributesAndEvents>;
+      "plus-snippet": PlusSnippetAttributes & PlusSnippetEvents & Omit<HTMLAttributes<HTMLPlusSnippetElement>, keyof (PlusSnippetAttributes & PlusSnippetEvents)>;
     }
   }
 }

@@ -191,7 +191,6 @@ export interface PlusAvatarPropertiesBase {
 }
 export interface PlusAvatarPropertiesDisables {}
 export type PlusAvatarProperties = Filter<PlusAvatarPropertiesBase, PlusAvatarPropertiesDisables>;
-export type PlusAvatarAttributesAndEvents = PlusAvatarAttributes & PlusAvatarEvents;
 export interface PlusAvatarJSX extends PlusAvatarEvents, PlusAvatarProperties {}
 declare global {
   interface HTMLPlusAvatarElement extends HTMLElement, PlusAvatarMethods, PlusAvatarProperties {}
@@ -208,38 +207,38 @@ export namespace JSX {
     "plus-avatar": PlusAvatarAttributes & PlusAvatarEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-avatar": PlusAvatarAttributes & PlusAvatarEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAvatarElement>, HTMLPlusAvatarElement>, keyof (PlusAvatarAttributes & PlusAvatarEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": PlusAvatarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof PlusAvatarAttributesAndEvents>;
+      "plus-avatar": PlusAvatarAttributes & PlusAvatarEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof (PlusAvatarAttributes & PlusAvatarEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": PlusAvatarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof PlusAvatarAttributesAndEvents>;
+      "plus-avatar": PlusAvatarAttributes & PlusAvatarEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof (PlusAvatarAttributes & PlusAvatarEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": PlusAvatarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof PlusAvatarAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-avatar": PlusAvatarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof PlusAvatarAttributesAndEvents>;
+      "plus-avatar": PlusAvatarAttributes & PlusAvatarEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof (PlusAvatarAttributes & PlusAvatarEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar": PlusAvatarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof PlusAvatarAttributesAndEvents>;
+      "plus-avatar": PlusAvatarAttributes & PlusAvatarEvents & Omit<HTMLAttributes<HTMLPlusAvatarElement>, keyof (PlusAvatarAttributes & PlusAvatarEvents)>;
     }
   }
 }

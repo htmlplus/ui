@@ -49,7 +49,6 @@ export interface PlusProgressBarStackPropertiesBase {
 }
 export interface PlusProgressBarStackPropertiesDisables {}
 export type PlusProgressBarStackProperties = Filter<PlusProgressBarStackPropertiesBase, PlusProgressBarStackPropertiesDisables>;
-export type PlusProgressBarStackAttributesAndEvents = PlusProgressBarStackAttributes & PlusProgressBarStackEvents;
 export interface PlusProgressBarStackJSX extends PlusProgressBarStackEvents, PlusProgressBarStackProperties {}
 declare global {
   interface HTMLPlusProgressBarStackElement extends HTMLElement, PlusProgressBarStackMethods, PlusProgressBarStackProperties {}
@@ -66,38 +65,38 @@ export namespace JSX {
     "plus-progress-bar-stack": PlusProgressBarStackAttributes & PlusProgressBarStackEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-progress-bar-stack": PlusProgressBarStackAttributes & PlusProgressBarStackEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusProgressBarStackElement>, HTMLPlusProgressBarStackElement>, keyof (PlusProgressBarStackAttributes & PlusProgressBarStackEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": PlusProgressBarStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof PlusProgressBarStackAttributesAndEvents>;
+      "plus-progress-bar-stack": PlusProgressBarStackAttributes & PlusProgressBarStackEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof (PlusProgressBarStackAttributes & PlusProgressBarStackEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": PlusProgressBarStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof PlusProgressBarStackAttributesAndEvents>;
+      "plus-progress-bar-stack": PlusProgressBarStackAttributes & PlusProgressBarStackEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof (PlusProgressBarStackAttributes & PlusProgressBarStackEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": PlusProgressBarStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof PlusProgressBarStackAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-progress-bar-stack": PlusProgressBarStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof PlusProgressBarStackAttributesAndEvents>;
+      "plus-progress-bar-stack": PlusProgressBarStackAttributes & PlusProgressBarStackEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof (PlusProgressBarStackAttributes & PlusProgressBarStackEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-progress-bar-stack": PlusProgressBarStackAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof PlusProgressBarStackAttributesAndEvents>;
+      "plus-progress-bar-stack": PlusProgressBarStackAttributes & PlusProgressBarStackEvents & Omit<HTMLAttributes<HTMLPlusProgressBarStackElement>, keyof (PlusProgressBarStackAttributes & PlusProgressBarStackEvents)>;
     }
   }
 }

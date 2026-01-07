@@ -423,7 +423,6 @@ export interface PlusSignaturePropertiesBase {
 }
 export interface PlusSignaturePropertiesDisables {}
 export type PlusSignatureProperties = Filter<PlusSignaturePropertiesBase, PlusSignaturePropertiesDisables>;
-export type PlusSignatureAttributesAndEvents = PlusSignatureAttributes & PlusSignatureEvents;
 export interface PlusSignatureJSX extends PlusSignatureEvents, PlusSignatureProperties {}
 declare global {
   interface HTMLPlusSignatureElement extends HTMLElement, PlusSignatureMethods, PlusSignatureProperties {}
@@ -440,38 +439,38 @@ export namespace JSX {
     "plus-signature": PlusSignatureAttributes & PlusSignatureEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSignatureElement>, HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof PlusSignatureAttributesAndEvents>;
+      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof PlusSignatureAttributesAndEvents>;
+      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof PlusSignatureAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof PlusSignatureAttributesAndEvents>;
+      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof PlusSignatureAttributesAndEvents>;
+      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
     }
   }
 }

@@ -107,7 +107,6 @@ export interface PlusClickOutsidePropertiesBase {
 }
 export interface PlusClickOutsidePropertiesDisables {}
 export type PlusClickOutsideProperties = Filter<PlusClickOutsidePropertiesBase, PlusClickOutsidePropertiesDisables>;
-export type PlusClickOutsideAttributesAndEvents = PlusClickOutsideAttributes & PlusClickOutsideEvents;
 export interface PlusClickOutsideJSX extends PlusClickOutsideEvents, PlusClickOutsideProperties {}
 declare global {
   interface HTMLPlusClickOutsideElement extends HTMLElement, PlusClickOutsideMethods, PlusClickOutsideProperties {}
@@ -124,38 +123,38 @@ export namespace JSX {
     "plus-click-outside": PlusClickOutsideAttributes & PlusClickOutsideEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-click-outside": PlusClickOutsideAttributes & PlusClickOutsideEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusClickOutsideElement>, HTMLPlusClickOutsideElement>, keyof (PlusClickOutsideAttributes & PlusClickOutsideEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-click-outside": PlusClickOutsideAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof PlusClickOutsideAttributesAndEvents>;
+      "plus-click-outside": PlusClickOutsideAttributes & PlusClickOutsideEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof (PlusClickOutsideAttributes & PlusClickOutsideEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-click-outside": PlusClickOutsideAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof PlusClickOutsideAttributesAndEvents>;
+      "plus-click-outside": PlusClickOutsideAttributes & PlusClickOutsideEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof (PlusClickOutsideAttributes & PlusClickOutsideEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-click-outside": PlusClickOutsideAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof PlusClickOutsideAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-click-outside": PlusClickOutsideAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof PlusClickOutsideAttributesAndEvents>;
+      "plus-click-outside": PlusClickOutsideAttributes & PlusClickOutsideEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof (PlusClickOutsideAttributes & PlusClickOutsideEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-click-outside": PlusClickOutsideAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof PlusClickOutsideAttributesAndEvents>;
+      "plus-click-outside": PlusClickOutsideAttributes & PlusClickOutsideEvents & Omit<HTMLAttributes<HTMLPlusClickOutsideElement>, keyof (PlusClickOutsideAttributes & PlusClickOutsideEvents)>;
     }
   }
 }

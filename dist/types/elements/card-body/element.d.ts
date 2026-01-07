@@ -50,7 +50,6 @@ export interface PlusCardBodyPropertiesBase {
 }
 export interface PlusCardBodyPropertiesDisables {}
 export type PlusCardBodyProperties = Filter<PlusCardBodyPropertiesBase, PlusCardBodyPropertiesDisables>;
-export type PlusCardBodyAttributesAndEvents = PlusCardBodyAttributes & PlusCardBodyEvents;
 export interface PlusCardBodyJSX extends PlusCardBodyEvents, PlusCardBodyProperties {}
 declare global {
   interface HTMLPlusCardBodyElement extends HTMLElement, PlusCardBodyMethods, PlusCardBodyProperties {}
@@ -67,38 +66,38 @@ export namespace JSX {
     "plus-card-body": PlusCardBodyAttributes & PlusCardBodyEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-card-body": PlusCardBodyAttributes & PlusCardBodyEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCardBodyElement>, HTMLPlusCardBodyElement>, keyof (PlusCardBodyAttributes & PlusCardBodyEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": PlusCardBodyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof PlusCardBodyAttributesAndEvents>;
+      "plus-card-body": PlusCardBodyAttributes & PlusCardBodyEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof (PlusCardBodyAttributes & PlusCardBodyEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": PlusCardBodyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof PlusCardBodyAttributesAndEvents>;
+      "plus-card-body": PlusCardBodyAttributes & PlusCardBodyEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof (PlusCardBodyAttributes & PlusCardBodyEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": PlusCardBodyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof PlusCardBodyAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-card-body": PlusCardBodyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof PlusCardBodyAttributesAndEvents>;
+      "plus-card-body": PlusCardBodyAttributes & PlusCardBodyEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof (PlusCardBodyAttributes & PlusCardBodyEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card-body": PlusCardBodyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof PlusCardBodyAttributesAndEvents>;
+      "plus-card-body": PlusCardBodyAttributes & PlusCardBodyEvents & Omit<HTMLAttributes<HTMLPlusCardBodyElement>, keyof (PlusCardBodyAttributes & PlusCardBodyEvents)>;
     }
   }
 }

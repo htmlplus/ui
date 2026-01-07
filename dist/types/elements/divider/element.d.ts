@@ -132,7 +132,6 @@ export interface PlusDividerPropertiesBase {
 }
 export interface PlusDividerPropertiesDisables {}
 export type PlusDividerProperties = Filter<PlusDividerPropertiesBase, PlusDividerPropertiesDisables>;
-export type PlusDividerAttributesAndEvents = PlusDividerAttributes & PlusDividerEvents;
 export interface PlusDividerJSX extends PlusDividerEvents, PlusDividerProperties {}
 declare global {
   interface HTMLPlusDividerElement extends HTMLElement, PlusDividerMethods, PlusDividerProperties {}
@@ -149,38 +148,38 @@ export namespace JSX {
     "plus-divider": PlusDividerAttributes & PlusDividerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-divider": PlusDividerAttributes & PlusDividerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDividerElement>, HTMLPlusDividerElement>, keyof (PlusDividerAttributes & PlusDividerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": PlusDividerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof PlusDividerAttributesAndEvents>;
+      "plus-divider": PlusDividerAttributes & PlusDividerEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof (PlusDividerAttributes & PlusDividerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": PlusDividerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof PlusDividerAttributesAndEvents>;
+      "plus-divider": PlusDividerAttributes & PlusDividerEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof (PlusDividerAttributes & PlusDividerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": PlusDividerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof PlusDividerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-divider": PlusDividerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof PlusDividerAttributesAndEvents>;
+      "plus-divider": PlusDividerAttributes & PlusDividerEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof (PlusDividerAttributes & PlusDividerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-divider": PlusDividerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof PlusDividerAttributesAndEvents>;
+      "plus-divider": PlusDividerAttributes & PlusDividerEvents & Omit<HTMLAttributes<HTMLPlusDividerElement>, keyof (PlusDividerAttributes & PlusDividerEvents)>;
     }
   }
 }

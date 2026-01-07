@@ -105,7 +105,6 @@ export interface PlusRelativeTimePropertiesBase {
 }
 export interface PlusRelativeTimePropertiesDisables {}
 export type PlusRelativeTimeProperties = Filter<PlusRelativeTimePropertiesBase, PlusRelativeTimePropertiesDisables>;
-export type PlusRelativeTimeAttributesAndEvents = PlusRelativeTimeAttributes & PlusRelativeTimeEvents;
 export interface PlusRelativeTimeJSX extends PlusRelativeTimeEvents, PlusRelativeTimeProperties {}
 declare global {
   interface HTMLPlusRelativeTimeElement extends HTMLElement, PlusRelativeTimeMethods, PlusRelativeTimeProperties {}
@@ -122,38 +121,38 @@ export namespace JSX {
     "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusRelativeTimeElement>, HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof PlusRelativeTimeAttributesAndEvents>;
+      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof PlusRelativeTimeAttributesAndEvents>;
+      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof PlusRelativeTimeAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof PlusRelativeTimeAttributesAndEvents>;
+      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof PlusRelativeTimeAttributesAndEvents>;
+      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
     }
   }
 }

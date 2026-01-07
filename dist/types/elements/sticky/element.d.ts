@@ -125,7 +125,6 @@ export interface PlusStickyPropertiesBase {
 }
 export interface PlusStickyPropertiesDisables {}
 export type PlusStickyProperties = Filter<PlusStickyPropertiesBase, PlusStickyPropertiesDisables>;
-export type PlusStickyAttributesAndEvents = PlusStickyAttributes & PlusStickyEvents;
 export interface PlusStickyJSX extends PlusStickyEvents, PlusStickyProperties {}
 declare global {
   interface HTMLPlusStickyElement extends HTMLElement, PlusStickyMethods, PlusStickyProperties {}
@@ -142,38 +141,38 @@ export namespace JSX {
     "plus-sticky": PlusStickyAttributes & PlusStickyEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-sticky": PlusStickyAttributes & PlusStickyEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusStickyElement>, HTMLPlusStickyElement>, keyof (PlusStickyAttributes & PlusStickyEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-sticky": PlusStickyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof PlusStickyAttributesAndEvents>;
+      "plus-sticky": PlusStickyAttributes & PlusStickyEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof (PlusStickyAttributes & PlusStickyEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-sticky": PlusStickyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof PlusStickyAttributesAndEvents>;
+      "plus-sticky": PlusStickyAttributes & PlusStickyEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof (PlusStickyAttributes & PlusStickyEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-sticky": PlusStickyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof PlusStickyAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-sticky": PlusStickyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof PlusStickyAttributesAndEvents>;
+      "plus-sticky": PlusStickyAttributes & PlusStickyEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof (PlusStickyAttributes & PlusStickyEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-sticky": PlusStickyAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof PlusStickyAttributesAndEvents>;
+      "plus-sticky": PlusStickyAttributes & PlusStickyEvents & Omit<HTMLAttributes<HTMLPlusStickyElement>, keyof (PlusStickyAttributes & PlusStickyEvents)>;
     }
   }
 }

@@ -92,7 +92,6 @@ export interface PlusSpinnerPropertiesBase {
 }
 export interface PlusSpinnerPropertiesDisables {}
 export type PlusSpinnerProperties = Filter<PlusSpinnerPropertiesBase, PlusSpinnerPropertiesDisables>;
-export type PlusSpinnerAttributesAndEvents = PlusSpinnerAttributes & PlusSpinnerEvents;
 export interface PlusSpinnerJSX extends PlusSpinnerEvents, PlusSpinnerProperties {}
 declare global {
   interface HTMLPlusSpinnerElement extends HTMLElement, PlusSpinnerMethods, PlusSpinnerProperties {}
@@ -109,38 +108,38 @@ export namespace JSX {
     "plus-spinner": PlusSpinnerAttributes & PlusSpinnerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-spinner": PlusSpinnerAttributes & PlusSpinnerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSpinnerElement>, HTMLPlusSpinnerElement>, keyof (PlusSpinnerAttributes & PlusSpinnerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spinner": PlusSpinnerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof PlusSpinnerAttributesAndEvents>;
+      "plus-spinner": PlusSpinnerAttributes & PlusSpinnerEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof (PlusSpinnerAttributes & PlusSpinnerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spinner": PlusSpinnerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof PlusSpinnerAttributesAndEvents>;
+      "plus-spinner": PlusSpinnerAttributes & PlusSpinnerEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof (PlusSpinnerAttributes & PlusSpinnerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spinner": PlusSpinnerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof PlusSpinnerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-spinner": PlusSpinnerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof PlusSpinnerAttributesAndEvents>;
+      "plus-spinner": PlusSpinnerAttributes & PlusSpinnerEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof (PlusSpinnerAttributes & PlusSpinnerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spinner": PlusSpinnerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof PlusSpinnerAttributesAndEvents>;
+      "plus-spinner": PlusSpinnerAttributes & PlusSpinnerEvents & Omit<HTMLAttributes<HTMLPlusSpinnerElement>, keyof (PlusSpinnerAttributes & PlusSpinnerEvents)>;
     }
   }
 }

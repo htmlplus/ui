@@ -65,7 +65,6 @@ export interface PlusCenterPropertiesBase {
 }
 export interface PlusCenterPropertiesDisables {}
 export type PlusCenterProperties = Filter<PlusCenterPropertiesBase, PlusCenterPropertiesDisables>;
-export type PlusCenterAttributesAndEvents = PlusCenterAttributes & PlusCenterEvents;
 export interface PlusCenterJSX extends PlusCenterEvents, PlusCenterProperties {}
 declare global {
   interface HTMLPlusCenterElement extends HTMLElement, PlusCenterMethods, PlusCenterProperties {}
@@ -82,38 +81,38 @@ export namespace JSX {
     "plus-center": PlusCenterAttributes & PlusCenterEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-center": PlusCenterAttributes & PlusCenterEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCenterElement>, HTMLPlusCenterElement>, keyof (PlusCenterAttributes & PlusCenterEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": PlusCenterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof PlusCenterAttributesAndEvents>;
+      "plus-center": PlusCenterAttributes & PlusCenterEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof (PlusCenterAttributes & PlusCenterEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": PlusCenterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof PlusCenterAttributesAndEvents>;
+      "plus-center": PlusCenterAttributes & PlusCenterEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof (PlusCenterAttributes & PlusCenterEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": PlusCenterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof PlusCenterAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-center": PlusCenterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof PlusCenterAttributesAndEvents>;
+      "plus-center": PlusCenterAttributes & PlusCenterEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof (PlusCenterAttributes & PlusCenterEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-center": PlusCenterAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof PlusCenterAttributesAndEvents>;
+      "plus-center": PlusCenterAttributes & PlusCenterEvents & Omit<HTMLAttributes<HTMLPlusCenterElement>, keyof (PlusCenterAttributes & PlusCenterEvents)>;
     }
   }
 }

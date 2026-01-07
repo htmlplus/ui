@@ -157,7 +157,6 @@ export interface PlusFormatBytesPropertiesBase {
 }
 export interface PlusFormatBytesPropertiesDisables {}
 export type PlusFormatBytesProperties = Filter<PlusFormatBytesPropertiesBase, PlusFormatBytesPropertiesDisables>;
-export type PlusFormatBytesAttributesAndEvents = PlusFormatBytesAttributes & PlusFormatBytesEvents;
 export interface PlusFormatBytesJSX extends PlusFormatBytesEvents, PlusFormatBytesProperties {}
 declare global {
   interface HTMLPlusFormatBytesElement extends HTMLElement, PlusFormatBytesMethods, PlusFormatBytesProperties {}
@@ -174,38 +173,38 @@ export namespace JSX {
     "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusFormatBytesElement>, HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof PlusFormatBytesAttributesAndEvents>;
+      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof PlusFormatBytesAttributesAndEvents>;
+      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof PlusFormatBytesAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof PlusFormatBytesAttributesAndEvents>;
+      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof PlusFormatBytesAttributesAndEvents>;
+      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
     }
   }
 }

@@ -105,7 +105,6 @@ export interface PlusScrollDetectorPropertiesBase {
 }
 export interface PlusScrollDetectorPropertiesDisables {}
 export type PlusScrollDetectorProperties = Filter<PlusScrollDetectorPropertiesBase, PlusScrollDetectorPropertiesDisables>;
-export type PlusScrollDetectorAttributesAndEvents = PlusScrollDetectorAttributes & PlusScrollDetectorEvents;
 export interface PlusScrollDetectorJSX extends PlusScrollDetectorEvents, PlusScrollDetectorProperties {}
 declare global {
   interface HTMLPlusScrollDetectorElement extends HTMLElement, PlusScrollDetectorMethods, PlusScrollDetectorProperties {}
@@ -122,38 +121,38 @@ export namespace JSX {
     "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusScrollDetectorElement>, HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof PlusScrollDetectorAttributesAndEvents>;
+      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof PlusScrollDetectorAttributesAndEvents>;
+      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof PlusScrollDetectorAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof PlusScrollDetectorAttributesAndEvents>;
+      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof PlusScrollDetectorAttributesAndEvents>;
+      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
     }
   }
 }

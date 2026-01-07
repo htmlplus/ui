@@ -163,7 +163,6 @@ export interface PlusAppProgressBarPropertiesBase {
 }
 export interface PlusAppProgressBarPropertiesDisables {}
 export type PlusAppProgressBarProperties = Filter<PlusAppProgressBarPropertiesBase, PlusAppProgressBarPropertiesDisables>;
-export type PlusAppProgressBarAttributesAndEvents = PlusAppProgressBarAttributes & PlusAppProgressBarEvents;
 export interface PlusAppProgressBarJSX extends PlusAppProgressBarEvents, PlusAppProgressBarProperties {}
 declare global {
   interface HTMLPlusAppProgressBarElement extends HTMLElement, PlusAppProgressBarMethods, PlusAppProgressBarProperties {}
@@ -180,38 +179,38 @@ export namespace JSX {
     "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAppProgressBarElement>, HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof PlusAppProgressBarAttributesAndEvents>;
+      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof PlusAppProgressBarAttributesAndEvents>;
+      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof PlusAppProgressBarAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof PlusAppProgressBarAttributesAndEvents>;
+      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof PlusAppProgressBarAttributesAndEvents>;
+      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
     }
   }
 }

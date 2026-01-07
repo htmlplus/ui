@@ -298,7 +298,6 @@ export interface PlusDrawerPropertiesBase {
 }
 export interface PlusDrawerPropertiesDisables {}
 export type PlusDrawerProperties = Filter<PlusDrawerPropertiesBase, PlusDrawerPropertiesDisables>;
-export type PlusDrawerAttributesAndEvents = PlusDrawerAttributes & PlusDrawerEvents;
 export interface PlusDrawerJSX extends PlusDrawerEvents, PlusDrawerProperties {}
 declare global {
   interface HTMLPlusDrawerElement extends HTMLElement, PlusDrawerMethods, PlusDrawerProperties {}
@@ -315,38 +314,38 @@ export namespace JSX {
     "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDrawerElement>, HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof PlusDrawerAttributesAndEvents>;
+      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof PlusDrawerAttributesAndEvents>;
+      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof PlusDrawerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof PlusDrawerAttributesAndEvents>;
+      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof PlusDrawerAttributesAndEvents>;
+      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
     }
   }
 }

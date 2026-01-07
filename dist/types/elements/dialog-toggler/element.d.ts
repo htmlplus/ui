@@ -74,7 +74,6 @@ export interface PlusDialogTogglerPropertiesBase {
 }
 export interface PlusDialogTogglerPropertiesDisables {}
 export type PlusDialogTogglerProperties = Filter<PlusDialogTogglerPropertiesBase, PlusDialogTogglerPropertiesDisables>;
-export type PlusDialogTogglerAttributesAndEvents = PlusDialogTogglerAttributes & PlusDialogTogglerEvents;
 export interface PlusDialogTogglerJSX extends PlusDialogTogglerEvents, PlusDialogTogglerProperties {}
 declare global {
   interface HTMLPlusDialogTogglerElement extends HTMLElement, PlusDialogTogglerMethods, PlusDialogTogglerProperties {}
@@ -91,38 +90,38 @@ export namespace JSX {
     "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogTogglerElement>, HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof PlusDialogTogglerAttributesAndEvents>;
+      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof PlusDialogTogglerAttributesAndEvents>;
+      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof PlusDialogTogglerAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof PlusDialogTogglerAttributesAndEvents>;
+      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof PlusDialogTogglerAttributesAndEvents>;
+      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
     }
   }
 }

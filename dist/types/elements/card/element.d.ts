@@ -102,7 +102,6 @@ export interface PlusCardPropertiesBase {
 }
 export interface PlusCardPropertiesDisables {}
 export type PlusCardProperties = Filter<PlusCardPropertiesBase, PlusCardPropertiesDisables>;
-export type PlusCardAttributesAndEvents = PlusCardAttributes & PlusCardEvents;
 export interface PlusCardJSX extends PlusCardEvents, PlusCardProperties {}
 declare global {
   interface HTMLPlusCardElement extends HTMLElement, PlusCardMethods, PlusCardProperties {}
@@ -119,38 +118,38 @@ export namespace JSX {
     "plus-card": PlusCardAttributes & PlusCardEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-card": PlusCardAttributes & PlusCardEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCardElement>, HTMLPlusCardElement>, keyof (PlusCardAttributes & PlusCardEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": PlusCardAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof PlusCardAttributesAndEvents>;
+      "plus-card": PlusCardAttributes & PlusCardEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof (PlusCardAttributes & PlusCardEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": PlusCardAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof PlusCardAttributesAndEvents>;
+      "plus-card": PlusCardAttributes & PlusCardEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof (PlusCardAttributes & PlusCardEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": PlusCardAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof PlusCardAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-card": PlusCardAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof PlusCardAttributesAndEvents>;
+      "plus-card": PlusCardAttributes & PlusCardEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof (PlusCardAttributes & PlusCardEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-card": PlusCardAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof PlusCardAttributesAndEvents>;
+      "plus-card": PlusCardAttributes & PlusCardEvents & Omit<HTMLAttributes<HTMLPlusCardElement>, keyof (PlusCardAttributes & PlusCardEvents)>;
     }
   }
 }

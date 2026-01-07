@@ -226,7 +226,6 @@ export interface PlusTooltipPropertiesBase {
 }
 export interface PlusTooltipPropertiesDisables {}
 export type PlusTooltipProperties = Filter<PlusTooltipPropertiesBase, PlusTooltipPropertiesDisables>;
-export type PlusTooltipAttributesAndEvents = PlusTooltipAttributes & PlusTooltipEvents;
 export interface PlusTooltipJSX extends PlusTooltipEvents, PlusTooltipProperties {}
 declare global {
   interface HTMLPlusTooltipElement extends HTMLElement, PlusTooltipMethods, PlusTooltipProperties {}
@@ -243,38 +242,38 @@ export namespace JSX {
     "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTooltipElement>, HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof PlusTooltipAttributesAndEvents>;
+      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof PlusTooltipAttributesAndEvents>;
+      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof PlusTooltipAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof PlusTooltipAttributesAndEvents>;
+      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof PlusTooltipAttributesAndEvents>;
+      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
     }
   }
 }

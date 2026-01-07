@@ -134,7 +134,6 @@ export interface PlusBreadcrumbPropertiesBase {
 }
 export interface PlusBreadcrumbPropertiesDisables {}
 export type PlusBreadcrumbProperties = Filter<PlusBreadcrumbPropertiesBase, PlusBreadcrumbPropertiesDisables>;
-export type PlusBreadcrumbAttributesAndEvents = PlusBreadcrumbAttributes & PlusBreadcrumbEvents;
 export interface PlusBreadcrumbJSX extends PlusBreadcrumbEvents, PlusBreadcrumbProperties {}
 declare global {
   interface HTMLPlusBreadcrumbElement extends HTMLElement, PlusBreadcrumbMethods, PlusBreadcrumbProperties {}
@@ -151,38 +150,38 @@ export namespace JSX {
     "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusBreadcrumbElement>, HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof PlusBreadcrumbAttributesAndEvents>;
+      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof PlusBreadcrumbAttributesAndEvents>;
+      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof PlusBreadcrumbAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof PlusBreadcrumbAttributesAndEvents>;
+      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof PlusBreadcrumbAttributesAndEvents>;
+      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
     }
   }
 }

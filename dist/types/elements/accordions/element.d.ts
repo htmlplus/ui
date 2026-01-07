@@ -64,7 +64,6 @@ export interface PlusAccordionsPropertiesBase {
 }
 export interface PlusAccordionsPropertiesDisables {}
 export type PlusAccordionsProperties = Filter<PlusAccordionsPropertiesBase, PlusAccordionsPropertiesDisables>;
-export type PlusAccordionsAttributesAndEvents = PlusAccordionsAttributes & PlusAccordionsEvents;
 export interface PlusAccordionsJSX extends PlusAccordionsEvents, PlusAccordionsProperties {}
 declare global {
   interface HTMLPlusAccordionsElement extends HTMLElement, PlusAccordionsMethods, PlusAccordionsProperties {}
@@ -81,38 +80,38 @@ export namespace JSX {
     "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAccordionsElement>, HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof PlusAccordionsAttributesAndEvents>;
+      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof PlusAccordionsAttributesAndEvents>;
+      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof PlusAccordionsAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof PlusAccordionsAttributesAndEvents>;
+      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof PlusAccordionsAttributesAndEvents>;
+      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
     }
   }
 }

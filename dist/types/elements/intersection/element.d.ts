@@ -171,7 +171,6 @@ export interface PlusIntersectionPropertiesBase {
 }
 export interface PlusIntersectionPropertiesDisables {}
 export type PlusIntersectionProperties = Filter<PlusIntersectionPropertiesBase, PlusIntersectionPropertiesDisables>;
-export type PlusIntersectionAttributesAndEvents = PlusIntersectionAttributes & PlusIntersectionEvents;
 export interface PlusIntersectionJSX extends PlusIntersectionEvents, PlusIntersectionProperties {}
 declare global {
   interface HTMLPlusIntersectionElement extends HTMLElement, PlusIntersectionMethods, PlusIntersectionProperties {}
@@ -188,38 +187,38 @@ export namespace JSX {
     "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusIntersectionElement>, HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof PlusIntersectionAttributesAndEvents>;
+      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof PlusIntersectionAttributesAndEvents>;
+      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof PlusIntersectionAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof PlusIntersectionAttributesAndEvents>;
+      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof PlusIntersectionAttributesAndEvents>;
+      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
     }
   }
 }

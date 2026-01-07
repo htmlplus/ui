@@ -201,7 +201,6 @@ export interface PlusBrowsePropertiesBase {
 }
 export interface PlusBrowsePropertiesDisables {}
 export type PlusBrowseProperties = Filter<PlusBrowsePropertiesBase, PlusBrowsePropertiesDisables>;
-export type PlusBrowseAttributesAndEvents = PlusBrowseAttributes & PlusBrowseEvents;
 export interface PlusBrowseJSX extends PlusBrowseEvents, PlusBrowseProperties {}
 declare global {
   interface HTMLPlusBrowseElement extends HTMLElement, PlusBrowseMethods, PlusBrowseProperties {}
@@ -218,38 +217,38 @@ export namespace JSX {
     "plus-browse": PlusBrowseAttributes & PlusBrowseEvents;
   }
 }
+declare module "react" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusBrowseElement>, HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
+    }
+  }
+}
 declare module "@builder.io/qwik" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof PlusBrowseAttributesAndEvents>;
+      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
     }
   }
 }
 declare module "inferno" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof PlusBrowseAttributesAndEvents>;
+      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
     }
   }
 }
 declare module "preact" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof PlusBrowseAttributesAndEvents>;
-    }
-  }
-}
-declare module "react" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof PlusBrowseAttributesAndEvents>;
+      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
     }
   }
 }
 declare module "solid-js" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributesAndEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof PlusBrowseAttributesAndEvents>;
+      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
     }
   }
 }
