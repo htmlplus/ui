@@ -47,11 +47,11 @@ export declare class PlusBrowse extends PlusCore {
      */
     multiple?: boolean;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     /**
@@ -84,8 +84,26 @@ export declare class PlusBrowse extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusBrowseAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusBrowseAttributesMapper = {
+  'accept': 'accept';
+  'disabled': 'disabled';
+  'droppable': 'droppable';
+  'min': 'min';
+  'max': 'max';
+  'minSize': 'min-size';
+  'maxSize': 'max-size';
+  'multiple': 'multiple';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusBrowseOverridableKeys = 'variant';
+export interface PlusBrowseDisables {}
+export interface PlusBrowseOverrides {}
+export type PlusBrowseAttributes = Filter<PlusBrowseAttributesOverridden, PlusBrowseDisables, PlusBrowseAttributesMapper>;
+export type PlusBrowseAttributesOverridden = Override<PlusBrowseAttributesBase, PlusBrowseOverrides, PlusBrowseOverridableKeys, PlusBrowseAttributesMapper>;
+export type PlusBrowseAttributesBase = {
   /**
   * One or more
   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
@@ -121,17 +139,35 @@ export interface PlusBrowseAttributesBase {
   */
   "multiple"?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusBrowseProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusBrowseVariantOverrides>;
-}
-export interface PlusBrowseAttributesDisables {}
-export type PlusBrowseAttributes = Filter<PlusBrowseAttributesBase, PlusBrowseAttributesDisables>;
-export interface PlusBrowseEventsBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusBrowseEvents = Filter<PlusBrowseEventsBase, PlusBrowseDisables>;
+export type PlusBrowseEventsBase = {
+  /**
+  * Fires when file(s) are selected.
+  */
+  plusChange?: (event: CustomEvent<PlusBrowseEvent>) => void;
+  /**
+  * Fires when selected invalid file(s).
+  */
+  plusError?: (event: CustomEvent<PlusBrowseEvent>) => void;
+  /**
+  * Fires when file(s) are added successfully.
+  */
+  plusSuccess?: (event: CustomEvent<PlusBrowseEvent>) => void;
+};
+export type PlusBrowseEventsJSX = Filter<PlusBrowseEventsBaseJSX, PlusBrowseDisables, {
+  plusChange: 'onPlusChange';
+  plusError: 'onPlusError';
+  plusSuccess: 'onPlusSuccess';
+}>;
+export type PlusBrowseEventsBaseJSX = {
   /**
   * Fires when file(s) are selected.
   */
@@ -144,18 +180,17 @@ export interface PlusBrowseEventsBase {
   * Fires when file(s) are added successfully.
   */
   onPlusSuccess?: (event: CustomEvent<PlusBrowseEvent>) => void;
-}
-export interface PlusBrowseEventsDisables {}
-export type PlusBrowseEvents = Filter<PlusBrowseEventsBase, PlusBrowseEventsDisables>;
-export interface PlusBrowseMethodsBase {
+};
+export type PlusBrowseMethods = Filter<PlusBrowseMethodsBase, PlusBrowseDisables>;
+export type PlusBrowseMethodsBase = {
   /**
   * Opens the browse dialog.
   */
   browse(): void;
-}
-export interface PlusBrowseMethodsDisables {}
-export type PlusBrowseMethods = Filter<PlusBrowseMethodsBase, PlusBrowseMethodsDisables>;
-export interface PlusBrowsePropertiesBase {
+};
+export type PlusBrowseProperties = Filter<PlusBrowsePropertiesOverridden, PlusBrowseDisables>;
+export type PlusBrowsePropertiesOverridden = Override<PlusBrowsePropertiesBase, PlusBrowseOverrides, PlusBrowseOverridableKeys>;
+export type PlusBrowsePropertiesBase = {
   /**
   * One or more
   * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
@@ -191,17 +226,28 @@ export interface PlusBrowsePropertiesBase {
   */
   multiple?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusBrowseProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusBrowseVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-browse': {
+      properties: PlusBrowsePropertiesOverridden;
+    };
+  }
 }
-export interface PlusBrowsePropertiesDisables {}
-export type PlusBrowseProperties = Filter<PlusBrowsePropertiesBase, PlusBrowsePropertiesDisables>;
-export interface PlusBrowseJSX extends PlusBrowseEvents, PlusBrowseProperties {}
+export type PlusBrowseElement = globalThis.HTMLPlusBrowseElement;
+export type PlusBrowseJSX = PlusBrowseAttributes & PlusBrowseEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-browse": PlusBrowseJSX;
+  }
+}
 declare global {
   interface HTMLPlusBrowseElement extends HTMLElement, PlusBrowseMethods, PlusBrowseProperties {}
   var HTMLPlusBrowseElement: {
@@ -212,45 +258,10 @@ declare global {
     "plus-browse": HTMLPlusBrowseElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-browse": PlusBrowseAttributes & PlusBrowseEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusBrowseElement>, HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
+      "plus-browse": PlusBrowseJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusBrowseElement>, HTMLPlusBrowseElement>, keyof PlusBrowseJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-browse": PlusBrowseAttributes & PlusBrowseEvents & Omit<HTMLAttributes<HTMLPlusBrowseElement>, keyof (PlusBrowseAttributes & PlusBrowseEvents)>;
-    }
-  }
-}
-export type PlusBrowseElement = globalThis.HTMLPlusBrowseElement;
-export interface PlusBrowseVariantOverrides {}

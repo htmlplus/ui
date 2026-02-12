@@ -45,19 +45,37 @@ export declare class PlusFormatBytes extends PlusCore {
      */
     value?: number;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     get formatted(): string;
     render(): string;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusFormatBytesAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusFormatBytesAttributesMapper = {
+  'display': 'display';
+  'locale': 'locale';
+  'decimals': 'decimals';
+  'separator': 'separator';
+  'signed': 'signed';
+  'standard': 'standard';
+  'unit': 'unit';
+  'value': 'value';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusFormatBytesOverridableKeys = 'variant';
+export interface PlusFormatBytesDisables {}
+export interface PlusFormatBytesOverrides {}
+export type PlusFormatBytesAttributes = Filter<PlusFormatBytesAttributesOverridden, PlusFormatBytesDisables, PlusFormatBytesAttributesMapper>;
+export type PlusFormatBytesAttributesOverridden = Override<PlusFormatBytesAttributesBase, PlusFormatBytesOverrides, PlusFormatBytesOverridableKeys, PlusFormatBytesAttributesMapper>;
+export type PlusFormatBytesAttributesBase = {
   /**
   * Specifies the unit will be shown as an abbreviation or not.
   */
@@ -94,23 +112,23 @@ export interface PlusFormatBytesAttributesBase {
   */
   "value"?: number;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusFormatBytesVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusFormatBytesProperties, "overrides">>;
-}
-export interface PlusFormatBytesAttributesDisables {}
-export type PlusFormatBytesAttributes = Filter<PlusFormatBytesAttributesBase, PlusFormatBytesAttributesDisables>;
-export interface PlusFormatBytesEventsBase {}
-export interface PlusFormatBytesEventsDisables {}
-export type PlusFormatBytesEvents = Filter<PlusFormatBytesEventsBase, PlusFormatBytesEventsDisables>;
-export interface PlusFormatBytesMethodsBase {}
-export interface PlusFormatBytesMethodsDisables {}
-export type PlusFormatBytesMethods = Filter<PlusFormatBytesMethodsBase, PlusFormatBytesMethodsDisables>;
-export interface PlusFormatBytesPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusFormatBytesEvents = Filter<PlusFormatBytesEventsBase, PlusFormatBytesDisables>;
+export type PlusFormatBytesEventsBase = {};
+export type PlusFormatBytesEventsJSX = Filter<PlusFormatBytesEventsBaseJSX, PlusFormatBytesDisables, {}>;
+export type PlusFormatBytesEventsBaseJSX = {};
+export type PlusFormatBytesMethods = Filter<PlusFormatBytesMethodsBase, PlusFormatBytesDisables>;
+export type PlusFormatBytesMethodsBase = {};
+export type PlusFormatBytesProperties = Filter<PlusFormatBytesPropertiesOverridden, PlusFormatBytesDisables>;
+export type PlusFormatBytesPropertiesOverridden = Override<PlusFormatBytesPropertiesBase, PlusFormatBytesOverrides, PlusFormatBytesOverridableKeys>;
+export type PlusFormatBytesPropertiesBase = {
   /**
   * Specifies the unit will be shown as an abbreviation or not.
   */
@@ -147,17 +165,28 @@ export interface PlusFormatBytesPropertiesBase {
   */
   value?: number;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusFormatBytesVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusFormatBytesProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-format-bytes': {
+      properties: PlusFormatBytesPropertiesOverridden;
+    };
+  }
 }
-export interface PlusFormatBytesPropertiesDisables {}
-export type PlusFormatBytesProperties = Filter<PlusFormatBytesPropertiesBase, PlusFormatBytesPropertiesDisables>;
-export interface PlusFormatBytesJSX extends PlusFormatBytesEvents, PlusFormatBytesProperties {}
+export type PlusFormatBytesElement = globalThis.HTMLPlusFormatBytesElement;
+export type PlusFormatBytesJSX = PlusFormatBytesAttributes & PlusFormatBytesEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-format-bytes": PlusFormatBytesJSX;
+  }
+}
 declare global {
   interface HTMLPlusFormatBytesElement extends HTMLElement, PlusFormatBytesMethods, PlusFormatBytesProperties {}
   var HTMLPlusFormatBytesElement: {
@@ -168,45 +197,10 @@ declare global {
     "plus-format-bytes": HTMLPlusFormatBytesElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusFormatBytesElement>, HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
+      "plus-format-bytes": PlusFormatBytesJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusFormatBytesElement>, HTMLPlusFormatBytesElement>, keyof PlusFormatBytesJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-format-bytes": PlusFormatBytesAttributes & PlusFormatBytesEvents & Omit<HTMLAttributes<HTMLPlusFormatBytesElement>, keyof (PlusFormatBytesAttributes & PlusFormatBytesEvents)>;
-    }
-  }
-}
-export type PlusFormatBytesElement = globalThis.HTMLPlusFormatBytesElement;
-export interface PlusFormatBytesVariantOverrides {}

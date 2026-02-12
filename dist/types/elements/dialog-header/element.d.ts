@@ -8,48 +8,69 @@ import { PlusBreakpoint } from '../../types';
  */
 export declare class PlusDialogHeader extends PlusCore {
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusDialogHeaderAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusDialogHeaderAttributesMapper = {
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusDialogHeaderOverridableKeys = 'variant';
+export interface PlusDialogHeaderDisables {}
+export interface PlusDialogHeaderOverrides {}
+export type PlusDialogHeaderAttributes = Filter<PlusDialogHeaderAttributesOverridden, PlusDialogHeaderDisables, PlusDialogHeaderAttributesMapper>;
+export type PlusDialogHeaderAttributesOverridden = Override<PlusDialogHeaderAttributesBase, PlusDialogHeaderOverrides, PlusDialogHeaderOverridableKeys, PlusDialogHeaderAttributesMapper>;
+export type PlusDialogHeaderAttributesBase = {
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogHeaderProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusDialogHeaderVariantOverrides>;
-}
-export interface PlusDialogHeaderAttributesDisables {}
-export type PlusDialogHeaderAttributes = Filter<PlusDialogHeaderAttributesBase, PlusDialogHeaderAttributesDisables>;
-export interface PlusDialogHeaderEventsBase {}
-export interface PlusDialogHeaderEventsDisables {}
-export type PlusDialogHeaderEvents = Filter<PlusDialogHeaderEventsBase, PlusDialogHeaderEventsDisables>;
-export interface PlusDialogHeaderMethodsBase {}
-export interface PlusDialogHeaderMethodsDisables {}
-export type PlusDialogHeaderMethods = Filter<PlusDialogHeaderMethodsBase, PlusDialogHeaderMethodsDisables>;
-export interface PlusDialogHeaderPropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusDialogHeaderEvents = Filter<PlusDialogHeaderEventsBase, PlusDialogHeaderDisables>;
+export type PlusDialogHeaderEventsBase = {};
+export type PlusDialogHeaderEventsJSX = Filter<PlusDialogHeaderEventsBaseJSX, PlusDialogHeaderDisables, {}>;
+export type PlusDialogHeaderEventsBaseJSX = {};
+export type PlusDialogHeaderMethods = Filter<PlusDialogHeaderMethodsBase, PlusDialogHeaderDisables>;
+export type PlusDialogHeaderMethodsBase = {};
+export type PlusDialogHeaderProperties = Filter<PlusDialogHeaderPropertiesOverridden, PlusDialogHeaderDisables>;
+export type PlusDialogHeaderPropertiesOverridden = Override<PlusDialogHeaderPropertiesBase, PlusDialogHeaderOverrides, PlusDialogHeaderOverridableKeys>;
+export type PlusDialogHeaderPropertiesBase = {
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogHeaderProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusDialogHeaderVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-dialog-header': {
+      properties: PlusDialogHeaderPropertiesOverridden;
+    };
+  }
 }
-export interface PlusDialogHeaderPropertiesDisables {}
-export type PlusDialogHeaderProperties = Filter<PlusDialogHeaderPropertiesBase, PlusDialogHeaderPropertiesDisables>;
-export interface PlusDialogHeaderJSX extends PlusDialogHeaderEvents, PlusDialogHeaderProperties {}
+export type PlusDialogHeaderElement = globalThis.HTMLPlusDialogHeaderElement;
+export type PlusDialogHeaderJSX = PlusDialogHeaderAttributes & PlusDialogHeaderEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-dialog-header": PlusDialogHeaderJSX;
+  }
+}
 declare global {
   interface HTMLPlusDialogHeaderElement extends HTMLElement, PlusDialogHeaderMethods, PlusDialogHeaderProperties {}
   var HTMLPlusDialogHeaderElement: {
@@ -60,45 +81,10 @@ declare global {
     "plus-dialog-header": HTMLPlusDialogHeaderElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogHeaderElement>, HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
+      "plus-dialog-header": PlusDialogHeaderJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogHeaderElement>, HTMLPlusDialogHeaderElement>, keyof PlusDialogHeaderJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-header": PlusDialogHeaderAttributes & PlusDialogHeaderEvents & Omit<HTMLAttributes<HTMLPlusDialogHeaderElement>, keyof (PlusDialogHeaderAttributes & PlusDialogHeaderEvents)>;
-    }
-  }
-}
-export type PlusDialogHeaderElement = globalThis.HTMLPlusDialogHeaderElement;
-export interface PlusDialogHeaderVariantOverrides {}

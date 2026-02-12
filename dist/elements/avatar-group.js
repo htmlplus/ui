@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{align-items:center;display:inline-flex;flex-wrap:wrap}:host ::slotted(plus-avatar){margin-inline-end:.5rem}:host ::slotted(plus-avatar:last-of-type){margin-inline-end:0 !important}:host([hoverable]) ::slotted(plus-avatar:hover){z-index:1}:host([stacked]) ::slotted(plus-avatar){border:2px solid #fff;margin-inline-end:-0.5rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -31,17 +31,17 @@ __decorateClass([
 ], PlusAvatarGroup.prototype, "stacked", 2);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusAvatarGroup.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusAvatarGroup.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusAvatarGroup.prototype, "overrides", 2);
 PlusAvatarGroup = __decorateClass([
   Element()
 ], PlusAvatarGroup);

@@ -41,14 +41,14 @@ export class PlusCarouselIndicators extends CarouselChild {
 	numbers?: boolean;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * TODO
+	 * See [Variant](/variant-property) for details.
 	 */
 	@Property({ reflect: true })
 	@Variant()
@@ -73,7 +73,9 @@ export class PlusCarouselIndicators extends CarouselChild {
 	@Style()
 	get style() {
 		return {
-			'--plus-carousel-indicators-selected': this.selected
+			':host': {
+				'--plus-carousel-indicators-selected': this.selected
+			}
 		};
 	}
 

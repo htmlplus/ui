@@ -18,7 +18,9 @@ let PlusSpinner = class extends PlusCore {
   }
   get style() {
     return {
-      color: toCSSColor(this.color)
+      ":host": {
+        color: toCSSColor(this.color)
+      }
     };
   }
   get elements() {
@@ -53,12 +55,6 @@ __decorateClass([
 ], PlusSpinner.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 0
-  }),
-  Overrides()
-], PlusSpinner.prototype, "overrides", 2);
-__decorateClass([
-  Property({
     reflect: true,
     type: 0
   })
@@ -69,6 +65,12 @@ __decorateClass([
     type: 16
   })
 ], PlusSpinner.prototype, "type", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], PlusSpinner.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,

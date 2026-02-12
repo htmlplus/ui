@@ -39,13 +39,6 @@ export class PlusTabsTab extends PlusCore {
 	 * TODO
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
 	get active() {
 		if (this.parent?.current === null) return false;
 
@@ -55,11 +48,18 @@ export class PlusTabsTab extends PlusCore {
 	}
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	@State()
 	@Consumer('tabs')

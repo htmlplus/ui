@@ -91,13 +91,13 @@ export declare class PlusAnimation extends PlusCore {
      */
     run?: boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
      * method is called or when the animation enters the "`idle`" play state from another state.
@@ -171,8 +171,33 @@ export declare class PlusAnimation extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusAnimationAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusAnimationAttributesMapper = {
+  'composite': 'composite';
+  'delay': 'delay';
+  'direction': 'direction';
+  'duration': 'duration';
+  'easing': 'easing';
+  'endDelay': 'end-delay';
+  'fill': 'fill';
+  'instance': 'instance';
+  'iterationComposite': 'iteration-composite';
+  'iterations': 'iterations';
+  'iterationStart': 'iteration-start';
+  'keyframes': 'keyframes';
+  'name': 'name';
+  'playbackRate': 'playback-rate';
+  'run': 'run';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusAnimationOverridableKeys = 'name' | 'variant';
+export interface PlusAnimationDisables {}
+export interface PlusAnimationOverrides {}
+export type PlusAnimationAttributes = Filter<PlusAnimationAttributesOverridden, PlusAnimationDisables, PlusAnimationAttributesMapper>;
+export type PlusAnimationAttributesOverridden = Override<PlusAnimationAttributesBase, PlusAnimationOverrides, PlusAnimationOverridableKeys, PlusAnimationAttributesMapper>;
+export type PlusAnimationAttributesBase = {
   /**
   * Determines how values are combined between this animation and other,
   * separate animations that do not specify their own specific composite operation.
@@ -241,7 +266,7 @@ export interface PlusAnimationAttributesBase {
   * Specifies what kind of animation will play.
   * The list of available animations is [here](/element/animation/names).
   */
-  "name"?: OverridableValue<string & {}, PlusAnimationNameOverrides>;
+  "name"?: OverridableValue<string & {}>;
   /**
   * Sets the animation's playback rate.
   */
@@ -251,17 +276,36 @@ export interface PlusAnimationAttributesBase {
   */
   "run"?: boolean;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusAnimationVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAnimationProperties, "overrides">>;
-}
-export interface PlusAnimationAttributesDisables {}
-export type PlusAnimationAttributes = Filter<PlusAnimationAttributesBase, PlusAnimationAttributesDisables>;
-export interface PlusAnimationEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusAnimationEvents = Filter<PlusAnimationEventsBase, PlusAnimationDisables>;
+export type PlusAnimationEventsBase = {
+  /**
+  * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
+  * method is called or when the animation enters the "`idle`" play state from another state.
+  */
+  plusCancel?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires when the animation finishes playing.
+  */
+  plusFinish?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires when the animation is removed (i.e., put into an `active` replace state).
+  */
+  plusRemove?: (event: CustomEvent<void>) => void;
+};
+export type PlusAnimationEventsJSX = Filter<PlusAnimationEventsBaseJSX, PlusAnimationDisables, {
+  plusCancel: 'onPlusCancel';
+  plusFinish: 'onPlusFinish';
+  plusRemove: 'onPlusRemove';
+}>;
+export type PlusAnimationEventsBaseJSX = {
   /**
   * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
   * method is called or when the animation enters the "`idle`" play state from another state.
@@ -275,10 +319,9 @@ export interface PlusAnimationEventsBase {
   * Fires when the animation is removed (i.e., put into an `active` replace state).
   */
   onPlusRemove?: (event: CustomEvent<void>) => void;
-}
-export interface PlusAnimationEventsDisables {}
-export type PlusAnimationEvents = Filter<PlusAnimationEventsBase, PlusAnimationEventsDisables>;
-export interface PlusAnimationMethodsBase {
+};
+export type PlusAnimationMethods = Filter<PlusAnimationMethodsBase, PlusAnimationDisables>;
+export type PlusAnimationMethodsBase = {
   /**
   * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
   * caused by this animation and aborts its playback.
@@ -317,10 +360,10 @@ export interface PlusAnimationMethodsBase {
   * Sets the speed of an animation after first synchronizing its playback position.
   */
   updatePlaybackRate(playbackRate: number);
-}
-export interface PlusAnimationMethodsDisables {}
-export type PlusAnimationMethods = Filter<PlusAnimationMethodsBase, PlusAnimationMethodsDisables>;
-export interface PlusAnimationPropertiesBase {
+};
+export type PlusAnimationProperties = Filter<PlusAnimationPropertiesOverridden, PlusAnimationDisables>;
+export type PlusAnimationPropertiesOverridden = Override<PlusAnimationPropertiesBase, PlusAnimationOverrides, PlusAnimationOverridableKeys>;
+export type PlusAnimationPropertiesBase = {
   /**
   * Determines how values are combined between this animation and other,
   * separate animations that do not specify their own specific composite operation.
@@ -389,7 +432,7 @@ export interface PlusAnimationPropertiesBase {
   * Specifies what kind of animation will play.
   * The list of available animations is [here](/element/animation/names).
   */
-  name?: OverridableValue<string & {}, PlusAnimationNameOverrides>;
+  name?: OverridableValue<string & {}>;
   /**
   * Sets the animation's playback rate.
   */
@@ -399,17 +442,28 @@ export interface PlusAnimationPropertiesBase {
   */
   run?: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusAnimationVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAnimationProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-animation': {
+      properties: PlusAnimationPropertiesOverridden;
+    };
+  }
 }
-export interface PlusAnimationPropertiesDisables {}
-export type PlusAnimationProperties = Filter<PlusAnimationPropertiesBase, PlusAnimationPropertiesDisables>;
-export interface PlusAnimationJSX extends PlusAnimationEvents, PlusAnimationProperties {}
+export type PlusAnimationElement = globalThis.HTMLPlusAnimationElement;
+export type PlusAnimationJSX = PlusAnimationAttributes & PlusAnimationEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-animation": PlusAnimationJSX;
+  }
+}
 declare global {
   interface HTMLPlusAnimationElement extends HTMLElement, PlusAnimationMethods, PlusAnimationProperties {}
   var HTMLPlusAnimationElement: {
@@ -420,46 +474,10 @@ declare global {
     "plus-animation": HTMLPlusAnimationElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-animation": PlusAnimationAttributes & PlusAnimationEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAnimationElement>, HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
+      "plus-animation": PlusAnimationJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAnimationElement>, HTMLPlusAnimationElement>, keyof PlusAnimationJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-animation": PlusAnimationAttributes & PlusAnimationEvents & Omit<HTMLAttributes<HTMLPlusAnimationElement>, keyof (PlusAnimationAttributes & PlusAnimationEvents)>;
-    }
-  }
-}
-export type PlusAnimationElement = globalThis.HTMLPlusAnimationElement;
-export interface PlusAnimationNameOverrides {}
-export interface PlusAnimationVariantOverrides {}

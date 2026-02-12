@@ -12,56 +12,78 @@ export declare class PlusDialogContent extends PlusCore {
      */
     scrollable?: boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusDialogContentAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusDialogContentAttributesMapper = {
+  'scrollable': 'scrollable';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusDialogContentOverridableKeys = 'variant';
+export interface PlusDialogContentDisables {}
+export interface PlusDialogContentOverrides {}
+export type PlusDialogContentAttributes = Filter<PlusDialogContentAttributesOverridden, PlusDialogContentDisables, PlusDialogContentAttributesMapper>;
+export type PlusDialogContentAttributesOverridden = Override<PlusDialogContentAttributesBase, PlusDialogContentOverrides, PlusDialogContentOverridableKeys, PlusDialogContentAttributesMapper>;
+export type PlusDialogContentAttributesBase = {
   /**
   * It makes the user able to scroll the content by adding a scroll beside it.
   */
   "scrollable"?: boolean;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusDialogContentVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogContentProperties, "overrides">>;
-}
-export interface PlusDialogContentAttributesDisables {}
-export type PlusDialogContentAttributes = Filter<PlusDialogContentAttributesBase, PlusDialogContentAttributesDisables>;
-export interface PlusDialogContentEventsBase {}
-export interface PlusDialogContentEventsDisables {}
-export type PlusDialogContentEvents = Filter<PlusDialogContentEventsBase, PlusDialogContentEventsDisables>;
-export interface PlusDialogContentMethodsBase {}
-export interface PlusDialogContentMethodsDisables {}
-export type PlusDialogContentMethods = Filter<PlusDialogContentMethodsBase, PlusDialogContentMethodsDisables>;
-export interface PlusDialogContentPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusDialogContentEvents = Filter<PlusDialogContentEventsBase, PlusDialogContentDisables>;
+export type PlusDialogContentEventsBase = {};
+export type PlusDialogContentEventsJSX = Filter<PlusDialogContentEventsBaseJSX, PlusDialogContentDisables, {}>;
+export type PlusDialogContentEventsBaseJSX = {};
+export type PlusDialogContentMethods = Filter<PlusDialogContentMethodsBase, PlusDialogContentDisables>;
+export type PlusDialogContentMethodsBase = {};
+export type PlusDialogContentProperties = Filter<PlusDialogContentPropertiesOverridden, PlusDialogContentDisables>;
+export type PlusDialogContentPropertiesOverridden = Override<PlusDialogContentPropertiesBase, PlusDialogContentOverrides, PlusDialogContentOverridableKeys>;
+export type PlusDialogContentPropertiesBase = {
   /**
   * It makes the user able to scroll the content by adding a scroll beside it.
   */
   scrollable?: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusDialogContentVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogContentProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-dialog-content': {
+      properties: PlusDialogContentPropertiesOverridden;
+    };
+  }
 }
-export interface PlusDialogContentPropertiesDisables {}
-export type PlusDialogContentProperties = Filter<PlusDialogContentPropertiesBase, PlusDialogContentPropertiesDisables>;
-export interface PlusDialogContentJSX extends PlusDialogContentEvents, PlusDialogContentProperties {}
+export type PlusDialogContentElement = globalThis.HTMLPlusDialogContentElement;
+export type PlusDialogContentJSX = PlusDialogContentAttributes & PlusDialogContentEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-dialog-content": PlusDialogContentJSX;
+  }
+}
 declare global {
   interface HTMLPlusDialogContentElement extends HTMLElement, PlusDialogContentMethods, PlusDialogContentProperties {}
   var HTMLPlusDialogContentElement: {
@@ -72,45 +94,10 @@ declare global {
     "plus-dialog-content": HTMLPlusDialogContentElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-dialog-content": PlusDialogContentAttributes & PlusDialogContentEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-content": PlusDialogContentAttributes & PlusDialogContentEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogContentElement>, HTMLPlusDialogContentElement>, keyof (PlusDialogContentAttributes & PlusDialogContentEvents)>;
+      "plus-dialog-content": PlusDialogContentJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogContentElement>, HTMLPlusDialogContentElement>, keyof PlusDialogContentJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-content": PlusDialogContentAttributes & PlusDialogContentEvents & Omit<HTMLAttributes<HTMLPlusDialogContentElement>, keyof (PlusDialogContentAttributes & PlusDialogContentEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-content": PlusDialogContentAttributes & PlusDialogContentEvents & Omit<HTMLAttributes<HTMLPlusDialogContentElement>, keyof (PlusDialogContentAttributes & PlusDialogContentEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-content": PlusDialogContentAttributes & PlusDialogContentEvents & Omit<HTMLAttributes<HTMLPlusDialogContentElement>, keyof (PlusDialogContentAttributes & PlusDialogContentEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-content": PlusDialogContentAttributes & PlusDialogContentEvents & Omit<HTMLAttributes<HTMLPlusDialogContentElement>, keyof (PlusDialogContentAttributes & PlusDialogContentEvents)>;
-    }
-  }
-}
-export type PlusDialogContentElement = globalThis.HTMLPlusDialogContentElement;
-export interface PlusDialogContentVariantOverrides {}

@@ -23,14 +23,14 @@ export class PlusSpacer extends PlusCore {
 	grow?: number = 1;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * TODO
+	 * See [Variant](/variant-property) for details.
 	 */
 	@Property({ reflect: true })
 	@Variant()
@@ -39,7 +39,9 @@ export class PlusSpacer extends PlusCore {
 	@Style()
 	get style() {
 		return {
-			'flex-grow': this.grow
+			':host': {
+				'flex-grow': this.grow
+			}
 		};
 	}
 }

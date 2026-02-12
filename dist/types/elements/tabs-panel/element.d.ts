@@ -16,43 +16,55 @@ export declare class PlusTabsPanel extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
-     */
     get active(): boolean;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     parent?: Context;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusTabsPanelAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusTabsPanelAttributesMapper = {
+  'value': 'value';
+  'active': 'active';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusTabsPanelOverridableKeys = 'variant';
+export interface PlusTabsPanelDisables {}
+export interface PlusTabsPanelOverrides {}
+export type PlusTabsPanelAttributes = Filter<PlusTabsPanelAttributesOverridden, PlusTabsPanelDisables, PlusTabsPanelAttributesMapper>;
+export type PlusTabsPanelAttributesOverridden = Override<PlusTabsPanelAttributesBase, PlusTabsPanelOverrides, PlusTabsPanelOverridableKeys, PlusTabsPanelAttributesMapper>;
+export type PlusTabsPanelAttributesBase = {
   /**
   * Provides your own value.
   */
   "value"?: string;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusTabsPanelVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsPanelProperties, "overrides">>;
-}
-export interface PlusTabsPanelAttributesDisables {}
-export type PlusTabsPanelAttributes = Filter<PlusTabsPanelAttributesBase, PlusTabsPanelAttributesDisables>;
-export interface PlusTabsPanelEventsBase {}
-export interface PlusTabsPanelEventsDisables {}
-export type PlusTabsPanelEvents = Filter<PlusTabsPanelEventsBase, PlusTabsPanelEventsDisables>;
-export interface PlusTabsPanelMethodsBase {}
-export interface PlusTabsPanelMethodsDisables {}
-export type PlusTabsPanelMethods = Filter<PlusTabsPanelMethodsBase, PlusTabsPanelMethodsDisables>;
-export interface PlusTabsPanelPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusTabsPanelEvents = Filter<PlusTabsPanelEventsBase, PlusTabsPanelDisables>;
+export type PlusTabsPanelEventsBase = {};
+export type PlusTabsPanelEventsJSX = Filter<PlusTabsPanelEventsBaseJSX, PlusTabsPanelDisables, {}>;
+export type PlusTabsPanelEventsBaseJSX = {};
+export type PlusTabsPanelMethods = Filter<PlusTabsPanelMethodsBase, PlusTabsPanelDisables>;
+export type PlusTabsPanelMethodsBase = {};
+export type PlusTabsPanelProperties = Filter<PlusTabsPanelPropertiesOverridden, PlusTabsPanelDisables>;
+export type PlusTabsPanelPropertiesOverridden = Override<PlusTabsPanelPropertiesBase, PlusTabsPanelOverrides, PlusTabsPanelOverridableKeys>;
+export type PlusTabsPanelPropertiesBase = {
   /**
   * Provides your own value.
   */
@@ -60,19 +72,30 @@ export interface PlusTabsPanelPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<never, PlusTabsPanelVariantOverrides>;
-  /**
-  * TODO
-  */
   active;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsPanelProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-tabs-panel': {
+      properties: PlusTabsPanelPropertiesOverridden;
+    };
+  }
 }
-export interface PlusTabsPanelPropertiesDisables {}
-export type PlusTabsPanelProperties = Filter<PlusTabsPanelPropertiesBase, PlusTabsPanelPropertiesDisables>;
-export interface PlusTabsPanelJSX extends PlusTabsPanelEvents, PlusTabsPanelProperties {}
+export type PlusTabsPanelElement = globalThis.HTMLPlusTabsPanelElement;
+export type PlusTabsPanelJSX = PlusTabsPanelAttributes & PlusTabsPanelEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-tabs-panel": PlusTabsPanelJSX;
+  }
+}
 declare global {
   interface HTMLPlusTabsPanelElement extends HTMLElement, PlusTabsPanelMethods, PlusTabsPanelProperties {}
   var HTMLPlusTabsPanelElement: {
@@ -83,45 +106,10 @@ declare global {
     "plus-tabs-panel": HTMLPlusTabsPanelElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-tabs-panel": PlusTabsPanelAttributes & PlusTabsPanelEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs-panel": PlusTabsPanelAttributes & PlusTabsPanelEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTabsPanelElement>, HTMLPlusTabsPanelElement>, keyof (PlusTabsPanelAttributes & PlusTabsPanelEvents)>;
+      "plus-tabs-panel": PlusTabsPanelJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTabsPanelElement>, HTMLPlusTabsPanelElement>, keyof PlusTabsPanelJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs-panel": PlusTabsPanelAttributes & PlusTabsPanelEvents & Omit<HTMLAttributes<HTMLPlusTabsPanelElement>, keyof (PlusTabsPanelAttributes & PlusTabsPanelEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs-panel": PlusTabsPanelAttributes & PlusTabsPanelEvents & Omit<HTMLAttributes<HTMLPlusTabsPanelElement>, keyof (PlusTabsPanelAttributes & PlusTabsPanelEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs-panel": PlusTabsPanelAttributes & PlusTabsPanelEvents & Omit<HTMLAttributes<HTMLPlusTabsPanelElement>, keyof (PlusTabsPanelAttributes & PlusTabsPanelEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs-panel": PlusTabsPanelAttributes & PlusTabsPanelEvents & Omit<HTMLAttributes<HTMLPlusTabsPanelElement>, keyof (PlusTabsPanelAttributes & PlusTabsPanelEvents)>;
-    }
-  }
-}
-export type PlusTabsPanelElement = globalThis.HTMLPlusTabsPanelElement;
-export interface PlusTabsPanelVariantOverrides {}

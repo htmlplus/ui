@@ -55,18 +55,18 @@ export class PlusAppProgressBar extends PlusCore {
 	trickleSpeed?: number = 800;
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	@Query('[part=bar]')
 	$bar!: HTMLDivElement;
@@ -81,7 +81,9 @@ export class PlusAppProgressBar extends PlusCore {
 	@Style()
 	get style() {
 		return {
-			'--plus-app-progress-bar-color': toCSSColor(this.color)
+			':host': {
+				'--plus-app-progress-bar-color': toCSSColor(this.color)
+			}
 		};
 	}
 

@@ -17,8 +17,10 @@ let PlusSticky = class extends PlusCore {
   }
   get style() {
     return {
-      "--plus-sticky-top": toCSSUnit(this.top),
-      "--plus-sticky-z-index": this.zIndex
+      ":host": {
+        "--plus-sticky-top": toCSSUnit(this.top),
+        "--plus-sticky-z-index": this.zIndex
+      }
     };
   }
   initialize() {
@@ -69,22 +71,9 @@ __decorateClass([
 ], PlusSticky.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 0
-  }),
-  Overrides()
-], PlusSticky.prototype, "overrides", 2);
-__decorateClass([
-  Property({
     type: 640
   })
 ], PlusSticky.prototype, "top", 2);
-__decorateClass([
-  Property({
-    reflect: true,
-    type: 0
-  }),
-  Variant()
-], PlusSticky.prototype, "variant", 2);
 __decorateClass([
   Property({
     type: 4
@@ -95,6 +84,19 @@ __decorateClass([
     type: 128
   })
 ], PlusSticky.prototype, "zIndex", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], PlusSticky.prototype, "overrides", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], PlusSticky.prototype, "variant", 2);
 __decorateClass([
   Event()
 ], PlusSticky.prototype, "plusChange", 2);

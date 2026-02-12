@@ -45,27 +45,46 @@ export declare class PlusIcon extends PlusCore {
      */
     size?: PlusIconSize;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     cache: AsyncCache<PlusIconResolver>;
     get style(): {
-        color: string;
-        height: string;
-        width: string;
-        rotate: string;
+        ':host': {
+            color: string;
+            height: string;
+            width: string;
+            rotate: string;
+        };
     };
     update(): Promise<void>;
     readyCallback(): void;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusIconAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusIconAttributesMapper = {
+  'color': 'color';
+  'flip': 'flip';
+  'label': 'label';
+  'name': 'name';
+  'resolver': 'resolver';
+  'rotate': 'rotate';
+  'size': 'size';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusIconOverridableKeys = 'color' | 'name' | 'variant';
+export interface PlusIconDisables {}
+export interface PlusIconOverrides {}
+export type PlusIconAttributes = Filter<PlusIconAttributesOverridden, PlusIconDisables, PlusIconAttributesMapper>;
+export type PlusIconAttributesOverridden = Override<PlusIconAttributesBase, PlusIconOverrides, PlusIconOverridableKeys, PlusIconAttributesMapper>;
+export type PlusIconAttributesBase = {
   /**
   * Specifies the color.
   */
@@ -81,7 +100,7 @@ export interface PlusIconAttributesBase {
   /**
   * Specifies the name.
   */
-  "name"?: OverridableValue<string & {}, PlusIconNameOverrides>;
+  "name"?: OverridableValue<string & {}>;
   /**
   * An asynchronous function to load SVG files.
   */
@@ -95,23 +114,23 @@ export interface PlusIconAttributesBase {
   */
   "size"?: PlusIconSize;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusIconVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusIconProperties, "overrides">>;
-}
-export interface PlusIconAttributesDisables {}
-export type PlusIconAttributes = Filter<PlusIconAttributesBase, PlusIconAttributesDisables>;
-export interface PlusIconEventsBase {}
-export interface PlusIconEventsDisables {}
-export type PlusIconEvents = Filter<PlusIconEventsBase, PlusIconEventsDisables>;
-export interface PlusIconMethodsBase {}
-export interface PlusIconMethodsDisables {}
-export type PlusIconMethods = Filter<PlusIconMethodsBase, PlusIconMethodsDisables>;
-export interface PlusIconPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusIconEvents = Filter<PlusIconEventsBase, PlusIconDisables>;
+export type PlusIconEventsBase = {};
+export type PlusIconEventsJSX = Filter<PlusIconEventsBaseJSX, PlusIconDisables, {}>;
+export type PlusIconEventsBaseJSX = {};
+export type PlusIconMethods = Filter<PlusIconMethodsBase, PlusIconDisables>;
+export type PlusIconMethodsBase = {};
+export type PlusIconProperties = Filter<PlusIconPropertiesOverridden, PlusIconDisables>;
+export type PlusIconPropertiesOverridden = Override<PlusIconPropertiesBase, PlusIconOverrides, PlusIconOverridableKeys>;
+export type PlusIconPropertiesBase = {
   /**
   * Specifies the color.
   */
@@ -127,7 +146,7 @@ export interface PlusIconPropertiesBase {
   /**
   * Specifies the name.
   */
-  name?: OverridableValue<string & {}, PlusIconNameOverrides>;
+  name?: OverridableValue<string & {}>;
   /**
   * An asynchronous function to load SVG files.
   */
@@ -141,17 +160,28 @@ export interface PlusIconPropertiesBase {
   */
   size?: PlusIconSize;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusIconVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusIconProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-icon': {
+      properties: PlusIconPropertiesOverridden;
+    };
+  }
 }
-export interface PlusIconPropertiesDisables {}
-export type PlusIconProperties = Filter<PlusIconPropertiesBase, PlusIconPropertiesDisables>;
-export interface PlusIconJSX extends PlusIconEvents, PlusIconProperties {}
+export type PlusIconElement = globalThis.HTMLPlusIconElement;
+export type PlusIconJSX = PlusIconAttributes & PlusIconEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-icon": PlusIconJSX;
+  }
+}
 declare global {
   interface HTMLPlusIconElement extends HTMLElement, PlusIconMethods, PlusIconProperties {}
   var HTMLPlusIconElement: {
@@ -162,46 +192,10 @@ declare global {
     "plus-icon": HTMLPlusIconElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-icon": PlusIconAttributes & PlusIconEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusIconElement>, HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
+      "plus-icon": PlusIconJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusIconElement>, HTMLPlusIconElement>, keyof PlusIconJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-icon": PlusIconAttributes & PlusIconEvents & Omit<HTMLAttributes<HTMLPlusIconElement>, keyof (PlusIconAttributes & PlusIconEvents)>;
-    }
-  }
-}
-export type PlusIconElement = globalThis.HTMLPlusIconElement;
-export interface PlusIconNameOverrides {}
-export interface PlusIconVariantOverrides {}

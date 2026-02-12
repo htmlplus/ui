@@ -210,14 +210,6 @@ export class PlusCarousel extends PlusCore {
 	tweenFactorBase?: number;
 
 	/**
-	 * Provides a visual style variant for the carousel.
-	 * Can be used to conditionally apply CSS themes or variants.
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
 	 * The Embla carousel API.
 	 */
 	@Property()
@@ -234,11 +226,18 @@ export class PlusCarousel extends PlusCore {
 	// }
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Runs when the carousel has been destroyed.

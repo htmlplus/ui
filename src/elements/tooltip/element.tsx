@@ -93,22 +93,22 @@ export class PlusTooltip extends PlusCore {
 	/**
 	 * TODO
 	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
-	 * TODO
-	 */
 	@Property()
 	z?: 'auto' | 'vertical' | 'horizontal' | 'move' = 'auto';
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Hides the element.

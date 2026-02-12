@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const COUNTER_EASINGS = {
   "ease-out-expo": (currentTime, beginningValue, changeInValue, duration) => {
     return changeInValue * (-(2 ** (-10 * currentTime / duration)) + 1) * 1024 / 1023 + beginningValue;
@@ -193,17 +193,17 @@ __decorateClass([
 ], PlusCounter.prototype, "to", 2);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusCounter.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusCounter.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusCounter.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], PlusCounter.prototype, "plusComplete", 2);

@@ -39,24 +39,10 @@ export class PlusSticky extends PlusCore {
 	disabled?: boolean;
 
 	/**
-	 * TODO
-	 */
-	@Property()
-	@Overrides()
-	overrides?: OverridesConfig<PlusBreakpoint>;
-
-	/**
 	 * Specifies the space from top.
 	 */
 	@Property()
 	top?: string | number = 0;
-
-	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
 
 	/**
 	 * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
@@ -69,6 +55,20 @@ export class PlusSticky extends PlusCore {
 	 */
 	@Property()
 	zIndex?: number;
+
+	/**
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Fires when the state is changed. To enable, set the `watcher` property to `true`.
@@ -87,8 +87,10 @@ export class PlusSticky extends PlusCore {
 	@Style()
 	get style() {
 		return {
-			'--plus-sticky-top': toCSSUnit(this.top),
-			'--plus-sticky-z-index': this.zIndex
+			':host': {
+				'--plus-sticky-top': toCSSUnit(this.top),
+				'--plus-sticky-z-index': this.zIndex
+			}
 		};
 	}
 

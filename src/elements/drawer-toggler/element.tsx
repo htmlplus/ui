@@ -33,14 +33,14 @@ export class PlusDrawerToggler extends PlusCore {
 	connector?: string;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * TODO
+	 * See [Variant](/variant-property) for details.
 	 */
 	@Property({ reflect: true })
 	@Variant()

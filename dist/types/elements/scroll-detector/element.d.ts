@@ -19,17 +19,17 @@ export declare class PlusScrollDetector extends PlusCore {
      */
     reference?: Element | 'document' | (string & {});
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
      * Indicates which scroll (horizontal or vertical) is to be used as the source.
      */
     vertical?: boolean;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fires when the scroll starts changing.
      */
@@ -45,8 +45,21 @@ export declare class PlusScrollDetector extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusScrollDetectorAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusScrollDetectorAttributesMapper = {
+  'disabled': 'disabled';
+  'reference': 'reference';
+  'vertical': 'vertical';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusScrollDetectorOverridableKeys = 'variant';
+export interface PlusScrollDetectorDisables {}
+export interface PlusScrollDetectorOverrides {}
+export type PlusScrollDetectorAttributes = Filter<PlusScrollDetectorAttributesOverridden, PlusScrollDetectorDisables, PlusScrollDetectorAttributesMapper>;
+export type PlusScrollDetectorAttributesOverridden = Override<PlusScrollDetectorAttributesBase, PlusScrollDetectorOverrides, PlusScrollDetectorOverridableKeys, PlusScrollDetectorAttributesMapper>;
+export type PlusScrollDetectorAttributesBase = {
   /**
   * Disables the element functionality.
   */
@@ -56,32 +69,39 @@ export interface PlusScrollDetectorAttributesBase {
   */
   "reference"?: Element | 'document' | (string & {});
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusScrollDetectorVariantOverrides>;
-  /**
   * Indicates which scroll (horizontal or vertical) is to be used as the source.
   */
   "vertical"?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusScrollDetectorProperties, "overrides">>;
-}
-export interface PlusScrollDetectorAttributesDisables {}
-export type PlusScrollDetectorAttributes = Filter<PlusScrollDetectorAttributesBase, PlusScrollDetectorAttributesDisables>;
-export interface PlusScrollDetectorEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusScrollDetectorEvents = Filter<PlusScrollDetectorEventsBase, PlusScrollDetectorDisables>;
+export type PlusScrollDetectorEventsBase = {
+  /**
+  * Fires when the scroll starts changing.
+  */
+  plusChange?: (event: CustomEvent<PlusScrollDetectorChangeEvent>) => void;
+};
+export type PlusScrollDetectorEventsJSX = Filter<PlusScrollDetectorEventsBaseJSX, PlusScrollDetectorDisables, {
+  plusChange: 'onPlusChange';
+}>;
+export type PlusScrollDetectorEventsBaseJSX = {
   /**
   * Fires when the scroll starts changing.
   */
   onPlusChange?: (event: CustomEvent<PlusScrollDetectorChangeEvent>) => void;
-}
-export interface PlusScrollDetectorEventsDisables {}
-export type PlusScrollDetectorEvents = Filter<PlusScrollDetectorEventsBase, PlusScrollDetectorEventsDisables>;
-export interface PlusScrollDetectorMethodsBase {}
-export interface PlusScrollDetectorMethodsDisables {}
-export type PlusScrollDetectorMethods = Filter<PlusScrollDetectorMethodsBase, PlusScrollDetectorMethodsDisables>;
-export interface PlusScrollDetectorPropertiesBase {
+};
+export type PlusScrollDetectorMethods = Filter<PlusScrollDetectorMethodsBase, PlusScrollDetectorDisables>;
+export type PlusScrollDetectorMethodsBase = {};
+export type PlusScrollDetectorProperties = Filter<PlusScrollDetectorPropertiesOverridden, PlusScrollDetectorDisables>;
+export type PlusScrollDetectorPropertiesOverridden = Override<PlusScrollDetectorPropertiesBase, PlusScrollDetectorOverrides, PlusScrollDetectorOverridableKeys>;
+export type PlusScrollDetectorPropertiesBase = {
   /**
   * Disables the element functionality.
   */
@@ -91,21 +111,32 @@ export interface PlusScrollDetectorPropertiesBase {
   */
   reference?: Element | 'document' | (string & {});
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusScrollDetectorVariantOverrides>;
-  /**
   * Indicates which scroll (horizontal or vertical) is to be used as the source.
   */
   vertical?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusScrollDetectorProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-scroll-detector': {
+      properties: PlusScrollDetectorPropertiesOverridden;
+    };
+  }
 }
-export interface PlusScrollDetectorPropertiesDisables {}
-export type PlusScrollDetectorProperties = Filter<PlusScrollDetectorPropertiesBase, PlusScrollDetectorPropertiesDisables>;
-export interface PlusScrollDetectorJSX extends PlusScrollDetectorEvents, PlusScrollDetectorProperties {}
+export type PlusScrollDetectorElement = globalThis.HTMLPlusScrollDetectorElement;
+export type PlusScrollDetectorJSX = PlusScrollDetectorAttributes & PlusScrollDetectorEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-scroll-detector": PlusScrollDetectorJSX;
+  }
+}
 declare global {
   interface HTMLPlusScrollDetectorElement extends HTMLElement, PlusScrollDetectorMethods, PlusScrollDetectorProperties {}
   var HTMLPlusScrollDetectorElement: {
@@ -116,45 +147,10 @@ declare global {
     "plus-scroll-detector": HTMLPlusScrollDetectorElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusScrollDetectorElement>, HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
+      "plus-scroll-detector": PlusScrollDetectorJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusScrollDetectorElement>, HTMLPlusScrollDetectorElement>, keyof PlusScrollDetectorJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-scroll-detector": PlusScrollDetectorAttributes & PlusScrollDetectorEvents & Omit<HTMLAttributes<HTMLPlusScrollDetectorElement>, keyof (PlusScrollDetectorAttributes & PlusScrollDetectorEvents)>;
-    }
-  }
-}
-export type PlusScrollDetectorElement = globalThis.HTMLPlusScrollDetectorElement;
-export interface PlusScrollDetectorVariantOverrides {}

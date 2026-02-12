@@ -30,19 +30,21 @@ export declare class PlusAppProgressBar extends PlusCore {
      */
     trickleSpeed?: number;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     $bar: HTMLDivElement;
     state?: 'completed' | 'idle' | 'progressing';
     progress: number | null;
     timeout?: number;
     get style(): {
-        '--plus-app-progress-bar-color': string;
+        ':host': {
+            '--plus-app-progress-bar-color': string;
+        };
     };
     /**
      * Hides the progress bar. If true is passed, the bar briefly appears before hiding.
@@ -71,8 +73,23 @@ export declare class PlusAppProgressBar extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusAppProgressBarAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusAppProgressBarAttributesMapper = {
+  'color': 'color';
+  'minimum': 'minimum';
+  'trickleDisabled': 'trickle-disabled';
+  'trickleRate': 'trickle-rate';
+  'trickleSpeed': 'trickle-speed';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusAppProgressBarOverridableKeys = 'color' | 'variant';
+export interface PlusAppProgressBarDisables {}
+export interface PlusAppProgressBarOverrides {}
+export type PlusAppProgressBarAttributes = Filter<PlusAppProgressBarAttributesOverridden, PlusAppProgressBarDisables, PlusAppProgressBarAttributesMapper>;
+export type PlusAppProgressBarAttributesOverridden = Override<PlusAppProgressBarAttributesBase, PlusAppProgressBarOverrides, PlusAppProgressBarOverridableKeys, PlusAppProgressBarAttributesMapper>;
+export type PlusAppProgressBarAttributesBase = {
   /**
   * Specifies the color of the bar.
   */
@@ -94,20 +111,20 @@ export interface PlusAppProgressBarAttributesBase {
   */
   "trickle-speed"?: number;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusAppProgressBarVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAppProgressBarProperties, "overrides">>;
-}
-export interface PlusAppProgressBarAttributesDisables {}
-export type PlusAppProgressBarAttributes = Filter<PlusAppProgressBarAttributesBase, PlusAppProgressBarAttributesDisables>;
-export interface PlusAppProgressBarEventsBase {}
-export interface PlusAppProgressBarEventsDisables {}
-export type PlusAppProgressBarEvents = Filter<PlusAppProgressBarEventsBase, PlusAppProgressBarEventsDisables>;
-export interface PlusAppProgressBarMethodsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusAppProgressBarEvents = Filter<PlusAppProgressBarEventsBase, PlusAppProgressBarDisables>;
+export type PlusAppProgressBarEventsBase = {};
+export type PlusAppProgressBarEventsJSX = Filter<PlusAppProgressBarEventsBaseJSX, PlusAppProgressBarDisables, {}>;
+export type PlusAppProgressBarEventsBaseJSX = {};
+export type PlusAppProgressBarMethods = Filter<PlusAppProgressBarMethodsBase, PlusAppProgressBarDisables>;
+export type PlusAppProgressBarMethodsBase = {
   /**
   * Hides the progress bar. If true is passed, the bar briefly appears before hiding.
   */
@@ -128,10 +145,10 @@ export interface PlusAppProgressBarMethodsBase {
   * Increments the progress by a random amount based on the trickle rate.
   */
   trickle(): void;
-}
-export interface PlusAppProgressBarMethodsDisables {}
-export type PlusAppProgressBarMethods = Filter<PlusAppProgressBarMethodsBase, PlusAppProgressBarMethodsDisables>;
-export interface PlusAppProgressBarPropertiesBase {
+};
+export type PlusAppProgressBarProperties = Filter<PlusAppProgressBarPropertiesOverridden, PlusAppProgressBarDisables>;
+export type PlusAppProgressBarPropertiesOverridden = Override<PlusAppProgressBarPropertiesBase, PlusAppProgressBarOverrides, PlusAppProgressBarOverridableKeys>;
+export type PlusAppProgressBarPropertiesBase = {
   /**
   * Specifies the color of the bar.
   */
@@ -153,17 +170,28 @@ export interface PlusAppProgressBarPropertiesBase {
   */
   trickleSpeed?: number;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusAppProgressBarVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAppProgressBarProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-app-progress-bar': {
+      properties: PlusAppProgressBarPropertiesOverridden;
+    };
+  }
 }
-export interface PlusAppProgressBarPropertiesDisables {}
-export type PlusAppProgressBarProperties = Filter<PlusAppProgressBarPropertiesBase, PlusAppProgressBarPropertiesDisables>;
-export interface PlusAppProgressBarJSX extends PlusAppProgressBarEvents, PlusAppProgressBarProperties {}
+export type PlusAppProgressBarElement = globalThis.HTMLPlusAppProgressBarElement;
+export type PlusAppProgressBarJSX = PlusAppProgressBarAttributes & PlusAppProgressBarEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-app-progress-bar": PlusAppProgressBarJSX;
+  }
+}
 declare global {
   interface HTMLPlusAppProgressBarElement extends HTMLElement, PlusAppProgressBarMethods, PlusAppProgressBarProperties {}
   var HTMLPlusAppProgressBarElement: {
@@ -174,45 +202,10 @@ declare global {
     "plus-app-progress-bar": HTMLPlusAppProgressBarElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAppProgressBarElement>, HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
+      "plus-app-progress-bar": PlusAppProgressBarJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAppProgressBarElement>, HTMLPlusAppProgressBarElement>, keyof PlusAppProgressBarJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-app-progress-bar": PlusAppProgressBarAttributes & PlusAppProgressBarEvents & Omit<HTMLAttributes<HTMLPlusAppProgressBarElement>, keyof (PlusAppProgressBarAttributes & PlusAppProgressBarEvents)>;
-    }
-  }
-}
-export type PlusAppProgressBarElement = globalThis.HTMLPlusAppProgressBarElement;
-export interface PlusAppProgressBarVariantOverrides {}

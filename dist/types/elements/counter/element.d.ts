@@ -50,13 +50,13 @@ export declare class PlusCounter extends PlusCore {
      */
     to?: number;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Is Triggered when transition ended.
      */
@@ -92,8 +92,28 @@ export declare class PlusCounter extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusCounterAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusCounterAttributesMapper = {
+  'easing': 'easing';
+  'decimal': 'decimal';
+  'decimals': 'decimals';
+  'delay': 'delay';
+  'duration': 'duration';
+  'from': 'from';
+  'numerals': 'numerals';
+  'play': 'play';
+  'separator': 'separator';
+  'to': 'to';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusCounterOverridableKeys = 'variant';
+export interface PlusCounterDisables {}
+export interface PlusCounterOverrides {}
+export type PlusCounterAttributes = Filter<PlusCounterAttributesOverridden, PlusCounterDisables, PlusCounterAttributesMapper>;
+export type PlusCounterAttributesOverridden = Override<PlusCounterAttributesBase, PlusCounterOverrides, PlusCounterOverridableKeys, PlusCounterAttributesMapper>;
+export type PlusCounterAttributesBase = {
   /**
   * Easing function. Click [here](http://robertpenner.com/easing) for more details.
   */
@@ -135,25 +155,32 @@ export interface PlusCounterAttributesBase {
   */
   "to"?: number;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusCounterVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCounterProperties, "overrides">>;
-}
-export interface PlusCounterAttributesDisables {}
-export type PlusCounterAttributes = Filter<PlusCounterAttributesBase, PlusCounterAttributesDisables>;
-export interface PlusCounterEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusCounterEvents = Filter<PlusCounterEventsBase, PlusCounterDisables>;
+export type PlusCounterEventsBase = {
+  /**
+  * Is Triggered when transition ended.
+  */
+  plusComplete?: (event: CustomEvent<void>) => void;
+};
+export type PlusCounterEventsJSX = Filter<PlusCounterEventsBaseJSX, PlusCounterDisables, {
+  plusComplete: 'onPlusComplete';
+}>;
+export type PlusCounterEventsBaseJSX = {
   /**
   * Is Triggered when transition ended.
   */
   onPlusComplete?: (event: CustomEvent<void>) => void;
-}
-export interface PlusCounterEventsDisables {}
-export type PlusCounterEvents = Filter<PlusCounterEventsBase, PlusCounterEventsDisables>;
-export interface PlusCounterMethodsBase {
+};
+export type PlusCounterMethods = Filter<PlusCounterMethodsBase, PlusCounterDisables>;
+export type PlusCounterMethodsBase = {
   /**
   * Completes the transition.
   */
@@ -170,10 +197,10 @@ export interface PlusCounterMethodsBase {
   * Stops the transition.
   */
   stop();
-}
-export interface PlusCounterMethodsDisables {}
-export type PlusCounterMethods = Filter<PlusCounterMethodsBase, PlusCounterMethodsDisables>;
-export interface PlusCounterPropertiesBase {
+};
+export type PlusCounterProperties = Filter<PlusCounterPropertiesOverridden, PlusCounterDisables>;
+export type PlusCounterPropertiesOverridden = Override<PlusCounterPropertiesBase, PlusCounterOverrides, PlusCounterOverridableKeys>;
+export type PlusCounterPropertiesBase = {
   /**
   * Easing function. Click [here](http://robertpenner.com/easing) for more details.
   */
@@ -215,17 +242,28 @@ export interface PlusCounterPropertiesBase {
   */
   to?: number;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusCounterVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCounterProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-counter': {
+      properties: PlusCounterPropertiesOverridden;
+    };
+  }
 }
-export interface PlusCounterPropertiesDisables {}
-export type PlusCounterProperties = Filter<PlusCounterPropertiesBase, PlusCounterPropertiesDisables>;
-export interface PlusCounterJSX extends PlusCounterEvents, PlusCounterProperties {}
+export type PlusCounterElement = globalThis.HTMLPlusCounterElement;
+export type PlusCounterJSX = PlusCounterAttributes & PlusCounterEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-counter": PlusCounterJSX;
+  }
+}
 declare global {
   interface HTMLPlusCounterElement extends HTMLElement, PlusCounterMethods, PlusCounterProperties {}
   var HTMLPlusCounterElement: {
@@ -236,45 +274,10 @@ declare global {
     "plus-counter": HTMLPlusCounterElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-counter": PlusCounterAttributes & PlusCounterEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCounterElement>, HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
+      "plus-counter": PlusCounterJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCounterElement>, HTMLPlusCounterElement>, keyof PlusCounterJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-counter": PlusCounterAttributes & PlusCounterEvents & Omit<HTMLAttributes<HTMLPlusCounterElement>, keyof (PlusCounterAttributes & PlusCounterEvents)>;
-    }
-  }
-}
-export type PlusCounterElement = globalThis.HTMLPlusCounterElement;
-export interface PlusCounterVariantOverrides {}

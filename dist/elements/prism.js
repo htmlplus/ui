@@ -150,12 +150,6 @@ __decorateClass([
 ], PlusPrism.prototype, "theme", 2);
 __decorateClass([
   Property({
-    type: 0
-  }),
-  Overrides()
-], PlusPrism.prototype, "overrides", 2);
-__decorateClass([
-  Property({
     type: 256
   })
 ], PlusPrism.prototype, "plugins", 2);
@@ -169,6 +163,12 @@ __decorateClass([
     type: 4
   })
 ], PlusPrism.prototype, "sync", 2);
+__decorateClass([
+  Property({
+    type: 0
+  }),
+  Overrides()
+], PlusPrism.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,

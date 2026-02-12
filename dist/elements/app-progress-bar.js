@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, h as toCSSColor, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, h as toCSSColor, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:var(--plus-app-progress-bar-color);transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -22,7 +22,9 @@ let PlusAppProgressBar = class extends PlusCore {
   }
   get style() {
     return {
-      "--plus-app-progress-bar-color": toCSSColor(this.color)
+      ":host": {
+        "--plus-app-progress-bar-color": toCSSColor(this.color)
+      }
     };
   }
   done(force) {
@@ -124,17 +126,17 @@ __decorateClass([
 ], PlusAppProgressBar.prototype, "trickleSpeed", 2);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusAppProgressBar.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusAppProgressBar.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusAppProgressBar.prototype, "overrides", 2);
 __decorateClass([
   Query("[part=bar]")
 ], PlusAppProgressBar.prototype, "$bar", 2);

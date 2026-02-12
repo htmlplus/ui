@@ -21,11 +21,11 @@ export declare class PlusCarouselIndicators extends CarouselChild {
      */
     numbers?: boolean;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     events: EmblaEventType[];
@@ -33,14 +33,29 @@ export declare class PlusCarouselIndicators extends CarouselChild {
     get selected(): number;
     scrollTo(index: number): void;
     get style(): {
-        '--plus-carousel-indicators-selected': number;
+        ':host': {
+            '--plus-carousel-indicators-selected': number;
+        };
     };
     getClass(index: number): string;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusCarouselIndicatorsAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusCarouselIndicatorsAttributesMapper = {
+  'clickable': 'clickable';
+  'infinity': 'infinity';
+  'numbers': 'numbers';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusCarouselIndicatorsOverridableKeys = 'variant';
+export interface PlusCarouselIndicatorsDisables {}
+export interface PlusCarouselIndicatorsOverrides {}
+export type PlusCarouselIndicatorsAttributes = Filter<PlusCarouselIndicatorsAttributesOverridden, PlusCarouselIndicatorsDisables, PlusCarouselIndicatorsAttributesMapper>;
+export type PlusCarouselIndicatorsAttributesOverridden = Override<PlusCarouselIndicatorsAttributesBase, PlusCarouselIndicatorsOverrides, PlusCarouselIndicatorsOverridableKeys, PlusCarouselIndicatorsAttributesMapper>;
+export type PlusCarouselIndicatorsAttributesBase = {
   /**
   * Controls what happens when you click an indicator.
   * If `true`, it smoothly moves to the slide,
@@ -56,23 +71,23 @@ export interface PlusCarouselIndicatorsAttributesBase {
   */
   "numbers"?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselIndicatorsProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusCarouselIndicatorsVariantOverrides>;
-}
-export interface PlusCarouselIndicatorsAttributesDisables {}
-export type PlusCarouselIndicatorsAttributes = Filter<PlusCarouselIndicatorsAttributesBase, PlusCarouselIndicatorsAttributesDisables>;
-export interface PlusCarouselIndicatorsEventsBase {}
-export interface PlusCarouselIndicatorsEventsDisables {}
-export type PlusCarouselIndicatorsEvents = Filter<PlusCarouselIndicatorsEventsBase, PlusCarouselIndicatorsEventsDisables>;
-export interface PlusCarouselIndicatorsMethodsBase {}
-export interface PlusCarouselIndicatorsMethodsDisables {}
-export type PlusCarouselIndicatorsMethods = Filter<PlusCarouselIndicatorsMethodsBase, PlusCarouselIndicatorsMethodsDisables>;
-export interface PlusCarouselIndicatorsPropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusCarouselIndicatorsEvents = Filter<PlusCarouselIndicatorsEventsBase, PlusCarouselIndicatorsDisables>;
+export type PlusCarouselIndicatorsEventsBase = {};
+export type PlusCarouselIndicatorsEventsJSX = Filter<PlusCarouselIndicatorsEventsBaseJSX, PlusCarouselIndicatorsDisables, {}>;
+export type PlusCarouselIndicatorsEventsBaseJSX = {};
+export type PlusCarouselIndicatorsMethods = Filter<PlusCarouselIndicatorsMethodsBase, PlusCarouselIndicatorsDisables>;
+export type PlusCarouselIndicatorsMethodsBase = {};
+export type PlusCarouselIndicatorsProperties = Filter<PlusCarouselIndicatorsPropertiesOverridden, PlusCarouselIndicatorsDisables>;
+export type PlusCarouselIndicatorsPropertiesOverridden = Override<PlusCarouselIndicatorsPropertiesBase, PlusCarouselIndicatorsOverrides, PlusCarouselIndicatorsOverridableKeys>;
+export type PlusCarouselIndicatorsPropertiesBase = {
   /**
   * Controls what happens when you click an indicator.
   * If `true`, it smoothly moves to the slide,
@@ -88,17 +103,28 @@ export interface PlusCarouselIndicatorsPropertiesBase {
   */
   numbers?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselIndicatorsProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusCarouselIndicatorsVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-carousel-indicators': {
+      properties: PlusCarouselIndicatorsPropertiesOverridden;
+    };
+  }
 }
-export interface PlusCarouselIndicatorsPropertiesDisables {}
-export type PlusCarouselIndicatorsProperties = Filter<PlusCarouselIndicatorsPropertiesBase, PlusCarouselIndicatorsPropertiesDisables>;
-export interface PlusCarouselIndicatorsJSX extends PlusCarouselIndicatorsEvents, PlusCarouselIndicatorsProperties {}
+export type PlusCarouselIndicatorsElement = globalThis.HTMLPlusCarouselIndicatorsElement;
+export type PlusCarouselIndicatorsJSX = PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-carousel-indicators": PlusCarouselIndicatorsJSX;
+  }
+}
 declare global {
   interface HTMLPlusCarouselIndicatorsElement extends HTMLElement, PlusCarouselIndicatorsMethods, PlusCarouselIndicatorsProperties {}
   var HTMLPlusCarouselIndicatorsElement: {
@@ -109,45 +135,10 @@ declare global {
     "plus-carousel-indicators": HTMLPlusCarouselIndicatorsElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
+      "plus-carousel-indicators": PlusCarouselIndicatorsJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, HTMLPlusCarouselIndicatorsElement>, keyof PlusCarouselIndicatorsJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-indicators": PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents & Omit<HTMLAttributes<HTMLPlusCarouselIndicatorsElement>, keyof (PlusCarouselIndicatorsAttributes & PlusCarouselIndicatorsEvents)>;
-    }
-  }
-}
-export type PlusCarouselIndicatorsElement = globalThis.HTMLPlusCarouselIndicatorsElement;
-export interface PlusCarouselIndicatorsVariantOverrides {}

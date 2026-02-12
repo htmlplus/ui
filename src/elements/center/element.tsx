@@ -28,14 +28,14 @@ export class PlusCenter extends PlusCore {
 	inline?: boolean;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * TODO
+	 * See [Variant](/variant-property) for details.
 	 */
 	@Property({ reflect: true })
 	@Variant()

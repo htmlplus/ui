@@ -306,7 +306,9 @@ const isCSSColor = (input) => {
   return option.style.color !== "";
 };
 const isCSSUnit = (input) => {
-  return /^\d+(\.\d+)?(px|pt|cm|mm|in|em|rem|%|vw|vh)$/.test(input);
+  const option = new Option();
+  option.style.width = input;
+  return option.style.width !== "";
 };
 const isRTL = (target) => {
   return direction(target) === "rtl";
@@ -1154,7 +1156,10 @@ const proxy = (constructor) => {
         const properties = getConfig$1(namespace).elements?.[tag2]?.properties;
         if (!properties)
           return;
-        const defaults = Object.fromEntries(Object.entries(properties).map(([key, value]) => [key, value?.default]));
+        const defaults = Object.fromEntries(Object.entries(properties).map(([key, value]) => [
+          key,
+          value?.default
+        ]));
         Object.assign(this, defaults);
       })();
       (() => {
@@ -1558,12 +1563,12 @@ function Style() {
     });
   };
 }
-const toCssString = (input, parent) => {
+const toCssString = (input) => {
   if (typeof input === "string") {
     return input.trim();
   }
   if (Array.isArray(input)) {
-    return input.map((item) => toCssString(item, parent)).filter(Boolean).join("\n");
+    return input.map((item) => toCssString(item)).filter(Boolean).join("\n");
   }
   if (input === null)
     return "";
@@ -1577,12 +1582,12 @@ const toCssString = (input, parent) => {
       continue;
     const cssKey = key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
     if (typeof value === "object") {
-      result += `${cssKey} {${toCssString(value, cssKey)}}`;
+      result += `${cssKey} {${toCssString(value)}}`;
     } else {
       result += `${cssKey}: ${value};`;
     }
   }
-  return parent ? result : `:host {${result}}`;
+  return result;
 };
 function Variant() {
   return (target, key) => {

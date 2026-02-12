@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -98,17 +98,17 @@ __decorateClass([
 ], PlusIntersection.prototype, "threshold", 2);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusIntersection.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusIntersection.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusIntersection.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], PlusIntersection.prototype, "plusChange", 2);

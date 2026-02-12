@@ -33,24 +33,24 @@ export class PlusTabs extends PlusCore {
 	value?: string;
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
 	 * You can use vertical property for vertical mode.
 	 */
 	@Property({ reflect: true })
 	vertical?: boolean;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Fired when the value changes.

@@ -45,13 +45,13 @@ export declare class PlusIntersection extends PlusCore {
      */
     threshold?: number | number[];
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fires When the browser detects that the element has been unveiled or obscured.
      */
@@ -73,8 +73,23 @@ export declare class PlusIntersection extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusIntersectionAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusIntersectionAttributesMapper = {
+  'disabled': 'disabled';
+  'once': 'once';
+  'root': 'root';
+  'rootMargin': 'root-margin';
+  'threshold': 'threshold';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusIntersectionOverridableKeys = 'variant';
+export interface PlusIntersectionDisables {}
+export interface PlusIntersectionOverrides {}
+export type PlusIntersectionAttributes = Filter<PlusIntersectionAttributesOverridden, PlusIntersectionDisables, PlusIntersectionAttributesMapper>;
+export type PlusIntersectionAttributesOverridden = Override<PlusIntersectionAttributesBase, PlusIntersectionOverrides, PlusIntersectionOverridableKeys, PlusIntersectionAttributesMapper>;
+export type PlusIntersectionAttributesBase = {
   /**
   * Disables the element functionality.
   */
@@ -107,28 +122,35 @@ export interface PlusIntersectionAttributesBase {
   */
   "threshold"?: number | number[];
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusIntersectionVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusIntersectionProperties, "overrides">>;
-}
-export interface PlusIntersectionAttributesDisables {}
-export type PlusIntersectionAttributes = Filter<PlusIntersectionAttributesBase, PlusIntersectionAttributesDisables>;
-export interface PlusIntersectionEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusIntersectionEvents = Filter<PlusIntersectionEventsBase, PlusIntersectionDisables>;
+export type PlusIntersectionEventsBase = {
+  /**
+  * Fires When the browser detects that the element has been unveiled or obscured.
+  */
+  plusChange?: (event: CustomEvent<IntersectionObserverEntry>) => void;
+};
+export type PlusIntersectionEventsJSX = Filter<PlusIntersectionEventsBaseJSX, PlusIntersectionDisables, {
+  plusChange: 'onPlusChange';
+}>;
+export type PlusIntersectionEventsBaseJSX = {
   /**
   * Fires When the browser detects that the element has been unveiled or obscured.
   */
   onPlusChange?: (event: CustomEvent<IntersectionObserverEntry>) => void;
-}
-export interface PlusIntersectionEventsDisables {}
-export type PlusIntersectionEvents = Filter<PlusIntersectionEventsBase, PlusIntersectionEventsDisables>;
-export interface PlusIntersectionMethodsBase {}
-export interface PlusIntersectionMethodsDisables {}
-export type PlusIntersectionMethods = Filter<PlusIntersectionMethodsBase, PlusIntersectionMethodsDisables>;
-export interface PlusIntersectionPropertiesBase {
+};
+export type PlusIntersectionMethods = Filter<PlusIntersectionMethodsBase, PlusIntersectionDisables>;
+export type PlusIntersectionMethodsBase = {};
+export type PlusIntersectionProperties = Filter<PlusIntersectionPropertiesOverridden, PlusIntersectionDisables>;
+export type PlusIntersectionPropertiesOverridden = Override<PlusIntersectionPropertiesBase, PlusIntersectionOverrides, PlusIntersectionOverridableKeys>;
+export type PlusIntersectionPropertiesBase = {
   /**
   * Disables the element functionality.
   */
@@ -161,17 +183,28 @@ export interface PlusIntersectionPropertiesBase {
   */
   threshold?: number | number[];
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusIntersectionVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusIntersectionProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-intersection': {
+      properties: PlusIntersectionPropertiesOverridden;
+    };
+  }
 }
-export interface PlusIntersectionPropertiesDisables {}
-export type PlusIntersectionProperties = Filter<PlusIntersectionPropertiesBase, PlusIntersectionPropertiesDisables>;
-export interface PlusIntersectionJSX extends PlusIntersectionEvents, PlusIntersectionProperties {}
+export type PlusIntersectionElement = globalThis.HTMLPlusIntersectionElement;
+export type PlusIntersectionJSX = PlusIntersectionAttributes & PlusIntersectionEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-intersection": PlusIntersectionJSX;
+  }
+}
 declare global {
   interface HTMLPlusIntersectionElement extends HTMLElement, PlusIntersectionMethods, PlusIntersectionProperties {}
   var HTMLPlusIntersectionElement: {
@@ -182,45 +215,10 @@ declare global {
     "plus-intersection": HTMLPlusIntersectionElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusIntersectionElement>, HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
+      "plus-intersection": PlusIntersectionJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusIntersectionElement>, HTMLPlusIntersectionElement>, keyof PlusIntersectionJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-intersection": PlusIntersectionAttributes & PlusIntersectionEvents & Omit<HTMLAttributes<HTMLPlusIntersectionElement>, keyof (PlusIntersectionAttributes & PlusIntersectionEvents)>;
-    }
-  }
-}
-export type PlusIntersectionElement = globalThis.HTMLPlusIntersectionElement;
-export interface PlusIntersectionVariantOverrides {}

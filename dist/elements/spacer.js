@@ -17,7 +17,9 @@ let PlusSpacer = class extends PlusCore {
   }
   get style() {
     return {
-      "flex-grow": this.grow
+      ":host": {
+        "flex-grow": this.grow
+      }
     };
   }
 };

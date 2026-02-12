@@ -24,13 +24,13 @@ export declare class PlusRelativeTime extends PlusCore {
      */
     value?: Date | string;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     parts: Intl.RelativeTimeFormatPart[];
     timeout: number;
     get isValid(): boolean;
@@ -42,8 +42,22 @@ export declare class PlusRelativeTime extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusRelativeTimeAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusRelativeTimeAttributesMapper = {
+  'format': 'format';
+  'numeric': 'numeric';
+  'sync': 'sync';
+  'value': 'value';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusRelativeTimeOverridableKeys = 'variant';
+export interface PlusRelativeTimeDisables {}
+export interface PlusRelativeTimeOverrides {}
+export type PlusRelativeTimeAttributes = Filter<PlusRelativeTimeAttributesOverridden, PlusRelativeTimeDisables, PlusRelativeTimeAttributesMapper>;
+export type PlusRelativeTimeAttributesOverridden = Override<PlusRelativeTimeAttributesBase, PlusRelativeTimeOverrides, PlusRelativeTimeOverridableKeys, PlusRelativeTimeAttributesMapper>;
+export type PlusRelativeTimeAttributesBase = {
   /**
   * The format style for the relative time.
   */
@@ -61,23 +75,23 @@ export interface PlusRelativeTimeAttributesBase {
   */
   "value"?: Date | string;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusRelativeTimeVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusRelativeTimeProperties, "overrides">>;
-}
-export interface PlusRelativeTimeAttributesDisables {}
-export type PlusRelativeTimeAttributes = Filter<PlusRelativeTimeAttributesBase, PlusRelativeTimeAttributesDisables>;
-export interface PlusRelativeTimeEventsBase {}
-export interface PlusRelativeTimeEventsDisables {}
-export type PlusRelativeTimeEvents = Filter<PlusRelativeTimeEventsBase, PlusRelativeTimeEventsDisables>;
-export interface PlusRelativeTimeMethodsBase {}
-export interface PlusRelativeTimeMethodsDisables {}
-export type PlusRelativeTimeMethods = Filter<PlusRelativeTimeMethodsBase, PlusRelativeTimeMethodsDisables>;
-export interface PlusRelativeTimePropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusRelativeTimeEvents = Filter<PlusRelativeTimeEventsBase, PlusRelativeTimeDisables>;
+export type PlusRelativeTimeEventsBase = {};
+export type PlusRelativeTimeEventsJSX = Filter<PlusRelativeTimeEventsBaseJSX, PlusRelativeTimeDisables, {}>;
+export type PlusRelativeTimeEventsBaseJSX = {};
+export type PlusRelativeTimeMethods = Filter<PlusRelativeTimeMethodsBase, PlusRelativeTimeDisables>;
+export type PlusRelativeTimeMethodsBase = {};
+export type PlusRelativeTimeProperties = Filter<PlusRelativeTimePropertiesOverridden, PlusRelativeTimeDisables>;
+export type PlusRelativeTimePropertiesOverridden = Override<PlusRelativeTimePropertiesBase, PlusRelativeTimeOverrides, PlusRelativeTimeOverridableKeys>;
+export type PlusRelativeTimePropertiesBase = {
   /**
   * The format style for the relative time.
   */
@@ -95,17 +109,28 @@ export interface PlusRelativeTimePropertiesBase {
   */
   value?: Date | string;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusRelativeTimeVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusRelativeTimeProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-relative-time': {
+      properties: PlusRelativeTimePropertiesOverridden;
+    };
+  }
 }
-export interface PlusRelativeTimePropertiesDisables {}
-export type PlusRelativeTimeProperties = Filter<PlusRelativeTimePropertiesBase, PlusRelativeTimePropertiesDisables>;
-export interface PlusRelativeTimeJSX extends PlusRelativeTimeEvents, PlusRelativeTimeProperties {}
+export type PlusRelativeTimeElement = globalThis.HTMLPlusRelativeTimeElement;
+export type PlusRelativeTimeJSX = PlusRelativeTimeAttributes & PlusRelativeTimeEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-relative-time": PlusRelativeTimeJSX;
+  }
+}
 declare global {
   interface HTMLPlusRelativeTimeElement extends HTMLElement, PlusRelativeTimeMethods, PlusRelativeTimeProperties {}
   var HTMLPlusRelativeTimeElement: {
@@ -116,45 +141,10 @@ declare global {
     "plus-relative-time": HTMLPlusRelativeTimeElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusRelativeTimeElement>, HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
+      "plus-relative-time": PlusRelativeTimeJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusRelativeTimeElement>, HTMLPlusRelativeTimeElement>, keyof PlusRelativeTimeJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-relative-time": PlusRelativeTimeAttributes & PlusRelativeTimeEvents & Omit<HTMLAttributes<HTMLPlusRelativeTimeElement>, keyof (PlusRelativeTimeAttributes & PlusRelativeTimeEvents)>;
-    }
-  }
-}
-export type PlusRelativeTimeElement = globalThis.HTMLPlusRelativeTimeElement;
-export interface PlusRelativeTimeVariantOverrides {}

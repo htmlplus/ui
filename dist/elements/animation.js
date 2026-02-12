@@ -1,4 +1,4 @@
-import { v as setConfig, P as PlusCore, l as getConfig, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { v as setConfig, P as PlusCore, l as getConfig, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   ease: "ease",
@@ -227,17 +227,17 @@ __decorateClass([
 ], PlusAnimation.prototype, "run", 2);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusAnimation.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusAnimation.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusAnimation.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], PlusAnimation.prototype, "plusCancel", 2);

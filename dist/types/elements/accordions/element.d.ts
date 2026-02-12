@@ -13,58 +13,80 @@ export declare class PlusAccordions extends PlusCore {
      */
     persistent?: boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     state: Context;
     open(target: HTMLElement): void;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusAccordionsAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusAccordionsAttributesMapper = {
+  'persistent': 'persistent';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusAccordionsOverridableKeys = 'variant';
+export interface PlusAccordionsDisables {}
+export interface PlusAccordionsOverrides {}
+export type PlusAccordionsAttributes = Filter<PlusAccordionsAttributesOverridden, PlusAccordionsDisables, PlusAccordionsAttributesMapper>;
+export type PlusAccordionsAttributesOverridden = Override<PlusAccordionsAttributesBase, PlusAccordionsOverrides, PlusAccordionsOverridableKeys, PlusAccordionsAttributesMapper>;
+export type PlusAccordionsAttributesBase = {
   /**
   * Specifies that only one accordion can be open.
   */
   "persistent"?: boolean;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusAccordionsVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionsProperties, "overrides">>;
-}
-export interface PlusAccordionsAttributesDisables {}
-export type PlusAccordionsAttributes = Filter<PlusAccordionsAttributesBase, PlusAccordionsAttributesDisables>;
-export interface PlusAccordionsEventsBase {}
-export interface PlusAccordionsEventsDisables {}
-export type PlusAccordionsEvents = Filter<PlusAccordionsEventsBase, PlusAccordionsEventsDisables>;
-export interface PlusAccordionsMethodsBase {}
-export interface PlusAccordionsMethodsDisables {}
-export type PlusAccordionsMethods = Filter<PlusAccordionsMethodsBase, PlusAccordionsMethodsDisables>;
-export interface PlusAccordionsPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusAccordionsEvents = Filter<PlusAccordionsEventsBase, PlusAccordionsDisables>;
+export type PlusAccordionsEventsBase = {};
+export type PlusAccordionsEventsJSX = Filter<PlusAccordionsEventsBaseJSX, PlusAccordionsDisables, {}>;
+export type PlusAccordionsEventsBaseJSX = {};
+export type PlusAccordionsMethods = Filter<PlusAccordionsMethodsBase, PlusAccordionsDisables>;
+export type PlusAccordionsMethodsBase = {};
+export type PlusAccordionsProperties = Filter<PlusAccordionsPropertiesOverridden, PlusAccordionsDisables>;
+export type PlusAccordionsPropertiesOverridden = Override<PlusAccordionsPropertiesBase, PlusAccordionsOverrides, PlusAccordionsOverridableKeys>;
+export type PlusAccordionsPropertiesBase = {
   /**
   * Specifies that only one accordion can be open.
   */
   persistent?: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusAccordionsVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionsProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-accordions': {
+      properties: PlusAccordionsPropertiesOverridden;
+    };
+  }
 }
-export interface PlusAccordionsPropertiesDisables {}
-export type PlusAccordionsProperties = Filter<PlusAccordionsPropertiesBase, PlusAccordionsPropertiesDisables>;
-export interface PlusAccordionsJSX extends PlusAccordionsEvents, PlusAccordionsProperties {}
+export type PlusAccordionsElement = globalThis.HTMLPlusAccordionsElement;
+export type PlusAccordionsJSX = PlusAccordionsAttributes & PlusAccordionsEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-accordions": PlusAccordionsJSX;
+  }
+}
 declare global {
   interface HTMLPlusAccordionsElement extends HTMLElement, PlusAccordionsMethods, PlusAccordionsProperties {}
   var HTMLPlusAccordionsElement: {
@@ -75,45 +97,10 @@ declare global {
     "plus-accordions": HTMLPlusAccordionsElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAccordionsElement>, HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
+      "plus-accordions": PlusAccordionsJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAccordionsElement>, HTMLPlusAccordionsElement>, keyof PlusAccordionsJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordions": PlusAccordionsAttributes & PlusAccordionsEvents & Omit<HTMLAttributes<HTMLPlusAccordionsElement>, keyof (PlusAccordionsAttributes & PlusAccordionsEvents)>;
-    }
-  }
-}
-export type PlusAccordionsElement = globalThis.HTMLPlusAccordionsElement;
-export interface PlusAccordionsVariantOverrides {}

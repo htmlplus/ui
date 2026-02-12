@@ -29,7 +29,9 @@ let PlusCarouselIndicators = class extends CarouselChild {
   }
   get style() {
     return {
-      "--plus-carousel-indicators-selected": this.selected
+      ":host": {
+        "--plus-carousel-indicators-selected": this.selected
+      }
     };
   }
   getClass(index) {

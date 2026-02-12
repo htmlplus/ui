@@ -82,13 +82,13 @@ export declare class PlusSignature extends PlusForm {
      */
     get undoable(): boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fires after updating the stroke.
      */
@@ -190,8 +190,33 @@ export declare class PlusSignature extends PlusForm {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusSignatureAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusSignatureAttributesMapper = {
+  'backgroundColor': 'background-color';
+  'canvasContextOptions': 'canvas-context-options';
+  'clearOnResize': 'clear-on-resize';
+  'penColor': 'pen-color';
+  'minDistance': 'min-distance';
+  'dotSize': 'dot-size';
+  'maxWidth': 'max-width';
+  'minWidth': 'min-width';
+  'resizable': 'resizable';
+  'throttle': 'throttle';
+  'value': 'value';
+  'velocityFilterWeight': 'velocity-filter-weight';
+  'canvas': 'canvas';
+  'redoable': 'redoable';
+  'undoable': 'undoable';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusSignatureOverridableKeys = 'backgroundColor' | 'penColor' | 'variant';
+export interface PlusSignatureDisables {}
+export interface PlusSignatureOverrides {}
+export type PlusSignatureAttributes = Filter<PlusSignatureAttributesOverridden, PlusSignatureDisables, PlusSignatureAttributesMapper>;
+export type PlusSignatureAttributesOverridden = Override<PlusSignatureAttributesBase, PlusSignatureOverrides, PlusSignatureOverridableKeys, PlusSignatureAttributesMapper>;
+export type PlusSignatureAttributesBase = {
   /**
   * Specifies the background color.
   */
@@ -247,17 +272,51 @@ export interface PlusSignatureAttributesBase {
   */
   "velocity-filter-weight"?: number;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusSignatureVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSignatureProperties, "overrides">>;
-}
-export interface PlusSignatureAttributesDisables {}
-export type PlusSignatureAttributes = Filter<PlusSignatureAttributesBase, PlusSignatureAttributesDisables>;
-export interface PlusSignatureEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusSignatureEvents = Filter<PlusSignatureEventsBase, PlusSignatureDisables>;
+export type PlusSignatureEventsBase = {
+  /**
+  * Fires after updating the stroke.
+  */
+  plusAfter?: (event: CustomEvent<PointerEvent>) => void;
+  /**
+  * Fires before updating the stroke.
+  */
+  plusBefore?: (event: CustomEvent<PointerEvent>) => void;
+  /**
+  * Fires after the latest changes have occurred with a delay to prepare the value.
+  */
+  plusChange?: (event: CustomEvent<PointGroup[]>) => void;
+  /**
+  * Fires after a stroke ends.
+  */
+  plusEnd?: (event: CustomEvent<PointerEvent>) => void;
+  /**
+  * Fires when the underlying `signature_pad` instance has been
+  * successfully initialized and the element is ready for interaction.
+  */
+  plusReady?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires before a stroke starts.
+  */
+  plusStart?: (event: CustomEvent<PointerEvent>) => void;
+};
+export type PlusSignatureEventsJSX = Filter<PlusSignatureEventsBaseJSX, PlusSignatureDisables, {
+  plusAfter: 'onPlusAfter';
+  plusBefore: 'onPlusBefore';
+  plusChange: 'onPlusChange';
+  plusEnd: 'onPlusEnd';
+  plusReady: 'onPlusReady';
+  plusStart: 'onPlusStart';
+}>;
+export type PlusSignatureEventsBaseJSX = {
   /**
   * Fires after updating the stroke.
   */
@@ -283,10 +342,9 @@ export interface PlusSignatureEventsBase {
   * Fires before a stroke starts.
   */
   onPlusStart?: (event: CustomEvent<PointerEvent>) => void;
-}
-export interface PlusSignatureEventsDisables {}
-export type PlusSignatureEvents = Filter<PlusSignatureEventsBase, PlusSignatureEventsDisables>;
-export interface PlusSignatureMethodsBase {
+};
+export type PlusSignatureMethods = Filter<PlusSignatureMethodsBase, PlusSignatureDisables>;
+export type PlusSignatureMethodsBase = {
   /**
   * Clears the canvas
   */
@@ -342,10 +400,10 @@ export interface PlusSignatureMethodsBase {
   * Reverts the last action.
   */
   undo();
-}
-export interface PlusSignatureMethodsDisables {}
-export type PlusSignatureMethods = Filter<PlusSignatureMethodsBase, PlusSignatureMethodsDisables>;
-export interface PlusSignaturePropertiesBase {
+};
+export type PlusSignatureProperties = Filter<PlusSignaturePropertiesOverridden, PlusSignatureDisables>;
+export type PlusSignaturePropertiesOverridden = Override<PlusSignaturePropertiesBase, PlusSignatureOverrides, PlusSignatureOverridableKeys>;
+export type PlusSignaturePropertiesBase = {
   /**
   * Specifies the background color.
   */
@@ -413,17 +471,28 @@ export interface PlusSignaturePropertiesBase {
   */
   readonly undoable: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusSignatureVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSignatureProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-signature': {
+      properties: PlusSignaturePropertiesOverridden;
+    };
+  }
 }
-export interface PlusSignaturePropertiesDisables {}
-export type PlusSignatureProperties = Filter<PlusSignaturePropertiesBase, PlusSignaturePropertiesDisables>;
-export interface PlusSignatureJSX extends PlusSignatureEvents, PlusSignatureProperties {}
+export type PlusSignatureElement = globalThis.HTMLPlusSignatureElement;
+export type PlusSignatureJSX = PlusSignatureAttributes & PlusSignatureEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-signature": PlusSignatureJSX;
+  }
+}
 declare global {
   interface HTMLPlusSignatureElement extends HTMLElement, PlusSignatureMethods, PlusSignatureProperties {}
   var HTMLPlusSignatureElement: {
@@ -434,45 +503,10 @@ declare global {
     "plus-signature": HTMLPlusSignatureElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-signature": PlusSignatureAttributes & PlusSignatureEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSignatureElement>, HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
+      "plus-signature": PlusSignatureJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSignatureElement>, HTMLPlusSignatureElement>, keyof PlusSignatureJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-signature": PlusSignatureAttributes & PlusSignatureEvents & Omit<HTMLAttributes<HTMLPlusSignatureElement>, keyof (PlusSignatureAttributes & PlusSignatureEvents)>;
-    }
-  }
-}
-export type PlusSignatureElement = globalThis.HTMLPlusSignatureElement;
-export interface PlusSignatureVariantOverrides {}

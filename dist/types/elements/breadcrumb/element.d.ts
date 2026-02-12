@@ -41,13 +41,13 @@ export declare class PlusBreadcrumb extends PlusCore {
      */
     separator?: string;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     expand: boolean;
     observer: MutationObserver;
     $separators: HTMLElement[];
@@ -61,8 +61,23 @@ export declare class PlusBreadcrumb extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusBreadcrumbAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusBreadcrumbAttributesMapper = {
+  'block': 'block';
+  'expanderText': 'expander-text';
+  'offset': 'offset';
+  'max': 'max';
+  'separator': 'separator';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusBreadcrumbOverridableKeys = 'variant';
+export interface PlusBreadcrumbDisables {}
+export interface PlusBreadcrumbOverrides {}
+export type PlusBreadcrumbAttributes = Filter<PlusBreadcrumbAttributesOverridden, PlusBreadcrumbDisables, PlusBreadcrumbAttributesMapper>;
+export type PlusBreadcrumbAttributesOverridden = Override<PlusBreadcrumbAttributesBase, PlusBreadcrumbOverrides, PlusBreadcrumbOverridableKeys, PlusBreadcrumbAttributesMapper>;
+export type PlusBreadcrumbAttributesBase = {
   /**
   * TODO.
   */
@@ -85,23 +100,23 @@ export interface PlusBreadcrumbAttributesBase {
   */
   "separator"?: string;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusBreadcrumbVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusBreadcrumbProperties, "overrides">>;
-}
-export interface PlusBreadcrumbAttributesDisables {}
-export type PlusBreadcrumbAttributes = Filter<PlusBreadcrumbAttributesBase, PlusBreadcrumbAttributesDisables>;
-export interface PlusBreadcrumbEventsBase {}
-export interface PlusBreadcrumbEventsDisables {}
-export type PlusBreadcrumbEvents = Filter<PlusBreadcrumbEventsBase, PlusBreadcrumbEventsDisables>;
-export interface PlusBreadcrumbMethodsBase {}
-export interface PlusBreadcrumbMethodsDisables {}
-export type PlusBreadcrumbMethods = Filter<PlusBreadcrumbMethodsBase, PlusBreadcrumbMethodsDisables>;
-export interface PlusBreadcrumbPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusBreadcrumbEvents = Filter<PlusBreadcrumbEventsBase, PlusBreadcrumbDisables>;
+export type PlusBreadcrumbEventsBase = {};
+export type PlusBreadcrumbEventsJSX = Filter<PlusBreadcrumbEventsBaseJSX, PlusBreadcrumbDisables, {}>;
+export type PlusBreadcrumbEventsBaseJSX = {};
+export type PlusBreadcrumbMethods = Filter<PlusBreadcrumbMethodsBase, PlusBreadcrumbDisables>;
+export type PlusBreadcrumbMethodsBase = {};
+export type PlusBreadcrumbProperties = Filter<PlusBreadcrumbPropertiesOverridden, PlusBreadcrumbDisables>;
+export type PlusBreadcrumbPropertiesOverridden = Override<PlusBreadcrumbPropertiesBase, PlusBreadcrumbOverrides, PlusBreadcrumbOverridableKeys>;
+export type PlusBreadcrumbPropertiesBase = {
   /**
   * TODO.
   */
@@ -124,17 +139,28 @@ export interface PlusBreadcrumbPropertiesBase {
   */
   separator?: string;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusBreadcrumbVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusBreadcrumbProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-breadcrumb': {
+      properties: PlusBreadcrumbPropertiesOverridden;
+    };
+  }
 }
-export interface PlusBreadcrumbPropertiesDisables {}
-export type PlusBreadcrumbProperties = Filter<PlusBreadcrumbPropertiesBase, PlusBreadcrumbPropertiesDisables>;
-export interface PlusBreadcrumbJSX extends PlusBreadcrumbEvents, PlusBreadcrumbProperties {}
+export type PlusBreadcrumbElement = globalThis.HTMLPlusBreadcrumbElement;
+export type PlusBreadcrumbJSX = PlusBreadcrumbAttributes & PlusBreadcrumbEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-breadcrumb": PlusBreadcrumbJSX;
+  }
+}
 declare global {
   interface HTMLPlusBreadcrumbElement extends HTMLElement, PlusBreadcrumbMethods, PlusBreadcrumbProperties {}
   var HTMLPlusBreadcrumbElement: {
@@ -145,45 +171,10 @@ declare global {
     "plus-breadcrumb": HTMLPlusBreadcrumbElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusBreadcrumbElement>, HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
+      "plus-breadcrumb": PlusBreadcrumbJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusBreadcrumbElement>, HTMLPlusBreadcrumbElement>, keyof PlusBreadcrumbJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-breadcrumb": PlusBreadcrumbAttributes & PlusBreadcrumbEvents & Omit<HTMLAttributes<HTMLPlusBreadcrumbElement>, keyof (PlusBreadcrumbAttributes & PlusBreadcrumbEvents)>;
-    }
-  }
-}
-export type PlusBreadcrumbElement = globalThis.HTMLPlusBreadcrumbElement;
-export interface PlusBreadcrumbVariantOverrides {}

@@ -28,7 +28,7 @@
         }
       ],
       "key": "plus-accordion",
-      "lastModified": "2026-01-06T19:45:12.691Z",
+      "lastModified": "2026-02-03T14:10:05.117Z",
       "methods": [
         {
           "async": false,
@@ -102,16 +102,6 @@
           "description": "The summary text displayed on the header."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -119,7 +109,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -195,7 +195,7 @@
     {
       "events": [],
       "key": "plus-accordions",
-      "lastModified": "2026-01-06T19:45:12.692Z",
+      "lastModified": "2026-02-01T16:48:04.737Z",
       "methods": [],
       "properties": [
         {
@@ -208,16 +208,6 @@
           "description": "Specifies that only one accordion can be open."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -225,7 +215,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -262,7 +262,7 @@
         }
       ],
       "key": "plus-animation",
-      "lastModified": "2026-01-06T19:45:12.693Z",
+      "lastModified": "2026-02-01T16:48:04.738Z",
       "methods": [
         {
           "async": false,
@@ -484,16 +484,6 @@
           "description": "Starts the animation."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -501,7 +491,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -529,7 +529,7 @@
     {
       "events": [],
       "key": "plus-app-progress-bar",
-      "lastModified": "2026-01-06T19:45:12.694Z",
+      "lastModified": "2026-02-06T19:47:32.945Z",
       "methods": [
         {
           "async": false,
@@ -642,16 +642,6 @@
           "description": "Adjust how often to trickle/increment, in ms."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -659,7 +649,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -683,7 +683,7 @@
     {
       "events": [],
       "key": "plus-avatar",
-      "lastModified": "2026-01-06T19:45:12.695Z",
+      "lastModified": "2026-02-06T19:47:32.945Z",
       "methods": [],
       "properties": [
         {
@@ -716,16 +716,6 @@
           "description": "Specifies the size of the element."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -733,7 +723,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [
@@ -781,7 +781,7 @@
     {
       "events": [],
       "key": "plus-avatar-group",
-      "lastModified": "2026-01-06T19:45:12.694Z",
+      "lastModified": "2026-02-01T16:48:04.739Z",
       "methods": [],
       "properties": [
         {
@@ -803,16 +803,6 @@
           "description": "Specifies whether avatars should be displayed compressed or not."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -820,7 +810,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -839,7 +839,7 @@
     {
       "events": [],
       "key": "plus-breadcrumb",
-      "lastModified": "2026-01-06T19:45:12.696Z",
+      "lastModified": "2026-02-01T16:48:04.740Z",
       "methods": [],
       "properties": [
         {
@@ -890,16 +890,6 @@
           "description": "Specifies the separator between items."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -907,7 +897,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -977,7 +977,7 @@
         }
       ],
       "key": "plus-browse",
-      "lastModified": "2026-01-06T19:45:12.697Z",
+      "lastModified": "2026-02-01T16:48:04.740Z",
       "methods": [
         {
           "async": false,
@@ -1069,7 +1069,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -1079,7 +1079,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1105,7 +1105,7 @@
     {
       "events": [],
       "key": "plus-card",
-      "lastModified": "2026-01-06T19:45:12.698Z",
+      "lastModified": "2026-02-01T16:48:04.742Z",
       "methods": [],
       "properties": [
         {
@@ -1146,16 +1146,6 @@
           "description": "Use tile property to neutralize border-radius."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -1163,7 +1153,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [
@@ -1215,7 +1215,7 @@
     {
       "events": [],
       "key": "plus-card-body",
-      "lastModified": "2026-01-06T19:45:12.697Z",
+      "lastModified": "2026-02-01T16:48:04.741Z",
       "methods": [],
       "properties": [
         {
@@ -1226,7 +1226,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -1236,7 +1236,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1334,7 +1334,7 @@
         }
       ],
       "key": "plus-carousel",
-      "lastModified": "2026-01-06T19:45:12.701Z",
+      "lastModified": "2026-02-01T16:48:04.745Z",
       "methods": [
         {
           "async": false,
@@ -1662,16 +1662,6 @@
           "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
-        },
-        {
           "attribute": "api",
           "name": "api",
           "readonly": true,
@@ -1689,7 +1679,17 @@
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
           "description": "TODO: Indicates whether the carousel has been successfully initialized.",
-          "Property": "() get initialized(): boolean { return !!this.api; } TODO"
+          "Property": "() get initialized(): boolean { return !!this.api; } Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1741,7 +1741,7 @@
     {
       "events": [],
       "key": "plus-carousel-button",
-      "lastModified": "2026-01-06T19:45:12.698Z",
+      "lastModified": "2026-02-01T16:48:04.742Z",
       "methods": [],
       "properties": [
         {
@@ -1763,16 +1763,6 @@
           "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -1780,7 +1770,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1798,7 +1798,7 @@
     {
       "events": [],
       "key": "plus-carousel-counter",
-      "lastModified": "2026-01-06T19:45:12.699Z",
+      "lastModified": "2026-02-01T16:48:04.743Z",
       "methods": [],
       "properties": [
         {
@@ -1812,16 +1812,6 @@
           "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -1829,7 +1819,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1841,7 +1841,7 @@
     {
       "events": [],
       "key": "plus-carousel-indicators",
-      "lastModified": "2026-01-06T19:45:12.699Z",
+      "lastModified": "2026-02-01T16:48:04.743Z",
       "methods": [],
       "properties": [
         {
@@ -1879,7 +1879,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -1889,7 +1889,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1901,7 +1901,7 @@
     {
       "events": [],
       "key": "plus-carousel-progress",
-      "lastModified": "2026-01-06T19:45:12.699Z",
+      "lastModified": "2026-02-01T16:48:04.744Z",
       "methods": [],
       "properties": [
         {
@@ -1912,7 +1912,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -1922,7 +1922,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1934,7 +1934,7 @@
     {
       "events": [],
       "key": "plus-carousel-slide",
-      "lastModified": "2026-01-06T19:45:12.700Z",
+      "lastModified": "2026-02-01T16:48:04.744Z",
       "methods": [],
       "properties": [
         {
@@ -1954,7 +1954,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -1964,7 +1964,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -1982,7 +1982,7 @@
     {
       "events": [],
       "key": "plus-carousel-slides",
-      "lastModified": "2026-01-06T19:45:12.700Z",
+      "lastModified": "2026-02-01T16:48:04.744Z",
       "methods": [],
       "properties": [
         {
@@ -1993,7 +1993,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -2003,7 +2003,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -2021,7 +2021,7 @@
     {
       "events": [],
       "key": "plus-center",
-      "lastModified": "2026-01-06T19:45:12.702Z",
+      "lastModified": "2026-02-01T16:48:04.745Z",
       "methods": [],
       "properties": [
         {
@@ -2041,7 +2041,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -2051,7 +2051,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -2079,7 +2079,7 @@
         }
       ],
       "key": "plus-click-outside",
-      "lastModified": "2026-01-06T19:45:12.702Z",
+      "lastModified": "2026-02-01T16:48:04.746Z",
       "methods": [],
       "properties": [
         {
@@ -2117,7 +2117,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -2127,7 +2127,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -2155,7 +2155,7 @@
         }
       ],
       "key": "plus-counter",
-      "lastModified": "2026-01-06T19:45:12.703Z",
+      "lastModified": "2026-02-01T16:48:04.746Z",
       "methods": [
         {
           "async": false,
@@ -2288,16 +2288,6 @@
           "description": "Target value."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -2305,7 +2295,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -2370,7 +2370,7 @@
         }
       ],
       "key": "plus-cropper",
-      "lastModified": "2026-01-06T19:45:12.704Z",
+      "lastModified": "2026-02-01T16:48:04.746Z",
       "methods": [
         {
           "async": false,
@@ -2708,16 +2708,6 @@
           "description": "Gets/Sets data."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "view",
           "initializer": "'cover'",
           "name": "view",
@@ -2791,7 +2781,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [
@@ -2943,7 +2943,7 @@
         }
       ],
       "key": "plus-dialog",
-      "lastModified": "2026-01-06T19:45:12.707Z",
+      "lastModified": "2026-02-01T16:48:04.748Z",
       "methods": [
         {
           "async": false,
@@ -3109,16 +3109,6 @@
           "description": "Deactivate the dialog's backdrop to show or not."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3126,7 +3116,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3164,7 +3164,7 @@
     {
       "events": [],
       "key": "plus-dialog-body",
-      "lastModified": "2026-01-06T19:45:12.704Z",
+      "lastModified": "2026-02-01T16:48:04.747Z",
       "methods": [],
       "properties": [
         {
@@ -3177,16 +3177,6 @@
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3194,7 +3184,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3212,7 +3212,7 @@
     {
       "events": [],
       "key": "plus-dialog-content",
-      "lastModified": "2026-01-06T19:45:12.704Z",
+      "lastModified": "2026-02-01T16:48:04.747Z",
       "methods": [],
       "properties": [
         {
@@ -3225,16 +3225,6 @@
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3242,7 +3232,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3260,7 +3260,7 @@
     {
       "events": [],
       "key": "plus-dialog-footer",
-      "lastModified": "2026-01-06T19:45:12.705Z",
+      "lastModified": "2026-02-01T16:48:04.747Z",
       "methods": [],
       "properties": [
         {
@@ -3271,7 +3271,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -3281,7 +3281,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3299,7 +3299,7 @@
     {
       "events": [],
       "key": "plus-dialog-header",
-      "lastModified": "2026-01-06T19:45:12.705Z",
+      "lastModified": "2026-02-01T16:48:04.748Z",
       "methods": [],
       "properties": [
         {
@@ -3310,7 +3310,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -3320,7 +3320,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3338,7 +3338,7 @@
     {
       "events": [],
       "key": "plus-dialog-toggler",
-      "lastModified": "2026-01-06T19:45:12.706Z",
+      "lastModified": "2026-02-01T16:48:04.748Z",
       "methods": [],
       "properties": [
         {
@@ -3358,7 +3358,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -3368,7 +3368,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3394,7 +3394,7 @@
     {
       "events": [],
       "key": "plus-divider",
-      "lastModified": "2026-01-06T19:45:12.708Z",
+      "lastModified": "2026-02-06T19:47:32.946Z",
       "methods": [],
       "properties": [
         {
@@ -3460,16 +3460,6 @@
           "description": "Specifies the style of the border."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3477,7 +3467,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [
@@ -3562,7 +3562,7 @@
         }
       ],
       "key": "plus-drawer",
-      "lastModified": "2026-01-06T19:45:12.709Z",
+      "lastModified": "2026-02-01T16:48:04.750Z",
       "methods": [
         {
           "async": false,
@@ -3711,16 +3711,6 @@
           "description": "Determine the width of the drawer."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3728,7 +3718,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3747,7 +3747,7 @@
     {
       "events": [],
       "key": "plus-drawer-toggler",
-      "lastModified": "2026-01-06T19:45:12.709Z",
+      "lastModified": "2026-02-01T16:48:04.749Z",
       "methods": [],
       "properties": [
         {
@@ -3767,7 +3767,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -3777,7 +3777,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3803,7 +3803,7 @@
     {
       "events": [],
       "key": "plus-faker",
-      "lastModified": "2026-01-06T19:45:12.710Z",
+      "lastModified": "2026-02-01T16:48:04.750Z",
       "methods": [],
       "properties": [
         {
@@ -3845,16 +3845,6 @@
           "description": "Keeps the result constant."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3862,7 +3852,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -3883,7 +3883,7 @@
     {
       "events": [],
       "key": "plus-format-bytes",
-      "lastModified": "2026-01-06T19:45:12.711Z",
+      "lastModified": "2026-02-01T16:48:04.751Z",
       "methods": [],
       "properties": [
         {
@@ -3963,16 +3963,6 @@
           "description": "The bytes value to convert."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -3980,7 +3970,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4002,7 +4002,7 @@
     {
       "events": [],
       "key": "plus-icon",
-      "lastModified": "2026-01-06T19:45:12.712Z",
+      "lastModified": "2026-02-06T19:47:32.946Z",
       "methods": [],
       "properties": [
         {
@@ -4073,16 +4073,6 @@
           "description": "Specifies the size."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -4090,7 +4080,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4132,7 +4132,7 @@
         }
       ],
       "key": "plus-intersection",
-      "lastModified": "2026-01-06T19:45:12.712Z",
+      "lastModified": "2026-02-01T16:48:04.751Z",
       "methods": [],
       "properties": [
         {
@@ -4182,16 +4182,6 @@
           "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -4199,7 +4189,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4220,7 +4220,7 @@
     {
       "events": [],
       "key": "plus-prism",
-      "lastModified": "2026-01-06T19:45:12.712Z",
+      "lastModified": "2026-02-01T16:48:04.752Z",
       "methods": [],
       "properties": [
         {
@@ -4242,16 +4242,6 @@
           "required": false,
           "type": "string",
           "description": "The theme to apply for syntax highlighting."
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<PlusBreakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         },
         {
           "attribute": "plugins",
@@ -4283,6 +4273,16 @@
           "description": "Whether to synchronize updates with DOM changes."
         },
         {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
           "attribute": "variant",
           "name": "variant",
           "readonly": false,
@@ -4290,7 +4290,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4336,7 +4336,7 @@
     {
       "events": [],
       "key": "plus-progress-bar",
-      "lastModified": "2026-01-06T19:45:12.713Z",
+      "lastModified": "2026-02-06T19:47:32.947Z",
       "methods": [],
       "properties": [
         {
@@ -4388,16 +4388,6 @@
           "description": "Specifies the minimum value of the progress."
         },
         {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<PlusBreakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "sync",
           "name": "sync",
           "readonly": false,
@@ -4405,16 +4395,6 @@
           "required": false,
           "type": "boolean",
           "description": "Eliminates delays in updating value."
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         },
         {
           "attribute": "value",
@@ -4425,6 +4405,26 @@
           "required": false,
           "type": "number",
           "description": "Specifies the progress of the bar by a number between `min` and `max`."
+        },
+        {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [
@@ -4462,7 +4462,7 @@
     {
       "events": [],
       "key": "plus-progress-bar-stack",
-      "lastModified": "2026-01-06T19:45:12.713Z",
+      "lastModified": "2026-02-01T16:48:04.752Z",
       "methods": [],
       "properties": [
         {
@@ -4473,7 +4473,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -4483,7 +4483,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4501,7 +4501,7 @@
     {
       "events": [],
       "key": "plus-relative-time",
-      "lastModified": "2026-01-06T19:45:12.714Z",
+      "lastModified": "2026-02-01T16:48:04.753Z",
       "methods": [],
       "properties": [
         {
@@ -4544,16 +4544,6 @@
           "description": "The date and time to be displayed in a relative format."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -4561,7 +4551,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4588,7 +4588,7 @@
         }
       ],
       "key": "plus-scroll-detector",
-      "lastModified": "2026-01-06T19:45:12.715Z",
+      "lastModified": "2026-02-01T16:48:04.753Z",
       "methods": [],
       "properties": [
         {
@@ -4611,16 +4611,6 @@
           "description": "Specifies the reference of the scroll."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "vertical",
           "name": "vertical",
           "readonly": false,
@@ -4637,7 +4627,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -4689,7 +4689,7 @@
         }
       ],
       "key": "plus-signature",
-      "lastModified": "2026-01-06T19:45:12.717Z",
+      "lastModified": "2026-02-06T19:47:32.947Z",
       "methods": [
         {
           "async": false,
@@ -4958,16 +4958,6 @@
           "description": "Specifies whether undo can be performed or not."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -4975,7 +4965,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5011,7 +5011,7 @@
     {
       "events": [],
       "key": "plus-snippet",
-      "lastModified": "2026-01-06T19:45:12.717Z",
+      "lastModified": "2026-02-06T19:47:32.948Z",
       "methods": [],
       "properties": [
         {
@@ -5034,16 +5034,6 @@
           "description": "Specifies the symbol."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -5051,7 +5041,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [
@@ -5101,7 +5101,7 @@
     {
       "events": [],
       "key": "plus-spacer",
-      "lastModified": "2026-01-06T19:45:12.717Z",
+      "lastModified": "2026-02-01T16:48:04.754Z",
       "methods": [],
       "properties": [
         {
@@ -5122,7 +5122,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -5132,7 +5132,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5145,7 +5145,7 @@
     {
       "events": [],
       "key": "plus-spinner",
-      "lastModified": "2026-01-06T19:45:12.718Z",
+      "lastModified": "2026-02-06T19:47:32.948Z",
       "methods": [],
       "properties": [
         {
@@ -5157,16 +5157,6 @@
           "type": "OverridableValue<string & {}, PlusColorOverrides>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
-        },
-        {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<PlusBreakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         },
         {
           "attribute": "size",
@@ -5191,6 +5181,16 @@
           "description": "Specifies which variant of the spinner to use."
         },
         {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
           "attribute": "variant",
           "name": "variant",
           "readonly": false,
@@ -5198,7 +5198,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5217,7 +5217,7 @@
     {
       "events": [],
       "key": "plus-stack",
-      "lastModified": "2026-01-06T19:45:12.718Z",
+      "lastModified": "2026-02-01T16:48:04.755Z",
       "methods": [],
       "properties": [
         {
@@ -5259,16 +5259,6 @@
           "description": "Whether to reverse the order of items."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "vertical",
           "name": "vertical",
           "readonly": false,
@@ -5295,7 +5285,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5324,7 +5324,7 @@
         }
       ],
       "key": "plus-sticky",
-      "lastModified": "2026-01-06T19:45:12.719Z",
+      "lastModified": "2026-02-01T16:48:04.756Z",
       "methods": [],
       "properties": [
         {
@@ -5337,16 +5337,6 @@
           "description": "Disables the element functionality."
         },
         {
-          "attribute": "overrides",
-          "name": "overrides",
-          "readonly": false,
-          "reflects": false,
-          "required": false,
-          "type": "OverridesConfig<PlusBreakpoint>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "top",
           "initializer": "0",
           "name": "top",
@@ -5355,16 +5345,6 @@
           "required": false,
           "type": "string | number",
           "description": "Specifies the space from top."
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         },
         {
           "attribute": "watcher",
@@ -5383,6 +5363,26 @@
           "required": false,
           "type": "number",
           "description": "Specifies the z-index."
+        },
+        {
+          "attribute": "overrides",
+          "name": "overrides",
+          "readonly": false,
+          "reflects": false,
+          "required": false,
+          "type": "OverridesConfig<PlusBreakpoint>",
+          "typeReference": "@htmlplus/element",
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5423,7 +5423,7 @@
         }
       ],
       "key": "plus-switch",
-      "lastModified": "2026-01-06T19:45:12.719Z",
+      "lastModified": "2026-02-01T16:48:04.756Z",
       "methods": [],
       "properties": [
         {
@@ -5453,7 +5453,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -5463,7 +5463,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5488,7 +5488,7 @@
         }
       ],
       "key": "plus-tabs",
-      "lastModified": "2026-01-06T19:45:12.722Z",
+      "lastModified": "2026-02-01T16:48:04.758Z",
       "methods": [],
       "properties": [
         {
@@ -5499,16 +5499,6 @@
           "required": false,
           "type": "string",
           "description": "Provides your own value."
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         },
         {
           "attribute": "vertical",
@@ -5527,7 +5517,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5553,7 +5553,7 @@
     {
       "events": [],
       "key": "plus-tabs-bar",
-      "lastModified": "2026-01-06T19:45:12.720Z",
+      "lastModified": "2026-02-01T16:48:04.756Z",
       "methods": [],
       "properties": [
         {
@@ -5585,16 +5585,6 @@
           "description": "Reverses the arrangement of the tabs."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "overrides",
           "name": "overrides",
           "readonly": false,
@@ -5602,7 +5592,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5620,7 +5620,7 @@
     {
       "events": [],
       "key": "plus-tabs-panel",
-      "lastModified": "2026-01-06T19:45:12.720Z",
+      "lastModified": "2026-02-01T16:48:04.757Z",
       "methods": [],
       "properties": [
         {
@@ -5631,16 +5631,6 @@
           "required": false,
           "type": "string",
           "description": "Provides your own value."
-        },
-        {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
         },
         {
           "attribute": "active",
@@ -5659,7 +5649,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5677,7 +5677,7 @@
     {
       "events": [],
       "key": "plus-tabs-panels",
-      "lastModified": "2026-01-06T19:45:12.721Z",
+      "lastModified": "2026-02-01T16:48:04.757Z",
       "methods": [],
       "properties": [
         {
@@ -5688,7 +5688,7 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "attribute": "variant",
@@ -5698,7 +5698,7 @@
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5716,7 +5716,7 @@
     {
       "events": [],
       "key": "plus-tabs-tab",
-      "lastModified": "2026-01-06T19:45:12.721Z",
+      "lastModified": "2026-02-01T16:48:04.758Z",
       "methods": [],
       "properties": [
         {
@@ -5738,16 +5738,6 @@
           "description": "Provides your own value."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "active",
           "name": "active",
           "readonly": true,
@@ -5764,7 +5754,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],
@@ -5782,7 +5782,7 @@
     {
       "events": [],
       "key": "plus-tooltip",
-      "lastModified": "2026-01-06T19:45:12.722Z",
+      "lastModified": "2026-02-01T16:48:04.758Z",
       "methods": [
         {
           "async": false,
@@ -5886,16 +5886,6 @@
           "description": "Specifies the activation method."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
-          "readonly": false,
-          "reflects": true,
-          "required": false,
-          "type": "OverridableValue<never>",
-          "typeReference": "@htmlplus/element",
-          "description": "TODO"
-        },
-        {
           "attribute": "z",
           "initializer": "'auto'",
           "name": "z",
@@ -5913,7 +5903,17 @@
           "required": false,
           "type": "OverridesConfig<PlusBreakpoint>",
           "typeReference": "@htmlplus/element",
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "attribute": "variant",
+          "name": "variant",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "OverridableValue<never>",
+          "typeReference": "@htmlplus/element",
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "styles": [],

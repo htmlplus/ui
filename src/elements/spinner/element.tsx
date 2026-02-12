@@ -30,13 +30,6 @@ export class PlusSpinner extends PlusCore {
 	color?: OverridableValue<string & {}, PlusColorOverrides>;
 
 	/**
-	 * TODO
-	 */
-	@Property()
-	@Overrides()
-	overrides?: OverridesConfig<PlusBreakpoint>;
-
-	/**
 	 * Specifies the size of the spinner.
 	 */
 	@Property({ reflect: true })
@@ -49,7 +42,14 @@ export class PlusSpinner extends PlusCore {
 	type?: PlusSpinnerType = 'default';
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
 	 */
 	@Property({ reflect: true })
 	@Variant()
@@ -58,7 +58,9 @@ export class PlusSpinner extends PlusCore {
 	@Style()
 	get style() {
 		return {
-			color: toCSSColor(this.color)
+			':host': {
+				color: toCSSColor(this.color)
+			}
 		};
 	}
 

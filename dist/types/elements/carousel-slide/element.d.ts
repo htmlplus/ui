@@ -18,11 +18,11 @@ export declare class PlusCarouselSlide extends CarouselChild {
      */
     clickable?: boolean | 'jump';
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     events: EmblaEventType[];
@@ -31,8 +31,19 @@ export declare class PlusCarouselSlide extends CarouselChild {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusCarouselSlideAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusCarouselSlideAttributesMapper = {
+  'clickable': 'clickable';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusCarouselSlideOverridableKeys = 'variant';
+export interface PlusCarouselSlideDisables {}
+export interface PlusCarouselSlideOverrides {}
+export type PlusCarouselSlideAttributes = Filter<PlusCarouselSlideAttributesOverridden, PlusCarouselSlideDisables, PlusCarouselSlideAttributesMapper>;
+export type PlusCarouselSlideAttributesOverridden = Override<PlusCarouselSlideAttributesBase, PlusCarouselSlideOverrides, PlusCarouselSlideOverridableKeys, PlusCarouselSlideAttributesMapper>;
+export type PlusCarouselSlideAttributesBase = {
   /**
   * Enables slide navigation when the slide is clicked.
   *
@@ -43,23 +54,23 @@ export interface PlusCarouselSlideAttributesBase {
   */
   "clickable"?: boolean | 'jump';
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselSlideProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusCarouselSlideVariantOverrides>;
-}
-export interface PlusCarouselSlideAttributesDisables {}
-export type PlusCarouselSlideAttributes = Filter<PlusCarouselSlideAttributesBase, PlusCarouselSlideAttributesDisables>;
-export interface PlusCarouselSlideEventsBase {}
-export interface PlusCarouselSlideEventsDisables {}
-export type PlusCarouselSlideEvents = Filter<PlusCarouselSlideEventsBase, PlusCarouselSlideEventsDisables>;
-export interface PlusCarouselSlideMethodsBase {}
-export interface PlusCarouselSlideMethodsDisables {}
-export type PlusCarouselSlideMethods = Filter<PlusCarouselSlideMethodsBase, PlusCarouselSlideMethodsDisables>;
-export interface PlusCarouselSlidePropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusCarouselSlideEvents = Filter<PlusCarouselSlideEventsBase, PlusCarouselSlideDisables>;
+export type PlusCarouselSlideEventsBase = {};
+export type PlusCarouselSlideEventsJSX = Filter<PlusCarouselSlideEventsBaseJSX, PlusCarouselSlideDisables, {}>;
+export type PlusCarouselSlideEventsBaseJSX = {};
+export type PlusCarouselSlideMethods = Filter<PlusCarouselSlideMethodsBase, PlusCarouselSlideDisables>;
+export type PlusCarouselSlideMethodsBase = {};
+export type PlusCarouselSlideProperties = Filter<PlusCarouselSlidePropertiesOverridden, PlusCarouselSlideDisables>;
+export type PlusCarouselSlidePropertiesOverridden = Override<PlusCarouselSlidePropertiesBase, PlusCarouselSlideOverrides, PlusCarouselSlideOverridableKeys>;
+export type PlusCarouselSlidePropertiesBase = {
   /**
   * Enables slide navigation when the slide is clicked.
   *
@@ -70,17 +81,28 @@ export interface PlusCarouselSlidePropertiesBase {
   */
   clickable?: boolean | 'jump';
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselSlideProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusCarouselSlideVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-carousel-slide': {
+      properties: PlusCarouselSlidePropertiesOverridden;
+    };
+  }
 }
-export interface PlusCarouselSlidePropertiesDisables {}
-export type PlusCarouselSlideProperties = Filter<PlusCarouselSlidePropertiesBase, PlusCarouselSlidePropertiesDisables>;
-export interface PlusCarouselSlideJSX extends PlusCarouselSlideEvents, PlusCarouselSlideProperties {}
+export type PlusCarouselSlideElement = globalThis.HTMLPlusCarouselSlideElement;
+export type PlusCarouselSlideJSX = PlusCarouselSlideAttributes & PlusCarouselSlideEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-carousel-slide": PlusCarouselSlideJSX;
+  }
+}
 declare global {
   interface HTMLPlusCarouselSlideElement extends HTMLElement, PlusCarouselSlideMethods, PlusCarouselSlideProperties {}
   var HTMLPlusCarouselSlideElement: {
@@ -91,45 +113,10 @@ declare global {
     "plus-carousel-slide": HTMLPlusCarouselSlideElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-carousel-slide": PlusCarouselSlideAttributes & PlusCarouselSlideEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-slide": PlusCarouselSlideAttributes & PlusCarouselSlideEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselSlideElement>, HTMLPlusCarouselSlideElement>, keyof (PlusCarouselSlideAttributes & PlusCarouselSlideEvents)>;
+      "plus-carousel-slide": PlusCarouselSlideJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselSlideElement>, HTMLPlusCarouselSlideElement>, keyof PlusCarouselSlideJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-slide": PlusCarouselSlideAttributes & PlusCarouselSlideEvents & Omit<HTMLAttributes<HTMLPlusCarouselSlideElement>, keyof (PlusCarouselSlideAttributes & PlusCarouselSlideEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-slide": PlusCarouselSlideAttributes & PlusCarouselSlideEvents & Omit<HTMLAttributes<HTMLPlusCarouselSlideElement>, keyof (PlusCarouselSlideAttributes & PlusCarouselSlideEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-slide": PlusCarouselSlideAttributes & PlusCarouselSlideEvents & Omit<HTMLAttributes<HTMLPlusCarouselSlideElement>, keyof (PlusCarouselSlideAttributes & PlusCarouselSlideEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-slide": PlusCarouselSlideAttributes & PlusCarouselSlideEvents & Omit<HTMLAttributes<HTMLPlusCarouselSlideElement>, keyof (PlusCarouselSlideAttributes & PlusCarouselSlideEvents)>;
-    }
-  }
-}
-export type PlusCarouselSlideElement = globalThis.HTMLPlusCarouselSlideElement;
-export interface PlusCarouselSlideVariantOverrides {}

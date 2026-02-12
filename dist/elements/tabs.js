@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, f as Provider, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, f as Provider, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -36,13 +36,6 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
-  }),
-  Variant()
-], PlusTabs.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    reflect: true,
     type: 4
   })
 ], PlusTabs.prototype, "vertical", 2);
@@ -52,6 +45,13 @@ __decorateClass([
   }),
   Overrides()
 ], PlusTabs.prototype, "overrides", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], PlusTabs.prototype, "variant", 2);
 __decorateClass([
   Event({
     cancelable: true

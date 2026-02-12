@@ -19,8 +19,10 @@ let PlusProgressBar = class extends PlusCore {
   }
   get style() {
     return {
-      "min-width": this.stacked ? this.percentage : null,
-      "--plus-progress-bar-indicator-background-color": toCSSColor(this.color)
+      ":host": {
+        "min-width": this.stacked ? this.percentage : null,
+        "--plus-progress-bar-indicator-background-color": toCSSColor(this.color)
+      }
     };
   }
   get percentage() {
@@ -84,6 +86,17 @@ __decorateClass([
 ], PlusProgressBar.prototype, "min", 2);
 __decorateClass([
   Property({
+    reflect: true,
+    type: 4
+  })
+], PlusProgressBar.prototype, "sync", 2);
+__decorateClass([
+  Property({
+    type: 128
+  })
+], PlusProgressBar.prototype, "value", 2);
+__decorateClass([
+  Property({
     type: 0
   }),
   Overrides()
@@ -91,21 +104,10 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
-  })
-], PlusProgressBar.prototype, "sync", 2);
-__decorateClass([
-  Property({
-    reflect: true,
     type: 0
   }),
   Variant()
 ], PlusProgressBar.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 128
-  })
-], PlusProgressBar.prototype, "value", 2);
 __decorateClass([
   Style()
 ], PlusProgressBar.prototype, "style", 1);

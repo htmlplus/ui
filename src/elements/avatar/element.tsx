@@ -46,18 +46,18 @@ export class PlusAvatar extends PlusCore {
 	size?: OverridableValue<PlusAvatarSize>;
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	get placements() {
 		const offset = this.shape === 'circle' ? '14.64466%' : '0';
@@ -189,8 +189,10 @@ export class PlusAvatar extends PlusCore {
 	@Style()
 	get style() {
 		return {
-			'--plus-avatar-color': toCSSColor(this.color),
-			'--plus-avatar-size': toCSSUnit(this.size)
+			':host': {
+				'--plus-avatar-color': toCSSColor(this.color),
+				'--plus-avatar-size': toCSSUnit(this.size)
+			}
 		};
 	}
 

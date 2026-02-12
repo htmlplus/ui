@@ -40,24 +40,24 @@ export class PlusScrollDetector extends PlusCore {
 	reference?: Element | 'document' | (string & {}) = 'document';
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
 	 * Indicates which scroll (horizontal or vertical) is to be used as the source.
 	 */
 	@Property()
 	vertical?: boolean;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Fires when the scroll starts changing.

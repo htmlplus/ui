@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, S as State, C as Consumer, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:none}:host([active]){display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -33,13 +33,6 @@ __decorateClass([
   Property({
     reflect: true,
     type: 0
-  }),
-  Variant()
-], PlusTabsPanel.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    reflect: true,
-    type: 0
   })
 ], PlusTabsPanel.prototype, "active", 1);
 __decorateClass([
@@ -48,6 +41,13 @@ __decorateClass([
   }),
   Overrides()
 ], PlusTabsPanel.prototype, "overrides", 2);
+__decorateClass([
+  Property({
+    reflect: true,
+    type: 0
+  }),
+  Variant()
+], PlusTabsPanel.prototype, "variant", 2);
 __decorateClass([
   State(),
   Consumer("tabs")

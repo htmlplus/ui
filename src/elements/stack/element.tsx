@@ -47,13 +47,6 @@ export class PlusStack extends PlusCore {
 	reverse?: boolean;
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
 	 * Whether the stack is vertical.
 	 */
 	@Property()
@@ -66,11 +59,18 @@ export class PlusStack extends PlusCore {
 	wrap?: boolean | 'reverse' = false;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	@Style()
 	get style() {
@@ -79,23 +79,25 @@ export class PlusStack extends PlusCore {
 		if (this.reverse) direction += '-reverse';
 
 		return {
-			'align-items': this.items?.replace(/start|end/, 'flex-$&'),
-			display: 'flex',
-			'flex-direction': direction,
-			gap: toCSSUnit(this.gap),
-			'justify-content': this.justify
-				?.replace(/start|end/, 'flex-$&')
-				?.replace(/between|around|evenly/, 'space-$&'),
-			'flex-wrap': (() => {
-				switch (this.wrap) {
-					case false:
-						return 'nowrap';
-					case true:
-						return 'wrap';
-					case 'reverse':
-						return 'wrap-reverse';
-				}
-			})()
+			':host': {
+				'align-items': this.items?.replace(/start|end/, 'flex-$&'),
+				display: 'flex',
+				'flex-direction': direction,
+				gap: toCSSUnit(this.gap),
+				'justify-content': this.justify
+					?.replace(/start|end/, 'flex-$&')
+					?.replace(/between|around|evenly/, 'space-$&'),
+				'flex-wrap': (() => {
+					switch (this.wrap) {
+						case false:
+							return 'nowrap';
+						case true:
+							return 'wrap';
+						case 'reverse':
+							return 'wrap-reverse';
+					}
+				})()
+			}
 		};
 	}
 

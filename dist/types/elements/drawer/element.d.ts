@@ -65,13 +65,13 @@ export declare class PlusDrawer extends PlusCore {
      */
     size?: number | string;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * When the drawer is going to hide
      */
@@ -127,8 +127,29 @@ export declare class PlusDrawer extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusDrawerAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusDrawerAttributesMapper = {
+  'animation': 'animation';
+  'backdrop': 'backdrop';
+  'connector': 'connector';
+  'floating': 'floating';
+  'mini': 'mini';
+  'miniSize': 'mini-size';
+  'open': 'open';
+  'persistent': 'persistent';
+  'placement': 'placement';
+  'flexible': 'flexible';
+  'size': 'size';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusDrawerOverridableKeys = 'variant';
+export interface PlusDrawerDisables {}
+export interface PlusDrawerOverrides {}
+export type PlusDrawerAttributes = Filter<PlusDrawerAttributesOverridden, PlusDrawerDisables, PlusDrawerAttributesMapper>;
+export type PlusDrawerAttributesOverridden = Override<PlusDrawerAttributesBase, PlusDrawerOverrides, PlusDrawerOverridableKeys, PlusDrawerAttributesMapper>;
+export type PlusDrawerAttributesBase = {
   /**
   * TODO
   */
@@ -182,17 +203,40 @@ export interface PlusDrawerAttributesBase {
   */
   "size"?: number | string;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusDrawerVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerProperties, "overrides">>;
-}
-export interface PlusDrawerAttributesDisables {}
-export type PlusDrawerAttributes = Filter<PlusDrawerAttributesBase, PlusDrawerAttributesDisables>;
-export interface PlusDrawerEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusDrawerEvents = Filter<PlusDrawerEventsBase, PlusDrawerDisables>;
+export type PlusDrawerEventsBase = {
+  /**
+  * When the drawer is going to hide
+  */
+  plusClose?: (event: CustomEvent<void>) => void;
+  /**
+  * When the drawer is completely closed and its animation is completed.
+  */
+  plusClosed?: (event: CustomEvent<void>) => void;
+  /**
+  * When the drawer is going to show this event triggers
+  */
+  plusOpen?: (event: CustomEvent<void>) => void;
+  /**
+  * When the drawer is completely shown and its animation is completed.
+  */
+  plusOpened?: (event: CustomEvent<void>) => void;
+};
+export type PlusDrawerEventsJSX = Filter<PlusDrawerEventsBaseJSX, PlusDrawerDisables, {
+  plusClose: 'onPlusClose';
+  plusClosed: 'onPlusClosed';
+  plusOpen: 'onPlusOpen';
+  plusOpened: 'onPlusOpened';
+}>;
+export type PlusDrawerEventsBaseJSX = {
   /**
   * When the drawer is going to hide
   */
@@ -209,10 +253,9 @@ export interface PlusDrawerEventsBase {
   * When the drawer is completely shown and its animation is completed.
   */
   onPlusOpened?: (event: CustomEvent<void>) => void;
-}
-export interface PlusDrawerEventsDisables {}
-export type PlusDrawerEvents = Filter<PlusDrawerEventsBase, PlusDrawerEventsDisables>;
-export interface PlusDrawerMethodsBase {
+};
+export type PlusDrawerMethods = Filter<PlusDrawerMethodsBase, PlusDrawerDisables>;
+export type PlusDrawerMethodsBase = {
   /**
   * Hides the element.
   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
@@ -231,10 +274,10 @@ export interface PlusDrawerMethodsBase {
   * operation was successful or `false` if it was canceled.
   */
   toggle(): Promise<boolean>;
-}
-export interface PlusDrawerMethodsDisables {}
-export type PlusDrawerMethods = Filter<PlusDrawerMethodsBase, PlusDrawerMethodsDisables>;
-export interface PlusDrawerPropertiesBase {
+};
+export type PlusDrawerProperties = Filter<PlusDrawerPropertiesOverridden, PlusDrawerDisables>;
+export type PlusDrawerPropertiesOverridden = Override<PlusDrawerPropertiesBase, PlusDrawerOverrides, PlusDrawerOverridableKeys>;
+export type PlusDrawerPropertiesBase = {
   /**
   * TODO
   */
@@ -288,17 +331,28 @@ export interface PlusDrawerPropertiesBase {
   */
   size?: number | string;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusDrawerVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-drawer': {
+      properties: PlusDrawerPropertiesOverridden;
+    };
+  }
 }
-export interface PlusDrawerPropertiesDisables {}
-export type PlusDrawerProperties = Filter<PlusDrawerPropertiesBase, PlusDrawerPropertiesDisables>;
-export interface PlusDrawerJSX extends PlusDrawerEvents, PlusDrawerProperties {}
+export type PlusDrawerElement = globalThis.HTMLPlusDrawerElement;
+export type PlusDrawerJSX = PlusDrawerAttributes & PlusDrawerEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-drawer": PlusDrawerJSX;
+  }
+}
 declare global {
   interface HTMLPlusDrawerElement extends HTMLElement, PlusDrawerMethods, PlusDrawerProperties {}
   var HTMLPlusDrawerElement: {
@@ -309,45 +363,10 @@ declare global {
     "plus-drawer": HTMLPlusDrawerElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDrawerElement>, HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
+      "plus-drawer": PlusDrawerJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDrawerElement>, HTMLPlusDrawerElement>, keyof PlusDrawerJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-drawer": PlusDrawerAttributes & PlusDrawerEvents & Omit<HTMLAttributes<HTMLPlusDrawerElement>, keyof (PlusDrawerAttributes & PlusDrawerEvents)>;
-    }
-  }
-}
-export type PlusDrawerElement = globalThis.HTMLPlusDrawerElement;
-export interface PlusDrawerVariantOverrides {}

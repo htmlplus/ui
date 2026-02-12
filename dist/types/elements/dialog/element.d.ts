@@ -75,13 +75,13 @@ export declare class PlusDialog extends PlusCore {
      */
     transparent?: boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * When the dialog is going to hide
      */
@@ -135,8 +135,31 @@ export declare class PlusDialog extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusDialogAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusDialogAttributesMapper = {
+  'animation': 'animation';
+  'connector': 'connector';
+  'fullHeight': 'full-height';
+  'fullWidth': 'full-width';
+  'fullscreen': 'fullscreen';
+  'keyboard': 'keyboard';
+  'open': 'open';
+  'persistent': 'persistent';
+  'placement': 'placement';
+  'scrollable': 'scrollable';
+  'size': 'size';
+  'sticky': 'sticky';
+  'transparent': 'transparent';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusDialogOverridableKeys = 'variant';
+export interface PlusDialogDisables {}
+export interface PlusDialogOverrides {}
+export type PlusDialogAttributes = Filter<PlusDialogAttributesOverridden, PlusDialogDisables, PlusDialogAttributesMapper>;
+export type PlusDialogAttributesOverridden = Override<PlusDialogAttributesBase, PlusDialogOverrides, PlusDialogOverridableKeys, PlusDialogAttributesMapper>;
+export type PlusDialogAttributesBase = {
   /**
   * TODO
   */
@@ -194,17 +217,40 @@ export interface PlusDialogAttributesBase {
   */
   "transparent"?: boolean;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusDialogVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogProperties, "overrides">>;
-}
-export interface PlusDialogAttributesDisables {}
-export type PlusDialogAttributes = Filter<PlusDialogAttributesBase, PlusDialogAttributesDisables>;
-export interface PlusDialogEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusDialogEvents = Filter<PlusDialogEventsBase, PlusDialogDisables>;
+export type PlusDialogEventsBase = {
+  /**
+  * When the dialog is going to hide
+  */
+  plusClose?: (event: CustomEvent<void>) => void;
+  /**
+  * When the dialog is completely closed and its animation is completed.
+  */
+  plusClosed?: (event: CustomEvent<void>) => void;
+  /**
+  * When the dialog is going to show this event triggers
+  */
+  plusOpen?: (event: CustomEvent<void>) => void;
+  /**
+  * When the dialog is completely shown and its animation is completed.
+  */
+  plusOpened?: (event: CustomEvent<void>) => void;
+};
+export type PlusDialogEventsJSX = Filter<PlusDialogEventsBaseJSX, PlusDialogDisables, {
+  plusClose: 'onPlusClose';
+  plusClosed: 'onPlusClosed';
+  plusOpen: 'onPlusOpen';
+  plusOpened: 'onPlusOpened';
+}>;
+export type PlusDialogEventsBaseJSX = {
   /**
   * When the dialog is going to hide
   */
@@ -221,10 +267,9 @@ export interface PlusDialogEventsBase {
   * When the dialog is completely shown and its animation is completed.
   */
   onPlusOpened?: (event: CustomEvent<void>) => void;
-}
-export interface PlusDialogEventsDisables {}
-export type PlusDialogEvents = Filter<PlusDialogEventsBase, PlusDialogEventsDisables>;
-export interface PlusDialogMethodsBase {
+};
+export type PlusDialogMethods = Filter<PlusDialogMethodsBase, PlusDialogDisables>;
+export type PlusDialogMethodsBase = {
   /**
   * Hides the element.
   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
@@ -243,10 +288,10 @@ export interface PlusDialogMethodsBase {
   * operation was successful or `false` if it was canceled.
   */
   toggle(): Promise<boolean>;
-}
-export interface PlusDialogMethodsDisables {}
-export type PlusDialogMethods = Filter<PlusDialogMethodsBase, PlusDialogMethodsDisables>;
-export interface PlusDialogPropertiesBase {
+};
+export type PlusDialogProperties = Filter<PlusDialogPropertiesOverridden, PlusDialogDisables>;
+export type PlusDialogPropertiesOverridden = Override<PlusDialogPropertiesBase, PlusDialogOverrides, PlusDialogOverridableKeys>;
+export type PlusDialogPropertiesBase = {
   /**
   * TODO
   */
@@ -304,17 +349,28 @@ export interface PlusDialogPropertiesBase {
   */
   transparent?: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusDialogVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-dialog': {
+      properties: PlusDialogPropertiesOverridden;
+    };
+  }
 }
-export interface PlusDialogPropertiesDisables {}
-export type PlusDialogProperties = Filter<PlusDialogPropertiesBase, PlusDialogPropertiesDisables>;
-export interface PlusDialogJSX extends PlusDialogEvents, PlusDialogProperties {}
+export type PlusDialogElement = globalThis.HTMLPlusDialogElement;
+export type PlusDialogJSX = PlusDialogAttributes & PlusDialogEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-dialog": PlusDialogJSX;
+  }
+}
 declare global {
   interface HTMLPlusDialogElement extends HTMLElement, PlusDialogMethods, PlusDialogProperties {}
   var HTMLPlusDialogElement: {
@@ -325,45 +381,10 @@ declare global {
     "plus-dialog": HTMLPlusDialogElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-dialog": PlusDialogAttributes & PlusDialogEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogElement>, HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
+      "plus-dialog": PlusDialogJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogElement>, HTMLPlusDialogElement>, keyof PlusDialogJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog": PlusDialogAttributes & PlusDialogEvents & Omit<HTMLAttributes<HTMLPlusDialogElement>, keyof (PlusDialogAttributes & PlusDialogEvents)>;
-    }
-  }
-}
-export type PlusDialogElement = globalThis.HTMLPlusDialogElement;
-export interface PlusDialogVariantOverrides {}

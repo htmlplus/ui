@@ -35,14 +35,14 @@
           "description": "The summary text displayed on the header."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -69,14 +69,14 @@
           "description": "Specifies that only one accordion can be open."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -213,14 +213,14 @@
           "description": "Starts the animation."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -267,14 +267,14 @@
           "description": "Adjust how often to trickle/increment, in ms."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -314,14 +314,14 @@
           "description": "Specifies the size of the element."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -360,14 +360,14 @@
           "description": "Specifies whether avatars should be displayed compressed or not."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -414,14 +414,14 @@
           "description": "Specifies the separator between items."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -499,12 +499,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -560,14 +560,14 @@
           "description": "Use tile property to neutralize border-radius."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -584,12 +584,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -783,11 +783,6 @@
           "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "Provides a visual style variant for the carousel. Can be used to conditionally apply CSS themes or variants."
-        },
-        {
           "name": "api",
           "values": [],
           "description": "The Embla carousel API."
@@ -796,6 +791,11 @@
           "name": "overrides",
           "values": [],
           "description": "TODO: Indicates whether the carousel has been successfully initialized."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -834,14 +834,14 @@
           "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -861,14 +861,14 @@
           "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -924,12 +924,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -946,12 +946,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -983,12 +983,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1005,12 +1005,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1039,12 +1039,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1097,12 +1097,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1181,14 +1181,14 @@
           "description": "Target value."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1358,11 +1358,6 @@
           "description": "Gets/Sets data."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "view",
           "values": [
             {
@@ -1406,7 +1401,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1636,14 +1636,14 @@
           "description": "Deactivate the dialog's backdrop to show or not."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1670,14 +1670,14 @@
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1704,14 +1704,14 @@
           "description": "It makes the user able to scroll the content by adding a scroll beside it."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1728,12 +1728,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1750,12 +1750,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1777,12 +1777,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -1892,14 +1892,14 @@
           "description": "Specifies the style of the border."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2037,14 +2037,14 @@
           "description": "Determine the width of the drawer."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2066,12 +2066,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2106,14 +2106,14 @@
           "description": "Keeps the result constant."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2226,14 +2226,14 @@
           "description": "The bytes value to convert."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2336,14 +2336,14 @@
           "description": "Specifies the size."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2397,14 +2397,14 @@
           "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2427,11 +2427,6 @@
           "name": "theme",
           "values": [],
           "description": "The theme to apply for syntax highlighting."
-        },
-        {
-          "name": "overrides",
-          "values": [],
-          "description": "TODO"
         },
         {
           "name": "plugins",
@@ -2470,9 +2465,14 @@
           "description": "Whether to synchronize updates with DOM changes."
         },
         {
+          "name": "overrides",
+          "values": [],
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2519,11 +2519,6 @@
           "description": "Specifies the minimum value of the progress."
         },
         {
-          "name": "overrides",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "sync",
           "values": [
             {
@@ -2536,14 +2531,19 @@
           "description": "Eliminates delays in updating value."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "value",
           "values": [],
           "description": "Specifies the progress of the bar by a number between `min` and `max`."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2560,12 +2560,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2624,14 +2624,14 @@
           "description": "The date and time to be displayed in a relative format."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2667,11 +2667,6 @@
           "description": "Specifies the reference of the scroll."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "vertical",
           "values": [
             {
@@ -2686,7 +2681,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2790,14 +2790,14 @@
           "description": "Specifies whether undo can be performed or not."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2822,14 +2822,14 @@
           "description": "Specifies the symbol."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2851,12 +2851,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -2874,11 +2874,6 @@
           "name": "color",
           "values": [],
           "description": "Specifies the color."
-        },
-        {
-          "name": "overrides",
-          "values": [],
-          "description": "TODO"
         },
         {
           "name": "size",
@@ -2920,9 +2915,14 @@
           "description": "Specifies which variant of the spinner to use."
         },
         {
+          "name": "overrides",
+          "values": [],
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3005,11 +3005,6 @@
           "description": "Whether to reverse the order of items."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "vertical",
           "values": [
             {
@@ -3039,7 +3034,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3066,19 +3066,9 @@
           "description": "Disables the element functionality."
         },
         {
-          "name": "overrides",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "top",
           "values": [],
           "description": "Specifies the space from top."
-        },
-        {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
         },
         {
           "name": "watcher",
@@ -3096,6 +3086,16 @@
           "name": "z-index",
           "values": [],
           "description": "Specifies the z-index."
+        },
+        {
+          "name": "overrides",
+          "values": [],
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3136,12 +3136,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3161,11 +3161,6 @@
           "description": "Provides your own value."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "vertical",
           "values": [
             {
@@ -3180,7 +3175,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3234,14 +3234,14 @@
           "description": "Reverses the arrangement of the tabs."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3261,11 +3261,6 @@
           "description": "Provides your own value."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "active",
           "values": [],
           "description": "TODO"
@@ -3273,7 +3268,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3290,12 +3290,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "variant",
           "values": [],
-          "description": "TODO"
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3327,11 +3327,6 @@
           "description": "Provides your own value."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "active",
           "values": [],
           "description": "TODO"
@@ -3339,7 +3334,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [
@@ -3505,11 +3505,6 @@
           "description": "Specifies the activation method."
         },
         {
-          "name": "variant",
-          "values": [],
-          "description": "TODO"
-        },
-        {
           "name": "z",
           "values": [
             {
@@ -3530,7 +3525,12 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO"
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+        },
+        {
+          "name": "variant",
+          "values": [],
+          "description": "See [Variant](/variant-property) for details."
         }
       ],
       "references": [

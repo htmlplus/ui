@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, V as Variant, O as Overrides, f as Provider, d as Element } from "../core/index.js";
+import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, f as Provider, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -39,17 +39,17 @@ __decorateClass([
 ], PlusAccordions.prototype, "persistent", 2);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusAccordions.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusAccordions.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusAccordions.prototype, "overrides", 2);
 __decorateClass([
   Provider("accordions")
 ], PlusAccordions.prototype, "state", 2);

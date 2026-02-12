@@ -39,13 +39,13 @@ export declare class PlusAccordion extends PlusCore {
      */
     summary?: string;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fires when the element is about to collapse.
      * This event can be [canceled](TODO).
@@ -100,8 +100,21 @@ export declare class PlusAccordion extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusAccordionAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusAccordionAttributesMapper = {
+  'disabled': 'disabled';
+  'open': 'open';
+  'summary': 'summary';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusAccordionOverridableKeys = 'variant';
+export interface PlusAccordionDisables {}
+export interface PlusAccordionOverrides {}
+export type PlusAccordionAttributes = Filter<PlusAccordionAttributesOverridden, PlusAccordionDisables, PlusAccordionAttributesMapper>;
+export type PlusAccordionAttributesOverridden = Override<PlusAccordionAttributesBase, PlusAccordionOverrides, PlusAccordionOverridableKeys, PlusAccordionAttributesMapper>;
+export type PlusAccordionAttributesBase = {
   /**
   * Disables the element functionality.
   */
@@ -115,17 +128,42 @@ export interface PlusAccordionAttributesBase {
   */
   "summary"?: string;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusAccordionVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionProperties, "overrides">>;
-}
-export interface PlusAccordionAttributesDisables {}
-export type PlusAccordionAttributes = Filter<PlusAccordionAttributesBase, PlusAccordionAttributesDisables>;
-export interface PlusAccordionEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusAccordionEvents = Filter<PlusAccordionEventsBase, PlusAccordionDisables>;
+export type PlusAccordionEventsBase = {
+  /**
+  * Fires when the element is about to collapse.
+  * This event can be [canceled](TODO).
+  */
+  plusCollapse?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires after the element has collapsed.
+  */
+  plusCollapsed?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires when the element is about to expand.
+  * This event can be [canceled](TODO).
+  */
+  plusExpand?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires after the element has expanded.
+  */
+  plusExpanded?: (event: CustomEvent<void>) => void;
+};
+export type PlusAccordionEventsJSX = Filter<PlusAccordionEventsBaseJSX, PlusAccordionDisables, {
+  plusCollapse: 'onPlusCollapse';
+  plusCollapsed: 'onPlusCollapsed';
+  plusExpand: 'onPlusExpand';
+  plusExpanded: 'onPlusExpanded';
+}>;
+export type PlusAccordionEventsBaseJSX = {
   /**
   * Fires when the element is about to collapse.
   * This event can be [canceled](TODO).
@@ -144,10 +182,9 @@ export interface PlusAccordionEventsBase {
   * Fires after the element has expanded.
   */
   onPlusExpanded?: (event: CustomEvent<void>) => void;
-}
-export interface PlusAccordionEventsDisables {}
-export type PlusAccordionEvents = Filter<PlusAccordionEventsBase, PlusAccordionEventsDisables>;
-export interface PlusAccordionMethodsBase {
+};
+export type PlusAccordionMethods = Filter<PlusAccordionMethodsBase, PlusAccordionDisables>;
+export type PlusAccordionMethodsBase = {
   /**
   * Collapses the element.
   * @returns {Promise<boolean>} A Promise that resolves to `true` if the
@@ -166,10 +203,10 @@ export interface PlusAccordionMethodsBase {
   * operation was successful or `false` if it was canceled.
   */
   toggle(): Promise<boolean>;
-}
-export interface PlusAccordionMethodsDisables {}
-export type PlusAccordionMethods = Filter<PlusAccordionMethodsBase, PlusAccordionMethodsDisables>;
-export interface PlusAccordionPropertiesBase {
+};
+export type PlusAccordionProperties = Filter<PlusAccordionPropertiesOverridden, PlusAccordionDisables>;
+export type PlusAccordionPropertiesOverridden = Override<PlusAccordionPropertiesBase, PlusAccordionOverrides, PlusAccordionOverridableKeys>;
+export type PlusAccordionPropertiesBase = {
   /**
   * Disables the element functionality.
   */
@@ -183,17 +220,28 @@ export interface PlusAccordionPropertiesBase {
   */
   summary?: string;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusAccordionVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-accordion': {
+      properties: PlusAccordionPropertiesOverridden;
+    };
+  }
 }
-export interface PlusAccordionPropertiesDisables {}
-export type PlusAccordionProperties = Filter<PlusAccordionPropertiesBase, PlusAccordionPropertiesDisables>;
-export interface PlusAccordionJSX extends PlusAccordionEvents, PlusAccordionProperties {}
+export type PlusAccordionElement = globalThis.HTMLPlusAccordionElement;
+export type PlusAccordionJSX = PlusAccordionAttributes & PlusAccordionEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-accordion": PlusAccordionJSX;
+  }
+}
 declare global {
   interface HTMLPlusAccordionElement extends HTMLElement, PlusAccordionMethods, PlusAccordionProperties {}
   var HTMLPlusAccordionElement: {
@@ -204,45 +252,10 @@ declare global {
     "plus-accordion": HTMLPlusAccordionElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-accordion": PlusAccordionAttributes & PlusAccordionEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-accordion": PlusAccordionAttributes & PlusAccordionEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAccordionElement>, HTMLPlusAccordionElement>, keyof (PlusAccordionAttributes & PlusAccordionEvents)>;
+      "plus-accordion": PlusAccordionJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAccordionElement>, HTMLPlusAccordionElement>, keyof PlusAccordionJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordion": PlusAccordionAttributes & PlusAccordionEvents & Omit<HTMLAttributes<HTMLPlusAccordionElement>, keyof (PlusAccordionAttributes & PlusAccordionEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordion": PlusAccordionAttributes & PlusAccordionEvents & Omit<HTMLAttributes<HTMLPlusAccordionElement>, keyof (PlusAccordionAttributes & PlusAccordionEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordion": PlusAccordionAttributes & PlusAccordionEvents & Omit<HTMLAttributes<HTMLPlusAccordionElement>, keyof (PlusAccordionAttributes & PlusAccordionEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-accordion": PlusAccordionAttributes & PlusAccordionEvents & Omit<HTMLAttributes<HTMLPlusAccordionElement>, keyof (PlusAccordionAttributes & PlusAccordionEvents)>;
-    }
-  }
-}
-export type PlusAccordionElement = globalThis.HTMLPlusAccordionElement;
-export interface PlusAccordionVariantOverrides {}

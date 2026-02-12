@@ -17,11 +17,11 @@ export declare class PlusSwitch extends PlusCore {
      */
     disabled?: boolean;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     /**
@@ -35,8 +35,20 @@ export declare class PlusSwitch extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusSwitchAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusSwitchAttributesMapper = {
+  'checked': 'checked';
+  'disabled': 'disabled';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusSwitchOverridableKeys = 'variant';
+export interface PlusSwitchDisables {}
+export interface PlusSwitchOverrides {}
+export type PlusSwitchAttributes = Filter<PlusSwitchAttributesOverridden, PlusSwitchDisables, PlusSwitchAttributesMapper>;
+export type PlusSwitchAttributesOverridden = Override<PlusSwitchAttributesBase, PlusSwitchOverrides, PlusSwitchOverridableKeys, PlusSwitchAttributesMapper>;
+export type PlusSwitchAttributesBase = {
   /**
   * Puts the switch in checked state.
   * @model
@@ -47,29 +59,37 @@ export interface PlusSwitchAttributesBase {
   */
   "disabled"?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSwitchProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusSwitchVariantOverrides>;
-}
-export interface PlusSwitchAttributesDisables {}
-export type PlusSwitchAttributes = Filter<PlusSwitchAttributesBase, PlusSwitchAttributesDisables>;
-export interface PlusSwitchEventsBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusSwitchEvents = Filter<PlusSwitchEventsBase, PlusSwitchDisables>;
+export type PlusSwitchEventsBase = {
+  /**
+  * When the switch state is changed this event triggers.
+  * @model
+  */
+  plusChange?: (event: CustomEvent<void>) => void;
+};
+export type PlusSwitchEventsJSX = Filter<PlusSwitchEventsBaseJSX, PlusSwitchDisables, {
+  plusChange: 'onPlusChange';
+}>;
+export type PlusSwitchEventsBaseJSX = {
   /**
   * When the switch state is changed this event triggers.
   * @model
   */
   onPlusChange?: (event: CustomEvent<void>) => void;
-}
-export interface PlusSwitchEventsDisables {}
-export type PlusSwitchEvents = Filter<PlusSwitchEventsBase, PlusSwitchEventsDisables>;
-export interface PlusSwitchMethodsBase {}
-export interface PlusSwitchMethodsDisables {}
-export type PlusSwitchMethods = Filter<PlusSwitchMethodsBase, PlusSwitchMethodsDisables>;
-export interface PlusSwitchPropertiesBase {
+};
+export type PlusSwitchMethods = Filter<PlusSwitchMethodsBase, PlusSwitchDisables>;
+export type PlusSwitchMethodsBase = {};
+export type PlusSwitchProperties = Filter<PlusSwitchPropertiesOverridden, PlusSwitchDisables>;
+export type PlusSwitchPropertiesOverridden = Override<PlusSwitchPropertiesBase, PlusSwitchOverrides, PlusSwitchOverridableKeys>;
+export type PlusSwitchPropertiesBase = {
   /**
   * Puts the switch in checked state.
   * @model
@@ -80,17 +100,28 @@ export interface PlusSwitchPropertiesBase {
   */
   disabled?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSwitchProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusSwitchVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-switch': {
+      properties: PlusSwitchPropertiesOverridden;
+    };
+  }
 }
-export interface PlusSwitchPropertiesDisables {}
-export type PlusSwitchProperties = Filter<PlusSwitchPropertiesBase, PlusSwitchPropertiesDisables>;
-export interface PlusSwitchJSX extends PlusSwitchEvents, PlusSwitchProperties {}
+export type PlusSwitchElement = globalThis.HTMLPlusSwitchElement;
+export type PlusSwitchJSX = PlusSwitchAttributes & PlusSwitchEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-switch": PlusSwitchJSX;
+  }
+}
 declare global {
   interface HTMLPlusSwitchElement extends HTMLElement, PlusSwitchMethods, PlusSwitchProperties {}
   var HTMLPlusSwitchElement: {
@@ -101,45 +132,10 @@ declare global {
     "plus-switch": HTMLPlusSwitchElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-switch": PlusSwitchAttributes & PlusSwitchEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSwitchElement>, HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
+      "plus-switch": PlusSwitchJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSwitchElement>, HTMLPlusSwitchElement>, keyof PlusSwitchJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-switch": PlusSwitchAttributes & PlusSwitchEvents & Omit<HTMLAttributes<HTMLPlusSwitchElement>, keyof (PlusSwitchAttributes & PlusSwitchEvents)>;
-    }
-  }
-}
-export type PlusSwitchElement = globalThis.HTMLPlusSwitchElement;
-export interface PlusSwitchVariantOverrides {}

@@ -17,17 +17,17 @@ export declare class PlusTabs extends PlusCore {
      */
     value?: string;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
      * You can use vertical property for vertical mode.
      */
     vertical?: boolean;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fired when the value changes.
      */
@@ -37,59 +37,89 @@ export declare class PlusTabs extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusTabsAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusTabsAttributesMapper = {
+  'value': 'value';
+  'vertical': 'vertical';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusTabsOverridableKeys = 'variant';
+export interface PlusTabsDisables {}
+export interface PlusTabsOverrides {}
+export type PlusTabsAttributes = Filter<PlusTabsAttributesOverridden, PlusTabsDisables, PlusTabsAttributesMapper>;
+export type PlusTabsAttributesOverridden = Override<PlusTabsAttributesBase, PlusTabsOverrides, PlusTabsOverridableKeys, PlusTabsAttributesMapper>;
+export type PlusTabsAttributesBase = {
   /**
   * Provides your own value.
   */
   "value"?: string;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusTabsVariantOverrides>;
-  /**
   * You can use vertical property for vertical mode.
   */
   "vertical"?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsProperties, "overrides">>;
-}
-export interface PlusTabsAttributesDisables {}
-export type PlusTabsAttributes = Filter<PlusTabsAttributesBase, PlusTabsAttributesDisables>;
-export interface PlusTabsEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusTabsEvents = Filter<PlusTabsEventsBase, PlusTabsDisables>;
+export type PlusTabsEventsBase = {
+  /**
+  * Fired when the value changes.
+  */
+  plusChange?: (event: CustomEvent<string>) => void;
+};
+export type PlusTabsEventsJSX = Filter<PlusTabsEventsBaseJSX, PlusTabsDisables, {
+  plusChange: 'onPlusChange';
+}>;
+export type PlusTabsEventsBaseJSX = {
   /**
   * Fired when the value changes.
   */
   onPlusChange?: (event: CustomEvent<string>) => void;
-}
-export interface PlusTabsEventsDisables {}
-export type PlusTabsEvents = Filter<PlusTabsEventsBase, PlusTabsEventsDisables>;
-export interface PlusTabsMethodsBase {}
-export interface PlusTabsMethodsDisables {}
-export type PlusTabsMethods = Filter<PlusTabsMethodsBase, PlusTabsMethodsDisables>;
-export interface PlusTabsPropertiesBase {
+};
+export type PlusTabsMethods = Filter<PlusTabsMethodsBase, PlusTabsDisables>;
+export type PlusTabsMethodsBase = {};
+export type PlusTabsProperties = Filter<PlusTabsPropertiesOverridden, PlusTabsDisables>;
+export type PlusTabsPropertiesOverridden = Override<PlusTabsPropertiesBase, PlusTabsOverrides, PlusTabsOverridableKeys>;
+export type PlusTabsPropertiesBase = {
   /**
   * Provides your own value.
   */
   value?: string;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusTabsVariantOverrides>;
-  /**
   * You can use vertical property for vertical mode.
   */
   vertical?: boolean;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-tabs': {
+      properties: PlusTabsPropertiesOverridden;
+    };
+  }
 }
-export interface PlusTabsPropertiesDisables {}
-export type PlusTabsProperties = Filter<PlusTabsPropertiesBase, PlusTabsPropertiesDisables>;
-export interface PlusTabsJSX extends PlusTabsEvents, PlusTabsProperties {}
+export type PlusTabsElement = globalThis.HTMLPlusTabsElement;
+export type PlusTabsJSX = PlusTabsAttributes & PlusTabsEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-tabs": PlusTabsJSX;
+  }
+}
 declare global {
   interface HTMLPlusTabsElement extends HTMLElement, PlusTabsMethods, PlusTabsProperties {}
   var HTMLPlusTabsElement: {
@@ -100,45 +130,10 @@ declare global {
     "plus-tabs": HTMLPlusTabsElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-tabs": PlusTabsAttributes & PlusTabsEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tabs": PlusTabsAttributes & PlusTabsEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTabsElement>, HTMLPlusTabsElement>, keyof (PlusTabsAttributes & PlusTabsEvents)>;
+      "plus-tabs": PlusTabsJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTabsElement>, HTMLPlusTabsElement>, keyof PlusTabsJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs": PlusTabsAttributes & PlusTabsEvents & Omit<HTMLAttributes<HTMLPlusTabsElement>, keyof (PlusTabsAttributes & PlusTabsEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs": PlusTabsAttributes & PlusTabsEvents & Omit<HTMLAttributes<HTMLPlusTabsElement>, keyof (PlusTabsAttributes & PlusTabsEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs": PlusTabsAttributes & PlusTabsEvents & Omit<HTMLAttributes<HTMLPlusTabsElement>, keyof (PlusTabsAttributes & PlusTabsEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tabs": PlusTabsAttributes & PlusTabsEvents & Omit<HTMLAttributes<HTMLPlusTabsElement>, keyof (PlusTabsAttributes & PlusTabsEvents)>;
-    }
-  }
-}
-export type PlusTabsElement = globalThis.HTMLPlusTabsElement;
-export interface PlusTabsVariantOverrides {}

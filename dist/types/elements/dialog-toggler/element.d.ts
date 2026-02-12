@@ -18,19 +18,30 @@ export declare class PlusDialogToggler extends PlusCore {
      */
     connector?: string;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     dialog?: Context;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusDialogTogglerAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusDialogTogglerAttributesMapper = {
+  'connector': 'connector';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusDialogTogglerOverridableKeys = 'variant';
+export interface PlusDialogTogglerDisables {}
+export interface PlusDialogTogglerOverrides {}
+export type PlusDialogTogglerAttributes = Filter<PlusDialogTogglerAttributesOverridden, PlusDialogTogglerDisables, PlusDialogTogglerAttributesMapper>;
+export type PlusDialogTogglerAttributesOverridden = Override<PlusDialogTogglerAttributesBase, PlusDialogTogglerOverrides, PlusDialogTogglerOverridableKeys, PlusDialogTogglerAttributesMapper>;
+export type PlusDialogTogglerAttributesBase = {
   /**
   * This property helps you to attach which dialog this toggler controls.
   * It doesn't matter where the dialog toggler is.
@@ -39,23 +50,23 @@ export interface PlusDialogTogglerAttributesBase {
   */
   "connector"?: string;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogTogglerProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusDialogTogglerVariantOverrides>;
-}
-export interface PlusDialogTogglerAttributesDisables {}
-export type PlusDialogTogglerAttributes = Filter<PlusDialogTogglerAttributesBase, PlusDialogTogglerAttributesDisables>;
-export interface PlusDialogTogglerEventsBase {}
-export interface PlusDialogTogglerEventsDisables {}
-export type PlusDialogTogglerEvents = Filter<PlusDialogTogglerEventsBase, PlusDialogTogglerEventsDisables>;
-export interface PlusDialogTogglerMethodsBase {}
-export interface PlusDialogTogglerMethodsDisables {}
-export type PlusDialogTogglerMethods = Filter<PlusDialogTogglerMethodsBase, PlusDialogTogglerMethodsDisables>;
-export interface PlusDialogTogglerPropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusDialogTogglerEvents = Filter<PlusDialogTogglerEventsBase, PlusDialogTogglerDisables>;
+export type PlusDialogTogglerEventsBase = {};
+export type PlusDialogTogglerEventsJSX = Filter<PlusDialogTogglerEventsBaseJSX, PlusDialogTogglerDisables, {}>;
+export type PlusDialogTogglerEventsBaseJSX = {};
+export type PlusDialogTogglerMethods = Filter<PlusDialogTogglerMethodsBase, PlusDialogTogglerDisables>;
+export type PlusDialogTogglerMethodsBase = {};
+export type PlusDialogTogglerProperties = Filter<PlusDialogTogglerPropertiesOverridden, PlusDialogTogglerDisables>;
+export type PlusDialogTogglerPropertiesOverridden = Override<PlusDialogTogglerPropertiesBase, PlusDialogTogglerOverrides, PlusDialogTogglerOverridableKeys>;
+export type PlusDialogTogglerPropertiesBase = {
   /**
   * This property helps you to attach which dialog this toggler controls.
   * It doesn't matter where the dialog toggler is.
@@ -64,17 +75,28 @@ export interface PlusDialogTogglerPropertiesBase {
   */
   connector?: string;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogTogglerProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusDialogTogglerVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-dialog-toggler': {
+      properties: PlusDialogTogglerPropertiesOverridden;
+    };
+  }
 }
-export interface PlusDialogTogglerPropertiesDisables {}
-export type PlusDialogTogglerProperties = Filter<PlusDialogTogglerPropertiesBase, PlusDialogTogglerPropertiesDisables>;
-export interface PlusDialogTogglerJSX extends PlusDialogTogglerEvents, PlusDialogTogglerProperties {}
+export type PlusDialogTogglerElement = globalThis.HTMLPlusDialogTogglerElement;
+export type PlusDialogTogglerJSX = PlusDialogTogglerAttributes & PlusDialogTogglerEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-dialog-toggler": PlusDialogTogglerJSX;
+  }
+}
 declare global {
   interface HTMLPlusDialogTogglerElement extends HTMLElement, PlusDialogTogglerMethods, PlusDialogTogglerProperties {}
   var HTMLPlusDialogTogglerElement: {
@@ -85,45 +107,10 @@ declare global {
     "plus-dialog-toggler": HTMLPlusDialogTogglerElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogTogglerElement>, HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
+      "plus-dialog-toggler": PlusDialogTogglerJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogTogglerElement>, HTMLPlusDialogTogglerElement>, keyof PlusDialogTogglerJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-toggler": PlusDialogTogglerAttributes & PlusDialogTogglerEvents & Omit<HTMLAttributes<HTMLPlusDialogTogglerElement>, keyof (PlusDialogTogglerAttributes & PlusDialogTogglerEvents)>;
-    }
-  }
-}
-export type PlusDialogTogglerElement = globalThis.HTMLPlusDialogTogglerElement;
-export interface PlusDialogTogglerVariantOverrides {}

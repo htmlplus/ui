@@ -91,10 +91,6 @@ export declare class PlusCropper extends PlusCore {
      */
     value?: PlusCropperValue;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
      * Specifies the view.
      *
      * @value contain - restrict the minimum canvas size to fit within the container. If the
@@ -121,9 +117,13 @@ export declare class PlusCropper extends PlusCore {
      */
     zoomRatio?: number;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Fires when the `image` or the `viewport` is changed.
      */
@@ -252,8 +252,35 @@ export declare class PlusCropper extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusCropperAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusCropperAttributesMapper = {
+  'area': 'area';
+  'aspectRatio': 'aspect-ratio';
+  'background': 'background';
+  'disabled': 'disabled';
+  'guides': 'guides';
+  'indicator': 'indicator';
+  'mode': 'mode';
+  'resizer': 'resizer';
+  'resizerShape': 'resizer-shape';
+  'responsive': 'responsive';
+  'shape': 'shape';
+  'src': 'src';
+  'transparent': 'transparent';
+  'value': 'value';
+  'view': 'view';
+  'zoomable': 'zoomable';
+  'zoomRatio': 'zoom-ratio';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusCropperOverridableKeys = 'variant';
+export interface PlusCropperDisables {}
+export interface PlusCropperOverrides {}
+export type PlusCropperAttributes = Filter<PlusCropperAttributesOverridden, PlusCropperDisables, PlusCropperAttributesMapper>;
+export type PlusCropperAttributesOverridden = Override<PlusCropperAttributesBase, PlusCropperOverrides, PlusCropperOverridableKeys, PlusCropperAttributesMapper>;
+export type PlusCropperAttributesBase = {
   /**
   * A number between 0 and 1. Specifies the automatic cropping area size.
   */
@@ -331,10 +358,6 @@ export interface PlusCropperAttributesBase {
   */
   "value"?: PlusCropperValue;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusCropperVariantOverrides>;
-  /**
   * Specifies the view.
   *
   * @value contain - restrict the minimum canvas size to fit within the container. If the
@@ -361,13 +384,50 @@ export interface PlusCropperAttributesBase {
   */
   "zoom-ratio"?: number;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCropperProperties, "overrides">>;
-}
-export interface PlusCropperAttributesDisables {}
-export type PlusCropperAttributes = Filter<PlusCropperAttributesBase, PlusCropperAttributesDisables>;
-export interface PlusCropperEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusCropperEvents = Filter<PlusCropperEventsBase, PlusCropperDisables>;
+export type PlusCropperEventsBase = {
+  /**
+  * Fires when the `image` or the `viewport` is changed.
+  */
+  plusCrop?: (event: CustomEvent<PlusCropperCropEvent>) => void;
+  /**
+  * Fires when the `image` or the `viewport` changes are finished.
+  */
+  plusCropEnd?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
+  /**
+  * Fires when the `image` or the `viewport` is changing.
+  */
+  plusCropMove?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
+  /**
+  * Fires when the `image` or the `viewport` starts to change.
+  */
+  plusCropStart?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
+  /**
+  * Fires when the image has been loaded and the element is ready for operation.
+  */
+  plusReady?: (event: CustomEvent<void>) => void;
+  /**
+  * Fires when the element starts to `zoom in` or `zoom out`.
+  */
+  plusZoom?: (event: CustomEvent<PlusCropperZoomEvent>) => void;
+};
+export type PlusCropperEventsJSX = Filter<PlusCropperEventsBaseJSX, PlusCropperDisables, {
+  plusCrop: 'onPlusCrop';
+  plusCropEnd: 'onPlusCropEnd';
+  plusCropMove: 'onPlusCropMove';
+  plusCropStart: 'onPlusCropStart';
+  plusReady: 'onPlusReady';
+  plusZoom: 'onPlusZoom';
+}>;
+export type PlusCropperEventsBaseJSX = {
   /**
   * Fires when the `image` or the `viewport` is changed.
   */
@@ -392,10 +452,9 @@ export interface PlusCropperEventsBase {
   * Fires when the element starts to `zoom in` or `zoom out`.
   */
   onPlusZoom?: (event: CustomEvent<PlusCropperZoomEvent>) => void;
-}
-export interface PlusCropperEventsDisables {}
-export type PlusCropperEvents = Filter<PlusCropperEventsBase, PlusCropperEventsDisables>;
-export interface PlusCropperMethodsBase {
+};
+export type PlusCropperMethods = Filter<PlusCropperMethodsBase, PlusCropperDisables>;
+export type PlusCropperMethodsBase = {
   /**
   * Flips horizontally.
   */
@@ -440,10 +499,10 @@ export interface PlusCropperMethodsBase {
   * Zooms the canvas to an absolute ratio.
   */
   zoomTo(ratio: number): void;
-}
-export interface PlusCropperMethodsDisables {}
-export type PlusCropperMethods = Filter<PlusCropperMethodsBase, PlusCropperMethodsDisables>;
-export interface PlusCropperPropertiesBase {
+};
+export type PlusCropperProperties = Filter<PlusCropperPropertiesOverridden, PlusCropperDisables>;
+export type PlusCropperPropertiesOverridden = Override<PlusCropperPropertiesBase, PlusCropperOverrides, PlusCropperOverridableKeys>;
+export type PlusCropperPropertiesBase = {
   /**
   * A number between 0 and 1. Specifies the automatic cropping area size.
   */
@@ -521,10 +580,6 @@ export interface PlusCropperPropertiesBase {
   */
   value?: PlusCropperValue;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusCropperVariantOverrides>;
-  /**
   * Specifies the view.
   *
   * @value contain - restrict the minimum canvas size to fit within the container. If the
@@ -551,13 +606,28 @@ export interface PlusCropperPropertiesBase {
   */
   zoomRatio?: number;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCropperProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-cropper': {
+      properties: PlusCropperPropertiesOverridden;
+    };
+  }
 }
-export interface PlusCropperPropertiesDisables {}
-export type PlusCropperProperties = Filter<PlusCropperPropertiesBase, PlusCropperPropertiesDisables>;
-export interface PlusCropperJSX extends PlusCropperEvents, PlusCropperProperties {}
+export type PlusCropperElement = globalThis.HTMLPlusCropperElement;
+export type PlusCropperJSX = PlusCropperAttributes & PlusCropperEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-cropper": PlusCropperJSX;
+  }
+}
 declare global {
   interface HTMLPlusCropperElement extends HTMLElement, PlusCropperMethods, PlusCropperProperties {}
   var HTMLPlusCropperElement: {
@@ -568,45 +638,10 @@ declare global {
     "plus-cropper": HTMLPlusCropperElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-cropper": PlusCropperAttributes & PlusCropperEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCropperElement>, HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
+      "plus-cropper": PlusCropperJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCropperElement>, HTMLPlusCropperElement>, keyof PlusCropperJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-cropper": PlusCropperAttributes & PlusCropperEvents & Omit<HTMLAttributes<HTMLPlusCropperElement>, keyof (PlusCropperAttributes & PlusCropperEvents)>;
-    }
-  }
-}
-export type PlusCropperElement = globalThis.HTMLPlusCropperElement;
-export interface PlusCropperVariantOverrides {}

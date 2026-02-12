@@ -10,58 +10,82 @@ export declare class PlusSpacer extends PlusCore {
      */
     grow?: number;
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     get style(): {
-        'flex-grow': number;
+        ':host': {
+            'flex-grow': number;
+        };
     };
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusSpacerAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusSpacerAttributesMapper = {
+  'grow': 'grow';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusSpacerOverridableKeys = 'variant';
+export interface PlusSpacerDisables {}
+export interface PlusSpacerOverrides {}
+export type PlusSpacerAttributes = Filter<PlusSpacerAttributesOverridden, PlusSpacerDisables, PlusSpacerAttributesMapper>;
+export type PlusSpacerAttributesOverridden = Override<PlusSpacerAttributesBase, PlusSpacerOverrides, PlusSpacerOverridableKeys, PlusSpacerAttributesMapper>;
+export type PlusSpacerAttributesBase = {
   /**
   * TODO
   */
   "grow"?: number;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSpacerProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusSpacerVariantOverrides>;
-}
-export interface PlusSpacerAttributesDisables {}
-export type PlusSpacerAttributes = Filter<PlusSpacerAttributesBase, PlusSpacerAttributesDisables>;
-export interface PlusSpacerEventsBase {}
-export interface PlusSpacerEventsDisables {}
-export type PlusSpacerEvents = Filter<PlusSpacerEventsBase, PlusSpacerEventsDisables>;
-export interface PlusSpacerMethodsBase {}
-export interface PlusSpacerMethodsDisables {}
-export type PlusSpacerMethods = Filter<PlusSpacerMethodsBase, PlusSpacerMethodsDisables>;
-export interface PlusSpacerPropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusSpacerEvents = Filter<PlusSpacerEventsBase, PlusSpacerDisables>;
+export type PlusSpacerEventsBase = {};
+export type PlusSpacerEventsJSX = Filter<PlusSpacerEventsBaseJSX, PlusSpacerDisables, {}>;
+export type PlusSpacerEventsBaseJSX = {};
+export type PlusSpacerMethods = Filter<PlusSpacerMethodsBase, PlusSpacerDisables>;
+export type PlusSpacerMethodsBase = {};
+export type PlusSpacerProperties = Filter<PlusSpacerPropertiesOverridden, PlusSpacerDisables>;
+export type PlusSpacerPropertiesOverridden = Override<PlusSpacerPropertiesBase, PlusSpacerOverrides, PlusSpacerOverridableKeys>;
+export type PlusSpacerPropertiesBase = {
   /**
   * TODO
   */
   grow?: number;
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSpacerProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusSpacerVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-spacer': {
+      properties: PlusSpacerPropertiesOverridden;
+    };
+  }
 }
-export interface PlusSpacerPropertiesDisables {}
-export type PlusSpacerProperties = Filter<PlusSpacerPropertiesBase, PlusSpacerPropertiesDisables>;
-export interface PlusSpacerJSX extends PlusSpacerEvents, PlusSpacerProperties {}
+export type PlusSpacerElement = globalThis.HTMLPlusSpacerElement;
+export type PlusSpacerJSX = PlusSpacerAttributes & PlusSpacerEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-spacer": PlusSpacerJSX;
+  }
+}
 declare global {
   interface HTMLPlusSpacerElement extends HTMLElement, PlusSpacerMethods, PlusSpacerProperties {}
   var HTMLPlusSpacerElement: {
@@ -72,45 +96,10 @@ declare global {
     "plus-spacer": HTMLPlusSpacerElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSpacerElement>, HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
+      "plus-spacer": PlusSpacerJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusSpacerElement>, HTMLPlusSpacerElement>, keyof PlusSpacerJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-spacer": PlusSpacerAttributes & PlusSpacerEvents & Omit<HTMLAttributes<HTMLPlusSpacerElement>, keyof (PlusSpacerAttributes & PlusSpacerEvents)>;
-    }
-  }
-}
-export type PlusSpacerElement = globalThis.HTMLPlusSpacerElement;
-export interface PlusSpacerVariantOverrides {}

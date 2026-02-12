@@ -26,10 +26,6 @@ export declare class PlusStack extends PlusCore {
      */
     reverse?: boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
      * Whether the stack is vertical.
      */
     vertical?: boolean;
@@ -38,22 +34,44 @@ export declare class PlusStack extends PlusCore {
      */
     wrap?: boolean | 'reverse';
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     get style(): {
-        'align-items': string;
-        display: string;
-        'flex-direction': string;
-        gap: string;
-        'justify-content': string;
-        'flex-wrap': string;
+        ':host': {
+            'align-items': string;
+            display: string;
+            'flex-direction': string;
+            gap: string;
+            'justify-content': string;
+            'flex-wrap': string;
+        };
     };
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusStackAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusStackAttributesMapper = {
+  'gap': 'gap';
+  'items': 'items';
+  'justify': 'justify';
+  'reverse': 'reverse';
+  'vertical': 'vertical';
+  'wrap': 'wrap';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusStackOverridableKeys = 'variant';
+export interface PlusStackDisables {}
+export interface PlusStackOverrides {}
+export type PlusStackAttributes = Filter<PlusStackAttributesOverridden, PlusStackDisables, PlusStackAttributesMapper>;
+export type PlusStackAttributesOverridden = Override<PlusStackAttributesBase, PlusStackOverrides, PlusStackOverridableKeys, PlusStackAttributesMapper>;
+export type PlusStackAttributesBase = {
   /**
   * The gap between items.
   */
@@ -71,10 +89,6 @@ export interface PlusStackAttributesBase {
   */
   "reverse"?: boolean;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusStackVariantOverrides>;
-  /**
   * Whether the stack is vertical.
   */
   "vertical"?: boolean;
@@ -83,19 +97,23 @@ export interface PlusStackAttributesBase {
   */
   "wrap"?: boolean | 'reverse';
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusStackProperties, "overrides">>;
-}
-export interface PlusStackAttributesDisables {}
-export type PlusStackAttributes = Filter<PlusStackAttributesBase, PlusStackAttributesDisables>;
-export interface PlusStackEventsBase {}
-export interface PlusStackEventsDisables {}
-export type PlusStackEvents = Filter<PlusStackEventsBase, PlusStackEventsDisables>;
-export interface PlusStackMethodsBase {}
-export interface PlusStackMethodsDisables {}
-export type PlusStackMethods = Filter<PlusStackMethodsBase, PlusStackMethodsDisables>;
-export interface PlusStackPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusStackEvents = Filter<PlusStackEventsBase, PlusStackDisables>;
+export type PlusStackEventsBase = {};
+export type PlusStackEventsJSX = Filter<PlusStackEventsBaseJSX, PlusStackDisables, {}>;
+export type PlusStackEventsBaseJSX = {};
+export type PlusStackMethods = Filter<PlusStackMethodsBase, PlusStackDisables>;
+export type PlusStackMethodsBase = {};
+export type PlusStackProperties = Filter<PlusStackPropertiesOverridden, PlusStackDisables>;
+export type PlusStackPropertiesOverridden = Override<PlusStackPropertiesBase, PlusStackOverrides, PlusStackOverridableKeys>;
+export type PlusStackPropertiesBase = {
   /**
   * The gap between items.
   */
@@ -113,10 +131,6 @@ export interface PlusStackPropertiesBase {
   */
   reverse?: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusStackVariantOverrides>;
-  /**
   * Whether the stack is vertical.
   */
   vertical?: boolean;
@@ -125,13 +139,28 @@ export interface PlusStackPropertiesBase {
   */
   wrap?: boolean | 'reverse';
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusStackProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-stack': {
+      properties: PlusStackPropertiesOverridden;
+    };
+  }
 }
-export interface PlusStackPropertiesDisables {}
-export type PlusStackProperties = Filter<PlusStackPropertiesBase, PlusStackPropertiesDisables>;
-export interface PlusStackJSX extends PlusStackEvents, PlusStackProperties {}
+export type PlusStackElement = globalThis.HTMLPlusStackElement;
+export type PlusStackJSX = PlusStackAttributes & PlusStackEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-stack": PlusStackJSX;
+  }
+}
 declare global {
   interface HTMLPlusStackElement extends HTMLElement, PlusStackMethods, PlusStackProperties {}
   var HTMLPlusStackElement: {
@@ -142,45 +171,10 @@ declare global {
     "plus-stack": HTMLPlusStackElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-stack": PlusStackAttributes & PlusStackEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusStackElement>, HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
+      "plus-stack": PlusStackJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusStackElement>, HTMLPlusStackElement>, keyof PlusStackJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-stack": PlusStackAttributes & PlusStackEvents & Omit<HTMLAttributes<HTMLPlusStackElement>, keyof (PlusStackAttributes & PlusStackEvents)>;
-    }
-  }
-}
-export type PlusStackElement = globalThis.HTMLPlusStackElement;
-export interface PlusStackVariantOverrides {}

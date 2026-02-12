@@ -146,13 +146,6 @@ export class PlusCropper extends PlusCore {
 	value?: PlusCropperValue;
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
 	 * Specifies the view.
 	 *
 	 * @value contain - restrict the minimum canvas size to fit within the container. If the
@@ -185,11 +178,18 @@ export class PlusCropper extends PlusCore {
 	zoomRatio?: number = 0.1;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	/**
 	 * Fires when the `image` or the `viewport` is changed.

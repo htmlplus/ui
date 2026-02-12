@@ -17,18 +17,30 @@ export declare class PlusAvatarGroup extends PlusCore {
      */
     stacked?: boolean;
     /**
-     * TODO
-     */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusAvatarGroupAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusAvatarGroupAttributesMapper = {
+  'hoverable': 'hoverable';
+  'stacked': 'stacked';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusAvatarGroupOverridableKeys = 'variant';
+export interface PlusAvatarGroupDisables {}
+export interface PlusAvatarGroupOverrides {}
+export type PlusAvatarGroupAttributes = Filter<PlusAvatarGroupAttributesOverridden, PlusAvatarGroupDisables, PlusAvatarGroupAttributesMapper>;
+export type PlusAvatarGroupAttributesOverridden = Override<PlusAvatarGroupAttributesBase, PlusAvatarGroupOverrides, PlusAvatarGroupOverridableKeys, PlusAvatarGroupAttributesMapper>;
+export type PlusAvatarGroupAttributesBase = {
   /**
   * Specifies whether to prominent the avatar when the mouse is entered or not.
   */
@@ -38,23 +50,23 @@ export interface PlusAvatarGroupAttributesBase {
   */
   "stacked"?: boolean;
   /**
-  * TODO
-  */
-  "variant"?: OverridableValue<never, PlusAvatarGroupVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarGroupProperties, "overrides">>;
-}
-export interface PlusAvatarGroupAttributesDisables {}
-export type PlusAvatarGroupAttributes = Filter<PlusAvatarGroupAttributesBase, PlusAvatarGroupAttributesDisables>;
-export interface PlusAvatarGroupEventsBase {}
-export interface PlusAvatarGroupEventsDisables {}
-export type PlusAvatarGroupEvents = Filter<PlusAvatarGroupEventsBase, PlusAvatarGroupEventsDisables>;
-export interface PlusAvatarGroupMethodsBase {}
-export interface PlusAvatarGroupMethodsDisables {}
-export type PlusAvatarGroupMethods = Filter<PlusAvatarGroupMethodsBase, PlusAvatarGroupMethodsDisables>;
-export interface PlusAvatarGroupPropertiesBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusAvatarGroupEvents = Filter<PlusAvatarGroupEventsBase, PlusAvatarGroupDisables>;
+export type PlusAvatarGroupEventsBase = {};
+export type PlusAvatarGroupEventsJSX = Filter<PlusAvatarGroupEventsBaseJSX, PlusAvatarGroupDisables, {}>;
+export type PlusAvatarGroupEventsBaseJSX = {};
+export type PlusAvatarGroupMethods = Filter<PlusAvatarGroupMethodsBase, PlusAvatarGroupDisables>;
+export type PlusAvatarGroupMethodsBase = {};
+export type PlusAvatarGroupProperties = Filter<PlusAvatarGroupPropertiesOverridden, PlusAvatarGroupDisables>;
+export type PlusAvatarGroupPropertiesOverridden = Override<PlusAvatarGroupPropertiesBase, PlusAvatarGroupOverrides, PlusAvatarGroupOverridableKeys>;
+export type PlusAvatarGroupPropertiesBase = {
   /**
   * Specifies whether to prominent the avatar when the mouse is entered or not.
   */
@@ -64,17 +76,28 @@ export interface PlusAvatarGroupPropertiesBase {
   */
   stacked?: boolean;
   /**
-  * TODO
-  */
-  variant?: OverridableValue<never, PlusAvatarGroupVariantOverrides>;
-  /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarGroupProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-avatar-group': {
+      properties: PlusAvatarGroupPropertiesOverridden;
+    };
+  }
 }
-export interface PlusAvatarGroupPropertiesDisables {}
-export type PlusAvatarGroupProperties = Filter<PlusAvatarGroupPropertiesBase, PlusAvatarGroupPropertiesDisables>;
-export interface PlusAvatarGroupJSX extends PlusAvatarGroupEvents, PlusAvatarGroupProperties {}
+export type PlusAvatarGroupElement = globalThis.HTMLPlusAvatarGroupElement;
+export type PlusAvatarGroupJSX = PlusAvatarGroupAttributes & PlusAvatarGroupEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-avatar-group": PlusAvatarGroupJSX;
+  }
+}
 declare global {
   interface HTMLPlusAvatarGroupElement extends HTMLElement, PlusAvatarGroupMethods, PlusAvatarGroupProperties {}
   var HTMLPlusAvatarGroupElement: {
@@ -85,45 +108,10 @@ declare global {
     "plus-avatar-group": HTMLPlusAvatarGroupElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAvatarGroupElement>, HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
+      "plus-avatar-group": PlusAvatarGroupJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusAvatarGroupElement>, HTMLPlusAvatarGroupElement>, keyof PlusAvatarGroupJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-avatar-group": PlusAvatarGroupAttributes & PlusAvatarGroupEvents & Omit<HTMLAttributes<HTMLPlusAvatarGroupElement>, keyof (PlusAvatarGroupAttributes & PlusAvatarGroupEvents)>;
-    }
-  }
-}
-export type PlusAvatarGroupElement = globalThis.HTMLPlusAvatarGroupElement;
-export interface PlusAvatarGroupVariantOverrides {}

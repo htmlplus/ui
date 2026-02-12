@@ -1,4 +1,4 @@
-import { Q as Query, i as PlusForm, j as getCSSColor, E as ExternalDependencyError, b as _internal_h_, c as Property, V as Variant, O as Overrides, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, i as PlusForm, j as getCSSColor, E as ExternalDependencyError, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -307,17 +307,17 @@ __decorateClass([
 ], PlusSignature.prototype, "undoable", 1);
 __decorateClass([
   Property({
+    type: 0
+  }),
+  Overrides()
+], PlusSignature.prototype, "overrides", 2);
+__decorateClass([
+  Property({
     reflect: true,
     type: 0
   }),
   Variant()
 ], PlusSignature.prototype, "variant", 2);
-__decorateClass([
-  Property({
-    type: 0
-  }),
-  Overrides()
-], PlusSignature.prototype, "overrides", 2);
 __decorateClass([
   Event()
 ], PlusSignature.prototype, "plusAfter", 2);

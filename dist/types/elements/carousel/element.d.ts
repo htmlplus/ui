@@ -138,11 +138,6 @@ export declare class PlusCarousel extends PlusCore {
      */
     tweenFactorBase?: number;
     /**
-     * Provides a visual style variant for the carousel.
-     * Can be used to conditionally apply CSS themes or variants.
-     */
-    variant?: OverridableValue<never>;
-    /**
      * The Embla carousel API.
      */
     get api(): EmblaCarouselType | undefined;
@@ -150,9 +145,13 @@ export declare class PlusCarousel extends PlusCore {
      * TODO: Indicates whether the carousel has been successfully initialized.
      */
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Runs when the carousel has been destroyed.
      * This only fires once and will be the last event the carousel fires.
@@ -308,8 +307,37 @@ export declare class PlusCarousel extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusCarouselAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusCarouselAttributesMapper = {
+  'align': 'align';
+  'autoHeight': 'auto-height';
+  'axis': 'axis';
+  'classes': 'classes';
+  'containScroll': 'contain-scroll';
+  'draggable': 'draggable';
+  'dragThreshold': 'drag-threshold';
+  'duration': 'duration';
+  'focusable': 'focusable';
+  'inViewThreshold': 'in-view-threshold';
+  'loop': 'loop';
+  'plugins': 'plugins';
+  'mirror': 'mirror';
+  'mirrorType': 'mirror-type';
+  'resizable': 'resizable';
+  'slidesToScroll': 'slides-to-scroll';
+  'startIndex': 'start-index';
+  'tweenFactorBase': 'tween-factor-base';
+  'api': 'api';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusCarouselOverridableKeys = 'variant';
+export interface PlusCarouselDisables {}
+export interface PlusCarouselOverrides {}
+export type PlusCarouselAttributes = Filter<PlusCarouselAttributesOverridden, PlusCarouselDisables, PlusCarouselAttributesMapper>;
+export type PlusCarouselAttributesOverridden = Override<PlusCarouselAttributesBase, PlusCarouselOverrides, PlusCarouselOverridableKeys, PlusCarouselAttributesMapper>;
+export type PlusCarouselAttributesBase = {
   /**
   * Align the slides relative to the carousel viewport.
   */
@@ -431,11 +459,6 @@ export interface PlusCarouselAttributesBase {
   */
   "tween-factor-base"?: number;
   /**
-  * Provides a visual style variant for the carousel.
-  * Can be used to conditionally apply CSS themes or variants.
-  */
-  "variant"?: OverridableValue<never, PlusCarouselVariantOverrides>;
-  /**
   * TODO: Indicates whether the carousel has been successfully initialized.
   */
   // @Property()
@@ -443,13 +466,91 @@ export interface PlusCarouselAttributesBase {
   //   return !!this.api;
   // }
   /**
-   * TODO
+   * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
    */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselProperties, "overrides">>;
-}
-export interface PlusCarouselAttributesDisables {}
-export type PlusCarouselAttributes = Filter<PlusCarouselAttributesBase, PlusCarouselAttributesDisables>;
-export interface PlusCarouselEventsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusCarouselEvents = Filter<PlusCarouselEventsBase, PlusCarouselDisables>;
+export type PlusCarouselEventsBase = {
+  /**
+  * Runs when the carousel has been destroyed.
+  * This only fires once and will be the last event the carousel fires.
+  */
+  plusDestroy?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the carousel mounts for the first time.
+  */
+  plusInit?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the user has a pointer down on the carousel.
+  * It's triggered by a `touchstart` or a `mousedown` event.
+  */
+  plusPointerDown?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the user has released the pointer from the carousel.
+  * It's triggered by a `touchend` or a `mouseup` event.
+  */
+  plusPointerUp?: (event: CustomEvent<void>) => void;
+  /**
+  * TODO
+  */
+  plusReInit?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the carousel container or the slide sizes change.
+  * It's using [ResizeObserver](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) under the hood.
+  */
+  plusResize?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the carousel is scrolling.
+  * It might be a good idea to throttle this if you're doing expensive stuff in your callback function.
+  */
+  plusScroll?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the selected scroll snap changes.
+  */
+  plusSelect?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when the carousel has settled after scroll has been triggered.
+  */
+  plusSettle?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when a slide receives focus.
+  * For example, when a focusable element like a button, link or input receives focus inside a slide.
+  */
+  plusSlideFocus?: (event: CustomEvent<void>) => void;
+  /**
+  * TODO
+  */
+  plusSlideFocusStart?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when slides are added to, or removed from the carousel **container**.
+  */
+  plusSlidesChanged?: (event: CustomEvent<void>) => void;
+  /**
+  * Runs when any slide has **entered** or **exited** the viewport.
+  */
+  plusSlidesInView?: (event: CustomEvent<void>) => void;
+};
+export type PlusCarouselEventsJSX = Filter<PlusCarouselEventsBaseJSX, PlusCarouselDisables, {
+  plusDestroy: 'onPlusDestroy';
+  plusInit: 'onPlusInit';
+  plusPointerDown: 'onPlusPointerDown';
+  plusPointerUp: 'onPlusPointerUp';
+  plusReInit: 'onPlusReInit';
+  plusResize: 'onPlusResize';
+  plusScroll: 'onPlusScroll';
+  plusSelect: 'onPlusSelect';
+  plusSettle: 'onPlusSettle';
+  plusSlideFocus: 'onPlusSlideFocus';
+  plusSlideFocusStart: 'onPlusSlideFocusStart';
+  plusSlidesChanged: 'onPlusSlidesChanged';
+  plusSlidesInView: 'onPlusSlidesInView';
+}>;
+export type PlusCarouselEventsBaseJSX = {
   /**
   * Runs when the carousel has been destroyed.
   * This only fires once and will be the last event the carousel fires.
@@ -508,10 +609,9 @@ export interface PlusCarouselEventsBase {
   * Runs when any slide has **entered** or **exited** the viewport.
   */
   onPlusSlidesInView?: (event: CustomEvent<void>) => void;
-}
-export interface PlusCarouselEventsDisables {}
-export type PlusCarouselEvents = Filter<PlusCarouselEventsBase, PlusCarouselEventsDisables>;
-export interface PlusCarouselMethodsBase {
+};
+export type PlusCarouselMethods = Filter<PlusCarouselMethodsBase, PlusCarouselDisables>;
+export type PlusCarouselMethodsBase = {
   /**
   * Check the possibility to scroll to a next snap point.
   * If **loop** property is enabled and the container holds any slides,
@@ -586,10 +686,10 @@ export interface PlusCarouselMethodsBase {
   * Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option.
   */
   slidesNotInView(): number[];
-}
-export interface PlusCarouselMethodsDisables {}
-export type PlusCarouselMethods = Filter<PlusCarouselMethodsBase, PlusCarouselMethodsDisables>;
-export interface PlusCarouselPropertiesBase {
+};
+export type PlusCarouselProperties = Filter<PlusCarouselPropertiesOverridden, PlusCarouselDisables>;
+export type PlusCarouselPropertiesOverridden = Override<PlusCarouselPropertiesBase, PlusCarouselOverrides, PlusCarouselOverridableKeys>;
+export type PlusCarouselPropertiesBase = {
   /**
   * Align the slides relative to the carousel viewport.
   */
@@ -711,11 +811,6 @@ export interface PlusCarouselPropertiesBase {
   */
   tweenFactorBase?: number;
   /**
-  * Provides a visual style variant for the carousel.
-  * Can be used to conditionally apply CSS themes or variants.
-  */
-  variant?: OverridableValue<never, PlusCarouselVariantOverrides>;
-  /**
   * The Embla carousel API.
   */
   readonly api: EmblaCarouselType | undefined;
@@ -727,13 +822,28 @@ export interface PlusCarouselPropertiesBase {
   //   return !!this.api;
   // }
   /**
-   * TODO
+   * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
    */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-carousel': {
+      properties: PlusCarouselPropertiesOverridden;
+    };
+  }
 }
-export interface PlusCarouselPropertiesDisables {}
-export type PlusCarouselProperties = Filter<PlusCarouselPropertiesBase, PlusCarouselPropertiesDisables>;
-export interface PlusCarouselJSX extends PlusCarouselEvents, PlusCarouselProperties {}
+export type PlusCarouselElement = globalThis.HTMLPlusCarouselElement;
+export type PlusCarouselJSX = PlusCarouselAttributes & PlusCarouselEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-carousel": PlusCarouselJSX;
+  }
+}
 declare global {
   interface HTMLPlusCarouselElement extends HTMLElement, PlusCarouselMethods, PlusCarouselProperties {}
   var HTMLPlusCarouselElement: {
@@ -744,45 +854,10 @@ declare global {
     "plus-carousel": HTMLPlusCarouselElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselElement>, HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
+      "plus-carousel": PlusCarouselJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselElement>, HTMLPlusCarouselElement>, keyof PlusCarouselJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel": PlusCarouselAttributes & PlusCarouselEvents & Omit<HTMLAttributes<HTMLPlusCarouselElement>, keyof (PlusCarouselAttributes & PlusCarouselEvents)>;
-    }
-  }
-}
-export type PlusCarouselElement = globalThis.HTMLPlusCarouselElement;
-export interface PlusCarouselVariantOverrides {}

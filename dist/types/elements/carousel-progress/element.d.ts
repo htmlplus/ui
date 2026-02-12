@@ -7,11 +7,11 @@ import { CarouselChild } from '../carousel/child';
  */
 export declare class PlusCarouselProgress extends CarouselChild {
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     $bar: HTMLElement;
@@ -20,38 +20,59 @@ export declare class PlusCarouselProgress extends CarouselChild {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusCarouselProgressAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusCarouselProgressAttributesMapper = {
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusCarouselProgressOverridableKeys = 'variant';
+export interface PlusCarouselProgressDisables {}
+export interface PlusCarouselProgressOverrides {}
+export type PlusCarouselProgressAttributes = Filter<PlusCarouselProgressAttributesOverridden, PlusCarouselProgressDisables, PlusCarouselProgressAttributesMapper>;
+export type PlusCarouselProgressAttributesOverridden = Override<PlusCarouselProgressAttributesBase, PlusCarouselProgressOverrides, PlusCarouselProgressOverridableKeys, PlusCarouselProgressAttributesMapper>;
+export type PlusCarouselProgressAttributesBase = {
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselProgressProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusCarouselProgressVariantOverrides>;
-}
-export interface PlusCarouselProgressAttributesDisables {}
-export type PlusCarouselProgressAttributes = Filter<PlusCarouselProgressAttributesBase, PlusCarouselProgressAttributesDisables>;
-export interface PlusCarouselProgressEventsBase {}
-export interface PlusCarouselProgressEventsDisables {}
-export type PlusCarouselProgressEvents = Filter<PlusCarouselProgressEventsBase, PlusCarouselProgressEventsDisables>;
-export interface PlusCarouselProgressMethodsBase {}
-export interface PlusCarouselProgressMethodsDisables {}
-export type PlusCarouselProgressMethods = Filter<PlusCarouselProgressMethodsBase, PlusCarouselProgressMethodsDisables>;
-export interface PlusCarouselProgressPropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusCarouselProgressEvents = Filter<PlusCarouselProgressEventsBase, PlusCarouselProgressDisables>;
+export type PlusCarouselProgressEventsBase = {};
+export type PlusCarouselProgressEventsJSX = Filter<PlusCarouselProgressEventsBaseJSX, PlusCarouselProgressDisables, {}>;
+export type PlusCarouselProgressEventsBaseJSX = {};
+export type PlusCarouselProgressMethods = Filter<PlusCarouselProgressMethodsBase, PlusCarouselProgressDisables>;
+export type PlusCarouselProgressMethodsBase = {};
+export type PlusCarouselProgressProperties = Filter<PlusCarouselProgressPropertiesOverridden, PlusCarouselProgressDisables>;
+export type PlusCarouselProgressPropertiesOverridden = Override<PlusCarouselProgressPropertiesBase, PlusCarouselProgressOverrides, PlusCarouselProgressOverridableKeys>;
+export type PlusCarouselProgressPropertiesBase = {
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselProgressProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusCarouselProgressVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-carousel-progress': {
+      properties: PlusCarouselProgressPropertiesOverridden;
+    };
+  }
 }
-export interface PlusCarouselProgressPropertiesDisables {}
-export type PlusCarouselProgressProperties = Filter<PlusCarouselProgressPropertiesBase, PlusCarouselProgressPropertiesDisables>;
-export interface PlusCarouselProgressJSX extends PlusCarouselProgressEvents, PlusCarouselProgressProperties {}
+export type PlusCarouselProgressElement = globalThis.HTMLPlusCarouselProgressElement;
+export type PlusCarouselProgressJSX = PlusCarouselProgressAttributes & PlusCarouselProgressEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-carousel-progress": PlusCarouselProgressJSX;
+  }
+}
 declare global {
   interface HTMLPlusCarouselProgressElement extends HTMLElement, PlusCarouselProgressMethods, PlusCarouselProgressProperties {}
   var HTMLPlusCarouselProgressElement: {
@@ -62,45 +83,10 @@ declare global {
     "plus-carousel-progress": HTMLPlusCarouselProgressElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselProgressElement>, HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
+      "plus-carousel-progress": PlusCarouselProgressJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusCarouselProgressElement>, HTMLPlusCarouselProgressElement>, keyof PlusCarouselProgressJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-carousel-progress": PlusCarouselProgressAttributes & PlusCarouselProgressEvents & Omit<HTMLAttributes<HTMLPlusCarouselProgressElement>, keyof (PlusCarouselProgressAttributes & PlusCarouselProgressEvents)>;
-    }
-  }
-}
-export type PlusCarouselProgressElement = globalThis.HTMLPlusCarouselProgressElement;
-export interface PlusCarouselProgressVariantOverrides {}

@@ -8,48 +8,69 @@ import { PlusBreakpoint } from '../../types';
  */
 export declare class PlusDialogFooter extends PlusCore {
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * TODO
+     * See [Variant](/variant-property) for details.
      */
     variant?: OverridableValue<never>;
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusDialogFooterAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusDialogFooterAttributesMapper = {
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusDialogFooterOverridableKeys = 'variant';
+export interface PlusDialogFooterDisables {}
+export interface PlusDialogFooterOverrides {}
+export type PlusDialogFooterAttributes = Filter<PlusDialogFooterAttributesOverridden, PlusDialogFooterDisables, PlusDialogFooterAttributesMapper>;
+export type PlusDialogFooterAttributesOverridden = Override<PlusDialogFooterAttributesBase, PlusDialogFooterOverrides, PlusDialogFooterOverridableKeys, PlusDialogFooterAttributesMapper>;
+export type PlusDialogFooterAttributesBase = {
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogFooterProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  "variant"?: OverridableValue<never, PlusDialogFooterVariantOverrides>;
-}
-export interface PlusDialogFooterAttributesDisables {}
-export type PlusDialogFooterAttributes = Filter<PlusDialogFooterAttributesBase, PlusDialogFooterAttributesDisables>;
-export interface PlusDialogFooterEventsBase {}
-export interface PlusDialogFooterEventsDisables {}
-export type PlusDialogFooterEvents = Filter<PlusDialogFooterEventsBase, PlusDialogFooterEventsDisables>;
-export interface PlusDialogFooterMethodsBase {}
-export interface PlusDialogFooterMethodsDisables {}
-export type PlusDialogFooterMethods = Filter<PlusDialogFooterMethodsBase, PlusDialogFooterMethodsDisables>;
-export interface PlusDialogFooterPropertiesBase {
+  "variant"?: OverridableValue<never>;
+};
+export type PlusDialogFooterEvents = Filter<PlusDialogFooterEventsBase, PlusDialogFooterDisables>;
+export type PlusDialogFooterEventsBase = {};
+export type PlusDialogFooterEventsJSX = Filter<PlusDialogFooterEventsBaseJSX, PlusDialogFooterDisables, {}>;
+export type PlusDialogFooterEventsBaseJSX = {};
+export type PlusDialogFooterMethods = Filter<PlusDialogFooterMethodsBase, PlusDialogFooterDisables>;
+export type PlusDialogFooterMethodsBase = {};
+export type PlusDialogFooterProperties = Filter<PlusDialogFooterPropertiesOverridden, PlusDialogFooterDisables>;
+export type PlusDialogFooterPropertiesOverridden = Override<PlusDialogFooterPropertiesBase, PlusDialogFooterOverrides, PlusDialogFooterOverridableKeys>;
+export type PlusDialogFooterPropertiesBase = {
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogFooterProperties, "overrides">>;
   /**
-  * TODO
+  * See [Variant](/variant-property) for details.
   */
-  variant?: OverridableValue<never, PlusDialogFooterVariantOverrides>;
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-dialog-footer': {
+      properties: PlusDialogFooterPropertiesOverridden;
+    };
+  }
 }
-export interface PlusDialogFooterPropertiesDisables {}
-export type PlusDialogFooterProperties = Filter<PlusDialogFooterPropertiesBase, PlusDialogFooterPropertiesDisables>;
-export interface PlusDialogFooterJSX extends PlusDialogFooterEvents, PlusDialogFooterProperties {}
+export type PlusDialogFooterElement = globalThis.HTMLPlusDialogFooterElement;
+export type PlusDialogFooterJSX = PlusDialogFooterAttributes & PlusDialogFooterEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-dialog-footer": PlusDialogFooterJSX;
+  }
+}
 declare global {
   interface HTMLPlusDialogFooterElement extends HTMLElement, PlusDialogFooterMethods, PlusDialogFooterProperties {}
   var HTMLPlusDialogFooterElement: {
@@ -60,45 +81,10 @@ declare global {
     "plus-dialog-footer": HTMLPlusDialogFooterElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogFooterElement>, HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
+      "plus-dialog-footer": PlusDialogFooterJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusDialogFooterElement>, HTMLPlusDialogFooterElement>, keyof PlusDialogFooterJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-dialog-footer": PlusDialogFooterAttributes & PlusDialogFooterEvents & Omit<HTMLAttributes<HTMLPlusDialogFooterElement>, keyof (PlusDialogFooterAttributes & PlusDialogFooterEvents)>;
-    }
-  }
-}
-export type PlusDialogFooterElement = globalThis.HTMLPlusDialogFooterElement;
-export interface PlusDialogFooterVariantOverrides {}

@@ -55,15 +55,15 @@ export declare class PlusTooltip extends PlusCore {
     /**
      * TODO
      */
-    variant?: OverridableValue<never>;
-    /**
-     * TODO
-     */
     z?: 'auto' | 'vertical' | 'horizontal' | 'move';
     /**
-     * TODO
+     * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
+    /**
+     * See [Variant](/variant-property) for details.
+     */
+    variant?: OverridableValue<never>;
     /**
      * Hides the element.
      */
@@ -96,8 +96,27 @@ export declare class PlusTooltip extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Overrides> = { [K in keyof Base as K extends keyof Overrides ? Overrides[K] extends never ? never : K : K]: Base[K] };
-export interface PlusTooltipAttributesBase {
+type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+export type PlusTooltipAttributesMapper = {
+  'arrow': 'arrow';
+  'delay': 'delay';
+  'disabled': 'disabled';
+  'fixed': 'fixed';
+  'offset': 'offset';
+  'placement': 'placement';
+  'reference': 'reference';
+  'trigger': 'trigger';
+  'z': 'z';
+  'overrides': 'overrides';
+  'variant': 'variant';
+};
+export type PlusTooltipOverridableKeys = 'variant';
+export interface PlusTooltipDisables {}
+export interface PlusTooltipOverrides {}
+export type PlusTooltipAttributes = Filter<PlusTooltipAttributesOverridden, PlusTooltipDisables, PlusTooltipAttributesMapper>;
+export type PlusTooltipAttributesOverridden = Override<PlusTooltipAttributesBase, PlusTooltipOverrides, PlusTooltipOverridableKeys, PlusTooltipAttributesMapper>;
+export type PlusTooltipAttributesBase = {
   /**
   * Specifies whether to display the arrow or not.
   */
@@ -140,22 +159,22 @@ export interface PlusTooltipAttributesBase {
   /**
   * TODO
   */
-  "variant"?: OverridableValue<never, PlusTooltipVariantOverrides>;
-  /**
-  * TODO
-  */
   "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTooltipProperties, "overrides">>;
-}
-export interface PlusTooltipAttributesDisables {}
-export type PlusTooltipAttributes = Filter<PlusTooltipAttributesBase, PlusTooltipAttributesDisables>;
-export interface PlusTooltipEventsBase {}
-export interface PlusTooltipEventsDisables {}
-export type PlusTooltipEvents = Filter<PlusTooltipEventsBase, PlusTooltipEventsDisables>;
-export interface PlusTooltipMethodsBase {
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  "variant"?: OverridableValue<never>;
+};
+export type PlusTooltipEvents = Filter<PlusTooltipEventsBase, PlusTooltipDisables>;
+export type PlusTooltipEventsBase = {};
+export type PlusTooltipEventsJSX = Filter<PlusTooltipEventsBaseJSX, PlusTooltipDisables, {}>;
+export type PlusTooltipEventsBaseJSX = {};
+export type PlusTooltipMethods = Filter<PlusTooltipMethodsBase, PlusTooltipDisables>;
+export type PlusTooltipMethodsBase = {
   /**
   * Hides the element.
   */
@@ -168,10 +187,10 @@ export interface PlusTooltipMethodsBase {
   * Updates the element's position.
   */
   update();
-}
-export interface PlusTooltipMethodsDisables {}
-export type PlusTooltipMethods = Filter<PlusTooltipMethodsBase, PlusTooltipMethodsDisables>;
-export interface PlusTooltipPropertiesBase {
+};
+export type PlusTooltipProperties = Filter<PlusTooltipPropertiesOverridden, PlusTooltipDisables>;
+export type PlusTooltipPropertiesOverridden = Override<PlusTooltipPropertiesBase, PlusTooltipOverrides, PlusTooltipOverridableKeys>;
+export type PlusTooltipPropertiesBase = {
   /**
   * Specifies whether to display the arrow or not.
   */
@@ -214,19 +233,30 @@ export interface PlusTooltipPropertiesBase {
   /**
   * TODO
   */
-  variant?: OverridableValue<never, PlusTooltipVariantOverrides>;
-  /**
-  * TODO
-  */
   z?: 'auto' | 'vertical' | 'horizontal' | 'move';
   /**
-  * TODO
+  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTooltipProperties, "overrides">>;
+  /**
+  * See [Variant](/variant-property) for details.
+  */
+  variant?: OverridableValue<never>;
+};
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-tooltip': {
+      properties: PlusTooltipPropertiesOverridden;
+    };
+  }
 }
-export interface PlusTooltipPropertiesDisables {}
-export type PlusTooltipProperties = Filter<PlusTooltipPropertiesBase, PlusTooltipPropertiesDisables>;
-export interface PlusTooltipJSX extends PlusTooltipEvents, PlusTooltipProperties {}
+export type PlusTooltipElement = globalThis.HTMLPlusTooltipElement;
+export type PlusTooltipJSX = PlusTooltipAttributes & PlusTooltipEventsJSX;
+export namespace JSX {
+  interface IntrinsicElements {
+    "plus-tooltip": PlusTooltipJSX;
+  }
+}
 declare global {
   interface HTMLPlusTooltipElement extends HTMLElement, PlusTooltipMethods, PlusTooltipProperties {}
   var HTMLPlusTooltipElement: {
@@ -237,45 +267,10 @@ declare global {
     "plus-tooltip": HTMLPlusTooltipElement;
   }
 }
-export namespace JSX {
-  interface IntrinsicElements {
-    "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents;
-  }
-}
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTooltipElement>, HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
+      "plus-tooltip": PlusTooltipJSX & Omit<DetailedHTMLProps<HTMLAttributes<HTMLPlusTooltipElement>, HTMLPlusTooltipElement>, keyof PlusTooltipJSX>;
     }
   }
 }
-declare module "@builder.io/qwik" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
-    }
-  }
-}
-declare module "inferno" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
-    }
-  }
-}
-declare module "preact" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
-    }
-  }
-}
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "plus-tooltip": PlusTooltipAttributes & PlusTooltipEvents & Omit<HTMLAttributes<HTMLPlusTooltipElement>, keyof (PlusTooltipAttributes & PlusTooltipEvents)>;
-    }
-  }
-}
-export type PlusTooltipElement = globalThis.HTMLPlusTooltipElement;
-export interface PlusTooltipVariantOverrides {}

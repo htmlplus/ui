@@ -53,24 +53,10 @@ export class PlusProgressBar extends PlusCore {
 	min?: number = 0;
 
 	/**
-	 * TODO
-	 */
-	@Property()
-	@Overrides()
-	overrides?: OverridesConfig<PlusBreakpoint>;
-
-	/**
 	 * Eliminates delays in updating value.
 	 */
 	@Property({ reflect: true })
 	sync?: boolean;
-
-	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
 
 	/**
 	 * Specifies the progress of the bar by a number between `min` and `max`.
@@ -78,11 +64,27 @@ export class PlusProgressBar extends PlusCore {
 	@Property()
 	value?: number = 0;
 
+	/**
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
+
 	@Style()
 	get style() {
 		return {
-			'min-width': this.stacked ? this.percentage : null,
-			'--plus-progress-bar-indicator-background-color': toCSSColor(this.color)
+			':host': {
+				'min-width': this.stacked ? this.percentage : null,
+				'--plus-progress-bar-indicator-background-color': toCSSColor(this.color)
+			}
 		};
 	}
 

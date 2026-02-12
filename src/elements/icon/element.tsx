@@ -85,18 +85,18 @@ export class PlusIcon extends PlusCore {
 	size?: PlusIconSize;
 
 	/**
-	 * TODO
-	 */
-	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
-
-	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
 	 */
 	@Property()
 	@Overrides()
 	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
+	 */
+	@Property({ reflect: true })
+	@Variant()
+	variant?: OverridableValue<never>;
 
 	cache = new AsyncCache<PlusIconResolver>({
 		type: 'external',
@@ -141,10 +141,12 @@ export class PlusIcon extends PlusCore {
 	@Style()
 	get style() {
 		return {
-			color: toCSSColor(this.color),
-			height: toCSSUnit(this.size),
-			width: toCSSUnit(this.size),
-			rotate: this.rotate ? `${this.rotate}deg` : undefined
+			':host': {
+				color: toCSSColor(this.color),
+				height: toCSSUnit(this.size),
+				width: toCSSUnit(this.size),
+				rotate: this.rotate ? `${this.rotate}deg` : undefined
+			}
 		};
 	}
 

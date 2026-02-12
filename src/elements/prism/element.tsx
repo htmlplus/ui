@@ -51,13 +51,6 @@ export class PlusPrism extends PlusCore {
 	theme?: string = 'default';
 
 	/**
-	 * TODO
-	 */
-	@Property()
-	@Overrides()
-	overrides?: OverridesConfig<PlusBreakpoint>;
-
-	/**
 	 * Plugins to enhance Prism's functionality.
 	 */
 	@Property()
@@ -76,7 +69,14 @@ export class PlusPrism extends PlusCore {
 	sync?: boolean;
 
 	/**
-	 * TODO
+	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
+	 */
+	@Property()
+	@Overrides()
+	overrides?: OverridesConfig<PlusBreakpoint>;
+
+	/**
+	 * See [Variant](/variant-property) for details.
 	 */
 	@Property({ reflect: true })
 	@Variant()
