@@ -1,3 +1,9 @@
+## [1.8.3](https://github.com/htmlplus/ui/compare/v1.8.2...v1.8.3) (2026-02-12)
+
+### Bug Fixes
+
+* Improve `getConfig` and `setConfig` utility typings ([1f9eb87](https://github.com/htmlplus/ui/commit/1f9eb87ce73eefcfe4db9839c0f6921859385a72))
+
 ## [1.8.2](https://github.com/htmlplus/ui/compare/v1.8.1...v1.8.2) (2026-01-07)
 
 ### Bug Fixes
