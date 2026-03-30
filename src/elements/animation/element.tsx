@@ -31,7 +31,7 @@ import './assets/names/fading-exits/fade-out.js';
  *
  * @slot default - The default slot.
  *
- * @examples default, name, duration, easing, methods, keyframes, register-a-custom-name, button, intersection
+ * @examples default, name, duration, easing, methods, keyframes, register-a-custom-name, name-type-safe, button, intersection
  */
 @Element()
 export class PlusAnimation extends PlusCore {

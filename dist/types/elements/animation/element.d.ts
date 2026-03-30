@@ -10,7 +10,7 @@ import { PlusBreakpoint } from '../../types';
  *
  * @slot default - The default slot.
  *
- * @examples default, name, duration, easing, methods, keyframes, register-a-custom-name, button, intersection
+ * @examples default, name, duration, easing, methods, keyframes, register-a-custom-name, name-type-safe, button, intersection
  */
 export declare class PlusAnimation extends PlusCore {
     /**
