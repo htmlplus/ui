@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 /**
  * Progress bar expresses an unspecified wait time or display the length of a process.
  *
@@ -17,7 +17,7 @@ export declare class PlusProgressBar extends PlusCore {
     /**
      * Specifies the color of the bar.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Displays the progress percentage.
      */
@@ -84,7 +84,7 @@ export type PlusProgressBarAttributesBase = {
   /**
   * Specifies the color of the bar.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Displays the progress percentage.
   */
@@ -130,7 +130,7 @@ export type PlusProgressBarPropertiesBase = {
   /**
   * Specifies the color of the bar.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Displays the progress percentage.
   */

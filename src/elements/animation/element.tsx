@@ -128,7 +128,7 @@ export class PlusAnimation extends PlusCore {
 	 * The list of available animations is [here](/element/animation/names).
 	 */
 	@Property()
-	name?: OverridableValue<string & {}>;
+	name?: OverridableValue<string>;
 
 	/**
 	 * Sets the animation's playback rate.

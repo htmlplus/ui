@@ -424,7 +424,7 @@
             {
               "name": "name",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string>"
               },
               "description": "Specifies what kind of animation will play. The list of available animations is [here](/element/animation/names)."
             },
@@ -530,7 +530,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "default": "'dodgerblue'",
               "description": "Specifies the color of the bar."
@@ -615,7 +615,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "description": "Specifies the color."
             },
@@ -2877,7 +2877,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "description": "Specifies the color."
             },
@@ -3455,7 +3455,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "description": "Specifies the color."
             },
@@ -3476,7 +3476,7 @@
             {
               "name": "name",
               "value": {
-                "type": "OverridableValue<string & {}>"
+                "type": "OverridableValue<string>"
               },
               "description": "Specifies the name."
             },
@@ -3779,7 +3779,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "description": "Specifies the color of the bar."
             },
@@ -4186,7 +4186,7 @@
             {
               "name": "background-color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "default": "'lightgray'",
               "description": "Specifies the background color."
@@ -4208,7 +4208,7 @@
             {
               "name": "pen-color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "default": "'black'",
               "description": "Specifies the color of the strokes."
@@ -4340,7 +4340,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "description": "Specifies the color."
             },
@@ -4459,7 +4459,7 @@
             {
               "name": "color",
               "value": {
-                "type": "OverridableValue<string & {}, PlusColorOverrides>"
+                "type": "OverridableValue<PlusColor>"
               },
               "description": "Specifies the color."
             },

@@ -19,7 +19,7 @@ import type { FromDataUrlOptions, Options, PointGroup, ToSVGOptions } from 'sign
 import { PlusForm } from '@/core';
 import { ExternalDependencyError } from '@/errors';
 import { getCSSColor } from '@/helpers';
-import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+import type { PlusBreakpoint, PlusColor } from '@/types';
 
 let Core: typeof CoreType;
 
@@ -41,7 +41,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the background color.
 	 */
 	@Property()
-	backgroundColor?: OverridableValue<string & {}, PlusColorOverrides> = 'lightgray';
+	backgroundColor?: OverridableValue<PlusColor> = 'lightgray';
 
 	/**
 	 * Specifies configuration options for the canvas 2D rendering context.
@@ -65,7 +65,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the color of the strokes.
 	 */
 	@Property()
-	penColor?: OverridableValue<string & {}, PlusColorOverrides> = 'black';
+	penColor?: OverridableValue<PlusColor> = 'black';
 
 	/**
 	 * Add the next point only if the previous one is farther than x pixels.

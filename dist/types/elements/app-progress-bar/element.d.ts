@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 /**
  * A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations.
  *
@@ -12,7 +12,7 @@ export declare class PlusAppProgressBar extends PlusCore {
     /**
      * Specifies the color of the bar.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
      */
@@ -93,7 +93,7 @@ export type PlusAppProgressBarAttributesBase = {
   /**
   * Specifies the color of the bar.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
   */
@@ -152,7 +152,7 @@ export type PlusAppProgressBarPropertiesBase = {
   /**
   * Specifies the color of the bar.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
   */

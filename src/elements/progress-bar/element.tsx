@@ -10,7 +10,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor } from '@/helpers';
-import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+import type { PlusBreakpoint, PlusColor } from '@/types';
 
 /**
  * Progress bar expresses an unspecified wait time or display the length of a process.
@@ -32,7 +32,7 @@ export class PlusProgressBar extends PlusCore {
 	 * Specifies the color of the bar.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}, PlusColorOverrides>;
+	color?: OverridableValue<PlusColor>;
 
 	/**
 	 * Displays the progress percentage.

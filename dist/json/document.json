@@ -28,7 +28,7 @@
         }
       ],
       "key": "plus-accordion",
-      "lastModified": "2026-02-12T20:52:10.573Z",
+      "lastModified": "2026-03-31T21:47:46.802Z",
       "methods": [
         {
           "async": false,
@@ -195,7 +195,7 @@
     {
       "events": [],
       "key": "plus-accordions",
-      "lastModified": "2026-02-12T20:52:10.573Z",
+      "lastModified": "2026-03-31T21:47:46.803Z",
       "methods": [],
       "properties": [
         {
@@ -262,7 +262,7 @@
         }
       ],
       "key": "plus-animation",
-      "lastModified": "2026-02-21T23:58:56.711Z",
+      "lastModified": "2026-04-02T23:01:47.384Z",
       "methods": [
         {
           "async": false,
@@ -460,7 +460,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies what kind of animation will play. The list of available animations is [here](/element/animation/names)."
         },
@@ -530,7 +530,7 @@
     {
       "events": [],
       "key": "plus-app-progress-bar",
-      "lastModified": "2026-02-12T20:52:10.573Z",
+      "lastModified": "2026-04-02T23:01:47.384Z",
       "methods": [
         {
           "async": false,
@@ -599,7 +599,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
@@ -684,7 +684,7 @@
     {
       "events": [],
       "key": "plus-avatar",
-      "lastModified": "2026-02-12T20:52:10.574Z",
+      "lastModified": "2026-04-02T23:08:15.367Z",
       "methods": [],
       "properties": [
         {
@@ -693,7 +693,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -782,7 +782,7 @@
     {
       "events": [],
       "key": "plus-avatar-group",
-      "lastModified": "2026-02-12T20:52:10.574Z",
+      "lastModified": "2026-03-31T21:47:46.806Z",
       "methods": [],
       "properties": [
         {
@@ -840,7 +840,7 @@
     {
       "events": [],
       "key": "plus-breadcrumb",
-      "lastModified": "2026-02-12T20:52:10.574Z",
+      "lastModified": "2026-03-31T21:47:46.807Z",
       "methods": [],
       "properties": [
         {
@@ -978,7 +978,7 @@
         }
       ],
       "key": "plus-browse",
-      "lastModified": "2026-02-12T20:52:10.574Z",
+      "lastModified": "2026-03-31T21:47:46.809Z",
       "methods": [
         {
           "async": false,
@@ -1106,7 +1106,7 @@
     {
       "events": [],
       "key": "plus-card",
-      "lastModified": "2026-02-12T20:52:10.575Z",
+      "lastModified": "2026-03-31T21:47:46.810Z",
       "methods": [],
       "properties": [
         {
@@ -1216,7 +1216,7 @@
     {
       "events": [],
       "key": "plus-card-body",
-      "lastModified": "2026-02-12T20:52:10.574Z",
+      "lastModified": "2026-03-31T21:47:46.809Z",
       "methods": [],
       "properties": [
         {
@@ -1335,7 +1335,7 @@
         }
       ],
       "key": "plus-carousel",
-      "lastModified": "2026-02-12T20:52:10.576Z",
+      "lastModified": "2026-03-31T21:47:46.815Z",
       "methods": [
         {
           "async": false,
@@ -1742,7 +1742,7 @@
     {
       "events": [],
       "key": "plus-carousel-button",
-      "lastModified": "2026-02-12T20:52:10.575Z",
+      "lastModified": "2026-03-31T21:47:46.810Z",
       "methods": [],
       "properties": [
         {
@@ -1799,7 +1799,7 @@
     {
       "events": [],
       "key": "plus-carousel-counter",
-      "lastModified": "2026-02-12T20:52:10.575Z",
+      "lastModified": "2026-03-31T21:47:46.811Z",
       "methods": [],
       "properties": [
         {
@@ -1842,7 +1842,7 @@
     {
       "events": [],
       "key": "plus-carousel-indicators",
-      "lastModified": "2026-02-12T20:52:10.575Z",
+      "lastModified": "2026-03-31T21:47:46.811Z",
       "methods": [],
       "properties": [
         {
@@ -1902,7 +1902,7 @@
     {
       "events": [],
       "key": "plus-carousel-progress",
-      "lastModified": "2026-02-12T20:52:10.575Z",
+      "lastModified": "2026-03-31T21:47:46.812Z",
       "methods": [],
       "properties": [
         {
@@ -1935,7 +1935,7 @@
     {
       "events": [],
       "key": "plus-carousel-slide",
-      "lastModified": "2026-02-12T20:52:10.576Z",
+      "lastModified": "2026-03-31T21:47:46.812Z",
       "methods": [],
       "properties": [
         {
@@ -1983,7 +1983,7 @@
     {
       "events": [],
       "key": "plus-carousel-slides",
-      "lastModified": "2026-02-12T20:52:10.576Z",
+      "lastModified": "2026-03-31T21:47:46.813Z",
       "methods": [],
       "properties": [
         {
@@ -2022,7 +2022,7 @@
     {
       "events": [],
       "key": "plus-center",
-      "lastModified": "2026-02-12T20:52:10.576Z",
+      "lastModified": "2026-03-31T21:47:46.815Z",
       "methods": [],
       "properties": [
         {
@@ -2080,7 +2080,7 @@
         }
       ],
       "key": "plus-click-outside",
-      "lastModified": "2026-02-12T20:52:10.577Z",
+      "lastModified": "2026-03-31T21:47:46.816Z",
       "methods": [],
       "properties": [
         {
@@ -2156,7 +2156,7 @@
         }
       ],
       "key": "plus-counter",
-      "lastModified": "2026-02-12T20:52:10.577Z",
+      "lastModified": "2026-03-31T21:47:46.816Z",
       "methods": [
         {
           "async": false,
@@ -2371,7 +2371,7 @@
         }
       ],
       "key": "plus-cropper",
-      "lastModified": "2026-02-12T20:52:10.577Z",
+      "lastModified": "2026-03-31T21:47:46.818Z",
       "methods": [
         {
           "async": false,
@@ -2944,7 +2944,7 @@
         }
       ],
       "key": "plus-dialog",
-      "lastModified": "2026-02-12T20:52:10.578Z",
+      "lastModified": "2026-03-31T21:47:46.822Z",
       "methods": [
         {
           "async": false,
@@ -3165,7 +3165,7 @@
     {
       "events": [],
       "key": "plus-dialog-body",
-      "lastModified": "2026-02-12T20:52:10.577Z",
+      "lastModified": "2026-03-31T21:47:46.818Z",
       "methods": [],
       "properties": [
         {
@@ -3213,7 +3213,7 @@
     {
       "events": [],
       "key": "plus-dialog-content",
-      "lastModified": "2026-02-12T20:52:10.578Z",
+      "lastModified": "2026-03-31T21:47:46.819Z",
       "methods": [],
       "properties": [
         {
@@ -3261,7 +3261,7 @@
     {
       "events": [],
       "key": "plus-dialog-footer",
-      "lastModified": "2026-02-12T20:52:10.578Z",
+      "lastModified": "2026-03-31T21:47:46.819Z",
       "methods": [],
       "properties": [
         {
@@ -3300,7 +3300,7 @@
     {
       "events": [],
       "key": "plus-dialog-header",
-      "lastModified": "2026-02-12T20:52:10.578Z",
+      "lastModified": "2026-03-31T21:47:46.819Z",
       "methods": [],
       "properties": [
         {
@@ -3339,7 +3339,7 @@
     {
       "events": [],
       "key": "plus-dialog-toggler",
-      "lastModified": "2026-02-12T20:52:10.578Z",
+      "lastModified": "2026-03-31T21:47:46.820Z",
       "methods": [],
       "properties": [
         {
@@ -3395,7 +3395,7 @@
     {
       "events": [],
       "key": "plus-divider",
-      "lastModified": "2026-02-12T20:52:10.579Z",
+      "lastModified": "2026-04-02T23:01:47.385Z",
       "methods": [],
       "properties": [
         {
@@ -3404,7 +3404,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -3563,7 +3563,7 @@
         }
       ],
       "key": "plus-drawer",
-      "lastModified": "2026-02-12T20:52:10.579Z",
+      "lastModified": "2026-03-31T21:47:46.823Z",
       "methods": [
         {
           "async": false,
@@ -3748,7 +3748,7 @@
     {
       "events": [],
       "key": "plus-drawer-toggler",
-      "lastModified": "2026-02-12T20:52:10.579Z",
+      "lastModified": "2026-03-31T21:47:46.823Z",
       "methods": [],
       "properties": [
         {
@@ -3804,7 +3804,7 @@
     {
       "events": [],
       "key": "plus-faker",
-      "lastModified": "2026-02-12T20:52:10.579Z",
+      "lastModified": "2026-03-31T21:47:46.824Z",
       "methods": [],
       "properties": [
         {
@@ -3884,7 +3884,7 @@
     {
       "events": [],
       "key": "plus-format-bytes",
-      "lastModified": "2026-02-12T20:52:10.579Z",
+      "lastModified": "2026-03-31T21:47:46.825Z",
       "methods": [],
       "properties": [
         {
@@ -4003,7 +4003,7 @@
     {
       "events": [],
       "key": "plus-icon",
-      "lastModified": "2026-02-12T20:52:10.580Z",
+      "lastModified": "2026-04-02T23:01:47.386Z",
       "methods": [],
       "properties": [
         {
@@ -4012,7 +4012,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -4040,7 +4040,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}>",
+          "type": "OverridableValue<string>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the name."
         },
@@ -4133,7 +4133,7 @@
         }
       ],
       "key": "plus-intersection",
-      "lastModified": "2026-02-12T20:52:10.580Z",
+      "lastModified": "2026-03-31T21:47:46.827Z",
       "methods": [],
       "properties": [
         {
@@ -4221,7 +4221,7 @@
     {
       "events": [],
       "key": "plus-prism",
-      "lastModified": "2026-02-12T20:52:10.580Z",
+      "lastModified": "2026-03-31T21:47:46.828Z",
       "methods": [],
       "properties": [
         {
@@ -4337,7 +4337,7 @@
     {
       "events": [],
       "key": "plus-progress-bar",
-      "lastModified": "2026-02-12T20:52:10.580Z",
+      "lastModified": "2026-04-02T23:01:47.386Z",
       "methods": [],
       "properties": [
         {
@@ -4355,7 +4355,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
         },
@@ -4463,7 +4463,7 @@
     {
       "events": [],
       "key": "plus-progress-bar-stack",
-      "lastModified": "2026-02-12T20:52:10.580Z",
+      "lastModified": "2026-03-31T21:47:46.828Z",
       "methods": [],
       "properties": [
         {
@@ -4502,7 +4502,7 @@
     {
       "events": [],
       "key": "plus-relative-time",
-      "lastModified": "2026-02-12T20:52:10.580Z",
+      "lastModified": "2026-03-31T21:47:46.830Z",
       "methods": [],
       "properties": [
         {
@@ -4589,7 +4589,7 @@
         }
       ],
       "key": "plus-scroll-detector",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-03-31T21:47:46.831Z",
       "methods": [],
       "properties": [
         {
@@ -4690,7 +4690,7 @@
         }
       ],
       "key": "plus-signature",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-04-02T23:01:47.387Z",
       "methods": [
         {
           "async": false,
@@ -4820,7 +4820,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the background color."
         },
@@ -4850,7 +4850,7 @@
           "readonly": false,
           "reflects": false,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the strokes."
         },
@@ -5012,7 +5012,7 @@
     {
       "events": [],
       "key": "plus-snippet",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-04-02T23:01:47.387Z",
       "methods": [],
       "properties": [
         {
@@ -5021,7 +5021,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -5102,7 +5102,7 @@
     {
       "events": [],
       "key": "plus-spacer",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-03-31T21:47:46.835Z",
       "methods": [],
       "properties": [
         {
@@ -5146,7 +5146,7 @@
     {
       "events": [],
       "key": "plus-spinner",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-04-02T23:01:47.387Z",
       "methods": [],
       "properties": [
         {
@@ -5155,7 +5155,7 @@
           "readonly": false,
           "reflects": true,
           "required": false,
-          "type": "OverridableValue<string & {}, PlusColorOverrides>",
+          "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color."
         },
@@ -5218,7 +5218,7 @@
     {
       "events": [],
       "key": "plus-stack",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-03-31T21:47:46.837Z",
       "methods": [],
       "properties": [
         {
@@ -5325,7 +5325,7 @@
         }
       ],
       "key": "plus-sticky",
-      "lastModified": "2026-02-12T20:52:10.581Z",
+      "lastModified": "2026-03-31T21:47:46.838Z",
       "methods": [],
       "properties": [
         {
@@ -5424,7 +5424,7 @@
         }
       ],
       "key": "plus-switch",
-      "lastModified": "2026-02-12T20:52:10.582Z",
+      "lastModified": "2026-03-31T21:47:46.838Z",
       "methods": [],
       "properties": [
         {
@@ -5489,7 +5489,7 @@
         }
       ],
       "key": "plus-tabs",
-      "lastModified": "2026-02-12T20:52:10.582Z",
+      "lastModified": "2026-03-31T21:47:46.841Z",
       "methods": [],
       "properties": [
         {
@@ -5554,7 +5554,7 @@
     {
       "events": [],
       "key": "plus-tabs-bar",
-      "lastModified": "2026-02-12T20:52:10.582Z",
+      "lastModified": "2026-03-31T21:47:46.839Z",
       "methods": [],
       "properties": [
         {
@@ -5621,7 +5621,7 @@
     {
       "events": [],
       "key": "plus-tabs-panel",
-      "lastModified": "2026-02-12T20:52:10.582Z",
+      "lastModified": "2026-03-31T21:47:46.839Z",
       "methods": [],
       "properties": [
         {
@@ -5678,7 +5678,7 @@
     {
       "events": [],
       "key": "plus-tabs-panels",
-      "lastModified": "2026-02-12T20:52:10.582Z",
+      "lastModified": "2026-03-31T21:47:46.840Z",
       "methods": [],
       "properties": [
         {
@@ -5717,7 +5717,7 @@
     {
       "events": [],
       "key": "plus-tabs-tab",
-      "lastModified": "2026-02-12T20:52:10.582Z",
+      "lastModified": "2026-03-31T21:47:46.840Z",
       "methods": [],
       "properties": [
         {
@@ -5783,7 +5783,7 @@
     {
       "events": [],
       "key": "plus-tooltip",
-      "lastModified": "2026-02-12T20:52:10.583Z",
+      "lastModified": "2026-03-31T21:47:46.841Z",
       "methods": [
         {
           "async": false,

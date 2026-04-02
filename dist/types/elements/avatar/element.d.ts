@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 import { PlusAvatarSize } from './types';
 /**
  * An image representing a user's profile picture.
@@ -17,7 +17,7 @@ export declare class PlusAvatar extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Specifies the shape of the element.
      */
@@ -156,7 +156,7 @@ export type PlusAvatarAttributesBase = {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Specifies the shape of the element.
   */
@@ -186,7 +186,7 @@ export type PlusAvatarPropertiesBase = {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Specifies the shape of the element.
   */

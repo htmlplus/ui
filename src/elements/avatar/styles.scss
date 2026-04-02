@@ -49,7 +49,7 @@ slot[name] {
   position: absolute;
 }
 
-slot:not([name]) {
+slot[part=content] {
   border-radius: inherit;
   font-size: $avatar-font-size;
 }

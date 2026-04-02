@@ -1,7 +1,7 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
 import { AsyncCache } from '../../services';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 import { PlusIconResolver, PlusIconSize } from './types';
 /**
  * A graphical representation of an action, object,
@@ -19,7 +19,7 @@ export declare class PlusIcon extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Flips in `horizontal`, `vertical` or `both` directions.
      */
@@ -31,7 +31,7 @@ export declare class PlusIcon extends PlusCore {
     /**
      * Specifies the name.
      */
-    name?: OverridableValue<string & {}>;
+    name?: OverridableValue<string>;
     /**
      * An asynchronous function to load SVG files.
      */
@@ -88,7 +88,7 @@ export type PlusIconAttributesBase = {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Flips in `horizontal`, `vertical` or `both` directions.
   */
@@ -100,7 +100,7 @@ export type PlusIconAttributesBase = {
   /**
   * Specifies the name.
   */
-  "name"?: OverridableValue<string & {}>;
+  "name"?: OverridableValue<string>;
   /**
   * An asynchronous function to load SVG files.
   */
@@ -134,7 +134,7 @@ export type PlusIconPropertiesBase = {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Flips in `horizontal`, `vertical` or `both` directions.
   */
@@ -146,7 +146,7 @@ export type PlusIconPropertiesBase = {
   /**
   * Specifies the name.
   */
-  name?: OverridableValue<string & {}>;
+  name?: OverridableValue<string>;
   /**
   * An asynchronous function to load SVG files.
   */

@@ -10,7 +10,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor } from '@/helpers';
-import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+import type { PlusBreakpoint, PlusColor } from '@/types';
 
 /**
  * A thin line that divides the content vertically or horizontally.
@@ -31,7 +31,7 @@ export class PlusDivider extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}, PlusColorOverrides>;
+	color?: OverridableValue<PlusColor>;
 
 	/**
 	 * Specifies the amount of indentation.

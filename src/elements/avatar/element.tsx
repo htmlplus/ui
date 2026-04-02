@@ -10,7 +10,7 @@ import {
 
 import { PlusCore } from '@/core';
 import { toCSSColor, toCSSUnit } from '@/helpers';
-import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+import type { PlusBreakpoint, PlusColor } from '@/types';
 
 import type { PlusAvatarSize } from './types';
 
@@ -31,7 +31,7 @@ export class PlusAvatar extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}, PlusColorOverrides>;
+	color?: OverridableValue<PlusColor>;
 
 	/**
 	 * Specifies the shape of the element.
@@ -199,7 +199,7 @@ export class PlusAvatar extends PlusCore {
 	render() {
 		return (
 			<>
-				<slot />
+				<slot part="content" />
 				{this.placements.map((placement) => (
 					<slot name={placement.key} style={placement.style} />
 				))}

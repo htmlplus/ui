@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 /**
  * A thin line that divides the content vertically or horizontally.
  *
@@ -18,7 +18,7 @@ export declare class PlusDivider extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Specifies the amount of indentation.
      */
@@ -76,7 +76,7 @@ export type PlusDividerAttributesBase = {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Specifies the amount of indentation.
   */
@@ -118,7 +118,7 @@ export type PlusDividerPropertiesBase = {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Specifies the amount of indentation.
   */

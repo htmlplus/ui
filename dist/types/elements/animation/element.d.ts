@@ -81,7 +81,7 @@ export declare class PlusAnimation extends PlusCore {
      * Specifies what kind of animation will play.
      * The list of available animations is [here](/element/animation/names).
      */
-    name?: OverridableValue<string & {}>;
+    name?: OverridableValue<string>;
     /**
      * Sets the animation's playback rate.
      */
@@ -150,14 +150,14 @@ export declare class PlusAnimation extends PlusCore {
      */
     updatePlaybackRate(playbackRate: number): void;
     get options(): {
-        composite: "accumulate" | "add" | "replace";
+        composite: "replace" | "accumulate" | "add";
         delay: number;
         direction: "reverse" | "normal" | "alternate-reverse" | "alternate";
         duration: number;
         easing: any;
         endDelay: number;
         fill: "none" | "backwards" | "forwards";
-        iterationComposite: "accumulate" | "replace";
+        iterationComposite: "replace" | "accumulate";
         iterations: number;
         iterationStart: number;
         playbackRate: number;
@@ -266,7 +266,7 @@ export type PlusAnimationAttributesBase = {
   * Specifies what kind of animation will play.
   * The list of available animations is [here](/element/animation/names).
   */
-  "name"?: OverridableValue<string & {}>;
+  "name"?: OverridableValue<string>;
   /**
   * Sets the animation's playback rate.
   */
@@ -432,7 +432,7 @@ export type PlusAnimationPropertiesBase = {
   * Specifies what kind of animation will play.
   * The list of available animations is [here](/element/animation/names).
   */
-  name?: OverridableValue<string & {}>;
+  name?: OverridableValue<string>;
   /**
   * Sets the animation's playback rate.
   */

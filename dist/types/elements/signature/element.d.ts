@@ -1,7 +1,7 @@
 import { EventEmitter, OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { default as CoreType, FromDataUrlOptions, Options, PointGroup, ToSVGOptions } from 'signature_pad';
 import { PlusForm } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 /**
  * Allows user to draw smooth signatures.
  *
@@ -18,7 +18,7 @@ export declare class PlusSignature extends PlusForm {
     /**
      * Specifies the background color.
      */
-    backgroundColor?: OverridableValue<string & {}, PlusColorOverrides>;
+    backgroundColor?: OverridableValue<PlusColor>;
     /**
      * Specifies configuration options for the canvas 2D rendering context.
      *
@@ -36,7 +36,7 @@ export declare class PlusSignature extends PlusForm {
     /**
      * Specifies the color of the strokes.
      */
-    penColor?: OverridableValue<string & {}, PlusColorOverrides>;
+    penColor?: OverridableValue<PlusColor>;
     /**
      * Add the next point only if the previous one is farther than x pixels.
      */
@@ -220,7 +220,7 @@ export type PlusSignatureAttributesBase = {
   /**
   * Specifies the background color.
   */
-  "background-color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "background-color"?: OverridableValue<PlusColor>;
   /**
   * Specifies configuration options for the canvas 2D rendering context.
   *
@@ -238,7 +238,7 @@ export type PlusSignatureAttributesBase = {
   /**
   * Specifies the color of the strokes.
   */
-  "pen-color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "pen-color"?: OverridableValue<PlusColor>;
   /**
   * Add the next point only if the previous one is farther than x pixels.
   */
@@ -407,7 +407,7 @@ export type PlusSignaturePropertiesBase = {
   /**
   * Specifies the background color.
   */
-  backgroundColor?: OverridableValue<string & {}, PlusColorOverrides>;
+  backgroundColor?: OverridableValue<PlusColor>;
   /**
   * Specifies configuration options for the canvas 2D rendering context.
   *
@@ -425,7 +425,7 @@ export type PlusSignaturePropertiesBase = {
   /**
   * Specifies the color of the strokes.
   */
-  penColor?: OverridableValue<string & {}, PlusColorOverrides>;
+  penColor?: OverridableValue<PlusColor>;
   /**
   * Add the next point only if the previous one is farther than x pixels.
   */

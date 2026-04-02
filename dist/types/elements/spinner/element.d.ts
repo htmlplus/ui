@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 import { PlusSpinnerType } from './types';
 /**
  * An indicator of progress and activity.
@@ -13,7 +13,7 @@ export declare class PlusSpinner extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Specifies the size of the spinner.
      */
@@ -57,7 +57,7 @@ export type PlusSpinnerAttributesBase = {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Specifies the size of the spinner.
   */
@@ -87,7 +87,7 @@ export type PlusSpinnerPropertiesBase = {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Specifies the size of the spinner.
   */

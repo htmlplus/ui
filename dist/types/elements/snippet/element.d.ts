@@ -1,6 +1,6 @@
 import { OverridableValue, OverridesConfig } from '@htmlplus/element';
 import { PlusCore } from '../../core';
-import { PlusBreakpoint, PlusColorOverrides } from '../../types';
+import { PlusBreakpoint, PlusColor } from '../../types';
 /**
  * A component that can be used to display inline code snippets.
  *
@@ -18,7 +18,7 @@ export declare class PlusSnippet extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<string & {}, PlusColorOverrides>;
+    color?: OverridableValue<PlusColor>;
     /**
      * Specifies the symbol.
      */
@@ -56,7 +56,7 @@ export type PlusSnippetAttributesBase = {
   /**
   * Specifies the color.
   */
-  "color"?: OverridableValue<string & {}, PlusColorOverrides>;
+  "color"?: OverridableValue<PlusColor>;
   /**
   * Specifies the symbol.
   */
@@ -82,7 +82,7 @@ export type PlusSnippetPropertiesBase = {
   /**
   * Specifies the color.
   */
-  color?: OverridableValue<string & {}, PlusColorOverrides>;
+  color?: OverridableValue<PlusColor>;
   /**
   * Specifies the symbol.
   */

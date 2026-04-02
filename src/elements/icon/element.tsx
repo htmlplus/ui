@@ -13,7 +13,7 @@ import { getConfig, setConfig } from '@/config';
 import { PlusCore } from '@/core';
 import { toCSSColor, toCSSUnit } from '@/helpers';
 import { AsyncCache } from '@/services';
-import type { PlusBreakpoint, PlusColorOverrides } from '@/types';
+import type { PlusBreakpoint, PlusColor } from '@/types';
 
 import { ICON_DEFAULT_SVG, ICON_FALLBACK_SVG } from './constants';
 import type { PlusIconResolver, PlusIconSize } from './types';
@@ -36,7 +36,7 @@ export class PlusIcon extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<string & {}, PlusColorOverrides>;
+	color?: OverridableValue<PlusColor>;
 
 	/**
 	 * Flips in `horizontal`, `vertical` or `both` directions.
@@ -54,7 +54,7 @@ export class PlusIcon extends PlusCore {
 	 * Specifies the name.
 	 */
 	@Property({ reflect: true })
-	name?: OverridableValue<string & {}>;
+	name?: OverridableValue<string>;
 
 	/**
 	 * An asynchronous function to load SVG files.
