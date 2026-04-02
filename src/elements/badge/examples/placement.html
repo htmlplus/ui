@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      plus-avatar::part(content) {
+        font-size: 0.65rem;
+        padding: 0.5rem;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body rtl>
+    <plus-stack gap="1rem" vertical>
+      <plus-stack gap="1rem">
+        <plus-badge placement="top-start">
+          <plus-avatar>Top Start</plus-avatar>
+        </plus-badge>
+        <plus-badge placement="top-end">
+          <plus-avatar>Top End</plus-avatar>
+        </plus-badge>
+        <plus-badge placement="bottom-start">
+          <plus-avatar>Bottom Start</plus-avatar>
+        </plus-badge>
+        <plus-badge placement="bottom-end">
+          <plus-avatar>Bottom End</plus-avatar>
+        </plus-badge>
+      </plus-stack>
+      <plus-stack gap="1rem">
+        <plus-badge placement="top-right">
+          <plus-avatar>Top Right</plus-avatar>
+        </plus-badge>
+        <plus-badge placement="top-left">
+          <plus-avatar>Top Left</plus-avatar>
+        </plus-badge>
+        <plus-badge placement="bottom-right">
+          <plus-avatar>Bottom Right</plus-avatar>
+        </plus-badge>
+        <plus-badge placement="bottom-left">
+          <plus-avatar>Bottom Left</plus-avatar>
+        </plus-badge>
+      </plus-stack>
+    </plus-stack>
+    <script type="module">
+      import 'https://esm.run/@htmlplus/ui/avatar.js';
+      import 'https://esm.run/@htmlplus/ui/badge.js';
+      import 'https://esm.run/@htmlplus/ui/stack.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+:host {
+  --plus-badge-color-dark: black;
+  --plus-badge-color-light: white;
+}
+
+:host {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+[part="container"] {
+  user-select: none;
+  position: absolute;
+}
+
+[part="content"] {
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 5px;
+  white-space: nowrap;
+  min-width: 10px;
+  min-height: 10px;
+}
+
+/**
+ * APPEARANCE
+ */
+
+:host([appearance=contrast]) [part="content"] {
+  background-color: var(--plus-badge-color);
+  border: solid 2px var(--plus-badge-color-contrast);
+  color: var(--plus-badge-color-contrast);
+}
+
+:host([appearance=outline]) [part="content"] {
+  background-color: hsl(from var(--plus-badge-color) h s 90%);
+  border: solid 2px var(--plus-badge-color);
+  color: var(--plus-badge-color);
+}
+
+:host([appearance=solid]) [part="content"] {
+  background-color: var(--plus-badge-color);
+  border: none;
+  color: var(--plus-badge-color-contrast);
+}
+
+/**
+ * OVERLAP
+ */
+
+:host([overlap=circular]) {
+  --plus-badge-offset: 14.64466%;
+}
+
+:host([overlap=rectangular]) {
+  --plus-badge-offset: 0;
+}
+
+/**
+ * PLACEMENT
+ */
+
+:host([placement=inline]) [part="container"] {
+  position: static;
+}
+
+:host([placement=top-left]) [part="container"],
+:host(:dir(ltr)):host([placement=top-start]) [part="container"],
+:host(:dir(rtl)):host([placement=top-end]) [part="container"] {
+  top: var(--plus-badge-offset);
+  left: var(--plus-badge-offset);
+  transform: translate(-50%, -50%);
+  transform-origin: 0% 0%;
+}
+
+:host([placement=top-right]) [part="container"],
+:host(:dir(rtl)):host([placement=top-start]) [part="container"],
+:host(:dir(ltr)):host([placement=top-end]) [part="container"] {
+  top: var(--plus-badge-offset);
+  right: var(--plus-badge-offset);
+  transform: translate(50%, -50%);
+  transform-origin: 100% 0%;
+}
+
+:host([placement=bottom-left]) [part="container"],
+:host(:dir(ltr)):host([placement=bottom-start]) [part="container"],
+:host(:dir(rtl)):host([placement=bottom-end]) [part="container"] {
+  bottom: var(--plus-badge-offset);
+  left: var(--plus-badge-offset);
+  transform: translate(-50%, 50%);
+  transform-origin: 0% 100%;
+}
+
+:host([placement=bottom-right]) [part="container"],
+:host(:dir(rtl)):host([placement=bottom-start]) [part="container"],
+:host(:dir(ltr)):host([placement=bottom-end]) [part="container"] {
+  bottom: var(--plus-badge-offset);
+  right: var(--plus-badge-offset);
+  transform: translate(50%, 50%);
+  transform-origin: 100% 100%;
+} 
+
+/**
+ * SHAPE
+ */
+
+:host([shape='circle']) [part="content"] {
+  border-radius: 50px;
+}
+
+:host([shape='round']) [part="content"] {
+  border-radius: $border-radius;
+}
+
+:host([shape='tile']) [part="content"] {
+  border-radius: 0;
+}
+
+/**
+ * SIZE
+ */
+
+:host([size='sm']) {}
+
+:host([size='md']) {}
+
+:host([size='lg']) {}

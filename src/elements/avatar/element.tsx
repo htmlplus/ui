@@ -23,7 +23,7 @@ import type { PlusAvatarSize } from './types';
  *
  * @examples default, text, color, image, icon, svg, shape, size, size-overriding, wildcard-size,
  *           link-with-tooltip, with-avatar, slots, group, group-stacked, group-hoverable,
- *           group-gutter, group-link-with-tooltip
+ *           group-gutter, group-link-with-tooltip, badge
  */
 @Element()
 export class PlusAvatar extends PlusCore {

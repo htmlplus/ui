@@ -6,6 +6,7 @@ export * from './animation';
 export * from './app-progress-bar';
 export * from './avatar';
 export * from './avatar-group';
+export * from './badge';
 export * from './breadcrumb';
 export * from './browse';
 export * from './card';

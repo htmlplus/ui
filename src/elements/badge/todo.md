@@ -1,0 +1,4 @@
+- add icon slot before text
+- support status mode, an icon with a text
+- count with animation
+- add offset property
