@@ -1,3 +1,9 @@
+## [1.8.4](https://github.com/htmlplus/ui/compare/v1.8.3...v1.8.4) (2026-04-02)
+
+### Bug Fixes
+
+* update OverridableValue type definition ([57493b1](https://github.com/htmlplus/ui/commit/57493b1896904942498b7867004b0c55f7855039))
+
 ## [1.8.3](https://github.com/htmlplus/ui/compare/v1.8.2...v1.8.3) (2026-02-12)
 
 ### Bug Fixes
