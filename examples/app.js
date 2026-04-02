@@ -4,6 +4,15 @@ const $preview = document.getElementById('preview');
 const $refresh = document.getElementById('refresh');
 const $title = document.getElementById('title');
 
+let resizeObservers = [];
+
+function clear() {
+	resizeObservers.forEach((resizeObserver) => {
+		resizeObserver.disconnect();
+	});
+	resizeObservers = [];
+}
+
 async function getCategories() {
 	const result = [];
 
@@ -50,7 +59,7 @@ async function load() {
 		const $ul = document.createElement('ul');
 		$menu.append($ul);
 
-		for (const example of category.items) {
+		for (const example of [{ key: category.id, title: 'All' }, ...category.items]) {
 			const $li = document.createElement('li');
 			$ul.append($li);
 
@@ -73,6 +82,8 @@ async function load() {
 }
 
 async function select(key) {
+	clear();
+
 	key ||= $menu.querySelector(`a.active`).getAttribute('href').replace('#', '');
 
 	$menu.querySelector(`a.active`)?.classList?.remove('active');
@@ -81,13 +92,45 @@ async function select(key) {
 
 	updateTitle(key);
 
-	const iframe = document.createElement('iframe');
+	const sections = [];
 
-	iframe.src = `/${key}${$cdn.classList.contains('active') ? '?cdn' : '?local'}`;
+	if (key.includes('/')) {
+		sections.push(key);
+	} else {
+		const categories = await getCategories();
+
+		const category = categories.find((category) => category.id === key);
+
+		category.items.forEach((item) => {
+			sections.push(item.key);
+		});
+	}
 
 	$preview.innerHTML = '';
 
-	$preview.appendChild(iframe);
+	for (const section of sections) {
+		const iframe = document.createElement('iframe');
+
+		iframe.src = `/${section}${$cdn.classList.contains('active') ? '?cdn' : '?local'}`;
+
+		iframe.style.height = '0';
+
+		iframe.onload = () => {
+			const body = iframe.contentWindow.document.body;
+
+			const resizeObserver = new ResizeObserver(() => {
+				requestAnimationFrame(() => {
+					iframe.style.height = `${body.scrollHeight + 2}px`;
+				});
+			});
+
+			resizeObserver.observe(body);
+
+			resizeObservers.push(resizeObserver);
+		};
+
+		$preview.appendChild(iframe);
+	}
 }
 
 function toTitleCase(input) {

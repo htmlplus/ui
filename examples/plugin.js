@@ -35,6 +35,23 @@ export const examples = () => {
 					return result1.replace('import(', 'import(/* @vite-ignore */');
 				});
 
+				if (ctx.originalUrl !== '/examples/index.html') {
+					html = html.replace(
+						'</head>',
+						'<style>body { margin: 0; padding: 32px 8px; }</style></head>'
+					);
+
+					const key = ctx.originalUrl.split('/').at(-1).split('.').at(0);
+
+					const title = key
+						.replace(/-+/g, ' ')
+						.split(' ')
+						.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+						.join(' ');
+
+					html = html.replace(/<body([^>]*)>/i, `<body$1><h2>${title}</h2>`);
+				}
+
 				return html;
 			}
 		},
