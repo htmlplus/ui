@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;align-items:center;justify-content:center;user-select:none;padding:.5rem 1rem;background-color:#f5f5f5;text-align:center;gap:.5rem}:host([active]){background-color:#d3d3d3}:host([disabled]){opacity:.5}:host(:not([disabled])){cursor:pointer}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -22,11 +22,7 @@ let PlusTabsTab = class extends PlusCore {
     }
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "onClick": this.onClick
-    }])}
-				<slot />
-			`;
+    return /* @__PURE__ */ jsx("host", { value: this, onClick: this.onClick, children: /* @__PURE__ */ jsx("slot", {}) });
   }
 };
 PlusTabsTab.tag = "plus-tabs-tab";

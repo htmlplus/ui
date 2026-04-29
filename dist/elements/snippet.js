@@ -1,4 +1,4 @@
-import { P as PlusCore, h as toCSSColor, b as _internal_h_, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
+import { P as PlusCore, h as toCSSColor, j as jsxs, b as jsx, F as Fragment, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{--plus-snippet-color: black}:host{background-color:hsl(from var(--plus-snippet-color) h s 90%);border:none;border-radius:.5rem;color:var(--plus-snippet-color);gap:.5rem;padding:.5rem 1rem;direction:ltr;display:flex;align-items:center;justify-content:space-between}pre{gap:.5rem;display:flex;align-items:center;white-space:nowrap;margin:0;flex-grow:1}[part=default]{display:block}[part=symbol]{color:hsl(from var(--plus-snippet-color) h s 60%);display:contents;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -19,13 +19,13 @@ let PlusSnippet = class extends PlusCore {
     };
   }
   render() {
-    return _internal_h_`
-				<pre part="pre">
-					<span part="symbol">${this.symbol}</span>
-					<slot part="default" />
-				</pre>
-				<slot name="copy" part="copy" />
-			`;
+    return /* @__PURE__ */ jsxs(Fragment, { children: [
+      /* @__PURE__ */ jsxs("pre", { part: "pre", children: [
+        /* @__PURE__ */ jsx("span", { part: "symbol", children: this.symbol }),
+        /* @__PURE__ */ jsx("slot", { part: "default" })
+      ] }),
+      /* @__PURE__ */ jsx("slot", { name: "copy", part: "copy" })
+    ] });
   }
 };
 PlusSnippet.tag = "plus-snippet";

@@ -268,6 +268,10 @@ export class PlusCounter extends PlusCore {
 	}
 
 	render() {
-		return <host state={this.state}>{this.formated}</host>;
+		return (
+			<host state={this.state} value={this}>
+				{this.formated}
+			</host>
+		);
 	}
 }

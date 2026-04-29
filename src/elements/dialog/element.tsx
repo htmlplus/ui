@@ -407,6 +407,7 @@ export class PlusDialog extends PlusCore {
 				aria-modal={this.opened ? 'true' : null}
 				tabIndex={-1}
 				role={this.opened ? 'dialog' : null}
+				value={this}
 			>
 				{!this.transparent && (
 					<div className="backdrop" part="backdrop">

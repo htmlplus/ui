@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -11,7 +11,6 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusBrowse = class extends PlusCore {
-  // biome-ignore lint: TODO
   get attributes() {
     const attributes = {};
     if (this.disabled) return attributes;
@@ -90,8 +89,9 @@ let PlusBrowse = class extends PlusCore {
     this.$input.click();
   }
   onChange(event) {
-    const files = event.target.files;
-    if (!files.length) return;
+    const target = event.target;
+    const files = target.files;
+    if (!files || !files.length) return;
     this.do(files);
   }
   onDragLeave() {
@@ -112,10 +112,10 @@ let PlusBrowse = class extends PlusCore {
     this.do(event.dataTransfer?.files);
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [this.attributes])}
-				<slot />
-				<input accept=${this.accept} multiple=${this.multiple} type="file" onChange=${this.onChange} onClick=${(event) => event.stopPropagation()} />
-			`;
+    return /* @__PURE__ */ jsxs("host", { value: this, ...this.attributes, children: [
+      /* @__PURE__ */ jsx("slot", {}),
+      /* @__PURE__ */ jsx("input", { accept: this.accept, multiple: this.multiple, type: "file", onChange: this.onChange, onClick: (event) => event.stopPropagation() })
+    ] });
   }
 };
 PlusBrowse.tag = "plus-browse";

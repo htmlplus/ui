@@ -1,4 +1,5 @@
-import { P as PlusCore, o as on, a as off, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, o as on, a as off, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, B as Bind, d as Element } from "../core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:contents}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -34,10 +35,11 @@ let PlusClickOutside = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return _internal_h_`<slot />`;
+    return /* @__PURE__ */ jsx("slot", {});
   }
 };
 PlusClickOutside.tag = "plus-click-outside";
+PlusClickOutside.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     type: 4

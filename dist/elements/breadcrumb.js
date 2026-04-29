@@ -1,4 +1,4 @@
-import { u as QueryAll, P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, d as Element } from "../core/index.js";
+import { u as QueryAll, P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, S as State, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.5em}:host([block]){display:flex}[part=expander],[part=separator]{display:flex;align-items:center;justify-content:center;user-select:none;flex-shrink:0}[part=expander]{background-color:#f5f5f5;border-radius:.25rem;color:currentColor;cursor:pointer}[part=expander]:focus{outline-color:currentColor}[part=separator]{color:currentColor}:dir(rtl)[part=expander],:dir(rtl)[part=separator]{transform:scaleX(-1)}[part=expander] svg,[part=expander] ::slotted(*){fill:currentColor;height:1em}";
 const BREADCRUMB_EXPANDER_QUERY = "[slot=expander]";
 const BREADCRUMB_SEPARATOR_QUERY = "[slot=separator]";
@@ -79,7 +79,7 @@ let PlusBreadcrumb = class extends PlusCore {
     const $node = this.$host.querySelector(BREADCRUMB_SEPARATOR_QUERY);
     const $clone = $node?.cloneNode(true);
     $clone?.removeAttribute("slot");
-    return $clone?.outerHTML || this.separator;
+    return $clone?.outerHTML || this.separator || "";
   }
   initialize() {
     this.observer.observe(this.$host, {
@@ -97,39 +97,29 @@ let PlusBreadcrumb = class extends PlusCore {
   }
   render() {
     const template = this.template;
-    return _internal_h_`${_internal_a_(this, [{
-      "aria-label": "breadcrumb"
-    }])}
-				${this.items.map((item) => {
+    return /* @__PURE__ */ jsx("host", { "aria-label": "breadcrumb", value: this, children: this.items.map((item) => {
       switch (item.type) {
         case "item": {
-          return _internal_h_`<div key=${item.key} part="item">
-									<slot name=${item.slot} />
-								</div>`;
+          return /* @__PURE__ */ jsx("div", { part: "item", children: /* @__PURE__ */ jsx("slot", { name: item.slot }) }, item.key);
         }
         case "expander": {
-          return _internal_h_`<div aria-disabled="false" aria-label=${this.expanderText} key=${item.key} part="expander" role="button" tabindex=${0} onClick=${() => {
+          return /* @__PURE__ */ jsx("div", { "aria-disabled": "false", "aria-label": this.expanderText, part: "expander", role: "button", tabIndex: 0, onClick: () => {
             this.expand = true;
-          }} onKeyDown=${(event) => {
+          }, onKeyDown: (event) => {
             if (event.key.match(/Enter| /)) {
               this.expand = true;
             }
-          }}>
-									<slot name="expander">
-										<svg focusable="false" viewbox="0 0 24 24" aria-hidden="true">
-											<path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-										</svg>
-									</slot>
-								</div>`;
+          }, children: /* @__PURE__ */ jsx("slot", { name: "expander", children: /* @__PURE__ */ jsx("svg", { focusable: "false", viewBox: "0 0 24 24", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" }) }) }) }, item.key);
         }
         case "separator": {
-          return _internal_h_`<div key=${item.key} aria-hidden="true" part="separator" .innerHTML=${template} />`;
+          return /* @__PURE__ */ jsx("div", { "aria-hidden": "true", part: "separator", dangerouslySetInnerHTML: {
+            __html: template
+          } }, item.key);
         }
         default:
           return null;
       }
-    })}
-			`;
+    }) });
   }
 };
 PlusBreadcrumb.tag = "plus-breadcrumb";

@@ -52,7 +52,7 @@ export class PlusTabsBar extends PlusCore {
 
 	render() {
 		return (
-			<host role="tablist">
+			<host role="tablist" value={this}>
 				<slot />
 			</host>
 		);

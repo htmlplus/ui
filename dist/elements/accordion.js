@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, m as Animation, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, S as State, C as Consumer, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, m as Animation, j as jsxs, b as jsx, F as Fragment, c as Property, O as Overrides, V as Variant, e as Event, S as State, C as Consumer, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{border:solid 1px #d3d3d3;border-radius:.25rem;display:block;overflow-anchor:none}:host(:not(:first-of-type)){border-top:0}:host(:not(:first-of-type):not(:last-of-type)){border-radius:0}:host(:first-of-type:not(:last-of-type)){border-bottom-right-radius:0;border-bottom-left-radius:0}:host(:last-of-type:not(:first-of-type)){border-top-right-radius:0;border-top-left-radius:0}:host([disabled]){opacity:.5}:host([disabled])::part(header){cursor:initial}:host::part(header){padding:1rem;position:relative;display:flex;align-items:center;border-radius:inherit;user-select:none;cursor:pointer;overflow-anchor:none}:host::part(summary){flex:1 1 auto;display:flex;align-items:center}:host::part(icon){flex:0 0 auto;display:flex;align-items:center}:host::part(body){transition:all .2s ease-in-out;overflow:hidden}:host::part(content){padding:1rem;display:block}:host([state=collapsed])::part(body){display:none}:host(:not([state=collapsed]))::part(header){border-bottom-right-radius:0;border-bottom-left-radius:0}:host::part(svg){transition:all .2s ease-in-out}:host([state^=collap])::part(svg){rotate:90deg}:host([state^=expand])::part(svg){rotate:-90deg}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -117,26 +117,16 @@ let PlusAccordion = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return _internal_h_`
-				<slot name="top" />
-				<div aria-controls=${this.getId("body")} aria-disabled=${!!this.disabled} aria-expanded=${!!this.open} id=${this.getId("header")} part="header" role="button" tabindex=${this.disabled ? -1 : 0} onClick=${this.onClick} onKeyDown=${this.onKeyDown}>
-					<slot name="summary" part="summary">
-						${this.summary}
-					</slot>
-					<slot name="icon">
-						<slot name=${`icon-${this.open ? "collapse" : "expand"}`}>
-							<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" focusable="false" viewbox="0 0 16 16" part="svg">
-								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-							</svg>
-						</slot>
-					</slot>
-				</div>
-				<slot name="middle" />
-				<div part="body" role="region" aria-labelledby=${this.getId("header")} id=${this.getId("body")}>
-					<slot part="content" />
-				</div>
-				<slot name="bottom" />
-			`;
+    return /* @__PURE__ */ jsxs(Fragment, { children: [
+      /* @__PURE__ */ jsx("slot", { name: "top" }),
+      /* @__PURE__ */ jsxs("div", { "aria-controls": this.getId("body"), "aria-disabled": !!this.disabled, "aria-expanded": !!this.open, id: this.getId("header"), part: "header", role: "button", tabIndex: this.disabled ? -1 : 0, onClick: this.onClick, onKeyDown: this.onKeyDown, children: [
+        /* @__PURE__ */ jsx("slot", { name: "summary", part: "summary", children: this.summary }),
+        /* @__PURE__ */ jsx("slot", { name: "icon", children: /* @__PURE__ */ jsx("slot", { name: `icon-${this.open ? "collapse" : "expand"}`, children: /* @__PURE__ */ jsx("svg", { "aria-hidden": "true", xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", focusable: "false", viewBox: "0 0 16 16", part: "svg", children: /* @__PURE__ */ jsx("path", { "fill-rule": "evenodd", d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" }) }) }) })
+      ] }),
+      /* @__PURE__ */ jsx("slot", { name: "middle" }),
+      /* @__PURE__ */ jsx("div", { part: "body", role: "region", "aria-labelledby": this.getId("header"), id: this.getId("body"), children: /* @__PURE__ */ jsx("slot", { part: "content" }) }),
+      /* @__PURE__ */ jsx("slot", { name: "bottom" })
+    ] });
   }
 };
 PlusAccordion.tag = "plus-accordion";

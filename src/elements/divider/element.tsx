@@ -90,7 +90,7 @@ export class PlusDivider extends PlusCore {
 
 	render() {
 		return (
-			<host aria-orientation={this.orientation} role="separator">
+			<host aria-orientation={this.orientation} role="separator" value={this}>
 				<div part="line prefix"></div>
 				<slot />
 				<div part="line suffix"></div>

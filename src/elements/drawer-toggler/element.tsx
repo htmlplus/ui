@@ -55,6 +55,7 @@ export class PlusDrawerToggler extends PlusCore {
 			<host
 				role="button"
 				state={this.drawer?.open ? 'opened' : 'closed'}
+				value={this}
 				onClick={this.drawer?.toggle}
 			>
 				<slot>{this.drawer?.open ? 'Close' : 'Open'}</slot>

@@ -75,7 +75,7 @@ export class PlusTabsTab extends PlusCore {
 
 	render() {
 		return (
-			<host onClick={this.onClick}>
+			<host value={this} onClick={this.onClick}>
 				<slot />
 			</host>
 		);

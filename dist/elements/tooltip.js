@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, o as on, a as off, E as ExternalDependencyError, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, o as on, a as off, E as ExternalDependencyError, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{width:max-content;background-color:#000;color:#fff;font-weight:bold;padding:4px 8px;border-radius:4px;font-size:90%;position:absolute}:host([fixed]){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;position:absolute;width:0;height:0}:host([arrow]) [part=arrow]{display:block}:host([arrow]):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]):host([placement-computed^=top]) [part=arrow]{bottom:-6px;transform:translateX(-50%);border-top:solid 6px #000;border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 0px rgba(0,0,0,0);border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]):host([placement-computed^=right]) [part=arrow]{left:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 6px #000;border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 0px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]):host([placement-computed^=bottom]) [part=arrow]{top:-6px;transform:translateX(-50%);border-top:solid 0px rgba(0,0,0,0);border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 6px #000;border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]):host([placement-computed^=left]) [part=arrow]{right:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 0px rgba(0,0,0,0);border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 6px #000}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -180,14 +180,10 @@ let PlusTooltip = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "role": "tooltip"
-    }, {
-      "state": this.state
-    }])}
-				<slot />
-				<div part="arrow"></div>
-			`;
+    return /* @__PURE__ */ jsxs("host", { role: "tooltip", state: this.state, value: this, children: [
+      /* @__PURE__ */ jsx("slot", {}),
+      /* @__PURE__ */ jsx("div", { part: "arrow" })
+    ] });
   }
 };
 PlusTooltip.tag = "plus-tooltip";

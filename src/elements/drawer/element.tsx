@@ -361,11 +361,11 @@ export class PlusDrawer extends PlusCore {
 	render() {
 		return (
 			<>
-				{this.hasBackdrop ? (
+				{!!this.hasBackdrop && (
 					<div part="backdrop">
 						<div />
 					</div>
-				) : null}
+				)}
 				<div className={this.classes} part="root" style={this.style}>
 					<slot />
 				</div>

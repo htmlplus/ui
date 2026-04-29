@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, j as jsxs, c as Property, O as Overrides, V as Variant, e as Event, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2em;width:3.5em;border-radius:2em;cursor:pointer;display:inline-block;vertical-align:middle;overflow:hidden;user-select:none}:host([disabled]){opacity:.5}.root{align-items:center;border-radius:inherit;display:flex;flex-wrap:nowrap;height:100%;width:100%;justify-content:space-between;position:relative;transition:.3s}.handle{width:1.5em;height:1.5em;background:#fff;border-radius:inherit;position:absolute;top:50%;left:50%;z-index:1;transition:.3s}.slot{font-size:.8em;border-radius:inherit}.off{padding:0 .5em 0 0;border-top-left-radius:0;border-bottom-left-radius:0}.on{padding:0 0 0 .5em;border-top-right-radius:0;border-bottom-right-radius:0}:host .root{background:#d3d3d3}:host .handle{transform:translate(calc(-1.5em - 0%), -50%)}:host .on{opacity:0}:host .off{opacity:1}:host([checked]) .root{background:#2196f3}:host([checked]) .handle{transform:translate(calc(1.5em - 100%), -50%)}:host([checked]) .on{opacity:1}:host([checked]) .off{opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -26,31 +26,11 @@ let PlusSwitch = class extends PlusCore {
     this.toggle();
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "aria-checked": `${!!this.checked}`
-    }, {
-      "aria-disabled": `${!!this.disabled}`
-    }, {
-      "role": "switch"
-    }, {
-      "tabindex": 0
-    }, {
-      "onClick": this.onClick
-    }, {
-      "onKeyDown": this.onKeyDown
-    }])}
-				<div class="root" part="root">
-					<div class="slot on" part="slot on">
-						<slot name="on" />
-					</div>
-					<div class="handle" part="handle">
-						<slot name="handle" />
-					</div>
-					<div class="slot off" part="slot off">
-						<slot name="off" />
-					</div>
-				</div>
-			`;
+    return /* @__PURE__ */ jsx("host", { "aria-checked": `${!!this.checked}`, "aria-disabled": `${!!this.disabled}`, role: "switch", tabIndex: 0, value: this, onClick: this.onClick, onKeyDown: this.onKeyDown, children: /* @__PURE__ */ jsxs("div", { className: "root", part: "root", children: [
+      /* @__PURE__ */ jsx("div", { className: "slot on", part: "slot on", children: /* @__PURE__ */ jsx("slot", { name: "on" }) }),
+      /* @__PURE__ */ jsx("div", { className: "handle", part: "handle", children: /* @__PURE__ */ jsx("slot", { name: "handle" }) }),
+      /* @__PURE__ */ jsx("div", { className: "slot off", part: "slot off", children: /* @__PURE__ */ jsx("slot", { name: "off" }) })
+    ] }) });
   }
 };
 PlusSwitch.tag = "plus-switch";

@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -63,11 +63,7 @@ let PlusIntersection = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "state": this.isIntersecting ? "in" : "out"
-    }])}
-				<slot />
-			`;
+    return /* @__PURE__ */ jsx("host", { state: this.isIntersecting ? "in" : "out", value: this, children: /* @__PURE__ */ jsx("slot", {}) });
   }
 };
 PlusIntersection.tag = "plus-intersection";

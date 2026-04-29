@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:none}:host([active]){display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -17,9 +17,7 @@ let PlusTabsPanel = class extends PlusCore {
     return this.parent?.current === this.value;
   }
   render() {
-    return _internal_h_`
-				<slot />
-			`;
+    return /* @__PURE__ */ jsx("host", { value: this, children: /* @__PURE__ */ jsx("slot", {}) });
   }
 };
 PlusTabsPanel.tag = "plus-tabs-panel";

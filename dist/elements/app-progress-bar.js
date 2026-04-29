@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, h as toCSSColor, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, h as toCSSColor, b as jsx, c as Property, O as Overrides, V as Variant, S as State, g as Style, M as Method, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:var(--plus-app-progress-bar-color);transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -89,11 +89,7 @@ let PlusAppProgressBar = class extends PlusCore {
     clearTimeout(this.timeout);
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "state": this.state
-    }])}
-				<div part="bar"></div>
-			`;
+    return /* @__PURE__ */ jsx("host", { state: this.state, value: this, children: /* @__PURE__ */ jsx("div", { part: "bar" }) });
   }
 };
 PlusAppProgressBar.tag = "plus-app-progress-bar";

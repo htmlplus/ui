@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
+import { P as PlusCore, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, S as State, C as Consumer, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-block;cursor:default;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -12,16 +12,10 @@ var __decorateClass = (decorators, target, key, kind) => {
 };
 let PlusDrawerToggler = class extends PlusCore {
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "role": "button"
-    }, {
-      "state": this.drawer?.open ? "opened" : "closed"
-    }, {
-      "onClick": this.drawer?.toggle
-    }])}
-				<slot>${this.drawer?.open ? "Close" : "Open"}</slot>
-				<slot name=${this.drawer?.open ? "close" : "open"}></slot>
-			`;
+    return /* @__PURE__ */ jsxs("host", { role: "button", state: this.drawer?.open ? "opened" : "closed", value: this, onClick: this.drawer?.toggle, children: [
+      /* @__PURE__ */ jsx("slot", { children: this.drawer?.open ? "Close" : "Open" }),
+      /* @__PURE__ */ jsx("slot", { name: this.drawer?.open ? "close" : "open" })
+    ] });
   }
 };
 PlusDrawerToggler.tag = "plus-drawer-toggler";

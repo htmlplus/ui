@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, f as Provider, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, f as Provider, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -27,7 +27,7 @@ let PlusAccordions = class extends PlusCore {
     }
   }
   render() {
-    return _internal_h_`<slot />`;
+    return /* @__PURE__ */ jsx("slot", {});
   }
 };
 PlusAccordions.tag = "plus-accordions";

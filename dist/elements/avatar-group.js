@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{align-items:center;display:inline-flex;flex-wrap:wrap}:host ::slotted(plus-avatar){margin-inline-end:.5rem}:host ::slotted(plus-avatar:last-of-type){margin-inline-end:0 !important}:host([hoverable]) ::slotted(plus-avatar:hover){z-index:1}:host([stacked]) ::slotted(plus-avatar){border:2px solid #fff;margin-inline-end:-0.5rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -12,7 +12,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 };
 let PlusAvatarGroup = class extends PlusCore {
   render() {
-    return _internal_h_`<slot />`;
+    return /* @__PURE__ */ jsx("slot", {});
   }
 };
 PlusAvatarGroup.tag = "plus-avatar-group";

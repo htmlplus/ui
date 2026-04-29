@@ -107,6 +107,7 @@ export class PlusProgressBar extends PlusCore {
 				aria-valuemax={this.max}
 				aria-valuenow={this.progress}
 				role="progressbar"
+				value={this}
 			>
 				<div part="underlay"></div>
 				<div

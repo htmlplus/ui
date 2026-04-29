@@ -1,4 +1,4 @@
-import { P as PlusCore, b as _internal_h_, c as Property, O as Overrides, V as Variant, S as State, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, S as State, d as Element } from "../core/index.js";
 const RELATIVE_TIME_UNITS = [
   {
     name: "second",
@@ -83,9 +83,7 @@ let PlusRelativeTime = class extends PlusCore {
   }
   render() {
     if (!this.isValid || !this.parts.length) return "Invalid date";
-    return _internal_h_`<time dateTime=${this.parsed.toISOString()}>
-				${this.parts.map((part) => _internal_h_`<span part=${part.type}>${part.value}</span>`)}
-			</time>`;
+    return /* @__PURE__ */ jsx("time", { dateTime: this.parsed.toISOString(), children: this.parts.map((part) => /* @__PURE__ */ jsx("span", { part: part.type, children: part.value })) });
   }
 };
 PlusRelativeTime.tag = "plus-relative-time";

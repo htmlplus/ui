@@ -55,6 +55,7 @@ export class PlusDialogToggler extends PlusCore {
 			<host
 				role="button"
 				state={this.dialog?.open ? 'opened' : 'closed'}
+				value={this}
 				onClick={this.dialog?.toggle}
 			>
 				<slot>{this.dialog?.open ? 'Close' : 'Open'}</slot>

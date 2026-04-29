@@ -1,4 +1,4 @@
-import { P as PlusCore, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const COUNTER_EASINGS = {
   "ease-out-expo": (currentTime, beginningValue, changeInValue, duration) => {
     return changeInValue * (-(2 ** (-10 * currentTime / duration)) + 1) * 1024 / 1023 + beginningValue;
@@ -134,9 +134,7 @@ let PlusCounter = class extends PlusCore {
     this.stop();
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "state": this.state
-    }])}${this.formated}`;
+    return /* @__PURE__ */ jsx("host", { state: this.state, value: this, children: this.formated });
   }
 };
 PlusCounter.tag = "plus-counter";

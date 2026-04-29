@@ -80,6 +80,7 @@ export class PlusSwitch extends PlusCore {
 				aria-disabled={`${!!this.disabled}`}
 				role="switch"
 				tabIndex={0}
+				value={this}
 				onClick={this.onClick}
 				onKeyDown={this.onKeyDown}
 			>

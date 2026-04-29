@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, t as toCSSUnit, _ as _internal_a_, b as _internal_h_, c as Property, O as Overrides, V as Variant, e as Event, S as State, g as Style, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, t as toCSSUnit, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, S as State, g as Style, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{top:var(--plus-sticky-top, 0);z-index:var(--plus-sticky-z-index);position:sticky;display:block;will-change:auto}:host([disabled]){position:static}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute;top:calc((var(--plus-sticky-top, 0) + 1px)*-1)}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -48,17 +48,11 @@ let PlusSticky = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "state": this.watcher ? this.state : null
-    }])}
-				<div class="sizer-wrapper">
-					<div class="sizer"></div>
-				</div>
-				<slot />
-				${!this.state ? "" : _internal_h_`<div class=${this.state}>
-						<slot name=${this.state} />
-					</div>`}
-			`;
+    return /* @__PURE__ */ jsxs("host", { state: this.watcher ? this.state : null, value: this, children: [
+      /* @__PURE__ */ jsx("div", { className: "sizer-wrapper", children: /* @__PURE__ */ jsx("div", { className: "sizer" }) }),
+      /* @__PURE__ */ jsx("slot", {}),
+      !!this.state && /* @__PURE__ */ jsx("div", { className: this.state, children: /* @__PURE__ */ jsx("slot", { name: this.state }) })
+    ] });
   }
 };
 PlusSticky.tag = "plus-sticky";

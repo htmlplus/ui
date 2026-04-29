@@ -1,4 +1,4 @@
-import { P as PlusCore, h as toCSSColor, _ as _internal_a_, k as _internal_s_, b as _internal_h_, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
+import { P as PlusCore, h as toCSSColor, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}@keyframes indeterminate{from{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{--plus-progress-bar-indicator-background-color: dodgerblue}:host{background-color:#dcdcdc;border-radius:.25rem;font-size:.75rem;height:1rem;display:flex;overflow:hidden;position:relative;direction:ltr}:host>*{position:absolute;inset:0}:host::part(underlay){background-color:rgba(0,0,0,0)}:host::part(buffer){background-color:hsl(from var(--plus-progress-bar-indicator-background-color) h s 80)}:host::part(indicator){background-color:var(--plus-progress-bar-indicator-background-color);color:#fff;transition:width .6s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50% !important}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -35,25 +35,15 @@ let PlusProgressBar = class extends PlusCore {
     return !!this.$host.parentElement?.nodeName.startsWith(this.$host.nodeName);
   }
   render() {
-    return _internal_h_`${_internal_a_(this, [{
-      "aria-valuemin": this.min
-    }, {
-      "aria-valuemax": this.max
-    }, {
-      "aria-valuenow": this.progress
-    }, {
-      "role": "progressbar"
-    }])}
-				<div part="underlay"></div>
-				<div part="buffer" style=${_internal_s_({
-      width: `${this.buffer || 0}%`
-    })}></div>
-				<div part="indicator" style=${_internal_s_({
-      width: this.stacked ? "100%" : this.percentage
-    })}>
-					<slot>${this.label ? this.percentage : null}</slot>
-				</div>
-			`;
+    return /* @__PURE__ */ jsxs("host", { "aria-valuemin": this.min, "aria-valuemax": this.max, "aria-valuenow": this.progress, role: "progressbar", value: this, children: [
+      /* @__PURE__ */ jsx("div", { part: "underlay" }),
+      /* @__PURE__ */ jsx("div", { part: "buffer", style: {
+        width: `${this.buffer || 0}%`
+      } }),
+      /* @__PURE__ */ jsx("div", { part: "indicator", style: {
+        width: this.stacked ? "100%" : this.percentage
+      }, children: /* @__PURE__ */ jsx("slot", { children: this.label ? this.percentage : null }) })
+    ] });
   }
 };
 PlusProgressBar.tag = "plus-progress-bar";

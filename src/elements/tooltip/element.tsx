@@ -368,7 +368,7 @@ export class PlusTooltip extends PlusCore {
 
 	render() {
 		return (
-			<host role="tooltip" state={this.state}>
+			<host role="tooltip" state={this.state} value={this}>
 				<slot />
 				<div part="arrow"></div>
 			</host>

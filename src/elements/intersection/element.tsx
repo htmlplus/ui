@@ -164,7 +164,7 @@ export class PlusIntersection extends PlusCore {
 
 	render() {
 		return (
-			<host state={this.isIntersecting ? 'in' : 'out'}>
+			<host state={this.isIntersecting ? 'in' : 'out'} value={this}>
 				<slot />
 			</host>
 		);

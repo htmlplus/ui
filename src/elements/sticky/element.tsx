@@ -132,14 +132,12 @@ export class PlusSticky extends PlusCore {
 
 	render() {
 		return (
-			<host state={this.watcher ? this.state : null}>
+			<host state={this.watcher ? this.state : null} value={this}>
 				<div className="sizer-wrapper">
 					<div className="sizer"></div>
 				</div>
 				<slot />
-				{!this.state ? (
-					''
-				) : (
+				{!!this.state && (
 					<div className={this.state}>
 						<slot name={this.state} />
 					</div>

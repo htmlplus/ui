@@ -2,14 +2,14 @@
 	"compilerOptions": {
 		"target": "ES2020",
 		"lib": ["dom", "ES2023"],
-		"jsx": "preserve",
+		"jsx": "react-jsx",
 		"jsxImportSource": "@htmlplus/element",
 		"experimentalDecorators": true,
 		"module": "ESNext",
 		"moduleResolution": "Bundler",
-		"baseUrl": "src",
+		"rootDir": "src",
 		"paths": {
-			"@/*": ["./*"]
+			"@/*": ["./src/*"]
 		},
 		"declaration": true,
 		"declarationDir": "dist/types",

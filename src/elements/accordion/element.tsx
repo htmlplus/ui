@@ -280,8 +280,7 @@ export class PlusAccordion extends PlusCore {
 					role="button"
 					tabIndex={this.disabled ? -1 : 0}
 					onClick={this.onClick}
-					// biome-ignore lint: TODO
-					onKeyDown={this.onKeyDown as any}
+					onKeyDown={this.onKeyDown}
 				>
 					<slot name="summary" part="summary">
 						{this.summary}

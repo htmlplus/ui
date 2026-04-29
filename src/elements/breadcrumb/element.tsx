@@ -164,7 +164,7 @@ export class PlusBreadcrumb extends PlusCore {
 
 		$clone?.removeAttribute('slot');
 
-		return $clone?.outerHTML || this.separator;
+		return $clone?.outerHTML || this.separator || '';
 	}
 
 	initialize() {
@@ -186,7 +186,7 @@ export class PlusBreadcrumb extends PlusCore {
 	render() {
 		const template = this.template;
 		return (
-			<host aria-label="breadcrumb">
+			<host aria-label="breadcrumb" value={this}>
 				{this.items.map((item) => {
 					switch (item.type) {
 						case 'item': {

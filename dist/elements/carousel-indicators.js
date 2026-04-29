@@ -1,4 +1,4 @@
-import { r as classes, b as _internal_h_, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
+import { r as classes, b as jsx, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}.root{transition:all .5s ease;display:flex;align-items:center}button{background-color:#d3d3d3;border:solid .25rem rgba(0,0,0,0);width:1.25rem;height:1.25rem;border-radius:50%;transition:all .5s ease;appearance:none;background-clip:padding-box;touch-action:manipulation;text-decoration:none;padding:0;margin:0;display:flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:0}button.selected{background-color:gray}:host([numbers]) button{width:2rem;height:2rem}:host([clickable]) button{cursor:pointer}:host([infinity]){width:0}:host([infinity]) .root{transform:translateX(calc(var(--plus-carousel-indicators-selected) * -1.25rem - 0.625rem))}:host([infinity]) button{scale:0}:host([infinity]) button.selected{scale:1}:host([infinity]) :is(.prev-1,.next-1){scale:.75}:host([infinity]) :is(.prev-2,.next-2){scale:.5}";
 var __defProp = Object.defineProperty;
@@ -43,11 +43,7 @@ let PlusCarouselIndicators = class extends CarouselChild {
     });
   }
   render() {
-    return _internal_h_`<div class="root" part="root">
-				${this.indexes.map((index) => _internal_h_`<button part="indicator" type="button" class=${this.getClass(index)} onClick=${() => this.scrollTo(index)}>
-						${this.numbers ? index + 1 : ""}
-					</button>`)}
-			</div>`;
+    return /* @__PURE__ */ jsx("div", { className: "root", part: "root", children: this.indexes.map((index) => /* @__PURE__ */ jsx("button", { part: "indicator", type: "button", className: this.getClass(index), onClick: () => this.scrollTo(index), children: this.numbers ? index + 1 : "" })) });
   }
 };
 PlusCarouselIndicators.tag = "plus-carousel-indicators";

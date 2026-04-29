@@ -60,7 +60,7 @@ export class PlusTabsPanel extends PlusCore {
 
 	render() {
 		return (
-			<host>
+			<host value={this}>
 				<slot />
 			</host>
 		);

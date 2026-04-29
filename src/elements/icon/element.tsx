@@ -177,6 +177,7 @@ export class PlusIcon extends PlusCore {
 				aria-hidden={this.label ? undefined : `${!this.label}`}
 				aria-label={this.label}
 				role={this.label ? 'img' : undefined}
+				value={this}
 			></host>
 		);
 	}

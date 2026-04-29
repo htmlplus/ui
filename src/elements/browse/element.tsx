@@ -119,8 +119,7 @@ export class PlusBrowse extends PlusCore {
 
 	timeout?: number;
 
-	// biome-ignore lint: TODO
-	get attributes(): any {
+	get attributes() {
 		const attributes: {
 			dragging?: boolean;
 			onClick?: (event: MouseEvent) => void;
@@ -237,10 +236,12 @@ export class PlusBrowse extends PlusCore {
 	}
 
 	@Bind()
-	onChange(event) {
-		const files = event.target.files;
+	onChange(event: Event) {
+		const target = event.target as HTMLInputElement;
 
-		if (!files.length) return;
+		const files = target.files;
+
+		if (!files || !files.length) return;
 
 		this.do(files);
 	}
@@ -276,7 +277,7 @@ export class PlusBrowse extends PlusCore {
 
 	render() {
 		return (
-			<host {...this.attributes}>
+			<host value={this} {...this.attributes}>
 				<slot />
 				<input
 					accept={this.accept}

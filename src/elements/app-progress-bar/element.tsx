@@ -196,7 +196,7 @@ export class PlusAppProgressBar extends PlusCore {
 
 	render() {
 		return (
-			<host state={this.state}>
+			<host state={this.state} value={this}>
 				<div part="bar"></div>
 			</host>
 		);

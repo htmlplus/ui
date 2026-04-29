@@ -81,7 +81,7 @@ export class PlusSpinner extends PlusCore {
 
 	render() {
 		return (
-			<host role="status">
+			<host role="status" value={this}>
 				<div className="root">
 					{this.elements.map((element) => (
 						<div key={element} />
