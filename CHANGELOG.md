@@ -1,3 +1,9 @@
+## [1.8.5](https://github.com/htmlplus/ui/compare/v1.8.4...v1.8.5) (2026-04-29)
+
+### Bug Fixes
+
+* Upgrade `@htmlplus/element` to `v4.0.0` to refresh JSX runtime elements and switch JSX config from `preserve` to `react-jsx` ([b230b91](https://github.com/htmlplus/ui/commit/b230b91ebd9dc70ef62a10e880283282361cb714))
+
 ## [1.8.4](https://github.com/htmlplus/ui/compare/v1.8.3...v1.8.4) (2026-04-02)
 
 ### Bug Fixes
