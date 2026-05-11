@@ -39,7 +39,7 @@ export class PlusTooltip extends PlusCore {
 	 * Specifies whether to display the arrow or not.
 	 */
 	@Property({ reflect: true })
-	arrow?: boolean;
+	arrow: boolean = false;
 
 	/**
 	 * Specifies a delay in milliseconds for show or hide.
@@ -53,13 +53,13 @@ export class PlusTooltip extends PlusCore {
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * TODO
 	 */
 	@Property({ reflect: true })
-	fixed?: boolean;
+	fixed: boolean = false;
 
 	/**
 	 * TODO

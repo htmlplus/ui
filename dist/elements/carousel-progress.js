@@ -33,14 +33,14 @@ PlusCarouselProgress.tag = "plus-carousel-progress";
 PlusCarouselProgress.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarouselProgress.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarouselProgress.prototype, "variant", 2);

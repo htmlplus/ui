@@ -17,7 +17,7 @@ export declare class PlusCropper extends PlusCore {
     /**
      * A number between 0 and 1. Specifies the automatic cropping area size.
      */
-    area?: number;
+    area: number;
     /**
      * Specifies the initial aspect ratio of the viewport.
      */
@@ -25,19 +25,19 @@ export declare class PlusCropper extends PlusCore {
     /**
      * Shows the grid background of the container.
      */
-    background?: boolean;
+    background: boolean;
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Shows the dashed lines above the viewport.
      */
-    guides?: boolean;
+    guides: boolean;
     /**
      * Shows the center indicator above the viewport.
      */
-    indicator?: boolean;
+    indicator: boolean;
     /**
      * Specifies the mode.
      *
@@ -81,11 +81,11 @@ export declare class PlusCropper extends PlusCore {
     /**
      * Specifies the image's src.
      */
-    src?: string;
+    src: string;
     /**
      * Hides the black modal above the image and under the viewport.
      */
-    transparent?: boolean;
+    transparent: boolean;
     /**
      * Gets/Sets data.
      */
@@ -115,7 +115,7 @@ export declare class PlusCropper extends PlusCore {
     /**
      * Specifies zoom ratio when zooming the image by wheeling the mouse.
      */
-    zoomRatio?: number;
+    zoomRatio: number;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -194,7 +194,7 @@ export declare class PlusCropper extends PlusCore {
     zoomTo(ratio: number): void;
     $image: HTMLImageElement;
     instance?: CropperCoreType;
-    locked?: boolean;
+    locked: boolean;
     get classes(): string;
     get options(): {
         aspectRatio: number;

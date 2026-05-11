@@ -13,6 +13,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusAccordions = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.persistent = false;
     this.state = {
       open: this.open.bind(this)
     };
@@ -34,19 +35,19 @@ PlusAccordions.tag = "plus-accordions";
 PlusAccordions.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusAccordions.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusAccordions.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusAccordions.prototype, "variant", 2);

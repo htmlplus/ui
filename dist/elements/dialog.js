@@ -13,7 +13,17 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusDialog = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.connector = "";
+    this.fullHeight = false;
+    this.fullWidth = false;
+    this.fullscreen = false;
+    this.keyboard = false;
+    this.open = false;
+    this.persistent = false;
     this.placement = "top";
+    this.scrollable = false;
+    this.sticky = false;
+    this.transparent = false;
     this.animate = new Animation({
       key: "state",
       source: () => this.$host,
@@ -120,7 +130,7 @@ let PlusDialog = class extends PlusCore {
     this.animate?.dispose();
   }
   async try(open, silent) {
-    if (this.opened === open) return await this.promise;
+    if (this.opened === open) return !!await this.promise;
     if (!silent) {
       const event = open ? this.plusOpen : this.plusClose;
       const prevented = event.call(this).defaultPrevented;
@@ -163,81 +173,81 @@ PlusDialog.instances = [];
 __decorateClass([
   Property({
     reflect: true,
-    type: 516
+    type: 1033
   })
 ], PlusDialog.prototype, "animation", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusDialog.prototype, "connector", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "fullHeight", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "fullWidth", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "fullscreen", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "keyboard", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusDialog.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "scrollable", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusDialog.prototype, "size", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "sticky", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDialog.prototype, "transparent", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDialog.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDialog.prototype, "variant", 2);

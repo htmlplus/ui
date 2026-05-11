@@ -22,24 +22,24 @@ export declare class PlusBreadcrumb extends PlusCore {
     /**
      * TODO.
      */
-    block?: boolean;
+    block: boolean;
     /**
      * Specifies the label for the expander button.
      */
-    expanderText?: string;
+    expanderText: string;
     /**
      * Specifies the position of the expander button.
      * The expander button is displayed when the number of items reached the maximum limit.
      */
-    offset?: number;
+    offset: number;
     /**
      * Specifies the Maximum number of items that are allowed to be displayed.
      */
-    max?: number;
+    max: number;
     /**
      * Specifies the separator between items.
      */
-    separator?: string;
+    separator: string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -52,7 +52,11 @@ export declare class PlusBreadcrumb extends PlusCore {
     observer: MutationObserver;
     $separators: HTMLElement[];
     get $children(): Element[];
-    get items(): any[];
+    get items(): {
+        type: "expander" | "item" | "separator";
+        key: string;
+        slot?: string;
+    }[];
     get template(): string;
     initialize(): void;
     terminate(): void;

@@ -14,6 +14,8 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusCarouselIndicators = class extends CarouselChild {
   constructor() {
     super(...arguments);
+    this.infinity = false;
+    this.numbers = false;
     this.events = ["init", "reInit", "select"];
   }
   get indexes() {
@@ -51,31 +53,31 @@ PlusCarouselIndicators.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 20
+    type: 41
   })
 ], PlusCarouselIndicators.prototype, "clickable", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCarouselIndicators.prototype, "infinity", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCarouselIndicators.prototype, "numbers", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarouselIndicators.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarouselIndicators.prototype, "variant", 2);

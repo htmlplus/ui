@@ -45,7 +45,7 @@ export class PlusCropper extends PlusCore {
 	 * A number between 0 and 1. Specifies the automatic cropping area size.
 	 */
 	@Property()
-	area?: number = 0.75;
+	area: number = 0.75;
 
 	/**
 	 * Specifies the initial aspect ratio of the viewport.
@@ -57,25 +57,25 @@ export class PlusCropper extends PlusCore {
 	 * Shows the grid background of the container.
 	 */
 	@Property()
-	background?: boolean;
+	background: boolean = false;
 
 	/**
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Shows the dashed lines above the viewport.
 	 */
 	@Property()
-	guides?: boolean;
+	guides: boolean = false;
 
 	/**
 	 * Shows the center indicator above the viewport.
 	 */
 	@Property()
-	indicator?: boolean;
+	indicator: boolean = false;
 
 	/**
 	 * Specifies the mode.
@@ -131,13 +131,13 @@ export class PlusCropper extends PlusCore {
 	 * Specifies the image's src.
 	 */
 	@Property()
-	src?: string;
+	src: string = '';
 
 	/**
 	 * Hides the black modal above the image and under the viewport.
 	 */
 	@Property()
-	transparent?: boolean;
+	transparent: boolean = false;
 
 	/**
 	 * Gets/Sets data.
@@ -175,7 +175,7 @@ export class PlusCropper extends PlusCore {
 	 * Specifies zoom ratio when zooming the image by wheeling the mouse.
 	 */
 	@Property()
-	zoomRatio?: number = 0.1;
+	zoomRatio: number = 0.1;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -316,7 +316,7 @@ export class PlusCropper extends PlusCore {
 
 	instance?: CropperCoreType;
 
-	locked?: boolean;
+	locked: boolean = false;
 
 	get classes() {
 		return classes(

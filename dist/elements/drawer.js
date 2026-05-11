@@ -13,7 +13,14 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusDrawer = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.backdrop = false;
+    this.connector = "";
+    this.floating = false;
+    this.mini = false;
     this.miniSize = 80;
+    this.open = false;
+    this.persistent = false;
+    this.flexible = false;
     this.size = 280;
     this.animate = {
       main: new Animation({
@@ -107,7 +114,7 @@ let PlusDrawer = class extends PlusCore {
     switch (name) {
       case "open":
         if (!next === !prev) break;
-        this.try(!!this.open, true);
+        this.try(this.open, true);
         break;
       case "mini":
         if (!next === !prev) break;
@@ -116,7 +123,7 @@ let PlusDrawer = class extends PlusCore {
     }
   }
   initialize() {
-    this.opened = !!this.open;
+    this.opened = this.open;
     this.animate.main.initialize(this.open ? "entered" : "leaved");
     this.animate.mini.initialize(this.mini ? "entered" : "leaved");
   }
@@ -125,7 +132,7 @@ let PlusDrawer = class extends PlusCore {
     this.animate.mini?.dispose();
   }
   async try(open, silent) {
-    if (this.opened === open) return await this.promise;
+    if (this.opened === open) return !!await this.promise;
     if (!silent) {
       const event = open ? this.plusOpen : this.plusClose;
       const prevented = event.call(this).defaultPrevented;
@@ -160,72 +167,72 @@ PlusDrawer.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 516
+    type: 1033
   })
 ], PlusDrawer.prototype, "animation", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDrawer.prototype, "backdrop", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusDrawer.prototype, "connector", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusDrawer.prototype, "floating", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusDrawer.prototype, "mini", 2);
 __decorateClass([
   Property({
-    type: 640
+    type: 1281
   })
 ], PlusDrawer.prototype, "miniSize", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusDrawer.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDrawer.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusDrawer.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusDrawer.prototype, "flexible", 2);
 __decorateClass([
   Property({
-    type: 640
+    type: 1281
   })
 ], PlusDrawer.prototype, "size", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDrawer.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDrawer.prototype, "variant", 2);

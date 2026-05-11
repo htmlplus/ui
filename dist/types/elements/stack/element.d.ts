@@ -24,11 +24,11 @@ export declare class PlusStack extends PlusCore {
     /**
      * Whether to reverse the order of items.
      */
-    reverse?: boolean;
+    reverse: boolean;
     /**
      * Whether the stack is vertical.
      */
-    vertical?: boolean;
+    vertical: boolean;
     /**
      * Controls whether items should wrap onto multiple lines.
      */

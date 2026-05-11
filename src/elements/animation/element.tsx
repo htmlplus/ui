@@ -69,7 +69,7 @@ export class PlusAnimation extends PlusCore {
 	 * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
 	 */
 	@Property()
-	easing?: string = 'linear';
+	easing: string = 'linear';
 
 	/**
 	 * The number of milliseconds to delay after the end of an animation.
@@ -140,7 +140,7 @@ export class PlusAnimation extends PlusCore {
 	 * Starts the animation.
 	 */
 	@Property({ reflect: true })
-	run?: boolean;
+	run: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

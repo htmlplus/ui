@@ -28,31 +28,31 @@ export declare class PlusDialog extends PlusCore {
      * You can put the dialog's toggler inside or outside of the dialog.
      * Read more about connectors [here](/connector).
      */
-    connector?: string;
+    connector: string;
     /**
      * Set the height of the dialog as much as the screen's height.
      */
-    fullHeight?: boolean;
+    fullHeight: boolean;
     /**
      * Set the width of the dialog as much as the screen's width.
      */
-    fullWidth?: boolean;
+    fullWidth: boolean;
     /**
      * Set both width and height of the dialog to occupy the screen size.
      */
-    fullscreen?: boolean;
+    fullscreen: boolean;
     /**
      * Closes the dialog when `escape` key is pressed.
      */
-    keyboard?: boolean;
+    keyboard: boolean;
     /**
      * Control dialog to show or not.
      */
-    open?: boolean;
+    open: boolean;
     /**
      * It prevents the dialog from closing on clicking outside of the element.
      */
-    persistent?: boolean;
+    persistent: boolean;
     /**
      * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
      * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
@@ -61,7 +61,7 @@ export declare class PlusDialog extends PlusCore {
     /**
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
-    scrollable?: boolean;
+    scrollable: boolean;
     /**
      * Determine the width of the dialog.
      */
@@ -69,11 +69,11 @@ export declare class PlusDialog extends PlusCore {
     /**
      * Removes the margin around the dialog's content.
      */
-    sticky?: boolean;
+    sticky: boolean;
     /**
      * Deactivate the dialog's backdrop to show or not.
      */
-    transparent?: boolean;
+    transparent: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -128,7 +128,7 @@ export declare class PlusDialog extends PlusCore {
     initialize(): void;
     terminate(): void;
     try(open: boolean, silent?: boolean): Promise<boolean>;
-    onEscape(event: any): void;
+    onEscape(event: KeyboardEvent): void;
     onClickOutside(): void;
     readyCallback(): void;
     disconnectedCallback(): void;

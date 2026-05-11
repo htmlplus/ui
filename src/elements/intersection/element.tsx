@@ -32,13 +32,13 @@ export class PlusIntersection extends PlusCore {
 	 * Disables the element functionality.
 	 */
 	@Property()
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * The event fires only once.
 	 */
 	@Property()
-	once?: boolean;
+	once: boolean = false;
 
 	/**
 	 * The element that is used as the viewport for checking visibility of the target. Must be the
@@ -90,7 +90,7 @@ export class PlusIntersection extends PlusCore {
 	plusChange!: EventEmitter<IntersectionObserverEntry>;
 
 	@State()
-	isIntersecting?: boolean;
+	isIntersecting: boolean = false;
 
 	observer?: IntersectionObserver;
 

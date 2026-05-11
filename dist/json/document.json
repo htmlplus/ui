@@ -28,7 +28,7 @@
         }
       ],
       "key": "plus-accordion",
-      "lastModified": "2026-04-29T14:24:06.215Z",
+      "lastModified": "2026-05-10T18:53:29.432Z",
       "methods": [
         {
           "async": false,
@@ -76,6 +76,7 @@
       "properties": [
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -85,6 +86,7 @@
         },
         {
           "attribute": "open",
+          "initializer": false,
           "name": "open",
           "readonly": false,
           "reflects": true,
@@ -94,6 +96,7 @@
         },
         {
           "attribute": "summary",
+          "initializer": "''",
           "name": "summary",
           "readonly": false,
           "reflects": false,
@@ -195,11 +198,12 @@
     {
       "events": [],
       "key": "plus-accordions",
-      "lastModified": "2026-03-31T21:47:46.803Z",
+      "lastModified": "2026-04-30T20:04:18.212Z",
       "methods": [],
       "properties": [
         {
           "attribute": "persistent",
+          "initializer": false,
           "name": "persistent",
           "readonly": false,
           "reflects": false,
@@ -262,7 +266,7 @@
         }
       ],
       "key": "plus-animation",
-      "lastModified": "2026-04-02T23:01:47.384Z",
+      "lastModified": "2026-04-30T21:13:57.432Z",
       "methods": [
         {
           "async": false,
@@ -476,6 +480,7 @@
         },
         {
           "attribute": "run",
+          "initializer": false,
           "name": "run",
           "readonly": false,
           "reflects": true,
@@ -530,7 +535,7 @@
     {
       "events": [],
       "key": "plus-app-progress-bar",
-      "lastModified": "2026-04-29T14:24:06.215Z",
+      "lastModified": "2026-04-30T21:13:06.408Z",
       "methods": [
         {
           "async": false,
@@ -615,6 +620,7 @@
         },
         {
           "attribute": "trickle-disabled",
+          "initializer": false,
           "name": "trickleDisabled",
           "readonly": false,
           "reflects": false,
@@ -782,11 +788,12 @@
     {
       "events": [],
       "key": "plus-avatar-group",
-      "lastModified": "2026-03-31T21:47:46.806Z",
+      "lastModified": "2026-04-30T20:04:18.212Z",
       "methods": [],
       "properties": [
         {
           "attribute": "hoverable",
+          "initializer": false,
           "name": "hoverable",
           "readonly": false,
           "reflects": true,
@@ -796,6 +803,7 @@
         },
         {
           "attribute": "stacked",
+          "initializer": false,
           "name": "stacked",
           "readonly": false,
           "reflects": true,
@@ -840,11 +848,12 @@
     {
       "events": [],
       "key": "plus-breadcrumb",
-      "lastModified": "2026-04-29T14:24:06.215Z",
+      "lastModified": "2026-05-01T10:42:42.946Z",
       "methods": [],
       "properties": [
         {
           "attribute": "block",
+          "initializer": false,
           "name": "block",
           "readonly": false,
           "reflects": true,
@@ -883,6 +892,7 @@
         },
         {
           "attribute": "separator",
+          "initializer": "''",
           "name": "separator",
           "readonly": false,
           "reflects": false,
@@ -978,7 +988,7 @@
         }
       ],
       "key": "plus-browse",
-      "lastModified": "2026-04-29T14:24:06.216Z",
+      "lastModified": "2026-04-30T20:57:48.079Z",
       "methods": [
         {
           "async": false,
@@ -992,6 +1002,7 @@
       "properties": [
         {
           "attribute": "accept",
+          "initializer": "''",
           "name": "accept",
           "readonly": false,
           "reflects": false,
@@ -1001,6 +1012,7 @@
         },
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -1010,6 +1022,7 @@
         },
         {
           "attribute": "droppable",
+          "initializer": false,
           "name": "droppable",
           "readonly": false,
           "reflects": false,
@@ -1055,6 +1068,7 @@
         },
         {
           "attribute": "multiple",
+          "initializer": false,
           "name": "multiple",
           "readonly": false,
           "reflects": false,
@@ -1106,7 +1120,7 @@
     {
       "events": [],
       "key": "plus-card",
-      "lastModified": "2026-03-31T21:47:46.810Z",
+      "lastModified": "2026-04-30T20:04:18.234Z",
       "methods": [],
       "properties": [
         {
@@ -1121,6 +1135,7 @@
         },
         {
           "attribute": "flat",
+          "initializer": false,
           "name": "flat",
           "readonly": false,
           "reflects": true,
@@ -1130,6 +1145,7 @@
         },
         {
           "attribute": "outlined",
+          "initializer": false,
           "name": "outlined",
           "readonly": false,
           "reflects": true,
@@ -1139,6 +1155,7 @@
         },
         {
           "attribute": "tile",
+          "initializer": false,
           "name": "tile",
           "readonly": false,
           "reflects": true,
@@ -1335,7 +1352,7 @@
         }
       ],
       "key": "plus-carousel",
-      "lastModified": "2026-03-31T21:47:46.815Z",
+      "lastModified": "2026-05-01T11:30:03.603Z",
       "methods": [
         {
           "async": false,
@@ -1471,6 +1488,7 @@
         },
         {
           "attribute": "auto-height",
+          "initializer": false,
           "name": "autoHeight",
           "readonly": false,
           "reflects": true,
@@ -1490,6 +1508,7 @@
         },
         {
           "attribute": "classes",
+          "initializer": false,
           "name": "classes",
           "readonly": false,
           "reflects": false,
@@ -1548,6 +1567,7 @@
         },
         {
           "attribute": "focusable",
+          "initializer": false,
           "name": "focusable",
           "readonly": false,
           "reflects": false,
@@ -1567,6 +1587,7 @@
         },
         {
           "attribute": "loop",
+          "initializer": false,
           "name": "loop",
           "readonly": false,
           "reflects": true,
@@ -1585,6 +1606,7 @@
         },
         {
           "attribute": "mirror",
+          "initializer": "''",
           "name": "mirror",
           "readonly": false,
           "reflects": false,
@@ -1626,6 +1648,7 @@
         },
         {
           "attribute": "resizable",
+          "initializer": false,
           "name": "resizable",
           "readonly": false,
           "reflects": false,
@@ -1742,11 +1765,12 @@
     {
       "events": [],
       "key": "plus-carousel-button",
-      "lastModified": "2026-03-31T21:47:46.810Z",
+      "lastModified": "2026-04-30T21:28:18.136Z",
       "methods": [],
       "properties": [
         {
           "attribute": "jump",
+          "initializer": false,
           "name": "jump",
           "readonly": false,
           "reflects": false,
@@ -1799,7 +1823,7 @@
     {
       "events": [],
       "key": "plus-carousel-counter",
-      "lastModified": "2026-03-31T21:47:46.811Z",
+      "lastModified": "2026-04-30T21:42:22.372Z",
       "methods": [],
       "properties": [
         {
@@ -1842,7 +1866,7 @@
     {
       "events": [],
       "key": "plus-carousel-indicators",
-      "lastModified": "2026-03-31T21:47:46.811Z",
+      "lastModified": "2026-04-30T20:04:18.212Z",
       "methods": [],
       "properties": [
         {
@@ -1856,6 +1880,7 @@
         },
         {
           "attribute": "infinity",
+          "initializer": false,
           "name": "infinity",
           "readonly": false,
           "reflects": true,
@@ -1865,6 +1890,7 @@
         },
         {
           "attribute": "numbers",
+          "initializer": false,
           "name": "numbers",
           "readonly": false,
           "reflects": true,
@@ -2022,11 +2048,12 @@
     {
       "events": [],
       "key": "plus-center",
-      "lastModified": "2026-03-31T21:47:46.815Z",
+      "lastModified": "2026-04-30T20:04:18.213Z",
       "methods": [],
       "properties": [
         {
           "attribute": "inline",
+          "initializer": false,
           "name": "inline",
           "readonly": false,
           "reflects": true,
@@ -2080,11 +2107,12 @@
         }
       ],
       "key": "plus-click-outside",
-      "lastModified": "2026-04-29T14:24:06.216Z",
+      "lastModified": "2026-04-30T20:04:18.250Z",
       "methods": [],
       "properties": [
         {
           "attribute": "capture",
+          "initializer": false,
           "name": "capture",
           "readonly": false,
           "reflects": false,
@@ -2094,6 +2122,7 @@
         },
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -2103,6 +2132,7 @@
         },
         {
           "attribute": "once",
+          "initializer": false,
           "name": "once",
           "readonly": false,
           "reflects": false,
@@ -2156,7 +2186,7 @@
         }
       ],
       "key": "plus-counter",
-      "lastModified": "2026-04-29T14:24:06.216Z",
+      "lastModified": "2026-05-01T11:45:40.716Z",
       "methods": [
         {
           "async": false,
@@ -2263,6 +2293,7 @@
         },
         {
           "attribute": "play",
+          "initializer": false,
           "name": "play",
           "readonly": false,
           "reflects": true,
@@ -2272,6 +2303,7 @@
         },
         {
           "attribute": "separator",
+          "initializer": "''",
           "name": "separator",
           "readonly": false,
           "reflects": false,
@@ -2371,7 +2403,7 @@
         }
       ],
       "key": "plus-cropper",
-      "lastModified": "2026-03-31T21:47:46.818Z",
+      "lastModified": "2026-04-30T21:13:06.408Z",
       "methods": [
         {
           "async": false,
@@ -2526,6 +2558,7 @@
         },
         {
           "attribute": "background",
+          "initializer": false,
           "name": "background",
           "readonly": false,
           "reflects": false,
@@ -2535,6 +2568,7 @@
         },
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -2544,6 +2578,7 @@
         },
         {
           "attribute": "guides",
+          "initializer": false,
           "name": "guides",
           "readonly": false,
           "reflects": false,
@@ -2553,6 +2588,7 @@
         },
         {
           "attribute": "indicator",
+          "initializer": false,
           "name": "indicator",
           "readonly": false,
           "reflects": false,
@@ -2682,6 +2718,7 @@
         },
         {
           "attribute": "src",
+          "initializer": "''",
           "name": "src",
           "readonly": false,
           "reflects": false,
@@ -2691,6 +2728,7 @@
         },
         {
           "attribute": "transparent",
+          "initializer": false,
           "name": "transparent",
           "readonly": false,
           "reflects": false,
@@ -2944,7 +2982,7 @@
         }
       ],
       "key": "plus-dialog",
-      "lastModified": "2026-04-29T14:24:06.217Z",
+      "lastModified": "2026-05-01T11:18:01.669Z",
       "methods": [
         {
           "async": false,
@@ -3001,6 +3039,7 @@
         },
         {
           "attribute": "connector",
+          "initializer": "''",
           "name": "connector",
           "readonly": false,
           "reflects": false,
@@ -3010,6 +3049,7 @@
         },
         {
           "attribute": "full-height",
+          "initializer": false,
           "name": "fullHeight",
           "readonly": false,
           "reflects": false,
@@ -3019,6 +3059,7 @@
         },
         {
           "attribute": "full-width",
+          "initializer": false,
           "name": "fullWidth",
           "readonly": false,
           "reflects": false,
@@ -3028,6 +3069,7 @@
         },
         {
           "attribute": "fullscreen",
+          "initializer": false,
           "name": "fullscreen",
           "readonly": false,
           "reflects": true,
@@ -3037,6 +3079,7 @@
         },
         {
           "attribute": "keyboard",
+          "initializer": false,
           "name": "keyboard",
           "readonly": false,
           "reflects": false,
@@ -3046,6 +3089,7 @@
         },
         {
           "attribute": "open",
+          "initializer": false,
           "name": "open",
           "readonly": false,
           "reflects": true,
@@ -3055,6 +3099,7 @@
         },
         {
           "attribute": "persistent",
+          "initializer": false,
           "name": "persistent",
           "readonly": false,
           "reflects": false,
@@ -3075,6 +3120,7 @@
         },
         {
           "attribute": "scrollable",
+          "initializer": false,
           "name": "scrollable",
           "readonly": false,
           "reflects": false,
@@ -3093,6 +3139,7 @@
         },
         {
           "attribute": "sticky",
+          "initializer": false,
           "name": "sticky",
           "readonly": false,
           "reflects": false,
@@ -3102,6 +3149,7 @@
         },
         {
           "attribute": "transparent",
+          "initializer": false,
           "name": "transparent",
           "readonly": false,
           "reflects": false,
@@ -3165,11 +3213,12 @@
     {
       "events": [],
       "key": "plus-dialog-body",
-      "lastModified": "2026-03-31T21:47:46.818Z",
+      "lastModified": "2026-04-30T20:04:18.212Z",
       "methods": [],
       "properties": [
         {
           "attribute": "scrollable",
+          "initializer": false,
           "name": "scrollable",
           "readonly": false,
           "reflects": true,
@@ -3213,11 +3262,12 @@
     {
       "events": [],
       "key": "plus-dialog-content",
-      "lastModified": "2026-03-31T21:47:46.819Z",
+      "lastModified": "2026-04-30T20:04:18.262Z",
       "methods": [],
       "properties": [
         {
           "attribute": "scrollable",
+          "initializer": false,
           "name": "scrollable",
           "readonly": false,
           "reflects": true,
@@ -3339,11 +3389,12 @@
     {
       "events": [],
       "key": "plus-dialog-toggler",
-      "lastModified": "2026-04-29T14:24:06.216Z",
+      "lastModified": "2026-04-30T21:01:09.161Z",
       "methods": [],
       "properties": [
         {
           "attribute": "connector",
+          "initializer": "''",
           "name": "connector",
           "readonly": false,
           "reflects": false,
@@ -3563,7 +3614,7 @@
         }
       ],
       "key": "plus-drawer",
-      "lastModified": "2026-04-29T14:24:06.218Z",
+      "lastModified": "2026-05-01T11:04:44.036Z",
       "methods": [
         {
           "async": false,
@@ -3620,6 +3671,7 @@
         },
         {
           "attribute": "backdrop",
+          "initializer": false,
           "name": "backdrop",
           "readonly": false,
           "reflects": false,
@@ -3629,6 +3681,7 @@
         },
         {
           "attribute": "connector",
+          "initializer": "''",
           "name": "connector",
           "readonly": false,
           "reflects": false,
@@ -3638,6 +3691,7 @@
         },
         {
           "attribute": "floating",
+          "initializer": false,
           "name": "floating",
           "readonly": false,
           "reflects": true,
@@ -3647,6 +3701,7 @@
         },
         {
           "attribute": "mini",
+          "initializer": false,
           "name": "mini",
           "readonly": false,
           "reflects": true,
@@ -3666,6 +3721,7 @@
         },
         {
           "attribute": "open",
+          "initializer": false,
           "name": "open",
           "readonly": false,
           "reflects": true,
@@ -3675,6 +3731,7 @@
         },
         {
           "attribute": "persistent",
+          "initializer": false,
           "name": "persistent",
           "readonly": false,
           "reflects": false,
@@ -3694,6 +3751,7 @@
         },
         {
           "attribute": "flexible",
+          "initializer": false,
           "name": "flexible",
           "readonly": false,
           "reflects": false,
@@ -3748,11 +3806,12 @@
     {
       "events": [],
       "key": "plus-drawer-toggler",
-      "lastModified": "2026-04-29T14:24:06.217Z",
+      "lastModified": "2026-04-30T21:01:09.153Z",
       "methods": [],
       "properties": [
         {
           "attribute": "connector",
+          "initializer": "''",
           "name": "connector",
           "readonly": false,
           "reflects": false,
@@ -3804,7 +3863,7 @@
     {
       "events": [],
       "key": "plus-faker",
-      "lastModified": "2026-03-31T21:47:46.824Z",
+      "lastModified": "2026-04-30T20:39:13.996Z",
       "methods": [],
       "properties": [
         {
@@ -3884,7 +3943,7 @@
     {
       "events": [],
       "key": "plus-format-bytes",
-      "lastModified": "2026-03-31T21:47:46.825Z",
+      "lastModified": "2026-04-30T20:39:42.233Z",
       "methods": [],
       "properties": [
         {
@@ -3927,6 +3986,7 @@
         },
         {
           "attribute": "signed",
+          "initializer": false,
           "name": "signed",
           "readonly": false,
           "reflects": false,
@@ -4003,7 +4063,7 @@
     {
       "events": [],
       "key": "plus-icon",
-      "lastModified": "2026-04-29T14:24:06.218Z",
+      "lastModified": "2026-05-10T20:52:58.930Z",
       "methods": [],
       "properties": [
         {
@@ -4027,6 +4087,7 @@
         },
         {
           "attribute": "label",
+          "initializer": "''",
           "name": "label",
           "readonly": false,
           "reflects": false,
@@ -4133,11 +4194,12 @@
         }
       ],
       "key": "plus-intersection",
-      "lastModified": "2026-04-29T14:24:06.218Z",
+      "lastModified": "2026-04-30T21:05:08.244Z",
       "methods": [],
       "properties": [
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": false,
@@ -4147,6 +4209,7 @@
         },
         {
           "attribute": "once",
+          "initializer": false,
           "name": "once",
           "readonly": false,
           "reflects": false,
@@ -4221,7 +4284,7 @@
     {
       "events": [],
       "key": "plus-prism",
-      "lastModified": "2026-03-31T21:47:46.828Z",
+      "lastModified": "2026-04-30T21:39:52.947Z",
       "methods": [],
       "properties": [
         {
@@ -4266,6 +4329,7 @@
         },
         {
           "attribute": "sync",
+          "initializer": false,
           "name": "sync",
           "readonly": false,
           "reflects": false,
@@ -4337,7 +4401,7 @@
     {
       "events": [],
       "key": "plus-progress-bar",
-      "lastModified": "2026-04-29T14:24:06.219Z",
+      "lastModified": "2026-04-30T21:13:06.423Z",
       "methods": [],
       "properties": [
         {
@@ -4361,6 +4425,7 @@
         },
         {
           "attribute": "label",
+          "initializer": false,
           "name": "label",
           "readonly": false,
           "reflects": false,
@@ -4390,6 +4455,7 @@
         },
         {
           "attribute": "sync",
+          "initializer": false,
           "name": "sync",
           "readonly": false,
           "reflects": true,
@@ -4502,7 +4568,7 @@
     {
       "events": [],
       "key": "plus-relative-time",
-      "lastModified": "2026-03-31T21:47:46.830Z",
+      "lastModified": "2026-05-01T11:10:18.116Z",
       "methods": [],
       "properties": [
         {
@@ -4589,11 +4655,12 @@
         }
       ],
       "key": "plus-scroll-detector",
-      "lastModified": "2026-03-31T21:47:46.831Z",
+      "lastModified": "2026-04-30T20:04:18.212Z",
       "methods": [],
       "properties": [
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": false,
@@ -4613,6 +4680,7 @@
         },
         {
           "attribute": "vertical",
+          "initializer": false,
           "name": "vertical",
           "readonly": false,
           "reflects": false,
@@ -4690,7 +4758,7 @@
         }
       ],
       "key": "plus-signature",
-      "lastModified": "2026-04-02T23:01:47.387Z",
+      "lastModified": "2026-04-30T21:13:06.411Z",
       "methods": [
         {
           "async": false,
@@ -4836,6 +4904,7 @@
         },
         {
           "attribute": "clear-on-resize",
+          "initializer": false,
           "name": "clearOnResize",
           "readonly": false,
           "reflects": false,
@@ -4895,6 +4964,7 @@
         },
         {
           "attribute": "resizable",
+          "initializer": false,
           "name": "resizable",
           "readonly": false,
           "reflects": false,
@@ -5012,7 +5082,7 @@
     {
       "events": [],
       "key": "plus-snippet",
-      "lastModified": "2026-04-02T23:01:47.387Z",
+      "lastModified": "2026-04-30T20:53:37.700Z",
       "methods": [],
       "properties": [
         {
@@ -5027,6 +5097,7 @@
         },
         {
           "attribute": "symbol",
+          "initializer": "''",
           "name": "symbol",
           "readonly": false,
           "reflects": false,
@@ -5102,7 +5173,7 @@
     {
       "events": [],
       "key": "plus-spacer",
-      "lastModified": "2026-03-31T21:47:46.835Z",
+      "lastModified": "2026-04-30T21:13:06.423Z",
       "methods": [],
       "properties": [
         {
@@ -5218,7 +5289,7 @@
     {
       "events": [],
       "key": "plus-stack",
-      "lastModified": "2026-03-31T21:47:46.837Z",
+      "lastModified": "2026-04-30T20:04:18.234Z",
       "methods": [],
       "properties": [
         {
@@ -5252,6 +5323,7 @@
         },
         {
           "attribute": "reverse",
+          "initializer": false,
           "name": "reverse",
           "readonly": false,
           "reflects": false,
@@ -5261,6 +5333,7 @@
         },
         {
           "attribute": "vertical",
+          "initializer": false,
           "name": "vertical",
           "readonly": false,
           "reflects": false,
@@ -5325,11 +5398,12 @@
         }
       ],
       "key": "plus-sticky",
-      "lastModified": "2026-04-29T14:24:06.219Z",
+      "lastModified": "2026-04-30T20:04:18.213Z",
       "methods": [],
       "properties": [
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -5349,6 +5423,7 @@
         },
         {
           "attribute": "watcher",
+          "initializer": false,
           "name": "watcher",
           "readonly": false,
           "reflects": false,
@@ -5424,11 +5499,12 @@
         }
       ],
       "key": "plus-switch",
-      "lastModified": "2026-04-29T14:24:06.219Z",
+      "lastModified": "2026-05-01T11:14:42.937Z",
       "methods": [],
       "properties": [
         {
           "attribute": "checked",
+          "initializer": false,
           "name": "checked",
           "readonly": false,
           "reflects": true,
@@ -5439,6 +5515,7 @@
         },
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -5489,7 +5566,7 @@
         }
       ],
       "key": "plus-tabs",
-      "lastModified": "2026-04-29T14:24:33.369Z",
+      "lastModified": "2026-04-30T21:10:17.871Z",
       "methods": [],
       "properties": [
         {
@@ -5503,6 +5580,7 @@
         },
         {
           "attribute": "vertical",
+          "initializer": false,
           "name": "vertical",
           "readonly": false,
           "reflects": true,
@@ -5554,11 +5632,12 @@
     {
       "events": [],
       "key": "plus-tabs-bar",
-      "lastModified": "2026-04-29T14:24:06.219Z",
+      "lastModified": "2026-04-30T20:04:18.213Z",
       "methods": [],
       "properties": [
         {
           "attribute": "grow",
+          "initializer": false,
           "name": "grow",
           "readonly": false,
           "reflects": true,
@@ -5578,6 +5657,7 @@
         },
         {
           "attribute": "reverse",
+          "initializer": false,
           "name": "reverse",
           "readonly": false,
           "reflects": true,
@@ -5621,7 +5701,7 @@
     {
       "events": [],
       "key": "plus-tabs-panel",
-      "lastModified": "2026-04-29T14:24:06.220Z",
+      "lastModified": "2026-04-30T21:10:22.128Z",
       "methods": [],
       "properties": [
         {
@@ -5717,11 +5797,12 @@
     {
       "events": [],
       "key": "plus-tabs-tab",
-      "lastModified": "2026-04-29T14:24:06.220Z",
+      "lastModified": "2026-04-30T21:10:26.147Z",
       "methods": [],
       "properties": [
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -5783,7 +5864,7 @@
     {
       "events": [],
       "key": "plus-tooltip",
-      "lastModified": "2026-04-29T14:24:06.222Z",
+      "lastModified": "2026-04-30T20:04:18.213Z",
       "methods": [
         {
           "async": false,
@@ -5813,6 +5894,7 @@
       "properties": [
         {
           "attribute": "arrow",
+          "initializer": false,
           "name": "arrow",
           "readonly": false,
           "reflects": true,
@@ -5831,6 +5913,7 @@
         },
         {
           "attribute": "disabled",
+          "initializer": false,
           "name": "disabled",
           "readonly": false,
           "reflects": true,
@@ -5840,6 +5923,7 @@
         },
         {
           "attribute": "fixed",
+          "initializer": false,
           "name": "fixed",
           "readonly": false,
           "reflects": true,

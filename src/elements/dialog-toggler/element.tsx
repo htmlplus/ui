@@ -30,7 +30,7 @@ export class PlusDialogToggler extends PlusCore {
 	 * Read more about connectors [here](/connector).
 	 */
 	@Property()
-	connector?: string;
+	connector: string = '';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

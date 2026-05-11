@@ -15,10 +15,12 @@ let PlusSignature = class extends PlusForm {
   constructor() {
     super(...arguments);
     this.backgroundColor = "lightgray";
+    this.clearOnResize = false;
     this.penColor = "black";
     this.minDistance = 5;
     this.maxWidth = 2.5;
     this.minWidth = 0.5;
+    this.resizable = false;
     this.throttle = 16;
     this.velocityFilterWeight = 0.7;
     this.history = [];
@@ -232,89 +234,89 @@ PlusSignature.tag = "plus-signature";
 PlusSignature.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusSignature.prototype, "backgroundColor", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusSignature.prototype, "canvasContextOptions", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusSignature.prototype, "clearOnResize", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusSignature.prototype, "penColor", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSignature.prototype, "minDistance", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSignature.prototype, "dotSize", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSignature.prototype, "maxWidth", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSignature.prototype, "minWidth", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusSignature.prototype, "resizable", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSignature.prototype, "throttle", 2);
 __decorateClass([
   Property({
-    type: 1
+    type: 3
   })
 ], PlusSignature.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSignature.prototype, "velocityFilterWeight", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusSignature.prototype, "canvas", 1);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusSignature.prototype, "redoable", 1);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusSignature.prototype, "undoable", 1);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusSignature.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusSignature.prototype, "variant", 2);

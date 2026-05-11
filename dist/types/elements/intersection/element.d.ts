@@ -16,11 +16,11 @@ export declare class PlusIntersection extends PlusCore {
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * The event fires only once.
      */
-    once?: boolean;
+    once: boolean;
     /**
      * The element that is used as the viewport for checking visibility of the target. Must be the
      * ancestor of the target. Defaults to the browser viewport if not specified or if `null`.
@@ -56,7 +56,7 @@ export declare class PlusIntersection extends PlusCore {
      * Fires When the browser detects that the element has been unveiled or obscured.
      */
     plusChange: EventEmitter<IntersectionObserverEntry>;
-    isIntersecting?: boolean;
+    isIntersecting: boolean;
     observer?: IntersectionObserver;
     get disconnected(): boolean;
     get options(): {

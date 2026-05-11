@@ -11,6 +11,10 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusSnippet = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.symbol = "";
+  }
   get style() {
     return {
       ":host": {
@@ -33,24 +37,24 @@ PlusSnippet.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusSnippet.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusSnippet.prototype, "symbol", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusSnippet.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusSnippet.prototype, "variant", 2);

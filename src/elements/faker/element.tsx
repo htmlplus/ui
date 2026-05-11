@@ -28,7 +28,7 @@ export class PlusFaker extends PlusCore {
 	 * Specifies the [API](https://fakerjs.dev/api).
 	 */
 	@Property()
-	api?: string = 'lorem.paragraph';
+	api: string = 'lorem.paragraph';
 
 	/**
 	 * Specifies the API's arguments as an array.
@@ -64,7 +64,7 @@ export class PlusFaker extends PlusCore {
 
 	get content() {
 		const method = this.api
-			?.split('.')
+			.split('.')
 			// biome-ignore lint: TODO
 			.reduce((result, key) => result?.[key], this.instance as any);
 

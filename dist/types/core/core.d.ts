@@ -3,5 +3,6 @@ export declare class PlusCore {
     tick?: number;
     get dir(): 'ltr' | 'rtl';
     get isRTL(): boolean;
+    get $shadowRoot(): ShadowRoot;
     forceUpdate(): void;
 }

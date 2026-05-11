@@ -36,7 +36,7 @@ export class PlusTabs extends PlusCore {
 	 * You can use vertical property for vertical mode.
 	 */
 	@Property({ reflect: true })
-	vertical?: boolean;
+	vertical: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

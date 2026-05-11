@@ -19,25 +19,25 @@ export declare class PlusDrawer extends PlusCore {
     /**
      * Activate the drawer's backdrop to show or not. It works when floating is activated.
      */
-    backdrop?: boolean;
+    backdrop: boolean;
     /**
      * This property helps you to attach which drawer toggler controls the drawer.
      * It doesn't matter where the drawer toggler is.
      * You can put the drawer's toggler inside or outside of the drawer.
      * Read more about connectors [here](/connector).
      */
-    connector?: string;
+    connector: string;
     /**
      * On default the drawer is considered as a part of the main container.
      * it pushes the other contents on opening.
      * If true it will be opened over other contents and doesn't affect other contents.
      * A floating drawer sits above its application and uses a backdrop to darken the background.
      */
-    floating?: boolean;
+    floating: boolean;
     /**
      * Set the width of drawer to the minimum size you specified for the `mini-size` property.
      */
-    mini?: boolean;
+    mini: boolean;
     /**
      * Sets the minimum width size of the drawer.
      */
@@ -45,12 +45,12 @@ export declare class PlusDrawer extends PlusCore {
     /**
      * Control drawer to show or not.
      */
-    open?: boolean;
+    open: boolean;
     /**
      * If true, don't allow the drawer to be closed by clicking outside of the drawer.
      * If false, the drawer will be closed by clicking outside of it.
      */
-    persistent?: boolean;
+    persistent: boolean;
     /**
      * Specifies where the drawer will open.
      */
@@ -59,7 +59,7 @@ export declare class PlusDrawer extends PlusCore {
      * It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced.
      * If false doesn't allow the width of the drawer to reduce.
      */
-    flexible?: boolean;
+    flexible: boolean;
     /**
      * Determine the width of the drawer.
      */
@@ -98,7 +98,7 @@ export declare class PlusDrawer extends PlusCore {
     promise?: Promise<boolean>;
     get classes(): string;
     get hasBackdrop(): boolean;
-    get style(): Record<string, string>;
+    get style(): Record<string, string | undefined>;
     /**
      * Hides the element.
      * @returns {Promise<boolean>} A Promise that resolves to `true` if the

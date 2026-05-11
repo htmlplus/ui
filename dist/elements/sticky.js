@@ -13,7 +13,9 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusSticky = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.disabled = false;
     this.top = 0;
+    this.watcher = false;
   }
   get style() {
     return {
@@ -60,34 +62,34 @@ PlusSticky.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusSticky.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 640
+    type: 1281
   })
 ], PlusSticky.prototype, "top", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusSticky.prototype, "watcher", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusSticky.prototype, "zIndex", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusSticky.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusSticky.prototype, "variant", 2);

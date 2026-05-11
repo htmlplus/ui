@@ -19,7 +19,7 @@ export declare class PlusTabs extends PlusCore {
     /**
      * You can use vertical property for vertical mode.
      */
-    vertical?: boolean;
+    vertical: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

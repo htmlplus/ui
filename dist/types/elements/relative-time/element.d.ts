@@ -22,7 +22,7 @@ export declare class PlusRelativeTime extends PlusCore {
     /**
      * The date and time to be displayed in a relative format.
      */
-    value?: Date | string;
+    value: Date | string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

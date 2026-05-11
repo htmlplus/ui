@@ -38,7 +38,7 @@ export declare class PlusAnimation extends PlusCore {
      * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
      * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
      */
-    easing?: string;
+    easing: string;
     /**
      * The number of milliseconds to delay after the end of an animation.
      * This is primarily of use when sequencing animations based on the end time of another animation.
@@ -89,7 +89,7 @@ export declare class PlusAnimation extends PlusCore {
     /**
      * Starts the animation.
      */
-    run?: boolean;
+    run: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

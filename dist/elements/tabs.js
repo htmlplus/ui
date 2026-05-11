@@ -11,6 +11,10 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusTabs = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.vertical = false;
+  }
   get state() {
     return {
       current: this.value,
@@ -30,25 +34,25 @@ PlusTabs.tag = "plus-tabs";
 PlusTabs.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusTabs.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusTabs.prototype, "vertical", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusTabs.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusTabs.prototype, "variant", 2);

@@ -17,15 +17,15 @@ export declare class PlusBrowse extends PlusCore {
      * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
      * describing file types to allow.
      */
-    accept?: string;
+    accept: string;
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Adds droppable ability.
      */
-    droppable?: boolean;
+    droppable: boolean;
     /**
      * Specifies the minimum number of files.
      */
@@ -45,7 +45,7 @@ export declare class PlusBrowse extends PlusCore {
     /**
      * Allows to select more than one file.
      */
-    multiple?: boolean;
+    multiple: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -67,7 +67,7 @@ export declare class PlusBrowse extends PlusCore {
      */
     plusSuccess: EventEmitter<PlusBrowseEvent>;
     $input: HTMLElement;
-    dragging?: boolean;
+    dragging: boolean;
     timeout?: number;
     get attributes(): {
         dragging?: boolean;

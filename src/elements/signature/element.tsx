@@ -59,7 +59,7 @@ export class PlusSignature extends PlusForm {
 	 * Clears the canvas after resizing.
 	 */
 	@Property()
-	clearOnResize?: boolean;
+	clearOnResize: boolean = false;
 
 	/**
 	 * Specifies the color of the strokes.
@@ -71,7 +71,7 @@ export class PlusSignature extends PlusForm {
 	 * Add the next point only if the previous one is farther than x pixels.
 	 */
 	@Property()
-	minDistance?: number = 5;
+	minDistance: number = 5;
 
 	/**
 	 * Specifies the radius of a single dot.
@@ -83,25 +83,25 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the maximum width of the strokes.
 	 */
 	@Property()
-	maxWidth?: number = 2.5;
+	maxWidth: number = 2.5;
 
 	/**
 	 * Specifies the minimum width of the strokes.
 	 */
 	@Property()
-	minWidth?: number = 0.5;
+	minWidth: number = 0.5;
 
 	/**
 	 * Observes the element dimensions to apply new changes on the canvas.
 	 */
 	@Property()
-	resizable?: boolean;
+	resizable: boolean = false;
 
 	/**
 	 * Specifies the time distance between the previous point and the next one.
 	 */
 	@Property()
-	throttle?: number = 16;
+	throttle: number = 16;
 
 	/**
 	 * Gets/Sets data.
@@ -113,7 +113,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the velocity based on the previous velocity.
 	 */
 	@Property()
-	velocityFilterWeight?: number = 0.7;
+	velocityFilterWeight: number = 0.7;
 
 	/**
 	 * The canvas element.

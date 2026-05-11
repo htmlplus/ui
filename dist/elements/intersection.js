@@ -10,6 +10,12 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusIntersection = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.disabled = false;
+    this.once = false;
+    this.isIntersecting = false;
+  }
   get disconnected() {
     return this.once && this.isIntersecting;
   }
@@ -69,39 +75,39 @@ let PlusIntersection = class extends PlusCore {
 PlusIntersection.tag = "plus-intersection";
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusIntersection.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusIntersection.prototype, "once", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusIntersection.prototype, "root", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusIntersection.prototype, "rootMargin", 2);
 __decorateClass([
   Property({
-    type: 129
+    type: 259
   })
 ], PlusIntersection.prototype, "threshold", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusIntersection.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusIntersection.prototype, "variant", 2);

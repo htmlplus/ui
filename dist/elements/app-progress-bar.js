@@ -15,6 +15,7 @@ let PlusAppProgressBar = class extends PlusCore {
     super(...arguments);
     this.color = "dodgerblue";
     this.minimum = 0.08;
+    this.trickleDisabled = false;
     this.trickleRate = 0.02;
     this.trickleSpeed = 800;
     this.state = "idle";
@@ -97,39 +98,39 @@ PlusAppProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusAppProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAppProgressBar.prototype, "minimum", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusAppProgressBar.prototype, "trickleDisabled", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAppProgressBar.prototype, "trickleRate", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAppProgressBar.prototype, "trickleSpeed", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusAppProgressBar.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusAppProgressBar.prototype, "variant", 2);

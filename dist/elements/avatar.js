@@ -140,31 +140,31 @@ PlusAvatar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusAvatar.prototype, "color", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 33
   })
 ], PlusAvatar.prototype, "shape", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusAvatar.prototype, "size", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusAvatar.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusAvatar.prototype, "variant", 2);

@@ -24,25 +24,25 @@ PlusTabsPanel.tag = "plus-tabs-panel";
 PlusTabsPanel.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusTabsPanel.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusTabsPanel.prototype, "active", 1);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusTabsPanel.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusTabsPanel.prototype, "variant", 2);

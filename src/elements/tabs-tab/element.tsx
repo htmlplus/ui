@@ -27,7 +27,7 @@ export class PlusTabsTab extends PlusCore {
 	 * A Tab can be disabled by setting disabled property.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Provides your own value.

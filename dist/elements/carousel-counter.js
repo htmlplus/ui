@@ -18,7 +18,7 @@ let PlusCarouselCounter = class extends CarouselChild {
     this.events = ["init", "reInit", "select"];
   }
   get content() {
-    return this.template?.replaceAll("%TOTAL%", this.total).replaceAll("%CURRENT%", this.current) || "";
+    return this.template.replaceAll("%TOTAL%", this.total).replaceAll("%CURRENT%", this.current);
   }
   get current() {
     const value = this.api?.selectedScrollSnap();
@@ -38,19 +38,19 @@ PlusCarouselCounter.tag = "plus-carousel-counter";
 PlusCarouselCounter.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusCarouselCounter.prototype, "template", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarouselCounter.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarouselCounter.prototype, "variant", 2);

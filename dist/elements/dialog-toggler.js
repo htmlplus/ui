@@ -11,6 +11,10 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusDialogToggler = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.connector = "";
+  }
   render() {
     return /* @__PURE__ */ jsxs("host", { role: "button", state: this.dialog?.open ? "opened" : "closed", value: this, onClick: this.dialog?.toggle, children: [
       /* @__PURE__ */ jsx("slot", { children: this.dialog?.open ? "Close" : "Open" }),
@@ -22,19 +26,19 @@ PlusDialogToggler.tag = "plus-dialog-toggler";
 PlusDialogToggler.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusDialogToggler.prototype, "connector", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDialogToggler.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDialogToggler.prototype, "variant", 2);

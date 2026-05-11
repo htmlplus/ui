@@ -27,7 +27,7 @@ export declare class PlusIcon extends PlusCore {
     /**
      * Specifies an alternate description to use for assistive devices.
      */
-    label?: string;
+    label: string;
     /**
      * Specifies the name.
      */

@@ -19,14 +19,14 @@ PlusDialogFooter.tag = "plus-dialog-footer";
 PlusDialogFooter.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDialogFooter.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDialogFooter.prototype, "variant", 2);

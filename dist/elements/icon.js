@@ -25,6 +25,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusIcon = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.label = "";
     this.resolver = ({
       name
     }) => {
@@ -83,7 +84,7 @@ let PlusIcon = class extends PlusCore {
     }
     query(this, "svg")?.remove();
     svg = (svg || ICON_DEFAULT_SVG).replace(/<svg/, '<svg part="svg"');
-    this.$host.shadowRoot.innerHTML += svg;
+    this.$shadowRoot.innerHTML += svg;
   }
   readyCallback() {
     this.update();
@@ -97,53 +98,53 @@ PlusIcon.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusIcon.prototype, "color", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 33
   })
 ], PlusIcon.prototype, "flip", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusIcon.prototype, "label", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusIcon.prototype, "name", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusIcon.prototype, "resolver", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 128
+    type: 257
   })
 ], PlusIcon.prototype, "rotate", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 656
+    type: 1313
   })
 ], PlusIcon.prototype, "size", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusIcon.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusIcon.prototype, "variant", 2);

@@ -14,6 +14,8 @@ let PlusStack = class extends PlusCore {
     super(...arguments);
     this.items = "center";
     this.justify = "center";
+    this.reverse = false;
+    this.vertical = false;
     this.wrap = false;
   }
   get style() {
@@ -46,44 +48,44 @@ let PlusStack = class extends PlusCore {
 PlusStack.tag = "plus-stack";
 __decorateClass([
   Property({
-    type: 640
+    type: 1281
   })
 ], PlusStack.prototype, "gap", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusStack.prototype, "items", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusStack.prototype, "justify", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusStack.prototype, "reverse", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusStack.prototype, "vertical", 2);
 __decorateClass([
   Property({
-    type: 20
+    type: 41
   })
 ], PlusStack.prototype, "wrap", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusStack.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusStack.prototype, "variant", 2);

@@ -11,6 +11,11 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusAvatarGroup = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.hoverable = false;
+    this.stacked = false;
+  }
   render() {
     return /* @__PURE__ */ jsx("slot", {});
   }
@@ -20,25 +25,25 @@ PlusAvatarGroup.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusAvatarGroup.prototype, "hoverable", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusAvatarGroup.prototype, "stacked", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusAvatarGroup.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusAvatarGroup.prototype, "variant", 2);

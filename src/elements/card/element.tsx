@@ -30,19 +30,19 @@ export class PlusCard extends PlusCore {
 	 * Use the flat property to neutralize elevation.
 	 */
 	@Property({ reflect: true })
-	flat?: boolean;
+	flat: boolean = false;
 
 	/**
 	 * If you want the card to have border, use the outlined property.
 	 */
 	@Property({ reflect: true })
-	outlined?: boolean;
+	outlined: boolean = false;
 
 	/**
 	 * Use tile property to neutralize border-radius.
 	 */
 	@Property({ reflect: true })
-	tile?: boolean;
+	tile: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

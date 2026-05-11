@@ -33,19 +33,19 @@ PlusCarouselSlide.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 20
+    type: 41
   })
 ], PlusCarouselSlide.prototype, "clickable", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarouselSlide.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarouselSlide.prototype, "variant", 2);

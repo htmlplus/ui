@@ -16,7 +16,7 @@ export declare class PlusDialogToggler extends PlusCore {
      * You can put the dialog's toggler inside or outside of the dialog.
      * Read more about connectors [here](/connector).
      */
-    connector?: string;
+    connector: string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

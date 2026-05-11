@@ -13,8 +13,10 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusProgressBar = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.label = false;
     this.max = 100;
     this.min = 0;
+    this.sync = false;
     this.value = 0;
   }
   get style() {
@@ -50,51 +52,51 @@ PlusProgressBar.tag = "plus-progress-bar";
 PlusProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "buffer", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusProgressBar.prototype, "label", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "min", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusProgressBar.prototype, "sync", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusProgressBar.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusProgressBar.prototype, "variant", 2);

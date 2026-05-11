@@ -23,6 +23,11 @@ export class PlusCore {
 		return isRTL(this);
 	}
 
+	get $shadowRoot() {
+		// biome-ignore lint: TODO
+		return this.$host.shadowRoot!;
+	}
+
 	@Bind()
 	forceUpdate() {
 		this.tick = Math.random();

@@ -11,11 +11,11 @@ export declare class PlusSwitch extends PlusCore {
      * Puts the switch in checked state.
      * @model
      */
-    checked?: boolean;
+    checked: boolean;
     /**
      * Disables the switch.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -30,8 +30,8 @@ export declare class PlusSwitch extends PlusCore {
      */
     plusChange: EventEmitter<void>;
     toggle(): void;
-    onClick(event: any): void;
-    onKeyDown(event: any): void;
+    onClick(event: MouseEvent): void;
+    onKeyDown(event: KeyboardEvent): void;
     render(): any;
 }
 

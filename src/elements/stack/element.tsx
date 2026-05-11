@@ -44,13 +44,13 @@ export class PlusStack extends PlusCore {
 	 * Whether to reverse the order of items.
 	 */
 	@Property()
-	reverse?: boolean;
+	reverse: boolean = false;
 
 	/**
 	 * Whether the stack is vertical.
 	 */
 	@Property()
-	vertical?: boolean;
+	vertical: boolean = false;
 
 	/**
 	 * Controls whether items should wrap onto multiple lines.

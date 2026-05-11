@@ -25,12 +25,12 @@ export declare class PlusFormatBytes extends PlusCore {
     /**
      * Specifies the separator between number and unit.
      */
-    separator?: string;
+    separator: string;
     /**
      * Shows plus sign for positive numbers.
      * If the difference is exactly zero a space character will be prepended instead for better alignment.
      */
-    signed?: boolean;
+    signed: boolean;
     /**
      * Specifies the standard of units.
      * [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported.

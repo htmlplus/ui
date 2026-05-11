@@ -11,6 +11,11 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusSwitch = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.checked = false;
+    this.disabled = false;
+  }
   toggle() {
     if (this.disabled) return;
     this.checked = !this.checked;
@@ -26,7 +31,7 @@ let PlusSwitch = class extends PlusCore {
     this.toggle();
   }
   render() {
-    return /* @__PURE__ */ jsx("host", { "aria-checked": `${!!this.checked}`, "aria-disabled": `${!!this.disabled}`, role: "switch", tabIndex: 0, value: this, onClick: this.onClick, onKeyDown: this.onKeyDown, children: /* @__PURE__ */ jsxs("div", { className: "root", part: "root", children: [
+    return /* @__PURE__ */ jsx("host", { "aria-checked": `${this.checked}`, "aria-disabled": `${this.disabled}`, role: "switch", tabIndex: 0, value: this, onClick: this.onClick, onKeyDown: this.onKeyDown, children: /* @__PURE__ */ jsxs("div", { className: "root", part: "root", children: [
       /* @__PURE__ */ jsx("div", { className: "slot on", part: "slot on", children: /* @__PURE__ */ jsx("slot", { name: "on" }) }),
       /* @__PURE__ */ jsx("div", { className: "handle", part: "handle", children: /* @__PURE__ */ jsx("slot", { name: "handle" }) }),
       /* @__PURE__ */ jsx("div", { className: "slot off", part: "slot off", children: /* @__PURE__ */ jsx("slot", { name: "off" }) })
@@ -38,25 +43,25 @@ PlusSwitch.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusSwitch.prototype, "checked", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusSwitch.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusSwitch.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusSwitch.prototype, "variant", 2);

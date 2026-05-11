@@ -11,6 +11,14 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusBrowse = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.accept = "";
+    this.disabled = false;
+    this.droppable = false;
+    this.multiple = false;
+    this.dragging = false;
+  }
   get attributes() {
     const attributes = {};
     if (this.disabled) return attributes;
@@ -23,7 +31,7 @@ let PlusBrowse = class extends PlusCore {
     return attributes;
   }
   get types() {
-    return (this.accept || "").split(",").map((type) => type.trim());
+    return this.accept.split(",").map((type) => type.trim());
   }
   browse() {
     this.$input.click();
@@ -122,55 +130,55 @@ PlusBrowse.tag = "plus-browse";
 PlusBrowse.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusBrowse.prototype, "accept", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusBrowse.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusBrowse.prototype, "droppable", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusBrowse.prototype, "min", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusBrowse.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusBrowse.prototype, "minSize", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusBrowse.prototype, "maxSize", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusBrowse.prototype, "multiple", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusBrowse.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusBrowse.prototype, "variant", 2);

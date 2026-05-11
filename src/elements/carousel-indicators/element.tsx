@@ -32,13 +32,13 @@ export class PlusCarouselIndicators extends CarouselChild {
 	 * Allows indicators to wrap around the carousel when reaching the beginning or end.
 	 */
 	@Property({ reflect: true })
-	infinity?: boolean;
+	infinity: boolean = false;
 
 	/**
 	 * Displays slide numbers inside the indicators.
 	 */
 	@Property({ reflect: true })
-	numbers?: boolean;
+	numbers: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

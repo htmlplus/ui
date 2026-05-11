@@ -24,11 +24,11 @@ export declare class PlusPrism extends PlusCore {
     /**
      * The programming language to highlight.
      */
-    language?: string;
+    language: string;
     /**
      * The theme to apply for syntax highlighting.
      */
-    theme?: string;
+    theme: string;
     /**
      * Plugins to enhance Prism's functionality.
      */
@@ -40,7 +40,7 @@ export declare class PlusPrism extends PlusCore {
     /**
      * Whether to synchronize updates with DOM changes.
      */
-    sync?: boolean;
+    sync: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

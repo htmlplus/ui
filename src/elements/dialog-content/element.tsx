@@ -21,7 +21,7 @@ export class PlusDialogContent extends PlusCore {
 	 * It makes the user able to scroll the content by adding a scroll beside it.
 	 */
 	@Property({ reflect: true })
-	scrollable?: boolean;
+	scrollable: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

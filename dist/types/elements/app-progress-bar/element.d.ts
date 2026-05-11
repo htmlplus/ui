@@ -16,19 +16,19 @@ export declare class PlusAppProgressBar extends PlusCore {
     /**
      * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
      */
-    minimum?: number;
+    minimum: number;
     /**
      * Turn off the automatic incrementing behavior by setting this to `true`.
      */
-    trickleDisabled?: boolean;
+    trickleDisabled: boolean;
     /**
      * The rate at which the progress bar increments when trickling.
      */
-    trickleRate?: number;
+    trickleRate: number;
     /**
      * Adjust how often to trickle/increment, in ms.
      */
-    trickleSpeed?: number;
+    trickleSpeed: number;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

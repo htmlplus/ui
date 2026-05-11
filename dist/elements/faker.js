@@ -17,7 +17,7 @@ let PlusFaker = class extends PlusCore {
     this.arguments = [];
   }
   get content() {
-    const method = this.api?.split(".").reduce((result, key) => result?.[key], this.instance);
+    const method = this.api.split(".").reduce((result, key) => result?.[key], this.instance);
     if (!method) return null;
     this.instance?.seed(this.seed);
     return method(...this.arguments || []) || null;
@@ -40,34 +40,34 @@ PlusFaker.tag = "plus-faker";
 PlusFaker.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusFaker.prototype, "api", 2);
 __decorateClass([
   Property({
-    type: 1
+    type: 3
   })
 ], PlusFaker.prototype, "arguments", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusFaker.prototype, "instance", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusFaker.prototype, "seed", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusFaker.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusFaker.prototype, "variant", 2);

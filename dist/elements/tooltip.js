@@ -14,6 +14,9 @@ let FloatingCore;
 let PlusTooltip = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.arrow = false;
+    this.disabled = false;
+    this.fixed = false;
     this.offset = [0, 10];
     this.reference = "previous";
     this.trigger = ["focus", "hover"];
@@ -191,61 +194,61 @@ PlusTooltip.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusTooltip.prototype, "arrow", 2);
 __decorateClass([
   Property({
-    type: 129
+    type: 259
   })
 ], PlusTooltip.prototype, "delay", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusTooltip.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusTooltip.prototype, "fixed", 2);
 __decorateClass([
   Property({
-    type: 129
+    type: 259
   })
 ], PlusTooltip.prototype, "offset", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusTooltip.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 528
+    type: 1057
   })
 ], PlusTooltip.prototype, "reference", 2);
 __decorateClass([
   Property({
-    type: 17
+    type: 35
   })
 ], PlusTooltip.prototype, "trigger", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusTooltip.prototype, "z", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusTooltip.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusTooltip.prototype, "variant", 2);

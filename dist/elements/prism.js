@@ -16,6 +16,7 @@ let PlusPrism = class extends PlusCore {
     super(...arguments);
     this.language = "javascript";
     this.theme = "default";
+    this.sync = false;
     this.observer = new MutationObserver(this.forceUpdate);
     this.cache = new AsyncCache({
       type: "global",
@@ -50,13 +51,13 @@ let PlusPrism = class extends PlusCore {
   }
   get assets() {
     const assets = [];
-    if (this.language && !PrismCore.languages[this.language]) {
+    if (!PrismCore.languages[this.language]) {
       assets.push({
         key: "language",
         value: this.language
       });
     }
-    if (this.theme && this.theme !== "default") {
+    if (this.theme !== "default") {
       assets.push({
         key: "theme",
         value: this.theme
@@ -99,7 +100,7 @@ let PlusPrism = class extends PlusCore {
       if (typeof content !== "string") continue;
       style += content;
     }
-    PrismCore.highlightAllUnder(this.$host.shadowRoot, false);
+    PrismCore.highlightAllUnder(this.$shadowRoot, false);
     if (!style) return;
     return `:host([theme="${this.theme}"]){${style}}`;
   }
@@ -137,40 +138,40 @@ PlusPrism.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 512
+    type: 1025
   })
 ], PlusPrism.prototype, "language", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 512
+    type: 1025
   })
 ], PlusPrism.prototype, "theme", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 513
   })
 ], PlusPrism.prototype, "plugins", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusPrism.prototype, "resolver", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusPrism.prototype, "sync", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusPrism.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusPrism.prototype, "variant", 2);

@@ -17,7 +17,7 @@ export declare class PlusSticky extends PlusCore {
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Specifies the space from top.
      */
@@ -25,7 +25,7 @@ export declare class PlusSticky extends PlusCore {
     /**
      * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
      */
-    watcher?: boolean;
+    watcher: boolean;
     /**
      * Specifies the z-index.
      */

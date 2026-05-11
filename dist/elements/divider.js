@@ -39,49 +39,49 @@ PlusDivider.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusDivider.prototype, "color", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 528
+    type: 1057
   })
 ], PlusDivider.prototype, "inset", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 33
   })
 ], PlusDivider.prototype, "orientation", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 33
   })
 ], PlusDivider.prototype, "placement", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusDivider.prototype, "size", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusDivider.prototype, "stroke", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDivider.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDivider.prototype, "variant", 2);

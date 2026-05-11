@@ -12,7 +12,7 @@ export declare class PlusTabsTab extends PlusCore {
     /**
      * A Tab can be disabled by setting disabled property.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Provides your own value.
      */

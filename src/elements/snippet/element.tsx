@@ -37,7 +37,7 @@ export class PlusSnippet extends PlusCore {
 	 * Specifies the symbol.
 	 */
 	@Property()
-	symbol?: string;
+	symbol: string = '';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

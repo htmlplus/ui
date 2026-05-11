@@ -38,31 +38,31 @@ export class PlusProgressBar extends PlusCore {
 	 * Displays the progress percentage.
 	 */
 	@Property()
-	label?: boolean;
+	label: boolean = false;
 
 	/**
 	 * Specifies the maximum value of the progress.
 	 */
 	@Property()
-	max?: number = 100;
+	max: number = 100;
 
 	/**
 	 * Specifies the minimum value of the progress.
 	 */
 	@Property()
-	min?: number = 0;
+	min: number = 0;
 
 	/**
 	 * Eliminates delays in updating value.
 	 */
 	@Property({ reflect: true })
-	sync?: boolean;
+	sync: boolean = false;
 
 	/**
 	 * Specifies the progress of the bar by a number between `min` and `max`.
 	 */
 	@Property()
-	value?: number = 0;
+	value: number = 0;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

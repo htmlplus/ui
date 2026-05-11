@@ -13,7 +13,7 @@ export declare class PlusCarouselCounter extends CarouselChild {
      * - `%CURRENT%`: Represents the number of the currently active slide.
      * - `%TOTAL%`: Represents the total number of slides in the carousel.
      */
-    template?: string;
+    template: string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

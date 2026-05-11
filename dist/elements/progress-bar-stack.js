@@ -19,14 +19,14 @@ PlusProgressBarStack.tag = "plus-progress-bar-stack";
 PlusProgressBarStack.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusProgressBarStack.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusProgressBarStack.prototype, "variant", 2);

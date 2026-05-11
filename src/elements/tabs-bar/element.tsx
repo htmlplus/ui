@@ -22,7 +22,7 @@ export class PlusTabsBar extends PlusCore {
 	 * Grows tabs as much as all available space (occupies all horizontal space).
 	 */
 	@Property({ reflect: true })
-	grow?: boolean;
+	grow: boolean = false;
 
 	/**
 	 * Specifies how the tabs are aligned.
@@ -34,7 +34,7 @@ export class PlusTabsBar extends PlusCore {
 	 * Reverses the arrangement of the tabs.
 	 */
 	@Property({ reflect: true })
-	reverse?: boolean;
+	reverse: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

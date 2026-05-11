@@ -44,14 +44,14 @@ export class PlusFormatBytes extends PlusCore {
 	 * Specifies the separator between number and unit.
 	 */
 	@Property()
-	separator?: string = ' ';
+	separator: string = ' ';
 
 	/**
 	 * Shows plus sign for positive numbers.
 	 * If the difference is exactly zero a space character will be prepended instead for better alignment.
 	 */
 	@Property()
-	signed?: boolean;
+	signed: boolean = false;
 
 	/**
 	 * Specifies the standard of units.
@@ -134,7 +134,7 @@ export class PlusFormatBytes extends PlusCore {
 
 		result += formatter.format(bytes / (found?.from || 1));
 
-		result += this.separator || '';
+		result += this.separator;
 
 		result += (found && this.display && this.display in found && found[this.display]) || '';
 

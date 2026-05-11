@@ -16,7 +16,7 @@ export declare class PlusTooltip extends PlusCore {
     /**
      * Specifies whether to display the arrow or not.
      */
-    arrow?: boolean;
+    arrow: boolean;
     /**
      * Specifies a delay in milliseconds for show or hide.
      * Use a number for both show and hide or
@@ -26,11 +26,11 @@ export declare class PlusTooltip extends PlusCore {
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * TODO
      */
-    fixed?: boolean;
+    fixed: boolean;
     /**
      * TODO
      */
