@@ -10,7 +10,7 @@ export declare class PlusDialogBody extends PlusCore {
     /**
      * It makes the user able to scroll the content by adding a scroll beside it.
      */
-    scrollable?: boolean;
+    scrollable: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

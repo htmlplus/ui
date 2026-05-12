@@ -19,14 +19,14 @@ PlusCardBody.tag = "plus-card-body";
 PlusCardBody.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCardBody.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCardBody.prototype, "variant", 2);

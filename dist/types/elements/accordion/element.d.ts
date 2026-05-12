@@ -29,15 +29,15 @@ export declare class PlusAccordion extends PlusCore {
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Control the element to expand or not.
      */
-    open?: boolean;
+    open: boolean;
     /**
      * The summary text displayed on the header.
      */
-    summary?: string;
+    summary: string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

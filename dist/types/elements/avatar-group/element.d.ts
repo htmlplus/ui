@@ -11,11 +11,11 @@ export declare class PlusAvatarGroup extends PlusCore {
     /**
      * Specifies whether to prominent the avatar when the mouse is entered or not.
      */
-    hoverable?: boolean;
+    hoverable: boolean;
     /**
      * Specifies whether avatars should be displayed compressed or not.
      */
-    stacked?: boolean;
+    stacked: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

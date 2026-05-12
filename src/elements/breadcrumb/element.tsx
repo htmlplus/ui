@@ -37,32 +37,32 @@ export class PlusBreadcrumb extends PlusCore {
 	 * TODO.
 	 */
 	@Property({ reflect: true })
-	block?: boolean;
+	block: boolean = false;
 
 	/**
 	 * Specifies the label for the expander button.
 	 */
 	@Property()
-	expanderText?: string = 'Show path';
+	expanderText: string = 'Show path';
 
 	/**
 	 * Specifies the position of the expander button.
 	 * The expander button is displayed when the number of items reached the maximum limit.
 	 */
 	@Property()
-	offset?: number = 1;
+	offset: number = 1;
 
 	/**
 	 * Specifies the Maximum number of items that are allowed to be displayed.
 	 */
 	@Property()
-	max?: number;
+	max: number = Infinity;
 
 	/**
 	 * Specifies the separator between items.
 	 */
 	@Property()
-	separator?: string;
+	separator: string = '';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -97,12 +97,14 @@ export class PlusBreadcrumb extends PlusCore {
 	get items() {
 		const $children = this.$children;
 
-		const items = [];
+		const items: Array<{
+			type: 'expander' | 'item' | 'separator';
+			key: string;
+			slot?: string;
+		}> = [];
 
 		const { start, length } = (() => {
 			if (this.expand) return {};
-
-			if (typeof this.max !== 'number') return {};
 
 			if ($children.length <= this.max) return {};
 
@@ -164,7 +166,7 @@ export class PlusBreadcrumb extends PlusCore {
 
 		$clone?.removeAttribute('slot');
 
-		return $clone?.outerHTML || this.separator || '';
+		return $clone?.outerHTML || this.separator;
 	}
 
 	initialize() {

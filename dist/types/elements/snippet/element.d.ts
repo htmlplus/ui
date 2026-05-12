@@ -18,11 +18,11 @@ export declare class PlusSnippet extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<PlusColor>;
+    color: OverridableValue<PlusColor>;
     /**
      * Specifies the symbol.
      */
-    symbol?: string;
+    symbol: string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

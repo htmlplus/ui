@@ -17,27 +17,27 @@ export declare class PlusProgressBar extends PlusCore {
     /**
      * Specifies the color of the bar.
      */
-    color?: OverridableValue<PlusColor>;
+    color: OverridableValue<PlusColor>;
     /**
      * Displays the progress percentage.
      */
-    label?: boolean;
+    label: boolean;
     /**
      * Specifies the maximum value of the progress.
      */
-    max?: number;
+    max: number;
     /**
      * Specifies the minimum value of the progress.
      */
-    min?: number;
+    min: number;
     /**
      * Eliminates delays in updating value.
      */
-    sync?: boolean;
+    sync: boolean;
     /**
      * Specifies the progress of the bar by a number between `min` and `max`.
      */
-    value?: number;
+    value: number;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

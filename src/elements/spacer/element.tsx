@@ -20,7 +20,7 @@ export class PlusSpacer extends PlusCore {
 	 * TODO
 	 */
 	@Property()
-	grow?: number = 1;
+	grow: number = 1;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

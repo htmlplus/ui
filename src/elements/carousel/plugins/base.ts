@@ -8,6 +8,9 @@ export abstract class CarouselPlugin {
 	};
 
 	public get api() {
+		if (!this.instance.api) {
+			throw new Error('Unexpected Error');
+		}
 		return this.instance.api;
 	}
 
@@ -15,13 +18,15 @@ export abstract class CarouselPlugin {
 
 	public initialize(): void {
 		Object.keys(this.events).forEach((key) => {
-			this.api.on(key as EmblaEventType, this.events[key]);
+			// biome-ignore lint: TODO
+			this.api.on(key as EmblaEventType, this.events[key as EmblaEventType]!);
 		});
 	}
 
 	public terminate(): void {
 		Object.keys(this.events).forEach((key) => {
-			this.api.off(key as EmblaEventType, this.events[key]);
+			// biome-ignore lint: TODO
+			this.api.off(key as EmblaEventType, this.events[key as EmblaEventType]!);
 		});
 	}
 

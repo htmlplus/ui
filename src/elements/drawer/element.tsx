@@ -44,7 +44,7 @@ export class PlusDrawer extends PlusCore {
 	 * Activate the drawer's backdrop to show or not. It works when floating is activated.
 	 */
 	@Property()
-	backdrop?: boolean;
+	backdrop: boolean = false;
 
 	/**
 	 * This property helps you to attach which drawer toggler controls the drawer.
@@ -53,7 +53,7 @@ export class PlusDrawer extends PlusCore {
 	 * Read more about connectors [here](/connector).
 	 */
 	@Property()
-	connector?: string;
+	connector: string = '';
 
 	/**
 	 * On default the drawer is considered as a part of the main container.
@@ -62,32 +62,32 @@ export class PlusDrawer extends PlusCore {
 	 * A floating drawer sits above its application and uses a backdrop to darken the background.
 	 */
 	@Property({ reflect: true })
-	floating?: boolean;
+	floating: boolean = false;
 
 	/**
 	 * Set the width of drawer to the minimum size you specified for the `mini-size` property.
 	 */
 	@Property({ reflect: true })
-	mini?: boolean;
+	mini: boolean = false;
 
 	/**
 	 * Sets the minimum width size of the drawer.
 	 */
 	@Property()
-	miniSize?: number | string = 80;
+	miniSize: number | string = 80;
 
 	/**
 	 * Control drawer to show or not.
 	 */
 	@Property({ reflect: true })
-	open?: boolean;
+	open: boolean = false;
 
 	/**
 	 * If true, don't allow the drawer to be closed by clicking outside of the drawer.
 	 * If false, the drawer will be closed by clicking outside of it.
 	 */
 	@Property()
-	persistent?: boolean;
+	persistent: boolean = false;
 
 	/**
 	 * Specifies where the drawer will open.
@@ -100,13 +100,13 @@ export class PlusDrawer extends PlusCore {
 	 * If false doesn't allow the width of the drawer to reduce.
 	 */
 	@Property()
-	flexible?: boolean;
+	flexible: boolean = false;
 
 	/**
 	 * Determine the width of the drawer.
 	 */
 	@Property()
-	size?: number | string = 280;
+	size: number | string = 280;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -246,7 +246,7 @@ export class PlusDrawer extends PlusCore {
 		return this.backdrop && this.floating;
 	}
 
-	get style(): Record<string, string> {
+	get style(): Record<string, string | undefined> {
 		const size = toCSSUnit(this.size);
 
 		const miniSize = toCSSUnit(this.miniSize);
@@ -295,7 +295,7 @@ export class PlusDrawer extends PlusCore {
 			case 'open':
 				// TODO: problem with `false` and `undefined`
 				if (!next === !prev) break;
-				this.try(!!this.open, true);
+				this.try(this.open, true);
 				break;
 			case 'mini':
 				// TODO: problem with `false` and `undefined`
@@ -306,7 +306,7 @@ export class PlusDrawer extends PlusCore {
 	}
 
 	initialize() {
-		this.opened = !!this.open;
+		this.opened = this.open;
 
 		this.animate.main.initialize(this.open ? 'entered' : 'leaved');
 		this.animate.mini.initialize(this.mini ? 'entered' : 'leaved');
@@ -318,7 +318,7 @@ export class PlusDrawer extends PlusCore {
 	}
 
 	async try(open: boolean, silent?: boolean): Promise<boolean> {
-		if (this.opened === open) return await this.promise;
+		if (this.opened === open) return !!(await this.promise);
 
 		if (!silent) {
 			const event = open ? this.plusOpen : this.plusClose;

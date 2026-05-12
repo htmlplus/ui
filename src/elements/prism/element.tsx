@@ -42,13 +42,13 @@ export class PlusPrism extends PlusCore {
 	 * The programming language to highlight.
 	 */
 	@Property({ reflect: true })
-	language?: string = 'javascript';
+	language: string = 'javascript';
 
 	/**
 	 * The theme to apply for syntax highlighting.
 	 */
 	@Property({ reflect: true })
-	theme?: string = 'default';
+	theme: string = 'default';
 
 	/**
 	 * Plugins to enhance Prism's functionality.
@@ -66,7 +66,7 @@ export class PlusPrism extends PlusCore {
 	 * Whether to synchronize updates with DOM changes.
 	 */
 	@Property()
-	sync?: boolean;
+	sync: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -140,14 +140,14 @@ export class PlusPrism extends PlusCore {
 	get assets() {
 		const assets: Parameters<PlusPrismResolver>[0][] = [];
 
-		if (this.language && !PrismCore.languages[this.language]) {
+		if (!PrismCore.languages[this.language]) {
 			assets.push({
 				key: 'language',
 				value: this.language
 			});
 		}
 
-		if (this.theme && this.theme !== 'default') {
+		if (this.theme !== 'default') {
 			assets.push({
 				key: 'theme',
 				value: this.theme
@@ -208,7 +208,7 @@ export class PlusPrism extends PlusCore {
 			style += content;
 		}
 
-		PrismCore.highlightAllUnder(this.$host.shadowRoot, false);
+		PrismCore.highlightAllUnder(this.$shadowRoot, false);
 
 		if (!style) return;
 

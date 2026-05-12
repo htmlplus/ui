@@ -15,14 +15,21 @@ let PlusCropper = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.area = 0.75;
+    this.background = false;
+    this.disabled = false;
+    this.guides = false;
+    this.indicator = false;
     this.mode = "move";
     this.resizer = "both";
     this.resizerShape = "square";
     this.responsive = "reset";
     this.shape = "rectangle";
+    this.src = "";
+    this.transparent = false;
     this.view = "cover";
     this.zoomable = true;
     this.zoomRatio = 0.1;
+    this.locked = false;
   }
   flipX() {
     this.instance.scale(-1, 1);
@@ -271,100 +278,100 @@ PlusCropper.tag = "plus-cropper";
 PlusCropper.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCropper.prototype, "area", 2);
 __decorateClass([
   Property({
-    type: 640
+    type: 1281
   })
 ], PlusCropper.prototype, "aspectRatio", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCropper.prototype, "background", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCropper.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCropper.prototype, "guides", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCropper.prototype, "indicator", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCropper.prototype, "mode", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCropper.prototype, "resizer", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCropper.prototype, "resizerShape", 2);
 __decorateClass([
   Property({
-    type: 20
+    type: 41
   })
 ], PlusCropper.prototype, "responsive", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCropper.prototype, "shape", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusCropper.prototype, "src", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCropper.prototype, "transparent", 2);
 __decorateClass([
   Property({
-    type: 256
+    type: 513
   })
 ], PlusCropper.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCropper.prototype, "view", 2);
 __decorateClass([
   Property({
-    type: 20
+    type: 41
   })
 ], PlusCropper.prototype, "zoomable", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCropper.prototype, "zoomRatio", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCropper.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCropper.prototype, "variant", 2);

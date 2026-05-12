@@ -12,7 +12,7 @@ export declare class PlusFormatBytes extends PlusCore {
     /**
      * Specifies the unit will be shown as an abbreviation or not.
      */
-    display?: 'long' | 'short';
+    display: 'long' | 'short';
     /**
      * Localizes the result. [More](https://mdn.io/number-format/constructor).
      */
@@ -21,25 +21,25 @@ export declare class PlusFormatBytes extends PlusCore {
      * Specifies the number of decimal places.
      * Use an array to specify the minimum and maximum.
      */
-    decimals?: number | [number, number];
+    decimals: number | [number, number];
     /**
      * Specifies the separator between number and unit.
      */
-    separator?: string;
+    separator: string;
     /**
      * Shows plus sign for positive numbers.
      * If the difference is exactly zero a space character will be prepended instead for better alignment.
      */
-    signed?: boolean;
+    signed: boolean;
     /**
      * Specifies the standard of units.
      * [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported.
      */
-    standard?: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET';
+    standard: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET';
     /**
      * Specifies the unit in which the result will be returned.
      */
-    unit?: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta';
+    unit: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta';
     /**
      * The bytes value to convert.
      */

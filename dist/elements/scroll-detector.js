@@ -12,7 +12,9 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusScrollDetector = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.disabled = false;
     this.reference = "document";
+    this.vertical = false;
   }
   get $reference() {
     if (typeof this.reference !== "string") return this.reference;
@@ -72,29 +74,29 @@ let PlusScrollDetector = class extends PlusCore {
 PlusScrollDetector.tag = "plus-scroll-detector";
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusScrollDetector.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 528
+    type: 1057
   })
 ], PlusScrollDetector.prototype, "reference", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusScrollDetector.prototype, "vertical", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusScrollDetector.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusScrollDetector.prototype, "variant", 2);

@@ -39,7 +39,7 @@ export class PlusTooltip extends PlusCore {
 	 * Specifies whether to display the arrow or not.
 	 */
 	@Property({ reflect: true })
-	arrow?: boolean;
+	arrow: boolean = false;
 
 	/**
 	 * Specifies a delay in milliseconds for show or hide.
@@ -47,25 +47,25 @@ export class PlusTooltip extends PlusCore {
 	 * create an array of two separate numbers for show and hide.
 	 */
 	@Property()
-	delay?: number | [number, number];
+	delay: number | [number, number] = 0;
 
 	/**
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * TODO
 	 */
 	@Property({ reflect: true })
-	fixed?: boolean;
+	fixed: boolean = false;
 
 	/**
 	 * TODO
 	 */
 	@Property()
-	offset?: number | [number, number] = [0, 10];
+	offset: number | [number, number] = [0, 10];
 
 	/**
 	 * Specifies the display location of the element relative to the reference.
@@ -82,19 +82,19 @@ export class PlusTooltip extends PlusCore {
 	 * Use an element to attach to that.
 	 */
 	@Property()
-	reference?: Element | 'next' | 'parent' | 'previous' | (string & {}) = 'previous';
+	reference: Element | 'next' | 'parent' | 'previous' | (string & {}) = 'previous';
 
 	/**
 	 * Specifies the activation method.
 	 */
 	@Property()
-	trigger?: PlusTooltipTrigger = ['focus', 'hover'];
+	trigger: PlusTooltipTrigger = ['focus', 'hover'];
 
 	/**
 	 * TODO
 	 */
 	@Property()
-	z?: 'auto' | 'vertical' | 'horizontal' | 'move' = 'auto';
+	z: 'auto' | 'vertical' | 'horizontal' | 'move' = 'auto';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -119,7 +119,7 @@ export class PlusTooltip extends PlusCore {
 
 		clearTimeout(this.timeout);
 
-		const delay = this.delay?.[1] || this.delay || 0;
+		const delay = Array.isArray(this.delay) ? this.delay[1] : this.delay;
 
 		this.timeout = window.setTimeout(() => {
 			this.state = 'hide';
@@ -136,7 +136,7 @@ export class PlusTooltip extends PlusCore {
 
 		clearTimeout(this.timeout);
 
-		const delay = this.delay?.[0] || this.delay || 0;
+		const delay = Array.isArray(this.delay) ? this.delay[0] : this.delay;
 
 		this.timeout = window.setTimeout(() => {
 			this.state = 'show';

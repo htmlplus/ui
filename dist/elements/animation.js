@@ -72,6 +72,7 @@ let PlusAnimation = class extends PlusCore {
     this.iterations = 1;
     this.iterationStart = 0;
     this.playbackRate = 1;
+    this.run = false;
   }
   cancel() {
     this.instance?.cancel();
@@ -151,90 +152,90 @@ PlusAnimation.tag = "plus-animation";
 PlusAnimation.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusAnimation.prototype, "composite", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAnimation.prototype, "delay", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusAnimation.prototype, "direction", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAnimation.prototype, "duration", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusAnimation.prototype, "easing", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAnimation.prototype, "endDelay", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusAnimation.prototype, "fill", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusAnimation.prototype, "instance", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusAnimation.prototype, "iterationComposite", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAnimation.prototype, "iterations", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAnimation.prototype, "iterationStart", 2);
 __decorateClass([
   Property({
-    type: 1
+    type: 3
   })
 ], PlusAnimation.prototype, "keyframes", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusAnimation.prototype, "name", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusAnimation.prototype, "playbackRate", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusAnimation.prototype, "run", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusAnimation.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusAnimation.prototype, "variant", 2);

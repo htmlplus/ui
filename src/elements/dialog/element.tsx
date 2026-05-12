@@ -54,56 +54,56 @@ export class PlusDialog extends PlusCore {
 	 * Read more about connectors [here](/connector).
 	 */
 	@Property()
-	connector?: string;
+	connector: string = '';
 
 	/**
 	 * Set the height of the dialog as much as the screen's height.
 	 */
 	@Property()
-	fullHeight?: boolean;
+	fullHeight: boolean = false;
 
 	/**
 	 * Set the width of the dialog as much as the screen's width.
 	 */
 	@Property()
-	fullWidth?: boolean;
+	fullWidth: boolean = false;
 
 	/**
 	 * Set both width and height of the dialog to occupy the screen size.
 	 */
 	@Property({ reflect: true })
-	fullscreen?: boolean;
+	fullscreen: boolean = false;
 
 	/**
 	 * Closes the dialog when `escape` key is pressed.
 	 */
 	@Property()
-	keyboard?: boolean;
+	keyboard: boolean = false;
 
 	/**
 	 * Control dialog to show or not.
 	 */
 	@Property({ reflect: true })
-	open?: boolean;
+	open: boolean = false;
 
 	/**
 	 * It prevents the dialog from closing on clicking outside of the element.
 	 */
 	@Property()
-	persistent?: boolean;
+	persistent: boolean = false;
 
 	/**
 	 * Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical.
 	 * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
 	 */
 	@Property()
-	placement?: PlusDialogPlacement = 'top';
+	placement: PlusDialogPlacement = 'top';
 
 	/**
 	 * It makes the user able to scroll the content by adding a scroll beside it.
 	 */
 	@Property()
-	scrollable?: boolean;
+	scrollable: boolean = false;
 
 	/**
 	 * Determine the width of the dialog.
@@ -115,13 +115,13 @@ export class PlusDialog extends PlusCore {
 	 * Removes the margin around the dialog's content.
 	 */
 	@Property()
-	sticky?: boolean;
+	sticky: boolean = false;
 
 	/**
 	 * Deactivate the dialog's backdrop to show or not.
 	 */
 	@Property()
-	transparent?: boolean;
+	transparent: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -346,7 +346,7 @@ export class PlusDialog extends PlusCore {
 	}
 
 	async try(open: boolean, silent?: boolean): Promise<boolean> {
-		if (this.opened === open) return await this.promise;
+		if (this.opened === open) return !!(await this.promise);
 
 		if (!silent) {
 			const event = open ? this.plusOpen : this.plusClose;
@@ -367,7 +367,7 @@ export class PlusDialog extends PlusCore {
 	}
 
 	@Bind()
-	onEscape(event) {
+	onEscape(event: KeyboardEvent) {
 		// TODO
 		if (!this.opened) return;
 

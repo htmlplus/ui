@@ -36,19 +36,19 @@ export class PlusSticky extends PlusCore {
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Specifies the space from top.
 	 */
 	@Property()
-	top?: string | number = 0;
+	top: string | number = 0;
 
 	/**
 	 * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
 	 */
 	@Property()
-	watcher?: boolean;
+	watcher: boolean = false;
 
 	/**
 	 * Specifies the z-index.

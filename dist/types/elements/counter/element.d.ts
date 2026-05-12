@@ -12,43 +12,43 @@ export declare class PlusCounter extends PlusCore {
     /**
      * Easing function. Click [here](http://robertpenner.com/easing) for more details.
      */
-    easing?: 'ease-out-expo' | 'linear';
+    easing: 'ease-out-expo' | 'linear';
     /**
      * Specifies decimal character.
      */
-    decimal?: string;
+    decimal: string;
     /**
      * Amount of decimals to display.
      */
-    decimals?: number;
+    decimals: number;
     /**
      * Delay in milliseconds before starting the transition.
      */
-    delay?: number;
+    delay: number;
     /**
      * Duration in milliseconds.
      */
-    duration?: number;
+    duration: number;
     /**
      * Initial value.
      */
-    from?: number;
+    from: number;
     /**
      * Specifies numeral glyph substitution.
      */
-    numerals?: string[];
+    numerals: string[];
     /**
      * Starts/Stops the transition.
      */
-    play?: boolean;
+    play: boolean;
     /**
      * Specifies character of thousands separator.
      */
-    separator?: string;
+    separator: string;
     /**
      * Target value.
      */
-    to?: number;
+    to: number;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -86,6 +86,7 @@ export declare class PlusCounter extends PlusCore {
     get formated(): string;
     get reverse(): boolean;
     watcher(): void;
+    cancelAnimationFrame(): void;
     count(timestamp: number): void;
     reset(): void;
     disconnectedCallback(): void;
@@ -153,7 +154,7 @@ export type PlusCounterAttributesBase = {
   /**
   * Target value.
   */
-  "to"?: number;
+  "to": number;
   /**
   * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
@@ -240,7 +241,7 @@ export type PlusCounterPropertiesBase = {
   /**
   * Target value.
   */
-  to?: number;
+  to: number;
   /**
   * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */

@@ -3,5 +3,6 @@ export default {
 		'biome format --write',
 		'biome check --error-on-warnings'
 	],
-	'*.{ts,tsx}': () => 'npm run type-check'
+	'*.{ts,tsx}': () => 'npm run type-check',
+	'package.json': () => 'npx --yes sort-package-json'
 };

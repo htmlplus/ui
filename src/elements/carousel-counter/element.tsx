@@ -26,7 +26,7 @@ export class PlusCarouselCounter extends CarouselChild {
 	 * - `%TOTAL%`: Represents the total number of slides in the carousel.
 	 */
 	@Property()
-	template?: string = '%CURRENT% / %TOTAL%';
+	template: string = '%CURRENT% / %TOTAL%';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -45,9 +45,7 @@ export class PlusCarouselCounter extends CarouselChild {
 	events: EmblaEventType[] = ['init', 'reInit', 'select'];
 
 	get content(): string {
-		return (
-			this.template?.replaceAll('%TOTAL%', this.total).replaceAll('%CURRENT%', this.current) || ''
-		);
+		return this.template.replaceAll('%TOTAL%', this.total).replaceAll('%CURRENT%', this.current);
 	}
 
 	get current(): string {

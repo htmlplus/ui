@@ -12,27 +12,27 @@ export declare class PlusStack extends PlusCore {
     /**
      * The gap between items.
      */
-    gap?: string | number;
+    gap: string | number;
     /**
      * The alignment of items along the cross axis.
      */
-    items?: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
+    items: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
     /**
      * The distribution of items along the main axis.
      */
-    justify?: 'start' | 'end' | 'center' | 'stretch' | 'normal' | 'between' | 'around' | 'evenly';
+    justify: 'start' | 'end' | 'center' | 'stretch' | 'normal' | 'between' | 'around' | 'evenly';
     /**
      * Whether to reverse the order of items.
      */
-    reverse?: boolean;
+    reverse: boolean;
     /**
      * Whether the stack is vertical.
      */
-    vertical?: boolean;
+    vertical: boolean;
     /**
      * Controls whether items should wrap onto multiple lines.
      */
-    wrap?: boolean | 'reverse';
+    wrap: boolean | 'reverse';
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

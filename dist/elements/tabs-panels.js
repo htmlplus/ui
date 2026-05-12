@@ -19,14 +19,14 @@ PlusTabsPanels.tag = "plus-tabs-panels";
 PlusTabsPanels.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusTabsPanels.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusTabsPanels.prototype, "variant", 2);

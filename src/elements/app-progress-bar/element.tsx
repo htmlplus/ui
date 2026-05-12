@@ -28,31 +28,31 @@ export class PlusAppProgressBar extends PlusCore {
 	 * Specifies the color of the bar.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<PlusColor> = 'dodgerblue';
+	color: OverridableValue<PlusColor> = 'dodgerblue';
 
 	/**
 	 * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.
 	 */
 	@Property()
-	minimum?: number = 0.08;
+	minimum: number = 0.08;
 
 	/**
 	 * Turn off the automatic incrementing behavior by setting this to `true`.
 	 */
 	@Property()
-	trickleDisabled?: boolean;
+	trickleDisabled: boolean = false;
 
 	/**
 	 * The rate at which the progress bar increments when trickling.
 	 */
 	@Property()
-	trickleRate?: number = 0.02;
+	trickleRate: number = 0.02;
 
 	/**
 	 * Adjust how often to trickle/increment, in ms.
 	 */
 	@Property()
-	trickleSpeed?: number = 800;
+	trickleSpeed: number = 800;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

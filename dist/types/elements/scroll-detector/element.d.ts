@@ -13,15 +13,15 @@ export declare class PlusScrollDetector extends PlusCore {
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * Specifies the reference of the scroll.
      */
-    reference?: Element | 'document' | (string & {});
+    reference: Element | 'document' | (string & {});
     /**
      * Indicates which scroll (horizontal or vertical) is to be used as the source.
      */
-    vertical?: boolean;
+    vertical: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

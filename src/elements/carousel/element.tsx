@@ -56,7 +56,7 @@ export class PlusCarousel extends PlusCore {
 	 * Align the slides relative to the carousel viewport.
 	 */
 	@Property()
-	align?: 'start' | 'center' | 'end' = 'center';
+	align: 'start' | 'center' | 'end' = 'center';
 
 	/**
 	 * Enables the height of the carousel container to be adjusted to match the tallest slide in view.
@@ -64,13 +64,13 @@ export class PlusCarousel extends PlusCore {
 	 * so there's no need to include the original plugin manually.
 	 */
 	@Property({ reflect: true })
-	autoHeight?: boolean;
+	autoHeight: boolean = false;
 
 	/**
 	 * Choose scroll axis between `x` and `y`.
 	 */
 	@Property({ reflect: true })
-	axis?: 'x' | 'y' = 'x';
+	axis: 'x' | 'y' = 'x';
 
 	/**
 	 * Enables automatic class injection for styling based on carousel state.
@@ -78,7 +78,7 @@ export class PlusCarousel extends PlusCore {
 	 * so there's no need to include the original plugin manually.
 	 */
 	@Property()
-	classes?: boolean;
+	classes: boolean = false;
 
 	/**
 	 * Clear leading and trailing empty space that causes excessive scrolling.
@@ -89,7 +89,7 @@ export class PlusCarousel extends PlusCore {
 	 * the carousel, in order to **cover** the **leading** and **trailing space**.
 	 */
 	@Property()
-	containScroll?: 'off' | 'keepSnaps' | 'trimSnaps' = 'trimSnaps';
+	containScroll: 'off' | 'keepSnaps' | 'trimSnaps' = 'trimSnaps';
 
 	/**
 	 * Enables scrolling the carousel using mouse and touch interactions.
@@ -112,7 +112,7 @@ export class PlusCarousel extends PlusCore {
 	 * This is why this threshold only works for mouse events.
 	 */
 	@Property()
-	dragThreshold?: number = 10;
+	dragThreshold: number = 10;
 
 	/**
 	 * Set scroll duration when triggered by any of the API methods.
@@ -123,14 +123,14 @@ export class PlusCarousel extends PlusCore {
 	 * Only values between `20-60` are recommended.
 	 */
 	@Property()
-	duration?: number = 25;
+	duration: number = 25;
 
 	/**
 	 * Enables automatic focus event watching on slides.
 	 * When enabled, fires a slideFocus event and scrolls to the focused slide.
 	 */
 	@Property()
-	focusable?: boolean;
+	focusable: boolean = false;
 
 	/**
 	 * This is the Intersection Observer
@@ -138,14 +138,14 @@ export class PlusCarousel extends PlusCore {
 	 * option that will be applied to all slides.
 	 */
 	@Property()
-	inViewThreshold?: number = 0;
+	inViewThreshold: number = 0;
 
 	/**
 	 * Enables infinite looping by translating slides to create a seamless loop.
 	 * Automatically disables if slide content is insufficient to prevent glitches.
 	 */
 	@Property({ reflect: true })
-	loop?: boolean;
+	loop: boolean = false;
 
 	/**
 	 * Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality.
@@ -157,7 +157,7 @@ export class PlusCarousel extends PlusCore {
 	 * Matches the current slide on another carousel using its id.
 	 */
 	@Property()
-	mirror?: string;
+	mirror: string = '';
 
 	/**
 	 * Specifies how the carousel should be mirrored onto another carousel.
@@ -177,7 +177,7 @@ export class PlusCarousel extends PlusCore {
 	 * Watches the **container** and **slides** for size changes and runs reInit when any size has changed.
 	 */
 	@Property()
-	resizable?: boolean;
+	resizable: boolean = false;
 
 	/**
 	 * Group slides together. Drag interactions, dot navigation, and previous/next buttons
@@ -194,7 +194,7 @@ export class PlusCarousel extends PlusCore {
 	 * slides when used together with the `slidesToScroll` property.
 	 */
 	@Property()
-	startIndex?: number = 0;
+	startIndex: number = 0;
 
 	/**
 	 * Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions.
@@ -380,8 +380,8 @@ export class PlusCarousel extends PlusCore {
 			skipSnaps: this.draggable === 'free',
 			startIndex: this.startIndex,
 			watchDrag: !!this.draggable,
-			watchFocus: !!this.focusable,
-			watchResize: !!this.resizable,
+			watchFocus: this.focusable,
+			watchResize: this.resizable,
 			watchSlides: false
 		};
 	}

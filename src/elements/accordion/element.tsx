@@ -49,19 +49,19 @@ export class PlusAccordion extends PlusCore {
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Control the element to expand or not.
 	 */
 	@Property({ reflect: true })
-	open?: boolean;
+	open: boolean = false;
 
 	/**
 	 * The summary text displayed on the header.
 	 */
 	@Property()
-	summary?: string;
+	summary: string = '';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -191,7 +191,7 @@ export class PlusAccordion extends PlusCore {
 			case 'open':
 				// TODO: problem with `false` and `undefined`
 				if (!next === !prev) break;
-				this.try(!!this.open, true);
+				this.try(this.open, true);
 				break;
 		}
 	}
@@ -203,7 +203,7 @@ export class PlusAccordion extends PlusCore {
 	}
 
 	initialize() {
-		this.opened = !!this.open;
+		this.opened = this.open;
 
 		const state = this.opened ? 'entered' : 'leaved';
 
@@ -273,8 +273,8 @@ export class PlusAccordion extends PlusCore {
 				<slot name="top" />
 				<div
 					aria-controls={this.getId('body')}
-					aria-disabled={!!this.disabled}
-					aria-expanded={!!this.open}
+					aria-disabled={this.disabled}
+					aria-expanded={this.open}
 					id={this.getId('header')}
 					part="header"
 					role="button"

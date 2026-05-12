@@ -1,5 +1,5 @@
 import { P as PlusCore, h as toCSSColor, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, g as Style, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}@keyframes indeterminate{from{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{--plus-progress-bar-indicator-background-color: dodgerblue}:host{background-color:#dcdcdc;border-radius:.25rem;font-size:.75rem;height:1rem;display:flex;overflow:hidden;position:relative;direction:ltr}:host>*{position:absolute;inset:0}:host::part(underlay){background-color:rgba(0,0,0,0)}:host::part(buffer){background-color:hsl(from var(--plus-progress-bar-indicator-background-color) h s 80)}:host::part(indicator){background-color:var(--plus-progress-bar-indicator-background-color);color:#fff;transition:width .6s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50% !important}";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}@keyframes indeterminate{from{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{background-color:#dcdcdc;border-radius:.25rem;font-size:.75rem;height:1rem;display:flex;overflow:hidden;position:relative;direction:ltr}:host>*{position:absolute;inset:0}:host::part(underlay){background-color:rgba(0,0,0,0)}:host::part(buffer){background-color:hsl(from var(--plus-progress-bar-indicator-background-color) h s 80)}:host::part(indicator){background-color:var(--plus-progress-bar-indicator-background-color);color:#fff;transition:width .6s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50% !important}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -13,8 +13,11 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusProgressBar = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.color = "dodgerblue";
+    this.label = false;
     this.max = 100;
     this.min = 0;
+    this.sync = false;
     this.value = 0;
   }
   get style() {
@@ -50,51 +53,51 @@ PlusProgressBar.tag = "plus-progress-bar";
 PlusProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "buffer", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusProgressBar.prototype, "label", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "min", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusProgressBar.prototype, "sync", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusProgressBar.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusProgressBar.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusProgressBar.prototype, "variant", 2);

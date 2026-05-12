@@ -11,11 +11,11 @@ export declare class PlusCarouselButton extends CarouselChild {
     /**
      * Determines whether the carousel instantly jumps to the target slide or transitions smoothly.
      */
-    jump?: boolean;
+    jump: boolean;
     /**
      * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
      */
-    type?: 'previous' | 'next' | number;
+    type: 'previous' | 'next' | number;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */
@@ -52,7 +52,7 @@ export type PlusCarouselButtonAttributesBase = {
   /**
   * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
   */
-  "type"?: 'previous' | 'next' | number;
+  "type": 'previous' | 'next' | number;
   /**
   * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */
@@ -78,7 +78,7 @@ export type PlusCarouselButtonPropertiesBase = {
   /**
   * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
   */
-  type?: 'previous' | 'next' | number;
+  type: 'previous' | 'next' | number;
   /**
   * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
   */

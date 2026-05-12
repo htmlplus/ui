@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -38,14 +38,17 @@
             "properties": [
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
                 "name": "open",
+                "default": false,
                 "description": "Control the element to expand or not."
               },
               {
                 "name": "summary",
+                "default": "''",
                 "description": "The summary text displayed on the header."
               },
               {
@@ -76,6 +79,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -83,6 +87,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Control the element to expand or not."
             },
             {
@@ -90,6 +95,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "The summary text displayed on the header."
             },
             {
@@ -151,6 +157,7 @@
             "properties": [
               {
                 "name": "persistent",
+                "default": false,
                 "description": "Specifies that only one accordion can be open."
               },
               {
@@ -169,6 +176,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Specifies that only one accordion can be open."
             },
             {
@@ -282,6 +290,7 @@
               },
               {
                 "name": "run",
+                "default": false,
                 "description": "Starts the animation."
               },
               {
@@ -441,6 +450,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Starts the animation."
             },
             {
@@ -484,6 +494,7 @@
               },
               {
                 "name": "trickleDisabled",
+                "default": false,
                 "description": "Turn off the automatic incrementing behavior by setting this to `true`."
               },
               {
@@ -548,6 +559,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Turn off the automatic incrementing behavior by setting this to `true`."
             },
             {
@@ -591,14 +603,17 @@
             "properties": [
               {
                 "name": "color",
+                "default": "'gray'",
                 "description": "Specifies the color."
               },
               {
                 "name": "shape",
+                "default": "'round'",
                 "description": "Specifies the shape of the element."
               },
               {
                 "name": "size",
+                "default": "'md'",
                 "description": "Specifies the size of the element."
               },
               {
@@ -617,6 +632,7 @@
               "value": {
                 "type": "OverridableValue<PlusColor>"
               },
+              "default": "'gray'",
               "description": "Specifies the color."
             },
             {
@@ -624,6 +640,7 @@
               "value": {
                 "type": "'circle' | 'round' | 'tile'"
               },
+              "default": "'round'",
               "description": "Specifies the shape of the element."
             },
             {
@@ -631,6 +648,7 @@
               "value": {
                 "type": "OverridableValue<PlusAvatarSize>"
               },
+              "default": "'md'",
               "description": "Specifies the size of the element."
             },
             {
@@ -664,10 +682,12 @@
             "properties": [
               {
                 "name": "hoverable",
+                "default": false,
                 "description": "Specifies whether to prominent the avatar when the mouse is entered or not."
               },
               {
                 "name": "stacked",
+                "default": false,
                 "description": "Specifies whether avatars should be displayed compressed or not."
               },
               {
@@ -686,6 +706,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Specifies whether to prominent the avatar when the mouse is entered or not."
             },
             {
@@ -693,6 +714,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Specifies whether avatars should be displayed compressed or not."
             },
             {
@@ -726,6 +748,7 @@
             "properties": [
               {
                 "name": "block",
+                "default": false,
                 "description": "TODO."
               },
               {
@@ -744,6 +767,7 @@
               },
               {
                 "name": "separator",
+                "default": "''",
                 "description": "Specifies the separator between items."
               },
               {
@@ -762,6 +786,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "TODO."
             },
             {
@@ -792,6 +817,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "Specifies the separator between items."
             },
             {
@@ -846,14 +872,17 @@
             "properties": [
               {
                 "name": "accept",
+                "default": "''",
                 "description": "One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow."
               },
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
                 "name": "droppable",
+                "default": false,
                 "description": "Adds droppable ability."
               },
               {
@@ -874,6 +903,7 @@
               },
               {
                 "name": "multiple",
+                "default": false,
                 "description": "Allows to select more than one file."
               },
               {
@@ -896,6 +926,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow."
             },
             {
@@ -903,6 +934,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -910,6 +942,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Adds droppable ability."
             },
             {
@@ -945,6 +978,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Allows to select more than one file."
             },
             {
@@ -982,14 +1016,17 @@
               },
               {
                 "name": "flat",
+                "default": false,
                 "description": "Use the flat property to neutralize elevation."
               },
               {
                 "name": "outlined",
+                "default": false,
                 "description": "If you want the card to have border, use the outlined property."
               },
               {
                 "name": "tile",
+                "default": false,
                 "description": "Use tile property to neutralize border-radius."
               },
               {
@@ -1015,6 +1052,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Use the flat property to neutralize elevation."
             },
             {
@@ -1022,6 +1060,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "If you want the card to have border, use the outlined property."
             },
             {
@@ -1029,6 +1068,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Use tile property to neutralize border-radius."
             },
             {
@@ -1160,6 +1200,7 @@
               },
               {
                 "name": "autoHeight",
+                "default": false,
                 "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
               },
               {
@@ -1169,6 +1210,7 @@
               },
               {
                 "name": "classes",
+                "default": false,
                 "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
               },
               {
@@ -1192,6 +1234,7 @@
               },
               {
                 "name": "focusable",
+                "default": false,
                 "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
               },
               {
@@ -1201,6 +1244,7 @@
               },
               {
                 "name": "loop",
+                "default": false,
                 "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
               },
               {
@@ -1209,6 +1253,7 @@
               },
               {
                 "name": "mirror",
+                "default": "''",
                 "description": "Matches the current slide on another carousel using its id."
               },
               {
@@ -1218,6 +1263,7 @@
               },
               {
                 "name": "resizable",
+                "default": false,
                 "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
               },
               {
@@ -1310,6 +1356,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
             },
             {
@@ -1325,6 +1372,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
             },
             {
@@ -1363,6 +1411,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
             },
             {
@@ -1378,6 +1427,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
             },
             {
@@ -1392,6 +1442,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "Matches the current slide on another carousel using its id."
             },
             {
@@ -1407,6 +1458,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
             },
             {
@@ -1470,6 +1522,7 @@
             "properties": [
               {
                 "name": "jump",
+                "default": false,
                 "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
               },
               {
@@ -1492,6 +1545,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
             },
             {
@@ -1579,14 +1633,17 @@
             "properties": [
               {
                 "name": "clickable",
+                "default": false,
                 "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
               },
               {
                 "name": "infinity",
+                "default": false,
                 "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
               },
               {
                 "name": "numbers",
+                "default": false,
                 "description": "Displays slide numbers inside the indicators."
               },
               {
@@ -1605,6 +1662,7 @@
               "value": {
                 "type": "boolean | 'jump'"
               },
+              "default": false,
               "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
             },
             {
@@ -1612,6 +1670,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
             },
             {
@@ -1619,6 +1678,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Displays slide numbers inside the indicators."
             },
             {
@@ -1680,6 +1740,7 @@
             "properties": [
               {
                 "name": "clickable",
+                "default": false,
                 "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
               },
               {
@@ -1698,6 +1759,7 @@
               "value": {
                 "type": "boolean | 'jump'"
               },
+              "default": false,
               "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
             },
             {
@@ -1771,6 +1833,7 @@
             "properties": [
               {
                 "name": "inline",
+                "default": false,
                 "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
               },
               {
@@ -1789,6 +1852,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
             },
             {
@@ -1827,14 +1891,17 @@
             "properties": [
               {
                 "name": "capture",
+                "default": false,
                 "description": "A boolean value indicating that events of this type will be dispatched to the registered `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree."
               },
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
                 "name": "once",
+                "default": false,
                 "description": "The event fires only once."
               },
               {
@@ -1853,6 +1920,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "A boolean value indicating that events of this type will be dispatched to the registered `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree."
             },
             {
@@ -1860,6 +1928,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -1867,6 +1936,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "The event fires only once."
             },
             {
@@ -1939,10 +2009,12 @@
               },
               {
                 "name": "play",
+                "default": false,
                 "description": "Starts/Stops the transition."
               },
               {
                 "name": "separator",
+                "default": "''",
                 "description": "Specifies character of thousands separator."
               },
               {
@@ -2036,6 +2108,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Starts/Stops the transition."
             },
             {
@@ -2043,6 +2116,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "Specifies character of thousands separator."
             },
             {
@@ -2111,18 +2185,22 @@
               },
               {
                 "name": "background",
+                "default": false,
                 "description": "Shows the grid background of the container."
               },
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
                 "name": "guides",
+                "default": false,
                 "description": "Shows the dashed lines above the viewport."
               },
               {
                 "name": "indicator",
+                "default": false,
                 "description": "Shows the center indicator above the viewport."
               },
               {
@@ -2152,10 +2230,12 @@
               },
               {
                 "name": "src",
+                "default": "''",
                 "description": "Specifies the image's src."
               },
               {
                 "name": "transparent",
+                "default": false,
                 "description": "Hides the black modal above the image and under the viewport."
               },
               {
@@ -2248,6 +2328,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Shows the grid background of the container."
             },
             {
@@ -2255,6 +2336,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -2262,6 +2344,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Shows the dashed lines above the viewport."
             },
             {
@@ -2269,6 +2352,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Shows the center indicator above the viewport."
             },
             {
@@ -2316,6 +2400,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "Specifies the image's src."
             },
             {
@@ -2323,6 +2408,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Hides the black modal above the image and under the viewport."
             },
             {
@@ -2402,30 +2488,37 @@
               },
               {
                 "name": "connector",
+                "default": "''",
                 "description": "This property helps you to attach which dialog toggler controls the dialog. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
               },
               {
                 "name": "fullHeight",
+                "default": false,
                 "description": "Set the height of the dialog as much as the screen's height."
               },
               {
                 "name": "fullWidth",
+                "default": false,
                 "description": "Set the width of the dialog as much as the screen's width."
               },
               {
                 "name": "fullscreen",
+                "default": false,
                 "description": "Set both width and height of the dialog to occupy the screen size."
               },
               {
                 "name": "keyboard",
+                "default": false,
                 "description": "Closes the dialog when `escape` key is pressed."
               },
               {
                 "name": "open",
+                "default": false,
                 "description": "Control dialog to show or not."
               },
               {
                 "name": "persistent",
+                "default": false,
                 "description": "It prevents the dialog from closing on clicking outside of the element."
               },
               {
@@ -2435,6 +2528,7 @@
               },
               {
                 "name": "scrollable",
+                "default": false,
                 "description": "It makes the user able to scroll the content by adding a scroll beside it."
               },
               {
@@ -2443,10 +2537,12 @@
               },
               {
                 "name": "sticky",
+                "default": false,
                 "description": "Removes the margin around the dialog's content."
               },
               {
                 "name": "transparent",
+                "default": false,
                 "description": "Deactivate the dialog's backdrop to show or not."
               },
               {
@@ -2484,6 +2580,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "This property helps you to attach which dialog toggler controls the dialog. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
             },
             {
@@ -2491,6 +2588,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Set the height of the dialog as much as the screen's height."
             },
             {
@@ -2498,6 +2596,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Set the width of the dialog as much as the screen's width."
             },
             {
@@ -2505,6 +2604,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Set both width and height of the dialog to occupy the screen size."
             },
             {
@@ -2512,6 +2612,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Closes the dialog when `escape` key is pressed."
             },
             {
@@ -2519,6 +2620,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Control dialog to show or not."
             },
             {
@@ -2526,6 +2628,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "It prevents the dialog from closing on clicking outside of the element."
             },
             {
@@ -2541,6 +2644,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "It makes the user able to scroll the content by adding a scroll beside it."
             },
             {
@@ -2555,6 +2659,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Removes the margin around the dialog's content."
             },
             {
@@ -2562,6 +2667,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Deactivate the dialog's backdrop to show or not."
             },
             {
@@ -2595,6 +2701,7 @@
             "properties": [
               {
                 "name": "scrollable",
+                "default": false,
                 "description": "It makes the user able to scroll the content by adding a scroll beside it."
               },
               {
@@ -2613,6 +2720,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "It makes the user able to scroll the content by adding a scroll beside it."
             },
             {
@@ -2646,6 +2754,7 @@
             "properties": [
               {
                 "name": "scrollable",
+                "default": false,
                 "description": "It makes the user able to scroll the content by adding a scroll beside it."
               },
               {
@@ -2664,6 +2773,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "It makes the user able to scroll the content by adding a scroll beside it."
             },
             {
@@ -2777,6 +2887,7 @@
             "properties": [
               {
                 "name": "connector",
+                "default": "''",
                 "description": "This property helps you to attach which dialog this toggler controls. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
               },
               {
@@ -2795,6 +2906,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "This property helps you to attach which dialog this toggler controls. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
             },
             {
@@ -2836,6 +2948,7 @@
             "properties": [
               {
                 "name": "color",
+                "default": "'black'",
                 "description": "Specifies the color."
               },
               {
@@ -2879,6 +2992,7 @@
               "value": {
                 "type": "OverridableValue<PlusColor>"
               },
+              "default": "'black'",
               "description": "Specifies the color."
             },
             {
@@ -2973,18 +3087,22 @@
               },
               {
                 "name": "backdrop",
+                "default": false,
                 "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
               },
               {
                 "name": "connector",
+                "default": "''",
                 "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
               },
               {
                 "name": "floating",
+                "default": false,
                 "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
               },
               {
                 "name": "mini",
+                "default": false,
                 "description": "Set the width of drawer to the minimum size you specified for the `mini-size` property."
               },
               {
@@ -2994,10 +3112,12 @@
               },
               {
                 "name": "open",
+                "default": false,
                 "description": "Control drawer to show or not."
               },
               {
                 "name": "persistent",
+                "default": false,
                 "description": "If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it."
               },
               {
@@ -3006,6 +3126,7 @@
               },
               {
                 "name": "flexible",
+                "default": false,
                 "description": "It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce."
               },
               {
@@ -3048,6 +3169,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
             },
             {
@@ -3055,6 +3177,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
             },
             {
@@ -3062,6 +3185,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
             },
             {
@@ -3069,6 +3193,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Set the width of drawer to the minimum size you specified for the `mini-size` property."
             },
             {
@@ -3084,6 +3209,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Control drawer to show or not."
             },
             {
@@ -3091,6 +3217,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it."
             },
             {
@@ -3105,6 +3232,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce."
             },
             {
@@ -3146,6 +3274,7 @@
             "properties": [
               {
                 "name": "connector",
+                "default": "''",
                 "description": "This property helps you to attach which drawer this toggler controls. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
               },
               {
@@ -3164,6 +3293,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "This property helps you to attach which drawer this toggler controls. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
             },
             {
@@ -3303,6 +3433,7 @@
               },
               {
                 "name": "signed",
+                "default": false,
                 "description": "Shows plus sign for positive numbers. If the difference is exactly zero a space character will be prepended instead for better alignment."
               },
               {
@@ -3365,6 +3496,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Shows plus sign for positive numbers. If the difference is exactly zero a space character will be prepended instead for better alignment."
             },
             {
@@ -3423,6 +3555,7 @@
               },
               {
                 "name": "label",
+                "default": "''",
                 "description": "Specifies an alternate description to use for assistive devices."
               },
               {
@@ -3439,6 +3572,7 @@
               },
               {
                 "name": "size",
+                "default": "'md'",
                 "description": "Specifies the size."
               },
               {
@@ -3471,6 +3605,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "Specifies an alternate description to use for assistive devices."
             },
             {
@@ -3499,6 +3634,7 @@
               "value": {
                 "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | (number & {}) | (string & {})"
               },
+              "default": "'md'",
               "description": "Specifies the size."
             },
             {
@@ -3531,10 +3667,12 @@
             "properties": [
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
                 "name": "once",
+                "default": false,
                 "description": "The event fires only once."
               },
               {
@@ -3565,6 +3703,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -3572,6 +3711,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "The event fires only once."
             },
             {
@@ -3644,6 +3784,7 @@
               },
               {
                 "name": "sync",
+                "default": false,
                 "description": "Whether to synchronize updates with DOM changes."
               },
               {
@@ -3692,6 +3833,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Whether to synchronize updates with DOM changes."
             },
             {
@@ -3733,10 +3875,12 @@
               },
               {
                 "name": "color",
+                "default": "'dodgerblue'",
                 "description": "Specifies the color of the bar."
               },
               {
                 "name": "label",
+                "default": false,
                 "description": "Displays the progress percentage."
               },
               {
@@ -3751,6 +3895,7 @@
               },
               {
                 "name": "sync",
+                "default": false,
                 "description": "Eliminates delays in updating value."
               },
               {
@@ -3781,6 +3926,7 @@
               "value": {
                 "type": "OverridableValue<PlusColor>"
               },
+              "default": "'dodgerblue'",
               "description": "Specifies the color of the bar."
             },
             {
@@ -3788,6 +3934,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Displays the progress percentage."
             },
             {
@@ -3811,6 +3958,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Eliminates delays in updating value."
             },
             {
@@ -3981,6 +4129,7 @@
             "properties": [
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
@@ -3990,6 +4139,7 @@
               },
               {
                 "name": "vertical",
+                "default": false,
                 "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
               },
               {
@@ -4008,6 +4158,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -4023,6 +4174,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
             },
             {
@@ -4084,6 +4236,7 @@
               },
               {
                 "name": "clearOnResize",
+                "default": false,
                 "description": "Clears the canvas after resizing."
               },
               {
@@ -4098,6 +4251,7 @@
               },
               {
                 "name": "dotSize",
+                "default": "0",
                 "description": "Specifies the radius of a single dot."
               },
               {
@@ -4112,6 +4266,7 @@
               },
               {
                 "name": "resizable",
+                "default": false,
                 "description": "Observes the element dimensions to apply new changes on the canvas."
               },
               {
@@ -4203,6 +4358,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Clears the canvas after resizing."
             },
             {
@@ -4226,6 +4382,7 @@
               "value": {
                 "type": "number"
               },
+              "default": "0",
               "description": "Specifies the radius of a single dot."
             },
             {
@@ -4249,6 +4406,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Observes the element dimensions to apply new changes on the canvas."
             },
             {
@@ -4320,10 +4478,12 @@
             "properties": [
               {
                 "name": "color",
+                "default": "'black'",
                 "description": "Specifies the color."
               },
               {
                 "name": "symbol",
+                "default": "''",
                 "description": "Specifies the symbol."
               },
               {
@@ -4342,6 +4502,7 @@
               "value": {
                 "type": "OverridableValue<PlusColor>"
               },
+              "default": "'black'",
               "description": "Specifies the color."
             },
             {
@@ -4349,6 +4510,7 @@
               "value": {
                 "type": "string"
               },
+              "default": "''",
               "description": "Specifies the symbol."
             },
             {
@@ -4504,6 +4666,7 @@
             "properties": [
               {
                 "name": "gap",
+                "default": "0",
                 "description": "The gap between items."
               },
               {
@@ -4518,10 +4681,12 @@
               },
               {
                 "name": "reverse",
+                "default": false,
                 "description": "Whether to reverse the order of items."
               },
               {
                 "name": "vertical",
+                "default": false,
                 "description": "Whether the stack is vertical."
               },
               {
@@ -4545,6 +4710,7 @@
               "value": {
                 "type": "string | number"
               },
+              "default": "0",
               "description": "The gap between items."
             },
             {
@@ -4568,6 +4734,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Whether to reverse the order of items."
             },
             {
@@ -4575,6 +4742,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Whether the stack is vertical."
             },
             {
@@ -4621,6 +4789,7 @@
             "properties": [
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
@@ -4630,6 +4799,7 @@
               },
               {
                 "name": "watcher",
+                "default": false,
                 "description": "To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`."
               },
               {
@@ -4652,6 +4822,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -4667,6 +4838,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`."
             },
             {
@@ -4720,10 +4892,12 @@
             "properties": [
               {
                 "name": "checked",
+                "default": false,
                 "description": "Puts the switch in checked state."
               },
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the switch."
               },
               {
@@ -4742,6 +4916,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Puts the switch in checked state."
             },
             {
@@ -4749,6 +4924,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the switch."
             },
             {
@@ -4785,6 +4961,7 @@
               },
               {
                 "name": "vertical",
+                "default": false,
                 "description": "You can use vertical property for vertical mode."
               },
               {
@@ -4810,6 +4987,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "You can use vertical property for vertical mode."
             },
             {
@@ -4843,6 +5021,7 @@
             "properties": [
               {
                 "name": "grow",
+                "default": false,
                 "description": "Grows tabs as much as all available space (occupies all horizontal space)."
               },
               {
@@ -4852,6 +5031,7 @@
               },
               {
                 "name": "reverse",
+                "default": false,
                 "description": "Reverses the arrangement of the tabs."
               },
               {
@@ -4870,6 +5050,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Grows tabs as much as all available space (occupies all horizontal space)."
             },
             {
@@ -4885,6 +5066,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Reverses the arrangement of the tabs."
             },
             {
@@ -5020,6 +5202,7 @@
             "properties": [
               {
                 "name": "disabled",
+                "default": false,
                 "description": "A Tab can be disabled by setting disabled property."
               },
               {
@@ -5046,6 +5229,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "A Tab can be disabled by setting disabled property."
             },
             {
@@ -5093,18 +5277,22 @@
             "properties": [
               {
                 "name": "arrow",
+                "default": false,
                 "description": "Specifies whether to display the arrow or not."
               },
               {
                 "name": "delay",
+                "default": "0",
                 "description": "Specifies a delay in milliseconds for show or hide. Use a number for both show and hide or create an array of two separate numbers for show and hide."
               },
               {
                 "name": "disabled",
+                "default": false,
                 "description": "Disables the element functionality."
               },
               {
                 "name": "fixed",
+                "default": false,
                 "description": "TODO"
               },
               {
@@ -5157,6 +5345,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Specifies whether to display the arrow or not."
             },
             {
@@ -5164,6 +5353,7 @@
               "value": {
                 "type": "number | [number, number]"
               },
+              "default": "0",
               "description": "Specifies a delay in milliseconds for show or hide. Use a number for both show and hide or create an array of two separate numbers for show and hide."
             },
             {
@@ -5171,6 +5361,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "Disables the element functionality."
             },
             {
@@ -5178,6 +5369,7 @@
               "value": {
                 "type": "boolean"
               },
+              "default": false,
               "description": "TODO"
             },
             {

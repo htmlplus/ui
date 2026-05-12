@@ -18,27 +18,27 @@ export declare class PlusDivider extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<PlusColor>;
+    color: OverridableValue<PlusColor>;
     /**
      * Specifies the amount of indentation.
      */
-    inset?: 'none' | 'start' | 'end' | 'both' | (string & {});
+    inset: 'none' | 'start' | 'end' | 'both' | (string & {});
     /**
      * Draws the divider in a `horizontal` or `vertical` orientation.
      */
-    orientation?: 'horizontal' | 'vertical';
+    orientation: 'horizontal' | 'vertical';
     /**
      * Specifies the location of the default slot.
      */
-    placement?: 'start' | 'center' | 'end';
+    placement: 'start' | 'center' | 'end';
     /**
      * Specifies the thickness of the border.
      */
-    size?: OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+    size: OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
     /**
      * Specifies the style of the border.
      */
-    stroke?: OverridableValue<'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'>;
+    stroke: OverridableValue<'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'>;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

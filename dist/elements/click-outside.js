@@ -11,6 +11,12 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusClickOutside = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.capture = false;
+    this.disabled = false;
+    this.once = false;
+  }
   initialize() {
     on(this.$host, "outside", this.onClickOutside, this.options);
   }
@@ -42,30 +48,30 @@ PlusClickOutside.tag = "plus-click-outside";
 PlusClickOutside.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusClickOutside.prototype, "capture", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusClickOutside.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusClickOutside.prototype, "once", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusClickOutside.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusClickOutside.prototype, "variant", 2);

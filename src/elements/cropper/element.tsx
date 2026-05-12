@@ -45,7 +45,7 @@ export class PlusCropper extends PlusCore {
 	 * A number between 0 and 1. Specifies the automatic cropping area size.
 	 */
 	@Property()
-	area?: number = 0.75;
+	area: number = 0.75;
 
 	/**
 	 * Specifies the initial aspect ratio of the viewport.
@@ -57,25 +57,25 @@ export class PlusCropper extends PlusCore {
 	 * Shows the grid background of the container.
 	 */
 	@Property()
-	background?: boolean;
+	background: boolean = false;
 
 	/**
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Shows the dashed lines above the viewport.
 	 */
 	@Property()
-	guides?: boolean;
+	guides: boolean = false;
 
 	/**
 	 * Shows the center indicator above the viewport.
 	 */
 	@Property()
-	indicator?: boolean;
+	indicator: boolean = false;
 
 	/**
 	 * Specifies the mode.
@@ -85,7 +85,7 @@ export class PlusCropper extends PlusCore {
 	 * @value none - Do nothing.
 	 */
 	@Property()
-	mode?: 'crop' | 'move' | 'none' = 'move';
+	mode: 'crop' | 'move' | 'none' = 'move';
 
 	/**
 	 * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
@@ -95,7 +95,7 @@ export class PlusCropper extends PlusCore {
 	 * @value main - Enables to resize the viewport by dragging on the Sides.
 	 */
 	@Property()
-	resizer?: 'both' | 'edge' | 'main' = 'both';
+	resizer: 'both' | 'edge' | 'main' = 'both';
 
 	/**
 	 * Specifies the shape of the resizer.
@@ -105,7 +105,7 @@ export class PlusCropper extends PlusCore {
 	 * @value square - TODO.
 	 */
 	@Property()
-	resizerShape?: 'circle' | 'line' | 'square' = 'square';
+	resizerShape: 'circle' | 'line' | 'square' = 'square';
 
 	/**
 	 * Re-renders when resizing the window.
@@ -115,7 +115,7 @@ export class PlusCropper extends PlusCore {
 	 * @value reset - Restores the cropped area after resizing the window.
 	 */
 	@Property()
-	responsive?: boolean | 'reset' = 'reset';
+	responsive: boolean | 'reset' = 'reset';
 
 	/**
 	 * Specifies the shape of the viewport.
@@ -125,19 +125,19 @@ export class PlusCropper extends PlusCore {
 	 * @value square    - TODO.
 	 */
 	@Property()
-	shape?: 'circle' | 'rectangle' | 'square' = 'rectangle';
+	shape: 'circle' | 'rectangle' | 'square' = 'rectangle';
 
 	/**
 	 * Specifies the image's src.
 	 */
 	@Property()
-	src?: string;
+	src: string = '';
 
 	/**
 	 * Hides the black modal above the image and under the viewport.
 	 */
 	@Property()
-	transparent?: boolean;
+	transparent: boolean = false;
 
 	/**
 	 * Gets/Sets data.
@@ -158,7 +158,7 @@ export class PlusCropper extends PlusCore {
 	 * @value none    - no restrictions.
 	 */
 	@Property()
-	view?: 'contain' | 'cover' | 'fit' | 'none' = 'cover';
+	view: 'contain' | 'cover' | 'fit' | 'none' = 'cover';
 
 	/**
 	 * Enables to zoom the image.
@@ -169,13 +169,13 @@ export class PlusCropper extends PlusCore {
 	 * @value wheel - Enables to zoom the image by wheeling mouse.
 	 */
 	@Property()
-	zoomable?: boolean | 'touch' | 'wheel' = true;
+	zoomable: boolean | 'touch' | 'wheel' = true;
 
 	/**
 	 * Specifies zoom ratio when zooming the image by wheeling the mouse.
 	 */
 	@Property()
-	zoomRatio?: number = 0.1;
+	zoomRatio: number = 0.1;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -316,7 +316,7 @@ export class PlusCropper extends PlusCore {
 
 	instance?: CropperCoreType;
 
-	locked?: boolean;
+	locked: boolean = false;
 
 	get classes() {
 		return classes(

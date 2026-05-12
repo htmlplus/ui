@@ -11,15 +11,15 @@ export declare class PlusTabsBar extends PlusCore {
     /**
      * Grows tabs as much as all available space (occupies all horizontal space).
      */
-    grow?: boolean;
+    grow: boolean;
     /**
      * Specifies how the tabs are aligned.
      */
-    justify?: 'start' | 'center' | 'end';
+    justify: 'start' | 'center' | 'end';
     /**
      * Reverses the arrangement of the tabs.
      */
-    reverse?: boolean;
+    reverse: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

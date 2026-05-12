@@ -25,13 +25,13 @@ export class PlusSwitch extends PlusCore {
 	 * @model
 	 */
 	@Property({ reflect: true })
-	checked?: boolean;
+	checked: boolean = false;
 
 	/**
 	 * Disables the switch.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -61,13 +61,13 @@ export class PlusSwitch extends PlusCore {
 	}
 
 	@Bind()
-	onClick(event) {
+	onClick(event: MouseEvent) {
 		event.preventDefault();
 		this.toggle();
 	}
 
 	@Bind()
-	onKeyDown(event) {
+	onKeyDown(event: KeyboardEvent) {
 		if (event.key !== ' ' && event.key !== 'Enter') return;
 		event.preventDefault();
 		this.toggle();
@@ -76,8 +76,8 @@ export class PlusSwitch extends PlusCore {
 	render() {
 		return (
 			<host
-				aria-checked={`${!!this.checked}`}
-				aria-disabled={`${!!this.disabled}`}
+				aria-checked={`${this.checked}`}
+				aria-disabled={`${this.disabled}`}
 				role="switch"
 				tabIndex={0}
 				value={this}

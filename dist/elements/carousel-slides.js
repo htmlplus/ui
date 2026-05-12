@@ -24,14 +24,14 @@ PlusCarouselSlides.tag = "plus-carousel-slides";
 PlusCarouselSlides.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarouselSlides.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarouselSlides.prototype, "variant", 2);

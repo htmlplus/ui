@@ -24,10 +24,12 @@ let PlusCounter = class extends PlusCore {
     this.duration = 1e3;
     this.from = 0;
     this.numerals = [];
+    this.play = false;
+    this.separator = "";
     this.state = "idle";
   }
   complete() {
-    cancelAnimationFrame(this.requestAnimationFrame);
+    this.cancelAnimationFrame();
     this.reset();
     this.counter = this.to;
     this.state = "completed";
@@ -35,7 +37,7 @@ let PlusCounter = class extends PlusCore {
   }
   pause() {
     if (this.state !== "running") return;
-    cancelAnimationFrame(this.requestAnimationFrame);
+    this.cancelAnimationFrame();
     this.state = "paused";
   }
   start() {
@@ -58,7 +60,7 @@ let PlusCounter = class extends PlusCore {
     }
   }
   stop() {
-    cancelAnimationFrame(this.requestAnimationFrame);
+    this.cancelAnimationFrame();
     this.reset();
     this.counter = this.from;
     this.state = "stopped";
@@ -89,7 +91,7 @@ let PlusCounter = class extends PlusCore {
       }
       x1 = x3;
     }
-    if (this.numerals?.length) {
+    if (this.numerals.length) {
       x1 = x1.replace(/[0-9]/g, (w) => this.numerals[+w]);
       x2 = x2.replace(/[0-9]/g, (w) => this.numerals[+w]);
     }
@@ -104,6 +106,12 @@ let PlusCounter = class extends PlusCore {
       if (this.play !== true && this.state === "paused") this.stop();
       if (this.play !== true && this.state === "running") this.stop();
     });
+  }
+  cancelAnimationFrame() {
+    if (this.requestAnimationFrame !== void 0) {
+      cancelAnimationFrame(this.requestAnimationFrame);
+      this.requestAnimationFrame = void 0;
+    }
   }
   count(timestamp) {
     if (!this.startTime) this.startTime = timestamp;
@@ -140,65 +148,65 @@ let PlusCounter = class extends PlusCore {
 PlusCounter.tag = "plus-counter";
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCounter.prototype, "easing", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusCounter.prototype, "decimal", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCounter.prototype, "decimals", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCounter.prototype, "delay", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCounter.prototype, "duration", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCounter.prototype, "from", 2);
 __decorateClass([
   Property({
-    type: 1
+    type: 3
   })
 ], PlusCounter.prototype, "numerals", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCounter.prototype, "play", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusCounter.prototype, "separator", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCounter.prototype, "to", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCounter.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCounter.prototype, "variant", 2);

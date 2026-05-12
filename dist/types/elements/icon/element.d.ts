@@ -27,7 +27,7 @@ export declare class PlusIcon extends PlusCore {
     /**
      * Specifies an alternate description to use for assistive devices.
      */
-    label?: string;
+    label: string;
     /**
      * Specifies the name.
      */
@@ -43,7 +43,7 @@ export declare class PlusIcon extends PlusCore {
     /**
      * Specifies the size.
      */
-    size?: PlusIconSize;
+    size: PlusIconSize;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

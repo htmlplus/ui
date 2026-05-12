@@ -31,37 +31,37 @@ export class PlusDivider extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<PlusColor>;
+	color: OverridableValue<PlusColor> = 'black';
 
 	/**
 	 * Specifies the amount of indentation.
 	 */
 	@Property({ reflect: true })
-	inset?: 'none' | 'start' | 'end' | 'both' | (string & {}) = 'none';
+	inset: 'none' | 'start' | 'end' | 'both' | (string & {}) = 'none';
 
 	/**
 	 * Draws the divider in a `horizontal` or `vertical` orientation.
 	 */
 	@Property({ reflect: true })
-	orientation?: 'horizontal' | 'vertical' = 'horizontal';
+	orientation: 'horizontal' | 'vertical' = 'horizontal';
 
 	/**
 	 * Specifies the location of the default slot.
 	 */
 	@Property({ reflect: true })
-	placement?: 'start' | 'center' | 'end' = 'center';
+	placement: 'start' | 'center' | 'end' = 'center';
 
 	/**
 	 * Specifies the thickness of the border.
 	 */
 	@Property({ reflect: true })
-	size?: OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = 'md';
+	size: OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'> = 'md';
 
 	/**
 	 * Specifies the style of the border.
 	 */
 	@Property({ reflect: true })
-	stroke?: OverridableValue<
+	stroke: OverridableValue<
 		'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'
 	> = 'solid';
 

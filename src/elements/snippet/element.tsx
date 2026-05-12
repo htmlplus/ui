@@ -31,13 +31,13 @@ export class PlusSnippet extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<PlusColor>;
+	color: OverridableValue<PlusColor> = 'black';
 
 	/**
 	 * Specifies the symbol.
 	 */
 	@Property()
-	symbol?: string;
+	symbol: string = '';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

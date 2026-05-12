@@ -11,7 +11,7 @@ export declare class PlusAccordions extends PlusCore {
     /**
      * Specifies that only one accordion can be open.
      */
-    persistent?: boolean;
+    persistent: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

@@ -20,23 +20,23 @@ export declare class PlusCarousel extends PlusCore {
     /**
      * Align the slides relative to the carousel viewport.
      */
-    align?: 'start' | 'center' | 'end';
+    align: 'start' | 'center' | 'end';
     /**
      * Enables the height of the carousel container to be adjusted to match the tallest slide in view.
      * This element provides a built-in implementation of Embla's `Auto Height` plugin,
      * so there's no need to include the original plugin manually.
      */
-    autoHeight?: boolean;
+    autoHeight: boolean;
     /**
      * Choose scroll axis between `x` and `y`.
      */
-    axis?: 'x' | 'y';
+    axis: 'x' | 'y';
     /**
      * Enables automatic class injection for styling based on carousel state.
      * This element provides a built-in implementation of Embla's `Class Names` plugin,
      * so there's no need to include the original plugin manually.
      */
-    classes?: boolean;
+    classes: boolean;
     /**
      * Clear leading and trailing empty space that causes excessive scrolling.
      * Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them.
@@ -45,7 +45,7 @@ export declare class PlusCarousel extends PlusCore {
      * the **align** property for enough slides at the **start** and the **end** of
      * the carousel, in order to **cover** the **leading** and **trailing space**.
      */
-    containScroll?: 'off' | 'keepSnaps' | 'trimSnaps';
+    containScroll: 'off' | 'keepSnaps' | 'trimSnaps';
     /**
      * Enables scrolling the carousel using mouse and touch interactions.
      *
@@ -64,7 +64,7 @@ export declare class PlusCarousel extends PlusCore {
      * Browsers won't fire the click event when a touch event includes an accidental slight swipe gesture.
      * This is why this threshold only works for mouse events.
      */
-    dragThreshold?: number;
+    dragThreshold: number;
     /**
      * Set scroll duration when triggered by any of the API methods.
      * Higher numbers enables slower scrolling.
@@ -73,23 +73,23 @@ export declare class PlusCarousel extends PlusCore {
      * **Note**: Duration is **not** in milliseconds because Embla uses an attraction physics simulation when scrolling instead of easings.
      * Only values between `20-60` are recommended.
      */
-    duration?: number;
+    duration: number;
     /**
      * Enables automatic focus event watching on slides.
      * When enabled, fires a slideFocus event and scrolls to the focused slide.
      */
-    focusable?: boolean;
+    focusable: boolean;
     /**
      * This is the Intersection Observer
      * [threshold](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#creating_an_intersection_observer)
      * option that will be applied to all slides.
      */
-    inViewThreshold?: number;
+    inViewThreshold: number;
     /**
      * Enables infinite looping by translating slides to create a seamless loop.
      * Automatically disables if slide content is insufficient to prevent glitches.
      */
-    loop?: boolean;
+    loop: boolean;
     /**
      * Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality.
      */
@@ -97,7 +97,7 @@ export declare class PlusCarousel extends PlusCore {
     /**
      * Matches the current slide on another carousel using its id.
      */
-    mirror?: string;
+    mirror: string;
     /**
      * Specifies how the carousel should be mirrored onto another carousel.
      *
@@ -112,7 +112,7 @@ export declare class PlusCarousel extends PlusCore {
     /**
      * Watches the **container** and **slides** for size changes and runs reInit when any size has changed.
      */
-    resizable?: boolean;
+    resizable: boolean;
     /**
      * Group slides together. Drag interactions, dot navigation, and previous/next buttons
      * are mapped to group slides into the given number, which has to be an integer.
@@ -125,7 +125,7 @@ export declare class PlusCarousel extends PlusCore {
      * Please note that this is not necessarily equal to the number of
      * slides when used together with the `slidesToScroll` property.
      */
-    startIndex?: number;
+    startIndex: number;
     /**
      * Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions.
      * This allows you to create dynamic slide effects such as scaling or fading.

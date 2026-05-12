@@ -17,15 +17,15 @@ export declare class PlusCard extends PlusCore {
     /**
      * Use the flat property to neutralize elevation.
      */
-    flat?: boolean;
+    flat: boolean;
     /**
      * If you want the card to have border, use the outlined property.
      */
-    outlined?: boolean;
+    outlined: boolean;
     /**
      * Use tile property to neutralize border-radius.
      */
-    tile?: boolean;
+    tile: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

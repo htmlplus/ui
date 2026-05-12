@@ -15,15 +15,15 @@ export declare class PlusClickOutside extends PlusCore {
      * A boolean value indicating that events of this type will be dispatched to the registered
      * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
      */
-    capture?: boolean;
+    capture: boolean;
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * The event fires only once.
      */
-    once?: boolean;
+    once: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

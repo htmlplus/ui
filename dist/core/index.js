@@ -232,6 +232,36 @@ n = w.slice, l = { __e: function(n2, l2, u2, t) {
 }, C.prototype.render = S, i = [], o = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, e = function(n2, l2) {
   return n2.__v.__b - l2.__v.__b;
 }, H.__r = 0, f = Math.random().toString(8), c = "__d" + f, s = "__a" + f, a = /(PointerCapture)$|Capture$/i, h = 0, p = V(false), v = V(true);
+const KEY = "htmlplus";
+const API_CONNECTED = /* @__PURE__ */ Symbol();
+const API_DEFAULTS = /* @__PURE__ */ Symbol();
+const API_HOST = /* @__PURE__ */ Symbol();
+const API_REQUEST = /* @__PURE__ */ Symbol();
+const API_RENDER_COMPLETED = /* @__PURE__ */ Symbol();
+const API_STACKS = /* @__PURE__ */ Symbol();
+const API_STYLE = /* @__PURE__ */ Symbol();
+const LIFECYCLE_ADOPTED = "adoptedCallback";
+const LIFECYCLE_CONNECTED = "connectedCallback";
+const LIFECYCLE_CONSTRUCTED = "constructedCallback";
+const LIFECYCLE_DISCONNECTED = "disconnectedCallback";
+const LIFECYCLE_READY = "readyCallback";
+const LIFECYCLE_UPDATE = "updateCallback";
+const LIFECYCLE_UPDATED = "updatedCallback";
+const METHOD_RENDER = "render";
+const STATIC_STYLE = "style";
+const STATIC_TAG = "tag";
+const TYPE_ANY = 2 ** 0;
+const TYPE_ARRAY = 2 ** 1;
+const TYPE_BIGINT = 2 ** 2;
+const TYPE_BOOLEAN = 2 ** 3;
+const TYPE_DATE = 2 ** 4;
+const TYPE_ENUM = 2 ** 5;
+const TYPE_FUNCTION = 2 ** 6;
+const TYPE_NULL = 2 ** 7;
+const TYPE_NUMBER = 2 ** 8;
+const TYPE_OBJECT = 2 ** 9;
+const TYPE_STRING = 2 ** 10;
+const TYPE_UNDEFINED = 2 ** 11;
 const SPLIT_LOWER_UPPER_RE = new RegExp("([\\p{Ll}\\d])(\\p{Lu})", "gu");
 const SPLIT_UPPER_UPPER_RE = new RegExp("(\\p{Lu})([\\p{Lu}][\\p{Ll}])", "gu");
 const SPLIT_SEPARATE_NUMBER_RE = new RegExp("(\\d)\\p{Ll}|(\\p{L})\\d", "u");
@@ -316,32 +346,6 @@ function splitPrefixSuffix(input, options = {}) {
     input.slice(suffixIndex)
   ];
 }
-const KEY = "htmlplus";
-const API_CONNECTED = /* @__PURE__ */ Symbol();
-const API_DEFAULTS = /* @__PURE__ */ Symbol();
-const API_HOST = /* @__PURE__ */ Symbol();
-const API_REQUEST = /* @__PURE__ */ Symbol();
-const API_RENDER_COMPLETED = /* @__PURE__ */ Symbol();
-const API_STACKS = /* @__PURE__ */ Symbol();
-const API_STYLE = /* @__PURE__ */ Symbol();
-const LIFECYCLE_ADOPTED = "adoptedCallback";
-const LIFECYCLE_CONNECTED = "connectedCallback";
-const LIFECYCLE_CONSTRUCTED = "constructedCallback";
-const LIFECYCLE_DISCONNECTED = "disconnectedCallback";
-const LIFECYCLE_READY = "readyCallback";
-const LIFECYCLE_UPDATE = "updateCallback";
-const LIFECYCLE_UPDATED = "updatedCallback";
-const METHOD_RENDER = "render";
-const STATIC_STYLE = "style";
-const STATIC_TAG = "tag";
-const TYPE_ARRAY = 2 ** 0;
-const TYPE_BOOLEAN = 2 ** 2;
-const TYPE_DATE = 2 ** 3;
-const TYPE_NULL = 2 ** 6;
-const TYPE_NUMBER = 2 ** 7;
-const TYPE_OBJECT = 2 ** 8;
-const TYPE_STRING = 2 ** 9;
-const TYPE_UNDEFINED = 2 ** 10;
 const call = (target, key, ...args) => {
   return target[key]?.apply(target, args);
 };
@@ -387,8 +391,7 @@ const classes = (input, smart) => {
 };
 const merge = (target, ...sources) => {
   for (const source of sources) {
-    if (!source)
-      continue;
+    if (!source) continue;
     if (typeOf(source) !== "object") {
       target = source;
       continue;
@@ -441,8 +444,7 @@ const on = (target, type, handler, options) => {
   }
   const callback = (event) => {
     const has = event.composedPath().some((item) => item === element);
-    if (has)
-      return;
+    if (has) return;
     if (typeof handler === "function") {
       handler(event);
     } else {
@@ -468,29 +470,21 @@ const off = (target, type, handler, options) => {
     return outside2.element === element && outside2.handler === handler && outside2.options === options;
   });
   const outside = outsides[index];
-  if (!outside)
-    return;
+  if (!outside) return;
   off(document, outside.type, outside.callback, outside.options);
   outsides.splice(index, 1);
 };
 const getFramework = (target) => {
   const element = host(target);
-  if ("_qc_" in element)
-    return "qwik";
-  if ("_$owner" in element)
-    return "solid";
-  if ("__svelte_meta" in element)
-    return "svelte";
-  if ("__vnode" in element)
-    return "vue";
+  if ("_qc_" in element) return "qwik";
+  if ("_$owner" in element) return "solid";
+  if ("__svelte_meta" in element) return "svelte";
+  if ("__vnode" in element) return "vue";
   const keys = Object.keys(element);
   const has = (input) => keys.some((key) => key.startsWith(input));
-  if (has("_blazor"))
-    return "blazor";
-  if (has("__react"))
-    return "react";
-  if (has("__zone_symbol__"))
-    return "angular";
+  if (has("_blazor")) return "blazor";
+  if (has("__react")) return "react";
+  if (has("__zone_symbol__")) return "angular";
 };
 const getTag = (target) => {
   return target.constructor[STATIC_TAG] ?? target[STATIC_TAG];
@@ -527,10 +521,8 @@ const task = (options) => {
   let running;
   let promise;
   const run = () => {
-    if (options.canStart && !options.canStart())
-      return Promise.resolve(false);
-    if (!running)
-      promise = enqueue();
+    if (options.canStart && !options.canStart()) return Promise.resolve(false);
+    if (!running) promise = enqueue();
     return promise;
   };
   const enqueue = async () => {
@@ -540,8 +532,7 @@ const task = (options) => {
     } catch (error) {
       Promise.reject(error);
     }
-    if (!running)
-      return promise;
+    if (!running) return promise;
     try {
       if (options.canRun && !options.canRun()) {
         running = false;
@@ -564,9 +555,10 @@ const requestUpdate = (target, name, previous, callback) => {
   callback && stack.callbacks.push(callback);
   stacks.set(name, stack);
   const handler = () => {
-    if (!target[API_CONNECTED])
-      return;
-    const states = new Map(Array.from(stacks).filter((stack2) => stack2[0]).map((stack2) => [stack2[0], stack2[1].previous]));
+    if (!target[API_CONNECTED]) return;
+    const states = new Map(
+      Array.from(stacks).filter((stack2) => stack2[0]).map((stack2) => [stack2[0], stack2[1].previous])
+    );
     call(target, LIFECYCLE_UPDATE, states);
     R(call(target, METHOD_RENDER) ?? null, shadowRoot(target));
     stacks.forEach((state) => {
@@ -576,14 +568,12 @@ const requestUpdate = (target, name, previous, callback) => {
     });
     (() => {
       const raw = target.constructor[STATIC_STYLE];
-      if (!raw)
-        return;
+      if (!raw) return;
       const regex = /global\s+[^{]+\{[^{}]*\{[^{}]*\}[^{}]*\}|global\s+[^{]+\{[^{}]*\}/g;
       const hasGlobal = raw.includes("global");
       let localSheet = target[API_STYLE];
       let globalSheet = target.constructor[API_STYLE];
-      if (localSheet)
-        return;
+      if (localSheet) return;
       if (!localSheet) {
         localSheet = new CSSStyleSheet();
         target[API_STYLE] = localSheet;
@@ -591,8 +581,7 @@ const requestUpdate = (target, name, previous, callback) => {
       }
       const localStyle = raw.replace(regex, "");
       localSheet.replaceSync(localStyle);
-      if (!hasGlobal || globalSheet)
-        return;
+      if (!hasGlobal || globalSheet) return;
       if (!globalSheet) {
         globalSheet = new CSSStyleSheet();
         target.constructor[API_STYLE] = globalSheet;
@@ -617,65 +606,163 @@ function toDecorator(util, ...args) {
     });
   };
 }
-const toProperty = (input, type) => {
-  if (type === void 0)
-    return input;
-  const string = `${input}`;
-  const typeNumber = typeof type === "number" ? type : 0;
-  if (TYPE_BOOLEAN & typeNumber || type === Boolean) {
-    if (string === "")
-      return true;
-    if (string === "true")
-      return true;
-    if (string === "false")
-      return false;
-  }
-  if (TYPE_NUMBER & typeNumber || type === Number) {
-    if (string !== "" && !Number.isNaN(Number(input))) {
-      return parseFloat(string);
+const TYPES = [
+  {
+    flag: TYPE_NULL,
+    check: (value) => {
+      return value === null;
+    },
+    parse: (value) => {
+      if (value === "null") {
+        return null;
+      }
     }
-  }
-  if (TYPE_NULL & typeNumber || type === null) {
-    if (string === "null") {
-      return null;
+  },
+  {
+    flag: TYPE_UNDEFINED,
+    check: (value) => {
+      return value === void 0;
+    },
+    parse: (value) => {
+      if (value === "undefined") {
+        return void 0;
+      }
     }
-  }
-  if (TYPE_DATE & typeNumber || type === Date) {
-    const value = new Date(string);
-    if (!Number.isNaN(value.getTime())) {
+  },
+  {
+    flag: TYPE_BOOLEAN,
+    check: (value) => {
+      return typeof value === "boolean";
+    },
+    parse: (value) => {
+      if (value === "") return true;
+      if (value === "true") return true;
+      if (value === "false") return false;
+    }
+  },
+  {
+    flag: TYPE_BIGINT,
+    check: (value) => {
+      return typeof value === "bigint";
+    },
+    parse: (value) => {
+      if (/^\d+n$/.test(value)) {
+        return BigInt(value.slice(0, -1));
+      }
+    }
+  },
+  {
+    flag: TYPE_NUMBER,
+    check: (value) => {
+      return typeof value === "number" && !Number.isNaN(value);
+    },
+    parse: (value) => {
+      if (value !== "" && !Number.isNaN(Number(value))) {
+        return parseFloat(value);
+      }
+    }
+  },
+  {
+    flag: TYPE_DATE,
+    check: (value) => {
+      return value instanceof Date && !Number.isNaN(value.getTime());
+    },
+    parse: (value) => {
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) {
+        return date;
+      }
+    }
+  },
+  {
+    flag: TYPE_ARRAY,
+    check: (value) => {
+      return Array.isArray(value);
+    },
+    parse: (value) => {
+      if (value.startsWith("[") && value.endsWith("]")) {
+        try {
+          const parsed = JSON.parse(value);
+          if (Array.isArray(parsed)) return parsed;
+        } catch {
+        }
+      }
+    }
+  },
+  {
+    flag: TYPE_OBJECT,
+    check: (value) => {
+      return typeof value === "object" && value !== null && !Array.isArray(value);
+    },
+    parse: (value) => {
+      if (value.startsWith("{") && value.endsWith("}")) {
+        try {
+          const parsed = JSON.parse(value);
+          if (!Array.isArray(parsed)) return parsed;
+        } catch {
+        }
+      }
+    }
+  },
+  {
+    flag: TYPE_FUNCTION,
+    check: (value) => {
+      return typeof value === "function";
+    },
+    parse: () => {
+      throw new Error("TODO");
+    }
+  },
+  {
+    flag: TYPE_ENUM,
+    check: (value) => {
+      return typeof value === "string";
+    },
+    parse: (value) => {
       return value;
     }
-  }
-  if (TYPE_ARRAY & typeNumber || type === Array) {
-    try {
-      const value = JSON.parse(string);
-      if (typeOf(value) === "array")
-        return value;
-    } catch {
+  },
+  {
+    flag: TYPE_STRING,
+    check: (value) => {
+      return typeof value === "string";
+    },
+    parse: (value) => {
+      return value;
     }
-  }
-  if (TYPE_OBJECT & typeNumber || type === Object) {
-    try {
-      const value = JSON.parse(string);
-      if (typeOf(value) === "object") {
+  },
+  // TODO
+  {
+    flag: TYPE_ANY,
+    check: () => {
+      return true;
+    },
+    parse: (value) => {
+      try {
+        return JSON.parse(value);
+      } catch {
         return value;
       }
-    } catch {
     }
   }
-  if (TYPE_UNDEFINED & typeNumber) {
-    if (string === "undefined") {
-      return void 0;
-    }
+];
+const ensureIsType = (value, type = 0) => {
+  for (const handler of TYPES) {
+    if (!(type & handler.flag)) continue;
+    if (!handler.check(value)) continue;
+    return;
   }
-  if (TYPE_STRING & typeNumber || type === String) {
-    return string;
+  throw new Error(`Invalid value "${value}" for allowed types.`);
+};
+const toProperty = (value, type = 0) => {
+  if (value === null) return null;
+  for (const handler of TYPES) {
+    if (!(type & handler.flag)) continue;
+    const result = handler.parse(value);
+    if (result === void 0) continue;
+    return result;
   }
-  try {
-    return JSON.parse(string);
-  } catch {
-    return input;
-  }
+  throw new Error(`Cannot parse value "${value}" for allowed types.`);
 };
 const updateAttribute = (target, key, value) => {
   const element = host(target);
@@ -730,8 +817,7 @@ function Provider(namespace) {
       const options = {};
       options.detail = instance[key];
       dispatch(instance, `${prefix}:update`, options);
-      if (!SUB)
-        return;
+      if (!SUB) return;
       options.bubbles = true;
       dispatch(instance, `${prefix}:${instance[SUB]}:update`, options);
     };
@@ -749,8 +835,7 @@ function Provider(namespace) {
     });
     wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
       update(this);
-      if (cleanups(this).size && !states.has(SUB))
-        return;
+      if (cleanups(this).size && !states.has(SUB)) return;
       cleanups(this).get(`${prefix}:${states.get(SUB)}`)?.();
       const type = `${prefix}:${this[SUB]}`;
       const cleanup = () => {
@@ -783,8 +868,7 @@ function Consumer(namespace) {
       instance[key] = state;
     };
     wrapMethod("after", target, LIFECYCLE_CONNECTED, function() {
-      if (SUB && this[SUB])
-        return;
+      if (SUB && this[SUB]) return;
       let connected = false;
       const options = {
         bubbles: true
@@ -807,8 +891,7 @@ function Consumer(namespace) {
       !connected && setTimeout(() => dispatch(this, `${prefix}:presence`, options));
     });
     wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
-      if (cleanups(this).size && !states.has(SUB))
-        return;
+      if (cleanups(this).size && !states.has(SUB)) return;
       cleanups(this).get(`${prefix}:${states.get(SUB)}`)?.();
       const type = `${prefix}:${this[SUB]}`;
       const cleanup = () => {
@@ -837,13 +920,10 @@ function Consumer(namespace) {
 }
 function Element() {
   return (constructor) => {
-    if (isServer())
-      return;
+    if (isServer()) return;
     const tag = getTag(constructor);
-    if (!tag)
-      return;
-    if (customElements.get(tag))
-      return;
+    if (!tag) return;
+    if (customElements.get(tag)) return;
     customElements.define(tag, proxy(constructor));
   };
 }
@@ -880,26 +960,23 @@ const proxy = (constructor) => {
         const namespace = getNamespace(this.#instance) || "";
         const tag = getTag(this.#instance) || "";
         const properties = getConfig$1(namespace).elements?.[tag]?.properties;
-        if (!properties)
-          return;
-        const defaults = Object.fromEntries(Object.entries(properties).map(([key, value]) => [
-          key,
-          value?.default
-        ]));
+        if (!properties) return;
+        const defaults = Object.fromEntries(
+          Object.entries(properties).map(([key, value]) => [
+            key,
+            value?.default
+          ])
+        );
         Object.assign(this, defaults);
       })();
       (() => {
         const key = Object.keys(this).find((key2) => key2.startsWith("__reactProps"));
         const props = this[key];
-        if (!props)
-          return;
+        if (!props) return;
         for (const [key2, value] of Object.entries(props)) {
-          if (this[key2] !== void 0)
-            continue;
-          if (key2 === "children")
-            continue;
-          if (typeof value !== "object")
-            continue;
+          if (this[key2] !== void 0) continue;
+          if (key2 === "children") continue;
+          if (typeof value !== "object") continue;
           this[key2] = value;
         }
       })();
@@ -993,37 +1070,37 @@ function Method() {
 }
 const CONTAINER_DATA = /* @__PURE__ */ Symbol();
 const getContainers = (breakpoints) => {
-  return Object.entries(breakpoints || {}).reduce((result, [key, breakpoint]) => {
-    if (breakpoint.type !== "container")
+  return Object.entries(breakpoints || {}).reduce(
+    (result, [key, breakpoint]) => {
+      if (breakpoint.type !== "container") return result;
+      result[key] = {
+        min: breakpoint.min,
+        max: breakpoint.max
+      };
       return result;
-    result[key] = {
-      min: breakpoint.min,
-      max: breakpoint.max
-    };
-    return result;
-  }, {});
+    },
+    {}
+  );
 };
 const getMedias = (breakpoints) => {
-  return Object.entries(breakpoints || {}).reduce((result, [key, breakpoint]) => {
-    if (breakpoint.type !== "media")
+  return Object.entries(breakpoints || {}).reduce(
+    (result, [key, breakpoint]) => {
+      if (breakpoint.type !== "media") return result;
+      const parts = [];
+      const min = "min" in breakpoint ? breakpoint.min : void 0;
+      const max = "max" in breakpoint ? breakpoint.max : void 0;
+      if (min !== void 0) parts.push(`(min-width: ${min}px)`);
+      if (max !== void 0) parts.push(`(max-width: ${max}px)`);
+      const query2 = parts.join(" and ");
+      if (query2) result[key] = query2;
       return result;
-    const parts = [];
-    const min = "min" in breakpoint ? breakpoint.min : void 0;
-    const max = "max" in breakpoint ? breakpoint.max : void 0;
-    if (min !== void 0)
-      parts.push(`(min-width: ${min}px)`);
-    if (max !== void 0)
-      parts.push(`(max-width: ${max}px)`);
-    const query2 = parts.join(" and ");
-    if (query2)
-      result[key] = query2;
-    return result;
-  }, {});
+    },
+    {}
+  );
 };
 const matchContainer = (element, container) => {
   const getData = () => {
-    if (element[CONTAINER_DATA])
-      return element[CONTAINER_DATA];
+    if (element[CONTAINER_DATA]) return element[CONTAINER_DATA];
     const listeners = /* @__PURE__ */ new Set();
     const observer = new ResizeObserver(() => {
       listeners.forEach((listener) => {
@@ -1045,8 +1122,7 @@ const matchContainer = (element, container) => {
   const removeEventListener = (_type, listener) => {
     const data = getData();
     data.listeners.delete(listener);
-    if (data.listeners.size !== 0)
-      return;
+    if (data.listeners.size !== 0) return;
     data.observer.disconnect();
     delete element[CONTAINER_DATA];
   };
@@ -1064,92 +1140,89 @@ function Overrides() {
     const breakpoints = getConfig$1(getNamespace(target) || "").breakpoints || {};
     const containers = getContainers(breakpoints);
     const medias = getMedias(breakpoints);
-    wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
-      if (!states.has(key))
-        return;
-      this[DISPOSERS] ??= /* @__PURE__ */ new Map();
-      const disposers = this[DISPOSERS];
-      const overrides = this[key] || {};
-      const activeKeys = new Set(disposers.keys());
-      const overrideKeys = Object.keys(overrides);
-      const containerKeys = overrideKeys.filter((breakpoint) => breakpoint in containers);
-      const mediaKeys = overrideKeys.filter((breakpoint) => breakpoint in medias);
-      let next = {};
-      let scheduled = false;
-      const apply = (overrideKey) => {
-        overrideKey && Object.assign(next, overrides[overrideKey]);
-        if (scheduled)
-          return;
-        scheduled = true;
-        queueMicrotask(() => {
-          scheduled = false;
-          const defaults = Object.assign({}, this[API_DEFAULTS], next);
-          delete defaults[key];
-          Object.assign(host(this), defaults);
-          next = {};
-        });
-      };
-      for (const overrideKey of overrideKeys) {
-        if (activeKeys.delete(overrideKey))
-          continue;
-        const breakpoint = breakpoints[overrideKey];
-        if (!breakpoint)
-          continue;
-        switch (breakpoint.type) {
-          case "container": {
-            const container = containers[overrideKey];
-            if (!container)
-              break;
-            const containerQueryList = matchContainer(host(this), container);
-            const change = () => {
-              for (const containerKey of containerKeys) {
-                if (matchContainer(host(this), containers[containerKey]).matches) {
-                  apply(containerKey);
+    wrapMethod(
+      "after",
+      target,
+      LIFECYCLE_UPDATE,
+      function(states) {
+        if (!states.has(key)) return;
+        this[DISPOSERS] ??= /* @__PURE__ */ new Map();
+        const disposers = this[DISPOSERS];
+        const overrides = this[key] || {};
+        const activeKeys = new Set(disposers.keys());
+        const overrideKeys = Object.keys(overrides);
+        const containerKeys = overrideKeys.filter((breakpoint) => breakpoint in containers);
+        const mediaKeys = overrideKeys.filter((breakpoint) => breakpoint in medias);
+        let next = {};
+        let scheduled = false;
+        const apply = (overrideKey) => {
+          overrideKey && Object.assign(next, overrides[overrideKey]);
+          if (scheduled) return;
+          scheduled = true;
+          queueMicrotask(() => {
+            scheduled = false;
+            const defaults = Object.assign({}, this[API_DEFAULTS], next);
+            delete defaults[key];
+            Object.assign(host(this), defaults);
+            next = {};
+          });
+        };
+        for (const overrideKey of overrideKeys) {
+          if (activeKeys.delete(overrideKey)) continue;
+          const breakpoint = breakpoints[overrideKey];
+          if (!breakpoint) continue;
+          switch (breakpoint.type) {
+            case "container": {
+              const container = containers[overrideKey];
+              if (!container) break;
+              const containerQueryList = matchContainer(host(this), container);
+              const change = () => {
+                for (const containerKey of containerKeys) {
+                  if (matchContainer(host(this), containers[containerKey]).matches) {
+                    apply(containerKey);
+                  }
                 }
-              }
-              apply();
-            };
-            containerQueryList.addEventListener("change", change);
-            const disposer = () => {
-              containerQueryList.removeEventListener("change", change);
-            };
-            disposers.set(overrideKey, disposer);
-            if (!containerQueryList.matches)
+                apply();
+              };
+              containerQueryList.addEventListener("change", change);
+              const disposer = () => {
+                containerQueryList.removeEventListener("change", change);
+              };
+              disposers.set(overrideKey, disposer);
+              if (!containerQueryList.matches) break;
+              change();
               break;
-            change();
-            break;
-          }
-          case "media": {
-            const media = medias[overrideKey];
-            if (!media)
-              break;
-            const mediaQueryList = window.matchMedia(media);
-            const change = () => {
-              for (const mediaKey of mediaKeys) {
-                if (window.matchMedia(medias[mediaKey]).matches) {
-                  apply(mediaKey);
+            }
+            case "media": {
+              const media = medias[overrideKey];
+              if (!media) break;
+              const mediaQueryList = window.matchMedia(media);
+              const change = () => {
+                for (const mediaKey of mediaKeys) {
+                  if (window.matchMedia(medias[mediaKey]).matches) {
+                    apply(mediaKey);
+                  }
                 }
-              }
-              apply();
-            };
-            mediaQueryList.addEventListener("change", change);
-            const disposer = () => {
-              mediaQueryList.removeEventListener("change", change);
-            };
-            disposers.set(overrideKey, disposer);
-            if (!mediaQueryList.matches)
+                apply();
+              };
+              mediaQueryList.addEventListener("change", change);
+              const disposer = () => {
+                mediaQueryList.removeEventListener("change", change);
+              };
+              disposers.set(overrideKey, disposer);
+              if (!mediaQueryList.matches) break;
+              change();
               break;
-            change();
-            break;
+            }
           }
         }
+        for (const activeKey of activeKeys) {
+          const disposer = disposers.get(activeKey);
+          disposer?.();
+          disposers.delete(activeKey);
+        }
       }
-      for (const activeKey of activeKeys) {
-        const disposer = disposers.get(activeKey);
-        disposer?.();
-        disposers.delete(activeKey);
-      }
-    });
+    );
     wrapMethod("after", target, LIFECYCLE_DISCONNECTED, function() {
       this[DISPOSERS] ??= /* @__PURE__ */ new Map();
       const disposers = this[DISPOSERS];
@@ -1174,18 +1247,15 @@ function Property(options) {
     function set(value) {
       const previous = this[KEY2];
       const next = value;
-      if (!originalSetter && next === previous)
-        return;
+      if (!originalSetter && next === previous) return;
       if (originalSetter) {
         originalSetter.call(this, next);
       } else {
         this[KEY2] = next;
       }
       requestUpdate(this, key, previous, (skipped) => {
-        if (skipped)
-          return;
-        if (!options?.reflect)
-          return;
+        if (skipped) return;
+        if (!options?.reflect) return;
         this[LOCKED] = true;
         updateAttribute(this, attribute, next);
         this[LOCKED] = false;
@@ -1200,7 +1270,10 @@ function Property(options) {
     defineProperty(target, `RAW:${attribute}`, {
       set(value) {
         if (!this[LOCKED]) {
-          this[key] = toProperty(value, options?.type);
+          try {
+            this[key] = toProperty(value, options?.type);
+          } catch {
+          }
         }
       }
     });
@@ -1219,7 +1292,11 @@ function Property(options) {
         if (descriptor && !descriptor.set) {
           throw new Error(`Property '${key}' does not have a setter. Unable to assign value.`);
         }
-        this[key] = value;
+        try {
+          ensureIsType(value, options?.type);
+          this[key] = value;
+        } catch {
+        }
       };
       defineProperty(host(this), key, { configurable: true, get: get2, set: set2 });
     });
@@ -1250,8 +1327,7 @@ function State() {
       },
       set(next) {
         const previous = this[KEY2];
-        if (next === previous)
-          return;
+        if (next === previous) return;
         this[KEY2] = next;
         requestUpdate(this, name, previous);
       }
@@ -1260,33 +1336,49 @@ function State() {
 }
 function Style() {
   return (target, key) => {
-    const LAST = /* @__PURE__ */ Symbol();
+    const KEY2 = /* @__PURE__ */ Symbol();
     const SHEET = /* @__PURE__ */ Symbol();
+    const LAST = /* @__PURE__ */ Symbol();
     wrapMethod("before", target, LIFECYCLE_UPDATED, function() {
-      let sheet = this[SHEET];
-      let value = this[key];
-      const update = (value2) => (result) => {
-        if (value2 && value2 !== this[LAST])
-          return;
-        sheet.replaceSync(toCssString(result));
-        this[LAST] = void 0;
-      };
+      applyStyle(this, this[key]);
+    });
+    defineProperty(target, key, {
+      enumerable: true,
+      configurable: true,
+      get() {
+        return this[KEY2];
+      },
+      set(next) {
+        const previous = this[KEY2];
+        if (next === previous) return;
+        this[KEY2] = next;
+        applyStyle(this, next);
+      }
+    });
+    const applyStyle = (instance, input) => {
+      const adoptedStyleSheets = shadowRoot(instance)?.adoptedStyleSheets;
+      if (!adoptedStyleSheets) return;
+      let sheet = instance[SHEET];
       if (!sheet) {
         sheet = new CSSStyleSheet();
-        this[SHEET] = sheet;
-        shadowRoot(this)?.adoptedStyleSheets.push(sheet);
+        instance[SHEET] = sheet;
+        adoptedStyleSheets.push(sheet);
       }
-      if (typeof value === "function") {
-        value = value.call(this);
-      }
+      const update = (value2) => (result) => {
+        if (value2 && value2 !== instance[LAST]) return;
+        sheet.replaceSync(toCssString(result));
+        instance[LAST] = void 0;
+      };
+      const value = typeof input === "function" ? input.call(instance) : input;
       if (value instanceof Promise) {
-        value.then(update(this[LAST] = value)).catch((error) => {
-          throw new Error("TODO", { cause: error });
+        instance[LAST] = value;
+        value.then(update(value)).catch((error) => {
+          throw new Error("Style promise failed", { cause: error });
         });
       } else {
         update()(value);
       }
-    });
+    };
   };
 }
 const toCssString = (input) => {
@@ -1296,16 +1388,13 @@ const toCssString = (input) => {
   if (Array.isArray(input)) {
     return input.map((item) => toCssString(item)).filter(Boolean).join("\n");
   }
-  if (input === null)
-    return "";
-  if (typeof input !== "object")
-    return "";
+  if (input === null) return "";
+  if (typeof input !== "object") return "";
   let result = "";
   for (const key of Object.keys(input)) {
     const value = input[key];
     const ignore = [null, void 0, false].includes(value);
-    if (ignore)
-      continue;
+    if (ignore) continue;
     const cssKey = key.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
     if (typeof value === "object") {
       result += `${cssKey} {${toCssString(value)}}`;
@@ -1317,32 +1406,38 @@ const toCssString = (input) => {
 };
 function Variant() {
   return (target, key) => {
-    wrapMethod("after", target, LIFECYCLE_UPDATE, function(states) {
-      if (!states.has(key))
-        return;
-      const namespace = getNamespace(target) || "";
-      const tag = getTag(this) || "";
-      const properties = getConfig$1(namespace).elements?.[tag]?.variants?.[this[key]]?.properties;
-      if (!properties)
-        return;
-      const defaults = Object.assign({}, this[API_DEFAULTS], properties);
-      delete defaults[key];
-      Object.assign(this, defaults);
-    });
+    wrapMethod(
+      "after",
+      target,
+      LIFECYCLE_UPDATE,
+      function(states) {
+        if (!states.has(key)) return;
+        const namespace = getNamespace(target) || "";
+        const tag = getTag(this) || "";
+        const properties = getConfig$1(namespace).elements?.[tag]?.variants?.[this[key]]?.properties;
+        if (!properties) return;
+        const defaults = Object.assign({}, this[API_DEFAULTS], properties);
+        delete defaults[key];
+        Object.assign(this, defaults);
+      }
+    );
   };
 }
 function Watch(keys, immediate) {
   return (target, key) => {
     const all = [keys].flat().filter((item) => item);
-    wrapMethod("after", target, LIFECYCLE_UPDATED, function(states) {
-      if (!immediate && !this[API_RENDER_COMPLETED])
-        return;
-      states.forEach((previous, item) => {
-        if (all.length && !all.includes(item))
-          return;
-        this[key](this[item], previous, item);
-      });
-    });
+    wrapMethod(
+      "after",
+      target,
+      LIFECYCLE_UPDATED,
+      function(states) {
+        if (!immediate && !this[API_RENDER_COMPLETED]) return;
+        states.forEach((previous, item) => {
+          if (all.length && !all.includes(item)) return;
+          this[key](this[item], previous, item);
+        });
+      }
+    );
   };
 }
 const LISTENERS = /* @__PURE__ */ Symbol();
@@ -1458,6 +1553,9 @@ class PlusCore {
   get isRTL() {
     return isRTL(this);
   }
+  get $shadowRoot() {
+    return this.$host.shadowRoot;
+  }
   forceUpdate() {
     this.tick = Math.random();
   }
@@ -1526,26 +1624,26 @@ let PlusForm = _PlusForm;
 __decorateClass([
   Property({
     reflect: true,
-    type: Boolean
+    type: 2 ** 3
   })
 ], PlusForm.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: String
+    type: 2 ** 10
   })
 ], PlusForm.prototype, "name", 2);
 __decorateClass([
   Property({
     attribute: "readonly",
     reflect: true,
-    type: Boolean
+    type: 2 ** 3
   })
 ], PlusForm.prototype, "readOnly", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: Boolean
+    type: 2 ** 3
   })
 ], PlusForm.prototype, "required", 2);
 __decorateClass([

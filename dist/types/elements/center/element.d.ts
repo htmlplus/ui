@@ -14,7 +14,7 @@ export declare class PlusCenter extends PlusCore {
     /**
      * Converts the `display` CSS property from `flex` to `inline-flex`.
      */
-    inline?: boolean;
+    inline: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

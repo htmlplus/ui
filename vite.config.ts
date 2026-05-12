@@ -1,4 +1,5 @@
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { vite as htmlplus } from '@htmlplus/element/bundlers.js';
 
@@ -10,7 +11,18 @@ import dts from 'vite-plugin-dts';
 import { examples } from './examples/plugin';
 import plugins from './htmlplus.config';
 
-const DESTINATION = 'dist';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const entries = Object.fromEntries(
+	glob
+		.sync(['src/elements/*/index.ts'], { absolute: true })
+		.map((file) => [`elements/${path.basename(path.dirname(file))}`, file])
+		.concat([
+			['elements/carousel-child', 'src/elements/carousel/child.ts'],
+			['core/config', 'src/config/index.ts'],
+			['elements/index', 'src/elements/index.ts']
+		])
+);
 
 export default defineConfig({
 	cacheDir: '.cache',
@@ -19,7 +31,7 @@ export default defineConfig({
 	},
 	resolve: {
 		alias: {
-			'@': path.resolve(import.meta.dirname, 'src')
+			'@': path.resolve(__dirname, 'src')
 		}
 	},
 	css: {
@@ -32,12 +44,33 @@ export default defineConfig({
 			}
 		}
 	},
+	build: {
+		emptyOutDir: false,
+		minify: false,
+		lib: {
+			entry: entries,
+			formats: ['es']
+		},
+		rollupOptions: {
+			output: {
+				dir: 'dist',
+				chunkFileNames: `[name].js`,
+				manualChunks(id) {
+					const normalized = path.normalize(id).split(path.sep).join('/');
+
+					if (normalized.includes('/src/elements/')) return;
+
+					return 'core/index';
+				}
+			}
+		}
+	},
 	plugins: [
 		examples(),
 		htmlplus(...plugins),
 		peerDepsExternal(),
 		dts({
-			outDir: `${DESTINATION}/types`,
+			outDir: 'dist/types',
 			resolvers: [
 				/**
 				 * This resolver generates `.d.ts` files for each `.tsx` file.
@@ -68,35 +101,5 @@ export default defineConfig({
 				}
 			]
 		})
-	],
-	build: {
-		emptyOutDir: false,
-		minify: false,
-		lib: {
-			formats: ['es'],
-			entry: Object.fromEntries(
-				glob
-					.sync(['src/elements/*/index.ts'], { absolute: true })
-					.map((file) => [`elements/${path.basename(path.dirname(file))}`, file])
-					.concat([
-						['elements/carousel-child', 'src/elements/carousel/child.ts'],
-						['core/config', 'src/config/index.ts'],
-						['elements/index', 'src/elements/index.ts']
-					])
-			)
-		},
-		rollupOptions: {
-			output: {
-				dir: DESTINATION,
-				chunkFileNames: `[name].js`,
-				manualChunks(id) {
-					const normalized = path.normalize(id).split(path.sep).join('/');
-
-					if (normalized.includes('/src/elements/')) return;
-
-					return 'core/index';
-				}
-			}
-		}
-	}
+	]
 });

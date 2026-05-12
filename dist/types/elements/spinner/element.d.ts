@@ -17,11 +17,11 @@ export declare class PlusSpinner extends PlusCore {
     /**
      * Specifies the size of the spinner.
      */
-    size?: OverridableValue<'sm' | 'md' | 'lg' | 'inherit'>;
+    size: OverridableValue<'sm' | 'md' | 'lg' | 'inherit'>;
     /**
      * Specifies which variant of the spinner to use.
      */
-    type?: PlusSpinnerType;
+    type: PlusSpinnerType;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

@@ -18,26 +18,26 @@ export abstract class PlusForm extends PlusCore {
 
 	@Property({
 		reflect: true,
-		type: Boolean
+		type: 2 ** 3
 	})
 	disabled?: boolean;
 
 	@Property({
 		reflect: true,
-		type: String
+		type: 2 ** 10
 	})
 	name?: string;
 
 	@Property({
 		attribute: 'readonly',
 		reflect: true,
-		type: Boolean
+		type: 2 ** 3
 	})
 	readOnly?: boolean;
 
 	@Property({
 		reflect: true,
-		type: Boolean
+		type: 2 ** 3
 	})
 	required?: boolean;
 

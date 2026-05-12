@@ -26,13 +26,13 @@ export class PlusCarouselButton extends CarouselChild {
 	 * Determines whether the carousel instantly jumps to the target slide or transitions smoothly.
 	 */
 	@Property()
-	jump?: boolean;
+	jump: boolean = false;
 
 	/**
 	 * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
 	 */
 	@Property({ reflect: true })
-	type?: 'previous' | 'next' | number;
+	type!: 'previous' | 'next' | number;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -57,7 +57,7 @@ export class PlusCarouselButton extends CarouselChild {
 			case 'previous':
 				return this.dir === 'rtl' ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
 			default:
-				return this.type?.toString() || '';
+				return this.type.toString();
 		}
 	}
 

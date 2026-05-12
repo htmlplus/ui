@@ -78,6 +78,7 @@ let PlusFormatBytes = class extends PlusCore {
     this.display = "short";
     this.decimals = [0, 1];
     this.separator = " ";
+    this.signed = false;
     this.standard = "METRIC";
     this.unit = "auto";
   }
@@ -118,7 +119,7 @@ let PlusFormatBytes = class extends PlusCore {
     let result = "";
     result += this.value < 0 ? "-" : this.signed ? this.value === 0 ? " " : "+" : "";
     result += formatter.format(bytes / (found?.from || 1));
-    result += this.separator || "";
+    result += this.separator;
     result += found && this.display && this.display in found && found[this.display] || "";
     result += this.display === "long" ? unit : "";
     return result;
@@ -131,54 +132,54 @@ PlusFormatBytes.tag = "plus-format-bytes";
 PlusFormatBytes.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusFormatBytes.prototype, "display", 2);
 __decorateClass([
   Property({
-    type: 513
+    type: 1027
   })
 ], PlusFormatBytes.prototype, "locale", 2);
 __decorateClass([
   Property({
-    type: 129
+    type: 259
   })
 ], PlusFormatBytes.prototype, "decimals", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusFormatBytes.prototype, "separator", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusFormatBytes.prototype, "signed", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusFormatBytes.prototype, "standard", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusFormatBytes.prototype, "unit", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusFormatBytes.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusFormatBytes.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusFormatBytes.prototype, "variant", 2);

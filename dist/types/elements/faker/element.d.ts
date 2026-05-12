@@ -15,11 +15,11 @@ export declare class PlusFaker extends PlusCore {
     /**
      * Specifies the [API](https://fakerjs.dev/api).
      */
-    api?: string;
+    api: string;
     /**
      * Specifies the API's arguments as an array.
      */
-    arguments?: unknown[];
+    arguments: unknown[];
     /**
      * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
      */

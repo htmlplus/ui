@@ -35,19 +35,19 @@ export class PlusBrowse extends PlusCore {
 	 * describing file types to allow.
 	 */
 	@Property()
-	accept?: string;
+	accept: string = '';
 
 	/**
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * Adds droppable ability.
 	 */
 	@Property()
-	droppable?: boolean;
+	droppable: boolean = false;
 
 	/**
 	 * Specifies the minimum number of files.
@@ -77,7 +77,7 @@ export class PlusBrowse extends PlusCore {
 	 * Allows to select more than one file.
 	 */
 	@Property()
-	multiple?: boolean;
+	multiple: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -115,7 +115,7 @@ export class PlusBrowse extends PlusCore {
 	$input!: HTMLElement;
 
 	@State()
-	dragging?: boolean;
+	dragging: boolean = false;
 
 	timeout?: number;
 
@@ -143,7 +143,7 @@ export class PlusBrowse extends PlusCore {
 	}
 
 	get types() {
-		return (this.accept || '').split(',').map((type) => type.trim());
+		return this.accept.split(',').map((type) => type.trim());
 	}
 
 	/**

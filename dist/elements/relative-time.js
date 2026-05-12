@@ -47,6 +47,7 @@ let PlusRelativeTime = class extends PlusCore {
     this.sync = false;
     this.value = /* @__PURE__ */ new Date();
     this.parts = [];
+    this.timeout = -1;
   }
   get isValid() {
     return this.parsed instanceof Date;
@@ -64,6 +65,9 @@ let PlusRelativeTime = class extends PlusCore {
     const unit = RELATIVE_TIME_UNITS.findLast((unit2, index) => {
       return Math.floor(Math.abs(difference) / unit2.value) || !index;
     });
+    if (!unit) {
+      throw new Error("Unexpected Error");
+    }
     const formatter = new Intl.RelativeTimeFormat(this.lang, {
       numeric: this.numeric,
       style: this.format
@@ -89,34 +93,34 @@ let PlusRelativeTime = class extends PlusCore {
 PlusRelativeTime.tag = "plus-relative-time";
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusRelativeTime.prototype, "format", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusRelativeTime.prototype, "numeric", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusRelativeTime.prototype, "sync", 2);
 __decorateClass([
   Property({
-    type: 520
+    type: 1041
   })
 ], PlusRelativeTime.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusRelativeTime.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusRelativeTime.prototype, "variant", 2);

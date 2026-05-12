@@ -5,6 +5,9 @@ class CarouselPlugin {
     this.instance = instance;
   }
   get api() {
+    if (!this.instance.api) {
+      throw new Error("Unexpected Error");
+    }
     return this.instance.api;
   }
   initialize() {
@@ -311,12 +314,18 @@ let PlusCarousel = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.align = "center";
+    this.autoHeight = false;
     this.axis = "x";
+    this.classes = false;
     this.containScroll = "trimSnaps";
     this.dragThreshold = 10;
     this.duration = 25;
+    this.focusable = false;
     this.inViewThreshold = 0;
+    this.loop = false;
+    this.mirror = "";
     this.mirrorType = "sync-smooth";
+    this.resizable = false;
     this.slidesToScroll = 1;
     this.startIndex = 0;
     this.state = {
@@ -371,8 +380,8 @@ let PlusCarousel = class extends PlusCore {
       skipSnaps: this.draggable === "free",
       startIndex: this.startIndex,
       watchDrag: !!this.draggable,
-      watchFocus: !!this.focusable,
-      watchResize: !!this.resizable,
+      watchFocus: this.focusable,
+      watchResize: this.resizable,
       watchSlides: false
     };
   }
@@ -509,112 +518,112 @@ PlusCarousel.tag = "plus-carousel";
 PlusCarousel.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCarousel.prototype, "align", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCarousel.prototype, "autoHeight", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 33
   })
 ], PlusCarousel.prototype, "axis", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCarousel.prototype, "classes", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCarousel.prototype, "containScroll", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCarousel.prototype, "draggable", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCarousel.prototype, "dragThreshold", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCarousel.prototype, "duration", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCarousel.prototype, "focusable", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCarousel.prototype, "inViewThreshold", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCarousel.prototype, "loop", 2);
 __decorateClass([
   Property({
-    type: 1
+    type: 3
   })
 ], PlusCarousel.prototype, "plugins", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusCarousel.prototype, "mirror", 2);
 __decorateClass([
   Property({
-    type: 16
+    type: 33
   })
 ], PlusCarousel.prototype, "mirrorType", 2);
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCarousel.prototype, "resizable", 2);
 __decorateClass([
   Property({
-    type: 144
+    type: 289
   })
 ], PlusCarousel.prototype, "slidesToScroll", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCarousel.prototype, "startIndex", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusCarousel.prototype, "tweenFactorBase", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   })
 ], PlusCarousel.prototype, "api", 1);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarousel.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarousel.prototype, "variant", 2);

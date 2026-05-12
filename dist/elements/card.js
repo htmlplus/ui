@@ -11,6 +11,12 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusCard = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.flat = false;
+    this.outlined = false;
+    this.tile = false;
+  }
   render() {
     return /* @__PURE__ */ jsx("slot", {});
   }
@@ -20,37 +26,37 @@ PlusCard.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   })
 ], PlusCard.prototype, "elevation", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCard.prototype, "flat", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCard.prototype, "outlined", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCard.prototype, "tile", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCard.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCard.prototype, "variant", 2);

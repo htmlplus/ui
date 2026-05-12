@@ -13,6 +13,9 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusAccordion = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.disabled = false;
+    this.open = false;
+    this.summary = "";
     this.animate = new Animation({
       key: "state",
       source: () => this.$body,
@@ -65,7 +68,7 @@ let PlusAccordion = class extends PlusCore {
     switch (name) {
       case "open":
         if (!next === !prev) break;
-        this.try(!!this.open, true);
+        this.try(this.open, true);
         break;
     }
   }
@@ -75,7 +78,7 @@ let PlusAccordion = class extends PlusCore {
     }
   }
   initialize() {
-    this.opened = !!this.open;
+    this.opened = this.open;
     const state = this.opened ? "entered" : "leaved";
     this.animate.initialize(state);
   }
@@ -119,7 +122,7 @@ let PlusAccordion = class extends PlusCore {
   render() {
     return /* @__PURE__ */ jsxs(Fragment, { children: [
       /* @__PURE__ */ jsx("slot", { name: "top" }),
-      /* @__PURE__ */ jsxs("div", { "aria-controls": this.getId("body"), "aria-disabled": !!this.disabled, "aria-expanded": !!this.open, id: this.getId("header"), part: "header", role: "button", tabIndex: this.disabled ? -1 : 0, onClick: this.onClick, onKeyDown: this.onKeyDown, children: [
+      /* @__PURE__ */ jsxs("div", { "aria-controls": this.getId("body"), "aria-disabled": this.disabled, "aria-expanded": this.open, id: this.getId("header"), part: "header", role: "button", tabIndex: this.disabled ? -1 : 0, onClick: this.onClick, onKeyDown: this.onKeyDown, children: [
         /* @__PURE__ */ jsx("slot", { name: "summary", part: "summary", children: this.summary }),
         /* @__PURE__ */ jsx("slot", { name: "icon", children: /* @__PURE__ */ jsx("slot", { name: `icon-${this.open ? "collapse" : "expand"}`, children: /* @__PURE__ */ jsx("svg", { "aria-hidden": "true", xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", focusable: "false", viewBox: "0 0 16 16", part: "svg", children: /* @__PURE__ */ jsx("path", { "fill-rule": "evenodd", d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" }) }) }) })
       ] }),
@@ -134,30 +137,30 @@ PlusAccordion.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusAccordion.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusAccordion.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusAccordion.prototype, "summary", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusAccordion.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusAccordion.prototype, "variant", 2);

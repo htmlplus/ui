@@ -8,7 +8,7 @@ export declare class PlusSpacer extends PlusCore {
     /**
      * TODO
      */
-    grow?: number;
+    grow: number;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

@@ -31,19 +31,19 @@ export class PlusClickOutside extends PlusCore {
 	 * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
 	 */
 	@Property()
-	capture?: boolean;
+	capture: boolean = false;
 
 	/**
 	 * Disables the element functionality.
 	 */
 	@Property({ reflect: true })
-	disabled?: boolean;
+	disabled: boolean = false;
 
 	/**
 	 * The event fires only once.
 	 */
 	@Property()
-	once?: boolean;
+	once: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

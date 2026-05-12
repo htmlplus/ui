@@ -11,15 +11,15 @@ export declare class PlusCarouselIndicators extends CarouselChild {
      * If `true`, it smoothly moves to the slide,
      * and if set to `jump`, it instantly jumps without animation.
      */
-    clickable?: boolean | 'jump';
+    clickable: boolean | 'jump';
     /**
      * Allows indicators to wrap around the carousel when reaching the beginning or end.
      */
-    infinity?: boolean;
+    infinity: boolean;
     /**
      * Displays slide numbers inside the indicators.
      */
-    numbers?: boolean;
+    numbers: boolean;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

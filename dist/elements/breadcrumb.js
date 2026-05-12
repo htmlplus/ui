@@ -15,8 +15,11 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusBreadcrumb = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.block = false;
     this.expanderText = "Show path";
     this.offset = 1;
+    this.max = Infinity;
+    this.separator = "";
     this.expand = false;
     this.observer = new MutationObserver(this.forceUpdate);
   }
@@ -33,7 +36,6 @@ let PlusBreadcrumb = class extends PlusCore {
       length
     } = (() => {
       if (this.expand) return {};
-      if (typeof this.max !== "number") return {};
       if ($children.length <= this.max) return {};
       let start2, length2;
       length2 = $children.length > this.max ? $children.length - this.max : $children.length;
@@ -79,7 +81,7 @@ let PlusBreadcrumb = class extends PlusCore {
     const $node = this.$host.querySelector(BREADCRUMB_SEPARATOR_QUERY);
     const $clone = $node?.cloneNode(true);
     $clone?.removeAttribute("slot");
-    return $clone?.outerHTML || this.separator || "";
+    return $clone?.outerHTML || this.separator;
   }
   initialize() {
     this.observer.observe(this.$host, {
@@ -127,39 +129,39 @@ PlusBreadcrumb.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusBreadcrumb.prototype, "block", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusBreadcrumb.prototype, "expanderText", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusBreadcrumb.prototype, "offset", 2);
 __decorateClass([
   Property({
-    type: 128
+    type: 257
   })
 ], PlusBreadcrumb.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 512
+    type: 1025
   })
 ], PlusBreadcrumb.prototype, "separator", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusBreadcrumb.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusBreadcrumb.prototype, "variant", 2);

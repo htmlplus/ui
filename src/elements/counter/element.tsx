@@ -31,61 +31,61 @@ export class PlusCounter extends PlusCore {
 	 * Easing function. Click [here](http://robertpenner.com/easing) for more details.
 	 */
 	@Property()
-	easing?: 'ease-out-expo' | 'linear' = 'ease-out-expo';
+	easing: 'ease-out-expo' | 'linear' = 'ease-out-expo';
 
 	/**
 	 * Specifies decimal character.
 	 */
 	@Property()
-	decimal?: string = '.';
+	decimal: string = '.';
 
 	/**
 	 * Amount of decimals to display.
 	 */
 	@Property()
-	decimals?: number = 0;
+	decimals: number = 0;
 
 	/**
 	 * Delay in milliseconds before starting the transition.
 	 */
 	@Property()
-	delay?: number = 0;
+	delay: number = 0;
 
 	/**
 	 * Duration in milliseconds.
 	 */
 	@Property()
-	duration?: number = 1000;
+	duration: number = 1000;
 
 	/**
 	 * Initial value.
 	 */
 	@Property()
-	from?: number = 0;
+	from: number = 0;
 
 	/**
 	 * Specifies numeral glyph substitution.
 	 */
 	@Property()
-	numerals?: string[] = [];
+	numerals: string[] = [];
 
 	/**
 	 * Starts/Stops the transition.
 	 */
 	@Property({ reflect: true })
-	play?: boolean;
+	play: boolean = false;
 
 	/**
 	 * Specifies character of thousands separator.
 	 */
 	@Property()
-	separator?: string;
+	separator: string = '';
 
 	/**
 	 * Target value.
 	 */
 	@Property()
-	to?: number;
+	to!: number;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -112,7 +112,7 @@ export class PlusCounter extends PlusCore {
 	 */
 	@Method()
 	complete() {
-		cancelAnimationFrame(this.requestAnimationFrame);
+		this.cancelAnimationFrame();
 		this.reset();
 		this.counter = this.to;
 		this.state = 'completed';
@@ -125,7 +125,7 @@ export class PlusCounter extends PlusCore {
 	@Method()
 	pause() {
 		if (this.state !== 'running') return;
-		cancelAnimationFrame(this.requestAnimationFrame);
+		this.cancelAnimationFrame();
 		this.state = 'paused';
 	}
 
@@ -158,7 +158,7 @@ export class PlusCounter extends PlusCore {
 	 */
 	@Method()
 	stop() {
-		cancelAnimationFrame(this.requestAnimationFrame);
+		this.cancelAnimationFrame();
 		this.reset();
 		this.counter = this.from;
 		this.state = 'stopped';
@@ -204,7 +204,7 @@ export class PlusCounter extends PlusCore {
 			}
 			x1 = x3;
 		}
-		if (this.numerals?.length) {
+		if (this.numerals.length) {
 			x1 = x1.replace(/[0-9]/g, (w) => this.numerals[+w]);
 			x2 = x2.replace(/[0-9]/g, (w) => this.numerals[+w]);
 		}
@@ -223,6 +223,13 @@ export class PlusCounter extends PlusCore {
 			if (this.play !== true && this.state === 'paused') this.stop();
 			if (this.play !== true && this.state === 'running') this.stop();
 		});
+	}
+
+	cancelAnimationFrame() {
+		if (this.requestAnimationFrame !== undefined) {
+			cancelAnimationFrame(this.requestAnimationFrame);
+			this.requestAnimationFrame = undefined;
+		}
 	}
 
 	@Bind()

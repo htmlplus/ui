@@ -16,7 +16,7 @@ export declare class PlusDrawerToggler extends PlusCore {
      * You can put the drawer's toggler inside or outside of the drawer.
      * Read more about connectors [here](/connector).
      */
-    connector?: string;
+    connector: string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

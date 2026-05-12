@@ -16,7 +16,7 @@ export declare class PlusCarouselSlide extends CarouselChild {
      *
      * When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point.
      */
-    clickable?: boolean | 'jump';
+    clickable: boolean | 'jump';
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

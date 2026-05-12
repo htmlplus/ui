@@ -11,6 +11,10 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusDialogContent = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.scrollable = false;
+  }
   render() {
     return /* @__PURE__ */ jsx("slot", {});
   }
@@ -20,19 +24,19 @@ PlusDialogContent.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusDialogContent.prototype, "scrollable", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDialogContent.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDialogContent.prototype, "variant", 2);

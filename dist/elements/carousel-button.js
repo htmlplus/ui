@@ -30,6 +30,7 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusCarouselButton = class extends CarouselChild {
   constructor() {
     super(...arguments);
+    this.jump = false;
     this.events = ["init", "reInit", "select"];
   }
   get content() {
@@ -39,7 +40,7 @@ let PlusCarouselButton = class extends CarouselChild {
       case "previous":
         return this.dir === "rtl" ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
       default:
-        return this.type?.toString() || "";
+        return this.type.toString();
     }
   }
   get disabled() {
@@ -75,25 +76,25 @@ PlusCarouselButton.tag = "plus-carousel-button";
 PlusCarouselButton.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 4
+    type: 9
   })
 ], PlusCarouselButton.prototype, "jump", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 144
+    type: 289
   })
 ], PlusCarouselButton.prototype, "type", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCarouselButton.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCarouselButton.prototype, "variant", 2);

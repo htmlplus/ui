@@ -16,25 +16,25 @@ export declare class PlusTooltip extends PlusCore {
     /**
      * Specifies whether to display the arrow or not.
      */
-    arrow?: boolean;
+    arrow: boolean;
     /**
      * Specifies a delay in milliseconds for show or hide.
      * Use a number for both show and hide or
      * create an array of two separate numbers for show and hide.
      */
-    delay?: number | [number, number];
+    delay: number | [number, number];
     /**
      * Disables the element functionality.
      */
-    disabled?: boolean;
+    disabled: boolean;
     /**
      * TODO
      */
-    fixed?: boolean;
+    fixed: boolean;
     /**
      * TODO
      */
-    offset?: number | [number, number];
+    offset: number | [number, number];
     /**
      * Specifies the display location of the element relative to the reference.
      */
@@ -47,15 +47,15 @@ export declare class PlusTooltip extends PlusCore {
      * Use a string to find an element to attach to that.
      * Use an element to attach to that.
      */
-    reference?: Element | 'next' | 'parent' | 'previous' | (string & {});
+    reference: Element | 'next' | 'parent' | 'previous' | (string & {});
     /**
      * Specifies the activation method.
      */
-    trigger?: PlusTooltipTrigger;
+    trigger: PlusTooltipTrigger;
     /**
      * TODO
      */
-    z?: 'auto' | 'vertical' | 'horizontal' | 'move';
+    z: 'auto' | 'vertical' | 'horizontal' | 'move';
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

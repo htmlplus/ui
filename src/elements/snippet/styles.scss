@@ -1,9 +1,4 @@
 :host {
-  // @Property() Used to adjust the color.
-  --plus-snippet-color: black;
-}
-
-:host {
   background-color: $snippet-background-color;
   border: $snippet-border;
   border-radius: $snippet-border-radius;

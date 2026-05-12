@@ -13,7 +13,9 @@ var __decorateClass = (decorators, target, key, kind) => {
 let PlusTabsBar = class extends PlusCore {
   constructor() {
     super(...arguments);
+    this.grow = false;
     this.justify = "start";
+    this.reverse = false;
   }
   render() {
     return /* @__PURE__ */ jsx("host", { role: "tablist", value: this, children: /* @__PURE__ */ jsx("slot", {}) });
@@ -24,31 +26,31 @@ PlusTabsBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusTabsBar.prototype, "grow", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 16
+    type: 33
   })
 ], PlusTabsBar.prototype, "justify", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusTabsBar.prototype, "reverse", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusTabsBar.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusTabsBar.prototype, "variant", 2);

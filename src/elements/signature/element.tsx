@@ -41,7 +41,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the background color.
 	 */
 	@Property()
-	backgroundColor?: OverridableValue<PlusColor> = 'lightgray';
+	backgroundColor: OverridableValue<PlusColor> = 'lightgray';
 
 	/**
 	 * Specifies configuration options for the canvas 2D rendering context.
@@ -59,49 +59,49 @@ export class PlusSignature extends PlusForm {
 	 * Clears the canvas after resizing.
 	 */
 	@Property()
-	clearOnResize?: boolean;
+	clearOnResize: boolean = false;
 
 	/**
 	 * Specifies the color of the strokes.
 	 */
 	@Property()
-	penColor?: OverridableValue<PlusColor> = 'black';
+	penColor: OverridableValue<PlusColor> = 'black';
 
 	/**
 	 * Add the next point only if the previous one is farther than x pixels.
 	 */
 	@Property()
-	minDistance?: number = 5;
+	minDistance: number = 5;
 
 	/**
 	 * Specifies the radius of a single dot.
 	 */
 	@Property()
-	dotSize?: number;
+	dotSize: number = 0;
 
 	/**
 	 * Specifies the maximum width of the strokes.
 	 */
 	@Property()
-	maxWidth?: number = 2.5;
+	maxWidth: number = 2.5;
 
 	/**
 	 * Specifies the minimum width of the strokes.
 	 */
 	@Property()
-	minWidth?: number = 0.5;
+	minWidth: number = 0.5;
 
 	/**
 	 * Observes the element dimensions to apply new changes on the canvas.
 	 */
 	@Property()
-	resizable?: boolean;
+	resizable: boolean = false;
 
 	/**
 	 * Specifies the time distance between the previous point and the next one.
 	 */
 	@Property()
-	throttle?: number = 16;
+	throttle: number = 16;
 
 	/**
 	 * Gets/Sets data.
@@ -113,7 +113,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the velocity based on the previous velocity.
 	 */
 	@Property()
-	velocityFilterWeight?: number = 0.7;
+	velocityFilterWeight: number = 0.7;
 
 	/**
 	 * The canvas element.

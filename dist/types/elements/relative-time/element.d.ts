@@ -10,19 +10,19 @@ export declare class PlusRelativeTime extends PlusCore {
     /**
      * The format style for the relative time.
      */
-    format?: 'long' | 'short' | 'narrow';
+    format: 'long' | 'short' | 'narrow';
     /**
      * Determines whether the numeric value should always be displayed.
      */
-    numeric?: 'always' | 'auto';
+    numeric: 'always' | 'auto';
     /**
      * Determines whether the relative time should be updated automatically.
      */
-    sync?: boolean;
+    sync: boolean;
     /**
      * The date and time to be displayed in a relative format.
      */
-    value?: Date | string;
+    value: Date | string;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

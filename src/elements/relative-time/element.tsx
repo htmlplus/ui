@@ -24,25 +24,25 @@ export class PlusRelativeTime extends PlusCore {
 	 * The format style for the relative time.
 	 */
 	@Property()
-	format?: 'long' | 'short' | 'narrow' = 'long';
+	format: 'long' | 'short' | 'narrow' = 'long';
 
 	/**
 	 * Determines whether the numeric value should always be displayed.
 	 */
 	@Property()
-	numeric?: 'always' | 'auto' = 'auto';
+	numeric: 'always' | 'auto' = 'auto';
 
 	/**
 	 * Determines whether the relative time should be updated automatically.
 	 */
 	@Property()
-	sync?: boolean = false;
+	sync: boolean = false;
 
 	/**
 	 * The date and time to be displayed in a relative format.
 	 */
 	@Property()
-	value?: Date | string = new Date();
+	value: Date | string = new Date();
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -61,7 +61,7 @@ export class PlusRelativeTime extends PlusCore {
 	@State()
 	parts: Intl.RelativeTimeFormatPart[] = [];
 
-	timeout: number;
+	timeout: number = -1;
 
 	get isValid() {
 		return this.parsed instanceof Date;
@@ -85,6 +85,10 @@ export class PlusRelativeTime extends PlusCore {
 		const unit = RELATIVE_TIME_UNITS.findLast((unit, index) => {
 			return Math.floor(Math.abs(difference) / unit.value) || !index;
 		});
+
+		if (!unit) {
+			throw new Error('Unexpected Error');
+		}
 
 		const formatter = new Intl.RelativeTimeFormat(this.lang, {
 			numeric: this.numeric,

@@ -48,7 +48,7 @@ export class PlusIcon extends PlusCore {
 	 * Specifies an alternate description to use for assistive devices.
 	 */
 	@Property()
-	label?: string;
+	label: string = '';
 
 	/**
 	 * Specifies the name.
@@ -82,7 +82,7 @@ export class PlusIcon extends PlusCore {
 	 * Specifies the size.
 	 */
 	@Property({ reflect: true })
-	size?: PlusIconSize;
+	size: PlusIconSize = 'md';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -164,7 +164,7 @@ export class PlusIcon extends PlusCore {
 
 		svg = (svg || ICON_DEFAULT_SVG).replace(/<svg/, '<svg part="svg"');
 
-		this.$host.shadowRoot.innerHTML += svg;
+		this.$shadowRoot.innerHTML += svg;
 	}
 
 	readyCallback() {

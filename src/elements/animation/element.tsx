@@ -40,13 +40,13 @@ export class PlusAnimation extends PlusCore {
 	 * separate animations that do not specify their own specific composite operation.
 	 */
 	@Property()
-	composite?: 'add' | 'accumulate' | 'replace' = 'replace';
+	composite: 'add' | 'accumulate' | 'replace' = 'replace';
 
 	/**
 	 * The number of milliseconds to delay the start of the animation.
 	 */
 	@Property()
-	delay?: number = 0;
+	delay: number = 0;
 
 	/**
 	 * Whether the animation runs forwards (`normal`), backwards (`reverse`),
@@ -54,14 +54,14 @@ export class PlusAnimation extends PlusCore {
 	 * backwards and switches direction after each iteration (`alternate-reverse`).
 	 */
 	@Property()
-	direction?: 'alternate-reverse' | 'alternate' | 'normal' | 'reverse' = 'normal';
+	direction: 'alternate-reverse' | 'alternate' | 'normal' | 'reverse' = 'normal';
 
 	/**
 	 * The number of milliseconds each iteration of the animation takes to complete.
 	 * Keep in mind that your animation will not run if this value is 0.
 	 */
 	@Property()
-	duration?: number = 1000;
+	duration: number = 1000;
 
 	/**
 	 * The rate of the animation's change over time.
@@ -69,14 +69,14 @@ export class PlusAnimation extends PlusCore {
 	 * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
 	 */
 	@Property()
-	easing?: string = 'linear';
+	easing: string = 'linear';
 
 	/**
 	 * The number of milliseconds to delay after the end of an animation.
 	 * This is primarily of use when sequencing animations based on the end time of another animation.
 	 */
 	@Property()
-	endDelay?: number = 0;
+	endDelay: number = 0;
 
 	/**
 	 * Dictates whether the animation's effects should be reflected by the element(s)
@@ -84,7 +84,7 @@ export class PlusAnimation extends PlusCore {
 	 * playing ("`forwards`"), or `both`.
 	 */
 	@Property()
-	fill?: 'backwards' | 'forwards' | 'none' = 'none';
+	fill: 'backwards' | 'forwards' | 'none' = 'none';
 
 	/**
 	 * The [Animation](https://mdn.io/api-animation) object instance.
@@ -97,7 +97,7 @@ export class PlusAnimation extends PlusCore {
 	 * Can be set to `accumulate` or `replace`.
 	 */
 	@Property()
-	iterationComposite?: 'accumulate' | 'replace' = 'replace';
+	iterationComposite: 'accumulate' | 'replace' = 'replace';
 
 	/**
 	 * The number of times the animation should repeat. And can also take a value of
@@ -105,7 +105,7 @@ export class PlusAnimation extends PlusCore {
 	 * to make it repeat for as long as the element exists.
 	 */
 	@Property()
-	iterations?: number = 1;
+	iterations: number = 1;
 
 	/**
 	 * Describes at what point in the iteration the animation should start.
@@ -114,7 +114,7 @@ export class PlusAnimation extends PlusCore {
 	 * a third iteration.
 	 */
 	@Property()
-	iterationStart?: number = 0;
+	iterationStart: number = 0;
 
 	/**
 	 * A [keyframes](https://mdn.io/keyframe-formats)
@@ -134,13 +134,13 @@ export class PlusAnimation extends PlusCore {
 	 * Sets the animation's playback rate.
 	 */
 	@Property()
-	playbackRate?: number = 1;
+	playbackRate: number = 1;
 
 	/**
 	 * Starts the animation.
 	 */
 	@Property({ reflect: true })
-	run?: boolean;
+	run: boolean = false;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

@@ -17,15 +17,15 @@ export declare class PlusAvatar extends PlusCore {
     /**
      * Specifies the color.
      */
-    color?: OverridableValue<PlusColor>;
+    color: OverridableValue<PlusColor>;
     /**
      * Specifies the shape of the element.
      */
-    shape?: 'circle' | 'round' | 'tile';
+    shape: 'circle' | 'round' | 'tile';
     /**
      * Specifies the size of the element.
      */
-    size?: OverridableValue<PlusAvatarSize>;
+    size: OverridableValue<PlusAvatarSize>;
     /**
      * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
      */

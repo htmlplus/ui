@@ -19,14 +19,14 @@ PlusDialogHeader.tag = "plus-dialog-header";
 PlusDialogHeader.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusDialogHeader.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusDialogHeader.prototype, "variant", 2);

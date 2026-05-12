@@ -11,6 +11,10 @@ var __decorateClass = (decorators, target, key, kind) => {
   return result;
 };
 let PlusCenter = class extends PlusCore {
+  constructor() {
+    super(...arguments);
+    this.inline = false;
+  }
   render() {
     return /* @__PURE__ */ jsx("slot", {});
   }
@@ -20,19 +24,19 @@ PlusCenter.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 4
+    type: 9
   })
 ], PlusCenter.prototype, "inline", 2);
 __decorateClass([
   Property({
-    type: 0
+    type: 1
   }),
   Overrides()
 ], PlusCenter.prototype, "overrides", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 0
+    type: 1
   }),
   Variant()
 ], PlusCenter.prototype, "variant", 2);
