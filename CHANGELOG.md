@@ -1,3 +1,9 @@
+## [1.8.6](https://github.com/htmlplus/ui/compare/v1.8.5...v1.8.6) (2026-05-12)
+
+### Bug Fixes
+
+* Upgrade `@htmlplus/element` to `4.0.2` version and set default values for properties that were previously optional ([057c5ff](https://github.com/htmlplus/ui/commit/057c5ff5f338c4b7a1298a2e45d8f7430079fd78))
+
 ## [1.8.5](https://github.com/htmlplus/ui/compare/v1.8.4...v1.8.5) (2026-04-29)
 
 ### Bug Fixes
