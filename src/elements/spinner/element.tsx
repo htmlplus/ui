@@ -33,13 +33,13 @@ export class PlusSpinner extends PlusCore {
 	 * Specifies the size of the spinner.
 	 */
 	@Property({ reflect: true })
-	size?: OverridableValue<'sm' | 'md' | 'lg' | 'inherit'> = 'inherit';
+	size: OverridableValue<'sm' | 'md' | 'lg' | 'inherit'> = 'inherit';
 
 	/**
 	 * Specifies which variant of the spinner to use.
 	 */
 	@Property({ reflect: true })
-	type?: PlusSpinnerType = 'default';
+	type: PlusSpinnerType = 'default';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

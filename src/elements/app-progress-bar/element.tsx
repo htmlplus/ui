@@ -28,7 +28,7 @@ export class PlusAppProgressBar extends PlusCore {
 	 * Specifies the color of the bar.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<PlusColor> = 'dodgerblue';
+	color: OverridableValue<PlusColor> = 'dodgerblue';
 
 	/**
 	 * Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`.

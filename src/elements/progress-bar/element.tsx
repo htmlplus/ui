@@ -32,7 +32,7 @@ export class PlusProgressBar extends PlusCore {
 	 * Specifies the color of the bar.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<PlusColor>;
+	color: OverridableValue<PlusColor> = 'dodgerblue';
 
 	/**
 	 * Displays the progress percentage.

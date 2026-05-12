@@ -24,19 +24,19 @@ export class PlusRelativeTime extends PlusCore {
 	 * The format style for the relative time.
 	 */
 	@Property()
-	format?: 'long' | 'short' | 'narrow' = 'long';
+	format: 'long' | 'short' | 'narrow' = 'long';
 
 	/**
 	 * Determines whether the numeric value should always be displayed.
 	 */
 	@Property()
-	numeric?: 'always' | 'auto' = 'auto';
+	numeric: 'always' | 'auto' = 'auto';
 
 	/**
 	 * Determines whether the relative time should be updated automatically.
 	 */
 	@Property()
-	sync?: boolean = false;
+	sync: boolean = false;
 
 	/**
 	 * The date and time to be displayed in a relative format.

@@ -82,7 +82,7 @@ export class PlusIcon extends PlusCore {
 	 * Specifies the size.
 	 */
 	@Property({ reflect: true })
-	size?: PlusIconSize;
+	size: PlusIconSize = 'md';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

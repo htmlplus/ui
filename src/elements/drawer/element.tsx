@@ -74,7 +74,7 @@ export class PlusDrawer extends PlusCore {
 	 * Sets the minimum width size of the drawer.
 	 */
 	@Property()
-	miniSize?: number | string = 80;
+	miniSize: number | string = 80;
 
 	/**
 	 * Control drawer to show or not.
@@ -106,7 +106,7 @@ export class PlusDrawer extends PlusCore {
 	 * Determine the width of the drawer.
 	 */
 	@Property()
-	size?: number | string = 280;
+	size: number | string = 280;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

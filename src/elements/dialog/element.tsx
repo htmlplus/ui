@@ -97,7 +97,7 @@ export class PlusDialog extends PlusCore {
 	 * Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`.
 	 */
 	@Property()
-	placement?: PlusDialogPlacement = 'top';
+	placement: PlusDialogPlacement = 'top';
 
 	/**
 	 * It makes the user able to scroll the content by adding a scroll beside it.

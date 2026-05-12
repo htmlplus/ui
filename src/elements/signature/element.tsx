@@ -41,7 +41,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the background color.
 	 */
 	@Property()
-	backgroundColor?: OverridableValue<PlusColor> = 'lightgray';
+	backgroundColor: OverridableValue<PlusColor> = 'lightgray';
 
 	/**
 	 * Specifies configuration options for the canvas 2D rendering context.
@@ -65,7 +65,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the color of the strokes.
 	 */
 	@Property()
-	penColor?: OverridableValue<PlusColor> = 'black';
+	penColor: OverridableValue<PlusColor> = 'black';
 
 	/**
 	 * Add the next point only if the previous one is farther than x pixels.
@@ -77,7 +77,7 @@ export class PlusSignature extends PlusForm {
 	 * Specifies the radius of a single dot.
 	 */
 	@Property()
-	dotSize?: number;
+	dotSize: number = 0;
 
 	/**
 	 * Specifies the maximum width of the strokes.

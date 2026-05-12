@@ -31,19 +31,19 @@ export class PlusAvatar extends PlusCore {
 	 * Specifies the color.
 	 */
 	@Property({ reflect: true })
-	color?: OverridableValue<PlusColor>;
+	color: OverridableValue<PlusColor> = 'gray';
 
 	/**
 	 * Specifies the shape of the element.
 	 */
 	@Property({ reflect: true })
-	shape?: 'circle' | 'round' | 'tile';
+	shape: 'circle' | 'round' | 'tile' = 'round';
 
 	/**
 	 * Specifies the size of the element.
 	 */
 	@Property({ reflect: true })
-	size?: OverridableValue<PlusAvatarSize>;
+	size: OverridableValue<PlusAvatarSize> = 'md';
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.

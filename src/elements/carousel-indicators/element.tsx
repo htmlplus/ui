@@ -26,7 +26,7 @@ export class PlusCarouselIndicators extends CarouselChild {
 	 * and if set to `jump`, it instantly jumps without animation.
 	 */
 	@Property({ reflect: true })
-	clickable?: boolean | 'jump';
+	clickable: boolean | 'jump' = false;
 
 	/**
 	 * Allows indicators to wrap around the carousel when reaching the beginning or end.

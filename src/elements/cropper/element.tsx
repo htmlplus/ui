@@ -85,7 +85,7 @@ export class PlusCropper extends PlusCore {
 	 * @value none - Do nothing.
 	 */
 	@Property()
-	mode?: 'crop' | 'move' | 'none' = 'move';
+	mode: 'crop' | 'move' | 'none' = 'move';
 
 	/**
 	 * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
@@ -95,7 +95,7 @@ export class PlusCropper extends PlusCore {
 	 * @value main - Enables to resize the viewport by dragging on the Sides.
 	 */
 	@Property()
-	resizer?: 'both' | 'edge' | 'main' = 'both';
+	resizer: 'both' | 'edge' | 'main' = 'both';
 
 	/**
 	 * Specifies the shape of the resizer.
@@ -105,7 +105,7 @@ export class PlusCropper extends PlusCore {
 	 * @value square - TODO.
 	 */
 	@Property()
-	resizerShape?: 'circle' | 'line' | 'square' = 'square';
+	resizerShape: 'circle' | 'line' | 'square' = 'square';
 
 	/**
 	 * Re-renders when resizing the window.
@@ -115,7 +115,7 @@ export class PlusCropper extends PlusCore {
 	 * @value reset - Restores the cropped area after resizing the window.
 	 */
 	@Property()
-	responsive?: boolean | 'reset' = 'reset';
+	responsive: boolean | 'reset' = 'reset';
 
 	/**
 	 * Specifies the shape of the viewport.
@@ -125,7 +125,7 @@ export class PlusCropper extends PlusCore {
 	 * @value square    - TODO.
 	 */
 	@Property()
-	shape?: 'circle' | 'rectangle' | 'square' = 'rectangle';
+	shape: 'circle' | 'rectangle' | 'square' = 'rectangle';
 
 	/**
 	 * Specifies the image's src.
@@ -158,7 +158,7 @@ export class PlusCropper extends PlusCore {
 	 * @value none    - no restrictions.
 	 */
 	@Property()
-	view?: 'contain' | 'cover' | 'fit' | 'none' = 'cover';
+	view: 'contain' | 'cover' | 'fit' | 'none' = 'cover';
 
 	/**
 	 * Enables to zoom the image.
@@ -169,7 +169,7 @@ export class PlusCropper extends PlusCore {
 	 * @value wheel - Enables to zoom the image by wheeling mouse.
 	 */
 	@Property()
-	zoomable?: boolean | 'touch' | 'wheel' = true;
+	zoomable: boolean | 'touch' | 'wheel' = true;
 
 	/**
 	 * Specifies zoom ratio when zooming the image by wheeling the mouse.

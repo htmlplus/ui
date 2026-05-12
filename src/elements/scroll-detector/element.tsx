@@ -37,7 +37,7 @@ export class PlusScrollDetector extends PlusCore {
 	 * Specifies the reference of the scroll.
 	 */
 	@Property()
-	reference?: Element | 'document' | (string & {}) = 'document';
+	reference: Element | 'document' | (string & {}) = 'document';
 
 	/**
 	 * Indicates which scroll (horizontal or vertical) is to be used as the source.

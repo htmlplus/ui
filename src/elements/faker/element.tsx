@@ -34,7 +34,7 @@ export class PlusFaker extends PlusCore {
 	 * Specifies the API's arguments as an array.
 	 */
 	@Property()
-	arguments?: unknown[] = [];
+	arguments: unknown[] = [];
 
 	/**
 	 * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.

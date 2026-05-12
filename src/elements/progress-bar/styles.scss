@@ -1,11 +1,6 @@
 @use 'variables' as *;
 
 :host {
-  // @Property() Specifies the color of the bar.
-  --plus-progress-bar-indicator-background-color: dodgerblue;
-}
-
-:host {
   background-color: $progress-bar-background-color;
   border-radius: $progress-bar-border-radius;
   font-size: $progress-bar-font-size;

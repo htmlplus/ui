@@ -32,7 +32,7 @@ export class PlusCarouselButton extends CarouselChild {
 	 * Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide.
 	 */
 	@Property({ reflect: true })
-	type?: 'previous' | 'next' | number;
+	type!: 'previous' | 'next' | number;
 
 	/**
 	 * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
@@ -57,7 +57,7 @@ export class PlusCarouselButton extends CarouselChild {
 			case 'previous':
 				return this.dir === 'rtl' ? CAROUSEL_BUTTON_NEXT_SVG : CAROUSEL_BUTTON_PREVIOUS_SVG;
 			default:
-				return this.type?.toString() || '';
+				return this.type.toString();
 		}
 	}
 

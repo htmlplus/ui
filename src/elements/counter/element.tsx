@@ -31,7 +31,7 @@ export class PlusCounter extends PlusCore {
 	 * Easing function. Click [here](http://robertpenner.com/easing) for more details.
 	 */
 	@Property()
-	easing?: 'ease-out-expo' | 'linear' = 'ease-out-expo';
+	easing: 'ease-out-expo' | 'linear' = 'ease-out-expo';
 
 	/**
 	 * Specifies decimal character.
@@ -67,7 +67,7 @@ export class PlusCounter extends PlusCore {
 	 * Specifies numeral glyph substitution.
 	 */
 	@Property()
-	numerals?: string[] = [];
+	numerals: string[] = [];
 
 	/**
 	 * Starts/Stops the transition.
@@ -204,7 +204,7 @@ export class PlusCounter extends PlusCore {
 			}
 			x1 = x3;
 		}
-		if (this.numerals?.length) {
+		if (this.numerals.length) {
 			x1 = x1.replace(/[0-9]/g, (w) => this.numerals[+w]);
 			x2 = x2.replace(/[0-9]/g, (w) => this.numerals[+w]);
 		}

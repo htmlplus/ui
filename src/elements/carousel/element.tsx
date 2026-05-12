@@ -56,7 +56,7 @@ export class PlusCarousel extends PlusCore {
 	 * Align the slides relative to the carousel viewport.
 	 */
 	@Property()
-	align?: 'start' | 'center' | 'end' = 'center';
+	align: 'start' | 'center' | 'end' = 'center';
 
 	/**
 	 * Enables the height of the carousel container to be adjusted to match the tallest slide in view.
@@ -70,7 +70,7 @@ export class PlusCarousel extends PlusCore {
 	 * Choose scroll axis between `x` and `y`.
 	 */
 	@Property({ reflect: true })
-	axis?: 'x' | 'y' = 'x';
+	axis: 'x' | 'y' = 'x';
 
 	/**
 	 * Enables automatic class injection for styling based on carousel state.
@@ -89,7 +89,7 @@ export class PlusCarousel extends PlusCore {
 	 * the carousel, in order to **cover** the **leading** and **trailing space**.
 	 */
 	@Property()
-	containScroll?: 'off' | 'keepSnaps' | 'trimSnaps' = 'trimSnaps';
+	containScroll: 'off' | 'keepSnaps' | 'trimSnaps' = 'trimSnaps';
 
 	/**
 	 * Enables scrolling the carousel using mouse and touch interactions.
