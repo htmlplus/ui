@@ -103,22 +103,22 @@ __decorateClass([
 ], PlusAppProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAppProgressBar.prototype, "minimum", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusAppProgressBar.prototype, "trickleDisabled", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAppProgressBar.prototype, "trickleRate", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAppProgressBar.prototype, "trickleSpeed", 2);
 __decorateClass([

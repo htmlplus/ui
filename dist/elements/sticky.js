@@ -62,22 +62,22 @@ PlusSticky.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusSticky.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 1281
+    type: 1280
   })
 ], PlusSticky.prototype, "top", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusSticky.prototype, "watcher", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSticky.prototype, "zIndex", 2);
 __decorateClass([

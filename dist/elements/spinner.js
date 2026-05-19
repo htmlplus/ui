@@ -56,7 +56,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusSpinner.prototype, "type", 2);
 __decorateClass([

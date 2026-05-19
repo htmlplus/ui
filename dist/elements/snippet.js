@@ -43,7 +43,7 @@ __decorateClass([
 ], PlusSnippet.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusSnippet.prototype, "symbol", 2);
 __decorateClass([

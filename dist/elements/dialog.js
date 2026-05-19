@@ -173,69 +173,69 @@ PlusDialog.instances = [];
 __decorateClass([
   Property({
     reflect: true,
-    type: 1033
+    type: 1032
   })
 ], PlusDialog.prototype, "animation", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusDialog.prototype, "connector", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "fullHeight", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "fullWidth", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "fullscreen", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "keyboard", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusDialog.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "scrollable", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusDialog.prototype, "size", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "sticky", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDialog.prototype, "transparent", 2);
 __decorateClass([

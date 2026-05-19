@@ -35,7 +35,7 @@ PlusAccordions.tag = "plus-accordions";
 PlusAccordions.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusAccordions.prototype, "persistent", 2);
 __decorateClass([

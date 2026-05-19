@@ -245,7 +245,7 @@ __decorateClass([
 ], PlusSignature.prototype, "canvasContextOptions", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusSignature.prototype, "clearOnResize", 2);
 __decorateClass([
@@ -255,42 +255,42 @@ __decorateClass([
 ], PlusSignature.prototype, "penColor", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSignature.prototype, "minDistance", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSignature.prototype, "dotSize", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSignature.prototype, "maxWidth", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSignature.prototype, "minWidth", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusSignature.prototype, "resizable", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSignature.prototype, "throttle", 2);
 __decorateClass([
   Property({
-    type: 3
+    type: 2
   })
 ], PlusSignature.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSignature.prototype, "velocityFilterWeight", 2);
 __decorateClass([

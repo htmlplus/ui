@@ -43,13 +43,13 @@ PlusSwitch.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusSwitch.prototype, "checked", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusSwitch.prototype, "disabled", 2);
 __decorateClass([

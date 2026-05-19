@@ -34,7 +34,7 @@ PlusCarouselSlide.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 41
+    type: 40
   })
 ], PlusCarouselSlide.prototype, "clickable", 2);
 __decorateClass([

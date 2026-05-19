@@ -167,60 +167,60 @@ PlusDrawer.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 1033
+    type: 1032
   })
 ], PlusDrawer.prototype, "animation", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDrawer.prototype, "backdrop", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusDrawer.prototype, "connector", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusDrawer.prototype, "floating", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusDrawer.prototype, "mini", 2);
 __decorateClass([
   Property({
-    type: 1281
+    type: 1280
   })
 ], PlusDrawer.prototype, "miniSize", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusDrawer.prototype, "open", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDrawer.prototype, "persistent", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusDrawer.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusDrawer.prototype, "flexible", 2);
 __decorateClass([
   Property({
-    type: 1281
+    type: 1280
   })
 ], PlusDrawer.prototype, "size", 2);
 __decorateClass([

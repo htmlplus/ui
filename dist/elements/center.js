@@ -24,7 +24,7 @@ PlusCenter.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCenter.prototype, "inline", 2);
 __decorateClass([

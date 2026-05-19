@@ -34,12 +34,12 @@ PlusTabsTab.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTabsTab.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusTabsTab.prototype, "value", 2);
 __decorateClass([

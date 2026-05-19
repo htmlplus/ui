@@ -130,43 +130,43 @@ PlusBrowse.tag = "plus-browse";
 PlusBrowse.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusBrowse.prototype, "accept", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusBrowse.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusBrowse.prototype, "droppable", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusBrowse.prototype, "min", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusBrowse.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusBrowse.prototype, "minSize", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusBrowse.prototype, "maxSize", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusBrowse.prototype, "multiple", 2);
 __decorateClass([

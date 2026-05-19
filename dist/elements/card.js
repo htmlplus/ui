@@ -32,19 +32,19 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCard.prototype, "flat", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCard.prototype, "outlined", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCard.prototype, "tile", 2);
 __decorateClass([

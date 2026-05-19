@@ -152,37 +152,37 @@ PlusAnimation.tag = "plus-animation";
 PlusAnimation.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusAnimation.prototype, "composite", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAnimation.prototype, "delay", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusAnimation.prototype, "direction", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAnimation.prototype, "duration", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusAnimation.prototype, "easing", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAnimation.prototype, "endDelay", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusAnimation.prototype, "fill", 2);
 __decorateClass([
@@ -192,22 +192,22 @@ __decorateClass([
 ], PlusAnimation.prototype, "instance", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusAnimation.prototype, "iterationComposite", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAnimation.prototype, "iterations", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAnimation.prototype, "iterationStart", 2);
 __decorateClass([
   Property({
-    type: 3
+    type: 2
   })
 ], PlusAnimation.prototype, "keyframes", 2);
 __decorateClass([
@@ -217,13 +217,13 @@ __decorateClass([
 ], PlusAnimation.prototype, "name", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusAnimation.prototype, "playbackRate", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusAnimation.prototype, "run", 2);
 __decorateClass([

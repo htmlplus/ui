@@ -132,42 +132,42 @@ PlusFormatBytes.tag = "plus-format-bytes";
 PlusFormatBytes.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusFormatBytes.prototype, "display", 2);
 __decorateClass([
   Property({
-    type: 1027
+    type: 1026
   })
 ], PlusFormatBytes.prototype, "locale", 2);
 __decorateClass([
   Property({
-    type: 259
+    type: 258
   })
 ], PlusFormatBytes.prototype, "decimals", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusFormatBytes.prototype, "separator", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusFormatBytes.prototype, "signed", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusFormatBytes.prototype, "standard", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusFormatBytes.prototype, "unit", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusFormatBytes.prototype, "value", 2);
 __decorateClass([

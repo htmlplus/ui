@@ -76,13 +76,13 @@ PlusCarouselButton.tag = "plus-carousel-button";
 PlusCarouselButton.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCarouselButton.prototype, "jump", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 289
+    type: 288
   })
 ], PlusCarouselButton.prototype, "type", 2);
 __decorateClass([

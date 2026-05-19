@@ -46,19 +46,19 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 1057
+    type: 1056
   })
 ], PlusDivider.prototype, "inset", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusDivider.prototype, "orientation", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusDivider.prototype, "placement", 2);
 __decorateClass([

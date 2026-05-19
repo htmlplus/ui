@@ -614,7 +614,9 @@ const TYPES = [
     },
     parse: (value) => {
       if (value === "null") {
-        return null;
+        return {
+          value: null
+        };
       }
     }
   },
@@ -625,7 +627,9 @@ const TYPES = [
     },
     parse: (value) => {
       if (value === "undefined") {
-        return void 0;
+        return {
+          value: void 0
+        };
       }
     }
   },
@@ -635,9 +639,11 @@ const TYPES = [
       return typeof value === "boolean";
     },
     parse: (value) => {
-      if (value === "") return true;
-      if (value === "true") return true;
-      if (value === "false") return false;
+      if (value === "") {
+        return {
+          value: true
+        };
+      }
     }
   },
   {
@@ -647,7 +653,9 @@ const TYPES = [
     },
     parse: (value) => {
       if (/^\d+n$/.test(value)) {
-        return BigInt(value.slice(0, -1));
+        return {
+          value: BigInt(value.slice(0, -1))
+        };
       }
     }
   },
@@ -658,7 +666,9 @@ const TYPES = [
     },
     parse: (value) => {
       if (value !== "" && !Number.isNaN(Number(value))) {
-        return parseFloat(value);
+        return {
+          value: parseFloat(value)
+        };
       }
     }
   },
@@ -670,7 +680,9 @@ const TYPES = [
     parse: (value) => {
       const date = new Date(value);
       if (!Number.isNaN(date.getTime())) {
-        return date;
+        return {
+          value: date
+        };
       }
     }
   },
@@ -683,7 +695,11 @@ const TYPES = [
       if (value.startsWith("[") && value.endsWith("]")) {
         try {
           const parsed = JSON.parse(value);
-          if (Array.isArray(parsed)) return parsed;
+          if (Array.isArray(parsed)) {
+            return {
+              value: parsed
+            };
+          }
         } catch {
         }
       }
@@ -698,7 +714,11 @@ const TYPES = [
       if (value.startsWith("{") && value.endsWith("}")) {
         try {
           const parsed = JSON.parse(value);
-          if (!Array.isArray(parsed)) return parsed;
+          if (!Array.isArray(parsed)) {
+            return {
+              value: parsed
+            };
+          }
         } catch {
         }
       }
@@ -719,7 +739,9 @@ const TYPES = [
       return typeof value === "string";
     },
     parse: (value) => {
-      return value;
+      return {
+        value
+      };
     }
   },
   {
@@ -728,7 +750,9 @@ const TYPES = [
       return typeof value === "string";
     },
     parse: (value) => {
-      return value;
+      return {
+        value
+      };
     }
   },
   // TODO
@@ -741,7 +765,9 @@ const TYPES = [
       try {
         return JSON.parse(value);
       } catch {
-        return value;
+        return {
+          value
+        };
       }
     }
   }
@@ -755,12 +781,11 @@ const ensureIsType = (value, type = 0) => {
   throw new Error(`Invalid value "${value}" for allowed types.`);
 };
 const toProperty = (value, type = 0) => {
-  if (value === null) return null;
   for (const handler of TYPES) {
     if (!(type & handler.flag)) continue;
     const result = handler.parse(value);
     if (result === void 0) continue;
-    return result;
+    return result.value;
   }
   throw new Error(`Cannot parse value "${value}" for allowed types.`);
 };
@@ -769,7 +794,8 @@ const updateAttribute = (target, key, value) => {
   if (value === void 0 || value === null || value === false) {
     return void element.removeAttribute(key);
   }
-  element.setAttribute(key, value === true ? "" : String(value));
+  const next = value === true ? "" : String(value);
+  element.setAttribute(key, next);
 };
 const wrapMethod = (mode, target, key, handler) => {
   const original = target[key];
@@ -1269,11 +1295,18 @@ function Property(options) {
     }
     defineProperty(target, `RAW:${attribute}`, {
       set(value) {
-        if (!this[LOCKED]) {
-          try {
-            this[key] = toProperty(value, options?.type);
-          } catch {
-          }
+        if (this[LOCKED]) return;
+        if (value === null) {
+          this[key] = this[API_DEFAULTS][key];
+          return;
+        }
+        try {
+          this[key] = toProperty(value, options?.type);
+        } catch {
+          if (!options?.reflect) return;
+          this[LOCKED] = true;
+          updateAttribute(this, attribute, this[key]);
+          this[LOCKED] = false;
         }
       }
     });

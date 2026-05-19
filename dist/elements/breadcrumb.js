@@ -129,27 +129,27 @@ PlusBreadcrumb.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusBreadcrumb.prototype, "block", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusBreadcrumb.prototype, "expanderText", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusBreadcrumb.prototype, "offset", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusBreadcrumb.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusBreadcrumb.prototype, "separator", 2);
 __decorateClass([

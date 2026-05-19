@@ -24,7 +24,7 @@ PlusDialogBody.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusDialogBody.prototype, "scrollable", 2);
 __decorateClass([

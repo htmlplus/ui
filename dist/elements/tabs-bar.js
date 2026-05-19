@@ -26,19 +26,19 @@ PlusTabsBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTabsBar.prototype, "grow", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusTabsBar.prototype, "justify", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTabsBar.prototype, "reverse", 2);
 __decorateClass([

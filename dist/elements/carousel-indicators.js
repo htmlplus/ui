@@ -54,19 +54,19 @@ PlusCarouselIndicators.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 41
+    type: 40
   })
 ], PlusCarouselIndicators.prototype, "clickable", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCarouselIndicators.prototype, "infinity", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCarouselIndicators.prototype, "numbers", 2);
 __decorateClass([

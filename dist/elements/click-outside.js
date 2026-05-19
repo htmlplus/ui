@@ -48,18 +48,18 @@ PlusClickOutside.tag = "plus-click-outside";
 PlusClickOutside.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusClickOutside.prototype, "capture", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusClickOutside.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusClickOutside.prototype, "once", 2);
 __decorateClass([

@@ -53,7 +53,7 @@ PlusProgressBar.tag = "plus-progress-bar";
 PlusProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusProgressBar.prototype, "buffer", 2);
 __decorateClass([
@@ -64,28 +64,28 @@ __decorateClass([
 ], PlusProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusProgressBar.prototype, "label", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusProgressBar.prototype, "max", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusProgressBar.prototype, "min", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusProgressBar.prototype, "sync", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusProgressBar.prototype, "value", 2);
 __decorateClass([

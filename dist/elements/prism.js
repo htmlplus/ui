@@ -138,18 +138,18 @@ PlusPrism.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 1025
+    type: 1024
   })
 ], PlusPrism.prototype, "language", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 1025
+    type: 1024
   })
 ], PlusPrism.prototype, "theme", 2);
 __decorateClass([
   Property({
-    type: 513
+    type: 512
   })
 ], PlusPrism.prototype, "plugins", 2);
 __decorateClass([
@@ -159,7 +159,7 @@ __decorateClass([
 ], PlusPrism.prototype, "resolver", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusPrism.prototype, "sync", 2);
 __decorateClass([

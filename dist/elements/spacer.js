@@ -27,7 +27,7 @@ PlusSpacer.tag = "plus-spacer";
 PlusSpacer.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusSpacer.prototype, "grow", 2);
 __decorateClass([

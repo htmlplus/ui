@@ -278,88 +278,88 @@ PlusCropper.tag = "plus-cropper";
 PlusCropper.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCropper.prototype, "area", 2);
 __decorateClass([
   Property({
-    type: 1281
+    type: 1280
   })
 ], PlusCropper.prototype, "aspectRatio", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCropper.prototype, "background", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCropper.prototype, "disabled", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCropper.prototype, "guides", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCropper.prototype, "indicator", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCropper.prototype, "mode", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCropper.prototype, "resizer", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCropper.prototype, "resizerShape", 2);
 __decorateClass([
   Property({
-    type: 41
+    type: 40
   })
 ], PlusCropper.prototype, "responsive", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCropper.prototype, "shape", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusCropper.prototype, "src", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCropper.prototype, "transparent", 2);
 __decorateClass([
   Property({
-    type: 513
+    type: 512
   })
 ], PlusCropper.prototype, "value", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCropper.prototype, "view", 2);
 __decorateClass([
   Property({
-    type: 41
+    type: 40
   })
 ], PlusCropper.prototype, "zoomable", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCropper.prototype, "zoomRatio", 2);
 __decorateClass([

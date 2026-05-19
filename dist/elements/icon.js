@@ -105,12 +105,12 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusIcon.prototype, "flip", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusIcon.prototype, "label", 2);
 __decorateClass([
@@ -127,13 +127,13 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 257
+    type: 256
   })
 ], PlusIcon.prototype, "rotate", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 1313
+    type: 1312
   })
 ], PlusIcon.prototype, "size", 2);
 __decorateClass([

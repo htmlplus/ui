@@ -24,7 +24,7 @@ PlusTabsPanel.tag = "plus-tabs-panel";
 PlusTabsPanel.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusTabsPanel.prototype, "value", 2);
 __decorateClass([

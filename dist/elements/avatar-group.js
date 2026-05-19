@@ -25,13 +25,13 @@ PlusAvatarGroup.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusAvatarGroup.prototype, "hoverable", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusAvatarGroup.prototype, "stacked", 2);
 __decorateClass([

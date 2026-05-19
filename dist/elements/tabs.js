@@ -34,13 +34,13 @@ PlusTabs.tag = "plus-tabs";
 PlusTabs.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusTabs.prototype, "value", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTabs.prototype, "vertical", 2);
 __decorateClass([

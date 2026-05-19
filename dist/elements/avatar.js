@@ -152,7 +152,7 @@ __decorateClass([
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusAvatar.prototype, "shape", 2);
 __decorateClass([

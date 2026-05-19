@@ -38,7 +38,7 @@ PlusCarouselCounter.tag = "plus-carousel-counter";
 PlusCarouselCounter.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusCarouselCounter.prototype, "template", 2);
 __decorateClass([

@@ -518,95 +518,95 @@ PlusCarousel.tag = "plus-carousel";
 PlusCarousel.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCarousel.prototype, "align", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCarousel.prototype, "autoHeight", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 33
+    type: 32
   })
 ], PlusCarousel.prototype, "axis", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCarousel.prototype, "classes", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCarousel.prototype, "containScroll", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCarousel.prototype, "draggable", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCarousel.prototype, "dragThreshold", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCarousel.prototype, "duration", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCarousel.prototype, "focusable", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCarousel.prototype, "inViewThreshold", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusCarousel.prototype, "loop", 2);
 __decorateClass([
   Property({
-    type: 3
+    type: 2
   })
 ], PlusCarousel.prototype, "plugins", 2);
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusCarousel.prototype, "mirror", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusCarousel.prototype, "mirrorType", 2);
 __decorateClass([
   Property({
-    type: 9
+    type: 8
   })
 ], PlusCarousel.prototype, "resizable", 2);
 __decorateClass([
   Property({
-    type: 289
+    type: 288
   })
 ], PlusCarousel.prototype, "slidesToScroll", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCarousel.prototype, "startIndex", 2);
 __decorateClass([
   Property({
-    type: 257
+    type: 256
   })
 ], PlusCarousel.prototype, "tweenFactorBase", 2);
 __decorateClass([

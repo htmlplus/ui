@@ -26,7 +26,7 @@ PlusDialogToggler.tag = "plus-dialog-toggler";
 PlusDialogToggler.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
-    type: 1025
+    type: 1024
   })
 ], PlusDialogToggler.prototype, "connector", 2);
 __decorateClass([

@@ -195,49 +195,49 @@ PlusTooltip.style = STYLE_IMPORTED;
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTooltip.prototype, "arrow", 2);
 __decorateClass([
   Property({
-    type: 259
+    type: 258
   })
 ], PlusTooltip.prototype, "delay", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTooltip.prototype, "disabled", 2);
 __decorateClass([
   Property({
     reflect: true,
-    type: 9
+    type: 8
   })
 ], PlusTooltip.prototype, "fixed", 2);
 __decorateClass([
   Property({
-    type: 259
+    type: 258
   })
 ], PlusTooltip.prototype, "offset", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusTooltip.prototype, "placement", 2);
 __decorateClass([
   Property({
-    type: 1057
+    type: 1056
   })
 ], PlusTooltip.prototype, "reference", 2);
 __decorateClass([
   Property({
-    type: 35
+    type: 34
   })
 ], PlusTooltip.prototype, "trigger", 2);
 __decorateClass([
   Property({
-    type: 33
+    type: 32
   })
 ], PlusTooltip.prototype, "z", 2);
 __decorateClass([
