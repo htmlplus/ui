@@ -1,3 +1,9 @@
+## [1.8.8](https://github.com/htmlplus/ui/compare/v1.8.7...v1.8.8) (2026-06-17)
+
+### Bug Fixes
+
+* Update the `@htmlplus/element` to the latest version ([618a45f](https://github.com/htmlplus/ui/commit/618a45fec461b718b311edc89985e9aea8d99b06))
+
 ## [1.8.7](https://github.com/htmlplus/ui/compare/v1.8.6...v1.8.7) (2026-05-19)
 
 ### Bug Fixes
