@@ -67,7 +67,7 @@ export default defineConfig({
 	},
 	plugins: [
 		examples(),
-		htmlplus(...plugins),
+		htmlplus(plugins),
 		peerDepsExternal(),
 		dts({
 			outDir: 'dist/types',
