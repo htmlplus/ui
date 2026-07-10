@@ -570,25 +570,22 @@ const requestUpdate = (target, name, previous, callback) => {
       const raw = target.constructor[STATIC_STYLE];
       if (!raw) return;
       const regex = /global\s+[^{]+\{[^{}]*\{[^{}]*\}[^{}]*\}|global\s+[^{]+\{[^{}]*\}/g;
-      const hasGlobal = raw.includes("global");
-      let localSheet = target[API_STYLE];
-      let globalSheet = target.constructor[API_STYLE];
-      if (localSheet) return;
-      if (!localSheet) {
-        localSheet = new CSSStyleSheet();
-        target[API_STYLE] = localSheet;
-        shadowRoot(target)?.adoptedStyleSheets.push(localSheet);
+      if (!target[API_STYLE]) {
+        const style = raw.replace(regex, "");
+        if (!style) return;
+        const element = document.createElement("style");
+        element.textContent = style;
+        target[API_STYLE] = element;
+        shadowRoot(target)?.appendChild(element);
       }
-      const localStyle = raw.replace(regex, "");
-      localSheet.replaceSync(localStyle);
-      if (!hasGlobal || globalSheet) return;
-      if (!globalSheet) {
-        globalSheet = new CSSStyleSheet();
-        target.constructor[API_STYLE] = globalSheet;
-        document.adoptedStyleSheets.push(globalSheet);
+      if (!target.constructor[API_STYLE]) {
+        const style = raw?.match(regex)?.join("")?.replaceAll("global", "")?.replaceAll(":host", getTag(target) || "");
+        if (!style) return;
+        const element = document.createElement("style");
+        element.textContent = style;
+        target.constructor[API_STYLE] = element;
+        document.head.appendChild(element);
       }
-      const globalStyle = raw?.match(regex)?.join("")?.replaceAll("global", "")?.replaceAll(":host", getTag(target) || "");
-      globalSheet.replaceSync(globalStyle);
     })();
     call(target, LIFECYCLE_UPDATED, states);
     stacks.clear();
@@ -964,6 +961,7 @@ const proxy = (constructor) => {
       super();
       this.attachShadow({
         mode: "open",
+        serializable: true,
         // biome-ignore lint: TODO
         delegatesFocus: constructor["delegatesFocus"],
         // biome-ignore lint: TODO
