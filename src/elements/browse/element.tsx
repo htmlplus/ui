@@ -241,7 +241,7 @@ export class PlusBrowse extends PlusCore {
 
 		const files = target.files;
 
-		if (!files || !files.length) return;
+		if (!files?.length) return;
 
 		this.do(files);
 	}
