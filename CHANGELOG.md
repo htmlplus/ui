@@ -1,3 +1,5 @@
+## [1.8.10](https://github.com/htmlplus/ui/compare/v1.8.9...v1.8.10) (2026-07-17)
+
 ## [1.8.9](https://github.com/htmlplus/ui/compare/v1.8.8...v1.8.9) (2026-07-10)
 
 ### Bug Fixes
