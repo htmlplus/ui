@@ -1,4 +1,4 @@
-import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, S as State, d as Element } from "../core/index.js";
+import { P as PlusCore, a as jsx, b as Property, O as Overrides, V as Variant, S as State, c as Element } from "../core/index.js";
 const RELATIVE_TIME_UNITS = [
   {
     name: "second",

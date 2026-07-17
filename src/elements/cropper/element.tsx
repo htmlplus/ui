@@ -245,22 +245,22 @@ export class PlusCropper extends PlusCore {
 
 	/**
 	 * Moves the canvas with relative offsets.
-	 * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
-	 * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
+	 * @param offsetX - Moving size (px) in the `horizontal` direction.
+	 * @param offsetY - Moving size (px) in the `vertical` direction.
 	 */
 	@Method()
-	move(offsetX?: number, offsetY?: number): void {
-		this.instance.move(offsetX ?? null, offsetY ?? null);
+	move(offsetX: number, offsetY?: number): void {
+		this.instance.move(offsetX, offsetY);
 	}
 
 	/**
 	 * Moves the canvas to an absolute point.
-	 * @param x - The `left` value of the canvas. Use `null` to ignore this.
-	 * @param y - The `top` value of the canvas. Use `null` to ignore this.
+	 * @param x - The `left` value of the canvas.
+	 * @param y - The `top` value of the canvas.
 	 */
 	@Method()
-	moveTo(x?: number, y?: number): void {
-		this.instance.moveTo(x ?? null, y ?? null);
+	moveTo(x: number, y?: number): void {
+		this.instance.moveTo(x, y);
 	}
 
 	/**
@@ -314,7 +314,14 @@ export class PlusCropper extends PlusCore {
 	@Query('.image')
 	$image!: HTMLImageElement;
 
-	instance?: CropperCoreType;
+	_instance?: CropperCoreType;
+
+	get instance() {
+		if (!this._instance) {
+			throw new Error('TODO');
+		}
+		return this._instance;
+	}
 
 	locked: boolean = false;
 
@@ -455,24 +462,24 @@ export class PlusCropper extends PlusCore {
 	initialize() {
 		if (!CropperCore) return;
 
-		if (this.instance) return;
+		if (this._instance) return;
 
-		this.instance = new CropperCore(this.$image, this.options);
+		this._instance = new CropperCore(this.$image, this.options);
 	}
 
-	sync(value?) {
-		if (!this.instance) return;
+	sync(value?: PlusCropperValue) {
+		const from = (a: number, b: number) => (a * b) / 100;
 
-		const from = (a, b) => (a * b) / 100;
-
-		const to = (a, b) => (a / b) * 100;
+		const to = (a: number, b: number) => (a / b) * 100;
 
 		const image = this.instance.getCanvasData();
 
 		const viewport = this.instance.getCropBoxData();
 
 		if (value) {
-			this.instance.rotateTo(value.rotate);
+			if (typeof value.rotate === 'number') {
+				this.instance.rotateTo(value.rotate);
+			}
 
 			const height = to(viewport.height, value.height);
 			const width = to(viewport.width, value.width);
@@ -504,9 +511,9 @@ export class PlusCropper extends PlusCore {
 
 	terminate() {
 		// TODO: has a problem in documentation
-		this.instance?.destroy();
+		this._instance?.destroy();
 
-		this.instance = undefined;
+		this._instance = undefined;
 	}
 
 	@Bind()

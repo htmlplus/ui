@@ -35,9 +35,11 @@ class CarouselChild extends PlusCore {
     this.state?.register(this.$host);
   }
   updateCallback() {
-    if (this.state?.api !== this.api) {
-      this.handleApiChange(this.state?.api);
+    if (this.state?.api === this.api) return;
+    if (!this.state?.api) {
+      throw new Error("TODO");
     }
+    this.handleApiChange(this.state.api);
   }
   disconnectedCallback() {
     this.terminate();

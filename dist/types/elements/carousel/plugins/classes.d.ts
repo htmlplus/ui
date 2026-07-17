@@ -14,6 +14,7 @@ export declare class CarouselPluginClasses extends CarouselPlugin {
     };
     initialize(): void;
     terminate(): void;
+    private getSlide;
     private handleInit;
     private handlePointerDown;
     private handlePointerUp;

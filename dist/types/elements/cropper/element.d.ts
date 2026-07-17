@@ -158,16 +158,16 @@ export declare class PlusCropper extends PlusCore {
     flipY(): void;
     /**
      * Moves the canvas with relative offsets.
-     * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
-     * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
+     * @param offsetX - Moving size (px) in the `horizontal` direction.
+     * @param offsetY - Moving size (px) in the `vertical` direction.
      */
-    move(offsetX?: number, offsetY?: number): void;
+    move(offsetX: number, offsetY?: number): void;
     /**
      * Moves the canvas to an absolute point.
-     * @param x - The `left` value of the canvas. Use `null` to ignore this.
-     * @param y - The `top` value of the canvas. Use `null` to ignore this.
+     * @param x - The `left` value of the canvas.
+     * @param y - The `top` value of the canvas.
      */
-    moveTo(x?: number, y?: number): void;
+    moveTo(x: number, y?: number): void;
     /**
      * Resets the image and viewport to their initial states.
      */
@@ -193,7 +193,8 @@ export declare class PlusCropper extends PlusCore {
      */
     zoomTo(ratio: number): void;
     $image: HTMLImageElement;
-    instance?: CropperCoreType;
+    _instance?: CropperCoreType;
+    get instance(): CropperCoreType;
     locked: boolean;
     get classes(): string;
     get options(): {
@@ -239,7 +240,7 @@ export declare class PlusCropper extends PlusCore {
     };
     watcher(next: unknown, _prev: unknown, name: string): void;
     initialize(): void;
-    sync(value?: any): void;
+    sync(value?: PlusCropperValue): void;
     terminate(): void;
     onCrop(): void;
     onCropEnd(event: any): void;
@@ -465,16 +466,16 @@ export type PlusCropperMethodsBase = {
   flipY(): void;
   /**
   * Moves the canvas with relative offsets.
-  * @param offsetX - Moving size (px) in the `horizontal` direction. Use `null` to ignore this.
-  * @param offsetY - Moving size (px) in the `vertical` direction. Use `null` to ignore this.
+  * @param offsetX - Moving size (px) in the `horizontal` direction.
+  * @param offsetY - Moving size (px) in the `vertical` direction.
   */
-  move(offsetX?: number, offsetY?: number): void;
+  move(offsetX: number, offsetY?: number): void;
   /**
   * Moves the canvas to an absolute point.
-  * @param x - The `left` value of the canvas. Use `null` to ignore this.
-  * @param y - The `top` value of the canvas. Use `null` to ignore this.
+  * @param x - The `left` value of the canvas.
+  * @param y - The `top` value of the canvas.
   */
-  moveTo(x?: number, y?: number): void;
+  moveTo(x: number, y?: number): void;
   /**
   * Resets the image and viewport to their initial states.
   */

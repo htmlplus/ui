@@ -1,4 +1,4 @@
-import { B as Bind, P as PlusCore, E as ExternalDependencyError, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, S as State, f as Provider, M as Method, W as Watch, d as Element } from "../core/index.js";
+import { B as Bind, P as PlusCore, k as ExternalDependencyError, a as jsx, b as Property, O as Overrides, V as Variant, E as Event, S as State, d as Provider, M as Method, W as Watch, c as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}global plus-carousel[variant=presentation]{position:relative}global plus-carousel[variant=presentation] plus-carousel-button{position:absolute;top:50%;z-index:1;transform:translateY(-50%)}global plus-carousel[variant=presentation] plus-carousel-button[type=previous]:dir(ltr),global plus-carousel[variant=presentation] plus-carousel-button[type=next]:dir(rtl){left:1rem}global plus-carousel[variant=presentation] plus-carousel-button[type=previous]:dir(rtl),global plus-carousel[variant=presentation] plus-carousel-button[type=next]:dir(ltr){right:1rem}global plus-carousel[variant=presentation] plus-carousel-counter{position:absolute;right:1rem;bottom:1rem;z-index:1}global plus-carousel[variant=presentation] plus-carousel-indicators{position:absolute;left:50%;bottom:1rem;z-index:1;transform:translateX(-50%)}global plus-carousel[variant=presentation] plus-carousel-progress{position:absolute;top:-0.5rem;right:0;left:0;z-index:1;height:4px}global plus-carousel[variant=presentation] plus-carousel-slide{flex-basis:100%;background-color:#f5f5f5;border-radius:.5rem;font-size:2.5rem;font-weight:600;display:flex;align-items:center;justify-content:center;user-select:none;height:12rem}global plus-carousel[variant=presentation][axis=x] plus-carousel-slide{margin-left:.5rem}global plus-carousel[variant=presentation][axis=y] plus-carousel-slide{margin-top:.5rem}global plus-carousel[variant=presentation][axis=y] plus-carousel-slides::part(container){height:12rem}:host{display:block}";
 class CarouselPlugin {
   constructor(instance) {
@@ -115,14 +115,21 @@ class CarouselPluginClasses extends CarouselPlugin {
     this.instance.$host.classList.remove(this.names.draggable);
     this.instance.$host.classList.remove(this.names.dragging);
     this.inView.forEach((index) => {
-      this.slides.at(index).classList.remove(this.names.inView);
+      this.getSlide(index).classList.remove(this.names.inView);
     });
     this.snapped.forEach((index) => {
-      this.slides.at(index).classList.remove(this.names.snapped);
+      this.getSlide(index).classList.remove(this.names.snapped);
     });
     this.slides = [];
     this.inView = [];
     this.snapped = [];
+  }
+  getSlide(index) {
+    const element = this.slides.at(index);
+    if (!element) {
+      throw new Error(`Slide at index ${index} was not found.`);
+    }
+    return element;
   }
   handleInit() {
     this.slides = this.api.slideNodes();
@@ -144,10 +151,10 @@ class CarouselPluginClasses extends CarouselPlugin {
     const prev = this.snapped;
     const next = this.api.internalEngine().slideRegistry[this.api.selectedScrollSnap()];
     next.filter((item) => !prev.includes(item)).forEach((index) => {
-      this.slides.at(index).classList.add(this.names.snapped);
+      this.getSlide(index).classList.add(this.names.snapped);
     });
     prev.filter((item) => !next.includes(item)).forEach((index) => {
-      this.slides.at(index).classList.remove(this.names.snapped);
+      this.getSlide(index).classList.remove(this.names.snapped);
     });
     this.snapped = next;
   }
@@ -155,10 +162,10 @@ class CarouselPluginClasses extends CarouselPlugin {
     const prev = this.inView;
     const next = this.api.slidesInView();
     next.filter((item) => !prev.includes(item)).forEach((index) => {
-      this.slides.at(index).classList.add(this.names.inView);
+      this.getSlide(index).classList.add(this.names.inView);
     });
     prev.filter((item) => !next.includes(item)).forEach((index) => {
-      this.slides.at(index).classList.remove(this.names.inView);
+      this.getSlide(index).classList.remove(this.names.inView);
     });
     this.inView = next;
   }
@@ -255,7 +262,7 @@ class CarouselPluginTween extends CarouselPlugin {
     };
   }
   get active() {
-    return !!this.instance.tweenFactorBase;
+    return typeof this.instance.tweenFactorBase === "number";
   }
   initialize() {
     if (!this.active) return;
@@ -270,6 +277,9 @@ class CarouselPluginTween extends CarouselPlugin {
     });
   }
   handleEvent(_event, eventName) {
+    if (typeof this.instance.tweenFactorBase !== "number") {
+      throw new Error("TODO");
+    }
     const engine = this.api.internalEngine();
     const isScrollEvent = eventName === "scroll";
     const slidesInView = this.api.slidesInView();

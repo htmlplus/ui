@@ -1,4 +1,4 @@
-import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, f as Provider, d as Element } from "../core/index.js";
+import { P as PlusCore, a as jsx, b as Property, O as Overrides, V as Variant, E as Event, d as Provider, c as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-direction:column;gap:.5rem}:host([vertical]){flex-direction:row}:host([vertical]) ::slotted(plus-tabs-bar){flex-direction:column}:host([vertical]) ::slotted(plus-tabs-bar[reverse]){flex-direction:column-reverse}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;

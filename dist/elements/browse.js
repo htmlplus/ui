@@ -1,4 +1,4 @@
-import { Q as Query, P as PlusCore, j as jsxs, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
+import { Q as Query, P as PlusCore, j as jsxs, a as jsx, b as Property, O as Overrides, V as Variant, E as Event, S as State, M as Method, B as Bind, c as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -99,7 +99,7 @@ let PlusBrowse = class extends PlusCore {
   onChange(event) {
     const target = event.target;
     const files = target.files;
-    if (!files || !files.length) return;
+    if (!files?.length) return;
     this.do(files);
   }
   onDragLeave() {

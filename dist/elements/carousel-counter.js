@@ -1,4 +1,4 @@
-import { c as Property, O as Overrides, V as Variant, d as Element } from "../core/index.js";
+import { b as Property, O as Overrides, V as Variant, c as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}";
 var __defProp = Object.defineProperty;

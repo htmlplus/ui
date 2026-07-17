@@ -28,7 +28,7 @@
         }
       ],
       "key": "plus-accordion",
-      "lastModified": "2026-06-14T16:50:58.044Z",
+      "lastModified": "2026-07-12T17:12:11.454Z",
       "methods": [
         {
           "async": false,
@@ -266,7 +266,7 @@
         }
       ],
       "key": "plus-animation",
-      "lastModified": "2026-06-14T16:50:58.057Z",
+      "lastModified": "2026-07-17T15:57:15.055Z",
       "methods": [
         {
           "async": false,
@@ -535,7 +535,7 @@
     {
       "events": [],
       "key": "plus-app-progress-bar",
-      "lastModified": "2026-06-14T16:50:58.057Z",
+      "lastModified": "2026-07-12T17:07:55.278Z",
       "methods": [
         {
           "async": false,
@@ -690,7 +690,7 @@
     {
       "events": [],
       "key": "plus-avatar",
-      "lastModified": "2026-06-14T16:50:58.059Z",
+      "lastModified": "2026-07-12T17:17:27.722Z",
       "methods": [],
       "properties": [
         {
@@ -840,7 +840,7 @@
     {
       "events": [],
       "key": "plus-breadcrumb",
-      "lastModified": "2026-06-14T16:50:58.060Z",
+      "lastModified": "2026-07-17T16:11:05.528Z",
       "methods": [],
       "properties": [
         {
@@ -980,7 +980,7 @@
         }
       ],
       "key": "plus-browse",
-      "lastModified": "2026-06-14T16:50:58.061Z",
+      "lastModified": "2026-07-12T17:05:54.682Z",
       "methods": [
         {
           "async": false,
@@ -1344,7 +1344,7 @@
         }
       ],
       "key": "plus-carousel",
-      "lastModified": "2026-06-14T16:50:58.067Z",
+      "lastModified": "2026-07-17T16:18:22.158Z",
       "methods": [
         {
           "async": false,
@@ -2042,7 +2042,7 @@
     {
       "events": [],
       "key": "plus-center",
-      "lastModified": "2026-06-14T16:50:58.067Z",
+      "lastModified": "2026-07-12T17:12:19.273Z",
       "methods": [],
       "properties": [
         {
@@ -2101,7 +2101,7 @@
         }
       ],
       "key": "plus-click-outside",
-      "lastModified": "2026-06-14T16:50:58.067Z",
+      "lastModified": "2026-07-12T17:07:55.278Z",
       "methods": [],
       "properties": [
         {
@@ -2397,7 +2397,7 @@
         }
       ],
       "key": "plus-cropper",
-      "lastModified": "2026-06-14T16:50:58.071Z",
+      "lastModified": "2026-07-17T16:02:08.116Z",
       "methods": [
         {
           "async": false,
@@ -2420,20 +2420,20 @@
           "name": "move",
           "parameters": [
             {
-              "description": "Moving size (px) in the `horizontal` direction. Use `null` to ignore this.",
-              "required": false,
+              "description": "Moving size (px) in the `horizontal` direction.",
+              "required": true,
               "name": "offsetX",
               "type": "number"
             },
             {
-              "description": "Moving size (px) in the `vertical` direction. Use `null` to ignore this.",
+              "description": "Moving size (px) in the `vertical` direction.",
               "required": false,
               "name": "offsetY",
               "type": "number"
             }
           ],
           "returns": "void",
-          "signature": "move(offsetX?: number, offsetY?: number) => void",
+          "signature": "move(offsetX: number, offsetY?: number) => void",
           "description": "Moves the canvas with relative offsets."
         },
         {
@@ -2441,20 +2441,20 @@
           "name": "moveTo",
           "parameters": [
             {
-              "description": "The `left` value of the canvas. Use `null` to ignore this.",
-              "required": false,
+              "description": "The `left` value of the canvas.",
+              "required": true,
               "name": "x",
               "type": "number"
             },
             {
-              "description": "The `top` value of the canvas. Use `null` to ignore this.",
+              "description": "The `top` value of the canvas.",
               "required": false,
               "name": "y",
               "type": "number"
             }
           ],
           "returns": "void",
-          "signature": "moveTo(x?: number, y?: number) => void",
+          "signature": "moveTo(x: number, y?: number) => void",
           "description": "Moves the canvas to an absolute point."
         },
         {
@@ -2976,7 +2976,7 @@
         }
       ],
       "key": "plus-dialog",
-      "lastModified": "2026-06-14T16:50:58.075Z",
+      "lastModified": "2026-07-17T16:03:51.283Z",
       "methods": [
         {
           "async": false,
@@ -3842,7 +3842,7 @@
     {
       "events": [],
       "key": "plus-faker",
-      "lastModified": "2026-06-14T16:50:58.079Z",
+      "lastModified": "2026-07-12T16:48:15.359Z",
       "methods": [],
       "properties": [
         {
@@ -4042,7 +4042,7 @@
     {
       "events": [],
       "key": "plus-icon",
-      "lastModified": "2026-06-14T16:50:58.081Z",
+      "lastModified": "2026-07-12T17:06:17.255Z",
       "methods": [],
       "properties": [
         {
@@ -4174,7 +4174,7 @@
         }
       ],
       "key": "plus-intersection",
-      "lastModified": "2026-06-14T16:50:58.082Z",
+      "lastModified": "2026-07-12T17:14:09.407Z",
       "methods": [],
       "properties": [
         {
@@ -4264,7 +4264,7 @@
     {
       "events": [],
       "key": "plus-prism",
-      "lastModified": "2026-06-14T16:50:58.082Z",
+      "lastModified": "2026-07-12T17:18:34.897Z",
       "methods": [],
       "properties": [
         {
@@ -4733,7 +4733,7 @@
         }
       ],
       "key": "plus-signature",
-      "lastModified": "2026-06-14T16:50:58.086Z",
+      "lastModified": "2026-07-12T17:07:55.277Z",
       "methods": [
         {
           "async": false,
@@ -5836,7 +5836,7 @@
     {
       "events": [],
       "key": "plus-tooltip",
-      "lastModified": "2026-06-14T16:50:58.093Z",
+      "lastModified": "2026-07-17T15:39:05.406Z",
       "methods": [
         {
           "async": false,

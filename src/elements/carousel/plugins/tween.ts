@@ -6,7 +6,7 @@ import { CarouselPlugin } from './base';
 
 export class CarouselPluginTween extends CarouselPlugin {
 	private get active(): boolean {
-		return !!this.instance.tweenFactorBase;
+		return typeof this.instance.tweenFactorBase === 'number';
 	}
 
 	public events = {
@@ -34,6 +34,10 @@ export class CarouselPluginTween extends CarouselPlugin {
 
 	@Bind()
 	private handleEvent(_event: EmblaCarouselType, eventName: EmblaEventType) {
+		if (typeof this.instance.tweenFactorBase !== 'number') {
+			throw new Error('TODO');
+		}
+
 		const engine = this.api.internalEngine();
 
 		const isScrollEvent = eventName === 'scroll';

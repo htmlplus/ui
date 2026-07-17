@@ -9,10 +9,6 @@ export class ExternalDependencyError extends Error {
 		super(message, options);
 
 		this.name = 'ExternalDependencyError';
-
-		if (Error.captureStackTrace) {
-			Error.captureStackTrace(this, ExternalDependencyError);
-		}
 	}
 }
 
@@ -23,9 +19,5 @@ export class NotEmptyPropertyError extends Error {
 		super(message, options);
 
 		this.name = 'NotEmptyPropertyError';
-
-		if (Error.captureStackTrace) {
-			Error.captureStackTrace(this, NotEmptyPropertyError);
-		}
 	}
 }

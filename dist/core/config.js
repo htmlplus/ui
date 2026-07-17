@@ -1,5 +1,5 @@
-import { l, s } from "./index.js";
+import { g, q } from "./index.js";
 export {
-  l as getConfig,
-  s as setConfig
+  g as getConfig,
+  q as setConfig
 };

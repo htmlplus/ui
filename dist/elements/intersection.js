@@ -1,4 +1,4 @@
-import { P as PlusCore, b as jsx, c as Property, O as Overrides, V as Variant, e as Event, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
+import { P as PlusCore, a as jsx, b as Property, O as Overrides, V as Variant, E as Event, S as State, W as Watch, B as Bind, c as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {

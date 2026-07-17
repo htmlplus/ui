@@ -77,7 +77,7 @@ export declare class PlusTooltip extends PlusCore {
      */
     update(): void;
     $arrow: HTMLElement;
-    $activator?: Element;
+    $activator: Element;
     state?: 'hide' | 'show';
     cleanup?: () => void;
     timeout?: number;

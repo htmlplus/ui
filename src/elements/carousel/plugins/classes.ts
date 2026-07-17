@@ -48,11 +48,11 @@ export class CarouselPluginClasses extends CarouselPlugin {
 		this.instance.$host.classList.remove(this.names.dragging);
 
 		this.inView.forEach((index) => {
-			this.slides.at(index).classList.remove(this.names.inView);
+			this.getSlide(index).classList.remove(this.names.inView);
 		});
 
 		this.snapped.forEach((index) => {
-			this.slides.at(index).classList.remove(this.names.snapped);
+			this.getSlide(index).classList.remove(this.names.snapped);
 		});
 
 		this.slides = [];
@@ -60,6 +60,16 @@ export class CarouselPluginClasses extends CarouselPlugin {
 		this.inView = [];
 
 		this.snapped = [];
+	}
+
+	private getSlide(index: number): HTMLElement {
+		const element = this.slides.at(index);
+
+		if (!element) {
+			throw new Error(`Slide at index ${index} was not found.`);
+		}
+
+		return element;
 	}
 
 	@Bind()
@@ -96,13 +106,13 @@ export class CarouselPluginClasses extends CarouselPlugin {
 		next
 			.filter((item) => !prev.includes(item))
 			.forEach((index) => {
-				this.slides.at(index).classList.add(this.names.snapped);
+				this.getSlide(index).classList.add(this.names.snapped);
 			});
 
 		prev
 			.filter((item) => !next.includes(item))
 			.forEach((index) => {
-				this.slides.at(index).classList.remove(this.names.snapped);
+				this.getSlide(index).classList.remove(this.names.snapped);
 			});
 
 		this.snapped = next;
@@ -117,13 +127,13 @@ export class CarouselPluginClasses extends CarouselPlugin {
 		next
 			.filter((item) => !prev.includes(item))
 			.forEach((index) => {
-				this.slides.at(index).classList.add(this.names.inView);
+				this.getSlide(index).classList.add(this.names.inView);
 			});
 
 		prev
 			.filter((item) => !next.includes(item))
 			.forEach((index) => {
-				this.slides.at(index).classList.remove(this.names.inView);
+				this.getSlide(index).classList.remove(this.names.inView);
 			});
 
 		this.inView = next;

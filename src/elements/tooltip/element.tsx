@@ -154,8 +154,6 @@ export class PlusTooltip extends PlusCore {
 		FloatingCore.computePosition(this.$activator, this.$host, this.options).then((data) => {
 			const { x, y, placement, middlewareData } = data;
 
-			// console.log(1, middlewareData.hide);
-
 			this.$host.setAttribute('placement-computed', placement);
 
 			Object.assign(this.$host.style, {
@@ -165,7 +163,8 @@ export class PlusTooltip extends PlusCore {
 
 			if (!this.arrow) return;
 
-			const { x: arrowX, y: arrowY } = middlewareData.arrow;
+			const arrowX = middlewareData.arrow?.x;
+			const arrowY = middlewareData.arrow?.y;
 
 			Object.assign(this.$arrow.style, {
 				left: arrowX == null ? '' : `${arrowX}px`,
@@ -177,7 +176,7 @@ export class PlusTooltip extends PlusCore {
 	@Query('[part=arrow]')
 	$arrow!: HTMLElement;
 
-	$activator?: Element;
+	$activator!: Element;
 
 	@State()
 	state?: 'hide' | 'show' = 'hide';
@@ -246,7 +245,7 @@ export class PlusTooltip extends PlusCore {
 				this.arrow && FloatingCore.arrow({ element: this.$arrow })
 				// FloatingCore.hide()
 			],
-			placement: PLACEMENT[this.placement],
+			placement: this.placement ? PLACEMENT[this.placement] : undefined,
 			strategy: this.fixed ? 'fixed' : 'absolute'
 		} as Partial<FloatingCoreType.ComputePositionConfig>;
 	}
@@ -276,6 +275,10 @@ export class PlusTooltip extends PlusCore {
 	initialize() {
 		// TODO
 		if (this.disabled) return;
+
+		if (!this.$reference) {
+			throw new Error('TODO');
+		}
 
 		// TODO
 		this.$activator = this.$reference;

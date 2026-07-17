@@ -247,7 +247,7 @@ export class PlusDialog extends PlusCore {
 	promise?: Promise<boolean>;
 
 	get classes() {
-		let placement = this.placement || '';
+		let placement: string = this.placement || '';
 
 		if (placement.match(/^(top|bottom)$/)) placement = `-${placement}`;
 
