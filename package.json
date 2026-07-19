@@ -47,14 +47,8 @@
 			"types": "./dist/types/config/index.d.ts",
 			"import": "./dist/core/config.js"
 		},
-		"./json/*": {
-			"types": null,
-			"import": "./dist/json/*"
-		},
-		"./package.json": {
-			"types": null,
-			"import": "./package.json"
-		}
+		"./json/*": "./dist/json/*",
+		"./package.json": "./package.json"
 	},
 	"main": "./dist/elements/index.js",
 	"types": "./dist/types/elements/index.d.ts",
@@ -75,7 +69,7 @@
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@htmlplus/element": "^4.0.6"
+		"@htmlplus/element": "^4.0.7"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.4",

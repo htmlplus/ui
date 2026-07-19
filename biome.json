@@ -49,6 +49,7 @@
 		"enabled": true,
 		"actions": {
 			"source": {
+				"useSortedPackageJson": "on",
 				"organizeImports": {
 					"level": "on",
 					"options": {

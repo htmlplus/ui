@@ -4,5 +4,5 @@ export default {
 		'biome check --error-on-warnings'
 	],
 	'*.{ts,tsx}': () => 'npm run type-check',
-	'package.json': () => 'npx --yes sort-package-json'
+	'package.json': () => 'biome check --write'
 };
