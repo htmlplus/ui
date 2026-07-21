@@ -1,3 +1,5 @@
+## [1.8.12](https://github.com/htmlplus/ui/compare/v1.8.11...v1.8.12) (2026-07-21)
+
 ## [1.8.11](https://github.com/htmlplus/ui/compare/v1.8.10...v1.8.11) (2026-07-19)
 
 ## [1.8.10](https://github.com/htmlplus/ui/compare/v1.8.9...v1.8.10) (2026-07-17)
