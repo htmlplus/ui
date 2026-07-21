@@ -1977,10 +1977,9 @@ export {
   toAxis as n,
   on as o,
   AsyncCache as p,
-  setConfig as q,
-  query as r,
-  setConfig$1 as s,
+  query as q,
+  PlusForm as r,
+  setConfig as s,
   toCSSColor as t,
-  PlusForm as u,
-  getCSSColor as v
+  getCSSColor as u
 };
