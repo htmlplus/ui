@@ -5,8 +5,8 @@ import { vite as htmlplus } from '@htmlplus/element/bundlers.js';
 
 import { glob } from 'glob';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
 
 import { examples } from './examples/plugin';
 import plugins from './htmlplus.config';
@@ -70,7 +70,7 @@ export default defineConfig({
 		htmlplus(plugins),
 		peerDepsExternal(),
 		dts({
-			outDir: 'dist/types',
+			outDirs: 'dist/types',
 			resolvers: [
 				/**
 				 * This resolver generates `.d.ts` files for each `.tsx` file.

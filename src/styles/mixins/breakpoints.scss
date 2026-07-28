@@ -5,12 +5,12 @@
 
 @function breakpoint-min($name, $breakpoints: $breakpoints) {
   $min: map.get($breakpoints, $name);
-  @return if($min != 0, $min, null);
+  @return if(sass($min != 0): $min)
 }
 
 @function breakpoint-max($name, $breakpoints: $breakpoints) {
   $max: map.get($breakpoints, $name);
-  @return if($max and $max > 0, $max - 0.02, null);
+  @return if(sass($max and $max > 0): $max - 0.02);
 }
 
 @function breakpoint-next($name, $breakpoints: $breakpoints) {
@@ -19,7 +19,7 @@
   @if not $index {
     @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
   }
-  @return if($index < list.length($keys), list.nth($keys, $index + 1), null);
+  @return if(sass($index < list.length($keys)): list.nth($keys, $index + 1))
 }
 
 @mixin media-breakpoint-between($lower, $upper, $breakpoints: $breakpoints) {

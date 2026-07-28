@@ -1,5 +1,5 @@
 // TODO
-export const register = (name, keyframe) => {	
+export const register = (name, keyframe) => {
 	globalThis[`$htmlplus:plus$`] ||= {};
 	globalThis[`$htmlplus:plus$`]['assets'] ||= {};
 	globalThis[`$htmlplus:plus$`]['assets']['animations'] ||= {};
