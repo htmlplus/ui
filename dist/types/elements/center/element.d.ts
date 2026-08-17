@@ -20,9 +20,9 @@ export declare class PlusCenter extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -31,9 +31,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusCenterAttributesMapper = {
   'inline': 'inline';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCenterOverridableKeys = 'variant';
+export type PlusCenterOverridableKeys = 'preset';
 export interface PlusCenterDisables {}
 export interface PlusCenterOverrides {}
 export type PlusCenterAttributes = Filter<PlusCenterAttributesOverridden, PlusCenterDisables, PlusCenterAttributesMapper>;
@@ -48,9 +48,9 @@ export type PlusCenterAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCenterProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCenterEvents = Filter<PlusCenterEventsBase, PlusCenterDisables>;
 export type PlusCenterEventsBase = {};
@@ -70,9 +70,9 @@ export type PlusCenterPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCenterProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

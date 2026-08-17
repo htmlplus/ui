@@ -28,9 +28,9 @@ export declare class PlusRelativeTime extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     parts: Intl.RelativeTimeFormatPart[];
     timeout: number;
     get isValid(): boolean;
@@ -50,9 +50,9 @@ export type PlusRelativeTimeAttributesMapper = {
   'sync': 'sync';
   'value': 'value';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusRelativeTimeOverridableKeys = 'variant';
+export type PlusRelativeTimeOverridableKeys = 'preset';
 export interface PlusRelativeTimeDisables {}
 export interface PlusRelativeTimeOverrides {}
 export type PlusRelativeTimeAttributes = Filter<PlusRelativeTimeAttributesOverridden, PlusRelativeTimeDisables, PlusRelativeTimeAttributesMapper>;
@@ -79,9 +79,9 @@ export type PlusRelativeTimeAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusRelativeTimeProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusRelativeTimeEvents = Filter<PlusRelativeTimeEventsBase, PlusRelativeTimeDisables>;
 export type PlusRelativeTimeEventsBase = {};
@@ -113,9 +113,9 @@ export type PlusRelativeTimePropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusRelativeTimeProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

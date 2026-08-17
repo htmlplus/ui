@@ -13,9 +13,9 @@ export declare class PlusTabsPanels extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -23,9 +23,9 @@ type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | un
 type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 export type PlusTabsPanelsAttributesMapper = {
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusTabsPanelsOverridableKeys = 'variant';
+export type PlusTabsPanelsOverridableKeys = 'preset';
 export interface PlusTabsPanelsDisables {}
 export interface PlusTabsPanelsOverrides {}
 export type PlusTabsPanelsAttributes = Filter<PlusTabsPanelsAttributesOverridden, PlusTabsPanelsDisables, PlusTabsPanelsAttributesMapper>;
@@ -36,9 +36,9 @@ export type PlusTabsPanelsAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsPanelsProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusTabsPanelsEvents = Filter<PlusTabsPanelsEventsBase, PlusTabsPanelsDisables>;
 export type PlusTabsPanelsEventsBase = {};
@@ -54,9 +54,9 @@ export type PlusTabsPanelsPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsPanelsProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

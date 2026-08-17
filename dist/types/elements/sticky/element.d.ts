@@ -35,9 +35,9 @@ export declare class PlusSticky extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when the state is changed. To enable, set the `watcher` property to `true`.
      */
@@ -67,9 +67,9 @@ export type PlusStickyAttributesMapper = {
   'watcher': 'watcher';
   'zIndex': 'z-index';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusStickyOverridableKeys = 'variant';
+export type PlusStickyOverridableKeys = 'preset';
 export interface PlusStickyDisables {}
 export interface PlusStickyOverrides {}
 export type PlusStickyAttributes = Filter<PlusStickyAttributesOverridden, PlusStickyDisables, PlusStickyAttributesMapper>;
@@ -96,9 +96,9 @@ export type PlusStickyAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusStickyProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusStickyEvents = Filter<PlusStickyEventsBase, PlusStickyDisables>;
 export type PlusStickyEventsBase = {
@@ -142,9 +142,9 @@ export type PlusStickyPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusStickyProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -1,4 +1,4 @@
-import { Q as Query, r as PlusForm, u as getCSSColor, k as ExternalDependencyError, a as jsx, b as Property, O as Overrides, V as Variant, E as Event, M as Method, W as Watch, B as Bind, c as Element } from "../core/index.js";
+import { Q as Query, u as PlusForm, v as getCSSColor, l as ExternalDependencyError, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -319,8 +319,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusSignature.prototype, "variant", 2);
+  Preset()
+], PlusSignature.prototype, "preset", 2);
 __decorateClass([
   Event()
 ], PlusSignature.prototype, "plusAfter", 2);

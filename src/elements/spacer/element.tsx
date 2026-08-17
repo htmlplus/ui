@@ -3,9 +3,9 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
-	Style,
-	Variant
+	Style
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
@@ -30,11 +30,11 @@ export class PlusSpacer extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	@Style()
 	get style() {

@@ -1,4 +1,4 @@
-import { Q as Query, a as jsx, b as Property, O as Overrides, V as Variant, B as Bind, c as Element } from "../core/index.js";
+import { Q as Query, a as jsx, b as Property, O as Overrides, c as Preset, B as Bind, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{background-color:#f5f5f5;border-radius:1.8rem;height:.6rem;display:block;position:relative;overflow:hidden}.bar{background-color:#d3d3d3;position:absolute;width:100%;top:0;bottom:0;left:-100%}";
 var __defProp = Object.defineProperty;
@@ -42,8 +42,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusCarouselProgress.prototype, "variant", 2);
+  Preset()
+], PlusCarouselProgress.prototype, "preset", 2);
 __decorateClass([
   Query("div")
 ], PlusCarouselProgress.prototype, "$bar", 2);

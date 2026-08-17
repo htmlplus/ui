@@ -43,9 +43,9 @@ export declare class PlusAccordion extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when the element is about to collapse.
      * This event can be [canceled](TODO).
@@ -107,9 +107,9 @@ export type PlusAccordionAttributesMapper = {
   'open': 'open';
   'summary': 'summary';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusAccordionOverridableKeys = 'variant';
+export type PlusAccordionOverridableKeys = 'preset';
 export interface PlusAccordionDisables {}
 export interface PlusAccordionOverrides {}
 export type PlusAccordionAttributes = Filter<PlusAccordionAttributesOverridden, PlusAccordionDisables, PlusAccordionAttributesMapper>;
@@ -132,9 +132,9 @@ export type PlusAccordionAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusAccordionEvents = Filter<PlusAccordionEventsBase, PlusAccordionDisables>;
 export type PlusAccordionEventsBase = {
@@ -224,9 +224,9 @@ export type PlusAccordionPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

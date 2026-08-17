@@ -79,9 +79,9 @@ export declare class PlusDialog extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * When the dialog is going to hide
      */
@@ -152,9 +152,9 @@ export type PlusDialogAttributesMapper = {
   'sticky': 'sticky';
   'transparent': 'transparent';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDialogOverridableKeys = 'variant';
+export type PlusDialogOverridableKeys = 'preset';
 export interface PlusDialogDisables {}
 export interface PlusDialogOverrides {}
 export type PlusDialogAttributes = Filter<PlusDialogAttributesOverridden, PlusDialogDisables, PlusDialogAttributesMapper>;
@@ -221,9 +221,9 @@ export type PlusDialogAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDialogEvents = Filter<PlusDialogEventsBase, PlusDialogDisables>;
 export type PlusDialogEventsBase = {
@@ -353,9 +353,9 @@ export type PlusDialogPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

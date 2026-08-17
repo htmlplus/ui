@@ -12,9 +12,9 @@ export declare class PlusProgressBarStack extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -22,9 +22,9 @@ type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | un
 type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 export type PlusProgressBarStackAttributesMapper = {
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusProgressBarStackOverridableKeys = 'variant';
+export type PlusProgressBarStackOverridableKeys = 'preset';
 export interface PlusProgressBarStackDisables {}
 export interface PlusProgressBarStackOverrides {}
 export type PlusProgressBarStackAttributes = Filter<PlusProgressBarStackAttributesOverridden, PlusProgressBarStackDisables, PlusProgressBarStackAttributesMapper>;
@@ -35,9 +35,9 @@ export type PlusProgressBarStackAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusProgressBarStackProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusProgressBarStackEvents = Filter<PlusProgressBarStackEventsBase, PlusProgressBarStackDisables>;
 export type PlusProgressBarStackEventsBase = {};
@@ -53,9 +53,9 @@ export type PlusProgressBarStackPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusProgressBarStackProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

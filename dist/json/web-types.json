@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.8.11",
+  "version": "1.8.12",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -56,8 +56,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "collapse",
@@ -106,11 +106,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
@@ -165,8 +165,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -187,11 +187,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -298,8 +298,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "cancel",
@@ -461,11 +461,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
@@ -512,8 +512,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "done",
@@ -586,11 +586,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations."
@@ -621,8 +621,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -659,11 +659,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "An image representing a user's profile picture.",
@@ -695,8 +695,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -725,11 +725,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -775,8 +775,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -828,11 +828,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page. It represents the route using links, which enables the user to easily navigate upwards through the hierarchy.",
@@ -911,8 +911,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "browse",
@@ -989,11 +989,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Allows you to select file or files by using click or drag & drop functionality.",
@@ -1034,8 +1034,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1079,11 +1079,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Cards contain content and actions about a single subject.",
@@ -1105,8 +1105,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1119,11 +1119,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -1289,8 +1289,8 @@
                 "description": "TODO: Indicates whether the carousel has been successfully initialized."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "canScrollNext",
@@ -1499,11 +1499,11 @@
               "description": "TODO: Indicates whether the carousel has been successfully initialized."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A carousel element for cycling through elements—like images or text slides.",
@@ -1534,8 +1534,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1563,11 +1563,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -1594,8 +1594,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1616,11 +1616,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": ""
@@ -1651,8 +1651,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1689,11 +1689,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": ""
@@ -1709,8 +1709,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1723,11 +1723,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": ""
@@ -1748,8 +1748,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1770,11 +1770,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -1796,8 +1796,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1810,11 +1810,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -1841,8 +1841,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1863,11 +1863,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Centers content vertically and horizontally.",
@@ -1909,8 +1909,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -1947,11 +1947,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Detects when a click event happens outside of itself.",
@@ -2026,8 +2026,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "complete",
@@ -2134,11 +2134,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Can be used to quickly create animations that display numerical data in a more interesting way."
@@ -2262,8 +2262,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "flipX",
@@ -2450,11 +2450,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Used for cropping large images to fit a container before uploading them to the server."
@@ -2550,8 +2550,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "hide",
@@ -2678,11 +2678,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
@@ -2709,8 +2709,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -2731,11 +2731,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -2762,8 +2762,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -2784,11 +2784,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -2810,8 +2810,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -2824,11 +2824,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -2850,8 +2850,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -2864,11 +2864,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -2895,8 +2895,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -2917,11 +2917,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -2981,8 +2981,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3043,11 +3043,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A thin line that divides the content vertically or horizontally.",
@@ -3139,8 +3139,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "hide",
@@ -3251,11 +3251,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
@@ -3282,8 +3282,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3304,11 +3304,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -3355,8 +3355,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3398,11 +3398,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/)."
@@ -3455,8 +3455,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3530,11 +3530,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported."
@@ -3580,8 +3580,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3645,11 +3645,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library."
@@ -3692,8 +3692,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3743,11 +3743,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
@@ -3792,8 +3792,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3844,11 +3844,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/).",
@@ -3877,6 +3877,11 @@
                 "name": "color",
                 "default": "'dodgerblue'",
                 "description": "Specifies the color of the bar."
+              },
+              {
+                "name": "indeterminate",
+                "default": false,
+                "description": "Indicates that the progress bar is active without a specific progress value."
               },
               {
                 "name": "label",
@@ -3908,8 +3913,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -3928,6 +3933,14 @@
               },
               "default": "'dodgerblue'",
               "description": "Specifies the color of the bar."
+            },
+            {
+              "name": "indeterminate",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Indicates that the progress bar is active without a specific progress value."
             },
             {
               "name": "label",
@@ -3977,11 +3990,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
@@ -4003,8 +4016,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4017,11 +4030,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "",
@@ -4062,8 +4075,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4107,11 +4120,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Outputs a localized time phrase relative to the provided datetime."
@@ -4147,8 +4160,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4185,11 +4198,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Detects scroll event from an element."
@@ -4300,8 +4313,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "clear",
@@ -4461,11 +4474,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Allows user to draw smooth signatures."
@@ -4491,8 +4504,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4521,11 +4534,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A component that can be used to display inline code snippets.",
@@ -4556,8 +4569,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4578,11 +4591,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": ""
@@ -4612,8 +4625,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4649,11 +4662,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "An indicator of progress and activity."
@@ -4699,8 +4712,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4761,11 +4774,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "A container for arranging elements vertically or horizontally.",
@@ -4811,8 +4824,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4856,11 +4869,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Element content is positioned based on the user's scroll position.",
@@ -4905,8 +4918,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4935,11 +4948,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Toggles the state of a single item on or off."
@@ -4969,8 +4982,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -4998,11 +5011,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "Organizes content across different screens.",
@@ -5039,8 +5052,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -5077,11 +5090,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "TODO: Arranges tabs within a bar.",
@@ -5111,8 +5124,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -5139,11 +5152,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
@@ -5165,8 +5178,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -5179,11 +5192,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "TODO: This element contains panels.",
@@ -5218,8 +5231,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               }
             ]
           },
@@ -5254,11 +5267,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "TODO: Tabs make it easy to switch between different views.",
@@ -5322,8 +5335,8 @@
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
               },
               {
-                "name": "variant",
-                "description": "See [Variant](/variant-property) for details."
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
               },
               {
                 "name": "hide",
@@ -5417,11 +5430,11 @@
               "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
             },
             {
-              "name": "variant",
+              "name": "preset",
               "value": {
                 "type": "OverridableValue<never>"
               },
-              "description": "See [Variant](/variant-property) for details."
+              "description": "See [Preset](/preset-property) for details."
             }
           ],
           "description": "TODO"

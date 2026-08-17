@@ -22,9 +22,9 @@ export declare class PlusDialogToggler extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     dialog?: Context;
     render(): any;
 }
@@ -34,9 +34,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusDialogTogglerAttributesMapper = {
   'connector': 'connector';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDialogTogglerOverridableKeys = 'variant';
+export type PlusDialogTogglerOverridableKeys = 'preset';
 export interface PlusDialogTogglerDisables {}
 export interface PlusDialogTogglerOverrides {}
 export type PlusDialogTogglerAttributes = Filter<PlusDialogTogglerAttributesOverridden, PlusDialogTogglerDisables, PlusDialogTogglerAttributesMapper>;
@@ -54,9 +54,9 @@ export type PlusDialogTogglerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogTogglerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDialogTogglerEvents = Filter<PlusDialogTogglerEventsBase, PlusDialogTogglerDisables>;
 export type PlusDialogTogglerEventsBase = {};
@@ -79,9 +79,9 @@ export type PlusDialogTogglerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogTogglerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

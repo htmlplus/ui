@@ -3,8 +3,8 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
-	Property,
-	Variant
+	Preset,
+	Property
 } from '@htmlplus/element';
 
 import type { EmblaEventType } from 'embla-carousel';
@@ -36,11 +36,11 @@ export class PlusCarouselCounter extends CarouselChild {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	events: EmblaEventType[] = ['init', 'reInit', 'select'];
 

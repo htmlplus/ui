@@ -22,9 +22,9 @@ export declare class PlusCarouselSlide extends CarouselChild {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     events: EmblaEventType[];
     get index(): number;
     handleClick(): void;
@@ -36,9 +36,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusCarouselSlideAttributesMapper = {
   'clickable': 'clickable';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCarouselSlideOverridableKeys = 'variant';
+export type PlusCarouselSlideOverridableKeys = 'preset';
 export interface PlusCarouselSlideDisables {}
 export interface PlusCarouselSlideOverrides {}
 export type PlusCarouselSlideAttributes = Filter<PlusCarouselSlideAttributesOverridden, PlusCarouselSlideDisables, PlusCarouselSlideAttributesMapper>;
@@ -58,9 +58,9 @@ export type PlusCarouselSlideAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselSlideProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCarouselSlideEvents = Filter<PlusCarouselSlideEventsBase, PlusCarouselSlideDisables>;
 export type PlusCarouselSlideEventsBase = {};
@@ -85,9 +85,9 @@ export type PlusCarouselSlidePropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselSlideProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

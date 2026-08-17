@@ -1,4 +1,4 @@
-import { P as PlusCore, b as Property, O as Overrides, V as Variant, c as Element } from "../core/index.js";
+import { P as PlusCore, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre}";
 const FORMAT_BYTES_STANDARD = {
   METRIC: {
@@ -181,8 +181,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusFormatBytes.prototype, "variant", 2);
+  Preset()
+], PlusFormatBytes.prototype, "preset", 2);
 PlusFormatBytes = __decorateClass([
   Element()
 ], PlusFormatBytes);

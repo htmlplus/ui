@@ -34,9 +34,9 @@ export declare class PlusAppProgressBar extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     $bar: HTMLDivElement;
     state?: 'completed' | 'idle' | 'progressing';
     progress: number | null;
@@ -82,9 +82,9 @@ export type PlusAppProgressBarAttributesMapper = {
   'trickleRate': 'trickle-rate';
   'trickleSpeed': 'trickle-speed';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusAppProgressBarOverridableKeys = 'color' | 'variant';
+export type PlusAppProgressBarOverridableKeys = 'color' | 'preset';
 export interface PlusAppProgressBarDisables {}
 export interface PlusAppProgressBarOverrides {}
 export type PlusAppProgressBarAttributes = Filter<PlusAppProgressBarAttributesOverridden, PlusAppProgressBarDisables, PlusAppProgressBarAttributesMapper>;
@@ -115,9 +115,9 @@ export type PlusAppProgressBarAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAppProgressBarProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusAppProgressBarEvents = Filter<PlusAppProgressBarEventsBase, PlusAppProgressBarDisables>;
 export type PlusAppProgressBarEventsBase = {};
@@ -174,9 +174,9 @@ export type PlusAppProgressBarPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAppProgressBarProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

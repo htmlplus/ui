@@ -1,4 +1,4 @@
-import { P as PlusCore, a as jsx, b as Property, O as Overrides, V as Variant, c as Element } from "../core/index.js";
+import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{position:relative;display:flex;flex-direction:column;background-color:#fff;background-clip:padding-box;border:solid 1px rgba(0,0,0,.2);border-radius:.3rem;box-shadow:0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);outline:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -38,8 +38,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusDialogContent.prototype, "variant", 2);
+  Preset()
+], PlusDialogContent.prototype, "preset", 2);
 PlusDialogContent = __decorateClass([
   Element()
 ], PlusDialogContent);

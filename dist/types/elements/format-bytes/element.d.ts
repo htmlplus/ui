@@ -49,9 +49,9 @@ export declare class PlusFormatBytes extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get formatted(): string;
     render(): string;
 }
@@ -68,9 +68,9 @@ export type PlusFormatBytesAttributesMapper = {
   'unit': 'unit';
   'value': 'value';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusFormatBytesOverridableKeys = 'variant';
+export type PlusFormatBytesOverridableKeys = 'preset';
 export interface PlusFormatBytesDisables {}
 export interface PlusFormatBytesOverrides {}
 export type PlusFormatBytesAttributes = Filter<PlusFormatBytesAttributesOverridden, PlusFormatBytesDisables, PlusFormatBytesAttributesMapper>;
@@ -116,9 +116,9 @@ export type PlusFormatBytesAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusFormatBytesProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusFormatBytesEvents = Filter<PlusFormatBytesEventsBase, PlusFormatBytesDisables>;
 export type PlusFormatBytesEventsBase = {};
@@ -169,9 +169,9 @@ export type PlusFormatBytesPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusFormatBytesProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

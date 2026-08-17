@@ -61,9 +61,9 @@ export declare class PlusTooltip extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Hides the element.
      */
@@ -109,9 +109,9 @@ export type PlusTooltipAttributesMapper = {
   'trigger': 'trigger';
   'z': 'z';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusTooltipOverridableKeys = 'variant';
+export type PlusTooltipOverridableKeys = 'preset';
 export interface PlusTooltipDisables {}
 export interface PlusTooltipOverrides {}
 export type PlusTooltipAttributes = Filter<PlusTooltipAttributesOverridden, PlusTooltipDisables, PlusTooltipAttributesMapper>;
@@ -165,9 +165,9 @@ export type PlusTooltipAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTooltipProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusTooltipEvents = Filter<PlusTooltipEventsBase, PlusTooltipDisables>;
 export type PlusTooltipEventsBase = {};
@@ -239,9 +239,9 @@ export type PlusTooltipPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTooltipProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

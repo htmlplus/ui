@@ -6,11 +6,11 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
 	Query,
 	State,
-	Style,
-	Variant
+	Style
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
@@ -64,11 +64,11 @@ export class PlusSticky extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	/**
 	 * Fires when the state is changed. To enable, set the `watcher` property to `true`.

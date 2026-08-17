@@ -29,9 +29,9 @@ export declare class PlusClickOutside extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when outside of the element is clicked.
      */
@@ -52,9 +52,9 @@ export type PlusClickOutsideAttributesMapper = {
   'disabled': 'disabled';
   'once': 'once';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusClickOutsideOverridableKeys = 'variant';
+export type PlusClickOutsideOverridableKeys = 'preset';
 export interface PlusClickOutsideDisables {}
 export interface PlusClickOutsideOverrides {}
 export type PlusClickOutsideAttributes = Filter<PlusClickOutsideAttributesOverridden, PlusClickOutsideDisables, PlusClickOutsideAttributesMapper>;
@@ -78,9 +78,9 @@ export type PlusClickOutsideAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusClickOutsideProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusClickOutsideEvents = Filter<PlusClickOutsideEventsBase, PlusClickOutsideDisables>;
 export type PlusClickOutsideEventsBase = {
@@ -121,9 +121,9 @@ export type PlusClickOutsidePropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusClickOutsideProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

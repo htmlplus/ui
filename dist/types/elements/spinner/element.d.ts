@@ -27,9 +27,9 @@ export declare class PlusSpinner extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get style(): {
         ':host': {
             color: string;
@@ -46,9 +46,9 @@ export type PlusSpinnerAttributesMapper = {
   'size': 'size';
   'type': 'type';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusSpinnerOverridableKeys = 'color' | 'size' | 'variant';
+export type PlusSpinnerOverridableKeys = 'color' | 'size' | 'preset';
 export interface PlusSpinnerDisables {}
 export interface PlusSpinnerOverrides {}
 export type PlusSpinnerAttributes = Filter<PlusSpinnerAttributesOverridden, PlusSpinnerDisables, PlusSpinnerAttributesMapper>;
@@ -71,9 +71,9 @@ export type PlusSpinnerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSpinnerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusSpinnerEvents = Filter<PlusSpinnerEventsBase, PlusSpinnerDisables>;
 export type PlusSpinnerEventsBase = {};
@@ -101,9 +101,9 @@ export type PlusSpinnerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSpinnerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

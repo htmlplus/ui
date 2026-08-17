@@ -33,9 +33,9 @@ export declare class PlusFaker extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get content(): any;
     connectedCallback(): void;
     render(): any;
@@ -49,9 +49,9 @@ export type PlusFakerAttributesMapper = {
   'instance': 'instance';
   'seed': 'seed';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusFakerOverridableKeys = 'variant';
+export type PlusFakerOverridableKeys = 'preset';
 export interface PlusFakerDisables {}
 export interface PlusFakerOverrides {}
 export type PlusFakerAttributes = Filter<PlusFakerAttributesOverridden, PlusFakerDisables, PlusFakerAttributesMapper>;
@@ -78,9 +78,9 @@ export type PlusFakerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusFakerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusFakerEvents = Filter<PlusFakerEventsBase, PlusFakerDisables>;
 export type PlusFakerEventsBase = {};
@@ -112,9 +112,9 @@ export type PlusFakerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusFakerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -31,9 +31,9 @@ export declare class PlusAvatar extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get placements(): ({
         key: string;
         style: {
@@ -145,9 +145,9 @@ export type PlusAvatarAttributesMapper = {
   'shape': 'shape';
   'size': 'size';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusAvatarOverridableKeys = 'color' | 'size' | 'variant';
+export type PlusAvatarOverridableKeys = 'color' | 'size' | 'preset';
 export interface PlusAvatarDisables {}
 export interface PlusAvatarOverrides {}
 export type PlusAvatarAttributes = Filter<PlusAvatarAttributesOverridden, PlusAvatarDisables, PlusAvatarAttributesMapper>;
@@ -170,9 +170,9 @@ export type PlusAvatarAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusAvatarEvents = Filter<PlusAvatarEventsBase, PlusAvatarDisables>;
 export type PlusAvatarEventsBase = {};
@@ -200,9 +200,9 @@ export type PlusAvatarPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

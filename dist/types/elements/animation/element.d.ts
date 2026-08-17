@@ -95,9 +95,9 @@ export declare class PlusAnimation extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
      * method is called or when the animation enters the "`idle`" play state from another state.
@@ -190,9 +190,9 @@ export type PlusAnimationAttributesMapper = {
   'playbackRate': 'playback-rate';
   'run': 'run';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusAnimationOverridableKeys = 'name' | 'variant';
+export type PlusAnimationOverridableKeys = 'name' | 'preset';
 export interface PlusAnimationDisables {}
 export interface PlusAnimationOverrides {}
 export type PlusAnimationAttributes = Filter<PlusAnimationAttributesOverridden, PlusAnimationDisables, PlusAnimationAttributesMapper>;
@@ -280,9 +280,9 @@ export type PlusAnimationAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAnimationProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusAnimationEvents = Filter<PlusAnimationEventsBase, PlusAnimationDisables>;
 export type PlusAnimationEventsBase = {
@@ -446,9 +446,9 @@ export type PlusAnimationPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAnimationProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -1,4 +1,4 @@
-import { P as PlusCore, g as getConfig, a as jsx, b as Property, O as Overrides, V as Variant, E as Event, M as Method, W as Watch, B as Bind, c as Element } from "../core/index.js";
+import { P as PlusCore, g as getConfig, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   ease: "ease",
@@ -33,9 +33,9 @@ const ANIMATION_EASINGS = {
 };
 const register = (name, keyframe) => {
   globalThis[`$htmlplus:plus$`] ||= {};
-  globalThis[`$htmlplus:plus$`]["assets"] ||= {};
-  globalThis[`$htmlplus:plus$`]["assets"]["animations"] ||= {};
-  globalThis[`$htmlplus:plus$`]["assets"]["animations"][name] = keyframe;
+  globalThis[`$htmlplus:plus$`].assets ||= {};
+  globalThis[`$htmlplus:plus$`].assets.animations ||= {};
+  globalThis[`$htmlplus:plus$`].assets.animations[name] = keyframe;
 };
 register("fade-in", [
   { offset: 0, opacity: "0" },
@@ -234,8 +234,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusAnimation.prototype, "variant", 2);
+  Preset()
+], PlusAnimation.prototype, "preset", 2);
 __decorateClass([
   Event()
 ], PlusAnimation.prototype, "plusCancel", 2);

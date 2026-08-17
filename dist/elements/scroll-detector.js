@@ -1,4 +1,4 @@
-import { P as PlusCore, o as on, l as off, b as Property, O as Overrides, V as Variant, E as Event, W as Watch, B as Bind, c as Element } from "../core/index.js";
+import { P as PlusCore, o as on, m as off, b as Property, O as Overrides, c as Preset, E as Event, W as Watch, B as Bind, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -98,8 +98,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusScrollDetector.prototype, "variant", 2);
+  Preset()
+], PlusScrollDetector.prototype, "preset", 2);
 __decorateClass([
   Event()
 ], PlusScrollDetector.prototype, "plusChange", 2);

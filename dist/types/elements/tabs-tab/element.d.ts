@@ -26,9 +26,9 @@ export declare class PlusTabsTab extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     parent?: Context;
     onClick(): void;
     render(): any;
@@ -41,9 +41,9 @@ export type PlusTabsTabAttributesMapper = {
   'value': 'value';
   'active': 'active';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusTabsTabOverridableKeys = 'variant';
+export type PlusTabsTabOverridableKeys = 'preset';
 export interface PlusTabsTabDisables {}
 export interface PlusTabsTabOverrides {}
 export type PlusTabsTabAttributes = Filter<PlusTabsTabAttributesOverridden, PlusTabsTabDisables, PlusTabsTabAttributesMapper>;
@@ -62,9 +62,9 @@ export type PlusTabsTabAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsTabProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusTabsTabEvents = Filter<PlusTabsTabEventsBase, PlusTabsTabDisables>;
 export type PlusTabsTabEventsBase = {};
@@ -92,9 +92,9 @@ export type PlusTabsTabPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTabsTabProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -46,9 +46,9 @@ export declare class PlusPrism extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     observer: MutationObserver;
     cache: AsyncCache<PlusPrismResolver>;
     get attributes(): Record<string, string>;
@@ -76,9 +76,9 @@ export type PlusPrismAttributesMapper = {
   'resolver': 'resolver';
   'sync': 'sync';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusPrismOverridableKeys = 'variant';
+export type PlusPrismOverridableKeys = 'preset';
 export interface PlusPrismDisables {}
 export interface PlusPrismOverrides {}
 export type PlusPrismAttributes = Filter<PlusPrismAttributesOverridden, PlusPrismDisables, PlusPrismAttributesMapper>;
@@ -109,9 +109,9 @@ export type PlusPrismAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusPrismProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusPrismEvents = Filter<PlusPrismEventsBase, PlusPrismDisables>;
 export type PlusPrismEventsBase = {};
@@ -147,9 +147,9 @@ export type PlusPrismPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusPrismProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

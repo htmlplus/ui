@@ -51,9 +51,9 @@ export declare class PlusBrowse extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when file(s) are selected.
      */
@@ -102,9 +102,9 @@ export type PlusBrowseAttributesMapper = {
   'maxSize': 'max-size';
   'multiple': 'multiple';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusBrowseOverridableKeys = 'variant';
+export type PlusBrowseOverridableKeys = 'preset';
 export interface PlusBrowseDisables {}
 export interface PlusBrowseOverrides {}
 export type PlusBrowseAttributes = Filter<PlusBrowseAttributesOverridden, PlusBrowseDisables, PlusBrowseAttributesMapper>;
@@ -149,9 +149,9 @@ export type PlusBrowseAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusBrowseProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusBrowseEvents = Filter<PlusBrowseEventsBase, PlusBrowseDisables>;
 export type PlusBrowseEventsBase = {
@@ -236,9 +236,9 @@ export type PlusBrowsePropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusBrowseProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

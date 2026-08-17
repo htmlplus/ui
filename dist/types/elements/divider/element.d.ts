@@ -44,9 +44,9 @@ export declare class PlusDivider extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get style(): {
         ':host': {
             '--plus-divider-color': string;
@@ -65,9 +65,9 @@ export type PlusDividerAttributesMapper = {
   'size': 'size';
   'stroke': 'stroke';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDividerOverridableKeys = 'color' | 'size' | 'stroke' | 'variant';
+export type PlusDividerOverridableKeys = 'color' | 'size' | 'stroke' | 'preset';
 export interface PlusDividerDisables {}
 export interface PlusDividerOverrides {}
 export type PlusDividerAttributes = Filter<PlusDividerAttributesOverridden, PlusDividerDisables, PlusDividerAttributesMapper>;
@@ -102,9 +102,9 @@ export type PlusDividerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDividerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDividerEvents = Filter<PlusDividerEventsBase, PlusDividerDisables>;
 export type PlusDividerEventsBase = {};
@@ -144,9 +144,9 @@ export type PlusDividerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDividerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

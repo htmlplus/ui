@@ -1,4 +1,4 @@
-import { P as PlusCore, f as toCSSUnit, a as jsx, b as Property, O as Overrides, V as Variant, e as Style, c as Element } from "../core/index.js";
+import { P as PlusCore, h as toCSSUnit, a as jsx, b as Property, O as Overrides, c as Preset, f as Style, d as Element } from "../core/index.js";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -88,8 +88,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusStack.prototype, "variant", 2);
+  Preset()
+], PlusStack.prototype, "preset", 2);
 __decorateClass([
   Style()
 ], PlusStack.prototype, "style", 1);

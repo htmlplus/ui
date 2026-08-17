@@ -21,9 +21,9 @@ export declare class PlusAvatarGroup extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -33,9 +33,9 @@ export type PlusAvatarGroupAttributesMapper = {
   'hoverable': 'hoverable';
   'stacked': 'stacked';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusAvatarGroupOverridableKeys = 'variant';
+export type PlusAvatarGroupOverridableKeys = 'preset';
 export interface PlusAvatarGroupDisables {}
 export interface PlusAvatarGroupOverrides {}
 export type PlusAvatarGroupAttributes = Filter<PlusAvatarGroupAttributesOverridden, PlusAvatarGroupDisables, PlusAvatarGroupAttributesMapper>;
@@ -54,9 +54,9 @@ export type PlusAvatarGroupAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarGroupProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusAvatarGroupEvents = Filter<PlusAvatarGroupEventsBase, PlusAvatarGroupDisables>;
 export type PlusAvatarGroupEventsBase = {};
@@ -80,9 +80,9 @@ export type PlusAvatarGroupPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarGroupProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

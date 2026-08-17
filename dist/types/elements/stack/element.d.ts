@@ -38,9 +38,9 @@ export declare class PlusStack extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get style(): {
         ':host': {
             'align-items': string;
@@ -64,9 +64,9 @@ export type PlusStackAttributesMapper = {
   'vertical': 'vertical';
   'wrap': 'wrap';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusStackOverridableKeys = 'variant';
+export type PlusStackOverridableKeys = 'preset';
 export interface PlusStackDisables {}
 export interface PlusStackOverrides {}
 export type PlusStackAttributes = Filter<PlusStackAttributesOverridden, PlusStackDisables, PlusStackAttributesMapper>;
@@ -101,9 +101,9 @@ export type PlusStackAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusStackProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusStackEvents = Filter<PlusStackEventsBase, PlusStackDisables>;
 export type PlusStackEventsBase = {};
@@ -143,9 +143,9 @@ export type PlusStackPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusStackProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -27,9 +27,9 @@ export declare class PlusScrollDetector extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when the scroll starts changing.
      */
@@ -52,9 +52,9 @@ export type PlusScrollDetectorAttributesMapper = {
   'reference': 'reference';
   'vertical': 'vertical';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusScrollDetectorOverridableKeys = 'variant';
+export type PlusScrollDetectorOverridableKeys = 'preset';
 export interface PlusScrollDetectorDisables {}
 export interface PlusScrollDetectorOverrides {}
 export type PlusScrollDetectorAttributes = Filter<PlusScrollDetectorAttributesOverridden, PlusScrollDetectorDisables, PlusScrollDetectorAttributesMapper>;
@@ -77,9 +77,9 @@ export type PlusScrollDetectorAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusScrollDetectorProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusScrollDetectorEvents = Filter<PlusScrollDetectorEventsBase, PlusScrollDetectorDisables>;
 export type PlusScrollDetectorEventsBase = {
@@ -119,9 +119,9 @@ export type PlusScrollDetectorPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusScrollDetectorProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

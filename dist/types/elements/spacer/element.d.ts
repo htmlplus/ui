@@ -14,9 +14,9 @@ export declare class PlusSpacer extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get style(): {
         ':host': {
             'flex-grow': number;
@@ -29,9 +29,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusSpacerAttributesMapper = {
   'grow': 'grow';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusSpacerOverridableKeys = 'variant';
+export type PlusSpacerOverridableKeys = 'preset';
 export interface PlusSpacerDisables {}
 export interface PlusSpacerOverrides {}
 export type PlusSpacerAttributes = Filter<PlusSpacerAttributesOverridden, PlusSpacerDisables, PlusSpacerAttributesMapper>;
@@ -46,9 +46,9 @@ export type PlusSpacerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSpacerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusSpacerEvents = Filter<PlusSpacerEventsBase, PlusSpacerDisables>;
 export type PlusSpacerEventsBase = {};
@@ -68,9 +68,9 @@ export type PlusSpacerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSpacerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

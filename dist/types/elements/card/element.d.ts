@@ -31,9 +31,9 @@ export declare class PlusCard extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -45,9 +45,9 @@ export type PlusCardAttributesMapper = {
   'outlined': 'outlined';
   'tile': 'tile';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCardOverridableKeys = 'elevation' | 'variant';
+export type PlusCardOverridableKeys = 'elevation' | 'preset';
 export interface PlusCardDisables {}
 export interface PlusCardOverrides {}
 export type PlusCardAttributes = Filter<PlusCardAttributesOverridden, PlusCardDisables, PlusCardAttributesMapper>;
@@ -75,9 +75,9 @@ export type PlusCardAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCardProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCardEvents = Filter<PlusCardEventsBase, PlusCardDisables>;
 export type PlusCardEventsBase = {};
@@ -110,9 +110,9 @@ export type PlusCardPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCardProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -42,7 +42,7 @@
 
 // TODO
 
-:host([variant='indeterminate'])::part(indicator) {
+:host([indeterminate])::part(indicator) {
   animation: $progress-bar-indeterminate-indicator-animation;
   width: $progress-bar-indeterminate-indicator-width;
 }

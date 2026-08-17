@@ -7,8 +7,8 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
-	Variant,
 	Watch
 } from '@htmlplus/element';
 
@@ -150,11 +150,11 @@ export class PlusAnimation extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	/**
 	 * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)

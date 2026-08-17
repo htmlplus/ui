@@ -69,9 +69,9 @@ export declare class PlusDrawer extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * When the drawer is going to hide
      */
@@ -142,9 +142,9 @@ export type PlusDrawerAttributesMapper = {
   'flexible': 'flexible';
   'size': 'size';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDrawerOverridableKeys = 'variant';
+export type PlusDrawerOverridableKeys = 'preset';
 export interface PlusDrawerDisables {}
 export interface PlusDrawerOverrides {}
 export type PlusDrawerAttributes = Filter<PlusDrawerAttributesOverridden, PlusDrawerDisables, PlusDrawerAttributesMapper>;
@@ -207,9 +207,9 @@ export type PlusDrawerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDrawerEvents = Filter<PlusDrawerEventsBase, PlusDrawerDisables>;
 export type PlusDrawerEventsBase = {
@@ -335,9 +335,9 @@ export type PlusDrawerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

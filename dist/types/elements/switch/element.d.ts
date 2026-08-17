@@ -21,9 +21,9 @@ export declare class PlusSwitch extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * When the switch state is changed this event triggers.
      * @model
@@ -41,9 +41,9 @@ export type PlusSwitchAttributesMapper = {
   'checked': 'checked';
   'disabled': 'disabled';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusSwitchOverridableKeys = 'variant';
+export type PlusSwitchOverridableKeys = 'preset';
 export interface PlusSwitchDisables {}
 export interface PlusSwitchOverrides {}
 export type PlusSwitchAttributes = Filter<PlusSwitchAttributesOverridden, PlusSwitchDisables, PlusSwitchAttributesMapper>;
@@ -63,9 +63,9 @@ export type PlusSwitchAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSwitchProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusSwitchEvents = Filter<PlusSwitchEventsBase, PlusSwitchDisables>;
 export type PlusSwitchEventsBase = {
@@ -104,9 +104,9 @@ export type PlusSwitchPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSwitchProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

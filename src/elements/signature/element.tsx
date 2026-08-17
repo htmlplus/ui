@@ -7,9 +7,9 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
 	Query,
-	Variant,
 	Watch
 } from '@htmlplus/element';
 
@@ -147,11 +147,11 @@ export class PlusSignature extends PlusForm {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	/**
 	 * Fires after updating the stroke.

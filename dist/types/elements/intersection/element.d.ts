@@ -49,9 +49,9 @@ export declare class PlusIntersection extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires When the browser detects that the element has been unveiled or obscured.
      */
@@ -82,9 +82,9 @@ export type PlusIntersectionAttributesMapper = {
   'rootMargin': 'root-margin';
   'threshold': 'threshold';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusIntersectionOverridableKeys = 'variant';
+export type PlusIntersectionOverridableKeys = 'preset';
 export interface PlusIntersectionDisables {}
 export interface PlusIntersectionOverrides {}
 export type PlusIntersectionAttributes = Filter<PlusIntersectionAttributesOverridden, PlusIntersectionDisables, PlusIntersectionAttributesMapper>;
@@ -126,9 +126,9 @@ export type PlusIntersectionAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusIntersectionProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusIntersectionEvents = Filter<PlusIntersectionEventsBase, PlusIntersectionDisables>;
 export type PlusIntersectionEventsBase = {
@@ -187,9 +187,9 @@ export type PlusIntersectionPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusIntersectionProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

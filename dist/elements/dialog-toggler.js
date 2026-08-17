@@ -1,4 +1,4 @@
-import { P as PlusCore, j as jsxs, a as jsx, b as Property, O as Overrides, V as Variant, S as State, C as Consumer, c as Element } from "../core/index.js";
+import { P as PlusCore, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, S as State, C as Consumer, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-block;cursor:default;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -40,8 +40,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusDialogToggler.prototype, "variant", 2);
+  Preset()
+], PlusDialogToggler.prototype, "preset", 2);
 __decorateClass([
   State(),
   Consumer("dialog.connector")

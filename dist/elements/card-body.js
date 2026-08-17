@@ -1,4 +1,4 @@
-import { P as PlusCore, a as jsx, b as Property, O as Overrides, V as Variant, c as Element } from "../core/index.js";
+import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{flex:1 1 auto;padding:1rem 1rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -28,8 +28,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusCardBody.prototype, "variant", 2);
+  Preset()
+], PlusCardBody.prototype, "preset", 2);
 PlusCardBody = __decorateClass([
   Element()
 ], PlusCardBody);

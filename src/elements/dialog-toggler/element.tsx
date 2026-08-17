@@ -4,9 +4,9 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
-	State,
-	Variant
+	State
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
@@ -40,11 +40,11 @@ export class PlusDialogToggler extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	@State()
 	@Consumer('dialog.connector')

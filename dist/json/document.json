@@ -28,7 +28,7 @@
         }
       ],
       "key": "plus-accordion",
-      "lastModified": "2026-07-12T17:12:11.454Z",
+      "lastModified": "2026-08-17T18:34:35.942Z",
       "methods": [
         {
           "async": false,
@@ -115,14 +115,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -198,7 +198,7 @@
     {
       "events": [],
       "key": "plus-accordions",
-      "lastModified": "2026-06-14T16:50:58.044Z",
+      "lastModified": "2026-08-17T18:20:27.507Z",
       "methods": [],
       "properties": [
         {
@@ -222,14 +222,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -266,7 +266,7 @@
         }
       ],
       "key": "plus-animation",
-      "lastModified": "2026-07-21T16:00:03.544Z",
+      "lastModified": "2026-08-17T18:59:19.057Z",
       "methods": [
         {
           "async": false,
@@ -499,14 +499,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -535,7 +535,7 @@
     {
       "events": [],
       "key": "plus-app-progress-bar",
-      "lastModified": "2026-07-12T17:07:55.278Z",
+      "lastModified": "2026-08-17T18:20:27.529Z",
       "methods": [
         {
           "async": false,
@@ -659,14 +659,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -690,7 +690,7 @@
     {
       "events": [],
       "key": "plus-avatar",
-      "lastModified": "2026-07-12T17:17:27.722Z",
+      "lastModified": "2026-08-17T18:59:19.057Z",
       "methods": [],
       "properties": [
         {
@@ -736,14 +736,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -780,7 +780,7 @@
     {
       "events": [],
       "key": "plus-avatar-group",
-      "lastModified": "2026-06-14T16:50:58.058Z",
+      "lastModified": "2026-08-17T18:20:27.530Z",
       "methods": [],
       "properties": [
         {
@@ -814,14 +814,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -840,7 +840,7 @@
     {
       "events": [],
       "key": "plus-breadcrumb",
-      "lastModified": "2026-07-17T16:11:05.528Z",
+      "lastModified": "2026-08-17T18:20:27.538Z",
       "methods": [],
       "properties": [
         {
@@ -903,14 +903,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -980,7 +980,7 @@
         }
       ],
       "key": "plus-browse",
-      "lastModified": "2026-07-12T17:05:54.682Z",
+      "lastModified": "2026-08-17T18:20:27.537Z",
       "methods": [
         {
           "async": false,
@@ -1079,14 +1079,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1112,7 +1112,7 @@
     {
       "events": [],
       "key": "plus-card",
-      "lastModified": "2026-06-14T16:50:58.062Z",
+      "lastModified": "2026-08-17T18:20:27.536Z",
       "methods": [],
       "properties": [
         {
@@ -1166,14 +1166,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [
@@ -1225,7 +1225,7 @@
     {
       "events": [],
       "key": "plus-card-body",
-      "lastModified": "2026-06-14T16:50:58.061Z",
+      "lastModified": "2026-08-17T18:20:27.540Z",
       "methods": [],
       "properties": [
         {
@@ -1239,14 +1239,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1344,7 +1344,7 @@
         }
       ],
       "key": "plus-carousel",
-      "lastModified": "2026-07-17T16:18:22.158Z",
+      "lastModified": "2026-08-17T18:59:19.057Z",
       "methods": [
         {
           "async": false,
@@ -1698,14 +1698,14 @@
           "Property": "() get initialized(): boolean { return !!this.api; } Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1757,7 +1757,7 @@
     {
       "events": [],
       "key": "plus-carousel-button",
-      "lastModified": "2026-06-14T16:50:58.063Z",
+      "lastModified": "2026-08-17T18:20:27.551Z",
       "methods": [],
       "properties": [
         {
@@ -1790,14 +1790,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1815,7 +1815,7 @@
     {
       "events": [],
       "key": "plus-carousel-counter",
-      "lastModified": "2026-06-14T16:50:58.063Z",
+      "lastModified": "2026-08-17T18:20:27.548Z",
       "methods": [],
       "properties": [
         {
@@ -1839,14 +1839,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1858,7 +1858,7 @@
     {
       "events": [],
       "key": "plus-carousel-indicators",
-      "lastModified": "2026-07-19T17:39:39.114Z",
+      "lastModified": "2026-08-17T18:20:27.551Z",
       "methods": [],
       "properties": [
         {
@@ -1902,14 +1902,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1921,7 +1921,7 @@
     {
       "events": [],
       "key": "plus-carousel-progress",
-      "lastModified": "2026-06-14T16:50:58.064Z",
+      "lastModified": "2026-08-17T18:20:27.549Z",
       "methods": [],
       "properties": [
         {
@@ -1935,14 +1935,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -1954,7 +1954,7 @@
     {
       "events": [],
       "key": "plus-carousel-slide",
-      "lastModified": "2026-06-14T16:50:58.064Z",
+      "lastModified": "2026-08-17T18:20:27.549Z",
       "methods": [],
       "properties": [
         {
@@ -1978,14 +1978,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -2003,7 +2003,7 @@
     {
       "events": [],
       "key": "plus-carousel-slides",
-      "lastModified": "2026-06-14T16:50:58.065Z",
+      "lastModified": "2026-08-17T18:20:27.551Z",
       "methods": [],
       "properties": [
         {
@@ -2017,14 +2017,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -2042,7 +2042,7 @@
     {
       "events": [],
       "key": "plus-center",
-      "lastModified": "2026-07-12T17:12:19.273Z",
+      "lastModified": "2026-08-17T18:20:27.550Z",
       "methods": [],
       "properties": [
         {
@@ -2066,14 +2066,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -2101,7 +2101,7 @@
         }
       ],
       "key": "plus-click-outside",
-      "lastModified": "2026-07-19T17:39:39.116Z",
+      "lastModified": "2026-08-17T18:20:27.554Z",
       "methods": [],
       "properties": [
         {
@@ -2145,14 +2145,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -2180,7 +2180,7 @@
         }
       ],
       "key": "plus-counter",
-      "lastModified": "2026-06-14T16:50:58.068Z",
+      "lastModified": "2026-08-17T18:20:27.562Z",
       "methods": [
         {
           "async": false,
@@ -2325,14 +2325,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -2397,7 +2397,7 @@
         }
       ],
       "key": "plus-cropper",
-      "lastModified": "2026-07-19T17:39:39.127Z",
+      "lastModified": "2026-08-17T18:20:27.570Z",
       "methods": [
         {
           "async": false,
@@ -2817,14 +2817,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [
@@ -2976,7 +2976,7 @@
         }
       ],
       "key": "plus-dialog",
-      "lastModified": "2026-07-19T17:39:39.129Z",
+      "lastModified": "2026-08-17T18:20:27.569Z",
       "methods": [
         {
           "async": false,
@@ -3162,14 +3162,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3207,7 +3207,7 @@
     {
       "events": [],
       "key": "plus-dialog-body",
-      "lastModified": "2026-06-14T16:50:58.071Z",
+      "lastModified": "2026-08-17T18:20:27.567Z",
       "methods": [],
       "properties": [
         {
@@ -3231,14 +3231,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3256,7 +3256,7 @@
     {
       "events": [],
       "key": "plus-dialog-content",
-      "lastModified": "2026-06-14T16:50:58.071Z",
+      "lastModified": "2026-08-17T18:20:27.568Z",
       "methods": [],
       "properties": [
         {
@@ -3280,14 +3280,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3305,7 +3305,7 @@
     {
       "events": [],
       "key": "plus-dialog-footer",
-      "lastModified": "2026-06-14T16:50:58.072Z",
+      "lastModified": "2026-08-17T18:20:27.567Z",
       "methods": [],
       "properties": [
         {
@@ -3319,14 +3319,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3344,7 +3344,7 @@
     {
       "events": [],
       "key": "plus-dialog-header",
-      "lastModified": "2026-06-14T16:50:58.072Z",
+      "lastModified": "2026-08-17T18:20:27.567Z",
       "methods": [],
       "properties": [
         {
@@ -3358,14 +3358,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3383,7 +3383,7 @@
     {
       "events": [],
       "key": "plus-dialog-toggler",
-      "lastModified": "2026-06-14T16:50:58.072Z",
+      "lastModified": "2026-08-17T18:20:27.570Z",
       "methods": [],
       "properties": [
         {
@@ -3407,14 +3407,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3440,7 +3440,7 @@
     {
       "events": [],
       "key": "plus-divider",
-      "lastModified": "2026-06-14T16:50:58.076Z",
+      "lastModified": "2026-08-17T18:20:27.568Z",
       "methods": [],
       "properties": [
         {
@@ -3517,14 +3517,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3593,7 +3593,7 @@
         }
       ],
       "key": "plus-drawer",
-      "lastModified": "2026-07-19T17:39:39.136Z",
+      "lastModified": "2026-08-17T18:20:27.577Z",
       "methods": [
         {
           "async": false,
@@ -3759,14 +3759,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3785,7 +3785,7 @@
     {
       "events": [],
       "key": "plus-drawer-toggler",
-      "lastModified": "2026-06-14T16:50:58.076Z",
+      "lastModified": "2026-08-17T18:20:27.575Z",
       "methods": [],
       "properties": [
         {
@@ -3809,14 +3809,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3842,7 +3842,7 @@
     {
       "events": [],
       "key": "plus-faker",
-      "lastModified": "2026-07-12T16:48:15.359Z",
+      "lastModified": "2026-08-17T18:20:27.575Z",
       "methods": [],
       "properties": [
         {
@@ -3894,14 +3894,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -3922,7 +3922,7 @@
     {
       "events": [],
       "key": "plus-format-bytes",
-      "lastModified": "2026-06-14T16:50:58.079Z",
+      "lastModified": "2026-08-17T18:20:27.578Z",
       "methods": [],
       "properties": [
         {
@@ -4013,14 +4013,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4042,7 +4042,7 @@
     {
       "events": [],
       "key": "plus-icon",
-      "lastModified": "2026-07-19T17:39:39.139Z",
+      "lastModified": "2026-08-17T18:20:27.585Z",
       "methods": [],
       "properties": [
         {
@@ -4125,14 +4125,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4174,7 +4174,7 @@
         }
       ],
       "key": "plus-intersection",
-      "lastModified": "2026-07-12T17:14:09.407Z",
+      "lastModified": "2026-08-17T18:20:27.589Z",
       "methods": [],
       "properties": [
         {
@@ -4236,14 +4236,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4264,7 +4264,7 @@
     {
       "events": [],
       "key": "plus-prism",
-      "lastModified": "2026-07-12T17:18:34.897Z",
+      "lastModified": "2026-08-17T18:20:27.593Z",
       "methods": [],
       "properties": [
         {
@@ -4328,14 +4328,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4381,7 +4381,7 @@
     {
       "events": [],
       "key": "plus-progress-bar",
-      "lastModified": "2026-06-14T16:50:58.084Z",
+      "lastModified": "2026-08-17T18:32:48.970Z",
       "methods": [],
       "properties": [
         {
@@ -4403,6 +4403,16 @@
           "type": "OverridableValue<PlusColor>",
           "typeReference": "@htmlplus/element",
           "description": "Specifies the color of the bar."
+        },
+        {
+          "attribute": "indeterminate",
+          "initializer": false,
+          "name": "indeterminate",
+          "readonly": false,
+          "reflects": true,
+          "required": false,
+          "type": "boolean",
+          "description": "Indicates that the progress bar is active without a specific progress value."
         },
         {
           "attribute": "label",
@@ -4465,14 +4475,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4504,7 +4514,7 @@
     {
       "events": [],
       "key": "plus-progress-bar-stack",
-      "lastModified": "2026-06-14T16:50:58.083Z",
+      "lastModified": "2026-08-17T18:20:27.594Z",
       "methods": [],
       "properties": [
         {
@@ -4518,14 +4528,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4543,7 +4553,7 @@
     {
       "events": [],
       "key": "plus-relative-time",
-      "lastModified": "2026-06-14T16:50:58.084Z",
+      "lastModified": "2026-08-17T18:20:27.597Z",
       "methods": [],
       "properties": [
         {
@@ -4596,14 +4606,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4630,7 +4640,7 @@
         }
       ],
       "key": "plus-scroll-detector",
-      "lastModified": "2026-07-19T17:39:39.151Z",
+      "lastModified": "2026-08-17T18:20:27.599Z",
       "methods": [],
       "properties": [
         {
@@ -4674,14 +4684,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -4733,7 +4743,7 @@
         }
       ],
       "key": "plus-signature",
-      "lastModified": "2026-07-12T17:07:55.277Z",
+      "lastModified": "2026-08-17T18:20:27.614Z",
       "methods": [
         {
           "async": false,
@@ -5015,14 +5025,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5058,7 +5068,7 @@
     {
       "events": [],
       "key": "plus-snippet",
-      "lastModified": "2026-07-09T11:46:52.949Z",
+      "lastModified": "2026-08-17T18:20:27.608Z",
       "methods": [],
       "properties": [
         {
@@ -5093,14 +5103,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5144,7 +5154,7 @@
     {
       "events": [],
       "key": "plus-spacer",
-      "lastModified": "2026-06-14T16:50:58.087Z",
+      "lastModified": "2026-08-17T18:20:27.609Z",
       "methods": [],
       "properties": [
         {
@@ -5168,14 +5178,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5188,7 +5198,7 @@
     {
       "events": [],
       "key": "plus-spinner",
-      "lastModified": "2026-06-14T16:50:58.088Z",
+      "lastModified": "2026-08-17T18:20:27.608Z",
       "methods": [],
       "properties": [
         {
@@ -5234,14 +5244,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5260,7 +5270,7 @@
     {
       "events": [],
       "key": "plus-stack",
-      "lastModified": "2026-06-14T16:50:58.089Z",
+      "lastModified": "2026-08-17T18:20:27.611Z",
       "methods": [],
       "properties": [
         {
@@ -5334,14 +5344,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5370,7 +5380,7 @@
         }
       ],
       "key": "plus-sticky",
-      "lastModified": "2026-06-14T16:50:58.090Z",
+      "lastModified": "2026-08-17T18:20:27.615Z",
       "methods": [],
       "properties": [
         {
@@ -5423,14 +5433,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5471,7 +5481,7 @@
         }
       ],
       "key": "plus-switch",
-      "lastModified": "2026-06-14T16:50:58.090Z",
+      "lastModified": "2026-08-17T18:20:27.616Z",
       "methods": [],
       "properties": [
         {
@@ -5506,14 +5516,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5538,7 +5548,7 @@
         }
       ],
       "key": "plus-tabs",
-      "lastModified": "2026-06-14T16:50:58.092Z",
+      "lastModified": "2026-08-17T18:20:27.608Z",
       "methods": [],
       "properties": [
         {
@@ -5571,14 +5581,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5604,7 +5614,7 @@
     {
       "events": [],
       "key": "plus-tabs-bar",
-      "lastModified": "2026-06-14T16:50:58.090Z",
+      "lastModified": "2026-08-17T18:20:27.588Z",
       "methods": [],
       "properties": [
         {
@@ -5648,14 +5658,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5673,7 +5683,7 @@
     {
       "events": [],
       "key": "plus-tabs-panel",
-      "lastModified": "2026-06-14T16:50:58.091Z",
+      "lastModified": "2026-08-17T18:20:27.582Z",
       "methods": [],
       "properties": [
         {
@@ -5705,14 +5715,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5730,7 +5740,7 @@
     {
       "events": [],
       "key": "plus-tabs-panels",
-      "lastModified": "2026-06-14T16:50:58.091Z",
+      "lastModified": "2026-08-17T18:20:27.576Z",
       "methods": [],
       "properties": [
         {
@@ -5744,14 +5754,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5769,7 +5779,7 @@
     {
       "events": [],
       "key": "plus-tabs-tab",
-      "lastModified": "2026-06-14T16:50:58.091Z",
+      "lastModified": "2026-08-17T18:20:27.572Z",
       "methods": [],
       "properties": [
         {
@@ -5811,14 +5821,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],
@@ -5836,7 +5846,7 @@
     {
       "events": [],
       "key": "plus-tooltip",
-      "lastModified": "2026-07-19T17:39:39.110Z",
+      "lastModified": "2026-08-17T18:20:27.553Z",
       "methods": [
         {
           "async": false,
@@ -5964,14 +5974,14 @@
           "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
-          "attribute": "variant",
-          "name": "variant",
+          "attribute": "preset",
+          "name": "preset",
           "readonly": false,
           "reflects": true,
           "required": false,
           "type": "OverridableValue<never>",
           "typeReference": "@htmlplus/element",
-          "description": "See [Variant](/variant-property) for details."
+          "description": "See [Preset](/preset-property) for details."
         }
       ],
       "styles": [],

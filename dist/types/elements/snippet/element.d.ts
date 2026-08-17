@@ -28,9 +28,9 @@ export declare class PlusSnippet extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get style(): {
         ':host': {
             '--plus-snippet-color': string;
@@ -45,9 +45,9 @@ export type PlusSnippetAttributesMapper = {
   'color': 'color';
   'symbol': 'symbol';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusSnippetOverridableKeys = 'color' | 'variant';
+export type PlusSnippetOverridableKeys = 'color' | 'preset';
 export interface PlusSnippetDisables {}
 export interface PlusSnippetOverrides {}
 export type PlusSnippetAttributes = Filter<PlusSnippetAttributesOverridden, PlusSnippetDisables, PlusSnippetAttributesMapper>;
@@ -66,9 +66,9 @@ export type PlusSnippetAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSnippetProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusSnippetEvents = Filter<PlusSnippetEventsBase, PlusSnippetDisables>;
 export type PlusSnippetEventsBase = {};
@@ -92,9 +92,9 @@ export type PlusSnippetPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSnippetProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

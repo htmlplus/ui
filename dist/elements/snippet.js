@@ -1,4 +1,4 @@
-import { P as PlusCore, t as toCSSColor, j as jsxs, a as jsx, F as Fragment, b as Property, O as Overrides, V as Variant, e as Style, c as Element } from "../core/index.js";
+import { P as PlusCore, t as toCSSColor, j as jsxs, a as jsx, F as Fragment, b as Property, O as Overrides, c as Preset, f as Style, d as Element } from "../core/index.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{background-color:hsl(from var(--plus-snippet-color) h s 90%);border:none;border-radius:.5rem;color:var(--plus-snippet-color);gap:.5rem;padding:.5rem 1rem;direction:ltr;display:flex;align-items:center;justify-content:space-between}pre{gap:.5rem;display:flex;align-items:center;white-space:nowrap;margin:0;flex-grow:1}[part=default]{display:block}[part=symbol]{color:hsl(from var(--plus-snippet-color) h s 60%);display:contents;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -57,8 +57,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusSnippet.prototype, "variant", 2);
+  Preset()
+], PlusSnippet.prototype, "preset", 2);
 __decorateClass([
   Style()
 ], PlusSnippet.prototype, "style", 1);

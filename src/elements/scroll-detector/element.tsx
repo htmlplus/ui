@@ -6,8 +6,8 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
-	Variant,
 	Watch,
 	off,
 	on
@@ -53,11 +53,11 @@ export class PlusScrollDetector extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	/**
 	 * Fires when the scroll starts changing.

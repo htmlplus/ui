@@ -7,9 +7,9 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
 	State,
-	Variant,
 	Watch
 } from '@htmlplus/element';
 
@@ -95,11 +95,11 @@ export class PlusCounter extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	/**
 	 * Is Triggered when transition ended.

@@ -22,9 +22,9 @@ export declare class PlusDrawerToggler extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     drawer?: Context;
     render(): any;
 }
@@ -34,9 +34,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusDrawerTogglerAttributesMapper = {
   'connector': 'connector';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDrawerTogglerOverridableKeys = 'variant';
+export type PlusDrawerTogglerOverridableKeys = 'preset';
 export interface PlusDrawerTogglerDisables {}
 export interface PlusDrawerTogglerOverrides {}
 export type PlusDrawerTogglerAttributes = Filter<PlusDrawerTogglerAttributesOverridden, PlusDrawerTogglerDisables, PlusDrawerTogglerAttributesMapper>;
@@ -54,9 +54,9 @@ export type PlusDrawerTogglerAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerTogglerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDrawerTogglerEvents = Filter<PlusDrawerTogglerEventsBase, PlusDrawerTogglerDisables>;
 export type PlusDrawerTogglerEventsBase = {};
@@ -79,9 +79,9 @@ export type PlusDrawerTogglerPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerTogglerProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -1,4 +1,4 @@
-import { a as jsx, b as Property, O as Overrides, V as Variant, L as Listen, c as Element } from "../core/index.js";
+import { a as jsx, b as Property, O as Overrides, c as Preset, L as Listen, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
 const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;flex:0 0 auto}:host([clickable]){cursor:pointer}global plus-carousel[axis=x] plus-carousel-slide{min-width:0}global plus-carousel[axis=y] plus-carousel-slide{min-height:0}";
 var __defProp = Object.defineProperty;
@@ -48,8 +48,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusCarouselSlide.prototype, "variant", 2);
+  Preset()
+], PlusCarouselSlide.prototype, "preset", 2);
 __decorateClass([
   Listen("click")
 ], PlusCarouselSlide.prototype, "handleClick", 1);

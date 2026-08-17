@@ -86,9 +86,9 @@ export declare class PlusSignature extends PlusForm {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires after updating the stroke.
      */
@@ -209,9 +209,9 @@ export type PlusSignatureAttributesMapper = {
   'redoable': 'redoable';
   'undoable': 'undoable';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusSignatureOverridableKeys = 'backgroundColor' | 'penColor' | 'variant';
+export type PlusSignatureOverridableKeys = 'backgroundColor' | 'penColor' | 'preset';
 export interface PlusSignatureDisables {}
 export interface PlusSignatureOverrides {}
 export type PlusSignatureAttributes = Filter<PlusSignatureAttributesOverridden, PlusSignatureDisables, PlusSignatureAttributesMapper>;
@@ -276,9 +276,9 @@ export type PlusSignatureAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSignatureProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusSignatureEvents = Filter<PlusSignatureEventsBase, PlusSignatureDisables>;
 export type PlusSignatureEventsBase = {
@@ -475,9 +475,9 @@ export type PlusSignaturePropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSignatureProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

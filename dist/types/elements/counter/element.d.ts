@@ -54,9 +54,9 @@ export declare class PlusCounter extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Is Triggered when transition ended.
      */
@@ -107,9 +107,9 @@ export type PlusCounterAttributesMapper = {
   'separator': 'separator';
   'to': 'to';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCounterOverridableKeys = 'variant';
+export type PlusCounterOverridableKeys = 'preset';
 export interface PlusCounterDisables {}
 export interface PlusCounterOverrides {}
 export type PlusCounterAttributes = Filter<PlusCounterAttributesOverridden, PlusCounterDisables, PlusCounterAttributesMapper>;
@@ -160,9 +160,9 @@ export type PlusCounterAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCounterProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCounterEvents = Filter<PlusCounterEventsBase, PlusCounterDisables>;
 export type PlusCounterEventsBase = {
@@ -247,9 +247,9 @@ export type PlusCounterPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCounterProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

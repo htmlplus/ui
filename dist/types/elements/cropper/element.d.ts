@@ -121,9 +121,9 @@ export declare class PlusCropper extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Fires when the `image` or the `viewport` is changed.
      */
@@ -274,9 +274,9 @@ export type PlusCropperAttributesMapper = {
   'zoomable': 'zoomable';
   'zoomRatio': 'zoom-ratio';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCropperOverridableKeys = 'variant';
+export type PlusCropperOverridableKeys = 'preset';
 export interface PlusCropperDisables {}
 export interface PlusCropperOverrides {}
 export type PlusCropperAttributes = Filter<PlusCropperAttributesOverridden, PlusCropperDisables, PlusCropperAttributesMapper>;
@@ -389,9 +389,9 @@ export type PlusCropperAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCropperProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCropperEvents = Filter<PlusCropperEventsBase, PlusCropperDisables>;
 export type PlusCropperEventsBase = {
@@ -611,9 +611,9 @@ export type PlusCropperPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCropperProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

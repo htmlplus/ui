@@ -3,8 +3,8 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
-	Property,
-	Variant
+	Preset,
+	Property
 } from '@htmlplus/element';
 
 import type { Faker as FakerCoreType } from '@faker-js/faker';
@@ -56,11 +56,11 @@ export class PlusFaker extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	get content() {
 		const method = this.api

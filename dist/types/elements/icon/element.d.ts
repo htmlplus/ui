@@ -49,9 +49,9 @@ export declare class PlusIcon extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     cache: AsyncCache<PlusIconResolver>;
     get style(): {
         ':host': {
@@ -77,9 +77,9 @@ export type PlusIconAttributesMapper = {
   'rotate': 'rotate';
   'size': 'size';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusIconOverridableKeys = 'color' | 'name' | 'variant';
+export type PlusIconOverridableKeys = 'color' | 'name' | 'preset';
 export interface PlusIconDisables {}
 export interface PlusIconOverrides {}
 export type PlusIconAttributes = Filter<PlusIconAttributesOverridden, PlusIconDisables, PlusIconAttributesMapper>;
@@ -118,9 +118,9 @@ export type PlusIconAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusIconProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusIconEvents = Filter<PlusIconEventsBase, PlusIconDisables>;
 export type PlusIconEventsBase = {};
@@ -164,9 +164,9 @@ export type PlusIconPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusIconProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

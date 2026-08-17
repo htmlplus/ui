@@ -12,9 +12,9 @@ export declare class PlusDialogFooter extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -22,9 +22,9 @@ type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | un
 type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 export type PlusDialogFooterAttributesMapper = {
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDialogFooterOverridableKeys = 'variant';
+export type PlusDialogFooterOverridableKeys = 'preset';
 export interface PlusDialogFooterDisables {}
 export interface PlusDialogFooterOverrides {}
 export type PlusDialogFooterAttributes = Filter<PlusDialogFooterAttributesOverridden, PlusDialogFooterDisables, PlusDialogFooterAttributesMapper>;
@@ -35,9 +35,9 @@ export type PlusDialogFooterAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogFooterProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDialogFooterEvents = Filter<PlusDialogFooterEventsBase, PlusDialogFooterDisables>;
 export type PlusDialogFooterEventsBase = {};
@@ -53,9 +53,9 @@ export type PlusDialogFooterPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogFooterProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

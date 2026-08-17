@@ -149,9 +149,9 @@ export declare class PlusCarousel extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     /**
      * Runs when the carousel has been destroyed.
      * This only fires once and will be the last event the carousel fires.
@@ -330,9 +330,9 @@ export type PlusCarouselAttributesMapper = {
   'tweenFactorBase': 'tween-factor-base';
   'api': 'api';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCarouselOverridableKeys = 'variant';
+export type PlusCarouselOverridableKeys = 'preset';
 export interface PlusCarouselDisables {}
 export interface PlusCarouselOverrides {}
 export type PlusCarouselAttributes = Filter<PlusCarouselAttributesOverridden, PlusCarouselDisables, PlusCarouselAttributesMapper>;
@@ -470,9 +470,9 @@ export type PlusCarouselAttributesBase = {
    */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCarouselEvents = Filter<PlusCarouselEventsBase, PlusCarouselDisables>;
 export type PlusCarouselEventsBase = {
@@ -826,9 +826,9 @@ export type PlusCarouselPropertiesBase = {
    */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

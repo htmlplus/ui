@@ -3,9 +3,9 @@ import {
 	type OverridableValue,
 	Overrides,
 	type OverridesConfig,
+	Preset,
 	Property,
-	Style,
-	Variant
+	Style
 } from '@htmlplus/element';
 
 import { PlusCore } from '@/core';
@@ -33,6 +33,12 @@ export class PlusProgressBar extends PlusCore {
 	 */
 	@Property({ reflect: true })
 	color: OverridableValue<PlusColor> = 'dodgerblue';
+
+	/**
+	 * Indicates that the progress bar is active without a specific progress value.
+	 */
+	@Property({ reflect: true })
+	indeterminate: boolean = false;
 
 	/**
 	 * Displays the progress percentage.
@@ -72,11 +78,11 @@ export class PlusProgressBar extends PlusCore {
 	overrides?: OverridesConfig<PlusBreakpoint>;
 
 	/**
-	 * See [Variant](/variant-property) for details.
+	 * See [Preset](/preset-property) for details.
 	 */
 	@Property({ reflect: true })
-	@Variant()
-	variant?: OverridableValue<never>;
+	@Preset()
+	preset?: OverridableValue<never>;
 
 	@Style()
 	get style() {

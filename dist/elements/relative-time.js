@@ -1,4 +1,4 @@
-import { P as PlusCore, a as jsx, b as Property, O as Overrides, V as Variant, S as State, c as Element } from "../core/index.js";
+import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, S as State, d as Element } from "../core/index.js";
 const RELATIVE_TIME_UNITS = [
   {
     name: "second",
@@ -122,8 +122,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusRelativeTime.prototype, "variant", 2);
+  Preset()
+], PlusRelativeTime.prototype, "preset", 2);
 __decorateClass([
   State()
 ], PlusRelativeTime.prototype, "parts", 2);

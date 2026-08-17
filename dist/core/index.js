@@ -1257,6 +1257,25 @@ function Overrides() {
     });
   };
 }
+function Preset() {
+  return (target, key) => {
+    wrapMethod(
+      "after",
+      target,
+      LIFECYCLE_UPDATE,
+      function(states) {
+        if (!states.has(key)) return;
+        const namespace = getNamespace(target) || "";
+        const tag = getTag(this) || "";
+        const properties = getConfig$1(namespace).elements?.[tag]?.presets?.[this[key]]?.properties;
+        if (!properties) return;
+        const defaults = Object.assign({}, this[API_DEFAULTS], properties);
+        delete defaults[key];
+        Object.assign(this, defaults);
+      }
+    );
+  };
+}
 function Property(options) {
   return (target, key, descriptor) => {
     const KEY2 = /* @__PURE__ */ Symbol();
@@ -1435,25 +1454,6 @@ const toCssString = (input) => {
   }
   return result;
 };
-function Variant() {
-  return (target, key) => {
-    wrapMethod(
-      "after",
-      target,
-      LIFECYCLE_UPDATE,
-      function(states) {
-        if (!states.has(key)) return;
-        const namespace = getNamespace(target) || "";
-        const tag = getTag(this) || "";
-        const properties = getConfig$1(namespace).elements?.[tag]?.variants?.[this[key]]?.properties;
-        if (!properties) return;
-        const defaults = Object.assign({}, this[API_DEFAULTS], properties);
-        delete defaults[key];
-        Object.assign(this, defaults);
-      }
-    );
-  };
-}
 function Watch(keys, immediate) {
   return (target, key) => {
     const all = [keys].flat().filter((item) => item);
@@ -1959,27 +1959,27 @@ export {
   PlusCore as P,
   Query as Q,
   State as S,
-  Variant as V,
   Watch as W,
   jsx as a,
   Property as b,
-  Element as c,
-  Provider as d,
-  Style as e,
-  toCSSUnit as f,
+  Preset as c,
+  Element as d,
+  Provider as e,
+  Style as f,
   getConfig as g,
-  QueryAll as h,
-  classes as i,
+  toCSSUnit as h,
+  QueryAll as i,
   jsxs as j,
-  ExternalDependencyError as k,
-  off as l,
-  Scrollbar as m,
-  toAxis as n,
+  classes as k,
+  ExternalDependencyError as l,
+  off as m,
+  Scrollbar as n,
   on as o,
-  AsyncCache as p,
-  query as q,
-  PlusForm as r,
+  toAxis as p,
+  AsyncCache as q,
+  query as r,
   setConfig as s,
   toCSSColor as t,
-  getCSSColor as u
+  PlusForm as u,
+  getCSSColor as v
 };

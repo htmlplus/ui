@@ -16,9 +16,9 @@ export declare class PlusDialogBody extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     render(): any;
 }
 
@@ -27,9 +27,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusDialogBodyAttributesMapper = {
   'scrollable': 'scrollable';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusDialogBodyOverridableKeys = 'variant';
+export type PlusDialogBodyOverridableKeys = 'preset';
 export interface PlusDialogBodyDisables {}
 export interface PlusDialogBodyOverrides {}
 export type PlusDialogBodyAttributes = Filter<PlusDialogBodyAttributesOverridden, PlusDialogBodyDisables, PlusDialogBodyAttributesMapper>;
@@ -44,9 +44,9 @@ export type PlusDialogBodyAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogBodyProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusDialogBodyEvents = Filter<PlusDialogBodyEventsBase, PlusDialogBodyDisables>;
 export type PlusDialogBodyEventsBase = {};
@@ -66,9 +66,9 @@ export type PlusDialogBodyPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDialogBodyProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

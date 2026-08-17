@@ -25,9 +25,9 @@ export declare class PlusCarouselIndicators extends CarouselChild {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     events: EmblaEventType[];
     get indexes(): number[];
     get selected(): number;
@@ -48,9 +48,9 @@ export type PlusCarouselIndicatorsAttributesMapper = {
   'infinity': 'infinity';
   'numbers': 'numbers';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusCarouselIndicatorsOverridableKeys = 'variant';
+export type PlusCarouselIndicatorsOverridableKeys = 'preset';
 export interface PlusCarouselIndicatorsDisables {}
 export interface PlusCarouselIndicatorsOverrides {}
 export type PlusCarouselIndicatorsAttributes = Filter<PlusCarouselIndicatorsAttributesOverridden, PlusCarouselIndicatorsDisables, PlusCarouselIndicatorsAttributesMapper>;
@@ -75,9 +75,9 @@ export type PlusCarouselIndicatorsAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselIndicatorsProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusCarouselIndicatorsEvents = Filter<PlusCarouselIndicatorsEventsBase, PlusCarouselIndicatorsDisables>;
 export type PlusCarouselIndicatorsEventsBase = {};
@@ -107,9 +107,9 @@ export type PlusCarouselIndicatorsPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCarouselIndicatorsProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

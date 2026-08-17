@@ -19,6 +19,10 @@ export declare class PlusProgressBar extends PlusCore {
      */
     color: OverridableValue<PlusColor>;
     /**
+     * Indicates that the progress bar is active without a specific progress value.
+     */
+    indeterminate: boolean;
+    /**
      * Displays the progress percentage.
      */
     label: boolean;
@@ -43,9 +47,9 @@ export declare class PlusProgressBar extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     get style(): {
         ':host': {
             'min-width': string;
@@ -63,15 +67,16 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusProgressBarAttributesMapper = {
   'buffer': 'buffer';
   'color': 'color';
+  'indeterminate': 'indeterminate';
   'label': 'label';
   'max': 'max';
   'min': 'min';
   'sync': 'sync';
   'value': 'value';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusProgressBarOverridableKeys = 'color' | 'variant';
+export type PlusProgressBarOverridableKeys = 'color' | 'preset';
 export interface PlusProgressBarDisables {}
 export interface PlusProgressBarOverrides {}
 export type PlusProgressBarAttributes = Filter<PlusProgressBarAttributesOverridden, PlusProgressBarDisables, PlusProgressBarAttributesMapper>;
@@ -85,6 +90,10 @@ export type PlusProgressBarAttributesBase = {
   * Specifies the color of the bar.
   */
   "color"?: OverridableValue<PlusColor>;
+  /**
+  * Indicates that the progress bar is active without a specific progress value.
+  */
+  "indeterminate"?: boolean;
   /**
   * Displays the progress percentage.
   */
@@ -110,9 +119,9 @@ export type PlusProgressBarAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusProgressBarProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusProgressBarEvents = Filter<PlusProgressBarEventsBase, PlusProgressBarDisables>;
 export type PlusProgressBarEventsBase = {};
@@ -131,6 +140,10 @@ export type PlusProgressBarPropertiesBase = {
   * Specifies the color of the bar.
   */
   color?: OverridableValue<PlusColor>;
+  /**
+  * Indicates that the progress bar is active without a specific progress value.
+  */
+  indeterminate?: boolean;
   /**
   * Displays the progress percentage.
   */
@@ -156,9 +169,9 @@ export type PlusProgressBarPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusProgressBarProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

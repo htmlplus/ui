@@ -17,9 +17,9 @@ export declare class PlusAccordions extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     state: Context;
     open(target: HTMLElement): void;
     render(): any;
@@ -30,9 +30,9 @@ type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, P
 export type PlusAccordionsAttributesMapper = {
   'persistent': 'persistent';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusAccordionsOverridableKeys = 'variant';
+export type PlusAccordionsOverridableKeys = 'preset';
 export interface PlusAccordionsDisables {}
 export interface PlusAccordionsOverrides {}
 export type PlusAccordionsAttributes = Filter<PlusAccordionsAttributesOverridden, PlusAccordionsDisables, PlusAccordionsAttributesMapper>;
@@ -47,9 +47,9 @@ export type PlusAccordionsAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionsProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusAccordionsEvents = Filter<PlusAccordionsEventsBase, PlusAccordionsDisables>;
 export type PlusAccordionsEventsBase = {};
@@ -69,9 +69,9 @@ export type PlusAccordionsPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionsProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {

@@ -1,5 +1,5 @@
-import { P as PlusCore, t as toCSSColor, j as jsxs, a as jsx, b as Property, O as Overrides, V as Variant, e as Style, c as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}@keyframes indeterminate{from{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{background-color:#dcdcdc;border-radius:.25rem;font-size:.75rem;height:1rem;display:flex;overflow:hidden;position:relative;direction:ltr}:host>*{position:absolute;inset:0}:host::part(underlay){background-color:rgba(0,0,0,0)}:host::part(buffer){background-color:hsl(from var(--plus-progress-bar-indicator-background-color) h s 80)}:host::part(indicator){background-color:var(--plus-progress-bar-indicator-background-color);color:#fff;transition:width .6s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host([variant=indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50% !important}";
+import { P as PlusCore, t as toCSSColor, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, f as Style, d as Element } from "../core/index.js";
+const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}@keyframes indeterminate{from{left:0;transform:translateX(-100%)}to{left:100%;transform:translateX(0)}}:host{background-color:#dcdcdc;border-radius:.25rem;font-size:.75rem;height:1rem;display:flex;overflow:hidden;position:relative;direction:ltr}:host>*{position:absolute;inset:0}:host::part(underlay){background-color:rgba(0,0,0,0)}:host::part(buffer){background-color:hsl(from var(--plus-progress-bar-indicator-background-color) h s 80)}:host::part(indicator){background-color:var(--plus-progress-bar-indicator-background-color);color:#fff;transition:width .6s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}:host([sync])::part(indicator){transition:none}:host([indeterminate])::part(indicator){animation:indeterminate 2s linear infinite;width:50% !important}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -14,6 +14,7 @@ let PlusProgressBar = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.color = "dodgerblue";
+    this.indeterminate = false;
     this.label = false;
     this.max = 100;
     this.min = 0;
@@ -64,6 +65,12 @@ __decorateClass([
 ], PlusProgressBar.prototype, "color", 2);
 __decorateClass([
   Property({
+    reflect: true,
+    type: 8
+  })
+], PlusProgressBar.prototype, "indeterminate", 2);
+__decorateClass([
+  Property({
     type: 8
   })
 ], PlusProgressBar.prototype, "label", 2);
@@ -99,8 +106,8 @@ __decorateClass([
     reflect: true,
     type: 1
   }),
-  Variant()
-], PlusProgressBar.prototype, "variant", 2);
+  Preset()
+], PlusProgressBar.prototype, "preset", 2);
 __decorateClass([
   Style()
 ], PlusProgressBar.prototype, "style", 1);

@@ -45,9 +45,9 @@ export declare class PlusBreadcrumb extends PlusCore {
      */
     overrides?: OverridesConfig<PlusBreakpoint>;
     /**
-     * See [Variant](/variant-property) for details.
+     * See [Preset](/preset-property) for details.
      */
-    variant?: OverridableValue<never>;
+    preset?: OverridableValue<never>;
     expand: boolean;
     observer: MutationObserver;
     $separators: HTMLElement[];
@@ -74,9 +74,9 @@ export type PlusBreadcrumbAttributesMapper = {
   'max': 'max';
   'separator': 'separator';
   'overrides': 'overrides';
-  'variant': 'variant';
+  'preset': 'preset';
 };
-export type PlusBreadcrumbOverridableKeys = 'variant';
+export type PlusBreadcrumbOverridableKeys = 'preset';
 export interface PlusBreadcrumbDisables {}
 export interface PlusBreadcrumbOverrides {}
 export type PlusBreadcrumbAttributes = Filter<PlusBreadcrumbAttributesOverridden, PlusBreadcrumbDisables, PlusBreadcrumbAttributesMapper>;
@@ -108,9 +108,9 @@ export type PlusBreadcrumbAttributesBase = {
   */
   "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusBreadcrumbProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  "variant"?: OverridableValue<never>;
+  "preset"?: OverridableValue<never>;
 };
 export type PlusBreadcrumbEvents = Filter<PlusBreadcrumbEventsBase, PlusBreadcrumbDisables>;
 export type PlusBreadcrumbEventsBase = {};
@@ -147,9 +147,9 @@ export type PlusBreadcrumbPropertiesBase = {
   */
   overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusBreadcrumbProperties, "overrides">>;
   /**
-  * See [Variant](/variant-property) for details.
+  * See [Preset](/preset-property) for details.
   */
-  variant?: OverridableValue<never>;
+  preset?: OverridableValue<never>;
 };
 declare module '@htmlplus/element' {
   interface HTMLPlusElements {
