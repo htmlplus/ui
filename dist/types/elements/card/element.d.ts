@@ -37,90 +37,30 @@ export declare class PlusCard extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusCardAttributesMapper = {
-  'elevation': 'elevation';
-  'flat': 'flat';
-  'outlined': 'outlined';
-  'tile': 'tile';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusCardAttributesMapper = {};
 export type PlusCardOverridableKeys = 'elevation' | 'preset';
 export interface PlusCardDisables {}
 export interface PlusCardOverrides {}
-export type PlusCardAttributes = Filter<PlusCardAttributesOverridden, PlusCardDisables, PlusCardAttributesMapper>;
-export type PlusCardAttributesOverridden = Override<PlusCardAttributesBase, PlusCardOverrides, PlusCardOverridableKeys, PlusCardAttributesMapper>;
-export type PlusCardAttributesBase = {
-  /**
-  * If you want the card to have shadow, use the elevation property,
-  * And select the property value between `1` and `24`.
-  */
-  "elevation"?: OverridableValue<number>;
-  /**
-  * Use the flat property to neutralize elevation.
-  */
-  "flat"?: boolean;
-  /**
-  * If you want the card to have border, use the outlined property.
-  */
-  "outlined"?: boolean;
-  /**
-  * Use tile property to neutralize border-radius.
-  */
-  "tile"?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCardProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusCardAttributes = Rename<PlusCardProperties, PlusCardAttributesMapper>;
+export type PlusCardAttributesOverridden = Rename<PlusCardPropertiesOverridden, PlusCardAttributesMapper>;
+export type PlusCardAttributesBase = Rename<PlusCardPropertiesBase, PlusCardAttributesMapper>;
 export type PlusCardEvents = Filter<PlusCardEventsBase, PlusCardDisables>;
-export type PlusCardEventsBase = {};
-export type PlusCardEventsJSX = Filter<PlusCardEventsBaseJSX, PlusCardDisables, {}>;
-export type PlusCardEventsBaseJSX = {};
+export type PlusCardEventsBase = ToEventHandlers<Pick<PlusCard, PlusCardEventsKeys>>;
+export type PlusCardEventsKeys = never;
+export type PlusCardEventsJSX = ToJSXEvent<PlusCardEvents>;
+export type PlusCardEventsBaseJSX = ToJSXEvent<PlusCardEventsBase>;
 export type PlusCardMethods = Filter<PlusCardMethodsBase, PlusCardDisables>;
-export type PlusCardMethodsBase = {};
+export type PlusCardMethodsBase = Pick<PlusCard, PlusCardMethodsKeys>;
+export type PlusCardMethodsKeys = never;
 export type PlusCardProperties = Filter<PlusCardPropertiesOverridden, PlusCardDisables>;
 export type PlusCardPropertiesOverridden = Override<PlusCardPropertiesBase, PlusCardOverrides, PlusCardOverridableKeys>;
-export type PlusCardPropertiesBase = {
-  /**
-  * If you want the card to have shadow, use the elevation property,
-  * And select the property value between `1` and `24`.
-  */
-  elevation?: OverridableValue<number>;
-  /**
-  * Use the flat property to neutralize elevation.
-  */
-  flat?: boolean;
-  /**
-  * If you want the card to have border, use the outlined property.
-  */
-  outlined?: boolean;
-  /**
-  * Use tile property to neutralize border-radius.
-  */
-  tile?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCardProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-card': {
-      properties: PlusCardPropertiesOverridden;
-    };
-  }
-}
+export type PlusCardPropertiesBase = Pick<PlusCard, PlusCardPropertiesKeys>;
+export type PlusCardPropertiesKeys = 'elevation' | 'flat' | 'outlined' | 'tile' | 'overrides' | 'preset';
 export type PlusCardElement = globalThis.HTMLPlusCardElement;
 export type PlusCardJSX = PlusCardAttributes & PlusCardEventsJSX;
 export namespace JSX {
@@ -136,6 +76,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-card": HTMLPlusCardElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-card': {
+      properties: PlusCardPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

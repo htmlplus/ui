@@ -67,97 +67,30 @@ export declare class PlusPrism extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusPrismAttributesMapper = {
-  'language': 'language';
-  'theme': 'theme';
-  'plugins': 'plugins';
-  'resolver': 'resolver';
-  'sync': 'sync';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusPrismAttributesMapper = {};
 export type PlusPrismOverridableKeys = 'preset';
 export interface PlusPrismDisables {}
 export interface PlusPrismOverrides {}
-export type PlusPrismAttributes = Filter<PlusPrismAttributesOverridden, PlusPrismDisables, PlusPrismAttributesMapper>;
-export type PlusPrismAttributesOverridden = Override<PlusPrismAttributesBase, PlusPrismOverrides, PlusPrismOverridableKeys, PlusPrismAttributesMapper>;
-export type PlusPrismAttributesBase = {
-  /**
-  * The programming language to highlight.
-  */
-  "language"?: string;
-  /**
-  * The theme to apply for syntax highlighting.
-  */
-  "theme"?: string;
-  /**
-  * Plugins to enhance Prism's functionality.
-  */
-  "plugins"?: PlusPrismPlugins;
-  /**
-  * A custom resolver function to load Prism assets (e.g., languages, themes, plugins).
-  */
-  "resolver"?: PlusPrismResolver;
-  /**
-  * Whether to synchronize updates with DOM changes.
-  */
-  "sync"?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusPrismProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusPrismAttributes = Rename<PlusPrismProperties, PlusPrismAttributesMapper>;
+export type PlusPrismAttributesOverridden = Rename<PlusPrismPropertiesOverridden, PlusPrismAttributesMapper>;
+export type PlusPrismAttributesBase = Rename<PlusPrismPropertiesBase, PlusPrismAttributesMapper>;
 export type PlusPrismEvents = Filter<PlusPrismEventsBase, PlusPrismDisables>;
-export type PlusPrismEventsBase = {};
-export type PlusPrismEventsJSX = Filter<PlusPrismEventsBaseJSX, PlusPrismDisables, {}>;
-export type PlusPrismEventsBaseJSX = {};
+export type PlusPrismEventsBase = ToEventHandlers<Pick<PlusPrism, PlusPrismEventsKeys>>;
+export type PlusPrismEventsKeys = never;
+export type PlusPrismEventsJSX = ToJSXEvent<PlusPrismEvents>;
+export type PlusPrismEventsBaseJSX = ToJSXEvent<PlusPrismEventsBase>;
 export type PlusPrismMethods = Filter<PlusPrismMethodsBase, PlusPrismDisables>;
-export type PlusPrismMethodsBase = {};
+export type PlusPrismMethodsBase = Pick<PlusPrism, PlusPrismMethodsKeys>;
+export type PlusPrismMethodsKeys = never;
 export type PlusPrismProperties = Filter<PlusPrismPropertiesOverridden, PlusPrismDisables>;
 export type PlusPrismPropertiesOverridden = Override<PlusPrismPropertiesBase, PlusPrismOverrides, PlusPrismOverridableKeys>;
-export type PlusPrismPropertiesBase = {
-  /**
-  * The programming language to highlight.
-  */
-  language?: string;
-  /**
-  * The theme to apply for syntax highlighting.
-  */
-  theme?: string;
-  /**
-  * Plugins to enhance Prism's functionality.
-  */
-  plugins?: PlusPrismPlugins;
-  /**
-  * A custom resolver function to load Prism assets (e.g., languages, themes, plugins).
-  */
-  resolver?: PlusPrismResolver;
-  /**
-  * Whether to synchronize updates with DOM changes.
-  */
-  sync?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusPrismProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-prism': {
-      properties: PlusPrismPropertiesOverridden;
-    };
-  }
-}
+export type PlusPrismPropertiesBase = Pick<PlusPrism, PlusPrismPropertiesKeys>;
+export type PlusPrismPropertiesKeys = 'language' | 'theme' | 'plugins' | 'resolver' | 'sync' | 'overrides' | 'preset';
 export type PlusPrismElement = globalThis.HTMLPlusPrismElement;
 export type PlusPrismJSX = PlusPrismAttributes & PlusPrismEventsJSX;
 export namespace JSX {
@@ -173,6 +106,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-prism": HTMLPlusPrismElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-prism': {
+      properties: PlusPrismPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

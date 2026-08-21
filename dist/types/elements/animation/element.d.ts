@@ -171,292 +171,35 @@ export declare class PlusAnimation extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
 export type PlusAnimationAttributesMapper = {
-  'composite': 'composite';
-  'delay': 'delay';
-  'direction': 'direction';
-  'duration': 'duration';
-  'easing': 'easing';
   'endDelay': 'end-delay';
-  'fill': 'fill';
-  'instance': 'instance';
   'iterationComposite': 'iteration-composite';
-  'iterations': 'iterations';
   'iterationStart': 'iteration-start';
-  'keyframes': 'keyframes';
-  'name': 'name';
   'playbackRate': 'playback-rate';
-  'run': 'run';
-  'overrides': 'overrides';
-  'preset': 'preset';
 };
 export type PlusAnimationOverridableKeys = 'name' | 'preset';
 export interface PlusAnimationDisables {}
 export interface PlusAnimationOverrides {}
-export type PlusAnimationAttributes = Filter<PlusAnimationAttributesOverridden, PlusAnimationDisables, PlusAnimationAttributesMapper>;
-export type PlusAnimationAttributesOverridden = Override<PlusAnimationAttributesBase, PlusAnimationOverrides, PlusAnimationOverridableKeys, PlusAnimationAttributesMapper>;
-export type PlusAnimationAttributesBase = {
-  /**
-  * Determines how values are combined between this animation and other,
-  * separate animations that do not specify their own specific composite operation.
-  */
-  "composite"?: 'add' | 'accumulate' | 'replace';
-  /**
-  * The number of milliseconds to delay the start of the animation.
-  */
-  "delay"?: number;
-  /**
-  * Whether the animation runs forwards (`normal`), backwards (`reverse`),
-  * switches direction after each iteration (`alternate`), or runs
-  * backwards and switches direction after each iteration (`alternate-reverse`).
-  */
-  "direction"?: 'alternate-reverse' | 'alternate' | 'normal' | 'reverse';
-  /**
-  * The number of milliseconds each iteration of the animation takes to complete.
-  * Keep in mind that your animation will not run if this value is 0.
-  */
-  "duration"?: number;
-  /**
-  * The rate of the animation's change over time.
-  * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
-  * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
-  */
-  "easing"?: string;
-  /**
-  * The number of milliseconds to delay after the end of an animation.
-  * This is primarily of use when sequencing animations based on the end time of another animation.
-  */
-  "end-delay"?: number;
-  /**
-  * Dictates whether the animation's effects should be reflected by the element(s)
-  * prior to playing ("`backwards`"), retained after the animation has completed
-  * playing ("`forwards`"), or `both`.
-  */
-  "fill"?: 'backwards' | 'forwards' | 'none';
-  /**
-  * The [Animation](https://mdn.io/api-animation) object instance.
-  */
-  "instance"?: globalThis.Animation;
-  /**
-  * Determines how values build from iteration to iteration in this animation.
-  * Can be set to `accumulate` or `replace`.
-  */
-  "iteration-composite"?: 'accumulate' | 'replace';
-  /**
-  * The number of times the animation should repeat. And can also take a value of
-  * [Infinity](https://mdn.io/infinity)
-  * to make it repeat for as long as the element exists.
-  */
-  "iterations"?: number;
-  /**
-  * Describes at what point in the iteration the animation should start.
-  * 0.5 would indicate starting halfway through the first iteration for example,
-  * and with this value set, an animation with 2 iterations would end halfway through
-  * a third iteration.
-  */
-  "iteration-start"?: number;
-  /**
-  * A [keyframes](https://mdn.io/keyframe-formats)
-  * object or `null`.
-  */
-  "keyframes"?: Keyframe[];
-  /**
-  * Specifies what kind of animation will play.
-  * The list of available animations is [here](/element/animation/names).
-  */
-  "name"?: OverridableValue<string>;
-  /**
-  * Sets the animation's playback rate.
-  */
-  "playback-rate"?: number;
-  /**
-  * Starts the animation.
-  */
-  "run"?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAnimationProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusAnimationAttributes = Rename<PlusAnimationProperties, PlusAnimationAttributesMapper>;
+export type PlusAnimationAttributesOverridden = Rename<PlusAnimationPropertiesOverridden, PlusAnimationAttributesMapper>;
+export type PlusAnimationAttributesBase = Rename<PlusAnimationPropertiesBase, PlusAnimationAttributesMapper>;
 export type PlusAnimationEvents = Filter<PlusAnimationEventsBase, PlusAnimationDisables>;
-export type PlusAnimationEventsBase = {
-  /**
-  * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
-  * method is called or when the animation enters the "`idle`" play state from another state.
-  */
-  plusCancel?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the animation finishes playing.
-  */
-  plusFinish?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the animation is removed (i.e., put into an `active` replace state).
-  */
-  plusRemove?: (event: CustomEvent<void>) => void;
-};
-export type PlusAnimationEventsJSX = Filter<PlusAnimationEventsBaseJSX, PlusAnimationDisables, {
-  plusCancel: 'onPlusCancel';
-  plusFinish: 'onPlusFinish';
-  plusRemove: 'onPlusRemove';
-}>;
-export type PlusAnimationEventsBaseJSX = {
-  /**
-  * Fires when the [Animation.cancel()](https://mdn.io/animation-cancel)
-  * method is called or when the animation enters the "`idle`" play state from another state.
-  */
-  onPlusCancel?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the animation finishes playing.
-  */
-  onPlusFinish?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the animation is removed (i.e., put into an `active` replace state).
-  */
-  onPlusRemove?: (event: CustomEvent<void>) => void;
-};
+export type PlusAnimationEventsBase = ToEventHandlers<Pick<PlusAnimation, PlusAnimationEventsKeys>>;
+export type PlusAnimationEventsKeys = 'plusCancel' | 'plusFinish' | 'plusRemove';
+export type PlusAnimationEventsJSX = ToJSXEvent<PlusAnimationEvents>;
+export type PlusAnimationEventsBaseJSX = ToJSXEvent<PlusAnimationEventsBase>;
 export type PlusAnimationMethods = Filter<PlusAnimationMethodsBase, PlusAnimationDisables>;
-export type PlusAnimationMethodsBase = {
-  /**
-  * Clears all [keyframeEffects](https://mdn.io/keyframe-effect)
-  * caused by this animation and aborts its playback.
-  */
-  cancel();
-  /**
-  * Commits the end styling state of an animation to the element being animated, even after that
-  * animation has been removed. It will cause the end styling state to be written to the element
-  * being animated, in the form of properties inside a `style` attribute.
-  */
-  commitStyles();
-  /**
-  * Seeks either end of an animation, depending on whether the animation is playing or reversing.
-  */
-  finish();
-  /**
-  * Suspends playing of an animation.
-  */
-  pause();
-  /**
-  * Explicitly persists an animation, when it would otherwise be removed due to the browser's
-  * [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations)
-  * behavior.
-  */
-  persist();
-  /**
-  * Starts or resumes playing of an animation, or begins the animation again if it previously finished.
-  */
-  play();
-  /**
-  * Reverses playback direction, stopping at the start of the animation.
-  * If the animation is finished or unplayed, it will play from end to beginning.
-  */
-  reverse();
-  /**
-  * Sets the speed of an animation after first synchronizing its playback position.
-  */
-  updatePlaybackRate(playbackRate: number);
-};
+export type PlusAnimationMethodsBase = Pick<PlusAnimation, PlusAnimationMethodsKeys>;
+export type PlusAnimationMethodsKeys = 'cancel' | 'commitStyles' | 'finish' | 'pause' | 'persist' | 'play' | 'reverse' | 'updatePlaybackRate';
 export type PlusAnimationProperties = Filter<PlusAnimationPropertiesOverridden, PlusAnimationDisables>;
 export type PlusAnimationPropertiesOverridden = Override<PlusAnimationPropertiesBase, PlusAnimationOverrides, PlusAnimationOverridableKeys>;
-export type PlusAnimationPropertiesBase = {
-  /**
-  * Determines how values are combined between this animation and other,
-  * separate animations that do not specify their own specific composite operation.
-  */
-  composite?: 'add' | 'accumulate' | 'replace';
-  /**
-  * The number of milliseconds to delay the start of the animation.
-  */
-  delay?: number;
-  /**
-  * Whether the animation runs forwards (`normal`), backwards (`reverse`),
-  * switches direction after each iteration (`alternate`), or runs
-  * backwards and switches direction after each iteration (`alternate-reverse`).
-  */
-  direction?: 'alternate-reverse' | 'alternate' | 'normal' | 'reverse';
-  /**
-  * The number of milliseconds each iteration of the animation takes to complete.
-  * Keep in mind that your animation will not run if this value is 0.
-  */
-  duration?: number;
-  /**
-  * The rate of the animation's change over time.
-  * Accepts the pre-defined values "`linear`", "`ease`", "`ease-in`", "`ease-out`", and "`ease-in-out`",
-  * or a custom "`cubic-bezier`" value like "`cubic-bezier(0.42, 0, 0.58, 1)`".
-  */
-  easing?: string;
-  /**
-  * The number of milliseconds to delay after the end of an animation.
-  * This is primarily of use when sequencing animations based on the end time of another animation.
-  */
-  endDelay?: number;
-  /**
-  * Dictates whether the animation's effects should be reflected by the element(s)
-  * prior to playing ("`backwards`"), retained after the animation has completed
-  * playing ("`forwards`"), or `both`.
-  */
-  fill?: 'backwards' | 'forwards' | 'none';
-  /**
-  * The [Animation](https://mdn.io/api-animation) object instance.
-  */
-  instance?: globalThis.Animation;
-  /**
-  * Determines how values build from iteration to iteration in this animation.
-  * Can be set to `accumulate` or `replace`.
-  */
-  iterationComposite?: 'accumulate' | 'replace';
-  /**
-  * The number of times the animation should repeat. And can also take a value of
-  * [Infinity](https://mdn.io/infinity)
-  * to make it repeat for as long as the element exists.
-  */
-  iterations?: number;
-  /**
-  * Describes at what point in the iteration the animation should start.
-  * 0.5 would indicate starting halfway through the first iteration for example,
-  * and with this value set, an animation with 2 iterations would end halfway through
-  * a third iteration.
-  */
-  iterationStart?: number;
-  /**
-  * A [keyframes](https://mdn.io/keyframe-formats)
-  * object or `null`.
-  */
-  keyframes?: Keyframe[];
-  /**
-  * Specifies what kind of animation will play.
-  * The list of available animations is [here](/element/animation/names).
-  */
-  name?: OverridableValue<string>;
-  /**
-  * Sets the animation's playback rate.
-  */
-  playbackRate?: number;
-  /**
-  * Starts the animation.
-  */
-  run?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAnimationProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-animation': {
-      properties: PlusAnimationPropertiesOverridden;
-    };
-  }
-}
+export type PlusAnimationPropertiesBase = Pick<PlusAnimation, PlusAnimationPropertiesKeys>;
+export type PlusAnimationPropertiesKeys = 'composite' | 'delay' | 'direction' | 'duration' | 'easing' | 'endDelay' | 'fill' | 'instance' | 'iterationComposite' | 'iterations' | 'iterationStart' | 'keyframes' | 'name' | 'playbackRate' | 'run' | 'overrides' | 'preset';
 export type PlusAnimationElement = globalThis.HTMLPlusAnimationElement;
 export type PlusAnimationJSX = PlusAnimationAttributes & PlusAnimationEventsJSX;
 export namespace JSX {
@@ -472,6 +215,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-animation": HTMLPlusAnimationElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-animation': {
+      properties: PlusAnimationPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

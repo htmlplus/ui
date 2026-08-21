@@ -19,52 +19,30 @@ export declare class PlusCardBody extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusCardBodyAttributesMapper = {
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusCardBodyAttributesMapper = {};
 export type PlusCardBodyOverridableKeys = 'preset';
 export interface PlusCardBodyDisables {}
 export interface PlusCardBodyOverrides {}
-export type PlusCardBodyAttributes = Filter<PlusCardBodyAttributesOverridden, PlusCardBodyDisables, PlusCardBodyAttributesMapper>;
-export type PlusCardBodyAttributesOverridden = Override<PlusCardBodyAttributesBase, PlusCardBodyOverrides, PlusCardBodyOverridableKeys, PlusCardBodyAttributesMapper>;
-export type PlusCardBodyAttributesBase = {
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCardBodyProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusCardBodyAttributes = Rename<PlusCardBodyProperties, PlusCardBodyAttributesMapper>;
+export type PlusCardBodyAttributesOverridden = Rename<PlusCardBodyPropertiesOverridden, PlusCardBodyAttributesMapper>;
+export type PlusCardBodyAttributesBase = Rename<PlusCardBodyPropertiesBase, PlusCardBodyAttributesMapper>;
 export type PlusCardBodyEvents = Filter<PlusCardBodyEventsBase, PlusCardBodyDisables>;
-export type PlusCardBodyEventsBase = {};
-export type PlusCardBodyEventsJSX = Filter<PlusCardBodyEventsBaseJSX, PlusCardBodyDisables, {}>;
-export type PlusCardBodyEventsBaseJSX = {};
+export type PlusCardBodyEventsBase = ToEventHandlers<Pick<PlusCardBody, PlusCardBodyEventsKeys>>;
+export type PlusCardBodyEventsKeys = never;
+export type PlusCardBodyEventsJSX = ToJSXEvent<PlusCardBodyEvents>;
+export type PlusCardBodyEventsBaseJSX = ToJSXEvent<PlusCardBodyEventsBase>;
 export type PlusCardBodyMethods = Filter<PlusCardBodyMethodsBase, PlusCardBodyDisables>;
-export type PlusCardBodyMethodsBase = {};
+export type PlusCardBodyMethodsBase = Pick<PlusCardBody, PlusCardBodyMethodsKeys>;
+export type PlusCardBodyMethodsKeys = never;
 export type PlusCardBodyProperties = Filter<PlusCardBodyPropertiesOverridden, PlusCardBodyDisables>;
 export type PlusCardBodyPropertiesOverridden = Override<PlusCardBodyPropertiesBase, PlusCardBodyOverrides, PlusCardBodyOverridableKeys>;
-export type PlusCardBodyPropertiesBase = {
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCardBodyProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-card-body': {
-      properties: PlusCardBodyPropertiesOverridden;
-    };
-  }
-}
+export type PlusCardBodyPropertiesBase = Pick<PlusCardBody, PlusCardBodyPropertiesKeys>;
+export type PlusCardBodyPropertiesKeys = 'overrides' | 'preset';
 export type PlusCardBodyElement = globalThis.HTMLPlusCardBodyElement;
 export type PlusCardBodyJSX = PlusCardBodyAttributes & PlusCardBodyEventsJSX;
 export namespace JSX {
@@ -80,6 +58,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-card-body": HTMLPlusCardBodyElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-card-body': {
+      properties: PlusCardBodyPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

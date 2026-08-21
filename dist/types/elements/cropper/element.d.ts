@@ -253,375 +253,34 @@ export declare class PlusCropper extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
 export type PlusCropperAttributesMapper = {
-  'area': 'area';
   'aspectRatio': 'aspect-ratio';
-  'background': 'background';
-  'disabled': 'disabled';
-  'guides': 'guides';
-  'indicator': 'indicator';
-  'mode': 'mode';
-  'resizer': 'resizer';
   'resizerShape': 'resizer-shape';
-  'responsive': 'responsive';
-  'shape': 'shape';
-  'src': 'src';
-  'transparent': 'transparent';
-  'value': 'value';
-  'view': 'view';
-  'zoomable': 'zoomable';
   'zoomRatio': 'zoom-ratio';
-  'overrides': 'overrides';
-  'preset': 'preset';
 };
 export type PlusCropperOverridableKeys = 'preset';
 export interface PlusCropperDisables {}
 export interface PlusCropperOverrides {}
-export type PlusCropperAttributes = Filter<PlusCropperAttributesOverridden, PlusCropperDisables, PlusCropperAttributesMapper>;
-export type PlusCropperAttributesOverridden = Override<PlusCropperAttributesBase, PlusCropperOverrides, PlusCropperOverridableKeys, PlusCropperAttributesMapper>;
-export type PlusCropperAttributesBase = {
-  /**
-  * A number between 0 and 1. Specifies the automatic cropping area size.
-  */
-  "area"?: number;
-  /**
-  * Specifies the initial aspect ratio of the viewport.
-  */
-  "aspect-ratio"?: number | string;
-  /**
-  * Shows the grid background of the container.
-  */
-  "background"?: boolean;
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
-  /**
-  * Shows the dashed lines above the viewport.
-  */
-  "guides"?: boolean;
-  /**
-  * Shows the center indicator above the viewport.
-  */
-  "indicator"?: boolean;
-  /**
-  * Specifies the mode.
-  *
-  * @value crop - Creates a new viewport and allows to move and resize it.
-  * @value move - Moves the canvas and viewport.
-  * @value none - Do nothing.
-  */
-  "mode"?: 'crop' | 'move' | 'none';
-  /**
-  * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
-  *
-  * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
-  * @value edge - Enables to resize the viewport by dragging on the vertices.
-  * @value main - Enables to resize the viewport by dragging on the Sides.
-  */
-  "resizer"?: 'both' | 'edge' | 'main';
-  /**
-  * Specifies the shape of the resizer.
-  *
-  * @value circle - TODO.
-  * @value line   - TODO.
-  * @value square - TODO.
-  */
-  "resizer-shape"?: 'circle' | 'line' | 'square';
-  /**
-  * Re-renders when resizing the window.
-  *
-  * @value false - TODO.
-  * @value true  - TODO.
-  * @value reset - Restores the cropped area after resizing the window.
-  */
-  "responsive"?: boolean | 'reset';
-  /**
-  * Specifies the shape of the viewport.
-  *
-  * @value circle    - TODO.
-  * @value rectangle - TODO.
-  * @value square    - TODO.
-  */
-  "shape"?: 'circle' | 'rectangle' | 'square';
-  /**
-  * Specifies the image's src.
-  */
-  "src"?: string;
-  /**
-  * Hides the black modal above the image and under the viewport.
-  */
-  "transparent"?: boolean;
-  /**
-  * Gets/Sets data.
-  */
-  "value"?: PlusCropperValue;
-  /**
-  * Specifies the view.
-  *
-  * @value contain - restrict the minimum canvas size to fit within the container. If the
-  *                    proportions of the canvas and the container differ, the minimum canvas will be
-  *                    surrounded by extra space in one of the dimensions.
-  * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions
-  *                    of the canvas and the container are different, the container will not be able
-  *                    to fit the whole canvas in one of the dimensions.
-  * @value fit      - restrict the viewport to not exceed the size of the canvas.
-  * @value none    - no restrictions.
-  */
-  "view"?: 'contain' | 'cover' | 'fit' | 'none';
-  /**
-  * Enables to zoom the image.
-  *
-  * @value false - Unable to zoom the image.
-  * @value true  - Enables to zoom the image by touching and wheeling mouse.
-  * @value touch - Enables to zoom the image by touching.
-  * @value wheel - Enables to zoom the image by wheeling mouse.
-  */
-  "zoomable"?: boolean | 'touch' | 'wheel';
-  /**
-  * Specifies zoom ratio when zooming the image by wheeling the mouse.
-  */
-  "zoom-ratio"?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCropperProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusCropperAttributes = Rename<PlusCropperProperties, PlusCropperAttributesMapper>;
+export type PlusCropperAttributesOverridden = Rename<PlusCropperPropertiesOverridden, PlusCropperAttributesMapper>;
+export type PlusCropperAttributesBase = Rename<PlusCropperPropertiesBase, PlusCropperAttributesMapper>;
 export type PlusCropperEvents = Filter<PlusCropperEventsBase, PlusCropperDisables>;
-export type PlusCropperEventsBase = {
-  /**
-  * Fires when the `image` or the `viewport` is changed.
-  */
-  plusCrop?: (event: CustomEvent<PlusCropperCropEvent>) => void;
-  /**
-  * Fires when the `image` or the `viewport` changes are finished.
-  */
-  plusCropEnd?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
-  /**
-  * Fires when the `image` or the `viewport` is changing.
-  */
-  plusCropMove?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
-  /**
-  * Fires when the `image` or the `viewport` starts to change.
-  */
-  plusCropStart?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
-  /**
-  * Fires when the image has been loaded and the element is ready for operation.
-  */
-  plusReady?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the element starts to `zoom in` or `zoom out`.
-  */
-  plusZoom?: (event: CustomEvent<PlusCropperZoomEvent>) => void;
-};
-export type PlusCropperEventsJSX = Filter<PlusCropperEventsBaseJSX, PlusCropperDisables, {
-  plusCrop: 'onPlusCrop';
-  plusCropEnd: 'onPlusCropEnd';
-  plusCropMove: 'onPlusCropMove';
-  plusCropStart: 'onPlusCropStart';
-  plusReady: 'onPlusReady';
-  plusZoom: 'onPlusZoom';
-}>;
-export type PlusCropperEventsBaseJSX = {
-  /**
-  * Fires when the `image` or the `viewport` is changed.
-  */
-  onPlusCrop?: (event: CustomEvent<PlusCropperCropEvent>) => void;
-  /**
-  * Fires when the `image` or the `viewport` changes are finished.
-  */
-  onPlusCropEnd?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
-  /**
-  * Fires when the `image` or the `viewport` is changing.
-  */
-  onPlusCropMove?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
-  /**
-  * Fires when the `image` or the `viewport` starts to change.
-  */
-  onPlusCropStart?: (event: CustomEvent<PlusCropperPointerEvent>) => void;
-  /**
-  * Fires when the image has been loaded and the element is ready for operation.
-  */
-  onPlusReady?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the element starts to `zoom in` or `zoom out`.
-  */
-  onPlusZoom?: (event: CustomEvent<PlusCropperZoomEvent>) => void;
-};
+export type PlusCropperEventsBase = ToEventHandlers<Pick<PlusCropper, PlusCropperEventsKeys>>;
+export type PlusCropperEventsKeys = 'plusCrop' | 'plusCropEnd' | 'plusCropMove' | 'plusCropStart' | 'plusReady' | 'plusZoom';
+export type PlusCropperEventsJSX = ToJSXEvent<PlusCropperEvents>;
+export type PlusCropperEventsBaseJSX = ToJSXEvent<PlusCropperEventsBase>;
 export type PlusCropperMethods = Filter<PlusCropperMethodsBase, PlusCropperDisables>;
-export type PlusCropperMethodsBase = {
-  /**
-  * Flips horizontally.
-  */
-  flipX(): void;
-  /**
-  * Flips vertically.
-  */
-  flipY(): void;
-  /**
-  * Moves the canvas with relative offsets.
-  * @param offsetX - Moving size (px) in the `horizontal` direction.
-  * @param offsetY - Moving size (px) in the `vertical` direction.
-  */
-  move(offsetX: number, offsetY?: number): void;
-  /**
-  * Moves the canvas to an absolute point.
-  * @param x - The `left` value of the canvas.
-  * @param y - The `top` value of the canvas.
-  */
-  moveTo(x: number, y?: number): void;
-  /**
-  * Resets the image and viewport to their initial states.
-  */
-  reset(): void;
-  /**
-  * Rotates the image with a relative degree.
-  */
-  rotate(degree: number): void;
-  /**
-  * Rotates the image to an absolute degree.
-  */
-  rotateTo(degree: number): void;
-  /**
-  * Gets `canvas` from the cropped image.
-  */
-  toCanvas(): HTMLCanvasElement;
-  /**
-  * Zooms the canvas with a relative ratio.
-  */
-  zoom(ratio: number): void;
-  /**
-  * Zooms the canvas to an absolute ratio.
-  */
-  zoomTo(ratio: number): void;
-};
+export type PlusCropperMethodsBase = Pick<PlusCropper, PlusCropperMethodsKeys>;
+export type PlusCropperMethodsKeys = 'flipX' | 'flipY' | 'move' | 'moveTo' | 'reset' | 'rotate' | 'rotateTo' | 'toCanvas' | 'zoom' | 'zoomTo';
 export type PlusCropperProperties = Filter<PlusCropperPropertiesOverridden, PlusCropperDisables>;
 export type PlusCropperPropertiesOverridden = Override<PlusCropperPropertiesBase, PlusCropperOverrides, PlusCropperOverridableKeys>;
-export type PlusCropperPropertiesBase = {
-  /**
-  * A number between 0 and 1. Specifies the automatic cropping area size.
-  */
-  area?: number;
-  /**
-  * Specifies the initial aspect ratio of the viewport.
-  */
-  aspectRatio?: number | string;
-  /**
-  * Shows the grid background of the container.
-  */
-  background?: boolean;
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
-  /**
-  * Shows the dashed lines above the viewport.
-  */
-  guides?: boolean;
-  /**
-  * Shows the center indicator above the viewport.
-  */
-  indicator?: boolean;
-  /**
-  * Specifies the mode.
-  *
-  * @value crop - Creates a new viewport and allows to move and resize it.
-  * @value move - Moves the canvas and viewport.
-  * @value none - Do nothing.
-  */
-  mode?: 'crop' | 'move' | 'none';
-  /**
-  * Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`).
-  *
-  * @value both - Enables to resize the viewport by dragging on the Sides and vertices.
-  * @value edge - Enables to resize the viewport by dragging on the vertices.
-  * @value main - Enables to resize the viewport by dragging on the Sides.
-  */
-  resizer?: 'both' | 'edge' | 'main';
-  /**
-  * Specifies the shape of the resizer.
-  *
-  * @value circle - TODO.
-  * @value line   - TODO.
-  * @value square - TODO.
-  */
-  resizerShape?: 'circle' | 'line' | 'square';
-  /**
-  * Re-renders when resizing the window.
-  *
-  * @value false - TODO.
-  * @value true  - TODO.
-  * @value reset - Restores the cropped area after resizing the window.
-  */
-  responsive?: boolean | 'reset';
-  /**
-  * Specifies the shape of the viewport.
-  *
-  * @value circle    - TODO.
-  * @value rectangle - TODO.
-  * @value square    - TODO.
-  */
-  shape?: 'circle' | 'rectangle' | 'square';
-  /**
-  * Specifies the image's src.
-  */
-  src?: string;
-  /**
-  * Hides the black modal above the image and under the viewport.
-  */
-  transparent?: boolean;
-  /**
-  * Gets/Sets data.
-  */
-  value?: PlusCropperValue;
-  /**
-  * Specifies the view.
-  *
-  * @value contain - restrict the minimum canvas size to fit within the container. If the
-  *                    proportions of the canvas and the container differ, the minimum canvas will be
-  *                    surrounded by extra space in one of the dimensions.
-  * @value cover   - restrict the minimum canvas size to fill fit the container. If the proportions
-  *                    of the canvas and the container are different, the container will not be able
-  *                    to fit the whole canvas in one of the dimensions.
-  * @value fit      - restrict the viewport to not exceed the size of the canvas.
-  * @value none    - no restrictions.
-  */
-  view?: 'contain' | 'cover' | 'fit' | 'none';
-  /**
-  * Enables to zoom the image.
-  *
-  * @value false - Unable to zoom the image.
-  * @value true  - Enables to zoom the image by touching and wheeling mouse.
-  * @value touch - Enables to zoom the image by touching.
-  * @value wheel - Enables to zoom the image by wheeling mouse.
-  */
-  zoomable?: boolean | 'touch' | 'wheel';
-  /**
-  * Specifies zoom ratio when zooming the image by wheeling the mouse.
-  */
-  zoomRatio?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCropperProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-cropper': {
-      properties: PlusCropperPropertiesOverridden;
-    };
-  }
-}
+export type PlusCropperPropertiesBase = Pick<PlusCropper, PlusCropperPropertiesKeys>;
+export type PlusCropperPropertiesKeys = 'area' | 'aspectRatio' | 'background' | 'disabled' | 'guides' | 'indicator' | 'mode' | 'resizer' | 'resizerShape' | 'responsive' | 'shape' | 'src' | 'transparent' | 'value' | 'view' | 'zoomable' | 'zoomRatio' | 'overrides' | 'preset';
 export type PlusCropperElement = globalThis.HTMLPlusCropperElement;
 export type PlusCropperJSX = PlusCropperAttributes & PlusCropperEventsJSX;
 export namespace JSX {
@@ -637,6 +296,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-cropper": HTMLPlusCropperElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-cropper': {
+      properties: PlusCropperPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

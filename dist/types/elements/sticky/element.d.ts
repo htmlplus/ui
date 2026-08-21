@@ -59,100 +59,32 @@ export declare class PlusSticky extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
 export type PlusStickyAttributesMapper = {
-  'disabled': 'disabled';
-  'top': 'top';
-  'watcher': 'watcher';
   'zIndex': 'z-index';
-  'overrides': 'overrides';
-  'preset': 'preset';
 };
 export type PlusStickyOverridableKeys = 'preset';
 export interface PlusStickyDisables {}
 export interface PlusStickyOverrides {}
-export type PlusStickyAttributes = Filter<PlusStickyAttributesOverridden, PlusStickyDisables, PlusStickyAttributesMapper>;
-export type PlusStickyAttributesOverridden = Override<PlusStickyAttributesBase, PlusStickyOverrides, PlusStickyOverridableKeys, PlusStickyAttributesMapper>;
-export type PlusStickyAttributesBase = {
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
-  /**
-  * Specifies the space from top.
-  */
-  "top"?: string | number;
-  /**
-  * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
-  */
-  "watcher"?: boolean;
-  /**
-  * Specifies the z-index.
-  */
-  "z-index"?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusStickyProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusStickyAttributes = Rename<PlusStickyProperties, PlusStickyAttributesMapper>;
+export type PlusStickyAttributesOverridden = Rename<PlusStickyPropertiesOverridden, PlusStickyAttributesMapper>;
+export type PlusStickyAttributesBase = Rename<PlusStickyPropertiesBase, PlusStickyAttributesMapper>;
 export type PlusStickyEvents = Filter<PlusStickyEventsBase, PlusStickyDisables>;
-export type PlusStickyEventsBase = {
-  /**
-  * Fires when the state is changed. To enable, set the `watcher` property to `true`.
-  */
-  plusChange?: (event: CustomEvent<PlusStickyState>) => void;
-};
-export type PlusStickyEventsJSX = Filter<PlusStickyEventsBaseJSX, PlusStickyDisables, {
-  plusChange: 'onPlusChange';
-}>;
-export type PlusStickyEventsBaseJSX = {
-  /**
-  * Fires when the state is changed. To enable, set the `watcher` property to `true`.
-  */
-  onPlusChange?: (event: CustomEvent<PlusStickyState>) => void;
-};
+export type PlusStickyEventsBase = ToEventHandlers<Pick<PlusSticky, PlusStickyEventsKeys>>;
+export type PlusStickyEventsKeys = 'plusChange';
+export type PlusStickyEventsJSX = ToJSXEvent<PlusStickyEvents>;
+export type PlusStickyEventsBaseJSX = ToJSXEvent<PlusStickyEventsBase>;
 export type PlusStickyMethods = Filter<PlusStickyMethodsBase, PlusStickyDisables>;
-export type PlusStickyMethodsBase = {};
+export type PlusStickyMethodsBase = Pick<PlusSticky, PlusStickyMethodsKeys>;
+export type PlusStickyMethodsKeys = never;
 export type PlusStickyProperties = Filter<PlusStickyPropertiesOverridden, PlusStickyDisables>;
 export type PlusStickyPropertiesOverridden = Override<PlusStickyPropertiesBase, PlusStickyOverrides, PlusStickyOverridableKeys>;
-export type PlusStickyPropertiesBase = {
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
-  /**
-  * Specifies the space from top.
-  */
-  top?: string | number;
-  /**
-  * To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`.
-  */
-  watcher?: boolean;
-  /**
-  * Specifies the z-index.
-  */
-  zIndex?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusStickyProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-sticky': {
-      properties: PlusStickyPropertiesOverridden;
-    };
-  }
-}
+export type PlusStickyPropertiesBase = Pick<PlusSticky, PlusStickyPropertiesKeys>;
+export type PlusStickyPropertiesKeys = 'disabled' | 'top' | 'watcher' | 'zIndex' | 'overrides' | 'preset';
 export type PlusStickyElement = globalThis.HTMLPlusStickyElement;
 export type PlusStickyJSX = PlusStickyAttributes & PlusStickyEventsJSX;
 export namespace JSX {
@@ -168,6 +100,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-sticky": HTMLPlusStickyElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-sticky': {
+      properties: PlusStickyPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

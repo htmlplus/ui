@@ -65,99 +65,32 @@ export declare class PlusBreadcrumb extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
 export type PlusBreadcrumbAttributesMapper = {
-  'block': 'block';
   'expanderText': 'expander-text';
-  'offset': 'offset';
-  'max': 'max';
-  'separator': 'separator';
-  'overrides': 'overrides';
-  'preset': 'preset';
 };
 export type PlusBreadcrumbOverridableKeys = 'preset';
 export interface PlusBreadcrumbDisables {}
 export interface PlusBreadcrumbOverrides {}
-export type PlusBreadcrumbAttributes = Filter<PlusBreadcrumbAttributesOverridden, PlusBreadcrumbDisables, PlusBreadcrumbAttributesMapper>;
-export type PlusBreadcrumbAttributesOverridden = Override<PlusBreadcrumbAttributesBase, PlusBreadcrumbOverrides, PlusBreadcrumbOverridableKeys, PlusBreadcrumbAttributesMapper>;
-export type PlusBreadcrumbAttributesBase = {
-  /**
-  * TODO.
-  */
-  "block"?: boolean;
-  /**
-  * Specifies the label for the expander button.
-  */
-  "expander-text"?: string;
-  /**
-  * Specifies the position of the expander button.
-  * The expander button is displayed when the number of items reached the maximum limit.
-  */
-  "offset"?: number;
-  /**
-  * Specifies the Maximum number of items that are allowed to be displayed.
-  */
-  "max"?: number;
-  /**
-  * Specifies the separator between items.
-  */
-  "separator"?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusBreadcrumbProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusBreadcrumbAttributes = Rename<PlusBreadcrumbProperties, PlusBreadcrumbAttributesMapper>;
+export type PlusBreadcrumbAttributesOverridden = Rename<PlusBreadcrumbPropertiesOverridden, PlusBreadcrumbAttributesMapper>;
+export type PlusBreadcrumbAttributesBase = Rename<PlusBreadcrumbPropertiesBase, PlusBreadcrumbAttributesMapper>;
 export type PlusBreadcrumbEvents = Filter<PlusBreadcrumbEventsBase, PlusBreadcrumbDisables>;
-export type PlusBreadcrumbEventsBase = {};
-export type PlusBreadcrumbEventsJSX = Filter<PlusBreadcrumbEventsBaseJSX, PlusBreadcrumbDisables, {}>;
-export type PlusBreadcrumbEventsBaseJSX = {};
+export type PlusBreadcrumbEventsBase = ToEventHandlers<Pick<PlusBreadcrumb, PlusBreadcrumbEventsKeys>>;
+export type PlusBreadcrumbEventsKeys = never;
+export type PlusBreadcrumbEventsJSX = ToJSXEvent<PlusBreadcrumbEvents>;
+export type PlusBreadcrumbEventsBaseJSX = ToJSXEvent<PlusBreadcrumbEventsBase>;
 export type PlusBreadcrumbMethods = Filter<PlusBreadcrumbMethodsBase, PlusBreadcrumbDisables>;
-export type PlusBreadcrumbMethodsBase = {};
+export type PlusBreadcrumbMethodsBase = Pick<PlusBreadcrumb, PlusBreadcrumbMethodsKeys>;
+export type PlusBreadcrumbMethodsKeys = never;
 export type PlusBreadcrumbProperties = Filter<PlusBreadcrumbPropertiesOverridden, PlusBreadcrumbDisables>;
 export type PlusBreadcrumbPropertiesOverridden = Override<PlusBreadcrumbPropertiesBase, PlusBreadcrumbOverrides, PlusBreadcrumbOverridableKeys>;
-export type PlusBreadcrumbPropertiesBase = {
-  /**
-  * TODO.
-  */
-  block?: boolean;
-  /**
-  * Specifies the label for the expander button.
-  */
-  expanderText?: string;
-  /**
-  * Specifies the position of the expander button.
-  * The expander button is displayed when the number of items reached the maximum limit.
-  */
-  offset?: number;
-  /**
-  * Specifies the Maximum number of items that are allowed to be displayed.
-  */
-  max?: number;
-  /**
-  * Specifies the separator between items.
-  */
-  separator?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusBreadcrumbProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-breadcrumb': {
-      properties: PlusBreadcrumbPropertiesOverridden;
-    };
-  }
-}
+export type PlusBreadcrumbPropertiesBase = Pick<PlusBreadcrumb, PlusBreadcrumbPropertiesKeys>;
+export type PlusBreadcrumbPropertiesKeys = 'block' | 'expanderText' | 'offset' | 'max' | 'separator' | 'overrides' | 'preset';
 export type PlusBreadcrumbElement = globalThis.HTMLPlusBreadcrumbElement;
 export type PlusBreadcrumbJSX = PlusBreadcrumbAttributes & PlusBreadcrumbEventsJSX;
 export namespace JSX {
@@ -173,6 +106,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-breadcrumb": HTMLPlusBreadcrumbElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-breadcrumb': {
+      properties: PlusBreadcrumbPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

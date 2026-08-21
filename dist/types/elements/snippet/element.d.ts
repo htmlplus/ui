@@ -39,70 +39,30 @@ export declare class PlusSnippet extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusSnippetAttributesMapper = {
-  'color': 'color';
-  'symbol': 'symbol';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusSnippetAttributesMapper = {};
 export type PlusSnippetOverridableKeys = 'color' | 'preset';
 export interface PlusSnippetDisables {}
 export interface PlusSnippetOverrides {}
-export type PlusSnippetAttributes = Filter<PlusSnippetAttributesOverridden, PlusSnippetDisables, PlusSnippetAttributesMapper>;
-export type PlusSnippetAttributesOverridden = Override<PlusSnippetAttributesBase, PlusSnippetOverrides, PlusSnippetOverridableKeys, PlusSnippetAttributesMapper>;
-export type PlusSnippetAttributesBase = {
-  /**
-  * Specifies the color.
-  */
-  "color"?: OverridableValue<PlusColor>;
-  /**
-  * Specifies the symbol.
-  */
-  "symbol"?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSnippetProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusSnippetAttributes = Rename<PlusSnippetProperties, PlusSnippetAttributesMapper>;
+export type PlusSnippetAttributesOverridden = Rename<PlusSnippetPropertiesOverridden, PlusSnippetAttributesMapper>;
+export type PlusSnippetAttributesBase = Rename<PlusSnippetPropertiesBase, PlusSnippetAttributesMapper>;
 export type PlusSnippetEvents = Filter<PlusSnippetEventsBase, PlusSnippetDisables>;
-export type PlusSnippetEventsBase = {};
-export type PlusSnippetEventsJSX = Filter<PlusSnippetEventsBaseJSX, PlusSnippetDisables, {}>;
-export type PlusSnippetEventsBaseJSX = {};
+export type PlusSnippetEventsBase = ToEventHandlers<Pick<PlusSnippet, PlusSnippetEventsKeys>>;
+export type PlusSnippetEventsKeys = never;
+export type PlusSnippetEventsJSX = ToJSXEvent<PlusSnippetEvents>;
+export type PlusSnippetEventsBaseJSX = ToJSXEvent<PlusSnippetEventsBase>;
 export type PlusSnippetMethods = Filter<PlusSnippetMethodsBase, PlusSnippetDisables>;
-export type PlusSnippetMethodsBase = {};
+export type PlusSnippetMethodsBase = Pick<PlusSnippet, PlusSnippetMethodsKeys>;
+export type PlusSnippetMethodsKeys = never;
 export type PlusSnippetProperties = Filter<PlusSnippetPropertiesOverridden, PlusSnippetDisables>;
 export type PlusSnippetPropertiesOverridden = Override<PlusSnippetPropertiesBase, PlusSnippetOverrides, PlusSnippetOverridableKeys>;
-export type PlusSnippetPropertiesBase = {
-  /**
-  * Specifies the color.
-  */
-  color?: OverridableValue<PlusColor>;
-  /**
-  * Specifies the symbol.
-  */
-  symbol?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSnippetProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-snippet': {
-      properties: PlusSnippetPropertiesOverridden;
-    };
-  }
-}
+export type PlusSnippetPropertiesBase = Pick<PlusSnippet, PlusSnippetPropertiesKeys>;
+export type PlusSnippetPropertiesKeys = 'color' | 'symbol' | 'overrides' | 'preset';
 export type PlusSnippetElement = globalThis.HTMLPlusSnippetElement;
 export type PlusSnippetJSX = PlusSnippetAttributes & PlusSnippetEventsJSX;
 export namespace JSX {
@@ -118,6 +78,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-snippet": HTMLPlusSnippetElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-snippet': {
+      properties: PlusSnippetPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

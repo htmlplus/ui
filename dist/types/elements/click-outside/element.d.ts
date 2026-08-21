@@ -45,93 +45,30 @@ export declare class PlusClickOutside extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusClickOutsideAttributesMapper = {
-  'capture': 'capture';
-  'disabled': 'disabled';
-  'once': 'once';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusClickOutsideAttributesMapper = {};
 export type PlusClickOutsideOverridableKeys = 'preset';
 export interface PlusClickOutsideDisables {}
 export interface PlusClickOutsideOverrides {}
-export type PlusClickOutsideAttributes = Filter<PlusClickOutsideAttributesOverridden, PlusClickOutsideDisables, PlusClickOutsideAttributesMapper>;
-export type PlusClickOutsideAttributesOverridden = Override<PlusClickOutsideAttributesBase, PlusClickOutsideOverrides, PlusClickOutsideOverridableKeys, PlusClickOutsideAttributesMapper>;
-export type PlusClickOutsideAttributesBase = {
-  /**
-  * A boolean value indicating that events of this type will be dispatched to the registered
-  * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
-  */
-  "capture"?: boolean;
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
-  /**
-  * The event fires only once.
-  */
-  "once"?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusClickOutsideProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusClickOutsideAttributes = Rename<PlusClickOutsideProperties, PlusClickOutsideAttributesMapper>;
+export type PlusClickOutsideAttributesOverridden = Rename<PlusClickOutsidePropertiesOverridden, PlusClickOutsideAttributesMapper>;
+export type PlusClickOutsideAttributesBase = Rename<PlusClickOutsidePropertiesBase, PlusClickOutsideAttributesMapper>;
 export type PlusClickOutsideEvents = Filter<PlusClickOutsideEventsBase, PlusClickOutsideDisables>;
-export type PlusClickOutsideEventsBase = {
-  /**
-  * Fires when outside of the element is clicked.
-  */
-  plusClickOutside?: (event: CustomEvent<void>) => void;
-};
-export type PlusClickOutsideEventsJSX = Filter<PlusClickOutsideEventsBaseJSX, PlusClickOutsideDisables, {
-  plusClickOutside: 'onPlusClickOutside';
-}>;
-export type PlusClickOutsideEventsBaseJSX = {
-  /**
-  * Fires when outside of the element is clicked.
-  */
-  onPlusClickOutside?: (event: CustomEvent<void>) => void;
-};
+export type PlusClickOutsideEventsBase = ToEventHandlers<Pick<PlusClickOutside, PlusClickOutsideEventsKeys>>;
+export type PlusClickOutsideEventsKeys = 'plusClickOutside';
+export type PlusClickOutsideEventsJSX = ToJSXEvent<PlusClickOutsideEvents>;
+export type PlusClickOutsideEventsBaseJSX = ToJSXEvent<PlusClickOutsideEventsBase>;
 export type PlusClickOutsideMethods = Filter<PlusClickOutsideMethodsBase, PlusClickOutsideDisables>;
-export type PlusClickOutsideMethodsBase = {};
+export type PlusClickOutsideMethodsBase = Pick<PlusClickOutside, PlusClickOutsideMethodsKeys>;
+export type PlusClickOutsideMethodsKeys = never;
 export type PlusClickOutsideProperties = Filter<PlusClickOutsidePropertiesOverridden, PlusClickOutsideDisables>;
 export type PlusClickOutsidePropertiesOverridden = Override<PlusClickOutsidePropertiesBase, PlusClickOutsideOverrides, PlusClickOutsideOverridableKeys>;
-export type PlusClickOutsidePropertiesBase = {
-  /**
-  * A boolean value indicating that events of this type will be dispatched to the registered
-  * `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree.
-  */
-  capture?: boolean;
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
-  /**
-  * The event fires only once.
-  */
-  once?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusClickOutsideProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-click-outside': {
-      properties: PlusClickOutsidePropertiesOverridden;
-    };
-  }
-}
+export type PlusClickOutsidePropertiesBase = Pick<PlusClickOutside, PlusClickOutsidePropertiesKeys>;
+export type PlusClickOutsidePropertiesKeys = 'capture' | 'disabled' | 'once' | 'overrides' | 'preset';
 export type PlusClickOutsideElement = globalThis.HTMLPlusClickOutsideElement;
 export type PlusClickOutsideJSX = PlusClickOutsideAttributes & PlusClickOutsideEventsJSX;
 export namespace JSX {
@@ -147,6 +84,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-click-outside": HTMLPlusClickOutsideElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-click-outside': {
+      properties: PlusClickOutsidePropertiesOverridden;
+    };
   }
 }
 declare module "react" {

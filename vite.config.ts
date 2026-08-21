@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -9,9 +10,10 @@ import dts from 'unplugin-dts/vite';
 import { defineConfig } from 'vite';
 
 import { examples } from './examples/plugin';
-import plugins from './htmlplus.config';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const PACKAGE = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 const entries = Object.fromEntries(
 	glob
@@ -67,7 +69,47 @@ export default defineConfig({
 	},
 	plugins: [
 		examples(),
-		htmlplus(plugins),
+		htmlplus({
+			style: {
+				source(context) {
+					return `${context.directoryPath}/styles.scss`;
+				}
+			},
+			assets: {
+				destination(context) {
+					return `dist/elements/${context.directoryName}`;
+				},
+				json(context) {
+					return `dist/elements/${context.directoryName}/assets.json`;
+				}
+			},
+			document: {
+				destination: `dist/json/document.json`,
+				transformer(json) {
+					// biome-ignore lint: TODO
+					json.elements.forEach((element: any) => {
+						element.examples =
+							// biome-ignore lint: TODO
+							element.examples?.split(',').map((example: any) => example.trim()) || [];
+					});
+					return json;
+				}
+			},
+			visualStudioCode: {
+				destination: `dist/json/vscode.json`,
+				reference(context) {
+					return `https://www.htmlplus.io/javascript/element/${context.elementKey?.replace('plus-', '')}`;
+				}
+			},
+			webTypes: {
+				destination: `dist/json/web-types.json`,
+				packageName: PACKAGE.name,
+				packageVersion: PACKAGE.version,
+				reference(context) {
+					return `https://www.htmlplus.io/javascript/element/${context.elementKey?.replace('plus-', '')}`;
+				}
+			}
+		}),
 		peerDepsExternal(),
 		dts({
 			outDirs: 'dist/types',

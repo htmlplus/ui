@@ -100,141 +100,30 @@ export declare class PlusAccordion extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusAccordionAttributesMapper = {
-  'disabled': 'disabled';
-  'open': 'open';
-  'summary': 'summary';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusAccordionAttributesMapper = {};
 export type PlusAccordionOverridableKeys = 'preset';
 export interface PlusAccordionDisables {}
 export interface PlusAccordionOverrides {}
-export type PlusAccordionAttributes = Filter<PlusAccordionAttributesOverridden, PlusAccordionDisables, PlusAccordionAttributesMapper>;
-export type PlusAccordionAttributesOverridden = Override<PlusAccordionAttributesBase, PlusAccordionOverrides, PlusAccordionOverridableKeys, PlusAccordionAttributesMapper>;
-export type PlusAccordionAttributesBase = {
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
-  /**
-  * Control the element to expand or not.
-  */
-  "open"?: boolean;
-  /**
-  * The summary text displayed on the header.
-  */
-  "summary"?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusAccordionAttributes = Rename<PlusAccordionProperties, PlusAccordionAttributesMapper>;
+export type PlusAccordionAttributesOverridden = Rename<PlusAccordionPropertiesOverridden, PlusAccordionAttributesMapper>;
+export type PlusAccordionAttributesBase = Rename<PlusAccordionPropertiesBase, PlusAccordionAttributesMapper>;
 export type PlusAccordionEvents = Filter<PlusAccordionEventsBase, PlusAccordionDisables>;
-export type PlusAccordionEventsBase = {
-  /**
-  * Fires when the element is about to collapse.
-  * This event can be [canceled](TODO).
-  */
-  plusCollapse?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires after the element has collapsed.
-  */
-  plusCollapsed?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the element is about to expand.
-  * This event can be [canceled](TODO).
-  */
-  plusExpand?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires after the element has expanded.
-  */
-  plusExpanded?: (event: CustomEvent<void>) => void;
-};
-export type PlusAccordionEventsJSX = Filter<PlusAccordionEventsBaseJSX, PlusAccordionDisables, {
-  plusCollapse: 'onPlusCollapse';
-  plusCollapsed: 'onPlusCollapsed';
-  plusExpand: 'onPlusExpand';
-  plusExpanded: 'onPlusExpanded';
-}>;
-export type PlusAccordionEventsBaseJSX = {
-  /**
-  * Fires when the element is about to collapse.
-  * This event can be [canceled](TODO).
-  */
-  onPlusCollapse?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires after the element has collapsed.
-  */
-  onPlusCollapsed?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires when the element is about to expand.
-  * This event can be [canceled](TODO).
-  */
-  onPlusExpand?: (event: CustomEvent<void>) => void;
-  /**
-  * Fires after the element has expanded.
-  */
-  onPlusExpanded?: (event: CustomEvent<void>) => void;
-};
+export type PlusAccordionEventsBase = ToEventHandlers<Pick<PlusAccordion, PlusAccordionEventsKeys>>;
+export type PlusAccordionEventsKeys = 'plusCollapse' | 'plusCollapsed' | 'plusExpand' | 'plusExpanded';
+export type PlusAccordionEventsJSX = ToJSXEvent<PlusAccordionEvents>;
+export type PlusAccordionEventsBaseJSX = ToJSXEvent<PlusAccordionEventsBase>;
 export type PlusAccordionMethods = Filter<PlusAccordionMethodsBase, PlusAccordionDisables>;
-export type PlusAccordionMethodsBase = {
-  /**
-  * Collapses the element.
-  * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-  * operation was successful or `false` if it was canceled.
-  */
-  collapse(): Promise<boolean>;
-  /**
-  * Expands the element.
-  * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-  * operation was successful or `false` if it was canceled.
-  */
-  expand(): Promise<boolean>;
-  /**
-  * Toggles between `collapse` and `expand` state.
-  * @returns {Promise<boolean>} A Promise that resolves to `true` if the
-  * operation was successful or `false` if it was canceled.
-  */
-  toggle(): Promise<boolean>;
-};
+export type PlusAccordionMethodsBase = Pick<PlusAccordion, PlusAccordionMethodsKeys>;
+export type PlusAccordionMethodsKeys = 'collapse' | 'expand' | 'toggle';
 export type PlusAccordionProperties = Filter<PlusAccordionPropertiesOverridden, PlusAccordionDisables>;
 export type PlusAccordionPropertiesOverridden = Override<PlusAccordionPropertiesBase, PlusAccordionOverrides, PlusAccordionOverridableKeys>;
-export type PlusAccordionPropertiesBase = {
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
-  /**
-  * Control the element to expand or not.
-  */
-  open?: boolean;
-  /**
-  * The summary text displayed on the header.
-  */
-  summary?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAccordionProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-accordion': {
-      properties: PlusAccordionPropertiesOverridden;
-    };
-  }
-}
+export type PlusAccordionPropertiesBase = Pick<PlusAccordion, PlusAccordionPropertiesKeys>;
+export type PlusAccordionPropertiesKeys = 'disabled' | 'open' | 'summary' | 'overrides' | 'preset';
 export type PlusAccordionElement = globalThis.HTMLPlusAccordionElement;
 export type PlusAccordionJSX = PlusAccordionAttributes & PlusAccordionEventsJSX;
 export namespace JSX {
@@ -250,6 +139,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-accordion": HTMLPlusAccordionElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-accordion': {
+      properties: PlusAccordionPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

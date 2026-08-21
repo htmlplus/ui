@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.8.12",
+  "version": "1.8.13",
   "description-markup": "markdown",
   "framework-config": {
     "enable-when": {
@@ -16,6 +16,46 @@
         {
           "name": "plus-accordion",
           "doc-url": "https://www.htmlplus.io/javascript/element/accordion",
+          "attributes": [
+            {
+              "name": "disabled",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Disables the element functionality."
+            },
+            {
+              "name": "open",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Control the element to expand or not."
+            },
+            {
+              "name": "summary",
+              "value": {
+                "type": "string"
+              },
+              "default": "''",
+              "description": "The summary text displayed on the header."
+            },
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+            },
+            {
+              "name": "preset",
+              "value": {
+                "type": "OverridableValue<never>"
+              },
+              "description": "See [Preset](/preset-property) for details."
+            }
+          ],
           "js": {
             "events": [
               {
@@ -73,47 +113,6 @@
               }
             ]
           },
-          "attributes": [
-            {
-              "name": "disabled",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Disables the element functionality."
-            },
-            {
-              "name": "open",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Control the element to expand or not."
-            },
-            {
-              "name": "summary",
-              "value": {
-                "type": "string"
-              },
-              "default": "''",
-              "description": "The summary text displayed on the header."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<PlusBreakpoint>"
-              },
-              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-            },
-            {
-              "name": "preset",
-              "value": {
-                "type": "OverridableValue<never>"
-              },
-              "description": "See [Preset](/preset-property) for details."
-            }
-          ],
-          "description": "A vertically stacked list of headers that reveal or hide associated sections of content.",
           "slots": [
             {
               "name": "default",
@@ -147,29 +146,12 @@
               "name": "bottom",
               "description": "The bottom slot."
             }
-          ]
+          ],
+          "description": "A vertically stacked list of headers that reveal or hide associated sections of content."
         },
         {
           "name": "plus-accordions",
           "doc-url": "https://www.htmlplus.io/javascript/element/accordions",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "persistent",
-                "default": false,
-                "description": "Specifies that only one accordion can be open."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "persistent",
@@ -194,104 +176,13 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-animation",
-          "doc-url": "https://www.htmlplus.io/javascript/element/animation",
           "js": {
-            "events": [
-              {
-                "name": "plus-cancel",
-                "description": "Fires when the [Animation.cancel()](https://mdn.io/animation-cancel) method is called or when the animation enters the \"`idle`\" play state from another state."
-              },
-              {
-                "name": "plus-finish",
-                "description": "Fires when the animation finishes playing."
-              },
-              {
-                "name": "plus-remove",
-                "description": "Fires when the animation is removed (i.e., put into an `active` replace state)."
-              }
-            ],
+            "events": [],
             "properties": [
               {
-                "name": "composite",
-                "default": "'replace'",
-                "description": "Determines how values are combined between this animation and other, separate animations that do not specify their own specific composite operation."
-              },
-              {
-                "name": "delay",
-                "default": "0",
-                "description": "The number of milliseconds to delay the start of the animation."
-              },
-              {
-                "name": "direction",
-                "default": "'normal'",
-                "description": "Whether the animation runs forwards (`normal`), backwards (`reverse`), switches direction after each iteration (`alternate`), or runs backwards and switches direction after each iteration (`alternate-reverse`)."
-              },
-              {
-                "name": "duration",
-                "default": "1000",
-                "description": "The number of milliseconds each iteration of the animation takes to complete. Keep in mind that your animation will not run if this value is 0."
-              },
-              {
-                "name": "easing",
-                "default": "'linear'",
-                "description": "The rate of the animation's change over time. Accepts the pre-defined values \"`linear`\", \"`ease`\", \"`ease-in`\", \"`ease-out`\", and \"`ease-in-out`\", or a custom \"`cubic-bezier`\" value like \"`cubic-bezier(0.42, 0, 0.58, 1)`\"."
-              },
-              {
-                "name": "endDelay",
-                "default": "0",
-                "description": "The number of milliseconds to delay after the end of an animation. This is primarily of use when sequencing animations based on the end time of another animation."
-              },
-              {
-                "name": "fill",
-                "default": "'none'",
-                "description": "Dictates whether the animation's effects should be reflected by the element(s) prior to playing (\"`backwards`\"), retained after the animation has completed playing (\"`forwards`\"), or `both`."
-              },
-              {
-                "name": "instance",
-                "description": "The [Animation](https://mdn.io/api-animation) object instance."
-              },
-              {
-                "name": "iterationComposite",
-                "default": "'replace'",
-                "description": "Determines how values build from iteration to iteration in this animation. Can be set to `accumulate` or `replace`."
-              },
-              {
-                "name": "iterations",
-                "default": "1",
-                "description": "The number of times the animation should repeat. And can also take a value of [Infinity](https://mdn.io/infinity) to make it repeat for as long as the element exists."
-              },
-              {
-                "name": "iterationStart",
-                "default": "0",
-                "description": "Describes at what point in the iteration the animation should start. 0.5 would indicate starting halfway through the first iteration for example, and with this value set, an animation with 2 iterations would end halfway through a third iteration."
-              },
-              {
-                "name": "keyframes",
-                "description": "A [keyframes](https://mdn.io/keyframe-formats) object or `null`."
-              },
-              {
-                "name": "name",
-                "description": "Specifies what kind of animation will play. The list of available animations is [here](/element/animation/names)."
-              },
-              {
-                "name": "playbackRate",
-                "default": "1",
-                "description": "Sets the animation's playback rate."
-              },
-              {
-                "name": "run",
+                "name": "persistent",
                 "default": false,
-                "description": "Starts the animation."
+                "description": "Specifies that only one accordion can be open."
               },
               {
                 "name": "overrides",
@@ -300,41 +191,20 @@
               {
                 "name": "preset",
                 "description": "See [Preset](/preset-property) for details."
-              },
-              {
-                "name": "cancel",
-                "description": "Clears all [keyframeEffects](https://mdn.io/keyframe-effect) caused by this animation and aborts its playback."
-              },
-              {
-                "name": "commitStyles",
-                "description": "Commits the end styling state of an animation to the element being animated, even after that animation has been removed. It will cause the end styling state to be written to the element being animated, in the form of properties inside a `style` attribute."
-              },
-              {
-                "name": "finish",
-                "description": "Seeks either end of an animation, depending on whether the animation is playing or reversing."
-              },
-              {
-                "name": "pause",
-                "description": "Suspends playing of an animation."
-              },
-              {
-                "name": "persist",
-                "description": "Explicitly persists an animation, when it would otherwise be removed due to the browser's [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations) behavior."
-              },
-              {
-                "name": "play",
-                "description": "Starts or resumes playing of an animation, or begins the animation again if it previously finished."
-              },
-              {
-                "name": "reverse",
-                "description": "Reverses playback direction, stopping at the start of the animation. If the animation is finished or unplayed, it will play from end to beginning."
-              },
-              {
-                "name": "updatePlaybackRate",
-                "description": "Sets the speed of an animation after first synchronizing its playback position."
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-animation",
+          "doc-url": "https://www.htmlplus.io/javascript/element/animation",
           "attributes": [
             {
               "name": "composite",
@@ -468,17 +338,203 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names).",
+          "js": {
+            "events": [
+              {
+                "name": "plus-cancel",
+                "description": "Fires when the [Animation.cancel()](https://mdn.io/animation-cancel) method is called or when the animation enters the \"`idle`\" play state from another state."
+              },
+              {
+                "name": "plus-finish",
+                "description": "Fires when the animation finishes playing."
+              },
+              {
+                "name": "plus-remove",
+                "description": "Fires when the animation is removed (i.e., put into an `active` replace state)."
+              }
+            ],
+            "properties": [
+              {
+                "name": "composite",
+                "default": "'replace'",
+                "description": "Determines how values are combined between this animation and other, separate animations that do not specify their own specific composite operation."
+              },
+              {
+                "name": "delay",
+                "default": "0",
+                "description": "The number of milliseconds to delay the start of the animation."
+              },
+              {
+                "name": "direction",
+                "default": "'normal'",
+                "description": "Whether the animation runs forwards (`normal`), backwards (`reverse`), switches direction after each iteration (`alternate`), or runs backwards and switches direction after each iteration (`alternate-reverse`)."
+              },
+              {
+                "name": "duration",
+                "default": "1000",
+                "description": "The number of milliseconds each iteration of the animation takes to complete. Keep in mind that your animation will not run if this value is 0."
+              },
+              {
+                "name": "easing",
+                "default": "'linear'",
+                "description": "The rate of the animation's change over time. Accepts the pre-defined values \"`linear`\", \"`ease`\", \"`ease-in`\", \"`ease-out`\", and \"`ease-in-out`\", or a custom \"`cubic-bezier`\" value like \"`cubic-bezier(0.42, 0, 0.58, 1)`\"."
+              },
+              {
+                "name": "endDelay",
+                "default": "0",
+                "description": "The number of milliseconds to delay after the end of an animation. This is primarily of use when sequencing animations based on the end time of another animation."
+              },
+              {
+                "name": "fill",
+                "default": "'none'",
+                "description": "Dictates whether the animation's effects should be reflected by the element(s) prior to playing (\"`backwards`\"), retained after the animation has completed playing (\"`forwards`\"), or `both`."
+              },
+              {
+                "name": "instance",
+                "description": "The [Animation](https://mdn.io/api-animation) object instance."
+              },
+              {
+                "name": "iterationComposite",
+                "default": "'replace'",
+                "description": "Determines how values build from iteration to iteration in this animation. Can be set to `accumulate` or `replace`."
+              },
+              {
+                "name": "iterations",
+                "default": "1",
+                "description": "The number of times the animation should repeat. And can also take a value of [Infinity](https://mdn.io/infinity) to make it repeat for as long as the element exists."
+              },
+              {
+                "name": "iterationStart",
+                "default": "0",
+                "description": "Describes at what point in the iteration the animation should start. 0.5 would indicate starting halfway through the first iteration for example, and with this value set, an animation with 2 iterations would end halfway through a third iteration."
+              },
+              {
+                "name": "keyframes",
+                "description": "A [keyframes](https://mdn.io/keyframe-formats) object or `null`."
+              },
+              {
+                "name": "name",
+                "description": "Specifies what kind of animation will play. The list of available animations is [here](/element/animation/names)."
+              },
+              {
+                "name": "playbackRate",
+                "default": "1",
+                "description": "Sets the animation's playback rate."
+              },
+              {
+                "name": "run",
+                "default": false,
+                "description": "Starts the animation."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              },
+              {
+                "name": "cancel",
+                "description": "Clears all [keyframeEffects](https://mdn.io/keyframe-effect) caused by this animation and aborts its playback."
+              },
+              {
+                "name": "commitStyles",
+                "description": "Commits the end styling state of an animation to the element being animated, even after that animation has been removed. It will cause the end styling state to be written to the element being animated, in the form of properties inside a `style` attribute."
+              },
+              {
+                "name": "finish",
+                "description": "Seeks either end of an animation, depending on whether the animation is playing or reversing."
+              },
+              {
+                "name": "pause",
+                "description": "Suspends playing of an animation."
+              },
+              {
+                "name": "persist",
+                "description": "Explicitly persists an animation, when it would otherwise be removed due to the browser's [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations) behavior."
+              },
+              {
+                "name": "play",
+                "description": "Starts or resumes playing of an animation, or begins the animation again if it previously finished."
+              },
+              {
+                "name": "reverse",
+                "description": "Reverses playback direction, stopping at the start of the animation. If the animation is finished or unplayed, it will play from end to beginning."
+              },
+              {
+                "name": "updatePlaybackRate",
+                "description": "Sets the speed of an animation after first synchronizing its playback position."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": "Creates an animation and applies it to the content. Powered by the [Web Animations API](https://mdn.io/web-animations-api). A wide range of animations is available [here](https://www.htmlplus.io/element/animation/names)."
         },
         {
           "name": "plus-app-progress-bar",
           "doc-url": "https://www.htmlplus.io/javascript/element/app-progress-bar",
+          "attributes": [
+            {
+              "name": "color",
+              "value": {
+                "type": "OverridableValue<PlusColor>"
+              },
+              "default": "'dodgerblue'",
+              "description": "Specifies the color of the bar."
+            },
+            {
+              "name": "minimum",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.08",
+              "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
+            },
+            {
+              "name": "trickle-disabled",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Turn off the automatic incrementing behavior by setting this to `true`."
+            },
+            {
+              "name": "trickle-rate",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.02",
+              "description": "The rate at which the progress bar increments when trickling."
+            },
+            {
+              "name": "trickle-speed",
+              "value": {
+                "type": "number"
+              },
+              "default": "800",
+              "description": "Adjust how often to trickle/increment, in ms."
+            },
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+            },
+            {
+              "name": "preset",
+              "value": {
+                "type": "OverridableValue<never>"
+              },
+              "description": "See [Preset](/preset-property) for details."
+            }
+          ],
           "js": {
             "events": [],
             "properties": [
@@ -537,95 +593,12 @@
               }
             ]
           },
-          "attributes": [
-            {
-              "name": "color",
-              "value": {
-                "type": "OverridableValue<PlusColor>"
-              },
-              "default": "'dodgerblue'",
-              "description": "Specifies the color of the bar."
-            },
-            {
-              "name": "minimum",
-              "value": {
-                "type": "number"
-              },
-              "default": "0.08",
-              "description": "Determines the minimum percentage used upon starting, which must be a value between `0.0` and `1.0`."
-            },
-            {
-              "name": "trickle-disabled",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Turn off the automatic incrementing behavior by setting this to `true`."
-            },
-            {
-              "name": "trickle-rate",
-              "value": {
-                "type": "number"
-              },
-              "default": "0.02",
-              "description": "The rate at which the progress bar increments when trickling."
-            },
-            {
-              "name": "trickle-speed",
-              "value": {
-                "type": "number"
-              },
-              "default": "800",
-              "description": "Adjust how often to trickle/increment, in ms."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<PlusBreakpoint>"
-              },
-              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-            },
-            {
-              "name": "preset",
-              "value": {
-                "type": "OverridableValue<never>"
-              },
-              "description": "See [Preset](/preset-property) for details."
-            }
-          ],
+          "slots": [],
           "description": "A progress bar that offers clear and intuitive visual feedback on the status of asynchronous operations."
         },
         {
           "name": "plus-avatar",
           "doc-url": "https://www.htmlplus.io/javascript/element/avatar",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "color",
-                "default": "'gray'",
-                "description": "Specifies the color."
-              },
-              {
-                "name": "shape",
-                "default": "'round'",
-                "description": "Specifies the shape of the element."
-              },
-              {
-                "name": "size",
-                "default": "'md'",
-                "description": "Specifies the size of the element."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "color",
@@ -666,29 +639,23 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "An image representing a user's profile picture.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-avatar-group",
-          "doc-url": "https://www.htmlplus.io/javascript/element/avatar-group",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "hoverable",
-                "default": false,
-                "description": "Specifies whether to prominent the avatar when the mouse is entered or not."
+                "name": "color",
+                "default": "'gray'",
+                "description": "Specifies the color."
               },
               {
-                "name": "stacked",
-                "default": false,
-                "description": "Specifies whether avatars should be displayed compressed or not."
+                "name": "shape",
+                "default": "'round'",
+                "description": "Specifies the shape of the element."
+              },
+              {
+                "name": "size",
+                "default": "'md'",
+                "description": "Specifies the size of the element."
               },
               {
                 "name": "overrides",
@@ -700,6 +667,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "An image representing a user's profile picture."
+        },
+        {
+          "name": "plus-avatar-group",
+          "doc-url": "https://www.htmlplus.io/javascript/element/avatar-group",
           "attributes": [
             {
               "name": "hoverable",
@@ -732,43 +710,18 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-breadcrumb",
-          "doc-url": "https://www.htmlplus.io/javascript/element/breadcrumb",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "block",
+                "name": "hoverable",
                 "default": false,
-                "description": "TODO."
+                "description": "Specifies whether to prominent the avatar when the mouse is entered or not."
               },
               {
-                "name": "expanderText",
-                "default": "'Show path'",
-                "description": "Specifies the label for the expander button."
-              },
-              {
-                "name": "offset",
-                "default": "1",
-                "description": "Specifies the position of the expander button. The expander button is displayed when the number of items reached the maximum limit."
-              },
-              {
-                "name": "max",
-                "description": "Specifies the Maximum number of items that are allowed to be displayed."
-              },
-              {
-                "name": "separator",
-                "default": "''",
-                "description": "Specifies the separator between items."
+                "name": "stacked",
+                "default": false,
+                "description": "Specifies whether avatars should be displayed compressed or not."
               },
               {
                 "name": "overrides",
@@ -780,6 +733,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-breadcrumb",
+          "doc-url": "https://www.htmlplus.io/javascript/element/breadcrumb",
           "attributes": [
             {
               "name": "block",
@@ -835,7 +799,43 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page. It represents the route using links, which enables the user to easily navigate upwards through the hierarchy.",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "block",
+                "default": false,
+                "description": "TODO."
+              },
+              {
+                "name": "expanderText",
+                "default": "'Show path'",
+                "description": "Specifies the label for the expander button."
+              },
+              {
+                "name": "offset",
+                "default": "1",
+                "description": "Specifies the position of the expander button. The expander button is displayed when the number of items reached the maximum limit."
+              },
+              {
+                "name": "max",
+                "description": "Specifies the Maximum number of items that are allowed to be displayed."
+              },
+              {
+                "name": "separator",
+                "default": "''",
+                "description": "Specifies the separator between items."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
@@ -849,77 +849,12 @@
               "name": "separator",
               "description": "The separator slot."
             }
-          ]
+          ],
+          "description": "Breadcrumb element is a navigation pattern that shows the actual path of the current page. It represents the route using links, which enables the user to easily navigate upwards through the hierarchy."
         },
         {
           "name": "plus-browse",
           "doc-url": "https://www.htmlplus.io/javascript/element/browse",
-          "js": {
-            "events": [
-              {
-                "name": "plus-change",
-                "description": "Fires when file(s) are selected."
-              },
-              {
-                "name": "plus-error",
-                "description": "Fires when selected invalid file(s)."
-              },
-              {
-                "name": "plus-success",
-                "description": "Fires when file(s) are added successfully."
-              }
-            ],
-            "properties": [
-              {
-                "name": "accept",
-                "default": "''",
-                "description": "One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow."
-              },
-              {
-                "name": "disabled",
-                "default": false,
-                "description": "Disables the element functionality."
-              },
-              {
-                "name": "droppable",
-                "default": false,
-                "description": "Adds droppable ability."
-              },
-              {
-                "name": "min",
-                "description": "Specifies the minimum number of files."
-              },
-              {
-                "name": "max",
-                "description": "Specifies the maximum number of files."
-              },
-              {
-                "name": "minSize",
-                "description": "Specifies the minimum size of the file(s) in bytes."
-              },
-              {
-                "name": "maxSize",
-                "description": "Specifies the maximum size of the file(s) in bytes."
-              },
-              {
-                "name": "multiple",
-                "default": false,
-                "description": "Allows to select more than one file."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              },
-              {
-                "name": "browse",
-                "description": "Opens the browse dialog."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "accept",
@@ -996,38 +931,57 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Allows you to select file or files by using click or drag & drop functionality.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-card",
-          "doc-url": "https://www.htmlplus.io/javascript/element/card",
           "js": {
-            "events": [],
+            "events": [
+              {
+                "name": "plus-change",
+                "description": "Fires when file(s) are selected."
+              },
+              {
+                "name": "plus-error",
+                "description": "Fires when selected invalid file(s)."
+              },
+              {
+                "name": "plus-success",
+                "description": "Fires when file(s) are added successfully."
+              }
+            ],
             "properties": [
               {
-                "name": "elevation",
-                "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
+                "name": "accept",
+                "default": "''",
+                "description": "One or more [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers) describing file types to allow."
               },
               {
-                "name": "flat",
+                "name": "disabled",
                 "default": false,
-                "description": "Use the flat property to neutralize elevation."
+                "description": "Disables the element functionality."
               },
               {
-                "name": "outlined",
+                "name": "droppable",
                 "default": false,
-                "description": "If you want the card to have border, use the outlined property."
+                "description": "Adds droppable ability."
               },
               {
-                "name": "tile",
+                "name": "min",
+                "description": "Specifies the minimum number of files."
+              },
+              {
+                "name": "max",
+                "description": "Specifies the maximum number of files."
+              },
+              {
+                "name": "minSize",
+                "description": "Specifies the minimum size of the file(s) in bytes."
+              },
+              {
+                "name": "maxSize",
+                "description": "Specifies the maximum size of the file(s) in bytes."
+              },
+              {
+                "name": "multiple",
                 "default": false,
-                "description": "Use tile property to neutralize border-radius."
+                "description": "Allows to select more than one file."
               },
               {
                 "name": "overrides",
@@ -1036,9 +990,24 @@
               {
                 "name": "preset",
                 "description": "See [Preset](/preset-property) for details."
+              },
+              {
+                "name": "browse",
+                "description": "Opens the browse dialog."
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Allows you to select file or files by using click or drag & drop functionality."
+        },
+        {
+          "name": "plus-card",
+          "doc-url": "https://www.htmlplus.io/javascript/element/card",
           "attributes": [
             {
               "name": "elevation",
@@ -1086,20 +1055,28 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Cards contain content and actions about a single subject.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-card-body",
-          "doc-url": "https://www.htmlplus.io/javascript/element/card-body",
           "js": {
             "events": [],
             "properties": [
+              {
+                "name": "elevation",
+                "description": "If you want the card to have shadow, use the elevation property, And select the property value between `1` and `24`."
+              },
+              {
+                "name": "flat",
+                "default": false,
+                "description": "Use the flat property to neutralize elevation."
+              },
+              {
+                "name": "outlined",
+                "default": false,
+                "description": "If you want the card to have border, use the outlined property."
+              },
+              {
+                "name": "tile",
+                "default": false,
+                "description": "Use tile property to neutralize border-radius."
+              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -1110,6 +1087,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Cards contain content and actions about a single subject."
+        },
+        {
+          "name": "plus-card-body",
+          "doc-url": "https://www.htmlplus.io/javascript/element/card-body",
           "attributes": [
             {
               "name": "overrides",
@@ -1126,17 +1114,194 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": ""
         },
         {
           "name": "plus-carousel",
           "doc-url": "https://www.htmlplus.io/javascript/element/carousel",
+          "attributes": [
+            {
+              "name": "align",
+              "value": {
+                "type": "'start' | 'center' | 'end'"
+              },
+              "default": "'center'",
+              "description": "Align the slides relative to the carousel viewport."
+            },
+            {
+              "name": "auto-height",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
+            },
+            {
+              "name": "axis",
+              "value": {
+                "type": "'x' | 'y'"
+              },
+              "default": "'x'",
+              "description": "Choose scroll axis between `x` and `y`."
+            },
+            {
+              "name": "classes",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
+            },
+            {
+              "name": "contain-scroll",
+              "value": {
+                "type": "'off' | 'keepSnaps' | 'trimSnaps'"
+              },
+              "default": "'trimSnaps'",
+              "description": "Clear leading and trailing empty space that causes excessive scrolling. Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them. **Note**: When this is active, it will **override alignments** applied by the **align** property for enough slides at the **start** and the **end** of the carousel, in order to **cover** the **leading** and **trailing space**."
+            },
+            {
+              "name": "draggable",
+              "value": {
+                "type": "'free' | 'snap'"
+              },
+              "description": "Enables scrolling the carousel using mouse and touch interactions."
+            },
+            {
+              "name": "drag-threshold",
+              "value": {
+                "type": "number"
+              },
+              "default": "10",
+              "description": "Drag threshold in pixels. This only affects **when** clicks are fired and not. In contrast to other carousel libraries, it will **not affect when dragging** of the carousel **starts**. **Note**: Browsers handle touch events differently than mouse events. Browsers won't fire the click event when a touch event includes an accidental slight swipe gesture. This is why this threshold only works for mouse events."
+            },
+            {
+              "name": "duration",
+              "value": {
+                "type": "number"
+              },
+              "default": "25",
+              "description": "Set scroll duration when triggered by any of the API methods. Higher numbers enables slower scrolling. Drag interactions are not affected because duration is then determined by the drag force. **Note**: Duration is **not** in milliseconds because Embla uses an attraction physics simulation when scrolling instead of easings. Only values between `20-60` are recommended."
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
+            },
+            {
+              "name": "in-view-threshold",
+              "value": {
+                "type": "number"
+              },
+              "default": "0",
+              "description": "This is the Intersection Observer [threshold](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#creating_an_intersection_observer) option that will be applied to all slides."
+            },
+            {
+              "name": "loop",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
+            },
+            {
+              "name": "plugins",
+              "value": {
+                "type": "EmblaPluginType[]"
+              },
+              "description": "Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality."
+            },
+            {
+              "name": "mirror",
+              "value": {
+                "type": "string"
+              },
+              "default": "''",
+              "description": "Matches the current slide on another carousel using its id."
+            },
+            {
+              "name": "mirror-type",
+              "value": {
+                "type": "'sync-jump' | 'sync-smooth' | 'click-inherit' | 'click-jump' | 'click-smooth'"
+              },
+              "default": "'sync-smooth'",
+              "description": "Specifies how the carousel should be mirrored onto another carousel."
+            },
+            {
+              "name": "resizable",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
+            },
+            {
+              "name": "slides-to-scroll",
+              "value": {
+                "type": "'auto' | number"
+              },
+              "default": "1",
+              "description": "Group slides together. Drag interactions, dot navigation, and previous/next buttons are mapped to group slides into the given number, which has to be an integer. Set it to `auto` if you want to group slides automatically."
+            },
+            {
+              "name": "start-index",
+              "value": {
+                "type": "number"
+              },
+              "default": "0",
+              "description": "Set the initial scroll snap to the given number. First snap index starts at 0. Please note that this is not necessarily equal to the number of slides when used together with the `slidesToScroll` property."
+            },
+            {
+              "name": "tween-factor-base",
+              "value": {
+                "type": "number"
+              },
+              "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
+            },
+            {
+              "name": "api",
+              "value": {
+                "type": ""
+              },
+              "description": "The Embla carousel API."
+            },
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "TODO: Indicates whether the carousel has been successfully initialized."
+            },
+            {
+              "name": "preset",
+              "value": {
+                "type": "OverridableValue<never>"
+              },
+              "description": "See [Preset](/preset-property) for details."
+            }
+          ],
           "js": {
             "events": [
               {
@@ -1342,203 +1507,17 @@
               }
             ]
           },
-          "attributes": [
-            {
-              "name": "align",
-              "value": {
-                "type": "'start' | 'center' | 'end'"
-              },
-              "default": "'center'",
-              "description": "Align the slides relative to the carousel viewport."
-            },
-            {
-              "name": "auto-height",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Enables the height of the carousel container to be adjusted to match the tallest slide in view. This element provides a built-in implementation of Embla's `Auto Height` plugin, so there's no need to include the original plugin manually."
-            },
-            {
-              "name": "axis",
-              "value": {
-                "type": "'x' | 'y'"
-              },
-              "default": "'x'",
-              "description": "Choose scroll axis between `x` and `y`."
-            },
-            {
-              "name": "classes",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Enables automatic class injection for styling based on carousel state. This element provides a built-in implementation of Embla's `Class Names` plugin, so there's no need to include the original plugin manually."
-            },
-            {
-              "name": "contain-scroll",
-              "value": {
-                "type": "'off' | 'keepSnaps' | 'trimSnaps'"
-              },
-              "default": "'trimSnaps'",
-              "description": "Clear leading and trailing empty space that causes excessive scrolling. Use `trimSnaps` to only use snap points that trigger scrolling or `keepSnaps` to keep them. **Note**: When this is active, it will **override alignments** applied by the **align** property for enough slides at the **start** and the **end** of the carousel, in order to **cover** the **leading** and **trailing space**."
-            },
-            {
-              "name": "draggable",
-              "value": {
-                "type": "'free' | 'snap'"
-              },
-              "description": "Enables scrolling the carousel using mouse and touch interactions."
-            },
-            {
-              "name": "drag-threshold",
-              "value": {
-                "type": "number"
-              },
-              "default": "10",
-              "description": "Drag threshold in pixels. This only affects **when** clicks are fired and not. In contrast to other carousel libraries, it will **not affect when dragging** of the carousel **starts**. **Note**: Browsers handle touch events differently than mouse events. Browsers won't fire the click event when a touch event includes an accidental slight swipe gesture. This is why this threshold only works for mouse events."
-            },
-            {
-              "name": "duration",
-              "value": {
-                "type": "number"
-              },
-              "default": "25",
-              "description": "Set scroll duration when triggered by any of the API methods. Higher numbers enables slower scrolling. Drag interactions are not affected because duration is then determined by the drag force. **Note**: Duration is **not** in milliseconds because Embla uses an attraction physics simulation when scrolling instead of easings. Only values between `20-60` are recommended."
-            },
-            {
-              "name": "focusable",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Enables automatic focus event watching on slides. When enabled, fires a slideFocus event and scrolls to the focused slide."
-            },
-            {
-              "name": "in-view-threshold",
-              "value": {
-                "type": "number"
-              },
-              "default": "0",
-              "description": "This is the Intersection Observer [threshold](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#creating_an_intersection_observer) option that will be applied to all slides."
-            },
-            {
-              "name": "loop",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Enables infinite looping by translating slides to create a seamless loop. Automatically disables if slide content is insufficient to prevent glitches."
-            },
-            {
-              "name": "plugins",
-              "value": {
-                "type": "EmblaPluginType[]"
-              },
-              "description": "Pass Embla [plugins](https://www.embla-carousel.com/plugins) to extend carousel functionality."
-            },
-            {
-              "name": "mirror",
-              "value": {
-                "type": "string"
-              },
-              "default": "''",
-              "description": "Matches the current slide on another carousel using its id."
-            },
-            {
-              "name": "mirror-type",
-              "value": {
-                "type": "'sync-jump' | 'sync-smooth' | 'click-inherit' | 'click-jump' | 'click-smooth'"
-              },
-              "default": "'sync-smooth'",
-              "description": "Specifies how the carousel should be mirrored onto another carousel."
-            },
-            {
-              "name": "resizable",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Watches the **container** and **slides** for size changes and runs reInit when any size has changed."
-            },
-            {
-              "name": "slides-to-scroll",
-              "value": {
-                "type": "'auto' | number"
-              },
-              "default": "1",
-              "description": "Group slides together. Drag interactions, dot navigation, and previous/next buttons are mapped to group slides into the given number, which has to be an integer. Set it to `auto` if you want to group slides automatically."
-            },
-            {
-              "name": "start-index",
-              "value": {
-                "type": "number"
-              },
-              "default": "0",
-              "description": "Set the initial scroll snap to the given number. First snap index starts at 0. Please note that this is not necessarily equal to the number of slides when used together with the `slidesToScroll` property."
-            },
-            {
-              "name": "tween-factor-base",
-              "value": {
-                "type": "number"
-              },
-              "description": "Sets the base multiplier for the `--plus-carousel-factor-*` CSS variables used in visual transitions. This allows you to create dynamic slide effects such as scaling or fading. For example, setting this value enables effects like: - [Scale](https://www.embla-carousel.com/examples/predefined/#scale) - [Opacity](https://www.embla-carousel.com/examples/predefined/#opacity) The value affects how strongly the visual transformation is applied relative to the slide's position in the carousel."
-            },
-            {
-              "name": "api",
-              "value": {
-                "type": ""
-              },
-              "description": "The Embla carousel API."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<PlusBreakpoint>"
-              },
-              "description": "TODO: Indicates whether the carousel has been successfully initialized."
-            },
-            {
-              "name": "preset",
-              "value": {
-                "type": "OverridableValue<never>"
-              },
-              "description": "See [Preset](/preset-property) for details."
-            }
-          ],
-          "description": "A carousel element for cycling through elements—like images or text slides.",
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": "A carousel element for cycling through elements—like images or text slides."
         },
         {
           "name": "plus-carousel-button",
           "doc-url": "https://www.htmlplus.io/javascript/element/carousel-button",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "jump",
-                "default": false,
-                "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
-              },
-              {
-                "name": "type",
-                "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "jump",
@@ -1570,24 +1549,17 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-carousel-counter",
-          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-counter",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "template",
-                "default": "'%CURRENT% / %TOTAL%'",
-                "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
+                "name": "jump",
+                "default": false,
+                "description": "Determines whether the carousel instantly jumps to the target slide or transitions smoothly."
+              },
+              {
+                "name": "type",
+                "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
               },
               {
                 "name": "overrides",
@@ -1599,6 +1571,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-carousel-counter",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-counter",
           "attributes": [
             {
               "name": "template",
@@ -1623,28 +1606,13 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": ""
-        },
-        {
-          "name": "plus-carousel-indicators",
-          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-indicators",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "clickable",
-                "default": false,
-                "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
-              },
-              {
-                "name": "infinity",
-                "default": false,
-                "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
-              },
-              {
-                "name": "numbers",
-                "default": false,
-                "description": "Displays slide numbers inside the indicators."
+                "name": "template",
+                "default": "'%CURRENT% / %TOTAL%'",
+                "description": "A customizable template string for displaying the carousel's slide counter. This template supports two placeholders that will be dynamically replaced: - `%CURRENT%`: Represents the number of the currently active slide. - `%TOTAL%`: Represents the total number of slides in the carousel."
               },
               {
                 "name": "overrides",
@@ -1656,6 +1624,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": ""
+        },
+        {
+          "name": "plus-carousel-indicators",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-indicators",
           "attributes": [
             {
               "name": "clickable",
@@ -1696,14 +1670,24 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": ""
-        },
-        {
-          "name": "plus-carousel-progress",
-          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-progress",
           "js": {
             "events": [],
             "properties": [
+              {
+                "name": "clickable",
+                "default": false,
+                "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
+              },
+              {
+                "name": "infinity",
+                "default": false,
+                "description": "Allows indicators to wrap around the carousel when reaching the beginning or end."
+              },
+              {
+                "name": "numbers",
+                "default": false,
+                "description": "Displays slide numbers inside the indicators."
+              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -1714,6 +1698,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": ""
+        },
+        {
+          "name": "plus-carousel-progress",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-progress",
           "attributes": [
             {
               "name": "overrides",
@@ -1730,19 +1720,9 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": ""
-        },
-        {
-          "name": "plus-carousel-slide",
-          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-slide",
           "js": {
             "events": [],
             "properties": [
-              {
-                "name": "clickable",
-                "default": false,
-                "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
-              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -1753,6 +1733,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": ""
+        },
+        {
+          "name": "plus-carousel-slide",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-slide",
           "attributes": [
             {
               "name": "clickable",
@@ -1777,20 +1763,14 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-carousel-slides",
-          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-slides",
           "js": {
             "events": [],
             "properties": [
+              {
+                "name": "clickable",
+                "default": false,
+                "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
+              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -1801,6 +1781,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-carousel-slides",
+          "doc-url": "https://www.htmlplus.io/javascript/element/carousel-slides",
           "attributes": [
             {
               "name": "overrides",
@@ -1817,25 +1808,9 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-center",
-          "doc-url": "https://www.htmlplus.io/javascript/element/center",
           "js": {
             "events": [],
             "properties": [
-              {
-                "name": "inline",
-                "default": false,
-                "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
-              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -1846,6 +1821,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-center",
+          "doc-url": "https://www.htmlplus.io/javascript/element/center",
           "attributes": [
             {
               "name": "inline",
@@ -1870,39 +1856,13 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Centers content vertically and horizontally.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-click-outside",
-          "doc-url": "https://www.htmlplus.io/javascript/element/click-outside",
           "js": {
-            "events": [
-              {
-                "name": "plus-click-outside",
-                "description": "Fires when outside of the element is clicked."
-              }
-            ],
+            "events": [],
             "properties": [
               {
-                "name": "capture",
+                "name": "inline",
                 "default": false,
-                "description": "A boolean value indicating that events of this type will be dispatched to the registered `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree."
-              },
-              {
-                "name": "disabled",
-                "default": false,
-                "description": "Disables the element functionality."
-              },
-              {
-                "name": "once",
-                "default": false,
-                "description": "The event fires only once."
+                "description": "Converts the `display` CSS property from `flex` to `inline-flex`."
               },
               {
                 "name": "overrides",
@@ -1914,6 +1874,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Centers content vertically and horizontally."
+        },
+        {
+          "name": "plus-click-outside",
+          "doc-url": "https://www.htmlplus.io/javascript/element/click-outside",
           "attributes": [
             {
               "name": "capture",
@@ -1954,72 +1925,28 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Detects when a click event happens outside of itself.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-counter",
-          "doc-url": "https://www.htmlplus.io/javascript/element/counter",
           "js": {
             "events": [
               {
-                "name": "plus-complete",
-                "description": "Is Triggered when transition ended."
+                "name": "plus-click-outside",
+                "description": "Fires when outside of the element is clicked."
               }
             ],
             "properties": [
               {
-                "name": "easing",
-                "default": "'ease-out-expo'",
-                "description": "Easing function. Click [here](http://robertpenner.com/easing) for more details."
-              },
-              {
-                "name": "decimal",
-                "default": "'.'",
-                "description": "Specifies decimal character."
-              },
-              {
-                "name": "decimals",
-                "default": "0",
-                "description": "Amount of decimals to display."
-              },
-              {
-                "name": "delay",
-                "default": "0",
-                "description": "Delay in milliseconds before starting the transition."
-              },
-              {
-                "name": "duration",
-                "default": "1000",
-                "description": "Duration in milliseconds."
-              },
-              {
-                "name": "from",
-                "default": "0",
-                "description": "Initial value."
-              },
-              {
-                "name": "numerals",
-                "description": "Specifies numeral glyph substitution."
-              },
-              {
-                "name": "play",
+                "name": "capture",
                 "default": false,
-                "description": "Starts/Stops the transition."
+                "description": "A boolean value indicating that events of this type will be dispatched to the registered `listener` before being dispatched to any `EventTarget` beneath it in the DOM tree."
               },
               {
-                "name": "separator",
-                "default": "''",
-                "description": "Specifies character of thousands separator."
+                "name": "disabled",
+                "default": false,
+                "description": "Disables the element functionality."
               },
               {
-                "name": "to",
-                "description": "Target value."
+                "name": "once",
+                "default": false,
+                "description": "The event fires only once."
               },
               {
                 "name": "overrides",
@@ -2028,25 +1955,20 @@
               {
                 "name": "preset",
                 "description": "See [Preset](/preset-property) for details."
-              },
-              {
-                "name": "complete",
-                "description": "Completes the transition."
-              },
-              {
-                "name": "pause",
-                "description": "Pauses the transition."
-              },
-              {
-                "name": "start",
-                "description": "Starts the transition."
-              },
-              {
-                "name": "stop",
-                "description": "Stops the transition."
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Detects when a click event happens outside of itself."
+        },
+        {
+          "name": "plus-counter",
+          "doc-url": "https://www.htmlplus.io/javascript/element/counter",
           "attributes": [
             {
               "name": "easing",
@@ -2141,11 +2063,244 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
+          "js": {
+            "events": [
+              {
+                "name": "plus-complete",
+                "description": "Is Triggered when transition ended."
+              }
+            ],
+            "properties": [
+              {
+                "name": "easing",
+                "default": "'ease-out-expo'",
+                "description": "Easing function. Click [here](http://robertpenner.com/easing) for more details."
+              },
+              {
+                "name": "decimal",
+                "default": "'.'",
+                "description": "Specifies decimal character."
+              },
+              {
+                "name": "decimals",
+                "default": "0",
+                "description": "Amount of decimals to display."
+              },
+              {
+                "name": "delay",
+                "default": "0",
+                "description": "Delay in milliseconds before starting the transition."
+              },
+              {
+                "name": "duration",
+                "default": "1000",
+                "description": "Duration in milliseconds."
+              },
+              {
+                "name": "from",
+                "default": "0",
+                "description": "Initial value."
+              },
+              {
+                "name": "numerals",
+                "description": "Specifies numeral glyph substitution."
+              },
+              {
+                "name": "play",
+                "default": false,
+                "description": "Starts/Stops the transition."
+              },
+              {
+                "name": "separator",
+                "default": "''",
+                "description": "Specifies character of thousands separator."
+              },
+              {
+                "name": "to",
+                "description": "Target value."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              },
+              {
+                "name": "complete",
+                "description": "Completes the transition."
+              },
+              {
+                "name": "pause",
+                "description": "Pauses the transition."
+              },
+              {
+                "name": "start",
+                "description": "Starts the transition."
+              },
+              {
+                "name": "stop",
+                "description": "Stops the transition."
+              }
+            ]
+          },
+          "slots": [],
           "description": "Can be used to quickly create animations that display numerical data in a more interesting way."
         },
         {
           "name": "plus-cropper",
           "doc-url": "https://www.htmlplus.io/javascript/element/cropper",
+          "attributes": [
+            {
+              "name": "area",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.75",
+              "description": "A number between 0 and 1. Specifies the automatic cropping area size."
+            },
+            {
+              "name": "aspect-ratio",
+              "value": {
+                "type": "number | string"
+              },
+              "description": "Specifies the initial aspect ratio of the viewport."
+            },
+            {
+              "name": "background",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Shows the grid background of the container."
+            },
+            {
+              "name": "disabled",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Disables the element functionality."
+            },
+            {
+              "name": "guides",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Shows the dashed lines above the viewport."
+            },
+            {
+              "name": "indicator",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Shows the center indicator above the viewport."
+            },
+            {
+              "name": "mode",
+              "value": {
+                "type": "'crop' | 'move' | 'none'"
+              },
+              "default": "'move'",
+              "description": "Specifies the mode."
+            },
+            {
+              "name": "resizer",
+              "value": {
+                "type": "'both' | 'edge' | 'main'"
+              },
+              "default": "'both'",
+              "description": "Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`)."
+            },
+            {
+              "name": "resizer-shape",
+              "value": {
+                "type": "'circle' | 'line' | 'square'"
+              },
+              "default": "'square'",
+              "description": "Specifies the shape of the resizer."
+            },
+            {
+              "name": "responsive",
+              "value": {
+                "type": "boolean | 'reset'"
+              },
+              "default": "'reset'",
+              "description": "Re-renders when resizing the window."
+            },
+            {
+              "name": "shape",
+              "value": {
+                "type": "'circle' | 'rectangle' | 'square'"
+              },
+              "default": "'rectangle'",
+              "description": "Specifies the shape of the viewport."
+            },
+            {
+              "name": "src",
+              "value": {
+                "type": "string"
+              },
+              "default": "''",
+              "description": "Specifies the image's src."
+            },
+            {
+              "name": "transparent",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Hides the black modal above the image and under the viewport."
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "{\n  rotate?: number;\n  top?: number;\n  left?: number;\n  height?: number;\n  width?: number;\n}"
+              },
+              "description": "Gets/Sets data."
+            },
+            {
+              "name": "view",
+              "value": {
+                "type": "'contain' | 'cover' | 'fit' | 'none'"
+              },
+              "default": "'cover'",
+              "description": "Specifies the view."
+            },
+            {
+              "name": "zoomable",
+              "value": {
+                "type": "boolean | 'touch' | 'wheel'"
+              },
+              "default": true,
+              "description": "Enables to zoom the image."
+            },
+            {
+              "name": "zoom-ratio",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.1",
+              "description": "Specifies zoom ratio when zooming the image by wheeling the mouse."
+            },
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+            },
+            {
+              "name": "preset",
+              "value": {
+                "type": "OverridableValue<never>"
+              },
+              "description": "See [Preset](/preset-property) for details."
+            }
+          ],
           "js": {
             "events": [
               {
@@ -2307,266 +2462,12 @@
               }
             ]
           },
-          "attributes": [
-            {
-              "name": "area",
-              "value": {
-                "type": "number"
-              },
-              "default": "0.75",
-              "description": "A number between 0 and 1. Specifies the automatic cropping area size."
-            },
-            {
-              "name": "aspect-ratio",
-              "value": {
-                "type": "number | string"
-              },
-              "description": "Specifies the initial aspect ratio of the viewport."
-            },
-            {
-              "name": "background",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Shows the grid background of the container."
-            },
-            {
-              "name": "disabled",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Disables the element functionality."
-            },
-            {
-              "name": "guides",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Shows the dashed lines above the viewport."
-            },
-            {
-              "name": "indicator",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Shows the center indicator above the viewport."
-            },
-            {
-              "name": "mode",
-              "value": {
-                "type": "'crop' | 'move' | 'none'"
-              },
-              "default": "'move'",
-              "description": "Specifies the mode."
-            },
-            {
-              "name": "resizer",
-              "value": {
-                "type": "'both' | 'edge' | 'main'"
-              },
-              "default": "'both'",
-              "description": "Enables to resize the viewport by dragging (Works when the value of the `mode` property is `crop`)."
-            },
-            {
-              "name": "resizer-shape",
-              "value": {
-                "type": "'circle' | 'line' | 'square'"
-              },
-              "default": "'square'",
-              "description": "Specifies the shape of the resizer."
-            },
-            {
-              "name": "responsive",
-              "value": {
-                "type": "boolean | 'reset'"
-              },
-              "default": "'reset'",
-              "description": "Re-renders when resizing the window."
-            },
-            {
-              "name": "shape",
-              "value": {
-                "type": "'circle' | 'rectangle' | 'square'"
-              },
-              "default": "'rectangle'",
-              "description": "Specifies the shape of the viewport."
-            },
-            {
-              "name": "src",
-              "value": {
-                "type": "string"
-              },
-              "default": "''",
-              "description": "Specifies the image's src."
-            },
-            {
-              "name": "transparent",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Hides the black modal above the image and under the viewport."
-            },
-            {
-              "name": "value",
-              "value": {
-                "type": "{\n  rotate?: number;\n  top?: number;\n  left?: number;\n  height?: number;\n  width?: number;\n}"
-              },
-              "description": "Gets/Sets data."
-            },
-            {
-              "name": "view",
-              "value": {
-                "type": "'contain' | 'cover' | 'fit' | 'none'"
-              },
-              "default": "'cover'",
-              "description": "Specifies the view."
-            },
-            {
-              "name": "zoomable",
-              "value": {
-                "type": "boolean | 'touch' | 'wheel'"
-              },
-              "default": true,
-              "description": "Enables to zoom the image."
-            },
-            {
-              "name": "zoom-ratio",
-              "value": {
-                "type": "number"
-              },
-              "default": "0.1",
-              "description": "Specifies zoom ratio when zooming the image by wheeling the mouse."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<PlusBreakpoint>"
-              },
-              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-            },
-            {
-              "name": "preset",
-              "value": {
-                "type": "OverridableValue<never>"
-              },
-              "description": "See [Preset](/preset-property) for details."
-            }
-          ],
+          "slots": [],
           "description": "Used for cropping large images to fit a container before uploading them to the server."
         },
         {
           "name": "plus-dialog",
           "doc-url": "https://www.htmlplus.io/javascript/element/dialog",
-          "js": {
-            "events": [
-              {
-                "name": "plus-close",
-                "description": "When the dialog is going to hide"
-              },
-              {
-                "name": "plus-closed",
-                "description": "When the dialog is completely closed and its animation is completed."
-              },
-              {
-                "name": "plus-open",
-                "description": "When the dialog is going to show this event triggers"
-              },
-              {
-                "name": "plus-opened",
-                "description": "When the dialog is completely shown and its animation is completed."
-              }
-            ],
-            "properties": [
-              {
-                "name": "animation",
-                "description": "TODO"
-              },
-              {
-                "name": "connector",
-                "default": "''",
-                "description": "This property helps you to attach which dialog toggler controls the dialog. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
-              },
-              {
-                "name": "fullHeight",
-                "default": false,
-                "description": "Set the height of the dialog as much as the screen's height."
-              },
-              {
-                "name": "fullWidth",
-                "default": false,
-                "description": "Set the width of the dialog as much as the screen's width."
-              },
-              {
-                "name": "fullscreen",
-                "default": false,
-                "description": "Set both width and height of the dialog to occupy the screen size."
-              },
-              {
-                "name": "keyboard",
-                "default": false,
-                "description": "Closes the dialog when `escape` key is pressed."
-              },
-              {
-                "name": "open",
-                "default": false,
-                "description": "Control dialog to show or not."
-              },
-              {
-                "name": "persistent",
-                "default": false,
-                "description": "It prevents the dialog from closing on clicking outside of the element."
-              },
-              {
-                "name": "placement",
-                "default": "'top'",
-                "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
-              },
-              {
-                "name": "scrollable",
-                "default": false,
-                "description": "It makes the user able to scroll the content by adding a scroll beside it."
-              },
-              {
-                "name": "size",
-                "description": "Determine the width of the dialog."
-              },
-              {
-                "name": "sticky",
-                "default": false,
-                "description": "Removes the margin around the dialog's content."
-              },
-              {
-                "name": "transparent",
-                "default": false,
-                "description": "Deactivate the dialog's backdrop to show or not."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              },
-              {
-                "name": "hide",
-                "description": "Hides the element."
-              },
-              {
-                "name": "show",
-                "description": "Shows the element."
-              },
-              {
-                "name": "toggle",
-                "description": "Toggles between `collapse` and `expand` state."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "animation",
@@ -2685,35 +2586,122 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow.",
+          "js": {
+            "events": [
+              {
+                "name": "plus-close",
+                "description": "When the dialog is going to hide"
+              },
+              {
+                "name": "plus-closed",
+                "description": "When the dialog is completely closed and its animation is completed."
+              },
+              {
+                "name": "plus-open",
+                "description": "When the dialog is going to show this event triggers"
+              },
+              {
+                "name": "plus-opened",
+                "description": "When the dialog is completely shown and its animation is completed."
+              }
+            ],
+            "properties": [
+              {
+                "name": "animation",
+                "description": "TODO"
+              },
+              {
+                "name": "connector",
+                "default": "''",
+                "description": "This property helps you to attach which dialog toggler controls the dialog. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
+              },
+              {
+                "name": "fullHeight",
+                "default": false,
+                "description": "Set the height of the dialog as much as the screen's height."
+              },
+              {
+                "name": "fullWidth",
+                "default": false,
+                "description": "Set the width of the dialog as much as the screen's width."
+              },
+              {
+                "name": "fullscreen",
+                "default": false,
+                "description": "Set both width and height of the dialog to occupy the screen size."
+              },
+              {
+                "name": "keyboard",
+                "default": false,
+                "description": "Closes the dialog when `escape` key is pressed."
+              },
+              {
+                "name": "open",
+                "default": false,
+                "description": "Control dialog to show or not."
+              },
+              {
+                "name": "persistent",
+                "default": false,
+                "description": "It prevents the dialog from closing on clicking outside of the element."
+              },
+              {
+                "name": "placement",
+                "default": "'top'",
+                "description": "Specifies where to show the dialog box by choosing two values, one for horizontal and another for vertical. Horizontal has a range of `left`, `center`, `right`, `start`, `end`, and vertical values are `top`, `center` and `bottom`."
+              },
+              {
+                "name": "scrollable",
+                "default": false,
+                "description": "It makes the user able to scroll the content by adding a scroll beside it."
+              },
+              {
+                "name": "size",
+                "description": "Determine the width of the dialog."
+              },
+              {
+                "name": "sticky",
+                "default": false,
+                "description": "Removes the margin around the dialog's content."
+              },
+              {
+                "name": "transparent",
+                "default": false,
+                "description": "Deactivate the dialog's backdrop to show or not."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              },
+              {
+                "name": "hide",
+                "description": "Hides the element."
+              },
+              {
+                "name": "show",
+                "description": "Shows the element."
+              },
+              {
+                "name": "toggle",
+                "description": "Toggles between `collapse` and `expand` state."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": "A dialog is a `conversation` between the system and the user. It is prompted when the system needs input from the user or to give the user urgent information concerning their current workflow."
         },
         {
           "name": "plus-dialog-body",
           "doc-url": "https://www.htmlplus.io/javascript/element/dialog-body",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "scrollable",
-                "default": false,
-                "description": "It makes the user able to scroll the content by adding a scroll beside it."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "scrollable",
@@ -2738,35 +2726,35 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "scrollable",
+                "default": false,
+                "description": "It makes the user able to scroll the content by adding a scroll beside it."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": ""
         },
         {
           "name": "plus-dialog-content",
           "doc-url": "https://www.htmlplus.io/javascript/element/dialog-content",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "scrollable",
-                "default": false,
-                "description": "It makes the user able to scroll the content by adding a scroll beside it."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "scrollable",
@@ -2791,30 +2779,35 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "scrollable",
+                "default": false,
+                "description": "It makes the user able to scroll the content by adding a scroll beside it."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": ""
         },
         {
           "name": "plus-dialog-footer",
           "doc-url": "https://www.htmlplus.io/javascript/element/dialog-footer",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "overrides",
@@ -2831,30 +2824,30 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
               "description": "The default slot."
             }
-          ]
+          ],
+          "description": ""
         },
         {
           "name": "plus-dialog-header",
           "doc-url": "https://www.htmlplus.io/javascript/element/dialog-header",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "overrides",
@@ -2871,25 +2864,9 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-dialog-toggler",
-          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-toggler",
           "js": {
             "events": [],
             "properties": [
-              {
-                "name": "connector",
-                "default": "''",
-                "description": "This property helps you to attach which dialog this toggler controls. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
-              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -2900,6 +2877,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-dialog-toggler",
+          "doc-url": "https://www.htmlplus.io/javascript/element/dialog-toggler",
           "attributes": [
             {
               "name": "connector",
@@ -2924,7 +2912,24 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "connector",
+                "default": "''",
+                "description": "This property helps you to attach which dialog this toggler controls. It doesn't matter where the dialog toggler is. You can put the dialog's toggler inside or outside of the dialog. Read more about connectors [here](/connector)."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
@@ -2938,54 +2943,12 @@
               "name": "close",
               "description": "Specifies the content of toggler when it's closed."
             }
-          ]
+          ],
+          "description": ""
         },
         {
           "name": "plus-divider",
           "doc-url": "https://www.htmlplus.io/javascript/element/divider",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "color",
-                "default": "'black'",
-                "description": "Specifies the color."
-              },
-              {
-                "name": "inset",
-                "default": "'none'",
-                "description": "Specifies the amount of indentation."
-              },
-              {
-                "name": "orientation",
-                "default": "'horizontal'",
-                "description": "Draws the divider in a `horizontal` or `vertical` orientation."
-              },
-              {
-                "name": "placement",
-                "default": "'center'",
-                "description": "Specifies the location of the default slot."
-              },
-              {
-                "name": "size",
-                "default": "'md'",
-                "description": "Specifies the thickness of the border."
-              },
-              {
-                "name": "stroke",
-                "default": "'solid'",
-                "description": "Specifies the style of the border."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "color",
@@ -3050,89 +3013,38 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "A thin line that divides the content vertically or horizontally.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-drawer",
-          "doc-url": "https://www.htmlplus.io/javascript/element/drawer",
           "js": {
-            "events": [
-              {
-                "name": "plus-close",
-                "description": "When the drawer is going to hide"
-              },
-              {
-                "name": "plus-closed",
-                "description": "When the drawer is completely closed and its animation is completed."
-              },
-              {
-                "name": "plus-open",
-                "description": "When the drawer is going to show this event triggers"
-              },
-              {
-                "name": "plus-opened",
-                "description": "When the drawer is completely shown and its animation is completed."
-              }
-            ],
+            "events": [],
             "properties": [
               {
-                "name": "animation",
-                "description": "TODO"
+                "name": "color",
+                "default": "'black'",
+                "description": "Specifies the color."
               },
               {
-                "name": "backdrop",
-                "default": false,
-                "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
+                "name": "inset",
+                "default": "'none'",
+                "description": "Specifies the amount of indentation."
               },
               {
-                "name": "connector",
-                "default": "''",
-                "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
-              },
-              {
-                "name": "floating",
-                "default": false,
-                "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
-              },
-              {
-                "name": "mini",
-                "default": false,
-                "description": "Set the width of drawer to the minimum size you specified for the `mini-size` property."
-              },
-              {
-                "name": "miniSize",
-                "default": "80",
-                "description": "Sets the minimum width size of the drawer."
-              },
-              {
-                "name": "open",
-                "default": false,
-                "description": "Control drawer to show or not."
-              },
-              {
-                "name": "persistent",
-                "default": false,
-                "description": "If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it."
+                "name": "orientation",
+                "default": "'horizontal'",
+                "description": "Draws the divider in a `horizontal` or `vertical` orientation."
               },
               {
                 "name": "placement",
-                "description": "Specifies where the drawer will open."
-              },
-              {
-                "name": "flexible",
-                "default": false,
-                "description": "It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce."
+                "default": "'center'",
+                "description": "Specifies the location of the default slot."
               },
               {
                 "name": "size",
-                "default": "280",
-                "description": "Determine the width of the drawer."
+                "default": "'md'",
+                "description": "Specifies the thickness of the border."
+              },
+              {
+                "name": "stroke",
+                "default": "'solid'",
+                "description": "Specifies the style of the border."
               },
               {
                 "name": "overrides",
@@ -3141,21 +3053,20 @@
               {
                 "name": "preset",
                 "description": "See [Preset](/preset-property) for details."
-              },
-              {
-                "name": "hide",
-                "description": "Hides the element."
-              },
-              {
-                "name": "show",
-                "description": "Shows the element."
-              },
-              {
-                "name": "toggle",
-                "description": "Toggles between `collapse` and `expand` state."
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "A thin line that divides the content vertically or horizontally."
+        },
+        {
+          "name": "plus-drawer",
+          "doc-url": "https://www.htmlplus.io/javascript/element/drawer",
           "attributes": [
             {
               "name": "animation",
@@ -3258,24 +3169,78 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "This element lets you add collapsible side contents like navigation alongside some primary content.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-drawer-toggler",
-          "doc-url": "https://www.htmlplus.io/javascript/element/drawer-toggler",
           "js": {
-            "events": [],
+            "events": [
+              {
+                "name": "plus-close",
+                "description": "When the drawer is going to hide"
+              },
+              {
+                "name": "plus-closed",
+                "description": "When the drawer is completely closed and its animation is completed."
+              },
+              {
+                "name": "plus-open",
+                "description": "When the drawer is going to show this event triggers"
+              },
+              {
+                "name": "plus-opened",
+                "description": "When the drawer is completely shown and its animation is completed."
+              }
+            ],
             "properties": [
+              {
+                "name": "animation",
+                "description": "TODO"
+              },
+              {
+                "name": "backdrop",
+                "default": false,
+                "description": "Activate the drawer's backdrop to show or not. It works when floating is activated."
+              },
               {
                 "name": "connector",
                 "default": "''",
-                "description": "This property helps you to attach which drawer this toggler controls. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+                "description": "This property helps you to attach which drawer toggler controls the drawer. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+              },
+              {
+                "name": "floating",
+                "default": false,
+                "description": "On default the drawer is considered as a part of the main container. it pushes the other contents on opening. If true it will be opened over other contents and doesn't affect other contents. A floating drawer sits above its application and uses a backdrop to darken the background."
+              },
+              {
+                "name": "mini",
+                "default": false,
+                "description": "Set the width of drawer to the minimum size you specified for the `mini-size` property."
+              },
+              {
+                "name": "miniSize",
+                "default": "80",
+                "description": "Sets the minimum width size of the drawer."
+              },
+              {
+                "name": "open",
+                "default": false,
+                "description": "Control drawer to show or not."
+              },
+              {
+                "name": "persistent",
+                "default": false,
+                "description": "If true, don't allow the drawer to be closed by clicking outside of the drawer. If false, the drawer will be closed by clicking outside of it."
+              },
+              {
+                "name": "placement",
+                "description": "Specifies where the drawer will open."
+              },
+              {
+                "name": "flexible",
+                "default": false,
+                "description": "It controls the flexibility of the drawer's width. If yes, the width of the drawer can be reduced. If false doesn't allow the width of the drawer to reduce."
+              },
+              {
+                "name": "size",
+                "default": "280",
+                "description": "Determine the width of the drawer."
               },
               {
                 "name": "overrides",
@@ -3284,9 +3249,32 @@
               {
                 "name": "preset",
                 "description": "See [Preset](/preset-property) for details."
+              },
+              {
+                "name": "hide",
+                "description": "Hides the element."
+              },
+              {
+                "name": "show",
+                "description": "Shows the element."
+              },
+              {
+                "name": "toggle",
+                "description": "Toggles between `collapse` and `expand` state."
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "This element lets you add collapsible side contents like navigation alongside some primary content."
+        },
+        {
+          "name": "plus-drawer-toggler",
+          "doc-url": "https://www.htmlplus.io/javascript/element/drawer-toggler",
           "attributes": [
             {
               "name": "connector",
@@ -3311,7 +3299,24 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "connector",
+                "default": "''",
+                "description": "This property helps you to attach which drawer this toggler controls. It doesn't matter where the drawer toggler is. You can put the drawer's toggler inside or outside of the drawer. Read more about connectors [here](/connector)."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
@@ -3325,41 +3330,12 @@
               "name": "close",
               "description": "Specifies the content of toggler when it's closed."
             }
-          ]
+          ],
+          "description": ""
         },
         {
           "name": "plus-faker",
           "doc-url": "https://www.htmlplus.io/javascript/element/faker",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "api",
-                "default": "'lorem.paragraph'",
-                "description": "Specifies the [API](https://fakerjs.dev/api)."
-              },
-              {
-                "name": "arguments",
-                "description": "Specifies the API's arguments as an array."
-              },
-              {
-                "name": "instance",
-                "description": "The [Faker](https://fakerjs.dev/guide/usage.html) object instance."
-              },
-              {
-                "name": "seed",
-                "description": "Keeps the result constant."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "api",
@@ -3405,50 +3381,25 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/)."
-        },
-        {
-          "name": "plus-format-bytes",
-          "doc-url": "https://www.htmlplus.io/javascript/element/format-bytes",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "display",
-                "default": "'short'",
-                "description": "Specifies the unit will be shown as an abbreviation or not."
+                "name": "api",
+                "default": "'lorem.paragraph'",
+                "description": "Specifies the [API](https://fakerjs.dev/api)."
               },
               {
-                "name": "locale",
-                "description": "Localizes the result. [More](https://mdn.io/number-format/constructor)."
+                "name": "arguments",
+                "description": "Specifies the API's arguments as an array."
               },
               {
-                "name": "decimals",
-                "description": "Specifies the number of decimal places. Use an array to specify the minimum and maximum."
+                "name": "instance",
+                "description": "The [Faker](https://fakerjs.dev/guide/usage.html) object instance."
               },
               {
-                "name": "separator",
-                "default": "' '",
-                "description": "Specifies the separator between number and unit."
-              },
-              {
-                "name": "signed",
-                "default": false,
-                "description": "Shows plus sign for positive numbers. If the difference is exactly zero a space character will be prepended instead for better alignment."
-              },
-              {
-                "name": "standard",
-                "default": "'METRIC'",
-                "description": "Specifies the standard of units. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported."
-              },
-              {
-                "name": "unit",
-                "default": "'auto'",
-                "description": "Specifies the unit in which the result will be returned."
-              },
-              {
-                "name": "value",
-                "description": "The bytes value to convert."
+                "name": "seed",
+                "description": "Keeps the result constant."
               },
               {
                 "name": "overrides",
@@ -3460,6 +3411,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": "Generates massive amounts of fake (but realistic) data for testing and development. Powered by [Faker](https://fakerjs.dev/)."
+        },
+        {
+          "name": "plus-format-bytes",
+          "doc-url": "https://www.htmlplus.io/javascript/element/format-bytes",
           "attributes": [
             {
               "name": "display",
@@ -3537,43 +3494,45 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported."
-        },
-        {
-          "name": "plus-icon",
-          "doc-url": "https://www.htmlplus.io/javascript/element/icon",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "color",
-                "description": "Specifies the color."
+                "name": "display",
+                "default": "'short'",
+                "description": "Specifies the unit will be shown as an abbreviation or not."
               },
               {
-                "name": "flip",
-                "description": "Flips in `horizontal`, `vertical` or `both` directions."
+                "name": "locale",
+                "description": "Localizes the result. [More](https://mdn.io/number-format/constructor)."
               },
               {
-                "name": "label",
-                "default": "''",
-                "description": "Specifies an alternate description to use for assistive devices."
+                "name": "decimals",
+                "description": "Specifies the number of decimal places. Use an array to specify the minimum and maximum."
               },
               {
-                "name": "name",
-                "description": "Specifies the name."
+                "name": "separator",
+                "default": "' '",
+                "description": "Specifies the separator between number and unit."
               },
               {
-                "name": "resolver",
-                "description": "An asynchronous function to load SVG files."
+                "name": "signed",
+                "default": false,
+                "description": "Shows plus sign for positive numbers. If the difference is exactly zero a space character will be prepended instead for better alignment."
               },
               {
-                "name": "rotate",
-                "description": "Specifies the rotation."
+                "name": "standard",
+                "default": "'METRIC'",
+                "description": "Specifies the standard of units. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported."
               },
               {
-                "name": "size",
-                "default": "'md'",
-                "description": "Specifies the size."
+                "name": "unit",
+                "default": "'auto'",
+                "description": "Specifies the unit in which the result will be returned."
+              },
+              {
+                "name": "value",
+                "description": "The bytes value to convert."
               },
               {
                 "name": "overrides",
@@ -3585,6 +3544,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": "Converts bytes to a human-readable string. [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) standard are supported."
+        },
+        {
+          "name": "plus-icon",
+          "doc-url": "https://www.htmlplus.io/javascript/element/icon",
           "attributes": [
             {
               "name": "color",
@@ -3652,40 +3617,38 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library."
-        },
-        {
-          "name": "plus-intersection",
-          "doc-url": "https://www.htmlplus.io/javascript/element/intersection",
           "js": {
-            "events": [
-              {
-                "name": "plus-change",
-                "description": "Fires When the browser detects that the element has been unveiled or obscured."
-              }
-            ],
+            "events": [],
             "properties": [
               {
-                "name": "disabled",
-                "default": false,
-                "description": "Disables the element functionality."
+                "name": "color",
+                "description": "Specifies the color."
               },
               {
-                "name": "once",
-                "default": false,
-                "description": "The event fires only once."
+                "name": "flip",
+                "description": "Flips in `horizontal`, `vertical` or `both` directions."
               },
               {
-                "name": "root",
-                "description": "The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport if not specified or if `null`."
+                "name": "label",
+                "default": "''",
+                "description": "Specifies an alternate description to use for assistive devices."
               },
               {
-                "name": "rootMargin",
-                "description": "Margin around the root. Can have values similar to the CSS [margin](https://mdn.io/margin) property, e.g. `\"10px 20px 30px 40px\"` (top, right, bottom, left). The values can be percentages. This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. Defaults to all zeros."
+                "name": "name",
+                "description": "Specifies the name."
               },
               {
-                "name": "threshold",
-                "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
+                "name": "resolver",
+                "description": "An asynchronous function to load SVG files."
+              },
+              {
+                "name": "rotate",
+                "description": "Specifies the rotation."
+              },
+              {
+                "name": "size",
+                "default": "'md'",
+                "description": "Specifies the size."
               },
               {
                 "name": "overrides",
@@ -3697,6 +3660,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": "A graphical representation of an action, object, or idea that is used in a user interface to provide visual cues and improve the user experience. All icons are based on the popular [Bootstrap Icons](https://icons.getbootstrap.com) library."
+        },
+        {
+          "name": "plus-intersection",
+          "doc-url": "https://www.htmlplus.io/javascript/element/intersection",
           "attributes": [
             {
               "name": "disabled",
@@ -3750,42 +3719,35 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport).",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-prism",
-          "doc-url": "https://www.htmlplus.io/javascript/element/prism",
           "js": {
-            "events": [],
+            "events": [
+              {
+                "name": "plus-change",
+                "description": "Fires When the browser detects that the element has been unveiled or obscured."
+              }
+            ],
             "properties": [
               {
-                "name": "language",
-                "default": "'javascript'",
-                "description": "The programming language to highlight."
-              },
-              {
-                "name": "theme",
-                "default": "'default'",
-                "description": "The theme to apply for syntax highlighting."
-              },
-              {
-                "name": "plugins",
-                "description": "Plugins to enhance Prism's functionality."
-              },
-              {
-                "name": "resolver",
-                "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
-              },
-              {
-                "name": "sync",
+                "name": "disabled",
                 "default": false,
-                "description": "Whether to synchronize updates with DOM changes."
+                "description": "Disables the element functionality."
+              },
+              {
+                "name": "once",
+                "default": false,
+                "description": "The event fires only once."
+              },
+              {
+                "name": "root",
+                "description": "The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport if not specified or if `null`."
+              },
+              {
+                "name": "rootMargin",
+                "description": "Margin around the root. Can have values similar to the CSS [margin](https://mdn.io/margin) property, e.g. `\"10px 20px 30px 40px\"` (top, right, bottom, left). The values can be percentages. This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. Defaults to all zeros."
+              },
+              {
+                "name": "threshold",
+                "description": "Either a single number or an array of numbers which indicate at what percentage of the target's visibility the observer's callback should be executed. If you only want to detect when visibility passes the 50% mark, you can use a value of 0.5. If you want the callback to run every time visibility passes another 25%, you would specify the array [0, 0.25, 0.5, 0.75, 1]. The default is 0 (meaning as soon as even one pixel is visible, the callback will be run). A value of 1.0 means that the threshold isn't considered passed until every pixel is visible."
               },
               {
                 "name": "overrides",
@@ -3797,6 +3759,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "The [Intersection Observer API](https://mdn.io/intersection-observer-api) provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's [viewport](https://mdn.io/glossary-viewport)."
+        },
+        {
+          "name": "plus-prism",
+          "doc-url": "https://www.htmlplus.io/javascript/element/prism",
           "attributes": [
             {
               "name": "language",
@@ -3851,62 +3824,31 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/).",
-          "slots": [
-            {
-              "name": "copy",
-              "description": "The copy slot."
-            },
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-progress-bar",
-          "doc-url": "https://www.htmlplus.io/javascript/element/progress-bar",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "buffer",
-                "description": "Specifies the secondary progress of the bar by a number between `min` and `max`."
+                "name": "language",
+                "default": "'javascript'",
+                "description": "The programming language to highlight."
               },
               {
-                "name": "color",
-                "default": "'dodgerblue'",
-                "description": "Specifies the color of the bar."
+                "name": "theme",
+                "default": "'default'",
+                "description": "The theme to apply for syntax highlighting."
               },
               {
-                "name": "indeterminate",
-                "default": false,
-                "description": "Indicates that the progress bar is active without a specific progress value."
+                "name": "plugins",
+                "description": "Plugins to enhance Prism's functionality."
               },
               {
-                "name": "label",
-                "default": false,
-                "description": "Displays the progress percentage."
-              },
-              {
-                "name": "max",
-                "default": "100",
-                "description": "Specifies the maximum value of the progress."
-              },
-              {
-                "name": "min",
-                "default": "0",
-                "description": "Specifies the minimum value of the progress."
+                "name": "resolver",
+                "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
               },
               {
                 "name": "sync",
                 "default": false,
-                "description": "Eliminates delays in updating value."
-              },
-              {
-                "name": "value",
-                "default": "0",
-                "description": "Specifies the progress of the bar by a number between `min` and `max`."
+                "description": "Whether to synchronize updates with DOM changes."
               },
               {
                 "name": "overrides",
@@ -3918,6 +3860,21 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "copy",
+              "description": "The copy slot."
+            },
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Syntax highlighting for code snippets, supporting multiple programming languages and offering customizable themes. Powered by [PrismJS](https://prismjs.com/)."
+        },
+        {
+          "name": "plus-progress-bar",
+          "doc-url": "https://www.htmlplus.io/javascript/element/progress-bar",
           "attributes": [
             {
               "name": "buffer",
@@ -3997,20 +3954,48 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Progress bar expresses an unspecified wait time or display the length of a process.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-progress-bar-stack",
-          "doc-url": "https://www.htmlplus.io/javascript/element/progress-bar-stack",
           "js": {
             "events": [],
             "properties": [
+              {
+                "name": "buffer",
+                "description": "Specifies the secondary progress of the bar by a number between `min` and `max`."
+              },
+              {
+                "name": "color",
+                "default": "'dodgerblue'",
+                "description": "Specifies the color of the bar."
+              },
+              {
+                "name": "indeterminate",
+                "default": false,
+                "description": "Indicates that the progress bar is active without a specific progress value."
+              },
+              {
+                "name": "label",
+                "default": false,
+                "description": "Displays the progress percentage."
+              },
+              {
+                "name": "max",
+                "default": "100",
+                "description": "Specifies the maximum value of the progress."
+              },
+              {
+                "name": "min",
+                "default": "0",
+                "description": "Specifies the minimum value of the progress."
+              },
+              {
+                "name": "sync",
+                "default": false,
+                "description": "Eliminates delays in updating value."
+              },
+              {
+                "name": "value",
+                "default": "0",
+                "description": "Specifies the progress of the bar by a number between `min` and `max`."
+              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -4021,6 +4006,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Progress bar expresses an unspecified wait time or display the length of a process."
+        },
+        {
+          "name": "plus-progress-bar-stack",
+          "doc-url": "https://www.htmlplus.io/javascript/element/progress-bar-stack",
           "attributes": [
             {
               "name": "overrides",
@@ -4037,39 +4033,9 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-relative-time",
-          "doc-url": "https://www.htmlplus.io/javascript/element/relative-time",
           "js": {
             "events": [],
             "properties": [
-              {
-                "name": "format",
-                "default": "'long'",
-                "description": "The format style for the relative time."
-              },
-              {
-                "name": "numeric",
-                "default": "'auto'",
-                "description": "Determines whether the numeric value should always be displayed."
-              },
-              {
-                "name": "sync",
-                "default": false,
-                "description": "Determines whether the relative time should be updated automatically."
-              },
-              {
-                "name": "value",
-                "description": "The date and time to be displayed in a relative format."
-              },
               {
                 "name": "overrides",
                 "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
@@ -4080,6 +4046,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": ""
+        },
+        {
+          "name": "plus-relative-time",
+          "doc-url": "https://www.htmlplus.io/javascript/element/relative-time",
           "attributes": [
             {
               "name": "format",
@@ -4127,33 +4104,27 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Outputs a localized time phrase relative to the provided datetime."
-        },
-        {
-          "name": "plus-scroll-detector",
-          "doc-url": "https://www.htmlplus.io/javascript/element/scroll-detector",
           "js": {
-            "events": [
-              {
-                "name": "plus-change",
-                "description": "Fires when the scroll starts changing."
-              }
-            ],
+            "events": [],
             "properties": [
               {
-                "name": "disabled",
-                "default": false,
-                "description": "Disables the element functionality."
+                "name": "format",
+                "default": "'long'",
+                "description": "The format style for the relative time."
               },
               {
-                "name": "reference",
-                "default": "'document'",
-                "description": "Specifies the reference of the scroll."
+                "name": "numeric",
+                "default": "'auto'",
+                "description": "Determines whether the numeric value should always be displayed."
               },
               {
-                "name": "vertical",
+                "name": "sync",
                 "default": false,
-                "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
+                "description": "Determines whether the relative time should be updated automatically."
+              },
+              {
+                "name": "value",
+                "description": "The date and time to be displayed in a relative format."
               },
               {
                 "name": "overrides",
@@ -4165,6 +4136,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": "Outputs a localized time phrase relative to the provided datetime."
+        },
+        {
+          "name": "plus-scroll-detector",
+          "doc-url": "https://www.htmlplus.io/javascript/element/scroll-detector",
           "attributes": [
             {
               "name": "disabled",
@@ -4205,11 +4182,176 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
+          "js": {
+            "events": [
+              {
+                "name": "plus-change",
+                "description": "Fires when the scroll starts changing."
+              }
+            ],
+            "properties": [
+              {
+                "name": "disabled",
+                "default": false,
+                "description": "Disables the element functionality."
+              },
+              {
+                "name": "reference",
+                "default": "'document'",
+                "description": "Specifies the reference of the scroll."
+              },
+              {
+                "name": "vertical",
+                "default": false,
+                "description": "Indicates which scroll (horizontal or vertical) is to be used as the source."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
+          "slots": [],
           "description": "Detects scroll event from an element."
         },
         {
           "name": "plus-signature",
           "doc-url": "https://www.htmlplus.io/javascript/element/signature",
+          "attributes": [
+            {
+              "name": "background-color",
+              "value": {
+                "type": "OverridableValue<PlusColor>"
+              },
+              "default": "'lightgray'",
+              "description": "Specifies the background color."
+            },
+            {
+              "name": "canvas-context-options",
+              "value": {
+                "type": "CanvasRenderingContext2DSettings"
+              },
+              "description": "Specifies configuration options for the canvas 2D rendering context. These options are passed to `HTMLCanvasElement.getContext('2d', options)` and control how the drawing context is created (for example, alpha, color space, or desynchronization behavior)."
+            },
+            {
+              "name": "clear-on-resize",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Clears the canvas after resizing."
+            },
+            {
+              "name": "pen-color",
+              "value": {
+                "type": "OverridableValue<PlusColor>"
+              },
+              "default": "'black'",
+              "description": "Specifies the color of the strokes."
+            },
+            {
+              "name": "min-distance",
+              "value": {
+                "type": "number"
+              },
+              "default": "5",
+              "description": "Add the next point only if the previous one is farther than x pixels."
+            },
+            {
+              "name": "dot-size",
+              "value": {
+                "type": "number"
+              },
+              "default": "0",
+              "description": "Specifies the radius of a single dot."
+            },
+            {
+              "name": "max-width",
+              "value": {
+                "type": "number"
+              },
+              "default": "2.5",
+              "description": "Specifies the maximum width of the strokes."
+            },
+            {
+              "name": "min-width",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.5",
+              "description": "Specifies the minimum width of the strokes."
+            },
+            {
+              "name": "resizable",
+              "value": {
+                "type": "boolean"
+              },
+              "default": false,
+              "description": "Observes the element dimensions to apply new changes on the canvas."
+            },
+            {
+              "name": "throttle",
+              "value": {
+                "type": "number"
+              },
+              "default": "16",
+              "description": "Specifies the time distance between the previous point and the next one."
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "PointGroup[]"
+              },
+              "description": "Gets/Sets data."
+            },
+            {
+              "name": "velocity-filter-weight",
+              "value": {
+                "type": "number"
+              },
+              "default": "0.7",
+              "description": "Specifies the velocity based on the previous velocity."
+            },
+            {
+              "name": "canvas",
+              "value": {
+                "type": ""
+              },
+              "description": "The canvas element."
+            },
+            {
+              "name": "redoable",
+              "value": {
+                "type": ""
+              },
+              "description": "Specifies whether redo can be performed or not."
+            },
+            {
+              "name": "undoable",
+              "value": {
+                "type": ""
+              },
+              "description": "Specifies whether undo can be performed or not."
+            },
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+            },
+            {
+              "name": "preset",
+              "value": {
+                "type": "OverridableValue<never>"
+              },
+              "description": "See [Preset](/preset-property) for details."
+            }
+          ],
           "js": {
             "events": [
               {
@@ -4350,165 +4492,12 @@
               }
             ]
           },
-          "attributes": [
-            {
-              "name": "background-color",
-              "value": {
-                "type": "OverridableValue<PlusColor>"
-              },
-              "default": "'lightgray'",
-              "description": "Specifies the background color."
-            },
-            {
-              "name": "canvas-context-options",
-              "value": {
-                "type": "CanvasRenderingContext2DSettings"
-              },
-              "description": "Specifies configuration options for the canvas 2D rendering context. These options are passed to `HTMLCanvasElement.getContext('2d', options)` and control how the drawing context is created (for example, alpha, color space, or desynchronization behavior)."
-            },
-            {
-              "name": "clear-on-resize",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Clears the canvas after resizing."
-            },
-            {
-              "name": "pen-color",
-              "value": {
-                "type": "OverridableValue<PlusColor>"
-              },
-              "default": "'black'",
-              "description": "Specifies the color of the strokes."
-            },
-            {
-              "name": "min-distance",
-              "value": {
-                "type": "number"
-              },
-              "default": "5",
-              "description": "Add the next point only if the previous one is farther than x pixels."
-            },
-            {
-              "name": "dot-size",
-              "value": {
-                "type": "number"
-              },
-              "default": "0",
-              "description": "Specifies the radius of a single dot."
-            },
-            {
-              "name": "max-width",
-              "value": {
-                "type": "number"
-              },
-              "default": "2.5",
-              "description": "Specifies the maximum width of the strokes."
-            },
-            {
-              "name": "min-width",
-              "value": {
-                "type": "number"
-              },
-              "default": "0.5",
-              "description": "Specifies the minimum width of the strokes."
-            },
-            {
-              "name": "resizable",
-              "value": {
-                "type": "boolean"
-              },
-              "default": false,
-              "description": "Observes the element dimensions to apply new changes on the canvas."
-            },
-            {
-              "name": "throttle",
-              "value": {
-                "type": "number"
-              },
-              "default": "16",
-              "description": "Specifies the time distance between the previous point and the next one."
-            },
-            {
-              "name": "value",
-              "value": {
-                "type": "PointGroup[]"
-              },
-              "description": "Gets/Sets data."
-            },
-            {
-              "name": "velocity-filter-weight",
-              "value": {
-                "type": "number"
-              },
-              "default": "0.7",
-              "description": "Specifies the velocity based on the previous velocity."
-            },
-            {
-              "name": "canvas",
-              "value": {
-                "type": ""
-              },
-              "description": "The canvas element."
-            },
-            {
-              "name": "redoable",
-              "value": {
-                "type": ""
-              },
-              "description": "Specifies whether redo can be performed or not."
-            },
-            {
-              "name": "undoable",
-              "value": {
-                "type": ""
-              },
-              "description": "Specifies whether undo can be performed or not."
-            },
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<PlusBreakpoint>"
-              },
-              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-            },
-            {
-              "name": "preset",
-              "value": {
-                "type": "OverridableValue<never>"
-              },
-              "description": "See [Preset](/preset-property) for details."
-            }
-          ],
+          "slots": [],
           "description": "Allows user to draw smooth signatures."
         },
         {
           "name": "plus-snippet",
           "doc-url": "https://www.htmlplus.io/javascript/element/snippet",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "color",
-                "default": "'black'",
-                "description": "Specifies the color."
-              },
-              {
-                "name": "symbol",
-                "default": "''",
-                "description": "Specifies the symbol."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "color",
@@ -4541,28 +4530,18 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "A component that can be used to display inline code snippets.",
-          "slots": [
-            {
-              "name": "copy",
-              "description": "The copy slot."
-            },
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-spacer",
-          "doc-url": "https://www.htmlplus.io/javascript/element/spacer",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "grow",
-                "default": "1",
-                "description": "TODO"
+                "name": "color",
+                "default": "'black'",
+                "description": "Specifies the color."
+              },
+              {
+                "name": "symbol",
+                "default": "''",
+                "description": "Specifies the symbol."
               },
               {
                 "name": "overrides",
@@ -4574,6 +4553,21 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "copy",
+              "description": "The copy slot."
+            },
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "A component that can be used to display inline code snippets."
+        },
+        {
+          "name": "plus-spacer",
+          "doc-url": "https://www.htmlplus.io/javascript/element/spacer",
           "attributes": [
             {
               "name": "grow",
@@ -4598,27 +4592,13 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": ""
-        },
-        {
-          "name": "plus-spinner",
-          "doc-url": "https://www.htmlplus.io/javascript/element/spinner",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "color",
-                "description": "Specifies the color."
-              },
-              {
-                "name": "size",
-                "default": "'inherit'",
-                "description": "Specifies the size of the spinner."
-              },
-              {
-                "name": "type",
-                "default": "'default'",
-                "description": "Specifies which variant of the spinner to use."
+                "name": "grow",
+                "default": "1",
+                "description": "TODO"
               },
               {
                 "name": "overrides",
@@ -4630,6 +4610,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": ""
+        },
+        {
+          "name": "plus-spinner",
+          "doc-url": "https://www.htmlplus.io/javascript/element/spinner",
           "attributes": [
             {
               "name": "color",
@@ -4669,43 +4655,22 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "An indicator of progress and activity."
-        },
-        {
-          "name": "plus-stack",
-          "doc-url": "https://www.htmlplus.io/javascript/element/stack",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "gap",
-                "default": "0",
-                "description": "The gap between items."
+                "name": "color",
+                "description": "Specifies the color."
               },
               {
-                "name": "items",
-                "default": "'center'",
-                "description": "The alignment of items along the cross axis."
+                "name": "size",
+                "default": "'inherit'",
+                "description": "Specifies the size of the spinner."
               },
               {
-                "name": "justify",
-                "default": "'center'",
-                "description": "The distribution of items along the main axis."
-              },
-              {
-                "name": "reverse",
-                "default": false,
-                "description": "Whether to reverse the order of items."
-              },
-              {
-                "name": "vertical",
-                "default": false,
-                "description": "Whether the stack is vertical."
-              },
-              {
-                "name": "wrap",
-                "default": false,
-                "description": "Controls whether items should wrap onto multiple lines."
+                "name": "type",
+                "default": "'default'",
+                "description": "Specifies which variant of the spinner to use."
               },
               {
                 "name": "overrides",
@@ -4717,6 +4682,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": "An indicator of progress and activity."
+        },
+        {
+          "name": "plus-stack",
+          "doc-url": "https://www.htmlplus.io/javascript/element/stack",
           "attributes": [
             {
               "name": "gap",
@@ -4781,43 +4752,38 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "A container for arranging elements vertically or horizontally.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-sticky",
-          "doc-url": "https://www.htmlplus.io/javascript/element/sticky",
           "js": {
-            "events": [
-              {
-                "name": "plus-change",
-                "description": "Fires when the state is changed. To enable, set the `watcher` property to `true`."
-              }
-            ],
+            "events": [],
             "properties": [
               {
-                "name": "disabled",
-                "default": false,
-                "description": "Disables the element functionality."
-              },
-              {
-                "name": "top",
+                "name": "gap",
                 "default": "0",
-                "description": "Specifies the space from top."
+                "description": "The gap between items."
               },
               {
-                "name": "watcher",
+                "name": "items",
+                "default": "'center'",
+                "description": "The alignment of items along the cross axis."
+              },
+              {
+                "name": "justify",
+                "default": "'center'",
+                "description": "The distribution of items along the main axis."
+              },
+              {
+                "name": "reverse",
                 "default": false,
-                "description": "To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`."
+                "description": "Whether to reverse the order of items."
               },
               {
-                "name": "zIndex",
-                "description": "Specifies the z-index."
+                "name": "vertical",
+                "default": false,
+                "description": "Whether the stack is vertical."
+              },
+              {
+                "name": "wrap",
+                "default": false,
+                "description": "Controls whether items should wrap onto multiple lines."
               },
               {
                 "name": "overrides",
@@ -4829,6 +4795,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "A container for arranging elements vertically or horizontally."
+        },
+        {
+          "name": "plus-sticky",
+          "doc-url": "https://www.htmlplus.io/javascript/element/sticky",
           "attributes": [
             {
               "name": "disabled",
@@ -4876,7 +4853,43 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Element content is positioned based on the user's scroll position.",
+          "js": {
+            "events": [
+              {
+                "name": "plus-change",
+                "description": "Fires when the state is changed. To enable, set the `watcher` property to `true`."
+              }
+            ],
+            "properties": [
+              {
+                "name": "disabled",
+                "default": false,
+                "description": "Disables the element functionality."
+              },
+              {
+                "name": "top",
+                "default": "0",
+                "description": "Specifies the space from top."
+              },
+              {
+                "name": "watcher",
+                "default": false,
+                "description": "To active `state` attribute, `change` event, `normal` slot, or `stick` slot, Set it to `true`."
+              },
+              {
+                "name": "zIndex",
+                "description": "Specifies the z-index."
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
           "slots": [
             {
               "name": "default",
@@ -4890,39 +4903,12 @@
               "name": "stick",
               "description": "Activated when the state becomes `stick`. To enable, set the `watcher` property to `true`."
             }
-          ]
+          ],
+          "description": "Element content is positioned based on the user's scroll position."
         },
         {
           "name": "plus-switch",
           "doc-url": "https://www.htmlplus.io/javascript/element/switch",
-          "js": {
-            "events": [
-              {
-                "name": "plus-change",
-                "description": "When the switch state is changed this event triggers."
-              }
-            ],
-            "properties": [
-              {
-                "name": "checked",
-                "default": false,
-                "description": "Puts the switch in checked state."
-              },
-              {
-                "name": "disabled",
-                "default": false,
-                "description": "Disables the switch."
-              },
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
           "attributes": [
             {
               "name": "checked",
@@ -4955,27 +4941,23 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Toggles the state of a single item on or off."
-        },
-        {
-          "name": "plus-tabs",
-          "doc-url": "https://www.htmlplus.io/javascript/element/tabs",
           "js": {
             "events": [
               {
                 "name": "plus-change",
-                "description": "Fired when the value changes."
+                "description": "When the switch state is changed this event triggers."
               }
             ],
             "properties": [
               {
-                "name": "value",
-                "description": "Provides your own value."
+                "name": "checked",
+                "default": false,
+                "description": "Puts the switch in checked state."
               },
               {
-                "name": "vertical",
+                "name": "disabled",
                 "default": false,
-                "description": "You can use vertical property for vertical mode."
+                "description": "Disables the switch."
               },
               {
                 "name": "overrides",
@@ -4987,6 +4969,12 @@
               }
             ]
           },
+          "slots": [],
+          "description": "Toggles the state of a single item on or off."
+        },
+        {
+          "name": "plus-tabs",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs",
           "attributes": [
             {
               "name": "value",
@@ -5018,34 +5006,22 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "Organizes content across different screens.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-tabs-bar",
-          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-bar",
           "js": {
-            "events": [],
+            "events": [
+              {
+                "name": "plus-change",
+                "description": "Fired when the value changes."
+              }
+            ],
             "properties": [
               {
-                "name": "grow",
-                "default": false,
-                "description": "Grows tabs as much as all available space (occupies all horizontal space)."
+                "name": "value",
+                "description": "Provides your own value."
               },
               {
-                "name": "justify",
-                "default": "'start'",
-                "description": "Specifies how the tabs are aligned."
-              },
-              {
-                "name": "reverse",
+                "name": "vertical",
                 "default": false,
-                "description": "Reverses the arrangement of the tabs."
+                "description": "You can use vertical property for vertical mode."
               },
               {
                 "name": "overrides",
@@ -5057,6 +5033,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "Organizes content across different screens."
+        },
+        {
+          "name": "plus-tabs-bar",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-bar",
           "attributes": [
             {
               "name": "grow",
@@ -5097,27 +5084,23 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "TODO: Arranges tabs within a bar.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-tabs-panel",
-          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panel",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "value",
-                "description": "Provides your own value."
+                "name": "grow",
+                "default": false,
+                "description": "Grows tabs as much as all available space (occupies all horizontal space)."
               },
               {
-                "name": "active",
-                "description": "TODO"
+                "name": "justify",
+                "default": "'start'",
+                "description": "Specifies how the tabs are aligned."
+              },
+              {
+                "name": "reverse",
+                "default": false,
+                "description": "Reverses the arrangement of the tabs."
               },
               {
                 "name": "overrides",
@@ -5129,6 +5112,17 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "TODO: Arranges tabs within a bar."
+        },
+        {
+          "name": "plus-tabs-panel",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panel",
           "attributes": [
             {
               "name": "value",
@@ -5159,65 +5153,9 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-tabs-panels",
-          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panels",
           "js": {
             "events": [],
             "properties": [
-              {
-                "name": "overrides",
-                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-              },
-              {
-                "name": "preset",
-                "description": "See [Preset](/preset-property) for details."
-              }
-            ]
-          },
-          "attributes": [
-            {
-              "name": "overrides",
-              "value": {
-                "type": "OverridesConfig<PlusBreakpoint>"
-              },
-              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
-            },
-            {
-              "name": "preset",
-              "value": {
-                "type": "OverridableValue<never>"
-              },
-              "description": "See [Preset](/preset-property) for details."
-            }
-          ],
-          "description": "TODO: This element contains panels.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-tabs-tab",
-          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-tab",
-          "js": {
-            "events": [],
-            "properties": [
-              {
-                "name": "disabled",
-                "default": false,
-                "description": "A Tab can be disabled by setting disabled property."
-              },
               {
                 "name": "value",
                 "description": "Provides your own value."
@@ -5236,6 +5174,57 @@
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "TODO: This element contains the contents of each tab and when the tab is activated the panel is displayed."
+        },
+        {
+          "name": "plus-tabs-panels",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-panels",
+          "attributes": [
+            {
+              "name": "overrides",
+              "value": {
+                "type": "OverridesConfig<PlusBreakpoint>"
+              },
+              "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+            },
+            {
+              "name": "preset",
+              "value": {
+                "type": "OverridableValue<never>"
+              },
+              "description": "See [Preset](/preset-property) for details."
+            }
+          ],
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              }
+            ]
+          },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "TODO: This element contains panels."
+        },
+        {
+          "name": "plus-tabs-tab",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tabs-tab",
           "attributes": [
             {
               "name": "disabled",
@@ -5274,60 +5263,20 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
-          "description": "TODO: Tabs make it easy to switch between different views.",
-          "slots": [
-            {
-              "name": "default",
-              "description": "The default slot."
-            }
-          ]
-        },
-        {
-          "name": "plus-tooltip",
-          "doc-url": "https://www.htmlplus.io/javascript/element/tooltip",
           "js": {
             "events": [],
             "properties": [
               {
-                "name": "arrow",
-                "default": false,
-                "description": "Specifies whether to display the arrow or not."
-              },
-              {
-                "name": "delay",
-                "default": "0",
-                "description": "Specifies a delay in milliseconds for show or hide. Use a number for both show and hide or create an array of two separate numbers for show and hide."
-              },
-              {
                 "name": "disabled",
                 "default": false,
-                "description": "Disables the element functionality."
+                "description": "A Tab can be disabled by setting disabled property."
               },
               {
-                "name": "fixed",
-                "default": false,
-                "description": "TODO"
+                "name": "value",
+                "description": "Provides your own value."
               },
               {
-                "name": "offset",
-                "description": "TODO"
-              },
-              {
-                "name": "placement",
-                "description": "Specifies the display location of the element relative to the reference."
-              },
-              {
-                "name": "reference",
-                "default": "'previous'",
-                "description": "Specifies the element to which the tooltip will be attached. Use `next` to attach to the next sibling. Use `parent` to attach to the parent. Use `previous` to attach to the previous sibling. Use a string to find an element to attach to that. Use an element to attach to that."
-              },
-              {
-                "name": "trigger",
-                "description": "Specifies the activation method."
-              },
-              {
-                "name": "z",
-                "default": "'auto'",
+                "name": "active",
                 "description": "TODO"
               },
               {
@@ -5337,21 +5286,20 @@
               {
                 "name": "preset",
                 "description": "See [Preset](/preset-property) for details."
-              },
-              {
-                "name": "hide",
-                "description": "Hides the element."
-              },
-              {
-                "name": "show",
-                "description": "Shows the element."
-              },
-              {
-                "name": "update",
-                "description": "Updates the element's position."
               }
             ]
           },
+          "slots": [
+            {
+              "name": "default",
+              "description": "The default slot."
+            }
+          ],
+          "description": "TODO: Tabs make it easy to switch between different views."
+        },
+        {
+          "name": "plus-tooltip",
+          "doc-url": "https://www.htmlplus.io/javascript/element/tooltip",
           "attributes": [
             {
               "name": "arrow",
@@ -5437,6 +5385,74 @@
               "description": "See [Preset](/preset-property) for details."
             }
           ],
+          "js": {
+            "events": [],
+            "properties": [
+              {
+                "name": "arrow",
+                "default": false,
+                "description": "Specifies whether to display the arrow or not."
+              },
+              {
+                "name": "delay",
+                "default": "0",
+                "description": "Specifies a delay in milliseconds for show or hide. Use a number for both show and hide or create an array of two separate numbers for show and hide."
+              },
+              {
+                "name": "disabled",
+                "default": false,
+                "description": "Disables the element functionality."
+              },
+              {
+                "name": "fixed",
+                "default": false,
+                "description": "TODO"
+              },
+              {
+                "name": "offset",
+                "description": "TODO"
+              },
+              {
+                "name": "placement",
+                "description": "Specifies the display location of the element relative to the reference."
+              },
+              {
+                "name": "reference",
+                "default": "'previous'",
+                "description": "Specifies the element to which the tooltip will be attached. Use `next` to attach to the next sibling. Use `parent` to attach to the parent. Use `previous` to attach to the previous sibling. Use a string to find an element to attach to that. Use an element to attach to that."
+              },
+              {
+                "name": "trigger",
+                "description": "Specifies the activation method."
+              },
+              {
+                "name": "z",
+                "default": "'auto'",
+                "description": "TODO"
+              },
+              {
+                "name": "overrides",
+                "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
+              },
+              {
+                "name": "preset",
+                "description": "See [Preset](/preset-property) for details."
+              },
+              {
+                "name": "hide",
+                "description": "Hides the element."
+              },
+              {
+                "name": "show",
+                "description": "Shows the element."
+              },
+              {
+                "name": "update",
+                "description": "Updates the element's position."
+              }
+            ]
+          },
+          "slots": [],
           "description": "TODO"
         }
       ]

@@ -41,88 +41,30 @@ export declare class PlusFaker extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusFakerAttributesMapper = {
-  'api': 'api';
-  'arguments': 'arguments';
-  'instance': 'instance';
-  'seed': 'seed';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusFakerAttributesMapper = {};
 export type PlusFakerOverridableKeys = 'preset';
 export interface PlusFakerDisables {}
 export interface PlusFakerOverrides {}
-export type PlusFakerAttributes = Filter<PlusFakerAttributesOverridden, PlusFakerDisables, PlusFakerAttributesMapper>;
-export type PlusFakerAttributesOverridden = Override<PlusFakerAttributesBase, PlusFakerOverrides, PlusFakerOverridableKeys, PlusFakerAttributesMapper>;
-export type PlusFakerAttributesBase = {
-  /**
-  * Specifies the [API](https://fakerjs.dev/api).
-  */
-  "api"?: string;
-  /**
-  * Specifies the API's arguments as an array.
-  */
-  "arguments"?: unknown[];
-  /**
-  * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
-  */
-  "instance"?: FakerCoreType;
-  /**
-  * Keeps the result constant.
-  */
-  "seed"?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusFakerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusFakerAttributes = Rename<PlusFakerProperties, PlusFakerAttributesMapper>;
+export type PlusFakerAttributesOverridden = Rename<PlusFakerPropertiesOverridden, PlusFakerAttributesMapper>;
+export type PlusFakerAttributesBase = Rename<PlusFakerPropertiesBase, PlusFakerAttributesMapper>;
 export type PlusFakerEvents = Filter<PlusFakerEventsBase, PlusFakerDisables>;
-export type PlusFakerEventsBase = {};
-export type PlusFakerEventsJSX = Filter<PlusFakerEventsBaseJSX, PlusFakerDisables, {}>;
-export type PlusFakerEventsBaseJSX = {};
+export type PlusFakerEventsBase = ToEventHandlers<Pick<PlusFaker, PlusFakerEventsKeys>>;
+export type PlusFakerEventsKeys = never;
+export type PlusFakerEventsJSX = ToJSXEvent<PlusFakerEvents>;
+export type PlusFakerEventsBaseJSX = ToJSXEvent<PlusFakerEventsBase>;
 export type PlusFakerMethods = Filter<PlusFakerMethodsBase, PlusFakerDisables>;
-export type PlusFakerMethodsBase = {};
+export type PlusFakerMethodsBase = Pick<PlusFaker, PlusFakerMethodsKeys>;
+export type PlusFakerMethodsKeys = never;
 export type PlusFakerProperties = Filter<PlusFakerPropertiesOverridden, PlusFakerDisables>;
 export type PlusFakerPropertiesOverridden = Override<PlusFakerPropertiesBase, PlusFakerOverrides, PlusFakerOverridableKeys>;
-export type PlusFakerPropertiesBase = {
-  /**
-  * Specifies the [API](https://fakerjs.dev/api).
-  */
-  api?: string;
-  /**
-  * Specifies the API's arguments as an array.
-  */
-  arguments?: unknown[];
-  /**
-  * The [Faker](https://fakerjs.dev/guide/usage.html) object instance.
-  */
-  instance?: FakerCoreType;
-  /**
-  * Keeps the result constant.
-  */
-  seed?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusFakerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-faker': {
-      properties: PlusFakerPropertiesOverridden;
-    };
-  }
-}
+export type PlusFakerPropertiesBase = Pick<PlusFaker, PlusFakerPropertiesKeys>;
+export type PlusFakerPropertiesKeys = 'api' | 'arguments' | 'instance' | 'seed' | 'overrides' | 'preset';
 export type PlusFakerElement = globalThis.HTMLPlusFakerElement;
 export type PlusFakerJSX = PlusFakerAttributes & PlusFakerEventsJSX;
 export namespace JSX {
@@ -138,6 +80,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-faker": HTMLPlusFakerElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-faker': {
+      properties: PlusFakerPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

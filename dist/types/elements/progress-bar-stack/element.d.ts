@@ -18,52 +18,30 @@ export declare class PlusProgressBarStack extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusProgressBarStackAttributesMapper = {
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusProgressBarStackAttributesMapper = {};
 export type PlusProgressBarStackOverridableKeys = 'preset';
 export interface PlusProgressBarStackDisables {}
 export interface PlusProgressBarStackOverrides {}
-export type PlusProgressBarStackAttributes = Filter<PlusProgressBarStackAttributesOverridden, PlusProgressBarStackDisables, PlusProgressBarStackAttributesMapper>;
-export type PlusProgressBarStackAttributesOverridden = Override<PlusProgressBarStackAttributesBase, PlusProgressBarStackOverrides, PlusProgressBarStackOverridableKeys, PlusProgressBarStackAttributesMapper>;
-export type PlusProgressBarStackAttributesBase = {
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusProgressBarStackProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusProgressBarStackAttributes = Rename<PlusProgressBarStackProperties, PlusProgressBarStackAttributesMapper>;
+export type PlusProgressBarStackAttributesOverridden = Rename<PlusProgressBarStackPropertiesOverridden, PlusProgressBarStackAttributesMapper>;
+export type PlusProgressBarStackAttributesBase = Rename<PlusProgressBarStackPropertiesBase, PlusProgressBarStackAttributesMapper>;
 export type PlusProgressBarStackEvents = Filter<PlusProgressBarStackEventsBase, PlusProgressBarStackDisables>;
-export type PlusProgressBarStackEventsBase = {};
-export type PlusProgressBarStackEventsJSX = Filter<PlusProgressBarStackEventsBaseJSX, PlusProgressBarStackDisables, {}>;
-export type PlusProgressBarStackEventsBaseJSX = {};
+export type PlusProgressBarStackEventsBase = ToEventHandlers<Pick<PlusProgressBarStack, PlusProgressBarStackEventsKeys>>;
+export type PlusProgressBarStackEventsKeys = never;
+export type PlusProgressBarStackEventsJSX = ToJSXEvent<PlusProgressBarStackEvents>;
+export type PlusProgressBarStackEventsBaseJSX = ToJSXEvent<PlusProgressBarStackEventsBase>;
 export type PlusProgressBarStackMethods = Filter<PlusProgressBarStackMethodsBase, PlusProgressBarStackDisables>;
-export type PlusProgressBarStackMethodsBase = {};
+export type PlusProgressBarStackMethodsBase = Pick<PlusProgressBarStack, PlusProgressBarStackMethodsKeys>;
+export type PlusProgressBarStackMethodsKeys = never;
 export type PlusProgressBarStackProperties = Filter<PlusProgressBarStackPropertiesOverridden, PlusProgressBarStackDisables>;
 export type PlusProgressBarStackPropertiesOverridden = Override<PlusProgressBarStackPropertiesBase, PlusProgressBarStackOverrides, PlusProgressBarStackOverridableKeys>;
-export type PlusProgressBarStackPropertiesBase = {
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusProgressBarStackProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-progress-bar-stack': {
-      properties: PlusProgressBarStackPropertiesOverridden;
-    };
-  }
-}
+export type PlusProgressBarStackPropertiesBase = Pick<PlusProgressBarStack, PlusProgressBarStackPropertiesKeys>;
+export type PlusProgressBarStackPropertiesKeys = 'overrides' | 'preset';
 export type PlusProgressBarStackElement = globalThis.HTMLPlusProgressBarStackElement;
 export type PlusProgressBarStackJSX = PlusProgressBarStackAttributes & PlusProgressBarStackEventsJSX;
 export namespace JSX {
@@ -79,6 +57,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-progress-bar-stack": HTMLPlusProgressBarStackElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-progress-bar-stack': {
+      properties: PlusProgressBarStackPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

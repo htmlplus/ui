@@ -138,79 +138,30 @@ export declare class PlusAvatar extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusAvatarAttributesMapper = {
-  'color': 'color';
-  'shape': 'shape';
-  'size': 'size';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusAvatarAttributesMapper = {};
 export type PlusAvatarOverridableKeys = 'color' | 'size' | 'preset';
 export interface PlusAvatarDisables {}
 export interface PlusAvatarOverrides {}
-export type PlusAvatarAttributes = Filter<PlusAvatarAttributesOverridden, PlusAvatarDisables, PlusAvatarAttributesMapper>;
-export type PlusAvatarAttributesOverridden = Override<PlusAvatarAttributesBase, PlusAvatarOverrides, PlusAvatarOverridableKeys, PlusAvatarAttributesMapper>;
-export type PlusAvatarAttributesBase = {
-  /**
-  * Specifies the color.
-  */
-  "color"?: OverridableValue<PlusColor>;
-  /**
-  * Specifies the shape of the element.
-  */
-  "shape"?: 'circle' | 'round' | 'tile';
-  /**
-  * Specifies the size of the element.
-  */
-  "size"?: OverridableValue<PlusAvatarSize>;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusAvatarAttributes = Rename<PlusAvatarProperties, PlusAvatarAttributesMapper>;
+export type PlusAvatarAttributesOverridden = Rename<PlusAvatarPropertiesOverridden, PlusAvatarAttributesMapper>;
+export type PlusAvatarAttributesBase = Rename<PlusAvatarPropertiesBase, PlusAvatarAttributesMapper>;
 export type PlusAvatarEvents = Filter<PlusAvatarEventsBase, PlusAvatarDisables>;
-export type PlusAvatarEventsBase = {};
-export type PlusAvatarEventsJSX = Filter<PlusAvatarEventsBaseJSX, PlusAvatarDisables, {}>;
-export type PlusAvatarEventsBaseJSX = {};
+export type PlusAvatarEventsBase = ToEventHandlers<Pick<PlusAvatar, PlusAvatarEventsKeys>>;
+export type PlusAvatarEventsKeys = never;
+export type PlusAvatarEventsJSX = ToJSXEvent<PlusAvatarEvents>;
+export type PlusAvatarEventsBaseJSX = ToJSXEvent<PlusAvatarEventsBase>;
 export type PlusAvatarMethods = Filter<PlusAvatarMethodsBase, PlusAvatarDisables>;
-export type PlusAvatarMethodsBase = {};
+export type PlusAvatarMethodsBase = Pick<PlusAvatar, PlusAvatarMethodsKeys>;
+export type PlusAvatarMethodsKeys = never;
 export type PlusAvatarProperties = Filter<PlusAvatarPropertiesOverridden, PlusAvatarDisables>;
 export type PlusAvatarPropertiesOverridden = Override<PlusAvatarPropertiesBase, PlusAvatarOverrides, PlusAvatarOverridableKeys>;
-export type PlusAvatarPropertiesBase = {
-  /**
-  * Specifies the color.
-  */
-  color?: OverridableValue<PlusColor>;
-  /**
-  * Specifies the shape of the element.
-  */
-  shape?: 'circle' | 'round' | 'tile';
-  /**
-  * Specifies the size of the element.
-  */
-  size?: OverridableValue<PlusAvatarSize>;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-avatar': {
-      properties: PlusAvatarPropertiesOverridden;
-    };
-  }
-}
+export type PlusAvatarPropertiesBase = Pick<PlusAvatar, PlusAvatarPropertiesKeys>;
+export type PlusAvatarPropertiesKeys = 'color' | 'shape' | 'size' | 'overrides' | 'preset';
 export type PlusAvatarElement = globalThis.HTMLPlusAvatarElement;
 export type PlusAvatarJSX = PlusAvatarAttributes & PlusAvatarEventsJSX;
 export namespace JSX {
@@ -226,6 +177,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-avatar": HTMLPlusAvatarElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-avatar': {
+      properties: PlusAvatarPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

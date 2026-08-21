@@ -96,160 +96,30 @@ export declare class PlusTooltip extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusTooltipAttributesMapper = {
-  'arrow': 'arrow';
-  'delay': 'delay';
-  'disabled': 'disabled';
-  'fixed': 'fixed';
-  'offset': 'offset';
-  'placement': 'placement';
-  'reference': 'reference';
-  'trigger': 'trigger';
-  'z': 'z';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusTooltipAttributesMapper = {};
 export type PlusTooltipOverridableKeys = 'preset';
 export interface PlusTooltipDisables {}
 export interface PlusTooltipOverrides {}
-export type PlusTooltipAttributes = Filter<PlusTooltipAttributesOverridden, PlusTooltipDisables, PlusTooltipAttributesMapper>;
-export type PlusTooltipAttributesOverridden = Override<PlusTooltipAttributesBase, PlusTooltipOverrides, PlusTooltipOverridableKeys, PlusTooltipAttributesMapper>;
-export type PlusTooltipAttributesBase = {
-  /**
-  * Specifies whether to display the arrow or not.
-  */
-  "arrow"?: boolean;
-  /**
-  * Specifies a delay in milliseconds for show or hide.
-  * Use a number for both show and hide or
-  * create an array of two separate numbers for show and hide.
-  */
-  "delay"?: number | [number, number];
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
-  /**
-  * TODO
-  */
-  "fixed"?: boolean;
-  /**
-  * TODO
-  */
-  "offset"?: number | [number, number];
-  /**
-  * Specifies the display location of the element relative to the reference.
-  */
-  "placement"?: PlusTooltipPlacement;
-  /**
-  * Specifies the element to which the tooltip will be attached.
-  * Use `next` to attach to the next sibling.
-  * Use `parent` to attach to the parent.
-  * Use `previous` to attach to the previous sibling.
-  * Use a string to find an element to attach to that.
-  * Use an element to attach to that.
-  */
-  "reference"?: Element | 'next' | 'parent' | 'previous' | (string & {});
-  /**
-  * Specifies the activation method.
-  */
-  "trigger"?: PlusTooltipTrigger;
-  /**
-  * TODO
-  */
-  "z"?: 'auto' | 'vertical' | 'horizontal' | 'move';
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusTooltipProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusTooltipAttributes = Rename<PlusTooltipProperties, PlusTooltipAttributesMapper>;
+export type PlusTooltipAttributesOverridden = Rename<PlusTooltipPropertiesOverridden, PlusTooltipAttributesMapper>;
+export type PlusTooltipAttributesBase = Rename<PlusTooltipPropertiesBase, PlusTooltipAttributesMapper>;
 export type PlusTooltipEvents = Filter<PlusTooltipEventsBase, PlusTooltipDisables>;
-export type PlusTooltipEventsBase = {};
-export type PlusTooltipEventsJSX = Filter<PlusTooltipEventsBaseJSX, PlusTooltipDisables, {}>;
-export type PlusTooltipEventsBaseJSX = {};
+export type PlusTooltipEventsBase = ToEventHandlers<Pick<PlusTooltip, PlusTooltipEventsKeys>>;
+export type PlusTooltipEventsKeys = never;
+export type PlusTooltipEventsJSX = ToJSXEvent<PlusTooltipEvents>;
+export type PlusTooltipEventsBaseJSX = ToJSXEvent<PlusTooltipEventsBase>;
 export type PlusTooltipMethods = Filter<PlusTooltipMethodsBase, PlusTooltipDisables>;
-export type PlusTooltipMethodsBase = {
-  /**
-  * Hides the element.
-  */
-  hide();
-  /**
-  * Shows the element.
-  */
-  show();
-  /**
-  * Updates the element's position.
-  */
-  update();
-};
+export type PlusTooltipMethodsBase = Pick<PlusTooltip, PlusTooltipMethodsKeys>;
+export type PlusTooltipMethodsKeys = 'hide' | 'show' | 'update';
 export type PlusTooltipProperties = Filter<PlusTooltipPropertiesOverridden, PlusTooltipDisables>;
 export type PlusTooltipPropertiesOverridden = Override<PlusTooltipPropertiesBase, PlusTooltipOverrides, PlusTooltipOverridableKeys>;
-export type PlusTooltipPropertiesBase = {
-  /**
-  * Specifies whether to display the arrow or not.
-  */
-  arrow?: boolean;
-  /**
-  * Specifies a delay in milliseconds for show or hide.
-  * Use a number for both show and hide or
-  * create an array of two separate numbers for show and hide.
-  */
-  delay?: number | [number, number];
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
-  /**
-  * TODO
-  */
-  fixed?: boolean;
-  /**
-  * TODO
-  */
-  offset?: number | [number, number];
-  /**
-  * Specifies the display location of the element relative to the reference.
-  */
-  placement?: PlusTooltipPlacement;
-  /**
-  * Specifies the element to which the tooltip will be attached.
-  * Use `next` to attach to the next sibling.
-  * Use `parent` to attach to the parent.
-  * Use `previous` to attach to the previous sibling.
-  * Use a string to find an element to attach to that.
-  * Use an element to attach to that.
-  */
-  reference?: Element | 'next' | 'parent' | 'previous' | (string & {});
-  /**
-  * Specifies the activation method.
-  */
-  trigger?: PlusTooltipTrigger;
-  /**
-  * TODO
-  */
-  z?: 'auto' | 'vertical' | 'horizontal' | 'move';
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusTooltipProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-tooltip': {
-      properties: PlusTooltipPropertiesOverridden;
-    };
-  }
-}
+export type PlusTooltipPropertiesBase = Pick<PlusTooltip, PlusTooltipPropertiesKeys>;
+export type PlusTooltipPropertiesKeys = 'arrow' | 'delay' | 'disabled' | 'fixed' | 'offset' | 'placement' | 'reference' | 'trigger' | 'z' | 'overrides' | 'preset';
 export type PlusTooltipElement = globalThis.HTMLPlusTooltipElement;
 export type PlusTooltipJSX = PlusTooltipAttributes & PlusTooltipEventsJSX;
 export namespace JSX {
@@ -265,6 +135,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-tooltip": HTMLPlusTooltipElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-tooltip': {
+      properties: PlusTooltipPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

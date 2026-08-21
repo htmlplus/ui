@@ -90,163 +90,33 @@ export declare class PlusBrowse extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
 export type PlusBrowseAttributesMapper = {
-  'accept': 'accept';
-  'disabled': 'disabled';
-  'droppable': 'droppable';
-  'min': 'min';
-  'max': 'max';
   'minSize': 'min-size';
   'maxSize': 'max-size';
-  'multiple': 'multiple';
-  'overrides': 'overrides';
-  'preset': 'preset';
 };
 export type PlusBrowseOverridableKeys = 'preset';
 export interface PlusBrowseDisables {}
 export interface PlusBrowseOverrides {}
-export type PlusBrowseAttributes = Filter<PlusBrowseAttributesOverridden, PlusBrowseDisables, PlusBrowseAttributesMapper>;
-export type PlusBrowseAttributesOverridden = Override<PlusBrowseAttributesBase, PlusBrowseOverrides, PlusBrowseOverridableKeys, PlusBrowseAttributesMapper>;
-export type PlusBrowseAttributesBase = {
-  /**
-  * One or more
-  * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
-  * describing file types to allow.
-  */
-  "accept"?: string;
-  /**
-  * Disables the element functionality.
-  */
-  "disabled"?: boolean;
-  /**
-  * Adds droppable ability.
-  */
-  "droppable"?: boolean;
-  /**
-  * Specifies the minimum number of files.
-  */
-  "min"?: number;
-  /**
-  * Specifies the maximum number of files.
-  */
-  "max"?: number;
-  /**
-  * Specifies the minimum size of the file(s) in bytes.
-  */
-  "min-size"?: number;
-  /**
-  * Specifies the maximum size of the file(s) in bytes.
-  */
-  "max-size"?: number;
-  /**
-  * Allows to select more than one file.
-  */
-  "multiple"?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusBrowseProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusBrowseAttributes = Rename<PlusBrowseProperties, PlusBrowseAttributesMapper>;
+export type PlusBrowseAttributesOverridden = Rename<PlusBrowsePropertiesOverridden, PlusBrowseAttributesMapper>;
+export type PlusBrowseAttributesBase = Rename<PlusBrowsePropertiesBase, PlusBrowseAttributesMapper>;
 export type PlusBrowseEvents = Filter<PlusBrowseEventsBase, PlusBrowseDisables>;
-export type PlusBrowseEventsBase = {
-  /**
-  * Fires when file(s) are selected.
-  */
-  plusChange?: (event: CustomEvent<PlusBrowseEvent>) => void;
-  /**
-  * Fires when selected invalid file(s).
-  */
-  plusError?: (event: CustomEvent<PlusBrowseEvent>) => void;
-  /**
-  * Fires when file(s) are added successfully.
-  */
-  plusSuccess?: (event: CustomEvent<PlusBrowseEvent>) => void;
-};
-export type PlusBrowseEventsJSX = Filter<PlusBrowseEventsBaseJSX, PlusBrowseDisables, {
-  plusChange: 'onPlusChange';
-  plusError: 'onPlusError';
-  plusSuccess: 'onPlusSuccess';
-}>;
-export type PlusBrowseEventsBaseJSX = {
-  /**
-  * Fires when file(s) are selected.
-  */
-  onPlusChange?: (event: CustomEvent<PlusBrowseEvent>) => void;
-  /**
-  * Fires when selected invalid file(s).
-  */
-  onPlusError?: (event: CustomEvent<PlusBrowseEvent>) => void;
-  /**
-  * Fires when file(s) are added successfully.
-  */
-  onPlusSuccess?: (event: CustomEvent<PlusBrowseEvent>) => void;
-};
+export type PlusBrowseEventsBase = ToEventHandlers<Pick<PlusBrowse, PlusBrowseEventsKeys>>;
+export type PlusBrowseEventsKeys = 'plusChange' | 'plusError' | 'plusSuccess';
+export type PlusBrowseEventsJSX = ToJSXEvent<PlusBrowseEvents>;
+export type PlusBrowseEventsBaseJSX = ToJSXEvent<PlusBrowseEventsBase>;
 export type PlusBrowseMethods = Filter<PlusBrowseMethodsBase, PlusBrowseDisables>;
-export type PlusBrowseMethodsBase = {
-  /**
-  * Opens the browse dialog.
-  */
-  browse(): void;
-};
+export type PlusBrowseMethodsBase = Pick<PlusBrowse, PlusBrowseMethodsKeys>;
+export type PlusBrowseMethodsKeys = 'browse';
 export type PlusBrowseProperties = Filter<PlusBrowsePropertiesOverridden, PlusBrowseDisables>;
 export type PlusBrowsePropertiesOverridden = Override<PlusBrowsePropertiesBase, PlusBrowseOverrides, PlusBrowseOverridableKeys>;
-export type PlusBrowsePropertiesBase = {
-  /**
-  * One or more
-  * [unique file type specifiers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#unique_file_type_specifiers)
-  * describing file types to allow.
-  */
-  accept?: string;
-  /**
-  * Disables the element functionality.
-  */
-  disabled?: boolean;
-  /**
-  * Adds droppable ability.
-  */
-  droppable?: boolean;
-  /**
-  * Specifies the minimum number of files.
-  */
-  min?: number;
-  /**
-  * Specifies the maximum number of files.
-  */
-  max?: number;
-  /**
-  * Specifies the minimum size of the file(s) in bytes.
-  */
-  minSize?: number;
-  /**
-  * Specifies the maximum size of the file(s) in bytes.
-  */
-  maxSize?: number;
-  /**
-  * Allows to select more than one file.
-  */
-  multiple?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusBrowseProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-browse': {
-      properties: PlusBrowsePropertiesOverridden;
-    };
-  }
-}
+export type PlusBrowsePropertiesBase = Pick<PlusBrowse, PlusBrowsePropertiesKeys>;
+export type PlusBrowsePropertiesKeys = 'accept' | 'disabled' | 'droppable' | 'min' | 'max' | 'minSize' | 'maxSize' | 'multiple' | 'overrides' | 'preset';
 export type PlusBrowseElement = globalThis.HTMLPlusBrowseElement;
 export type PlusBrowseJSX = PlusBrowseAttributes & PlusBrowseEventsJSX;
 export namespace JSX {
@@ -262,6 +132,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-browse": HTMLPlusBrowseElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-browse': {
+      properties: PlusBrowsePropertiesOverridden;
+    };
   }
 }
 declare module "react" {

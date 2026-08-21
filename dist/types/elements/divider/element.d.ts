@@ -55,106 +55,30 @@ export declare class PlusDivider extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusDividerAttributesMapper = {
-  'color': 'color';
-  'inset': 'inset';
-  'orientation': 'orientation';
-  'placement': 'placement';
-  'size': 'size';
-  'stroke': 'stroke';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusDividerAttributesMapper = {};
 export type PlusDividerOverridableKeys = 'color' | 'size' | 'stroke' | 'preset';
 export interface PlusDividerDisables {}
 export interface PlusDividerOverrides {}
-export type PlusDividerAttributes = Filter<PlusDividerAttributesOverridden, PlusDividerDisables, PlusDividerAttributesMapper>;
-export type PlusDividerAttributesOverridden = Override<PlusDividerAttributesBase, PlusDividerOverrides, PlusDividerOverridableKeys, PlusDividerAttributesMapper>;
-export type PlusDividerAttributesBase = {
-  /**
-  * Specifies the color.
-  */
-  "color"?: OverridableValue<PlusColor>;
-  /**
-  * Specifies the amount of indentation.
-  */
-  "inset"?: 'none' | 'start' | 'end' | 'both' | (string & {});
-  /**
-  * Draws the divider in a `horizontal` or `vertical` orientation.
-  */
-  "orientation"?: 'horizontal' | 'vertical';
-  /**
-  * Specifies the location of the default slot.
-  */
-  "placement"?: 'start' | 'center' | 'end';
-  /**
-  * Specifies the thickness of the border.
-  */
-  "size"?: OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
-  /**
-  * Specifies the style of the border.
-  */
-  "stroke"?: OverridableValue<'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'>;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDividerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusDividerAttributes = Rename<PlusDividerProperties, PlusDividerAttributesMapper>;
+export type PlusDividerAttributesOverridden = Rename<PlusDividerPropertiesOverridden, PlusDividerAttributesMapper>;
+export type PlusDividerAttributesBase = Rename<PlusDividerPropertiesBase, PlusDividerAttributesMapper>;
 export type PlusDividerEvents = Filter<PlusDividerEventsBase, PlusDividerDisables>;
-export type PlusDividerEventsBase = {};
-export type PlusDividerEventsJSX = Filter<PlusDividerEventsBaseJSX, PlusDividerDisables, {}>;
-export type PlusDividerEventsBaseJSX = {};
+export type PlusDividerEventsBase = ToEventHandlers<Pick<PlusDivider, PlusDividerEventsKeys>>;
+export type PlusDividerEventsKeys = never;
+export type PlusDividerEventsJSX = ToJSXEvent<PlusDividerEvents>;
+export type PlusDividerEventsBaseJSX = ToJSXEvent<PlusDividerEventsBase>;
 export type PlusDividerMethods = Filter<PlusDividerMethodsBase, PlusDividerDisables>;
-export type PlusDividerMethodsBase = {};
+export type PlusDividerMethodsBase = Pick<PlusDivider, PlusDividerMethodsKeys>;
+export type PlusDividerMethodsKeys = never;
 export type PlusDividerProperties = Filter<PlusDividerPropertiesOverridden, PlusDividerDisables>;
 export type PlusDividerPropertiesOverridden = Override<PlusDividerPropertiesBase, PlusDividerOverrides, PlusDividerOverridableKeys>;
-export type PlusDividerPropertiesBase = {
-  /**
-  * Specifies the color.
-  */
-  color?: OverridableValue<PlusColor>;
-  /**
-  * Specifies the amount of indentation.
-  */
-  inset?: 'none' | 'start' | 'end' | 'both' | (string & {});
-  /**
-  * Draws the divider in a `horizontal` or `vertical` orientation.
-  */
-  orientation?: 'horizontal' | 'vertical';
-  /**
-  * Specifies the location of the default slot.
-  */
-  placement?: 'start' | 'center' | 'end';
-  /**
-  * Specifies the thickness of the border.
-  */
-  size?: OverridableValue<'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
-  /**
-  * Specifies the style of the border.
-  */
-  stroke?: OverridableValue<'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' | 'ridge' | 'solid'>;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDividerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-divider': {
-      properties: PlusDividerPropertiesOverridden;
-    };
-  }
-}
+export type PlusDividerPropertiesBase = Pick<PlusDivider, PlusDividerPropertiesKeys>;
+export type PlusDividerPropertiesKeys = 'color' | 'inset' | 'orientation' | 'placement' | 'size' | 'stroke' | 'overrides' | 'preset';
 export type PlusDividerElement = globalThis.HTMLPlusDividerElement;
 export type PlusDividerJSX = PlusDividerAttributes & PlusDividerEventsJSX;
 export namespace JSX {
@@ -170,6 +94,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-divider": HTMLPlusDividerElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-divider': {
+      properties: PlusDividerPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

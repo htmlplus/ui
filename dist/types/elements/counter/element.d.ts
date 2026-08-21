@@ -93,171 +93,30 @@ export declare class PlusCounter extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusCounterAttributesMapper = {
-  'easing': 'easing';
-  'decimal': 'decimal';
-  'decimals': 'decimals';
-  'delay': 'delay';
-  'duration': 'duration';
-  'from': 'from';
-  'numerals': 'numerals';
-  'play': 'play';
-  'separator': 'separator';
-  'to': 'to';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusCounterAttributesMapper = {};
 export type PlusCounterOverridableKeys = 'preset';
 export interface PlusCounterDisables {}
 export interface PlusCounterOverrides {}
-export type PlusCounterAttributes = Filter<PlusCounterAttributesOverridden, PlusCounterDisables, PlusCounterAttributesMapper>;
-export type PlusCounterAttributesOverridden = Override<PlusCounterAttributesBase, PlusCounterOverrides, PlusCounterOverridableKeys, PlusCounterAttributesMapper>;
-export type PlusCounterAttributesBase = {
-  /**
-  * Easing function. Click [here](http://robertpenner.com/easing) for more details.
-  */
-  "easing"?: 'ease-out-expo' | 'linear';
-  /**
-  * Specifies decimal character.
-  */
-  "decimal"?: string;
-  /**
-  * Amount of decimals to display.
-  */
-  "decimals"?: number;
-  /**
-  * Delay in milliseconds before starting the transition.
-  */
-  "delay"?: number;
-  /**
-  * Duration in milliseconds.
-  */
-  "duration"?: number;
-  /**
-  * Initial value.
-  */
-  "from"?: number;
-  /**
-  * Specifies numeral glyph substitution.
-  */
-  "numerals"?: string[];
-  /**
-  * Starts/Stops the transition.
-  */
-  "play"?: boolean;
-  /**
-  * Specifies character of thousands separator.
-  */
-  "separator"?: string;
-  /**
-  * Target value.
-  */
-  "to": number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusCounterProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusCounterAttributes = Rename<PlusCounterProperties, PlusCounterAttributesMapper>;
+export type PlusCounterAttributesOverridden = Rename<PlusCounterPropertiesOverridden, PlusCounterAttributesMapper>;
+export type PlusCounterAttributesBase = Rename<PlusCounterPropertiesBase, PlusCounterAttributesMapper>;
 export type PlusCounterEvents = Filter<PlusCounterEventsBase, PlusCounterDisables>;
-export type PlusCounterEventsBase = {
-  /**
-  * Is Triggered when transition ended.
-  */
-  plusComplete?: (event: CustomEvent<void>) => void;
-};
-export type PlusCounterEventsJSX = Filter<PlusCounterEventsBaseJSX, PlusCounterDisables, {
-  plusComplete: 'onPlusComplete';
-}>;
-export type PlusCounterEventsBaseJSX = {
-  /**
-  * Is Triggered when transition ended.
-  */
-  onPlusComplete?: (event: CustomEvent<void>) => void;
-};
+export type PlusCounterEventsBase = ToEventHandlers<Pick<PlusCounter, PlusCounterEventsKeys>>;
+export type PlusCounterEventsKeys = 'plusComplete';
+export type PlusCounterEventsJSX = ToJSXEvent<PlusCounterEvents>;
+export type PlusCounterEventsBaseJSX = ToJSXEvent<PlusCounterEventsBase>;
 export type PlusCounterMethods = Filter<PlusCounterMethodsBase, PlusCounterDisables>;
-export type PlusCounterMethodsBase = {
-  /**
-  * Completes the transition.
-  */
-  complete();
-  /**
-  * Pauses the transition.
-  */
-  pause();
-  /**
-  * Starts the transition.
-  */
-  start();
-  /**
-  * Stops the transition.
-  */
-  stop();
-};
+export type PlusCounterMethodsBase = Pick<PlusCounter, PlusCounterMethodsKeys>;
+export type PlusCounterMethodsKeys = 'complete' | 'pause' | 'start' | 'stop';
 export type PlusCounterProperties = Filter<PlusCounterPropertiesOverridden, PlusCounterDisables>;
 export type PlusCounterPropertiesOverridden = Override<PlusCounterPropertiesBase, PlusCounterOverrides, PlusCounterOverridableKeys>;
-export type PlusCounterPropertiesBase = {
-  /**
-  * Easing function. Click [here](http://robertpenner.com/easing) for more details.
-  */
-  easing?: 'ease-out-expo' | 'linear';
-  /**
-  * Specifies decimal character.
-  */
-  decimal?: string;
-  /**
-  * Amount of decimals to display.
-  */
-  decimals?: number;
-  /**
-  * Delay in milliseconds before starting the transition.
-  */
-  delay?: number;
-  /**
-  * Duration in milliseconds.
-  */
-  duration?: number;
-  /**
-  * Initial value.
-  */
-  from?: number;
-  /**
-  * Specifies numeral glyph substitution.
-  */
-  numerals?: string[];
-  /**
-  * Starts/Stops the transition.
-  */
-  play?: boolean;
-  /**
-  * Specifies character of thousands separator.
-  */
-  separator?: string;
-  /**
-  * Target value.
-  */
-  to: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusCounterProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-counter': {
-      properties: PlusCounterPropertiesOverridden;
-    };
-  }
-}
+export type PlusCounterPropertiesBase = Pick<PlusCounter, PlusCounterPropertiesKeys>;
+export type PlusCounterPropertiesKeys = 'easing' | 'decimal' | 'decimals' | 'delay' | 'duration' | 'from' | 'numerals' | 'play' | 'separator' | 'to' | 'overrides' | 'preset';
 export type PlusCounterElement = globalThis.HTMLPlusCounterElement;
 export type PlusCounterJSX = PlusCounterAttributes & PlusCounterEventsJSX;
 export namespace JSX {
@@ -273,6 +132,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-counter": HTMLPlusCounterElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-counter': {
+      properties: PlusCounterPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

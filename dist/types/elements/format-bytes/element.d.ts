@@ -56,130 +56,30 @@ export declare class PlusFormatBytes extends PlusCore {
     render(): string;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusFormatBytesAttributesMapper = {
-  'display': 'display';
-  'locale': 'locale';
-  'decimals': 'decimals';
-  'separator': 'separator';
-  'signed': 'signed';
-  'standard': 'standard';
-  'unit': 'unit';
-  'value': 'value';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusFormatBytesAttributesMapper = {};
 export type PlusFormatBytesOverridableKeys = 'preset';
 export interface PlusFormatBytesDisables {}
 export interface PlusFormatBytesOverrides {}
-export type PlusFormatBytesAttributes = Filter<PlusFormatBytesAttributesOverridden, PlusFormatBytesDisables, PlusFormatBytesAttributesMapper>;
-export type PlusFormatBytesAttributesOverridden = Override<PlusFormatBytesAttributesBase, PlusFormatBytesOverrides, PlusFormatBytesOverridableKeys, PlusFormatBytesAttributesMapper>;
-export type PlusFormatBytesAttributesBase = {
-  /**
-  * Specifies the unit will be shown as an abbreviation or not.
-  */
-  "display"?: 'long' | 'short';
-  /**
-  * Localizes the result. [More](https://mdn.io/number-format/constructor).
-  */
-  "locale"?: string | string[];
-  /**
-  * Specifies the number of decimal places.
-  * Use an array to specify the minimum and maximum.
-  */
-  "decimals"?: number | [number, number];
-  /**
-  * Specifies the separator between number and unit.
-  */
-  "separator"?: string;
-  /**
-  * Shows plus sign for positive numbers.
-  * If the difference is exactly zero a space character will be prepended instead for better alignment.
-  */
-  "signed"?: boolean;
-  /**
-  * Specifies the standard of units.
-  * [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported.
-  */
-  "standard"?: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET';
-  /**
-  * Specifies the unit in which the result will be returned.
-  */
-  "unit"?: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta';
-  /**
-  * The bytes value to convert.
-  */
-  "value"?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusFormatBytesProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusFormatBytesAttributes = Rename<PlusFormatBytesProperties, PlusFormatBytesAttributesMapper>;
+export type PlusFormatBytesAttributesOverridden = Rename<PlusFormatBytesPropertiesOverridden, PlusFormatBytesAttributesMapper>;
+export type PlusFormatBytesAttributesBase = Rename<PlusFormatBytesPropertiesBase, PlusFormatBytesAttributesMapper>;
 export type PlusFormatBytesEvents = Filter<PlusFormatBytesEventsBase, PlusFormatBytesDisables>;
-export type PlusFormatBytesEventsBase = {};
-export type PlusFormatBytesEventsJSX = Filter<PlusFormatBytesEventsBaseJSX, PlusFormatBytesDisables, {}>;
-export type PlusFormatBytesEventsBaseJSX = {};
+export type PlusFormatBytesEventsBase = ToEventHandlers<Pick<PlusFormatBytes, PlusFormatBytesEventsKeys>>;
+export type PlusFormatBytesEventsKeys = never;
+export type PlusFormatBytesEventsJSX = ToJSXEvent<PlusFormatBytesEvents>;
+export type PlusFormatBytesEventsBaseJSX = ToJSXEvent<PlusFormatBytesEventsBase>;
 export type PlusFormatBytesMethods = Filter<PlusFormatBytesMethodsBase, PlusFormatBytesDisables>;
-export type PlusFormatBytesMethodsBase = {};
+export type PlusFormatBytesMethodsBase = Pick<PlusFormatBytes, PlusFormatBytesMethodsKeys>;
+export type PlusFormatBytesMethodsKeys = never;
 export type PlusFormatBytesProperties = Filter<PlusFormatBytesPropertiesOverridden, PlusFormatBytesDisables>;
 export type PlusFormatBytesPropertiesOverridden = Override<PlusFormatBytesPropertiesBase, PlusFormatBytesOverrides, PlusFormatBytesOverridableKeys>;
-export type PlusFormatBytesPropertiesBase = {
-  /**
-  * Specifies the unit will be shown as an abbreviation or not.
-  */
-  display?: 'long' | 'short';
-  /**
-  * Localizes the result. [More](https://mdn.io/number-format/constructor).
-  */
-  locale?: string | string[];
-  /**
-  * Specifies the number of decimal places.
-  * Use an array to specify the minimum and maximum.
-  */
-  decimals?: number | [number, number];
-  /**
-  * Specifies the separator between number and unit.
-  */
-  separator?: string;
-  /**
-  * Shows plus sign for positive numbers.
-  * If the difference is exactly zero a space character will be prepended instead for better alignment.
-  */
-  signed?: boolean;
-  /**
-  * Specifies the standard of units.
-  * [Metric and IEC](https://wikipedia.org/wiki/Gigabyte) are supported.
-  */
-  standard?: 'IEC' | 'IEC_OCTET' | 'METRIC' | 'METRIC_OCTET';
-  /**
-  * Specifies the unit in which the result will be returned.
-  */
-  unit?: 'auto' | 'base' | 'kilo' | 'mega' | 'giga' | 'tera' | 'peta' | 'exa' | 'zetta' | 'yotta';
-  /**
-  * The bytes value to convert.
-  */
-  value?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusFormatBytesProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-format-bytes': {
-      properties: PlusFormatBytesPropertiesOverridden;
-    };
-  }
-}
+export type PlusFormatBytesPropertiesBase = Pick<PlusFormatBytes, PlusFormatBytesPropertiesKeys>;
+export type PlusFormatBytesPropertiesKeys = 'display' | 'locale' | 'decimals' | 'separator' | 'signed' | 'standard' | 'unit' | 'value' | 'overrides' | 'preset';
 export type PlusFormatBytesElement = globalThis.HTMLPlusFormatBytesElement;
 export type PlusFormatBytesJSX = PlusFormatBytesAttributes & PlusFormatBytesEventsJSX;
 export namespace JSX {
@@ -195,6 +95,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-format-bytes": HTMLPlusFormatBytesElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-format-bytes': {
+      properties: PlusFormatBytesPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

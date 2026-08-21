@@ -29,67 +29,30 @@ export declare class PlusDrawerToggler extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusDrawerTogglerAttributesMapper = {
-  'connector': 'connector';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusDrawerTogglerAttributesMapper = {};
 export type PlusDrawerTogglerOverridableKeys = 'preset';
 export interface PlusDrawerTogglerDisables {}
 export interface PlusDrawerTogglerOverrides {}
-export type PlusDrawerTogglerAttributes = Filter<PlusDrawerTogglerAttributesOverridden, PlusDrawerTogglerDisables, PlusDrawerTogglerAttributesMapper>;
-export type PlusDrawerTogglerAttributesOverridden = Override<PlusDrawerTogglerAttributesBase, PlusDrawerTogglerOverrides, PlusDrawerTogglerOverridableKeys, PlusDrawerTogglerAttributesMapper>;
-export type PlusDrawerTogglerAttributesBase = {
-  /**
-  * This property helps you to attach which drawer this toggler controls.
-  * It doesn't matter where the drawer toggler is.
-  * You can put the drawer's toggler inside or outside of the drawer.
-  * Read more about connectors [here](/connector).
-  */
-  "connector"?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerTogglerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusDrawerTogglerAttributes = Rename<PlusDrawerTogglerProperties, PlusDrawerTogglerAttributesMapper>;
+export type PlusDrawerTogglerAttributesOverridden = Rename<PlusDrawerTogglerPropertiesOverridden, PlusDrawerTogglerAttributesMapper>;
+export type PlusDrawerTogglerAttributesBase = Rename<PlusDrawerTogglerPropertiesBase, PlusDrawerTogglerAttributesMapper>;
 export type PlusDrawerTogglerEvents = Filter<PlusDrawerTogglerEventsBase, PlusDrawerTogglerDisables>;
-export type PlusDrawerTogglerEventsBase = {};
-export type PlusDrawerTogglerEventsJSX = Filter<PlusDrawerTogglerEventsBaseJSX, PlusDrawerTogglerDisables, {}>;
-export type PlusDrawerTogglerEventsBaseJSX = {};
+export type PlusDrawerTogglerEventsBase = ToEventHandlers<Pick<PlusDrawerToggler, PlusDrawerTogglerEventsKeys>>;
+export type PlusDrawerTogglerEventsKeys = never;
+export type PlusDrawerTogglerEventsJSX = ToJSXEvent<PlusDrawerTogglerEvents>;
+export type PlusDrawerTogglerEventsBaseJSX = ToJSXEvent<PlusDrawerTogglerEventsBase>;
 export type PlusDrawerTogglerMethods = Filter<PlusDrawerTogglerMethodsBase, PlusDrawerTogglerDisables>;
-export type PlusDrawerTogglerMethodsBase = {};
+export type PlusDrawerTogglerMethodsBase = Pick<PlusDrawerToggler, PlusDrawerTogglerMethodsKeys>;
+export type PlusDrawerTogglerMethodsKeys = never;
 export type PlusDrawerTogglerProperties = Filter<PlusDrawerTogglerPropertiesOverridden, PlusDrawerTogglerDisables>;
 export type PlusDrawerTogglerPropertiesOverridden = Override<PlusDrawerTogglerPropertiesBase, PlusDrawerTogglerOverrides, PlusDrawerTogglerOverridableKeys>;
-export type PlusDrawerTogglerPropertiesBase = {
-  /**
-  * This property helps you to attach which drawer this toggler controls.
-  * It doesn't matter where the drawer toggler is.
-  * You can put the drawer's toggler inside or outside of the drawer.
-  * Read more about connectors [here](/connector).
-  */
-  connector?: string;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusDrawerTogglerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-drawer-toggler': {
-      properties: PlusDrawerTogglerPropertiesOverridden;
-    };
-  }
-}
+export type PlusDrawerTogglerPropertiesBase = Pick<PlusDrawerToggler, PlusDrawerTogglerPropertiesKeys>;
+export type PlusDrawerTogglerPropertiesKeys = 'connector' | 'overrides' | 'preset';
 export type PlusDrawerTogglerElement = globalThis.HTMLPlusDrawerTogglerElement;
 export type PlusDrawerTogglerJSX = PlusDrawerTogglerAttributes & PlusDrawerTogglerEventsJSX;
 export namespace JSX {
@@ -105,6 +68,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-drawer-toggler": HTMLPlusDrawerTogglerElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-drawer-toggler': {
+      properties: PlusDrawerTogglerPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

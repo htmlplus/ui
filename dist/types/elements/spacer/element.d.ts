@@ -24,61 +24,30 @@ export declare class PlusSpacer extends PlusCore {
     };
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusSpacerAttributesMapper = {
-  'grow': 'grow';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusSpacerAttributesMapper = {};
 export type PlusSpacerOverridableKeys = 'preset';
 export interface PlusSpacerDisables {}
 export interface PlusSpacerOverrides {}
-export type PlusSpacerAttributes = Filter<PlusSpacerAttributesOverridden, PlusSpacerDisables, PlusSpacerAttributesMapper>;
-export type PlusSpacerAttributesOverridden = Override<PlusSpacerAttributesBase, PlusSpacerOverrides, PlusSpacerOverridableKeys, PlusSpacerAttributesMapper>;
-export type PlusSpacerAttributesBase = {
-  /**
-  * TODO
-  */
-  "grow"?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusSpacerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusSpacerAttributes = Rename<PlusSpacerProperties, PlusSpacerAttributesMapper>;
+export type PlusSpacerAttributesOverridden = Rename<PlusSpacerPropertiesOverridden, PlusSpacerAttributesMapper>;
+export type PlusSpacerAttributesBase = Rename<PlusSpacerPropertiesBase, PlusSpacerAttributesMapper>;
 export type PlusSpacerEvents = Filter<PlusSpacerEventsBase, PlusSpacerDisables>;
-export type PlusSpacerEventsBase = {};
-export type PlusSpacerEventsJSX = Filter<PlusSpacerEventsBaseJSX, PlusSpacerDisables, {}>;
-export type PlusSpacerEventsBaseJSX = {};
+export type PlusSpacerEventsBase = ToEventHandlers<Pick<PlusSpacer, PlusSpacerEventsKeys>>;
+export type PlusSpacerEventsKeys = never;
+export type PlusSpacerEventsJSX = ToJSXEvent<PlusSpacerEvents>;
+export type PlusSpacerEventsBaseJSX = ToJSXEvent<PlusSpacerEventsBase>;
 export type PlusSpacerMethods = Filter<PlusSpacerMethodsBase, PlusSpacerDisables>;
-export type PlusSpacerMethodsBase = {};
+export type PlusSpacerMethodsBase = Pick<PlusSpacer, PlusSpacerMethodsKeys>;
+export type PlusSpacerMethodsKeys = never;
 export type PlusSpacerProperties = Filter<PlusSpacerPropertiesOverridden, PlusSpacerDisables>;
 export type PlusSpacerPropertiesOverridden = Override<PlusSpacerPropertiesBase, PlusSpacerOverrides, PlusSpacerOverridableKeys>;
-export type PlusSpacerPropertiesBase = {
-  /**
-  * TODO
-  */
-  grow?: number;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusSpacerProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-spacer': {
-      properties: PlusSpacerPropertiesOverridden;
-    };
-  }
-}
+export type PlusSpacerPropertiesBase = Pick<PlusSpacer, PlusSpacerPropertiesKeys>;
+export type PlusSpacerPropertiesKeys = 'grow' | 'overrides' | 'preset';
 export type PlusSpacerElement = globalThis.HTMLPlusSpacerElement;
 export type PlusSpacerJSX = PlusSpacerAttributes & PlusSpacerEventsJSX;
 export namespace JSX {
@@ -94,6 +63,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-spacer": HTMLPlusSpacerElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-spacer': {
+      properties: PlusSpacerPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

@@ -27,70 +27,30 @@ export declare class PlusAvatarGroup extends PlusCore {
     render(): any;
 }
 
-type Filter<Base, Disables, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base as Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends keyof Disables ? [Disables[PropKey]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K : K : K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
-type Override<Base, Overrides, AllowedKeys, Mapper extends Record<PropertyKey, PropertyKey> | undefined = undefined> = { [K in keyof Base]: Mapper extends Record<PropertyKey, PropertyKey> ? { [P in keyof Mapper as Mapper[P]]: P }[K] extends infer PropKey ? PropKey extends AllowedKeys ? PropKey extends keyof Overrides ? Overrides[PropKey] : Base[K] : Base[K] : Base[K] : K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
-export type PlusAvatarGroupAttributesMapper = {
-  'hoverable': 'hoverable';
-  'stacked': 'stacked';
-  'overrides': 'overrides';
-  'preset': 'preset';
-};
+type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
+type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
+type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
+type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
+type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
+export type PlusAvatarGroupAttributesMapper = {};
 export type PlusAvatarGroupOverridableKeys = 'preset';
 export interface PlusAvatarGroupDisables {}
 export interface PlusAvatarGroupOverrides {}
-export type PlusAvatarGroupAttributes = Filter<PlusAvatarGroupAttributesOverridden, PlusAvatarGroupDisables, PlusAvatarGroupAttributesMapper>;
-export type PlusAvatarGroupAttributesOverridden = Override<PlusAvatarGroupAttributesBase, PlusAvatarGroupOverrides, PlusAvatarGroupOverridableKeys, PlusAvatarGroupAttributesMapper>;
-export type PlusAvatarGroupAttributesBase = {
-  /**
-  * Specifies whether to prominent the avatar when the mouse is entered or not.
-  */
-  "hoverable"?: boolean;
-  /**
-  * Specifies whether avatars should be displayed compressed or not.
-  */
-  "stacked"?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  "overrides"?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarGroupProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  "preset"?: OverridableValue<never>;
-};
+export type PlusAvatarGroupAttributes = Rename<PlusAvatarGroupProperties, PlusAvatarGroupAttributesMapper>;
+export type PlusAvatarGroupAttributesOverridden = Rename<PlusAvatarGroupPropertiesOverridden, PlusAvatarGroupAttributesMapper>;
+export type PlusAvatarGroupAttributesBase = Rename<PlusAvatarGroupPropertiesBase, PlusAvatarGroupAttributesMapper>;
 export type PlusAvatarGroupEvents = Filter<PlusAvatarGroupEventsBase, PlusAvatarGroupDisables>;
-export type PlusAvatarGroupEventsBase = {};
-export type PlusAvatarGroupEventsJSX = Filter<PlusAvatarGroupEventsBaseJSX, PlusAvatarGroupDisables, {}>;
-export type PlusAvatarGroupEventsBaseJSX = {};
+export type PlusAvatarGroupEventsBase = ToEventHandlers<Pick<PlusAvatarGroup, PlusAvatarGroupEventsKeys>>;
+export type PlusAvatarGroupEventsKeys = never;
+export type PlusAvatarGroupEventsJSX = ToJSXEvent<PlusAvatarGroupEvents>;
+export type PlusAvatarGroupEventsBaseJSX = ToJSXEvent<PlusAvatarGroupEventsBase>;
 export type PlusAvatarGroupMethods = Filter<PlusAvatarGroupMethodsBase, PlusAvatarGroupDisables>;
-export type PlusAvatarGroupMethodsBase = {};
+export type PlusAvatarGroupMethodsBase = Pick<PlusAvatarGroup, PlusAvatarGroupMethodsKeys>;
+export type PlusAvatarGroupMethodsKeys = never;
 export type PlusAvatarGroupProperties = Filter<PlusAvatarGroupPropertiesOverridden, PlusAvatarGroupDisables>;
 export type PlusAvatarGroupPropertiesOverridden = Override<PlusAvatarGroupPropertiesBase, PlusAvatarGroupOverrides, PlusAvatarGroupOverridableKeys>;
-export type PlusAvatarGroupPropertiesBase = {
-  /**
-  * Specifies whether to prominent the avatar when the mouse is entered or not.
-  */
-  hoverable?: boolean;
-  /**
-  * Specifies whether avatars should be displayed compressed or not.
-  */
-  stacked?: boolean;
-  /**
-  * Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details.
-  */
-  overrides?: OverridesConfig<PlusBreakpoint, Omit<PlusAvatarGroupProperties, "overrides">>;
-  /**
-  * See [Preset](/preset-property) for details.
-  */
-  preset?: OverridableValue<never>;
-};
-declare module '@htmlplus/element' {
-  interface HTMLPlusElements {
-    'plus-avatar-group': {
-      properties: PlusAvatarGroupPropertiesOverridden;
-    };
-  }
-}
+export type PlusAvatarGroupPropertiesBase = Pick<PlusAvatarGroup, PlusAvatarGroupPropertiesKeys>;
+export type PlusAvatarGroupPropertiesKeys = 'hoverable' | 'stacked' | 'overrides' | 'preset';
 export type PlusAvatarGroupElement = globalThis.HTMLPlusAvatarGroupElement;
 export type PlusAvatarGroupJSX = PlusAvatarGroupAttributes & PlusAvatarGroupEventsJSX;
 export namespace JSX {
@@ -106,6 +66,13 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     "plus-avatar-group": HTMLPlusAvatarGroupElement;
+  }
+}
+declare module '@htmlplus/element' {
+  interface HTMLPlusElements {
+    'plus-avatar-group': {
+      properties: PlusAvatarGroupPropertiesOverridden;
+    };
   }
 }
 declare module "react" {

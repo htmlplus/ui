@@ -28,15 +28,15 @@
         }
       ],
       "key": "plus-accordion",
-      "lastModified": "2026-08-17T18:34:35.942Z",
+      "lastModified": "2026-08-20T15:06:40.680Z",
       "methods": [
         {
           "async": false,
           "name": "collapse",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "collapse() => Promise<boolean>",
           "description": "Collapses the element.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -48,9 +48,9 @@
           "async": false,
           "name": "expand",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "expand() => Promise<boolean>",
           "description": "Expands the element.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -62,9 +62,9 @@
           "async": false,
           "name": "toggle",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "toggle() => Promise<boolean>",
           "description": "Toggles between `collapse` and `expand` state.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -272,57 +272,64 @@
           "async": false,
           "name": "cancel",
           "parameters": [],
-          "returns": "void",
           "signature": "cancel() => void",
-          "description": "Clears all [keyframeEffects](https://mdn.io/keyframe-effect) caused by this animation and aborts its playback."
+          "description": "Clears all [keyframeEffects](https://mdn.io/keyframe-effect) caused by this animation and aborts its playback.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "commitStyles",
           "parameters": [],
-          "returns": "void",
           "signature": "commitStyles() => void",
-          "description": "Commits the end styling state of an animation to the element being animated, even after that animation has been removed. It will cause the end styling state to be written to the element being animated, in the form of properties inside a `style` attribute."
+          "description": "Commits the end styling state of an animation to the element being animated, even after that animation has been removed. It will cause the end styling state to be written to the element being animated, in the form of properties inside a `style` attribute.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "finish",
           "parameters": [],
-          "returns": "void",
           "signature": "finish() => void",
-          "description": "Seeks either end of an animation, depending on whether the animation is playing or reversing."
+          "description": "Seeks either end of an animation, depending on whether the animation is playing or reversing.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "pause",
           "parameters": [],
-          "returns": "void",
           "signature": "pause() => void",
-          "description": "Suspends playing of an animation."
+          "description": "Suspends playing of an animation.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "persist",
           "parameters": [],
-          "returns": "void",
           "signature": "persist() => void",
-          "description": "Explicitly persists an animation, when it would otherwise be removed due to the browser's [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations) behavior."
+          "description": "Explicitly persists an animation, when it would otherwise be removed due to the browser's [Automatically removing filling animations](https://developer.mozilla.org/en-US/docs/Web/API/Animation#automatically_removing_filling_animations) behavior.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "play",
           "parameters": [],
-          "returns": "void",
           "signature": "play() => void",
-          "description": "Starts or resumes playing of an animation, or begins the animation again if it previously finished."
+          "description": "Starts or resumes playing of an animation, or begins the animation again if it previously finished.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "reverse",
           "parameters": [],
-          "returns": "void",
           "signature": "reverse() => void",
-          "description": "Reverses playback direction, stopping at the start of the animation. If the animation is finished or unplayed, it will play from end to beginning."
+          "description": "Reverses playback direction, stopping at the start of the animation. If the animation is finished or unplayed, it will play from end to beginning.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -334,9 +341,10 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "updatePlaybackRate(playbackRate: number) => void",
-          "description": "Sets the speed of an animation after first synchronizing its playback position."
+          "description": "Sets the speed of an animation after first synchronizing its playback position.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
@@ -547,9 +555,10 @@
               "type": "boolean"
             }
           ],
-          "returns": "void",
           "signature": "done(force?: boolean) => void",
-          "description": "Hides the progress bar. If true is passed, the bar briefly appears before hiding."
+          "description": "Hides the progress bar. If true is passed, the bar briefly appears before hiding.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -561,9 +570,10 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "increase(amount?: number) => void",
-          "description": "Increments by a random amount."
+          "description": "Increments by a random amount.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -575,25 +585,28 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "set(progress: number) => void",
-          "description": "Adjusts the progress of the bar, with the argument representing a value between `0` and `1`."
+          "description": "Adjusts the progress of the bar, with the argument representing a value between `0` and `1`.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "start",
           "parameters": [],
-          "returns": "void",
           "signature": "start() => void",
-          "description": "Shows the progress bar."
+          "description": "Shows the progress bar.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "trickle",
           "parameters": [],
-          "returns": "void",
           "signature": "trickle() => void",
-          "description": "Increments the progress by a random amount based on the trickle rate."
+          "description": "Increments the progress by a random amount based on the trickle rate.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
@@ -986,9 +999,10 @@
           "async": false,
           "name": "browse",
           "parameters": [],
-          "returns": "void",
           "signature": "browse() => void",
-          "description": "Opens the browse dialog."
+          "description": "Opens the browse dialog.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
@@ -1350,25 +1364,28 @@
           "async": false,
           "name": "canScrollNext",
           "parameters": [],
-          "returns": "boolean",
           "signature": "canScrollNext() => boolean",
-          "description": "Check the possibility to scroll to a next snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`."
+          "description": "Check the possibility to scroll to a next snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`.",
+          "returns": "boolean",
+          "tags": []
         },
         {
           "async": false,
           "name": "canScrollPrevious",
           "parameters": [],
-          "returns": "boolean",
           "signature": "canScrollPrevious() => boolean",
-          "description": "Check the possiblity to scroll to a previous snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`."
+          "description": "Check the possiblity to scroll to a previous snap point. If **loop** property is enabled and the container holds any slides, this will always return `true`.",
+          "returns": "boolean",
+          "tags": []
         },
         {
           "async": false,
           "name": "previousScrollSnap",
           "parameters": [],
-          "returns": "number",
           "signature": "previousScrollSnap() => number",
-          "description": "Get the index of the previously selected snap point."
+          "description": "Get the index of the previously selected snap point.",
+          "returns": "number",
+          "tags": []
         },
         {
           "async": false,
@@ -1380,10 +1397,11 @@
               "type": "boolean"
             }
           ],
-          "returns": "void",
           "signature": "scrollNext(jump?: boolean) => void",
           "description": "TODO: Resets automatic behavior in the carousel.",
-          "Method": "() reset() { // this.plugins.auto.reset(); } Scroll to the next snap point if possible. When **loop** property is disabled and the carousel has reached the last snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the next slide instantly."
+          "Method": "() reset() { // this.plugins.auto.reset(); } Scroll to the next snap point if possible. When **loop** property is disabled and the carousel has reached the last snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the next slide instantly.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -1395,25 +1413,28 @@
               "type": "boolean"
             }
           ],
-          "returns": "void",
           "signature": "scrollPrevious(jump?: boolean) => void",
-          "description": "Scroll to the previous snap point if possible. When **loop** property is disabled and the carousel has reached the first snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the previous slide instantly."
+          "description": "Scroll to the previous snap point if possible. When **loop** property is disabled and the carousel has reached the first snap point, this method won't do anything. Set the **jump** parameter to `true` when you want to go to the previous slide instantly.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "scrollProgress",
           "parameters": [],
-          "returns": "number",
           "signature": "scrollProgress() => number",
-          "description": "Check how far the carousel has scrolled of its scrollable length from 0 - 1. For example, **0.5 equals 50%**. For example, this can be useful when creating a scroll progress bar."
+          "description": "Check how far the carousel has scrolled of its scrollable length from 0 - 1. For example, **0.5 equals 50%**. For example, this can be useful when creating a scroll progress bar.",
+          "returns": "number",
+          "tags": []
         },
         {
           "async": false,
           "name": "scrollSnapList",
           "parameters": [],
-          "returns": "number[]",
           "signature": "scrollSnapList() => number[]",
-          "description": "Get an array containing all the snap point positions. Each position represents how far the carousel needs to progress in order to reach this position."
+          "description": "Get an array containing all the snap point positions. Each position represents how far the carousel needs to progress in order to reach this position.",
+          "returns": "number[]",
+          "tags": []
         },
         {
           "async": false,
@@ -1430,41 +1451,46 @@
               "type": "boolean"
             }
           ],
-          "returns": "void",
           "signature": "scrollToIndex(index: number, jump?: boolean) => void",
-          "description": "Scroll to a snap point by its unique index. If **loop** property is enabled, Embla Carousel will choose the closest way to the target snap point. Set the **jump** parameter to `true` when you want to go to the desired slide instantly."
+          "description": "Scroll to a snap point by its unique index. If **loop** property is enabled, Embla Carousel will choose the closest way to the target snap point. Set the **jump** parameter to `true` when you want to go to the desired slide instantly.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "selectedScrollSnap",
           "parameters": [],
-          "returns": "number",
           "signature": "selectedScrollSnap() => number",
-          "description": "Get the index of the selected snap point."
+          "description": "Get the index of the selected snap point.",
+          "returns": "number",
+          "tags": []
         },
         {
           "async": false,
           "name": "slideNodes",
           "parameters": [],
-          "returns": "HTMLElement[]",
           "signature": "slideNodes() => HTMLElement[]",
-          "description": "Get all the slide nodes inside the container. This method can be useful when you need to manipulate the slide elements dynamically or similar."
+          "description": "Get all the slide nodes inside the container. This method can be useful when you need to manipulate the slide elements dynamically or similar.",
+          "returns": "HTMLElement[]",
+          "tags": []
         },
         {
           "async": false,
           "name": "slidesInView",
           "parameters": [],
-          "returns": "number[]",
           "signature": "slidesInView() => number[]",
-          "description": "Get slide indexes **visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option."
+          "description": "Get slide indexes **visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option.",
+          "returns": "number[]",
+          "tags": []
         },
         {
           "async": false,
           "name": "slidesNotInView",
           "parameters": [],
-          "returns": "number[]",
           "signature": "slidesNotInView() => number[]",
-          "description": "Get slide indexes **not visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option."
+          "description": "Get slide indexes **not visible** in the carousel viewport. Honors the [inViewThreshold](https://www.embla-carousel.com/api/options/#inviewthreshold) option.",
+          "returns": "number[]",
+          "tags": []
         }
       ],
       "properties": [
@@ -2186,33 +2212,37 @@
           "async": false,
           "name": "complete",
           "parameters": [],
-          "returns": "void",
           "signature": "complete() => void",
-          "description": "Completes the transition."
+          "description": "Completes the transition.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "pause",
           "parameters": [],
-          "returns": "void",
           "signature": "pause() => void",
-          "description": "Pauses the transition."
+          "description": "Pauses the transition.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "start",
           "parameters": [],
-          "returns": "void",
           "signature": "start() => void",
-          "description": "Starts the transition."
+          "description": "Starts the transition.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "stop",
           "parameters": [],
-          "returns": "void",
           "signature": "stop() => void",
-          "description": "Stops the transition."
+          "description": "Stops the transition.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
@@ -2403,17 +2433,19 @@
           "async": false,
           "name": "flipX",
           "parameters": [],
-          "returns": "void",
           "signature": "flipX() => void",
-          "description": "Flips horizontally."
+          "description": "Flips horizontally.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "flipY",
           "parameters": [],
-          "returns": "void",
           "signature": "flipY() => void",
-          "description": "Flips vertically."
+          "description": "Flips vertically.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -2432,9 +2464,10 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "move(offsetX: number, offsetY?: number) => void",
-          "description": "Moves the canvas with relative offsets."
+          "description": "Moves the canvas with relative offsets.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -2453,17 +2486,19 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "moveTo(x: number, y?: number) => void",
-          "description": "Moves the canvas to an absolute point."
+          "description": "Moves the canvas to an absolute point.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "reset",
           "parameters": [],
-          "returns": "void",
           "signature": "reset() => void",
-          "description": "Resets the image and viewport to their initial states."
+          "description": "Resets the image and viewport to their initial states.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -2475,9 +2510,10 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "rotate(degree: number) => void",
-          "description": "Rotates the image with a relative degree."
+          "description": "Rotates the image with a relative degree.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -2489,17 +2525,19 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "rotateTo(degree: number) => void",
-          "description": "Rotates the image to an absolute degree."
+          "description": "Rotates the image to an absolute degree.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "toCanvas",
           "parameters": [],
-          "returns": "HTMLCanvasElement",
           "signature": "toCanvas() => HTMLCanvasElement",
-          "description": "Gets `canvas` from the cropped image."
+          "description": "Gets `canvas` from the cropped image.",
+          "returns": "HTMLCanvasElement",
+          "tags": []
         },
         {
           "async": false,
@@ -2511,9 +2549,10 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "zoom(ratio: number) => void",
-          "description": "Zooms the canvas with a relative ratio."
+          "description": "Zooms the canvas with a relative ratio.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -2525,9 +2564,10 @@
               "type": "number"
             }
           ],
-          "returns": "void",
           "signature": "zoomTo(ratio: number) => void",
-          "description": "Zooms the canvas to an absolute ratio."
+          "description": "Zooms the canvas to an absolute ratio.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
@@ -2982,9 +3022,9 @@
           "async": false,
           "name": "hide",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "hide() => Promise<boolean>",
           "description": "Hides the element.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -2996,9 +3036,9 @@
           "async": false,
           "name": "show",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "show() => Promise<boolean>",
           "description": "Shows the element.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -3010,9 +3050,9 @@
           "async": false,
           "name": "toggle",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "toggle() => Promise<boolean>",
           "description": "Toggles between `collapse` and `expand` state.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -3599,9 +3639,9 @@
           "async": false,
           "name": "hide",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "hide() => Promise<boolean>",
           "description": "Hides the element.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -3613,9 +3653,9 @@
           "async": false,
           "name": "show",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "show() => Promise<boolean>",
           "description": "Shows the element.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -3627,9 +3667,9 @@
           "async": false,
           "name": "toggle",
           "parameters": [],
-          "returns": "Promise<boolean>",
           "signature": "toggle() => Promise<boolean>",
           "description": "Toggles between `collapse` and `expand` state.",
+          "returns": "Promise<boolean>",
           "tags": [
             {
               "key": "returns",
@@ -4381,7 +4421,7 @@
     {
       "events": [],
       "key": "plus-progress-bar",
-      "lastModified": "2026-08-17T18:32:48.970Z",
+      "lastModified": "2026-08-17T19:20:04.742Z",
       "methods": [],
       "properties": [
         {
@@ -4749,9 +4789,10 @@
           "async": false,
           "name": "clear",
           "parameters": [],
-          "returns": "void",
           "signature": "clear() => void",
-          "description": "Clears the canvas"
+          "description": "Clears the canvas",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": true,
@@ -4771,25 +4812,28 @@
               "typeReference": "signature_pad"
             }
           ],
-          "returns": "void",
           "signature": "fromDataURL(dataUrl: string, options?: FromDataUrlOptions) => void",
-          "description": "Restores the signature from a data URL."
+          "description": "Restores the signature from a data URL.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "redo",
           "parameters": [],
-          "returns": "void",
           "signature": "redo() => void",
-          "description": "Reverts the last undo action."
+          "description": "Reverts the last undo action.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "redraw",
           "parameters": [],
-          "returns": "void",
           "signature": "redraw() => void",
-          "description": "Redraw the canvas."
+          "description": "Redraw the canvas.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -4802,9 +4846,10 @@
               "type": "boolean"
             }
           ],
-          "returns": "void",
           "signature": "resize(clear?: boolean) => void",
-          "description": "Syncs the canvas dimensions with the element dimensions."
+          "description": "Syncs the canvas dimensions with the element dimensions.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
@@ -4823,9 +4868,9 @@
               "type": "number"
             }
           ],
-          "returns": "string | undefined",
           "signature": "toDataURL(type?: string, quality?: number) => string | undefined",
           "description": "Returns the current signature as a data URL. The returned string can be used to display the signature image, upload it to a server, or store it for later use.",
+          "returns": "string | undefined",
           "see": "https://mdn.io/todataurl",
           "tags": [
             {
@@ -4846,9 +4891,9 @@
               "typeReference": "signature_pad"
             }
           ],
-          "returns": "string | undefined",
           "signature": "toSVG(options: ToSVGOptions) => string | undefined",
           "description": "Returns the current signature as an SVG string.",
+          "returns": "string | undefined",
           "tags": [
             {
               "key": "returns",
@@ -4860,9 +4905,10 @@
           "async": false,
           "name": "undo",
           "parameters": [],
-          "returns": "void",
           "signature": "undo() => void",
-          "description": "Reverts the last action."
+          "description": "Reverts the last action.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
@@ -5481,7 +5527,7 @@
         }
       ],
       "key": "plus-switch",
-      "lastModified": "2026-08-17T18:20:27.616Z",
+      "lastModified": "2026-08-18T17:11:29.692Z",
       "methods": [],
       "properties": [
         {
@@ -5852,25 +5898,28 @@
           "async": false,
           "name": "hide",
           "parameters": [],
-          "returns": "void",
           "signature": "hide() => void",
-          "description": "Hides the element."
+          "description": "Hides the element.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "show",
           "parameters": [],
-          "returns": "void",
           "signature": "show() => void",
-          "description": "Shows the element."
+          "description": "Shows the element.",
+          "returns": "void",
+          "tags": []
         },
         {
           "async": false,
           "name": "update",
           "parameters": [],
-          "returns": "void",
           "signature": "update() => void",
-          "description": "Updates the element's position."
+          "description": "Updates the element's position.",
+          "returns": "void",
+          "tags": []
         }
       ],
       "properties": [
