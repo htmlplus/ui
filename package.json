@@ -69,7 +69,7 @@
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@htmlplus/element": "^4.0.11"
+		"@htmlplus/element": "^4.0.12"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.4",

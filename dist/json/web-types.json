@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-types",
   "name": "@htmlplus/ui",
-  "version": "1.8.14",
+  "version": "1.8.15",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "framework-config": {
