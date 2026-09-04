@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.16](https://github.com/htmlplus/ui/compare/v1.8.15...v1.8.16) (2026-09-04)
+
+
+### Bug Fixes
+
+* Update `@htmlplus/element` to latest version ([cace6bc](https://github.com/htmlplus/ui/commit/cace6bc7abe9221fdea7934c4578bd14fc61b43a))
+
 ## [1.8.15](https://github.com/htmlplus/ui/compare/v1.8.14...v1.8.15) (2026-09-04)
 
 
