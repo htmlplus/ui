@@ -1,5 +1,5 @@
 import { Q as Query, P as PlusCore, A as Animation, n as Scrollbar, m as off, o as on, p as toAxis, k as classes, h as toCSSUnit, j as jsxs, a as jsx, F as Fragment, b as Property, O as Overrides, c as Preset, E as Event, e as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;position:relative;overflow:hidden;z-index:1000}[part=backdrop]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;transition:inherit}[part=backdrop] *{width:100%;height:100%;background-color:#000;opacity:.5}[part=root]{height:100%;position:relative;z-index:1;transition:inherit}.right,.left{width:var(--plus-drawer-size)}.top,.bottom{height:var(--plus-drawer-size)}.right,.left.reverse{margin:0 var(--plus-drawer-offset, 0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset, 0)}.top,.bottom.reverse{margin:var(--plus-drawer-offset, 0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset, 0) 0}:host([floating]){position:fixed;top:0;right:0;bottom:0;left:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=open]),:host([animation][state=closing]){padding:.000001px}:host([animation][state=open]) [part=backdrop],:host([animation][state=closing]) [part=backdrop]{opacity:0}";
+const STYLE_IMPORTED_PlusDrawer = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;position:relative;overflow:hidden;z-index:1000}[part=backdrop]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;transition:inherit}[part=backdrop] *{width:100%;height:100%;background-color:#000;opacity:.5}[part=root]{height:100%;position:relative;z-index:1;transition:inherit}.right,.left{width:var(--plus-drawer-size)}.top,.bottom{height:var(--plus-drawer-size)}.right,.left.reverse{margin:0 var(--plus-drawer-offset, 0) 0 0}.left,.right.reverse{margin:0 0 0 var(--plus-drawer-offset, 0)}.top,.bottom.reverse{margin:var(--plus-drawer-offset, 0) 0 0 0}.bottom,.top.reverse{margin:0 0 var(--plus-drawer-offset, 0) 0}:host([floating]){position:fixed;top:0;right:0;bottom:0;left:0}:host([animation]){transition:.3s}:host([animation][state=closed]){display:none}:host([animation][state=opened][state-mini=closed]){overflow:visible}:host([animation][state=open]),:host([animation][state=closing]){padding:.000001px}:host([animation][state=open]) [part=backdrop],:host([animation][state=closing]) [part=backdrop]{opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -84,10 +84,14 @@ let PlusDrawer = class extends PlusCore {
   }
   get classes() {
     const placement = toAxis(this.placement || "start", this.isRTL);
-    return classes([{
-      [placement]: true,
-      reverse: this.flexible
-    }]);
+    return classes(
+      [
+        {
+          [placement]: true,
+          reverse: this.flexible
+        }
+      ]
+    );
   }
   get hasBackdrop() {
     return this.backdrop && this.floating;
@@ -162,92 +166,57 @@ let PlusDrawer = class extends PlusCore {
     ] });
   }
 };
+PlusDrawer.style = STYLE_IMPORTED_PlusDrawer;
 PlusDrawer.tag = "plus-drawer";
-PlusDrawer.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1032
-  })
+  Property({ type: 520, reflect: true })
 ], PlusDrawer.prototype, "animation", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDrawer.prototype, "backdrop", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusDrawer.prototype, "connector", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusDrawer.prototype, "floating", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusDrawer.prototype, "mini", 2);
 __decorateClass([
-  Property({
-    type: 1280
-  })
+  Property({ type: 640 })
 ], PlusDrawer.prototype, "miniSize", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusDrawer.prototype, "open", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDrawer.prototype, "persistent", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusDrawer.prototype, "placement", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDrawer.prototype, "flexible", 2);
 __decorateClass([
-  Property({
-    type: 1280
-  })
+  Property({ type: 640 })
 ], PlusDrawer.prototype, "size", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusDrawer.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusDrawer.prototype, "preset", 2);
 __decorateClass([
-  Event({
-    cancelable: true
-  })
+  Event({ cancelable: true })
 ], PlusDrawer.prototype, "plusClose", 2);
 __decorateClass([
   Event()
 ], PlusDrawer.prototype, "plusClosed", 2);
 __decorateClass([
-  Event({
-    cancelable: true
-  })
+  Event({ cancelable: true })
 ], PlusDrawer.prototype, "plusOpen", 2);
 __decorateClass([
   Event()

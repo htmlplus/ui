@@ -42,7 +42,7 @@ let EmblaCarouselCore: (
  * A carousel element for cycling through elements—like images or text slides.
  *
  * @thirdParty
- * @dependencies embla-carousel
+ * @dependency embla-carousel
  * @slot default - The default slot.
  *
  * @examples default, loop, duration, start-index, align, draggable-free, draggable-snap, y-axis,

@@ -7,7 +7,7 @@ import { PlusBreakpoint, PlusColor } from '../../types';
  *
  * @thirdParty
  * @stable
- * @dependencies signature_pad
+ * @dependency signature_pad
  *
  * @part canvas - The canvas element.
  *
@@ -121,8 +121,8 @@ export declare class PlusSignature extends PlusForm {
     /**
      * Restores the signature from a data URL.
      *
-     * @param dataUrl - The data URL representing the signature image.
-     * @param options - Optional configuration for restoring the image.
+     * @param dataUrl The data URL representing the signature image.
+     * @param options Optional configuration for restoring the image.
      */
     fromDataURL(dataUrl: string, options?: FromDataUrlOptions): Promise<void>;
     /**
@@ -136,7 +136,7 @@ export declare class PlusSignature extends PlusForm {
     /**
      * Syncs the canvas dimensions with the element dimensions.
      *
-     * @param clear - Clears the canvas after resizing.
+     * @param clear Clears the canvas after resizing.
      */
     resize(clear?: boolean): void;
     /**
@@ -145,9 +145,9 @@ export declare class PlusSignature extends PlusForm {
      * The returned string can be used to display the signature image,
      * upload it to a server, or store it for later use.
      *
-     * @param type - The image MIME type (e.g. `image/png`, `image/jpeg`).
+     * @param type The image MIME type (e.g. `image/png`, `image/jpeg`).
      *               Defaults to `image/png`.
-     * @param quality - A number between `0` and `1` indicating image quality.
+     * @param quality A number between `0` and `1` indicating image quality.
      *                  Applies only to `image/jpeg` or `image/webp`.
      *
      * @returns A data URL representing the signature, or `undefined`
@@ -159,7 +159,7 @@ export declare class PlusSignature extends PlusForm {
     /**
      * Returns the current signature as an SVG string.
      *
-     * @param options - Optional configuration for the SVG output.
+     * @param options Optional configuration for the SVG output.
      *
      * @returns A string containing the SVG markup of the signature,
      *          or `undefined` if the signature pad has not been initialized.
@@ -190,6 +190,8 @@ export declare class PlusSignature extends PlusForm {
     render(): any;
 }
 
+// THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY
+
 type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
 type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
@@ -204,7 +206,7 @@ export type PlusSignatureAttributesMapper = {
   'dotSize': 'dot-size';
   'maxWidth': 'max-width';
   'minWidth': 'min-width';
-  'velocityFilterWeight': 'velocity-filter-weight';
+  'velocityFilterWeight': 'velocity-filter-weight'
 };
 export type PlusSignatureOverridableKeys = 'backgroundColor' | 'penColor' | 'preset';
 export interface PlusSignatureDisables {}

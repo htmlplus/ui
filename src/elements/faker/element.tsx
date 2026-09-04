@@ -18,7 +18,7 @@ import type { PlusBreakpoint } from '@/types';
  *
  * @thirdParty
  * @stable
- * @dependencies @faker-js/faker
+ * @dependency `@faker-js/faker`
  *
  * @examples default, api, arguments, seed, localization, more
  */

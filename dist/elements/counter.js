@@ -147,67 +147,41 @@ let PlusCounter = class extends PlusCore {
 };
 PlusCounter.tag = "plus-counter";
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusCounter.prototype, "easing", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusCounter.prototype, "decimal", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCounter.prototype, "decimals", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCounter.prototype, "delay", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCounter.prototype, "duration", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCounter.prototype, "from", 2);
 __decorateClass([
-  Property({
-    type: 2
-  })
+  Property({ type: 2 })
 ], PlusCounter.prototype, "numerals", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusCounter.prototype, "play", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusCounter.prototype, "separator", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCounter.prototype, "to", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusCounter.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusCounter.prototype, "preset", 2);
 __decorateClass([

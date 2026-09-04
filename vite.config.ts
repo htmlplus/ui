@@ -83,65 +83,44 @@ export default defineConfig({
 					return `dist/elements/${context.directoryName}/assets.json`;
 				}
 			},
+			types: {
+				mode: 'append',
+				destination(context) {
+					return `dist/types/elements/${context.directoryName}/element.d.ts`;
+				}
+			},
 			document: {
 				destination: `dist/json/document.json`,
-				transformer(json) {
-					// biome-ignore lint: TODO
-					json.elements.forEach((element: any) => {
-						element.examples =
-							// biome-ignore lint: TODO
-							element.examples?.split(',').map((example: any) => example.trim()) || [];
+				transform(json) {
+					const docs = { ...json };
+
+					docs.elements.forEach((element) => {
+						const tag = element.tags.find((tag) => tag.name === 'examples');
+
+						element.tags = element.tags.filter((item) => item !== tag);
+
+						element.examples = tag?.description.split(',').map((example) => example.trim()) || [];
 					});
-					return json;
+
+					return docs;
 				}
 			},
 			visualStudioCode: {
 				destination: `dist/json/vscode.json`,
-				reference(context) {
-					return `https://www.htmlplus.io/javascript/element/${context.elementKey?.replace('plus-', '')}`;
+				reference(_context, element) {
+					return `https://www.htmlplus.io/javascript/element/${element.key.replace('plus-', '')}`;
 				}
 			},
 			webTypes: {
 				destination: `dist/json/web-types.json`,
 				packageName: PACKAGE.name,
 				packageVersion: PACKAGE.version,
-				reference(context) {
-					return `https://www.htmlplus.io/javascript/element/${context.elementKey?.replace('plus-', '')}`;
+				reference(_context, element) {
+					return `https://www.htmlplus.io/javascript/element/${element.key.replace('plus-', '')}`;
 				}
 			}
 		}),
 		peerDepsExternal(),
-		dts({
-			outDirs: 'dist/types',
-			resolvers: [
-				/**
-				 * This resolver generates `.d.ts` files for each `.tsx` file.
-				 * While this approach is somewhat of a workaround and temporary,
-				 * we are actively seeking a more robust solution.
-				 */
-				{
-					name: 'attach-dynamic-typing',
-					supports: (id) => id.endsWith('.tsx'),
-					transform({ root, id, code, program }) {
-						const sourceFile = program.getSourceFile(id);
-
-						let output = '';
-
-						program.emit(sourceFile, (_fileName, contents) => {
-							output =
-								contents + code.split('THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY').pop() ||
-								'';
-						});
-
-						return [
-							{
-								content: output,
-								path: path.relative(root, id.replace(/\.tsx?$/, '.d.ts'))
-							}
-						];
-					}
-				}
-			]
-		})
+		dts({ outDirs: 'dist/types' })
 	]
 });

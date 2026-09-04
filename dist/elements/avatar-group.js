@@ -1,5 +1,5 @@
 import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{align-items:center;display:inline-flex;flex-wrap:wrap}:host ::slotted(plus-avatar){margin-inline-end:.5rem}:host ::slotted(plus-avatar:last-of-type){margin-inline-end:0 !important}:host([hoverable]) ::slotted(plus-avatar:hover){z-index:1}:host([stacked]) ::slotted(plus-avatar){border:2px solid #fff;margin-inline-end:-0.5rem}";
+const STYLE_IMPORTED_PlusAvatarGroup = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{align-items:center;display:inline-flex;flex-wrap:wrap}:host ::slotted(plus-avatar){margin-inline-end:.5rem}:host ::slotted(plus-avatar:last-of-type){margin-inline-end:0 !important}:host([hoverable]) ::slotted(plus-avatar:hover){z-index:1}:host([stacked]) ::slotted(plus-avatar){border:2px solid #fff;margin-inline-end:-0.5rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -20,31 +20,20 @@ let PlusAvatarGroup = class extends PlusCore {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusAvatarGroup.style = STYLE_IMPORTED_PlusAvatarGroup;
 PlusAvatarGroup.tag = "plus-avatar-group";
-PlusAvatarGroup.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusAvatarGroup.prototype, "hoverable", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusAvatarGroup.prototype, "stacked", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusAvatarGroup.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusAvatarGroup.prototype, "preset", 2);
 PlusAvatarGroup = __decorateClass([

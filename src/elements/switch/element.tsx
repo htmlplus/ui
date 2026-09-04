@@ -22,7 +22,6 @@ import type { PlusBreakpoint } from '@/types';
 export class PlusSwitch extends PlusCore {
 	/**
 	 * Puts the switch in checked state.
-	 * @model
 	 */
 	@Property({ reflect: true })
 	checked: boolean = false;
@@ -49,7 +48,6 @@ export class PlusSwitch extends PlusCore {
 
 	/**
 	 * When the switch state is changed this event triggers.
-	 * @model
 	 */
 	@Event()
 	plusChange!: EventEmitter<void>;

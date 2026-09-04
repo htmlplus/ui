@@ -1,5 +1,5 @@
 import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{flex:1 1 auto;padding:1rem 1rem}";
+const STYLE_IMPORTED_PlusCardBody = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{flex:1 1 auto;padding:1rem 1rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -15,19 +15,14 @@ let PlusCardBody = class extends PlusCore {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusCardBody.style = STYLE_IMPORTED_PlusCardBody;
 PlusCardBody.tag = "plus-card-body";
-PlusCardBody.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusCardBody.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusCardBody.prototype, "preset", 2);
 PlusCardBody = __decorateClass([

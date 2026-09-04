@@ -1,5 +1,5 @@
 import { P as PlusCore, o as on, m as off, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:contents}";
+const STYLE_IMPORTED_PlusClickOutside = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:contents}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -44,41 +44,27 @@ let PlusClickOutside = class extends PlusCore {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusClickOutside.style = STYLE_IMPORTED_PlusClickOutside;
 PlusClickOutside.tag = "plus-click-outside";
-PlusClickOutside.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusClickOutside.prototype, "capture", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusClickOutside.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusClickOutside.prototype, "once", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusClickOutside.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusClickOutside.prototype, "preset", 2);
 __decorateClass([
-  Event({
-    cancelable: true
-  })
+  Event({ cancelable: true })
 ], PlusClickOutside.prototype, "plusClickOutside", 2);
 __decorateClass([
   Bind()

@@ -1,5 +1,5 @@
 import { Q as Query, P as PlusCore, A as Animation, n as Scrollbar, m as off, o as on, p as toAxis, k as classes, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, e as Provider, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host([animation][state=opening]),:host([animation][state=closing]){transition:all .5s ease-out}:host([animation][state=opening]) .dialog,:host([animation][state=closing]) .dialog{overflow:hidden}:host([animation][state=opening]) ::slotted(*),:host([animation][state=closing]) ::slotted(*){transition:all .5s ease-out}:host([animation][state=open]),:host([animation][state=closing]){opacity:0}:host([animation][state=open]) ::slotted(*),:host([animation][state=closing]) ::slotted(*){transform:translate(0, -50px)}:host([animation][state=open]) .y-bottom ::slotted(*),:host([animation][state=closing]) .y-bottom ::slotted(*){transform:translate(0, 50px)}:host([animation][state=open]) .x-right ::slotted(*),:host([animation][state=closing]) .x-right ::slotted(*){transform:translate(50px, 0)}:host([animation][state=open]) .x-left ::slotted(*),:host([animation][state=closing]) .x-left ::slotted(*){transform:translate(-50px, 0)}:host([animation][state=close]),:host([animation][state=opening]){opacity:1}:host([animation][state=close]) ::slotted(*),:host([animation][state=opening]) ::slotted(*){transform:translate(0, 0)}:host{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;display:block;outline:0;overflow:hidden}.backdrop{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1}.backdrop *{width:100%;height:100%;background-color:#000;opacity:.5}.dialog{position:fixed;top:0;left:0;width:100%;height:100%;overflow-x:hidden;overflow-y:auto;z-index:1}.table{display:table;margin:auto;height:100%;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}@media(min-width: 576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media(min-width: 992px){.size-lg .cell{max-width:800px}.size-xl .cell{max-width:800px}}@media(min-width: 1200px){.size-xl .cell{max-width:1140px}}:host([fullscreen]) .cell{padding:0}:host([fullscreen]) ::slotted(*){border:0;border-radius:0}:host([fullscreen]) .cell{max-width:none}:host([fullscreen]) ::slotted(*){min-height:100vh}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none !important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
+const STYLE_IMPORTED_PlusDialog = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host([animation][state=opening]),:host([animation][state=closing]){transition:all .5s ease-out}:host([animation][state=opening]) .dialog,:host([animation][state=closing]) .dialog{overflow:hidden}:host([animation][state=opening]) ::slotted(*),:host([animation][state=closing]) ::slotted(*){transition:all .5s ease-out}:host([animation][state=open]),:host([animation][state=closing]){opacity:0}:host([animation][state=open]) ::slotted(*),:host([animation][state=closing]) ::slotted(*){transform:translate(0, -50px)}:host([animation][state=open]) .y-bottom ::slotted(*),:host([animation][state=closing]) .y-bottom ::slotted(*){transform:translate(0, 50px)}:host([animation][state=open]) .x-right ::slotted(*),:host([animation][state=closing]) .x-right ::slotted(*){transform:translate(50px, 0)}:host([animation][state=open]) .x-left ::slotted(*),:host([animation][state=closing]) .x-left ::slotted(*){transform:translate(-50px, 0)}:host([animation][state=close]),:host([animation][state=opening]){opacity:1}:host([animation][state=close]) ::slotted(*),:host([animation][state=opening]) ::slotted(*){transform:translate(0, 0)}:host{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;display:block;outline:0;overflow:hidden}.backdrop{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1}.backdrop *{width:100%;height:100%;background-color:#000;opacity:.5}.dialog{position:fixed;top:0;left:0;width:100%;height:100%;overflow-x:hidden;overflow-y:auto;z-index:1}.table{display:table;margin:auto;height:100%;position:relative}.cell{display:table-cell}.scrollable ::slotted(*){overflow-x:hidden;overflow-y:auto}.x-right .table{margin-right:0}.x-left .table{margin-left:0}.y-top .cell{vertical-align:top}.y-center .cell{vertical-align:middle}.y-bottom .cell{vertical-align:bottom}.full-height ::slotted(*){min-height:calc(100vh - 1rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:.5rem}.scrollable ::slotted(*){max-height:calc(100vh - 1rem)}@media(min-width: 576px){.full-height ::slotted(*){min-height:calc(100vh - 3.5rem)}.full-height.sticky ::slotted(*){min-height:100vh}.cell{padding:1.75rem}.scrollable ::slotted(*){max-height:calc(100vh - 3.5rem)}.cell{max-width:500px}.size-sm .cell{max-width:300px}}@media(min-width: 992px){.size-lg .cell{max-width:800px}.size-xl .cell{max-width:800px}}@media(min-width: 1200px){.size-xl .cell{max-width:1140px}}:host([fullscreen]) .cell{padding:0}:host([fullscreen]) ::slotted(*){border:0;border-radius:0}:host([fullscreen]) .cell{max-width:none}:host([fullscreen]) ::slotted(*){min-height:100vh}:host([state=closed]){display:none}.cell{width:100vw}::slotted(*){pointer-events:auto}.full-width .cell{max-width:none !important}.sticky .cell{padding:0}.sticky ::slotted(*){border:0;border-radius:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -84,15 +84,20 @@ let PlusDialog = class extends PlusCore {
     x = x || "center";
     y = y || "center";
     x = toAxis(x, this.isRTL);
-    return classes(["dialog", {
-      x,
-      y,
-      size: this.size,
-      sticky: this.sticky,
-      fullWidth: this.fullWidth,
-      fullHeight: this.fullHeight,
-      scrollable: this.scrollable
-    }]);
+    return classes(
+      [
+        "dialog",
+        {
+          x,
+          y,
+          size: this.size,
+          sticky: this.sticky,
+          fullWidth: this.fullWidth,
+          fullHeight: this.fullHeight,
+          scrollable: this.scrollable
+        }
+      ]
+    );
   }
   get isCurrent() {
     return PlusDialog.instances.at(-1) === this;
@@ -161,108 +166,80 @@ let PlusDialog = class extends PlusCore {
     this.terminate();
   }
   render() {
-    return /* @__PURE__ */ jsxs("host", { "aria-hidden": this.opened ? null : "true", "aria-modal": this.opened ? "true" : null, tabIndex: -1, role: this.opened ? "dialog" : null, value: this, children: [
-      !this.transparent && /* @__PURE__ */ jsx("div", { className: "backdrop", part: "backdrop", children: /* @__PURE__ */ jsx("div", {}) }),
-      /* @__PURE__ */ jsx("div", { className: this.classes, children: /* @__PURE__ */ jsx("div", { className: "table", children: /* @__PURE__ */ jsx("div", { className: "cell", children: /* @__PURE__ */ jsx("slot", {}) }) }) })
-    ] });
+    return /* @__PURE__ */ jsxs(
+      "host",
+      {
+        "aria-hidden": this.opened ? null : "true",
+        "aria-modal": this.opened ? "true" : null,
+        tabIndex: -1,
+        role: this.opened ? "dialog" : null,
+        value: this,
+        children: [
+          !this.transparent && /* @__PURE__ */ jsx("div", { className: "backdrop", part: "backdrop", children: /* @__PURE__ */ jsx("div", {}) }),
+          /* @__PURE__ */ jsx("div", { className: this.classes, children: /* @__PURE__ */ jsx("div", { className: "table", children: /* @__PURE__ */ jsx("div", { className: "cell", children: /* @__PURE__ */ jsx("slot", {}) }) }) })
+        ]
+      }
+    );
   }
 };
+PlusDialog.style = STYLE_IMPORTED_PlusDialog;
 PlusDialog.tag = "plus-dialog";
-PlusDialog.style = STYLE_IMPORTED;
 PlusDialog.instances = [];
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1032
-  })
+  Property({ type: 520, reflect: true })
 ], PlusDialog.prototype, "animation", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusDialog.prototype, "connector", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "fullHeight", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "fullWidth", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusDialog.prototype, "fullscreen", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "keyboard", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusDialog.prototype, "open", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "persistent", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusDialog.prototype, "placement", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "scrollable", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusDialog.prototype, "size", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "sticky", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusDialog.prototype, "transparent", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusDialog.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusDialog.prototype, "preset", 2);
 __decorateClass([
-  Event({
-    cancelable: true
-  })
+  Event({ cancelable: true })
 ], PlusDialog.prototype, "plusClose", 2);
 __decorateClass([
   Event()
 ], PlusDialog.prototype, "plusClosed", 2);
 __decorateClass([
-  Event({
-    cancelable: true
-  })
+  Event({ cancelable: true })
 ], PlusDialog.prototype, "plusOpen", 2);
 __decorateClass([
   Event()

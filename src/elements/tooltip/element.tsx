@@ -29,7 +29,7 @@ let FloatingCore: typeof FloatingCoreType;
  *
  * @thirdParty
  *
- * @dependencies @floating-ui/dom
+ * @dependency `@floating-ui/dom`
  *
  * @examples default
  */

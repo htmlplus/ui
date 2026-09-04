@@ -28,7 +28,7 @@ let Core: typeof CoreType;
  *
  * @thirdParty
  * @stable
- * @dependencies signature_pad
+ * @dependency signature_pad
  *
  * @part canvas - The canvas element.
  *
@@ -209,8 +209,8 @@ export class PlusSignature extends PlusForm {
 	/**
 	 * Restores the signature from a data URL.
 	 *
-	 * @param dataUrl - The data URL representing the signature image.
-	 * @param options - Optional configuration for restoring the image.
+	 * @param dataUrl The data URL representing the signature image.
+	 * @param options Optional configuration for restoring the image.
 	 */
 	@Method()
 	async fromDataURL(dataUrl: string, options?: FromDataUrlOptions) {
@@ -252,7 +252,7 @@ export class PlusSignature extends PlusForm {
 	/**
 	 * Syncs the canvas dimensions with the element dimensions.
 	 *
-	 * @param clear - Clears the canvas after resizing.
+	 * @param clear Clears the canvas after resizing.
 	 */
 	@Method()
 	resize(clear?: boolean) {
@@ -279,9 +279,9 @@ export class PlusSignature extends PlusForm {
 	 * The returned string can be used to display the signature image,
 	 * upload it to a server, or store it for later use.
 	 *
-	 * @param type - The image MIME type (e.g. `image/png`, `image/jpeg`).
+	 * @param type The image MIME type (e.g. `image/png`, `image/jpeg`).
 	 *               Defaults to `image/png`.
-	 * @param quality - A number between `0` and `1` indicating image quality.
+	 * @param quality A number between `0` and `1` indicating image quality.
 	 *                  Applies only to `image/jpeg` or `image/webp`.
 	 *
 	 * @returns A data URL representing the signature, or `undefined`
@@ -299,7 +299,7 @@ export class PlusSignature extends PlusForm {
 	/**
 	 * Returns the current signature as an SVG string.
 	 *
-	 * @param options - Optional configuration for the SVG output.
+	 * @param options Optional configuration for the SVG output.
 	 *
 	 * @returns A string containing the SVG markup of the signature,
 	 *          or `undefined` if the signature pad has not been initialized.

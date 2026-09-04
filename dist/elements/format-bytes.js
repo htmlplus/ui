@@ -1,5 +1,5 @@
 import { P as PlusCore, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre}";
+const STYLE_IMPORTED_PlusFormatBytes = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre}";
 const FORMAT_BYTES_STANDARD = {
   METRIC: {
     base: 1e3,
@@ -87,22 +87,13 @@ let PlusFormatBytes = class extends PlusCore {
     const bytes = Math.abs(this.value);
     const standard = this.standard && FORMAT_BYTES_STANDARD[this.standard];
     if (!standard) return null;
-    const {
-      base,
-      unit,
-      units
-    } = standard;
+    const { base, unit, units } = standard;
     let found;
     for (let index = 0; index < units.length; index++) {
       const [short, long] = units[index];
       const from = index ? base ** index : 0;
       const to = base ** (index + 1);
-      found = {
-        from,
-        long,
-        short,
-        to
-      };
+      found = { from, long, short, to };
       if (this.unit === "base") break;
       if (this.unit !== "auto") {
         if (this.unit === long) break;
@@ -128,59 +119,38 @@ let PlusFormatBytes = class extends PlusCore {
     return this.formatted;
   }
 };
+PlusFormatBytes.style = STYLE_IMPORTED_PlusFormatBytes;
 PlusFormatBytes.tag = "plus-format-bytes";
-PlusFormatBytes.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusFormatBytes.prototype, "display", 2);
 __decorateClass([
-  Property({
-    type: 1026
-  })
+  Property({ type: 514 })
 ], PlusFormatBytes.prototype, "locale", 2);
 __decorateClass([
-  Property({
-    type: 258
-  })
+  Property({ type: 130 })
 ], PlusFormatBytes.prototype, "decimals", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusFormatBytes.prototype, "separator", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusFormatBytes.prototype, "signed", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusFormatBytes.prototype, "standard", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusFormatBytes.prototype, "unit", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusFormatBytes.prototype, "value", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusFormatBytes.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusFormatBytes.prototype, "preset", 2);
 PlusFormatBytes = __decorateClass([

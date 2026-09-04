@@ -92,36 +92,23 @@ let PlusRelativeTime = class extends PlusCore {
 };
 PlusRelativeTime.tag = "plus-relative-time";
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusRelativeTime.prototype, "format", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusRelativeTime.prototype, "numeric", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusRelativeTime.prototype, "sync", 2);
 __decorateClass([
-  Property({
-    type: 1040
-  })
+  Property({ type: 528 })
 ], PlusRelativeTime.prototype, "value", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusRelativeTime.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusRelativeTime.prototype, "preset", 2);
 __decorateClass([

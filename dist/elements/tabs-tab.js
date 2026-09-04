@@ -1,5 +1,5 @@
 import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, S as State, C as Consumer, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;align-items:center;justify-content:center;user-select:none;padding:.5rem 1rem;background-color:#f5f5f5;text-align:center;gap:.5rem}:host([active]){background-color:#d3d3d3}:host([disabled]){opacity:.5}:host(:not([disabled])){cursor:pointer}";
+const STYLE_IMPORTED_PlusTabsTab = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;align-items:center;justify-content:center;user-select:none;padding:.5rem 1rem;background-color:#f5f5f5;text-align:center;gap:.5rem}:host([active]){background-color:#d3d3d3}:host([disabled]){opacity:.5}:host(:not([disabled])){cursor:pointer}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -29,36 +29,23 @@ let PlusTabsTab = class extends PlusCore {
     return /* @__PURE__ */ jsx("host", { value: this, onClick: this.onClick, children: /* @__PURE__ */ jsx("slot", {}) });
   }
 };
+PlusTabsTab.style = STYLE_IMPORTED_PlusTabsTab;
 PlusTabsTab.tag = "plus-tabs-tab";
-PlusTabsTab.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusTabsTab.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusTabsTab.prototype, "value", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  })
+  Property({ type: 8, reflect: true })
 ], PlusTabsTab.prototype, "active", 1);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusTabsTab.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusTabsTab.prototype, "preset", 2);
 __decorateClass([

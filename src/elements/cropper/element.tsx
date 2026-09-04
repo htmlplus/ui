@@ -34,7 +34,7 @@ let CropperCore: typeof CropperCoreType;
  *
  * @thirdParty
  * @stable
- * @dependencies cropperjs
+ * @dependency cropperjs
  *
  * @examples default, disabled, shape, indicator, guides, transparent, background, area,
  *           aspect-ratio, mode, zoomable, zoom-ratio, to-base64, to-blob, to-url, styles
@@ -245,8 +245,8 @@ export class PlusCropper extends PlusCore {
 
 	/**
 	 * Moves the canvas with relative offsets.
-	 * @param offsetX - Moving size (px) in the `horizontal` direction.
-	 * @param offsetY - Moving size (px) in the `vertical` direction.
+	 * @param offsetX Moving size (px) in the `horizontal` direction.
+	 * @param offsetY Moving size (px) in the `vertical` direction.
 	 */
 	@Method()
 	move(offsetX: number, offsetY?: number): void {
@@ -255,8 +255,8 @@ export class PlusCropper extends PlusCore {
 
 	/**
 	 * Moves the canvas to an absolute point.
-	 * @param x - The `left` value of the canvas.
-	 * @param y - The `top` value of the canvas.
+	 * @param x The `left` value of the canvas.
+	 * @param y The `top` value of the canvas.
 	 */
 	@Method()
 	moveTo(x: number, y?: number): void {

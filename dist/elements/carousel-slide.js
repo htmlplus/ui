@@ -1,6 +1,6 @@
 import { a as jsx, b as Property, O as Overrides, c as Preset, L as Listen, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;flex:0 0 auto}:host([clickable]){cursor:pointer}global plus-carousel[axis=x] plus-carousel-slide{min-width:0}global plus-carousel[axis=y] plus-carousel-slide{min-height:0}";
+const STYLE_IMPORTED_PlusCarouselSlide = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;flex:0 0 auto}:host([clickable]){cursor:pointer}global plus-carousel[axis=x] plus-carousel-slide{min-width:0}global plus-carousel[axis=y] plus-carousel-slide{min-height:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -29,25 +29,17 @@ let PlusCarouselSlide = class extends CarouselChild {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusCarouselSlide.style = STYLE_IMPORTED_PlusCarouselSlide;
 PlusCarouselSlide.tag = "plus-carousel-slide";
-PlusCarouselSlide.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 40
-  })
+  Property({ type: 520, reflect: true })
 ], PlusCarouselSlide.prototype, "clickable", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusCarouselSlide.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusCarouselSlide.prototype, "preset", 2);
 __decorateClass([

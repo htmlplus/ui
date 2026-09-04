@@ -25,7 +25,7 @@ let PrismCore: typeof PrismType;
  * Powered by [PrismJS](https://prismjs.com/).
  *
  * @thirdParty
- * @dependencies prismjs
+ * @dependency prismjs
  *
  * @part code    - The code element.
  * @part copy    - The copy element.

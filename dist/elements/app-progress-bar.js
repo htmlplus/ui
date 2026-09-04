@@ -1,5 +1,5 @@
 import { Q as Query, P as PlusCore, t as toCSSColor, a as jsx, b as Property, O as Overrides, c as Preset, S as State, f as Style, M as Method, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:var(--plus-app-progress-bar-color);transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
+const STYLE_IMPORTED_PlusAppProgressBar = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:2px;transition:200ms linear;z-index:1031;display:block;pointer-events:none;position:fixed;top:0;right:0;left:0;overflow:hidden}[part=bar]{background-color:var(--plus-app-progress-bar-color);transition:200ms ease;height:100%;width:100%}:host([state=idle]){display:none}:host([state=completed]){opacity:0}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -93,45 +93,29 @@ let PlusAppProgressBar = class extends PlusCore {
     return /* @__PURE__ */ jsx("host", { state: this.state, value: this, children: /* @__PURE__ */ jsx("div", { part: "bar" }) });
   }
 };
+PlusAppProgressBar.style = STYLE_IMPORTED_PlusAppProgressBar;
 PlusAppProgressBar.tag = "plus-app-progress-bar";
-PlusAppProgressBar.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  })
+  Property({ type: 512, reflect: true })
 ], PlusAppProgressBar.prototype, "color", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAppProgressBar.prototype, "minimum", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusAppProgressBar.prototype, "trickleDisabled", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAppProgressBar.prototype, "trickleRate", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAppProgressBar.prototype, "trickleSpeed", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusAppProgressBar.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusAppProgressBar.prototype, "preset", 2);
 __decorateClass([

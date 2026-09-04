@@ -1,5 +1,5 @@
 import { Q as Query, P as PlusCore, h as toCSSUnit, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, S as State, f as Style, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{top:var(--plus-sticky-top, 0);z-index:var(--plus-sticky-z-index);position:sticky;display:block;will-change:auto}:host([disabled]){position:static}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute;top:calc((var(--plus-sticky-top, 0) + 1px)*-1)}";
+const STYLE_IMPORTED_PlusSticky = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{top:var(--plus-sticky-top, 0);z-index:var(--plus-sticky-z-index);position:sticky;display:block;will-change:auto}:host([disabled]){position:static}.sizer-wrapper{position:relative;pointer-events:none;visibility:hidden}.sizer{position:absolute;top:calc((var(--plus-sticky-top, 0) + 1px)*-1)}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -26,9 +26,7 @@ let PlusSticky = class extends PlusCore {
     };
   }
   initialize() {
-    this.observer = new IntersectionObserver(this.onIntersecting, {
-      threshold: [1]
-    });
+    this.observer = new IntersectionObserver(this.onIntersecting, { threshold: [1] });
     this.observer.observe(this.$sizer);
   }
   terminate() {
@@ -57,40 +55,26 @@ let PlusSticky = class extends PlusCore {
     ] });
   }
 };
+PlusSticky.style = STYLE_IMPORTED_PlusSticky;
 PlusSticky.tag = "plus-sticky";
-PlusSticky.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusSticky.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    type: 1280
-  })
+  Property({ type: 640 })
 ], PlusSticky.prototype, "top", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusSticky.prototype, "watcher", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSticky.prototype, "zIndex", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusSticky.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusSticky.prototype, "preset", 2);
 __decorateClass([

@@ -1,5 +1,5 @@
 import { P as PlusCore, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, S as State, C as Consumer, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-block;cursor:default;user-select:none}";
+const STYLE_IMPORTED_PlusDialogToggler = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-block;cursor:default;user-select:none}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -16,30 +16,32 @@ let PlusDialogToggler = class extends PlusCore {
     this.connector = "";
   }
   render() {
-    return /* @__PURE__ */ jsxs("host", { role: "button", state: this.dialog?.open ? "opened" : "closed", value: this, onClick: this.dialog?.toggle, children: [
-      /* @__PURE__ */ jsx("slot", { children: this.dialog?.open ? "Close" : "Open" }),
-      /* @__PURE__ */ jsx("slot", { name: this.dialog?.open ? "close" : "open" })
-    ] });
+    return /* @__PURE__ */ jsxs(
+      "host",
+      {
+        role: "button",
+        state: this.dialog?.open ? "opened" : "closed",
+        value: this,
+        onClick: this.dialog?.toggle,
+        children: [
+          /* @__PURE__ */ jsx("slot", { children: this.dialog?.open ? "Close" : "Open" }),
+          /* @__PURE__ */ jsx("slot", { name: this.dialog?.open ? "close" : "open" })
+        ]
+      }
+    );
   }
 };
+PlusDialogToggler.style = STYLE_IMPORTED_PlusDialogToggler;
 PlusDialogToggler.tag = "plus-dialog-toggler";
-PlusDialogToggler.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusDialogToggler.prototype, "connector", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusDialogToggler.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusDialogToggler.prototype, "preset", 2);
 __decorateClass([

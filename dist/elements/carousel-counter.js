@@ -1,6 +1,6 @@
 import { b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}";
+const STYLE_IMPORTED_PlusCarouselCounter = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:inline-flex}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -34,24 +34,17 @@ let PlusCarouselCounter = class extends CarouselChild {
     return this.content;
   }
 };
+PlusCarouselCounter.style = STYLE_IMPORTED_PlusCarouselCounter;
 PlusCarouselCounter.tag = "plus-carousel-counter";
-PlusCarouselCounter.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusCarouselCounter.prototype, "template", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusCarouselCounter.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusCarouselCounter.prototype, "preset", 2);
 PlusCarouselCounter = __decorateClass([

@@ -8,7 +8,7 @@ import { PlusCropperCropEvent, PlusCropperPointerEvent, PlusCropperValue, PlusCr
  *
  * @thirdParty
  * @stable
- * @dependencies cropperjs
+ * @dependency cropperjs
  *
  * @examples default, disabled, shape, indicator, guides, transparent, background, area,
  *           aspect-ratio, mode, zoomable, zoom-ratio, to-base64, to-blob, to-url, styles
@@ -158,14 +158,14 @@ export declare class PlusCropper extends PlusCore {
     flipY(): void;
     /**
      * Moves the canvas with relative offsets.
-     * @param offsetX - Moving size (px) in the `horizontal` direction.
-     * @param offsetY - Moving size (px) in the `vertical` direction.
+     * @param offsetX Moving size (px) in the `horizontal` direction.
+     * @param offsetY Moving size (px) in the `vertical` direction.
      */
     move(offsetX: number, offsetY?: number): void;
     /**
      * Moves the canvas to an absolute point.
-     * @param x - The `left` value of the canvas.
-     * @param y - The `top` value of the canvas.
+     * @param x The `left` value of the canvas.
+     * @param y The `top` value of the canvas.
      */
     moveTo(x: number, y?: number): void;
     /**
@@ -253,6 +253,8 @@ export declare class PlusCropper extends PlusCore {
     render(): any;
 }
 
+// THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY
+
 type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
 type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
@@ -261,7 +263,7 @@ type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T
 export type PlusCropperAttributesMapper = {
   'aspectRatio': 'aspect-ratio';
   'resizerShape': 'resizer-shape';
-  'zoomRatio': 'zoom-ratio';
+  'zoomRatio': 'zoom-ratio'
 };
 export type PlusCropperOverridableKeys = 'preset';
 export interface PlusCropperDisables {}

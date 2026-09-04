@@ -1,5 +1,5 @@
 import { Q as Query, P as PlusCore, o as on, m as off, l as ExternalDependencyError, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, M as Method, S as State, W as Watch, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{width:max-content;background-color:#000;color:#fff;font-weight:bold;padding:4px 8px;border-radius:4px;font-size:90%;position:absolute}:host([fixed]){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;position:absolute;width:0;height:0}:host([arrow]) [part=arrow]{display:block}:host([arrow]):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]):host([placement-computed^=top]) [part=arrow]{bottom:-6px;transform:translateX(-50%);border-top:solid 6px #000;border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 0px rgba(0,0,0,0);border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]):host([placement-computed^=right]) [part=arrow]{left:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 6px #000;border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 0px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]):host([placement-computed^=bottom]) [part=arrow]{top:-6px;transform:translateX(-50%);border-top:solid 0px rgba(0,0,0,0);border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 6px #000;border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]):host([placement-computed^=left]) [part=arrow]{right:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 0px rgba(0,0,0,0);border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 6px #000}";
+const STYLE_IMPORTED_PlusTooltip = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{width:max-content;background-color:#000;color:#fff;font-weight:bold;padding:4px 8px;border-radius:4px;font-size:90%;position:absolute}:host([fixed]){position:fixed}:host([state=hide]){display:none}:host([state=show]){display:block}[part=arrow]{display:none;position:absolute;width:0;height:0}:host([arrow]) [part=arrow]{display:block}:host([arrow]):host([placement-computed^=top]){transform:translateY(-6px)}:host([arrow]):host([placement-computed^=top]) [part=arrow]{bottom:-6px;transform:translateX(-50%);border-top:solid 6px #000;border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 0px rgba(0,0,0,0);border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=right]){transform:translateX(6px)}:host([arrow]):host([placement-computed^=right]) [part=arrow]{left:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 6px #000;border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 0px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=bottom]){transform:translateY(6px)}:host([arrow]):host([placement-computed^=bottom]) [part=arrow]{top:-6px;transform:translateX(-50%);border-top:solid 0px rgba(0,0,0,0);border-right:solid 6px rgba(0,0,0,0);border-bottom:solid 6px #000;border-left:solid 6px rgba(0,0,0,0)}:host([arrow]):host([placement-computed^=left]){transform:translateX(-6px)}:host([arrow]):host([placement-computed^=left]) [part=arrow]{right:-6px;transform:translateY(-50%);border-top:solid 6px rgba(0,0,0,0);border-right:solid 0px rgba(0,0,0,0);border-bottom:solid 6px rgba(0,0,0,0);border-left:solid 6px #000}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -23,7 +23,15 @@ let PlusTooltip = class extends PlusCore {
     this.trigger = ["focus", "hover"];
     this.z = "auto";
     this.state = "hide";
-    this.EVENTS = [["click", "click", this.onShow], ["click", "blur", this.onHide], ["click", "outside", this.onHide], ["focus", "focus", this.onShow], ["focus", "blur", this.onHide], ["hover", "mouseenter", this.onShow], ["hover", "mouseleave", this.onHide]];
+    this.EVENTS = [
+      ["click", "click", this.onShow],
+      ["click", "blur", this.onHide],
+      ["click", "outside", this.onHide],
+      ["focus", "focus", this.onShow],
+      ["focus", "blur", this.onHide],
+      ["hover", "mouseenter", this.onShow],
+      ["hover", "mouseleave", this.onHide]
+    ];
   }
   hide() {
     if (this.state === "hide") return;
@@ -46,12 +54,7 @@ let PlusTooltip = class extends PlusCore {
   update() {
     this.$host.removeAttribute("placement-computed");
     FloatingCore.computePosition(this.$activator, this.$host, this.options).then((data) => {
-      const {
-        x,
-        y,
-        placement,
-        middlewareData
-      } = data;
+      const { x, y, placement, middlewareData } = data;
       this.$host.setAttribute("placement-computed", placement);
       Object.assign(this.$host.style, {
         left: `${x}px`,
@@ -106,14 +109,9 @@ let PlusTooltip = class extends PlusCore {
     const padding = [this.offset].flat();
     return {
       middleware: [
-        FloatingCore.offset({
-          crossAxis: padding[0] || 0,
-          mainAxis: padding[1] || 0
-        }),
+        FloatingCore.offset({ crossAxis: padding[0] || 0, mainAxis: padding[1] || 0 }),
         FloatingCore.flip(),
-        this.arrow && FloatingCore.arrow({
-          element: this.$arrow
-        })
+        this.arrow && FloatingCore.arrow({ element: this.$arrow })
         // FloatingCore.hide()
       ],
       placement: this.placement ? PLACEMENT[this.placement] : void 0,
@@ -158,7 +156,9 @@ let PlusTooltip = class extends PlusCore {
     });
   }
   events(all) {
-    return this.EVENTS.filter((row) => all || [this.trigger].flat().includes(row[0])).map((row) => row.slice(1));
+    return this.EVENTS.filter((row) => all || [this.trigger].flat().includes(row[0])).map(
+      (row) => row.slice(1)
+    );
   }
   observe(active) {
     this.cleanup?.();
@@ -176,9 +176,7 @@ let PlusTooltip = class extends PlusCore {
       FloatingCore = module;
       this.initialize();
     }).catch((error) => {
-      throw new ExternalDependencyError(this.$host, "@floating-ui/dom", {
-        cause: error
-      });
+      throw new ExternalDependencyError(this.$host, "@floating-ui/dom", { cause: error });
     });
   }
   disconnectedCallback() {
@@ -191,67 +189,41 @@ let PlusTooltip = class extends PlusCore {
     ] });
   }
 };
+PlusTooltip.style = STYLE_IMPORTED_PlusTooltip;
 PlusTooltip.tag = "plus-tooltip";
-PlusTooltip.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusTooltip.prototype, "arrow", 2);
 __decorateClass([
-  Property({
-    type: 258
-  })
+  Property({ type: 130 })
 ], PlusTooltip.prototype, "delay", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusTooltip.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusTooltip.prototype, "fixed", 2);
 __decorateClass([
-  Property({
-    type: 258
-  })
+  Property({ type: 130 })
 ], PlusTooltip.prototype, "offset", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusTooltip.prototype, "placement", 2);
 __decorateClass([
-  Property({
-    type: 1056
-  })
+  Property({ type: 768 })
 ], PlusTooltip.prototype, "reference", 2);
 __decorateClass([
-  Property({
-    type: 34
-  })
+  Property({ type: 514 })
 ], PlusTooltip.prototype, "trigger", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusTooltip.prototype, "z", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusTooltip.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusTooltip.prototype, "preset", 2);
 __decorateClass([

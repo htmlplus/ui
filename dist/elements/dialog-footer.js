@@ -1,5 +1,5 @@
 import { P as PlusCore, a as jsx, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-wrap:wrap;flex-shrink:0;align-items:center;justify-content:flex-end;padding:.75rem;border-top:solid 1px rgba(0,0,0,.2);border-bottom-right-radius:calc(.3rem - 1px);border-bottom-left-radius:calc(.3rem - 1px)}:host ::slotted(*){margin:.25rem}";
+const STYLE_IMPORTED_PlusDialogFooter = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:flex;flex-wrap:wrap;flex-shrink:0;align-items:center;justify-content:flex-end;padding:.75rem;border-top:solid 1px rgba(0,0,0,.2);border-bottom-right-radius:calc(.3rem - 1px);border-bottom-left-radius:calc(.3rem - 1px)}:host ::slotted(*){margin:.25rem}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -15,19 +15,14 @@ let PlusDialogFooter = class extends PlusCore {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusDialogFooter.style = STYLE_IMPORTED_PlusDialogFooter;
 PlusDialogFooter.tag = "plus-dialog-footer";
-PlusDialogFooter.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusDialogFooter.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusDialogFooter.prototype, "preset", 2);
 PlusDialogFooter = __decorateClass([

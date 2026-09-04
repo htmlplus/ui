@@ -1,5 +1,5 @@
 import { P as PlusCore, g as getConfig, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
+const STYLE_IMPORTED_PlusAnimation = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 const ANIMATION_EASINGS = {
   ease: "ease",
   "ease-in": "ease-in",
@@ -145,95 +145,59 @@ let PlusAnimation = class extends PlusCore {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusAnimation.style = STYLE_IMPORTED_PlusAnimation;
 PlusAnimation.tag = "plus-animation";
-PlusAnimation.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusAnimation.prototype, "composite", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAnimation.prototype, "delay", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusAnimation.prototype, "direction", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAnimation.prototype, "duration", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusAnimation.prototype, "easing", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAnimation.prototype, "endDelay", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusAnimation.prototype, "fill", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 256 })
 ], PlusAnimation.prototype, "instance", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusAnimation.prototype, "iterationComposite", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAnimation.prototype, "iterations", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAnimation.prototype, "iterationStart", 2);
 __decorateClass([
-  Property({
-    type: 2
-  })
+  Property({ type: 2 })
 ], PlusAnimation.prototype, "keyframes", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 512 })
 ], PlusAnimation.prototype, "name", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusAnimation.prototype, "playbackRate", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusAnimation.prototype, "run", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusAnimation.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusAnimation.prototype, "preset", 2);
 __decorateClass([

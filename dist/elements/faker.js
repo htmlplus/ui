@@ -1,5 +1,5 @@
 import { P as PlusCore, l as ExternalDependencyError, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre-wrap}";
+const STYLE_IMPORTED_PlusFaker = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{white-space:pre-wrap}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -27,48 +27,33 @@ let PlusFaker = class extends PlusCore {
     import("@faker-js/faker").then((module) => {
       this.instance = module.faker;
     }).catch((error) => {
-      throw new ExternalDependencyError(this.$host, "@faker-js/faker", {
-        cause: error
-      });
+      throw new ExternalDependencyError(this.$host, "@faker-js/faker", { cause: error });
     });
   }
   render() {
     return this.content;
   }
 };
+PlusFaker.style = STYLE_IMPORTED_PlusFaker;
 PlusFaker.tag = "plus-faker";
-PlusFaker.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusFaker.prototype, "api", 2);
 __decorateClass([
-  Property({
-    type: 2
-  })
+  Property({ type: 2 })
 ], PlusFaker.prototype, "arguments", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 256 })
 ], PlusFaker.prototype, "instance", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusFaker.prototype, "seed", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusFaker.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusFaker.prototype, "preset", 2);
 PlusFaker = __decorateClass([

@@ -8,7 +8,7 @@ import { CarouselPluginAutoHeight, CarouselPluginClasses, CarouselPluginMirror, 
  * A carousel element for cycling through elements—like images or text slides.
  *
  * @thirdParty
- * @dependencies embla-carousel
+ * @dependency embla-carousel
  * @slot default - The default slot.
  *
  * @examples default, loop, duration, start-index, align, draggable-free, draggable-snap, y-axis,
@@ -307,6 +307,8 @@ export declare class PlusCarousel extends PlusCore {
     render(): any;
 }
 
+// THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY
+
 type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
 type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
@@ -320,7 +322,7 @@ export type PlusCarouselAttributesMapper = {
   'mirrorType': 'mirror-type';
   'slidesToScroll': 'slides-to-scroll';
   'startIndex': 'start-index';
-  'tweenFactorBase': 'tween-factor-base';
+  'tweenFactorBase': 'tween-factor-base'
 };
 export type PlusCarouselOverridableKeys = 'preset';
 export interface PlusCarouselDisables {}

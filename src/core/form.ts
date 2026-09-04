@@ -16,29 +16,19 @@ export abstract class PlusForm extends PlusCore {
 	// TODO
 	abstract onReset(): void;
 
-	@Property({
-		reflect: true,
-		type: 2 ** 3
-	})
+	@Property({ reflect: true })
 	disabled?: boolean;
 
-	@Property({
-		reflect: true,
-		type: 2 ** 10
-	})
+	@Property({ reflect: true })
 	name?: string;
 
 	@Property({
 		attribute: 'readonly',
-		reflect: true,
-		type: 2 ** 3
+		reflect: true
 	})
 	readOnly?: boolean;
 
-	@Property({
-		reflect: true,
-		type: 2 ** 3
-	})
+	@Property({ reflect: true })
 	required?: boolean;
 
 	@Property()

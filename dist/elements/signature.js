@@ -1,5 +1,5 @@
 import { Q as Query, u as PlusForm, v as getCSSColor, l as ExternalDependencyError, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, M as Method, W as Watch, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
+const STYLE_IMPORTED_PlusSignature = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;width:300px;height:150px}:host([disabled]){opacity:.5}canvas{display:block;width:100%;height:100%}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -55,9 +55,7 @@ let PlusSignature = class extends PlusForm {
     if (!this.redoable) return;
     this.index++;
     const data = this.history[this.index] || [];
-    this.instance?.fromData(data, {
-      clear: true
-    });
+    this.instance?.fromData(data, { clear: true });
     this.previous = this.value = this.clone();
     this.plusChange(this.value);
   }
@@ -67,12 +65,7 @@ let PlusSignature = class extends PlusForm {
     }
   }
   resize(clear) {
-    const {
-      width,
-      height,
-      offsetWidth,
-      offsetHeight
-    } = this.$canvas;
+    const { width, height, offsetWidth, offsetHeight } = this.$canvas;
     if (width === offsetWidth && height === offsetHeight) return;
     this.$canvas.width = offsetWidth;
     this.$canvas.height = offsetHeight;
@@ -80,9 +73,7 @@ let PlusSignature = class extends PlusForm {
     if (clear ?? this.clearOnResize) {
       return this.clear();
     }
-    this.instance?.fromData(this.clone(), {
-      clear: true
-    });
+    this.instance?.fromData(this.clone(), { clear: true });
   }
   toDataURL(type, quality) {
     if (this.ensureInstance()) {
@@ -99,9 +90,7 @@ let PlusSignature = class extends PlusForm {
     if (!this.undoable) return;
     this.index--;
     const data = this.history[this.index] || [];
-    this.instance?.fromData(data, {
-      clear: true
-    });
+    this.instance?.fromData(data, { clear: true });
     this.previous = this.value = this.clone();
     this.plusChange(this.value);
   }
@@ -153,9 +142,7 @@ let PlusSignature = class extends PlusForm {
       case "value":
         if (this.value !== this.previous) {
           this.previous = this.value || [];
-          this.instance.fromData(this.value || [], {
-            clear: true
-          });
+          this.instance.fromData(this.value || [], { clear: true });
         }
         break;
     }
@@ -165,7 +152,9 @@ let PlusSignature = class extends PlusForm {
   }
   ensureInstance() {
     if (this.instance) return true;
-    console.warn("[Signature] Cannot perform operation because signature_pad is not initialized. Wait for the `ready` event before calling this method.");
+    console.warn(
+      "[Signature] Cannot perform operation because signature_pad is not initialized. Wait for the `ready` event before calling this method."
+    );
     return false;
   }
   initialize() {
@@ -219,9 +208,7 @@ let PlusSignature = class extends PlusForm {
       Core = module.default;
       this.initialize();
     }).catch((error) => {
-      throw new ExternalDependencyError(this.$host, "signature_pad", {
-        cause: error
-      });
+      throw new ExternalDependencyError(this.$host, "signature_pad", { cause: error });
     });
   }
   disconnectedCallback() {
@@ -231,94 +218,59 @@ let PlusSignature = class extends PlusForm {
     return /* @__PURE__ */ jsx("canvas", { part: "canvas", tabIndex: 0 });
   }
 };
+PlusSignature.style = STYLE_IMPORTED_PlusSignature;
 PlusSignature.tag = "plus-signature";
-PlusSignature.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 512 })
 ], PlusSignature.prototype, "backgroundColor", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 256 })
 ], PlusSignature.prototype, "canvasContextOptions", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusSignature.prototype, "clearOnResize", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 512 })
 ], PlusSignature.prototype, "penColor", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSignature.prototype, "minDistance", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSignature.prototype, "dotSize", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSignature.prototype, "maxWidth", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSignature.prototype, "minWidth", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusSignature.prototype, "resizable", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSignature.prototype, "throttle", 2);
 __decorateClass([
-  Property({
-    type: 2
-  })
+  Property({ type: 2 })
 ], PlusSignature.prototype, "value", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSignature.prototype, "velocityFilterWeight", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 256 })
 ], PlusSignature.prototype, "canvas", 1);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 8 })
 ], PlusSignature.prototype, "redoable", 1);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 8 })
 ], PlusSignature.prototype, "undoable", 1);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusSignature.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusSignature.prototype, "preset", 2);
 __decorateClass([

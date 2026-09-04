@@ -1,5 +1,5 @@
 import { Q as Query, P as PlusCore, j as jsxs, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, S as State, M as Method, B as Bind, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
+const STYLE_IMPORTED_PlusBrowse = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{cursor:pointer}input[type=file]{opacity:0;width:0px;height:0px;overflow:hidden}:host([disabled]){opacity:.5}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -87,9 +87,7 @@ let PlusBrowse = class extends PlusCore {
     }
     const error = detail.error || detail.files.some((file) => file.errors.length);
     const filtered = detail.files.filter((file) => !error || file.errors.length);
-    const data = Object.assign({}, detail, {
-      files: filtered
-    });
+    const data = Object.assign({}, detail, { files: filtered });
     error ? this.plusError(data) : this.plusSuccess(data);
     this.plusChange(detail);
   }
@@ -122,64 +120,51 @@ let PlusBrowse = class extends PlusCore {
   render() {
     return /* @__PURE__ */ jsxs("host", { value: this, ...this.attributes, children: [
       /* @__PURE__ */ jsx("slot", {}),
-      /* @__PURE__ */ jsx("input", { accept: this.accept, multiple: this.multiple, type: "file", onChange: this.onChange, onClick: (event) => event.stopPropagation() })
+      /* @__PURE__ */ jsx(
+        "input",
+        {
+          accept: this.accept,
+          multiple: this.multiple,
+          type: "file",
+          onChange: this.onChange,
+          onClick: (event) => event.stopPropagation()
+        }
+      )
     ] });
   }
 };
+PlusBrowse.style = STYLE_IMPORTED_PlusBrowse;
 PlusBrowse.tag = "plus-browse";
-PlusBrowse.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusBrowse.prototype, "accept", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusBrowse.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusBrowse.prototype, "droppable", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusBrowse.prototype, "min", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusBrowse.prototype, "max", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusBrowse.prototype, "minSize", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusBrowse.prototype, "maxSize", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusBrowse.prototype, "multiple", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusBrowse.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusBrowse.prototype, "preset", 2);
 __decorateClass([

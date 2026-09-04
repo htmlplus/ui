@@ -1,5 +1,5 @@
 import { B as Bind, P as PlusCore, l as ExternalDependencyError, a as jsx, b as Property, O as Overrides, c as Preset, E as Event, S as State, e as Provider, M as Method, W as Watch, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}global plus-carousel[preset=presentation]{position:relative}global plus-carousel[preset=presentation] plus-carousel-button{position:absolute;top:50%;z-index:1;transform:translateY(-50%)}global plus-carousel[preset=presentation] plus-carousel-button[type=previous]:dir(ltr),global plus-carousel[preset=presentation] plus-carousel-button[type=next]:dir(rtl){left:1rem}global plus-carousel[preset=presentation] plus-carousel-button[type=previous]:dir(rtl),global plus-carousel[preset=presentation] plus-carousel-button[type=next]:dir(ltr){right:1rem}global plus-carousel[preset=presentation] plus-carousel-counter{position:absolute;right:1rem;bottom:1rem;z-index:1}global plus-carousel[preset=presentation] plus-carousel-indicators{position:absolute;left:50%;bottom:1rem;z-index:1;transform:translateX(-50%)}global plus-carousel[preset=presentation] plus-carousel-progress{position:absolute;top:-0.5rem;right:0;left:0;z-index:1;height:4px}global plus-carousel[preset=presentation] plus-carousel-slide{flex-basis:100%;background-color:#f5f5f5;border-radius:.5rem;font-size:2.5rem;font-weight:600;display:flex;align-items:center;justify-content:center;user-select:none;height:12rem}global plus-carousel[preset=presentation][axis=x] plus-carousel-slide{margin-left:.5rem}global plus-carousel[preset=presentation][axis=y] plus-carousel-slide{margin-top:.5rem}global plus-carousel[preset=presentation][axis=y] plus-carousel-slides::part(container){height:12rem}";
+const STYLE_IMPORTED_PlusCarousel = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}global plus-carousel[preset=presentation]{position:relative}global plus-carousel[preset=presentation] plus-carousel-button{position:absolute;top:50%;z-index:1;transform:translateY(-50%)}global plus-carousel[preset=presentation] plus-carousel-button[type=previous]:dir(ltr),global plus-carousel[preset=presentation] plus-carousel-button[type=next]:dir(rtl){left:1rem}global plus-carousel[preset=presentation] plus-carousel-button[type=previous]:dir(rtl),global plus-carousel[preset=presentation] plus-carousel-button[type=next]:dir(ltr){right:1rem}global plus-carousel[preset=presentation] plus-carousel-counter{position:absolute;right:1rem;bottom:1rem;z-index:1}global plus-carousel[preset=presentation] plus-carousel-indicators{position:absolute;left:50%;bottom:1rem;z-index:1;transform:translateX(-50%)}global plus-carousel[preset=presentation] plus-carousel-progress{position:absolute;top:-0.5rem;right:0;left:0;z-index:1;height:4px}global plus-carousel[preset=presentation] plus-carousel-slide{flex-basis:100%;background-color:#f5f5f5;border-radius:.5rem;font-size:2.5rem;font-weight:600;display:flex;align-items:center;justify-content:center;user-select:none;height:12rem}global plus-carousel[preset=presentation][axis=x] plus-carousel-slide{margin-left:.5rem}global plus-carousel[preset=presentation][axis=y] plus-carousel-slide{margin-top:.5rem}global plus-carousel[preset=presentation][axis=y] plus-carousel-slides::part(container){height:12rem}";
 class CarouselPlugin {
   constructor(instance) {
     this.instance = instance;
@@ -469,17 +469,13 @@ let PlusCarousel = class extends PlusCore {
         this[`plus${event.at(0).toUpperCase()}${event.slice(1)}`]();
       });
     });
-    this.state = Object.assign({}, this.state, {
-      api: this.api
-    });
+    this.state = Object.assign({}, this.state, { api: this.api });
   }
   terminate() {
     this.api?.destroy();
     this.$viewport = void 0;
     this.emblaApi = void 0;
-    this.state = Object.assign({}, this.state, {
-      api: this.api
-    });
+    this.state = Object.assign({}, this.state, { api: this.api });
   }
   register($element) {
     switch ($element.localName.split("-").at(-1)) {
@@ -512,9 +508,7 @@ let PlusCarousel = class extends PlusCore {
       EmblaCarouselCore = module.default;
       this.initialize();
     }).catch((error) => {
-      throw new ExternalDependencyError(this.$host, "embla-carousel", {
-        cause: error
-      });
+      throw new ExternalDependencyError(this.$host, "embla-carousel", { cause: error });
     });
   }
   disconnectedCallback() {
@@ -524,117 +518,71 @@ let PlusCarousel = class extends PlusCore {
     return /* @__PURE__ */ jsx("slot", {});
   }
 };
+PlusCarousel.style = STYLE_IMPORTED_PlusCarousel;
 PlusCarousel.tag = "plus-carousel";
-PlusCarousel.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusCarousel.prototype, "align", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusCarousel.prototype, "autoHeight", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 32
-  })
+  Property({ type: 512, reflect: true })
 ], PlusCarousel.prototype, "axis", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusCarousel.prototype, "classes", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusCarousel.prototype, "containScroll", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusCarousel.prototype, "draggable", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCarousel.prototype, "dragThreshold", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCarousel.prototype, "duration", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusCarousel.prototype, "focusable", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCarousel.prototype, "inViewThreshold", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 8
-  })
+  Property({ type: 8, reflect: true })
 ], PlusCarousel.prototype, "loop", 2);
 __decorateClass([
-  Property({
-    type: 2
-  })
+  Property({ type: 2 })
 ], PlusCarousel.prototype, "plugins", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusCarousel.prototype, "mirror", 2);
 __decorateClass([
-  Property({
-    type: 32
-  })
+  Property({ type: 512 })
 ], PlusCarousel.prototype, "mirrorType", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusCarousel.prototype, "resizable", 2);
 __decorateClass([
-  Property({
-    type: 288
-  })
+  Property({ type: 640 })
 ], PlusCarousel.prototype, "slidesToScroll", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCarousel.prototype, "startIndex", 2);
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusCarousel.prototype, "tweenFactorBase", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 256 })
 ], PlusCarousel.prototype, "api", 1);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusCarousel.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusCarousel.prototype, "preset", 2);
 __decorateClass([

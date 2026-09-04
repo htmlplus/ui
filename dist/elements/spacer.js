@@ -1,5 +1,5 @@
 import { P as PlusCore, b as Property, O as Overrides, c as Preset, f as Style, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
+const STYLE_IMPORTED_PlusSpacer = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -23,24 +23,17 @@ let PlusSpacer = class extends PlusCore {
     };
   }
 };
+PlusSpacer.style = STYLE_IMPORTED_PlusSpacer;
 PlusSpacer.tag = "plus-spacer";
-PlusSpacer.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 256
-  })
+  Property({ type: 128 })
 ], PlusSpacer.prototype, "grow", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusSpacer.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusSpacer.prototype, "preset", 2);
 __decorateClass([

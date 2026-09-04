@@ -1,5 +1,5 @@
 import { P as PlusCore, q as AsyncCache, s as setConfig, g as getConfig, h as toCSSUnit, t as toCSSColor, r as query, a as jsx, b as Property, O as Overrides, c as Preset, f as Style, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:1em;width:1em;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}:host([flip=both]){scale:-1 -1}:host([flip=horizontal]){scale:-1 1}:host([flip=vertical]){scale:1 -1}:host::part(svg){display:block;height:100%;width:100%}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size="1x"]){height:1em;width:1em}:host([size="2x"]){height:2em;width:2em}:host([size="3x"]){height:3em;width:3em}:host([size="4x"]){height:4em;width:4em}:host([size="5x"]){height:5em;width:5em}:host([size="6x"]){height:6em;width:6em}:host([size="7x"]){height:7em;width:7em}:host([size="8x"]){height:8em;width:8em}:host([size="9x"]){height:9em;width:9em}';
+const STYLE_IMPORTED_PlusIcon = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{height:1em;width:1em;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle}:host([flip=both]){scale:-1 -1}:host([flip=horizontal]){scale:-1 1}:host([flip=vertical]){scale:1 -1}:host::part(svg){display:block;height:100%;width:100%}:host([size=xs]){height:.7em;width:.7em}:host([size=sm]){height:.85em;width:.85em}:host([size=md]){height:1em;width:1em}:host([size=lg]){height:1.5em;width:1.5em}:host([size=xl]){height:1.75em;width:1.75em}:host([size="1x"]){height:1em;width:1em}:host([size="2x"]){height:2em;width:2em}:host([size="3x"]){height:3em;width:3em}:host([size="4x"]){height:4em;width:4em}:host([size="5x"]){height:5em;width:5em}:host([size="6x"]){height:6em;width:6em}:host([size="7x"]){height:7em;width:7em}:host([size="8x"]){height:8em;width:8em}:host([size="9x"]){height:9em;width:9em}';
 const ICON_DEFAULT_SVG = `
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -26,9 +26,7 @@ let PlusIcon = class extends PlusCore {
   constructor() {
     super(...arguments);
     this.label = "";
-    this.resolver = ({
-      name
-    }) => {
+    this.resolver = ({ name }) => {
       return fetch(`https://cdn.jsdelivr.net/npm/bootstrap-icons/icons/${name}.svg`, {
         mode: "cors"
       }).then(async (response) => {
@@ -42,22 +40,35 @@ let PlusIcon = class extends PlusCore {
       type: "external",
       key: (params) => params.name,
       cache: () => {
-        setConfig({
-          assets: {
-            icons: {}
-          }
-        });
+        setConfig({ assets: { icons: {} } });
         return getConfig().assets?.icons;
       },
       resolver: async (params) => {
         if (typeof this.resolver !== "function") {
-          console.warn([`The icon element is not able to find an SVG file with the name of \`${params.name}\`. `, "This element uses an asynchronous function called `resolver` to load SVG files. ", "The function is defined as built-in by default. ", "It is possible that it has not been reconfigured correctly. ", "To solve the problem, ", "read the documentation to check the correct configuration of the `resolver` property."].join(""), this.$host);
+          console.warn(
+            [
+              `The icon element is not able to find an SVG file with the name of \`${params.name}\`. `,
+              "This element uses an asynchronous function called `resolver` to load SVG files. ",
+              "The function is defined as built-in by default. ",
+              "It is possible that it has not been reconfigured correctly. ",
+              "To solve the problem, ",
+              "read the documentation to check the correct configuration of the `resolver` property."
+            ].join(""),
+            this.$host
+          );
           return;
         }
         try {
           return await this.resolver(params);
         } catch (error) {
-          console.warn([`The icon element is not able to resolve an SVG file with the name of \`${params.name}\`. `, `There is a problem with the \`resolver\` property, and its output cannot be used. `, "Make sure that the output of the property is a string SVG."].join(""), this.$host);
+          console.warn(
+            [
+              `The icon element is not able to resolve an SVG file with the name of \`${params.name}\`. `,
+              `There is a problem with the \`resolver\` property, and its output cannot be used. `,
+              "Make sure that the output of the property is a string SVG."
+            ].join(""),
+            this.$host
+          );
           throw error;
         }
       }
@@ -76,9 +87,7 @@ let PlusIcon = class extends PlusCore {
   async update() {
     let svg;
     try {
-      svg = this.name && await this.cache.resolve({
-        name: this.name
-      });
+      svg = this.name && await this.cache.resolve({ name: this.name });
     } catch (error) {
       svg = ICON_FALLBACK_SVG;
       throw error;
@@ -91,62 +100,46 @@ let PlusIcon = class extends PlusCore {
     this.update();
   }
   render() {
-    return /* @__PURE__ */ jsx("host", { "aria-hidden": this.label ? void 0 : `${!this.label}`, "aria-label": this.label, role: this.label ? "img" : void 0, value: this });
+    return /* @__PURE__ */ jsx(
+      "host",
+      {
+        "aria-hidden": this.label ? void 0 : `${!this.label}`,
+        "aria-label": this.label,
+        role: this.label ? "img" : void 0,
+        value: this
+      }
+    );
   }
 };
+PlusIcon.style = STYLE_IMPORTED_PlusIcon;
 PlusIcon.tag = "plus-icon";
-PlusIcon.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  })
+  Property({ type: 512, reflect: true })
 ], PlusIcon.prototype, "color", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 32
-  })
+  Property({ type: 512, reflect: true })
 ], PlusIcon.prototype, "flip", 2);
 __decorateClass([
-  Property({
-    type: 1024
-  })
+  Property({ type: 512 })
 ], PlusIcon.prototype, "label", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  })
+  Property({ type: 512, reflect: true })
 ], PlusIcon.prototype, "name", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 32 })
 ], PlusIcon.prototype, "resolver", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 256
-  })
+  Property({ type: 128, reflect: true })
 ], PlusIcon.prototype, "rotate", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1312
-  })
+  Property({ type: 640, reflect: true })
 ], PlusIcon.prototype, "size", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusIcon.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusIcon.prototype, "preset", 2);
 __decorateClass([

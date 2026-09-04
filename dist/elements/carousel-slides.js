@@ -1,6 +1,6 @@
 import { a as jsx, b as Property, O as Overrides, c as Preset, d as Element } from "../core/index.js";
 import { CarouselChild } from "./carousel-child.js";
-const STYLE_IMPORTED = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;overflow:hidden}.container{display:flex}global plus-carousel[auto-height] plus-carousel-slides::part(container){transition:height .25s;align-items:flex-start}global plus-carousel[axis=x] plus-carousel-slides::part(container){flex-direction:row;touch-action:pan-y pinch-zoom}global plus-carousel[axis=y] plus-carousel-slides::part(container){flex-direction:column;touch-action:pan-x pinch-zoom}";
+const STYLE_IMPORTED_PlusCarouselSlides = ":host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;overflow:hidden}.container{display:flex}global plus-carousel[auto-height] plus-carousel-slides::part(container){transition:height .25s;align-items:flex-start}global plus-carousel[axis=x] plus-carousel-slides::part(container){flex-direction:row;touch-action:pan-y pinch-zoom}global plus-carousel[axis=y] plus-carousel-slides::part(container){flex-direction:column;touch-action:pan-x pinch-zoom}";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -20,19 +20,14 @@ let PlusCarouselSlides = class extends CarouselChild {
     return /* @__PURE__ */ jsx("div", { className: "container", part: "container", children: /* @__PURE__ */ jsx("slot", {}) });
   }
 };
+PlusCarouselSlides.style = STYLE_IMPORTED_PlusCarouselSlides;
 PlusCarouselSlides.tag = "plus-carousel-slides";
-PlusCarouselSlides.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusCarouselSlides.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusCarouselSlides.prototype, "preset", 2);
 PlusCarouselSlides = __decorateClass([

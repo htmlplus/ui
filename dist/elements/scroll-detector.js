@@ -38,14 +38,7 @@ let PlusScrollDetector = class extends PlusCore {
   onScroll() {
     const target = this.$reference instanceof Document ? this.$reference.documentElement : this.$reference;
     if (!target) return;
-    const {
-      scrollTop,
-      scrollLeft,
-      scrollHeight,
-      scrollWidth,
-      clientHeight,
-      clientWidth
-    } = target;
+    const { scrollTop, scrollLeft, scrollHeight, scrollWidth, clientHeight, clientWidth } = target;
     const offset = this.vertical ? scrollTop : scrollLeft;
     const total = this.vertical ? scrollHeight : scrollWidth;
     const viewport = this.vertical ? clientHeight : clientWidth;
@@ -73,31 +66,20 @@ let PlusScrollDetector = class extends PlusCore {
 };
 PlusScrollDetector.tag = "plus-scroll-detector";
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusScrollDetector.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    type: 1056
-  })
+  Property({ type: 768 })
 ], PlusScrollDetector.prototype, "reference", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusScrollDetector.prototype, "vertical", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusScrollDetector.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusScrollDetector.prototype, "preset", 2);
 __decorateClass([

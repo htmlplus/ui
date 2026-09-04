@@ -21,13 +21,12 @@ const TYPE_ARRAY = 2 ** 1;
 const TYPE_BIGINT = 2 ** 2;
 const TYPE_BOOLEAN = 2 ** 3;
 const TYPE_DATE = 2 ** 4;
-const TYPE_ENUM = 2 ** 5;
-const TYPE_FUNCTION = 2 ** 6;
-const TYPE_NULL = 2 ** 7;
-const TYPE_NUMBER = 2 ** 8;
-const TYPE_OBJECT = 2 ** 9;
-const TYPE_STRING = 2 ** 10;
-const TYPE_UNDEFINED = 2 ** 11;
+const TYPE_FUNCTION = 2 ** 5;
+const TYPE_NULL = 2 ** 6;
+const TYPE_NUMBER = 2 ** 7;
+const TYPE_OBJECT = 2 ** 8;
+const TYPE_STRING = 2 ** 9;
+const TYPE_UNDEFINED = 2 ** 10;
 var n, l, u, i, r, o, e, f, c, a, s, h, p, v, d = {}, w = [], _ = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i, g = Array.isArray;
 function m(n2, l2) {
   for (var u2 in l2) n2[u2] = l2[u2];
@@ -79,8 +78,8 @@ function H() {
   }
 }
 function L(n2, l2, u2, t, i2, r2, o2, e2, f2, c2, a2) {
-  var s2, h2, p2, v2, y, _2, g2, m2 = t && t.__k || w, b2 = l2.length;
-  for (f2 = T(u2, l2, m2, f2, b2), s2 = 0; s2 < b2; s2++) null != (p2 = u2.__k[s2]) && (h2 = -1 != p2.__i && m2[p2.__i] || d, p2.__i = s2, _2 = q(n2, p2, h2, i2, r2, o2, e2, f2, c2, a2), v2 = p2.__e, p2.ref && h2.ref != p2.ref && (h2.ref && J(h2.ref, null, p2), a2.push(p2.ref, p2.__c || v2, p2)), null == y && null != v2 && (y = v2), (g2 = !!(4 & p2.__u)) || h2.__k === p2.__k ? (f2 = j(p2, f2, n2, g2), g2 && h2.__e && (h2.__e = null)) : "function" == typeof p2.type && void 0 !== _2 ? f2 = _2 : v2 && (f2 = v2.nextSibling), p2.__u &= -7);
+  var s2, h2, p2, v2, y, _2, g2 = t && t.__k || w, m2 = l2.length;
+  for (f2 = T(u2, l2, g2, f2, m2), s2 = 0; s2 < m2; s2++) null != (p2 = u2.__k[s2]) && (h2 = -1 != p2.__i && g2[p2.__i] || d, p2.__i = s2, _2 = q(n2, p2, h2, i2, r2, o2, e2, f2, c2, a2), v2 = p2.__e, p2.ref && h2.ref != p2.ref && (h2.ref && J(h2.ref, null, p2), a2.push(p2.ref, p2.__c || v2, p2)), null == y && null != v2 && (y = v2), 4 & p2.__u ? (f2 = j(p2, f2, n2), h2.__e && (h2.__e = null)) : "function" == typeof p2.type && void 0 !== _2 ? f2 = _2 : v2 && (f2 = v2.nextSibling), p2.__u &= -7);
   return u2.__e = y, f2;
 }
 function T(n2, l2, u2, t, i2) {
@@ -89,13 +88,13 @@ function T(n2, l2, u2, t, i2) {
   if (s2) for (r2 = 0; r2 < a2; r2++) null != (e2 = u2[r2]) && 0 == (2 & e2.__u) && (e2.__e == t && (t = $(e2)), K(e2, e2));
   return t;
 }
-function j(n2, l2, u2, t) {
-  var i2, r2;
+function j(n2, l2, u2) {
+  var t, i2;
   if ("function" == typeof n2.type) {
-    for (i2 = n2.__k, r2 = 0; i2 && r2 < i2.length; r2++) i2[r2] && (i2[r2].__ = n2, l2 = j(i2[r2], l2, u2, t));
+    for (t = n2.__k, i2 = 0; t && i2 < t.length; i2++) t[i2] && (t[i2].__ = n2, l2 = j(t[i2], l2, u2));
     return l2;
   }
-  n2.__e != l2 && (t && (l2 && n2.type && !l2.parentNode && (l2 = $(n2)), u2.insertBefore(n2.__e, l2 || null)), l2 = n2.__e);
+  n2.__e != l2 && (l2 && n2.type && !l2.parentNode && (l2 = $(n2)), l2 = u2.insertBefore(n2.__e, l2 || null));
   do {
     l2 = l2 && l2.nextSibling;
   } while (null != l2 && 8 == l2.nodeType);
@@ -141,35 +140,35 @@ function V(n2) {
   };
 }
 function q(n2, u2, t, i2, r2, o2, e2, f2, c2, a2) {
-  var s2, h2, p2, v2, y, d2, _2, k2, x2, M, $2, I2, P2, A2, H2, T2, j2 = u2.type;
+  var s2, h2, p2, v2, y, d2, _2, k2, x2, M, I2, P2, A2, H2, T2, j2, F = u2.type;
   if (void 0 !== u2.constructor) return null;
   128 & t.__u && (c2 = !!(32 & t.__u), o2 = [f2 = u2.__e = t.__e]), (s2 = l.__b) && s2(u2);
-  n: if ("function" == typeof j2) {
+  n: if ("function" == typeof F) {
     h2 = e2.length;
     try {
-      if (x2 = u2.props, M = j2.prototype && j2.prototype.render, $2 = (s2 = j2.contextType) && i2[s2.__c], I2 = s2 ? $2 ? $2.props.value : s2.__ : i2, t.__c ? k2 = (p2 = u2.__c = t.__c).__ = p2.__E : (M ? u2.__c = p2 = new j2(x2, I2) : (u2.__c = p2 = new C(x2, I2), p2.constructor = j2, p2.render = Q), $2 && $2.sub(p2), p2.state || (p2.state = {}), p2.__n = i2, v2 = p2.__d = true, p2.__h = [], p2._sb = []), M && null == p2.__s && (p2.__s = p2.state), M && null != j2.getDerivedStateFromProps && (p2.__s == p2.state && (p2.__s = m({}, p2.__s)), m(p2.__s, j2.getDerivedStateFromProps(x2, p2.__s))), y = p2.props, d2 = p2.state, p2.__v = u2, v2) M && null == j2.getDerivedStateFromProps && null != p2.componentWillMount && p2.componentWillMount(), M && null != p2.componentDidMount && p2.__h.push(p2.componentDidMount);
+      if (x2 = u2.props, M = F.prototype && F.prototype.render, I2 = (s2 = F.contextType) && i2[s2.__c], P2 = s2 ? I2 ? I2.props.value : s2.__ : i2, t.__c ? k2 = (p2 = u2.__c = t.__c).__ = p2.__E : (M ? u2.__c = p2 = new F(x2, P2) : (u2.__c = p2 = new C(x2, P2), p2.constructor = F, p2.render = Q), I2 && I2.sub(p2), p2.state || (p2.state = {}), p2.__n = i2, v2 = p2.__d = true, p2.__h = [], p2._sb = []), M && null == p2.__s && (p2.__s = p2.state), M && null != F.getDerivedStateFromProps && (p2.__s == p2.state && (p2.__s = m({}, p2.__s)), m(p2.__s, F.getDerivedStateFromProps(x2, p2.__s))), y = p2.props, d2 = p2.state, p2.__v = u2, v2) M && null == F.getDerivedStateFromProps && null != p2.componentWillMount && p2.componentWillMount(), M && null != p2.componentDidMount && p2.__h.push(p2.componentDidMount);
       else {
-        if (M && null == j2.getDerivedStateFromProps && x2 !== y && null != p2.componentWillReceiveProps && p2.componentWillReceiveProps(x2, I2), u2.__v == t.__v || !p2.__e && null != p2.shouldComponentUpdate && false === p2.shouldComponentUpdate(x2, p2.__s, I2)) {
+        if (M && null == F.getDerivedStateFromProps && x2 !== y && null != p2.componentWillReceiveProps && p2.componentWillReceiveProps(x2, P2), u2.__v == t.__v || !p2.__e && null != p2.shouldComponentUpdate && false === p2.shouldComponentUpdate(x2, p2.__s, P2)) {
           u2.__v != t.__v && (p2.props = x2, p2.state = p2.__s, p2.__d = false), u2.__e = t.__e, u2.__k = t.__k, u2.__k.some(function(n3) {
             n3 && (n3.__ = u2);
-          }), w.push.apply(p2.__h, p2._sb), p2._sb = [], p2.__h.length && e2.push(p2);
+          }), w.push.apply(p2.__h, p2._sb), p2._sb = [], p2.__h.length && e2.push(p2), f2 = $(t);
           break n;
         }
-        null != p2.componentWillUpdate && p2.componentWillUpdate(x2, p2.__s, I2), M && null != p2.componentDidUpdate && p2.__h.push(function() {
+        null != p2.componentWillUpdate && p2.componentWillUpdate(x2, p2.__s, P2), M && null != p2.componentDidUpdate && p2.__h.push(function() {
           p2.componentDidUpdate(y, d2, _2);
         });
       }
-      if (p2.context = I2, p2.props = x2, p2.__P = n2, p2.__e = false, P2 = l.__r, A2 = 0, M) p2.state = p2.__s, p2.__d = false, P2 && P2(u2), s2 = p2.render(p2.props, p2.state, p2.context), w.push.apply(p2.__h, p2._sb), p2._sb = [];
+      if (p2.context = P2, p2.props = x2, p2.__P = n2, p2.__e = false, A2 = l.__r, H2 = 0, M) p2.state = p2.__s, p2.__d = false, A2 && A2(u2), s2 = p2.render(p2.props, p2.state, p2.context), w.push.apply(p2.__h, p2._sb), p2._sb = [];
       else do {
-        p2.__d = false, P2 && P2(u2), s2 = p2.render(p2.props, p2.state, p2.context), p2.state = p2.__s;
-      } while (p2.__d && ++A2 < 25);
-      p2.state = p2.__s, null != p2.getChildContext && (i2 = m(m({}, i2), p2.getChildContext())), M && !v2 && null != p2.getSnapshotBeforeUpdate && (_2 = p2.getSnapshotBeforeUpdate(y, d2)), H2 = null != s2 && s2.type === S && null == s2.key ? E(s2.props.children) : s2, f2 = L(n2, g(H2) ? H2 : [H2], u2, t, i2, r2, o2, e2, f2, c2, a2), p2.base = u2.__e, u2.__u &= -161, p2.__h.length && e2.push(p2), k2 && (p2.__E = p2.__ = null);
+        p2.__d = false, A2 && A2(u2), s2 = p2.render(p2.props, p2.state, p2.context), p2.state = p2.__s;
+      } while (p2.__d && ++H2 < 25);
+      p2.state = p2.__s, null != p2.getChildContext && (i2 = m(m({}, i2), p2.getChildContext())), M && !v2 && null != p2.getSnapshotBeforeUpdate && (_2 = p2.getSnapshotBeforeUpdate(y, d2)), T2 = null != s2 && s2.type === S && null == s2.key ? E(s2.props.children) : s2, f2 = L(n2, g(T2) ? T2 : [T2], u2, t, i2, r2, o2, e2, f2, c2, a2), p2.base = u2.__e, u2.__u &= -161, p2.__h.length && e2.push(p2), k2 && (p2.__E = p2.__ = null);
     } catch (n3) {
       if (e2.length = h2, u2.__v = null, c2 || null != o2) {
         if (n3.then) {
           for (u2.__u |= c2 ? 160 : 128; f2 && 8 == f2.nodeType && f2.nextSibling; ) f2 = f2.nextSibling;
           null != o2 && (o2[o2.indexOf(f2)] = null), u2.__e = f2;
-        } else if (null != o2) for (T2 = o2.length; T2--; ) b(o2[T2]);
+        } else if (null != o2) for (j2 = o2.length; j2--; ) b(o2[j2]);
       } else u2.__e = t.__e;
       null == u2.__k && (u2.__k = t.__k || []), n3.then || B(u2), l.__e(n3, u2, t);
     }
@@ -728,17 +727,6 @@ const TYPES = [
     },
     parse: () => {
       throw new Error("TODO");
-    }
-  },
-  {
-    flag: TYPE_ENUM,
-    check: (value) => {
-      return typeof value === "string";
-    },
-    parse: (value) => {
-      return {
-        value
-      };
     }
   },
   {
@@ -1653,41 +1641,32 @@ _PlusForm.delegatesFocus = true;
 _PlusForm.formAssociated = true;
 let PlusForm = _PlusForm;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 2 ** 3
-  })
+  Property({ type: 8, reflect: true })
 ], PlusForm.prototype, "disabled", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 2 ** 10
-  })
+  Property({ type: 512, reflect: true })
 ], PlusForm.prototype, "name", 2);
 __decorateClass([
   Property({
+    type: 8,
     attribute: "readonly",
-    reflect: true,
-    type: 2 ** 3
+    reflect: true
   })
 ], PlusForm.prototype, "readOnly", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 2 ** 3
-  })
+  Property({ type: 8, reflect: true })
 ], PlusForm.prototype, "required", 2);
 __decorateClass([
-  Property()
+  Property({ type: 256 })
 ], PlusForm.prototype, "form", 1);
 __decorateClass([
-  Property()
+  Property({ type: 512 })
 ], PlusForm.prototype, "validationMessage", 1);
 __decorateClass([
-  Property()
+  Property({ type: 256 })
 ], PlusForm.prototype, "validity", 1);
 __decorateClass([
-  Property()
+  Property({ type: 8 })
 ], PlusForm.prototype, "willValidate", 1);
 __decorateClass([
   Method()

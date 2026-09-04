@@ -94,10 +94,10 @@
           "name": "composite",
           "values": [
             {
-              "name": "add"
+              "name": "accumulate"
             },
             {
-              "name": "accumulate"
+              "name": "add"
             },
             {
               "name": "replace"
@@ -114,10 +114,10 @@
           "name": "direction",
           "values": [
             {
-              "name": "alternate-reverse"
+              "name": "alternate"
             },
             {
-              "name": "alternate"
+              "name": "alternate-reverse"
             },
             {
               "name": "normal"
@@ -310,7 +310,29 @@
         },
         {
           "name": "size",
-          "values": [],
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "xl"
+            },
+            {
+              "name": "xs"
+            },
+            {
+              "name": "xxl"
+            },
+            {
+              "name": "xxs"
+            }
+          ],
           "description": "Specifies the size of the element."
         },
         {
@@ -607,13 +629,13 @@
           "name": "align",
           "values": [
             {
-              "name": "start"
-            },
-            {
               "name": "center"
             },
             {
               "name": "end"
+            },
+            {
+              "name": "start"
             }
           ],
           "description": "Align the slides relative to the carousel viewport."
@@ -658,10 +680,10 @@
           "name": "contain-scroll",
           "values": [
             {
-              "name": "off"
+              "name": "keepSnaps"
             },
             {
-              "name": "keepSnaps"
+              "name": "off"
             },
             {
               "name": "trimSnaps"
@@ -734,12 +756,6 @@
           "name": "mirror-type",
           "values": [
             {
-              "name": "sync-jump"
-            },
-            {
-              "name": "sync-smooth"
-            },
-            {
               "name": "click-inherit"
             },
             {
@@ -747,6 +763,12 @@
             },
             {
               "name": "click-smooth"
+            },
+            {
+              "name": "sync-jump"
+            },
+            {
+              "name": "sync-smooth"
             }
           ],
           "description": "Specifies how the carousel should be mirrored onto another carousel."
@@ -790,7 +812,7 @@
         {
           "name": "overrides",
           "values": [],
-          "description": "TODO: Indicates whether the carousel has been successfully initialized."
+          "description": "Overrides default configuration for specific breakpoints. See [Overrides](/overrides-property) for details."
         },
         {
           "name": "preset",
@@ -825,10 +847,10 @@
           "name": "type",
           "values": [
             {
-              "name": "previous"
+              "name": "next"
             },
             {
-              "name": "next"
+              "name": "previous"
             }
           ],
           "description": "Specifies whether the button is 'previous', 'next', or a `number` for navigating to a specific slide."
@@ -889,10 +911,10 @@
               "name": "false"
             },
             {
-              "name": "true"
+              "name": "jump"
             },
             {
-              "name": "jump"
+              "name": "true"
             }
           ],
           "description": "Controls what happens when you click an indicator. If `true`, it smoothly moves to the slide, and if set to `jump`, it instantly jumps without animation."
@@ -972,10 +994,10 @@
               "name": "false"
             },
             {
-              "name": "true"
+              "name": "jump"
             },
             {
-              "name": "jump"
+              "name": "true"
             }
           ],
           "description": "Enables slide navigation when the slide is clicked. - If set to `true`, clicking the slide scrolls it smoothly to the nearest snap point. - If set to `'jump'`, clicking the slide instantly jumps to the snap point without animation. When the parent carousel has looping enabled, the slide will navigate via the shortest path to the target snap point."
@@ -1312,10 +1334,10 @@
               "name": "false"
             },
             {
-              "name": "true"
+              "name": "reset"
             },
             {
-              "name": "reset"
+              "name": "true"
             }
           ],
           "description": "Re-renders when resizing the window."
@@ -1382,10 +1404,10 @@
               "name": "false"
             },
             {
-              "name": "true"
+              "name": "touch"
             },
             {
-              "name": "touch"
+              "name": "true"
             },
             {
               "name": "wheel"
@@ -1597,13 +1619,13 @@
           "name": "size",
           "values": [
             {
-              "name": "sm"
+              "name": "lg"
             },
             {
               "name": "md"
             },
             {
-              "name": "lg"
+              "name": "sm"
             },
             {
               "name": "xl"
@@ -1805,16 +1827,16 @@
           "name": "inset",
           "values": [
             {
-              "name": "none"
-            },
-            {
-              "name": "start"
+              "name": "both"
             },
             {
               "name": "end"
             },
             {
-              "name": "both"
+              "name": "none"
+            },
+            {
+              "name": "start"
             }
           ],
           "description": "Specifies the amount of indentation."
@@ -1835,13 +1857,13 @@
           "name": "placement",
           "values": [
             {
-              "name": "start"
-            },
-            {
               "name": "center"
             },
             {
               "name": "end"
+            },
+            {
+              "name": "start"
             }
           ],
           "description": "Specifies the location of the default slot."
@@ -1850,16 +1872,19 @@
           "name": "size",
           "values": [
             {
-              "name": "sm"
+              "name": "lg"
             },
             {
               "name": "md"
             },
             {
-              "name": "lg"
+              "name": "sm"
             },
             {
-              "name": "xl'"
+              "name": "xl"
+            },
+            {
+              "name": "xs"
             }
           ],
           "description": "Specifies the thickness of the border."
@@ -1867,6 +1892,9 @@
         {
           "name": "stroke",
           "values": [
+            {
+              "name": "dashed"
+            },
             {
               "name": "dotted"
             },
@@ -1886,7 +1914,7 @@
               "name": "ridge"
             },
             {
-              "name": "solid'"
+              "name": "solid"
             }
           ],
           "description": "Specifies the style of the border."
@@ -1999,7 +2027,10 @@
           "name": "placement",
           "values": [
             {
-              "name": "start"
+              "name": "bottom"
+            },
+            {
+              "name": "end"
             },
             {
               "name": "left"
@@ -2008,13 +2039,10 @@
               "name": "right"
             },
             {
-              "name": "end"
+              "name": "start"
             },
             {
               "name": "top"
-            },
-            {
-              "name": "bottom"
             }
           ],
           "description": "Specifies where the drawer will open."
@@ -2194,28 +2222,28 @@
               "name": "base"
             },
             {
+              "name": "exa"
+            },
+            {
+              "name": "giga"
+            },
+            {
               "name": "kilo"
             },
             {
               "name": "mega"
             },
             {
-              "name": "giga"
+              "name": "peta"
             },
             {
               "name": "tera"
             },
             {
-              "name": "peta"
-            },
-            {
-              "name": "exa"
+              "name": "yotta"
             },
             {
               "name": "zetta"
-            },
-            {
-              "name": "yotta"
             }
           ],
           "description": "Specifies the unit in which the result will be returned."
@@ -2291,21 +2319,6 @@
           "name": "size",
           "values": [
             {
-              "name": "xs"
-            },
-            {
-              "name": "sm"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "lg"
-            },
-            {
-              "name": "xl"
-            },
-            {
               "name": "1x"
             },
             {
@@ -2331,6 +2344,21 @@
             },
             {
               "name": "9x"
+            },
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "sm"
+            },
+            {
+              "name": "xl"
+            },
+            {
+              "name": "xs"
             }
           ],
           "description": "Specifies the size."
@@ -2430,26 +2458,12 @@
         },
         {
           "name": "plugins",
-          "values": [
-            {
-              "name": "false"
-            },
-            {
-              "name": "true"
-            }
-          ],
+          "values": [],
           "description": "Plugins to enhance Prism's functionality."
         },
         {
           "name": "resolver",
-          "values": [
-            {
-              "name": "plugin"
-            },
-            {
-              "name": "theme';\n  value: string;\n  // biome-ignore lint: TODO\n}) => Promise<any"
-            }
-          ],
+          "values": [],
           "description": "A custom resolver function to load Prism assets (e.g., languages, themes, plugins)."
         },
         {
@@ -2598,10 +2612,10 @@
               "name": "long"
             },
             {
-              "name": "short"
+              "name": "narrow"
             },
             {
-              "name": "narrow"
+              "name": "short"
             }
           ],
           "description": "The format style for the relative time."
@@ -2793,12 +2807,26 @@
         },
         {
           "name": "redoable",
-          "values": [],
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
           "description": "Specifies whether redo can be performed or not."
         },
         {
           "name": "undoable",
-          "values": [],
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
           "description": "Specifies whether undo can be performed or not."
         },
         {
@@ -2891,13 +2919,16 @@
           "name": "size",
           "values": [
             {
-              "name": "md"
+              "name": "inherit"
             },
             {
               "name": "lg"
             },
             {
-              "name": "inherit'"
+              "name": "md"
+            },
+            {
+              "name": "sm"
             }
           ],
           "description": "Specifies the size of the spinner."
@@ -2957,16 +2988,16 @@
           "name": "items",
           "values": [
             {
-              "name": "start"
-            },
-            {
-              "name": "end"
+              "name": "baseline"
             },
             {
               "name": "center"
             },
             {
-              "name": "baseline"
+              "name": "end"
+            },
+            {
+              "name": "start"
             },
             {
               "name": "stretch"
@@ -2978,28 +3009,28 @@
           "name": "justify",
           "values": [
             {
-              "name": "start"
-            },
-            {
-              "name": "end"
-            },
-            {
-              "name": "center"
-            },
-            {
-              "name": "stretch"
-            },
-            {
-              "name": "normal"
+              "name": "around"
             },
             {
               "name": "between"
             },
             {
-              "name": "around"
+              "name": "center"
+            },
+            {
+              "name": "end"
             },
             {
               "name": "evenly"
+            },
+            {
+              "name": "normal"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "stretch"
             }
           ],
           "description": "The distribution of items along the main axis."
@@ -3035,10 +3066,10 @@
               "name": "false"
             },
             {
-              "name": "true"
+              "name": "reverse"
             },
             {
-              "name": "reverse"
+              "name": "true"
             }
           ],
           "description": "Controls whether items should wrap onto multiple lines."
@@ -3222,13 +3253,13 @@
           "name": "justify",
           "values": [
             {
-              "name": "start"
-            },
-            {
               "name": "center"
             },
             {
               "name": "end"
+            },
+            {
+              "name": "start"
             }
           ],
           "description": "Specifies how the tabs are aligned."
@@ -3274,7 +3305,14 @@
         },
         {
           "name": "active",
-          "values": [],
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
           "description": "TODO"
         },
         {
@@ -3340,7 +3378,14 @@
         },
         {
           "name": "active",
-          "values": [],
+          "values": [
+            {
+              "name": "false"
+            },
+            {
+              "name": "true"
+            }
+          ],
           "description": "TODO"
         },
         {
@@ -3415,31 +3460,10 @@
           "name": "placement",
           "values": [
             {
-              "name": "top"
-            },
-            {
-              "name": "top-left"
-            },
-            {
-              "name": "top-right"
-            },
-            {
-              "name": "top-start"
-            },
-            {
-              "name": "top-end"
-            },
-            {
-              "name": "right"
-            },
-            {
-              "name": "right-top"
-            },
-            {
-              "name": "right-bottom"
-            },
-            {
               "name": "bottom"
+            },
+            {
+              "name": "bottom-end"
             },
             {
               "name": "bottom-left"
@@ -3451,34 +3475,55 @@
               "name": "bottom-start"
             },
             {
-              "name": "bottom-end"
-            },
-            {
-              "name": "left"
-            },
-            {
-              "name": "left-top"
-            },
-            {
-              "name": "left-bottom"
-            },
-            {
-              "name": "start"
-            },
-            {
-              "name": "start-top"
-            },
-            {
-              "name": "start-bottom"
-            },
-            {
               "name": "end"
+            },
+            {
+              "name": "end-bottom"
             },
             {
               "name": "end-top"
             },
             {
-              "name": "end-bottom"
+              "name": "left"
+            },
+            {
+              "name": "left-bottom"
+            },
+            {
+              "name": "left-top"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-bottom"
+            },
+            {
+              "name": "right-top"
+            },
+            {
+              "name": "start"
+            },
+            {
+              "name": "start-bottom"
+            },
+            {
+              "name": "start-top"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-end"
+            },
+            {
+              "name": "top-left"
+            },
+            {
+              "name": "top-right"
+            },
+            {
+              "name": "top-start"
             }
           ],
           "description": "Specifies the display location of the element relative to the reference."
@@ -3523,13 +3568,13 @@
               "name": "auto"
             },
             {
-              "name": "vertical"
-            },
-            {
               "name": "horizontal"
             },
             {
               "name": "move"
+            },
+            {
+              "name": "vertical"
             }
           ],
           "description": "TODO"

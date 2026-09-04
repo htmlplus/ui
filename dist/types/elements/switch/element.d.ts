@@ -9,7 +9,6 @@ import { PlusBreakpoint } from '../../types';
 export declare class PlusSwitch extends PlusCore {
     /**
      * Puts the switch in checked state.
-     * @model
      */
     checked: boolean;
     /**
@@ -26,7 +25,6 @@ export declare class PlusSwitch extends PlusCore {
     preset?: OverridableValue<never>;
     /**
      * When the switch state is changed this event triggers.
-     * @model
      */
     plusChange: EventEmitter<void>;
     toggle(): void;
@@ -35,12 +33,16 @@ export declare class PlusSwitch extends PlusCore {
     render(): any;
 }
 
+// THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY
+
 type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
 type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
 type ToJSXEvent<T> = { [K in keyof T as `on${Capitalize<string & K>}`]: T[K] };
 type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T, Exclude<keyof T, keyof M>>> & { [K in keyof M as M[K] extends PropertyKey ? M[K] : K]?: K extends keyof T ? T[K] : never };
-export type PlusSwitchAttributesMapper = {};
+export type PlusSwitchAttributesMapper = {
+  
+};
 export type PlusSwitchOverridableKeys = 'preset';
 export interface PlusSwitchDisables {}
 export interface PlusSwitchOverrides {}

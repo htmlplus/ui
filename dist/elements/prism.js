@@ -1,5 +1,5 @@
 import { P as PlusCore, q as AsyncCache, l as ExternalDependencyError, a as jsx, j as jsxs, N as NotEmptyPropertyError, b as Property, O as Overrides, c as Preset, f as Style, d as Element } from "../core/index.js";
-const STYLE_IMPORTED = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;direction:ltr}pre{margin:0 !important;display:flex;align-items:start}code{display:block;flex-grow:1}.copy{width:0;direction:rtl}.copy slot{direction:ltr}:host([theme=default]) code[class*=language-],:host([theme=default]) pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}:host([theme=default]) pre[class*=language-]::-moz-selection,:host([theme=default]) pre[class*=language-] ::-moz-selection,:host([theme=default]) code[class*=language-]::-moz-selection,:host([theme=default]) code[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}:host([theme=default]) pre[class*=language-]::selection,:host([theme=default]) pre[class*=language-] ::selection,:host([theme=default]) code[class*=language-]::selection,:host([theme=default]) code[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{:host([theme=default]) code[class*=language-],:host([theme=default]) pre[class*=language-]{text-shadow:none}}:host([theme=default]) pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:host([theme=default]) :not(pre)>code[class*=language-],:host([theme=default]) pre[class*=language-]{background:#f5f2f0}:host([theme=default]) :not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}:host([theme=default]) .token.comment,:host([theme=default]) .token.prolog,:host([theme=default]) .token.doctype,:host([theme=default]) .token.cdata{color:#708090}:host([theme=default]) .token.punctuation{color:#999}:host([theme=default]) .token.namespace{opacity:.7}:host([theme=default]) .token.property,:host([theme=default]) .token.tag,:host([theme=default]) .token.boolean,:host([theme=default]) .token.number,:host([theme=default]) .token.constant,:host([theme=default]) .token.symbol,:host([theme=default]) .token.deleted{color:#905}:host([theme=default]) .token.selector,:host([theme=default]) .token.attr-name,:host([theme=default]) .token.string,:host([theme=default]) .token.char,:host([theme=default]) .token.builtin,:host([theme=default]) .token.inserted{color:#690}:host([theme=default]) .token.operator,:host([theme=default]) .token.entity,:host([theme=default]) .token.url,:host([theme=default]) .language-css .token.string,:host([theme=default]) .style .token.string{color:#9a6e3a;background:hsla(0,0%,100%,.5)}:host([theme=default]) .token.atrule,:host([theme=default]) .token.attr-value,:host([theme=default]) .token.keyword{color:#07a}:host([theme=default]) .token.function,:host([theme=default]) .token.class-name{color:#dd4a68}:host([theme=default]) .token.regex,:host([theme=default]) .token.important,:host([theme=default]) .token.variable{color:#e90}:host([theme=default]) .token.important,:host([theme=default]) .token.bold{font-weight:bold}:host([theme=default]) .token.italic{font-style:italic}:host([theme=default]) .token.entity{cursor:help}';
+const STYLE_IMPORTED_PlusPrism = ':host,:host::before,:host::after{box-sizing:border-box}:host *,:host *::before,:host *::after{box-sizing:border-box}:host([hidden]){display:none !important}:host{display:block;direction:ltr}pre{margin:0 !important;display:flex;align-items:start}code{display:block;flex-grow:1}.copy{width:0;direction:rtl}.copy slot{direction:ltr}:host([theme=default]) code[class*=language-],:host([theme=default]) pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}:host([theme=default]) pre[class*=language-]::-moz-selection,:host([theme=default]) pre[class*=language-] ::-moz-selection,:host([theme=default]) code[class*=language-]::-moz-selection,:host([theme=default]) code[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}:host([theme=default]) pre[class*=language-]::selection,:host([theme=default]) pre[class*=language-] ::selection,:host([theme=default]) code[class*=language-]::selection,:host([theme=default]) code[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{:host([theme=default]) code[class*=language-],:host([theme=default]) pre[class*=language-]{text-shadow:none}}:host([theme=default]) pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:host([theme=default]) :not(pre)>code[class*=language-],:host([theme=default]) pre[class*=language-]{background:#f5f2f0}:host([theme=default]) :not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}:host([theme=default]) .token.comment,:host([theme=default]) .token.prolog,:host([theme=default]) .token.doctype,:host([theme=default]) .token.cdata{color:#708090}:host([theme=default]) .token.punctuation{color:#999}:host([theme=default]) .token.namespace{opacity:.7}:host([theme=default]) .token.property,:host([theme=default]) .token.tag,:host([theme=default]) .token.boolean,:host([theme=default]) .token.number,:host([theme=default]) .token.constant,:host([theme=default]) .token.symbol,:host([theme=default]) .token.deleted{color:#905}:host([theme=default]) .token.selector,:host([theme=default]) .token.attr-name,:host([theme=default]) .token.string,:host([theme=default]) .token.char,:host([theme=default]) .token.builtin,:host([theme=default]) .token.inserted{color:#690}:host([theme=default]) .token.operator,:host([theme=default]) .token.entity,:host([theme=default]) .token.url,:host([theme=default]) .language-css .token.string,:host([theme=default]) .style .token.string{color:#9a6e3a;background:hsla(0,0%,100%,.5)}:host([theme=default]) .token.atrule,:host([theme=default]) .token.attr-value,:host([theme=default]) .token.keyword{color:#07a}:host([theme=default]) .token.function,:host([theme=default]) .token.class-name{color:#dd4a68}:host([theme=default]) .token.regex,:host([theme=default]) .token.important,:host([theme=default]) .token.variable{color:#e90}:host([theme=default]) .token.important,:host([theme=default]) .token.bold{font-weight:bold}:host([theme=default]) .token.italic{font-style:italic}:host([theme=default]) .token.entity{cursor:help}';
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __decorateClass = (decorators, target, key, kind) => {
@@ -23,13 +23,28 @@ let PlusPrism = class extends PlusCore {
       namespace: "prism",
       resolver: async (params) => {
         if (typeof this.resolver !== "function") {
-          console.warn([`The 'prism' element can't find the '${params.key}' file for '${params.value}'. `, `It uses an async 'resolver' function to load files, which isn't set up by default. `, `You may need to configure it properly. `, `Check the documentation for the correct resolver setup to fix the issue.`].join(""), this.$host);
+          console.warn(
+            [
+              `The 'prism' element can't find the '${params.key}' file for '${params.value}'. `,
+              `It uses an async 'resolver' function to load files, which isn't set up by default. `,
+              `You may need to configure it properly. `,
+              `Check the documentation for the correct resolver setup to fix the issue.`
+            ].join(""),
+            this.$host
+          );
           return;
         }
         try {
           return await this.resolver(params);
         } catch (error) {
-          console.warn([`The 'prism' element is not able to resolve the '${params.key}' file for '${params.value}'. `, `There is a problem with the 'resolver' property, and its output cannot be used. `, "Make sure that the output of the property is correct."].join(""), this.$host);
+          console.warn(
+            [
+              `The 'prism' element is not able to resolve the '${params.key}' file for '${params.value}'. `,
+              `There is a problem with the 'resolver' property, and its output cannot be used. `,
+              "Make sure that the output of the property is correct."
+            ].join(""),
+            this.$host
+          );
           throw error;
         }
       }
@@ -117,62 +132,41 @@ let PlusPrism = class extends PlusCore {
   updatedCallback() {
     this.observer.disconnect();
     if (!this.sync) return;
-    this.observer.observe(this.$host, {
-      childList: true
-    });
+    this.observer.observe(this.$host, { childList: true });
   }
   disconnectedCallback() {
     this.observer.disconnect();
   }
   render() {
     return /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsxs("pre", { className: this.preClass, part: "pre", ...this.attributes, children: [
-      /* @__PURE__ */ jsx("code", { className: this.codeClass, part: "code", dangerouslySetInnerHTML: {
-        __html: this.html
-      } }),
+      /* @__PURE__ */ jsx("code", { className: this.codeClass, part: "code", dangerouslySetInnerHTML: { __html: this.html } }),
       /* @__PURE__ */ jsx("span", { className: "copy", part: "copy", children: /* @__PURE__ */ jsx("slot", { name: "copy" }) })
     ] }) });
   }
 };
+PlusPrism.style = STYLE_IMPORTED_PlusPrism;
 PlusPrism.tag = "plus-prism";
-PlusPrism.style = STYLE_IMPORTED;
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1024
-  })
+  Property({ type: 512, reflect: true })
 ], PlusPrism.prototype, "language", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1024
-  })
+  Property({ type: 512, reflect: true })
 ], PlusPrism.prototype, "theme", 2);
 __decorateClass([
-  Property({
-    type: 512
-  })
+  Property({ type: 256 })
 ], PlusPrism.prototype, "plugins", 2);
 __decorateClass([
-  Property({
-    type: 1
-  })
+  Property({ type: 32 })
 ], PlusPrism.prototype, "resolver", 2);
 __decorateClass([
-  Property({
-    type: 8
-  })
+  Property({ type: 8 })
 ], PlusPrism.prototype, "sync", 2);
 __decorateClass([
-  Property({
-    type: 1
-  }),
+  Property({ type: 256 }),
   Overrides()
 ], PlusPrism.prototype, "overrides", 2);
 __decorateClass([
-  Property({
-    reflect: true,
-    type: 1
-  }),
+  Property({ type: 1, reflect: true }),
   Preset()
 ], PlusPrism.prototype, "preset", 2);
 __decorateClass([

@@ -73,6 +73,8 @@ export declare class PlusAppProgressBar extends PlusCore {
     render(): any;
 }
 
+// THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY
+
 type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
 type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
@@ -81,7 +83,7 @@ type Rename<T, M extends Partial<Record<keyof T, PropertyKey>>> = Partial<Pick<T
 export type PlusAppProgressBarAttributesMapper = {
   'trickleDisabled': 'trickle-disabled';
   'trickleRate': 'trickle-rate';
-  'trickleSpeed': 'trickle-speed';
+  'trickleSpeed': 'trickle-speed'
 };
 export type PlusAppProgressBarOverridableKeys = 'color' | 'preset';
 export interface PlusAppProgressBarDisables {}

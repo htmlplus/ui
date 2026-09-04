@@ -171,6 +171,8 @@ export declare class PlusAnimation extends PlusCore {
     render(): any;
 }
 
+// THE FOLLOWING TYPES HAVE BEEN ADDED AUTOMATICALLY
+
 type Filter<Base, Disables> = { [K in keyof Base as K extends keyof Disables ? [Disables[K]] extends [false] ? never : K : '*' extends keyof Disables ? [Disables['*']] extends [false] ? never : K : K]: Base[K] };
 type Override<Base, Overrides, AllowedKeys> = { [K in keyof Base]: K extends AllowedKeys ? K extends keyof Overrides ? Overrides[K] : Base[K] : Base[K] };
 type ToEventHandlers<T> = { [K in keyof T]?: T[K] extends EventEmitter<infer U> ? (event: CustomEvent<U>) => void : T[K] };
@@ -180,7 +182,7 @@ export type PlusAnimationAttributesMapper = {
   'endDelay': 'end-delay';
   'iterationComposite': 'iteration-composite';
   'iterationStart': 'iteration-start';
-  'playbackRate': 'playback-rate';
+  'playbackRate': 'playback-rate'
 };
 export type PlusAnimationOverridableKeys = 'name' | 'preset';
 export interface PlusAnimationDisables {}
