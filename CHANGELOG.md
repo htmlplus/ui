@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.15](https://github.com/htmlplus/ui/compare/v1.8.14...v1.8.15) (2026-09-04)
+
+
+### Bug Fixes
+
+* Update `@htmlplus/element` to version `4.0.11` to apply the new build engine ([f7611ca](https://github.com/htmlplus/ui/commit/f7611ca70632e744db46e9b6dac586a097459687))
+
 ## [1.8.14](https://github.com/htmlplus/ui/compare/v1.8.13...v1.8.14) (2026-08-21)
 
 ## [1.8.13](https://github.com/htmlplus/ui/compare/v1.8.12...v1.8.13) (2026-08-17)
